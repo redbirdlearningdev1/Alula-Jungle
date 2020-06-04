@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class VolumeBarTest : MonoBehaviour
+public class AudioInputTestSceneManager : MonoBehaviour
 {
-    private Image volumeBar;
+    [SerializeField] private Image volumeBar;
     public float timeBetwnVolumeUpdates;
     private float timer = 0f;
-    [SerializeField] private AudioInput audioInputScript;
+    private AudioInput audioInputScript;
 
     void Start()
     {
-        volumeBar = GetComponent<Image>();
+        audioInputScript = GetComponent<AudioInput>();
     }
 
     void Update()

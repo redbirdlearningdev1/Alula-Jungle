@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 337743388}
   - component: {fileID: 337743390}
   - component: {fileID: 337743389}
-  - component: {fileID: 337743391}
   m_Layer: 5
   m_Name: VolumeBar
   m_TagString: Untagged
@@ -194,20 +193,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 337743387}
   m_CullTransparentMesh: 0
---- !u!114 &337743391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 337743387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db693b611f04b384f9d0be275147c365, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeBetwnVolumeUpdates: 0.05
-  audioInputScript: {fileID: 454307951}
 --- !u!1 &381373206
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,8 +269,9 @@ GameObject:
   m_Component:
   - component: {fileID: 454307952}
   - component: {fileID: 454307951}
+  - component: {fileID: 454307953}
   m_Layer: 0
-  m_Name: AudioInput
+  m_Name: AudioInputTestSceneManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -318,6 +304,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &454307953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454307950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db693b611f04b384f9d0be275147c365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeBar: {fileID: 337743389}
+  timeBetwnVolumeUpdates: 0.05
 --- !u!1 &924093360
 GameObject:
   m_ObjectHideFlags: 0
