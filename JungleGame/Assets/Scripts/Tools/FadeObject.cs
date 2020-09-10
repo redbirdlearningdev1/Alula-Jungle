@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public static class FadeHelper
 {
-    public static void FadeIn(float time)
+    public static void FadeIn(float time = GameManager.transitionTime)
     {
         FadeObject obj = FindFadeObject();
         obj.FadeIn(time);
     }
 
-    public static void FadeOut(float time)
+    public static void FadeOut(float time = GameManager.transitionTime)
     {
         FadeObject obj = FindFadeObject();
         obj.FadeOut(time);
@@ -28,11 +28,6 @@ public class FadeObject : MonoBehaviour
 {
     public bool testMode;
     [SerializeField] private Image vignette;
-
-    void Start()
-    {
-
-    }
 
     void Update()
     {

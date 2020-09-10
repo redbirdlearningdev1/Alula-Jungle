@@ -12,6 +12,12 @@ public class LoadSaveTestSceneManager : MonoBehaviour
     [SerializeField] private TMP_InputField totalStarsField;
 
     private StudentPlayerData studentData;
+    
+    void Awake() 
+    {
+        // every scene must call this in Awake()
+        GameHelper.SceneInit();
+    }
 
     void Start()
     {
@@ -61,5 +67,10 @@ public class LoadSaveTestSceneManager : MonoBehaviour
             case 2: return StudentIndex.student_3;
             default: return StudentIndex.student_1;
         }
+    }
+
+    public void OnDevMenuPressed()
+    {
+        GameHelper.LoadScene("DevMenu", true);
     }
 }

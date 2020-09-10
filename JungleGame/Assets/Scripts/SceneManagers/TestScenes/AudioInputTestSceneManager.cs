@@ -10,6 +10,12 @@ public class AudioInputTestSceneManager : MonoBehaviour
     private float timer = 0f;
     private AudioInput audioInputScript;
 
+    void Awake() 
+    {
+        // every scene must call this in Awake()
+        GameHelper.SceneInit();
+    }
+
     void Start()
     {
         audioInputScript = GetComponent<AudioInput>();
@@ -39,5 +45,10 @@ public class AudioInputTestSceneManager : MonoBehaviour
             }
             volumeBar.transform.localScale = new Vector3(0.35f, volumeLevel, 1f);
         }
+    }
+
+    public void OnDevMenuPressed()
+    {
+        GameHelper.LoadScene("DevMenu", true);
     }
 }
