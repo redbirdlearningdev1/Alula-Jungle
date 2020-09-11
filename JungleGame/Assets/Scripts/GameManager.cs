@@ -7,13 +7,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : DontDestroy<GameManager>
 {
     public bool devModeActivated;
+    [HideInInspector] public bool acceptPlayerInput;
     public const float transitionTime = 1f; // time to fade into and out of a scene (total transition time is: transitionTime * 2)
 
-    [SerializeField] private GameObject raycastBlocker;
 
     new void Awake() 
     {
-        raycastBlocker.SetActive(false);
+        acceptPlayerInput = false;
     }
 
     private void Update() 
@@ -35,7 +35,7 @@ public class GameManager : DontDestroy<GameManager>
     {
         FadeHelper.FadeIn();
         yield return new WaitForSeconds(transitionTime);
-        raycastBlocker.SetActive(false);
+        acceptPlayerInput = true;
     }
 
     public void RestartGame()
@@ -45,13 +45,13 @@ public class GameManager : DontDestroy<GameManager>
 
     public void LoadScene(string sceneName, bool fadeOut, float time = transitionTime)
     {
-        raycastBlocker.SetActive(true);
+        acceptPlayerInput = false;
         StartCoroutine(LoadSceneCoroutine(sceneName, fadeOut, time));
     }
 
     public void LoadScene(int sceneNum, bool fadeOut, float time = transitionTime)
     {
-        raycastBlocker.SetActive(true);
+        acceptPlayerInput = false;
         StartCoroutine(LoadSceneCoroutine(sceneNum, fadeOut, time));
     }
 
