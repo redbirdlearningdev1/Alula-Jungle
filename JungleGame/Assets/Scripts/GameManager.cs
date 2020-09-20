@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class GameManager : DontDestroy<GameManager>
 {
     public bool devModeActivated;
-    [HideInInspector] public bool acceptPlayerInput;
     public const float transitionTime = 1f; // time to fade into and out of a scene (total transition time is: transitionTime * 2)
 
+    [SerializeField] GameObject raycastBlocker; // used to block all raycasts (does not work for UI stuff currently)
+    [SerializeField] Transform popupParent;
+    [SerializeField] GameObject levelPopupPrefab;
 
     new void Awake() 
     {
-        acceptPlayerInput = false;
+        SetRaycastBlocker(false);
     }
 
     private void Update() 
@@ -26,6 +27,12 @@ public class GameManager : DontDestroy<GameManager>
         }
     }
 
+    /* 
+    ################################################
+    #   SCENE INITIALIZATION
+    ################################################
+    */
+
     public void SceneInit()
     {
         StartCoroutine(SceneInitCoroutine());
@@ -33,9 +40,21 @@ public class GameManager : DontDestroy<GameManager>
 
     private IEnumerator SceneInitCoroutine()
     {
+        SetRaycastBlocker(true);
         FadeHelper.FadeIn();
         yield return new WaitForSeconds(transitionTime);
-        acceptPlayerInput = true;
+        SetRaycastBlocker(false);
+    }
+
+    /* 
+    ################################################
+    #   UTILITY
+    ################################################
+    */
+
+    public void SetRaycastBlocker(bool opt)
+    {
+        raycastBlocker.SetActive(opt);
     }
 
     public void RestartGame()
@@ -43,15 +62,27 @@ public class GameManager : DontDestroy<GameManager>
         LoadScene(0, true);
     }
 
+    public void NewLevelPopup(Level level)
+    {
+        PopupWindow window = Instantiate(levelPopupPrefab, transform.position, Quaternion.identity, popupParent).GetComponent<PopupWindow>();
+        window.InitPopup(level);
+    }
+
+    /* 
+    ################################################
+    #   SCENE MANAGEMENT
+    ################################################
+    */
+
     public void LoadScene(string sceneName, bool fadeOut, float time = transitionTime)
     {
-        acceptPlayerInput = false;
+        SetRaycastBlocker(true);
         StartCoroutine(LoadSceneCoroutine(sceneName, fadeOut, time));
     }
 
     public void LoadScene(int sceneNum, bool fadeOut, float time = transitionTime)
     {
-        acceptPlayerInput = false;
+        SetRaycastBlocker(true);
         StartCoroutine(LoadSceneCoroutine(sceneNum, fadeOut, time));
     }
 

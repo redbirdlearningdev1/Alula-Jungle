@@ -19,6 +19,18 @@ public static class GameHelper
         gm.SceneInit();
     }
 
+    public static void NewLevelPopup(Level level)
+    {
+        FindGameManager();
+        gm.NewLevelPopup(level);
+    }
+
+    public static void SetRaycastBlocker(bool opt)
+    {
+        FindGameManager();
+        gm.SetRaycastBlocker(opt);
+    }
+
     public static void LoadScene(int sceneNum, bool fadeOut, float time = GameManager.transitionTime)
     {   
         FindGameManager();
@@ -39,6 +51,9 @@ public static class GameHelper
 
     private static void FindGameManager()
     {
-        if (gm == null) gm =  GameObject.Find("TheGameManager").GetComponent<GameManager>();
+        if (gm == null) gm = GameObject.Find("TheGameManager").GetComponent<GameManager>();
+
+        // GameHelper could not find TheGameManager
+        if (gm == null) Debug.LogError("GameHelper could not find 'TheGameManager'");
     }
 }
