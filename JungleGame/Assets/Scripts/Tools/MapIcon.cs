@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class MapIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    private Outline outlineComp;
+    //private Outline outlineComp;
 
     private static float pressedScaleChange = 0.95f;
 
@@ -15,8 +15,8 @@ public class MapIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     void Awake() 
     {
-        outlineComp = GetComponent<Outline>();
-        outlineComp.effectColor = noHoverColor;
+        //outlineComp = GetComponent<Outline>();
+        //outlineComp.effectColor = noHoverColor;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -35,11 +35,11 @@ public class MapIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        outlineComp.effectColor = hoverOverColor;
+        //outlineComp.effectColor = hoverOverColor;
     }
  
     public void OnPointerExit(PointerEventData eventData)
     {
-        outlineComp.effectColor = noHoverColor;
+        //outlineComp.effectColor = noHoverColor;
     }
 }
