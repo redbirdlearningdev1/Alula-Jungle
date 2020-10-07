@@ -1,16 +1,29 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class MapIcon : MonoBehaviour, IPointerClickHandler
+public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     public string connectedScene;
+    public bool canBeFixed;
+    public bool isFire;
+
+    [SerializeField] private Sprite brokenSprite;
+    [SerializeField] private Sprite fixedSprite;
+
     private MeshRenderer meshRenderer;
+    private Image img;
+    private Animator animator;
     private static float pressedScaleChange = 0.95f;
+    private bool isPressed = false;
+    private bool isFixed = false;
 
     void Awake() 
     {
         meshRenderer = GetComponent<MeshRenderer>();
+        img = GetComponent<Image>();
+        if (isFire) animator = GetComponent<Animator>();
     }
 
     public void SetOutineColor(Color color)
@@ -18,17 +31,43 @@ public class MapIcon : MonoBehaviour, IPointerClickHandler
         meshRenderer.material.color = color;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void SetFixed(bool opt)
     {
-        StartCoroutine(OnPressScale(0.1f));
+        if (!canBeFixed) return;
+
+        if (!isFire)
+        {
+            if (!opt) img.sprite = brokenSprite;
+            else img.sprite = fixedSprite;
+        }
+        else
+        {
+            animator.SetBool("isBroken", !opt);
+        }
     }
 
-    private IEnumerator OnPressScale(float duration)
-    {
-        GameHelper.NewLevelPopup(new Level(connectedScene));
+    /* 
+    ################################################
+    #   POINTER METHODS
+    ################################################
+    */
 
-        transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
-        yield return new WaitForSeconds(duration);
-        transform.localScale = new Vector3(1f, 1f, 1f);
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (!isPressed)
+        {
+            isPressed = true;
+            transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
+        }
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (isPressed)
+        {
+            isPressed = false;
+            transform.localScale = new Vector3(1f, 1f, 1f);
+            GameHelper.NewLevelPopup(new Level(connectedScene));
+        }
     }
 }

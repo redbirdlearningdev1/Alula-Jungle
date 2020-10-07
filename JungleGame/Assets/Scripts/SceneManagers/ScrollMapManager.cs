@@ -20,7 +20,6 @@ public class ScrollMapManager : MonoBehaviour
     [SerializeField] private Transform leftBirbBounds;
     [SerializeField] private Transform rightBirbBounds;
     private bool moveBirb;
-    
 
     void Awake()
     {
@@ -284,5 +283,45 @@ public class ScrollMapManager : MonoBehaviour
         moveBirb = false;
         GoToNearestMapLocation();
         //StartCoroutine(SetBirbSpriteDelay(birbNorm, 0.2f));
+    }
+
+    /* 
+    ################################################
+    #   DEV FUNCTIONS 
+    ################################################
+    */
+
+    private List<GameObject> mapIcons = new List<GameObject>();
+
+    public void SetMapIconsBroke(bool opt)
+    {
+        FindObjectsWithTag("MapIcon");
+        foreach(GameObject mapIcon in mapIcons)
+        {
+            mapIcon.GetComponent<MapIcon>().SetFixed(opt);
+        }
+    }
+
+    private void FindObjectsWithTag(string _tag)
+    {
+        mapIcons.Clear();
+        Transform parent = Map;
+        RecursiveGetChildObject(parent, _tag);
+    }
+ 
+     private void RecursiveGetChildObject(Transform parent, string _tag)
+    {
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            Transform child = parent.GetChild(i);
+            if (child.tag == _tag)
+            {
+                mapIcons.Add(child.gameObject);
+            }
+            if (child.childCount > 0)
+            {
+                RecursiveGetChildObject(child, _tag);
+            }
+        }
     }
 }

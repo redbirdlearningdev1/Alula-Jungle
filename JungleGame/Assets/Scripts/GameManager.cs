@@ -12,6 +12,9 @@ public class GameManager : DontDestroy<GameManager>
     [SerializeField] Transform popupParent;
     [SerializeField] GameObject levelPopupPrefab;
 
+    // Dev vars
+    private bool iconsSetBroke = false;
+
     new void Awake() 
     {
         SetRaycastBlocker(false);
@@ -24,6 +27,21 @@ public class GameManager : DontDestroy<GameManager>
             // press 'D' to go to the dev menu
             if (Input.GetKeyDown(KeyCode.D))
                 LoadScene("DevMenu", true);
+            // press 'F' to toggle between fixed and broken map sprites
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                GameObject smm;
+                smm = GameObject.Find("ScrollMapManager");
+
+                if (smm == null) 
+                    Debug.LogError("GameManager could not find 'ScrollMapManager'");
+                else
+                {
+                    iconsSetBroke = !iconsSetBroke;
+                    smm.GetComponent<ScrollMapManager>().SetMapIconsBroke(iconsSetBroke);
+                    Debug.Log("Map icons broken set to: " + iconsSetBroke);
+                }
+            }
         }
     }
 
