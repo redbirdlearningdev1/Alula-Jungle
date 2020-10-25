@@ -8,17 +8,11 @@ public class AudioInputTestSceneManager : MonoBehaviour
     [SerializeField] private Image volumeBar;
     public float timeBetwnVolumeUpdates;
     private float timer = 0f;
-    private AudioInput audioInputScript;
 
     void Awake() 
     {
         // every scene must call this in Awake()
         GameHelper.SceneInit();
-    }
-
-    void Start()
-    {
-        audioInputScript = GetComponent<AudioInput>();
     }
 
     void Update()
@@ -30,7 +24,7 @@ public class AudioInputTestSceneManager : MonoBehaviour
         else
         {
             timer = 0f;
-            float volumeLevel = audioInputScript.volumeLevel * 5;
+            float volumeLevel = AudioInput.volumeLevel * 5;
             if (volumeLevel <= 3f)
             {
                 volumeBar.color = Color.green;

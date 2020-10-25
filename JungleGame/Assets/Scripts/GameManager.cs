@@ -12,7 +12,9 @@ public class GameManager : DontDestroy<GameManager>
     [SerializeField] Transform popupParent;
     [SerializeField] GameObject levelPopupPrefab;
 
-    // Dev vars
+    private StoryGameData storyGameData;
+
+    // DEV STUFF:
     private bool iconsSetBroke = false;
 
     new void Awake() 
@@ -20,7 +22,7 @@ public class GameManager : DontDestroy<GameManager>
         SetRaycastBlocker(false);
     }
 
-    private void Update() 
+    private void Update()
     {
         if (devModeActivated)
         {
@@ -86,6 +88,11 @@ public class GameManager : DontDestroy<GameManager>
         window.InitPopup(level);
     }
 
+    public void SendError(Object errorContext, string errorMsg)
+    {
+        Debug.LogError("[ERROR] " + errorMsg + " @ " + errorContext.name, errorContext);
+    }
+
     /* 
     ################################################
     #   SCENE MANAGEMENT
@@ -125,4 +132,46 @@ public class GameManager : DontDestroy<GameManager>
         yield return new WaitForSeconds(time);
         SceneManager.LoadSceneAsync(sceneNum);
     }
+
+    /* 
+    ################################################
+    #   GAME DATA
+    ################################################
+    */
+
+    public void SetData<TYPE>(DataType dataType, TYPE data)
+    {
+        switch (dataType)
+        {
+            case DataType.StoryGame:
+                StoryGameData data_cast = data as StoryGameData;
+                if (data_cast != null)
+                    this.storyGameData = data_cast;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public object GetData(DataType dataType)
+    {
+        switch (dataType)
+        {
+            case DataType.StoryGame:
+                return storyGameData;
+            default:
+                return null;
+        }
+    }
+}
+
+/* 
+################################################
+#   DATA TYPE ENUM
+################################################
+*/
+
+public enum DataType
+{
+    StoryGame
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioInput : MonoBehaviour 
 {
     private AudioSource audioSource;
-    public float volumeLevel { get; private set; }
+    public static float volumeLevel { get; private set; }
     public int micDeviceToUse = 0;
 
     // Use this for initialization
@@ -16,26 +16,22 @@ public class AudioInput : MonoBehaviour
 
         if (Application.HasUserAuthorization (UserAuthorization.Microphone)) 
         {
-            foreach (string device in Microphone.devices)
-            {
-                Debug.Log("Microphone name: " + device);
-            }
             if (Microphone.devices.Length == 0) 
             {
-                Debug.LogError("No microphone detected");
+                GameHelper.SendError(this, "No microphone detected!");
             } 
             else 
             {
                 audioSource = gameObject.AddComponent<AudioSource>() as AudioSource;
                 if (audioSource == null) 
                 {
-                    Debug.LogError("Created AudioSource is null");
+                    GameHelper.SendError(this, "Created AudioSource is null");
                 }
             }
         } 
         else 
         {
-            Debug.LogError("User denined access to microphone");
+            GameHelper.SendError(this, "User denined access to microphone");
         }
     }
 
