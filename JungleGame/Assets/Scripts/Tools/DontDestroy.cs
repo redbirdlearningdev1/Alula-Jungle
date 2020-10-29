@@ -10,9 +10,9 @@ using UnityEngine;
     
     public virtual void Awake() 
     {
-        if(isPersistant) 
+        if (isPersistant) 
         {
-            if(!instance) 
+            if (!instance)
             {
                 instance = this as Instance;
             }
@@ -20,6 +20,7 @@ using UnityEngine;
             {
                 Destroy(gameObject);
             }
+
             DontDestroyOnLoad(gameObject);
         }
         else 

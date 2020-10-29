@@ -25,6 +25,9 @@ public class ScrollMapManager : MonoBehaviour
     {
         // every scene must call this in Awake()
         GameHelper.SceneInit();
+
+        // play test song
+        AudioHelper.PlaySong(Song.JungleGameTestSong);
     }
 
     void Start()

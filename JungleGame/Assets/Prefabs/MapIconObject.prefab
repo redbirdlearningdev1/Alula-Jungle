@@ -88,7 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f73d9b5b6218a0f44bc51fd2576af6b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectedScene: DevMenu
+  gameData: {fileID: 11400000, guid: 94a634d5bf329e049a9c3f8a2c57fc19, type: 2}
   canBeFixed: 0
+  isFire: 0
   brokenSprite: {fileID: 0}
   fixedSprite: {fileID: 0}

@@ -10,7 +10,15 @@ public class MapObjectHelper : MonoBehaviour
     void Awake() 
     {
         RectTransform rt = GetComponent<RectTransform>();
+        float ratio = screenHeight / imageResolution.y;
+        rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, imageResolution.x * ratio);
+    }
 
+    public void ResetResolution(Vector2 resolution)
+    {
+        this.imageResolution = resolution;
+
+        RectTransform rt = GetComponent<RectTransform>();
         float ratio = screenHeight / imageResolution.y;
         rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, imageResolution.x * ratio);
     }

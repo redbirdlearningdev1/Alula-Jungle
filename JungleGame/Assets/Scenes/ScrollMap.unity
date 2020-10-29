@@ -2505,6 +2505,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 672013702, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
+      propertyPath: m_Volume
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525278755, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2039774892, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
+      propertyPath: m_Volume
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 5332021454673539580, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2859,6 +2871,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 5c378c257ab9933409aa6896702d03f2,
         type: 3}
+    - target: {fileID: 1375974568929445006, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
+        type: 3}
+      propertyPath: gameData
+      value: 
+      objectReference: {fileID: 11400000, guid: bd6add623fbfaac42848681f1570ba1e,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc0cacc38a1d9274b865c72cb7c2c2f5, type: 3}
 --- !u!224 &1127930336 stripped
@@ -4196,26 +4214,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8116166}
     m_Modifications:
-    - target: {fileID: 1375974568929444993, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375974568929444993, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
-        type: 3}
-      propertyPath: m_UseSpriteMesh
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375974568929444993, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
-        type: 3}
-      propertyPath: m_Maskable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375974568929444993, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
-        type: 3}
-      propertyPath: m_PreserveAspect
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1375974568929444994, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PopupWindow : MonoBehaviour
 {
-    private Level levelData;
+    private GameData data;
 
     [SerializeField] Image background;
+    [SerializeField] TextMeshProUGUI sceneNameText;
 
     void Awake() 
     {
@@ -34,9 +36,10 @@ public class PopupWindow : MonoBehaviour
         background.color = new Color(0f, 0f, 0f, to);
     }
 
-    public void InitPopup(Level levelData)
+    public void InitPopup(GameData _data)
     {
-        this.levelData = levelData;
+        this.data = _data;
+        sceneNameText.text = data.sceneName;
     }
 
     public void OnClosePressed()
@@ -46,6 +49,7 @@ public class PopupWindow : MonoBehaviour
 
     public void OnStartPressed()
     {
-        GameHelper.LoadScene(levelData.scene, true);
+        GameHelper.SetData(data);
+        GameHelper.LoadScene(data.sceneName, true);
     }
 }

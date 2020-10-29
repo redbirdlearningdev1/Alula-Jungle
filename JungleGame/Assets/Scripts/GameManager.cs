@@ -6,19 +6,20 @@ using UnityEngine.SceneManagement;
 public class GameManager : DontDestroy<GameManager>
 {
     public bool devModeActivated;
-    public const float transitionTime = 1f; // time to fade into and out of a scene (total transition time is: transitionTime * 2)
+    public const float transitionTime = 0.5f; // time to fade into and out of a scene (total transition time is: transitionTime * 2)
 
     [SerializeField] GameObject raycastBlocker; // used to block all raycasts (does not work for UI stuff currently)
     [SerializeField] Transform popupParent;
     [SerializeField] GameObject levelPopupPrefab;
 
-    private StoryGameData storyGameData;
+    private GameData gameData;
 
     // DEV STUFF:
     private bool iconsSetBroke = false;
 
-    new void Awake() 
+    void Start()
     {
+        // disable raycast blocker (allow raycasts)
         SetRaycastBlocker(false);
     }
 
@@ -55,6 +56,12 @@ public class GameManager : DontDestroy<GameManager>
 
     public void SceneInit()
     {
+        // clear any popups
+        foreach (Transform child in popupParent)
+        {
+            Destroy(child.gameObject);
+        }
+
         StartCoroutine(SceneInitCoroutine());
     }
 
@@ -82,10 +89,10 @@ public class GameManager : DontDestroy<GameManager>
         LoadScene(0, true);
     }
 
-    public void NewLevelPopup(Level level)
+    public void NewLevelPopup(GameData data)
     {
         PopupWindow window = Instantiate(levelPopupPrefab, transform.position, Quaternion.identity, popupParent).GetComponent<PopupWindow>();
-        window.InitPopup(level);
+        window.InitPopup(data);
     }
 
     public void SendError(Object errorContext, string errorMsg)
@@ -119,6 +126,8 @@ public class GameManager : DontDestroy<GameManager>
         }
             
         yield return new WaitForSeconds(time);
+
+        print ("loading new scene: " + sceneName);
         SceneManager.LoadSceneAsync(sceneName);
     }
 
@@ -139,39 +148,13 @@ public class GameManager : DontDestroy<GameManager>
     ################################################
     */
 
-    public void SetData<TYPE>(DataType dataType, TYPE data)
+    public void SetData(GameData data)
     {
-        switch (dataType)
-        {
-            case DataType.StoryGame:
-                StoryGameData data_cast = data as StoryGameData;
-                if (data_cast != null)
-                    this.storyGameData = data_cast;
-                break;
-            default:
-                break;
-        }
+        this.gameData = data;
     }
 
-    public object GetData(DataType dataType)
+    public GameData GetData()
     {
-        switch (dataType)
-        {
-            case DataType.StoryGame:
-                return storyGameData;
-            default:
-                return null;
-        }
+        return gameData;
     }
-}
-
-/* 
-################################################
-#   DATA TYPE ENUM
-################################################
-*/
-
-public enum DataType
-{
-    StoryGame
 }

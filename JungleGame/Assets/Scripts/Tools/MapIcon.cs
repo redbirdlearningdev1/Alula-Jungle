@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
-    public string connectedScene;
+    public GameData gameData;
+
     public bool canBeFixed;
     public bool isFire;
 
@@ -67,7 +68,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         {
             isPressed = false;
             transform.localScale = new Vector3(1f, 1f, 1f);
-            GameHelper.NewLevelPopup(new Level(connectedScene));
+            GameHelper.NewLevelPopup(gameData);
         }
     }
 }

@@ -38,6 +38,9 @@ public class AudioInput : MonoBehaviour
     // Update is called once per time unit (normally 0.2 seconds)
     void FixedUpdate() 
     {
+        if (!AudioManager.useMic)
+            return;
+
         if (audioSource != null) 
         {
             if (!Microphone.IsRecording(null))

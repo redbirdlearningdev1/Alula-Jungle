@@ -25,10 +25,10 @@ public static class GameHelper
         gm.SendError(errorContext, errorMsg);
     }
 
-    public static void NewLevelPopup(Level level)
+    public static void NewLevelPopup(GameData data)
     {
         FindGameManager();
-        gm.NewLevelPopup(level);
+        gm.NewLevelPopup(data);
     }
 
     public static void SetRaycastBlocker(bool opt)
@@ -55,16 +55,16 @@ public static class GameHelper
         gm.RestartGame();
     }
 
-    public static void SetData<TYPE>(DataType dataType, TYPE data)
+    public static void SetData(GameData gameData)
     {
         FindGameManager();
-        gm.SetData<TYPE>(dataType, data);
+        gm.SetData(gameData);
     }
 
-    public static object GetData(DataType dataType)
+    public static GameData GetData()
     {
         FindGameManager();
-        return gm.GetData(dataType);
+        return gm.GetData();
     }
 
     private static void FindGameManager()
