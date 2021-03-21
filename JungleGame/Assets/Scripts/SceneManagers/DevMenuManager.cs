@@ -12,7 +12,7 @@ public class DevMenuManager : MonoBehaviour
     void Awake()
     {
         // every scene must call this in Awake()
-        GameHelper.SceneInit();
+        GameManager.instance.SceneInit();
 
         // add all build scenes to navDropdown
         List<string> sceneNames = new List<string>();
@@ -27,12 +27,12 @@ public class DevMenuManager : MonoBehaviour
 
     public void OnGoToSceneButtonPressed()
     {
-        GameHelper.LoadScene(navDropdown.value, true);
+        GameManager.instance.LoadScene(navDropdown.value, true);
     }
 
     public void OnRestartGamePressed()
     {
-        GameHelper.RestartGame();
+        GameManager.instance.RestartGame();
     }
 
     public void OnExitAppPressed()

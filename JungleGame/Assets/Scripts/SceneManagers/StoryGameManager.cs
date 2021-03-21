@@ -31,7 +31,7 @@ public class StoryGameManager : MonoBehaviour
 
     void Awake()
     {
-        GameHelper.SceneInit();
+        GameManager.instance.SceneInit();
 
         // stop music from playing
         AudioHelper.StopMusic();
@@ -45,12 +45,12 @@ public class StoryGameManager : MonoBehaviour
 
 
         // get data from game manager and assert it is of type StoryGame
-        GameData temp_data = GameHelper.GetData();
+        GameData temp_data = GameManager.instance.GetData();
         print (temp_data);
 
         if (temp_data.gameType != GameType.StoryGame)
         {
-            GameHelper.SendError(this, "GameData is not of type: StoryGame");
+            GameManager.instance.SendError(this, "GameData is not of type: StoryGame");
         }
         else
         {
@@ -72,7 +72,7 @@ public class StoryGameManager : MonoBehaviour
         }
         else
         {
-            GameHelper.SendError(this, "StoryGameData is null");
+            GameManager.instance.SendError(this, "StoryGameData is null");
         }
     }
 
@@ -108,7 +108,7 @@ public class StoryGameManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1f);
-        GameHelper.LoadScene("ScrollMap", true);
+        GameManager.instance.LoadScene("ScrollMap", true);
     }
 
     private IEnumerator PlaySegment(StoryGameSegment segment)
@@ -137,7 +137,7 @@ public class StoryGameManager : MonoBehaviour
 
     private IEnumerator StoryMapSmoothTransition(float start, float end, float transitionTime)
     {
-        GameHelper.SetRaycastBlocker(true);
+        GameManager.instance.SetRaycastBlocker(true);
         float timer = 0f;
 
         StoryMap.position = new Vector3(start, 0f, 0f);
@@ -150,7 +150,7 @@ public class StoryGameManager : MonoBehaviour
         }
         StoryMap.position = new Vector3(end, 0f, 0f);
 
-        GameHelper.SetRaycastBlocker(false);
+        GameManager.instance.SetRaycastBlocker(false);
     }
 
     /* 

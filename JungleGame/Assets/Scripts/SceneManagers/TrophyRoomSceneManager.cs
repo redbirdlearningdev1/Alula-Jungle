@@ -7,11 +7,11 @@ public class TrophyRoomSceneManager : MonoBehaviour
     void Awake()
     {
         // every scene must call this in Awake()
-        GameHelper.SceneInit();
+        GameManager.instance.SceneInit();
     }
 
     public void OnBackButtonPressed()
     {
-        GameHelper.LoadScene("ScrollMap", true);
+        GameManager.instance.LoadScene("ScrollMap", true);
     }
 }

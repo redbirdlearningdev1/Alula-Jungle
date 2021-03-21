@@ -12,7 +12,7 @@ public class AudioInputTestSceneManager : MonoBehaviour
     void Awake() 
     {
         // every scene must call this in Awake()
-        GameHelper.SceneInit();
+        GameManager.instance.SceneInit();
     }
 
     void Update()
@@ -43,6 +43,6 @@ public class AudioInputTestSceneManager : MonoBehaviour
 
     public void OnDevMenuPressed()
     {
-        GameHelper.LoadScene("DevMenu", true);
+        GameManager.instance.LoadScene("DevMenu", true);
     }
 }

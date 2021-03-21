@@ -49,7 +49,7 @@ public class PopupWindow : MonoBehaviour
 
     public void OnStartPressed()
     {
-        GameHelper.SetData(data);
-        GameHelper.LoadScene(data.sceneName, true);
+        GameManager.instance.SetData(data);
+        GameManager.instance.LoadScene(data.sceneName, true);
     }
 }

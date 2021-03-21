@@ -24,7 +24,7 @@ public class ScrollMapManager : MonoBehaviour
     void Awake()
     {
         // every scene must call this in Awake()
-        GameHelper.SceneInit();
+        GameManager.instance.SceneInit();
 
         // play test song
         AudioHelper.PlaySong(Song.JungleGameTestSong);
@@ -237,7 +237,7 @@ public class ScrollMapManager : MonoBehaviour
 
     private IEnumerator MapSmoothTransition(float start, float end, float transitionTime)
     {
-        GameHelper.SetRaycastBlocker(true);
+        GameManager.instance.SetRaycastBlocker(true);
         float timer = 0f;
 
         Map.position = new Vector3(start, 0f, 0f);
@@ -250,7 +250,7 @@ public class ScrollMapManager : MonoBehaviour
         }
         Map.position = new Vector3(end, 0f, 0f);
 
-        GameHelper.SetRaycastBlocker(false);
+        GameManager.instance.SetRaycastBlocker(false);
     }
 
     /* 
@@ -261,12 +261,12 @@ public class ScrollMapManager : MonoBehaviour
 
     public void OnSettingsButtonPressed()
     {
-        GameHelper.LoadScene("SettingsScene", true);
+        GameManager.instance.LoadScene("SettingsScene", true);
     }
 
     public void OnTrophyRoomButtonPressed()
     {
-        GameHelper.LoadScene("TrophyRoomScene", true);
+        GameManager.instance.LoadScene("TrophyRoomScene", true);
     }
     
     /* 
@@ -278,12 +278,14 @@ public class ScrollMapManager : MonoBehaviour
     public void BirbButtonDown()
     {
         moveBirb = true;
+        birb.transform.localScale = new Vector3(0.8f, 0.8f, 1f);
         //StartCoroutine(SetBirbSpriteDelay(birbPressed, 0.2f));
     }
 
     public void BirbButtonUp()
     {   
         moveBirb = false;
+        birb.transform.localScale = new Vector3(1f, 1f, 1f);
         GoToNearestMapLocation();
         //StartCoroutine(SetBirbSpriteDelay(birbNorm, 0.2f));
     }

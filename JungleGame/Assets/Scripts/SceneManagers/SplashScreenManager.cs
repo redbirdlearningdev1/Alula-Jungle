@@ -23,7 +23,7 @@ public class SplashScreenManager : MonoBehaviour
     void Awake() 
     {
         // every scene must call this in Awake()
-        GameHelper.SceneInit();
+        GameManager.instance.SceneInit();
 
         // set up profile window
         startButton.interactable = false;
@@ -66,7 +66,7 @@ public class SplashScreenManager : MonoBehaviour
     public void OnStartPressed()
     {
         startButton.interactable = false;
-        GameHelper.LoadScene("JungleWelcomeScene", true);
+        GameManager.instance.LoadScene("JungleWelcomeScene", true);
     }
 
     public void SelectProfile(int profileNum)

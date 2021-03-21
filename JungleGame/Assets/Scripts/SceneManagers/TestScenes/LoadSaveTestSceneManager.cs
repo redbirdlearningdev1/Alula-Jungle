@@ -16,7 +16,7 @@ public class LoadSaveTestSceneManager : MonoBehaviour
     void Awake() 
     {
         // every scene must call this in Awake()
-        GameHelper.SceneInit();
+        GameManager.instance.SceneInit();
     }
 
     void Start()
@@ -71,6 +71,6 @@ public class LoadSaveTestSceneManager : MonoBehaviour
 
     public void OnDevMenuPressed()
     {
-        GameHelper.LoadScene("DevMenu", true);
+        GameManager.instance.LoadScene("DevMenu", true);
     }
 }

@@ -18,20 +18,20 @@ public class AudioInput : MonoBehaviour
         {
             if (Microphone.devices.Length == 0) 
             {
-                GameHelper.SendError(this, "No microphone detected!");
+                GameManager.instance.SendError(this, "No microphone detected!");
             } 
             else 
             {
                 audioSource = gameObject.AddComponent<AudioSource>() as AudioSource;
                 if (audioSource == null) 
                 {
-                    GameHelper.SendError(this, "Created AudioSource is null");
+                    GameManager.instance.SendError(this, "Created AudioSource is null");
                 }
             }
         } 
         else 
         {
-            GameHelper.SendError(this, "User denined access to microphone");
+            GameManager.instance.SendError(this, "User denined access to microphone");
         }
     }
 

@@ -114,7 +114,7 @@ public static class AudioHelper
 
             if (!audioManagerObject)
             {
-                GameHelper.SendError(new Object(), "AudioHelper could not find AudioManager object");
+                GameManager.instance.SendError(new Object(), "AudioHelper could not find AudioManager object");
                 return;
             }
 

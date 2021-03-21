@@ -3,12 +3,17 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+public enum AnimatedIcon 
+{
+    none, fire, shrine, lamp
+}
+
 public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     public GameData gameData;
 
     public bool canBeFixed;
-    public bool isFire;
+    public AnimatedIcon animatedIcon;
 
     [SerializeField] private Sprite brokenSprite;
     [SerializeField] private Sprite fixedSprite;
@@ -24,7 +29,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     {
         meshRenderer = GetComponent<MeshRenderer>();
         img = GetComponent<Image>();
-        if (isFire) animator = GetComponent<Animator>();
+        if (animatedIcon != AnimatedIcon.none) animator = GetComponent<Animator>();
     }
 
     public void SetOutineColor(Color color)
@@ -36,14 +41,25 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     {
         if (!canBeFixed) return;
 
-        if (!isFire)
+        switch (animatedIcon)
         {
-            if (!opt) img.sprite = brokenSprite;
-            else img.sprite = fixedSprite;
-        }
-        else
-        {
-            animator.SetBool("isBroken", !opt);
+            default:
+            case AnimatedIcon.none:
+                if (!opt) img.sprite = brokenSprite;
+                else img.sprite = fixedSprite;
+                break;
+            case AnimatedIcon.fire:
+                if (!opt) animator.Play("fireBroken");
+                else animator.Play("fireFixed");
+                break;
+            case AnimatedIcon.shrine:
+                if (!opt) animator.Play("shrineBroken");
+                else animator.Play("shrineFixed");
+                break;
+            case AnimatedIcon.lamp:
+                if (!opt) animator.Play("lampBroken");
+                else animator.Play("lampFixed");
+                break;
         }
     }
 
@@ -68,7 +84,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         {
             isPressed = false;
             transform.localScale = new Vector3(1f, 1f, 1f);
-            GameHelper.NewLevelPopup(gameData);
+            GameManager.instance.NewLevelPopup(gameData);
         }
     }
 }
