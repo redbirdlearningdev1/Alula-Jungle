@@ -308,7 +308,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1768816224}
   - component: {fileID: 8148051874810438585}
-  - component: {fileID: 1768816225}
+  - component: {fileID: 2325652635149094107}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -349,7 +349,7 @@ MonoBehaviour:
   fxSource: {fileID: 672013702}
   talkSource: {fileID: 2039774892}
   musicDatabase: {fileID: 1020142804}
---- !u!114 &1768816225
+--- !u!114 &2325652635149094107
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -358,10 +358,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1768816223}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 408d3a97059a72648a8a95525f9c2918, type: 3}
+  m_Script: {fileID: 11500000, guid: 757131a1b371aaa41b21e26dc35acb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  micDeviceToUse: 0
 --- !u!1 &2039774890
 GameObject:
   m_ObjectHideFlags: 0

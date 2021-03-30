@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public static bool useMic = false;
+    public static AudioManager instance;
 
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource fxSource;
     [SerializeField] private AudioSource talkSource;
 
     [SerializeField] private MusicDatabase musicDatabase;
+
+    void Awake() 
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     /* 
     ################################################
@@ -56,69 +64,10 @@ public class AudioManager : MonoBehaviour
         talkSource.loop = false;
         talkSource.Play();
     }
-}
-
-public static class AudioHelper
-{
-    private static AudioManager am;
 
     /* 
     ################################################
-    #   MUSIC SOURCE
+    #   UTILITY
     ################################################
     */
-
-    public static void PlaySong(Song song)
-    {
-        FindAudioManager();
-        am.PlaySong(song);
-    }
-
-    public static void StopMusic()
-    {
-        FindAudioManager();
-        am.StopMusic();
-    }
-
-    /* 
-    ################################################
-    #   FX SOURCE
-    ################################################
-    */
-
-    /* 
-    ################################################
-    #   TALK SOURCE
-    ################################################
-    */
-
-    public static void PlayTalk(AudioClip clip)
-    {
-        FindAudioManager();
-        am.PlayTalk(clip);
-    }
-
-    /* 
-    ################################################
-    #   FIND AUDIO MANAGER
-    ################################################
-    */
-
-    private static void FindAudioManager()
-    {
-        GameObject audioManagerObject;
-
-        if (am == null)
-        {
-            audioManagerObject = GameObject.Find("AudioManager");
-
-            if (!audioManagerObject)
-            {
-                GameManager.instance.SendError(new Object(), "AudioHelper could not find AudioManager object");
-                return;
-            }
-
-            am = audioManagerObject.GetComponent<AudioManager>();
-        }
-    }
 }

@@ -34,7 +34,7 @@ public class StoryGameManager : MonoBehaviour
         GameManager.instance.SceneInit();
 
         // stop music from playing
-        AudioHelper.StopMusic();
+        AudioManager.instance.StopMusic();
     }
 
     void Start()
@@ -117,7 +117,7 @@ public class StoryGameManager : MonoBehaviour
         //StartCoroutine(StoryMapSmoothTransition());
 
         // play audio
-        AudioHelper.PlayTalk(segment.audio);
+        AudioManager.instance.PlayTalk(segment.audio);
 
         // limit player input
 
@@ -125,7 +125,7 @@ public class StoryGameManager : MonoBehaviour
 
         // play action word
         ActionWord word =  segment.actionWord;
-        AudioHelper.PlayTalk(word.audio);
+        AudioManager.instance.PlayTalk(word.audio);
         actionWordText.text = "action word: " + word.word;
 
         yield return new WaitForSeconds(0.5f);

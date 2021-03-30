@@ -100,6 +100,11 @@ public class GameManager : DontDestroy<GameManager>
         Debug.LogError("[ERROR] " + errorMsg + " @ " + errorContext.name, errorContext);
     }
 
+    public void SendLog(Object context, string msg)
+    {
+        Debug.Log("[LOG] " + msg + " @ " + context.name);
+    }
+
     /* 
     ################################################
     #   SCENE MANAGEMENT
@@ -127,7 +132,7 @@ public class GameManager : DontDestroy<GameManager>
             
         yield return new WaitForSeconds(time);
 
-        print ("loading new scene: " + sceneName);
+        SendLog(this, "Loading new scene: " + sceneName);
         SceneManager.LoadSceneAsync(sceneName);
     }
 
