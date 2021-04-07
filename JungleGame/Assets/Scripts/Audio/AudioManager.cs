@@ -10,7 +10,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource fxSource;
     [SerializeField] private AudioSource talkSource;
 
-    [SerializeField] private MusicDatabase musicDatabase;
+    [SerializeField] private AudioDatabase audioDatabase;
 
     void Awake() 
     {
@@ -29,7 +29,7 @@ public class AudioManager : MonoBehaviour
     public void PlaySong(Song song)
     {
         musicSource.Stop();
-        AudioClip clip = musicDatabase.GetSongFromEnum(song);
+        AudioClip clip = audioDatabase.GetSongFromEnum(song);
 
         if (clip == musicSource.clip)
             return;
@@ -51,6 +51,7 @@ public class AudioManager : MonoBehaviour
     ################################################
     */
 
+
     /* 
     ################################################
     #   TALK SOURCE
@@ -61,6 +62,15 @@ public class AudioManager : MonoBehaviour
     {
         talkSource.Stop();
         talkSource.clip = _clip;
+        talkSource.loop = false;
+        talkSource.Play();
+    }
+
+    public void PlayPhoneme(Phoneme phoneme)
+    {
+        talkSource.Stop();
+        AudioClip clip = audioDatabase.GetPhonemeFromEnum(phoneme);
+        talkSource.clip = clip;
         talkSource.loop = false;
         talkSource.Play();
     }

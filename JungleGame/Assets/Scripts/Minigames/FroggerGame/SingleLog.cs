@@ -16,6 +16,9 @@ public class SingleLog : MonoBehaviour
     {
         if (!isUp)
         {
+            // get animator if null
+            if (!animator)
+                Awake();
             animator.Play("log_rise");
             isUp = true;
         }
@@ -25,6 +28,9 @@ public class SingleLog : MonoBehaviour
     {
         if (isUp)
         {
+            // get animator if null
+            if (!animator)
+                Awake();
             animator.Play("log_sink");
             isUp = false;
         }
