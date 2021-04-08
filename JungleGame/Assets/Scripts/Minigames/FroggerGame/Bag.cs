@@ -22,7 +22,7 @@ public class Bag : MonoBehaviour
         shadow.sprite = shadowSprites[currBag];
     }
 
-    void UpgradeBag()
+    public void UpgradeBag()
     {
         if (currBag < maxBag)
         {
@@ -33,7 +33,7 @@ public class Bag : MonoBehaviour
         shadow.sprite = shadowSprites[currBag];
     }
 
-    void DowngradeBag()
+    public void DowngradeBag()
     {
         if (currBag > 0)
         {

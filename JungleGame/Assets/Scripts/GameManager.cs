@@ -68,7 +68,7 @@ public class GameManager : DontDestroy<GameManager>
     private IEnumerator SceneInitCoroutine()
     {
         SetRaycastBlocker(true);
-        FadeHelper.FadeIn();
+        FadeObject.instance.FadeIn(transitionTime);
         yield return new WaitForSeconds(transitionTime);
         SetRaycastBlocker(false);
     }
@@ -127,7 +127,7 @@ public class GameManager : DontDestroy<GameManager>
     {
         if (fadeOut)
         {
-            FadeHelper.FadeOut(time);
+            FadeObject.instance.FadeOut(time);
         }
             
         yield return new WaitForSeconds(time);
@@ -140,7 +140,7 @@ public class GameManager : DontDestroy<GameManager>
     {
         if (fadeOut)
         {
-            FadeHelper.FadeOut(time);
+            FadeObject.instance.FadeOut(time);
         }
             
         yield return new WaitForSeconds(time);

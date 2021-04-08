@@ -252,22 +252,6 @@ public class ScrollMapManager : MonoBehaviour
 
         GameManager.instance.SetRaycastBlocker(false);
     }
-
-    /* 
-    ################################################
-    #   UI BUTTONS 
-    ################################################
-    */
-
-    public void OnSettingsButtonPressed()
-    {
-        GameManager.instance.LoadScene("SettingsScene", true);
-    }
-
-    public void OnTrophyRoomButtonPressed()
-    {
-        GameManager.instance.LoadScene("TrophyRoomScene", true);
-    }
     
     /* 
     ################################################

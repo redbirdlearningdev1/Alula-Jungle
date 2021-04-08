@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class SettingsSceneManager : MonoBehaviour
 {
+    [Header("Microphone Settings")]
     [SerializeField] private TMP_Dropdown microphoneDropdown;
     [SerializeField] private Image volumeBar;
     [SerializeField] private Toggle testMicToggle;
@@ -13,12 +14,21 @@ public class SettingsSceneManager : MonoBehaviour
     private float timer = 0f;
     private bool testMic = false;
 
+    [Header("Audio Settings")]
+    [SerializeField] private Toggle muteMusicToggle;
+
+
+    
+
     void Awake()
     {
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
         SetUpMircophone();
+
+        // mute music toggle
+        muteMusicToggle.onValueChanged.AddListener(delegate { MuteMusicToggle(muteMusicToggle); });
     }
 
     void Update()
@@ -54,6 +64,12 @@ public class SettingsSceneManager : MonoBehaviour
         
     }
 
+    /* 
+    ################################################
+    #   MICROPHONE SETTINGS
+    ################################################
+    */
+
     private void SetUpMircophone()
     {
         // update microphone dropdown with available
@@ -83,8 +99,21 @@ public class SettingsSceneManager : MonoBehaviour
         GameManager.instance.SendLog(this, "changing microphone device to: " + dropdown.value);
         MicInput.instance.SwitchDevice(dropdown.value);
     }
-        
 
+    /* 
+    ################################################
+    #   OTHER
+    ################################################
+    */
+
+    private void MuteMusicToggle(Toggle toggle)
+    {
+        if (toggle.isOn)
+            AudioManager.instance.ChageMusicVolume(0f);
+        else
+            AudioManager.instance.ChageMusicVolume(1f);
+    }
+    
     public void OnBackButtonPressed()
     {
         GameManager.instance.LoadScene("ScrollMap", true);

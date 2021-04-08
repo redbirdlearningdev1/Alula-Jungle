@@ -3,41 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public static class FadeHelper
-{
-    public static void FadeIn(float time = GameManager.transitionTime)
-    {
-        FadeObject obj = FindFadeObject();
-        obj.FadeIn(time);
-    }
-
-    public static void FadeOut(float time = GameManager.transitionTime)
-    {
-        FadeObject obj = FindFadeObject();
-        obj.FadeOut(time);
-    }
-
-    private static FadeObject FindFadeObject()
-    {
-        GameObject obj = GameObject.Find("FadeObject");
-        return obj.GetComponent<FadeObject>();
-    }
-}
 
 public class FadeObject : MonoBehaviour
 {
-    public bool testMode;
+    public static FadeObject instance;
+
     [SerializeField] private Image vignette;
+
+    void Awake()
+    {
+        if (!instance)
+        {
+            instance = this;
+        }
+    }
 
     void Update()
     {
-        if (!testMode)
-            return;
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (GameManager.instance.devModeActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             FadeIn(1.2f);
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-            FadeOut(1.2f);
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+                FadeOut(1.2f);
+        }
     }
     
     public void FadeIn(float time)

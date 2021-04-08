@@ -141,7 +141,6 @@ public class GorillaController : MonoBehaviour
             {
                 if (pathIndex < currPath.Count - 1)
                 {
-                    print ("index: " + pathIndex);
                     pathIndex++;
                     timer = 0;
                     currTarget = currPath[pathIndex].position;

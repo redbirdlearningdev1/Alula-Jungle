@@ -45,6 +45,12 @@ public class AudioManager : MonoBehaviour
         musicSource.clip = null;
     }
 
+    public void ChageMusicVolume(float amt)
+    {
+        if (amt >= 0f && amt <= 1)
+            musicSource.volume = amt;
+    }
+
     /* 
     ################################################
     #   FX SOURCE

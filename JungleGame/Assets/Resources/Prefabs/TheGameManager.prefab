@@ -234,7 +234,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -368,7 +368,7 @@ MonoBehaviour:
   musicSource: {fileID: 1525278755}
   fxSource: {fileID: 672013702}
   talkSource: {fileID: 2039774892}
-  audioDatabase: {fileID: 0}
+  audioDatabase: {fileID: 1403696831873940925}
 --- !u!114 &2325652635149094107
 MonoBehaviour:
   m_ObjectHideFlags: 0

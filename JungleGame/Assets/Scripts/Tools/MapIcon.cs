@@ -21,6 +21,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     private MeshRenderer meshRenderer;
     private Image img;
     private Animator animator;
+    [SerializeField] private Animator repairAnimator;
     private static float pressedScaleChange = 0.95f;
     private bool isPressed = false;
     private bool isFixed = false;
@@ -30,6 +31,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         meshRenderer = GetComponent<MeshRenderer>();
         img = GetComponent<Image>();
         if (animatedIcon != AnimatedIcon.none) animator = GetComponent<Animator>();
+        if (repairAnimator) repairAnimator.Play("defaultAnimation");
     }
 
     public void SetOutineColor(Color color)
@@ -61,6 +63,8 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 else animator.Play("lampFixed");
                 break;
         }
+        // play repair animation
+        if (opt) if (repairAnimator) repairAnimator.Play("repairAnimation");
     }
 
     /* 
