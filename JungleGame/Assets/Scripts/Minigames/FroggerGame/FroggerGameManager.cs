@@ -60,7 +60,7 @@ public class FroggerGameManager : MonoBehaviour
         if (coin == selectedCoin)
         {
             // success! go on to the next row or win game if on last row
-            if (currRow < 4)
+            if (currRow < 3)
                 StartCoroutine(CoinSuccessRoutine());
             else
                 StartCoroutine(WinRoutine());
@@ -73,6 +73,7 @@ public class FroggerGameManager : MonoBehaviour
 
     private IEnumerator CoinFailRoutine()
     {
+        rows[currRow].ResetCoinPos();
         taxi.TwitchAnimation();
         bag.DowngradeBag();
         StartCoroutine(HideCoins(currRow));
@@ -87,6 +88,7 @@ public class FroggerGameManager : MonoBehaviour
         if (currRow > 0)
             currRow--;
         rows[currRow].RiseAllLogs();
+        rows[currRow].ResetLogRow();
         yield return new WaitForSeconds(1f);
 
         StartCoroutine(ShowCoins(currRow));
@@ -96,8 +98,7 @@ public class FroggerGameManager : MonoBehaviour
     private IEnumerator CoinSuccessRoutine()
     {
         // TODO: animate coin into bag
-        selectedCoin.SafeDisable();
-
+        rows[currRow].ResetCoinPos();
         taxi.CelebrateAnimation();
         bag.UpgradeBag();
         StartCoroutine(HideCoins(currRow, selectedCoin));
@@ -108,7 +109,11 @@ public class FroggerGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         gorilla.JumpForward();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
+        selectedCoin.ToggleVisibility(false, true);
+        yield return new WaitForSeconds(0.7f);
+        gorilla.CelebrateAnimation();
+        selectedCoin = null;
 
         currRow++;
         rows[currRow].RiseAllLogs();
@@ -119,7 +124,27 @@ public class FroggerGameManager : MonoBehaviour
 
     private IEnumerator WinRoutine()
     {
-        yield return null;
+        print ("you win!");
+        // TODO: animate coin into bag
+        rows[currRow].ResetCoinPos();
+        taxi.CelebrateAnimation();
+        bag.UpgradeBag();
+        StartCoroutine(HideCoins(currRow, selectedCoin));
+        yield return new WaitForSeconds(1f);
+
+        rows[currRow].SinkAllExcept(selectedIndex);
+        rows[currRow].MoveToCenterLog(selectedIndex);
+        yield return new WaitForSeconds(1f);
+
+        gorilla.JumpForward();
+        yield return new WaitForSeconds(0.5f);
+        selectedCoin.ToggleVisibility(false, true);
+        yield return new WaitForSeconds(0.5f);
+        selectedCoin = null;
+
+        gorilla.JumpForward();
+        yield return new WaitForSeconds(1.2f);
+        gorilla.CelebrateAnimation(5f);
     }
 
     private void PregameSetup()
@@ -148,7 +173,7 @@ public class FroggerGameManager : MonoBehaviour
 
         // disable all coins
         foreach (var coin in allCoins)
-            coin.gameObject.SetActive(false);
+            coin.ToggleVisibility(false, false);
 
         // sink all the logs except the first row
         StartCoroutine(SinkLogsExceptFirstRow());
@@ -182,16 +207,14 @@ public class FroggerGameManager : MonoBehaviour
         List<Coin> row = GetCoinRow(index);
         foreach (var coin in row)
         {
-            coin.gameObject.SetActive(true);
-
             // set random type
             if (unusedCoinPool.Count == 0)
                 unusedCoinPool.AddRange(globalCoinPool);
             CoinType type = unusedCoinPool[Random.Range(0, unusedCoinPool.Count)];
             unusedCoinPool.Remove(type);
 
-            print ("setting coinType: " + type);
             coin.SetCoinType(type);
+            coin.ToggleVisibility(true, true);
 
             yield return new WaitForSeconds(0.1f);
         }
@@ -204,7 +227,7 @@ public class FroggerGameManager : MonoBehaviour
         foreach (var coin in row)
         {
             if (coin != exceptCoin)
-                coin.SafeDisable();
+                coin.ToggleVisibility(false, true);
             yield return new WaitForSeconds(0.1f);
         }
     }
@@ -212,13 +235,11 @@ public class FroggerGameManager : MonoBehaviour
     private void SelectRandomCoin(int index)
     {
         List<Coin> row = GetCoinRow(index);
-        selectedIndex = Random.Range(0, coins1.Count);
+        selectedIndex = Random.Range(0, row.Count);
+        print ("selected index: " + selectedIndex);
         selectedCoin = row[selectedIndex];
         if (GameManager.instance.devModeActivated)
         {
-            print ("dev coin set!");
-            print ("selected coin index: " + selectedIndex);
-            print ("selected coin type: " + selectedCoin.coinType);
             devCoin.SetCoinType(selectedCoin.coinType);
         }
     }

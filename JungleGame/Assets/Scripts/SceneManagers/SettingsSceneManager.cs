@@ -18,8 +18,6 @@ public class SettingsSceneManager : MonoBehaviour
     [SerializeField] private Toggle muteMusicToggle;
 
 
-    
-
     void Awake()
     {
         // every scene must call this in Awake()
@@ -43,8 +41,8 @@ public class SettingsSceneManager : MonoBehaviour
             else
             {
                 timer = 0f;
-                float volumeLevel = MicInput.MicLoudness;
-                GameManager.instance.SendLog(this, "Current mic volume: " + volumeLevel.ToString());
+                float volumeLevel = MicInput.MicLoudness * 200;
+                //GameManager.instance.SendLog(this, "Current mic volume: " + volumeLevel.ToString());
 
                 if (volumeLevel <= 0.3f)
                 {

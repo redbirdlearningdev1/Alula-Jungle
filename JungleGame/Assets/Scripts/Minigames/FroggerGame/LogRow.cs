@@ -8,6 +8,7 @@ public class LogRow : MonoBehaviour
     public List<Vector2> movePositions;
     public List<SingleLog> logs;
     public List<SingleLog> coinLogs;
+    public List<Coin> coins;
 
     void Start()
     {
@@ -153,6 +154,7 @@ public class LogRow : MonoBehaviour
         // assert that position exists
         if (logIndex >= 0 && logIndex < movePositions.Count)
         {
+            print ("centering log: " + logIndex);
             StartCoroutine(MoveRowTo(movePositions[logIndex]));
         }
     }
@@ -178,6 +180,20 @@ public class LogRow : MonoBehaviour
             
             transform.localPosition = Vector3.Lerp(oldPos, newPos, timer/moveTime);
             yield return null;
+        }
+    }
+
+    /* 
+    ################################################
+    #   COINS
+    ################################################
+    */
+
+    public void ResetCoinPos()
+    {
+        for (int i = 0; i < coins.Count; i++)
+        {
+            coins[i].ReturnToLog();
         }
     }
 }

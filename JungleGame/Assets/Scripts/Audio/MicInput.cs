@@ -34,10 +34,8 @@ public class MicInput : MonoBehaviour
 
     public void SwitchDevice(int num)
     {
-        StopMicrophone();
         _device = Microphone.devices[num];
-        _clipRecord = Microphone.Start(_device, true, 999, 44100);
-        _isInitialized = true;
+        GameManager.instance.SendLog(this, "switching to device: " + _device);
     }
 
 

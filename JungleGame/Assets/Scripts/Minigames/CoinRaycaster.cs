@@ -40,11 +40,8 @@ public class CoinRaycaster : MonoBehaviour
                 }
             }
 
-            if (!isCorrect)
-            {
-                selectedCoin.ReturnToOriginalPos();
-                selectedCoin = null;
-            }
+            selectedCoin.ReturnToLog();
+            selectedCoin = null;
         }
 
         if (Input.GetMouseButtonDown(0))

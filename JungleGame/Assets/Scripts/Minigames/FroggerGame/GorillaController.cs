@@ -126,6 +126,7 @@ public class GorillaController : MonoBehaviour
 
         int pathIndex = 0;
         float timer = 0f;
+        float maxTime = 0.7f;
         Vector3 currTarget = currPath[pathIndex].position;
         Vector3 currStart = transform.position;
 
@@ -133,9 +134,10 @@ public class GorillaController : MonoBehaviour
         {
             // animate movement
             timer += Time.deltaTime * moveSpeed;
-            if (transform.position != currTarget)
+            if (timer < maxTime)
             {
-                transform.position = Vector3.Lerp(currStart, currTarget, timer);
+                
+                transform.position = Vector3.Lerp(currStart, currTarget, timer / maxTime);
             }
             else
             {

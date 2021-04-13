@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinType: 0
+  moveSpeed: 5
 --- !u!222 &7816498351022885105
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum CoinType
 {
@@ -30,18 +31,18 @@ public enum CoinType
 public class Coin : MonoBehaviour
 {
     public CoinType coinType;
+    public int logIndex;
+    public Transform logPos;
+    public Transform logParent;
     public float moveSpeed = 5f;
 
     private Animator animator;
     private BoxCollider2D myCollider;
+    private Image image;
     private bool audioPlaying;
-    private bool isMoving = false;
-    private bool readyToDisable = false;
 
     // original vars
     private bool originalSet = false;
-    private Vector3 originalPos;
-    private Transform originalParent;
 
     void Awake() 
     {
@@ -52,43 +53,37 @@ public class Coin : MonoBehaviour
         myCollider = gameObject.AddComponent<BoxCollider2D>();
         myCollider.size = rt.sizeDelta;
 
-        originalPos = transform.position;
-        originalParent = transform.parent;
+        image = GetComponent<Image>();
     }
 
     void Update()
     {
-        if (readyToDisable && !isMoving)
-        {
-            gameObject.SetActive(false);
-        }
+
     }
 
-    public void ReturnToOriginalPos()
+    public void ReturnToLog()
     {
-        isMoving = true;
-        StartCoroutine(ReturnToOriginalPosRoutine());
+        StartCoroutine(ReturnToOriginalPosRoutine(logPos.position));
     }
 
-    private IEnumerator ReturnToOriginalPosRoutine()
+    private IEnumerator ReturnToOriginalPosRoutine(Vector3 target)
     {
-        Vector3 currTarget = originalPos;
         Vector3 currStart = transform.position;
         float timer = 0f;
+        float maxTime = 0.5f;
 
         while (true)
         {
             // animate movement
             timer += Time.deltaTime * moveSpeed;
-            if (transform.position != currTarget)
+            if (timer < maxTime)
             {
-                transform.position = Vector3.Lerp(currStart, currTarget, timer);
+                transform.position = Vector3.Lerp(currStart, target, timer / maxTime);
             }
             else
             {
-                transform.position = originalPos;
-                transform.SetParent(originalParent);
-                isMoving = false;
+                transform.position = target;
+                transform.SetParent(logParent);
                 yield break;
             }
 
@@ -122,31 +117,38 @@ public class Coin : MonoBehaviour
         audioPlaying = false;
     }
 
-    public void SafeDisable()
+    public void ToggleVisibility(bool opt, bool smooth)
     {
-        StartCoroutine(SafeDisableRoutine());
-    }
-
-    private IEnumerator SafeDisableRoutine()
-    {
-        if (!originalSet)
+        if (smooth)
+            StartCoroutine(ToggleVisibilityRoutine(opt));
+        else
         {
-            originalPos = transform.position;
-            originalParent = transform.parent;
-            originalSet = true;
+            if (!image)
+                image = GetComponent<Image>();
+            Color temp = image.color;
+            if (opt) { temp.a = 1f; }
+            else {temp.a = 0; }
+            image.color = temp;
         }
+    }   
 
-        // wait for coin to finish moving
-        while (isMoving)
-            yield return null;
-
-        transform.position = originalPos;
-        transform.SetParent(originalParent);
-        readyToDisable = true;
-    }
-
-    void OnEnable() 
+    private IEnumerator ToggleVisibilityRoutine(bool opt)
     {
-        readyToDisable = false; 
+        float end = 0f;
+        if (opt) { end = 1f; }
+        float timer = 0f;
+        while(true)
+        {
+            timer += Time.deltaTime;
+            Color temp = image.color;
+            temp.a = Mathf.Lerp(temp.a, end, timer);
+            image.color = temp;
+
+            if (image.color.a == end)
+            {
+                break;
+            }
+            yield return null;
+        }
     }
 }
