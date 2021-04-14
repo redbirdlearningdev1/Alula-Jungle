@@ -10,6 +10,7 @@ public enum StudentIndex
 [System.Serializable]
 public class StudentPlayerData
 {
+    public string version;
     public StudentIndex studentIndex; // differentiate btwn student profiles
     public bool active; // bool to determine if someone has created this student player
     public string name; // name of student

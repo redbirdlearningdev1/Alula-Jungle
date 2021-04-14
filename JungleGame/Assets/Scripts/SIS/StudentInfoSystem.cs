@@ -19,6 +19,4 @@ public static class StudentInfoSystem
         else
             Debug.Log("Current student player is null.");
     }
-
-    
 }
