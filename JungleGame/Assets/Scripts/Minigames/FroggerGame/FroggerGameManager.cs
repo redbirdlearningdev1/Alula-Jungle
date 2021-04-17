@@ -9,6 +9,8 @@ public class FroggerGameManager : MonoBehaviour
     [SerializeField] private GorillaController gorilla;
     [SerializeField] private Bag bag;
     [SerializeField] private TaxiController taxi;
+    [SerializeField] private DancingManController dancingMan;
+    private bool playingDancingManAnimation = false;
     private bool gameSetup = false;
 
     private List<CoinType> globalCoinPool;
@@ -52,7 +54,20 @@ public class FroggerGameManager : MonoBehaviour
 
     void Update()
     {
-        
+        if (dancingMan.isClicked)
+        {
+            StartCoroutine(DancingManRoutine());
+        }
+    }
+
+    private IEnumerator DancingManRoutine()
+    {
+        if (playingDancingManAnimation)
+            yield break;
+        playingDancingManAnimation = true;
+        dancingMan.PlayUsingPhonemeEnum((Phoneme)selectedCoin.coinType);
+        yield return new WaitForSeconds(1.5f);
+        playingDancingManAnimation = false;
     }
 
     public bool EvaluateSelectedCoin(Coin coin)
@@ -238,6 +253,8 @@ public class FroggerGameManager : MonoBehaviour
         selectedIndex = Random.Range(0, row.Count);
         print ("selected index: " + selectedIndex);
         selectedCoin = row[selectedIndex];
+        StartCoroutine(DancingManRoutine());
+
         if (GameManager.instance.devModeActivated)
         {
             devCoin.SetCoinType(selectedCoin.coinType);
