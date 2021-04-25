@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 838bbca180b5ea749b8f619e976fdf52, type: 3}
   m_Name: listen_obj
   m_EditorClassIdentifier: 
-  word: listen
-  audio: {fileID: 8300000, guid: 96bc0bb37bb044f41b417c7e96e3b462, type: 3}
-  exampleWord: 
+  _name: listen
+  audio: {fileID: 8300000, guid: 8e47e5dec531365438466443b74d0318, type: 3}
+  animation: listen
+  _enum: 1

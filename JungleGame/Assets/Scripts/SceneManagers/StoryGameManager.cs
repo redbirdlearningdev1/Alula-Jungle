@@ -126,7 +126,7 @@ public class StoryGameManager : MonoBehaviour
         // play action word
         ActionWord word =  segment.actionWord;
         AudioManager.instance.PlayTalk(word.audio);
-        actionWordText.text = "action word: " + word.word;
+        actionWordText.text = "action word: " + word._name;
 
         yield return new WaitForSeconds(0.5f);
         continueButton.SetActive(true);

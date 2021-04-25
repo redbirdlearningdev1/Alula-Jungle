@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 838bbca180b5ea749b8f619e976fdf52, type: 3}
   m_Name: poop_obj
   m_EditorClassIdentifier: 
-  word: poop
-  audio: {fileID: 8300000, guid: da50ae0ef71efc741b4f9f4c5309f9c7, type: 3}
-  exampleWord: 
+  _name: poop
+  audio: {fileID: 8300000, guid: 5bca01979ece61b4a90e401655219c16, type: 3}
+  animation: poop
+  _enum: 2

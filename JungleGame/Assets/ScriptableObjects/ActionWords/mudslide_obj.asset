@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 838bbca180b5ea749b8f619e976fdf52, type: 3}
   m_Name: mudslide_obj
   m_EditorClassIdentifier: 
-  word: mudslide
+  _name: mudslide
   audio: {fileID: 8300000, guid: f534d4d519c387044b4b9c6a7f6960b6, type: 3}
-  exampleWord: 
+  animation: mudslide
+  _enum: 0

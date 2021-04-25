@@ -72,7 +72,7 @@ public class AudioManager : MonoBehaviour
         talkSource.Play();
     }
 
-    public void PlayPhoneme(Phoneme phoneme)
+    public void PlayPhoneme(ActionWordEnum phoneme)
     {
         talkSource.Stop();
         AudioClip clip = audioDatabase.GetPhonemeFromEnum(phoneme);

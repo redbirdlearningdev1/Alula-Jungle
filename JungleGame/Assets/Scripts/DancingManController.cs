@@ -38,70 +38,73 @@ public class DancingManController : MonoBehaviour
     }
 
 
-    public void PlayUsingPhonemeEnum(Phoneme phoneme)
+    public void PlayUsingPhonemeEnum(ActionWordEnum word)
     {
-        switch (phoneme)
+        switch (word)
         {
             default:
-            case Phoneme.a_Phoneme:
-                PlayBaby();
-                break;
-            case Phoneme.aPhoneme:
-                PlayBackpack();
-                break;
-            case Phoneme.airPhoneme:
-                PlayBumphead();
-                break;
-            case Phoneme.arePhoneme:
-                PlayChoice();
-                break;
-            case Phoneme.awPhoneme:
-                PlayExplorer();
-                break;
-            case Phoneme.e_Phoneme:
-                PlayFrustrating();
-                break;
-            case Phoneme.earPhoneme:
-                PlayGive();
-                break;
-            case Phoneme.ePhoneme:
-                PlayGorilla();
-                break;
-            case Phoneme.erPhoneme:
-                PlayHello();
-                break;
-            case Phoneme.i_Phoneme:
-                PlayListen();
-                break;
-            case Phoneme.iPhoneme:
+            case ActionWordEnum.mudslide:
                 PlayMudslide();
                 break;
-            case Phoneme.o_Phoneme:
-                PlayMudslide2();
+            case ActionWordEnum.listen:
+                PlayListen();
                 break;
-            case Phoneme.oPhoneme:
-                PlayOrc();
-                break;
-            case Phoneme.oiPhoneme:
-                PlayPirate();
-                break;
-            case Phoneme.ooPhoneme:
+            case ActionWordEnum.poop:
                 PlayPoop();
                 break;
-            case Phoneme.orPhoneme:
-                PlayScared();
+            case ActionWordEnum.orcs:
+                PlayOrc();
                 break;
-            case Phoneme.owPhoneme:
-                PlaySounds();
+            case ActionWordEnum.think:
+                PlayThink();
                 break;
-            case Phoneme.u_Phoneme:
+
+            case ActionWordEnum.hello:
+                PlayHello();
+                break;
+            case ActionWordEnum.spider:
                 PlaySpider();
                 break;
-            case Phoneme.uPhoneme:
-                PlaySpider2();
+            case ActionWordEnum.explorer:
+                PlayExplorer();
                 break;
-            case Phoneme.yerPhoneme:
+            case ActionWordEnum.scared:
+                PlayScared();
+                break;
+            case ActionWordEnum.thatguy:
+                PlayThatGuy();
+                break;
+
+            case ActionWordEnum.choice:
+                PlayChoice();
+                break;
+            case ActionWordEnum.strongwind:
                 PlayStrongwind();
+                break;
+            case ActionWordEnum.pirate:
+                PlayPirate();
+                break;
+            case ActionWordEnum.gorilla:
+                PlayGorilla();
+                break;
+            case ActionWordEnum.sounds:
+                PlaySounds();
+                break;
+            case ActionWordEnum.give:
+                PlayGive();
+                break;
+
+            case ActionWordEnum.backpack:
+                PlayBackpack();
+                break;
+            case ActionWordEnum.frustrating:
+                PlayFrustrating();
+                break;
+            case ActionWordEnum.bumphead:
+                PlayBumphead();
+                break;
+            case ActionWordEnum.baby:
+                PlayBaby();
                 break;
         }
     }

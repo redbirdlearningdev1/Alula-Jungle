@@ -8,31 +8,6 @@ public enum Song
     COUNT
 }
 
-public enum Phoneme
-{
-    a_Phoneme,
-    aPhoneme,
-    airPhoneme,
-    arePhoneme,
-    awPhoneme,
-    e_Phoneme,
-    earPhoneme,
-    ePhoneme,
-    erPhoneme,
-    i_Phoneme,
-    iPhoneme,
-    o_Phoneme,
-    oPhoneme,
-    oiPhoneme,
-    ooPhoneme,
-    orPhoneme,
-    owPhoneme,
-    u_Phoneme,
-    uPhoneme,
-    yerPhoneme,
-    COUNT
-}
-
 public class AudioDatabase : MonoBehaviour
 {
     /* 
@@ -61,72 +36,78 @@ public class AudioDatabase : MonoBehaviour
     */
 
     [Header("Phoneme Database")]
-    [SerializeField] private AudioClip a_Phoneme;
-    [SerializeField] private AudioClip aPhoneme;
-    [SerializeField] private AudioClip airPhoneme;
-    [SerializeField] private AudioClip arePhoneme;
-    [SerializeField] private AudioClip awPhoneme;
-    [SerializeField] private AudioClip e_Phoneme;
-    [SerializeField] private AudioClip earPhoneme;
-    [SerializeField] private AudioClip ePhoneme;
-    [SerializeField] private AudioClip erPhoneme;
-    [SerializeField] private AudioClip i_Phoneme;
-    [SerializeField] private AudioClip iPhoneme;
-    [SerializeField] private AudioClip o_Phoneme;
-    [SerializeField] private AudioClip oPhoneme;
-    [SerializeField] private AudioClip oiPhoneme;
-    [SerializeField] private AudioClip ooPhoneme;
-    [SerializeField] private AudioClip orPhoneme;
-    [SerializeField] private AudioClip owPhoneme;
-    [SerializeField] private AudioClip u_Phoneme;
-    [SerializeField] private AudioClip uPhoneme;
-    [SerializeField] private AudioClip yerPhoneme;
+    [SerializeField] private AudioClip mudslide;
+    [SerializeField] private AudioClip listen;
+    [SerializeField] private AudioClip poop;
+    [SerializeField] private AudioClip orcs;
+    [SerializeField] private AudioClip think;
 
-    public AudioClip GetPhonemeFromEnum(Phoneme phoneme)
+    [SerializeField] private AudioClip hello;
+    [SerializeField] private AudioClip spider;
+    [SerializeField] private AudioClip explorer;
+    [SerializeField] private AudioClip scared;
+    [SerializeField] private AudioClip thatguy;
+
+    [SerializeField] private AudioClip choice;
+    [SerializeField] private AudioClip strongwind;
+    [SerializeField] private AudioClip pirate;
+    [SerializeField] private AudioClip gorilla;
+    [SerializeField] private AudioClip sounds;
+    [SerializeField] private AudioClip give;
+
+    [SerializeField] private AudioClip backpack;
+    [SerializeField] private AudioClip frustrating;
+    [SerializeField] private AudioClip bumphead;
+    [SerializeField] private AudioClip baby;
+
+    public AudioClip GetPhonemeFromEnum(ActionWordEnum type)
     {
-        switch (phoneme)
+        switch (type)
         {
             default:
-            case Phoneme.a_Phoneme:
-                return a_Phoneme;
-            case Phoneme.aPhoneme:
-                return aPhoneme;
-            case Phoneme.airPhoneme:
-                return airPhoneme;
-            case Phoneme.arePhoneme:
-                return arePhoneme;
-            case Phoneme.awPhoneme:
-                return awPhoneme;
-            case Phoneme.e_Phoneme:
-                return e_Phoneme;
-            case Phoneme.earPhoneme:
-                return earPhoneme;
-            case Phoneme.ePhoneme:
-                return ePhoneme;
-            case Phoneme.erPhoneme:
-                return erPhoneme;
-            case Phoneme.i_Phoneme:
-                return i_Phoneme;
-            case Phoneme.iPhoneme:
-                return iPhoneme;
-            case Phoneme.o_Phoneme:
-                return o_Phoneme;
-            case Phoneme.oPhoneme:
-                return oPhoneme;
-            case Phoneme.oiPhoneme:
-                return oiPhoneme;
-            case Phoneme.ooPhoneme:
-                return ooPhoneme;
-            case Phoneme.orPhoneme:
-                return orPhoneme;
-            case Phoneme.owPhoneme:
-                return owPhoneme;
-            case Phoneme.u_Phoneme:
-                return u_Phoneme;
-            case Phoneme.uPhoneme:
-                return uPhoneme;
-            case Phoneme.yerPhoneme:
-                return yerPhoneme;
+            case ActionWordEnum.mudslide:
+                return mudslide;
+            case ActionWordEnum.listen:
+                return listen;
+            case ActionWordEnum.poop:
+                return poop;
+            case ActionWordEnum.orcs:
+                return orcs;
+            case ActionWordEnum.think:
+                return think;
+
+            case ActionWordEnum.hello:
+                return hello;
+            case ActionWordEnum.spider:
+                return spider;
+            case ActionWordEnum.explorer:
+                return explorer;
+            case ActionWordEnum.scared:
+                return scared;
+            case ActionWordEnum.thatguy:
+                return thatguy;
+
+            case ActionWordEnum.choice:
+                return choice;
+            case ActionWordEnum.strongwind:
+                return strongwind;
+            case ActionWordEnum.pirate:
+                return pirate;
+            case ActionWordEnum.gorilla:
+                return gorilla;
+            case ActionWordEnum.sounds:
+                return sounds;
+            case ActionWordEnum.give:
+                return give;
+
+            case ActionWordEnum.backpack:
+                return backpack;
+            case ActionWordEnum.frustrating:
+                return frustrating;
+            case ActionWordEnum.bumphead:
+                return bumphead;
+            case ActionWordEnum.baby:
+                return baby;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,8 +13,8 @@ public class FroggerGameManager : MonoBehaviour
     private bool playingDancingManAnimation = false;
     private bool gameSetup = false;
 
-    private List<CoinType> globalCoinPool;
-    private List<CoinType> unusedCoinPool;
+    private List<ActionWordEnum> globalCoinPool;
+    private List<ActionWordEnum> unusedCoinPool;
 
     [Header("Log Rows")]
     [SerializeField] private List<LogRow> rows; 
@@ -22,18 +22,18 @@ public class FroggerGameManager : MonoBehaviour
     
 
     [Header("Coin Rows")]
-    [SerializeField] private List<Coin> coins1;
-    [SerializeField] private List<Coin> coins2;
-    [SerializeField] private List<Coin> coins3;
-    [SerializeField] private List<Coin> coins4;
-    private List<Coin> allCoins = new List<Coin>();
+    [SerializeField] private List<LogCoin> coins1;
+    [SerializeField] private List<LogCoin> coins2;
+    [SerializeField] private List<LogCoin> coins3;
+    [SerializeField] private List<LogCoin> coins4;
+    private List<LogCoin> allCoins = new List<LogCoin>();
     private int selectedIndex;
-    private Coin selectedCoin;
+    private LogCoin selectedCoin;
 
 
     [Header("Dev Stuff")]
     [SerializeField] private GameObject devObject;
-    [SerializeField] private Coin devCoin; 
+    [SerializeField] private LogCoin devCoin; 
 
     void Awake() 
     {
@@ -65,12 +65,12 @@ public class FroggerGameManager : MonoBehaviour
         if (playingDancingManAnimation)
             yield break;
         playingDancingManAnimation = true;
-        dancingMan.PlayUsingPhonemeEnum((Phoneme)selectedCoin.coinType);
+        dancingMan.PlayUsingPhonemeEnum(selectedCoin.type);
         yield return new WaitForSeconds(1.5f);
         playingDancingManAnimation = false;
     }
 
-    public bool EvaluateSelectedCoin(Coin coin)
+    public bool EvaluateSelectedCoin(LogCoin coin)
     {
         if (coin == selectedCoin)
         {
@@ -175,15 +175,15 @@ public class FroggerGameManager : MonoBehaviour
             allCoins.Add(coin);
 
         // Create Global Coin List
-        globalCoinPool = new List<CoinType>();
-        unusedCoinPool = new List<CoinType>();
-        string[] coins = System.Enum.GetNames(typeof(CoinType));
+        globalCoinPool = new List<ActionWordEnum>();
+        unusedCoinPool = new List<ActionWordEnum>();
+        string[] coins = System.Enum.GetNames(typeof(ActionWordEnum));
         for (int i = 0; i < coins.Length; i++) 
         {
-            CoinType coin = (CoinType)System.Enum.Parse(typeof(CoinType), coins[i]);
+            ActionWordEnum coin = (ActionWordEnum)System.Enum.Parse(typeof(ActionWordEnum), coins[i]);
             globalCoinPool.Add(coin);
         }
-        globalCoinPool.Remove(CoinType.COUNT);
+        globalCoinPool.Remove(ActionWordEnum.SIZE);
         unusedCoinPool.AddRange(globalCoinPool);
 
         // disable all coins
@@ -219,13 +219,13 @@ public class FroggerGameManager : MonoBehaviour
 
     private IEnumerator ShowCoins(int index)
     {
-        List<Coin> row = GetCoinRow(index);
+        List<LogCoin> row = GetCoinRow(index);
         foreach (var coin in row)
         {
             // set random type
             if (unusedCoinPool.Count == 0)
                 unusedCoinPool.AddRange(globalCoinPool);
-            CoinType type = unusedCoinPool[Random.Range(0, unusedCoinPool.Count)];
+            ActionWordEnum type = unusedCoinPool[Random.Range(0, unusedCoinPool.Count)];
             unusedCoinPool.Remove(type);
 
             coin.SetCoinType(type);
@@ -236,9 +236,9 @@ public class FroggerGameManager : MonoBehaviour
         SelectRandomCoin(currRow);
     }
 
-    private IEnumerator HideCoins(int index, Coin exceptCoin = null)
+    private IEnumerator HideCoins(int index, LogCoin exceptCoin = null)
     {
-        List<Coin> row = GetCoinRow(index);
+        List<LogCoin> row = GetCoinRow(index);
         foreach (var coin in row)
         {
             if (coin != exceptCoin)
@@ -249,7 +249,7 @@ public class FroggerGameManager : MonoBehaviour
 
     private void SelectRandomCoin(int index)
     {
-        List<Coin> row = GetCoinRow(index);
+        List<LogCoin> row = GetCoinRow(index);
         selectedIndex = Random.Range(0, row.Count);
         print ("selected index: " + selectedIndex);
         selectedCoin = row[selectedIndex];
@@ -257,11 +257,11 @@ public class FroggerGameManager : MonoBehaviour
 
         if (GameManager.instance.devModeActivated)
         {
-            devCoin.SetCoinType(selectedCoin.coinType);
+            devCoin.SetCoinType(selectedCoin.type);
         }
     }
 
-    private List<Coin> GetCoinRow(int index)
+    private List<LogCoin> GetCoinRow(int index)
     {
         switch (index)
         {

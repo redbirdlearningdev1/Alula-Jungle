@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 838bbca180b5ea749b8f619e976fdf52, type: 3}
   m_Name: think_obj
   m_EditorClassIdentifier: 
-  word: think
-  audio: {fileID: 8300000, guid: 18654bb26730a1b48be1a2700524e163, type: 3}
-  exampleWord: 
+  _name: think
+  audio: {fileID: 8300000, guid: 79a76816083bd8f4987c6d2a9bf94755, type: 3}
+  animation: think
+  _enum: 4

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 838bbca180b5ea749b8f619e976fdf52, type: 3}
   m_Name: orcs_obj
   m_EditorClassIdentifier: 
-  word: orcs
-  audio: {fileID: 8300000, guid: ae65ffd1855e945478f4b2b1a7211a7a, type: 3}
-  exampleWord: 
+  _name: orcs
+  audio: {fileID: 8300000, guid: 3f468203786cde5419c28816a0493bd7, type: 3}
+  animation: orcs
+  _enum: 3
