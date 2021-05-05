@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapObjectHelper : MonoBehaviour
 {
-    private static float screenHeight = 449.904f;
+    private static float screenHeight = 533.33f;
     public Vector2 imageResolution;
 
     void Awake() 

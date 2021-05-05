@@ -36,4 +36,9 @@ public class ActionWord : ScriptableObject
     public AudioClip audio;
     public string animation;
     public ActionWordEnum _enum;
+
+    // turntables game
+    public Sprite doorIcon;
+    public Sprite frameIcon;
+    public Sprite centerIcon;
 }
