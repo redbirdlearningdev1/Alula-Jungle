@@ -24,39 +24,39 @@ public class TurntablesGameManager : MonoBehaviour
                 bool direction = (Random.Range(0, 2) == 0);
                 int angle = Random.Range(0, 360);
 
-                door1.RotateToAngle(angle, direction);
+                door1.RotateToAngle(angle);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 bool direction = (Random.Range(0, 2) == 0);
                 int angle = Random.Range(0, 360);
 
-                door2.RotateToAngle(angle, direction);
+                door2.RotateToAngle(angle);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 bool direction = (Random.Range(0, 2) == 0);
                 int angle = Random.Range(0, 360);
 
-                door3.RotateToAngle(angle, direction);
+                door3.RotateToAngle(angle);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha4))
             {
                 bool direction = (Random.Range(0, 2) == 0);
                 int angle = Random.Range(0, 360);
 
-                door4.RotateToAngle(angle, direction);
+                door4.RotateToAngle(angle);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha5))
             {
                 bool direction = (Random.Range(0, 2) == 0);
-                door1.RotateToAngle(0, direction);
+                door1.RotateToAngle(0);
                 direction = (Random.Range(0, 2) == 0);
-                door2.RotateToAngle(0, direction);
+                door2.RotateToAngle(0);
                 direction = (Random.Range(0, 2) == 0);
-                door3.RotateToAngle(0, direction);
+                door3.RotateToAngle(0);
                 direction = (Random.Range(0, 2) == 0);
-                door4.RotateToAngle(0, direction);
+                door4.RotateToAngle(0);
             }
         }
     }

@@ -216,7 +216,7 @@ MonoBehaviour:
   currentIcon: 0
   iconImage: {fileID: 1584628260}
   doorAngle: 0
-  rotationalSpeed: 0.5
+  rotationalSpeed: 1
 --- !u!1 &487016727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,7 +1169,7 @@ MonoBehaviour:
   currentIcon: 0
   iconImage: {fileID: 487016729}
   doorAngle: 0
-  rotationalSpeed: 0.25
+  rotationalSpeed: 1
 --- !u!1 &1584628258
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,7 +1338,7 @@ MonoBehaviour:
   currentIcon: 0
   iconImage: {fileID: 1937416585}
   doorAngle: 0
-  rotationalSpeed: 0.75
+  rotationalSpeed: 1
 --- !u!1 &1845194725
 GameObject:
   m_ObjectHideFlags: 0

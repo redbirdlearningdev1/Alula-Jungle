@@ -27,7 +27,7 @@ public class Door : MonoBehaviour
     void Update()
     {
         // set angle if in editor mode
-        if (Application.isEditor)
+        if (Application.isEditor && !Application.isPlaying)
             SetDoorAngle();
     }
 
@@ -36,61 +36,29 @@ public class Door : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, doorAngle);
     }
 
-    public void RotateToAngle(int newAngle, bool clockwise)
+    public void RotateToAngle(float newAngle)
     {
-        StartCoroutine(RotateToAngleRoutine(newAngle, clockwise));
+        StartCoroutine(RotateToAngleRoutine(newAngle));
     }
 
-    private IEnumerator RotateToAngleRoutine(int newAngle, bool clockwise)
+    private IEnumerator RotateToAngleRoutine(float newAngle)
     {
-        // return if angle value is invalid
-        if (newAngle < 0f || newAngle > 360f)
-            yield break;
-
-        float temp = doorAngle;
+        print ("rotating!");
+        Quaternion end = Quaternion.Euler(0f, 0f, newAngle);
+        Quaternion start = Quaternion.Euler(0f, 0f, doorAngle);
 
         while (true)
         {
-            float prev = temp;
-            if (clockwise)
-            { 
-                temp += rotationalSpeed;
-                if (prev <= newAngle && temp >= newAngle)
-                {
-                    // set the door's rotation
-                    doorAngle = temp;
-                    SetDoorAngle();
-                    yield break;
-                }
-            }
-            else
+            if (transform.rotation == end)
             {
-                temp -= rotationalSpeed;
-                if (prev >= newAngle && temp <= newAngle)
-                {
-                    // set the door's rotation
-                    doorAngle = temp;
-                    SetDoorAngle();
-                    yield break;
-                }
-            }
-            
-            if (temp > 360f)
-            {
-                float overflow = temp - 360f;
-                temp = overflow;
-            }
-            else if (temp < 0)
-            {
-                float overflow = Mathf.Abs(temp);
-                temp = 360f - overflow;
+                doorAngle = newAngle;
+                break;
             }
 
-            // set the door's rotation
-            doorAngle = temp;
-            SetDoorAngle();
-
+            transform.rotation = Quaternion.Lerp(start, end, Time.deltaTime * rotationalSpeed);
             yield return null;
         }
+
+        print ("done!");
     }
 }
