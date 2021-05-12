@@ -16,3 +16,6 @@ MonoBehaviour:
   audio: {fileID: 8300000, guid: ebb5d171b5e76ec41841373d756b00fe, type: 3}
   animation: explorer
   _enum: 7
+  doorIcon: {fileID: 21300000, guid: e096c0f9538bfde44b1a6afe01bf2925, type: 3}
+  frameIcon: {fileID: 21300000, guid: 1cd0ba2cb5dc47c48b5c63769b142c0f, type: 3}
+  centerIcon: {fileID: 21300000, guid: a50ed7d5dc95ccf459655725493fc4af, type: 3}

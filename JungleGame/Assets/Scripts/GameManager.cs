@@ -106,6 +106,7 @@ public class GameManager : DontDestroy<GameManager>
         Debug.Log("[LOG] " + msg + " @ " + context.name);
     }
 
+    // returns action word data from enum
     public ActionWord GetActionWord(ActionWordEnum word)
     {
         foreach(ActionWord actionWord in actionWords)
@@ -115,6 +116,21 @@ public class GameManager : DontDestroy<GameManager>
         }
         SendError(this, "Could not find action word: \'" + word + "\'");
         return null;
+    }
+
+
+    // returns a list with every action word enum
+    public List<ActionWordEnum> GetGlobalActionWordList()
+    {
+        var globalCoinPool = new List<ActionWordEnum>();
+        string[] coins = System.Enum.GetNames(typeof(ActionWordEnum));
+        for (int i = 0; i < coins.Length; i++) 
+        {
+            ActionWordEnum coin = (ActionWordEnum)System.Enum.Parse(typeof(ActionWordEnum), coins[i]);
+            globalCoinPool.Add(coin);
+        }
+        globalCoinPool.Remove(ActionWordEnum.SIZE);
+        return globalCoinPool;
     }
 
     /* 

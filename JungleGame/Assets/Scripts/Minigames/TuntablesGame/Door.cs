@@ -36,29 +36,32 @@ public class Door : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, doorAngle);
     }
 
-    public void RotateToAngle(float newAngle)
+    public void RotateToAngle(float newAngle, bool clockwise)
     {
-        StartCoroutine(RotateToAngleRoutine(newAngle));
+        StartCoroutine(RotateToAngleRoutine(newAngle, clockwise));
     }
 
-    private IEnumerator RotateToAngleRoutine(float newAngle)
+    private IEnumerator RotateToAngleRoutine(float newAngle, bool clockwise)
     {
-        print ("rotating!");
-        Quaternion end = Quaternion.Euler(0f, 0f, newAngle);
-        Quaternion start = Quaternion.Euler(0f, 0f, doorAngle);
-
+        int directionMultiplier = clockwise ? 1 : -1;
+        
         while (true)
         {
-            if (transform.rotation == end)
+            doorAngle += (rotationalSpeed * directionMultiplier);
+
+            if (doorAngle >= 360)
+                doorAngle -= 360;
+            else if (doorAngle <= 0)
+                doorAngle += 360;
+
+            if (Mathf.Abs(doorAngle - newAngle) < rotationalSpeed * 2)
             {
                 doorAngle = newAngle;
+                SetDoorAngle();
                 break;
-            }
-
-            transform.rotation = Quaternion.Lerp(start, end, Time.deltaTime * rotationalSpeed);
+            }   
+            SetDoorAngle();
             yield return null;
         }
-
-        print ("done!");
     }
 }

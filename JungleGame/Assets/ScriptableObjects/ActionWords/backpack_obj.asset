@@ -16,3 +16,6 @@ MonoBehaviour:
   audio: {fileID: 8300000, guid: 7597a9f0588dc074880dae515b85234f, type: 3}
   animation: backpack
   _enum: 16
+  doorIcon: {fileID: 21300000, guid: b552953a6b33dcd43af1979ea116c291, type: 3}
+  frameIcon: {fileID: 21300000, guid: 9257ed7b7a38f4a42bb5f0ffbebe5716, type: 3}
+  centerIcon: {fileID: 21300000, guid: 64b836f3daf5e924ea7bb1e68d5c693c, type: 3}

@@ -16,3 +16,6 @@ MonoBehaviour:
   audio: {fileID: 8300000, guid: 965e32ef6b5bdbb42bc16a4b4bf883b4, type: 3}
   animation: scared
   _enum: 8
+  doorIcon: {fileID: 21300000, guid: d76a7f58862326648a78c55a46f1a632, type: 3}
+  frameIcon: {fileID: 21300000, guid: 8ca95835c493e6f43b829fe544fbd715, type: 3}
+  centerIcon: {fileID: 21300000, guid: 2726185ed32f34044973009d3610b59c, type: 3}
