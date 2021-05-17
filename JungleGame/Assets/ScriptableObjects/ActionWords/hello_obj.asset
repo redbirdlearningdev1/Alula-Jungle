@@ -16,6 +16,6 @@ MonoBehaviour:
   audio: {fileID: 8300000, guid: ba7429587a24343498ee8ce6008e0292, type: 3}
   animation: hello
   _enum: 5
-  doorIcon: {fileID: 21300000, guid: dfdfec0ef721af14cb9f9288fc1fcc66, type: 3}
-  frameIcon: {fileID: 21300000, guid: 7d1489e0bbd0a1447af04bcbe22fa001, type: 3}
-  centerIcon: {fileID: 21300000, guid: e95873f2f5b6f4f469b529702d19f3c2, type: 3}
+  doorIcon: {fileID: 21300000, guid: 2163d3e15b8349343a48eda6de1b34ef, type: 3}
+  frameIcon: {fileID: 21300000, guid: ddd0370ff23683d4db3c3917c9b35c9c, type: 3}
+  centerIcon: {fileID: 21300000, guid: 891ebe5e62685a14cbb6f60d04600781, type: 3}
