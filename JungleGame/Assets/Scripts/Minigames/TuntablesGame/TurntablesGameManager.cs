@@ -104,7 +104,7 @@ public class TurntablesGameManager : MonoBehaviour
         bool direction = false;
 
         // set door angle
-        for (int i = 0; i < 4; i++)
+        for (int i = 3; i >= 0; i--)
         {
             int index = Random.Range(0, unusedAnglePool.Count);
             float angle = unusedAnglePool[index];
