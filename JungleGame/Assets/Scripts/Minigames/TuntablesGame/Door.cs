@@ -12,7 +12,7 @@ public class Door : MonoBehaviour
 
     [Range(0.0f, 360.0f)]
     public float doorAngle;
-    public float rotationalSpeed;
+    public const float defaultTurnDuration = 2f;
 
     public void SetDoorIcon(ActionWordEnum icon)
     {
@@ -36,31 +36,32 @@ public class Door : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, doorAngle);
     }
 
-    public void RotateToAngle(float newAngle, bool clockwise)
+    public void RotateToAngle(float newAngle, bool clockwise, float duration = defaultTurnDuration)
     {
-        StartCoroutine(RotateToAngleRoutine(newAngle, clockwise));
+        StartCoroutine(RotateToAngleRoutine(newAngle, clockwise, duration));
     }
 
-    private IEnumerator RotateToAngleRoutine(float newAngle, bool clockwise)
+    private IEnumerator RotateToAngleRoutine(float newAngle, bool clockwise, float duration)
     {
         int directionMultiplier = clockwise ? 1 : -1;
-        
+
+        float start = doorAngle;
+        float end = newAngle;
+        float timer = 0f;
+
         while (true)
         {
-            doorAngle += (rotationalSpeed * directionMultiplier);
-
-            if (doorAngle >= 360)
-                doorAngle -= 360;
-            else if (doorAngle <= 0)
-                doorAngle += 360;
-
-            if (Mathf.Abs(doorAngle - newAngle) < rotationalSpeed * 2)
+            timer += Time.deltaTime;
+            if (timer >= duration)
             {
-                doorAngle = newAngle;
+                doorAngle = end;
                 SetDoorAngle();
                 break;
-            }   
+            }
+
+            doorAngle = Mathf.LerpAngle(start, end, timer / duration);
             SetDoorAngle();
+
             yield return null;
         }
     }
