@@ -16,6 +16,6 @@ MonoBehaviour:
   audio: {fileID: 8300000, guid: 3f468203786cde5419c28816a0493bd7, type: 3}
   animation: orcs
   _enum: 3
-  doorIcon: {fileID: 21300000, guid: c6e6445f86749ed4cab8f93427a60433, type: 3}
-  frameIcon: {fileID: 21300000, guid: 6e15c212fb8d4ce4880d64b11a16adeb, type: 3}
-  centerIcon: {fileID: 21300000, guid: 87cdd79d5f266ae488f836614ff14afc, type: 3}
+  doorIcon: {fileID: 21300000, guid: fa32fe7bac3def14f8cb1144d9c7c01f, type: 3}
+  frameIcon: {fileID: 21300000, guid: 99fca26ccb9941442a80bcc966ed8918, type: 3}
+  centerIcon: {fileID: 21300000, guid: 1398201aa2ff3e94d8bf796012c4abc7, type: 3}
