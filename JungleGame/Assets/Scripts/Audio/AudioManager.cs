@@ -75,10 +75,11 @@ public class AudioManager : MonoBehaviour
     public void PlayPhoneme(ActionWordEnum phoneme)
     {
         talkSource.Stop();
-        AudioClip clip = audioDatabase.GetPhonemeFromEnum(phoneme);
+        AudioClip clip = GameManager.instance.GetActionWord(phoneme).audio;
         talkSource.clip = clip;
         talkSource.loop = false;
         talkSource.Play();
+        print ("playing clip: " + clip.name);
     }
 
     /* 

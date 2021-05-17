@@ -6,7 +6,12 @@ public class TurntablesGameManager : MonoBehaviour
 {
 
     public List<Door> doors;
+    public List<Key> keys;
+    public FrameIcon frameIcon;
+
     private ActionWordEnum[] doorWords;
+    private int currentIndex = 0;
+
     private float[] globalAngleArray = { 30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330 };
     private List<float> globalAnglePool;
     private List<float> unusedAnglePool;
@@ -86,6 +91,8 @@ public class TurntablesGameManager : MonoBehaviour
             // set door icon
             doors[i].SetDoorIcon(doorWords[i]);
             unusedWordPool.RemoveAt(index);
+            // set key word aswell
+            keys[i].SetKeyActionWord(doorWords[i]);
 
             // reset unused pool if empty
             if (unusedWordPool.Count <= 0)
@@ -94,6 +101,9 @@ public class TurntablesGameManager : MonoBehaviour
                 unusedWordPool.AddRange(globalWordPool);
             }
         }
+
+        // set first frame icon
+        frameIcon.SetFrameIcon(doorWords[currentIndex]);
     }
 
     private IEnumerator StartGame()
@@ -102,13 +112,15 @@ public class TurntablesGameManager : MonoBehaviour
         unusedAnglePool = new List<float>(globalAnglePool);
 
         bool direction = false;
+        float duration = 3f;
+        float difference = 0.5f;
 
         // set door angle
         for (int i = 3; i >= 0; i--)
         {
             int index = Random.Range(0, unusedAnglePool.Count);
             float angle = unusedAnglePool[index];
-            doors[i].RotateToAngle(angle, direction);
+            doors[i].RotateToAngle(angle, direction, duration);
             direction = !direction;
             
             unusedAnglePool.RemoveAt(index);
@@ -118,7 +130,8 @@ public class TurntablesGameManager : MonoBehaviour
                 unusedAnglePool.AddRange(globalAnglePool);
             }
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(difference);
+            duration -= difference;
         }
         
         yield return null;

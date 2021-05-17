@@ -8,6 +8,8 @@ TagManager:
   - Coin
   - Bag
   - DancingMan
+  - Key
+  - RockLock
   layers:
   - Default
   - TransparentFX
