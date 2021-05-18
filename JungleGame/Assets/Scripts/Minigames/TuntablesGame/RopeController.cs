@@ -12,7 +12,6 @@ public class RopeController : MonoBehaviour
     [SerializeField] private Transform normalRopePos;
     [SerializeField] private Transform postRopePos;
     public float moveTime; // time it takes for rope to move to a new position
-    public float initDelay; 
     
     [Header("RopePrefab")]
     public GameObject ropePrefab;
@@ -71,7 +70,7 @@ public class RopeController : MonoBehaviour
             StopCoroutine(currentRoutine);
         // move to bounce pos
         currentRoutine = StartCoroutine(MoveRopeToPosRoutine(bouncePos, moveTime, true));
-        yield return new WaitForSeconds(moveTime + initDelay);
+        yield return new WaitForSeconds(moveTime);
         currentRoutine = StartCoroutine(MoveRopeToPosRoutine(normalRopePos, 0.1f, false));
     }
 
@@ -80,14 +79,6 @@ public class RopeController : MonoBehaviour
         float timer = 0f;
         Vector3 start = currentRope.transform.position;
         Vector3 end = newPos.position;
-
-        if (animate)
-        { 
-            foreach (Key k in keys)
-                k.StartMovingAnimation();
-        }
-
-        yield return new WaitForSeconds(initDelay);
 
         while (true)
         {

@@ -33,7 +33,10 @@ public class TurntablesGameManager : MonoBehaviour
         {
             instance = this;
         }
+    }
 
+    void Start()
+    {   
         PregameSetup();
         StartCoroutine(StartGame());
     }
@@ -174,8 +177,7 @@ public class TurntablesGameManager : MonoBehaviour
             yield return new WaitForSeconds(difference);
             duration -= difference;
         }
-
-        yield return new WaitForSeconds(duration);
+        
         RopeController.instance.MoveFromInitToNormal();
         gameStart = true;
     }  
@@ -203,20 +205,21 @@ public class TurntablesGameManager : MonoBehaviour
         // dissipate key
         keys[correctKeyIndex].Dissipate();
         // move door to unlocked position
-        doors[currentDoorIndex].RotateToAngle(0, true, 3f);
-        // move keys down
-        RopeController.instance.MoveFromNormalToEnd();
+        doors[currentDoorIndex].RotateToAngle(0, true, RopeController.instance.moveTime * 2);
         // increment values
         currentDoorIndex++;
+        // change frame icon at the correct time
+        StartCoroutine(DelayFrameIconChange(RopeController.instance.moveTime * 2, doorWords[currentDoorIndex]));
+        // move keys down
+        RopeController.instance.MoveFromNormalToEnd();
         
-        yield return new WaitForSeconds(2f);
+        
+        yield return new WaitForSeconds(RopeController.instance.moveTime);
+
         // get new keys
         RopeController.instance.InitNewRope();
         KeySetup();
         RopeController.instance.MoveFromInitToNormal();
-
-        yield return new WaitForSeconds(1f);
-        frameIcon.SetFrameIcon(doorWords[currentDoorIndex]);
     }
 
     private IEnumerator DoorFailRoutine()
@@ -232,9 +235,10 @@ public class TurntablesGameManager : MonoBehaviour
         ActionWordEnum newWord = GetUnusedWord();
         doorWords[currentDoorIndex] = newWord;
         doors[currentDoorIndex].ShakeIconSwitch(newWord);
+        // change frame icon at the correct time
+        StartCoroutine(DelayFrameIconChange(doors[currentDoorIndex].shakeDuration / 2, doorWords[currentDoorIndex]));
 
-        yield return new WaitForSeconds(0.65f);
-        frameIcon.SetFrameIcon(doorWords[currentDoorIndex]);
+        yield return new WaitForSeconds(RopeController.instance.moveTime);
 
         // get new keys
         RopeController.instance.InitNewRope();
@@ -248,9 +252,15 @@ public class TurntablesGameManager : MonoBehaviour
         // dissipate key
         keys[correctKeyIndex].Dissipate();
         // move door to unlocked position
-        doors[currentDoorIndex].RotateToAngle(0, true, 3f);
+        doors[currentDoorIndex].RotateToAngle(0, true, RopeController.instance.moveTime * 2);
         // move keys down
         RopeController.instance.MoveFromNormalToEnd();
         yield return null;
+    }
+
+    private IEnumerator DelayFrameIconChange(float delay, ActionWordEnum icon)
+    {
+        yield return new WaitForSeconds(delay);
+        frameIcon.SetFrameIcon(icon);
     }
 }

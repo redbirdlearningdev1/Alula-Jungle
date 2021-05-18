@@ -1210,7 +1210,7 @@ MonoBehaviour:
   normalRopePos: {fileID: 984089161}
   postRopePos: {fileID: 35192811}
   moveTime: 0.65
-  initDelay: 0.25
+  initDelay: 0.2
   ropePrefab: {fileID: 5927028569053745761, guid: 0f9355a2fee7fa64cb015de36c148c42,
     type: 3}
 --- !u!1 &1584628258
@@ -1532,9 +1532,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 759, y: -57}
+  m_AnchoredPosition: {x: 759, y: -120}
   m_SizeDelta: {x: 25, y: 25}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.50000006}
 --- !u!1 &1883585367
 GameObject:
   m_ObjectHideFlags: 0
