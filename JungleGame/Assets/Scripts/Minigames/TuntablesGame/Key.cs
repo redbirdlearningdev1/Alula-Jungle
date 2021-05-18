@@ -5,26 +5,31 @@ using UnityEngine.UI;
 
 public class Key : MonoBehaviour
 {
-    private ActionWordEnum keyActionWord;
+    public ActionWordEnum keyActionWord;
     private bool canBePressed = false;
+    private bool isDissipating = false;
 
     [SerializeField] private Animator animator;
+    private Image image;
+
     public string keyName;
     public Transform ropePos;
     public Transform keyParent;
     public float moveSpeed;
+    public float dissipateTime;
 
     private Coroutine currentRoutine;
 
-
     public void StartMovingAnimation()
     {
+        if (isDissipating) return;
         string animation_name = keyName + "_first_move";
         animator.Play(animation_name);
     }
 
     public void StopMovingAnimation()
     {
+        if (isDissipating) return;
         string animation_name = keyName + "_last_move";
         animator.Play(animation_name);
     }
@@ -64,6 +69,31 @@ public class Key : MonoBehaviour
     public void ReturnToRope()
     {
         StartCoroutine(ReturnToOriginalPosRoutine(ropePos.position));
+    }
+
+    public void Dissipate()
+    {
+        isDissipating = true;
+        // make key invisible over time
+        image = GetComponent<Image>();
+        StartCoroutine(DissipateAndDestroy());
+    }
+
+    private IEnumerator DissipateAndDestroy()
+    {
+        float timer = 0f;
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > dissipateTime)
+            {
+                Destroy(this.gameObject);
+                break;
+            }
+            float a = Mathf.Lerp(1, 0, timer / dissipateTime);
+            image.color = new Color(1f, 1f, 1f, a);
+            yield return null;
+        }
     }
 
     private IEnumerator ReturnToOriginalPosRoutine(Vector3 target)

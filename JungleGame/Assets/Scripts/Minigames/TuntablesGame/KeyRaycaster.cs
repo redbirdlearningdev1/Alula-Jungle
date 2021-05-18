@@ -37,13 +37,20 @@ public class KeyRaycaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("RockLock"))
                     {
-                        //isCorrect = FroggerGameManager.instance.EvaluateSelectedCoin(selectedCoin);
+                        isCorrect = TurntablesGameManager.instance.EvaluateSelectedKey(selectedKey);
                     }
                 }
             }
 
-            selectedKey.ReturnToRope();
-            selectedKey = null;
+            if (isCorrect)
+            {
+                
+            }
+            else
+            {
+                selectedKey.ReturnToRope();
+                selectedKey = null;
+            }
         }
 
         if (Input.GetMouseButtonDown(0))

@@ -14,6 +14,11 @@ public class Door : MonoBehaviour
     public float doorAngle;
     public const float defaultTurnDuration = 2f;
 
+    [Header("Shake Variables")]
+    public float shakeSpeed; // how fast it shakes
+    public float shakeAmount; // how much it shakes
+    public float shakeDuration; // how long shake lasts
+
     public void SetDoorIcon(ActionWordEnum icon)
     {
         currentIcon = icon;
@@ -22,7 +27,39 @@ public class Door : MonoBehaviour
             iconImage.sprite = GameManager.instance.GetActionWord(currentIcon).doorIcon;
         else
             iconImage.sprite = GameManager.instance.GetActionWord(currentIcon).centerIcon;
-    } 
+    }
+
+    public void ShakeIconSwitch(ActionWordEnum icon)
+    {
+        StartCoroutine(ShakeIconSwitchRoutine(icon, shakeDuration));
+    }
+
+    private IEnumerator ShakeIconSwitchRoutine(ActionWordEnum icon, float duration)
+    {
+        bool switchedIcon = false;
+        float timer = 0f;
+        Vector3 originalPos = iconImage.transform.position;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer >= duration / 2 && !switchedIcon)
+            {
+                SetDoorIcon(icon);
+                switchedIcon = true;
+            }
+            else if (timer > duration)
+            {
+                iconImage.transform.position = originalPos;
+                break;
+            }
+
+            Vector3 pos = originalPos;
+            pos.x = originalPos.x + Mathf.Sin(Time.time * shakeSpeed) * shakeAmount;
+            iconImage.transform.position = pos;
+            yield return null;
+        }
+    }
 
     void Update()
     {

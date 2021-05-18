@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class TurntablesGameManager : MonoBehaviour
 {
+    public static TurntablesGameManager instance;
 
     public List<Door> doors;
     public List<Key> keys;
     public FrameIcon frameIcon;
 
+    public bool randomizeKeyPosition;
     private ActionWordEnum[] doorWords;
-    private int currentIndex = 0;
+    private int correctKeyIndex = 0;
+    private int currentDoorIndex = 0;
 
     private float[] globalAngleArray = { 30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330 };
     private List<float> globalAnglePool;
@@ -19,10 +22,17 @@ public class TurntablesGameManager : MonoBehaviour
     private List<ActionWordEnum> globalWordPool;
     private List<ActionWordEnum> unusedWordPool;
 
+    private bool gameStart;
+
     void Awake()
     {
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
+
+        if (!instance)
+        {
+            instance = this;
+        }
 
         PregameSetup();
         StartCoroutine(StartGame());
@@ -83,27 +93,58 @@ public class TurntablesGameManager : MonoBehaviour
         unusedWordPool = new List<ActionWordEnum>();
         unusedWordPool.AddRange(globalWordPool);
 
+        // get keys
+        RopeController.instance.InitNewRope();
+        keys = RopeController.instance.GetKeys();
+
         // set random icon to each door
         for (int i = 0; i < 4; i++)
         {
-            int index = Random.Range(0, unusedWordPool.Count);
-            doorWords[i] = unusedWordPool[index];
+            // get random icon
+            doorWords[i] = GetUnusedWord();
             // set door icon
             doors[i].SetDoorIcon(doorWords[i]);
-            unusedWordPool.RemoveAt(index);
-            // set key word aswell
-            keys[i].SetKeyActionWord(doorWords[i]);
-
-            // reset unused pool if empty
-            if (unusedWordPool.Count <= 0)
-            {
-                unusedWordPool.Clear();
-                unusedWordPool.AddRange(globalWordPool);
-            }
         }
 
+        // set up the keys
+        KeySetup();
         // set first frame icon
-        frameIcon.SetFrameIcon(doorWords[currentIndex]);
+        frameIcon.SetFrameIcon(doorWords[currentDoorIndex]);
+    }
+
+    private void KeySetup()
+    {
+        // set current key
+        if (randomizeKeyPosition)
+            correctKeyIndex = Random.Range(0, 4);
+        else 
+            correctKeyIndex = 0;
+        keys[correctKeyIndex].SetKeyActionWord(doorWords[currentDoorIndex]);
+
+        // set other keys to be random word (not current or other door words)
+        for (int j = 0; j < 4; j++)
+        {
+            if (j != correctKeyIndex)
+            {
+                ActionWordEnum word = GetUnusedWord();
+                keys[j].SetKeyActionWord(word);
+            }
+        }
+    }
+
+    private ActionWordEnum GetUnusedWord()
+    {
+        // reset unused pool if empty
+        if (unusedWordPool.Count <= 0)
+        {
+            unusedWordPool.Clear();
+            unusedWordPool.AddRange(globalWordPool);
+        }
+
+        int index = Random.Range(0, unusedWordPool.Count);
+        ActionWordEnum word = unusedWordPool[index];
+        unusedWordPool.RemoveAt(index);
+        return word;
     }
 
     private IEnumerator StartGame()
@@ -133,7 +174,83 @@ public class TurntablesGameManager : MonoBehaviour
             yield return new WaitForSeconds(difference);
             duration -= difference;
         }
+
+        yield return new WaitForSeconds(duration);
+        RopeController.instance.MoveFromInitToNormal();
+        gameStart = true;
+    }  
+
+    // evaluate selected key
+    public bool EvaluateSelectedKey(Key key)
+    {
+        if (key.keyActionWord == doorWords[currentDoorIndex])
+        {
+            // success! go on to the next door or win game if on last door
+            if (currentDoorIndex < 3)
+                StartCoroutine(DoorSuccessRoutine());
+            else
+                StartCoroutine(WinRoutine());
+            return true;
+        }
+        // fail go back to previous row
+        StartCoroutine(DoorFailRoutine());
+        return false;
+    }
+
+    private IEnumerator DoorSuccessRoutine()
+    {
+        print ("success!");
+        // dissipate key
+        keys[correctKeyIndex].Dissipate();
+        // move door to unlocked position
+        doors[currentDoorIndex].RotateToAngle(0, true, 3f);
+        // move keys down
+        RopeController.instance.MoveFromNormalToEnd();
+        // increment values
+        currentDoorIndex++;
         
+        yield return new WaitForSeconds(2f);
+        // get new keys
+        RopeController.instance.InitNewRope();
+        KeySetup();
+        RopeController.instance.MoveFromInitToNormal();
+
+        yield return new WaitForSeconds(1f);
+        frameIcon.SetFrameIcon(doorWords[currentDoorIndex]);
+    }
+
+    private IEnumerator DoorFailRoutine()
+    {
+        print ("fail!");
+        // return key
+        keys[correctKeyIndex].ReturnToRope();
+        
+        yield return new WaitForSeconds(0.5f);
+        // move keys down
+        RopeController.instance.MoveFromNormalToEnd();
+        // change door to have a new icon
+        ActionWordEnum newWord = GetUnusedWord();
+        doorWords[currentDoorIndex] = newWord;
+        doors[currentDoorIndex].ShakeIconSwitch(newWord);
+
+        yield return new WaitForSeconds(0.65f);
+        frameIcon.SetFrameIcon(doorWords[currentDoorIndex]);
+
+        // get new keys
+        RopeController.instance.InitNewRope();
+        KeySetup();
+        RopeController.instance.MoveFromInitToNormal();
+    }
+
+    private IEnumerator WinRoutine()
+    {
+        print ("you win!");
+        // dissipate key
+        keys[correctKeyIndex].Dissipate();
+        // move door to unlocked position
+        doors[currentDoorIndex].RotateToAngle(0, true, 3f);
+        // move keys down
+        RopeController.instance.MoveFromNormalToEnd();
         yield return null;
-    }   
+    }
 }
