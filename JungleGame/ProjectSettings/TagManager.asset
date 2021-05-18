@@ -8,6 +8,8 @@ TagManager:
   - Coin
   - Bag
   - DancingMan
+  - Shell
+  - CoinHolder
   layers:
   - Default
   - TransparentFX

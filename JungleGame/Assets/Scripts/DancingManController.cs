@@ -112,154 +112,154 @@ public class DancingManController : MonoBehaviour
     public void PlayBaby()
     {
         animator.Play("baby");
-        textureAtlas.BabyFace();
+        textureAtlas.babyFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayBackpack()
     {
         animator.Play("backpack");
-        textureAtlas.BackpackFace();
+        textureAtlas.backpackFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayBumphead()
     {
         animator.Play("bumphead");
-        textureAtlas.BumpheadFace();
+        textureAtlas.bumpheadFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayChoice()
     {
         animator.Play("choice");
-        textureAtlas.ChoiceFace();
+        textureAtlas.choiceFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayExplorer()
     {
         animator.Play("explorer");
-        textureAtlas.ExplorerFace();
+        textureAtlas.explorerFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayFrustrating()
     {
         animator.Play("choice");
-        textureAtlas.ChoiceFace();
+        textureAtlas.choiceFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayGive()
     {
         animator.Play("give");
-        textureAtlas.GiveFace();
+        textureAtlas.giveFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayGorilla()
     {
         animator.Play("gorilla");
-        textureAtlas.GorillaFace();
+        textureAtlas.gorillaFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayHello()
     {
         animator.Play("hello");
-        textureAtlas.HelloFace();
+        textureAtlas.helloFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayListen()
     {
         animator.Play("listen");
-        textureAtlas.ListenFace();
+        textureAtlas.listenFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayMudslide()
     {
         animator.Play("mudslide");
-        textureAtlas.MudslideFace();
+        textureAtlas.mudslideFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayMudslide2()
     {
         animator.Play("mudslide");
-        textureAtlas.Mudslide2Face();
+        textureAtlas.mudslide2Face();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayOrc()
     {
         animator.Play("orc");
-        textureAtlas.OrcsFace();
+        textureAtlas.orcsFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayPirate()
     {
         animator.Play("pirate");
-        textureAtlas.PirateFace();
+        textureAtlas.pirateFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayPoop()
     {
         animator.Play("poop");
-        textureAtlas.PoopFace();
+        textureAtlas.poopFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayScared()
     {
         animator.Play("scared");
-        textureAtlas.ScaredFace();
+        textureAtlas.scaredFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlaySounds()
     {
         animator.Play("sounds");
-        textureAtlas.SoundsFace();
+        textureAtlas.soundsFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlaySpider()
     {
         animator.Play("spider");
-        textureAtlas.SpiderFace();
+        textureAtlas.spiderFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlaySpider2()
     {
         animator.Play("spider");
-        textureAtlas.Spider2Face();
+        textureAtlas.spider2Face();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayStrongwind()
     {
         animator.Play("strongwind");
-        textureAtlas.StrongwindFace();
+        textureAtlas.strongwindFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayThatGuy()
     {
         animator.Play("thatguy");
-        textureAtlas.ThatGuyFace();
+        textureAtlas.thatguyFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayThink()
     {
         animator.Play("think");
-        textureAtlas.ThinkFace();
+        textureAtlas.thinkFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
@@ -267,6 +267,6 @@ public class DancingManController : MonoBehaviour
     private IEnumerator TextureSwapRoutine(float time = 1.5f)
     {
         yield return new WaitForSeconds(time);
-        textureAtlas.ReturnToBase();
+        textureAtlas.returntobase();
     }
 }
