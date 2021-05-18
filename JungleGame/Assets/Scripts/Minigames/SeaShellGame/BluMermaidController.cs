@@ -42,7 +42,7 @@ public class BluMermaidController : MonoBehaviour
 
     private IEnumerator pinkShellAnimationRoutine(float time)
     {
-        animator.Play("bluRise1");
+        animator.Play("bluPlayNew");
         yield return new WaitForSeconds(time);
 
     }
@@ -55,7 +55,7 @@ public class BluMermaidController : MonoBehaviour
 
     private IEnumerator blueShellAnimationRoutine(float time)
     {
-        animator.Play("bluRise2");
+        animator.Play("bluPlayNew1");
         yield return new WaitForSeconds(time);
 
     }
@@ -68,7 +68,7 @@ public class BluMermaidController : MonoBehaviour
     private IEnumerator redShellAnimationRoutine(float time)
     {
 
-        animator.Play("bluRise3");
+        animator.Play("bluPlayNew2");
         yield return new WaitForSeconds(time);
 
     }

@@ -194,10 +194,12 @@ public class SeaShellGameManager : MonoBehaviour
         octo.tenticle.gameObject.SetActive(false);
         octo.correctAnimationTwo();
         coin.GoToChestPosition();
+        coin.shrink();
         yield return new WaitForSeconds(.25f);
         coin.GoToChestTwoPosition();
         coin.ToggleVisibilityTwoCoin(false, true);
         yield return new WaitForSeconds(.25f);
+        coin.grow();
         chest.UpgradeChest();
         yield return new WaitForSeconds(.2f);
         coin.GetComponent<Animator>().enabled = false;
@@ -250,6 +252,7 @@ public class SeaShellGameManager : MonoBehaviour
         coinHolder.BaseCoinHolder();
         yield return new WaitForSeconds(.5f);
         coin.GoToStartingPosition();
+        
         yield return new WaitForSeconds(.25f);
         StartCoroutine(createShells());
         SelectRandomShell();

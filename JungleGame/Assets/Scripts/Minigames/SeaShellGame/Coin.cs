@@ -16,7 +16,9 @@ public class Coin : MonoBehaviour
     private Vector3 originalPosition = new Vector3(0, 2.75f, 0f);
     private Vector3 correctPosition = new Vector3(-3.8f, 4.25f, 0f);
     private Vector3 chestPosition = new Vector3(-3.8f, 3f, 0f);
-    private Vector3 chestTwoPosition = new Vector3(-5.5f, 1f, 0f);
+    private Vector3 chestTwoPosition = new Vector3(-5.5f, 1.5f, 0f);
+    private Vector3 scaleNormal = new Vector3(.8f, .8f, 0f);
+    private Vector3 scaleChange = new Vector3(.3f, .3f, 0f);
     // original vars
     private bool originalSet = false;
     private int moveSpeed = 2;
@@ -35,6 +37,72 @@ public class Coin : MonoBehaviour
     {
 
     }
+
+    public void shrink()
+    {
+        StartCoroutine(shrinkRoutine(scaleChange));
+    }
+
+    private IEnumerator shrinkRoutine(Vector3 target)
+    {
+        Vector3 currStart = transform.localScale;
+        Debug.Log(currStart);
+        float timer = 0f;
+        float maxTime = 0.5f;
+
+        while (true)
+        {
+            // animate movement
+            timer += Time.deltaTime * 1;
+            if (timer < maxTime)
+            {
+                transform.localScale = Vector3.Lerp(currStart, target, timer / maxTime);
+            }
+            else
+            {
+                transform.localScale = target;
+
+                yield break;
+            }
+
+            yield return null;
+        }
+    }
+    public void grow()
+    {
+        StartCoroutine(growRoutine(scaleNormal));
+    }
+
+    private IEnumerator growRoutine(Vector3 target)
+    {
+        Vector3 currStart = transform.localScale;
+        Debug.Log(currStart);
+        float timer = 0f;
+        float maxTime = 0.5f;
+
+        while (true)
+        {
+            // animate movement
+            timer += Time.deltaTime * 5;
+            if (timer < maxTime)
+            {
+                transform.localScale = Vector3.Lerp(currStart, target, timer / maxTime);
+            }
+            else
+            {
+                transform.localScale = target;
+
+                yield break;
+            }
+
+            yield return null;
+        }
+    }
+
+
+
+
+
 
     public void GoToCoinHolder()
     {
@@ -66,6 +134,8 @@ public class Coin : MonoBehaviour
             yield return null;
         }
     }
+
+
     public void GoToOffStage()
     {
         StartCoroutine(GoToOffStageRoutine(offStagePosition));
