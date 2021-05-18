@@ -41,4 +41,7 @@ public class ActionWord : ScriptableObject
     public Sprite doorIcon;
     public Sprite frameIcon;
     public Sprite centerIcon;
+
+    //SeaShell Game
+    
 }
