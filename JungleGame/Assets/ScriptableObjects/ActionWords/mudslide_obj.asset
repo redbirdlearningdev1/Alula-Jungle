@@ -16,3 +16,6 @@ MonoBehaviour:
   audio: {fileID: 8300000, guid: f534d4d519c387044b4b9c6a7f6960b6, type: 3}
   animation: mudslide
   _enum: 0
+  doorIcon: {fileID: 21300000, guid: 43d97147843ba544fa14e330f3f88896, type: 3}
+  frameIcon: {fileID: 21300000, guid: d5f7269b828f3cc4184ef6b0e0776b98, type: 3}
+  centerIcon: {fileID: 21300000, guid: 7ef7b35da997a7549b6de767b28a4871, type: 3}

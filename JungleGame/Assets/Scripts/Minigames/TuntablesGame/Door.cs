@@ -27,7 +27,7 @@ public class Door : MonoBehaviour
     void Update()
     {
         // set angle if in editor mode
-        if (Application.isEditor)
+        if (Application.isEditor && !Application.isPlaying)
             SetDoorAngle();
     }
 
@@ -36,60 +36,31 @@ public class Door : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, doorAngle);
     }
 
-    public void RotateToAngle(int newAngle, bool clockwise)
+    public void RotateToAngle(float newAngle, bool clockwise)
     {
         StartCoroutine(RotateToAngleRoutine(newAngle, clockwise));
     }
 
-    private IEnumerator RotateToAngleRoutine(int newAngle, bool clockwise)
+    private IEnumerator RotateToAngleRoutine(float newAngle, bool clockwise)
     {
-        // return if angle value is invalid
-        if (newAngle < 0f || newAngle > 360f)
-            yield break;
-
-        float temp = doorAngle;
-
+        int directionMultiplier = clockwise ? 1 : -1;
+        
         while (true)
         {
-            float prev = temp;
-            if (clockwise)
-            { 
-                temp += rotationalSpeed;
-                if (prev <= newAngle && temp >= newAngle)
-                {
-                    // set the door's rotation
-                    doorAngle = temp;
-                    SetDoorAngle();
-                    yield break;
-                }
-            }
-            else
-            {
-                temp -= rotationalSpeed;
-                if (prev >= newAngle && temp <= newAngle)
-                {
-                    // set the door's rotation
-                    doorAngle = temp;
-                    SetDoorAngle();
-                    yield break;
-                }
-            }
-            
-            if (temp > 360f)
-            {
-                float overflow = temp - 360f;
-                temp = overflow;
-            }
-            else if (temp < 0)
-            {
-                float overflow = Mathf.Abs(temp);
-                temp = 360f - overflow;
-            }
+            doorAngle += (rotationalSpeed * directionMultiplier);
 
-            // set the door's rotation
-            doorAngle = temp;
+            if (doorAngle >= 360)
+                doorAngle -= 360;
+            else if (doorAngle <= 0)
+                doorAngle += 360;
+
+            if (Mathf.Abs(doorAngle - newAngle) < rotationalSpeed * 2)
+            {
+                doorAngle = newAngle;
+                SetDoorAngle();
+                break;
+            }   
             SetDoorAngle();
-
             yield return null;
         }
     }

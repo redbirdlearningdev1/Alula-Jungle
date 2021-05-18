@@ -175,15 +175,8 @@ public class FroggerGameManager : MonoBehaviour
             allCoins.Add(coin);
 
         // Create Global Coin List
-        globalCoinPool = new List<ActionWordEnum>();
+        globalCoinPool = GameManager.instance.GetGlobalActionWordList();
         unusedCoinPool = new List<ActionWordEnum>();
-        string[] coins = System.Enum.GetNames(typeof(ActionWordEnum));
-        for (int i = 0; i < coins.Length; i++) 
-        {
-            ActionWordEnum coin = (ActionWordEnum)System.Enum.Parse(typeof(ActionWordEnum), coins[i]);
-            globalCoinPool.Add(coin);
-        }
-        globalCoinPool.Remove(ActionWordEnum.SIZE);
         unusedCoinPool.AddRange(globalCoinPool);
 
         // disable all coins
