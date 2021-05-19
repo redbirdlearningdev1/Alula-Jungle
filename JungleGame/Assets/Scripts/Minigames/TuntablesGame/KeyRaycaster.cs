@@ -35,6 +35,7 @@ public class KeyRaycaster : MonoBehaviour
             {
                 foreach(var result in raycastResults)
                 {
+                    print (result.gameObject.name);
                     if (result.gameObject.transform.CompareTag("RockLock"))
                     {
                         isCorrect = TurntablesGameManager.instance.EvaluateSelectedKey(selectedKey);
@@ -51,6 +52,9 @@ public class KeyRaycaster : MonoBehaviour
                 selectedKey.ReturnToRope();
                 selectedKey = null;
             }
+
+            // rock lock glow effect off
+            RockLock.instance.glowController.ToggleGlowOutline(false);
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -69,6 +73,8 @@ public class KeyRaycaster : MonoBehaviour
                         selectedKey = result.gameObject.GetComponentInParent<Key>();
                         selectedKey.PlayAudio();
                         selectedKey.gameObject.transform.SetParent(selectedKeyParent);
+                        // rock lock glow effect on
+                        RockLock.instance.glowController.ToggleGlowOutline(true);
                     }
                 }
             }

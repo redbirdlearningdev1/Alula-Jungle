@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Key : MonoBehaviour
 {
@@ -10,13 +9,14 @@ public class Key : MonoBehaviour
     private bool isDissipating = false;
 
     [SerializeField] private Animator animator;
-    private Image image;
+    private SpriteRenderer image;
 
     public string keyName;
     public Transform ropePos;
     public Transform keyParent;
     public float moveSpeed;
     public float dissipateTime;
+    public const float scaleMult = 0.99f;
 
     private Coroutine currentRoutine;
 
@@ -75,7 +75,7 @@ public class Key : MonoBehaviour
     {
         isDissipating = true;
         // make key invisible over time
-        image = GetComponent<Image>();
+        image = GetComponent<SpriteRenderer>();
         StartCoroutine(DissipateAndDestroy());
     }
 
@@ -90,8 +90,11 @@ public class Key : MonoBehaviour
                 Destroy(this.gameObject);
                 break;
             }
+            // reduce alpha over time
             float a = Mathf.Lerp(1, 0, timer / dissipateTime);
             image.color = new Color(1f, 1f, 1f, a);
+            // decrease in scale over time
+            transform.localScale = transform.localScale * scaleMult;
             yield return null;
         }
     }
