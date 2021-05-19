@@ -33,6 +33,20 @@ public class RopeController : MonoBehaviour
         return keys;
     }
 
+    public void AnimateKeysUp()
+    {
+        if (keys == null) return;
+        foreach (Key k in keys)
+            k.StartMovingAnimation();
+    }
+
+    public void AnimateKeysDown()
+    {
+        if (keys == null) return;
+        foreach (Key k in keys)
+            k.StopMovingAnimation();
+    }
+
     public void InitNewRope()
     {
         // delete old rope if exists
@@ -61,7 +75,7 @@ public class RopeController : MonoBehaviour
         if (currentRoutine != null)
             StopCoroutine(currentRoutine);
         // move to the end
-        currentRoutine = StartCoroutine(MoveRopeToPosRoutine(postRopePos, moveTime, true));
+        currentRoutine = StartCoroutine(MoveRopeToPosRoutine(postRopePos, moveTime));
     }
 
     private IEnumerator BounceToNormal()
@@ -69,12 +83,12 @@ public class RopeController : MonoBehaviour
         if (currentRoutine != null)
             StopCoroutine(currentRoutine);
         // move to bounce pos
-        currentRoutine = StartCoroutine(MoveRopeToPosRoutine(bouncePos, moveTime, true));
+        currentRoutine = StartCoroutine(MoveRopeToPosRoutine(bouncePos, moveTime));
         yield return new WaitForSeconds(moveTime);
-        currentRoutine = StartCoroutine(MoveRopeToPosRoutine(normalRopePos, 0.1f, false));
+        currentRoutine = StartCoroutine(MoveRopeToPosRoutine(normalRopePos, 0.1f));
     }
 
-    private IEnumerator MoveRopeToPosRoutine(Transform newPos, float time, bool animate)
+    private IEnumerator MoveRopeToPosRoutine(Transform newPos, float time)
     {
         float timer = 0f;
         Vector3 start = currentRope.transform.position;
@@ -85,11 +99,6 @@ public class RopeController : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > time)
             {
-                if (animate)
-                {
-                    foreach (Key k in keys)
-                        k.StopMovingAnimation();
-                }
                 currentRope.transform.position = end;
                 break;
             }

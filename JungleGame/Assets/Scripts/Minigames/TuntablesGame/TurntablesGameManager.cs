@@ -23,6 +23,7 @@ public class TurntablesGameManager : MonoBehaviour
     private List<ActionWordEnum> unusedWordPool;
 
     private bool gameStart;
+    private const float animateKeysDownDelay = 0.2f;
 
     void Awake()
     {
@@ -179,6 +180,8 @@ public class TurntablesGameManager : MonoBehaviour
         }
         
         RopeController.instance.MoveFromInitToNormal();
+        yield return new WaitForSeconds(RopeController.instance.moveTime * 0.75f);
+        RopeController.instance.AnimateKeysDown();
         gameStart = true;
     }  
 
@@ -211,8 +214,9 @@ public class TurntablesGameManager : MonoBehaviour
         // change frame icon at the correct time
         StartCoroutine(DelayFrameIconChange(RopeController.instance.moveTime * 2, doorWords[currentDoorIndex]));
         // move keys down
+        RopeController.instance.AnimateKeysUp();
+        yield return new WaitForSeconds(animateKeysDownDelay);
         RopeController.instance.MoveFromNormalToEnd();
-        
         
         yield return new WaitForSeconds(RopeController.instance.moveTime);
 
@@ -220,6 +224,8 @@ public class TurntablesGameManager : MonoBehaviour
         RopeController.instance.InitNewRope();
         KeySetup();
         RopeController.instance.MoveFromInitToNormal();
+        yield return new WaitForSeconds(RopeController.instance.moveTime * 0.75f);
+        RopeController.instance.AnimateKeysDown();
     }
 
     private IEnumerator DoorFailRoutine()
@@ -230,7 +236,10 @@ public class TurntablesGameManager : MonoBehaviour
         
         yield return new WaitForSeconds(0.5f);
         // move keys down
+        RopeController.instance.AnimateKeysUp();
+        yield return new WaitForSeconds(animateKeysDownDelay);
         RopeController.instance.MoveFromNormalToEnd();
+        
         // change door to have a new icon
         ActionWordEnum newWord = GetUnusedWord();
         doorWords[currentDoorIndex] = newWord;
@@ -244,6 +253,8 @@ public class TurntablesGameManager : MonoBehaviour
         RopeController.instance.InitNewRope();
         KeySetup();
         RopeController.instance.MoveFromInitToNormal();
+        yield return new WaitForSeconds(RopeController.instance.moveTime * 0.75f);
+        RopeController.instance.AnimateKeysDown();
     }
 
     private IEnumerator WinRoutine()
@@ -254,6 +265,8 @@ public class TurntablesGameManager : MonoBehaviour
         // move door to unlocked position
         doors[currentDoorIndex].RotateToAngle(0, true, RopeController.instance.moveTime * 2);
         // move keys down
+        RopeController.instance.AnimateKeysUp();
+        yield return new WaitForSeconds(animateKeysDownDelay);
         RopeController.instance.MoveFromNormalToEnd();
         yield return null;
     }
