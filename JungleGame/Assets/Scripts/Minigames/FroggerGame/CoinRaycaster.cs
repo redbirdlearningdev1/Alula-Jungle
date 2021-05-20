@@ -64,6 +64,7 @@ public class CoinRaycaster : MonoBehaviour
                         selectedCoin.gameObject.transform.SetParent(selectedCoinParent);
 
                     }
+                    
                 }
             }
         }

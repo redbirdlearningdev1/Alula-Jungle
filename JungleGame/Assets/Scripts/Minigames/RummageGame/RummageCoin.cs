@@ -3,32 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SeaShell : MonoBehaviour
+public class RummageCoin : MonoBehaviour
 {
-
-    [SerializeField] public GameObject shell;
-    [SerializeField] public GameObject shadow;
-
     public ActionWordEnum type;
     public int logIndex;
-    public Transform originalPos;
-    public Transform shellParent;
+    public Transform clothPos;
+    public Transform pileParent;
     public float moveSpeed = 5f;
 
-
-
+    private Animator animator;
     private BoxCollider2D myCollider;
     private Image image;
     private bool audioPlaying;
 
     // original vars
-    
     private bool originalSet = false;
-    public bool raycast;
-    [HideInInspector] public bool isClicked;
 
     void Awake()
     {
+        animator = GetComponent<Animator>();
+        print(type.ToString());
+        animator.Play(type.ToString());
 
         RectTransform rt = GetComponent<RectTransform>();
         myCollider = gameObject.AddComponent<BoxCollider2D>();
@@ -39,16 +34,17 @@ public class SeaShell : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
-    public void ReturnToLog()
+    public void ReturnToCloth()
     {
-        StartCoroutine(ReturnToOriginalPosRoutine(originalPos.position));
+        StartCoroutine(ReturnToClothRoutine(clothPos.position));
     }
 
-    private IEnumerator ReturnToOriginalPosRoutine(Vector3 target)
+    private IEnumerator ReturnToClothRoutine(Vector3 target)
     {
+        Debug.Log("Here");
         Vector3 currStart = transform.position;
         float timer = 0f;
         float maxTime = 0.5f;
@@ -64,7 +60,7 @@ public class SeaShell : MonoBehaviour
             else
             {
                 transform.position = target;
-                transform.SetParent(shellParent);
+                transform.SetParent(pileParent);
                 yield break;
             }
 
@@ -72,10 +68,13 @@ public class SeaShell : MonoBehaviour
         }
     }
 
-    public void SetShellType(ActionWordEnum type)
+    public void SetCoinType(ActionWordEnum type)
     {
         this.type = type;
-        
+        // get animator if null
+        if (!animator)
+            animator = GetComponent<Animator>();
+        animator.Play(type.ToString());
     }
 
     public void PlayPhonemeAudio()
@@ -85,7 +84,6 @@ public class SeaShell : MonoBehaviour
             StartCoroutine(PlayPhonemeAudioRoutine());
         }
     }
-
 
     private IEnumerator PlayPhonemeAudioRoutine()
     {
@@ -97,6 +95,7 @@ public class SeaShell : MonoBehaviour
 
     public void ToggleVisibility(bool opt, bool smooth)
     {
+        Debug.Log("Toggle");
         if (smooth)
             StartCoroutine(ToggleVisibilityRoutine(opt));
         else
