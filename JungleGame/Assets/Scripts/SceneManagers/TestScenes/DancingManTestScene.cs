@@ -58,7 +58,7 @@ public class DancingManTestScene : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            dancingMan.PlayOrc();
+            dancingMan.PlayOrcs();
         }
         else if (Input.GetKeyDown(KeyCode.F))
         {

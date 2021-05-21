@@ -53,7 +53,7 @@ public class DancingManController : MonoBehaviour
                 PlayPoop();
                 break;
             case ActionWordEnum.orcs:
-                PlayOrc();
+                PlayOrcs();
                 break;
             case ActionWordEnum.think:
                 PlayThink();
@@ -146,7 +146,7 @@ public class DancingManController : MonoBehaviour
 
     public void PlayFrustrating()
     {
-        animator.Play("choice");
+        animator.Play("frustrating");
         textureAtlas.ChoiceFace();
         StartCoroutine(TextureSwapRoutine());
     }
@@ -193,9 +193,9 @@ public class DancingManController : MonoBehaviour
         StartCoroutine(TextureSwapRoutine());
     }
 
-    public void PlayOrc()
+    public void PlayOrcs()
     {
-        animator.Play("orc");
+        animator.Play("orcs");
         textureAtlas.OrcsFace();
         StartCoroutine(TextureSwapRoutine());
     }
@@ -231,14 +231,14 @@ public class DancingManController : MonoBehaviour
     public void PlaySpider()
     {
         animator.Play("spider");
-        textureAtlas.SpiderFace();
+        textureAtlas.Spider2Face();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlaySpider2()
     {
         animator.Play("spider");
-        textureAtlas.Spider2Face();
+        textureAtlas.SpiderFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
