@@ -20,7 +20,6 @@ public class FroggerGameManager : MonoBehaviour
     [SerializeField] private List<LogRow> rows; 
     private int currRow = 0;
     
-
     [Header("Coin Rows")]
     [SerializeField] private List<LogCoin> coins1;
     [SerializeField] private List<LogCoin> coins2;

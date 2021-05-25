@@ -5,12 +5,30 @@ using UnityEngine.EventSystems;
 
 public class IslandCutoutController : MonoBehaviour
 {
+    public static IslandCutoutController instance;
+
     private bool holdingIsland;
+    private bool isOn = true;
+
     public Transform originalPos;
+    public Transform oceanPos;
     public float moveSpeed;
+    public SpriteRenderer outline;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     void Update()
     {
+        // return if off
+        if (!isOn)
+            return;
+
         if (Input.GetMouseButton(0) && holdingIsland)
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -34,7 +52,7 @@ public class IslandCutoutController : MonoBehaviour
                 foreach(var result in raycastResults)
                 {
                     print (result.gameObject.name);
-                    if (result.gameObject.name == "IslandOutline")
+                    if (result.gameObject.name == "IslandOutlineTarget")
                     {
                         isCorrect = true;
                     }
@@ -43,10 +61,11 @@ public class IslandCutoutController : MonoBehaviour
 
             if (isCorrect)
             {
-                
+                StartCoroutine(MoveIslandToOcean());
             }
             else
             {
+                // return island to boat panel
                 ReturnIslandToPos();
             }
         }
@@ -70,12 +89,46 @@ public class IslandCutoutController : MonoBehaviour
         }
     }
 
-    private void ReturnIslandToPos()
+    private IEnumerator MoveIslandToOcean()
     {
-        StartCoroutine(ReturnToOriginalPosRoutine(originalPos.position));
+        // move island to correct spot + set new parent
+        GoToOceanSpot();
+        transform.SetParent(oceanPos.transform);
+
+        // turn off island update
+        isOn = false;
+
+        // remove island outline
+        StartCoroutine(LerpOutlineAlpha());
+
+        yield return new WaitForSeconds(1f);
+
+        // center boat to face main island
+        ParallaxController.instance.LerpToCenter();
+
+        // disable wheel control
+        BoatWheelController.instance.isOn = false;
+
+        yield return new WaitForSeconds(1f);
+
+        // enable throtle control
+        BoatThrottleController.instance.isOn = true;
+
+        // switch to vertical parallaxing
+        ParallaxController.instance.verticalParallax = true;
     }
 
-    private IEnumerator ReturnToOriginalPosRoutine(Vector3 target)
+    private void ReturnIslandToPos()
+    {
+        StartCoroutine(ReturnToPosRoutine(originalPos.position));
+    }
+
+    private void GoToOceanSpot()
+    {
+        StartCoroutine(ReturnToPosRoutine(oceanPos.position));
+    }
+
+    private IEnumerator ReturnToPosRoutine(Vector3 target)
     {
         Vector3 currStart = transform.position;
         float timer = 0f;
@@ -95,6 +148,28 @@ public class IslandCutoutController : MonoBehaviour
                 yield break;
             }
 
+            yield return null;
+        }
+    }
+
+    private IEnumerator LerpOutlineAlpha()
+    {
+        float timer = 0f;
+        float start = 1f;
+        float end = 0f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > 1f)
+            {
+                outline.color = new Color(1f, 1f, 1f, 0f);
+                break;
+            }
+
+            float a = Mathf.Lerp(start, end, timer / 1f);
+            Color color = new Color(1f, 1f, 1f, a);
+            outline.color = color;
             yield return null;
         }
     }

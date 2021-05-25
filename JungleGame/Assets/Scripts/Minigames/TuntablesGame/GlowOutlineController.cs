@@ -23,11 +23,8 @@ public class GlowOutlineController : MonoBehaviour
 
     void Awake()
     {
-        if (deactivated)
-        {
-            // turn off on init
-            spriteGlow.OutlineWidth = outlineOff;
-        }
+        // turn off on init
+        spriteGlow.OutlineWidth = outlineOff;
     }
 
     public void SetGlowSettings(float brightness, int outline, Color color, bool lerpAnim)

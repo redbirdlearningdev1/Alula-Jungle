@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class BoatWheelController : MonoBehaviour
 {
+    public static BoatWheelController instance;
+
     public float leftAngle;
     public float rightAngle;
     public float moveDuration;
@@ -12,12 +14,36 @@ public class BoatWheelController : MonoBehaviour
     private float wheelAngle;
     private Coroutine currentRoutine;
     private bool holdingWheel;
+    private bool isRight;
+
+    public bool isOn = true;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     void Update()
     {
+        // return if off
+        if (!isOn)
+            return;
+
         if (Input.GetMouseButton(0) && holdingWheel)
         {
-
+            if (isRight)
+            {
+                // parallax to the right
+                ParallaxController.instance.MoveParallax(true);
+            }
+            else
+            {
+                // parallax to the left
+                ParallaxController.instance.MoveParallax(false);
+            }
         }
         else if (Input.GetMouseButtonUp(0) && holdingWheel)
         {
@@ -57,6 +83,7 @@ public class BoatWheelController : MonoBehaviour
         if (currentRoutine != null)
             StopCoroutine(currentRoutine);
         currentRoutine = StartCoroutine(RotateWheelRoutine(leftAngle, moveDuration));
+        isRight = false; // moving to the left
     }
 
     public void RotateWheelRight()
@@ -64,6 +91,7 @@ public class BoatWheelController : MonoBehaviour
         if (currentRoutine != null)
             StopCoroutine(currentRoutine);
         currentRoutine = StartCoroutine(RotateWheelRoutine(rightAngle, moveDuration));
+        isRight = true; // moving to the right
     }
 
     public void ResetWheel()

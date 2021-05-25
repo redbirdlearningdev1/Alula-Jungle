@@ -6,17 +6,7 @@ public class BoatGameManager : MonoBehaviour
 {
     public static BoatGameManager instance;
 
-    public GameObject sky;
-    public GameObject backIslands;
-    public GameObject ocean;
-    public GameObject frontIslands;
-
-    public float skyMoveMult;
-    public float backIslandsMoveMult;
-    public float oceanMoveMult;
-    public float frontIslandsMoveMult;
-
-    [Range(0,1)] private float paralaxPos = 0.5f;
+    public List<GlowOutlineController> glowOutlineControllers;
 
     void Awake()
     {
@@ -27,7 +17,14 @@ public class BoatGameManager : MonoBehaviour
         {
             instance = this;
         }
+
+        PregameSetup();
     }
 
-    
+    private void PregameSetup()
+    {
+        // remove glow from icons
+        foreach (GlowOutlineController item in glowOutlineControllers)
+            item.ToggleGlowOutline(false);
+    }
 }

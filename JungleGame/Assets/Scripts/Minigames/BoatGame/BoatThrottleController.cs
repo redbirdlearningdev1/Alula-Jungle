@@ -5,13 +5,30 @@ using UnityEngine.EventSystems;
 
 public class BoatThrottleController : MonoBehaviour
 {
+    public static BoatThrottleController instance;
+
     private bool holdingThrottle;
     private const float maxY = -1.7f;
     private const float minY = -4.2f;
     private const float posX = 4.3f;
 
+    public bool isOn = false;
+
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+
+        Vector3 startPos = new Vector3(posX, minY, 0f);
+        transform.position = startPos;
+    }
+
     void Update()
     {
+        // return if off
+        if (!isOn)
+            return;
+
         if (Input.GetMouseButton(0) && holdingThrottle)
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -47,5 +64,10 @@ public class BoatThrottleController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public float GetThrottleSpeed()
+    {
+        return Mathf.InverseLerp(minY, maxY, transform.position.y);
     }
 }
