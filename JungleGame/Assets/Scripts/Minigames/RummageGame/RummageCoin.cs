@@ -9,6 +9,11 @@ public class RummageCoin : MonoBehaviour
     public int logIndex;
     public Transform clothPos;
     public Transform pileParent;
+    public Vector3 pileMovement1;
+    public Vector3 pileMovement2;
+    public Vector3 Origin;
+    private Vector3 scaleNormal = new Vector3(.67f, .67f, 0f);
+    private Vector3 scaleSmall = new Vector3(.33f, .33f, 0f);
     public float moveSpeed = 5f;
 
     private Animator animator;
@@ -30,6 +35,7 @@ public class RummageCoin : MonoBehaviour
         myCollider.size = rt.sizeDelta;
 
         image = GetComponent<Image>();
+        
     }
 
     void Update()
@@ -40,6 +46,10 @@ public class RummageCoin : MonoBehaviour
     public void ReturnToCloth()
     {
         StartCoroutine(ReturnToClothRoutine(clothPos.position));
+    }
+    public void setOrigin()
+    {
+        Origin = transform.position;
     }
 
     private IEnumerator ReturnToClothRoutine(Vector3 target)
@@ -67,6 +77,81 @@ public class RummageCoin : MonoBehaviour
             yield return null;
         }
     }
+
+    public void grow()
+    {
+        StartCoroutine(growRoutine(scaleNormal));
+    }
+    public void shrink()
+    {
+        StartCoroutine(growRoutine(scaleSmall));
+    }
+
+    private IEnumerator growRoutine(Vector3 target)
+    {
+        Vector3 currStart = transform.localScale;
+        Debug.Log(currStart);
+        float timer = 0f;
+        float maxTime = 0.5f;
+
+        while (true)
+        {
+            // animate movement
+            timer += Time.deltaTime * 2;
+            if (timer < maxTime)
+            {
+                transform.localScale = Vector3.Lerp(currStart, target, timer / maxTime);
+            }
+            else
+            {
+                transform.localScale = target;
+
+                yield break;
+            }
+
+            yield return null;
+        }
+    }
+
+    public void BounceIn1()
+    {
+        StartCoroutine(BounceOutRoutine(Origin));
+    }
+    public void BounceOut1()
+    {
+        StartCoroutine(BounceOutRoutine(pileMovement1));
+    }
+    public void BounceToCloth()
+    {
+        StartCoroutine(BounceOutRoutine(clothPos.position));
+    }
+
+    private IEnumerator BounceOutRoutine(Vector3 target)
+    {
+        Debug.Log("Here");
+        Vector3 currStart = transform.position;
+        float timer = 0f;
+        float maxTime = 0.5f;
+
+        while (true)
+        {
+            // animate movement
+            timer += Time.deltaTime * 1;
+            if (timer < maxTime)
+            {
+                transform.position = Vector3.Lerp(currStart, target, timer / maxTime);
+            }
+            else
+            {
+                transform.position = target;
+                transform.SetParent(pileParent);
+                yield break;
+            }
+
+            yield return null;
+        }
+    }
+
 
     public void SetCoinType(ActionWordEnum type)
     {
@@ -128,4 +213,6 @@ public class RummageCoin : MonoBehaviour
             yield return null;
         }
     }
+
+    
 }

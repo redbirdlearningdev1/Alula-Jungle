@@ -8,6 +8,7 @@ public class Bag : MonoBehaviour
     private int currBag = 0;
     private const int maxBag = 3;
 
+
     [Header("Objects")]
     [SerializeField] private Image bag;
     [SerializeField] private Image shadow;
@@ -32,6 +33,7 @@ public class Bag : MonoBehaviour
         bag.sprite = bagSprites[currBag];
         shadow.sprite = shadowSprites[currBag];
     }
+    
 
     public void DowngradeBag()
     {

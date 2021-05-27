@@ -59,5 +59,11 @@ public class pileRummage : MonoBehaviour
     public void pileComplete()
     {
         chosen = false;
+
+    }
+    public void pileDone()
+    {
+        chosen = false;
+        Pile.sprite = pileSprites[1];
     }
 }

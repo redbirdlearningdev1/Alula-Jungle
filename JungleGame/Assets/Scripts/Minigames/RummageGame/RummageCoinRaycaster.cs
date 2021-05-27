@@ -40,7 +40,8 @@ public class RummageCoinRaycaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("Bag"))
                     {
-                        isCorrect = RummageGameManager.instance.EvaluateSelectedRummageCoin(selectedRummageCoin);
+                        Debug.Log(selectedRummageCoin.type);
+                        isCorrect = RummageGameManager.instance.EvaluateSelectedRummageCoin(selectedRummageCoin.type);
                     }
                 }
             }
