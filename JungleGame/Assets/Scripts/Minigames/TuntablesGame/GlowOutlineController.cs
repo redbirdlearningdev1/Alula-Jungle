@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using SpriteGlow;
 
+[RequireComponent(typeof(SpriteGlowEffect))]
 public class GlowOutlineController : MonoBehaviour
 {
     public bool deactivated;
-    [Header("Glow Outline Variables")]
-    public SpriteGlowEffect spriteGlow;
+    
+    private SpriteGlowEffect spriteGlow;
     public const float glowTime = 0.2f;
     public const float brightnessOn = 3f;
     public const float brightnessOff = 0f;
@@ -23,8 +24,9 @@ public class GlowOutlineController : MonoBehaviour
 
     void Awake()
     {
+        spriteGlow = GetComponent<SpriteGlowEffect>();
         // turn off on init
-        spriteGlow.OutlineWidth = outlineOff;
+        ToggleGlowOutline(false);
     }
 
     public void SetGlowSettings(float brightness, int outline, Color color, bool lerpAnim)
