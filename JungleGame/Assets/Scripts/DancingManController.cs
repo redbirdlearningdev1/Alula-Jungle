@@ -147,7 +147,7 @@ public class DancingManController : MonoBehaviour
     public void PlayFrustrating()
     {
         animator.Play("frustrating");
-        textureAtlas.ChoiceFace();
+        textureAtlas.frustratingFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
@@ -196,7 +196,7 @@ public class DancingManController : MonoBehaviour
     public void PlayOrcs()
     {
         animator.Play("orcs");
-        textureAtlas.OrcsFace();
+        textureAtlas.orcsFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
@@ -231,14 +231,14 @@ public class DancingManController : MonoBehaviour
     public void PlaySpider()
     {
         animator.Play("spider");
-        textureAtlas.Spider2Face();
+        textureAtlas.spider2Face();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlaySpider2()
     {
         animator.Play("spider");
-        textureAtlas.SpiderFace();
+        textureAtlas.spiderFace();
         StartCoroutine(TextureSwapRoutine());
     }
 

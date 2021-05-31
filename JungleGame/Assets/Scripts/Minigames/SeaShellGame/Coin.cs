@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Coin : MonoBehaviour
 {
-    
     public ActionWordEnum type;
 
     [SerializeField] public List<Sprite> images;
@@ -26,7 +25,6 @@ public class Coin : MonoBehaviour
     
     void Awake()
     {
-
         RectTransform rt = GetComponent<RectTransform>();
         animator = GetComponent<Animator>();
         GetComponent<Animator>().enabled = false;
