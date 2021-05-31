@@ -29,8 +29,8 @@ public class GameManager : DontDestroy<GameManager>
         if (devModeActivated)
         {
             // press 'D' to go to the dev menu
-            if (Input.GetKeyDown(KeyCode.D))
-                LoadScene("DevMenu", true);
+            // if (Input.GetKeyDown(KeyCode.D))
+            //     LoadScene("DevMenu", true);
             // press 'F' to toggle between fixed and broken map sprites
             if (Input.GetKeyDown(KeyCode.F))
             {

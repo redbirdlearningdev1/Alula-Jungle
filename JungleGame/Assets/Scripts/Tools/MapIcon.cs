@@ -1,17 +1,23 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public enum AnimatedIcon 
 {
     none, fire, shrine, lamp
 }
 
+public enum StarLocation
+{
+    up, down, none
+}
+
 public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
+    [Header("Game Data")]
     public GameData gameData;
 
+    [Header("Animation Stuff")]
     public bool canBeFixed;
     public AnimatedIcon animatedIcon;
 
@@ -19,19 +25,50 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     [SerializeField] private Sprite fixedSprite;
 
     private MeshRenderer meshRenderer;
-    private Image img;
+    private SpriteRenderer spriteRenderer;
     private Animator animator;
     [SerializeField] private Animator repairAnimator;
     private static float pressedScaleChange = 0.95f;
     private bool isPressed = false;
     private bool isFixed = false;
 
+    [Header("Stars")]
+    public StarLocation starLocation;
+    // [SerializeField] private GameObject upStarObj;
+    // [SerializeField] private GameObject downStarObj;
+    [SerializeField] private Star[] upStars;
+    [SerializeField] private Star[] downStars;
+    private Star[] currentStars;
+
+
     void Awake() 
     {
         meshRenderer = GetComponent<MeshRenderer>();
-        img = GetComponent<Image>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         if (animatedIcon != AnimatedIcon.none) animator = GetComponent<Animator>();
         if (repairAnimator) repairAnimator.Play("defaultAnimation");
+
+        // configure current stars
+        InitStars();
+    }
+
+    private void InitStars()
+    {
+        switch (starLocation)
+        {
+            case StarLocation.up:
+                currentStars = upStars;
+                break;
+            case StarLocation.down:
+                currentStars = downStars;
+                break;
+            default:
+            case StarLocation.none:
+                currentStars = null;
+                break;
+        }
+
+        // set stars to empty or filled based on SIS data
     }
 
     public void SetOutineColor(Color color)
@@ -47,8 +84,8 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         {
             default:
             case AnimatedIcon.none:
-                if (!opt) img.sprite = brokenSprite;
-                else img.sprite = fixedSprite;
+                if (!opt) spriteRenderer.sprite = brokenSprite;
+                else spriteRenderer.sprite = fixedSprite;
                 break;
             case AnimatedIcon.fire:
                 if (!opt) animator.Play("fireBroken");

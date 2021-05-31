@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: mudslide_obj
   m_EditorClassIdentifier: 
   _name: mudslide
-  audio: {fileID: 8300000, guid: f534d4d519c387044b4b9c6a7f6960b6, type: 3}
+  audio: {fileID: 8300000, guid: 467507ce0c32b204d8930b0bd9f29bb3, type: 3}
   animation: mudslide
   _enum: 0
   doorIcon: {fileID: 21300000, guid: de7924d380f499145aa8c370841d679d, type: 3}
