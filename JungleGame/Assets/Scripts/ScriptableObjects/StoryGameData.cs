@@ -6,21 +6,22 @@ using UnityEngine.UI;
 [System.Serializable]
 public class StoryGameSegment
 {
-    public float duration;
+    public string text;
+    public ActionWordEnum actionWord;
     public AudioClip audio;
-    public ActionWord actionWord;
+    public float audioDuration; // time before action word is read
 }
 
-[System.Serializable]
-public class StoryGameImage
+public enum StoryGameBackground
 {
-    public Sprite sprite;
-    public Vector2 resolution;
+    Beginning, Emerging, followRed, Prologue, Resolution
 }
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/StoryGameData", order = 0)]
 public class StoryGameData : GameData
 {
+    [Header("Story Game Data")]
+    public string storyName;
+    public StoryGameBackground background;
     public List<StoryGameSegment> segments;
-    public List<StoryGameImage> scrollingBackgroundImages;
 }

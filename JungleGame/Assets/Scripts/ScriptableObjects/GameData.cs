@@ -11,6 +11,7 @@ public enum GameType
 
 public class GameData : ScriptableObject
 {
+    [Header("General Game Data")]
     public GameType gameType;
     public string sceneName;
 }

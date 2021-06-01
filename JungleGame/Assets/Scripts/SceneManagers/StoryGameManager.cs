@@ -5,164 +5,126 @@ using UnityEngine.UI;
 using TMPro;
 
 public class StoryGameManager : MonoBehaviour
-{
-    [Header("Story Map Data")]
-    public float volumeInputThreshold;
+{   
+    [Header("Dev Mode Stuff")]
+    public StoryGameData devData;
 
-    private StoryGameData data;
-    private int index = 0;
-    private bool waitForSegment = true;
-    private bool waitForAudioInput = true;
+    [Header("Game Object Variables")]
+    [SerializeField] private LogCoin coin;
+    [SerializeField] private DancingManController dancingMan;
 
-    [Header("Story Map Navigation")]
-    [SerializeField] private RectTransform StoryMap;
-    [SerializeField] private GameObject backgroundObject;
-    private float mapMinX;
-    private float mapMaxX;
+    [Header("Shake Function Variables")]
+    public float shakeDuration;
+    public float shakeSpeed;
+    public float shakeAmount;
 
-    // [Header("Birb")]
-    // [SerializeField] private GameObject birb;
-    // [SerializeField] private Transform leftBirbBounds;
-    // [SerializeField] private Transform rightBirbBounds;
+    [Header("Text Variables")]
+    [SerializeField] private Transform textLayoutGroup;
+    [SerializeField] private GameObject textWrapperObject;
+    [SerializeField] private Transform actionWordStopPos;
+    // text colors used 
+    public Color defaultTextColor;
+    public Color actionTextColor;
 
-    [Header("Dev")]
-    [SerializeField] private TextMeshProUGUI actionWordText;
-    [SerializeField] private GameObject continueButton;
+    private List<Transform> actionWords;
+    private int currWord;
+
+
+
+
+
+    private StoryGameData storyGameData;
 
     void Awake()
     {
         GameManager.instance.SceneInit();
 
-        // stop music from playing
-        AudioManager.instance.StopMusic();
+        // load in game data from game manager
+        GameData data = GameManager.instance.GetData();
+        // make sure it is usable
+        if (data == null || data.gameType != GameType.StoryGame)
+        {
+            // use dev data if in dev mode
+            if (GameManager.instance.devModeActivated)
+                storyGameData = devData;
+            else // send error
+                GameManager.instance.SendError(this, "invalid game data");
+        }   
     }
 
     void Start()
     {
-        // disable action word
-        actionWordText.gameObject.SetActive(false);
-        continueButton.SetActive(false);
-
-
-        // get data from game manager and assert it is of type StoryGame
-        GameData temp_data = GameManager.instance.GetData();
-        print (temp_data);
-
-        if (temp_data.gameType != GameType.StoryGame)
-        {
-            GameManager.instance.SendError(this, "GameData is not of type: StoryGame");
-        }
-        else
-        {
-            this.data = temp_data as StoryGameData;
-        }
-
-
-        if (data != null)
-        {
-            // create and set the background images
-            foreach (StoryGameImage img in data.scrollingBackgroundImages)
-            {
-                GameObject obj = Instantiate(backgroundObject, StoryMap);
-                obj.GetComponent<Image>().sprite = img.sprite;
-                obj.GetComponent<MapObjectHelper>().ResetResolution(img.resolution);
-            }
-
-            StartCoroutine(StartStoryGame());
-        }
-        else
-        {
-            GameManager.instance.SendError(this, "StoryGameData is null");
-        }
+        PregameSetup();
+        StartCoroutine(PartOneRoutine());
     }
 
-    void Update()
+    private void PregameSetup()
     {
-        if (waitForAudioInput)
+        // make action word list
+        actionWords = new List<Transform>();
+        currWord = 0;
+
+        // add the text objects to the layout group
+        foreach (StoryGameSegment seg in storyGameData.segments)
         {
-            float volumeLevel = AudioInput.volumeLevel;
-            if (volumeLevel >= volumeInputThreshold)
-            {
-                waitForAudioInput = false;
-                actionWordText.gameObject.SetActive(false);
-                continueButton.SetActive(false);
-            }
+            var textObj = Instantiate(textWrapperObject, textLayoutGroup);
+            textObj.GetComponent<TextWrapper>().SetText(seg.text);
+            textObj.GetComponent<TextWrapper>().SetTextColor(defaultTextColor, false);
+
+            var wordObj = Instantiate(textWrapperObject, textLayoutGroup);
+            wordObj.GetComponent<TextWrapper>().SetText(seg.actionWord.ToString());
+            wordObj.GetComponent<TextWrapper>().SetTextColor(defaultTextColor, false);
+            actionWords.Add(wordObj.transform);
+
+            // add small space inbetween segments
+            // var spaceObj = Instantiate(textWrapperObject, textLayoutGroup);
+            // spaceObj.GetComponent<TextWrapper>().SetText("  ");
         }
-    }
+    }   
 
-    private IEnumerator StartStoryGame()
+    private IEnumerator PartOneRoutine()
     {
-        yield return new WaitForSeconds(1f);
-
-        foreach(StoryGameSegment segment in data.segments)
+        foreach (StoryGameSegment seg in storyGameData.segments)
         {
-            waitForSegment = true;
-            StartCoroutine(PlaySegment(segment));
+            coin.SetCoinType(seg.actionWord);
+            AudioManager.instance.PlayTalk(seg.audio);
 
-            while (waitForSegment)
-                yield return null;
+            yield return new WaitForSeconds(seg.audioDuration);
+
+            AudioClip actionWordAudio = GameManager.instance.GetActionWord(seg.actionWord).audio;
+            AudioManager.instance.PlayTalk(actionWordAudio);
+            actionWords[currWord].GetComponent<TextWrapper>().SetTextColor(actionTextColor, true);
+            currWord++;
+            dancingMan.PlayUsingPhonemeEnum(seg.actionWord);
+            ShakeCoin();
             
-            waitForAudioInput = true;
-            while(waitForAudioInput)
-                yield return null;
+            yield return new WaitForSeconds(2f);
         }
-
-        yield return new WaitForSeconds(1f);
-        GameManager.instance.LoadScene("ScrollMap", true);
     }
 
-    private IEnumerator PlaySegment(StoryGameSegment segment)
+    private void ShakeCoin()
     {
-        // move scrolling background
-        //StartCoroutine(StoryMapSmoothTransition());
-
-        // play audio
-        AudioManager.instance.PlayTalk(segment.audio);
-
-        // limit player input
-
-        yield return new WaitForSeconds(segment.duration);
-
-        // play action word
-        ActionWord word =  segment.actionWord;
-        AudioManager.instance.PlayTalk(word.audio);
-        actionWordText.text = "action word: " + word._name;
-
-        yield return new WaitForSeconds(0.5f);
-        continueButton.SetActive(true);
-        actionWordText.gameObject.SetActive(true);
-
-        waitForSegment = false;
+        StartCoroutine(ShakeCoinRoutine(shakeDuration));
     }
 
-    private IEnumerator StoryMapSmoothTransition(float start, float end, float transitionTime)
+    private IEnumerator ShakeCoinRoutine(float duration)
     {
-        GameManager.instance.SetRaycastBlocker(true);
         float timer = 0f;
+        Vector3 originalPos = coin.transform.position;
 
-        StoryMap.position = new Vector3(start, 0f, 0f);
-        while (timer < transitionTime)
+        while (true)
         {
             timer += Time.deltaTime;
-            float pos = Mathf.Lerp(start, end, Mathf.SmoothStep(0f, 1f, timer / transitionTime));
-            StoryMap.position = new Vector3(pos, 0f, 0f);
+            if (timer > duration)
+            {
+                coin.transform.position = originalPos;
+                break;
+            }
+
+            Vector3 pos = originalPos;
+            pos.x = originalPos.x + Mathf.Sin(Time.time * shakeSpeed) * shakeAmount;
+            coin.transform.position = pos;
             yield return null;
         }
-        StoryMap.position = new Vector3(end, 0f, 0f);
-
-        GameManager.instance.SetRaycastBlocker(false);
-    }
-
-    /* 
-    ################################################
-    #   DEV STUFF
-    ################################################
-    */
-
-    public void OnContinueButtonPressed()
-    {
-        waitForAudioInput = false;
-        actionWordText.gameObject.SetActive(false);
-        continueButton.SetActive(false);
     }
 }
