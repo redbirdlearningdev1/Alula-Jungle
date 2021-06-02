@@ -80,20 +80,8 @@ public class StoryGameManager : MonoBehaviour
 
     private void PregameSetup()
     {
-        // TODO: set scrolling background
-        switch (storyGameData.background)
-        {
-            case StoryGameBackground.Beginning:
-                break;
-            case StoryGameBackground.Emerging:
-                break;
-            case StoryGameBackground.FollowRed:
-                break;
-            case StoryGameBackground.Prologue:
-                break;
-            case StoryGameBackground.Resolution:
-                break;
-        }
+        // set scrolling background
+        ScrollingBackground.instance.SetBackgroundType(storyGameData.background);
 
         // make action word list
         actionWords = new List<Transform>();
@@ -187,10 +175,16 @@ public class StoryGameManager : MonoBehaviour
 
     private IEnumerator PartTwoRoutine()
     {
+        int segCount = 1;
+        int segMax = storyGameData.segments.Count;
         foreach (StoryGameSegment seg in storyGameData.segments)
         {
             coin.SetCoinType(seg.actionWord);
             AudioManager.instance.PlayTalk(seg.audio);
+
+            // move gorilla to new pos
+            ScrollingBackground.instance.LerpScrollPosTo((float)segCount / (float)segMax, seg.audioDuration);
+            segCount++;
 
             // move text until action word is in place
             StartCoroutine(MoveTextToNextActionWord(seg.audioDuration));
@@ -210,6 +204,9 @@ public class StoryGameManager : MonoBehaviour
                 yield return null;
 
             // TODO: play correct audio cue
+
+            // play gorilla "yeah" animation
+            ScrollingBackground.instance.GorillaCorrectAnim();
 
             yield return new WaitForSeconds(1f);
 
