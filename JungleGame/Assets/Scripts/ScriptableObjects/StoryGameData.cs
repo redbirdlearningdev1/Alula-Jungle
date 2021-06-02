@@ -14,7 +14,7 @@ public class StoryGameSegment
 
 public enum StoryGameBackground
 {
-    Beginning, Emerging, followRed, Prologue, Resolution
+    Beginning, Emerging, FollowRed, Prologue, Resolution
 }
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/StoryGameData", order = 0)]
