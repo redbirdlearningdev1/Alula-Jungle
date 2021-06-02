@@ -62,7 +62,9 @@ public class CoinRaycaster : MonoBehaviour
                         selectedCoin = result.gameObject.GetComponent<LogCoin>();
                         selectedCoin.PlayPhonemeAudio();
                         selectedCoin.gameObject.transform.SetParent(selectedCoinParent);
+
                     }
+                    
                 }
             }
         }

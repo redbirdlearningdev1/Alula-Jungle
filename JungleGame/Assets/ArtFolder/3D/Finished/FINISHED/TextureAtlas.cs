@@ -29,161 +29,171 @@ public class TextureAtlas : MonoBehaviour {
     public Texture mudslide2;
     public Texture spider2;
 
-    private List<Texture> textures;
-
-    void Start() 
-    { 
+    void Start() { 
+    
+        rend = GetComponent<MeshRenderer>();
         rend.sharedMaterial.mainTexture = basetex;
-        CreateTextureList();
-    }
-
-    private void CreateTextureList()
-    {
-        textures= new List<Texture>();
-        textures.Add(basetex);
-        textures.Add(baby);
-        textures.Add(backpack);
-        textures.Add(bumphead);
-        textures.Add(choice);
-        textures.Add(explorer);
-        textures.Add(frustrating);
-        textures.Add(give);
-        textures.Add(gorilla);
-        textures.Add(hello);
-        textures.Add(listen);
-        textures.Add(mudslide);
-        textures.Add(orcs);
-        textures.Add(pirate);
-        textures.Add(poop);
-        textures.Add(scared);
-        textures.Add(sounds);
-        textures.Add(spider);
-        textures.Add(strongwind);
-        textures.Add(thatguy);
-        textures.Add(think);
-        textures.Add(mudslide2);
-        textures.Add(spider2);
-    }
-
-    public void RandomTexture()
-    {
-        int index = Random.Range(0, textures.Count);
-        rend.sharedMaterial.mainTexture = textures[index];
     }
 	
-	public void ReturnToBase() 
-    {
+	public void returntobase() {
+
         rend.sharedMaterial.mainTexture = basetex;
+
     }
 
-    public void BabyFace()
+    public void babyFace()
     {
+
         rend.sharedMaterial.mainTexture = baby;
+
     }
 
 
-    public void BackpackFace()
+    public void backpackFace()
     {
+
         rend.sharedMaterial.mainTexture = backpack;
+
     }
 
-    public void BumpheadFace()
+    public void bumpheadFace()
     {
+
         rend.sharedMaterial.mainTexture = bumphead;
+
     }
 
-    public void ChoiceFace()
+    public void choiceFace()
     {
+
         rend.sharedMaterial.mainTexture = choice;
+
     }
 
-    public void ExplorerFace()
+    public void explorerFace()
     {
+
         rend.sharedMaterial.mainTexture = explorer;
+
     }
 
-    public void FrustratingFace()
+    public void frustratingFace()
     {
+
         rend.sharedMaterial.mainTexture = frustrating;
+
     }
 
-    public void GiveFace()
+    public void giveFace()
     {
+
         rend.sharedMaterial.mainTexture = give;
+
     }
 
-    public void GorillaFace()
+    public void gorillaFace()
     {
+
         rend.sharedMaterial.mainTexture = gorilla;
+
     }
 
-    public void HelloFace()
+    public void helloFace()
     {
+
         rend.sharedMaterial.mainTexture = hello;
+
     }
 
-    public void ListenFace()
+    public void listenFace()
     {
+
         rend.sharedMaterial.mainTexture = listen;
+
     }
 
-    public void MudslideFace()
+    public void mudslideFace()
     {
+
         rend.sharedMaterial.mainTexture = mudslide;
+
     }
 
-    public void OrcsFace()
+    public void orcsFace()
     {
+
         rend.sharedMaterial.mainTexture = orcs;
+
     }
-    
-    public void PirateFace()
+
+    public void pirateFace()
     {
+
         rend.sharedMaterial.mainTexture = pirate;
+
     }
 
-    public void PoopFace()
+    public void poopFace()
     {
+
         rend.sharedMaterial.mainTexture = poop;
+
     }
 
-    public void ScaredFace()
+    public void scaredFace()
     {
+
         rend.sharedMaterial.mainTexture = scared;
+
     }
 
-    public void SoundsFace()
+    public void soundsFace()
     {
+
         rend.sharedMaterial.mainTexture = sounds;
+
     }
 
-    public void SpiderFace()
+    public void spiderFace()
     {
+
         rend.sharedMaterial.mainTexture = spider;
+
     }
 
-    public void StrongwindFace()
+    public void strongwindFace()
     {
+
         rend.sharedMaterial.mainTexture = strongwind;
+
     }
 
-    public void ThatGuyFace()
+    public void thatguyFace()
     {
+
         rend.sharedMaterial.mainTexture = thatguy;
+
     }
 
-    public void ThinkFace()
+    public void thinkFace()
     {
+
         rend.sharedMaterial.mainTexture = think;
+
     }
 
-    public void Mudslide2Face()
+    public void mudslide2Face()
     {
+
         rend.sharedMaterial.mainTexture = mudslide2;
+
     }
 
-    public void Spider2Face()
+    public void spider2Face()
     {
+
         rend.sharedMaterial.mainTexture = spider2;
+
     }
 }
+
