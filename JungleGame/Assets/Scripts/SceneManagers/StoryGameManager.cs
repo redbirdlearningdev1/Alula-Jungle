@@ -22,6 +22,7 @@ public class StoryGameManager : MonoBehaviour
     [SerializeField] private Transform textLayoutGroup;
     [SerializeField] private GameObject textWrapperObject;
     [SerializeField] private Transform actionWordStopPos;
+    public float textHeight;
     // text colors used 
     public Color defaultTextColor;
     public Color actionTextColor;
@@ -89,6 +90,9 @@ public class StoryGameManager : MonoBehaviour
             coin.SetCoinType(seg.actionWord);
             AudioManager.instance.PlayTalk(seg.audio);
 
+            // move text until action word is in place
+            StartCoroutine(MoveTextToNextActionWord(seg.audioDuration));
+
             yield return new WaitForSeconds(seg.audioDuration);
 
             AudioClip actionWordAudio = GameManager.instance.GetActionWord(seg.actionWord).audio;
@@ -99,6 +103,27 @@ public class StoryGameManager : MonoBehaviour
             ShakeCoin();
             
             yield return new WaitForSeconds(2f);
+        }
+    }
+
+    private IEnumerator MoveTextToNextActionWord(float duration)
+    {
+        float start = textLayoutGroup.position.x;
+        float end = start - Mathf.Abs(actionWordStopPos.position.x - actionWords[currWord].transform.position.x);
+        float timer = 0f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+
+            if (timer > duration)
+            {
+                break;
+            }
+
+            float tempX = Mathf.Lerp(start, end, timer / duration);
+            textLayoutGroup.position = new Vector3(tempX, textHeight, 0f);
+            yield return null;
         }
     }
 
