@@ -139,6 +139,10 @@ public class StoryGameManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         currWord = 0; // reset curr word index
 
+        // change action words to be default color
+        foreach (Transform t in actionWords)
+            t.GetComponent<TextWrapper>().SetTextColor(defaultTextColor, false);
+
         // start part two (repeating)
         StartCoroutine(PartTwoRoutine());
 
@@ -151,6 +155,12 @@ public class StoryGameManager : MonoBehaviour
 
     private IEnumerator PartOneRoutine()
     {
+        // set coin init before pause
+        coin.SetCoinType(storyGameData.segments[0].actionWord);
+
+        // small pause before game begins
+        yield return new WaitForSeconds(1f);
+        
         foreach (StoryGameSegment seg in storyGameData.segments)
         {
             coin.SetCoinType(seg.actionWord);
@@ -251,7 +261,7 @@ public class StoryGameManager : MonoBehaviour
         float end = start - Mathf.Abs(actionWordStopPos.position.x - actionWords[currWord].transform.position.x);
         float timer = 0f;
 
-        print ("end: " + end);
+        //print ("end: " + end);
 
         while (true)
         {
