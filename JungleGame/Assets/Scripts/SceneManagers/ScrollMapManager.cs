@@ -10,8 +10,6 @@ public class ScrollMapManager : MonoBehaviour
     [SerializeField] private GameObject[] mapLocations; // the images that make up the map
     [SerializeField] private List<Transform> cameraLocations; // the positions where the camera stops at
     public float staticMapYPos;
-    private float mapMinX;
-    private float mapMaxX;
     private int mapPosIndex;
     private bool navButtonsDisabled;
     public float transitionTime;
@@ -30,7 +28,7 @@ public class ScrollMapManager : MonoBehaviour
         GameManager.instance.SceneInit();
 
         // play test song
-        AudioManager.instance.PlaySong(Song.JungleGameTestSong);
+        //AudioManager.instance.PlaySong(Song.JungleGameTestSong);
     }
 
     void Start()
@@ -42,57 +40,53 @@ public class ScrollMapManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        // set map bounds for scrolling
-        mapMinX = GetXPosFromMapLocationIndex(0);
-        mapMaxX = GetXPosFromMapLocationIndex(mapLocations.Length - 1);
-
         // start at pos index 0
         mapPosIndex = 0;
         SetMapPosition(mapPosIndex);
 
         // set birb in correct position
-        float xPos = Mathf.Lerp(leftBirbBounds.position.x, rightBirbBounds.position.x, GetMapPositionPercentage(mapPosIndex));
-        birb.transform.position = new Vector3(xPos, birb.transform.position.y, birb.transform.position.z);
+        // float xPos = Mathf.Lerp(leftBirbBounds.position.x, rightBirbBounds.position.x, GetMapPositionPercentage(mapPosIndex));
+        // birb.transform.position = new Vector3(xPos, birb.transform.position.y, birb.transform.position.z);
     }
 
     void Update()
     {
-        if (moveBirb)
-        {
-            float xPos = 0;
-            float mousePos = Input.mousePosition.x;
+        // if (moveBirb)
+        // {
+        //     float xPos = 0;
+        //     float mousePos = Input.mousePosition.x;
 
-            if (mousePos > rightBirbBounds.position.x)
-                xPos = rightBirbBounds.position.x;
-            else if (mousePos < leftBirbBounds.position.x)
-                xPos = leftBirbBounds.position.x;
-            else 
-                xPos = mousePos;
+        //     if (mousePos > rightBirbBounds.position.x)
+        //         xPos = rightBirbBounds.position.x;
+        //     else if (mousePos < leftBirbBounds.position.x)
+        //         xPos = leftBirbBounds.position.x;
+        //     else 
+        //         xPos = mousePos;
 
-            /*  
-            if (xPos < prevBirbPos + birbThresh && xPos > prevBirbPos - birbThresh)
-                StartCoroutine(SetBirbSpriteDelay(birbPressed, 0.2f));
-            else
-                StartCoroutine(SetBirbSpriteDelay(birbMove, 0.2f));
-            prevBirbPos = xPos;
-            */
+        //     /*  
+        //     if (xPos < prevBirbPos + birbThresh && xPos > prevBirbPos - birbThresh)
+        //         StartCoroutine(SetBirbSpriteDelay(birbPressed, 0.2f));
+        //     else
+        //         StartCoroutine(SetBirbSpriteDelay(birbMove, 0.2f));
+        //     prevBirbPos = xPos;
+        //     */
 
-            birb.transform.position = new Vector3(xPos, birb.transform.position.y, birb.transform.position.z); // move birb
-            float birbPercent = Mathf.InverseLerp(leftBirbBounds.position.x, rightBirbBounds.position.x, birb.transform.position.x);
-            SetMapPosition(birbPercent); // set the position of the map
-        }
-        else
-        {
-            float mapPos = GetMapPositionPercentage(Map.transform.position.x);
-            float birbPos = Mathf.Lerp(leftBirbBounds.position.x, rightBirbBounds.position.x, mapPos);
-            birb.transform.position = new Vector3(birbPos, birb.transform.position.y, birb.transform.position.z);
+        //     birb.transform.position = new Vector3(xPos, birb.transform.position.y, birb.transform.position.z); // move birb
+        //     float birbPercent = Mathf.InverseLerp(leftBirbBounds.position.x, rightBirbBounds.position.x, birb.transform.position.x);
+        //     SetMapPosition(birbPercent); // set the position of the map
+        // }
+        // else
+        // {
+        //     float mapPos = GetMapPositionPercentage(Map.transform.position.x);
+        //     float birbPos = Mathf.Lerp(leftBirbBounds.position.x, rightBirbBounds.position.x, mapPos);
+        //     birb.transform.position = new Vector3(birbPos, birb.transform.position.y, birb.transform.position.z);
             
 
-            /*
-            if (birbImage.sprite != birbNorm)
-                StartCoroutine(SetBirbSpriteDelay(birbNorm, 0.2f));
-            */
-        }
+        //     /*
+        //     if (birbImage.sprite != birbNorm)
+        //         StartCoroutine(SetBirbSpriteDelay(birbNorm, 0.2f));
+        //     */
+        // }
     }
 
     /* 
@@ -112,7 +106,7 @@ public class ScrollMapManager : MonoBehaviour
         mapPosIndex--;
         if (mapPosIndex < 0)
         {
-            //print ("left bump!");
+            print ("left bump!");
             mapPosIndex = 0;
             StartCoroutine(BumpAnimation(true));
             return;
@@ -120,7 +114,7 @@ public class ScrollMapManager : MonoBehaviour
 
         // move map to next left map location
         float x = GetXPosFromMapLocationIndex(mapPosIndex);
-        StartCoroutine(MapSmoothTransition(Map.position.x, Map.position.x - x, transitionTime));
+        StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, transitionTime));
     }
 
     public void OnGoRightPressed()
@@ -132,17 +126,17 @@ public class ScrollMapManager : MonoBehaviour
         StartCoroutine(NavInputDelay(transitionTime));
 
         mapPosIndex++;
-        if (mapPosIndex > mapLocations.Length - 1)
+        if (mapPosIndex > cameraLocations.Count - 1)
         {
-            //print ("right bump!");
-            mapPosIndex = mapLocations.Length - 1;
+            print ("right bump!");
+            mapPosIndex = cameraLocations.Count - 1;
             StartCoroutine(BumpAnimation(false));
             return;
         }
         
         // move map to next right map location
         float x = GetXPosFromMapLocationIndex(mapPosIndex);
-        StartCoroutine(MapSmoothTransition(Map.position.x, Map.position.x - x, transitionTime));
+        StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, transitionTime));
     }
 
     private IEnumerator NavInputDelay(float delay)
@@ -153,17 +147,19 @@ public class ScrollMapManager : MonoBehaviour
 
     private IEnumerator BumpAnimation(bool isLeft)
     {   
+        print("bump detected!");
         if (isLeft)
         {
-            StartCoroutine(MapSmoothTransition(Map.position.x, Map.position.x + bumpAmount, (bumpAnimationTime / 2)));
+
+            StartCoroutine(MapSmoothTransition(Map.localPosition.x, Map.localPosition.x + bumpAmount, (bumpAnimationTime / 2)));
             yield return new WaitForSeconds((bumpAnimationTime / 2));
-            StartCoroutine(MapSmoothTransition(Map.position.x, Map.position.x - GetXPosFromMapLocationIndex(0), (bumpAnimationTime / 2)));
+            StartCoroutine(MapSmoothTransition(Map.localPosition.x, GetXPosFromMapLocationIndex(0), (bumpAnimationTime / 2)));
         }
         else
         {
-            StartCoroutine(MapSmoothTransition(Map.position.x, Map.position.x - bumpAmount, (bumpAnimationTime / 2)));
+            StartCoroutine(MapSmoothTransition(Map.localPosition.x, Map.localPosition.x - bumpAmount, (bumpAnimationTime / 2)));
             yield return new WaitForSeconds((bumpAnimationTime / 2));
-            StartCoroutine(MapSmoothTransition(Map.position.x, Map.position.x - GetXPosFromMapLocationIndex(mapLocations.Length - 1), (bumpAnimationTime / 2)));
+            StartCoroutine(MapSmoothTransition(Map.localPosition.x, GetXPosFromMapLocationIndex(cameraLocations.Count - 1), (bumpAnimationTime / 2)));
         }
     }
 
@@ -173,69 +169,70 @@ public class ScrollMapManager : MonoBehaviour
     ################################################
     */
 
-    private void GoToNearestMapLocation()
-    {
-        float currPercent = GetMapPositionPercentage(Map.position.x);
-        //print ("current location percent: " + currPercent);
+    // private void GoToNearestMapLocation()
+    // {
+    //     float currPercent = GetMapPositionPercentage(Map.position.x);
+    //     //print ("current location percent: " + currPercent);
 
-        float minDist = float.MaxValue;
-        int minIndex = 0;
-        for (int i = 0; i < mapLocations.Length; i++)
-        {
-            float indexPercent = GetMapPositionPercentage(i);
-            float dist = Mathf.Abs(currPercent - indexPercent);
-            //print ("location: " + i + ", percent: " + indexPercent + ", distance from current: " + dist);
+    //     float minDist = float.MaxValue;
+    //     int minIndex = 0;
+    //     for (int i = 0; i < cameraLocations.Count; i++)
+    //     {
+    //         float indexPercent = GetMapPositionPercentage(i);
+    //         float dist = Mathf.Abs(currPercent - indexPercent);
+    //         //print ("location: " + i + ", percent: " + indexPercent + ", distance from current: " + dist);
 
-            if (dist < minDist)
-            {
-                minDist = dist;
-                minIndex = i;
-            }
-        }
+    //         if (dist < minDist)
+    //         {
+    //             minDist = dist;
+    //             minIndex = i;
+    //         }
+    //     }
 
-        //print ("nearest location: " + minIndex + ", distance from current: " + minDist);
-        mapPosIndex = minIndex;
-        float xPos = GetXPosFromMapLocationIndex(minIndex);
-        StartCoroutine(MapSmoothTransition(Map.position.x, Map.position.x - xPos, transitionTime));
-    }
+    //     //print ("nearest location: " + minIndex + ", distance from current: " + minDist);
+    //     mapPosIndex = minIndex;
+    //     float xPos = GetXPosFromMapLocationIndex(minIndex);
+    //     StartCoroutine(MapSmoothTransition(Map.position.x, Map.position.x - xPos, transitionTime));
+    // }
 
-    public float GetMapPositionPercentage(int posIndex)
-    {
-        float num = (float)posIndex / ((float)mapLocations.Length - 1);
-        return num;
-    }
+    // public float GetMapPositionPercentage(int posIndex)
+    // {
+    //     float num = (float)posIndex / ((float)cameraLocations.Count - 1);
+    //     return num;
+    // }
 
-    public float GetMapPositionPercentage(float posX)
-    {
-        posX *= -1;
-        float num = Mathf.InverseLerp(mapMinX, mapMaxX, posX);
-        //print ("xPos: " + posX + ", mapMinX: " + mapMinX + ", mapMaxX: " + mapMaxX + ", PERCENT: " + num);
-        return num;
-    }
+    // public float GetMapPositionPercentage(float posX)
+    // {
+    //     posX *= -1;
+    //     float num = Mathf.InverseLerp(mapMinX, mapMaxX, posX);
+    //     //print ("xPos: " + posX + ", mapMinX: " + mapMinX + ", mapMaxX: " + mapMaxX + ", PERCENT: " + num);
+    //     return num;
+    // }
 
-    private void SetMapPosition(float percent)
-    {
-        if (percent >= 0f && percent <= 1f)
-        {
-            float tempX = Mathf.Lerp(mapMinX, mapMaxX, percent) * -1;
-            //print ("percent: " + percent + ", pos: " + tempX);
-            Map.position = new Vector3(tempX, Map.position.y, Map.position.z);
-        }
-    }
+    // private void SetMapPosition(float percent)
+    // {
+    //     if (percent >= 0f && percent <= 1f)
+    //     {
+    //         float tempX = Mathf.Lerp(mapMinX, mapMaxX, percent) * -1;
+    //         //print ("percent: " + percent + ", pos: " + tempX);
+    //         Map.position = new Vector3(tempX, Map.position.y, Map.position.z);
+    //     }
+    // }
 
     private void SetMapPosition(int index)
     {
-        if (index >= 0 && index < mapLocations.Length)
+        if (index >= 0 && index < cameraLocations.Count)
         {
             float tempX = GetXPosFromMapLocationIndex(index);
             //print ("index: " + index + ", pos: " + tempX);
-            Map.position = new Vector3(Map.position.x - tempX, Map.position.y, Map.position.z);
+            Map.localPosition = new Vector3(tempX, staticMapYPos, 0f);
         }   
     }
 
     private float GetXPosFromMapLocationIndex(int index)
     {
-        return mapLocations[index].transform.position.x;
+        //print ("index: " + index + ", pos: " + cameraLocations[index].localPosition.x);
+        return cameraLocations[index].localPosition.x;
     }
 
     private IEnumerator MapSmoothTransition(float start, float end, float transitionTime)
@@ -243,15 +240,15 @@ public class ScrollMapManager : MonoBehaviour
         GameManager.instance.SetRaycastBlocker(true);
         float timer = 0f;
 
-        Map.position = new Vector3(start, staticMapYPos, 0f);
+        Map.localPosition = new Vector3(start, staticMapYPos, 0f);
         while (timer < transitionTime)
         {
             timer += Time.deltaTime;
             float pos = Mathf.Lerp(start, end, Mathf.SmoothStep(0f, 1f, timer / transitionTime));
-            Map.position = new Vector3(pos, staticMapYPos, 0f);
+            Map.localPosition = new Vector3(pos, staticMapYPos, 0f);
             yield return null;
         }
-        Map.position = new Vector3(end, staticMapYPos, 0f);
+        Map.localPosition = new Vector3(end, staticMapYPos, 0f);
 
         GameManager.instance.SetRaycastBlocker(false);
     }
@@ -262,20 +259,20 @@ public class ScrollMapManager : MonoBehaviour
     ################################################
     */
 
-    public void BirbButtonDown()
-    {
-        moveBirb = true;
-        birb.transform.localScale = new Vector3(0.8f, 0.8f, 1f);
-        //StartCoroutine(SetBirbSpriteDelay(birbPressed, 0.2f));
-    }
+    // public void BirbButtonDown()
+    // {
+    //     moveBirb = true;
+    //     birb.transform.localScale = new Vector3(0.8f, 0.8f, 1f);
+    //     //StartCoroutine(SetBirbSpriteDelay(birbPressed, 0.2f));
+    // }
 
-    public void BirbButtonUp()
-    {   
-        moveBirb = false;
-        birb.transform.localScale = new Vector3(1f, 1f, 1f);
-        GoToNearestMapLocation();
-        //StartCoroutine(SetBirbSpriteDelay(birbNorm, 0.2f));
-    }
+    // public void BirbButtonUp()
+    // {   
+    //     moveBirb = false;
+    //     birb.transform.localScale = new Vector3(1f, 1f, 1f);
+    //     GoToNearestMapLocation();
+    //     //StartCoroutine(SetBirbSpriteDelay(birbNorm, 0.2f));
+    // }
 
     /* 
     ################################################

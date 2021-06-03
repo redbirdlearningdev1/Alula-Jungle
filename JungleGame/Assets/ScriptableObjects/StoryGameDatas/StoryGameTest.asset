@@ -14,20 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameType: 1
   sceneName: StoryGameScene
+  storyName: Welcome
+  background: 1
   segments:
-  - duration: 4
+  - text: You are an
+    actionWord: 7
     audio: {fileID: 8300000, guid: c350fcdede53aa647b93c6b0ce53e7cd, type: 3}
-    actionWord: {fileID: 11400000, guid: e9ade2bad4ccfb14194972073a1a2823, type: 2}
-  - duration: 4
+    audioDuration: 3
+  - text: As an
+    actionWord: 7
     audio: {fileID: 8300000, guid: c350fcdede53aa647b93c6b0ce53e7cd, type: 3}
-    actionWord: {fileID: 11400000, guid: dbb443a67132e124ba6793f160658770, type: 2}
-  - duration: 4
+    audioDuration: 3
+  - text: you will be able to help on our jungle trip! I wonder if we will
+    actionWord: 7
     audio: {fileID: 8300000, guid: c350fcdede53aa647b93c6b0ce53e7cd, type: 3}
-    actionWord: {fileID: 11400000, guid: 9c3f347487301f041a50fc998cc8c6c2, type: 2}
-  scrollingBackgroundImages:
-  - sprite: {fileID: 21300000, guid: 77d11389f181ba84fbc34b5fe3471880, type: 3}
-    resolution: {x: 1280, y: 720}
-  - sprite: {fileID: 21300000, guid: 2efc197851e15bd449afa25aba141e74, type: 3}
-    resolution: {x: 1280, y: 720}
-  - sprite: {fileID: 21300000, guid: fbec0ac764f750e42bca16213e2222c0, type: 3}
-    resolution: {x: 1280, y: 720}
+    audioDuration: 3
+  - text: Let's get going and find out
+    actionWord: 7
+    audio: {fileID: 8300000, guid: c350fcdede53aa647b93c6b0ce53e7cd, type: 3}
+    audioDuration: 3
