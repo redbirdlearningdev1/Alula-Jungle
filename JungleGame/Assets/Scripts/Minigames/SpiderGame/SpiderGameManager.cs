@@ -17,7 +17,7 @@ public class SpiderGameManager : MonoBehaviour
 
     [SerializeField] private GameObject[] coins;
     private GameObject selectedCoin;
-    private CoinType correctCoin = CoinType.awCoin;
+    private ActionWordEnum correctCoin;
     private bool inputDisabled;
 
     [SerializeField] private GameObject[] fails;
@@ -123,7 +123,7 @@ public class SpiderGameManager : MonoBehaviour
 
     private void HandleAnswer(GameObject coin)
     {
-        if(coin.GetComponent<Coin>().coinType == correctCoin)
+        if(coin.GetComponent<Coin>().type == correctCoin)
         {
             spider.GetComponent<Animator>().SetBool("correct", true);
             bug.GetComponent<Animator>().SetTrigger("bugTakeoff");

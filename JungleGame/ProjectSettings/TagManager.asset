@@ -27,7 +27,7 @@ TagManager:
   - 
   - 
   - 3D Object
-  - 
+  - Orc
   - 
   - 
   - 
@@ -56,4 +56,7 @@ TagManager:
     locked: 0
   - name: Star
     uniqueID: 1716004883
+    locked: 0
+  - name: Orc
+    uniqueID: 284717983
     locked: 0
