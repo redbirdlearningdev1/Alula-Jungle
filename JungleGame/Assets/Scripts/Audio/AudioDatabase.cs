@@ -32,9 +32,22 @@ public class AudioDatabase : MonoBehaviour
 
     [Header("FX Database")]
     public AudioClip testSound1;
+    public AudioClip RightChoice;
+    public AudioClip WrongChoice;
+    public AudioClip WinTune;
+
+    [Header("Coin Drop")]
+    public AudioClip[] CoinDropArray;
 
     [Header("Frogger Game")]
-    public AudioClip waterPlopLarge;
-    public AudioClip waterPlopMed;
-    public AudioClip waterPlopSmall;
+    public AudioClip WaterSplashLarge;
+    public AudioClip WaterSplashMed;
+    public AudioClip WaterSplashSmall;
+
+    public AudioClip LogRiseLarge;
+    public AudioClip LogRiseMed;
+    public AudioClip LogRiseSmall;
+
+    public AudioClip WoodThump;
+    public AudioClip GrassThump;
 }

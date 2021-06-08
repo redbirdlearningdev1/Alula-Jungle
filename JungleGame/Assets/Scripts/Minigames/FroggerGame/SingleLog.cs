@@ -32,13 +32,13 @@ public class SingleLog : MonoBehaviour
             switch (logType)
             {
                 case LogType.Small:
-                    AudioManager.instance.PlayFX(AudioDatabase.instance.waterPlopSmall, 0.5f);
+                    AudioManager.instance.PlayFX(AudioDatabase.instance.LogRiseSmall, 0.5f);
                     break;
                 case LogType.Medium:
-                    AudioManager.instance.PlayFX(AudioDatabase.instance.waterPlopMed, 0.5f);
+                    AudioManager.instance.PlayFX(AudioDatabase.instance.LogRiseMed, 0.5f);
                     break;
                 case LogType.Large:
-                    AudioManager.instance.PlayFX(AudioDatabase.instance.waterPlopLarge, 0.5f);
+                    AudioManager.instance.PlayFX(AudioDatabase.instance.LogRiseLarge, 0.5f);
                     break;
             }
         }
@@ -58,13 +58,13 @@ public class SingleLog : MonoBehaviour
             switch (logType)
             {
                 case LogType.Small:
-                    AudioManager.instance.PlayFX(AudioDatabase.instance.waterPlopSmall, 0.5f);
+                    AudioManager.instance.PlayFX(AudioDatabase.instance.WaterSplashSmall, 0.5f);
                     break;
                 case LogType.Medium:
-                    AudioManager.instance.PlayFX(AudioDatabase.instance.waterPlopMed, 0.5f);
+                    AudioManager.instance.PlayFX(AudioDatabase.instance.WaterSplashMed, 0.5f);
                     break;
                 case LogType.Large:
-                    AudioManager.instance.PlayFX(AudioDatabase.instance.waterPlopLarge, 0.5f);
+                    AudioManager.instance.PlayFX(AudioDatabase.instance.WaterSplashLarge, 0.5f);
                     break;
             }
         }

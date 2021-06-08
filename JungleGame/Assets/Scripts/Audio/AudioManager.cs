@@ -63,7 +63,22 @@ public class AudioManager : MonoBehaviour
     public void PlayFX(AudioClip clip, float volume)
     {
         var audioObj = Instantiate(fxAudioObject, fxObjectHolder);
-        audioObj.GetComponent<FxAudioObject>().PlayClip(clip, volume, clip.length);
+        audioObj.GetComponent<FxAudioObject>().PlayClip(clip, volume, clip.length + 1f);
+    }
+
+    public void PlayCoinDrop(int num = 0)
+    {
+        // play random coin drop sound iff 0
+        if (num == 0)
+        {
+            int idx = Random.Range(0, 8);
+            PlayFX(AudioDatabase.instance.CoinDropArray[idx], 1f);
+        }
+        else
+        {
+            if (num > 0 && num < 8)
+            PlayFX(AudioDatabase.instance.CoinDropArray[num], 1f);
+        }
     }
 
     /* 

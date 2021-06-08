@@ -7548,11 +7548,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8444fc71273fe9949a4dd84cc5eb827f, type: 3}
   - {fileID: 21300000, guid: 1467a2dc81ec21d47954a1c6d9225482, type: 3}
   - {fileID: 21300000, guid: 674a71c11222ecb40aea67ddfa1db553, type: 3}
+  - {fileID: 21300000, guid: aa675d8685cc2f540a7f7feff45c2945, type: 3}
   shadowSprites:
   - {fileID: 21300000, guid: 151baf6a246bc8e40bef569a7b82c1ab, type: 3}
   - {fileID: 21300000, guid: 3b67a5b65c99faa419018bdc4bbbead1, type: 3}
   - {fileID: 21300000, guid: 7845f7f0bd5b63544a0a60bdec0c1951, type: 3}
   - {fileID: 21300000, guid: 96d16a55370367e4fb4276c6efa516dc, type: 3}
+  - {fileID: 21300000, guid: 80f2274ab23427445a860980079cfc73, type: 3}
 --- !u!1 &1722879138
 GameObject:
   m_ObjectHideFlags: 0

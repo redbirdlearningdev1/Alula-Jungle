@@ -74,6 +74,7 @@ public class FroggerGameManager : MonoBehaviour
         if (playingDancingManAnimation)
             yield break;
         playingDancingManAnimation = true;
+        //print ("dancing man animation -> " + selectedCoin.type);
         dancingMan.PlayUsingPhonemeEnum(selectedCoin.type);
         yield return new WaitForSeconds(1.5f);
         playingDancingManAnimation = false;
@@ -97,7 +98,7 @@ public class FroggerGameManager : MonoBehaviour
 
     private IEnumerator CoinFailRoutine()
     {
-        rows[currRow].ResetCoinPos();
+        rows[currRow].ResetCoinPos(null);
         taxi.TwitchAnimation();
         bag.DowngradeBag();
         StartCoroutine(HideCoins(currRow));
@@ -105,8 +106,16 @@ public class FroggerGameManager : MonoBehaviour
 
         rows[currRow].SinkAllLogs();
         yield return new WaitForSeconds(1f);
+        
+        // determine correct landing sound
+        AudioClip landingSound = null;
+        //print("curr row: "  + currRow);
+        if (currRow < 2)
+            landingSound = AudioDatabase.instance.GrassThump;
+        else
+            landingSound = AudioDatabase.instance.WoodThump;
+        gorilla.JumpBack(landingSound);
 
-        gorilla.JumpBack();
         yield return new WaitForSeconds(1f);
 
         if (currRow > 0)
@@ -116,15 +125,21 @@ public class FroggerGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         StartCoroutine(ShowCoins(currRow));
-        SelectRandomCoin(currRow);
     }
 
     private IEnumerator CoinSuccessRoutine()
     {
         // TODO: animate coin into bag
-        rows[currRow].ResetCoinPos();
+        rows[currRow].ResetCoinPos(selectedCoin);
         taxi.CelebrateAnimation();
         bag.UpgradeBag();
+
+        // remove selected coin
+        selectedCoin.ToggleVisibility(false, true);
+        yield return new WaitForSeconds(1f);
+        selectedCoin.ReturnToLog();
+        selectedCoin = null;
+
         StartCoroutine(HideCoins(currRow, selectedCoin));
         yield return new WaitForSeconds(1f);
 
@@ -132,12 +147,10 @@ public class FroggerGameManager : MonoBehaviour
         rows[currRow].MoveToCenterLog(selectedIndex);
         yield return new WaitForSeconds(1f);
 
-        gorilla.JumpForward();
-        yield return new WaitForSeconds(0.5f);
-        selectedCoin.ToggleVisibility(false, true);
-        yield return new WaitForSeconds(0.7f);
+        gorilla.JumpForward(AudioDatabase.instance.WoodThump);
+        yield return new WaitForSeconds(1f);
         gorilla.CelebrateAnimation();
-        selectedCoin = null;
+        
 
         currRow++;
         rows[currRow].RiseAllLogs();
@@ -150,9 +163,16 @@ public class FroggerGameManager : MonoBehaviour
     {
         print ("you win!");
         // TODO: animate coin into bag
-        rows[currRow].ResetCoinPos();
+        rows[currRow].ResetCoinPos(selectedCoin);
         taxi.CelebrateAnimation();
         bag.UpgradeBag();
+
+        // remove selected coin
+        selectedCoin.ToggleVisibility(false, true);
+        yield return new WaitForSeconds(1f);
+        selectedCoin.ReturnToLog();
+        selectedCoin = null;
+
         StartCoroutine(HideCoins(currRow, selectedCoin));
         yield return new WaitForSeconds(1f);
 
@@ -160,20 +180,17 @@ public class FroggerGameManager : MonoBehaviour
         rows[currRow].MoveToCenterLog(selectedIndex);
         yield return new WaitForSeconds(1f);
 
-        gorilla.JumpForward();
-        yield return new WaitForSeconds(0.5f);
-        selectedCoin.ToggleVisibility(false, true);
-        yield return new WaitForSeconds(0.5f);
-        selectedCoin = null;
+        gorilla.JumpForward(AudioDatabase.instance.WoodThump);
+        yield return new WaitForSeconds(1f);
 
-        gorilla.JumpForward();
+        gorilla.JumpForward(AudioDatabase.instance.GrassThump);
         yield return new WaitForSeconds(1.2f);
-        gorilla.CelebrateAnimation(5f);
+        gorilla.CelebrateAnimation(10f);
 
+        // play win tune
+        AudioManager.instance.PlayFX(AudioDatabase.instance.WinTune, 1f);
 
-
-
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
 
         // TODO: change maens of finishing game (for now we just return to the scroll map)
         GameManager.instance.LoadScene("ScrollMap", true, 3f);
@@ -261,8 +278,9 @@ public class FroggerGameManager : MonoBehaviour
     {
         List<LogCoin> row = GetCoinRow(index);
         selectedIndex = Random.Range(0, row.Count);
-        print ("selected index: " + selectedIndex);
+        // print ("selected index: " + selectedIndex);
         selectedCoin = row[selectedIndex];
+        //print ("selected coin -> " + selectedCoin.type);
         StartCoroutine(DancingManRoutine());
 
         if (GameManager.instance.devModeActivated)

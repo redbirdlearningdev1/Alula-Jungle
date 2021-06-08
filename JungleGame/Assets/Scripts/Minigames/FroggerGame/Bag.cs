@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Bag : MonoBehaviour
 {
     private int currBag = 0;
-    private const int maxBag = 3;
+    private const int maxBag = 5;
 
 
     [Header("Objects")]
@@ -32,6 +32,11 @@ public class Bag : MonoBehaviour
 
         bag.sprite = bagSprites[currBag];
         shadow.sprite = shadowSprites[currBag];
+
+        // play coin drop sound effect
+        AudioManager.instance.PlayCoinDrop();
+        // play right choice sound effect
+        AudioManager.instance.PlayFX(AudioDatabase.instance.RightChoice, 1f);
     }
     
 
@@ -44,5 +49,8 @@ public class Bag : MonoBehaviour
 
         bag.sprite = bagSprites[currBag];
         shadow.sprite = shadowSprites[currBag];
+
+        // play wrong choice sound effect
+        AudioManager.instance.PlayFX(AudioDatabase.instance.WrongChoice, 1f);
     }
 }

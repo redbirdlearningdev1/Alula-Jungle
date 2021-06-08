@@ -26,7 +26,7 @@ public class MicInput : MonoBehaviour
     //mic initialization
     public void InitMic()
     {
-        print ("mic init!");
+        // print ("mic init!");
         if (_device == null)
         {
             _device = Microphone.devices[0];
@@ -38,7 +38,7 @@ public class MicInput : MonoBehaviour
 
     public void StopMicrophone()
     {
-        print ("mic stopped!");
+        // print ("mic stopped!");
         Microphone.End(_device);
         _isInitialized = false;
     }
@@ -163,7 +163,7 @@ public class MicInput : MonoBehaviour
     {
         if (focus)
         {
-            Debug.Log("Focus");
+            // Debug.Log("Focus");
 
             if (!_isInitialized)
             {
@@ -173,7 +173,7 @@ public class MicInput : MonoBehaviour
         }
         if (!focus)
         {
-            Debug.Log("Pause");
+            // Debug.Log("Pause");
             StopMicrophone();
             //Debug.Log("Stop Mic");
         }

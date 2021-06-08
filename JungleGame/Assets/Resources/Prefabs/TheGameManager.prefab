@@ -285,9 +285,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   JungleGameTestSong: {fileID: 8300000, guid: 8dd1bd2d3dc1d294c8ba2c07b6911673, type: 3}
   testSound1: {fileID: 8300000, guid: c350fcdede53aa647b93c6b0ce53e7cd, type: 3}
-  waterPlopLarge: {fileID: 8300000, guid: 787e3ad4e68b44946bae9bc82c047ca9, type: 3}
-  waterPlopMed: {fileID: 8300000, guid: df07b987aa49f0e4a88998239f38814c, type: 3}
-  waterPlopSmall: {fileID: 8300000, guid: 777ed4b73ba861448b517c40a79b1964, type: 3}
+  RightChoice: {fileID: 8300000, guid: 33ff1a3562326b24e80a23820344a8c4, type: 3}
+  WrongChoice: {fileID: 8300000, guid: 2b787eac70b58ff459bacc25ca095636, type: 3}
+  WinTune: {fileID: 8300000, guid: 6c176af750264c64eb2b404b0f0d0522, type: 3}
+  CoinDropArray:
+  - {fileID: 8300000, guid: 451bd558733fdab4baea90b7cb7a5b89, type: 3}
+  - {fileID: 8300000, guid: 846e91a4285c5e240a52c3fd701c3457, type: 3}
+  - {fileID: 8300000, guid: b6324db5e26d6674f9cc50e50af051b6, type: 3}
+  - {fileID: 8300000, guid: c661cde5ff2ea9f46afb9b228f36c72f, type: 3}
+  - {fileID: 8300000, guid: 81f84d9d3951a3f46886c021d0626762, type: 3}
+  - {fileID: 8300000, guid: 33d0ba8239ac74f458276f649dfb67c4, type: 3}
+  - {fileID: 8300000, guid: f4e542972b51f5647b0c06a6a195f0bb, type: 3}
+  - {fileID: 8300000, guid: 432aafa8ddaa9a84baa169472051267c, type: 3}
+  WaterSplashLarge: {fileID: 8300000, guid: 32f06cc3aa5ee65489681078706fe05c, type: 3}
+  WaterSplashMed: {fileID: 8300000, guid: aa3c6809cf47ab744bb52d1cc4c98697, type: 3}
+  WaterSplashSmall: {fileID: 8300000, guid: fa340471b2fe08e4ea51c0741dfa3471, type: 3}
+  LogRiseLarge: {fileID: 8300000, guid: 5c0a4be24141ff84795e482ea596ee89, type: 3}
+  LogRiseMed: {fileID: 8300000, guid: 0df9e8c9bd7891448a28a05356ddc50c, type: 3}
+  LogRiseSmall: {fileID: 8300000, guid: 90d4ec68545ac0f4e87950a85a6a676d, type: 3}
+  WoodThump: {fileID: 8300000, guid: 004d468645271634295eebd789604f9c, type: 3}
+  GrassThump: {fileID: 8300000, guid: b8295fed07cec134ca3ba5e972a02e79, type: 3}
 --- !u!1 &2039774890
 GameObject:
   m_ObjectHideFlags: 0
