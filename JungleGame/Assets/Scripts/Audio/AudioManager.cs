@@ -6,9 +6,13 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
+    [Header("Audio Sources")]
     [SerializeField] private AudioSource musicSource;
-    [SerializeField] private AudioSource fxSource;
     [SerializeField] private AudioSource talkSource;
+
+    [Header("FX Audio Stuff")]
+    [SerializeField] private GameObject fxAudioObject;
+    [SerializeField] private Transform fxObjectHolder;
 
     [SerializeField] private AudioDatabase audioDatabase;
 
@@ -26,15 +30,14 @@ public class AudioManager : MonoBehaviour
     ################################################
     */
 
-    public void PlaySong(Song song)
+    public void PlaySong(AudioClip song)
     {
         musicSource.Stop();
-        AudioClip clip = audioDatabase.GetSongFromEnum(song);
 
-        if (clip == musicSource.clip)
+        if (song == musicSource.clip)
             return;
 
-        musicSource.clip = clip;
+        musicSource.clip = song;
         musicSource.loop = true;
         musicSource.Play();
     }
@@ -57,6 +60,11 @@ public class AudioManager : MonoBehaviour
     ################################################
     */
 
+    public void PlayFX(AudioClip clip, float volume)
+    {
+        var audioObj = Instantiate(fxAudioObject, fxObjectHolder);
+        audioObj.GetComponent<FxAudioObject>().PlayClip(clip, volume, clip.length);
+    }
 
     /* 
     ################################################

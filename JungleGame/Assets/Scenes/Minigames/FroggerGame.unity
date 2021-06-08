@@ -6650,6 +6650,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 672013700, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
+      propertyPath: m_Name
+      value: FxAudioObjectHolder
+      objectReference: {fileID: 0}
     - target: {fileID: 5332021454673539580, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_RootOrder

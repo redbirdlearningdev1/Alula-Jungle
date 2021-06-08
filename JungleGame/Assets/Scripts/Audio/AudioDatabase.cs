@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Song
-{
-    JungleGameTestSong,
-    COUNT
-}
 
 public class AudioDatabase : MonoBehaviour
 {
+    public static AudioDatabase instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
     /* 
     ################################################
     #   MUSIC DATABASE
@@ -17,15 +22,19 @@ public class AudioDatabase : MonoBehaviour
     */
 
     [Header("Music Database")]
-    [SerializeField] private AudioClip JungleGameTestSong;
+    public AudioClip JungleGameTestSong;
 
-    public AudioClip GetSongFromEnum(Song song)
-    {
-        switch (song)
-        {
-            default:
-            case Song.JungleGameTestSong:
-                return JungleGameTestSong;
-        }
-    }
+    /* 
+    ################################################
+    #   FX DATABASE
+    ################################################
+    */
+
+    [Header("FX Database")]
+    public AudioClip testSound1;
+
+    [Header("Frogger Game")]
+    public AudioClip waterPlopLarge;
+    public AudioClip waterPlopMed;
+    public AudioClip waterPlopSmall;
 }

@@ -57,6 +57,16 @@ public class FroggerGameManager : MonoBehaviour
         {
             StartCoroutine(DancingManRoutine());
         }
+
+        // dev stuff for fx audio testing
+        if (GameManager.instance.devModeActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                AudioManager.instance.PlayFX(AudioDatabase.instance.testSound1, 1f);
+            }
+        }
+        
     }
 
     private IEnumerator DancingManRoutine()
