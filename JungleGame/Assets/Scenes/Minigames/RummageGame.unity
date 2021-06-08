@@ -401,6 +401,7 @@ MonoBehaviour:
   pileParent: {fileID: 844582074}
   pileMovement1: {x: -4.75, y: 1.75, z: 0}
   pileMovement2: {x: 0, y: 0, z: 0}
+  Origin: {x: 0, y: 0, z: 0}
   moveSpeed: 5
 --- !u!222 &57791902
 CanvasRenderer:
@@ -630,6 +631,7 @@ MonoBehaviour:
   pileParent: {fileID: 844582074}
   pileMovement1: {x: -3, y: 3.75, z: 0}
   pileMovement2: {x: 0, y: 0, z: 0}
+  Origin: {x: 0, y: 0, z: 0}
   moveSpeed: 5
 --- !u!222 &154074511
 CanvasRenderer:
@@ -745,6 +747,7 @@ MonoBehaviour:
   pileParent: {fileID: 844582074}
   pileMovement1: {x: -2, y: -1.75, z: 0}
   pileMovement2: {x: 0, y: 0, z: 0}
+  Origin: {x: 0, y: 0, z: 0}
   moveSpeed: 5
 --- !u!222 &154099780
 CanvasRenderer:
@@ -860,6 +863,7 @@ MonoBehaviour:
   pileParent: {fileID: 844582074}
   pileMovement1: {x: 1, y: 2.75, z: 0}
   pileMovement2: {x: 0, y: 0, z: 0}
+  Origin: {x: 0, y: 0, z: 0}
   moveSpeed: 5
 --- !u!222 &224238359
 CanvasRenderer:
@@ -1412,6 +1416,7 @@ MonoBehaviour:
   pileParent: {fileID: 844582074}
   pileMovement1: {x: 1, y: 4, z: 0}
   pileMovement2: {x: 0, y: 0, z: 0}
+  Origin: {x: 0, y: 0, z: 0}
   moveSpeed: 5
 --- !u!222 &571648413
 CanvasRenderer:
@@ -1755,6 +1760,7 @@ MonoBehaviour:
   pileParent: {fileID: 844582074}
   pileMovement1: {x: -5, y: 4.25, z: 0}
   pileMovement2: {x: 0, y: 0, z: 0}
+  Origin: {x: 0, y: 0, z: 0}
   moveSpeed: 5
 --- !u!222 &607438450
 CanvasRenderer:
@@ -1905,6 +1911,7 @@ MonoBehaviour:
   pileParent: {fileID: 844582074}
   pileMovement1: {x: 0, y: 2, z: 0}
   pileMovement2: {x: 0, y: 0, z: 0}
+  Origin: {x: 0, y: 0, z: 0}
   moveSpeed: 5
 --- !u!222 &703510390
 CanvasRenderer:
@@ -2020,6 +2027,7 @@ MonoBehaviour:
   pileParent: {fileID: 844582074}
   pileMovement1: {x: -3, y: -1.75, z: 0}
   pileMovement2: {x: 0, y: 0, z: 0}
+  Origin: {x: 0, y: 0, z: 0}
   moveSpeed: 5
 --- !u!222 &775533978
 CanvasRenderer:
@@ -2135,6 +2143,7 @@ MonoBehaviour:
   pileParent: {fileID: 844582074}
   pileMovement1: {x: -4, y: 4.4, z: 0}
   pileMovement2: {x: 0, y: 0, z: 0}
+  Origin: {x: 0, y: 0, z: 0}
   moveSpeed: 5
 --- !u!222 &795807959
 CanvasRenderer:
@@ -2347,6 +2356,7 @@ MonoBehaviour:
   pileParent: {fileID: 844582074}
   pileMovement1: {x: 2, y: 0.75, z: 0}
   pileMovement2: {x: 0, y: 0, z: 0}
+  Origin: {x: 0, y: 0, z: 0}
   moveSpeed: 5
 --- !u!222 &876363644
 CanvasRenderer:
@@ -2462,6 +2472,7 @@ MonoBehaviour:
   pileParent: {fileID: 844582074}
   pileMovement1: {x: -5.5, y: 3, z: 0}
   pileMovement2: {x: 0, y: 0, z: 0}
+  Origin: {x: 0, y: 0, z: 0}
   moveSpeed: 5
 --- !u!222 &879525688
 CanvasRenderer:
@@ -2577,6 +2588,7 @@ MonoBehaviour:
   pileParent: {fileID: 844582074}
   pileMovement1: {x: 1, y: 3, z: 0}
   pileMovement2: {x: 0, y: 0, z: 0}
+  Origin: {x: 0, y: 0, z: 0}
   moveSpeed: 5
 --- !u!222 &1020348798
 CanvasRenderer:
@@ -2692,6 +2704,7 @@ MonoBehaviour:
   pileParent: {fileID: 844582074}
   pileMovement1: {x: -1, y: -1.5, z: 0}
   pileMovement2: {x: 0, y: 0, z: 0}
+  Origin: {x: 0, y: 0, z: 0}
   moveSpeed: 5
 --- !u!222 &1084811031
 CanvasRenderer:
@@ -2807,6 +2820,7 @@ MonoBehaviour:
   pileParent: {fileID: 844582074}
   pileMovement1: {x: -4.75, y: 0.5, z: 0}
   pileMovement2: {x: 0, y: 0, z: 0}
+  Origin: {x: 0, y: 0, z: 0}
   moveSpeed: 5
 --- !u!222 &1107992951
 CanvasRenderer:
@@ -2922,6 +2936,7 @@ MonoBehaviour:
   pileParent: {fileID: 844582074}
   pileMovement1: {x: 2, y: 2, z: 0}
   pileMovement2: {x: 0, y: 0, z: 0}
+  Origin: {x: 0, y: 0, z: 0}
   moveSpeed: 5
 --- !u!222 &1255314384
 CanvasRenderer:
@@ -3456,6 +3471,7 @@ MonoBehaviour:
   pileParent: {fileID: 844582074}
   pileMovement1: {x: -5.75, y: 2.25, z: 0}
   pileMovement2: {x: 0, y: 0, z: 0}
+  Origin: {x: 0, y: 0, z: 0}
   moveSpeed: 5
 --- !u!222 &1681698814
 CanvasRenderer:
@@ -3571,6 +3587,7 @@ MonoBehaviour:
   pileParent: {fileID: 844582074}
   pileMovement1: {x: -4, y: -1.5, z: 0}
   pileMovement2: {x: -2.5, y: -1, z: 0}
+  Origin: {x: 0, y: 0, z: 0}
   moveSpeed: 5
 --- !u!222 &1694709679
 CanvasRenderer:
@@ -3755,6 +3772,7 @@ MonoBehaviour:
   pileParent: {fileID: 844582074}
   pileMovement1: {x: 0, y: 4.5, z: 0}
   pileMovement2: {x: 0, y: 0, z: 0}
+  Origin: {x: 0, y: 0, z: 0}
   moveSpeed: 5
 --- !u!222 &1717105280
 CanvasRenderer:
@@ -4788,6 +4806,7 @@ MonoBehaviour:
   pileParent: {fileID: 844582074}
   pileMovement1: {x: 1, y: 0, z: 0}
   pileMovement2: {x: 0, y: 0, z: 0}
+  Origin: {x: 0, y: 0, z: 0}
   moveSpeed: 5
 --- !u!222 &1911181045
 CanvasRenderer:
@@ -4978,6 +4997,7 @@ MonoBehaviour:
   pileParent: {fileID: 844582074}
   pileMovement1: {x: -5.75, y: -0.5, z: 0}
   pileMovement2: {x: 0, y: 0, z: 0}
+  Origin: {x: 0, y: 0, z: 0}
   moveSpeed: 5
 --- !u!222 &2042882693
 CanvasRenderer:

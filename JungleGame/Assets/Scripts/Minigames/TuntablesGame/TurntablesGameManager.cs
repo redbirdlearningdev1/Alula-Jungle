@@ -289,7 +289,12 @@ public class TurntablesGameManager : MonoBehaviour
         RopeController.instance.AnimateKeysUp();
         yield return new WaitForSeconds(animateKeysDownDelay);
         RopeController.instance.MoveFromNormalToEnd();
-        yield return null;
+
+
+        yield return new WaitForSeconds(2f);
+
+        // TODO: change maens of finishing game (for now we just return to the scroll map)
+        GameManager.instance.LoadScene("ScrollMap", true, 3f);
     }
 
     private IEnumerator DelayFrameIconChange(float delay, ActionWordEnum icon)

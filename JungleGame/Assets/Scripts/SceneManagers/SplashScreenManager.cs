@@ -20,7 +20,7 @@ public class SplashScreenManager : MonoBehaviour
     public Color selectedColor;
     public Color unselectedColor;
 
-    void Awake() 
+    void Start() 
     {
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();

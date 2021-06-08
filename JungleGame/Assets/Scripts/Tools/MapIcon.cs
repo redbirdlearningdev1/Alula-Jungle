@@ -125,7 +125,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         {
             isPressed = false;
             transform.localScale = new Vector3(1f, 1f, 1f);
-            GameManager.instance.NewLevelPopup(gameData);
+            GameManager.instance.LoadScene("MinigameDemoScene", true);
         }
     }
 }

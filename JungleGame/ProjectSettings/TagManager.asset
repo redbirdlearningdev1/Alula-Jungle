@@ -33,7 +33,7 @@ TagManager:
   - MapUIButtons
   - 
   - 
-  - 
+  - MinigameButtons
   - 
   - 
   - 
@@ -52,9 +52,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: UI
-    uniqueID: 3584257617
-    locked: 0
   - name: Star
     uniqueID: 1716004883
+    locked: 0
+  - name: UI
+    uniqueID: 3584257617
     locked: 0

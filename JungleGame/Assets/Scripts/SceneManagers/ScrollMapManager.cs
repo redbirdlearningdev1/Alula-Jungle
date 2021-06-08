@@ -22,17 +22,14 @@ public class ScrollMapManager : MonoBehaviour
     [SerializeField] private Transform rightBirbBounds;
     private bool moveBirb;
 
-    void Awake()
+    void Start()
     {
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
         // play test song
         //AudioManager.instance.PlaySong(Song.JungleGameTestSong);
-    }
 
-    void Start()
-    {
         StartCoroutine(DelayedStart(0.1f));
     }
 

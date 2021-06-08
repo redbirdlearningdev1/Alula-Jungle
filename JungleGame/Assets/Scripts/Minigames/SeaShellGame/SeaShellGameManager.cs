@@ -210,8 +210,10 @@ public class SeaShellGameManager : MonoBehaviour
 
     private IEnumerator WinRoutine()
     {
-       
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(2f);
+
+        // TODO: change maens of finishing game (for now we just return to the scroll map)
+        GameManager.instance.LoadScene("ScrollMap", true, 3f);
     }
 
     private void PregameSetup()

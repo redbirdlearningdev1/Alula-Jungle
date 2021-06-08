@@ -308,7 +308,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 0
-  spriteGlow: {fileID: 529655431}
 --- !u!222 &529655429
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -476,7 +475,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 0
-  spriteGlow: {fileID: 537847144}
 --- !u!212 &537847146
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -754,7 +752,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 5c63a9c423cee9d43bc13789938fe3f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -806,7 +804,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 1
-  spriteGlow: {fileID: 814751359}
 --- !u!1 &856733648
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,7 +894,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -672.31036, y: -332.19788}
+  m_AnchoredPosition: {x: -672.3103, y: -332.19788}
   m_SizeDelta: {x: -1344.6206, y: -664.3954}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &934339465
@@ -939,7 +936,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 0
-  spriteGlow: {fileID: 934339465}
 --- !u!212 &934339468
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -978,7 +974,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 92ce2fbf3acef6c478d33066918f4105, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1894,7 +1890,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 0
-  spriteGlow: {fileID: 1937416585}
 --- !u!1 &1954527776
 GameObject:
   m_ObjectHideFlags: 0
@@ -2149,7 +2144,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 0
-  spriteGlow: {fileID: 2074776818}
 --- !u!212 &2074776820
 SpriteRenderer:
   m_ObjectHideFlags: 0

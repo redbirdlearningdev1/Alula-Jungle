@@ -7,8 +7,12 @@ public class GameManager : DontDestroy<GameManager>
 {
     public bool devModeActivated;
     public const float transitionTime = 0.5f; // time to fade into and out of a scene (total transition time is: transitionTime * 2)
+    public Vector2Int gameResolution;
     public List<ActionWord> actionWords;
     
+    [SerializeField] private GameObject devModeIndicator;
+    private bool devIndicatorSet = false;
+
     [SerializeField] private GameObject raycastBlocker; // used to block all raycasts (does not work for UI stuff currently)
     [SerializeField] private Transform popupParent;
     [SerializeField] private GameObject levelPopupPrefab;
@@ -20,6 +24,9 @@ public class GameManager : DontDestroy<GameManager>
 
     void Start()
     {
+        // set game resolution
+        Screen.SetResolution(gameResolution.x, gameResolution.y, FullScreenMode.FullScreenWindow);
+
         // disable raycast blocker (allow raycasts)
         SetRaycastBlocker(false);
     }
@@ -28,9 +35,16 @@ public class GameManager : DontDestroy<GameManager>
     {
         if (devModeActivated)
         {
+            // set dev mode indicator on (once)
+            if (!devIndicatorSet)
+            {
+                SendLog(this, "Dev Mode - ON");
+                devIndicatorSet = true;
+                devModeIndicator.SetActive(true);
+            }
             // press 'D' to go to the dev menu
-            // if (Input.GetKeyDown(KeyCode.D))
-            //     LoadScene("DevMenu", true);
+            if (Input.GetKeyDown(KeyCode.D))
+                LoadScene("DevMenu", true);
             // press 'F' to toggle between fixed and broken map sprites
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -45,6 +59,16 @@ public class GameManager : DontDestroy<GameManager>
                     smm.GetComponent<ScrollMapManager>().SetMapIconsBroke(iconsSetBroke);
                     Debug.Log("Map icons broken set to: " + iconsSetBroke);
                 }
+            }
+        }
+        else
+        {
+            // set dev mode indicator off (once)
+            if (!devIndicatorSet)
+            {
+                SendLog(this, "Dev Mode - OFF");
+                devIndicatorSet = true;
+                devModeIndicator.SetActive(false);
             }
         }
     }

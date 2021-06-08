@@ -6,7 +6,7 @@ public class MicInput : MonoBehaviour
 {
     #region SingleTon
 
-    public static MicInput instance { set; get; }
+    public static MicInput instance;
 
     #endregion
 
@@ -15,12 +15,22 @@ public class MicInput : MonoBehaviour
 
     private string _device;
 
+    void Awake() 
+    {
+        if (instance == null)
+            instance = this;
+        
+        //InitMic();
+    }
+
     //mic initialization
     public void InitMic()
     {
+        print ("mic init!");
         if (_device == null)
         {
             _device = Microphone.devices[0];
+            print("audio input device set to: " + _device);
         }
         _clipRecord = Microphone.Start(_device, true, 999, 44100);
         _isInitialized = true;
@@ -28,6 +38,7 @@ public class MicInput : MonoBehaviour
 
     public void StopMicrophone()
     {
+        print ("mic stopped!");
         Microphone.End(_device);
         _isInitialized = false;
     }
@@ -129,24 +140,22 @@ public class MicInput : MonoBehaviour
     }
 
     bool _isInitialized;
-    // start mic when scene starts
-    void OnEnable()
-    {
-        InitMic();
-        _isInitialized = true;
-        instance = this;
-    }
+    // // start mic when scene starts
+    // void OnEnable()
+    // {
+    //    InitMic();
+    // }
 
-    //stop mic when loading a new level or quit application
-    void OnDisable()
-    {
-        StopMicrophone();
-    }
+    // //stop mic when loading a new level or quit application
+    // void OnDisable()
+    // {
+    //     StopMicrophone();
+    // }
 
-    void OnDestroy()
-    {
-        StopMicrophone();
-    }
+    // void OnDestroy()
+    // {
+    //     StopMicrophone();
+    // }
 
 
     // make sure the mic gets started & stopped when application gets focused
@@ -154,7 +163,7 @@ public class MicInput : MonoBehaviour
     {
         if (focus)
         {
-            //Debug.Log("Focus");
+            Debug.Log("Focus");
 
             if (!_isInitialized)
             {
@@ -164,10 +173,9 @@ public class MicInput : MonoBehaviour
         }
         if (!focus)
         {
-            //Debug.Log("Pause");
+            Debug.Log("Pause");
             StopMicrophone();
             //Debug.Log("Stop Mic");
-
         }
     }
 }

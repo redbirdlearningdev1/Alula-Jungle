@@ -71,6 +71,7 @@ public class StoryGameManager : MonoBehaviour
         {
             // get mic input and determine if input is loud enough
             float volumeLevel = MicInput.MicLoudness * 200;
+            //print ("volume level: " + volumeLevel);
             if (volumeLevel >= audioInputThreshold)
             {
                 waitingForAudioInput = false;
@@ -230,6 +231,9 @@ public class StoryGameManager : MonoBehaviour
             yield return new WaitForSeconds(2f);
         }
         partTwoDone = true;
+
+        // TODO: change maens of finishing game (for now we just return to the scroll map)
+        GameManager.instance.LoadScene("ScrollMap", true, 3f);
     }
 
     private IEnumerator ResetTextRoutine(float duration)

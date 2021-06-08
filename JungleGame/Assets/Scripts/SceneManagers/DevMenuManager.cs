@@ -9,20 +9,31 @@ public class DevMenuManager : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown navDropdown;
 
+    private string[] sceneNames = new string[] {  "SplashScreen", 
+                                                    "SettingsScene", 
+                                                    "DevMenu",
+                                                    "JungleWelcomeScene",
+                                                    "ScrollMap",
+                                                    "TrophyRoomScene",
+                                                    "LoadSaveTestScene",
+                                                    "AudioInputTestScene",
+                                                    "StoryGame",
+                                                    "FroggerGame",
+                                                    "BoatGame",
+                                                    "RummageGame",
+                                                    "SeashellGame",
+                                                    "SpiderwebGame",
+                                                    "TurntablesGame",
+                                                    "MinigameDemoScene"};
+
     void Awake()
     {
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
         // add all build scenes to navDropdown
-        List<string> sceneNames = new List<string>();
-        EditorBuildSettingsScene[] scenes = EditorBuildSettings.scenes;
-        foreach (var scene in scenes)
-        {
-            string name = Path.GetFileNameWithoutExtension(scene.path);
-            sceneNames.Add(name);
-        }  
-        navDropdown.AddOptions(sceneNames);
+        List<string> sceneNamesList = new List<string>(sceneNames);
+        navDropdown.AddOptions(sceneNamesList);
     }
 
     public void OnGoToSceneButtonPressed()
@@ -37,6 +48,10 @@ public class DevMenuManager : MonoBehaviour
 
     public void OnExitAppPressed()
     {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
+#endif
     }
 }
