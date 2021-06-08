@@ -16,12 +16,17 @@ public class SpiderGameManager : MonoBehaviour
     private int bagState = 0;
 
     [SerializeField] private GameObject[] coins;
-    private GameObject selectedCoin;
     private CoinType correctCoin = CoinType.awCoin;
+    private GameObject selectedCoin;
+
+
     private bool inputDisabled;
 
     [SerializeField] private GameObject[] fails;
     private int failState;
+
+    [SerializeField] private Animator spiderGrab;
+    [SerializeField] private Animator treeGrab;
 
     public static SpiderGameManager instance;
 
@@ -121,18 +126,55 @@ public class SpiderGameManager : MonoBehaviour
         }
     }
 
+    private IEnumerator MoveObject(RectTransform obj, Vector2 target, float speed, float delay, bool shrink)
+    {
+        yield return new WaitForSeconds(delay);
+        float timer = 0f;
+        float maxTime = speed;
+        Vector3 currTarget = target;
+        Debug.Log(currTarget);
+        Vector3 currStart = obj.anchoredPosition;
+
+        Vector3 currScale = obj.localScale;
+
+        while (true)
+        {
+            // animate movement
+            timer += Time.deltaTime * 5f;
+            if (timer < maxTime)
+            {
+                obj.anchoredPosition = Vector3.Lerp(currStart, currTarget, timer / maxTime);
+                if (shrink)
+                {
+                    obj.localScale = Vector3.Lerp(currScale, Vector2.zero, timer / maxTime);
+                }
+            }
+            else
+            {
+                if (shrink) //this will be called when the coin is going in the bag
+                {
+                    bagState++;
+                    bag.GetComponent<Image>().sprite = bagStates[bagState];
+                }
+                yield break;
+            }
+            yield return null;
+        }
+    }
+
     private void HandleAnswer(GameObject coin)
     {
         if(coin.GetComponent<Coin>().coinType == correctCoin)
         {
             spider.GetComponent<Animator>().SetBool("correct", true);
+            spiderGrab.SetInteger("coin", coin.GetComponent<Coin>().logIndex);
             bug.GetComponent<Animator>().SetTrigger("bugTakeoff");
             StartCoroutine(MoveObject(coin.transform, Vector3.down, 0.7f, .7f, false));
-            StartCoroutine(MoveObject(bug.transform, Vector3.up * 5 + Vector3.right * 5, 1f, .35f, false));
-            StartCoroutine(MoveObject(coin.transform, Vector3.up * 3 + Vector3.right * 2.5f, 4f, 1.5f, true));
+            StartCoroutine(MoveObject(bug.transform, Vector3.up * 5 + Vector3.right * 5, 3f, .35f, false));
+            //StartCoroutine(MoveObject(coin.GetComponent<RectTransform>(), bag.GetComponent<RectTransform>().anchoredPosition, 4f, 1.3f, true));
             foreach (GameObject g in coins)
             {
-                if (g != selectedCoin)
+                if (g != coin)
                 {
                     StartCoroutine(MoveObject(g.transform, Vector3.down * 3f, 0.7f, 1.5f, false));
                 }
@@ -142,8 +184,9 @@ public class SpiderGameManager : MonoBehaviour
         {
             spider.GetComponent<Animator>().SetBool("correct", false);
             bug.GetComponent<Animator>().SetTrigger("bugWrap");
+            treeGrab.SetTrigger("grab");
             StartCoroutine(MoveObject(coin.transform, Vector3.down, 0.7f, .7f, false));
-            StartCoroutine(MoveObject(bug.transform, Vector3.up * 5, 3f, .7f, false));
+            //StartCoroutine(MoveObject(bug.transform, Vector3.up * 5, 3f, 1.5f, false));
             failState++;
             fails[failState].SetActive(true);
             foreach (GameObject g in coins)
@@ -176,5 +219,15 @@ public class SpiderGameManager : MonoBehaviour
             StartCoroutine(MoveObject(g.transform, Vector3.up * 3f, 0.7f, 1.5f, false)); //put coins back
         }
         inputDisabled = false;
+    }
+
+    public void BugWrap()
+    {
+        StartCoroutine(MoveObject(bug.transform, Vector3.up * 5, 3f, 0f, false));
+    }
+
+    public void CoinGrab()
+    {
+        StartCoroutine(MoveObject(selectedCoin.GetComponent<RectTransform>(), bag.GetComponent<RectTransform>().anchoredPosition, 4f, 0f, true));
     }
 }
