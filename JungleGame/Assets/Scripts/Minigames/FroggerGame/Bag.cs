@@ -36,7 +36,7 @@ public class Bag : MonoBehaviour
         // play coin drop sound effect
         AudioManager.instance.PlayCoinDrop();
         // play right choice sound effect
-        AudioManager.instance.PlayFX(AudioDatabase.instance.RightChoice, 1f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
     }
     
 
@@ -51,6 +51,6 @@ public class Bag : MonoBehaviour
         shadow.sprite = shadowSprites[currBag];
 
         // play wrong choice sound effect
-        AudioManager.instance.PlayFX(AudioDatabase.instance.WrongChoice, 1f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 1f);
     }
 }

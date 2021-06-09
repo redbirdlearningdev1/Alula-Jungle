@@ -158,7 +158,7 @@ public class GorillaController : MonoBehaviour
                 else
                 {
                     // play landing sound effect and switch animation
-                    AudioManager.instance.PlayFX(landingSound, 1f);
+                    AudioManager.instance.PlayFX_oneShot(landingSound, 1f);
                     yield return new WaitForSeconds(0.05f);
                     animator.Play("gorilla_afterjump");
                     yield break;

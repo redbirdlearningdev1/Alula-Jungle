@@ -28,7 +28,7 @@ public class ScrollMapManager : MonoBehaviour
         GameManager.instance.SceneInit();
 
         // play test song
-        //AudioManager.instance.PlaySong(Song.JungleGameTestSong);
+        AudioManager.instance.PlaySong(AudioDatabase.instance.JungleGameTestSong);
 
         StartCoroutine(DelayedStart(0.1f));
     }

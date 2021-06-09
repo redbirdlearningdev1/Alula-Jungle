@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf5a63719ff2274087053da71b92062, type: 3}
+  m_Name: 0_StoryGame_Welcome
+  m_EditorClassIdentifier: 
+  gameType: 1
+  sceneName: StoryGameScene
+  storyName: Welcome
+  background: 1
+  segments:
+  - text: "Would you like to help me on a jungle trip to the palace?  Excellent,
+      but before we can proceed, you will need to learn how to be an explorer. As
+      an explorer, you will be asked to make special moves and special sounds every
+      time I say a sound-word.  Let\u2019s Practice!"
+    textAudio: {fileID: 8300000, guid: 612b1c4ba98c45449b4a951d7a5585b8, type: 3}
+    containsActionWord: 0
+    actionWord: 7
+    wordAudio: {fileID: 0}
+  - text: Let's get back to our adventure.
+    textAudio: {fileID: 8300000, guid: 2b5f5b0fac2e1d84db895fb9db07827d, type: 3}
+    containsActionWord: 0
+    actionWord: 7
+    wordAudio: {fileID: 0}
+  - text: You are an
+    textAudio: {fileID: 8300000, guid: dd2b6b583b7fe9649918f33116cd164e, type: 3}
+    containsActionWord: 1
+    actionWord: 7
+    wordAudio: {fileID: 8300000, guid: 96c4be29a60fc124da6e046e9d8eb959, type: 3}
+  - text: As an
+    textAudio: {fileID: 8300000, guid: ee0ba887211de0c4ba8ef32989da371a, type: 3}
+    containsActionWord: 1
+    actionWord: 7
+    wordAudio: {fileID: 8300000, guid: c84252ce42fe3684f9e13f8589b30c4c, type: 3}
+  - text: you will be able to help on our jungle trip!  I wonder if we will encounter
+      another
+    textAudio: {fileID: 8300000, guid: 8bcb655d14d89d9499100b59ed2de82e, type: 3}
+    containsActionWord: 1
+    actionWord: 7
+    wordAudio: {fileID: 8300000, guid: 3eb694d46e7980649bf12d9f8e72e664, type: 3}
+  - text: Let's get going and find out
+    textAudio: {fileID: 8300000, guid: 5f85753df17dc3741b83038b05ff43af, type: 3}
+    containsActionWord: 1
+    actionWord: 7
+    wordAudio: {fileID: 8300000, guid: 1b190370ed0f63044b2b870a7523f079, type: 3}

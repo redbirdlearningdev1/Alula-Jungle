@@ -6,10 +6,14 @@ using UnityEngine.UI;
 [System.Serializable]
 public class StoryGameSegment
 {
+    [Header("Read Text")]
     public string text;
+    public AudioClip textAudio;
+    
+    [Header("Action Word")]
+    public bool containsActionWord;
     public ActionWordEnum actionWord;
-    public AudioClip audio;
-    public float audioDuration; // time before action word is read
+    public AudioClip wordAudio;
 }
 
 public enum StoryGameBackground

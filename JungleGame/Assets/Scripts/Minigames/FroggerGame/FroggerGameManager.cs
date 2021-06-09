@@ -63,10 +63,10 @@ public class FroggerGameManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                AudioManager.instance.PlayFX(AudioDatabase.instance.testSound1, 1f);
+                StopAllCoroutines();
+                StartCoroutine(SkipToWinRoutine());
             }
         }
-        
     }
 
     private IEnumerator DancingManRoutine()
@@ -188,7 +188,42 @@ public class FroggerGameManager : MonoBehaviour
         gorilla.CelebrateAnimation(10f);
 
         // play win tune
-        AudioManager.instance.PlayFX(AudioDatabase.instance.WinTune, 1f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+
+        yield return new WaitForSeconds(3f);
+
+        // TODO: change maens of finishing game (for now we just return to the scroll map)
+        GameManager.instance.LoadScene("ScrollMap", true, 3f);
+    }
+
+    // This is a special fucntion that skips to the end of the game to win (DEV ONLY)
+    private IEnumerator SkipToWinRoutine()
+    {
+        while (currRow < 4)
+        {
+            StartCoroutine(HideCoins(currRow));
+            yield return new WaitForSeconds(0.5f);
+
+            rows[currRow].SinkAllExcept(1);
+            rows[currRow].MoveToCenterLog(1);
+            yield return new WaitForSeconds(0.5f);
+
+            gorilla.JumpForward(AudioDatabase.instance.WoodThump);
+            
+            currRow++;
+            if (currRow < 4)
+                rows[currRow].RiseAllLogs();
+            yield return new WaitForSeconds(0.5f);
+        }
+        yield return new WaitForSeconds(0.5f);
+
+        gorilla.JumpForward(AudioDatabase.instance.GrassThump);
+
+        yield return new WaitForSeconds(1.2f);
+        gorilla.CelebrateAnimation(10f);
+
+        // play win tune
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
 
         yield return new WaitForSeconds(3f);
 
@@ -198,6 +233,13 @@ public class FroggerGameManager : MonoBehaviour
 
     private void PregameSetup()
     {
+        // start ambient sounds
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.1f, "river_loop");
+
+        // start song
+        AudioManager.instance.PlaySong(AudioDatabase.instance.FroggerGameSong);
+        AudioManager.instance.ChageMusicVolume(0.25f);
+
         // create coin list
         foreach (var coin in coins1)
             allCoins.Add(coin);

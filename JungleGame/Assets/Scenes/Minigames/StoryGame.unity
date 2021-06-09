@@ -1504,8 +1504,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151db7b06aa6cba4d9ce1b2f0f684e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  devData: {fileID: 11400000, guid: bd6add623fbfaac42848681f1570ba1e, type: 2}
-  skipToPartTwo: 0
+  devData: {fileID: 11400000, guid: 87df9e5a4f03eff4d8337295c82c564b, type: 2}
+  skipToPartTwo: 1
   coin: {fileID: 1653332658}
   dancingMan: {fileID: 1034302397}
   shakeDuration: 0.5

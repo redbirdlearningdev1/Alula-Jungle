@@ -13,7 +13,8 @@ public class GameManager : DontDestroy<GameManager>
     [SerializeField] private GameObject devModeIndicator;
     private bool devIndicatorSet = false;
 
-    [SerializeField] private GameObject raycastBlocker; // used to block all raycasts (does not work for UI stuff currently)
+    // TODO: fix raycast blocker
+    [SerializeField] private GameObject raycastBlocker; // used to block all raycasts (does not work for UI stuff currently) 
     [SerializeField] private Transform popupParent;
     [SerializeField] private GameObject levelPopupPrefab;
 
@@ -183,6 +184,9 @@ public class GameManager : DontDestroy<GameManager>
         }
             
         yield return new WaitForSeconds(time);
+
+        // remove all fx sounds
+        AudioManager.instance.ClearAllFX();
 
         SendLog(this, "Loading new scene: " + sceneName);
         SceneManager.LoadSceneAsync(sceneName);

@@ -23,6 +23,7 @@ public class AudioDatabase : MonoBehaviour
 
     [Header("Music Database")]
     public AudioClip JungleGameTestSong;
+    public AudioClip FroggerGameSong;
 
     /* 
     ################################################
@@ -50,4 +51,6 @@ public class AudioDatabase : MonoBehaviour
 
     public AudioClip WoodThump;
     public AudioClip GrassThump;
+
+    public AudioClip RiverFlowing;
 }

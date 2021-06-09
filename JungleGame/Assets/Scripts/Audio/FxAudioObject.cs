@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class FxAudioObject : MonoBehaviour
 {
+    public string id;
     private AudioSource audioSource;
 
     void Awake()
@@ -14,15 +15,30 @@ public class FxAudioObject : MonoBehaviour
         audioSource.loop = false;
     }
 
-    public void PlayClip(AudioClip clip, float volume, float duration)
+    public void PlayClip(string id, AudioClip clip, float volume, float duration)
     {
+        // set id
+        this.id = id;
+
         // set clip and volume
         audioSource.clip = clip;
         audioSource.volume = volume;
 
-        // play clip and destroy object once complete
+        // play clip and destroy object once complete OR loop forever
         audioSource.Play();
-        StartCoroutine(DelayDestruction(duration));
+
+        if (duration == 0f)
+        {
+            audioSource.loop = true;
+        }
+        else
+            StartCoroutine(DelayDestruction(duration));
+    }
+
+    public void InstaDestroy()
+    {
+        StopAllCoroutines();
+        Destroy(gameObject);
     }
 
     private IEnumerator DelayDestruction(float duration)
