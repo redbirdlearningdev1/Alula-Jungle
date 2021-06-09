@@ -22,9 +22,9 @@ public class FadeObject : MonoBehaviour
     {
         if (GameManager.instance.devModeActivated)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            FadeIn(1.2f);
-            if (Input.GetKeyDown(KeyCode.Alpha2))
+            if (Input.GetKeyDown(KeyCode.Plus))
+                FadeIn(1.2f);
+            if (Input.GetKeyDown(KeyCode.Minus))
                 FadeOut(1.2f);
         }
     }

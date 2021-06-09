@@ -16,10 +16,8 @@ public class SpiderGameManager : MonoBehaviour
     private int bagState = 0;
 
     [SerializeField] private GameObject[] coins;
-    private CoinType correctCoin = CoinType.awCoin;
     private GameObject selectedCoin;
-
-
+    private ActionWordEnum correctCoin = ActionWordEnum.baby;
     private bool inputDisabled;
 
     [SerializeField] private GameObject[] fails;
@@ -164,7 +162,7 @@ public class SpiderGameManager : MonoBehaviour
 
     private void HandleAnswer(GameObject coin)
     {
-        if(coin.GetComponent<Coin>().coinType == correctCoin)
+        if(coin.GetComponent<Coin>().type == correctCoin)
         {
             spider.GetComponent<Animator>().SetBool("correct", true);
             spiderGrab.SetInteger("coin", coin.GetComponent<Coin>().logIndex);

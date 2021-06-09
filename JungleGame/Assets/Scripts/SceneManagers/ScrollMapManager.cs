@@ -6,14 +6,17 @@ using UnityEngine.SceneManagement;
 public class ScrollMapManager : MonoBehaviour
 {
     [Header("Map Navigation")]
-    [SerializeField] private RectTransform Map;
-    [SerializeField] private GameObject[] mapLocations;
+    [SerializeField] private RectTransform Map; // full map
+    [SerializeField] private GameObject[] mapLocations; // the images that make up the map
+    [SerializeField] private List<Transform> cameraLocations; // the positions where the camera stops at
+    public float staticMapYPos;
     private float mapMinX;
     private float mapMaxX;
     private int mapPosIndex;
     private bool navButtonsDisabled;
     public float transitionTime;
     public float bumpAnimationTime;
+    public float bumpAmount;
 
     [Header("Birb")]
     [SerializeField] private GameObject birb;
@@ -152,13 +155,13 @@ public class ScrollMapManager : MonoBehaviour
     {   
         if (isLeft)
         {
-            StartCoroutine(MapSmoothTransition(Map.position.x, Map.position.x + 100, (bumpAnimationTime / 2)));
+            StartCoroutine(MapSmoothTransition(Map.position.x, Map.position.x + bumpAmount, (bumpAnimationTime / 2)));
             yield return new WaitForSeconds((bumpAnimationTime / 2));
             StartCoroutine(MapSmoothTransition(Map.position.x, Map.position.x - GetXPosFromMapLocationIndex(0), (bumpAnimationTime / 2)));
         }
         else
         {
-            StartCoroutine(MapSmoothTransition(Map.position.x, Map.position.x - 100, (bumpAnimationTime / 2)));
+            StartCoroutine(MapSmoothTransition(Map.position.x, Map.position.x - bumpAmount, (bumpAnimationTime / 2)));
             yield return new WaitForSeconds((bumpAnimationTime / 2));
             StartCoroutine(MapSmoothTransition(Map.position.x, Map.position.x - GetXPosFromMapLocationIndex(mapLocations.Length - 1), (bumpAnimationTime / 2)));
         }
@@ -240,15 +243,15 @@ public class ScrollMapManager : MonoBehaviour
         GameManager.instance.SetRaycastBlocker(true);
         float timer = 0f;
 
-        Map.position = new Vector3(start, 0f, 0f);
+        Map.position = new Vector3(start, staticMapYPos, 0f);
         while (timer < transitionTime)
         {
             timer += Time.deltaTime;
             float pos = Mathf.Lerp(start, end, Mathf.SmoothStep(0f, 1f, timer / transitionTime));
-            Map.position = new Vector3(pos, 0f, 0f);
+            Map.position = new Vector3(pos, staticMapYPos, 0f);
             yield return null;
         }
-        Map.position = new Vector3(end, 0f, 0f);
+        Map.position = new Vector3(end, staticMapYPos, 0f);
 
         GameManager.instance.SetRaycastBlocker(false);
     }

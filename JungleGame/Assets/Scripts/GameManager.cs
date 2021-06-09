@@ -7,10 +7,11 @@ public class GameManager : DontDestroy<GameManager>
 {
     public bool devModeActivated;
     public const float transitionTime = 0.5f; // time to fade into and out of a scene (total transition time is: transitionTime * 2)
-
-    [SerializeField] GameObject raycastBlocker; // used to block all raycasts (does not work for UI stuff currently)
-    [SerializeField] Transform popupParent;
-    [SerializeField] GameObject levelPopupPrefab;
+    public List<ActionWord> actionWords;
+    
+    [SerializeField] private GameObject raycastBlocker; // used to block all raycasts (does not work for UI stuff currently)
+    [SerializeField] private Transform popupParent;
+    [SerializeField] private GameObject levelPopupPrefab;
 
     private GameData gameData;
 
@@ -28,8 +29,8 @@ public class GameManager : DontDestroy<GameManager>
         if (devModeActivated)
         {
             // press 'D' to go to the dev menu
-            if (Input.GetKeyDown(KeyCode.D))
-                LoadScene("DevMenu", true);
+            // if (Input.GetKeyDown(KeyCode.D))
+            //     LoadScene("DevMenu", true);
             // press 'F' to toggle between fixed and broken map sprites
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -103,6 +104,33 @@ public class GameManager : DontDestroy<GameManager>
     public void SendLog(Object context, string msg)
     {
         Debug.Log("[LOG] " + msg + " @ " + context.name);
+    }
+
+    // returns action word data from enum
+    public ActionWord GetActionWord(ActionWordEnum word)
+    {
+        foreach(ActionWord actionWord in actionWords)
+        {
+            if (actionWord._enum.Equals(word))
+                return actionWord;
+        }
+        SendError(this, "Could not find action word: \'" + word + "\'");
+        return null;
+    }
+
+
+    // returns a list with every action word enum
+    public List<ActionWordEnum> GetGlobalActionWordList()
+    {
+        var globalCoinPool = new List<ActionWordEnum>();
+        string[] coins = System.Enum.GetNames(typeof(ActionWordEnum));
+        for (int i = 0; i < coins.Length; i++) 
+        {
+            ActionWordEnum coin = (ActionWordEnum)System.Enum.Parse(typeof(ActionWordEnum), coins[i]);
+            globalCoinPool.Add(coin);
+        }
+        globalCoinPool.Remove(ActionWordEnum.SIZE);
+        return globalCoinPool;
     }
 
     /* 

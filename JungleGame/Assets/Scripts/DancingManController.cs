@@ -38,70 +38,73 @@ public class DancingManController : MonoBehaviour
     }
 
 
-    public void PlayUsingPhonemeEnum(Phoneme phoneme)
+    public void PlayUsingPhonemeEnum(ActionWordEnum word)
     {
-        switch (phoneme)
+        switch (word)
         {
             default:
-            case Phoneme.a_Phoneme:
-                PlayBaby();
-                break;
-            case Phoneme.aPhoneme:
-                PlayBackpack();
-                break;
-            case Phoneme.airPhoneme:
-                PlayBumphead();
-                break;
-            case Phoneme.arePhoneme:
-                PlayChoice();
-                break;
-            case Phoneme.awPhoneme:
-                PlayExplorer();
-                break;
-            case Phoneme.e_Phoneme:
-                PlayFrustrating();
-                break;
-            case Phoneme.earPhoneme:
-                PlayGive();
-                break;
-            case Phoneme.ePhoneme:
-                PlayGorilla();
-                break;
-            case Phoneme.erPhoneme:
-                PlayHello();
-                break;
-            case Phoneme.i_Phoneme:
-                PlayListen();
-                break;
-            case Phoneme.iPhoneme:
+            case ActionWordEnum.mudslide:
                 PlayMudslide();
                 break;
-            case Phoneme.o_Phoneme:
-                PlayMudslide2();
+            case ActionWordEnum.listen:
+                PlayListen();
                 break;
-            case Phoneme.oPhoneme:
-                PlayOrc();
-                break;
-            case Phoneme.oiPhoneme:
-                PlayPirate();
-                break;
-            case Phoneme.ooPhoneme:
+            case ActionWordEnum.poop:
                 PlayPoop();
                 break;
-            case Phoneme.orPhoneme:
-                PlayScared();
+            case ActionWordEnum.orcs:
+                PlayOrcs();
                 break;
-            case Phoneme.owPhoneme:
-                PlaySounds();
+            case ActionWordEnum.think:
+                PlayThink();
                 break;
-            case Phoneme.u_Phoneme:
+
+            case ActionWordEnum.hello:
+                PlayHello();
+                break;
+            case ActionWordEnum.spider:
                 PlaySpider();
                 break;
-            case Phoneme.uPhoneme:
-                PlaySpider2();
+            case ActionWordEnum.explorer:
+                PlayExplorer();
                 break;
-            case Phoneme.yerPhoneme:
+            case ActionWordEnum.scared:
+                PlayScared();
+                break;
+            case ActionWordEnum.thatguy:
+                PlayThatGuy();
+                break;
+
+            case ActionWordEnum.choice:
+                PlayChoice();
+                break;
+            case ActionWordEnum.strongwind:
                 PlayStrongwind();
+                break;
+            case ActionWordEnum.pirate:
+                PlayPirate();
+                break;
+            case ActionWordEnum.gorilla:
+                PlayGorilla();
+                break;
+            case ActionWordEnum.sounds:
+                PlaySounds();
+                break;
+            case ActionWordEnum.give:
+                PlayGive();
+                break;
+
+            case ActionWordEnum.backpack:
+                PlayBackpack();
+                break;
+            case ActionWordEnum.frustrating:
+                PlayFrustrating();
+                break;
+            case ActionWordEnum.bumphead:
+                PlayBumphead();
+                break;
+            case ActionWordEnum.baby:
+                PlayBaby();
                 break;
         }
     }
@@ -109,154 +112,154 @@ public class DancingManController : MonoBehaviour
     public void PlayBaby()
     {
         animator.Play("baby");
-        textureAtlas.BabyFace();
+        textureAtlas.babyFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayBackpack()
     {
         animator.Play("backpack");
-        textureAtlas.BackpackFace();
+        textureAtlas.backpackFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayBumphead()
     {
         animator.Play("bumphead");
-        textureAtlas.BumpheadFace();
+        textureAtlas.bumpheadFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayChoice()
     {
         animator.Play("choice");
-        textureAtlas.ChoiceFace();
+        textureAtlas.choiceFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayExplorer()
     {
         animator.Play("explorer");
-        textureAtlas.ExplorerFace();
+        textureAtlas.explorerFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayFrustrating()
     {
-        animator.Play("choice");
-        textureAtlas.ChoiceFace();
+        animator.Play("frustrating");
+        textureAtlas.frustratingFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayGive()
     {
         animator.Play("give");
-        textureAtlas.GiveFace();
+        textureAtlas.giveFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayGorilla()
     {
         animator.Play("gorilla");
-        textureAtlas.GorillaFace();
+        textureAtlas.gorillaFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayHello()
     {
         animator.Play("hello");
-        textureAtlas.HelloFace();
+        textureAtlas.helloFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayListen()
     {
         animator.Play("listen");
-        textureAtlas.ListenFace();
+        textureAtlas.listenFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayMudslide()
     {
         animator.Play("mudslide");
-        textureAtlas.MudslideFace();
+        textureAtlas.mudslideFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayMudslide2()
     {
         animator.Play("mudslide");
-        textureAtlas.Mudslide2Face();
+        textureAtlas.mudslide2Face();
         StartCoroutine(TextureSwapRoutine());
     }
 
-    public void PlayOrc()
+    public void PlayOrcs()
     {
-        animator.Play("orc");
-        textureAtlas.OrcsFace();
+        animator.Play("orcs");
+        textureAtlas.orcsFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayPirate()
     {
         animator.Play("pirate");
-        textureAtlas.PirateFace();
+        textureAtlas.pirateFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayPoop()
     {
         animator.Play("poop");
-        textureAtlas.PoopFace();
+        textureAtlas.poopFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayScared()
     {
         animator.Play("scared");
-        textureAtlas.ScaredFace();
+        textureAtlas.scaredFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlaySounds()
     {
         animator.Play("sounds");
-        textureAtlas.SoundsFace();
+        textureAtlas.soundsFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlaySpider()
     {
         animator.Play("spider");
-        textureAtlas.SpiderFace();
+        textureAtlas.spider2Face();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlaySpider2()
     {
         animator.Play("spider");
-        textureAtlas.Spider2Face();
+        textureAtlas.spiderFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayStrongwind()
     {
         animator.Play("strongwind");
-        textureAtlas.StrongwindFace();
+        textureAtlas.strongwindFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayThatGuy()
     {
         animator.Play("thatguy");
-        textureAtlas.ThatGuyFace();
+        textureAtlas.thatguyFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
     public void PlayThink()
     {
         animator.Play("think");
-        textureAtlas.ThinkFace();
+        textureAtlas.thinkFace();
         StartCoroutine(TextureSwapRoutine());
     }
 
@@ -264,6 +267,6 @@ public class DancingManController : MonoBehaviour
     private IEnumerator TextureSwapRoutine(float time = 1.5f)
     {
         yield return new WaitForSeconds(time);
-        textureAtlas.ReturnToBase();
+        textureAtlas.returntobase();
     }
 }

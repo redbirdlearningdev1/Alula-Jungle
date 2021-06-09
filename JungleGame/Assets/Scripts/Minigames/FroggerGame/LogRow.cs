@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +8,7 @@ public class LogRow : MonoBehaviour
     public List<Vector2> movePositions;
     public List<SingleLog> logs;
     public List<SingleLog> coinLogs;
-    public List<Coin> coins;
+    public List<LogCoin> coins;
 
     void Start()
     {

@@ -2,12 +2,12 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1102 &-9054548467952131223
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: eCoin
+  m_Name: spider
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -28,12 +28,12 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &-8807123511300332272
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: i_Coin
+  m_Name: poop
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -54,12 +54,12 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &-5884919513663914449
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: areCoin
+  m_Name: pirate
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -80,12 +80,12 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &-5323687598879893614
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: u_Coin
+  m_Name: think
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -106,7 +106,7 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1107 &-5145784799280327118
 AnimatorStateMachine:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -115,7 +115,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 8618081094383179370}
-    m_Position: {x: 180, y: 80, z: 0}
+    m_Position: {x: 130, y: 80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8619550132417746018}
     m_Position: {x: 180, y: 130, z: 0}
@@ -173,24 +173,27 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 3848027369167313143}
     m_Position: {x: 810, y: 1300, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1374916970799347796}
+    m_Position: {x: -130, y: 180, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
-  m_EntryPosition: {x: -20, y: 80, z: 0}
+  m_EntryPosition: {x: -160, y: 70, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 8618081094383179370}
 --- !u!1102 &-3429322412793543339
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: uCoin
+  m_Name: thatguy
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -211,12 +214,12 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &-2307232821180859960
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: owCoin
+  m_Name: bumphead
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -237,12 +240,12 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &-291628516102890571
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ooCoin
+  m_Name: backpack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -285,12 +288,12 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
 --- !u!1102 &38269637579610469
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: oiCoin
+  m_Name: frustrating
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -311,12 +314,12 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &601903275590688285
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: oCoin
+  m_Name: scared
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -335,14 +338,40 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &2278926075361987097
+--- !u!1102 &1374916970799347796
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: airCoin
+  m_Name: New State
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &2278926075361987097
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: strongwind
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -363,12 +392,12 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &3848027369167313143
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: yerCoin
+  m_Name: give
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -389,12 +418,12 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &4315587061696173105
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: erCoin
+  m_Name: gorilla
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -415,12 +444,12 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &4927969911926720963
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: o_Coin
+  m_Name: orcs
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -441,12 +470,12 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &5045651169670543466
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: orCoin
+  m_Name: choice
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -467,12 +496,12 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &6292290740916815949
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: iCoin
+  m_Name: explorer
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -493,12 +522,12 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &6492571994300689238
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: earCoin
+  m_Name: sounds
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -519,12 +548,12 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &6746849715168612676
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: awCoin
+  m_Name: baby
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -545,12 +574,12 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &7871785485694659792
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: e_Coin
+  m_Name: listen
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -571,12 +600,12 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &8618081094383179370
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: a_Coin
+  m_Name: mudslide
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -597,12 +626,12 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &8619550132417746018
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: aCoin
+  m_Name: hello
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

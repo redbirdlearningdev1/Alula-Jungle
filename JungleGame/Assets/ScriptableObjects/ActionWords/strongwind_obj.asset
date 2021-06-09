@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838bbca180b5ea749b8f619e976fdf52, type: 3}
+  m_Name: strongwind_obj
+  m_EditorClassIdentifier: 
+  _name: strongwind
+  audio: {fileID: 8300000, guid: 2a383af418910a14b858d8046437f773, type: 3}
+  animation: strongwind
+  _enum: 11
+  doorIcon: {fileID: 21300000, guid: 76f5039af78021247bf3153b8081a654, type: 3}
+  frameIcon: {fileID: 21300000, guid: 9ce1aec10c249a64aa2867cd28f58a76, type: 3}
+  centerIcon: {fileID: 21300000, guid: 778b305053239224bacc8cd88b011469, type: 3}
