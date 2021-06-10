@@ -9,9 +9,14 @@ public class pileRummage : MonoBehaviour
     private int currPile = 0;
     private const int maxPile = 1;
     public bool chosen = false;
+    public bool currPileLock = true;
+
 
     [Header("Objects")]
     [SerializeField] private Image Pile;
+    [SerializeField] private SpriteRenderer Pile1;
+
+
 
 
     [Header("Images")]
@@ -23,6 +28,7 @@ public class pileRummage : MonoBehaviour
     void Awake()
     {
         Pile.sprite = pileSprites[currPile];
+        
     }
 
     void Start()
@@ -64,6 +70,32 @@ public class pileRummage : MonoBehaviour
     public void pileDone()
     {
         chosen = false;
+        Pile1.enabled = false;
         Pile.sprite = pileSprites[1];
+
+    }
+    public void pileGlowOff()
+    {
+
+        Pile1.enabled = false;
+
+
+    }
+    public void pileGlowOn()
+    {
+        if(currPileLock)
+        {
+            Pile1.enabled = true;
+        }
+
+
+
+    }
+    public void pileLock()
+    {
+        currPileLock = false;
+
+
+
     }
 }

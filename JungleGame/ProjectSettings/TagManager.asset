@@ -28,7 +28,7 @@ TagManager:
   - 
   - 
   - 3D Object
-  - 
+  - Orc
   - 
   - MapUIButtons
   - 
@@ -57,4 +57,6 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 3584257617
+  - name: Orc
+    uniqueID: 284717983
     locked: 0

@@ -147,7 +147,11 @@ public class DancingManController : MonoBehaviour
     public void PlayFrustrating()
     {
         animator.Play("frustrating");
+
+        textureAtlas.choiceFace();
+
         textureAtlas.frustratingFace();
+
         StartCoroutine(TextureSwapRoutine());
     }
 

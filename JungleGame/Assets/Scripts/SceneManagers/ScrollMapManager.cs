@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,16 +22,40 @@ public class ScrollMapManager : MonoBehaviour
     [SerializeField] private Transform rightBirbBounds;
     private bool moveBirb;
 
-    void Start()
+    [Header("Sticker")]
+    [SerializeField] public GameObject stickerCart;
+    [SerializeField] public GameObject toolBar;
+    [SerializeField] public GameObject Book,Board,BackWindow;
+    [SerializeField] public Animator Wagon;
+    private bool stickerButtonsDisabled;
+    public float stickerTransitionTime;
+    private Vector3 cartStartPosition;
+    private Vector3 cartOnScreenPosition = new Vector3(0f, -1f, 0f);
+    private Vector3 toolBarStartPosition;
+    private Vector3 toolBarOnScreenPosition = new Vector3(0f, 0f, 0f);
+
+    void Awake()
     {
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
         // play test song
         AudioManager.instance.PlaySong(AudioDatabase.instance.JungleGameTestSong);
+    }
+
+    void Start()
+    {
 
         StartCoroutine(DelayedStart(0.1f));
-    }
+        cartStartPosition = stickerCart.transform.position;
+        toolBarStartPosition = toolBar.transform.position;
+        Book.SetActive(false);
+        Board.SetActive(false);
+        BackWindow.SetActive(false);
+        stickerCart.SetActive(false);
+        toolBar.SetActive(false);
+        
+}
 
     private IEnumerator DelayedStart(float delay)
     {
@@ -91,6 +115,72 @@ public class ScrollMapManager : MonoBehaviour
     #   MAP NAVIGATION BUTTONS
     ################################################
     */
+
+    
+
+    private IEnumerator StickerInputDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        stickerButtonsDisabled = false;
+    }
+
+    public void DoRollOn()
+    {
+        StartCoroutine(RollOnScreen());
+    }
+
+    public IEnumerator RollOnScreen()
+    {
+        stickerCart.SetActive(true);
+        toolBar.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Wagon.Play("WagonRollIn");
+        StartCoroutine(RollOnScreenRoutine(cartOnScreenPosition, toolBarOnScreenPosition));
+        yield return new WaitForSeconds(3.05f);
+        Wagon.Play("WagonStop");
+        yield return new WaitForSeconds(1.15f);
+        //Wagon.Play("Idle");
+        Book.SetActive(true);
+        Board.SetActive(true);
+        BackWindow.SetActive(true);
+
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+    }
+
+    private IEnumerator RollOnScreenRoutine(Vector3 target, Vector3 target2)
+    {
+        Debug.Log("Here");
+        Vector3 currStart = stickerCart.transform.position;
+        Vector3 currStart2 = toolBar.transform.position;
+        float timer = 0f;
+        float maxTime = .75f;
+        //animator.Play("orcWalk");
+        while (true)
+        {
+            // animate movement
+            timer += Time.deltaTime * .25f;
+            if (timer < maxTime)
+            {
+                stickerCart.transform.position = Vector3.Lerp(currStart, target, timer / maxTime);
+                toolBar.transform.position = Vector3.Lerp(currStart2, target2, timer / maxTime);
+            }
+            else
+            {
+                stickerCart.transform.position = target;
+                toolBar.transform.position = target2;
+                yield break;
+            }
+            
+            
+            yield return null;
+        }
+        
+    }
+
 
     public void OnGoLeftPressed()
     {

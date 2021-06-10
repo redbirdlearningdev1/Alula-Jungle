@@ -17,7 +17,11 @@ public class SpiderGameManager : MonoBehaviour
 
     [SerializeField] private GameObject[] coins;
     private GameObject selectedCoin;
-    private ActionWordEnum correctCoin = ActionWordEnum.baby;
+
+    private ActionWordEnum correctCoin;
+
+ //   private ActionWordEnum correctCoin = ActionWordEnum.baby;
+
     private bool inputDisabled;
 
     [SerializeField] private GameObject[] fails;
