@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 public class CoinRaycaster : MonoBehaviour
 {
     public bool isOn = false;
+    public float coinMoveSpeed = 0.1f;
+
     private LogCoin selectedCoin = null;
     [SerializeField] private Transform selectedCoinParent;
 
@@ -20,7 +22,9 @@ public class CoinRaycaster : MonoBehaviour
         {
             Vector3 mousePosWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosWorldSpace.z = 0f;
-            selectedCoin.transform.position = mousePosWorldSpace;
+
+            Vector3 pos = Vector3.Lerp(selectedCoin.transform.position, mousePosWorldSpace, coinMoveSpeed);
+            selectedCoin.transform.position = pos;
         }
         else if (Input.GetMouseButtonUp(0) && selectedCoin)
         {

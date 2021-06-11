@@ -61,21 +61,21 @@ public class AudioManager : MonoBehaviour
     */
 
     // plays a sound once
-    public void PlayFX_oneShot(AudioClip clip, float volume, string id = "fx_oneShot")
+    public void PlayFX_oneShot(AudioClip clip, float volume, string id = "fx_oneShot", float pitch = 1f)
     {
         var audioObj = Instantiate(fxAudioObject, fxObjectHolder);
-        audioObj.GetComponent<FxAudioObject>().PlayClip(id, clip, volume, clip.length + 1f);
+        audioObj.GetComponent<FxAudioObject>().PlayClip(id, clip, volume, clip.length + 1f, pitch);
     }
 
     // plays a sound continuously until scene changes or stopped manually
-    public void PlayFX_loop(AudioClip clip, float volume, string id = "fx_loop")
+    public void PlayFX_loop(AudioClip clip, float volume, string id = "fx_loop", float pitch = 1f)
     {
         var audioObj = Instantiate(fxAudioObject, fxObjectHolder);
-        audioObj.GetComponent<FxAudioObject>().PlayClip(id, clip, volume, 0f);
+        audioObj.GetComponent<FxAudioObject>().PlayClip(id, clip, volume, 0f, pitch);
     }
 
     // stops fx from plaing based on id
-    public void StopFX(string id)
+    public bool StopFX(string id)
     {
         // iterate though each FX audio object
         int num = fxObjectHolder.childCount;
@@ -86,9 +86,10 @@ public class AudioManager : MonoBehaviour
             if (obj.id == id)
             {
                 obj.InstaDestroy();
-                return;
+                return true;
             }
         }
+        return false;
     }
 
     // clear all fx
@@ -103,18 +104,51 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayCoinDrop(int num = 0)
+    public void PlayCoinDrop(int num = -1)
     {
-        // play random coin drop sound iff 0
-        if (num == 0)
+        // play random coin drop sound iff -1
+        if (num == -1)
         {
             int idx = Random.Range(0, 8);
             PlayFX_oneShot(AudioDatabase.instance.CoinDropArray[idx], 1f);
         }
         else
         {
-            if (num > 0 && num < 8)
+            if (num >= 0 && num < 8)
             PlayFX_oneShot(AudioDatabase.instance.CoinDropArray[num], 1f);
+        }
+    }
+
+    public void PlayKeyJingle(int num = -1)
+    {
+        // play random key jingle sound iff -1
+        if (num == -1)
+        {
+            int idx = Random.Range(0, 6);
+            PlayFX_oneShot(AudioDatabase.instance.KeyJingleArray[idx], 1f);
+        }
+        else
+        {
+            if (num >= 0 && num < 6)
+            PlayFX_oneShot(AudioDatabase.instance.KeyJingleArray[num], 1f);
+        }
+    }
+    
+    static int stoneLoopCount = 0;
+    public void PlayMoveStoneSound(float duration, float pitch)
+    {
+        string id = "stone_" + stoneLoopCount.ToString();
+        stoneLoopCount++;
+        StartCoroutine(MoveStoneRoutine(id, duration, pitch));
+    }
+
+    private IEnumerator MoveStoneRoutine(string id, float duration, float pitch)
+    {
+        PlayFX_loop(AudioDatabase.instance.MoveStoneLoop, 1f, id, pitch);
+        yield return new WaitForSeconds(duration);
+        if (StopFX(id))
+        {
+            PlayFX_oneShot(AudioDatabase.instance.MoveStoneEnd, 0.5f, id, pitch);
         }
     }
 

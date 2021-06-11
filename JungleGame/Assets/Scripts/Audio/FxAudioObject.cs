@@ -15,7 +15,7 @@ public class FxAudioObject : MonoBehaviour
         audioSource.loop = false;
     }
 
-    public void PlayClip(string id, AudioClip clip, float volume, float duration)
+    public void PlayClip(string id, AudioClip clip, float volume, float duration, float pitch)
     {
         // set id
         this.id = id;
@@ -23,6 +23,7 @@ public class FxAudioObject : MonoBehaviour
         // set clip and volume
         audioSource.clip = clip;
         audioSource.volume = volume;
+        audioSource.pitch = pitch;
 
         // play clip and destroy object once complete OR loop forever
         audioSource.Play();

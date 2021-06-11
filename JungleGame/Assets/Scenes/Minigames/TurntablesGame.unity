@@ -308,6 +308,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 0
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!222 &529655429
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -475,6 +480,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 0
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!212 &537847146
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -804,6 +814,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 1
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!1 &856733648
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,7 +909,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -672.3103, y: -332.19788}
+  m_AnchoredPosition: {x: -672.31036, y: -332.19788}
   m_SizeDelta: {x: -1344.6206, y: -664.3954}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &934339465
@@ -936,6 +951,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 0
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!212 &934339468
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1305,9 +1325,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   frameIcon: {fileID: 856733650}
+  moveStonePitch:
+  - 0.5
+  - 0.4
+  - 0.33
+  - 0.3
   randomizeKeyPosition: 0
-  finishedDoorColor: {r: 1, g: 0.7821765, b: 0, a: 1}
-  winDoorColor: {r: 0, g: 0.9235139, b: 1, a: 1}
+  finishedDoorColor: {r: 1, g: 0.79205453, b: 0, a: 1}
+  winDoorColor: {r: 1, g: 0, b: 0.97566557, a: 1}
+  playTutorial: 1
+  correctTutorialIcons: 00000000010000000200000003000000
+  firstQuartet: 08000000000000000000000000000000
+  secondQuartet: 00000000080000000000000000000000
+  thirdQuartet: 00000000000000000800000000000000
+  fourthQuartet: 00000000000000000000000008000000
 --- !u!114 &1266065045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1321,6 +1352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOn: 1
+  keyMoveSpeed: 0.02
   selectedKeyParent: {fileID: 1883585368}
 --- !u!1 &1370068918
 GameObject:
@@ -1890,6 +1922,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 0
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!1 &1954527776
 GameObject:
   m_ObjectHideFlags: 0
@@ -2144,6 +2181,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 0
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!212 &2074776820
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -56,4 +56,23 @@ public class AudioDatabase : MonoBehaviour
     public AudioClip GrassThump;
 
     public AudioClip RiverFlowing;
+
+    [Header("Key Jingles")]
+    public AudioClip[] KeyJingleArray;
+
+    [Header("Turntables Game")]
+    public AudioClip BreezeLoop;
+    public AudioClip QuarryLoop;
+    public AudioClip RocksSlidingLoop;
+
+    public AudioClip ErrieGlow;
+    public AudioClip KeyLatch;
+    public AudioClip KeyTap;
+    public AudioClip KeyUnlock;
+
+    public AudioClip LargeRockSlide;
+
+    public AudioClip MoveStoneStart;
+    public AudioClip MoveStoneLoop;
+    public AudioClip MoveStoneEnd;
 }

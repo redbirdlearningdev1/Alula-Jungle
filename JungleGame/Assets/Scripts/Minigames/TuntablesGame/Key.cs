@@ -48,6 +48,9 @@ public class Key : MonoBehaviour
             StopCoroutine(currentRoutine);
         AudioManager.instance.PlayPhoneme(keyActionWord);
         PlaySoundAnimation(1f);
+
+        // play key tap
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.KeyTap, 1f);
     }
 
     private void PlaySoundAnimation(float duration)

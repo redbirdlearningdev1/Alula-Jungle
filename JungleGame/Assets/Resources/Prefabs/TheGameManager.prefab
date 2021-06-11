@@ -308,6 +308,24 @@ MonoBehaviour:
   WoodThump: {fileID: 8300000, guid: 004d468645271634295eebd789604f9c, type: 3}
   GrassThump: {fileID: 8300000, guid: b8295fed07cec134ca3ba5e972a02e79, type: 3}
   RiverFlowing: {fileID: 8300000, guid: 1ae2bcd9fee358041a263d3962bc53d9, type: 3}
+  KeyJingleArray:
+  - {fileID: 8300000, guid: d2394c59a78f8a64c9868cb940fc21e1, type: 3}
+  - {fileID: 8300000, guid: 7a147603af08bec49a5be687fe138275, type: 3}
+  - {fileID: 8300000, guid: e3f378267967b164ea38f960e1496dab, type: 3}
+  - {fileID: 8300000, guid: 330c2b95386df67449c3693164336c9e, type: 3}
+  - {fileID: 8300000, guid: f21bc0ce82dc64d499d9f977654f98b6, type: 3}
+  - {fileID: 8300000, guid: d45b3155429445948a68f990b8519574, type: 3}
+  BreezeLoop: {fileID: 8300000, guid: 53db96bf462543a4fb93957a7dc718ff, type: 3}
+  QuarryLoop: {fileID: 8300000, guid: 5e6ae8cfc93fb354f841f85f63a6f621, type: 3}
+  RocksSlidingLoop: {fileID: 8300000, guid: 383d4e6bfa6a494478db72252a2187a3, type: 3}
+  ErrieGlow: {fileID: 8300000, guid: 7e7bc70c74e3cc341a90fac452d35c07, type: 3}
+  KeyLatch: {fileID: 8300000, guid: f76543dcc64cc72498388993c5c3d6e7, type: 3}
+  KeyTap: {fileID: 8300000, guid: cc5c95701049495498653676823a3e6a, type: 3}
+  KeyUnlock: {fileID: 8300000, guid: e5aea9963601afd4c8f33bba5c977fc5, type: 3}
+  LargeRockSlide: {fileID: 8300000, guid: 03e0f1445ecb0fe46b53c2c8f0e37d88, type: 3}
+  MoveStoneStart: {fileID: 8300000, guid: edcbbf3183649f748a78622653d28b0d, type: 3}
+  MoveStoneLoop: {fileID: 8300000, guid: 3f92e936499ef6046b73c6f4dba9e511, type: 3}
+  MoveStoneEnd: {fileID: 8300000, guid: 7b23ef10054b2634490ed56c28d61187, type: 3}
 --- !u!1 &2039774890
 GameObject:
   m_ObjectHideFlags: 0
