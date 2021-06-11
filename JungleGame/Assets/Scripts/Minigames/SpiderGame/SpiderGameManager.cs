@@ -162,10 +162,10 @@ public class SpiderGameManager : MonoBehaviour
 
     private void HandleAnswer(GameObject coin)
     {
-        if(coin.GetComponent<Coin>().type == correctCoin)
+        if(coin.GetComponent<LogCoin>().type == correctCoin)
         {
             spider.GetComponent<Animator>().SetBool("correct", true);
-            spiderGrab.SetInteger("coin", coin.GetComponent<Coin>().logIndex);
+            spiderGrab.SetInteger("coin", coin.GetComponent<LogCoin>().logIndex);
             bug.GetComponent<Animator>().SetTrigger("bugTakeoff");
             StartCoroutine(MoveObject(coin.transform, Vector3.down, 0.7f, .7f, false));
             StartCoroutine(MoveObject(bug.transform, Vector3.up * 5 + Vector3.right * 5, 3f, .35f, false));

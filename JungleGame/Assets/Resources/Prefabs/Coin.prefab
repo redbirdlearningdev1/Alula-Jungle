@@ -51,7 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74715662894ddc64b81c6ceab6427585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinType: 0
+  type: 0
+  logIndex: 0
+  logPos: {fileID: 0}
+  logParent: {fileID: 0}
   moveSpeed: 5
 --- !u!222 &7816498351022885105
 CanvasRenderer:
