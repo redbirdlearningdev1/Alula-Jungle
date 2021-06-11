@@ -45,7 +45,6 @@ public class ScrollMapManager : MonoBehaviour
 
     void Start()
     {
-
         StartCoroutine(DelayedStart(0.1f));
         cartStartPosition = stickerCart.transform.position;
         toolBarStartPosition = toolBar.transform.position;
@@ -148,7 +147,6 @@ public class ScrollMapManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-
     }
 
     private IEnumerator RollOnScreenRoutine(Vector3 target, Vector3 target2)
@@ -178,7 +176,6 @@ public class ScrollMapManager : MonoBehaviour
             
             yield return null;
         }
-        
     }
 
 

@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: pirate
   audio: {fileID: 8300000, guid: 5c4cbd03a3d3ca74a82094e32b1afbc2, type: 3}
   animation: pirate
-  _enum: 12
+  _enum: 13
   doorIcon: {fileID: 21300000, guid: 8940ab5d0d970ec4ea09ee5531ac48b6, type: 3}
   frameIcon: {fileID: 21300000, guid: a825167edec7b5040aea49b2c1cc348e, type: 3}
   centerIcon: {fileID: 21300000, guid: 854b97fdf46c9cb4c964985bbd3d0934, type: 3}

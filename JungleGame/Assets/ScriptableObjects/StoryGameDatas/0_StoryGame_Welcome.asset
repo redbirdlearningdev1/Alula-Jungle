@@ -28,26 +28,26 @@ MonoBehaviour:
   - text: Let's get back to our adventure.
     textAudio: {fileID: 8300000, guid: 2b5f5b0fac2e1d84db895fb9db07827d, type: 3}
     containsActionWord: 0
-    actionWord: 7
+    actionWord: 0
     wordAudio: {fileID: 0}
   - text: You are an
     textAudio: {fileID: 8300000, guid: dd2b6b583b7fe9649918f33116cd164e, type: 3}
     containsActionWord: 1
-    actionWord: 7
+    actionWord: 8
     wordAudio: {fileID: 8300000, guid: 96c4be29a60fc124da6e046e9d8eb959, type: 3}
   - text: As an
     textAudio: {fileID: 8300000, guid: ee0ba887211de0c4ba8ef32989da371a, type: 3}
     containsActionWord: 1
-    actionWord: 7
+    actionWord: 8
     wordAudio: {fileID: 8300000, guid: c84252ce42fe3684f9e13f8589b30c4c, type: 3}
   - text: you will be able to help on our jungle trip!  I wonder if we will encounter
       another
     textAudio: {fileID: 8300000, guid: 8bcb655d14d89d9499100b59ed2de82e, type: 3}
     containsActionWord: 1
-    actionWord: 7
+    actionWord: 8
     wordAudio: {fileID: 8300000, guid: 3eb694d46e7980649bf12d9f8e72e664, type: 3}
   - text: Let's get going and find out
     textAudio: {fileID: 8300000, guid: 5f85753df17dc3741b83038b05ff43af, type: 3}
     containsActionWord: 1
-    actionWord: 7
+    actionWord: 8
     wordAudio: {fileID: 8300000, guid: 1b190370ed0f63044b2b870a7523f079, type: 3}

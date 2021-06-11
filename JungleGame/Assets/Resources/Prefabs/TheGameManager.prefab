@@ -284,11 +284,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JungleGameTestSong: {fileID: 8300000, guid: 8dd1bd2d3dc1d294c8ba2c07b6911673, type: 3}
-  FroggerGameSong: {fileID: 8300000, guid: 2a9c2b6addc1cb044a69b8ae1024c16e, type: 3}
+  FroggerGameSong: {fileID: 8300000, guid: 54f7f31bc273e754c935f6700983ce74, type: 3}
   testSound1: {fileID: 8300000, guid: c350fcdede53aa647b93c6b0ce53e7cd, type: 3}
   RightChoice: {fileID: 8300000, guid: 33ff1a3562326b24e80a23820344a8c4, type: 3}
   WrongChoice: {fileID: 8300000, guid: 2b787eac70b58ff459bacc25ca095636, type: 3}
   WinTune: {fileID: 8300000, guid: 6c176af750264c64eb2b404b0f0d0522, type: 3}
+  Whoosh: {fileID: 8300000, guid: 7955062fb108eb44295cfe699933eb81, type: 3}
   CoinDropArray:
   - {fileID: 8300000, guid: 451bd558733fdab4baea90b7cb7a5b89, type: 3}
   - {fileID: 8300000, guid: 846e91a4285c5e240a52c3fd701c3457, type: 3}
@@ -706,6 +707,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 204b418100187b246bb21c9b26fad80d, type: 2}
   - {fileID: 11400000, guid: 27b93b5c350d37940b99e45c1359f1a1, type: 2}
   - {fileID: 11400000, guid: 86e6686591a3a45469b51830c84699eb, type: 2}
+  - {fileID: 11400000, guid: d8f0e9424fe47be48894b60f151e5079, type: 2}
+  - {fileID: 11400000, guid: fff1d885084777a44b883f68517727bc, type: 2}
   devModeIndicator: {fileID: 6550831789426890278}
   raycastBlocker: {fileID: 5982717580096088433}
   popupParent: {fileID: 4923309015633507496}

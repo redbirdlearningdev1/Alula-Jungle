@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LogCoin : MonoBehaviour
 {
@@ -13,7 +12,8 @@ public class LogCoin : MonoBehaviour
 
     private Animator animator;
     private BoxCollider2D myCollider;
-    private Image image;
+    private SpriteRenderer spriteRenderer;
+    [HideInInspector] public GlowOutlineController glowController;
     private bool audioPlaying;
 
     // original vars
@@ -29,13 +29,15 @@ public class LogCoin : MonoBehaviour
         myCollider = gameObject.AddComponent<BoxCollider2D>();
         myCollider.size = rt.sizeDelta;
 
-        image = GetComponent<Image>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        glowController = GetComponent<GlowOutlineController>();
     }
 
-    void Update()
-    {
-
-    }
+    /* 
+    ################################################
+    #   POSITION FUNCTIONS
+    ################################################
+    */
 
     public void ReturnToLog()
     {
@@ -76,6 +78,12 @@ public class LogCoin : MonoBehaviour
         animator.Play(type.ToString());
     }
 
+    /* 
+    ################################################
+    #   AUDIO FUNCTIONS
+    ################################################
+    */
+
     public void PlayPhonemeAudio()
     {
         if (!audioPlaying)
@@ -92,18 +100,24 @@ public class LogCoin : MonoBehaviour
         audioPlaying = false;
     }
 
+    /* 
+    ################################################
+    #   VISIBILITY FUNCTIONS
+    ################################################
+    */
+
     public void ToggleVisibility(bool opt, bool smooth)
     {
         if (smooth)
             StartCoroutine(ToggleVisibilityRoutine(opt));
         else
         {
-            if (!image)
-                image = GetComponent<Image>();
-            Color temp = image.color;
+            if (!spriteRenderer)
+                spriteRenderer = GetComponent<SpriteRenderer>();
+            Color temp = spriteRenderer.color;
             if (opt) { temp.a = 1f; }
             else {temp.a = 0; }
-            image.color = temp;
+            spriteRenderer.color = temp;
         }
     }   
 
@@ -115,11 +129,11 @@ public class LogCoin : MonoBehaviour
         while(true)
         {
             timer += Time.deltaTime;
-            Color temp = image.color;
+            Color temp = spriteRenderer.color;
             temp.a = Mathf.Lerp(temp.a, end, timer);
-            image.color = temp;
+            spriteRenderer.color = temp;
 
-            if (image.color.a == end)
+            if (spriteRenderer.color.a == end)
             {
                 break;
             }

@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: spider
   audio: {fileID: 8300000, guid: 35c9d9038cbb37c4faa83a75e42512ae, type: 3}
   animation: spider
-  _enum: 6
+  _enum: 7
   doorIcon: {fileID: 21300000, guid: 83b505014dcd94247b595d0a5f7c4652, type: 3}
   frameIcon: {fileID: 21300000, guid: 9b1e48225d3785e4fb47cc335ed434f6, type: 3}
   centerIcon: {fileID: 21300000, guid: 5a6b9b33f9e0522458df60d85cdd3a20, type: 3}

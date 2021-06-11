@@ -29,10 +29,24 @@ public class FroggerGameManager : MonoBehaviour
     private int selectedIndex;
     private LogCoin selectedCoin;
 
+    [Header("Tutorial Stuff")]
+    public bool playTutorial;
+    public int[] correctTutorialCoins;
+    public List<ActionWordEnum> firstPair;
+    public List<ActionWordEnum> secondTriad;
+    public List<ActionWordEnum> thirdTriad;
+    public List<ActionWordEnum> fourthTriad;
 
     [Header("Dev Stuff")]
     [SerializeField] private GameObject devObject;
-    [SerializeField] private LogCoin devCoin; 
+    [SerializeField] private LogCoin devCoin;
+
+
+    /* 
+    ################################################
+    #   MONOBEHAVIOR METHODS
+    ################################################
+    */
 
     void Awake() 
     {
@@ -48,7 +62,17 @@ public class FroggerGameManager : MonoBehaviour
         devObject.SetActive(GameManager.instance.devModeActivated);
 
         PregameSetup();
-        StartCoroutine(StartGame());
+
+        // play real game or tutorial
+        if (playTutorial)
+        {
+            GameManager.instance.SendLog(this, "starting frogger game tutorial");
+            StartCoroutine(StartTutorial());
+        }
+        else
+        {
+            StartCoroutine(StartGame());
+        }
     }
 
     void Update()
@@ -69,32 +93,12 @@ public class FroggerGameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator DancingManRoutine()
-    {
-        if (playingDancingManAnimation)
-            yield break;
-        playingDancingManAnimation = true;
-        //print ("dancing man animation -> " + selectedCoin.type);
-        dancingMan.PlayUsingPhonemeEnum(selectedCoin.type);
-        yield return new WaitForSeconds(1.5f);
-        playingDancingManAnimation = false;
-    }
-
-    public bool EvaluateSelectedCoin(LogCoin coin)
-    {
-        if (coin == selectedCoin)
-        {
-            // success! go on to the next row or win game if on last row
-            if (currRow < 3)
-                StartCoroutine(CoinSuccessRoutine());
-            else
-                StartCoroutine(WinRoutine());
-            return true;
-        }
-        // fail go back to previous row
-        StartCoroutine(CoinFailRoutine());
-        return false;
-    }
+    
+    /* 
+    ################################################
+    #   GAME FLOW METHODS
+    ################################################
+    */
 
     private IEnumerator CoinFailRoutine()
     {
@@ -186,6 +190,7 @@ public class FroggerGameManager : MonoBehaviour
         gorilla.JumpForward(AudioDatabase.instance.GrassThump);
         yield return new WaitForSeconds(1.2f);
         gorilla.CelebrateAnimation(10f);
+        taxi.CelebrateAnimation(10f);
 
         // play win tune
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
@@ -221,6 +226,7 @@ public class FroggerGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(1.2f);
         gorilla.CelebrateAnimation(10f);
+        taxi.CelebrateAnimation(10f);
 
         // play win tune
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
@@ -255,24 +261,16 @@ public class FroggerGameManager : MonoBehaviour
         unusedCoinPool = new List<ActionWordEnum>();
         unusedCoinPool.AddRange(globalCoinPool);
 
-        // disable all coins
+        // disable all coins + glow controller
         foreach (var coin in allCoins)
+        {
+            coin.GetComponent<GlowOutlineController>().ToggleGlowOutline(false);
             coin.ToggleVisibility(false, false);
+        }
+            
 
         // sink all the logs except the first row
         StartCoroutine(SinkLogsExceptFirstRow());
-    }
-
-    private IEnumerator SinkLogsExceptFirstRow()
-    {
-        rows[3].SinkAllLogs();
-        yield return new WaitForSeconds(0.2f);
-        rows[2].SinkAllLogs();
-        yield return new WaitForSeconds(0.2f);
-        rows[1].SinkAllLogs();
-        yield return new WaitForSeconds(2f);
-        // game is done setting up
-        gameSetup = true;
     }
 
     private IEnumerator StartGame()
@@ -286,23 +284,211 @@ public class FroggerGameManager : MonoBehaviour
         StartCoroutine(ShowCoins(currRow));
     }
 
-    private IEnumerator ShowCoins(int index)
+    /* 
+    ################################################
+    #   TUTORIAL METHODS
+    ################################################
+    */
+
+    private IEnumerator StartTutorial()
+    {
+        // wait a moment for the setup to finish
+        while (!gameSetup)
+            yield return null;
+
+        currRow = 0;
+        ShowTutorialCoins();
+    }
+
+    private IEnumerator ContinueTutorialRoutine()
+    {
+        // TODO: animate coin into bag
+        rows[currRow].ResetCoinPos(selectedCoin);
+        taxi.CelebrateAnimation();
+        bag.UpgradeBag();
+
+        // remove selected coin
+        selectedCoin.ToggleVisibility(false, true);
+        yield return new WaitForSeconds(1f);
+        selectedCoin.ReturnToLog();
+        selectedCoin = null;
+
+        StartCoroutine(HideCoins(currRow, selectedCoin));
+        yield return new WaitForSeconds(1f);
+
+        rows[currRow].SinkAllExcept(selectedIndex);
+        rows[currRow].MoveToCenterLog(selectedIndex);
+        yield return new WaitForSeconds(1f);
+
+        gorilla.JumpForward(AudioDatabase.instance.WoodThump);
+        yield return new WaitForSeconds(1f);
+        gorilla.CelebrateAnimation();
+        
+
+        currRow++;
+        rows[currRow].RiseAllLogs();
+        yield return new WaitForSeconds(1f);
+
+        ShowTutorialCoins();
+    }
+
+    private IEnumerator TryAgainRoutine()
+    {
+        rows[currRow].ResetCoinPos(null);
+        taxi.TwitchAnimation();
+        StartCoroutine(HideCoins(currRow));
+        yield return new WaitForSeconds(1f);
+
+        rows[currRow].SinkAllLogs();
+        yield return new WaitForSeconds(1f);
+        
+        rows[currRow].RiseAllLogs();
+        rows[currRow].ResetLogRow();
+        yield return new WaitForSeconds(1f);
+
+        ShowTutorialCoins();
+    }
+
+    private IEnumerator CompleteTutorialRoutine()
+    {
+        print ("you win!");
+        // TODO: animate coin into bag
+        rows[currRow].ResetCoinPos(selectedCoin);
+        taxi.CelebrateAnimation();
+        bag.UpgradeBag();
+
+        // remove selected coin
+        selectedCoin.ToggleVisibility(false, true);
+        yield return new WaitForSeconds(1f);
+        selectedCoin.ReturnToLog();
+        selectedCoin = null;
+
+        StartCoroutine(HideCoins(currRow, selectedCoin));
+        yield return new WaitForSeconds(1f);
+
+        rows[currRow].SinkAllExcept(selectedIndex);
+        rows[currRow].MoveToCenterLog(selectedIndex);
+        yield return new WaitForSeconds(1f);
+
+        gorilla.JumpForward(AudioDatabase.instance.WoodThump);
+        yield return new WaitForSeconds(1f);
+
+        gorilla.JumpForward(AudioDatabase.instance.GrassThump);
+        yield return new WaitForSeconds(1.2f);
+        gorilla.CelebrateAnimation(10f);
+        taxi.CelebrateAnimation(10f);
+
+        // play win tune
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+
+        yield return new WaitForSeconds(3f);
+
+        // TODO: finish tutorial stuff
+        GameManager.instance.LoadScene("ScrollMap", true, 3f);
+    }
+
+    private void ShowTutorialCoins()
+    {
+        // show correct row of coins
+        switch (currRow)
+        {
+            case 0:
+                StartCoroutine(ShowCoins(currRow, firstPair));
+                break;
+            case 1:
+                StartCoroutine(ShowCoins(currRow, secondTriad));
+                break;
+            case 2:
+                StartCoroutine(ShowCoins(currRow, thirdTriad));
+                break;
+            case 3:
+                StartCoroutine(ShowCoins(currRow, fourthTriad));
+                break;
+        }
+    }   
+
+
+    /* 
+    ################################################
+    #   COIN CONTROL METHODS
+    ################################################
+    */
+
+    public bool EvaluateSelectedCoin(LogCoin coin)
+    {
+        // Tutorial evaluation
+        if (playTutorial)
+        {
+            if (coin == selectedCoin)
+            {
+                // success! continue or complete tutorial
+                if (currRow < 3)
+                    StartCoroutine(ContinueTutorialRoutine());
+                else
+                    StartCoroutine(CompleteTutorialRoutine());
+                return true;
+            }
+
+            // fail - try again!
+            StartCoroutine(TryAgainRoutine());
+            return false;
+        }
+
+
+        if (coin == selectedCoin)
+        {
+            // success! go on to the next row or win game if on last row
+            if (currRow < 3)
+                StartCoroutine(CoinSuccessRoutine());
+            else
+                StartCoroutine(WinRoutine());
+            return true;
+        }
+        // fail go back to previous row
+        StartCoroutine(CoinFailRoutine());
+        return false;
+    }
+
+    private IEnumerator ShowCoins(int index, List<ActionWordEnum> coinTypes = null)
     {
         List<LogCoin> row = GetCoinRow(index);
+
+        int idx = 0;
         foreach (var coin in row)
         {
+            ActionWordEnum type = ActionWordEnum._blank;
+
+            // use predetermined coin types
+            if (coinTypes != null)
+            {
+                //print ("setting coin type: " +  coinTypes[idx]);
+                type = coinTypes[idx];
+            }
             // set random type
-            if (unusedCoinPool.Count == 0)
-                unusedCoinPool.AddRange(globalCoinPool);
-            ActionWordEnum type = unusedCoinPool[Random.Range(0, unusedCoinPool.Count)];
-            unusedCoinPool.Remove(type);
+            else
+            {
+                if (unusedCoinPool.Count == 0)
+                    unusedCoinPool.AddRange(globalCoinPool);
+                type = unusedCoinPool[Random.Range(0, unusedCoinPool.Count)];
+                unusedCoinPool.Remove(type);
+            }            
 
             coin.SetCoinType(type);
             coin.ToggleVisibility(true, true);
 
             yield return new WaitForSeconds(0.1f);
+            idx++;
         }
-        SelectRandomCoin(currRow);
+
+        // select the correct coin
+        if (playTutorial)
+        {
+            SelectCoin(currRow, correctTutorialCoins[currRow]).glowController.ToggleGlowOutline(true);
+        }
+        else
+        {
+            SelectCoin(currRow);
+        }
     }
 
     private IEnumerator HideCoins(int index, LogCoin exceptCoin = null)
@@ -316,19 +502,37 @@ public class FroggerGameManager : MonoBehaviour
         }
     }
 
-    private void SelectRandomCoin(int index)
+    // select a coin to be the correct coin
+    private LogCoin SelectCoin(int rowIndex, int coinIndex = -1)
     {
-        List<LogCoin> row = GetCoinRow(index);
+        List<LogCoin> row = GetCoinRow(rowIndex);
+
+        // select random coin
         selectedIndex = Random.Range(0, row.Count);
-        // print ("selected index: " + selectedIndex);
+
+        // if coin index is valid - use that indead of random choice
+        //print ("coin index: " + coinIndex);
+        if (coinIndex != -1)
+        {
+            if (coinIndex > -1 && coinIndex < row.Count)
+            {
+                selectedIndex = coinIndex;
+                //print ("not random");
+            }
+        }
+
+        // print ("selected index -> " + selectedIndex);
         selectedCoin = row[selectedIndex];
-        //print ("selected coin -> " + selectedCoin.type);
+        // print ("selected coin -> " + selectedCoin.type);
         StartCoroutine(DancingManRoutine());
+        
 
         if (GameManager.instance.devModeActivated)
         {
             devCoin.SetCoinType(selectedCoin.type);
         }
+
+        return selectedCoin;
     }
 
     private List<LogCoin> GetCoinRow(int index)
@@ -345,5 +549,35 @@ public class FroggerGameManager : MonoBehaviour
             case 3:
                 return coins4;
         }
+    }
+
+    /* 
+    ################################################
+    #   MISC UTIL FUNCTIONS
+    ################################################
+    */
+
+    // used to control dancing man's animations
+    private IEnumerator DancingManRoutine()
+    {
+        if (playingDancingManAnimation)
+            yield break;
+        playingDancingManAnimation = true;
+        // print ("dancing man animation -> " + selectedCoin.type);
+        dancingMan.PlayUsingPhonemeEnum(selectedCoin.type);
+        yield return new WaitForSeconds(1.5f);
+        playingDancingManAnimation = false;
+    }
+
+    private IEnumerator SinkLogsExceptFirstRow()
+    {
+        rows[3].SinkAllLogs();
+        yield return new WaitForSeconds(0.2f);
+        rows[2].SinkAllLogs();
+        yield return new WaitForSeconds(0.2f);
+        rows[1].SinkAllLogs();
+        yield return new WaitForSeconds(2f);
+        // game is done setting up
+        gameSetup = true;
     }
 }

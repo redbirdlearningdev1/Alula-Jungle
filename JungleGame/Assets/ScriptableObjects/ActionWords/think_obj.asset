@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: think
   audio: {fileID: 8300000, guid: 79a76816083bd8f4987c6d2a9bf94755, type: 3}
   animation: think
-  _enum: 4
+  _enum: 5
   doorIcon: {fileID: 21300000, guid: a77467a34a31a0345b0d68ca7b8fc447, type: 3}
   frameIcon: {fileID: 21300000, guid: 413e0da7ea8aa03468e4da2fe39ae369, type: 3}
   centerIcon: {fileID: 21300000, guid: 287095a62b2076c4ab0bc44137d30239, type: 3}

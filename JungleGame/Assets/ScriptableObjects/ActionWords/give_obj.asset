@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: give
   audio: {fileID: 8300000, guid: 622dcaf79a39ea14eb0c1fc6f9990ef5, type: 3}
   animation: give
-  _enum: 15
+  _enum: 16
   doorIcon: {fileID: 21300000, guid: 44f27dcaa48d5a34c8b9e665870260cb, type: 3}
   frameIcon: {fileID: 21300000, guid: 3c7059d178d92294d90de0948204c272, type: 3}
   centerIcon: {fileID: 21300000, guid: 44fd7847767734a43a098f7f0a1dec85, type: 3}

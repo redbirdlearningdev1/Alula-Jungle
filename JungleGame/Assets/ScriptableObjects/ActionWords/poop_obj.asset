@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: poop
   audio: {fileID: 8300000, guid: 5bca01979ece61b4a90e401655219c16, type: 3}
   animation: poop
-  _enum: 2
+  _enum: 3
   doorIcon: {fileID: 21300000, guid: 583123dd031bd6b4aad0de298d7c4766, type: 3}
   frameIcon: {fileID: 21300000, guid: ba0e504bde8c14641878ec128e32ecc9, type: 3}
   centerIcon: {fileID: 21300000, guid: f4efdfcaed00cba479b88ac00065fae5, type: 3}

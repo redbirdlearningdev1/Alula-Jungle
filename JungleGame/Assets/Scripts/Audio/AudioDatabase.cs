@@ -33,9 +33,12 @@ public class AudioDatabase : MonoBehaviour
 
     [Header("FX Database")]
     public AudioClip testSound1;
+
+    [Header("Universal Sounds")]
     public AudioClip RightChoice;
     public AudioClip WrongChoice;
     public AudioClip WinTune;
+    public AudioClip Whoosh;
 
     [Header("Coin Drop")]
     public AudioClip[] CoinDropArray;

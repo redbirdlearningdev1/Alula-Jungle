@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: choice
   audio: {fileID: 8300000, guid: 1acd1b8565159534299eb88a6d0bff0e, type: 3}
   animation: choice
-  _enum: 10
+  _enum: 11
   doorIcon: {fileID: 21300000, guid: 9ecfaf09c0161f949b1be06fee22cbda, type: 3}
   frameIcon: {fileID: 21300000, guid: c18fe481c15d09e40ab5e99ef36898b8, type: 3}
   centerIcon: {fileID: 21300000, guid: 6f0d9896d2dff0046bfc4a5ea3396fca, type: 3}

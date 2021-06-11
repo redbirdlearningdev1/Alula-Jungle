@@ -42,6 +42,11 @@ public class CoinRaycaster : MonoBehaviour
                 }
             }
 
+            // bag glow effect off
+            Bag.instance.glowController.ToggleGlowOutline(false);
+
+            
+
             if (!isCorrect)
                 selectedCoin.ReturnToLog();
             selectedCoin = null;
@@ -64,8 +69,9 @@ public class CoinRaycaster : MonoBehaviour
                         selectedCoin.PlayPhonemeAudio();
                         selectedCoin.gameObject.transform.SetParent(selectedCoinParent);
 
-                    }
-                    
+                        // bag glow effect off
+                        Bag.instance.glowController.ToggleGlowOutline(true);
+                    } 
                 }
             }
         }

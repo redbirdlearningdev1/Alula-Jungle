@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum ActionWordEnum {
+    _blank,
+
     mudslide,
     listen,
     poop,

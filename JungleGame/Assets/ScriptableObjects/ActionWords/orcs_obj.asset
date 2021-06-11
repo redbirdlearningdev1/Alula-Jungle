@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: orcs
   audio: {fileID: 8300000, guid: 3f468203786cde5419c28816a0493bd7, type: 3}
   animation: orcs
-  _enum: 3
+  _enum: 4
   doorIcon: {fileID: 21300000, guid: fa32fe7bac3def14f8cb1144d9c7c01f, type: 3}
   frameIcon: {fileID: 21300000, guid: 99fca26ccb9941442a80bcc966ed8918, type: 3}
   centerIcon: {fileID: 21300000, guid: 1398201aa2ff3e94d8bf796012c4abc7, type: 3}

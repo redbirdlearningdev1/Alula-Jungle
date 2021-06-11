@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: strongwind
   audio: {fileID: 8300000, guid: 2a383af418910a14b858d8046437f773, type: 3}
   animation: strongwind
-  _enum: 11
+  _enum: 12
   doorIcon: {fileID: 21300000, guid: 76f5039af78021247bf3153b8081a654, type: 3}
   frameIcon: {fileID: 21300000, guid: 9ce1aec10c249a64aa2867cd28f58a76, type: 3}
   centerIcon: {fileID: 21300000, guid: 778b305053239224bacc8cd88b011469, type: 3}

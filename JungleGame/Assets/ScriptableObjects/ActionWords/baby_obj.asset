@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: baby
   audio: {fileID: 8300000, guid: 58bf3f9ffb9c5814385890900047b2f9, type: 3}
   animation: baby
-  _enum: 19
+  _enum: 20
   doorIcon: {fileID: 21300000, guid: 4d6ca55afcd0c044da039a0e46c381b1, type: 3}
   frameIcon: {fileID: 21300000, guid: 4c8ac9a5cd4e1f34db211f286c509739, type: 3}
   centerIcon: {fileID: 21300000, guid: 2b980badf6fe28e4dad2a3c8ac4710d9, type: 3}

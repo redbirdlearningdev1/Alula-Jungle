@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: frustrating
   audio: {fileID: 8300000, guid: 1e5324f8e5e84074b81f29d23496d0a0, type: 3}
   animation: frustrating
-  _enum: 17
+  _enum: 18
   doorIcon: {fileID: 21300000, guid: 963d10c68ca39554ca7b10597ee4885b, type: 3}
   frameIcon: {fileID: 21300000, guid: 831d5e898df89f547a3e6f8970f12d32, type: 3}
   centerIcon: {fileID: 21300000, guid: 4667d723b1a055b4e96d79a9435a3836, type: 3}

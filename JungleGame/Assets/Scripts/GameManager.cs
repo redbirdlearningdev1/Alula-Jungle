@@ -134,6 +134,7 @@ public class GameManager : DontDestroy<GameManager>
     // returns action word data from enum
     public ActionWord GetActionWord(ActionWordEnum word)
     {
+        //print ("word: " + word);
         foreach(ActionWord actionWord in actionWords)
         {
             if (actionWord._enum.Equals(word))
@@ -154,7 +155,9 @@ public class GameManager : DontDestroy<GameManager>
             ActionWordEnum coin = (ActionWordEnum)System.Enum.Parse(typeof(ActionWordEnum), coins[i]);
             globalCoinPool.Add(coin);
         }
+        // remove two invalid coins
         globalCoinPool.Remove(ActionWordEnum.SIZE);
+        globalCoinPool.Remove(ActionWordEnum._blank);
         return globalCoinPool;
     }
 
