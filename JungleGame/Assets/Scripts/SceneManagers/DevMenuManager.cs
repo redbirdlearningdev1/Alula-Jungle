@@ -8,6 +8,7 @@ using System.IO;
 public class DevMenuManager : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown navDropdown;
+    [SerializeField] private TMP_Dropdown storyGameDropdown;
 
     private string[] sceneNames = new string[] {  "SplashScreen", 
                                                     "SettingsScene", 
@@ -26,6 +27,11 @@ public class DevMenuManager : MonoBehaviour
                                                     "TurntablesGame",
                                                     "MinigameDemoScene"};
 
+    private string[] storyGames = new string[] {
+        "0 - Welcome",
+        "1 - The Prologue"
+    };                                  
+
     void Awake()
     {
         // every scene must call this in Awake()
@@ -34,11 +40,21 @@ public class DevMenuManager : MonoBehaviour
         // add all build scenes to navDropdown
         List<string> sceneNamesList = new List<string>(sceneNames);
         navDropdown.AddOptions(sceneNamesList);
+
+        // add story game options to dropdown
+        List<string> storyGamesList = new List<string>(storyGames);
+        storyGameDropdown.AddOptions(storyGamesList);
     }
 
     public void OnGoToSceneButtonPressed()
     {
         GameManager.instance.LoadScene(navDropdown.value, true);
+    }
+
+    public void OnPlayStoryGamePressed()
+    {   
+        GameManager.instance.SetData(GameManager.instance.storyGameDatas[storyGameDropdown.value]);
+        GameManager.instance.LoadScene("StoryGame", true);
     }
 
     public void OnRestartGamePressed()

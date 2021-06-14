@@ -56,7 +56,15 @@ public class StoryGameManager : MonoBehaviour
                 storyGameData = devData;
             else // send error
                 GameManager.instance.SendError(this, "invalid game data");
-        }   
+        } 
+        else
+        {
+            // use imported game data
+            storyGameData = (StoryGameData)data;
+        }  
+
+        // send log
+        GameManager.instance.SendLog(this, "starting story game: " + storyGameData.name);
     }
 
     void Start()
@@ -90,14 +98,17 @@ public class StoryGameManager : MonoBehaviour
         // add the text objects to the layout group
         foreach (StoryGameSegment seg in storyGameData.segments)
         {
-            if (seg.containsActionWord)
+            if (seg.containsText)
             {
                 var textObj = Instantiate(textWrapperObject, textLayoutGroup);
                 textObj.GetComponent<TextWrapper>().SetText(seg.text);
                 textObj.GetComponent<TextWrapper>().SetTextColor(defaultTextColor, false);
+            }
 
+            if (seg.containsActionWord)
+            {
                 var wordObj = Instantiate(textWrapperObject, textLayoutGroup);
-                wordObj.GetComponent<TextWrapper>().SetActionWord(seg.actionWord);
+                wordObj.GetComponent<TextWrapper>().SetText(seg.actionWordText);
                 wordObj.GetComponent<TextWrapper>().SetTextColor(defaultTextColor, false);
                 actionWords.Add(wordObj.transform);
             }
@@ -160,7 +171,8 @@ public class StoryGameManager : MonoBehaviour
     private IEnumerator PartOneRoutine()
     {
         // set coin init before pause
-        coin.SetCoinType(actionWords[0].GetComponent<TextWrapper>().wordEnum);
+        coin.SetCoinType(ActionWordEnum._blank);
+        coin.SetTransparency(0.25f, true);
 
         // small pause before game begins
         yield return new WaitForSeconds(1f);
@@ -170,6 +182,11 @@ public class StoryGameManager : MonoBehaviour
             // set the coin in action word in segment
             if (seg.containsActionWord)
                 coin.SetCoinType(seg.actionWord);
+            else
+                coin.SetCoinType(ActionWordEnum._blank);
+            // make coin transparent
+            coin.SetTransparency(0.25f, true);
+
             AudioManager.instance.PlayTalk(seg.textAudio);
 
             if (seg.containsActionWord)
@@ -179,15 +196,26 @@ public class StoryGameManager : MonoBehaviour
             }
 
             yield return new WaitForSeconds(seg.textAudio.length);
+            yield return new WaitForSeconds(0.5f);
 
             // read action word if available
             if (seg.containsActionWord)
             {
-                AudioManager.instance.PlayTalk(seg.wordAudio);
+                // remove coin transparency
+                coin.SetTransparency(1f, true);
+                yield return new WaitForSeconds(0.25f);
+
+                // say action word phoneme
+                AudioManager.instance.PlayTalk(GameManager.instance.GetActionWord(seg.actionWord).audio);
                 actionWords[currWord].GetComponent<TextWrapper>().SetTextColor(actionTextColor, true);
                 currWord++;
                 dancingMan.PlayUsingPhonemeEnum(seg.actionWord);
                 ShakeCoin();
+
+                yield return new WaitForSeconds(1f);
+
+                // say action word literal
+                AudioManager.instance.PlayTalk(seg.wordAudio);
             }
             
             yield return new WaitForSeconds(2f);

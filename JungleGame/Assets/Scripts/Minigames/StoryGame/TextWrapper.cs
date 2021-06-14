@@ -24,13 +24,7 @@ public class TextWrapper : MonoBehaviour
     {
         rectTransform.sizeDelta = new Vector2(textMesh.preferredWidth, constHeight);
     }
-
-    public void SetActionWord(ActionWordEnum word)
-    {
-        wordEnum = word;
-        textMesh.text = word.ToString();
-    }
-
+    
     public void SetText(string text)
     {
         textMesh.text = text;

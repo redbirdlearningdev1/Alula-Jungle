@@ -39,7 +39,7 @@ public class KeyRaycaster : MonoBehaviour
             {
                 foreach(var result in raycastResults)
                 {
-                    print (result.gameObject.name);
+                    // print (result.gameObject.name);
                     if (result.gameObject.transform.CompareTag("RockLock"))
                     {
                         isCorrect = TurntablesGameManager.instance.EvaluateSelectedKey(selectedKey);

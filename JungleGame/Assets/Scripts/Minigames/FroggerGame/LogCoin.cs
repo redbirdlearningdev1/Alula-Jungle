@@ -119,7 +119,40 @@ public class LogCoin : MonoBehaviour
             else {temp.a = 0; }
             spriteRenderer.color = temp;
         }
-    }   
+    }
+
+    public void SetTransparency(float alpha, bool smooth)
+    {
+        if (smooth)
+            StartCoroutine(SetTransparencyRoutine(alpha));
+        else
+        {
+            if (!spriteRenderer)
+                spriteRenderer = GetComponent<SpriteRenderer>();
+            Color temp = spriteRenderer.color;
+            temp.a = alpha;
+            spriteRenderer.color = temp;
+        }
+    }
+
+    private IEnumerator SetTransparencyRoutine(float alpha)
+    {
+        float end = alpha;
+        float timer = 0f;
+        while(true)
+        {
+            timer += Time.deltaTime;
+            Color temp = spriteRenderer.color;
+            temp.a = Mathf.Lerp(temp.a, end, timer);
+            spriteRenderer.color = temp;
+
+            if (spriteRenderer.color.a == end)
+            {
+                break;
+            }
+            yield return null;
+        }
+    }
 
     private IEnumerator ToggleVisibilityRoutine(bool opt)
     {

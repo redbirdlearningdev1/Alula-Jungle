@@ -7,11 +7,13 @@ using UnityEngine.UI;
 public class StoryGameSegment
 {
     [Header("Read Text")]
+    public bool containsText;
     public string text;
     public AudioClip textAudio;
     
     [Header("Action Word")]
     public bool containsActionWord;
+    public string actionWordText;
     public ActionWordEnum actionWord;
     public AudioClip wordAudio;
 }

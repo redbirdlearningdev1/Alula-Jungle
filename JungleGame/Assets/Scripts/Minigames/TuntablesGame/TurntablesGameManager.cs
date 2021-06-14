@@ -272,7 +272,7 @@ public class TurntablesGameManager : MonoBehaviour
 
     private IEnumerator DoorSuccessRoutine()
     {
-        print ("success!");
+        // print ("success!");
         // dissipate key
         keys[correctKeyIndex].Dissipate();
         // move door to unlocked position
@@ -308,7 +308,7 @@ public class TurntablesGameManager : MonoBehaviour
 
     private IEnumerator DoorFailRoutine()
     {
-        print ("fail!");
+        // print ("fail!");
         // return key
         keys[correctKeyIndex].ReturnToRope();
         
@@ -341,7 +341,7 @@ public class TurntablesGameManager : MonoBehaviour
 
     private IEnumerator WinRoutine()
     {
-        print ("you win!");
+        // print ("you win!");
         // dissipate key
         keys[correctKeyIndex].Dissipate();
         // make door icon glow special
@@ -488,7 +488,7 @@ public class TurntablesGameManager : MonoBehaviour
 
     private IEnumerator TutorialIncorrectRoutine()
     {
-        print ("fail!");
+        // print ("fail!");
         // return key
         keys[correctKeyIndex].ReturnToRope();
         
@@ -521,7 +521,7 @@ public class TurntablesGameManager : MonoBehaviour
 
     private IEnumerator TutorialCompleteRoutine()
     {
-        print ("you win!");
+        // print ("you win!");
         // dissipate key
         keys[correctKeyIndex].Dissipate();
         // make door icon glow special
