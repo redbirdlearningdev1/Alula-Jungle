@@ -8,6 +8,7 @@ public class SettingsSceneManager : MonoBehaviour
 {
     [Header("Microphone Settings")]
     [SerializeField] private TMP_Dropdown microphoneDropdown;
+    
     [SerializeField] private Image volumeBar;
     [SerializeField] private Toggle testMicToggle;
     public float timeBetwnVolumeUpdates;
@@ -24,9 +25,6 @@ public class SettingsSceneManager : MonoBehaviour
         GameManager.instance.SceneInit();
 
         SetUpMircophone();
-
-        // mute music toggle
-        muteMusicToggle.onValueChanged.AddListener(delegate { MuteMusicToggle(muteMusicToggle); });
     }
 
     void Update()
@@ -103,14 +101,6 @@ public class SettingsSceneManager : MonoBehaviour
     #   OTHER
     ################################################
     */
-
-    private void MuteMusicToggle(Toggle toggle)
-    {
-        if (toggle.isOn)
-            AudioManager.instance.ChageMusicVolume(0f);
-        else
-            AudioManager.instance.ChageMusicVolume(1f);
-    }
     
     public void OnBackButtonPressed()
     {

@@ -10,6 +10,7 @@ public class TurntablesGameManager : MonoBehaviour
     public List<Key> keys;
     public FrameIcon frameIcon;
     public List<float> moveStonePitch;
+    public float musicStartDelay;
 
     public bool randomizeKeyPosition;
     private ActionWordEnum[] doorWords;
@@ -123,9 +124,11 @@ public class TurntablesGameManager : MonoBehaviour
 
     private void PregameSetup()
     {
+        StartCoroutine(StartMusicDelay(musicStartDelay));
+
         // start ambiance noise
-        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.BreezeLoop, 0.1f);
-        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.QuarryLoop, 0.1f);
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.BreezeLoop, 0.01f);
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.QuarryLoop, 0.01f);
 
         // remove glow from door icons
         foreach (Door d in doors)
@@ -651,5 +654,11 @@ public class TurntablesGameManager : MonoBehaviour
             d.glowController.SetGlowSettings(3f, 1, winDoorColor, true);
             yield return new WaitForSeconds(0.25f);
         }
+    }
+
+    private IEnumerator StartMusicDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        AudioManager.instance.PlaySong(AudioDatabase.instance.TurntablesGameSong);
     }
 }

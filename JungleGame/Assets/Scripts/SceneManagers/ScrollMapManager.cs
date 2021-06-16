@@ -321,7 +321,7 @@ public class ScrollMapManager : MonoBehaviour
 
     private IEnumerator MapSmoothTransition(float start, float end, float transitionTime)
     {
-        GameManager.instance.SetRaycastBlocker(true);
+        //GameManager.instance.SetRaycastBlocker(true);
         float timer = 0f;
 
         Map.localPosition = new Vector3(start, staticMapYPos, 0f);
@@ -334,7 +334,7 @@ public class ScrollMapManager : MonoBehaviour
         }
         Map.localPosition = new Vector3(end, staticMapYPos, 0f);
 
-        GameManager.instance.SetRaycastBlocker(false);
+        //GameManager.instance.SetRaycastBlocker(false);
     }
     
     /* 

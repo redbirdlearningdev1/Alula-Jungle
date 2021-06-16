@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
+
+    public AudioMixer masterMixer;
 
     [Header("Audio Sources")]
     [SerializeField] private AudioSource musicSource;
@@ -14,8 +17,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private GameObject fxAudioObject;
     [SerializeField] private Transform fxObjectHolder;
 
-    [SerializeField] private AudioDatabase audioDatabase;
-
     void Awake() 
     {
         if (instance == null)
@@ -23,6 +24,88 @@ public class AudioManager : MonoBehaviour
             instance = this;
         }
     }
+
+    /* 
+    ################################################
+    #   VOLUME METHODS
+    ################################################
+    */
+    // make sure value is within range
+    // decibel is a logarithmic unit so you can't just apply value directly from the slider
+
+    public void SetMasterVolume(float vol)
+    {
+        // clamp between 0 and 1
+        if (vol <= 0) vol = 0.00001f;
+        else if (vol > 1) vol = 1;
+
+        vol = 20f * Mathf.Log10(vol);
+        masterMixer.SetFloat("masterVol", vol);
+    }
+
+    public void SetMusicVolume(float vol)
+    {
+        // clamp between 0 and 1
+        if (vol <= 0) vol = 0.00001f;
+        else if (vol > 1) vol = 1;
+
+        vol = 20f * Mathf.Log10(vol);
+        masterMixer.SetFloat("musicVol", vol);
+    }
+
+    public void SetFXVolume(float vol)
+    {
+        // clamp between 0 and 1
+        if (vol <= 0) vol = 0.00001f;
+        else if (vol > 1) vol = 1;
+
+        vol = 20f * Mathf.Log10(vol); 
+        masterMixer.SetFloat("fxVol", vol);
+    }
+
+    public void SetTalkVolume(float vol)
+    {
+        // clamp between 0 and 1
+        if (vol <= 0) vol = 0.00001f;
+        else if (vol > 1) vol = 1;
+
+        vol = 20f * Mathf.Log10(vol);
+        masterMixer.SetFloat("talkVol", vol);
+    }
+
+    public float GetMasterVolume()
+    {
+        float num;
+        masterMixer.GetFloat("masterVol", out num);
+        num = Mathf.Pow(10f, num / 20f);
+        return num;
+    }
+
+
+    public float GetMusicVolume()
+    {
+        float num;
+        masterMixer.GetFloat("musicVol", out num);
+        num = Mathf.Pow(10f, num / 20f);
+        return num;
+    }
+
+    public float GetFxVolume()
+    {
+        float num;
+        masterMixer.GetFloat("fxVol", out num);
+        num = Mathf.Pow(10f, num / 20f);
+        return num;
+    }
+
+    public float GetTalkVolume()
+    {
+        float num;
+        masterMixer.GetFloat("talkVol", out num);
+        num = Mathf.Pow(10f, num / 20f);
+        return num;
+    }
+
 
     /* 
     ################################################
@@ -46,12 +129,6 @@ public class AudioManager : MonoBehaviour
     {
         musicSource.Stop();
         musicSource.clip = null;
-    }
-
-    public void ChageMusicVolume(float amt)
-    {
-        if (amt >= 0f && amt <= 1)
-            musicSource.volume = amt;
     }
 
     /* 

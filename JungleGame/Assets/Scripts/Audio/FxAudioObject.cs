@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(AudioSource))]
 public class FxAudioObject : MonoBehaviour
 {
     public string id;
+    public AudioMixerGroup mixerGroup;
     private AudioSource audioSource;
 
     void Awake()
@@ -13,6 +15,8 @@ public class FxAudioObject : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.playOnAwake = false;
         audioSource.loop = false;
+
+        audioSource.outputAudioMixerGroup = mixerGroup;
     }
 
     public void PlayClip(string id, AudioClip clip, float volume, float duration, float pitch)

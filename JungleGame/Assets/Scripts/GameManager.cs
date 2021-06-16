@@ -17,9 +17,9 @@ public class GameManager : DontDestroy<GameManager>
     private bool devIndicatorSet = false;
 
     // TODO: fix raycast blocker
-    [SerializeField] private GameObject raycastBlocker; // used to block all raycasts (does not work for UI stuff currently) 
-    [SerializeField] private Transform popupParent;
-    [SerializeField] private GameObject levelPopupPrefab;
+    // [SerializeField] private GameObject raycastBlocker; // used to block all raycasts (does not work for UI stuff currently) 
+    // [SerializeField] private Transform popupParent;
+    // [SerializeField] private GameObject levelPopupPrefab;
 
     private GameData gameData;
 
@@ -32,7 +32,7 @@ public class GameManager : DontDestroy<GameManager>
         Screen.SetResolution(gameResolution.x, gameResolution.y, FullScreenMode.FullScreenWindow);
 
         // disable raycast blocker (allow raycasts)
-        SetRaycastBlocker(false);
+        //SetRaycastBlocker(false);
     }
 
     private void Update()
@@ -85,21 +85,16 @@ public class GameManager : DontDestroy<GameManager>
 
     public void SceneInit()
     {
-        // clear any popups
-        foreach (Transform child in popupParent)
-        {
-            Destroy(child.gameObject);
-        }
-
         StartCoroutine(SceneInitCoroutine());
     }
 
     private IEnumerator SceneInitCoroutine()
     {
-        SetRaycastBlocker(true);
-        FadeObject.instance.FadeIn(transitionTime);
-        yield return new WaitForSeconds(transitionTime);
-        SetRaycastBlocker(false);
+        yield return null;
+        // SetRaycastBlocker(true);
+        // FadeObject.instance.FadeIn(transitionTime);
+        // yield return new WaitForSeconds(transitionTime);
+        // SetRaycastBlocker(false);
     }
 
     /* 
@@ -108,21 +103,16 @@ public class GameManager : DontDestroy<GameManager>
     ################################################
     */
 
-    public void SetRaycastBlocker(bool opt)
-    {
-        raycastBlocker.SetActive(opt);
-    }
-
     public void RestartGame()
     {
         LoadScene(0, true);
     }
 
-    public void NewLevelPopup(GameData data)
-    {
-        PopupWindow window = Instantiate(levelPopupPrefab, transform.position, Quaternion.identity, popupParent).GetComponent<PopupWindow>();
-        window.InitPopup(data);
-    }
+    // public void NewLevelPopup(GameData data)
+    // {
+    //     PopupWindow window = Instantiate(levelPopupPrefab, transform.position, Quaternion.identity, popupParent).GetComponent<PopupWindow>();
+    //     window.InitPopup(data);
+    // }
 
     public void SendError(Object errorContext, string errorMsg)
     {
@@ -172,13 +162,13 @@ public class GameManager : DontDestroy<GameManager>
 
     public void LoadScene(string sceneName, bool fadeOut, float time = transitionTime)
     {
-        SetRaycastBlocker(true);
+        //SetRaycastBlocker(true);
         StartCoroutine(LoadSceneCoroutine(sceneName, fadeOut, time));
     }
 
     public void LoadScene(int sceneNum, bool fadeOut, float time = transitionTime)
     {
-        SetRaycastBlocker(true);
+        //SetRaycastBlocker(true);
         StartCoroutine(LoadSceneCoroutine(sceneNum, fadeOut, time));
     }
 

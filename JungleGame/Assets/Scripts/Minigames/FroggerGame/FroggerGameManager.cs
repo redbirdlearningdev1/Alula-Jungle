@@ -93,6 +93,46 @@ public class FroggerGameManager : MonoBehaviour
         }
     }
 
+    /* 
+    ################################################
+    #   PREGAME SETUP
+    ################################################
+    */
+
+    private void PregameSetup()
+    {
+        // start ambient sounds
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.1f, "river_loop");
+
+        // start song
+        AudioManager.instance.PlaySong(AudioDatabase.instance.FroggerGameSong);
+
+        // create coin list
+        foreach (var coin in coins1)
+            allCoins.Add(coin);
+        foreach (var coin in coins2)
+            allCoins.Add(coin);
+        foreach (var coin in coins3)
+            allCoins.Add(coin);
+        foreach (var coin in coins4)
+            allCoins.Add(coin);
+
+        // Create Global Coin List
+        globalCoinPool = GameManager.instance.GetGlobalActionWordList();
+        unusedCoinPool = new List<ActionWordEnum>();
+        unusedCoinPool.AddRange(globalCoinPool);
+
+        // disable all coins + glow controller
+        foreach (var coin in allCoins)
+        {
+            coin.GetComponent<GlowOutlineController>().ToggleGlowOutline(false);
+            coin.ToggleVisibility(false, false);
+        }
+            
+
+        // sink all the logs except the first row
+        StartCoroutine(SinkLogsExceptFirstRow());
+    }
     
     /* 
     ################################################
@@ -235,42 +275,6 @@ public class FroggerGameManager : MonoBehaviour
 
         // TODO: change maens of finishing game (for now we just return to the scroll map)
         GameManager.instance.LoadScene("ScrollMap", true, 3f);
-    }
-
-    private void PregameSetup()
-    {
-        // start ambient sounds
-        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.1f, "river_loop");
-
-        // start song
-        AudioManager.instance.PlaySong(AudioDatabase.instance.FroggerGameSong);
-        AudioManager.instance.ChageMusicVolume(0.25f);
-
-        // create coin list
-        foreach (var coin in coins1)
-            allCoins.Add(coin);
-        foreach (var coin in coins2)
-            allCoins.Add(coin);
-        foreach (var coin in coins3)
-            allCoins.Add(coin);
-        foreach (var coin in coins4)
-            allCoins.Add(coin);
-
-        // Create Global Coin List
-        globalCoinPool = GameManager.instance.GetGlobalActionWordList();
-        unusedCoinPool = new List<ActionWordEnum>();
-        unusedCoinPool.AddRange(globalCoinPool);
-
-        // disable all coins + glow controller
-        foreach (var coin in allCoins)
-        {
-            coin.GetComponent<GlowOutlineController>().ToggleGlowOutline(false);
-            coin.ToggleVisibility(false, false);
-        }
-            
-
-        // sink all the logs except the first row
-        StartCoroutine(SinkLogsExceptFirstRow());
     }
 
     private IEnumerator StartGame()
