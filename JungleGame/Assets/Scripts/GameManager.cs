@@ -91,10 +91,10 @@ public class GameManager : DontDestroy<GameManager>
     private IEnumerator SceneInitCoroutine()
     {
         yield return null;
-        // SetRaycastBlocker(true);
-        // FadeObject.instance.FadeIn(transitionTime);
-        // yield return new WaitForSeconds(transitionTime);
-        // SetRaycastBlocker(false);
+        //SetRaycastBlocker(true);
+        FadeObject.instance.FadeIn(transitionTime);
+        yield return new WaitForSeconds(transitionTime);
+        //SetRaycastBlocker(false);
     }
 
     /* 
@@ -159,6 +159,11 @@ public class GameManager : DontDestroy<GameManager>
     #   SCENE MANAGEMENT
     ################################################
     */
+
+    public void ReturnToScrollMap()
+    {
+        LoadScene("ScrollMap", true);
+    }
 
     public void LoadScene(string sceneName, bool fadeOut, float time = transitionTime)
     {

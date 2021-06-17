@@ -45,11 +45,13 @@ public class SpiderGameManager : MonoBehaviour
 
     public void Awake()
     {
+        // every scene must call this in Awake()
+        GameManager.instance.SceneInit();
+
         if (!instance)
         {
             instance = this;
         }
-
     }
 
     // Start is called before the first frame update
@@ -254,11 +256,22 @@ public class SpiderGameManager : MonoBehaviour
         }
     }
 
+    private IEnumerator WinGameRoutine()
+    {
+        // play win tune
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+
+        yield return new WaitForSeconds(3f);
+
+        // TODO: finish tutorial stuff
+        GameManager.instance.LoadScene("ScrollMap", true, 3f);
+    }
+
     public void Reset()
     {
         if(bagState == 4 || failState == 4)
         {
-            GameManager.instance.LoadScene("MinigameDemoScene", true, 3f);
+            StartCoroutine(WinGameRoutine());
             return;
         }
         

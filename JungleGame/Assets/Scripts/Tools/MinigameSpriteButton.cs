@@ -84,13 +84,12 @@ public class MinigameSpriteButton : MonoBehaviour, IPointerUpHandler, IPointerDo
                     GameManager.instance.LoadScene("RummageGame", true);
                     break;
                 case MinigameButton.printingGame:
-                    // GameManager.instance.SendLog(this, "Playing - SeashellsGame");
-                    // GameManager.instance.LoadScene("SeashellsGame", true);
-                    // break;
+                    GameManager.instance.SendLog(this, "Playing - PirateGame");
+                    GameManager.instance.LoadScene("PirateGame", true);
+                    break;
                 case MinigameButton.spiderwebGame:
-                    // GameManager.instance.SendLog(this, "Playing - SeashellsGame");
-                    // GameManager.instance.LoadScene("SeashellsGame", true);
-                    // break;
+                    GameManager.instance.SendLog(this, "Playing - SpiderwebGame");
+                    GameManager.instance.LoadScene("SpiderwebGame", true);
                     break;
             }
         }

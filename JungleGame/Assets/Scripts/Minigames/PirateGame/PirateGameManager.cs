@@ -48,6 +48,9 @@ public class PirateGameManager : MonoBehaviour
 
     public void Awake()
     {
+        // every scene must call this in Awake()
+        GameManager.instance.SceneInit();
+        
         if (!instance)
         {
             instance = this;
@@ -219,9 +222,10 @@ public class PirateGameManager : MonoBehaviour
 
     public void Reset()
     {
+        // win game!
         if (chestState == 2 || failState == 3)
         {
-            GameManager.instance.LoadScene("MinigameDemoScene", true, 3f);
+            StartCoroutine(WinGameRoutine());
             return;
         }
         
@@ -273,6 +277,17 @@ public class PirateGameManager : MonoBehaviour
             xPos += 110f; //coin offset
         }
         StartCoroutine(Begin());
+    }
+
+    private IEnumerator WinGameRoutine()
+    {
+        // play win tune
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+
+        yield return new WaitForSeconds(3f);
+
+        // TODO: finish tutorial stuff
+        GameManager.instance.LoadScene("ScrollMap", true, 3f);
     }
 
     private IEnumerator Begin()

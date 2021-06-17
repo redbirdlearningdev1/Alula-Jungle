@@ -96,6 +96,9 @@ MonoBehaviour:
   brokenSprite: {fileID: 21300000, guid: eadcc6bf467dc594aa2fe33709c80a47, type: 3}
   fixedSprite: {fileID: 21300000, guid: e4df938781d9c78418359cfe9f6e7437, type: 3}
   repairAnimator: {fileID: 1855579865752595139}
+  starLocation: 0
+  upStars: []
+  downStars: []
 --- !u!95 &2512186891888730661
 Animator:
   serializedVersion: 3
