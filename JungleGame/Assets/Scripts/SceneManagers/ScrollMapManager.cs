@@ -40,7 +40,7 @@ public class ScrollMapManager : MonoBehaviour
         GameManager.instance.SceneInit();
 
         // play test song
-        AudioManager.instance.PlaySong(AudioDatabase.instance.JungleGameTestSong);
+        AudioManager.instance.PlaySong(AudioDatabase.instance.MainThemeSong);
     }
 
     void Start()

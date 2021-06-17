@@ -10,21 +10,20 @@ public class DevMenuManager : MonoBehaviour
     [SerializeField] private TMP_Dropdown navDropdown;
     [SerializeField] private TMP_Dropdown storyGameDropdown;
 
-    private string[] sceneNames = new string[] {  "SplashScreen", 
-                                                    "SettingsScene", 
+    private string[] sceneNames = new string[] {  "SplashScreen",
                                                     "DevMenu",
                                                     "JungleWelcomeScene",
                                                     "ScrollMap",
                                                     "TrophyRoomScene",
                                                     "LoadSaveTestScene",
-                                                    "AudioInputTestScene",
                                                     "StoryGame",
                                                     "FroggerGame",
                                                     "BoatGame",
-                                                    "RummageGame",
-                                                    "SeashellGame",
-                                                    "SpiderwebGame",
+                                                    "SeaShellGame",
                                                     "TurntablesGame",
+                                                    "RummageGame",
+                                                    "PirateGame",
+                                                    "SpiderwebGame",
                                                     "MinigameDemoScene"};
 
     private string[] storyGames = new string[] {
@@ -48,7 +47,7 @@ public class DevMenuManager : MonoBehaviour
 
     public void OnGoToSceneButtonPressed()
     {
-        GameManager.instance.LoadScene(navDropdown.value, true);
+        GameManager.instance.LoadScene(sceneNames[navDropdown.value], true);
     }
 
     public void OnPlayStoryGamePressed()

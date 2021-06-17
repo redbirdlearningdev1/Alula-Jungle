@@ -3471,6 +3471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JungleGameTestSong: {fileID: 8300000, guid: 8dd1bd2d3dc1d294c8ba2c07b6911673, type: 3}
+  MainThemeSong: {fileID: 8300000, guid: 4db08344590ba68418f0caac091e2ef4, type: 3}
   FroggerGameSong: {fileID: 8300000, guid: f6b91191bfd04a34c860024796deadeb, type: 3}
   TurntablesGameSong: {fileID: 8300000, guid: b4791af5245fb8b40b092b7cfa1b65cf, type: 3}
   testSound1: {fileID: 8300000, guid: c350fcdede53aa647b93c6b0ce53e7cd, type: 3}
@@ -4057,8 +4058,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -805.7772, y: 521.041}
-  m_SizeDelta: {x: 130.3815, y: 111.0034}
+  m_AnchoredPosition: {x: -832.58105, y: 534.81274}
+  m_SizeDelta: {x: 113.5271, y: 104.9609}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8291831603611929999
 CanvasRenderer:
@@ -4217,7 +4218,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 999
   m_TargetDisplay: 0
 --- !u!114 &276561124291015375
 MonoBehaviour:
@@ -4307,8 +4308,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -700.6, y: 521.04}
-  m_SizeDelta: {x: 134.4131, y: 111.0009}
+  m_AnchoredPosition: {x: -741, y: 534.81177}
+  m_SizeDelta: {x: 117.0376, y: 104.9585}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9216153485892857854
 CanvasRenderer:
@@ -4445,7 +4446,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -498, y: 266}
+  m_AnchoredPosition: {x: -514, y: 280}
   m_SizeDelta: {x: 734.9666, y: 385.9245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &141652068180664518

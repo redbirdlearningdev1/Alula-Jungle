@@ -25,6 +25,9 @@ public class SplashScreenManager : MonoBehaviour
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
+        // play music
+        AudioManager.instance.PlaySong(AudioDatabase.instance.MainThemeSong);
+
         // set up profile window
         startButton.interactable = false;
         profile1Image.color = unselectedColor;

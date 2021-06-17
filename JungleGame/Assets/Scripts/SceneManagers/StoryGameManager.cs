@@ -89,6 +89,9 @@ public class StoryGameManager : MonoBehaviour
 
     private void PregameSetup()
     {
+        // TODO: add music and ambiance
+        AudioManager.instance.StopMusic();
+
         // set scrolling background
         ScrollingBackground.instance.SetBackgroundType(storyGameData.background);
 

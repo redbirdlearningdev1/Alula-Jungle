@@ -189,7 +189,7 @@ MonoBehaviour:
   - {fileID: 728974745}
   - {fileID: 1287270063}
   - {fileID: 1112553574}
-  playTutorial: 1
+  playTutorial: 0
   correctTutorialCoins: 00000000010000000200000000000000
   firstPair: 0800000000000000
   secondTriad: 000000000800000000000000
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOn: 1
-  coinMoveSpeed: 0.02
+  coinMoveSpeed: 0.04
   selectedCoinParent: {fileID: 204611493}
 --- !u!1 &10386590
 GameObject:

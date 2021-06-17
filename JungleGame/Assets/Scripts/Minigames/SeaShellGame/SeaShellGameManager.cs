@@ -47,7 +47,6 @@ public class SeaShellGameManager : MonoBehaviour
         //devObject.SetActive(GameManager.instance.devModeActivated);
 
         PregameSetup();
-        
         StartCoroutine(StartGame());
     }
 
@@ -218,8 +217,10 @@ public class SeaShellGameManager : MonoBehaviour
 
     private void PregameSetup()
     {
+        // TODO: add music and ambiance
+        AudioManager.instance.StopMusic();
+
         // Create Global Coin List
-        
         globalCoinPool = new List<ActionWordEnum>();
         unusedCoinPool = new List<ActionWordEnum>();
         string[] coins = System.Enum.GetNames(typeof(ActionWordEnum));
