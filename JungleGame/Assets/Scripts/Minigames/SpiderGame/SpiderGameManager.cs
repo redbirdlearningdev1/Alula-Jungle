@@ -8,6 +8,7 @@ public class SpiderGameManager : MonoBehaviour
     [SerializeField] private GameObject web;
 
     [SerializeField] private GameObject bug;
+    [SerializeField] private SpriteRenderer bugGlow;
 
     [SerializeField] private GameObject spider;
 
@@ -16,13 +17,19 @@ public class SpiderGameManager : MonoBehaviour
     private int bagState = 0;
 
     [SerializeField] private GameObject[] coins;
+    [SerializeField] private SpriteRenderer[] coinGlows;
     private GameObject selectedCoin;
 
-    private ActionWordEnum correctCoin;
+    private ActionWordEnum correctCoin = ActionWordEnum.poop;
+    private int correctCoinIndex = 2;
 
  //   private ActionWordEnum correctCoin = ActionWordEnum.baby;
 
     private bool inputDisabled;
+
+    private bool audioPlaying;
+
+    private bool introPlayed;
 
     [SerializeField] private GameObject[] fails;
     private int failState;
@@ -32,17 +39,38 @@ public class SpiderGameManager : MonoBehaviour
 
     public static SpiderGameManager instance;
 
+    public List<ActionWordEnum> globalCoinPool;
+    private List<ActionWordEnum> unusedWrongCoinPool;
+    private List<ActionWordEnum> unusedCorrectCoinPool;
+
     public void Awake()
     {
         if (!instance)
         {
             instance = this;
         }
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        globalCoinPool = new List<ActionWordEnum>();
+        unusedWrongCoinPool = new List<ActionWordEnum>();
+        unusedCorrectCoinPool = new List<ActionWordEnum>();
+
+        string[] coins = System.Enum.GetNames(typeof(ActionWordEnum));
+        for (int i = 0; i < coins.Length; i++)
+        {
+            ActionWordEnum type = (ActionWordEnum)System.Enum.Parse(typeof(ActionWordEnum), coins[i]);
+            globalCoinPool.Add(type);
+        }
+        globalCoinPool.Remove(ActionWordEnum.SIZE);
+        globalCoinPool.Remove(ActionWordEnum._blank);
+        unusedWrongCoinPool.AddRange(globalCoinPool);
+        unusedCorrectCoinPool.AddRange(globalCoinPool);
+
+        StartCoroutine(PlayPhonemeAudioRoutine());
         StartCoroutine(MoveObject(bug.transform, Vector3.down * 5 + Vector3.right * 5, 5f, 0f, false));
         bug.GetComponent<Animator>().SetTrigger("bugLand");
     }
@@ -64,15 +92,30 @@ public class SpiderGameManager : MonoBehaviour
                     if (!inputDisabled)
                     {
                         SelectCoin(hit.transform.gameObject);
+                        if(introPlayed != true)
+                        {
+                            coins[correctCoinIndex].GetComponent<GlowOutlineController>().SetGlowSettings(0f, 0, Color.white, false);
+                            bugGlow.enabled = false;
+                            introPlayed = true;
+                        }
                     }
                 }
                 else if (hit.collider.CompareTag("Bug"))
                 {
+                    bugGlow.enabled = false;
                     Debug.Log("Bug");
                     Debug.Log("Coin");
                     if (!inputDisabled)
                     {
                         bug.GetComponent<Animator>().SetTrigger("bugPressed");
+                        if (!audioPlaying)
+                        {
+                            StartCoroutine(PlayPhonemeAudioRoutine());
+                        }
+                    }
+                    if(introPlayed != true)
+                    {
+                        coins[correctCoinIndex].GetComponent<GlowOutlineController>().SetGlowSettings(10f, 10, Color.white, false);
                     }
                 }
             }
@@ -82,6 +125,19 @@ public class SpiderGameManager : MonoBehaviour
     public void OnBugLand()
     {
         web.GetComponent<Animator>().SetTrigger("bugLands");
+        if(introPlayed != true)
+        {
+            bugGlow.enabled = true;
+        }
+
+    }
+
+    private IEnumerator PlayPhonemeAudioRoutine()
+    {
+        audioPlaying = true;
+        AudioManager.instance.PlayPhoneme(correctCoin);
+        yield return new WaitForSeconds(1f);
+        audioPlaying = false;
     }
 
     private void SelectCoin(GameObject coin)
@@ -200,8 +256,50 @@ public class SpiderGameManager : MonoBehaviour
 
     public void Reset()
     {
+        if(bagState == 4 || failState == 4)
+        {
+            GameManager.instance.LoadScene("MinigameDemoScene", true, 3f);
+            return;
+        }
+        
         bug.GetComponent<RectTransform>().anchoredPosition = new Vector3(-373, 316, 0);
         var xPos = -200f; //first coin starts here
+
+        //correct coin manipulation
+        if (unusedCorrectCoinPool.Count == 0)
+        {
+            unusedCorrectCoinPool.AddRange(globalCoinPool);
+        }
+        ActionWordEnum type = unusedCorrectCoinPool[Random.Range(0, unusedCorrectCoinPool.Count)];
+        unusedCorrectCoinPool.Remove(type);
+        correctCoin = type;
+        correctCoinIndex = Random.Range(0, 3);
+        coins[correctCoinIndex].GetComponent<LogCoin>().SetCoinType(correctCoin);
+
+        //incorrect coin manipulation
+        if (unusedWrongCoinPool.Count <= 2)
+        {
+            unusedWrongCoinPool = new List<ActionWordEnum>();
+            unusedWrongCoinPool.AddRange(globalCoinPool);
+        }
+        for(int i = 0; i < 4; i++)
+        {
+            if(i != correctCoinIndex)
+            {
+                ActionWordEnum wType = unusedWrongCoinPool[Random.Range(0, unusedWrongCoinPool.Count)];
+                unusedWrongCoinPool.Remove(wType);
+                if(wType != type) //make sure we don't get two of the same coin
+                {
+                    coins[i].GetComponent<LogCoin>().SetCoinType(wType);
+                }
+                else
+                {
+                    wType = unusedWrongCoinPool[Random.Range(0, unusedWrongCoinPool.Count)];
+                    unusedWrongCoinPool.Remove(wType);
+                }
+            }
+        }
+
         foreach (GameObject g in coins)
         {
             g.GetComponent<RectTransform>().anchoredPosition = new Vector3(xPos, -284, 0);
@@ -220,6 +318,7 @@ public class SpiderGameManager : MonoBehaviour
         {
             StartCoroutine(MoveObject(g.transform, Vector3.up * 3f, 0.7f, 1.5f, false)); //put coins back
         }
+        StartCoroutine(PlayPhonemeAudioRoutine());
         inputDisabled = false;
     }
 
