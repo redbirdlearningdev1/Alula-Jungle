@@ -4,19 +4,14 @@ using UnityEngine.EventSystems;
 
 
 
-public class StickerBoardBook : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
+public class Board : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     [Header("Game Data")]
     //public GameData gameData;
 
-
-
-
-
-    private MeshRenderer meshRenderer;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-    [SerializeField] private Animator BookMovement;
+
 
     private bool isPressed = false;
     private bool isFixed = false;
@@ -26,7 +21,7 @@ public class StickerBoardBook : MonoBehaviour, IPointerUpHandler, IPointerDownHa
 
     void Awake()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
@@ -35,7 +30,7 @@ public class StickerBoardBook : MonoBehaviour, IPointerUpHandler, IPointerDownHa
     }
 
 
-   
+
 
     /* 
     ################################################
@@ -48,8 +43,8 @@ public class StickerBoardBook : MonoBehaviour, IPointerUpHandler, IPointerDownHa
         if (!isPressed)
         {
             isPressed = true;
-            Debug.Log(isPressed);
-            BookMovement.Play("BookSelected");
+            Debug.Log("HERE");
+            animator.Play("BoardClicked");
         }
     }
 

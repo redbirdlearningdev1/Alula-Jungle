@@ -140,7 +140,7 @@ public class ScrollMapManager : MonoBehaviour
         yield return new WaitForSeconds(3.05f);
         Wagon.Play("WagonStop");
         yield return new WaitForSeconds(1.15f);
-        //Wagon.Play("Idle");
+        Wagon.Play("Idle");
         Book.SetActive(true);
         Board.SetActive(true);
         BackWindow.SetActive(true);
