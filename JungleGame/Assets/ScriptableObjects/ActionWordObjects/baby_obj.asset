@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838bbca180b5ea749b8f619e976fdf52, type: 3}
+  m_Name: baby_obj
+  m_EditorClassIdentifier: 
+  _name: baby
+  audio: {fileID: 8300000, guid: 58bf3f9ffb9c5814385890900047b2f9, type: 3}
+  animation: baby
+  _enum: 20
+  doorIcon: {fileID: 21300000, guid: 4d6ca55afcd0c044da039a0e46c381b1, type: 3}
+  frameIcon: {fileID: 21300000, guid: 4c8ac9a5cd4e1f34db211f286c509739, type: 3}
+  centerIcon: {fileID: 21300000, guid: 2b980badf6fe28e4dad2a3c8ac4710d9, type: 3}

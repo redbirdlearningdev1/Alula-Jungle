@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum LogType
+{
+    Small, Medium, Large
+}
+
 public class SingleLog : MonoBehaviour
 {
+    public LogType logType;
     private Animator animator;
     private bool isUp = true;
 
@@ -21,6 +27,20 @@ public class SingleLog : MonoBehaviour
                 Awake();
             animator.Play("log_rise");
             isUp = true;
+
+            // play audio
+            switch (logType)
+            {
+                case LogType.Small:
+                    AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.LogRiseSmall, 0.5f);
+                    break;
+                case LogType.Medium:
+                    AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.LogRiseMed, 0.5f);
+                    break;
+                case LogType.Large:
+                    AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.LogRiseLarge, 0.5f);
+                    break;
+            }
         }
     }
 
@@ -33,6 +53,20 @@ public class SingleLog : MonoBehaviour
                 Awake();
             animator.Play("log_sink");
             isUp = false;
+
+            // play audio
+            switch (logType)
+            {
+                case LogType.Small:
+                    AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WaterSplashSmall, 0.5f);
+                    break;
+                case LogType.Medium:
+                    AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WaterSplashMed, 0.5f);
+                    break;
+                case LogType.Large:
+                    AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WaterSplashLarge, 0.5f);
+                    break;
+            }
         }
     }
 }

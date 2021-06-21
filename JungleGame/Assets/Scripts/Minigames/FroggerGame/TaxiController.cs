@@ -25,6 +25,14 @@ public class TaxiController : MonoBehaviour
 
     public void TwitchAnimation()
     {
+        StartCoroutine(TwitchAnimationRoutine());
+    }
+
+    private IEnumerator TwitchAnimationRoutine()
+    {
         animator.Play("taxi_twitch");
+        yield return new WaitForSeconds(0.5f);
+        // make woosh sound effect
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Whoosh, 1f);
     }
 }

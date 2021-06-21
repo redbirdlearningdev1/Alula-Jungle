@@ -39,13 +39,12 @@ public class ScrollMapManager : MonoBehaviour
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
-    // play test song
-    //AudioManager.instance.PlaySong(Song.JungleGameTestSong);
+        // play test song
+        AudioManager.instance.PlaySong(AudioDatabase.instance.JungleGameTestSong);
     }
 
     void Start()
     {
-
         StartCoroutine(DelayedStart(0.1f));
         cartStartPosition = stickerCart.transform.position;
         toolBarStartPosition = toolBar.transform.position;
@@ -148,7 +147,6 @@ public class ScrollMapManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-
     }
 
     private IEnumerator RollOnScreenRoutine(Vector3 target, Vector3 target2)
@@ -178,7 +176,6 @@ public class ScrollMapManager : MonoBehaviour
             
             yield return null;
         }
-        
     }
 
 
@@ -324,7 +321,7 @@ public class ScrollMapManager : MonoBehaviour
 
     private IEnumerator MapSmoothTransition(float start, float end, float transitionTime)
     {
-        GameManager.instance.SetRaycastBlocker(true);
+        //GameManager.instance.SetRaycastBlocker(true);
         float timer = 0f;
 
         Map.localPosition = new Vector3(start, staticMapYPos, 0f);
@@ -337,7 +334,7 @@ public class ScrollMapManager : MonoBehaviour
         }
         Map.localPosition = new Vector3(end, staticMapYPos, 0f);
 
-        GameManager.instance.SetRaycastBlocker(false);
+        //GameManager.instance.SetRaycastBlocker(false);
     }
     
     /* 

@@ -20,7 +20,7 @@ public class ParallaxController : MonoBehaviour
 
     [Range(-1,1)] public float horizontalParallaxPos = 0.0f; // 0 is center, -1 is far left, 1 is far right
     private float prevHorizontalParallaxPos;
-    public float horizontalParallaxSpeed = 0.1f;
+    public float parallaxSpeed = 0.0005f;
     private const float returnToCenterTime = 1f;
 
     [Header("Vertical Parallax")]
@@ -98,11 +98,17 @@ public class ParallaxController : MonoBehaviour
         {
             // get throttle speed
             float num = BoatThrottleController.instance.GetThrottleSpeed();
-            verticalParallaxPos += num * 0.002f;
+            verticalParallaxPos += num * parallaxSpeed;
 
             // return if the prev parallax pos is the same
             if (verticalParallaxPos != prevVerticalParallaxPos)
+            {
                 prevVerticalParallaxPos = verticalParallaxPos;
+
+                // finished boat game
+                if (verticalParallaxPos > 1f)
+                    BoatGameManager.instance.ArrivedAtIsland();
+            }
             else
                 return;
 
@@ -137,7 +143,7 @@ public class ParallaxController : MonoBehaviour
     public void MoveParallax(bool right)
     {
         // make speed negative if going right -->
-        var delta = horizontalParallaxSpeed;
+        var delta = parallaxSpeed;
         if (right) delta *= -1;
 
         var temp = horizontalParallaxPos += delta;

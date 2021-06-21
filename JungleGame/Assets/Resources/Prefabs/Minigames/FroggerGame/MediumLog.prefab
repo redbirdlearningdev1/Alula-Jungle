@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87cd126789dea904cabae361306cadc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  logType: 1
 --- !u!222 &6017245842281027152
 CanvasRenderer:
   m_ObjectHideFlags: 0

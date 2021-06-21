@@ -27,6 +27,27 @@ public class RopeController : MonoBehaviour
             instance = this;
         keys = new List<Key>();
     }
+    
+    // set individual key to be glowing
+    public void SetKeyGlow(Key k, bool opt)
+    {
+        if (keys.Contains(k))
+        {
+            k.GetComponent<GlowOutlineController>().ToggleGlowOutline(opt);
+        }
+    }
+
+    // clears all the glow from keys
+    public void ClearKeyGlows()
+    {
+        if (keys != null)
+        {
+            foreach (var k in keys)
+            {
+                k.GetComponent<GlowOutlineController>().ToggleGlowOutline(false);
+            }
+        }
+    }
 
     public List<Key> GetKeys()
     {
@@ -35,6 +56,9 @@ public class RopeController : MonoBehaviour
 
     public void AnimateKeysUp()
     {
+        // play key jingle
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.KeyLatch, 1f);
+
         if (keys == null) return;
         foreach (Key k in keys)
             k.StartMovingAnimation();
@@ -42,6 +66,9 @@ public class RopeController : MonoBehaviour
 
     public void AnimateKeysDown()
     {
+        // play key jingle
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.KeyLatch, 1f);
+
         if (keys == null) return;
         foreach (Key k in keys)
             k.StopMovingAnimation();
@@ -60,6 +87,9 @@ public class RopeController : MonoBehaviour
         Key[] foundKeys = currentRope.GetComponentsInChildren<Key>();
         keys.Clear();
         keys.AddRange(foundKeys);
+
+        // remove glow from keys
+        ClearKeyGlows();
     }
 
     public void MoveFromInitToNormal()

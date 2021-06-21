@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838bbca180b5ea749b8f619e976fdf52, type: 3}
+  m_Name: listen_obj
+  m_EditorClassIdentifier: 
+  _name: listen
+  audio: {fileID: 8300000, guid: 8e47e5dec531365438466443b74d0318, type: 3}
+  animation: listen
+  _enum: 2
+  doorIcon: {fileID: 21300000, guid: 1c9efecfebbc8534086c16685209776f, type: 3}
+  frameIcon: {fileID: 21300000, guid: 403337dd9dd92274a9ece43522cc77d1, type: 3}
+  centerIcon: {fileID: 21300000, guid: 3fbdc2c89cf417a4b97a4269168d3c2a, type: 3}

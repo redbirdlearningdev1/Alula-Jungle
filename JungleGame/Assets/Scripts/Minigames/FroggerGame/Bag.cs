@@ -5,12 +5,15 @@ using UnityEngine.UI;
 
 public class Bag : MonoBehaviour
 {
+    public static Bag instance;
+    public GlowOutlineController glowController;
+
     private int currBag = 0;
-    private const int maxBag = 3;
+    private const int maxBag = 5;
 
 
     [Header("Objects")]
-    [SerializeField] private Image bag;
+    [SerializeField] private SpriteRenderer bag;
     [SerializeField] private Image shadow;
 
     [Header("Images")]
@@ -19,6 +22,15 @@ public class Bag : MonoBehaviour
 
     void Awake()
     {   
+        if (instance == null)
+        {
+            instance = this;
+        }
+
+        // get glow controller
+        glowController = GetComponent<GlowOutlineController>();
+        glowController.ToggleGlowOutline(false);
+
         bag.sprite = bagSprites[currBag];
         shadow.sprite = shadowSprites[currBag];
     }
@@ -32,6 +44,11 @@ public class Bag : MonoBehaviour
 
         bag.sprite = bagSprites[currBag];
         shadow.sprite = shadowSprites[currBag];
+
+        // play coin drop sound effect
+        AudioManager.instance.PlayCoinDrop();
+        // play right choice sound effect
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
     }
     
 
@@ -44,5 +61,8 @@ public class Bag : MonoBehaviour
 
         bag.sprite = bagSprites[currBag];
         shadow.sprite = shadowSprites[currBag];
+
+        // play wrong choice sound effect
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 1f);
     }
 }

@@ -7,11 +7,19 @@ public class GameManager : DontDestroy<GameManager>
 {
     public bool devModeActivated;
     public const float transitionTime = 0.5f; // time to fade into and out of a scene (total transition time is: transitionTime * 2)
+    public Vector2Int gameResolution;
+
+    // game data
     public List<ActionWord> actionWords;
+    public List<StoryGameData> storyGameDatas;
     
-    [SerializeField] private GameObject raycastBlocker; // used to block all raycasts (does not work for UI stuff currently)
-    [SerializeField] private Transform popupParent;
-    [SerializeField] private GameObject levelPopupPrefab;
+    [SerializeField] private GameObject devModeIndicator;
+    private bool devIndicatorSet = false;
+
+    // TODO: fix raycast blocker
+    // [SerializeField] private GameObject raycastBlocker; // used to block all raycasts (does not work for UI stuff currently) 
+    // [SerializeField] private Transform popupParent;
+    // [SerializeField] private GameObject levelPopupPrefab;
 
     private GameData gameData;
 
@@ -20,17 +28,27 @@ public class GameManager : DontDestroy<GameManager>
 
     void Start()
     {
+        // set game resolution
+        Screen.SetResolution(gameResolution.x, gameResolution.y, FullScreenMode.FullScreenWindow);
+
         // disable raycast blocker (allow raycasts)
-        SetRaycastBlocker(false);
+        //SetRaycastBlocker(false);
     }
 
     private void Update()
     {
         if (devModeActivated)
         {
+            // set dev mode indicator on (once)
+            if (!devIndicatorSet)
+            {
+                SendLog(this, "Dev Mode - ON");
+                devIndicatorSet = true;
+                devModeIndicator.SetActive(true);
+            }
             // press 'D' to go to the dev menu
-            // if (Input.GetKeyDown(KeyCode.D))
-            //     LoadScene("DevMenu", true);
+            if (Input.GetKeyDown(KeyCode.D))
+                LoadScene("DevMenu", true);
             // press 'F' to toggle between fixed and broken map sprites
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -47,6 +65,16 @@ public class GameManager : DontDestroy<GameManager>
                 }
             }
         }
+        else
+        {
+            // set dev mode indicator off (once)
+            if (!devIndicatorSet)
+            {
+                SendLog(this, "Dev Mode - OFF");
+                devIndicatorSet = true;
+                devModeIndicator.SetActive(false);
+            }
+        }
     }
 
     /* 
@@ -57,21 +85,16 @@ public class GameManager : DontDestroy<GameManager>
 
     public void SceneInit()
     {
-        // clear any popups
-        foreach (Transform child in popupParent)
-        {
-            Destroy(child.gameObject);
-        }
-
         StartCoroutine(SceneInitCoroutine());
     }
 
     private IEnumerator SceneInitCoroutine()
     {
-        SetRaycastBlocker(true);
+        yield return null;
+        //SetRaycastBlocker(true);
         FadeObject.instance.FadeIn(transitionTime);
         yield return new WaitForSeconds(transitionTime);
-        SetRaycastBlocker(false);
+        //SetRaycastBlocker(false);
     }
 
     /* 
@@ -80,21 +103,16 @@ public class GameManager : DontDestroy<GameManager>
     ################################################
     */
 
-    public void SetRaycastBlocker(bool opt)
-    {
-        raycastBlocker.SetActive(opt);
-    }
-
     public void RestartGame()
     {
         LoadScene(0, true);
     }
 
-    public void NewLevelPopup(GameData data)
-    {
-        PopupWindow window = Instantiate(levelPopupPrefab, transform.position, Quaternion.identity, popupParent).GetComponent<PopupWindow>();
-        window.InitPopup(data);
-    }
+    // public void NewLevelPopup(GameData data)
+    // {
+    //     PopupWindow window = Instantiate(levelPopupPrefab, transform.position, Quaternion.identity, popupParent).GetComponent<PopupWindow>();
+    //     window.InitPopup(data);
+    // }
 
     public void SendError(Object errorContext, string errorMsg)
     {
@@ -109,6 +127,7 @@ public class GameManager : DontDestroy<GameManager>
     // returns action word data from enum
     public ActionWord GetActionWord(ActionWordEnum word)
     {
+        //print ("word: " + word);
         foreach(ActionWord actionWord in actionWords)
         {
             if (actionWord._enum.Equals(word))
@@ -129,7 +148,9 @@ public class GameManager : DontDestroy<GameManager>
             ActionWordEnum coin = (ActionWordEnum)System.Enum.Parse(typeof(ActionWordEnum), coins[i]);
             globalCoinPool.Add(coin);
         }
+        // remove two invalid coins
         globalCoinPool.Remove(ActionWordEnum.SIZE);
+        globalCoinPool.Remove(ActionWordEnum._blank);
         return globalCoinPool;
     }
 
@@ -139,15 +160,20 @@ public class GameManager : DontDestroy<GameManager>
     ################################################
     */
 
+    public void ReturnToScrollMap()
+    {
+        LoadScene("ScrollMap", true);
+    }
+
     public void LoadScene(string sceneName, bool fadeOut, float time = transitionTime)
     {
-        SetRaycastBlocker(true);
+        //SetRaycastBlocker(true);
         StartCoroutine(LoadSceneCoroutine(sceneName, fadeOut, time));
     }
 
     public void LoadScene(int sceneNum, bool fadeOut, float time = transitionTime)
     {
-        SetRaycastBlocker(true);
+        //SetRaycastBlocker(true);
         StartCoroutine(LoadSceneCoroutine(sceneNum, fadeOut, time));
     }
 
@@ -159,6 +185,9 @@ public class GameManager : DontDestroy<GameManager>
         }
             
         yield return new WaitForSeconds(time);
+
+        // remove all fx sounds
+        AudioManager.instance.ClearAllFX();
 
         SendLog(this, "Loading new scene: " + sceneName);
         SceneManager.LoadSceneAsync(sceneName);

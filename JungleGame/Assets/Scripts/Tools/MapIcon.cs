@@ -114,6 +114,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     {
         if (!isPressed)
         {
+            print ("pressed!");
             isPressed = true;
             transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
         }
@@ -123,9 +124,10 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     {
         if (isPressed)
         {
+            print ("un-pressed!");
             isPressed = false;
             transform.localScale = new Vector3(1f, 1f, 1f);
-            GameManager.instance.NewLevelPopup(gameData);
+            GameManager.instance.LoadScene("MinigameDemoScene", true);
         }
     }
 }

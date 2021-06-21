@@ -154,7 +154,7 @@ public class LogRow : MonoBehaviour
         // assert that position exists
         if (logIndex >= 0 && logIndex < movePositions.Count)
         {
-            print ("centering log: " + logIndex);
+            // print ("centering log: " + logIndex);
             StartCoroutine(MoveRowTo(movePositions[logIndex]));
         }
     }
@@ -189,11 +189,12 @@ public class LogRow : MonoBehaviour
     ################################################
     */
 
-    public void ResetCoinPos()
+    public void ResetCoinPos(LogCoin selectedCoin)
     {
         for (int i = 0; i < coins.Count; i++)
         {
-            coins[i].ReturnToLog();
+            if (coins[i] != selectedCoin)
+                coins[i].ReturnToLog();
         }
     }
 }

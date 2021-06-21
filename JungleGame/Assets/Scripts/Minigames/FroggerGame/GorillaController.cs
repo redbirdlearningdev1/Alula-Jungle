@@ -10,6 +10,7 @@ public class GorillaController : MonoBehaviour
 
     private List<Transform> currPath;
     private float moveSpeed = 7f;
+    private AudioClip landingSound;
 
     [Header("Jump Paths")]
     public List<Transform> jump1;
@@ -26,18 +27,18 @@ public class GorillaController : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.instance.devModeActivated)
-        {
-            // jump 1
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                JumpBack();
-            }
-            else if (Input.GetKeyDown(KeyCode.X))
-            {
-                JumpForward();
-            }
-        }
+        // if (GameManager.instance.devModeActivated)
+        // {
+        //     // jump 1
+        //     if (Input.GetKeyDown(KeyCode.Z))
+        //     {
+        //         JumpBack();
+        //     }
+        //     else if (Input.GetKeyDown(KeyCode.X))
+        //     {
+        //         JumpForward();
+        //     }
+        // }
     }
 
     public void CelebrateAnimation(float time = 1.5f)
@@ -52,8 +53,12 @@ public class GorillaController : MonoBehaviour
         animator.Play("gorilla_idle");
     }
 
-    public void JumpForward()
+
+
+    public void JumpForward(AudioClip landingAudio)
     {
+        landingSound = landingAudio;
+
         if (currPos < maxPos)
         {
             switch (currPos)
@@ -80,8 +85,10 @@ public class GorillaController : MonoBehaviour
         }
     }
 
-    public void JumpBack()
+    public void JumpBack(AudioClip landingAudio)
     {
+        landingSound = landingAudio;
+
         if (currPos > 0)
         {
             switch (currPos)
@@ -150,6 +157,9 @@ public class GorillaController : MonoBehaviour
                 }
                 else
                 {
+                    // play landing sound effect and switch animation
+                    AudioManager.instance.PlayFX_oneShot(landingSound, 1f);
+                    yield return new WaitForSeconds(0.05f);
                     animator.Play("gorilla_afterjump");
                     yield break;
                 }

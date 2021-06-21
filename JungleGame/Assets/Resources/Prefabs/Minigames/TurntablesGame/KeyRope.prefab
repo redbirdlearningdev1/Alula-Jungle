@@ -211,8 +211,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79290a62fb8d9794588d5d834d891035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deactivated: 1
-  spriteGlow: {fileID: 7833891247175161974}
+  deactivated: 0
+  glowTime: 0.2
+  brightnessOn: 2.3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!212 &7377629986169133565
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -251,7 +255,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d1aba6ce86ed04f44b1256776eb19599, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -277,9 +281,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glowColor: {r: 1, g: 1, b: 1, a: 1}
-  glowBrightness: 1
+  glowBrightness: 2.3
   outlineWidth: 0
-  alphaThreshold: 0
+  alphaThreshold: 0.2
   drawOutside: 0
   enableInstancing: 0
 --- !u!1 &5927028568874579216
@@ -462,7 +466,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 1
-  spriteGlow: {fileID: 94565335149269926}
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!212 &3376815856713705696
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -501,7 +509,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 912488ba8c17ae441bb1d015294e1a2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -632,8 +640,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79290a62fb8d9794588d5d834d891035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deactivated: 1
-  spriteGlow: {fileID: 7633139706184339695}
+  deactivated: 0
+  glowTime: 0.2
+  brightnessOn: 2.3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!212 &6496754910729628653
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -672,7 +684,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 3f67328e6ec01db45914870618bfe73c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -698,9 +710,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glowColor: {r: 1, g: 1, b: 1, a: 1}
-  glowBrightness: 1
+  glowBrightness: 2.3
   outlineWidth: 0
-  alphaThreshold: 0
+  alphaThreshold: 0.2
   drawOutside: 0
   enableInstancing: 0
 --- !u!1 &5927028569053745761
@@ -770,7 +782,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 1
-  spriteGlow: {fileID: 8534096673132011164}
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!212 &9216690760538126069
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -809,7 +825,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b019457b225d28745b13736064c2061c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -940,8 +956,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79290a62fb8d9794588d5d834d891035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deactivated: 1
-  spriteGlow: {fileID: 4970509326058237936}
+  deactivated: 0
+  glowTime: 0.2
+  brightnessOn: 2.3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!212 &4287065064636736584
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -980,7 +1000,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5c0fcc83c46cbe14da3d7ce1fb8fecc7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1006,9 +1026,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glowColor: {r: 1, g: 1, b: 1, a: 1}
-  glowBrightness: 1
+  glowBrightness: 2.3
   outlineWidth: 0
-  alphaThreshold: 0
+  alphaThreshold: 0.2
   drawOutside: 0
   enableInstancing: 0
 --- !u!1 &5927028569261989284
@@ -1332,8 +1352,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79290a62fb8d9794588d5d834d891035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deactivated: 1
-  spriteGlow: {fileID: 9018140878455492215}
+  deactivated: 0
+  glowTime: 0.2
+  brightnessOn: 2.3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!95 &5927028569634830175
 Animator:
   serializedVersion: 3
@@ -1391,7 +1415,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 61627bb3a8df2a8408ee5fff66a7cc56, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1417,9 +1441,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glowColor: {r: 1, g: 1, b: 1, a: 1}
-  glowBrightness: 1
+  glowBrightness: 2.3
   outlineWidth: 0
-  alphaThreshold: 0
+  alphaThreshold: 0.2
   drawOutside: 0
   enableInstancing: 0
 --- !u!1 &5927028569662598143

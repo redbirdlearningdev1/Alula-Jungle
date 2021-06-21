@@ -8,6 +8,7 @@ public class TextWrapper : MonoBehaviour
 {
     public bool isOn;
     public float constHeight;
+    public ActionWordEnum wordEnum;
 
     private const float colorTransTime = 0.5f;
     private RectTransform rectTransform;
@@ -23,7 +24,7 @@ public class TextWrapper : MonoBehaviour
     {
         rectTransform.sizeDelta = new Vector2(textMesh.preferredWidth, constHeight);
     }
-
+    
     public void SetText(string text)
     {
         textMesh.text = text;

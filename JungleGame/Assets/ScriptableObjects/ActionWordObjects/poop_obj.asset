@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838bbca180b5ea749b8f619e976fdf52, type: 3}
+  m_Name: poop_obj
+  m_EditorClassIdentifier: 
+  _name: poop
+  audio: {fileID: 8300000, guid: 5bca01979ece61b4a90e401655219c16, type: 3}
+  animation: poop
+  _enum: 3
+  doorIcon: {fileID: 21300000, guid: 583123dd031bd6b4aad0de298d7c4766, type: 3}
+  frameIcon: {fileID: 21300000, guid: ba0e504bde8c14641878ec128e32ecc9, type: 3}
+  centerIcon: {fileID: 21300000, guid: f4efdfcaed00cba479b88ac00065fae5, type: 3}

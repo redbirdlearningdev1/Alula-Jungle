@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 public class KeyRaycaster : MonoBehaviour
 {
     public bool isOn = false;
+    public float keyMoveSpeed = 0.1f;
+
     private Key selectedKey = null;
     [SerializeField] private Transform selectedKeyParent;
 
@@ -20,7 +22,9 @@ public class KeyRaycaster : MonoBehaviour
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 0f;
-            selectedKey.transform.position = mousePos;
+
+            Vector3 pos = Vector3.Lerp(selectedKey.transform.position, mousePos, keyMoveSpeed);
+            selectedKey.transform.position = pos;
         }
         else if (Input.GetMouseButtonUp(0) && selectedKey)
         {
@@ -35,7 +39,7 @@ public class KeyRaycaster : MonoBehaviour
             {
                 foreach(var result in raycastResults)
                 {
-                    print (result.gameObject.name);
+                    // print (result.gameObject.name);
                     if (result.gameObject.transform.CompareTag("RockLock"))
                     {
                         isCorrect = TurntablesGameManager.instance.EvaluateSelectedKey(selectedKey);

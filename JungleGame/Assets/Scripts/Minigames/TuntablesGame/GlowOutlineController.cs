@@ -9,11 +9,11 @@ public class GlowOutlineController : MonoBehaviour
     public bool deactivated;
     
     private SpriteGlowEffect spriteGlow;
-    public const float glowTime = 0.2f;
-    public const float brightnessOn = 3f;
-    public const float brightnessOff = 0f;
-    public const int outlineOn = 1;
-    public const int outlineOff = 0;
+    public float glowTime = 0.2f;
+    public float brightnessOn = 3f;
+    public float brightnessOff = 0f;
+    public int outlineOn = 1;
+    public int outlineOff = 0;
 
     private Coroutine currRoutine;
     private bool animating = false;

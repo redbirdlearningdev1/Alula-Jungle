@@ -20,13 +20,13 @@ public class FadeObject : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.instance.devModeActivated)
-        {
-            if (Input.GetKeyDown(KeyCode.Plus))
-                FadeIn(1.2f);
-            if (Input.GetKeyDown(KeyCode.Minus))
-                FadeOut(1.2f);
-        }
+        // if (GameManager.instance.devModeActivated)
+        // {
+        //     if (Input.GetKeyDown(KeyCode.Plus))
+        //         FadeIn(1.2f);
+        //     if (Input.GetKeyDown(KeyCode.Minus))
+        //         FadeOut(1.2f);
+        // }
     }
     
     public void FadeIn(float time)
