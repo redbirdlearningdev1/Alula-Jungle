@@ -16,6 +16,10 @@ public class TextWrapper : MonoBehaviour
     private TextMeshProUGUI textMesh;
     private bool sizeChanging = false;
 
+    // space stuff
+    private bool isSpace;
+    private const float spaceWidth = 15f;
+
     void Awake() 
     {
         rectTransform = GetComponent<RectTransform>();
@@ -24,6 +28,10 @@ public class TextWrapper : MonoBehaviour
 
     void Update()
     {
+        // return iff off
+        if (!isOn)
+            return;
+        
         // add padding to width if text is growing in size over time
         if (sizeChanging)
             rectTransform.sizeDelta = new Vector2(textMesh.preferredWidth + sizePadding, constHeight);
@@ -35,6 +43,13 @@ public class TextWrapper : MonoBehaviour
     public void SetText(string text)
     {
         textMesh.text = text;
+    }
+
+    public void SetSpace()
+    {
+        textMesh.text = "";
+        isOn = false;
+        rectTransform.sizeDelta = new Vector2(spaceWidth, constHeight);
     }
 
     public void SetTextColor(Color color, bool smoothTrans)

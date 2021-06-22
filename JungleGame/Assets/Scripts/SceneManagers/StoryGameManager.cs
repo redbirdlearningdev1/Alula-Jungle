@@ -107,26 +107,51 @@ public class StoryGameManager : MonoBehaviour
         // add the text objects to the layout group
         foreach (StoryGameSegment seg in storyGameData.segments)
         {
-            if (seg.containsText)
+            if (seg.writeText)
             {
+                // add space
+                var space = Instantiate(textWrapperObject, textLayoutGroup);
+                space.GetComponent<TextWrapper>().SetSpace();
+
                 var textObj = Instantiate(textWrapperObject, textLayoutGroup);
                 textObj.GetComponent<TextWrapper>().SetText(seg.text);
                 textObj.GetComponent<TextWrapper>().SetTextColor(defaultTextColor, false);
                 //print ("adding text: " + seg.text);
             }
 
+            // add empty action word if segment says so
+            if (seg.actAsActionWord)
+            {
+                var emptyWord = Instantiate(textWrapperObject, textLayoutGroup);
+                emptyWord.GetComponent<TextWrapper>().SetText("");
+                emptyWord.GetComponent<TextWrapper>().SetTextColor(defaultTextColor, false);
+                actionWords.Add(emptyWord.transform);
+            }
+
             if (seg.containsActionWord)
             {
+                // add space
+                var space = Instantiate(textWrapperObject, textLayoutGroup);
+                space.GetComponent<TextWrapper>().SetSpace();
+
                 var wordObj = Instantiate(textWrapperObject, textLayoutGroup);
                 wordObj.GetComponent<TextWrapper>().SetText(seg.actionWordText);
                 wordObj.GetComponent<TextWrapper>().SetTextColor(defaultTextColor, false);
                 actionWords.Add(wordObj.transform);
                 //print ("adding word: " + seg.actionWordText);
             }
-            
-            // add small space inbetween segments
-            // var spaceObj = Instantiate(textWrapperObject, textLayoutGroup);
-            // spaceObj.GetComponent<TextWrapper>().SetText("  ");
+
+            if (seg.containsPostText)
+            {
+                var postWordObj = Instantiate(textWrapperObject, textLayoutGroup);
+                postWordObj.GetComponent<TextWrapper>().SetText(seg.postText);
+                postWordObj.GetComponent<TextWrapper>().SetTextColor(defaultTextColor, false);
+                //print ("adding word: " + seg.actionWordText);
+
+                // add space
+                var space = Instantiate(textWrapperObject, textLayoutGroup);
+                space.GetComponent<TextWrapper>().SetSpace();
+            }
         }
     }
 
@@ -190,20 +215,24 @@ public class StoryGameManager : MonoBehaviour
             coin.SetTransparency(0.25f, true);
 
             // read text if available
-            if (seg.containsText)
+            if (seg.readText)
             {
                 AudioManager.instance.PlayTalk(seg.textAudio);
 
-                if (seg.containsActionWord)
+                if (seg.containsActionWord || seg.actAsActionWord)
                 {
                     // move text until action word is in place
                     StartCoroutine(MoveTextToNextActionWord(seg.textAudio.length));
+
+                    // increment currActionWord
+                    if (seg.actAsActionWord)
+                        currWord++;
                 }
 
                 yield return new WaitForSeconds(seg.textAudio.length);
             }
             // if no text - just scroll to next action word
-            else if (!seg.containsText && seg.containsActionWord)
+            else if (!seg.readText && seg.containsActionWord)
             {
                 // move text until action word is in place
                 StartCoroutine(MoveTextToNextActionWord(seg.wordAudio.length));
@@ -257,27 +286,27 @@ public class StoryGameManager : MonoBehaviour
             coin.SetTransparency(0.25f, true);
 
             // read text if available
-            if (seg.containsText)
+            if (seg.readText)
             {
                 AudioManager.instance.PlayTalk(seg.textAudio);
 
-                if (seg.containsActionWord)
-                {
-                    // move gorilla to new pos
-                    ScrollingBackground.instance.LerpScrollPosTo((float)segCount / (float)segMax, seg.textAudio.length);
-                    segCount++;
-                }
-
-                if (seg.containsActionWord)
+                if (seg.containsActionWord || seg.actAsActionWord)
                 {
                     // move text until action word is in place
                     StartCoroutine(MoveTextToNextActionWord(seg.textAudio.length));
+
+                    // move gorilla to new pos
+                    ScrollingBackground.instance.LerpScrollPosTo((float)segCount / (float)segMax, seg.textAudio.length);
+                    
+                    // increment currActionWord
+                    if (seg.actAsActionWord)
+                        currWord++;
                 }
 
                 yield return new WaitForSeconds(seg.textAudio.length);
             }
             // if no text - just scroll to next action word
-            else if (!seg.containsText && seg.containsActionWord)
+            else if (!seg.readText && seg.containsActionWord)
             {
                 // move text until action word is in place
                 StartCoroutine(MoveTextToNextActionWord(seg.wordAudio.length));
@@ -321,6 +350,8 @@ public class StoryGameManager : MonoBehaviour
 
                 yield return new WaitForSeconds(seg.wordAudio.length);
             }
+            // inc segment count
+            segCount++;
         }
         partTwoDone = true;
 

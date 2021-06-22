@@ -6,17 +6,24 @@ using UnityEngine.UI;
 [System.Serializable]
 public class StoryGameSegment
 {
-    [Header("Read Text")]
-    public bool containsText;
     public bool skipOnPart2;
+
+    [Header("Read Text")]
+    public bool readText;
+    public bool writeText;
     public string text;
     public AudioClip textAudio;
+    public bool actAsActionWord;
     
     [Header("Action Word")]
     public bool containsActionWord;
     public string actionWordText;
     public ActionWordEnum actionWord;
     public AudioClip wordAudio;
+
+    [Header("Extra Text")]
+    public bool containsPostText;
+    public string postText;
 }
 
 public enum StoryGameBackground
