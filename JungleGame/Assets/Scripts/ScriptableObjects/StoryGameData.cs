@@ -8,6 +8,7 @@ public class StoryGameSegment
 {
     [Header("Read Text")]
     public bool containsText;
+    public bool skipOnPart2;
     public string text;
     public AudioClip textAudio;
     

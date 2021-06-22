@@ -1437,7 +1437,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: 25
+  m_Spacing: 15
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -1509,7 +1509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151db7b06aa6cba4d9ce1b2f0f684e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  devData: {fileID: 11400000, guid: 87df9e5a4f03eff4d8337295c82c564b, type: 2}
+  storyGameIndex: 1
   skipToPartTwo: 0
   coin: {fileID: 1653332658}
   dancingMan: {fileID: 1034302397}
@@ -1524,6 +1524,8 @@ MonoBehaviour:
   textHeight: 5
   defaultTextColor: {r: 0.6226415, g: 0.35169268, b: 0.1262905, a: 1}
   actionTextColor: {r: 0, g: 0.45992422, b: 1, a: 1}
+  defaultTextSize: 60
+  actionTextSize: 75
   audioInputThreshold: 5
 --- !u!4 &1584239529
 Transform:

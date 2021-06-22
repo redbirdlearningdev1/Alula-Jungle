@@ -7,7 +7,7 @@ using TMPro;
 public class StoryGameManager : MonoBehaviour
 {   
     [Header("Dev Mode Stuff")]
-    public StoryGameData devData;
+    public StoryGameEnum storyGameIndex;
     public bool skipToPartTwo;
 
     [Header("Game Object Variables")]
@@ -28,6 +28,10 @@ public class StoryGameManager : MonoBehaviour
     // text colors used 
     public Color defaultTextColor;
     public Color actionTextColor;
+    // text sizes used 
+    public float defaultTextSize;
+    public float actionTextSize;
+
 
     [Header("Audio Variables")]
     public float audioInputThreshold;
@@ -53,7 +57,9 @@ public class StoryGameManager : MonoBehaviour
         {
             // use dev data if in dev mode
             if (GameManager.instance.devModeActivated)
-                storyGameData = devData;
+            {
+                storyGameData = GameManager.instance.storyGameDatas[(int)storyGameIndex];
+            }
             else // send error
                 GameManager.instance.SendError(this, "invalid game data");
         } 
@@ -106,6 +112,7 @@ public class StoryGameManager : MonoBehaviour
                 var textObj = Instantiate(textWrapperObject, textLayoutGroup);
                 textObj.GetComponent<TextWrapper>().SetText(seg.text);
                 textObj.GetComponent<TextWrapper>().SetTextColor(defaultTextColor, false);
+                //print ("adding text: " + seg.text);
             }
 
             if (seg.containsActionWord)
@@ -114,6 +121,7 @@ public class StoryGameManager : MonoBehaviour
                 wordObj.GetComponent<TextWrapper>().SetText(seg.actionWordText);
                 wordObj.GetComponent<TextWrapper>().SetTextColor(defaultTextColor, false);
                 actionWords.Add(wordObj.transform);
+                //print ("adding word: " + seg.actionWordText);
             }
             
             // add small space inbetween segments
@@ -129,13 +137,6 @@ public class StoryGameManager : MonoBehaviour
         {
             // start part two (repeating)
             StartCoroutine(PartTwoRoutine());
-
-            // wait until part two is complete
-            while (!partTwoDone)
-                yield return null;
-
-            print ("part two complete!");
-
             yield break;
         }
 
@@ -159,16 +160,13 @@ public class StoryGameManager : MonoBehaviour
 
         // change action words to be default color
         foreach (Transform t in actionWords)
+        {
             t.GetComponent<TextWrapper>().SetTextColor(defaultTextColor, false);
+            t.GetComponent<TextWrapper>().SetTextSize(defaultTextSize, false);
+        }   
 
         // start part two (repeating)
         StartCoroutine(PartTwoRoutine());
-
-        // wait until part two is complete
-        while (!partTwoDone)
-            yield return null;
-
-        print ("part two complete!");
     } 
 
     private IEnumerator PartOneRoutine()
@@ -182,6 +180,7 @@ public class StoryGameManager : MonoBehaviour
         
         foreach (StoryGameSegment seg in storyGameData.segments)
         {
+
             // set the coin in action word in segment
             if (seg.containsActionWord)
                 coin.SetCoinType(seg.actionWord);
@@ -190,71 +189,111 @@ public class StoryGameManager : MonoBehaviour
             // make coin transparent
             coin.SetTransparency(0.25f, true);
 
-            AudioManager.instance.PlayTalk(seg.textAudio);
+            // read text if available
+            if (seg.containsText)
+            {
+                AudioManager.instance.PlayTalk(seg.textAudio);
 
-            if (seg.containsActionWord)
+                if (seg.containsActionWord)
+                {
+                    // move text until action word is in place
+                    StartCoroutine(MoveTextToNextActionWord(seg.textAudio.length));
+                }
+
+                yield return new WaitForSeconds(seg.textAudio.length);
+            }
+            // if no text - just scroll to next action word
+            else if (!seg.containsText && seg.containsActionWord)
             {
                 // move text until action word is in place
-                StartCoroutine(MoveTextToNextActionWord(seg.textAudio.length));
+                StartCoroutine(MoveTextToNextActionWord(seg.wordAudio.length));
             }
-
-            yield return new WaitForSeconds(seg.textAudio.length);
-            yield return new WaitForSeconds(0.5f);
 
             // read action word if available
             if (seg.containsActionWord)
             {
+                // say action word literal
+                AudioManager.instance.PlayTalk(seg.wordAudio);
+
                 // remove coin transparency
                 coin.SetTransparency(1f, true);
-                yield return new WaitForSeconds(0.25f);
+
+                yield return new WaitForSeconds(seg.wordAudio.length);
 
                 // say action word phoneme
                 AudioManager.instance.PlayTalk(GameManager.instance.GetActionWord(seg.actionWord).audio);
                 actionWords[currWord].GetComponent<TextWrapper>().SetTextColor(actionTextColor, true);
+                actionWords[currWord].GetComponent<TextWrapper>().SetTextSize(actionTextSize, true);
                 currWord++;
                 dancingMan.PlayUsingPhonemeEnum(seg.actionWord);
                 ShakeCoin();
-
-                yield return new WaitForSeconds(1f);
-
-                // say action word literal
-                AudioManager.instance.PlayTalk(seg.wordAudio);
             }
             
             yield return new WaitForSeconds(2f);
         }
+        
+        // make coin transparent
+        coin.SetTransparency(0.25f, true);
         partOneDone = true;
     }
 
     private IEnumerator PartTwoRoutine()
     {
         int segCount = 1;
-        int segMax = storyGameData.segments.Count;
+        int segMax = actionWords.Count;
         foreach (StoryGameSegment seg in storyGameData.segments)
         {
+            // skip segment if segment says to
+            if (seg.skipOnPart2)
+            {
+                // print ("skiping segmet");
+                continue;
+            }
+
             // set the coin in action word in segment
             if (seg.containsActionWord)
                 coin.SetCoinType(seg.actionWord);
-            AudioManager.instance.PlayTalk(seg.textAudio);
+            // make coin transparent
+            coin.SetTransparency(0.25f, true);
 
-            // move gorilla to new pos
-            ScrollingBackground.instance.LerpScrollPosTo((float)segCount / (float)segMax, seg.textAudio.length);
-            segCount++;
+            // read text if available
+            if (seg.containsText)
+            {
+                AudioManager.instance.PlayTalk(seg.textAudio);
 
-            if (seg.containsActionWord)
+                if (seg.containsActionWord)
+                {
+                    // move gorilla to new pos
+                    ScrollingBackground.instance.LerpScrollPosTo((float)segCount / (float)segMax, seg.textAudio.length);
+                    segCount++;
+                }
+
+                if (seg.containsActionWord)
+                {
+                    // move text until action word is in place
+                    StartCoroutine(MoveTextToNextActionWord(seg.textAudio.length));
+                }
+
+                yield return new WaitForSeconds(seg.textAudio.length);
+            }
+            // if no text - just scroll to next action word
+            else if (!seg.containsText && seg.containsActionWord)
             {
                 // move text until action word is in place
-                StartCoroutine(MoveTextToNextActionWord(seg.textAudio.length));
+                StartCoroutine(MoveTextToNextActionWord(seg.wordAudio.length));
             }
-
-            yield return new WaitForSeconds(seg.textAudio.length);
+                
 
             if (seg.containsActionWord)
             {
-                // highlight action word and show dancing man animation
-                actionWords[currWord].GetComponent<TextWrapper>().SetTextColor(actionTextColor, true);
-                currWord++;
+                // remove coin transparency
+                coin.SetTransparency(1f, true);
                 dancingMan.PlayUsingPhonemeEnum(seg.actionWord);
+                AudioManager.instance.PlayTalk(seg.wordAudio);
+                // highlight action word
+                actionWords[currWord].GetComponent<TextWrapper>().SetTextColor(actionTextColor, true);
+                actionWords[currWord].GetComponent<TextWrapper>().SetTextSize(actionTextSize, true);
+                currWord++;
 
                 // TODO: show UI to indicate that mic input is expected
 
@@ -263,10 +302,13 @@ public class StoryGameManager : MonoBehaviour
                 while (waitingForAudioInput)
                     yield return null;
 
-                // TODO: play correct audio cue
-
                 // play gorilla "yeah" animation
                 ScrollingBackground.instance.GorillaCorrectAnim();
+
+                yield return new WaitForSeconds(1f);
+
+                // play correct audio cue
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
 
                 yield return new WaitForSeconds(1f);
 
@@ -274,10 +316,11 @@ public class StoryGameManager : MonoBehaviour
 
                 // successful input stuff
                 ShakeCoin();
-                AudioManager.instance.PlayTalk(seg.wordAudio);
+                dancingMan.PlayUsingPhonemeEnum(seg.actionWord);
+                AudioManager.instance.PlayTalk(GameManager.instance.GetActionWord(seg.actionWord).audio);
+
+                yield return new WaitForSeconds(seg.wordAudio.length);
             }
-            
-            yield return new WaitForSeconds(2f);
         }
         partTwoDone = true;
 
