@@ -293,9 +293,9 @@ public class Coin : MonoBehaviour
 
     public void SetCoinType(ActionWordEnum type, int num)
     {
-        image.sprite = images[num];
+        image.sprite = images[num-1];
         this.type = type;
-
+        Debug.Log(type);
         // get animator if null
 
     }
@@ -304,6 +304,7 @@ public class Coin : MonoBehaviour
     {
         if (!audioPlaying)
         {
+            
             StartCoroutine(PlayPhonemeAudioRoutine());
         }
     }
@@ -311,6 +312,7 @@ public class Coin : MonoBehaviour
     private IEnumerator PlayPhonemeAudioRoutine()
     {
         audioPlaying = true;
+        
         AudioManager.instance.PlayPhoneme(type);
         yield return new WaitForSeconds(1f);
         audioPlaying = false;

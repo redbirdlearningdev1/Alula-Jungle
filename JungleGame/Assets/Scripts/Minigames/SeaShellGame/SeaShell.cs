@@ -90,6 +90,7 @@ public class SeaShell : MonoBehaviour
     private IEnumerator PlayPhonemeAudioRoutine()
     {
         audioPlaying = true;
+        Debug.Log(type);
         AudioManager.instance.PlayPhoneme(type);
         yield return new WaitForSeconds(1f);
         audioPlaying = false;

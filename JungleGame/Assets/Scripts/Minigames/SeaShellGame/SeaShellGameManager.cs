@@ -335,7 +335,10 @@ public class SeaShellGameManager : MonoBehaviour
         selectedIndex = Random.Range(0, shells.Count);
         print("selected index: " + selectedIndex);
         selectedShell = shells[selectedIndex];
-        Debug.Log(selectedShell.type);
+        Debug.Log("SELECTED"+selectedShell.type);
+        int i = globalCoinPool.IndexOf(selectedShell.type);
+        Debug.Log("THIS IS THE INDEX: " + i);
+        coin.SetCoinType(selectedShell.type,i);
     }
 
     private List<SeaShell> GetShells()
