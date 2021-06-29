@@ -221,7 +221,7 @@ public class PrintingGameManager : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         rope.GoToOrigin();
         PrintingCoin.GoToOrigin();
-        yield return new WaitForSeconds(1.75f);
+        yield return new WaitForSeconds(2.1f);
         StartCoroutine(Rollout(ball.getChoice()));
         yield return new WaitForSeconds(1.5f);
         StartCoroutine(StartGame(0));
@@ -235,7 +235,7 @@ public class PrintingGameManager : MonoBehaviour
         Explode.hit();
         yield return new WaitForSeconds(.9f);
         PrintingCoin.SetCoinTypeSuccess(ball.type);
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(.5f);
         rope.breakRope();
         PrintingCoin.drop();
         yield return new WaitForSeconds(.5f);
@@ -245,7 +245,7 @@ public class PrintingGameManager : MonoBehaviour
         rope.GoToOrigin();
         yield return new WaitForSeconds(.5f);
         rope.fixRope();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2.1f);
         StartCoroutine(Rollout(ball.getChoice()));
         yield return new WaitForSeconds(1.5f);
         StartCoroutine(StartGame(0));
@@ -257,9 +257,9 @@ public class PrintingGameManager : MonoBehaviour
             StartCoroutine(RolloutThree());
             //yield return new WaitForSeconds(.05f);
             StartCoroutine(RolloutTwo());
-            yield return new WaitForSeconds(.15f);
+            //yield return new WaitForSeconds(.15f);
             StartCoroutine(RolloutOne());
-            yield return new WaitForSeconds(.05f);
+            //yield return new WaitForSeconds(.05f);
 
         }
         else if(index == 1)
@@ -267,34 +267,47 @@ public class PrintingGameManager : MonoBehaviour
             StartCoroutine(RolloutThree());
             //yield return new WaitForSeconds(.05f);
             StartCoroutine(RolloutTwo());
-            yield return new WaitForSeconds(.15f);
-            StartCoroutine(RolloutZero());
-            yield return new WaitForSeconds(.05f);
+            //yield return new WaitForSeconds(.15f);
+            StartCoroutine(RolloutZeroSpecial());
+            //yield return new WaitForSeconds(.05f);
         }
         else if (index == 2)
         {
             StartCoroutine(RolloutThree());
             //yield return new WaitForSeconds(.05f);
-            StartCoroutine(RolloutOne());
-            yield return new WaitForSeconds(.15f);
-            StartCoroutine(RolloutZero());
-            yield return new WaitForSeconds(.05f);
+            StartCoroutine(RolloutOneSpecial());
+            //yield return new WaitForSeconds(.15f);
+            StartCoroutine(RolloutZeroSpecial());
+            //yield return new WaitForSeconds(.05f);
         }
         else if (index == 3)
         {
-            StartCoroutine(RolloutTwo());
+            StartCoroutine(RolloutTwoSpecial());
             //yield return new WaitForSeconds(.05f);
-            StartCoroutine(RolloutOne());
-            yield return new WaitForSeconds(.15f);
-            StartCoroutine(RolloutZero());
-            yield return new WaitForSeconds(.05f);
+            StartCoroutine(RolloutOneSpecial());
+            //yield return new WaitForSeconds(.15f);
+            StartCoroutine(RolloutZeroSpecial());
+            //yield return new WaitForSeconds(.05f);
         }
-
+        yield return new WaitForSeconds(0f);
     }
     private IEnumerator RolloutZero()
     {
         Balls[0].movePos4();
-        yield return new WaitForSeconds(.65f);
+        yield return new WaitForSeconds(.45f);
+        Balls[0].moveOut1();
+        yield return new WaitForSeconds(.25f);
+        Balls[0].moveOut2();
+        yield return new WaitForSeconds(.02f);
+        Balls[0].moveOut3();
+        yield return new WaitForSeconds(.02f);
+        Balls[0].moveOut4();
+
+    }
+    private IEnumerator RolloutZeroSpecial()
+    {
+        Balls[0].movePos4();
+        yield return new WaitForSeconds(.15f);
         Balls[0].moveOut1();
         yield return new WaitForSeconds(.15f);
         Balls[0].moveOut2();
@@ -302,12 +315,23 @@ public class PrintingGameManager : MonoBehaviour
         Balls[0].moveOut3();
         yield return new WaitForSeconds(.05f);
         Balls[0].moveOut4();
-
     }
     private IEnumerator RolloutOne()
     {
         Balls[1].movePos4();
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.15f);
+        Balls[1].moveOut1();
+        yield return new WaitForSeconds(.15f);
+        Balls[1].moveOut2();
+        yield return new WaitForSeconds(.07f);
+        Balls[1].moveOut3();
+        yield return new WaitForSeconds(.05f);
+        Balls[1].moveOut4();
+    }
+    private IEnumerator RolloutOneSpecial()
+    {
+        Balls[1].movePos4();
+        yield return new WaitForSeconds(.05f);
         Balls[1].moveOut1();
         yield return new WaitForSeconds(.15f);
         Balls[1].moveOut2();
@@ -319,7 +343,17 @@ public class PrintingGameManager : MonoBehaviour
     private IEnumerator RolloutTwo()
     {
         Balls[2].movePos4();
-        yield return new WaitForSeconds(.25f);
+        yield return new WaitForSeconds(.05f);
+        Balls[2].moveOut1();
+        yield return new WaitForSeconds(.15f);
+        Balls[2].moveOut2();
+        yield return new WaitForSeconds(.07f);
+        Balls[2].moveOut3();
+        yield return new WaitForSeconds(.05f);
+        Balls[2].moveOut4();
+    }
+    private IEnumerator RolloutTwoSpecial()
+    {
         Balls[2].moveOut1();
         yield return new WaitForSeconds(.15f);
         Balls[2].moveOut2();

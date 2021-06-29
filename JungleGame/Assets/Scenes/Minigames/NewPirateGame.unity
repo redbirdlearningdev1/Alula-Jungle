@@ -642,9 +642,9 @@ MonoBehaviour:
   MoveInPosition3: {x: -2.6, y: -3.75, z: 0}
   MoveInPosition4: {x: -0.75, y: -3.75, z: 0}
   MoveOutPosition1: {x: 0, y: -3.75, z: 0}
-  MoveOutPosition2: {x: 1.2, y: -3.8, z: 0}
-  MoveOutPosition3: {x: 2, y: -3.9, z: 0}
-  MoveOutPosition4: {x: 3, y: -7, z: 0}
+  MoveOutPosition2: {x: 3, y: -3.8, z: 0}
+  MoveOutPosition3: {x: 3, y: -3.9, z: 0}
+  MoveOutPosition4: {x: 3.5, y: -7, z: 0}
   choice: 0
   Origin: {x: -15.55, y: -3.75, z: 0}
   Goback: {x: -6.3, y: -3.75, z: 0}
@@ -934,9 +934,9 @@ MonoBehaviour:
   MoveInPosition3: {x: 0, y: -3.75, z: 0}
   MoveInPosition4: {x: -0.75, y: -3.75, z: 0}
   MoveOutPosition1: {x: 0, y: -3.75, z: 0}
-  MoveOutPosition2: {x: 1.2, y: -3.8, z: 0}
-  MoveOutPosition3: {x: 2, y: -3.9, z: 0}
-  MoveOutPosition4: {x: 3, y: -7, z: 0}
+  MoveOutPosition2: {x: 3, y: -3.8, z: 0}
+  MoveOutPosition3: {x: 3, y: -3.9, z: 0}
+  MoveOutPosition4: {x: 3.5, y: -7, z: 0}
   choice: 2
   Origin: {x: -11.85, y: -3.75, z: 0}
   Goback: {x: -2.6, y: -3.75, z: 0}
@@ -1425,9 +1425,9 @@ MonoBehaviour:
   MoveInPosition3: {x: -2.6, y: -3.75, z: 0}
   MoveInPosition4: {x: -0.75, y: -3.75, z: 0}
   MoveOutPosition1: {x: 0, y: -3.75, z: 0}
-  MoveOutPosition2: {x: 1.2, y: -3.8, z: 0}
-  MoveOutPosition3: {x: 2, y: -3.9, z: 0}
-  MoveOutPosition4: {x: 3, y: -7, z: 0}
+  MoveOutPosition2: {x: 3, y: -3.8, z: 0}
+  MoveOutPosition3: {x: 3, y: -3.9, z: 0}
+  MoveOutPosition4: {x: 3.5, y: -7, z: 0}
   choice: 1
   Origin: {x: -13.7, y: -3.75, z: 0}
   Goback: {x: -4.45, y: -3.75, z: 0}
@@ -1822,9 +1822,9 @@ MonoBehaviour:
   MoveInPosition3: {x: 0, y: -3.75, z: 0}
   MoveInPosition4: {x: 0, y: -3.75, z: 0}
   MoveOutPosition1: {x: 0, y: -3.75, z: 0}
-  MoveOutPosition2: {x: 1.2, y: -3.8, z: 0}
-  MoveOutPosition3: {x: 2, y: -3.9, z: 0}
-  MoveOutPosition4: {x: 3, y: -7, z: 0}
+  MoveOutPosition2: {x: 3, y: -3.8, z: 0}
+  MoveOutPosition3: {x: 3, y: -3.9, z: 0}
+  MoveOutPosition4: {x: 3.5, y: -8, z: 0}
   choice: 3
   Origin: {x: -10, y: -3.75, z: 0}
   Goback: {x: -0.75, y: -3.75, z: 0}

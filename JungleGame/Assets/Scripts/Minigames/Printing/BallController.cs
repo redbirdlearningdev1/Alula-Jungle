@@ -64,6 +64,10 @@ public class BallController : MonoBehaviour
     {
         return choice;
     }
+    public Vector3 getPosition()
+    {
+        return transform.position;
+    }
 
 
 
@@ -132,7 +136,7 @@ public class BallController : MonoBehaviour
             if (timer < maxTime)
             {
                 //transform.position = Vector3.Lerp(currStart, target, timer / maxTime);
-                transform.rotation = Quaternion.Euler(Vector3.forward * 360);
+                //transform.rotation = Quaternion.Euler(Vector3.forward * 360);
             }
             else
             {
@@ -189,7 +193,7 @@ public class BallController : MonoBehaviour
                 
                 //transform.Rotate(0, 0,1f * timer / maxTime * 360);
 
-                    transform.Rotate(Vector3.back * 1.74f * timer / maxTime);
+                    //transform.Rotate(Vector3.back * 1.74f * timer / maxTime);
 
             }
             else
@@ -228,11 +232,11 @@ public class BallController : MonoBehaviour
     }
     public void moveOut1()
     {
-        StartCoroutine(MoveOverRoutine2(MoveOutPosition1, 1f));
+        StartCoroutine(MoveOverRoutine2(MoveOutPosition1, .5f));
     }
     public void moveOut2()
     {
-        StartCoroutine(MoveOverRoutine2(MoveOutPosition2, 1f));
+        StartCoroutine(MoveOverRoutine2(MoveOutPosition2, .75f));
     }
     public void moveOut3()
     {
@@ -272,7 +276,7 @@ public class BallController : MonoBehaviour
 
                 //transform.Rotate(0, 0,1f * timer / maxTime * 360);
 
-                    transform.Rotate(Vector3.back * 1.74f * timer / maxTime);
+                    //transform.Rotate(Vector3.back * 1.74f * timer / maxTime);
 
             }
             else
@@ -303,7 +307,7 @@ public class BallController : MonoBehaviour
 
                 //transform.Rotate(0, 0,1f * timer / maxTime * 360);
 
-                transform.Rotate(Vector3.back * 1.74f * timer / maxTime);
+                //transform.Rotate(Vector3.back * 1.74f * timer / maxTime);
 
             }
             else
