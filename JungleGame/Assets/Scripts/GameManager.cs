@@ -33,6 +33,9 @@ public class GameManager : DontDestroy<GameManager>
 
         // disable raycast blocker (allow raycasts)
         //SetRaycastBlocker(false);
+
+        // student information system setup
+        
     }
 
     private void Update()

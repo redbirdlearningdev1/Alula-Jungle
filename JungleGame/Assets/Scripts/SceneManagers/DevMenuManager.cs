@@ -9,6 +9,7 @@ public class DevMenuManager : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown navDropdown;
     [SerializeField] private TMP_Dropdown storyGameDropdown;
+    [SerializeField] private TMP_Dropdown profileDropdown;
 
     private string[] sceneNames = new string[] {  "SplashScreen",
                                                     "DevMenu",
@@ -29,7 +30,9 @@ public class DevMenuManager : MonoBehaviour
     private string[] storyGames = new string[] {
         "0 - Welcome",
         "1 - The Prologue"
-    };                                  
+    };
+
+    private List<StudentPlayerData> datas;                        
 
     void Awake()
     {
@@ -43,6 +46,62 @@ public class DevMenuManager : MonoBehaviour
         // add story game options to dropdown
         List<string> storyGamesList = new List<string>(storyGames);
         storyGameDropdown.AddOptions(storyGamesList);
+
+        // setup profiles
+        if (StudentInfoSystem.currentStudentPlayer == null)
+            StudentInfoSystem.SetStudentPlayer(StudentIndex.student_1);
+        profileDropdown.onValueChanged.AddListener(delegate { OnProfileDropdownChanged(); });
+        SetupProfileDropdown();
+    }
+
+    private void SetupProfileDropdown()
+    {
+        // set profile dropdown
+        datas = StudentInfoSystem.GetAllStudentDatas();
+        List<string> profileList = new List<string>();
+        for (int i = 1; i < 4; i++)
+        {
+            string str = i + " - ";
+            if (datas[i - 1].active)
+                str += datas[i - 1].name;
+            else
+                str += "empty";
+            profileList.Add(str);
+        }
+        profileDropdown.ClearOptions();
+        profileDropdown.AddOptions(profileList);
+        
+        // set current profile
+        //print ("student index: " + StudentInfoSystem.currentStudentPlayer.studentIndex);
+        switch (StudentInfoSystem.currentStudentPlayer.studentIndex)
+        {
+            case StudentIndex.student_1:
+                profileDropdown.value = 0;
+                break;
+            case StudentIndex.student_2:
+                profileDropdown.value = 1;
+                break;
+            case StudentIndex.student_3:
+                profileDropdown.value = 2;
+                break;
+        }
+    }
+
+    public void OnProfileDropdownChanged()
+    {
+        int value = profileDropdown.value;
+        switch (value)
+        {
+            case 0:
+                StudentInfoSystem.SetStudentPlayer(StudentIndex.student_1);
+                break;
+            case 1:
+                StudentInfoSystem.SetStudentPlayer(StudentIndex.student_2);
+                break;
+            case 2:
+                StudentInfoSystem.SetStudentPlayer(StudentIndex.student_3);
+                break;
+        }
     }
 
     public void OnGoToSceneButtonPressed()

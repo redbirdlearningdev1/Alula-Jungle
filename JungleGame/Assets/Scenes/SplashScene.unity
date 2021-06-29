@@ -413,7 +413,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 1706627147805454b96d727b70f3690c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1440,8 +1440,12 @@ MonoBehaviour:
   profile1Image: {fileID: 1835783055}
   profile2Image: {fileID: 511837646}
   profile3Image: {fileID: 1684576170}
-  selectedColor: {r: 1, g: 1, b: 1, a: 1}
-  unselectedColor: {r: 1, g: 1, b: 1, a: 0.5882353}
+  profile1Text: {fileID: 963559825}
+  profile2Text: {fileID: 889868757}
+  profile3Text: {fileID: 1860891445}
+  selectedAlpha: 1
+  unselectedAlpha: 0.5
+  selectedSprite: {fileID: 21300000, guid: 67d7a36a1d342194bb10849d02d31d89, type: 3}
 --- !u!4 &1227557042
 Transform:
   m_ObjectHideFlags: 0
@@ -1805,7 +1809,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 1706627147805454b96d727b70f3690c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1881,7 +1885,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 1706627147805454b96d727b70f3690c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

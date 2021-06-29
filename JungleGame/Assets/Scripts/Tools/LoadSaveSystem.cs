@@ -48,6 +48,11 @@ public static class LoadSaveSystem
         return null;
     }
 
+    public static void ResetStudentData(StudentIndex index)
+    {
+
+    }
+
     private static string GetStudentDataPath(StudentIndex index)
     {
         string path = "";
