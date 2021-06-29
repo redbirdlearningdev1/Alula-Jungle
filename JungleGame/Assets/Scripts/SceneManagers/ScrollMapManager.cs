@@ -25,8 +25,9 @@ public class ScrollMapManager : MonoBehaviour
     [Header("Sticker")]
     [SerializeField] public GameObject stickerCart;
     [SerializeField] public GameObject toolBar;
-    [SerializeField] public GameObject Book,Board,BackWindow;
+    [SerializeField] public GameObject Book,Board,BackWindow,Gecko;
     [SerializeField] public Animator Wagon;
+    [SerializeField] public Animator GeckoAnim;
     private bool stickerButtonsDisabled;
     public float stickerTransitionTime;
     private Vector3 cartStartPosition;
@@ -143,10 +144,14 @@ public class ScrollMapManager : MonoBehaviour
         Book.SetActive(true);
         Board.SetActive(true);
         BackWindow.SetActive(true);
+        Gecko.SetActive(true);
+        GeckoAnim.Play("geckoIntro");
 
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        //yield return new WaitForSeconds(20f);
+        //GeckoAnim.Play("geckoFall 0");
     }
 
     private IEnumerator RollOnScreenRoutine(Vector3 target, Vector3 target2)
