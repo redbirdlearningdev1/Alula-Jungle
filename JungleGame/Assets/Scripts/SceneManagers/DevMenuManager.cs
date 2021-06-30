@@ -11,6 +11,8 @@ public class DevMenuManager : MonoBehaviour
     [SerializeField] private TMP_Dropdown storyGameDropdown;
     [SerializeField] private TMP_Dropdown profileDropdown;
 
+    [SerializeField] private TMP_InputField profileInput;
+
     private string[] sceneNames = new string[] {  "SplashScreen",
                                                     "DevMenu",
                                                     "JungleWelcomeScene",
@@ -54,8 +56,17 @@ public class DevMenuManager : MonoBehaviour
         SetupProfileDropdown();
     }
 
+    /* 
+    ################################################
+    #   PROFILE SECTION
+    ################################################
+    */
+
     private void SetupProfileDropdown()
     {
+        // refresh database
+        AssetDatabase.Refresh();
+
         // set profile dropdown
         datas = StudentInfoSystem.GetAllStudentDatas();
         List<string> profileList = new List<string>();
@@ -103,6 +114,33 @@ public class DevMenuManager : MonoBehaviour
                 break;
         }
     }
+
+    public void OnProfileResetPressed()
+    {
+        StudentInfoSystem.ResetProfile(StudentInfoSystem.currentStudentPlayer.studentIndex);
+        SetupProfileDropdown();
+    }
+
+    public void OnAllProfilesResetPressed()
+    {
+        StudentInfoSystem.ResetProfile(StudentIndex.student_1);
+        StudentInfoSystem.ResetProfile(StudentIndex.student_2);
+        StudentInfoSystem.ResetProfile(StudentIndex.student_3);
+        SetupProfileDropdown();
+    }
+
+    public void OnRenameProfilePressed()
+    {
+        StudentInfoSystem.currentStudentPlayer.name = profileInput.text;
+        StudentInfoSystem.SaveStudentPlayerData();
+        SetupProfileDropdown();
+    }   
+
+    /* 
+    ################################################
+    #   NAVIGATION SECTION
+    ################################################
+    */
 
     public void OnGoToSceneButtonPressed()
     {

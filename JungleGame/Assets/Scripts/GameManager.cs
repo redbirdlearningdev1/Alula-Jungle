@@ -127,6 +127,11 @@ public class GameManager : DontDestroy<GameManager>
         Debug.Log("[LOG] " + msg + " @ " + context.name);
     }
 
+    public void SendLog(string context, string msg)
+    {
+        Debug.Log("[LOG] " + msg + " @ " + context);
+    }
+
     // returns action word data from enum
     public ActionWord GetActionWord(ActionWordEnum word)
     {

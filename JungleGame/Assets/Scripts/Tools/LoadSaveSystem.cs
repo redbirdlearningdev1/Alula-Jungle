@@ -1,12 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using System.IO;
 
 public static class LoadSaveSystem
 {
-    public static void SaveStudentData(StudentPlayerData data)
+    // default student player values
+    public static string default_version = "1.1";
+    public static string default_name = "empty";
+    public static int    default_stars = 0;
+
+    public static float default_masterVol = 1f;
+    public static float default_musicVol = 1f;
+    public static float default_fxVol = 1f;
+    public static float default_talkVol = 1f;
+    public static int default_micDevice = 0;
+
+    public static void SaveStudentData(StudentPlayerData data, bool makeInactive = false)
     {
+        // saving data to profile makes it active
+        if (!data.active)
+            data.active = true;
+        if (makeInactive)
+            data.active = false;
+
         string jsonData = JsonUtility.ToJson(data);
         string path = GetStudentDataPath(data.studentIndex);
 
@@ -14,10 +32,13 @@ public static class LoadSaveSystem
         {
             using (StreamWriter writer = new StreamWriter(fileStream))
             {
+                Debug.Log("json data: " + jsonData);
                 writer.Write(jsonData);
                 writer.Close();
             }
         }
+        // refresh database
+        AssetDatabase.Refresh();
     }
 
     public static StudentPlayerData LoadStudentData(StudentIndex index)
@@ -50,7 +71,23 @@ public static class LoadSaveSystem
 
     public static void ResetStudentData(StudentIndex index)
     {
+        StudentPlayerData new_data = new StudentPlayerData();
+        new_data.studentIndex = index;
 
+        // set all variables to be default values
+        new_data.version = default_version;
+        new_data.name = default_name;
+        new_data.totalStars = default_stars;
+
+        new_data.masterVol = default_masterVol;
+        new_data.musicVol = default_musicVol;
+        new_data.fxVol = default_fxVol;
+        new_data.talkVol = default_talkVol;
+        new_data.micDevice = default_micDevice;
+
+        // save data as incative profile
+        SaveStudentData(new_data, true);
+        GameManager.instance.SendLog("LoadSaveSystem", "reseting profile " + index);
     }
 
     private static string GetStudentDataPath(StudentIndex index)

@@ -16,4 +16,12 @@ public class StudentPlayerData
     public string name; // name of student
     public int totalStars; // total number of stars
     // can add many more things here!
+
+    // settings options
+    public float masterVol;
+    public float musicVol;
+    public float fxVol;
+    public float talkVol;
+
+    public int micDevice;
 }

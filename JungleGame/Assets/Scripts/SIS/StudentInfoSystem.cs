@@ -10,7 +10,7 @@ public static class StudentInfoSystem
     {
         SaveStudentPlayerData();
         currentStudentPlayer = LoadSaveSystem.LoadStudentData(index); // load new student data
-        GameManager.instance.SendLog(GameManager.instance, "current profile set to: " + index);
+        GameManager.instance.SendLog("StudentInfoSystem", "current profile set to: " + index);
     }
 
     public static void SaveStudentPlayerData()
