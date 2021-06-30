@@ -13,6 +13,11 @@ public static class StudentInfoSystem
         GameManager.instance.SendLog("StudentInfoSystem", "current profile set to: " + index);
     }
 
+    public static void RemoveCurrentStudentPlayer()
+    {
+        currentStudentPlayer = null;
+    }
+
     public static void SaveStudentPlayerData()
     {
         if (currentStudentPlayer != null)

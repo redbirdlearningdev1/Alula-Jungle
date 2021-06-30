@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using System.IO;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public static class LoadSaveSystem
 {
@@ -38,7 +41,9 @@ public static class LoadSaveSystem
             }
         }
         // refresh database
+#if UNITY_EDITOR
         AssetDatabase.Refresh();
+#endif
     }
 
     public static StudentPlayerData LoadStudentData(StudentIndex index)
@@ -63,7 +68,10 @@ public static class LoadSaveSystem
         }
         else
         {
-            Debug.Log("Path not found: " + path.ToString() + "\nReturning null");
+            // Debug.Log("Path not found: " + path.ToString() + "\nReturning null");
+            // create new profile file
+            ResetStudentData(index);
+            return LoadStudentData(index);
         }
 
         return null;
@@ -97,7 +105,7 @@ public static class LoadSaveSystem
         if (Application.isEditor)
             path = "Assets/Resources/" + index.ToString() + "_data.json"; // example student_2_data.json
         else
-            path = "JungleGame_Data/Resources/" + index.ToString() + "_data.json";
+            path = Application.persistentDataPath + "/" + index.ToString() + "_data.json";
 
         return path;
     }

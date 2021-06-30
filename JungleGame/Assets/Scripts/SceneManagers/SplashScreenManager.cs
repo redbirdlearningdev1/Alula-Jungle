@@ -206,6 +206,9 @@ public class SplashScreenManager : MonoBehaviour
 
         SetUpProfiles();
 
+        SelectProfile((int)newProfileIndex + 1);
+        startButton.interactable = true;
+
         StartCoroutine(HideNewProfileWindow(0.5f));
         profileSelectWindow.interactable = true;
         profileSelectWindow.blocksRaycasts = true;

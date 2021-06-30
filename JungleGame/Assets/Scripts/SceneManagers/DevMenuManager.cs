@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using TMPro;
-using System.IO;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class DevMenuManager : MonoBehaviour
 {
@@ -65,7 +67,9 @@ public class DevMenuManager : MonoBehaviour
     private void SetupProfileDropdown()
     {
         // refresh database
+#if UNITY_EDITOR
         AssetDatabase.Refresh();
+#endif
 
         // set profile dropdown
         datas = StudentInfoSystem.GetAllStudentDatas();
@@ -83,23 +87,32 @@ public class DevMenuManager : MonoBehaviour
         profileDropdown.AddOptions(profileList);
         
         // set current profile
-        //print ("student index: " + StudentInfoSystem.currentStudentPlayer.studentIndex);
-        switch (StudentInfoSystem.currentStudentPlayer.studentIndex)
+        if (StudentInfoSystem.currentStudentPlayer != null)
         {
-            case StudentIndex.student_1:
-                profileDropdown.value = 0;
-                break;
-            case StudentIndex.student_2:
-                profileDropdown.value = 1;
-                break;
-            case StudentIndex.student_3:
-                profileDropdown.value = 2;
-                break;
+            switch (StudentInfoSystem.currentStudentPlayer.studentIndex)
+            {
+                case StudentIndex.student_1:
+                    profileDropdown.value = 0;
+                    break;
+                case StudentIndex.student_2:
+                    profileDropdown.value = 1;
+                    break;
+                case StudentIndex.student_3:
+                    profileDropdown.value = 2;
+                    break;
+            }
         }
+        else
+        {
+            // default is 0
+            profileDropdown.value = 0;
+        }
+        
     }
 
     public void OnProfileDropdownChanged()
     {
+        Debug.Log("SAVINMG!!@!");
         int value = profileDropdown.value;
         switch (value)
         {
@@ -113,11 +126,14 @@ public class DevMenuManager : MonoBehaviour
                 StudentInfoSystem.SetStudentPlayer(StudentIndex.student_3);
                 break;
         }
+        // update settings
+        SettingsManager.instance.LoadSettingsFromProfile();
     }
 
     public void OnProfileResetPressed()
     {
         StudentInfoSystem.ResetProfile(StudentInfoSystem.currentStudentPlayer.studentIndex);
+        SettingsManager.instance.LoadSettingsFromProfile();
         SetupProfileDropdown();
     }
 
@@ -127,6 +143,7 @@ public class DevMenuManager : MonoBehaviour
         StudentInfoSystem.ResetProfile(StudentIndex.student_2);
         StudentInfoSystem.ResetProfile(StudentIndex.student_3);
         SetupProfileDropdown();
+        StudentInfoSystem.RemoveCurrentStudentPlayer();
     }
 
     public void OnRenameProfilePressed()
