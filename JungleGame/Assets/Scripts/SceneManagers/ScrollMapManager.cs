@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class ScrollMapManager : MonoBehaviour
 {
+    [Header("Dev Stuff")]
+    public bool ignoreMapLimit;
+    [Range(0, 8)] public int overideMapLimit;
+
+
     [Header("Map Navigation")]
     [SerializeField] private RectTransform Map; // full map
     [SerializeField] private GameObject[] mapLocations; // the images that make up the map
@@ -66,7 +71,12 @@ public class ScrollMapManager : MonoBehaviour
         mapPosIndex = 0;
         SetMapPosition(mapPosIndex);
 
-        SetMapLimit(0);
+        // map limit
+        if (!ignoreMapLimit)
+            SetMapLimit(overideMapLimit); // set manual limit
+        else
+            SetMapLimit(fogLocations.Count - 1); // set limit to be max amount
+
     }
 
     void Update()

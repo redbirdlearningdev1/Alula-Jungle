@@ -56,12 +56,12 @@ TagManager:
   - name: Star
     uniqueID: 1716004883
     locked: 0
-  - name: UI
-    uniqueID: 3584257617
-    locked: 0
   - name: Orc
     uniqueID: 284717983
     locked: 0
   - name: Fog
     uniqueID: 2306061681
+    locked: 0
+  - name: UI
+    uniqueID: 3584257617
     locked: 0
