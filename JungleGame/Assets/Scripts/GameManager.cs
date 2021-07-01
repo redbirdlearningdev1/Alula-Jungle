@@ -51,7 +51,11 @@ public class GameManager : DontDestroy<GameManager>
             }
             // press 'D' to go to the dev menu
             if (Input.GetKeyDown(KeyCode.D))
+            {
+                // stop music
+                AudioManager.instance.StopMusic();
                 LoadScene("DevMenu", true);
+            }
             // press 'F' to toggle between fixed and broken map sprites
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -170,6 +174,9 @@ public class GameManager : DontDestroy<GameManager>
 
     public void ReturnToScrollMap()
     {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
         LoadScene("ScrollMap", true);
     }
 
@@ -194,8 +201,8 @@ public class GameManager : DontDestroy<GameManager>
             
         yield return new WaitForSeconds(time);
 
-        // remove all fx sounds
-        AudioManager.instance.ClearAllFX();
+        // remove all sounds
+        AudioManager.instance.ClearAllAudio();
 
         SendLog(this, "Loading new scene: " + sceneName);
         SceneManager.LoadSceneAsync(sceneName);

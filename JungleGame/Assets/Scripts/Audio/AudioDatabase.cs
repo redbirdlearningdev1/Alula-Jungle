@@ -42,6 +42,14 @@ public class AudioDatabase : MonoBehaviour
     public AudioClip WinTune;
     public AudioClip Whoosh;
 
+    [Header("Blips")]
+    public AudioClip HappyBlip;
+    public AudioClip SadBlip;
+    public AudioClip NeutralBlip;
+    public AudioClip CreateBlip;
+    public AudioClip LeftBlip;
+    public AudioClip RightBlip;
+
     [Header("Coin Drop")]
     public AudioClip[] CoinDropArray;
 

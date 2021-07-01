@@ -1898,6 +1898,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1375974568929445006, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
+      propertyPath: gameData
+      value: 
+      objectReference: {fileID: 11400000, guid: 5616cfdaa2a9a5e41b46f09504ad619a,
+        type: 2}
+    - target: {fileID: 1375974568929445006, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
+        type: 3}
       propertyPath: canBeFixed
       value: 0
       objectReference: {fileID: 0}
@@ -2125,12 +2131,12 @@ PrefabInstance:
     - target: {fileID: 8645686531423866220, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 729.267
+      value: 451.164
       objectReference: {fileID: 0}
     - target: {fileID: 8645686531423866220, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 564.102
+      value: 348.98398
       objectReference: {fileID: 0}
     - target: {fileID: 8645686531423866220, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
@@ -9827,8 +9833,7 @@ PrefabInstance:
         type: 3}
       propertyPath: gameData
       value: 
-      objectReference: {fileID: 11400000, guid: bd6add623fbfaac42848681f1570ba1e,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 1375974568929445006, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
       propertyPath: canBeFixed

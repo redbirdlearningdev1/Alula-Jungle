@@ -15,6 +15,7 @@ public class StudentPlayerData
     public bool active; // bool to determine if someone has created this student player
     public string name; // name of student
     public int totalStars; // total number of stars
+    public int mapLimit; // how far player can move on map
     // can add many more things here!
 
     // settings options

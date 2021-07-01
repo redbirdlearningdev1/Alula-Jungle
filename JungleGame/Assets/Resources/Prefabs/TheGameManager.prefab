@@ -3480,6 +3480,12 @@ MonoBehaviour:
   WrongChoice: {fileID: 8300000, guid: 2b787eac70b58ff459bacc25ca095636, type: 3}
   WinTune: {fileID: 8300000, guid: 6c176af750264c64eb2b404b0f0d0522, type: 3}
   Whoosh: {fileID: 8300000, guid: 7955062fb108eb44295cfe699933eb81, type: 3}
+  HappyBlip: {fileID: 8300000, guid: 9d3e47aa4978b7b439116f526d1d9274, type: 3}
+  SadBlip: {fileID: 8300000, guid: 73f79000d4ce7b24bac1d83fa9cc2846, type: 3}
+  NeutralBlip: {fileID: 8300000, guid: 83dde50db92edea41a14e904304985cb, type: 3}
+  CreateBlip: {fileID: 8300000, guid: 779ed7ac2e6f6d147bc332fe46e99f68, type: 3}
+  LeftBlip: {fileID: 8300000, guid: 89a8173ee3e2a1949bd97f6181578a80, type: 3}
+  RightBlip: {fileID: 8300000, guid: e12c8ecb6268d7a4ca855df0822e696b, type: 3}
   CoinDropArray:
   - {fileID: 8300000, guid: 451bd558733fdab4baea90b7cb7a5b89, type: 3}
   - {fileID: 8300000, guid: 846e91a4285c5e240a52c3fd701c3457, type: 3}
@@ -4255,9 +4261,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.73595715, g: 1, b: 0.5801887, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7372549, g: 1, b: 0.5803922, a: 0.78431374}
     m_PressedColor: {r: 0.5330188, g: 1, b: 0.7633531, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7372549, g: 1, b: 0.5803922, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1

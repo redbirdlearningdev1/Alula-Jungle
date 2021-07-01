@@ -526,7 +526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.7254902}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2144,7 +2144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.7254902}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2328,7 +2328,7 @@ MonoBehaviour:
   profile3Text: {fileID: 1860891445}
   newProfileInput: {fileID: 922304032}
   selectedAlpha: 1
-  unselectedAlpha: 0.5
+  unselectedAlpha: 0.25
   selectedSprite: {fileID: 21300000, guid: 67d7a36a1d342194bb10849d02d31d89, type: 3}
 --- !u!4 &1227557042
 Transform:

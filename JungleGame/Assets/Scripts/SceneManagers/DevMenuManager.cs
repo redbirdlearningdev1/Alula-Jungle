@@ -15,7 +15,7 @@ public class DevMenuManager : MonoBehaviour
 
     [SerializeField] private TMP_InputField profileInput;
 
-    private string[] sceneNames = new string[] {  "SplashScreen",
+    private string[] sceneNames = new string[] {  "SplashScene",
                                                     "DevMenu",
                                                     "JungleWelcomeScene",
                                                     "ScrollMap",
@@ -112,7 +112,9 @@ public class DevMenuManager : MonoBehaviour
 
     public void OnProfileDropdownChanged()
     {
-        Debug.Log("SAVINMG!!@!");
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
         int value = profileDropdown.value;
         switch (value)
         {
@@ -132,13 +134,22 @@ public class DevMenuManager : MonoBehaviour
 
     public void OnProfileResetPressed()
     {
-        StudentInfoSystem.ResetProfile(StudentInfoSystem.currentStudentPlayer.studentIndex);
-        SettingsManager.instance.LoadSettingsFromProfile();
-        SetupProfileDropdown();
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CreateBlip, 1f);
+
+        if (StudentInfoSystem.currentStudentPlayer != null)
+        {
+            StudentInfoSystem.ResetProfile(StudentInfoSystem.currentStudentPlayer.studentIndex);
+            SettingsManager.instance.LoadSettingsFromProfile();
+            SetupProfileDropdown();
+        }
     }
 
     public void OnAllProfilesResetPressed()
     {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CreateBlip, 1f);
+
         StudentInfoSystem.ResetProfile(StudentIndex.student_1);
         StudentInfoSystem.ResetProfile(StudentIndex.student_2);
         StudentInfoSystem.ResetProfile(StudentIndex.student_3);
@@ -148,6 +159,9 @@ public class DevMenuManager : MonoBehaviour
 
     public void OnRenameProfilePressed()
     {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
         StudentInfoSystem.currentStudentPlayer.name = profileInput.text;
         StudentInfoSystem.SaveStudentPlayerData();
         SetupProfileDropdown();
@@ -161,22 +175,43 @@ public class DevMenuManager : MonoBehaviour
 
     public void OnGoToSceneButtonPressed()
     {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
         GameManager.instance.LoadScene(sceneNames[navDropdown.value], true);
     }
 
     public void OnPlayStoryGamePressed()
     {   
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
         GameManager.instance.SetData(GameManager.instance.storyGameDatas[storyGameDropdown.value]);
         GameManager.instance.LoadScene("StoryGame", true);
     }
 
     public void OnRestartGamePressed()
     {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.HappyBlip, 1f);
+
         GameManager.instance.RestartGame();
     }
 
     public void OnExitAppPressed()
     {
+        StartCoroutine(ExitDelayRoutine());
+    }
+
+    private IEnumerator ExitDelayRoutine()
+    {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+
+        // fade out to black
+        FadeObject.instance.FadeOut(3f);
+        yield return new WaitForSeconds(3f);
+
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else

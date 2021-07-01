@@ -42,6 +42,9 @@ public class SettingsManager : MonoBehaviour
 
     public void SaveSettingsToProfile()
     {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CreateBlip, 1f);
+
         // volumes
         StudentInfoSystem.currentStudentPlayer.masterVol = Mathf.Round(masterVol.value * 1000.0f) / 1000.0f;
         StudentInfoSystem.currentStudentPlayer.musicVol = Mathf.Round(musicVol.value * 1000.0f) / 1000.0f;
@@ -129,6 +132,9 @@ public class SettingsManager : MonoBehaviour
 
     public void ToggleSettingsWindow()
     {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
         settingsWindowOpen = !settingsWindowOpen;
         settingsWindow.SetActive(settingsWindowOpen);
     }

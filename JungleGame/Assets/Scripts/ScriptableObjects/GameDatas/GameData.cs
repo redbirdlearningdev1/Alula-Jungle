@@ -6,6 +6,15 @@ public enum GameType
 {
     DevMenu,
     StoryGame,
+    BoatGame,
+
+    FroggerGame,
+    TurntablesGame,
+    RummageGame,
+    SeashellGame,
+    PirateGame,
+    SpiderwebGame,
+
     COUNT
 }
 

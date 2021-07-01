@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class ScrollMapManager : MonoBehaviour
 {
     [Header("Dev Stuff")]
-    public bool ignoreMapLimit;
-    [Range(0, 8)] public int overideMapLimit;
+    public bool overideMapLimit;
+    [Range(0, 8)] public int mapLimitNum;
 
 
     [Header("Map Navigation")]
@@ -72,10 +72,10 @@ public class ScrollMapManager : MonoBehaviour
         SetMapPosition(mapPosIndex);
 
         // map limit
-        if (!ignoreMapLimit)
-            SetMapLimit(overideMapLimit); // set manual limit
+        if (overideMapLimit)
+            SetMapLimit(mapLimitNum); // set manual limit
         else
-            SetMapLimit(fogLocations.Count - 1); // set limit to be max amount
+            SetMapLimit(StudentInfoSystem.currentStudentPlayer.mapLimit); // load map limit from SIS
 
     }
 
@@ -206,6 +206,9 @@ public class ScrollMapManager : MonoBehaviour
             return;
         }
 
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.LeftBlip, 1f);
+
         // move map to next left map location
         float x = GetXPosFromMapLocationIndex(mapPosIndex);
         StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, transitionTime));
@@ -236,6 +239,9 @@ public class ScrollMapManager : MonoBehaviour
             StartCoroutine(BumpAnimation(false));
             return;
         }
+
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightBlip, 1f);
         
         // move map to next right map location
         float x = GetXPosFromMapLocationIndex(mapPosIndex);
@@ -250,7 +256,9 @@ public class ScrollMapManager : MonoBehaviour
 
     private IEnumerator BumpAnimation(bool isLeft)
     {   
-        print("bump detected!");
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SadBlip, 1f);
+
         if (isLeft)
         {
             StartCoroutine(MapSmoothTransition(Map.localPosition.x, Map.localPosition.x + bumpAmount, (bumpAnimationTime / 2)));

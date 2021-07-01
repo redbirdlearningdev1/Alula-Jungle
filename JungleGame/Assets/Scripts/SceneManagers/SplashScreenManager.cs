@@ -67,6 +67,7 @@ public class SplashScreenManager : MonoBehaviour
         if ((Input.touchCount > 0 || Input.GetMouseButtonDown(0)) && !screenTapped)
         {
             screenTapped = true;
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
             StartCoroutine(RevealProfileWindow(0.5f));
         }
     }
@@ -191,6 +192,9 @@ public class SplashScreenManager : MonoBehaviour
 
     private void OpenNewProfileWindow(StudentIndex index)
     {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.HappyBlip, 1f);
+
         newProfileIndex = index;
         profileSelectWindow.interactable = false;
         profileSelectWindow.blocksRaycasts = false;
@@ -199,6 +203,9 @@ public class SplashScreenManager : MonoBehaviour
 
     public void CreateNewProfilePressed()
     {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CreateBlip, 1f);
+
         StudentInfoSystem.ResetProfile(newProfileIndex);
         StudentInfoSystem.SetStudentPlayer(newProfileIndex);
         StudentInfoSystem.currentStudentPlayer.name = newProfileInput.text;
@@ -216,9 +223,12 @@ public class SplashScreenManager : MonoBehaviour
 
     private void LoadProfileAndContinue(StudentIndex index)
     {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.HappyBlip, 1f);
+
         StudentInfoSystem.SetStudentPlayer(index);
         SettingsManager.instance.LoadSettingsFromProfile();
-        GameManager.instance.LoadScene("JungleWelcomeScene", true);
+        GameManager.instance.LoadScene("ScrollMap", true);
     }
 
     public void SelectProfile(int profileNum)
@@ -227,6 +237,9 @@ public class SplashScreenManager : MonoBehaviour
             return;
         
         selectedProfile = profileNum;
+
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
         // make start button interactabl
         if (!startButton.interactable)

@@ -10,9 +10,10 @@ using UnityEditor;
 public static class LoadSaveSystem
 {
     // default student player values
-    public static string default_version = "1.1";
+    public static string default_version = "1.2";
     public static string default_name = "empty";
     public static int    default_stars = 0;
+    public static int    default_map_limit = 0;
 
     public static float default_masterVol = 1f;
     public static float default_musicVol = 1f;
