@@ -9,7 +9,10 @@ public class ScrollMapManager : MonoBehaviour
     [SerializeField] private RectTransform Map; // full map
     [SerializeField] private GameObject[] mapLocations; // the images that make up the map
     [SerializeField] private List<Transform> cameraLocations; // the positions where the camera stops at
+    [SerializeField] private List<float> fogLocations; // the positions where the fog is placed
+
     public float staticMapYPos;
+    private int mapLimit;
     private int mapPosIndex;
     private bool navButtonsDisabled;
     public float transitionTime;
@@ -52,9 +55,8 @@ public class ScrollMapManager : MonoBehaviour
         Board.SetActive(false);
         BackWindow.SetActive(false);
         stickerCart.SetActive(false);
-        toolBar.SetActive(false);
-        
-}
+        toolBar.SetActive(false); 
+    }
 
     private IEnumerator DelayedStart(float delay)
     {
@@ -64,9 +66,7 @@ public class ScrollMapManager : MonoBehaviour
         mapPosIndex = 0;
         SetMapPosition(mapPosIndex);
 
-        // set birb in correct position
-        // float xPos = Mathf.Lerp(leftBirbBounds.position.x, rightBirbBounds.position.x, GetMapPositionPercentage(mapPosIndex));
-        // birb.transform.position = new Vector3(xPos, birb.transform.position.y, birb.transform.position.z);
+        SetMapLimit(0);
     }
 
     void Update()
@@ -210,7 +210,16 @@ public class ScrollMapManager : MonoBehaviour
         StartCoroutine(NavInputDelay(transitionTime));
 
         mapPosIndex++;
-        if (mapPosIndex > cameraLocations.Count - 1)
+        // cant scroll past map limit
+        if (mapPosIndex > mapLimit)
+        {
+            print ("you hit da limit!");
+            mapPosIndex = mapLimit;
+            StartCoroutine(BumpAnimation(false));
+            return;
+        }
+        // cant scroll past map end
+        else if (mapPosIndex > cameraLocations.Count - 1)
         {
             print ("right bump!");
             mapPosIndex = cameraLocations.Count - 1;
@@ -234,7 +243,6 @@ public class ScrollMapManager : MonoBehaviour
         print("bump detected!");
         if (isLeft)
         {
-
             StartCoroutine(MapSmoothTransition(Map.localPosition.x, Map.localPosition.x + bumpAmount, (bumpAnimationTime / 2)));
             yield return new WaitForSeconds((bumpAnimationTime / 2));
             StartCoroutine(MapSmoothTransition(Map.localPosition.x, GetXPosFromMapLocationIndex(0), (bumpAnimationTime / 2)));
@@ -243,7 +251,7 @@ public class ScrollMapManager : MonoBehaviour
         {
             StartCoroutine(MapSmoothTransition(Map.localPosition.x, Map.localPosition.x - bumpAmount, (bumpAnimationTime / 2)));
             yield return new WaitForSeconds((bumpAnimationTime / 2));
-            StartCoroutine(MapSmoothTransition(Map.localPosition.x, GetXPosFromMapLocationIndex(cameraLocations.Count - 1), (bumpAnimationTime / 2)));
+            StartCoroutine(MapSmoothTransition(Map.localPosition.x, GetXPosFromMapLocationIndex(mapLimit), (bumpAnimationTime / 2)));
         }
     }
 
@@ -302,6 +310,16 @@ public class ScrollMapManager : MonoBehaviour
     //         Map.position = new Vector3(tempX, Map.position.y, Map.position.z);
     //     }
     // }
+
+    // set the index where the player can no longer go forward
+    public void SetMapLimit(int index)
+    {
+        if (index >= 0 && index < cameraLocations.Count)
+        {
+            FogController.instance.mapXpos = fogLocations[index];
+            mapLimit = index;
+        }
+    }
 
     private void SetMapPosition(int index)
     {
