@@ -71,7 +71,7 @@ public class NewSpiderGameManager : MonoBehaviour
             Debug.Log("YOU DID IT");
             if (winCount < 5)
             {
-                
+                winCount++;
                 StartCoroutine(CoinSuccessRoutine(correctCoin));
             }
             else

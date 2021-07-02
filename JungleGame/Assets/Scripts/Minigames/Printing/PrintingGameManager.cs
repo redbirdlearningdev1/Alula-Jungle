@@ -73,7 +73,7 @@ public class PrintingGameManager : MonoBehaviour
             
             if (winCount < 5)
             {
-
+                winCount++;
                 StartCoroutine(BallSuccessRoutine(correctBall));
             }
             else
