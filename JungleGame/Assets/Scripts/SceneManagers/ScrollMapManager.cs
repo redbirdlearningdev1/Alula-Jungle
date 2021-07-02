@@ -54,13 +54,13 @@ public class ScrollMapManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(DelayedStart(0.1f));
-        cartStartPosition = stickerCart.transform.position;
-        toolBarStartPosition = toolBar.transform.position;
-        Book.SetActive(false);
-        Board.SetActive(false);
-        BackWindow.SetActive(false);
-        stickerCart.SetActive(false);
-        toolBar.SetActive(false); 
+        // cartStartPosition = stickerCart.transform.position;
+        // toolBarStartPosition = toolBar.transform.position;
+        // Book.SetActive(false);
+        // Board.SetActive(false);
+        // BackWindow.SetActive(false);
+        // stickerCart.SetActive(false);
+        // toolBar.SetActive(false); 
     }
 
     private IEnumerator DelayedStart(float delay)
