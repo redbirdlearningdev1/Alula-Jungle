@@ -339,6 +339,7 @@ public class ScrollMapManager : MonoBehaviour
     {
         if (index >= 0 && index < cameraLocations.Count)
         {
+            print ("index: " + index);
             FogController.instance.mapXpos = fogLocations[index];
             mapLimit = index;
         }
