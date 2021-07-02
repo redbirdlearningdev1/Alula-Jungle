@@ -125,9 +125,22 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         if (isPressed)
         {
             print ("un-pressed!");
+            // play audio blip
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
             isPressed = false;
             transform.localScale = new Vector3(1f, 1f, 1f);
-            GameManager.instance.LoadScene("MinigameDemoScene", true);
+
+            // go to correct game scene
+            if (gameData)
+            {
+                GameManager.instance.LoadScene(gameData.sceneName, true);
+            }
+            else
+            {
+                GameManager.instance.LoadScene("MinigameDemoScene", true);
+            }
+            
         }
     }
 }

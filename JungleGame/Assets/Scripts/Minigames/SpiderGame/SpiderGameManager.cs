@@ -57,6 +57,9 @@ public class SpiderGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // TODO: add music and ambiance
+        AudioManager.instance.StopMusic();
+        
         globalCoinPool = new List<ActionWordEnum>();
         unusedWrongCoinPool = new List<ActionWordEnum>();
         unusedCorrectCoinPool = new List<ActionWordEnum>();
