@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class TigerCoinRaycaster : MonoBehaviour
+public class TigerCoinRayCaster : MonoBehaviour
 {
     public bool isOn = false;
     private CoinChoices selectedCoin = null;

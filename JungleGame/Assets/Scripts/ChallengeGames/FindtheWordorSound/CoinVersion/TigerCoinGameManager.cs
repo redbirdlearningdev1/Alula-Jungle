@@ -11,7 +11,7 @@ public class TigerCoinGameManager : MonoBehaviour
     [SerializeField] private PatternRightWrong pattern;
     [SerializeField] private Poloroid poloroidC;
     [SerializeField] private GameObject pics;
-    [SerializeField] private TigerCoinRaycaster caster;
+    [SerializeField] private TigerCoinRayCaster caster;
 
 
     private bool gameSetup = false;
@@ -103,7 +103,8 @@ public class TigerCoinGameManager : MonoBehaviour
 
         Tiger.TigerAway();
         yield return new WaitForSeconds(.5f);
-        //coinC.ToggleVisibility(false, false);
+        poloroidC.ToggleVisibility(false, false);
+        pics.SetActive(false);
         yield return new WaitForSeconds(.15f);
         if (loseCount - 1 == 0)
         {
@@ -117,7 +118,8 @@ public class TigerCoinGameManager : MonoBehaviour
         {
             incorrectCoins[2].SetActive(true);
         }
-        //coinC.ToggleVisibility(false, false);
+        poloroidC.ToggleVisibility(false, false);
+        pics.SetActive(false);
         Tiger.TigerSwipe();
         yield return new WaitForSeconds(.65f);
         List<CoinChoices> coinZ = GetCoins(0);
@@ -170,7 +172,8 @@ public class TigerCoinGameManager : MonoBehaviour
         {
             correctCoins[2].SetActive(true);
         }
-        //coinC.ToggleVisibility(false, false);
+        poloroidC.ToggleVisibility(false, false);
+        pics.SetActive(false);
         Tiger.TigerSwipe();
         yield return new WaitForSeconds(.65f);
         List<CoinChoices> coinZ = GetCoins(0);

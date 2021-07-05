@@ -235,7 +235,7 @@ MonoBehaviour:
   logIndex: 0
   PolorParent: {fileID: 1425080816}
   Pos: {fileID: 0}
-  Origin: {x: -5.58, y: 0.55, z: 0}
+  Origin: {x: 5.49, y: 0.55, z: 0}
   Position1: {x: -5.58, y: 0.55, z: 0}
   Position2: {x: -3, y: -1.1, z: 0}
   Position3: {x: -0.01, y: -1.7, z: 0}
@@ -487,7 +487,7 @@ MonoBehaviour:
   logIndex: 0
   PolorParent: {fileID: 1425080816}
   Pos: {fileID: 0}
-  Origin: {x: -5.58, y: 0.55, z: 0}
+  Origin: {x: -0.01, y: -1.7, z: 0}
   Position1: {x: -5.58, y: 0.55, z: 0}
   Position2: {x: -3, y: -1.1, z: 0}
   Position3: {x: -0.01, y: -1.7, z: 0}
@@ -820,7 +820,7 @@ MonoBehaviour:
   logIndex: 0
   PolorParent: {fileID: 1425080816}
   Pos: {fileID: 0}
-  Origin: {x: -5.58, y: 0.55, z: 0}
+  Origin: {x: -3, y: -1.7, z: 0}
   Position1: {x: -5.58, y: 0.55, z: 0}
   Position2: {x: -3, y: -1.1, z: 0}
   Position3: {x: -0.01, y: -1.7, z: 0}
@@ -1732,7 +1732,7 @@ MonoBehaviour:
   logIndex: 0
   PolorParent: {fileID: 1425080816}
   Pos: {fileID: 0}
-  Origin: {x: -5.58, y: 0.55, z: 0}
+  Origin: {x: 2.8, y: -1.1, z: 0}
   Position1: {x: -5.58, y: 0.55, z: 0}
   Position2: {x: -3, y: -1.1, z: 0}
   Position3: {x: -0.01, y: -1.7, z: 0}
@@ -2171,6 +2171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1695998804}
   - component: {fileID: 1695998803}
+  - component: {fileID: 1695998802}
   m_Layer: 0
   m_Name: TigerGameManager
   m_TagString: Untagged
@@ -2178,6 +2179,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1695998802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695998801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c2520ceca2dcb439dc19a6ad8ec38e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOn: 1
+  selectedPoloroidParent: {fileID: 1403038631}
 --- !u!114 &1695998803
 MonoBehaviour:
   m_ObjectHideFlags: 0
