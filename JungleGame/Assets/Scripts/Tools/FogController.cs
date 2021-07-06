@@ -29,4 +29,28 @@ public class FogController : MonoBehaviour
         pos.x = mapXpos + Mathf.Sin(Time.time * shakeSpeed) * shakeAmount;
         mapFogObject.localPosition = pos;
     }
+
+    public void MoveFogAnimation(float newXpos, float time)
+    {
+        StartCoroutine(MoveFogRoutine(newXpos, time));
+    }
+
+    private IEnumerator MoveFogRoutine(float newXpos, float time)
+    {
+        float timer = 0f;
+        float startX = mapXpos;
+        
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer >= time) 
+            {
+                mapXpos = newXpos;
+                break;
+            }
+
+            mapXpos = Mathf.Lerp(startX, newXpos, timer / time);
+            yield return null;
+        }
+    }
 }

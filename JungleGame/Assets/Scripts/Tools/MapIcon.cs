@@ -67,8 +67,15 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 currentStars = null;
                 break;
         }
+    }
 
-        // set stars to empty or filled based on SIS data
+    // set stars to empty or filled based on SIS data
+    public void SetStars(int num)
+    {
+        for (int i = 0; i < num; i++)
+        {
+            currentStars[i].SetStar(true);
+        }
     }
 
     public void SetOutineColor(Color color)

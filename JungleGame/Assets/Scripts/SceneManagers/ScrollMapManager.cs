@@ -1,7 +1,7 @@
 ﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ScrollMapManager : MonoBehaviour
 {
@@ -9,39 +9,39 @@ public class ScrollMapManager : MonoBehaviour
     public bool overideMapLimit;
     [Range(0, 8)] public int mapLimitNum;
 
+    public bool overideGameEvent;
+    public LinearGameEvent gameEvent;
 
     [Header("Map Navigation")]
     [SerializeField] private RectTransform Map; // full map
     [SerializeField] private GameObject[] mapLocations; // the images that make up the map
     [SerializeField] private List<Transform> cameraLocations; // the positions where the camera stops at
     [SerializeField] private List<float> fogLocations; // the positions where the fog is placed
+    [SerializeField] private Button leftButton;
+    [SerializeField] private Button rightButton;
 
     public float staticMapYPos;
+
     private int mapLimit;
     private int mapPosIndex;
     private bool navButtonsDisabled;
+    
     public float transitionTime;
     public float bumpAnimationTime;
     public float bumpAmount;
 
-    [Header("Birb")]
-    [SerializeField] private GameObject birb;
-    [SerializeField] private Transform leftBirbBounds;
-    [SerializeField] private Transform rightBirbBounds;
-    private bool moveBirb;
-
-    [Header("Sticker")]
-    [SerializeField] public GameObject stickerCart;
-    [SerializeField] public GameObject toolBar;
-    [SerializeField] public GameObject Book,Board,BackWindow,Gecko;
-    [SerializeField] public Animator Wagon;
-    [SerializeField] public Animator GeckoAnim;
-    private bool stickerButtonsDisabled;
-    public float stickerTransitionTime;
-    private Vector3 cartStartPosition;
-    private Vector3 cartOnScreenPosition = new Vector3(0f, -1f, 0f);
-    private Vector3 toolBarStartPosition;
-    private Vector3 toolBarOnScreenPosition = new Vector3(0f, 0f, 0f);
+    // [Header("Sticker")]
+    // [SerializeField] public GameObject stickerCart;
+    // [SerializeField] public GameObject toolBar;
+    // [SerializeField] public GameObject Book,Board,BackWindow,Gecko;
+    // [SerializeField] public Animator Wagon;
+    // [SerializeField] public Animator GeckoAnim;
+    // private bool stickerButtonsDisabled;
+    // public float stickerTransitionTime;
+    // private Vector3 cartStartPosition;
+    // private Vector3 cartOnScreenPosition = new Vector3(0f, -1f, 0f);
+    // private Vector3 toolBarStartPosition;
+    // private Vector3 toolBarOnScreenPosition = new Vector3(0f, 0f, 0f);
 
     void Awake()
     {
@@ -78,6 +78,116 @@ public class ScrollMapManager : MonoBehaviour
         else
             SetMapLimit(StudentInfoSystem.currentStudentPlayer.mapLimit); // load map limit from SIS
 
+        if (StudentInfoSystem.currentStudentPlayer != null)
+        {
+            // load in map data from profile
+            MapDataLoader.instance.LoadMapData(StudentInfoSystem.currentStudentPlayer.mapData);
+        }
+
+        // check for game events
+        LinearGameEvent playGameEvent;
+        if (overideGameEvent)
+        {
+            playGameEvent = gameEvent;
+        }
+        else
+        {
+            playGameEvent = StudentInfoSystem.currentStudentPlayer.currGameEvent;
+        }
+
+        if (playGameEvent == LinearGameEvent.UnlockGorillaVillage)
+        {
+            StartCoroutine(UnlockMapArea(1));
+        }   
+
+        // save progress to profile
+        if (!overideGameEvent)
+        {
+            StudentInfoSystem.currentStudentPlayer.currGameEvent = (LinearGameEvent)((int)LinearGameEvent.UnlockGorillaVillage + 1);
+            StudentInfoSystem.SaveStudentPlayerData();
+        }
+    }
+
+    
+
+    private IEnumerator UnlockMapArea(int mapIndex)
+    {
+        yield return new WaitForSeconds(1f);
+
+        TurnOffNavigationUI(true);
+
+        LetterboxController.instance.ToggleLetterbox(true);
+
+        yield return new WaitForSeconds(1f);
+
+        mapLimit = mapIndex;
+        // move map to next right map location
+        float x = GetXPosFromMapLocationIndex(mapIndex);
+        StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
+
+        yield return new WaitForSeconds(2.5f);
+
+        FogController.instance.MoveFogAnimation(fogLocations[mapIndex], 3f);
+
+        yield return new WaitForSeconds(2f);
+
+        LetterboxController.instance.ToggleLetterbox(false);
+
+        yield return new WaitForSeconds(2f);
+
+        TurnOffNavigationUI(false);
+
+        // save unlock to sis profile
+        StudentInfoSystem.currentStudentPlayer.mapLimit = mapIndex;
+        StudentInfoSystem.SaveStudentPlayerData();
+    }
+
+    private void TurnOffNavigationUI(bool opt)
+    {
+        // do nothing if already same as opt
+        if (opt == navButtonsDisabled)
+            return;
+
+        // enable button
+        if (!opt)
+        {   
+            leftButton.interactable = true;
+            rightButton.interactable = true;
+
+            StartCoroutine(SmoothImageAlpha(leftButton.GetComponent<Image>(), 0f, 1f, 0.5f));
+            StartCoroutine(SmoothImageAlpha(rightButton.GetComponent<Image>(), 0f, 1f, 0.5f));
+        }
+        // disable button
+        else
+        {
+            leftButton.interactable = false;
+            rightButton.interactable = false;
+
+            StartCoroutine(SmoothImageAlpha(leftButton.GetComponent<Image>(), 1f, 0f, 0.5f));
+            StartCoroutine(SmoothImageAlpha(rightButton.GetComponent<Image>(), 1f, 0f, 0.5f));
+        }
+
+        navButtonsDisabled = opt;
+    }
+
+    private IEnumerator SmoothImageAlpha(Image img, float startAlpha, float endAlpha, float time)
+    {
+        float timer = 0f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > time)
+            {
+                img.color = new Color(1f, 1f, 1f, endAlpha);
+                break;
+            }
+
+            float temp = Mathf.Lerp(startAlpha, endAlpha, timer / time);
+            img.color = new Color(1f, 1f, 1f, temp);
+
+            yield return null;
+        }
     }
 
     void Update()
@@ -128,70 +238,70 @@ public class ScrollMapManager : MonoBehaviour
 
     
 
-    private IEnumerator StickerInputDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        stickerButtonsDisabled = false;
-    }
+    // private IEnumerator StickerInputDelay(float delay)
+    // {
+    //     yield return new WaitForSeconds(delay);
+    //     stickerButtonsDisabled = false;
+    // }
 
-    public void DoRollOn()
-    {
-        StartCoroutine(RollOnScreen());
-    }
+    // public void DoRollOn()
+    // {
+    //     StartCoroutine(RollOnScreen());
+    // }
 
-    public IEnumerator RollOnScreen()
-    {
-        stickerCart.SetActive(true);
-        toolBar.SetActive(true);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        Wagon.Play("WagonRollIn");
-        StartCoroutine(RollOnScreenRoutine(cartOnScreenPosition, toolBarOnScreenPosition));
-        yield return new WaitForSeconds(3.05f);
-        Wagon.Play("WagonStop");
-        yield return new WaitForSeconds(1.15f);
-        Wagon.Play("Idle");
-        Book.SetActive(true);
-        Board.SetActive(true);
-        BackWindow.SetActive(true);
-        Gecko.SetActive(true);
-        GeckoAnim.Play("geckoIntro");
+    // public IEnumerator RollOnScreen()
+    // {
+    //     stickerCart.SetActive(true);
+    //     toolBar.SetActive(true);
+    //     Cursor.lockState = CursorLockMode.Locked;
+    //     Cursor.visible = false;
+    //     Wagon.Play("WagonRollIn");
+    //     StartCoroutine(RollOnScreenRoutine(cartOnScreenPosition, toolBarOnScreenPosition));
+    //     yield return new WaitForSeconds(3.05f);
+    //     Wagon.Play("WagonStop");
+    //     yield return new WaitForSeconds(1.15f);
+    //     Wagon.Play("Idle");
+    //     Book.SetActive(true);
+    //     Board.SetActive(true);
+    //     BackWindow.SetActive(true);
+    //     Gecko.SetActive(true);
+    //     GeckoAnim.Play("geckoIntro");
 
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        //yield return new WaitForSeconds(20f);
-        //GeckoAnim.Play("geckoFall 0");
-    }
+    //     Cursor.lockState = CursorLockMode.None;
+    //     Cursor.visible = true;
+    //     //yield return new WaitForSeconds(20f);
+    //     //GeckoAnim.Play("geckoFall 0");
+    // }
 
-    private IEnumerator RollOnScreenRoutine(Vector3 target, Vector3 target2)
-    {
-        Debug.Log("Here");
-        Vector3 currStart = stickerCart.transform.position;
-        Vector3 currStart2 = toolBar.transform.position;
-        float timer = 0f;
-        float maxTime = .75f;
-        //animator.Play("orcWalk");
-        while (true)
-        {
-            // animate movement
-            timer += Time.deltaTime * .25f;
-            if (timer < maxTime)
-            {
-                stickerCart.transform.position = Vector3.Lerp(currStart, target, timer / maxTime);
-                toolBar.transform.position = Vector3.Lerp(currStart2, target2, timer / maxTime);
-            }
-            else
-            {
-                stickerCart.transform.position = target;
-                toolBar.transform.position = target2;
-                yield break;
-            }
+    // private IEnumerator RollOnScreenRoutine(Vector3 target, Vector3 target2)
+    // {
+    //     Debug.Log("Here");
+    //     Vector3 currStart = stickerCart.transform.position;
+    //     Vector3 currStart2 = toolBar.transform.position;
+    //     float timer = 0f;
+    //     float maxTime = .75f;
+    //     //animator.Play("orcWalk");
+    //     while (true)
+    //     {
+    //         // animate movement
+    //         timer += Time.deltaTime * .25f;
+    //         if (timer < maxTime)
+    //         {
+    //             stickerCart.transform.position = Vector3.Lerp(currStart, target, timer / maxTime);
+    //             toolBar.transform.position = Vector3.Lerp(currStart2, target2, timer / maxTime);
+    //         }
+    //         else
+    //         {
+    //             stickerCart.transform.position = target;
+    //             toolBar.transform.position = target2;
+    //             yield break;
+    //         }
             
             
-            yield return null;
-        }
-    }
+    //         yield return null;
+    //     }
+    // }
 
 
     public void OnGoLeftPressed()

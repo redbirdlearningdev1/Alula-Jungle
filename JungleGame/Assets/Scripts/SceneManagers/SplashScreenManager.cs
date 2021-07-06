@@ -228,7 +228,18 @@ public class SplashScreenManager : MonoBehaviour
 
         StudentInfoSystem.SetStudentPlayer(index);
         SettingsManager.instance.LoadSettingsFromProfile();
-        GameManager.instance.LoadScene("ScrollMap", true);
+
+        // if new profile - go to boat game
+        if (StudentInfoSystem.currentStudentPlayer.currGameEvent == LinearGameEvent.InitBoatGame)
+        {
+            GameManager.instance.LoadScene("BoatGame", true);
+        }
+        // otherwise just go to scroll map
+        else 
+        {
+            GameManager.instance.LoadScene("ScrollMap", true);
+        }
+        
     }
 
     public void SelectProfile(int profileNum)

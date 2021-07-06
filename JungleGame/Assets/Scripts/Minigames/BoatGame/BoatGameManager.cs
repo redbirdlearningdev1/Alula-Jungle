@@ -41,9 +41,13 @@ public class BoatGameManager : MonoBehaviour
 
     private IEnumerator ArrivedAtIslandRoutine()
     {
+        // save to SIS
+        StudentInfoSystem.currentStudentPlayer.currGameEvent = (LinearGameEvent)((int)LinearGameEvent.InitBoatGame + 1);;
+        StudentInfoSystem.SaveStudentPlayerData();
+
         yield return new WaitForSeconds(2f);
 
-        // TODO: change maens of finishing game (for now we just return to the scroll map)
+        // TODO: change means of finishing game (for now we just return to the scroll map)
         GameManager.instance.LoadScene("ScrollMap", true, 3f);
     }
 }

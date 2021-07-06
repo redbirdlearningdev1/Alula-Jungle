@@ -59,6 +59,9 @@ TagManager:
   - name: Orc
     uniqueID: 284717983
     locked: 0
+  - name: MapIcons
+    uniqueID: 2909366011
+    locked: 0
   - name: Fog
     uniqueID: 2306061681
     locked: 0

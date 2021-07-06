@@ -19,7 +19,12 @@ public static class LoadSaveSystem
     public static float default_musicVol = 1f;
     public static float default_fxVol = 1f;
     public static float default_talkVol = 1f;
-    public static int default_micDevice = 0;
+    public static int   default_micDevice = 0;
+
+    public static LinearGameEvent default_gameEvent = LinearGameEvent.InitBoatGame;
+
+    public static int   default_mapDataStars = 0;
+    public static bool  default_mapDataFixed = false;
 
     public static void SaveStudentData(StudentPlayerData data, bool makeInactive = false)
     {
@@ -84,15 +89,35 @@ public static class LoadSaveSystem
         new_data.studentIndex = index;
 
         // set all variables to be default values
-        new_data.version = default_version;
-        new_data.name = default_name;
-        new_data.totalStars = default_stars;
+        new_data.version =      default_version;
+        new_data.name =         default_name;
+        new_data.totalStars =   default_stars;
 
-        new_data.masterVol = default_masterVol;
-        new_data.musicVol = default_musicVol;
-        new_data.fxVol = default_fxVol;
-        new_data.talkVol = default_talkVol;
-        new_data.micDevice = default_micDevice;
+        new_data.masterVol =    default_masterVol;
+        new_data.musicVol =     default_musicVol;
+        new_data.fxVol =        default_fxVol;
+        new_data.talkVol =      default_talkVol;
+        new_data.micDevice =    default_micDevice;
+
+        new_data.currGameEvent = default_gameEvent;
+
+        new_data.mapData = new MapData();
+        
+        // gorilla village
+        new_data.mapData.GV_house1 = new MapIconData();
+        new_data.mapData.GV_house2 = new MapIconData();
+        new_data.mapData.GV_fire = new MapIconData();
+        new_data.mapData.GV_statue = new MapIconData();
+
+        new_data.mapData.GV_house1.isFixed = default_mapDataFixed;
+        new_data.mapData.GV_house2.isFixed = default_mapDataFixed;
+        new_data.mapData.GV_fire.isFixed =   default_mapDataFixed;
+        new_data.mapData.GV_statue.isFixed = default_mapDataFixed;
+
+        new_data.mapData.GV_house1.stars =   default_mapDataStars;
+        new_data.mapData.GV_house2.stars =   default_mapDataStars;
+        new_data.mapData.GV_fire.stars =     default_mapDataStars;
+        new_data.mapData.GV_statue.stars =   default_mapDataStars;
 
         // save data as incative profile
         SaveStudentData(new_data, true);

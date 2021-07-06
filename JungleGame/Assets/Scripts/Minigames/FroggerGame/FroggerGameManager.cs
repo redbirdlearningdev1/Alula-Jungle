@@ -235,7 +235,7 @@ public class FroggerGameManager : MonoBehaviour
         // play win tune
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         // show stars
         StarAwardController.instance.AwardStarsAndExit(3);
@@ -270,6 +270,8 @@ public class FroggerGameManager : MonoBehaviour
 
         // play win tune
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+
+        yield return new WaitForSeconds(2f);
 
         // show stars
         StarAwardController.instance.AwardStarsAndExit(3);
