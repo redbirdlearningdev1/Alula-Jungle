@@ -237,8 +237,8 @@ public class FroggerGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        // TODO: change maens of finishing game (for now we just return to the scroll map)
-        GameManager.instance.LoadScene("ScrollMap", true, 3f);
+        // show stars
+        StarAwardController.instance.AwardStarsAndExit(3);
     }
 
     // This is a special fucntion that skips to the end of the game to win (DEV ONLY)
@@ -271,10 +271,8 @@ public class FroggerGameManager : MonoBehaviour
         // play win tune
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
 
-        yield return new WaitForSeconds(3f);
-
-        // TODO: change maens of finishing game (for now we just return to the scroll map)
-        GameManager.instance.LoadScene("ScrollMap", true, 3f);
+        // show stars
+        StarAwardController.instance.AwardStarsAndExit(3);
     }
 
     private IEnumerator StartGame()

@@ -115,12 +115,6 @@ public class GameManager : DontDestroy<GameManager>
         LoadScene(0, true);
     }
 
-    // public void NewLevelPopup(GameData data)
-    // {
-    //     PopupWindow window = Instantiate(levelPopupPrefab, transform.position, Quaternion.identity, popupParent).GetComponent<PopupWindow>();
-    //     window.InitPopup(data);
-    // }
-
     public void SendError(Object errorContext, string errorMsg)
     {
         Debug.LogError("[ERROR] " + errorMsg + " @ " + errorContext.name, errorContext);
@@ -148,7 +142,6 @@ public class GameManager : DontDestroy<GameManager>
         SendError(this, "Could not find action word: \'" + word + "\'");
         return null;
     }
-
 
     // returns a list with every action word enum
     public List<ActionWordEnum> GetGlobalActionWordList()
@@ -201,8 +194,7 @@ public class GameManager : DontDestroy<GameManager>
             
         yield return new WaitForSeconds(time);
 
-        // remove all sounds
-        AudioManager.instance.ClearAllAudio();
+        SceneCleanup();
 
         SendLog(this, "Loading new scene: " + sceneName);
         SceneManager.LoadSceneAsync(sceneName);
@@ -216,7 +208,20 @@ public class GameManager : DontDestroy<GameManager>
         }
             
         yield return new WaitForSeconds(time);
+
+        SceneCleanup();
+
         SceneManager.LoadSceneAsync(sceneNum);
+    }
+
+    private void SceneCleanup()
+    {
+        // remove all sounds
+        AudioManager.instance.ClearAllAudio();
+
+        // remove star award window + toolbar
+        StarAwardController.instance.ResetWindow();
+        DropdownToolbar.instance.ToggleToolbar(false);
     }
 
     /* 

@@ -371,8 +371,8 @@ public class TurntablesGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        // TODO: change maens of finishing game (for now we just return to the scroll map)
-        GameManager.instance.LoadScene("ScrollMap", true, 3f);
+        // show stars
+        StarAwardController.instance.AwardStarsAndExit(3);
     }
 
 
