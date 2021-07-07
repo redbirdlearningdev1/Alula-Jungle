@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 0_StoryGame_Welcome
   m_EditorClassIdentifier: 
   gameType: 1
-  sceneName: StoryGameScene
+  sceneName: StoryGame
   storyName: Welcome
   background: 1
   segments:
@@ -25,6 +25,7 @@ MonoBehaviour:
       an explorer, you will be asked to make special moves and special sounds every
       time I say a sound-word.  Let\u2019s Practice!"
     textAudio: {fileID: 8300000, guid: 612b1c4ba98c45449b4a951d7a5585b8, type: 3}
+    actAsActionWord: 0
     containsActionWord: 0
     actionWordText: 
     actionWord: 0
@@ -36,6 +37,7 @@ MonoBehaviour:
     writeText: 0
     text: Let's get back to our adventure.
     textAudio: {fileID: 8300000, guid: 2b5f5b0fac2e1d84db895fb9db07827d, type: 3}
+    actAsActionWord: 0
     containsActionWord: 0
     actionWordText: 
     actionWord: 0
@@ -47,6 +49,7 @@ MonoBehaviour:
     writeText: 1
     text: You are an
     textAudio: {fileID: 8300000, guid: dd2b6b583b7fe9649918f33116cd164e, type: 3}
+    actAsActionWord: 0
     containsActionWord: 1
     actionWordText: explorer
     actionWord: 8
@@ -58,6 +61,7 @@ MonoBehaviour:
     writeText: 1
     text: As an
     textAudio: {fileID: 8300000, guid: ee0ba887211de0c4ba8ef32989da371a, type: 3}
+    actAsActionWord: 0
     containsActionWord: 1
     actionWordText: explorer
     actionWord: 8
@@ -70,6 +74,7 @@ MonoBehaviour:
     text: you will be able to help on our jungle trip!  I wonder if we will encounter
       another
     textAudio: {fileID: 8300000, guid: 8bcb655d14d89d9499100b59ed2de82e, type: 3}
+    actAsActionWord: 0
     containsActionWord: 1
     actionWordText: explorer
     actionWord: 8
@@ -81,6 +86,7 @@ MonoBehaviour:
     writeText: 1
     text: Let's get going and find out
     textAudio: {fileID: 8300000, guid: 5f85753df17dc3741b83038b05ff43af, type: 3}
+    actAsActionWord: 0
     containsActionWord: 1
     actionWordText: explorer
     actionWord: 8

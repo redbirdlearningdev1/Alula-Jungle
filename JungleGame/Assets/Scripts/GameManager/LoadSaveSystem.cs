@@ -109,10 +109,10 @@ public static class LoadSaveSystem
         new_data.mapData.GV_fire = new MapIconData();
         new_data.mapData.GV_statue = new MapIconData();
 
-        new_data.mapData.GV_house1.isFixed = default_mapDataFixed;
-        new_data.mapData.GV_house2.isFixed = default_mapDataFixed;
-        new_data.mapData.GV_fire.isFixed =   default_mapDataFixed;
-        new_data.mapData.GV_statue.isFixed = default_mapDataFixed;
+        new_data.mapData.GV_house1.isFixed = true;
+        new_data.mapData.GV_house2.isFixed = true;
+        new_data.mapData.GV_fire.isFixed =   true;
+        new_data.mapData.GV_statue.isFixed = true;
 
         new_data.mapData.GV_house1.stars =   default_mapDataStars;
         new_data.mapData.GV_house2.stars =   default_mapDataStars;

@@ -16,11 +16,6 @@ public class GameManager : DontDestroy<GameManager>
     [SerializeField] private GameObject devModeIndicator;
     private bool devIndicatorSet = false;
 
-    // TODO: fix raycast blocker
-    // [SerializeField] private GameObject raycastBlocker; // used to block all raycasts (does not work for UI stuff currently) 
-    // [SerializeField] private Transform popupParent;
-    // [SerializeField] private GameObject levelPopupPrefab;
-
     private GameData gameData;
 
     // DEV STUFF:
@@ -31,11 +26,9 @@ public class GameManager : DontDestroy<GameManager>
         // set game resolution
         Screen.SetResolution(gameResolution.x, gameResolution.y, FullScreenMode.FullScreenWindow);
 
-        // disable raycast blocker (allow raycasts)
-        //SetRaycastBlocker(false);
-
-        // student information system setup
-        
+        // student information system setup - set to profile 1 if not chosen
+        if (StudentInfoSystem.currentStudentPlayer == null)
+            StudentInfoSystem.SetStudentPlayer(StudentIndex.student_1);
     }
 
     private void Update()
@@ -97,11 +90,10 @@ public class GameManager : DontDestroy<GameManager>
 
     private IEnumerator SceneInitCoroutine()
     {
-        yield return null;
-        //SetRaycastBlocker(true);
+        RaycastBlockerController.instance.CreateRaycastBlocker("SceneInit");
         FadeObject.instance.FadeIn(transitionTime);
         yield return new WaitForSeconds(transitionTime);
-        //SetRaycastBlocker(false);
+        RaycastBlockerController.instance.RemoveRaycastBlocker("SceneInit");
     }
 
     /* 
@@ -175,13 +167,13 @@ public class GameManager : DontDestroy<GameManager>
 
     public void LoadScene(string sceneName, bool fadeOut, float time = transitionTime)
     {
-        //SetRaycastBlocker(true);
+        RaycastBlockerController.instance.CreateRaycastBlocker("LoadingScene");
         StartCoroutine(LoadSceneCoroutine(sceneName, fadeOut, time));
     }
 
     public void LoadScene(int sceneNum, bool fadeOut, float time = transitionTime)
     {
-        //SetRaycastBlocker(true);
+        RaycastBlockerController.instance.CreateRaycastBlocker("LoadingScene");
         StartCoroutine(LoadSceneCoroutine(sceneNum, fadeOut, time));
     }
 
@@ -196,7 +188,7 @@ public class GameManager : DontDestroy<GameManager>
 
         SceneCleanup();
 
-        SendLog(this, "Loading new scene: " + sceneName);
+        SendLog(this, "Loading new scene - " + sceneName);
         SceneManager.LoadSceneAsync(sceneName);
     }
 
@@ -222,6 +214,9 @@ public class GameManager : DontDestroy<GameManager>
         // remove star award window + toolbar
         StarAwardController.instance.ResetWindow();
         DropdownToolbar.instance.ToggleToolbar(false);
+
+        // remove all raycast blockers
+        RaycastBlockerController.instance.ClearAllRaycastBlockers();
     }
 
     /* 

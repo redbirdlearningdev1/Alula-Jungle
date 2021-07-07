@@ -81,7 +81,6 @@ public class SettingsManager : MonoBehaviour
     {
         // master vol
         masterVol.onValueChanged.AddListener(delegate { OnMasterVolumeSliderChanged(); });
-        print("master vol: " + AudioManager.instance.GetMasterVolume());
         masterVol.value = AudioManager.instance.GetMasterVolume();
 
         // music vol

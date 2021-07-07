@@ -12,6 +12,8 @@ public class ScrollMapManager : MonoBehaviour
     public bool overideGameEvent;
     public LinearGameEvent gameEvent;
 
+    private List<GameObject> mapIcons = new List<GameObject>();
+
     [Header("Map Navigation")]
     [SerializeField] private RectTransform Map; // full map
     [SerializeField] private GameObject[] mapLocations; // the images that make up the map
@@ -20,6 +22,7 @@ public class ScrollMapManager : MonoBehaviour
     [SerializeField] private Button leftButton;
     [SerializeField] private Button rightButton;
 
+    [Header("Animations")]
     public float staticMapYPos;
 
     private int mapLimit;
@@ -30,18 +33,8 @@ public class ScrollMapManager : MonoBehaviour
     public float bumpAnimationTime;
     public float bumpAmount;
 
-    // [Header("Sticker")]
-    // [SerializeField] public GameObject stickerCart;
-    // [SerializeField] public GameObject toolBar;
-    // [SerializeField] public GameObject Book,Board,BackWindow,Gecko;
-    // [SerializeField] public Animator Wagon;
-    // [SerializeField] public Animator GeckoAnim;
-    // private bool stickerButtonsDisabled;
-    // public float stickerTransitionTime;
-    // private Vector3 cartStartPosition;
-    // private Vector3 cartOnScreenPosition = new Vector3(0f, -1f, 0f);
-    // private Vector3 toolBarStartPosition;
-    // private Vector3 toolBarOnScreenPosition = new Vector3(0f, 0f, 0f);
+    [Header("Map Characters")]
+    public MapCharacter GV_Gorilla;
 
     void Awake()
     {
@@ -55,13 +48,6 @@ public class ScrollMapManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(DelayedStart(0.1f));
-        // cartStartPosition = stickerCart.transform.position;
-        // toolBarStartPosition = toolBar.transform.position;
-        // Book.SetActive(false);
-        // Board.SetActive(false);
-        // BackWindow.SetActive(false);
-        // stickerCart.SetActive(false);
-        // toolBar.SetActive(false); 
     }
 
     private IEnumerator DelayedStart(float delay)
@@ -85,20 +71,33 @@ public class ScrollMapManager : MonoBehaviour
         }
 
         // check for game events
-        LinearGameEvent playGameEvent;
+        LinearGameEvent playGameEvent = LinearGameEvent.InitBoatGame; // default event
         if (overideGameEvent)
         {
             playGameEvent = gameEvent;
         }
         else
         {
-            playGameEvent = StudentInfoSystem.currentStudentPlayer.currGameEvent;
+            // get event from current profile if not null
+            if (StudentInfoSystem.currentStudentPlayer != null)
+                playGameEvent = StudentInfoSystem.currentStudentPlayer.currGameEvent;
         }
 
+
+        // check for game events
         if (playGameEvent == LinearGameEvent.UnlockGorillaVillage)
         {
+            DisableAllMapIcons();
             StartCoroutine(UnlockMapArea(1));
-        }   
+            GV_Gorilla.ShowExclamationMark(true);
+            GV_Gorilla.interactable = true;
+        }
+        else if (playGameEvent == LinearGameEvent.WelcomeStoryGame)
+        {
+            DisableAllMapIcons();
+            GV_Gorilla.ShowExclamationMark(true);
+            GV_Gorilla.interactable = true;
+        }
 
         // save progress to profile
         if (!overideGameEvent)
@@ -108,14 +107,23 @@ public class ScrollMapManager : MonoBehaviour
         }
     }
 
-    
+    private void DisableAllMapIcons()
+    {
+        var list = GetMapIcons();
+        foreach(var item in list)
+        {
+            item.interactable = false;
+        }
+    }
 
     private IEnumerator UnlockMapArea(int mapIndex)
     {
+        RaycastBlockerController.instance.CreateRaycastBlocker("UnlockMapArea");
+
         yield return new WaitForSeconds(1f);
 
+        // remove nav UI and show Letterbox view
         TurnOffNavigationUI(true);
-
         LetterboxController.instance.ToggleLetterbox(true);
 
         yield return new WaitForSeconds(1f);
@@ -127,19 +135,24 @@ public class ScrollMapManager : MonoBehaviour
 
         yield return new WaitForSeconds(2.5f);
 
+        // move fog out of the way
         FogController.instance.MoveFogAnimation(fogLocations[mapIndex], 3f);
 
         yield return new WaitForSeconds(2f);
 
+        // move letterbox out of the way
         LetterboxController.instance.ToggleLetterbox(false);
 
         yield return new WaitForSeconds(2f);
 
+        // show UI again
         TurnOffNavigationUI(false);
 
         // save unlock to sis profile
         StudentInfoSystem.currentStudentPlayer.mapLimit = mapIndex;
         StudentInfoSystem.SaveStudentPlayerData();
+
+        RaycastBlockerController.instance.RemoveRaycastBlocker("UnlockMapArea");
     }
 
     private void TurnOffNavigationUI(bool opt)
@@ -190,119 +203,11 @@ public class ScrollMapManager : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        // if (moveBirb)
-        // {
-        //     float xPos = 0;
-        //     float mousePos = Input.mousePosition.x;
-
-        //     if (mousePos > rightBirbBounds.position.x)
-        //         xPos = rightBirbBounds.position.x;
-        //     else if (mousePos < leftBirbBounds.position.x)
-        //         xPos = leftBirbBounds.position.x;
-        //     else 
-        //         xPos = mousePos;
-
-        //     /*  
-        //     if (xPos < prevBirbPos + birbThresh && xPos > prevBirbPos - birbThresh)
-        //         StartCoroutine(SetBirbSpriteDelay(birbPressed, 0.2f));
-        //     else
-        //         StartCoroutine(SetBirbSpriteDelay(birbMove, 0.2f));
-        //     prevBirbPos = xPos;
-        //     */
-
-        //     birb.transform.position = new Vector3(xPos, birb.transform.position.y, birb.transform.position.z); // move birb
-        //     float birbPercent = Mathf.InverseLerp(leftBirbBounds.position.x, rightBirbBounds.position.x, birb.transform.position.x);
-        //     SetMapPosition(birbPercent); // set the position of the map
-        // }
-        // else
-        // {
-        //     float mapPos = GetMapPositionPercentage(Map.transform.position.x);
-        //     float birbPos = Mathf.Lerp(leftBirbBounds.position.x, rightBirbBounds.position.x, mapPos);
-        //     birb.transform.position = new Vector3(birbPos, birb.transform.position.y, birb.transform.position.z);
-            
-
-        //     /*
-        //     if (birbImage.sprite != birbNorm)
-        //         StartCoroutine(SetBirbSpriteDelay(birbNorm, 0.2f));
-        //     */
-        // }
-    }
-
     /* 
     ################################################
     #   MAP NAVIGATION BUTTONS
     ################################################
     */
-
-    
-
-    // private IEnumerator StickerInputDelay(float delay)
-    // {
-    //     yield return new WaitForSeconds(delay);
-    //     stickerButtonsDisabled = false;
-    // }
-
-    // public void DoRollOn()
-    // {
-    //     StartCoroutine(RollOnScreen());
-    // }
-
-    // public IEnumerator RollOnScreen()
-    // {
-    //     stickerCart.SetActive(true);
-    //     toolBar.SetActive(true);
-    //     Cursor.lockState = CursorLockMode.Locked;
-    //     Cursor.visible = false;
-    //     Wagon.Play("WagonRollIn");
-    //     StartCoroutine(RollOnScreenRoutine(cartOnScreenPosition, toolBarOnScreenPosition));
-    //     yield return new WaitForSeconds(3.05f);
-    //     Wagon.Play("WagonStop");
-    //     yield return new WaitForSeconds(1.15f);
-    //     Wagon.Play("Idle");
-    //     Book.SetActive(true);
-    //     Board.SetActive(true);
-    //     BackWindow.SetActive(true);
-    //     Gecko.SetActive(true);
-    //     GeckoAnim.Play("geckoIntro");
-
-
-    //     Cursor.lockState = CursorLockMode.None;
-    //     Cursor.visible = true;
-    //     //yield return new WaitForSeconds(20f);
-    //     //GeckoAnim.Play("geckoFall 0");
-    // }
-
-    // private IEnumerator RollOnScreenRoutine(Vector3 target, Vector3 target2)
-    // {
-    //     Debug.Log("Here");
-    //     Vector3 currStart = stickerCart.transform.position;
-    //     Vector3 currStart2 = toolBar.transform.position;
-    //     float timer = 0f;
-    //     float maxTime = .75f;
-    //     //animator.Play("orcWalk");
-    //     while (true)
-    //     {
-    //         // animate movement
-    //         timer += Time.deltaTime * .25f;
-    //         if (timer < maxTime)
-    //         {
-    //             stickerCart.transform.position = Vector3.Lerp(currStart, target, timer / maxTime);
-    //             toolBar.transform.position = Vector3.Lerp(currStart2, target2, timer / maxTime);
-    //         }
-    //         else
-    //         {
-    //             stickerCart.transform.position = target;
-    //             toolBar.transform.position = target2;
-    //             yield break;
-    //         }
-            
-            
-    //         yield return null;
-    //     }
-    // }
-
 
     public void OnGoLeftPressed()
     {
@@ -449,7 +354,6 @@ public class ScrollMapManager : MonoBehaviour
     {
         if (index >= 0 && index < cameraLocations.Count)
         {
-            print ("index: " + index);
             FogController.instance.mapXpos = fogLocations[index];
             mapLimit = index;
         }
@@ -488,27 +392,6 @@ public class ScrollMapManager : MonoBehaviour
 
         //GameManager.instance.SetRaycastBlocker(false);
     }
-    
-    /* 
-    ################################################
-    #   BIRB BUTTONS 
-    ################################################
-    */
-
-    // public void BirbButtonDown()
-    // {
-    //     moveBirb = true;
-    //     birb.transform.localScale = new Vector3(0.8f, 0.8f, 1f);
-    //     //StartCoroutine(SetBirbSpriteDelay(birbPressed, 0.2f));
-    // }
-
-    // public void BirbButtonUp()
-    // {   
-    //     moveBirb = false;
-    //     birb.transform.localScale = new Vector3(1f, 1f, 1f);
-    //     GoToNearestMapLocation();
-    //     //StartCoroutine(SetBirbSpriteDelay(birbNorm, 0.2f));
-    // }
 
     /* 
     ################################################
@@ -516,7 +399,18 @@ public class ScrollMapManager : MonoBehaviour
     ################################################
     */
 
-    private List<GameObject> mapIcons = new List<GameObject>();
+    public List<MapIcon> GetMapIcons()
+    {
+        FindObjectsWithTag("MapIcon");
+        List<MapIcon> mapIconList = new List<MapIcon>();
+
+        foreach(var obj in mapIcons)
+        {
+            mapIconList.Add(obj.GetComponent<MapIcon>());
+        }
+
+        return mapIconList;
+    }
 
     public void SetMapIconsBroke(bool opt)
     {
@@ -534,7 +428,7 @@ public class ScrollMapManager : MonoBehaviour
         RecursiveGetChildObject(parent, _tag);
     }
  
-     private void RecursiveGetChildObject(Transform parent, string _tag)
+    private void RecursiveGetChildObject(Transform parent, string _tag)
     {
         for (int i = 0; i < parent.childCount; i++)
         {

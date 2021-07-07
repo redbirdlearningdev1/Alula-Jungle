@@ -7,6 +7,7 @@ using TMPro;
 public class StoryGameManager : MonoBehaviour
 {   
     [Header("Dev Mode Stuff")]
+    public bool overrideGame;
     public StoryGameEnum storyGameIndex;
     public bool skipToPartTwo;
 
@@ -48,12 +49,10 @@ public class StoryGameManager : MonoBehaviour
 
     void Awake()
     {
+        // every scene must call this in awake
         GameManager.instance.SceneInit();
 
-        // load in game data from game manager
-        GameData data = GameManager.instance.GetData();
-        // make sure it is usable
-        if (data == null || data.gameType != GameType.StoryGame)
+        if (overrideGame)
         {
             // use dev data if in dev mode
             if (GameManager.instance.devModeActivated)
@@ -62,12 +61,14 @@ public class StoryGameManager : MonoBehaviour
             }
             else // send error
                 GameManager.instance.SendError(this, "invalid game data");
-        } 
-        else
+        }
+        else 
         {
+            // load in game data from game manager
+            GameData data = GameManager.instance.GetData();
             // use imported game data
             storyGameData = (StoryGameData)data;
-        }  
+        }
 
         // send log
         GameManager.instance.SendLog(this, "starting story game: " + storyGameData.name);
@@ -355,7 +356,14 @@ public class StoryGameManager : MonoBehaviour
         }
         partTwoDone = true;
 
-        // TODO: change maens of finishing game (for now we just return to the scroll map)
+
+        // save progress to SIS
+        if (StudentInfoSystem.currentStudentPlayer.currGameEvent == LinearGameEvent.WelcomeStoryGame)
+        {
+            StudentInfoSystem.currentStudentPlayer.currGameEvent = (LinearGameEvent)((int)LinearGameEvent.WelcomeStoryGame + 1);
+            StudentInfoSystem.SaveStudentPlayerData();
+        }
+        // return to scrollmap
         GameManager.instance.LoadScene("ScrollMap", true, 3f);
     }
 

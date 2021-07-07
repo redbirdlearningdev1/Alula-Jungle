@@ -14,6 +14,8 @@ public enum StarLocation
 
 public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
+    public bool interactable = true;
+
     [Header("Game Data")]
     public GameData gameData;
 
@@ -119,9 +121,12 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        // return if not interactable
+        if (!interactable)
+            return;
+
         if (!isPressed)
         {
-            print ("pressed!");
             isPressed = true;
             transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
         }
@@ -131,7 +136,6 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     {
         if (isPressed)
         {
-            print ("un-pressed!");
             // play audio blip
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
@@ -141,6 +145,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             // go to correct game scene
             if (gameData)
             {
+                GameManager.instance.SetData(gameData);
                 GameManager.instance.LoadScene(gameData.sceneName, true);
             }
             else
