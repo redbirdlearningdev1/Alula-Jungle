@@ -12,12 +12,22 @@ public enum StarLocation
     up, down, none
 }
 
+public enum MapIconIdentfier
+{
+    GV_house1,
+    GV_house2,
+    GV_statue,
+    GV_fire
+}
+
 public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     public bool interactable = true;
+    public bool popupWindow;
 
     [Header("Game Data")]
     public GameData gameData;
+    public MapIconIdentfier identfier;
 
     [Header("Animation Stuff")]
     public bool canBeFixed;
@@ -74,6 +84,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     // set stars to empty or filled based on SIS data
     public void SetStars(int num)
     {
+        print ("mapIcon: " + identfier);
         for (int i = 0; i < num; i++)
         {
             currentStars[i].SetStar(true);
@@ -145,14 +156,38 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             // go to correct game scene
             if (gameData)
             {
-                GameManager.instance.SetData(gameData);
-                GameManager.instance.LoadScene(gameData.sceneName, true);
+                if (popupWindow)
+                {
+                    LevelPreviewWindow.instance.NewWindow(gameData, identfier, GetNumStars());
+                }
+                else 
+                {
+                    GameManager.instance.SetData(gameData);
+                    GameManager.instance.LoadScene(gameData.sceneName, true);
+                }
             }
             else
             {
                 GameManager.instance.LoadScene("MinigameDemoScene", true);
             }
             
+        }
+    }
+
+    public int GetNumStars()
+    {
+        switch (identfier)
+        {
+            case MapIconIdentfier.GV_house1:
+                return StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.stars;
+            case MapIconIdentfier.GV_house2:
+                return StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.stars;
+            case MapIconIdentfier.GV_statue:
+                return StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.stars;
+            case MapIconIdentfier.GV_fire:
+                return StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.stars;
+            default:
+                return 0;
         }
     }
 }

@@ -98,6 +98,13 @@ public class ScrollMapManager : MonoBehaviour
             GV_Gorilla.ShowExclamationMark(true);
             GV_Gorilla.interactable = true;
         }
+        else if (playGameEvent == LinearGameEvent.StickerTutorial)
+        {
+            
+        }
+
+
+
 
         // save progress to profile
         if (!overideGameEvent)
@@ -137,6 +144,8 @@ public class ScrollMapManager : MonoBehaviour
 
         // move fog out of the way
         FogController.instance.MoveFogAnimation(fogLocations[mapIndex], 3f);
+
+        LetterboxController.instance.ShowTextSmooth("1 - Gorilla Village");
 
         yield return new WaitForSeconds(2f);
 

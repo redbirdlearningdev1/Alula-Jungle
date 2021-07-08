@@ -16,6 +16,8 @@ public class FroggerGameManager : MonoBehaviour
     private List<ActionWordEnum> globalCoinPool;
     private List<ActionWordEnum> unusedCoinPool;
 
+    private int timesMissed = 0;
+
     [Header("Log Rows")]
     [SerializeField] private List<LogRow> rows; 
     private int currRow = 0;
@@ -142,6 +144,9 @@ public class FroggerGameManager : MonoBehaviour
 
     private IEnumerator CoinFailRoutine()
     {
+        // inc times missed
+        timesMissed++;
+
         rows[currRow].ResetCoinPos(null);
         taxi.TwitchAnimation();
         bag.DowngradeBag();
@@ -237,8 +242,8 @@ public class FroggerGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        // show stars
-        StarAwardController.instance.AwardStarsAndExit(3);
+        // calculate and show stars
+        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
     }
 
     // This is a special fucntion that skips to the end of the game to win (DEV ONLY)
@@ -273,8 +278,18 @@ public class FroggerGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        // show stars
-        StarAwardController.instance.AwardStarsAndExit(3);
+        // calculate and show stars
+        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+    }
+
+    private int CalculateStars()
+    {
+        if (timesMissed <= 0)
+            return 3;
+        else if (timesMissed > 0 && timesMissed <= 2)
+            return 2;
+        else
+            return 1;
     }
 
     private IEnumerator StartGame()

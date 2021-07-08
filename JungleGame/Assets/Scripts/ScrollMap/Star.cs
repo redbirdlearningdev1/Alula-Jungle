@@ -16,8 +16,15 @@ public class Star : MonoBehaviour
             spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (full)
+        {
+            print ("full star");
             spriteRenderer.sprite = fullStar;
+        }
         else
+        {
+            print ("empty star");
             spriteRenderer.sprite = emptyStar;
+        }
+            
     }
 }

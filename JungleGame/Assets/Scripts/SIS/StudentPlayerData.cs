@@ -12,6 +12,7 @@ public enum LinearGameEvent
     InitBoatGame,
     UnlockGorillaVillage,
     WelcomeStoryGame,
+    StickerTutorial,
     COUNT
 }
 

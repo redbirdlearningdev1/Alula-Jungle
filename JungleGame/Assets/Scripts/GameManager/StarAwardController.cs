@@ -75,7 +75,32 @@ public class StarAwardController : MonoBehaviour
             GameManager.instance.SendError(this, "invalid number of stars awarded");
             return;
         }
+
+        // update SIS
+        UpdateSIS(numStars);
+        // show window
         StartCoroutine(AwardStarsRoutine(numStars));
+    }
+
+    private void UpdateSIS(int numStars)
+    {
+        switch (GameManager.instance.GetID())
+        {
+            default: break;
+            case MapIconIdentfier.GV_house1:
+                StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.stars = numStars;
+                break;
+            case MapIconIdentfier.GV_house2:
+                StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.stars = numStars;
+                break;
+            case MapIconIdentfier.GV_statue:
+                StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.stars = numStars;
+                break;
+            case MapIconIdentfier.GV_fire:
+                StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.stars = numStars;
+                break;
+        }
+        StudentInfoSystem.SaveStudentPlayerData();
     }
 
     private IEnumerator AwardStarsRoutine(int numStars)
@@ -133,8 +158,6 @@ public class StarAwardController : MonoBehaviour
         // }
 
         yield return new WaitForSeconds(0.5f);
-
-        // update SIS
 
         // activate button
         button.interactable = true;

@@ -17,6 +17,7 @@ public class GameManager : DontDestroy<GameManager>
     private bool devIndicatorSet = false;
 
     private GameData gameData;
+    private MapIconIdentfier gameID;
 
     // DEV STUFF:
     private bool iconsSetBroke = false;
@@ -211,8 +212,9 @@ public class GameManager : DontDestroy<GameManager>
         // remove all sounds
         AudioManager.instance.ClearAllAudio();
 
-        // remove star award window + toolbar
+        // remove star award window + levelPreview + toolbar 
         StarAwardController.instance.ResetWindow();
+        LevelPreviewWindow.instance.ResetWindow();
         DropdownToolbar.instance.ToggleToolbar(false);
 
         // remove all raycast blockers
@@ -225,6 +227,12 @@ public class GameManager : DontDestroy<GameManager>
     ################################################
     */
 
+    public void SetDataAndID(GameData data, MapIconIdentfier id)
+    {
+        this.gameData = data;
+        this.gameID = id;
+    }
+
     public void SetData(GameData data)
     {
         this.gameData = data;
@@ -233,5 +241,10 @@ public class GameManager : DontDestroy<GameManager>
     public GameData GetData()
     {
         return gameData;
+    }
+
+    public MapIconIdentfier GetID()
+    {
+        return gameID;
     }
 }
