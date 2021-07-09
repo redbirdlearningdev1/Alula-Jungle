@@ -2892,7 +2892,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &353906740
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3414,6 +3414,15 @@ MonoBehaviour:
   bumpAnimationTime: 0.5
   bumpAmount: 50
   GV_Gorilla: {fileID: 1874534201}
+  stickerCart: {fileID: 0}
+  toolBar: {fileID: 0}
+  Book: {fileID: 0}
+  Board: {fileID: 0}
+  BackWindow: {fileID: 0}
+  Gecko: {fileID: 0}
+  Wagon: {fileID: 0}
+  GeckoAnim: {fileID: 0}
+  stickerTransitionTime: 0
 --- !u!4 &397387717
 Transform:
   m_ObjectHideFlags: 0
@@ -5907,7 +5916,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &819863845
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10842,7 +10851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1623265824
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11058,7 +11067,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1656302231
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12378,7 +12387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1832926003
 RectTransform:
   m_ObjectHideFlags: 0

@@ -36,6 +36,19 @@ public class ScrollMapManager : MonoBehaviour
     [Header("Map Characters")]
     public MapCharacter GV_Gorilla;
 
+    [Header("Sticker")]
+    [SerializeField] public GameObject stickerCart;
+    [SerializeField] public GameObject toolBar;
+    [SerializeField] public GameObject Book,Board,BackWindow,Gecko;
+    [SerializeField] public Animator Wagon;
+    [SerializeField] public Animator GeckoAnim;
+    private bool stickerButtonsDisabled;
+    public float stickerTransitionTime;
+    private Vector3 cartStartPosition;
+    private Vector3 cartOnScreenPosition = new Vector3(0f, -1f, 0f);
+    private Vector3 toolBarStartPosition;
+    private Vector3 toolBarOnScreenPosition = new Vector3(0f, 0f, 0f);
+
     void Awake()
     {
         // every scene must call this in Awake()
@@ -53,6 +66,15 @@ public class ScrollMapManager : MonoBehaviour
     private IEnumerator DelayedStart(float delay)
     {
         yield return new WaitForSeconds(delay);
+
+        // sticker stuff
+        cartStartPosition = stickerCart.transform.position;
+        toolBarStartPosition = toolBar.transform.position;
+        Book.SetActive(false);
+        Board.SetActive(false);
+        BackWindow.SetActive(false);
+        stickerCart.SetActive(false);
+        toolBar.SetActive(false);
 
         // disable UI
         leftButton.interactable = false;
@@ -236,6 +258,77 @@ public class ScrollMapManager : MonoBehaviour
             float temp = Mathf.Lerp(startAlpha, endAlpha, timer / time);
             img.color = new Color(1f, 1f, 1f, temp);
 
+            yield return null;
+        }
+    }
+
+    /* 
+    ################################################
+    #   STICKER METHODS
+    ################################################
+    */
+
+    private IEnumerator StickerInputDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        stickerButtonsDisabled = false;
+    }
+
+    public void DoRollOn()
+    {
+        StartCoroutine(RollOnScreen());
+    }
+
+    public IEnumerator RollOnScreen()
+    {
+        stickerCart.SetActive(true);
+        toolBar.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Wagon.Play("WagonRollIn");
+        StartCoroutine(RollOnScreenRoutine(cartOnScreenPosition, toolBarOnScreenPosition));
+        yield return new WaitForSeconds(3.05f);
+        Wagon.Play("WagonStop");
+        yield return new WaitForSeconds(1.15f);
+        Wagon.Play("Idle");
+        Book.SetActive(true);
+        Board.SetActive(true);
+        BackWindow.SetActive(true);
+        Gecko.SetActive(true);
+        GeckoAnim.Play("geckoIntro");
+
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        //yield return new WaitForSeconds(20f);
+        //GeckoAnim.Play("geckoFall 0");
+    }
+
+    private IEnumerator RollOnScreenRoutine(Vector3 target, Vector3 target2)
+    {
+        Debug.Log("Here");
+        Vector3 currStart = stickerCart.transform.position;
+        Vector3 currStart2 = toolBar.transform.position;
+        float timer = 0f;
+        float maxTime = .75f;
+        //animator.Play("orcWalk");
+        while (true)
+        {
+            // animate movement
+            timer += Time.deltaTime * .25f;
+            if (timer < maxTime)
+            {
+                stickerCart.transform.position = Vector3.Lerp(currStart, target, timer / maxTime);
+                toolBar.transform.position = Vector3.Lerp(currStart2, target2, timer / maxTime);
+            }
+            else
+            {
+                stickerCart.transform.position = target;
+                toolBar.transform.position = target2;
+                yield break;
+            }
+            
+            
             yield return null;
         }
     }
