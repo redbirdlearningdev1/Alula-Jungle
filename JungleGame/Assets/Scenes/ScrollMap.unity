@@ -7672,7 +7672,7 @@ PrefabInstance:
     - target: {fileID: 1375974568929445006, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
       propertyPath: starLocation
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2017183202720352187, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}

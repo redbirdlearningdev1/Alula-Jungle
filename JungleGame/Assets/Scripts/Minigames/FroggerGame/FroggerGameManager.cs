@@ -6,6 +6,8 @@ public class FroggerGameManager : MonoBehaviour
 {
     public static FroggerGameManager instance;
 
+    private FroggerGameData gameData;
+
     [SerializeField] private GorillaController gorilla;
     [SerializeField] private Bag bag;
     [SerializeField] private TaxiController taxi;
@@ -63,9 +65,12 @@ public class FroggerGameManager : MonoBehaviour
         // dev object stuff
         devObject.SetActive(GameManager.instance.devModeActivated);
 
-        PregameSetup();
+        // get game data
+        gameData = (FroggerGameData)GameManager.instance.GetData();
 
         playTutorial = !StudentInfoSystem.currentStudentPlayer.froggerTutorial;
+
+        PregameSetup();
 
         // play tutorial if first time
         if (playTutorial)
@@ -122,7 +127,15 @@ public class FroggerGameManager : MonoBehaviour
             allCoins.Add(coin);
 
         // Create Global Coin List
-        globalCoinPool = GameManager.instance.GetGlobalActionWordList();
+        if (gameData != null)
+        {
+            globalCoinPool = gameData.wordPool;
+        }
+        else
+        {
+            globalCoinPool = GameManager.instance.GetGlobalActionWordList();
+        }
+        
         unusedCoinPool = new List<ActionWordEnum>();
         unusedCoinPool.AddRange(globalCoinPool);
 

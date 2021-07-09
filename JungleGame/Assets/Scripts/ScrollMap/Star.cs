@@ -11,6 +11,7 @@ public class Star : MonoBehaviour
 
     public void SetStar(bool full)
     {
+        print ("setting full star: " + full);
         // get sprite renderer if null
         if (spriteRenderer == null)
             spriteRenderer = GetComponent<SpriteRenderer>();

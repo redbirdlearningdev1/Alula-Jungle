@@ -84,7 +84,6 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     // set stars to empty or filled based on SIS data
     public void SetStars(int num)
     {
-        print ("mapIcon: " + identfier);
         for (int i = 0; i < num; i++)
         {
             currentStars[i].SetStar(true);

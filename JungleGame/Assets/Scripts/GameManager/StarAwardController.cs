@@ -84,20 +84,25 @@ public class StarAwardController : MonoBehaviour
 
     private void UpdateSIS(int numStars)
     {
+        // only update stars if earned more stars than in memory
         switch (GameManager.instance.GetID())
         {
-            default: break;
+            default: return;
             case MapIconIdentfier.GV_house1:
-                StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.stars = numStars;
+                if (StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.stars < numStars)
+                    StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.stars = numStars;
                 break;
             case MapIconIdentfier.GV_house2:
-                StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.stars = numStars;
+                if (StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.stars < numStars)
+                    StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.stars = numStars;
                 break;
             case MapIconIdentfier.GV_statue:
-                StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.stars = numStars;
+                if (StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.stars < numStars)
+                    StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.stars = numStars;
                 break;
             case MapIconIdentfier.GV_fire:
-                StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.stars = numStars;
+                if (StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.stars < numStars)
+                    StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.stars = numStars;
                 break;
         }
         StudentInfoSystem.SaveStudentPlayerData();

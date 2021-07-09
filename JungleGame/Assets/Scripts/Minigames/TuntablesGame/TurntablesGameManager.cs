@@ -6,6 +6,8 @@ public class TurntablesGameManager : MonoBehaviour
 {
     public static TurntablesGameManager instance;
 
+    private TurntablesGameData gameData;
+
     public List<Door> doors;
     public List<Key> keys;
     public FrameIcon frameIcon;
@@ -58,6 +60,9 @@ public class TurntablesGameManager : MonoBehaviour
 
     void Start()
     {   
+        // get game data
+        gameData = (TurntablesGameData)GameManager.instance.GetData();
+
         playTutorial = !StudentInfoSystem.currentStudentPlayer.turntablesTutorial;
 
         PregameSetup();
@@ -145,7 +150,14 @@ public class TurntablesGameManager : MonoBehaviour
         doorWords = new ActionWordEnum[4];
 
         // Create Global Coin List
-        globalWordPool = GameManager.instance.GetGlobalActionWordList();
+        if (gameData != null)
+        {
+            globalWordPool = gameData.wordPool;
+        }
+        else
+        {
+            globalWordPool = GameManager.instance.GetGlobalActionWordList();
+        }
         unusedWordPool = new List<ActionWordEnum>();
         unusedWordPool.AddRange(globalWordPool);
 
