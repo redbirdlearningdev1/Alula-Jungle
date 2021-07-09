@@ -27,7 +27,7 @@ public class ScrollMapManager : MonoBehaviour
 
     private int mapLimit;
     private int mapPosIndex;
-    private bool navButtonsDisabled;
+    private bool navButtonsDisabled = true;
     
     public float transitionTime;
     public float bumpAnimationTime;
@@ -47,12 +47,17 @@ public class ScrollMapManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(DelayedStart(0.1f));
+        StartCoroutine(DelayedStart(0f));
     }
 
     private IEnumerator DelayedStart(float delay)
     {
         yield return new WaitForSeconds(delay);
+
+        // disable UI
+        leftButton.interactable = false;
+        rightButton.interactable = false;
+        navButtonsDisabled = true;
 
         // start at pos index 0
         mapPosIndex = 0;
@@ -82,15 +87,25 @@ public class ScrollMapManager : MonoBehaviour
             if (StudentInfoSystem.currentStudentPlayer != null)
                 playGameEvent = StudentInfoSystem.currentStudentPlayer.currGameEvent;
         }
+        
 
+        bool revealNavUI = true;
 
         // check for game events
         if (playGameEvent == LinearGameEvent.UnlockGorillaVillage)
         {
+            revealNavUI = false;
             DisableAllMapIcons();
             StartCoroutine(UnlockMapArea(1));
             GV_Gorilla.ShowExclamationMark(true);
             GV_Gorilla.interactable = true;
+
+            // update SIS
+            if (!overideGameEvent)
+            {
+                StudentInfoSystem.currentStudentPlayer.currGameEvent = (LinearGameEvent)((int)LinearGameEvent.UnlockGorillaVillage + 1);
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
         }
         else if (playGameEvent == LinearGameEvent.WelcomeStoryGame)
         {
@@ -103,14 +118,12 @@ public class ScrollMapManager : MonoBehaviour
             
         }
 
-
-
-
-        // save progress to profile
-        if (!overideGameEvent)
+        // show UI
+        if (revealNavUI)
         {
-            StudentInfoSystem.currentStudentPlayer.currGameEvent = (LinearGameEvent)((int)LinearGameEvent.UnlockGorillaVillage + 1);
-            StudentInfoSystem.SaveStudentPlayerData();
+            print ("reveal UI");
+            yield return new WaitForSeconds(0.5f);
+            TurnOffNavigationUI(false);
         }
     }
 
@@ -125,12 +138,15 @@ public class ScrollMapManager : MonoBehaviour
 
     private IEnumerator UnlockMapArea(int mapIndex)
     {
+        // save unlock to sis profile
+        StudentInfoSystem.currentStudentPlayer.mapLimit = mapIndex;
+        StudentInfoSystem.SaveStudentPlayerData();
+
         RaycastBlockerController.instance.CreateRaycastBlocker("UnlockMapArea");
 
         yield return new WaitForSeconds(1f);
 
-        // remove nav UI and show Letterbox view
-        TurnOffNavigationUI(true);
+        // how Letterbox view
         LetterboxController.instance.ToggleLetterbox(true);
 
         yield return new WaitForSeconds(1f);
@@ -157,14 +173,10 @@ public class ScrollMapManager : MonoBehaviour
         // show UI again
         TurnOffNavigationUI(false);
 
-        // save unlock to sis profile
-        StudentInfoSystem.currentStudentPlayer.mapLimit = mapIndex;
-        StudentInfoSystem.SaveStudentPlayerData();
-
         RaycastBlockerController.instance.RemoveRaycastBlocker("UnlockMapArea");
     }
 
-    private void TurnOffNavigationUI(bool opt)
+    private void TurnOffNavigationUI(bool opt, bool smooth = true)
     {
         // do nothing if already same as opt
         if (opt == navButtonsDisabled)
@@ -176,8 +188,16 @@ public class ScrollMapManager : MonoBehaviour
             leftButton.interactable = true;
             rightButton.interactable = true;
 
-            StartCoroutine(SmoothImageAlpha(leftButton.GetComponent<Image>(), 0f, 1f, 0.5f));
-            StartCoroutine(SmoothImageAlpha(rightButton.GetComponent<Image>(), 0f, 1f, 0.5f));
+            if (smooth)
+            {
+                StartCoroutine(SmoothImageAlpha(leftButton.GetComponent<Image>(), 0f, 1f, 0.5f));
+                StartCoroutine(SmoothImageAlpha(rightButton.GetComponent<Image>(), 0f, 1f, 0.5f));
+            }
+            else 
+            {
+                leftButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+                rightButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+            }
         }
         // disable button
         else
@@ -185,8 +205,16 @@ public class ScrollMapManager : MonoBehaviour
             leftButton.interactable = false;
             rightButton.interactable = false;
 
-            StartCoroutine(SmoothImageAlpha(leftButton.GetComponent<Image>(), 1f, 0f, 0.5f));
-            StartCoroutine(SmoothImageAlpha(rightButton.GetComponent<Image>(), 1f, 0f, 0.5f));
+            if (smooth)
+            {
+                StartCoroutine(SmoothImageAlpha(leftButton.GetComponent<Image>(), 1f, 0f, 0.5f));
+                StartCoroutine(SmoothImageAlpha(rightButton.GetComponent<Image>(), 1f, 0f, 0.5f));
+            }
+            else 
+            {
+                leftButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
+                rightButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
+            }   
         }
 
         navButtonsDisabled = opt;

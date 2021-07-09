@@ -502,7 +502,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 224059938}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 578174217}
+        m_TargetAssemblyTypeName: BoatGameManager, Assembly-CSharp
+        m_MethodName: ButtonSoundFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &224059938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,6 +639,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 0
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!212 &245186165
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -665,7 +682,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 5f656b7370cc39f418b9aaab66b33bd2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -749,6 +766,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 0
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!212 &273086010
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -787,7 +809,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 28320f58b5c1fb74bbc2ac591c40183e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -897,7 +919,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 278849856}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 578174217}
+        m_TargetAssemblyTypeName: BoatGameManager, Assembly-CSharp
+        m_MethodName: RightWheelButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &278849856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1012,7 +1046,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: cdb17836a76da584b9ea4f4061d60d4f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1056,6 +1090,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 1
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!1 &439908422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,6 +1166,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 0
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!212 &439908426
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1165,7 +1209,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 6e6950411e8b7754babf33b888a7ae39, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1263,6 +1307,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 0
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!212 &500676411
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1301,7 +1350,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 761813fb2faa24d4f8ba0fdc817cd9e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1400,6 +1449,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 0
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!212 &524831894
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1438,7 +1492,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: ea81b36a42b3f63498d0bebdc83e1d02, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1593,7 +1647,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 29547157b94370644bcceadeb2313644, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1637,6 +1691,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 1
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!1 &596575955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,7 +1772,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 6d6d66c22a2c2aa429bbd256b8e19849, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1757,6 +1816,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 1
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!1 &623670016
 GameObject:
   m_ObjectHideFlags: 0
@@ -1838,7 +1902,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 623670019}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 578174217}
+        m_TargetAssemblyTypeName: BoatGameManager, Assembly-CSharp
+        m_MethodName: LeftWheelButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &623670019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1946,6 +2022,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 1
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!212 &656872475
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1984,7 +2065,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: f0e276ead6562d140b7d1f524f70407b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2114,7 +2195,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 773509979}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 578174217}
+        m_TargetAssemblyTypeName: BoatGameManager, Assembly-CSharp
+        m_MethodName: ButtonSoundFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &773509979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2239,6 +2332,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 0
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!212 &795938833
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2277,7 +2375,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: bb545c8deb5c9df489f44abefb20b46e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2645,7 +2743,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1029370815}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 578174217}
+        m_TargetAssemblyTypeName: BoatGameManager, Assembly-CSharp
+        m_MethodName: ButtonSoundFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1029370815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2782,7 +2892,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1032716727}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 578174217}
+        m_TargetAssemblyTypeName: BoatGameManager, Assembly-CSharp
+        m_MethodName: ButtonSoundFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1032716727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2919,7 +3041,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1322283606}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 578174217}
+        m_TargetAssemblyTypeName: BoatGameManager, Assembly-CSharp
+        m_MethodName: ButtonSoundFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1322283606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3340,6 +3474,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 0
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!212 &1589307605
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3378,7 +3517,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: ad6c245402747b84a80741fef156da09, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3541,7 +3680,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1668327470}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 578174217}
+        m_TargetAssemblyTypeName: BoatGameManager, Assembly-CSharp
+        m_MethodName: ButtonSoundFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1668327470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3649,6 +3800,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 1
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!212 &1703416031
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3687,7 +3843,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: f0e276ead6562d140b7d1f524f70407b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3769,6 +3925,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 1
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!212 &1766386524
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3807,7 +3968,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: f0e276ead6562d140b7d1f524f70407b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3931,7 +4092,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0de1c642a67070242b76e1aca4905e92, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3975,6 +4136,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 1
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!1 &1899375116
 GameObject:
   m_ObjectHideFlags: 0
@@ -4045,6 +4211,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 1
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!212 &1899375120
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4083,7 +4254,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 06c46402ae47ae340926ff6e2715cd75, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4201,6 +4372,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 0
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!212 &1942706589
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4239,7 +4415,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 430dc998367a6f2459d4560d780b8063, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

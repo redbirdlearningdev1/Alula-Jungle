@@ -15,6 +15,12 @@ public class LevelPreviewWindow : MonoBehaviour
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private Image gameImage;
 
+    [Header("Game Icons")]
+    [SerializeField] private Sprite froggerIcon;
+    [SerializeField] private Sprite turntablesIcon;
+    [SerializeField] private Sprite spiderwebIcon;
+    [SerializeField] private Sprite rummageIcon;
+
     public float longScaleTime;
     public float shortScaleTime;
 
@@ -51,7 +57,7 @@ public class LevelPreviewWindow : MonoBehaviour
         window.transform.localScale = new Vector3(hiddenScale, hiddenScale, 0f);
     }
 
-    public void NewWindow(GameData newGameData, MapIconIdentfier id, int numStars)
+    public void NewWindow(GameData newGameData, MapIconIdentfier identfier, int numStars)
     {
         // return if another window is up
         if (windowUp)
@@ -67,25 +73,38 @@ public class LevelPreviewWindow : MonoBehaviour
 
         windowUp = true;
         gameData = newGameData;
+        id = identfier;
         titleText.text = gameData.gameType.ToString();
         SetGameImage(gameData.gameType);
 
         StartCoroutine(NewWindowRoutine(numStars));
     }
 
-    // TODO: this
     private void SetGameImage(GameType gameType)
     {
         switch (gameType)
         {
             default:
             case GameType.FroggerGame:
+                gameImage.sprite = froggerIcon;
+                break;
+            case GameType.TurntablesGame:
+                gameImage.sprite = turntablesIcon;
+                break;
+            case GameType.SpiderwebGame:
+                gameImage.sprite = spiderwebIcon;
+                break;
+            case GameType.RummageGame:
+                gameImage.sprite = rummageIcon;
                 break;
         }
     }
 
     public void OnYesButtonPressed()
     {
+        // play sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
         windowUp = false;
         // go to game scene
         GameManager.instance.SetDataAndID(gameData, id);
@@ -94,6 +113,9 @@ public class LevelPreviewWindow : MonoBehaviour
 
     public void OnNoButtonPressed()
     {
+        // play sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
         windowUp = false;
         // hide window 
         StartCoroutine(ShrinkObject(window));
@@ -101,11 +123,29 @@ public class LevelPreviewWindow : MonoBehaviour
 
     private IEnumerator NewWindowRoutine(int numStars)
     {
+        // place stars 
+        for (int i = 0; i < numStars; i++)
+        {
+            switch (i)
+            {
+                default:
+                case 0:
+                    star1.transform.localScale = new Vector3(normalScale, normalScale, 0f);
+                    break;
+                case 1:
+                    star2.transform.localScale = new Vector3(normalScale, normalScale, 0f);
+                    break;
+                case 2:
+                    star3.transform.localScale = new Vector3(normalScale, normalScale, 0f);
+                    break;
+            }
+        }
+
         // show window
         StartCoroutine(GrowObject(window));
         yield return new WaitForSeconds(0.5f);
     
-        // show appropriate number of stars
+        // bounce stars
         for (int i = 0; i < numStars; i++)
         {
             switch (i)
@@ -139,6 +179,13 @@ public class LevelPreviewWindow : MonoBehaviour
         StartCoroutine(ScaleObjectRoutine(gameObject, shortScaleTime, maxScale));
         yield return new WaitForSeconds(shortScaleTime);
         StartCoroutine(ScaleObjectRoutine(gameObject, longScaleTime, hiddenScale));
+
+        yield return new WaitForSeconds(longScaleTime);
+
+        // HOPE THIS DOESNT CAUSE PROBLEMS LATER
+        //  - at the moment, the only game object that gets shrunken is the game 
+        //    window, so we can reset the window afterwards.
+        ResetWindow();
     }
 
     private IEnumerator ScaleObjectRoutine(GameObject gameObject, float time, float scale)

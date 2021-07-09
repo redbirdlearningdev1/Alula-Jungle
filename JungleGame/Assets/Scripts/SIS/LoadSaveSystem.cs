@@ -10,7 +10,7 @@ using UnityEditor;
 public static class LoadSaveSystem
 {
     // default student player values
-    public static string default_version = "1.2";
+    public static string default_version = "1.3";
     public static string default_name = "empty";
     public static int    default_stars = 0;
     public static int    default_map_limit = 0;
@@ -21,10 +21,17 @@ public static class LoadSaveSystem
     public static float default_talkVol = 1f;
     public static int   default_micDevice = 0;
 
+    public static bool  default_froggerTutorial = false;
+    public static bool  default_turntablesTutorial = false;
+    public static bool  default_spiderwebTutorial = false;
+    public static bool  default_rummageTutorial = false;
+
     public static LinearGameEvent default_gameEvent = LinearGameEvent.InitBoatGame;
 
     public static int   default_mapDataStars = 0;
     public static bool  default_mapDataFixed = false;
+
+
 
     public static void SaveStudentData(StudentPlayerData data, bool makeInactive = false)
     {
@@ -98,6 +105,11 @@ public static class LoadSaveSystem
         new_data.fxVol =        default_fxVol;
         new_data.talkVol =      default_talkVol;
         new_data.micDevice =    default_micDevice;
+
+        new_data.froggerTutorial = default_froggerTutorial;
+        new_data.froggerTutorial = default_turntablesTutorial;
+        new_data.froggerTutorial = default_spiderwebTutorial;
+        new_data.froggerTutorial = default_rummageTutorial;
 
         new_data.currGameEvent = default_gameEvent;
 

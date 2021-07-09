@@ -4484,6 +4484,10 @@ MonoBehaviour:
   star3: {fileID: 590327342065579458}
   titleText: {fileID: 2927122239046561867}
   gameImage: {fileID: 2382560647603545386}
+  froggerIcon: {fileID: 21300000, guid: 5ce075857dcf6cd40a48bc348f200891, type: 3}
+  turntablesIcon: {fileID: 21300000, guid: ee858df4e14c5474080c8a37f035e176, type: 3}
+  spiderwebIcon: {fileID: 21300000, guid: a9f09bfde87cd2c40911b77935c8e9c9, type: 3}
+  rummageIcon: {fileID: 21300000, guid: 24328f7b9d3ebe04da5605ea589fc449, type: 3}
   longScaleTime: 0.25
   shortScaleTime: 0.1
   hiddenScale: 0

@@ -3366,9 +3366,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3f4d4b9612a3341831e91d1a77d4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overideMapLimit: 1
-  mapLimitNum: 1
-  overideGameEvent: 1
+  overideMapLimit: 0
+  mapLimitNum: 0
+  overideGameEvent: 0
   gameEvent: 3
   Map: {fileID: 1534747656}
   mapLocations:
@@ -4766,7 +4766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6708,6 +6708,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1375974568929445006, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
+      propertyPath: gameData
+      value: 
+      objectReference: {fileID: 11400000, guid: 32fee7f12f795664996ff99e655cb5b0,
+        type: 2}
+    - target: {fileID: 1375974568929445006, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
+        type: 3}
       propertyPath: identfier
       value: 2
       objectReference: {fileID: 0}
@@ -7639,7 +7645,8 @@ PrefabInstance:
         type: 3}
       propertyPath: gameData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 68865ef4bd0daa8408800fc0b938ee94,
+        type: 2}
     - target: {fileID: 1375974568929445006, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
       propertyPath: canBeFixed
@@ -9029,7 +9036,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.00024414, y: 1200}
+  m_AnchoredPosition: {x: 34044, y: 0}
   m_SizeDelta: {x: 2018.51, y: 1200}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &1346712972
@@ -12590,7 +12597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15113,6 +15120,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2512186891888730669, guid: b2db9681c4636dc46a76b26d7c5e295a,
+        type: 3}
+      propertyPath: gameData
+      value: 
+      objectReference: {fileID: 11400000, guid: cbaf02c5ae5561d4680cb3ee0f851fc0,
+        type: 2}
     - target: {fileID: 2512186891888730669, guid: b2db9681c4636dc46a76b26d7c5e295a,
         type: 3}
       propertyPath: identfier

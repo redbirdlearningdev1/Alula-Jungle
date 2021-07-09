@@ -9,10 +9,10 @@ public enum StudentIndex
 
 public enum LinearGameEvent
 {
-    InitBoatGame,
-    UnlockGorillaVillage,
-    WelcomeStoryGame,
-    StickerTutorial,
+    InitBoatGame, // 0
+    UnlockGorillaVillage, // 1
+    WelcomeStoryGame, // 2
+    StickerTutorial, // 3
     COUNT
 }
 
@@ -25,6 +25,9 @@ public class StudentPlayerData
     public string name; // name of student
     public int totalStars; // total number of stars
     public int mapLimit; // how far player can move on map
+
+    public int goldCoins;
+    public int sliverCoins;
     // can add many more things here!
 
     // settings options
@@ -33,6 +36,12 @@ public class StudentPlayerData
     public float fxVol;
     public float talkVol;
     public int micDevice;
+
+    // tutorial bools
+    public bool froggerTutorial;
+    public bool turntablesTutorial;
+    public bool spiderwebTutorial;
+    public bool rummageTutorial;
 
     // game progression
     public LinearGameEvent currGameEvent;

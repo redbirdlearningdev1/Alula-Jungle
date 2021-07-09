@@ -65,7 +65,9 @@ public class FroggerGameManager : MonoBehaviour
 
         PregameSetup();
 
-        // play real game or tutorial
+        playTutorial = !StudentInfoSystem.currentStudentPlayer.froggerTutorial;
+
+        // play tutorial if first time
         if (playTutorial)
         {
             GameManager.instance.SendLog(this, "starting frogger game tutorial");
@@ -402,8 +404,11 @@ public class FroggerGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        // TODO: finish tutorial stuff
-        GameManager.instance.LoadScene("ScrollMap", true, 3f);
+        // save to SIS
+        StudentInfoSystem.currentStudentPlayer.froggerTutorial = true;
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        GameManager.instance.LoadScene("FroggerGame", true, 3f);
     }
 
     private void ShowTutorialCoins()

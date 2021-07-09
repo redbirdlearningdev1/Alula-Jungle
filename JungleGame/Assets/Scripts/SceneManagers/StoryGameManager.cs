@@ -92,6 +92,17 @@ public class StoryGameManager : MonoBehaviour
                 waitingForAudioInput = false;
             }
         }
+
+        // skip story game w SPACE if in dev mode
+        if (GameManager.instance.devModeActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                GameManager.instance.SendLog(this, "skipping story game!");
+                StopAllCoroutines();
+                EndGame();
+            }
+        }
     }
 
     private void PregameSetup()
@@ -356,6 +367,14 @@ public class StoryGameManager : MonoBehaviour
         }
         partTwoDone = true;
 
+
+        EndGame();
+    }
+
+    private void EndGame()
+    {
+        // make sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.HappyBlip, 1.0f);
 
         // save progress to SIS
         if (StudentInfoSystem.currentStudentPlayer.currGameEvent == LinearGameEvent.WelcomeStoryGame)

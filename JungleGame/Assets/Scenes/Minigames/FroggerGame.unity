@@ -189,7 +189,7 @@ MonoBehaviour:
   - {fileID: 728974745}
   - {fileID: 1287270063}
   - {fileID: 1112553574}
-  playTutorial: 0
+  playTutorial: 1
   correctTutorialCoins: 00000000010000000200000000000000
   firstPair: 0800000000000000
   secondTriad: 000000000800000000000000
@@ -7888,7 +7888,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4bc747b975f842a4982b881611466081, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

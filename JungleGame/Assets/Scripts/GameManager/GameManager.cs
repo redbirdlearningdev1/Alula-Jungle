@@ -229,6 +229,7 @@ public class GameManager : DontDestroy<GameManager>
 
     public void SetDataAndID(GameData data, MapIconIdentfier id)
     {
+        print ("id: " + id);
         this.gameData = data;
         this.gameID = id;
     }

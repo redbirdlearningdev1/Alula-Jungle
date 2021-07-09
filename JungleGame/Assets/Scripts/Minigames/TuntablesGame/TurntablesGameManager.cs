@@ -23,6 +23,8 @@ public class TurntablesGameManager : MonoBehaviour
     private List<ActionWordEnum> globalWordPool;
     private List<ActionWordEnum> unusedWordPool;
 
+    private int timesMissed = 0;
+
     private bool gameStart;
     private const float animateKeysDownDelay = 0.3f;
 
@@ -56,6 +58,8 @@ public class TurntablesGameManager : MonoBehaviour
 
     void Start()
     {   
+        playTutorial = !StudentInfoSystem.currentStudentPlayer.turntablesTutorial;
+
         PregameSetup();
 
         // play real game or tutorial
@@ -313,7 +317,8 @@ public class TurntablesGameManager : MonoBehaviour
 
     private IEnumerator DoorFailRoutine()
     {
-        // print ("fail!");
+        // increment times missed
+        timesMissed++;
         // return key
         keys[correctKeyIndex].ReturnToRope();
         
@@ -371,11 +376,19 @@ public class TurntablesGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        // show stars
-        StarAwardController.instance.AwardStarsAndExit(3);
+        // calculate and show stars
+        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
     }
 
-
+    private int CalculateStars()
+    {
+        if (timesMissed <= 0)
+            return 3;
+        else if (timesMissed > 0 && timesMissed <= 2)
+            return 2;
+        else
+            return 1;
+    }
 
 
     /* 
@@ -551,8 +564,11 @@ public class TurntablesGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        // TODO: change maens of finishing game (for now we just return to the scroll map)
-        GameManager.instance.LoadScene("ScrollMap", true, 3f);
+        // save to SIS
+        StudentInfoSystem.currentStudentPlayer.turntablesTutorial = true;
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        GameManager.instance.LoadScene("TurntablesGame", true, 3f);
     }
 
     /* 

@@ -41,6 +41,9 @@ public class BoatGameManager : MonoBehaviour
 
     private IEnumerator ArrivedAtIslandRoutine()
     {
+        // play blip sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+
         // save to SIS
         StudentInfoSystem.currentStudentPlayer.currGameEvent = (LinearGameEvent)((int)LinearGameEvent.InitBoatGame + 1);;
         StudentInfoSystem.SaveStudentPlayerData();
@@ -49,5 +52,23 @@ public class BoatGameManager : MonoBehaviour
 
         // TODO: change means of finishing game (for now we just return to the scroll map)
         GameManager.instance.LoadScene("ScrollMap", true, 3f);
+    }
+
+    public void ButtonSoundFX()
+    {
+        // play blip sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+    }
+
+    public void LeftWheelButton()
+    {
+        // play blip sound
+        //AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.LeftBlip, 1f);
+    }
+
+    public void RightWheelButton()
+    {
+        // play blip sound
+        //AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightBlip, 1f);
     }
 }
