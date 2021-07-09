@@ -152,7 +152,7 @@ RectTransform:
   m_GameObject: {fileID: 197931777}
   m_LocalRotation: {x: 0, y: 0, z: -0.026176924, w: 0.99965733}
   m_LocalPosition: {x: 0, y: 0, z: 1204.2548}
-  m_LocalScale: {x: 0.009, y: 0.009, z: 0.018749999}
+  m_LocalScale: {x: 0.007, y: 0.007, z: 0.018749999}
   m_Children: []
   m_Father: {fileID: 1425080816}
   m_RootOrder: 4
@@ -404,7 +404,7 @@ RectTransform:
   m_GameObject: {fileID: 326414073}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1204.2548}
-  m_LocalScale: {x: 0.009, y: 0.009, z: 0.018749999}
+  m_LocalScale: {x: 0.007, y: 0.007, z: 0.018749999}
   m_Children: []
   m_Father: {fileID: 1425080816}
   m_RootOrder: 2
@@ -618,7 +618,7 @@ RectTransform:
   m_GameObject: {fileID: 567117630}
   m_LocalRotation: {x: 0, y: 0, z: 0.026176924, w: 0.99965733}
   m_LocalPosition: {x: 0, y: 0, z: 1204.2548}
-  m_LocalScale: {x: 0.009, y: 0.009, z: 0.018749999}
+  m_LocalScale: {x: 0.007, y: 0.007, z: 0.018749999}
   m_Children: []
   m_Father: {fileID: 1425080816}
   m_RootOrder: 0
@@ -737,7 +737,7 @@ RectTransform:
   m_GameObject: {fileID: 569462394}
   m_LocalRotation: {x: 0, y: 0, z: -0.13052624, w: 0.9914449}
   m_LocalPosition: {x: 0, y: 0, z: 1204.2548}
-  m_LocalScale: {x: 0.009, y: 0.009, z: 0.018749999}
+  m_LocalScale: {x: 0.007, y: 0.007, z: 0.018749999}
   m_Children: []
   m_Father: {fileID: 1425080816}
   m_RootOrder: 1
@@ -1649,7 +1649,7 @@ RectTransform:
   m_GameObject: {fileID: 1168637665}
   m_LocalRotation: {x: 0, y: 0, z: 0.13052616, w: 0.9914449}
   m_LocalPosition: {x: 0, y: 0, z: 1204.2548}
-  m_LocalScale: {x: 0.009, y: 0.009, z: 0.018749999}
+  m_LocalScale: {x: 0.007, y: 0.007, z: 0.018749999}
   m_Children: []
   m_Father: {fileID: 1425080816}
   m_RootOrder: 3
@@ -2209,7 +2209,7 @@ MonoBehaviour:
   pattern: {fileID: 736744963}
   poloroidC: {fileID: 1023544798}
   pics: {fileID: 644312574}
-  caster: {fileID: 0}
+  caster: {fileID: 1695998802}
   coins:
   - {fileID: 567117634}
   - {fileID: 569462399}
