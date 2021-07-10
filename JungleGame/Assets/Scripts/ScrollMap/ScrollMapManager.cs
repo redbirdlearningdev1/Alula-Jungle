@@ -38,7 +38,6 @@ public class ScrollMapManager : MonoBehaviour
 
     [Header("Sticker")]
     [SerializeField] public GameObject stickerCart;
-    [SerializeField] public GameObject toolBar;
     [SerializeField] public GameObject Book,Board,BackWindow,Gecko;
     [SerializeField] public Animator Wagon;
     [SerializeField] public Animator GeckoAnim;
@@ -46,8 +45,6 @@ public class ScrollMapManager : MonoBehaviour
     public float stickerTransitionTime;
     private Vector3 cartStartPosition;
     private Vector3 cartOnScreenPosition = new Vector3(0f, -1f, 0f);
-    private Vector3 toolBarStartPosition;
-    private Vector3 toolBarOnScreenPosition = new Vector3(0f, 0f, 0f);
 
     void Awake()
     {
@@ -69,12 +66,10 @@ public class ScrollMapManager : MonoBehaviour
 
         // sticker stuff
         cartStartPosition = stickerCart.transform.position;
-        toolBarStartPosition = toolBar.transform.position;
         Book.SetActive(false);
         Board.SetActive(false);
         BackWindow.SetActive(false);
         stickerCart.SetActive(false);
-        toolBar.SetActive(false);
 
         // disable UI
         leftButton.interactable = false;
@@ -282,11 +277,10 @@ public class ScrollMapManager : MonoBehaviour
     public IEnumerator RollOnScreen()
     {
         stickerCart.SetActive(true);
-        toolBar.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Wagon.Play("WagonRollIn");
-        StartCoroutine(RollOnScreenRoutine(cartOnScreenPosition, toolBarOnScreenPosition));
+        StartCoroutine(RollOnScreenRoutine(cartOnScreenPosition));
         yield return new WaitForSeconds(3.05f);
         Wagon.Play("WagonStop");
         yield return new WaitForSeconds(1.15f);
@@ -304,11 +298,10 @@ public class ScrollMapManager : MonoBehaviour
         //GeckoAnim.Play("geckoFall 0");
     }
 
-    private IEnumerator RollOnScreenRoutine(Vector3 target, Vector3 target2)
+    private IEnumerator RollOnScreenRoutine(Vector3 target)
     {
         Debug.Log("Here");
         Vector3 currStart = stickerCart.transform.position;
-        Vector3 currStart2 = toolBar.transform.position;
         float timer = 0f;
         float maxTime = .75f;
         //animator.Play("orcWalk");
@@ -319,12 +312,10 @@ public class ScrollMapManager : MonoBehaviour
             if (timer < maxTime)
             {
                 stickerCart.transform.position = Vector3.Lerp(currStart, target, timer / maxTime);
-                toolBar.transform.position = Vector3.Lerp(currStart2, target2, timer / maxTime);
             }
             else
             {
                 stickerCart.transform.position = target;
-                toolBar.transform.position = target2;
                 yield break;
             }
             
@@ -482,6 +473,7 @@ public class ScrollMapManager : MonoBehaviour
     // set the index where the player can no longer go forward
     public void SetMapLimit(int index)
     {
+        print ("index: " + index);
         if (index >= 0 && index < cameraLocations.Count)
         {
             FogController.instance.mapXpos = fogLocations[index];
