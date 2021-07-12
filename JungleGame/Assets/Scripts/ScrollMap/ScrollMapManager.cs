@@ -37,14 +37,19 @@ public class ScrollMapManager : MonoBehaviour
     public MapCharacter GV_Gorilla;
 
     [Header("Sticker")]
-    [SerializeField] public GameObject stickerCart;
-    [SerializeField] public GameObject Book,Board,BackWindow,Gecko;
-    [SerializeField] public Animator Wagon;
-    [SerializeField] public Animator GeckoAnim;
+    private bool stickerCartOut;
+    private bool cartBusy;
+    [SerializeField] private GameObject stickerCart;
+    [SerializeField] private Image cartRaycastBlocker;
+    [SerializeField] private GameObject Book,Board,BackWindow,Gecko;
+    [SerializeField] private Animator Wagon;
+    [SerializeField] private Animator GeckoAnim;
     private bool stickerButtonsDisabled;
     public float stickerTransitionTime;
-    private Vector3 cartStartPosition;
-    private Vector3 cartOnScreenPosition = new Vector3(0f, -1f, 0f);
+
+    public Transform cartStartPosition;
+    public Transform cartOnScreenPosition;
+    public Transform cartOffScreenPosition;
 
     void Awake()
     {
@@ -65,7 +70,10 @@ public class ScrollMapManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         // sticker stuff
-        cartStartPosition = stickerCart.transform.position;
+        // disable raycast blocker
+        cartRaycastBlocker.color = new Color(0f, 0f, 0f, 0f);
+        cartRaycastBlocker.raycastTarget = false;
+
         Book.SetActive(false);
         Board.SetActive(false);
         BackWindow.SetActive(false);
@@ -269,18 +277,33 @@ public class ScrollMapManager : MonoBehaviour
         stickerButtonsDisabled = false;
     }
 
-    public void DoRollOn()
+    public void ToggleCart()
     {
-        StartCoroutine(RollOnScreen());
+        if (cartBusy)
+            return;
+
+        if (!stickerCartOut)
+            StartCoroutine(RollOnScreen());
+        else
+            StartCoroutine(RollOffScreen());
+
+        stickerCartOut = !stickerCartOut;
+        cartBusy = true;
     }
 
-    public IEnumerator RollOnScreen()
+    private IEnumerator RollOnScreen()
     {
-        stickerCart.SetActive(true);
+        print ("rolling on!");
+        // lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        // activate raycast blocker
+        StartCoroutine(CartRaycastBlockerRoutine(true));
+        cartRaycastBlocker.raycastTarget = true;
+
+        stickerCart.SetActive(true);
         Wagon.Play("WagonRollIn");
-        StartCoroutine(RollOnScreenRoutine(cartOnScreenPosition));
+        StartCoroutine(RollToTargetRoutine(cartOnScreenPosition.position));
         yield return new WaitForSeconds(3.05f);
         Wagon.Play("WagonStop");
         yield return new WaitForSeconds(1.15f);
@@ -291,20 +314,44 @@ public class ScrollMapManager : MonoBehaviour
         Gecko.SetActive(true);
         GeckoAnim.Play("geckoIntro");
 
-
+        // unlock cursor
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        //yield return new WaitForSeconds(20f);
-        //GeckoAnim.Play("geckoFall 0");
+        cartBusy = false;
     }
 
-    private IEnumerator RollOnScreenRoutine(Vector3 target)
+    private IEnumerator RollOffScreen()
+    {
+        print ("rolling off!");
+        // lock cursor
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        // deactivate raycast blocker
+        StartCoroutine(CartRaycastBlockerRoutine(false));
+
+        // roll off screen
+        stickerCart.SetActive(true);
+        Wagon.Play("WagonRollIn");
+        StartCoroutine(RollToTargetRoutine(cartOffScreenPosition.position));
+        yield return new WaitForSeconds(3f);
+        // return cart to start pos
+        stickerCart.transform.position = cartStartPosition.position;
+        Wagon.Play("Idle");
+
+        // unlock cursor
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        cartRaycastBlocker.raycastTarget = false;
+        cartBusy = false;
+    }
+
+    private IEnumerator RollToTargetRoutine(Vector3 target)
     {
         Debug.Log("Here");
         Vector3 currStart = stickerCart.transform.position;
         float timer = 0f;
         float maxTime = .75f;
-        //animator.Play("orcWalk");
+
         while (true)
         {
             // animate movement
@@ -319,7 +366,36 @@ public class ScrollMapManager : MonoBehaviour
                 yield break;
             }
             
-            
+            yield return null;
+        }
+    }
+
+    private IEnumerator CartRaycastBlockerRoutine(bool opt)
+    {
+        float start, end;
+        if (opt)
+        {
+            start = 0f;
+            end = 0.75f;
+        }
+        else
+        {
+            start = 0.75f;
+            end = 0f;
+        }
+        float timer = 0f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > 1f)
+            {
+                cartRaycastBlocker.color = new Color(0f, 0f, 0f, end);
+                break;
+            }
+
+            float tempAlpha = Mathf.Lerp(start, end, timer / 1f);
+            cartRaycastBlocker.color = new Color(0f, 0f, 0f, tempAlpha);
             yield return null;
         }
     }
