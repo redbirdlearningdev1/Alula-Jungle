@@ -22,7 +22,6 @@ public class LogCoin : MonoBehaviour
     void Awake() 
     {
         animator = GetComponent<Animator>();
-        //print (type.ToString());
         animator.Play(type.ToString());
 
         RectTransform rt = GetComponent<RectTransform>();
