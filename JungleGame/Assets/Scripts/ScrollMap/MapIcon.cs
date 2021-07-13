@@ -152,6 +152,9 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             isPressed = false;
             transform.localScale = new Vector3(1f, 1f, 1f);
 
+            // set prev map position
+            ScrollMapManager.instance.SetPrevMapPos();
+
             // go to correct game scene
             if (gameData)
             {

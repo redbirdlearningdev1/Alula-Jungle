@@ -19,6 +19,8 @@ public class GameManager : DontDestroy<GameManager>
     private GameData gameData;
     private MapIconIdentfier gameID;
 
+    public int prevMapPosition = 0; // what index player was on scroll map
+
     // DEV STUFF:
     private bool iconsSetBroke = false;
 
@@ -160,9 +162,6 @@ public class GameManager : DontDestroy<GameManager>
 
     public void ReturnToScrollMap()
     {
-        // play audio blip
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
-
         LoadScene("ScrollMap", true);
     }
 
@@ -219,6 +218,9 @@ public class GameManager : DontDestroy<GameManager>
 
         // remove all raycast blockers
         RaycastBlockerController.instance.ClearAllRaycastBlockers();
+
+        // remove default background
+        DefaultBackground.instance.Deactivate();
     }
 
     /* 

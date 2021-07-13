@@ -110,9 +110,13 @@ public class StarAwardController : MonoBehaviour
 
     private IEnumerator AwardStarsRoutine(int numStars)
     {
+        // add default background and raycast blocker
+        DefaultBackground.instance.Activate();
+
         // show window
         StartCoroutine(GrowObject(window));
         yield return new WaitForSeconds(0.5f);
+
     
         // show appropriate number of stars
         for (int i = 0; i < numStars; i++)

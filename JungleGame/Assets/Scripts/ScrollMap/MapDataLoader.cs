@@ -7,10 +7,10 @@ public class MapDataLoader : MonoBehaviour
     public static MapDataLoader instance;
 
     // gorilla village section
-    [SerializeField] private MapIcon GV_house1;
-    [SerializeField] private MapIcon GV_house2;
-    [SerializeField] private MapIcon GV_fire;
-    [SerializeField] private MapIcon GV_statue;
+    public MapIcon GV_house1;
+    public MapIcon GV_house2;
+    public MapIcon GV_fire;
+    public MapIcon GV_statue;
 
     void Awake()
     {

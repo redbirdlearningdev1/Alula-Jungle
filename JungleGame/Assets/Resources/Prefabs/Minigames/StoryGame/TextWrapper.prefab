@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOn: 1
   constHeight: 100
-  sizePadding: 1
+  sizePadding: 2
   wordEnum: 0
 --- !u!114 &6637226175195925789
 MonoBehaviour:
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}

@@ -11,37 +11,18 @@ public class pileRummage : MonoBehaviour
     public bool chosen = false;
     public bool currPileLock = true;
 
-
     [Header("Objects")]
-    [SerializeField] private Image Pile;
-    [SerializeField] private SpriteRenderer Pile1;
-
-
-
+    [SerializeField] private SpriteRenderer Pile;
 
     [Header("Images")]
     [SerializeField] private List<Sprite> pileSprites;
 
 
-
-
     void Awake()
     {
-        Pile.sprite = pileSprites[currPile];
-        
+        //Pile.sprite = pileSprites[currPile];    
     }
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-
-    }
     public void UpgradeBag()
     {
         if (currPile < maxPile)
@@ -52,50 +33,55 @@ public class pileRummage : MonoBehaviour
         Pile.sprite = pileSprites[currPile];
 
     }
+
     public void pileChose()
     {
-        if(currPile == 0)
+        if (currPile == 0)
         {
             chosen = true;
             Debug.Log(Pile.ToString());
         }
-        
-
     }
+
     public void pileComplete()
     {
         chosen = false;
-
     }
+
     public void pileDone()
     {
         chosen = false;
-        Pile1.enabled = false;
         Pile.sprite = pileSprites[1];
-
     }
+
     public void pileGlowOff()
     {
-
-        Pile1.enabled = false;
-
-
+        Pile.GetComponent<GlowOutlineController>().ToggleGlowOutline(false);
     }
+
     public void pileGlowOn()
     {
-        if(currPileLock)
+        if (currPileLock)
         {
-            Pile1.enabled = true;
+            Pile.GetComponent<GlowOutlineController>().ToggleGlowOutline(true);
         }
-
-
-
     }
+
+    public void SetWiggleOn()
+    {
+        if (currPileLock)
+        {
+            GetComponent<SpriteWiggleController>().StartWiggle(true);
+        }
+    }
+
+    public void SetWiggleOff()
+    {
+        GetComponent<SpriteWiggleController>().StopWiggle();
+    }
+
     public void pileLock()
     {
         currPileLock = false;
-
-
-
     }
 }

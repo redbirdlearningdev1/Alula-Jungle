@@ -16,10 +16,7 @@ public class DancingManController : MonoBehaviour
         if (!raycast)
             return;
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            isClicked = false;
-        }
+        isClicked = false;
 
         if (Input.GetMouseButtonDown(0))
         {

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ScrollMapManager : MonoBehaviour
 {
+    public static ScrollMapManager instance;
+
     [Header("Dev Stuff")]
     public bool overideMapLimit;
     [Range(0, 8)] public int mapLimitNum;
@@ -34,16 +36,18 @@ public class ScrollMapManager : MonoBehaviour
     public float bumpAmount;
 
     [Header("Map Characters")]
+    public MapIcon boat;
+    public MapCharacter Boat_Gorilla;
     public MapCharacter GV_Gorilla;
 
-    [Header("Sticker")]
-    private bool stickerCartOut;
-    private bool cartBusy;
+    [Header("Stickers")]
     [SerializeField] private GameObject stickerCart;
     [SerializeField] private Image cartRaycastBlocker;
     [SerializeField] private GameObject Book,Board,BackWindow,Gecko;
     [SerializeField] private Animator Wagon;
     [SerializeField] private Animator GeckoAnim;
+    private bool stickerCartOut;
+    private bool cartBusy;
     private bool stickerButtonsDisabled;
     public float stickerTransitionTime;
 
@@ -53,6 +57,9 @@ public class ScrollMapManager : MonoBehaviour
 
     void Awake()
     {
+        if (instance == null)
+            instance = this;
+
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
@@ -83,9 +90,10 @@ public class ScrollMapManager : MonoBehaviour
         leftButton.interactable = false;
         rightButton.interactable = false;
         navButtonsDisabled = true;
+        Boat_Gorilla.gameObject.SetActive(false);
 
-        // start at pos index 0
-        mapPosIndex = 0;
+        // start at prev position
+        mapPosIndex = GameManager.instance.prevMapPosition;
         SetMapPosition(mapPosIndex);
 
         // map limit
@@ -113,11 +121,29 @@ public class ScrollMapManager : MonoBehaviour
                 playGameEvent = StudentInfoSystem.currentStudentPlayer.currGameEvent;
         }
         
-
         bool revealNavUI = true;
 
         // check for game events
-        if (playGameEvent == LinearGameEvent.UnlockGorillaVillage)
+        if (playGameEvent == LinearGameEvent.InitBoatGame)
+        {   
+            revealNavUI = false;
+            DisableAllMapIcons();
+
+            // wiggle boat
+            boat.interactable = true;
+            boat.GetComponent<SpriteWiggleController>().StartWiggle();
+        }
+        else if (playGameEvent == LinearGameEvent.WelcomeStoryGame)
+        {
+            revealNavUI = false;
+            DisableAllMapIcons();
+
+            // reveal boat gorilla
+            Boat_Gorilla.gameObject.SetActive(true);
+            Boat_Gorilla.ShowExclamationMark(true);
+            Boat_Gorilla.interactable = true;
+        }
+        else if (playGameEvent == LinearGameEvent.UnlockGorillaVillage)
         {
             revealNavUI = false;
             DisableAllMapIcons();
@@ -128,11 +154,11 @@ public class ScrollMapManager : MonoBehaviour
             // update SIS
             if (!overideGameEvent)
             {
-                StudentInfoSystem.currentStudentPlayer.currGameEvent = (LinearGameEvent)((int)LinearGameEvent.UnlockGorillaVillage + 1);
+                StudentInfoSystem.AdvanceLinearGameEvent();
                 StudentInfoSystem.SaveStudentPlayerData();
             }
         }
-        else if (playGameEvent == LinearGameEvent.WelcomeStoryGame)
+        else if (playGameEvent == LinearGameEvent.PrologueStoryGame)
         {
             DisableAllMapIcons();
             GV_Gorilla.ShowExclamationMark(true);
@@ -159,6 +185,11 @@ public class ScrollMapManager : MonoBehaviour
         {
             item.interactable = false;
         }
+    }
+
+    public void SetPrevMapPos()
+    {
+        GameManager.instance.prevMapPosition = mapPosIndex;
     }
 
     private IEnumerator UnlockMapArea(int mapIndex)
@@ -294,6 +325,7 @@ public class ScrollMapManager : MonoBehaviour
     private IEnumerator RollOnScreen()
     {
         print ("rolling on!");
+        stickerCart.transform.position = cartStartPosition.position;
         // lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

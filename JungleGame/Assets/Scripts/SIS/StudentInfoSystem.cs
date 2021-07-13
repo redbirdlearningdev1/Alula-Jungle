@@ -45,4 +45,9 @@ public static class StudentInfoSystem
     {
         LoadSaveSystem.ResetStudentData(index);
     }
+
+    public static void AdvanceLinearGameEvent()
+    {
+        currentStudentPlayer.currGameEvent = (LinearGameEvent)((int)currentStudentPlayer.currGameEvent + 1);
+    }
 }

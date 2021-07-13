@@ -530,7 +530,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f73d9b5b6218a0f44bc51fd2576af6b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: 1
+  popupWindow: 0
   gameData: {fileID: 0}
+  identfier: 0
   canBeFixed: 1
   animatedIcon: 1
   brokenSprite: {fileID: 21300000, guid: eadcc6bf467dc594aa2fe33709c80a47, type: 3}

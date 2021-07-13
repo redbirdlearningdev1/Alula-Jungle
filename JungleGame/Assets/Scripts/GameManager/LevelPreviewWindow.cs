@@ -119,6 +119,9 @@ public class LevelPreviewWindow : MonoBehaviour
         windowUp = false;
         // hide window 
         StartCoroutine(ShrinkObject(window));
+
+        // remove default background and raycast blocker
+        DefaultBackground.instance.Deactivate();
     }
 
     private IEnumerator NewWindowRoutine(int numStars)
@@ -140,6 +143,9 @@ public class LevelPreviewWindow : MonoBehaviour
                     break;
             }
         }
+
+        // add default background and raycast blocker
+        DefaultBackground.instance.Activate();
 
         // show window
         StartCoroutine(GrowObject(window));

@@ -10,9 +10,10 @@ public enum StudentIndex
 public enum LinearGameEvent
 {
     InitBoatGame, // 0
-    UnlockGorillaVillage, // 1
-    WelcomeStoryGame, // 2
-    StickerTutorial, // 3
+    WelcomeStoryGame, // 1
+    UnlockGorillaVillage, // 2
+    PrologueStoryGame, // 3
+    StickerTutorial, // 4
     COUNT
 }
 

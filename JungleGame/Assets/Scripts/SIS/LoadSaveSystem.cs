@@ -10,15 +10,11 @@ using UnityEditor;
 public static class LoadSaveSystem
 {
     // default student player values
-    public static string default_version = "1.3";
+    public static string default_version = "1.4";
     public static string default_name = "empty";
     public static int    default_stars = 0;
     public static int    default_map_limit = 0;
 
-    public static float default_masterVol = 1f;
-    public static float default_musicVol = 1f;
-    public static float default_fxVol = 1f;
-    public static float default_talkVol = 1f;
     public static int   default_micDevice = 0;
 
     public static bool  default_froggerTutorial = false;
@@ -100,10 +96,10 @@ public static class LoadSaveSystem
         new_data.name =         default_name;
         new_data.totalStars =   default_stars;
 
-        new_data.masterVol =    default_masterVol;
-        new_data.musicVol =     default_musicVol;
-        new_data.fxVol =        default_fxVol;
-        new_data.talkVol =      default_talkVol;
+        new_data.masterVol =    AudioManager.default_masterVol;
+        new_data.musicVol =     AudioManager.default_musicVol;
+        new_data.fxVol =        AudioManager.default_fxVol;
+        new_data.talkVol =      AudioManager.default_talkVol;
         new_data.micDevice =    default_micDevice;
 
         new_data.froggerTutorial = default_froggerTutorial;
