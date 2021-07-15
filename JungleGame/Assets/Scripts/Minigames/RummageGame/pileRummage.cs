@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class pileRummage : MonoBehaviour
 {
-    // Start is called before the first frame update
     private int currPile = 0;
     private const int maxPile = 1;
     public bool chosen = false;
@@ -56,6 +55,7 @@ public class pileRummage : MonoBehaviour
 
     public void pileGlowOff()
     {
+        print ("turning off glow! " + gameObject.name);
         Pile.GetComponent<GlowOutlineController>().ToggleGlowOutline(false);
     }
 
@@ -63,6 +63,7 @@ public class pileRummage : MonoBehaviour
     {
         if (currPileLock)
         {
+            print ("turning on glow! " + gameObject.name);
             Pile.GetComponent<GlowOutlineController>().ToggleGlowOutline(true);
         }
     }

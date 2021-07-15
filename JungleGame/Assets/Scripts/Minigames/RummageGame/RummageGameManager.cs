@@ -7,7 +7,8 @@ public class RummageGameManager : MonoBehaviour
     public static RummageGameManager instance;
 
     public bool playingInEditor;
-    private bool playTutorial;
+    public bool playTutorial;
+    public float timeBetweenRepeat;
 
     private int timesMissed = 0;
 
@@ -18,7 +19,8 @@ public class RummageGameManager : MonoBehaviour
     [SerializeField] private List<pileRummage> pile;
     [SerializeField] private RummageCoinRaycaster caster;
     [SerializeField] private List<GameObject> Repairs;
-    
+
+    private bool waitingForCoinSelection = false;
     private bool playingDancingManAnimation = false;
     private bool gameSetup = false;
 
@@ -112,8 +114,8 @@ public class RummageGameManager : MonoBehaviour
             coin.gameObject.SetActive(false);
         }
 
-        StartCoroutine(SetPileWiggles(true));
         StartCoroutine(SetPileGlow(true));
+        StartCoroutine(SetPileWiggles(true));
     }
 
     void Update()
@@ -249,7 +251,7 @@ public class RummageGameManager : MonoBehaviour
 
     public bool EvaluateSelectedRummageCoin(ActionWordEnum coin)
     {
-        Debug.Log(selectedRummageCoin.type);
+        waitingForCoinSelection = false;
         if (coin == selectedRummageCoin.type)
         {
             // success! go on to the next row or win game if on last row
@@ -417,7 +419,6 @@ public class RummageGameManager : MonoBehaviour
         pileComplete3 = true;
         pileComplete4 = true;
         pileComplete5 = true;
-        Debug.Log("Here");
     }
 
 
@@ -428,8 +429,7 @@ public class RummageGameManager : MonoBehaviour
         Debug.Log("STARTING GAME");
         StartCoroutine(SetPileGlow(false));
         orc.channelOrc();
-        //while (!gameSetup)
-        //    yield return null;
+
         List<RummageCoin> pileSet = GetCoinPile(piles);
         foreach (var coin in pileSet)
         {
@@ -545,8 +545,33 @@ public class RummageGameManager : MonoBehaviour
         selectedIndex = Random.Range(0, pile.Count);
         print("selected index: " + selectedIndex);
         selectedRummageCoin = pile[selectedIndex];
-        StartCoroutine(DancingManRoutine());
 
+        StartCoroutine(DancingManRoutine());
+        StartCoroutine(RepeatWhileWating());
+        waitingForCoinSelection = true;
+    }
+
+    private IEnumerator RepeatWhileWating()
+    {
+        float timer = 0f;
+
+        while (true)
+        {
+            while (playingDancingManAnimation)
+                yield return null;
+
+            if (!waitingForCoinSelection)
+                yield break;  
+
+            timer += Time.deltaTime;
+            if (timer > timeBetweenRepeat)
+            {
+                timer = 0f;
+                StartCoroutine(DancingManRoutine());
+            }
+
+            yield return null;
+        }
     }
 
     private List<RummageCoin> GetCoinPile(int index)
@@ -588,6 +613,7 @@ public class RummageGameManager : MonoBehaviour
 
     private IEnumerator SetPileGlow(bool opt)
     {
+        yield return new WaitForSeconds(0.1f);
         if (opt)
         {
             print ("glow on");

@@ -126,7 +126,6 @@ public class RummageCoin : MonoBehaviour
 
     private IEnumerator BounceOutRoutine(Vector3 target)
     {
-        Debug.Log("Here");
         Vector3 currStart = transform.position;
         float timer = 0f;
         float maxTime = 0.5f;
