@@ -45,6 +45,9 @@ public class SplashScreenManager : MonoBehaviour
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
+        // remove menu button
+        SettingsManager.instance.ToggleMenuButtonActive(false);
+
         // set up profile window
         startButton.interactable = false;
         SetImageAlpha(profile1Image, unselectedAlpha);

@@ -3875,9 +3875,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3f4d4b9612a3341831e91d1a77d4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overideMapLimit: 1
+  overideMapLimit: 0
   mapLimitNum: 1
-  overideGameEvent: 1
+  overideGameEvent: 0
   gameEvent: 4
   Map: {fileID: 1534747656}
   mapLocations:
@@ -4865,7 +4865,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 525501234}
   m_OnClick:
     m_PersistentCalls:
@@ -4895,7 +4895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

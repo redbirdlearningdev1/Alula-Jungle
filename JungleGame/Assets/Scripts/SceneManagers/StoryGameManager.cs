@@ -402,6 +402,11 @@ public class StoryGameManager : MonoBehaviour
             StudentInfoSystem.AdvanceLinearGameEvent();
             StudentInfoSystem.SaveStudentPlayerData();
         }
+        else if (StudentInfoSystem.currentStudentPlayer.currGameEvent == LinearGameEvent.PrologueStoryGame)
+        {
+            StudentInfoSystem.AdvanceLinearGameEvent();
+            StudentInfoSystem.SaveStudentPlayerData();
+        }
         // return to scrollmap
         GameManager.instance.LoadScene("ScrollMap", true, 3f);
     }

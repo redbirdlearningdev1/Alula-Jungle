@@ -6777,6 +6777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aaa12c2aeca72642a81c1e53eaf387e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuButton: {fileID: 9179486600140633595}
   masterVol: {fileID: 1740712398}
   musicVol: {fileID: 988003224}
   fxVol: {fileID: 1647742979}

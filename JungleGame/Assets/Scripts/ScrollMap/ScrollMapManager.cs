@@ -76,6 +76,9 @@ public class ScrollMapManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
+        // remove menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+
         // sticker stuff
         // disable raycast blocker
         cartRaycastBlocker.color = new Color(0f, 0f, 0f, 0f);
@@ -94,6 +97,7 @@ public class ScrollMapManager : MonoBehaviour
 
         // start at prev position
         mapPosIndex = GameManager.instance.prevMapPosition;
+        GameManager.instance.SendLog(this, "starting scrollmap on position: " + mapPosIndex);
         SetMapPosition(mapPosIndex);
 
         // map limit
@@ -172,7 +176,7 @@ public class ScrollMapManager : MonoBehaviour
         // show UI
         if (revealNavUI)
         {
-            print ("reveal UI");
+            //print ("reveal UI");
             yield return new WaitForSeconds(0.5f);
             TurnOffNavigationUI(false);
         }
@@ -189,6 +193,7 @@ public class ScrollMapManager : MonoBehaviour
 
     public void SetPrevMapPos()
     {
+        print ("setting prev map pos to: " + mapPosIndex);
         GameManager.instance.prevMapPosition = mapPosIndex;
     }
 

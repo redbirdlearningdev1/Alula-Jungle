@@ -55,6 +55,9 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             isPressed = false;
             transform.localScale = new Vector3(1f, 1f, 1f);
 
+            // set prev map position
+            ScrollMapManager.instance.SetPrevMapPos();
+
             // go to correct game scene
             if (gameData)
             {

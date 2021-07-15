@@ -26,7 +26,7 @@ public class RaycastBlockerController : MonoBehaviour
         var newblocker = Instantiate(blocker, this.transform).GetComponent<RaycastBlocker>();
         newblocker.id = id;
         blockers.Add(newblocker);
-        GameManager.instance.SendLog(this, "created new raycast blocker - " + id);
+        //GameManager.instance.SendLog(this, "created new raycast blocker - " + id);
     }
 
     // destroys raycast blocker using id
@@ -38,7 +38,7 @@ public class RaycastBlockerController : MonoBehaviour
             {
                 block.DestroyBlocker();
                 blockers.Remove(block);
-                GameManager.instance.SendLog(this, "removed raycast blocker - " + id);
+                //GameManager.instance.SendLog(this, "removed raycast blocker - " + id);
                 return;
             }
         }
