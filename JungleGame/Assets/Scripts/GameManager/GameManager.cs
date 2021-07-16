@@ -115,6 +115,11 @@ public class GameManager : DontDestroy<GameManager>
         Debug.LogError("[ERROR] " + errorMsg + " @ " + errorContext.name, errorContext);
     }
 
+    public void SendError(string errorContext, string errorMsg)
+    {
+        Debug.LogError("[ERROR] " + errorMsg + " @ " + errorContext);
+    }
+
     public void SendLog(Object context, string msg)
     {
         Debug.Log("[LOG] " + msg + " @ " + context.name);
