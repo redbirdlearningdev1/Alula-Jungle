@@ -5,7 +5,7 @@ using UnityEngine;
 public enum ElkoninValue
 {
     empty,
-    
+
     // action words
     mudslide,
     listen,
@@ -63,6 +63,7 @@ public class ChallengeWord : ScriptableObject
 {
     public string word;
     public AudioClip audio;
+    public Sprite sprite;
     public List<ElkoninValue> elkoninList;
     public ActionWordEnum set;
     public string imageText;
