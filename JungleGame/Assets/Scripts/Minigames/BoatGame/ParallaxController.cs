@@ -159,6 +159,9 @@ public class ParallaxController : MonoBehaviour
 
     public void LerpToCenter()
     {
+        // play sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
+
         StartCoroutine(LerpToCenterRoutine());
     }
 

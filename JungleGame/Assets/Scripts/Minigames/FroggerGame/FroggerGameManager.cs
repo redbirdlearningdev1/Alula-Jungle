@@ -6,6 +6,8 @@ public class FroggerGameManager : MonoBehaviour
 {
     public static FroggerGameManager instance;
 
+    private FroggerGameData gameData;
+
     [SerializeField] private GorillaController gorilla;
     [SerializeField] private Bag bag;
     [SerializeField] private TaxiController taxi;
@@ -15,6 +17,8 @@ public class FroggerGameManager : MonoBehaviour
 
     private List<ActionWordEnum> globalCoinPool;
     private List<ActionWordEnum> unusedCoinPool;
+
+    private int timesMissed = 0;
 
     [Header("Log Rows")]
     [SerializeField] private List<LogRow> rows; 
@@ -61,9 +65,14 @@ public class FroggerGameManager : MonoBehaviour
         // dev object stuff
         devObject.SetActive(GameManager.instance.devModeActivated);
 
+        // get game data
+        gameData = (FroggerGameData)GameManager.instance.GetData();
+
+        playTutorial = !StudentInfoSystem.currentStudentPlayer.froggerTutorial;
+
         PregameSetup();
 
-        // play real game or tutorial
+        // play tutorial if first time
         if (playTutorial)
         {
             GameManager.instance.SendLog(this, "starting frogger game tutorial");
@@ -118,7 +127,15 @@ public class FroggerGameManager : MonoBehaviour
             allCoins.Add(coin);
 
         // Create Global Coin List
-        globalCoinPool = GameManager.instance.GetGlobalActionWordList();
+        if (gameData != null)
+        {
+            globalCoinPool = gameData.wordPool;
+        }
+        else
+        {
+            globalCoinPool = GameManager.instance.GetGlobalActionWordList();
+        }
+        
         unusedCoinPool = new List<ActionWordEnum>();
         unusedCoinPool.AddRange(globalCoinPool);
 
@@ -142,6 +159,9 @@ public class FroggerGameManager : MonoBehaviour
 
     private IEnumerator CoinFailRoutine()
     {
+        // inc times missed
+        timesMissed++;
+
         rows[currRow].ResetCoinPos(null);
         taxi.TwitchAnimation();
         bag.DowngradeBag();
@@ -235,10 +255,10 @@ public class FroggerGameManager : MonoBehaviour
         // play win tune
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
-        // TODO: change maens of finishing game (for now we just return to the scroll map)
-        GameManager.instance.LoadScene("ScrollMap", true, 3f);
+        // calculate and show stars
+        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
     }
 
     // This is a special fucntion that skips to the end of the game to win (DEV ONLY)
@@ -271,10 +291,20 @@ public class FroggerGameManager : MonoBehaviour
         // play win tune
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
-        // TODO: change maens of finishing game (for now we just return to the scroll map)
-        GameManager.instance.LoadScene("ScrollMap", true, 3f);
+        // calculate and show stars
+        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+    }
+
+    private int CalculateStars()
+    {
+        if (timesMissed <= 0)
+            return 3;
+        else if (timesMissed > 0 && timesMissed <= 2)
+            return 2;
+        else
+            return 1;
     }
 
     private IEnumerator StartGame()
@@ -387,8 +417,11 @@ public class FroggerGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        // TODO: finish tutorial stuff
-        GameManager.instance.LoadScene("ScrollMap", true, 3f);
+        // save to SIS
+        StudentInfoSystem.currentStudentPlayer.froggerTutorial = true;
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        GameManager.instance.LoadScene("FroggerGame", true, 3f);
     }
 
     private void ShowTutorialCoins()

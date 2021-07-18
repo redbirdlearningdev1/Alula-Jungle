@@ -43,7 +43,8 @@ public class FxAudioObject : MonoBehaviour
     public void InstaDestroy()
     {
         StopAllCoroutines();
-        Destroy(gameObject);
+        if (gameObject != null)
+            Destroy(gameObject);
     }
 
     private IEnumerator DelayDestruction(float duration)

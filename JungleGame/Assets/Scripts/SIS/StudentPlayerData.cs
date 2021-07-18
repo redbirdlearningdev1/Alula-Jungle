@@ -7,6 +7,16 @@ public enum StudentIndex
     student_1, student_2, student_3
 }
 
+public enum LinearGameEvent
+{
+    InitBoatGame, // 0
+    WelcomeStoryGame, // 1
+    UnlockGorillaVillage, // 2
+    PrologueStoryGame, // 3
+    StickerTutorial, // 4
+    COUNT
+}
+
 [System.Serializable]
 public class StudentPlayerData
 {
@@ -16,6 +26,9 @@ public class StudentPlayerData
     public string name; // name of student
     public int totalStars; // total number of stars
     public int mapLimit; // how far player can move on map
+
+    public int goldCoins;
+    public int sliverCoins;
     // can add many more things here!
 
     // settings options
@@ -23,6 +36,34 @@ public class StudentPlayerData
     public float musicVol;
     public float fxVol;
     public float talkVol;
-
     public int micDevice;
+
+    // tutorial bools
+    public bool froggerTutorial;
+    public bool turntablesTutorial;
+    public bool spiderwebTutorial;
+    public bool rummageTutorial;
+
+    // game progression
+    public LinearGameEvent currGameEvent;
+
+    // map data
+    public MapData mapData;
+}
+
+[System.Serializable]
+public class MapIconData
+{
+    public bool isFixed;
+    public int stars;
+}
+
+[System.Serializable]
+public class MapData
+{
+    // gorilla village
+    public MapIconData GV_house1;
+    public MapIconData GV_house2;
+    public MapIconData GV_fire;
+    public MapIconData GV_statue;
 }

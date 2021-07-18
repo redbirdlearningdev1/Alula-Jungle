@@ -189,7 +189,7 @@ MonoBehaviour:
   - {fileID: 728974745}
   - {fileID: 1287270063}
   - {fileID: 1112553574}
-  playTutorial: 0
+  playTutorial: 1
   correctTutorialCoins: 00000000010000000200000000000000
   firstPair: 0800000000000000
   secondTriad: 000000000800000000000000
@@ -1032,21 +1032,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 121750354, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
+    - target: {fileID: 4820926976771865618, guid: d28125f2c69703845bae5a93a83bd1b1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 1162192037, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1244780262, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656799373, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
+    - target: {fileID: 5015416626533414130, guid: d28125f2c69703845bae5a93a83bd1b1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5332021454673539580, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -1107,6 +1101,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TheGameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5759919728834131261, guid: d28125f2c69703845bae5a93a83bd1b1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5759919728834131261, guid: d28125f2c69703845bae5a93a83bd1b1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111103781665821981, guid: d28125f2c69703845bae5a93a83bd1b1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8767916395752010451, guid: d28125f2c69703845bae5a93a83bd1b1,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 956.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
@@ -7874,7 +7888,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4bc747b975f842a4982b881611466081, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

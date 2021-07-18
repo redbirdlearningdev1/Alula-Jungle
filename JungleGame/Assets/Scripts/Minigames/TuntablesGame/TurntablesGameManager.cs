@@ -6,6 +6,8 @@ public class TurntablesGameManager : MonoBehaviour
 {
     public static TurntablesGameManager instance;
 
+    private TurntablesGameData gameData;
+
     public List<Door> doors;
     public List<Key> keys;
     public FrameIcon frameIcon;
@@ -22,6 +24,9 @@ public class TurntablesGameManager : MonoBehaviour
 
     private List<ActionWordEnum> globalWordPool;
     private List<ActionWordEnum> unusedWordPool;
+    private List<ActionWordEnum> usedWordPool;
+
+    private int timesMissed = 0;
 
     private bool gameStart;
     private const float animateKeysDownDelay = 0.3f;
@@ -56,6 +61,11 @@ public class TurntablesGameManager : MonoBehaviour
 
     void Start()
     {   
+        // get game data
+        gameData = (TurntablesGameData)GameManager.instance.GetData();
+
+        playTutorial = !StudentInfoSystem.currentStudentPlayer.turntablesTutorial;
+
         PregameSetup();
 
         // play real game or tutorial
@@ -141,9 +151,17 @@ public class TurntablesGameManager : MonoBehaviour
         doorWords = new ActionWordEnum[4];
 
         // Create Global Coin List
-        globalWordPool = GameManager.instance.GetGlobalActionWordList();
+        if (gameData != null)
+        {
+            globalWordPool = gameData.wordPool;
+        }
+        else
+        {
+            globalWordPool = GameManager.instance.GetGlobalActionWordList();
+        }
         unusedWordPool = new List<ActionWordEnum>();
         unusedWordPool.AddRange(globalWordPool);
+        usedWordPool = new List<ActionWordEnum>();
 
         // get keys
         RopeController.instance.InitNewRope();
@@ -313,7 +331,8 @@ public class TurntablesGameManager : MonoBehaviour
 
     private IEnumerator DoorFailRoutine()
     {
-        // print ("fail!");
+        // increment times missed
+        timesMissed++;
         // return key
         keys[correctKeyIndex].ReturnToRope();
         
@@ -371,11 +390,19 @@ public class TurntablesGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        // TODO: change maens of finishing game (for now we just return to the scroll map)
-        GameManager.instance.LoadScene("ScrollMap", true, 3f);
+        // calculate and show stars
+        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
     }
 
-
+    private int CalculateStars()
+    {
+        if (timesMissed <= 0)
+            return 3;
+        else if (timesMissed > 0 && timesMissed <= 2)
+            return 2;
+        else
+            return 1;
+    }
 
 
     /* 
@@ -551,8 +578,11 @@ public class TurntablesGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        // TODO: change maens of finishing game (for now we just return to the scroll map)
-        GameManager.instance.LoadScene("ScrollMap", true, 3f);
+        // save to SIS
+        StudentInfoSystem.currentStudentPlayer.turntablesTutorial = true;
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        GameManager.instance.LoadScene("TurntablesGame", true, 3f);
     }
 
     /* 
@@ -573,13 +603,31 @@ public class TurntablesGameManager : MonoBehaviour
             correctKeyIndex = 0;
         keys[correctKeyIndex].SetKeyActionWord(doorWords[currentDoorIndex]);
 
-        // set other keys to be random word (not current or other door words)
-        for (int j = 0; j < 4; j++)
+        if (!playTutorial)
         {
-            if (j != correctKeyIndex)
+            // make new used word list and add current correct word
+            usedWordPool = new List<ActionWordEnum>();
+            usedWordPool.Clear();
+            usedWordPool.Add(doorWords[currentDoorIndex]);
+
+            // set other keys to be random word (not current or other door words)
+            for (int j = 0; j < 4; j++)
             {
-                ActionWordEnum word = GetUnusedWord();
-                keys[j].SetKeyActionWord(word);
+                if (j != correctKeyIndex)
+                {
+                    ActionWordEnum word = GetUnusedWord();
+                    keys[j].SetKeyActionWord(word);
+                }
+            }
+        }
+        else
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                if (j != correctKeyIndex)
+                {
+                    keys[j].SetKeyActionWord(ActionWordEnum._blank);
+                }
             }
         }
     }
@@ -629,7 +677,16 @@ public class TurntablesGameManager : MonoBehaviour
 
         int index = Random.Range(0, unusedWordPool.Count);
         ActionWordEnum word = unusedWordPool[index];
-        unusedWordPool.RemoveAt(index);
+
+        // make sure word is not being used
+        if (usedWordPool.Contains(word))
+        {
+            unusedWordPool.Remove(word);
+            return GetUnusedWord();
+        }
+
+        unusedWordPool.Remove(word);
+        usedWordPool.Add(word);
         return word;
     }
 

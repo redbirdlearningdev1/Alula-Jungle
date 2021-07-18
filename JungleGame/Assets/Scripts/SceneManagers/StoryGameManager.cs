@@ -7,12 +7,15 @@ using TMPro;
 public class StoryGameManager : MonoBehaviour
 {   
     [Header("Dev Mode Stuff")]
+    public bool overrideGame;
     public StoryGameEnum storyGameIndex;
     public bool skipToPartTwo;
 
     [Header("Game Object Variables")]
     [SerializeField] private LogCoin coin;
     [SerializeField] private DancingManController dancingMan;
+    [SerializeField] private SpriteRenderer microphone;
+    public float timeBetweenRepeat;
 
     [Header("Shake Function Variables")]
     public float shakeDuration;
@@ -41,19 +44,23 @@ public class StoryGameManager : MonoBehaviour
     private bool partOneDone = false;
     private bool partTwoDone = false;
     private bool waitingForAudioInput = false;
+    private bool playingDancingManAnimation = false;
 
-
+    // current stuff
+    private ActionWordEnum currentEnum;
+    private AudioClip currentClip;
 
     private StoryGameData storyGameData;
 
     void Awake()
     {
+        // every scene must call this in awake
         GameManager.instance.SceneInit();
 
-        // load in game data from game manager
-        GameData data = GameManager.instance.GetData();
-        // make sure it is usable
-        if (data == null || data.gameType != GameType.StoryGame)
+        // make microphone invisible
+        microphone.color = new Color(1f, 1f, 1f, 0f);
+
+        if (overrideGame)
         {
             // use dev data if in dev mode
             if (GameManager.instance.devModeActivated)
@@ -62,12 +69,14 @@ public class StoryGameManager : MonoBehaviour
             }
             else // send error
                 GameManager.instance.SendError(this, "invalid game data");
-        } 
-        else
+        }
+        else 
         {
+            // load in game data from game manager
+            GameData data = GameManager.instance.GetData();
             // use imported game data
             storyGameData = (StoryGameData)data;
-        }  
+        }
 
         // send log
         GameManager.instance.SendLog(this, "starting story game: " + storyGameData.name);
@@ -88,7 +97,26 @@ public class StoryGameManager : MonoBehaviour
             //print ("volume level: " + volumeLevel);
             if (volumeLevel >= audioInputThreshold)
             {
+                StartCoroutine(StopMicrophoneIndicator());
                 waitingForAudioInput = false;
+            }
+        }
+
+
+        // repeat word and dancing man animation
+        if (dancingMan.isClicked)
+        {
+            StartCoroutine(DancingManRoutine());
+        }
+
+        // skip story game w SPACE if in dev mode
+        if (GameManager.instance.devModeActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                GameManager.instance.SendLog(this, "skipping story game!");
+                StopAllCoroutines();
+                EndGame();
             }
         }
     }
@@ -317,6 +345,11 @@ public class StoryGameManager : MonoBehaviour
             {
                 // remove coin transparency
                 coin.SetTransparency(1f, true);
+
+                // set current variables
+                currentEnum = seg.actionWord;
+                currentClip = seg.wordAudio;
+
                 dancingMan.PlayUsingPhonemeEnum(seg.actionWord);
                 AudioManager.instance.PlayTalk(seg.wordAudio);
                 // highlight action word
@@ -324,10 +357,11 @@ public class StoryGameManager : MonoBehaviour
                 actionWords[currWord].GetComponent<TextWrapper>().SetTextSize(actionTextSize, true);
                 currWord++;
 
-                // TODO: show UI to indicate that mic input is expected
-
                 // wait for play input
                 waitingForAudioInput = true;
+                // activate microphone indicator
+                StartCoroutine(StartMicrophoneIndicator());
+                StartCoroutine(RepeatWhileWating());
                 while (waitingForAudioInput)
                     yield return null;
 
@@ -341,8 +375,6 @@ public class StoryGameManager : MonoBehaviour
 
                 yield return new WaitForSeconds(1f);
 
-                // TODO: remove UI to indicate that mic input is no longer expected
-
                 // successful input stuff
                 ShakeCoin();
                 dancingMan.PlayUsingPhonemeEnum(seg.actionWord);
@@ -355,7 +387,27 @@ public class StoryGameManager : MonoBehaviour
         }
         partTwoDone = true;
 
-        // TODO: change maens of finishing game (for now we just return to the scroll map)
+
+        EndGame();
+    }
+
+    private void EndGame()
+    {
+        // make sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.HappyBlip, 1.0f);
+
+        // save progress to SIS
+        if (StudentInfoSystem.currentStudentPlayer.currGameEvent == LinearGameEvent.WelcomeStoryGame)
+        {
+            StudentInfoSystem.AdvanceLinearGameEvent();
+            StudentInfoSystem.SaveStudentPlayerData();
+        }
+        else if (StudentInfoSystem.currentStudentPlayer.currGameEvent == LinearGameEvent.PrologueStoryGame)
+        {
+            StudentInfoSystem.AdvanceLinearGameEvent();
+            StudentInfoSystem.SaveStudentPlayerData();
+        }
+        // return to scrollmap
         GameManager.instance.LoadScene("ScrollMap", true, 3f);
     }
 
@@ -427,6 +479,85 @@ public class StoryGameManager : MonoBehaviour
             Vector3 pos = originalPos;
             pos.x = originalPos.x + Mathf.Sin(Time.time * shakeSpeed) * shakeAmount;
             coin.transform.position = pos;
+            yield return null;
+        }
+    }
+
+    private IEnumerator StartMicrophoneIndicator()
+    {
+        microphone.GetComponent<SpriteWiggleController>().StartWiggle();
+        microphone.GetComponent<GlowOutlineController>().ToggleGlowOutline(true);
+        float timer = 0f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > 0.25f)
+            {
+                break;
+            }
+
+            float tempAlpha = Mathf.Lerp(0f, 1f, timer / 0.25f);
+            microphone.color = new Color(1f, 1f, 1f, tempAlpha);
+            yield return null;
+        }
+    }
+
+    private IEnumerator StopMicrophoneIndicator()
+    {
+        microphone.GetComponent<SpriteWiggleController>().StopWiggle();
+        microphone.GetComponent<GlowOutlineController>().ToggleGlowOutline(false);
+        float timer = 0f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > 0.25f)
+            {
+                break;
+            }
+
+            float tempAlpha = Mathf.Lerp(1f, 0f, timer / 0.25f);
+            microphone.color = new Color(1f, 1f, 1f, tempAlpha);
+            yield return null;
+        }
+    }
+
+    // used to control dancing man's animations
+    private IEnumerator DancingManRoutine()
+    {
+        if (!waitingForAudioInput)
+            yield break;
+        if (playingDancingManAnimation)
+            yield break;
+        playingDancingManAnimation = true;
+        // print ("dancing man animation -> " + selectedCoin.type);
+        dancingMan.PlayUsingPhonemeEnum(currentEnum);
+        AudioManager.instance.PlayTalk(currentClip);
+
+        yield return new WaitForSeconds(1.5f);
+        playingDancingManAnimation = false;
+    }
+
+    private IEnumerator RepeatWhileWating()
+    {
+        float timer = 0f;
+
+        while (true)
+        {
+            while (playingDancingManAnimation)
+                yield return null;
+
+            if (!waitingForAudioInput)
+                yield break;  
+
+            timer += Time.deltaTime;
+            if (timer > timeBetweenRepeat)
+            {
+                timer = 0f;
+                StartCoroutine(DancingManRoutine());
+            }
+
             yield return null;
         }
     }

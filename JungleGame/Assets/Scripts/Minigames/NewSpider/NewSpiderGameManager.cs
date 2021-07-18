@@ -6,6 +6,9 @@ public class NewSpiderGameManager : MonoBehaviour
 {
     public static NewSpiderGameManager instance;
 
+    public bool playingInEditor;
+    public bool playTutorial;
+
     [SerializeField] private NewSpiderController spider;
     [SerializeField] private WebBall ball;
     [SerializeField] private BugController bug;
@@ -19,8 +22,7 @@ public class NewSpiderGameManager : MonoBehaviour
 
     private List<ActionWordEnum> globalCoinPool;
     private List<ActionWordEnum> unusedCoinPool;
-
-
+    private List<ActionWordEnum> usedCoinPool;
 
 
     [SerializeField] private List<SpiderCoin> Coins;
@@ -31,8 +33,9 @@ public class NewSpiderGameManager : MonoBehaviour
     public SpiderCoin selectedSpiderCoin;
 
     private int winCount = 0;
+    private int timesMissed = 0;
 
-    private bool firstTimePlaying = true;
+    private SpiderwebGameData gameData;
 
 
     void Awake()
@@ -43,24 +46,17 @@ public class NewSpiderGameManager : MonoBehaviour
         if (!instance)
         {
             instance = this;
-
-
         }
 
-        // dev object stuff
-        //devObject.SetActive(GameManager.instance.devModeActivated);
+        // get game data
+        gameData = (SpiderwebGameData)GameManager.instance.GetData();
+
+        if (!playingInEditor)
+            playTutorial = !StudentInfoSystem.currentStudentPlayer.froggerTutorial;
 
         PregameSetup();
         StartCoroutine(StartGame(0));
-        //StartCoroutine(StartGame(0));
     }
-
-    void Update()
-    {
-        
-    }
-
-    
 
     public bool EvaluateSelectedSpiderCoin(ActionWordEnum coin,SpiderCoin correctCoin)
     {
@@ -86,10 +82,9 @@ public class NewSpiderGameManager : MonoBehaviour
         return false;
     }
 
-
     private IEnumerator CoinFailRoutine()
     {
-        
+        timesMissed++;
         bug.die();
         yield return new WaitForSeconds(.5f);
         spider.fail();
@@ -138,6 +133,7 @@ public class NewSpiderGameManager : MonoBehaviour
         
         StartCoroutine(StartGame(0));
     }
+
     private IEnumerator bugLeaves()
     {
         web.webLarge();
@@ -152,11 +148,24 @@ public class NewSpiderGameManager : MonoBehaviour
 
     private IEnumerator WinRoutine()
     {
+        // play win tune
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+
         yield return new WaitForSeconds(2f);
 
-        // TODO: change maens of finishing game (for now we just return to the scroll map)
-        GameManager.instance.LoadScene("ScrollMap", true, 3f);
+        // calculate and show stars
+        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
     }
+
+    private int CalculateStars()
+    {
+        if (timesMissed <= 0)
+            return 3;
+        else if (timesMissed > 0 && timesMissed <= 2)
+            return 2;
+        else
+            return 1;
+    }  
 
     private void PregameSetup()
     {
@@ -168,44 +177,33 @@ public class NewSpiderGameManager : MonoBehaviour
             allCoins.Add(coin);
         }
 
-
         // Create Global Coin List
-        globalCoinPool = GameManager.instance.GetGlobalActionWordList();
+        if (gameData != null)
+        {
+            globalCoinPool = gameData.wordPool;
+        }
+        else
+        {
+            globalCoinPool = GameManager.instance.GetGlobalActionWordList();
+        }
+
         unusedCoinPool = new List<ActionWordEnum>();
         unusedCoinPool.AddRange(globalCoinPool);
 
         // disable all coins
         foreach (var coin in allCoins)
-        {
-            
+        { 
             coin.setOrigin();
             Debug.Log(coin.transform.position);
         }
-
-
-
-        foreach (var coin in allCoins)
-        {
-            //coin.gameObject.SetActive(false);
-        }
-
-
-
     }
-
-    private void walkThrough()
-    {
-       
-    }
-
-
 
     private IEnumerator StartGame(int coins)
     {
         StartCoroutine(CoinsDown(coins));
         bug.goToOrigin();
         yield return new WaitForSeconds(1f);
-        List<SpiderCoin> coinz = GetCoins(coins);
+        List<SpiderCoin> coinz = GetCoins();
         foreach (var coin in coinz)
         {
             
@@ -228,31 +226,51 @@ public class NewSpiderGameManager : MonoBehaviour
 
     private IEnumerator ShowCoins(int index)
     {
-        Debug.Log("ShowCoins???????????????");
-        List<SpiderCoin> currentCoins = GetCoins(index);
+        List<SpiderCoin> currentCoins = GetCoins();
+
+        // make new used word list and add current correct word
+        usedCoinPool = new List<ActionWordEnum>();
+        usedCoinPool.Clear();
+
         foreach (var coin in currentCoins)
         {
-            // set random type
-            if (unusedCoinPool.Count == 0)
-            {
-                unusedCoinPool.AddRange(globalCoinPool);
-            }
-            ActionWordEnum type = unusedCoinPool[Random.Range(0, unusedCoinPool.Count)];
-            unusedCoinPool.Remove(type);
+            ActionWordEnum type = GetUnusedWord();
 
             coin.SetCoinType(type);
             coin.ToggleVisibility(true, true);
             Debug.Log("ShowCoins");
             yield return new WaitForSeconds(0f);
         }
+    }
 
-        //SelectRandomCoin(currRow);
+    private ActionWordEnum GetUnusedWord()
+    {
+        // reset unused pool if empty
+        if (unusedCoinPool.Count <= 0)
+        {
+            unusedCoinPool.Clear();
+            unusedCoinPool.AddRange(globalCoinPool);
+        }
+
+        int index = Random.Range(0, unusedCoinPool.Count);
+        ActionWordEnum word = unusedCoinPool[index];
+
+        // make sure word is not being used
+        if (usedCoinPool.Contains(word))
+        {
+            unusedCoinPool.Remove(word);
+            return GetUnusedWord();
+        }
+
+        unusedCoinPool.Remove(word);
+        usedCoinPool.Add(word);
+        return word;
     }
 
     private IEnumerator CoinsUp(int index)
     {
         Debug.Log("ShowCoins");
-        List<SpiderCoin> coins = GetCoins(index);
+        List<SpiderCoin> coins = GetCoins();
         foreach (var coin in coins)
         {
 
@@ -265,21 +283,19 @@ public class NewSpiderGameManager : MonoBehaviour
     private IEnumerator CoinsDown(int index)
     {
         Debug.Log("ShowCoins");
-        List<SpiderCoin> coins = GetCoins(index);
+        List<SpiderCoin> coins = GetCoins();
         foreach (var coin in coins)
         {
             
             coin.MoveDown();
             yield return new WaitForSeconds(0f);
-
         }
-        //SelectRandomCoin(index);
     }
 
 
     private IEnumerator HideCoins(int index, RummageCoin exceptCoin = null)
     {
-        List<SpiderCoin> row = GetCoins(index);
+        List<SpiderCoin> row = GetCoins();
         foreach (var coin in row)
         {
             if (coin != exceptCoin)
@@ -290,24 +306,15 @@ public class NewSpiderGameManager : MonoBehaviour
 
     private void SelectRandomCoin(int index)
     {
-        List<SpiderCoin> pile = GetCoins(index);
+        List<SpiderCoin> pile = GetCoins();
         selectedIndex = Random.Range(0, pile.Count);
         print("selected index: " + selectedIndex);
         selectedSpiderCoin = pile[selectedIndex];
         bug.SetCoinType(selectedSpiderCoin.type);
-
-
     }
 
-    private List<SpiderCoin> GetCoins(int index)
+    private List<SpiderCoin> GetCoins()
     {
-        switch (index)
-        {
-            default:
-            case 0:
-                return Coins;
-
-
-        }
+        return Coins;
     }
 }

@@ -17,6 +17,12 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private GameObject fxAudioObject;
     [SerializeField] private Transform fxObjectHolder;
 
+    // default volumes (on start)
+    public static float default_masterVol =     1f;
+    public static float default_musicVol =      0.25f;
+    public static float default_fxVol =         1f;
+    public static float default_talkVol =       1f;
+
     void Awake() 
     {
         if (instance == null)

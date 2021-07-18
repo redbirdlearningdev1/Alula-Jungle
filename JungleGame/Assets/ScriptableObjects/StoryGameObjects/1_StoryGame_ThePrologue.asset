@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 1_StoryGame_ThePrologue
   m_EditorClassIdentifier: 
   gameType: 1
-  sceneName: StoryGameScene
+  sceneName: StoryGame
   storyName: The Prologue
   background: 3
   segments:

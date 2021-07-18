@@ -27,7 +27,6 @@ public class RummageCoin : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
-        print(type.ToString());
         animator.Play(type.ToString());
 
         RectTransform rt = GetComponent<RectTransform>();
@@ -35,7 +34,6 @@ public class RummageCoin : MonoBehaviour
         myCollider.size = rt.sizeDelta;
 
         image = GetComponent<Image>();
-        
     }
 
     void Update()
@@ -128,7 +126,6 @@ public class RummageCoin : MonoBehaviour
 
     private IEnumerator BounceOutRoutine(Vector3 target)
     {
-        Debug.Log("Here");
         Vector3 currStart = transform.position;
         float timer = 0f;
         float maxTime = 0.5f;
@@ -180,7 +177,6 @@ public class RummageCoin : MonoBehaviour
 
     public void ToggleVisibility(bool opt, bool smooth)
     {
-        Debug.Log("Toggle");
         if (smooth)
             StartCoroutine(ToggleVisibilityRoutine(opt));
         else
