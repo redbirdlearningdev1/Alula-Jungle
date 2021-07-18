@@ -115,10 +115,10 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySong(AudioClip song)
     {
-        musicSource.Stop();
-
         if (song == musicSource.clip)
             return;
+
+        musicSource.Stop();
 
         musicSource.clip = song;
         musicSource.loop = true;
@@ -170,7 +170,7 @@ public class AudioManager : MonoBehaviour
     }
 
     // clear all fx
-    public void ClearAllFX()
+    public void ClearAllAudio()
     {
         // iterate though each FX audio object and destory each one
         int num = fxObjectHolder.childCount;
@@ -179,6 +179,8 @@ public class AudioManager : MonoBehaviour
             var obj = fxObjectHolder.GetChild(idx).GetComponent<FxAudioObject>();
             obj.InstaDestroy();
         }
+        // stop talk source
+        talkSource.Stop();
     }
 
     public void PlayCoinDrop(int num = -1)

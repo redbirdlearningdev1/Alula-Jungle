@@ -1334,7 +1334,7 @@ MonoBehaviour:
   randomizeKeyPosition: 0
   finishedDoorColor: {r: 1, g: 0.79205453, b: 0, a: 1}
   winDoorColor: {r: 1, g: 0, b: 0.97566557, a: 1}
-  playTutorial: 1
+  playTutorial: 0
   correctTutorialIcons: 00000000010000000200000003000000
   firstQuartet: 08000000000000000000000000000000
   secondQuartet: 00000000080000000000000000000000
@@ -1353,7 +1353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOn: 1
-  keyMoveSpeed: 0.02
+  keyMoveSpeed: 0.04
   selectedKeyParent: {fileID: 1883585368}
 --- !u!1 &1370068918
 GameObject:

@@ -330,6 +330,9 @@ public class RummageGameManager : MonoBehaviour
 
     private void PregameSetup()
     {
+        // TODO: add music and ambiance
+        AudioManager.instance.StopMusic();
+
         // create coin list
         foreach (var coin in pile1)
             allCoins.Add(coin);

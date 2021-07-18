@@ -56,6 +56,9 @@ public class MinigameSpriteButton : MonoBehaviour, IPointerUpHandler, IPointerDo
             if (!isOn)
                 return;
 
+            // play audio blip
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
             switch (minigame)
             {
                 default:

@@ -14,6 +14,7 @@ public class MicInput : MonoBehaviour
     public static float MicLoudnessinDecibels;
 
     private string _device;
+    public int micDeviceIndex;
 
     void Awake() 
     {
@@ -30,6 +31,7 @@ public class MicInput : MonoBehaviour
         if (_device == null)
         {
             _device = Microphone.devices[0];
+            micDeviceIndex = 0;
             print("audio input device set to: " + _device);
         }
         _clipRecord = Microphone.Start(_device, true, 999, 44100);
@@ -46,6 +48,7 @@ public class MicInput : MonoBehaviour
     public void SwitchDevice(int num)
     {
         _device = Microphone.devices[num];
+        micDeviceIndex = num;
         GameManager.instance.SendLog(this, "switching to device: " + _device);
     }
 

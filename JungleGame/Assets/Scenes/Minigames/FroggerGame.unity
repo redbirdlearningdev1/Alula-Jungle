@@ -189,7 +189,7 @@ MonoBehaviour:
   - {fileID: 728974745}
   - {fileID: 1287270063}
   - {fileID: 1112553574}
-  playTutorial: 1
+  playTutorial: 0
   correctTutorialCoins: 00000000010000000200000000000000
   firstPair: 0800000000000000
   secondTriad: 000000000800000000000000
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOn: 1
-  coinMoveSpeed: 0.02
+  coinMoveSpeed: 0.04
   selectedCoinParent: {fileID: 204611493}
 --- !u!1 &10386590
 GameObject:
@@ -7874,7 +7874,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4bc747b975f842a4982b881611466081, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -9928,7 +9928,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 086ce660ba00faf45a14df99f7ac05f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 902433a307ad3e246b5f18a973733372, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

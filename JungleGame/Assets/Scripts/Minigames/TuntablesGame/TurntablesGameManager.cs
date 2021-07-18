@@ -124,6 +124,8 @@ public class TurntablesGameManager : MonoBehaviour
 
     private void PregameSetup()
     {
+        // stop music and play after delay
+        AudioManager.instance.StopMusic();
         StartCoroutine(StartMusicDelay(musicStartDelay));
 
         // start ambiance noise

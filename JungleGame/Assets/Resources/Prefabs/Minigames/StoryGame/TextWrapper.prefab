@@ -60,6 +60,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOn: 1
   constHeight: 100
+  sizePadding: 1
+  wordEnum: 0
 --- !u!114 &6637226175195925789
 MonoBehaviour:
   m_ObjectHideFlags: 0

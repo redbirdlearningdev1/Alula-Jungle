@@ -10,6 +10,12 @@ public static class StudentInfoSystem
     {
         SaveStudentPlayerData();
         currentStudentPlayer = LoadSaveSystem.LoadStudentData(index); // load new student data
+        GameManager.instance.SendLog("StudentInfoSystem", "current profile set to: " + index);
+    }
+
+    public static void RemoveCurrentStudentPlayer()
+    {
+        currentStudentPlayer = null;
     }
 
     public static void SaveStudentPlayerData()
@@ -18,5 +24,25 @@ public static class StudentInfoSystem
             LoadSaveSystem.SaveStudentData(currentStudentPlayer);  // save current student data
         else
             Debug.Log("Current student player is null.");
+    }
+
+    public static StudentPlayerData GetStudentData(StudentIndex index)
+    {
+        return LoadSaveSystem.LoadStudentData(index);
+    }
+
+    public static List<StudentPlayerData> GetAllStudentDatas()
+    {
+        var datas = new List<StudentPlayerData>();
+        datas.Add(GetStudentData(StudentIndex.student_1));
+        datas.Add(GetStudentData(StudentIndex.student_2));
+        datas.Add(GetStudentData(StudentIndex.student_3));
+
+        return datas;
+    }
+
+    public static void ResetProfile(StudentIndex index)
+    {
+        LoadSaveSystem.ResetStudentData(index);
     }
 }
