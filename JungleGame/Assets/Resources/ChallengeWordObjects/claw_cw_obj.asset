@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: claw
   audio: {fileID: 0}
-  elkoninList: 160000001e00000014000000000000000000000000000000
+  sprite: {fileID: 21300000, guid: ae54f831792471f42b73477a4d9951ad, type: 3}
+  elkoninList: 170000001f00000015000000000000000000000000000000
+  elkoninCount: 3
   set: 20
   imageText: "\r"

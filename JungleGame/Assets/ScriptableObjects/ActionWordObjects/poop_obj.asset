@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: poop
   audio: {fileID: 8300000, guid: 5bca01979ece61b4a90e401655219c16, type: 3}
+  elkoninValue: 4
   animation: poop
   _enum: 3
   doorIcon: {fileID: 21300000, guid: 583123dd031bd6b4aad0de298d7c4766, type: 3}

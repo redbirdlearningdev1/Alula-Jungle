@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: ache
   audio: {fileID: 0}
-  sprite: {fileID: 0}
-  elkoninList: 060000001d00000000000000000000000000000000000000
+  sprite: {fileID: 21300000, guid: 99947f25b32d6654ca704a893f3df2b6, type: 3}
+  elkoninList: 070000001e00000000000000000000000000000000000000
+  elkoninCount: 2
   set: 6
-  imageText: 
+  imageText: "\r"

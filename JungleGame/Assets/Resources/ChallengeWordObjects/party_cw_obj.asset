@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: party
   audio: {fileID: 0}
-  elkoninList: 210000000d00000026000000070000000000000000000000
+  sprite: {fileID: 21300000, guid: be2d6ed336c63c748af2fa88d930521d, type: 3}
+  elkoninList: 220000000e00000027000000080000000000000000000000
+  elkoninCount: 4
   set: 13
   imageText: "\r"

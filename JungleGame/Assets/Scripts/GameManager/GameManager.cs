@@ -11,6 +11,8 @@ public class GameManager : DontDestroy<GameManager>
 
     // game data
     public List<ActionWord> actionWords;
+    public List<ConsonantWord> consonantWords;
+    //public List<Cons
     public List<StoryGameData> storyGameDatas;
     
     [SerializeField] private GameObject devModeIndicator;
@@ -130,16 +132,36 @@ public class GameManager : DontDestroy<GameManager>
         Debug.Log("[LOG] " + msg + " @ " + context);
     }
 
+    // return elkonin value equivalent coin (action word or consonant)
+    public GameWord GetGameWord(ElkoninValue value)
+    {
+        // check action words
+        foreach (var actionWord in actionWords)
+        {
+            if (actionWord.elkoninValue == value)
+                return actionWord;
+        }
+
+        // check consonant words
+        foreach(var consonantWord in consonantWords)
+        {
+            if (consonantWord.elkoninValue == value)
+                return consonantWord;
+        }
+        SendError (this, "Could not find elkonin value: \'" + value + "\'");
+        return null;
+    }
+
     // returns action word data from enum
     public ActionWord GetActionWord(ActionWordEnum word)
     {
         //print ("word: " + word);
-        foreach(ActionWord actionWord in actionWords)
+        foreach (ActionWord actionWord in actionWords)
         {
             if (actionWord._enum.Equals(word))
                 return actionWord;
         }
-        SendError(this, "Could not find action word: \'" + word + "\'");
+        SendError (this, "Could not find action word: \'" + word + "\'");
         return null;
     }
 

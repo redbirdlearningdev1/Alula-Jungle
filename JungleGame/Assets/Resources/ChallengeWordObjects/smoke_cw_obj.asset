@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: smoke
   audio: {fileID: 0}
-  elkoninList: 240000001f000000090000001d0000000000000000000000
+  sprite: {fileID: 21300000, guid: cc1669f23dc87554b80df20c02d99a5a, type: 3}
+  elkoninList: 25000000200000000a0000001e0000000000000000000000
+  elkoninCount: 4
   set: 9
   imageText: "\r"

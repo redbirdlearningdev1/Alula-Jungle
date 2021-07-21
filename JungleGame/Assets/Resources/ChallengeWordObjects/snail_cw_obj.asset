@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: nail
   audio: {fileID: 0}
-  elkoninList: 20000000060000001e000000000000000000000000000000
+  sprite: {fileID: 0}
+  elkoninList: 21000000070000001f000000000000000000000000000000
+  elkoninCount: 3
   set: 6
   imageText: "\r"

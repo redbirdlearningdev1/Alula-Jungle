@@ -16,6 +16,9 @@ TagManager:
   - BoatButton
   - Bug
   - Parrot
+  - Polaroid
+  - PolaroidTarget
+  - UniversalCoin
   layers:
   - Default
   - TransparentFX

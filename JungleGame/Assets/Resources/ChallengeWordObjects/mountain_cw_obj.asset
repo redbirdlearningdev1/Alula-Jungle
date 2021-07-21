@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: mountain
   audio: {fileID: 0}
-  elkoninList: 1f0000001300000020000000260000000200000020000000
+  sprite: {fileID: 21300000, guid: 292b60604d775ef4ebf1572648a7778d, type: 3}
+  elkoninList: 200000001400000021000000270000000300000021000000
+  elkoninCount: 6
   set: 19
   imageText: "\r"

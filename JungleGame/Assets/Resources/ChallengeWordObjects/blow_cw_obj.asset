@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdfd6af85ce95e84c9c41f78b3e3f482, type: 3}
   m_Name: blow_cw_obj
   m_EditorClassIdentifier: 
-  word: low
+  word: blow
   audio: {fileID: 0}
-  elkoninList: 1e0000000900000000000000000000000000000000000000
+  sprite: {fileID: 21300000, guid: 39474e1f6ade01c41b228ae77f8f5981, type: 3}
+  elkoninList: 160000001f0000000a000000000000000000000000000000
+  elkoninCount: 3
   set: 9
   imageText: "\r"

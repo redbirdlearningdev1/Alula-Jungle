@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: spider
   audio: {fileID: 8300000, guid: 35c9d9038cbb37c4faa83a75e42512ae, type: 3}
+  elkoninValue: 8
   animation: spider
   _enum: 7
   doorIcon: {fileID: 21300000, guid: 83b505014dcd94247b595d0a5f7c4652, type: 3}

@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: eve
   audio: {fileID: 0}
-  elkoninList: 070000002800000000000000000000000000000000000000
+  sprite: {fileID: 21300000, guid: 22d4407984098494eb9926421d7ff078, type: 3}
+  elkoninList: 080000002900000000000000000000000000000000000000
+  elkoninCount: 2
   set: 7
   imageText: "\r"

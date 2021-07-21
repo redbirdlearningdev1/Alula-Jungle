@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: thatguy
   audio: {fileID: 8300000, guid: d1c77ad5bdc36f444813ac7a01fc6953, type: 3}
+  elkoninValue: 11
   animation: thatguy
   _enum: 10
   doorIcon: {fileID: 21300000, guid: 551df36e21f0e2d47866e42ecec9c1e0, type: 3}

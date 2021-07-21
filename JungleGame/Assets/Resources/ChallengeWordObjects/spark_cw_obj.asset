@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: spark
   audio: {fileID: 0}
-  elkoninList: 24000000210000000d0000001d0000000000000000000000
+  sprite: {fileID: 21300000, guid: fc64aa9fc0032c6438ed0d33170ea7b9, type: 3}
+  elkoninList: 25000000220000000e0000001e0000000000000000000000
+  elkoninCount: 4
   set: 13
   imageText: "\r"

@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: sweet
   audio: {fileID: 0}
-  elkoninList: 240000002900000007000000260000000000000000000000
+  sprite: {fileID: 21300000, guid: 05094b99677c1da4fb6b1d58210600d1, type: 3}
+  elkoninList: 250000002a00000008000000270000000000000000000000
+  elkoninCount: 4
   set: 7
   imageText: "\r"

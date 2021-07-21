@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: army
   audio: {fileID: 0}
-  elkoninList: 0d0000001f00000007000000000000000000000000000000
+  sprite: {fileID: 21300000, guid: 5d2c74fe4261f014d8c60523ecd40d4e, type: 3}
+  elkoninList: 0e0000002000000008000000000000000000000000000000
+  elkoninCount: 3
   set: 13
   imageText: "\r"

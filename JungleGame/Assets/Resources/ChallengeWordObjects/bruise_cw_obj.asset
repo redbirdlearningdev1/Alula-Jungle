@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: bruise
   audio: {fileID: 0}
-  elkoninList: 15000000230000000a000000240000000000000000000000
+  sprite: {fileID: 21300000, guid: 181df9a1fea7655468fb15d9d503d6ec, type: 3}
+  elkoninList: 16000000240000000b000000250000000000000000000000
+  elkoninCount: 4
   set: 10
   imageText: "\r"

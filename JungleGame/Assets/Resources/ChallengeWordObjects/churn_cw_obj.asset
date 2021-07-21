@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: churn
   audio: {fileID: 0}
-  elkoninList: 170000000e00000020000000000000000000000000000000
+  sprite: {fileID: 21300000, guid: c343f6978d962e848b6fbf7bb5e13d33, type: 3}
+  elkoninList: 180000000f00000021000000000000000000000000000000
+  elkoninCount: 3
   set: 14
   imageText: "\r"

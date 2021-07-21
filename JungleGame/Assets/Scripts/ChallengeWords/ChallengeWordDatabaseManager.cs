@@ -243,7 +243,7 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
         switch (val)
         {
             default:
-                return ElkoninValue.empty;
+                return ElkoninValue.empty_gold;
             // action words
             case "mudslide":
                 return ElkoninValue.mudslide;
