@@ -10,6 +10,8 @@ public class WordFactoryRaycaster : MonoBehaviour
 
     private GameObject selectedObject = null;
     [SerializeField] private Transform selectedObjectParent;
+    [SerializeField] private GlowLine glowLineTop;
+    [SerializeField] private GlowLine glowLineBottom;
 
     void Update()
     {
@@ -41,7 +43,6 @@ public class WordFactoryRaycaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("PolaroidTarget"))
                     {
-                        print ("in target!");
                         isCorrect = WordFactoryBlendingManager.instance.EvaluatePolaroid(selectedObject.GetComponent<Polaroid>());
                     }
                 }
@@ -50,6 +51,10 @@ public class WordFactoryRaycaster : MonoBehaviour
             // return polaroids to appropriate pos
             WordFactoryBlendingManager.instance.ResetPolaroids();
             selectedObject = null;
+
+            // un-toggle glow lines
+            glowLineTop.ToggleGlow(false);
+            glowLineBottom.ToggleGlow(false);
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -66,10 +71,12 @@ public class WordFactoryRaycaster : MonoBehaviour
                     if (result.gameObject.transform.CompareTag("Polaroid"))
                     {
                         selectedObject = result.gameObject;
-                        //selectedObject.PlayAudio();
                         selectedObject.gameObject.transform.SetParent(selectedObjectParent);
-                        selectedObject.GetComponent<Polaroid>().LerpScale(1.25f, 0.25f);
+                        selectedObject.GetComponent<Polaroid>().LerpScale(1.25f, 0.1f);
                         selectedObject.GetComponent<Polaroid>().SetLayer(6);
+                        // toggle glow lines
+                        glowLineTop.ToggleGlow(true);
+                        glowLineBottom.ToggleGlow(true);
                         return;
                     }
                     else if (result.gameObject.transform.CompareTag("UniversalCoin"))

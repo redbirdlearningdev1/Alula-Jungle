@@ -129,9 +129,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glowColor: {r: 1, g: 1, b: 1, a: 1}
-  glowBrightness: 4.34
-  outlineWidth: 4
-  alphaThreshold: 0.285
+  glowBrightness: 4
+  outlineWidth: 0
+  alphaThreshold: 0.1
   drawOutside: 0
   enableInstancing: 0
 --- !u!114 &6518211643035621580
@@ -584,6 +584,9 @@ MonoBehaviour:
   actionWordCoin: {fileID: 4772590523993166747}
   consonantCoin: {fileID: 4380767979485146062}
   glowConroller: {fileID: 6518211643035621580}
+  glowSpriteRenderer: {fileID: 3088571123213874872}
+  goldSpriteRenderer: {fileID: 3455495355839184415}
+  silverSpriteRenderer: {fileID: 5837890213851055695}
 --- !u!114 &4557478123324205734
 MonoBehaviour:
   m_ObjectHideFlags: 0

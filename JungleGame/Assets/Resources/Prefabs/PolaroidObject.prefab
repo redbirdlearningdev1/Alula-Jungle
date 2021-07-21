@@ -130,9 +130,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glowColor: {r: 1, g: 1, b: 1, a: 1}
-  glowBrightness: 4.2
-  outlineWidth: 0
-  alphaThreshold: 1
+  glowBrightness: 3
+  outlineWidth: 3
+  alphaThreshold: 0.1
   drawOutside: 0
   enableInstancing: 0
 --- !u!114 &3112401552482905172
@@ -149,9 +149,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deactivated: 0
   glowTime: 0.2
-  brightnessOn: 4.2
+  brightnessOn: 3
   brightnessOff: 0
-  outlineOn: 1
+  outlineOn: 3
   outlineOff: 0
 --- !u!114 &3112401552482905171
 MonoBehaviour:
@@ -308,9 +308,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glowColor: {r: 1, g: 1, b: 1, a: 1}
-  glowBrightness: 4.2
+  glowBrightness: 1
   outlineWidth: 0
-  alphaThreshold: 1
+  alphaThreshold: 0
   drawOutside: 0
   enableInstancing: 0
 --- !u!114 &2369033145173795137
@@ -320,16 +320,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8991180036634615486}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79290a62fb8d9794588d5d834d891035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   deactivated: 1
-  glowTime: 0.2
-  brightnessOn: 4.2
+  glowTime: 0
+  brightnessOn: 0
   brightnessOff: 0
-  outlineOn: 1
+  outlineOn: 0
   outlineOff: 0
 --- !u!114 &3044056122534982071
 MonoBehaviour:

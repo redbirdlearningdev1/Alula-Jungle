@@ -70,4 +70,14 @@ public class Polaroid : MonoBehaviour
         background.sortingOrder = layer;
         picture.sortingOrder = layer + 1;
     }
+
+    public void ToggleGlowOutline(bool opt)
+    {
+        background.GetComponent<GlowOutlineController>().ToggleGlowOutline(opt);
+    }
+
+    public void SetGlowColor(Color color)
+    {
+        background.GetComponent<GlowOutlineController>().SetColor(color);
+    }
 }

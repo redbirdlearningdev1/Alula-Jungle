@@ -45,6 +45,32 @@ public class GlowOutlineController : MonoBehaviour
         spriteGlow.GlowColor = color;
     }
 
+    public void SetColor(Color newColor)
+    {
+        StartCoroutine(LerpGlowColor(newColor, 0.25f));
+    }
+
+    private IEnumerator LerpGlowColor(Color color, float time)
+    {
+        float timer = 0;
+        Color startColor = spriteGlow.GlowColor;
+
+         while (true) 
+        {
+            timer += Time.deltaTime;
+            if (timer > time)
+            {
+                spriteGlow.GlowColor = color;
+                break;
+            }
+
+            var tempColor = Color.Lerp(startColor, color, timer / time);
+            spriteGlow.GlowColor = tempColor;
+
+            yield return null;
+        }
+    }
+
     private IEnumerator LerpGlowSettingsRoutine(float brightness, int outline, Color color, float time)
     {
         float timer = 0;
