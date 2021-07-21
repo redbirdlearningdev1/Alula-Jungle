@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: hair
   audio: {fileID: 0}
-  elkoninList: 1b0000000c00000000000000000000000000000000000000
+  sprite: {fileID: 0}
+  elkoninList: 1c0000000d00000000000000000000000000000000000000
+  elkoninCount: 2
   set: 12
   imageText: "\r"

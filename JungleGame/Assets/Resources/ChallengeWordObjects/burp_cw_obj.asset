@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: burp
   audio: {fileID: 0}
-  elkoninList: 150000000e00000021000000000000000000000000000000
+  sprite: {fileID: 21300000, guid: 3022dc8499da8d743ad6a4db2409bb87, type: 3}
+  elkoninList: 160000000f00000022000000000000000000000000000000
+  elkoninCount: 3
   set: 14
   imageText: "\r"

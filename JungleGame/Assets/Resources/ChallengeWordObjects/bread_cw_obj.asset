@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: bread
   audio: {fileID: 0}
-  elkoninList: 150000002300000002000000180000000000000000000000
+  sprite: {fileID: 0}
+  elkoninList: 160000002400000003000000190000000000000000000000
+  elkoninCount: 4
   set: 2
   imageText: "\r"

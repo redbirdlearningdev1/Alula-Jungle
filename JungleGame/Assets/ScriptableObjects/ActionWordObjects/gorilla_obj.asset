@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: gorilla
   audio: {fileID: 8300000, guid: 66bc1ace36f2b2e4dbe233459c639f3d, type: 3}
+  elkoninValue: 15
   animation: gorilla
   _enum: 14
   doorIcon: {fileID: 21300000, guid: 2567d9e48858d4f47a858d4f095fde29, type: 3}

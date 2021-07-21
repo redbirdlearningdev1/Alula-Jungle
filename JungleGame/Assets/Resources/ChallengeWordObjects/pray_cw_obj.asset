@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: pray
   audio: {fileID: 0}
-  elkoninList: 210000002300000006000000000000000000000000000000
+  sprite: {fileID: 21300000, guid: 77ceea9cf30664541aff4e8e69d43fc2, type: 3}
+  elkoninList: 220000002400000007000000000000000000000000000000
+  elkoninCount: 3
   set: 6
   imageText: "\r"

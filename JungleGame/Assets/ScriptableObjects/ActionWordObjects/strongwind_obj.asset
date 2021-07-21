@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: strongwind
   audio: {fileID: 8300000, guid: 2a383af418910a14b858d8046437f773, type: 3}
+  elkoninValue: 13
   animation: strongwind
   _enum: 12
   doorIcon: {fileID: 21300000, guid: 76f5039af78021247bf3153b8081a654, type: 3}

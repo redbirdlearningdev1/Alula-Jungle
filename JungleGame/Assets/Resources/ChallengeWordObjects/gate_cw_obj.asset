@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: ate
   audio: {fileID: 0}
-  elkoninList: 060000002600000000000000000000000000000000000000
+  sprite: {fileID: 0}
+  elkoninList: 070000002700000000000000000000000000000000000000
+  elkoninCount: 2
   set: 6
   imageText: "\r"

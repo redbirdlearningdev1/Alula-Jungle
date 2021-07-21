@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: choice
   audio: {fileID: 8300000, guid: 1acd1b8565159534299eb88a6d0bff0e, type: 3}
+  elkoninValue: 12
   animation: choice
   _enum: 11
   doorIcon: {fileID: 21300000, guid: 9ecfaf09c0161f949b1be06fee22cbda, type: 3}

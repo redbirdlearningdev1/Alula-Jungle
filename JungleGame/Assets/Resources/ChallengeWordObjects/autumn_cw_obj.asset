@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: autumn
   audio: {fileID: 0}
-  elkoninList: 1400000026000000050000001f0000000000000000000000
+  sprite: {fileID: 21300000, guid: 21aa3164381670e4f82fca4dca01ade3, type: 3}
+  elkoninList: 150000002700000006000000200000000000000000000000
+  elkoninCount: 4
   set: 20
   imageText: "\r"

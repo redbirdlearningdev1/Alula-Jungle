@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: shirt
   audio: {fileID: 0}
-  elkoninList: 250000000e00000026000000000000000000000000000000
+  sprite: {fileID: 21300000, guid: e3dde8bcc94fc474492e5cbd81d7a3db, type: 3}
+  elkoninList: 260000000f00000027000000000000000000000000000000
+  elkoninCount: 3
   set: 14
   imageText: "\r"

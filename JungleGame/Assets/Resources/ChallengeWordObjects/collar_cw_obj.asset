@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: collar
   audio: {fileID: 0}
-  elkoninList: 16000000040000001e0000000d0000000000000000000000
+  sprite: {fileID: 21300000, guid: f08f458dd3231f349ab0d80478b2c551, type: 3}
+  elkoninList: 17000000050000001f0000000e0000000000000000000000
+  elkoninCount: 4
   set: 4
   imageText: "\r"

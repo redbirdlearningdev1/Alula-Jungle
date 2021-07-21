@@ -32,11 +32,8 @@ public enum ActionWordEnum {
 }
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/ActionWord", order = 2)]
-public class ActionWord : ScriptableObject
+public class ActionWord : GameWord
 {
-    public string _name;
-    public AudioClip audio;
-    public string animation;
     public ActionWordEnum _enum;
 
     // turntables game

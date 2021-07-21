@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: vein
   audio: {fileID: 0}
-  elkoninList: 280000000600000020000000000000000000000000000000
+  sprite: {fileID: 21300000, guid: 8c70b1b3865e9b848b236a34de6fd8ab, type: 3}
+  elkoninList: 290000000700000021000000000000000000000000000000
+  elkoninCount: 3
   set: 6
   imageText: "\r"

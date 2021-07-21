@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: fawn
   audio: {fileID: 0}
-  elkoninList: 190000001400000020000000000000000000000000000000
+  sprite: {fileID: 21300000, guid: 734a0ca5237c8b54794e7df30ff44c79, type: 3}
+  elkoninList: 1a0000001500000021000000000000000000000000000000
+  elkoninCount: 3
   set: 20
   imageText: "\r"

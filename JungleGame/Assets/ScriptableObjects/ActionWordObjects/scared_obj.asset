@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: scared
   audio: {fileID: 8300000, guid: 965e32ef6b5bdbb42bc16a4b4bf883b4, type: 3}
+  elkoninValue: 10
   animation: scared
   _enum: 9
   doorIcon: {fileID: 21300000, guid: a324f71285acd804c8f766c00e3c4357, type: 3}

@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: money
   audio: {fileID: 0}
-  elkoninList: 1f0000000500000020000000070000000000000000000000
+  sprite: {fileID: 21300000, guid: 7cbcc658193b2d14884c3baa7701552f, type: 3}
+  elkoninList: 200000000600000021000000080000000000000000000000
+  elkoninCount: 4
   set: 5
   imageText: "\r"

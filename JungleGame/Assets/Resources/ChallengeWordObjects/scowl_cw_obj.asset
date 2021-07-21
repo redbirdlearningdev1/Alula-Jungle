@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: scowl
   audio: {fileID: 0}
-  elkoninList: 2400000016000000130000001e0000000000000000000000
+  sprite: {fileID: 21300000, guid: 1f698b6e8a33663449b19803738dfb57, type: 3}
+  elkoninList: 2500000017000000140000001f0000000000000000000000
+  elkoninCount: 4
   set: 19
   imageText: "\r"
