@@ -65,7 +65,7 @@ public class NewSpiderGameManager : MonoBehaviour
         {
             // success! go on to the next row or win game if on last row
             Debug.Log("YOU DID IT");
-            if (winCount < 5)
+            if (winCount < 4)
             {
                 winCount++;
                 StartCoroutine(CoinSuccessRoutine(correctCoin));

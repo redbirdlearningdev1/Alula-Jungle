@@ -9,6 +9,7 @@ public class RummageCoinRaycaster : MonoBehaviour
     public bool pileChosen = false;
     private RummageCoin selectedRummageCoin = null;
     private pileRummage pile = null;
+    [SerializeField]  private chest Chester;
     [SerializeField] private List<pileRummage> piles;
     [SerializeField] private Transform selectedCoinParent;
 
@@ -45,7 +46,7 @@ public class RummageCoinRaycaster : MonoBehaviour
                     }
                 }
             }
-
+            Chester.chestGlowNo();
             selectedRummageCoin.ReturnToCloth();
             selectedRummageCoin = null;
         }
@@ -66,6 +67,7 @@ public class RummageCoinRaycaster : MonoBehaviour
                         selectedRummageCoin = result.gameObject.GetComponent<RummageCoin>();
                         selectedRummageCoin.PlayPhonemeAudio();
                         selectedRummageCoin.gameObject.transform.SetParent(selectedCoinParent);
+                        Chester.chestGlow();
 
                     }
                     if (result.gameObject.transform.CompareTag("Pile"))

@@ -10,6 +10,9 @@ public class WebBall : MonoBehaviour
 
     [Header("Objects")]
     [SerializeField] private Image ball;
+    [SerializeField] private SpriteRenderer Sball;
+
+
 
     [Header("Images")]
     [SerializeField] private List<Sprite> chestBall;
@@ -17,6 +20,7 @@ public class WebBall : MonoBehaviour
     void Awake()
     {
         ball.sprite = chestBall[currBall];
+        Sball.sprite = chestBall[currBall];
     }
 
     public void UpgradeChest()
@@ -25,8 +29,8 @@ public class WebBall : MonoBehaviour
         {
             currBall++;
         }
-
         ball.sprite = chestBall[currBall];
+        Sball.sprite = chestBall[currBall];
     }
 
     public void DowngradeChest()
@@ -35,7 +39,21 @@ public class WebBall : MonoBehaviour
         {
             currBall--;
         }
-
         ball.sprite = chestBall[currBall];
+        Sball.sprite = chestBall[currBall];
     }
+    public void chestGlow()
+    {
+        //chest1.sprite = bagSprites[currBag];
+        Sball.enabled = true;
+
+    }
+    public void chestGlowNo()
+    {
+        //chest1.sprite = bagSprites[currBag];
+        Sball.enabled = false;
+
+    }
+
+
 }

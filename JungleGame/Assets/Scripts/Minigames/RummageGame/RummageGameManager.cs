@@ -66,9 +66,11 @@ public class RummageGameManager : MonoBehaviour
 
         // get game data
         gameData = (RummageGameData)GameManager.instance.GetData();
+        //playTutorial = !StudentInfoSystem.currentStudentPlayer.rummageTutorial;
 
         if (!playingInEditor)
             playTutorial = !StudentInfoSystem.currentStudentPlayer.rummageTutorial;
+
 
         PregameSetup();
     }
@@ -114,8 +116,17 @@ public class RummageGameManager : MonoBehaviour
             coin.gameObject.SetActive(false);
         }
 
-        StartCoroutine(SetPileGlow(true));
-        StartCoroutine(SetPileWiggles(true));
+        if(playTutorial)
+        {
+
+        }
+        else
+        {
+            StartCoroutine(SetPileGlow(true));
+            StartCoroutine(SetPileWiggles(true));
+        }
+
+        
     }
 
     void Update()
@@ -286,7 +297,7 @@ public class RummageGameManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         orc.stopOrc();
         atPile = false;
-        chest.chestGlowNo();
+        //chest.chestGlowNo();
         StartCoroutine(SetPileGlow(true));
     }
 
@@ -414,7 +425,12 @@ public class RummageGameManager : MonoBehaviour
 
     private void walkThrough()
     {
-        StartCoroutine(SetPileGlow(false));
+
+        //StartCoroutine(SetPileGlow(false));
+        pile[0].pileGlowOn();
+
+        pile[0].SetWiggleOn();
+
         pileComplete2 = true;
         pileComplete3 = true;
         pileComplete4 = true;
@@ -445,7 +461,7 @@ public class RummageGameManager : MonoBehaviour
             coin.grow();
             coin.BounceToCloth();
         }
-        chest.chestGlow();
+        //chest.chestGlow();
         SelectRandomCoin(piles);
     }
 
