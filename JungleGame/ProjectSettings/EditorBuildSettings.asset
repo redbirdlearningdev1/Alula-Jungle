@@ -44,4 +44,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MinigameDemoScene.unity
     guid: b878814cc0549414586bb0ccba91f961
+  - enabled: 1
+    path: Assets/Scenes/ChallengeGames/WordFactoryBlending.unity
+    guid: 38b0bea0c4d079a4481b0f6e925b0c72
+  - enabled: 1
+    path: Assets/Scenes/ChallengeGames/WordFactorySubstituting.unity
+    guid: a5773497248bda54b9b727ce865cd1b2
   m_configObjects: {}
