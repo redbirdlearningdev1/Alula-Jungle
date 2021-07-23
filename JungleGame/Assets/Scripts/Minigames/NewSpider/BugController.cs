@@ -48,29 +48,31 @@ public class BugController : MonoBehaviour
         shrink();
         StartCoroutine(ReturnToWebRoutine(WebLand));
         StartCoroutine(landRoutine());
-
-
     }
+
     public void setOrigin()
     {
         Origin = transform.position;
     }
+
     public void goToOrigin()
     {
         grow();
         StartCoroutine(ReturnToOriginRoutine(Origin));
     }
+
     public void die()
     {
-        
         StartCoroutine(dieRoutine());
     }
+
     private IEnumerator dieRoutine()
     {
         yield return new WaitForSeconds(0f);
         animator.Play("Wrapped");
     }
-        private IEnumerator landRoutine()
+
+    private IEnumerator landRoutine()
     {
         yield return new WaitForSeconds(1.20f);
         animator.Play("Land");
@@ -78,7 +80,7 @@ public class BugController : MonoBehaviour
         animator.Play("Still");
     }
 
-        private IEnumerator ReturnToWebRoutine(Vector3 target)
+    private IEnumerator ReturnToWebRoutine(Vector3 target)
     {
         Debug.Log("Here");
         Vector3 currStart = transform.position;
@@ -103,6 +105,7 @@ public class BugController : MonoBehaviour
             yield return null;
         }
     }
+
     private IEnumerator ReturnToOriginRoutine(Vector3 target)
     {
         Debug.Log("Here");
@@ -133,6 +136,7 @@ public class BugController : MonoBehaviour
     {
         StartCoroutine(growRoutine(scaleNormal));
     }
+
     public void shrink()
     {
         StartCoroutine(growRoutine(scaleSmall));
@@ -168,6 +172,7 @@ public class BugController : MonoBehaviour
     {
         StartCoroutine(takeOffRoutine());
     }
+
     private IEnumerator takeOffRoutine()
     {
 
@@ -175,22 +180,26 @@ public class BugController : MonoBehaviour
         yield return new WaitForSeconds(0f);
 
     }
+
     public void leaveWeb()
     {
         animator.Play("Takeoff");
         StartCoroutine(leaveWebRoutine(WebLeave1));
 
     }
+
     public void leaveWeb2()
     {
 
         StartCoroutine(leaveWebRoutine(WebLeave2));
     }
+
     public void webGetEat()
     {
 
         StartCoroutine(leaveWebRoutine(WebEat));
     }
+
     private IEnumerator leaveWebRoutine(Vector3 target)
     {
         Debug.Log("Here");
@@ -216,7 +225,6 @@ public class BugController : MonoBehaviour
         }
     }
 
-
     public void SetCoinType(ActionWordEnum type)
     {
         this.type = type;
@@ -230,7 +238,6 @@ public class BugController : MonoBehaviour
     {
         if (!audioPlaying)
         {
-            
             StartCoroutine(PlayPhonemeAudioRoutine());
         }
     }

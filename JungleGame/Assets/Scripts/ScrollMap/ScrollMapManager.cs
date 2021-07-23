@@ -213,6 +213,7 @@ public class ScrollMapManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         mapLimit = mapIndex;
+        mapPosIndex = mapIndex;
         // move map to next right map location
         float x = GetXPosFromMapLocationIndex(mapIndex);
         StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));

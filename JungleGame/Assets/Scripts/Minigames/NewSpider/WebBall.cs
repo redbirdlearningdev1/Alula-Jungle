@@ -9,8 +9,8 @@ public class WebBall : MonoBehaviour
     private const int maxBall = 4;
 
     [Header("Objects")]
-    [SerializeField] private Image ball;
-    [SerializeField] private SpriteRenderer Sball;
+    [SerializeField] private SpriteRenderer ball;
+    [SerializeField] private GlowOutlineController glowOutlineController;
 
 
 
@@ -20,7 +20,6 @@ public class WebBall : MonoBehaviour
     void Awake()
     {
         ball.sprite = chestBall[currBall];
-        Sball.sprite = chestBall[currBall];
     }
 
     public void UpgradeChest()
@@ -30,7 +29,6 @@ public class WebBall : MonoBehaviour
             currBall++;
         }
         ball.sprite = chestBall[currBall];
-        Sball.sprite = chestBall[currBall];
     }
 
     public void DowngradeChest()
@@ -40,19 +38,16 @@ public class WebBall : MonoBehaviour
             currBall--;
         }
         ball.sprite = chestBall[currBall];
-        Sball.sprite = chestBall[currBall];
     }
+
     public void chestGlow()
     {
-        //chest1.sprite = bagSprites[currBag];
-        Sball.enabled = true;
-
+        glowOutlineController.ToggleGlowOutline(true);
     }
+
     public void chestGlowNo()
     {
-        //chest1.sprite = bagSprites[currBag];
-        Sball.enabled = false;
-
+        glowOutlineController.ToggleGlowOutline(false);
     }
 
 

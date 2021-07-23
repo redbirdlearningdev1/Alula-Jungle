@@ -20,6 +20,7 @@ public class RummageGameManager : MonoBehaviour
     [SerializeField] private RummageCoinRaycaster caster;
     [SerializeField] private List<GameObject> Repairs;
 
+    private bool dancingManClickable = false;
     private bool waitingForCoinSelection = false;
     private bool playingDancingManAnimation = false;
     private bool gameSetup = false;
@@ -27,6 +28,7 @@ public class RummageGameManager : MonoBehaviour
     private List<ActionWordEnum> globalCoinPool;
     private List<ActionWordEnum> unusedCoinPool;
     private List<ActionWordEnum> usedCoinPool;
+    private List<ActionWordEnum> prevMainCoins;
 
     [Header("Piles")]
     [SerializeField] private List<RummageCoin> pile1;
@@ -38,6 +40,7 @@ public class RummageGameManager : MonoBehaviour
     private List<RummageCoin> allCoins = new List<RummageCoin>();
     private int selectedIndex;
     public RummageCoin selectedRummageCoin;
+    private pileRummage selectedPile;
     private bool pileLock1 = false;
     private bool pileLock2 = false;
     private bool pileLock3 = false;
@@ -116,23 +119,18 @@ public class RummageGameManager : MonoBehaviour
             coin.gameObject.SetActive(false);
         }
 
-        if(playTutorial)
-        {
+        prevMainCoins = new List<ActionWordEnum>();
 
-        }
-        else
-        {
-            StartCoroutine(SetPileGlow(true));
-            StartCoroutine(SetPileWiggles(true));
-        }
-
-        
+        StartCoroutine(SetPileGlow(true));
+        StartCoroutine(SetPileWiggles(true));
     }
 
     void Update()
     {
         if (dancingMan.isClicked)
         {
+            if (!dancingManClickable)
+                return;
             StartCoroutine(DancingManRoutine());
         }
         if (playTutorial && pileComplete2 == false)
@@ -148,7 +146,9 @@ public class RummageGameManager : MonoBehaviour
             pileLock4 = false;
             pileLock5 = false;
 
+            selectedPile = pile[0];
             StartCoroutine(SetPileWiggles(false));
+            StartCoroutine(SetPileGlow(false, true));
 
             orc.GoToPile1();
         }
@@ -161,7 +161,9 @@ public class RummageGameManager : MonoBehaviour
             pileLock4 = false;
             pileLock5 = false;
 
+            selectedPile = pile[1];
             StartCoroutine(SetPileWiggles(false));
+            StartCoroutine(SetPileGlow(false, true));
 
             orc.GoToPile2();
         }
@@ -175,7 +177,9 @@ public class RummageGameManager : MonoBehaviour
             pileLock4 = false;
             pileLock5 = false;
 
+            selectedPile = pile[2];
             StartCoroutine(SetPileWiggles(false));
+            StartCoroutine(SetPileGlow(false, true));
 
             orc.GoToPile3();
         }
@@ -188,7 +192,9 @@ public class RummageGameManager : MonoBehaviour
             pileLock4 = true;
             pileLock5 = false;
 
+            selectedPile = pile[3];
             StartCoroutine(SetPileWiggles(false));
+            StartCoroutine(SetPileGlow(false, true));
 
             orc.GoToPile4();
         }
@@ -201,7 +207,9 @@ public class RummageGameManager : MonoBehaviour
             pileLock4 = false;
             pileLock5 = true;
 
+            selectedPile = pile[4];
             StartCoroutine(SetPileWiggles(false));
+            StartCoroutine(SetPileGlow(false, true));
 
             orc.GoToPile5();
         }
@@ -254,6 +262,8 @@ public class RummageGameManager : MonoBehaviour
     {
         if (playingDancingManAnimation)
             yield break;
+        
+        dancingManClickable = true;
         playingDancingManAnimation = true;
         dancingMan.PlayUsingPhonemeEnum(selectedRummageCoin.type);
         yield return new WaitForSeconds(1.5f);
@@ -263,6 +273,7 @@ public class RummageGameManager : MonoBehaviour
     public bool EvaluateSelectedRummageCoin(ActionWordEnum coin)
     {
         waitingForCoinSelection = false;
+        dancingManClickable = false;
         if (coin == selectedRummageCoin.type)
         {
             // success! go on to the next row or win game if on last row
@@ -559,8 +570,33 @@ public class RummageGameManager : MonoBehaviour
     {
         List<RummageCoin> pile = GetCoinPile(index);
         selectedIndex = Random.Range(0, pile.Count);
-        print("selected index: " + selectedIndex);
         selectedRummageCoin = pile[selectedIndex];
+
+        // make sure new coin is selected to be main coin each time
+        if (prevMainCoins.Contains(selectedRummageCoin.type))
+        {
+            for (int i = 1; i < pile.Count; i++)
+            {
+                selectedIndex += i;
+                if (selectedIndex > pile.Count - 1)
+                {
+                    selectedIndex -= pile.Count - 1;
+                }
+
+                selectedRummageCoin = pile[selectedIndex];
+                if (!prevMainCoins.Contains(selectedRummageCoin.type))
+                    break;
+                
+                if (i == 3)
+                {
+                    prevMainCoins.Clear();
+                    selectedIndex = Random.Range(0, pile.Count);
+                    selectedRummageCoin = pile[selectedIndex];
+                }
+            }
+        }
+
+        prevMainCoins.Add(selectedRummageCoin.type);
 
         StartCoroutine(DancingManRoutine());
         StartCoroutine(RepeatWhileWating());
@@ -627,7 +663,7 @@ public class RummageGameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator SetPileGlow(bool opt)
+    private IEnumerator SetPileGlow(bool opt, bool excludeSelectedPile = false)
     {
         yield return new WaitForSeconds(0.1f);
         if (opt)
@@ -635,6 +671,12 @@ public class RummageGameManager : MonoBehaviour
             print ("glow on");
             foreach(var p in pile)
             {
+                if (excludeSelectedPile)
+                {
+                    if (p == selectedPile)
+                        continue;
+                }
+
                 p.pileGlowOn();
                 yield return new WaitForSeconds(0.1f);
             }
@@ -644,7 +686,14 @@ public class RummageGameManager : MonoBehaviour
             print ("glow off");
             foreach(var p in pile)
             {
+                if (excludeSelectedPile)
+                {
+                    if (p == selectedPile)
+                        continue;
+                }
+
                 p.pileGlowOff();
+                yield return new WaitForSeconds(0.1f);
             }
         }
     }

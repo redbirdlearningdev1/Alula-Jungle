@@ -105,7 +105,6 @@ public class SpiderCoin : MonoBehaviour
 
     private IEnumerator MoveUpDownRoutine(Vector3 target, float time)
     {
-        Debug.Log("Here");
         Vector3 currStart = transform.position;
         float timer = 0f;
         float maxTime = time;
