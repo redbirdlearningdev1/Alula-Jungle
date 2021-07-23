@@ -341,10 +341,10 @@ public class ScrollMapManager : MonoBehaviour
         stickerCart.SetActive(true);
         Wagon.Play("WagonRollIn");
         StartCoroutine(RollToTargetRoutine(cartOnScreenPosition.position));
-        yield return new WaitForSeconds(3.05f);
+        yield return new WaitForSeconds(2.95f);
         Wagon.Play("WagonStop");
-        yield return new WaitForSeconds(1.15f);
-        Wagon.Play("Idle");
+        yield return new WaitForSeconds(1f);
+        //Wagon.Play("Idle");
         Book.SetActive(true);
         Board.SetActive(true);
         BackWindow.SetActive(true);

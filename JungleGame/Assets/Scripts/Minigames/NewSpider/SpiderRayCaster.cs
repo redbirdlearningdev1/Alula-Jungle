@@ -9,6 +9,7 @@ public class SpiderRayCaster : MonoBehaviour
     private SpiderCoin selectedCoin = null;
     private BugController selectedBug = null;
     [SerializeField] private Transform selectedCoinParent;
+    [SerializeField] private WebBall webBallGlow;
 
     void Update()
     {
@@ -40,6 +41,7 @@ public class SpiderRayCaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("Bag"))
                     {
+                        webBallGlow.chestGlowNo();
                         selectedCoin.MoveBack();
                         isCorrect = NewSpiderGameManager.instance.EvaluateSelectedSpiderCoin(selectedCoin.type,selectedCoin);
                     }
@@ -54,6 +56,7 @@ public class SpiderRayCaster : MonoBehaviour
             }
             else
             {
+                webBallGlow.chestGlowNo();
                 selectedCoin.MoveBack();
                 selectedCoin = null;
             }
@@ -77,6 +80,7 @@ public class SpiderRayCaster : MonoBehaviour
                     {
                         selectedCoin = result.gameObject.GetComponent<SpiderCoin>();
                         selectedCoin.gameObject.transform.SetParent(selectedCoinParent);
+                        webBallGlow.chestGlow();
 
                     }
                     if (result.gameObject.transform.CompareTag("Shell"))

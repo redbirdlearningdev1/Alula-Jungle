@@ -1492,6 +1492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOn: 1
   pileChosen: 0
+  Chester: {fileID: 1427296688}
   piles:
   - {fileID: 844582077}
   - {fileID: 2114167959}
@@ -1526,7 +1527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playingInEditor: 1
-  playTutorial: 0
+  playTutorial: 1
   timeBetweenRepeat: 5
   orc: {fileID: 606159618}
   chest: {fileID: 1427296688}
@@ -4580,8 +4581,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glowColor: {r: 1, g: 1, b: 1, a: 1}
-  glowBrightness: 2
-  outlineWidth: 1
+  glowBrightness: 5
+  outlineWidth: 2
   alphaThreshold: 0.01
   drawOutside: 0
   enableInstancing: 0
