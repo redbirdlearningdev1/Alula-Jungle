@@ -24,6 +24,7 @@ public class UniversalCoin : MonoBehaviour
     [SerializeField] private SpriteRenderer glowSpriteRenderer;
     [SerializeField] private SpriteRenderer goldSpriteRenderer;
     [SerializeField] private SpriteRenderer silverSpriteRenderer;
+    [SerializeField] private SpriteShakeController shakeController;
     private SpriteRenderer currentSpriteRenderer;
 
     void Awake()
@@ -52,6 +53,7 @@ public class UniversalCoin : MonoBehaviour
                 // print ("switching to gold!");
                 value = ElkoninValue.empty_gold;
                 currentSpriteRenderer = goldSpriteRenderer;
+                shakeController.SetSpriteRenderer(goldSpriteRenderer);
 
                 consonantCoin.gameObject.SetActive(false);
                 actionWordCoin.SetCoinType(ChallengeWordDatabase.ElkoninValueToActionWord(value));
@@ -62,6 +64,7 @@ public class UniversalCoin : MonoBehaviour
                 // print ("switching to silver!");
                 value = ElkoninValue.empty_silver;
                 currentSpriteRenderer = silverSpriteRenderer;
+                shakeController.SetSpriteRenderer(silverSpriteRenderer);
 
                 actionWordCoin.gameObject.SetActive(false);
                 consonantCoin.SetCoinType(ChallengeWordDatabase.ElkoninValueToConsonantEnum(value));
@@ -77,6 +80,12 @@ public class UniversalCoin : MonoBehaviour
         AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(value).audio);
     }
 
+    public void SetLayer(int layer)
+    {
+        goldSpriteRenderer.sortingOrder = layer;
+        silverSpriteRenderer.sortingOrder = layer;
+    }
+
     public void SetValue(ElkoninValue value)
     {
         //print ("value: " + value);
@@ -87,6 +96,7 @@ public class UniversalCoin : MonoBehaviour
             coinType = CoinType.ActionWordCoin;
             this.value = value;
             currentSpriteRenderer = goldSpriteRenderer;
+            shakeController.SetSpriteRenderer(goldSpriteRenderer);
 
             consonantCoin.gameObject.SetActive(false);
             actionWordCoin.SetCoinType(ChallengeWordDatabase.ElkoninValueToActionWord(value));
@@ -99,11 +109,17 @@ public class UniversalCoin : MonoBehaviour
             coinType = CoinType.ConsonantCoin;
             this.value = value;
             currentSpriteRenderer = silverSpriteRenderer;
+            shakeController.SetSpriteRenderer(silverSpriteRenderer);
 
             actionWordCoin.gameObject.SetActive(false);
             consonantCoin.SetCoinType(ChallengeWordDatabase.ElkoninValueToConsonantEnum(value));
             consonantCoin.gameObject.SetActive(true);
         }
+    }
+
+    public void ShakeCoin(float duration)
+    {
+        shakeController.ShakeObject(duration);
     }
 
     public void SetSize(Vector2 size)

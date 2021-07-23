@@ -240,7 +240,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
     {
         // reveal the correct polaroid
         StartCoroutine(PolaroidRevealRoutine());
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3.5f);
 
         // play correct sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
@@ -302,7 +302,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
     {
         // reveal the correct polaroid
         StartCoroutine(PolaroidRevealRoutine());
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3.5f);
 
         // play incorrect sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 1f);

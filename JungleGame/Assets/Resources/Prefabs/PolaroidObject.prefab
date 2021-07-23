@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3112401552482905172}
   - component: {fileID: 3112401552482905171}
   - component: {fileID: 8536610287847822277}
+  - component: {fileID: 2214067724303390242}
   m_Layer: 5
   m_Name: PolaroidObject
   m_TagString: Polaroid
@@ -111,7 +112,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 151.5, y: 176.75}
+  m_Size: {x: 207.05, y: 242.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -188,7 +189,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4.93, y: 5.51}
-    newSize: {x: 151.5, y: 176.75}
+    newSize: {x: 207.05, y: 242.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 1
     adaptiveTiling: 0
@@ -196,6 +197,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.93, y: 5.51}
   m_EdgeRadius: 0
+--- !u!114 &2214067724303390242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3112401552482905182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7e6173ca516fe545b0d95668f81b2ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  test: 0
+  shakeSpeed: 24
+  shakeAmount: 0.5
 --- !u!1 &8991180036634615486
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +305,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 151.5, y: 176.75}
+  m_Size: {x: 207.05, y: 242.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -344,7 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoSizeToRect: 1
-  rect: {fileID: 4904897379367862841}
+  rect: {fileID: 3112401552482905183}
   extraPaddingMultiplier: 1.01
   spriteResolution: {x: 0, y: 0}
   scale: 0
