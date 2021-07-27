@@ -26,7 +26,6 @@ public class BugController : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
-        print(type.ToString());
         animator.Play(type.ToString());
 
         RectTransform rt = GetComponent<RectTransform>();
@@ -37,14 +36,8 @@ public class BugController : MonoBehaviour
         //setOrigin();
     }
 
-    void Update()
-    {
-
-    }
-
     public void StartToWeb()
     {
-        animator.Play("Fly");
         shrink();
         StartCoroutine(ReturnToWebRoutine(WebLand));
         StartCoroutine(landRoutine());
@@ -82,7 +75,6 @@ public class BugController : MonoBehaviour
 
     private IEnumerator ReturnToWebRoutine(Vector3 target)
     {
-        Debug.Log("Here");
         Vector3 currStart = transform.position;
         float timer = 0f;
         float maxTime = 1.5f;
@@ -108,7 +100,6 @@ public class BugController : MonoBehaviour
 
     private IEnumerator ReturnToOriginRoutine(Vector3 target)
     {
-        Debug.Log("Here");
         Vector3 currStart = transform.position;
         float timer = 0f;
         float maxTime = .25f;
@@ -145,7 +136,6 @@ public class BugController : MonoBehaviour
     private IEnumerator growRoutine(Vector3 target)
     {
         Vector3 currStart = transform.localScale;
-        Debug.Log(currStart);
         float timer = 0f;
         float maxTime = 1.5f;
 
@@ -202,7 +192,6 @@ public class BugController : MonoBehaviour
 
     private IEnumerator leaveWebRoutine(Vector3 target)
     {
-        Debug.Log("Here");
         Vector3 currStart = transform.position;
         float timer = 0f;
         float maxTime = .75f;
@@ -257,7 +246,6 @@ public class BugController : MonoBehaviour
 
     public void ToggleVisibility(bool opt, bool smooth)
     {
-        Debug.Log("Toggle");
         if (smooth)
             StartCoroutine(ToggleVisibilityRoutine(opt));
         else
@@ -290,6 +278,4 @@ public class BugController : MonoBehaviour
             yield return null;
         }
     }
-
-
 }
