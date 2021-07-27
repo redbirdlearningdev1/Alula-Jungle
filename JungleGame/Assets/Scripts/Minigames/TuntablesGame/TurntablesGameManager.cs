@@ -35,7 +35,12 @@ public class TurntablesGameManager : MonoBehaviour
     public Color winDoorColor;
 
     [Header("Tutorial")]
+    public bool playInEditor;
     public bool playTutorial;
+
+    private bool repeatTutorialAudio = false;
+    private float timeBetweenRepeats = 8f;
+
     public int[] correctTutorialIcons;
     public List<ActionWordEnum> firstQuartet;
     public List<ActionWordEnum> secondQuartet;
@@ -64,7 +69,8 @@ public class TurntablesGameManager : MonoBehaviour
         // get game data
         gameData = (TurntablesGameData)GameManager.instance.GetData();
 
-        playTutorial = !StudentInfoSystem.currentStudentPlayer.turntablesTutorial;
+        if (!playInEditor)
+            playTutorial = !StudentInfoSystem.currentStudentPlayer.turntablesTutorial;
 
         PregameSetup();
 
@@ -72,58 +78,13 @@ public class TurntablesGameManager : MonoBehaviour
         if (playTutorial)
         {
             GameManager.instance.SendLog(this, "starting turntables game tutorial");
+            AudioManager.instance.StopMusic();
             StartCoroutine(StartTutorial());
         }
         else
         {
             StartCoroutine(StartGame());
         }
-    }
-
-    void Update()
-    {
-        // if (GameManager.instance.devModeActivated)
-        // {
-        //     if (Input.GetKeyDown(KeyCode.Alpha1))
-        //     {
-        //         bool direction = (Random.Range(0, 2) == 0);
-        //         int angle = Random.Range(0, 360);
-
-        //         doors[0].RotateToAngle(angle, direction);
-        //     }
-        //     else if (Input.GetKeyDown(KeyCode.Alpha2))
-        //     {
-        //         bool direction = (Random.Range(0, 2) == 0);
-        //         int angle = Random.Range(0, 360);
-
-        //         doors[1].RotateToAngle(angle, direction);
-        //     }
-        //     else if (Input.GetKeyDown(KeyCode.Alpha3))
-        //     {
-        //         bool direction = (Random.Range(0, 2) == 0);
-        //         int angle = Random.Range(0, 360);
-
-        //         doors[2].RotateToAngle(angle, direction);
-        //     }
-        //     else if (Input.GetKeyDown(KeyCode.Alpha4))
-        //     {
-        //         bool direction = (Random.Range(0, 2) == 0);
-        //         int angle = Random.Range(0, 360);
-
-        //         doors[3].RotateToAngle(angle, direction);
-        //     }
-        //     else if (Input.GetKeyDown(KeyCode.Alpha5))
-        //     {
-        //         bool direction = (Random.Range(0, 2) == 0);
-        //         doors[0].RotateToAngle(0, direction);
-        //         direction = (Random.Range(0, 2) == 0);
-        //         doors[1].RotateToAngle(0, direction);
-        //         direction = (Random.Range(0, 2) == 0);
-        //         doors[2].RotateToAngle(0, direction);
-        //         direction = (Random.Range(0, 2) == 0);
-        //         doors[3].RotateToAngle(0, direction);
-        //     }
-        // }
     }
 
     /* 
@@ -136,7 +97,8 @@ public class TurntablesGameManager : MonoBehaviour
     {
         // stop music and play after delay
         AudioManager.instance.StopMusic();
-        StartCoroutine(StartMusicDelay(musicStartDelay));
+        if (!playTutorial)
+            StartCoroutine(StartMusicDelay(musicStartDelay));
 
         // start ambiance noise
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.BreezeLoop, 0.01f);
@@ -444,7 +406,24 @@ public class TurntablesGameManager : MonoBehaviour
             yield return new WaitForSeconds(difference);
             duration -= difference;
         }
-        
+
+        yield return new WaitForSeconds(2f);
+
+        // play tutorial audio 1
+        AudioClip clip = AudioDatabase.instance.TurntablesTutorial_1;
+        AudioManager.instance.PlayTalk(clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
+        // play tutorial audio 2
+        clip = AudioDatabase.instance.TurntablesTutorial_2;
+        AudioManager.instance.PlayTalk(clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
+        // play tutorial audio 3
+        clip = AudioDatabase.instance.TurntablesTutorial_3;
+        AudioManager.instance.PlayTalk(clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
         // toggle outline on
         GlowOutline(currentDoorIndex);
         RopeController.instance.MoveFromInitToNormal();
@@ -453,7 +432,27 @@ public class TurntablesGameManager : MonoBehaviour
         // glow the correct key
         RopeController.instance.SetKeyGlow(keys[correctKeyIndex], true);
         gameStart = true;
-    }  
+    }
+
+    private IEnumerator RepeatTutorialAudioRoutine(AudioClip clip)
+    {
+        // play initially
+        AudioManager.instance.PlayTalk(clip);
+
+        // repeat until bool is false
+        float timer = 0f;
+        repeatTutorialAudio = true;
+        while (repeatTutorialAudio)
+        {
+            timer += Time.deltaTime;
+            if (timer > timeBetweenRepeats)
+            {
+                AudioManager.instance.PlayTalk(clip);
+                timer = 0f;
+            }
+            yield return null;
+        }
+    }
 
     // evaluate selected key
     public bool EvaluateTutorialKey(Key key)
@@ -463,6 +462,13 @@ public class TurntablesGameManager : MonoBehaviour
             // play success audio
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.KeyUnlock, 1f);
             AudioManager.instance.PlayKeyJingle();
+
+            // play tutorial audio 4
+            if (currentDoorIndex == 0)
+            {
+                AudioClip clip = AudioDatabase.instance.TurntablesTutorial_4;
+                AudioManager.instance.PlayTalk(clip);
+            }
 
             // success! go on to the next door or win game if on last door
             if (currentDoorIndex < 3)

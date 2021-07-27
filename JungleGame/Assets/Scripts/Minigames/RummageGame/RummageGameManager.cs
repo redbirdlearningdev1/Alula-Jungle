@@ -126,13 +126,36 @@ public class RummageGameManager : MonoBehaviour
         if (playTutorial)
         {
             print ("playing tutorial");
-            NextTutorialEvent();
+            StartCoroutine(StartTutorial());
         }   
         else
         {
             StartCoroutine(SetPileGlow(true));
             StartCoroutine(SetPileWiggles(true));
         }
+    }
+
+    private IEnumerator StartTutorial()
+    {
+        LockAllPiles();
+        yield return new WaitForSeconds(1f);
+
+        // play tutorial audio 1
+        AudioClip clip = AudioDatabase.instance.RummageTutorial_1;
+        AudioManager.instance.PlayTalk(clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
+        // play tutorial audio 2
+        clip = AudioDatabase.instance.RummageTutorial_2;
+        AudioManager.instance.PlayTalk(clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
+        // play tutorial audio 3
+        clip = AudioDatabase.instance.RummageTutorial_3;
+        AudioManager.instance.PlayTalk(clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
+        NextTutorialEvent();
     }
 
     void Update()
@@ -280,6 +303,13 @@ public class RummageGameManager : MonoBehaviour
 
     public bool EvaluateSelectedRummageCoin(ActionWordEnum coin)
     {
+        // play audio iff winCount == 0
+        if (winCount == 0)
+        {
+            AudioClip clip = AudioDatabase.instance.FroggerTutorial_3;
+            AudioManager.instance.PlayTalk(clip);
+        }
+
         waitingForCoinSelection = false;
         dancingManClickable = false;
         if (coin == selectedRummageCoin.type)
@@ -492,6 +522,8 @@ public class RummageGameManager : MonoBehaviour
         {
             if (i != index)
                 pileLockArray[i] = true;
+            else
+                pileLockArray[i] = false;
         }
     }
 

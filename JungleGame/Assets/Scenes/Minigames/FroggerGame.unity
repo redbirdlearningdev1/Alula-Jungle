@@ -189,12 +189,13 @@ MonoBehaviour:
   - {fileID: 728974745}
   - {fileID: 1287270063}
   - {fileID: 1112553574}
-  playTutorial: 1
+  playInEditor: 0
+  playTutorial: 0
   correctTutorialCoins: 00000000010000000200000000000000
   firstPair: 0800000000000000
-  secondTriad: 000000000800000000000000
-  thirdTriad: 000000000000000008000000
-  fourthTriad: 080000000000000000000000
+  secondTriad: 000000000100000000000000
+  thirdTriad: 000000000000000002000000
+  fourthTriad: 050000000000000000000000
   devObject: {fileID: 1916723541}
   devCoin: {fileID: 1465505100}
 --- !u!4 &9379680
@@ -7848,6 +7849,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1079903dea97669479baaf0a369f1a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoSizeToRect: 0
+  rect: {fileID: 1702049582}
+  extraPaddingMultiplier: 0
   spriteResolution: {x: 351, y: 328}
   scale: 0.46
 --- !u!212 &1702049588

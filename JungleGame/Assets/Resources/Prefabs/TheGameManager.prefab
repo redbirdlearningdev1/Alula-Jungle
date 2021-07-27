@@ -3475,6 +3475,24 @@ MonoBehaviour:
   MainThemeSong: {fileID: 8300000, guid: 4db08344590ba68418f0caac091e2ef4, type: 3}
   FroggerGameSong: {fileID: 8300000, guid: f6b91191bfd04a34c860024796deadeb, type: 3}
   TurntablesGameSong: {fileID: 8300000, guid: b4791af5245fb8b40b092b7cfa1b65cf, type: 3}
+  FroggerTutorial_1: {fileID: 8300000, guid: 57334b8b7f5786449aae768fd2fa6be6, type: 3}
+  FroggerTutorial_2: {fileID: 8300000, guid: b8cb085e2d406064db6e9d79696ac9d8, type: 3}
+  FroggerTutorial_3: {fileID: 8300000, guid: eedcf1d3df9217e4fb3ac412cb60001e, type: 3}
+  TurntablesTutorial_1: {fileID: 8300000, guid: c0ea823a1b50c1b44804a26d92066d91,
+    type: 3}
+  TurntablesTutorial_2: {fileID: 8300000, guid: e85ba68bd29bdf44aa7859c7384c1261,
+    type: 3}
+  TurntablesTutorial_3: {fileID: 8300000, guid: 9b18f09e2cd87d846bfafd94b48e61f2,
+    type: 3}
+  TurntablesTutorial_4: {fileID: 8300000, guid: da615173e3d087442aaa759cdbf1afcb,
+    type: 3}
+  RummageTutorial_1: {fileID: 8300000, guid: c74fcb659ed421744bb49cd2e6f7cf80, type: 3}
+  RummageTutorial_2: {fileID: 8300000, guid: 37f566b2b016a3f48a6f8a351975d744, type: 3}
+  RummageTutorial_3: {fileID: 8300000, guid: b0726fd7020e583498b848d53f3d8fe6, type: 3}
+  SpiderwebTutorial_1: {fileID: 8300000, guid: 9e3514d7a8bcfea42bbcfc4833f4a376, type: 3}
+  SpiderwebTutorial_2: {fileID: 8300000, guid: 0fa84380a8e4bcb439ff0ef00cc18817, type: 3}
+  SpiderwebTutorial_3: {fileID: 8300000, guid: b84a38c6045d41f44b6513afab9f5e65, type: 3}
+  SpiderwebTutorial_4: {fileID: 8300000, guid: 3ca7baecad7fd114791d7486bf723bc1, type: 3}
   testSound1: {fileID: 8300000, guid: c350fcdede53aa647b93c6b0ce53e7cd, type: 3}
   RightChoice: {fileID: 8300000, guid: 33ff1a3562326b24e80a23820344a8c4, type: 3}
   WrongChoice: {fileID: 8300000, guid: 2b787eac70b58ff459bacc25ca095636, type: 3}

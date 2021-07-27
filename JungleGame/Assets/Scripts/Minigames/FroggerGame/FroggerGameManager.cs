@@ -34,12 +34,16 @@ public class FroggerGameManager : MonoBehaviour
     private LogCoin selectedCoin;
 
     [Header("Tutorial Stuff")]
+    public bool playInEditor;
     public bool playTutorial;
     public int[] correctTutorialCoins;
     public List<ActionWordEnum> firstPair;
     public List<ActionWordEnum> secondTriad;
     public List<ActionWordEnum> thirdTriad;
     public List<ActionWordEnum> fourthTriad;
+
+    private bool repeatTutorialAudio = false;
+    private float timeBetweenRepeats = 8f;
 
     [Header("Dev Stuff")]
     [SerializeField] private GameObject devObject;
@@ -68,13 +72,15 @@ public class FroggerGameManager : MonoBehaviour
         // get game data
         gameData = (FroggerGameData)GameManager.instance.GetData();
 
-        playTutorial = !StudentInfoSystem.currentStudentPlayer.froggerTutorial;
+        if (!playInEditor)
+            playTutorial = !StudentInfoSystem.currentStudentPlayer.froggerTutorial;
 
         PregameSetup();
 
         // play tutorial if first time
         if (playTutorial)
         {
+            AudioManager.instance.StopMusic();
             GameManager.instance.SendLog(this, "starting frogger game tutorial");
             StartCoroutine(StartTutorial());
         }
@@ -145,7 +151,6 @@ public class FroggerGameManager : MonoBehaviour
             coin.GetComponent<GlowOutlineController>().ToggleGlowOutline(false);
             coin.ToggleVisibility(false, false);
         }
-            
 
         // sink all the logs except the first row
         StartCoroutine(SinkLogsExceptFirstRow());
@@ -214,7 +219,6 @@ public class FroggerGameManager : MonoBehaviour
         gorilla.JumpForward(AudioDatabase.instance.WoodThump);
         yield return new WaitForSeconds(1f);
         gorilla.CelebrateAnimation();
-        
 
         currRow++;
         rows[currRow].RiseAllLogs();
@@ -330,8 +334,38 @@ public class FroggerGameManager : MonoBehaviour
         while (!gameSetup)
             yield return null;
 
+        // play tutorial audio
+        AudioClip clip = AudioDatabase.instance.FroggerTutorial_1;
+        AudioManager.instance.PlayTalk(clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
         currRow = 0;
         ShowTutorialCoins();
+        yield return new WaitForSeconds(1f);
+
+        // play tutorial audio
+        clip = AudioDatabase.instance.FroggerTutorial_2;
+        StartCoroutine(RepeatTutorialAudioRoutine(clip));
+    }
+
+    private IEnumerator RepeatTutorialAudioRoutine(AudioClip clip)
+    {
+        // play initially
+        AudioManager.instance.PlayTalk(clip);
+
+        // repeat until bool is false
+        float timer = 0f;
+        repeatTutorialAudio = true;
+        while (repeatTutorialAudio)
+        {
+            timer += Time.deltaTime;
+            if (timer > timeBetweenRepeats)
+            {
+                AudioManager.instance.PlayTalk(clip);
+                timer = 0f;
+            }
+            yield return null;
+        }
     }
 
     private IEnumerator ContinueTutorialRoutine()
@@ -426,6 +460,13 @@ public class FroggerGameManager : MonoBehaviour
 
     private void ShowTutorialCoins()
     {
+        // play audio iff currRow == 1
+        if (currRow == 1)
+        {
+            AudioClip clip = AudioDatabase.instance.FroggerTutorial_3;
+            AudioManager.instance.PlayTalk(clip);
+        }
+
         // show correct row of coins
         switch (currRow)
         {
@@ -458,6 +499,9 @@ public class FroggerGameManager : MonoBehaviour
         {
             if (coin == selectedCoin)
             {
+                // stop repeating audio
+                repeatTutorialAudio = false;
+
                 // success! continue or complete tutorial
                 if (currRow < 3)
                     StartCoroutine(ContinueTutorialRoutine());

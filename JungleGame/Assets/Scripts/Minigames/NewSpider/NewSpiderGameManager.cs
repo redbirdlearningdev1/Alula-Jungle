@@ -75,7 +75,7 @@ public class NewSpiderGameManager : MonoBehaviour
 
         // start tutorial or normal game
         if (playTutorial)
-            StartCoroutine(StartTutorialGame(0));
+            StartCoroutine(StartTutorialGame());
         else 
             StartCoroutine(StartGame(0));
     }
@@ -286,7 +286,32 @@ public class NewSpiderGameManager : MonoBehaviour
     ################################################
     */
 
-    private IEnumerator StartTutorialGame(int coins)
+    private IEnumerator StartTutorialGame()
+    {
+        // play tutorial audio 1
+        AudioClip clip = AudioDatabase.instance.SpiderwebTutorial_1;
+        AudioManager.instance.PlayTalk(clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
+        // play tutorial audio 2
+        clip = AudioDatabase.instance.SpiderwebTutorial_2;
+        AudioManager.instance.PlayTalk(clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
+        // play tutorial audio 3
+        clip = AudioDatabase.instance.SpiderwebTutorial_3;
+        AudioManager.instance.PlayTalk(clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
+        // play tutorial audio 4
+        clip = AudioDatabase.instance.SpiderwebTutorial_4;
+        AudioManager.instance.PlayTalk(clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
+        StartCoroutine(PlayTutorialGame(0));
+    }
+
+    private IEnumerator PlayTutorialGame(int coins)
     {
         StartCoroutine(CoinsDown());
         bug.goToOrigin();
@@ -357,7 +382,7 @@ public class NewSpiderGameManager : MonoBehaviour
         
         yield return new WaitForSeconds(1.5f);
         
-        StartCoroutine(StartTutorialGame(tutorialEvent));
+        StartCoroutine(PlayTutorialGame(tutorialEvent));
     }
 
     private IEnumerator TutorialWinRoutine(SpiderCoin coin)

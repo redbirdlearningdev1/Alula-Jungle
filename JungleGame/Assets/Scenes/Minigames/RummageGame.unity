@@ -1529,8 +1529,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b50bb302fe09c346a637cd003e82718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playingInEditor: 0
-  playTutorial: 0
+  playingInEditor: 1
+  playTutorial: 1
   timeBetweenRepeat: 5
   orc: {fileID: 606159618}
   chest: {fileID: 1427296688}
