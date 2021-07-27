@@ -72,7 +72,7 @@ public class RummageCoinRaycaster : MonoBehaviour
                     }
                     if (result.gameObject.transform.CompareTag("Pile"))
                     {
-                        Debug.Log(result.gameObject.ToString());
+                        //Debug.Log(result.gameObject.ToString());
 
                         if (result.gameObject.ToString() == "dirtyp1 (UnityEngine.GameObject)")
                         {

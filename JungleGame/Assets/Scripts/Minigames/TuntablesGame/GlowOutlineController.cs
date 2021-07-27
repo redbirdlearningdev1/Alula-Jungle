@@ -18,7 +18,7 @@ public class GlowOutlineController : MonoBehaviour
 
     private Coroutine currRoutine;
     private bool animating = false;
-    private bool isGlowing = true;
+    private bool isGlowing = false;
     private bool customGlow = false;
 
     private const float lerpGlowSettingsTime = 0.5f;
@@ -26,8 +26,6 @@ public class GlowOutlineController : MonoBehaviour
     void Awake()
     {
         spriteGlow = GetComponent<SpriteGlowEffect>();
-        // turn off on init
-        ToggleGlowOutline(false);
     }
 
     public void SetGlowSettings(float brightness, int outline, Color color, bool lerpAnim)
@@ -100,7 +98,7 @@ public class GlowOutlineController : MonoBehaviour
 
     public void ToggleGlowOutline(bool opt)
     {
-        if (opt == isGlowing || customGlow) return;
+        if (customGlow) return;
         if (currRoutine != null)
             StopCoroutine(currRoutine);
         animating = false;

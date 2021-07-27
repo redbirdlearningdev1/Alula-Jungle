@@ -39,7 +39,6 @@ public class RummageChest : MonoBehaviour
     private IEnumerator stretchRoutine(Vector3 target)
     {
         Vector3 currStart = transform.localScale;
-        Debug.Log(currStart);
         float timer = 0f;
         float maxTime = 0.5f;
 

@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public struct RummageTutorialList
+{
+    public List<ActionWordEnum> list;
+}
+
 public class RummageGameManager : MonoBehaviour
 {
     public static RummageGameManager instance;
@@ -41,21 +47,19 @@ public class RummageGameManager : MonoBehaviour
     private int selectedIndex;
     public RummageCoin selectedRummageCoin;
     private pileRummage selectedPile;
-    private bool pileLock1 = false;
-    private bool pileLock2 = false;
-    private bool pileLock3 = false;
-    private bool pileLock4 = false;
-    private bool pileLock5 = false;
-    private bool pileComplete1 = false;
-    private bool pileComplete2 = false;
-    private bool pileComplete3 = false;
-    private bool pileComplete4 = false;
-    private bool pileComplete5 = false;
+    private bool[] pileLockArray = new bool[5];
+    private bool[] pileCompleteArray = new bool[5];
     private bool atPile = false;
     private int winCount = 0;
     private int lastLocation;
 
     private RummageGameData gameData;
+
+    [Header("Tutorial Stuff")]
+    public List<RummageTutorialList> tutorialPiles;
+    public int[] correctIndexes;
+    private int tutorialEvent = 0;
+
 
     void Awake()
     {
@@ -69,11 +73,9 @@ public class RummageGameManager : MonoBehaviour
 
         // get game data
         gameData = (RummageGameData)GameManager.instance.GetData();
-        //playTutorial = !StudentInfoSystem.currentStudentPlayer.rummageTutorial;
 
         if (!playingInEditor)
             playTutorial = !StudentInfoSystem.currentStudentPlayer.rummageTutorial;
-
 
         PregameSetup();
     }
@@ -121,8 +123,16 @@ public class RummageGameManager : MonoBehaviour
 
         prevMainCoins = new List<ActionWordEnum>();
 
-        StartCoroutine(SetPileGlow(true));
-        StartCoroutine(SetPileWiggles(true));
+        if (playTutorial)
+        {
+            print ("playing tutorial");
+            NextTutorialEvent();
+        }   
+        else
+        {
+            StartCoroutine(SetPileGlow(true));
+            StartCoroutine(SetPileWiggles(true));
+        }
     }
 
     void Update()
@@ -133,18 +143,17 @@ public class RummageGameManager : MonoBehaviour
                 return;
             StartCoroutine(DancingManRoutine());
         }
-        if (playTutorial && pileComplete2 == false)
-        {
-            walkThrough();
-        }
-        if (pile[0].chosen == true && pileLock1 == false && atPile == false && pileComplete1 == false)
+
+        // print ("pile[0].chosen: " + pile[0].chosen);
+        // print ("pileLockArray[0]: " + pileLockArray[0]);
+        // print ("atPile: " + atPile);
+        // print ("pileCompleteArray[0]: " + pileCompleteArray[0]);
+
+        // CLICKING ON PILES
+        if (pile[0].chosen == true && pileLockArray[0] == false && atPile == false && pileCompleteArray[0] == false)
         {
             pile[0].pileComplete();
-            pileLock1 = true;
-            pileLock2 = false;
-            pileLock3 = false;
-            pileLock4 = false;
-            pileLock5 = false;
+            LockAllPiles();
 
             selectedPile = pile[0];
             StartCoroutine(SetPileWiggles(false));
@@ -152,14 +161,10 @@ public class RummageGameManager : MonoBehaviour
 
             orc.GoToPile1();
         }
-        if (pile[1].chosen == true && pileLock2 == false && atPile == false && pileComplete2 == false)
+        if (pile[1].chosen == true && pileLockArray[1] == false && atPile == false && pileCompleteArray[1] == false)
         {
             pile[1].pileComplete();
-            pileLock1 = false;
-            pileLock2 = true;
-            pileLock3 = false;
-            pileLock4 = false;
-            pileLock5 = false;
+            LockAllPiles();
 
             selectedPile = pile[1];
             StartCoroutine(SetPileWiggles(false));
@@ -167,15 +172,11 @@ public class RummageGameManager : MonoBehaviour
 
             orc.GoToPile2();
         }
-        if (pile[2].chosen == true && pileLock3 == false && atPile == false && pileComplete3 == false)
+        if (pile[2].chosen == true && pileLockArray[2] == false && atPile == false && pileCompleteArray[2] == false)
         {
 
             pile[2].pileComplete();
-            pileLock1 = false;
-            pileLock2 = false;
-            pileLock3 = true;
-            pileLock4 = false;
-            pileLock5 = false;
+            LockAllPiles();
 
             selectedPile = pile[2];
             StartCoroutine(SetPileWiggles(false));
@@ -183,14 +184,10 @@ public class RummageGameManager : MonoBehaviour
 
             orc.GoToPile3();
         }
-        if (pile[3].chosen == true && pileLock4 == false && atPile == false && pileComplete4 == false)
+        if (pile[3].chosen == true && pileLockArray[3] == false && atPile == false && pileCompleteArray[3] == false)
         {
             pile[3].pileComplete();
-            pileLock1 = false;
-            pileLock2 = false;
-            pileLock3 = false;
-            pileLock4 = true;
-            pileLock5 = false;
+            LockAllPiles();
 
             selectedPile = pile[3];
             StartCoroutine(SetPileWiggles(false));
@@ -198,14 +195,10 @@ public class RummageGameManager : MonoBehaviour
 
             orc.GoToPile4();
         }
-        if (pile[4].chosen == true && pileLock5 == false && atPile == false && pileComplete5 == false)
+        if (pile[4].chosen == true && pileLockArray[4] == false && atPile == false && pileCompleteArray[4] == false)
         {
             pile[4].pileComplete();
-            pileLock1 = false;
-            pileLock2 = false;
-            pileLock3 = false;
-            pileLock4 = false;
-            pileLock5 = true;
+            LockAllPiles();
 
             selectedPile = pile[4];
             StartCoroutine(SetPileWiggles(false));
@@ -213,48 +206,63 @@ public class RummageGameManager : MonoBehaviour
 
             orc.GoToPile5();
         }
-        if (orc.AtLocation() == 1 && pileLock1 == true && atPile == false)
+
+
+        // COIN SELECT
+        if (orc.AtLocation() == 1 && pileLockArray[0] == true && atPile == false)
         {
             lastLocation = orc.AtLocation();
-            pileLock1 = false;
+            pileLockArray[0] = false;
             atPile = true;
 
             if (playTutorial)
-            {
-                StartCoroutine(StartGame(5));
-            }
+                StartCoroutine(TutorialGame(0));
             else
-            {
                 StartCoroutine(StartGame(0));
-            }
         }
-        if (orc.AtLocation() == 2 && pileLock2 == true && atPile == false)
+        if (orc.AtLocation() == 2 && pileLockArray[1] == true && atPile == false)
         {
             lastLocation = orc.AtLocation();
-            pileLock2 = false;
+            pileLockArray[1] = false;
             atPile = true;
-            StartCoroutine(StartGame(1));
+
+            if (playTutorial)
+                StartCoroutine(TutorialGame(1));
+            else
+                StartCoroutine(StartGame(1));
         }
-        if (orc.AtLocation() == 3 && pileLock3 == true && atPile == false)
+        if (orc.AtLocation() == 3 && pileLockArray[2] == true && atPile == false)
         {
             lastLocation = orc.AtLocation();
-            pileLock3 = false;
+            pileLockArray[2] = false;
             atPile = true;
-            StartCoroutine(StartGame(2));
+
+            if (playTutorial)
+                StartCoroutine(TutorialGame(2));
+            else
+                StartCoroutine(StartGame(2));
         }
-        if (orc.AtLocation() == 4 && pileLock4 == true && atPile == false)
+        if (orc.AtLocation() == 4 && pileLockArray[3] == true && atPile == false)
         {
             lastLocation = orc.AtLocation();
-            pileLock4 = false;
+            pileLockArray[3] = false;
             atPile = true;
-            StartCoroutine(StartGame(3));
+
+            if (playTutorial)
+                StartCoroutine(TutorialGame(3));
+            else
+                StartCoroutine(StartGame(3));
         }
-        if (orc.AtLocation() == 5 && pileLock5 == true && atPile == false)
+        if (orc.AtLocation() == 5 && pileLockArray[4] == true && atPile == false)
         {
             lastLocation = orc.AtLocation();
-            pileLock5 = false;
+            pileLockArray[4] = false;
             atPile = true;
-            StartCoroutine(StartGame(4));
+
+            if (playTutorial)
+                StartCoroutine(TutorialGame(4));
+            else
+                StartCoroutine(StartGame(4));
         }
     }
 
@@ -295,8 +303,15 @@ public class RummageGameManager : MonoBehaviour
 
     private IEnumerator CoinFailRoutine()
     {
-        timesMissed++;
+        if (playTutorial)
+        {
+            orc.failOrc();
+            yield return new WaitForSeconds(1f);
+            orc.channelOrc();
+            yield break;
+        }
 
+        timesMissed++;
         orc.failOrc();
         yield return new WaitForSeconds(.9f);
 
@@ -308,7 +323,7 @@ public class RummageGameManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         orc.stopOrc();
         atPile = false;
-        //chest.chestGlowNo();
+
         StartCoroutine(SetPileGlow(true));
     }
 
@@ -317,16 +332,7 @@ public class RummageGameManager : MonoBehaviour
         winCount++;
 
         yield return new WaitForSeconds(.01f);
-        List<RummageCoin> pileSet = GetCoinPile(orc.AtLocation()-1);
-        if (playTutorial)
-        {
-            pileComplete2 = false;
-            pileComplete3 = false;
-            pileComplete4 = false;
-            pileComplete5 = false;
-            playTutorial = false;
-            pileSet = GetCoinPile(0);
-        }
+        List<RummageCoin> pileSet = GetCoinPile(orc.AtLocation() - 1);
 
         Repairs[orc.AtLocation() - 1].SetActive(true);
         foreach (var coin in pileSet)
@@ -341,39 +347,48 @@ public class RummageGameManager : MonoBehaviour
         orc.GoToOrigin();
         
         yield return new WaitForSeconds(1.0f);
-        Repairs[lastLocation-1].SetActive(false);
+        Repairs[lastLocation - 1].SetActive(false);
         yield return new WaitForSeconds(1.0f);
         orc.successOrc();
         yield return new WaitForSeconds(1f);
         orc.stopOrc();
         atPile = false;
-        if(lastLocation == 1)
+
+        // complete and lock pile
+        if (lastLocation == 1)
         {
-            Debug.Log("Pile 1 locked");
-            pileComplete1 = true;
+            pileCompleteArray[0] = true;
             pile[0].pileLock();
-           
         }
         else if (lastLocation == 2)
         {
-            pileComplete2 = true;
+            pileCompleteArray[1] = true;
             pile[1].pileLock();
         }
         else if (lastLocation == 3)
         {
-            pileComplete3 = true;
+            pileCompleteArray[2] = true;
             pile[2].pileLock();
         }
         else if (lastLocation == 4)
         {
-            pileComplete4 = true;
+            pileCompleteArray[3] = true;
             pile[3].pileLock();
         }
         else
         {
-            pileComplete5 = true;
+            pileCompleteArray[4] = true;
             pile[4].pileLock();
         }
+        // unlock all piles
+        UnlockAllPiles();
+
+        if (playTutorial)
+        {
+            NextTutorialEvent();
+            yield break;
+        }
+
         yield return new WaitForSeconds(.25f);
         StartCoroutine(SetPileGlow(true));
 
@@ -385,15 +400,6 @@ public class RummageGameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(.01f);
         List<RummageCoin> pileSet = GetCoinPile(orc.AtLocation()-1);
-        if (playTutorial)
-        {
-            pileComplete2 = false;
-            pileComplete3 = false;
-            pileComplete4 = false;
-            pileComplete5 = false;
-            playTutorial = false;
-            pileSet = GetCoinPile(0);
-        }
 
         Repairs[orc.AtLocation() - 1].SetActive(true);
         foreach (var coin in pileSet)
@@ -418,6 +424,17 @@ public class RummageGameManager : MonoBehaviour
         // play win tune
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
 
+        if (playTutorial)
+        {
+            yield return new WaitForSeconds(3f);
+
+            // save to SIS
+            StudentInfoSystem.currentStudentPlayer.rummageTutorial = true;
+            StudentInfoSystem.SaveStudentPlayerData();
+
+            GameManager.instance.LoadScene("RummageGame", true, 3f);
+        }
+
         yield return new WaitForSeconds(1f);
 
         // calculate and show stars
@@ -434,26 +451,8 @@ public class RummageGameManager : MonoBehaviour
             return 1;
     }
 
-    private void walkThrough()
-    {
-
-        //StartCoroutine(SetPileGlow(false));
-        pile[0].pileGlowOn();
-
-        pile[0].SetWiggleOn();
-
-        pileComplete2 = true;
-        pileComplete3 = true;
-        pileComplete4 = true;
-        pileComplete5 = true;
-    }
-
-
-
     private IEnumerator StartGame(int piles)
     {
-        // wait a moment for the setup to finish
-        Debug.Log("STARTING GAME");
         StartCoroutine(SetPileGlow(false));
         orc.channelOrc();
 
@@ -472,11 +471,86 @@ public class RummageGameManager : MonoBehaviour
             coin.grow();
             coin.BounceToCloth();
         }
-        //chest.chestGlow();
+
         SelectRandomCoin(piles);
     }
 
-    private IEnumerator ShowCoins(int index)
+    private void NextTutorialEvent()
+    {
+        int index = tutorialEvent;
+        this.pile[index].pileGlowOn();
+        this.pile[index].SetWiggleOn();
+
+        LockAllPilesExcept(index);
+        tutorialEvent++;
+    }
+
+    private void LockAllPilesExcept(int index)
+    {
+        print ("locking all piles except: " + index);
+        for (int i = 0; i < 5; i++)
+        {
+            if (i != index)
+                pileLockArray[i] = true;
+        }
+    }
+
+    private void LockAllPiles()
+    {
+        for (int i = 0; i < 5; i++)
+            pileLockArray[i] = true;   
+    }
+
+    private void UnlockAllPiles()
+    {
+        for (int i = 0; i < 5; i++)
+            pileLockArray[i] = false;   
+    }
+
+    private IEnumerator TutorialGame(int index)
+    {
+        print ("index: " + index);
+        StartCoroutine(SetPileGlow(false));
+        orc.channelOrc();
+
+        List<RummageCoin> pileSet = GetCoinPile(index);
+        int i = 0;
+        foreach (var coin in pileSet)
+        {
+            coin.gameObject.SetActive(true);
+            i++;
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield return new WaitForSeconds(.5f);
+
+        StartCoroutine(ShowCoins(index, true));
+        StartCoroutine(pileBounceCoins(index));
+        stretch.stretchOut();
+        yield return new WaitForSeconds(1f);
+
+        foreach (var coin in pileSet)
+        {
+            coin.grow();
+            coin.BounceToCloth();
+        }
+
+        SelectTutorialCoin(pileSet, index);
+    }
+
+    private void SelectTutorialCoin(List<RummageCoin> pile, int index)
+    {
+        // select current coin
+        selectedIndex = correctIndexes[index];
+        selectedRummageCoin = pile[selectedIndex];
+        print ("selectedRummageCoin: " + selectedRummageCoin.type);
+
+        // dancing man animation
+        StartCoroutine(DancingManRoutine());
+        StartCoroutine(RepeatWhileWating());
+        waitingForCoinSelection = true;
+    }
+
+    private IEnumerator ShowCoins(int index, bool tutorial = false)
     {
         List<RummageCoin> pile = GetCoinPile(index);
 
@@ -484,20 +558,30 @@ public class RummageGameManager : MonoBehaviour
         usedCoinPool = new List<ActionWordEnum>();
         usedCoinPool.Clear();
 
+        int i = 0;
         foreach (var coin in pile)
         {
-            // set random type
-            if (unusedCoinPool.Count == 0)
+            if (!tutorial)
             {
-                unusedCoinPool.Clear();
-                unusedCoinPool.AddRange(globalCoinPool);
-            }
-            ActionWordEnum type = GetUnusedWord();
+                // set random type
+                if (unusedCoinPool.Count == 0)
+                {
+                    unusedCoinPool.Clear();
+                    unusedCoinPool.AddRange(globalCoinPool);
+                }
+                ActionWordEnum type = GetUnusedWord();
 
-            coin.SetCoinType(type);
+                coin.SetCoinType(type);
+            }
+            else
+            {
+                //print ("coin type: " + tutorialPiles[index].list[i]);
+                coin.SetCoinType(tutorialPiles[index].list[i]);
+            }
+
             coin.ToggleVisibility(true, true);
-            Debug.Log("ShowCoins");
-            yield return new WaitForSeconds(0f);
+            i++;
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
@@ -527,7 +611,6 @@ public class RummageGameManager : MonoBehaviour
 
     private IEnumerator pileBounceCoins(int index)
     {
-        Debug.Log("ShowCoins");
         List<RummageCoin> pile = GetCoinPile(index);
         foreach (var coin in pile)
         {
@@ -540,7 +623,6 @@ public class RummageGameManager : MonoBehaviour
 
     private IEnumerator pileBounceInCoins(int index)
     {
-        Debug.Log("ShowCoins");
         List<RummageCoin> pile = GetCoinPile(index);
         foreach (var coin in pile)
         {
@@ -551,8 +633,6 @@ public class RummageGameManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             coin.gameObject.SetActive(false);
         }
-
-        //SelectRandomCoin(currRow);
     }
 
     private IEnumerator HideCoins(int index, RummageCoin exceptCoin = null)
@@ -665,10 +745,9 @@ public class RummageGameManager : MonoBehaviour
 
     private IEnumerator SetPileGlow(bool opt, bool excludeSelectedPile = false)
     {
-        yield return new WaitForSeconds(0.1f);
         if (opt)
         {
-            print ("glow on");
+            //print ("glow on");
             foreach(var p in pile)
             {
                 if (excludeSelectedPile)
@@ -683,7 +762,7 @@ public class RummageGameManager : MonoBehaviour
         }
         else
         {
-            print ("glow off");
+            //print ("glow off");
             foreach(var p in pile)
             {
                 if (excludeSelectedPile)

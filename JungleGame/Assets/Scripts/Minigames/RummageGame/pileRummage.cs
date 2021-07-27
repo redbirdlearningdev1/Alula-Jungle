@@ -38,7 +38,7 @@ public class pileRummage : MonoBehaviour
         if (currPile == 0)
         {
             chosen = true;
-            Debug.Log(Pile.ToString());
+            //Debug.Log(Pile.ToString());
         }
     }
 
@@ -55,7 +55,7 @@ public class pileRummage : MonoBehaviour
 
     public void pileGlowOff()
     {
-        print ("turning off glow! " + gameObject.name);
+        //print ("turning off glow! " + gameObject.name);
         Pile.GetComponent<GlowOutlineController>().ToggleGlowOutline(false);
     }
 
@@ -63,7 +63,7 @@ public class pileRummage : MonoBehaviour
     {
         if (currPileLock)
         {
-            print ("turning on glow! " + gameObject.name);
+            //print ("turning on glow! " + gameObject.name);
             Pile.GetComponent<GlowOutlineController>().ToggleGlowOutline(true);
         }
     }

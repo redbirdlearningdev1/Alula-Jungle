@@ -79,7 +79,7 @@ public class OrcController : MonoBehaviour
 
     private IEnumerator GoToPile1Routine(Vector3 target)
     {
-        Debug.Log("Here");
+        //Debug.Log("Here");
         Vector3 currStart = transform.position;
         float timer = 0f;
         float maxTime = 0.5f;
@@ -295,24 +295,20 @@ public class OrcController : MonoBehaviour
 
             yield return null;
         }
-
     }
 
 
     public void GoToOrigin()
     {
-
         if (current != null)
         {
             StopCoroutine(current);
         }
         current = StartCoroutine(GoToOriginRoutine(origin));
-        
     }
 
     private IEnumerator GoToOriginRoutine(Vector3 target)
     {
-        Debug.Log("Here");
         Vector3 currStart = transform.position;
         float timer = 0f;
         float maxTime = 0.5f;
@@ -344,6 +340,7 @@ public class OrcController : MonoBehaviour
             yield return null;
         }
     }
+
     public void movingOrc()
     {
         StartCoroutine(movingOrcRoutine());
@@ -353,9 +350,8 @@ public class OrcController : MonoBehaviour
     {
         yield return new WaitForSeconds(0f);
         animator.Play("orcWalk");
-
-
     }
+
     public void stopOrc()
     {
         StartCoroutine(stopOrcRoutine());
@@ -365,9 +361,8 @@ public class OrcController : MonoBehaviour
     {
         yield return new WaitForSeconds(0f);
         animator.Play("orcIdle");
-        
-
     }
+
     public void channelOrc()
     {
         StartCoroutine(channelOrcRoutine());
@@ -377,9 +372,8 @@ public class OrcController : MonoBehaviour
     {
         yield return new WaitForSeconds(0f);
         animator.Play("orcRummage");
-
-
     }
+
     public void successOrc()
     {
         StartCoroutine(successOrcRoutine());
@@ -387,12 +381,10 @@ public class OrcController : MonoBehaviour
 
     private IEnumerator successOrcRoutine()
     {
-        
         animator.Play("orcCelebrate");
         yield return new WaitForSeconds(1f);
-
-
     }
+
     public void failOrc()
     {
         StartCoroutine(failOrcRoutine());
@@ -400,13 +392,7 @@ public class OrcController : MonoBehaviour
 
     private IEnumerator failOrcRoutine()
     {
-
         animator.Play("orcNo");
         yield return new WaitForSeconds(1f);
-
-
     }
-
-
-
 }
