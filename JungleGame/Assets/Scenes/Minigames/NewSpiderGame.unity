@@ -1495,8 +1495,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dedd98ea5aba70409fa73b327ecfe73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playingInEditor: 1
-  playTutorial: 1
+  playingInEditor: 0
+  playTutorial: 0
   spider: {fileID: 11587614}
   ball: {fileID: 1930867529}
   bug: {fileID: 1504216281}

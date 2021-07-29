@@ -45,8 +45,9 @@ public class SplashScreenManager : MonoBehaviour
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
-        // remove menu button
+        // remove settings buttons
         SettingsManager.instance.ToggleMenuButtonActive(false);
+        SettingsManager.instance.ToggleWagonButtonActive(false);
 
         // set up profile window
         startButton.interactable = false;

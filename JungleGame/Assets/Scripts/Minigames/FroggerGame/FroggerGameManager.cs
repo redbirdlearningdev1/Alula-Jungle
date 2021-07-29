@@ -646,7 +646,7 @@ public class FroggerGameManager : MonoBehaviour
         playingDancingManAnimation = true;
         // print ("dancing man animation -> " + selectedCoin.type);
         dancingMan.PlayUsingPhonemeEnum(selectedCoin.type);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.5f);
         playingDancingManAnimation = false;
     }
 

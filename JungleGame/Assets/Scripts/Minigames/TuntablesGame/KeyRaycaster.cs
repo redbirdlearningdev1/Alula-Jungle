@@ -53,6 +53,7 @@ public class KeyRaycaster : MonoBehaviour
             }
             else
             {
+                selectedKey.SetLayer(2);
                 selectedKey.ReturnToRope();
                 selectedKey = null;
             }
@@ -75,6 +76,7 @@ public class KeyRaycaster : MonoBehaviour
                     if (result.gameObject.transform.CompareTag("Key"))
                     {
                         selectedKey = result.gameObject.GetComponentInParent<Key>();
+                        selectedKey.SetLayer(3);
                         selectedKey.PlayAudio();
                         selectedKey.gameObject.transform.SetParent(selectedKeyParent);
                         // rock lock glow effect on

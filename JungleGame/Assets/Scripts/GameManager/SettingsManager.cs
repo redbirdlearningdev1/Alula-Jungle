@@ -9,6 +9,7 @@ public class SettingsManager : MonoBehaviour
     public static SettingsManager instance;
 
     [SerializeField] private Button menuButton;
+    [SerializeField] private Button wagonButton;
 
     [Header("Audio Settings")]
     [SerializeField] private Slider masterVol;
@@ -130,6 +131,20 @@ public class SettingsManager : MonoBehaviour
     #   MISC FUNCTIONS
     ################################################
     */
+
+    public void ToggleWagonButtonActive(bool opt)
+    {
+        if (opt)
+        {
+            wagonButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+            wagonButton.interactable = true;
+        }
+        else
+        {
+            wagonButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
+            wagonButton.interactable = false;
+        }
+    }
 
     public void ToggleMenuButtonActive(bool opt)
     {

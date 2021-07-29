@@ -87,6 +87,19 @@ public class TurntablesGameManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        // dev stuff for fx audio testing
+        if (GameManager.instance.devModeActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StopAllCoroutines();
+                StartCoroutine(SkipToWinRoutine());
+            }
+        }
+    }
+
     /* 
     ################################################
     #   PREGAME SETUP
@@ -327,7 +340,6 @@ public class TurntablesGameManager : MonoBehaviour
 
     private IEnumerator WinRoutine()
     {
-        // print ("you win!");
         // dissipate key
         keys[correctKeyIndex].Dissipate();
         // make door icon glow special
@@ -596,6 +608,35 @@ public class TurntablesGameManager : MonoBehaviour
     #   UTILITY FUNCTIONS
     ################################################
     */
+
+    private IEnumerator SkipToWinRoutine()
+    {
+        // dissipate key
+        keys[correctKeyIndex].Dissipate();
+        // make door icon glow special
+        doors[currentDoorIndex].glowController.SetGlowSettings(1f, 1, finishedDoorColor, true);
+        // play stone moving audio
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.ErrieGlow, 0.2f);
+
+        // move door to unlocked position
+        doors[currentDoorIndex].RotateToAngle(0, true, RopeController.instance.moveTime * 2);
+        // play stone moving audio
+        AudioManager.instance.PlayMoveStoneSound((RopeController.instance.moveTime * 2) - 0.4f, moveStonePitch[currentDoorIndex]);
+
+        // win glow animation
+        StartCoroutine(WinGlowAnimation(RopeController.instance.moveTime * 2));
+        // play win audio
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+        // move keys down
+        RopeController.instance.AnimateKeysUp();
+        yield return new WaitForSeconds(animateKeysDownDelay);
+        RopeController.instance.MoveFromNormalToEnd();
+
+        yield return new WaitForSeconds(2f);
+
+        // calculate and show stars
+        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+    }
 
     private void KeySetup()
     {

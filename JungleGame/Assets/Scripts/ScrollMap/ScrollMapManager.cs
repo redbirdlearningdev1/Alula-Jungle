@@ -12,7 +12,7 @@ public class ScrollMapManager : MonoBehaviour
     [Range(0, 8)] public int mapLimitNum;
 
     public bool overideGameEvent;
-    public LinearGameEvent gameEvent;
+    public StoryBeat gameEvent;
 
     private List<GameObject> mapIcons = new List<GameObject>();
 
@@ -29,6 +29,7 @@ public class ScrollMapManager : MonoBehaviour
 
     private int mapLimit;
     private int mapPosIndex;
+    private int minMapLimit = 1;
     private bool navButtonsDisabled = true;
     
     public float transitionTime;
@@ -37,7 +38,6 @@ public class ScrollMapManager : MonoBehaviour
 
     [Header("Map Characters")]
     public MapIcon boat;
-    public MapCharacter Boat_Gorilla;
     public MapCharacter GV_Gorilla;
 
     [Header("Stickers")]
@@ -77,7 +77,8 @@ public class ScrollMapManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         // remove menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
+        SettingsManager.instance.ToggleMenuButtonActive(false);
+        SettingsManager.instance.ToggleWagonButtonActive(false);
 
         // sticker stuff
         // disable raycast blocker
@@ -93,15 +94,14 @@ public class ScrollMapManager : MonoBehaviour
         leftButton.interactable = false;
         rightButton.interactable = false;
         navButtonsDisabled = true;
-        Boat_Gorilla.gameObject.SetActive(false);
 
-        // start at prev position
+        // start at prev position (or at 1 by default)
         mapPosIndex = GameManager.instance.prevMapPosition;
         GameManager.instance.SendLog(this, "starting scrollmap on position: " + mapPosIndex);
         SetMapPosition(mapPosIndex);
 
         // map limit
-        if (overideMapLimit)
+        if (overideMapLimit && GameManager.instance.devModeActivated)
             SetMapLimit(mapLimitNum); // set manual limit
         else
             SetMapLimit(StudentInfoSystem.currentStudentPlayer.mapLimit); // load map limit from SIS
@@ -113,8 +113,8 @@ public class ScrollMapManager : MonoBehaviour
         }
 
         // check for game events
-        LinearGameEvent playGameEvent = LinearGameEvent.InitBoatGame; // default event
-        if (overideGameEvent)
+        StoryBeat playGameEvent = StoryBeat.InitBoatGame; // default event
+        if (overideGameEvent && GameManager.instance.devModeActivated)
         {
             playGameEvent = gameEvent;
         }
@@ -122,36 +122,47 @@ public class ScrollMapManager : MonoBehaviour
         {
             // get event from current profile if not null
             if (StudentInfoSystem.currentStudentPlayer != null)
-                playGameEvent = StudentInfoSystem.currentStudentPlayer.currGameEvent;
+                playGameEvent = StudentInfoSystem.currentStudentPlayer.currStoryBeat;
         }
         
         bool revealNavUI = true;
+        bool revealGMUI = true;
 
         // check for game events
-        if (playGameEvent == LinearGameEvent.InitBoatGame)
+        if (playGameEvent == StoryBeat.InitBoatGame)
         {   
             revealNavUI = false;
+            revealGMUI = false;
             DisableAllMapIcons();
+
+            // intro boat animation
+            MapAnimationController.instance.BoatOceanIntro();
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
 
             // wiggle boat
             boat.interactable = true;
             boat.GetComponent<SpriteWiggleController>().StartWiggle();
+            boat.GetComponent<GlowOutlineController>().ToggleGlowOutline(true);
         }
-        else if (playGameEvent == LinearGameEvent.WelcomeStoryGame)
+        else if (playGameEvent == StoryBeat.UnlockGorillaVillage)
         {
             revealNavUI = false;
+            revealGMUI = false;
             DisableAllMapIcons();
 
-            // reveal boat gorilla
-            Boat_Gorilla.gameObject.SetActive(true);
-            Boat_Gorilla.ShowExclamationMark(true);
-            Boat_Gorilla.interactable = true;
-        }
-        else if (playGameEvent == LinearGameEvent.UnlockGorillaVillage)
-        {
-            revealNavUI = false;
-            DisableAllMapIcons();
-            StartCoroutine(UnlockMapArea(1));
+            // place camera on dock location + fog
+            SetMapPosition(1);
+            SetMapLimit(1);
+
+            // bring boat into dock
+            MapAnimationController.instance.DockBoat();
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+
+            StartCoroutine(UnlockMapArea(2));
             GV_Gorilla.ShowExclamationMark(true);
             GV_Gorilla.interactable = true;
 
@@ -162,13 +173,13 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.SaveStudentPlayerData();
             }
         }
-        else if (playGameEvent == LinearGameEvent.PrologueStoryGame)
+        else if (playGameEvent == StoryBeat.PrologueStoryGame)
         {
             DisableAllMapIcons();
             GV_Gorilla.ShowExclamationMark(true);
             GV_Gorilla.interactable = true;
         }
-        else if (playGameEvent == LinearGameEvent.StickerTutorial)
+        else if (playGameEvent == StoryBeat.StickerTutorial)
         {
             
         }
@@ -176,9 +187,15 @@ public class ScrollMapManager : MonoBehaviour
         // show UI
         if (revealNavUI)
         {
-            //print ("reveal UI");
             yield return new WaitForSeconds(0.5f);
             TurnOffNavigationUI(false);
+        }
+
+        // show GM UI
+        if (revealGMUI)
+        {
+            SettingsManager.instance.ToggleMenuButtonActive(true);
+            SettingsManager.instance.ToggleWagonButtonActive(true);
         }
     }
 
@@ -250,16 +267,19 @@ public class ScrollMapManager : MonoBehaviour
             leftButton.interactable = true;
             rightButton.interactable = true;
 
-            if (smooth)
-            {
-                StartCoroutine(SmoothImageAlpha(leftButton.GetComponent<Image>(), 0f, 1f, 0.5f));
-                StartCoroutine(SmoothImageAlpha(rightButton.GetComponent<Image>(), 0f, 1f, 0.5f));
-            }
-            else 
-            {
-                leftButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
-                rightButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
-            }
+            // if (smooth)
+            // {
+            //     StartCoroutine(SmoothImageAlpha(leftButton.GetComponent<Image>(), 0f, 1f, 0.5f));
+            //     StartCoroutine(SmoothImageAlpha(rightButton.GetComponent<Image>(), 0f, 1f, 0.5f));
+            // }
+            // else 
+            // {
+            //     leftButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+            //     rightButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+            // }
+
+            leftButton.GetComponent<NavButtonController>().isOn = true;
+            rightButton.GetComponent<NavButtonController>().isOn = true;
         }
         // disable button
         else
@@ -267,16 +287,19 @@ public class ScrollMapManager : MonoBehaviour
             leftButton.interactable = false;
             rightButton.interactable = false;
 
-            if (smooth)
-            {
-                StartCoroutine(SmoothImageAlpha(leftButton.GetComponent<Image>(), 1f, 0f, 0.5f));
-                StartCoroutine(SmoothImageAlpha(rightButton.GetComponent<Image>(), 1f, 0f, 0.5f));
-            }
-            else 
-            {
-                leftButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
-                rightButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
-            }   
+            // if (smooth)
+            // {
+            //     StartCoroutine(SmoothImageAlpha(leftButton.GetComponent<Image>(), 1f, 0f, 0.5f));
+            //     StartCoroutine(SmoothImageAlpha(rightButton.GetComponent<Image>(), 1f, 0f, 0.5f));
+            // }
+            // else 
+            // {
+            //     leftButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
+            //     rightButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
+            // }
+
+            leftButton.GetComponent<NavButtonController>().isOn = false;
+            rightButton.GetComponent<NavButtonController>().isOn = false;
         }
 
         navButtonsDisabled = opt;
@@ -453,10 +476,10 @@ public class ScrollMapManager : MonoBehaviour
         StartCoroutine(NavInputDelay(transitionTime));
 
         mapPosIndex--;
-        if (mapPosIndex < 0)
+        if (mapPosIndex < minMapLimit)
         {
             print ("left bump!");
-            mapPosIndex = 0;
+            mapPosIndex = minMapLimit;
             StartCoroutine(BumpAnimation(true));
             return;
         }
@@ -518,7 +541,7 @@ public class ScrollMapManager : MonoBehaviour
         {
             StartCoroutine(MapSmoothTransition(Map.localPosition.x, Map.localPosition.x + bumpAmount, (bumpAnimationTime / 2)));
             yield return new WaitForSeconds((bumpAnimationTime / 2));
-            StartCoroutine(MapSmoothTransition(Map.localPosition.x, GetXPosFromMapLocationIndex(0), (bumpAnimationTime / 2)));
+            StartCoroutine(MapSmoothTransition(Map.localPosition.x, GetXPosFromMapLocationIndex(minMapLimit), (bumpAnimationTime / 2)));
         }
         else
         {

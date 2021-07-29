@@ -26,7 +26,6 @@ public class RummageGameManager : MonoBehaviour
     [SerializeField] private RummageCoinRaycaster caster;
     [SerializeField] private List<GameObject> Repairs;
 
-    private bool dancingManClickable = false;
     private bool waitingForCoinSelection = false;
     private bool playingDancingManAnimation = false;
     private bool gameSetup = false;
@@ -162,15 +161,20 @@ public class RummageGameManager : MonoBehaviour
     {
         if (dancingMan.isClicked)
         {
-            if (!dancingManClickable)
+            if (playingDancingManAnimation)
                 return;
             StartCoroutine(DancingManRoutine());
         }
 
-        // print ("pile[0].chosen: " + pile[0].chosen);
-        // print ("pileLockArray[0]: " + pileLockArray[0]);
-        // print ("atPile: " + atPile);
-        // print ("pileCompleteArray[0]: " + pileCompleteArray[0]);
+        // dev stuff for fx audio testing
+        if (GameManager.instance.devModeActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StopAllCoroutines();
+                StartCoroutine(SkipToWinRoutine());
+            }
+        }
 
         // CLICKING ON PILES
         if (pile[0].chosen == true && pileLockArray[0] == false && atPile == false && pileCompleteArray[0] == false)
@@ -291,13 +295,12 @@ public class RummageGameManager : MonoBehaviour
 
     private IEnumerator DancingManRoutine()
     {
-        if (playingDancingManAnimation)
+        if (playingDancingManAnimation || selectedRummageCoin == null)
             yield break;
         
-        dancingManClickable = true;
         playingDancingManAnimation = true;
         dancingMan.PlayUsingPhonemeEnum(selectedRummageCoin.type);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.5f);
         playingDancingManAnimation = false;
     }
 
@@ -310,8 +313,6 @@ public class RummageGameManager : MonoBehaviour
             AudioManager.instance.PlayTalk(clip);
         }
 
-        waitingForCoinSelection = false;
-        dancingManClickable = false;
         if (coin == selectedRummageCoin.type)
         {
             // success! go on to the next row or win game if on last row
@@ -330,6 +331,24 @@ public class RummageGameManager : MonoBehaviour
         return false;
     }
 
+    private IEnumerator SkipToWinRoutine()
+    {        
+        stretch.stretchIn();
+        orc.GoToOrigin();
+        
+        yield return new WaitForSeconds(1f);
+        orc.successOrc();
+        yield return new WaitForSeconds(1f);
+        orc.stopOrc();
+        atPile = false;
+
+        // play win tune
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+        yield return new WaitForSeconds(1f);
+
+        // calculate and show stars
+        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+    }
 
     private IEnumerator CoinFailRoutine()
     {
@@ -428,7 +447,7 @@ public class RummageGameManager : MonoBehaviour
 
     private IEnumerator WinRoutine()
     {
-        yield return new WaitForSeconds(.01f);
+        yield return new WaitForSeconds(0.01f);
         List<RummageCoin> pileSet = GetCoinPile(orc.AtLocation()-1);
 
         Repairs[orc.AtLocation() - 1].SetActive(true);

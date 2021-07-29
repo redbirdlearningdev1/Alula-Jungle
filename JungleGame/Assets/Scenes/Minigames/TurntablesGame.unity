@@ -1334,8 +1334,8 @@ MonoBehaviour:
   randomizeKeyPosition: 1
   finishedDoorColor: {r: 1, g: 0.79205453, b: 0, a: 1}
   winDoorColor: {r: 0, g: 0.71623945, b: 1, a: 1}
-  playInEditor: 1
-  playTutorial: 1
+  playInEditor: 0
+  playTutorial: 0
   correctTutorialIcons: 00000000010000000200000003000000
   firstQuartet: 08000000000000000000000000000000
   secondQuartet: 00000000010000000000000000000000
