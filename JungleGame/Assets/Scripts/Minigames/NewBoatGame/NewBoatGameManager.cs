@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class NewBoatGameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static NewBoatGameManager instance;
+
+    void Awake()
     {
-        
+        if (instance == null)
+            instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ArrivedAtIsland()
     {
-        
+
     }
 }

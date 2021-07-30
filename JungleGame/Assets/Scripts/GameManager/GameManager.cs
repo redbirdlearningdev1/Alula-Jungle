@@ -248,6 +248,10 @@ public class GameManager : DontDestroy<GameManager>
 
         // remove default background
         DefaultBackground.instance.Deactivate();
+
+        // remove ui buttons
+        SettingsManager.instance.ToggleWagonButtonActive(false);
+        SettingsManager.instance.ToggleMenuButtonActive(false);
     }
 
     /* 

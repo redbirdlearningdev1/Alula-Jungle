@@ -13,6 +13,7 @@ public class BoatThrottleController : MonoBehaviour
     private const float posX = 4.3f;
 
     public bool isOn = false;
+    public ThrottleButton throttleButton;
 
     void Awake()
     {
@@ -45,6 +46,7 @@ public class BoatThrottleController : MonoBehaviour
         else if (Input.GetMouseButtonUp(0) && holdingThrottle)
         {
             holdingThrottle = false;
+            throttleButton.ToggleScalePressed(false);
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -60,6 +62,7 @@ public class BoatThrottleController : MonoBehaviour
                     if (result.gameObject.transform.name == "ThrottleButton")
                     {
                         holdingThrottle = true;
+                        throttleButton.ToggleScalePressed(true);
                     }
                 }
             }

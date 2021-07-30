@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum BoatButtonID
 {
-    Green, Blue, Mic, Sound, Escape
+    Green, Blue, Mic, Sound, Escape, Throttle
 }
 
 public class BoatButton : MonoBehaviour
@@ -12,23 +12,18 @@ public class BoatButton : MonoBehaviour
     public BoatButtonID id;
 
     [Header("Sprite Stuff")]
-    public bool swapSprites;
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     public Sprite defaultSprite;
     public Sprite pressedSprite;
 
     void Awake()
     {
-        spriteRenderer = GetComponentInParent<SpriteRenderer>();
         SetPressedSprite(false);
     }
 
     // sets sprite between defualt and pressed
     public void SetPressedSprite(bool opt)
     {
-        if (!swapSprites)
-            return;
-
         if (opt)
             spriteRenderer.sprite = pressedSprite;
         else

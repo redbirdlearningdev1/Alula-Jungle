@@ -12,6 +12,7 @@ public class IslandCutoutController : MonoBehaviour
 
     public Transform originalPos;
     public Transform oceanPos;
+    public Transform mainIslandParent;
     public float moveSpeed;
     public SpriteRenderer outline;
 
@@ -31,10 +32,11 @@ public class IslandCutoutController : MonoBehaviour
 
         if (Input.GetMouseButton(0) && holdingIsland)
         {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePos.z = 0f;
- 
-            transform.position = mousePos;
+            Vector3 mousePosWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosWorldSpace.z = 0f;
+
+            Vector3 pos = Vector3.Lerp(transform.position, mousePosWorldSpace, moveSpeed);
+            transform.position = pos;
         }
         else if (Input.GetMouseButtonUp(0) && holdingIsland)
         {
@@ -80,7 +82,9 @@ public class IslandCutoutController : MonoBehaviour
             {
                 foreach(var result in raycastResults)
                 {
-                    if (result.gameObject.transform.name == "IslandButton")
+                    print ("result: " + result.gameObject.name);
+
+                    if (result.gameObject.transform.name == "IslandCutout")
                     {
                         holdingIsland = true;
                     }
@@ -93,29 +97,31 @@ public class IslandCutoutController : MonoBehaviour
     {
         // move island to correct spot + set new parent
         GoToOceanSpot();
-        transform.SetParent(oceanPos.transform);
 
         // turn off island update
         isOn = false;
 
         // remove island outline
         StartCoroutine(LerpOutlineAlpha());
-
+        
         yield return new WaitForSeconds(1f);
 
+        // set island parent
+        transform.SetParent(mainIslandParent);
         // center boat to face main island
-        ParallaxController.instance.LerpToCenter();
+        NewParallaxController.instance.CenterOnIsland(transform);
 
         // disable wheel control
         BoatWheelController.instance.isOn = false;
 
         yield return new WaitForSeconds(1f);
 
+
         // enable throtle control
         BoatThrottleController.instance.isOn = true;
 
         // switch to vertical parallaxing
-        ParallaxController.instance.verticalParallax = true;
+        NewParallaxController.instance.verticalParallax = true;
     }
 
     private void ReturnIslandToPos()
@@ -161,7 +167,7 @@ public class IslandCutoutController : MonoBehaviour
         while (true)
         {
             timer += Time.deltaTime;
-            if (timer > 1f)
+            if (timer > 3f)
             {
                 outline.color = new Color(1f, 1f, 1f, 0f);
                 break;

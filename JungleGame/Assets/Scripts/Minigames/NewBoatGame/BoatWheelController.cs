@@ -7,6 +7,12 @@ public class BoatWheelController : MonoBehaviour
 {
     public static BoatWheelController instance;
 
+    [Header("Boat Panel")]
+    public Transform boatPannel;
+    public float shakeSpeed;
+    public float shakeAmount;
+
+    [Header("Wheel Values")]
     public float leftAngle;
     public float rightAngle;
     public float moveDuration;
@@ -14,7 +20,7 @@ public class BoatWheelController : MonoBehaviour
     private float wheelAngle;
     private Coroutine currentRoutine;
     private bool holdingWheel;
-    private bool isRight;
+    private bool isLeft;
 
     public bool isOn = true;
 
@@ -34,15 +40,15 @@ public class BoatWheelController : MonoBehaviour
 
         if (Input.GetMouseButton(0) && holdingWheel)
         {
-            if (isRight)
+            if (isLeft)
             {
-                // parallax to the right
-                ParallaxController.instance.MoveParallax(true);
+                // parallax to the left
+                NewParallaxController.instance.SetBoatDirection(BoatParallaxDirection.Left);
             }
             else
             {
-                // parallax to the left
-                ParallaxController.instance.MoveParallax(false);
+                // parallax to the right
+                NewParallaxController.instance.SetBoatDirection(BoatParallaxDirection.Right);
             }
         }
         else if (Input.GetMouseButtonUp(0) && holdingWheel)
@@ -51,6 +57,8 @@ public class BoatWheelController : MonoBehaviour
             if (currentRoutine != null)
                 StopCoroutine(currentRoutine);
             ResetWheel();
+            // set the boat direction to be none (still)
+            NewParallaxController.instance.SetBoatDirection(BoatParallaxDirection.Still);
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -67,11 +75,13 @@ public class BoatWheelController : MonoBehaviour
                     {
                         holdingWheel = true;
                         RotateWheelLeft();
+                        ToggleBoatPannelShake();
                     }
                     else if (result.gameObject.transform.name == "RightWheelButton")
                     {
                         holdingWheel = true;
                         RotateWheelRight();
+                        ToggleBoatPannelShake();
                     }
                 }
             }
@@ -83,7 +93,7 @@ public class BoatWheelController : MonoBehaviour
         if (currentRoutine != null)
             StopCoroutine(currentRoutine);
         currentRoutine = StartCoroutine(RotateWheelRoutine(leftAngle, moveDuration));
-        isRight = false; // moving to the left
+        isLeft = false; // moving to the left
     }
 
     public void RotateWheelRight()
@@ -91,19 +101,14 @@ public class BoatWheelController : MonoBehaviour
         if (currentRoutine != null)
             StopCoroutine(currentRoutine);
         currentRoutine = StartCoroutine(RotateWheelRoutine(rightAngle, moveDuration));
-        isRight = true; // moving to the right
+        isLeft = true; // moving to the right
     }
 
     public void ResetWheel()
     {
         if (currentRoutine != null)
             StopCoroutine(currentRoutine);
-        currentRoutine = StartCoroutine(RotateWheelRoutine(0f, moveDuration));
-    }
-
-    private IEnumerator RotateWheel(float angle)
-    {
-        yield return null;
+        currentRoutine = StartCoroutine(RotateWheelRoutine(0f, moveDuration / 2));
     }
 
     private void SetWheelAngle()
@@ -132,5 +137,25 @@ public class BoatWheelController : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    private void ToggleBoatPannelShake()
+    {
+        StartCoroutine(ShakeObjectRoutine(boatPannel));
+    }
+
+    private IEnumerator ShakeObjectRoutine(Transform obj)
+    {
+        Vector3 originalPos = obj.position;
+
+        while (holdingWheel)
+        {
+            Vector3 pos = originalPos;
+            pos.y = originalPos.y + Mathf.Sin(Time.time * shakeSpeed) * shakeAmount;
+            obj.position = pos;
+            yield return null;
+        }
+
+        obj.position = originalPos;
     }
 }
