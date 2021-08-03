@@ -19,7 +19,7 @@ public class BoatWheelController : MonoBehaviour
 
     private float wheelAngle;
     private Coroutine currentRoutine;
-    private bool holdingWheel;
+    [HideInInspector] public bool holdingWheel;
     private bool isLeft;
 
     public bool isOn = true;
@@ -139,7 +139,7 @@ public class BoatWheelController : MonoBehaviour
         }
     }
 
-    private void ToggleBoatPannelShake()
+    public void ToggleBoatPannelShake()
     {
         StartCoroutine(ShakeObjectRoutine(boatPannel));
     }

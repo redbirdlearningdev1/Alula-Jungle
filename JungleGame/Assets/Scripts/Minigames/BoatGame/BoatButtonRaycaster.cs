@@ -35,7 +35,9 @@ public class BoatButtonRaycaster : MonoBehaviour
                     {
                         currentButton = result.gameObject.GetComponent<BoatButton>();
                         currentButton.SetPressedSprite(true);
-                        print ("button_press: " + currentButton.id);
+                        
+                        
+                        NewBoatGameManager.instance.BoatButtonPressed(currentButton.id);
                     }
                 }
             }

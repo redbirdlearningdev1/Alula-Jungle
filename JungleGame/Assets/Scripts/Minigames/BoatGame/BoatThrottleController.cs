@@ -13,7 +13,11 @@ public class BoatThrottleController : MonoBehaviour
     private const float posX = 4.3f;
 
     public bool isOn = false;
+    private bool firstTime = true;
     public ThrottleButton throttleButton;
+    
+    public GlowOutlineController outlineController;
+    public SpriteWiggleController wiggleController;
 
     void Awake()
     {
@@ -45,6 +49,10 @@ public class BoatThrottleController : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0) && holdingThrottle)
         {
+            // stop shake boat pannel
+            if (GetThrottleSpeed() == 0f)
+                BoatWheelController.instance.holdingWheel = false;
+            
             holdingThrottle = false;
             throttleButton.ToggleScalePressed(false);
         }
@@ -63,6 +71,18 @@ public class BoatThrottleController : MonoBehaviour
                     {
                         holdingThrottle = true;
                         throttleButton.ToggleScalePressed(true);
+
+                        // turn off wiggle and glow
+                        if (firstTime)
+                        {
+                            NewBoatGameManager.instance.repeatAudio = false;
+                            NewBoatGameManager.instance.ThrottlePressed();
+                            firstTime = false;
+                        }
+
+                        // start shake boat pannel
+                        BoatWheelController.instance.holdingWheel = true;
+                        BoatWheelController.instance.ToggleBoatPannelShake();
                     }
                 }
             }

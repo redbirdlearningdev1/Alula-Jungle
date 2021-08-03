@@ -125,9 +125,12 @@ public class NewParallaxController : MonoBehaviour
             {
                 prevVerticalParallaxPos = verticalParallaxPos;
 
-                // finished boat game
+                // arrived on island
                 if (verticalParallaxPos > 1f)
+                {
+                    verticalParallax = false;
                     NewBoatGameManager.instance.ArrivedAtIsland();
+                }
             }
             else
                 return;
@@ -220,11 +223,6 @@ public class NewParallaxController : MonoBehaviour
         StartCoroutine(CenterOnIslandRoutine());
     }
 
-    private IEnumerator CenterIsland(Transform mainIsland)
-    {
-        
-    }
-
     private IEnumerator CenterOnIslandRoutine()
     {
         while (islandPosition.position.x > 0)
@@ -238,5 +236,8 @@ public class NewParallaxController : MonoBehaviour
             yield return null;
         }
         direction = BoatParallaxDirection.Still;
+
+        // continue boat game event
+        NewBoatGameManager.instance.IslandCentered();
     }
 }

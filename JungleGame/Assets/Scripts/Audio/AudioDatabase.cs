@@ -57,6 +57,15 @@ public class AudioDatabase : MonoBehaviour
 
     /* 
     ################################################
+    #   BOAT GAME AUDIO DATABASE
+    ################################################
+    */
+    
+    [Header("Boat Game Audio")]
+    public AudioClip[] boat_game_audio;
+
+    /* 
+    ################################################
     #   FX DATABASE
     ################################################
     */

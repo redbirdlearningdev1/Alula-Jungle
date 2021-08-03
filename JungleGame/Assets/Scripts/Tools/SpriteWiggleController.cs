@@ -16,6 +16,10 @@ public class SpriteWiggleController : MonoBehaviour
             var quat = Quaternion.Euler(0f, 0f, curve.Evaluate(Time.time + randomTimeAddition) * multiplier);
             transform.rotation = quat;
         }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
     }
 
     public void StartWiggle(bool randomTime = false)
