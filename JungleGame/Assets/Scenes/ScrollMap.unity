@@ -3933,7 +3933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   overideMapLimit: 0
   mapLimitNum: 0
-  overideGameEvent: 1
+  overideGameEvent: 0
   gameEvent: 1
   Map: {fileID: 1534747656}
   mapLocations:

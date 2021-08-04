@@ -38,6 +38,9 @@ public class NewBoatGameManager : MonoBehaviour
         GameManager.instance.SceneInit();
         SettingsManager.instance.ToggleWagonButtonActive(false);
 
+        // stop music
+        AudioManager.instance.StopMusic();
+
         StartCoroutine(ContinueBoatGame());
     }
 
@@ -299,8 +302,18 @@ public class NewBoatGameManager : MonoBehaviour
                 break;
 
             case 6:
-                // exit boat game
+                // play blip sound
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+
+                // save to SIS
+                if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.InitBoatGame)
+                {
+                    StudentInfoSystem.AdvanceLinearGameEvent();
+                    StudentInfoSystem.SaveStudentPlayerData();
+                }
                 yield return new WaitForSeconds(2f);
+
+                // exit boat game
                 GameManager.instance.LoadScene("ScrollMap", true, 3f);
                 break;
         }
@@ -309,6 +322,9 @@ public class NewBoatGameManager : MonoBehaviour
 
     public void BoatButtonPressed(BoatButtonID id)
     {
+        // make fx sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
         switch (id)
         {
             case BoatButtonID.Blue:
