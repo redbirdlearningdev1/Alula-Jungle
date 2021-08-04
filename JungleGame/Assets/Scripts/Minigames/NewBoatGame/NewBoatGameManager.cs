@@ -169,6 +169,14 @@ public class NewBoatGameManager : MonoBehaviour
                 IslandCutoutController.instance.isOn = false;
                 yield return new WaitForSeconds(1f);
 
+                // play talkie and wait for it to finish
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.boatGameTalkie);
+                while (TalkieManager.instance.talkiePlaying)
+                {
+                    yield return null;
+                }
+                yield return new WaitForSeconds(1f);
+
                 // red voiceover 4
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[3]);
                 yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[3].length + 0.5f);

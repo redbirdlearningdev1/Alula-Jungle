@@ -7044,7 +7044,7 @@ RectTransform:
   m_GameObject: {fileID: 5372103940983501175}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1202149062332909869}
   m_RootOrder: 0
@@ -7082,7 +7082,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1591eef0dd4786c45bbf2196026ed9ac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4d5a0905dfb71a04aa647991be62cffe, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7616,7 +7616,7 @@ RectTransform:
   m_GameObject: {fileID: 6465652074939604487}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1202149062332909869}
   m_RootOrder: 1
@@ -7654,7 +7654,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9a5736e6f19d12c458f286b627c0940f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4d5a0905dfb71a04aa647991be62cffe, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7888,8 +7888,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talkiePlaying: 0
-  talkieMoveSpeed: 0.25
-  talkieDeactivateSpeed: 0.25
+  talkieMoveSpeed: 0.5
+  talkieDeactivateSpeed: 0.5
   leftTalkie: {fileID: 2725319633311727417}
   rightTalkie: {fileID: 3056509535328771376}
   leftImage: {fileID: 7050390222423205125}
@@ -7912,6 +7912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764b8d34a6042ef428cdcb3bb3e9bd7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boatGameTalkie: {fileID: 11400000, guid: f8076a45db313bf4e83c3d794f26bedc, type: 2}
   redSprites:
   - sprite: {fileID: 21300000, guid: 4d5a0905dfb71a04aa647991be62cffe, type: 3}
     character: 1
@@ -8217,7 +8218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.05882353, g: 0.07450981, b: 0.12941177, a: 0.6313726}
+  m_Color: {r: 0.05882353, g: 0.07450981, b: 0.12941177, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

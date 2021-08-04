@@ -16,6 +16,9 @@ public class TalkieDatabase : MonoBehaviour
 {
     public static TalkieDatabase instance;
 
+    [Header("Talkie Objects")]
+    public TalkieObject boatGameTalkie;
+
     [Header("Red Sprites")]
     public List<TalkieDatabaseEntry> redSprites;
 
