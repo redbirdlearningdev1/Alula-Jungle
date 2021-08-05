@@ -1,40 +1,81 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TigerGameManager : MonoBehaviour
 {
     public static TigerGameManager instance;
 
     [SerializeField] private TigerPawController Tiger;
-    [SerializeField] private CoinChoice coinC;
     [SerializeField] private PatternRightWrong pattern;
-    //[SerializeField] private Poloroid poloroidC;
+    [SerializeField] private List<Polaroid> polaroidC;
     [SerializeField] private TigerGameRaycaster caster;
-
-
-    private bool gameSetup = false;
-
-    private List<ActionWordEnum> globalPoloroidPool;
-    private List<ActionWordEnum> unusedPoloroidPool;
-
-
-
-
-    [SerializeField] private List<Poloroid> poloroids;
-    [SerializeField] private List<GameObject> pics;
+    [SerializeField] private Transform selectedObjectParentCoin;
     [SerializeField] private List<GameObject> correctCoins;
     [SerializeField] private List<GameObject> incorrectCoins;
+    private bool gameSetup = false;
+
+    //maybe old??
 
 
-    private List<Poloroid> allPoloroid = new List<Poloroid>();
-    private int selectedIndex;
-    public Poloroid selectedPoloroid;
 
-    private int winCount = 0;
-    private int loseCount = 0;
 
-    private bool firstTimePlaying = true;
+
+
+    [Header("Values")]
+    [SerializeField] private Vector2 normalCoinSize;
+    [SerializeField] private Vector2 expandedCoinSize;
+    // water coins
+    [SerializeField] private Vector2 waterNormalCoinSize;
+    [SerializeField] private Vector2 waterExpandedCoinSize;
+
+    [Header("Positions")]
+    [SerializeField] private Transform coinStartPos;
+    [SerializeField] private Transform coinLandPos;
+    [SerializeField] private Transform PhotoPos1;
+    [SerializeField] private Transform PhotoPos2;
+    [SerializeField] private Transform PhotoPos3;
+    [SerializeField] private Transform PhotoPos4;
+    [SerializeField] private Transform PhotoPos5;
+    [SerializeField] private Transform PhotoStartPos;
+    [SerializeField] private Transform PhotoEndPos;
+
+    [SerializeField] private UniversalCoin waterCoins;
+    private UniversalCoin currWaterCoin;
+
+    // other variables
+    private ChallengeWord currentWord1;
+    private ChallengeWord currentWord2;
+    private ChallengeWord currentWord3;
+    private ChallengeWord currentWord4;
+    private ChallengeWord currentWord5;
+    private ElkoninValue currentTargetValue;
+    private ChallengeWord currentTargetWord;
+    private int currentSwipeIndex;
+
+    private List<UniversalCoin> currentCoins;
+    private int numWins = 0;
+    private int numMisses = 0;
+    private bool playingCoinAudio = false;
+
+    private List<ChallengeWord> globalWordList;
+    private List<ChallengeWord> unusedWordList;
+    private List<ChallengeWord> usedWordList;
+
+    [Header("Testing")] // ache -> bake
+    public bool overrideWord;
+    //public ChallengeWord testChallengeWord;
+    public ChallengeWord targetChallengeWord1;
+    public ChallengeWord targetChallengeWord2;
+    public ChallengeWord targetChallengeWord3;
+    public ChallengeWord targetChallengeWord4;
+    public ChallengeWord targetChallengeWord5;
+    public List<ElkoninValue> coinOptions;
+    public int swipeIndex;
+
+    [SerializeField] private Vector2 noCoin;
+
 
 
     void Awake()
@@ -49,12 +90,10 @@ public class TigerGameManager : MonoBehaviour
 
         }
 
-        // dev object stuff
-        //devObject.SetActive(GameManager.instance.devModeActivated);
 
         PregameSetup();
         StartCoroutine(StartGame(0));
-        //StartCoroutine(StartGame(0));
+
     }
 
     void Update()
@@ -64,150 +103,6 @@ public class TigerGameManager : MonoBehaviour
 
 
 
-    public bool EvaluateSelectedPoloroid(ActionWordEnum polor, Poloroid correctCoin)
-    {
-        //Debug.Log(selectedSpiderCoin.type);
-        if (polor == selectedPoloroid.type)
-        {
-            // success! go on to the next row or win game if on last row
-            Debug.Log("YOU DID IT");
-            if (winCount < 3)
-            {
-                winCount++;
-                pattern.correct();
-                StartCoroutine(CoinSuccessRoutine(correctCoin));
-            }
-            else
-            {
-                Debug.Log("YOU DID IT AGAIn");
-                StartCoroutine(WinRoutine());
-            }
-
-            return true;
-        }
-        loseCount++;
-        pattern.incorrect();
-        if (loseCount == 3)
-        {
-            StartCoroutine(WinRoutine());
-        }
-        StartCoroutine(CoinFailRoutine());
-        
-        return false;
-    }
-
-
-    private IEnumerator CoinFailRoutine()
-    {
-
-
-        Tiger.TigerAway();
-        yield return new WaitForSeconds(.5f);
-        coinC.ToggleVisibility(false, false);
-        yield return new WaitForSeconds(.15f);
-        if (loseCount - 1 == 0)
-        {
-            incorrectCoins[0].SetActive(true);
-        }
-        else if (loseCount - 1 == 1)
-        {
-            incorrectCoins[1].SetActive(true);
-        }
-        else if (loseCount - 1 == 2)
-        {
-            incorrectCoins[2].SetActive(true);
-        }
-        coinC.ToggleVisibility(false, false);
-        Tiger.TigerSwipe();
-        yield return new WaitForSeconds(.65f);
-        List<Poloroid> poloroidZ = GetPoloroids(0);
-        poloroidZ[0].PoloroindMovePos1Last();
-        yield return new WaitForSeconds(.02f);
-        poloroidZ[1].PoloroindMovePos2Last();
-        yield return new WaitForSeconds(.02f);
-        poloroidZ[2].PoloroindMovePos3Last();
-        yield return new WaitForSeconds(.02f);
-        poloroidZ[3].PoloroindMovePos4Last();
-
-        yield return new WaitForSeconds(1.25f);
-        foreach (var polor in poloroidZ)
-        {
-            polor.PoloroidMoveOut();
-        }
-        yield return new WaitForSeconds(1.5f);
-        pics[0].SetActive(false);
-        pics[1].SetActive(false);
-        pics[2].SetActive(false);
-        pics[3].SetActive(false);
-        pics[4].SetActive(false);
-        foreach (var polor in poloroidZ)
-        {
-
-            polor.ToggleVisibility(false, false);
-
-            polor.PoloroidMoveBase();
-
-
-        }
-
-
-        yield return new WaitForSeconds(.5f);
-
-        StartCoroutine(StartGame(0));
-    }
-
-    private IEnumerator CoinSuccessRoutine(Poloroid coin)
-    {
-        if(winCount-1 == 0)
-        {
-            correctCoins[0].SetActive(true);
-        }
-        else if (winCount-1 == 1)
-        {
-            correctCoins[1].SetActive(true);
-        }
-        else if (winCount-1 == 2)
-        {
-            correctCoins[2].SetActive(true);
-        }
-        coinC.ToggleVisibility(false, false);
-        Tiger.TigerSwipe();
-        yield return new WaitForSeconds(.65f);
-        List<Poloroid> poloroidZ = GetPoloroids(0);
-        poloroidZ[0].PoloroindMovePos1Last();
-        yield return new WaitForSeconds(.02f);
-        poloroidZ[1].PoloroindMovePos2Last();
-        yield return new WaitForSeconds(.02f);
-        poloroidZ[2].PoloroindMovePos3Last();
-        yield return new WaitForSeconds(.02f);
-        poloroidZ[3].PoloroindMovePos4Last();
- 
-        yield return new WaitForSeconds(1.25f);
-        foreach (var polor in poloroidZ)
-        {
-            polor.PoloroidMoveOut();
-        }
-        yield return new WaitForSeconds(1.5f);
-        pics[0].SetActive(false);
-        pics[1].SetActive(false);
-        pics[2].SetActive(false);
-        pics[3].SetActive(false);
-        pics[4].SetActive(false);
-        foreach (var polor in poloroidZ)
-        {
-
-            polor.ToggleVisibility(false, false);
-            
-            polor.PoloroidMoveBase();
-
-
-        }
-
-
-        yield return new WaitForSeconds(.5f);
-
-        StartCoroutine(StartGame(0));
-    }
 
 
     private IEnumerator WinRoutine()
@@ -218,34 +113,15 @@ public class TigerGameManager : MonoBehaviour
         GameManager.instance.LoadScene("ScrollMap", true, 3f);
     }
 
+
+
     private void PregameSetup()
     {
-        // create coin list
 
-        foreach (var polor in poloroids)
-        {
-            //Debug.Log(coin);
-            allPoloroid.Add(polor);
-        }
-
-
-        // Create Global Coin List
-        globalPoloroidPool = GameManager.instance.GetGlobalActionWordList();
-        unusedPoloroidPool = new List<ActionWordEnum>();
-        unusedPoloroidPool.AddRange(globalPoloroidPool);
-
-        // disable all coins
-        coinC.ToggleVisibility(false, false);
-
-
-
-
-        foreach (var polor in poloroids)
-        {
-            //coin.gameObject.SetActive(false);
-        }
-
-
+        ChallengeWordDatabase.InitCreateGlobalList();
+        globalWordList = ChallengeWordDatabase.globalChallengeWordList;
+        unusedWordList = globalWordList;
+        usedWordList = new List<ChallengeWord>();
 
     }
 
@@ -258,29 +134,71 @@ public class TigerGameManager : MonoBehaviour
 
     private IEnumerator StartGame(int index)
     {
+
+        waterCoins.gameObject.transform.position = coinStartPos.position;
+        waterCoins.SetSize(noCoin);
         pattern.baseState();
-        StartCoroutine(ShowCoins(0));
+
+        if (overrideWord)
+        {
+            currentWord1 = targetChallengeWord1;
+            currentWord2 = targetChallengeWord2;
+            currentWord3 = targetChallengeWord3;
+            currentWord4 = targetChallengeWord4;
+            currentWord5 = targetChallengeWord5;
+            polaroidC[0].SetPolaroid(currentWord1);
+            polaroidC[1].SetPolaroid(currentWord2);
+            polaroidC[2].SetPolaroid(currentWord3);
+            polaroidC[3].SetPolaroid(currentWord4);
+            polaroidC[4].SetPolaroid(currentWord5);
+        }
+        yield return new WaitForSeconds(.1f);
         Tiger.TigerDeal();
-        yield return new WaitForSeconds(.3f);
-        coinC.ToggleVisibility(true, true);
+        waterCoins.gameObject.transform.position = coinLandPos.position;
+        yield return new WaitForSeconds(.6f);
+        waterCoins.SetValue(coinOptions[0]);
+        waterCoins.SetLayer(2);
+        waterCoins.SetSize(normalCoinSize);
         yield return new WaitForSeconds(.45f);
-        List<Poloroid> poloroidZ = GetPoloroids(index);
-        foreach (var polor in poloroidZ)
+        for (int i = 0; i < 5; i++)
+        {
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoStartPos.position, 0f));
+        }
+        for (int i = 0; i < 5; i++)
         {
 
-            polor.PoloroidMoveIn();
-
-
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos1.position, .2f));
 
         }
+        yield return new WaitForSeconds(.35f);
+        for (int i = 1; i < 5; i++)
+        {
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos2.position, .2f));
+        }
+        yield return new WaitForSeconds(.11f);
+        for (int i = 2; i < 5; i++)
+        {
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos3.position, .2f));
+        }
+        yield return new WaitForSeconds(.11f);
+        for (int i = 3; i < 5; i++)
+        {
+
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos4.position, .2f));
+        }
+        yield return new WaitForSeconds(.11f);
+        for (int i = 4; i < 5; i++)
+        {
+
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos5.position, .2f));
+        }
+
+
         yield return new WaitForSeconds(.6f);
-        poloroidZ[0].PoloroindMovePos1();
-        poloroidZ[1].PoloroindMovePos2();
-        poloroidZ[2].PoloroindMovePos3();
-        poloroidZ[3].PoloroindMovePos4();
-        poloroidZ[4].PoloroindMovePos5();
 
 
+        currentTargetWord = targetChallengeWord2;
+        currentTargetValue = currentTargetWord.elkoninList[swipeIndex];
 
 
 
@@ -292,92 +210,212 @@ public class TigerGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
     }
 
-    private IEnumerator ShowCoins(int index)
+    private IEnumerator LerpMoveObject(Transform obj, Vector3 target, float lerpTime)
     {
-        Debug.Log("ShowCoins???????????????");
-        List<Poloroid> currentPoloroids = GetPoloroids(index);
-        foreach (var polor in currentPoloroids)
+        Vector3 start = obj.position;
+        float timer = 0f;
+        while (true)
         {
-            // set random type
-            if (unusedPoloroidPool.Count == 0)
+            timer += Time.deltaTime;
+            if (timer > lerpTime)
             {
-                unusedPoloroidPool.AddRange(globalPoloroidPool);
+                obj.position = target;
+                break;
             }
-            ActionWordEnum type = unusedPoloroidPool[Random.Range(0, unusedPoloroidPool.Count)];
-            unusedPoloroidPool.Remove(type);
 
-            polor.SetCoinType(type);
-            pics[0].SetActive(true);
-            pics[1].SetActive(true);
-            pics[2].SetActive(true);
-            pics[3].SetActive(true);
-            pics[4].SetActive(true);
-            polor.ToggleVisibility(true, true);
-            //Debug.Log("ShowCoins");
-            yield return new WaitForSeconds(0f);
+            Vector3 tempPos = Vector3.Lerp(start, target, timer / lerpTime);
+            obj.position = tempPos;
+            yield return null;
         }
-
-        SelectRandomPoloroid(index);
     }
 
-    private IEnumerator CoinsUp(int index)
+    public void GlowAndPlayAudioCoin(UniversalCoin coin)
     {
-        //Debug.Log("ShowCoins");
-        List<Poloroid> coins = GetPoloroids(index);
-        foreach (var coin in coins)
+        if (playingCoinAudio)
+            return;
+
+        // check lists
+        if (currentCoins.Contains(coin))
+        {
+            StartCoroutine(GlowAndPlayAudioCoinRoutine(coin));
+        }
+        // water coins
+        else
+        {
+            StartCoroutine(GlowAndPlayAudioCoinRoutine(coin, true));
+        }
+    }
+
+    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoin coin, bool waterCoin = false)
+    {
+        playingCoinAudio = true;
+
+        // glow coin
+        coin.ToggleGlowOutline(true);
+        AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(coin.value).audio);
+        // water coin differential
+        if (!waterCoin) coin.LerpSize(expandedCoinSize, 0.25f);
+        else coin.LerpSize(waterExpandedCoinSize, 0.25f);
+
+        yield return new WaitForSeconds(1.5f);
+        // return if current water coin
+        if (coin == currWaterCoin)
+        {
+            coin.ToggleGlowOutline(false);
+            playingCoinAudio = false;
+            yield break;
+        }
+
+        // water coin differential
+        if (!waterCoin) coin.LerpSize(normalCoinSize, 0.25f);
+        else coin.LerpSize(waterNormalCoinSize, 0.25f);
+
+        coin.ToggleGlowOutline(false);
+
+        playingCoinAudio = false;
+    }
+
+
+    private ChallengeWord GetUnusedWord()
+    {
+        // reset unused pool if empty
+        if (unusedWordList.Count <= 0)
+        {
+            unusedWordList.Clear();
+            unusedWordList.AddRange(globalWordList);
+        }
+
+        int index = Random.Range(0, unusedWordList.Count);
+        ChallengeWord word = unusedWordList[index];
+
+        // make sure word is not being used
+        if (usedWordList.Contains(word))
+        {
+            unusedWordList.Remove(word);
+            return GetUnusedWord();
+        }
+
+        unusedWordList.Remove(word);
+        usedWordList.Add(word);
+        return word;
+    }
+
+    public void EvaluateWaterCoin(Polaroid Photo)
+    {
+        //Debug.Log(Photo.challengeWord.elkoninList[swipeIndex] == waterCoins.value);
+
+        if (Photo.challengeWord.elkoninList[swipeIndex] == waterCoins.value)
+        {
+            //currWaterCoin = coin;
+
+
+            StartCoroutine(PostRound(true));
+        }
+        else
+        {
+            StartCoroutine(PostRound(false));
+        }
+        // return water coins
+        //WordFactorySubstitutingManager.instance.ResetWaterCoins();
+    }
+
+    public void returnToPos(GameObject currPhoto)
+    {
+
+        currPhoto.gameObject.transform.SetParent(selectedObjectParentCoin);
+
+        if (currPhoto.name == "PolaroidObject1")
+        {
+            StartCoroutine(LerpMoveObject(polaroidC[0].transform, PhotoPos1.position, .2f));
+        }
+        else if (currPhoto.name == "PolaroidObject2")
+        {
+            StartCoroutine(LerpMoveObject(polaroidC[1].transform, PhotoPos2.position, .2f));
+        }
+        else if (currPhoto.name == "PolaroidObject3")
+        {
+            StartCoroutine(LerpMoveObject(polaroidC[2].transform, PhotoPos3.position, .2f));
+        }
+        else if (currPhoto.name == "PolaroidObject4")
+        {
+            StartCoroutine(LerpMoveObject(polaroidC[3].transform, PhotoPos4.position, .2f));
+        }
+        else
+        {
+            StartCoroutine(LerpMoveObject(polaroidC[4].transform, PhotoPos5.position, .2f));
+        }
+
+    }
+
+    private IEnumerator PostRound(bool win)
+    {
+
+        if (win)
+        {
+            Debug.Log("goodjob");
+            pattern.correct();
+            correctCoins[numWins].SetActive(true);
+            numWins++;
+            Tiger.TigerAway();
+            yield return new WaitForSeconds(.55f);
+            waterCoins.gameObject.transform.position = coinStartPos.position;
+
+        }
+        else
+        {
+            Debug.Log("job");
+            pattern.incorrect();
+            incorrectCoins[numMisses].SetActive(true);
+            numMisses++;
+            Tiger.TigerAway();
+            yield return new WaitForSeconds(.55f);
+            waterCoins.gameObject.transform.position = coinStartPos.position;
+        }
+
+        Tiger.TigerSwipe();
+        yield return new WaitForSeconds(.45f);
+        for (int i = 0; i < 1; i++)
+        {
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos2.position, .2f));
+        }
+        yield return new WaitForSeconds(.15f);
+        for (int i = 0; i < 2; i++)
+        {
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos3.position, .2f));
+        }
+        yield return new WaitForSeconds(.15f);
+        for (int i = 0; i < 3; i++)
+        {
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos4.position, .2f));
+        }
+        yield return new WaitForSeconds(.15f);
+        for (int i = 0; i < 4; i++)
         {
 
-
-            yield return new WaitForSeconds(0f);
-
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos5.position, .2f));
         }
-       // SelectRandomCoin(index);
-    }
-    private IEnumerator CoinsDown(int index)
-    {
-        //Debug.Log("ShowCoins");
-        List<Poloroid> coins = GetPoloroids(index);
-        foreach (var coin in coins)
+        yield return new WaitForSeconds(.25f);
+        for (int i = 0; i < 5; i++)
         {
-
-            yield return new WaitForSeconds(0f);
-
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoEndPos.position, .2f));
         }
-        //SelectRandomCoin(index);
-    }
 
 
-    private IEnumerator HideCoins(int index, RummageCoin exceptCoin = null)
-    {
-        List<Poloroid> row = GetPoloroids(index);
-        foreach (var coin in row)
+        if (numMisses == 3 || numWins == 3)
         {
-            if (coin != exceptCoin)
-                coin.ToggleVisibility(false, true);
-            yield return new WaitForSeconds(0.1f);
+            WinRoutine();
         }
+        StartCoroutine(StartGame(0));
+        yield return null;
     }
 
-    private void SelectRandomPoloroid(int index)
-    {
-        List<Poloroid> pile = GetPoloroids(index);
-        selectedIndex = Random.Range(0, pile.Count);
-        print("selected index: " + selectedIndex);
-        selectedPoloroid = pile[selectedIndex];
-        coinC.SetCoinType(selectedPoloroid.type);
 
 
-    }
-
-    private List<Poloroid> GetPoloroids(int index)
-    {
-        switch (index)
-        {
-            default:
-            case 0:
-                return poloroids;
 
 
-        }
-    }
+
+
+
+
+
 }
