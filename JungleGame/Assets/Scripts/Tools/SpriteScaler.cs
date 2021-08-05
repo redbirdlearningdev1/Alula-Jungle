@@ -16,7 +16,7 @@ public class SpriteScaler : MonoBehaviour
 
     [Header("Sprite manual size")]
     public Vector2 spriteResolution;
-    [Range(0,2)] public float scale;
+    [Range(0,3)] public float scale;
     private float prevScale;
 
     void Awake()

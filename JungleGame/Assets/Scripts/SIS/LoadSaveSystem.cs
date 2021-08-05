@@ -22,7 +22,7 @@ public static class LoadSaveSystem
     public static bool  default_spiderwebTutorial = false;
     public static bool  default_rummageTutorial = false;
 
-    public static LinearGameEvent default_gameEvent = LinearGameEvent.InitBoatGame;
+    public static StoryBeat default_gameEvent = StoryBeat.InitBoatGame;
 
     public static int   default_mapDataStars = 0;
     public static bool  default_mapDataFixed = false;
@@ -107,7 +107,7 @@ public static class LoadSaveSystem
         new_data.froggerTutorial = default_spiderwebTutorial;
         new_data.froggerTutorial = default_rummageTutorial;
 
-        new_data.currGameEvent = default_gameEvent;
+        new_data.currStoryBeat = default_gameEvent;
 
         new_data.mapData = new MapData();
         

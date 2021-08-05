@@ -5,7 +5,7 @@ using UnityEngine;
 public class RummageChest : MonoBehaviour
 {
     private Vector3 scaleNormal = new Vector3(53.3f, 53.3f, 0f);
-    private Vector3 scaleSmall = new Vector3(5f, 53.3f, 0f);
+    private Vector3 scaleSmall = new Vector3(0f, 53.3f, 0f);
     // Start is called before the first frame update
 
     private Animator animator;
@@ -39,7 +39,6 @@ public class RummageChest : MonoBehaviour
     private IEnumerator stretchRoutine(Vector3 target)
     {
         Vector3 currStart = transform.localScale;
-        Debug.Log(currStart);
         float timer = 0f;
         float maxTime = 0.5f;
 

@@ -41,9 +41,10 @@ public class SpiderRayCaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("Bag"))
                     {
+                        print ("ball");
                         webBallGlow.chestGlowNo();
                         selectedCoin.MoveBack();
-                        isCorrect = NewSpiderGameManager.instance.EvaluateSelectedSpiderCoin(selectedCoin.type,selectedCoin);
+                        isCorrect = NewSpiderGameManager.instance.EvaluateSelectedSpiderCoin(selectedCoin.type, selectedCoin);
                     }
                 }
             }
@@ -60,7 +61,6 @@ public class SpiderRayCaster : MonoBehaviour
                 selectedCoin.MoveBack();
                 selectedCoin = null;
             }
-            //selectedShell.shadow.gameObject.SetActive(true);
             selectedCoin = null;
         }
 
@@ -87,7 +87,6 @@ public class SpiderRayCaster : MonoBehaviour
                     {
                         selectedBug = result.gameObject.GetComponent<BugController>();
                         selectedBug.PlayPhonemeAudio();
-
                     }
                 }
             }

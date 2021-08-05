@@ -20,6 +20,13 @@ public class Key : MonoBehaviour
 
     private Coroutine currentRoutine;
 
+    public void SetLayer(int layer)
+    {
+        if (image == null)
+            image = GetComponent<SpriteRenderer>();
+        image.sortingOrder = layer;
+    }
+
     public void StartMovingAnimation()
     {
         if (isDissipating) return;

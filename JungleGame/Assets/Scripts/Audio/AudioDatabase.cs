@@ -29,6 +29,43 @@ public class AudioDatabase : MonoBehaviour
 
     /* 
     ################################################
+    #   TUTORIAL AUDIO DATABASE
+    ################################################
+    */
+
+    [Header("Frogger Tutorial")]
+    public AudioClip FroggerTutorial_1;
+    public AudioClip FroggerTutorial_2;
+    public AudioClip FroggerTutorial_3;
+
+    [Header("Turntables Tutorial")]
+    public AudioClip TurntablesTutorial_1;
+    public AudioClip TurntablesTutorial_2;
+    public AudioClip TurntablesTutorial_3;
+    public AudioClip TurntablesTutorial_4;
+
+    [Header("Rummage Tutorial")]
+    public AudioClip RummageTutorial_1;
+    public AudioClip RummageTutorial_2;
+    public AudioClip RummageTutorial_3;
+
+    [Header("Spiderweb Tutorial")]
+    public AudioClip SpiderwebTutorial_1;
+    public AudioClip SpiderwebTutorial_2;
+    public AudioClip SpiderwebTutorial_3;
+    public AudioClip SpiderwebTutorial_4;
+
+    /* 
+    ################################################
+    #   BOAT GAME AUDIO DATABASE
+    ################################################
+    */
+    
+    [Header("Boat Game Audio")]
+    public AudioClip[] boat_game_audio;
+
+    /* 
+    ################################################
     #   FX DATABASE
     ################################################
     */

@@ -27,6 +27,7 @@ public static class ChallengeWordDatabase
         }
     }
 
+#if UNITY_EDITOR
     public static void UpdateCreateWord(ChallengeWordEntry data)
     {   
         string[] result = AssetDatabase.FindAssets(data.word + item_postfix);
@@ -94,6 +95,7 @@ public static class ChallengeWordDatabase
 
         return null;
     }
+#endif
 
     public static ChallengeWord FindWord(string wordName)
     {

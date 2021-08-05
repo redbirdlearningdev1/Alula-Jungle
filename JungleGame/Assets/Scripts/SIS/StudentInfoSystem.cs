@@ -48,6 +48,6 @@ public static class StudentInfoSystem
 
     public static void AdvanceLinearGameEvent()
     {
-        currentStudentPlayer.currGameEvent = (LinearGameEvent)((int)currentStudentPlayer.currGameEvent + 1);
+        currentStudentPlayer.currStoryBeat = (StoryBeat)((int)currentStudentPlayer.currStoryBeat + 1);
     }
 }

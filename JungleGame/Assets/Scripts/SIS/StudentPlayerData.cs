@@ -7,13 +7,12 @@ public enum StudentIndex
     student_1, student_2, student_3
 }
 
-public enum LinearGameEvent
+public enum StoryBeat
 {
     InitBoatGame, // 0
-    WelcomeStoryGame, // 1
-    UnlockGorillaVillage, // 2
-    PrologueStoryGame, // 3
-    StickerTutorial, // 4
+    UnlockGorillaVillage, // 1
+    PrologueStoryGame, // 2
+    StickerTutorial, // 3
     COUNT
 }
 
@@ -45,7 +44,7 @@ public class StudentPlayerData
     public bool rummageTutorial;
 
     // game progression
-    public LinearGameEvent currGameEvent;
+    public StoryBeat currStoryBeat;
 
     // map data
     public MapData mapData;

@@ -45,6 +45,7 @@ public class RummageCoin : MonoBehaviour
     {
         StartCoroutine(ReturnToClothRoutine(clothPos.position));
     }
+
     public void setOrigin()
     {
         Origin = transform.position;
@@ -52,7 +53,6 @@ public class RummageCoin : MonoBehaviour
 
     private IEnumerator ReturnToClothRoutine(Vector3 target)
     {
-        Debug.Log("Here");
         Vector3 currStart = transform.position;
         float timer = 0f;
         float maxTime = 0.5f;
@@ -88,7 +88,6 @@ public class RummageCoin : MonoBehaviour
     private IEnumerator growRoutine(Vector3 target)
     {
         Vector3 currStart = transform.localScale;
-        Debug.Log(currStart);
         float timer = 0f;
         float maxTime = 0.5f;
 
@@ -156,6 +155,7 @@ public class RummageCoin : MonoBehaviour
         // get animator if null
         if (!animator)
             animator = GetComponent<Animator>();
+
         animator.Play(type.ToString());
     }
 

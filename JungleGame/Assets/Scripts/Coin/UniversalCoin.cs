@@ -21,6 +21,23 @@ public class UniversalCoin : MonoBehaviour
     [SerializeField] private ActionWordCoin actionWordCoin;
     [SerializeField] private ConsonantCoin consonantCoin;
     [SerializeField] private GlowOutlineController glowConroller;
+    [SerializeField] private SpriteRenderer glowSpriteRenderer;
+    [SerializeField] private SpriteRenderer goldSpriteRenderer;
+    [SerializeField] private SpriteRenderer silverSpriteRenderer;
+    [SerializeField] private SpriteShakeController shakeController;
+    private SpriteRenderer currentSpriteRenderer;
+
+    void Awake()
+    {
+        // set the glow renderer to be invisible
+        glowSpriteRenderer.color = new Color(1f, 1f, 1f, 0f);
+
+        // set sprite renderer
+        if (coinType == CoinType.ActionWordCoin)
+            currentSpriteRenderer = goldSpriteRenderer;
+        else if (coinType == CoinType.ConsonantCoin)
+            currentSpriteRenderer = silverSpriteRenderer;
+    }
 
     void Update()
     {
@@ -35,6 +52,8 @@ public class UniversalCoin : MonoBehaviour
             {
                 // print ("switching to gold!");
                 value = ElkoninValue.empty_gold;
+                currentSpriteRenderer = goldSpriteRenderer;
+                shakeController.SetSpriteRenderer(goldSpriteRenderer);
 
                 consonantCoin.gameObject.SetActive(false);
                 actionWordCoin.SetCoinType(ChallengeWordDatabase.ElkoninValueToActionWord(value));
@@ -44,6 +63,8 @@ public class UniversalCoin : MonoBehaviour
             {
                 // print ("switching to silver!");
                 value = ElkoninValue.empty_silver;
+                currentSpriteRenderer = silverSpriteRenderer;
+                shakeController.SetSpriteRenderer(silverSpriteRenderer);
 
                 actionWordCoin.gameObject.SetActive(false);
                 consonantCoin.SetCoinType(ChallengeWordDatabase.ElkoninValueToConsonantEnum(value));
@@ -59,6 +80,12 @@ public class UniversalCoin : MonoBehaviour
         AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(value).audio);
     }
 
+    public void SetLayer(int layer)
+    {
+        goldSpriteRenderer.sortingOrder = layer;
+        silverSpriteRenderer.sortingOrder = layer;
+    }
+
     public void SetValue(ElkoninValue value)
     {
         //print ("value: " + value);
@@ -68,6 +95,8 @@ public class UniversalCoin : MonoBehaviour
             prevCoinType = CoinType.ActionWordCoin;
             coinType = CoinType.ActionWordCoin;
             this.value = value;
+            currentSpriteRenderer = goldSpriteRenderer;
+            shakeController.SetSpriteRenderer(goldSpriteRenderer);
 
             consonantCoin.gameObject.SetActive(false);
             actionWordCoin.SetCoinType(ChallengeWordDatabase.ElkoninValueToActionWord(value));
@@ -79,11 +108,18 @@ public class UniversalCoin : MonoBehaviour
             prevCoinType = CoinType.ConsonantCoin;
             coinType = CoinType.ConsonantCoin;
             this.value = value;
+            currentSpriteRenderer = silverSpriteRenderer;
+            shakeController.SetSpriteRenderer(silverSpriteRenderer);
 
             actionWordCoin.gameObject.SetActive(false);
             consonantCoin.SetCoinType(ChallengeWordDatabase.ElkoninValueToConsonantEnum(value));
             consonantCoin.gameObject.SetActive(true);
         }
+    }
+
+    public void ShakeCoin(float duration)
+    {
+        shakeController.ShakeObject(duration);
     }
 
     public void SetSize(Vector2 size)
@@ -120,6 +156,84 @@ public class UniversalCoin : MonoBehaviour
 
     public void ToggleGlowOutline(bool opt)
     {
+        if (opt)
+            glowSpriteRenderer.color = new Color(1f, 1f, 1f, 1f);
+        else
+            glowSpriteRenderer.color = new Color(1f, 1f, 1f, 0f);
         glowConroller.ToggleGlowOutline(opt);
+    }
+
+    /* 
+    ################################################
+    #   VISIBILITY FUNCTIONS
+    ################################################
+    */
+
+    public void ToggleVisibility(bool opt, bool smooth)
+    {
+        if (smooth)
+            StartCoroutine(ToggleVisibilityRoutine(opt));
+        else
+        {
+            if (!currentSpriteRenderer)
+                currentSpriteRenderer = GetComponent<SpriteRenderer>();
+            Color temp = currentSpriteRenderer.color;
+            if (opt) { temp.a = 1f; }
+            else {temp.a = 0; }
+            currentSpriteRenderer.color = temp;
+        }
+    }
+
+    public void SetTransparency(float alpha, bool smooth)
+    {
+        if (smooth)
+            StartCoroutine(SetTransparencyRoutine(alpha));
+        else
+        {
+            if (!currentSpriteRenderer)
+                currentSpriteRenderer = GetComponent<SpriteRenderer>();
+            Color temp = currentSpriteRenderer.color;
+            temp.a = alpha;
+            currentSpriteRenderer.color = temp;
+        }
+    }
+
+    private IEnumerator SetTransparencyRoutine(float alpha)
+    {
+        float end = alpha;
+        float timer = 0f;
+        while(true)
+        {
+            timer += Time.deltaTime;
+            Color temp = currentSpriteRenderer.color;
+            temp.a = Mathf.Lerp(temp.a, end, timer);
+            currentSpriteRenderer.color = temp;
+
+            if (currentSpriteRenderer.color.a == end)
+            {
+                break;
+            }
+            yield return null;
+        }
+    }
+
+    private IEnumerator ToggleVisibilityRoutine(bool opt)
+    {
+        float end = 0f;
+        if (opt) { end = 1f; }
+        float timer = 0f;
+        while(true)
+        {
+            timer += Time.deltaTime;
+            Color temp = currentSpriteRenderer.color;
+            temp.a = Mathf.Lerp(temp.a, end, timer);
+            currentSpriteRenderer.color = temp;
+
+            if (currentSpriteRenderer.color.a == end)
+            {
+                break;
+            }
+            yield return null;
+        }
     }
 }

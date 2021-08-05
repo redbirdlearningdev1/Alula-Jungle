@@ -17,7 +17,6 @@ public class DevMenuManager : MonoBehaviour
 
     private string[] sceneNames = new string[] {  "SplashScene",
                                                     "DevMenu",
-                                                    "JungleWelcomeScene",
                                                     "ScrollMap",
                                                     "TrophyRoomScene",
                                                     "LoadSaveTestScene",
@@ -29,7 +28,9 @@ public class DevMenuManager : MonoBehaviour
                                                     "RummageGame",
                                                     "PirateGame",
                                                     "SpiderwebGame",
-                                                    "MinigameDemoScene"};
+                                                    "MinigameDemoScene",
+                                                    "WordFactoryBlending",
+                                                    "WordFactorySubstituting"};
 
     private string[] storyGames = new string[] {
         "0 - Welcome",

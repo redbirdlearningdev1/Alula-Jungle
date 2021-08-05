@@ -25,7 +25,6 @@ public class SpiderCoin : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
-        print(type.ToString());
         animator.Play(type.ToString());
 
         RectTransform rt = GetComponent<RectTransform>();
@@ -33,21 +32,12 @@ public class SpiderCoin : MonoBehaviour
         myCollider.size = rt.sizeDelta;
 
         image = GetComponent<Image>();
-
     }
-
-    void Update()
-    {
-
-    }
-
 
     public void setOrigin()
     {
         Origin = transform.position;
     }
-
-   
 
     public void grow()
     {
@@ -61,7 +51,6 @@ public class SpiderCoin : MonoBehaviour
     private IEnumerator growRoutine(Vector3 target)
     {
         Vector3 currStart = transform.localScale;
-        Debug.Log(currStart);
         float timer = 0f;
         float maxTime = 0.5f;
 
@@ -84,19 +73,21 @@ public class SpiderCoin : MonoBehaviour
         }
     }
 
-
     public void MoveUp()
     {
         StartCoroutine(MoveUpDownRoutine(MoveUpPosition,1f));
     }
+
     public void MoveBack()
     {
         StartCoroutine(MoveUpDownRoutine(MoveUpPosition, .5f));
     }
+
     public void MoveDown()
     {
         StartCoroutine(MoveUpDownRoutine(Origin,.5f));
     }
+
     public void correct()
     {
         shrink();
@@ -105,7 +96,6 @@ public class SpiderCoin : MonoBehaviour
 
     private IEnumerator MoveUpDownRoutine(Vector3 target, float time)
     {
-        Debug.Log("Here");
         Vector3 currStart = transform.position;
         float timer = 0f;
         float maxTime = time;
@@ -129,19 +119,18 @@ public class SpiderCoin : MonoBehaviour
         }
     }
 
-
     public void SetCoinType(ActionWordEnum type)
     {
         this.type = type;
         // get animator if null
         if (!animator)
             animator = GetComponent<Animator>();
+        print ("coin type: " + type.ToString());
         animator.Play(type.ToString());
     }
 
     public void ToggleVisibility(bool opt, bool smooth)
     {
-        Debug.Log("Toggle");
         if (smooth)
             StartCoroutine(ToggleVisibilityRoutine(opt));
         else

@@ -19,6 +19,8 @@ TagManager:
   - Polaroid
   - PolaroidTarget
   - UniversalCoin
+  - WaterCoin
+  - Frame
   layers:
   - Default
   - TransparentFX

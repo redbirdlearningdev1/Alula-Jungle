@@ -18,7 +18,7 @@ public class GlowOutlineController : MonoBehaviour
 
     private Coroutine currRoutine;
     private bool animating = false;
-    private bool isGlowing = true;
+    private bool isGlowing = false;
     private bool customGlow = false;
 
     private const float lerpGlowSettingsTime = 0.5f;
@@ -26,8 +26,6 @@ public class GlowOutlineController : MonoBehaviour
     void Awake()
     {
         spriteGlow = GetComponent<SpriteGlowEffect>();
-        // turn off on init
-        ToggleGlowOutline(false);
     }
 
     public void SetGlowSettings(float brightness, int outline, Color color, bool lerpAnim)
@@ -43,6 +41,32 @@ public class GlowOutlineController : MonoBehaviour
         spriteGlow.GlowBrightness = brightness;
         spriteGlow.OutlineWidth = outline;
         spriteGlow.GlowColor = color;
+    }
+
+    public void SetColor(Color newColor)
+    {
+        StartCoroutine(LerpGlowColor(newColor, 0.25f));
+    }
+
+    private IEnumerator LerpGlowColor(Color color, float time)
+    {
+        float timer = 0;
+        Color startColor = spriteGlow.GlowColor;
+
+         while (true) 
+        {
+            timer += Time.deltaTime;
+            if (timer > time)
+            {
+                spriteGlow.GlowColor = color;
+                break;
+            }
+
+            var tempColor = Color.Lerp(startColor, color, timer / time);
+            spriteGlow.GlowColor = tempColor;
+
+            yield return null;
+        }
     }
 
     private IEnumerator LerpGlowSettingsRoutine(float brightness, int outline, Color color, float time)
@@ -74,7 +98,7 @@ public class GlowOutlineController : MonoBehaviour
 
     public void ToggleGlowOutline(bool opt)
     {
-        if (opt == isGlowing || customGlow) return;
+        if (customGlow) return;
         if (currRoutine != null)
             StopCoroutine(currRoutine);
         animating = false;

@@ -26,7 +26,6 @@ public class BugController : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
-        print(type.ToString());
         animator.Play(type.ToString());
 
         RectTransform rt = GetComponent<RectTransform>();
@@ -37,40 +36,36 @@ public class BugController : MonoBehaviour
         //setOrigin();
     }
 
-    void Update()
-    {
-
-    }
-
     public void StartToWeb()
     {
-        animator.Play("Fly");
         shrink();
         StartCoroutine(ReturnToWebRoutine(WebLand));
         StartCoroutine(landRoutine());
-
-
     }
+
     public void setOrigin()
     {
         Origin = transform.position;
     }
+
     public void goToOrigin()
     {
         grow();
         StartCoroutine(ReturnToOriginRoutine(Origin));
     }
+
     public void die()
     {
-        
         StartCoroutine(dieRoutine());
     }
+
     private IEnumerator dieRoutine()
     {
         yield return new WaitForSeconds(0f);
         animator.Play("Wrapped");
     }
-        private IEnumerator landRoutine()
+
+    private IEnumerator landRoutine()
     {
         yield return new WaitForSeconds(1.20f);
         animator.Play("Land");
@@ -78,9 +73,8 @@ public class BugController : MonoBehaviour
         animator.Play("Still");
     }
 
-        private IEnumerator ReturnToWebRoutine(Vector3 target)
+    private IEnumerator ReturnToWebRoutine(Vector3 target)
     {
-        Debug.Log("Here");
         Vector3 currStart = transform.position;
         float timer = 0f;
         float maxTime = 1.5f;
@@ -103,9 +97,9 @@ public class BugController : MonoBehaviour
             yield return null;
         }
     }
+
     private IEnumerator ReturnToOriginRoutine(Vector3 target)
     {
-        Debug.Log("Here");
         Vector3 currStart = transform.position;
         float timer = 0f;
         float maxTime = .25f;
@@ -133,6 +127,7 @@ public class BugController : MonoBehaviour
     {
         StartCoroutine(growRoutine(scaleNormal));
     }
+
     public void shrink()
     {
         StartCoroutine(growRoutine(scaleSmall));
@@ -141,7 +136,6 @@ public class BugController : MonoBehaviour
     private IEnumerator growRoutine(Vector3 target)
     {
         Vector3 currStart = transform.localScale;
-        Debug.Log(currStart);
         float timer = 0f;
         float maxTime = 1.5f;
 
@@ -168,6 +162,7 @@ public class BugController : MonoBehaviour
     {
         StartCoroutine(takeOffRoutine());
     }
+
     private IEnumerator takeOffRoutine()
     {
 
@@ -175,25 +170,28 @@ public class BugController : MonoBehaviour
         yield return new WaitForSeconds(0f);
 
     }
+
     public void leaveWeb()
     {
         animator.Play("Takeoff");
         StartCoroutine(leaveWebRoutine(WebLeave1));
 
     }
+
     public void leaveWeb2()
     {
 
         StartCoroutine(leaveWebRoutine(WebLeave2));
     }
+
     public void webGetEat()
     {
 
         StartCoroutine(leaveWebRoutine(WebEat));
     }
+
     private IEnumerator leaveWebRoutine(Vector3 target)
     {
-        Debug.Log("Here");
         Vector3 currStart = transform.position;
         float timer = 0f;
         float maxTime = .75f;
@@ -216,7 +214,6 @@ public class BugController : MonoBehaviour
         }
     }
 
-
     public void SetCoinType(ActionWordEnum type)
     {
         this.type = type;
@@ -230,7 +227,6 @@ public class BugController : MonoBehaviour
     {
         if (!audioPlaying)
         {
-            
             StartCoroutine(PlayPhonemeAudioRoutine());
         }
     }
@@ -250,7 +246,6 @@ public class BugController : MonoBehaviour
 
     public void ToggleVisibility(bool opt, bool smooth)
     {
-        Debug.Log("Toggle");
         if (smooth)
             StartCoroutine(ToggleVisibilityRoutine(opt));
         else
@@ -283,6 +278,4 @@ public class BugController : MonoBehaviour
             yield return null;
         }
     }
-
-
 }

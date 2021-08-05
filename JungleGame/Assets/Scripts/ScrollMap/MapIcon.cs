@@ -46,8 +46,6 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     [Header("Stars")]
     public StarLocation starLocation;
-    // [SerializeField] private GameObject upStarObj;
-    // [SerializeField] private GameObject downStarObj;
     [SerializeField] private Star[] upStars;
     [SerializeField] private Star[] downStars;
     private Star[] currentStars;

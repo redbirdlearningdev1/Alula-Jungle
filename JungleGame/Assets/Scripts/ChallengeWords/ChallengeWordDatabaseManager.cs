@@ -230,8 +230,10 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
         // update database using entries
         foreach (var entry in challengeWords)
         {
+#if UNITY_EDITOR
             ChallengeWordDatabase.InitCreateGlobalList();
             ChallengeWordDatabase.UpdateCreateWord(entry);
+#endif
         }
 
         updateText.color = Color.green;

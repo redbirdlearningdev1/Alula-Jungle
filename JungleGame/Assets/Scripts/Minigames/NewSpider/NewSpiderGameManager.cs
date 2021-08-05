@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public struct SpiderwebTutorialList
+{
+    public List<ActionWordEnum> list;
+}
+
 public class NewSpiderGameManager : MonoBehaviour
 {
     public static NewSpiderGameManager instance;
@@ -17,7 +23,6 @@ public class NewSpiderGameManager : MonoBehaviour
     [SerializeField] private WebController web;
     [SerializeField] private SpiderRayCaster caster;
 
-
     private bool gameSetup = false;
 
     private List<ActionWordEnum> globalCoinPool;
@@ -26,7 +31,6 @@ public class NewSpiderGameManager : MonoBehaviour
 
 
     [SerializeField] private List<SpiderCoin> Coins;
-
 
     private List<SpiderCoin> allCoins = new List<SpiderCoin>();
     private int selectedIndex;
@@ -37,11 +41,24 @@ public class NewSpiderGameManager : MonoBehaviour
 
     private SpiderwebGameData gameData;
 
+    [Header("Tutorial Stuff")]
+    public List<SpiderwebTutorialList> tutorialLists;
+    public int[] correctIndexes;
+    private int tutorialEvent = 0;
+
+    /* 
+    ################################################
+    #   MONOBEHAVIOR METHODS
+    ################################################
+    */
 
     void Awake()
     {
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
+
+        // play music
+        AudioManager.instance.StopMusic();
 
         if (!instance)
         {
@@ -52,38 +69,106 @@ public class NewSpiderGameManager : MonoBehaviour
         gameData = (SpiderwebGameData)GameManager.instance.GetData();
 
         if (!playingInEditor)
-            playTutorial = !StudentInfoSystem.currentStudentPlayer.froggerTutorial;
+            playTutorial = !StudentInfoSystem.currentStudentPlayer.spiderwebTutorial;
 
         PregameSetup();
-        StartCoroutine(StartGame(0));
+
+        // start tutorial or normal game
+        if (playTutorial)
+            StartCoroutine(StartTutorialGame());
+        else 
+            StartCoroutine(StartGame(0));
     }
+
+    void Update()
+    {
+        // dev stuff for fx audio testing
+        if (GameManager.instance.devModeActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StopAllCoroutines();
+                StartCoroutine(SkipToWinRoutine());
+            }
+        }
+    }
+
+    private void PregameSetup()
+    {
+        // create coin list
+        bug.setOrigin();
+        foreach (var coin in Coins)
+        {
+            //Debug.Log(coin);
+            allCoins.Add(coin);
+        }
+
+        // Create Global Coin List
+        if (gameData != null)
+        {
+            globalCoinPool = gameData.wordPool;
+        }
+        else
+        {
+            globalCoinPool = GameManager.instance.GetGlobalActionWordList();
+        }
+
+        unusedCoinPool = new List<ActionWordEnum>();
+        unusedCoinPool.AddRange(globalCoinPool);
+
+        // disable all coins
+        foreach (var coin in allCoins)
+        { 
+            coin.setOrigin();
+        }
+    }
+
+    /* 
+    ################################################
+    #   NORMAL GAME METHODS
+    ################################################
+    */
 
     public bool EvaluateSelectedSpiderCoin(ActionWordEnum coin,SpiderCoin correctCoin)
     {
         Debug.Log(selectedSpiderCoin.type);
         if (coin == selectedSpiderCoin.type)
         {
+            winCount++;
+
             // success! go on to the next row or win game if on last row
-            Debug.Log("YOU DID IT");
             if (winCount < 4)
             {
-                winCount++;
-                StartCoroutine(CoinSuccessRoutine(correctCoin));
+                if (!playTutorial)
+                    StartCoroutine(CoinSuccessRoutine(correctCoin));
+                else 
+                    StartCoroutine(TutorialSuccessRoutine(correctCoin));
+                
             }
             else
             {
-                Debug.Log("YOU DID IT AGAIn");
-                StartCoroutine(WinRoutine());
+                if (!playTutorial)
+                    StartCoroutine(WinRoutine(correctCoin));
+                else 
+                    StartCoroutine(TutorialWinRoutine(correctCoin));
             }
 
             return true;
         }
-        StartCoroutine(CoinFailRoutine());
+
+        if (!playTutorial)
+            StartCoroutine(CoinFailRoutine());
+        else
+            StartCoroutine(TutorialFailRoutine());
+    
         return false;
     }
 
     private IEnumerator CoinFailRoutine()
     {
+        // play wrong choice audio
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 1f);
+
         timesMissed++;
         bug.die();
         yield return new WaitForSeconds(.5f);
@@ -99,6 +184,9 @@ public class NewSpiderGameManager : MonoBehaviour
 
     private IEnumerator CoinSuccessRoutine(SpiderCoin coin)
     {
+        // play right choice audio
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
+
         spider.success();
         yield return new WaitForSeconds(1f);
         webber.gameObject.SetActive(true);
@@ -134,20 +222,250 @@ public class NewSpiderGameManager : MonoBehaviour
         StartCoroutine(StartGame(0));
     }
 
-    private IEnumerator bugLeaves()
+    private IEnumerator WinRoutine(SpiderCoin coin)
     {
-        web.webLarge();
-        yield return new WaitForSeconds(.4f);
-        bug.takeOff();
-        yield return new WaitForSeconds(.1f);
-        bug.leaveWeb();
-        yield return new WaitForSeconds(.75f);
-        bug.grow();
-        bug.leaveWeb2();
+        // play right choice audio
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
+
+        spider.success();
+        yield return new WaitForSeconds(1f);
+        webber.gameObject.SetActive(true);
+        if(selectedIndex == 0)
+        {
+            webber.grab1();
+        }
+        else if(selectedIndex == 1)
+        {
+            webber.grab2();
+        }
+        else if (selectedIndex == 2)
+        {
+            webber.grab3();
+        }
+        else if (selectedIndex == 3)
+        {
+            webber.grab4();
+        }
+        yield return new WaitForSeconds(.5f);
+        
+        coin.correct();
+        yield return new WaitForSeconds(.15f);
+
+        StartCoroutine(bugLeaves());
+        webber.gameObject.SetActive(false);
+        yield return new WaitForSeconds(.35f);
+        coin.ToggleVisibility(false, false);
+        ball.UpgradeChest();
+        
+        yield return new WaitForSeconds(1.5f);
+
+        // play win tune
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+
+        yield return new WaitForSeconds(2f);
+
+        // calculate and show stars
+        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
     }
 
-    private IEnumerator WinRoutine()
+    private IEnumerator StartGame(int coins)
     {
+        StartCoroutine(CoinsDown());
+        bug.goToOrigin();
+        yield return new WaitForSeconds(1f);
+        List<SpiderCoin> coinz = GetCoins();
+        foreach (var coin in coinz)
+        {
+            coin.ToggleVisibility(false, false);
+            coin.grow();
+            yield return new WaitForSeconds(0f);
+        }
+
+        StartCoroutine(ShowCoins(coins));
+        yield return new WaitForSeconds(1f);
+        bug.StartToWeb();
+        yield return new WaitForSeconds(1f);
+        web.webSmall();
+        
+       
+        StartCoroutine(CoinsUp(coins));
+        yield return new WaitForSeconds(1f);
+        bug.PlayPhonemeAudio();
+    }
+
+    /* 
+    ################################################
+    #   TUTORIAL GAME METHODS
+    ################################################
+    */
+
+    private IEnumerator StartTutorialGame()
+    {
+        // play tutorial audio 1
+        AudioClip clip = AudioDatabase.instance.SpiderwebTutorial_1;
+        AudioManager.instance.PlayTalk(clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
+        // play tutorial audio 2
+        clip = AudioDatabase.instance.SpiderwebTutorial_2;
+        AudioManager.instance.PlayTalk(clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
+        // play tutorial audio 3
+        clip = AudioDatabase.instance.SpiderwebTutorial_3;
+        AudioManager.instance.PlayTalk(clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
+        // play tutorial audio 4
+        clip = AudioDatabase.instance.SpiderwebTutorial_4;
+        AudioManager.instance.PlayTalk(clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
+        StartCoroutine(PlayTutorialGame(0));
+    }
+
+    private IEnumerator PlayTutorialGame(int coins)
+    {
+        StartCoroutine(CoinsDown());
+        bug.goToOrigin();
+        yield return new WaitForSeconds(1f);
+
+        List<SpiderCoin> coinz = GetCoins();
+        foreach (var coin in coinz)
+        {
+            coin.ToggleVisibility(false, false);
+            coin.grow();
+            yield return new WaitForSeconds(0f);
+        }
+
+        StartCoroutine(ShowCoins(coins));
+        yield return new WaitForSeconds(1f);
+
+        bug.StartToWeb();
+        yield return new WaitForSeconds(1f);
+
+        web.webSmall();
+    
+        StartCoroutine(CoinsUp(coins));
+        yield return new WaitForSeconds(1f);
+        bug.PlayPhonemeAudio();
+    }
+
+    private IEnumerator TutorialFailRoutine()
+    {
+        // play wrong choice audio
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 1f);
+        yield return null;
+    }
+
+    private IEnumerator TutorialSuccessRoutine(SpiderCoin coin)
+    {
+        // play right choice audio
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
+
+        spider.success();
+        yield return new WaitForSeconds(1f);
+        webber.gameObject.SetActive(true);
+        if(selectedIndex == 0)
+        {
+            webber.grab1();
+        }
+        else if(selectedIndex == 1)
+        {
+            webber.grab2();
+        }
+        else if (selectedIndex == 2)
+        {
+            webber.grab3();
+        }
+        else if (selectedIndex == 3)
+        {
+            webber.grab4();
+        }
+        yield return new WaitForSeconds(.5f);
+        
+        coin.correct();
+        yield return new WaitForSeconds(.15f);
+
+        StartCoroutine(bugLeaves());
+        webber.gameObject.SetActive(false);
+        yield return new WaitForSeconds(.35f);
+        coin.ToggleVisibility(false, false);
+        ball.UpgradeChest();
+        
+        yield return new WaitForSeconds(1.5f);
+        
+        StartCoroutine(PlayTutorialGame(tutorialEvent));
+    }
+
+    private IEnumerator TutorialWinRoutine(SpiderCoin coin)
+    {
+        // play right choice audio
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
+
+        spider.success();
+        yield return new WaitForSeconds(1f);
+        webber.gameObject.SetActive(true);
+        if(selectedIndex == 0)
+        {
+            webber.grab1();
+        }
+        else if(selectedIndex == 1)
+        {
+            webber.grab2();
+        }
+        else if (selectedIndex == 2)
+        {
+            webber.grab3();
+        }
+        else if (selectedIndex == 3)
+        {
+            webber.grab4();
+        }
+        yield return new WaitForSeconds(.5f);
+        
+        coin.correct();
+        yield return new WaitForSeconds(.15f);
+
+        StartCoroutine(bugLeaves());
+        webber.gameObject.SetActive(false);
+        yield return new WaitForSeconds(.35f);
+        coin.ToggleVisibility(false, false);
+        ball.UpgradeChest();
+        
+        yield return new WaitForSeconds(1.5f);
+
+        // play win tune
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+
+        yield return new WaitForSeconds(3f);
+
+        // save to SIS
+        StudentInfoSystem.currentStudentPlayer.spiderwebTutorial = true;
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        GameManager.instance.LoadScene("NewSpiderGame", true, 3f);
+    }
+
+    /* 
+    ################################################
+    #   UTIL METHODS
+    ################################################
+    */
+
+    private IEnumerator SkipToWinRoutine()
+    {        
+        // play right choice audio
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
+
+        spider.success();
+        StartCoroutine(bugLeaves());
+        webber.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        ball.UpgradeChest();
+        
+        yield return new WaitForSeconds(1.5f);
+
         // play win tune
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
 
@@ -165,63 +483,18 @@ public class NewSpiderGameManager : MonoBehaviour
             return 2;
         else
             return 1;
-    }  
-
-    private void PregameSetup()
-    {
-        // create coin list
-        bug.setOrigin();
-        foreach (var coin in Coins)
-        {
-            //Debug.Log(coin);
-            allCoins.Add(coin);
-        }
-
-        // Create Global Coin List
-        if (gameData != null)
-        {
-            globalCoinPool = gameData.wordPool;
-        }
-        else
-        {
-            globalCoinPool = GameManager.instance.GetGlobalActionWordList();
-        }
-
-        unusedCoinPool = new List<ActionWordEnum>();
-        unusedCoinPool.AddRange(globalCoinPool);
-
-        // disable all coins
-        foreach (var coin in allCoins)
-        { 
-            coin.setOrigin();
-            Debug.Log(coin.transform.position);
-        }
     }
 
-    private IEnumerator StartGame(int coins)
+    private IEnumerator bugLeaves()
     {
-        StartCoroutine(CoinsDown(coins));
-        bug.goToOrigin();
-        yield return new WaitForSeconds(1f);
-        List<SpiderCoin> coinz = GetCoins();
-        foreach (var coin in coinz)
-        {
-            
-            coin.ToggleVisibility(false, false);
-            coin.grow();
-            yield return new WaitForSeconds(0f);
-
-        }
-
-        StartCoroutine(ShowCoins(coins));
-        yield return new WaitForSeconds(1f);
-        bug.StartToWeb();
-        yield return new WaitForSeconds(1f);
-        web.webSmall();
-       
-        StartCoroutine(CoinsUp(coins));
-        Debug.Log("Working?");
-        yield return new WaitForSeconds(1f);
+        web.webLarge();
+        yield return new WaitForSeconds(.4f);
+        bug.takeOff();
+        yield return new WaitForSeconds(.1f);
+        bug.leaveWeb();
+        yield return new WaitForSeconds(.75f);
+        bug.grow();
+        bug.leaveWeb2();
     }
 
     private IEnumerator ShowCoins(int index)
@@ -232,13 +505,20 @@ public class NewSpiderGameManager : MonoBehaviour
         usedCoinPool = new List<ActionWordEnum>();
         usedCoinPool.Clear();
 
+        int i = 0;
         foreach (var coin in currentCoins)
         {
-            ActionWordEnum type = GetUnusedWord();
-
+            ActionWordEnum type;
+            if (!playTutorial)
+                type = GetUnusedWord();
+            else
+            {   
+                type = tutorialLists[index].list[i];
+                i++;
+            }
+                
             coin.SetCoinType(type);
             coin.ToggleVisibility(true, true);
-            Debug.Log("ShowCoins");
             yield return new WaitForSeconds(0f);
         }
     }
@@ -269,29 +549,35 @@ public class NewSpiderGameManager : MonoBehaviour
 
     private IEnumerator CoinsUp(int index)
     {
-        Debug.Log("ShowCoins");
         List<SpiderCoin> coins = GetCoins();
         foreach (var coin in coins)
         {
-
             coin.MoveUp();
             yield return new WaitForSeconds(0f);
-
         }
-        SelectRandomCoin(index);
+
+        // select random coin OR tutorial coin
+        if (!playTutorial)
+            SelectRandomCoin(index);    
+        else
+        {
+            List<SpiderCoin> pile = GetCoins();
+            selectedIndex = correctIndexes[tutorialEvent];
+            selectedSpiderCoin = pile[selectedIndex];
+            bug.SetCoinType(selectedSpiderCoin.type);
+            tutorialEvent++;
+        }
     }
-    private IEnumerator CoinsDown(int index)
+
+    private IEnumerator CoinsDown()
     {
-        Debug.Log("ShowCoins");
         List<SpiderCoin> coins = GetCoins();
         foreach (var coin in coins)
         {
-            
             coin.MoveDown();
             yield return new WaitForSeconds(0f);
         }
     }
-
 
     private IEnumerator HideCoins(int index, RummageCoin exceptCoin = null)
     {
@@ -308,7 +594,6 @@ public class NewSpiderGameManager : MonoBehaviour
     {
         List<SpiderCoin> pile = GetCoins();
         selectedIndex = Random.Range(0, pile.Count);
-        print("selected index: " + selectedIndex);
         selectedSpiderCoin = pile[selectedIndex];
         bug.SetCoinType(selectedSpiderCoin.type);
     }

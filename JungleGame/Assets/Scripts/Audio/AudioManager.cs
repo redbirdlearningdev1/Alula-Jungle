@@ -251,6 +251,12 @@ public class AudioManager : MonoBehaviour
         talkSource.Play();
     }
 
+    public void StopTalk()
+    {
+        talkSource.Stop();
+        talkSource.clip = null;
+    }
+
     public void PlayPhoneme(ActionWordEnum phoneme)
     {
         talkSource.Stop();

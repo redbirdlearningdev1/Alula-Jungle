@@ -396,13 +396,8 @@ public class StoryGameManager : MonoBehaviour
         // make sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.HappyBlip, 1.0f);
 
-        // save progress to SIS
-        if (StudentInfoSystem.currentStudentPlayer.currGameEvent == LinearGameEvent.WelcomeStoryGame)
-        {
-            StudentInfoSystem.AdvanceLinearGameEvent();
-            StudentInfoSystem.SaveStudentPlayerData();
-        }
-        else if (StudentInfoSystem.currentStudentPlayer.currGameEvent == LinearGameEvent.PrologueStoryGame)
+        
+        if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.PrologueStoryGame)
         {
             StudentInfoSystem.AdvanceLinearGameEvent();
             StudentInfoSystem.SaveStudentPlayerData();

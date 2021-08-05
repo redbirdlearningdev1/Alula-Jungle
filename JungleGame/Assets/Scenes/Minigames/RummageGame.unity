@@ -200,6 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1079903dea97669479baaf0a369f1a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoSizeToRect: 0
+  rect: {fileID: 23289979}
+  extraPaddingMultiplier: 0
   spriteResolution: {x: 1800, y: 1200}
   scale: 0.448
 --- !u!212 &23289984
@@ -1526,8 +1529,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b50bb302fe09c346a637cd003e82718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playingInEditor: 1
-  playTutorial: 1
+  playingInEditor: 0
+  playTutorial: 0
   timeBetweenRepeat: 5
   orc: {fileID: 606159618}
   chest: {fileID: 1427296688}
@@ -1572,6 +1575,13 @@ MonoBehaviour:
   - {fileID: 1107992950}
   - {fileID: 2042882692}
   selectedRummageCoin: {fileID: 0}
+  tutorialPiles:
+  - list: 01000000000000000000000000000000
+  - list: 02000000000000000000000000000000
+  - list: 03000000000000000000000000000000
+  - list: 04000000000000000000000000000000
+  - list: 05000000000000000000000000000000
+  correctIndexes: 0000000000000000000000000000000000000000
 --- !u!1 &250603883
 GameObject:
   m_ObjectHideFlags: 0
@@ -4187,7 +4197,7 @@ Transform:
   m_GameObject: {fileID: 1256558082}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -399, y: -196, z: -5173.7246}
-  m_LocalScale: {x: 5, y: 53.333336, z: 53.333336}
+  m_LocalScale: {x: 0, y: 53.333336, z: 53.333336}
   m_Children:
   - {fileID: 1445411608}
   - {fileID: 275045545}
@@ -4479,10 +4489,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1427296685}
   - component: {fileID: 1427296687}
-  - component: {fileID: 1427296686}
   - component: {fileID: 1427296688}
   - component: {fileID: 1427296690}
   - component: {fileID: 1427296689}
+  - component: {fileID: 1427296686}
+  - component: {fileID: 1427296691}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Bag
@@ -4518,27 +4529,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1427296684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 79290a62fb8d9794588d5d834d891035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 956e68558ae61db428900c0e48bcdcc6, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  deactivated: 0
+  glowTime: 0.2
+  brightnessOn: 3
+  brightnessOff: 0
+  outlineOn: 1
+  outlineOff: 0
 --- !u!222 &1427296687
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4559,8 +4558,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5058b80852f72d4bb79a57a5bb608c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bag: {fileID: 1427296686}
-  chest1: {fileID: 1427296690}
+  spriteRenderer: {fileID: 1427296690}
+  glowOutlineController: {fileID: 1427296686}
   bagSprites:
   - {fileID: 21300000, guid: 956e68558ae61db428900c0e48bcdcc6, type: 3}
   - {fileID: 21300000, guid: 075b1093f96978b4fac0b6a08470fd79, type: 3}
@@ -4581,8 +4580,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glowColor: {r: 1, g: 1, b: 1, a: 1}
-  glowBrightness: 5
-  outlineWidth: 2
+  glowBrightness: 3
+  outlineWidth: 1
   alphaThreshold: 0.01
   drawOutside: 0
   enableInstancing: 0
@@ -4637,6 +4636,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1427296691
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427296684}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.78, y: 2.57}
+    newSize: {x: 278, y: 257}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 1
+    adaptiveTiling: 0
+  m_AutoTiling: 1
+  serializedVersion: 2
+  m_Size: {x: 2.78, y: 2.57}
+  m_EdgeRadius: 0
 --- !u!1 &1445411607
 GameObject:
   m_ObjectHideFlags: 0

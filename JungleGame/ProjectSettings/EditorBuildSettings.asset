@@ -12,17 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/DevMenu.unity
     guid: 71b2ebf484cfde6458d9db7387387e6b
   - enabled: 1
-    path: Assets/Scenes/JungleWelcomeScene.unity
-    guid: bf22f86e56202fb438d1976470b8fa07
-  - enabled: 1
     path: Assets/Scenes/ScrollMap.unity
     guid: 10c04496277340a499ace6e1d98bd35e
   - enabled: 1
     path: Assets/Scenes/TrophyRoomScene.unity
     guid: 6baec3b5b25b92448bc2425b805c8e1d
-  - enabled: 1
-    path: Assets/Scenes/TestingScenes/LoadSaveTestScene.unity
-    guid: 77a57e83a9f72dc4f9a019a2533be93a
   - enabled: 1
     path: Assets/Scenes/Minigames/StoryGame.unity
     guid: 8fc0390ff4bec1946bf8c4e61a6c291d
@@ -30,8 +24,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Minigames/FroggerGame.unity
     guid: 2ec3fbeac2b2d19478b9bee70b92a61c
   - enabled: 1
-    path: Assets/Scenes/Minigames/BoatGame.unity
-    guid: 3d5183ce68fb87d449c04b2973bc134d
+    path: Assets/Scenes/Minigames/NewBoatGame.unity
+    guid: 937f367de3f10824db6990233043941a
   - enabled: 1
     path: Assets/Scenes/Minigames/TurntablesGame.unity
     guid: 6c9b93b7b0eedda4da563620a2ace5a7
@@ -44,4 +38,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MinigameDemoScene.unity
     guid: b878814cc0549414586bb0ccba91f961
+  - enabled: 1
+    path: Assets/Scenes/ChallengeGames/WordFactoryBlending.unity
+    guid: 38b0bea0c4d079a4481b0f6e925b0c72
+  - enabled: 1
+    path: Assets/Scenes/ChallengeGames/WordFactorySubstituting.unity
+    guid: a5773497248bda54b9b727ce865cd1b2
   m_configObjects: {}
