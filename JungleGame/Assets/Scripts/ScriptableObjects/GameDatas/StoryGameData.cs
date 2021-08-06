@@ -6,8 +6,6 @@ using UnityEngine.UI;
 [System.Serializable]
 public class StoryGameSegment
 {
-    public bool skipOnPart2;
-
     [Header("Read Text")]
     public bool readText;
     public bool writeText;
@@ -17,6 +15,7 @@ public class StoryGameSegment
     
     [Header("Action Word")]
     public bool containsActionWord;
+    public bool requireMicInput;
     public string actionWordText;
     public ActionWordEnum actionWord;
     public AudioClip wordAudio;

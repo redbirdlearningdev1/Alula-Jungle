@@ -29,6 +29,7 @@ public class NewBoatGameManager : MonoBehaviour
     private int repeatTimes = 0;
 
     private bool waitForBlueButton = true;
+    private bool waitingForMicInput = false;
 
     void Awake()
     {
@@ -89,7 +90,7 @@ public class NewBoatGameManager : MonoBehaviour
         }
 
         // continue boat game when microphone input is detected
-        if (boatGameEvent == 4)
+        if (boatGameEvent == 4 && waitingForMicInput)
         {
             // get mic input and determine if input is loud enough
             float volumeLevel = MicInput.MicLoudness * 200;
@@ -294,6 +295,9 @@ public class NewBoatGameManager : MonoBehaviour
                 repeatTimer = 0f;
                 repeatDuration = 5f;
                 repeatAudio = true;
+
+
+                waitingForMicInput = true;
                 break;
 
             case 5:
