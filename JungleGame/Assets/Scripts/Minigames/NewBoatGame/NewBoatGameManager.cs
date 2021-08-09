@@ -37,7 +37,6 @@ public class NewBoatGameManager : MonoBehaviour
             instance = this;
 
         GameManager.instance.SceneInit();
-        SettingsManager.instance.ToggleWagonButtonActive(false);
 
         // stop music
         AudioManager.instance.StopMusic();
@@ -47,6 +46,17 @@ public class NewBoatGameManager : MonoBehaviour
 
     void Update()
     {
+        // dev stuff for fx audio testing
+        if (GameManager.instance.devModeActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StopAllCoroutines();
+                TalkieManager.instance.StopTalkieSystem();
+                StartCoroutine(WinBoatGame());
+            }
+        }
+
         if (repeatAudio)
         {
             repeatTimer += Time.deltaTime;
@@ -314,22 +324,28 @@ public class NewBoatGameManager : MonoBehaviour
                 break;
 
             case 6:
-                // play blip sound
-                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-
-                // save to SIS
-                if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.InitBoatGame)
-                {
-                    StudentInfoSystem.AdvanceLinearGameEvent();
-                    StudentInfoSystem.SaveStudentPlayerData();
-                }
-                yield return new WaitForSeconds(2f);
-
-                // exit boat game
-                GameManager.instance.LoadScene("ScrollMap", true, 3f);
+                StartCoroutine(WinBoatGame());
                 break;
         }
         yield return null;
+    }
+
+    // skips the boat game for dev purposes
+    private IEnumerator WinBoatGame()
+    {
+        // play blip sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+
+        // save to SIS
+        if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.InitBoatGame)
+        {
+            StudentInfoSystem.AdvanceStoryBeat();
+            StudentInfoSystem.SaveStudentPlayerData();
+        }
+        yield return new WaitForSeconds(2f);
+
+        // exit boat game
+        GameManager.instance.LoadScene("ScrollMap", true, 3f);
     }
 
     public void BoatButtonPressed(BoatButtonID id)

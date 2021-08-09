@@ -10,6 +10,8 @@ public static class StudentInfoSystem
     {
         SaveStudentPlayerData();
         currentStudentPlayer = LoadSaveSystem.LoadStudentData(index); // load new student data
+        SettingsManager.instance.LoadSettingsFromProfile(); // load profile settings
+        DropdownToolbar.instance.LoadToolbarDataFromProfile(); // load profile coins
         GameManager.instance.SendLog("StudentInfoSystem", "current profile set to: " + index);
     }
 
@@ -46,7 +48,7 @@ public static class StudentInfoSystem
         LoadSaveSystem.ResetStudentData(index);
     }
 
-    public static void AdvanceLinearGameEvent()
+    public static void AdvanceStoryBeat()
     {
         currentStudentPlayer.currStoryBeat = (StoryBeat)((int)currentStudentPlayer.currStoryBeat + 1);
     }

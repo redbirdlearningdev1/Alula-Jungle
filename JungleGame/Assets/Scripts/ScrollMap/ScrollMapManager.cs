@@ -1,4 +1,4 @@
-﻿ using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -43,7 +43,7 @@ public class ScrollMapManager : MonoBehaviour
     [Header("Stickers")]
     [SerializeField] private GameObject stickerCart;
     [SerializeField] private Image cartRaycastBlocker;
-    [SerializeField] private GameObject Book,Board,BackWindow,Gecko;
+    [SerializeField] private GameObject Book, Board, BackWindow, Gecko;
     [SerializeField] private Animator Wagon;
     [SerializeField] private Animator GeckoAnim;
     private bool stickerCartOut;
@@ -76,15 +76,7 @@ public class ScrollMapManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        // remove menu button
-        SettingsManager.instance.ToggleMenuButtonActive(false);
-        SettingsManager.instance.ToggleWagonButtonActive(false);
-
         // sticker stuff
-        // disable raycast blocker
-        cartRaycastBlocker.color = new Color(0f, 0f, 0f, 0f);
-        cartRaycastBlocker.raycastTarget = false;
-
         Book.SetActive(false);
         Board.SetActive(false);
         BackWindow.SetActive(false);
@@ -128,6 +120,11 @@ public class ScrollMapManager : MonoBehaviour
         bool revealNavUI = true;
         bool revealGMUI = true;
 
+        /* 
+        ################################################
+        #   GAME EVENTS (STORY BEATS)
+        ################################################
+        */
         // check for game events
         if (playGameEvent == StoryBeat.InitBoatGame)
         {   
@@ -144,7 +141,7 @@ public class ScrollMapManager : MonoBehaviour
             // wiggle boat
             boat.interactable = true;
             boat.GetComponent<SpriteWiggleController>().StartWiggle();
-            boat.GetComponent<GlowOutlineController>().ToggleGlowOutline(true);
+            //boat.GetComponent<GlowOutlineController>().ToggleGlowOutline(true); turned off bcause looks weird
         }
         else if (playGameEvent == StoryBeat.UnlockGorillaVillage)
         {
@@ -169,7 +166,7 @@ public class ScrollMapManager : MonoBehaviour
             // update SIS
             if (!overideGameEvent)
             {
-                StudentInfoSystem.AdvanceLinearGameEvent();
+                StudentInfoSystem.AdvanceStoryBeat();
                 StudentInfoSystem.SaveStudentPlayerData();
             }
         }
@@ -181,7 +178,16 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.StickerTutorial)
         {
-            
+            // check if player has enough coins
+            if (StudentInfoSystem.currentStudentPlayer.goldCoins >= 3)
+            {
+                // play talkie here i guess
+
+                // save to sis and continue
+                StudentInfoSystem.currentStudentPlayer.unlockedStickerButton = true;
+                StudentInfoSystem.AdvanceStoryBeat();
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
         }
 
         // show UI
@@ -195,7 +201,9 @@ public class ScrollMapManager : MonoBehaviour
         if (revealGMUI)
         {
             SettingsManager.instance.ToggleMenuButtonActive(true);
-            SettingsManager.instance.ToggleWagonButtonActive(true);
+            // show sticker button if unlocked
+            if (StudentInfoSystem.currentStudentPlayer.unlockedStickerButton)
+                SettingsManager.instance.ToggleWagonButtonActive(true);
         }
     }
 
@@ -358,9 +366,10 @@ public class ScrollMapManager : MonoBehaviour
         // lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        // activate raycast blocker
-        StartCoroutine(CartRaycastBlockerRoutine(true));
-        cartRaycastBlocker.raycastTarget = true;
+
+        // activate raycast blocker + background
+        RaycastBlockerController.instance.CreateRaycastBlocker("StickerCartBlocker");
+        DefaultBackground.instance.Activate();
 
         stickerCart.SetActive(true);
         Wagon.Play("WagonRollIn");
@@ -387,8 +396,10 @@ public class ScrollMapManager : MonoBehaviour
         // lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        // deactivate raycast blocker
-        StartCoroutine(CartRaycastBlockerRoutine(false));
+
+        // deactivate raycast blocker + background
+        RaycastBlockerController.instance.RemoveRaycastBlocker("StickerCartBlocker");
+        DefaultBackground.instance.Deactivate();
 
         // roll off screen
         stickerCart.SetActive(true);

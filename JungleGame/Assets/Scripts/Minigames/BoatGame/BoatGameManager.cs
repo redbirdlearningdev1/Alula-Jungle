@@ -45,7 +45,7 @@ public class BoatGameManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
 
         // save to SIS
-        StudentInfoSystem.AdvanceLinearGameEvent();
+        StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
 
         yield return new WaitForSeconds(2f);

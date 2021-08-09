@@ -45,10 +45,6 @@ public class SplashScreenManager : MonoBehaviour
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
-        // remove settings buttons
-        SettingsManager.instance.ToggleMenuButtonActive(false);
-        SettingsManager.instance.ToggleWagonButtonActive(false);
-
         // set up profile window
         startButton.interactable = false;
         SetImageAlpha(profile1Image, unselectedAlpha);
@@ -229,10 +225,9 @@ public class SplashScreenManager : MonoBehaviour
     {
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.HappyBlip, 1f);
-
+        // set profile to be current player
         StudentInfoSystem.SetStudentPlayer(index);
-        SettingsManager.instance.LoadSettingsFromProfile();
-
+        // load scroll map scene
         GameManager.instance.LoadScene("ScrollMap", true);
     }
 

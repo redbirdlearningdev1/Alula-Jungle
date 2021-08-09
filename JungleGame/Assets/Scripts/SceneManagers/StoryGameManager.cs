@@ -54,9 +54,6 @@ public class StoryGameManager : MonoBehaviour
         // every scene must call this in awake
         GameManager.instance.SceneInit();
 
-        // remove shop button
-        SettingsManager.instance.ToggleWagonButtonActive(false);
-
         // make microphone invisible
         microphone.color = new Color(1f, 1f, 1f, 0f);
 
@@ -294,7 +291,7 @@ public class StoryGameManager : MonoBehaviour
         
         if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.PrologueStoryGame)
         {
-            StudentInfoSystem.AdvanceLinearGameEvent();
+            StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
         }
         // return to scrollmap

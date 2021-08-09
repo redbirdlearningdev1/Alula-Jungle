@@ -37,14 +37,32 @@ public class DropdownToolbar : MonoBehaviour
         }
     }
 
-    public void SetSilverText(string text)
+    public void LoadToolbarDataFromProfile()
     {
-        silverText.text = text;
+        var data = StudentInfoSystem.currentStudentPlayer;
+        // update gold and silver coins
+        SetGoldText(StudentInfoSystem.currentStudentPlayer.goldCoins.ToString());
+        SetSilverText(StudentInfoSystem.currentStudentPlayer.sliverCoins.ToString());
     }
 
-    public void SetGoldText(string text)
+    public void AwardGoldCoins(int amountToAward)
     {
-        goldText.text = text;
+        // add and save to profile
+        StudentInfoSystem.currentStudentPlayer.goldCoins += amountToAward;
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        // update toolbar string
+        SetGoldText(StudentInfoSystem.currentStudentPlayer.goldCoins.ToString());
+    }
+
+    private void SetSilverText(string text)
+    {
+        silverText.text = text + "/999";
+    }
+
+    private void SetGoldText(string text)
+    {
+        goldText.text = "x" + text;
     }
 
     public void ToggleToolbar(bool opt)

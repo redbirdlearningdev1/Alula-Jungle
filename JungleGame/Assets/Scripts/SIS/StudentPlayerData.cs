@@ -26,9 +26,9 @@ public class StudentPlayerData
     public int totalStars; // total number of stars
     public int mapLimit; // how far player can move on map
 
+    // coins
     public int goldCoins;
     public int sliverCoins;
-    // can add many more things here!
 
     // settings options
     public float masterVol;
@@ -45,6 +45,7 @@ public class StudentPlayerData
 
     // game progression
     public StoryBeat currStoryBeat;
+    public bool unlockedStickerButton;
 
     // map data
     public MapData mapData;

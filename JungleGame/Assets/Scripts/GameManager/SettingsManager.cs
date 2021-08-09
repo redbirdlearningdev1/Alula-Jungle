@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -134,6 +135,7 @@ public class SettingsManager : MonoBehaviour
 
     public void ToggleWagonButtonActive(bool opt)
     {
+        GameManager.instance.SendLog(this, "setting wagon button to: " + opt);
         if (opt)
         {
             wagonButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
@@ -148,6 +150,7 @@ public class SettingsManager : MonoBehaviour
 
     public void ToggleMenuButtonActive(bool opt)
     {
+        GameManager.instance.SendLog(this, "setting menu button to: " + opt);
         if (opt)
         {
             menuButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
@@ -167,6 +170,16 @@ public class SettingsManager : MonoBehaviour
 
         settingsWindowOpen = !settingsWindowOpen;
         settingsWindow.SetActive(settingsWindowOpen);
+    }
+
+    public void OnWagonButtonPressed()
+    {   
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        // only workable on scroll map scene
+        if (SceneManager.GetActiveScene().name == "ScrollMap")
+            ScrollMapManager.instance.ToggleCart();
     }
 
     public void OnMasterVolumeSliderChanged()

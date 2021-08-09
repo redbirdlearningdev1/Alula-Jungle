@@ -21,7 +21,7 @@ public class GameManager : DontDestroy<GameManager>
     private GameData gameData;
     private MapIconIdentfier gameID;
 
-    public int prevMapPosition = 1; // what index player was on scroll map (1 by default)
+    [HideInInspector] public int prevMapPosition = 1; // what index player was on scroll map (1 by default)
 
     // DEV STUFF:
     private bool iconsSetBroke = false;
@@ -95,7 +95,12 @@ public class GameManager : DontDestroy<GameManager>
 
     private IEnumerator SceneInitCoroutine()
     {
+        // clean up enviroment
+        SceneCleanup();
+
+        FadeObject.instance.SetFadeImmediate(true); // turn on black fade
         RaycastBlockerController.instance.CreateRaycastBlocker("SceneInit");
+        yield return new WaitForSeconds(0.5f); // wait a short moment before fading in
         FadeObject.instance.FadeIn(transitionTime);
         yield return new WaitForSeconds(transitionTime);
         RaycastBlockerController.instance.RemoveRaycastBlocker("SceneInit");
@@ -249,12 +254,15 @@ public class GameManager : DontDestroy<GameManager>
         // remove default background
         DefaultBackground.instance.Deactivate();
 
+        // remove talkies
+        TalkieManager.instance.StopTalkieSystem();
+
         // remove ui buttons
         SettingsManager.instance.ToggleWagonButtonActive(false);
         SettingsManager.instance.ToggleMenuButtonActive(false);
     }
 
-    /* 
+    /*
     ################################################
     #   GAME DATA
     ################################################
