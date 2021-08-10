@@ -705,6 +705,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1079903dea97669479baaf0a369f1a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoSizeToRect: 0
+  rect: {fileID: 736215145}
+  extraPaddingMultiplier: 0
   spriteResolution: {x: 71, y: 171}
   scale: 0.5
 --- !u!212 &736215149
@@ -1590,6 +1593,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1079903dea97669479baaf0a369f1a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoSizeToRect: 0
+  rect: {fileID: 1240038973}
+  extraPaddingMultiplier: 0
   spriteResolution: {x: 355, y: 322}
   scale: 0.092
 --- !u!212 &1240038978
@@ -1806,7 +1812,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   overrideGame: 1
   storyGameIndex: 1
-  skipToPartTwo: 0
   coin: {fileID: 1653332658}
   dancingMan: {fileID: 1034302397}
   microphone: {fileID: 1240038978}
@@ -2227,6 +2232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1079903dea97669479baaf0a369f1a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoSizeToRect: 0
+  rect: {fileID: 1952137295}
+  extraPaddingMultiplier: 0
   spriteResolution: {x: 167, y: 131}
   scale: 0.5
 --- !u!212 &1952137299

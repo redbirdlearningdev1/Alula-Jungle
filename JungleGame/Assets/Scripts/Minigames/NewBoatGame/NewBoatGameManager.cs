@@ -29,6 +29,7 @@ public class NewBoatGameManager : MonoBehaviour
     private int repeatTimes = 0;
 
     private bool waitForBlueButton = true;
+    private bool waitingForMicInput = false;
 
     void Awake()
     {
@@ -36,7 +37,6 @@ public class NewBoatGameManager : MonoBehaviour
             instance = this;
 
         GameManager.instance.SceneInit();
-        SettingsManager.instance.ToggleWagonButtonActive(false);
 
         // stop music
         AudioManager.instance.StopMusic();
@@ -46,6 +46,17 @@ public class NewBoatGameManager : MonoBehaviour
 
     void Update()
     {
+        // dev stuff for fx audio testing
+        if (GameManager.instance.devModeActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StopAllCoroutines();
+                TalkieManager.instance.StopTalkieSystem();
+                StartCoroutine(WinBoatGame());
+            }
+        }
+
         if (repeatAudio)
         {
             repeatTimer += Time.deltaTime;
@@ -89,7 +100,7 @@ public class NewBoatGameManager : MonoBehaviour
         }
 
         // continue boat game when microphone input is detected
-        if (boatGameEvent == 4)
+        if (boatGameEvent == 4 && waitingForMicInput)
         {
             // get mic input and determine if input is loud enough
             float volumeLevel = MicInput.MicLoudness * 200;
@@ -294,6 +305,9 @@ public class NewBoatGameManager : MonoBehaviour
                 repeatTimer = 0f;
                 repeatDuration = 5f;
                 repeatAudio = true;
+
+
+                waitingForMicInput = true;
                 break;
 
             case 5:
@@ -310,22 +324,28 @@ public class NewBoatGameManager : MonoBehaviour
                 break;
 
             case 6:
-                // play blip sound
-                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-
-                // save to SIS
-                if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.InitBoatGame)
-                {
-                    StudentInfoSystem.AdvanceLinearGameEvent();
-                    StudentInfoSystem.SaveStudentPlayerData();
-                }
-                yield return new WaitForSeconds(2f);
-
-                // exit boat game
-                GameManager.instance.LoadScene("ScrollMap", true, 3f);
+                StartCoroutine(WinBoatGame());
                 break;
         }
         yield return null;
+    }
+
+    // skips the boat game for dev purposes
+    private IEnumerator WinBoatGame()
+    {
+        // play blip sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+
+        // save to SIS
+        if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.InitBoatGame)
+        {
+            StudentInfoSystem.AdvanceStoryBeat();
+            StudentInfoSystem.SaveStudentPlayerData();
+        }
+        yield return new WaitForSeconds(2f);
+
+        // exit boat game
+        GameManager.instance.LoadScene("ScrollMap", true, 3f);
     }
 
     public void BoatButtonPressed(BoatButtonID id)

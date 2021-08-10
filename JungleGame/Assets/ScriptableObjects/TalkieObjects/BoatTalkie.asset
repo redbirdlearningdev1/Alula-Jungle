@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
   m_Name: BoatTalkie
   m_EditorClassIdentifier: 
-  talkieName: boat game
+  talkieName: Boat Game
   segmnets:
   - leftCharacter: 1
     leftEmotionNum: 1

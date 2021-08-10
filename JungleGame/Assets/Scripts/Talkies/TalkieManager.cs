@@ -59,6 +59,25 @@ public class TalkieManager : MonoBehaviour
         StartCoroutine(PlayTalkieRoutine());
     }
 
+    // stops current talkie from continuing
+    public void StopTalkieSystem()
+    {
+        StopAllCoroutines();
+        
+        // bring talkies down
+        StartCoroutine(MoveObjectRouitne(leftTalkie, inactivePos.position, talkieMoveSpeed));
+        StartCoroutine(MoveObjectRouitne(rightTalkie, inactivePos.position, talkieMoveSpeed));
+
+        // deactivate letterbox and background
+        LetterboxController.instance.ToggleLetterbox(false);
+        DefaultBackground.instance.Deactivate();
+
+        // stop playing talkie
+        talkiePlaying = false;
+        currentTalkie = null;
+        ResetTalkies();
+    }
+
     private IEnumerator PlayTalkieRoutine()
     {
         ResetTalkies();

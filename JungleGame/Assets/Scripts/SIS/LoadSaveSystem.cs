@@ -10,7 +10,7 @@ using UnityEditor;
 public static class LoadSaveSystem
 {
     // default student player values
-    public static string default_version = "1.4";
+    public static string default_version = "1.5";
     public static string default_name = "empty";
     public static int    default_stars = 0;
     public static int    default_map_limit = 0;
@@ -23,9 +23,13 @@ public static class LoadSaveSystem
     public static bool  default_rummageTutorial = false;
 
     public static StoryBeat default_gameEvent = StoryBeat.InitBoatGame;
+    public static bool default_unlockedStickerButton = false;
 
     public static int   default_mapDataStars = 0;
     public static bool  default_mapDataFixed = false;
+
+    public static int default_gold_coins = 0;
+    public static int default_silver_coins = 0;
 
 
 
@@ -96,19 +100,26 @@ public static class LoadSaveSystem
         new_data.name =         default_name;
         new_data.totalStars =   default_stars;
 
+        // coins
+        new_data.goldCoins = default_gold_coins;
+        new_data.sliverCoins = default_silver_coins;
+
+        // settings
         new_data.masterVol =    AudioManager.default_masterVol;
         new_data.musicVol =     AudioManager.default_musicVol;
         new_data.fxVol =        AudioManager.default_fxVol;
         new_data.talkVol =      AudioManager.default_talkVol;
         new_data.micDevice =    default_micDevice;
 
+        // tutorials
         new_data.froggerTutorial = default_froggerTutorial;
         new_data.froggerTutorial = default_turntablesTutorial;
         new_data.froggerTutorial = default_spiderwebTutorial;
         new_data.froggerTutorial = default_rummageTutorial;
 
+        // story + map data
+        new_data.unlockedStickerButton = default_unlockedStickerButton;
         new_data.currStoryBeat = default_gameEvent;
-
         new_data.mapData = new MapData();
         
         // gorilla village

@@ -6426,8 +6426,8 @@ MonoBehaviour:
   hiddenHeight: 100
   visibleHeight: 0
   moveTime: 0.5
-  silverText: {fileID: 0}
-  goldText: {fileID: 0}
+  silverText: {fileID: 1441557007123137324}
+  goldText: {fileID: 1423828315451808085}
 --- !u!114 &5592224834261417808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6996,7 +6996,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 87df9e5a4f03eff4d8337295c82c564b, type: 2}
   - {fileID: 11400000, guid: 4951d33a691cd254bb3fdd87fe2cc086, type: 2}
   devModeIndicator: {fileID: 6550831789426890278}
-  prevMapPosition: 0
+  prevMapPosition: 1
 --- !u!114 &220914617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7488,8 +7488,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 137.6, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 88.148346, y: 0}
+  m_SizeDelta: {x: 101.0967, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222914892447878767
 CanvasRenderer:
@@ -7519,7 +7519,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: x85
+  m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5fb3e891f6ca42f488b7612cc49bf181, type: 2}
   m_sharedMaterial: {fileID: 6940129555951141546, guid: 5fb3e891f6ca42f488b7612cc49bf181,
@@ -7734,8 +7734,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 137.6, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 88.14841, y: 0}
+  m_SizeDelta: {x: 101.0968, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2857933052753532658
 CanvasRenderer:
@@ -7765,7 +7765,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 15/15
+  m_text: 0/999
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5fb3e891f6ca42f488b7612cc49bf181, type: 2}
   m_sharedMaterial: {fileID: 6940129555951141546, guid: 5fb3e891f6ca42f488b7612cc49bf181,
@@ -8359,9 +8359,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ScrollMapManager, Assembly-CSharp
-        m_MethodName: ToggleCart
+      - m_Target: {fileID: 220914617}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
+        m_MethodName: OnWagonButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

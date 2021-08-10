@@ -39,6 +39,18 @@ public class FadeObject : MonoBehaviour
         StartCoroutine(FadeEnumerator(time, false));
     }
 
+    public void SetFadeImmediate(bool opt)
+    {
+        if (opt)
+        {
+            vignette.color = new Color(0f, 0f, 0f, 1f);
+        }
+        else
+        {
+            vignette.color = new Color(0f, 0f, 0f, 0f);
+        }
+    }
+
     private IEnumerator FadeEnumerator(float time, bool fadeIn)
     {
         float to, from;
