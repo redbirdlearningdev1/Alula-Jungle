@@ -30,9 +30,17 @@ public class MicInput : MonoBehaviour
         // print ("mic init!");
         if (_device == null)
         {
-            _device = Microphone.devices[0];
-            micDeviceIndex = 0;
-            print("audio input device set to: " + _device);
+            if (Microphone.devices.Length > 0)
+            {
+                _device = Microphone.devices[0];
+                micDeviceIndex = 0;
+                print("audio input device set to: " + _device);
+            }
+            else
+            {   
+                GameManager.instance.SendLog(this, "no microphone devices found");
+                return;
+            }
         }
         _clipRecord = Microphone.Start(_device, true, 999, 44100);
         _isInitialized = true;
@@ -47,9 +55,12 @@ public class MicInput : MonoBehaviour
 
     public void SwitchDevice(int num)
     {
-        _device = Microphone.devices[num];
-        micDeviceIndex = num;
-        GameManager.instance.SendLog(this, "switching to device: " + _device);
+        if (num >= 0 && num < Microphone.devices.Length)
+        {
+            _device = Microphone.devices[num];
+            micDeviceIndex = num;
+            GameManager.instance.SendLog(this, "switching to device: " + _device);
+        }
     }
 
 

@@ -179,7 +179,7 @@ public class SettingsManager : MonoBehaviour
 
         // only workable on scroll map scene
         if (SceneManager.GetActiveScene().name == "ScrollMap")
-            ScrollMapManager.instance.ToggleCart();
+            WagonWindowController.instance.ToggleCart();
     }
 
     public void OnMasterVolumeSliderChanged()

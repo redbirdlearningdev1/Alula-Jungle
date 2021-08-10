@@ -40,21 +40,6 @@ public class ScrollMapManager : MonoBehaviour
     public MapIcon boat;
     public MapCharacter GV_Gorilla;
 
-    [Header("Stickers")]
-    [SerializeField] private GameObject stickerCart;
-    [SerializeField] private Image cartRaycastBlocker;
-    [SerializeField] private GameObject Book, Board, BackWindow, Gecko;
-    [SerializeField] private Animator Wagon;
-    [SerializeField] private Animator GeckoAnim;
-    private bool stickerCartOut;
-    private bool cartBusy;
-    private bool stickerButtonsDisabled;
-    public float stickerTransitionTime;
-
-    public Transform cartStartPosition;
-    public Transform cartOnScreenPosition;
-    public Transform cartOffScreenPosition;
-
     void Awake()
     {
         if (instance == null)
@@ -75,12 +60,6 @@ public class ScrollMapManager : MonoBehaviour
     private IEnumerator DelayedStart(float delay)
     {
         yield return new WaitForSeconds(delay);
-
-        // sticker stuff
-        Book.SetActive(false);
-        Board.SetActive(false);
-        BackWindow.SetActive(false);
-        stickerCart.SetActive(false);
 
         // disable UI
         leftButton.interactable = false;
@@ -263,7 +242,7 @@ public class ScrollMapManager : MonoBehaviour
         RaycastBlockerController.instance.RemoveRaycastBlocker("UnlockMapArea");
     }
 
-    private void TurnOffNavigationUI(bool opt, bool smooth = true)
+    public void TurnOffNavigationUI(bool opt)
     {
         // do nothing if already same as opt
         if (opt == navButtonsDisabled)
@@ -275,17 +254,6 @@ public class ScrollMapManager : MonoBehaviour
             leftButton.interactable = true;
             rightButton.interactable = true;
 
-            // if (smooth)
-            // {
-            //     StartCoroutine(SmoothImageAlpha(leftButton.GetComponent<Image>(), 0f, 1f, 0.5f));
-            //     StartCoroutine(SmoothImageAlpha(rightButton.GetComponent<Image>(), 0f, 1f, 0.5f));
-            // }
-            // else 
-            // {
-            //     leftButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
-            //     rightButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
-            // }
-
             leftButton.GetComponent<NavButtonController>().isOn = true;
             rightButton.GetComponent<NavButtonController>().isOn = true;
         }
@@ -295,19 +263,12 @@ public class ScrollMapManager : MonoBehaviour
             leftButton.interactable = false;
             rightButton.interactable = false;
 
-            // if (smooth)
-            // {
-            //     StartCoroutine(SmoothImageAlpha(leftButton.GetComponent<Image>(), 1f, 0f, 0.5f));
-            //     StartCoroutine(SmoothImageAlpha(rightButton.GetComponent<Image>(), 1f, 0f, 0.5f));
-            // }
-            // else 
-            // {
-            //     leftButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
-            //     rightButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
-            // }
-
             leftButton.GetComponent<NavButtonController>().isOn = false;
             rightButton.GetComponent<NavButtonController>().isOn = false;
+
+            // turn off glow line
+            leftButton.GetComponent<NavButtonController>().TurnOffButton();
+            rightButton.GetComponent<NavButtonController>().TurnOffButton();
         }
 
         navButtonsDisabled = opt;
@@ -329,145 +290,6 @@ public class ScrollMapManager : MonoBehaviour
             float temp = Mathf.Lerp(startAlpha, endAlpha, timer / time);
             img.color = new Color(1f, 1f, 1f, temp);
 
-            yield return null;
-        }
-    }
-
-    /* 
-    ################################################
-    #   STICKER METHODS
-    ################################################
-    */
-
-    private IEnumerator StickerInputDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        stickerButtonsDisabled = false;
-    }
-
-    public void ToggleCart()
-    {
-        if (cartBusy)
-            return;
-
-        if (!stickerCartOut)
-            StartCoroutine(RollOnScreen());
-        else
-            StartCoroutine(RollOffScreen());
-
-        stickerCartOut = !stickerCartOut;
-        cartBusy = true;
-    }
-
-    private IEnumerator RollOnScreen()
-    {
-        print ("rolling on!");
-        stickerCart.transform.position = cartStartPosition.position;
-        // lock cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
-        // activate raycast blocker + background
-        RaycastBlockerController.instance.CreateRaycastBlocker("StickerCartBlocker");
-        DefaultBackground.instance.Activate();
-
-        stickerCart.SetActive(true);
-        Wagon.Play("WagonRollIn");
-        StartCoroutine(RollToTargetRoutine(cartOnScreenPosition.position));
-        yield return new WaitForSeconds(2.95f);
-        Wagon.Play("WagonStop");
-        yield return new WaitForSeconds(1f);
-        //Wagon.Play("Idle");
-        Book.SetActive(true);
-        Board.SetActive(true);
-        BackWindow.SetActive(true);
-        Gecko.SetActive(true);
-        GeckoAnim.Play("geckoIntro");
-
-        // unlock cursor
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        cartBusy = false;
-    }
-
-    private IEnumerator RollOffScreen()
-    {
-        print ("rolling off!");
-        // lock cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
-        // deactivate raycast blocker + background
-        RaycastBlockerController.instance.RemoveRaycastBlocker("StickerCartBlocker");
-        DefaultBackground.instance.Deactivate();
-
-        // roll off screen
-        stickerCart.SetActive(true);
-        Wagon.Play("WagonRollIn");
-        StartCoroutine(RollToTargetRoutine(cartOffScreenPosition.position));
-        yield return new WaitForSeconds(3f);
-        // return cart to start pos
-        stickerCart.transform.position = cartStartPosition.position;
-        Wagon.Play("Idle");
-
-        // unlock cursor
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        cartRaycastBlocker.raycastTarget = false;
-        cartBusy = false;
-    }
-
-    private IEnumerator RollToTargetRoutine(Vector3 target)
-    {
-        Debug.Log("Here");
-        Vector3 currStart = stickerCart.transform.position;
-        float timer = 0f;
-        float maxTime = .75f;
-
-        while (true)
-        {
-            // animate movement
-            timer += Time.deltaTime * .25f;
-            if (timer < maxTime)
-            {
-                stickerCart.transform.position = Vector3.Lerp(currStart, target, timer / maxTime);
-            }
-            else
-            {
-                stickerCart.transform.position = target;
-                yield break;
-            }
-            
-            yield return null;
-        }
-    }
-
-    private IEnumerator CartRaycastBlockerRoutine(bool opt)
-    {
-        float start, end;
-        if (opt)
-        {
-            start = 0f;
-            end = 0.75f;
-        }
-        else
-        {
-            start = 0.75f;
-            end = 0f;
-        }
-        float timer = 0f;
-
-        while (true)
-        {
-            timer += Time.deltaTime;
-            if (timer > 1f)
-            {
-                cartRaycastBlocker.color = new Color(0f, 0f, 0f, end);
-                break;
-            }
-
-            float tempAlpha = Mathf.Lerp(start, end, timer / 1f);
-            cartRaycastBlocker.color = new Color(0f, 0f, 0f, tempAlpha);
             yield return null;
         }
     }

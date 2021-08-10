@@ -12,25 +12,14 @@ public class StickerBoardBook : MonoBehaviour, IPointerUpHandler, IPointerDownHa
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
-
     private bool isPressed = false;
     private bool isFixed = false;
 
-
-
-
     void Awake()
     {
-
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-
-
-
     }
-
-
-   
 
     /* 
     ################################################
@@ -54,8 +43,6 @@ public class StickerBoardBook : MonoBehaviour, IPointerUpHandler, IPointerDownHa
         {
             isPressed = false;
             Debug.Log(isPressed);
-
         }
     }
-
 }
