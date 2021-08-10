@@ -28,7 +28,6 @@ public class StudentPlayerData
 
     // coins
     public int goldCoins;
-    public int sliverCoins;
 
     // settings options
     public float masterVol;
@@ -49,6 +48,9 @@ public class StudentPlayerData
 
     // map data
     public MapData mapData;
+
+    // sticker data
+    public List<Sticker> unlockedStickers;
 }
 
 [System.Serializable]

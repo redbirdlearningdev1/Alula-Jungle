@@ -166,7 +166,14 @@ public class DevMenuManager : MonoBehaviour
         StudentInfoSystem.currentStudentPlayer.name = profileInput.text;
         StudentInfoSystem.SaveStudentPlayerData();
         SetupProfileDropdown();
-    }   
+    }
+
+    public void OnGiveGoldCoinsPressed()
+    {
+        // play audio blip
+        AudioManager.instance.PlayKeyJingle();
+        DropdownToolbar.instance.AwardGoldCoins(999);
+    }
 
     /* 
     ################################################

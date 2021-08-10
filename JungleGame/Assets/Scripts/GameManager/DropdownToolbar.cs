@@ -42,7 +42,7 @@ public class DropdownToolbar : MonoBehaviour
         var data = StudentInfoSystem.currentStudentPlayer;
         // update gold and silver coins
         SetGoldText(StudentInfoSystem.currentStudentPlayer.goldCoins.ToString());
-        SetSilverText(StudentInfoSystem.currentStudentPlayer.sliverCoins.ToString());
+        UpdateSilverCoins();
     }
 
     public void AwardGoldCoins(int amountToAward)
@@ -55,9 +55,19 @@ public class DropdownToolbar : MonoBehaviour
         SetGoldText(StudentInfoSystem.currentStudentPlayer.goldCoins.ToString());
     }
 
-    private void SetSilverText(string text)
+    public void RemoveGoldCoins(int amountToRemove)
     {
-        silverText.text = text + "/999";
+        // remove and save to profile
+        StudentInfoSystem.currentStudentPlayer.goldCoins -= amountToRemove;
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        // update toolbar string
+        SetGoldText(StudentInfoSystem.currentStudentPlayer.goldCoins.ToString());
+    }
+
+    public void UpdateSilverCoins()
+    {
+        silverText.text = StudentInfoSystem.currentStudentPlayer.unlockedStickers.Count.ToString() + "/999";
     }
 
     private void SetGoldText(string text)

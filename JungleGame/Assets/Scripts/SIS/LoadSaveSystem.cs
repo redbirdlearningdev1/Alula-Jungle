@@ -10,7 +10,9 @@ using UnityEditor;
 public static class LoadSaveSystem
 {
     // default student player values
-    public static string default_version = "1.5";
+    public static string default_version = "1.6"; 
+    // 1.6 added stickers to SIS
+
     public static string default_name = "empty";
     public static int    default_stars = 0;
     public static int    default_map_limit = 0;
@@ -29,7 +31,6 @@ public static class LoadSaveSystem
     public static bool  default_mapDataFixed = false;
 
     public static int default_gold_coins = 0;
-    public static int default_silver_coins = 0;
 
 
 
@@ -102,7 +103,6 @@ public static class LoadSaveSystem
 
         // coins
         new_data.goldCoins = default_gold_coins;
-        new_data.sliverCoins = default_silver_coins;
 
         // settings
         new_data.masterVol =    AudioManager.default_masterVol;
@@ -137,6 +137,9 @@ public static class LoadSaveSystem
         new_data.mapData.GV_house2.stars =   default_mapDataStars;
         new_data.mapData.GV_fire.stars =     default_mapDataStars;
         new_data.mapData.GV_statue.stars =   default_mapDataStars;
+
+        // stickers
+        new_data.unlockedStickers = new List<Sticker>();
 
         // save data as incative profile
         SaveStudentData(new_data, true);

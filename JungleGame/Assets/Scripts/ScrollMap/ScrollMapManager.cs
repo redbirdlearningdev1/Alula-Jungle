@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class ScrollMapManager : MonoBehaviour
 {
@@ -39,6 +40,12 @@ public class ScrollMapManager : MonoBehaviour
     [Header("Map Characters")]
     public MapIcon boat;
     public MapCharacter GV_Gorilla;
+
+    [Header("Sticker Video Players")]
+    public VideoPlayer commonVP;
+    public VideoPlayer uncommonVP;
+    public VideoPlayer rareVP;
+    public VideoPlayer legendaryVP;
 
     void Awake()
     {
@@ -107,6 +114,7 @@ public class ScrollMapManager : MonoBehaviour
         // check for game events
         if (playGameEvent == StoryBeat.InitBoatGame)
         {   
+            SetMapPosition(0);
             revealNavUI = false;
             revealGMUI = false;
             DisableAllMapIcons();

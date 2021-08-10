@@ -260,6 +260,9 @@ public class GameManager : DontDestroy<GameManager>
         // remove ui buttons
         SettingsManager.instance.ToggleWagonButtonActive(false);
         SettingsManager.instance.ToggleMenuButtonActive(false);
+
+        // remove wagon controller stuff
+        WagonWindowController.instance.ResetWagonController();
     }
 
     /*

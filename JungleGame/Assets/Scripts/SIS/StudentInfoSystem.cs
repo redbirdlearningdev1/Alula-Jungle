@@ -52,4 +52,18 @@ public static class StudentInfoSystem
     {
         currentStudentPlayer.currStoryBeat = (StoryBeat)((int)currentStudentPlayer.currStoryBeat + 1);
     }
+
+    public static void SaveStickerToProfile(Sticker sticker)
+    {
+        if (currentStudentPlayer != null)
+        {
+            // add sticker to unlocked stickers if not already in list
+            if (!currentStudentPlayer.unlockedStickers.Contains(sticker))
+            {
+                currentStudentPlayer.unlockedStickers.Add(sticker);
+                SaveStudentPlayerData();
+                DropdownToolbar.instance.UpdateSilverCoins();
+            }
+        }
+    }
 }

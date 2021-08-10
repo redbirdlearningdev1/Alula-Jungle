@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WagonWindowController : MonoBehaviour
 {
@@ -18,6 +19,18 @@ public class WagonWindowController : MonoBehaviour
     public Transform cartStartPosition;
     public Transform cartOnScreenPosition;
     public Transform cartOffScreenPosition;
+
+    [Header("Sticker Reveal")]
+    public Transform revealSticker;
+    
+    public float hiddenRevealScale;
+    public float maxRevealScale;
+    public float normalRevealScale;
+
+    public float longScaleRevealTime;
+    public float shortScaleRevealTime;
+
+    private bool waitingOnPlayerInput = false;
 
     [Header("Confirm Purchace Window")]
     [SerializeField] private GameObject window;
@@ -44,6 +57,18 @@ public class WagonWindowController : MonoBehaviour
         window.transform.localScale = new Vector3(hiddenScale, hiddenScale, 0f);
     }
 
+    void Update() 
+    {
+        if (waitingOnPlayerInput)
+        {
+            if ((Input.touchCount > 0 || Input.GetMouseButtonDown(0)))
+            {
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+                waitingOnPlayerInput = false;
+            }
+        }
+    }
+
     /* 
     ################################################
     #   CONFIRM PURCHACE WINDOW METHODS
@@ -62,10 +87,158 @@ public class WagonWindowController : MonoBehaviour
 
     public void OnYesButtonPressed()
     {
+        // check to make sure player has sufficent funds
+        if (StudentInfoSystem.currentStudentPlayer.goldCoins < 3)
+        {
+            // play sound
+            AudioManager.instance.PlayCoinDrop();
+            return;
+        }
+        // if they do, remove coins from player profile
+        else 
+        {
+            DropdownToolbar.instance.RemoveGoldCoins(3);
+        }
+
         // play sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
         windowUp = false;
+        // hide window 
+        StartCoroutine(ShrinkObject(window));
+
+        // remove default background and raycast blocker
+        DefaultBackground.instance.Deactivate();
+
+        // hide toolbar
+        DropdownToolbar.instance.ToggleToolbar(false);
+
+        StartCoroutine(RevealStickerRoutine());
+    }
+
+    private IEnumerator RevealStickerRoutine()
+    {
+        // activate raycast blocker
+        RaycastBlockerController.instance.CreateRaycastBlocker("StickerVideoBlocker");
+
+        // roll for a random sticker
+        Sticker sticker = StickerDatabase.instance.RollForSticker();
+
+        print ("you got a sticker! " + sticker.rarity + " " + sticker.id);
+
+        // save sticker to SIS
+        StudentInfoSystem.SaveStickerToProfile(sticker);
+
+        // fade to black
+        FadeObject.instance.FadeOut(2f);
+        yield return new WaitForSeconds(2f);
+        
+        // Hide GM canavas stuff
+        SettingsManager.instance.ToggleMenuButtonActive(false);
+        SettingsManager.instance.ToggleWagonButtonActive(false);
+        wagon.SetActive(false);
+        BehindUIBackground.instance.Deactivate();
+
+        yield return new WaitForSeconds(0.5f);
+
+        // Fade back in 
+        FadeObject.instance.FadeIn(2f);
+
+        float delay;
+        // play correct video player
+        switch (sticker.rarity)
+        {
+            default:
+            case StickerRarity.Common:
+                ScrollMapManager.instance.commonVP.Play();
+                delay = (float)ScrollMapManager.instance.commonVP.length;
+                break;
+
+            case StickerRarity.Uncommon:
+                ScrollMapManager.instance.uncommonVP.Play();
+                delay = (float)ScrollMapManager.instance.uncommonVP.length;
+                break;
+
+            case StickerRarity.Rare:
+                ScrollMapManager.instance.rareVP.Play();
+                delay = (float)ScrollMapManager.instance.rareVP.length;
+                break;
+
+            case StickerRarity.Legendary:
+                ScrollMapManager.instance.legendaryVP.Play();
+                delay = (float)ScrollMapManager.instance.legendaryVP.length;
+                break;
+        }
+
+        yield return new WaitForSeconds(delay - 1.5f);
+
+        // deactivate raycast blocker
+        RaycastBlockerController.instance.RemoveRaycastBlocker("StickerVideoBlocker");
+
+        // reveal sticker here after certain amount of time
+        StartCoroutine(RevealStickerRoutine(sticker));
+
+        // wait for player input to continue
+        waitingOnPlayerInput = true;
+        while (waitingOnPlayerInput)
+            yield return null;
+
+        // activate raycast blocker
+        RaycastBlockerController.instance.CreateRaycastBlocker("StickerVideoBlocker");
+
+        // fade to black
+        FadeObject.instance.FadeOut(2f);
+        yield return new WaitForSeconds(2f);
+        
+        // Hide GM canavas stuff
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+        SettingsManager.instance.ToggleWagonButtonActive(true);
+        wagon.SetActive(true);
+        GeckoAnim.Play("idle");
+        BehindUIBackground.instance.Activate();
+
+        // stop correct video player
+        switch (sticker.rarity)
+        {
+            default:
+            case StickerRarity.Common:
+                ScrollMapManager.instance.commonVP.Stop();
+                break;
+
+            case StickerRarity.Uncommon:
+                ScrollMapManager.instance.uncommonVP.Stop();
+                break;
+
+            case StickerRarity.Rare:
+                ScrollMapManager.instance.rareVP.Stop();
+                break;
+
+            case StickerRarity.Legendary:
+                ScrollMapManager.instance.legendaryVP.Stop();
+                break;
+        }
+
+        // hide reveal sticker
+        revealSticker.localScale = new Vector3(hiddenRevealScale, hiddenRevealScale, 1f);
+
+        yield return new WaitForSeconds(0.5f);
+
+        // Fade back in 
+        FadeObject.instance.FadeIn(2f);
+
+        // deactivate raycast blocker
+        RaycastBlockerController.instance.RemoveRaycastBlocker("StickerVideoBlocker");
+
+        print ("video over");
+    }
+
+    private IEnumerator RevealStickerRoutine(Sticker sticker)
+    {
+        revealSticker.GetComponent<Image>().sprite = sticker.sprite;
+
+        StartCoroutine(ScaleObjectRoutine(revealSticker.gameObject, longScaleRevealTime, maxRevealScale));
+        yield return new WaitForSeconds(longScaleRevealTime);
+        StartCoroutine(ScaleObjectRoutine(revealSticker.gameObject, shortScaleRevealTime, normalRevealScale));
     }
 
     public void OnNoButtonPressed()
@@ -79,12 +252,18 @@ public class WagonWindowController : MonoBehaviour
 
         // remove default background and raycast blocker
         DefaultBackground.instance.Deactivate();
+
+        // hide toolbar
+        DropdownToolbar.instance.ToggleToolbar(false);
     }
 
     private IEnumerator NewWindowRoutine()
     {
         // add default background and raycast blocker
         DefaultBackground.instance.Activate();
+
+        // show toolbar
+        DropdownToolbar.instance.ToggleToolbar(true);
 
         yield return new WaitForSeconds(0.5f);
 
@@ -217,6 +396,28 @@ public class WagonWindowController : MonoBehaviour
 
         // enable nav buttons
         ScrollMapManager.instance.TurnOffNavigationUI(false);
+    }
+
+    public void ResetWagonController()
+    {
+        Book.SetActive(false);
+        Board.SetActive(false);
+        BackWindow.SetActive(false);
+        Gecko.SetActive(false);
+
+        wagon.transform.position = cartStartPosition.position;
+        Wagon.Play("Idle");
+
+        // deactivate raycast blocker + background
+        RaycastBlockerController.instance.RemoveRaycastBlocker("StickerCartBlocker");
+        BehindUIBackground.instance.Deactivate();
+        cartBusy = false;
+
+        // enable nav buttons
+        ScrollMapManager.instance.TurnOffNavigationUI(false);
+
+        // hide window 
+        StartCoroutine(ShrinkObject(window));
     }
 
     private IEnumerator RollToTargetRoutine(Vector3 target)
