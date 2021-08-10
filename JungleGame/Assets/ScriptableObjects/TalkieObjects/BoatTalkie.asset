@@ -24,6 +24,7 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 76c705f9df2844a48adae45570185cc0, type: 3}
+    audioClipName: Boat_0_1_Red_1_1_T1
     audioString: 
   - leftCharacter: 1
     leftEmotionNum: 4
@@ -35,6 +36,7 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: e71b5b148fd3d0a4fa9787e60f410141, type: 3}
+    audioClipName: Boat_0_1_Red_1_1_T2
     audioString: 
   - leftCharacter: 1
     leftEmotionNum: 3
@@ -46,6 +48,7 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 8a985d1cbddfe7a4b824daac63039a5a, type: 3}
+    audioClipName: Boat_0_1_Red_1_1_T3
     audioString: 
   - leftCharacter: 1
     leftEmotionNum: 9
@@ -57,6 +60,7 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 90598ece13a099749a3d895e9256aa0a, type: 3}
+    audioClipName: 
     audioString: 
   - leftCharacter: 1
     leftEmotionNum: 1
@@ -68,6 +72,7 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 58179914dd081d5449185e2a839d8de1, type: 3}
+    audioClipName: 
     audioString: 
   - leftCharacter: 1
     leftEmotionNum: 3
@@ -79,6 +84,7 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 05d86d849dde00c488b421bc8e339b60, type: 3}
+    audioClipName: 
     audioString: 
   - leftCharacter: 1
     leftEmotionNum: 4
@@ -90,4 +96,5 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: fba4883860dcc1641b5bf8f07c65ed77, type: 3}
+    audioClipName: 
     audioString: 

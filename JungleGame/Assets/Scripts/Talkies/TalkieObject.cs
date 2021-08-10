@@ -24,7 +24,7 @@ public enum ActiveCharacter
 }
 
 [System.Serializable]
-public struct TalkieSegmnet
+public struct TalkieSegment
 {
     [Header("Left Character")]
     public TalkieCharacter leftCharacter;
@@ -43,6 +43,7 @@ public struct TalkieSegmnet
 
     [Header("Audio")]
     public AudioClip audioClip; // audio to play
+    public string audioClipName; // audio to play
     public string audioString; // subtitles
 }
 
@@ -50,5 +51,5 @@ public struct TalkieSegmnet
 public class TalkieObject : ScriptableObject
 {
     public string talkieName;
-    public List<TalkieSegmnet> segmnets;
+    public List<TalkieSegment> segmnets;
 }
