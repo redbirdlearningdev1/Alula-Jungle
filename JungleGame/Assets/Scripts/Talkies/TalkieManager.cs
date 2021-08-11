@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TalkieManager : MonoBehaviour
 {
@@ -46,10 +47,18 @@ public class TalkieManager : MonoBehaviour
     public float inactiveScale;
     public float inactiveAlpha;
 
+    [Header("Subtitles")]
+    public Image subtitleBox;
+    public TextMeshProUGUI subtitleText;
+
     void Awake()
     {
         if (instance == null)
             instance = this;
+
+        // clear subtitles
+        subtitleText.text = "";
+        subtitleBox.color = new Color(0f, 0f, 0f, 0f);
     }
 
     public void PlayTalkie(TalkieObject talkie)
@@ -63,6 +72,10 @@ public class TalkieManager : MonoBehaviour
     public void StopTalkieSystem()
     {
         StopAllCoroutines();
+
+        // clear subtitles
+        subtitleText.text = "";
+        subtitleBox.color = new Color(0f, 0f, 0f, 0f);
         
         // bring talkies down
         StartCoroutine(MoveObjectRouitne(leftTalkie, inactivePos.position, talkieMoveSpeed));
@@ -88,11 +101,13 @@ public class TalkieManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        // clear subtitles
+        subtitleText.text = "";
+        subtitleBox.color = new Color(0f, 0f, 0f, 100f / 255f);
+
         // play segments in order
         foreach (var talkieSeg in currentTalkie.segmnets)
         {
-            print ("starting new talkie segment!");
-
             float waitTime = 0f;
             /* 
             ################################################
@@ -222,9 +237,20 @@ public class TalkieManager : MonoBehaviour
                 //yield return new WaitForSeconds(talkieDeactivateSpeed);
             }
 
+            // add subtitles
+            subtitleText.text = talkieSeg.audioString;
+
             // play audio
-            AudioManager.instance.PlayTalk(talkieSeg.audioClip);
-            yield return new WaitForSeconds(talkieSeg.audioClip.length + 0.5f);
+            if (talkieSeg.audioClip != null)
+            {
+                AudioManager.instance.PlayTalk(talkieSeg.audioClip);
+                yield return new WaitForSeconds(talkieSeg.audioClip.length + 0.5f);
+            }
+            else
+            {
+                print ("no audio clip found: \'" + talkieSeg.audioClipName + "\'");
+                yield return new WaitForSeconds(3f);
+            }
         }
 
         /* 
@@ -242,9 +268,15 @@ public class TalkieManager : MonoBehaviour
         yield return new WaitForSeconds(talkieMoveSpeed);
 
         // deactivate letterbox and background
-        LetterboxController.instance.ToggleLetterbox(false, 1f);
-        DefaultBackground.instance.Deactivate();
+        if (currentTalkie.removeBackgroundAfterTalkie)
+            DefaultBackground.instance.Deactivate();
+        if (currentTalkie.removeLetterboxAfterTalkie)
+            LetterboxController.instance.ToggleLetterbox(false, 1f);
 
+        // clear subtitles
+        subtitleText.text = "";
+        subtitleBox.color = new Color(0f, 0f, 0f, 0f);
+        
         // stop playing talkie
         talkiePlaying = false;
         currentTalkie = null;

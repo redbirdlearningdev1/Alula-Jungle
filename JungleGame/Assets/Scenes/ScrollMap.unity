@@ -3735,10 +3735,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   overideMapLimit: 0
   mapLimitNum: 0
-  overideGameEvent: 0
+  overideGameEvent: 1
   gameEvent: 0
   overrideStartPosition: 0
-  startPos: 2
+  startPos: 0
   Map: {fileID: 1534747656}
   mapLocations:
   - {fileID: 381612508}

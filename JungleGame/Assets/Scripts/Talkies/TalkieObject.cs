@@ -66,9 +66,17 @@ public struct TalkieSegment
 public class TalkieObject : ScriptableObject
 {
     public string talkieName;
+
+    [Header("Before Talkie Options")]
     public TalkieStart start;
+    public bool addBackgroundBeforeTalkie = true; // by default, the background goes away
+    public bool addLetterboxBeforeTalkie = true; // by default, the letterbox goes away
+
+    [Header("After Talkie Options")]
     public TalkieEnding ending;
     public bool removeBackgroundAfterTalkie = true; // by default, the background goes away
     public bool removeLetterboxAfterTalkie = true; // by default, the letterbox goes away
+
+    [Header("Segments")]
     public List<TalkieSegment> segmnets;
 }

@@ -169,6 +169,8 @@ public class ScrollMapManager : MonoBehaviour
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
 
+            yield return new WaitForSeconds(1f);
+
             // play dock 1 talkie + wait for talkie to finish
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.dockTalkie_1);
             while (TalkieManager.instance.talkiePlaying)
@@ -177,8 +179,10 @@ public class ScrollMapManager : MonoBehaviour
             StartCoroutine(UnlockMapArea(2));
             GV_Gorilla.ShowExclamationMark(true);
 
+            yield return new WaitForSeconds(10f);
+
             // play dock 2 talkie + wait for talkie to finish
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.dockTalkie_1);
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.dockTalkie_2);
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 

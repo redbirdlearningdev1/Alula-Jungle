@@ -21,11 +21,14 @@ public class TalkieDatabase : MonoBehaviour
     public TalkieObject dockTalkie_1;
     public TalkieObject dockTalkie_2;
 
-    [Header("Red Sprites")]
+    [Header("Character Sprites")]
     public List<TalkieDatabaseEntry> redSprites;
-
-    [Header("Darwin Sprites")]
     public List<TalkieDatabaseEntry> darwinSprites;
+    public List<TalkieDatabaseEntry> wallySprites;
+    public List<TalkieDatabaseEntry> juliusSprites;
+    public List<TalkieDatabaseEntry> marcusSprites;
+    public List<TalkieDatabaseEntry> brutusSprites;
+    public List<TalkieDatabaseEntry> lesterSprites;
 
     void Awake()
     {
@@ -42,8 +45,11 @@ public class TalkieDatabase : MonoBehaviour
                 return entry.sprite;
         }
 
-        GameManager.instance.SendError(this, "could not find talkie sprite");
-        return null;
+        // return default sprite (element 0 in list)
+        return list[0].sprite;
+
+        // GameManager.instance.SendError(this, "could not find talkie sprite");
+        // return null;
     }
 
     public Sprite GetTalkieSprite(TalkieCharacter character, int emotionNum, TalkieMouth mouth, TalkieEyes eyes)
@@ -57,6 +63,16 @@ public class TalkieDatabase : MonoBehaviour
                 return FindSprite(redSprites, emotionNum, mouth, eyes);
             case TalkieCharacter.Darwin:
                 return FindSprite(darwinSprites, emotionNum, mouth, eyes);
+            case TalkieCharacter.Wally:
+                return FindSprite(wallySprites, emotionNum, mouth, eyes);
+            case TalkieCharacter.Julius:
+                return FindSprite(juliusSprites, emotionNum, mouth, eyes);
+            case TalkieCharacter.Marcus:
+                return FindSprite(marcusSprites, emotionNum, mouth, eyes);
+            case TalkieCharacter.Brutus:
+                return FindSprite(brutusSprites, emotionNum, mouth, eyes);
+            case TalkieCharacter.Lester:
+                return FindSprite(lesterSprites, emotionNum, mouth, eyes);
         }
     }
 }
