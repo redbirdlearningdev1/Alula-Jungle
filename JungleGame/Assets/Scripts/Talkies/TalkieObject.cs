@@ -17,10 +17,25 @@ public enum TalkieEyes
     None, Inwards, Player, Closed, Outwards
 }
 
-
 public enum ActiveCharacter
 {
     Left, Right
+}
+
+public enum TalkieStart
+{
+    EnterUp,    // characters enter from bottom to top
+    EnterSides, // characters enter from respective sides (right from right, left from left)
+    EnterLeft,  // characters enter from left side
+    EnterRight, // characters enter from right side
+}
+
+public enum TalkieEnding
+{
+    ExitDown,   // characters exit down (default)
+    ExitSides,  // characters exit to their respective sides (right to right, left to left)
+    ExitLeft,   // characters exit towards Left
+    ExitRight   // characters exit towards Right
 }
 
 [System.Serializable]
@@ -51,5 +66,9 @@ public struct TalkieSegment
 public class TalkieObject : ScriptableObject
 {
     public string talkieName;
+    public TalkieStart start;
+    public TalkieEnding ending;
+    public bool removeBackgroundAfterTalkie = true; // by default, the background goes away
+    public bool removeLetterboxAfterTalkie = true; // by default, the letterbox goes away
     public List<TalkieSegment> segmnets;
 }
