@@ -6,9 +6,10 @@ using UnityEngine.EventSystems;
 public class TigerGameRaycaster : MonoBehaviour
 {
     public bool isOn = false;
-    private Poloroid selectedPoloroid = null;
-    private CoinChoice selectedCoin = null;
-    [SerializeField] private Transform selectedPoloroidParent;
+    public float objcetMoveSpeed = 0.1f;
+
+    private GameObject selectedObject = null;
+    [SerializeField] private Transform selectedObjectParent;
 
     void Update()
     {
@@ -17,14 +18,16 @@ public class TigerGameRaycaster : MonoBehaviour
             return;
 
         // drag select coin while mouse 1 down
-        if (Input.GetMouseButton(0) && selectedPoloroid)
+        if (Input.GetMouseButton(0) && selectedObject)
         {
             Vector3 mousePosWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosWorldSpace.z = 0f;
-            selectedPoloroid.transform.position = mousePosWorldSpace;
+
+            Vector3 pos = Vector3.Lerp(selectedObject.transform.position, mousePosWorldSpace, objcetMoveSpeed);
+            selectedObject.transform.position = pos;
 
         }
-        else if (Input.GetMouseButtonUp(0) && selectedPoloroid)
+        else if (Input.GetMouseButtonUp(0) && selectedObject)
         {
 
             // send raycast to check for bag
@@ -40,25 +43,14 @@ public class TigerGameRaycaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("Bag"))
                     {
-                        selectedPoloroid.MoveOrigin();
-                        isCorrect = TigerGameManager.instance.EvaluateSelectedPoloroid(selectedPoloroid.type, selectedPoloroid);
+                        TigerGameManager.instance.returnToPos(selectedObject);
+                        TigerGameManager.instance.EvaluateWaterCoin(selectedObject.GetComponent<Polaroid>());
                     }
                 }
             }
 
-
-            if (isCorrect)
-            {
-
-
-            }
-            else
-            {
-                selectedPoloroid.MoveOrigin();
-                selectedPoloroid = null;
-            }
-            //selectedShell.shadow.gameObject.SetActive(true);
-            selectedPoloroid = null;
+            TigerGameManager.instance.returnToPos(selectedObject);
+            selectedObject = null;
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -73,16 +65,11 @@ public class TigerGameRaycaster : MonoBehaviour
             {
                 foreach (var result in raycastResults)
                 {
-                    if (result.gameObject.transform.CompareTag("Coin"))
+                    if (result.gameObject.transform.CompareTag("Polaroid"))
                     {
-                        selectedPoloroid = result.gameObject.GetComponent<Poloroid>();
-                        selectedPoloroid.gameObject.transform.SetParent(selectedPoloroidParent);
-
-                    }
-                    if (result.gameObject.transform.CompareTag("Shell"))
-                    {
-                        selectedCoin = result.gameObject.GetComponent<CoinChoice>();
-                        selectedCoin.PlayPhonemeAudio();
+                        //WordFactorySubstitutingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoin>());
+                        selectedObject = result.gameObject;
+                        selectedObject.gameObject.transform.SetParent(selectedObjectParent);
 
                     }
                 }

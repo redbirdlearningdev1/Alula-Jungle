@@ -8,7 +8,8 @@ public class PatternRightWrong : MonoBehaviour
     private int currState = 0;
 
     [Header("Objects")]
-    [SerializeField] private Image state;
+    //[SerializeField] private Image state;
+    [SerializeField] private SpriteRenderer state;
 
     [Header("Images")]
     [SerializeField] private List<Sprite> states;

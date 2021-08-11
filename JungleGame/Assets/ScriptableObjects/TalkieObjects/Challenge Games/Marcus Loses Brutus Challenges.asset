@@ -1,0 +1,208 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: Marcus Loses Brutus Challenges
+  m_EditorClassIdentifier: 
+  talkieName: Marcus Loses Brutus Challenges
+  segmnets:
+  - leftCharacter: 6
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: Cha_0_2_Marcus_1_T1
+    audioString: WHAT?!
+  - leftCharacter: 6
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: Cha_0_2_Marcus_1_T2
+    audioString: HOW IS THIS POSSIBLE?!
+  - leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: Cha_0_2_Red_2_T1
+    audioString: You're doing great explorer
+  - leftCharacter: 1
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: Cha_0_2_Red_2_T2
+    audioString: We're almost there!
+  - leftCharacter: 7
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: Cha_0_2_Julius_3_T1
+    audioString: Enough games!
+  - leftCharacter: 7
+    leftEmotionNum: 8
+    leftMouthEnum: 1
+    leftEyesEnum: 4
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: Cha_0_2_Julius_3_T2
+    audioString: Brutus it's your turn!
+  - leftCharacter: 7
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 5
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: Cha_0_2_Brutus_4_T1
+    audioString: yawn...
+  - leftCharacter: 7
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 5
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: Cha_0_2_Brutus_4_T2
+    audioString: Alright...
+  - leftCharacter: 7
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 5
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: Cha_0_2_Brutus_4_T3
+    audioString: let's get this over with....
+  - leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: Cha_0_2_Brutus_5_T1
+    audioString: Okay explorer...
+  - leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: Cha_0_2_Brutus_5_T2
+    audioString: Yawn...
+  - leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: Cha_0_2_Brutus_5_T3
+    audioString: Time for me to beat you I guess
+  - leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: Cha_0_2_Brutus_5a_T1
+    audioString: Yawn...
+  - leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: Cha_0_2_Brutus_5a_T2
+    audioString: Yeah whatever
+  - leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 3
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: Cha_0_2_Brutus_5a_T3
+    audioString: I'll be here...
+  - leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: Cha_0_2_Brutus_5a_T4
+    audioString: Or whatever...
