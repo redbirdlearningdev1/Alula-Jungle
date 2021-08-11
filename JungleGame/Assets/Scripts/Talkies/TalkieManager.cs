@@ -83,7 +83,7 @@ public class TalkieManager : MonoBehaviour
         ResetTalkies();
 
         // activate letterbox and background
-        LetterboxController.instance.ToggleLetterbox(true);
+        LetterboxController.instance.ToggleLetterbox(true, 1f);
         DefaultBackground.instance.Activate();
 
         yield return new WaitForSeconds(1f);
@@ -91,6 +91,8 @@ public class TalkieManager : MonoBehaviour
         // play segments in order
         foreach (var talkieSeg in currentTalkie.segmnets)
         {
+            print ("starting new talkie segment!");
+
             float waitTime = 0f;
             /* 
             ################################################
@@ -206,7 +208,7 @@ public class TalkieManager : MonoBehaviour
                 StartCoroutine(LerpScaleAndAlpha(leftImage, 1f, 1f, true));
                 if (!rightHidden) 
                 {
-                    StartCoroutine(LerpScaleAndAlpha(rightImage, inactiveScale, inactiveAlpha, true));
+                    StartCoroutine(LerpScaleAndAlpha(rightImage, inactiveScale, inactiveAlpha, false));
                 }
                 //yield return new WaitForSeconds(talkieDeactivateSpeed);
             }
@@ -215,7 +217,7 @@ public class TalkieManager : MonoBehaviour
                 StartCoroutine(LerpScaleAndAlpha(rightImage, 1f, 1f, false));
                 if (!leftHidden) 
                 {
-                    StartCoroutine(LerpScaleAndAlpha(leftImage, inactiveScale, inactiveAlpha, false));
+                    StartCoroutine(LerpScaleAndAlpha(leftImage, inactiveScale, inactiveAlpha, true));
                 }
                 //yield return new WaitForSeconds(talkieDeactivateSpeed);
             }
@@ -240,7 +242,7 @@ public class TalkieManager : MonoBehaviour
         yield return new WaitForSeconds(talkieMoveSpeed);
 
         // deactivate letterbox and background
-        LetterboxController.instance.ToggleLetterbox(false);
+        LetterboxController.instance.ToggleLetterbox(false, 1f);
         DefaultBackground.instance.Deactivate();
 
         // stop playing talkie
@@ -263,6 +265,7 @@ public class TalkieManager : MonoBehaviour
                 if (isLeft) image.gameObject.transform.localScale = new Vector3(targetScale, targetScale, 1f);
                 else image.gameObject.transform.localScale = new Vector3(targetScale * -1, targetScale, 1f);
                 image.color = new Color(1f, 1f, 1f, targetAlpha);
+                break;
             }
 
             float tempScale = Mathf.Lerp(startScale, targetScale, timer / talkieDeactivateSpeed);
@@ -289,7 +292,7 @@ public class TalkieManager : MonoBehaviour
         // swap sprite
         image.sprite = TalkieDatabase.instance.GetTalkieSprite(character, emotionNum, mouth, eyes);
 
-        // bring down talkie
+        // bring up talkie
         StartCoroutine(MoveObjectRouitne(tform, activePos.position, talkieMoveSpeed));
         yield return new WaitForSeconds(talkieMoveSpeed);
     }
@@ -298,7 +301,6 @@ public class TalkieManager : MonoBehaviour
     {
         // swap sprite
         image.sprite = TalkieDatabase.instance.GetTalkieSprite(character, emotionNum, mouth, eyes);
-
     }
 
     private IEnumerator MoveObjectRouitne(Transform obj, Vector3 targetPos, float duration)

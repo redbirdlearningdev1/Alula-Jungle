@@ -8,7 +8,6 @@ public class LetterboxController : MonoBehaviour
     public static LetterboxController instance;
 
     public float boxHeight;
-    public float moveTime;
     public float textRevealTime;
 
     [SerializeField] private RectTransform topRect;
@@ -29,13 +28,13 @@ public class LetterboxController : MonoBehaviour
         titleText.color = new Color(1f, 1f, 1f, 0f);
     }
 
-    public void ToggleLetterbox(bool opt)
+    public void ToggleLetterbox(bool opt, float moveSpeed = 2f)
     {
         if (opt == isOn)
             return;
         
         isOn = opt;
-        StartCoroutine(ToggleLetterboxRoutine(opt));
+        StartCoroutine(ToggleLetterboxRoutine(opt, moveSpeed));
     }
 
     public void ShowTextSmooth(string text)
@@ -66,7 +65,7 @@ public class LetterboxController : MonoBehaviour
         }
     }
 
-    private IEnumerator ToggleLetterboxRoutine(bool opt)
+    private IEnumerator ToggleLetterboxRoutine(bool opt, float speed)
     {
         float timer = 0f;
 
@@ -91,7 +90,7 @@ public class LetterboxController : MonoBehaviour
         while (true)
         {
             timer += Time.deltaTime;
-            if (timer > moveTime)
+            if (timer > speed)
             {   
                 // reset text
                 if (!opt)
@@ -103,8 +102,8 @@ public class LetterboxController : MonoBehaviour
                 break;
             }
 
-            float tempHeightTop = Mathf.Lerp(topStart, topEnd, timer / moveTime);
-            float tempHeightBottom = Mathf.Lerp(bottomStart, bottomEnd, timer / moveTime);
+            float tempHeightTop = Mathf.Lerp(topStart, topEnd, timer / speed);
+            float tempHeightBottom = Mathf.Lerp(bottomStart, bottomEnd, timer / speed);
 
             topRect.anchoredPosition3D = new Vector3(0f, tempHeightTop, 0f);
             bottomRect.anchoredPosition3D = new Vector3(0f, tempHeightBottom, 0f);

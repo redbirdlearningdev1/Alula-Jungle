@@ -500,7 +500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 395dce68a674000489330150e40c5723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placeTalkieHere: {fileID: 11400000, guid: f8076a45db313bf4e83c3d794f26bedc, type: 2}
+  placeTalkieHere: {fileID: 11400000, guid: d1c2c5d273923514c98422a882b0cad4, type: 2}
 --- !u!4 &676059966
 Transform:
   m_ObjectHideFlags: 0
