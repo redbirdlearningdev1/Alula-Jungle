@@ -4,6 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
+[System.Serializable]
+public struct MapLocationIcons
+{
+    public List<MapIcon> mapIcons;
+}
+
 public class ScrollMapManager : MonoBehaviour
 {
     public static ScrollMapManager instance;
@@ -15,6 +21,9 @@ public class ScrollMapManager : MonoBehaviour
     public bool overideGameEvent;
     public StoryBeat gameEvent;
 
+    public bool overrideStartPosition;
+    public int startPos;
+
     private List<GameObject> mapIcons = new List<GameObject>();
 
     [Header("Map Navigation")]
@@ -24,6 +33,10 @@ public class ScrollMapManager : MonoBehaviour
     [SerializeField] private List<float> fogLocations; // the positions where the fog is placed
     [SerializeField] private Button leftButton;
     [SerializeField] private Button rightButton;
+
+    [Header("Map Icons @ Locations")]
+    public List<MapLocationIcons> mapIconsAtLocation;
+    private bool showStars = true;
 
     [Header("Animations")]
     public float staticMapYPos;
@@ -73,8 +86,16 @@ public class ScrollMapManager : MonoBehaviour
         rightButton.interactable = false;
         navButtonsDisabled = true;
 
-        // start at prev position (or at 1 by default)
-        mapPosIndex = GameManager.instance.prevMapPosition;
+        // override start map pos
+        if (overrideStartPosition && GameManager.instance.devModeActivated)
+        {
+            mapPosIndex = startPos;
+        }
+        else
+        {
+            // start at prev position (or at 1 by default)
+            mapPosIndex = GameManager.instance.prevMapPosition;
+        }
         GameManager.instance.SendLog(this, "starting scrollmap on position: " + mapPosIndex);
         SetMapPosition(mapPosIndex);
 
@@ -117,6 +138,7 @@ public class ScrollMapManager : MonoBehaviour
             SetMapPosition(0);
             revealNavUI = false;
             revealGMUI = false;
+            showStars = false;
             DisableAllMapIcons();
 
             // intro boat animation
@@ -134,6 +156,7 @@ public class ScrollMapManager : MonoBehaviour
         {
             revealNavUI = false;
             revealGMUI = false;
+            showStars = false;
             DisableAllMapIcons();
 
             // place camera on dock location + fog
@@ -146,8 +169,19 @@ public class ScrollMapManager : MonoBehaviour
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
 
+            // play dock 1 talkie + wait for talkie to finish
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.dockTalkie_1);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
             StartCoroutine(UnlockMapArea(2));
             GV_Gorilla.ShowExclamationMark(true);
+
+            // play dock 2 talkie + wait for talkie to finish
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.dockTalkie_1);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
             GV_Gorilla.interactable = true;
 
             // update SIS
@@ -160,6 +194,8 @@ public class ScrollMapManager : MonoBehaviour
         else if (playGameEvent == StoryBeat.PrologueStoryGame)
         {
             DisableAllMapIcons();
+            showStars = false;
+
             GV_Gorilla.ShowExclamationMark(true);
             GV_Gorilla.interactable = true;
         }
@@ -184,6 +220,9 @@ public class ScrollMapManager : MonoBehaviour
             TurnOffNavigationUI(false);
         }
 
+        // show stars on current map location
+        StartCoroutine(ToggleMapIconStarsRoutine(true, mapPosIndex));
+
         // show GM UI
         if (revealGMUI)
         {
@@ -191,6 +230,23 @@ public class ScrollMapManager : MonoBehaviour
             // show sticker button if unlocked
             if (StudentInfoSystem.currentStudentPlayer.unlockedStickerButton)
                 SettingsManager.instance.ToggleWagonButtonActive(true);
+        }
+    }
+
+    private IEnumerator ToggleMapIconStarsRoutine(bool opt, int location)
+    {
+        // show stars of current location
+        if (showStars)
+        {
+            foreach (var mapicon in mapIconsAtLocation[location].mapIcons)
+            {
+                if (opt)
+                    mapicon.RevealStars();
+                else
+                    mapicon.HideStars();
+
+                yield return null;
+            }
         }
     }
 
@@ -316,6 +372,8 @@ public class ScrollMapManager : MonoBehaviour
         navButtonsDisabled = true;
         StartCoroutine(NavInputDelay(transitionTime));
 
+        int prevMapPos = mapPosIndex;
+
         mapPosIndex--;
         if (mapPosIndex < minMapLimit)
         {
@@ -324,6 +382,11 @@ public class ScrollMapManager : MonoBehaviour
             StartCoroutine(BumpAnimation(true));
             return;
         }
+
+        // hide stars from prev map pos
+        StartCoroutine(ToggleMapIconStarsRoutine(false, prevMapPos));
+        // show stars on current map location
+        StartCoroutine(ToggleMapIconStarsRoutine(true, mapPosIndex));
 
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.LeftBlip, 1f);
@@ -340,6 +403,8 @@ public class ScrollMapManager : MonoBehaviour
         // player cannot input for 'transitionTime' seconds
         navButtonsDisabled = true;
         StartCoroutine(NavInputDelay(transitionTime));
+
+        int prevMapPos = mapPosIndex;
 
         mapPosIndex++;
         // cant scroll past map limit
@@ -358,6 +423,11 @@ public class ScrollMapManager : MonoBehaviour
             StartCoroutine(BumpAnimation(false));
             return;
         }
+
+        // hide stars from prev map pos
+        StartCoroutine(ToggleMapIconStarsRoutine(false, prevMapPos));
+        // show stars on current map location
+        StartCoroutine(ToggleMapIconStarsRoutine(true, mapPosIndex));
 
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightBlip, 1f);

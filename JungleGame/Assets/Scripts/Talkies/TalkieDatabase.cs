@@ -18,6 +18,8 @@ public class TalkieDatabase : MonoBehaviour
 
     [Header("Talkie Objects")]
     public TalkieObject boatGameTalkie;
+    public TalkieObject dockTalkie_1;
+    public TalkieObject dockTalkie_2;
 
     [Header("Red Sprites")]
     public List<TalkieDatabaseEntry> redSprites;

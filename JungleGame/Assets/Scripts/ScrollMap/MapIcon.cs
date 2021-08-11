@@ -48,7 +48,13 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     public StarLocation starLocation;
     [SerializeField] private Star[] upStars;
     [SerializeField] private Star[] downStars;
+    [SerializeField] Transform upStarsTransform;
+    [SerializeField] Transform downStarsTransform;
     private Star[] currentStars;
+    private Transform currentStarRevealPos;
+    [SerializeField] private Transform starsHiddenPosition;
+    public float starMoveSpeed;
+    private bool starsHidden = true;
 
 
     void Awake() 
@@ -62,20 +68,101 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         InitStars();
     }
 
+    /* 
+    ################################################
+    #   STAR ANIMATION METHODS
+    ################################################
+    */
+
+    public void RevealStars()
+    {
+        StartCoroutine(RevealStarsRoutine());
+    }
+
+    private IEnumerator RevealStarsRoutine()
+    {
+        if (starsHidden)
+        {
+            starsHidden = false;
+            foreach(var star in currentStars)
+            {
+                StartCoroutine(MoveStarRoutine(star.transform, currentStarRevealPos));
+                star.LerpStarAlphaScale(1f, 1f);
+                star.SetRendererLayer(2);
+
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
+    }
+
+    public void HideStars()
+    {   
+        StartCoroutine(HideStarsRoutine());
+    }
+
+    private IEnumerator HideStarsRoutine()
+    {
+        if (!starsHidden)
+        {
+            starsHidden = true;
+            foreach(var star in currentStars)
+            {
+                StartCoroutine(MoveStarRoutine(star.transform, starsHiddenPosition));
+                star.LerpStarAlphaScale(0f, 0f);
+                star.SetRendererLayer(0);
+
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
+    }
+
+    private IEnumerator MoveStarRoutine(Transform star, Transform targetTransform)
+    {
+        Vector3 startPos = star.position;
+        float timer = 0f;
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > starMoveSpeed)
+            {
+                star.position = targetTransform.position;
+                break;
+            }
+
+            var tempPos = Vector3.Lerp(startPos, targetTransform.position, timer / starMoveSpeed);
+            star.position = tempPos;
+            yield return null;
+        }
+    }
+
     private void InitStars()
     {
         switch (starLocation)
         {
             case StarLocation.up:
                 currentStars = upStars;
+                currentStarRevealPos = upStarsTransform;
                 break;
             case StarLocation.down:
                 currentStars = downStars;
+                currentStarRevealPos = downStarsTransform;
                 break;
             default:
             case StarLocation.none:
                 currentStars = null;
                 break;
+        }
+
+        if (currentStars != null)
+        {
+            // stars should be initially hidden
+            foreach (var star in currentStars)
+            {
+                star.transform.position = starsHiddenPosition.position;
+                star.LerpStarAlphaScale(0f, 0f);
+                star.SetRendererLayer(0);
+            }
+            starsHidden = true;
         }
     }
 
