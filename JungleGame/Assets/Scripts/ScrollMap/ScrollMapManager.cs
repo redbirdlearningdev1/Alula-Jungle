@@ -172,17 +172,17 @@ public class ScrollMapManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             // play dock 1 talkie + wait for talkie to finish
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.dockTalkie_1);
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.dock_1);
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
-            StartCoroutine(UnlockMapArea(2));
+            StartCoroutine(UnlockMapArea(2, true));
             GV_Gorilla.ShowExclamationMark(true);
 
             yield return new WaitForSeconds(10f);
 
             // play dock 2 talkie + wait for talkie to finish
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.dockTalkie_2);
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.dock_2);
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
@@ -269,7 +269,7 @@ public class ScrollMapManager : MonoBehaviour
         GameManager.instance.prevMapPosition = mapPosIndex;
     }
 
-    private IEnumerator UnlockMapArea(int mapIndex)
+    private IEnumerator UnlockMapArea(int mapIndex, bool leaveLetterboxUp = false)
     {
         // save unlock to sis profile
         StudentInfoSystem.currentStudentPlayer.mapLimit = mapIndex;
@@ -300,7 +300,8 @@ public class ScrollMapManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         // move letterbox out of the way
-        LetterboxController.instance.ToggleLetterbox(false);
+        if (!leaveLetterboxUp)
+            LetterboxController.instance.ToggleLetterbox(false);
 
         yield return new WaitForSeconds(2f);
 

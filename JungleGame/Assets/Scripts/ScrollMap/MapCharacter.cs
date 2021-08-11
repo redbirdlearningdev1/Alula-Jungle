@@ -58,17 +58,68 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             // set prev map position
             ScrollMapManager.instance.SetPrevMapPos();
 
-            // go to correct game scene
-            if (gameData)
-            {
-                GameManager.instance.SetData(gameData);
-                GameManager.instance.LoadScene(gameData.sceneName, true);
-            }
-            else
-            {
-                GameManager.instance.LoadScene("MinigameDemoScene", true);
-            }
+            // check for story beat before going to game
+            StartCoroutine(CheckForStoryBeatRoutine());
+        }
+    }
+
+    private IEnumerator CheckForStoryBeatRoutine()
+    {
+        print ("curr story beat: " + StudentInfoSystem.currentStudentPlayer.currStoryBeat);
+        if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.PrologueStoryGame)
+        {
+            // play gorilla intro 1
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.gorillaIntro_1);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // play gorilla intro 2
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.gorillaIntro_2);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // tiger and monkies walk in
+
+            // tiger destroys gorilla village
+
+            yield return new WaitForSeconds(1f);
+
+            // play gorilla intro 3
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.gorillaIntro_3);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // tiger runs off screen
+
+            // monkies go hehe and haha
             
+            // monkies run off too
+
+            yield return new WaitForSeconds(1f);
+
+            // play gorilla intro 4
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.gorillaIntro_4);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            yield return new WaitForSeconds(1f);
+
+            // play gorilla intro 5
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.gorillaIntro_5);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+        }
+
+
+        // go to correct game scene
+        if (gameData)
+        {
+            GameManager.instance.SetData(gameData);
+            GameManager.instance.LoadScene(gameData.sceneName, true);
+        }
+        else
+        {
+            GameManager.instance.LoadScene("MinigameDemoScene", true);
         }
     }
 }

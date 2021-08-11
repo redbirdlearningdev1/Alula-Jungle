@@ -9355,9 +9355,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764b8d34a6042ef428cdcb3bb3e9bd7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boatGameTalkie: {fileID: 11400000, guid: f8076a45db313bf4e83c3d794f26bedc, type: 2}
-  dockTalkie_1: {fileID: 11400000, guid: 3b123035dde40f14095b681a35ac1a8c, type: 2}
-  dockTalkie_2: {fileID: 11400000, guid: 5b36f6784aee07342a22481671d75aaa, type: 2}
+  boatGame: {fileID: 11400000, guid: f8076a45db313bf4e83c3d794f26bedc, type: 2}
+  dock_1: {fileID: 11400000, guid: 3b123035dde40f14095b681a35ac1a8c, type: 2}
+  dock_2: {fileID: 11400000, guid: 5b36f6784aee07342a22481671d75aaa, type: 2}
+  gorillaIntro_1: {fileID: 11400000, guid: b4cf98aad45535a4c85c8c5ee28c7c8a, type: 2}
+  gorillaIntro_2: {fileID: 11400000, guid: 6d4a2d090237d8640a1571f8e2e217d1, type: 2}
+  gorillaIntro_3: {fileID: 11400000, guid: 7c5ab7f67c221a44a8fd755321561fc1, type: 2}
+  gorillaIntro_4: {fileID: 11400000, guid: b6652eed526e3a944b0095dd02d40277, type: 2}
+  gorillaIntro_5: {fileID: 11400000, guid: 587ec13567caeb04e8bc1f018424c0ae, type: 2}
   redSprites:
   - sprite: {fileID: 21300000, guid: 4d5a0905dfb71a04aa647991be62cffe, type: 3}
     character: 1

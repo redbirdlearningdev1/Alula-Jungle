@@ -3736,7 +3736,7 @@ MonoBehaviour:
   overideMapLimit: 0
   mapLimitNum: 0
   overideGameEvent: 1
-  gameEvent: 0
+  gameEvent: 2
   overrideStartPosition: 0
   startPos: 0
   Map: {fileID: 1534747656}

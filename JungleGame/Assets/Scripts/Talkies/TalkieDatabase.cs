@@ -16,10 +16,15 @@ public class TalkieDatabase : MonoBehaviour
 {
     public static TalkieDatabase instance;
 
-    [Header("Talkie Objects")]
-    public TalkieObject boatGameTalkie;
-    public TalkieObject dockTalkie_1;
-    public TalkieObject dockTalkie_2;
+    [Header("Talkie Objects")]          // Where in the code base is the talkie called from?
+    public TalkieObject boatGame;       // script: NewBoatGameManager.cs
+    public TalkieObject dock_1;         // script: ScrollMapManager.cs   
+    public TalkieObject dock_2;         // script: ScrollMapManager.cs   
+    public TalkieObject gorillaIntro_1; // script: MapCharacter.cs
+    public TalkieObject gorillaIntro_2; // script: MapCharacter.cs
+    public TalkieObject gorillaIntro_3; // script: MapCharacter.cs
+    public TalkieObject gorillaIntro_4; // script: MapCharacter.cs
+    public TalkieObject gorillaIntro_5; // script: MapCharacter.cs
 
     [Header("Character Sprites")]
     public List<TalkieDatabaseEntry> redSprites;

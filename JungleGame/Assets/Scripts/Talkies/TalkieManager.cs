@@ -95,9 +95,33 @@ public class TalkieManager : MonoBehaviour
     {
         ResetTalkies();
 
-        // activate letterbox and background
-        LetterboxController.instance.ToggleLetterbox(true, 1f);
-        DefaultBackground.instance.Activate();
+        // deterime where to place init talkies
+        switch (currentTalkie.start)
+        {
+            default:
+            case TalkieStart.EnterUp:
+                leftTalkie.position = inactivePos.position;
+                rightTalkie.position = inactivePos.position;
+                break;
+            case TalkieStart.EnterSides:
+                leftTalkie.position = leftSideHiddenPos.position;
+                rightTalkie.position = rightSideHiddenPos.position;
+                break;
+            case TalkieStart.EnterLeft:
+                leftTalkie.position = rightSideHiddenPos.position;
+                rightTalkie.position = rightSideHiddenPos.position;
+                break;
+            case TalkieStart.EnterRight:
+                leftTalkie.position = leftSideHiddenPos.position;
+                rightTalkie.position = leftSideHiddenPos.position;
+                break;
+        }
+
+        // activate letterbox and background if need be
+        if (currentTalkie.addLetterboxBeforeTalkie)
+            LetterboxController.instance.ToggleLetterbox(true, 1f);
+        if (currentTalkie.addBackgroundBeforeTalkie)
+            DefaultBackground.instance.Activate();
 
         yield return new WaitForSeconds(1f);
 
@@ -261,9 +285,31 @@ public class TalkieManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        // bring talkies down
-        StartCoroutine(MoveObjectRouitne(leftTalkie, inactivePos.position, talkieMoveSpeed));
-        StartCoroutine(MoveObjectRouitne(rightTalkie, inactivePos.position, talkieMoveSpeed));
+        switch (currentTalkie.ending)
+        {
+            default:
+            case TalkieEnding.ExitDown:
+                // bring talkies down
+                StartCoroutine(MoveObjectRouitne(leftTalkie, inactivePos.position, talkieMoveSpeed));
+                StartCoroutine(MoveObjectRouitne(rightTalkie, inactivePos.position, talkieMoveSpeed));
+                break;
+            case TalkieEnding.ExitSides:
+                // bring talkies to sides
+                StartCoroutine(MoveObjectRouitne(leftTalkie, leftSideHiddenPos.position, talkieMoveSpeed));
+                StartCoroutine(MoveObjectRouitne(rightTalkie, rightSideHiddenPos.position, talkieMoveSpeed));
+                break;
+            case TalkieEnding.ExitLeft:
+                // bring talkies left
+                StartCoroutine(MoveObjectRouitne(leftTalkie, leftSideHiddenPos.position, talkieMoveSpeed));
+                StartCoroutine(MoveObjectRouitne(rightTalkie, leftSideHiddenPos.position, talkieMoveSpeed));
+                break;
+            case TalkieEnding.ExitRight:
+                // bring talkies right
+                StartCoroutine(MoveObjectRouitne(leftTalkie, rightSideHiddenPos.position, talkieMoveSpeed));
+                StartCoroutine(MoveObjectRouitne(rightTalkie, rightSideHiddenPos.position, talkieMoveSpeed));
+                break;
+        }
+        
 
         yield return new WaitForSeconds(talkieMoveSpeed);
 
