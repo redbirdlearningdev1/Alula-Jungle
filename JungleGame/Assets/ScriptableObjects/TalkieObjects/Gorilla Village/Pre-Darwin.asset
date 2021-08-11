@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: Pre-Darwin
+  m_EditorClassIdentifier: 
+  talkieName: Pre-Darwin
+  segmnets:
+  - leftCharacter: 3
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_2_Darwin_1_T1
+    audioString: Are you ready to get started explorer?
+  - leftCharacter: 3
+    leftEmotionNum: 11
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_2_Darwin_2a_T1
+    audioString: Okay explorer, come back when you are ready.
+  - leftCharacter: 3
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_2_Darwin_2b_T1
+    audioString: Alright explorer! Let's get started!

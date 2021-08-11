@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: Village Rebuilt P2
+  m_EditorClassIdentifier: 
+  talkieName: Village Rebuilt P2
+  segmnets:
+  - leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 2
+    rightEmotionNum: 2
+    rightMouthEnum: 2
+    rightEyesEnum: 2
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_5_Red_8_T1
+    audioString: Alright explorer!
+  - leftCharacter: 1
+    leftEmotionNum: 3
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 2
+    rightEmotionNum: 2
+    rightMouthEnum: 2
+    rightEyesEnum: 2
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_5_Red_8_T2
+    audioString: Let's follow Darwin!
+  - leftCharacter: 1
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 2
+    rightMouthEnum: 2
+    rightEyesEnum: 2
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_5_Red_8_T3
+    audioString: OH!
+  - leftCharacter: 1
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Wally_25_T1
+    audioString: '!!!!'

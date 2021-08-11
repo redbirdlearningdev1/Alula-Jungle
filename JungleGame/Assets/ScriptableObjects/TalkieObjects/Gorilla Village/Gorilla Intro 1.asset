@@ -1,0 +1,342 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: Gorilla Intro 1
+  m_EditorClassIdentifier: 
+  talkieName: Gorilla Intro 1
+  segmnets:
+  - leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 10
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Red_0_T1
+    audioString: Hello Darwin! It's been a while!
+  - leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 13
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_1_T1
+    audioString: OH!
+  - leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_2_T1
+    audioString: Hi there Red! It's good to see you!
+  - leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_2_T2
+    audioString: '! .... Uhh'
+  - leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_2_T3
+    audioString: see you have others with you.
+  - leftCharacter: 1
+    leftEmotionNum: 12
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Red_3_T1
+    audioString: Yes! This is Wally
+  - leftCharacter: 1
+    leftEmotionNum: 12
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 3
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Wally_4_T1
+    audioString: Hey.
+  - leftCharacter: 1
+    leftEmotionNum: 12
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 3
+    rightEmotionNum: 7
+    rightMouthEnum: 2
+    rightEyesEnum: 2
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Red_5_T1
+    audioString: And this here is the explorer! They're super smart and can't wait
+      to help and learn!
+  - leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_6_T1
+    audioString: Hi to the both of you! As Red said earlier my name is
+  - leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_6_T2
+    audioString: ... uh Darwin ...
+  - leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 8
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_6_T3
+    audioString: You see... I used to be the king's most trusted....
+  - leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_6_T4
+    audioString: Uhhh...
+  - leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 8
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_6_T5
+    audioString: Advisor!!
+  - leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_6_T6
+    audioString: Yes advisor!
+  - leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_6_T7
+    audioString: However... Adventure was calling my name and I just had to see what's
+      out there!
+  - leftCharacter: 3
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Wally_7_T1
+    audioString: Red was saying earlier that the king is away? Why is that?
+  - leftCharacter: 3
+    leftEmotionNum: 8
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_8_T1
+    audioString: Oh right!
+  - leftCharacter: 3
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 4
+    rightCharacter: 2
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_8_T2
+    audioString: Yes yes the king is away to...
+  - leftCharacter: 3
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 4
+    rightCharacter: 2
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_8_T3
+    audioString: Uh...
+  - leftCharacter: 3
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 2
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_8_T4
+    audioString: OH! YES!
+  - leftCharacter: 3
+    leftEmotionNum: 4
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Wally_9_T1
+    audioString: '!!!'
+  - leftCharacter: 3
+    leftEmotionNum: 4
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 1
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Red_10_T1
+    audioString: OH!
+  - leftCharacter: 3
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 1
+    rightEmotionNum: 8
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_11_T1
+    audioString: The king went out to help another kingdom in need!
+  - leftCharacter: 3
+    leftEmotionNum: 11
+    leftMouthEnum: 1
+    leftEyesEnum: 4
+    rightCharacter: 1
+    rightEmotionNum: 8
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_11_T2
+    audioString: How silly of me to forget.
+  - leftCharacter: 3
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 4
+    rightCharacter: 1
+    rightEmotionNum: 8
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_11_T3
+    audioString: A kin king indeed...
+  - leftCharacter: 3
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 1
+    rightEmotionNum: 11
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_11_T4
+    audioString: I even remember when he had Julius!
+  - leftCharacter: 3
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 1
+    rightEmotionNum: 11
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_11_T5
+    audioString: I can't wait to see him again!
