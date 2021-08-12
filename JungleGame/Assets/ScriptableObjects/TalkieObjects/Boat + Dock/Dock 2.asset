@@ -20,10 +20,10 @@ MonoBehaviour:
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
   segmnets:
-  - leftCharacter: 1
-    leftEmotionNum: 9
-    leftMouthEnum: 2
-    leftEyesEnum: 1
+  - leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
     rightCharacter: 2
     rightEmotionNum: 1
     rightMouthEnum: 1

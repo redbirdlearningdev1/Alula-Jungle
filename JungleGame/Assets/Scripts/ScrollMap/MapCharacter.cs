@@ -68,6 +68,9 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         print ("curr story beat: " + StudentInfoSystem.currentStudentPlayer.currStoryBeat);
         if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.PrologueStoryGame)
         {
+            // remove exclamation mark from gorilla
+            ScrollMapManager.instance.gorilla.ShowExclamationMark(false);
+
             // play gorilla intro 1
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.gorillaIntro_1);
             while (TalkieManager.instance.talkiePlaying)
@@ -79,10 +82,29 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 yield return null;
 
             // tiger and monkies walk in
+            MapAnimationController.instance.TigerAndMonkiesWalkOut();
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+            
+            // turn gorilla to face right
+            MapAnimationController.instance.gorilla.transform.localScale = new Vector3(-1, 1, 1);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+            ScrollMapManager.instance.gorilla.ShowExclamationMark(true);
 
             // tiger destroys gorilla village
+            MapAnimationController.instance.tigerScreenSwipeAnim.Play("tigerScreenSwipe");
+            // shake screen
+            ScrollMapManager.instance.ShakeMap();
+            // destroy GV objects one by one
+            foreach(var icon in ScrollMapManager.instance.mapIconsAtLocation[2].mapIcons)
+            {
+                icon.SetFixed(false);
+                yield return new WaitForSeconds(0.1f);
+            }
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(3f);
 
             // play gorilla intro 3
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.gorillaIntro_3);

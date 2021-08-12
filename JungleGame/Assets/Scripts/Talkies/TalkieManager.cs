@@ -237,9 +237,6 @@ public class TalkieManager : MonoBehaviour
             currRightEmotionNum = talkieSeg.rightEmotionNum;
             currRightMouthEnum = talkieSeg.rightMouthEnum;
             currRightEyesEnum = talkieSeg.rightEyesEnum;
-            
-            // wait time
-            yield return new WaitForSeconds(waitTime);
 
             // scale and alpha talkies
             if (talkieSeg.activeCharacter == ActiveCharacter.Left)
@@ -273,7 +270,7 @@ public class TalkieManager : MonoBehaviour
             else
             {
                 print ("no audio clip found: \'" + talkieSeg.audioClipName + "\'");
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(1f);
             }
         }
 

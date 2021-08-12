@@ -40,6 +40,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     [SerializeField] private Animator repairAnimator;
+    [SerializeField] private Animator destroyAnimator;
     private static float pressedScaleChange = 0.95f;
     private bool isPressed = false;
     private bool isFixed = false;
@@ -204,8 +205,9 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 else animator.Play("lampFixed");
                 break;
         }
-        // play repair animation
+        // play animation
         if (opt) if (repairAnimator) repairAnimator.Play("repairAnimation");
+        else if (destroyAnimator) destroyAnimator.Play("destroyAnimation");
     }
 
     /* 

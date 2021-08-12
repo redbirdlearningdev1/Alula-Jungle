@@ -41,6 +41,9 @@ public class ScrollMapManager : MonoBehaviour
     [Header("Animations")]
     public float staticMapYPos;
 
+    public AnimationCurve curve;
+    public float multiplier;
+
     private int mapLimit;
     private int mapPosIndex;
     private int minMapLimit = 1;
@@ -52,7 +55,7 @@ public class ScrollMapManager : MonoBehaviour
 
     [Header("Map Characters")]
     public MapIcon boat;
-    public MapCharacter GV_Gorilla;
+    public MapCharacter gorilla;
 
     [Header("Sticker Video Players")]
     public VideoPlayer commonVP;
@@ -176,8 +179,12 @@ public class ScrollMapManager : MonoBehaviour
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
+            // place gorilla in GV
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaGVPosSTART.position;
+            gorilla.ShowExclamationMark(true);
+
             StartCoroutine(UnlockMapArea(2, true));
-            GV_Gorilla.ShowExclamationMark(true);
+            gorilla.ShowExclamationMark(true);
 
             yield return new WaitForSeconds(10f);
 
@@ -186,7 +193,7 @@ public class ScrollMapManager : MonoBehaviour
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
-            GV_Gorilla.interactable = true;
+            gorilla.interactable = true;
 
             // update SIS
             if (!overideGameEvent)
@@ -200,8 +207,11 @@ public class ScrollMapManager : MonoBehaviour
             DisableAllMapIcons();
             showStars = false;
 
-            GV_Gorilla.ShowExclamationMark(true);
-            GV_Gorilla.interactable = true;
+            // place gorilla in GV
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaGVPosSTART.position;
+
+            gorilla.ShowExclamationMark(true);
+            gorilla.interactable = true;
         }
         else if (playGameEvent == StoryBeat.StickerTutorial)
         {
@@ -234,6 +244,28 @@ public class ScrollMapManager : MonoBehaviour
             // show sticker button if unlocked
             if (StudentInfoSystem.currentStudentPlayer.unlockedStickerButton)
                 SettingsManager.instance.ToggleWagonButtonActive(true);
+        }
+    }
+
+    public void ShakeMap()
+    {
+        StartCoroutine(ShakeMapRoutine());
+    }
+    private IEnumerator ShakeMapRoutine()
+    {
+        float timer = 0f;
+        Vector3 originalPos = Map.position;
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > curve.length)
+            {
+                transform.position = originalPos;
+                break;
+            }
+
+            transform.position = new Vector3(originalPos.x + curve.Evaluate(Time.deltaTime) * multiplier, originalPos.y, originalPos.z);
+            yield return null;
         }
     }
 
