@@ -49,6 +49,18 @@ public class MapAnimationController : MonoBehaviour
         brutus.transform.position = offscreenPos.position;
         marcus.transform.position = offscreenPos.position;
     }
+    
+    void Update()
+    {
+        // test out animations
+        if (GameManager.instance.devModeActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                TigerRunAwayGV();
+            }
+        }
+    }
 
     // used to move object for animation
     private IEnumerator MoveObjectOverTime(GameObject gameObject, Vector3 targetPos, float duration, bool smoothLerp = false)
@@ -81,11 +93,89 @@ public class MapAnimationController : MonoBehaviour
         }
     }
 
-    public void TigerAndMonkiesWalkOut()
+    
+    public void MonkeyExitAnimationGV()
     {
-        StartCoroutine(TigerAndMonkiesWalkOutRoutine());
+        StartCoroutine(MonkeyExitAnimationGVRoutine());
     }
-    private IEnumerator TigerAndMonkiesWalkOutRoutine()
+    private IEnumerator MonkeyExitAnimationGVRoutine()
+    {
+        animationDone = false;
+
+        // place characters in end pos
+        marcus.transform.position = marcusGVPosEND.position;
+        brutus.transform.position = brutusGVPosEND.position;
+
+        // play laugh animations
+        marcus.GetComponent<Animator>().Play("marcusWin");
+        brutus.GetComponent<Animator>().Play("brutusWin");
+        yield return new WaitForSeconds(1.5f);
+
+
+        // play turn animation
+        marcus.GetComponent<Animator>().Play("marcusTurn");
+        brutus.GetComponent<Animator>().Play("brutusTurn");
+        yield return new WaitForSeconds(0.4f);
+
+        // move to off screen
+        StartCoroutine(MoveObjectOverTime(marcus, marcusGVPosSTART.position, 5f, true));
+        StartCoroutine(MoveObjectOverTime(brutus, brutusGVPosSTART.position, 5f, true));
+
+        yield return new WaitForSeconds(5f);
+
+        animationDone = true;
+    }
+
+    public void TigerRunAwayGV()
+    {
+        StartCoroutine(TigerRunAwayGVRoutine());
+    }
+    private IEnumerator TigerRunAwayGVRoutine()
+    {
+        animationDone = false;
+
+        // place characters in end pos
+        tiger.transform.position = tigerGVPosEND.position;
+
+        // play turn around animation
+        tiger.GetComponent<Animator>().Play("aTigerTurn");
+        yield return new WaitForSeconds(0.3f);
+        // move to off screen
+        StartCoroutine(MoveObjectOverTime(tiger, tigerGVPosSTART.position, 2f, true));
+
+        animationDone = true;
+    }
+
+    public void TigerDestroyVillage()
+    {
+        StartCoroutine(TigerDestroyVillageRoutine());
+    }
+    private IEnumerator TigerDestroyVillageRoutine()
+    {
+        animationDone = false;
+
+        // tiger destroys gorilla village
+        tiger.GetComponent<Animator>().Play("tigerSwipe");
+        tigerScreenSwipeAnim.Play("tigerScreenSwipe");
+        // shake screen
+        ScrollMapManager.instance.ShakeMap();
+        // destroy GV objects one by one
+        foreach(var icon in ScrollMapManager.instance.mapIconsAtLocation[2].mapIcons)
+        {
+            icon.SetFixed(false);
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        animationDone = true;
+    }
+
+    public void TigerAndMonkiesWalkIn()
+    {
+        StartCoroutine(TigerAndMonkiesWalkInRoutine());
+    }
+    private IEnumerator TigerAndMonkiesWalkInRoutine()
     {
         animationDone = false;
 

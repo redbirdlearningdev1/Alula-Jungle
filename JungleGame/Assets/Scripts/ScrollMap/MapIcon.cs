@@ -206,8 +206,32 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 break;
         }
         // play animation
-        if (opt) if (repairAnimator) repairAnimator.Play("repairAnimation");
-        else if (destroyAnimator) destroyAnimator.Play("destroyAnimation");
+        if (!opt)
+        {
+            if (destroyAnimator) destroyAnimator.Play("destroyAnimation");
+        }
+        else
+        {
+            if (repairAnimator) repairAnimator.Play("repairAnimation");
+        }
+
+        // save to SIS
+        switch (identfier)
+        {
+            case MapIconIdentfier.GV_house1:
+                StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.isFixed = opt;
+                break;
+            case MapIconIdentfier.GV_house2:
+                StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.isFixed = opt;
+                break;
+            case MapIconIdentfier.GV_statue:
+                StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.isFixed = opt;
+                break;
+            case MapIconIdentfier.GV_fire:
+                StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.isFixed = opt;
+                break;
+        }
+        StudentInfoSystem.SaveStudentPlayerData();
     }
 
     /* 
@@ -242,24 +266,39 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             // set prev map position
             ScrollMapManager.instance.SetPrevMapPos();
 
-            // go to correct game scene
-            if (gameData)
+            // check for story beat stuff
+            StartCoroutine(CheckForStoryBeatRoutine());
+        }
+    }
+
+    private IEnumerator CheckForStoryBeatRoutine()
+    {
+        if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.PrologueStoryGame)
+        {  
+            // pre story game interaction
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.pre_minigame);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            yield break;
+        }
+
+        // go to correct game scene
+        if (gameData)
+        {
+            if (popupWindow)
             {
-                if (popupWindow)
-                {
-                    LevelPreviewWindow.instance.NewWindow(gameData, identfier, GetNumStars());
-                }
-                else 
-                {
-                    GameManager.instance.SetData(gameData);
-                    GameManager.instance.LoadScene(gameData.sceneName, true);
-                }
+                LevelPreviewWindow.instance.NewWindow(gameData, identfier, GetNumStars());
             }
-            else
+            else 
             {
-                GameManager.instance.LoadScene("MinigameDemoScene", true);
+                GameManager.instance.SetData(gameData);
+                GameManager.instance.LoadScene(gameData.sceneName, true);
             }
-            
+        }
+        else
+        {
+            GameManager.instance.LoadScene("MinigameDemoScene", true);
         }
     }
 

@@ -2670,6 +2670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: 1
   exclamationMark: {fileID: 1600639985}
+  character: 0
   gameData: {fileID: 11400000, guid: 4951d33a691cd254bb3fdd87fe2cc086, type: 2}
 --- !u!95 &245742839
 Animator:
@@ -4037,8 +4038,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   overideMapLimit: 0
   mapLimitNum: 0
-  overideGameEvent: 1
-  gameEvent: 2
+  overideGameEvent: 0
+  gameEvent: 1
   overrideStartPosition: 0
   startPos: 0
   Map: {fileID: 1534747656}
@@ -4099,8 +4100,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 1
+      time: -0.0032329978
+      value: 0.0055338256
       inSlope: 2.371806
       outSlope: 2.371806
       tangentMode: 0
@@ -4108,8 +4109,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.044634312
     - serializedVersion: 3
-      time: 0.038556606
-      value: 1.0492308
+      time: 0.03532361
+      value: 0.05476464
       inSlope: -7.440339
       outSlope: -7.440339
       tangentMode: 0
@@ -4117,8 +4118,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.018551262
     - serializedVersion: 3
-      time: 0.079154775
-      value: 0.7719663
+      time: 0.075921774
+      value: -0.22249989
       inSlope: -0.11738735
       outSlope: -0.11738735
       tangentMode: 0
@@ -4126,8 +4127,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.06159601
     - serializedVersion: 3
-      time: 0.1436649
-      value: 1.3683112
+      time: 0.1404319
+      value: 0.37384498
       inSlope: 1.0154706
       outSlope: 1.0154706
       tangentMode: 0
@@ -4135,8 +4136,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.6348875
     - serializedVersion: 3
-      time: 0.24059565
-      value: 0.5248145
+      time: 0.23736267
+      value: -0.4696517
       inSlope: 0.19175987
       outSlope: 0.19175987
       tangentMode: 0
@@ -4144,8 +4145,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.09385863
     - serializedVersion: 3
-      time: 0.30920538
-      value: 1.6222435
+      time: 0.3059724
+      value: 0.6277774
       inSlope: 0.08929419
       outSlope: 0.08929419
       tangentMode: 0
@@ -4153,8 +4154,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.14800343
     - serializedVersion: 3
-      time: 0.43770215
-      value: 0.43509364
+      time: 0.43446916
+      value: -0.55937254
       inSlope: -0.00046869036
       outSlope: -0.00046869036
       tangentMode: 0
@@ -4162,8 +4163,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.22865403
     - serializedVersion: 3
-      time: 0.51860726
-      value: 1.564075
+      time: 0.51537424
+      value: 0.56960875
       inSlope: 0.22434959
       outSlope: 0.22434959
       tangentMode: 0
@@ -4171,8 +4172,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.24504404
     - serializedVersion: 3
-      time: 0.6615966
-      value: 0.5786888
+      time: 0.6583636
+      value: -0.4157774
       inSlope: 0.03545403
       outSlope: 0.03545403
       tangentMode: 0
@@ -4180,8 +4181,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.38994372
     - serializedVersion: 3
-      time: 0.75459945
-      value: 1.3378718
+      time: 0.75136644
+      value: 0.3434056
       inSlope: 0.029595062
       outSlope: 0.029595062
       tangentMode: 0
@@ -4189,8 +4190,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.53880703
     - serializedVersion: 3
-      time: 0.8615118
-      value: 0.7319315
+      time: 0.8582788
+      value: -0.26253468
       inSlope: -0.594601
       outSlope: -0.594601
       tangentMode: 0
@@ -4198,8 +4199,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.70242804
     - serializedVersion: 3
-      time: 1.0779399
-      value: 1.1175866
+      time: 1.0747069
+      value: 0.12312044
       inSlope: -0.0038185995
       outSlope: -0.0038185995
       tangentMode: 0
@@ -4207,8 +4208,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.2629116
     - serializedVersion: 3
-      time: 1.2790722
-      value: 0.9366279
+      time: 1.2758392
+      value: -0.05783825
       inSlope: -0.054849062
       outSlope: -0.054849062
       tangentMode: 0
@@ -4216,8 +4217,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.76366264
     - serializedVersion: 3
-      time: 1.4723816
-      value: 1
+      time: 1.4691486
+      value: 0.0055338256
       inSlope: 0.32782713
       outSlope: 0.32782713
       tangentMode: 34
@@ -4227,7 +4228,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  multiplier: 1
+  multiplier: 0.3
   transitionTime: 0.75
   bumpAnimationTime: 0.5
   bumpAmount: 50
@@ -6042,6 +6043,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: 1
   exclamationMark: {fileID: 1207995398}
+  character: 0
   gameData: {fileID: 11400000, guid: 4951d33a691cd254bb3fdd87fe2cc086, type: 2}
 --- !u!95 &713519883
 Animator:
@@ -6608,6 +6610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: 1
   exclamationMark: {fileID: 109489402}
+  character: 0
   gameData: {fileID: 11400000, guid: 4951d33a691cd254bb3fdd87fe2cc086, type: 2}
 --- !u!95 &791726921
 Animator:
@@ -12729,7 +12732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -14874,6 +14877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: 1
   exclamationMark: {fileID: 1559796129}
+  character: 1
   gameData: {fileID: 11400000, guid: 4951d33a691cd254bb3fdd87fe2cc086, type: 2}
 --- !u!1 &1903586731
 GameObject:
@@ -16859,12 +16863,12 @@ PrefabInstance:
     - target: {fileID: 2512186891888730657, guid: b2db9681c4636dc46a76b26d7c5e295a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 832
+      value: 856.4
       objectReference: {fileID: 0}
     - target: {fileID: 2512186891888730657, guid: b2db9681c4636dc46a76b26d7c5e295a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 154.10999
       objectReference: {fileID: 0}
     - target: {fileID: 2512186891888730657, guid: b2db9681c4636dc46a76b26d7c5e295a,
         type: 3}

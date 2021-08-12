@@ -18,8 +18,10 @@ public class GameManager : DontDestroy<GameManager>
     [SerializeField] private GameObject devModeIndicator;
     private bool devIndicatorSet = false;
 
+
     private GameData gameData;
     private MapIconIdentfier gameID;
+    [HideInInspector] public bool repairMapIconID; // when the scroll map appears -> repair this icon
 
     [HideInInspector] public int prevMapPosition = 1; // what index player was on scroll map (1 by default)
 

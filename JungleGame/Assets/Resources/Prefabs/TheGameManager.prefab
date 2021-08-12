@@ -9343,6 +9343,7 @@ MonoBehaviour:
   inactiveAlpha: 0.5
   subtitleBox: {fileID: 637793631071463847}
   subtitleText: {fileID: 5325537073712209177}
+  minMusicVolWhenTalkiePlaying: 0.1
 --- !u!114 &4814775266319338560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9363,6 +9364,8 @@ MonoBehaviour:
   gorillaIntro_3: {fileID: 11400000, guid: 7c5ab7f67c221a44a8fd755321561fc1, type: 2}
   gorillaIntro_4: {fileID: 11400000, guid: b6652eed526e3a944b0095dd02d40277, type: 2}
   gorillaIntro_5: {fileID: 11400000, guid: 587ec13567caeb04e8bc1f018424c0ae, type: 2}
+  pre_minigame: {fileID: 11400000, guid: 627234064ee8ea346b7c1c51a425d129, type: 2}
+  darwinQuips: {fileID: 11400000, guid: 2b51235189360f744bbadd3d64982f73, type: 2}
   redSprites:
   - sprite: {fileID: 21300000, guid: 4d5a0905dfb71a04aa647991be62cffe, type: 3}
     character: 1

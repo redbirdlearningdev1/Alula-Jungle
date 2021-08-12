@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -51,6 +52,15 @@ public class TalkieManager : MonoBehaviour
     public Image subtitleBox;
     public TextMeshProUGUI subtitleText;
 
+    [Header("Audio Stuff")]
+    public float minMusicVolWhenTalkiePlaying = 0.1f;
+    private float prevMusicVolume;
+
+
+
+
+    private bool playingSegment = false;
+
     void Awake()
     {
         if (instance == null)
@@ -65,7 +75,11 @@ public class TalkieManager : MonoBehaviour
     {
         talkiePlaying = true;
         currentTalkie = talkie;
-        StartCoroutine(PlayTalkieRoutine());
+
+        if (!currentTalkie.quipsCollection)
+            StartCoroutine(PlayTalkieRoutine());
+        else
+            StartCoroutine(PlayTalkieRoutine(true));
     }
 
     // stops current talkie from continuing
@@ -91,9 +105,22 @@ public class TalkieManager : MonoBehaviour
         ResetTalkies();
     }
 
-    private IEnumerator PlayTalkieRoutine()
+    private IEnumerator PlayTalkieRoutine(bool playRandomSegment = false)
     {
         ResetTalkies();
+
+        // set audio to be well balanced
+        if (AudioManager.instance.GetMusicVolume() > minMusicVolWhenTalkiePlaying)
+        {
+            prevMusicVolume = AudioManager.instance.GetMusicVolume();
+            AudioManager.instance.SetMusicVolume(minMusicVolWhenTalkiePlaying);
+        }
+
+        // disable nav buttons on scroll map
+        if (SceneManager.GetActiveScene().name == "ScrollMap")
+        {
+            ScrollMapManager.instance.TurnOffNavigationUI(true);
+        }
 
         // deterime where to place init talkies
         switch (currentTalkie.start)
@@ -117,6 +144,10 @@ public class TalkieManager : MonoBehaviour
                 break;
         }
 
+        // make talkies visible
+        leftImage.color = new Color(1f, 1f, 1f, 1f);
+        rightImage.color = new Color(1f, 1f, 1f, 1f);
+
         // activate letterbox and background if need be
         if (currentTalkie.addLetterboxBeforeTalkie)
             LetterboxController.instance.ToggleLetterbox(true, 1f);
@@ -129,148 +160,22 @@ public class TalkieManager : MonoBehaviour
         subtitleText.text = "";
         subtitleBox.color = new Color(0f, 0f, 0f, 100f / 255f);
 
-        // play segments in order
-        foreach (var talkieSeg in currentTalkie.segmnets)
+        if (playRandomSegment)
         {
-            float waitTime = 0f;
-            /* 
-            ################################################
-            #   LEFT TALKIE
-            ################################################
-            */
-
-            // in character not NONE
-            if (talkieSeg.leftCharacter != TalkieCharacter.None)
+            // play one segment randomly
+            int index = Random.Range(0, currentTalkie.segmnets.Count);
+            StartCoroutine(PlaySegment(currentTalkie.segmnets[index]));
+            while (playingSegment)
+                yield return null;
+        }
+        else 
+        {
+            // play segments in order
+            foreach (var talkieSeg in currentTalkie.segmnets)
             {
-                // check if left talkie is the same
-                if (currLeftCharacter != talkieSeg.leftCharacter)
-                {
-                    // swap left character sprites
-                    StartCoroutine(SwapTalkieCharacter(
-                        leftTalkie, 
-                        leftImage, 
-                        talkieSeg.leftCharacter, 
-                        talkieSeg.leftEmotionNum, 
-                        talkieSeg.leftMouthEnum, 
-                        talkieSeg.leftEyesEnum, 
-                        true));
-                    leftHidden = false;
-                    waitTime += talkieMoveSpeed;
-                }
-                // if they are the same, check if emotion is the same
-                else if (currLeftEmotionNum != talkieSeg.leftEmotionNum ||
-                        currLeftMouthEnum  != talkieSeg.leftMouthEnum ||
-                        currLeftEyesEnum   != talkieSeg.leftEyesEnum)
-                {
-                    // swap emotion sprites
-                    SwapTalkieEmotion(leftImage, talkieSeg.leftCharacter, talkieSeg.leftEmotionNum, talkieSeg.leftMouthEnum, talkieSeg.leftEyesEnum);
-                    leftHidden = false;
-                }
-            }
-            // else remove talkie from scene
-            else
-            {
-                if (!leftHidden)
-                {
-                    leftHidden = true;
-                    StartCoroutine(MoveObjectRouitne(leftTalkie, inactivePos.position, talkieMoveSpeed));
-                    yield return new WaitForSeconds(talkieMoveSpeed);
-                    ResetLeft();
-                }    
-            }
-            
-            // set current left talkie values
-            currLeftCharacter = talkieSeg.leftCharacter;
-            currLeftEmotionNum = talkieSeg.leftEmotionNum;
-            currLeftMouthEnum = talkieSeg.leftMouthEnum;
-            currLeftEyesEnum = talkieSeg.leftEyesEnum;
-
-
-            /* 
-            ################################################
-            #   RIGHT TALKIE
-            ################################################
-            */
-
-            // in character not NONE
-            if (talkieSeg.rightCharacter != TalkieCharacter.None)
-            {
-                // check if right talkie is the same
-                if (currRightCharacter != talkieSeg.rightCharacter)
-                {
-                    // swap right character sprites
-                    StartCoroutine(SwapTalkieCharacter(
-                        rightTalkie, 
-                        rightImage, 
-                        talkieSeg.rightCharacter, 
-                        talkieSeg.rightEmotionNum, 
-                        talkieSeg.rightMouthEnum, 
-                        talkieSeg.rightEyesEnum, 
-                        false));
-                    rightHidden = false;
-                    waitTime += talkieMoveSpeed;
-                }
-                // if they are the same, check if emotion is the same
-                else if (currRightEmotionNum != talkieSeg.rightEmotionNum ||
-                        currRightMouthEnum  != talkieSeg.rightMouthEnum ||
-                        currRightEyesEnum   != talkieSeg.rightEyesEnum)
-                {
-                    // swap emotion sprites
-                    SwapTalkieEmotion(rightImage, talkieSeg.rightCharacter, talkieSeg.rightEmotionNum, talkieSeg.rightMouthEnum, talkieSeg.rightEyesEnum);
-                    rightHidden = false;
-                }
-            }
-            // else remove talkie from scene
-            else
-            {
-                if (!rightHidden)
-                {
-                    rightHidden = true;
-                    StartCoroutine(MoveObjectRouitne(rightTalkie, inactivePos.position, talkieMoveSpeed));
-                    yield return new WaitForSeconds(talkieMoveSpeed);
-                    ResetRight();
-                }
-            }
-            
-            // set current right talkie values
-            currRightCharacter = talkieSeg.rightCharacter;
-            currRightEmotionNum = talkieSeg.rightEmotionNum;
-            currRightMouthEnum = talkieSeg.rightMouthEnum;
-            currRightEyesEnum = talkieSeg.rightEyesEnum;
-
-            // scale and alpha talkies
-            if (talkieSeg.activeCharacter == ActiveCharacter.Left)
-            {
-                StartCoroutine(LerpScaleAndAlpha(leftImage, 1f, 1f, true));
-                if (!rightHidden) 
-                {
-                    StartCoroutine(LerpScaleAndAlpha(rightImage, inactiveScale, inactiveAlpha, false));
-                }
-                //yield return new WaitForSeconds(talkieDeactivateSpeed);
-            }
-            else if (talkieSeg.activeCharacter == ActiveCharacter.Right)
-            {
-                StartCoroutine(LerpScaleAndAlpha(rightImage, 1f, 1f, false));
-                if (!leftHidden) 
-                {
-                    StartCoroutine(LerpScaleAndAlpha(leftImage, inactiveScale, inactiveAlpha, true));
-                }
-                //yield return new WaitForSeconds(talkieDeactivateSpeed);
-            }
-
-            // add subtitles
-            subtitleText.text = talkieSeg.audioString;
-
-            // play audio
-            if (talkieSeg.audioClip != null)
-            {
-                AudioManager.instance.PlayTalk(talkieSeg.audioClip);
-                yield return new WaitForSeconds(talkieSeg.audioClip.length + 0.5f);
-            }
-            else
-            {
-                print ("no audio clip found: \'" + talkieSeg.audioClipName + "\'");
-                yield return new WaitForSeconds(1f);
+                StartCoroutine(PlaySegment(talkieSeg));
+                while (playingSegment)
+                    yield return null;
             }
         }
 
@@ -306,8 +211,7 @@ public class TalkieManager : MonoBehaviour
                 StartCoroutine(MoveObjectRouitne(rightTalkie, rightSideHiddenPos.position, talkieMoveSpeed));
                 break;
         }
-        
-
+    
         yield return new WaitForSeconds(talkieMoveSpeed);
 
         // deactivate letterbox and background
@@ -323,6 +227,160 @@ public class TalkieManager : MonoBehaviour
         // stop playing talkie
         talkiePlaying = false;
         currentTalkie = null;
+
+        // disable nav buttons on scroll map
+        if (SceneManager.GetActiveScene().name == "ScrollMap")
+        {
+            ScrollMapManager.instance.TurnOffNavigationUI(false);
+        }
+
+        // set audio back to what it was before
+        AudioManager.instance.SetMusicVolume(prevMusicVolume);
+    }
+
+    private IEnumerator PlaySegment(TalkieSegment talkieSeg)
+    {
+        playingSegment = true;
+
+        /* 
+        ################################################
+        #   LEFT TALKIE
+        ################################################
+        */
+
+        // in character not NONE
+        if (talkieSeg.leftCharacter != TalkieCharacter.None)
+        {
+            // check if left talkie is the same
+            if (currLeftCharacter != talkieSeg.leftCharacter)
+            {
+                // swap left character sprites
+                StartCoroutine(SwapTalkieCharacter(
+                    leftTalkie, 
+                    leftImage, 
+                    talkieSeg.leftCharacter, 
+                    talkieSeg.leftEmotionNum, 
+                    talkieSeg.leftMouthEnum, 
+                    talkieSeg.leftEyesEnum, 
+                    true));
+                leftHidden = false;
+            }
+            // if they are the same, check if emotion is the same
+            else if (currLeftEmotionNum != talkieSeg.leftEmotionNum ||
+                    currLeftMouthEnum  != talkieSeg.leftMouthEnum ||
+                    currLeftEyesEnum   != talkieSeg.leftEyesEnum)
+            {
+                // swap emotion sprites
+                SwapTalkieEmotion(leftImage, talkieSeg.leftCharacter, talkieSeg.leftEmotionNum, talkieSeg.leftMouthEnum, talkieSeg.leftEyesEnum);
+                leftHidden = false;
+            }
+        }
+        // else remove talkie from scene
+        else
+        {
+            if (!leftHidden)
+            {
+                leftHidden = true;
+                StartCoroutine(MoveObjectRouitne(leftTalkie, inactivePos.position, talkieMoveSpeed));
+                yield return new WaitForSeconds(talkieMoveSpeed);
+                ResetLeft();
+            }    
+        }
+        
+        // set current left talkie values
+        currLeftCharacter = talkieSeg.leftCharacter;
+        currLeftEmotionNum = talkieSeg.leftEmotionNum;
+        currLeftMouthEnum = talkieSeg.leftMouthEnum;
+        currLeftEyesEnum = talkieSeg.leftEyesEnum;
+
+
+        /* 
+        ################################################
+        #   RIGHT TALKIE
+        ################################################
+        */
+
+        // in character not NONE
+        if (talkieSeg.rightCharacter != TalkieCharacter.None)
+        {
+            // check if right talkie is the same
+            if (currRightCharacter != talkieSeg.rightCharacter)
+            {
+                // swap right character sprites
+                StartCoroutine(SwapTalkieCharacter(
+                    rightTalkie, 
+                    rightImage, 
+                    talkieSeg.rightCharacter, 
+                    talkieSeg.rightEmotionNum, 
+                    talkieSeg.rightMouthEnum, 
+                    talkieSeg.rightEyesEnum, 
+                    false));
+                rightHidden = false;
+            }
+            // if they are the same, check if emotion is the same
+            else if (currRightEmotionNum != talkieSeg.rightEmotionNum ||
+                    currRightMouthEnum  != talkieSeg.rightMouthEnum ||
+                    currRightEyesEnum   != talkieSeg.rightEyesEnum)
+            {
+                // swap emotion sprites
+                SwapTalkieEmotion(rightImage, talkieSeg.rightCharacter, talkieSeg.rightEmotionNum, talkieSeg.rightMouthEnum, talkieSeg.rightEyesEnum);
+                rightHidden = false;
+            }
+        }
+        // else remove talkie from scene
+        else
+        {
+            if (!rightHidden)
+            {
+                rightHidden = true;
+                StartCoroutine(MoveObjectRouitne(rightTalkie, inactivePos.position, talkieMoveSpeed));
+                yield return new WaitForSeconds(talkieMoveSpeed);
+                ResetRight();
+            }
+        }
+        
+        // set current right talkie values
+        currRightCharacter = talkieSeg.rightCharacter;
+        currRightEmotionNum = talkieSeg.rightEmotionNum;
+        currRightMouthEnum = talkieSeg.rightMouthEnum;
+        currRightEyesEnum = talkieSeg.rightEyesEnum;
+
+        // scale and alpha talkies
+        if (talkieSeg.activeCharacter == ActiveCharacter.Left)
+        {
+            StartCoroutine(LerpScaleAndAlpha(leftImage, 1f, 1f, true));
+            if (!rightHidden) 
+            {
+                StartCoroutine(LerpScaleAndAlpha(rightImage, inactiveScale, inactiveAlpha, false));
+            }
+            //yield return new WaitForSeconds(talkieDeactivateSpeed);
+        }
+        else if (talkieSeg.activeCharacter == ActiveCharacter.Right)
+        {
+            StartCoroutine(LerpScaleAndAlpha(rightImage, 1f, 1f, false));
+            if (!leftHidden) 
+            {
+                StartCoroutine(LerpScaleAndAlpha(leftImage, inactiveScale, inactiveAlpha, true));
+            }
+            //yield return new WaitForSeconds(talkieDeactivateSpeed);
+        }
+
+        // add subtitles
+        subtitleText.text = talkieSeg.audioString;
+
+        // play audio
+        if (talkieSeg.audioClip != null)
+        {
+            AudioManager.instance.PlayTalk(talkieSeg.audioClip);
+            yield return new WaitForSeconds(talkieSeg.audioClip.length + 0.5f);
+        }
+        else
+        {
+            print ("no audio clip found: \'" + talkieSeg.audioClipName + "\'");
+            yield return new WaitForSeconds(1f);
+        }
+
+        playingSegment = false;
     }
 
     private IEnumerator LerpScaleAndAlpha(Image image, float targetScale, float targetAlpha, bool isLeft)
@@ -410,7 +468,7 @@ public class TalkieManager : MonoBehaviour
         leftTalkie.position = inactivePos.position;
         currLeftCharacter = TalkieCharacter.None;
         leftImage.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
-        leftImage.color = new Color(1f, 1f, 1f, 1f);
+        leftImage.color = new Color(1f, 1f, 1f, 0f);
         leftImage.sprite = null;
     }
 
@@ -420,7 +478,7 @@ public class TalkieManager : MonoBehaviour
         rightTalkie.position = inactivePos.position;
         currRightCharacter = TalkieCharacter.None;
         rightImage.gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
-        rightImage.color = new Color(1f, 1f, 1f, 1f);
+        rightImage.color = new Color(1f, 1f, 1f, 0f);
         rightImage.sprite = null;
     }
 }

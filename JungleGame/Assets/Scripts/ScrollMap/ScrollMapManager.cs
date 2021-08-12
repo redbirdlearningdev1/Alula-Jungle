@@ -25,6 +25,7 @@ public class ScrollMapManager : MonoBehaviour
     public int startPos;
 
     private List<GameObject> mapIcons = new List<GameObject>();
+    private bool repairingMapIcon = false;
 
     [Header("Map Navigation")]
     [SerializeField] private RectTransform Map; // full map
@@ -119,16 +120,44 @@ public class ScrollMapManager : MonoBehaviour
         if (overideGameEvent && GameManager.instance.devModeActivated)
         {
             playGameEvent = gameEvent;
+            
+            StudentInfoSystem.currentStudentPlayer.currStoryBeat = gameEvent;
+            StudentInfoSystem.SaveStudentPlayerData();
         }
         else
         {
             // get event from current profile if not null
             if (StudentInfoSystem.currentStudentPlayer != null)
+            {
                 playGameEvent = StudentInfoSystem.currentStudentPlayer.currStoryBeat;
+            }
         }
         
         bool revealNavUI = true;
         bool revealGMUI = true;
+
+        // place gorilla in GV
+        MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaGVPosSTART.position;
+
+        yield return new WaitForSeconds (1f);
+        
+        /* 
+        ################################################
+        #   GAME EVENTS (REPAIR MAP ICON)
+        ################################################
+        */
+
+        if (GameManager.instance.repairMapIconID)
+        {
+            print ("repairing map icon: " + GameManager.instance.GetID());
+            DisableAllMapIcons();
+
+            StartCoroutine(RepairMapIcon(GameManager.instance.GetID()));
+            while (repairingMapIcon)
+                yield return null;
+            
+            EnableAllMapIcons();
+        }
 
         /* 
         ################################################
@@ -180,7 +209,6 @@ public class ScrollMapManager : MonoBehaviour
                 yield return null;
 
             // place gorilla in GV
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaGVPosSTART.position;
             gorilla.ShowExclamationMark(true);
 
             StartCoroutine(UnlockMapArea(2, true));
@@ -202,19 +230,26 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.SaveStudentPlayerData();
             }
         }
-        else if (playGameEvent == StoryBeat.PrologueStoryGame)
+        else if (playGameEvent == StoryBeat.GorillaVillageIntro)
         {
             DisableAllMapIcons();
             showStars = false;
 
-            // place gorilla in GV
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaGVPosSTART.position;
+            gorilla.ShowExclamationMark(true);
+            gorilla.interactable = true;
+        }
+        else if (playGameEvent == StoryBeat.PrologueStoryGame)
+        {
+            showStars = false;
 
             gorilla.ShowExclamationMark(true);
             gorilla.interactable = true;
         }
         else if (playGameEvent == StoryBeat.StickerTutorial)
         {
+            // darwin quips
+            gorilla.interactable = true;
+
             // check if player has enough coins
             if (StudentInfoSystem.currentStudentPlayer.goldCoins >= 3)
             {
@@ -225,6 +260,12 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.AdvanceStoryBeat();
                 StudentInfoSystem.SaveStudentPlayerData();
             }
+        }
+        else if (playGameEvent == StoryBeat.COUNT) // default
+        {
+            print ("here!");
+            // darwin quips
+            gorilla.interactable = true;
         }
 
         // show UI
@@ -247,24 +288,39 @@ public class ScrollMapManager : MonoBehaviour
         }
     }
 
+    private IEnumerator RepairMapIcon(MapIconIdentfier id)
+    {
+        repairingMapIcon = true;
+
+        MapIcon icon = MapDataLoader.instance.GetMapIconFromID(id);
+        icon.SetFixed(true);
+        yield return new WaitForSeconds(2f);
+
+        GameManager.instance.repairMapIconID = false;
+
+        repairingMapIcon = false;
+    }
+
     public void ShakeMap()
     {
         StartCoroutine(ShakeMapRoutine());
     }
     private IEnumerator ShakeMapRoutine()
     {
+        //print ("curve.length: " + curve.length);
         float timer = 0f;
         Vector3 originalPos = Map.position;
         while (true)
         {
             timer += Time.deltaTime;
-            if (timer > curve.length)
+            if (timer > 2f)
             {
-                transform.position = originalPos;
+                Map.position = originalPos;
                 break;
             }
 
-            transform.position = new Vector3(originalPos.x + curve.Evaluate(Time.deltaTime) * multiplier, originalPos.y, originalPos.z);
+            float tempX = originalPos.x + curve.Evaluate(timer) * multiplier;
+            Map.position = new Vector3(tempX, originalPos.y, originalPos.z);
             yield return null;
         }
     }
@@ -286,12 +342,21 @@ public class ScrollMapManager : MonoBehaviour
         }
     }
 
-    private void DisableAllMapIcons()
+    public void DisableAllMapIcons()
     {
         var list = GetMapIcons();
         foreach(var item in list)
         {
             item.interactable = false;
+        }
+    }
+
+    public void EnableAllMapIcons()
+    {
+        var list = GetMapIcons();
+        foreach(var item in list)
+        {
+            item.interactable = true;
         }
     }
 

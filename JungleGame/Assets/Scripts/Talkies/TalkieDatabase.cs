@@ -20,11 +20,17 @@ public class TalkieDatabase : MonoBehaviour
     public TalkieObject boatGame;       // script: NewBoatGameManager.cs
     public TalkieObject dock_1;         // script: ScrollMapManager.cs   
     public TalkieObject dock_2;         // script: ScrollMapManager.cs   
+
     public TalkieObject gorillaIntro_1; // script: MapCharacter.cs
     public TalkieObject gorillaIntro_2; // script: MapCharacter.cs
     public TalkieObject gorillaIntro_3; // script: MapCharacter.cs
     public TalkieObject gorillaIntro_4; // script: MapCharacter.cs
     public TalkieObject gorillaIntro_5; // script: MapCharacter.cs
+
+    public TalkieObject pre_minigame;   // script: MapIcon.cs
+
+    [Header("Talkie Objects")]
+    public TalkieObject darwinQuips;    // script: MapCharacter.cs
 
     [Header("Character Sprites")]
     public List<TalkieDatabaseEntry> redSprites;

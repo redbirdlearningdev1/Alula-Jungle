@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+public enum Character
+{
+    None, Darwin
+}
+
 public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     public bool interactable = true;
     [SerializeField] private GameObject exclamationMark;
+    public Character character;
 
     [Header("Game Data")]
     public GameData gameData;
@@ -65,8 +71,18 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
 
     private IEnumerator CheckForStoryBeatRoutine()
     {
-        print ("curr story beat: " + StudentInfoSystem.currentStudentPlayer.currStoryBeat);
-        if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.PrologueStoryGame)
+        // check for character quips
+        if (character == Character.Darwin)
+        {
+            if (StudentInfoSystem.currentStudentPlayer.currStoryBeat > StoryBeat.PrologueStoryGame)
+            {
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.darwinQuips);
+                yield break;
+            }
+        }
+        
+
+        if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.GorillaVillageIntro)
         {
             // remove exclamation mark from gorilla
             ScrollMapManager.instance.gorilla.ShowExclamationMark(false);
@@ -82,40 +98,45 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 yield return null;
 
             // tiger and monkies walk in
-            MapAnimationController.instance.TigerAndMonkiesWalkOut();
+            MapAnimationController.instance.TigerAndMonkiesWalkIn();
             // wait for animation to be done
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
             
             // turn gorilla to face right
             MapAnimationController.instance.gorilla.transform.localScale = new Vector3(-1, 1, 1);
-            while (TalkieManager.instance.talkiePlaying)
-                yield return null;
             ScrollMapManager.instance.gorilla.ShowExclamationMark(true);
 
-            // tiger destroys gorilla village
-            MapAnimationController.instance.tigerScreenSwipeAnim.Play("tigerScreenSwipe");
-            // shake screen
-            ScrollMapManager.instance.ShakeMap();
-            // destroy GV objects one by one
-            foreach(var icon in ScrollMapManager.instance.mapIconsAtLocation[2].mapIcons)
-            {
-                icon.SetFixed(false);
-                yield return new WaitForSeconds(0.1f);
-            }
+            yield return new WaitForSeconds(2f);
 
-            yield return new WaitForSeconds(3f);
+            MapAnimationController.instance.TigerDestroyVillage();
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+            
+            // remove exclamation mark
+            ScrollMapManager.instance.gorilla.ShowExclamationMark(false);
 
             // play gorilla intro 3
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.gorillaIntro_3);
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
-            // tiger runs off screen
+            yield return new WaitForSeconds(1f);
 
-            // monkies go hehe and haha
-            
-            // monkies run off too
+            // tiger runs off screen
+            MapAnimationController.instance.TigerRunAwayGV();
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+
+            yield return new WaitForSeconds(1f);
+
+            // monkies go hehe and haha then run off too
+            MapAnimationController.instance.MonkeyExitAnimationGV();
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
 
             yield return new WaitForSeconds(1f);
 
@@ -126,12 +147,31 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
 
             yield return new WaitForSeconds(1f);
 
+            // turn gorilla to face left
+            MapAnimationController.instance.gorilla.transform.localScale = new Vector3(1, 1, 1);
+
             // play gorilla intro 5
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.gorillaIntro_5);
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
-        }
 
+            ScrollMapManager.instance.gorilla.ShowExclamationMark(true);
+
+            // save to SIS and exit to scroll map
+            StudentInfoSystem.AdvanceStoryBeat();
+            StudentInfoSystem.SaveStudentPlayerData();
+
+            ScrollMapManager.instance.EnableAllMapIcons();
+            yield break;
+        }
+        else if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.GorillaVillageIntro)
+        {  
+            // only continue if tapped on gorilla
+            if (character == Character.Darwin)
+            {
+                // add pre story game talkie here
+            }
+        }
 
         // go to correct game scene
         if (gameData)

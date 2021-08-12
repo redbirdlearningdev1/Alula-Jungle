@@ -11,8 +11,9 @@ public enum StoryBeat
 {
     InitBoatGame, // 0
     UnlockGorillaVillage, // 1
-    PrologueStoryGame, // 2
-    StickerTutorial, // 3
+    GorillaVillageIntro, // 2
+    PrologueStoryGame, // 3
+    StickerTutorial, // 4
     COUNT
 }
 

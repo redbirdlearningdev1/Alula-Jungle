@@ -293,7 +293,7 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Julius_22_T1
     audioString: You're right!
@@ -305,7 +305,7 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Julius_22_T2
     audioString: I am the future king!
@@ -317,7 +317,7 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Julius_22_T3
     audioString: I can do as i want!

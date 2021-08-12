@@ -35,4 +35,20 @@ public class MapDataLoader : MonoBehaviour
         GV_statue.SetFixed(mapData.GV_statue.isFixed);
         GV_statue.SetStars(mapData.GV_statue.stars);
     }
+
+    public MapIcon GetMapIconFromID(MapIconIdentfier id)
+    {
+        switch (id)
+        {
+            default:
+            case MapIconIdentfier.GV_house1:
+                return GV_house1;
+            case MapIconIdentfier.GV_house2:
+                return GV_house2;
+            case MapIconIdentfier.GV_statue:
+                return GV_statue;
+            case MapIconIdentfier.GV_fire:
+                return GV_fire;
+        }
+    }
 }
