@@ -162,7 +162,7 @@ public class MapAnimationController : MonoBehaviour
         // destroy GV objects one by one
         foreach(var icon in ScrollMapManager.instance.mapIconsAtLocation[2].mapIcons)
         {
-            icon.SetFixed(false);
+            icon.SetFixed(false, true, true);
             yield return new WaitForSeconds(0.1f);
         }
 

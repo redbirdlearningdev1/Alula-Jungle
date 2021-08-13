@@ -44,6 +44,7 @@ public class NavButtonController : MonoBehaviour
 
     public void TurnOffButton()
     {
+        isOn = false;
         StopAllCoroutines();
         StartCoroutine(LerpGlowLineScale(0f));
     }

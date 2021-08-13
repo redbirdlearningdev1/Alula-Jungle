@@ -133,6 +133,12 @@ public class SettingsManager : MonoBehaviour
     ################################################
     */
 
+    public void ToggleStickerButtonWiggle(bool opt)
+    {
+        if (opt) wagonButton.GetComponent<WiggleController>().StartWiggle();
+        else wagonButton.GetComponent<WiggleController>().StopWiggle();
+    }
+
     public void ToggleWagonButtonActive(bool opt)
     {
         GameManager.instance.SendLog(this, "setting wagon button to: " + opt);
@@ -176,6 +182,9 @@ public class SettingsManager : MonoBehaviour
     {   
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        // remove wiggle if need be
+        ToggleStickerButtonWiggle(false);
 
         // only workable on scroll map scene
         if (SceneManager.GetActiveScene().name == "ScrollMap")

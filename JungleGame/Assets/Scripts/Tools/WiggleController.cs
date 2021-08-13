@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpriteWiggleController : MonoBehaviour
+public class WiggleController : MonoBehaviour
 {
     public AnimationCurve curve;
     public float multiplier;

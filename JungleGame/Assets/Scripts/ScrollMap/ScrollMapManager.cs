@@ -27,6 +27,10 @@ public class ScrollMapManager : MonoBehaviour
     private List<GameObject> mapIcons = new List<GameObject>();
     private bool repairingMapIcon = false;
 
+    private bool revealNavUI = false;
+    private bool revealGMUI = false;
+    private bool waitingForGameEventRoutine = false;
+
     [Header("Map Navigation")]
     [SerializeField] private RectTransform Map; // full map
     [SerializeField] private GameObject[] mapLocations; // the images that make up the map
@@ -115,7 +119,7 @@ public class ScrollMapManager : MonoBehaviour
             MapDataLoader.instance.LoadMapData(StudentInfoSystem.currentStudentPlayer.mapData);
         }
 
-        // check for game events
+        // get current game event
         StoryBeat playGameEvent = StoryBeat.InitBoatGame; // default event
         if (overideGameEvent && GameManager.instance.devModeActivated)
         {
@@ -133,13 +137,12 @@ public class ScrollMapManager : MonoBehaviour
             }
         }
         
-        bool revealNavUI = true;
-        bool revealGMUI = true;
+        revealNavUI = true;
+        revealGMUI = true;
 
         // place gorilla in GV
         MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaGVPosSTART.position;
 
-        yield return new WaitForSeconds (1f);
         
         /* 
         ################################################
@@ -151,6 +154,8 @@ public class ScrollMapManager : MonoBehaviour
         {
             print ("repairing map icon: " + GameManager.instance.GetID());
             DisableAllMapIcons();
+
+            yield return new WaitForSeconds(1f);
 
             StartCoroutine(RepairMapIcon(GameManager.instance.GetID()));
             while (repairingMapIcon)
@@ -165,6 +170,55 @@ public class ScrollMapManager : MonoBehaviour
         ################################################
         */
         // check for game events
+        CheckForGameEvent();
+    }
+
+    private void AfterGameEventStuff()
+    {
+        // show UI
+        if (revealNavUI)
+        {
+            ToggleNavButtons(true);
+        }
+
+        // show stars on current map location
+        StartCoroutine(ToggleMapIconStarsRoutine(true, mapPosIndex));
+
+        // show GM UI
+        if (revealGMUI)
+        {
+            SettingsManager.instance.ToggleMenuButtonActive(true);
+            // show sticker button if unlocked
+            if (StudentInfoSystem.currentStudentPlayer.unlockedStickerButton)
+                SettingsManager.instance.ToggleWagonButtonActive(true);
+        }
+    }
+
+    public void CheckForGameEvent()
+    {
+        StartCoroutine(CheckForGameEventRoutine());
+    }   
+    private IEnumerator CheckForGameEventRoutine()
+    {
+        StoryBeat playGameEvent = StoryBeat.InitBoatGame; // default event
+        // get event from current profile if not null
+        if (StudentInfoSystem.currentStudentPlayer != null)
+        {
+            playGameEvent = StudentInfoSystem.currentStudentPlayer.currStoryBeat;
+        }
+
+        StartCoroutine(CheckForScrollMapGameEvents(playGameEvent));
+        // wait here while game event stuff is happening
+        while (waitingForGameEventRoutine)
+            yield return null;
+
+        AfterGameEventStuff();
+    }
+
+    private IEnumerator CheckForScrollMapGameEvents(StoryBeat playGameEvent)
+    {
+        waitingForGameEventRoutine = true;
+
         if (playGameEvent == StoryBeat.InitBoatGame)
         {   
             SetMapPosition(0);
@@ -181,7 +235,7 @@ public class ScrollMapManager : MonoBehaviour
 
             // wiggle boat
             boat.interactable = true;
-            boat.GetComponent<SpriteWiggleController>().StartWiggle();
+            boat.GetComponent<WiggleController>().StartWiggle();
             //boat.GetComponent<GlowOutlineController>().ToggleGlowOutline(true); turned off bcause looks weird
         }
         else if (playGameEvent == StoryBeat.UnlockGorillaVillage)
@@ -245,7 +299,7 @@ public class ScrollMapManager : MonoBehaviour
             gorilla.ShowExclamationMark(true);
             gorilla.interactable = true;
         }
-        else if (playGameEvent == StoryBeat.StickerTutorial)
+        else if (playGameEvent == StoryBeat.RedShowsStickerButton)
         {
             // darwin quips
             gorilla.interactable = true;
@@ -253,39 +307,86 @@ public class ScrollMapManager : MonoBehaviour
             // check if player has enough coins
             if (StudentInfoSystem.currentStudentPlayer.goldCoins >= 3)
             {
-                // play talkie here i guess
+                // play red notices lester talkie
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.red_notices_lester);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
 
                 // save to sis and continue
-                StudentInfoSystem.currentStudentPlayer.unlockedStickerButton = true;
                 StudentInfoSystem.AdvanceStoryBeat();
                 StudentInfoSystem.SaveStudentPlayerData();
             }
         }
+        else if (playGameEvent == StoryBeat.VillageRebuilt)
+        {
+            // darwin quips
+            gorilla.interactable = true;
+
+            // make sure player has done the sticker tutorial
+            if (!StudentInfoSystem.currentStudentPlayer.stickerTutorial)
+            {
+                // play darwin forces talkie
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.darwin_forces);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else
+            {
+                // make sure player has rebuilt all the GV map icons
+                if (StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.isFixed &&
+                    StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.isFixed &&
+                    StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.isFixed &&
+                    StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.isFixed)
+                {
+                    // make sure we are at gorilla village
+                    mapPosIndex = 2;
+                    // move map to next right map location
+                    float x = GetXPosFromMapLocationIndex(mapPosIndex);
+                    StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
+
+                    yield return new WaitForSeconds(2.5f);
+
+                    // play village rebuilt talkie 1
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageRebuilt_1);
+                    while (TalkieManager.instance.talkiePlaying)
+                        yield return null;
+
+                    // move darwin off screen
+                    yield return new WaitForSeconds(2f);
+
+                    // play village rebuilt talkie 2
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageRebuilt_2);
+                    while (TalkieManager.instance.talkiePlaying)
+                        yield return null;
+
+                    // move tiger and monkeys on screen
+                    yield return new WaitForSeconds(2f);
+
+                    // play village rebuilt talkie 3
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageRebuilt_3);
+                    while (TalkieManager.instance.talkiePlaying)
+                        yield return null;
+
+                    // challenge game begins
+
+                    // save to sis and continue
+                    StudentInfoSystem.AdvanceStoryBeat();
+                    StudentInfoSystem.SaveStudentPlayerData();
+                }
+            }
+        }
+        else if (playGameEvent == StoryBeat.ChallengeGames_GorillaVillage)
+        {
+            // place gorilla off-screen
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
+        }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {
-            print ("here!");
             // darwin quips
             gorilla.interactable = true;
         }
 
-        // show UI
-        if (revealNavUI)
-        {
-            yield return new WaitForSeconds(0.5f);
-            TurnOffNavigationUI(false);
-        }
-
-        // show stars on current map location
-        StartCoroutine(ToggleMapIconStarsRoutine(true, mapPosIndex));
-
-        // show GM UI
-        if (revealGMUI)
-        {
-            SettingsManager.instance.ToggleMenuButtonActive(true);
-            // show sticker button if unlocked
-            if (StudentInfoSystem.currentStudentPlayer.unlockedStickerButton)
-                SettingsManager.instance.ToggleWagonButtonActive(true);
-        }
+        waitingForGameEventRoutine = false;
     }
 
     private IEnumerator RepairMapIcon(MapIconIdentfier id)
@@ -293,7 +394,7 @@ public class ScrollMapManager : MonoBehaviour
         repairingMapIcon = true;
 
         MapIcon icon = MapDataLoader.instance.GetMapIconFromID(id);
-        icon.SetFixed(true);
+        icon.SetFixed(true, true, true);
         yield return new WaitForSeconds(2f);
 
         GameManager.instance.repairMapIconID = false;
@@ -403,19 +504,15 @@ public class ScrollMapManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         // show UI again
-        TurnOffNavigationUI(false);
+        ToggleNavButtons(true);
 
         RaycastBlockerController.instance.RemoveRaycastBlocker("UnlockMapArea");
     }
 
-    public void TurnOffNavigationUI(bool opt)
+    public void ToggleNavButtons(bool opt)
     {
-        // do nothing if already same as opt
-        if (opt == navButtonsDisabled)
-            return;
-
         // enable button
-        if (!opt)
+        if (opt)
         {   
             leftButton.interactable = true;
             rightButton.interactable = true;
@@ -429,15 +526,12 @@ public class ScrollMapManager : MonoBehaviour
             leftButton.interactable = false;
             rightButton.interactable = false;
 
-            leftButton.GetComponent<NavButtonController>().isOn = false;
-            rightButton.GetComponent<NavButtonController>().isOn = false;
-
             // turn off glow line
             leftButton.GetComponent<NavButtonController>().TurnOffButton();
             rightButton.GetComponent<NavButtonController>().TurnOffButton();
         }
 
-        navButtonsDisabled = opt;
+        navButtonsDisabled = !opt;
     }
 
     private IEnumerator SmoothImageAlpha(Image img, float startAlpha, float endAlpha, float time)
@@ -570,56 +664,6 @@ public class ScrollMapManager : MonoBehaviour
     ################################################
     */
 
-    // private void GoToNearestMapLocation()
-    // {
-    //     float currPercent = GetMapPositionPercentage(Map.position.x);
-    //     //print ("current location percent: " + currPercent);
-
-    //     float minDist = float.MaxValue;
-    //     int minIndex = 0;
-    //     for (int i = 0; i < cameraLocations.Count; i++)
-    //     {
-    //         float indexPercent = GetMapPositionPercentage(i);
-    //         float dist = Mathf.Abs(currPercent - indexPercent);
-    //         //print ("location: " + i + ", percent: " + indexPercent + ", distance from current: " + dist);
-
-    //         if (dist < minDist)
-    //         {
-    //             minDist = dist;
-    //             minIndex = i;
-    //         }
-    //     }
-
-    //     //print ("nearest location: " + minIndex + ", distance from current: " + minDist);
-    //     mapPosIndex = minIndex;
-    //     float xPos = GetXPosFromMapLocationIndex(minIndex);
-    //     StartCoroutine(MapSmoothTransition(Map.position.x, Map.position.x - xPos, transitionTime));
-    // }
-
-    // public float GetMapPositionPercentage(int posIndex)
-    // {
-    //     float num = (float)posIndex / ((float)cameraLocations.Count - 1);
-    //     return num;
-    // }
-
-    // public float GetMapPositionPercentage(float posX)
-    // {
-    //     posX *= -1;
-    //     float num = Mathf.InverseLerp(mapMinX, mapMaxX, posX);
-    //     //print ("xPos: " + posX + ", mapMinX: " + mapMinX + ", mapMaxX: " + mapMaxX + ", PERCENT: " + num);
-    //     return num;
-    // }
-
-    // private void SetMapPosition(float percent)
-    // {
-    //     if (percent >= 0f && percent <= 1f)
-    //     {
-    //         float tempX = Mathf.Lerp(mapMinX, mapMaxX, percent) * -1;
-    //         //print ("percent: " + percent + ", pos: " + tempX);
-    //         Map.position = new Vector3(tempX, Map.position.y, Map.position.z);
-    //     }
-    // }
-
     // set the index where the player can no longer go forward
     public void SetMapLimit(int index)
     {
@@ -689,7 +733,7 @@ public class ScrollMapManager : MonoBehaviour
         FindObjectsWithTag("MapIcon");
         foreach(GameObject mapIcon in mapIcons)
         {
-            mapIcon.GetComponent<MapIcon>().SetFixed(opt);
+            mapIcon.GetComponent<MapIcon>().SetFixed(opt, true, false);
         }
     }
 

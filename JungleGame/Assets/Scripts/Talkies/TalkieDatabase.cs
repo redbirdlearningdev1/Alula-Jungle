@@ -28,6 +28,16 @@ public class TalkieDatabase : MonoBehaviour
     public TalkieObject gorillaIntro_5; // script: MapCharacter.cs
 
     public TalkieObject pre_minigame;   // script: MapIcon.cs
+    public TalkieObject pre_darwin;     // script: MapCharacter.cs
+
+    public TalkieObject red_notices_lester; // script: ScrollMapManager.cs
+    public TalkieObject darwin_forces;      // script: ScrollMapManager.cs
+
+    public TalkieObject lester_intro_1; // script: WagonWindowController.cs
+
+    public TalkieObject villageRebuilt_1; // script: ScrollMapManager.cs
+    public TalkieObject villageRebuilt_2; // script: ScrollMapManager.cs
+    public TalkieObject villageRebuilt_3; // script: ScrollMapManager.cs
 
     [Header("Talkie Objects")]
     public TalkieObject darwinQuips;    // script: MapCharacter.cs

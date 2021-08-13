@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class WagonWindowController : MonoBehaviour
@@ -178,6 +179,15 @@ public class WagonWindowController : MonoBehaviour
         // reveal sticker here after certain amount of time
         StartCoroutine(RevealStickerRoutine(sticker));
 
+        // play lester tutorial if first sticker roll
+        if (!StudentInfoSystem.currentStudentPlayer.stickerTutorial)
+        {
+            // TODO continue lester tutorial + add lester quips
+
+            StudentInfoSystem.currentStudentPlayer.stickerTutorial = true;
+            StudentInfoSystem.SaveStudentPlayerData();
+        }
+
         // wait for player input to continue
         waitingOnPlayerInput = true;
         while (waitingOnPlayerInput)
@@ -190,7 +200,7 @@ public class WagonWindowController : MonoBehaviour
         FadeObject.instance.FadeOut(2f);
         yield return new WaitForSeconds(2f);
         
-        // Hide GM canavas stuff
+        // Reveal GM canavas stuff
         SettingsManager.instance.ToggleMenuButtonActive(true);
         SettingsManager.instance.ToggleWagonButtonActive(true);
         wagon.SetActive(true);
@@ -329,7 +339,7 @@ public class WagonWindowController : MonoBehaviour
     {
         if (cartBusy)
             return;
-
+        
         if (!stickerCartOut)
             StartCoroutine(RollOnScreen());
         else
@@ -345,7 +355,7 @@ public class WagonWindowController : MonoBehaviour
         wagon.transform.position = cartStartPosition.position;
 
         // disable nav buttons
-        ScrollMapManager.instance.TurnOffNavigationUI(true);
+        ScrollMapManager.instance.ToggleNavButtons(false);
         
         // activate raycast blocker + background
         RaycastBlockerController.instance.CreateRaycastBlocker("StickerCartBlocker");
@@ -363,6 +373,18 @@ public class WagonWindowController : MonoBehaviour
         BackWindow.SetActive(true);
         Gecko.SetActive(true);
         GeckoAnim.Play("geckoIntro");
+
+        // play lester talkies if first time
+        if (!StudentInfoSystem.currentStudentPlayer.stickerTutorial)
+        {
+            // remove wagon button so player cannot leave
+            SettingsManager.instance.ToggleWagonButtonActive(false);
+
+            // play village rebuilt talkie 3
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.lester_intro_1);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+        }
 
         // deactivate raycast blocker
         RaycastBlockerController.instance.RemoveRaycastBlocker("StickerCartBlocker");
@@ -395,7 +417,10 @@ public class WagonWindowController : MonoBehaviour
         cartBusy = false;
 
         // enable nav buttons
-        ScrollMapManager.instance.TurnOffNavigationUI(false);
+        ScrollMapManager.instance.ToggleNavButtons(true);
+
+        // check for scroll map game events
+        ScrollMapManager.instance.CheckForGameEvent();
     }
 
     public void ResetWagonController()
@@ -414,7 +439,8 @@ public class WagonWindowController : MonoBehaviour
         cartBusy = false;
 
         // enable nav buttons
-        ScrollMapManager.instance.TurnOffNavigationUI(false);
+        if (SceneManager.GetActiveScene().name == "ScrollMap")
+            ScrollMapManager.instance.ToggleNavButtons(true);
 
         // hide window 
         StartCoroutine(ShrinkObject(window));

@@ -13,7 +13,9 @@ public enum StoryBeat
     UnlockGorillaVillage, // 1
     GorillaVillageIntro, // 2
     PrologueStoryGame, // 3
-    StickerTutorial, // 4
+    RedShowsStickerButton, // 4
+    VillageRebuilt, // 5
+    ChallengeGames_GorillaVillage, // 6
     COUNT
 }
 
@@ -38,6 +40,7 @@ public class StudentPlayerData
     public int micDevice;
 
     // tutorial bools
+    public bool stickerTutorial;
     public bool froggerTutorial;
     public bool turntablesTutorial;
     public bool spiderwebTutorial;

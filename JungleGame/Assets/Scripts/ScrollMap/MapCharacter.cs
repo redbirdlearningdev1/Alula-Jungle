@@ -80,7 +80,6 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 yield break;
             }
         }
-        
 
         if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.GorillaVillageIntro)
         {
@@ -164,13 +163,23 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             ScrollMapManager.instance.EnableAllMapIcons();
             yield break;
         }
-        else if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.GorillaVillageIntro)
+        else if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.PrologueStoryGame)
         {  
             // only continue if tapped on gorilla
             if (character == Character.Darwin)
             {
                 // add pre story game talkie here
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.pre_darwin);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
             }
+        }
+
+        // do not go to game if talkie manager says not to
+        if (TalkieManager.instance.doNotContinueToGame)
+        {
+            TalkieManager.instance.doNotContinueToGame = false;
+            yield break;
         }
 
         // go to correct game scene

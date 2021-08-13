@@ -72,13 +72,13 @@ public class pileRummage : MonoBehaviour
     {
         if (currPileLock)
         {
-            GetComponent<SpriteWiggleController>().StartWiggle(true);
+            GetComponent<WiggleController>().StartWiggle(true);
         }
     }
 
     public void SetWiggleOff()
     {
-        GetComponent<SpriteWiggleController>().StopWiggle();
+        GetComponent<WiggleController>().StopWiggle();
     }
 
     public void pileLock()

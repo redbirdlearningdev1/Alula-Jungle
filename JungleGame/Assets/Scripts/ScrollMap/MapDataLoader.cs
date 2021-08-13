@@ -23,16 +23,16 @@ public class MapDataLoader : MonoBehaviour
     public void LoadMapData(MapData mapData)
     {
         // gorilla village section
-        GV_house1.SetFixed(mapData.GV_house1.isFixed);
+        GV_house1.SetFixed(mapData.GV_house1.isFixed, false, false);
         GV_house1.SetStars(mapData.GV_house1.stars);
 
-        GV_house2.SetFixed(mapData.GV_house2.isFixed);
+        GV_house2.SetFixed(mapData.GV_house2.isFixed, false, false);
         GV_house2.SetStars(mapData.GV_house2.stars);
 
-        GV_fire.SetFixed(mapData.GV_fire.isFixed);
+        GV_fire.SetFixed(mapData.GV_fire.isFixed, false, false);
         GV_fire.SetStars(mapData.GV_fire.stars);
 
-        GV_statue.SetFixed(mapData.GV_statue.isFixed);
+        GV_statue.SetFixed(mapData.GV_statue.isFixed, false, false);
         GV_statue.SetStars(mapData.GV_statue.stars);
     }
 

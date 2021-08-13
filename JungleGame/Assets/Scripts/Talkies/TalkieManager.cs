@@ -9,6 +9,9 @@ public class TalkieManager : MonoBehaviour
 {
     public static TalkieManager instance;
 
+    // public vars for other scripts to access
+    [HideInInspector] public bool doNotContinueToGame = false;
+
     [HideInInspector] public bool talkiePlaying = false; // used to pause routines while talkies are playing
     private TalkieObject currentTalkie;
 
@@ -56,10 +59,19 @@ public class TalkieManager : MonoBehaviour
     public float minMusicVolWhenTalkiePlaying = 0.1f;
     private float prevMusicVolume;
 
+    [Header("Yes No Stuff")]
+    public Button yesButton;
+    public Button noButton;
+    private TalkieYesNoAction yesAction = TalkieYesNoAction.None;
+    private TalkieYesNoAction noAction = TalkieYesNoAction.None;
 
-
-
+    // private vars
+    private int currSegmentIndex = 0;
     private bool playingSegment = false;
+    private bool waitingForYesNoInput = false;
+
+    private bool overrideSegmentIndex = false;
+    private int newSegmentIndex;
 
     void Awake()
     {
@@ -69,6 +81,13 @@ public class TalkieManager : MonoBehaviour
         // clear subtitles
         subtitleText.text = "";
         subtitleBox.color = new Color(0f, 0f, 0f, 0f);
+
+        // clear yes no buttons
+        yesButton.transform.localScale = new Vector3(0f, 0f, 1f);
+        noButton.transform.localScale = new Vector3(0f, 0f, 1f);
+
+        yesButton.interactable = false;
+        noButton.interactable = false;
     }
 
     public void PlayTalkie(TalkieObject talkie)
@@ -119,7 +138,7 @@ public class TalkieManager : MonoBehaviour
         // disable nav buttons on scroll map
         if (SceneManager.GetActiveScene().name == "ScrollMap")
         {
-            ScrollMapManager.instance.TurnOffNavigationUI(true);
+            ScrollMapManager.instance.ToggleNavButtons(false);
         }
 
         // deterime where to place init talkies
@@ -171,11 +190,22 @@ public class TalkieManager : MonoBehaviour
         else 
         {
             // play segments in order
-            foreach (var talkieSeg in currentTalkie.segmnets)
+            for (currSegmentIndex = 0; currSegmentIndex < currentTalkie.segmnets.Count; currSegmentIndex++)
             {
-                StartCoroutine(PlaySegment(talkieSeg));
+                StartCoroutine(PlaySegment(currentTalkie.segmnets[currSegmentIndex]));
                 while (playingSegment)
                     yield return null;
+
+                // end talkie if segment says so
+                if (currentTalkie.segmnets[currSegmentIndex].endTalkieAfterThisSegment)
+                    break;
+
+                // override talkie segment
+                if (overrideSegmentIndex)
+                {
+                    overrideSegmentIndex = false;
+                    currSegmentIndex = newSegmentIndex;
+                }
             }
         }
 
@@ -223,24 +253,41 @@ public class TalkieManager : MonoBehaviour
         // clear subtitles
         subtitleText.text = "";
         subtitleBox.color = new Color(0f, 0f, 0f, 0f);
-        
-        // stop playing talkie
-        talkiePlaying = false;
-        currentTalkie = null;
 
-        // disable nav buttons on scroll map
+        // enable nav buttons on scroll map
         if (SceneManager.GetActiveScene().name == "ScrollMap")
         {
-            ScrollMapManager.instance.TurnOffNavigationUI(false);
+            ScrollMapManager.instance.ToggleNavButtons(true);
         }
 
         // set audio back to what it was before
         AudioManager.instance.SetMusicVolume(prevMusicVolume);
+
+        // after talkie action
+        if (currentTalkie.endAction != TalkieEndAction.None)
+        {
+            switch (currentTalkie.endAction)
+            {
+                case TalkieEndAction.UnlockStickerButton:
+                    // unlock button in SIS
+                    StudentInfoSystem.currentStudentPlayer.unlockedStickerButton = true;
+                    SettingsManager.instance.ToggleWagonButtonActive(true);
+                    // add glow + wiggle
+                    SettingsManager.instance.ToggleStickerButtonWiggle(true);
+                    break;
+            }
+        }
+
+        // stop playing talkie
+        talkiePlaying = false;
+        currentTalkie = null;
     }
 
     private IEnumerator PlaySegment(TalkieSegment talkieSeg)
     {
         playingSegment = true;
+
+        print ("playing segment: " + talkieSeg);
 
         /* 
         ################################################
@@ -353,7 +400,6 @@ public class TalkieManager : MonoBehaviour
             {
                 StartCoroutine(LerpScaleAndAlpha(rightImage, inactiveScale, inactiveAlpha, false));
             }
-            //yield return new WaitForSeconds(talkieDeactivateSpeed);
         }
         else if (talkieSeg.activeCharacter == ActiveCharacter.Right)
         {
@@ -362,7 +408,6 @@ public class TalkieManager : MonoBehaviour
             {
                 StartCoroutine(LerpScaleAndAlpha(leftImage, inactiveScale, inactiveAlpha, true));
             }
-            //yield return new WaitForSeconds(talkieDeactivateSpeed);
         }
 
         // add subtitles
@@ -377,10 +422,95 @@ public class TalkieManager : MonoBehaviour
         else
         {
             print ("no audio clip found: \'" + talkieSeg.audioClipName + "\'");
+            yield return new WaitForSeconds(1.5f);
+        }
+
+
+        /* 
+        ################################################
+        #   YES / NO ACTION
+        ################################################
+        */ 
+        if (talkieSeg.requireYN)
+        {
+            waitingForYesNoInput = true;
+
+            yesAction = talkieSeg.onYes;
+            noAction = talkieSeg.onNo;
+
+            // reveal yes and no buttons
+            StartCoroutine(LerpTransformScale(yesButton.transform, 1f, 0.25f));
+            StartCoroutine(LerpTransformScale(noButton.transform, 1f, 0.25f));
+
+            yesButton.interactable = true;
+            noButton.interactable = true;
+
+            while (waitingForYesNoInput)
+                yield return null;
+
             yield return new WaitForSeconds(1f);
         }
 
         playingSegment = false;
+    }
+
+    public void OnYesPressed()
+    {
+        DoYesNoAction(yesAction);
+    }
+
+    public void OnNoPressed()
+    {
+        DoYesNoAction(noAction);
+    }
+
+    private void DoYesNoAction(TalkieYesNoAction action)
+    {   
+        // disable buttons
+        yesButton.interactable = true;
+        noButton.interactable = true;
+
+        // hide yes and no buttons
+        StartCoroutine(LerpTransformScale(yesButton.transform, 0f, 0.25f));
+        StartCoroutine(LerpTransformScale(noButton.transform, 0f, 0.25f));
+
+        switch (action)
+        {
+            default:
+            case TalkieYesNoAction.None:
+                break;
+
+            // PreDarwin Talkie Options
+            case TalkieYesNoAction.PreDarwin_yes:
+                overrideSegmentIndex = true;
+                newSegmentIndex = 1;
+                break;
+            case TalkieYesNoAction.PreDarwin_no:
+                doNotContinueToGame = true;
+                break;
+        }
+
+        waitingForYesNoInput = false;
+    }
+
+    private IEnumerator LerpTransformScale(Transform tform, float targetScale, float duration)
+    {
+        float startScale = tform.localScale.y;
+        float timer = 0f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > duration)
+            {
+                tform.localScale = new Vector3(targetScale, targetScale, 1f);
+                break;
+            }
+
+            float tempScale = Mathf.Lerp(startScale, targetScale, timer / duration);
+            tform.localScale = new Vector3(tempScale, tempScale, 1f);
+            yield return null;
+        }
     }
 
     private IEnumerator LerpScaleAndAlpha(Image image, float targetScale, float targetAlpha, bool isLeft)

@@ -13,8 +13,20 @@ MonoBehaviour:
   m_Name: Village Rebuilt
   m_EditorClassIdentifier: 
   talkieName: Village Rebuilt
+  quipsCollection: 0
+  start: 0
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 0
+  endAction: 0
   segmnets:
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 2
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -26,7 +38,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_5_Red_1_T1
     audioString: Wow!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 3
     leftMouthEnum: 1
     leftEyesEnum: 3
@@ -38,7 +54,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_5_Red_1_T2
     audioString: The village looks great!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 2
@@ -50,7 +70,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_5_Wally_2_T1
     audioString: Good job!
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 2
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -62,7 +86,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_5_Darwin_3_T1
     audioString: Wow this looks incredible!
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 7
     leftMouthEnum: 1
     leftEyesEnum: 4
@@ -74,7 +102,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_5_Darwin_3_T2
     audioString: I uhh...
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 4
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -86,7 +118,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_5_Darwin_3_T3
     audioString: Can't believe how good it looks!
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -99,7 +135,11 @@ MonoBehaviour:
     audioClipName: P_1_5_Wally_4_T1
     audioString: Does this mean you're getting your memories back? Will they be able
       to help the prince?
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 8
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -111,7 +151,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_5_Darwin_5_T1
     audioString: They're starting to come back!
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 11
     leftMouthEnum: 1
     leftEyesEnum: 4
@@ -123,7 +167,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_5_Darwin_5_T2
     audioString: It's been so long that it makes remembering harder...
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 2
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -135,7 +183,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_5_Darwin_5_T3
     audioString: But with the village being all cleaned up it's making it easier!
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -147,7 +199,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_5_Red_6_T1
     audioString: I'm glad!
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 4
     leftMouthEnum: 1
     leftEyesEnum: 3
@@ -159,7 +215,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_5_Darwin_7_T1
     audioString: As am I!
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 3
     leftMouthEnum: 1
     leftEyesEnum: 4

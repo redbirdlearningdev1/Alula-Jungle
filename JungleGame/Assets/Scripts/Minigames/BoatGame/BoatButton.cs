@@ -14,7 +14,7 @@ public class BoatButton : MonoBehaviour
     [Header("Sprite Stuff")]
     public SpriteRenderer spriteRenderer;
     public GlowOutlineController glowOutlineController;
-    public SpriteWiggleController wiggleController;
+    public WiggleController wiggleController;
     public Sprite defaultSprite;
     public Sprite pressedSprite;
 

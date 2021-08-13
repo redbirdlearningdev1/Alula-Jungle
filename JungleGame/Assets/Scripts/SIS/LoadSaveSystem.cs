@@ -19,6 +19,7 @@ public static class LoadSaveSystem
 
     public static int   default_micDevice = 0;
 
+    public static bool  default_stickerTutorial = false;
     public static bool  default_froggerTutorial = false;
     public static bool  default_turntablesTutorial = false;
     public static bool  default_spiderwebTutorial = false;
@@ -112,10 +113,11 @@ public static class LoadSaveSystem
         new_data.micDevice =    default_micDevice;
 
         // tutorials
-        new_data.froggerTutorial = default_froggerTutorial;
-        new_data.froggerTutorial = default_turntablesTutorial;
-        new_data.froggerTutorial = default_spiderwebTutorial;
-        new_data.froggerTutorial = default_rummageTutorial;
+        new_data.stickerTutorial =      default_stickerTutorial;
+        new_data.froggerTutorial =      default_froggerTutorial;
+        new_data.turntablesTutorial =   default_turntablesTutorial;
+        new_data.spiderwebTutorial =    default_spiderwebTutorial;
+        new_data.rummageTutorial =      default_rummageTutorial;
 
         // story + map data
         new_data.unlockedStickerButton = default_unlockedStickerButton;

@@ -38,9 +38,33 @@ public enum TalkieEnding
     ExitRight   // characters exit towards Right
 }
 
+public enum TalkieEndAction
+{
+    None,
+    UnlockStickerButton
+}
+
+public enum TalkieYesNoAction
+{
+    None,
+    // pre darwin talkie
+    PreDarwin_yes,
+    PreDarwin_no
+
+
+}
+
 [System.Serializable]
 public struct TalkieSegment
 {
+    [Header("Talkie Options")]
+    public bool endTalkieAfterThisSegment; // ends talkie after this segment regardles of index in list
+
+    [Header("Yes No Action")] // before continuing the talkie, player must choose between yes and no
+    public bool requireYN;
+    public TalkieYesNoAction onYes;
+    public TalkieYesNoAction onNo;
+
     [Header("Left Character")]
     public TalkieCharacter leftCharacter;
     public int leftEmotionNum;
@@ -77,6 +101,8 @@ public class TalkieObject : ScriptableObject
     public TalkieEnding ending;
     public bool removeBackgroundAfterTalkie = true; // by default, the background goes away
     public bool removeLetterboxAfterTalkie = true; // by default, the letterbox goes away
+
+    public TalkieEndAction endAction = TalkieEndAction.None; // an action is performed after the talkie finishes
 
     [Header("Segments")]
     public List<TalkieSegment> segmnets;

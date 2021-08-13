@@ -4038,8 +4038,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   overideMapLimit: 0
   mapLimitNum: 0
-  overideGameEvent: 0
-  gameEvent: 1
+  overideGameEvent: 1
+  gameEvent: 5
   overrideStartPosition: 0
   startPos: 0
   Map: {fileID: 1534747656}
@@ -9123,6 +9123,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6246951197369562766, guid: d28125f2c69703845bae5a93a83bd1b1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644945410575714531, guid: d28125f2c69703845bae5a93a83bd1b1,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 158.89471
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644945410575714531, guid: d28125f2c69703845bae5a93a83bd1b1,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 106.0096
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644945410575714531, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

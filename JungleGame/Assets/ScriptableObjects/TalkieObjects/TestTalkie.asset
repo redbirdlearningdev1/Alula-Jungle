@@ -13,8 +13,18 @@ MonoBehaviour:
   m_Name: TestTalkie
   m_EditorClassIdentifier: 
   talkieName: Test Talkie
+  quipsCollection: 0
+  start: 0
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
   segmnets:
-  - leftCharacter: 1
+  - requireYN: 1
+    onYes: 1
+    onNo: 2
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -23,78 +33,36 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 76c705f9df2844a48adae45570185cc0, type: 3}
-    audioClipName: Boat_0_1_Red_1_1_T1
-    audioString: 
-  - leftCharacter: 1
-    leftEmotionNum: 4
-    leftMouthEnum: 1
-    leftEyesEnum: 3
-    rightCharacter: 1
-    rightEmotionNum: 1
-    rightMouthEnum: 1
-    rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: e71b5b148fd3d0a4fa9787e60f410141, type: 3}
-    audioClipName: Boat_0_1_Red_1_1_T2
-    audioString: 
-  - leftCharacter: 0
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
-    rightCharacter: 1
-    rightEmotionNum: 9
-    rightMouthEnum: 1
-    rightEyesEnum: 1
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 8a985d1cbddfe7a4b824daac63039a5a, type: 3}
-    audioClipName: Boat_0_1_Red_1_1_T3
-    audioString: 
-  - leftCharacter: 1
-    leftEmotionNum: 9
-    leftMouthEnum: 1
-    leftEyesEnum: 1
-    rightCharacter: 1
-    rightEmotionNum: 9
-    rightMouthEnum: 1
-    rightEyesEnum: 1
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 90598ece13a099749a3d895e9256aa0a, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: 
-    audioString: 
-  - leftCharacter: 1
-    leftEmotionNum: 9
+    audioString: talkie 1
+  - requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 2
+    leftEmotionNum: 1
     leftMouthEnum: 1
-    leftEyesEnum: 1
-    rightCharacter: 1
-    rightEmotionNum: 9
-    rightMouthEnum: 1
-    rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 90598ece13a099749a3d895e9256aa0a, type: 3}
-    audioClipName: 
-    audioString: 
-  - leftCharacter: 1
-    leftEmotionNum: 9
-    leftMouthEnum: 1
-    leftEyesEnum: 1
-    rightCharacter: 1
-    rightEmotionNum: 9
-    rightMouthEnum: 1
-    rightEyesEnum: 1
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 90598ece13a099749a3d895e9256aa0a, type: 3}
-    audioClipName: 
-    audioString: 
-  - leftCharacter: 1
-    leftEmotionNum: 4
-    leftMouthEnum: 1
-    leftEyesEnum: 3
+    leftEyesEnum: 2
     rightCharacter: 0
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: fba4883860dcc1641b5bf8f07c65ed77, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: 
-    audioString: 
+    audioString: talkie 2
+  - requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: 
+    audioString: talkie 3

@@ -181,7 +181,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         meshRenderer.material.color = color;
     }
 
-    public void SetFixed(bool opt)
+    public void SetFixed(bool opt, bool animate, bool saveToSIS)
     {
         if (!canBeFixed) return;
 
@@ -206,32 +206,38 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 break;
         }
         // play animation
-        if (!opt)
+        if (animate)
         {
-            if (destroyAnimator) destroyAnimator.Play("destroyAnimation");
-        }
-        else
-        {
-            if (repairAnimator) repairAnimator.Play("repairAnimation");
+            if (!opt)
+            {
+                if (destroyAnimator) destroyAnimator.Play("destroyAnimation");
+            }
+            else
+            {
+                if (repairAnimator) repairAnimator.Play("repairAnimation");
+            }
         }
 
         // save to SIS
-        switch (identfier)
+        if (saveToSIS)
         {
-            case MapIconIdentfier.GV_house1:
-                StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.isFixed = opt;
-                break;
-            case MapIconIdentfier.GV_house2:
-                StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.isFixed = opt;
-                break;
-            case MapIconIdentfier.GV_statue:
-                StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.isFixed = opt;
-                break;
-            case MapIconIdentfier.GV_fire:
-                StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.isFixed = opt;
-                break;
+            switch (identfier)
+            {
+                case MapIconIdentfier.GV_house1:
+                    StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.isFixed = opt;
+                    break;
+                case MapIconIdentfier.GV_house2:
+                    StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.isFixed = opt;
+                    break;
+                case MapIconIdentfier.GV_statue:
+                    StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.isFixed = opt;
+                    break;
+                case MapIconIdentfier.GV_fire:
+                    StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.isFixed = opt;
+                    break;
+            }
+            StudentInfoSystem.SaveStudentPlayerData();
         }
-        StudentInfoSystem.SaveStudentPlayerData();
     }
 
     /* 
