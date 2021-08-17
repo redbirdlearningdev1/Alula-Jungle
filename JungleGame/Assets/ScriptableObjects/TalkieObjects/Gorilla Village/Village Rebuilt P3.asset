@@ -35,7 +35,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: bc62132cda536284295408b65f009f86, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_1_Marcus_26_T1
     audioString: HAHAHA!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: e560a2f635330474a80ba89adf2c46d9, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_1_Brutus_27_T1
     audioString: Heh Heh Heh
   - endTalkieAfterThisSegment: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: dddf791828a846342be5385f106a0c9e, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Julius_12_T1
     audioString: So we meet again.
   - endTalkieAfterThisSegment: 0
@@ -83,7 +83,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: d4d72808a1642954b941bf7b20724074, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Red_13_T1
     audioString: Your Highness!
   - endTalkieAfterThisSegment: 0
@@ -96,10 +96,10 @@ MonoBehaviour:
     leftEyesEnum: 1
     rightCharacter: 7
     rightEmotionNum: 4
-    rightMouthEnum: 2
+    rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 3125d792ad36a644b9535da497708d10, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Julius_14_T1
     audioString: I see Darwin isn't with you.
   - endTalkieAfterThisSegment: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 1311175a978032742a2abc766db00837, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Wally_15_T1
     audioString: He went on ahead to look for you
   - endTalkieAfterThisSegment: 0
@@ -129,9 +129,9 @@ MonoBehaviour:
     rightCharacter: 5
     rightEmotionNum: 5
     rightMouthEnum: 2
-    rightEyesEnum: 1
+    rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 2c92add928fe46b49b794d756db8d60d, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Marcus_16_T1
     audioString: THAT FOOL!
   - endTalkieAfterThisSegment: 0
@@ -145,9 +145,9 @@ MonoBehaviour:
     rightCharacter: 5
     rightEmotionNum: 6
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 707a65487d063f347a410016cc232a64, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Brutus_17_T1
     audioString: Yawn...
   - endTalkieAfterThisSegment: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 3c28446c150f61947ad96807ffbeb380, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Red_18_T1
     audioString: Don't say that about Darwin!
   - endTalkieAfterThisSegment: 0
@@ -179,7 +179,7 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 3838fb905354ed446b3b3e60096fc4f7, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Red_18_T2
     audioString: That isn't nice!
   - endTalkieAfterThisSegment: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: c9e4c568a62c8cb47aaa221acb331b81, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Julius_19_T1
     audioString: ....
   - endTalkieAfterThisSegment: 0
@@ -211,7 +211,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 07cedfc8962956848ac206609414c840, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Julius_19_T2
     audioString: You guys are getting in the way.
   - endTalkieAfterThisSegment: 0
@@ -227,7 +227,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 54e54949d05b7fe4e9bf4edb96b3583c, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Julius_19_T3
     audioString: It's starting to get annoying
   - endTalkieAfterThisSegment: 0
@@ -241,9 +241,9 @@ MonoBehaviour:
     rightCharacter: 5
     rightEmotionNum: 6
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 01e6a759784c5b14dad8cc927ed1a699, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Marcus_20_T1
     audioString: Well spoken my prince!
   - endTalkieAfterThisSegment: 0
@@ -259,7 +259,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: a97161bd43cfd3343a9430e5e7c4ab72, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Brutus_21_T1
     audioString: Heh heh...
   - endTalkieAfterThisSegment: 0
@@ -291,7 +291,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 8e7e999aa9d0833448f2dc23f756a6a6, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Julius_22_T1
     audioString: I'll tell you what.
   - endTalkieAfterThisSegment: 0
@@ -307,7 +307,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: aa14d3c7353b5274ea4a51599e4549ac, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Julius_22_T2
     audioString: One of you will step up and accept my challenge.
   - endTalkieAfterThisSegment: 0
@@ -323,7 +323,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: a4688f972c3719b4d8c5baa74b6c8636, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Julius_22_T3
     audioString: If you win,
   - endTalkieAfterThisSegment: 0
@@ -339,7 +339,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 3c1b0c74a457a4647a2773766210a346, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Julius_22_T4
     audioString: you can move forward and bother me some more.
   - endTalkieAfterThisSegment: 0
@@ -355,7 +355,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: c60d475ade9909148902b47d576cc277, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Julius_22_T5
     audioString: But if I win,
   - endTalkieAfterThisSegment: 0
@@ -371,7 +371,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 0c8c4d32e6995764a9bf26c711d95f79, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Julius_22_T6
     audioString: you leave me alone.
   - endTalkieAfterThisSegment: 0
@@ -387,7 +387,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 69e0dfb8c7e29374db460124a91b43f3, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Red_23_T1
     audioString: What?!
   - endTalkieAfterThisSegment: 0
@@ -395,15 +395,15 @@ MonoBehaviour:
     onYes: 0
     onNo: 0
     leftCharacter: 1
-    leftEmotionNum: 6
+    leftEmotionNum: 5
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 5
+    rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 69e0dfb8c7e29374db460124a91b43f3, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Red_23_T1
     audioString: '!!!'
   - endTalkieAfterThisSegment: 0
@@ -419,7 +419,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: d94a3aa5c9a40064b8b5ffa15198fcf6, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Marcus_25_T1
     audioString: YOU HEARD THE PRINCE!
   - endTalkieAfterThisSegment: 0
@@ -435,7 +435,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: a400d2020e9ecb649bc5ce5be6c3ea6e, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Brutus_26_T1
     audioString: Yeah...
   - endTalkieAfterThisSegment: 0
@@ -451,7 +451,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 3c5fd668139a06e47a4231a3f10d05af, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Brutus_26_T2
     audioString: you tell them buddy..
   - endTalkieAfterThisSegment: 0
@@ -467,7 +467,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: ffa23db22927fc345915091874e43b30, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Brutus_26_T3
     audioString: yawn...
   - endTalkieAfterThisSegment: 0
@@ -483,7 +483,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 08652a469c25f4e43bb317219a741d5b, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Marcus_27_T1
     audioString: Quiet you!
   - endTalkieAfterThisSegment: 0
@@ -499,7 +499,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 2145ec958e2345b4babd413ade258d9a, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Wally_28_T1
     audioString: We have no choice but to accept.
   - endTalkieAfterThisSegment: 0
@@ -515,7 +515,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 11810ced2eb77994e972e413616bdd64, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Red_29_T1
     audioString: The explorer will be the one to challenge you.
   - endTalkieAfterThisSegment: 0
@@ -531,7 +531,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 8c09b39bcb67ecf4b83912c436830b54, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Red_29_T2
     audioString: They have been learning so much!
   - endTalkieAfterThisSegment: 0
@@ -545,9 +545,9 @@ MonoBehaviour:
     rightCharacter: 7
     rightEmotionNum: 2
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: e60cc3f7bb9127b478be4668a1cdc91f, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Julius_30_T1
     audioString: Alright then let's start.
   - endTalkieAfterThisSegment: 0
@@ -563,7 +563,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: bc62132cda536284295408b65f009f86, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_1_Marcus_26_T1
     audioString: HAHAHA!
   - endTalkieAfterThisSegment: 0
@@ -579,7 +579,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: e560a2f635330474a80ba89adf2c46d9, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_1_Brutus_27_T1
     audioString: Heh Heh Heh!
   - endTalkieAfterThisSegment: 0
@@ -595,7 +595,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 4
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: d4f75906a488b6b439d15adcfbeb2838, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Red_33_T1
     audioString: It's time to put what you've learned to the test!
   - endTalkieAfterThisSegment: 0
@@ -611,7 +611,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 4
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 2afcfc54d76bc414aa0cc7167e67f4d5, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Red_33_T2
     audioString: You've got this explorer!
   - endTalkieAfterThisSegment: 0
@@ -627,6 +627,6 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: df0bafd633a6dbb4e9afaaab3be26dd6, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: P_1_5_Wally_34_T1
     audioString: Good luck.

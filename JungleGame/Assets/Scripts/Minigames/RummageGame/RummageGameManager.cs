@@ -179,6 +179,11 @@ public class RummageGameManager : MonoBehaviour
         // CLICKING ON PILES
         if (pile[0].chosen == true && pileLockArray[0] == false && atPile == false && pileCompleteArray[0] == false)
         {
+
+            pile[1].colliderOff();
+            pile[2].colliderOff();
+            pile[3].colliderOff();
+            pile[4].colliderOff();
             pile[0].pileComplete();
             LockAllPiles();
 
@@ -190,6 +195,10 @@ public class RummageGameManager : MonoBehaviour
         }
         if (pile[1].chosen == true && pileLockArray[1] == false && atPile == false && pileCompleteArray[1] == false)
         {
+            pile[0].colliderOff();
+            pile[2].colliderOff();
+            pile[3].colliderOff();
+            pile[4].colliderOff();
             pile[1].pileComplete();
             LockAllPiles();
 
@@ -201,7 +210,10 @@ public class RummageGameManager : MonoBehaviour
         }
         if (pile[2].chosen == true && pileLockArray[2] == false && atPile == false && pileCompleteArray[2] == false)
         {
-
+            pile[0].colliderOff();
+            pile[1].colliderOff();
+            pile[3].colliderOff();
+            pile[4].colliderOff();
             pile[2].pileComplete();
             LockAllPiles();
 
@@ -213,6 +225,10 @@ public class RummageGameManager : MonoBehaviour
         }
         if (pile[3].chosen == true && pileLockArray[3] == false && atPile == false && pileCompleteArray[3] == false)
         {
+            pile[0].colliderOff();
+            pile[1].colliderOff();
+            pile[2].colliderOff();
+            pile[4].colliderOff();
             pile[3].pileComplete();
             LockAllPiles();
 
@@ -224,6 +240,10 @@ public class RummageGameManager : MonoBehaviour
         }
         if (pile[4].chosen == true && pileLockArray[4] == false && atPile == false && pileCompleteArray[4] == false)
         {
+            pile[0].colliderOff();
+            pile[1].colliderOff();
+            pile[2].colliderOff();
+            pile[3].colliderOff();
             pile[4].pileComplete();
             LockAllPiles();
 
@@ -341,7 +361,11 @@ public class RummageGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         orc.stopOrc();
         atPile = false;
-
+        pile[0].colliderOn();
+        pile[1].colliderOn();
+        pile[2].colliderOn();
+        pile[3].colliderOn();
+        pile[4].colliderOn();
         // play win tune
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
         yield return new WaitForSeconds(1f);
@@ -362,17 +386,22 @@ public class RummageGameManager : MonoBehaviour
 
         timesMissed++;
         orc.failOrc();
-        yield return new WaitForSeconds(.9f);
+        yield return new WaitForSeconds(.75f);
 
         StartCoroutine(pileBounceInCoins(lastLocation-1));
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1.5f);
         stretch.stretchIn();
         yield return new WaitForSeconds(1f);
         orc.GoToOrigin();
         yield return new WaitForSeconds(2.0f);
         orc.stopOrc();
         atPile = false;
-
+        UnlockAllPiles();
+        pile[0].colliderOn();
+        pile[1].colliderOn();
+        pile[2].colliderOn();
+        pile[3].colliderOn();
+        pile[4].colliderOn();
         StartCoroutine(SetPileGlow(true));
     }
 
@@ -402,7 +431,11 @@ public class RummageGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         orc.stopOrc();
         atPile = false;
-
+        pile[0].colliderOn();
+        pile[1].colliderOn();
+        pile[2].colliderOn();
+        pile[3].colliderOn();
+        pile[4].colliderOn();
         // complete and lock pile
         if (lastLocation == 1)
         {
@@ -730,7 +763,7 @@ public class RummageGameManager : MonoBehaviour
         prevMainCoins.Add(selectedRummageCoin.type);
 
         StartCoroutine(DancingManRoutine());
-        StartCoroutine(RepeatWhileWating());
+        //StartCoroutine(RepeatWhileWating());
         waitingForCoinSelection = true;
     }
 

@@ -27,7 +27,7 @@ MonoBehaviour:
     onYes: 1
     onNo: 2
     leftCharacter: 3
-    leftEmotionNum: 1
+    leftEmotionNum: 7
     leftMouthEnum: 1
     leftEyesEnum: 2
     rightCharacter: 0

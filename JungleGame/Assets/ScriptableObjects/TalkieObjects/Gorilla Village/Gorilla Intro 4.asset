@@ -241,7 +241,7 @@ MonoBehaviour:
     rightCharacter: 3
     rightEmotionNum: 8
     rightMouthEnum: 1
-    rightEyesEnum: 4
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: da52f5633a084574ca26e01f8e19235d, type: 3}
     audioClipName: P_1_1_Darwin_47_T2

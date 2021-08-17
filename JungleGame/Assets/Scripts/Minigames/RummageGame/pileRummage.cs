@@ -9,6 +9,7 @@ public class pileRummage : MonoBehaviour
     private const int maxPile = 1;
     public bool chosen = false;
     public bool currPileLock = true;
+    public GameObject currPileObj;
 
     [Header("Objects")]
     [SerializeField] private SpriteRenderer Pile;
@@ -40,6 +41,15 @@ public class pileRummage : MonoBehaviour
             chosen = true;
             //Debug.Log(Pile.ToString());
         }
+    }
+
+    public void colliderOn()
+    {
+        currPileObj.GetComponent<BoxCollider2D>().enabled = true;
+    }
+    public void colliderOff()
+    {
+        currPileObj.GetComponent<BoxCollider2D>().enabled = false;
     }
 
     public void pileComplete()

@@ -13,8 +13,20 @@ MonoBehaviour:
   m_Name: Village Defeat P2
   m_EditorClassIdentifier: 
   talkieName: Village Defeat P2
+  quipsCollection: 0
+  start: 0
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  endAction: 0
   segmnets:
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 7
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -26,7 +38,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_6_Red_10_T1
     audioString: I don't know why he's acting this way.
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 7
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -38,7 +54,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_6_Wally_11_T1
     audioString: I'm sure we'll find out in time.
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -50,9 +70,13 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_6_Wally_11_T2
     audioString: For now let's move forward
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 3
-    leftMouthEnum: 2
+    leftMouthEnum: 1
     leftEyesEnum: 2
     rightCharacter: 2
     rightEmotionNum: 1
@@ -61,8 +85,12 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: P_1_6_Red_12_T1
-    audioString: For now let's move forward
-  - leftCharacter: 1
+    audioString: I'm sure we'll find out in time.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 4
     leftMouthEnum: 1
     leftEyesEnum: 3
