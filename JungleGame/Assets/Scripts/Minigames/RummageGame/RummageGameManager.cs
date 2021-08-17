@@ -14,7 +14,6 @@ public class RummageGameManager : MonoBehaviour
 
     public bool playingInEditor;
     public bool playTutorial;
-    public float timeBetweenRepeat;
 
     private int timesMissed = 0;
 
@@ -515,6 +514,8 @@ public class RummageGameManager : MonoBehaviour
             StudentInfoSystem.SaveStudentPlayerData();
 
             GameManager.instance.LoadScene("RummageGame", true, 3f);
+
+            yield break;
         }
 
         yield return new WaitForSeconds(1f);
@@ -630,7 +631,6 @@ public class RummageGameManager : MonoBehaviour
 
         // dancing man animation
         StartCoroutine(DancingManRoutine());
-        StartCoroutine(RepeatWhileWating());
         waitingForCoinSelection = true;
     }
 
@@ -765,29 +765,6 @@ public class RummageGameManager : MonoBehaviour
         StartCoroutine(DancingManRoutine());
         //StartCoroutine(RepeatWhileWating());
         waitingForCoinSelection = true;
-    }
-
-    private IEnumerator RepeatWhileWating()
-    {
-        float timer = 0f;
-
-        while (true)
-        {
-            while (playingDancingManAnimation)
-                yield return null;
-
-            if (!waitingForCoinSelection)
-                yield break;  
-
-            timer += Time.deltaTime;
-            if (timer > timeBetweenRepeat)
-            {
-                timer = 0f;
-                StartCoroutine(DancingManRoutine());
-            }
-
-            yield return null;
-        }
     }
 
     private List<RummageCoin> GetCoinPile(int index)

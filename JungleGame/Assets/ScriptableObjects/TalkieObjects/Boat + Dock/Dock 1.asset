@@ -99,6 +99,6 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
-    audioClipName: P_0_1_Red_2_1
+    audioClip: {fileID: 8300000, guid: 0b7869ae9335c584e9190d26a2fe3243, type: 3}
+    audioClipName: P_0_1_Red_2_1_T1
     audioString: Oh! There he is up ahead!
