@@ -13,8 +13,20 @@ MonoBehaviour:
   m_Name: Pre-Minigame
   m_EditorClassIdentifier: 
   talkieName: Pre-Minigame
+  quipsCollection: 0
+  start: 0
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  endAction: 0
   segmnets:
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 13
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -23,10 +35,14 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: f034dfa15a307d34c8cd90278d6dd808, type: 3}
     audioClipName: P_1_1a_Darwin_1_T1
     audioString: Hey wait! Not so fast explorer.
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 1
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -35,6 +51,6 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: fd15f2853518e664abdb2ed17c0f2ad7, type: 3}
     audioClipName: P_1_1a_Darwin_2_T1
     audioString: Come talk to me so I can prepare you for the challenges you'll face!

@@ -1647,6 +1647,41 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 195541474}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &207009082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 207009083}
+  m_Layer: 5
+  m_Name: MarcusChallengePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &207009083
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207009082}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 783881354}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 4983.5, y: -597}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &213499415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2653,7 +2688,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 5201, y: -574}
+  m_AnchoredPosition: {x: 4983.5, y: -597}
   m_SizeDelta: {x: 273.46, y: 275.91}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &245742838
@@ -4038,7 +4073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   overideMapLimit: 0
   mapLimitNum: 0
-  overideGameEvent: 1
+  overideGameEvent: 0
   gameEvent: 5
   overrideStartPosition: 0
   startPos: 0
@@ -4294,12 +4329,15 @@ MonoBehaviour:
   tiger: {fileID: 791726918}
   tigerGVPosSTART: {fileID: 220904384}
   tigerGVPosEND: {fileID: 1783858881}
+  tigerChallengePos: {fileID: 1541952049}
   brutus: {fileID: 713519880}
   brutusGVPosSTART: {fileID: 1227518832}
   brutusGVPosEND: {fileID: 722765193}
+  brutusChallengePos: {fileID: 1409889635}
   marcus: {fileID: 245742836}
   marcusGVPosSTART: {fileID: 509783277}
   marcusGVPosEND: {fileID: 962695242}
+  marcusChallengePos: {fileID: 207009083}
 --- !u!1001 &455048495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6026,7 +6064,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 5423, y: -666}
+  m_AnchoredPosition: {x: 5257, y: -739}
   m_SizeDelta: {x: 282.6, y: 320.88}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &713519882
@@ -6548,6 +6586,9 @@ RectTransform:
   - {fileID: 962695242}
   - {fileID: 1227518832}
   - {fileID: 722765193}
+  - {fileID: 1541952049}
+  - {fileID: 207009083}
+  - {fileID: 1409889635}
   m_Father: {fileID: 1467377869}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6593,7 +6634,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 5085, y: -687}
+  m_AnchoredPosition: {x: 4885, y: -768}
   m_SizeDelta: {x: 450.13, y: 293.57}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &791726920
@@ -11225,6 +11266,41 @@ RectTransform:
   m_AnchoredPosition: {x: -6543, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1409889634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1409889635}
+  m_Layer: 5
+  m_Name: BrutusChallengePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1409889635
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409889634}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 783881354}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 5257, y: -739}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1410362592
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12581,6 +12657,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539248796}
   m_CullTransparentMesh: 0
+--- !u!1 &1541952048
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1541952049}
+  m_Layer: 5
+  m_Name: TigerChallengePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1541952049
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541952048}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 783881354}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 4885, y: -768}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1559796129
 GameObject:
   m_ObjectHideFlags: 0
@@ -14818,7 +14929,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 5014.79, y: -800}
+  m_AnchoredPosition: {x: 4613, y: -1357}
   m_SizeDelta: {x: 229.58, y: 245.64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1874534198
@@ -14860,7 +14971,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 281793ad3560cb24f9f44041790fc750, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 902433a307ad3e246b5f18a973733372, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

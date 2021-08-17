@@ -13,14 +13,20 @@ MonoBehaviour:
   m_Name: Gorilla Intro 5
   m_EditorClassIdentifier: 
   talkieName: Gorilla Intro 5
+  quipsCollection: 0
   start: 1
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
   ending: 1
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
+  endAction: 0
   segmnets:
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 8
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -29,10 +35,14 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 2d8f277efbc83f54a8f697ed5e3b7cc0, type: 3}
     audioClipName: P_1_1_Darwin_54_T1
     audioString: Oh!
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 1
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -41,10 +51,14 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 73aeaf95d3d2278468f7e48d70b2e076, type: 3}
     audioClipName: P_1_1_Darwin_54_T2
     audioString: Before you run off explorer...
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 2
     leftMouthEnum: 1
     leftEyesEnum: 3
@@ -53,10 +67,14 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 89a49a340ad192b438dcf3f3f3b2e9fc, type: 3}
     audioClipName: P_1_1_Darwin_54_T3
     audioString: Let me help you navigate the area.
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 10
     leftMouthEnum: 1
     leftEyesEnum: 4
@@ -65,6 +83,6 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 57414fd256ea5594397cc7d3ed54c189, type: 3}
     audioClipName: P_1_1_Darwin_54_T4
     audioString: tap on me when you're ready!

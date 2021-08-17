@@ -20,8 +20,13 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
+  endAction: 0
   segmnets:
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 9
     leftMouthEnum: 1
     leftEyesEnum: 4
@@ -30,10 +35,14 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: f5ba6485451107d44827b40b4a35ddf9, type: 3}
     audioClipName: P_1_3_Darwin_1_T1
     audioString: Hmm.... I can't seem to remember...
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 7
     leftMouthEnum: 1
     leftEyesEnum: 4
@@ -42,10 +51,14 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 3932c36c966733a468f4ae51d70c8223, type: 3}
     audioClipName: P_1_3_Darwin_1a_T1
     audioString: Hmm... think think think....
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 12
     leftMouthEnum: 1
     leftEyesEnum: 4
@@ -54,10 +67,14 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 51f2a2be9c7bbec4ba16ad9c2e7aed61, type: 3}
     audioClipName: P_1_3_Darwin_1b_T1
     audioString: .... what happened here...
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 9
     leftMouthEnum: 2
     leftEyesEnum: 4
@@ -66,10 +83,14 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: a612a9b218e04f140b966ca4712edfa1, type: 3}
     audioClipName: P_1_3_Darwin_1c_T1
     audioString: Hmm...
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 12
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -78,10 +99,14 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 37df63710e37b834f9a8d0e1fbd678e7, type: 3}
     audioClipName: P_1_3_Darwin_1d_T1
     audioString: I'm sure I'll think of something soon explorer...
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 9
     leftMouthEnum: 1
     leftEyesEnum: 4
@@ -90,6 +115,6 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 628410da258ed9c4799dae276557f321, type: 3}
     audioClipName: P_1_3_Darwin_1d_T2
     audioString: I hope...

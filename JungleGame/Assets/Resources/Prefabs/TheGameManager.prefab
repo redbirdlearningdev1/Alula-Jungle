@@ -9633,8 +9633,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotContinueToGame: 0
   talkiePlaying: 0
-  talkieMoveSpeed: 0.5
-  talkieDeactivateSpeed: 0.5
+  talkieMoveSpeed: 0.25
+  talkieDeactivateSpeed: 0.25
   leftTalkie: {fileID: 2725319633311727417}
   rightTalkie: {fileID: 3056509535328771376}
   leftImage: {fileID: 7050390222423205125}

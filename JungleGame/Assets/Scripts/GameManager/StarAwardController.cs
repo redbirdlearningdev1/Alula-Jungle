@@ -229,6 +229,7 @@ public class StarAwardController : MonoBehaviour
         DropdownToolbar.instance.AwardGoldCoins(1);
 
         StartCoroutine(ScaleObjectRoutine(star, shortScaleTime, normalScale));
+        yield return new WaitForSeconds(shortScaleTime);
     }
 
     private IEnumerator GrowObject(GameObject gameObject)

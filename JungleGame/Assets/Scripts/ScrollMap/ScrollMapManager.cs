@@ -352,15 +352,21 @@ public class ScrollMapManager : MonoBehaviour
                         yield return null;
 
                     // move darwin off screen
-                    yield return new WaitForSeconds(2f);
+                    MapAnimationController.instance.GorillaExitAnimationGV();
+                    // wait for animation to be done
+                    while (!MapAnimationController.instance.animationDone)
+                        yield return null;
 
                     // play village rebuilt talkie 2
                     TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageRebuilt_2);
                     while (TalkieManager.instance.talkiePlaying)
                         yield return null;
 
-                    // move tiger and monkeys on screen
-                    yield return new WaitForSeconds(2f);
+                    // tiger and monkies walk in
+                    MapAnimationController.instance.TigerAndMonkiesWalkIn();
+                    // wait for animation to be done
+                    while (!MapAnimationController.instance.animationDone)
+                        yield return null;
 
                     // play village rebuilt talkie 3
                     TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageRebuilt_3);
@@ -368,6 +374,12 @@ public class ScrollMapManager : MonoBehaviour
                         yield return null;
 
                     // challenge game begins
+                    MapAnimationController.instance.TigerAndMonkiesChallengePos();
+                    // wait for animation to be done
+                    while (!MapAnimationController.instance.animationDone)
+                        yield return null;
+
+                    // make challenge games active
 
                     // save to sis and continue
                     StudentInfoSystem.AdvanceStoryBeat();
@@ -379,6 +391,13 @@ public class ScrollMapManager : MonoBehaviour
         {
             // place gorilla off-screen
             MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
+
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusChallengePos.position;
+
+            // make challenge games active
         }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {

@@ -51,10 +51,37 @@ public class TalkieDatabase : MonoBehaviour
     public List<TalkieDatabaseEntry> brutusSprites;
     public List<TalkieDatabaseEntry> lesterSprites;
 
+    private List<TalkieObject> globalTalkieList; // list of all talkies in this database
+
     void Awake()
     {
         if (instance == null)
             instance = this;
+    }
+
+    public List<TalkieObject> GetGlobalTalkieList()
+    {
+        globalTalkieList = new List<TalkieObject>();
+        
+        globalTalkieList.Add(boatGame);
+        globalTalkieList.Add(dock_1);
+        globalTalkieList.Add(dock_2);
+        globalTalkieList.Add(gorillaIntro_1);
+        globalTalkieList.Add(gorillaIntro_2);
+        globalTalkieList.Add(gorillaIntro_3);
+        globalTalkieList.Add(gorillaIntro_4);
+        globalTalkieList.Add(gorillaIntro_5);
+        globalTalkieList.Add(pre_minigame);
+        globalTalkieList.Add(pre_darwin);
+        globalTalkieList.Add(red_notices_lester);
+        globalTalkieList.Add(darwin_forces);
+        globalTalkieList.Add(lester_intro_1);
+        globalTalkieList.Add(villageRebuilt_1);
+        globalTalkieList.Add(villageRebuilt_2);
+        globalTalkieList.Add(villageRebuilt_3);
+        globalTalkieList.Add(darwinQuips);
+
+        return globalTalkieList;
     }
 
     // finds correct sprite, else returns null

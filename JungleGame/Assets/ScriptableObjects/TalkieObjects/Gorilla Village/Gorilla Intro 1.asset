@@ -13,14 +13,20 @@ MonoBehaviour:
   m_Name: Gorilla Intro 1
   m_EditorClassIdentifier: 
   talkieName: Gorilla Intro 1
+  quipsCollection: 0
   start: 0
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
   ending: 2
   removeBackgroundAfterTalkie: 0
   removeLetterboxAfterTalkie: 0
+  endAction: 0
   segmnets:
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -29,10 +35,14 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 4
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 9b95682266759d3469f5fdfc536fd13e, type: 3}
     audioClipName: P_1_1_Red_0_T1
     audioString: Hello Darwin! It's been a while!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -41,10 +51,14 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 8f773df2cb886784b9334e1ea97e708d, type: 3}
     audioClipName: P_1_1_Darwin_1_T1
     audioString: OH!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -53,10 +67,14 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 92d31d06e930ce8458a2cea8c6ded0b8, type: 3}
     audioClipName: P_1_1_Darwin_2_T1
     audioString: Hi there Red! It's good to see you!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -65,10 +83,14 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 0e5045655ece6574798424a3f3a701a8, type: 3}
     audioClipName: P_1_1_Darwin_2_T2
     audioString: '! .... Uhh'
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -77,10 +99,14 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: a8c6daa9dcbdc794faeea20601f32d3f, type: 3}
     audioClipName: P_1_1_Darwin_2_T3
     audioString: see you have others with you.
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 12
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -89,10 +115,14 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 27aa53a54c38ab341a558d07de5c629f, type: 3}
     audioClipName: P_1_1_Red_3_T1
     audioString: Yes! This is Wally
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 12
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -101,10 +131,14 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 1eedf80c4f79266418e0dcea8fe1a314, type: 3}
     audioClipName: P_1_1_Wally_4_T1
     audioString: Hey.
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 12
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -113,11 +147,15 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: fc8121f3289985c4297d3b962077efe9, type: 3}
     audioClipName: P_1_1_Red_5_T1
     audioString: And this here is the explorer! They're super smart and can't wait
       to help and learn!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -126,10 +164,14 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: f42537c8281a54f459b34d6424803b3e, type: 3}
     audioClipName: P_1_1_Darwin_6_T1
     audioString: Hi to the both of you! As Red said earlier my name is
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -138,10 +180,14 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 2d8dc9ccb06afd94d8a8b28345ce1e66, type: 3}
     audioClipName: P_1_1_Darwin_6_T2
     audioString: ... uh Darwin ...
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -150,10 +196,14 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: d9ed2a554b335b94e97ea7e7f45a4d60, type: 3}
     audioClipName: P_1_1_Darwin_6_T3
     audioString: You see... I used to be the king's most trusted....
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -162,10 +212,14 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 9414dbe6961e76647952e65c86a4d7fe, type: 3}
     audioClipName: P_1_1_Darwin_6_T4
     audioString: Uhhh...
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -174,10 +228,14 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 123ca88254ddc5d4996674832fcceabe, type: 3}
     audioClipName: P_1_1_Darwin_6_T5
     audioString: Advisor!!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -186,10 +244,14 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 2ce1cd54fde4bb04c8f32c99b3a456a5, type: 3}
     audioClipName: P_1_1_Darwin_6_T6
     audioString: Yes advisor!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -198,11 +260,15 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 53caf8fc2972fcb49b9919c662a9a5bc, type: 3}
     audioClipName: P_1_1_Darwin_6_T7
     audioString: However... Adventure was calling my name and I just had to see what's
       out there!
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -211,10 +277,14 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 964b1d563e1a8e74b964669b93740e44, type: 3}
     audioClipName: P_1_1_Wally_7_T1
     audioString: Red was saying earlier that the king is away? Why is that?
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 8
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -223,10 +293,14 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 3229a9705d45e274393cbdc79f5f18de, type: 3}
     audioClipName: P_1_1_Darwin_8_T1
     audioString: Oh right!
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 7
     leftMouthEnum: 1
     leftEyesEnum: 4
@@ -235,10 +309,14 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: eae5170cf1ae9304691099ea744eb4a4, type: 3}
     audioClipName: P_1_1_Darwin_8_T2
     audioString: Yes yes the king is away to...
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 9
     leftMouthEnum: 1
     leftEyesEnum: 4
@@ -247,10 +325,14 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 3a805641f9b7f04479dc5303905e9469, type: 3}
     audioClipName: P_1_1_Darwin_8_T3
     audioString: Uh...
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 4
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -259,10 +341,14 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 29b73e10d8287d3439bbe53089db7d0c, type: 3}
     audioClipName: P_1_1_Darwin_8_T4
     audioString: OH! YES!
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 4
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -271,10 +357,14 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 36e5903c200584247916b83ae71a518f, type: 3}
     audioClipName: P_1_1_Wally_9_T1
     audioString: '!!!'
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 4
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -283,10 +373,14 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 53988e7b7aeadf149a9695b11ba25d1a, type: 3}
     audioClipName: P_1_1_Red_10_T1
     audioString: OH!
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 2
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -295,10 +389,14 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: bc5d406ddcb03da4ba8b61f968523572, type: 3}
     audioClipName: P_1_1_Darwin_11_T1
     audioString: The king went out to help another kingdom in need!
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 11
     leftMouthEnum: 1
     leftEyesEnum: 4
@@ -307,10 +405,14 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: d14c6dd81a1a1344697d297a13a2a4f2, type: 3}
     audioClipName: P_1_1_Darwin_11_T2
     audioString: How silly of me to forget.
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 7
     leftMouthEnum: 1
     leftEyesEnum: 4
@@ -319,10 +421,14 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 88bc25c84aeed4b4ea154674cf9d3f92, type: 3}
     audioClipName: P_1_1_Darwin_11_T3
     audioString: A kin king indeed...
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 2
     leftMouthEnum: 1
     leftEyesEnum: 3
@@ -331,10 +437,14 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: b9a93f88666fa2e4c8da85e8260efa9e, type: 3}
     audioClipName: P_1_1_Darwin_11_T4
     audioString: I even remember when he had Julius!
-  - leftCharacter: 3
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 3
     leftEmotionNum: 4
     leftMouthEnum: 1
     leftEyesEnum: 3
@@ -343,6 +453,6 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: e2289179ba9a17d42a060acae1f197b6, type: 3}
     audioClipName: P_1_1_Darwin_11_T5
     audioString: I can't wait to see him again!

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: baby_obj
   m_EditorClassIdentifier: 
   _name: baby
-  audio: {fileID: 8300000, guid: 58bf3f9ffb9c5814385890900047b2f9, type: 3}
+  audio: {fileID: 8300000, guid: 8b27351136cd7e94fb4cba1d6029e80e, type: 3}
   elkoninValue: 21
   animation: baby
   _enum: 20

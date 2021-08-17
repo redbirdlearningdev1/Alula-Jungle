@@ -4196,6 +4196,11 @@ PrefabInstance:
       propertyPath: logIndex
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2863203264575560310, guid: 491ed0cca28cda34e8dc92a68aa0a61c,
+        type: 3}
+      propertyPath: logParent
+      value: 
+      objectReference: {fileID: 351251488}
     - target: {fileID: 7816498351022885100, guid: 491ed0cca28cda34e8dc92a68aa0a61c,
         type: 3}
       propertyPath: m_Pivot.x
@@ -7892,7 +7897,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4bc747b975f842a4982b881611466081, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
