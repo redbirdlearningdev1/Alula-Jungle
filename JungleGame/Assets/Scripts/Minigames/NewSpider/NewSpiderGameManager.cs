@@ -179,6 +179,7 @@ public class NewSpiderGameManager : MonoBehaviour
         bug.webGetEat();
         yield return new WaitForSeconds(.5f);
         webber2.gameObject.SetActive(false);
+        yield return new WaitForSeconds(.5f);
         StartCoroutine(StartGame(0));
     }
 

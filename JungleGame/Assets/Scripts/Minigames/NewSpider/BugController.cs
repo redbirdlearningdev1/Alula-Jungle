@@ -39,6 +39,7 @@ public class BugController : MonoBehaviour
     public void StartToWeb()
     {
         shrink();
+        animator.Play("Fly");
         StartCoroutine(ReturnToWebRoutine(WebLand));
         StartCoroutine(landRoutine());
     }
@@ -186,7 +187,7 @@ public class BugController : MonoBehaviour
 
     public void webGetEat()
     {
-
+        
         StartCoroutine(leaveWebRoutine(WebEat));
     }
 

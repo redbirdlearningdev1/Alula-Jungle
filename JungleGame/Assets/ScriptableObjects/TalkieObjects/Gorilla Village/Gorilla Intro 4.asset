@@ -13,14 +13,20 @@ MonoBehaviour:
   m_Name: Gorilla Intro 4
   m_EditorClassIdentifier: 
   talkieName: Gorilla Intro 4
+  quipsCollection: 0
   start: 0
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
   ending: 0
   removeBackgroundAfterTalkie: 0
   removeLetterboxAfterTalkie: 0
+  endAction: 0
   segmnets:
-  - leftCharacter: 2
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 2
     leftEmotionNum: 8
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -32,7 +38,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Wally_40_T1
     audioString: If this is the prince we're supposed to help
-  - leftCharacter: 2
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 2
     leftEmotionNum: 7
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -44,7 +54,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Wally_40_T2
     audioString: Then we're in big trouble.
-  - leftCharacter: 2
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 2
     leftEmotionNum: 7
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -56,7 +70,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Darwin_41_T1
     audioString: I wonder what's gotten into him...
-  - leftCharacter: 2
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 2
     leftEmotionNum: 7
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -68,7 +86,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Darwin_41_T2
     audioString: He's always been a.....little.....troublemaker....
-  - leftCharacter: 2
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 2
     leftEmotionNum: 7
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -80,7 +102,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Darwin_41_T3
     audioString: But he's never acted out like...
-  - leftCharacter: 2
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 2
     leftEmotionNum: 7
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -92,7 +118,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Darwin_41_T4
     audioString: ummm... this....
-  - leftCharacter: 2
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 2
     leftEmotionNum: 9
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -104,7 +134,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Wally_42_T1
     audioString: So this type of behavior is new for him?
-  - leftCharacter: 2
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 2
     leftEmotionNum: 8
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -116,7 +150,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Darwin_43_T1
     audioString: That's... uhh right
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 7
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -128,7 +166,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Red_44_T1
     audioString: Then we must catch up to him and figure out what's wrong
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 6
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -140,7 +182,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Wally_45_T1
     audioString: I agree.
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 9
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -152,7 +198,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Red_46_T1
     audioString: Darwin, you know the prince the most.
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 7
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -164,7 +214,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Red_46_T2
     audioString: Can you think of anything that'll help him
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 10
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -176,19 +230,27 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Darwin_47_T1
     audioString: Hmm...
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 10
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
     rightEmotionNum: 8
     rightMouthEnum: 1
-    rightEyesEnum: 4
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Darwin_47_T2
     audioString: Perhaps julius has forgotten about how good he really is....
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 9
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -200,7 +262,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Red_48_T1
     audioString: Then maybe you can help him remember!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 10
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -212,7 +278,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Darwin_49_T1
     audioString: You're right!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 10
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -224,7 +294,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Darwin_49_T2
     audioString: However....
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 10
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -236,7 +310,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Darwin_49_T2
     audioString: I can't seem to remember anything specific
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -248,7 +326,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Darwin_50_T1
     audioString: With this mess I can't seem to think straight!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -260,7 +342,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Red_51_T1
     audioString: My friends and I can clean up while you think on things!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 13
     leftMouthEnum: 1
     leftEyesEnum: 4
@@ -272,7 +358,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Red_51_T2
     audioString: Besides, we shouldn't leave things messy anyway!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -284,7 +374,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Darwin_52_T1
     audioString: Alright!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -296,7 +390,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Darwin_52_T2
     audioString: Uhhh....
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -308,7 +406,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Darwin_52_T3
     audioString: I'll leave it to you guys!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -320,7 +422,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Red_53_T1
     audioString: Okay Explorer!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 3
     leftMouthEnum: 1
     leftEyesEnum: 3
@@ -332,7 +438,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Red_53_T2
     audioString: Let's clean things up!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 2
     leftMouthEnum: 1
     leftEyesEnum: 2

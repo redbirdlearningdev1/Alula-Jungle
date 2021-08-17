@@ -451,6 +451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chosen: 0
   currPileLock: 1
+  currPileObj: {fileID: 54219725}
   Pile: {fileID: 54219731}
   pileSprites:
   - {fileID: 21300000, guid: 59884b45bb7b8d94ab05dc1ca9457ed0, type: 3}
@@ -1346,6 +1347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chosen: 0
   currPileLock: 1
+  currPileObj: {fileID: 249842713}
   Pile: {fileID: 249842719}
   pileSprites:
   - {fileID: 21300000, guid: 0986b487c01db184d9f5410c8c78a408, type: 3}
@@ -1529,7 +1531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b50bb302fe09c346a637cd003e82718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playingInEditor: 0
+  playingInEditor: 1
   playTutorial: 0
   timeBetweenRepeat: 5
   orc: {fileID: 606159618}
@@ -2108,6 +2110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chosen: 0
   currPileLock: 1
+  currPileObj: {fileID: 415175608}
   Pile: {fileID: 415175614}
   pileSprites:
   - {fileID: 21300000, guid: b3403c1175cd9484eb12f38c843c024a, type: 3}
@@ -3263,6 +3266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chosen: 0
   currPileLock: 1
+  currPileObj: {fileID: 844582073}
   Pile: {fileID: 844582079}
   pileSprites:
   - {fileID: 21300000, guid: c173226795b38904eb1a4189ae970460, type: 3}
@@ -3324,7 +3328,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c173226795b38904eb1a4189ae970460, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6280,6 +6284,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2010965934}
   - component: {fileID: 2010965936}
+  - component: {fileID: 2010965938}
+  - component: {fileID: 2010965937}
   - component: {fileID: 2010965935}
   m_Layer: 5
   m_Name: orcShadow
@@ -6316,27 +6322,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2010965933}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 1079903dea97669479baaf0a369f1a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0adeb2a52d53a824bb8c06732a850f5a, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  autoSizeToRect: 0
+  rect: {fileID: 2010965934}
+  extraPaddingMultiplier: 0
+  spriteResolution: {x: 200, y: 192}
+  scale: 1
 --- !u!222 &2010965936
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6345,6 +6338,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010965933}
   m_CullTransparentMesh: 1
+--- !u!114 &2010965937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010965933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f6d3c6e4250e84192f5b34ce9e71bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowColor: {r: 1, g: 1, b: 1, a: 1}
+  glowBrightness: 1
+  outlineWidth: 0
+  alphaThreshold: 0.01
+  drawOutside: 0
+  enableInstancing: 0
+--- !u!212 &2010965938
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010965933}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -1
+  m_Sprite: {fileID: 21300000, guid: 0adeb2a52d53a824bb8c06732a850f5a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 1
+  m_Size: {x: 200, y: 192}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &2042882688
 GameObject:
   m_ObjectHideFlags: 0
@@ -6656,6 +6718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chosen: 0
   currPileLock: 1
+  currPileObj: {fileID: 2114167955}
   Pile: {fileID: 2114167961}
   pileSprites:
   - {fileID: 21300000, guid: 596d28506a7b67a4fae16a4b1fa3c0d3, type: 3}
@@ -6717,7 +6780,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 596d28506a7b67a4fae16a4b1fa3c0d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

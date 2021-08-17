@@ -20,13 +20,14 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
+  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 1
     onYes: 1
     onNo: 2
     leftCharacter: 3
-    leftEmotionNum: 1
+    leftEmotionNum: 7
     leftMouthEnum: 1
     leftEyesEnum: 2
     rightCharacter: 0

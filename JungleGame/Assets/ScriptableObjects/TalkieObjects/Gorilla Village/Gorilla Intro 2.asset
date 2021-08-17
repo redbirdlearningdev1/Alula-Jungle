@@ -13,14 +13,20 @@ MonoBehaviour:
   m_Name: Gorilla Intro 2
   m_EditorClassIdentifier: 
   talkieName: Gorilla Intro 2
+  quipsCollection: 0
   start: 2
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
   ending: 1
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
+  endAction: 0
   segmnets:
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 3
     leftMouthEnum: 1
     leftEyesEnum: 4
@@ -32,7 +38,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Julius_12_T1
     audioString: I don't know if I can do this guys...
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 5
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -44,7 +54,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Julius_12_T2
     audioString: I'm a bit nervous to run this kingdom on my own...
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 5
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -56,7 +70,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Brutus_13_T1
     audioString: But there's some perks to that though...
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 5
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -68,7 +86,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Brutus_13_T2
     audioString: yawn....
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 6
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -80,7 +102,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Julius_14_T1
     audioString: There is... Brutus?
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -92,7 +118,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Marcus_15_T1
     audioString: THAT'S RIGHT!
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -104,7 +134,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Marcus_15_T2
     audioString: Since you are the future king you can do anything you want! Haha!
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 6
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -116,7 +150,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Julius_16_T1
     audioString: I can.... Marcus??
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 8
     leftMouthEnum: 2
     leftEyesEnum: 4
@@ -128,7 +166,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Brutus_17_T1
     audioString: yeah...
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 8
     leftMouthEnum: 2
     leftEyesEnum: 4
@@ -140,7 +182,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Brutus_17_T2
     audioString: the whole kingdom is yours to do as you please....
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 8
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -152,7 +198,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Marcus_18_T1
     audioString: EXACTLY!!!
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 8
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -164,7 +214,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Marcus_18_T2
     audioString: You can do anything your little heart desires my prince!
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 8
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -176,7 +230,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Marcus_18_T3
     audioString: It is your birthright!
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 8
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -188,7 +246,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Julius_19_T1
     audioString: anything I want...
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -201,7 +263,11 @@ MonoBehaviour:
     audioClipName: P_1_1_Brutus_20_T1
     audioString: Yes, anything you want.... take your frustration and nerves out
       on this village...
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -213,7 +279,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Brutus_20_T2
     audioString: after all...
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -225,7 +295,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Brutus_20_T3
     audioString: It is your kingdom
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -237,7 +311,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Brutus_20_T4
     audioString: This is what you're supposed to do....
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -249,7 +327,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Brutus_20_T5
     audioString: yawn...
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -261,7 +343,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Marcus_21_T1
     audioString: YES YES!
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -273,19 +359,27 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Marcus_21_T2
     audioString: What he said!
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 6
-    rightEmotionNum: 8
+    rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Marcus_21_T3
     audioString: This is your playground my prince!
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 2
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -297,7 +391,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Julius_22_T1
     audioString: You're right!
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 4
     leftMouthEnum: 1
     leftEyesEnum: 3
@@ -309,7 +407,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Julius_22_T2
     audioString: I am the future king!
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 8
     leftMouthEnum: 1
     leftEyesEnum: 1
