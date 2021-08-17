@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: Boat Game
+  m_EditorClassIdentifier: 
+  talkieName: Boat Game
+  start: 0
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  segmnets:
+  - leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 76c705f9df2844a48adae45570185cc0, type: 3}
+    audioClipName: Boat_0_1_Red_1_1_T1
+    audioString: Hey there explorer!
+  - leftCharacter: 1
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: e71b5b148fd3d0a4fa9787e60f410141, type: 3}
+    audioClipName: Boat_0_1_Red_1_1_T2
+    audioString: "I\u2019m so excited to see you!"
+  - leftCharacter: 1
+    leftEmotionNum: 3
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 8a985d1cbddfe7a4b824daac63039a5a, type: 3}
+    audioClipName: Boat_0_1_Red_1_1_T3
+    audioString: Thank you for agreeing to come along with me on such a short notice!
+  - leftCharacter: 1
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 90598ece13a099749a3d895e9256aa0a, type: 3}
+    audioClipName: Boat_0_1_Red_2_1_T1
+    audioString: You see, my friend Darwin said that he needs help watching over
+      the Jungle kingdom while the king is away.
+  - leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 58179914dd081d5449185e2a839d8de1, type: 3}
+    audioClipName: Boat_0_1_Red_2_1_T2
+    audioString: Prince Julius has been put in charge all by himself, and needs as
+      much help as he can get!
+  - leftCharacter: 1
+    leftEmotionNum: 3
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 05d86d849dde00c488b421bc8e339b60, type: 3}
+    audioClipName: Boat_0_1_Red_3_1_T3
+    audioString: I know how reliable you are, friend, that's why I'm so happy you
+      agreed to come along with us!
+  - leftCharacter: 1
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: fba4883860dcc1641b5bf8f07c65ed77, type: 3}
+    audioClipName: Boat_0_1_Red_3_1_T2
+    audioString: "Plus, this jungle is full of exciting games so I know that we\u2019ll
+      have so much fun!"

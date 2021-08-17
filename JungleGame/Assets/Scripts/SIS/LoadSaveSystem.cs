@@ -10,13 +10,16 @@ using UnityEditor;
 public static class LoadSaveSystem
 {
     // default student player values
-    public static string default_version = "1.5";
+    public static string default_version = "1.6"; 
+    // 1.6 added stickers to SIS
+
     public static string default_name = "empty";
     public static int    default_stars = 0;
     public static int    default_map_limit = 0;
 
     public static int   default_micDevice = 0;
 
+    public static bool  default_stickerTutorial = false;
     public static bool  default_froggerTutorial = false;
     public static bool  default_turntablesTutorial = false;
     public static bool  default_spiderwebTutorial = false;
@@ -29,7 +32,6 @@ public static class LoadSaveSystem
     public static bool  default_mapDataFixed = false;
 
     public static int default_gold_coins = 0;
-    public static int default_silver_coins = 0;
 
 
 
@@ -102,7 +104,6 @@ public static class LoadSaveSystem
 
         // coins
         new_data.goldCoins = default_gold_coins;
-        new_data.sliverCoins = default_silver_coins;
 
         // settings
         new_data.masterVol =    AudioManager.default_masterVol;
@@ -112,10 +113,11 @@ public static class LoadSaveSystem
         new_data.micDevice =    default_micDevice;
 
         // tutorials
-        new_data.froggerTutorial = default_froggerTutorial;
-        new_data.froggerTutorial = default_turntablesTutorial;
-        new_data.froggerTutorial = default_spiderwebTutorial;
-        new_data.froggerTutorial = default_rummageTutorial;
+        new_data.stickerTutorial =      default_stickerTutorial;
+        new_data.froggerTutorial =      default_froggerTutorial;
+        new_data.turntablesTutorial =   default_turntablesTutorial;
+        new_data.spiderwebTutorial =    default_spiderwebTutorial;
+        new_data.rummageTutorial =      default_rummageTutorial;
 
         // story + map data
         new_data.unlockedStickerButton = default_unlockedStickerButton;
@@ -137,6 +139,9 @@ public static class LoadSaveSystem
         new_data.mapData.GV_house2.stars =   default_mapDataStars;
         new_data.mapData.GV_fire.stars =     default_mapDataStars;
         new_data.mapData.GV_statue.stars =   default_mapDataStars;
+
+        // stickers
+        new_data.unlockedStickers = new List<Sticker>();
 
         // save data as incative profile
         SaveStudentData(new_data, true);

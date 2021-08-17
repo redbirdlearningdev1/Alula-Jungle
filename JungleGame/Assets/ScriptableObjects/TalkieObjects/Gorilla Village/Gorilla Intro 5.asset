@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: Gorilla Intro 5
   m_EditorClassIdentifier: 
   talkieName: Gorilla Intro 5
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 1
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
   segmnets:
   - leftCharacter: 3
     leftEmotionNum: 8

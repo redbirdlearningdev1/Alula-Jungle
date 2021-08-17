@@ -15,8 +15,8 @@ public class IslandCutoutController : MonoBehaviour
     public Transform mainIslandParent;
     public float moveSpeed;
     public SpriteRenderer outline;
-    public SpriteWiggleController outlineWiggleController;
-    public SpriteWiggleController cutoutWiggleController;
+    public WiggleController outlineWiggleController;
+    public WiggleController cutoutWiggleController;
 
     // follow transform varibales
     private bool followTransform = false;

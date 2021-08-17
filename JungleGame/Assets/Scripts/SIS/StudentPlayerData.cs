@@ -11,8 +11,11 @@ public enum StoryBeat
 {
     InitBoatGame, // 0
     UnlockGorillaVillage, // 1
-    PrologueStoryGame, // 2
-    StickerTutorial, // 3
+    GorillaVillageIntro, // 2
+    PrologueStoryGame, // 3
+    RedShowsStickerButton, // 4
+    VillageRebuilt, // 5
+    ChallengeGames_GorillaVillage, // 6
     COUNT
 }
 
@@ -28,7 +31,6 @@ public class StudentPlayerData
 
     // coins
     public int goldCoins;
-    public int sliverCoins;
 
     // settings options
     public float masterVol;
@@ -38,6 +40,7 @@ public class StudentPlayerData
     public int micDevice;
 
     // tutorial bools
+    public bool stickerTutorial;
     public bool froggerTutorial;
     public bool turntablesTutorial;
     public bool spiderwebTutorial;
@@ -49,6 +52,9 @@ public class StudentPlayerData
 
     // map data
     public MapData mapData;
+
+    // sticker data
+    public List<Sticker> unlockedStickers;
 }
 
 [System.Serializable]

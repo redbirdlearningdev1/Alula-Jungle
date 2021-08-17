@@ -1,0 +1,500 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class WagonWindowController : MonoBehaviour
+{
+    public static WagonWindowController instance;
+
+    [Header("Stickers")]
+    [SerializeField] private GameObject wagon;
+    [SerializeField] private GameObject Book, Board, BackWindow, Gecko;
+    [SerializeField] private Animator Wagon;
+    [SerializeField] private Animator GeckoAnim;
+    private bool stickerCartOut;
+    private bool cartBusy;
+    private bool stickerButtonsDisabled;
+
+    public Transform cartStartPosition;
+    public Transform cartOnScreenPosition;
+    public Transform cartOffScreenPosition;
+
+    [Header("Sticker Reveal")]
+    public Transform revealSticker;
+    
+    public float hiddenRevealScale;
+    public float maxRevealScale;
+    public float normalRevealScale;
+
+    public float longScaleRevealTime;
+    public float shortScaleRevealTime;
+
+    private bool waitingOnPlayerInput = false;
+
+    [Header("Confirm Purchace Window")]
+    [SerializeField] private GameObject window;
+    public float hiddenScale;
+    public float maxScale;
+    public float normalScale;
+    private bool windowUp;
+
+    public float longScaleTime;
+    public float shortScaleTime;
+
+
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+
+        // sticker stuff
+        Book.SetActive(false);
+        Board.SetActive(false);
+        BackWindow.SetActive(false);
+
+        // reset window
+        window.transform.localScale = new Vector3(hiddenScale, hiddenScale, 0f);
+    }
+
+    void Update() 
+    {
+        if (waitingOnPlayerInput)
+        {
+            if ((Input.touchCount > 0 || Input.GetMouseButtonDown(0)))
+            {
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+                waitingOnPlayerInput = false;
+            }
+        }
+    }
+
+    /* 
+    ################################################
+    #   CONFIRM PURCHACE WINDOW METHODS
+    ################################################
+    */
+
+    public void NewWindow()
+    {
+        // return if another window is up
+        if (windowUp)
+            return;
+
+        windowUp = true;
+        StartCoroutine(NewWindowRoutine());
+    }
+
+    public void OnYesButtonPressed()
+    {
+        // check to make sure player has sufficent funds
+        if (StudentInfoSystem.currentStudentPlayer.goldCoins < 3)
+        {
+            // play sound
+            AudioManager.instance.PlayCoinDrop();
+            return;
+        }
+        // if they do, remove coins from player profile
+        else 
+        {
+            DropdownToolbar.instance.RemoveGoldCoins(3);
+        }
+
+        // play sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        windowUp = false;
+        // hide window 
+        StartCoroutine(ShrinkObject(window));
+
+        // remove default background and raycast blocker
+        DefaultBackground.instance.Deactivate();
+
+        // hide toolbar
+        DropdownToolbar.instance.ToggleToolbar(false);
+
+        StartCoroutine(RevealStickerRoutine());
+    }
+
+    private IEnumerator RevealStickerRoutine()
+    {
+        // activate raycast blocker
+        RaycastBlockerController.instance.CreateRaycastBlocker("StickerVideoBlocker");
+
+        // roll for a random sticker
+        Sticker sticker = StickerDatabase.instance.RollForSticker();
+
+        print ("you got a sticker! " + sticker.rarity + " " + sticker.id);
+
+        // save sticker to SIS
+        StudentInfoSystem.SaveStickerToProfile(sticker);
+
+        // fade to black
+        FadeObject.instance.FadeOut(2f);
+        yield return new WaitForSeconds(2f);
+        
+        // Hide GM canavas stuff
+        SettingsManager.instance.ToggleMenuButtonActive(false);
+        SettingsManager.instance.ToggleWagonButtonActive(false);
+        wagon.SetActive(false);
+        BehindUIBackground.instance.Deactivate();
+
+        yield return new WaitForSeconds(0.5f);
+
+        // Fade back in 
+        FadeObject.instance.FadeIn(2f);
+
+        float delay;
+        // play correct video player
+        switch (sticker.rarity)
+        {
+            default:
+            case StickerRarity.Common:
+                ScrollMapManager.instance.commonVP.Play();
+                delay = (float)ScrollMapManager.instance.commonVP.length;
+                break;
+
+            case StickerRarity.Uncommon:
+                ScrollMapManager.instance.uncommonVP.Play();
+                delay = (float)ScrollMapManager.instance.uncommonVP.length;
+                break;
+
+            case StickerRarity.Rare:
+                ScrollMapManager.instance.rareVP.Play();
+                delay = (float)ScrollMapManager.instance.rareVP.length;
+                break;
+
+            case StickerRarity.Legendary:
+                ScrollMapManager.instance.legendaryVP.Play();
+                delay = (float)ScrollMapManager.instance.legendaryVP.length;
+                break;
+        }
+
+        yield return new WaitForSeconds(delay - 1.5f);
+
+        // deactivate raycast blocker
+        RaycastBlockerController.instance.RemoveRaycastBlocker("StickerVideoBlocker");
+
+        // reveal sticker here after certain amount of time
+        StartCoroutine(RevealStickerRoutine(sticker));
+
+        // play lester tutorial if first sticker roll
+        if (!StudentInfoSystem.currentStudentPlayer.stickerTutorial)
+        {
+            // TODO continue lester tutorial + add lester quips
+
+            StudentInfoSystem.currentStudentPlayer.stickerTutorial = true;
+            StudentInfoSystem.SaveStudentPlayerData();
+        }
+
+        // wait for player input to continue
+        waitingOnPlayerInput = true;
+        while (waitingOnPlayerInput)
+            yield return null;
+
+        // activate raycast blocker
+        RaycastBlockerController.instance.CreateRaycastBlocker("StickerVideoBlocker");
+
+        // fade to black
+        FadeObject.instance.FadeOut(2f);
+        yield return new WaitForSeconds(2f);
+        
+        // Reveal GM canavas stuff
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+        SettingsManager.instance.ToggleWagonButtonActive(true);
+        wagon.SetActive(true);
+        GeckoAnim.Play("idle");
+        BehindUIBackground.instance.Activate();
+
+        // stop correct video player
+        switch (sticker.rarity)
+        {
+            default:
+            case StickerRarity.Common:
+                ScrollMapManager.instance.commonVP.Stop();
+                break;
+
+            case StickerRarity.Uncommon:
+                ScrollMapManager.instance.uncommonVP.Stop();
+                break;
+
+            case StickerRarity.Rare:
+                ScrollMapManager.instance.rareVP.Stop();
+                break;
+
+            case StickerRarity.Legendary:
+                ScrollMapManager.instance.legendaryVP.Stop();
+                break;
+        }
+
+        // hide reveal sticker
+        revealSticker.localScale = new Vector3(hiddenRevealScale, hiddenRevealScale, 1f);
+
+        yield return new WaitForSeconds(0.5f);
+
+        // Fade back in 
+        FadeObject.instance.FadeIn(2f);
+
+        // deactivate raycast blocker
+        RaycastBlockerController.instance.RemoveRaycastBlocker("StickerVideoBlocker");
+
+        print ("video over");
+    }
+
+    private IEnumerator RevealStickerRoutine(Sticker sticker)
+    {
+        revealSticker.GetComponent<Image>().sprite = sticker.sprite;
+
+        StartCoroutine(ScaleObjectRoutine(revealSticker.gameObject, longScaleRevealTime, maxRevealScale));
+        yield return new WaitForSeconds(longScaleRevealTime);
+        StartCoroutine(ScaleObjectRoutine(revealSticker.gameObject, shortScaleRevealTime, normalRevealScale));
+    }
+
+    public void OnNoButtonPressed()
+    {
+        // play sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        windowUp = false;
+        // hide window 
+        StartCoroutine(ShrinkObject(window));
+
+        // remove default background and raycast blocker
+        DefaultBackground.instance.Deactivate();
+
+        // hide toolbar
+        DropdownToolbar.instance.ToggleToolbar(false);
+    }
+
+    private IEnumerator NewWindowRoutine()
+    {
+        // add default background and raycast blocker
+        DefaultBackground.instance.Activate();
+
+        // show toolbar
+        DropdownToolbar.instance.ToggleToolbar(true);
+
+        yield return new WaitForSeconds(0.5f);
+
+        // show window
+        StartCoroutine(GrowObject(window));
+    }
+
+    private IEnumerator GrowObject(GameObject gameObject)
+    {
+        StartCoroutine(ScaleObjectRoutine(gameObject, longScaleTime, maxScale));
+        yield return new WaitForSeconds(longScaleTime);
+        StartCoroutine(ScaleObjectRoutine(gameObject, shortScaleTime, normalScale));
+    }
+
+    private IEnumerator ShrinkObject(GameObject gameObject)
+    {
+        StartCoroutine(ScaleObjectRoutine(gameObject, shortScaleTime, maxScale));
+        yield return new WaitForSeconds(shortScaleTime);
+        StartCoroutine(ScaleObjectRoutine(gameObject, longScaleTime, hiddenScale));
+
+        yield return new WaitForSeconds(longScaleTime);
+
+        // HOPE THIS DOESNT CAUSE PROBLEMS LATER
+        //  - at the moment, the only game object that gets shrunken is the game 
+        //    window, so we can reset the window afterwards.
+        // reset window
+        window.transform.localScale = new Vector3(hiddenScale, hiddenScale, 0f);
+    }
+
+    private IEnumerator ScaleObjectRoutine(GameObject gameObject, float time, float scale)
+    {
+        float start = gameObject.transform.localScale.x;
+        float timer = 0f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > time)
+            {
+                gameObject.transform.localScale = new Vector3(scale, scale, 0f);
+                break;
+            }
+
+            float temp = Mathf.Lerp(start, scale, timer / time);
+            gameObject.transform.localScale = new Vector3(temp, temp, 0f);
+            yield return null;
+        }
+    }
+
+    /* 
+    ################################################
+    #   STICKER METHODS
+    ################################################
+    */
+
+    private IEnumerator StickerInputDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        stickerButtonsDisabled = false;
+    }
+
+    public void ToggleCart()
+    {
+        if (cartBusy)
+            return;
+        
+        if (!stickerCartOut)
+            StartCoroutine(RollOnScreen());
+        else
+            StartCoroutine(RollOffScreen());
+
+        stickerCartOut = !stickerCartOut;
+        cartBusy = true;
+    }
+
+    private IEnumerator RollOnScreen()
+    {
+        print ("rolling in!");
+        wagon.transform.position = cartStartPosition.position;
+
+        // disable nav buttons
+        ScrollMapManager.instance.ToggleNavButtons(false);
+        
+        // activate raycast blocker + background
+        RaycastBlockerController.instance.CreateRaycastBlocker("StickerCartBlocker");
+        BehindUIBackground.instance.Activate();
+
+        Wagon.Play("WagonRollIn");
+        StartCoroutine(RollToTargetRoutine(cartOnScreenPosition.position));
+        yield return new WaitForSeconds(2.95f);
+        Wagon.Play("WagonStop");
+        yield return new WaitForSeconds(1f);
+        Wagon.Play("Idle");
+
+        Book.SetActive(true);
+        Board.SetActive(true);
+        BackWindow.SetActive(true);
+        Gecko.SetActive(true);
+        GeckoAnim.Play("geckoIntro");
+
+        // play lester talkies if first time
+        if (!StudentInfoSystem.currentStudentPlayer.stickerTutorial)
+        {
+            // remove wagon button so player cannot leave
+            SettingsManager.instance.ToggleWagonButtonActive(false);
+
+            // play village rebuilt talkie 3
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.lester_intro_1);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+        }
+
+        // deactivate raycast blocker
+        RaycastBlockerController.instance.RemoveRaycastBlocker("StickerCartBlocker");
+        cartBusy = false;
+    }
+
+    private IEnumerator RollOffScreen()
+    {
+        print ("rolling off!");
+
+        // activate raycast blocker + background
+        RaycastBlockerController.instance.CreateRaycastBlocker("StickerCartBlocker");
+
+        // roll off screen
+        Wagon.Play("WagonRollIn");
+        Book.SetActive(false);
+        Board.SetActive(false);
+        BackWindow.SetActive(false);
+        Gecko.SetActive(false);
+
+        StartCoroutine(RollToTargetRoutine(cartOffScreenPosition.position));
+        yield return new WaitForSeconds(3f);
+        // return cart to start pos
+        wagon.transform.position = cartStartPosition.position;
+        Wagon.Play("Idle");
+
+        // deactivate raycast blocker + background
+        RaycastBlockerController.instance.RemoveRaycastBlocker("StickerCartBlocker");
+        BehindUIBackground.instance.Deactivate();
+        cartBusy = false;
+
+        // enable nav buttons
+        ScrollMapManager.instance.ToggleNavButtons(true);
+
+        // check for scroll map game events
+        ScrollMapManager.instance.CheckForGameEvent();
+    }
+
+    public void ResetWagonController()
+    {
+        Book.SetActive(false);
+        Board.SetActive(false);
+        BackWindow.SetActive(false);
+        Gecko.SetActive(false);
+
+        wagon.transform.position = cartStartPosition.position;
+        Wagon.Play("Idle");
+
+        // deactivate raycast blocker + background
+        RaycastBlockerController.instance.RemoveRaycastBlocker("StickerCartBlocker");
+        BehindUIBackground.instance.Deactivate();
+        cartBusy = false;
+
+        // enable nav buttons
+        if (SceneManager.GetActiveScene().name == "ScrollMap")
+            ScrollMapManager.instance.ToggleNavButtons(true);
+
+        // hide window 
+        StartCoroutine(ShrinkObject(window));
+    }
+
+    private IEnumerator RollToTargetRoutine(Vector3 target)
+    {
+        Vector3 currStart = wagon.transform.position;
+        float timer = 0f;
+        float maxTime = .75f;
+
+        while (true)
+        {
+            // animate movement
+            timer += Time.deltaTime * .25f;
+            if (timer < maxTime)
+            {
+                wagon.transform.position = Vector3.Lerp(currStart, target, timer / maxTime);
+            }
+            else
+            {
+                wagon.transform.position = target;
+                yield break;
+            }
+            
+            yield return null;
+        }
+    }
+
+    private IEnumerator CartRaycastBlockerRoutine(bool opt)
+    {
+        float start, end;
+        if (opt)
+        {
+            start = 0f;
+            end = 0.75f;
+        }
+        else
+        {
+            start = 0.75f;
+            end = 0f;
+        }
+        float timer = 0f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > 1f)
+            {
+                break;
+            }
+
+            float tempAlpha = Mathf.Lerp(start, end, timer / 1f);
+            yield return null;
+        }
+    }
+}

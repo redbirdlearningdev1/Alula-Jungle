@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: Gorilla Intro 2
   m_EditorClassIdentifier: 
   talkieName: Gorilla Intro 2
+  start: 2
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 1
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
   segmnets:
   - leftCharacter: 7
     leftEmotionNum: 3
@@ -287,7 +293,7 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Julius_22_T1
     audioString: You're right!
@@ -299,7 +305,7 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Julius_22_T2
     audioString: I am the future king!
@@ -311,7 +317,7 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: P_1_1_Julius_22_T3
     audioString: I can do as i want!

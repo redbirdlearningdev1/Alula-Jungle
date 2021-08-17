@@ -372,7 +372,7 @@ public class StoryGameManager : MonoBehaviour
 
     private IEnumerator StartMicrophoneIndicator()
     {
-        microphone.GetComponent<SpriteWiggleController>().StartWiggle();
+        microphone.GetComponent<WiggleController>().StartWiggle();
         microphone.GetComponent<GlowOutlineController>().ToggleGlowOutline(true);
         float timer = 0f;
 
@@ -392,7 +392,7 @@ public class StoryGameManager : MonoBehaviour
 
     private IEnumerator StopMicrophoneIndicator()
     {
-        microphone.GetComponent<SpriteWiggleController>().StopWiggle();
+        microphone.GetComponent<WiggleController>().StopWiggle();
         microphone.GetComponent<GlowOutlineController>().ToggleGlowOutline(false);
         float timer = 0f;
 

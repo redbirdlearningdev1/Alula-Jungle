@@ -17,7 +17,7 @@ public class BoatThrottleController : MonoBehaviour
     public ThrottleButton throttleButton;
     
     public GlowOutlineController outlineController;
-    public SpriteWiggleController wiggleController;
+    public WiggleController wiggleController;
 
     void Awake()
     {

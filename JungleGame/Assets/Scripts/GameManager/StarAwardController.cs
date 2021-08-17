@@ -95,6 +95,10 @@ public class StarAwardController : MonoBehaviour
                     coinsEarned = CalculateAwardedCoins(StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.stars, numStars);
                     StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.stars = numStars;
                 }
+                if (!StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
                 break;
 
             case MapIconIdentfier.GV_house2:
@@ -102,6 +106,10 @@ public class StarAwardController : MonoBehaviour
                 {
                     coinsEarned = CalculateAwardedCoins(StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.stars, numStars);
                     StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.stars = numStars;
+                }
+                if (!StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
                 }
                 break;
 
@@ -111,6 +119,10 @@ public class StarAwardController : MonoBehaviour
                     coinsEarned = CalculateAwardedCoins(StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.stars, numStars);
                     StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.stars = numStars;
                 }
+                if (!StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
                 break;
 
             case MapIconIdentfier.GV_fire:
@@ -119,8 +131,13 @@ public class StarAwardController : MonoBehaviour
                     coinsEarned = CalculateAwardedCoins(StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.stars, numStars);
                     StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.stars = numStars;
                 }
+                if (!StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
                 break;
         }
+        
         // save data
         StudentInfoSystem.SaveStudentPlayerData();
         // show window

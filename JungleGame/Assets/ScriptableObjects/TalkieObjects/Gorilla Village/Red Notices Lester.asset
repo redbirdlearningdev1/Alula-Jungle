@@ -13,8 +13,20 @@ MonoBehaviour:
   m_Name: Red Notices Lester
   m_EditorClassIdentifier: 
   talkieName: Red Notices Lester
+  quipsCollection: 0
+  start: 0
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  endAction: 1
   segmnets:
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 4
     leftMouthEnum: 1
     leftEyesEnum: 3
@@ -26,7 +38,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_3a_Red_1_T1
     audioString: Wow! Look at all the coins you received!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 1
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -38,7 +54,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_3a_Red_1_T2
     audioString: Hey!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 12
     leftMouthEnum: 1
     leftEyesEnum: 4
@@ -50,7 +70,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_3a_Red_1_T3
     audioString: What's that button up there
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 9
     leftMouthEnum: 1
     leftEyesEnum: 2

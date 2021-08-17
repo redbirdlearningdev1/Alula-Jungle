@@ -13,8 +13,20 @@ MonoBehaviour:
   m_Name: Village Rebuilt P2
   m_EditorClassIdentifier: 
   talkieName: Village Rebuilt P2
+  quipsCollection: 0
+  start: 0
+  addBackgroundBeforeTalkie: 0
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  endAction: 0
   segmnets:
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 2
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -26,7 +38,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_5_Red_8_T1
     audioString: Alright explorer!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 3
     leftMouthEnum: 1
     leftEyesEnum: 3
@@ -38,7 +54,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_5_Red_8_T2
     audioString: Let's follow Darwin!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 5
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -50,7 +70,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_5_Red_8_T3
     audioString: OH!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 5
     leftMouthEnum: 2
     leftEyesEnum: 1

@@ -13,6 +13,13 @@ MonoBehaviour:
   m_Name: Darwin Quips
   m_EditorClassIdentifier: 
   talkieName: Darwin Quips
+  quipsCollection: 1
+  start: 0
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
   segmnets:
   - leftCharacter: 3
     leftEmotionNum: 9
