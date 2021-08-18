@@ -2664,6 +2664,7 @@ GameObject:
   - component: {fileID: 245742840}
   - component: {fileID: 245742839}
   - component: {fileID: 245742838}
+  - component: {fileID: 245742842}
   m_Layer: 5
   m_Name: Marcus
   m_TagString: Untagged
@@ -2764,6 +2765,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 245742836}
   m_CullTransparentMesh: 0
+--- !u!114 &245742842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245742836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3310824e6079dc349b9a9d50da51fd18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: 1
+  exclamationMark: {fileID: 1600639985}
+  character: 0
+  gameData: {fileID: 0}
 --- !u!1 &246593059
 GameObject:
   m_ObjectHideFlags: 0
@@ -6040,6 +6057,7 @@ GameObject:
   - component: {fileID: 713519884}
   - component: {fileID: 713519883}
   - component: {fileID: 713519882}
+  - component: {fileID: 713519886}
   m_Layer: 5
   m_Name: Brutus
   m_TagString: Untagged
@@ -6140,6 +6158,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713519880}
   m_CullTransparentMesh: 0
+--- !u!114 &713519886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713519880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3310824e6079dc349b9a9d50da51fd18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: 1
+  exclamationMark: {fileID: 0}
+  character: 0
+  gameData: {fileID: 0}
 --- !u!1 &722765192
 GameObject:
   m_ObjectHideFlags: 0
@@ -6610,6 +6644,7 @@ GameObject:
   - component: {fileID: 791726922}
   - component: {fileID: 791726921}
   - component: {fileID: 791726920}
+  - component: {fileID: 791726924}
   m_Layer: 5
   m_Name: Tiger
   m_TagString: Untagged
@@ -6710,6 +6745,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791726918}
   m_CullTransparentMesh: 0
+--- !u!114 &791726924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791726918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3310824e6079dc349b9a9d50da51fd18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: 1
+  exclamationMark: {fileID: 109489402}
+  character: 0
+  gameData: {fileID: 0}
 --- !u!1 &803947833
 GameObject:
   m_ObjectHideFlags: 0

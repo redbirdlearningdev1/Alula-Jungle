@@ -10,7 +10,7 @@ using UnityEditor;
 public static class LoadSaveSystem
 {
     // default student player values
-    public static string default_version = "1.6"; 
+    public static string default_version = "1.7"; 
     // 1.6 added stickers to SIS
 
     public static string default_name = "empty";
@@ -139,6 +139,14 @@ public static class LoadSaveSystem
         new_data.mapData.GV_house2.stars =   default_mapDataStars;
         new_data.mapData.GV_fire.stars =     default_mapDataStars;
         new_data.mapData.GV_statue.stars =   default_mapDataStars;
+
+        new_data.mapData.GV_challenge1 = new ChallengeGameData();
+        new_data.mapData.GV_challenge2 = new ChallengeGameData();
+        new_data.mapData.GV_challenge3 = new ChallengeGameData();
+
+        new_data.mapData.GV_challenge1.stars = default_stars;
+        new_data.mapData.GV_challenge2.stars = default_stars;
+        new_data.mapData.GV_challenge3.stars = default_stars;
 
         // stickers
         new_data.unlockedStickers = new List<Sticker>();

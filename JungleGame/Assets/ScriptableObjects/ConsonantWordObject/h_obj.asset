@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08c15a68866a99146b064a4178369a7b, type: 3}
-  m_Name: c_obj
+  m_Name: h_obj
   m_EditorClassIdentifier: 
-  _name: c
-  audio: {fileID: 8300000, guid: 4601dc771e9aca14e99bbfabf47c17b0, type: 3}
-  elkoninValue: 23
-  animation: cCoin
-  _enum: 2
+  _name: h
+  audio: {fileID: 8300000, guid: 560d24aa5ebb5564bab8110f33dbf1ae, type: 3}
+  elkoninValue: 28
+  animation: hCoin
+  _enum: 7

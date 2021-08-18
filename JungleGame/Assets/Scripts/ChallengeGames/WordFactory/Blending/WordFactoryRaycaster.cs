@@ -5,13 +5,23 @@ using UnityEngine.EventSystems;
 
 public class WordFactoryRaycaster : MonoBehaviour
 {
+    public static WordFactoryRaycaster instance;
+
     public bool isOn = false;
     public float objcetMoveSpeed = 0.1f;
 
     private GameObject selectedObject = null;
     [SerializeField] private Transform selectedObjectParent;
-    [SerializeField] private GlowLine glowLineTop;
-    [SerializeField] private GlowLine glowLineBottom;
+    [SerializeField] private Transform frontSprite;
+    public float lerpedScale;
+    // [SerializeField] private GlowLine glowLineTop;
+    // [SerializeField] private GlowLine glowLineBottom;
+
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
 
     void Update()
     {
@@ -53,8 +63,9 @@ public class WordFactoryRaycaster : MonoBehaviour
             selectedObject = null;
 
             // un-toggle glow lines
-            glowLineTop.ToggleGlow(false);
-            glowLineBottom.ToggleGlow(false);
+            // glowLineTop.ToggleGlow(false);
+            // glowLineBottom.ToggleGlow(false);
+            frontSprite.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -75,8 +86,10 @@ public class WordFactoryRaycaster : MonoBehaviour
                         selectedObject.GetComponent<Polaroid>().LerpScale(1.25f, 0.1f);
                         selectedObject.GetComponent<Polaroid>().SetLayer(6);
                         // toggle glow lines
-                        glowLineTop.ToggleGlow(true);
-                        glowLineBottom.ToggleGlow(true);
+                        // glowLineTop.ToggleGlow(true);
+                        // glowLineBottom.ToggleGlow(true);
+                        frontSprite.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, lerpedScale), 0.1f);
+
                         return;
                     }
                     else if (result.gameObject.transform.CompareTag("UniversalCoin"))

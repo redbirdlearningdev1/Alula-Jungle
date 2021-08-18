@@ -65,6 +65,12 @@ public class MapIconData
 }
 
 [System.Serializable]
+public class ChallengeGameData
+{
+    public int stars;
+}
+
+[System.Serializable]
 public class MapData
 {
     // gorilla village
@@ -72,4 +78,8 @@ public class MapData
     public MapIconData GV_house2;
     public MapIconData GV_fire;
     public MapIconData GV_statue;
+
+    public ChallengeGameData GV_challenge1;
+    public ChallengeGameData GV_challenge2;
+    public ChallengeGameData GV_challenge3;
 }
