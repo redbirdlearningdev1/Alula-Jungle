@@ -8309,6 +8309,10 @@ MonoBehaviour:
   storyGameDatas:
   - {fileID: 11400000, guid: 87df9e5a4f03eff4d8337295c82c564b, type: 2}
   - {fileID: 11400000, guid: 4951d33a691cd254bb3fdd87fe2cc086, type: 2}
+  challengeGameTriads:
+  - marcusGame: {fileID: 11400000, guid: 07c61b10d1cbe7546aef2b20f71dccae, type: 2}
+    brutusGame: {fileID: 11400000, guid: 07c61b10d1cbe7546aef2b20f71dccae, type: 2}
+    juliusGame: {fileID: 11400000, guid: 07c61b10d1cbe7546aef2b20f71dccae, type: 2}
   devModeIndicator: {fileID: 6550831789426890278}
   repairMapIconID: 0
   prevMapPosition: 1
@@ -9679,6 +9683,20 @@ MonoBehaviour:
   villageRebuilt_1: {fileID: 11400000, guid: b6ee6a7797c1f6a4cb57c5e3e1da783e, type: 2}
   villageRebuilt_2: {fileID: 11400000, guid: de89be3879a1f9844b3b56fa1eccc98c, type: 2}
   villageRebuilt_3: {fileID: 11400000, guid: 83bb2bb73a4976b4789a6c3c8f7f1eb0, type: 2}
+  julius_challenges: {fileID: 11400000, guid: bc861de5d4b0ad945b58a7c169aebcc0, type: 2}
+  julius_wins: {fileID: 11400000, guid: 9751f8ecf72865b4793522da458775b7, type: 2}
+  julius_wins_again: {fileID: 11400000, guid: 3f7c50c96f864dc4db8a99e7cf385d00, type: 2}
+  julius_loses__marcus_challenges: {fileID: 11400000, guid: 78a8c8030cbce7b4d9372c0052edb250,
+    type: 2}
+  marcus_challenges: {fileID: 11400000, guid: e605ca1d420c9cc479943773eef2227e, type: 2}
+  marcus_wins: {fileID: 11400000, guid: 2f9e5654c8e422d47956f47f2f661dde, type: 2}
+  marcus_wins_again: {fileID: 11400000, guid: ef5caebdbf0358646b33f52d7b4afdea, type: 2}
+  marcus_loses__brutus_challenges: {fileID: 11400000, guid: 66b59e2e4da19b844a0c80af9f253234,
+    type: 2}
+  brutus_challenges: {fileID: 11400000, guid: 394aab9f8b3b23d4f806c0f3f46342aa, type: 2}
+  brutus_wins: {fileID: 11400000, guid: 44fa7221f17023749b988d4b1ff41dfa, type: 2}
+  brutus_wins_again: {fileID: 11400000, guid: 4fdfa6bfae904f14dbc372e0ee459b84, type: 2}
+  challengeSignQuips: {fileID: 11400000, guid: 17e0c1bd9fe1eed48962e6989710052a, type: 2}
   darwinQuips: {fileID: 11400000, guid: 2b51235189360f744bbadd3d64982f73, type: 2}
   redSprites:
   - sprite: {fileID: 21300000, guid: 4d5a0905dfb71a04aa647991be62cffe, type: 3}

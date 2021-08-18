@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[System.Serializable]
+public class ChallengeGameTriad
+{
+    public GameData marcusGame;
+    public GameData brutusGame;
+    public GameData juliusGame;
+}
+
 public class GameManager : DontDestroy<GameManager>
 {
     public bool devModeActivated;
@@ -10,10 +18,13 @@ public class GameManager : DontDestroy<GameManager>
     public Vector2Int gameResolution;
 
     // game data
+    [Header("Coin Objects")]
     public List<ActionWord> actionWords;
     public List<ConsonantWord> consonantWords;
-    //public List<Cons
+
+    [Header("Game Datas")]
     public List<StoryGameData> storyGameDatas;
+    public List<ChallengeGameTriad> challengeGameTriads;
     
     [SerializeField] private GameObject devModeIndicator;
     private bool devIndicatorSet = false;

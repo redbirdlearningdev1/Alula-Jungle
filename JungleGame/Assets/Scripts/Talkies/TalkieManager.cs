@@ -488,6 +488,15 @@ public class TalkieManager : MonoBehaviour
             case TalkieYesNoAction.PreDarwin_no:
                 doNotContinueToGame = true;
                 break;
+
+            // julius challenges
+            case TalkieYesNoAction.JuliusChalllenges_yes:
+                break;
+            case TalkieYesNoAction.JuliusChalllenges_no:
+                overrideSegmentIndex = true;
+                newSegmentIndex = 1;
+                doNotContinueToGame = true;
+                break;
         }
 
         waitingForYesNoInput = false;

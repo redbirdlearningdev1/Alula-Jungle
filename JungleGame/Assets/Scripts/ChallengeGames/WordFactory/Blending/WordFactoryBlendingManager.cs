@@ -384,21 +384,9 @@ public class WordFactoryBlendingManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         if (numMisses >= 3)
-        {
-            // tiger wins!!!
-            // place polaroids in start pos
-            foreach (var pol in polaroids)
-            {
-                pol.gameObject.transform.position = polaroidStartPos.position;
-            }
-
-            yield return new WaitForSeconds(1f);
-
-            // show stars
-            StarAwardController.instance.AwardStarsAndExit(0);
-        }
-
-        StartCoroutine(NewRound());
+            StartCoroutine(LoseGameRoutine());
+        else
+            StartCoroutine(NewRound());
     }
 
     private IEnumerator HideCoinsAndFrames()
@@ -436,6 +424,37 @@ public class WordFactoryBlendingManager : MonoBehaviour
         }
     }
 
+    private IEnumerator LoseGameRoutine()
+    {
+        // place polaroids in start pos
+        foreach (var pol in polaroids)
+        {
+            pol.gameObject.transform.position = polaroidStartPos.position;
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        // update SIS
+        if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1)
+        {
+            // first time losing
+            if (!StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame)
+                StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame = true;
+            else
+            {
+                // every other time losing
+                if (!StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame)
+                {
+                    StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame = true;
+                }
+            }
+            StudentInfoSystem.SaveStudentPlayerData();
+        }
+
+        // show stars
+        StarAwardController.instance.AwardStarsAndExit(0);
+    }
+
     private IEnumerator WinGameRoutine()
     {
         // place polaroids in start pos
@@ -447,6 +466,15 @@ public class WordFactoryBlendingManager : MonoBehaviour
         // play win tune
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
         yield return new WaitForSeconds(1f);
+
+        // update SIS
+        if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1)
+        {
+            StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame = false;
+            StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame = false;
+            StudentInfoSystem.AdvanceStoryBeat();
+            StudentInfoSystem.SaveStudentPlayerData();
+        }
 
         // show stars
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());

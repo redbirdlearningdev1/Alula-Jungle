@@ -15,7 +15,9 @@ public enum StoryBeat
     PrologueStoryGame, // 3
     RedShowsStickerButton, // 4
     VillageRebuilt, // 5
-    ChallengeGames_GorillaVillage, // 6
+    GorillaVillage_challengeGame_1, // 6
+    GorillaVillage_challengeGame_2, // 7
+    GorillaVillage_challengeGame_3, // 8
     COUNT
 }
 
@@ -49,6 +51,8 @@ public class StudentPlayerData
     // game progression
     public StoryBeat currStoryBeat;
     public bool unlockedStickerButton;
+    public bool firstTimeLoseChallengeGame;
+    public bool everyOtherTimeLoseChallengeGame;
 
     // map data
     public MapData mapData;

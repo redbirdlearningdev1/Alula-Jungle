@@ -13,8 +13,20 @@ MonoBehaviour:
   m_Name: Marcus Challenge
   m_EditorClassIdentifier: 
   talkieName: Marcus Challenge
+  quipsCollection: 0
+  start: 0
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  endAction: 0
   segmnets:
-  - leftCharacter: 6
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 6
     leftEmotionNum: 6
     leftMouthEnum: 1
     leftEyesEnum: 0
@@ -26,7 +38,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2b_Marcus_1_T1
     audioString: HAHAHA
-  - leftCharacter: 6
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYes: 7
+    onNo: 8
+    leftCharacter: 6
     leftEmotionNum: 3
     leftMouthEnum: 1
     leftEyesEnum: 0
@@ -38,7 +54,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2b_Marcus_1_T2
     audioString: Are you ready explorer?
-  - leftCharacter: 6
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 6
     leftEmotionNum: 3
     leftMouthEnum: 1
     leftEyesEnum: 0
@@ -50,7 +70,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2b_Marcus_2_T1
     audioString: Alright, let's do this
-  - leftCharacter: 6
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 6
     leftEmotionNum: 5
     leftMouthEnum: 1
     leftEyesEnum: 0

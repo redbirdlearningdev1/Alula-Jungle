@@ -13,8 +13,20 @@ MonoBehaviour:
   m_Name: Marcus Loses Brutus Challenges
   m_EditorClassIdentifier: 
   talkieName: Marcus Loses Brutus Challenges
+  quipsCollection: 0
+  start: 0
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  endAction: 0
   segmnets:
-  - leftCharacter: 6
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 6
     leftEmotionNum: 9
     leftMouthEnum: 1
     leftEyesEnum: 0
@@ -26,7 +38,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2_Marcus_1_T1
     audioString: WHAT?!
-  - leftCharacter: 6
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 6
     leftEmotionNum: 4
     leftMouthEnum: 1
     leftEyesEnum: 0
@@ -38,7 +54,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2_Marcus_1_T2
     audioString: HOW IS THIS POSSIBLE?!
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 2
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -50,7 +70,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2_Red_2_T1
     audioString: You're doing great explorer
-  - leftCharacter: 1
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
     leftEmotionNum: 4
     leftMouthEnum: 1
     leftEyesEnum: 3
@@ -62,7 +86,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2_Red_2_T2
     audioString: We're almost there!
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 7
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -74,7 +102,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2_Julius_3_T1
     audioString: Enough games!
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 8
     leftMouthEnum: 1
     leftEyesEnum: 4
@@ -86,7 +118,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2_Julius_3_T2
     audioString: Brutus it's your turn!
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -98,7 +134,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2_Brutus_4_T1
     audioString: yawn...
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 7
     leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -110,7 +150,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2_Brutus_4_T2
     audioString: Alright...
-  - leftCharacter: 7
+  - endTalkieAfterThisSegment: 0
+    requireYN: 1
+    onYes: 9
+    onNo: 10
+    leftCharacter: 7
     leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -122,7 +166,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2_Brutus_4_T3
     audioString: let's get this over with....
-  - leftCharacter: 0
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 0
     leftEmotionNum: 0
     leftMouthEnum: 0
     leftEyesEnum: 0
@@ -134,7 +182,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2_Brutus_5_T1
     audioString: Okay explorer...
-  - leftCharacter: 0
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 0
     leftEmotionNum: 0
     leftMouthEnum: 0
     leftEyesEnum: 0
@@ -146,7 +198,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2_Brutus_5_T2
     audioString: Yawn...
-  - leftCharacter: 0
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 0
     leftEmotionNum: 0
     leftMouthEnum: 0
     leftEyesEnum: 0
@@ -158,7 +214,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2_Brutus_5_T3
     audioString: Time for me to beat you I guess
-  - leftCharacter: 0
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 0
     leftEmotionNum: 0
     leftMouthEnum: 0
     leftEyesEnum: 0
@@ -170,7 +230,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2_Brutus_5a_T1
     audioString: Yawn...
-  - leftCharacter: 0
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 0
     leftEmotionNum: 0
     leftMouthEnum: 0
     leftEyesEnum: 0
@@ -182,7 +246,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2_Brutus_5a_T2
     audioString: Yeah whatever
-  - leftCharacter: 0
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 0
     leftEmotionNum: 0
     leftMouthEnum: 0
     leftEyesEnum: 0
@@ -194,7 +262,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2_Brutus_5a_T3
     audioString: I'll be here...
-  - leftCharacter: 0
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 0
     leftEmotionNum: 0
     leftMouthEnum: 0
     leftEyesEnum: 0

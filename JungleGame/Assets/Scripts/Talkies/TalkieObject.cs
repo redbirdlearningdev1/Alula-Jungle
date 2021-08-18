@@ -49,9 +49,31 @@ public enum TalkieYesNoAction
     None,
     // pre darwin talkie
     PreDarwin_yes,
-    PreDarwin_no
+    PreDarwin_no,
 
+    // julius challenges talkie
+    JuliusChalllenges_yes,
+    JuliusChalllenges_no,
 
+    // julius loses and marcus challenges
+    JuliusLosesMarcusChallenges_yes,
+    JuliusLosesMarcusChallenges_no,
+
+    // marcus challenges
+    MarcusChallenges_yes,
+    MarcusChallenges_no,
+
+    // marcus loses and brutus challenges
+    MarcusLosesBrutusChallenges_yes,
+    MarcusLosesBrutusChallenges_no,
+
+    // brutus challenges
+    BrutusChallenges_yes,
+    BrutusChallenges_no,
+
+    // prince challenge sign quips
+    ChallengeSignQuip_yes,
+    ChallengeSignQuip_no
 }
 
 [System.Serializable]

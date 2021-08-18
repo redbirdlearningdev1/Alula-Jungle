@@ -61,6 +61,9 @@ public class ScrollMapManager : MonoBehaviour
     [Header("Map Characters")]
     public MapIcon boat;
     public MapCharacter gorilla;
+    public MapCharacter tiger;
+    public MapCharacter marcus;
+    public MapCharacter brutus;
 
     [Header("Sticker Video Players")]
     public VideoPlayer commonVP;
@@ -319,6 +322,8 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.VillageRebuilt)
         {
+            showStars = false;
+
             // darwin quips
             gorilla.interactable = true;
 
@@ -380,6 +385,14 @@ public class ScrollMapManager : MonoBehaviour
                         yield return null;
 
                     // make challenge games active
+                    yield return new WaitForSeconds(0.5f);
+                    var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
+
+                    // set tiger stuff
+                    tiger.gameData = challengeGameTriad.juliusGame;
+                    tiger.ShowExclamationMark(true);
+                    tiger.interactable = true;
+                    tiger.GetComponent<Animator>().Play("aTigerTwitch");
 
                     // save to sis and continue
                     StudentInfoSystem.AdvanceStoryBeat();
@@ -387,8 +400,10 @@ public class ScrollMapManager : MonoBehaviour
                 }
             }
         }
-        else if (playGameEvent == StoryBeat.ChallengeGames_GorillaVillage)
+        else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_1)
         {
+            showStars = false;
+            
             // place gorilla off-screen
             MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
 
@@ -398,6 +413,83 @@ public class ScrollMapManager : MonoBehaviour
             MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusChallengePos.position;
 
             // make challenge games active
+            var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
+
+            // set tiger stuff
+            tiger.gameData = challengeGameTriad.juliusGame;
+            tiger.ShowExclamationMark(true);
+
+            // play correct lose talkies
+            if (StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame &&
+                !StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame)
+            {
+                // play julius wins
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else if (
+                StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame &&
+                StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame)
+            {
+                // play julius wins again
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins_again);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+
+            yield return new WaitForSeconds(1f);
+
+            tiger.interactable = true;
+            tiger.GetComponent<Animator>().Play("aTigerTwitch");
+        }
+        else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_2)
+        {
+            // play correct lose talkies
+            if (StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame &&
+                !StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame)
+            {
+                // play julius wins
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else if (
+                StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame &&
+                StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame)
+            {
+                // play julius wins again
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins_again);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else
+            {
+                // play julius loses + marcus challenges
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_loses__marcus_challenges);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // do not go to game if talkie manager says not to
+                if (TalkieManager.instance.doNotContinueToGame)
+                {
+                    TalkieManager.instance.doNotContinueToGame = false;
+                }
+                else
+                {
+                    // continue to marcus challenge game
+                    marcus.GoToGameDataSceneImmediately();
+                }
+            }   
+
+            // make challenge games active
+            var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
+
+            // set marcus stuff
+            marcus.gameData = challengeGameTriad.marcusGame;
+            marcus.ShowExclamationMark(true);
+            marcus.interactable = true;
+            marcus.GetComponent<Animator>().Play("marcusLose");
         }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {

@@ -15,6 +15,9 @@ public enum GameType
     PirateGame,
     SpiderwebGame,
 
+    WordFactoryBlending,
+    WordFactorySubstitution,
+
     COUNT
 }
 

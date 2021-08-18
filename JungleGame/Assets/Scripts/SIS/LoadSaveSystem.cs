@@ -122,6 +122,9 @@ public static class LoadSaveSystem
         // story + map data
         new_data.unlockedStickerButton = default_unlockedStickerButton;
         new_data.currStoryBeat = default_gameEvent;
+        new_data.firstTimeLoseChallengeGame = false;
+        new_data.everyOtherTimeLoseChallengeGame = false;
+        
         new_data.mapData = new MapData();
         
         // gorilla village

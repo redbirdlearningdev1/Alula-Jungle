@@ -13,8 +13,20 @@ MonoBehaviour:
   m_Name: Julius Challenges
   m_EditorClassIdentifier: 
   talkieName: Julius Challenges
+  quipsCollection: 0
+  start: 0
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  endAction: 0
   segmnets:
-  - leftCharacter: 0
+  - endTalkieAfterThisSegment: 0
+    requireYN: 1
+    onYes: 3
+    onNo: 4
+    leftCharacter: 0
     leftEmotionNum: 0
     leftMouthEnum: 0
     leftEyesEnum: 0
@@ -26,7 +38,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_1b_Julius_1_T1
     audioString: Are you ready explorer?
-  - leftCharacter: 0
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 0
     leftEmotionNum: 0
     leftMouthEnum: 0
     leftEyesEnum: 0
@@ -38,7 +54,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_1b_Julius_1_T2
     audioString: Alright, let's do this.
-  - leftCharacter: 0
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 0
     leftEmotionNum: 0
     leftMouthEnum: 0
     leftEyesEnum: 0

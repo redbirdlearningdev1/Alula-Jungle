@@ -2663,7 +2663,6 @@ GameObject:
   - component: {fileID: 245742841}
   - component: {fileID: 245742840}
   - component: {fileID: 245742839}
-  - component: {fileID: 245742838}
   - component: {fileID: 245742842}
   m_Layer: 5
   m_Name: Marcus
@@ -2692,22 +2691,6 @@ RectTransform:
   m_AnchoredPosition: {x: 4983.5, y: -597}
   m_SizeDelta: {x: 273.46, y: 275.91}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &245742838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 245742836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3310824e6079dc349b9a9d50da51fd18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactable: 1
-  exclamationMark: {fileID: 1600639985}
-  character: 0
-  gameData: {fileID: 11400000, guid: 4951d33a691cd254bb3fdd87fe2cc086, type: 2}
 --- !u!95 &245742839
 Animator:
   serializedVersion: 3
@@ -2777,9 +2760,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3310824e6079dc349b9a9d50da51fd18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: 1
+  interactable: 0
   exclamationMark: {fileID: 1600639985}
-  character: 0
+  character: 3
   gameData: {fileID: 0}
 --- !u!1 &246593059
 GameObject:
@@ -4090,8 +4073,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   overideMapLimit: 0
   mapLimitNum: 0
-  overideGameEvent: 0
-  gameEvent: 5
+  overideGameEvent: 1
+  gameEvent: 6
   overrideStartPosition: 0
   startPos: 0
   Map: {fileID: 1534747656}
@@ -4286,6 +4269,9 @@ MonoBehaviour:
   bumpAmount: 50
   boat: {fileID: 213499419}
   gorilla: {fileID: 1874534201}
+  tiger: {fileID: 791726924}
+  marcus: {fileID: 245742842}
+  brutus: {fileID: 713519886}
   commonVP: {fileID: 565256293}
   uncommonVP: {fileID: 1292123632}
   rareVP: {fileID: 712008949}
@@ -6056,7 +6042,6 @@ GameObject:
   - component: {fileID: 713519885}
   - component: {fileID: 713519884}
   - component: {fileID: 713519883}
-  - component: {fileID: 713519882}
   - component: {fileID: 713519886}
   m_Layer: 5
   m_Name: Brutus
@@ -6085,22 +6070,6 @@ RectTransform:
   m_AnchoredPosition: {x: 5257, y: -739}
   m_SizeDelta: {x: 282.6, y: 320.88}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &713519882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 713519880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3310824e6079dc349b9a9d50da51fd18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactable: 1
-  exclamationMark: {fileID: 1207995398}
-  character: 0
-  gameData: {fileID: 11400000, guid: 4951d33a691cd254bb3fdd87fe2cc086, type: 2}
 --- !u!95 &713519883
 Animator:
   serializedVersion: 3
@@ -6170,9 +6139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3310824e6079dc349b9a9d50da51fd18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: 1
-  exclamationMark: {fileID: 0}
-  character: 0
+  interactable: 0
+  exclamationMark: {fileID: 1207995398}
+  character: 4
   gameData: {fileID: 0}
 --- !u!1 &722765192
 GameObject:
@@ -6643,7 +6612,6 @@ GameObject:
   - component: {fileID: 791726923}
   - component: {fileID: 791726922}
   - component: {fileID: 791726921}
-  - component: {fileID: 791726920}
   - component: {fileID: 791726924}
   m_Layer: 5
   m_Name: Tiger
@@ -6672,22 +6640,6 @@ RectTransform:
   m_AnchoredPosition: {x: 4885, y: -768}
   m_SizeDelta: {x: 450.13, y: 293.57}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &791726920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 791726918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3310824e6079dc349b9a9d50da51fd18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactable: 1
-  exclamationMark: {fileID: 109489402}
-  character: 0
-  gameData: {fileID: 11400000, guid: 4951d33a691cd254bb3fdd87fe2cc086, type: 2}
 --- !u!95 &791726921
 Animator:
   serializedVersion: 3
@@ -6757,9 +6709,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3310824e6079dc349b9a9d50da51fd18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: 1
+  interactable: 0
   exclamationMark: {fileID: 109489402}
-  character: 0
+  character: 2
   gameData: {fileID: 0}
 --- !u!1 &803947833
 GameObject:
