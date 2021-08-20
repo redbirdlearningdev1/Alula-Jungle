@@ -5,11 +5,19 @@ using UnityEngine.EventSystems;
 
 public class WordFactorySubstituteRaycaster : MonoBehaviour
 {
+    public static WordFactorySubstituteRaycaster instance;
+
     public bool isOn = false;
     public float objcetMoveSpeed = 0.1f;
 
     private GameObject selectedObject = null;
     [SerializeField] private Transform selectedObjectParent;
+
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
 
     void Update()
     {
@@ -46,6 +54,8 @@ public class WordFactorySubstituteRaycaster : MonoBehaviour
                 }
             }
 
+            // return water coins to original position
+            WordFactorySubstitutingManager.instance.ResetWaterCoins();
             selectedObject = null;
         }
 

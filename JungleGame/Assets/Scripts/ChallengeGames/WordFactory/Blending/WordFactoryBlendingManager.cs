@@ -73,6 +73,18 @@ public class WordFactoryBlendingManager : MonoBehaviour
         PregameSetup();
     }
 
+    void Update()
+    {
+        if (GameManager.instance.devModeActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StopAllCoroutines();
+                StartCoroutine(WinGameRoutine());
+            }
+        }
+    }
+
     private void PregameSetup()
     {   
         // turn on settings button

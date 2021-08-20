@@ -60,7 +60,32 @@ public class Polaroid : MonoBehaviour
             }
 
             var tempScale = Mathf.Lerp(startscale, targetScale, timer / lerpTime);
+            print ("start scale: " + startscale + ", target scale: " + targetScale);
             transform.localScale = new Vector3(tempScale, tempScale, 1f);
+            yield return null;
+        }
+    }
+
+    public void LerpRotation(float targetAngle, float lerpTime)
+    {
+        StartCoroutine(LerpRotationRoutine(targetAngle, lerpTime));
+    }
+
+    private IEnumerator LerpRotationRoutine(float targetAngle, float lerpTime)
+    {
+        float startAngle = transform.rotation.eulerAngles.z;
+        float timer = 0f;
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > lerpTime)
+            {
+                transform.rotation = Quaternion.Euler(0f, 0f, targetAngle);
+                break;
+            }
+
+            var tempAngle = Mathf.LerpAngle(startAngle, targetAngle, timer / lerpTime);
+            transform.rotation = Quaternion.Euler(0f, 0f, tempAngle);
             yield return null;
         }
     }

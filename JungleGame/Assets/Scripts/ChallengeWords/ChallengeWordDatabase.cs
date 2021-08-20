@@ -175,6 +175,7 @@ public static class ChallengeWordDatabase
         switch (value)
         {
             case ElkoninValue.empty_gold:
+            case ElkoninValue.empty_silver:
                 return ActionWordEnum._blank;
             case ElkoninValue.mudslide:
                 return ActionWordEnum.mudslide;
@@ -217,7 +218,7 @@ public static class ChallengeWordDatabase
             case ElkoninValue.baby:
                 return ActionWordEnum.baby;
             default:
-                GameManager.instance.SendError("ChallengeWordDatabase", "invalid ElkoninValue to ActionWordEnum");
+                GameManager.instance.SendError("ChallengeWordDatabase", "invalid ElkoninValue to ActionWordEnum: " + value);
                 return ActionWordEnum._blank;
         }
     }
