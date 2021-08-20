@@ -39,21 +39,25 @@ public class TalkieDatabase : MonoBehaviour
     public TalkieObject villageRebuilt_2; // script: ScrollMapManager.cs
     public TalkieObject villageRebuilt_3; // script: ScrollMapManager.cs
 
-    public TalkieObject julius_challenges;
-    public TalkieObject julius_wins;
-    public TalkieObject julius_wins_again;
+    public TalkieObject julius_challenges; // script: MapCharacter.cs
+    public TalkieObject julius_wins;       // script: ScrollMapManager.cs
+    public TalkieObject julius_wins_again; // script: ScrollMapManager.cs
 
-    public TalkieObject julius_loses__marcus_challenges;
-    public TalkieObject marcus_challenges;
-    public TalkieObject marcus_wins;
-    public TalkieObject marcus_wins_again;
+    public TalkieObject julius_loses__marcus_challenges; // script: ScrollMapManager.cs
+    public TalkieObject marcus_challenges; // script: MapCharacter.cs
+    public TalkieObject marcus_wins;       // script: ScrollMapManager.cs
+    public TalkieObject marcus_wins_again; // script: ScrollMapManager.cs
 
-    public TalkieObject marcus_loses__brutus_challenges;
-    public TalkieObject brutus_challenges;
-    public TalkieObject brutus_wins;
-    public TalkieObject brutus_wins_again;
+    public TalkieObject marcus_loses__brutus_challenges;// script: ScrollMapManager.cs
+    public TalkieObject brutus_challenges; // script: MapCharacter.cs
+    public TalkieObject brutus_wins;       // script: ScrollMapManager.cs
+    public TalkieObject brutus_wins_again; // script: ScrollMapManager.cs
 
     public TalkieObject challengeSignQuips;
+
+    public TalkieObject villageChallengeDefeated_1; // script: ScrollMapManager.cs
+    public TalkieObject villageChallengeDefeated_2; // script: ScrollMapManager.cs
+    public TalkieObject villageChallengeDefeated_3; // script: ScrollMapManager.cs
 
 
     [Header("Talkie Objects")]

@@ -507,9 +507,28 @@ public class TalkieManager : MonoBehaviour
                 doNotContinueToGame = true;
                 break;
 
+            // marcus challenges
             case TalkieYesNoAction.MarcusChallenges_yes:
                 break;
             case TalkieYesNoAction.MarcusChallenges_no:
+                overrideSegmentIndex = true;
+                newSegmentIndex = 2;
+                doNotContinueToGame = true;
+                break;
+
+            // marcus loses + brutus challenges
+            case TalkieYesNoAction.MarcusLosesBrutusChallenges_yes:
+                break;
+            case TalkieYesNoAction.MarcusLosesBrutusChallenges_no:
+                overrideSegmentIndex = true;
+                newSegmentIndex = 11;
+                doNotContinueToGame = true;
+                break;
+
+            // brutus challenges
+            case TalkieYesNoAction.BrutusChallenges_yes:
+                break;
+            case TalkieYesNoAction.BrutusChallenges_no:
                 overrideSegmentIndex = true;
                 newSegmentIndex = 2;
                 doNotContinueToGame = true;

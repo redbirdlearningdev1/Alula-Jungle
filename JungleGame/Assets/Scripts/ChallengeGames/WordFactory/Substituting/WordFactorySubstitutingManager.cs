@@ -585,6 +585,16 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             StudentInfoSystem.SaveStudentPlayerData();
         }
 
+        // JUST FOR NOW WHILE CHALLEMGE GAME 3 ISNT IN
+        // update SIS
+        else if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3)
+        {
+            StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame = false;
+            StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame = false;
+            StudentInfoSystem.AdvanceStoryBeat();
+            StudentInfoSystem.SaveStudentPlayerData();
+        }
+
         // show stars
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());
     }

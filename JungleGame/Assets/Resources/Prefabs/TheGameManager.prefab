@@ -9697,6 +9697,12 @@ MonoBehaviour:
   brutus_wins: {fileID: 11400000, guid: 44fa7221f17023749b988d4b1ff41dfa, type: 2}
   brutus_wins_again: {fileID: 11400000, guid: 4fdfa6bfae904f14dbc372e0ee459b84, type: 2}
   challengeSignQuips: {fileID: 11400000, guid: 17e0c1bd9fe1eed48962e6989710052a, type: 2}
+  villageChallengeDefeated_1: {fileID: 11400000, guid: af8a556e6a0ceab49ac552dc848ff8e9,
+    type: 2}
+  villageChallengeDefeated_2: {fileID: 11400000, guid: c982a9c651027294db8cbd29145d2e8b,
+    type: 2}
+  villageChallengeDefeated_3: {fileID: 11400000, guid: 4d11387eae9da274398effa5f122e347,
+    type: 2}
   darwinQuips: {fileID: 11400000, guid: 2b51235189360f744bbadd3d64982f73, type: 2}
   redSprites:
   - sprite: {fileID: 21300000, guid: 4d5a0905dfb71a04aa647991be62cffe, type: 3}

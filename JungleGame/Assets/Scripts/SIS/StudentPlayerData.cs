@@ -18,6 +18,7 @@ public enum StoryBeat
     GorillaVillage_challengeGame_1, // 6
     GorillaVillage_challengeGame_2, // 7
     GorillaVillage_challengeGame_3, // 8
+    VillageChallengeDefeated, // 9
     COUNT
 }
 

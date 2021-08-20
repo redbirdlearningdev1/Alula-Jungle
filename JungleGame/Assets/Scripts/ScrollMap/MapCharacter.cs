@@ -81,6 +81,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             }
         }
 
+        print ("story beat: " + StudentInfoSystem.currentStudentPlayer.currStoryBeat);
+
         if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.GorillaVillageIntro)
         {
             // remove exclamation mark from gorilla
@@ -190,6 +192,16 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             {
                 // play julius challenges
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_challenges);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+        }
+        else if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3)
+        {
+            if (character == Character.Brutus)
+            {
+                // play julius challenges
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_challenges);
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
             }

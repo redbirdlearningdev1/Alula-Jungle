@@ -19,7 +19,7 @@ MonoBehaviour:
   addLetterboxBeforeTalkie: 1
   ending: 0
   removeBackgroundAfterTalkie: 1
-  removeLetterboxAfterTalkie: 1
+  removeLetterboxAfterTalkie: 0
   endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
