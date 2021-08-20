@@ -70,7 +70,7 @@ public class StarAwardController : MonoBehaviour
 
     public void AwardStarsAndExit(int numStars)
     {
-        if (numStars > 3 || numStars < 1)
+        if (numStars > 3 || numStars < 0)
         {
             GameManager.instance.SendError(this, "invalid number of stars awarded");
             return;

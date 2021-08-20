@@ -419,6 +419,14 @@ public class ScrollMapManager : MonoBehaviour
             tiger.gameData = challengeGameTriad.juliusGame;
             tiger.ShowExclamationMark(true);
 
+            // make sure we are at gorilla village
+            mapPosIndex = 2;
+            // move map to next right map location
+            float x = GetXPosFromMapLocationIndex(mapPosIndex);
+            StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
+
+            yield return new WaitForSeconds(2.5f);
+
             // play correct lose talkies
             if (StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame &&
                 !StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame)
@@ -445,6 +453,34 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_2)
         {
+            showStars = false;
+            
+            // place gorilla off-screen
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
+
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusChallengePos.position;
+
+            // make tiger sad
+            tiger.GetComponent<Animator>().Play("sTigerIdle");
+
+            // make challenge games active
+            var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
+
+            // set marcus stuff
+            marcus.gameData = challengeGameTriad.marcusGame;
+            marcus.GetComponent<Animator>().Play("marcusLose");
+
+            // make sure we are at gorilla village
+            mapPosIndex = 2;
+            // move map to next right map location
+            float x = GetXPosFromMapLocationIndex(mapPosIndex);
+            StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
+
+            yield return new WaitForSeconds(2.5f);
+
             // play correct lose talkies
             if (StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame &&
                 !StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame)
@@ -480,16 +516,10 @@ public class ScrollMapManager : MonoBehaviour
                     // continue to marcus challenge game
                     marcus.GoToGameDataSceneImmediately();
                 }
-            }   
+            }
 
-            // make challenge games active
-            var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
-
-            // set marcus stuff
-            marcus.gameData = challengeGameTriad.marcusGame;
             marcus.ShowExclamationMark(true);
             marcus.interactable = true;
-            marcus.GetComponent<Animator>().Play("marcusLose");
         }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {

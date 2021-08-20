@@ -8310,8 +8310,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 87df9e5a4f03eff4d8337295c82c564b, type: 2}
   - {fileID: 11400000, guid: 4951d33a691cd254bb3fdd87fe2cc086, type: 2}
   challengeGameTriads:
-  - marcusGame: {fileID: 11400000, guid: 07c61b10d1cbe7546aef2b20f71dccae, type: 2}
-    brutusGame: {fileID: 11400000, guid: 07c61b10d1cbe7546aef2b20f71dccae, type: 2}
+  - marcusGame: {fileID: 11400000, guid: 1608bdc5302c90046acd261785dca5d8, type: 2}
+    brutusGame: {fileID: 11400000, guid: 1608bdc5302c90046acd261785dca5d8, type: 2}
     juliusGame: {fileID: 11400000, guid: 07c61b10d1cbe7546aef2b20f71dccae, type: 2}
   devModeIndicator: {fileID: 6550831789426890278}
   repairMapIconID: 0

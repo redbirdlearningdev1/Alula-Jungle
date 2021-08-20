@@ -497,6 +497,23 @@ public class TalkieManager : MonoBehaviour
                 newSegmentIndex = 1;
                 doNotContinueToGame = true;
                 break;
+
+            // julius loses + marcus challanges
+            case TalkieYesNoAction.JuliusLosesMarcusChallenges_yes:
+                break;
+            case TalkieYesNoAction.JuliusLosesMarcusChallenges_no:
+                overrideSegmentIndex = true;
+                newSegmentIndex = 8;
+                doNotContinueToGame = true;
+                break;
+
+            case TalkieYesNoAction.MarcusChallenges_yes:
+                break;
+            case TalkieYesNoAction.MarcusChallenges_no:
+                overrideSegmentIndex = true;
+                newSegmentIndex = 2;
+                doNotContinueToGame = true;
+                break;
         }
 
         waitingForYesNoInput = false;

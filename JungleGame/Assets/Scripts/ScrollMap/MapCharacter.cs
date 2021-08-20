@@ -184,6 +184,16 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                     yield return null;
             }
         }
+        else if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
+        {
+            if (character == Character.Marcus)
+            {
+                // play julius challenges
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_challenges);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+        }
 
         // do not go to game if talkie manager says not to
         if (TalkieManager.instance.doNotContinueToGame)

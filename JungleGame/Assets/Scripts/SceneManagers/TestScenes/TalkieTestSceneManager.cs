@@ -46,6 +46,8 @@ public class TalkieTestSceneManager : MonoBehaviour
         }
     }
 
+
+#if UNITY_EDITOR
     public void OnAddAudioPressed()
     {
         AddAudioToTalkie(placeTalkieHere);
@@ -129,4 +131,5 @@ public class TalkieTestSceneManager : MonoBehaviour
             print ("successfully added audio to talkie: " + talkie.name);
         }
     }
+#endif
 }

@@ -69,6 +69,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
     private int numWins = 0;
     private int numMisses = 0;
     private bool playingCoinAudio = false;
+    private bool evaluatingCoin = false;
 
     private List<ChallengeWord> globalWordList;
     private List<ChallengeWord> unusedWordList;
@@ -385,6 +386,10 @@ public class WordFactorySubstitutingManager : MonoBehaviour
 
     public void EvaluateWaterCoin(UniversalCoin coin)
     {
+        if (evaluatingCoin)
+            return;
+        evaluatingCoin = true;
+
         if (coin.value == currentTargetValue)
         {
             currWaterCoin = coin;
@@ -398,13 +403,13 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         }
         else
         {
+            currWaterCoin = coin;
+
             // scale water coin correctly
             coin.LerpSize(normalCoinSize, 0.25f);
 
             // lerp coin to frame position
             StartCoroutine(LerpMoveObject(coin.transform, framesReal[swipeIndex].position, 0.25f));
-            StartCoroutine(PostRound(true));
-
             StartCoroutine(PostRound(false));
         }
 
@@ -482,7 +487,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             // give red one polaroid
             tigerCards[tigerCardCount].SetActive(true);
             // animate card init
-            switch (redCardCount)
+            switch (tigerCardCount)
             {
                 case 0:
                     tigerCards[tigerCardCount].GetComponent<Animator>().Play("Card1");
@@ -512,14 +517,17 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         redPolaroid.transform.position = polaroidStartPos_left.position;
         redPolaroid.LerpRotation(0, 0001f);
 
-        // place all real frames behind tiger polaroid and make scale 0
+        // make frames scale 0
         foreach (var frame in framesReal)
         {
-            frame.transform.position = polaroid_middlePos.position;
             StartCoroutine(LerpObjectScale(frame.transform, 0f, 1f));
             StartCoroutine(LerpImageAlpha(frame.GetComponent<Image>(), 1f, 1f));
         }
         yield return new WaitForSeconds (1f);
+        // place all real frames behind tiger polaroid
+        foreach (var frame in framesReal)
+            frame.transform.position = polaroid_middlePos.position;
+
 
         // get rid of coins
         foreach(var coin in currentCoins)
@@ -550,6 +558,9 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             StartCoroutine(LoseRoutine());
             yield break;
         }
+
+        // stop evaluating coin
+        evaluatingCoin = false;
 
         // start next round
         StartCoroutine(NewRound());

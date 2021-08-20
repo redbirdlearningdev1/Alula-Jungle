@@ -80,6 +80,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 StopAllCoroutines();
+                RaycastBlockerController.instance.ClearAllRaycastBlockers();
                 StartCoroutine(WinGameRoutine());
             }
         }

@@ -60,7 +60,6 @@ public class Polaroid : MonoBehaviour
             }
 
             var tempScale = Mathf.Lerp(startscale, targetScale, timer / lerpTime);
-            print ("start scale: " + startscale + ", target scale: " + targetScale);
             transform.localScale = new Vector3(tempScale, tempScale, 1f);
             yield return null;
         }

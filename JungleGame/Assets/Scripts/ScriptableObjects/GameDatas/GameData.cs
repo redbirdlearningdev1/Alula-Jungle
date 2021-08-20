@@ -16,7 +16,7 @@ public enum GameType
     SpiderwebGame,
 
     WordFactoryBlending,
-    WordFactorySubstitution,
+    WordFactorySubstituting,
 
     COUNT
 }

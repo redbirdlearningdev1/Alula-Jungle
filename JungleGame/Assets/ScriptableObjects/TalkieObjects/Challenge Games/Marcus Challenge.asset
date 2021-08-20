@@ -38,8 +38,8 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2b_Marcus_1_T1
     audioString: HAHAHA
-  - endTalkieAfterThisSegment: 1
-    requireYN: 0
+  - endTalkieAfterThisSegment: 0
+    requireYN: 1
     onYes: 7
     onNo: 8
     leftCharacter: 6
