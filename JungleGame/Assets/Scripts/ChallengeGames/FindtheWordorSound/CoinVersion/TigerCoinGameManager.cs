@@ -126,7 +126,7 @@ public class TigerCoinGameManager : MonoBehaviour
 
     private IEnumerator StartGame()
     {
-        
+        swipeIndex = 0;
         polaroidC.gameObject.transform.position = polaroidStartPos.position;
         polaroidC.LerpScale(0f, 0f);
         pattern.baseState();
