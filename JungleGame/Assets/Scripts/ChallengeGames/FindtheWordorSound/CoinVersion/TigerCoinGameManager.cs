@@ -184,8 +184,12 @@ public class TigerCoinGameManager : MonoBehaviour
             waterCoins[i].SetLayer(2);
             
         }
+        for (int i = 0; i < 5; i++)
+        {
+            coinOptions.Add(waterCoins[i].value);
 
-        if(waterCoins[0].value == currentTargetValue)
+        }
+        if (waterCoins[0].value == currentTargetValue)
         {
 
 
@@ -397,11 +401,7 @@ public class TigerCoinGameManager : MonoBehaviour
 
     private IEnumerator PostRound(bool win)
     {
-        for (int i = 0; i < 5; i++)
-        {
-            coinOptions.Add(waterCoins[i].value);
-
-        }
+       
         if (win)
         {
             Debug.Log("goodjob");
