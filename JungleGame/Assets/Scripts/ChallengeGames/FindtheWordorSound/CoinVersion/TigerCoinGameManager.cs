@@ -45,9 +45,9 @@ public class TigerCoinGameManager : MonoBehaviour
     private UniversalCoin currWaterCoin;
 
     // other variables
-    private ChallengeWord currentWord;
-    private ElkoninValue currentTargetValue;
-    private ChallengeWord currentTargetWord;
+    [SerializeField]  private ChallengeWord currentWord;
+    [SerializeField]  private ElkoninValue currentTargetValue;
+    [SerializeField]  private ChallengeWord currentTargetWord;
     private int currentSwipeIndex;
 
     private List<UniversalCoin> currentCoins;
@@ -64,6 +64,8 @@ public class TigerCoinGameManager : MonoBehaviour
     //public ChallengeWord testChallengeWord;
     public ChallengeWord targetChallengeWord;
     public List<ElkoninValue> coinOptions;
+    public List<ElkoninValue> BadCoinOptions;
+
     public int swipeIndex;
 
 
@@ -80,9 +82,9 @@ public class TigerCoinGameManager : MonoBehaviour
 
         }
 
-
+        
         PregameSetup();
-        StartCoroutine(StartGame(0));
+        StartCoroutine(StartGame());
 
     }
 
@@ -122,9 +124,9 @@ public class TigerCoinGameManager : MonoBehaviour
 
 
 
-    private IEnumerator StartGame(int index)
+    private IEnumerator StartGame()
     {
-
+        swipeIndex = 0;
         polaroidC.gameObject.transform.position = polaroidStartPos.position;
         polaroidC.LerpScale(0f, 0f);
         pattern.baseState();
@@ -133,6 +135,32 @@ public class TigerCoinGameManager : MonoBehaviour
         {
             currentWord = targetChallengeWord;
             polaroidC.SetPolaroid(currentWord);
+        }
+        else
+        {
+            // use random words
+
+                ChallengeWord word = GetUnusedWord();
+                polaroidC.SetPolaroid(word);
+                currentWord = word;
+
+
+            //correctIndex = Random.Range(0, 3);
+            //currentWord = currentWords[correctIndex];
+            //currentPolaroid = polaroids[correctIndex];
+        }
+        
+        currentTargetValue = currentWord.elkoninList[swipeIndex];
+        for (int d = 0; d < 6; d++)
+        {
+            for (int i = 0; i < BadCoinOptions.Count; i++)
+            {
+                if (currentTargetValue == BadCoinOptions[i])
+                {
+                    swipeIndex++;
+                    currentTargetValue = currentWord.elkoninList[swipeIndex];
+                }
+            }
         }
 
         Tiger.TigerDeal();
@@ -145,12 +173,56 @@ public class TigerCoinGameManager : MonoBehaviour
         {
             StartCoroutine(LerpMoveObject(waterCoins[i].transform, CoinStartPos.position, 0f));
         }
+        //currentCoins.Clear();
+        Debug.Log(coinOptions.Count);
         for (int i = 0; i < 5; i++)
         {
-            waterCoins[i].SetValue(coinOptions[i]);
+            int rand = Random.Range(0, coinOptions.Count);
+            waterCoins[i].SetValue(coinOptions[rand]);
+            coinOptions.RemoveAt(rand); 
             StartCoroutine(LerpMoveObject(waterCoins[i].transform, CoinPos1.position, .2f));
             waterCoins[i].SetLayer(2);
+            
         }
+        for (int i = 0; i < 5; i++)
+        {
+            coinOptions.Add(waterCoins[i].value);
+
+        }
+        if (waterCoins[0].value == currentTargetValue)
+        {
+
+
+        }
+        else if (waterCoins[1].value == currentTargetValue)
+        {
+
+
+        }
+        else if (waterCoins[2].value == currentTargetValue)
+        {
+
+
+        }
+        else if (waterCoins[3].value == currentTargetValue)
+        {
+
+
+        }
+        else if (waterCoins[4].value == currentTargetValue)
+        {
+
+
+        }
+        else
+        {
+            int rand2 = Random.Range(0, 5);
+            waterCoins[rand2].SetValue(currentTargetValue);
+            Debug.Log(waterCoins[rand2]);
+
+        }
+
+
         yield return new WaitForSeconds(.35f);
         for (int i = 1; i < 5; i++)
         {
@@ -178,8 +250,8 @@ public class TigerCoinGameManager : MonoBehaviour
         yield return new WaitForSeconds(.6f);
 
 
-        currentTargetWord = targetChallengeWord;
-        currentTargetValue = currentTargetWord.elkoninList[swipeIndex];
+        //currentTargetWord = targetChallengeWord;
+        //currentTargetValue = currentTargetWord.elkoninList[swipeIndex];
 
 
 
@@ -216,12 +288,12 @@ public class TigerCoinGameManager : MonoBehaviour
             return;
 
         // check lists
-        if (currentCoins.Contains(coin))
-        {
-            StartCoroutine(GlowAndPlayAudioCoinRoutine(coin));
-        }
+        //if (currentCoins.Contains(coin))
+        //{
+        //    StartCoroutine(GlowAndPlayAudioCoinRoutine(coin));
+        //}
         // water coins
-        else if (waterCoins.Contains(coin))
+        if (waterCoins.Contains(coin))
         {
             StartCoroutine(GlowAndPlayAudioCoinRoutine(coin, true));
         }
@@ -235,10 +307,10 @@ public class TigerCoinGameManager : MonoBehaviour
         coin.ToggleGlowOutline(true);
         AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(coin.value).audio);
         // water coin differential
-        if (!waterCoin) coin.LerpSize(expandedCoinSize, 0.25f);
-        else coin.LerpSize(waterExpandedCoinSize, 0.25f);
+        //if (!waterCoin) coin.LerpSize(expandedCoinSize, 0.25f);
+        //else coin.LerpSize(waterExpandedCoinSize, 0.25f);
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
         // return if current water coin
         if (coin == currWaterCoin)
         {
@@ -248,8 +320,8 @@ public class TigerCoinGameManager : MonoBehaviour
         }
 
         // water coin differential
-        if (!waterCoin) coin.LerpSize(normalCoinSize, 0.25f);
-        else coin.LerpSize(waterNormalCoinSize, 0.25f);
+        //if (!waterCoin) coin.LerpSize(normalCoinSize, 0.25f);
+        //else coin.LerpSize(waterNormalCoinSize, 0.25f);
 
         coin.ToggleGlowOutline(false);
 
@@ -329,8 +401,8 @@ public class TigerCoinGameManager : MonoBehaviour
 
     private IEnumerator PostRound(bool win)
     {
-
-        if(win)
+       
+        if (win)
         {
             Debug.Log("goodjob");
             pattern.correct();
@@ -386,8 +458,11 @@ public class TigerCoinGameManager : MonoBehaviour
         {
             WinRoutine();
         }
-        StartCoroutine(StartGame(0));
-        yield return null;
+        else
+        {
+            StartCoroutine(StartGame());
+        }
+
     }
 
 

@@ -70,7 +70,7 @@ public class TigerCoinRayCaster : MonoBehaviour
                         //WordFactorySubstitutingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoin>());
                         selectedObject = result.gameObject;
                         selectedObject.gameObject.transform.SetParent(selectedObjectParent);
-  
+                        TigerCoinGameManager.instance.GlowAndPlayAudioCoin(selectedObject.GetComponent<UniversalCoin>());
                     }
                 }
             }
