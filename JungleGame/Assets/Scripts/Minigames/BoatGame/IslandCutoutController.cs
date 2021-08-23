@@ -109,6 +109,10 @@ public class IslandCutoutController : MonoBehaviour
 
     private IEnumerator MoveIslandToOcean()
     {
+        // turn off wheel control
+        BoatWheelController.instance.isOn = false;
+        BoatWheelController.instance.LetGoOfWheel();
+        
         // move island to correct spot + set new parent
         GoToOceanSpot();
 

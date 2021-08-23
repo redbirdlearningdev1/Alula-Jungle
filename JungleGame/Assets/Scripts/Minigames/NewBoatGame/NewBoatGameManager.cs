@@ -436,9 +436,6 @@ public class NewBoatGameManager : MonoBehaviour
         repeatAudio = false;
         AudioManager.instance.StopTalk();
 
-        // turn off wheel control
-        BoatWheelController.instance.isOn = false;
-
         // turn off island cutout
         IslandCutoutController.instance.isOn = false;
         IslandCutoutController.instance.cutoutWiggleController.StopWiggle();

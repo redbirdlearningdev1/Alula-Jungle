@@ -94,6 +94,24 @@ public class TalkieManager : MonoBehaviour
         rightImage.gameObject.SetActive(true);
     }
 
+    void Update()
+    {
+        if (talkiePlaying)
+        {
+            if (GameManager.instance.devModeActivated)
+            {
+                // press 'Shift + T' to skip talkie
+                if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+                {
+                    if (Input.GetKeyDown(KeyCode.T))
+                    {
+                        StopTalkieSystem();
+                    }                
+                }
+            }
+        }
+    }
+
     public void PlayTalkie(TalkieObject talkie)
     {
         talkiePlaying = true;

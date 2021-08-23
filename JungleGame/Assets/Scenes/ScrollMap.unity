@@ -390,12 +390,12 @@ PrefabInstance:
     - target: {fileID: 2512186891888730657, guid: b2db9681c4636dc46a76b26d7c5e295a,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 373
+      value: 334.208
       objectReference: {fileID: 0}
     - target: {fileID: 2512186891888730657, guid: b2db9681c4636dc46a76b26d7c5e295a,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 344
+      value: 308.224
       objectReference: {fileID: 0}
     - target: {fileID: 2512186891888730657, guid: b2db9681c4636dc46a76b26d7c5e295a,
         type: 3}
@@ -596,7 +596,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 373, y: 344}
+  m_Size: {x: 334.208, y: 308.224}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4073,7 +4073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   overideMapLimit: 0
   mapLimitNum: 0
-  overideGameEvent: 1
+  overideGameEvent: 0
   gameEvent: 5
   overrideStartPosition: 0
   startPos: 0
@@ -7628,7 +7628,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 373, y: 344}
+  m_Size: {x: 334.208, y: 308.224}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -11359,12 +11359,12 @@ PrefabInstance:
     - target: {fileID: 2512186891888730657, guid: b2db9681c4636dc46a76b26d7c5e295a,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 373
+      value: 334.208
       objectReference: {fileID: 0}
     - target: {fileID: 2512186891888730657, guid: b2db9681c4636dc46a76b26d7c5e295a,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 344
+      value: 308.224
       objectReference: {fileID: 0}
     - target: {fileID: 2512186891888730657, guid: b2db9681c4636dc46a76b26d7c5e295a,
         type: 3}
@@ -11565,7 +11565,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 373, y: 344}
+  m_Size: {x: 334.208, y: 308.224}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -16947,12 +16947,12 @@ PrefabInstance:
     - target: {fileID: 2512186891888730657, guid: b2db9681c4636dc46a76b26d7c5e295a,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 373
+      value: 334.208
       objectReference: {fileID: 0}
     - target: {fileID: 2512186891888730657, guid: b2db9681c4636dc46a76b26d7c5e295a,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 344
+      value: 308.224
       objectReference: {fileID: 0}
     - target: {fileID: 2512186891888730657, guid: b2db9681c4636dc46a76b26d7c5e295a,
         type: 3}
