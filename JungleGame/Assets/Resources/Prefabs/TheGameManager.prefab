@@ -4671,7 +4671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3980438952330141912
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5381,7 +5381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7807549422858484565
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8353,7 +8353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2725319633311727417
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9007,8 +9007,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 32}
+  m_AnchoredPosition: {x: 815.00903, y: 0}
+  m_SizeDelta: {x: -1629.9784, y: 32.34}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &8580587518253173952
 CanvasRenderer:
@@ -9318,7 +9318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3056509535328771376
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9667,7 +9667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764b8d34a6042ef428cdcb3bb3e9bd7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boatGame: {fileID: 11400000, guid: f8076a45db313bf4e83c3d794f26bedc, type: 2}
+  boatGame: {fileID: 11400000, guid: d1c2c5d273923514c98422a882b0cad4, type: 2}
   dock_1: {fileID: 11400000, guid: 3b123035dde40f14095b681a35ac1a8c, type: 2}
   dock_2: {fileID: 11400000, guid: 5b36f6784aee07342a22481671d75aaa, type: 2}
   gorillaIntro_1: {fileID: 11400000, guid: b4cf98aad45535a4c85c8c5ee28c7c8a, type: 2}
@@ -11540,7 +11540,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 32}
+  m_SizeDelta: {x: 0, y: 35.166}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &5694125510494238617
 CanvasRenderer:
@@ -11570,7 +11570,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: --- Dev mode activated (press 'd' to goto dev menu) ---
+  m_text: 'dev mode: "Shift + D"'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5fb3e891f6ca42f488b7612cc49bf181, type: 2}
   m_sharedMaterial: {fileID: 6940129555951141546, guid: 5fb3e891f6ca42f488b7612cc49bf181,
@@ -11598,8 +11598,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11899,7 +11899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1225881395315569394
 RectTransform:
   m_ObjectHideFlags: 0

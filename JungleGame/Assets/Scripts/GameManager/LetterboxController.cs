@@ -26,6 +26,10 @@ public class LetterboxController : MonoBehaviour
 
         titleText.text = "";
         titleText.color = new Color(1f, 1f, 1f, 0f);
+
+        // activate top and bottom bars
+        topRect.gameObject.SetActive(true);
+        bottomRect.gameObject.SetActive(true);
     }
 
     public void ToggleLetterbox(bool opt, float moveSpeed = 2f)

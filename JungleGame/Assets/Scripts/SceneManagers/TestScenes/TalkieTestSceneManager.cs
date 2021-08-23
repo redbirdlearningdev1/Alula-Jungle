@@ -109,8 +109,12 @@ public class TalkieTestSceneManager : MonoBehaviour
         }
     }
 
-    private AudioClip SearchForAudioByName(string str)
+    public static AudioClip SearchForAudioByName(string str)
     {
+        // return if list already created for efficiency
+        if (globalTalkieAudioList == null)
+            InitCreateGlobalList();
+
         // linear search
         foreach (var file in globalTalkieAudioList)
         {

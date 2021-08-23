@@ -1,0 +1,156 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: BoatGame_1_p1
+  m_EditorClassIdentifier: 
+  talkieName: BoatGame_1_p1
+  quipsCollection: 0
+  start: 2
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  endAction: 0
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: a1641fc8e763c664389476555c8100ab, type: 3}
+    audioClipName: Boat_0_1_Red_1_1_T1
+    audioString: '"Hey there explorer!"'
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 0c33b77abf3a9b64eb66b8f88cefbb59, type: 3}
+    audioClipName: Boat_0_1_Red_1_1_T2
+    audioString: "I\u2019m so excited to see you!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
+    leftEmotionNum: 3
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 276742206b1ed944083c321307e01d36, type: 3}
+    audioClipName: Boat_0_1_Red_1_1_T3
+    audioString: Thank you for agreeing to come along with me on such a short notice!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 7d19f1e4a11239d498a96c28c665efed, type: 3}
+    audioClipName: Boat_0_1_Red_2_1_T1
+    audioString: '"You see~ my friend Darwin said that he needs help watching over
+      the Jungle kingdom while the king is away."'
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 312fb340e8d5f864089ab482dc0599a3, type: 3}
+    audioClipName: Boat_0_1_Red_2_1_T2
+    audioString: '"Prince Julius has been put in charge all by himself~ and needs
+      as much help as he can get!"'
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
+    leftEmotionNum: 3
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: c36ab2d89876d6d4da78d77cf4d3b228, type: 3}
+    audioClipName: Boat_0_1_Red_3_1_T1
+    audioString: '"I know how reliable you are~ friend~ that''s why I''m so happy
+      you agreed to come along with us!"'
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 1
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: e954dcf77ad32994b8780566c28ab7ca, type: 3}
+    audioClipName: Boat_0_1_Red_3_1_T2
+    audioString: "\"Plus~ this jungle is full of exciting games so I know that we\u2019ll
+      have so much fun!\""
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: 
+    audioString: 

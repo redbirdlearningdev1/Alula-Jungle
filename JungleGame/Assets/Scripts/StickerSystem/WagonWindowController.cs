@@ -56,6 +56,9 @@ public class WagonWindowController : MonoBehaviour
 
         // reset window
         window.transform.localScale = new Vector3(hiddenScale, hiddenScale, 0f);
+
+        // activate wagon
+        wagon.gameObject.SetActive(true);
     }
 
     void Update() 

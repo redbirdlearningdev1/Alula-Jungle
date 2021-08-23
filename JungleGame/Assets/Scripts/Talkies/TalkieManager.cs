@@ -88,6 +88,10 @@ public class TalkieManager : MonoBehaviour
 
         yesButton.interactable = false;
         noButton.interactable = false;
+
+        // activate left and right talkies
+        leftImage.gameObject.SetActive(true);
+        rightImage.gameObject.SetActive(true);
     }
 
     public void PlayTalkie(TalkieObject talkie)

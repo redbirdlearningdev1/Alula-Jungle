@@ -60,28 +60,29 @@ public class GameManager : DontDestroy<GameManager>
                 devIndicatorSet = true;
                 devModeIndicator.SetActive(true);
             }
-            // press 'D' to go to the dev menu
-            if (Input.GetKeyDown(KeyCode.D))
+            // press 'Shift + D' to go to the dev menu
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
-                // stop music
-                AudioManager.instance.StopMusic();
-                LoadScene("DevMenu", true);
-            }
-            // press 'F' to toggle between fixed and broken map sprites
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                GameObject smm;
-                smm = GameObject.Find("ScrollMapManager");
-
-                if (smm == null) 
-                    Debug.LogError("GameManager could not find 'ScrollMapManager'");
-                else
+                if (Input.GetKeyDown(KeyCode.D))
                 {
-                    iconsSetBroke = !iconsSetBroke;
-                    smm.GetComponent<ScrollMapManager>().SetMapIconsBroke(iconsSetBroke);
-                    Debug.Log("Map icons broken set to: " + iconsSetBroke);
-                }
+                    LoadScene("DevMenu", true);
+                }                
             }
+            // // press 'F' to toggle between fixed and broken map sprites
+            // if (Input.GetKeyDown(KeyCode.F))
+            // {
+            //     GameObject smm;
+            //     smm = GameObject.Find("ScrollMapManager");
+
+            //     if (smm == null) 
+            //         Debug.LogError("GameManager could not find 'ScrollMapManager'");
+            //     else
+            //     {
+            //         iconsSetBroke = !iconsSetBroke;
+            //         smm.GetComponent<ScrollMapManager>().SetMapIconsBroke(iconsSetBroke);
+            //         Debug.Log("Map icons broken set to: " + iconsSetBroke);
+            //     }
+            // }
         }
         else
         {

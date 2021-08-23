@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public enum TalkieCharacter
 {
     None, Red, Wally, Darwin, Lester, Brutus, Marcus, Julius, Clogg, Spindle

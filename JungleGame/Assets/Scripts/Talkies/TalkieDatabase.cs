@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 [System.Serializable]
 public struct TalkieDatabaseEntry
 {
@@ -15,6 +19,7 @@ public struct TalkieDatabaseEntry
 public class TalkieDatabase : MonoBehaviour
 {
     public static TalkieDatabase instance;
+    private const string talkie_object_folder = "Assets/Resources/TalkieObjects/";
 
     [Header("Talkie Objects")]          // Where in the code base is the talkie called from?
     public TalkieObject boatGame;       // script: NewBoatGameManager.cs
@@ -144,4 +149,52 @@ public class TalkieDatabase : MonoBehaviour
                 return FindSprite(lesterSprites, emotionNum, mouth, eyes);
         }
     }
+
+#if UNITY_EDITOR
+    public void UpdateCreateObject(TalkieObject talkie)
+    {
+        string[] result = AssetDatabase.FindAssets(talkie.talkieName);
+        TalkieObject yourObject = null;
+
+        if (result.Length > 1)
+        {
+            GameManager.instance.SendError(this, "multiple instances of talkie object -> " + talkie.talkieName);
+            return;
+        }
+
+        // create new challenge word
+        if(result.Length == 0)
+        {
+            GameManager.instance.SendLog(this, "creating new talkie object -> " + talkie.talkieName);
+            yourObject = ScriptableObject.CreateInstance<TalkieObject>();
+            AssetDatabase.CreateAsset(yourObject, talkie_object_folder + talkie.talkieName + ".asset");
+        }
+        // get challenge word object
+        else
+        {
+            GameManager.instance.SendLog(this, "found talkie object -> " + talkie.talkieName);
+            string path = AssetDatabase.GUIDToAssetPath(result[0]);
+            yourObject = (TalkieObject)AssetDatabase.LoadAssetAtPath(path, typeof(TalkieObject));
+        }
+
+        yourObject.talkieName = talkie.talkieName;
+        yourObject.quipsCollection = talkie.quipsCollection;
+
+        yourObject.start = talkie.start;
+        yourObject.addBackgroundBeforeTalkie = talkie.addBackgroundBeforeTalkie;
+        yourObject.addLetterboxBeforeTalkie = talkie.addLetterboxBeforeTalkie;
+
+        yourObject.ending = talkie.ending;
+        yourObject.removeBackgroundAfterTalkie = talkie.removeBackgroundAfterTalkie;
+        yourObject.removeLetterboxAfterTalkie = talkie.removeLetterboxAfterTalkie;
+
+        yourObject.endAction = TalkieEndAction.None;
+
+        yourObject.segmnets = talkie.segmnets;
+        
+        EditorUtility.SetDirty(yourObject);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+    }
+#endif
 }
