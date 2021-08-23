@@ -682,11 +682,14 @@ public class TurntablesGameManager : MonoBehaviour
         if (!playTutorial)
         {
             // set other keys to be random word (not current or other door words)
+            List<ActionWordEnum> exceptList = new List<ActionWordEnum>();
+            exceptList.Add(doorWords[currentDoorIndex]);
             for (int j = 0; j < 4; j++)
             {
                 if (j != correctKeyIndex)
                 {
-                    ActionWordEnum word = GetUnusedWord();
+                    ActionWordEnum word = GetRandomWord(exceptList);
+                    exceptList.Add(word);
                     keys[j].SetKeyActionWord(word);
                 }
             }
@@ -755,6 +758,23 @@ public class TurntablesGameManager : MonoBehaviour
         ActionWordEnum word = unusedWordPool[index];
 
         unusedWordPool.Remove(word);
+        return word;
+    }
+
+    private ActionWordEnum GetRandomWord(List<ActionWordEnum> except = null)
+    {
+        List<ActionWordEnum> pool = new List<ActionWordEnum>();
+        pool.AddRange(globalWordPool);
+        if (except != null)
+        {
+            foreach(var item in except)
+            {
+                pool.Remove(item);
+            }
+        }
+        
+        int index = Random.Range(0, pool.Count);
+        ActionWordEnum word = pool[index];
         return word;
     }
 

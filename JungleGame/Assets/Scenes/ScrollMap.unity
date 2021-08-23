@@ -4071,9 +4071,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3f4d4b9612a3341831e91d1a77d4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overideMapLimit: 0
-  mapLimitNum: 0
-  overideGameEvent: 0
+  overideMapLimit: 1
+  mapLimitNum: 4
+  overideGameEvent: 1
   gameEvent: 5
   overrideStartPosition: 0
   startPos: 0
