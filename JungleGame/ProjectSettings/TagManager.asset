@@ -21,6 +21,8 @@ TagManager:
   - UniversalCoin
   - WaterCoin
   - Frame
+  - HideInventoryArea
+  - OpenInventoryArea
   layers:
   - Default
   - TransparentFX

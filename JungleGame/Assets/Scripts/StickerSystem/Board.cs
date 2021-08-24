@@ -39,6 +39,8 @@ public class Board : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         {
             isPressed = true;
             animator.Play("BoardClicked");
+            
+            StickerBoardController.instance.ToggleStickerBoardWindow();
         }
     }
 

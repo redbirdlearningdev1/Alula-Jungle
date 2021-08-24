@@ -660,8 +660,8 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {
-            // darwin quips
-            gorilla.interactable = true;
+            // unlock everything
+            
         }
 
         waitingForGameEventRoutine = false;

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LerpableObject : MonoBehaviour
 {
     private Coroutine scaleRoutine;
+    private Coroutine squishyRoutine;
     private Coroutine posRoutine;
     private Coroutine colorRoutine;
 
@@ -71,7 +72,16 @@ public class LerpableObject : MonoBehaviour
 
     public void SquishyScaleLerp(Vector2 maxScale, Vector2 normalScale, float maxSpeed, float normalSpeed)
     {
-        StartCoroutine(SquishyScaleLerpRoutine(maxScale, normalScale, maxSpeed, normalSpeed));
+        if (squishyRoutine != null)
+        {
+            StopCoroutine(squishyRoutine);
+            squishyRoutine = null;
+            
+            scaleRoutine = StartCoroutine(LerpScaleRoutine(normalScale, normalSpeed));
+            return;
+        }
+
+        squishyRoutine = StartCoroutine(SquishyScaleLerpRoutine(maxScale, normalScale, maxSpeed, normalSpeed));
     }
 
     private IEnumerator SquishyScaleLerpRoutine(Vector2 maxScale, Vector2 normalScale, float maxSpeed, float normalSpeed)
@@ -80,6 +90,12 @@ public class LerpableObject : MonoBehaviour
         yield return new WaitForSeconds(maxSpeed);
         LerpScale(normalScale, normalSpeed);
         yield return new WaitForSeconds(normalSpeed);
+        squishyRoutine = null;
+    }
+
+    public void SetImageAlpha(Image image, float alpha)
+    {
+        image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);
     }
 
     public void LerpImageAlpha(Image image, float alpha, float duration)

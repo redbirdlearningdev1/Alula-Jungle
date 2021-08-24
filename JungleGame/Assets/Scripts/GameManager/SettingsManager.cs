@@ -9,8 +9,8 @@ public class SettingsManager : MonoBehaviour
 {
     public static SettingsManager instance;
 
-    [SerializeField] private Button menuButton;
-    [SerializeField] private Button wagonButton;
+    public Button menuButton;
+    public Button wagonButton;
 
     [Header("Audio Settings")]
     [SerializeField] private Slider masterVol;

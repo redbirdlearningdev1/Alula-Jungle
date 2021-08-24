@@ -22,8 +22,6 @@ public class BuyBoardWindow : MonoBehaviour
             instance = this;
         }
 
-        
-
         buyButton.interactable = false;
         coinImage.gameObject.SetActive(false);
         buyText.text = "";
