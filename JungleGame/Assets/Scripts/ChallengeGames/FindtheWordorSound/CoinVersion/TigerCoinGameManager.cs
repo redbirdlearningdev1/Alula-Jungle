@@ -162,6 +162,31 @@ public class TigerCoinGameManager : MonoBehaviour
             coinOptions.Add(waterCoins[i].value);
 
         }
+        if (waterCoins[0].value == currentTargetValue)
+        {
+
+
+        }
+        else if (waterCoins[1].value == currentTargetValue)
+        {
+
+
+        }
+        else if (waterCoins[2].value == currentTargetValue)
+        {
+
+
+        }
+        else if (waterCoins[3].value == currentTargetValue)
+        {
+
+
+        }
+        else if (waterCoins[4].value == currentTargetValue)
+        {
+
+
+        }
         else
         {
             int rand2 = Random.Range(0, 5);
@@ -169,6 +194,7 @@ public class TigerCoinGameManager : MonoBehaviour
             Debug.Log(waterCoins[rand2]);
 
         }
+
 
         yield return new WaitForSeconds(.35f);
         for (int i = 1; i < 5; i++)
@@ -192,6 +218,20 @@ public class TigerCoinGameManager : MonoBehaviour
 
             StartCoroutine(LerpMoveObject(waterCoins[i].transform, CoinPos5.position, .2f));
         }
+
+
+        yield return new WaitForSeconds(.6f);
+
+
+        //currentTargetWord = targetChallengeWord;
+        //currentTargetValue = currentTargetWord.elkoninList[swipeIndex];
+
+
+
+
+
+
+
 
         yield return new WaitForSeconds(1f);
     }
@@ -220,6 +260,12 @@ public class TigerCoinGameManager : MonoBehaviour
         if (playingCoinAudio)
             return;
 
+        // check lists
+        //if (currentCoins.Contains(coin))
+        //{
+        //    StartCoroutine(GlowAndPlayAudioCoinRoutine(coin));
+        //}
+        // water coins
         if (waterCoins.Contains(coin))
         {
             StartCoroutine(GlowAndPlayAudioCoinRoutine(coin, true));
@@ -233,6 +279,9 @@ public class TigerCoinGameManager : MonoBehaviour
         // glow coin
         coin.ToggleGlowOutline(true);
         AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(coin.value).audio);
+        // water coin differential
+        //if (!waterCoin) coin.LerpSize(expandedCoinSize, 0.25f);
+        //else coin.LerpSize(waterExpandedCoinSize, 0.25f);
 
         yield return new WaitForSeconds(0.5f);
         // return if current water coin
@@ -243,10 +292,15 @@ public class TigerCoinGameManager : MonoBehaviour
             yield break;
         }
 
+        // water coin differential
+        //if (!waterCoin) coin.LerpSize(normalCoinSize, 0.25f);
+        //else coin.LerpSize(waterNormalCoinSize, 0.25f);
+
         coin.ToggleGlowOutline(false);
 
         playingCoinAudio = false;
     }
+
 
     private ChallengeWord GetUnusedWord()
     {
@@ -285,10 +339,14 @@ public class TigerCoinGameManager : MonoBehaviour
         {
             StartCoroutine(PostRound(false));
         }
+
+        // return water coins
+        //WordFactorySubstitutingManager.instance.ResetWaterCoins();
     }
 
     public void returnToPos(GameObject currCoin)
     {
+
         currCoin.gameObject.transform.SetParent(selectedObjectParentCoin);
 
         if (currCoin.name == "Coin1")
@@ -311,10 +369,12 @@ public class TigerCoinGameManager : MonoBehaviour
         {
             StartCoroutine(LerpMoveObject(waterCoins[4].transform, CoinPos5.position, .2f));
         }
+
     }
 
     private IEnumerator PostRound(bool win)
     {
+       
         if (win)
         {
             Debug.Log("goodjob");
@@ -356,11 +416,13 @@ public class TigerCoinGameManager : MonoBehaviour
         yield return new WaitForSeconds(.15f);
         for (int i = 0; i < 4; i++)
         {
+
             StartCoroutine(LerpMoveObject(waterCoins[i].transform, CoinPos5.position, .2f));
         }
         yield return new WaitForSeconds(.25f);
         for (int i = 0; i < 5; i++)
         {
+
             StartCoroutine(LerpMoveObject(waterCoins[i].transform, CoinEndPos.position, .2f));
         }
 
@@ -373,5 +435,16 @@ public class TigerCoinGameManager : MonoBehaviour
         {
             StartCoroutine(StartGame());
         }
+
     }
+
+
+
+
+
+
+
+
+
+
 }

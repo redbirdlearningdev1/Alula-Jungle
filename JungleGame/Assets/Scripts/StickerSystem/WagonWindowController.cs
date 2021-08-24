@@ -10,7 +10,7 @@ public class WagonWindowController : MonoBehaviour
 
     [Header("Stickers")]
     [SerializeField] private GameObject wagon;
-    [SerializeField] private GameObject Book, Board, BackWindow, Gecko;
+    [SerializeField] private GameObject Book, board, BackWindow, gecko;
     [SerializeField] private Animator Wagon;
     [SerializeField] private Animator GeckoAnim;
     private bool stickerCartOut;
@@ -51,7 +51,7 @@ public class WagonWindowController : MonoBehaviour
 
         // sticker stuff
         Book.SetActive(false);
-        Board.SetActive(false);
+        board.SetActive(false);
         BackWindow.SetActive(false);
 
         // reset window
@@ -59,6 +59,9 @@ public class WagonWindowController : MonoBehaviour
 
         // activate wagon
         wagon.gameObject.SetActive(true);
+
+        // close buy board window
+        buyBoardWindow.LerpScale(new Vector2(0f, 1f), 0.0001f);
     }
 
     void Update() 
@@ -354,7 +357,6 @@ public class WagonWindowController : MonoBehaviour
 
     private IEnumerator RollOnScreen()
     {
-        print ("rolling in!");
         wagon.transform.position = cartStartPosition.position;
 
         // disable nav buttons
@@ -372,9 +374,9 @@ public class WagonWindowController : MonoBehaviour
         Wagon.Play("Idle");
 
         Book.SetActive(true);
-        Board.SetActive(true);
+        board.SetActive(true);
         BackWindow.SetActive(true);
-        Gecko.SetActive(true);
+        gecko.SetActive(true);
         GeckoAnim.Play("geckoIntro");
 
         // play lester talkies if first time
@@ -396,17 +398,22 @@ public class WagonWindowController : MonoBehaviour
 
     private IEnumerator RollOffScreen()
     {
-        print ("rolling off!");
-
         // activate raycast blocker + background
         RaycastBlockerController.instance.CreateRaycastBlocker("StickerCartBlocker");
+
+        // remove windows
+        if (buyBoardActive)
+        {
+            yield return new WaitForSeconds(0.5f);
+            ToggleBuyBoardWindow();
+        }
 
         // roll off screen
         Wagon.Play("WagonRollIn");
         Book.SetActive(false);
-        Board.SetActive(false);
+        board.SetActive(false);
         BackWindow.SetActive(false);
-        Gecko.SetActive(false);
+        gecko.SetActive(false);
 
         StartCoroutine(RollToTargetRoutine(cartOffScreenPosition.position));
         yield return new WaitForSeconds(3f);
@@ -429,9 +436,9 @@ public class WagonWindowController : MonoBehaviour
     public void ResetWagonController()
     {
         Book.SetActive(false);
-        Board.SetActive(false);
+        board.SetActive(false);
         BackWindow.SetActive(false);
-        Gecko.SetActive(false);
+        gecko.SetActive(false);
 
         wagon.transform.position = cartStartPosition.position;
         Wagon.Play("Idle");
@@ -499,5 +506,58 @@ public class WagonWindowController : MonoBehaviour
             float tempAlpha = Mathf.Lerp(start, end, timer / 1f);
             yield return null;
         }
+    }
+
+    /* 
+    ################################################
+    #   STICKER BOARD METHODS
+    ################################################
+    */
+
+    public LerpableObject buyBoardWindow;
+
+    private bool buyBoardActive = false;
+    private bool buyBoardReady = true;
+
+    public void ToggleBuyBoardWindow()
+    {
+        if (!buyBoardReady)
+            return;
+
+        buyBoardActive = !buyBoardActive;
+        buyBoardReady = false;
+
+        // open window
+        if (buyBoardActive)
+        {
+            StartCoroutine(OpenBuyBoardWindowRoutine());
+            Gecko.instance.isOn = false;
+            Board.instance.isOn = false;
+        }
+        // close window
+        else
+        {
+            StartCoroutine(CloseBuyBoardWindowRoutine());
+            Gecko.instance.isOn = true;
+            Board.instance.isOn = true;
+        }
+    }
+
+    private IEnumerator OpenBuyBoardWindowRoutine()
+    {
+        buyBoardWindow.SquishyScaleLerp(new Vector2(1.2f, 1f), new Vector2(1f, 1f), 0.2f, 0.05f);
+
+        yield return new WaitForSeconds(0.5f);
+
+        buyBoardReady = true;
+    }
+
+    private IEnumerator CloseBuyBoardWindowRoutine()
+    {
+        buyBoardWindow.SquishyScaleLerp(new Vector2(1.2f, 1f), new Vector2(0f, 1f), 0.2f, 0.1f);
+
+        yield return new WaitForSeconds(0.5f);
+
+        buyBoardReady = true;
     }
 }

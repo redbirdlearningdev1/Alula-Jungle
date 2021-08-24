@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LerpableObject : MonoBehaviour
 {
     private Coroutine scaleRoutine;
     private Coroutine posRoutine;
+    private Coroutine colorRoutine;
 
     public void LerpScale(Vector2 targetScale, float duration)
     {
@@ -63,6 +65,49 @@ public class LerpableObject : MonoBehaviour
 
             if (localPosition) transform.localPosition = tempPos;
             else transform.position = tempPos;
+            yield return null;
+        }
+    }
+
+    public void SquishyScaleLerp(Vector2 maxScale, Vector2 normalScale, float maxSpeed, float normalSpeed)
+    {
+        StartCoroutine(SquishyScaleLerpRoutine(maxScale, normalScale, maxSpeed, normalSpeed));
+    }
+
+    private IEnumerator SquishyScaleLerpRoutine(Vector2 maxScale, Vector2 normalScale, float maxSpeed, float normalSpeed)
+    {
+        LerpScale(maxScale, maxSpeed);
+        yield return new WaitForSeconds(maxSpeed);
+        LerpScale(normalScale, normalSpeed);
+        yield return new WaitForSeconds(normalSpeed);
+    }
+
+    public void LerpImageAlpha(Image image, float alpha, float duration)
+    {
+        if (colorRoutine != null)
+            StopCoroutine(colorRoutine);
+
+        colorRoutine = StartCoroutine(LerpImageAlphaRoutine(image, alpha, duration));
+    }
+
+    private IEnumerator LerpImageAlphaRoutine(Image image, float alpha, float duration)
+    {
+        Color startColor = image.color;
+        Color targetColor = new Color(startColor.r, startColor.g, startColor.b, alpha);
+        float startAlpha = image.color.a;
+        float timer = 0f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > duration)
+            {
+                image.color = targetColor;
+                break;
+            }
+
+            var tempColor = Color.Lerp(startColor, targetColor, timer / duration);
+            image.color = tempColor;
             yield return null;
         }
     }

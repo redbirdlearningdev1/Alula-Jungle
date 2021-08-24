@@ -6,31 +6,23 @@ using UnityEngine.EventSystems;
 
 public class Board : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
-    [Header("Game Data")]
-    //public GameData gameData;
+    public static Board instance;
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
-
     private bool isPressed = false;
     private bool isFixed = false;
-
-
-
+    public bool isOn = true;
 
     void Awake()
     {
+        if (instance == null)
+            instance = this;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-
-
-
     }
-
-
-
 
     /* 
     ################################################
@@ -40,10 +32,12 @@ public class Board : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (!isOn)
+            return;
+
         if (!isPressed)
         {
             isPressed = true;
-            Debug.Log("HERE");
             animator.Play("BoardClicked");
         }
     }
@@ -53,8 +47,6 @@ public class Board : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         if (isPressed)
         {
             isPressed = false;
-            Debug.Log(isPressed);
-
         }
     }
 
