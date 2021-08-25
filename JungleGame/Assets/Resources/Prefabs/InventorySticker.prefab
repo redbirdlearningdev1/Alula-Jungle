@@ -427,8 +427,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stickerImage: {fileID: 62128518641218300}
-  stickerCountText: {fileID: 0}
+  stickerCountText: {fileID: 4335317810605524419}
   pressedScaleChange: 1.1
+  myStickerObject: {fileID: 0}
 --- !u!222 &4565476963497111549
 CanvasRenderer:
   m_ObjectHideFlags: 0

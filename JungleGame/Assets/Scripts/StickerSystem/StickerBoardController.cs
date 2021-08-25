@@ -88,6 +88,13 @@ public class StickerBoardController : MonoBehaviour
 
     private void ResetStickerBoard()
     {
+        // place in start pos
         stickerBoardWindow.transform.localPosition = topOffScreenPos;
+
+        // update inventory text
+        StickerInventoryButton.instance.UpdateButtonText();
+
+        // reset bools
+        StickerBoard.instance.ResetBools();
     }
 }

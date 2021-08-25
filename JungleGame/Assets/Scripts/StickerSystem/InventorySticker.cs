@@ -9,67 +9,40 @@ public class InventorySticker : MonoBehaviour //, IPointerUpHandler, IPointerDow
 {
     public Image stickerImage;
     public TextMeshProUGUI stickerCountText;
-    private int stickerCount;
 
     private bool isPressed;
     public float pressedScaleChange;
 
-    private Sticker myStickerObject;
+    public Sticker myStickerObject;
 
-    void Awake()
+    public void SetStickerType(Sticker sticker, bool currentSticker = false)
     {
-        //stickerCount.text = "";
+        myStickerObject = new Sticker(sticker);
+
+        if (!currentSticker)
+        {
+            stickerImage.sprite = myStickerObject.sprite;
+            stickerCountText.text = "x" + myStickerObject.count.ToString();
+        }
+        else 
+        {
+            int count = myStickerObject.count - 1;
+            stickerCountText.text = "x" + count.ToString();
+        }
+        
     }
 
-    public void SetStickerType(Sticker sticker)
+    public void UpdateStickerCount(int newVal)
     {
-        myStickerObject = sticker;
-        stickerImage.sprite = sticker.sprite;
-        // TODO update count using SIS
-        stickerCount = 1;
+        print ("new val count: " + newVal);
+        stickerCountText.text = "x" + newVal;
     }
 
     public void UseOneSticker()
     {
-        stickerCount--;
-
-        // TODO update SIS
-        
-        // remove sticker from window
-        if (stickerCount <= 0)
-        {
-            Destroy(gameObject);
-        }
+        // remove sticker from inventory
+        StudentInfoSystem.RemoveStickerFromInventory(myStickerObject);
+        // update SIS
+        StickerBoard.instance.UpdateStickerInventory();
     }
-
-    /* 
-    ################################################
-    #   POINTER METHODS
-    ################################################
-    */
-
-    // public void OnPointerDown(PointerEventData eventData)
-    // {
-    //     if (!isPressed)
-    //     {
-    //         isPressed = true;
-    //         stickerImage.transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
-
-    //         StickerBoard.instance.SetCurrentSticker(stickerImage.transform);
-    //     }
-    // }
-
-    // public void OnPointerUp(PointerEventData eventData)
-    // {
-    //     if (isPressed)
-    //     {
-    //         // play audio blip
-    //         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
-
-    //         isPressed = false;
-    //         stickerImage.transform.localScale = new Vector3(1f, 1f, 1f);
-
-    //         StickerBoard.instance.PlaceCurrentStickerDown();
-    //     }
-    // }
 }

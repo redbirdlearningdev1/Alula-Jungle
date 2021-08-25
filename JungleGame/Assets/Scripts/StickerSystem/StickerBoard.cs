@@ -11,15 +11,22 @@ public class StickerBoard : MonoBehaviour
 
     public Transform selectedStickerParent;
     public Transform placedStickerParent;
-    public bool stickerInventoryActive = false;
+    [HideInInspector] public bool stickerInventoryActive = false;
     private bool canPlaceSticker = false;
     private bool waitingToGlueSticker = false;
+    private bool holdingSticker = false;
+    private bool overrodeStickerCount = false;
 
     [Header("Sticker Limits")]
     public Vector2 xLimits;
     public Vector2 yLimits;
 
     private Transform currentSticker = null;
+    private InventorySticker currentInventorySticker = null;
+
+    [Header("Sticker Inventory")]
+    public GameObject inventoryStickerPrefab;
+    public Transform inventoryParent;
 
     void Awake()
     {
@@ -28,6 +35,9 @@ public class StickerBoard : MonoBehaviour
 
         // close inventory
         stickerInventoryWindow.LerpScale(new Vector2(0f, 1f), 0.0001f);
+
+        // reset bools
+        ResetBools();
 
         // deactivate self
         gameObject.SetActive(false);
@@ -59,6 +69,14 @@ public class StickerBoard : MonoBehaviour
         }
     }
 
+    public void ResetBools()
+    {
+        canPlaceSticker = false;
+        waitingToGlueSticker = false;
+        holdingSticker = false;
+        overrodeStickerCount = false;
+    }
+
     public void ReturnCurrentStickerToInventory()
     {
         if (currentSticker != null)
@@ -73,33 +91,52 @@ public class StickerBoard : MonoBehaviour
         waitingToGlueSticker = true;
 
         // open inventory
-        ToggleStickerInventory(true);
+        if (!stickerInventoryActive)
+        {   
+            ToggleStickerInventory(true);
+            yield return new WaitForSeconds(0.25f);
+        }
 
-        yield return new WaitForSeconds(0.25f);
+        // update inventory count
+        if (overrodeStickerCount)
+        {
+            print ("returning to original count");
+            overrodeStickerCount = false;
+            currentInventorySticker.UpdateStickerCount(currentInventorySticker.myStickerObject.count);
+        }
 
         // return sticker to inventory
         currentSticker.GetComponent<StickerImage>().ReturnStickerImageToParent();
         currentSticker.GetComponent<Image>().raycastTarget = true;
         currentSticker = null;
+        currentInventorySticker = null;
 
-        canPlaceSticker = false;
-        waitingToGlueSticker = false;
+        // canPlaceSticker = false;
+        // waitingToGlueSticker = false;
+        ResetBools();
     }
 
-    public void SetCurrentSticker(Transform newSticker)
+    public void SetCurrentSticker(InventorySticker newSticker, Transform stickerImage)
     {
+        if (currentInventorySticker == newSticker)
+            return;
+
         // can only get new sticker if none are being edited on the board
         if (currentSticker != null)
             return;
 
+        currentInventorySticker = newSticker;
+
         canPlaceSticker = false;
-        currentSticker = newSticker;
+        currentSticker = stickerImage;
         currentSticker.SetParent(selectedStickerParent);
         currentSticker.GetComponent<Image>().raycastTarget = false;
     }
 
     public void PlaceCurrentStickerDown()
     {
+        holdingSticker = false;
+
         // place sticker on board
         if (canPlaceSticker && !stickerInventoryActive)
         {   
@@ -111,7 +148,7 @@ public class StickerBoard : MonoBehaviour
                 return;
             }
 
-            currentSticker.SetParent(placedStickerParent);
+            currentSticker.SetParent(placedStickerParent);            
 
             // activate correct button based on y position
             if (currentSticker.localPosition.y > 0)
@@ -127,6 +164,15 @@ public class StickerBoard : MonoBehaviour
 
     public void PickUpCurrentSticker()
     {
+        // update inventory count
+        if (!overrodeStickerCount)
+        {
+            print ("removing one count");
+            overrodeStickerCount = true;
+            currentInventorySticker.UpdateStickerCount(currentInventorySticker.myStickerObject.count - 1);
+        }
+
+        holdingSticker = true;
         // pick up sticker to move to a different location
         currentSticker.SetParent(selectedStickerParent);
         // disable both buttons
@@ -141,10 +187,15 @@ public class StickerBoard : MonoBehaviour
         // can glue iff sticker is on the the sticker board
         if (canPlaceSticker && !stickerInventoryActive && waitingToGlueSticker)
         {
-            canPlaceSticker = false;
             currentSticker.GetComponent<StickerImage>().UseOneSticker();
             currentSticker.SetParent(placedStickerParent);
             currentSticker = null;
+            currentInventorySticker = null;
+            // canPlaceSticker = false;
+            // overrodeStickerCount = false;
+            // waitingToGlueSticker = false;
+            // holdingSticker = false;
+            ResetBools();
 
             // Save to SIS
         }
@@ -177,6 +228,9 @@ public class StickerBoard : MonoBehaviour
         // open window
         if (stickerInventoryActive)
         {
+            // dont update inventory if sticker is in use
+            if (!holdingSticker && !waitingToGlueSticker)
+                UpdateStickerInventory();
             stickerInventoryWindow.SquishyScaleLerp(new Vector2(1.2f, 1f), new Vector2(1f, 1f), 0.2f, 0.05f);
         }
         // close window
@@ -195,12 +249,36 @@ public class StickerBoard : MonoBehaviour
         // open window
         if (stickerInventoryActive)
         {
+            // dont update inventory if sticker is in use
+            if (!holdingSticker && !waitingToGlueSticker)
+                UpdateStickerInventory();
             stickerInventoryWindow.SquishyScaleLerp(new Vector2(1.2f, 1f), new Vector2(1f, 1f), 0.2f, 0.05f);
         }
         // close window
         else
         {
             stickerInventoryWindow.SquishyScaleLerp(new Vector2(1.2f, 1f), new Vector2(0f, 1f), 0.05f, 0.1f);
+        }
+    }
+
+    public void UpdateStickerInventory()
+    {
+        // update inventory text
+        StickerInventoryButton.instance.UpdateButtonText();
+        
+        // empty current inventory
+        foreach (Transform child in inventoryParent.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+
+        List<Sticker> myInventory = new List<Sticker>();
+        myInventory.AddRange(StudentInfoSystem.currentStudentPlayer.stickerInventory);
+
+        foreach (var sticker in myInventory)
+        {
+            var newInventorySticker = Instantiate(inventoryStickerPrefab, inventoryParent).GetComponent<InventorySticker>();
+            newInventorySticker.SetStickerType(sticker);
         }
     }
 }

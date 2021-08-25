@@ -78,4 +78,14 @@ public class StickerDatabase : MonoBehaviour
                 return legendaryStickers[index];
         }
     }
+
+    public int GetTotalStickerAmount()
+    {
+        int total = 0;
+        total += commonStickers.Count;
+        total += uncommonStickers.Count;
+        total += rareStickers.Count;
+        total += legendaryStickers.Count;
+        return total;
+    }
 }

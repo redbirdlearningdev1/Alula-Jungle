@@ -53,17 +53,43 @@ public static class StudentInfoSystem
         currentStudentPlayer.currStoryBeat = (StoryBeat)((int)currentStudentPlayer.currStoryBeat + 1);
     }
 
-    public static void SaveStickerToProfile(Sticker sticker)
+    public static void AddStickerToInventory(Sticker sticker)
     {
         if (currentStudentPlayer != null)
         {
             // add sticker to unlocked stickers if not already in list
-            if (!currentStudentPlayer.unlockedStickers.Contains(sticker))
+            if (!currentStudentPlayer.stickerInventory.Contains(sticker))
             {
-                currentStudentPlayer.unlockedStickers.Add(sticker);
+                currentStudentPlayer.stickerInventory.Add(sticker);
                 SaveStudentPlayerData();
                 DropdownToolbar.instance.UpdateSilverCoins();
             }
+
+            // increment sticker count by one
+            currentStudentPlayer.stickerInventory.Find(i => i == sticker).count++;
+        }
+    }
+
+    public static void RemoveStickerFromInventory(Sticker sticker)
+    {
+        if (currentStudentPlayer != null)
+        {
+            // check to see if sticker exists
+            if (currentStudentPlayer.stickerInventory.Find(i => i.id == sticker.id))
+            {
+                // decrement by one
+                currentStudentPlayer.stickerInventory.Find(i => i.id == sticker.id).count--;
+                
+                // if count is 0, remove sticker from inventory
+                if (currentStudentPlayer.stickerInventory.Find(i => i.id == sticker.id).count <= 0)
+                {
+                    var emptySticker = currentStudentPlayer.stickerInventory.Find(i => i.id == sticker.id);
+                    currentStudentPlayer.stickerInventory.Remove(emptySticker);
+                }
+
+                SaveStudentPlayerData();
+                DropdownToolbar.instance.UpdateSilverCoins();
+            }   
         }
     }
 }

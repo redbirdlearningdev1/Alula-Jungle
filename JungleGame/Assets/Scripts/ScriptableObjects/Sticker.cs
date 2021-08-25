@@ -13,4 +13,13 @@ public class Sticker : ScriptableObject
     public Sprite sprite;
     public StickerRarity rarity;
     public int id;
+    public int count;
+
+    public Sticker(Sticker sticker)
+    {
+        this.sprite = sticker.sprite;
+        this.rarity = sticker.rarity;
+        this.id = sticker.id;
+        this.count = sticker.count;
+    }
 }

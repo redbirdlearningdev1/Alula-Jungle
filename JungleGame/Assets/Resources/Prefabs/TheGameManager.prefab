@@ -6561,6 +6561,9 @@ MonoBehaviour:
   stickerInventoryActive: 0
   xLimits: {x: -850, y: 850}
   yLimits: {x: -550, y: 550}
+  inventoryStickerPrefab: {fileID: 5449128574884050046, guid: 0761a35f65d7fd644bae73b7909e9378,
+    type: 3}
+  inventoryParent: {fileID: 7904006482728128156}
 --- !u!114 &9180658675396705840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8681,6 +8684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pressedScaleChange: 0.9
+  buttonText: {fileID: 1132114420359908057}
 --- !u!114 &1782569842
 MonoBehaviour:
   m_ObjectHideFlags: 0

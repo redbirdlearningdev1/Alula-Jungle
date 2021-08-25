@@ -152,7 +152,7 @@ public static class LoadSaveSystem
         new_data.mapData.GV_challenge3.stars = default_stars;
 
         // stickers
-        new_data.unlockedStickers = new List<Sticker>();
+        new_data.stickerInventory = new List<Sticker>();
 
         // save data as incative profile
         SaveStudentData(new_data, true);

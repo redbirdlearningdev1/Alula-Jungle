@@ -153,7 +153,7 @@ public class WagonWindowController : MonoBehaviour
         print ("you got a sticker! " + sticker.rarity + " " + sticker.id);
 
         // save sticker to SIS
-        StudentInfoSystem.SaveStickerToProfile(sticker);
+        StudentInfoSystem.AddStickerToInventory(sticker);
 
         // fade to black
         FadeObject.instance.FadeOut(2f);

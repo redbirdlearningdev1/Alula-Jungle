@@ -10,7 +10,7 @@ public class StickerImage : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
     public Button placeButtonTop;
     public Button placeButtonBottom;
 
-    private bool isPressed;
+    [HideInInspector] public bool isPressed;
     public float pressedScaleChange;
     private bool isGlued = false;
 
@@ -64,7 +64,7 @@ public class StickerImage : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             isPressed = true;
             transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
 
-            StickerBoard.instance.SetCurrentSticker(transform);
+            StickerBoard.instance.SetCurrentSticker(inventoryStickerParent.GetComponent<InventorySticker>(), transform);
             StickerBoard.instance.PickUpCurrentSticker();
         }
     }

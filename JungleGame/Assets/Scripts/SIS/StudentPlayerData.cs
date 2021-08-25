@@ -59,7 +59,7 @@ public class StudentPlayerData
     public MapData mapData;
 
     // sticker data
-    public List<Sticker> unlockedStickers;
+    public List<Sticker> stickerInventory;
 }
 
 [System.Serializable]
