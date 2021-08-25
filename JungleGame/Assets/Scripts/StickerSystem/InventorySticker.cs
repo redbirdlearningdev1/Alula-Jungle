@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class InventorySticker : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
+public class InventorySticker : MonoBehaviour //, IPointerUpHandler, IPointerDownHandler
 {
     public Image stickerImage;
     public TextMeshProUGUI stickerCountText;
@@ -48,28 +48,28 @@ public class InventorySticker : MonoBehaviour, IPointerUpHandler, IPointerDownHa
     ################################################
     */
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        if (!isPressed)
-        {
-            isPressed = true;
-            stickerImage.transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
+    // public void OnPointerDown(PointerEventData eventData)
+    // {
+    //     if (!isPressed)
+    //     {
+    //         isPressed = true;
+    //         stickerImage.transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
 
-            StickerBoard.instance.SetCurrentSticker(stickerImage.transform);
-        }
-    }
+    //         StickerBoard.instance.SetCurrentSticker(stickerImage.transform);
+    //     }
+    // }
 
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        if (isPressed)
-        {
-            // play audio blip
-            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+    // public void OnPointerUp(PointerEventData eventData)
+    // {
+    //     if (isPressed)
+    //     {
+    //         // play audio blip
+    //         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
-            isPressed = false;
-            stickerImage.transform.localScale = new Vector3(1f, 1f, 1f);
+    //         isPressed = false;
+    //         stickerImage.transform.localScale = new Vector3(1f, 1f, 1f);
 
-            StickerBoard.instance.RemoveCurrentSticker();
-        }
-    }
+    //         StickerBoard.instance.PlaceCurrentStickerDown();
+    //     }
+    // }
 }

@@ -9,6 +9,7 @@ public class LerpableObject : MonoBehaviour
     private Coroutine squishyRoutine;
     private Coroutine posRoutine;
     private Coroutine colorRoutine;
+    private Coroutine followTransformRoutine;
 
     public void LerpScale(Vector2 targetScale, float duration)
     {
@@ -33,6 +34,42 @@ public class LerpableObject : MonoBehaviour
 
             Vector2 tempScale = Vector2.Lerp(startScale, targetScale, timer / duration);
             transform.localScale = tempScale;
+            yield return null;
+        }
+    }
+
+    public void LerpPosToTransform(Transform followTransform, float duration, bool localPosition)
+    {
+        if (followTransformRoutine != null)
+            StopCoroutine(followTransformRoutine);
+
+        followTransformRoutine = StartCoroutine(LerpPosToTransformRoutine(followTransform, duration, localPosition));
+    }
+
+    private IEnumerator LerpPosToTransformRoutine(Transform followTransform, float duration, bool localPosition)
+    {
+        float timer = 0f;
+        Vector3 startPos;
+        if (localPosition) startPos = transform.localPosition;
+        else startPos = transform.position; 
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > duration)
+            {
+                if (localPosition) transform.localPosition = followTransform.position;
+                else transform.position = followTransform.position;
+                break;
+            }
+
+            Vector3 tempPos;
+            if (localPosition) tempPos = Vector3.Lerp(startPos, followTransform.position, timer / duration);
+            else tempPos = Vector3.Lerp(startPos, followTransform.position, timer / duration);
+
+            if (localPosition) transform.localPosition = tempPos;
+            else transform.position = tempPos;
+
             yield return null;
         }
     }

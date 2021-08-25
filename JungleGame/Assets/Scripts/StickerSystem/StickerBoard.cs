@@ -13,6 +13,11 @@ public class StickerBoard : MonoBehaviour
     public Transform placedStickerParent;
     public bool stickerInventoryActive = false;
     private bool canPlaceSticker = false;
+    private bool waitingToGlueSticker = false;
+
+    [Header("Sticker Limits")]
+    public Vector2 xLimits;
+    public Vector2 yLimits;
 
     private Transform currentSticker = null;
 
@@ -30,7 +35,7 @@ public class StickerBoard : MonoBehaviour
 
     void Update()
     {
-        if (currentSticker != null)
+        if (currentSticker != null && !waitingToGlueSticker)
         {
             var mousePos = Input.mousePosition;
             mousePos.z = 0f;
@@ -54,35 +59,115 @@ public class StickerBoard : MonoBehaviour
         }
     }
 
+    public void ReturnCurrentStickerToInventory()
+    {
+        if (currentSticker != null)
+        {
+            StartCoroutine(ReturnStickerToInventoryRoutine());
+        }
+    }
+
+    private IEnumerator ReturnStickerToInventoryRoutine()
+    {
+        // stop moving sticker
+        waitingToGlueSticker = true;
+
+        // open inventory
+        ToggleStickerInventory(true);
+
+        yield return new WaitForSeconds(0.25f);
+
+        // return sticker to inventory
+        currentSticker.GetComponent<StickerImage>().ReturnStickerImageToParent();
+        currentSticker.GetComponent<Image>().raycastTarget = true;
+        currentSticker = null;
+
+        canPlaceSticker = false;
+        waitingToGlueSticker = false;
+    }
+
     public void SetCurrentSticker(Transform newSticker)
     {
+        // can only get new sticker if none are being edited on the board
+        if (currentSticker != null)
+            return;
+
         canPlaceSticker = false;
         currentSticker = newSticker;
         currentSticker.SetParent(selectedStickerParent);
         currentSticker.GetComponent<Image>().raycastTarget = false;
     }
 
-    public void RemoveCurrentSticker()
+    public void PlaceCurrentStickerDown()
     {
-        // either return sticker to inventory or place on sticker board
-
+        // place sticker on board
         if (canPlaceSticker && !stickerInventoryActive)
+        {   
+            // if sticker is off-screen return to inventory
+            if (StickerOffScreen())
+            {
+                // return to inventory
+                ReturnCurrentStickerToInventory();
+                return;
+            }
+
+            currentSticker.SetParent(placedStickerParent);
+
+            // activate correct button based on y position
+            if (currentSticker.localPosition.y > 0)
+                currentSticker.GetComponent<StickerImage>().placeButtonBottom.gameObject.SetActive(true);
+            else
+                currentSticker.GetComponent<StickerImage>().placeButtonTop.gameObject.SetActive(true);
+            currentSticker.GetComponent<Image>().raycastTarget = true;
+            waitingToGlueSticker = true;
+            return;
+        }
+        ReturnCurrentStickerToInventory();
+    }
+
+    public void PickUpCurrentSticker()
+    {
+        // pick up sticker to move to a different location
+        currentSticker.SetParent(selectedStickerParent);
+        // disable both buttons
+        currentSticker.GetComponent<StickerImage>().placeButtonBottom.gameObject.SetActive(false);
+        currentSticker.GetComponent<StickerImage>().placeButtonTop.gameObject.SetActive(false);
+        currentSticker.GetComponent<Image>().raycastTarget = false;
+        waitingToGlueSticker = false;
+    }
+
+    public void GlueCurrentSticker()
+    {
+        // can glue iff sticker is on the the sticker board
+        if (canPlaceSticker && !stickerInventoryActive && waitingToGlueSticker)
         {
-            // make sure sticker is over sticker board (NOT OFF SCREEN)
-
             canPlaceSticker = false;
-            // ask if this is an okay place to put sticker
-
-            // FOR NOW JUST LET GO OF THE STICKER LOL
             currentSticker.GetComponent<StickerImage>().UseOneSticker();
             currentSticker.SetParent(placedStickerParent);
             currentSticker = null;
-            return;
+
+            // Save to SIS
+        }
+    }
+
+    public bool StickerOffScreen()
+    {
+        if (currentSticker != null)
+        {
+            //print ("current sticker pos: " + currentSticker.localPosition);
+
+            // check x pos
+            if (currentSticker.localPosition.x > xLimits.x && currentSticker.localPosition.x < xLimits.y)
+            {
+                // check y pos
+                if (currentSticker.localPosition.y > yLimits.x && currentSticker.localPosition.y < yLimits.y)
+                {
+                    return false; // sticker is in range 
+                }
+            }
         }
 
-        currentSticker.GetComponent<StickerImage>().ReturnStickerImageToParent();
-        currentSticker.GetComponent<Image>().raycastTarget = true;
-        currentSticker = null;
+        return true;
     }
 
     public void OnStickerInventoryPressed()

@@ -38,20 +38,20 @@ public class StickerBoardController : MonoBehaviour
         // open window
         if (stickerBoardActive)
         {
-            StartCoroutine(OpenBuyBoardWindowRoutine());
+            StartCoroutine(OpenStickerBoardWindowRoutine());
             Gecko.instance.isOn = false;
             StickerBoardBook.instance.isOn = false;
         }
         // close window
         else
         {
-            StartCoroutine(CloseBuyBoardWindowRoutine());
+            StartCoroutine(CloseStickerBoardWindowRoutine());
             Gecko.instance.isOn = true;
             StickerBoardBook.instance.isOn = true;
         }
     }
 
-    private IEnumerator OpenBuyBoardWindowRoutine()
+    private IEnumerator OpenStickerBoardWindowRoutine()
     {
         stickerBoardWindow.gameObject.SetActive(true);
         ResetStickerBoard();
@@ -68,8 +68,12 @@ public class StickerBoardController : MonoBehaviour
         stickerBoardReady = true;
     }
 
-    private IEnumerator CloseBuyBoardWindowRoutine()
+    private IEnumerator CloseStickerBoardWindowRoutine()
     {
+        // return any active stickers to inventory
+        StickerBoard.instance.ReturnCurrentStickerToInventory();
+        yield return new WaitForSeconds(0.25f);
+
         stickerBoardWindow.LerpPosition(outBouncePos, time2, true);
         yield return new WaitForSeconds(time2);
 
