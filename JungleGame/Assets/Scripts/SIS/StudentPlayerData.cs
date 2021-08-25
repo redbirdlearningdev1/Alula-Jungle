@@ -2,26 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum StudentIndex
-{
-    student_1, student_2, student_3
-}
-
-public enum StoryBeat
-{
-    InitBoatGame, // 0
-    UnlockGorillaVillage, // 1
-    GorillaVillageIntro, // 2
-    PrologueStoryGame, // 3
-    RedShowsStickerButton, // 4
-    VillageRebuilt, // 5
-    GorillaVillage_challengeGame_1, // 6
-    GorillaVillage_challengeGame_2, // 7
-    GorillaVillage_challengeGame_3, // 8
-    VillageChallengeDefeated, // 9
-    COUNT
-}
-
 [System.Serializable]
 public class StudentPlayerData
 {
@@ -60,7 +40,42 @@ public class StudentPlayerData
 
     // sticker data
     public List<Sticker> stickerInventory;
+    // sticker boards
+    public StickerBoardData classicStickerBoard;
+    // other sticker boards would go here...
 }
+
+/* 
+################################################
+#   PROFILE + STORY DATA
+################################################
+*/
+
+public enum StudentIndex
+{
+    student_1, student_2, student_3
+}
+
+public enum StoryBeat
+{
+    InitBoatGame, // 0
+    UnlockGorillaVillage, // 1
+    GorillaVillageIntro, // 2
+    PrologueStoryGame, // 3
+    RedShowsStickerButton, // 4
+    VillageRebuilt, // 5
+    GorillaVillage_challengeGame_1, // 6
+    GorillaVillage_challengeGame_2, // 7
+    GorillaVillage_challengeGame_3, // 8
+    VillageChallengeDefeated, // 9
+    COUNT
+}
+
+/* 
+################################################
+#   MAP DATA
+################################################
+*/
 
 [System.Serializable]
 public class MapIconData
@@ -87,4 +102,30 @@ public class MapData
     public ChallengeGameData GV_challenge1;
     public ChallengeGameData GV_challenge2;
     public ChallengeGameData GV_challenge3;
+}
+
+/* 
+################################################
+#   STICKER DATA
+################################################
+*/
+
+public enum StickerBoardType
+{
+    Classic
+}
+
+[System.Serializable]
+public class StickerBoardData
+{
+    public StickerBoardType boardType; // what board is it ?
+    public bool active; // is the board purchased and unlocked
+    public List<StickerData> stickers; // stickers on the board
+}
+
+[System.Serializable]
+public class StickerData
+{
+    public Sticker stickerObject; // used for sprint
+    public Vector2 boardPos; // where on the board is it located ?
 }

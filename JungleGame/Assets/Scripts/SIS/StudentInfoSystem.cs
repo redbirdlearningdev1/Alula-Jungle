@@ -92,4 +92,31 @@ public static class StudentInfoSystem
             }   
         }
     }
+
+    public static void GlueStickerToBoard(Sticker sticker, Vector2 pos, StickerBoardType board)
+    {
+        switch (board)
+        {
+            case StickerBoardType.Classic:
+                // make new sticker data
+                StickerData data = new StickerData();
+                data.stickerObject = sticker;
+                data.boardPos = pos;
+
+                // add to board list
+                currentStudentPlayer.classicStickerBoard.stickers.Add(data);
+                break;
+        }
+        SaveStudentPlayerData();
+    }
+
+    public static StickerBoardData GetStickerBoardData(StickerBoardType board)
+    {
+        switch (board)
+        {
+            default:
+            case StickerBoardType.Classic:
+                return currentStudentPlayer.classicStickerBoard;
+        }
+    }
 }

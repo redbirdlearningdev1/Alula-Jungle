@@ -7,6 +7,7 @@ public class StickerBoard : MonoBehaviour
 {
     public static StickerBoard instance;
 
+    public StickerBoardType boardType;
     public LerpableObject stickerInventoryWindow;
 
     public Transform selectedStickerParent;
@@ -26,6 +27,7 @@ public class StickerBoard : MonoBehaviour
 
     [Header("Sticker Inventory")]
     public GameObject inventoryStickerPrefab;
+    public GameObject imageStickerPrefab;
     public Transform inventoryParent;
 
     void Awake()
@@ -189,15 +191,14 @@ public class StickerBoard : MonoBehaviour
         {
             currentSticker.GetComponent<StickerImage>().UseOneSticker();
             currentSticker.SetParent(placedStickerParent);
-            currentSticker = null;
-            currentInventorySticker = null;
-            // canPlaceSticker = false;
-            // overrodeStickerCount = false;
-            // waitingToGlueSticker = false;
-            // holdingSticker = false;
-            ResetBools();
 
             // Save to SIS
+            StudentInfoSystem.GlueStickerToBoard(currentInventorySticker.myStickerObject, currentSticker.localPosition, boardType);
+
+            // reset
+            currentSticker = null;
+            currentInventorySticker = null;
+            ResetBools();
         }
     }
 
@@ -280,5 +281,11 @@ public class StickerBoard : MonoBehaviour
             var newInventorySticker = Instantiate(inventoryStickerPrefab, inventoryParent).GetComponent<InventorySticker>();
             newInventorySticker.SetStickerType(sticker);
         }
+    }
+
+    public void AddStickerOntoBoard(StickerData data)
+    {
+        var stickerImage = Instantiate(imageStickerPrefab, placedStickerParent).GetComponent<StickerImage>();
+        stickerImage.SetStickerType(data);
     }
 }

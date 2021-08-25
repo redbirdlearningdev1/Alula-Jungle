@@ -10,7 +10,7 @@ using UnityEditor;
 public static class LoadSaveSystem
 {
     // default student player values
-    public static string default_version = "1.7"; 
+    public static string default_version = "1.8";
     // 1.6 added stickers to SIS
 
     public static string default_name = "empty";
@@ -153,6 +153,13 @@ public static class LoadSaveSystem
 
         // stickers
         new_data.stickerInventory = new List<Sticker>();
+        // classic sticker board
+        new_data.classicStickerBoard = new StickerBoardData();
+        new_data.classicStickerBoard.boardType = StickerBoardType.Classic;
+        new_data.classicStickerBoard.active = true; // always active by default
+        new_data.classicStickerBoard.stickers = new List<StickerData>();
+
+
 
         // save data as incative profile
         SaveStudentData(new_data, true);

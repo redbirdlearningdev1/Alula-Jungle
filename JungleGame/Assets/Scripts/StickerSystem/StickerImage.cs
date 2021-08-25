@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class StickerImage : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
-    public Transform inventoryStickerParent;
+    [HideInInspector] public Transform inventoryStickerParent;
     public Button placeButtonTop;
     public Button placeButtonBottom;
 
@@ -19,6 +19,13 @@ public class StickerImage : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         // deactivate buttons
         placeButtonTop.gameObject.SetActive(false);
         placeButtonBottom.gameObject.SetActive(false);
+    }
+
+    public void SetStickerType(StickerData data)
+    {
+        isGlued = true;
+        GetComponent<Image>().sprite = data.stickerObject.sprite;
+        transform.localPosition = data.boardPos;
     }
 
     public void OnPlaceButtonPressed()

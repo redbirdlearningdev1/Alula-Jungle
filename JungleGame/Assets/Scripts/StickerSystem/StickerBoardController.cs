@@ -65,6 +65,14 @@ public class StickerBoardController : MonoBehaviour
         stickerBoardWindow.LerpPosition(onScreenPos, time3, true);
         yield return new WaitForSeconds(time3);
 
+        // place stickers on board
+        var boardData = StudentInfoSystem.GetStickerBoardData(StickerBoardType.Classic);
+        StickerBoard classicBoard = stickerBoardWindow.GetComponent<StickerBoard>();
+        foreach (var sticker in boardData.stickers)
+        {
+            classicBoard.AddStickerOntoBoard(sticker);
+        }
+
         stickerBoardReady = true;
     }
 
