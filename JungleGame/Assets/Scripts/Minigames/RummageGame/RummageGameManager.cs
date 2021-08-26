@@ -73,7 +73,7 @@ public class RummageGameManager : MonoBehaviour
         gameData = (RummageGameData)GameManager.instance.GetData();
 
         if (!playingInEditor)
-            playTutorial = !StudentInfoSystem.currentStudentPlayer.rummageTutorial;
+            playTutorial = !StudentInfoSystem.GetCurrentProfile().rummageTutorial;
 
         PregameSetup();
     }
@@ -510,7 +510,7 @@ public class RummageGameManager : MonoBehaviour
             yield return new WaitForSeconds(3f);
 
             // save to SIS
-            StudentInfoSystem.currentStudentPlayer.rummageTutorial = true;
+            StudentInfoSystem.GetCurrentProfile().rummageTutorial = true;
             StudentInfoSystem.SaveStudentPlayerData();
 
             GameManager.instance.LoadScene("RummageGame", true, 3f);

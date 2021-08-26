@@ -448,17 +448,17 @@ public class WordFactoryBlendingManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // update SIS
-        if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1)
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1)
         {
             // first time losing
-            if (!StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame)
-                StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame = true;
+            if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame)
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = true;
             else
             {
                 // every other time losing
-                if (!StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame)
+                if (!StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
                 {
-                    StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame = true;
+                    StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = true;
                 }
             }
             StudentInfoSystem.SaveStudentPlayerData();
@@ -481,10 +481,10 @@ public class WordFactoryBlendingManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // update SIS
-        if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1)
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1)
         {
-            StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame = false;
-            StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame = false;
+            StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = false;
+            StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
         }

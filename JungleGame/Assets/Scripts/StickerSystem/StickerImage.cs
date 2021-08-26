@@ -14,11 +14,18 @@ public class StickerImage : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
     public float pressedScaleChange;
     private bool isGlued = false;
 
+    private StickerBoard stickerBoard;
+
     void Awake()
     {
         // deactivate buttons
         placeButtonTop.gameObject.SetActive(false);
         placeButtonBottom.gameObject.SetActive(false);
+    }
+
+    public void SetStickerBoard(StickerBoard board)
+    {
+        this.stickerBoard = board;
     }
 
     public void SetStickerType(StickerData data)
@@ -28,6 +35,18 @@ public class StickerImage : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         transform.localPosition = data.boardPos;
     }
 
+    public void DeleteSticker()
+    {
+        StartCoroutine(DeleteStickerRoutine());
+    }
+
+    private IEnumerator DeleteStickerRoutine()
+    {
+        GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.05f);
+        yield return new WaitForSeconds(0.25f);
+        Destroy(this.gameObject);
+    }
+
     public void OnPlaceButtonPressed()
     {
         isGlued = true;
@@ -35,7 +54,7 @@ public class StickerImage : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         placeButtonTop.gameObject.SetActive(false);
         placeButtonBottom.gameObject.SetActive(false);
         // glue sticker to board
-        StickerBoard.instance.GlueCurrentSticker();
+        stickerBoard.GlueCurrentSticker();
     }
 
     public void ReturnStickerImageToParent()
@@ -71,8 +90,8 @@ public class StickerImage : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             isPressed = true;
             transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
 
-            StickerBoard.instance.SetCurrentSticker(inventoryStickerParent.GetComponent<InventorySticker>(), transform);
-            StickerBoard.instance.PickUpCurrentSticker();
+            stickerBoard.SetCurrentSticker(inventoryStickerParent.GetComponent<InventorySticker>(), transform);
+            stickerBoard.PickUpCurrentSticker();
         }
     }
 
@@ -89,7 +108,7 @@ public class StickerImage : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             isPressed = false;
             transform.localScale = new Vector3(1f, 1f, 1f);
 
-            StickerBoard.instance.PlaceCurrentStickerDown();
+            stickerBoard.PlaceCurrentStickerDown();
         }
     }
 }

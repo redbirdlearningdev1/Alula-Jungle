@@ -75,7 +75,7 @@ public class FroggerGameManager : MonoBehaviour
         gameData = (FroggerGameData)GameManager.instance.GetData();
 
         if (!playInEditor)
-            playTutorial = !StudentInfoSystem.currentStudentPlayer.froggerTutorial;
+            playTutorial = !StudentInfoSystem.GetCurrentProfile().froggerTutorial;
 
         PregameSetup();
 
@@ -457,7 +457,7 @@ public class FroggerGameManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         // save to SIS
-        StudentInfoSystem.currentStudentPlayer.froggerTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().froggerTutorial = true;
         StudentInfoSystem.SaveStudentPlayerData();
 
         GameManager.instance.LoadScene("FroggerGame", true, 3f);

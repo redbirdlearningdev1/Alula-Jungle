@@ -53,8 +53,6 @@ public class DevMenuManager : MonoBehaviour
         storyGameDropdown.AddOptions(storyGamesList);
 
         // setup profiles
-        if (StudentInfoSystem.currentStudentPlayer == null)
-            StudentInfoSystem.SetStudentPlayer(StudentIndex.student_1);
         profileDropdown.onValueChanged.AddListener(delegate { OnProfileDropdownChanged(); });
         SetupProfileDropdown();
     }
@@ -88,27 +86,19 @@ public class DevMenuManager : MonoBehaviour
         profileDropdown.AddOptions(profileList);
         
         // set current profile
-        if (StudentInfoSystem.currentStudentPlayer != null)
+
+        switch (StudentInfoSystem.GetCurrentProfile().studentIndex)
         {
-            switch (StudentInfoSystem.currentStudentPlayer.studentIndex)
-            {
-                case StudentIndex.student_1:
-                    profileDropdown.value = 0;
-                    break;
-                case StudentIndex.student_2:
-                    profileDropdown.value = 1;
-                    break;
-                case StudentIndex.student_3:
-                    profileDropdown.value = 2;
-                    break;
-            }
-        }
-        else
-        {
-            // default is 0
-            profileDropdown.value = 0;
-        }
-        
+            case StudentIndex.student_1:
+                profileDropdown.value = 0;
+                break;
+            case StudentIndex.student_2:
+                profileDropdown.value = 1;
+                break;
+            case StudentIndex.student_3:
+                profileDropdown.value = 2;
+                break;
+        }        
     }
 
     public void OnProfileDropdownChanged()
@@ -138,12 +128,9 @@ public class DevMenuManager : MonoBehaviour
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CreateBlip, 1f);
 
-        if (StudentInfoSystem.currentStudentPlayer != null)
-        {
-            StudentInfoSystem.ResetProfile(StudentInfoSystem.currentStudentPlayer.studentIndex);
-            SettingsManager.instance.LoadSettingsFromProfile();
-            SetupProfileDropdown();
-        }
+        StudentInfoSystem.ResetProfile(StudentInfoSystem.GetCurrentProfile().studentIndex);
+        SettingsManager.instance.LoadSettingsFromProfile();
+        SetupProfileDropdown();
     }
 
     public void OnAllProfilesResetPressed()
@@ -163,7 +150,7 @@ public class DevMenuManager : MonoBehaviour
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
-        StudentInfoSystem.currentStudentPlayer.name = profileInput.text;
+        StudentInfoSystem.GetCurrentProfile().name = profileInput.text;
         StudentInfoSystem.SaveStudentPlayerData();
         SetupProfileDropdown();
     }

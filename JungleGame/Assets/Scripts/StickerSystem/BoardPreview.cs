@@ -7,9 +7,12 @@ using UnityEngine.EventSystems;
 public class BoardPreview : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     public int price;
+    public StickerBoardType boardType;
 
     public LerpableObject boardObject;
     public LerpableObject priceObject;
+
+    public Image outOfStockImage;
 
     public float unselectedAlpha;
     public float selectedAlpha;
@@ -23,6 +26,9 @@ public class BoardPreview : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
 
         if (boardSelected)
         {
+            // set the current board type
+            BuyBoardWindow.instance.currentBoard = this;
+
             boardObject.LerpImageAlpha(boardObject.GetComponent<Image>(), selectedAlpha, 0.25f);
             //priceObject.LerpImageAlpha(priceObject.GetComponent<Image>(), selectedAlpha, 0.25f);
 
@@ -33,6 +39,11 @@ public class BoardPreview : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             boardObject.LerpImageAlpha(boardObject.GetComponent<Image>(), unselectedAlpha, 0.25f);
             //priceObject.LerpImageAlpha(priceObject.GetComponent<Image>(), unselectedAlpha, 0.25f);
         }
+    }
+
+    public void SetOutOfStock(bool opt)
+    {
+        outOfStockImage.gameObject.SetActive(opt);
     }
 
     /* 

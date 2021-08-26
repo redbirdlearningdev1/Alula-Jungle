@@ -74,16 +74,16 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         // check for character quips
         if (character == Character.Darwin)
         {
-            if (StudentInfoSystem.currentStudentPlayer.currStoryBeat > StoryBeat.PrologueStoryGame)
+            if (StudentInfoSystem.GetCurrentProfile().currStoryBeat > StoryBeat.PrologueStoryGame)
             {
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.darwinQuips);
                 yield break;
             }
         }
 
-        print ("story beat: " + StudentInfoSystem.currentStudentPlayer.currStoryBeat);
+        print ("story beat: " + StudentInfoSystem.GetCurrentProfile().currStoryBeat);
 
-        if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.GorillaVillageIntro)
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillageIntro)
         {
             // remove exclamation mark from gorilla
             ScrollMapManager.instance.gorilla.ShowExclamationMark(false);
@@ -165,7 +165,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             ScrollMapManager.instance.EnableAllMapIcons();
             yield break;
         }
-        else if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.PrologueStoryGame)
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PrologueStoryGame)
         {  
             // only continue if tapped on gorilla
             if (character == Character.Darwin)
@@ -176,7 +176,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                     yield return null;
             }
         }
-        else if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1)
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1)
         {
             if (character == Character.Julius)
             {
@@ -186,7 +186,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                     yield return null;
             }
         }
-        else if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
         {
             if (character == Character.Marcus)
             {
@@ -196,7 +196,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                     yield return null;
             }
         }
-        else if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3)
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3)
         {
             if (character == Character.Brutus)
             {

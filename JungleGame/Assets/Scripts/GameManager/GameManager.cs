@@ -43,10 +43,6 @@ public class GameManager : DontDestroy<GameManager>
     {
         // set game resolution
         Screen.SetResolution(gameResolution.x, gameResolution.y, FullScreenMode.FullScreenWindow);
-
-        // student information system setup - set to profile 1 if not chosen
-        if (StudentInfoSystem.currentStudentPlayer == null)
-            StudentInfoSystem.SetStudentPlayer(StudentIndex.student_1);
     }
 
     private void Update()

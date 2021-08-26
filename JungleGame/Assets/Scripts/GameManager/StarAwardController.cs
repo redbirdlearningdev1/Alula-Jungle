@@ -90,48 +90,48 @@ public class StarAwardController : MonoBehaviour
             default: return;
 
             case MapIconIdentfier.GV_house1:
-                if (StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.stars < numStars)
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.stars < numStars)
                 {
-                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.stars, numStars);
-                    StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.stars = numStars;
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.stars = numStars;
                 }
-                if (!StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.isFixed)
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.isFixed)
                 {
                     GameManager.instance.repairMapIconID = true;
                 }
                 break;
 
             case MapIconIdentfier.GV_house2:
-                if (StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.stars < numStars)
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.stars < numStars)
                 {
-                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.stars, numStars);
-                    StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.stars = numStars;
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.stars = numStars;
                 }
-                if (!StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.isFixed)
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.isFixed)
                 {
                     GameManager.instance.repairMapIconID = true;
                 }
                 break;
 
             case MapIconIdentfier.GV_statue:
-                if (StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.stars < numStars)
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.stars < numStars)
                 {
-                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.stars, numStars);
-                    StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.stars = numStars;
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.stars = numStars;
                 }
-                if (!StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.isFixed)
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.isFixed)
                 {
                     GameManager.instance.repairMapIconID = true;
                 }
                 break;
 
             case MapIconIdentfier.GV_fire:
-                if (StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.stars < numStars)
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.stars < numStars)
                 {
-                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.stars, numStars);
-                    StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.stars = numStars;
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.stars = numStars;
                 }
-                if (!StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.isFixed)
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.isFixed)
                 {
                     GameManager.instance.repairMapIconID = true;
                 }

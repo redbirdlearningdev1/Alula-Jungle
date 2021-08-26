@@ -69,7 +69,7 @@ public class TurntablesGameManager : MonoBehaviour
         gameData = (TurntablesGameData)GameManager.instance.GetData();
 
         if (!playInEditor)
-            playTutorial = !StudentInfoSystem.currentStudentPlayer.turntablesTutorial;
+            playTutorial = !StudentInfoSystem.GetCurrentProfile().turntablesTutorial;
 
         PregameSetup();
 
@@ -626,7 +626,7 @@ public class TurntablesGameManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         // save to SIS
-        StudentInfoSystem.currentStudentPlayer.turntablesTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().turntablesTutorial = true;
         StudentInfoSystem.SaveStudentPlayerData();
 
         GameManager.instance.LoadScene("TurntablesGame", true, 3f);

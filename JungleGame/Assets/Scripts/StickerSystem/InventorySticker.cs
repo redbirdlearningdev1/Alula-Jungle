@@ -14,6 +14,7 @@ public class InventorySticker : MonoBehaviour //, IPointerUpHandler, IPointerDow
     public float pressedScaleChange;
 
     public Sticker myStickerObject;
+    private StickerBoard stickerBoard;
 
     public void SetStickerType(Sticker sticker, bool currentSticker = false)
     {
@@ -32,6 +33,13 @@ public class InventorySticker : MonoBehaviour //, IPointerUpHandler, IPointerDow
         
     }
 
+    public void SetStickerBoard(StickerBoard board)
+    {
+        this.stickerBoard = board;
+        stickerImage.GetComponent<StickerImage>().SetStickerBoard(board);
+    }
+
+
     public void UpdateStickerCount(int newVal)
     {
         print ("new val count: " + newVal);
@@ -43,6 +51,6 @@ public class InventorySticker : MonoBehaviour //, IPointerUpHandler, IPointerDow
         // remove sticker from inventory
         StudentInfoSystem.RemoveStickerFromInventory(myStickerObject);
         // update SIS
-        StickerBoard.instance.UpdateStickerInventory();
+        stickerBoard.UpdateStickerInventory();
     }
 }

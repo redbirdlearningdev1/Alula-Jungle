@@ -39,35 +39,35 @@ public class DropdownToolbar : MonoBehaviour
 
     public void LoadToolbarDataFromProfile()
     {
-        var data = StudentInfoSystem.currentStudentPlayer;
+        var data = StudentInfoSystem.GetCurrentProfile();
         // update gold and silver coins
-        SetGoldText(StudentInfoSystem.currentStudentPlayer.goldCoins.ToString());
+        SetGoldText(data.goldCoins.ToString());
         UpdateSilverCoins();
     }
 
     public void AwardGoldCoins(int amountToAward)
     {
         // add and save to profile
-        StudentInfoSystem.currentStudentPlayer.goldCoins += amountToAward;
+        StudentInfoSystem.GetCurrentProfile().goldCoins += amountToAward;
         StudentInfoSystem.SaveStudentPlayerData();
 
         // update toolbar string
-        SetGoldText(StudentInfoSystem.currentStudentPlayer.goldCoins.ToString());
+        SetGoldText(StudentInfoSystem.GetCurrentProfile().goldCoins.ToString());
     }
 
     public void RemoveGoldCoins(int amountToRemove)
     {
         // remove and save to profile
-        StudentInfoSystem.currentStudentPlayer.goldCoins -= amountToRemove;
+        StudentInfoSystem.GetCurrentProfile().goldCoins -= amountToRemove;
         StudentInfoSystem.SaveStudentPlayerData();
 
         // update toolbar string
-        SetGoldText(StudentInfoSystem.currentStudentPlayer.goldCoins.ToString());
+        SetGoldText(StudentInfoSystem.GetCurrentProfile().goldCoins.ToString());
     }
 
     public void UpdateSilverCoins()
     {
-        silverText.text = StudentInfoSystem.currentStudentPlayer.stickerInventory.Count.ToString() + "/" + StickerDatabase.instance.GetTotalStickerAmount();
+        silverText.text = StudentInfoSystem.GetCurrentProfile().stickerInventory.Count.ToString() + "/" + StickerDatabase.instance.GetTotalStickerAmount();
     }
 
     private void SetGoldText(string text)

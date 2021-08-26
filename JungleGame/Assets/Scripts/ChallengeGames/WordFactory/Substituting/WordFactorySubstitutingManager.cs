@@ -577,20 +577,20 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // update SIS
-        if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
         {
-            StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame = false;
-            StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame = false;
+            StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = false;
+            StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
         }
 
         // JUST FOR NOW WHILE CHALLEMGE GAME 3 ISNT IN
         // update SIS
-        else if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3)
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3)
         {
-            StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame = false;
-            StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame = false;
+            StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = false;
+            StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
         }
@@ -618,17 +618,17 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // update SIS
-        if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
         {
             // first time losing
-            if (!StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame)
-                StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame = true;
+            if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame)
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = true;
             else
             {
                 // every other time losing
-                if (!StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame)
+                if (!StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
                 {
-                    StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame = true;
+                    StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = true;
                 }
             }
             StudentInfoSystem.SaveStudentPlayerData();

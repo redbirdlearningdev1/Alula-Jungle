@@ -7,6 +7,10 @@ public class StickerBoardController : MonoBehaviour
     public static StickerBoardController instance;
 
     public LerpableObject stickerBoards;
+    public LerpableObject buttons;
+    public GameObject hoverAreas;
+
+    private List<StickerBoard> activeStickerBoards;
     private int numBoards;
     private int currentBoardIndex = 0;
     private bool buttonsDeactivated = false;
@@ -37,27 +41,65 @@ public class StickerBoardController : MonoBehaviour
         if (instance == null)
             instance = this;
 
-        // deactivate buttons
-        buttonsDeactivated = true;
+        StartCoroutine(DelayedStart(0.001f));
+    }
 
-        if (StudentInfoSystem.currentStudentPlayer != null)
+    private IEnumerator DelayedStart(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        hoverAreas.SetActive(false);
+
+        // deactivate buttons
+        buttons.gameObject.SetActive(true);
+        buttonsDeactivated = true;
+        buttons.transform.localScale = new Vector3(2f, 2f, 1f);
+        buttons.gameObject.SetActive(false);
+
+        UpdateBoards();
+    }
+
+    public void UpdateBoards()
+    {
+        stickerBoards.gameObject.SetActive(true);
+
+        activeStickerBoards = new List<StickerBoard>();
+        activeStickerBoards.Add(classicBoard);
+
+        numBoards = 4; // currently 4 boards in game
+
+        // deactivate locked boards
+        if (!StudentInfoSystem.GetCurrentProfile().mossyStickerBoard.active)
         {
-            // deactivate locked boards
-            if (!StudentInfoSystem.currentStudentPlayer.mossyStickerBoard.active)
-            {
-                mossyBoard.gameObject.SetActive(false);
-                numBoards--;
-            }
-            else if (!StudentInfoSystem.currentStudentPlayer.emeraldStickerBoard.active)
-            {
-                emeraldBoard.gameObject.SetActive(false);
-                numBoards--;
-            }
-            else if (StudentInfoSystem.currentStudentPlayer.beachStickerBoard.active)
-            {
-                beachBoard.gameObject.SetActive(false);
-                numBoards--;
-            }
+            mossyBoard.gameObject.SetActive(false);
+            numBoards--;
+        }
+        else
+        {
+            activeStickerBoards.Add(mossyBoard);
+            mossyBoard.gameObject.SetActive(true);
+        }
+
+        if (!StudentInfoSystem.GetCurrentProfile().emeraldStickerBoard.active)
+        {
+            emeraldBoard.gameObject.SetActive(false);
+            numBoards--;
+        }
+        else
+        {
+            activeStickerBoards.Add(emeraldBoard);
+            emeraldBoard.gameObject.SetActive(true);
+        }
+
+        if (!StudentInfoSystem.GetCurrentProfile().beachStickerBoard.active)
+        {
+            beachBoard.gameObject.SetActive(false);
+            numBoards--;
+        }
+        else
+        {
+            activeStickerBoards.Add(beachBoard);
+            beachBoard.gameObject.SetActive(true);
         }
         
         stickerBoards.gameObject.SetActive(false);
@@ -89,17 +131,10 @@ public class StickerBoardController : MonoBehaviour
 
     private IEnumerator OpenStickerBoardWindowRoutine()
     {
+        ResetStickerBoards();
+        UpdateBoards();
         stickerBoards.gameObject.SetActive(true);
-        ResetStickerBoard();
-
-        // get sticker and board data
-        var boardData = StudentInfoSystem.GetStickerBoardData(StickerBoardType.Classic);
-
-        // remove all stickers
-        classicBoard.ClearBoard();
-        mossyBoard.ClearBoard();
-        emeraldBoard.ClearBoard();
-        beachBoard.ClearBoard();
+        StickerInventoryButton.instance.UpdateButtonText();
     
         // animate board intro
         stickerBoards.LerpYPos(inBounce1Pos, time1, true);
@@ -110,15 +145,13 @@ public class StickerBoardController : MonoBehaviour
 
         stickerBoards.LerpYPos(onScreenPos, time3, true);
         yield return new WaitForSeconds(time3);
-        
-        // place stickers on board
-        foreach (var sticker in boardData.stickers)
-        {
-            classicBoard.AddStickerOntoBoard(sticker);
-            yield return new WaitForSeconds(0.01f);
-        }
+
+        // add stickers to classic board
+        classicBoard.AddAllStickersToBoard();
 
         // activate buttons
+        buttons.gameObject.SetActive(true);
+        buttons.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.05f);
         buttonsDeactivated = false;
 
         stickerBoardReady = true;
@@ -128,9 +161,13 @@ public class StickerBoardController : MonoBehaviour
     {
         // deactivate buttons
         buttonsDeactivated = true;
+        buttons.LerpScale(new Vector2(2f, 2f), 0.5f);
 
         // return any active stickers to inventory
-        StickerBoard.instance.ReturnCurrentStickerToInventory();
+        foreach (var item in activeStickerBoards)
+        {
+            item.ReturnCurrentStickerToInventory();
+        }
         yield return new WaitForSeconds(0.25f);
 
         stickerBoards.LerpYPos(outBouncePos, time2, true);
@@ -141,23 +178,34 @@ public class StickerBoardController : MonoBehaviour
 
         stickerBoardReady = true;
 
-        ResetStickerBoard();
+        ResetStickerBoards();
+        StickerInventoryButton.instance.UpdateButtonText();
         stickerBoards.gameObject.SetActive(false);
+
+        buttons.transform.localScale = new Vector3(2f, 2f, 1f);
+        buttons.gameObject.SetActive(false);
     }
 
-    private void ResetStickerBoard()
+    private void ResetStickerBoards()
     {
         // place in start pos
-        stickerBoards.transform.localPosition = new Vector3(stickerBoards.transform.localPosition.x, topOffScreenPos, 1f);
+        stickerBoards.transform.localPosition = new Vector3(0f, topOffScreenPos, 1f);
 
-        // update inventory text
-        StickerInventoryButton.instance.UpdateButtonText();
+        // reset current index
+        currentBoardIndex = 0;
 
-        // reset bools
-        StickerBoard.instance.ResetBools();
+        // remove all stickers
+        foreach (var item in activeStickerBoards)
+        {
+            item.ResetBools();
+            item.ClearBoard();
+        }
     }
 
-
+    public StickerBoard GetCurrentStickerBoard()
+    {
+        return activeStickerBoards[currentBoardIndex];
+    }
 
     public void OnLeftButtonPressed()
     {
@@ -166,14 +214,23 @@ public class StickerBoardController : MonoBehaviour
 
         buttonsDeactivated = true;
 
+        // save prev board index
+        int prevBoardIndex = currentBoardIndex;
         currentBoardIndex--;
-        if (currentBoardIndex <= 0)
+
+        if (currentBoardIndex < 0)
         {
             currentBoardIndex = 0;
             // bump board left
             StartCoroutine(BumpAnimation(true));
             return;
         }
+
+        // toggle off inventory
+        activeStickerBoards[prevBoardIndex].ToggleStickerInventory(false);
+        // remove stickers from prev board
+        activeStickerBoards[prevBoardIndex].RemoveAllStickersFromBoard();
+
         // move board left
         StartCoroutine(MoveToLeftBoard());
     }
@@ -185,7 +242,10 @@ public class StickerBoardController : MonoBehaviour
 
         buttonsDeactivated = true;
 
+        // save prev board index
+        int prevBoardIndex = currentBoardIndex;
         currentBoardIndex++;
+
         if (currentBoardIndex >= numBoards)
         {
             currentBoardIndex = numBoards - 1;
@@ -193,26 +253,38 @@ public class StickerBoardController : MonoBehaviour
             StartCoroutine(BumpAnimation(false));
             return;
         }
+
+        // toggle off inventory
+        activeStickerBoards[prevBoardIndex].ToggleStickerInventory(false);
+        // remove stickers from prev board
+        activeStickerBoards[prevBoardIndex].RemoveAllStickersFromBoard();
+
         // move board right
         StartCoroutine(MoveToRightBoard());
     }
 
     private IEnumerator MoveToLeftBoard()
     {
-        stickerBoards.LerpXPos(stickerBoards.transform.localPosition.x + bumpAmount, 0.1f, true);
+        stickerBoards.LerpXPos(stickerBoards.transform.localPosition.x - bumpAmount, 0.1f, true);
         yield return new WaitForSeconds(0.1f);
-        stickerBoards.LerpXPos(stickerBoards.transform.localPosition.x - bumpAmount - 1800f, 0.2f, true);
+        stickerBoards.LerpXPos(stickerBoards.transform.localPosition.x + bumpAmount + 1800f, 0.2f, true);
         yield return new WaitForSeconds(0.2f);
+
+        // add stickers to new board
+        activeStickerBoards[currentBoardIndex].AddAllStickersToBoard();
 
         buttonsDeactivated = false;
     }
 
     private IEnumerator MoveToRightBoard()
     {
-        stickerBoards.LerpXPos(stickerBoards.transform.localPosition.x - bumpAmount, 0.1f, true);
+        stickerBoards.LerpXPos(stickerBoards.transform.localPosition.x + bumpAmount, 0.1f, true);
         yield return new WaitForSeconds(0.1f);
-        stickerBoards.LerpXPos(stickerBoards.transform.localPosition.x + bumpAmount + 1800f, 0.2f, true);
+        stickerBoards.LerpXPos(stickerBoards.transform.localPosition.x - bumpAmount - 1800f, 0.2f, true);
         yield return new WaitForSeconds(0.2f);
+
+        // add stickers to new board
+        activeStickerBoards[currentBoardIndex].AddAllStickersToBoard();
 
         buttonsDeactivated = false;
     }
@@ -238,5 +310,10 @@ public class StickerBoardController : MonoBehaviour
         }
 
         buttonsDeactivated = false;
+    }
+
+    public void ToggleInventoryWindow()
+    {
+        activeStickerBoards[currentBoardIndex].OnStickerInventoryPressed();
     }
 }

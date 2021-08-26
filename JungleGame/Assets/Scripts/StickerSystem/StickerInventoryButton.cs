@@ -21,12 +21,8 @@ public class StickerInventoryButton : MonoBehaviour, IPointerUpHandler, IPointer
 
     public void UpdateButtonText()
     {
-        if (StudentInfoSystem.currentStudentPlayer != null)
-            buttonText.text = StudentInfoSystem.currentStudentPlayer.stickerInventory.Count.ToString() + "/" + StickerDatabase.instance.GetTotalStickerAmount();
-        else
-            buttonText.text = "0/" + StickerDatabase.instance.GetTotalStickerAmount();
+        buttonText.text = StudentInfoSystem.GetCurrentProfile().stickerInventory.Count.ToString() + "/" + StickerDatabase.instance.GetTotalStickerAmount();
     }
-
 
     /* 
     ################################################

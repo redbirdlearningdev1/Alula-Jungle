@@ -49,20 +49,22 @@ public class SettingsManager : MonoBehaviour
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CreateBlip, 1f);
 
+        var data = StudentInfoSystem.GetCurrentProfile();
+
         // volumes
-        StudentInfoSystem.currentStudentPlayer.masterVol = Mathf.Round(masterVol.value * 1000.0f) / 1000.0f;
-        StudentInfoSystem.currentStudentPlayer.musicVol = Mathf.Round(musicVol.value * 1000.0f) / 1000.0f;
-        StudentInfoSystem.currentStudentPlayer.fxVol = Mathf.Round(fxVol.value * 1000.0f) / 1000.0f;
-        StudentInfoSystem.currentStudentPlayer.talkVol = Mathf.Round(talkVol.value * 1000.0f) / 1000.0f;
+        data.masterVol = Mathf.Round(masterVol.value * 1000.0f) / 1000.0f;
+        data.musicVol = Mathf.Round(musicVol.value * 1000.0f) / 1000.0f;
+        data.fxVol = Mathf.Round(fxVol.value * 1000.0f) / 1000.0f;
+        data.talkVol = Mathf.Round(talkVol.value * 1000.0f) / 1000.0f;
         // mic
-        StudentInfoSystem.currentStudentPlayer.micDevice = MicInput.instance.micDeviceIndex;
+        data.micDevice = MicInput.instance.micDeviceIndex;
         // save to profile
         StudentInfoSystem.SaveStudentPlayerData();
     }
 
     public void LoadSettingsFromProfile()
     {
-        var data = StudentInfoSystem.currentStudentPlayer;
+        var data = StudentInfoSystem.GetCurrentProfile();
         // volumes
         AudioManager.instance.SetMasterVolume(data.masterVol);
         masterVol.value = AudioManager.instance.GetMasterVolume();

@@ -114,13 +114,11 @@ public class ScrollMapManager : MonoBehaviour
         if (overideMapLimit && GameManager.instance.devModeActivated)
             SetMapLimit(mapLimitNum); // set manual limit
         else
-            SetMapLimit(StudentInfoSystem.currentStudentPlayer.mapLimit); // load map limit from SIS
+            SetMapLimit(StudentInfoSystem.GetCurrentProfile().mapLimit); // load map limit from SIS
 
-        if (StudentInfoSystem.currentStudentPlayer != null)
-        {
-            // load in map data from profile
-            MapDataLoader.instance.LoadMapData(StudentInfoSystem.currentStudentPlayer.mapData);
-        }
+        // load in map data from profile
+        MapDataLoader.instance.LoadMapData(StudentInfoSystem.GetCurrentProfile().mapData);
+
 
         // get current game event
         StoryBeat playGameEvent = StoryBeat.InitBoatGame; // default event
@@ -128,16 +126,12 @@ public class ScrollMapManager : MonoBehaviour
         {
             playGameEvent = gameEvent;
             
-            StudentInfoSystem.currentStudentPlayer.currStoryBeat = gameEvent;
+            StudentInfoSystem.GetCurrentProfile().currStoryBeat = gameEvent;
             StudentInfoSystem.SaveStudentPlayerData();
         }
         else
         {
-            // get event from current profile if not null
-            if (StudentInfoSystem.currentStudentPlayer != null)
-            {
-                playGameEvent = StudentInfoSystem.currentStudentPlayer.currStoryBeat;
-            }
+            playGameEvent = StudentInfoSystem.GetCurrentProfile().currStoryBeat;
         }
         
         revealNavUI = true;
@@ -192,7 +186,7 @@ public class ScrollMapManager : MonoBehaviour
         {
             SettingsManager.instance.ToggleMenuButtonActive(true);
             // show sticker button if unlocked
-            if (StudentInfoSystem.currentStudentPlayer.unlockedStickerButton)
+            if (StudentInfoSystem.GetCurrentProfile().unlockedStickerButton)
                 SettingsManager.instance.ToggleWagonButtonActive(true);
         }
     }
@@ -205,10 +199,7 @@ public class ScrollMapManager : MonoBehaviour
     {
         StoryBeat playGameEvent = StoryBeat.InitBoatGame; // default event
         // get event from current profile if not null
-        if (StudentInfoSystem.currentStudentPlayer != null)
-        {
-            playGameEvent = StudentInfoSystem.currentStudentPlayer.currStoryBeat;
-        }
+        playGameEvent = StudentInfoSystem.GetCurrentProfile().currStoryBeat;
 
         StartCoroutine(CheckForScrollMapGameEvents(playGameEvent));
         // wait here while game event stuff is happening
@@ -305,7 +296,7 @@ public class ScrollMapManager : MonoBehaviour
             gorilla.interactable = true;
 
             // check if player has enough coins
-            if (StudentInfoSystem.currentStudentPlayer.goldCoins >= 3)
+            if (StudentInfoSystem.GetCurrentProfile().goldCoins >= 3)
             {
                 // play red notices lester talkie
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.red_notices_lester);
@@ -325,7 +316,7 @@ public class ScrollMapManager : MonoBehaviour
             gorilla.interactable = true;
 
             // make sure player has done the sticker tutorial
-            if (!StudentInfoSystem.currentStudentPlayer.stickerTutorial)
+            if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
             {
                 // play darwin forces talkie
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.darwin_forces);
@@ -335,10 +326,10 @@ public class ScrollMapManager : MonoBehaviour
             else
             {
                 // make sure player has rebuilt all the GV map icons
-                if (StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.isFixed &&
-                    StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.isFixed &&
-                    StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.isFixed &&
-                    StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.isFixed)
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.isFixed &&
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.isFixed &&
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.isFixed &&
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.isFixed)
                 {
                     // make sure we are at gorilla village
                     mapPosIndex = 2;
@@ -425,8 +416,8 @@ public class ScrollMapManager : MonoBehaviour
             yield return new WaitForSeconds(2.5f);
 
             // play correct lose talkies
-            if (StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame &&
-                !StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame)
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
             {
                 // play julius wins
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins);
@@ -434,8 +425,8 @@ public class ScrollMapManager : MonoBehaviour
                     yield return null;
             }
             else if (
-                StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame &&
-                StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame)
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
             {
                 // play julius wins again
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins_again);
@@ -478,8 +469,8 @@ public class ScrollMapManager : MonoBehaviour
             yield return new WaitForSeconds(2.5f);
 
             // play correct lose talkies
-            if (StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame &&
-                !StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame)
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
             {
                 // play marcus wins
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_challenges);
@@ -487,8 +478,8 @@ public class ScrollMapManager : MonoBehaviour
                     yield return null;
             }
             else if (
-                StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame &&
-                StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame)
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
             {
                 // play marcus wins again
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_wins_again);
@@ -550,8 +541,8 @@ public class ScrollMapManager : MonoBehaviour
             yield return new WaitForSeconds(2.5f);
 
             // play correct lose talkies
-            if (StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame &&
-                !StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame)
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
             {
                 // play brutus wins
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_wins);
@@ -559,8 +550,8 @@ public class ScrollMapManager : MonoBehaviour
                     yield return null;
             }
             else if (
-                StudentInfoSystem.currentStudentPlayer.firstTimeLoseChallengeGame &&
-                StudentInfoSystem.currentStudentPlayer.everyOtherTimeLoseChallengeGame)
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
             {
                 // play brutus wins again
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_wins_again);
@@ -748,7 +739,7 @@ public class ScrollMapManager : MonoBehaviour
     private IEnumerator UnlockMapArea(int mapIndex, bool leaveLetterboxUp = false)
     {
         // save unlock to sis profile
-        StudentInfoSystem.currentStudentPlayer.mapLimit = mapIndex;
+        StudentInfoSystem.GetCurrentProfile().mapLimit = mapIndex;
         StudentInfoSystem.SaveStudentPlayerData();
 
         RaycastBlockerController.instance.CreateRaycastBlocker("UnlockMapArea");

@@ -69,7 +69,7 @@ public class NewSpiderGameManager : MonoBehaviour
         gameData = (SpiderwebGameData)GameManager.instance.GetData();
 
         if (!playingInEditor)
-            playTutorial = !StudentInfoSystem.currentStudentPlayer.spiderwebTutorial;
+            playTutorial = !StudentInfoSystem.GetCurrentProfile().spiderwebTutorial;
 
         PregameSetup();
 
@@ -442,7 +442,7 @@ public class NewSpiderGameManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         // save to SIS
-        StudentInfoSystem.currentStudentPlayer.spiderwebTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = true;
         StudentInfoSystem.SaveStudentPlayerData();
 
         GameManager.instance.LoadScene("NewSpiderGame", true, 3f);

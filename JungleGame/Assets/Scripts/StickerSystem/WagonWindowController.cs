@@ -107,7 +107,7 @@ public class WagonWindowController : MonoBehaviour
     public void OnYesButtonPressed()
     {
         // check to make sure player has sufficent funds
-        if (StudentInfoSystem.currentStudentPlayer.goldCoins < 3)
+        if (StudentInfoSystem.GetCurrentProfile().goldCoins < 3)
         {
             // play sound
             AudioManager.instance.PlayCoinDrop();
@@ -129,9 +129,6 @@ public class WagonWindowController : MonoBehaviour
 
         // hide window 
         StartCoroutine(ShrinkObject(confirmStickerWindow));
-
-        // remove default background and raycast blocker
-        DefaultBackground.instance.Deactivate();
 
         // disable wagon background
         wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0f, 0.1f);
@@ -163,7 +160,7 @@ public class WagonWindowController : MonoBehaviour
         SettingsManager.instance.ToggleMenuButtonActive(false);
         SettingsManager.instance.ToggleWagonButtonActive(false);
         wagon.SetActive(false);
-        BehindUIBackground.instance.Deactivate();
+        DefaultBackground.instance.Deactivate();
 
         yield return new WaitForSeconds(0.5f);
 
@@ -205,11 +202,11 @@ public class WagonWindowController : MonoBehaviour
         StartCoroutine(RevealStickerRoutine(sticker));
 
         // play lester tutorial if first sticker roll
-        if (!StudentInfoSystem.currentStudentPlayer.stickerTutorial)
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
         {
             // TODO continue lester tutorial + add lester quips
 
-            StudentInfoSystem.currentStudentPlayer.stickerTutorial = true;
+            StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
             StudentInfoSystem.SaveStudentPlayerData();
         }
 
@@ -414,7 +411,7 @@ public class WagonWindowController : MonoBehaviour
         GeckoAnim.Play("geckoIntro");
 
         // play lester talkies if first time
-        if (!StudentInfoSystem.currentStudentPlayer.stickerTutorial)
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
         {
             // remove wagon button so player cannot leave
             SettingsManager.instance.ToggleWagonButtonActive(false);
@@ -514,9 +511,9 @@ public class WagonWindowController : MonoBehaviour
     public void OnBackButtonPressed() // ORDER MATTERS HERE!!!
     {
         // close inventory
-        if (StickerBoard.instance.stickerInventoryActive)
+        if (StickerBoardController.instance.GetCurrentStickerBoard().stickerInventoryActive) 
         {
-            StickerBoard.instance.OnStickerInventoryPressed();
+            StickerBoardController.instance.ToggleInventoryWindow();
         }
         // leave sticker board menu
         else if (StickerBoardController.instance.stickerBoardActive)

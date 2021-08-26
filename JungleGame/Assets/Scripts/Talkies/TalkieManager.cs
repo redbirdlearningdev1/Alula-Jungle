@@ -292,7 +292,7 @@ public class TalkieManager : MonoBehaviour
             {
                 case TalkieEndAction.UnlockStickerButton:
                     // unlock button in SIS
-                    StudentInfoSystem.currentStudentPlayer.unlockedStickerButton = true;
+                    StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                     SettingsManager.instance.ToggleWagonButtonActive(true);
                     // add glow + wiggle
                     SettingsManager.instance.ToggleStickerButtonWiggle(true);

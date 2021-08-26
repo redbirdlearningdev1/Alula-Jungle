@@ -223,7 +223,7 @@ public class SplashScreenManager : MonoBehaviour
 
         StudentInfoSystem.ResetProfile(newProfileIndex);
         StudentInfoSystem.SetStudentPlayer(newProfileIndex);
-        StudentInfoSystem.currentStudentPlayer.name = newProfileInput.text;
+        StudentInfoSystem.GetCurrentProfile().name = newProfileInput.text;
         StudentInfoSystem.SaveStudentPlayerData();
 
         SetUpProfiles();

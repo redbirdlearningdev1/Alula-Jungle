@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class StickerBoard : MonoBehaviour
 {
-    public static StickerBoard instance;
-
     public StickerBoardType boardType;
     public LerpableObject stickerInventoryWindow;
 
@@ -32,9 +30,6 @@ public class StickerBoard : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
-            instance = this;
-
         // close inventory
         stickerInventoryWindow.LerpScale(new Vector2(0f, 1f), 0.0001f);
 
@@ -99,7 +94,7 @@ public class StickerBoard : MonoBehaviour
         // update inventory count
         if (overrodeStickerCount)
         {
-            print ("returning to original count");
+            //print ("returning to original count");
             overrodeStickerCount = false;
             currentInventorySticker.UpdateStickerCount(StudentInfoSystem.GetStickerCount(currentInventorySticker.myStickerObject));
         }
@@ -135,6 +130,8 @@ public class StickerBoard : MonoBehaviour
     public void PlaceCurrentStickerDown()
     {
         holdingSticker = false;
+        // deactivate hover areas
+        StickerBoardController.instance.hoverAreas.SetActive(false);
 
         // place sticker on board
         if (canPlaceSticker && !stickerInventoryActive)
@@ -166,12 +163,14 @@ public class StickerBoard : MonoBehaviour
         // update inventory count
         if (!overrodeStickerCount)
         {
-            print ("removing one count");
+            //print ("removing one count");
             overrodeStickerCount = true;
             currentInventorySticker.UpdateStickerCount(StudentInfoSystem.GetStickerCount(currentInventorySticker.myStickerObject) - 1);
         }
 
         holdingSticker = true;
+        // activate hover areas
+        StickerBoardController.instance.hoverAreas.SetActive(true);
         // pick up sticker to move to a different location
         currentSticker.SetParent(selectedStickerParent);
         // disable both buttons
@@ -191,6 +190,8 @@ public class StickerBoard : MonoBehaviour
 
             // Save to SIS
             StudentInfoSystem.GlueStickerToBoard(currentInventorySticker.myStickerObject, currentSticker.localPosition, boardType);
+
+            print ("placing sticker down to board: " + boardType);
 
             // reset
             currentSticker = null;
@@ -270,9 +271,9 @@ public class StickerBoard : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         }
 
-        // re-add all stickers
+        // re-add all stickers to inventory
         List<Sticker> myInventory = new List<Sticker>();
-        foreach (var item in StudentInfoSystem.currentStudentPlayer.stickerInventory)
+        foreach (var item in StudentInfoSystem.GetCurrentProfile().stickerInventory)
         {
             myInventory.Add(StickerDatabase.instance.GetSticker(item));
         }
@@ -281,15 +282,51 @@ public class StickerBoard : MonoBehaviour
         {
             var newInventorySticker = Instantiate(inventoryStickerPrefab, inventoryParent).GetComponent<InventorySticker>();
             newInventorySticker.SetStickerType(sticker);
+            newInventorySticker.SetStickerBoard(this);
         }
     }
 
     public void ClearBoard()
     {
-        // empty current inventory
+        // remove all placed stickers
         foreach (Transform child in placedStickerParent.transform)
         {
             GameObject.Destroy(child.gameObject);
+        }
+    }
+
+    // adds all stickers onto board
+    public void AddAllStickersToBoard()
+    {
+        List<StickerData> stickers = new List<StickerData>();
+
+        switch (boardType)
+        {
+            case StickerBoardType.Classic:
+                stickers.AddRange(StudentInfoSystem.GetCurrentProfile().classicStickerBoard.stickers);
+                break;
+            case StickerBoardType.Mossy:
+                stickers.AddRange(StudentInfoSystem.GetCurrentProfile().mossyStickerBoard.stickers);
+                break;
+            case StickerBoardType.Emerald:
+                stickers.AddRange(StudentInfoSystem.GetCurrentProfile().emeraldStickerBoard.stickers);
+                break;
+            case StickerBoardType.Beach:
+                stickers.AddRange(StudentInfoSystem.GetCurrentProfile().beachStickerBoard.stickers);
+                break;
+        }
+
+        foreach (var item in stickers)
+        {
+            AddStickerOntoBoard(item);
+        }
+    }
+
+    public void RemoveAllStickersFromBoard()
+    {
+        foreach (Transform sticker in placedStickerParent)
+        {
+            sticker.GetComponent<StickerImage>().DeleteSticker();
         }
     }
 
@@ -300,6 +337,6 @@ public class StickerBoard : MonoBehaviour
         // animate sticker
         var lerp = stickerImage.GetComponent<LerpableObject>();
         lerp.transform.localScale = new Vector3(0f, 0f, 1f);
-        lerp.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.01f);
+        lerp.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.05f);
     }
 }

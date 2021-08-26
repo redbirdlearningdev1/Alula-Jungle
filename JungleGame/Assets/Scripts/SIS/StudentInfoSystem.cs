@@ -4,7 +4,17 @@ using UnityEngine;
 
 public static class StudentInfoSystem
 {
-    public static StudentPlayerData currentStudentPlayer { get; private set; }
+    private static StudentPlayerData currentStudentPlayer;
+
+    public static StudentPlayerData GetCurrentProfile()
+    {
+        // be default - use profile 1
+        if (currentStudentPlayer == null)
+        {
+            SetStudentPlayer(StudentIndex.student_1);
+        }
+        return currentStudentPlayer;
+    }
 
     public static void SetStudentPlayer(StudentIndex index)
     {
@@ -147,18 +157,56 @@ public static class StudentInfoSystem
 
     public static void GlueStickerToBoard(Sticker sticker, Vector2 pos, StickerBoardType board)
     {
+        StickerData data = new StickerData();
+
         switch (board)
         {
             case StickerBoardType.Classic:
             
                 // make new sticker data
-                StickerData data = new StickerData();
+                data = new StickerData();
                 data.rarity = sticker.rarity;
                 data.id = sticker.id;
                 data.boardPos = pos;
 
                 // add to board list
                 currentStudentPlayer.classicStickerBoard.stickers.Add(data);
+                break;
+            
+            case StickerBoardType.Mossy:
+            
+                // make new sticker data
+                data = new StickerData();
+                data.rarity = sticker.rarity;
+                data.id = sticker.id;
+                data.boardPos = pos;
+
+                // add to board list
+                currentStudentPlayer.mossyStickerBoard.stickers.Add(data);
+                break;
+
+            case StickerBoardType.Emerald:
+            
+                // make new sticker data
+                data = new StickerData();
+                data.rarity = sticker.rarity;
+                data.id = sticker.id;
+                data.boardPos = pos;
+
+                // add to board list
+                currentStudentPlayer.emeraldStickerBoard.stickers.Add(data);
+                break;
+
+            case StickerBoardType.Beach:
+            
+                // make new sticker data
+                data = new StickerData();
+                data.rarity = sticker.rarity;
+                data.id = sticker.id;
+                data.boardPos = pos;
+
+                // add to board list
+                currentStudentPlayer.beachStickerBoard.stickers.Add(data);
                 break;
         }
         SaveStudentPlayerData();
@@ -171,6 +219,12 @@ public static class StudentInfoSystem
             default:
             case StickerBoardType.Classic:
                 return currentStudentPlayer.classicStickerBoard;
+            case StickerBoardType.Mossy:
+                return currentStudentPlayer.mossyStickerBoard;
+            case StickerBoardType.Emerald:
+                return currentStudentPlayer.emeraldStickerBoard;
+            case StickerBoardType.Beach:
+                return currentStudentPlayer.beachStickerBoard;
         }
     }
 }

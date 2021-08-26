@@ -224,16 +224,16 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             switch (identfier)
             {
                 case MapIconIdentfier.GV_house1:
-                    StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.isFixed = opt;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.isFixed = opt;
                     break;
                 case MapIconIdentfier.GV_house2:
-                    StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.isFixed = opt;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.isFixed = opt;
                     break;
                 case MapIconIdentfier.GV_statue:
-                    StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.isFixed = opt;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.isFixed = opt;
                     break;
                 case MapIconIdentfier.GV_fire:
-                    StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.isFixed = opt;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.isFixed = opt;
                     break;
             }
             StudentInfoSystem.SaveStudentPlayerData();
@@ -279,7 +279,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     private IEnumerator CheckForStoryBeatRoutine()
     {
-        if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.PrologueStoryGame)
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PrologueStoryGame)
         {  
             // pre story game interaction
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.pre_minigame);
@@ -313,13 +313,13 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         switch (identfier)
         {
             case MapIconIdentfier.GV_house1:
-                return StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.stars;
+                return StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.stars;
             case MapIconIdentfier.GV_house2:
-                return StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.stars;
+                return StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.stars;
             case MapIconIdentfier.GV_statue:
-                return StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.stars;
+                return StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.stars;
             case MapIconIdentfier.GV_fire:
-                return StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.stars;
+                return StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.stars;
             default:
                 return 0;
         }
