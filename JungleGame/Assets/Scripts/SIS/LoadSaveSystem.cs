@@ -159,6 +159,23 @@ public static class LoadSaveSystem
         new_data.classicStickerBoard.active = true; // always active by default
         new_data.classicStickerBoard.stickers = new List<StickerData>();
 
+        // mossy sticker board
+        new_data.mossyStickerBoard = new StickerBoardData();
+        new_data.mossyStickerBoard.boardType = StickerBoardType.Mossy;
+        new_data.mossyStickerBoard.active = false;
+        new_data.mossyStickerBoard.stickers = new List<StickerData>();
+
+        // emerald sticker board
+        new_data.emeraldStickerBoard = new StickerBoardData();
+        new_data.emeraldStickerBoard.boardType = StickerBoardType.Emerald;
+        new_data.emeraldStickerBoard.active = false;
+        new_data.emeraldStickerBoard.stickers = new List<StickerData>();
+
+        // beach sticker board
+        new_data.beachStickerBoard = new StickerBoardData();
+        new_data.beachStickerBoard.boardType = StickerBoardType.Beach;
+        new_data.beachStickerBoard.active = false;
+        new_data.beachStickerBoard.stickers = new List<StickerData>();
 
 
         // save data as incative profile

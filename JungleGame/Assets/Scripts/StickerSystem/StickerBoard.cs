@@ -40,9 +40,6 @@ public class StickerBoard : MonoBehaviour
 
         // reset bools
         ResetBools();
-
-        // deactivate self
-        gameObject.SetActive(false);
     }
 
     void Update()

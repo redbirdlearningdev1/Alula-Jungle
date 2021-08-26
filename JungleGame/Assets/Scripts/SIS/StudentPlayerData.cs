@@ -42,7 +42,9 @@ public class StudentPlayerData
     public List<InventoryStickerData> stickerInventory;
     // sticker boards
     public StickerBoardData classicStickerBoard;
-    // other sticker boards would go here...
+    public StickerBoardData mossyStickerBoard;
+    public StickerBoardData emeraldStickerBoard;
+    public StickerBoardData beachStickerBoard;
 }
 
 /* 
@@ -127,7 +129,7 @@ public class InventoryStickerData
 
 public enum StickerBoardType
 {
-    Classic
+    Classic, Mossy, Emerald, Beach
 }
 
 [System.Serializable]
