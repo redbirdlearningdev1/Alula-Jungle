@@ -24,7 +24,7 @@ public class StickerImage : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
     public void SetStickerType(StickerData data)
     {
         isGlued = true;
-        GetComponent<Image>().sprite = data.stickerObject.sprite;
+        GetComponent<Image>().sprite = StickerDatabase.instance.GetSticker(data).sprite;
         transform.localPosition = data.boardPos;
     }
 

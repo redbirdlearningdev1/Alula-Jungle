@@ -53,20 +53,72 @@ public static class StudentInfoSystem
         currentStudentPlayer.currStoryBeat = (StoryBeat)((int)currentStudentPlayer.currStoryBeat + 1);
     }
 
+    /* 
+    ################################################
+    #   STICKER METHODS
+    ################################################
+    */
+
+    public static bool InventoryContainsSticker(Sticker sticker)
+    {
+        if (currentStudentPlayer != null)
+        {
+            foreach (var item in currentStudentPlayer.stickerInventory)
+            {
+                if (item.id == sticker.id && item.rarity == sticker.rarity)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static int FindInventoryIndex(Sticker sticker)
+    {
+        if (currentStudentPlayer != null)
+        {
+            int count = 0;
+            foreach (var item in currentStudentPlayer.stickerInventory)
+            {
+                if (item.id == sticker.id && item.rarity == sticker.rarity)
+                {
+                    return count;
+                }
+                count++;
+            }
+        }
+        // return invalid index
+        return -1;
+    }
+
+    public static int GetStickerCount(Sticker sticker)
+    {
+        if (currentStudentPlayer != null)
+        {
+            if (InventoryContainsSticker(sticker))
+            {
+                return currentStudentPlayer.stickerInventory[FindInventoryIndex(sticker)].count;
+            }
+        }
+        return 0;
+    }
+
     public static void AddStickerToInventory(Sticker sticker)
     {
         if (currentStudentPlayer != null)
         {
-            // add sticker to unlocked stickers if not already in list
-            if (!currentStudentPlayer.stickerInventory.Contains(sticker))
+            // add sticker to inventory if not already in list
+            if (!InventoryContainsSticker(sticker))
             {
-                currentStudentPlayer.stickerInventory.Add(sticker);
+                var newData = new InventoryStickerData(sticker);
+                currentStudentPlayer.stickerInventory.Add(newData);
                 SaveStudentPlayerData();
                 DropdownToolbar.instance.UpdateSilverCoins();
             }
 
             // increment sticker count by one
-            currentStudentPlayer.stickerInventory.Find(i => i == sticker).count++;
+            currentStudentPlayer.stickerInventory[FindInventoryIndex(sticker)].count++;
         }
     }
 
@@ -75,15 +127,15 @@ public static class StudentInfoSystem
         if (currentStudentPlayer != null)
         {
             // check to see if sticker exists
-            if (currentStudentPlayer.stickerInventory.Find(i => i.id == sticker.id))
+            if (InventoryContainsSticker(sticker))
             {
                 // decrement by one
-                currentStudentPlayer.stickerInventory.Find(i => i.id == sticker.id).count--;
+                currentStudentPlayer.stickerInventory[FindInventoryIndex(sticker)].count--;
                 
                 // if count is 0, remove sticker from inventory
-                if (currentStudentPlayer.stickerInventory.Find(i => i.id == sticker.id).count <= 0)
+                if (currentStudentPlayer.stickerInventory[FindInventoryIndex(sticker)].count <= 0)
                 {
-                    var emptySticker = currentStudentPlayer.stickerInventory.Find(i => i.id == sticker.id);
+                    var emptySticker = currentStudentPlayer.stickerInventory[FindInventoryIndex(sticker)];
                     currentStudentPlayer.stickerInventory.Remove(emptySticker);
                 }
 
@@ -98,9 +150,11 @@ public static class StudentInfoSystem
         switch (board)
         {
             case StickerBoardType.Classic:
+            
                 // make new sticker data
                 StickerData data = new StickerData();
-                data.stickerObject = sticker;
+                data.rarity = sticker.rarity;
+                data.id = sticker.id;
                 data.boardPos = pos;
 
                 // add to board list

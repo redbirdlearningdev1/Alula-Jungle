@@ -22,11 +22,11 @@ public class InventorySticker : MonoBehaviour //, IPointerUpHandler, IPointerDow
         if (!currentSticker)
         {
             stickerImage.sprite = myStickerObject.sprite;
-            stickerCountText.text = "x" + myStickerObject.count.ToString();
+            stickerCountText.text = "x" + StudentInfoSystem.GetStickerCount(myStickerObject);
         }
         else 
         {
-            int count = myStickerObject.count - 1;
+            int count = StudentInfoSystem.GetStickerCount(myStickerObject) - 1;
             stickerCountText.text = "x" + count.ToString();
         }
         

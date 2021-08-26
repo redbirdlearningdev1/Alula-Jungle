@@ -56,6 +56,14 @@ public class StickerBoardController : MonoBehaviour
         stickerBoardWindow.gameObject.SetActive(true);
         ResetStickerBoard();
 
+        // get sticker and board data
+        var boardData = StudentInfoSystem.GetStickerBoardData(StickerBoardType.Classic);
+        StickerBoard classicBoard = stickerBoardWindow.GetComponent<StickerBoard>();
+
+        // remove all stickers
+        classicBoard.ClearBoard();
+    
+        // animate board intro
         stickerBoardWindow.LerpPosition(inBounce1Pos, time1, true);
         yield return new WaitForSeconds(time1);
 
@@ -64,13 +72,12 @@ public class StickerBoardController : MonoBehaviour
 
         stickerBoardWindow.LerpPosition(onScreenPos, time3, true);
         yield return new WaitForSeconds(time3);
-
+        
         // place stickers on board
-        var boardData = StudentInfoSystem.GetStickerBoardData(StickerBoardType.Classic);
-        StickerBoard classicBoard = stickerBoardWindow.GetComponent<StickerBoard>();
         foreach (var sticker in boardData.stickers)
         {
             classicBoard.AddStickerOntoBoard(sticker);
+            yield return new WaitForSeconds(0.01f);
         }
 
         stickerBoardReady = true;

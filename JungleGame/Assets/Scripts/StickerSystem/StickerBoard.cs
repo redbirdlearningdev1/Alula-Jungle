@@ -104,7 +104,7 @@ public class StickerBoard : MonoBehaviour
         {
             print ("returning to original count");
             overrodeStickerCount = false;
-            currentInventorySticker.UpdateStickerCount(currentInventorySticker.myStickerObject.count);
+            currentInventorySticker.UpdateStickerCount(StudentInfoSystem.GetStickerCount(currentInventorySticker.myStickerObject));
         }
 
         // return sticker to inventory
@@ -171,7 +171,7 @@ public class StickerBoard : MonoBehaviour
         {
             print ("removing one count");
             overrodeStickerCount = true;
-            currentInventorySticker.UpdateStickerCount(currentInventorySticker.myStickerObject.count - 1);
+            currentInventorySticker.UpdateStickerCount(StudentInfoSystem.GetStickerCount(currentInventorySticker.myStickerObject) - 1);
         }
 
         holdingSticker = true;
@@ -273,8 +273,12 @@ public class StickerBoard : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         }
 
+        // re-add all stickers
         List<Sticker> myInventory = new List<Sticker>();
-        myInventory.AddRange(StudentInfoSystem.currentStudentPlayer.stickerInventory);
+        foreach (var item in StudentInfoSystem.currentStudentPlayer.stickerInventory)
+        {
+            myInventory.Add(StickerDatabase.instance.GetSticker(item));
+        }
 
         foreach (var sticker in myInventory)
         {
@@ -283,9 +287,22 @@ public class StickerBoard : MonoBehaviour
         }
     }
 
+    public void ClearBoard()
+    {
+        // empty current inventory
+        foreach (Transform child in placedStickerParent.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+    }
+
     public void AddStickerOntoBoard(StickerData data)
     {
         var stickerImage = Instantiate(imageStickerPrefab, placedStickerParent).GetComponent<StickerImage>();
         stickerImage.SetStickerType(data);
+        // animate sticker
+        var lerp = stickerImage.GetComponent<LerpableObject>();
+        lerp.transform.localScale = new Vector3(0f, 0f, 1f);
+        lerp.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.01f);
     }
 }

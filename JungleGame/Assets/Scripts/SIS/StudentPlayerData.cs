@@ -39,7 +39,7 @@ public class StudentPlayerData
     public MapData mapData;
 
     // sticker data
-    public List<Sticker> stickerInventory;
+    public List<InventoryStickerData> stickerInventory;
     // sticker boards
     public StickerBoardData classicStickerBoard;
     // other sticker boards would go here...
@@ -110,6 +110,21 @@ public class MapData
 ################################################
 */
 
+[System.Serializable]
+public class InventoryStickerData
+{
+    public StickerRarity rarity;
+    public int id;
+    public int count;
+
+    public InventoryStickerData(Sticker sticker)
+    {
+        this.rarity = sticker.rarity;
+        this.id = sticker.id;
+        this.count = 0;
+    }
+}
+
 public enum StickerBoardType
 {
     Classic
@@ -126,6 +141,7 @@ public class StickerBoardData
 [System.Serializable]
 public class StickerData
 {
-    public Sticker stickerObject; // used for sprint
+    public StickerRarity rarity;
+    public int id;
     public Vector2 boardPos; // where on the board is it located ?
 }
