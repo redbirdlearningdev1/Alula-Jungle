@@ -13,8 +13,20 @@ MonoBehaviour:
   m_Name: Lester Intro 5
   m_EditorClassIdentifier: 
   talkieName: Lester Intro 5
+  quipsCollection: 0
+  start: 0
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 0
+  removeLetterboxAfterTalkie: 1
+  endAction: 0
   segmnets:
-  - leftCharacter: 4
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 4
     leftEmotionNum: 7
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -26,7 +38,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_4_Lester_7_T1
     audioString: Isn't that exciting?!
-  - leftCharacter: 4
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 4
     leftEmotionNum: 2
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -38,7 +54,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_4_Lester_8_T1
     audioString: I'm always a holler away,
-  - leftCharacter: 4
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 4
     leftEmotionNum: 5
     leftMouthEnum: 1
     leftEyesEnum: 2

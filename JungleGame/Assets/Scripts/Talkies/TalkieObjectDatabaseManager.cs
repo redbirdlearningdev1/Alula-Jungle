@@ -35,6 +35,7 @@ public struct TalkieEmotionEntry
     public TalkieEyes eyesEnum;
 }
 
+#if UNITY_EDITOR
 public class TalkieObjectDatabaseManager : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown fileDropdown;
@@ -99,7 +100,6 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
         SetupFilePathList(fileInfo);
     }
 
-#if UNITY_EDITOR
     private void SetupFileDropdown(FileInfo[] filesInfo)
     {
         // refresh database
@@ -134,7 +134,6 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
             filePaths.Add(filesInfo[i].FullName);
         }
     }
-#endif
 
     public void OnUploadCSVPressed()
     {
@@ -439,9 +438,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
         // update database using entries
         foreach (var entry in localTalkieObjects)
         {
-#if UNITY_EDITOR
             TalkieDatabase.instance.UpdateCreateObject(entry);
-#endif
         }
 
         updateText.color = Color.green;
@@ -566,3 +563,4 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
         return null;
     }
 }
+#endif

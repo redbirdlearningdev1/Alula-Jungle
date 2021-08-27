@@ -65,6 +65,14 @@ public class TalkieManager : MonoBehaviour
     private TalkieYesNoAction yesAction = TalkieYesNoAction.None;
     private TalkieYesNoAction noAction = TalkieYesNoAction.None;
 
+    [Header("Dev Stuff")]
+    public float fastTalkieMoveSpeed;
+    public float fastTalkieDeactivateSpeed;
+    public float fastTalkieDuration;
+    private bool fastTalkies = false;
+    private float prevMoveSpeed;
+    private float prevDeactivateSpeed;
+
     // private vars
     private int currSegmentIndex = 0;
     private bool playingSegment = false;
@@ -72,6 +80,23 @@ public class TalkieManager : MonoBehaviour
 
     private bool overrideSegmentIndex = false;
     private int newSegmentIndex;
+
+    public void SetFastTalkies(bool opt)
+    {
+        if (opt)
+        {
+            prevMoveSpeed = talkieMoveSpeed;
+            talkieMoveSpeed = fastTalkieMoveSpeed;
+
+            prevDeactivateSpeed = talkieDeactivateSpeed;
+            talkieDeactivateSpeed = fastTalkieDeactivateSpeed;
+        }
+        else
+        {
+            talkieMoveSpeed = prevMoveSpeed;
+            talkieDeactivateSpeed = prevDeactivateSpeed;
+        }
+    }
 
     void Awake()
     {
@@ -435,17 +460,26 @@ public class TalkieManager : MonoBehaviour
         // add subtitles
         subtitleText.text = talkieSeg.audioString;
 
-        // play audio
-        if (talkieSeg.audioClip != null)
+        if (!fastTalkies)
         {
-            AudioManager.instance.PlayTalk(talkieSeg.audioClip);
-            yield return new WaitForSeconds(talkieSeg.audioClip.length + 0.5f);
+            // play audio
+            if (talkieSeg.audioClip != null)
+            {
+                AudioManager.instance.PlayTalk(talkieSeg.audioClip);
+                yield return new WaitForSeconds(talkieSeg.audioClip.length + 0.5f);
+            }
+            else
+            {
+                print ("no audio clip found: \'" + talkieSeg.audioClipName + "\'");
+                yield return new WaitForSeconds(1.5f);
+            }
         }
         else
         {
-            print ("no audio clip found: \'" + talkieSeg.audioClipName + "\'");
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1f);
         }
+
+        
 
 
         /* 

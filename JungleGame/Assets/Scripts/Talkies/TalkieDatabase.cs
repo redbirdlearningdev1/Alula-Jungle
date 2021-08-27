@@ -39,6 +39,10 @@ public class TalkieDatabase : MonoBehaviour
     public TalkieObject darwin_forces;      // script: ScrollMapManager.cs
 
     public TalkieObject lester_intro_1; // script: WagonWindowController.cs
+    public TalkieObject lester_intro_2; // script: StickerBoardController.cs
+    public TalkieObject lester_intro_3; // script: StickerBoardController.cs
+    public TalkieObject lester_intro_4; // script: StickerBoardController.cs
+    public TalkieObject lester_intro_5; // script: StickerBoardController.cs
 
     public TalkieObject villageRebuilt_1; // script: ScrollMapManager.cs
     public TalkieObject villageRebuilt_2; // script: ScrollMapManager.cs

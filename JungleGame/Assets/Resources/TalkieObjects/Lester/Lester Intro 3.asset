@@ -13,8 +13,20 @@ MonoBehaviour:
   m_Name: Lester Intro 3
   m_EditorClassIdentifier: 
   talkieName: Lester Intro 3
+  quipsCollection: 0
+  start: 0
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 0
+  removeLetterboxAfterTalkie: 0
+  endAction: 0
   segmnets:
-  - leftCharacter: 4
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 4
     leftEmotionNum: 7
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -26,7 +38,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_4_Lester_5_T1
     audioString: Good job!
-  - leftCharacter: 4
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 4
     leftEmotionNum: 1
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -38,7 +54,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_4_Lester_5_T2
     audioString: Now if you ever run out of space you can remove stickers!
-  - leftCharacter: 4
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 4
     leftEmotionNum: 6
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -50,7 +70,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_4_Lester_5_T3
     audioString: However! Once you remove a sticker you can't get it back.
-  - leftCharacter: 4
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 4
     leftEmotionNum: 8
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -62,7 +86,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_4_Lester_5_T4
     audioString: So be careful!
-  - leftCharacter: 4
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 4
     leftEmotionNum: 1
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -74,7 +102,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_4_Lester_5_T5
     audioString: 'If you ever want to place your stickers or view your collection, '
-  - leftCharacter: 4
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 4
     leftEmotionNum: 3
     leftMouthEnum: 1
     leftEyesEnum: 2

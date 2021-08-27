@@ -13,8 +13,20 @@ MonoBehaviour:
   m_Name: Lester Intro 2
   m_EditorClassIdentifier: 
   talkieName: Lester Intro 2
+  quipsCollection: 0
+  start: 0
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 0
+  removeLetterboxAfterTalkie: 1
+  endAction: 0
   segmnets:
-  - leftCharacter: 4
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 4
     leftEmotionNum: 1
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -27,7 +39,11 @@ MonoBehaviour:
     audioClipName: P_1_4_Lester_4_T1
     audioString: Alright! Here you go! Now drag your sticker to the board to place
       it!
-  - leftCharacter: 4
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 4
     leftEmotionNum: 8
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -39,7 +55,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_4_Lester_4_T2
     audioString: 'Careful! '
-  - leftCharacter: 4
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 4
     leftEmotionNum: 6
     leftMouthEnum: 1
     leftEyesEnum: 2
@@ -51,7 +71,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     audioClipName: P_1_4_Lester_4_T3
     audioString: You can only place your sticker once, so when you hit yes,
-  - leftCharacter: 4
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYes: 0
+    onNo: 0
+    leftCharacter: 4
     leftEmotionNum: 5
     leftMouthEnum: 1
     leftEyesEnum: 3

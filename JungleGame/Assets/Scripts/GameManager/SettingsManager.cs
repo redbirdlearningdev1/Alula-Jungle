@@ -188,8 +188,9 @@ public class SettingsManager : MonoBehaviour
         // remove wiggle if need be
         ToggleStickerButtonWiggle(false);
 
-        // only workable on scroll map scene
-        if (SceneManager.GetActiveScene().name == "ScrollMap")
+        // only workable on scroll map scene (or dev menu)
+        if (SceneManager.GetActiveScene().name == "ScrollMap" ||
+            SceneManager.GetActiveScene().name == "DevMenu")
             WagonWindowController.instance.ToggleCart();
     }
 

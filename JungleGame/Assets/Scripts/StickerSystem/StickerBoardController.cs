@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StickerBoardController : MonoBehaviour
 {
@@ -146,6 +147,30 @@ public class StickerBoardController : MonoBehaviour
         stickerBoards.LerpYPos(onScreenPos, time3, true);
         yield return new WaitForSeconds(time3);
 
+        // play lester tutorial
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            // stop sticker board from wiggling
+            Board.instance.GetComponent<WiggleController>().StopWiggle();
+            Board.instance.isOn = false;
+
+            // play lester intro 2
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.lester_intro_2);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            yield return new WaitForSeconds(1f);
+            
+            // toggle on inventory
+            activeStickerBoards[currentBoardIndex].ToggleStickerInventory(true);
+
+            // add back button so player can leave >:)
+            WagonWindowController.instance.backButton.gameObject.SetActive(true);
+            WagonWindowController.instance.backButton.interactable = true;
+            WagonWindowController.instance.backButton.GetComponent<LerpableObject>().LerpImageAlpha(WagonWindowController.instance.backButton.GetComponent<Image>(), 1f, 0.1f);
+            WagonWindowController.instance.backButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.2f, 0.01f);
+        }
+
         // add stickers to classic board
         classicBoard.AddAllStickersToBoard();
 
@@ -169,6 +194,14 @@ public class StickerBoardController : MonoBehaviour
             item.ReturnCurrentStickerToInventory();
         }
         yield return new WaitForSeconds(0.25f);
+        // close inventory if open
+        activeStickerBoards[currentBoardIndex].ToggleStickerInventory(false);
+
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            // disable gecko
+            WagonWindowController.instance.gecko.SetActive(false);
+        }
 
         stickerBoards.LerpYPos(outBouncePos, time2, true);
         yield return new WaitForSeconds(time2);
@@ -184,6 +217,37 @@ public class StickerBoardController : MonoBehaviour
 
         buttons.transform.localScale = new Vector3(2f, 2f, 1f);
         buttons.gameObject.SetActive(false);
+
+        // play lester tutorial
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            // disable back button
+            WagonWindowController.instance.backButton.interactable = false;
+            WagonWindowController.instance.backButton.GetComponent<LerpableObject>().LerpImageAlpha(WagonWindowController.instance.backButton.GetComponent<Image>(), 0f, 0.1f);
+            WagonWindowController.instance.backButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.2f, 0.01f);
+            yield return new WaitForSeconds(0.5f);
+            WagonWindowController.instance.backButton.gameObject.SetActive(false);
+
+            // enable wagon background
+            WagonWindowController.instance.wagonBackground.LerpImageAlpha(WagonWindowController.instance.wagonBackground.GetComponent<Image>(), 0.75f, 0.1f);
+
+            // play lester intro 3
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.lester_intro_3);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // play lester intro 4
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.lester_intro_4);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // diable wagon background
+            WagonWindowController.instance.wagonBackground.LerpImageAlpha(WagonWindowController.instance.wagonBackground.GetComponent<Image>(), 0f, 0.1f);
+
+            // wiggle sticker board
+            StickerBoardBook.instance.isOn = true;
+            StickerBoardBook.instance.GetComponent<WiggleController>().StartWiggle();
+        }   
     }
 
     private void ResetStickerBoards()

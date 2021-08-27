@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 #if UNITY_EDITOR
@@ -12,6 +13,7 @@ public class DevMenuManager : MonoBehaviour
     [SerializeField] private TMP_Dropdown navDropdown;
     [SerializeField] private TMP_Dropdown storyGameDropdown;
     [SerializeField] private TMP_Dropdown profileDropdown;
+    [SerializeField] private Toggle fastTalkieToggle;
 
     [SerializeField] private TMP_InputField profileInput;
 
@@ -55,6 +57,21 @@ public class DevMenuManager : MonoBehaviour
         // setup profiles
         profileDropdown.onValueChanged.AddListener(delegate { OnProfileDropdownChanged(); });
         SetupProfileDropdown();
+
+        // show UI buttons
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+        SettingsManager.instance.ToggleWagonButtonActive(true);
+    }
+
+    /* 
+    ################################################
+    #   UTILITY SECTION
+    ################################################
+    */
+
+    public void OnFastTalkiesToggled()
+    {
+        TalkieManager.instance.SetFastTalkies(fastTalkieToggle.isOn);
     }
 
     /* 
@@ -160,6 +177,13 @@ public class DevMenuManager : MonoBehaviour
         // play audio blip
         AudioManager.instance.PlayKeyJingle();
         DropdownToolbar.instance.AwardGoldCoins(999);
+    }
+
+    public void OnUnlockStickerShopPressed()
+    {
+        // play audio blip
+        AudioManager.instance.PlayKeyJingle();
+        StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
     }
 
     /* 
