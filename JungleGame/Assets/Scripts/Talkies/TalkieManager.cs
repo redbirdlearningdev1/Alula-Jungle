@@ -85,6 +85,8 @@ public class TalkieManager : MonoBehaviour
     {
         if (opt)
         {
+            fastTalkies = true;
+
             prevMoveSpeed = talkieMoveSpeed;
             talkieMoveSpeed = fastTalkieMoveSpeed;
 
@@ -93,6 +95,8 @@ public class TalkieManager : MonoBehaviour
         }
         else
         {
+            fastTalkies = false;
+
             talkieMoveSpeed = prevMoveSpeed;
             talkieDeactivateSpeed = prevDeactivateSpeed;
         }

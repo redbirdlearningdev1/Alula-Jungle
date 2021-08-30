@@ -11382,7 +11382,7 @@ MonoBehaviour:
   challengeGameTriads:
   - marcusGame: {fileID: 11400000, guid: 1608bdc5302c90046acd261785dca5d8, type: 2}
     brutusGame: {fileID: 11400000, guid: 1608bdc5302c90046acd261785dca5d8, type: 2}
-    juliusGame: {fileID: 11400000, guid: 07c61b10d1cbe7546aef2b20f71dccae, type: 2}
+    juliusGame: {fileID: 11400000, guid: 50d749b0e9816f643a43963a3f161a72, type: 2}
   substitutionPairs:
   - {fileID: 11400000, guid: 1f42267af0c887547abd518c47d124c0, type: 2}
   - {fileID: 11400000, guid: c7acf79dec07d8f46b4f5a0d5651ab39, type: 2}
@@ -17118,7 +17118,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 6.0952663, y: 0.005817631}
+  m_AnchoredPosition: {x: 6.109668, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

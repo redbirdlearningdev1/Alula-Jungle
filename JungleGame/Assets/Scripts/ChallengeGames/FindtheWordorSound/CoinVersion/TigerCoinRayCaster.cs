@@ -11,6 +11,9 @@ public class TigerCoinRayCaster : MonoBehaviour
     private GameObject selectedObject = null;
     [SerializeField] private Transform selectedObjectParent;
 
+    private bool polaroidAudioPlaying = false;
+    private Transform currentPolaroid;
+
     void Update()
     {
         // return if off, else do thing
@@ -43,13 +46,13 @@ public class TigerCoinRayCaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("Bag"))
                     {
-                        TigerCoinGameManager.instance.returnToPos(selectedObject);
+                        TigerCoinGameManager.instance.ReturnToPos(selectedObject);
                         TigerCoinGameManager.instance.EvaluateWaterCoin(selectedObject.GetComponent<UniversalCoin>());
                     }
                 }
             }
 
-            TigerCoinGameManager.instance.returnToPos(selectedObject);
+            TigerCoinGameManager.instance.ReturnToPos(selectedObject);
             selectedObject = null;
         }
 
@@ -72,8 +75,34 @@ public class TigerCoinRayCaster : MonoBehaviour
                         selectedObject.gameObject.transform.SetParent(selectedObjectParent);
                         TigerCoinGameManager.instance.GlowAndPlayAudioCoin(selectedObject.GetComponent<UniversalCoin>());
                     }
+                    else if (result.gameObject.transform.CompareTag("Polaroid"))
+                    {
+                        if (currentPolaroid != null)
+                            currentPolaroid.GetComponent<Polaroid>().LerpScale(1f, 0.1f);
+                        
+                        currentPolaroid = result.gameObject.transform;
+                        // play audio
+                        StartCoroutine(PlayPolaroidAudio(currentPolaroid.GetComponent<Polaroid>().challengeWord.audio));
+                    }
                 }
             }
         }
+    }
+
+    private IEnumerator PlayPolaroidAudio(AudioClip audio)
+    {
+        if (polaroidAudioPlaying)
+        {
+            AudioManager.instance.StopTalk();
+        }
+
+        currentPolaroid.GetComponent<Polaroid>().LerpScale(1.1f, 0.1f);
+        polaroidAudioPlaying = true;
+
+        AudioManager.instance.PlayTalk(audio);
+        yield return new WaitForSeconds(audio.length + 0.1f);
+
+        currentPolaroid.GetComponent<Polaroid>().LerpScale(1f, 0.1f);
+        polaroidAudioPlaying = false;
     }
 }

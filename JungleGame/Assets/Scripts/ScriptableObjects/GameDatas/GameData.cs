@@ -17,6 +17,7 @@ public enum GameType
 
     WordFactoryBlending,
     WordFactorySubstituting,
+    TigerPawCoins,
 
     COUNT
 }
