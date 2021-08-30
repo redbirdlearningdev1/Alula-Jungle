@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: chain_cw_obj
   m_EditorClassIdentifier: 
   word: chain
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 0a3d12786b9fa6d499051acc0c5d0221, type: 3}
   sprite: {fileID: 21300000, guid: 5129399d8c903e144b31016096753850, type: 3}
   elkoninList: 180000000700000021000000000000000000000000000000
   elkoninCount: 3

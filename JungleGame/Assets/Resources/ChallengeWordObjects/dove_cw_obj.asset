@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: dove_cw_obj
   m_EditorClassIdentifier: 
   word: dove
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: e7288ffb955148c4ea3b6aecbc0124ba, type: 3}
   sprite: {fileID: 21300000, guid: 11d0cb827ff8ce4428a218aa18ae42f4, type: 3}
   elkoninList: 190000000600000029000000000000000000000000000000
   elkoninCount: 3

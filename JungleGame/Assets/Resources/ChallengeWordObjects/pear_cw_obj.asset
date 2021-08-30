@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: pear_cw_obj
   m_EditorClassIdentifier: 
   word: pear
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 8c9c256e07fd33845a20e059fd2e7cd1, type: 3}
   sprite: {fileID: 21300000, guid: b32b83103c3d12b479295c4cb0f55a2d, type: 3}
   elkoninList: 220000000d00000000000000000000000000000000000000
   elkoninCount: 2

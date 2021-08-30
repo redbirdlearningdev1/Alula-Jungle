@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: boil_cw_obj
   m_EditorClassIdentifier: 
   word: boil
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: fbfe71b3259aa9c43a05a865d6ccc404, type: 3}
   sprite: {fileID: 21300000, guid: d9381b457b7265242adcb0edb15317ac, type: 3}
   elkoninList: 16000000130000001f000000000000000000000000000000
   elkoninCount: 3

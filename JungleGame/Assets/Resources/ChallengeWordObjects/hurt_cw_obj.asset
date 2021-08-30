@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: hurt_cw_obj
   m_EditorClassIdentifier: 
   word: hurt
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 8175900bf7ad81d428cf595b9e641b65, type: 3}
   sprite: {fileID: 21300000, guid: f34ce2c652645254aa8a9be591fd0f91, type: 3}
   elkoninList: 1c0000000f00000027000000000000000000000000000000
   elkoninCount: 3

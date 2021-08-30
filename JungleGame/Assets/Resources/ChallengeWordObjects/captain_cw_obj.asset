@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: captain_cw_obj
   m_EditorClassIdentifier: 
   word: captain
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: d60deddb8b86f1c40974799b2a2dbd0e, type: 3}
   sprite: {fileID: 0}
   elkoninList: 170000000200000022000000270000000300000021000000
   elkoninCount: 6

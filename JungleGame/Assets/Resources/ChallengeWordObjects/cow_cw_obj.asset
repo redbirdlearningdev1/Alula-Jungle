@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: cow_cw_obj
   m_EditorClassIdentifier: 
   word: cow
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 30f9a40567d4feb40b8eb3d475ac9aaf, type: 3}
   sprite: {fileID: 21300000, guid: 4146835954ff2aa41be09fcc9cabb9e3, type: 3}
   elkoninList: 170000001400000000000000000000000000000000000000
   elkoninCount: 2

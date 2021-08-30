@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: rail_cw_obj
   m_EditorClassIdentifier: 
   word: rail
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: d56218acc71be3e44938a54baef00ce7, type: 3}
   sprite: {fileID: 21300000, guid: 3fbd28a0999b6764fbab8c5e2217d202, type: 3}
   elkoninList: 24000000070000001f000000000000000000000000000000
   elkoninCount: 3

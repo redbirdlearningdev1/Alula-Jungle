@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: wet_cw_obj
   m_EditorClassIdentifier: 
   word: wet
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 849eecce49d1ec944a79ac642c12b163, type: 3}
   sprite: {fileID: 21300000, guid: db6751c9be7f24b4aa67fd0829f97189, type: 3}
   elkoninList: 2a0000000300000027000000000000000000000000000000
   elkoninCount: 3

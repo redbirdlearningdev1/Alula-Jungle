@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: hope_cw_obj
   m_EditorClassIdentifier: 
   word: hope
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: ec983e421a1c10142b544569303bbff9, type: 3}
   sprite: {fileID: 21300000, guid: 03c1f47e9e70e4a49a6d6852f6ddaa8a, type: 3}
   elkoninList: 1c0000000a00000022000000000000000000000000000000
   elkoninCount: 3

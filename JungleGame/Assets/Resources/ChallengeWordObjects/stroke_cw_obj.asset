@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: stroke_cw_obj
   m_EditorClassIdentifier: 
   word: stroke
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 57b527cd64035ff4db0c22a6733d48b4, type: 3}
   sprite: {fileID: 21300000, guid: b0bfc7c737fd3ce479deae9f6f25cfa9, type: 3}
   elkoninList: 2500000027000000240000000a0000001e00000000000000
   elkoninCount: 5

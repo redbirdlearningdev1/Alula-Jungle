@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: porch_cw_obj
   m_EditorClassIdentifier: 
   word: porch
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 8065788a07ab6394ab6832870bfc2bea, type: 3}
   sprite: {fileID: 21300000, guid: ff742cfa1d1899a43add08b9906bc8be, type: 3}
   elkoninList: 220000000000000018000000000000000000000000000000
   elkoninCount: 3

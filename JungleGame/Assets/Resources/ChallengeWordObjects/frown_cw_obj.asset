@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: frown_cw_obj
   m_EditorClassIdentifier: 
   word: frown
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 03150f25ece6c354fb853d3be421cab1, type: 3}
   sprite: {fileID: 21300000, guid: 0028d8234ef2a914dab079dafcf245c6, type: 3}
   elkoninList: 1a0000002400000014000000210000000000000000000000
   elkoninCount: 4

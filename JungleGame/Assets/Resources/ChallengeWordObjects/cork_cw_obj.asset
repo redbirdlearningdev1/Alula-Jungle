@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: cork_cw_obj
   m_EditorClassIdentifier: 
   word: cork
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: b8dd14fa40d1c0b42a4063ff1bc86b52, type: 3}
   sprite: {fileID: 21300000, guid: fafbefa109222df49a6eba824d8cc8ab, type: 3}
   elkoninList: 170000000c0000001e000000000000000000000000000000
   elkoninCount: 3

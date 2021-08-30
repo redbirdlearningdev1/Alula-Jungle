@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: seem_cw_obj
   m_EditorClassIdentifier: 
   word: seem
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 5e2ab33c9a38657428cc9ee8af2bb70e, type: 3}
   sprite: {fileID: 21300000, guid: ce1ff3c13470c9c4c827ebdaddc84881, type: 3}
   elkoninList: 250000000800000020000000000000000000000000000000
   elkoninCount: 3

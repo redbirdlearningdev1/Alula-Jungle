@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: shield_cw_obj
   m_EditorClassIdentifier: 
   word: shield
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 78abcddd9e61e87489f7c15006036023, type: 3}
   sprite: {fileID: 21300000, guid: c11efe526654e7c469ff645d0e7981d5, type: 3}
   elkoninList: 26000000080000001f000000190000000000000000000000
   elkoninCount: 4

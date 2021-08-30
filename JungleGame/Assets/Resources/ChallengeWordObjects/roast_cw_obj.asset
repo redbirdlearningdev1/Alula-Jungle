@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: roast_cw_obj
   m_EditorClassIdentifier: 
   word: roast
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: faead8fad73a45243900ac9b06560148, type: 3}
   sprite: {fileID: 21300000, guid: 162fb2f4e5daafd40bfeb2a5223954b9, type: 3}
   elkoninList: 240000000a00000025000000270000000000000000000000
   elkoninCount: 4

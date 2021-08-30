@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: storm_cw_obj
   m_EditorClassIdentifier: 
   word: storm
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: f5bea162a3f09ec42813f06cfbf4d719, type: 3}
   sprite: {fileID: 21300000, guid: 537cbcbcd1a7e6a4c842aef0abf7fac4, type: 3}
   elkoninList: 25000000270000000c000000200000000000000000000000
   elkoninCount: 4

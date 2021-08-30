@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: sea_cw_obj
   m_EditorClassIdentifier: 
   word: sea
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 3e2a5220c40efdd4093ac5720ebf3b74, type: 3}
   sprite: {fileID: 21300000, guid: 80aaafb26f8efe24e9f9c4725cbf6365, type: 3}
   elkoninList: 250000000800000000000000000000000000000000000000
   elkoninCount: 2

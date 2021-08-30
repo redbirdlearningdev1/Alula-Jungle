@@ -57,9 +57,12 @@ public enum ElkoninValue
     w,
     x,
     y,
-    z
+    z,
+
+    COUNT
 }
 
+[System.Serializable]
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/ChallengeWord", order = 2)]
 public class ChallengeWord : ScriptableObject
 {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: shirt_cw_obj
   m_EditorClassIdentifier: 
   word: shirt
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: fef61a25e54d9bc4db9b24f94be96f23, type: 3}
   sprite: {fileID: 21300000, guid: e3dde8bcc94fc474492e5cbd81d7a3db, type: 3}
   elkoninList: 260000000f00000027000000000000000000000000000000
   elkoninCount: 3

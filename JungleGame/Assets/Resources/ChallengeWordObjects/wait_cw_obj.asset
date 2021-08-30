@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: wait_cw_obj
   m_EditorClassIdentifier: 
   word: wait
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 9b2cfb2c706fade4b88841d8436988b6, type: 3}
   sprite: {fileID: 21300000, guid: 36378b57c42e7c84f87459f6a3065a59, type: 3}
   elkoninList: 2a0000000700000027000000000000000000000000000000
   elkoninCount: 3

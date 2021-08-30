@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: gorge_cw_obj
   m_EditorClassIdentifier: 
   word: gorge
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 8f267de8c87c0d344b8316fa9936e618, type: 3}
   sprite: {fileID: 21300000, guid: 4c053573df1cf8a449cdff7e081055a8, type: 3}
   elkoninList: 1b0000000c0000001d000000000000000000000000000000
   elkoninCount: 3

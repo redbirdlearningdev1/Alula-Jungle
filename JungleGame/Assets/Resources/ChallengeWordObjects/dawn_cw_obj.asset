@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: dawn_cw_obj
   m_EditorClassIdentifier: 
   word: dawn
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 66c37f9f32bba5c41acb950c3dec6905, type: 3}
   sprite: {fileID: 21300000, guid: 57bd04594bd9cb046a2ff3124b003261, type: 3}
   elkoninList: 190000001500000021000000000000000000000000000000
   elkoninCount: 3

@@ -11383,6 +11383,23 @@ MonoBehaviour:
   - marcusGame: {fileID: 11400000, guid: 1608bdc5302c90046acd261785dca5d8, type: 2}
     brutusGame: {fileID: 11400000, guid: 1608bdc5302c90046acd261785dca5d8, type: 2}
     juliusGame: {fileID: 11400000, guid: 07c61b10d1cbe7546aef2b20f71dccae, type: 2}
+  substitutionPairs:
+  - {fileID: 11400000, guid: 1f42267af0c887547abd518c47d124c0, type: 2}
+  - {fileID: 11400000, guid: c7acf79dec07d8f46b4f5a0d5651ab39, type: 2}
+  - {fileID: 11400000, guid: fce58f1df897e2245b61e86e9c4cceee, type: 2}
+  - {fileID: 11400000, guid: 5b2cd42730ab20447b8e5a7e564c5718, type: 2}
+  - {fileID: 11400000, guid: d90af7520ac18da4cbc756eb54ece335, type: 2}
+  - {fileID: 11400000, guid: 169317fbd84851c4ca1fe51b5bfe8bff, type: 2}
+  - {fileID: 11400000, guid: c9685e55e24db6d4fba812d9ca288b7f, type: 2}
+  - {fileID: 11400000, guid: e303d22ce7b84c2468ea914c968d7ef2, type: 2}
+  - {fileID: 11400000, guid: 9591d30eb345b1e43993e43487f63a0b, type: 2}
+  - {fileID: 11400000, guid: 1b38cf902614d5641929516a203d3c09, type: 2}
+  - {fileID: 11400000, guid: 8f459718121df31408e4a9a8e835e531, type: 2}
+  - {fileID: 11400000, guid: 7e27dd229207de145a5f5e37a239f986, type: 2}
+  - {fileID: 11400000, guid: 66d6edc6ca30d1149872503a9eb18bec, type: 2}
+  - {fileID: 11400000, guid: 98e18b14ec0d558408394dca62790e34, type: 2}
+  - {fileID: 11400000, guid: c3972b9870037ea478ee2de9fca13226, type: 2}
+  - {fileID: 11400000, guid: d9ef8080c41d09c458a043668662213d, type: 2}
   devModeIndicator: {fileID: 6550831789426890278}
   repairMapIconID: 0
   prevMapPosition: 1
@@ -17101,7 +17118,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5.9838486, y: 0.005817631}
+  m_AnchoredPosition: {x: 6.0952663, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

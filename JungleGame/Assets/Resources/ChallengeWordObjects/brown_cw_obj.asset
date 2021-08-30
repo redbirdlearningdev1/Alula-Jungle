@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: brown_cw_obj
   m_EditorClassIdentifier: 
   word: brown
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: bbf0b03cda6ba4d44886fbab7cfedbef, type: 3}
   sprite: {fileID: 21300000, guid: 567f17be5669dc1409c94478cf72cc58, type: 3}
   elkoninList: 160000002400000014000000210000000000000000000000
   elkoninCount: 4

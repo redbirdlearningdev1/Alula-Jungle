@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: torch_cw_obj
   m_EditorClassIdentifier: 
   word: torch
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 9cbb1ab0c51551649b10bafaf7d6fe51, type: 3}
   sprite: {fileID: 21300000, guid: 0afc5925049024340aed5f844b6aca25, type: 3}
   elkoninList: 270000000c00000018000000000000000000000000000000
   elkoninCount: 3

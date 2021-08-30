@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: cold_cw_obj
   m_EditorClassIdentifier: 
   word: cold
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 2a9bc9f2a8dd7b548bb967c484a52671, type: 3}
   sprite: {fileID: 21300000, guid: a79d22e91116b7f49a1c3317a6b8cc17, type: 3}
   elkoninList: 170000000a0000001f000000190000000000000000000000
   elkoninCount: 4

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: sky_cw_obj
   m_EditorClassIdentifier: 
   word: sky
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 266d656c11dc2be4b927c4492bdcee3b, type: 3}
   sprite: {fileID: 21300000, guid: 22a3433d6787e1343b38dde23e2c1efd, type: 3}
   elkoninList: 250000001e00000009000000000000000000000000000000
   elkoninCount: 3

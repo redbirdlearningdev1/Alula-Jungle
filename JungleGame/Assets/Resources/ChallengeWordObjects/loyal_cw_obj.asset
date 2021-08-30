@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: loyal_cw_obj
   m_EditorClassIdentifier: 
   word: loyal
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 4e61a7cae6c26b54f84573cd39ed0851, type: 3}
   sprite: {fileID: 21300000, guid: eb6f6bc4013e59948930dd8c4caf2cec, type: 3}
   elkoninList: 1f000000130000001f000000000000000000000000000000
   elkoninCount: 3

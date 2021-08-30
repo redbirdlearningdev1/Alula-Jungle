@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: worse_cw_obj
   m_EditorClassIdentifier: 
   word: worse
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 661d7ad5dc27d59409774e85c6556432, type: 3}
   sprite: {fileID: 21300000, guid: 109c5d4a17b4bb2428b727242a0c7c3e, type: 3}
   elkoninList: 2a0000000f00000024000000250000000000000000000000
   elkoninCount: 4

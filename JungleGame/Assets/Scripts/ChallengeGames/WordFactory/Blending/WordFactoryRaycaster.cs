@@ -14,8 +14,9 @@ public class WordFactoryRaycaster : MonoBehaviour
     [SerializeField] private Transform selectedObjectParent;
     [SerializeField] private Transform frontSprite;
     public float lerpedScale;
-    // [SerializeField] private GlowLine glowLineTop;
-    // [SerializeField] private GlowLine glowLineBottom;
+
+    private bool polaroidAudioPlaying = false;
+    
 
     void Awake()
     {
@@ -85,9 +86,8 @@ public class WordFactoryRaycaster : MonoBehaviour
                         selectedObject.gameObject.transform.SetParent(selectedObjectParent);
                         selectedObject.GetComponent<Polaroid>().LerpScale(1.25f, 0.1f);
                         selectedObject.GetComponent<Polaroid>().SetLayer(6);
-                        // toggle glow lines
-                        // glowLineTop.ToggleGlow(true);
-                        // glowLineBottom.ToggleGlow(true);
+                        // play audio
+                        StartCoroutine(PlayPolaroidAudio(selectedObject.GetComponent<Polaroid>().challengeWord.audio));
                         frontSprite.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, lerpedScale), 0.1f);
 
                         return;
@@ -99,5 +99,18 @@ public class WordFactoryRaycaster : MonoBehaviour
                 }
             }
         }
+    }
+
+    private IEnumerator PlayPolaroidAudio(AudioClip audio)
+    {
+        if (polaroidAudioPlaying)
+            AudioManager.instance.StopTalk();
+
+        polaroidAudioPlaying = true;
+
+        AudioManager.instance.PlayTalk(audio);
+        yield return new WaitForSeconds(audio.length + 0.1f);
+
+        polaroidAudioPlaying = false;
     }
 }

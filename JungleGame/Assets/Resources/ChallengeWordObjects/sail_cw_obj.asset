@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: sail_cw_obj
   m_EditorClassIdentifier: 
   word: sail
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 659ac9a88436abd4abce0c37fd424e6a, type: 3}
   sprite: {fileID: 21300000, guid: e4712ab63e995c94d92c3d70964100a3, type: 3}
   elkoninList: 25000000070000001f000000000000000000000000000000
   elkoninCount: 3

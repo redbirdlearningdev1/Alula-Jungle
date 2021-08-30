@@ -25,6 +25,7 @@ public class GameManager : DontDestroy<GameManager>
     [Header("Game Datas")]
     public List<StoryGameData> storyGameDatas;
     public List<ChallengeGameTriad> challengeGameTriads;
+    public List<SubstitutionPair> substitutionPairs;
     
     [SerializeField] private GameObject devModeIndicator;
     private bool devIndicatorSet = false;

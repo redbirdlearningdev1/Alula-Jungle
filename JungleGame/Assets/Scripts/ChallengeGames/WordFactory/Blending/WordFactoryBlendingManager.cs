@@ -92,7 +92,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
         SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // create word lists
-        ChallengeWordDatabase.InitCreateGlobalList();
+        ChallengeWordDatabase.InitCreateGlobalList(true);
         globalWordList = ChallengeWordDatabase.globalChallengeWordList;
         unusedWordList = globalWordList;
         usedWordList = new List<ChallengeWord>();

@@ -10,20 +10,32 @@ public static class ChallengeWordDatabase
 {
     public const string challenge_word_folder = "Assets/Resources/ChallengeWordObjects/";
     public const string challenge_word_sprites_folder = "Assets/Resources/PolaroidImages/WebImages/";
+    public const string challenge_word_audio_folder = "Assets/Resources/ChallengeWordAudio/";
+
     public const string item_postfix = "_cw_obj";
     public const string sprite_postfix = "_cwimg";
+    public const string audio_postfix = "_audio";
+    
     public const int elkonin_word_separator = 21; // value at which > is consonant coins & <= are action word coins
 
     public static List<ChallengeWord> globalChallengeWordList;
 
-    public static void InitCreateGlobalList()
+    public static void InitCreateGlobalList(bool remove_incomplete_words = false)
     {
         var words = Resources.LoadAll<ChallengeWord>("ChallengeWordObjects");
 
         globalChallengeWordList = new List<ChallengeWord>();
         foreach (var word in words)
         {
-            globalChallengeWordList.Add(word);
+            if (remove_incomplete_words)
+            {
+                if (word.audio != null && word.sprite != null)
+                    globalChallengeWordList.Add(word);
+            }
+            else
+            {
+                globalChallengeWordList.Add(word);
+            }
         }
     }
 
@@ -66,19 +78,46 @@ public static class ChallengeWordDatabase
         // find sprite image
         yourObject.sprite = FindWordSprite(data.word);
 
+        // find word audio
+        yourObject.audio = FindWordAudio(data.word);
+
         EditorUtility.SetDirty(yourObject);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
     }
 
-    private static Sprite FindWordSprite(string word)
+    private static AudioClip FindWordAudio(string word)
     {
-        string[] result = AssetDatabase.FindAssets(word + sprite_postfix);
+        string[] result = AssetDatabase.FindAssets(word + audio_postfix);
 
         foreach (var res in result)
         {
-            Debug.Log("res: " + res);
+            Debug.Log("res: " + AssetDatabase.GUIDToAssetPath(res));
         }
+
+        // found correct audio file
+        if (result.Length == 1)
+        {
+            GameManager.instance.SendLog("ChallengeWordDatabase", "found challenge word audio -> " + word + audio_postfix);
+            string path = AssetDatabase.GUIDToAssetPath(result[0]);
+            return (AudioClip)AssetDatabase.LoadAssetAtPath(path, typeof(AudioClip));
+        }
+        else
+        {
+            GameManager.instance.SendError("ChallengeWordDatabase", "could not find audio -> " + word + audio_postfix);
+        }
+
+        return null;
+    }
+
+    private static Sprite FindWordSprite(string word)
+    {
+        string[] result = AssetDatabase.FindAssets(word + sprite_postfix); 
+
+        // foreach (var res in result)
+        // {
+        //     Debug.Log("res: " + AssetDatabase.GUIDToAssetPath(res));
+        // }
 
         // found correct sprite
         if (result.Length == 1)
@@ -90,7 +129,7 @@ public static class ChallengeWordDatabase
         // place default image
         else 
         {
-            
+            GameManager.instance.SendError("ChallengeWordDatabase", "could not find sprite -> " + word + sprite_postfix);
         }
 
         return null;

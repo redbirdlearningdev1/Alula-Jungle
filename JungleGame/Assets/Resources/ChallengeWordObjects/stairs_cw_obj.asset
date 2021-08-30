@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: stairs_cw_obj
   m_EditorClassIdentifier: 
   word: stairs
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 749a823869697004e8cfdf99290eacda, type: 3}
   sprite: {fileID: 21300000, guid: d97ae0381e83e5245bb7eea54ad5503a, type: 3}
   elkoninList: 25000000270000000d000000250000000000000000000000
   elkoninCount: 4

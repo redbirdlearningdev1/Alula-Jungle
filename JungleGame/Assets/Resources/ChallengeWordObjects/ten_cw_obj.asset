@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ten_cw_obj
   m_EditorClassIdentifier: 
   word: ten
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 18f3e924f80f6da4fbd56649bf4a54b9, type: 3}
   sprite: {fileID: 21300000, guid: 857a8ba626bc8154f8292ccbde903801, type: 3}
   elkoninList: 270000000300000021000000000000000000000000000000
   elkoninCount: 3

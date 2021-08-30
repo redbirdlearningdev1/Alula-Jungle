@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: fountain_cw_obj
   m_EditorClassIdentifier: 
   word: fountain
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 7ace7707aa638a34399ddf0e012da006, type: 3}
   sprite: {fileID: 21300000, guid: c8504a6238a7a6f4dbff083846a4b973, type: 3}
   elkoninList: 1a0000001400000021000000270000000300000021000000
   elkoninCount: 6

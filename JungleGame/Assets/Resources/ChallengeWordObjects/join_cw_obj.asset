@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: join_cw_obj
   m_EditorClassIdentifier: 
   word: join
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: bb1eb1bd3ac14674faa194f9b9a3e944, type: 3}
   sprite: {fileID: 21300000, guid: 7ca877ec76433034a9f4bfc02d653dac, type: 3}
   elkoninList: 1d0000001300000021000000000000000000000000000000
   elkoninCount: 3

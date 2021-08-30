@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: loaf_cw_obj
   m_EditorClassIdentifier: 
   word: loaf
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 28be4ef45b5ab4b4fb9f6162f023958e, type: 3}
   sprite: {fileID: 21300000, guid: 0f18340401667ef48a0f68f623b07ef6, type: 3}
   elkoninList: 1f0000000a0000001a000000000000000000000000000000
   elkoninCount: 3

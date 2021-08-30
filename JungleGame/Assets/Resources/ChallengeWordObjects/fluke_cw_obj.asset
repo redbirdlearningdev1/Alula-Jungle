@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: fluke_cw_obj
   m_EditorClassIdentifier: 
   word: fluke
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 503c17a09efdc104db94e3f40e16b55d, type: 3}
   sprite: {fileID: 21300000, guid: 9e797f9a85638a746823351660fd291c, type: 3}
   elkoninList: 1a0000001f0000000b0000001e0000000000000000000000
   elkoninCount: 4

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: yarn_cw_obj
   m_EditorClassIdentifier: 
   word: yarn
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 7ddc55fcf603829479ad9b8c9385fc82, type: 3}
   sprite: {fileID: 21300000, guid: 64fbba95e8b7f1a4db9d4af698dec373, type: 3}
   elkoninList: 2c0000000e00000021000000000000000000000000000000
   elkoninCount: 3

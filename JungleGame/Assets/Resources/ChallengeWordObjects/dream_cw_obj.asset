@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: dream_cw_obj
   m_EditorClassIdentifier: 
   word: dream
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: ed321b96135cf344e82cc7147c61d6a5, type: 3}
   sprite: {fileID: 21300000, guid: c1c3be563bbc49a4b9c4f975d010e2b4, type: 3}
   elkoninList: 190000002400000008000000200000000000000000000000
   elkoninCount: 4

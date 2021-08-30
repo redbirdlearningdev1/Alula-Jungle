@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: heat_cw_obj
   m_EditorClassIdentifier: 
   word: heat
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 989a84965cfa11a43b59d1c05f532fd3, type: 3}
   sprite: {fileID: 21300000, guid: b518579940bfc3d459a7244e9326c74d, type: 3}
   elkoninList: 1c0000000800000027000000000000000000000000000000
   elkoninCount: 3

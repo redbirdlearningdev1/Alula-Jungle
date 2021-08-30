@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: night_cw_obj
   m_EditorClassIdentifier: 
   word: night
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 6c03abb0a1508fb47927c0dca48e4196, type: 3}
   sprite: {fileID: 21300000, guid: af74964666709fc488d20d19f8bb5aa2, type: 3}
   elkoninList: 210000000900000027000000000000000000000000000000
   elkoninCount: 3

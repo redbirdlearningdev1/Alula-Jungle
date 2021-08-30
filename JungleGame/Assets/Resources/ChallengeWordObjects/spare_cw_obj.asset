@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: spare_cw_obj
   m_EditorClassIdentifier: 
   word: spare
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: caba97f8c1b5fb649a905d32c35dfc6b, type: 3}
   sprite: {fileID: 21300000, guid: d179850beff88ea4495719a50f4a526f, type: 3}
   elkoninList: 25000000220000000d000000000000000000000000000000
   elkoninCount: 3
