@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [ExecuteInEditMode]
 public class Polaroid : MonoBehaviour
@@ -9,12 +10,19 @@ public class Polaroid : MonoBehaviour
     [SerializeField] private SpriteRenderer picture;
     [SerializeField] private SpriteRenderer background;
 
+    public bool useImg;
+    [SerializeField] private Image pictureImg;
+    [SerializeField] private Image backgroundImg;
+
     public void SetPolaroid(ChallengeWord word)
     {
         challengeWord = word;
 
         // set picture
-        picture.sprite = word.sprite;
+        if (!useImg)
+            picture.sprite = word.sprite;
+        else 
+            pictureImg.sprite = word.sprite;
     }
 
     public void MovePolaroid(Vector3 position, float lerpTime)
