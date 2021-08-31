@@ -16,19 +16,9 @@ public class TigerGameManager : MonoBehaviour
     [SerializeField] private List<GameObject> incorrectCoins;
     private bool gameSetup = false;
 
-    //maybe old??
-
-
-
-
-
-
     [Header("Values")]
     [SerializeField] private Vector2 normalCoinSize;
     [SerializeField] private Vector2 expandedCoinSize;
-    // water coins
-    [SerializeField] private Vector2 waterNormalCoinSize;
-    [SerializeField] private Vector2 waterExpandedCoinSize;
 
     [Header("Positions")]
     [SerializeField] private Transform coinStartPos;
@@ -86,59 +76,29 @@ public class TigerGameManager : MonoBehaviour
         if (!instance)
         {
             instance = this;
-
-
         }
 
-
         PregameSetup();
-        StartCoroutine(StartGame(0));
-
+        StartCoroutine(StartGame());
     }
-
-    void Update()
-    {
-
-    }
-
-
-
-
-
-    private IEnumerator WinRoutine()
-    {
-        yield return new WaitForSeconds(2f);
-
-        // TODO: change maens of finishing game (for now we just return to the scroll map)
-        GameManager.instance.LoadScene("ScrollMap", true, 3f);
-    }
-
 
 
     private void PregameSetup()
     {
-
-        ChallengeWordDatabase.InitCreateGlobalList();
+        ChallengeWordDatabase.InitCreateGlobalList(true);
         globalWordList = ChallengeWordDatabase.globalChallengeWordList;
         unusedWordList = globalWordList;
         usedWordList = new List<ChallengeWord>();
 
+        // set base pattern
+        pattern.baseState();
     }
 
-    private void walkThrough()
+    private IEnumerator StartGame()
     {
-
-    }
-
-
-
-    private IEnumerator StartGame(int index)
-    {
-
         waterCoins.gameObject.transform.position = coinStartPos.position;
         waterCoins.SetSize(noCoin);
-        pattern.baseState();
-
+        
         if (overrideWord)
         {
             currentWord1 = targetChallengeWord1;
@@ -152,60 +112,62 @@ public class TigerGameManager : MonoBehaviour
             polaroidC[3].SetPolaroid(currentWord4);
             polaroidC[4].SetPolaroid(currentWord5);
         }
-        yield return new WaitForSeconds(.1f);
+        else
+        {
+            // devise a query algorithm to determine polaroids / coin
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        pattern.baseState();
+        yield return new WaitForSeconds(0.5f);
+
         Tiger.TigerDeal();
         waterCoins.gameObject.transform.position = coinLandPos.position;
         yield return new WaitForSeconds(.6f);
+
         waterCoins.SetValue(coinOptions[0]);
         waterCoins.SetLayer(2);
         waterCoins.SetSize(normalCoinSize);
         yield return new WaitForSeconds(.45f);
+
         for (int i = 0; i < 5; i++)
         {
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoStartPos.position, 0f));
         }
         for (int i = 0; i < 5; i++)
         {
-
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos1.position, .2f));
-
         }
         yield return new WaitForSeconds(.35f);
+
         for (int i = 1; i < 5; i++)
         {
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos2.position, .2f));
         }
         yield return new WaitForSeconds(.11f);
+
         for (int i = 2; i < 5; i++)
         {
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos3.position, .2f));
         }
         yield return new WaitForSeconds(.11f);
+
         for (int i = 3; i < 5; i++)
         {
 
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos4.position, .2f));
         }
         yield return new WaitForSeconds(.11f);
+
         for (int i = 4; i < 5; i++)
         {
-
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos5.position, .2f));
         }
-
-
         yield return new WaitForSeconds(.6f);
-
 
         currentTargetWord = targetChallengeWord2;
         currentTargetValue = currentTargetWord.elkoninList[swipeIndex];
-
-
-
-
-
-
-
 
         yield return new WaitForSeconds(1f);
     }
@@ -234,42 +196,22 @@ public class TigerGameManager : MonoBehaviour
         if (playingCoinAudio)
             return;
 
-        // check lists
-        if (currentCoins.Contains(coin))
-        {
-            StartCoroutine(GlowAndPlayAudioCoinRoutine(coin));
-        }
-        // water coins
-        else
-        {
-            StartCoroutine(GlowAndPlayAudioCoinRoutine(coin, true));
-        }
+        StartCoroutine(GlowAndPlayAudioCoinRoutine(coin));
     }
 
-    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoin coin, bool waterCoin = false)
+    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoin coin)
     {
         playingCoinAudio = true;
 
         // glow coin
         coin.ToggleGlowOutline(true);
         AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(coin.value).audio);
-        // water coin differential
-        if (!waterCoin) coin.LerpSize(expandedCoinSize, 0.25f);
-        else coin.LerpSize(waterExpandedCoinSize, 0.25f);
+
+        coin.LerpSize(expandedCoinSize, 0.25f);
 
         yield return new WaitForSeconds(1.5f);
-        // return if current water coin
-        if (coin == currWaterCoin)
-        {
-            coin.ToggleGlowOutline(false);
-            playingCoinAudio = false;
-            yield break;
-        }
 
-        // water coin differential
-        if (!waterCoin) coin.LerpSize(normalCoinSize, 0.25f);
-        else coin.LerpSize(waterNormalCoinSize, 0.25f);
-
+        coin.LerpSize(normalCoinSize, 0.25f);
         coin.ToggleGlowOutline(false);
 
         playingCoinAudio = false;
@@ -302,21 +244,14 @@ public class TigerGameManager : MonoBehaviour
 
     public void EvaluateWaterCoin(Polaroid Photo)
     {
-        //Debug.Log(Photo.challengeWord.elkoninList[swipeIndex] == waterCoins.value);
-
         if (Photo.challengeWord.elkoninList[swipeIndex] == waterCoins.value)
         {
-            //currWaterCoin = coin;
-
-
             StartCoroutine(PostRound(true));
         }
         else
         {
             StartCoroutine(PostRound(false));
         }
-        // return water coins
-        //WordFactorySubstitutingManager.instance.ResetWaterCoins();
     }
 
     public void returnToPos(GameObject currPhoto)
@@ -344,26 +279,21 @@ public class TigerGameManager : MonoBehaviour
         {
             StartCoroutine(LerpMoveObject(polaroidC[4].transform, PhotoPos5.position, .2f));
         }
-
     }
 
     private IEnumerator PostRound(bool win)
     {
-
         if (win)
         {
-            Debug.Log("goodjob");
             pattern.correct();
             correctCoins[numWins].SetActive(true);
             numWins++;
             Tiger.TigerAway();
             yield return new WaitForSeconds(.55f);
             waterCoins.gameObject.transform.position = coinStartPos.position;
-
         }
         else
         {
-            Debug.Log("job");
             pattern.incorrect();
             incorrectCoins[numMisses].SetActive(true);
             numMisses++;
@@ -371,6 +301,7 @@ public class TigerGameManager : MonoBehaviour
             yield return new WaitForSeconds(.55f);
             waterCoins.gameObject.transform.position = coinStartPos.position;
         }
+        yield return new WaitForSeconds(.5f);
 
         Tiger.TigerSwipe();
         yield return new WaitForSeconds(.45f);
@@ -378,44 +309,96 @@ public class TigerGameManager : MonoBehaviour
         {
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos2.position, .2f));
         }
-        yield return new WaitForSeconds(.15f);
+        yield return new WaitForSeconds(.1f);
         for (int i = 0; i < 2; i++)
         {
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos3.position, .2f));
         }
-        yield return new WaitForSeconds(.15f);
+        yield return new WaitForSeconds(.1f);
         for (int i = 0; i < 3; i++)
         {
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos4.position, .2f));
         }
-        yield return new WaitForSeconds(.15f);
+        yield return new WaitForSeconds(.1f);
         for (int i = 0; i < 4; i++)
         {
 
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos5.position, .2f));
         }
-        yield return new WaitForSeconds(.25f);
+        yield return new WaitForSeconds(.2f);
         for (int i = 0; i < 5; i++)
         {
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoEndPos.position, .2f));
         }
 
 
-        if (numMisses == 3 || numWins == 3)
+        if (numWins == 3)
         {
-            WinRoutine();
+            StartCoroutine(WinRoutine());
         }
-        StartCoroutine(StartGame(0));
-        yield return null;
+        else if (numMisses == 3)
+        {
+           StartCoroutine(LoseRoutine());
+        }
+        else
+        {
+            StartCoroutine(StartGame());
+        }
     }
 
+    private IEnumerator LoseRoutine()
+    {
+        yield return new WaitForSeconds(1f);
 
+        // // update SIS
+        // if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3)
+        // {
+        //     // first time losing
+        //     if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame)
+        //         StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = true;
+        //     else
+        //     {
+        //         // every other time losing
+        //         if (!StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+        //         {
+        //             StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = true;
+        //         }
+        //     }
+        //     StudentInfoSystem.SaveStudentPlayerData();
+        // }
 
+        // show stars
+        StarAwardController.instance.AwardStarsAndExit(0);
+    }
 
+    private IEnumerator WinRoutine()
+    {
+        yield return new WaitForSeconds(1f);
 
+        // play win tune
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+        yield return new WaitForSeconds(1f);
 
+        // update SIS
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3)
+        {
+            StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = false;
+            StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;
+            StudentInfoSystem.AdvanceStoryBeat();
+            StudentInfoSystem.SaveStudentPlayerData();
+        }
 
+        // show stars
+        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+    }
 
-
-
+    private int CalculateStars()
+    {
+        if (numMisses <= 0)
+            return 3;
+        else if (numMisses > 0 && numMisses <= 2)
+            return 2;
+        else
+            return 1;
+    }
 }

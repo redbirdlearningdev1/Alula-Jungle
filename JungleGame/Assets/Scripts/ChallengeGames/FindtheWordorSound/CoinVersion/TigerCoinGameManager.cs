@@ -80,6 +80,7 @@ public class TigerCoinGameManager : MonoBehaviour
         globalWordList = ChallengeWordDatabase.globalChallengeWordList;
         unusedWordList = globalWordList;
         usedWordList = new List<ChallengeWord>();
+        pattern.baseState();
     }
 
     private IEnumerator StartGame()
@@ -87,7 +88,6 @@ public class TigerCoinGameManager : MonoBehaviour
         swipeIndex = 0;
         polaroidC.gameObject.transform.position = polaroidStartPos.position;
         polaroidC.LerpScale(0f, 0f);
-        pattern.baseState();
 
         if (overrideWord)
         {
@@ -115,7 +115,10 @@ public class TigerCoinGameManager : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(1.5f);
+        // return pattern to base state
+        yield return new WaitForSeconds(1f);
+        pattern.baseState();
+        yield return new WaitForSeconds(.5f);
 
         Tiger.TigerDeal();
         polaroidC.gameObject.transform.position = polaroidLandPos.position;
