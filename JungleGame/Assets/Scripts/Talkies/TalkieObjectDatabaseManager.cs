@@ -186,7 +186,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
 
             string[] rowData = line.Split(',');
 
-            //print ("line: " + line + ", cells: " + rowData.Length);
+            print ("index: " + lineCount + " line: " + line + ", cells: " + rowData.Length);
             
             // catch any parse errors
             try
@@ -195,82 +195,6 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                 if (rowData.Length != 12)
                 {   
                     throw new TalkieObjectImportException("invalid row size", lineCount, column_count);
-                }
-
-                // reading voiceovers
-                if (readingVoiceovers)
-                {
-
-                }
-
-                // reading segments
-                if (readingSegments)
-                {
-                    TalkieSegment segment = new TalkieSegment();
-                    foreach(string cell in rowData)
-                    {
-                        //print ("column count: " + column_count);
-                        switch (column_count)
-                        {
-                            case 0: // audio file name
-                                segment.audioClipName = cell;
-                                segment.audioClip = SearchForAudioByName(cell); // try to find audio
-                                break;
-                            case 1: // text
-                                segment.audioString = cell;
-                                break;
-                            case 2: // index
-                                break;
-                            case 3: // left character
-                                segment.leftCharacter = GetCharacterFromString(cell);
-                                break;
-                            case 4: // right character
-                                segment.rightCharacter = GetCharacterFromString(cell);
-                                break;
-                            case 5: // left emote
-                                TalkieEmotionEntry leftEmotionEntry = GetEmotionEntryFromString(cell);
-                                segment.leftEmotionNum = leftEmotionEntry.emotionNum;
-                                segment.leftMouthEnum = leftEmotionEntry.mouthEnum;
-                                segment.leftEyesEnum = leftEmotionEntry.eyesEnum;
-                                break;
-                            case 6: // right emote
-                                TalkieEmotionEntry rightEmotionEntry = GetEmotionEntryFromString(cell);
-                                segment.rightEmotionNum = rightEmotionEntry.emotionNum;
-                                segment.rightMouthEnum = rightEmotionEntry.mouthEnum;
-                                segment.rightEyesEnum = rightEmotionEntry.eyesEnum;
-                                break;
-                            case 7: // require YN?
-
-                                if (cell == "yes")
-                                    segment.requireYN = true;
-                                else if (cell == "no" || cell == "")
-                                    segment.requireYN = false;
-                                else
-                                    throw new TalkieObjectImportException("invalid \'RequireYN?\' option (should be \'yes\' or \'no\' (or left blank)", lineCount, column_count);
-                                break;
-
-                            case 8: // on yes (goto x)
-                                break;
-                            case 9: // on no (goto x)
-                                break;
-                            
-                            case 10: // end talkie?
-
-                                if (cell == "yes")
-                                    segment.endTalkieAfterThisSegment = true;
-                                else if (cell == "no" || cell == "")
-                                    segment.endTalkieAfterThisSegment = false;
-                                else
-                                    throw new TalkieObjectImportException("invalid \'EndTalkie\' option (should be \'yes\' or \'no\' (or left blank)", lineCount, column_count);
-                                break;
-
-                            case 11: // talkie motion
-                                break;
-                        }
-                        column_count++;
-                    }
-                    // add segment to entry
-                    entry.segmnets.Add(segment);
                 }
 
                 // reading header
@@ -377,16 +301,21 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                             break;
 
                         case "$Segments":
+
                             print ("adding segments!");
                             readingSegments = true; // start reading segments
-                            break;
+                            continue;
+
                         case "$Voiceover":
+
+                            print ("starting voiceovers!");
                             readingVoiceovers = true;
                             break;
                     }
                 }
                 else if (rowData[0] == "")
                 {
+                    print ("empty line detected!");
                     // add to local talkie list iff not null
                     if (entry != null)
                     {
@@ -397,7 +326,128 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                     
                     readingSegments = false; // finish reading segmenets
                     readingVoiceovers = false; // finish reading voiceover
-                    break;
+                }
+
+                /* 
+                ################################################
+                #   VOICEOVERS / TALKIE SEGMENTS
+                ################################################
+                */ 
+
+                // reading voiceovers
+                if (readingVoiceovers)
+                {
+
+                }
+
+                // reading segments
+                if (readingSegments)
+                {
+                    TalkieSegment segment = new TalkieSegment();
+                    List<TalkieCharacter> activeCharacters = new List<TalkieCharacter>();
+
+                    foreach(string cell in rowData)
+                    {
+                        //print ("column count: " + column_count);
+                        switch (column_count)
+                        {
+                            case 0: // audio file name
+                                segment.audioClipName = cell;
+                                segment.audioClip = SearchForAudioByName(cell); // try to find audio
+
+                                // determine active character(s)
+                                activeCharacters = DetermineActiveCharacters(cell);
+                                //print ("active characters: " + activeCharacters[0]);
+
+                                break;
+                            case 1: // text
+                                segment.audioString = cell;
+                                break;
+                            case 2: // index
+                                break;
+                            case 3: // left character
+                                segment.leftCharacter = GetCharacterFromString(cell);
+
+                                // check to see if active character is left
+                                if (activeCharacters.Contains(segment.leftCharacter))
+                                {
+                                    segment.activeCharacter = ActiveCharacter.Left;
+                                }
+
+                                break;
+                            case 4: // right character
+                                segment.rightCharacter = GetCharacterFromString(cell);
+
+                                // check to see if active character is left
+                                if (activeCharacters.Contains(segment.rightCharacter))
+                                {
+                                    // if active character was prev left -> both are active characters
+                                    if (segment.activeCharacter == ActiveCharacter.Left)
+                                    {
+                                        segment.activeCharacter = ActiveCharacter.Both;
+                                    }
+                                    // else the right talkie is active
+                                    segment.activeCharacter = ActiveCharacter.Right;
+                                }
+
+                                break;
+                            case 5: // left emote
+                                TalkieEmotionEntry leftEmotionEntry = GetEmotionEntryFromString(cell);
+                                segment.leftEmotionNum = leftEmotionEntry.emotionNum;
+                                segment.leftMouthEnum = leftEmotionEntry.mouthEnum;
+                                segment.leftEyesEnum = leftEmotionEntry.eyesEnum;
+                                break;
+                            case 6: // right emote
+                                TalkieEmotionEntry rightEmotionEntry = GetEmotionEntryFromString(cell);
+                                segment.rightEmotionNum = rightEmotionEntry.emotionNum;
+                                segment.rightMouthEnum = rightEmotionEntry.mouthEnum;
+                                segment.rightEyesEnum = rightEmotionEntry.eyesEnum;
+                                break;
+                            case 7: // require YN?
+
+                                if (cell == "yes")
+                                    segment.requireYN = true;
+                                else if (cell == "no" || cell == "")
+                                    segment.requireYN = false;
+                                else
+                                    throw new TalkieObjectImportException("invalid \'RequireYN?\' option (should be \'yes\' or \'no\' (or left blank)", lineCount, column_count);
+                                break;
+
+                            case 8: // on yes (goto x)
+
+                                if (cell != "")
+                                {
+                                    string num = cell.Replace("goto", "");
+                                    segment.onYesGoto = int.Parse(num);
+                                }
+                                break;
+
+                            case 9: // on no (goto x)
+                                
+                                if (cell != "")
+                                {
+                                    string num = cell.Replace("goto", "");
+                                    segment.onNoGoto = int.Parse(num);
+                                }
+                                break;
+                            
+                            case 10: // end talkie?
+
+                                if (cell == "yes")
+                                    segment.endTalkieAfterThisSegment = true;
+                                else if (cell == "no" || cell == "")
+                                    segment.endTalkieAfterThisSegment = false;
+                                else
+                                    throw new TalkieObjectImportException("invalid \'EndTalkie\' option (should be \'yes\' or \'no\' (or left blank)", lineCount, column_count);
+                                break;
+
+                            case 11: // talkie motion
+                                break;
+                        }
+                        column_count++;
+                    }
+                    // add segment to entry
+                    entry.segmnets.Add(segment);
                 }
             }
             catch (TalkieObjectImportException e)
@@ -444,6 +494,27 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
         updateText.color = Color.green;
         updateText.text = "database updated!";
     }
+
+    string[] characterNames = new string[] { "red", "wally", "darwin", "lester", "brutus", "marcus", "julius", "clogg", "spindle" };
+    private List<TalkieCharacter> DetermineActiveCharacters(string str)
+    {
+        List<TalkieCharacter> activeCharacters = new List<TalkieCharacter>();
+
+        str = str.ToLower(); // more consistent parsing
+
+        //print ("str: " + str);
+
+        foreach(var name in characterNames)
+        {
+            if (str.Contains(name))
+            {
+                //print ("str contains character: " + name);
+                activeCharacters.Add(GetCharacterFromString(name));
+            }
+        }
+
+        return activeCharacters;
+    }   
 
     private TalkieCharacter GetCharacterFromString(string str)
     {
@@ -512,24 +583,33 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                 break;
         }
 
-        // get eyes enum
-        switch (splitData[2])
+        // make sure data contains eyes id
+        if (splitData.Length > 2)
         {
-            default:
-                output.eyesEnum = TalkieEyes.None;
-                break;
-            case "ei":
-                output.eyesEnum = TalkieEyes.Inwards;
-                break;
-            case "ep":
-                output.eyesEnum = TalkieEyes.Player;
-                break;
-            case "ec":
-                output.eyesEnum = TalkieEyes.Closed;
-                break;
-            case "eo":
-                output.eyesEnum = TalkieEyes.Outwards;
-                break;
+            // get eyes enum
+            switch (splitData[2])
+            {
+                default:
+                    output.eyesEnum = TalkieEyes.None;
+                    break;
+                case "ei":
+                    output.eyesEnum = TalkieEyes.Inwards;
+                    break;
+                case "ep":
+                    output.eyesEnum = TalkieEyes.Player;
+                    break;
+                case "ec":
+                    output.eyesEnum = TalkieEyes.Closed;
+                    break;
+                case "eo":
+                    output.eyesEnum = TalkieEyes.Outwards;
+                    break;
+            }
+        }
+        // if not - leave it as NONE
+        else
+        {
+            output.eyesEnum = TalkieEyes.None;
         }
 
         return output;

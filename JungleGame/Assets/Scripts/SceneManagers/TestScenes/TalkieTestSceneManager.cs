@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -9,6 +10,8 @@ using UnityEditor;
 public class TalkieTestSceneManager : MonoBehaviour
 {
     public TalkieObject placeTalkieHere;
+
+    public Toggle fastTalkieToggle;
 
     public const string talkie_audio_folder = "Assets/Resources/TalkieAudioFiles/";
 
@@ -36,6 +39,11 @@ public class TalkieTestSceneManager : MonoBehaviour
         {
             TalkieManager.instance.StopTalkieSystem();
         }
+    }
+
+    public void OnFastTalkiesToggled()
+    {
+        TalkieManager.instance.SetFastTalkies(fastTalkieToggle.isOn);
     }
 
     public void OnTestTalkiePressed()
@@ -76,8 +84,8 @@ public class TalkieTestSceneManager : MonoBehaviour
                     // update new segment with prev values
                     updatedSegment.endTalkieAfterThisSegment = seg.endTalkieAfterThisSegment;
                     updatedSegment.requireYN = seg.requireYN;
-                    updatedSegment.onYes = seg.onYes;
-                    updatedSegment.onNo = seg.onNo;
+                    updatedSegment.onYesGoto = seg.onYesGoto;
+                    updatedSegment.onNoGoto = seg.onNoGoto;
 
                     updatedSegment.leftCharacter = seg.leftCharacter;
                     updatedSegment.leftEmotionNum = seg.leftEmotionNum;

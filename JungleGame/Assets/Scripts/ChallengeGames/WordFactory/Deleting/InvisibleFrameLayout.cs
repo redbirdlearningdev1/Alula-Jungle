@@ -32,6 +32,6 @@ public class InvisibleFrameLayout : MonoBehaviour
         }
 
         // set correct spacing
-        layoutGroup.spacing = spacings[] // fix this 
+        //layoutGroup.spacing = spacings[] // fix this 
     }   
 }

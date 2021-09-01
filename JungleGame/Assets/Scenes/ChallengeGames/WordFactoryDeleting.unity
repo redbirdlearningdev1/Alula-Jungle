@@ -984,6 +984,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72bcee8888eae9445bb2ed2be1d07da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layoutGroup: {fileID: 0}
+  spacings: []
+  frames: []
 --- !u!1 &1058696536
 GameObject:
   m_ObjectHideFlags: 0
@@ -2069,7 +2072,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 19.235973
+      value: 19.389101
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

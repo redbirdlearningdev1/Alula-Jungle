@@ -46,6 +46,8 @@ public class TalkieManager : MonoBehaviour
     public Transform activePos;
     public Transform leftSideHiddenPos;
     public Transform rightSideHiddenPos;
+    public Transform leftSideNotActive;
+    public Transform rightSideNotActive;
 
     [Header("Talkie Variables")]
     public float inactiveScale;
@@ -62,8 +64,8 @@ public class TalkieManager : MonoBehaviour
     [Header("Yes No Stuff")]
     public Button yesButton;
     public Button noButton;
-    private TalkieYesNoAction yesAction = TalkieYesNoAction.None;
-    private TalkieYesNoAction noAction = TalkieYesNoAction.None;
+    private int yesGoto;
+    private int noGoto;
 
     [Header("Dev Stuff")]
     public float fastTalkieMoveSpeed;
@@ -273,27 +275,35 @@ public class TalkieManager : MonoBehaviour
             default:
             case TalkieEnding.ExitDown:
                 // bring talkies down
-                StartCoroutine(MoveObjectRouitne(leftTalkie, inactivePos.position, talkieMoveSpeed));
-                StartCoroutine(MoveObjectRouitne(rightTalkie, inactivePos.position, talkieMoveSpeed));
+                if (!leftHidden)
+                    StartCoroutine(MoveObjectRouitne(leftTalkie, inactivePos.position, talkieMoveSpeed));
+                if (!rightHidden)
+                    StartCoroutine(MoveObjectRouitne(rightTalkie, inactivePos.position, talkieMoveSpeed));
                 break;
             case TalkieEnding.ExitSides:
                 // bring talkies to sides
-                StartCoroutine(MoveObjectRouitne(leftTalkie, leftSideHiddenPos.position, talkieMoveSpeed));
-                StartCoroutine(MoveObjectRouitne(rightTalkie, rightSideHiddenPos.position, talkieMoveSpeed));
+                if (!leftHidden)
+                    StartCoroutine(MoveObjectRouitne(leftTalkie, leftSideHiddenPos.position, talkieMoveSpeed));
+                if (!rightHidden)
+                    StartCoroutine(MoveObjectRouitne(rightTalkie, rightSideHiddenPos.position, talkieMoveSpeed));
                 break;
             case TalkieEnding.ExitLeft:
                 // bring talkies left
-                StartCoroutine(MoveObjectRouitne(leftTalkie, leftSideHiddenPos.position, talkieMoveSpeed));
-                StartCoroutine(MoveObjectRouitne(rightTalkie, leftSideHiddenPos.position, talkieMoveSpeed));
+                if (!leftHidden)
+                    StartCoroutine(MoveObjectRouitne(leftTalkie, leftSideHiddenPos.position, talkieMoveSpeed));
+                if (!rightHidden)
+                    StartCoroutine(MoveObjectRouitne(rightTalkie, leftSideHiddenPos.position, talkieMoveSpeed));
                 break;
             case TalkieEnding.ExitRight:
                 // bring talkies right
-                StartCoroutine(MoveObjectRouitne(leftTalkie, rightSideHiddenPos.position, talkieMoveSpeed));
-                StartCoroutine(MoveObjectRouitne(rightTalkie, rightSideHiddenPos.position, talkieMoveSpeed));
+                if (!leftHidden)
+                    StartCoroutine(MoveObjectRouitne(leftTalkie, rightSideHiddenPos.position, talkieMoveSpeed));
+                if (!rightHidden)
+                    StartCoroutine(MoveObjectRouitne(rightTalkie, rightSideHiddenPos.position, talkieMoveSpeed));
                 break;
         }
-    
-        yield return new WaitForSeconds(talkieMoveSpeed);
+
+        //yield return new WaitForSeconds(talkieMoveSpeed);
 
         // deactivate letterbox and background
         if (currentTalkie.removeBackgroundAfterTalkie)
@@ -337,8 +347,6 @@ public class TalkieManager : MonoBehaviour
     private IEnumerator PlaySegment(TalkieSegment talkieSeg)
     {
         playingSegment = true;
-
-        print ("playing segment: " + talkieSeg);
 
         /* 
         ################################################
@@ -447,17 +455,21 @@ public class TalkieManager : MonoBehaviour
         if (talkieSeg.activeCharacter == ActiveCharacter.Left)
         {
             StartCoroutine(LerpScaleAndAlpha(leftImage, 1f, 1f, true));
+            //StartCoroutine(MoveObjectRouitne(leftTalkie, activePos.position, talkieDeactivateSpeed));
             if (!rightHidden) 
             {
                 StartCoroutine(LerpScaleAndAlpha(rightImage, inactiveScale, inactiveAlpha, false));
+                StartCoroutine(MoveObjectRouitne(rightTalkie, rightSideNotActive.position, talkieDeactivateSpeed));
             }
         }
         else if (talkieSeg.activeCharacter == ActiveCharacter.Right)
         {
             StartCoroutine(LerpScaleAndAlpha(rightImage, 1f, 1f, false));
+            //StartCoroutine(MoveObjectRouitne(rightTalkie, activePos.position, talkieDeactivateSpeed));
             if (!leftHidden) 
             {
                 StartCoroutine(LerpScaleAndAlpha(leftImage, inactiveScale, inactiveAlpha, true));
+                StartCoroutine(MoveObjectRouitne(leftTalkie, leftSideNotActive.position, talkieDeactivateSpeed));
             }
         }
 
@@ -483,9 +495,7 @@ public class TalkieManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
-        
-
-
+    
         /* 
         ################################################
         #   YES / NO ACTION
@@ -495,8 +505,8 @@ public class TalkieManager : MonoBehaviour
         {
             waitingForYesNoInput = true;
 
-            yesAction = talkieSeg.onYes;
-            noAction = talkieSeg.onNo;
+            yesGoto = talkieSeg.onYesGoto;
+            noGoto = talkieSeg.onNoGoto;
 
             // reveal yes and no buttons
             StartCoroutine(LerpTransformScale(yesButton.transform, 1f, 0.25f));
@@ -516,15 +526,15 @@ public class TalkieManager : MonoBehaviour
 
     public void OnYesPressed()
     {
-        DoYesNoAction(yesAction);
+        DoYesNoAction(yesGoto, true);
     }
 
     public void OnNoPressed()
     {
-        DoYesNoAction(noAction);
+        DoYesNoAction(noGoto, false);
     }
 
-    private void DoYesNoAction(TalkieYesNoAction action)
+    private void DoYesNoAction(int gotoIndex, bool isYes)
     {   
         // disable buttons
         yesButton.interactable = true;
@@ -534,66 +544,83 @@ public class TalkieManager : MonoBehaviour
         StartCoroutine(LerpTransformScale(yesButton.transform, 0f, 0.25f));
         StartCoroutine(LerpTransformScale(noButton.transform, 0f, 0.25f));
 
-        switch (action)
+        overrideSegmentIndex = true;
+        newSegmentIndex = gotoIndex;
+
+        // on yes
+        if (isYes)
         {
-            default:
-            case TalkieYesNoAction.None:
-                break;
 
-            // PreDarwin Talkie Options
-            case TalkieYesNoAction.PreDarwin_yes:
-                overrideSegmentIndex = true;
-                newSegmentIndex = 1;
-                break;
-            case TalkieYesNoAction.PreDarwin_no:
-                doNotContinueToGame = true;
-                break;
-
-            // julius challenges
-            case TalkieYesNoAction.JuliusChalllenges_yes:
-                break;
-            case TalkieYesNoAction.JuliusChalllenges_no:
-                overrideSegmentIndex = true;
-                newSegmentIndex = 1;
-                doNotContinueToGame = true;
-                break;
-
-            // julius loses + marcus challanges
-            case TalkieYesNoAction.JuliusLosesMarcusChallenges_yes:
-                break;
-            case TalkieYesNoAction.JuliusLosesMarcusChallenges_no:
-                overrideSegmentIndex = true;
-                newSegmentIndex = 8;
-                doNotContinueToGame = true;
-                break;
-
-            // marcus challenges
-            case TalkieYesNoAction.MarcusChallenges_yes:
-                break;
-            case TalkieYesNoAction.MarcusChallenges_no:
-                overrideSegmentIndex = true;
-                newSegmentIndex = 2;
-                doNotContinueToGame = true;
-                break;
-
-            // marcus loses + brutus challenges
-            case TalkieYesNoAction.MarcusLosesBrutusChallenges_yes:
-                break;
-            case TalkieYesNoAction.MarcusLosesBrutusChallenges_no:
-                overrideSegmentIndex = true;
-                newSegmentIndex = 11;
-                doNotContinueToGame = true;
-                break;
-
-            // brutus challenges
-            case TalkieYesNoAction.BrutusChallenges_yes:
-                break;
-            case TalkieYesNoAction.BrutusChallenges_no:
-                overrideSegmentIndex = true;
-                newSegmentIndex = 2;
-                doNotContinueToGame = true;
-                break;
         }
+        // on no
+        else
+        {
+            doNotContinueToGame = true;
+        }
+
+        overrideSegmentIndex = true;
+        newSegmentIndex = 1;
+
+        // switch (action)
+        // {
+        //     default:
+        //     case TalkieYesNoAction.None:
+        //         break;
+
+        //     // PreDarwin Talkie Options
+        //     case TalkieYesNoAction.PreDarwin_yes:
+        //         overrideSegmentIndex = true;
+        //         newSegmentIndex = 1;
+        //         break;
+        //     case TalkieYesNoAction.PreDarwin_no:
+        //         doNotContinueToGame = true;
+        //         break;
+
+        //     // julius challenges
+        //     case TalkieYesNoAction.JuliusChalllenges_yes:
+        //         break;
+        //     case TalkieYesNoAction.JuliusChalllenges_no:
+        //         overrideSegmentIndex = true;
+        //         newSegmentIndex = 1;
+        //         doNotContinueToGame = true;
+        //         break;
+
+        //     // julius loses + marcus challanges
+        //     case TalkieYesNoAction.JuliusLosesMarcusChallenges_yes:
+        //         break;
+        //     case TalkieYesNoAction.JuliusLosesMarcusChallenges_no:
+        //         overrideSegmentIndex = true;
+        //         newSegmentIndex = 8;
+        //         doNotContinueToGame = true;
+        //         break;
+
+        //     // marcus challenges
+        //     case TalkieYesNoAction.MarcusChallenges_yes:
+        //         break;
+        //     case TalkieYesNoAction.MarcusChallenges_no:
+        //         overrideSegmentIndex = true;
+        //         newSegmentIndex = 2;
+        //         doNotContinueToGame = true;
+        //         break;
+
+        //     // marcus loses + brutus challenges
+        //     case TalkieYesNoAction.MarcusLosesBrutusChallenges_yes:
+        //         break;
+        //     case TalkieYesNoAction.MarcusLosesBrutusChallenges_no:
+        //         overrideSegmentIndex = true;
+        //         newSegmentIndex = 11;
+        //         doNotContinueToGame = true;
+        //         break;
+
+        //     // brutus challenges
+        //     case TalkieYesNoAction.BrutusChallenges_yes:
+        //         break;
+        //     case TalkieYesNoAction.BrutusChallenges_no:
+        //         overrideSegmentIndex = true;
+        //         newSegmentIndex = 2;
+        //         doNotContinueToGame = true;
+        //         break;
+        // }
 
         waitingForYesNoInput = false;
     }

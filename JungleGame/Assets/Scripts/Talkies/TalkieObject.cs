@@ -20,7 +20,7 @@ public enum TalkieEyes
 
 public enum ActiveCharacter
 {
-    Left, Right
+    Left, Right, Both
 }
 
 public enum TalkieStart
@@ -45,38 +45,6 @@ public enum TalkieEndAction
     UnlockStickerButton
 }
 
-public enum TalkieYesNoAction
-{
-    None,
-    // pre darwin talkie
-    PreDarwin_yes,
-    PreDarwin_no,
-
-    // julius challenges talkie
-    JuliusChalllenges_yes,
-    JuliusChalllenges_no,
-
-    // julius loses and marcus challenges
-    JuliusLosesMarcusChallenges_yes,
-    JuliusLosesMarcusChallenges_no,
-
-    // marcus challenges
-    MarcusChallenges_yes,
-    MarcusChallenges_no,
-
-    // marcus loses and brutus challenges
-    MarcusLosesBrutusChallenges_yes,
-    MarcusLosesBrutusChallenges_no,
-
-    // brutus challenges
-    BrutusChallenges_yes,
-    BrutusChallenges_no,
-
-    // prince challenge sign quips
-    ChallengeSignQuip_yes,
-    ChallengeSignQuip_no
-}
-
 [System.Serializable]
 public struct TalkieSegment
 {
@@ -85,8 +53,8 @@ public struct TalkieSegment
 
     [Header("Yes No Action")] // before continuing the talkie, player must choose between yes and no
     public bool requireYN;
-    public TalkieYesNoAction onYes;
-    public TalkieYesNoAction onNo;
+    public int onYesGoto;
+    public int onNoGoto;
 
     [Header("Left Character")]
     public TalkieCharacter leftCharacter;
