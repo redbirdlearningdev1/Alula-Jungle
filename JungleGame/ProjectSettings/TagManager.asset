@@ -23,6 +23,7 @@ TagManager:
   - Frame
   - HideInventoryArea
   - OpenInventoryArea
+  - CoinTarget
   layers:
   - Default
   - TransparentFX

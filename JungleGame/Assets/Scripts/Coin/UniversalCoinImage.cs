@@ -149,6 +149,11 @@ public class UniversalCoinImage : MonoBehaviour
         }
     }
 
+    public void ToggleRaycastTarget(bool opt)
+    {
+        GetComponent<Image>().raycastTarget = opt;
+    }
+
     public void ToggleGlowOutline(bool opt)
     {
         if (opt)

@@ -12,7 +12,6 @@ public class WordFactoryDeletingRaycaster : MonoBehaviour
 
     private GameObject selectedObject = null;
     [SerializeField] private Transform selectedObjectParent;
-    [SerializeField] private Transform frontSprite;
     public float lerpedScale;
 
     private bool polaroidAudioPlaying = false;
@@ -33,11 +32,7 @@ public class WordFactoryDeletingRaycaster : MonoBehaviour
         // drag select coin while mouse 1 down
         if (Input.GetMouseButton(0) && selectedObject)
         {
-            Vector3 mousePosWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePosWorldSpace.z = 0f;
-
-            Vector3 pos = Vector3.Lerp(selectedObject.transform.position, mousePosWorldSpace, objcetMoveSpeed);
-            selectedObject.transform.position = pos;
+            selectedObject.transform.position = Input.mousePosition;
         }
         else if (Input.GetMouseButtonUp(0) && selectedObject)
         {
@@ -52,21 +47,22 @@ public class WordFactoryDeletingRaycaster : MonoBehaviour
             {
                 foreach(var result in raycastResults)
                 {
-                    if (result.gameObject.transform.CompareTag("PolaroidTarget"))
+                    //print ("found: " + result.gameObject.name);
+
+                    if (result.gameObject.transform.CompareTag("CoinTarget"))
                     {
-                        isCorrect = WordFactoryBlendingManager.instance.EvaluatePolaroid(selectedObject.GetComponent<Polaroid>());
+                        WordFactoryDeletingManager.instance.EvaluateCoin(selectedObject.GetComponent<UniversalCoinImage>());
                     }
                 }
             }
 
-            // return polaroids to appropriate pos
-            WordFactoryBlendingManager.instance.ResetPolaroids();
+            // wiggle tiger frame
+            EmeraldTigerHolder.instance.GetComponent<WiggleController>().StopWiggle();
+            // scale up tiger
+            EmeraldTigerHolder.instance.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.25f);
+            // readd coin raycast
+            selectedObject.GetComponent<UniversalCoinImage>().ToggleRaycastTarget(true);
             selectedObject = null;
-
-            // un-toggle glow lines
-            // glowLineTop.ToggleGlow(false);
-            // glowLineBottom.ToggleGlow(false);
-            frontSprite.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -82,19 +78,26 @@ public class WordFactoryDeletingRaycaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("Polaroid"))
                     {
-                        selectedObject = result.gameObject;
-                        selectedObject.gameObject.transform.SetParent(selectedObjectParent);
-                        selectedObject.GetComponent<Polaroid>().LerpScale(1.25f, 0.1f);
-                        selectedObject.GetComponent<Polaroid>().SetLayer(6);
                         // play audio
-                        StartCoroutine(PlayPolaroidAudio(selectedObject.GetComponent<Polaroid>().challengeWord.audio));
-                        frontSprite.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, lerpedScale), 0.1f);
-
+                        StartCoroutine(PlayPolaroidAudio(result.gameObject.GetComponent<Polaroid>().challengeWord.audio));
                         return;
                     }
                     else if (result.gameObject.transform.CompareTag("UniversalCoin"))
                     {
-                        WordFactoryBlendingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoin>());
+                        // play audio
+                        WordFactoryDeletingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
+
+                        // select object
+                        selectedObject = result.gameObject;
+                        selectedObject.gameObject.transform.SetParent(selectedObjectParent);
+
+                        // remove coin raycast
+                        selectedObject.GetComponent<UniversalCoinImage>().ToggleRaycastTarget(false);
+
+                        // wiggle tiger frame
+                        EmeraldTigerHolder.instance.GetComponent<WiggleController>().StartWiggle();
+                        // scale up tiger
+                        EmeraldTigerHolder.instance.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.25f);
                     }
                 }
             }

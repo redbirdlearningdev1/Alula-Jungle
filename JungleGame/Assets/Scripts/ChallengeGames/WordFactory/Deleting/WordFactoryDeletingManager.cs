@@ -12,13 +12,17 @@ public class WordFactoryDeletingManager : MonoBehaviour
     public Vector2 normalCoinSize;
     public Vector2 expandedCoinSize;
 
-    private List<ChallengeWord> globalWordList;
-    private List<ChallengeWord> unusedWordList;
-    private List<ChallengeWord> usedWordList;
 
+    private DeletionPair currentPair;
     private ChallengeWord currentWord;
+    private UniversalCoinImage currentCoin;
+
     private List<UniversalCoinImage> currentCoins;
     private bool playingCoinAudio;
+    private bool evaluatingCoin = false;
+
+    private int numWins = 0;
+    private int numMisses = 0;
 
     void Awake()
     {
@@ -33,6 +37,9 @@ public class WordFactoryDeletingManager : MonoBehaviour
 
     private void PregameSetup()
     {
+        // remove UI button
+        SettingsManager.instance.ToggleWagonButtonActive(false);
+
         // set emerald head to be closed
         EmeraldHead.instance.animator.Play("PolaroidEatten");
 
@@ -42,23 +49,15 @@ public class WordFactoryDeletingManager : MonoBehaviour
         // set tiger cards to be inactive
         TigerController.instance.ResetCards();
 
-        // get global challenge word list
-        ChallengeWordDatabase.InitCreateGlobalList(true);
-        globalWordList = ChallengeWordDatabase.globalChallengeWordList;
-        // unused list init
-        usedWordList = new List<ChallengeWord>();
-        // used list init
-        unusedWordList = new List<ChallengeWord>();
-        unusedWordList.AddRange(globalWordList);
-
-
-
         // start game
         StartCoroutine(NewRound());
     }
 
     private IEnumerator NewRound()
     {
+        // new pair
+        currentPair = GameManager.instance.deletionPairs[Random.Range(0, GameManager.instance.deletionPairs.Count)];
+
         // init game delay
         yield return new WaitForSeconds(0.5f);
 
@@ -67,7 +66,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         // choose challenge word + play enter animation
-        currentWord = GetNewChallengeWord();
+        currentWord = currentPair.word1;
         polaroid.SetPolaroid(currentWord);
         yield return new WaitForSeconds(1f);
 
@@ -104,13 +103,13 @@ public class WordFactoryDeletingManager : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         // say each letter + glow / grow coin
         foreach (var coin in currentCoins)
         {
             GlowAndPlayAudioCoin(coin);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
         }
         yield return new WaitForSeconds(0.5f);
 
@@ -129,8 +128,221 @@ public class WordFactoryDeletingManager : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
+        // turn on raycaster
+        WordFactoryDeletingRaycaster.instance.isOn = true;
+        evaluatingCoin = false;
+    }
 
+    public void EvaluateCoin(UniversalCoinImage coin)
+    {
+        if (evaluatingCoin)
+            return;
+        evaluatingCoin = true;
+
+        // turn off raycaster
+        WordFactoryDeletingRaycaster.instance.isOn = false;
         
+        // return coins to position (except current coin)
+        currentCoin = coin;
+        WordFactoryDeletingManager.instance.ReturnCoinsToFrame();
+
+        print ("current coin value: " + currentCoin.value);
+        print ("value looking for: " + currentPair.word1.elkoninList[currentPair.swipeIndex]);
+
+        // win
+        if (coin.value == currentPair.word1.elkoninList[currentPair.swipeIndex])
+        {
+            numWins++;
+            StartCoroutine(PostRound(true));
+        }
+        // lose 
+        else
+        {
+            numMisses++;
+            currentCoin = coin;
+            StartCoroutine(PostRound(false));
+        }
+    }
+
+    private IEnumerator PostRound(bool win)
+    {
+        // win round
+        if (win)
+        {
+            // move current coin
+            currentCoin.GetComponent<LerpableObject>().LerpPosition(EmeraldTigerHolder.instance.transform.position, 0.25f, false);
+            currentCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
+            yield return new WaitForSeconds(0.25f);
+
+            // add coin to tiger
+            EmeraldTigerHolder.instance.SetNumberCoins(numWins);
+
+            // remove coin from list
+            currentCoins.Remove(currentCoin);
+
+            yield return new WaitForSeconds(1f);
+
+            // squish polaroid
+            EmeraldHead.instance.animator.Play("SquishPolaroid");
+            yield return new WaitForSeconds(1.5f);
+
+            polaroid.SetPolaroid(currentPair.word2);
+
+            // unsquish polaroid 
+            EmeraldHead.instance.animator.Play("UnsquishPolaroid");
+            yield return new WaitForSeconds(1.5f);
+
+            // remove one frame
+            InvisibleFrameLayout.instance.SetNumberOfFrames(currentWord.elkoninCount - 1);
+
+            // shrink extra frame
+            VisibleFramesController.instance.frames[currentPair.swipeIndex].GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+            yield return new WaitForSeconds(0.2f);
+
+            // move coins to frames
+            VisibleFramesController.instance.SetNumberOfFrames(currentWord.elkoninCount - 1);
+            VisibleFramesController.instance.LerpFramesToInvisibleFrames();
+            int count = 0;
+            foreach (var coin in currentCoins)
+            {
+                coin.GetComponent<LerpableObject>().LerpPosition(InvisibleFrameLayout.instance.frames[count].transform.position, 0.5f, false);
+                count++;
+            }
+            yield return new WaitForSeconds(1f);
+
+            // say new challenge word
+            AudioManager.instance.PlayTalk(currentPair.word2.audio);
+            foreach (var coin in currentCoins)
+            {
+                coin.LerpSize(expandedCoinSize, 0.25f);
+                yield return new WaitForSeconds(0.1f);
+            }
+            yield return new WaitForSeconds(1f);
+            foreach (var coin in currentCoins)
+            {
+                coin.LerpSize(normalCoinSize, 0.25f);
+                yield return new WaitForSeconds(0.1f);
+            }
+            yield return new WaitForSeconds(0.5f);
+        }
+        // lose round
+        else
+        {
+            // return coin to frame
+            currentCoin = null;
+            WordFactoryDeletingManager.instance.ReturnCoinsToFrame();
+            yield return new WaitForSeconds(1f);
+        }
+
+        // eat the polaroid
+        EmeraldHead.instance.animator.Play("EatPolaroid");
+        yield return new WaitForSeconds(1.5f);
+
+        // award card to correct person
+        if (win)
+        {
+            WinCardsController.instance.AddPolaroid();
+        }
+        else
+        {
+            TigerController.instance.AddTigerPolaroid();
+        }
+        yield return new WaitForSeconds(1f);
+
+        // remove coins and frames
+        VisibleFramesController.instance.MoveFramesOffScreen();
+        foreach (var coin in currentCoins)
+        {
+            coin.GetComponent<LerpableObject>().LerpPosition(new Vector2(coin.transform.position.x, coin.transform.position.y - 500f), 0.5f, false);
+        }
+        yield return new WaitForSeconds(0.5f);
+
+        // remove coins
+        foreach (var coin in currentCoins)
+        {
+            Destroy(coin.gameObject);
+        }
+        currentCoins.Clear();
+
+        // win or lose game ?
+        if (numWins >= 3)
+            StartCoroutine(WinRoutine());
+        else if (numMisses >= 3)
+            StartCoroutine(LoseRoutine());
+        else 
+            StartCoroutine(NewRound());
+    }
+
+    private IEnumerator WinRoutine()
+    {
+        print ("you win!");
+
+        // play win tune
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+        yield return new WaitForSeconds(1f);
+
+        // // update SIS
+        // if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
+        // {
+        //     StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = false;
+        //     StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;
+        //     StudentInfoSystem.AdvanceStoryBeat();
+        //     StudentInfoSystem.SaveStudentPlayerData();
+        // }
+
+        // show stars
+        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+    }
+
+    private int CalculateStars()
+    {
+        if (numMisses <= 0)
+            return 3;
+        else if (numMisses > 0 && numMisses <= 2)
+            return 2;
+        else
+            return 1;
+    }
+
+    private IEnumerator LoseRoutine()
+    {
+        print ("you lose!");
+        
+        yield return new WaitForSeconds(1f);
+
+        // // update SIS
+        // if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
+        // {
+        //     // first time losing
+        //     if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame)
+        //         StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = true;
+        //     else
+        //     {
+        //         // every other time losing
+        //         if (!StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+        //         {
+        //             StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = true;
+        //         }
+        //     }
+        //     StudentInfoSystem.SaveStudentPlayerData();
+        // }
+
+        // show stars
+        StarAwardController.instance.AwardStarsAndExit(0);
+    }
+
+    public void ReturnCoinsToFrame()
+    {
+        // say each letter + glow / grow coin
+        int count = 0;
+        foreach (var coin in currentCoins)
+        {
+            if (coin != currentCoin)
+            {
+                coin.GetComponent<LerpableObject>().LerpPosition(InvisibleFrameLayout.instance.frames[count].transform.position, 0.25f, false);
+            }
+            count++;
+        }
     }
 
     public void GlowAndPlayAudioCoin(UniversalCoinImage coin)
@@ -153,32 +365,10 @@ public class WordFactoryDeletingManager : MonoBehaviour
         AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(coin.value).audio);
         coin.LerpSize(expandedCoinSize, 0.25f);
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.9f);
         coin.LerpSize(normalCoinSize, 0.25f);
         coin.ToggleGlowOutline(false);
 
         playingCoinAudio = false;
-    }
-
-    private ChallengeWord GetNewChallengeWord()
-    {
-        // restock unused list
-        if (unusedWordList.Count <= 0)
-        {
-            unusedWordList = new List<ChallengeWord>();
-            unusedWordList.AddRange(globalWordList);
-
-            usedWordList.Clear();
-        }   
-        
-        // get random word
-        int index = Random.Range(0, unusedWordList.Count);
-        ChallengeWord word = unusedWordList[index];
-
-        // update lists
-        usedWordList.Add(word);
-        unusedWordList.Remove(word);
-
-        return word;
     }
 }

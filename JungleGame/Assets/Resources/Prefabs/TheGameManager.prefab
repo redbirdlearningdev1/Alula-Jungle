@@ -11437,6 +11437,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 98e18b14ec0d558408394dca62790e34, type: 2}
   - {fileID: 11400000, guid: c3972b9870037ea478ee2de9fca13226, type: 2}
   - {fileID: 11400000, guid: d9ef8080c41d09c458a043668662213d, type: 2}
+  deletionPairs:
+  - {fileID: 11400000, guid: 3186b758866435d42aa92c1511fb54cc, type: 2}
   devModeIndicator: {fileID: 6550831789426890278}
   repairMapIconID: 0
   prevMapPosition: 1
@@ -17157,7 +17159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 6.9482465, y: 0.005817631}
+  m_AnchoredPosition: {x: 6.962709, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

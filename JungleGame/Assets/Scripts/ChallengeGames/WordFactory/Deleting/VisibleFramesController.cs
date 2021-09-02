@@ -52,6 +52,19 @@ public class VisibleFramesController : MonoBehaviour
         }
     }
 
+    public void LerpFramesToInvisibleFrames()
+    {
+        int count = 0;
+        foreach(var frame in frames)
+        {
+            if (frame.activeSelf)
+            {
+                frame.GetComponent<LerpableObject>().LerpPosition(InvisibleFrameLayout.instance.frames[count].transform.position, 0.5f, false);
+                count++;
+            }
+        }
+    }
+
     public void MoveFramesToInvisibleFrames()
     {
         foreach(var frame in frames)
@@ -77,5 +90,23 @@ public class VisibleFramesController : MonoBehaviour
             }
             count++;
         }
+    }
+
+    public void MoveFramesOffScreen()
+    {
+        StartCoroutine(MoveFramesOffScreenRoutine());
+    }
+
+    private IEnumerator MoveFramesOffScreenRoutine()
+    {
+        foreach(var frame in frames)
+        {
+            if (frame.activeSelf)
+            {
+                frame.GetComponent<LerpableObject>().LerpPosition(new Vector2(frame.transform.position.x, frame.transform.position.y - 500f), 0.5f, false);
+            }
+        }
+        yield return new WaitForSeconds(1f);
+        ResetFrames();
     }
 }

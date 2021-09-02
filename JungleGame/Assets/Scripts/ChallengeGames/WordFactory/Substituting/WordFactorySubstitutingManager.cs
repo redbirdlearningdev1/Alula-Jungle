@@ -72,10 +72,6 @@ public class WordFactorySubstitutingManager : MonoBehaviour
     private bool playingCoinAudio = false;
     private bool evaluatingCoin = false;
 
-    private List<ChallengeWord> globalWordList;
-    private List<ChallengeWord> unusedWordList;
-    private List<ChallengeWord> usedWordList;
-
     private List<ElkoninValue> elkoninPool;
 
     [Header("Testing")] // ache -> bake
@@ -106,12 +102,6 @@ public class WordFactorySubstitutingManager : MonoBehaviour
 
     private void PregameSetup()
     {   
-        // create word lists
-        ChallengeWordDatabase.InitCreateGlobalList();
-        globalWordList = ChallengeWordDatabase.globalChallengeWordList;
-        unusedWordList = globalWordList;
-        usedWordList = new List<ChallengeWord>();
-
         // begin first round
         StartCoroutine(NewRound());
     }

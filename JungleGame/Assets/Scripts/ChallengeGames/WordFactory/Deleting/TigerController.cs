@@ -5,7 +5,6 @@ using UnityEngine;
 public class TigerController : MonoBehaviour
 {
     public static TigerController instance;
-    
 
     public Animator tigerAnim;
     public Animator card1Anim;
@@ -33,13 +32,13 @@ public class TigerController : MonoBehaviour
         switch (currPolaroidCount)
         {
             case 1:
-                card1Anim.Play("Card1Enter");
+                card1Anim.Play("Card1");
                 break;
             case 2:
-                card2Anim.Play("Card2Enter");
+                card2Anim.Play("Card2");
                 break;
             case 3:
-                card3Anim.Play("Card3Enter");
+                card3Anim.Play("Card3");
                 break;
             default:
                 break;
