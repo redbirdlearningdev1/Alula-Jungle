@@ -161,6 +161,22 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
         bool readingVoiceovers = false;
         string errorMsg = "";
 
+        // word countd
+        int redWordCount = 0;
+        int darwinWordCount = 0;
+        int wallyWordCount = 0;
+        int lesterWordCount = 0;
+        int juliusWordCount = 0;
+        int brutusWordCount = 0;
+        int marcusWordCount = 0;
+        int cloggWordCount = 0;
+        int spindleWordCount = 0;
+        int bubblesWordCount = 0;
+        int ollieWordCount = 0;
+        int celesteWordCount = 0;
+        int sylvieWordCount = 0;
+
+
         // change text and color
         textText.color = Color.cyan;
         textText.text = "testing file '" + fileDropdown.options[fileDropdown.value].text + "'";
@@ -337,7 +353,81 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                 // reading voiceovers
                 if (readingVoiceovers)
                 {
+                    foreach(string cell in rowData)
+                    {
+                        List<TalkieCharacter> characters = new List<TalkieCharacter>();
 
+                        //print ("column count: " + column_count);
+                        switch (column_count)
+                        {
+                            case 0: // audio file name
+                                // determine active character(s)
+                                characters = DetermineActiveCharacters(cell);
+                                break;
+
+                            case 1: // text
+                                var words = cell.Split(' ');
+
+                                switch (characters[0])
+                                {
+                                    case TalkieCharacter.None:
+                                        break;
+
+                                    case TalkieCharacter.Red:
+                                        redWordCount += words.Length;
+                                        break;
+
+                                    case TalkieCharacter.Wally:
+                                        wallyWordCount += words.Length;
+                                        break;
+
+                                    case TalkieCharacter.Darwin:
+                                        darwinWordCount += words.Length;
+                                        break;
+
+                                    case TalkieCharacter.Lester:
+                                        lesterWordCount += words.Length;
+                                        break;
+
+                                    case TalkieCharacter.Brutus:
+                                        brutusWordCount += words.Length;
+                                        break;
+
+                                    case TalkieCharacter.Marcus:
+                                        marcusWordCount += words.Length;
+                                        break;
+
+                                    case TalkieCharacter.Julius:
+                                        juliusWordCount += words.Length;
+                                        break;
+                                        
+                                    case TalkieCharacter.Clogg:
+                                        cloggWordCount += words.Length;
+                                        break;
+
+                                    case TalkieCharacter.Spindle:
+                                        spindleWordCount += words.Length;
+                                        break;
+
+                                    case TalkieCharacter.Bubbles:
+                                        bubblesWordCount += words.Length;
+                                        break;
+
+                                    case TalkieCharacter.Ollie:
+                                        ollieWordCount += words.Length;
+                                        break;
+
+                                    case TalkieCharacter.Celeste:
+                                        celesteWordCount += words.Length;
+                                        break;
+
+                                    case TalkieCharacter.Sylvie:
+                                        sylvieWordCount += words.Length;
+                                        break;
+                                }
+                                break;
+                        }
+                    }
                 }
 
                 // reading segments
@@ -448,6 +538,101 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                     }
                     // add segment to entry
                     entry.segmnets.Add(segment);
+
+                    // count the words characters said in this segment
+                    // red
+                    if (segment.leftCharacter == TalkieCharacter.Red && segment.activeCharacter == ActiveCharacter.Left ||
+                        segment.rightCharacter == TalkieCharacter.Red && segment.activeCharacter == ActiveCharacter.Right)
+                    {
+                        var words = segment.audioString.Split(' ');
+                        redWordCount += words.Length;
+                    }
+                    // wally
+                    if (segment.leftCharacter == TalkieCharacter.Wally && segment.activeCharacter == ActiveCharacter.Left ||
+                        segment.rightCharacter == TalkieCharacter.Wally && segment.activeCharacter == ActiveCharacter.Right)
+                    {
+                        var words = segment.audioString.Split(' ');
+                        wallyWordCount += words.Length;
+                    }
+                    // darwin
+                    if (segment.leftCharacter == TalkieCharacter.Darwin && segment.activeCharacter == ActiveCharacter.Left ||
+                        segment.rightCharacter == TalkieCharacter.Darwin && segment.activeCharacter == ActiveCharacter.Right)
+                    {
+                        var words = segment.audioString.Split(' ');
+                        darwinWordCount += words.Length;
+                    }
+                    // lester
+                    if (segment.leftCharacter == TalkieCharacter.Lester && segment.activeCharacter == ActiveCharacter.Left ||
+                        segment.rightCharacter == TalkieCharacter.Lester && segment.activeCharacter == ActiveCharacter.Right)
+                    {
+                        var words = segment.audioString.Split(' ');
+                        lesterWordCount += words.Length;
+                    }
+                    // julius
+                    if (segment.leftCharacter == TalkieCharacter.Julius && segment.activeCharacter == ActiveCharacter.Left ||
+                        segment.rightCharacter == TalkieCharacter.Julius && segment.activeCharacter == ActiveCharacter.Right)
+                    {
+                        var words = segment.audioString.Split(' ');
+                        juliusWordCount += words.Length;
+                    }
+                    // marcus
+                    if (segment.leftCharacter == TalkieCharacter.Marcus && segment.activeCharacter == ActiveCharacter.Left ||
+                        segment.rightCharacter == TalkieCharacter.Marcus && segment.activeCharacter == ActiveCharacter.Right)
+                    {
+                        var words = segment.audioString.Split(' ');
+                        marcusWordCount += words.Length;
+                    }
+                    // brutus
+                    if (segment.leftCharacter == TalkieCharacter.Brutus && segment.activeCharacter == ActiveCharacter.Left ||
+                        segment.rightCharacter == TalkieCharacter.Brutus && segment.activeCharacter == ActiveCharacter.Right)
+                    {
+                        var words = segment.audioString.Split(' ');
+                        brutusWordCount += words.Length;
+                    }
+
+
+                    // clogg
+                    if (segment.leftCharacter == TalkieCharacter.Clogg && segment.activeCharacter == ActiveCharacter.Left ||
+                        segment.rightCharacter == TalkieCharacter.Clogg && segment.activeCharacter == ActiveCharacter.Right)
+                    {
+                        var words = segment.audioString.Split(' ');
+                        cloggWordCount += words.Length;
+                    }
+                    // spindle
+                    if (segment.leftCharacter == TalkieCharacter.Spindle && segment.activeCharacter == ActiveCharacter.Left ||
+                        segment.rightCharacter == TalkieCharacter.Spindle && segment.activeCharacter == ActiveCharacter.Right)
+                    {
+                        var words = segment.audioString.Split(' ');
+                        spindleWordCount += words.Length;
+                    }
+                    // bubbles
+                    if (segment.leftCharacter == TalkieCharacter.Bubbles && segment.activeCharacter == ActiveCharacter.Left ||
+                        segment.rightCharacter == TalkieCharacter.Bubbles && segment.activeCharacter == ActiveCharacter.Right)
+                    {
+                        var words = segment.audioString.Split(' ');
+                        bubblesWordCount += words.Length;
+                    }
+                    // ollie
+                    if (segment.leftCharacter == TalkieCharacter.Ollie && segment.activeCharacter == ActiveCharacter.Left ||
+                        segment.rightCharacter == TalkieCharacter.Ollie && segment.activeCharacter == ActiveCharacter.Right)
+                    {
+                        var words = segment.audioString.Split(' ');
+                        ollieWordCount += words.Length;
+                    }
+                    // celeste
+                    if (segment.leftCharacter == TalkieCharacter.Celeste && segment.activeCharacter == ActiveCharacter.Left ||
+                        segment.rightCharacter == TalkieCharacter.Celeste && segment.activeCharacter == ActiveCharacter.Right)
+                    {
+                        var words = segment.audioString.Split(' ');
+                        celesteWordCount += words.Length;
+                    }
+                    // sylvie
+                    if (segment.leftCharacter == TalkieCharacter.Sylvie && segment.activeCharacter == ActiveCharacter.Left ||
+                        segment.rightCharacter == TalkieCharacter.Sylvie && segment.activeCharacter == ActiveCharacter.Right)
+                    {
+                        var words = segment.audioString.Split(' ');
+                        sylvieWordCount += words.Length;
+                    }
                 }
             }
             catch (TalkieObjectImportException e)
@@ -474,6 +659,19 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
         }
         
         print ("local talkies made: " + localTalkieObjects.Count);
+        print ("red word count: " + redWordCount);
+        print ("wally word count: " + wallyWordCount);
+        print ("darwin word count: " + darwinWordCount);
+        print ("lester word count: " + lesterWordCount);
+        print ("julius word count: " + juliusWordCount);
+        print ("brutus word count: " + brutusWordCount);
+        print ("marcus word count: " + marcusWordCount);
+        print ("clogg word count: " + cloggWordCount);
+        print ("spindle word count: " + spindleWordCount);
+        print ("bubbles word count: " + bubblesWordCount);
+        print ("ollie word count: " + ollieWordCount);
+        print ("celeste word count: " + celesteWordCount);
+        print ("sylvie word count: " + sylvieWordCount);
     }
 
     public void OnUpdatePressed()
@@ -495,7 +693,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
         updateText.text = "database updated!";
     }
 
-    string[] characterNames = new string[] { "red", "wally", "darwin", "lester", "brutus", "marcus", "julius", "clogg", "spindle" };
+    string[] characterNames = new string[] { "red", "wally", "darwin", "lester", "brutus", "marcus", "julius", "clogg", "spindle", "bubbles", "ollie", "celeste", "sylvie" };
     private List<TalkieCharacter> DetermineActiveCharacters(string str)
     {
         List<TalkieCharacter> activeCharacters = new List<TalkieCharacter>();
@@ -543,7 +741,15 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                 return TalkieCharacter.Clogg;
             case "spindle":
                 return TalkieCharacter.Spindle;
-            default:
+            case "bubbles": 
+                return TalkieCharacter.Bubbles;
+            case "ollie":
+                return TalkieCharacter.Ollie;
+            case "celeste":
+                return TalkieCharacter.Celeste;
+            case "sylvie":
+                return TalkieCharacter.Sylvie;
+            default:    
                 GameManager.instance.SendError(this, "invalid talkie character: \'" + str + "\'");
                 return TalkieCharacter.None;
         }

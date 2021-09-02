@@ -25,13 +25,13 @@ public class InvisibleFrameLayout : MonoBehaviour
             frame.SetActive(true);
 
         // deactivate unused frames
-        int size = frames.Count;
-        for (int i = 0; i < num; i++)
+        int size = frames.Count - num;
+        for (int i = 0; i < size; i++)
         {
             frames[frames.Count - i - 1].SetActive(false);
         }
 
-        // set correct spacing
-        //layoutGroup.spacing = spacings[] // fix this 
+        // set correct spacing between frames
+        layoutGroup.spacing = spacings[num - 1];
     }   
 }

@@ -11,7 +11,7 @@ public class SpriteShakeController : MonoBehaviour
 
     public float shakeSpeed; // how fast it shakes
     public float shakeAmount; // how much it shakes
-    private SpriteRenderer spriteRenderer;
+    private Transform tform;
 
     void Update()
     {
@@ -22,16 +22,16 @@ public class SpriteShakeController : MonoBehaviour
         }
     }
 
-    public void SetSpriteRenderer(SpriteRenderer renderer)
+    public void SetTransform(Transform tform)
     {
-        spriteRenderer = renderer;
+        this.tform = tform;
     }
 
     public void ShakeObject(float duration)
     {
         // get sprite renderer if null
-        if (spriteRenderer == null)
-            spriteRenderer = GetComponent<SpriteRenderer>();
+        if (tform == null)
+            tform = GetComponent<Transform>();
 
         StartCoroutine(ShakeObjectRoutine(duration));
     }
@@ -39,20 +39,20 @@ public class SpriteShakeController : MonoBehaviour
     private IEnumerator ShakeObjectRoutine(float duration)
     {
         float timer = 0f;
-        Vector3 originalPos = spriteRenderer.transform.position;
+        Vector3 originalPos = tform.position;
 
         while (true)
         {
             timer += Time.deltaTime;
             if (timer > duration)
             {
-                spriteRenderer.transform.position = originalPos;
+                tform.position = originalPos;
                 break;
             }
 
             Vector3 pos = originalPos;
             pos.x = originalPos.x + Mathf.Sin(Time.time * shakeSpeed) * shakeAmount;
-            spriteRenderer.transform.position = pos;
+            tform.position = pos;
             yield return null;
         }
         testing = false;
