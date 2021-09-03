@@ -1,0 +1,248 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: OCampIntro_1_p1
+  m_EditorClassIdentifier: 
+  talkieName: OCampIntro_1_p1
+  quipsCollection: 0
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  endAction: 0
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 8
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: B_2_1_Red_1_T1
+    audioString: Oh!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 8
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: B_2_1_Red_1_T2
+    audioString: "It\u2019s good to see you~ Clogg!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 8
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: B_2_1_Clogg_2_T1
+    audioString: "Ah~ it\u2019s you guys again."
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 8
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: B_2_1_Wally_3_T1
+    audioString: That it is.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 8
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: B_2_1_Clogg_4_T1
+    audioString: It seems the unruly prince is at it again.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 8
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: B_2_1_Red_5_T1
+    audioString: Unfortunately~
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 8
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: B_2_1_Red_5_T2
+    audioString: "we\u2019re trying to find a way to stop him."
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 8
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: B_2_1_Clogg_6_T1
+    audioString: I see.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 8
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: B_2_1_Clogg_6_T2
+    audioString: In any case~
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 8
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: B_2_1_Clogg_6_T3
+    audioString: would you be able to help me clean up this village as well?
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 8
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: B_2_1_Red_7_T1
+    audioString: Of course we will!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 8
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: B_2_1_Wally_8_T1
+    audioString: You can count on us!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 8
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: B_2_1_Clogg_9_T1
+    audioString: I know.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: B_2_1_Red_10_T1
+    audioString: "Alright explorer! Let\u2019s get started!"

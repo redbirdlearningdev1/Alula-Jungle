@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,22 +17,28 @@ public class DevMenuManager : MonoBehaviour
 
     [SerializeField] private TMP_InputField profileInput;
 
-    private string[] sceneNames = new string[] {  "SplashScene",
-                                                    "DevMenu",
-                                                    "ScrollMap",
-                                                    "TrophyRoomScene",
-                                                    "LoadSaveTestScene",
-                                                    "StoryGame",
-                                                    "FroggerGame",
-                                                    "BoatGame",
-                                                    "SeaShellGame",
-                                                    "TurntablesGame",
-                                                    "RummageGame",
-                                                    "PirateGame",
-                                                    "SpiderwebGame",
-                                                    "MinigameDemoScene",
-                                                    "WordFactoryBlending",
-                                                    "WordFactorySubstituting"};
+    private string[] sceneNames = new string[] {  
+        "ScrollMap",
+        "SplashScene",
+        "DevMenu", 
+
+        "StoryGame",
+        "FroggerGame",
+        "BoatGame",
+        "SeaShellGame",
+        "TurntablesGame",
+        "RummageGame",
+        "PirateGame",
+        "SpiderwebGame",
+
+        "WordFactoryBlending",
+        "WordFactorySubstituting",
+        "WordFactoryDeleting",
+        "TigerPawCoins",
+        "TigerPawPhotos",
+        "Password"
+
+        };
 
     private string[] storyGames = new string[] {
         "0 - Welcome",

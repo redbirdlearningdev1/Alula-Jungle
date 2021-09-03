@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: SpiderDefeated_1_p2
+  m_EditorClassIdentifier: 
+  talkieName: SpiderDefeated_1_p2
+  quipsCollection: 0
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 0
+  endAction: 0
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: B_1_4_Marcus_12_T1
+    audioString: "You won\u2019t be so lucky next time!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 6
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 8
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: bc62132cda536284295408b65f009f86, type: 3}
+    audioClipName: P_1_1_Marcus_26_T1
+    audioString: HAHAHA!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: B_1_4_Brutus_13_T1
+    audioString: "Yeah\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 6
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 8
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: e560a2f635330474a80ba89adf2c46d9, type: 3}
+    audioClipName: P_1_1_Brutus_27_T1
+    audioString: 'Heh heh heh. '

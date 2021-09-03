@@ -28,6 +28,8 @@ public class WordFactoryDeletingManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
+
+        GameManager.instance.SceneInit();
     }
 
     void Start()

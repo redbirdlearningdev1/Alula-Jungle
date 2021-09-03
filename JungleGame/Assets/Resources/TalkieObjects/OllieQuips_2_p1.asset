@@ -1,0 +1,184 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: OllieQuips_2_p1
+  m_EditorClassIdentifier: 
+  talkieName: OllieQuips_2_p1
+  quipsCollection: 1
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  endAction: 0
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 11
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: FR_2_3_Ollie_1_T1
+    audioString: 'Ahoy there! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 11
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: FR_2_3_Ollie_1_T2
+    audioString: 'Want to play some games!? '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 11
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: FR_2_3_Ollie_1_T3
+    audioString: 'And maybe help me to your coins! '
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 11
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: FR_2_3_Ollie_1_T4
+    audioString: Your coins!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 11
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: FR_2_3_Ollie_2_T1
+    audioString: "You\u2019re back matey?"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 11
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: FR_2_3_Ollie_2_T2
+    audioString: "Let\u2019s practice some more! "
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 11
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: FR_2_3_Ollie_2_T3
+    audioString: Practice more!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 11
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: FR_2_3_Ollie_3_T1
+    audioString: Hello again matey!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 11
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: FR_2_3_Ollie_3_T2
+    audioString: "Let\u2019s play more games! "
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 11
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: FR_2_3_Ollie_3_T3
+    audioString: More games!
