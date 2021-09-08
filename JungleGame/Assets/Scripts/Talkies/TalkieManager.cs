@@ -82,6 +82,7 @@ public class TalkieManager : MonoBehaviour
 
     private bool overrideSegmentIndex = false;
     private int newSegmentIndex;
+    private bool endingTalkie;
 
     public void SetFastTalkies(bool opt)
     {
@@ -136,7 +137,12 @@ public class TalkieManager : MonoBehaviour
                 {
                     if (Input.GetKeyDown(KeyCode.T))
                     {
-                        StopTalkieSystem();
+                        if (!endingTalkie)
+                        {
+                            GameManager.instance.SendLog(this, "manual end talkie");
+                            StopAllCoroutines();
+                            StartCoroutine(EndTalkie());
+                        }
                     }                
                 }
             }
@@ -270,6 +276,13 @@ public class TalkieManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        StartCoroutine(EndTalkie());
+    }
+
+    private IEnumerator EndTalkie()
+    {
+        endingTalkie = true;
+
         switch (currentTalkie.ending)
         {
             default:
@@ -342,6 +355,10 @@ public class TalkieManager : MonoBehaviour
         // stop playing talkie
         talkiePlaying = false;
         currentTalkie = null;
+
+        // delay end talkie bool
+        yield return new WaitForSeconds(1f);
+        endingTalkie = false;
     }
 
     private IEnumerator PlaySegment(TalkieSegment talkieSeg)

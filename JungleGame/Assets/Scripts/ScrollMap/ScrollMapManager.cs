@@ -8,6 +8,7 @@ using UnityEngine.Video;
 public struct MapLocationIcons
 {
     public List<MapIcon> mapIcons;
+    public SignPostController signPost;
 }
 
 public class ScrollMapManager : MonoBehaviour
@@ -91,6 +92,8 @@ public class ScrollMapManager : MonoBehaviour
     private IEnumerator DelayedStart(float delay)
     {
         yield return new WaitForSeconds(delay);
+
+        // disable 
 
         // disable UI
         leftButton.interactable = false;
@@ -179,7 +182,7 @@ public class ScrollMapManager : MonoBehaviour
         }
 
         // show stars on current map location
-        StartCoroutine(ToggleMapIconStarsRoutine(true, mapPosIndex));
+        StartCoroutine(ToggleLocationRoutine(true, mapPosIndex));
 
         // show GM UI
         if (revealGMUI)
@@ -695,9 +698,9 @@ public class ScrollMapManager : MonoBehaviour
         }
     }
 
-    private IEnumerator ToggleMapIconStarsRoutine(bool opt, int location)
+    private IEnumerator ToggleLocationRoutine(bool opt, int location)
     {
-        // show stars of current location
+        // show / hide stars of current location
         if (showStars)
         {
             foreach (var mapicon in mapIconsAtLocation[location].mapIcons)
@@ -709,6 +712,15 @@ public class ScrollMapManager : MonoBehaviour
 
                 yield return null;
             }
+        }
+
+        // show / hide sign post
+        if (mapIconsAtLocation[location].signPost != null)
+        {
+            if (opt)
+                mapIconsAtLocation[location].signPost.ShowSignPost(0);
+            else 
+                mapIconsAtLocation[location].signPost.HideSignPost();
         }
     }
 
@@ -860,9 +872,9 @@ public class ScrollMapManager : MonoBehaviour
         }
 
         // hide stars from prev map pos
-        StartCoroutine(ToggleMapIconStarsRoutine(false, prevMapPos));
+        StartCoroutine(ToggleLocationRoutine(false, prevMapPos));
         // show stars on current map location
-        StartCoroutine(ToggleMapIconStarsRoutine(true, mapPosIndex));
+        StartCoroutine(ToggleLocationRoutine(true, mapPosIndex));
 
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.LeftBlip, 1f);
@@ -901,9 +913,9 @@ public class ScrollMapManager : MonoBehaviour
         }
 
         // hide stars from prev map pos
-        StartCoroutine(ToggleMapIconStarsRoutine(false, prevMapPos));
+        StartCoroutine(ToggleLocationRoutine(false, prevMapPos));
         // show stars on current map location
-        StartCoroutine(ToggleMapIconStarsRoutine(true, mapPosIndex));
+        StartCoroutine(ToggleLocationRoutine(true, mapPosIndex));
 
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightBlip, 1f);
