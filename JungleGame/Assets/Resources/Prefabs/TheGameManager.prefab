@@ -11427,7 +11427,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5b2cd42730ab20447b8e5a7e564c5718, type: 2}
   - {fileID: 11400000, guid: d90af7520ac18da4cbc756eb54ece335, type: 2}
   - {fileID: 11400000, guid: 169317fbd84851c4ca1fe51b5bfe8bff, type: 2}
-  - {fileID: 11400000, guid: c9685e55e24db6d4fba812d9ca288b7f, type: 2}
   - {fileID: 11400000, guid: e303d22ce7b84c2468ea914c968d7ef2, type: 2}
   - {fileID: 11400000, guid: 9591d30eb345b1e43993e43487f63a0b, type: 2}
   - {fileID: 11400000, guid: 1b38cf902614d5641929516a203d3c09, type: 2}
@@ -11439,6 +11438,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d9ef8080c41d09c458a043668662213d, type: 2}
   deletionPairs:
   - {fileID: 11400000, guid: 3186b758866435d42aa92c1511fb54cc, type: 2}
+  - {fileID: 11400000, guid: 126f6d0a873687a41b40ecb77f06c30a, type: 2}
+  - {fileID: 11400000, guid: 1ca1bffd3501e4b4f99f4bcfff005872, type: 2}
   devModeIndicator: {fileID: 6550831789426890278}
   repairMapIconID: 0
   prevMapPosition: 1
@@ -17159,7 +17160,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: 8.429444, y: 0.005817631}
+=======
+  m_AnchoredPosition: {x: 7.005523, y: 0.005817631}
+>>>>>>> Stashed changes
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

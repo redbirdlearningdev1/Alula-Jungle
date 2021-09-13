@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.IO;
-
-#if UNITY_EDITOR
 using UnityEditor;
-#endif
 
 public class TalkieObjectImportException : System.Exception
 {
@@ -344,11 +341,11 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                     readingVoiceovers = false; // finish reading voiceover
                 }
 
-                /* 
-                ################################################
-                #   VOICEOVERS / TALKIE SEGMENTS
-                ################################################
-                */ 
+                // /* 
+                // ################################################
+                // #   VOICEOVERS / TALKIE SEGMENTS
+                // ################################################
+                // */ 
 
                 // reading voiceovers
                 if (readingVoiceovers)

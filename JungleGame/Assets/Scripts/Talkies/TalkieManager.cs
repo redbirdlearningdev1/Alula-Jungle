@@ -137,6 +137,7 @@ public class TalkieManager : MonoBehaviour
                 {
                     if (Input.GetKeyDown(KeyCode.T))
                     {
+<<<<<<< Updated upstream
                         if (!endingTalkie)
                         {
                             GameManager.instance.SendLog(this, "manual end talkie");
@@ -144,6 +145,10 @@ public class TalkieManager : MonoBehaviour
                             StartCoroutine(EndTalkie());
                         }
                     }                
+=======
+                        StopTalkieSystem();
+                    }             
+>>>>>>> Stashed changes
                 }
             }
         }
