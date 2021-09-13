@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: crawl_cw_obj
   m_EditorClassIdentifier: 
   word: crawl
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: e437beeda359f2a41bf2f5fddcfb0827, type: 3}
   sprite: {fileID: 21300000, guid: 3a168e805bfea554f90eb14ecb154b81, type: 3}
   elkoninList: 1700000024000000150000001f0000000000000000000000
   elkoninCount: 4

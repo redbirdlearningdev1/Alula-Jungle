@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: coast_cw_obj
   m_EditorClassIdentifier: 
   word: coast
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: f7fa89da1e5ca4045b6450ce55038c8d, type: 3}
   sprite: {fileID: 21300000, guid: dc964e047f48af34daa32f8401b11554, type: 3}
   elkoninList: 170000000a00000025000000270000000000000000000000
   elkoninCount: 4

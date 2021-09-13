@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: torn_cw_obj
   m_EditorClassIdentifier: 
   word: torn
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: cb20b3c32e5fd74419e84149d70816f5, type: 3}
   sprite: {fileID: 21300000, guid: e106345932169bf4d8c6ec30b4181c9b, type: 3}
   elkoninList: 270000000c00000021000000000000000000000000000000
   elkoninCount: 3

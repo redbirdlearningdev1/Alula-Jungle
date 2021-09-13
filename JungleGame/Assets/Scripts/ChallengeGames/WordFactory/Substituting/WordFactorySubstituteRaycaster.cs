@@ -5,11 +5,22 @@ using UnityEngine.EventSystems;
 
 public class WordFactorySubstituteRaycaster : MonoBehaviour
 {
+    public static WordFactorySubstituteRaycaster instance;
+
     public bool isOn = false;
     public float objcetMoveSpeed = 0.1f;
 
     private GameObject selectedObject = null;
     [SerializeField] private Transform selectedObjectParent;
+
+    private bool polaroidAudioPlaying = false;
+    private Transform currentPolaroid;
+
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
 
     void Update()
     {
@@ -46,6 +57,8 @@ public class WordFactorySubstituteRaycaster : MonoBehaviour
                 }
             }
 
+            // return water coins to original position
+            WordFactorySubstitutingManager.instance.ResetWaterCoins();
             selectedObject = null;
         }
 
@@ -69,8 +82,34 @@ public class WordFactorySubstituteRaycaster : MonoBehaviour
                         WordFactorySubstitutingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoin>());
                         selectedObject = result.gameObject;
                     }
+                    else if (result.gameObject.transform.CompareTag("Polaroid"))
+                    {
+                        if (currentPolaroid != null)
+                            currentPolaroid.GetComponent<Polaroid>().LerpScale(1f, 0.1f);
+                        
+                        currentPolaroid = result.gameObject.transform;
+                        // play audio
+                        StartCoroutine(PlayPolaroidAudio(currentPolaroid.GetComponent<Polaroid>().challengeWord.audio));
+                    }
                 }
             }
         }
+    }
+
+    private IEnumerator PlayPolaroidAudio(AudioClip audio)
+    {
+        if (polaroidAudioPlaying)
+        {
+            AudioManager.instance.StopTalk();
+        }
+
+        currentPolaroid.GetComponent<Polaroid>().LerpScale(1.1f, 0.1f);
+        polaroidAudioPlaying = true;
+
+        AudioManager.instance.PlayTalk(audio);
+        yield return new WaitForSeconds(audio.length + 0.1f);
+
+        currentPolaroid.GetComponent<Polaroid>().LerpScale(1f, 0.1f);
+        polaroidAudioPlaying = false;
     }
 }

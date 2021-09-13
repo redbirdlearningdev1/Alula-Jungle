@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: bed_cw_obj
   m_EditorClassIdentifier: 
   word: bed
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: a2397dd4a75e93248abdcfc75c5eeedf, type: 3}
   sprite: {fileID: 21300000, guid: c21d660256d190241ad9ad25e3439ebb, type: 3}
   elkoninList: 160000000300000019000000000000000000000000000000
   elkoninCount: 3

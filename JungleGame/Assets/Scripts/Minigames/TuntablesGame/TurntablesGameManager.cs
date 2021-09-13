@@ -24,7 +24,6 @@ public class TurntablesGameManager : MonoBehaviour
 
     private List<ActionWordEnum> globalWordPool;
     private List<ActionWordEnum> unusedWordPool;
-    private List<ActionWordEnum> usedWordPool;
 
     private int timesMissed = 0;
 
@@ -70,7 +69,7 @@ public class TurntablesGameManager : MonoBehaviour
         gameData = (TurntablesGameData)GameManager.instance.GetData();
 
         if (!playInEditor)
-            playTutorial = !StudentInfoSystem.currentStudentPlayer.turntablesTutorial;
+            playTutorial = !StudentInfoSystem.GetCurrentProfile().turntablesTutorial;
 
         PregameSetup();
 
@@ -134,9 +133,9 @@ public class TurntablesGameManager : MonoBehaviour
         {
             globalWordPool = GameManager.instance.GetGlobalActionWordList();
         }
+
         unusedWordPool = new List<ActionWordEnum>();
         unusedWordPool.AddRange(globalWordPool);
-        usedWordPool = new List<ActionWordEnum>();
 
         // get keys
         RopeController.instance.InitNewRope();
@@ -180,6 +179,12 @@ public class TurntablesGameManager : MonoBehaviour
                 // set door icon
                 doors[i].SetDoorIcon(doorWords[i]);
             }
+        }
+
+        // remove door words from unused word pool
+        foreach(var doorWord in doorWords)
+        {
+            unusedWordPool.Remove(doorWord);
         }
 
         // set up the keys
@@ -319,7 +324,31 @@ public class TurntablesGameManager : MonoBehaviour
         
         // change door to have a new icon
         ActionWordEnum newWord = GetUnusedWord();
+        while (true)
+        {
+            print ("new word: " + newWord.ToString());
+            bool wordOnDoor = false;
+            foreach(var word in doorWords)
+            {
+                if (newWord == word)
+                {
+                    wordOnDoor = true;
+                    break;
+                }
+            }
+
+            // exit loop when found word not on the door
+            if (wordOnDoor)
+            {
+                newWord = GetUnusedWord();
+            }
+            else
+            {
+                break;
+            }
+        }
         doorWords[currentDoorIndex] = newWord;
+
         // play icon switch audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.LargeRockSlide, 1f);
         yield return new WaitForSeconds(0.2f);
@@ -597,7 +626,7 @@ public class TurntablesGameManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         // save to SIS
-        StudentInfoSystem.currentStudentPlayer.turntablesTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().turntablesTutorial = true;
         StudentInfoSystem.SaveStudentPlayerData();
 
         GameManager.instance.LoadScene("TurntablesGame", true, 3f);
@@ -652,17 +681,15 @@ public class TurntablesGameManager : MonoBehaviour
 
         if (!playTutorial)
         {
-            // make new used word list and add current correct word
-            usedWordPool = new List<ActionWordEnum>();
-            usedWordPool.Clear();
-            usedWordPool.Add(doorWords[currentDoorIndex]);
-
             // set other keys to be random word (not current or other door words)
+            List<ActionWordEnum> exceptList = new List<ActionWordEnum>();
+            exceptList.Add(doorWords[currentDoorIndex]);
             for (int j = 0; j < 4; j++)
             {
                 if (j != correctKeyIndex)
                 {
-                    ActionWordEnum word = GetUnusedWord();
+                    ActionWordEnum word = GetRandomWord(exceptList);
+                    exceptList.Add(word);
                     keys[j].SetKeyActionWord(word);
                 }
             }
@@ -720,20 +747,34 @@ public class TurntablesGameManager : MonoBehaviour
         {
             unusedWordPool.Clear();
             unusedWordPool.AddRange(globalWordPool);
+            // remove door words from unused word pool
+            foreach(var doorWord in doorWords)
+            {
+                unusedWordPool.Remove(doorWord);
+            }
         }
 
         int index = Random.Range(0, unusedWordPool.Count);
         ActionWordEnum word = unusedWordPool[index];
 
-        // make sure word is not being used
-        if (usedWordPool.Contains(word))
-        {
-            unusedWordPool.Remove(word);
-            return GetUnusedWord();
-        }
-
         unusedWordPool.Remove(word);
-        usedWordPool.Add(word);
+        return word;
+    }
+
+    private ActionWordEnum GetRandomWord(List<ActionWordEnum> except = null)
+    {
+        List<ActionWordEnum> pool = new List<ActionWordEnum>();
+        pool.AddRange(globalWordPool);
+        if (except != null)
+        {
+            foreach(var item in except)
+            {
+                pool.Remove(item);
+            }
+        }
+        
+        int index = Random.Range(0, pool.Count);
+        ActionWordEnum word = pool[index];
         return word;
     }
 

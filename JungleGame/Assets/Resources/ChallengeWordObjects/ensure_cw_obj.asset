@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ensure_cw_obj
   m_EditorClassIdentifier: 
   word: ensure
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 2d9ab55a45151c44fbdbb0cc9c5c5ec6, type: 3}
   sprite: {fileID: 0}
   elkoninList: 030000002100000026000000110000000000000000000000
   elkoninCount: 4

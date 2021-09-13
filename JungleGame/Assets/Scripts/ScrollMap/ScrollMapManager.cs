@@ -8,6 +8,7 @@ using UnityEngine.Video;
 public struct MapLocationIcons
 {
     public List<MapIcon> mapIcons;
+    public SignPostController signPost;
 }
 
 public class ScrollMapManager : MonoBehaviour
@@ -61,6 +62,9 @@ public class ScrollMapManager : MonoBehaviour
     [Header("Map Characters")]
     public MapIcon boat;
     public MapCharacter gorilla;
+    public MapCharacter tiger;
+    public MapCharacter marcus;
+    public MapCharacter brutus;
 
     [Header("Sticker Video Players")]
     public VideoPlayer commonVP;
@@ -89,6 +93,8 @@ public class ScrollMapManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
+        // disable 
+
         // disable UI
         leftButton.interactable = false;
         rightButton.interactable = false;
@@ -111,13 +117,11 @@ public class ScrollMapManager : MonoBehaviour
         if (overideMapLimit && GameManager.instance.devModeActivated)
             SetMapLimit(mapLimitNum); // set manual limit
         else
-            SetMapLimit(StudentInfoSystem.currentStudentPlayer.mapLimit); // load map limit from SIS
+            SetMapLimit(StudentInfoSystem.GetCurrentProfile().mapLimit); // load map limit from SIS
 
-        if (StudentInfoSystem.currentStudentPlayer != null)
-        {
-            // load in map data from profile
-            MapDataLoader.instance.LoadMapData(StudentInfoSystem.currentStudentPlayer.mapData);
-        }
+        // load in map data from profile
+        MapDataLoader.instance.LoadMapData(StudentInfoSystem.GetCurrentProfile().mapData);
+
 
         // get current game event
         StoryBeat playGameEvent = StoryBeat.InitBoatGame; // default event
@@ -125,16 +129,12 @@ public class ScrollMapManager : MonoBehaviour
         {
             playGameEvent = gameEvent;
             
-            StudentInfoSystem.currentStudentPlayer.currStoryBeat = gameEvent;
+            StudentInfoSystem.GetCurrentProfile().currStoryBeat = gameEvent;
             StudentInfoSystem.SaveStudentPlayerData();
         }
         else
         {
-            // get event from current profile if not null
-            if (StudentInfoSystem.currentStudentPlayer != null)
-            {
-                playGameEvent = StudentInfoSystem.currentStudentPlayer.currStoryBeat;
-            }
+            playGameEvent = StudentInfoSystem.GetCurrentProfile().currStoryBeat;
         }
         
         revealNavUI = true;
@@ -182,14 +182,14 @@ public class ScrollMapManager : MonoBehaviour
         }
 
         // show stars on current map location
-        StartCoroutine(ToggleMapIconStarsRoutine(true, mapPosIndex));
+        StartCoroutine(ToggleLocationRoutine(true, mapPosIndex));
 
         // show GM UI
         if (revealGMUI)
         {
             SettingsManager.instance.ToggleMenuButtonActive(true);
             // show sticker button if unlocked
-            if (StudentInfoSystem.currentStudentPlayer.unlockedStickerButton)
+            if (StudentInfoSystem.GetCurrentProfile().unlockedStickerButton)
                 SettingsManager.instance.ToggleWagonButtonActive(true);
         }
     }
@@ -202,10 +202,7 @@ public class ScrollMapManager : MonoBehaviour
     {
         StoryBeat playGameEvent = StoryBeat.InitBoatGame; // default event
         // get event from current profile if not null
-        if (StudentInfoSystem.currentStudentPlayer != null)
-        {
-            playGameEvent = StudentInfoSystem.currentStudentPlayer.currStoryBeat;
-        }
+        playGameEvent = StudentInfoSystem.GetCurrentProfile().currStoryBeat;
 
         StartCoroutine(CheckForScrollMapGameEvents(playGameEvent));
         // wait here while game event stuff is happening
@@ -275,14 +272,11 @@ public class ScrollMapManager : MonoBehaviour
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
-            gorilla.interactable = true;
+            // advance story beat
+            StudentInfoSystem.AdvanceStoryBeat();
+            StudentInfoSystem.SaveStudentPlayerData();
 
-            // update SIS
-            if (!overideGameEvent)
-            {
-                StudentInfoSystem.AdvanceStoryBeat();
-                StudentInfoSystem.SaveStudentPlayerData();
-            }
+            gorilla.interactable = true;
         }
         else if (playGameEvent == StoryBeat.GorillaVillageIntro)
         {
@@ -305,7 +299,7 @@ public class ScrollMapManager : MonoBehaviour
             gorilla.interactable = true;
 
             // check if player has enough coins
-            if (StudentInfoSystem.currentStudentPlayer.goldCoins >= 3)
+            if (StudentInfoSystem.GetCurrentProfile().goldCoins >= 3)
             {
                 // play red notices lester talkie
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.red_notices_lester);
@@ -319,11 +313,13 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.VillageRebuilt)
         {
+            showStars = false;
+
             // darwin quips
             gorilla.interactable = true;
 
             // make sure player has done the sticker tutorial
-            if (!StudentInfoSystem.currentStudentPlayer.stickerTutorial)
+            if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
             {
                 // play darwin forces talkie
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.darwin_forces);
@@ -333,10 +329,10 @@ public class ScrollMapManager : MonoBehaviour
             else
             {
                 // make sure player has rebuilt all the GV map icons
-                if (StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.isFixed &&
-                    StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.isFixed &&
-                    StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.isFixed &&
-                    StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.isFixed)
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.isFixed &&
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.isFixed &&
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.isFixed &&
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.isFixed)
                 {
                     // make sure we are at gorilla village
                     mapPosIndex = 2;
@@ -352,15 +348,21 @@ public class ScrollMapManager : MonoBehaviour
                         yield return null;
 
                     // move darwin off screen
-                    yield return new WaitForSeconds(2f);
+                    MapAnimationController.instance.GorillaExitAnimationGV();
+                    // wait for animation to be done
+                    while (!MapAnimationController.instance.animationDone)
+                        yield return null;
 
                     // play village rebuilt talkie 2
                     TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageRebuilt_2);
                     while (TalkieManager.instance.talkiePlaying)
                         yield return null;
 
-                    // move tiger and monkeys on screen
-                    yield return new WaitForSeconds(2f);
+                    // tiger and monkies walk in
+                    MapAnimationController.instance.TigerAndMonkiesWalkIn();
+                    // wait for animation to be done
+                    while (!MapAnimationController.instance.animationDone)
+                        yield return null;
 
                     // play village rebuilt talkie 3
                     TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageRebuilt_3);
@@ -368,6 +370,20 @@ public class ScrollMapManager : MonoBehaviour
                         yield return null;
 
                     // challenge game begins
+                    MapAnimationController.instance.TigerAndMonkiesChallengePos();
+                    // wait for animation to be done
+                    while (!MapAnimationController.instance.animationDone)
+                        yield return null;
+
+                    // make challenge games active
+                    yield return new WaitForSeconds(0.5f);
+                    var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
+
+                    // set tiger stuff
+                    tiger.gameData = challengeGameTriad.juliusGame;
+                    tiger.ShowExclamationMark(true);
+                    tiger.interactable = true;
+                    tiger.GetComponent<Animator>().Play("aTigerTwitch");
 
                     // save to sis and continue
                     StudentInfoSystem.AdvanceStoryBeat();
@@ -375,15 +391,271 @@ public class ScrollMapManager : MonoBehaviour
                 }
             }
         }
-        else if (playGameEvent == StoryBeat.ChallengeGames_GorillaVillage)
+        else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_1)
         {
+            showStars = false;
+            
             // place gorilla off-screen
             MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
+
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusChallengePos.position;
+
+            // make challenge games active
+            var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
+
+            // set tiger stuff
+            tiger.gameData = challengeGameTriad.juliusGame;
+            tiger.ShowExclamationMark(true);
+
+            // make sure we are at gorilla village
+            mapPosIndex = 2;
+            // move map to next right map location
+            float x = GetXPosFromMapLocationIndex(mapPosIndex);
+            StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
+
+            yield return new WaitForSeconds(2.5f);
+
+            // play correct lose talkies
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play julius wins
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else if (
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play julius wins again
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins_again);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+
+            yield return new WaitForSeconds(1f);
+
+            tiger.interactable = true;
+            tiger.GetComponent<Animator>().Play("aTigerTwitch");
+        }
+        else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_2)
+        {
+            showStars = false;
+            
+            // place gorilla off-screen
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
+
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusChallengePos.position;
+
+            // make tiger sad
+            tiger.GetComponent<Animator>().Play("sTigerIdle");
+
+            // make challenge games active
+            var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
+
+            // set marcus stuff
+            marcus.gameData = challengeGameTriad.marcusGame;
+
+            // make sure we are at gorilla village
+            mapPosIndex = 2;
+            // move map to next right map location
+            float x = GetXPosFromMapLocationIndex(mapPosIndex);
+            StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
+
+            yield return new WaitForSeconds(2.5f);
+
+            // play correct lose talkies
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play marcus wins
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_challenges);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else if (
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play marcus wins again
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_wins_again);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else
+            {
+                // play julius loses + marcus challenges
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_loses__marcus_challenges);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // do not go to game if talkie manager says not to
+                if (TalkieManager.instance.doNotContinueToGame)
+                {
+                    TalkieManager.instance.doNotContinueToGame = false;
+                }
+                else
+                {
+                    // continue to marcus challenge game
+                    marcus.GoToGameDataSceneImmediately();
+                }
+            }
+
+            marcus.GetComponent<Animator>().Play("marcusLose");
+            marcus.ShowExclamationMark(true);
+            marcus.interactable = true;
+        }
+        else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_3)
+        {
+            showStars = false;
+            
+            // place gorilla off-screen
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
+
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusChallengePos.position;
+
+            // make tiger sad
+            tiger.GetComponent<Animator>().Play("sTigerIdle");
+            // make marcus sad (ANGRY) 
+            marcus.GetComponent<Animator>().Play("marcusFixed");
+
+            // make challenge games active
+            var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
+
+            // set brutus stuff
+            brutus.gameData = challengeGameTriad.brutusGame;
+
+            // make sure we are at gorilla village
+            mapPosIndex = 2;
+            // move map to next right map location
+            float x = GetXPosFromMapLocationIndex(mapPosIndex);
+            StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
+
+            yield return new WaitForSeconds(2.5f);
+
+            // play correct lose talkies
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play brutus wins
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_wins);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else if (
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play brutus wins again
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_wins_again);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else
+            {
+                // play marcus loses + brutus challenges
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_loses__brutus_challenges);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // do not go to game if talkie manager says not to
+                if (TalkieManager.instance.doNotContinueToGame)
+                {
+                    TalkieManager.instance.doNotContinueToGame = false;
+                }
+                else
+                {
+                    // continue to marcus challenge game
+                    brutus.GoToGameDataSceneImmediately();
+                }
+            }
+
+            brutus.GetComponent<Animator>().Play("brutusLose");
+            brutus.ShowExclamationMark(true);
+            brutus.interactable = true;
+        }
+        else if (playGameEvent == StoryBeat.VillageChallengeDefeated)
+        {
+            showStars = false;
+            
+            // place gorilla off-screen
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
+
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusChallengePos.position;
+
+            // make tiger sad
+            tiger.GetComponent<Animator>().Play("sTigerIdle");
+            // make marcus sad (ANGRY) 
+            marcus.GetComponent<Animator>().Play("marcusFixed");
+            // make brutus sad
+            brutus.GetComponent<Animator>().Play("brutusFixed");
+
+             // make sure we are at gorilla village
+            mapPosIndex = 2;
+            // move map to next right map location
+            float x = GetXPosFromMapLocationIndex(mapPosIndex);
+            StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
+
+            yield return new WaitForSeconds(2.5f);
+
+            // play village challenge 1
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageChallengeDefeated_1);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // tiger runs off screen
+            MapAnimationController.instance.TigerRunAwayDefeatedGV();
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+
+            yield return new WaitForSeconds(1f);
+            
+            // play voice-overs
+
+            // monkies go hehe and haha then run off too
+            MapAnimationController.instance.MonkeyExitAnimationDefeatedGV();
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+
+            yield return new WaitForSeconds(1f);
+
+            // play village challenge 2
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageChallengeDefeated_2);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // tiger sign springs into place
+
+            // play village challenge 3
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageChallengeDefeated_3);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // unlock mudslide
+            StartCoroutine(UnlockMapArea(3, true));
+            gorilla.ShowExclamationMark(true);
+
+            yield return new WaitForSeconds(10f);
         }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {
-            // darwin quips
-            gorilla.interactable = true;
+            // unlock everything
+            
         }
 
         waitingForGameEventRoutine = false;
@@ -426,9 +698,9 @@ public class ScrollMapManager : MonoBehaviour
         }
     }
 
-    private IEnumerator ToggleMapIconStarsRoutine(bool opt, int location)
+    private IEnumerator ToggleLocationRoutine(bool opt, int location)
     {
-        // show stars of current location
+        // show / hide stars of current location
         if (showStars)
         {
             foreach (var mapicon in mapIconsAtLocation[location].mapIcons)
@@ -440,6 +712,15 @@ public class ScrollMapManager : MonoBehaviour
 
                 yield return null;
             }
+        }
+
+        // show / hide sign post
+        if (mapIconsAtLocation[location].signPost != null)
+        {
+            if (opt)
+                mapIconsAtLocation[location].signPost.ShowSignPost(0);
+            else 
+                mapIconsAtLocation[location].signPost.HideSignPost();
         }
     }
 
@@ -470,7 +751,7 @@ public class ScrollMapManager : MonoBehaviour
     private IEnumerator UnlockMapArea(int mapIndex, bool leaveLetterboxUp = false)
     {
         // save unlock to sis profile
-        StudentInfoSystem.currentStudentPlayer.mapLimit = mapIndex;
+        StudentInfoSystem.GetCurrentProfile().mapLimit = mapIndex;
         StudentInfoSystem.SaveStudentPlayerData();
 
         RaycastBlockerController.instance.CreateRaycastBlocker("UnlockMapArea");
@@ -493,7 +774,18 @@ public class ScrollMapManager : MonoBehaviour
         // move fog out of the way
         FogController.instance.MoveFogAnimation(fogLocations[mapIndex], 3f);
 
-        LetterboxController.instance.ShowTextSmooth("1 - Gorilla Village");
+        switch (mapIndex)
+        {
+            default:
+                break;
+            case 2:
+                LetterboxController.instance.ShowTextSmooth("1 - Gorilla Village");
+                break;
+            case 3:
+                LetterboxController.instance.ShowTextSmooth("2 - Mudslide");
+                break;
+        }
+        
 
         yield return new WaitForSeconds(2f);
 
@@ -580,9 +872,9 @@ public class ScrollMapManager : MonoBehaviour
         }
 
         // hide stars from prev map pos
-        StartCoroutine(ToggleMapIconStarsRoutine(false, prevMapPos));
+        StartCoroutine(ToggleLocationRoutine(false, prevMapPos));
         // show stars on current map location
-        StartCoroutine(ToggleMapIconStarsRoutine(true, mapPosIndex));
+        StartCoroutine(ToggleLocationRoutine(true, mapPosIndex));
 
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.LeftBlip, 1f);
@@ -621,9 +913,9 @@ public class ScrollMapManager : MonoBehaviour
         }
 
         // hide stars from prev map pos
-        StartCoroutine(ToggleMapIconStarsRoutine(false, prevMapPos));
+        StartCoroutine(ToggleLocationRoutine(false, prevMapPos));
         // show stars on current map location
-        StartCoroutine(ToggleMapIconStarsRoutine(true, mapPosIndex));
+        StartCoroutine(ToggleLocationRoutine(true, mapPosIndex));
 
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightBlip, 1f);

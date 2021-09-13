@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: grew_cw_obj
   m_EditorClassIdentifier: 
   word: grew
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 12c53096f80d73d4da9384dd1579363b, type: 3}
   sprite: {fileID: 21300000, guid: 344550e5fe7786847a5e07cc611c6041, type: 3}
   elkoninList: 1b000000240000000b000000000000000000000000000000
   elkoninCount: 3

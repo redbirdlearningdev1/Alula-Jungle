@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ton_cw_obj
   m_EditorClassIdentifier: 
   word: ton
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: f9c46150bf590394096edccd56e7db23, type: 3}
   sprite: {fileID: 21300000, guid: 2303b28005e3c504c969167ec38d84b0, type: 3}
   elkoninList: 270000000600000021000000000000000000000000000000
   elkoninCount: 3

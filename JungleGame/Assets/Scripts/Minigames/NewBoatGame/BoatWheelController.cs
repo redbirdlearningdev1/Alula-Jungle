@@ -53,12 +53,7 @@ public class BoatWheelController : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0) && holdingWheel)
         {
-            holdingWheel = false;
-            if (currentRoutine != null)
-                StopCoroutine(currentRoutine);
-            ResetWheel();
-            // set the boat direction to be none (still)
-            NewParallaxController.instance.SetBoatDirection(BoatParallaxDirection.Still);
+            LetGoOfWheel();
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -86,6 +81,16 @@ public class BoatWheelController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void LetGoOfWheel()
+    {
+        holdingWheel = false;
+        if (currentRoutine != null)
+            StopCoroutine(currentRoutine);
+        ResetWheel();
+        // set the boat direction to be none (still)
+        NewParallaxController.instance.SetBoatDirection(BoatParallaxDirection.Still);
     }
 
     public void RotateWheelLeft()

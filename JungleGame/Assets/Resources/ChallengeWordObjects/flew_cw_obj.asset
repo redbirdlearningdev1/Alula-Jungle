@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: flew_cw_obj
   m_EditorClassIdentifier: 
   word: flew
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: a4712b3f751537b4d846c4b1a38beae6, type: 3}
   sprite: {fileID: 21300000, guid: 9e0c91217e9d8ac4a8901b8492f60b01, type: 3}
   elkoninList: 1a0000001f0000000b000000000000000000000000000000
   elkoninCount: 3

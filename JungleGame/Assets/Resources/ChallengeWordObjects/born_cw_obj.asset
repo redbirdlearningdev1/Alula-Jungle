@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: born_cw_obj
   m_EditorClassIdentifier: 
   word: born
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 3da67cd7aba2fdc4f9fa15ac2cb02038, type: 3}
   sprite: {fileID: 21300000, guid: 74274170d915e9e47bf77771e742f22e, type: 3}
   elkoninList: 160000000c00000021000000000000000000000000000000
   elkoninCount: 3

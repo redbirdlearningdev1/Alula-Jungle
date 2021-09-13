@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: tell_cw_obj
   m_EditorClassIdentifier: 
   word: tell
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 9c473426723be1b438e3f28d9ad4a9fc, type: 3}
   sprite: {fileID: 21300000, guid: b700340e1b0cdd84eb4ced094e31a44d, type: 3}
   elkoninList: 27000000030000001f000000000000000000000000000000
   elkoninCount: 3

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: brush_cw_obj
   m_EditorClassIdentifier: 
   word: brush
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: b3f92b1750744ec4782c7c3c140314ae, type: 3}
   sprite: {fileID: 21300000, guid: cce4a1530c7895444959e3ef067a496c, type: 3}
   elkoninList: 160000002400000006000000260000000000000000000000
   elkoninCount: 4

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: toast_cw_obj
   m_EditorClassIdentifier: 
   word: toast
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 2ec495e4e2b0b6e479c4593783137ffe, type: 3}
   sprite: {fileID: 21300000, guid: 0176576c3fb931247af93a53b4b68287, type: 3}
   elkoninList: 270000000a00000025000000270000000000000000000000
   elkoninCount: 4

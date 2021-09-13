@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: bread_cw_obj
   m_EditorClassIdentifier: 
   word: bread
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 95d190a5f855764439d448ed49d1ffa5, type: 3}
   sprite: {fileID: 0}
   elkoninList: 160000002400000003000000190000000000000000000000
   elkoninCount: 4

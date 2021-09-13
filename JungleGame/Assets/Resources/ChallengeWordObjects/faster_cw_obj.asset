@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: faster_cw_obj
   m_EditorClassIdentifier: 
   word: faster
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: aef2a9ec5476bd04990f1d894af7dc5b, type: 3}
   sprite: {fileID: 21300000, guid: ed58eb12d6c003449a2a279fc5523d6b, type: 3}
   elkoninList: 1a0000000200000025000000270000000f00000000000000
   elkoninCount: 5

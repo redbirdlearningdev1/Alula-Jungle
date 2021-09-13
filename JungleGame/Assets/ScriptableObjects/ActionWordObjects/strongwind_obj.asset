@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: strongwind_obj
   m_EditorClassIdentifier: 
   _name: strongwind
-  audio: {fileID: 8300000, guid: 2a383af418910a14b858d8046437f773, type: 3}
+  audio: {fileID: 8300000, guid: 9fae4e9d423e4ea44bd666b6c2ac1e62, type: 3}
   elkoninValue: 13
   animation: strongwind
   _enum: 12

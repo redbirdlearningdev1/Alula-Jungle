@@ -1,0 +1,456 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: GorillaIntro_1_p4
+  m_EditorClassIdentifier: 
+  talkieName: GorillaIntro_1_p4
+  quipsCollection: 0
+  start: 0
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 0
+  removeLetterboxAfterTalkie: 0
+  endAction: 0
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 8
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 61612a9f20b43a24d999b6b213101f48, type: 3}
+    audioClipName: P_1_1_Wally_40_T1
+    audioString: "If this is the prince we\u2019re supposed to help"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 05f7b910360031e4db97a6c07508e651, type: 3}
+    audioClipName: P_1_1_Wally_40_T2
+    audioString: Then we're in big trouble.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 893e05ea98900514c91ff588d7db5ab7, type: 3}
+    audioClipName: P_1_1_Darwin_41_T1
+    audioString: 'I wonder what''s gotten into him... '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 12
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 2ec34e287debfad468c3d95fcd9c5288, type: 3}
+    audioClipName: P_1_1_Darwin_41_T2
+    audioString: "He\u2019s always been a\u2026.little... troublemaker..."
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 2960be25f513d8d4ab8a61cc15247d35, type: 3}
+    audioClipName: P_1_1_Darwin_41_T3
+    audioString: "But he\u2019s never acted out like\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 800d2a658a39b9a4c978e43d1d6be6fb, type: 3}
+    audioClipName: P_1_1_Darwin_41_T4
+    audioString: "umm\u2026this\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: fc68cff05d578b84084915b8641d7181, type: 3}
+    audioClipName: P_1_1_Wally_42_T1
+    audioString: So this type of behavior is new for him?
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 8
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 2f0a0a138aa0641429a6261f42a3c9d9, type: 3}
+    audioClipName: P_1_1_Darwin_43_T1
+    audioString: "That\u2019s\u2026 uhh right. "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 4d37318e28b8d4e49ac244d8fa842e2a, type: 3}
+    audioClipName: P_1_1_Red_44_T1
+    audioString: "Then we must catch up to him and figure out what\u2019s wrong!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 6
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: d5196fd0d473b7c43abf6431e9b838d4, type: 3}
+    audioClipName: P_1_1_Wally_45_T1
+    audioString: I agree.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 03962b3405b54f84d877bf8ca071d37f, type: 3}
+    audioClipName: P_1_1_Red_46_T1
+    audioString: Darwin~ you know the prince the most.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 531a2fba32b4ee044984c7fde6926ab8, type: 3}
+    audioClipName: P_1_1_Red_46_T2
+    audioString: "Can you think of anything that\u2019ll help him?"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 10
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 08d9128c0da5ff64a8d11bd009610484, type: 3}
+    audioClipName: P_1_1_Darwin_47_T1
+    audioString: "Hmm\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 10
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 8
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: da52f5633a084574ca26e01f8e19235d, type: 3}
+    audioClipName: P_1_1_Darwin_47_T2
+    audioString: "Perhaps Julius has forgotten about how good he really is\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 2c47f973f31bc6945a00966f98aa30a3, type: 3}
+    audioClipName: P_1_1_Red_48_T1
+    audioString: Then maybe you can help him remember!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 10
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 8
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: f52b807dd6307164a8cac4ecf1f3f5db, type: 3}
+    audioClipName: P_1_1_Darwin_49_T1
+    audioString: You're right!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 10
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 11
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 65dd53f641fc5ed4ead42b9cc5dac359, type: 3}
+    audioClipName: P_1_1_Darwin_49_T2
+    audioString: However...
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 10
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 12
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: f27db49b43c1c9541b1835c4104e3123, type: 3}
+    audioClipName: P_1_1_Darwin_49_T3
+    audioString: "I can\u2019t seem to remember anything specific\u2026 "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 8642684947117b34786d9d707fee4e2b, type: 3}
+    audioClipName: P_1_1_Darwin_50_T1
+    audioString: "With this mess I can\u2019t seem to think straight! "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 7
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 6cd01f12e69c3844db2936d0ea59a95b, type: 3}
+    audioClipName: P_1_1_Red_51_T1
+    audioString: My friends and I can clean up while you think on things!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 13
+    leftMouthEnum: 1
+    leftEyesEnum: 4
+    rightCharacter: 3
+    rightEmotionNum: 7
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: ec53dea83dcb8c143bf8a05ff4f26980, type: 3}
+    audioClipName: P_1_1_Red_51_T2
+    audioString: Besides~ we shouldn't leave things messy anyway!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: f89fee9fd1df9ae4295784aebeb41bd8, type: 3}
+    audioClipName: P_1_1_Darwin_52_T1
+    audioString: Alright!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 8de784f5ab60eff49a035802f1944ffc, type: 3}
+    audioClipName: P_1_1_Darwin_52_T2
+    audioString: "Uhhh\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 46fc149bb648df643ab89183b81cc6be, type: 3}
+    audioClipName: P_1_1_Darwin_52_T3
+    audioString: "I\u2019ll leave it to you guys!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 3
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 2
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 460444efba4c9ab4e9badc0483514504, type: 3}
+    audioClipName: P_1_1_Red_53_T1
+    audioString: Okay explorer!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 3
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 3
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 2
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: bfe0bcd12c51d6147ad9639ad6b87a25, type: 3}
+    audioClipName: P_1_1_Red_53_T2
+    audioString: Let's clean things up!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 3
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 2
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 6bebc56349908264e8ae6f8c8256b0bd, type: 3}
+    audioClipName: P_1_1_Red_53_T3
+    audioString: "Maybe we\u2019ll learn things while doing so!"

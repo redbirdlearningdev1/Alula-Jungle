@@ -44,4 +44,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ChallengeGames/WordFactorySubstituting.unity
     guid: a5773497248bda54b9b727ce865cd1b2
+  - enabled: 1
+    path: Assets/Scenes/ChallengeGames/WordFactoryDeleting.unity
+    guid: 8eba7def5cd555b44974b5ee2c4a344d
+  - enabled: 1
+    path: Assets/Scenes/ChallengeGames/TigerPawCoins.unity
+    guid: 7a7d1c623fb257d448b2ff5b9ab4e393
+  - enabled: 1
+    path: Assets/Scenes/ChallengeGames/TigerPawPhotos.unity
+    guid: b13ba50a5f55f20469dd4fea95939864
+  - enabled: 1
+    path: Assets/Scenes/ChallengeGames/Password.unity
+    guid: 34a2b80170de6884db34e725c1882574
   m_configObjects: {}

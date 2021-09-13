@@ -15,6 +15,10 @@ public enum GameType
     PirateGame,
     SpiderwebGame,
 
+    WordFactoryBlending,
+    WordFactorySubstituting,
+    TigerPawCoins,
+
     COUNT
 }
 

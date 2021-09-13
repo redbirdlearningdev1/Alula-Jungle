@@ -78,4 +78,56 @@ public class StickerDatabase : MonoBehaviour
                 return legendaryStickers[index];
         }
     }
+
+    public int GetTotalStickerAmount()
+    {
+        int total = 0;
+        total += commonStickers.Count;
+        total += uncommonStickers.Count;
+        total += rareStickers.Count;
+        total += legendaryStickers.Count;
+        return total;
+    }
+
+    public Sticker GetSticker(InventoryStickerData data)
+    {
+        switch (data.rarity)
+        {
+            case StickerRarity.Common:
+                return FindStickerByID(commonStickers, data.id);
+            case StickerRarity.Uncommon:
+                return FindStickerByID(uncommonStickers, data.id);
+            case StickerRarity.Rare:
+                return FindStickerByID(rareStickers, data.id);
+            case StickerRarity.Legendary:
+                return FindStickerByID(legendaryStickers, data.id);
+        }
+        return null;
+    }
+
+    public Sticker GetSticker(StickerData data)
+    {
+        switch (data.rarity)
+        {
+            case StickerRarity.Common:
+                return FindStickerByID(commonStickers, data.id);
+            case StickerRarity.Uncommon:
+                return FindStickerByID(uncommonStickers, data.id);
+            case StickerRarity.Rare:
+                return FindStickerByID(rareStickers, data.id);
+            case StickerRarity.Legendary:
+                return FindStickerByID(legendaryStickers, data.id);
+        }
+        return null;
+    }
+
+    private Sticker FindStickerByID(List<Sticker> list, int id)
+    {
+        foreach (var item in list)
+        {
+            if (item.id == id)
+                return item;
+        }
+        return null;
+    }
 }

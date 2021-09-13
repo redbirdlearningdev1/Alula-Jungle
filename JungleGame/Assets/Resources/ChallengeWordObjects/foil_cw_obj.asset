@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: foil_cw_obj
   m_EditorClassIdentifier: 
   word: foil
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: cb775ab855f15fa4692df09f0069be7c, type: 3}
   sprite: {fileID: 21300000, guid: 6b8b2236468eb2648bbf95664c56630a, type: 3}
   elkoninList: 1a000000130000001f000000000000000000000000000000
   elkoninCount: 3

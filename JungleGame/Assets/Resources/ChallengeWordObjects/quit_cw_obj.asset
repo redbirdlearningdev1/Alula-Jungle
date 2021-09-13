@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: quit_cw_obj
   m_EditorClassIdentifier: 
   word: quit
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 4c74d0c8292ce1249bddd24c07e6cf05, type: 3}
   sprite: {fileID: 21300000, guid: 336bd82043b6ff1478370dfddc294d18, type: 3}
   elkoninList: 170000002a00000004000000270000000000000000000000
   elkoninCount: 4

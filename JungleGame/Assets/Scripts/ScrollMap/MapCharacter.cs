@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public enum Character
 {
-    None, Darwin
+    None, Darwin, Julius, Marcus, Brutus
 }
 
 public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
@@ -74,14 +74,16 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         // check for character quips
         if (character == Character.Darwin)
         {
-            if (StudentInfoSystem.currentStudentPlayer.currStoryBeat > StoryBeat.PrologueStoryGame)
+            if (StudentInfoSystem.GetCurrentProfile().currStoryBeat > StoryBeat.PrologueStoryGame)
             {
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.darwinQuips);
                 yield break;
             }
         }
 
-        if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.GorillaVillageIntro)
+        print ("story beat: " + StudentInfoSystem.GetCurrentProfile().currStoryBeat);
+
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillageIntro)
         {
             // remove exclamation mark from gorilla
             ScrollMapManager.instance.gorilla.ShowExclamationMark(false);
@@ -163,13 +165,43 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             ScrollMapManager.instance.EnableAllMapIcons();
             yield break;
         }
-        else if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.PrologueStoryGame)
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PrologueStoryGame)
         {  
             // only continue if tapped on gorilla
             if (character == Character.Darwin)
             {
                 // add pre story game talkie here
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.pre_darwin);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+        }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1)
+        {
+            if (character == Character.Julius)
+            {
+                // play julius challenges
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_challenges);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+        }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
+        {
+            if (character == Character.Marcus)
+            {
+                // play julius challenges
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_challenges);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+        }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3)
+        {
+            if (character == Character.Brutus)
+            {
+                // play julius challenges
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_challenges);
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
             }
@@ -182,6 +214,12 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             yield break;
         }
 
+        // start game
+        GoToGameDataSceneImmediately();
+    }
+
+    public void GoToGameDataSceneImmediately()
+    {
         // go to correct game scene
         if (gameData)
         {

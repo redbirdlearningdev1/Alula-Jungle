@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: goes_cw_obj
   m_EditorClassIdentifier: 
   word: goes
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: a73879b6989f61c48a2620c154a02846, type: 3}
   sprite: {fileID: 0}
   elkoninList: 1b0000000a00000025000000000000000000000000000000
   elkoninCount: 3

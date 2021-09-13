@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: form_cw_obj
   m_EditorClassIdentifier: 
   word: form
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 8f3467e6e9e45224cbdf2fa944b88cd1, type: 3}
   sprite: {fileID: 21300000, guid: 4858d2fb16c59c84ebaeca1b32632b1f, type: 3}
   elkoninList: 1a0000000c00000020000000000000000000000000000000
   elkoninCount: 3

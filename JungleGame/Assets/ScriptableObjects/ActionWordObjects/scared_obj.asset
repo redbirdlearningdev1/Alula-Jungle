@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: scared_obj
   m_EditorClassIdentifier: 
   _name: scared
-  audio: {fileID: 8300000, guid: 965e32ef6b5bdbb42bc16a4b4bf883b4, type: 3}
+  audio: {fileID: 8300000, guid: 0b8064cab3ace344abfc2f23439c1695, type: 3}
   elkoninValue: 10
   animation: scared
   _enum: 9

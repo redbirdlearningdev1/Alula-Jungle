@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: mule_cw_obj
   m_EditorClassIdentifier: 
   word: mule
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 995235a5a82c84049b12a0ae5e8ceb83, type: 3}
   sprite: {fileID: 21300000, guid: 0c13e40fdbce41b498ed43c8952ba92d, type: 3}
   elkoninList: 200000000b0000001f000000000000000000000000000000
   elkoninCount: 3

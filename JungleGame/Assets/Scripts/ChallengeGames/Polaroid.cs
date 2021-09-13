@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [ExecuteInEditMode]
 public class Polaroid : MonoBehaviour
@@ -9,12 +10,19 @@ public class Polaroid : MonoBehaviour
     [SerializeField] private SpriteRenderer picture;
     [SerializeField] private SpriteRenderer background;
 
+    public bool useImg;
+    [SerializeField] private Image pictureImg;
+    [SerializeField] private Image backgroundImg;
+
     public void SetPolaroid(ChallengeWord word)
     {
         challengeWord = word;
 
         // set picture
-        picture.sprite = word.sprite;
+        if (!useImg)
+            picture.sprite = word.sprite;
+        else 
+            pictureImg.sprite = word.sprite;
     }
 
     public void MovePolaroid(Vector3 position, float lerpTime)
@@ -61,6 +69,30 @@ public class Polaroid : MonoBehaviour
 
             var tempScale = Mathf.Lerp(startscale, targetScale, timer / lerpTime);
             transform.localScale = new Vector3(tempScale, tempScale, 1f);
+            yield return null;
+        }
+    }
+
+    public void LerpRotation(float targetAngle, float lerpTime)
+    {
+        StartCoroutine(LerpRotationRoutine(targetAngle, lerpTime));
+    }
+
+    private IEnumerator LerpRotationRoutine(float targetAngle, float lerpTime)
+    {
+        float startAngle = transform.rotation.eulerAngles.z;
+        float timer = 0f;
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > lerpTime)
+            {
+                transform.rotation = Quaternion.Euler(0f, 0f, targetAngle);
+                break;
+            }
+
+            var tempAngle = Mathf.LerpAngle(startAngle, targetAngle, timer / lerpTime);
+            transform.rotation = Quaternion.Euler(0f, 0f, tempAngle);
             yield return null;
         }
     }

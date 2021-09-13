@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: worm_cw_obj
   m_EditorClassIdentifier: 
   word: worm
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: b15f6091290fae54291c6e85ae3ae233, type: 3}
   sprite: {fileID: 21300000, guid: 076d5010cd637ed41857f2798582a072, type: 3}
   elkoninList: 2a0000000f00000020000000000000000000000000000000
   elkoninCount: 3

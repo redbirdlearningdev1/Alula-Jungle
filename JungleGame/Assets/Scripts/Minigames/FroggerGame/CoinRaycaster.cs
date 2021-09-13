@@ -7,9 +7,18 @@ public class CoinRaycaster : MonoBehaviour
 {
     public bool isOn = false;
     public float coinMoveSpeed = 0.1f;
+    private const float buildCoinMoveSpeed = 0.5f;
 
     private LogCoin selectedCoin = null;
     [SerializeField] private Transform selectedCoinParent;
+
+    void Awake()
+    {
+#if UNITY_EDITOR
+#else
+        coinMoveSpeed = buildCoinMoveSpeed;
+#endif
+    }
 
     void Update()
     {

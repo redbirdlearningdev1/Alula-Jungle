@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: hind_cw_obj
   m_EditorClassIdentifier: 
   word: hind
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: ad962a5ec60e90b4f9556f9301346831, type: 3}
   sprite: {fileID: 21300000, guid: 180a1063d56037c40a79b8c210917e62, type: 3}
   elkoninList: 1c0000000900000021000000190000000000000000000000
   elkoninCount: 4

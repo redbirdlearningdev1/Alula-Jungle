@@ -1,0 +1,248 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: VillageDefeated_1_p1
+  m_EditorClassIdentifier: 
+  talkieName: VillageDefeated_1_p1
+  quipsCollection: 0
+  start: 0
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 1
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 0
+  endAction: 0
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: $Segments
+    audioString: 
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 7
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: e7d1b1630ff6dc846a3c63618acefb91, type: 3}
+    audioClipName: P_1_6_Julius_1_T1
+    audioString: Impossible!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 7
+    leftEmotionNum: 12
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 8fed79862258c934f88e47892b2e6291, type: 3}
+    audioClipName: P_1_6_Julius_1_T2
+    audioString: How could you beat me?!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 7
+    leftEmotionNum: 14
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 9fd09ad9177aa6c488aed470a7279f71, type: 3}
+    audioClipName: P_1_6_Julius_1_T3
+    audioString: The future king!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 19c82d1c22a4eba4f88c49177e7d586c, type: 3}
+    audioClipName: P_1_6_Marcus_2_T1
+    audioString: HOW DARE YOU DO THIS TO THE FUTURE KING!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 4
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: f7c2edc465d326a42a034f71cf5a2f5c, type: 3}
+    audioClipName: P_1_6_Brutus_3_T1
+    audioString: Yeah..
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 3
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 460f49f52bc3714448f069c8fccecf22, type: 3}
+    audioClipName: P_1_6_Brutus_3_T2
+    audioString: "How dare you win fair and square\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 8
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 9926e9b7c3f7c30498370e0e4dd62118, type: 3}
+    audioClipName: P_1_6_Marcus_4_T1
+    audioString: Enough out of you! You buffon!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 2
+    rightEmotionNum: 11
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 761088d7c85b01b4f8ba3a8d432664cc, type: 3}
+    audioClipName: P_1_6_Red_5_T1
+    audioString: Good job explorer!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 14
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 2
+    rightEmotionNum: 11
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 42e7bc014a7ecf44386bd6066b99353a, type: 3}
+    audioClipName: P_1_6_Red_5_T2
+    audioString: I knew you could do it!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 2
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 753b9d57b73ff1b47b6a4da5c60fe38f, type: 3}
+    audioClipName: P_1_6_Wally_6_T1
+    audioString: Good job!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 2
+    rightCharacter: 2
+    rightEmotionNum: 11
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: c1930df285c85144bb37e686acb5c3b7, type: 3}
+    audioClipName: P_1_6_Wally_6_T2
+    audioString: That was amazing!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 10
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 678fd6ae423ba2a4dbb100149cdd76e7, type: 3}
+    audioClipName: P_1_6_Julius_7_T1
+    audioString: This isn't over!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 10
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 05b2df8bf08d19f478732afab5371465, type: 3}
+    audioClipName: P_1_6_Julius_7_T2
+    audioString: "I\u2019ll challenge you again!"

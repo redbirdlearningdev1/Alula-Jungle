@@ -70,7 +70,7 @@ public class StarAwardController : MonoBehaviour
 
     public void AwardStarsAndExit(int numStars)
     {
-        if (numStars > 3 || numStars < 1)
+        if (numStars > 3 || numStars < 0)
         {
             GameManager.instance.SendError(this, "invalid number of stars awarded");
             return;
@@ -90,48 +90,48 @@ public class StarAwardController : MonoBehaviour
             default: return;
 
             case MapIconIdentfier.GV_house1:
-                if (StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.stars < numStars)
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.stars < numStars)
                 {
-                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.stars, numStars);
-                    StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.stars = numStars;
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.stars = numStars;
                 }
-                if (!StudentInfoSystem.currentStudentPlayer.mapData.GV_house1.isFixed)
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.isFixed)
                 {
                     GameManager.instance.repairMapIconID = true;
                 }
                 break;
 
             case MapIconIdentfier.GV_house2:
-                if (StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.stars < numStars)
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.stars < numStars)
                 {
-                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.stars, numStars);
-                    StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.stars = numStars;
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.stars = numStars;
                 }
-                if (!StudentInfoSystem.currentStudentPlayer.mapData.GV_house2.isFixed)
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.isFixed)
                 {
                     GameManager.instance.repairMapIconID = true;
                 }
                 break;
 
             case MapIconIdentfier.GV_statue:
-                if (StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.stars < numStars)
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.stars < numStars)
                 {
-                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.stars, numStars);
-                    StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.stars = numStars;
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.stars = numStars;
                 }
-                if (!StudentInfoSystem.currentStudentPlayer.mapData.GV_statue.isFixed)
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.isFixed)
                 {
                     GameManager.instance.repairMapIconID = true;
                 }
                 break;
 
             case MapIconIdentfier.GV_fire:
-                if (StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.stars < numStars)
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.stars < numStars)
                 {
-                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.stars, numStars);
-                    StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.stars = numStars;
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.stars = numStars;
                 }
-                if (!StudentInfoSystem.currentStudentPlayer.mapData.GV_fire.isFixed)
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.isFixed)
                 {
                     GameManager.instance.repairMapIconID = true;
                 }
@@ -229,6 +229,7 @@ public class StarAwardController : MonoBehaviour
         DropdownToolbar.instance.AwardGoldCoins(1);
 
         StartCoroutine(ScaleObjectRoutine(star, shortScaleTime, normalScale));
+        yield return new WaitForSeconds(shortScaleTime);
     }
 
     private IEnumerator GrowObject(GameObject gameObject)

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: grief_cw_obj
   m_EditorClassIdentifier: 
   word: grief
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: da8c92dcd31d70144bdb3d964ad589cf, type: 3}
   sprite: {fileID: 0}
   elkoninList: 1b00000024000000080000001a0000000000000000000000
   elkoninCount: 4

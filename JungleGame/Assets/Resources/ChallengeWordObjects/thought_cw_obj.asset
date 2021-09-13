@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: thought_cw_obj
   m_EditorClassIdentifier: 
   word: thought
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 3a87e9f56aff5564c906012cdc062d4f, type: 3}
   sprite: {fileID: 21300000, guid: cc271e5d1ef8f88429ce1dcee906741f, type: 3}
   elkoninList: 280000000500000027000000000000000000000000000000
   elkoninCount: 3

@@ -8,11 +8,14 @@ public class WagonWindowController : MonoBehaviour
 {
     public static WagonWindowController instance;
 
+    public LerpableObject wagonBackground;
+    public Button backButton;
+
     [Header("Stickers")]
     [SerializeField] private GameObject wagon;
-    [SerializeField] private GameObject Book, Board, BackWindow, Gecko;
+    public GameObject Book, board, BackWindow, gecko;
     [SerializeField] private Animator Wagon;
-    [SerializeField] private Animator GeckoAnim;
+    public Animator GeckoAnim;
     private bool stickerCartOut;
     private bool cartBusy;
     private bool stickerButtonsDisabled;
@@ -34,11 +37,11 @@ public class WagonWindowController : MonoBehaviour
     private bool waitingOnPlayerInput = false;
 
     [Header("Confirm Purchace Window")]
-    [SerializeField] private GameObject window;
+    [SerializeField] private GameObject confirmStickerWindow;
     public float hiddenScale;
     public float maxScale;
     public float normalScale;
-    private bool windowUp;
+    private bool confirmStickerWindowActive;
 
     public float longScaleTime;
     public float shortScaleTime;
@@ -51,11 +54,25 @@ public class WagonWindowController : MonoBehaviour
 
         // sticker stuff
         Book.SetActive(false);
-        Board.SetActive(false);
+        board.SetActive(false);
         BackWindow.SetActive(false);
 
         // reset window
-        window.transform.localScale = new Vector3(hiddenScale, hiddenScale, 0f);
+        confirmStickerWindow.transform.localScale = new Vector3(hiddenScale, hiddenScale, 0f);
+
+        // activate wagon
+        wagon.gameObject.SetActive(true);
+
+        // disable wagon background
+        wagonBackground.SetImageAlpha(wagonBackground.GetComponent<Image>(), 0f);
+
+        // hide back button
+        backButton.interactable = false;
+        backButton.GetComponent<LerpableObject>().SetImageAlpha(backButton.GetComponent<Image>(), 0f);
+        backButton.transform.localScale = new Vector3(0f, 0f, 0f);
+
+        // close buy board window
+        buyBoardWindow.LerpScale(new Vector2(0f, 1f), 0.0001f);
     }
 
     void Update() 
@@ -79,17 +96,18 @@ public class WagonWindowController : MonoBehaviour
     public void NewWindow()
     {
         // return if another window is up
-        if (windowUp)
+        if (confirmStickerWindowActive)
             return;
 
-        windowUp = true;
+        confirmStickerWindowActive = true;
+
         StartCoroutine(NewWindowRoutine());
     }
 
     public void OnYesButtonPressed()
     {
         // check to make sure player has sufficent funds
-        if (StudentInfoSystem.currentStudentPlayer.goldCoins < 3)
+        if (StudentInfoSystem.GetCurrentProfile().goldCoins < 3)
         {
             // play sound
             AudioManager.instance.PlayCoinDrop();
@@ -101,15 +119,22 @@ public class WagonWindowController : MonoBehaviour
             DropdownToolbar.instance.RemoveGoldCoins(3);
         }
 
+        if (backButton.isActiveAndEnabled)
+        {
+            // hide back button
+            backButton.interactable = true;
+            backButton.GetComponent<LerpableObject>().LerpImageAlpha(backButton.GetComponent<Image>(), 0f, 0.1f);
+            backButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.05f);
+        }
+
         // play sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
-        windowUp = false;
         // hide window 
-        StartCoroutine(ShrinkObject(window));
+        StartCoroutine(ShrinkObject(confirmStickerWindow));
 
-        // remove default background and raycast blocker
-        DefaultBackground.instance.Deactivate();
+        // disable wagon background
+        wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0f, 0.1f);
 
         // hide toolbar
         DropdownToolbar.instance.ToggleToolbar(false);
@@ -128,7 +153,7 @@ public class WagonWindowController : MonoBehaviour
         print ("you got a sticker! " + sticker.rarity + " " + sticker.id);
 
         // save sticker to SIS
-        StudentInfoSystem.SaveStickerToProfile(sticker);
+        StudentInfoSystem.AddStickerToInventory(sticker);
 
         // fade to black
         FadeObject.instance.FadeOut(2f);
@@ -138,7 +163,7 @@ public class WagonWindowController : MonoBehaviour
         SettingsManager.instance.ToggleMenuButtonActive(false);
         SettingsManager.instance.ToggleWagonButtonActive(false);
         wagon.SetActive(false);
-        BehindUIBackground.instance.Deactivate();
+        DefaultBackground.instance.Deactivate();
 
         yield return new WaitForSeconds(0.5f);
 
@@ -179,15 +204,6 @@ public class WagonWindowController : MonoBehaviour
         // reveal sticker here after certain amount of time
         StartCoroutine(RevealStickerRoutine(sticker));
 
-        // play lester tutorial if first sticker roll
-        if (!StudentInfoSystem.currentStudentPlayer.stickerTutorial)
-        {
-            // TODO continue lester tutorial + add lester quips
-
-            StudentInfoSystem.currentStudentPlayer.stickerTutorial = true;
-            StudentInfoSystem.SaveStudentPlayerData();
-        }
-
         // wait for player input to continue
         waitingOnPlayerInput = true;
         while (waitingOnPlayerInput)
@@ -205,7 +221,7 @@ public class WagonWindowController : MonoBehaviour
         SettingsManager.instance.ToggleWagonButtonActive(true);
         wagon.SetActive(true);
         GeckoAnim.Play("idle");
-        BehindUIBackground.instance.Activate();
+        DefaultBackground.instance.Activate();
 
         // stop correct video player
         switch (sticker.rarity)
@@ -238,8 +254,30 @@ public class WagonWindowController : MonoBehaviour
 
         // deactivate raycast blocker
         RaycastBlockerController.instance.RemoveRaycastBlocker("StickerVideoBlocker");
+        
+        if (backButton.isActiveAndEnabled)
+        {
+            // show back button
+            backButton.interactable = true;
+            backButton.GetComponent<LerpableObject>().LerpImageAlpha(backButton.GetComponent<Image>(), 1f, 0.1f);
+            backButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.2f, 0.01f);
+        }
 
-        print ("video over");
+        confirmStickerWindowActive = false;
+
+        // play lester tutorial if first sticker roll
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            // wiggle sticker board
+            Board.instance.isOn = true;
+            Board.instance.GetComponent<WiggleController>().StartWiggle();
+
+            // make gecko unselectable
+            Gecko.instance.isOn = false;
+
+            // StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+            // StudentInfoSystem.SaveStudentPlayerData();
+        }
     }
 
     private IEnumerator RevealStickerRoutine(Sticker sticker)
@@ -256,29 +294,35 @@ public class WagonWindowController : MonoBehaviour
         // play sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
-        windowUp = false;
-        // hide window 
-        StartCoroutine(ShrinkObject(window));
+        CloseConfirmStickerWindow();
+    }
 
-        // remove default background and raycast blocker
-        DefaultBackground.instance.Deactivate();
+    private void CloseConfirmStickerWindow()
+    {
+        // hide window 
+        StartCoroutine(ShrinkObject(confirmStickerWindow));
+
+        // disable wagon background
+        wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0f, 0.1f);
 
         // hide toolbar
         DropdownToolbar.instance.ToggleToolbar(false);
+
+        confirmStickerWindowActive = false;
     }
 
     private IEnumerator NewWindowRoutine()
     {
-        // add default background and raycast blocker
-        DefaultBackground.instance.Activate();
-
         // show toolbar
         DropdownToolbar.instance.ToggleToolbar(true);
+
+        // enable wagon background
+        wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0.75f, 0.1f);
 
         yield return new WaitForSeconds(0.5f);
 
         // show window
-        StartCoroutine(GrowObject(window));
+        StartCoroutine(GrowObject(confirmStickerWindow));
     }
 
     private IEnumerator GrowObject(GameObject gameObject)
@@ -300,7 +344,7 @@ public class WagonWindowController : MonoBehaviour
         //  - at the moment, the only game object that gets shrunken is the game 
         //    window, so we can reset the window afterwards.
         // reset window
-        window.transform.localScale = new Vector3(hiddenScale, hiddenScale, 0f);
+        confirmStickerWindow.transform.localScale = new Vector3(hiddenScale, hiddenScale, 0f);
     }
 
     private IEnumerator ScaleObjectRoutine(GameObject gameObject, float time, float scale)
@@ -351,15 +395,18 @@ public class WagonWindowController : MonoBehaviour
 
     private IEnumerator RollOnScreen()
     {
-        print ("rolling in!");
         wagon.transform.position = cartStartPosition.position;
 
         // disable nav buttons
         ScrollMapManager.instance.ToggleNavButtons(false);
-        
+
+        // disable ui buttons
+        SettingsManager.instance.menuButton.interactable = false;
+        SettingsManager.instance.wagonButton.interactable = false;
+
         // activate raycast blocker + background
         RaycastBlockerController.instance.CreateRaycastBlocker("StickerCartBlocker");
-        BehindUIBackground.instance.Activate();
+        DefaultBackground.instance.Activate();
 
         Wagon.Play("WagonRollIn");
         StartCoroutine(RollToTargetRoutine(cartOnScreenPosition.position));
@@ -369,21 +416,41 @@ public class WagonWindowController : MonoBehaviour
         Wagon.Play("Idle");
 
         Book.SetActive(true);
-        Board.SetActive(true);
+        board.SetActive(true);
         BackWindow.SetActive(true);
-        Gecko.SetActive(true);
-        GeckoAnim.Play("geckoIntro");
 
         // play lester talkies if first time
-        if (!StudentInfoSystem.currentStudentPlayer.stickerTutorial)
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
         {
-            // remove wagon button so player cannot leave
-            SettingsManager.instance.ToggleWagonButtonActive(false);
+            // turn off other buttons
+            Board.instance.isOn = false;
+            StickerBoardBook.instance.isOn = false;
 
-            // play village rebuilt talkie 3
+            // remove back button so player cannot leave >:)
+            backButton.gameObject.SetActive(false);
+
+            // enable wagon background
+            wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0.75f, 0.1f);
+
+            // play lester intro 1
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.lester_intro_1);
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
+
+            // disable wagon background
+            wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0f, 0.1f);
+        }
+
+        gecko.SetActive(true);
+        GeckoAnim.Play("geckoIntro");
+
+
+        if (StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            // show back button
+            backButton.interactable = true;
+            backButton.GetComponent<LerpableObject>().LerpImageAlpha(backButton.GetComponent<Image>(), 1f, 0.1f);
+            backButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.2f, 0.01f);
         }
 
         // deactivate raycast blocker
@@ -393,17 +460,33 @@ public class WagonWindowController : MonoBehaviour
 
     private IEnumerator RollOffScreen()
     {
-        print ("rolling off!");
-
         // activate raycast blocker + background
         RaycastBlockerController.instance.CreateRaycastBlocker("StickerCartBlocker");
+
+        // hide back button
+        backButton.interactable = true;
+        backButton.GetComponent<LerpableObject>().LerpImageAlpha(backButton.GetComponent<Image>(), 0f, 0.1f);
+        backButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.05f);
+
+        // remove windows
+        if (buyBoardActive)
+        {
+            yield return new WaitForSeconds(0.5f);
+            ToggleBuyBoardWindow();
+        }
+
+        if (confirmStickerWindowActive)
+        {
+            yield return new WaitForSeconds(0.5f);
+            CloseBuyBoardWindowRoutine();
+        }
 
         // roll off screen
         Wagon.Play("WagonRollIn");
         Book.SetActive(false);
-        Board.SetActive(false);
+        board.SetActive(false);
         BackWindow.SetActive(false);
-        Gecko.SetActive(false);
+        gecko.SetActive(false);
 
         StartCoroutine(RollToTargetRoutine(cartOffScreenPosition.position));
         yield return new WaitForSeconds(3f);
@@ -413,11 +496,15 @@ public class WagonWindowController : MonoBehaviour
 
         // deactivate raycast blocker + background
         RaycastBlockerController.instance.RemoveRaycastBlocker("StickerCartBlocker");
-        BehindUIBackground.instance.Deactivate();
+        DefaultBackground.instance.Deactivate();
         cartBusy = false;
 
         // enable nav buttons
         ScrollMapManager.instance.ToggleNavButtons(true);
+
+        // enable ui buttons
+        SettingsManager.instance.menuButton.interactable = true;
+        SettingsManager.instance.wagonButton.interactable = true;
 
         // check for scroll map game events
         ScrollMapManager.instance.CheckForGameEvent();
@@ -426,24 +513,53 @@ public class WagonWindowController : MonoBehaviour
     public void ResetWagonController()
     {
         Book.SetActive(false);
-        Board.SetActive(false);
+        board.SetActive(false);
         BackWindow.SetActive(false);
-        Gecko.SetActive(false);
+        gecko.SetActive(false);
 
         wagon.transform.position = cartStartPosition.position;
         Wagon.Play("Idle");
 
         // deactivate raycast blocker + background
         RaycastBlockerController.instance.RemoveRaycastBlocker("StickerCartBlocker");
-        BehindUIBackground.instance.Deactivate();
         cartBusy = false;
+        DefaultBackground.instance.Deactivate();
 
         // enable nav buttons
         if (SceneManager.GetActiveScene().name == "ScrollMap")
             ScrollMapManager.instance.ToggleNavButtons(true);
 
         // hide window 
-        StartCoroutine(ShrinkObject(window));
+        StartCoroutine(ShrinkObject(confirmStickerWindow));
+    }
+
+    public void OnBackButtonPressed() // ORDER MATTERS HERE!!!
+    {
+        // close inventory
+        if (StickerBoardController.instance.GetCurrentStickerBoard().stickerInventoryActive) 
+        {
+            StickerBoardController.instance.ToggleInventoryWindow();
+        }
+        // leave sticker board menu
+        else if (StickerBoardController.instance.stickerBoardActive)
+        {
+            StickerBoardController.instance.ToggleStickerBoardWindow();
+            return;
+        }
+        // leave buy board screen
+        else if (buyBoardActive)
+        {
+            ToggleBuyBoardWindow();
+        }
+        else if (confirmStickerWindowActive)
+        {
+            CloseConfirmStickerWindow();
+        }
+        // leave cart
+        else 
+        {
+            ToggleCart();
+        }
     }
 
     private IEnumerator RollToTargetRoutine(Vector3 target)
@@ -496,5 +612,94 @@ public class WagonWindowController : MonoBehaviour
             float tempAlpha = Mathf.Lerp(start, end, timer / 1f);
             yield return null;
         }
+    }
+
+    /* 
+    ################################################
+    #   BUY BOARD METHODS
+    ################################################
+    */
+
+    public LerpableObject buyBoardWindow;
+
+    private bool buyBoardActive = false;
+    private bool buyBoardReady = true;
+
+    public void ToggleBuyBoardWindow()
+    {
+        if (!buyBoardReady)
+            return;
+
+        buyBoardActive = !buyBoardActive;
+        buyBoardReady = false;
+
+        // open window
+        if (buyBoardActive)
+        {
+            StartCoroutine(OpenBuyBoardWindowRoutine());
+            Gecko.instance.isOn = false;
+            Board.instance.isOn = false;
+        }
+        // close window
+        else
+        {
+            StartCoroutine(CloseBuyBoardWindowRoutine());
+            Gecko.instance.isOn = true;
+            Board.instance.isOn = true;
+        }
+    }
+
+    private IEnumerator OpenBuyBoardWindowRoutine()
+    {
+        buyBoardWindow.SquishyScaleLerp(new Vector2(1.2f, 1f), new Vector2(1f, 1f), 0.2f, 0.05f);
+
+        // enable wagon background
+        wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0.75f, 0.1f);
+
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            // stop wiggling the book
+            StickerBoardBook.instance.GetComponent<WiggleController>().StopWiggle();
+
+            // play lester intro 5
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.lester_intro_5);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // make gecko selectable
+            Gecko.instance.isOn = true;
+            WagonWindowController.instance.gecko.SetActive(true);
+            WagonWindowController.instance.GeckoAnim.Play("geckoIntro");
+
+            // make other things selectable
+            Board.instance.isOn = true;
+            StickerBoardBook.instance.isOn = true;
+
+            // enable back button
+            backButton.gameObject.SetActive(true);
+            backButton.interactable = true;
+            backButton.GetComponent<LerpableObject>().LerpImageAlpha(backButton.GetComponent<Image>(), 1f, 0.1f);
+            backButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.05f);
+
+            // save to SIS
+            StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+            StudentInfoSystem.SaveStudentPlayerData();
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        buyBoardReady = true;
+    }
+
+    private IEnumerator CloseBuyBoardWindowRoutine()
+    {
+        buyBoardWindow.SquishyScaleLerp(new Vector2(1.2f, 1f), new Vector2(0f, 1f), 0.05f, 0.1f);
+
+        // disable wagon background
+        wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0f, 0.1f);
+
+        yield return new WaitForSeconds(0.5f);
+
+        buyBoardReady = true;
     }
 }

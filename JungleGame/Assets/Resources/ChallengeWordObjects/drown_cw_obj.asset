@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: drown_cw_obj
   m_EditorClassIdentifier: 
   word: drown
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 8cb6609653c6ce84c878f3de1c5566cc, type: 3}
   sprite: {fileID: 21300000, guid: 2e96a5b175b644b44b1b968163fd5256, type: 3}
   elkoninList: 190000002400000014000000210000000000000000000000
   elkoninCount: 4

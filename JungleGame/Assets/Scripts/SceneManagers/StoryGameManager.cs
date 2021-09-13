@@ -289,7 +289,7 @@ public class StoryGameManager : MonoBehaviour
         // make sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1.0f);
         
-        if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.PrologueStoryGame)
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PrologueStoryGame)
         {
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();

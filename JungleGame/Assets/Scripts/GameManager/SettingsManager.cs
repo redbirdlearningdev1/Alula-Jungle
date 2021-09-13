@@ -9,8 +9,8 @@ public class SettingsManager : MonoBehaviour
 {
     public static SettingsManager instance;
 
-    [SerializeField] private Button menuButton;
-    [SerializeField] private Button wagonButton;
+    public Button menuButton;
+    public Button wagonButton;
 
     [Header("Audio Settings")]
     [SerializeField] private Slider masterVol;
@@ -49,20 +49,22 @@ public class SettingsManager : MonoBehaviour
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CreateBlip, 1f);
 
+        var data = StudentInfoSystem.GetCurrentProfile();
+
         // volumes
-        StudentInfoSystem.currentStudentPlayer.masterVol = Mathf.Round(masterVol.value * 1000.0f) / 1000.0f;
-        StudentInfoSystem.currentStudentPlayer.musicVol = Mathf.Round(musicVol.value * 1000.0f) / 1000.0f;
-        StudentInfoSystem.currentStudentPlayer.fxVol = Mathf.Round(fxVol.value * 1000.0f) / 1000.0f;
-        StudentInfoSystem.currentStudentPlayer.talkVol = Mathf.Round(talkVol.value * 1000.0f) / 1000.0f;
+        data.masterVol = Mathf.Round(masterVol.value * 1000.0f) / 1000.0f;
+        data.musicVol = Mathf.Round(musicVol.value * 1000.0f) / 1000.0f;
+        data.fxVol = Mathf.Round(fxVol.value * 1000.0f) / 1000.0f;
+        data.talkVol = Mathf.Round(talkVol.value * 1000.0f) / 1000.0f;
         // mic
-        StudentInfoSystem.currentStudentPlayer.micDevice = MicInput.instance.micDeviceIndex;
+        data.micDevice = MicInput.instance.micDeviceIndex;
         // save to profile
         StudentInfoSystem.SaveStudentPlayerData();
     }
 
     public void LoadSettingsFromProfile()
     {
-        var data = StudentInfoSystem.currentStudentPlayer;
+        var data = StudentInfoSystem.GetCurrentProfile();
         // volumes
         AudioManager.instance.SetMasterVolume(data.masterVol);
         masterVol.value = AudioManager.instance.GetMasterVolume();
@@ -186,8 +188,9 @@ public class SettingsManager : MonoBehaviour
         // remove wiggle if need be
         ToggleStickerButtonWiggle(false);
 
-        // only workable on scroll map scene
-        if (SceneManager.GetActiveScene().name == "ScrollMap")
+        // only workable on scroll map scene (or dev menu)
+        if (SceneManager.GetActiveScene().name == "ScrollMap" ||
+            SceneManager.GetActiveScene().name == "DevMenu")
             WagonWindowController.instance.ToggleCart();
     }
 

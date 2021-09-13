@@ -73,13 +73,39 @@ public class WordFactoryBlendingManager : MonoBehaviour
         PregameSetup();
     }
 
+    void Update()
+    {
+        if (GameManager.instance.devModeActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StopAllCoroutines();
+                RaycastBlockerController.instance.ClearAllRaycastBlockers();
+                StartCoroutine(WinGameRoutine());
+            }
+        }
+    }
+
     private void PregameSetup()
     {   
+        // turn on settings button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+
         // create word lists
-        ChallengeWordDatabase.InitCreateGlobalList();
+        ChallengeWordDatabase.InitCreateGlobalList(true);
         globalWordList = ChallengeWordDatabase.globalChallengeWordList;
         unusedWordList = globalWordList;
         usedWordList = new List<ChallengeWord>();
+
+        // disable card objects
+        foreach (var card in redCards)
+        {
+            card.SetActive(false);
+        }
+        foreach (var card in tigerCards)
+        {
+            card.SetActive(false);
+        }
 
         // begin first round
         StartCoroutine(NewRound());
@@ -89,6 +115,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
     {
         // add raycast blocker
         RaycastBlockerController.instance.CreateRaycastBlocker("WordFactoryBlending");
+        WordFactoryRaycaster.instance.isOn = false;
 
         // place polaroids in start pos
         foreach (var pol in polaroids)
@@ -195,6 +222,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
         // remove raycast blocker
         RaycastBlockerController.instance.RemoveRaycastBlocker("WordFactoryBlending");
+        WordFactoryRaycaster.instance.isOn = true;
     }
 
     private ChallengeWord GetUnusedWord()
@@ -223,6 +251,8 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
     public bool EvaluatePolaroid(Polaroid polaroid)
     {
+        WordFactoryRaycaster.instance.isOn = false;
+
         if (polaroid.challengeWord == currentWord)
         {
             numWins++;
@@ -251,28 +281,22 @@ public class WordFactoryBlendingManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         StartCoroutine(HideCoinsAndFrames());
 
-        // animate correct polaroid toward red
-        currentPolaroid.MovePolaroid(redPilePos.position, 1f);
-        currentPolaroid.LerpScale(0.1f, 0.5f);
-        // animate other two cards away
+        // animate cards away
         int count = 0;
         foreach(var polaroid in polaroids)
         {
-            if (!polaroid.Equals(currentPolaroid))
+            if (count == 0)
             {
-                if (count == 0)
-                {
-                    polaroid.MovePolaroid(away0Pos.position, 0.1f);
-                }
-                else if (count == 1)
-                {
-                    polaroid.MovePolaroid(polaroidStartPos.position, 0.1f);
-                }
-                else if (count == 2)
-                {
-                    polaroid.MovePolaroid(away2Pos.position, 0.1f);
-                }    
+                polaroid.MovePolaroid(away0Pos.position, 0.25f);
             }
+            else if (count == 1)
+            {
+                polaroid.MovePolaroid(polaroidStartPos.position, 0.25f);
+            }
+            else if (count == 2)
+            {
+                polaroid.MovePolaroid(away2Pos.position, 0.25f);
+            }    
             count++;
         }
 
@@ -282,6 +306,19 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
         // award red new card
         redCards[redCardCount].SetActive(true);
+        // animate card init
+        switch (redCardCount)
+        {
+            case 0:
+                redCards[redCardCount].GetComponent<Animator>().Play("Card1");
+                break;
+            case 1:
+                redCards[redCardCount].GetComponent<Animator>().Play("Card2");
+                break;
+            case 2:
+                redCards[redCardCount].GetComponent<Animator>().Play("Card3");
+                break;
+        }
         redCardCount++;
         
         // animate characters
@@ -313,28 +350,22 @@ public class WordFactoryBlendingManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         StartCoroutine(HideCoinsAndFrames());
 
-        // animate correct polaroid toward tiger
-        currentPolaroid.MovePolaroid(tigerPilePos.position, 1f);
-        currentPolaroid.LerpScale(0.1f, 0.5f);
-        // animate other two cards away
+        // animate cards away
         int count = 0;
         foreach(var polaroid in polaroids)
         {
-            if (!polaroid.Equals(currentPolaroid))
+            if (count == 0)
             {
-                if (count == 0)
-                {
-                    polaroid.MovePolaroid(away0Pos.position, 0.1f);
-                }
-                else if (count == 1)
-                {
-                    polaroid.MovePolaroid(polaroidStartPos.position, 0.1f);
-                }
-                else if (count == 2)
-                {
-                    polaroid.MovePolaroid(away2Pos.position, 0.1f);
-                }    
+                polaroid.MovePolaroid(away0Pos.position, 0.25f);
             }
+            else if (count == 1)
+            {
+                polaroid.MovePolaroid(polaroidStartPos.position, 0.25f);
+            }
+            else if (count == 2)
+            {
+                polaroid.MovePolaroid(away2Pos.position, 0.25f);
+            }    
             count++;
         }
 
@@ -344,6 +375,19 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
         // award tiger new card
         tigerCards[tigerCardCount].SetActive(true);
+        // animate card init
+        switch (tigerCardCount)
+        {
+            case 0:
+                tigerCards[tigerCardCount].GetComponent<Animator>().Play("Card1");
+                break;
+            case 1:
+                tigerCards[tigerCardCount].GetComponent<Animator>().Play("Card2");
+                break;
+            case 2:
+                tigerCards[tigerCardCount].GetComponent<Animator>().Play("Card3");
+                break;
+        }
         tigerCardCount++;
         
         // animate characters
@@ -352,7 +396,10 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        StartCoroutine(NewRound());
+        if (numMisses >= 3)
+            StartCoroutine(LoseGameRoutine());
+        else
+            StartCoroutine(NewRound());
     }
 
     private IEnumerator HideCoinsAndFrames()
@@ -390,6 +437,37 @@ public class WordFactoryBlendingManager : MonoBehaviour
         }
     }
 
+    private IEnumerator LoseGameRoutine()
+    {
+        // place polaroids in start pos
+        foreach (var pol in polaroids)
+        {
+            pol.gameObject.transform.position = polaroidStartPos.position;
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        // update SIS
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1)
+        {
+            // first time losing
+            if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame)
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = true;
+            else
+            {
+                // every other time losing
+                if (!StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+                {
+                    StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = true;
+                }
+            }
+            StudentInfoSystem.SaveStudentPlayerData();
+        }
+
+        // show stars
+        StarAwardController.instance.AwardStarsAndExit(0);
+    }
+
     private IEnumerator WinGameRoutine()
     {
         // place polaroids in start pos
@@ -401,6 +479,15 @@ public class WordFactoryBlendingManager : MonoBehaviour
         // play win tune
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
         yield return new WaitForSeconds(1f);
+
+        // update SIS
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1)
+        {
+            StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = false;
+            StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;
+            StudentInfoSystem.AdvanceStoryBeat();
+            StudentInfoSystem.SaveStudentPlayerData();
+        }
 
         // show stars
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());

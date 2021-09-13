@@ -337,7 +337,7 @@ public class NewBoatGameManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
 
         // save to SIS
-        if (StudentInfoSystem.currentStudentPlayer.currStoryBeat == StoryBeat.InitBoatGame)
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.InitBoatGame)
         {
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
@@ -435,9 +435,6 @@ public class NewBoatGameManager : MonoBehaviour
         // stop repeating audio
         repeatAudio = false;
         AudioManager.instance.StopTalk();
-
-        // turn off wheel control
-        BoatWheelController.instance.isOn = false;
 
         // turn off island cutout
         IslandCutoutController.instance.isOn = false;

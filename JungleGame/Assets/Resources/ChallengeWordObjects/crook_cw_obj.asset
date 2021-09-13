@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: crook_cw_obj
   m_EditorClassIdentifier: 
   word: crook
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 52c0aba2621231941982b6a4f033daa0, type: 3}
   sprite: {fileID: 21300000, guid: c4acc723aa7437e4c9091f8641004271, type: 3}
   elkoninList: 1700000024000000060000001e0000000000000000000000
   elkoninCount: 4

@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public enum TalkieCharacter
 {
-    None, Red, Wally, Darwin, Lester, Brutus, Marcus, Julius, Clogg, Spindle
+    None, Red, Wally, Darwin, Lester, Brutus, Marcus, Julius, Clogg, Spindle, Bubbles, Ollie, Celeste, Sylvie
 }
 
 public enum TalkieMouth
@@ -19,7 +20,7 @@ public enum TalkieEyes
 
 public enum ActiveCharacter
 {
-    Left, Right
+    Left, Right, Both
 }
 
 public enum TalkieStart
@@ -44,16 +45,6 @@ public enum TalkieEndAction
     UnlockStickerButton
 }
 
-public enum TalkieYesNoAction
-{
-    None,
-    // pre darwin talkie
-    PreDarwin_yes,
-    PreDarwin_no
-
-
-}
-
 [System.Serializable]
 public struct TalkieSegment
 {
@@ -62,8 +53,8 @@ public struct TalkieSegment
 
     [Header("Yes No Action")] // before continuing the talkie, player must choose between yes and no
     public bool requireYN;
-    public TalkieYesNoAction onYes;
-    public TalkieYesNoAction onNo;
+    public int onYesGoto;
+    public int onNoGoto;
 
     [Header("Left Character")]
     public TalkieCharacter leftCharacter;

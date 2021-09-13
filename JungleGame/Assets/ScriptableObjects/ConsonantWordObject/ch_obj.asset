@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ch_obj
   m_EditorClassIdentifier: 
   _name: ch
-  audio: {fileID: 8300000, guid: 394821ed5a9bf4540aa2e26f32683a2d, type: 3}
+  audio: {fileID: 8300000, guid: f19da36efc9c69b4897e80827ec002d2, type: 3}
   elkoninValue: 24
   animation: chCoin
   _enum: 3

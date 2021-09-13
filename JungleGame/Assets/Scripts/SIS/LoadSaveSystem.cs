@@ -10,7 +10,7 @@ using UnityEditor;
 public static class LoadSaveSystem
 {
     // default student player values
-    public static string default_version = "1.6"; 
+    public static string default_version = "1.8";
     // 1.6 added stickers to SIS
 
     public static string default_name = "empty";
@@ -122,6 +122,9 @@ public static class LoadSaveSystem
         // story + map data
         new_data.unlockedStickerButton = default_unlockedStickerButton;
         new_data.currStoryBeat = default_gameEvent;
+        new_data.firstTimeLoseChallengeGame = false;
+        new_data.everyOtherTimeLoseChallengeGame = false;
+        
         new_data.mapData = new MapData();
         
         // gorilla village
@@ -140,8 +143,40 @@ public static class LoadSaveSystem
         new_data.mapData.GV_fire.stars =     default_mapDataStars;
         new_data.mapData.GV_statue.stars =   default_mapDataStars;
 
+        new_data.mapData.GV_challenge1 = new ChallengeGameData();
+        new_data.mapData.GV_challenge2 = new ChallengeGameData();
+        new_data.mapData.GV_challenge3 = new ChallengeGameData();
+
+        new_data.mapData.GV_challenge1.stars = default_stars;
+        new_data.mapData.GV_challenge2.stars = default_stars;
+        new_data.mapData.GV_challenge3.stars = default_stars;
+
         // stickers
-        new_data.unlockedStickers = new List<Sticker>();
+        new_data.stickerInventory = new List<InventoryStickerData>();
+        // classic sticker board
+        new_data.classicStickerBoard = new StickerBoardData();
+        new_data.classicStickerBoard.boardType = StickerBoardType.Classic;
+        new_data.classicStickerBoard.active = true; // always active by default
+        new_data.classicStickerBoard.stickers = new List<StickerData>();
+
+        // mossy sticker board
+        new_data.mossyStickerBoard = new StickerBoardData();
+        new_data.mossyStickerBoard.boardType = StickerBoardType.Mossy;
+        new_data.mossyStickerBoard.active = false;
+        new_data.mossyStickerBoard.stickers = new List<StickerData>();
+
+        // emerald sticker board
+        new_data.emeraldStickerBoard = new StickerBoardData();
+        new_data.emeraldStickerBoard.boardType = StickerBoardType.Emerald;
+        new_data.emeraldStickerBoard.active = false;
+        new_data.emeraldStickerBoard.stickers = new List<StickerData>();
+
+        // beach sticker board
+        new_data.beachStickerBoard = new StickerBoardData();
+        new_data.beachStickerBoard.boardType = StickerBoardType.Beach;
+        new_data.beachStickerBoard.active = false;
+        new_data.beachStickerBoard.stickers = new List<StickerData>();
+
 
         // save data as incative profile
         SaveStudentData(new_data, true);

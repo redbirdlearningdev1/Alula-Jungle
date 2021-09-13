@@ -6,17 +6,21 @@ using UnityEngine.EventSystems;
 
 public class StickerBoardBook : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
-    [Header("Game Data")]
-    //public GameData gameData;
+    public static StickerBoardBook instance;
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
     private bool isPressed = false;
     private bool isFixed = false;
+    
+    public bool isOn = true;
 
     void Awake()
     {
+        if (instance == null)
+            instance = this;
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }
@@ -29,11 +33,15 @@ public class StickerBoardBook : MonoBehaviour, IPointerUpHandler, IPointerDownHa
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (!isOn)
+            return;
+
         if (!isPressed)
         {
             isPressed = true;
-            Debug.Log("HERE");
             animator.Play("BookSelected");
+
+            WagonWindowController.instance.ToggleBuyBoardWindow();
         }
     }
 
@@ -42,7 +50,6 @@ public class StickerBoardBook : MonoBehaviour, IPointerUpHandler, IPointerDownHa
         if (isPressed)
         {
             isPressed = false;
-            Debug.Log(isPressed);
         }
     }
 }

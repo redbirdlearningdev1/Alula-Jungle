@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: look_cw_obj
   m_EditorClassIdentifier: 
   word: look
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: d11d3ff23140188488fd8312124fbb26, type: 3}
   sprite: {fileID: 21300000, guid: ef75bd3b3f520fa4c9762ebe007986dd, type: 3}
   elkoninList: 1f000000060000001e000000000000000000000000000000
   elkoninCount: 3

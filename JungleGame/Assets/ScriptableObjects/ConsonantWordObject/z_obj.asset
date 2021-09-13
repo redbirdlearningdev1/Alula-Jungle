@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: z_obj
   m_EditorClassIdentifier: 
   _name: z
-  audio: {fileID: 8300000, guid: ee139f5fb57d53f4cb20f5e915f5a77b, type: 3}
+  audio: {fileID: 8300000, guid: 77e258a99c729ea4791e2643890651c7, type: 3}
   elkoninValue: 45
   animation: zCoin
   _enum: 24

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: yard_cw_obj
   m_EditorClassIdentifier: 
   word: yard
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 10071084e59dd75438aa5790aa28f330, type: 3}
   sprite: {fileID: 21300000, guid: 11667d9ca947a3d47a8c047817c18a6f, type: 3}
   elkoninList: 2c0000000e00000019000000000000000000000000000000
   elkoninCount: 3

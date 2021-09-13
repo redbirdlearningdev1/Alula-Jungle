@@ -17,6 +17,8 @@ public class FroggerGameManager : MonoBehaviour
 
     private List<ActionWordEnum> globalCoinPool;
     private List<ActionWordEnum> unusedCoinPool;
+    private List<ActionWordEnum> usedCoinPool;
+    private ActionWordEnum prevCorrectCoin;
 
     private int timesMissed = 0;
 
@@ -73,7 +75,7 @@ public class FroggerGameManager : MonoBehaviour
         gameData = (FroggerGameData)GameManager.instance.GetData();
 
         if (!playInEditor)
-            playTutorial = !StudentInfoSystem.currentStudentPlayer.froggerTutorial;
+            playTutorial = !StudentInfoSystem.GetCurrentProfile().froggerTutorial;
 
         PregameSetup();
 
@@ -207,6 +209,9 @@ public class FroggerGameManager : MonoBehaviour
         selectedCoin.ToggleVisibility(false, true);
         yield return new WaitForSeconds(1f);
         selectedCoin.ReturnToLog();
+
+        // add coin to successful coins
+        prevCorrectCoin = selectedCoin.type;
         selectedCoin = null;
 
         StartCoroutine(HideCoins(currRow, selectedCoin));
@@ -452,7 +457,7 @@ public class FroggerGameManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         // save to SIS
-        StudentInfoSystem.currentStudentPlayer.froggerTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().froggerTutorial = true;
         StudentInfoSystem.SaveStudentPlayerData();
 
         GameManager.instance.LoadScene("FroggerGame", true, 3f);
@@ -534,6 +539,10 @@ public class FroggerGameManager : MonoBehaviour
     {
         List<LogCoin> row = GetCoinRow(index);
 
+        // make new used word list and add current correct word
+        usedCoinPool = new List<ActionWordEnum>();
+        usedCoinPool.Clear();
+
         int idx = 0;
         foreach (var coin in row)
         {
@@ -548,10 +557,7 @@ public class FroggerGameManager : MonoBehaviour
             // set random type
             else
             {
-                if (unusedCoinPool.Count == 0)
-                    unusedCoinPool.AddRange(globalCoinPool);
-                type = unusedCoinPool[Random.Range(0, unusedCoinPool.Count)];
-                unusedCoinPool.Remove(type);
+                type = GetUnusedWord();
             }            
 
             coin.SetCoinType(type);
@@ -572,6 +578,30 @@ public class FroggerGameManager : MonoBehaviour
         }
     }
 
+    private ActionWordEnum GetUnusedWord()
+    {
+        // reset unused pool if empty
+        if (unusedCoinPool.Count <= 0)
+        {
+            unusedCoinPool.Clear();
+            unusedCoinPool.AddRange(globalCoinPool);
+        }
+
+        int index = Random.Range(0, unusedCoinPool.Count);
+        ActionWordEnum word = unusedCoinPool[index];
+
+        // make sure word is not being used or already successfully completed
+        if (usedCoinPool.Contains(word))
+        {
+            unusedCoinPool.Remove(word);
+            return GetUnusedWord();
+        }
+
+        unusedCoinPool.Remove(word);
+        usedCoinPool.Add(word);
+        return word;
+    }
+
     private IEnumerator HideCoins(int index, LogCoin exceptCoin = null)
     {
         List<LogCoin> row = GetCoinRow(index);
@@ -590,6 +620,14 @@ public class FroggerGameManager : MonoBehaviour
 
         // select random coin
         selectedIndex = Random.Range(0, row.Count);
+
+        // make sure selected coin is not the same as prev selected coin
+        if (rows[currRow].coins[selectedIndex].type == prevCorrectCoin)
+        {   
+            selectedIndex++;
+            if (selectedIndex >= row.Count)
+                selectedIndex = 0;
+        }
 
         // if coin index is valid - use that indead of random choice
         //print ("coin index: " + coinIndex);

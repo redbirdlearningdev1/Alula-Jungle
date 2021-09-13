@@ -11,6 +11,10 @@ public class TigerGameRaycaster : MonoBehaviour
     private GameObject selectedObject = null;
     [SerializeField] private Transform selectedObjectParent;
 
+    private bool polaroidAudioPlaying = false;
+    private Transform currentPolaroid;
+
+
     void Update()
     {
         // return if off, else do thing
@@ -50,12 +54,12 @@ public class TigerGameRaycaster : MonoBehaviour
             }
 
             TigerGameManager.instance.returnToPos(selectedObject);
+            currentPolaroid.GetComponent<Polaroid>().SetLayer(0);
             selectedObject = null;
         }
 
         if (Input.GetMouseButtonDown(0))
         {
-
             var pointerEventData = new PointerEventData(EventSystem.current);
             pointerEventData.position = Input.mousePosition;
             var raycastResults = new List<RaycastResult>();
@@ -65,15 +69,39 @@ public class TigerGameRaycaster : MonoBehaviour
             {
                 foreach (var result in raycastResults)
                 {
-                    if (result.gameObject.transform.CompareTag("Polaroid"))
+                    if (result.gameObject.transform.CompareTag("UniversalCoin"))
                     {
-                        //WordFactorySubstitutingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoin>());
+                        TigerGameManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoin>());
+                    }
+                    else if (result.gameObject.transform.CompareTag("Polaroid"))
+                    {
                         selectedObject = result.gameObject;
                         selectedObject.gameObject.transform.SetParent(selectedObjectParent);
-
+                        currentPolaroid = result.gameObject.transform;
+                        // set upper layer
+                        currentPolaroid.GetComponent<Polaroid>().SetLayer(2);
+                        // play audio
+                        StartCoroutine(PlayPolaroidAudio(currentPolaroid.GetComponent<Polaroid>().challengeWord.audio));
                     }
                 }
             }
         }
+    }
+
+    private IEnumerator PlayPolaroidAudio(AudioClip audio)
+    {
+        if (polaroidAudioPlaying)
+        {
+            AudioManager.instance.StopTalk();
+        }
+
+        currentPolaroid.GetComponent<Polaroid>().LerpScale(1.1f, 0.1f);
+        polaroidAudioPlaying = true;
+
+        AudioManager.instance.PlayTalk(audio);
+        yield return new WaitForSeconds(audio.length + 0.1f);
+
+        currentPolaroid.GetComponent<Polaroid>().LerpScale(1f, 0.1f);
+        polaroidAudioPlaying = false;
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: bear_cw_obj
   m_EditorClassIdentifier: 
   word: bear
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 869c7183177f64d4987c5502f048186f, type: 3}
   sprite: {fileID: 21300000, guid: 355bd93876b09b445824e80f2a541239, type: 3}
   elkoninList: 160000000d00000000000000000000000000000000000000
   elkoninCount: 2

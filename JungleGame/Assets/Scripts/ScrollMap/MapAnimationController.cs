@@ -26,16 +26,21 @@ public class MapAnimationController : MonoBehaviour
     public GameObject tiger;
     public Transform tigerGVPosSTART;
     public Transform tigerGVPosEND;
+    public Transform tigerChallengePos;
 
     [Header("Brutus")]
     public GameObject brutus;
     public Transform brutusGVPosSTART;
     public Transform brutusGVPosEND;
+    public Transform brutusChallengePos;
+
 
     [Header("Marcus")]
     public GameObject marcus;
     public Transform marcusGVPosSTART;
     public Transform marcusGVPosEND;
+    public Transform marcusChallengePos;
+
 
     void Awake()
     {
@@ -93,6 +98,114 @@ public class MapAnimationController : MonoBehaviour
         }
     }
 
+    public void MonkeyExitAnimationDefeatedGV()
+    {
+        StartCoroutine(MonkeyExitAnimationDefeatedGVRoutine());
+    }
+    private IEnumerator MonkeyExitAnimationDefeatedGVRoutine()
+    {
+        animationDone = false;
+
+        // place characters in end pos
+        marcus.transform.position = marcusChallengePos.position;
+        brutus.transform.position = brutusChallengePos.position;
+
+        // play laugh animations
+        marcus.GetComponent<Animator>().Play("marcusWin");
+        brutus.GetComponent<Animator>().Play("brutusWin");
+        yield return new WaitForSeconds(1.5f);
+
+
+        // play turn animation
+        marcus.GetComponent<Animator>().Play("marcusTurn");
+        brutus.GetComponent<Animator>().Play("brutusTurn");
+        yield return new WaitForSeconds(0.4f);
+
+        // move to off screen
+        StartCoroutine(MoveObjectOverTime(marcus, marcusGVPosSTART.position, 5f, true));
+        StartCoroutine(MoveObjectOverTime(brutus, brutusGVPosSTART.position, 5f, true));
+
+        yield return new WaitForSeconds(5f);
+
+        animationDone = true;
+    }
+
+    public void TigerRunAwayDefeatedGV()
+    {
+        StartCoroutine(TigerRunAwayDefeatedGVRoutine());
+    }
+    private IEnumerator TigerRunAwayDefeatedGVRoutine()
+    {
+        animationDone = false;
+
+        // place characters in end pos
+        tiger.transform.position = tigerChallengePos.position;
+
+        // play turn around animation
+        tiger.GetComponent<Animator>().Play("aTigerTurn");
+        yield return new WaitForSeconds(0.3f);
+        // move to off screen
+        StartCoroutine(MoveObjectOverTime(tiger, tigerGVPosSTART.position, 2f, true));
+
+        animationDone = true;
+    }
+
+    public void TigerAndMonkiesChallengePos()
+    {
+        StartCoroutine(TigerAndMonkiesChallengePosRoutine());
+    }
+    private IEnumerator TigerAndMonkiesChallengePosRoutine()
+    {
+        animationDone = false;
+
+        // place characters in end pos
+        tiger.transform.position = tigerGVPosEND.position;
+        marcus.transform.position = marcusGVPosEND.position;
+        brutus.transform.position = brutusGVPosEND.position;
+
+        // play correct walk in animation
+        tiger.GetComponent<Animator>().Play("tigerWalk");
+        marcus.GetComponent<Animator>().Play("marcusWalkIn");
+        brutus.GetComponent<Animator>().Play("brutusWalkIn");
+
+        // move characters to end positions on screen
+        StartCoroutine(MoveObjectOverTime(tiger, tigerChallengePos.position, 2f, true));
+        StartCoroutine(MoveObjectOverTime(marcus, marcusChallengePos.position, 2f, true));
+        StartCoroutine(MoveObjectOverTime(brutus, brutusChallengePos.position, 2f, true));
+        yield return new WaitForSeconds(2f);
+
+        // play correct idle in animation
+        tiger.GetComponent<Animator>().Play("aTigerIdle");
+        marcus.GetComponent<Animator>().Play("marcusFixed");
+        brutus.GetComponent<Animator>().Play("brutusFixed");
+
+        animationDone = true;
+    }
+
+    public void GorillaExitAnimationGV()
+    {
+        StartCoroutine(GorillaExitAnimationGVRoutine());
+    }
+    private IEnumerator GorillaExitAnimationGVRoutine()
+    {
+        animationDone = false;
+
+        yield return new WaitForSeconds(1f);
+
+        // place gorilla in correct location
+        gorilla.transform.position = gorillaGVPosSTART.position;
+
+        // play gorilla animation
+        gorilla.GetComponent<Animator>().Play("gorillaWalk");
+        gorilla.transform.localScale = new Vector3(-1f, 1f, 1f); // flip to face right side
+
+        // move to off screen
+        StartCoroutine(MoveObjectOverTime(gorilla, gorillaGVPosEND.position, 7f, true));
+
+        yield return new WaitForSeconds(7f);
+
+        animationDone = true;
+    }
     
     public void MonkeyExitAnimationGV()
     {

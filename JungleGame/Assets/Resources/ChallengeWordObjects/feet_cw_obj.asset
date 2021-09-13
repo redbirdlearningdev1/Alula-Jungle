@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: feet_cw_obj
   m_EditorClassIdentifier: 
   word: feet
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 73aee3acfc35aa64b99db9ad01827aab, type: 3}
   sprite: {fileID: 21300000, guid: 2462b3f1685dc4043893b1b703b906d4, type: 3}
   elkoninList: 1a0000000800000027000000000000000000000000000000
   elkoninCount: 3

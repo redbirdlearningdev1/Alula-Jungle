@@ -26,6 +26,8 @@ public class SplashScreenManager : MonoBehaviour
 
     [SerializeField] TMP_InputField newProfileInput;
 
+    [SerializeField] WiggleController tapTextWiggleController;
+
     private StudentPlayerData data1;
     private StudentPlayerData data2;
     private StudentPlayerData data3;
@@ -35,6 +37,11 @@ public class SplashScreenManager : MonoBehaviour
 
     public float selectedAlpha;
     public float unselectedAlpha;
+
+    public float selectedScale;
+    public float unselectedScale;
+
+    public float lerpSpeed;
 
     public Sprite selectedSprite;
 
@@ -47,6 +54,7 @@ public class SplashScreenManager : MonoBehaviour
 
         // set up profile window
         startButton.interactable = false;
+        startButton.GetComponentInChildren<TextMeshProUGUI>().text = "select profile";
         SetImageAlpha(profile1Image, unselectedAlpha);
         SetImageAlpha(profile2Image, unselectedAlpha);
         SetImageAlpha(profile3Image, unselectedAlpha);
@@ -59,6 +67,9 @@ public class SplashScreenManager : MonoBehaviour
         newProfileWindow.blocksRaycasts = false;
         newProfileWindow.alpha = 0f;
 
+        // wiggle text controller
+        tapTextWiggleController.StartWiggle();
+
         SetUpProfiles();
     }
 
@@ -67,6 +78,7 @@ public class SplashScreenManager : MonoBehaviour
         if ((Input.touchCount > 0 || Input.GetMouseButtonDown(0)) && !screenTapped)
         {
             screenTapped = true;
+
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
             StartCoroutine(RevealProfileWindow(0.5f));
         }
@@ -110,6 +122,9 @@ public class SplashScreenManager : MonoBehaviour
 
     private IEnumerator RevealProfileWindow(float totalTime)
     {
+        // wiggle text controller
+        tapTextWiggleController.StopWiggle();
+
         float timer = 0f;
         while (true)
         {
@@ -208,7 +223,7 @@ public class SplashScreenManager : MonoBehaviour
 
         StudentInfoSystem.ResetProfile(newProfileIndex);
         StudentInfoSystem.SetStudentPlayer(newProfileIndex);
-        StudentInfoSystem.currentStudentPlayer.name = newProfileInput.text;
+        StudentInfoSystem.GetCurrentProfile().name = newProfileInput.text;
         StudentInfoSystem.SaveStudentPlayerData();
 
         SetUpProfiles();
@@ -243,23 +258,47 @@ public class SplashScreenManager : MonoBehaviour
 
         // make start button interactabl
         if (!startButton.interactable)
+        {
             startButton.interactable = true;
+        }
 
         SetImageAlpha(profile1Image, unselectedAlpha);
         SetImageAlpha(profile2Image, unselectedAlpha);
         SetImageAlpha(profile3Image, unselectedAlpha);
 
+        profile1Image.GetComponent<LerpableObject>().LerpScale(new Vector2(unselectedScale, unselectedScale), lerpSpeed);
+        profile2Image.GetComponent<LerpableObject>().LerpScale(new Vector2(unselectedScale, unselectedScale), lerpSpeed);
+        profile3Image.GetComponent<LerpableObject>().LerpScale(new Vector2(unselectedScale, unselectedScale), lerpSpeed);
+
+        StudentPlayerData studentData;
+
         switch (profileNum)
         {
+            default:
             case 1:
                 SetImageAlpha(profile1Image, selectedAlpha);
+                profile1Image.GetComponent<LerpableObject>().LerpScale(new Vector2(selectedScale, selectedScale), lerpSpeed);
+                studentData = StudentInfoSystem.GetStudentData(StudentIndex.student_1);
                 break;
             case 2:
                 SetImageAlpha(profile2Image, selectedAlpha);
+                profile2Image.GetComponent<LerpableObject>().LerpScale(new Vector2(selectedScale, selectedScale), lerpSpeed);
+                studentData = StudentInfoSystem.GetStudentData(StudentIndex.student_2);
                 break;
             case 3:
                 SetImageAlpha(profile3Image, selectedAlpha);
+                profile3Image.GetComponent<LerpableObject>().LerpScale(new Vector2(selectedScale, selectedScale), lerpSpeed);
+                studentData = StudentInfoSystem.GetStudentData(StudentIndex.student_3);
                 break;
+        }
+
+        if (studentData.active)
+        {
+            startButton.GetComponentInChildren<TextMeshProUGUI>().text = "begin game!";
+        }
+        else
+        {
+            startButton.GetComponentInChildren<TextMeshProUGUI>().text = "create new profile!";
         }
     }
 }

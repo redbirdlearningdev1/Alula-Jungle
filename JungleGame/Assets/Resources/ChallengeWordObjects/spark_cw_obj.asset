@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: spark_cw_obj
   m_EditorClassIdentifier: 
   word: spark
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 20e667338951f7345a0569ecd6523a15, type: 3}
   sprite: {fileID: 21300000, guid: fc64aa9fc0032c6438ed0d33170ea7b9, type: 3}
   elkoninList: 25000000220000000e0000001e0000000000000000000000
   elkoninCount: 4

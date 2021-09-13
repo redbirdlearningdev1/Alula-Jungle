@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[System.Serializable]
+public class ChallengeGameTriad
+{
+    public GameData marcusGame;
+    public GameData brutusGame;
+    public GameData juliusGame;
+}
+
 public class GameManager : DontDestroy<GameManager>
 {
     public bool devModeActivated;
@@ -10,10 +18,15 @@ public class GameManager : DontDestroy<GameManager>
     public Vector2Int gameResolution;
 
     // game data
+    [Header("Coin Objects")]
     public List<ActionWord> actionWords;
     public List<ConsonantWord> consonantWords;
-    //public List<Cons
+
+    [Header("Game Datas")]
     public List<StoryGameData> storyGameDatas;
+    public List<ChallengeGameTriad> challengeGameTriads;
+    public List<SubstitutionPair> substitutionPairs;
+    public List<DeletionPair> deletionPairs;
     
     [SerializeField] private GameObject devModeIndicator;
     private bool devIndicatorSet = false;
@@ -32,10 +45,6 @@ public class GameManager : DontDestroy<GameManager>
     {
         // set game resolution
         Screen.SetResolution(gameResolution.x, gameResolution.y, FullScreenMode.FullScreenWindow);
-
-        // student information system setup - set to profile 1 if not chosen
-        if (StudentInfoSystem.currentStudentPlayer == null)
-            StudentInfoSystem.SetStudentPlayer(StudentIndex.student_1);
     }
 
     private void Update()
@@ -49,28 +58,29 @@ public class GameManager : DontDestroy<GameManager>
                 devIndicatorSet = true;
                 devModeIndicator.SetActive(true);
             }
-            // press 'D' to go to the dev menu
-            if (Input.GetKeyDown(KeyCode.D))
+            // press 'Shift + D' to go to the dev menu
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
-                // stop music
-                AudioManager.instance.StopMusic();
-                LoadScene("DevMenu", true);
-            }
-            // press 'F' to toggle between fixed and broken map sprites
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                GameObject smm;
-                smm = GameObject.Find("ScrollMapManager");
-
-                if (smm == null) 
-                    Debug.LogError("GameManager could not find 'ScrollMapManager'");
-                else
+                if (Input.GetKeyDown(KeyCode.D))
                 {
-                    iconsSetBroke = !iconsSetBroke;
-                    smm.GetComponent<ScrollMapManager>().SetMapIconsBroke(iconsSetBroke);
-                    Debug.Log("Map icons broken set to: " + iconsSetBroke);
-                }
+                    LoadScene("DevMenu", true);
+                }                
             }
+            // // press 'F' to toggle between fixed and broken map sprites
+            // if (Input.GetKeyDown(KeyCode.F))
+            // {
+            //     GameObject smm;
+            //     smm = GameObject.Find("ScrollMapManager");
+
+            //     if (smm == null) 
+            //         Debug.LogError("GameManager could not find 'ScrollMapManager'");
+            //     else
+            //     {
+            //         iconsSetBroke = !iconsSetBroke;
+            //         smm.GetComponent<ScrollMapManager>().SetMapIconsBroke(iconsSetBroke);
+            //         Debug.Log("Map icons broken set to: " + iconsSetBroke);
+            //     }
+            // }
         }
         else
         {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: surf_cw_obj
   m_EditorClassIdentifier: 
   word: surf
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: cf51a94afa5ed4747b1a7b073fce381b, type: 3}
   sprite: {fileID: 21300000, guid: d74e6de63f55c7341a099614fe15025e, type: 3}
   elkoninList: 250000000f0000001a000000000000000000000000000000
   elkoninCount: 3

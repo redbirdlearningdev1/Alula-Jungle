@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: horn_cw_obj
   m_EditorClassIdentifier: 
   word: horn
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 99038eeb8ef6ece48b65ca3db3ab025f, type: 3}
   sprite: {fileID: 21300000, guid: 0d941c50ebbd20e47abf975a9e566092, type: 3}
   elkoninList: 1c0000000c00000021000000000000000000000000000000
   elkoninCount: 3

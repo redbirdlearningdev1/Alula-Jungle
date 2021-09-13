@@ -1,6 +1,7 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 #if UNITY_EDITOR
@@ -12,25 +13,32 @@ public class DevMenuManager : MonoBehaviour
     [SerializeField] private TMP_Dropdown navDropdown;
     [SerializeField] private TMP_Dropdown storyGameDropdown;
     [SerializeField] private TMP_Dropdown profileDropdown;
+    [SerializeField] private Toggle fastTalkieToggle;
 
     [SerializeField] private TMP_InputField profileInput;
 
-    private string[] sceneNames = new string[] {  "SplashScene",
-                                                    "DevMenu",
-                                                    "ScrollMap",
-                                                    "TrophyRoomScene",
-                                                    "LoadSaveTestScene",
-                                                    "StoryGame",
-                                                    "FroggerGame",
-                                                    "BoatGame",
-                                                    "SeaShellGame",
-                                                    "TurntablesGame",
-                                                    "RummageGame",
-                                                    "PirateGame",
-                                                    "SpiderwebGame",
-                                                    "MinigameDemoScene",
-                                                    "WordFactoryBlending",
-                                                    "WordFactorySubstituting"};
+    private string[] sceneNames = new string[] {  
+        "ScrollMap",
+        "SplashScene",
+        "DevMenu", 
+
+        "StoryGame",
+        "FroggerGame",
+        "BoatGame",
+        "SeaShellGame",
+        "TurntablesGame",
+        "RummageGame",
+        "PirateGame",
+        "SpiderwebGame",
+
+        "WordFactoryBlending",
+        "WordFactorySubstituting",
+        "WordFactoryDeleting",
+        "TigerPawCoins",
+        "TigerPawPhotos",
+        "Password"
+
+        };
 
     private string[] storyGames = new string[] {
         "0 - Welcome",
@@ -53,10 +61,23 @@ public class DevMenuManager : MonoBehaviour
         storyGameDropdown.AddOptions(storyGamesList);
 
         // setup profiles
-        if (StudentInfoSystem.currentStudentPlayer == null)
-            StudentInfoSystem.SetStudentPlayer(StudentIndex.student_1);
         profileDropdown.onValueChanged.AddListener(delegate { OnProfileDropdownChanged(); });
         SetupProfileDropdown();
+
+        // show UI buttons
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+        SettingsManager.instance.ToggleWagonButtonActive(true);
+    }
+
+    /* 
+    ################################################
+    #   UTILITY SECTION
+    ################################################
+    */
+
+    public void OnFastTalkiesToggled()
+    {
+        TalkieManager.instance.SetFastTalkies(fastTalkieToggle.isOn);
     }
 
     /* 
@@ -88,27 +109,19 @@ public class DevMenuManager : MonoBehaviour
         profileDropdown.AddOptions(profileList);
         
         // set current profile
-        if (StudentInfoSystem.currentStudentPlayer != null)
+
+        switch (StudentInfoSystem.GetCurrentProfile().studentIndex)
         {
-            switch (StudentInfoSystem.currentStudentPlayer.studentIndex)
-            {
-                case StudentIndex.student_1:
-                    profileDropdown.value = 0;
-                    break;
-                case StudentIndex.student_2:
-                    profileDropdown.value = 1;
-                    break;
-                case StudentIndex.student_3:
-                    profileDropdown.value = 2;
-                    break;
-            }
-        }
-        else
-        {
-            // default is 0
-            profileDropdown.value = 0;
-        }
-        
+            case StudentIndex.student_1:
+                profileDropdown.value = 0;
+                break;
+            case StudentIndex.student_2:
+                profileDropdown.value = 1;
+                break;
+            case StudentIndex.student_3:
+                profileDropdown.value = 2;
+                break;
+        }        
     }
 
     public void OnProfileDropdownChanged()
@@ -138,12 +151,9 @@ public class DevMenuManager : MonoBehaviour
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CreateBlip, 1f);
 
-        if (StudentInfoSystem.currentStudentPlayer != null)
-        {
-            StudentInfoSystem.ResetProfile(StudentInfoSystem.currentStudentPlayer.studentIndex);
-            SettingsManager.instance.LoadSettingsFromProfile();
-            SetupProfileDropdown();
-        }
+        StudentInfoSystem.ResetProfile(StudentInfoSystem.GetCurrentProfile().studentIndex);
+        SettingsManager.instance.LoadSettingsFromProfile();
+        SetupProfileDropdown();
     }
 
     public void OnAllProfilesResetPressed()
@@ -163,7 +173,7 @@ public class DevMenuManager : MonoBehaviour
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
-        StudentInfoSystem.currentStudentPlayer.name = profileInput.text;
+        StudentInfoSystem.GetCurrentProfile().name = profileInput.text;
         StudentInfoSystem.SaveStudentPlayerData();
         SetupProfileDropdown();
     }
@@ -173,6 +183,13 @@ public class DevMenuManager : MonoBehaviour
         // play audio blip
         AudioManager.instance.PlayKeyJingle();
         DropdownToolbar.instance.AwardGoldCoins(999);
+    }
+
+    public void OnUnlockStickerShopPressed()
+    {
+        // play audio blip
+        AudioManager.instance.PlayKeyJingle();
+        StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
     }
 
     /* 

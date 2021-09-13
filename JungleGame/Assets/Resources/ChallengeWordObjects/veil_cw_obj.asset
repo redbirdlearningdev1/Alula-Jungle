@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: veil_cw_obj
   m_EditorClassIdentifier: 
   word: veil
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 2edcb545aa256f34f82ba56b90dec8f3, type: 3}
   sprite: {fileID: 21300000, guid: c9fb1772c3b6d5b4c89459f52195ca93, type: 3}
   elkoninList: 29000000070000001f000000000000000000000000000000
   elkoninCount: 3

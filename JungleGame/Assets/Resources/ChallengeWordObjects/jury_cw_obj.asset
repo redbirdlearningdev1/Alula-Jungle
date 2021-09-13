@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: jury_cw_obj
   m_EditorClassIdentifier: 
   word: jury
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 78e959637f72155408d54d1cca34a0c4, type: 3}
   sprite: {fileID: 21300000, guid: e5449fb496854ff40ba66e905900a98c, type: 3}
   elkoninList: 1d0000001100000008000000000000000000000000000000
   elkoninCount: 3
