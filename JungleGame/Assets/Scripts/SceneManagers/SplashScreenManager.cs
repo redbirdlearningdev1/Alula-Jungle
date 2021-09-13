@@ -243,7 +243,7 @@ public class SplashScreenManager : MonoBehaviour
         // set profile to be current player
         StudentInfoSystem.SetStudentPlayer(index);
         // load scroll map scene
-        GameManager.instance.LoadScene("ScrollMap", true);
+        GameManager.instance.LoadScene("ScrollMap", true, 0.5f, true);
     }
 
     public void SelectProfile(int profileNum)

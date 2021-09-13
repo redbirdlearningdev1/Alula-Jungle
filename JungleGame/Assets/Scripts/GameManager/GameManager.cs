@@ -209,10 +209,10 @@ public class GameManager : DontDestroy<GameManager>
         LoadScene("ScrollMap", true);
     }
 
-    public void LoadScene(string sceneName, bool fadeOut, float time = transitionTime)
+    public void LoadScene(string sceneName, bool fadeOut, float time = transitionTime, bool useLoadScene = false)
     {
         RaycastBlockerController.instance.CreateRaycastBlocker("LoadingScene");
-        StartCoroutine(LoadSceneCoroutine(sceneName, fadeOut, time));
+        StartCoroutine(LoadSceneCoroutine(sceneName, fadeOut, time, useLoadScene));
     }
 
     public void LoadScene(int sceneNum, bool fadeOut, float time = transitionTime)
@@ -221,7 +221,7 @@ public class GameManager : DontDestroy<GameManager>
         StartCoroutine(LoadSceneCoroutine(sceneNum, fadeOut, time));
     }
 
-    private IEnumerator LoadSceneCoroutine(string sceneName, bool fadeOut, float time)
+    private IEnumerator LoadSceneCoroutine(string sceneName, bool fadeOut, float time, bool useLoadScene)
     {
         if (fadeOut)
         {
@@ -231,9 +231,22 @@ public class GameManager : DontDestroy<GameManager>
         yield return new WaitForSeconds(time);
 
         SceneCleanup();
+        if (useLoadScene)
+        {
+            SceneManager.LoadSceneAsync("LoadingScene");
+            StartCoroutine(DelayLoadScene(sceneName));
+        }
+        else
+        {
+            SendLog(this, "Loading new scene - " + sceneName);
+            SceneManager.LoadSceneAsync(sceneName);
+        }
+    }
 
-        SendLog(this, "Loading new scene - " + sceneName);
-        SceneManager.LoadSceneAsync(sceneName);
+    private IEnumerator DelayLoadScene(string sceneName)
+    {
+        yield return new WaitForSeconds(1f);
+        LoadingSceneManager.instance.LoadNextScene(sceneName);
     }
 
     private IEnumerator LoadSceneCoroutine(int sceneNum, bool fadeOut, float time)
@@ -246,7 +259,6 @@ public class GameManager : DontDestroy<GameManager>
         yield return new WaitForSeconds(time);
 
         SceneCleanup();
-
         SceneManager.LoadSceneAsync(sceneNum);
     }
 

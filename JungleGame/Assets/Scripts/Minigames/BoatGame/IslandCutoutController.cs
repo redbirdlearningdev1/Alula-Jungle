@@ -22,6 +22,7 @@ public class IslandCutoutController : MonoBehaviour
     private bool followTransform = false;
     private Transform transformToFollow;
 
+
     void Awake()
     {
         if (instance == null)
@@ -112,6 +113,9 @@ public class IslandCutoutController : MonoBehaviour
         // turn off wheel control
         BoatWheelController.instance.isOn = false;
         BoatWheelController.instance.LetGoOfWheel();
+
+        // stop wiggle
+        cutoutWiggleController.StopWiggle();
         
         // move island to correct spot + set new parent
         GoToOceanSpot();
@@ -129,7 +133,10 @@ public class IslandCutoutController : MonoBehaviour
 
         // disable wheel control
         BoatWheelController.instance.isOn = false;
-        yield return new WaitForSeconds(1f);
+            
+        // wait until finished centering on island
+        while (NewParallaxController.instance.centeringOnIsland)
+            yield return null;
 
         // stop following island outline
         StopFollowingTransform();

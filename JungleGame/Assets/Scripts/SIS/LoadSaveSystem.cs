@@ -151,6 +151,8 @@ public static class LoadSaveSystem
         new_data.mapData.GV_challenge2.stars = default_stars;
         new_data.mapData.GV_challenge3.stars = default_stars;
 
+        new_data.mapData.GV_signPost_unlocked = false;
+
         // stickers
         new_data.stickerInventory = new List<InventoryStickerData>();
         // classic sticker board

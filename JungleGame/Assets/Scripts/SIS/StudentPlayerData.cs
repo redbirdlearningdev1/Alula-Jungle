@@ -104,6 +104,8 @@ public class MapData
     public ChallengeGameData GV_challenge1;
     public ChallengeGameData GV_challenge2;
     public ChallengeGameData GV_challenge3;
+
+    public bool GV_signPost_unlocked;
 }
 
 /* 

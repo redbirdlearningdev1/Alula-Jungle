@@ -46,8 +46,6 @@ public class TalkieManager : MonoBehaviour
     public Transform activePos;
     public Transform leftSideHiddenPos;
     public Transform rightSideHiddenPos;
-    public Transform leftSideNotActive;
-    public Transform rightSideNotActive;
 
     [Header("Talkie Variables")]
     public float inactiveScale;
@@ -472,21 +470,17 @@ public class TalkieManager : MonoBehaviour
         if (talkieSeg.activeCharacter == ActiveCharacter.Left)
         {
             StartCoroutine(LerpScaleAndAlpha(leftImage, 1f, 1f, true));
-            //StartCoroutine(MoveObjectRouitne(leftTalkie, activePos.position, talkieDeactivateSpeed));
             if (!rightHidden) 
             {
                 StartCoroutine(LerpScaleAndAlpha(rightImage, inactiveScale, inactiveAlpha, false));
-                StartCoroutine(MoveObjectRouitne(rightTalkie, rightSideNotActive.position, talkieDeactivateSpeed));
             }
         }
         else if (talkieSeg.activeCharacter == ActiveCharacter.Right)
         {
             StartCoroutine(LerpScaleAndAlpha(rightImage, 1f, 1f, false));
-            //StartCoroutine(MoveObjectRouitne(rightTalkie, activePos.position, talkieDeactivateSpeed));
             if (!leftHidden) 
             {
                 StartCoroutine(LerpScaleAndAlpha(leftImage, inactiveScale, inactiveAlpha, true));
-                StartCoroutine(MoveObjectRouitne(leftTalkie, leftSideNotActive.position, talkieDeactivateSpeed));
             }
         }
 

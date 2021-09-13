@@ -4,9 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
+public enum MapLocation
+{
+    NONE,
+    GorillaVillage,
+    Mudslide,
+    COUNT
+}
+
 [System.Serializable]
 public struct MapLocationIcons
 {
+    public MapLocation location;
     public List<MapIcon> mapIcons;
     public SignPostController signPost;
 }
@@ -639,7 +648,16 @@ public class ScrollMapManager : MonoBehaviour
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
-            // tiger sign springs into place
+            yield return new WaitForSeconds(1f);
+
+            // gv sign post springs into place
+            mapIconsAtLocation[2].signPost.ShowSignPost(0);
+            mapIconsAtLocation[2].signPost.GetComponent<SignPostController>().interactable = false;
+            // Save to SIS
+            StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_unlocked = true;
+            StudentInfoSystem.SaveStudentPlayerData();
+
+            yield return new WaitForSeconds(2f);
 
             // play village challenge 3
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageChallengeDefeated_3);
@@ -647,10 +665,12 @@ public class ScrollMapManager : MonoBehaviour
                 yield return null;
 
             // unlock mudslide
-            StartCoroutine(UnlockMapArea(3, true));
+            StartCoroutine(UnlockMapArea(3, false));
             gorilla.ShowExclamationMark(true);
 
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(5f);
+
+            mapIconsAtLocation[2].signPost.GetComponent<SignPostController>().interactable = true;
         }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {
@@ -718,9 +738,23 @@ public class ScrollMapManager : MonoBehaviour
         if (mapIconsAtLocation[location].signPost != null)
         {
             if (opt)
-                mapIconsAtLocation[location].signPost.ShowSignPost(0);
-            else 
+            {
+                // check SIS if signpost unlocked
+                switch (mapIconsAtLocation[location].location)
+                {
+                    case MapLocation.NONE:
+                        break;
+                    case MapLocation.GorillaVillage:
+                        if (StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_unlocked)
+                            mapIconsAtLocation[location].signPost.ShowSignPost(0);
+                        break;
+                    // etc ...
+                }
+            }
+            else
+            {
                 mapIconsAtLocation[location].signPost.HideSignPost();
+            } 
         }
     }
 

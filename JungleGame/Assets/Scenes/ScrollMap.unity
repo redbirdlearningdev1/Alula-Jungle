@@ -4199,8 +4199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3f4d4b9612a3341831e91d1a77d4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overideMapLimit: 0
-  mapLimitNum: 0
+  overideMapLimit: 1
+  mapLimitNum: 3
   overideGameEvent: 1
   gameEvent: 10
   overrideStartPosition: 0
@@ -4246,17 +4246,21 @@ MonoBehaviour:
   leftButton: {fileID: 303760787}
   rightButton: {fileID: 943204350}
   mapIconsAtLocation:
-  - mapIcons: []
+  - location: 0
+    mapIcons: []
     signPost: {fileID: 0}
-  - mapIcons: []
+  - location: 0
+    mapIcons: []
     signPost: {fileID: 0}
-  - mapIcons:
+  - location: 1
+    mapIcons:
     - {fileID: 371829158}
     - {fileID: 630741835}
     - {fileID: 824763108}
     - {fileID: 221261998}
     signPost: {fileID: 747270723}
-  - mapIcons:
+  - location: 2
+    mapIcons:
     - {fileID: 62066861}
     - {fileID: 1184923437}
     - {fileID: 312371131}
@@ -4507,7 +4511,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3959.63, y: -0.0025024414}
+  m_AnchoredPosition: {x: 3959.63, y: -0.0024414062}
   m_SizeDelta: {x: -4.88, y: -0.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &422112012
@@ -5144,7 +5148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &487912186
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8226,7 +8230,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3959.63, y: -0.0025024414}
+  m_AnchoredPosition: {x: 3959.63, y: -0.0024414062}
   m_SizeDelta: {x: -4.88, y: -0.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &899385504
@@ -9971,7 +9975,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 7.820456
+      value: 8.227673
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -11771,7 +11775,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1269171315
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18114,6 +18118,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 117980114}
     m_Modifications:
+    - target: {fileID: 39181223259902777, guid: f7748a1848cf0264fb970eb40dfd7a52,
+        type: 3}
+      propertyPath: interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 39181223259902778, guid: f7748a1848cf0264fb970eb40dfd7a52,
         type: 3}
       propertyPath: m_Pivot.x

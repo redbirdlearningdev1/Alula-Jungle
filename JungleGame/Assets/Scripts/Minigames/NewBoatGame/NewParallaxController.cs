@@ -53,6 +53,7 @@ public class NewParallaxController : MonoBehaviour
 
     private float prevVerticalParallaxPos;
     private bool startVerticalParallax = false;
+    [HideInInspector] public bool centeringOnIsland = false;
     
     [Header("Scale Multipliers")]
     public float skyScale;
@@ -231,6 +232,8 @@ public class NewParallaxController : MonoBehaviour
 
     private IEnumerator CenterOnIslandRoutine()
     {
+        centeringOnIsland = true;
+
         while (islandPosition.position.x > 0)
         {
             direction = BoatParallaxDirection.Left;
@@ -242,6 +245,8 @@ public class NewParallaxController : MonoBehaviour
             yield return null;
         }
         direction = BoatParallaxDirection.Still;
+
+        centeringOnIsland = false;
 
         // continue boat game event
         NewBoatGameManager.instance.IslandCentered();

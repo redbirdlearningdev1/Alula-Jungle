@@ -21,6 +21,7 @@ public class BoatWheelController : MonoBehaviour
     private Coroutine currentRoutine;
     [HideInInspector] public bool holdingWheel;
     private bool isLeft;
+    private bool shakingPannel = false;
 
     public bool isOn = true;
 
@@ -70,13 +71,13 @@ public class BoatWheelController : MonoBehaviour
                     {
                         holdingWheel = true;
                         RotateWheelLeft();
-                        ToggleBoatPannelShake();
+                        ToggleBoatPannelShake(true);
                     }
                     else if (result.gameObject.transform.name == "RightWheelButton")
                     {
                         holdingWheel = true;
                         RotateWheelRight();
-                        ToggleBoatPannelShake();
+                        ToggleBoatPannelShake(true);
                     }
                 }
             }
@@ -86,6 +87,8 @@ public class BoatWheelController : MonoBehaviour
     public void LetGoOfWheel()
     {
         holdingWheel = false;
+        ToggleBoatPannelShake(false);
+        
         if (currentRoutine != null)
             StopCoroutine(currentRoutine);
         ResetWheel();
@@ -144,16 +147,21 @@ public class BoatWheelController : MonoBehaviour
         }
     }
 
-    public void ToggleBoatPannelShake()
+    public void ToggleBoatPannelShake(bool opt)
     {
-        StartCoroutine(ShakeObjectRoutine(boatPannel));
+        if (opt == shakingPannel)
+            return;
+        
+        shakingPannel = opt;
+        if (shakingPannel)
+            StartCoroutine(ShakeObjectRoutine(boatPannel));
     }
 
     private IEnumerator ShakeObjectRoutine(Transform obj)
     {
         Vector3 originalPos = obj.position;
 
-        while (holdingWheel)
+        while (shakingPannel)
         {
             Vector3 pos = originalPos;
             pos.y = originalPos.y + Mathf.Sin(Time.time * shakeSpeed) * shakeAmount;

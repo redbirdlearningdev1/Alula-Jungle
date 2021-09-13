@@ -50,8 +50,8 @@ public class BoatThrottleController : MonoBehaviour
         else if (Input.GetMouseButtonUp(0) && holdingThrottle)
         {
             // stop shake boat pannel
-            if (GetThrottleSpeed() == 0f)
-                BoatWheelController.instance.holdingWheel = false;
+            if (GetThrottleSpeed() <= 0.1f)
+                BoatWheelController.instance.ToggleBoatPannelShake(false);
             
             holdingThrottle = false;
             throttleButton.ToggleScalePressed(false);
@@ -82,11 +82,17 @@ public class BoatThrottleController : MonoBehaviour
 
                         // start shake boat pannel
                         BoatWheelController.instance.holdingWheel = true;
-                        BoatWheelController.instance.ToggleBoatPannelShake();
+                        BoatWheelController.instance.ToggleBoatPannelShake(true);
                     }
                 }
             }
         }
+    }
+
+    public void StopThrottle()
+    {
+        isOn = false;
+        GetComponent<LerpableObject>().LerpPosition(new Vector2(posX, minY), 0.5f, false);
     }
 
     public float GetThrottleSpeed()

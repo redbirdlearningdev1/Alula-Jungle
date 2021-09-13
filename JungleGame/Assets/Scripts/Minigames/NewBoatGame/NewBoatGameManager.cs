@@ -18,6 +18,7 @@ public class NewBoatGameManager : MonoBehaviour
 
     [Header("Mic Input")]
     public float audioInputThreshold;
+    public SpriteRenderer audioInputIndicator;
     private bool waitingForMicButton = false;
 
     private int boatGameEvent = 0;
@@ -29,6 +30,7 @@ public class NewBoatGameManager : MonoBehaviour
     private int repeatTimes = 0;
 
     private bool waitForBlueButton = true;
+    private bool waitForGreenButton = true;
     private bool waitingForMicInput = false;
 
     void Awake()
@@ -40,6 +42,9 @@ public class NewBoatGameManager : MonoBehaviour
 
         // stop music
         AudioManager.instance.StopMusic();
+
+        // remove audio input indicator
+        audioInputIndicator.color = new Color(1f, 1f, 1f, 0f);
 
         StartCoroutine(ContinueBoatGame());
     }
@@ -178,7 +183,7 @@ public class NewBoatGameManager : MonoBehaviour
                 BoatWheelController.instance.isOn = false;
                 BoatThrottleController.instance.isOn = false;
                 IslandCutoutController.instance.isOn = false;
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.25f);
 
                 // play talkie and wait for it to finish
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.boatGame);
@@ -306,6 +311,9 @@ public class NewBoatGameManager : MonoBehaviour
                 repeatDuration = 5f;
                 repeatAudio = true;
 
+                // turn on audio indicator
+                audioInputIndicator.GetComponent<LerpableObject>().LerpSpriteAlpha(audioInputIndicator, 1f, 0.25f);
+                audioInputIndicator.GetComponent<WiggleController>().StartWiggle();
 
                 waitingForMicInput = true;
                 break;
@@ -314,6 +322,10 @@ public class NewBoatGameManager : MonoBehaviour
                 // short break between mic input and next event
                 yield return new WaitForSeconds(1f);
 
+                // turn off audio indicator
+                audioInputIndicator.GetComponent<LerpableObject>().LerpSpriteAlpha(audioInputIndicator, 0f, 0.25f);
+                audioInputIndicator.GetComponent<WiggleController>().StopWiggle();
+
                 // red voiceover 20
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[19]);
                 yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[19].length + 0.5f);
@@ -321,6 +333,7 @@ public class NewBoatGameManager : MonoBehaviour
                 // turn on green button glow + wiggle
                 greenButton.glowOutlineController.ToggleGlowOutline(true);
                 greenButton.wiggleController.StartWiggle();
+                waitForGreenButton = false;
                 break;
 
             case 6:
@@ -376,7 +389,7 @@ public class NewBoatGameManager : MonoBehaviour
 
     public void GreenButtonPressed()
     {
-        if (boatGameEvent == 5)
+        if (boatGameEvent == 5 && !waitForGreenButton)
         {
             boatGameEvent++;
 
@@ -438,7 +451,6 @@ public class NewBoatGameManager : MonoBehaviour
 
         // turn off island cutout
         IslandCutoutController.instance.isOn = false;
-        IslandCutoutController.instance.cutoutWiggleController.StopWiggle();
 
         StartCoroutine(ContinueBoatGame());
     }
@@ -448,7 +460,9 @@ public class NewBoatGameManager : MonoBehaviour
         boatGameEvent++;
 
         // stop boat panel shake
-        BoatWheelController.instance.holdingWheel = false;
+        BoatWheelController.instance.ToggleBoatPannelShake(false);
+        // move throttle down
+        BoatThrottleController.instance.StopThrottle();
 
         StartCoroutine(ContinueBoatGame());
     }
