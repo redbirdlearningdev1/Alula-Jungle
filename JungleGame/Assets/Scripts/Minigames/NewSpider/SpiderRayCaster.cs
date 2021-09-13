@@ -8,7 +8,6 @@ public class SpiderRayCaster : MonoBehaviour
     public bool isOn = false;
     private SpiderCoin selectedCoin = null;
     private BugController selectedBug = null;
-    private bool CoinProcess = true;
     [SerializeField] private Transform selectedCoinParent;
     [SerializeField] private WebBall webBallGlow;
 
@@ -26,7 +25,7 @@ public class SpiderRayCaster : MonoBehaviour
             selectedCoin.transform.position = mousePosWorldSpace;
 
         }
-        else if (Input.GetMouseButtonUp(0) && selectedCoin && CoinProcess)
+        else if (Input.GetMouseButtonUp(0) && selectedCoin)
         {
 
             // send raycast to check for bag
@@ -46,8 +45,6 @@ public class SpiderRayCaster : MonoBehaviour
                         webBallGlow.chestGlowNo();
                         selectedCoin.MoveBack();
                         isCorrect = NewSpiderGameManager.instance.EvaluateSelectedSpiderCoin(selectedCoin.type, selectedCoin);
-                        CoinProcess = false;
-                        StartCoroutine(CoinWait());
                     }
                 }
             }
@@ -67,7 +64,7 @@ public class SpiderRayCaster : MonoBehaviour
             selectedCoin = null;
         }
 
-        if (Input.GetMouseButtonDown(0) && CoinProcess)
+        if (Input.GetMouseButtonDown(0))
         {
 
             var pointerEventData = new PointerEventData(EventSystem.current);
@@ -95,10 +92,4 @@ public class SpiderRayCaster : MonoBehaviour
             }
         }
     }
-    private IEnumerator CoinWait()
-    {
-        yield return new WaitForSeconds(5f);
-        CoinProcess = true;
-    }
-
-    }
+}
