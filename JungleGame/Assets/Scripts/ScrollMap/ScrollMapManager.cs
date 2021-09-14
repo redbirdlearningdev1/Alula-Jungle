@@ -389,7 +389,7 @@ public class ScrollMapManager : MonoBehaviour
                     var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
 
                     // set tiger stuff
-                    tiger.gameData = challengeGameTriad.juliusGame;
+                    tiger.gameData = challengeGameTriad.juliusGame1;
                     tiger.ShowExclamationMark(true);
                     tiger.interactable = true;
                     tiger.GetComponent<Animator>().Play("aTigerTwitch");
@@ -416,7 +416,7 @@ public class ScrollMapManager : MonoBehaviour
             var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
 
             // set tiger stuff
-            tiger.gameData = challengeGameTriad.juliusGame;
+            tiger.gameData = challengeGameTriad.juliusGame1;
             tiger.ShowExclamationMark(true);
 
             // make sure we are at gorilla village
@@ -470,7 +470,7 @@ public class ScrollMapManager : MonoBehaviour
             var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
 
             // set marcus stuff
-            marcus.gameData = challengeGameTriad.marcusGame;
+            marcus.gameData = challengeGameTriad.marcusGame2;
 
             // make sure we are at gorilla village
             mapPosIndex = 2;
@@ -542,7 +542,7 @@ public class ScrollMapManager : MonoBehaviour
             var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
 
             // set brutus stuff
-            brutus.gameData = challengeGameTriad.brutusGame;
+            brutus.gameData = challengeGameTriad.brutusGame3;
 
             // make sure we are at gorilla village
             mapPosIndex = 2;
@@ -667,7 +667,7 @@ public class ScrollMapManager : MonoBehaviour
             // place temp copy over talkie bg
             var tempSignPost = TempObjectPlacer.instance.PlaceNewObject(mapIconsAtLocation[2].signPost.gameObject, mapIconsAtLocation[2].signPost.transform.localPosition);
             tempSignPost.GetComponent<SignPostController>().interactable = false;
-            tempSignPost.GetComponent<SignPostController>().SetStars(0);
+            tempSignPost.GetComponent<SignPostController>().SetStars(StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_stars);
 
             // play village challenge 3
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageChallengeDefeated_3);
@@ -759,7 +759,7 @@ public class ScrollMapManager : MonoBehaviour
                         break;
                     case MapLocation.GorillaVillage:
                         if (StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_unlocked)
-                            mapIconsAtLocation[location].signPost.ShowSignPost(0);
+                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_stars);
                         break;
                     // etc ...
                 }
@@ -890,6 +890,21 @@ public class ScrollMapManager : MonoBehaviour
             img.color = new Color(1f, 1f, 1f, temp);
 
             yield return null;
+        }
+    }
+
+    public MapLocation GetCurrentMapLocation()
+    {
+        switch (mapPosIndex)
+        {
+            default:
+            case 0:
+            case 1:
+                return MapLocation.NONE;
+            case 2:
+                return MapLocation.GorillaVillage;
+            case 3:
+                return MapLocation.Mudslide;
         }
     }
 

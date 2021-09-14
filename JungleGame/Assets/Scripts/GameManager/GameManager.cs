@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public class ChallengeGameTriad
 {
-    public GameData marcusGame;
-    public GameData brutusGame;
-    public GameData juliusGame;
+    public GameData juliusGame1;
+    public GameData marcusGame2;
+    public GameData brutusGame3;
 }
 
 public class GameManager : DontDestroy<GameManager>

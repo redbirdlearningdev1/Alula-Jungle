@@ -219,6 +219,11 @@ MonoBehaviour:
   logo: {fileID: 2939186527251578602}
   ribbon: {fileID: 2939186526506055798}
   crown: {fileID: 2939186525462510250}
+  starRibbon: {fileID: 2939186525615086378}
+  ribbonStars0: {fileID: 21300000, guid: 6e5237339e79fe940b0230852bb2679b, type: 3}
+  ribbonStars1: {fileID: 21300000, guid: 2efd99ce30c8b904e900289eca47ed2a, type: 3}
+  ribbonStars2: {fileID: 21300000, guid: e0e17bd6185519d4ab898725be2134eb, type: 3}
+  ribbonStars3: {fileID: 21300000, guid: 2c31da6c0f941e14697dee64389579fc, type: 3}
   wordFactorySubstitutionLogo: {fileID: 21300000, guid: 193d736a76acbf745ac54bec5013c8c5,
     type: 3}
   wordFactoryBlendingLogo: {fileID: 21300000, guid: e3fa6302675949845a14490f5f4e84b7,

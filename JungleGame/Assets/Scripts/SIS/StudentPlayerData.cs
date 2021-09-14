@@ -89,6 +89,7 @@ public class MapIconData
 [System.Serializable]
 public class ChallengeGameData
 {
+    public GameType gameType;
     public int stars;
 }
 
@@ -106,6 +107,7 @@ public class MapData
     public ChallengeGameData GV_challenge3;
 
     public bool GV_signPost_unlocked;
+    public int GV_signPost_stars;
 }
 
 /* 

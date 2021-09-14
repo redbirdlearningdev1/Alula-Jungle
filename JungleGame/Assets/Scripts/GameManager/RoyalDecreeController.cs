@@ -67,13 +67,22 @@ public class RoyalDecreeController : MonoBehaviour
 
     private IEnumerator OpenWindowRoutine(int index)
     {
+        print ("index: " + index);
+
         // get challenge game triads
         ChallengeGameTriad triad = GameManager.instance.challengeGameTriads[index];
-        List<GameData> gameTypes = new List<GameData>();
 
-        gameTypes.Add(triad.juliusGame);
-        gameTypes.Add(triad.marcusGame);
-        gameTypes.Add(triad.brutusGame);
+        print ("triad: " + triad);
+
+        List<GameData> challengeGames = new List<GameData>();
+
+        challengeGames.Add(triad.juliusGame1);
+        challengeGames.Add(triad.marcusGame2);
+        challengeGames.Add(triad.brutusGame3);
+
+        print ("game1: " + challengeGames[0].gameType);
+        print ("game2: " + challengeGames[1].gameType);
+        print ("game3: " + challengeGames[2].gameType);
 
         // dim bg
         dim_bg.LerpImageAlpha(dim_bg.GetComponent<Image>(), 0.65f, 0.5f);
@@ -88,7 +97,7 @@ public class RoyalDecreeController : MonoBehaviour
         int count = 0;
         foreach (var ribbon in ribbons)
         {
-            ribbon.OpenRibbon(gameTypes[count]);
+            ribbon.OpenRibbon(challengeGames[count]);
             yield return new WaitForSeconds(0.1f);
             count++;
         }
@@ -138,6 +147,7 @@ public class RoyalDecreeController : MonoBehaviour
         if (confirmWindowUp)
             return;
         
+        currGameData = data;
         confirmWindowUp = true;
 
         StartCoroutine(OpenConfirmWindowRoutine());

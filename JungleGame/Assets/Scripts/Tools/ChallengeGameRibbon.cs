@@ -10,6 +10,13 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
     public LerpableObject ribbon;
     public LerpableObject crown;
 
+    [Header("Ribbon Sprites")]
+    public Image starRibbon;
+    public Sprite ribbonStars0;
+    public Sprite ribbonStars1;
+    public Sprite ribbonStars2;
+    public Sprite ribbonStars3;
+
     [Header("Logo Sprites")]
     public Sprite wordFactorySubstitutionLogo;
     public Sprite wordFactoryBlendingLogo;
@@ -39,7 +46,11 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
 
     private IEnumerator OpenRibbonRoutine(GameType challengeGameType)
     {
+        // set logo
         logo.GetComponent<Image>().sprite = GetGameLogo(challengeGameType);
+
+        // set stars
+        SetRibbonStars();
 
         logo.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.05f);
         yield return new WaitForSeconds(0.25f);
@@ -82,6 +93,54 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
         }
     }
 
+    private void SetRibbonStars()
+    {
+        ChallengeGameTriad triad;
+        int stars = 0;
+
+        // determine map area + get sis data
+        switch (ScrollMapManager.instance.GetCurrentMapLocation())
+        {
+            case MapLocation.NONE:
+                GameManager.instance.SendError(this, "Somehow you managed to get challenge games in an invalid area???");
+                break;
+            case MapLocation.GorillaVillage:
+                triad = GameManager.instance.challengeGameTriads[0];
+
+                if (triad.juliusGame1.gameType == myGameData.gameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.stars;
+                else if (triad.marcusGame2.gameType == myGameData.gameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.stars;
+                else if (triad.brutusGame3.gameType == myGameData.gameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.stars;
+
+                break;
+            case MapLocation.Mudslide:
+                triad = GameManager.instance.challengeGameTriads[1];
+
+                break;
+            // etc ...
+        }
+
+        // place correct sprite
+        switch (stars)
+        {
+            default:
+            case 0:
+                starRibbon.sprite = ribbonStars0;
+                break;
+            case 1:
+                starRibbon.sprite = ribbonStars1;
+                break;
+            case 2:
+                starRibbon.sprite = ribbonStars2;
+                break;
+            case 3:
+                starRibbon.sprite = ribbonStars3;
+                break;
+        }
+    }
+
     /* 
     ################################################
     #   POINTER METHODS
@@ -96,9 +155,6 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
 
         if (!isPressed)
         {
-            // play sound
-            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
-
             isPressed = true;
             transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
 
