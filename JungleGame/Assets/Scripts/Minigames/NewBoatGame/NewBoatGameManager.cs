@@ -46,6 +46,10 @@ public class NewBoatGameManager : MonoBehaviour
         // remove audio input indicator
         audioInputIndicator.color = new Color(1f, 1f, 1f, 0f);
 
+        // play ambient sounds
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.AmbientOceanLoop, 0.45f);
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.AmbientSeagullsLoop, 0.1f);
+
         StartCoroutine(ContinueBoatGame());
     }
 
@@ -99,6 +103,9 @@ public class NewBoatGameManager : MonoBehaviour
                 // stop repeating audio
                 repeatAudio = false;
                 AudioManager.instance.StopTalk();
+
+                // play sound effect
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.FoundIslandSparkle, 1f);
 
                 StartCoroutine(ContinueBoatGame());
             } 
@@ -183,7 +190,7 @@ public class NewBoatGameManager : MonoBehaviour
                 BoatWheelController.instance.isOn = false;
                 BoatThrottleController.instance.isOn = false;
                 IslandCutoutController.instance.isOn = false;
-                yield return new WaitForSeconds(0.25f);
+                yield return new WaitForSeconds(3f);
 
                 // play talkie and wait for it to finish
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.boatGame);
@@ -214,6 +221,9 @@ public class NewBoatGameManager : MonoBehaviour
                 break;
 
             case 1:
+                // wait for sounds to finish
+                yield return new WaitForSeconds(2f);
+
                 // red voiceover 6
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[5]);
                 yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[5].length + 0.5f);
@@ -242,6 +252,9 @@ public class NewBoatGameManager : MonoBehaviour
                 break;
 
             case 2:
+                // wait for sounds to finish
+                yield return new WaitForSeconds(2f);
+
                 // red voiceover 9
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[8]);
                 yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[8].length + 0.5f);
@@ -268,6 +281,9 @@ public class NewBoatGameManager : MonoBehaviour
                 break;
 
             case 3:
+                // wait for sounds to finish
+                yield return new WaitForSeconds(2f);
+
                 // red voiceover 12
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[11]);
                 yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[11].length + 0.5f);
@@ -320,6 +336,10 @@ public class NewBoatGameManager : MonoBehaviour
 
             case 5:
                 // short break between mic input and next event
+                yield return new WaitForSeconds(2f);
+                
+                // make fx sound
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
                 yield return new WaitForSeconds(1f);
 
                 // turn off audio indicator
@@ -337,6 +357,9 @@ public class NewBoatGameManager : MonoBehaviour
                 break;
 
             case 6:
+                // short break between mic input and next event
+                yield return new WaitForSeconds(3f);
+
                 StartCoroutine(WinBoatGame());
                 break;
         }
@@ -401,6 +424,9 @@ public class NewBoatGameManager : MonoBehaviour
             repeatAudio = false;
             AudioManager.instance.StopTalk();
 
+            // play sound effects
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BoatHorn, 0.5f);
+
             StartCoroutine(ContinueBoatGame());
         }
     }
@@ -418,6 +444,10 @@ public class NewBoatGameManager : MonoBehaviour
             // stop repeating audio
             repeatAudio = false;
             AudioManager.instance.StopTalk();
+
+            // play sound effects
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.EngineStart, 0.5f);
+            AudioManager.instance.PlayFX_loop(AudioDatabase.instance.AmbientEngineRumble, 0.2f);
 
             StartCoroutine(ContinueBoatGame());
         }
@@ -451,6 +481,9 @@ public class NewBoatGameManager : MonoBehaviour
 
         // turn off island cutout
         IslandCutoutController.instance.isOn = false;
+
+        // play happy sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
 
         StartCoroutine(ContinueBoatGame());
     }

@@ -3529,26 +3529,26 @@ MonoBehaviour:
   SpiderwebTutorial_3: {fileID: 8300000, guid: b84a38c6045d41f44b6513afab9f5e65, type: 3}
   SpiderwebTutorial_4: {fileID: 8300000, guid: 3ca7baecad7fd114791d7486bf723bc1, type: 3}
   boat_game_audio:
-  - {fileID: 8300000, guid: 712166576f2c0324db8ea69d24c3fc3e, type: 3}
-  - {fileID: 8300000, guid: 31e36347f1f8b81459206b5b6260f855, type: 3}
-  - {fileID: 8300000, guid: b1e53fc74908df54098855b4a91e462e, type: 3}
-  - {fileID: 8300000, guid: d01be3aba62f8ae4fbc4f2ab712778b2, type: 3}
-  - {fileID: 8300000, guid: 03191c41797834d4d923f1e270a79c24, type: 3}
-  - {fileID: 8300000, guid: dd4a65ee43e664d40a72ca7a39ef7867, type: 3}
-  - {fileID: 8300000, guid: ecbb416aea5ae0841ae9bfe18a994e3d, type: 3}
-  - {fileID: 8300000, guid: df3db5fc7bfd02c46a45ee20c0bc90da, type: 3}
-  - {fileID: 8300000, guid: d885b62ce7be3f2428fee2c5f0aa7eed, type: 3}
-  - {fileID: 8300000, guid: 876b484a5fd127e49ad5b54e405c96fc, type: 3}
-  - {fileID: 8300000, guid: 4e61abe7ac82ae04180921e7df55616f, type: 3}
-  - {fileID: 8300000, guid: 92bef37acdba24a479c6f848c55fc559, type: 3}
-  - {fileID: 8300000, guid: 9af8a7a5770d0d44b85a187c156d17e5, type: 3}
-  - {fileID: 8300000, guid: cb413c0275c47a7449cae2cbd226af94, type: 3}
-  - {fileID: 8300000, guid: d8eda873674e6f94385722b1bcef0c47, type: 3}
-  - {fileID: 8300000, guid: 9894584898149924c8070c9310fe42a4, type: 3}
-  - {fileID: 8300000, guid: f1c9bd3e28d80904ea7d9d73cb60f84c, type: 3}
-  - {fileID: 8300000, guid: b8de589fc74aa864a83daf0bfac45523, type: 3}
-  - {fileID: 8300000, guid: 1f8a2650985aa9a4ba431372be15de19, type: 3}
-  - {fileID: 8300000, guid: 6008e98f93d7dd8409427bd3e78f7336, type: 3}
+  - {fileID: 8300000, guid: 3209489cb34a2554c8b1f7b108ee4fa7, type: 3}
+  - {fileID: 8300000, guid: f6e592b83e995434992af5eebef79741, type: 3}
+  - {fileID: 8300000, guid: 61f08d69dad08e54a8dbf139c3e6bdfe, type: 3}
+  - {fileID: 8300000, guid: 12f70db60d65bdc4d807c3f806b857c1, type: 3}
+  - {fileID: 8300000, guid: 07e94f23759301149b5c25f1bd28cccf, type: 3}
+  - {fileID: 8300000, guid: e2bb7d20c54f3a14e800977136d04152, type: 3}
+  - {fileID: 8300000, guid: 09950bf8b3b769e4fbb4a39537695265, type: 3}
+  - {fileID: 8300000, guid: 558e343fabdc565428dc594bbe56f7a5, type: 3}
+  - {fileID: 8300000, guid: 2bceb3bf65fbf4b4f841218664042eaf, type: 3}
+  - {fileID: 8300000, guid: 13eb89322bca8164e8b25f4c340b920c, type: 3}
+  - {fileID: 8300000, guid: 234a1d5ce3d10c5499785d4e115d9499, type: 3}
+  - {fileID: 8300000, guid: 989ce7266dc14054f8a04da6159ce43c, type: 3}
+  - {fileID: 8300000, guid: 1298f708a338b6f4085016fd9b286df5, type: 3}
+  - {fileID: 8300000, guid: bd05d287c4b7d294284610deb7fcec32, type: 3}
+  - {fileID: 8300000, guid: 686f3f288e0a54a4ab035ee81bd8667c, type: 3}
+  - {fileID: 8300000, guid: 330b96a2d1f7d9f458aac1919b07a749, type: 3}
+  - {fileID: 8300000, guid: 9c6f688c75fc1ba41a5bd58f2bab06e4, type: 3}
+  - {fileID: 8300000, guid: 1fde080b53a42834da23a9985581d8f8, type: 3}
+  - {fileID: 8300000, guid: 59bd424d68b42d64f975c715e178d507, type: 3}
+  - {fileID: 8300000, guid: 934ff42a1f588614fbe8015d8eb705be, type: 3}
   testSound1: {fileID: 8300000, guid: c350fcdede53aa647b93c6b0ce53e7cd, type: 3}
   RightChoice: {fileID: 8300000, guid: 33ff1a3562326b24e80a23820344a8c4, type: 3}
   WrongChoice: {fileID: 8300000, guid: 2b787eac70b58ff459bacc25ca095636, type: 3}
@@ -3560,6 +3560,16 @@ MonoBehaviour:
   CreateBlip: {fileID: 8300000, guid: 779ed7ac2e6f6d147bc332fe46e99f68, type: 3}
   LeftBlip: {fileID: 8300000, guid: 89a8173ee3e2a1949bd97f6181578a80, type: 3}
   RightBlip: {fileID: 8300000, guid: e12c8ecb6268d7a4ca855df0822e696b, type: 3}
+  AmbientEngineRumble: {fileID: 8300000, guid: 38f7af5a011e72c48b6f034e67013bb2, type: 3}
+  AmbientOceanLoop: {fileID: 8300000, guid: 1b0976663b6bb4c44bd6495fbefc3029, type: 3}
+  AmbientSeagullsLoop: {fileID: 8300000, guid: c00a07e66e5f29241889cfa970d14874, type: 3}
+  BoatHorn: {fileID: 8300000, guid: d4916ddc913dcfb47b102207c0620103, type: 3}
+  BoatMoveRumble: {fileID: 8300000, guid: e5b71783dc9af9243bfc8441ceac96c5, type: 3}
+  EngineStart: {fileID: 8300000, guid: 9198c8c58c2f8f240ab265fb90d92f1b, type: 3}
+  FoundIslandSparkle: {fileID: 8300000, guid: 35a8eab7f0ba3bb4d8bae0502a215688, type: 3}
+  PlacedIslandSplash: {fileID: 8300000, guid: 41bedacd4ad2e654d851d29a23654557, type: 3}
+  TurnWheelLeft: {fileID: 8300000, guid: dca6ee9691d466d49996b9194c8e2087, type: 3}
+  TurnWheelRight: {fileID: 8300000, guid: 139a9064eee029a48857554bbbad2216, type: 3}
   CoinDropArray:
   - {fileID: 8300000, guid: 451bd558733fdab4baea90b7cb7a5b89, type: 3}
   - {fileID: 8300000, guid: 846e91a4285c5e240a52c3fd701c3457, type: 3}
@@ -17207,7 +17217,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 8.495029, y: 0.005817631}
+  m_AnchoredPosition: {x: 8.668374, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

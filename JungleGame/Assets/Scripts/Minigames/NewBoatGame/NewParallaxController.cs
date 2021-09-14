@@ -234,6 +234,9 @@ public class NewParallaxController : MonoBehaviour
     {
         centeringOnIsland = true;
 
+        // play boat move sound effect
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.BoatMoveRumble, 0.25f, "boat_move");
+
         while (islandPosition.position.x > 0)
         {
             direction = BoatParallaxDirection.Left;
@@ -247,6 +250,9 @@ public class NewParallaxController : MonoBehaviour
         direction = BoatParallaxDirection.Still;
 
         centeringOnIsland = false;
+
+        // stop sound effect
+        AudioManager.instance.StopFX("boat_move");
 
         // continue boat game event
         NewBoatGameManager.instance.IslandCentered();
