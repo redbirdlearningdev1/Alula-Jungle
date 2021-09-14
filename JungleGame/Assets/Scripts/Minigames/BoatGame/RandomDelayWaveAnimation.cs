@@ -6,6 +6,7 @@ public class RandomDelayWaveAnimation : MonoBehaviour
 {
     public Animator animator;
     public float maxDelay;
+    public string animationName;
 
     void Awake()
     {
@@ -18,6 +19,6 @@ public class RandomDelayWaveAnimation : MonoBehaviour
 
         yield return new WaitForSeconds(randomDelay);
 
-        animator.Play("water_wavea"); // i accidenally named this file this and im too lazy to fix it and also it doesnt really matter
+        animator.Play(animationName);
     }
 }

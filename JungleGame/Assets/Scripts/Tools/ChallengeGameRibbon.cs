@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class ChallengeGameRibbon : MonoBehaviour
+public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     public LerpableObject logo;
     public LerpableObject ribbon;
@@ -14,6 +15,14 @@ public class ChallengeGameRibbon : MonoBehaviour
     public Sprite wordFactoryBlendingLogo;
     public Sprite tigerPawCoinsLogo;
 
+    private GameData myGameData;
+
+    [Header("Pressed Values")]
+    public float pressedScaleChange;
+    public bool interactable;
+    private bool isPressed;
+    
+
     void Awake()
     {
         // hide UI
@@ -22,9 +31,10 @@ public class ChallengeGameRibbon : MonoBehaviour
         crown.transform.localScale = new Vector3(0f, 0f, 1f);
     }
 
-    public void OpenRibbon(GameType challengeGameType)
+    public void OpenRibbon(GameData gameData)
     {
-        StartCoroutine(OpenRibbonRoutine(challengeGameType));
+        myGameData = gameData;
+        StartCoroutine(OpenRibbonRoutine(myGameData.gameType));
     }
 
     private IEnumerator OpenRibbonRoutine(GameType challengeGameType)
@@ -69,6 +79,42 @@ public class ChallengeGameRibbon : MonoBehaviour
                 return wordFactorySubstitutionLogo;
             case GameType.TigerPawCoins:
                 return tigerPawCoinsLogo;
+        }
+    }
+
+    /* 
+    ################################################
+    #   POINTER METHODS
+    ################################################
+    */
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        // return if not interactable
+        if (!interactable)
+            return;
+
+        if (!isPressed)
+        {
+            // play sound
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+            isPressed = true;
+            transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
+
+            RoyalDecreeController.instance.OpenConfirmWindow(myGameData);
+        }
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (isPressed)
+        {
+            // play audio blip
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+            isPressed = false;
+            transform.localScale = new Vector3(1f, 1f, 1f);
         }
     }
 }

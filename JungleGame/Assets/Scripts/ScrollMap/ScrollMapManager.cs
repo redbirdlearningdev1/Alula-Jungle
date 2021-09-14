@@ -643,6 +643,11 @@ public class ScrollMapManager : MonoBehaviour
 
             yield return new WaitForSeconds(1f);
 
+            // place tiger and monkies off screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.offscreenPos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.offscreenPos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.offscreenPos.position;
+
             // play village challenge 2
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageChallengeDefeated_2);
             while (TalkieManager.instance.talkiePlaying)
@@ -659,10 +664,18 @@ public class ScrollMapManager : MonoBehaviour
 
             yield return new WaitForSeconds(2f);
 
+            // place temp copy over talkie bg
+            var tempSignPost = TempObjectPlacer.instance.PlaceNewObject(mapIconsAtLocation[2].signPost.gameObject, mapIconsAtLocation[2].signPost.transform.localPosition);
+            tempSignPost.GetComponent<SignPostController>().interactable = false;
+            tempSignPost.GetComponent<SignPostController>().SetStars(0);
+
             // play village challenge 3
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageChallengeDefeated_3);
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
+
+            // remove temp temp signpost
+            TempObjectPlacer.instance.RemoveObject();
 
             // unlock mudslide
             StartCoroutine(UnlockMapArea(3, false));

@@ -32,7 +32,7 @@ public class LetterboxController : MonoBehaviour
         bottomRect.gameObject.SetActive(true);
     }
 
-    public void ToggleLetterbox(bool opt, float moveSpeed = 2f)
+    public void ToggleLetterbox(bool opt, float moveSpeed = 1f)
     {
         if (opt == isOn)
             return;

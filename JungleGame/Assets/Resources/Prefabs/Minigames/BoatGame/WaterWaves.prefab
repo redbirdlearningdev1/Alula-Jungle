@@ -55,6 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 5313522800607517928}
   maxDelay: 1
+  animationName: water_wavea
 --- !u!212 &5313522800607517935
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -100,7 +101,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 51.47, y: 47.74}
+  m_Size: {x: 303.25, y: 65.086}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

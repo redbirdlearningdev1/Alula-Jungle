@@ -403,7 +403,6 @@ public class TalkieManager : MonoBehaviour
             {
                 leftHidden = true;
                 StartCoroutine(MoveObjectRouitne(leftTalkie, inactivePos.position, talkieMoveSpeed));
-                yield return new WaitForSeconds(talkieMoveSpeed);
                 ResetLeft();
             }    
         }
@@ -455,7 +454,6 @@ public class TalkieManager : MonoBehaviour
             {
                 rightHidden = true;
                 StartCoroutine(MoveObjectRouitne(rightTalkie, inactivePos.position, talkieMoveSpeed));
-                yield return new WaitForSeconds(talkieMoveSpeed);
                 ResetRight();
             }
         }
