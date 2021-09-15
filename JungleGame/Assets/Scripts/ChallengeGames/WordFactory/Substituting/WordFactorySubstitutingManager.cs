@@ -195,7 +195,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         foreach (var coin in currentCoins)
         {
             GlowAndPlayAudioCoin(coin);
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1f);
         }
         yield return new WaitForSeconds(1f);
 
@@ -400,7 +400,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         if (!waterCoin) coin.LerpSize(expandedCoinSize, 0.25f);
         else  coin.LerpSize(waterExpandedCoinSize, 0.25f);
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         // return if current water coin
         if (coin == currWaterCoin)
         {
@@ -473,6 +473,9 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         {   
             numWins++;
 
+            // play correct sound
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
+
             // slide tiger polaroid under red polaroid
             tigerPolaroid.transform.SetAsFirstSibling();
             tigerPolaroid.SetLayer(0);
@@ -511,6 +514,9 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         else
         {
             numMisses++;
+
+            // play correct sound
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
 
             // slide tiger polaroid under red polaroid
             redPolaroid.transform.SetAsFirstSibling();
