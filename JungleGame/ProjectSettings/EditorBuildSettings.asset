@@ -24,17 +24,23 @@ EditorBuildSettings:
     path: Assets/Scenes/Minigames/StoryGame.unity
     guid: 8fc0390ff4bec1946bf8c4e61a6c291d
   - enabled: 1
+    path: Assets/Scenes/Minigames/NewBoatGame.unity
+    guid: 937f367de3f10824db6990233043941a
+  - enabled: 1
     path: Assets/Scenes/Minigames/FroggerGame.unity
     guid: 2ec3fbeac2b2d19478b9bee70b92a61c
   - enabled: 1
-    path: Assets/Scenes/Minigames/NewBoatGame.unity
-    guid: 937f367de3f10824db6990233043941a
+    path: Assets/Scenes/Minigames/SeaShellGame.unity
+    guid: 767a90eb79f5c7443b8131bdf0808759
   - enabled: 1
     path: Assets/Scenes/Minigames/TurntablesGame.unity
     guid: 6c9b93b7b0eedda4da563620a2ace5a7
   - enabled: 1
     path: Assets/Scenes/Minigames/RummageGame.unity
     guid: c79c6b8a975864246a336e31d57d1355
+  - enabled: 1
+    path: Assets/Scenes/Minigames/NewPirateGame.unity
+    guid: 5914bf4dec5354042abd696c93262f3f
   - enabled: 1
     path: Assets/Scenes/Minigames/NewSpiderGame.unity
     guid: 88383426605cd664c9a29aef33af9b4c

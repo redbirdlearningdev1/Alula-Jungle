@@ -108,20 +108,30 @@ public class LevelPreviewWindow : MonoBehaviour
         windowUp = false;
         // go to game scene
         GameManager.instance.SetDataAndID(gameData, id);
-        GameManager.instance.LoadScene(gameData.sceneName, true);
+        GameManager.instance.LoadScene(gameData.sceneName, true, 0.5f, true);
     }
 
     public void OnNoButtonPressed()
     {
+        StartCoroutine(CloseWindowRoutine());
+    }
+
+    private IEnumerator CloseWindowRoutine()
+    {
         // play sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
-        windowUp = false;
         // hide window 
         StartCoroutine(ShrinkObject(window));
 
         // remove default background and raycast blocker
         DefaultBackground.instance.Deactivate();
+
+        yield return new WaitForSeconds(0.5f);
+        StopAllCoroutines();
+        ResetWindow();
+
+        windowUp = false;
     }
 
     private IEnumerator NewWindowRoutine(int numStars)

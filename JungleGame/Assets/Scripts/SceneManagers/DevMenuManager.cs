@@ -22,14 +22,13 @@ public class DevMenuManager : MonoBehaviour
         "SplashScene",
         "DevMenu", 
 
-        "StoryGame",
         "FroggerGame",
-        "BoatGame",
+        "NewBoatGame",
         "SeaShellGame",
         "TurntablesGame",
         "RummageGame",
-        "PirateGame",
-        "SpiderwebGame",
+        "NewPirateGame",
+        "NewSpiderGame",
 
         "WordFactoryBlending",
         "WordFactorySubstituting",
@@ -51,6 +50,9 @@ public class DevMenuManager : MonoBehaviour
     {
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
+
+        // remove music
+        AudioManager.instance.StopMusic();
 
         // add all build scenes to navDropdown
         List<string> sceneNamesList = new List<string>(sceneNames);
@@ -192,6 +194,45 @@ public class DevMenuManager : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
     }
 
+    public void OnUnlockEverythingButtonPressed()
+    {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CreateBlip, 1f);
+
+        var studentData = StudentInfoSystem.GetCurrentProfile();
+        // unlock everything - (update this as game is developed)
+        studentData.active = true;
+        studentData.mapLimit = 999;
+        studentData.goldCoins = 999;
+
+        studentData.stickerTutorial = true;
+        studentData.froggerTutorial = true;
+        studentData.turntablesTutorial = true;
+        studentData.spiderwebTutorial = true;
+        studentData.rummageTutorial = true;
+
+        studentData.currStoryBeat = StoryBeat.COUNT;
+        studentData.unlockedStickerButton = true;
+
+        // map data
+        studentData.mapData.GV_house1.isFixed = true;
+        studentData.mapData.GV_house1.stars = 3;
+
+        studentData.mapData.GV_house2.isFixed = true;
+        studentData.mapData.GV_house2.stars = 3;
+
+        studentData.mapData.GV_fire.isFixed = true;
+        studentData.mapData.GV_fire.stars = 3;
+
+        studentData.mapData.GV_statue.isFixed = true;
+        studentData.mapData.GV_statue.stars = 3;
+
+        studentData.mapData.GV_signPost_unlocked = true;
+        studentData.mapData.GV_signPost_stars = 3;
+
+        StudentInfoSystem.SaveStudentPlayerData();
+    }   
+
     /* 
     ################################################
     #   NAVIGATION SECTION
@@ -203,7 +244,7 @@ public class DevMenuManager : MonoBehaviour
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
-        GameManager.instance.LoadScene(sceneNames[navDropdown.value], true);
+        GameManager.instance.LoadScene(sceneNames[navDropdown.value], true, 0.5f, true);
     }
 
     public void OnPlayStoryGamePressed()

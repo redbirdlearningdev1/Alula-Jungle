@@ -66,21 +66,6 @@ public class GameManager : DontDestroy<GameManager>
                     LoadScene("DevMenu", true);
                 }                
             }
-            // // press 'F' to toggle between fixed and broken map sprites
-            // if (Input.GetKeyDown(KeyCode.F))
-            // {
-            //     GameObject smm;
-            //     smm = GameObject.Find("ScrollMapManager");
-
-            //     if (smm == null) 
-            //         Debug.LogError("GameManager could not find 'ScrollMapManager'");
-            //     else
-            //     {
-            //         iconsSetBroke = !iconsSetBroke;
-            //         smm.GetComponent<ScrollMapManager>().SetMapIconsBroke(iconsSetBroke);
-            //         Debug.Log("Map icons broken set to: " + iconsSetBroke);
-            //     }
-            // }
         }
         else
         {
@@ -245,7 +230,7 @@ public class GameManager : DontDestroy<GameManager>
 
     private IEnumerator DelayLoadScene(string sceneName)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         LoadingSceneManager.instance.LoadNextScene(sceneName);
     }
 

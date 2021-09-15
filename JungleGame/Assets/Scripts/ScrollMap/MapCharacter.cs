@@ -226,11 +226,11 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         if (gameData)
         {
             GameManager.instance.SetData(gameData);
-            GameManager.instance.LoadScene(gameData.sceneName, true);
+            GameManager.instance.LoadScene(gameData.sceneName, true, 0.5f, true);
         }
         else
         {
-            GameManager.instance.LoadScene("MinigameDemoScene", true);
+            GameManager.instance.LoadScene("MinigameDemoScene", true, 0.5f, true);
         }
     }
 }

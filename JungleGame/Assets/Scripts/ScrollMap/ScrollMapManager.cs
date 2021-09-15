@@ -218,6 +218,8 @@ public class ScrollMapManager : MonoBehaviour
         while (waitingForGameEventRoutine)
             yield return null;
 
+        yield return new WaitForSeconds(0.5f);
+
         AfterGameEventStuff();
     }
 
@@ -328,8 +330,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.VillageRebuilt)
         {
-            showStars = false;
-
             // darwin quips
             gorilla.interactable = true;
 
@@ -349,6 +349,9 @@ public class ScrollMapManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.isFixed &&
                     StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.isFixed)
                 {
+                    // dont show stars
+                    showStars = false;
+
                     // make sure we are at gorilla village
                     mapPosIndex = 2;
                     // move map to next right map location

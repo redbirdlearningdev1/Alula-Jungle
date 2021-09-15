@@ -299,12 +299,12 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             else 
             {
                 GameManager.instance.SetData(gameData);
-                GameManager.instance.LoadScene(gameData.sceneName, true);
+                GameManager.instance.LoadScene(gameData.sceneName, true, 0.5f, true);
             }
         }
         else
         {
-            GameManager.instance.LoadScene("MinigameDemoScene", true);
+            GameManager.instance.LoadScene("MinigameDemoScene", true, 0.5f, true);
         }
     }
 

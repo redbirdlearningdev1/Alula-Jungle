@@ -17,7 +17,15 @@ public class LoadingSceneManager : MonoBehaviour
 
     public void LoadNextScene(string sceneName)
     {
-        SceneManager.LoadSceneAsync(sceneName);
+        StartCoroutine(LoadSceneRoutine(sceneName));
+    }
+
+    private IEnumerator LoadSceneRoutine(string sceneName)
+    {
+        AsyncOperation op = SceneManager.LoadSceneAsync(sceneName);
+        while (!op.isDone)
+            yield return null;
+        FadeObject.instance.FadeOut(0f);
     }
 
     void Update()

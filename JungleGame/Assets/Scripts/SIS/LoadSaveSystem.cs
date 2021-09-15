@@ -13,7 +13,7 @@ public static class LoadSaveSystem
     public static string default_version = "1.8";
     // 1.6 added stickers to SIS
 
-    public static string default_name = "empty";
+    public static string default_name = "new profile :)";
     public static int    default_stars = 0;
     public static int    default_map_limit = 0;
 
