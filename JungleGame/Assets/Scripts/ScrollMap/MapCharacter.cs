@@ -93,6 +93,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
+            yield return new WaitForSeconds(0.5f);
+
             // play gorilla intro 2
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.gorillaIntro_2);
             while (TalkieManager.instance.talkiePlaying)

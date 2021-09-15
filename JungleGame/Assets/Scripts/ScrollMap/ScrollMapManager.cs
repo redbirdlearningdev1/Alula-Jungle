@@ -315,6 +315,12 @@ public class ScrollMapManager : MonoBehaviour
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
 
+                // unlock button in SIS
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                SettingsManager.instance.ToggleWagonButtonActive(true);
+                // add glow + wiggle
+                SettingsManager.instance.ToggleStickerButtonWiggle(true);
+
                 // save to sis and continue
                 StudentInfoSystem.AdvanceStoryBeat();
                 StudentInfoSystem.SaveStudentPlayerData();

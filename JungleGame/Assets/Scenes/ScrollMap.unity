@@ -4717,9 +4717,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3f4d4b9612a3341831e91d1a77d4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overideMapLimit: 1
+  overideMapLimit: 0
   mapLimitNum: 2
-  overideGameEvent: 1
+  overideGameEvent: 0
   gameEvent: 10
   overrideStartPosition: 0
   startPos: 0
@@ -11215,7 +11215,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 12.130025
+      value: 12.149758
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

@@ -314,7 +314,7 @@ public class TalkieManager : MonoBehaviour
                 break;
         }
 
-        //yield return new WaitForSeconds(talkieMoveSpeed);
+        yield return new WaitForSeconds(talkieMoveSpeed);
 
         // deactivate letterbox and background
         if (currentTalkie.removeBackgroundAfterTalkie)
@@ -334,21 +334,6 @@ public class TalkieManager : MonoBehaviour
 
         // set audio back to what it was before
         AudioManager.instance.SetMusicVolume(prevMusicVolume);
-
-        // after talkie action
-        if (currentTalkie.endAction != TalkieEndAction.None)
-        {
-            switch (currentTalkie.endAction)
-            {
-                case TalkieEndAction.UnlockStickerButton:
-                    // unlock button in SIS
-                    StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                    SettingsManager.instance.ToggleWagonButtonActive(true);
-                    // add glow + wiggle
-                    SettingsManager.instance.ToggleStickerButtonWiggle(true);
-                    break;
-            }
-        }
 
         // stop playing talkie
         talkiePlaying = false;
@@ -517,9 +502,16 @@ public class TalkieManager : MonoBehaviour
             yesGoto = talkieSeg.onYesGoto;
             noGoto = talkieSeg.onNoGoto;
 
+            
+            // subtract one from each goto (if less than 0 of course)
+            if (yesGoto > 0)
+                yesGoto--;
+            if (noGoto > 0)
+                noGoto--;
+
             // reveal yes and no buttons
-            StartCoroutine(LerpTransformScale(yesButton.transform, 1f, 0.25f));
-            StartCoroutine(LerpTransformScale(noButton.transform, 1f, 0.25f));
+            yesButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
+            noButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
 
             yesButton.interactable = true;
             noButton.interactable = true;
@@ -550,11 +542,13 @@ public class TalkieManager : MonoBehaviour
         noButton.interactable = true;
 
         // hide yes and no buttons
-        StartCoroutine(LerpTransformScale(yesButton.transform, 0f, 0.25f));
-        StartCoroutine(LerpTransformScale(noButton.transform, 0f, 0.25f));
+        yesButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.1f, 0.1f);
+        noButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.1f, 0.1f);
 
         overrideSegmentIndex = true;
         newSegmentIndex = gotoIndex;
+
+        print ("goto: " + newSegmentIndex);
 
         // on yes
         if (isYes)
@@ -566,70 +560,6 @@ public class TalkieManager : MonoBehaviour
         {
             doNotContinueToGame = true;
         }
-
-        overrideSegmentIndex = true;
-        newSegmentIndex = 1;
-
-        // switch (action)
-        // {
-        //     default:
-        //     case TalkieYesNoAction.None:
-        //         break;
-
-        //     // PreDarwin Talkie Options
-        //     case TalkieYesNoAction.PreDarwin_yes:
-        //         overrideSegmentIndex = true;
-        //         newSegmentIndex = 1;
-        //         break;
-        //     case TalkieYesNoAction.PreDarwin_no:
-        //         doNotContinueToGame = true;
-        //         break;
-
-        //     // julius challenges
-        //     case TalkieYesNoAction.JuliusChalllenges_yes:
-        //         break;
-        //     case TalkieYesNoAction.JuliusChalllenges_no:
-        //         overrideSegmentIndex = true;
-        //         newSegmentIndex = 1;
-        //         doNotContinueToGame = true;
-        //         break;
-
-        //     // julius loses + marcus challanges
-        //     case TalkieYesNoAction.JuliusLosesMarcusChallenges_yes:
-        //         break;
-        //     case TalkieYesNoAction.JuliusLosesMarcusChallenges_no:
-        //         overrideSegmentIndex = true;
-        //         newSegmentIndex = 8;
-        //         doNotContinueToGame = true;
-        //         break;
-
-        //     // marcus challenges
-        //     case TalkieYesNoAction.MarcusChallenges_yes:
-        //         break;
-        //     case TalkieYesNoAction.MarcusChallenges_no:
-        //         overrideSegmentIndex = true;
-        //         newSegmentIndex = 2;
-        //         doNotContinueToGame = true;
-        //         break;
-
-        //     // marcus loses + brutus challenges
-        //     case TalkieYesNoAction.MarcusLosesBrutusChallenges_yes:
-        //         break;
-        //     case TalkieYesNoAction.MarcusLosesBrutusChallenges_no:
-        //         overrideSegmentIndex = true;
-        //         newSegmentIndex = 11;
-        //         doNotContinueToGame = true;
-        //         break;
-
-        //     // brutus challenges
-        //     case TalkieYesNoAction.BrutusChallenges_yes:
-        //         break;
-        //     case TalkieYesNoAction.BrutusChallenges_no:
-        //         overrideSegmentIndex = true;
-        //         newSegmentIndex = 2;
-        //         doNotContinueToGame = true;
-        //         break;
-        // }
 
         waitingForYesNoInput = false;
     }

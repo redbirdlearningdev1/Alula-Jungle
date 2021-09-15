@@ -67,11 +67,9 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
 
     private IEnumerator HideSignPostRoutine()
     {
-        print ("turning off sign post!");
-
         interactable = false;
 
-        yield return new WaitForSeconds (0.5f);
+        yield return new WaitForSeconds (1f);
         animator.Play("hidden");
     }
 
