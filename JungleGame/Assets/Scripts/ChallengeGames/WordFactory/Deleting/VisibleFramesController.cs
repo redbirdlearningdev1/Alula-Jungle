@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VisibleFramesController : MonoBehaviour
 {
@@ -63,6 +64,41 @@ public class VisibleFramesController : MonoBehaviour
                 count++;
             }
         }
+    }
+
+    public void AddFrameSmooth()
+    {
+        StartCoroutine(AddFrameSmoothRoutine());
+    }
+
+    private IEnumerator AddFrameSmoothRoutine()
+    {
+        // count active frames
+        int count = 0;
+        foreach(var frame in frames)
+        {
+            if (frame.activeSelf)
+            {
+                count++;
+            }
+        }
+
+        // make frame to add invisible frames
+        InvisibleFrameLayout.instance.SetNumberOfFrames(count + 1);
+
+        // make newest frame invisible
+        frames[count].GetComponent<LerpableObject>().SetImageAlpha(frames[count].GetComponent<Image>(), 0f);
+
+        // make frame active
+        SetNumberOfFrames(count + 1);
+        yield return new WaitForSeconds(0.5f);
+
+        // move frames to invisible frames
+        StartCoroutine(MoveFramesToInvisibleFramesRoutine());
+        yield return new WaitForSeconds(1f);
+
+        // reveal new frame
+        frames[count].GetComponent<LerpableObject>().LerpImageAlpha(frames[count].GetComponent<Image>(), 1f, 0.5f);
     }
 
     public void MoveFramesToInvisibleFrames()

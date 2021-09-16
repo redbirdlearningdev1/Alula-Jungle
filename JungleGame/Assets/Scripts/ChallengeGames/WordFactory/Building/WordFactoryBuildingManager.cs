@@ -18,7 +18,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
     public List<Transform> waterCoinsInactive;
 
 
-    private DeletionPair currentPair;
+    private BuildingPair currentPair;
     private ChallengeWord currentWord;
     private UniversalCoinImage currentCoin;
 
@@ -63,7 +63,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
     private IEnumerator NewRound()
     {
         // new pair
-        currentPair = GameManager.instance.deletionPairs[Random.Range(0, GameManager.instance.deletionPairs.Count)];
+        currentPair = GameManager.instance.buildingPairs[Random.Range(0, GameManager.instance.buildingPairs.Count)];
 
         // init game delay
         yield return new WaitForSeconds(0.5f);
@@ -135,8 +135,28 @@ public class WordFactoryBuildingManager : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
+        // add extra frame
+        VisibleFramesController.instance.AddFrameSmooth();
+        yield return new WaitForSeconds(0.5f);
+        
+        int count = 0;
+        foreach (var coin in currentCoins)
+        {
+            if (coin.value == currentPair.word2.elkoninList[count])
+            {
+                coin.GetComponent<LerpableObject>().LerpPosToTransform(VisibleFramesController.instance.frames[count].transform, 1f, false);
+            }
+            count++;
+        }
+        yield return new WaitForSeconds(1f);
+
+        // set water coins
+
+        // reveal water coins
+
+
         // turn on raycaster
-        WordFactoryDeletingRaycaster.instance.isOn = true;
+        WordFactoryBuildingRaycaster.instance.isOn = true;
         evaluatingCoin = false;
     }
 
@@ -153,22 +173,22 @@ public class WordFactoryBuildingManager : MonoBehaviour
         currentCoin = coin;
         WordFactoryDeletingManager.instance.ReturnCoinsToFrame();
 
-        print ("current coin value: " + currentCoin.value);
-        print ("value looking for: " + currentPair.word1.elkoninList[currentPair.swipeIndex]);
+        // print ("current coin value: " + currentCoin.value);
+        // print ("value looking for: " + currentPair.word1.elkoninList[currentPair.swipeIndex]);
 
-        // win
-        if (coin.value == currentPair.word1.elkoninList[currentPair.swipeIndex])
-        {
-            numWins++;
-            StartCoroutine(PostRound(true));
-        }
-        // lose 
-        else
-        {
-            numMisses++;
-            currentCoin = coin;
-            StartCoroutine(PostRound(false));
-        }
+        // // win
+        // if (coin.value == currentPair.word1.elkoninList[currentPair.swipeIndex])
+        // {
+        //     numWins++;
+        //     StartCoroutine(PostRound(true));
+        // }
+        // // lose 
+        // else
+        // {
+        //     numMisses++;
+        //     currentCoin = coin;
+        //     StartCoroutine(PostRound(false));
+        // }
     }
 
     private IEnumerator PostRound(bool win)
@@ -203,7 +223,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
             InvisibleFrameLayout.instance.SetNumberOfFrames(currentWord.elkoninCount - 1);
 
             // shrink extra frame
-            VisibleFramesController.instance.frames[currentPair.swipeIndex].GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+            //VisibleFramesController.instance.frames[currentPair.swipeIndex].GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
             yield return new WaitForSeconds(0.2f);
 
             // move coins to frames

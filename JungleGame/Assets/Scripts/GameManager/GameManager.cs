@@ -27,6 +27,7 @@ public class GameManager : DontDestroy<GameManager>
     public List<ChallengeGameTriad> challengeGameTriads;
     public List<SubstitutionPair> substitutionPairs;
     public List<DeletionPair> deletionPairs;
+    public List<BuildingPair> buildingPairs;
     
     [SerializeField] private GameObject devModeIndicator;
     private bool devIndicatorSet = false;
