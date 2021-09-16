@@ -86,7 +86,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9f172605d79958547a4042b023ec6131, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
@@ -254,7 +254,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 52c97fa25d9c4694183cafdb5602a15e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -441,7 +441,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 9f172605d79958547a4042b023ec6131, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -539,6 +539,7 @@ GameObject:
   - component: {fileID: 4557478123324205734}
   - component: {fileID: 2664171615904050252}
   - component: {fileID: 6194744780759327335}
+  - component: {fileID: 7603943743939468552}
   m_Layer: 5
   m_Name: UniversalCoin
   m_TagString: UniversalCoin
@@ -642,3 +643,15 @@ MonoBehaviour:
   test: 0
   shakeSpeed: 32
   shakeAmount: 0.1
+--- !u!114 &7603943743939468552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5101180023445629674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458d3b50667b6a944abf0cc4cfece9d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

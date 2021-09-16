@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class WordFactorySubstituteRaycaster : MonoBehaviour
+public class WordFactoryBuildingRaycaster : MonoBehaviour
 {
-    public static WordFactorySubstituteRaycaster instance;
+    public static WordFactoryBuildingRaycaster instance;
 
     public bool isOn = false;
     public float objcetMoveSpeed = 0.1f;
 
     private GameObject selectedObject = null;
     [SerializeField] private Transform selectedObjectParent;
+    public float lerpedScale;
 
     private bool polaroidAudioPlaying = false;
-    private Transform currentPolaroid;
+    
 
     void Awake()
     {
@@ -31,11 +32,7 @@ public class WordFactorySubstituteRaycaster : MonoBehaviour
         // drag select coin while mouse 1 down
         if (Input.GetMouseButton(0) && selectedObject)
         {
-            Vector3 mousePosWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePosWorldSpace.z = 0f;
-
-            Vector3 pos = Vector3.Lerp(selectedObject.transform.position, mousePosWorldSpace, objcetMoveSpeed);
-            selectedObject.transform.position = pos;
+            selectedObject.transform.position = Input.mousePosition;
         }
         else if (Input.GetMouseButtonUp(0) && selectedObject)
         {
@@ -50,15 +47,21 @@ public class WordFactorySubstituteRaycaster : MonoBehaviour
             {
                 foreach(var result in raycastResults)
                 {
-                    if (result.gameObject.transform.CompareTag("Frame"))
+                    //print ("found: " + result.gameObject.name);
+
+                    if (result.gameObject.transform.CompareTag("CoinTarget"))
                     {
-                        WordFactorySubstitutingManager.instance.EvaluateWaterCoin(selectedObject.GetComponent<UniversalCoin>());
+                        WordFactoryDeletingManager.instance.EvaluateCoin(selectedObject.GetComponent<UniversalCoinImage>());
                     }
                 }
             }
 
-            // return water coins to original position
-            WordFactorySubstitutingManager.instance.ReturnWaterCoins();
+            // wiggle tiger frame
+            EmeraldTigerHolder.instance.GetComponent<WiggleController>().StopWiggle();
+            // scale up tiger
+            EmeraldTigerHolder.instance.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.25f);
+            // readd coin raycast
+            selectedObject.GetComponent<UniversalCoinImage>().ToggleRaycastTarget(true);
             selectedObject = null;
         }
 
@@ -73,23 +76,28 @@ public class WordFactorySubstituteRaycaster : MonoBehaviour
             {
                 foreach(var result in raycastResults)
                 {
-                    if (result.gameObject.transform.CompareTag("UniversalCoin"))
+                    if (result.gameObject.transform.CompareTag("Polaroid"))
                     {
-                        WordFactorySubstitutingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoin>());
-                    }
-                    else if (result.gameObject.transform.CompareTag("WaterCoin"))
-                    {
-                        WordFactorySubstitutingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoin>());
-                        selectedObject = result.gameObject;
-                    }
-                    else if (result.gameObject.transform.CompareTag("Polaroid"))
-                    {
-                        if (currentPolaroid != null)
-                            currentPolaroid.GetComponent<Polaroid>().LerpScale(1f, 0.1f);
-                        
-                        currentPolaroid = result.gameObject.transform;
                         // play audio
-                        StartCoroutine(PlayPolaroidAudio(currentPolaroid.GetComponent<Polaroid>().challengeWord.audio));
+                        StartCoroutine(PlayPolaroidAudio(result.gameObject.GetComponent<Polaroid>().challengeWord.audio));
+                        return;
+                    }
+                    else if (result.gameObject.transform.CompareTag("UniversalCoin"))
+                    {
+                        // play audio
+                        WordFactoryDeletingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
+
+                        // select object
+                        selectedObject = result.gameObject;
+                        selectedObject.gameObject.transform.SetParent(selectedObjectParent);
+
+                        // remove coin raycast
+                        selectedObject.GetComponent<UniversalCoinImage>().ToggleRaycastTarget(false);
+
+                        // wiggle tiger frame
+                        EmeraldTigerHolder.instance.GetComponent<WiggleController>().StartWiggle();
+                        // scale up tiger
+                        EmeraldTigerHolder.instance.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.25f);
                     }
                 }
             }
@@ -99,17 +107,13 @@ public class WordFactorySubstituteRaycaster : MonoBehaviour
     private IEnumerator PlayPolaroidAudio(AudioClip audio)
     {
         if (polaroidAudioPlaying)
-        {
             AudioManager.instance.StopTalk();
-        }
 
-        currentPolaroid.GetComponent<Polaroid>().LerpScale(1.1f, 0.1f);
         polaroidAudioPlaying = true;
 
         AudioManager.instance.PlayTalk(audio);
         yield return new WaitForSeconds(audio.length + 0.1f);
 
-        currentPolaroid.GetComponent<Polaroid>().LerpScale(1f, 0.1f);
         polaroidAudioPlaying = false;
     }
 }
