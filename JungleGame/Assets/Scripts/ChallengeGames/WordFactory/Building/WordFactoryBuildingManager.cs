@@ -14,9 +14,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
 
     [Header("Water Coins")]
     public int numWaterCoins;
-    public List<Transform> waterCoinsActive;
-    public List<Transform> waterCoinsInactive;
-
+    private List<ElkoninValue> elkoninPool;
 
     private BuildingPair currentPair;
     private ChallengeWord currentWord;
@@ -144,15 +142,52 @@ public class WordFactoryBuildingManager : MonoBehaviour
         {
             if (coin.value == currentPair.word2.elkoninList[count])
             {
-                coin.GetComponent<LerpableObject>().LerpPosToTransform(VisibleFramesController.instance.frames[count].transform, 1f, false);
+                coin.GetComponent<LerpableObject>().LerpPosToTransform(VisibleFramesController.instance.frames[count].transform, 0.75f, false);
             }
             count++;
         }
         yield return new WaitForSeconds(1f);
 
-        // set water coins
 
+        // create elkonin pool to choose water coins from
+        elkoninPool = new List<ElkoninValue>();
+        // add ALL values
+        string[] allElkoninValues = System.Enum.GetNames(typeof(ElkoninValue));
+        for (int i = 0; i < allElkoninValues.Length; i++)
+        {
+            elkoninPool.Add((ElkoninValue)System.Enum.Parse(typeof(ElkoninValue), allElkoninValues[i]));
+        }
+        // remove extra values
+        elkoninPool.Remove(ElkoninValue.empty_gold);
+        elkoninPool.Remove(ElkoninValue.empty_silver);
+        elkoninPool.Remove(ElkoninValue.COUNT);
+        // remove specific swipe values
+        elkoninPool.Remove(currentPair.word2.elkoninList[currentPair.addIndex]);
+
+        // set water coins
+        WaterCoinsController.instance.SetNumberWaterCoins(numWaterCoins);
+
+        int correctIndex = Random.Range(0, numWaterCoins);
+
+        for (int i = 0; i < numWaterCoins; i++)
+        {
+            if (i == correctIndex)
+            {
+                WaterCoinsController.instance.waterCoins[i].SetValue(currentPair.word2.elkoninList[currentPair.addIndex]);
+            }
+            else 
+            {
+                // get random value
+                ElkoninValue value = elkoninPool[Random.Range(0, elkoninPool.Count)];
+                elkoninPool.Remove(value);
+
+                WaterCoinsController.instance.waterCoins[i].SetValue(value);
+            }
+        }
+        yield return new WaitForSeconds(0.5f);
+        
         // reveal water coins
+        WaterCoinsController.instance.ShowWaterCoins();
 
 
         // turn on raycaster
