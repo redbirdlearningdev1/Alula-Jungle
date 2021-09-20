@@ -76,3 +76,6 @@ TagManager:
   - name: StickerCart
     uniqueID: 3286489083
     locked: 0
+  - name: GameManager
+    uniqueID: 847651197
+    locked: 0

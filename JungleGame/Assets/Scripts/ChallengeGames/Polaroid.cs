@@ -7,10 +7,6 @@ using UnityEngine.UI;
 public class Polaroid : MonoBehaviour
 {
     public ChallengeWord challengeWord;
-    [SerializeField] private SpriteRenderer picture;
-    [SerializeField] private SpriteRenderer background;
-
-    public bool useImg;
     [SerializeField] private Image pictureImg;
     [SerializeField] private Image backgroundImg;
 
@@ -19,10 +15,7 @@ public class Polaroid : MonoBehaviour
         challengeWord = word;
 
         // set picture
-        if (!useImg)
-            picture.sprite = word.sprite;
-        else 
-            pictureImg.sprite = word.sprite;
+        pictureImg.sprite = word.sprite;
     }
 
     public void MovePolaroid(Vector3 position, float lerpTime)
@@ -99,17 +92,17 @@ public class Polaroid : MonoBehaviour
 
     public void SetLayer(int layer)
     {
-        background.sortingOrder = layer;
-        picture.sortingOrder = layer + 1;
+        // background.sortingOrder = layer;
+        // picture.sortingOrder = layer + 1;
     }
 
     public void ToggleGlowOutline(bool opt)
     {
-        background.GetComponent<GlowOutlineController>().ToggleGlowOutline(opt);
+        // background.GetComponent<GlowOutlineController>().ToggleGlowOutline(opt);
     }
 
     public void SetGlowColor(Color color)
     {
-        background.GetComponent<GlowOutlineController>().SetColor(color);
+        // background.GetComponent<GlowOutlineController>().SetColor(color);
     }
 }

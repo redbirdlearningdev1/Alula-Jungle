@@ -16,6 +16,7 @@ public class GameManager : DontDestroy<GameManager>
     public bool devModeActivated;
     public const float transitionTime = 0.5f; // time to fade into and out of a scene (total transition time is: transitionTime * 2)
     public Vector2Int gameResolution;
+    public Camera globalCamera;
 
     // game data
     [Header("Coin Objects")]

@@ -15,8 +15,6 @@ public class UniversalCoinImage : MonoBehaviour
     // coin objects
     [SerializeField] private ActionWordCoin actionWordCoin;
     [SerializeField] private ConsonantCoin consonantCoin;
-    [SerializeField] private GlowOutlineController glowConroller;
-    [SerializeField] private SpriteRenderer glowSpriteRenderer;
     [SerializeField] private Image goldImage;
     [SerializeField] private Image silverImage;
     [SerializeField] private SpriteShakeController shakeController;
@@ -24,10 +22,7 @@ public class UniversalCoinImage : MonoBehaviour
 
     void Awake()
     {
-        // set the glow renderer to be invisible
-        glowSpriteRenderer.color = new Color(1f, 1f, 1f, 0f);
-
-        // set sprite renderer
+        // set images
         if (coinType == CoinType.ActionWordCoin)
             currImage = goldImage;
         else if (coinType == CoinType.ConsonantCoin)
@@ -156,11 +151,7 @@ public class UniversalCoinImage : MonoBehaviour
 
     public void ToggleGlowOutline(bool opt)
     {
-        if (opt)
-            glowSpriteRenderer.color = new Color(1f, 1f, 1f, 1f);
-        else
-            glowSpriteRenderer.color = new Color(1f, 1f, 1f, 0f);
-        glowConroller.ToggleGlowOutline(opt);
+        ImageGlowController.instance.SetImageGlow(currImage, opt);
     }
 
     /* 
