@@ -22,6 +22,27 @@ public class WaterCoinsController : MonoBehaviour
             instance = this;
     }
 
+    public void ReturnWaterCoins()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (waterCoins[i].gameObject.activeSelf && waterCoins[i] != WordFactoryBuildingManager.instance.currentCoin)
+            {
+                waterCoins[i].GetComponent<LerpableObject>().LerpPosition(activeCoinPos[i].transform.position, 0.25f, false);
+                waterCoins[i].LerpSize(WordFactoryBuildingManager.instance.normalCoinSize, 0.2f);
+            }
+        }
+    }
+
+    public void ResetWaterCoins()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            waterCoins[i].GetComponent<LerpableObject>().LerpPosition(inactiveCoinPos[i].transform.position, 0.25f, false);
+            waterCoins[i].LerpSize(WordFactoryBuildingManager.instance.normalCoinSize, 0.2f);
+        }
+    }
+
     public void SetNumberWaterCoins(int num)
     {
         if (num > 1 && num <= 6)

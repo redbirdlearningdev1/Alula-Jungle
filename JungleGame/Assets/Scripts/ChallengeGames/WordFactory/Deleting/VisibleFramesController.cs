@@ -40,6 +40,10 @@ public class VisibleFramesController : MonoBehaviour
         // move frames off-screen
         foreach(var frame in frames)
             frame.transform.localPosition = offScreenPos.localPosition;
+
+        // reset tags
+        foreach(var frame in frames)
+            frame.tag = "Untagged";
     }
 
     public void PlaceActiveFrames(Vector2 pos)
@@ -139,7 +143,7 @@ public class VisibleFramesController : MonoBehaviour
         {
             if (frame.activeSelf)
             {
-                frame.GetComponent<LerpableObject>().LerpPosition(new Vector2(frame.transform.position.x, frame.transform.position.y - 500f), 0.5f, false);
+                frame.GetComponent<LerpableObject>().LerpPosition(new Vector2(frame.transform.position.x, frame.transform.position.y - 550f), 0.5f, false);
             }
         }
         yield return new WaitForSeconds(1f);
