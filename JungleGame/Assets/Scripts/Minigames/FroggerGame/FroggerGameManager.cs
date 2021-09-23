@@ -155,7 +155,7 @@ public class FroggerGameManager : MonoBehaviour
         // disable all coins + glow controller
         foreach (var coin in allCoins)
         {
-            coin.ToggleVisibility(false, false);
+            coin.GetComponent<LerpableObject>().SetImageAlpha(coin.image, 0f);
         }
 
         // sink all the logs except the first row
@@ -210,7 +210,7 @@ public class FroggerGameManager : MonoBehaviour
         bag.UpgradeBag();
 
         // remove selected coin
-        selectedCoin.ToggleVisibility(false, true);
+        selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.5f);
         yield return new WaitForSeconds(1f);
         selectedCoin.ReturnToLog();
 
@@ -245,7 +245,7 @@ public class FroggerGameManager : MonoBehaviour
         bag.UpgradeBag();
 
         // remove selected coin
-        selectedCoin.ToggleVisibility(false, true);
+        selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.5f);
         yield return new WaitForSeconds(1f);
         selectedCoin.ReturnToLog();
         selectedCoin = null;
@@ -392,8 +392,10 @@ public class FroggerGameManager : MonoBehaviour
         bag.UpgradeBag();
 
         // remove selected coin
-        selectedCoin.ToggleVisibility(false, true);
+        ImageGlowController.instance.SetImageGlow(selectedCoin.image, false);
+        selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.5f);
         yield return new WaitForSeconds(1f);
+        
         selectedCoin.ReturnToLog();
         selectedCoin = null;
 
@@ -442,7 +444,7 @@ public class FroggerGameManager : MonoBehaviour
         bag.UpgradeBag();
 
         // remove selected coin
-        selectedCoin.ToggleVisibility(false, true);
+        selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.5f);
         yield return new WaitForSeconds(1f);
         selectedCoin.ReturnToLog();
         selectedCoin = null;
@@ -572,7 +574,7 @@ public class FroggerGameManager : MonoBehaviour
             }            
 
             coin.SetCoinType(type);
-            coin.ToggleVisibility(true, true);
+            coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.image, 1f, 0.5f);
 
             yield return new WaitForSeconds(0.1f);
             idx++;
@@ -581,7 +583,7 @@ public class FroggerGameManager : MonoBehaviour
         // select the correct coin
         if (playTutorial)
         {
-            SelectCoin(currRow, correctTutorialCoins[currRow]).glowController.ToggleGlowOutline(true);
+            ImageGlowController.instance.SetImageGlow(SelectCoin(currRow, correctTutorialCoins[currRow]).image, true, GlowValue.glow_5_04);
         }
         else
         {
@@ -619,7 +621,7 @@ public class FroggerGameManager : MonoBehaviour
         foreach (var coin in row)
         {
             if (coin != exceptCoin)
-                coin.ToggleVisibility(false, true);
+                coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.image, 0f, 0.5f);
             yield return new WaitForSeconds(0.1f);
         }
     }
@@ -690,7 +692,7 @@ public class FroggerGameManager : MonoBehaviour
     private IEnumerator ShowDancingManRoutine()
     {
         float timer = 0f;
-        float totalTime = 1f;
+        float totalTime = 0.5f;
 
         while (true)
         {

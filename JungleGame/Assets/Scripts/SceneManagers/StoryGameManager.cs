@@ -187,7 +187,7 @@ public class StoryGameManager : MonoBehaviour
 
         // set coin init before pause
         coin.SetCoinType(ActionWordEnum._blank);
-        coin.SetTransparency(0.25f, true);
+        coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.image, 0.25f, 0.5f);
 
         // small pause before game begins
         yield return new WaitForSeconds(2f);
@@ -201,7 +201,7 @@ public class StoryGameManager : MonoBehaviour
             else
                 coin.SetCoinType(ActionWordEnum._blank);
             // make coin transparent
-            coin.SetTransparency(0.25f, true);
+            coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.image, 0.25f, 0.5f);
 
             // read text if available
             if (seg.readText)
@@ -234,7 +234,7 @@ public class StoryGameManager : MonoBehaviour
             if (seg.containsActionWord)
             {
                 // remove coin transparency
-                coin.SetTransparency(1f, true);
+                coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.image, 1f, 0.5f);
 
                 // set current variables
                 currentEnum = seg.actionWord;
@@ -279,7 +279,7 @@ public class StoryGameManager : MonoBehaviour
         }
         
         // make coin transparent
-        coin.SetTransparency(0.25f, true);
+        coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.image, 0.25f, 0.5f);
 
         EndGame();
     } 

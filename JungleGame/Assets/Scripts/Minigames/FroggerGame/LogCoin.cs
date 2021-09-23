@@ -13,8 +13,7 @@ public class LogCoin : MonoBehaviour
 
     private Animator animator;
     private BoxCollider2D myCollider;
-    private Image image;
-    [HideInInspector] public GlowOutlineController glowController;
+    public Image image;
     private bool audioPlaying;
 
     // original vars
@@ -30,7 +29,6 @@ public class LogCoin : MonoBehaviour
         myCollider.size = rt.sizeDelta;
 
         image = GetComponent<Image>();
-        glowController = GetComponent<GlowOutlineController>();
     }
 
     /* 
@@ -98,79 +96,5 @@ public class LogCoin : MonoBehaviour
         AudioManager.instance.PlayPhoneme(type);
         yield return new WaitForSeconds(1f);
         audioPlaying = false;
-    }
-
-    /* 
-    ################################################
-    #   VISIBILITY FUNCTIONS
-    ################################################
-    */
-
-    public void ToggleVisibility(bool opt, bool smooth)
-    {
-        if (smooth)
-            StartCoroutine(ToggleVisibilityRoutine(opt));
-        else
-        {
-            if (!image)
-                image = GetComponent<Image>();
-            Color temp = image.color;
-            if (opt) { temp.a = 1f; }
-            else {temp.a = 0; }
-            image.color = temp;
-        }
-    }
-
-    public void SetTransparency(float alpha, bool smooth)
-    {
-        if (smooth)
-            StartCoroutine(SetTransparencyRoutine(alpha));
-        else
-        {
-            if (!image)
-                image = GetComponent<Image>();
-            Color temp = image.color;
-            temp.a = alpha;
-            image.color = temp;
-        }
-    }
-
-    private IEnumerator SetTransparencyRoutine(float alpha)
-    {
-        float end = alpha;
-        float timer = 0f;
-        while(true)
-        {
-            timer += Time.deltaTime;
-            Color temp = image.color;
-            temp.a = Mathf.Lerp(temp.a, end, timer);
-            image.color = temp;
-
-            if (image.color.a == end)
-            {
-                break;
-            }
-            yield return null;
-        }
-    }
-
-    private IEnumerator ToggleVisibilityRoutine(bool opt)
-    {
-        float end = 0f;
-        if (opt) { end = 1f; }
-        float timer = 0f;
-        while(true)
-        {
-            timer += Time.deltaTime;
-            Color temp = image.color;
-            temp.a = Mathf.Lerp(temp.a, end, timer);
-            image.color = temp;
-
-            if (image.color.a == end)
-            {
-                break;
-            }
-            yield return null;
-        }
     }
 }

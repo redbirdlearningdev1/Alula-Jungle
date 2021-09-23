@@ -6047,7 +6047,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 633d0f3b847a19b42beb9395611ab204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowOnMaterial: {fileID: 2100000, guid: 0fd86de2c651d5e47ab575eba9ed2e14, type: 2}
+  glowOnMaterial_1_025: {fileID: 2100000, guid: 0fd86de2c651d5e47ab575eba9ed2e14,
+    type: 2}
+  glowOnMaterial_5_04: {fileID: 2100000, guid: ef60416c8e3f408448675d2302b80c21, type: 2}
   glowOffMaterial: {fileID: 2100000, guid: a4fd16949f35ee44fad2e4328f1b77f6, type: 2}
 --- !u!1 &831864360609041128
 GameObject:
@@ -17378,7 +17380,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 40.924698, y: 0.005817631}
+  m_AnchoredPosition: {x: 40.936172, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ImageOutline_ON
+  m_Name: ImageOutline_ON_5_0.4
   m_Shader: {fileID: 4800000, guid: c20308b0e23b78d4c85098af31f19cb4, type: 3}
   m_ShaderKeywords: _ISOUTLINEENABLED_ON
   m_LightmapFlags: 4
@@ -37,11 +37,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - PixelSnap: 0
-    - _AlphaThreshold: 0.5
+    - _AlphaThreshold: 0.4
     - _ColorMask: 15
     - _EnableExternalAlpha: 0
     - _IsOutlineEnabled: 1
-    - _OutlineSize: 4.2
+    - _OutlineSize: 5
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0

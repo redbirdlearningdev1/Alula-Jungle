@@ -57,10 +57,13 @@ public class CoinRaycaster : MonoBehaviour
             }
 
             // bag glow effect off
-            ImageGlowController.instance.SetImageGlow(Bag.instance.GetComponent<Image>(), false);      
+            ImageGlowController.instance.SetImageGlow(Bag.instance.GetComponent<Image>(), false);
 
             if (!isCorrect)
                 selectedCoin.ReturnToLog();
+
+            // make coin normal size
+            selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
             selectedCoin = null;
         }
 
@@ -80,9 +83,11 @@ public class CoinRaycaster : MonoBehaviour
                         selectedCoin = result.gameObject.GetComponent<LogCoin>();
                         selectedCoin.PlayPhonemeAudio();
                         selectedCoin.gameObject.transform.SetParent(selectedCoinParent);
+                        // make coin larger
+                        selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.5f, 1.5f), 0.2f);
 
-                        // bag glow effect off
-                        ImageGlowController.instance.SetImageGlow(Bag.instance.GetComponent<Image>(), true);
+                        // bag glow effect on
+                        ImageGlowController.instance.SetImageGlow(Bag.instance.GetComponent<Image>(), true, GlowValue.glow_1_025);
                     } 
                 }
             }

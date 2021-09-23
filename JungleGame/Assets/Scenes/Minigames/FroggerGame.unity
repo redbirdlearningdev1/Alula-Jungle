@@ -1468,7 +1468,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 44.353004
+      value: 44.77639
       objectReference: {fileID: 0}
     - target: {fileID: 8111103781665821981, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -10776,6 +10776,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 903969768712174366, guid: 491ed0cca28cda34e8dc92a68aa0a61c,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: a4fd16949f35ee44fad2e4328f1b77f6, type: 2}
     - target: {fileID: 2863203264575560310, guid: 491ed0cca28cda34e8dc92a68aa0a61c,
         type: 3}
       propertyPath: logPos
