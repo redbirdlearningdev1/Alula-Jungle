@@ -143,7 +143,7 @@ public class SettingsManager : MonoBehaviour
 
     public void ToggleWagonButtonActive(bool opt)
     {
-        GameManager.instance.SendLog(this, "setting wagon button to: " + opt);
+        //GameManager.instance.SendLog(this, "setting wagon button to: " + opt);
         if (opt)
         {
             wagonButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
@@ -158,7 +158,7 @@ public class SettingsManager : MonoBehaviour
 
     public void ToggleMenuButtonActive(bool opt)
     {
-        GameManager.instance.SendLog(this, "setting menu button to: " + opt);
+        //GameManager.instance.SendLog(this, "setting menu button to: " + opt);
         if (opt)
         {
             menuButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);

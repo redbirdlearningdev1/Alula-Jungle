@@ -12,6 +12,8 @@ public class FroggerGameManager : MonoBehaviour
     [SerializeField] private Bag bag;
     [SerializeField] private TaxiController taxi;
     [SerializeField] private DancingManController dancingMan;
+    public Transform dancingManOffScreen;
+    public Transform dancingManOnScreen;
     private bool playingDancingManAnimation = false;
     private bool gameSetup = false;
 
@@ -124,6 +126,9 @@ public class FroggerGameManager : MonoBehaviour
         // start song
         AudioManager.instance.PlaySong(AudioDatabase.instance.FroggerGameSong);
 
+        // place dancing man off-screen
+        dancingMan.gameObject.transform.position = dancingManOffScreen.position;
+
         // create coin list
         foreach (var coin in coins1)
             allCoins.Add(coin);
@@ -150,7 +155,6 @@ public class FroggerGameManager : MonoBehaviour
         // disable all coins + glow controller
         foreach (var coin in allCoins)
         {
-            coin.GetComponent<GlowOutlineController>().ToggleGlowOutline(false);
             coin.ToggleVisibility(false, false);
         }
 
@@ -322,6 +326,10 @@ public class FroggerGameManager : MonoBehaviour
         while (!gameSetup)
             yield return null;
 
+        // reveal dancing man
+        StartCoroutine(ShowDancingManRoutine());
+        yield return new WaitForSeconds(1f);
+
         currRow = 0;
         // show first row coins
         StartCoroutine(ShowCoins(currRow));
@@ -346,6 +354,9 @@ public class FroggerGameManager : MonoBehaviour
 
         currRow = 0;
         ShowTutorialCoins();
+
+        // reveal dancing man
+        StartCoroutine(ShowDancingManRoutine());
         yield return new WaitForSeconds(1f);
 
         // play tutorial audio
@@ -675,6 +686,25 @@ public class FroggerGameManager : MonoBehaviour
     #   MISC UTIL FUNCTIONS
     ################################################
     */
+
+    private IEnumerator ShowDancingManRoutine()
+    {
+        float timer = 0f;
+        float totalTime = 1f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > totalTime)
+            {
+                break;
+            }
+
+            Vector3 tempPos = Vector3.Lerp(dancingManOffScreen.position, dancingManOnScreen.position, timer / totalTime);
+            dancingMan.gameObject.transform.position = tempPos;
+            yield return null;
+        }
+    }
 
     // used to control dancing man's animations
     private IEnumerator DancingManRoutine()

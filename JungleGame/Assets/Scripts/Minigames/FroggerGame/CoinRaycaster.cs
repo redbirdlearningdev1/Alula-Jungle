@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class CoinRaycaster : MonoBehaviour
@@ -56,9 +57,7 @@ public class CoinRaycaster : MonoBehaviour
             }
 
             // bag glow effect off
-            Bag.instance.glowController.ToggleGlowOutline(false);
-
-            
+            ImageGlowController.instance.SetImageGlow(Bag.instance.GetComponent<Image>(), false);      
 
             if (!isCorrect)
                 selectedCoin.ReturnToLog();
@@ -83,7 +82,7 @@ public class CoinRaycaster : MonoBehaviour
                         selectedCoin.gameObject.transform.SetParent(selectedCoinParent);
 
                         // bag glow effect off
-                        Bag.instance.glowController.ToggleGlowOutline(true);
+                        ImageGlowController.instance.SetImageGlow(Bag.instance.GetComponent<Image>(), true);
                     } 
                 }
             }

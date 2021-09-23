@@ -1030,7 +1030,7 @@ public class ScrollMapManager : MonoBehaviour
     // set the index where the player can no longer go forward
     public void SetMapLimit(int index)
     {
-        print ("index: " + index);
+        // print ("index: " + index);
         if (index >= 0 && index < cameraLocations.Count)
         {
             FogController.instance.mapXpos = fogLocations[index];

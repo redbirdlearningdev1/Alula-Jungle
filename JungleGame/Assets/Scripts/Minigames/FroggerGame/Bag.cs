@@ -6,14 +6,13 @@ using UnityEngine.UI;
 public class Bag : MonoBehaviour
 {
     public static Bag instance;
-    public GlowOutlineController glowController;
 
     private int currBag = 0;
     private const int maxBag = 5;
 
 
     [Header("Objects")]
-    [SerializeField] private SpriteRenderer bag;
+    [SerializeField] private Image bag;
     [SerializeField] private Image shadow;
 
     [Header("Images")]
@@ -26,10 +25,6 @@ public class Bag : MonoBehaviour
         {
             instance = this;
         }
-
-        // get glow controller
-        glowController = GetComponent<GlowOutlineController>();
-        glowController.ToggleGlowOutline(false);
 
         bag.sprite = bagSprites[currBag];
         shadow.sprite = shadowSprites[currBag];

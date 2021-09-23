@@ -18,9 +18,6 @@ EditorBuildSettings:
     path: Assets/Scenes/ScrollMap.unity
     guid: 10c04496277340a499ace6e1d98bd35e
   - enabled: 1
-    path: Assets/Scenes/TrophyRoomScene.unity
-    guid: 6baec3b5b25b92448bc2425b805c8e1d
-  - enabled: 1
     path: Assets/Scenes/Minigames/StoryGame.unity
     guid: 8fc0390ff4bec1946bf8c4e61a6c291d
   - enabled: 1
@@ -45,9 +42,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Minigames/NewSpiderGame.unity
     guid: 88383426605cd664c9a29aef33af9b4c
   - enabled: 1
-    path: Assets/Scenes/MinigameDemoScene.unity
-    guid: b878814cc0549414586bb0ccba91f961
-  - enabled: 1
     path: Assets/Scenes/ChallengeGames/WordFactoryBlending.unity
     guid: 38b0bea0c4d079a4481b0f6e925b0c72
   - enabled: 1
@@ -56,6 +50,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ChallengeGames/WordFactoryDeleting.unity
     guid: 8eba7def5cd555b44974b5ee2c4a344d
+  - enabled: 1
+    path: Assets/Scenes/ChallengeGames/WordFactoryBuilding.unity
+    guid: cedc562132950034694f2f294dcef1fc
   - enabled: 1
     path: Assets/Scenes/ChallengeGames/TigerPawCoins.unity
     guid: 7a7d1c623fb257d448b2ff5b9ab4e393
