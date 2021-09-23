@@ -33,7 +33,7 @@ public class RopeController : MonoBehaviour
     {
         if (keys.Contains(k))
         {
-            k.GetComponent<GlowOutlineController>().ToggleGlowOutline(opt);
+            ImageGlowController.instance.SetImageGlow(k.image, true, GlowValue.glow_1_025);
         }
     }
 
@@ -44,7 +44,7 @@ public class RopeController : MonoBehaviour
         {
             foreach (var k in keys)
             {
-                k.GetComponent<GlowOutlineController>().ToggleGlowOutline(false);
+                ImageGlowController.instance.SetImageGlow(k.image, false);
             }
         }
     }

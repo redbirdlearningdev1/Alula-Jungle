@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [ExecuteInEditMode]
 public class Door : MonoBehaviour
 {
     public bool isCenterDoor;
     [SerializeField] private ActionWordEnum currentIcon;
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    public GlowOutlineController glowController;
+    public Image image;
 
     [Range(0.0f, 360.0f)]
     public float doorAngle;
@@ -24,9 +24,9 @@ public class Door : MonoBehaviour
         currentIcon = icon;
 
         if (!isCenterDoor)
-            spriteRenderer.sprite = GameManager.instance.GetActionWord(currentIcon).doorIcon;
+            image.sprite = GameManager.instance.GetActionWord(currentIcon).doorIcon;
         else
-            spriteRenderer.sprite = GameManager.instance.GetActionWord(currentIcon).centerIcon;
+            image.sprite = GameManager.instance.GetActionWord(currentIcon).centerIcon;
     }
 
     public void ShakeIconSwitch(ActionWordEnum icon)
@@ -38,7 +38,7 @@ public class Door : MonoBehaviour
     {
         bool switchedIcon = false;
         float timer = 0f;
-        Vector3 originalPos = spriteRenderer.transform.position;
+        Vector3 originalPos = image.transform.position;
 
         while (true)
         {
@@ -50,13 +50,13 @@ public class Door : MonoBehaviour
             }
             else if (timer > duration)
             {
-                spriteRenderer.transform.position = originalPos;
+                image.transform.position = originalPos;
                 break;
             }
 
             Vector3 pos = originalPos;
             pos.x = originalPos.x + Mathf.Sin(Time.time * shakeSpeed) * shakeAmount;
-            spriteRenderer.transform.position = pos;
+            image.transform.position = pos;
             yield return null;
         }
     }

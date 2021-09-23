@@ -7,6 +7,8 @@ public class KeyRaycaster : MonoBehaviour
 {
     public bool isOn = false;
     public float keyMoveSpeed = 0.1f;
+    public Vector3 oddOffset;
+    public Vector3 evenOffset;
 
     private Key selectedKey = null;
     [SerializeField] private Transform selectedKeyParent;
@@ -20,10 +22,20 @@ public class KeyRaycaster : MonoBehaviour
         // drag select coin while mouse 1 down
         if (Input.GetMouseButton(0) && selectedKey)
         {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePos.z = 0f;
+            Vector3 mousePosWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosWorldSpace.z = 0f;
 
-            Vector3 pos = Vector3.Lerp(selectedKey.transform.position, mousePos, keyMoveSpeed);
+            Vector3 pos = Vector3.Lerp(selectedKey.transform.position, mousePosWorldSpace, keyMoveSpeed);
+
+            if (selectedKey.keyName == "k2" || selectedKey.keyName == "k4")
+            {
+                pos += evenOffset;
+            }
+            else
+            {
+                pos += oddOffset;
+            }
+            
             selectedKey.transform.position = pos;
         }
         else if (Input.GetMouseButtonUp(0) && selectedKey)
@@ -53,13 +65,13 @@ public class KeyRaycaster : MonoBehaviour
             }
             else
             {
-                selectedKey.SetLayer(2);
+                selectedKey.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.25f);
                 selectedKey.ReturnToRope();
                 selectedKey = null;
             }
 
             // rock lock glow effect off
-            RockLock.instance.glowController.ToggleGlowOutline(false);
+            ImageGlowController.instance.SetImageGlow(RockLock.instance.image, false);
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -76,11 +88,12 @@ public class KeyRaycaster : MonoBehaviour
                     if (result.gameObject.transform.CompareTag("Key"))
                     {
                         selectedKey = result.gameObject.GetComponentInParent<Key>();
-                        selectedKey.SetLayer(3);
+                        //selectedKey.SetLayer(3);
                         selectedKey.PlayAudio();
                         selectedKey.gameObject.transform.SetParent(selectedKeyParent);
+                        selectedKey.GetComponent<LerpableObject>().LerpScale(new Vector2(1.25f, 1.25f), 0.25f);
                         // rock lock glow effect on
-                        RockLock.instance.glowController.ToggleGlowOutline(true);
+                        ImageGlowController.instance.SetImageGlow(RockLock.instance.image, true, GlowValue.glow_1_025);
                     }
                 }
             }
