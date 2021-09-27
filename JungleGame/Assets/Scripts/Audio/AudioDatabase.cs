@@ -28,6 +28,7 @@ public class AudioDatabase : MonoBehaviour
     public AudioClip TurntablesGameSong;
 
     public AudioClip[] FroggerSongSplit;
+    public AudioClip[] TurntablesSongSplit;
 
     /* 
     ################################################

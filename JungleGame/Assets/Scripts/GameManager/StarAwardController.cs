@@ -76,6 +76,9 @@ public class StarAwardController : MonoBehaviour
             return;
         }
 
+        // end split music (default)
+        AudioManager.instance.EndSplitSong();
+
         // update SIS
         UpdateSIS(numStars);
     }

@@ -61,6 +61,9 @@ public class TurntablesGameManager : MonoBehaviour
         {
             instance = this;
         }
+
+        // show menu bars
+        SettingsManager.instance.ToggleMenuButtonActive(true);
     }
 
     void Start()
@@ -275,7 +278,9 @@ public class TurntablesGameManager : MonoBehaviour
 
     private IEnumerator DoorSuccessRoutine()
     {
-        // print ("success!");
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+
         // dissipate key
         keys[correctKeyIndex].Dissipate();
         // move door to unlocked position
@@ -369,6 +374,9 @@ public class TurntablesGameManager : MonoBehaviour
 
     private IEnumerator WinRoutine()
     {
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+
         // dissipate key
         keys[correctKeyIndex].Dissipate();
         // make door icon glow special
@@ -529,6 +537,9 @@ public class TurntablesGameManager : MonoBehaviour
 
     private IEnumerator TutorialCorrectRoutine()
     {
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+
         print ("success!");
         // dissipate key
         keys[correctKeyIndex].Dissipate();
@@ -600,6 +611,9 @@ public class TurntablesGameManager : MonoBehaviour
 
     private IEnumerator TutorialCompleteRoutine()
     {
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+
         // print ("you win!");
         // dissipate key
         keys[correctKeyIndex].Dissipate();
@@ -806,6 +820,7 @@ public class TurntablesGameManager : MonoBehaviour
     private IEnumerator StartMusicDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        AudioManager.instance.PlaySong(AudioDatabase.instance.TurntablesGameSong);
+        AudioManager.instance.InitSplitSong(SplitSong.Turntables);
+        AudioManager.instance.IncreaseSplitSong();
     }
 }

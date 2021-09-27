@@ -5,7 +5,8 @@ using UnityEngine.Audio;
 
 public enum SplitSong
 {
-    Frogger
+    Frogger,
+    Turntables
 }
 
 public class AudioManager : MonoBehaviour
@@ -177,8 +178,23 @@ public class AudioManager : MonoBehaviour
                 count++;
             }
         }
+        else if (song == SplitSong.Turntables)
+        {
+            int count = 0;
+            foreach(var split in AudioDatabase.instance.TurntablesSongSplit)
+            {
+                musicSources[count].clip = split;
+                count++;
+            }
+        }
 
         setUpSplitSong = true;
+    }
+
+    public void EndSplitSong()
+    {   
+        startedSplitSong = false;
+        setUpSplitSong = false;
     }
 
     public void IncreaseSplitSong()

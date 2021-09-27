@@ -65,13 +65,14 @@ public class FroggerGameManager : MonoBehaviour
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
-        // show menu bars
-        SettingsManager.instance.ToggleMenuButtonActive(true);
-
         if (!instance)
         {
             instance = this;
         }
+
+        // show menu bars
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+
 
         // dev object stuff
         devObject.SetActive(GameManager.instance.devModeActivated);
@@ -455,7 +456,7 @@ public class FroggerGameManager : MonoBehaviour
     {
         // increase split song
         AudioManager.instance.IncreaseSplitSong();
-        
+
         print ("you win!");
         // TODO: animate coin into bag
         rows[currRow].ResetCoinPos(selectedCoin);
