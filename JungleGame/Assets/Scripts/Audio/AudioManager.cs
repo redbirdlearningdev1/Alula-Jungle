@@ -3,14 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
+public enum SplitSong
+{
+    Frogger
+}
+
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
     public AudioMixer masterMixer;
 
+    public float smoothSplitDuration;
+    private int currSplitIndex = 0;
+    private bool startedSplitSong = false;
+    private bool setUpSplitSong = false;
+
     [Header("Audio Sources")]
-    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private List<AudioSource> musicSources;
     [SerializeField] private AudioSource talkSource;
 
     [Header("FX Audio Stuff")]
@@ -121,20 +131,135 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySong(AudioClip song)
     {
-        if (song == musicSource.clip)
+        if (song == musicSources[0].clip)
             return;
 
-        musicSource.Stop();
+        musicSources[0].Stop();
 
-        musicSource.clip = song;
-        musicSource.loop = true;
-        musicSource.Play();
+        musicSources[0].clip = song;
+        musicSources[0].loop = true;
+        musicSources[0].Play();
     }
 
     public void StopMusic()
     {
-        musicSource.Stop();
-        musicSource.clip = null;
+        musicSources[0].Stop();
+        musicSources[0].clip = null;
+    }
+
+    /* 
+    ################################################
+    #   SPLIT MUSIC CONTROLLER
+    ################################################
+    */
+
+    public void InitSplitSong(SplitSong song)
+    {
+        currSplitIndex = 0;
+        startedSplitSong = false;
+
+        // set each source to be empty and ready
+        foreach (var source in musicSources)
+        {
+            source.Stop();
+            source.clip = null;
+            source.loop = true;
+            source.volume = 0f;
+        }
+
+        // add each clip to source
+        if (song == SplitSong.Frogger)
+        {
+            int count = 0;
+            foreach(var split in AudioDatabase.instance.FroggerSongSplit)
+            {
+                musicSources[count].clip = split;
+                count++;
+            }
+        }
+
+        setUpSplitSong = true;
+    }
+
+    public void IncreaseSplitSong()
+    {
+        if (!setUpSplitSong)
+            return;
+
+        if (!startedSplitSong)
+        {
+            musicSources[0].volume = 0.5f;
+            currSplitIndex++;
+
+            // begin all music sources at once
+            foreach(var source in musicSources)
+                source.Play();
+
+            startedSplitSong = true;
+            return;
+        }
+        else
+        {
+            if (currSplitIndex >= musicSources.Count)
+                return;
+
+            print ("currSplitIndex: " + currSplitIndex);
+
+            StartCoroutine(SmoothStartSource(musicSources[currSplitIndex], smoothSplitDuration));
+            currSplitIndex++;
+        }
+    }
+
+    public void DecreaseSplitSong()
+    {
+        if (!setUpSplitSong || !startedSplitSong)
+            return;
+
+        if (currSplitIndex <= 0)
+            return;
+
+        currSplitIndex--;
+        StartCoroutine(SmoothEndSource(musicSources[currSplitIndex], smoothSplitDuration));
+    }
+
+    private IEnumerator SmoothStartSource(AudioSource source, float duration)
+    {
+        float timer = 0f;
+        float endVol = 0.5f;
+
+        while (true)
+        {   
+            timer += Time.deltaTime;
+            if (timer >= duration)
+            {
+                source.volume = endVol;
+                break;
+            }
+
+            float tempVol = Mathf.Lerp(0f, endVol, timer / duration);
+            source.volume = tempVol;
+            yield return null;
+        }   
+    }
+
+    private IEnumerator SmoothEndSource(AudioSource source, float duration)
+    {
+        float timer = 0f;
+        float startVol = source.volume;
+
+        while (true)
+        {   
+            timer += Time.deltaTime;
+            if (timer >= duration)
+            {
+                source.volume = 0f;
+                break;
+            }
+
+            float tempVol = Mathf.Lerp(startVol, 0f, timer / duration);
+            source.volume = tempVol;
+            yield return null;
+        }
     }
 
     /* 

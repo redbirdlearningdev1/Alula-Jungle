@@ -27,6 +27,8 @@ public class AudioDatabase : MonoBehaviour
     public AudioClip FroggerGameSong;
     public AudioClip TurntablesGameSong;
 
+    public AudioClip[] FroggerSongSplit;
+
     /* 
     ################################################
     #   TUTORIAL AUDIO DATABASE

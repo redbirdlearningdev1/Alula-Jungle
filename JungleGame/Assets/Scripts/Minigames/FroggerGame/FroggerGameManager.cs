@@ -65,6 +65,9 @@ public class FroggerGameManager : MonoBehaviour
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
+        // show menu bars
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+
         if (!instance)
         {
             instance = this;
@@ -124,7 +127,8 @@ public class FroggerGameManager : MonoBehaviour
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.1f, "river_loop");
 
         // start song
-        AudioManager.instance.PlaySong(AudioDatabase.instance.FroggerGameSong);
+        AudioManager.instance.InitSplitSong(SplitSong.Frogger);
+        AudioManager.instance.IncreaseSplitSong();
 
         // place dancing man off-screen
         dancingMan.gameObject.transform.position = dancingManOffScreen.position;
@@ -170,6 +174,9 @@ public class FroggerGameManager : MonoBehaviour
 
     private IEnumerator CoinFailRoutine()
     {
+        // decrease split song
+        AudioManager.instance.DecreaseSplitSong();
+
         // inc times missed
         timesMissed++;
 
@@ -204,6 +211,9 @@ public class FroggerGameManager : MonoBehaviour
 
     private IEnumerator CoinSuccessRoutine()
     {
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+
         // TODO: animate coin into bag
         rows[currRow].ResetCoinPos(selectedCoin);
         taxi.CelebrateAnimation();
@@ -238,6 +248,9 @@ public class FroggerGameManager : MonoBehaviour
 
     private IEnumerator WinRoutine()
     {
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+
         print ("you win!");
         // TODO: animate coin into bag
         rows[currRow].ResetCoinPos(selectedCoin);
@@ -386,6 +399,9 @@ public class FroggerGameManager : MonoBehaviour
 
     private IEnumerator ContinueTutorialRoutine()
     {
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+
         // TODO: animate coin into bag
         rows[currRow].ResetCoinPos(selectedCoin);
         taxi.CelebrateAnimation();
@@ -437,6 +453,9 @@ public class FroggerGameManager : MonoBehaviour
 
     private IEnumerator CompleteTutorialRoutine()
     {
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+        
         print ("you win!");
         // TODO: animate coin into bag
         rows[currRow].ResetCoinPos(selectedCoin);
