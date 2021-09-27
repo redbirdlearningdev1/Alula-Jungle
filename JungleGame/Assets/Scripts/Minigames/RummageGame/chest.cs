@@ -9,8 +9,7 @@ public class chest : MonoBehaviour
     private const int maxBag = 5;
 
     [Header("Objects")]
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private GlowOutlineController glowOutlineController;
+    [SerializeField] private Image image;
 
     [Header("Images")]
     [SerializeField] private List<Sprite> bagSprites;
@@ -18,7 +17,7 @@ public class chest : MonoBehaviour
 
     void Awake()
     {
-        spriteRenderer.sprite = bagSprites[currBag];
+        image.sprite = bagSprites[currBag];
     }
 
     public void UpgradeBag()
@@ -28,7 +27,7 @@ public class chest : MonoBehaviour
             currBag++;
         }
 
-        spriteRenderer.sprite = bagSprites[currBag];
+        image.sprite = bagSprites[currBag];
     }
 
     public void DowngradeBag()
@@ -38,16 +37,16 @@ public class chest : MonoBehaviour
             currBag--;
         }
 
-        spriteRenderer.sprite = bagSprites[currBag];
+        image.sprite = bagSprites[currBag];
     }
 
     public void chestGlow()
     {
-        glowOutlineController.ToggleGlowOutline(true);
+        ImageGlowController.instance.SetImageGlow(image, true, GlowValue.glow_1_025);
     }
 
     public void chestGlowNo()
     {
-        glowOutlineController.ToggleGlowOutline(false);
+        ImageGlowController.instance.SetImageGlow(image, false);
     }
 }

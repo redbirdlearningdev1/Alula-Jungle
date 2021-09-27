@@ -9,10 +9,9 @@ public class pileRummage : MonoBehaviour
     private const int maxPile = 1;
     public bool chosen = false;
     public bool currPileLock = true;
-    public GameObject currPileObj;
 
     [Header("Objects")]
-    [SerializeField] private SpriteRenderer Pile;
+    [SerializeField] private Image image;
 
     [Header("Images")]
     [SerializeField] private List<Sprite> pileSprites;
@@ -30,7 +29,7 @@ public class pileRummage : MonoBehaviour
             currPile++;
         }
 
-        Pile.sprite = pileSprites[currPile];
+        image.sprite = pileSprites[currPile];
 
     }
 
@@ -39,17 +38,16 @@ public class pileRummage : MonoBehaviour
         if (currPile == 0)
         {
             chosen = true;
-            //Debug.Log(Pile.ToString());
         }
     }
 
     public void colliderOn()
     {
-        currPileObj.GetComponent<BoxCollider2D>().enabled = true;
+        image.raycastTarget = true;
     }
     public void colliderOff()
     {
-        currPileObj.GetComponent<BoxCollider2D>().enabled = false;
+        image.raycastTarget = false;
     }
 
     public void pileComplete()
@@ -60,21 +58,19 @@ public class pileRummage : MonoBehaviour
     public void pileDone()
     {
         chosen = false;
-        Pile.sprite = pileSprites[1];
+        image.sprite = pileSprites[1];
     }
 
     public void pileGlowOff()
     {
-        //print ("turning off glow! " + gameObject.name);
-        Pile.GetComponent<GlowOutlineController>().ToggleGlowOutline(false);
+        ImageGlowController.instance.SetImageGlow(image, false);
     }
 
     public void pileGlowOn()
     {
         if (currPileLock)
         {
-            //print ("turning on glow! " + gameObject.name);
-            Pile.GetComponent<GlowOutlineController>().ToggleGlowOutline(true);
+            ImageGlowController.instance.SetImageGlow(image, true, GlowValue.glow_1_00);
         }
     }
 

@@ -41,13 +41,13 @@ public class RummageCoinRaycaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("Bag"))
                     {
-                        Debug.Log(selectedRummageCoin.type);
-                        isCorrect = RummageGameManager.instance.EvaluateSelectedRummageCoin(selectedRummageCoin.type);
+                        isCorrect = RummageGameManager.instance.EvaluateSelectedRummageCoin(selectedRummageCoin);
                     }
                 }
             }
             Chester.chestGlowNo();
-            selectedRummageCoin.ReturnToCloth();
+            //selectedRummageCoin.ReturnToCloth();
+            selectedRummageCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(2f, 2f), 0.1f);
             selectedRummageCoin = null;
         }
 
@@ -67,46 +67,34 @@ public class RummageCoinRaycaster : MonoBehaviour
                         selectedRummageCoin = result.gameObject.GetComponent<RummageCoin>();
                         selectedRummageCoin.PlayPhonemeAudio();
                         selectedRummageCoin.gameObject.transform.SetParent(selectedCoinParent);
+                        selectedRummageCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(2.25f, 2.25f), 0.1f);
                         Chester.chestGlow();
-
                     }
                     if (result.gameObject.transform.CompareTag("Pile"))
                     {
-                        //Debug.Log(result.gameObject.ToString());
-
-                        if (result.gameObject.ToString() == "dirtyp1 (UnityEngine.GameObject)")
+                        if (result.gameObject.name == "Pile1")
                         {
-
                             piles[0].pileChose();
                         }
-                        if (result.gameObject.ToString() == "dirtyp2 (UnityEngine.GameObject)")
+                        if (result.gameObject.name == "Pile2")
                         {
-
                             piles[1].pileChose();
                         }
-                        if (result.gameObject.ToString() == "dirtyp3 (UnityEngine.GameObject)")
+                        if (result.gameObject.name == "Pile3")
                         {
-
                             piles[2].pileChose();
                         }
-                        if (result.gameObject.ToString() == "dirtyp4 (UnityEngine.GameObject)")
+                        if (result.gameObject.name == "Pile4")
                         {
-
                             piles[3].pileChose();
                         }
-                        if (result.gameObject.ToString() == "dirtyp5 (UnityEngine.GameObject)")
+                        if (result.gameObject.name == "Pile5")
                         {
-
                             piles[4].pileChose();
                         }
-
-
-
                     }
                 }
             }
-
         }
     }
-
 }

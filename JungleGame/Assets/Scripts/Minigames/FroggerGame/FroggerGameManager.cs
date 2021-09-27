@@ -692,17 +692,33 @@ public class FroggerGameManager : MonoBehaviour
     private IEnumerator ShowDancingManRoutine()
     {
         float timer = 0f;
-        float totalTime = 0.5f;
+        float moveTime = 0.3f;
+        Vector3 bouncePos = dancingManOnScreen.position;
+        bouncePos.y += 0.5f;
 
         while (true)
         {
             timer += Time.deltaTime;
-            if (timer > totalTime)
+            if (timer > moveTime)
             {
                 break;
             }
 
-            Vector3 tempPos = Vector3.Lerp(dancingManOffScreen.position, dancingManOnScreen.position, timer / totalTime);
+            Vector3 tempPos = Vector3.Lerp(dancingManOffScreen.position, bouncePos, timer / moveTime);
+            dancingMan.gameObject.transform.position = tempPos;
+            yield return null;
+        }
+        timer = 0f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > 0.1f)
+            {
+                break;
+            }
+
+            Vector3 tempPos = Vector3.Lerp(bouncePos, dancingManOnScreen.position, timer / 0.1f);
             dancingMan.gameObject.transform.position = tempPos;
             yield return null;
         }

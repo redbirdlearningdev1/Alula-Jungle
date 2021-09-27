@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public enum GlowValue
 {
     none,
+    glow_1_00,
     glow_1_025,
     glow_5_04
 }
@@ -14,6 +15,7 @@ public class ImageGlowController : MonoBehaviour
 {
     public static ImageGlowController instance;
 
+    public Material glowOnMaterial_1_00;
     public Material glowOnMaterial_1_025;
     public Material glowOnMaterial_5_04;
     public Material glowOffMaterial;
@@ -33,6 +35,9 @@ public class ImageGlowController : MonoBehaviour
                 default:
                 case GlowValue.none:
                     img.material = glowOffMaterial;
+                    break;
+                case GlowValue.glow_1_00:
+                    img.material = glowOnMaterial_1_00;
                     break;
                 case GlowValue.glow_1_025:
                     img.material = glowOnMaterial_1_025;

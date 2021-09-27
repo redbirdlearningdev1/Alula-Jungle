@@ -6,14 +6,11 @@ using UnityEngine.UI;
 public class RummageCoin : MonoBehaviour
 {
     public ActionWordEnum type;
-    public int logIndex;
     public Transform clothPos;
-    public Transform pileParent;
+    public Transform coinParent;
     public Vector3 pileMovement1;
     public Vector3 pileMovement2;
     public Vector3 Origin;
-    private Vector3 scaleNormal = new Vector3(.67f, .67f, 0f);
-    private Vector3 scaleSmall = new Vector3(.33f, .33f, 0f);
     public float moveSpeed = 5f;
 
     private Animator animator;
@@ -68,7 +65,6 @@ public class RummageCoin : MonoBehaviour
             else
             {
                 transform.position = target;
-                transform.SetParent(pileParent);
                 yield break;
             }
 
@@ -78,36 +74,11 @@ public class RummageCoin : MonoBehaviour
 
     public void grow()
     {
-        StartCoroutine(growRoutine(scaleNormal));
+        GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(2.1f, 2.1f), new Vector2(2f, 2f), 0.2f, 0.2f);
     }
     public void shrink()
     {
-        StartCoroutine(growRoutine(scaleSmall));
-    }
-
-    private IEnumerator growRoutine(Vector3 target)
-    {
-        Vector3 currStart = transform.localScale;
-        float timer = 0f;
-        float maxTime = 0.5f;
-
-        while (true)
-        {
-            // animate movement
-            timer += Time.deltaTime * 2;
-            if (timer < maxTime)
-            {
-                transform.localScale = Vector3.Lerp(currStart, target, timer / maxTime);
-            }
-            else
-            {
-                transform.localScale = target;
-
-                yield break;
-            }
-
-            yield return null;
-        }
+        GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
     }
 
     public void BounceIn1()
@@ -125,6 +96,7 @@ public class RummageCoin : MonoBehaviour
 
     private IEnumerator BounceOutRoutine(Vector3 target)
     {
+        transform.SetParent(coinParent);
         Vector3 currStart = transform.position;
         float timer = 0f;
         float maxTime = 0.5f;
@@ -140,10 +112,8 @@ public class RummageCoin : MonoBehaviour
             else
             {
                 transform.position = target;
-                transform.SetParent(pileParent);
                 yield break;
             }
-
             yield return null;
         }
     }
@@ -175,40 +145,9 @@ public class RummageCoin : MonoBehaviour
         audioPlaying = false;
     }
 
-    public void ToggleVisibility(bool opt, bool smooth)
+    public void ToggleVisibility(bool opt)
     {
-        if (smooth)
-            StartCoroutine(ToggleVisibilityRoutine(opt));
-        else
-        {
-            if (!image)
-                image = GetComponent<Image>();
-            Color temp = image.color;
-            if (opt) { temp.a = 1f; }
-            else { temp.a = 0; }
-            image.color = temp;
-        }
+        if (opt) GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.25f);
+        else GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
     }
-
-    private IEnumerator ToggleVisibilityRoutine(bool opt)
-    {
-        float end = 0f;
-        if (opt) { end = 1f; }
-        float timer = 0f;
-        while (true)
-        {
-            timer += Time.deltaTime;
-            Color temp = image.color;
-            temp.a = Mathf.Lerp(temp.a, end, timer);
-            image.color = temp;
-
-            if (image.color.a == end)
-            {
-                break;
-            }
-            yield return null;
-        }
-    }
-
-    
 }
