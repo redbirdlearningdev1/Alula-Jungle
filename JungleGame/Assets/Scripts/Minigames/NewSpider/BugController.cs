@@ -6,11 +6,10 @@ using UnityEngine.UI;
 public class BugController : MonoBehaviour
 {
     public ActionWordEnum type;
-    public Vector3 WebLand;
-    public Vector3 WebLeave1;
-    public Vector3 WebLeave2;
-    public Vector3 WebEat;
-    public Vector3 Origin;
+    public Transform WebLand;
+    public Transform flyOffScreenPos;
+    public Transform eattenPos;
+    public Transform origin;
     public float moveSpeed = 1f;
 
     private Animator animator;
@@ -37,18 +36,13 @@ public class BugController : MonoBehaviour
     public void StartToWeb()
     {
         animator.Play("Fly");
-        StartCoroutine(ReturnToWebRoutine(WebLand));
+        StartCoroutine(ReturnToWebRoutine(WebLand.position));
         StartCoroutine(landRoutine());
-    }
-
-    public void setOrigin()
-    {
-        Origin = transform.position;
     }
 
     public void goToOrigin()
     {
-        StartCoroutine(ReturnToOriginRoutine(Origin));
+        transform.position = origin.position;
     }
 
     public void die()
@@ -153,59 +147,49 @@ public class BugController : MonoBehaviour
 
     private IEnumerator takeOffRoutine()
     {
+        Vector2 pos = transform.position;
+        Vector2 tempPos = pos;
+        tempPos.y -= 0.25f;
+
+        GetComponent<LerpableObject>().LerpPosition(tempPos, 0.2f, false);
+        yield return new WaitForSeconds(.2f);
+        tempPos = pos;
+        tempPos.y += 0.15f;
+
+        GetComponent<LerpableObject>().LerpPosition(tempPos, 0.3f, false);
+        yield return new WaitForSeconds(.3f);
 
         animator.Play("Takeoff");
-        yield return new WaitForSeconds(0f);
-
     }
 
     public void leaveWeb()
     {
         animator.Play("Takeoff");
-        StartCoroutine(leaveWebRoutine(WebLeave1));
-
-    }
-
-    public void leaveWeb2()
-    {
-
-        StartCoroutine(leaveWebRoutine(WebLeave2));
+        GetComponent<LerpableObject>().LerpPosition(flyOffScreenPos.position, 0.8f, false);
     }
 
     public void webGetEat()
     {
-        
-        StartCoroutine(leaveWebRoutine(WebEat));
+        StartCoroutine(webGetEatRoutine());
     }
 
-    private IEnumerator leaveWebRoutine(Vector3 target)
+    private IEnumerator webGetEatRoutine()
     {
-        Vector3 currStart = transform.position;
-        float timer = 0f;
-        float maxTime = .75f;
+        animator.Play("Wrapped");
 
-        while (true)
-        {
-            // animate movement
-            timer += Time.deltaTime * 1;
-            if (timer < maxTime)
-            {
-                transform.position = Vector3.Lerp(currStart, target, timer / maxTime);
-            }
-            else
-            {
-                transform.position = target;
-                yield break;
-            }
+        Vector2 pos = transform.position;
+        Vector2 tempPos = pos;
+        tempPos.y -= 0.25f;
 
-            yield return null;
-        }
+        GetComponent<LerpableObject>().LerpPosition(tempPos, 0.1f, false);
+        yield return new WaitForSeconds(.1f);
+
+        GetComponent<LerpableObject>().LerpPosition(eattenPos.position, 0.25f, false);
     }
 
     public void SetCoinType(ActionWordEnum type)
     {
         this.type = type;
-        print ("bug set to: " + type);
     }
 
     public void PlayPhonemeAudio()
@@ -218,18 +202,40 @@ public class BugController : MonoBehaviour
 
     private IEnumerator PlayPhonemeAudioRoutine()
     {
-        animator.Play("Twitch");
-        WebController.instance.webSmall();
-        
         audioPlaying = true;
         AudioManager.instance.PlayPhoneme(type);
-        GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
-        yield return new WaitForSeconds(.8f);
-        GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
+        yield return new WaitForSeconds(0.25f);
+
+        WebController.instance.webSmall();
+        animator.Play("Twitch");
+        BugBounce();
+
         animator.Play("Still");
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1f);
     
         audioPlaying = false;
+    }
+
+    public void BugBounce()
+    {
+        StartCoroutine(BugBounceRoutine());
+    }
+
+    private IEnumerator BugBounceRoutine()
+    {
+        Vector2 pos = transform.position;
+        Vector2 tempPos = pos;
+        tempPos.y -= 0.25f;
+
+        GetComponent<LerpableObject>().LerpPosition(tempPos, 0.2f, false);
+        yield return new WaitForSeconds(.2f);
+        tempPos = pos;
+        tempPos.y += 0.15f;
+
+        GetComponent<LerpableObject>().LerpPosition(tempPos, 0.3f, false);
+        yield return new WaitForSeconds(.3f);
+
+        GetComponent<LerpableObject>().LerpPosition(pos, 0.3f, false);
     }
 
     public void ToggleVisibility(bool opt, bool smooth)

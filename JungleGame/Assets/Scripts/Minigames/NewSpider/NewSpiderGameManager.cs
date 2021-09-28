@@ -99,9 +99,6 @@ public class NewSpiderGameManager : MonoBehaviour
         // turn off raycaster
         SpiderRayCaster.instance.isOn = false;
 
-        // create coin list
-        bug.setOrigin();
-
         // Create Global Coin List
         if (gameData != null)
         {
@@ -170,11 +167,14 @@ public class NewSpiderGameManager : MonoBehaviour
         spider.fail();
         webber2.gameObject.SetActive(true);
         webber2.grabBug();
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.4f);
         bug.webGetEat();
         yield return new WaitForSeconds(.5f);
         webber2.gameObject.SetActive(false);
-        yield return new WaitForSeconds(.5f);
+
+        StartCoroutine(CoinsDown());
+        yield return new WaitForSeconds(1f);
+
         StartCoroutine(StartGame());
     }
 
@@ -206,14 +206,13 @@ public class NewSpiderGameManager : MonoBehaviour
         
         coin.ToggleVisibility(false, true);
         yield return new WaitForSeconds(.15f);
+        ball.UpgradeChest();
 
         StartCoroutine(bugLeaves());
         webber.gameObject.SetActive(false);
-        yield return new WaitForSeconds(.35f);
-        coin.ToggleVisibility(false, false);
-        ball.UpgradeChest();
-        
-        yield return new WaitForSeconds(1.5f);
+
+        StartCoroutine(CoinsDown());
+        yield return new WaitForSeconds(2f);
         
         StartCoroutine(StartGame());
     }
@@ -246,14 +245,13 @@ public class NewSpiderGameManager : MonoBehaviour
         
         coin.ToggleVisibility(false, true);
         yield return new WaitForSeconds(.15f);
+        ball.UpgradeChest();
 
         StartCoroutine(bugLeaves());
         webber.gameObject.SetActive(false);
-        yield return new WaitForSeconds(.35f);
-        coin.ToggleVisibility(false, false);
-        ball.UpgradeChest();
-        
-        yield return new WaitForSeconds(1.5f);
+
+        StartCoroutine(CoinsDown());
+        yield return new WaitForSeconds(2f);
 
         // play win tune
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
@@ -275,7 +273,8 @@ public class NewSpiderGameManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         web.webSmall();
-        yield return new WaitForSeconds(1f);
+        bug.BugBounce();
+        yield return new WaitForSeconds(1.5f);
 
         // play audio
         bug.PlayPhonemeAudio();
@@ -331,7 +330,7 @@ public class NewSpiderGameManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         web.webSmall();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
 
         // play audio
         bug.PlayPhonemeAudio();
@@ -380,14 +379,13 @@ public class NewSpiderGameManager : MonoBehaviour
         
         coin.ToggleVisibility(false, true);
         yield return new WaitForSeconds(.15f);
+        ball.UpgradeChest();
 
         StartCoroutine(bugLeaves());
         webber.gameObject.SetActive(false);
-        yield return new WaitForSeconds(.35f);
-        coin.ToggleVisibility(false, false);
-        ball.UpgradeChest();
-        
-        yield return new WaitForSeconds(1.5f);
+
+        StartCoroutine(CoinsDown());
+        yield return new WaitForSeconds(2f);
         
         StartCoroutine(PlayTutorialGame());
     }
@@ -420,19 +418,18 @@ public class NewSpiderGameManager : MonoBehaviour
         
         coin.ToggleVisibility(false, true);
         yield return new WaitForSeconds(.15f);
+        ball.UpgradeChest();
 
         StartCoroutine(bugLeaves());
         webber.gameObject.SetActive(false);
-        yield return new WaitForSeconds(.35f);
-        coin.ToggleVisibility(false, false);
-        ball.UpgradeChest();
-        
-        yield return new WaitForSeconds(1.5f);
+
+        StartCoroutine(CoinsDown());
+        yield return new WaitForSeconds(2f);
 
         // play win tune
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         // save to SIS
         StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = true;
@@ -482,12 +479,9 @@ public class NewSpiderGameManager : MonoBehaviour
     private IEnumerator bugLeaves()
     {
         web.webLarge();
-        yield return new WaitForSeconds(.4f);
         bug.takeOff();
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(.25f);
         bug.leaveWeb();
-        yield return new WaitForSeconds(.75f);
-        bug.leaveWeb2();
     }
 
     private void SetCoins()
@@ -508,8 +502,6 @@ public class NewSpiderGameManager : MonoBehaviour
                 i++;
             }
             
-            print ("type: " + type);
-
             coin.SetActionWordValue(type);
             coin.ToggleVisibility(true, true);
         }
@@ -565,11 +557,25 @@ public class NewSpiderGameManager : MonoBehaviour
         }
     }
 
+    private IEnumerator CoinsDown()
+    {
+        for (int i = 0; i < coins.Count; i++)
+        {
+            Vector2 pos = coinPosOffScreen[i].position;
+            Vector2 bouncePos = pos;
+            bouncePos.y += 0.5f;
+
+            coins[i].GetComponent<LerpableObject>().LerpPosition(bouncePos, 0.2f, false);
+            yield return new WaitForSeconds(0.2f);
+            coins[i].GetComponent<LerpableObject>().LerpPosition(pos, 0.2f, false);
+        }
+    }
+
     private void ResetCoins()
     {
         for (int i = 0; i < coins.Count; i++)
         {
-            coins[i].transform.localPosition = coinPosOffScreen[i].position;
+            coins[i].transform.position = coinPosOffScreen[i].position;
         }
     }
 

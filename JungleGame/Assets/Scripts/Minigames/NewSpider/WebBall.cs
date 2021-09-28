@@ -26,7 +26,16 @@ public class WebBall : MonoBehaviour
         {
             currBall++;
         }
+
+        StartCoroutine(UpgradeChestRoutine());
+    }
+
+    private IEnumerator UpgradeChestRoutine()
+    {
+        GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
         image.sprite = chestBall[currBall];
+        yield return new WaitForSeconds(0.2f);
+        GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
     }
 
     public void DowngradeChest()

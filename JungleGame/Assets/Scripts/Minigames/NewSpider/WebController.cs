@@ -6,20 +6,17 @@ public class WebController : MonoBehaviour
 {
     public static WebController instance;
 
-    private Animator animator;
+    public Animator animator;
 
 
     void Awake()
     {
         if (instance == null)
             instance = this;
-
-        animator = GetComponent<Animator>();
     }
 
     public void webSmall()
     {
-        print ("web small!");
         animator.Play("WebSmall");
     }
 
