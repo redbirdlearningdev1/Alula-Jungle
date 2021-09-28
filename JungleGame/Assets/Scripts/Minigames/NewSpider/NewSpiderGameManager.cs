@@ -58,13 +58,13 @@ public class NewSpiderGameManager : MonoBehaviour
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
-        // play music
-        AudioManager.instance.StopMusic();
-
         if (!instance)
         {
             instance = this;
         }
+
+        // place menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // get game data
         gameData = (SpiderwebGameData)GameManager.instance.GetData();
@@ -330,6 +330,7 @@ public class NewSpiderGameManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         web.webSmall();
+        bug.BugBounce();
         yield return new WaitForSeconds(1.5f);
 
         // play audio
@@ -348,7 +349,9 @@ public class NewSpiderGameManager : MonoBehaviour
     {
         // play wrong choice audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 1f);
-        yield return null;
+        yield return new WaitForSeconds(1f);
+        // turn on raycaster
+        SpiderRayCaster.instance.isOn = true;
     }
 
     private IEnumerator TutorialSuccessRoutine(UniversalCoinImage coin)

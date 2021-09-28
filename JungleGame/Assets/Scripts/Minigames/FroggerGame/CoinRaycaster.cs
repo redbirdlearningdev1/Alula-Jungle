@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 
 public class CoinRaycaster : MonoBehaviour
 {
+    public static CoinRaycaster instance;
+
     public bool isOn = false;
     public float coinMoveSpeed = 0.1f;
     private const float buildCoinMoveSpeed = 0.5f;
@@ -15,6 +17,9 @@ public class CoinRaycaster : MonoBehaviour
 
     void Awake()
     {
+        if (instance == null)
+            instance = this;
+
 #if UNITY_EDITOR
 #else
         coinMoveSpeed = buildCoinMoveSpeed;

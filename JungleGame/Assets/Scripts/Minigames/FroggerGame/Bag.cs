@@ -37,13 +37,21 @@ public class Bag : MonoBehaviour
             currBag++;
         }
 
-        bag.sprite = bagSprites[currBag];
-        shadow.sprite = shadowSprites[currBag];
-
+        StartCoroutine(UpgradeBagRoutine());
+        
         // play coin drop sound effect
         AudioManager.instance.PlayCoinDrop();
         // play right choice sound effect
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
+    }
+
+    private IEnumerator UpgradeBagRoutine()
+    {
+        GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
+        bag.sprite = bagSprites[currBag];
+        shadow.sprite = shadowSprites[currBag];
+        yield return new WaitForSeconds(0.2f);
+        GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
     }
     
 

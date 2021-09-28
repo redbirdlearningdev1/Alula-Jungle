@@ -75,6 +75,9 @@ public class RummageGameManager : MonoBehaviour
             instance = this;
         }
 
+        // show menu bars
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+
         // get game data
         gameData = (RummageGameData)GameManager.instance.GetData();
 

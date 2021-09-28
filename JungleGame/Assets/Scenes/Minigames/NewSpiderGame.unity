@@ -1300,7 +1300,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4.200012, y: -3.5}
+  m_AnchoredPosition: {x: -4.2000732, y: -3.5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1200468377
@@ -2055,7 +2055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dedd98ea5aba70409fa73b327ecfe73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playingInEditor: 1
+  playingInEditor: 0
   playTutorial: 0
   spider: {fileID: 11587614}
   ball: {fileID: 1930867529}
@@ -2525,7 +2525,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 47.01634
+      value: 47.08702
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
