@@ -111,8 +111,7 @@ public class UniversalCoinImage : MonoBehaviour
     {
         if (coinType != CoinType.ActionWordCoin)
             return;
-
-        actionWordCoin.SetCoinType(value);
+        SetValue(ChallengeWordDatabase.ActionWordEnumToElkoninValue(value));
     }
 
     public void ShakeCoin(float duration)

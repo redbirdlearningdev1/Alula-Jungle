@@ -5,11 +5,19 @@ using UnityEngine.EventSystems;
 
 public class SpiderRayCaster : MonoBehaviour
 {
+    public static SpiderRayCaster instance;
+
     public bool isOn = false;
     private UniversalCoinImage selectedCoin = null;
     private BugController selectedBug = null;
     [SerializeField] private Transform selectedCoinParent;
     [SerializeField] private WebBall webBallGlow;
+
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
 
     void Update()
     {
@@ -34,25 +42,21 @@ public class SpiderRayCaster : MonoBehaviour
             var raycastResults = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointerEventData, raycastResults);
 
-            bool isCorrect = false;
             if (raycastResults.Count > 0)
             {
                 foreach (var result in raycastResults)
                 {
                     if (result.gameObject.transform.CompareTag("Bag"))
                     {
-                        print ("ball");
-                        webBallGlow.chestGlowNo();
-                        isCorrect = NewSpiderGameManager.instance.EvaluateSelectedSpiderCoin(ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value), selectedCoin);
+                        NewSpiderGameManager.instance.EvaluateSelectedSpiderCoin(ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value), selectedCoin);
                     }
                 }
             }
 
-            if (!isCorrect)
-            {
-                webBallGlow.chestGlowNo();
-                NewSpiderGameManager.instance.ReturnCoinsToPosition();
-            }
+            webBallGlow.chestGlowNo();
+            NewSpiderGameManager.instance.ReturnCoinsToPosition();
+
+            selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.25f);
             selectedCoin = null;
         }
 
@@ -67,10 +71,11 @@ public class SpiderRayCaster : MonoBehaviour
             {
                 foreach (var result in raycastResults)
                 {
-                    if (result.gameObject.transform.CompareTag("Coin"))
+                    if (result.gameObject.transform.CompareTag("UniversalCoin"))
                     {
                         selectedCoin = result.gameObject.GetComponent<UniversalCoinImage>();
                         selectedCoin.gameObject.transform.SetParent(selectedCoinParent);
+                        selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.25f, 1.25f), 0.25f);
                         webBallGlow.chestGlow();
                     }
                     if (result.gameObject.transform.CompareTag("Shell"))

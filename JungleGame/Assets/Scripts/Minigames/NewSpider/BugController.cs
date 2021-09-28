@@ -205,10 +205,7 @@ public class BugController : MonoBehaviour
     public void SetCoinType(ActionWordEnum type)
     {
         this.type = type;
-        // get animator if null
-        if (!animator)
-            animator = GetComponent<Animator>();
-        animator.Play(type.ToString());
+        print ("bug set to: " + type);
     }
 
     public void PlayPhonemeAudio()
@@ -222,14 +219,17 @@ public class BugController : MonoBehaviour
     private IEnumerator PlayPhonemeAudioRoutine()
     {
         animator.Play("Twitch");
+        WebController.instance.webSmall();
         
         audioPlaying = true;
         AudioManager.instance.PlayPhoneme(type);
+        GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
         yield return new WaitForSeconds(.8f);
+        GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
         animator.Play("Still");
         yield return new WaitForSeconds(.5f);
+    
         audioPlaying = false;
-        
     }
 
     public void ToggleVisibility(bool opt, bool smooth)

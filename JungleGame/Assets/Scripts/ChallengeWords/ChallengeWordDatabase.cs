@@ -261,4 +261,33 @@ public static class ChallengeWordDatabase
                 return ActionWordEnum._blank;
         }
     }
+
+    public static ElkoninValue ActionWordEnumToElkoninValue(ActionWordEnum value)
+    {
+        switch (value)
+        {
+            default:
+            case ActionWordEnum._blank:     return ElkoninValue.empty_gold;
+            case ActionWordEnum.mudslide:   return ElkoninValue.mudslide;
+            case ActionWordEnum.listen:     return ElkoninValue.listen;
+            case ActionWordEnum.poop:       return ElkoninValue.poop;
+            case ActionWordEnum.orcs:       return ElkoninValue.orcs;
+            case ActionWordEnum.think:      return ElkoninValue.think;
+            case ActionWordEnum.hello:      return ElkoninValue.hello;
+            case ActionWordEnum.spider:     return ElkoninValue.spider;
+            case ActionWordEnum.explorer:   return ElkoninValue.explorer;
+            case ActionWordEnum.scared:     return ElkoninValue.scared;
+            case ActionWordEnum.thatguy:    return ElkoninValue.thatguy;
+            case ActionWordEnum.choice:     return ElkoninValue.choice;
+            case ActionWordEnum.strongwind: return ElkoninValue.strongwind;
+            case ActionWordEnum.pirate:     return ElkoninValue.pirate;
+            case ActionWordEnum.gorilla:    return ElkoninValue.gorilla;
+            case ActionWordEnum.sounds:     return ElkoninValue.sounds;
+            case ActionWordEnum.give:       return ElkoninValue.give;
+            case ActionWordEnum.backpack:   return ElkoninValue.backpack;
+            case ActionWordEnum.frustrating:return ElkoninValue.frustrating;
+            case ActionWordEnum.bumphead:   return ElkoninValue.bumphead;
+            case ActionWordEnum.baby:       return ElkoninValue.baby;
+        }
+    }
 }

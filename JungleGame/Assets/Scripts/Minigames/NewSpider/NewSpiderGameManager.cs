@@ -35,7 +35,7 @@ public class NewSpiderGameManager : MonoBehaviour
     public List<Transform> coinPosOnScreen;
 
     private int selectedIndex;
-    public UniversalCoinImage selectedCoin;
+    [HideInInspector] public UniversalCoinImage selectedCoin;
 
     private int winCount = 0;
     private int timesMissed = 0;
@@ -96,6 +96,9 @@ public class NewSpiderGameManager : MonoBehaviour
 
     private void PregameSetup()
     {
+        // turn off raycaster
+        SpiderRayCaster.instance.isOn = false;
+
         // create coin list
         bug.setOrigin();
 
@@ -121,7 +124,9 @@ public class NewSpiderGameManager : MonoBehaviour
 
     public bool EvaluateSelectedSpiderCoin(ActionWordEnum coin, UniversalCoinImage correctCoin)
     {
-        Debug.Log(selectedCoin.value);
+        // turn off raycaster
+        SpiderRayCaster.instance.isOn = false;
+
         if (coin ==  ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value))
         {
             winCount++;
@@ -261,27 +266,27 @@ public class NewSpiderGameManager : MonoBehaviour
 
     private IEnumerator StartGame()
     {
-        StartCoroutine(ResetCoins());
+        ResetCoins();
         bug.goToOrigin();
         yield return new WaitForSeconds(1f);
 
-        foreach (var coin in coins)
-        {
-            coin.ToggleVisibility(false, false);
-            coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
-            yield return new WaitForSeconds(0f);
-        }
-
-        StartCoroutine(ShowCoins());
-        yield return new WaitForSeconds(1f);
+        SetCoins();
         bug.StartToWeb();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
+
         web.webSmall();
-        
-       
+        yield return new WaitForSeconds(1f);
+
+        // play audio
+        bug.PlayPhonemeAudio();
+        yield return new WaitForSeconds(1f);
+
+        // bring coins up
         StartCoroutine(CoinsUp());
         yield return new WaitForSeconds(1f);
-        bug.PlayPhonemeAudio();
+
+        // turn on raycaster
+        SpiderRayCaster.instance.isOn = true;
     }
 
     /* 
@@ -317,28 +322,27 @@ public class NewSpiderGameManager : MonoBehaviour
 
     private IEnumerator PlayTutorialGame()
     {
-        StartCoroutine(ResetCoins());
+        ResetCoins();
         bug.goToOrigin();
         yield return new WaitForSeconds(1f);
 
-        foreach (var coin in coins)
-        {
-            coin.ToggleVisibility(false, false);
-            coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
-            yield return new WaitForSeconds(0f);
-        }
-
-        StartCoroutine(ShowCoins());
-        yield return new WaitForSeconds(1f);
-
+        SetCoins();
         bug.StartToWeb();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
 
         web.webSmall();
-    
+        yield return new WaitForSeconds(1f);
+
+        // play audio
+        bug.PlayPhonemeAudio();
+        yield return new WaitForSeconds(1f);
+
+        // bring coins up
         StartCoroutine(CoinsUp());
         yield return new WaitForSeconds(1f);
-        bug.PlayPhonemeAudio();
+
+        // turn on raycaster
+        SpiderRayCaster.instance.isOn = true;
     }
 
     private IEnumerator TutorialFailRoutine()
@@ -486,7 +490,7 @@ public class NewSpiderGameManager : MonoBehaviour
         bug.leaveWeb2();
     }
 
-    private IEnumerator ShowCoins()
+    private void SetCoins()
     {
         // make new used word list and add current correct word
         usedCoinPool = new List<ActionWordEnum>();
@@ -503,10 +507,22 @@ public class NewSpiderGameManager : MonoBehaviour
                 type = tutorialLists[tutorialEvent].list[i];
                 i++;
             }
-                
+            
+            print ("type: " + type);
+
             coin.SetActionWordValue(type);
             coin.ToggleVisibility(true, true);
-            yield return null;
+        }
+
+        // select random coin OR tutorial coin
+        if (!playTutorial)
+            SelectRandomCoin();
+        else
+        {
+            selectedIndex = correctIndexes[tutorialEvent];
+            selectedCoin = coins[selectedIndex];
+            bug.SetCoinType(ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value));
+            tutorialEvent++;
         }
     }
 
@@ -545,27 +561,15 @@ public class NewSpiderGameManager : MonoBehaviour
             coins[i].GetComponent<LerpableObject>().LerpPosition(bouncePos, 0.2f, false);
             yield return new WaitForSeconds(0.2f);
             coins[i].GetComponent<LerpableObject>().LerpPosition(pos, 0.2f, false);
-            yield return new WaitForSeconds(0.2f);
-        }
-
-        // select random coin OR tutorial coin
-        if (!playTutorial)
-            SelectRandomCoin();
-        else
-        {
-            selectedIndex = correctIndexes[tutorialEvent];
-            selectedCoin = coins[selectedIndex];
-            bug.SetCoinType(ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value));
-            tutorialEvent++;
+            yield return new WaitForSeconds(0.05f);
         }
     }
 
-    private IEnumerator ResetCoins()
+    private void ResetCoins()
     {
         for (int i = 0; i < coins.Count; i++)
         {
-            coins[i].transform.position = coinPosOffScreen[i].position;
-            yield return null;
+            coins[i].transform.localPosition = coinPosOffScreen[i].position;
         }
     }
 
