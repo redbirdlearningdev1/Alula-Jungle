@@ -84,7 +84,7 @@ public class CoinRaycaster : MonoBehaviour
                         selectedCoin.PlayPhonemeAudio();
                         selectedCoin.gameObject.transform.SetParent(selectedCoinParent);
                         // make coin larger
-                        selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.5f, 1.5f), 0.2f);
+                        selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.75f, 1.75f), 0.2f);
 
                         // bag glow effect on
                         ImageGlowController.instance.SetImageGlow(Bag.instance.GetComponent<Image>(), true, GlowValue.glow_1_025);

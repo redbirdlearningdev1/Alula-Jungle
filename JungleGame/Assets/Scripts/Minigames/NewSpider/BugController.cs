@@ -11,8 +11,6 @@ public class BugController : MonoBehaviour
     public Vector3 WebLeave2;
     public Vector3 WebEat;
     public Vector3 Origin;
-    private Vector3 scaleNormal = new Vector3(.6f, .6f, 0f);
-    private Vector3 scaleSmall = new Vector3(.45f, .45f, 0f);
     public float moveSpeed = 1f;
 
     private Animator animator;
@@ -38,7 +36,6 @@ public class BugController : MonoBehaviour
 
     public void StartToWeb()
     {
-        shrink();
         animator.Play("Fly");
         StartCoroutine(ReturnToWebRoutine(WebLand));
         StartCoroutine(landRoutine());
@@ -51,7 +48,6 @@ public class BugController : MonoBehaviour
 
     public void goToOrigin()
     {
-        grow();
         StartCoroutine(ReturnToOriginRoutine(Origin));
     }
 
@@ -124,15 +120,6 @@ public class BugController : MonoBehaviour
         }
     }
 
-    public void grow()
-    {
-        StartCoroutine(growRoutine(scaleNormal));
-    }
-
-    public void shrink()
-    {
-        StartCoroutine(growRoutine(scaleSmall));
-    }
 
     private IEnumerator growRoutine(Vector3 target)
     {

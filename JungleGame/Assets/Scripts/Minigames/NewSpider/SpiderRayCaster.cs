@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class SpiderRayCaster : MonoBehaviour
 {
     public bool isOn = false;
-    private SpiderCoin selectedCoin = null;
+    private UniversalCoinImage selectedCoin = null;
     private BugController selectedBug = null;
     [SerializeField] private Transform selectedCoinParent;
     [SerializeField] private WebBall webBallGlow;
@@ -43,30 +43,21 @@ public class SpiderRayCaster : MonoBehaviour
                     {
                         print ("ball");
                         webBallGlow.chestGlowNo();
-                        selectedCoin.MoveBack();
-                        isCorrect = NewSpiderGameManager.instance.EvaluateSelectedSpiderCoin(selectedCoin.type, selectedCoin);
+                        isCorrect = NewSpiderGameManager.instance.EvaluateSelectedSpiderCoin(ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value), selectedCoin);
                     }
                 }
             }
 
-
-            if (isCorrect)
-            {
-
-
-            }
-            else
+            if (!isCorrect)
             {
                 webBallGlow.chestGlowNo();
-                selectedCoin.MoveBack();
-                selectedCoin = null;
+                NewSpiderGameManager.instance.ReturnCoinsToPosition();
             }
             selectedCoin = null;
         }
 
         if (Input.GetMouseButtonDown(0))
         {
-
             var pointerEventData = new PointerEventData(EventSystem.current);
             pointerEventData.position = Input.mousePosition;
             var raycastResults = new List<RaycastResult>();
@@ -78,10 +69,9 @@ public class SpiderRayCaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("Coin"))
                     {
-                        selectedCoin = result.gameObject.GetComponent<SpiderCoin>();
+                        selectedCoin = result.gameObject.GetComponent<UniversalCoinImage>();
                         selectedCoin.gameObject.transform.SetParent(selectedCoinParent);
                         webBallGlow.chestGlow();
-
                     }
                     if (result.gameObject.transform.CompareTag("Shell"))
                     {

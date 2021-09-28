@@ -107,6 +107,14 @@ public class UniversalCoinImage : MonoBehaviour
         }
     }
 
+    public void SetActionWordValue(ActionWordEnum value)
+    {
+        if (coinType != CoinType.ActionWordCoin)
+            return;
+
+        actionWordCoin.SetCoinType(value);
+    }
+
     public void ShakeCoin(float duration)
     {
         shakeController.ShakeObject(duration);

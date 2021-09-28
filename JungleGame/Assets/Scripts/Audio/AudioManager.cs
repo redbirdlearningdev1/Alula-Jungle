@@ -231,7 +231,7 @@ public class AudioManager : MonoBehaviour
         if (!setUpSplitSong || !startedSplitSong)
             return;
 
-        if (currSplitIndex <= 0)
+        if (currSplitIndex <= 1)
             return;
 
         currSplitIndex--;

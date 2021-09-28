@@ -260,9 +260,4 @@ public class LerpableObject : MonoBehaviour
             yield return null;
         }
     }
-
-    public void LerpGlowOutline(bool opt, float duration)
-    {
-        
-    }
 }

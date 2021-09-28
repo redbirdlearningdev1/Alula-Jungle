@@ -90,7 +90,9 @@ public class StarAwardController : MonoBehaviour
         // only update stars if earned more stars than in memory
         switch (GameManager.instance.GetID())
         {
-            default: return;
+            default:
+                GameManager.instance.SendLog(this, "No ID for game found - not awarding stars");
+                return;
 
             case MapIconIdentfier.GV_house1:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.stars < numStars)

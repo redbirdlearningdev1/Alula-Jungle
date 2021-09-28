@@ -252,7 +252,6 @@ public class FroggerGameManager : MonoBehaviour
         // increase split song
         AudioManager.instance.IncreaseSplitSong();
 
-        print ("you win!");
         // TODO: animate coin into bag
         rows[currRow].ResetCoinPos(selectedCoin);
         taxi.CelebrateAnimation();
