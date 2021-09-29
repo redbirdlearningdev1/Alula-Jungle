@@ -925,7 +925,9 @@ public class ScrollMapManager : MonoBehaviour
 
     public void OnGoLeftPressed()
     {
+        print ("left 1");
         if (navButtonsDisabled) return;
+        print ("left 2");
 
         // player cannot input for 'transitionTime' seconds
         navButtonsDisabled = true;
@@ -957,7 +959,9 @@ public class ScrollMapManager : MonoBehaviour
 
     public void OnGoRightPressed()
     {
+        print ("right 1");
         if (navButtonsDisabled) return;
+        print ("right 2");
 
         // player cannot input for 'transitionTime' seconds
         navButtonsDisabled = true;

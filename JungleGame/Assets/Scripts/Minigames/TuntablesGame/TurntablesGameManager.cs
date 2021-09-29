@@ -57,13 +57,13 @@ public class TurntablesGameManager : MonoBehaviour
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
+        // stop music
+        AudioManager.instance.StopMusic();
+
         if (!instance)
         {
             instance = this;
         }
-
-        // show menu bars
-        SettingsManager.instance.ToggleMenuButtonActive(true);
     }
 
     void Start()
@@ -79,8 +79,6 @@ public class TurntablesGameManager : MonoBehaviour
         // play real game or tutorial
         if (playTutorial)
         {
-            GameManager.instance.SendLog(this, "starting turntables game tutorial");
-            AudioManager.instance.StopMusic();
             StartCoroutine(StartTutorial());
         }
         else
@@ -235,6 +233,9 @@ public class TurntablesGameManager : MonoBehaviour
             yield return new WaitForSeconds(difference);
             duration -= difference;
         }
+
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
         
         // toggle outline on
         GlowOutline(currentDoorIndex);
@@ -457,6 +458,9 @@ public class TurntablesGameManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(2f);
+
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // play tutorial audio 1
         AudioClip clip = AudioDatabase.instance.TurntablesTutorial_1;

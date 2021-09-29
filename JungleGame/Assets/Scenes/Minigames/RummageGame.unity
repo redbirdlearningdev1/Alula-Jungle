@@ -1455,8 +1455,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b50bb302fe09c346a637cd003e82718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playingInEditor: 1
-  playTutorial: 1
+  playingInEditor: 0
+  playTutorial: 0
   orc: {fileID: 606159618}
   chest: {fileID: 1427296688}
   stretch: {fileID: 1256558084}
@@ -4361,6 +4361,7 @@ GameObject:
   - component: {fileID: 1427296687}
   - component: {fileID: 1427296688}
   - component: {fileID: 1427296686}
+  - component: {fileID: 1427296689}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Bag
@@ -4445,6 +4446,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4bd8f9318b3652346916903b41b6e2d8, type: 3}
   - {fileID: 21300000, guid: d557c6e247faf34458f806b41db498a5, type: 3}
   - {fileID: 21300000, guid: 46cac8ec8d72ad64dab358cc3754c7a3, type: 3}
+--- !u!114 &1427296689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427296684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458d3b50667b6a944abf0cc4cfece9d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1445411607
 GameObject:
   m_ObjectHideFlags: 0
@@ -5330,7 +5343,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 44.704044
+      value: 44.80784
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

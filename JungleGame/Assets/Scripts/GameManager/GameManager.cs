@@ -251,6 +251,8 @@ public class GameManager : DontDestroy<GameManager>
 
     private void SceneCleanup()
     {
+        print ("scene clean up!");
+
         // remove all sounds
         AudioManager.instance.ClearAllAudio();
 
@@ -269,8 +271,8 @@ public class GameManager : DontDestroy<GameManager>
         TalkieManager.instance.StopTalkieSystem();
 
         // remove ui buttons
-        SettingsManager.instance.ToggleWagonButtonActive(false);
-        SettingsManager.instance.ToggleMenuButtonActive(false);
+        SettingsManager.instance.SetWagonButton(false);
+        SettingsManager.instance.SetMenuButton(false);
 
         // remove wagon controller stuff
         WagonWindowController.instance.ResetWagonController();

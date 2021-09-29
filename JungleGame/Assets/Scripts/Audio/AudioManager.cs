@@ -133,13 +133,10 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySong(AudioClip song)
     {
-        if (startedSplitSong)
-            return;
+        StopMusic();
 
         if (song == musicSources[0].clip)
             return;
-
-        musicSources[0].Stop();
 
         musicSources[0].clip = song;
         musicSources[0].loop = true;

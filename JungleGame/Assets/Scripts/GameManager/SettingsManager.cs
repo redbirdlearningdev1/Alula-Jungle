@@ -12,6 +12,15 @@ public class SettingsManager : MonoBehaviour
     public Button menuButton;
     public Button wagonButton;
 
+    public float hiddenButtonYvalue;
+    public float shownButtonYvalue;
+
+    private bool movingMenuButton = false;
+    private bool movingWagonButton = false;
+
+    private bool menuButtonShown = false;
+    private bool wagonButtonShown = false;
+
     [Header("Audio Settings")]
     [SerializeField] private Slider masterVol;
     [SerializeField] private Slider musicVol;
@@ -39,6 +48,10 @@ public class SettingsManager : MonoBehaviour
 
         // set audio volumes
         SetUpVolumes();
+
+        // hide buttons
+        menuButton.transform.localPosition = new Vector3(menuButton.transform.localPosition.x, hiddenButtonYvalue, 1f);
+        wagonButton.transform.localPosition = new Vector3(wagonButton.transform.localPosition.x, hiddenButtonYvalue, 1f);
 
         // close window
         settingsWindow.SetActive(false);
@@ -141,34 +154,113 @@ public class SettingsManager : MonoBehaviour
         else wagonButton.GetComponent<WiggleController>().StopWiggle();
     }
 
-    public void ToggleWagonButtonActive(bool opt)
+    public void SetWagonButton(bool opt)
     {
-        //GameManager.instance.SendLog(this, "setting wagon button to: " + opt);
         if (opt)
         {
-            wagonButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
-            wagonButton.interactable = true;
+            wagonButtonShown = true;
+            movingWagonButton = false;
+            wagonButton.transform.localPosition = new Vector3(wagonButton.transform.localPosition.x, shownButtonYvalue, 1f);
+        }
+        else 
+        {
+            print ("here");
+            wagonButtonShown = false;
+            movingWagonButton = false;
+            wagonButton.transform.localPosition = new Vector3(wagonButton.transform.localPosition.x, hiddenButtonYvalue, 1f);
+        }
+    }
+
+    public void SetMenuButton(bool opt)
+    {
+        if (opt)
+        {
+            menuButtonShown = true;
+            movingMenuButton = false;
+            menuButton.transform.localPosition = new Vector3(menuButton.transform.localPosition.x, shownButtonYvalue, 1f);
+        }
+        else 
+        {
+            menuButtonShown = false;
+            movingMenuButton = false;
+            menuButton.transform.localPosition = new Vector3(menuButton.transform.localPosition.x, hiddenButtonYvalue, 1f);
+        }
+    }
+
+    public void ToggleWagonButtonActive(bool opt)
+    {
+        StartCoroutine(ToggleWagonButtonRoutine(opt));
+    }
+
+    private IEnumerator ToggleWagonButtonRoutine(bool opt)
+    {
+        // check if bools are equal
+        if (opt == wagonButtonShown)
+            yield break;
+
+        // wait for bool to be false
+        while (movingWagonButton)
+            yield return null;
+
+        movingWagonButton = true;
+
+        print ("toggling wagon button - " + opt);
+
+        if (opt)
+        {
+            wagonButton.GetComponent<LerpableObject>().LerpYPos(shownButtonYvalue - 50, 0.2f, true);
+            yield return new WaitForSeconds(0.2f);
+            wagonButton.GetComponent<LerpableObject>().LerpYPos(shownButtonYvalue, 0.2f, true);
+            yield return new WaitForSeconds(0.2f);
         }
         else
         {
-            wagonButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
-            wagonButton.interactable = false;
+            wagonButton.GetComponent<LerpableObject>().LerpYPos(shownButtonYvalue - 50, 0.2f, true);
+            yield return new WaitForSeconds(0.2f);
+            wagonButton.GetComponent<LerpableObject>().LerpYPos(hiddenButtonYvalue, 0.2f, true);
+            yield return new WaitForSeconds(0.2f);
         }
+
+        wagonButtonShown = opt;
+        movingWagonButton = false;
     }
 
     public void ToggleMenuButtonActive(bool opt)
     {
-        //GameManager.instance.SendLog(this, "setting menu button to: " + opt);
+        StartCoroutine(ToggleMenuButtonRoutine(opt));
+    }
+
+    private IEnumerator ToggleMenuButtonRoutine(bool opt)
+    {
+        // check if bools are equal
+        if (opt == menuButtonShown)
+            yield break;
+
+        // wait for bool to be false
+        while (movingMenuButton)
+            yield return null;
+
+        movingMenuButton = true;
+
+        print ("toggling menu button - " + opt);
+
         if (opt)
         {
-            menuButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
-            menuButton.interactable = true;
+            menuButton.GetComponent<LerpableObject>().LerpYPos(shownButtonYvalue - 50, 0.2f, true);
+            yield return new WaitForSeconds(0.2f);
+            menuButton.GetComponent<LerpableObject>().LerpYPos(shownButtonYvalue, 0.2f, true);
+            yield return new WaitForSeconds(0.2f);
         }
         else
         {
-            menuButton.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
-            menuButton.interactable = false;
+            menuButton.GetComponent<LerpableObject>().LerpYPos(shownButtonYvalue - 50, 0.2f, true);
+            yield return new WaitForSeconds(0.2f);
+            menuButton.GetComponent<LerpableObject>().LerpYPos(hiddenButtonYvalue, 0.2f, true);
+            yield return new WaitForSeconds(0.2f);
         }
+
+        menuButtonShown = opt;
+        movingMenuButton = false;
     }
 
     public void ToggleSettingsWindow()

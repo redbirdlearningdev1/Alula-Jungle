@@ -58,13 +58,13 @@ public class NewSpiderGameManager : MonoBehaviour
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
+        // stop music 
+        AudioManager.instance.StopMusic();
+
         if (!instance)
         {
             instance = this;
         }
-
-        // place menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // get game data
         gameData = (SpiderwebGameData)GameManager.instance.GetData();
@@ -280,6 +280,9 @@ public class NewSpiderGameManager : MonoBehaviour
         bug.goToOrigin();
         yield return new WaitForSeconds(1f);
 
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+
         SetCoins();
         bug.StartToWeb();
         yield return new WaitForSeconds(1.5f);
@@ -308,6 +311,9 @@ public class NewSpiderGameManager : MonoBehaviour
 
     private IEnumerator StartTutorialGame()
     {
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+        
         // play tutorial audio 1
         AudioClip clip = AudioDatabase.instance.SpiderwebTutorial_1;
         AudioManager.instance.PlayTalk(clip);

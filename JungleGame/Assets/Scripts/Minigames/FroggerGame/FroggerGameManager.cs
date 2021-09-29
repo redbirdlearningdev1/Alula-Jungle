@@ -65,13 +65,13 @@ public class FroggerGameManager : MonoBehaviour
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
+        // stop music 
+        AudioManager.instance.StopMusic();
+
         if (!instance)
         {
             instance = this;
         }
-
-        // show menu bars
-        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // get game data
         gameData = (FroggerGameData)GameManager.instance.GetData();
@@ -283,6 +283,9 @@ public class FroggerGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
+        // hide dancing man
+        StartCoroutine(HideDancingManRoutine());
+
         // calculate and show stars
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());
     }
@@ -319,6 +322,9 @@ public class FroggerGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
+        // hide dancing man
+        StartCoroutine(HideDancingManRoutine());
+
         // calculate and show stars
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());
     }
@@ -338,6 +344,9 @@ public class FroggerGameManager : MonoBehaviour
         // wait a moment for the setup to finish
         while (!gameSetup)
             yield return null;
+
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // reveal dancing man
         StartCoroutine(ShowDancingManRoutine());
@@ -359,6 +368,9 @@ public class FroggerGameManager : MonoBehaviour
         // wait a moment for the setup to finish
         while (!gameSetup)
             yield return null;
+
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // play tutorial audio
         AudioClip clip = AudioDatabase.instance.FroggerTutorial_1;
@@ -483,6 +495,9 @@ public class FroggerGameManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
 
         yield return new WaitForSeconds(3f);
+
+        // hide dancing man
+        StartCoroutine(HideDancingManRoutine());
 
         // save to SIS
         StudentInfoSystem.GetCurrentProfile().froggerTutorial = true;
@@ -748,6 +763,41 @@ public class FroggerGameManager : MonoBehaviour
             }
 
             Vector3 tempPos = Vector3.Lerp(bouncePos, dancingManOnScreen.position, timer / 0.1f);
+            dancingMan.gameObject.transform.position = tempPos;
+            yield return null;
+        }
+    }
+
+    private IEnumerator HideDancingManRoutine()
+    {
+        float timer = 0f;
+        float moveTime = 0.3f;
+        Vector3 bouncePos = dancingManOnScreen.position;
+        bouncePos.y += 0.5f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > moveTime)
+            {
+                break;
+            }
+
+            Vector3 tempPos = Vector3.Lerp(dancingManOnScreen.position, bouncePos, timer / moveTime);
+            dancingMan.gameObject.transform.position = tempPos;
+            yield return null;
+        }
+        timer = 0f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > 0.1f)
+            {
+                break;
+            }
+
+            Vector3 tempPos = Vector3.Lerp(bouncePos, dancingManOffScreen.position, timer / 0.1f);
             dancingMan.gameObject.transform.position = tempPos;
             yield return null;
         }

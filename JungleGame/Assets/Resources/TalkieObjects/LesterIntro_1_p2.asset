@@ -15,12 +15,11 @@ MonoBehaviour:
   talkieName: LesterIntro_1_p2
   quipsCollection: 0
   start: 3
-  addBackgroundBeforeTalkie: 1
+  addBackgroundBeforeTalkie: 0
   addLetterboxBeforeTalkie: 1
   ending: 0
-  removeBackgroundAfterTalkie: 1
+  removeBackgroundAfterTalkie: 0
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0

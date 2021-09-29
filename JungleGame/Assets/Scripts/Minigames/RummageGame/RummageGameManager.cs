@@ -75,9 +75,6 @@ public class RummageGameManager : MonoBehaviour
             instance = this;
         }
 
-        // show menu bars
-        SettingsManager.instance.ToggleMenuButtonActive(true);
-
         // get game data
         gameData = (RummageGameData)GameManager.instance.GetData();
 
@@ -147,6 +144,9 @@ public class RummageGameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+
         // reveal dancing man
         StartCoroutine(ShowDancingManRoutine());
         yield return new WaitForSeconds(1f);
@@ -159,6 +159,9 @@ public class RummageGameManager : MonoBehaviour
     {
         LockAllPiles();
         yield return new WaitForSeconds(1f);
+
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // play tutorial audio 1
         AudioClip clip = AudioDatabase.instance.RummageTutorial_1;
@@ -398,6 +401,9 @@ public class RummageGameManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
         yield return new WaitForSeconds(1f);
 
+        // hide dancing man
+        StartCoroutine(HideDancingManRoutine());
+
         // calculate and show stars
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());
     }
@@ -572,6 +578,9 @@ public class RummageGameManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1f);
+
+        // hide dancing man
+        StartCoroutine(HideDancingManRoutine());
 
         // calculate and show stars
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());
@@ -922,6 +931,41 @@ public class RummageGameManager : MonoBehaviour
             }
 
             Vector3 tempPos = Vector3.Lerp(bouncePos, dancingManOnScreen.position, timer / 0.1f);
+            dancingMan.gameObject.transform.position = tempPos;
+            yield return null;
+        }
+    }
+
+    private IEnumerator HideDancingManRoutine()
+    {
+        float timer = 0f;
+        float moveTime = 0.3f;
+        Vector3 bouncePos = dancingManOnScreen.position;
+        bouncePos.y += 0.5f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > moveTime)
+            {
+                break;
+            }
+
+            Vector3 tempPos = Vector3.Lerp(dancingManOnScreen.position, bouncePos, timer / moveTime);
+            dancingMan.gameObject.transform.position = tempPos;
+            yield return null;
+        }
+        timer = 0f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > 0.1f)
+            {
+                break;
+            }
+
+            Vector3 tempPos = Vector3.Lerp(bouncePos, dancingManOffScreen.position, timer / 0.1f);
             dancingMan.gameObject.transform.position = tempPos;
             yield return null;
         }
