@@ -560,7 +560,6 @@ public class FroggerGameManager : MonoBehaviour
             return false;
         }
 
-
         if (coin == selectedCoin)
         {
             // success! go on to the next row or win game if on last row
@@ -616,6 +615,9 @@ public class FroggerGameManager : MonoBehaviour
         {
             SelectCoin(currRow);
         }
+
+        // turn on raycaster
+        CoinRaycaster.instance.isOn = true;
     }
 
     private ActionWordEnum GetUnusedWord()

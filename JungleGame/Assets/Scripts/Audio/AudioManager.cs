@@ -6,7 +6,8 @@ using UnityEngine.Audio;
 public enum SplitSong
 {
     Frogger,
-    Turntables
+    Turntables,
+    Spiderweb
 }
 
 public class AudioManager : MonoBehaviour
@@ -132,6 +133,9 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySong(AudioClip song)
     {
+        if (startedSplitSong)
+            return;
+
         if (song == musicSources[0].clip)
             return;
 
@@ -144,8 +148,11 @@ public class AudioManager : MonoBehaviour
 
     public void StopMusic()
     {
-        musicSources[0].Stop();
-        musicSources[0].clip = null;
+        foreach (var source in musicSources)
+        {
+            source.Stop();
+            source.clip = null;
+        }
     }
 
     /* 
@@ -182,6 +189,15 @@ public class AudioManager : MonoBehaviour
         {
             int count = 0;
             foreach(var split in AudioDatabase.instance.TurntablesSongSplit)
+            {
+                musicSources[count].clip = split;
+                count++;
+            }
+        }
+        else if (song == SplitSong.Spiderweb)
+        {
+            int count = 0;
+            foreach(var split in AudioDatabase.instance.SpiderwebSongSplit)
             {
                 musicSources[count].clip = split;
                 count++;

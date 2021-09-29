@@ -3645,6 +3645,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d146342451e601f43bd7f705efdab99f, type: 3}
   - {fileID: 8300000, guid: 634e341043aed204e96a7eb0cb81f395, type: 3}
   - {fileID: 8300000, guid: 9b7ce8d11dda4a74aa44477316e1e624, type: 3}
+  SpiderwebSongSplit:
+  - {fileID: 8300000, guid: 241b5b1e37723004680a13e0329eba3d, type: 3}
+  - {fileID: 8300000, guid: 1fe912438775e3d4f9805e17ca5b3db9, type: 3}
+  - {fileID: 8300000, guid: 74a0c122347b2ee4e8486461c6839fe4, type: 3}
+  - {fileID: 8300000, guid: 438e640659e9e0b429fe13ddc13d68a6, type: 3}
+  - {fileID: 8300000, guid: f22002b23871d414aa1f386254464a97, type: 3}
   FroggerTutorial_1: {fileID: 8300000, guid: 57334b8b7f5786449aae768fd2fa6be6, type: 3}
   FroggerTutorial_2: {fileID: 8300000, guid: b8cb085e2d406064db6e9d79696ac9d8, type: 3}
   FroggerTutorial_3: {fileID: 8300000, guid: eedcf1d3df9217e4fb3ac412cb60001e, type: 3}
@@ -17529,7 +17535,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 41.28641, y: 0.005817631}
+  m_AnchoredPosition: {x: 41.362114, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

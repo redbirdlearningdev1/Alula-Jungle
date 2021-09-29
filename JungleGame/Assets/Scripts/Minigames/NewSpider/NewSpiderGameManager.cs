@@ -78,7 +78,13 @@ public class NewSpiderGameManager : MonoBehaviour
         if (playTutorial)
             StartCoroutine(StartTutorialGame());
         else 
+        {
+            // start song
+            AudioManager.instance.InitSplitSong(SplitSong.Spiderweb);
+            AudioManager.instance.IncreaseSplitSong();
+
             StartCoroutine(StartGame());
+        }
     }
 
     void Update()
@@ -180,6 +186,9 @@ public class NewSpiderGameManager : MonoBehaviour
 
     private IEnumerator CoinSuccessRoutine(UniversalCoinImage coin)
     {
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+
         // play right choice audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
 
@@ -219,6 +228,9 @@ public class NewSpiderGameManager : MonoBehaviour
 
     private IEnumerator WinRoutine(UniversalCoinImage coin)
     {
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+
         // play right choice audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
 
