@@ -61,6 +61,9 @@ public class TurntablesGameManager : MonoBehaviour
         {
             instance = this;
         }
+
+        // show menu bars
+        SettingsManager.instance.ToggleMenuButtonActive(true);
     }
 
     void Start()
@@ -118,9 +121,9 @@ public class TurntablesGameManager : MonoBehaviour
 
         // remove glow from door icons
         foreach (Door d in doors)
-            d.glowController.ToggleGlowOutline(false);
+            ImageGlowController.instance.SetImageGlow(d.image, false);
         // remove glow from rock lock
-        RockLock.instance.glowController.ToggleGlowOutline(false);
+        ImageGlowController.instance.SetImageGlow(RockLock.instance.image, false);
 
         doorWords = new ActionWordEnum[4];
 
@@ -275,7 +278,9 @@ public class TurntablesGameManager : MonoBehaviour
 
     private IEnumerator DoorSuccessRoutine()
     {
-        // print ("success!");
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+
         // dissipate key
         keys[correctKeyIndex].Dissipate();
         // move door to unlocked position
@@ -284,7 +289,7 @@ public class TurntablesGameManager : MonoBehaviour
         AudioManager.instance.PlayMoveStoneSound((RopeController.instance.moveTime * 2) - 0.4f, moveStonePitch[currentDoorIndex]);
 
         // make door icon glow special
-        doors[currentDoorIndex].glowController.SetGlowSettings(2f, 1, finishedDoorColor, true);
+        ImageGlowController.instance.SetImageGlow(doors[currentDoorIndex].image, true, GlowValue.glow_1_025); // TODO change this back to blue glow?
         // play stone moving audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.ErrieGlow, 0.2f);
 
@@ -369,10 +374,13 @@ public class TurntablesGameManager : MonoBehaviour
 
     private IEnumerator WinRoutine()
     {
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+
         // dissipate key
         keys[correctKeyIndex].Dissipate();
         // make door icon glow special
-        doors[currentDoorIndex].glowController.SetGlowSettings(1f, 1, finishedDoorColor, true);
+        ImageGlowController.instance.SetImageGlow(doors[currentDoorIndex].image, true, GlowValue.glow_1_025); // TODO set blue?
         // play stone moving audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.ErrieGlow, 0.2f);
 
@@ -529,6 +537,9 @@ public class TurntablesGameManager : MonoBehaviour
 
     private IEnumerator TutorialCorrectRoutine()
     {
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+
         print ("success!");
         // dissipate key
         keys[correctKeyIndex].Dissipate();
@@ -538,7 +549,7 @@ public class TurntablesGameManager : MonoBehaviour
         AudioManager.instance.PlayMoveStoneSound((RopeController.instance.moveTime * 2) - 0.4f, moveStonePitch[currentDoorIndex]);
 
         // make door icon glow special
-        doors[currentDoorIndex].glowController.SetGlowSettings(2f, 1, finishedDoorColor, true);
+        ImageGlowController.instance.SetImageGlow(doors[currentDoorIndex].image, true, GlowValue.glow_1_025);
         // play stone moving audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.ErrieGlow, 0.2f);
 
@@ -600,11 +611,14 @@ public class TurntablesGameManager : MonoBehaviour
 
     private IEnumerator TutorialCompleteRoutine()
     {
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+
         // print ("you win!");
         // dissipate key
         keys[correctKeyIndex].Dissipate();
         // make door icon glow special
-        doors[currentDoorIndex].glowController.SetGlowSettings(2f, 1, finishedDoorColor, true);
+        ImageGlowController.instance.SetImageGlow(doors[currentDoorIndex].image, true, GlowValue.glow_1_025);
         // play stone moving audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.ErrieGlow, 0.2f);
 
@@ -643,7 +657,7 @@ public class TurntablesGameManager : MonoBehaviour
         // dissipate key
         keys[correctKeyIndex].Dissipate();
         // make door icon glow special
-        doors[currentDoorIndex].glowController.SetGlowSettings(1f, 1, finishedDoorColor, true);
+        ImageGlowController.instance.SetImageGlow(doors[currentDoorIndex].image, true, GlowValue.glow_1_025);
         // play stone moving audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.ErrieGlow, 0.2f);
 
@@ -788,9 +802,9 @@ public class TurntablesGameManager : MonoBehaviour
     {
         // remove all door glows
         foreach (Door d in doors)
-            d.glowController.ToggleGlowOutline(false);
+            ImageGlowController.instance.SetImageGlow(d.image, false);
         // turn on correct door glow
-        doors[index].glowController.ToggleGlowOutline(true);
+        ImageGlowController.instance.SetImageGlow(doors[index].image, true, GlowValue.glow_1_025);
     }
 
     private IEnumerator WinGlowAnimation(float delay)
@@ -798,7 +812,7 @@ public class TurntablesGameManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         foreach (Door d in doors)
         {
-            d.glowController.SetGlowSettings(3f, 1, winDoorColor, true);
+            ImageGlowController.instance.SetImageGlow(d.image, true, GlowValue.glow_1_025);
             yield return new WaitForSeconds(0.25f);
         }
     }
@@ -806,6 +820,7 @@ public class TurntablesGameManager : MonoBehaviour
     private IEnumerator StartMusicDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        AudioManager.instance.PlaySong(AudioDatabase.instance.TurntablesGameSong);
+        AudioManager.instance.InitSplitSong(SplitSong.Turntables);
+        AudioManager.instance.IncreaseSplitSong();
     }
 }

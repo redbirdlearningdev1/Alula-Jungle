@@ -778,7 +778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 395dce68a674000489330150e40c5723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placeTalkieHere: {fileID: 11400000, guid: d2ef6885d79b4214bb97b6198ecb76ff, type: 2}
+  placeTalkieHere: {fileID: 11400000, guid: 0269edfb08cf8a047bd0356174b053a5, type: 2}
   fastTalkieToggle: {fileID: 940584301}
 --- !u!4 &676059966
 Transform:
@@ -1726,7 +1726,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 6.5561047
+      value: 6.570002
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

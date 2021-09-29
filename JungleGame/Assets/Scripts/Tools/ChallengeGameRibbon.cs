@@ -2,17 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class ChallengeGameRibbon : MonoBehaviour
+public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     public LerpableObject logo;
     public LerpableObject ribbon;
     public LerpableObject crown;
 
+    [Header("Ribbon Sprites")]
+    public Image starRibbon;
+    public Sprite ribbonStars0;
+    public Sprite ribbonStars1;
+    public Sprite ribbonStars2;
+    public Sprite ribbonStars3;
+
     [Header("Logo Sprites")]
     public Sprite wordFactorySubstitutionLogo;
     public Sprite wordFactoryBlendingLogo;
     public Sprite tigerPawCoinsLogo;
+
+    private GameData myGameData;
+
+    [Header("Pressed Values")]
+    public float pressedScaleChange;
+    public bool interactable;
+    private bool isPressed;
+    
 
     void Awake()
     {
@@ -22,14 +38,19 @@ public class ChallengeGameRibbon : MonoBehaviour
         crown.transform.localScale = new Vector3(0f, 0f, 1f);
     }
 
-    public void OpenRibbon(GameType challengeGameType)
+    public void OpenRibbon(GameData gameData)
     {
-        StartCoroutine(OpenRibbonRoutine(challengeGameType));
+        myGameData = gameData;
+        StartCoroutine(OpenRibbonRoutine(myGameData.gameType));
     }
 
     private IEnumerator OpenRibbonRoutine(GameType challengeGameType)
     {
+        // set logo
         logo.GetComponent<Image>().sprite = GetGameLogo(challengeGameType);
+
+        // set stars
+        SetRibbonStars();
 
         logo.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.05f);
         yield return new WaitForSeconds(0.25f);
@@ -69,6 +90,87 @@ public class ChallengeGameRibbon : MonoBehaviour
                 return wordFactorySubstitutionLogo;
             case GameType.TigerPawCoins:
                 return tigerPawCoinsLogo;
+        }
+    }
+
+    private void SetRibbonStars()
+    {
+        ChallengeGameTriad triad;
+        int stars = 0;
+
+        // determine map area + get sis data
+        switch (ScrollMapManager.instance.GetCurrentMapLocation())
+        {
+            case MapLocation.NONE:
+                GameManager.instance.SendError(this, "Somehow you managed to get challenge games in an invalid area???");
+                break;
+            case MapLocation.GorillaVillage:
+                triad = GameManager.instance.challengeGameTriads[0];
+
+                if (triad.juliusGame1.gameType == myGameData.gameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.stars;
+                else if (triad.marcusGame2.gameType == myGameData.gameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.stars;
+                else if (triad.brutusGame3.gameType == myGameData.gameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.stars;
+
+                break;
+            case MapLocation.Mudslide:
+                triad = GameManager.instance.challengeGameTriads[1];
+
+                break;
+            // etc ...
+        }
+
+        // place correct sprite
+        switch (stars)
+        {
+            default:
+            case 0:
+                starRibbon.sprite = ribbonStars0;
+                break;
+            case 1:
+                starRibbon.sprite = ribbonStars1;
+                break;
+            case 2:
+                starRibbon.sprite = ribbonStars2;
+                break;
+            case 3:
+                starRibbon.sprite = ribbonStars3;
+                break;
+        }
+    }
+
+    /* 
+    ################################################
+    #   POINTER METHODS
+    ################################################
+    */
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        // return if not interactable
+        if (!interactable)
+            return;
+
+        if (!isPressed)
+        {
+            isPressed = true;
+            transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
+
+            RoyalDecreeController.instance.OpenConfirmWindow(myGameData);
+        }
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (isPressed)
+        {
+            // play audio blip
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+            isPressed = false;
+            transform.localScale = new Vector3(1f, 1f, 1f);
         }
     }
 }

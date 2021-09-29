@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class CoinRaycaster : MonoBehaviour
 {
+    public static CoinRaycaster instance;
+
     public bool isOn = false;
     public float coinMoveSpeed = 0.1f;
     private const float buildCoinMoveSpeed = 0.5f;
@@ -14,6 +17,9 @@ public class CoinRaycaster : MonoBehaviour
 
     void Awake()
     {
+        if (instance == null)
+            instance = this;
+
 #if UNITY_EDITOR
 #else
         coinMoveSpeed = buildCoinMoveSpeed;
@@ -56,12 +62,13 @@ public class CoinRaycaster : MonoBehaviour
             }
 
             // bag glow effect off
-            Bag.instance.glowController.ToggleGlowOutline(false);
-
-            
+            ImageGlowController.instance.SetImageGlow(Bag.instance.GetComponent<Image>(), false);
 
             if (!isCorrect)
                 selectedCoin.ReturnToLog();
+
+            // make coin normal size
+            selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
             selectedCoin = null;
         }
 
@@ -81,9 +88,11 @@ public class CoinRaycaster : MonoBehaviour
                         selectedCoin = result.gameObject.GetComponent<LogCoin>();
                         selectedCoin.PlayPhonemeAudio();
                         selectedCoin.gameObject.transform.SetParent(selectedCoinParent);
+                        // make coin larger
+                        selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.75f, 1.75f), 0.2f);
 
-                        // bag glow effect off
-                        Bag.instance.glowController.ToggleGlowOutline(true);
+                        // bag glow effect on
+                        ImageGlowController.instance.SetImageGlow(Bag.instance.GetComponent<Image>(), true, GlowValue.glow_1_025);
                     } 
                 }
             }

@@ -4,9 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
+public enum MapLocation
+{
+    NONE,
+    GorillaVillage,
+    Mudslide,
+    COUNT
+}
+
 [System.Serializable]
 public struct MapLocationIcons
 {
+    public MapLocation location;
     public List<MapIcon> mapIcons;
     public SignPostController signPost;
 }
@@ -209,6 +218,8 @@ public class ScrollMapManager : MonoBehaviour
         while (waitingForGameEventRoutine)
             yield return null;
 
+        yield return new WaitForSeconds(0.5f);
+
         AfterGameEventStuff();
     }
 
@@ -306,6 +317,12 @@ public class ScrollMapManager : MonoBehaviour
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
 
+                // unlock button in SIS
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                SettingsManager.instance.ToggleWagonButtonActive(true);
+                // add glow + wiggle
+                SettingsManager.instance.ToggleStickerButtonWiggle(true);
+
                 // save to sis and continue
                 StudentInfoSystem.AdvanceStoryBeat();
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -313,8 +330,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.VillageRebuilt)
         {
-            showStars = false;
-
             // darwin quips
             gorilla.interactable = true;
 
@@ -334,6 +349,9 @@ public class ScrollMapManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.isFixed &&
                     StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.isFixed)
                 {
+                    // dont show stars
+                    showStars = false;
+
                     // make sure we are at gorilla village
                     mapPosIndex = 2;
                     // move map to next right map location
@@ -380,7 +398,7 @@ public class ScrollMapManager : MonoBehaviour
                     var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
 
                     // set tiger stuff
-                    tiger.gameData = challengeGameTriad.juliusGame;
+                    tiger.gameData = challengeGameTriad.juliusGame1;
                     tiger.ShowExclamationMark(true);
                     tiger.interactable = true;
                     tiger.GetComponent<Animator>().Play("aTigerTwitch");
@@ -407,7 +425,7 @@ public class ScrollMapManager : MonoBehaviour
             var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
 
             // set tiger stuff
-            tiger.gameData = challengeGameTriad.juliusGame;
+            tiger.gameData = challengeGameTriad.juliusGame1;
             tiger.ShowExclamationMark(true);
 
             // make sure we are at gorilla village
@@ -461,7 +479,7 @@ public class ScrollMapManager : MonoBehaviour
             var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
 
             // set marcus stuff
-            marcus.gameData = challengeGameTriad.marcusGame;
+            marcus.gameData = challengeGameTriad.marcusGame2;
 
             // make sure we are at gorilla village
             mapPosIndex = 2;
@@ -533,7 +551,7 @@ public class ScrollMapManager : MonoBehaviour
             var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
 
             // set brutus stuff
-            brutus.gameData = challengeGameTriad.brutusGame;
+            brutus.gameData = challengeGameTriad.brutusGame3;
 
             // make sure we are at gorilla village
             mapPosIndex = 2;
@@ -634,23 +652,47 @@ public class ScrollMapManager : MonoBehaviour
 
             yield return new WaitForSeconds(1f);
 
+            // place tiger and monkies off screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.offscreenPos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.offscreenPos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.offscreenPos.position;
+
             // play village challenge 2
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageChallengeDefeated_2);
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
-            // tiger sign springs into place
+            yield return new WaitForSeconds(1f);
+
+            // gv sign post springs into place
+            mapIconsAtLocation[2].signPost.ShowSignPost(0);
+            mapIconsAtLocation[2].signPost.GetComponent<SignPostController>().interactable = false;
+            // Save to SIS
+            StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_unlocked = true;
+            StudentInfoSystem.SaveStudentPlayerData();
+
+            yield return new WaitForSeconds(2f);
+
+            // place temp copy over talkie bg
+            var tempSignPost = TempObjectPlacer.instance.PlaceNewObject(mapIconsAtLocation[2].signPost.gameObject, mapIconsAtLocation[2].signPost.transform.localPosition);
+            tempSignPost.GetComponent<SignPostController>().interactable = false;
+            tempSignPost.GetComponent<SignPostController>().SetStars(StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_stars);
 
             // play village challenge 3
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageChallengeDefeated_3);
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
+            // remove temp temp signpost
+            TempObjectPlacer.instance.RemoveObject();
+
             // unlock mudslide
-            StartCoroutine(UnlockMapArea(3, true));
+            StartCoroutine(UnlockMapArea(3, false));
             gorilla.ShowExclamationMark(true);
 
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(5f);
+
+            mapIconsAtLocation[2].signPost.GetComponent<SignPostController>().interactable = true;
         }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {
@@ -718,9 +760,23 @@ public class ScrollMapManager : MonoBehaviour
         if (mapIconsAtLocation[location].signPost != null)
         {
             if (opt)
-                mapIconsAtLocation[location].signPost.ShowSignPost(0);
-            else 
+            {
+                // check SIS if signpost unlocked
+                switch (mapIconsAtLocation[location].location)
+                {
+                    case MapLocation.NONE:
+                        break;
+                    case MapLocation.GorillaVillage:
+                        if (StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_unlocked)
+                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_stars);
+                        break;
+                    // etc ...
+                }
+            }
+            else
+            {
                 mapIconsAtLocation[location].signPost.HideSignPost();
+            } 
         }
     }
 
@@ -846,6 +902,21 @@ public class ScrollMapManager : MonoBehaviour
         }
     }
 
+    public MapLocation GetCurrentMapLocation()
+    {
+        switch (mapPosIndex)
+        {
+            default:
+            case 0:
+            case 1:
+                return MapLocation.NONE;
+            case 2:
+                return MapLocation.GorillaVillage;
+            case 3:
+                return MapLocation.Mudslide;
+        }
+    }
+
     /* 
     ################################################
     #   MAP NAVIGATION BUTTONS
@@ -959,7 +1030,7 @@ public class ScrollMapManager : MonoBehaviour
     // set the index where the player can no longer go forward
     public void SetMapLimit(int index)
     {
-        print ("index: " + index);
+        // print ("index: " + index);
         if (index >= 0 && index < cameraLocations.Count)
         {
             FogController.instance.mapXpos = fogLocations[index];

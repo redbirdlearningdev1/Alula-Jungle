@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class TigerCoinGameManager : MonoBehaviour
 {
@@ -320,6 +319,9 @@ public class TigerCoinGameManager : MonoBehaviour
     {
         if (win)
         {
+            // play correct audio
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
+
             pattern.correct();
             correctCoins[numWins].SetActive(true);
             numWins++;
@@ -329,6 +331,9 @@ public class TigerCoinGameManager : MonoBehaviour
         }
         else
         {
+            // play correct audio
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
+
             pattern.incorrect();
             incorrectCoins[numMisses].SetActive(true);
             numMisses++;

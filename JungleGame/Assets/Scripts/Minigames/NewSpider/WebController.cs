@@ -4,30 +4,24 @@ using UnityEngine;
 
 public class WebController : MonoBehaviour
 {
-    // Start is called before the first frame update\
-    private Animator animator;
+    public static WebController instance;
+
+    public Animator animator;
 
 
     void Awake()
     {
-        animator = GetComponent<Animator>();
+        if (instance == null)
+            instance = this;
     }
+
     public void webSmall()
     {
-        StartCoroutine(WebSmallRoutine());
-    }
-    private IEnumerator WebSmallRoutine()
-    {
-        yield return new WaitForSeconds(.5f);
         animator.Play("WebSmall");
     }
+
     public void webLarge()
     {
-        StartCoroutine(WebLargeRoutine());
-    }
-    private IEnumerator WebLargeRoutine()
-    {
-        yield return new WaitForSeconds(.5f);
         animator.Play("WebLarge");
     }
 }

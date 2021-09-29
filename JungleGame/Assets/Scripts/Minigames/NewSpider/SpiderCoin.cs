@@ -75,7 +75,13 @@ public class SpiderCoin : MonoBehaviour
 
     public void MoveUp()
     {
-        StartCoroutine(MoveUpDownRoutine(MoveUpPosition,1f));
+        StartCoroutine(BounceCoinUpRoutine());
+    }
+
+    private IEnumerator BounceCoinUpRoutine()
+    {
+        //GetComponent<LerpableObject>().
+        yield return null;
     }
 
     public void MoveBack()

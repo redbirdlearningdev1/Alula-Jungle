@@ -201,8 +201,6 @@ public class TalkieDatabase : MonoBehaviour
         yourObject.removeBackgroundAfterTalkie = talkie.removeBackgroundAfterTalkie;
         yourObject.removeLetterboxAfterTalkie = talkie.removeLetterboxAfterTalkie;
 
-        yourObject.endAction = TalkieEndAction.None;
-
         yourObject.segmnets = talkie.segmnets;
         
         EditorUtility.SetDirty(yourObject);

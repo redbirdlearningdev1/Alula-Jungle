@@ -6,14 +6,13 @@ using UnityEngine.UI;
 public class Bag : MonoBehaviour
 {
     public static Bag instance;
-    public GlowOutlineController glowController;
 
     private int currBag = 0;
     private const int maxBag = 5;
 
 
     [Header("Objects")]
-    [SerializeField] private SpriteRenderer bag;
+    [SerializeField] private Image bag;
     [SerializeField] private Image shadow;
 
     [Header("Images")]
@@ -27,10 +26,6 @@ public class Bag : MonoBehaviour
             instance = this;
         }
 
-        // get glow controller
-        glowController = GetComponent<GlowOutlineController>();
-        glowController.ToggleGlowOutline(false);
-
         bag.sprite = bagSprites[currBag];
         shadow.sprite = shadowSprites[currBag];
     }
@@ -42,13 +37,21 @@ public class Bag : MonoBehaviour
             currBag++;
         }
 
-        bag.sprite = bagSprites[currBag];
-        shadow.sprite = shadowSprites[currBag];
-
+        StartCoroutine(UpgradeBagRoutine());
+        
         // play coin drop sound effect
         AudioManager.instance.PlayCoinDrop();
         // play right choice sound effect
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
+    }
+
+    private IEnumerator UpgradeBagRoutine()
+    {
+        GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
+        bag.sprite = bagSprites[currBag];
+        shadow.sprite = shadowSprites[currBag];
+        yield return new WaitForSeconds(0.2f);
+        GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
     }
     
 

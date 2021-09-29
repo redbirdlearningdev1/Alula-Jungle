@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Key : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class Key : MonoBehaviour
     private bool isDissipating = false;
 
     [SerializeField] private Animator animator;
-    private SpriteRenderer image;
+    public Image image;
+    public Transform grabPos;
 
     public string keyName;
     public Transform ropePos;
@@ -19,13 +21,6 @@ public class Key : MonoBehaviour
     public const float scaleMult = 0.99f;
 
     private Coroutine currentRoutine;
-
-    public void SetLayer(int layer)
-    {
-        if (image == null)
-            image = GetComponent<SpriteRenderer>();
-        image.sortingOrder = layer;
-    }
 
     public void StartMovingAnimation()
     {
@@ -85,7 +80,6 @@ public class Key : MonoBehaviour
     {
         isDissipating = true;
         // make key invisible over time
-        image = GetComponent<SpriteRenderer>();
         StartCoroutine(DissipateAndDestroy());
     }
 

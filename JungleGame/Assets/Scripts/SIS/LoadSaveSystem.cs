@@ -13,7 +13,7 @@ public static class LoadSaveSystem
     public static string default_version = "1.8";
     // 1.6 added stickers to SIS
 
-    public static string default_name = "empty";
+    public static string default_name = "new profile :)";
     public static int    default_stars = 0;
     public static int    default_map_limit = 0;
 
@@ -150,6 +150,15 @@ public static class LoadSaveSystem
         new_data.mapData.GV_challenge1.stars = default_stars;
         new_data.mapData.GV_challenge2.stars = default_stars;
         new_data.mapData.GV_challenge3.stars = default_stars;
+
+        ChallengeGameTriad GV_triad = GameManager.instance.challengeGameTriads[0];
+
+        new_data.mapData.GV_challenge1.gameType = GV_triad.juliusGame1.gameType;
+        new_data.mapData.GV_challenge2.gameType = GV_triad.marcusGame2.gameType;
+        new_data.mapData.GV_challenge3.gameType = GV_triad.brutusGame3.gameType;
+
+        new_data.mapData.GV_signPost_unlocked = false;
+        new_data.mapData.GV_signPost_stars = 0;
 
         // stickers
         new_data.stickerInventory = new List<InventoryStickerData>();

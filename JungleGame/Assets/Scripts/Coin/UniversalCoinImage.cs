@@ -15,8 +15,6 @@ public class UniversalCoinImage : MonoBehaviour
     // coin objects
     [SerializeField] private ActionWordCoin actionWordCoin;
     [SerializeField] private ConsonantCoin consonantCoin;
-    [SerializeField] private GlowOutlineController glowConroller;
-    [SerializeField] private SpriteRenderer glowSpriteRenderer;
     [SerializeField] private Image goldImage;
     [SerializeField] private Image silverImage;
     [SerializeField] private SpriteShakeController shakeController;
@@ -24,10 +22,7 @@ public class UniversalCoinImage : MonoBehaviour
 
     void Awake()
     {
-        // set the glow renderer to be invisible
-        glowSpriteRenderer.color = new Color(1f, 1f, 1f, 0f);
-
-        // set sprite renderer
+        // set images
         if (coinType == CoinType.ActionWordCoin)
             currImage = goldImage;
         else if (coinType == CoinType.ConsonantCoin)
@@ -45,7 +40,7 @@ public class UniversalCoinImage : MonoBehaviour
             // print ("value: " + (int)value + " , separator: " + ChallengeWordDatabase.elkonin_word_separator + ", coinType: " + coinType);
             if (coinType == CoinType.ActionWordCoin && (int)value > ChallengeWordDatabase.elkonin_word_separator || value == ElkoninValue.empty_silver)
             {
-                // print ("switching to gold!");
+                //print ("switching to gold!");
                 value = ElkoninValue.empty_gold;
                 currImage = goldImage;
                 shakeController.SetTransform(goldImage.transform);
@@ -56,7 +51,7 @@ public class UniversalCoinImage : MonoBehaviour
             }
             else if (coinType == CoinType.ConsonantCoin && (int)value <= ChallengeWordDatabase.elkonin_word_separator || value == ElkoninValue.empty_gold)
             {
-                // print ("switching to silver!");
+                //print ("switching to silver!");
                 value = ElkoninValue.empty_silver;
                 currImage = silverImage;
                 shakeController.SetTransform(silverImage.transform);
@@ -94,8 +89,8 @@ public class UniversalCoinImage : MonoBehaviour
             shakeController.SetTransform(goldImage.transform);
 
             consonantCoin.gameObject.SetActive(false);
-            actionWordCoin.SetCoinType(ChallengeWordDatabase.ElkoninValueToActionWord(value));
             actionWordCoin.gameObject.SetActive(true);
+            actionWordCoin.SetCoinType(ChallengeWordDatabase.ElkoninValueToActionWord(value));
         }
         else if ((int)value > ChallengeWordDatabase.elkonin_word_separator || value == ElkoninValue.empty_silver)
         {
@@ -107,9 +102,16 @@ public class UniversalCoinImage : MonoBehaviour
             shakeController.SetTransform(silverImage.transform);
 
             actionWordCoin.gameObject.SetActive(false);
-            consonantCoin.SetCoinType(ChallengeWordDatabase.ElkoninValueToConsonantEnum(value));
             consonantCoin.gameObject.SetActive(true);
+            consonantCoin.SetCoinType(ChallengeWordDatabase.ElkoninValueToConsonantEnum(value));
         }
+    }
+
+    public void SetActionWordValue(ActionWordEnum value)
+    {
+        if (coinType != CoinType.ActionWordCoin)
+            return;
+        SetValue(ChallengeWordDatabase.ActionWordEnumToElkoninValue(value));
     }
 
     public void ShakeCoin(float duration)
@@ -156,11 +158,7 @@ public class UniversalCoinImage : MonoBehaviour
 
     public void ToggleGlowOutline(bool opt)
     {
-        if (opt)
-            glowSpriteRenderer.color = new Color(1f, 1f, 1f, 1f);
-        else
-            glowSpriteRenderer.color = new Color(1f, 1f, 1f, 0f);
-        glowConroller.ToggleGlowOutline(opt);
+        ImageGlowController.instance.SetImageGlow(currImage, opt);
     }
 
     /* 

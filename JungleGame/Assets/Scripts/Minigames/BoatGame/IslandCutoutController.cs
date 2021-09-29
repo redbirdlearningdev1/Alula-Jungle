@@ -22,6 +22,7 @@ public class IslandCutoutController : MonoBehaviour
     private bool followTransform = false;
     private Transform transformToFollow;
 
+
     void Awake()
     {
         if (instance == null)
@@ -32,16 +33,16 @@ public class IslandCutoutController : MonoBehaviour
 
     void Update()
     {
-        // return if off
-        if (!isOn)
-            return;
-        
         // follow transform position (only x)
         if (followTransform)
         {
             transform.position = new Vector3(transformToFollow.position.x, transform.position.y, 1f);
             return;
         }
+
+        // return if off
+        if (!isOn)
+            return;
 
         // drag n drop island :3
         if (Input.GetMouseButton(0) && holdingIsland)
@@ -71,6 +72,7 @@ public class IslandCutoutController : MonoBehaviour
                     if (result.gameObject.name == "IslandOutlineTarget")
                     {
                         isCorrect = true;
+                        isOn = false;
                     }
                 }
             }
@@ -101,6 +103,9 @@ public class IslandCutoutController : MonoBehaviour
                     if (result.gameObject.transform.name == "IslandCutout")
                     {
                         holdingIsland = true;
+
+                        // play sound effect
+                        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
                     }
                 }
             }
@@ -112,13 +117,20 @@ public class IslandCutoutController : MonoBehaviour
         // turn off wheel control
         BoatWheelController.instance.isOn = false;
         BoatWheelController.instance.LetGoOfWheel();
+
+        // stop wiggle
+        cutoutWiggleController.StopWiggle();
         
         // move island to correct spot + set new parent
         GoToOceanSpot();
 
+        yield return new WaitForSeconds(0.25f);
+        // play sound effect
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PlacedIslandSplash, 1f);
+
         // remove island outline
         StartCoroutine(LerpOutlineAlpha());
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         // set island parent
         transform.SetParent(mainIslandParent);
@@ -126,10 +138,10 @@ public class IslandCutoutController : MonoBehaviour
         // center boat to face main island + center main island
         NewParallaxController.instance.CenterOnIsland(transform);
         FollowTransformPosition(outline.GetComponent<Transform>());
-
-        // disable wheel control
-        BoatWheelController.instance.isOn = false;
-        yield return new WaitForSeconds(1f);
+            
+        // wait until finished centering on island
+        while (NewParallaxController.instance.centeringOnIsland)
+            yield return null;
 
         // stop following island outline
         StopFollowingTransform();

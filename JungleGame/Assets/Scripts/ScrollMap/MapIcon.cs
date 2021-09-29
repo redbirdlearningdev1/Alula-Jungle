@@ -1,6 +1,8 @@
 ﻿using System.Collections;
-using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine;
+using UnityEngine.UI;
+
 
 public enum AnimatedIcon 
 {
@@ -14,6 +16,7 @@ public enum StarLocation
 
 public enum MapIconIdentfier
 {
+    None,
     GV_house1,
     GV_house2,
     GV_statue,
@@ -37,7 +40,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     [SerializeField] private Sprite fixedSprite;
 
     private MeshRenderer meshRenderer;
-    private SpriteRenderer spriteRenderer;
+    private Image image;
     private Animator animator;
     [SerializeField] private Animator repairAnimator;
     [SerializeField] private Animator destroyAnimator;
@@ -61,7 +64,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     void Awake() 
     {
         meshRenderer = GetComponent<MeshRenderer>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        image = GetComponent<Image>();
         if (animatedIcon != AnimatedIcon.none) animator = GetComponent<Animator>();
         if (repairAnimator) repairAnimator.Play("defaultAnimation");
 
@@ -89,7 +92,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             {
                 StartCoroutine(MoveStarRoutine(star.transform, currentStarRevealPos));
                 star.LerpStarAlphaScale(1f, 1f);
-                star.SetRendererLayer(2);
+                //star.SetRendererLayer(2);
 
                 yield return new WaitForSeconds(0.05f);
             }
@@ -110,7 +113,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             {
                 StartCoroutine(MoveStarRoutine(star.transform, starsHiddenPosition));
                 star.LerpStarAlphaScale(0f, 0f);
-                star.SetRendererLayer(0);
+                //star.SetRendererLayer(0);
 
                 yield return new WaitForSeconds(0.05f);
             }
@@ -161,7 +164,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             {
                 star.transform.position = starsHiddenPosition.position;
                 star.LerpStarAlphaScale(0f, 0f);
-                star.SetRendererLayer(0);
+                //star.SetRendererLayer(0);
             }
             starsHidden = true;
         }
@@ -189,8 +192,8 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         {
             default:
             case AnimatedIcon.none:
-                if (!opt) spriteRenderer.sprite = brokenSprite;
-                else spriteRenderer.sprite = fixedSprite;
+                if (!opt) image.sprite = brokenSprite;
+                else image.sprite = fixedSprite;
                 break;
             case AnimatedIcon.fire:
                 if (!opt) animator.Play("fireBroken");
@@ -299,12 +302,12 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             else 
             {
                 GameManager.instance.SetData(gameData);
-                GameManager.instance.LoadScene(gameData.sceneName, true);
+                GameManager.instance.LoadScene(gameData.sceneName, true, 0.5f, true);
             }
         }
         else
         {
-            GameManager.instance.LoadScene("MinigameDemoScene", true);
+            GameManager.instance.LoadScene("MinigameDemoScene", true, 0.5f, true);
         }
     }
 

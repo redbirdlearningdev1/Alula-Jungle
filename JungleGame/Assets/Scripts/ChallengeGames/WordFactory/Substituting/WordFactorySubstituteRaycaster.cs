@@ -58,7 +58,7 @@ public class WordFactorySubstituteRaycaster : MonoBehaviour
             }
 
             // return water coins to original position
-            WordFactorySubstitutingManager.instance.ResetWaterCoins();
+            WordFactorySubstitutingManager.instance.ReturnWaterCoins();
             selectedObject = null;
         }
 

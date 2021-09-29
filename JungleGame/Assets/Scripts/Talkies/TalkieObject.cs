@@ -39,12 +39,6 @@ public enum TalkieEnding
     ExitRight   // characters exit towards Right
 }
 
-public enum TalkieEndAction
-{
-    None,
-    UnlockStickerButton
-}
-
 [System.Serializable]
 public struct TalkieSegment
 {
@@ -92,8 +86,6 @@ public class TalkieObject : ScriptableObject
     public TalkieEnding ending;
     public bool removeBackgroundAfterTalkie = true; // by default, the background goes away
     public bool removeLetterboxAfterTalkie = true; // by default, the letterbox goes away
-
-    public TalkieEndAction endAction = TalkieEndAction.None; // an action is performed after the talkie finishes
 
     [Header("Segments")]
     public List<TalkieSegment> segmnets;

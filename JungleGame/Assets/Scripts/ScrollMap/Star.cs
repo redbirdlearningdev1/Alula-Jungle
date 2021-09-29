@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Star : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
+    private Image image;
     [SerializeField] private Sprite emptyStar;
     [SerializeField] private Sprite fullStar;
 
@@ -13,33 +14,33 @@ public class Star : MonoBehaviour
     public void SetStar(bool full)
     {
         // get sprite renderer if null
-        if (spriteRenderer == null)
-            spriteRenderer = GetComponent<SpriteRenderer>();
+        if (image == null)
+            image = GetComponent<Image>();
 
         if (full)
         {
-            spriteRenderer.sprite = fullStar;
+            image.sprite = fullStar;
         }
         else
         {
-            spriteRenderer.sprite = emptyStar;
+            image.sprite = emptyStar;
         }    
     }
 
-    public void SetRendererLayer(int layer)
-    {
-        // get sprite renderer if null
-        if (spriteRenderer == null)
-            spriteRenderer = GetComponent<SpriteRenderer>();
+    // public void SetRendererLayer(int layer)
+    // {
+    //     // get sprite renderer if null
+    //     if (image == null)
+    //         image = GetComponent<Image>();
 
-        spriteRenderer.sortingOrder = layer;
-    }
+    //     image.sortingOrder = layer;
+    // }
 
     public void LerpStarAlphaScale(float targetAlpha, float targetScale)
     {
         // get sprite renderer if null
-        if (spriteRenderer == null)
-            spriteRenderer = GetComponent<SpriteRenderer>();
+        if (image == null)
+            image = GetComponent<Image>();
 
         StopAllCoroutines();
         StartCoroutine(LerpStarAlphaRoutine(targetAlpha));
@@ -48,7 +49,7 @@ public class Star : MonoBehaviour
 
     private IEnumerator LerpStarAlphaRoutine(float targetAlpha)
     {
-        float startAlpha = spriteRenderer.color.a;
+        float startAlpha = image.color.a;
         float timer = 0f;
 
         while (true)
@@ -56,12 +57,12 @@ public class Star : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > lerpSpeed)
             {
-                spriteRenderer.color = new Color(1f, 1f, 1f, targetAlpha);
+                image.color = new Color(1f, 1f, 1f, targetAlpha);
                 break;
             }
 
             float tempAlpha = Mathf.Lerp(startAlpha, targetAlpha, timer / lerpSpeed);
-            spriteRenderer.color = new Color(1f, 1f, 1f, tempAlpha);
+            image.color = new Color(1f, 1f, 1f, tempAlpha);
 
             yield return null;
         }

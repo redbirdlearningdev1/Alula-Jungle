@@ -14,17 +14,16 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
     public bool interactable;
     private bool isPressed;
 
-    void Awake()
-    {
-
-    }
+    private int stars;
 
     public void ShowSignPost(int stars)
     {
-        StartCoroutine(ShowSignPostRoutine(stars));
+        this.stars = stars;
+
+        StartCoroutine(ShowSignPostRoutine());
     }
 
-    private IEnumerator ShowSignPostRoutine(int stars)
+    private IEnumerator ShowSignPostRoutine()
     {
         print ("turning on sign post!");
 
@@ -35,6 +34,11 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
 
         yield return new WaitForSeconds(0.5f);
 
+        SetStars(stars);
+    }
+
+    public void SetStars(int stars)
+    {
         switch (stars)
         {
             default:
@@ -63,11 +67,9 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
 
     private IEnumerator HideSignPostRoutine()
     {
-        print ("turning off sign post!");
-
         interactable = false;
 
-        yield return new WaitForSeconds (0.5f);
+        yield return new WaitForSeconds (1f);
         animator.Play("hidden");
     }
 
@@ -102,6 +104,18 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
 
             // open window 
             RoyalDecreeController.instance.ToggleWindow(challengeGameTriadIndex);
+
+            // place copy over bg
+            var tempSignPost = TempObjectPlacer.instance.PlaceNewObject(this.gameObject, transform.localPosition);
+            StartCoroutine(DelaySignPostInteractableRoutine(tempSignPost.GetComponent<SignPostController>()));
+            tempSignPost.GetComponent<SignPostController>().SetStars(stars);
         }
+    }
+
+    private IEnumerator DelaySignPostInteractableRoutine(SignPostController controller)
+    {
+        controller.interactable = false;
+        yield return new WaitForSeconds(1.5f);
+        controller.interactable = true;
     }
 }

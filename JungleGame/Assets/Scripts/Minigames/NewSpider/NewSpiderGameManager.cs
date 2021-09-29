@@ -30,11 +30,12 @@ public class NewSpiderGameManager : MonoBehaviour
     private List<ActionWordEnum> usedCoinPool;
 
 
-    [SerializeField] private List<SpiderCoin> Coins;
+    public List<UniversalCoinImage> coins;
+    public List<Transform> coinPosOffScreen;
+    public List<Transform> coinPosOnScreen;
 
-    private List<SpiderCoin> allCoins = new List<SpiderCoin>();
     private int selectedIndex;
-    public SpiderCoin selectedSpiderCoin;
+    [HideInInspector] public UniversalCoinImage selectedCoin;
 
     private int winCount = 0;
     private int timesMissed = 0;
@@ -57,13 +58,13 @@ public class NewSpiderGameManager : MonoBehaviour
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
-        // play music
-        AudioManager.instance.StopMusic();
-
         if (!instance)
         {
             instance = this;
         }
+
+        // place menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // get game data
         gameData = (SpiderwebGameData)GameManager.instance.GetData();
@@ -77,7 +78,13 @@ public class NewSpiderGameManager : MonoBehaviour
         if (playTutorial)
             StartCoroutine(StartTutorialGame());
         else 
-            StartCoroutine(StartGame(0));
+        {
+            // start song
+            AudioManager.instance.InitSplitSong(SplitSong.Spiderweb);
+            AudioManager.instance.IncreaseSplitSong();
+
+            StartCoroutine(StartGame());
+        }
     }
 
     void Update()
@@ -95,13 +102,8 @@ public class NewSpiderGameManager : MonoBehaviour
 
     private void PregameSetup()
     {
-        // create coin list
-        bug.setOrigin();
-        foreach (var coin in Coins)
-        {
-            //Debug.Log(coin);
-            allCoins.Add(coin);
-        }
+        // turn off raycaster
+        SpiderRayCaster.instance.isOn = false;
 
         // Create Global Coin List
         if (gameData != null)
@@ -115,12 +117,6 @@ public class NewSpiderGameManager : MonoBehaviour
 
         unusedCoinPool = new List<ActionWordEnum>();
         unusedCoinPool.AddRange(globalCoinPool);
-
-        // disable all coins
-        foreach (var coin in allCoins)
-        { 
-            coin.setOrigin();
-        }
     }
 
     /* 
@@ -129,10 +125,12 @@ public class NewSpiderGameManager : MonoBehaviour
     ################################################
     */
 
-    public bool EvaluateSelectedSpiderCoin(ActionWordEnum coin,SpiderCoin correctCoin)
+    public bool EvaluateSelectedSpiderCoin(ActionWordEnum coin, UniversalCoinImage correctCoin)
     {
-        Debug.Log(selectedSpiderCoin.type);
-        if (coin == selectedSpiderCoin.type)
+        // turn off raycaster
+        SpiderRayCaster.instance.isOn = false;
+
+        if (coin ==  ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value))
         {
             winCount++;
 
@@ -175,16 +173,22 @@ public class NewSpiderGameManager : MonoBehaviour
         spider.fail();
         webber2.gameObject.SetActive(true);
         webber2.grabBug();
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.4f);
         bug.webGetEat();
         yield return new WaitForSeconds(.5f);
         webber2.gameObject.SetActive(false);
-        yield return new WaitForSeconds(.5f);
-        StartCoroutine(StartGame(0));
+
+        StartCoroutine(CoinsDown());
+        yield return new WaitForSeconds(1f);
+
+        StartCoroutine(StartGame());
     }
 
-    private IEnumerator CoinSuccessRoutine(SpiderCoin coin)
+    private IEnumerator CoinSuccessRoutine(UniversalCoinImage coin)
     {
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+
         // play right choice audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
 
@@ -209,22 +213,24 @@ public class NewSpiderGameManager : MonoBehaviour
         }
         yield return new WaitForSeconds(.5f);
         
-        coin.correct();
+        coin.ToggleVisibility(false, true);
         yield return new WaitForSeconds(.15f);
+        ball.UpgradeChest();
 
         StartCoroutine(bugLeaves());
         webber.gameObject.SetActive(false);
-        yield return new WaitForSeconds(.35f);
-        coin.ToggleVisibility(false, false);
-        ball.UpgradeChest();
+
+        StartCoroutine(CoinsDown());
+        yield return new WaitForSeconds(2f);
         
-        yield return new WaitForSeconds(1.5f);
-        
-        StartCoroutine(StartGame(0));
+        StartCoroutine(StartGame());
     }
 
-    private IEnumerator WinRoutine(SpiderCoin coin)
+    private IEnumerator WinRoutine(UniversalCoinImage coin)
     {
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+
         // play right choice audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
 
@@ -249,16 +255,15 @@ public class NewSpiderGameManager : MonoBehaviour
         }
         yield return new WaitForSeconds(.5f);
         
-        coin.correct();
+        coin.ToggleVisibility(false, true);
         yield return new WaitForSeconds(.15f);
+        ball.UpgradeChest();
 
         StartCoroutine(bugLeaves());
         webber.gameObject.SetActive(false);
-        yield return new WaitForSeconds(.35f);
-        coin.ToggleVisibility(false, false);
-        ball.UpgradeChest();
-        
-        yield return new WaitForSeconds(1.5f);
+
+        StartCoroutine(CoinsDown());
+        yield return new WaitForSeconds(2f);
 
         // play win tune
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
@@ -269,29 +274,30 @@ public class NewSpiderGameManager : MonoBehaviour
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());
     }
 
-    private IEnumerator StartGame(int coins)
+    private IEnumerator StartGame()
     {
-        StartCoroutine(CoinsDown());
+        ResetCoins();
         bug.goToOrigin();
         yield return new WaitForSeconds(1f);
-        List<SpiderCoin> coinz = GetCoins();
-        foreach (var coin in coinz)
-        {
-            coin.ToggleVisibility(false, false);
-            coin.grow();
-            yield return new WaitForSeconds(0f);
-        }
 
-        StartCoroutine(ShowCoins(coins));
-        yield return new WaitForSeconds(1f);
+        SetCoins();
         bug.StartToWeb();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
+
         web.webSmall();
-        
-       
-        StartCoroutine(CoinsUp(coins));
-        yield return new WaitForSeconds(1f);
+        bug.BugBounce();
+        yield return new WaitForSeconds(1.5f);
+
+        // play audio
         bug.PlayPhonemeAudio();
+        yield return new WaitForSeconds(1f);
+
+        // bring coins up
+        StartCoroutine(CoinsUp());
+        yield return new WaitForSeconds(1f);
+
+        // turn on raycaster
+        SpiderRayCaster.instance.isOn = true;
     }
 
     /* 
@@ -322,44 +328,45 @@ public class NewSpiderGameManager : MonoBehaviour
         AudioManager.instance.PlayTalk(clip);
         yield return new WaitForSeconds(clip.length + 1f);
 
-        StartCoroutine(PlayTutorialGame(0));
+        StartCoroutine(PlayTutorialGame());
     }
 
-    private IEnumerator PlayTutorialGame(int coins)
+    private IEnumerator PlayTutorialGame()
     {
-        StartCoroutine(CoinsDown());
+        ResetCoins();
         bug.goToOrigin();
         yield return new WaitForSeconds(1f);
 
-        List<SpiderCoin> coinz = GetCoins();
-        foreach (var coin in coinz)
-        {
-            coin.ToggleVisibility(false, false);
-            coin.grow();
-            yield return new WaitForSeconds(0f);
-        }
-
-        StartCoroutine(ShowCoins(coins));
-        yield return new WaitForSeconds(1f);
-
+        SetCoins();
         bug.StartToWeb();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
 
         web.webSmall();
-    
-        StartCoroutine(CoinsUp(coins));
-        yield return new WaitForSeconds(1f);
+        bug.BugBounce();
+        yield return new WaitForSeconds(1.5f);
+
+        // play audio
         bug.PlayPhonemeAudio();
+        yield return new WaitForSeconds(1f);
+
+        // bring coins up
+        StartCoroutine(CoinsUp());
+        yield return new WaitForSeconds(1f);
+
+        // turn on raycaster
+        SpiderRayCaster.instance.isOn = true;
     }
 
     private IEnumerator TutorialFailRoutine()
     {
         // play wrong choice audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 1f);
-        yield return null;
+        yield return new WaitForSeconds(1f);
+        // turn on raycaster
+        SpiderRayCaster.instance.isOn = true;
     }
 
-    private IEnumerator TutorialSuccessRoutine(SpiderCoin coin)
+    private IEnumerator TutorialSuccessRoutine(UniversalCoinImage coin)
     {
         // play right choice audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
@@ -385,21 +392,20 @@ public class NewSpiderGameManager : MonoBehaviour
         }
         yield return new WaitForSeconds(.5f);
         
-        coin.correct();
+        coin.ToggleVisibility(false, true);
         yield return new WaitForSeconds(.15f);
+        ball.UpgradeChest();
 
         StartCoroutine(bugLeaves());
         webber.gameObject.SetActive(false);
-        yield return new WaitForSeconds(.35f);
-        coin.ToggleVisibility(false, false);
-        ball.UpgradeChest();
+
+        StartCoroutine(CoinsDown());
+        yield return new WaitForSeconds(2f);
         
-        yield return new WaitForSeconds(1.5f);
-        
-        StartCoroutine(PlayTutorialGame(tutorialEvent));
+        StartCoroutine(PlayTutorialGame());
     }
 
-    private IEnumerator TutorialWinRoutine(SpiderCoin coin)
+    private IEnumerator TutorialWinRoutine(UniversalCoinImage coin)
     {
         // play right choice audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
@@ -425,21 +431,20 @@ public class NewSpiderGameManager : MonoBehaviour
         }
         yield return new WaitForSeconds(.5f);
         
-        coin.correct();
+        coin.ToggleVisibility(false, true);
         yield return new WaitForSeconds(.15f);
+        ball.UpgradeChest();
 
         StartCoroutine(bugLeaves());
         webber.gameObject.SetActive(false);
-        yield return new WaitForSeconds(.35f);
-        coin.ToggleVisibility(false, false);
-        ball.UpgradeChest();
-        
-        yield return new WaitForSeconds(1.5f);
+
+        StartCoroutine(CoinsDown());
+        yield return new WaitForSeconds(2f);
 
         // play win tune
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         // save to SIS
         StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = true;
@@ -489,38 +494,42 @@ public class NewSpiderGameManager : MonoBehaviour
     private IEnumerator bugLeaves()
     {
         web.webLarge();
-        yield return new WaitForSeconds(.4f);
         bug.takeOff();
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(.25f);
         bug.leaveWeb();
-        yield return new WaitForSeconds(.75f);
-        bug.grow();
-        bug.leaveWeb2();
     }
 
-    private IEnumerator ShowCoins(int index)
+    private void SetCoins()
     {
-        List<SpiderCoin> currentCoins = GetCoins();
-
         // make new used word list and add current correct word
         usedCoinPool = new List<ActionWordEnum>();
         usedCoinPool.Clear();
 
         int i = 0;
-        foreach (var coin in currentCoins)
+        foreach (var coin in coins)
         {
             ActionWordEnum type;
             if (!playTutorial)
                 type = GetUnusedWord();
             else
             {   
-                type = tutorialLists[index].list[i];
+                type = tutorialLists[tutorialEvent].list[i];
                 i++;
             }
-                
-            coin.SetCoinType(type);
+            
+            coin.SetActionWordValue(type);
             coin.ToggleVisibility(true, true);
-            yield return new WaitForSeconds(0f);
+        }
+
+        // select random coin OR tutorial coin
+        if (!playTutorial)
+            SelectRandomCoin();
+        else
+        {
+            selectedIndex = correctIndexes[tutorialEvent];
+            selectedCoin = coins[selectedIndex];
+            bug.SetCoinType(ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value));
+            tutorialEvent++;
         }
     }
 
@@ -548,59 +557,57 @@ public class NewSpiderGameManager : MonoBehaviour
         return word;
     }
 
-    private IEnumerator CoinsUp(int index)
+    private IEnumerator CoinsUp()
     {
-        List<SpiderCoin> coins = GetCoins();
-        foreach (var coin in coins)
+        for (int i = 0; i < coins.Count; i++)
         {
-            coin.MoveUp();
-            yield return new WaitForSeconds(0f);
-        }
+            Vector2 pos = coinPosOnScreen[i].position;
+            Vector2 bouncePos = pos;
+            bouncePos.y += 0.5f;
 
-        // select random coin OR tutorial coin
-        if (!playTutorial)
-            SelectRandomCoin(index);    
-        else
-        {
-            List<SpiderCoin> pile = GetCoins();
-            selectedIndex = correctIndexes[tutorialEvent];
-            selectedSpiderCoin = pile[selectedIndex];
-            bug.SetCoinType(selectedSpiderCoin.type);
-            tutorialEvent++;
+            coins[i].GetComponent<LerpableObject>().LerpPosition(bouncePos, 0.2f, false);
+            yield return new WaitForSeconds(0.2f);
+            coins[i].GetComponent<LerpableObject>().LerpPosition(pos, 0.2f, false);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 
     private IEnumerator CoinsDown()
     {
-        List<SpiderCoin> coins = GetCoins();
+        for (int i = 0; i < coins.Count; i++)
+        {
+            Vector2 pos = coinPosOffScreen[i].position;
+            Vector2 bouncePos = pos;
+            bouncePos.y += 0.5f;
+
+            coins[i].GetComponent<LerpableObject>().LerpPosition(bouncePos, 0.2f, false);
+            yield return new WaitForSeconds(0.2f);
+            coins[i].GetComponent<LerpableObject>().LerpPosition(pos, 0.2f, false);
+        }
+    }
+
+    private void ResetCoins()
+    {
+        for (int i = 0; i < coins.Count; i++)
+        {
+            coins[i].transform.position = coinPosOffScreen[i].position;
+        }
+    }
+
+    public void ReturnCoinsToPosition()
+    {
+        int i = 0;
         foreach (var coin in coins)
         {
-            coin.MoveDown();
-            yield return new WaitForSeconds(0f);
+            coin.GetComponent<LerpableObject>().LerpPosition(coinPosOnScreen[i].position, 0.25f, false);
+            i++;
         }
     }
 
-    private IEnumerator HideCoins(int index, RummageCoin exceptCoin = null)
+    private void SelectRandomCoin()
     {
-        List<SpiderCoin> row = GetCoins();
-        foreach (var coin in row)
-        {
-            if (coin != exceptCoin)
-                coin.ToggleVisibility(false, true);
-            yield return new WaitForSeconds(0.1f);
-        }
-    }
-
-    private void SelectRandomCoin(int index)
-    {
-        List<SpiderCoin> pile = GetCoins();
-        selectedIndex = Random.Range(0, pile.Count);
-        selectedSpiderCoin = pile[selectedIndex];
-        bug.SetCoinType(selectedSpiderCoin.type);
-    }
-
-    private List<SpiderCoin> GetCoins()
-    {
-        return Coins;
+        selectedIndex = Random.Range(0, coins.Count);
+        selectedCoin = coins[selectedIndex];
+        bug.SetCoinType(ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value));
     }
 }

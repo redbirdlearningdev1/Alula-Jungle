@@ -53,6 +53,7 @@ public class NewParallaxController : MonoBehaviour
 
     private float prevVerticalParallaxPos;
     private bool startVerticalParallax = false;
+    [HideInInspector] public bool centeringOnIsland = false;
     
     [Header("Scale Multipliers")]
     public float skyScale;
@@ -231,6 +232,11 @@ public class NewParallaxController : MonoBehaviour
 
     private IEnumerator CenterOnIslandRoutine()
     {
+        centeringOnIsland = true;
+
+        // play boat move sound effect
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.BoatMoveRumble, 0.25f, "boat_move");
+
         while (islandPosition.position.x > 0)
         {
             direction = BoatParallaxDirection.Left;
@@ -242,6 +248,11 @@ public class NewParallaxController : MonoBehaviour
             yield return null;
         }
         direction = BoatParallaxDirection.Still;
+
+        centeringOnIsland = false;
+
+        // stop sound effect
+        AudioManager.instance.StopFX("boat_move");
 
         // continue boat game event
         NewBoatGameManager.instance.IslandCentered();

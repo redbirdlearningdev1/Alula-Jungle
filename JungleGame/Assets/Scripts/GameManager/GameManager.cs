@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public class ChallengeGameTriad
 {
-    public GameData marcusGame;
-    public GameData brutusGame;
-    public GameData juliusGame;
+    public GameData juliusGame1;
+    public GameData marcusGame2;
+    public GameData brutusGame3;
 }
 
 public class GameManager : DontDestroy<GameManager>
@@ -16,6 +16,7 @@ public class GameManager : DontDestroy<GameManager>
     public bool devModeActivated;
     public const float transitionTime = 0.5f; // time to fade into and out of a scene (total transition time is: transitionTime * 2)
     public Vector2Int gameResolution;
+    public Camera globalCamera;
 
     // game data
     [Header("Coin Objects")]
@@ -27,6 +28,7 @@ public class GameManager : DontDestroy<GameManager>
     public List<ChallengeGameTriad> challengeGameTriads;
     public List<SubstitutionPair> substitutionPairs;
     public List<DeletionPair> deletionPairs;
+    public List<BuildingPair> buildingPairs;
     
     [SerializeField] private GameObject devModeIndicator;
     private bool devIndicatorSet = false;
@@ -66,21 +68,6 @@ public class GameManager : DontDestroy<GameManager>
                     LoadScene("DevMenu", true);
                 }                
             }
-            // // press 'F' to toggle between fixed and broken map sprites
-            // if (Input.GetKeyDown(KeyCode.F))
-            // {
-            //     GameObject smm;
-            //     smm = GameObject.Find("ScrollMapManager");
-
-            //     if (smm == null) 
-            //         Debug.LogError("GameManager could not find 'ScrollMapManager'");
-            //     else
-            //     {
-            //         iconsSetBroke = !iconsSetBroke;
-            //         smm.GetComponent<ScrollMapManager>().SetMapIconsBroke(iconsSetBroke);
-            //         Debug.Log("Map icons broken set to: " + iconsSetBroke);
-            //     }
-            // }
         }
         else
         {
@@ -209,10 +196,10 @@ public class GameManager : DontDestroy<GameManager>
         LoadScene("ScrollMap", true);
     }
 
-    public void LoadScene(string sceneName, bool fadeOut, float time = transitionTime)
+    public void LoadScene(string sceneName, bool fadeOut, float time = transitionTime, bool useLoadScene = false)
     {
         RaycastBlockerController.instance.CreateRaycastBlocker("LoadingScene");
-        StartCoroutine(LoadSceneCoroutine(sceneName, fadeOut, time));
+        StartCoroutine(LoadSceneCoroutine(sceneName, fadeOut, time, useLoadScene));
     }
 
     public void LoadScene(int sceneNum, bool fadeOut, float time = transitionTime)
@@ -221,7 +208,7 @@ public class GameManager : DontDestroy<GameManager>
         StartCoroutine(LoadSceneCoroutine(sceneNum, fadeOut, time));
     }
 
-    private IEnumerator LoadSceneCoroutine(string sceneName, bool fadeOut, float time)
+    private IEnumerator LoadSceneCoroutine(string sceneName, bool fadeOut, float time, bool useLoadScene)
     {
         if (fadeOut)
         {
@@ -231,9 +218,22 @@ public class GameManager : DontDestroy<GameManager>
         yield return new WaitForSeconds(time);
 
         SceneCleanup();
+        if (useLoadScene)
+        {
+            SceneManager.LoadSceneAsync("LoadingScene");
+            StartCoroutine(DelayLoadScene(sceneName));
+        }
+        else
+        {
+            SendLog(this, "Loading new scene - " + sceneName);
+            SceneManager.LoadSceneAsync(sceneName);
+        }
+    }
 
-        SendLog(this, "Loading new scene - " + sceneName);
-        SceneManager.LoadSceneAsync(sceneName);
+    private IEnumerator DelayLoadScene(string sceneName)
+    {
+        yield return new WaitForSeconds(2f);
+        LoadingSceneManager.instance.LoadNextScene(sceneName);
     }
 
     private IEnumerator LoadSceneCoroutine(int sceneNum, bool fadeOut, float time)
@@ -246,7 +246,6 @@ public class GameManager : DontDestroy<GameManager>
         yield return new WaitForSeconds(time);
 
         SceneCleanup();
-
         SceneManager.LoadSceneAsync(sceneNum);
     }
 

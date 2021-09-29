@@ -217,7 +217,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
         for (int i = 0; i < currentWord.elkoninCount; i++)
         {
             StartCoroutine(GlowAndPlayAudioCoinRoutine(currentCoins[i]));
-            yield return new WaitForSeconds(1.6f);
+            yield return new WaitForSeconds(1f);
         }
 
         // remove raycast blocker
@@ -270,10 +270,10 @@ public class WordFactoryBlendingManager : MonoBehaviour
     {
         // reveal the correct polaroid
         StartCoroutine(PolaroidRevealRoutine());
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(3f);
 
         // play correct sound
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
 
         // ####################
 
@@ -339,10 +339,10 @@ public class WordFactoryBlendingManager : MonoBehaviour
     {
         // reveal the correct polaroid
         StartCoroutine(PolaroidRevealRoutine());
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(3f);
 
         // play incorrect sound
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 1f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
 
         // ####################
 
@@ -505,13 +505,6 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
     private IEnumerator PolaroidRevealRoutine()
     {
-        // // play audio in frame order
-        // for (int i = 0; i < currentWord.elkoninCount; i++)
-        // {
-        //     StartCoroutine(GlowAndPlayAudioCoinRoutine(currentCoins[i]));
-        //     yield return new WaitForSeconds(GameManager.instance.GetGameWord(currentCoins[i].value).audio.length + 0.1f);
-        // } 
-
         yield return new WaitForSeconds(1f);
 
         // read word aloud to player
@@ -533,11 +526,11 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
         // reveal correct polaroid 
         currentPolaroid.ToggleGlowOutline(true);
-        currentPolaroid.LerpScale(1.15f, 0.5f);
+        currentPolaroid.LerpScale(1.15f, 0.25f);
         foreach (var polaroid in polaroids)
         {
             if (!currentPolaroid.Equals(polaroid))
-                polaroid.LerpScale(0.85f, 0.5f);
+                polaroid.LerpScale(0.6f, 0.25f);
         }
     }
 
@@ -609,7 +602,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
         AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(coin.value).audio);
         coin.LerpSize(expandedCoinSize, 0.25f);
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         coin.LerpSize(normalCoinSize, 0.25f);
         coin.ToggleGlowOutline(false);
 

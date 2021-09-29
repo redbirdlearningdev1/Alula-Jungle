@@ -89,31 +89,32 @@ public class UniversalCoin : MonoBehaviour
     public void SetValue(ElkoninValue value)
     {
         //print ("value: " + value);
+
         if ((int)value <= ChallengeWordDatabase.elkonin_word_separator)
         {
             //print ("action word!");
-            prevCoinType = CoinType.ActionWordCoin;
+            prevCoinType = coinType;
             coinType = CoinType.ActionWordCoin;
             this.value = value;
             currentSpriteRenderer = goldSpriteRenderer;
             shakeController.SetTransform(goldSpriteRenderer.transform);
 
             consonantCoin.gameObject.SetActive(false);
-            actionWordCoin.SetCoinType(ChallengeWordDatabase.ElkoninValueToActionWord(value));
             actionWordCoin.gameObject.SetActive(true);
+            actionWordCoin.SetCoinType(ChallengeWordDatabase.ElkoninValueToActionWord(value));
         }
         else if ((int)value > ChallengeWordDatabase.elkonin_word_separator || value == ElkoninValue.empty_silver)
         {
-            // print ("consonant coin!");
-            prevCoinType = CoinType.ConsonantCoin;
+            print ("consonant coin!");
+            prevCoinType = coinType;
             coinType = CoinType.ConsonantCoin;
             this.value = value;
             currentSpriteRenderer = silverSpriteRenderer;
             shakeController.SetTransform(silverSpriteRenderer.transform);
 
             actionWordCoin.gameObject.SetActive(false);
-            consonantCoin.SetCoinType(ChallengeWordDatabase.ElkoninValueToConsonantEnum(value));
             consonantCoin.gameObject.SetActive(true);
+            consonantCoin.SetCoinType(ChallengeWordDatabase.ElkoninValueToConsonantEnum(value));
         }
     }
 

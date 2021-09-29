@@ -21,6 +21,7 @@ public class BoatWheelController : MonoBehaviour
     private Coroutine currentRoutine;
     [HideInInspector] public bool holdingWheel;
     private bool isLeft;
+    private bool shakingPannel = false;
 
     public bool isOn = true;
 
@@ -70,13 +71,13 @@ public class BoatWheelController : MonoBehaviour
                     {
                         holdingWheel = true;
                         RotateWheelLeft();
-                        ToggleBoatPannelShake();
+                        ToggleBoatPannelShake(true);
                     }
                     else if (result.gameObject.transform.name == "RightWheelButton")
                     {
                         holdingWheel = true;
                         RotateWheelRight();
-                        ToggleBoatPannelShake();
+                        ToggleBoatPannelShake(true);
                     }
                 }
             }
@@ -86,6 +87,13 @@ public class BoatWheelController : MonoBehaviour
     public void LetGoOfWheel()
     {
         holdingWheel = false;
+        ToggleBoatPannelShake(false);
+
+        // stop boat moving sound effect
+        AudioManager.instance.StopFX("wheel_left");
+        AudioManager.instance.StopFX("wheel_right");
+        AudioManager.instance.StopFX("boat_move");
+        
         if (currentRoutine != null)
             StopCoroutine(currentRoutine);
         ResetWheel();
@@ -99,6 +107,14 @@ public class BoatWheelController : MonoBehaviour
             StopCoroutine(currentRoutine);
         currentRoutine = StartCoroutine(RotateWheelRoutine(leftAngle, moveDuration));
         isLeft = false; // moving to the left
+
+        // play sound effect + stop other wheel sound effects
+        AudioManager.instance.StopFX("wheel_left");
+        AudioManager.instance.StopFX("wheel_right");
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.TurnWheelLeft, 1f, "wheel_left");
+
+        // boat moving sound effect
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.BoatMoveRumble, 0.25f, "boat_move");
     }
 
     public void RotateWheelRight()
@@ -107,6 +123,14 @@ public class BoatWheelController : MonoBehaviour
             StopCoroutine(currentRoutine);
         currentRoutine = StartCoroutine(RotateWheelRoutine(rightAngle, moveDuration));
         isLeft = true; // moving to the right
+
+        // play sound effect + stop other wheel sound effects
+        AudioManager.instance.StopFX("wheel_left");
+        AudioManager.instance.StopFX("wheel_right");
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.TurnWheelLeft, 1f, "wheel_right");
+
+        // boat moving sound effect
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.BoatMoveRumble, 0.25f, "boat_move");
     }
 
     public void ResetWheel()
@@ -144,16 +168,21 @@ public class BoatWheelController : MonoBehaviour
         }
     }
 
-    public void ToggleBoatPannelShake()
+    public void ToggleBoatPannelShake(bool opt)
     {
-        StartCoroutine(ShakeObjectRoutine(boatPannel));
+        if (opt == shakingPannel)
+            return;
+        
+        shakingPannel = opt;
+        if (shakingPannel)
+            StartCoroutine(ShakeObjectRoutine(boatPannel));
     }
 
     private IEnumerator ShakeObjectRoutine(Transform obj)
     {
         Vector3 originalPos = obj.position;
 
-        while (holdingWheel)
+        while (shakingPannel)
         {
             Vector3 pos = originalPos;
             pos.y = originalPos.y + Mathf.Sin(Time.time * shakeSpeed) * shakeAmount;

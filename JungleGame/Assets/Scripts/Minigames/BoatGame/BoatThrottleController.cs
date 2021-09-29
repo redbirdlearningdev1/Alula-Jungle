@@ -14,6 +14,7 @@ public class BoatThrottleController : MonoBehaviour
 
     public bool isOn = false;
     private bool firstTime = true;
+    private bool boatRumbleStarted = false;
     public ThrottleButton throttleButton;
     
     public GlowOutlineController outlineController;
@@ -50,8 +51,20 @@ public class BoatThrottleController : MonoBehaviour
         else if (Input.GetMouseButtonUp(0) && holdingThrottle)
         {
             // stop shake boat pannel
-            if (GetThrottleSpeed() == 0f)
-                BoatWheelController.instance.holdingWheel = false;
+            if (GetThrottleSpeed() <= 0.1f)
+            {
+                BoatWheelController.instance.ToggleBoatPannelShake(false);
+
+                // stop boat move sound
+                AudioManager.instance.StopFX("boat_move");
+                boatRumbleStarted = false;
+            }
+            else if (!boatRumbleStarted)
+            {
+                boatRumbleStarted = true;
+                // play boat move sound effect
+                AudioManager.instance.PlayFX_loop(AudioDatabase.instance.BoatMoveRumble, 0.25f, "boat_move");
+            }
             
             holdingThrottle = false;
             throttleButton.ToggleScalePressed(false);
@@ -82,11 +95,24 @@ public class BoatThrottleController : MonoBehaviour
 
                         // start shake boat pannel
                         BoatWheelController.instance.holdingWheel = true;
-                        BoatWheelController.instance.ToggleBoatPannelShake();
+                        BoatWheelController.instance.ToggleBoatPannelShake(true);
+
+                        boatRumbleStarted = true;
+                        // play boat move sound effect
+                        AudioManager.instance.StopFX("boat_move");
+                        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.BoatMoveRumble, 0.25f, "boat_move");
                     }
                 }
             }
         }
+    }
+
+    public void StopThrottle()
+    {
+        isOn = false;
+        GetComponent<LerpableObject>().LerpPosition(new Vector2(posX, minY), 0.5f, false);
+        // stop boat move sound
+        AudioManager.instance.StopFX("boat_move");
     }
 
     public float GetThrottleSpeed()

@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class WebberController : MonoBehaviour
 {
-    // Start is called before the first frame update\
     private Animator animator;
-
 
     void Awake()
     {
@@ -18,7 +16,6 @@ public class WebberController : MonoBehaviour
     }
     private IEnumerator grab1Routine()
     {
-        
         animator.Play("Grab1");
         yield return new WaitForSeconds(0f);
     }
@@ -28,7 +25,6 @@ public class WebberController : MonoBehaviour
     }
     private IEnumerator grab2Routine()
     {
-
         animator.Play("Grab2");
         yield return new WaitForSeconds(0f);
     }
@@ -38,7 +34,6 @@ public class WebberController : MonoBehaviour
     }
     private IEnumerator grab3Routine()
     {
-
         animator.Play("Grab3");
         yield return new WaitForSeconds(0f);
     }
@@ -48,7 +43,6 @@ public class WebberController : MonoBehaviour
     }
     private IEnumerator grab4Routine()
     {
-
         animator.Play("Grab4");
         yield return new WaitForSeconds(0f);
     }
@@ -58,7 +52,6 @@ public class WebberController : MonoBehaviour
     }
     private IEnumerator grabBugRoutine()
     {
-
         animator.Play("WebGrab");
         yield return new WaitForSeconds(0f);
     }

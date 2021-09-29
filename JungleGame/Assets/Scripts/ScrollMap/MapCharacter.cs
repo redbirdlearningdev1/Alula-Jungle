@@ -93,6 +93,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
+            yield return new WaitForSeconds(0.5f);
+
             // play gorilla intro 2
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.gorillaIntro_2);
             while (TalkieManager.instance.talkiePlaying)
@@ -224,11 +226,11 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         if (gameData)
         {
             GameManager.instance.SetData(gameData);
-            GameManager.instance.LoadScene(gameData.sceneName, true);
+            GameManager.instance.LoadScene(gameData.sceneName, true, 0.5f, true);
         }
         else
         {
-            GameManager.instance.LoadScene("MinigameDemoScene", true);
+            GameManager.instance.LoadScene("MinigameDemoScene", true, 0.5f, true);
         }
     }
 }

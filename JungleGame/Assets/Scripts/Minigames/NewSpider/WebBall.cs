@@ -9,9 +9,7 @@ public class WebBall : MonoBehaviour
     private const int maxBall = 4;
 
     [Header("Objects")]
-    [SerializeField] private SpriteRenderer ball;
-    [SerializeField] private GlowOutlineController glowOutlineController;
-
+    [SerializeField] private Image image;
 
 
     [Header("Images")]
@@ -19,7 +17,7 @@ public class WebBall : MonoBehaviour
 
     void Awake()
     {
-        ball.sprite = chestBall[currBall];
+        image.sprite = chestBall[currBall];
     }
 
     public void UpgradeChest()
@@ -28,7 +26,16 @@ public class WebBall : MonoBehaviour
         {
             currBall++;
         }
-        ball.sprite = chestBall[currBall];
+
+        StartCoroutine(UpgradeChestRoutine());
+    }
+
+    private IEnumerator UpgradeChestRoutine()
+    {
+        GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
+        image.sprite = chestBall[currBall];
+        yield return new WaitForSeconds(0.2f);
+        GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
     }
 
     public void DowngradeChest()
@@ -37,17 +44,17 @@ public class WebBall : MonoBehaviour
         {
             currBall--;
         }
-        ball.sprite = chestBall[currBall];
+        image.sprite = chestBall[currBall];
     }
 
     public void chestGlow()
     {
-        glowOutlineController.ToggleGlowOutline(true);
+        ImageGlowController.instance.SetImageGlow(image, true, GlowValue.glow_1_00);
     }
 
     public void chestGlowNo()
     {
-        glowOutlineController.ToggleGlowOutline(false);
+        ImageGlowController.instance.SetImageGlow(image, false);
     }
 
 

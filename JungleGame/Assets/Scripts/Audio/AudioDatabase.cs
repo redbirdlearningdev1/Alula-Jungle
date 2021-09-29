@@ -27,6 +27,10 @@ public class AudioDatabase : MonoBehaviour
     public AudioClip FroggerGameSong;
     public AudioClip TurntablesGameSong;
 
+    public AudioClip[] FroggerSongSplit;
+    public AudioClip[] TurntablesSongSplit;
+    public AudioClip[] SpiderwebSongSplit;
+
     /* 
     ################################################
     #   TUTORIAL AUDIO DATABASE
@@ -86,6 +90,18 @@ public class AudioDatabase : MonoBehaviour
     public AudioClip CreateBlip;
     public AudioClip LeftBlip;
     public AudioClip RightBlip;
+
+    [Header("Boat Game")]
+    public AudioClip AmbientEngineRumble;
+    public AudioClip AmbientOceanLoop;
+    public AudioClip AmbientSeagullsLoop;
+    public AudioClip BoatHorn;
+    public AudioClip BoatMoveRumble;
+    public AudioClip EngineStart;
+    public AudioClip FoundIslandSparkle;
+    public AudioClip PlacedIslandSplash;
+    public AudioClip TurnWheelLeft;
+    public AudioClip TurnWheelRight;
 
     [Header("Coin Drop")]
     public AudioClip[] CoinDropArray;

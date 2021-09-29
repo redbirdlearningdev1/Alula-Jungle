@@ -230,4 +230,34 @@ public class LerpableObject : MonoBehaviour
             yield return null;
         }
     }
+
+    public void LerpSpriteAlpha(SpriteRenderer sprite, float alpha, float duration)
+    {
+        if (colorRoutine != null)
+            StopCoroutine(colorRoutine);
+
+        colorRoutine = StartCoroutine(LerpSpriteAlphaRoutine(sprite, alpha, duration));
+    }
+
+    private IEnumerator LerpSpriteAlphaRoutine(SpriteRenderer sprite, float alpha, float duration)
+    {
+        Color startColor = sprite.color;
+        Color targetColor = new Color(startColor.r, startColor.g, startColor.b, alpha);
+        float startAlpha = sprite.color.a;
+        float timer = 0f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > duration)
+            {
+                sprite.color = targetColor;
+                break;
+            }
+
+            var tempColor = Color.Lerp(startColor, targetColor, timer / duration);
+            sprite.color = tempColor;
+            yield return null;
+        }
+    }
 }
