@@ -272,6 +272,15 @@ public class SettingsManager : MonoBehaviour
         settingsWindow.SetActive(settingsWindowOpen);
     }
 
+    public void CloseSettingsWindow()
+    {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        settingsWindowOpen = false;
+        settingsWindow.SetActive(false);
+    }
+
     public void OnWagonButtonPressed()
     {   
         // play audio blip

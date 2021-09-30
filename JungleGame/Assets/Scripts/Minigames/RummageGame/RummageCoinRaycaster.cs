@@ -46,8 +46,12 @@ public class RummageCoinRaycaster : MonoBehaviour
                 }
             }
 
+            if (isCorrect)
+                selectedRummageCoin.GoToChest();
+            else
+                selectedRummageCoin.ReturnToCloth();
+
             Chester.chestGlowNo();
-            selectedRummageCoin.ReturnToCloth();
             selectedRummageCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(2f, 2f), 0.1f);
             selectedRummageCoin = null;
         }

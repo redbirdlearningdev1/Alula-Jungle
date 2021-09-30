@@ -7,6 +7,7 @@ public enum SplitSong
 {
     Frogger,
     Turntables,
+    Rummage,
     Spiderweb
 }
 
@@ -186,6 +187,15 @@ public class AudioManager : MonoBehaviour
         {
             int count = 0;
             foreach(var split in AudioDatabase.instance.TurntablesSongSplit)
+            {
+                musicSources[count].clip = split;
+                count++;
+            }
+        }
+        else if (song == SplitSong.Rummage)
+        {
+            int count = 0;
+            foreach(var split in AudioDatabase.instance.RummageSongSplit)
             {
                 musicSources[count].clip = split;
                 count++;

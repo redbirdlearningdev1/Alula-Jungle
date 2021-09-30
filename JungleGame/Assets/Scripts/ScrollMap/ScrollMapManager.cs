@@ -403,6 +403,9 @@ public class ScrollMapManager : MonoBehaviour
                     tiger.interactable = true;
                     tiger.GetComponent<Animator>().Play("aTigerTwitch");
 
+                    // set game manager stuff
+                    GameManager.instance.SetDataAndID(challengeGameTriad.juliusGame1, MapIconIdentfier.GV_challenge_1);
+
                     // save to sis and continue
                     StudentInfoSystem.AdvanceStoryBeat();
                     StudentInfoSystem.SaveStudentPlayerData();
@@ -426,7 +429,9 @@ public class ScrollMapManager : MonoBehaviour
 
             // set tiger stuff
             tiger.gameData = challengeGameTriad.juliusGame1;
-            tiger.ShowExclamationMark(true);
+
+            // set game manager stuff
+            GameManager.instance.SetDataAndID(challengeGameTriad.juliusGame1, MapIconIdentfier.GV_challenge_1);
 
             // make sure we are at gorilla village
             mapPosIndex = 2;
@@ -458,6 +463,7 @@ public class ScrollMapManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             tiger.interactable = true;
+            tiger.ShowExclamationMark(true);
             tiger.GetComponent<Animator>().Play("aTigerTwitch");
         }
         else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_2)
@@ -476,10 +482,13 @@ public class ScrollMapManager : MonoBehaviour
             tiger.GetComponent<Animator>().Play("sTigerIdle");
 
             // make challenge games active
-            var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
+            var challengeGameTriad = GameManager.instance.challengeGameTriads[1];
 
             // set marcus stuff
             marcus.gameData = challengeGameTriad.marcusGame2;
+
+            // set game manager stuff
+            GameManager.instance.SetDataAndID(challengeGameTriad.marcusGame2, MapIconIdentfier.GV_challenge_2);
 
             // make sure we are at gorilla village
             mapPosIndex = 2;
@@ -548,10 +557,13 @@ public class ScrollMapManager : MonoBehaviour
             marcus.GetComponent<Animator>().Play("marcusFixed");
 
             // make challenge games active
-            var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
+            var challengeGameTriad = GameManager.instance.challengeGameTriads[2];
 
             // set brutus stuff
             brutus.gameData = challengeGameTriad.brutusGame3;
+            
+            // set game manager stuff
+            GameManager.instance.SetDataAndID(challengeGameTriad.brutusGame3, MapIconIdentfier.GV_challenge_3);
 
             // make sure we are at gorilla village
             mapPosIndex = 2;

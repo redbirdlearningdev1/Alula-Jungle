@@ -25,8 +25,6 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
 
     private IEnumerator ShowSignPostRoutine()
     {
-        print ("turning on sign post!");
-
         yield return new WaitForSeconds(0.5f);
 
         interactable = true;
@@ -104,6 +102,9 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
 
             // open window 
             RoyalDecreeController.instance.ToggleWindow(challengeGameTriadIndex);
+
+            // close settings menu if open
+            SettingsManager.instance.CloseSettingsWindow();
 
             // place copy over bg
             var tempSignPost = TempObjectPlacer.instance.PlaceNewObject(this.gameObject, transform.localPosition);

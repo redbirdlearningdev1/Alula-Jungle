@@ -20,7 +20,11 @@ public enum MapIconIdentfier
     GV_house1,
     GV_house2,
     GV_statue,
-    GV_fire
+    GV_fire,
+
+    GV_challenge_1,
+    GV_challenge_2,
+    GV_challenge_3
 }
 
 public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler

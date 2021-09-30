@@ -108,8 +108,6 @@ public class TurntablesGameManager : MonoBehaviour
 
     private void PregameSetup()
     {
-        // stop music and play after delay
-        AudioManager.instance.StopMusic();
         if (!playTutorial)
             StartCoroutine(StartMusicDelay(musicStartDelay));
 
@@ -284,6 +282,8 @@ public class TurntablesGameManager : MonoBehaviour
 
         // dissipate key
         keys[correctKeyIndex].Dissipate();
+        // shake rock lock
+        RockLock.instance.ShakeRock();
         // move door to unlocked position
         doors[currentDoorIndex].RotateToAngle(0, true, RopeController.instance.moveTime * 2);
         // play stone moving audio
@@ -380,6 +380,8 @@ public class TurntablesGameManager : MonoBehaviour
 
         // dissipate key
         keys[correctKeyIndex].Dissipate();
+        // shake rock lock
+        RockLock.instance.ShakeRock();
         // make door icon glow special
         ImageGlowController.instance.SetImageGlow(doors[currentDoorIndex].image, true, GlowValue.glow_1_025); // TODO set blue?
         // play stone moving audio
@@ -544,9 +546,10 @@ public class TurntablesGameManager : MonoBehaviour
         // increase split song
         AudioManager.instance.IncreaseSplitSong();
 
-        print ("success!");
         // dissipate key
         keys[correctKeyIndex].Dissipate();
+        // shake rock lock
+        RockLock.instance.ShakeRock();
         // move door to unlocked position
         doors[currentDoorIndex].RotateToAngle(0, true, RopeController.instance.moveTime * 2);
         // play stone moving audio
@@ -582,7 +585,6 @@ public class TurntablesGameManager : MonoBehaviour
 
     private IEnumerator TutorialIncorrectRoutine()
     {
-        // print ("fail!");
         // return key
         keys[correctKeyIndex].ReturnToRope();
         
@@ -618,9 +620,10 @@ public class TurntablesGameManager : MonoBehaviour
         // increase split song
         AudioManager.instance.IncreaseSplitSong();
 
-        // print ("you win!");
         // dissipate key
         keys[correctKeyIndex].Dissipate();
+        // shake rock lock
+        RockLock.instance.ShakeRock();
         // make door icon glow special
         ImageGlowController.instance.SetImageGlow(doors[currentDoorIndex].image, true, GlowValue.glow_1_025);
         // play stone moving audio

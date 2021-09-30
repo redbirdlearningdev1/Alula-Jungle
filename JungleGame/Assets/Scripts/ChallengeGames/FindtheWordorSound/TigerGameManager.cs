@@ -31,8 +31,8 @@ public class TigerGameManager : MonoBehaviour
     [SerializeField] private Transform PhotoStartPos;
     [SerializeField] private Transform PhotoEndPos;
 
-    [SerializeField] private UniversalCoin waterCoins;
-    private UniversalCoin currWaterCoin;
+    [SerializeField] private UniversalCoinImage waterCoins;
+    private UniversalCoinImage currWaterCoin;
 
     // other variables
     private ChallengeWord currentWord1;
@@ -44,7 +44,7 @@ public class TigerGameManager : MonoBehaviour
     private ChallengeWord currentTargetWord;
     private int currentSwipeIndex;
 
-    private List<UniversalCoin> currentCoins;
+    private List<UniversalCoinImage> currentCoins;
     private int numWins = 0;
     private int numMisses = 0;
     private bool playingCoinAudio = false;
@@ -127,7 +127,6 @@ public class TigerGameManager : MonoBehaviour
         yield return new WaitForSeconds(.6f);
 
         waterCoins.SetValue(coinOptions[0]);
-        waterCoins.SetLayer(2);
         waterCoins.SetSize(normalCoinSize);
         yield return new WaitForSeconds(.45f);
 
@@ -191,7 +190,7 @@ public class TigerGameManager : MonoBehaviour
         }
     }
 
-    public void GlowAndPlayAudioCoin(UniversalCoin coin)
+    public void GlowAndPlayAudioCoin(UniversalCoinImage coin)
     {
         if (playingCoinAudio)
             return;
@@ -199,7 +198,7 @@ public class TigerGameManager : MonoBehaviour
         StartCoroutine(GlowAndPlayAudioCoinRoutine(coin));
     }
 
-    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoin coin)
+    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoinImage coin)
     {
         playingCoinAudio = true;
 

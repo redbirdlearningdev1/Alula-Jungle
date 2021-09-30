@@ -751,6 +751,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 934339470}
+  shakeSpeed: 50
+  shakeAmount: 0.1
+  shakeDuration: 1
 --- !u!114 &934339470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1065,8 +1068,8 @@ MonoBehaviour:
   randomizeKeyPosition: 1
   finishedDoorColor: {r: 1, g: 0.79205453, b: 0, a: 1}
   winDoorColor: {r: 0, g: 0.71623945, b: 1, a: 1}
-  playInEditor: 0
-  playTutorial: 0
+  playInEditor: 1
+  playTutorial: 1
   correctTutorialIcons: 00000000010000000200000003000000
   firstQuartet: 08000000000000000000000000000000
   secondQuartet: 00000000010000000000000000000000
@@ -2179,7 +2182,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 44.400883
+      value: 44.538948
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

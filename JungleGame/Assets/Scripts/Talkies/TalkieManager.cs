@@ -152,6 +152,9 @@ public class TalkieManager : MonoBehaviour
         talkiePlaying = true;
         currentTalkie = talkie;
 
+        // close settings menu if open
+        SettingsManager.instance.CloseSettingsWindow();
+
         if (!currentTalkie.quipsCollection)
             StartCoroutine(PlayTalkieRoutine());
         else
@@ -553,7 +556,7 @@ public class TalkieManager : MonoBehaviour
         // on yes
         if (isYes)
         {
-
+            
         }
         // on no
         else

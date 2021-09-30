@@ -387,6 +387,9 @@ public class WagonWindowController : MonoBehaviour
     {
         wagon.transform.position = cartStartPosition.position;
 
+        // close settings menu if open
+        SettingsManager.instance.CloseSettingsWindow();
+
         // disable nav buttons
         ScrollMapManager.instance.ToggleNavButtons(false);
 

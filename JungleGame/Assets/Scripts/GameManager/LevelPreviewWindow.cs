@@ -63,13 +63,14 @@ public class LevelPreviewWindow : MonoBehaviour
         if (windowUp)
             return;
 
-        print("new window");
-
         if (numStars > 3 || numStars < 0)
         {
             GameManager.instance.SendError(this, "invalid number of stars");
             return;
         }
+
+        // close settings menu if open
+        SettingsManager.instance.CloseSettingsWindow();
 
         windowUp = true;
         gameData = newGameData;

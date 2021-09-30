@@ -8,6 +8,7 @@ public class Key : MonoBehaviour
     public ActionWordEnum keyActionWord;
     private bool canBePressed = false;
     private bool isDissipating = false;
+    [HideInInspector] public bool glowingKey = false;
 
     [SerializeField] private Animator animator;
     public Image image;
@@ -85,6 +86,9 @@ public class Key : MonoBehaviour
 
     private IEnumerator DissipateAndDestroy()
     {
+        Vector3 startPos = transform.position;
+        Vector3 endPos = RockLock.instance.transform.position;
+
         float timer = 0f;
         while (true)
         {
@@ -100,6 +104,9 @@ public class Key : MonoBehaviour
             // decrease in scale over time
             transform.localScale = transform.localScale * scaleMult;
             yield return null;
+            // move towards rock lock
+            Vector3 tempPos = Vector3.Lerp(startPos, endPos, timer / dissipateTime);
+            transform.position = tempPos;
         }
     }
 

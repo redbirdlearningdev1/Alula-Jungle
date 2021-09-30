@@ -29,6 +29,7 @@ public class AudioDatabase : MonoBehaviour
 
     public AudioClip[] FroggerSongSplit;
     public AudioClip[] TurntablesSongSplit;
+    public AudioClip[] RummageSongSplit;
     public AudioClip[] SpiderwebSongSplit;
 
     /* 

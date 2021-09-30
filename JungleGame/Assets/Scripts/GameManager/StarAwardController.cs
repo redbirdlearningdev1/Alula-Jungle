@@ -37,25 +37,6 @@ public class StarAwardController : MonoBehaviour
         ResetWindow();    
     }
 
-    void Update()
-    {
-        // test star path animations
-        if (GameManager.instance.devModeActivated)
-        {
-            if (Input.GetKeyDown(KeyCode.F4))
-            {
-                StartCoroutine(GrowObject(window));
-                StartCoroutine(GrowObject(star1));
-                StartCoroutine(GrowObject(star2));
-                StartCoroutine(GrowObject(star3));
-            }
-            if (Input.GetKeyDown(KeyCode.F1))
-            {
-                // StartCoroutine(FollowPath(path1, star1.transform));
-            }
-        }
-    }
-
     public void ResetWindow()
     {
         // set scales to be hidden
@@ -75,6 +56,9 @@ public class StarAwardController : MonoBehaviour
             GameManager.instance.SendError(this, "invalid number of stars awarded");
             return;
         }
+
+        // close settings menu if open
+        SettingsManager.instance.CloseSettingsWindow();
 
         // end split music (default)
         AudioManager.instance.EndSplitSong();
@@ -139,6 +123,30 @@ public class StarAwardController : MonoBehaviour
                 if (!StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.isFixed)
                 {
                     GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.GV_challenge_1:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.stars = numStars;
+                }
+                break;
+
+            case MapIconIdentfier.GV_challenge_2:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.stars = numStars;
+                }
+                break;
+
+            case MapIconIdentfier.GV_challenge_3:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.stars = numStars;
                 }
                 break;
         }

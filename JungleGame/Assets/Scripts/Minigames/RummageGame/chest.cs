@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class chest : MonoBehaviour
 {
+    public static chest instance;
+
     private int currBag = 0;
     private const int maxBag = 5;
 
     [Header("Objects")]
     [SerializeField] private Image image;
+    [SerializeField] private Image glowChest;
 
     [Header("Images")]
     [SerializeField] private List<Sprite> bagSprites;
@@ -17,6 +20,9 @@ public class chest : MonoBehaviour
 
     void Awake()
     {
+        if (instance == null)
+            instance = this;
+
         image.sprite = bagSprites[currBag];
     }
 
@@ -38,9 +44,13 @@ public class chest : MonoBehaviour
     private IEnumerator UpgradeChestRoutine()
     {
         GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
+        glowChest.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
+        
         image.sprite = bagSprites[currBag];
         yield return new WaitForSeconds(0.2f);
+
         GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
+        glowChest.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
     }
 
     public void DowngradeBag()
@@ -55,11 +65,11 @@ public class chest : MonoBehaviour
 
     public void chestGlow()
     {
-        ImageGlowController.instance.SetImageGlow(image, true, GlowValue.glow_1_025);
+        ImageGlowController.instance.SetImageGlow(glowChest, true, GlowValue.glow_1_00);
     }
 
     public void chestGlowNo()
     {
-        ImageGlowController.instance.SetImageGlow(image, false);
+        ImageGlowController.instance.SetImageGlow(glowChest, false);
     }
 }

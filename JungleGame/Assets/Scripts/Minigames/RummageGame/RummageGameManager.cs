@@ -70,6 +70,9 @@ public class RummageGameManager : MonoBehaviour
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
+        // stop music 
+        AudioManager.instance.StopMusic();
+
         if (!instance)
         {
             instance = this;
@@ -86,9 +89,6 @@ public class RummageGameManager : MonoBehaviour
 
     private void PregameSetup()
     {
-        // TODO: add music and ambiance
-        AudioManager.instance.StopMusic();
-
         // create coin list
         foreach (var coin in pile1)
             allCoins.Add(coin);
@@ -136,6 +136,10 @@ public class RummageGameManager : MonoBehaviour
         }   
         else
         {
+            // start song
+            AudioManager.instance.InitSplitSong(SplitSong.Rummage);
+            AudioManager.instance.IncreaseSplitSong();
+
             StartCoroutine(StartGame());
         }
     }
@@ -441,6 +445,9 @@ public class RummageGameManager : MonoBehaviour
 
     private IEnumerator CoinSuccessRoutine(GameObject currCoin)
     {
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+
         winCount++;
 
         yield return new WaitForSeconds(.01f);
@@ -525,6 +532,9 @@ public class RummageGameManager : MonoBehaviour
 
     private IEnumerator WinRoutine(GameObject currCoin)
     {
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+        
         winCount++;
 
         yield return new WaitForSeconds(.01f);

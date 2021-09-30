@@ -276,6 +276,9 @@ public class GameManager : DontDestroy<GameManager>
 
         // remove wagon controller stuff
         WagonWindowController.instance.ResetWagonController();
+
+        // close settings menu if open
+        SettingsManager.instance.CloseSettingsWindow();
     }
 
     /*
