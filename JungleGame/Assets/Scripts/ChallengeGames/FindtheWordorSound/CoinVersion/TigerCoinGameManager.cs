@@ -389,7 +389,7 @@ public class TigerCoinGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // update SIS
-        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3)
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
         {
             // first time losing
             if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame)
@@ -418,7 +418,7 @@ public class TigerCoinGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // update SIS
-        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3)
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
         {
             StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = false;
             StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;

@@ -670,7 +670,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // update SIS
-        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3)
         {
             StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = false;
             StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;
@@ -701,7 +701,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // update SIS
-        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3)
         {
             // first time losing
             if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame)

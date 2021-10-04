@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Video;
 
 public enum MapLocation
 {
@@ -75,11 +74,6 @@ public class ScrollMapManager : MonoBehaviour
     public MapCharacter marcus;
     public MapCharacter brutus;
 
-    [Header("Sticker Video Players")]
-    public VideoPlayer commonVP;
-    public VideoPlayer uncommonVP;
-    public VideoPlayer rareVP;
-    public VideoPlayer legendaryVP;
 
     void Awake()
     {
@@ -212,6 +206,8 @@ public class ScrollMapManager : MonoBehaviour
         StoryBeat playGameEvent = StoryBeat.InitBoatGame; // default event
         // get event from current profile if not null
         playGameEvent = StudentInfoSystem.GetCurrentProfile().currStoryBeat;
+
+        GameManager.instance.SendLog(this, "Current Story Beat: " + playGameEvent);
 
         StartCoroutine(CheckForScrollMapGameEvents(playGameEvent));
         // wait here while game event stuff is happening
@@ -482,7 +478,7 @@ public class ScrollMapManager : MonoBehaviour
             tiger.GetComponent<Animator>().Play("sTigerIdle");
 
             // make challenge games active
-            var challengeGameTriad = GameManager.instance.challengeGameTriads[1];
+            var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
 
             // set marcus stuff
             marcus.gameData = challengeGameTriad.marcusGame2;
@@ -503,7 +499,7 @@ public class ScrollMapManager : MonoBehaviour
                 !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
             {
                 // play marcus wins
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_challenges);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_wins);
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
             }
@@ -557,7 +553,7 @@ public class ScrollMapManager : MonoBehaviour
             marcus.GetComponent<Animator>().Play("marcusFixed");
 
             // make challenge games active
-            var challengeGameTriad = GameManager.instance.challengeGameTriads[2];
+            var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
 
             // set brutus stuff
             brutus.gameData = challengeGameTriad.brutusGame3;
@@ -572,6 +568,9 @@ public class ScrollMapManager : MonoBehaviour
             StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
 
             yield return new WaitForSeconds(2.5f);
+
+            print ("first time losing: " + StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame);
+            print ("every other time losing: " + StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame);
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&

@@ -217,7 +217,6 @@ public class GameManager : DontDestroy<GameManager>
             
         yield return new WaitForSeconds(time);
 
-        SceneCleanup();
         if (useLoadScene)
         {
             SceneManager.LoadSceneAsync("LoadingScene");
@@ -251,8 +250,6 @@ public class GameManager : DontDestroy<GameManager>
 
     private void SceneCleanup()
     {
-        print ("scene clean up!");
-
         // remove all sounds
         AudioManager.instance.ClearAllAudio();
 

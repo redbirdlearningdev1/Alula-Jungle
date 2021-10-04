@@ -164,7 +164,6 @@ public class SettingsManager : MonoBehaviour
         }
         else 
         {
-            print ("here");
             wagonButtonShown = false;
             movingWagonButton = false;
             wagonButton.transform.localPosition = new Vector3(wagonButton.transform.localPosition.x, hiddenButtonYvalue, 1f);
@@ -204,8 +203,6 @@ public class SettingsManager : MonoBehaviour
 
         movingWagonButton = true;
 
-        print ("toggling wagon button - " + opt);
-
         if (opt)
         {
             wagonButton.GetComponent<LerpableObject>().LerpYPos(shownButtonYvalue - 50, 0.2f, true);
@@ -242,8 +239,6 @@ public class SettingsManager : MonoBehaviour
 
         movingMenuButton = true;
 
-        print ("toggling menu button - " + opt);
-
         if (opt)
         {
             menuButton.GetComponent<LerpableObject>().LerpYPos(shownButtonYvalue - 50, 0.2f, true);
@@ -265,27 +260,18 @@ public class SettingsManager : MonoBehaviour
 
     public void ToggleSettingsWindow()
     {
-        // play audio blip
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
-
         settingsWindowOpen = !settingsWindowOpen;
         settingsWindow.SetActive(settingsWindowOpen);
     }
 
     public void CloseSettingsWindow()
     {
-        // play audio blip
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
-
         settingsWindowOpen = false;
         settingsWindow.SetActive(false);
     }
 
     public void OnWagonButtonPressed()
     {   
-        // play audio blip
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
-
         // remove wiggle if need be
         ToggleStickerButtonWiggle(false);
 

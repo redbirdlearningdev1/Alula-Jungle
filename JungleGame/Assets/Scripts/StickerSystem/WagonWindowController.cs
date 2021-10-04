@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class WagonWindowController : MonoBehaviour
 {
@@ -23,6 +24,13 @@ public class WagonWindowController : MonoBehaviour
     public Transform cartStartPosition;
     public Transform cartOnScreenPosition;
     public Transform cartOffScreenPosition;
+
+    [Header("Sticker Video Players")]
+    public VideoPlayer commonVP;
+    public VideoPlayer uncommonVP;
+    public VideoPlayer rareVP;
+    public VideoPlayer legendaryVP;
+
 
     [Header("Sticker Reveal")]
     public Transform revealSticker;
@@ -173,26 +181,29 @@ public class WagonWindowController : MonoBehaviour
         {
             default:
             case StickerRarity.Common:
-                ScrollMapManager.instance.commonVP.Play();
-                delay = (float)ScrollMapManager.instance.commonVP.length;
+                commonVP.Play();
+                delay = (float)commonVP.length;
                 break;
 
             case StickerRarity.Uncommon:
-                ScrollMapManager.instance.uncommonVP.Play();
-                delay = (float)ScrollMapManager.instance.uncommonVP.length;
+                uncommonVP.Play();
+                delay = (float)uncommonVP.length;
                 break;
 
             case StickerRarity.Rare:
-                ScrollMapManager.instance.rareVP.Play();
-                delay = (float)ScrollMapManager.instance.rareVP.length;
+                rareVP.Play();
+                delay = (float)rareVP.length;
                 break;
 
             case StickerRarity.Legendary:
-                ScrollMapManager.instance.legendaryVP.Play();
-                delay = (float)ScrollMapManager.instance.legendaryVP.length;
+                legendaryVP.Play();
+                delay = (float)legendaryVP.length;
                 break;
         }
 
+        print ("playing video: " + sticker.rarity);
+        print ("delay: " + delay);
+        
         // Fade back in 
         FadeObject.instance.FadeIn(2f);
 
@@ -228,19 +239,19 @@ public class WagonWindowController : MonoBehaviour
         {
             default:
             case StickerRarity.Common:
-                ScrollMapManager.instance.commonVP.Stop();
+                commonVP.Stop();
                 break;
 
             case StickerRarity.Uncommon:
-                ScrollMapManager.instance.uncommonVP.Stop();
+                uncommonVP.Stop();
                 break;
 
             case StickerRarity.Rare:
-                ScrollMapManager.instance.rareVP.Stop();
+                rareVP.Stop();
                 break;
 
             case StickerRarity.Legendary:
-                ScrollMapManager.instance.legendaryVP.Stop();
+                legendaryVP.Stop();
                 break;
         }
 
