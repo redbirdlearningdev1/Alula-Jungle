@@ -72,7 +72,7 @@ public class StarAwardController : MonoBehaviour
         int coinsEarned = 0;
 
         // only update stars if earned more stars than in memory
-        switch (GameManager.instance.GetID())
+        switch (GameManager.instance.mapID)
         {
             default:
                 GameManager.instance.SendLog(this, "No ID for game found - not awarding stars");

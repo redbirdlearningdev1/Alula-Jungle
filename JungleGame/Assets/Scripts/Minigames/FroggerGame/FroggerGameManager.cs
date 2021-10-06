@@ -6,7 +6,7 @@ public class FroggerGameManager : MonoBehaviour
 {
     public static FroggerGameManager instance;
 
-    private FroggerGameData gameData;
+    private MapIconIdentfier mapID;
 
     [SerializeField] private GorillaController gorilla;
     [SerializeField] private Bag bag;
@@ -73,8 +73,8 @@ public class FroggerGameManager : MonoBehaviour
             instance = this;
         }
 
-        // get game data
-        gameData = (FroggerGameData)GameManager.instance.GetData();
+        // get mapID
+        mapID = GameManager.instance.mapID;
     }
 
     void Start()
@@ -145,9 +145,9 @@ public class FroggerGameManager : MonoBehaviour
             allCoins.Add(coin);
 
         // Create Global Coin List
-        if (gameData != null)
+        if (mapID != MapIconIdentfier.None)
         {
-            globalCoinPool = gameData.wordPool;
+            //globalCoinPool = gameData.wordPool; TODO: get pool from SIS
         }
         else
         {

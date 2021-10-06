@@ -155,12 +155,9 @@ public class ScrollMapManager : MonoBehaviour
 
         if (GameManager.instance.repairMapIconID)
         {
-            print ("repairing map icon: " + GameManager.instance.GetID());
             DisableAllMapIcons();
-
             yield return new WaitForSeconds(1f);
 
-            StartCoroutine(RepairMapIcon(GameManager.instance.GetID()));
             while (repairingMapIcon)
                 yield return null;
             

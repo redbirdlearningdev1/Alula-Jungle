@@ -119,6 +119,10 @@ public static class LoadSaveSystem
         new_data.spiderwebTutorial =    default_spiderwebTutorial;
         new_data.rummageTutorial =      default_rummageTutorial;
 
+        // pools
+        new_data.actionWordPool = new List<ActionWordEnum>();
+        new_data.challengeWordPool = new List<ChallengeWord>();
+
         // story + map data
         new_data.unlockedStickerButton = default_unlockedStickerButton;
         new_data.currStoryBeat = default_gameEvent;
@@ -153,9 +157,9 @@ public static class LoadSaveSystem
 
         ChallengeGameTriad GV_triad = GameManager.instance.challengeGameTriads[0];
 
-        new_data.mapData.GV_challenge1.gameType = GV_triad.juliusGame1.gameType;
-        new_data.mapData.GV_challenge2.gameType = GV_triad.marcusGame2.gameType;
-        new_data.mapData.GV_challenge3.gameType = GV_triad.brutusGame3.gameType;
+        new_data.mapData.GV_challenge1.gameType = GV_triad.juliusGame1;
+        new_data.mapData.GV_challenge2.gameType = GV_triad.marcusGame2;
+        new_data.mapData.GV_challenge3.gameType = GV_triad.brutusGame3;
 
         new_data.mapData.GV_signPost_unlocked = false;
         new_data.mapData.GV_signPost_stars = 0;

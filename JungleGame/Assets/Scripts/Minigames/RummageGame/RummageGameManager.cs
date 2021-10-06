@@ -14,6 +14,8 @@ public class RummageGameManager : MonoBehaviour
 {
     public static RummageGameManager instance;
 
+    private MapIconIdentfier mapID;
+
     public bool playingInEditor;
     public bool playTutorial;
 
@@ -57,8 +59,6 @@ public class RummageGameManager : MonoBehaviour
     private int winCount = 0;
     private int lastLocation;
 
-    private RummageGameData gameData;
-
     [Header("Tutorial Stuff")]
     public List<RummageTutorialList> tutorialPiles;
     public int[] correctIndexes;
@@ -79,7 +79,7 @@ public class RummageGameManager : MonoBehaviour
         }
 
         // get game data
-        gameData = (RummageGameData)GameManager.instance.GetData();
+        mapID = GameManager.instance.mapID;
 
         if (!playingInEditor)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().rummageTutorial;
@@ -102,9 +102,9 @@ public class RummageGameManager : MonoBehaviour
             allCoins.Add(coin);
 
         // get Global Coin List
-        if (gameData != null)
+        if (mapID != MapIconIdentfier.None)
         {
-            globalCoinPool = gameData.wordPool;
+            //globalCoinPool = gameData.wordPool; TODO: get pool from SIS
         }
         else
         {

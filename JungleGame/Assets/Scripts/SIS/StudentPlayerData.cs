@@ -35,6 +35,9 @@ public class StudentPlayerData
     public bool firstTimeLoseChallengeGame;
     public bool everyOtherTimeLoseChallengeGame;
 
+    public List<ActionWordEnum> actionWordPool;
+    public List<ChallengeWord> challengeWordPool;
+
     // map data
     public MapData mapData;
 

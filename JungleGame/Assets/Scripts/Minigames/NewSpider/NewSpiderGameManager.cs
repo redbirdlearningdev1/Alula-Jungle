@@ -12,6 +12,8 @@ public class NewSpiderGameManager : MonoBehaviour
 {
     public static NewSpiderGameManager instance;
 
+    private MapIconIdentfier mapID;
+
     public bool playingInEditor;
     public bool playTutorial;
 
@@ -40,8 +42,6 @@ public class NewSpiderGameManager : MonoBehaviour
     private int winCount = 0;
     private int timesMissed = 0;
 
-    private SpiderwebGameData gameData;
-
     [Header("Tutorial Stuff")]
     public List<SpiderwebTutorialList> tutorialLists;
     public int[] correctIndexes;
@@ -67,7 +67,7 @@ public class NewSpiderGameManager : MonoBehaviour
         }
 
         // get game data
-        gameData = (SpiderwebGameData)GameManager.instance.GetData();
+        mapID = GameManager.instance.mapID;
 
         if (!playingInEditor)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().spiderwebTutorial;
@@ -106,9 +106,9 @@ public class NewSpiderGameManager : MonoBehaviour
         SpiderRayCaster.instance.isOn = false;
 
         // Create Global Coin List
-        if (gameData != null)
+        if (mapID != MapIconIdentfier.None)
         {
-            globalCoinPool = gameData.wordPool;
+            //globalCoinPool = gameData.wordPool; TODO: get pool from SIS
         }
         else
         {

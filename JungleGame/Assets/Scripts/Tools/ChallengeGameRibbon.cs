@@ -22,7 +22,7 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
     public Sprite wordFactoryBlendingLogo;
     public Sprite tigerPawCoinsLogo;
 
-    private GameData myGameData;
+    private GameType myGameType;
 
     [Header("Pressed Values")]
     public float pressedScaleChange;
@@ -38,10 +38,9 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
         crown.transform.localScale = new Vector3(0f, 0f, 1f);
     }
 
-    public void OpenRibbon(GameData gameData)
+    public void OpenRibbon(GameType gameType)
     {
-        myGameData = gameData;
-        StartCoroutine(OpenRibbonRoutine(myGameData.gameType));
+        StartCoroutine(OpenRibbonRoutine(gameType));
     }
 
     private IEnumerator OpenRibbonRoutine(GameType challengeGameType)
@@ -158,7 +157,7 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
             isPressed = true;
             transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
 
-            RoyalDecreeController.instance.OpenConfirmWindow(myGameData);
+            RoyalDecreeController.instance.OpenConfirmWindow(myGameType);
         }
     }
 

@@ -6,7 +6,7 @@ public class TurntablesGameManager : MonoBehaviour
 {
     public static TurntablesGameManager instance;
 
-    private TurntablesGameData gameData;
+    private MapIconIdentfier mapID;
 
     public List<Door> doors;
     public List<Key> keys;
@@ -69,7 +69,7 @@ public class TurntablesGameManager : MonoBehaviour
     void Start()
     {   
         // get game data
-        gameData = (TurntablesGameData)GameManager.instance.GetData();
+        mapID = GameManager.instance.mapID;
 
         if (!playInEditor)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().turntablesTutorial;
@@ -124,9 +124,9 @@ public class TurntablesGameManager : MonoBehaviour
         doorWords = new ActionWordEnum[4];
 
         // Create Global Coin List
-        if (gameData != null)
+        if (mapID != null)
         {
-            globalWordPool = gameData.wordPool;
+            //globalCoinPool = gameData.wordPool; TODO: get pool from SIS
         }
         else
         {
