@@ -106,11 +106,11 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
             case MapLocation.GorillaVillage:
                 triad = GameManager.instance.challengeGameTriads[0];
 
-                if (triad.juliusGame1.gameType == myGameData.gameType)
+                if (triad.juliusGame1 == myGameType)
                     stars = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.stars;
-                else if (triad.marcusGame2.gameType == myGameData.gameType)
+                else if (triad.marcusGame2 == myGameType)
                     stars = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.stars;
-                else if (triad.brutusGame3.gameType == myGameData.gameType)
+                else if (triad.brutusGame3 == myGameType)
                     stars = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.stars;
 
                 break;

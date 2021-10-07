@@ -17,6 +17,8 @@ public enum StarLocation
 public enum MapIconIdentfier
 {
     None,
+    Boat,
+
     GV_house1,
     GV_house2,
     GV_statue,
@@ -30,7 +32,7 @@ public enum MapIconIdentfier
 public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     public bool interactable = true;
-    public bool popupWindow;
+    //public bool popupWindow;
 
     [Header("Map ID")]
     public MapIconIdentfier identfier;
@@ -284,7 +286,13 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     }
 
     private IEnumerator CheckForStoryBeatRoutine()
-    {
+    {   
+        // go to boat game if story beat correct
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.InitBoatGame)
+        {
+            GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(GameType.BoatGame), true);
+            yield break;
+        }
         if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PrologueStoryGame)
         {  
             // pre story game interaction

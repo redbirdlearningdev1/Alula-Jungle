@@ -70,9 +70,7 @@ public class StoryGameManager : MonoBehaviour
         else 
         {
             // load in game data from game manager
-            GameData data = GameManager.instance.GetData();
-            // use imported game data
-            storyGameData = (StoryGameData)data;
+            storyGameData = GameManager.instance.storyGameData;
         }
 
         // send log

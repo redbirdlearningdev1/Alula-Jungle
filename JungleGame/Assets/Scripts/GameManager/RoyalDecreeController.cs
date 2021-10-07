@@ -183,7 +183,7 @@ public class RoyalDecreeController : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
         // go to game scene
-        GameManager.instance.LoadScene(currGameType, true);
+        GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(currGameType), true);
     }   
 
     public void OnNoPressed()

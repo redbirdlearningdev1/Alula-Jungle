@@ -391,13 +391,13 @@ public class ScrollMapManager : MonoBehaviour
                     var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
 
                     // set tiger stuff
-                    tiger.gameData = challengeGameTriad.juliusGame1;
+                    tiger.gameType = challengeGameTriad.juliusGame1;
                     tiger.ShowExclamationMark(true);
                     tiger.interactable = true;
                     tiger.GetComponent<Animator>().Play("aTigerTwitch");
 
                     // set game manager stuff
-                    GameManager.instance.SetDataAndID(challengeGameTriad.juliusGame1, MapIconIdentfier.GV_challenge_1);
+                    GameManager.instance.mapID = MapIconIdentfier.GV_challenge_1;
 
                     // save to sis and continue
                     StudentInfoSystem.AdvanceStoryBeat();
@@ -421,10 +421,10 @@ public class ScrollMapManager : MonoBehaviour
             var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
 
             // set tiger stuff
-            tiger.gameData = challengeGameTriad.juliusGame1;
+            tiger.gameType = challengeGameTriad.juliusGame1;
 
             // set game manager stuff
-            GameManager.instance.SetDataAndID(challengeGameTriad.juliusGame1, MapIconIdentfier.GV_challenge_1);
+            GameManager.instance.mapID = MapIconIdentfier.GV_challenge_1;
 
             // make sure we are at gorilla village
             mapPosIndex = 2;
@@ -478,10 +478,10 @@ public class ScrollMapManager : MonoBehaviour
             var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
 
             // set marcus stuff
-            marcus.gameData = challengeGameTriad.marcusGame2;
+            marcus.gameType = challengeGameTriad.marcusGame2;
 
             // set game manager stuff
-            GameManager.instance.SetDataAndID(challengeGameTriad.marcusGame2, MapIconIdentfier.GV_challenge_2);
+            GameManager.instance.mapID = MapIconIdentfier.GV_challenge_2;
 
             // make sure we are at gorilla village
             mapPosIndex = 2;
@@ -553,10 +553,10 @@ public class ScrollMapManager : MonoBehaviour
             var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
 
             // set brutus stuff
-            brutus.gameData = challengeGameTriad.brutusGame3;
+            brutus.gameType = challengeGameTriad.brutusGame3;
             
             // set game manager stuff
-            GameManager.instance.SetDataAndID(challengeGameTriad.brutusGame3, MapIconIdentfier.GV_challenge_3);
+            GameManager.instance.mapID = MapIconIdentfier.GV_challenge_3;
 
             // make sure we are at gorilla village
             mapPosIndex = 2;

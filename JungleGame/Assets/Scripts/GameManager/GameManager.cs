@@ -53,6 +53,7 @@ public class GameManager : DontDestroy<GameManager>
     [SerializeField] private GameObject devModeIndicator;
     private bool devIndicatorSet = false;
 
+    public StoryGameData storyGameData;
     public MapIconIdentfier mapID;
     public List<ActionWordEnum> actionWordPool;
     public List<ChallengeWord> challengeWordPool;
@@ -321,7 +322,22 @@ public class GameManager : DontDestroy<GameManager>
             case GameType.PirateGame:
                 return "NewPirateGame";
             case GameType.SpiderwebGame:
-                return "NewSpiderwebGame";
+                return "NewSpiderGame";
+
+
+            case GameType.DevMenu:
+                return "DevMenu";
+            case GameType.StoryGame:
+                return "StoryGame";
+            case GameType.BoatGame:
+                return "NewBoatGame";
+
+            case GameType.WordFactoryBlending:
+                return "WordFactoryBlending";
+            case GameType.WordFactorySubstituting:
+                return "WordFactorySubstituting";
+            case GameType.TigerPawCoins:
+                return "TigerPawCoins";
         }
     }
 }

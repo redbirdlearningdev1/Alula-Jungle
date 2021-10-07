@@ -26,9 +26,9 @@ public class MinigameWheelController : MonoBehaviour
         minigameOptions.Add(GameType.FroggerGame);
         minigameOptions.Add(GameType.TurntablesGame);
         minigameOptions.Add(GameType.RummageGame);
-        minigameOptions.Add(GameType.PirateGame);
+        //minigameOptions.Add(GameType.PirateGame);
         minigameOptions.Add(GameType.SpiderwebGame);
-        minigameOptions.Add(GameType.SeashellGame);
+        //minigameOptions.Add(GameType.SeashellGame);
 
         // remove background
         background.raycastTarget = false;
@@ -137,7 +137,7 @@ public class MinigameWheelController : MonoBehaviour
         backButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.2f, 0.2f);
 
         // get random minigame
-        int index = Random.Range(0, 6);
+        int index = Random.Range(0, minigameOptions.Count);
         string gameScene = "FroggerGame";
 
         switch (minigameOptions[index])

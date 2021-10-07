@@ -172,6 +172,10 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             // only continue if tapped on gorilla
             if (character == Character.Darwin)
             {
+                // set the story game
+                gameType = GameType.StoryGame;
+                GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[0];
+
                 // add pre story game talkie here
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.pre_darwin);
                 while (TalkieManager.instance.talkiePlaying)

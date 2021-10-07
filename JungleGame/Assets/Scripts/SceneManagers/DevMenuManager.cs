@@ -252,7 +252,7 @@ public class DevMenuManager : MonoBehaviour
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
-        GameManager.instance.SetData(GameManager.instance.storyGameDatas[storyGameDropdown.value]);
+        GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[storyGameDropdown.value];
         GameManager.instance.LoadScene("StoryGame", true);
     }
 
