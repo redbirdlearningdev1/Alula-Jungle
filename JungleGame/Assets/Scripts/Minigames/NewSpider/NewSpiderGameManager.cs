@@ -105,14 +105,16 @@ public class NewSpiderGameManager : MonoBehaviour
         // turn off raycaster
         SpiderRayCaster.instance.isOn = false;
 
+        globalCoinPool = new List<ActionWordEnum>();
+
         // Create Global Coin List
         if (mapID != MapIconIdentfier.None)
         {
-            //globalCoinPool = gameData.wordPool; TODO: get pool from SIS
+            globalCoinPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
         }
         else
         {
-            globalCoinPool = GameManager.instance.GetGlobalActionWordList();
+            globalCoinPool.AddRange(GameManager.instance.GetGlobalActionWordList());
         }
 
         unusedCoinPool = new List<ActionWordEnum>();

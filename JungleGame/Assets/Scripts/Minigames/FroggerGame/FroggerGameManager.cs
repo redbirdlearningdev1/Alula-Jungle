@@ -144,14 +144,16 @@ public class FroggerGameManager : MonoBehaviour
         foreach (var coin in coins4)
             allCoins.Add(coin);
 
+        globalCoinPool = new List<ActionWordEnum>();
+
         // Create Global Coin List
         if (mapID != MapIconIdentfier.None)
         {
-            //globalCoinPool = gameData.wordPool; TODO: get pool from SIS
+            globalCoinPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
         }
         else
         {
-            globalCoinPool = GameManager.instance.GetGlobalActionWordList();
+            globalCoinPool.AddRange(GameManager.instance.GetGlobalActionWordList());
         }
         
         unusedCoinPool = new List<ActionWordEnum>();

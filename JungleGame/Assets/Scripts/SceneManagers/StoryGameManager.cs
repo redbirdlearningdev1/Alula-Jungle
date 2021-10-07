@@ -289,6 +289,14 @@ public class StoryGameManager : MonoBehaviour
         
         if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PrologueStoryGame)
         {
+            // add action words to player's pool
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.mudslide);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.listen);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.poop);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.orcs);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.think);
+
+            // advance story beat
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
         }

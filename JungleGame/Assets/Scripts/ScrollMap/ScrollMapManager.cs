@@ -158,6 +158,8 @@ public class ScrollMapManager : MonoBehaviour
             DisableAllMapIcons();
             yield return new WaitForSeconds(1f);
 
+            StartCoroutine(RepairMapIcon(GameManager.instance.mapID));
+
             while (repairingMapIcon)
                 yield return null;
             
@@ -720,7 +722,6 @@ public class ScrollMapManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         GameManager.instance.repairMapIconID = false;
-
         repairingMapIcon = false;
     }
 

@@ -138,38 +138,31 @@ public class MinigameWheelController : MonoBehaviour
 
         // get random minigame
         int index = Random.Range(0, minigameOptions.Count);
-        string gameScene = "FroggerGame";
 
         switch (minigameOptions[index])
         {
             case GameType.FroggerGame:
                 animator.SetBool("finishFrogger", true);
-                gameScene = "FroggerGame";
                 break;
             case GameType.TurntablesGame:
                 animator.SetBool("finishTurntables", true);
-                gameScene = "TurntablesGame";
                 break;
             case GameType.RummageGame:
                 animator.SetBool("finishRummage", true);
-                gameScene = "RummageGame";
                 break;
             case GameType.SpiderwebGame:
                 animator.SetBool("finishSpiderweb", true);
-                gameScene = "NewSpiderwebGame";
                 break;
             case GameType.PirateGame:
                 animator.SetBool("finishPirate", true);
-                gameScene = "NewPirateGame";
                 break;
             case GameType.SeashellGame:
                 animator.SetBool("finishSeashells", true);
-                gameScene = "SeaShellGame";
                 break;
         }
 
         yield return new WaitForSeconds(3f);
         GameManager.instance.mapID = currentIdentifier;
-        GameManager.instance.LoadScene(gameScene, true, 0.5f, true);
+        GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(minigameOptions[index]), true, 0.5f, true);
     }
 }

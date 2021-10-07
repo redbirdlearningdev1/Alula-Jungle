@@ -101,14 +101,16 @@ public class RummageGameManager : MonoBehaviour
         foreach (var coin in pile5)
             allCoins.Add(coin);
 
+        globalCoinPool = new List<ActionWordEnum>();
+
         // get Global Coin List
         if (mapID != MapIconIdentfier.None)
         {
-            //globalCoinPool = gameData.wordPool; TODO: get pool from SIS
+            globalCoinPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
         }
         else
         {
-            globalCoinPool = GameManager.instance.GetGlobalActionWordList();
+            globalCoinPool.AddRange(GameManager.instance.GetGlobalActionWordList());
         }    
         unusedCoinPool = new List<ActionWordEnum>();
         unusedCoinPool.AddRange(globalCoinPool);

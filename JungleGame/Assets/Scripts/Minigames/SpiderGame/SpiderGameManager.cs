@@ -52,6 +52,9 @@ public class SpiderGameManager : MonoBehaviour
         {
             instance = this;
         }
+
+        // get mapID
+        //mapID = GameManager.instance.mapID;
     }
 
     // Start is called before the first frame update
@@ -64,14 +67,16 @@ public class SpiderGameManager : MonoBehaviour
         unusedWrongCoinPool = new List<ActionWordEnum>();
         unusedCorrectCoinPool = new List<ActionWordEnum>();
 
-        string[] coins = System.Enum.GetNames(typeof(ActionWordEnum));
-        for (int i = 0; i < coins.Length; i++)
-        {
-            ActionWordEnum type = (ActionWordEnum)System.Enum.Parse(typeof(ActionWordEnum), coins[i]);
-            globalCoinPool.Add(type);
-        }
-        globalCoinPool.Remove(ActionWordEnum.SIZE);
-        globalCoinPool.Remove(ActionWordEnum._blank);
+        // // Create Global Coin List
+        // if (mapID != MapIconIdentfier.None)
+        // {
+        //     globalCoinPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
+        // }
+        // else
+        // {
+        //     globalCoinPool.AddRange(GameManager.instance.GetGlobalActionWordList());
+        // }
+    
         unusedWrongCoinPool.AddRange(globalCoinPool);
         unusedCorrectCoinPool.AddRange(globalCoinPool);
 

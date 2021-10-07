@@ -71,6 +71,8 @@ public class StarAwardController : MonoBehaviour
     {
         int coinsEarned = 0;
 
+        print ("map id: " + GameManager.instance.mapID);
+
         // only update stars if earned more stars than in memory
         switch (GameManager.instance.mapID)
         {

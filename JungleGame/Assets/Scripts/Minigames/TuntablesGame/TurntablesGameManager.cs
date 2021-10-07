@@ -122,15 +122,16 @@ public class TurntablesGameManager : MonoBehaviour
         ImageGlowController.instance.SetImageGlow(RockLock.instance.image, false);
 
         doorWords = new ActionWordEnum[4];
+        globalWordPool = new List<ActionWordEnum>();
 
         // Create Global Coin List
         if (mapID != null)
         {
-            //globalCoinPool = gameData.wordPool; TODO: get pool from SIS
+            globalWordPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
         }
         else
         {
-            globalWordPool = GameManager.instance.GetGlobalActionWordList();
+            globalWordPool.AddRange(GameManager.instance.GetGlobalActionWordList());
         }
 
         unusedWordPool = new List<ActionWordEnum>();
