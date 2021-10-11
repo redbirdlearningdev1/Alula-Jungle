@@ -87,6 +87,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         {
             // remove exclamation mark from gorilla
             ScrollMapManager.instance.gorilla.ShowExclamationMark(false);
+            ScrollMapManager.instance.gorilla.interactable = false;
 
             // play gorilla intro 1
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.gorillaIntro_1);
@@ -105,20 +106,16 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             // wait for animation to be done
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
-            
-            // turn gorilla to face right
-            MapAnimationController.instance.gorilla.transform.localScale = new Vector3(-1, 1, 1);
-            ScrollMapManager.instance.gorilla.ShowExclamationMark(true);
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
 
             MapAnimationController.instance.TigerDestroyVillage();
             // wait for animation to be done
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
-            
-            // remove exclamation mark
-            ScrollMapManager.instance.gorilla.ShowExclamationMark(false);
+
+            // turn gorilla to face right
+            MapAnimationController.instance.gorilla.transform.localScale = new Vector3(-1, 1, 1);
 
             // play gorilla intro 3
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.gorillaIntro_3);
@@ -141,8 +138,6 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
 
-            yield return new WaitForSeconds(1f);
-
             // play gorilla intro 4
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.gorillaIntro_4);
             while (TalkieManager.instance.talkiePlaying)
@@ -158,7 +153,9 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
+            // make gorilla interactable
             ScrollMapManager.instance.gorilla.ShowExclamationMark(true);
+            ScrollMapManager.instance.gorilla.interactable = true;
 
             // save to SIS and exit to scroll map
             StudentInfoSystem.AdvanceStoryBeat();
