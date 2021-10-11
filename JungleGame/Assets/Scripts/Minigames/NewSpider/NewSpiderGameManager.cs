@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [System.Serializable]
 public struct SpiderwebTutorialList
@@ -104,6 +105,7 @@ public class NewSpiderGameManager : MonoBehaviour
     {
         // turn off raycaster
         SpiderRayCaster.instance.isOn = false;
+
 
         // Create Global Coin List
         if (gameData != null)
