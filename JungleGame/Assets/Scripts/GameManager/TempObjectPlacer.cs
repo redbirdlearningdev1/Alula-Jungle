@@ -21,6 +21,8 @@ public class TempObjectPlacer : MonoBehaviour
         // IDK WHY THIS IS A THING BUT I GOTTA 
         pos.x += 8.9f;
 
+        pos = Camera.main.ScreenToWorldPoint(pos);
+
         // make new object at position
         return Instantiate(obj, pos, Quaternion.identity, transform);
     }

@@ -29,7 +29,6 @@ public class LevelPreviewWindow : MonoBehaviour
     public float normalScale;
     public float starMoveSpeed;
 
-    private GameData gameData;
     private MapIconIdentfier id;
     private bool windowUp;
 
@@ -57,13 +56,11 @@ public class LevelPreviewWindow : MonoBehaviour
         window.transform.localScale = new Vector3(hiddenScale, hiddenScale, 0f);
     }
 
-    public void NewWindow(GameData newGameData, MapIconIdentfier identfier, int numStars)
+    public void NewWindow(MapIconIdentfier identfier, int numStars)
     {
         // return if another window is up
         if (windowUp)
             return;
-
-        print("new window");
 
         if (numStars > 3 || numStars < 0)
         {
@@ -71,12 +68,11 @@ public class LevelPreviewWindow : MonoBehaviour
             return;
         }
 
-        windowUp = true;
-        gameData = newGameData;
-        id = identfier;
-        titleText.text = gameData.gameType.ToString();
-        SetGameImage(gameData.gameType);
+        // close settings menu if open
+        SettingsManager.instance.CloseSettingsWindow();
 
+        windowUp = true;
+        id = identfier;
         StartCoroutine(NewWindowRoutine(numStars));
     }
 
@@ -107,8 +103,8 @@ public class LevelPreviewWindow : MonoBehaviour
 
         windowUp = false;
         // go to game scene
-        GameManager.instance.SetDataAndID(gameData, id);
-        GameManager.instance.LoadScene(gameData.sceneName, true, 0.5f, true);
+        GameManager.instance.mapID = id;
+        // GameManager.instance.LoadScene(gameData.sceneName, true, 0.5f, true);
     }
 
     public void OnNoButtonPressed()

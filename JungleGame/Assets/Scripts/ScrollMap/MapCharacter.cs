@@ -15,7 +15,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
     public Character character;
 
     [Header("Game Data")]
-    public GameData gameData;
+    public GameType gameType;
 
     private static float pressedScaleChange = 0.95f;
     private bool isPressed = false;
@@ -172,6 +172,10 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             // only continue if tapped on gorilla
             if (character == Character.Darwin)
             {
+                // set the story game
+                gameType = GameType.StoryGame;
+                GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[0];
+
                 // add pre story game talkie here
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.pre_darwin);
                 while (TalkieManager.instance.talkiePlaying)
@@ -222,15 +226,6 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
 
     public void GoToGameDataSceneImmediately()
     {
-        // go to correct game scene
-        if (gameData)
-        {
-            GameManager.instance.SetData(gameData);
-            GameManager.instance.LoadScene(gameData.sceneName, true, 0.5f, true);
-        }
-        else
-        {
-            GameManager.instance.LoadScene("MinigameDemoScene", true, 0.5f, true);
-        }
+        GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(gameType), true, 0.5f, true);
     }
 }

@@ -70,9 +70,7 @@ public class StoryGameManager : MonoBehaviour
         else 
         {
             // load in game data from game manager
-            GameData data = GameManager.instance.GetData();
-            // use imported game data
-            storyGameData = (StoryGameData)data;
+            storyGameData = GameManager.instance.storyGameData;
         }
 
         // send log
@@ -291,6 +289,14 @@ public class StoryGameManager : MonoBehaviour
         
         if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PrologueStoryGame)
         {
+            // add action words to player's pool
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.mudslide);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.listen);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.poop);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.orcs);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.think);
+
+            // advance story beat
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
         }

@@ -32,8 +32,8 @@ public class TigerCoinGameManager : MonoBehaviour
     [SerializeField] private Transform CoinStartPos;
     [SerializeField] private Transform CoinEndPos;
 
-    [SerializeField] private List<UniversalCoin> waterCoins;
-    private UniversalCoin currWaterCoin;
+    [SerializeField] private List<UniversalCoinImage> waterCoins;
+    private UniversalCoinImage currWaterCoin;
 
     // other variables
     [SerializeField]  private ChallengeWord currentWord;
@@ -41,7 +41,7 @@ public class TigerCoinGameManager : MonoBehaviour
     [SerializeField]  private ChallengeWord currentTargetWord;
     private int currentSwipeIndex;
 
-    private List<UniversalCoin> currentCoins;
+    private List<UniversalCoinImage> currentCoins;
     private int numWins = 0;
     private int numMisses = 0;
     private bool playingCoinAudio = false;
@@ -131,9 +131,7 @@ public class TigerCoinGameManager : MonoBehaviour
             int rand = Random.Range(0, coinOptions.Count);
             waterCoins[i].SetValue(coinOptions[rand]);
             coinOptions.RemoveAt(rand); 
-            waterCoins[i].transform.position = CoinPos1.position;
-            waterCoins[i].SetLayer(2);
-            
+            waterCoins[i].transform.position = CoinPos1.position;            
         }
 
         for (int i = 0; i < 5; i++)
@@ -215,7 +213,7 @@ public class TigerCoinGameManager : MonoBehaviour
         }
     }
 
-    public void GlowAndPlayAudioCoin(UniversalCoin coin)
+    public void GlowAndPlayAudioCoin(UniversalCoinImage coin)
     {
         if (playingCoinAudio)
             return;
@@ -226,7 +224,7 @@ public class TigerCoinGameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoin coin, bool waterCoin = false)
+    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoinImage coin, bool waterCoin = false)
     {
         playingCoinAudio = true;
 
@@ -276,7 +274,7 @@ public class TigerCoinGameManager : MonoBehaviour
         return word;
     }
 
-    public void EvaluateWaterCoin(UniversalCoin coin)
+    public void EvaluateWaterCoin(UniversalCoinImage coin)
     {
         if (coin.value == currentTargetValue)
         {
@@ -391,7 +389,7 @@ public class TigerCoinGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // update SIS
-        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3)
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
         {
             // first time losing
             if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame)
@@ -420,7 +418,7 @@ public class TigerCoinGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // update SIS
-        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3)
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
         {
             StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = false;
             StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;

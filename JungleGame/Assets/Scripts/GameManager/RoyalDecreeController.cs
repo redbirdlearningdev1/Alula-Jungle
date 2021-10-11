@@ -25,7 +25,8 @@ public class RoyalDecreeController : MonoBehaviour
     private bool isOpen = false;
     private bool waitToOpen = false;
 
-    private GameData currGameData = null;
+    private ChallengeGameTriad currTriad;
+    private GameType currGameType;
 
     void Awake()
     {
@@ -74,15 +75,11 @@ public class RoyalDecreeController : MonoBehaviour
 
         print ("triad: " + triad);
 
-        List<GameData> challengeGames = new List<GameData>();
+        List<GameType> challengeGames = new List<GameType>();
 
         challengeGames.Add(triad.juliusGame1);
         challengeGames.Add(triad.marcusGame2);
         challengeGames.Add(triad.brutusGame3);
-
-        print ("game1: " + challengeGames[0].gameType);
-        print ("game2: " + challengeGames[1].gameType);
-        print ("game3: " + challengeGames[2].gameType);
 
         // dim bg
         dim_bg.LerpImageAlpha(dim_bg.GetComponent<Image>(), 0.65f, 0.5f);
@@ -142,12 +139,12 @@ public class RoyalDecreeController : MonoBehaviour
     ################################################
     */
 
-    public void OpenConfirmWindow(GameData data)
+    public void OpenConfirmWindow(GameType gameType)
     {
         if (confirmWindowUp)
             return;
         
-        currGameData = data;
+        currGameType = gameType;
         confirmWindowUp = true;
 
         StartCoroutine(OpenConfirmWindowRoutine());
@@ -186,7 +183,7 @@ public class RoyalDecreeController : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
         // go to game scene
-        GameManager.instance.LoadScene(currGameData.sceneName, true);
+        GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(currGameType), true);
     }   
 
     public void OnNoPressed()

@@ -14,6 +14,8 @@ public class RummageGameManager : MonoBehaviour
 {
     public static RummageGameManager instance;
 
+    private MapIconIdentfier mapID;
+
     public bool playingInEditor;
     public bool playTutorial;
 
@@ -57,8 +59,6 @@ public class RummageGameManager : MonoBehaviour
     private int winCount = 0;
     private int lastLocation;
 
-    private RummageGameData gameData;
-
     [Header("Tutorial Stuff")]
     public List<RummageTutorialList> tutorialPiles;
     public int[] correctIndexes;
@@ -70,16 +70,16 @@ public class RummageGameManager : MonoBehaviour
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
+        // stop music 
+        AudioManager.instance.StopMusic();
+
         if (!instance)
         {
             instance = this;
         }
 
-        // show menu bars
-        SettingsManager.instance.ToggleMenuButtonActive(true);
-
         // get game data
-        gameData = (RummageGameData)GameManager.instance.GetData();
+        mapID = GameManager.instance.mapID;
 
         if (!playingInEditor)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().rummageTutorial;
@@ -89,9 +89,6 @@ public class RummageGameManager : MonoBehaviour
 
     private void PregameSetup()
     {
-        // TODO: add music and ambiance
-        AudioManager.instance.StopMusic();
-
         // create coin list
         foreach (var coin in pile1)
             allCoins.Add(coin);
@@ -104,14 +101,16 @@ public class RummageGameManager : MonoBehaviour
         foreach (var coin in pile5)
             allCoins.Add(coin);
 
+        globalCoinPool = new List<ActionWordEnum>();
+
         // get Global Coin List
-        if (gameData != null)
+        if (mapID != MapIconIdentfier.None)
         {
-            globalCoinPool = gameData.wordPool;
+            globalCoinPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
         }
         else
         {
-            globalCoinPool = GameManager.instance.GetGlobalActionWordList();
+            globalCoinPool.AddRange(GameManager.instance.GetGlobalActionWordList());
         }    
         unusedCoinPool = new List<ActionWordEnum>();
         unusedCoinPool.AddRange(globalCoinPool);
@@ -139,6 +138,10 @@ public class RummageGameManager : MonoBehaviour
         }   
         else
         {
+            // start song
+            AudioManager.instance.InitSplitSong(SplitSong.Rummage);
+            AudioManager.instance.IncreaseSplitSong();
+
             StartCoroutine(StartGame());
         }
     }
@@ -146,6 +149,9 @@ public class RummageGameManager : MonoBehaviour
     private IEnumerator StartGame()
     {
         yield return new WaitForSeconds(1f);
+
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // reveal dancing man
         StartCoroutine(ShowDancingManRoutine());
@@ -159,6 +165,9 @@ public class RummageGameManager : MonoBehaviour
     {
         LockAllPiles();
         yield return new WaitForSeconds(1f);
+
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // play tutorial audio 1
         AudioClip clip = AudioDatabase.instance.RummageTutorial_1;
@@ -398,6 +407,9 @@ public class RummageGameManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
         yield return new WaitForSeconds(1f);
 
+        // hide dancing man
+        StartCoroutine(HideDancingManRoutine());
+
         // calculate and show stars
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());
     }
@@ -435,6 +447,9 @@ public class RummageGameManager : MonoBehaviour
 
     private IEnumerator CoinSuccessRoutine(GameObject currCoin)
     {
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+
         winCount++;
 
         yield return new WaitForSeconds(.01f);
@@ -519,6 +534,9 @@ public class RummageGameManager : MonoBehaviour
 
     private IEnumerator WinRoutine(GameObject currCoin)
     {
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+        
         winCount++;
 
         yield return new WaitForSeconds(.01f);
@@ -572,6 +590,9 @@ public class RummageGameManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1f);
+
+        // hide dancing man
+        StartCoroutine(HideDancingManRoutine());
 
         // calculate and show stars
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());
@@ -922,6 +943,41 @@ public class RummageGameManager : MonoBehaviour
             }
 
             Vector3 tempPos = Vector3.Lerp(bouncePos, dancingManOnScreen.position, timer / 0.1f);
+            dancingMan.gameObject.transform.position = tempPos;
+            yield return null;
+        }
+    }
+
+    private IEnumerator HideDancingManRoutine()
+    {
+        float timer = 0f;
+        float moveTime = 0.3f;
+        Vector3 bouncePos = dancingManOnScreen.position;
+        bouncePos.y += 0.5f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > moveTime)
+            {
+                break;
+            }
+
+            Vector3 tempPos = Vector3.Lerp(dancingManOnScreen.position, bouncePos, timer / moveTime);
+            dancingMan.gameObject.transform.position = tempPos;
+            yield return null;
+        }
+        timer = 0f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > 0.1f)
+            {
+                break;
+            }
+
+            Vector3 tempPos = Vector3.Lerp(bouncePos, dancingManOffScreen.position, timer / 0.1f);
             dancingMan.gameObject.transform.position = tempPos;
             yield return null;
         }

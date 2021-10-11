@@ -7,6 +7,7 @@ public class StickerBoard : MonoBehaviour
 {
     public StickerBoardType boardType;
     public LerpableObject stickerInventoryWindow;
+    public float stickerMoveSpeed;
 
     public Transform selectedStickerParent;
     public Transform placedStickerParent;
@@ -41,9 +42,11 @@ public class StickerBoard : MonoBehaviour
     {
         if (currentSticker != null && !waitingToGlueSticker)
         {
-            var mousePos = Input.mousePosition;
-            mousePos.z = 0f;
-            currentSticker.transform.position = mousePos;
+            Vector3 mousePosWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosWorldSpace.z = 0f;
+
+            Vector3 pos = Vector3.Lerp(currentSticker.transform.position, mousePosWorldSpace, stickerMoveSpeed);
+            currentSticker.transform.position = pos;
         }
 
         // open and close inventory with sticker

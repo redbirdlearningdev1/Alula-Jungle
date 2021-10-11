@@ -34,6 +34,7 @@ public class RopeController : MonoBehaviour
         if (keys.Contains(k))
         {
             ImageGlowController.instance.SetImageGlow(k.image, true, GlowValue.glow_1_025);
+            k.glowingKey = true;
         }
     }
 

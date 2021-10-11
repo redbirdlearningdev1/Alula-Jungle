@@ -52,7 +52,7 @@ public class WordFactorySubstituteRaycaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("Frame"))
                     {
-                        WordFactorySubstitutingManager.instance.EvaluateWaterCoin(selectedObject.GetComponent<UniversalCoin>());
+                        WordFactorySubstitutingManager.instance.EvaluateWaterCoin(selectedObject.GetComponent<UniversalCoinImage>());
                     }
                 }
             }
@@ -75,11 +75,11 @@ public class WordFactorySubstituteRaycaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("UniversalCoin"))
                     {
-                        WordFactorySubstitutingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoin>());
+                        WordFactorySubstitutingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
                     }
                     else if (result.gameObject.transform.CompareTag("WaterCoin"))
                     {
-                        WordFactorySubstitutingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoin>());
+                        WordFactorySubstitutingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
                         selectedObject = result.gameObject;
                     }
                     else if (result.gameObject.transform.CompareTag("Polaroid"))

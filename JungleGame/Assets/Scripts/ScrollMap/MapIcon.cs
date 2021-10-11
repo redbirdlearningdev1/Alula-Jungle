@@ -17,19 +17,24 @@ public enum StarLocation
 public enum MapIconIdentfier
 {
     None,
+    Boat,
+
     GV_house1,
     GV_house2,
     GV_statue,
-    GV_fire
+    GV_fire,
+
+    GV_challenge_1,
+    GV_challenge_2,
+    GV_challenge_3
 }
 
 public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     public bool interactable = true;
-    public bool popupWindow;
+    //public bool popupWindow;
 
-    [Header("Game Data")]
-    public GameData gameData;
+    [Header("Map ID")]
     public MapIconIdentfier identfier;
 
     [Header("Animation Stuff")]
@@ -281,7 +286,13 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     }
 
     private IEnumerator CheckForStoryBeatRoutine()
-    {
+    {   
+        // go to boat game if story beat correct
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.InitBoatGame)
+        {
+            GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(GameType.BoatGame), true);
+            yield break;
+        }
         if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PrologueStoryGame)
         {  
             // pre story game interaction
@@ -292,23 +303,8 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             yield break;
         }
 
-        // go to correct game scene
-        if (gameData)
-        {
-            if (popupWindow)
-            {
-                LevelPreviewWindow.instance.NewWindow(gameData, identfier, GetNumStars());
-            }
-            else 
-            {
-                GameManager.instance.SetData(gameData);
-                GameManager.instance.LoadScene(gameData.sceneName, true, 0.5f, true);
-            }
-        }
-        else
-        {
-            GameManager.instance.LoadScene("MinigameDemoScene", true, 0.5f, true);
-        }
+        MinigameWheelController.instance.RevealWheel(identfier);
+        yield break;
     }
 
     public int GetNumStars()

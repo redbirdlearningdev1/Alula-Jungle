@@ -33,9 +33,11 @@ public class RummageCoin : MonoBehaviour
         image = GetComponent<Image>();
     }
 
-    void Update()
+    public void GoToChest()
     {
-
+        GetComponent<LerpableObject>().LerpPosition(chest.instance.transform.position, 1f, false);
+        GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 1f);
+        GetComponent<LerpableObject>().LerpImageAlpha(image, 0f, 1f);
     }
 
     public void ReturnToCloth()

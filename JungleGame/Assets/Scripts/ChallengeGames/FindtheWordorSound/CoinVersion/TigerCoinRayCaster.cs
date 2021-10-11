@@ -47,7 +47,7 @@ public class TigerCoinRayCaster : MonoBehaviour
                     if (result.gameObject.transform.CompareTag("Bag"))
                     {
                         TigerCoinGameManager.instance.ReturnToPos(selectedObject);
-                        TigerCoinGameManager.instance.EvaluateWaterCoin(selectedObject.GetComponent<UniversalCoin>());
+                        TigerCoinGameManager.instance.EvaluateWaterCoin(selectedObject.GetComponent<UniversalCoinImage>());
                     }
                 }
             }
@@ -68,12 +68,11 @@ public class TigerCoinRayCaster : MonoBehaviour
             {
                 foreach (var result in raycastResults)
                 {
-                    if (result.gameObject.transform.CompareTag("WaterCoin"))
+                    if (result.gameObject.transform.CompareTag("UniversalCoin"))
                     {
-                        //WordFactorySubstitutingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoin>());
                         selectedObject = result.gameObject;
                         selectedObject.gameObject.transform.SetParent(selectedObjectParent);
-                        TigerCoinGameManager.instance.GlowAndPlayAudioCoin(selectedObject.GetComponent<UniversalCoin>());
+                        TigerCoinGameManager.instance.GlowAndPlayAudioCoin(selectedObject.GetComponent<UniversalCoinImage>());
                     }
                     else if (result.gameObject.transform.CompareTag("Polaroid"))
                     {

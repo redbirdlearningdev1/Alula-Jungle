@@ -71,7 +71,7 @@ public class TigerGameRaycaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("UniversalCoin"))
                     {
-                        TigerGameManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoin>());
+                        TigerGameManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
                     }
                     else if (result.gameObject.transform.CompareTag("Polaroid"))
                     {

@@ -32,7 +32,11 @@ public class WordFactoryDeletingRaycaster : MonoBehaviour
         // drag select coin while mouse 1 down
         if (Input.GetMouseButton(0) && selectedObject)
         {
-            selectedObject.transform.position = Input.mousePosition;
+            Vector3 mousePosWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosWorldSpace.z = 0f;
+
+            Vector3 pos = Vector3.Lerp(selectedObject.transform.position, mousePosWorldSpace, objcetMoveSpeed);
+            selectedObject.transform.position = pos;
         }
         else if (Input.GetMouseButtonUp(0) && selectedObject)
         {

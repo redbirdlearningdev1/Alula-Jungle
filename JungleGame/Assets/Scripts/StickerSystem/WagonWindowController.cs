@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class WagonWindowController : MonoBehaviour
 {
@@ -23,6 +24,13 @@ public class WagonWindowController : MonoBehaviour
     public Transform cartStartPosition;
     public Transform cartOnScreenPosition;
     public Transform cartOffScreenPosition;
+
+    [Header("Sticker Video Players")]
+    public VideoPlayer commonVP;
+    public VideoPlayer uncommonVP;
+    public VideoPlayer rareVP;
+    public VideoPlayer legendaryVP;
+
 
     [Header("Sticker Reveal")]
     public Transform revealSticker;
@@ -167,34 +175,37 @@ public class WagonWindowController : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        // Fade back in 
-        FadeObject.instance.FadeIn(2f);
-
         float delay;
         // play correct video player
         switch (sticker.rarity)
         {
             default:
             case StickerRarity.Common:
-                ScrollMapManager.instance.commonVP.Play();
-                delay = (float)ScrollMapManager.instance.commonVP.length;
+                commonVP.Play();
+                delay = (float)commonVP.length;
                 break;
 
             case StickerRarity.Uncommon:
-                ScrollMapManager.instance.uncommonVP.Play();
-                delay = (float)ScrollMapManager.instance.uncommonVP.length;
+                uncommonVP.Play();
+                delay = (float)uncommonVP.length;
                 break;
 
             case StickerRarity.Rare:
-                ScrollMapManager.instance.rareVP.Play();
-                delay = (float)ScrollMapManager.instance.rareVP.length;
+                rareVP.Play();
+                delay = (float)rareVP.length;
                 break;
 
             case StickerRarity.Legendary:
-                ScrollMapManager.instance.legendaryVP.Play();
-                delay = (float)ScrollMapManager.instance.legendaryVP.length;
+                legendaryVP.Play();
+                delay = (float)legendaryVP.length;
                 break;
         }
+
+        print ("playing video: " + sticker.rarity);
+        print ("delay: " + delay);
+        
+        // Fade back in 
+        FadeObject.instance.FadeIn(2f);
 
         yield return new WaitForSeconds(delay - 1.5f);
 
@@ -202,7 +213,7 @@ public class WagonWindowController : MonoBehaviour
         RaycastBlockerController.instance.RemoveRaycastBlocker("StickerVideoBlocker");
 
         // reveal sticker here after certain amount of time
-        StartCoroutine(RevealStickerRoutine(sticker));
+        StickerRevealCanvas.instance.RevealSticker(sticker);
 
         // wait for player input to continue
         waitingOnPlayerInput = true;
@@ -228,25 +239,24 @@ public class WagonWindowController : MonoBehaviour
         {
             default:
             case StickerRarity.Common:
-                ScrollMapManager.instance.commonVP.Stop();
+                commonVP.Stop();
                 break;
 
             case StickerRarity.Uncommon:
-                ScrollMapManager.instance.uncommonVP.Stop();
+                uncommonVP.Stop();
                 break;
 
             case StickerRarity.Rare:
-                ScrollMapManager.instance.rareVP.Stop();
+                rareVP.Stop();
                 break;
 
             case StickerRarity.Legendary:
-                ScrollMapManager.instance.legendaryVP.Stop();
+                legendaryVP.Stop();
                 break;
         }
 
         // hide reveal sticker
-        revealSticker.localScale = new Vector3(hiddenRevealScale, hiddenRevealScale, 1f);
-
+        StickerRevealCanvas.instance.HideSticker();
         yield return new WaitForSeconds(0.5f);
 
         // Fade back in 
@@ -278,15 +288,6 @@ public class WagonWindowController : MonoBehaviour
             // StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
             // StudentInfoSystem.SaveStudentPlayerData();
         }
-    }
-
-    private IEnumerator RevealStickerRoutine(Sticker sticker)
-    {
-        revealSticker.GetComponent<Image>().sprite = sticker.sprite;
-
-        StartCoroutine(ScaleObjectRoutine(revealSticker.gameObject, longScaleRevealTime, maxRevealScale));
-        yield return new WaitForSeconds(longScaleRevealTime);
-        StartCoroutine(ScaleObjectRoutine(revealSticker.gameObject, shortScaleRevealTime, normalRevealScale));
     }
 
     public void OnNoButtonPressed()
@@ -397,6 +398,9 @@ public class WagonWindowController : MonoBehaviour
     {
         wagon.transform.position = cartStartPosition.position;
 
+        // close settings menu if open
+        SettingsManager.instance.CloseSettingsWindow();
+
         // disable nav buttons
         ScrollMapManager.instance.ToggleNavButtons(false);
 
@@ -430,7 +434,7 @@ public class WagonWindowController : MonoBehaviour
             backButton.gameObject.SetActive(false);
 
             // enable wagon background
-            wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0.75f, 0.1f);
+            wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0.75f, 0.5f);
 
             // play lester intro 1
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.lester_intro_1);
@@ -438,7 +442,7 @@ public class WagonWindowController : MonoBehaviour
                 yield return null;
 
             // disable wagon background
-            wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0f, 0.1f);
+            wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0f, 0.5f);
         }
 
         gecko.SetActive(true);

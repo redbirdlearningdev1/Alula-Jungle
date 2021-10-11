@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Video;
 
 public enum MapLocation
 {
@@ -75,11 +74,6 @@ public class ScrollMapManager : MonoBehaviour
     public MapCharacter marcus;
     public MapCharacter brutus;
 
-    [Header("Sticker Video Players")]
-    public VideoPlayer commonVP;
-    public VideoPlayer uncommonVP;
-    public VideoPlayer rareVP;
-    public VideoPlayer legendaryVP;
 
     void Awake()
     {
@@ -161,12 +155,11 @@ public class ScrollMapManager : MonoBehaviour
 
         if (GameManager.instance.repairMapIconID)
         {
-            print ("repairing map icon: " + GameManager.instance.GetID());
             DisableAllMapIcons();
-
             yield return new WaitForSeconds(1f);
 
-            StartCoroutine(RepairMapIcon(GameManager.instance.GetID()));
+            StartCoroutine(RepairMapIcon(GameManager.instance.mapID));
+
             while (repairingMapIcon)
                 yield return null;
             
@@ -212,6 +205,8 @@ public class ScrollMapManager : MonoBehaviour
         StoryBeat playGameEvent = StoryBeat.InitBoatGame; // default event
         // get event from current profile if not null
         playGameEvent = StudentInfoSystem.GetCurrentProfile().currStoryBeat;
+
+        GameManager.instance.SendLog(this, "Current Story Beat: " + playGameEvent);
 
         StartCoroutine(CheckForScrollMapGameEvents(playGameEvent));
         // wait here while game event stuff is happening
@@ -398,10 +393,13 @@ public class ScrollMapManager : MonoBehaviour
                     var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
 
                     // set tiger stuff
-                    tiger.gameData = challengeGameTriad.juliusGame1;
+                    tiger.gameType = challengeGameTriad.juliusGame1;
                     tiger.ShowExclamationMark(true);
                     tiger.interactable = true;
                     tiger.GetComponent<Animator>().Play("aTigerTwitch");
+
+                    // set game manager stuff
+                    GameManager.instance.mapID = MapIconIdentfier.GV_challenge_1;
 
                     // save to sis and continue
                     StudentInfoSystem.AdvanceStoryBeat();
@@ -425,8 +423,10 @@ public class ScrollMapManager : MonoBehaviour
             var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
 
             // set tiger stuff
-            tiger.gameData = challengeGameTriad.juliusGame1;
-            tiger.ShowExclamationMark(true);
+            tiger.gameType = challengeGameTriad.juliusGame1;
+
+            // set game manager stuff
+            GameManager.instance.mapID = MapIconIdentfier.GV_challenge_1;
 
             // make sure we are at gorilla village
             mapPosIndex = 2;
@@ -458,6 +458,7 @@ public class ScrollMapManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             tiger.interactable = true;
+            tiger.ShowExclamationMark(true);
             tiger.GetComponent<Animator>().Play("aTigerTwitch");
         }
         else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_2)
@@ -479,7 +480,10 @@ public class ScrollMapManager : MonoBehaviour
             var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
 
             // set marcus stuff
-            marcus.gameData = challengeGameTriad.marcusGame2;
+            marcus.gameType = challengeGameTriad.marcusGame2;
+
+            // set game manager stuff
+            GameManager.instance.mapID = MapIconIdentfier.GV_challenge_2;
 
             // make sure we are at gorilla village
             mapPosIndex = 2;
@@ -494,7 +498,7 @@ public class ScrollMapManager : MonoBehaviour
                 !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
             {
                 // play marcus wins
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_challenges);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_wins);
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
             }
@@ -551,7 +555,10 @@ public class ScrollMapManager : MonoBehaviour
             var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
 
             // set brutus stuff
-            brutus.gameData = challengeGameTriad.brutusGame3;
+            brutus.gameType = challengeGameTriad.brutusGame3;
+            
+            // set game manager stuff
+            GameManager.instance.mapID = MapIconIdentfier.GV_challenge_3;
 
             // make sure we are at gorilla village
             mapPosIndex = 2;
@@ -560,6 +567,9 @@ public class ScrollMapManager : MonoBehaviour
             StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
 
             yield return new WaitForSeconds(2.5f);
+
+            print ("first time losing: " + StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame);
+            print ("every other time losing: " + StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame);
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -712,7 +722,6 @@ public class ScrollMapManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         GameManager.instance.repairMapIconID = false;
-
         repairingMapIcon = false;
     }
 
@@ -925,7 +934,9 @@ public class ScrollMapManager : MonoBehaviour
 
     public void OnGoLeftPressed()
     {
+        print ("left 1");
         if (navButtonsDisabled) return;
+        print ("left 2");
 
         // player cannot input for 'transitionTime' seconds
         navButtonsDisabled = true;
@@ -957,7 +968,9 @@ public class ScrollMapManager : MonoBehaviour
 
     public void OnGoRightPressed()
     {
+        print ("right 1");
         if (navButtonsDisabled) return;
+        print ("right 2");
 
         // player cannot input for 'transitionTime' seconds
         navButtonsDisabled = true;

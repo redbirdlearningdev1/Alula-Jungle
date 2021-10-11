@@ -67,6 +67,11 @@ public class KeyRaycaster : MonoBehaviour
             {
                 selectedKey.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.25f);
                 selectedKey.ReturnToRope();
+
+                // re-add key glow if tutorial key
+                if (selectedKey.glowingKey)
+                    ImageGlowController.instance.SetImageGlow(selectedKey.image, true, GlowValue.glow_1_025);
+                    
                 selectedKey = null;
             }
 
@@ -88,12 +93,16 @@ public class KeyRaycaster : MonoBehaviour
                     if (result.gameObject.transform.CompareTag("Key"))
                     {
                         selectedKey = result.gameObject.GetComponentInParent<Key>();
-                        //selectedKey.SetLayer(3);
                         selectedKey.PlayAudio();
                         selectedKey.gameObject.transform.SetParent(selectedKeyParent);
                         selectedKey.GetComponent<LerpableObject>().LerpScale(new Vector2(1.25f, 1.25f), 0.25f);
+
                         // rock lock glow effect on
                         ImageGlowController.instance.SetImageGlow(RockLock.instance.image, true, GlowValue.glow_1_025);
+
+                        // remove key glow if tutorial key
+                        if (selectedKey.glowingKey)
+                            ImageGlowController.instance.SetImageGlow(selectedKey.image, false);
                     }
                 }
             }

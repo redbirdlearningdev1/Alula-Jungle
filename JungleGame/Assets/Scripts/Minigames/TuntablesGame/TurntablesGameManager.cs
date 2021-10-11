@@ -6,7 +6,7 @@ public class TurntablesGameManager : MonoBehaviour
 {
     public static TurntablesGameManager instance;
 
-    private TurntablesGameData gameData;
+    private MapIconIdentfier mapID;
 
     public List<Door> doors;
     public List<Key> keys;
@@ -57,19 +57,19 @@ public class TurntablesGameManager : MonoBehaviour
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
+        // stop music
+        AudioManager.instance.StopMusic();
+
         if (!instance)
         {
             instance = this;
         }
-
-        // show menu bars
-        SettingsManager.instance.ToggleMenuButtonActive(true);
     }
 
     void Start()
     {   
         // get game data
-        gameData = (TurntablesGameData)GameManager.instance.GetData();
+        mapID = GameManager.instance.mapID;
 
         if (!playInEditor)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().turntablesTutorial;
@@ -79,8 +79,6 @@ public class TurntablesGameManager : MonoBehaviour
         // play real game or tutorial
         if (playTutorial)
         {
-            GameManager.instance.SendLog(this, "starting turntables game tutorial");
-            AudioManager.instance.StopMusic();
             StartCoroutine(StartTutorial());
         }
         else
@@ -110,8 +108,6 @@ public class TurntablesGameManager : MonoBehaviour
 
     private void PregameSetup()
     {
-        // stop music and play after delay
-        AudioManager.instance.StopMusic();
         if (!playTutorial)
             StartCoroutine(StartMusicDelay(musicStartDelay));
 
@@ -126,15 +122,16 @@ public class TurntablesGameManager : MonoBehaviour
         ImageGlowController.instance.SetImageGlow(RockLock.instance.image, false);
 
         doorWords = new ActionWordEnum[4];
+        globalWordPool = new List<ActionWordEnum>();
 
         // Create Global Coin List
-        if (gameData != null)
+        if (mapID != null)
         {
-            globalWordPool = gameData.wordPool;
+            globalWordPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
         }
         else
         {
-            globalWordPool = GameManager.instance.GetGlobalActionWordList();
+            globalWordPool.AddRange(GameManager.instance.GetGlobalActionWordList());
         }
 
         unusedWordPool = new List<ActionWordEnum>();
@@ -235,6 +232,9 @@ public class TurntablesGameManager : MonoBehaviour
             yield return new WaitForSeconds(difference);
             duration -= difference;
         }
+
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
         
         // toggle outline on
         GlowOutline(currentDoorIndex);
@@ -283,6 +283,8 @@ public class TurntablesGameManager : MonoBehaviour
 
         // dissipate key
         keys[correctKeyIndex].Dissipate();
+        // shake rock lock
+        RockLock.instance.ShakeRock();
         // move door to unlocked position
         doors[currentDoorIndex].RotateToAngle(0, true, RopeController.instance.moveTime * 2);
         // play stone moving audio
@@ -379,6 +381,8 @@ public class TurntablesGameManager : MonoBehaviour
 
         // dissipate key
         keys[correctKeyIndex].Dissipate();
+        // shake rock lock
+        RockLock.instance.ShakeRock();
         // make door icon glow special
         ImageGlowController.instance.SetImageGlow(doors[currentDoorIndex].image, true, GlowValue.glow_1_025); // TODO set blue?
         // play stone moving audio
@@ -457,6 +461,9 @@ public class TurntablesGameManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(2f);
+
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // play tutorial audio 1
         AudioClip clip = AudioDatabase.instance.TurntablesTutorial_1;
@@ -540,9 +547,10 @@ public class TurntablesGameManager : MonoBehaviour
         // increase split song
         AudioManager.instance.IncreaseSplitSong();
 
-        print ("success!");
         // dissipate key
         keys[correctKeyIndex].Dissipate();
+        // shake rock lock
+        RockLock.instance.ShakeRock();
         // move door to unlocked position
         doors[currentDoorIndex].RotateToAngle(0, true, RopeController.instance.moveTime * 2);
         // play stone moving audio
@@ -578,7 +586,6 @@ public class TurntablesGameManager : MonoBehaviour
 
     private IEnumerator TutorialIncorrectRoutine()
     {
-        // print ("fail!");
         // return key
         keys[correctKeyIndex].ReturnToRope();
         
@@ -614,9 +621,10 @@ public class TurntablesGameManager : MonoBehaviour
         // increase split song
         AudioManager.instance.IncreaseSplitSong();
 
-        // print ("you win!");
         // dissipate key
         keys[correctKeyIndex].Dissipate();
+        // shake rock lock
+        RockLock.instance.ShakeRock();
         // make door icon glow special
         ImageGlowController.instance.SetImageGlow(doors[currentDoorIndex].image, true, GlowValue.glow_1_025);
         // play stone moving audio

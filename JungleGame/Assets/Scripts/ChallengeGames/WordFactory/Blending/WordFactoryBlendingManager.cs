@@ -47,7 +47,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
     private ChallengeWord currentWord;
     private List<ChallengeWord> currentWords;
     private Polaroid currentPolaroid;
-    private List<UniversalCoin> currentCoins;
+    private List<UniversalCoinImage> currentCoins;
     private bool playingCoinAudio = false;
     private int numWins = 0;
     private int numMisses = 0;
@@ -133,7 +133,6 @@ public class WordFactoryBlendingManager : MonoBehaviour
         foreach (var frame in frames)
         {
             frame.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
-            frame.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
         }
 
         // initialize list
@@ -187,10 +186,9 @@ public class WordFactoryBlendingManager : MonoBehaviour
         for (int i = 0; i < currentWord.elkoninCount; i++)
         {
             StartCoroutine(LerpImageAlpha(frames[i].GetComponent<Image>(), 1f, 0.25f));
-            StartCoroutine(LerpSpriteAlpha(frames[i].GetComponent<SpriteRenderer>(), 1f, 0.25f));
         }
 
-        currentCoins = new List<UniversalCoin>();
+        currentCoins = new List<UniversalCoinImage>();
         yield return new WaitForSeconds(0.5f);
 
         // show coins + add to list
@@ -198,7 +196,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
         {
             ElkoninValue value = currentWord.elkoninList[i];
             var coinObj = Instantiate(universalCoin, frames[i].position, Quaternion.identity, coinParent);
-            var coin = coinObj.GetComponent<UniversalCoin>();
+            var coin = coinObj.GetComponent<UniversalCoinImage>();
             coin.ToggleVisibility(false, false);
             coin.ToggleVisibility(true, true);
             coin.SetValue(currentWord.elkoninList[i]);
@@ -418,7 +416,6 @@ public class WordFactoryBlendingManager : MonoBehaviour
         foreach (var frame in frames)
         {
             StartCoroutine(LerpImageAlpha(frame.GetComponent<Image>(), 0f, 0.25f));
-            StartCoroutine(LerpSpriteAlpha(frame.GetComponent<SpriteRenderer>(), 0f, 0.25f));
         }
 
         // make coins invisible
@@ -582,7 +579,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
         polaroids[2].SetGlowColor(normalGlow);
     }
 
-    public void GlowAndPlayAudioCoin(UniversalCoin coin)
+    public void GlowAndPlayAudioCoin(UniversalCoinImage coin)
     {
         if (playingCoinAudio)
             return;
@@ -593,7 +590,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
         }
     }
 
-    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoin coin)
+    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoinImage coin)
     {
         playingCoinAudio = true;
 
@@ -610,25 +607,6 @@ public class WordFactoryBlendingManager : MonoBehaviour
     }
 
     private IEnumerator LerpImageAlpha(Image image, float targetAlpha, float totalTime)
-    {
-        float start = image.color.a;
-        float timer = 0f;
-        while (true)
-        {
-            timer += Time.deltaTime;
-            if (timer > totalTime)
-            {
-                image.color = new Color(1f, 1f, 1f, targetAlpha);
-                break;
-            }
-            
-            float tempAlpha = Mathf.Lerp(start, targetAlpha, timer / totalTime);
-            image.color = new Color(1f, 1f, 1f, tempAlpha);
-            yield return null;
-        }
-    }
-
-    private IEnumerator LerpSpriteAlpha(SpriteRenderer image, float targetAlpha, float totalTime)
     {
         float start = image.color.a;
         float timer = 0f;

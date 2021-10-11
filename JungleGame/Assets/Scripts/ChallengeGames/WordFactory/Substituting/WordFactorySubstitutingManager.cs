@@ -16,8 +16,8 @@ public class WordFactorySubstitutingManager : MonoBehaviour
     [Header("Coins")]
     [SerializeField] private Transform boxCoinParent;
     [SerializeField] private Transform swipeParent;
-    [SerializeField] private List<UniversalCoin> waterCoins;
-    private UniversalCoin currWaterCoin;
+    [SerializeField] private List<UniversalCoinImage> waterCoins;
+    private UniversalCoinImage currWaterCoin;
     [SerializeField] private List<Transform> waterCoinActivePos;
     [SerializeField] private List<Transform> waterCoinInactivePos;
     [SerializeField] private GameObject universalCoin;
@@ -67,7 +67,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
     private ChallengeWord currentTargetWord;
     private int currentSwipeIndex;
 
-    private List<UniversalCoin> currentCoins;
+    private List<UniversalCoinImage> currentCoins;
     private int numWins = 0;
     private int numMisses = 0;
     private bool playingCoinAudio = false;
@@ -186,17 +186,16 @@ public class WordFactorySubstitutingManager : MonoBehaviour
 
         // place coins
         // show coins + add to list
-        currentCoins = new List<UniversalCoin>();
+        currentCoins = new List<UniversalCoinImage>();
         for (int i = 0; i < currentWord.elkoninCount; i++)
         {
             ElkoninValue value = currentWord.elkoninList[i];
             var coinObj = Instantiate(universalCoin, framesReal[i].position, Quaternion.identity, boxCoinParent);
-            var coin = coinObj.GetComponent<UniversalCoin>();
+            var coin = coinObj.GetComponent<UniversalCoinImage>();
             coin.ToggleVisibility(false, false);
             coin.ToggleVisibility(true, true);
             coin.SetValue(currentWord.elkoninList[i]);
             coin.SetSize(normalCoinSize);
-            coin.SetLayer(1);
             currentCoins.Add(coin);
             yield return new WaitForSeconds(0.05f);
         }
@@ -301,7 +300,6 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         foreach(var coin in waterCoins)
         {
             waterCoins[count].GetComponent<LerpableObject>().LerpPosition(waterCoinActivePos[count].position, 0.25f, false);
-            waterCoins[count].SetLayer(2);
             yield return new WaitForSeconds(0.2f);
             count++;
         }
@@ -408,7 +406,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         }
     }
 
-    public void GlowAndPlayAudioCoin(UniversalCoin coin)
+    public void GlowAndPlayAudioCoin(UniversalCoinImage coin)
     {
         if (playingCoinAudio)
             return;
@@ -425,7 +423,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         }
     }
 
-    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoin coin, bool waterCoin = false)
+    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoinImage coin, bool waterCoin = false)
     {
         playingCoinAudio = true;
 
@@ -478,7 +476,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         }
     }
 
-    public void EvaluateWaterCoin(UniversalCoin coin)
+    public void EvaluateWaterCoin(UniversalCoinImage coin)
     {
         if (evaluatingCoin)
             return;
@@ -672,7 +670,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // update SIS
-        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3)
         {
             StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = false;
             StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;
@@ -703,7 +701,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // update SIS
-        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3)
         {
             // first time losing
             if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame)

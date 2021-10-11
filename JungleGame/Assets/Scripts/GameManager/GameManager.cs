@@ -6,9 +6,29 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public class ChallengeGameTriad
 {
-    public GameData juliusGame1;
-    public GameData marcusGame2;
-    public GameData brutusGame3;
+    public GameType juliusGame1;
+    public GameType marcusGame2;
+    public GameType brutusGame3;
+}
+
+public enum GameType
+{
+    DevMenu,
+    StoryGame,
+    BoatGame,
+
+    FroggerGame,
+    TurntablesGame,
+    RummageGame,
+    SeashellGame,
+    PirateGame,
+    SpiderwebGame,
+
+    WordFactoryBlending,
+    WordFactorySubstituting,
+    TigerPawCoins,
+
+    COUNT
 }
 
 public class GameManager : DontDestroy<GameManager>
@@ -33,9 +53,11 @@ public class GameManager : DontDestroy<GameManager>
     [SerializeField] private GameObject devModeIndicator;
     private bool devIndicatorSet = false;
 
-
-    private GameData gameData;
-    private MapIconIdentfier gameID;
+    public StoryGameData storyGameData;
+    public MapIconIdentfier mapID;
+    public List<ActionWordEnum> actionWordPool;
+    public List<ChallengeWord> challengeWordPool;
+    
     [HideInInspector] public bool repairMapIconID; // when the scroll map appears -> repair this icon
 
     [HideInInspector] public int prevMapPosition = 1; // what index player was on scroll map (1 by default)
@@ -217,7 +239,6 @@ public class GameManager : DontDestroy<GameManager>
             
         yield return new WaitForSeconds(time);
 
-        SceneCleanup();
         if (useLoadScene)
         {
             SceneManager.LoadSceneAsync("LoadingScene");
@@ -269,11 +290,14 @@ public class GameManager : DontDestroy<GameManager>
         TalkieManager.instance.StopTalkieSystem();
 
         // remove ui buttons
-        SettingsManager.instance.ToggleWagonButtonActive(false);
-        SettingsManager.instance.ToggleMenuButtonActive(false);
+        SettingsManager.instance.SetWagonButton(false);
+        SettingsManager.instance.SetMenuButton(false);
 
         // remove wagon controller stuff
         WagonWindowController.instance.ResetWagonController();
+
+        // close settings menu if open
+        SettingsManager.instance.CloseSettingsWindow();
     }
 
     /*
@@ -282,25 +306,38 @@ public class GameManager : DontDestroy<GameManager>
     ################################################
     */
 
-    public void SetDataAndID(GameData data, MapIconIdentfier id)
+    public string GameTypeToSceneName(GameType gameType)
     {
-        print ("id: " + id);
-        this.gameData = data;
-        this.gameID = id;
-    }
+        switch (gameType)
+        {
+            default:
+            case GameType.FroggerGame:
+                return "FroggerGame";
+            case GameType.TurntablesGame:
+                return "TurntablesGame";
+            case GameType.RummageGame:
+                return "RummageGame";
+            case GameType.SeashellGame:
+                return "SeaShellGame";
+            case GameType.PirateGame:
+                return "NewPirateGame";
+            case GameType.SpiderwebGame:
+                return "NewSpiderGame";
 
-    public void SetData(GameData data)
-    {
-        this.gameData = data;
-    }
 
-    public GameData GetData()
-    {
-        return gameData;
-    }
+            case GameType.DevMenu:
+                return "DevMenu";
+            case GameType.StoryGame:
+                return "StoryGame";
+            case GameType.BoatGame:
+                return "NewBoatGame";
 
-    public MapIconIdentfier GetID()
-    {
-        return gameID;
+            case GameType.WordFactoryBlending:
+                return "WordFactoryBlending";
+            case GameType.WordFactorySubstituting:
+                return "WordFactorySubstituting";
+            case GameType.TigerPawCoins:
+                return "TigerPawCoins";
+        }
     }
 }

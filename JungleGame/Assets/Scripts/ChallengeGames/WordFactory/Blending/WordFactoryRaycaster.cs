@@ -94,7 +94,7 @@ public class WordFactoryRaycaster : MonoBehaviour
                     }
                     else if (result.gameObject.transform.CompareTag("UniversalCoin"))
                     {
-                        WordFactoryBlendingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoin>());
+                        WordFactoryBlendingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
                     }
                 }
             }

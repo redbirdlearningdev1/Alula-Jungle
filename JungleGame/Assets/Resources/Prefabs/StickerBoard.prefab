@@ -95,6 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boardType: 0
   stickerInventoryWindow: {fileID: 0}
+  stickerMoveSpeed: 1
   selectedStickerParent: {fileID: 0}
   placedStickerParent: {fileID: 8246260650329683827}
   stickerInventoryActive: 0
