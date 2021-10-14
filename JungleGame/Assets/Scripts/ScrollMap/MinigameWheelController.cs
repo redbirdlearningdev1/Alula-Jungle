@@ -16,6 +16,17 @@ public class MinigameWheelController : MonoBehaviour
     private List<GameType> minigameOptions; 
     private MapIconIdentfier currentIdentifier;
 
+    [Header("Royal Rumble")]
+    public float royalRumbleOdds;
+    public LerpableObject rrGradient;
+    public LerpableObject rrImage;
+
+    [Header("Animators")]
+    public Animator wheelBreakAnimator;
+    public Animator guardDestroyAnimator;
+    public Animator trumpetPlayAnimator;
+    public Animator tigerDestroyAnimator;
+
     void Awake()
     {
         if (instance == null)
@@ -40,6 +51,10 @@ public class MinigameWheelController : MonoBehaviour
         // wheel button disabled
         wheelButton.interactable = false;
         wheelButton.GetComponent<Image>().raycastTarget = false;
+
+        // hide royal rumble stuff
+        rrGradient.SetImageAlpha(rrGradient.GetComponent<Image>(), 0f);
+        rrImage.transform.localScale = new Vector3(0f, 0f, 1f);
     }
 
     public void RevealWheel(MapIconIdentfier identfier)
@@ -162,6 +177,31 @@ public class MinigameWheelController : MonoBehaviour
         }
 
         yield return new WaitForSeconds(3f);
+
+        // determine royal rumble
+        float num = Random.Range(0f, 100f);
+        if (num <= royalRumbleOdds)
+        {
+            // wheel break animation TODO -> change to guards break after chapter 3 or 4
+            tigerDestroyAnimator.Play("TigerDestroy");
+            yield return new WaitForSeconds(0.5f);
+
+            wheelBreakAnimator.Play("WheelBreak");
+            yield return new WaitForSeconds(0.5f);
+
+            rrGradient.LerpImageAlpha(rrGradient.GetComponent<Image>(), 1f, 2f);
+
+            trumpetPlayAnimator.Play("TrumpetPlay");
+            yield return new WaitForSeconds(1f);
+
+            rrImage.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.2f, 0.2f);
+
+            // play talkie to ask player y/n
+
+            yield break;
+        }
+
+        
         GameManager.instance.mapID = currentIdentifier;
         GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(minigameOptions[index]), true, 0.5f, true);
     }
