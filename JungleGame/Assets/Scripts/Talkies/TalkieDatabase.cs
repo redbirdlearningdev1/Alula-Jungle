@@ -77,8 +77,10 @@ public class TalkieDatabase : MonoBehaviour
     public TalkieObject villageChallengeDefeated_2; // script: ScrollMapManager.cs
     public TalkieObject villageChallengeDefeated_3; // script: ScrollMapManager.cs
 
+    [Header("Mudslide")]
+    public TalkieObject mudslideIntro; // script: ScrollMapManager.cs
 
-    [Header("Talkie Objects")]
+    [Header("Quips")]
     public TalkieObject darwinQuips;    // script: MapCharacter.cs
 
     [Header("Character Sprites")]

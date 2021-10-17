@@ -325,9 +325,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.VillageRebuilt)
         {
-            // darwin quips
-            gorilla.interactable = true;
-
             // make sure player has done the sticker tutorial
             if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
             {
@@ -404,6 +401,11 @@ public class ScrollMapManager : MonoBehaviour
                     // save to sis and continue
                     StudentInfoSystem.AdvanceStoryBeat();
                     StudentInfoSystem.SaveStudentPlayerData();
+                }
+                else
+                {
+                    // darwin quips
+                    gorilla.interactable = true;
                 }
             }
         }
@@ -696,11 +698,22 @@ public class ScrollMapManager : MonoBehaviour
             // remove temp temp signpost
             TempObjectPlacer.instance.RemoveObject();
 
+            // before unlocking mudslide - set objects to be destroyed
+            foreach (var icon in mapIconsAtLocation[3].mapIcons)
+                icon.SetFixed(false, false, true);
+
             // unlock mudslide
             StartCoroutine(UnlockMapArea(3, false));
             gorilla.ShowExclamationMark(true);
 
             yield return new WaitForSeconds(5f);
+
+            // play mudslide intro talkie
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.mudslideIntro);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            yield return new WaitForSeconds(1f);
 
             mapIconsAtLocation[2].signPost.GetComponent<SignPostController>().interactable = true;
         }
