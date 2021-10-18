@@ -390,18 +390,30 @@ public class ScrollMapManager : MonoBehaviour
 
                     // make challenge games active
                     yield return new WaitForSeconds(0.5f);
-                    var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
 
                     // set tiger stuff
-                    tiger.gameType = challengeGameTriad.juliusGame1;
+                    if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType == GameType.None)
+                    {
+                        GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.GorillaVillage);
+                        tiger.gameType = newGameType;
+                        StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType = newGameType;
+                        StudentInfoSystem.SaveStudentPlayerData();
+                    }
+                    else
+                    {
+                        tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType;
+                    }
+                        
                     tiger.ShowExclamationMark(true);
                     tiger.interactable = true;
                     tiger.GetComponent<Animator>().Play("aTigerTwitch");
 
                     // set game manager stuff
                     GameManager.instance.mapID = MapIconIdentfier.GV_challenge_1;
+                    GameManager.instance.playingChallengeGame = true;
 
                     // save to sis and continue
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType = tiger.gameType;
                     StudentInfoSystem.AdvanceStoryBeat();
                     StudentInfoSystem.SaveStudentPlayerData();
                 }
@@ -419,14 +431,22 @@ public class ScrollMapManager : MonoBehaviour
             MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusChallengePos.position;
             MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusChallengePos.position;
 
-            // make challenge games active
-            var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
-
             // set tiger stuff
-            tiger.gameType = challengeGameTriad.juliusGame1;
+            if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType == GameType.None)
+            {
+                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.GorillaVillage);
+                tiger.gameType = newGameType;
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType = newGameType;
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
+            else
+            {
+                tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType;
+            }
 
             // set game manager stuff
             GameManager.instance.mapID = MapIconIdentfier.GV_challenge_1;
+            GameManager.instance.playingChallengeGame = true;
 
             // make sure we are at gorilla village
             mapPosIndex = 2;
@@ -476,14 +496,22 @@ public class ScrollMapManager : MonoBehaviour
             // make tiger sad
             tiger.GetComponent<Animator>().Play("sTigerIdle");
 
-            // make challenge games active
-            var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
-
-            // set marcus stuff
-            marcus.gameType = challengeGameTriad.marcusGame2;
+            // set tiger stuff
+            if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType == GameType.None)
+            {
+                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.GorillaVillage);
+                marcus.gameType = newGameType;
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType = newGameType;
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
+            else
+            {
+                marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType;
+            }
 
             // set game manager stuff
             GameManager.instance.mapID = MapIconIdentfier.GV_challenge_2;
+            GameManager.instance.playingChallengeGame = true;
 
             // make sure we are at gorilla village
             mapPosIndex = 2;
@@ -551,14 +579,22 @@ public class ScrollMapManager : MonoBehaviour
             // make marcus sad (ANGRY) 
             marcus.GetComponent<Animator>().Play("marcusFixed");
 
-            // make challenge games active
-            var challengeGameTriad = GameManager.instance.challengeGameTriads[0];
-
-            // set brutus stuff
-            brutus.gameType = challengeGameTriad.brutusGame3;
+            // set tiger stuff
+            if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType == GameType.None)
+            {
+                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.GorillaVillage);
+                brutus.gameType = newGameType;
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType = newGameType;
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
+            else
+            {
+                brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType;
+            }
             
             // set game manager stuff
             GameManager.instance.mapID = MapIconIdentfier.GV_challenge_3;
+            GameManager.instance.playingChallengeGame = true;
 
             // make sure we are at gorilla village
             mapPosIndex = 2;
@@ -703,6 +739,10 @@ public class ScrollMapManager : MonoBehaviour
             yield return new WaitForSeconds(5f);
 
             mapIconsAtLocation[2].signPost.GetComponent<SignPostController>().interactable = true;
+
+            // save to SIS
+            StudentInfoSystem.AdvanceStoryBeat();
+            StudentInfoSystem.SaveStudentPlayerData();
         }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {

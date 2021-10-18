@@ -1451,7 +1451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b50bb302fe09c346a637cd003e82718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playingInEditor: 1
+  playingInEditor: 0
   playTutorial: 0
   orc: {fileID: 606159618}
   chest: {fileID: 1427296688}
@@ -5505,7 +5505,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 45.120922
+      value: 45.12673
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

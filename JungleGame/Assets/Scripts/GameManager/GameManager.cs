@@ -3,16 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[System.Serializable]
-public class ChallengeGameTriad
-{
-    public GameType juliusGame1;
-    public GameType marcusGame2;
-    public GameType brutusGame3;
-}
-
 public enum GameType
 {
+    None,
+
     DevMenu,
     StoryGame,
     BoatGame,
@@ -26,7 +20,11 @@ public enum GameType
 
     WordFactoryBlending,
     WordFactorySubstituting,
+    WordFactoryDeleting,
+    WordFactoryBuilding,
+    TigerPawPhotos,
     TigerPawCoins,
+    Password,
 
     COUNT
 }
@@ -45,7 +43,6 @@ public class GameManager : DontDestroy<GameManager>
 
     [Header("Game Datas")]
     public List<StoryGameData> storyGameDatas;
-    public List<ChallengeGameTriad> challengeGameTriads;
     public List<SubstitutionPair> substitutionPairs;
     public List<DeletionPair> deletionPairs;
     public List<BuildingPair> buildingPairs;
@@ -59,8 +56,10 @@ public class GameManager : DontDestroy<GameManager>
     public List<ChallengeWord> challengeWordPool;
     
     [HideInInspector] public bool repairMapIconID; // when the scroll map appears -> repair this icon
-
     [HideInInspector] public int prevMapPosition = 1; // what index player was on scroll map (1 by default)
+
+    // challenge game identification
+    [HideInInspector] public bool playingChallengeGame = false; // is player in a challenge game?
 
     // DEV STUFF:
     private bool iconsSetBroke = false;
@@ -311,6 +310,7 @@ public class GameManager : DontDestroy<GameManager>
         switch (gameType)
         {
             default:
+                return "DevMenu";
             case GameType.FroggerGame:
                 return "FroggerGame";
             case GameType.TurntablesGame:
@@ -336,8 +336,14 @@ public class GameManager : DontDestroy<GameManager>
                 return "WordFactoryBlending";
             case GameType.WordFactorySubstituting:
                 return "WordFactorySubstituting";
+            case GameType.WordFactoryBuilding:
+                return "WordFactoryBuilding";
+            case GameType.WordFactoryDeleting:
+                return "WordFactoryDeleting";
             case GameType.TigerPawCoins:
                 return "TigerPawCoins";
+            case GameType.TigerPawPhotos:
+                return "TigerPawPhotos";
         }
     }
 }

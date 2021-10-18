@@ -25,7 +25,7 @@ public class RoyalDecreeController : MonoBehaviour
     private bool isOpen = false;
     private bool waitToOpen = false;
 
-    private ChallengeGameTriad currTriad;
+    private List<GameType> currTriad;
     private GameType currGameType;
 
     void Awake()
@@ -45,7 +45,7 @@ public class RoyalDecreeController : MonoBehaviour
         dim_bg_2.GetComponent<Image>().raycastTarget = false;
     }
 
-    public void ToggleWindow(int triadIndex)
+    public void ToggleWindow(MapLocation mapLocation)
     {
         if (waitToOpen)
             return;
@@ -57,7 +57,7 @@ public class RoyalDecreeController : MonoBehaviour
         // open window
         if (isOpen)
         {
-            StartCoroutine(OpenWindowRoutine(triadIndex));
+            StartCoroutine(OpenWindowRoutine(mapLocation));
         }
         // close window
         else 
@@ -66,20 +66,21 @@ public class RoyalDecreeController : MonoBehaviour
         }
     }
 
-    private IEnumerator OpenWindowRoutine(int index)
+    private IEnumerator OpenWindowRoutine(MapLocation mapLocation)
     {
-        print ("index: " + index);
+        print ("location: " + mapLocation);
 
         // get challenge game triads
-        ChallengeGameTriad triad = GameManager.instance.challengeGameTriads[index];
-
-        print ("triad: " + triad);
-
-        List<GameType> challengeGames = new List<GameType>();
-
-        challengeGames.Add(triad.juliusGame1);
-        challengeGames.Add(triad.marcusGame2);
-        challengeGames.Add(triad.brutusGame3);
+        currTriad = new List<GameType>();
+        
+        switch (mapLocation)
+        {
+            case MapLocation.GorillaVillage:
+                currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType);
+                currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType);
+                currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType);
+                break;
+        }
 
         // dim bg
         dim_bg.LerpImageAlpha(dim_bg.GetComponent<Image>(), 0.65f, 0.5f);
@@ -94,7 +95,7 @@ public class RoyalDecreeController : MonoBehaviour
         int count = 0;
         foreach (var ribbon in ribbons)
         {
-            ribbon.OpenRibbon(challengeGames[count]);
+            ribbon.OpenRibbon(currTriad[count]);
             yield return new WaitForSeconds(0.1f);
             count++;
         }

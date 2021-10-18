@@ -228,7 +228,12 @@ MonoBehaviour:
     type: 3}
   wordFactoryBlendingLogo: {fileID: 21300000, guid: e3fa6302675949845a14490f5f4e84b7,
     type: 3}
+  wordFactoryBuildingLogo: {fileID: 21300000, guid: 48c3d0f45be24c745af7763a3a6eaa89,
+    type: 3}
+  wordFactoryDeletingLogo: {fileID: 21300000, guid: 5ca00318781c93b43b1c5143124a0cf5,
+    type: 3}
   tigerPawCoinsLogo: {fileID: 21300000, guid: 20f8820ed85e2b249b56e48013ecd6a0, type: 3}
+  tigerPawPhotosLogo: {fileID: 21300000, guid: 726963ce93eb3a748a9ca711a80dadb7, type: 3}
   pressedScaleChange: 0.95
   interactable: 1
 --- !u!222 &4867344474481658244

@@ -155,11 +155,9 @@ public static class LoadSaveSystem
         new_data.mapData.GV_challenge2.stars = default_stars;
         new_data.mapData.GV_challenge3.stars = default_stars;
 
-        ChallengeGameTriad GV_triad = GameManager.instance.challengeGameTriads[0];
-
-        new_data.mapData.GV_challenge1.gameType = GV_triad.juliusGame1;
-        new_data.mapData.GV_challenge2.gameType = GV_triad.marcusGame2;
-        new_data.mapData.GV_challenge3.gameType = GV_triad.brutusGame3;
+        new_data.mapData.GV_challenge1.gameType = GameType.None;
+        new_data.mapData.GV_challenge2.gameType = GameType.None;
+        new_data.mapData.GV_challenge3.gameType = GameType.None;
 
         new_data.mapData.GV_signPost_unlocked = false;
         new_data.mapData.GV_signPost_stars = 0;

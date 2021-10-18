@@ -444,23 +444,6 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        // update SIS
-        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1)
-        {
-            // first time losing
-            if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame)
-                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = true;
-            else
-            {
-                // every other time losing
-                if (!StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
-                {
-                    StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = true;
-                }
-            }
-            StudentInfoSystem.SaveStudentPlayerData();
-        }
-
         // show stars
         StarAwardController.instance.AwardStarsAndExit(0);
     }
@@ -476,15 +459,6 @@ public class WordFactoryBlendingManager : MonoBehaviour
         // play win tune
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
         yield return new WaitForSeconds(1f);
-
-        // update SIS
-        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1)
-        {
-            StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = false;
-            StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;
-            StudentInfoSystem.AdvanceStoryBeat();
-            StudentInfoSystem.SaveStudentPlayerData();
-        }
 
         // show stars
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());

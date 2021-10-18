@@ -152,6 +152,36 @@ public class StarAwardController : MonoBehaviour
                 }
                 break;
         }
+
+        // challenge game stuff
+        if (GameManager.instance.playingChallengeGame)
+        {
+            // lose?
+            if (numStars <= 0)
+            {
+                // first time losing
+                if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame)
+                    StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = true;
+                else
+                {
+                    // every other time losing
+                    if (!StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+                    {
+                        StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = true;
+                    }
+                }
+            }
+            // win?
+            else
+            {
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = false;
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;
+                StudentInfoSystem.AdvanceStoryBeat();
+            }
+
+            GameManager.instance.playingChallengeGame = false;
+            StudentInfoSystem.SaveStudentPlayerData();
+        }
         
         // save data
         StudentInfoSystem.SaveStudentPlayerData();

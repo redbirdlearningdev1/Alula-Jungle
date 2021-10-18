@@ -283,15 +283,6 @@ public class WordFactoryDeletingManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
         yield return new WaitForSeconds(1f);
 
-        // // update SIS
-        // if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
-        // {
-        //     StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = false;
-        //     StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;
-        //     StudentInfoSystem.AdvanceStoryBeat();
-        //     StudentInfoSystem.SaveStudentPlayerData();
-        // }
-
         // show stars
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());
     }
@@ -311,23 +302,6 @@ public class WordFactoryDeletingManager : MonoBehaviour
         print ("you lose!");
         
         yield return new WaitForSeconds(1f);
-
-        // // update SIS
-        // if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
-        // {
-        //     // first time losing
-        //     if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame)
-        //         StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = true;
-        //     else
-        //     {
-        //         // every other time losing
-        //         if (!StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
-        //         {
-        //             StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = true;
-        //         }
-        //     }
-        //     StudentInfoSystem.SaveStudentPlayerData();
-        // }
 
         // show stars
         StarAwardController.instance.AwardStarsAndExit(0);
