@@ -13,6 +13,8 @@ public class DevMenuManager : MonoBehaviour
     [SerializeField] private TMP_Dropdown navDropdown;
     [SerializeField] private TMP_Dropdown storyGameDropdown;
     [SerializeField] private TMP_Dropdown profileDropdown;
+    [SerializeField] private TMP_Dropdown storyBeatDropdown;
+
     [SerializeField] private Toggle fastTalkieToggle;
 
     [SerializeField] private TMP_InputField profileInput;
@@ -61,6 +63,15 @@ public class DevMenuManager : MonoBehaviour
         // add story game options to dropdown
         List<string> storyGamesList = new List<string>(storyGames);
         storyGameDropdown.AddOptions(storyGamesList);
+
+        // set story beat dropdown options
+        string[] storyBeats = System.Enum.GetNames(typeof(StoryBeat));
+        for(int i = 0; i < storyBeats.Length; i++)
+        {
+            storyBeats[i] = "" + i + " - " + storyBeats[i];
+        }
+        List<string> storyBeatsList = new List<string>(storyBeats);
+        storyBeatDropdown.AddOptions(storyBeatsList);
 
         // setup profiles
         profileDropdown.onValueChanged.AddListener(delegate { OnProfileDropdownChanged(); });
@@ -231,7 +242,298 @@ public class DevMenuManager : MonoBehaviour
         studentData.mapData.GV_signPost_stars = 3;
 
         StudentInfoSystem.SaveStudentPlayerData();
-    }   
+    }
+
+    /* 
+    ################################################
+    #   STORY BEAT SECTION
+    ################################################
+    */
+
+    // TODO finish story beats
+    public void OnSetStoryBeatPressed()
+    {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        int beat = storyBeatDropdown.value;
+
+        StudentInfoSystem.GetCurrentProfile().currStoryBeat = (StoryBeat)beat;
+        
+        switch ((StoryBeat)beat)
+        {
+            case StoryBeat.InitBoatGame:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 0;
+                FixIconsUpTo(MapLocation.NONE);
+                SetChallengeGamesUpTo(MapLocation.NONE);
+                SetActionWordPool(MapLocation.NONE);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = false;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = false;
+                break;
+
+            case StoryBeat.UnlockGorillaVillage:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 1;
+                FixIconsUpTo(MapLocation.NONE);
+                SetChallengeGamesUpTo(MapLocation.NONE);
+                SetActionWordPool(MapLocation.NONE);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = false;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = false;
+                break;
+
+            case StoryBeat.GorillaVillageIntro:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 2;
+                FixIconsUpTo(MapLocation.NONE);
+                SetChallengeGamesUpTo(MapLocation.NONE);
+                SetActionWordPool(MapLocation.NONE);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = false;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = false;
+                break;
+
+            case StoryBeat.PrologueStoryGame:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 2;
+                FixIconsUpTo(MapLocation.NONE);
+                SetChallengeGamesUpTo(MapLocation.NONE);
+                SetActionWordPool(MapLocation.GorillaVillage);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = false;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = false;
+                break;
+
+            case StoryBeat.RedShowsStickerButton:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 2;
+                FixIconsUpTo(MapLocation.NONE);
+                SetChallengeGamesUpTo(MapLocation.NONE);
+                SetActionWordPool(MapLocation.GorillaVillage);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = false;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = false;
+                break;
+
+            case StoryBeat.VillageRebuilt:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 2;
+                FixIconsUpTo(MapLocation.GorillaVillage);
+                SetChallengeGamesUpTo(MapLocation.NONE);
+                SetActionWordPool(MapLocation.GorillaVillage);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
+            case StoryBeat.GorillaVillage_challengeGame_1:  
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 2;
+                FixIconsUpTo(MapLocation.GorillaVillage);
+                SetChallengeGamesUpTo(MapLocation.NONE);
+                SetActionWordPool(MapLocation.GorillaVillage);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
+            case StoryBeat.GorillaVillage_challengeGame_2:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 2;
+                FixIconsUpTo(MapLocation.GorillaVillage);
+                SetChallengeGamesUpTo(MapLocation.NONE);
+                SetChallengeGame(MapLocation.GorillaVillage, 1);
+                SetActionWordPool(MapLocation.GorillaVillage);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
+            case StoryBeat.GorillaVillage_challengeGame_3:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 2;
+                FixIconsUpTo(MapLocation.GorillaVillage);
+                SetChallengeGamesUpTo(MapLocation.NONE);
+                SetChallengeGame(MapLocation.GorillaVillage, 2);
+                SetActionWordPool(MapLocation.GorillaVillage);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
+            case StoryBeat.VillageChallengeDefeated:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 2;
+                FixIconsUpTo(MapLocation.GorillaVillage);
+                SetChallengeGamesUpTo(MapLocation.GorillaVillage);
+                SetActionWordPool(MapLocation.GorillaVillage);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
+            case StoryBeat.MudslideUnlocked:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 3;
+                FixIconsUpTo(MapLocation.GorillaVillage);
+                SetChallengeGamesUpTo(MapLocation.GorillaVillage);
+                SetActionWordPool(MapLocation.GorillaVillage);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+        }
+
+        StudentInfoSystem.SaveStudentPlayerData();
+    }
+
+    private void SetActionWordPool(MapLocation location)
+    {
+        StudentInfoSystem.GetCurrentProfile().actionWordPool.Clear();
+
+        if (location <= MapLocation.GorillaVillage)
+        {   
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.mudslide);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.mudslide);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.mudslide);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.mudslide);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.mudslide);
+        }
+
+        if (location <= MapLocation.Mudslide)
+        {
+            // add other action words
+        }
+    }
+
+    // TODO: finish this when story beats complete
+    private void FixIconsUpTo(MapLocation location)
+    {
+        switch (location)
+        {
+            case MapLocation.NONE:
+                SetMapIcons(MapLocation.GorillaVillage, false);
+                SetMapIcons(MapLocation.Mudslide, false);
+                break;
+
+            case MapLocation.GorillaVillage:
+                SetMapIcons(MapLocation.GorillaVillage, true);
+                SetMapIcons(MapLocation.Mudslide, false);
+                break;
+
+            case MapLocation.Mudslide:
+                SetMapIcons(MapLocation.GorillaVillage, true);
+                SetMapIcons(MapLocation.Mudslide, true);
+                break;
+        }
+    }
+
+    private void SetMapIcons(MapLocation location, bool isFixed)
+    {
+        switch (location)
+        {
+            case MapLocation.GorillaVillage:
+                if (!isFixed)
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.stars = 0;
+                }
+                else
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.stars = 3;
+                }
+
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.isFixed = isFixed;
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.isFixed = isFixed;
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.isFixed = isFixed;
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.isFixed = isFixed;
+
+                StudentInfoSystem.GetCurrentProfile().froggerTutorial = isFixed;
+                StudentInfoSystem.GetCurrentProfile().turntablesTutorial = isFixed;
+                StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = isFixed;
+                StudentInfoSystem.GetCurrentProfile().rummageTutorial = isFixed;
+
+                break;
+
+            case MapLocation.Mudslide:
+                break;
+        }
+    }
+
+    private void SetChallengeGamesUpTo(MapLocation location)
+    {
+        switch (location)
+        {
+            case MapLocation.NONE:
+                SetChallengeGame(MapLocation.GorillaVillage, 0);
+                SetChallengeGame(MapLocation.Mudslide, 0);
+                break;
+
+            case MapLocation.GorillaVillage:
+                SetChallengeGame(MapLocation.GorillaVillage, 3);
+                SetChallengeGame(MapLocation.Mudslide, 0);
+                break;
+
+            case MapLocation.Mudslide:
+                SetChallengeGame(MapLocation.GorillaVillage, 3);
+                SetChallengeGame(MapLocation.Mudslide, 3);
+                break;
+        }
+    }
+
+    private void SetChallengeGame(MapLocation location, int num)
+    {
+        switch (location)
+        {
+            case MapLocation.GorillaVillage:
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_stars = 0;
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_unlocked = false;
+
+                if (num == 0)
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.stars = 0;
+
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType = GameType.None;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType = GameType.None;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType = GameType.None;
+                }
+                else if (num == 1)
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.stars = 0;
+
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.GorillaVillage);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType = GameType.None;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType = GameType.None;
+                }
+                else if (num == 2)
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.stars = 0;
+
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.GorillaVillage);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.GorillaVillage);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType = GameType.None;
+                }
+                else
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.stars = 3;
+
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.GorillaVillage);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.GorillaVillage);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.GorillaVillage);
+                
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_unlocked = true;
+                }
+                break;
+
+            case MapLocation.Mudslide:
+                break;
+        }
+    }
 
     /* 
     ################################################
