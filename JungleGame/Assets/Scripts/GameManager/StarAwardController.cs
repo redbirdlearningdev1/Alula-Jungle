@@ -80,6 +80,12 @@ public class StarAwardController : MonoBehaviour
                 GameManager.instance.SendLog(this, "No ID for game found - not awarding stars");
                 return;
 
+            /* 
+            ################################################
+            #   GORILLA VILLAGE
+            ################################################
+            */
+
             case MapIconIdentfier.GV_house1:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.stars < numStars)
                 {
@@ -149,6 +155,60 @@ public class StarAwardController : MonoBehaviour
                 {
                     coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.stars, numStars);
                     StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.stars = numStars;
+                }
+                break;
+
+            /* 
+            ################################################
+            #   MUDSLIDE
+            ################################################
+            */
+        
+            case MapIconIdentfier.MS_logs:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MS_logs.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MS_logs.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_logs.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.MS_logs.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.MS_pond:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MS_pond.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MS_pond.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_pond.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.MS_pond.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.MS_ramp:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MS_ramp.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MS_ramp.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_ramp.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.MS_ramp.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+            
+            case MapIconIdentfier.MS_tower:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MS_tower.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MS_tower.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_tower.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.MS_tower.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
                 }
                 break;
         }

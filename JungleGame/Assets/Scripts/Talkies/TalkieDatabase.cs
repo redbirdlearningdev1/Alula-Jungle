@@ -79,6 +79,8 @@ public class TalkieDatabase : MonoBehaviour
 
     [Header("Mudslide")]
     public TalkieObject mudslideIntro; // script: ScrollMapManager.cs
+    public TalkieObject mudslideRebuilt_1; // script: ScrollMapManager.cs
+    public TalkieObject mudslideRebuilt_2; // script: ScrollMapManager.cs
 
     [Header("Quips")]
     public TalkieObject darwinQuips;    // script: MapCharacter.cs

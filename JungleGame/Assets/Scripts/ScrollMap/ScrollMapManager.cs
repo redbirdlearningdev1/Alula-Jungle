@@ -369,7 +369,7 @@ public class ScrollMapManager : MonoBehaviour
                         yield return null;
 
                     // tiger and monkies walk in
-                    MapAnimationController.instance.TigerAndMonkiesWalkIn();
+                    MapAnimationController.instance.TigerAndMonkiesWalkInGV();
                     // wait for animation to be done
                     while (!MapAnimationController.instance.animationDone)
                         yield return null;
@@ -380,7 +380,7 @@ public class ScrollMapManager : MonoBehaviour
                         yield return null;
 
                     // challenge game begins
-                    MapAnimationController.instance.TigerAndMonkiesChallengePos();
+                    MapAnimationController.instance.TigerAndMonkiesChallengePosGV();
                     // wait for animation to be done
                     while (!MapAnimationController.instance.animationDone)
                         yield return null;
@@ -429,9 +429,9 @@ public class ScrollMapManager : MonoBehaviour
             MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
 
             // place tiger and monkies on screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerChallengePos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusChallengePos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusChallengePos.position;
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerGVChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusGVChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusGVChallengePos.position;
 
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType == GameType.None)
@@ -491,9 +491,9 @@ public class ScrollMapManager : MonoBehaviour
             MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
 
             // place tiger and monkies on screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerChallengePos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusChallengePos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusChallengePos.position;
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerGVChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusGVChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusGVChallengePos.position;
 
             // make tiger sad
             tiger.GetComponent<Animator>().Play("sTigerIdle");
@@ -572,9 +572,9 @@ public class ScrollMapManager : MonoBehaviour
             MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
 
             // place tiger and monkies on screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerChallengePos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusChallengePos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusChallengePos.position;
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerGVChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusGVChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusGVChallengePos.position;
 
             // make tiger sad
             tiger.GetComponent<Animator>().Play("sTigerIdle");
@@ -658,9 +658,9 @@ public class ScrollMapManager : MonoBehaviour
             MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
 
             // place tiger and monkies on screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerChallengePos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusChallengePos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusChallengePos.position;
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerGVChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusGVChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusGVChallengePos.position;
 
             // make tiger sad
             tiger.GetComponent<Animator>().Play("sTigerIdle");
@@ -757,6 +757,85 @@ public class ScrollMapManager : MonoBehaviour
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
         }
+        else if (playGameEvent == StoryBeat.MudslideUnlocked)
+        {
+            // make sure player has rebuilt all the MS map icons
+            if (StudentInfoSystem.GetCurrentProfile().mapData.MS_logs.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.MS_pond.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.MS_ramp.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.MS_tower.isFixed)
+            {
+                // dont show stars
+                showStars = false;
+
+                // make sure we are at mudslide
+                mapPosIndex = 3;
+                // move map to next right map location
+                float x = GetXPosFromMapLocationIndex(mapPosIndex);
+                StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
+
+                yield return new WaitForSeconds(2.5f);
+
+                // play mudslide rebuilt talkie 1
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.mudslideRebuilt_1);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // move tiger and monkies onscreen
+                MapAnimationController.instance.TigerAndMonkiesWalkInMS();
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+
+                // play mudslide rebuilt talkie 2
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.mudslideRebuilt_2);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // move tiger and monkies to challenge pos
+                MapAnimationController.instance.TigerAndMonkiesChallengePosMS();
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+
+                // make challenge games active
+                    yield return new WaitForSeconds(0.5f);
+
+                // set tiger stuff
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType == GameType.None)
+                {
+                    GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.Mudslide);
+                    tiger.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                }
+                else
+                {
+                    tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType;
+                }
+                    
+                tiger.ShowExclamationMark(true);
+                tiger.interactable = true;
+                tiger.GetComponent<Animator>().Play("aTigerTwitch");
+
+                // set game manager stuff
+                GameManager.instance.mapID = MapIconIdentfier.MS_challenge_1;
+                GameManager.instance.playingChallengeGame = true;
+
+                // save to sis and continue
+                StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType = tiger.gameType;
+                StudentInfoSystem.AdvanceStoryBeat();
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
+            else
+            {
+
+            }
+        }
+        else if (playGameEvent == StoryBeat.MudslideRebuilt)
+        {
+            
+        }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {
             // unlock everything
@@ -831,6 +910,10 @@ public class ScrollMapManager : MonoBehaviour
                     case MapLocation.GorillaVillage:
                         if (StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_unlocked)
                             mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_stars);
+                        break;
+                    case MapLocation.Mudslide:
+                        if (StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_unlocked)
+                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_stars);
                         break;
                     // etc ...
                 }

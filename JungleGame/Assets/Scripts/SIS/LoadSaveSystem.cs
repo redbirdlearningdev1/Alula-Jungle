@@ -162,6 +162,39 @@ public static class LoadSaveSystem
         new_data.mapData.GV_signPost_unlocked = false;
         new_data.mapData.GV_signPost_stars = 0;
 
+
+        // mudslide
+        new_data.mapData.MS_logs = new MapIconData();
+        new_data.mapData.MS_pond = new MapIconData();
+        new_data.mapData.MS_ramp = new MapIconData();
+        new_data.mapData.MS_tower = new MapIconData();
+
+        new_data.mapData.MS_logs.isFixed = true;
+        new_data.mapData.MS_pond.isFixed = true;
+        new_data.mapData.MS_ramp.isFixed =   true;
+        new_data.mapData.MS_tower.isFixed = true;
+
+        new_data.mapData.MS_logs.stars =   default_mapDataStars;
+        new_data.mapData.MS_pond.stars =   default_mapDataStars;
+        new_data.mapData.MS_ramp.stars =     default_mapDataStars;
+        new_data.mapData.MS_tower.stars =   default_mapDataStars;
+
+        new_data.mapData.MS_challenge1 = new ChallengeGameData();
+        new_data.mapData.MS_challenge2 = new ChallengeGameData();
+        new_data.mapData.MS_challenge3 = new ChallengeGameData();
+
+        new_data.mapData.MS_challenge1.stars = default_stars;
+        new_data.mapData.MS_challenge2.stars = default_stars;
+        new_data.mapData.MS_challenge3.stars = default_stars;
+
+        new_data.mapData.MS_challenge1.gameType = GameType.None;
+        new_data.mapData.MS_challenge2.gameType = GameType.None;
+        new_data.mapData.MS_challenge3.gameType = GameType.None;
+
+        new_data.mapData.MS_signPost_unlocked = false;
+        new_data.mapData.MS_signPost_stars = 0;
+
+
         // stickers
         new_data.stickerInventory = new List<InventoryStickerData>();
         // classic sticker board

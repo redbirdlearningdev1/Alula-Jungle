@@ -19,6 +19,7 @@ public enum MapIconIdentfier
     None,
     Boat,
 
+    // gorilla village
     GV_house1,
     GV_house2,
     GV_statue,
@@ -26,7 +27,17 @@ public enum MapIconIdentfier
 
     GV_challenge_1,
     GV_challenge_2,
-    GV_challenge_3
+    GV_challenge_3,
+
+    // mudslide
+    MS_logs,
+    MS_pond,
+    MS_ramp,
+    MS_tower,
+
+    MS_challenge_1,
+    MS_challenge_2,
+    MS_challenge_3,
 }
 
 public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler

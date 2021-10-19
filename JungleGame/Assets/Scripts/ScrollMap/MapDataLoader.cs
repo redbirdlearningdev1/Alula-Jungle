@@ -6,11 +6,17 @@ public class MapDataLoader : MonoBehaviour
 {
     public static MapDataLoader instance;
 
-    // gorilla village section
+    [Header("Gorilla Village")]
     public MapIcon GV_house1;
     public MapIcon GV_house2;
     public MapIcon GV_fire;
     public MapIcon GV_statue;
+
+    [Header("Mudslide")]
+    public MapIcon MS_logs;
+    public MapIcon MS_pond;
+    public MapIcon MS_ramp;
+    public MapIcon MS_tower;
 
     void Awake()
     {
@@ -34,6 +40,19 @@ public class MapDataLoader : MonoBehaviour
 
         GV_statue.SetFixed(mapData.GV_statue.isFixed, false, false);
         GV_statue.SetStars(mapData.GV_statue.stars);
+
+        // mudslide section
+        MS_logs.SetFixed(mapData.MS_logs.isFixed, false, false);
+        MS_logs.SetStars(mapData.MS_logs.stars);
+
+        MS_pond.SetFixed(mapData.MS_pond.isFixed, false, false);
+        MS_pond.SetStars(mapData.MS_pond.stars);
+
+        MS_ramp.SetFixed(mapData.MS_ramp.isFixed, false, false);
+        MS_ramp.SetStars(mapData.MS_ramp.stars);
+
+        MS_tower.SetFixed(mapData.MS_tower.isFixed, false, false);
+        MS_tower.SetStars(mapData.MS_tower.stars);
     }
 
     public MapIcon GetMapIconFromID(MapIconIdentfier id)
@@ -49,6 +68,14 @@ public class MapDataLoader : MonoBehaviour
                 return GV_statue;
             case MapIconIdentfier.GV_fire:
                 return GV_fire;
+            case MapIconIdentfier.MS_logs:
+                return MS_logs;
+            case MapIconIdentfier.MS_pond:
+                return MS_pond;
+            case MapIconIdentfier.MS_ramp:
+                return MS_ramp;
+            case MapIconIdentfier.MS_tower:
+                return MS_tower;
         }
     }
 }

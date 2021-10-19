@@ -102,7 +102,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 yield return null;
 
             // tiger and monkies walk in
-            MapAnimationController.instance.TigerAndMonkiesWalkIn();
+            MapAnimationController.instance.TigerAndMonkiesWalkInGV();
             // wait for animation to be done
             while (!MapAnimationController.instance.animationDone)
                 yield return null;

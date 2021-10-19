@@ -113,6 +113,20 @@ public class MapData
 
     public bool GV_signPost_unlocked;
     public int GV_signPost_stars;
+
+    // mudslide
+
+    public MapIconData MS_logs;
+    public MapIconData MS_pond;
+    public MapIconData MS_ramp;
+    public MapIconData MS_tower;
+
+    public ChallengeGameData MS_challenge1;
+    public ChallengeGameData MS_challenge2;
+    public ChallengeGameData MS_challenge3;
+
+    public bool MS_signPost_unlocked;
+    public int MS_signPost_stars;
 }
 
 /* 

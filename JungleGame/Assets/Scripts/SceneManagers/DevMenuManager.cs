@@ -226,6 +226,7 @@ public class DevMenuManager : MonoBehaviour
         studentData.unlockedStickerButton = true;
 
         // map data
+        // Gorilla Village
         studentData.mapData.GV_house1.isFixed = true;
         studentData.mapData.GV_house1.stars = 3;
 
@@ -240,6 +241,22 @@ public class DevMenuManager : MonoBehaviour
 
         studentData.mapData.GV_signPost_unlocked = true;
         studentData.mapData.GV_signPost_stars = 3;
+
+        // Mudslide
+        studentData.mapData.MS_logs.isFixed = true;
+        studentData.mapData.MS_logs.stars = 3;
+
+        studentData.mapData.MS_pond.isFixed = true;
+        studentData.mapData.MS_pond.stars = 3;
+
+        studentData.mapData.MS_ramp.isFixed = true;
+        studentData.mapData.MS_ramp.stars = 3;
+
+        studentData.mapData.MS_tower.isFixed = true;
+        studentData.mapData.MS_tower.stars = 3;
+
+        studentData.mapData.MS_signPost_unlocked = true;
+        studentData.mapData.MS_signPost_stars = 3;
 
         StudentInfoSystem.SaveStudentPlayerData();
     }
@@ -368,7 +385,17 @@ public class DevMenuManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 3;
                 FixIconsUpTo(MapLocation.GorillaVillage);
                 SetChallengeGamesUpTo(MapLocation.GorillaVillage);
-                SetActionWordPool(MapLocation.GorillaVillage);
+                SetActionWordPool(MapLocation.Mudslide);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
+            case StoryBeat.MudslideRebuilt:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 3;
+                FixIconsUpTo(MapLocation.Mudslide);
+                SetChallengeGamesUpTo(MapLocation.Mudslide);
+                SetActionWordPool(MapLocation.Mudslide);
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
@@ -421,6 +448,11 @@ public class DevMenuManager : MonoBehaviour
 
     private void SetMapIcons(MapLocation location, bool isFixed)
     {
+        StudentInfoSystem.GetCurrentProfile().froggerTutorial = isFixed;
+        StudentInfoSystem.GetCurrentProfile().turntablesTutorial = isFixed;
+        StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = isFixed;
+        StudentInfoSystem.GetCurrentProfile().rummageTutorial = isFixed;
+
         switch (location)
         {
             case MapLocation.GorillaVillage:
@@ -444,14 +476,29 @@ public class DevMenuManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.isFixed = isFixed;
                 StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.isFixed = isFixed;
 
-                StudentInfoSystem.GetCurrentProfile().froggerTutorial = isFixed;
-                StudentInfoSystem.GetCurrentProfile().turntablesTutorial = isFixed;
-                StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = isFixed;
-                StudentInfoSystem.GetCurrentProfile().rummageTutorial = isFixed;
-
                 break;
 
             case MapLocation.Mudslide:
+                if (!isFixed)
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_logs.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_pond.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_ramp.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_tower.stars = 0;
+                }
+                else
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_logs.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_pond.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_ramp.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_tower.stars = 3;
+                }
+
+                StudentInfoSystem.GetCurrentProfile().mapData.MS_logs.isFixed = isFixed;
+                StudentInfoSystem.GetCurrentProfile().mapData.MS_pond.isFixed = isFixed;
+                StudentInfoSystem.GetCurrentProfile().mapData.MS_ramp.isFixed = isFixed;
+                StudentInfoSystem.GetCurrentProfile().mapData.MS_tower.isFixed = isFixed;
+
                 break;
         }
     }
@@ -531,6 +578,52 @@ public class DevMenuManager : MonoBehaviour
                 break;
 
             case MapLocation.Mudslide:
+                StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_stars = 0;
+                StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_unlocked = false;
+
+                if (num == 0)
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.stars = 0;
+
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType = GameType.None;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType = GameType.None;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType = GameType.None;
+                }
+                else if (num == 1)
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.stars = 0;
+
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.Mudslide);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType = GameType.None;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType = GameType.None;
+                }
+                else if (num == 2)
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.stars = 0;
+
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.Mudslide);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.Mudslide);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType = GameType.None;
+                }
+                else
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.stars = 3;
+
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.Mudslide);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.Mudslide);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.Mudslide);
+                
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_unlocked = true;
+                }
                 break;
         }
     }
