@@ -73,6 +73,9 @@ public class DevMenuManager : MonoBehaviour
         List<string> storyBeatsList = new List<string>(storyBeats);
         storyBeatDropdown.AddOptions(storyBeatsList);
 
+        // set current story beat to be active
+        storyBeatDropdown.value = (int)StudentInfoSystem.GetCurrentProfile().currStoryBeat;
+
         // setup profiles
         profileDropdown.onValueChanged.AddListener(delegate { OnProfileDropdownChanged(); });
         SetupProfileDropdown();
@@ -261,6 +264,28 @@ public class DevMenuManager : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
     }
 
+    public void OnFixAllUnlockedIconsPressed()
+    {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CreateBlip, 1f);
+
+        int currMapLimit = StudentInfoSystem.GetCurrentProfile().mapLimit;
+
+        // gorilla village
+        if (currMapLimit >= 2)
+        {
+            FixIconsUpTo(MapLocation.GorillaVillage);
+        }
+
+        // mudslide 
+        if (currMapLimit >= 3)
+        {
+            FixIconsUpTo(MapLocation.Mudslide);
+        }
+
+        StudentInfoSystem.SaveStudentPlayerData();
+    }
+
     /* 
     ################################################
     #   STORY BEAT SECTION
@@ -276,6 +301,12 @@ public class DevMenuManager : MonoBehaviour
         int beat = storyBeatDropdown.value;
 
         StudentInfoSystem.GetCurrentProfile().currStoryBeat = (StoryBeat)beat;
+
+        // skip tutorials
+        StudentInfoSystem.GetCurrentProfile().froggerTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().turntablesTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().rummageTutorial = true;
         
         switch ((StoryBeat)beat)
         {
@@ -288,6 +319,12 @@ public class DevMenuManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = false;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = false;
                 break;
+            
+            /* 
+            ################################################
+            #   GORILLA VILLAGE
+            ################################################
+            */
 
             case StoryBeat.UnlockGorillaVillage:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 1;
@@ -380,11 +417,49 @@ public class DevMenuManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
                 break;
+            
+            /* 
+            ################################################
+            #   MUDSLIDE
+            ################################################
+            */
 
             case StoryBeat.MudslideUnlocked:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 3;
                 FixIconsUpTo(MapLocation.GorillaVillage);
                 SetChallengeGamesUpTo(MapLocation.GorillaVillage);
+                SetActionWordPool(MapLocation.Mudslide);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
+            case StoryBeat.Mudslide_challengeGame_1:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 3;
+                FixIconsUpTo(MapLocation.Mudslide);
+                SetChallengeGamesUpTo(MapLocation.NONE);
+                SetActionWordPool(MapLocation.Mudslide);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
+            case StoryBeat.Mudslide_challengeGame_2:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 3;
+                FixIconsUpTo(MapLocation.Mudslide);
+                SetChallengeGamesUpTo(MapLocation.GorillaVillage);
+                SetChallengeGame(MapLocation.Mudslide, 1);
+                SetActionWordPool(MapLocation.Mudslide);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
+            case StoryBeat.Mudslide_challengeGame_3:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 3;
+                FixIconsUpTo(MapLocation.Mudslide);
+                SetChallengeGamesUpTo(MapLocation.GorillaVillage);
+                SetChallengeGame(MapLocation.Mudslide, 2);
                 SetActionWordPool(MapLocation.Mudslide);
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
@@ -400,6 +475,12 @@ public class DevMenuManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
                 break;
+            
+            /* 
+            ################################################
+            #   ETC...
+            ################################################
+            */
         }
 
         StudentInfoSystem.SaveStudentPlayerData();
@@ -409,18 +490,13 @@ public class DevMenuManager : MonoBehaviour
     {
         StudentInfoSystem.GetCurrentProfile().actionWordPool.Clear();
 
-        if (location <= MapLocation.GorillaVillage)
+        if (location == MapLocation.GorillaVillage || location == MapLocation.Mudslide)
         {   
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.mudslide);
-            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.mudslide);
-            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.mudslide);
-            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.mudslide);
-            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.mudslide);
-        }
-
-        if (location <= MapLocation.Mudslide)
-        {
-            // add other action words
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.listen);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.poop);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.orcs);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.think);
         }
     }
 
@@ -448,11 +524,6 @@ public class DevMenuManager : MonoBehaviour
 
     private void SetMapIcons(MapLocation location, bool isFixed)
     {
-        StudentInfoSystem.GetCurrentProfile().froggerTutorial = isFixed;
-        StudentInfoSystem.GetCurrentProfile().turntablesTutorial = isFixed;
-        StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = isFixed;
-        StudentInfoSystem.GetCurrentProfile().rummageTutorial = isFixed;
-
         switch (location)
         {
             case MapLocation.GorillaVillage:

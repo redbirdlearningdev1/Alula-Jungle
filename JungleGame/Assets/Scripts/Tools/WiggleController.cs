@@ -8,13 +8,21 @@ public class WiggleController : MonoBehaviour
     public float multiplier;
     private bool wiggle;
     private float randomTimeAddition = 0f;
+    private float timer = 0f;
 
     void Update()
     {
         if (wiggle)
         {
-            var quat = Quaternion.Euler(0f, 0f, curve.Evaluate(Time.time + randomTimeAddition) * multiplier);
+            timer += Time.deltaTime;
+            var quat = Quaternion.Euler(0f, 0f, curve.Evaluate(timer + randomTimeAddition) * multiplier);
             transform.rotation = quat;
+            
+            // reset timer
+            if (timer >= curve.length)
+            {
+                timer = 0f;
+            }
         }
         else
         {
@@ -31,5 +39,6 @@ public class WiggleController : MonoBehaviour
     public void StopWiggle()
     {
         wiggle = false;
+        timer = 0f;
     }
 }

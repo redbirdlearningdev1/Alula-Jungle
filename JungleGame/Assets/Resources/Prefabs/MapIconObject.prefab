@@ -65,8 +65,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactable: 1
-  popupWindow: 0
-  gameData: {fileID: 0}
   identfier: 0
   canBeFixed: 0
   animatedIcon: 0
@@ -87,6 +85,8 @@ MonoBehaviour:
   downStarsTransform: {fileID: 3077147714568745916}
   starsHiddenPosition: {fileID: 4330476233236576573}
   starMoveSpeed: 0.4
+  wiggleController: {fileID: 3999598219766758947}
+  timeBetweenWiggles: 3
 --- !u!114 &3999598219766758947
 MonoBehaviour:
   m_ObjectHideFlags: 0

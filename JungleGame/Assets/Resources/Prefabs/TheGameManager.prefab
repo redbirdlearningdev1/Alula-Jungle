@@ -14563,7 +14563,7 @@ MonoBehaviour:
   villageChallengeDefeated_3: {fileID: 11400000, guid: baa42894e75312644a235bb89e8b60ef,
     type: 2}
   mudslideIntro: {fileID: 11400000, guid: 8c29438673fd1864ab48a0aab2298be5, type: 2}
-  mudslideRebuilt_1: {fileID: 11400000, guid: db79bb513ec5e674088e91c963d68d91, type: 2}
+  mudslideRebuilt_1: {fileID: 11400000, guid: f60f7bdf1b43c044d841d3df7f0f3f52, type: 2}
   mudslideRebuilt_2: {fileID: 11400000, guid: 32a22628492b9124da499511add28e4f, type: 2}
   darwinQuips: {fileID: 11400000, guid: 6c3e00e7101d0164a9d40ee842197259, type: 2}
   redSprites:
@@ -17835,7 +17835,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 43.15064, y: 0.005817631}
+  m_AnchoredPosition: {x: 43.159424, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

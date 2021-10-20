@@ -742,7 +742,7 @@ public class ScrollMapManager : MonoBehaviour
             StartCoroutine(UnlockMapArea(3, false));
             gorilla.ShowExclamationMark(true);
 
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(7f);
 
             // play mudslide intro talkie
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.mudslideIntro);
@@ -759,6 +759,9 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.MudslideUnlocked)
         {
+            // place gorilla off-screen
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
+
             // make sure player has rebuilt all the MS map icons
             if (StudentInfoSystem.GetCurrentProfile().mapData.MS_logs.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.MS_pond.isFixed &&
@@ -831,6 +834,235 @@ public class ScrollMapManager : MonoBehaviour
             {
 
             }
+        }
+        else if (playGameEvent == StoryBeat.Mudslide_challengeGame_1)
+        {
+            showStars = false;
+            
+            // place gorilla off-screen
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
+
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerMSChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusMSChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusMSChallengePos.position;
+
+            // set tiger stuff
+            if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType == GameType.None)
+            {
+                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.Mudslide);
+                tiger.gameType = newGameType;
+                StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType = newGameType;
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
+            else
+            {
+                tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType;
+            }
+
+            // set game manager stuff
+            GameManager.instance.mapID = MapIconIdentfier.MS_challenge_1;
+            GameManager.instance.playingChallengeGame = true;
+
+            // make sure we are at mudslide
+            mapPosIndex = 3;
+            // move map to next right map location
+            float x = GetXPosFromMapLocationIndex(mapPosIndex);
+            StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
+
+            yield return new WaitForSeconds(2.5f);
+
+            // play correct lose talkies
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play julius wins
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else if (
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play julius wins again
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins_again);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+
+            yield return new WaitForSeconds(1f);
+
+            tiger.interactable = true;
+            tiger.ShowExclamationMark(true);
+            tiger.GetComponent<Animator>().Play("aTigerTwitch");
+        }
+        else if (playGameEvent == StoryBeat.Mudslide_challengeGame_2)
+        {
+            showStars = false;
+            
+            // place gorilla off-screen
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
+
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerMSChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusMSChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusMSChallengePos.position;
+
+            // make tiger sad
+            tiger.GetComponent<Animator>().Play("sTigerIdle");
+
+            // set tiger stuff
+            if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType == GameType.None)
+            {
+                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.Mudslide);
+                marcus.gameType = newGameType;
+                StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType = newGameType;
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
+            else
+            {
+                marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType;
+            }
+
+            // set game manager stuff
+            GameManager.instance.mapID = MapIconIdentfier.MS_challenge_2;
+            GameManager.instance.playingChallengeGame = true;
+
+            // make sure we are at mudslide
+            mapPosIndex = 3;
+            // move map to next right map location
+            float x = GetXPosFromMapLocationIndex(mapPosIndex);
+            StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
+
+            yield return new WaitForSeconds(2.5f);
+
+            // play correct lose talkies
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play marcus wins
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_wins);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else if (
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play marcus wins again
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_wins_again);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else
+            {
+                // play julius loses + marcus challenges
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_loses__marcus_challenges);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // do not go to game if talkie manager says not to
+                if (TalkieManager.instance.doNotContinueToGame)
+                {
+                    TalkieManager.instance.doNotContinueToGame = false;
+                }
+                else
+                {
+                    // continue to marcus challenge game
+                    marcus.GoToGameDataSceneImmediately();
+                }
+            }
+
+            marcus.GetComponent<Animator>().Play("marcusLose");
+            marcus.ShowExclamationMark(true);
+            marcus.interactable = true;
+        }
+        else if (playGameEvent == StoryBeat.Mudslide_challengeGame_3)
+        {
+            showStars = false;
+            
+            // place gorilla off-screen
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
+
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerMSChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusMSChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusMSChallengePos.position;
+
+            // make tiger sad
+            tiger.GetComponent<Animator>().Play("sTigerIdle");
+            // make marcus sad (ANGRY) 
+            marcus.GetComponent<Animator>().Play("marcusFixed");
+
+            // set tiger stuff
+            if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType == GameType.None)
+            {
+                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.Mudslide);
+                brutus.gameType = newGameType;
+                StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType = newGameType;
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
+            else
+            {
+                brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType;
+            }
+            
+            // set game manager stuff
+            GameManager.instance.mapID = MapIconIdentfier.MS_challenge_3;
+            GameManager.instance.playingChallengeGame = true;
+
+            // make sure we are at mudslide
+            mapPosIndex = 3;
+            // move map to next right map location
+            float x = GetXPosFromMapLocationIndex(mapPosIndex);
+            StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
+
+            yield return new WaitForSeconds(2.5f);
+
+            print ("first time losing: " + StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame);
+            print ("every other time losing: " + StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame);
+
+            // play correct lose talkies
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play brutus wins
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_wins);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else if (
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play brutus wins again
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_wins_again);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else
+            {
+                // play marcus loses + brutus challenges
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_loses__brutus_challenges);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // do not go to game if talkie manager says not to
+                if (TalkieManager.instance.doNotContinueToGame)
+                {
+                    TalkieManager.instance.doNotContinueToGame = false;
+                }
+                else
+                {
+                    // continue to marcus challenge game
+                    brutus.GoToGameDataSceneImmediately();
+                }
+            }
+
+            brutus.GetComponent<Animator>().Play("brutusLose");
+            brutus.ShowExclamationMark(true);
+            brutus.interactable = true;
         }
         else if (playGameEvent == StoryBeat.MudslideRebuilt)
         {

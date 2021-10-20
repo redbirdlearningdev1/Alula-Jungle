@@ -127,10 +127,12 @@ public class TurntablesGameManager : MonoBehaviour
         // Create Global Coin List
         if (mapID != null)
         {
+            print ("map ID");
             globalWordPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
         }
         else
         {
+            print ("no map ID");
             globalWordPool.AddRange(GameManager.instance.GetGlobalActionWordList());
         }
 

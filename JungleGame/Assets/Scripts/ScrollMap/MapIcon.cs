@@ -76,6 +76,13 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     public float starMoveSpeed;
     private bool starsHidden = true;
 
+    [Header("Wiggle Controller")]
+    public WiggleController wiggleController;
+    public float timeBetweenWiggles;
+    private bool wiggleIcon = false;
+    private bool waitForWiggle = false;
+    private float timer = 0f;
+
 
     void Awake() 
     {
@@ -86,6 +93,37 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
         // configure current stars
         InitStars();
+
+        // determine if icon should periodically wiggle
+        if (GetNumStars() == 0)
+        {
+            // offset wiggles by random amount
+            timer -= Random.Range(0f, 2.5f);
+            wiggleIcon = true;
+        } 
+    }
+
+    void Update()
+    {
+        // wiggle icon every so often
+        if (wiggleIcon && !waitForWiggle)
+        {
+            timer += Time.deltaTime;
+            if (timer >= timeBetweenWiggles)
+            {
+                StartCoroutine(WiggleIconRoutine());
+            }
+        }
+    }
+
+    private IEnumerator WiggleIconRoutine()
+    {
+        waitForWiggle = true;
+        wiggleController.StartWiggle();
+        yield return new WaitForSeconds(1.5f);
+        wiggleController.StopWiggle();
+        timer = 0f;
+        waitForWiggle = false;
     }
 
     /* 
@@ -242,6 +280,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         {
             switch (identfier)
             {
+                // gorilla village
                 case MapIconIdentfier.GV_house1:
                     StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.isFixed = opt;
                     break;
@@ -253,6 +292,20 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                     break;
                 case MapIconIdentfier.GV_fire:
                     StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.isFixed = opt;
+                    break;
+
+                // mudslide
+                case MapIconIdentfier.MS_logs:
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_logs.isFixed = opt;
+                    break;
+                case MapIconIdentfier.MS_pond:
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_pond.isFixed = opt;
+                    break;
+                case MapIconIdentfier.MS_ramp:
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_ramp.isFixed = opt;
+                    break;
+                case MapIconIdentfier.MS_tower:
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_tower.isFixed = opt;
                     break;
             }
             StudentInfoSystem.SaveStudentPlayerData();
@@ -322,6 +375,10 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     {
         switch (identfier)
         {
+            default:
+                return -1;
+
+            // gorilla village
             case MapIconIdentfier.GV_house1:
                 return StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.stars;
             case MapIconIdentfier.GV_house2:
@@ -330,8 +387,16 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 return StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.stars;
             case MapIconIdentfier.GV_fire:
                 return StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.stars;
-            default:
-                return 0;
-        }
+            
+            // mudslide
+            case MapIconIdentfier.MS_logs:
+                return StudentInfoSystem.GetCurrentProfile().mapData.MS_logs.stars;
+            case MapIconIdentfier.MS_pond:
+                return StudentInfoSystem.GetCurrentProfile().mapData.MS_pond.stars;
+            case MapIconIdentfier.MS_ramp:
+                return StudentInfoSystem.GetCurrentProfile().mapData.MS_ramp.stars;
+            case MapIconIdentfier.MS_tower:
+                return StudentInfoSystem.GetCurrentProfile().mapData.MS_tower.stars;
+        }   
     }
 }

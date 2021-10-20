@@ -74,7 +74,10 @@ public enum StoryBeat
     GorillaVillage_challengeGame_3, // 8
     VillageChallengeDefeated, // 9
     MudslideUnlocked, // 10
-    MudslideRebuilt, // 11
+    Mudslide_challengeGame_1, // 11
+    Mudslide_challengeGame_2, // 12
+    Mudslide_challengeGame_3, // 13
+    MudslideRebuilt, // 14
     COUNT
 }
 
