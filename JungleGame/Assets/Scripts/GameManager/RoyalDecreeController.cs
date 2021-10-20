@@ -8,6 +8,7 @@ public class RoyalDecreeController : MonoBehaviour
     public static RoyalDecreeController instance;
 
     [Header("Window Pieces")]
+    public LerpableObject backButton;
     public LerpableObject dim_bg;
     public LerpableObject window;
     public LerpableObject scroll;
@@ -43,6 +44,20 @@ public class RoyalDecreeController : MonoBehaviour
         confirmWindow.transform.localScale = new Vector3(1f, 0f, 1f);
         dim_bg_2.SetImageAlpha(dim_bg_2.GetComponent<Image>(), 0f);
         dim_bg_2.GetComponent<Image>().raycastTarget = false;
+
+        // hide back button
+        backButton.transform.localScale = new Vector3(0f, 0f, 1f);
+    }
+
+    public void OnBackButtonPressed()
+    {
+        if (waitToOpen)
+            return;
+        
+        waitToOpen = true;
+        isOpen = !isOpen;
+
+        StartCoroutine(CloseWindowRoutine());
     }
 
     public void ToggleWindow(MapLocation mapLocation)
@@ -68,7 +83,9 @@ public class RoyalDecreeController : MonoBehaviour
 
     private IEnumerator OpenWindowRoutine(MapLocation mapLocation)
     {
-        print ("location: " + mapLocation);
+        // remove UI buttons
+        SettingsManager.instance.ToggleMenuButtonActive(false);
+        SettingsManager.instance.ToggleWagonButtonActive(false);
 
         // get challenge game triads
         currTriad = new List<GameType>();
@@ -100,6 +117,9 @@ public class RoyalDecreeController : MonoBehaviour
             count++;
         }
 
+        // show back button
+        backButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.2f, 0.2f);
+
         waitToOpen = false;
     }
 
@@ -118,6 +138,9 @@ public class RoyalDecreeController : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
+        // remove back button
+        backButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.2f, 0.2f);
+
         // un-dim bg
         dim_bg.LerpImageAlpha(dim_bg.GetComponent<Image>(), 0f, 0.5f);
         dim_bg.GetComponent<Image>().raycastTarget = false;
@@ -130,6 +153,10 @@ public class RoyalDecreeController : MonoBehaviour
 
         // remove temp signpost
         TempObjectPlacer.instance.RemoveObject();
+
+        // add UI buttons
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+        SettingsManager.instance.ToggleWagonButtonActive(true);
 
         waitToOpen = false;
     }

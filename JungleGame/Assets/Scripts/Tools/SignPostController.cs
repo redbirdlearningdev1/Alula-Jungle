@@ -106,10 +106,10 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
             // close settings menu if open
             SettingsManager.instance.CloseSettingsWindow();
 
-            // place copy over bg
-            var tempSignPost = TempObjectPlacer.instance.PlaceNewObject(this.gameObject, transform.localPosition);
-            StartCoroutine(DelaySignPostInteractableRoutine(tempSignPost.GetComponent<SignPostController>()));
-            tempSignPost.GetComponent<SignPostController>().SetStars(stars);
+            // // place copy over bg
+            // var tempSignPost = TempObjectPlacer.instance.PlaceNewObject(this.gameObject, transform.localPosition);
+            // StartCoroutine(DelaySignPostInteractableRoutine(tempSignPost.GetComponent<SignPostController>()));
+            // tempSignPost.GetComponent<SignPostController>().SetStars(stars);
         }
     }
 

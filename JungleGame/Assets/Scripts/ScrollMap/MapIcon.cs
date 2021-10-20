@@ -92,15 +92,18 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         if (repairAnimator) repairAnimator.Play("defaultAnimation");
 
         // configure current stars
-        InitStars();
+        InitStars(); 
+    }
 
+    void Start()
+    {
         // determine if icon should periodically wiggle
         if (GetNumStars() == 0)
         {
             // offset wiggles by random amount
             timer -= Random.Range(0f, 2.5f);
             wiggleIcon = true;
-        } 
+        }
     }
 
     void Update()

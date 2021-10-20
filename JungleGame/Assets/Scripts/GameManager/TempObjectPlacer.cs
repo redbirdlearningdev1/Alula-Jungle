@@ -19,12 +19,13 @@ public class TempObjectPlacer : MonoBehaviour
             GameObject.Destroy(child.gameObject);
 
         // IDK WHY THIS IS A THING BUT I GOTTA 
-        pos.x += 8.9f;
+        //pos.x += 8.9f;
 
-        pos = Camera.main.ScreenToWorldPoint(pos);
+        var pos2 = Camera.main.ScreenToWorldPoint(pos);
+        pos2.z = 0;
 
         // make new object at position
-        return Instantiate(obj, pos, Quaternion.identity, transform);
+        return Instantiate(obj, pos2, Quaternion.identity, transform);
     }
 
     public void RemoveObject()

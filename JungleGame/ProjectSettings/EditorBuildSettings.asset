@@ -26,7 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigames/FroggerGame.unity
     guid: 2ec3fbeac2b2d19478b9bee70b92a61c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Minigames/SeaShellGame.unity
     guid: 767a90eb79f5c7443b8131bdf0808759
   - enabled: 1
@@ -35,7 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigames/RummageGame.unity
     guid: c79c6b8a975864246a336e31d57d1355
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Minigames/NewPirateGame.unity
     guid: 5914bf4dec5354042abd696c93262f3f
   - enabled: 1
