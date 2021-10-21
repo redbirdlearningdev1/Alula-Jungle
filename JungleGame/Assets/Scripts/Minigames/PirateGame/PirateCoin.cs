@@ -9,13 +9,11 @@ public class PirateCoin : MonoBehaviour
 
     private Animator animator;
     private SpriteRenderer spriteRenderer;
-    [HideInInspector] public GlowOutlineController glowController;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        glowController = GetComponent<GlowOutlineController>();
         SetCoinType(type);
     }
 

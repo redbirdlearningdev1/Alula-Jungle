@@ -20,7 +20,6 @@ public class GlowLine : MonoBehaviour
 
     public void ToggleGlow(bool opt)
     {
-        GetComponent<GlowOutlineController>().ToggleGlowOutline(true);
         StopAllCoroutines();
         if (opt)
             StartCoroutine(LerpLineHeight(maxHeight));

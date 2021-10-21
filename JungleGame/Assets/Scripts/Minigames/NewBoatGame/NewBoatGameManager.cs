@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NewBoatGameManager : MonoBehaviour
 {
@@ -158,7 +159,7 @@ public class NewBoatGameManager : MonoBehaviour
         repeatAudio = true;
 
         // turn on blue button glow + wiggle
-        micButton.glowOutlineController.ToggleGlowOutline(true);
+        ImageGlowController.instance.SetImageGlow(micButton.GetComponent<Image>(), true, GlowValue.glow_1_025);
         micButton.wiggleController.StartWiggle();
 
         waitingForMicButton = true;
@@ -215,7 +216,7 @@ public class NewBoatGameManager : MonoBehaviour
                 repeatAudio = true;
 
                 // turn on blue button glow + wiggle
-                blueButton.glowOutlineController.ToggleGlowOutline(true);
+                ImageGlowController.instance.SetImageGlow(blueButton.GetComponent<Image>(), true, GlowValue.glow_1_025);
                 blueButton.wiggleController.StartWiggle();
                 waitForBlueButton = false;
                 break;
@@ -299,7 +300,7 @@ public class NewBoatGameManager : MonoBehaviour
                 repeatAudio = true;
 
                 // turn on throttle glow + wiggle
-                BoatThrottleController.instance.outlineController.ToggleGlowOutline(true);
+                ImageGlowController.instance.SetImageGlow(BoatThrottleController.instance.GetComponent<Image>(), true, GlowValue.glow_1_025);
                 BoatThrottleController.instance.wiggleController.StartWiggle();
 
                 // enable throtle control
@@ -351,7 +352,7 @@ public class NewBoatGameManager : MonoBehaviour
                 yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[19].length + 0.5f);
 
                 // turn on green button glow + wiggle
-                greenButton.glowOutlineController.ToggleGlowOutline(true);
+                ImageGlowController.instance.SetImageGlow(greenButton.GetComponent<Image>(), true, GlowValue.glow_1_025);
                 greenButton.wiggleController.StartWiggle();
                 waitForGreenButton = false;
                 break;
@@ -406,7 +407,7 @@ public class NewBoatGameManager : MonoBehaviour
     public void ThrottlePressed()
     {
         // turn off throttle glow + wiggle
-        BoatThrottleController.instance.outlineController.ToggleGlowOutline(false);
+        ImageGlowController.instance.SetImageGlow(BoatThrottleController.instance.GetComponent<Image>(), false);
         BoatThrottleController.instance.wiggleController.StopWiggle();
     }
 
@@ -417,7 +418,7 @@ public class NewBoatGameManager : MonoBehaviour
             boatGameEvent++;
 
             // turn off blue button glow + stop wiggle
-            greenButton.glowOutlineController.ToggleGlowOutline(false);
+            ImageGlowController.instance.SetImageGlow(greenButton.GetComponent<Image>(), false);
             greenButton.wiggleController.StopWiggle();
 
             // stop repeating audio
@@ -438,7 +439,7 @@ public class NewBoatGameManager : MonoBehaviour
             boatGameEvent++;
 
             // turn off blue button glow + stop wiggle
-            blueButton.glowOutlineController.ToggleGlowOutline(false);
+            ImageGlowController.instance.SetImageGlow(blueButton.GetComponent<Image>(), false);
             blueButton.wiggleController.StopWiggle();
 
             // stop repeating audio
@@ -460,7 +461,7 @@ public class NewBoatGameManager : MonoBehaviour
             boatGameEvent++;
 
             // turn off mic button glow + stop wiggle
-            micButton.glowOutlineController.ToggleGlowOutline(false);
+            ImageGlowController.instance.SetImageGlow(micButton.GetComponent<Image>(), false);
             micButton.wiggleController.StopWiggle();
 
             // stop repeating audio

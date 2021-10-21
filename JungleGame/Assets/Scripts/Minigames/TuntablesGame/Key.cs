@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Key : MonoBehaviour
 {
     public ActionWordEnum keyActionWord;
+    public bool interactable = true;
+
     private bool canBePressed = false;
     private bool isDissipating = false;
     [HideInInspector] public bool glowingKey = false;

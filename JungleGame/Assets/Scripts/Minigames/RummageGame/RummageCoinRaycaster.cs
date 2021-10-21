@@ -35,15 +35,28 @@ public class RummageCoinRaycaster : MonoBehaviour
             EventSystem.current.RaycastAll(pointerEventData, raycastResults);
 
             bool isCorrect = false;
+            bool hitChest = false;
             if (raycastResults.Count > 0)
             {
                 foreach (var result in raycastResults)
                 {
                     if (result.gameObject.transform.CompareTag("Bag"))
                     {
+                        hitChest = true;
                         isCorrect = RummageGameManager.instance.EvaluateSelectedRummageCoin(selectedRummageCoin);
                     }
                 }
+            }
+
+            if (hitChest)
+            {
+                // make other coins not interactable
+                RummageGameManager.instance.SetCoinsInteractable(false);
+            }
+            else
+            {
+                // make other coin interactable
+                RummageGameManager.instance.SetCoinsInteractable(true);
             }
 
             if (isCorrect)
@@ -69,7 +82,14 @@ public class RummageCoinRaycaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("Coin"))
                     {
-                        selectedRummageCoin = result.gameObject.GetComponent<RummageCoin>();
+                        var coin = result.gameObject.GetComponent<RummageCoin>();
+                        if (!coin.interactable)
+                            continue;
+
+                        // make other coin not interactable
+                        RummageGameManager.instance.SetCoinsInteractable(false);
+
+                        selectedRummageCoin = coin;
                         selectedRummageCoin.PlayPhonemeAudio();
                         selectedRummageCoin.gameObject.transform.SetParent(selectedCoinParent);
                         selectedRummageCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(2.25f, 2.25f), 0.1f);

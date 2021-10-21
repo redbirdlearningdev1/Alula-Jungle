@@ -8,7 +8,6 @@ public class ActionWordCoin : MonoBehaviour
     private Animator animator;
     private BoxCollider2D myCollider;
     private SpriteRenderer spriteRenderer;
-    [HideInInspector] public GlowOutlineController glowController;
 
     void Awake()
     {
@@ -20,7 +19,6 @@ public class ActionWordCoin : MonoBehaviour
         myCollider.size = rt.sizeDelta;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
-        glowController = GetComponent<GlowOutlineController>();
     }
 
     public void SetCoinType(ActionWordEnum type)

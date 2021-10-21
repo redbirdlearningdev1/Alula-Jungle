@@ -230,8 +230,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -4800}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 118432007}
-  m_RootOrder: 0
+  m_Father: {fileID: 718792435}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -535,6 +535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  interactable: 0
   clothPos: {fileID: 1402475589}
   coinParent: {fileID: 292532849}
   pileMovement1: {x: -4.75, y: 1.75, z: 0}
@@ -627,8 +628,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 54219726}
-  - {fileID: 266689354}
   - {fileID: 2114167956}
   - {fileID: 1076423334}
   - {fileID: 844582074}
@@ -868,6 +867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  interactable: 0
   clothPos: {fileID: 1845126906}
   coinParent: {fileID: 116416726}
   pileMovement1: {x: -3, y: 3.75, z: 0}
@@ -1008,6 +1008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  interactable: 0
   clothPos: {fileID: 368853784}
   coinParent: {fileID: 1990093852}
   pileMovement1: {x: -2, y: -1.75, z: 0}
@@ -1124,6 +1125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  interactable: 0
   clothPos: {fileID: 368853784}
   coinParent: {fileID: 2072222556}
   pileMovement1: {x: 1, y: 2.75, z: 0}
@@ -1451,7 +1453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b50bb302fe09c346a637cd003e82718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playingInEditor: 0
+  playingInEditor: 1
   playTutorial: 0
   orc: {fileID: 606159618}
   chest: {fileID: 1427296688}
@@ -1575,8 +1577,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.33, y: 0.33, z: 53.333336}
   m_Children: []
-  m_Father: {fileID: 118432007}
-  m_RootOrder: 1
+  m_Father: {fileID: 718792435}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2292,6 +2294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  interactable: 0
   clothPos: {fileID: 1402475589}
   coinParent: {fileID: 2072222556}
   pileMovement1: {x: 1, y: 4, z: 0}
@@ -2684,6 +2687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  interactable: 0
   clothPos: {fileID: 1402475589}
   coinParent: {fileID: 116416726}
   pileMovement1: {x: -5, y: 4.25, z: 0}
@@ -2847,6 +2851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  interactable: 0
   clothPos: {fileID: 1845126906}
   coinParent: {fileID: 2072222556}
   pileMovement1: {x: 0, y: 2, z: 0}
@@ -2904,6 +2909,8 @@ RectTransform:
   - {fileID: 1470073882}
   - {fileID: 249842714}
   - {fileID: 330722871}
+  - {fileID: 54219726}
+  - {fileID: 266689354}
   m_Father: {fileID: 123999742}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3026,6 +3033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  interactable: 0
   clothPos: {fileID: 1402475589}
   coinParent: {fileID: 1990093852}
   pileMovement1: {x: -3, y: -1.75, z: 0}
@@ -3172,6 +3180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  interactable: 0
   clothPos: {fileID: 368853784}
   coinParent: {fileID: 116416726}
   pileMovement1: {x: -4, y: 4.4, z: 0}
@@ -3231,7 +3240,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 118432007}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3535,6 +3544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  interactable: 0
   clothPos: {fileID: 368853784}
   coinParent: {fileID: 1315019084}
   pileMovement1: {x: 2, y: 0.75, z: 0}
@@ -3663,6 +3673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  interactable: 0
   clothPos: {fileID: 1497655996}
   coinParent: {fileID: 116416726}
   pileMovement1: {x: -5.5, y: 3, z: 0}
@@ -3791,6 +3802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  interactable: 0
   clothPos: {fileID: 1497655996}
   coinParent: {fileID: 1315019084}
   pileMovement1: {x: 1, y: 3, z: 0}
@@ -3848,7 +3860,7 @@ RectTransform:
   m_LocalScale: {x: 0.33, y: 0.33, z: 53.333336}
   m_Children: []
   m_Father: {fileID: 118432007}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4026,6 +4038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  interactable: 0
   clothPos: {fileID: 1845126906}
   coinParent: {fileID: 1990093852}
   pileMovement1: {x: -1, y: -1.5, z: 0}
@@ -4142,6 +4155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  interactable: 0
   clothPos: {fileID: 368853784}
   coinParent: {fileID: 292532849}
   pileMovement1: {x: -4.75, y: 0.5, z: 0}
@@ -4270,6 +4284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  interactable: 0
   clothPos: {fileID: 1402475589}
   coinParent: {fileID: 1315019084}
   pileMovement1: {x: 2, y: 2, z: 0}
@@ -4411,7 +4426,7 @@ RectTransform:
   m_LocalScale: {x: 0.33, y: 0.33, z: 53.333336}
   m_Children: []
   m_Father: {fileID: 118432007}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4927,6 +4942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  interactable: 0
   clothPos: {fileID: 1497655996}
   coinParent: {fileID: 292532849}
   pileMovement1: {x: -5.75, y: 2.25, z: 0}
@@ -5067,6 +5083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  interactable: 0
   clothPos: {fileID: 1497655996}
   coinParent: {fileID: 1990093852}
   pileMovement1: {x: -4, y: -1.5, z: 0}
@@ -5505,7 +5522,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 45.12673
+      value: 45.201942
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -5677,6 +5694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  interactable: 0
   clothPos: {fileID: 1497655996}
   coinParent: {fileID: 2072222556}
   pileMovement1: {x: 0, y: 4.5, z: 0}
@@ -6671,6 +6689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  interactable: 0
   clothPos: {fileID: 1845126906}
   coinParent: {fileID: 1315019084}
   pileMovement1: {x: 1, y: 0, z: 0}
@@ -6913,6 +6932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  interactable: 0
   clothPos: {fileID: 1845126906}
   coinParent: {fileID: 292532849}
   pileMovement1: {x: -5.75, y: -0.5, z: 0}
@@ -7041,7 +7061,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 118432007}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

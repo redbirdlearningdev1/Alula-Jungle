@@ -47,6 +47,7 @@ public class KeyRaycaster : MonoBehaviour
             EventSystem.current.RaycastAll(pointerEventData, raycastResults);
 
             bool isCorrect = false;
+            bool hitRockLock = false;
             if(raycastResults.Count > 0)
             {
                 foreach(var result in raycastResults)
@@ -54,9 +55,21 @@ public class KeyRaycaster : MonoBehaviour
                     // print (result.gameObject.name);
                     if (result.gameObject.transform.CompareTag("RockLock"))
                     {
+                        hitRockLock = true;
                         isCorrect = TurntablesGameManager.instance.EvaluateSelectedKey(selectedKey);
                     }
                 }
+            }
+
+            if (hitRockLock)
+            {
+                // make other keys not interactable
+                TurntablesGameManager.instance.SetKeysInteractable(false);
+            }
+            else
+            {
+                // make other keys interactable
+                TurntablesGameManager.instance.SetKeysInteractable(true);
             }
 
             if (isCorrect)
@@ -92,7 +105,17 @@ public class KeyRaycaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("Key"))
                     {
-                        selectedKey = result.gameObject.GetComponentInParent<Key>();
+                        var key = result.gameObject.GetComponentInParent<Key>();
+
+                        // continue if key is not interactable
+                        if (!key.interactable)
+                            break;
+
+                        selectedKey = key;
+
+                        // make other keys not interactable
+                        TurntablesGameManager.instance.SetKeysInteractable(false);
+
                         selectedKey.PlayAudio();
                         selectedKey.gameObject.transform.SetParent(selectedKeyParent);
                         selectedKey.GetComponent<LerpableObject>().LerpScale(new Vector2(1.25f, 1.25f), 0.25f);

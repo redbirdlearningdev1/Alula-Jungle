@@ -39,7 +39,6 @@ public class ConsonantCoin : MonoBehaviour
     private Animator animator;
     private BoxCollider2D myCollider;
     private SpriteRenderer spriteRenderer;
-    [HideInInspector] public GlowOutlineController glowController;
 
     void Awake()
     {
@@ -51,7 +50,6 @@ public class ConsonantCoin : MonoBehaviour
         myCollider.size = rt.sizeDelta;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
-        glowController = GetComponent<GlowOutlineController>();
     }
 
     public void SetCoinType(ConsonantEnum type)

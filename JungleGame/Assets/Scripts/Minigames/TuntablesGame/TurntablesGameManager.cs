@@ -193,6 +193,8 @@ public class TurntablesGameManager : MonoBehaviour
         KeySetup();
         // set first frame icon
         frameIcon.SetFrameIcon(doorWords[currentDoorIndex]);
+        // make keys interactable
+        SetKeysInteractable(true);
     }
 
     /* 
@@ -316,6 +318,9 @@ public class TurntablesGameManager : MonoBehaviour
         RopeController.instance.MoveFromInitToNormal();
         yield return new WaitForSeconds(RopeController.instance.moveTime * 0.75f);
         RopeController.instance.AnimateKeysDown();
+
+        // make keys interactable
+        SetKeysInteractable(true);
     }
 
     private IEnumerator DoorFailRoutine()
@@ -374,6 +379,9 @@ public class TurntablesGameManager : MonoBehaviour
         RopeController.instance.MoveFromInitToNormal();
         yield return new WaitForSeconds(RopeController.instance.moveTime * 0.75f);
         RopeController.instance.AnimateKeysDown();
+
+        // make keys interactable
+        SetKeysInteractable(true);
     }
 
     private IEnumerator WinRoutine()
@@ -490,6 +498,9 @@ public class TurntablesGameManager : MonoBehaviour
         // glow the correct key
         RopeController.instance.SetKeyGlow(keys[correctKeyIndex], true);
         gameStart = true;
+
+        // make keys interactable
+        SetKeysInteractable(true);
     }
 
     private IEnumerator RepeatTutorialAudioRoutine(AudioClip clip)
@@ -584,6 +595,9 @@ public class TurntablesGameManager : MonoBehaviour
         RopeController.instance.AnimateKeysDown();
         // glow the correct key
         RopeController.instance.SetKeyGlow(keys[correctKeyIndex], true);
+
+        // make keys interactable
+        SetKeysInteractable(true);
     }
 
     private IEnumerator TutorialIncorrectRoutine()
@@ -616,6 +630,9 @@ public class TurntablesGameManager : MonoBehaviour
         RopeController.instance.AnimateKeysDown();
         // glow the correct key
         RopeController.instance.SetKeyGlow(keys[correctKeyIndex], true);
+
+        // make keys interactable
+        SetKeysInteractable(true);
     }
 
     private IEnumerator TutorialCompleteRoutine()
@@ -661,6 +678,15 @@ public class TurntablesGameManager : MonoBehaviour
     #   UTILITY FUNCTIONS
     ################################################
     */
+
+    public void SetKeysInteractable(bool opt)
+    {
+        if (keys != null)
+        {
+            foreach (var key in keys)
+                key.interactable = opt;
+        }
+    }
 
     private IEnumerator SkipToWinRoutine()
     {
