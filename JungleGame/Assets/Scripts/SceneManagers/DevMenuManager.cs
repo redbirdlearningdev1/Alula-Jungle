@@ -261,6 +261,22 @@ public class DevMenuManager : MonoBehaviour
         studentData.mapData.MS_signPost_unlocked = true;
         studentData.mapData.MS_signPost_stars = 3;
 
+        // Orc Village
+        studentData.mapData.MS_logs.isFixed = true;
+        studentData.mapData.MS_logs.stars = 3;
+
+        studentData.mapData.MS_pond.isFixed = true;
+        studentData.mapData.MS_pond.stars = 3;
+
+        studentData.mapData.MS_ramp.isFixed = true;
+        studentData.mapData.MS_ramp.stars = 3;
+
+        studentData.mapData.MS_tower.isFixed = true;
+        studentData.mapData.MS_tower.stars = 3;
+
+        studentData.mapData.MS_signPost_unlocked = true;
+        studentData.mapData.MS_signPost_stars = 3;
+
         StudentInfoSystem.SaveStudentPlayerData();
     }
 
@@ -281,6 +297,12 @@ public class DevMenuManager : MonoBehaviour
         if (currMapLimit >= 3)
         {
             FixIconsUpTo(MapLocation.Mudslide);
+        }
+
+        // orc village
+        if (currMapLimit >= 4)
+        {
+            FixIconsUpTo(MapLocation.OrcVillage);
         }
 
         StudentInfoSystem.SaveStudentPlayerData();
@@ -475,6 +497,33 @@ public class DevMenuManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
                 break;
+
+            /* 
+            ################################################
+            #   ORC VILLAGE
+            ################################################
+            */
+
+            case StoryBeat.OrcVillageUnlocked:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 4;
+                FixIconsUpTo(MapLocation.Mudslide);
+                SetChallengeGamesUpTo(MapLocation.Mudslide);
+                SetActionWordPool(MapLocation.Mudslide);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
+            case StoryBeat.OrcVillageMeetClogg:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 4;
+                FixIconsUpTo(MapLocation.Mudslide);
+                SetChallengeGamesUpTo(MapLocation.Mudslide);
+                SetActionWordPool(MapLocation.Mudslide);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+            
             
             /* 
             ################################################

@@ -78,6 +78,8 @@ public enum StoryBeat
     Mudslide_challengeGame_2, // 12
     Mudslide_challengeGame_3, // 13
     MudslideRebuilt, // 14
+    OrcVillageMeetClogg, // 15
+    OrcVillageUnlocked, // 16
     COUNT
 }
 
@@ -118,7 +120,6 @@ public class MapData
     public int GV_signPost_stars;
 
     // mudslide
-
     public MapIconData MS_logs;
     public MapIconData MS_pond;
     public MapIconData MS_ramp;
@@ -130,6 +131,19 @@ public class MapData
 
     public bool MS_signPost_unlocked;
     public int MS_signPost_stars;
+
+    // orc village
+    public MapIconData OV_houseL;
+    public MapIconData OV_houseS;
+    public MapIconData OV_statue;
+    public MapIconData OV_fire;
+
+    public ChallengeGameData OV_challenge1;
+    public ChallengeGameData OV_challenge2;
+    public ChallengeGameData OV_challenge3;
+
+    public bool OV_signPost_unlocked;
+    public int OV_signPost_stars;
 }
 
 /* 

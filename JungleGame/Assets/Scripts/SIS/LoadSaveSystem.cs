@@ -195,6 +195,38 @@ public static class LoadSaveSystem
         new_data.mapData.MS_signPost_stars = 0;
 
 
+        // orc village
+        new_data.mapData.OV_houseL = new MapIconData();
+        new_data.mapData.OV_houseS = new MapIconData();
+        new_data.mapData.OV_statue = new MapIconData();
+        new_data.mapData.OV_fire = new MapIconData();
+
+        new_data.mapData.OV_houseL.isFixed = true;
+        new_data.mapData.OV_houseS.isFixed = true;
+        new_data.mapData.OV_statue.isFixed =   true;
+        new_data.mapData.OV_fire.isFixed = true;
+
+        new_data.mapData.OV_houseL.stars =   default_mapDataStars;
+        new_data.mapData.OV_houseS.stars =   default_mapDataStars;
+        new_data.mapData.OV_statue.stars =     default_mapDataStars;
+        new_data.mapData.OV_fire.stars =   default_mapDataStars;
+
+        new_data.mapData.OV_challenge1 = new ChallengeGameData();
+        new_data.mapData.OV_challenge2 = new ChallengeGameData();
+        new_data.mapData.OV_challenge3 = new ChallengeGameData();
+
+        new_data.mapData.OV_challenge1.stars = default_stars;
+        new_data.mapData.OV_challenge2.stars = default_stars;
+        new_data.mapData.OV_challenge3.stars = default_stars;
+
+        new_data.mapData.OV_challenge1.gameType = GameType.None;
+        new_data.mapData.OV_challenge2.gameType = GameType.None;
+        new_data.mapData.OV_challenge3.gameType = GameType.None;
+
+        new_data.mapData.OV_signPost_unlocked = false;
+        new_data.mapData.OV_signPost_stars = 0;
+
+
         // stickers
         new_data.stickerInventory = new List<InventoryStickerData>();
         // classic sticker board

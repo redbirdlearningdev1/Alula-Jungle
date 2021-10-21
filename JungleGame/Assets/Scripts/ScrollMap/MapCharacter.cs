@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public enum Character
 {
-    None, Darwin, Julius, Marcus, Brutus
+    None, Darwin, Julius, Marcus, Brutus, Clogg
 }
 
 public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
@@ -77,6 +77,14 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             if (StudentInfoSystem.GetCurrentProfile().currStoryBeat > StoryBeat.PrologueStoryGame)
             {
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.darwinQuips);
+                yield break;
+            }
+        }
+        else if (character == Character.Clogg)
+        {
+            if (StudentInfoSystem.GetCurrentProfile().currStoryBeat > StoryBeat.OrcVillageMeetClogg)
+            {
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.cloggQuips);
                 yield break;
             }
         }
@@ -179,6 +187,29 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                     yield return null;
             }
         }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillageMeetClogg)
+        {
+            // only continue if tapped on gorilla
+            if (character == Character.Clogg)
+            {
+                // add pre story game talkie here
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcVillageIntro_3);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                ScrollMapManager.instance.EnableAllMapIcons();
+                ScrollMapManager.instance.clogg.ShowExclamationMark(false);
+
+                // save to SIS and exit to scroll map
+                StudentInfoSystem.AdvanceStoryBeat();
+                StudentInfoSystem.SaveStudentPlayerData();
+
+                ScrollMapManager.instance.EnableAllMapIcons();
+                yield break;
+            }
+        }
+
+
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1 ||
                  StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Mudslide_challengeGame_1)
         {

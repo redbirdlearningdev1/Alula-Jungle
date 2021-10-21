@@ -55,6 +55,8 @@ public class MapAnimationController : MonoBehaviour
     public Transform marcusMSPosEND;
     public Transform marcusMSChallengePos;
 
+    [Header("Orc OV")]
+    public Transform cloggOVPosDEFAULT;
 
     void Awake()
     {

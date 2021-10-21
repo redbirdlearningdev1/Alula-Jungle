@@ -38,6 +38,16 @@ public enum MapIconIdentfier
     MS_challenge_1,
     MS_challenge_2,
     MS_challenge_3,
+
+    // orc village
+    OV_houseL,
+    OV_houseS,
+    OV_statue,
+    OV_fire,
+
+    OV_challenge_1,
+    OV_challenge_2,
+    OV_challenge_3,
 }
 
 public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
@@ -109,7 +119,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     void Update()
     {
         // wiggle icon every so often
-        if (wiggleIcon && !waitForWiggle)
+        if (wiggleIcon && !waitForWiggle && interactable)
         {
             timer += Time.deltaTime;
             if (timer >= timeBetweenWiggles)
@@ -137,6 +147,9 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     public void RevealStars()
     {
+        if (currentStars == null)
+            return;
+
         StartCoroutine(RevealStarsRoutine());
     }
 
@@ -158,6 +171,9 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     public void HideStars()
     {   
+        if (currentStars == null)
+            return;
+            
         StartCoroutine(HideStarsRoutine());
     }
 
@@ -310,6 +326,20 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 case MapIconIdentfier.MS_tower:
                     StudentInfoSystem.GetCurrentProfile().mapData.MS_tower.isFixed = opt;
                     break;
+
+                // orc village
+                case MapIconIdentfier.OV_houseL:
+                    StudentInfoSystem.GetCurrentProfile().mapData.OV_houseL.isFixed = opt;
+                    break;
+                case MapIconIdentfier.OV_houseS:
+                    StudentInfoSystem.GetCurrentProfile().mapData.OV_houseS.isFixed = opt;
+                    break;
+                case MapIconIdentfier.OV_statue:
+                    StudentInfoSystem.GetCurrentProfile().mapData.OV_statue.isFixed = opt;
+                    break;
+                case MapIconIdentfier.OV_fire:
+                    StudentInfoSystem.GetCurrentProfile().mapData.OV_fire.isFixed = opt;
+                    break;
             }
             StudentInfoSystem.SaveStudentPlayerData();
         }
@@ -400,6 +430,16 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 return StudentInfoSystem.GetCurrentProfile().mapData.MS_ramp.stars;
             case MapIconIdentfier.MS_tower:
                 return StudentInfoSystem.GetCurrentProfile().mapData.MS_tower.stars;
+
+            // orc village
+            case MapIconIdentfier.OV_houseL:
+                return StudentInfoSystem.GetCurrentProfile().mapData.OV_houseL.stars;
+            case MapIconIdentfier.OV_houseS:
+                return StudentInfoSystem.GetCurrentProfile().mapData.OV_houseS.stars;
+            case MapIconIdentfier.OV_statue:
+                return StudentInfoSystem.GetCurrentProfile().mapData.OV_statue.stars;
+            case MapIconIdentfier.OV_fire:
+                return StudentInfoSystem.GetCurrentProfile().mapData.OV_fire.stars;
         }   
     }
 }

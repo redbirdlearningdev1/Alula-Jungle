@@ -97,6 +97,16 @@ public class RoyalDecreeController : MonoBehaviour
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType);
                 break;
+            case MapLocation.Mudslide:
+                currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType);
+                currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType);
+                currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType);
+                break;
+            case MapLocation.OrcVillage:
+                currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType);
+                currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType);
+                currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType);
+                break;
         }
 
         // dim bg
