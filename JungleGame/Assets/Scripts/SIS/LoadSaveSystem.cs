@@ -10,10 +10,10 @@ using UnityEditor;
 public static class LoadSaveSystem
 {
     // default student player values
-    public static string default_version = "1.8";
+    public static string default_version = "2.0";
     // 1.6 added stickers to SIS
 
-    public static string default_name = "new profile :)";
+    public static string default_name = "new profile";
     public static int    default_stars = 0;
     public static int    default_map_limit = 0;
 
@@ -61,7 +61,7 @@ public static class LoadSaveSystem
 #endif
     }
 
-    public static StudentPlayerData LoadStudentData(StudentIndex index)
+    public static StudentPlayerData LoadStudentData(StudentIndex index, bool createNewIfNull)
     {
         string path = GetStudentDataPath(index);
         string file = "{}";
@@ -85,8 +85,11 @@ public static class LoadSaveSystem
         {
             // Debug.Log("Path not found: " + path.ToString() + "\nReturning null");
             // create new profile file
-            ResetStudentData(index);
-            return LoadStudentData(index);
+            if (createNewIfNull)
+            {
+                ResetStudentData(index);
+                return LoadStudentData(index, false);
+            }
         }
 
         return null;
@@ -100,7 +103,7 @@ public static class LoadSaveSystem
         // set all variables to be default values
         new_data.version =      default_version;
         new_data.name =         default_name;
-        new_data.totalStars =   default_stars;
+        new_data.mostRecentProfile = false;
 
         // coins
         new_data.goldCoins = default_gold_coins;
@@ -129,6 +132,8 @@ public static class LoadSaveSystem
         new_data.firstTimeLoseChallengeGame = false;
         new_data.everyOtherTimeLoseChallengeGame = false;
         
+        new_data.mapLimit = 0;
+        new_data.currentChapter = Chapter.chapter_0;
         new_data.mapData = new MapData();
         
         // gorilla village

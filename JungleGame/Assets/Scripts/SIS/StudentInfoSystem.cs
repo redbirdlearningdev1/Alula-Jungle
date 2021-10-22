@@ -18,8 +18,14 @@ public static class StudentInfoSystem
 
     public static void SetStudentPlayer(StudentIndex index)
     {
+        if (currentStudentPlayer != null)
+            currentStudentPlayer.mostRecentProfile = false; // this is no longer the most recenty opened profile
         SaveStudentPlayerData();
-        currentStudentPlayer = LoadSaveSystem.LoadStudentData(index); // load new student data
+
+        currentStudentPlayer = LoadSaveSystem.LoadStudentData(index, true); // load new student data
+        currentStudentPlayer.mostRecentProfile = true; // this is now the most recenty opened profile
+        SaveStudentPlayerData();
+
         SettingsManager.instance.LoadSettingsFromProfile(); // load profile settings
         DropdownToolbar.instance.LoadToolbarDataFromProfile(); // load profile coins
         GameManager.instance.SendLog("StudentInfoSystem", "current profile set to: " + index);
@@ -40,7 +46,7 @@ public static class StudentInfoSystem
 
     public static StudentPlayerData GetStudentData(StudentIndex index)
     {
-        return LoadSaveSystem.LoadStudentData(index);
+        return LoadSaveSystem.LoadStudentData(index, false);
     }
 
     public static List<StudentPlayerData> GetAllStudentDatas()

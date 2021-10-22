@@ -8,9 +8,8 @@ public class StudentPlayerData
     public string version;
     public StudentIndex studentIndex; // differentiate btwn student profiles
     public bool active; // bool to determine if someone has created this student player
+    public bool mostRecentProfile; // is this the most recently opend profile?
     public string name; // name of student
-    public int totalStars; // total number of stars
-    public int mapLimit; // how far player can move on map
 
     // coins
     public int goldCoins;
@@ -39,6 +38,8 @@ public class StudentPlayerData
     public List<ChallengeWord> challengeWordPool;
 
     // map data
+    public Chapter currentChapter; // completed chapter
+    public int mapLimit; // how far player can move on scroll map
     public MapData mapData;
 
     // sticker data
@@ -88,6 +89,19 @@ public enum StoryBeat
 #   MAP DATA
 ################################################
 */
+
+[System.Serializable]
+public enum Chapter
+{
+    chapter_0,
+    chapter_1,
+    chapter_2,
+    chapter_3,
+    chapter_4,
+    chapter_5,
+    chapter_6,
+    endGame_7
+}
 
 [System.Serializable]
 public class MapIconData
