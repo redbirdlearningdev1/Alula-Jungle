@@ -98,8 +98,6 @@ public class ScrollMapManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        // disable 
-
         // disable UI
         leftButton.interactable = false;
         rightButton.interactable = false;
@@ -144,10 +142,6 @@ public class ScrollMapManager : MonoBehaviour
         
         revealNavUI = true;
         revealGMUI = true;
-
-        // place gorilla in GV
-        MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaGVPosSTART.position;
-
         
         /* 
         ################################################
@@ -268,6 +262,7 @@ public class ScrollMapManager : MonoBehaviour
                 yield return null;
 
             // place gorilla in GV
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaGVPosSTART.position;
             gorilla.ShowExclamationMark(true);
 
             StartCoroutine(UnlockMapArea(2, true));
@@ -281,6 +276,7 @@ public class ScrollMapManager : MonoBehaviour
                 yield return null;
 
             // advance story beat
+            StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_1; // new chapter!
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
 
@@ -292,6 +288,8 @@ public class ScrollMapManager : MonoBehaviour
             DisableAllMapIcons();
             showStars = false;
 
+            // place gorilla in GV
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaGVPosSTART.position;
             gorilla.ShowExclamationMark(true);
             gorilla.interactable = true;
         }
@@ -300,13 +298,17 @@ public class ScrollMapManager : MonoBehaviour
             SetMapPosition(2);
             showStars = false;
 
+            // place gorilla in GV
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaGVPosSTART.position;
             gorilla.ShowExclamationMark(true);
             gorilla.interactable = true;
         }
         else if (playGameEvent == StoryBeat.RedShowsStickerButton)
         {
             SetMapPosition(2);
-            // darwin quips
+
+            // place gorilla in GV
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaGVPosSTART.position;
             gorilla.interactable = true;
 
             // check if player has enough coins
@@ -331,6 +333,10 @@ public class ScrollMapManager : MonoBehaviour
         else if (playGameEvent == StoryBeat.VillageRebuilt)
         {
             SetMapPosition(2);
+
+            // place gorilla in GV
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaGVPosSTART.position;
+
             // make sure player has done the sticker tutorial
             if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
             {
@@ -349,6 +355,7 @@ public class ScrollMapManager : MonoBehaviour
                 {
                     // dont show stars
                     showStars = false;
+                    gorilla.interactable = false;
 
                     // make sure we are at gorilla village
                     mapPosIndex = 2;
@@ -431,9 +438,6 @@ public class ScrollMapManager : MonoBehaviour
         {
             SetMapPosition(2);
             showStars = false;
-            
-            // place gorilla off-screen
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
 
             // place tiger and monkies on screen
             MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerGVChallengePos.position;
@@ -494,9 +498,6 @@ public class ScrollMapManager : MonoBehaviour
         {
             SetMapPosition(2);
             showStars = false;
-            
-            // place gorilla off-screen
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
 
             // place tiger and monkies on screen
             MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerGVChallengePos.position;
@@ -576,9 +577,6 @@ public class ScrollMapManager : MonoBehaviour
         {
             SetMapPosition(2);
             showStars = false;
-            
-            // place gorilla off-screen
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
 
             // place tiger and monkies on screen
             MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerGVChallengePos.position;
@@ -663,10 +661,7 @@ public class ScrollMapManager : MonoBehaviour
         {
             SetMapPosition(2);
             showStars = false;
-            
-            // place gorilla off-screen
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
-
+    
             // place tiger and monkies on screen
             MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerGVChallengePos.position;
             MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusGVChallengePos.position;
@@ -770,8 +765,6 @@ public class ScrollMapManager : MonoBehaviour
         else if (playGameEvent == StoryBeat.MudslideUnlocked)
         {
             SetMapPosition(3);
-            // place gorilla off-screen
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
 
             // make sure player has rebuilt all the MS map icons
             if (StudentInfoSystem.GetCurrentProfile().mapData.MS_logs.isFixed &&
@@ -850,10 +843,7 @@ public class ScrollMapManager : MonoBehaviour
         {
             SetMapPosition(3);
             showStars = false;
-            
-            // place gorilla off-screen
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
-
+           
             // place tiger and monkies on screen
             MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerMSChallengePos.position;
             MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusMSChallengePos.position;
@@ -914,9 +904,6 @@ public class ScrollMapManager : MonoBehaviour
             SetMapPosition(3);
             showStars = false;
             
-            // place gorilla off-screen
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
-
             // place tiger and monkies on screen
             MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerMSChallengePos.position;
             MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusMSChallengePos.position;
@@ -996,9 +983,6 @@ public class ScrollMapManager : MonoBehaviour
             SetMapPosition(3);
             showStars = false;
             
-            // place gorilla off-screen
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
-
             // place tiger and monkies on screen
             MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerMSChallengePos.position;
             MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusMSChallengePos.position;
@@ -1083,10 +1067,7 @@ public class ScrollMapManager : MonoBehaviour
             SetMapPosition(3);
             DisableAllMapIcons();
             showStars = false;
-            
-            // place gorilla off-screen
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.offscreenPos.position;
-
+        
             // place tiger and monkies on screen
             MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerMSChallengePos.position;
             MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusMSChallengePos.position;
@@ -1145,7 +1126,7 @@ public class ScrollMapManager : MonoBehaviour
             mapIconsAtLocation[2].signPost.ShowSignPost(0);
             mapIconsAtLocation[2].signPost.GetComponent<SignPostController>().interactable = false;
             // Save to SIS
-            StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_unlocked = true;
+            StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_unlocked = true;
             StudentInfoSystem.SaveStudentPlayerData();
 
             // before unlocking orc village - set objects to be destroyed
@@ -1199,11 +1180,369 @@ public class ScrollMapManager : MonoBehaviour
         {
             SetMapPosition(4);
 
-            // place clogg in village
-            clogg.transform.position = MapAnimationController.instance.cloggOVPosDEFAULT.position;
+            // make sure player has rebuilt all the OV map icons
+            if (StudentInfoSystem.GetCurrentProfile().mapData.OV_houseL.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.OV_houseS.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.OV_statue.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.OV_fire.isFixed)
+            {
+                // dont show stars
+                showStars = false;
 
-            // make clogg interactable
-            clogg.interactable = true;
+                // make sure we are at orc village
+                mapPosIndex = 4;
+                // move map to next right map location
+                float x = GetXPosFromMapLocationIndex(mapPosIndex);
+                StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
+
+                yield return new WaitForSeconds(2.5f);
+
+                // play orc village rebuilt talkie 1
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcVillageRebuilt_1);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // move tiger and monkies onscreen
+                MapAnimationController.instance.TigerAndMonkiesWalkInOV();
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+
+                // play orc village rebuilt talkie 2
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcVillageRebuilt_2);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // move tiger and monkies to challenge pos
+                MapAnimationController.instance.TigerAndMonkiesChallengePosOV();
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+
+                // make challenge games active
+                    yield return new WaitForSeconds(0.5f);
+
+                // set tiger stuff
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType == GameType.None)
+                {
+                    GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.OrcVillage);
+                    tiger.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                }
+                else
+                {
+                    tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType;
+                }
+                    
+                tiger.ShowExclamationMark(true);
+                tiger.interactable = true;
+                tiger.GetComponent<Animator>().Play("aTigerTwitch");
+
+                // set game manager stuff
+                GameManager.instance.mapID = MapIconIdentfier.OV_challenge_1;
+                GameManager.instance.playingChallengeGame = true;
+
+                // save to sis and continue
+                StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType = tiger.gameType;
+                StudentInfoSystem.AdvanceStoryBeat();
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
+            else
+            {
+                // place clogg in village
+                clogg.transform.position = MapAnimationController.instance.cloggOVPosDEFAULT.position;
+
+                // make clogg interactable
+                clogg.interactable = true;
+            }
+        }
+        else if (playGameEvent == StoryBeat.OrcVillage_challengeGame_1)
+        {
+            SetMapPosition(4);
+            showStars = false;
+        
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerOVChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusOVChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusOVChallengePos.position;
+
+            // set tiger stuff
+            if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType == GameType.None)
+            {
+                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.OrcVillage);
+                tiger.gameType = newGameType;
+                StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType = newGameType;
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
+            else
+            {
+                tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType;
+            }
+
+            // set game manager stuff
+            GameManager.instance.mapID = MapIconIdentfier.OV_challenge_1;
+            GameManager.instance.playingChallengeGame = true;
+
+            // make sure we are at orc village
+            mapPosIndex = 4;
+            // move map to next right map location
+            float x = GetXPosFromMapLocationIndex(mapPosIndex);
+            StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
+
+            yield return new WaitForSeconds(2.5f);
+
+            // play correct lose talkies
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play julius wins
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else if (
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play julius wins again
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins_again);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+
+            yield return new WaitForSeconds(1f);
+
+            tiger.interactable = true;
+            tiger.ShowExclamationMark(true);
+            tiger.GetComponent<Animator>().Play("aTigerTwitch");
+        }
+        else if (playGameEvent == StoryBeat.OrcVillage_challengeGame_2)
+        {
+            SetMapPosition(4);
+            showStars = false;
+            
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerOVChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusOVChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusOVChallengePos.position;
+
+            // make tiger sad
+            tiger.GetComponent<Animator>().Play("sTigerIdle");
+
+            // set tiger stuff
+            if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType == GameType.None)
+            {
+                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.OrcVillage);
+                marcus.gameType = newGameType;
+                StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType = newGameType;
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
+            else
+            {
+                marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType;
+            }
+
+            // set game manager stuff
+            GameManager.instance.mapID = MapIconIdentfier.OV_challenge_2;
+            GameManager.instance.playingChallengeGame = true;
+
+            // make sure we are at orcVillage
+            mapPosIndex = 4;
+            // move map to next right map location
+            float x = GetXPosFromMapLocationIndex(mapPosIndex);
+            StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
+
+            yield return new WaitForSeconds(2.5f);
+
+            // play correct lose talkies
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play marcus wins
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_wins);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else if (
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play marcus wins again
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_wins_again);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else
+            {
+                // play julius loses + marcus challenges
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_loses__marcus_challenges);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // do not go to game if talkie manager says not to
+                if (TalkieManager.instance.doNotContinueToGame)
+                {
+                    TalkieManager.instance.doNotContinueToGame = false;
+                }
+                else
+                {
+                    // continue to marcus challenge game
+                    marcus.GoToGameDataSceneImmediately();
+                }
+            }
+
+            marcus.GetComponent<Animator>().Play("marcusLose");
+            marcus.ShowExclamationMark(true);
+            marcus.interactable = true;
+        }
+        else if (playGameEvent == StoryBeat.OrcVillage_challengeGame_3)
+        {
+            SetMapPosition(4);
+            showStars = false;
+            
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerOVChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusOVChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusOVChallengePos.position;
+
+            // make tiger sad
+            tiger.GetComponent<Animator>().Play("sTigerIdle");
+            // make marcus sad (ANGRY) 
+            marcus.GetComponent<Animator>().Play("marcusFixed");
+
+            // set tiger stuff
+            if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType == GameType.None)
+            {
+                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.OrcVillage);
+                brutus.gameType = newGameType;
+                StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType = newGameType;
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
+            else
+            {
+                brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType;
+            }
+            
+            // set game manager stuff
+            GameManager.instance.mapID = MapIconIdentfier.OV_challenge_3;
+            GameManager.instance.playingChallengeGame = true;
+
+            // make sure we are at mudslide
+            mapPosIndex = 4;
+            // move map to next right map location
+            float x = GetXPosFromMapLocationIndex(mapPosIndex);
+            StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
+
+            yield return new WaitForSeconds(2.5f);
+
+            // play correct lose talkies
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play brutus wins
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_wins);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else if (
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play brutus wins again
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_wins_again);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else
+            {
+                // play marcus loses + brutus challenges
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_loses__brutus_challenges);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // do not go to game if talkie manager says not to
+                if (TalkieManager.instance.doNotContinueToGame)
+                {
+                    TalkieManager.instance.doNotContinueToGame = false;
+                }
+                else
+                {
+                    // continue to marcus challenge game
+                    brutus.GoToGameDataSceneImmediately();
+                }
+            }
+
+            brutus.GetComponent<Animator>().Play("brutusLose");
+            brutus.ShowExclamationMark(true);
+            brutus.interactable = true;
+        }
+        else if (playGameEvent == StoryBeat.OrcVillageRebuilt)
+        {
+            SetMapPosition(4);
+            DisableAllMapIcons();
+            showStars = false;
+           
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerOVChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusOVChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusOVChallengePos.position;
+
+            // make tiger sad
+            tiger.GetComponent<Animator>().Play("sTigerIdle");
+            // make marcus sad (ANGRY) 
+            marcus.GetComponent<Animator>().Play("marcusFixed");
+            // make brutus sad
+            brutus.GetComponent<Animator>().Play("brutusFixed");
+
+             // make sure we are at mudslide
+            mapPosIndex = 4;
+            // move map to next right map location
+            float x = GetXPosFromMapLocationIndex(mapPosIndex);
+            StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
+
+            yield return new WaitForSeconds(2.5f);
+
+            // play orc village defeated 1
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcVillageChallengeDefeated_1);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // tiger runs off screen
+            MapAnimationController.instance.TigerRunAwayDefeatedOV();
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+
+            yield return new WaitForSeconds(2f);
+
+            // monkies go hehe and haha then run off too
+            MapAnimationController.instance.MonkeyExitAnimationDefeatedOV();
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+
+            // play orc village challenge 2
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcVillageChallengeDefeated_2);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // place tiger and monkies off screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.offscreenPos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.offscreenPos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.offscreenPos.position;
+
+            // gv sign post springs into place
+            mapIconsAtLocation[4].signPost.ShowSignPost(0);
+            mapIconsAtLocation[4].signPost.GetComponent<SignPostController>().interactable = false;
+            // Save to SIS
+            StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_2; // new chapter!
+            StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_unlocked = true;
+            StudentInfoSystem.AdvanceStoryBeat();
+            StudentInfoSystem.SaveStudentPlayerData();
+
+            // unlock next section !!!
+            EnableAllMapIcons();
         }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {
@@ -1283,6 +1622,10 @@ public class ScrollMapManager : MonoBehaviour
                     case MapLocation.Mudslide:
                         if (StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_unlocked)
                             mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_stars);
+                        break;
+                    case MapLocation.OrcVillage:
+                        if (StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_unlocked)
+                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_stars);
                         break;
                     // etc ...
                 }
@@ -1433,6 +1776,8 @@ public class ScrollMapManager : MonoBehaviour
                 return MapLocation.GorillaVillage;
             case 3:
                 return MapLocation.Mudslide;
+            case 4:
+                return MapLocation.OrcVillage;
         }
     }
 
@@ -1444,13 +1789,15 @@ public class ScrollMapManager : MonoBehaviour
 
     public void OnGoLeftPressed()
     {
-        print ("left 1");
         if (navButtonsDisabled) return;
-        print ("left 2");
-
-        // player cannot input for 'transitionTime' seconds
         navButtonsDisabled = true;
-        StartCoroutine(NavInputDelay(transitionTime));
+        
+        StartCoroutine(LeftPressedRoutine());
+    }
+
+    public IEnumerator LeftPressedRoutine()
+    {
+        StartCoroutine(NavInputDelay(1.25f));
 
         int prevMapPos = mapPosIndex;
 
@@ -1460,13 +1807,13 @@ public class ScrollMapManager : MonoBehaviour
             print ("left bump!");
             mapPosIndex = minMapLimit;
             StartCoroutine(BumpAnimation(true));
-            return;
+            yield break;
         }
 
         // hide stars from prev map pos
         StartCoroutine(ToggleLocationRoutine(false, prevMapPos));
-        // show stars on current map location
-        StartCoroutine(ToggleLocationRoutine(true, mapPosIndex));
+
+        yield return new WaitForSeconds(0.1f);
 
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.LeftBlip, 1f);
@@ -1474,17 +1821,26 @@ public class ScrollMapManager : MonoBehaviour
         // move map to next left map location
         float x = GetXPosFromMapLocationIndex(mapPosIndex);
         StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, transitionTime));
+
+        yield return new WaitForSeconds(0.25f);
+
+        // show stars on current map location
+        StartCoroutine(ToggleLocationRoutine(true, mapPosIndex));
     }
 
     public void OnGoRightPressed()
     {
-        print ("right 1");
         if (navButtonsDisabled) return;
-        print ("right 2");
 
         // player cannot input for 'transitionTime' seconds
         navButtonsDisabled = true;
-        StartCoroutine(NavInputDelay(transitionTime));
+        
+        StartCoroutine(RightPressedRoutine());
+    }
+
+    public IEnumerator RightPressedRoutine()
+    {
+        StartCoroutine(NavInputDelay(1.25f));
 
         int prevMapPos = mapPosIndex;
 
@@ -1495,7 +1851,7 @@ public class ScrollMapManager : MonoBehaviour
             print ("you hit da limit!");
             mapPosIndex = mapLimit;
             StartCoroutine(BumpAnimation(false));
-            return;
+            yield break;
         }
         // cant scroll past map end
         else if (mapPosIndex > cameraLocations.Count - 1)
@@ -1503,13 +1859,13 @@ public class ScrollMapManager : MonoBehaviour
             print ("right bump!");
             mapPosIndex = cameraLocations.Count - 1;
             StartCoroutine(BumpAnimation(false));
-            return;
+            yield break;
         }
 
         // hide stars from prev map pos
         StartCoroutine(ToggleLocationRoutine(false, prevMapPos));
-        // show stars on current map location
-        StartCoroutine(ToggleLocationRoutine(true, mapPosIndex));
+
+        yield return new WaitForSeconds(0.1f);
 
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightBlip, 1f);
@@ -1517,6 +1873,11 @@ public class ScrollMapManager : MonoBehaviour
         // move map to next right map location
         float x = GetXPosFromMapLocationIndex(mapPosIndex);
         StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, transitionTime));
+
+        yield return new WaitForSeconds(0.25f);
+
+        // show stars on current map location
+        StartCoroutine(ToggleLocationRoutine(true, mapPosIndex));
     }
 
     private IEnumerator NavInputDelay(float delay)

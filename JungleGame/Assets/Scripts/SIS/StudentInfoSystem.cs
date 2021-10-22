@@ -8,7 +8,7 @@ public static class StudentInfoSystem
 
     public static StudentPlayerData GetCurrentProfile()
     {
-        // be default - use profile 1
+        // by default - use profile 1
         if (currentStudentPlayer == null)
         {
             SetStudentPlayer(StudentIndex.student_1);
@@ -18,17 +18,42 @@ public static class StudentInfoSystem
 
     public static void SetStudentPlayer(StudentIndex index)
     {
-        if (currentStudentPlayer != null)
-            currentStudentPlayer.mostRecentProfile = false; // this is no longer the most recenty opened profile
         SaveStudentPlayerData();
-
         currentStudentPlayer = LoadSaveSystem.LoadStudentData(index, true); // load new student data
-        currentStudentPlayer.mostRecentProfile = true; // this is now the most recenty opened profile
-        SaveStudentPlayerData();
 
         SettingsManager.instance.LoadSettingsFromProfile(); // load profile settings
         DropdownToolbar.instance.LoadToolbarDataFromProfile(); // load profile coins
         GameManager.instance.SendLog("StudentInfoSystem", "current profile set to: " + index);
+    }
+
+    private static void SetMostRecentProfile(StudentIndex index)
+    {
+        GameManager.instance.SendLog("StudentInfoSystem", "setting most recent profile: " + index);
+
+        var data1 = LoadSaveSystem.LoadStudentData(StudentIndex.student_1, false);
+        var data2 = LoadSaveSystem.LoadStudentData(StudentIndex.student_2, false);
+        var data3 = LoadSaveSystem.LoadStudentData(StudentIndex.student_3, false);
+
+        data1.mostRecentProfile = false;
+        data2.mostRecentProfile = false;
+        data3.mostRecentProfile = false;
+
+        switch (index)
+        {
+            case StudentIndex.student_1:
+                data1.mostRecentProfile = true;
+                break;
+            case StudentIndex.student_2:
+                data2.mostRecentProfile = true;
+                break;
+            case StudentIndex.student_3:
+                data3.mostRecentProfile = true;
+                break;
+        }
+
+        LoadSaveSystem.SaveStudentData(data1, true);
+        LoadSaveSystem.SaveStudentData(data2, true);
+        LoadSaveSystem.SaveStudentData(data3, true);
     }
 
     public static void RemoveCurrentStudentPlayer()
@@ -39,7 +64,11 @@ public static class StudentInfoSystem
     public static void SaveStudentPlayerData()
     {
         if (currentStudentPlayer != null)
+        {
             LoadSaveSystem.SaveStudentData(currentStudentPlayer);  // save current student data
+            SetMostRecentProfile(currentStudentPlayer.studentIndex); // make profile most recent
+        }
+            
         else
             Debug.Log("Current student player is null.");
     }
@@ -94,6 +123,12 @@ public static class StudentInfoSystem
                 challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType);
                 challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType);
                 challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType);
+                break;
+
+            case MapLocation.OrcVillage:
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType);
                 break;
 
             // add other cases here

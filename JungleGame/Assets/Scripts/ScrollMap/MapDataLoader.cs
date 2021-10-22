@@ -18,6 +18,12 @@ public class MapDataLoader : MonoBehaviour
     public MapIcon MS_ramp;
     public MapIcon MS_tower;
 
+    [Header("Orc Village")]
+    public MapIcon OV_houseL;
+    public MapIcon OV_houseS;
+    public MapIcon OV_statue;
+    public MapIcon OV_fire;
+
     void Awake()
     {
         if (instance == null)
@@ -53,6 +59,19 @@ public class MapDataLoader : MonoBehaviour
 
         MS_tower.SetFixed(mapData.MS_tower.isFixed, false, false);
         MS_tower.SetStars(mapData.MS_tower.stars);
+
+        // orc village section
+        OV_houseL.SetFixed(mapData.OV_houseL.isFixed, false, false);
+        OV_houseL.SetStars(mapData.OV_houseL.stars);
+
+        OV_houseS.SetFixed(mapData.OV_houseS.isFixed, false, false);
+        OV_houseS.SetStars(mapData.OV_houseS.stars);
+
+        OV_statue.SetFixed(mapData.OV_statue.isFixed, false, false);
+        OV_statue.SetStars(mapData.OV_statue.stars);
+
+        OV_fire.SetFixed(mapData.OV_fire.isFixed, false, false);
+        OV_fire.SetStars(mapData.OV_fire.stars);
     }
 
     public MapIcon GetMapIconFromID(MapIconIdentfier id)
@@ -68,6 +87,7 @@ public class MapDataLoader : MonoBehaviour
                 return GV_statue;
             case MapIconIdentfier.GV_fire:
                 return GV_fire;
+
             case MapIconIdentfier.MS_logs:
                 return MS_logs;
             case MapIconIdentfier.MS_pond:
@@ -76,6 +96,15 @@ public class MapDataLoader : MonoBehaviour
                 return MS_ramp;
             case MapIconIdentfier.MS_tower:
                 return MS_tower;
+
+            case MapIconIdentfier.OV_houseL:
+                return OV_houseL;
+            case MapIconIdentfier.OV_houseS:
+                return OV_houseS;
+            case MapIconIdentfier.OV_statue:
+                return OV_statue;
+            case MapIconIdentfier.OV_fire:
+                return OV_fire;
         }
     }
 }

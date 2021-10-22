@@ -1825,7 +1825,7 @@ GameObject:
   m_Component:
   - component: {fileID: 202608421}
   m_Layer: 5
-  m_Name: MarcusGVChallengePos
+  m_Name: MarcusOVChallengePos
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1843,11 +1843,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1506866582}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 1261.0004, y: -570}
+  m_AnchoredPosition: {x: 1362, y: -560}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &207009082
@@ -3259,7 +3259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 259583742}
   m_Layer: 5
-  m_Name: TigerGVChallengePos
+  m_Name: TigerOVChallengePos
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3277,11 +3277,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1506866582}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 1210.0004, y: -715}
+  m_AnchoredPosition: {x: 1180, y: -611}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &268380823
@@ -3389,7 +3389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 282638234}
   m_Layer: 5
-  m_Name: BrutusGVPosSTART
+  m_Name: BrutusOVPosSTART
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3407,11 +3407,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1506866582}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 2436.0002, y: -579}
+  m_AnchoredPosition: {x: 2254.9995, y: -643}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &294840454
@@ -5039,6 +5039,10 @@ MonoBehaviour:
   MS_pond: {fileID: 1184923437}
   MS_ramp: {fileID: 312371131}
   MS_tower: {fileID: 1309855722}
+  OV_houseL: {fileID: 1230922008}
+  OV_houseS: {fileID: 214545173}
+  OV_statue: {fileID: 296037978}
+  OV_fire: {fileID: 684544322}
 --- !u!114 &397387719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5069,6 +5073,9 @@ MonoBehaviour:
   tigerMSPosSTART: {fileID: 1130312959}
   tigerMSPosEND: {fileID: 1719722326}
   tigerMSChallengePos: {fileID: 1630226058}
+  tigerOVPosSTART: {fileID: 1796888215}
+  tigerOVPosEND: {fileID: 920307157}
+  tigerOVChallengePos: {fileID: 259583742}
   brutus: {fileID: 713519880}
   brutusGVPosSTART: {fileID: 1227518832}
   brutusGVPosEND: {fileID: 722765193}
@@ -5076,6 +5083,9 @@ MonoBehaviour:
   brutusMSPosSTART: {fileID: 1877215966}
   brutusMSPosEND: {fileID: 207848066}
   brutusMSChallengePos: {fileID: 164912334}
+  brutusOVPosSTART: {fileID: 282638234}
+  brutusOVPosEND: {fileID: 1682641997}
+  brutusOVChallengePos: {fileID: 2084452766}
   marcus: {fileID: 245742836}
   marcusGVPosSTART: {fileID: 509783277}
   marcusGVPosEND: {fileID: 962695242}
@@ -5083,6 +5093,9 @@ MonoBehaviour:
   marcusMSPosSTART: {fileID: 1239575427}
   marcusMSPosEND: {fileID: 1376091902}
   marcusMSChallengePos: {fileID: 948301036}
+  marcusOVPosSTART: {fileID: 647802874}
+  marcusOVPosEND: {fileID: 1446783346}
+  marcusOVChallengePos: {fileID: 202608421}
   cloggOVPosDEFAULT: {fileID: 1889318219}
 --- !u!1 &416575173
 GameObject:
@@ -6138,41 +6151,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 486639792}
   m_CullTransparentMesh: 1
---- !u!1 &498569102
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 498569103}
-  m_Layer: 5
-  m_Name: GorillaGVPosSTART
-  m_TagString: Untagged
-  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &498569103
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 498569102}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1506866582}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 1322.0004, y: -667}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &504646929
 GameObject:
   m_ObjectHideFlags: 0
@@ -7668,7 +7646,7 @@ GameObject:
   m_Component:
   - component: {fileID: 647802874}
   m_Layer: 5
-  m_Name: MarcusGVPosSTART
+  m_Name: MarcusOVPosSTART
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -7686,11 +7664,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1506866582}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 2436.0002, y: -487}
+  m_AnchoredPosition: {x: 2254.9995, y: -479}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &684544320
@@ -10396,7 +10374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 920307157}
   m_Layer: 5
-  m_Name: TigerGVPosEND
+  m_Name: TigerOVPosEND
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -10414,11 +10392,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1506866582}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 1327.0004, y: -591}
+  m_AnchoredPosition: {x: 1312, y: -587}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &921217879
@@ -12710,7 +12688,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 48.09892
+      value: 48.89097
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -15653,7 +15631,7 @@ PrefabInstance:
     - target: {fileID: 39181223259902778, guid: f7748a1848cf0264fb970eb40dfd7a52,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 39181223259902778, guid: f7748a1848cf0264fb970eb40dfd7a52,
         type: 3}
@@ -15663,7 +15641,7 @@ PrefabInstance:
     - target: {fileID: 39181223259902778, guid: f7748a1848cf0264fb970eb40dfd7a52,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 39181223259902778, guid: f7748a1848cf0264fb970eb40dfd7a52,
         type: 3}
@@ -15673,7 +15651,7 @@ PrefabInstance:
     - target: {fileID: 39181223259902778, guid: f7748a1848cf0264fb970eb40dfd7a52,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 149.41
+      value: 149.41003
       objectReference: {fileID: 0}
     - target: {fileID: 39181223259902778, guid: f7748a1848cf0264fb970eb40dfd7a52,
         type: 3}
@@ -15718,12 +15696,12 @@ PrefabInstance:
     - target: {fileID: 39181223259902778, guid: f7748a1848cf0264fb970eb40dfd7a52,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 371
+      value: 1433.7
       objectReference: {fileID: 0}
     - target: {fileID: 39181223259902778, guid: f7748a1848cf0264fb970eb40dfd7a52,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -52
+      value: -42
       objectReference: {fileID: 0}
     - target: {fileID: 39181223259902778, guid: f7748a1848cf0264fb970eb40dfd7a52,
         type: 3}
@@ -16565,7 +16543,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2268.0474, y: 1200}
+  m_SizeDelta: {x: 2041.17, y: 1200}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1442246097
 MonoBehaviour:
@@ -16628,7 +16606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1446783346}
   m_Layer: 5
-  m_Name: MarcusGVPosEND
+  m_Name: MarcusOVPosEND
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -16646,11 +16624,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1506866582}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 1446, y: -511}
+  m_AnchoredPosition: {x: 1492, y: -479}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1459183176
@@ -17169,8 +17147,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1889318219}
-  - {fileID: 498569103}
-  - {fileID: 1516041618}
   - {fileID: 1796888215}
   - {fileID: 920307157}
   - {fileID: 647802874}
@@ -17188,41 +17164,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
---- !u!1 &1516041617
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1516041618}
-  m_Layer: 5
-  m_Name: GorillaGVPosEND
-  m_TagString: Untagged
-  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1516041618
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1516041617}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1506866582}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 2436.0002, y: -471}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1534747655
 GameObject:
   m_ObjectHideFlags: 0
@@ -19101,7 +19042,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1682641997}
   m_Layer: 5
-  m_Name: BrutusGVPosEND
+  m_Name: BrutusOVPosEND
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -19119,11 +19060,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1506866582}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 1609.0004, y: -585}
+  m_AnchoredPosition: {x: 1527, y: -600}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1711121730
@@ -20439,7 +20380,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1796888215}
   m_Layer: 5
-  m_Name: TigerGVPosSTART
+  m_Name: TigerOVPosSTART
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -20457,11 +20398,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1506866582}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 2436.0002, y: -600}
+  m_AnchoredPosition: {x: 2254.999, y: -560}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1798795845 stripped
@@ -23780,7 +23721,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2084452766}
   m_Layer: 5
-  m_Name: BrutusGVChallengePos
+  m_Name: BrutusOVChallengePos
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -23798,11 +23739,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1506866582}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 1489.0004, y: -649}
+  m_AnchoredPosition: {x: 1492, y: -643}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2089165092

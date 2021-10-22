@@ -35,14 +35,15 @@ public static class LoadSaveSystem
 
 
 
-    public static void SaveStudentData(StudentPlayerData data, bool makeInactive = false)
+    public static void SaveStudentData(StudentPlayerData data, bool ignoreMakingActive = false)
     {
-        // saving data to profile makes it active
-        if (!data.active)
-            data.active = true;
-        if (makeInactive)
-            data.active = false;
-
+        if (!ignoreMakingActive)
+        {
+            // saving data to profile makes it active
+            if (!data.active)
+                data.active = true;
+        }
+        
         string jsonData = JsonUtility.ToJson(data);
         string path = GetStudentDataPath(data.studentIndex);
 
@@ -87,6 +88,7 @@ public static class LoadSaveSystem
             // create new profile file
             if (createNewIfNull)
             {
+                Debug.Log("profile not found, making new profile!");
                 ResetStudentData(index);
                 return LoadStudentData(index, false);
             }
@@ -103,6 +105,7 @@ public static class LoadSaveSystem
         // set all variables to be default values
         new_data.version =      default_version;
         new_data.name =         default_name;
+        new_data.active = false;
         new_data.mostRecentProfile = false;
 
         // coins
@@ -260,6 +263,7 @@ public static class LoadSaveSystem
 
 
         // save data as incative profile
+        new_data.active = false;
         SaveStudentData(new_data, true);
         GameManager.instance.SendLog("LoadSaveSystem", "reseting profile " + index);
     }

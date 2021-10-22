@@ -10,6 +10,7 @@ public class Star : MonoBehaviour
     [SerializeField] private Sprite fullStar;
 
     public float lerpSpeed;
+    public BobController bobController;
 
     public void SetStar(bool full)
     {
@@ -26,15 +27,6 @@ public class Star : MonoBehaviour
             image.sprite = emptyStar;
         }    
     }
-
-    // public void SetRendererLayer(int layer)
-    // {
-    //     // get sprite renderer if null
-    //     if (image == null)
-    //         image = GetComponent<Image>();
-
-    //     image.sortingOrder = layer;
-    // }
 
     public void LerpStarAlphaScale(float targetAlpha, float targetScale)
     {

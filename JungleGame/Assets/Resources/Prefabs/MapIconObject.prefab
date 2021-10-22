@@ -294,6 +294,7 @@ GameObject:
   - component: {fileID: 1816571983518365271}
   - component: {fileID: 6203547883584930053}
   - component: {fileID: 986053195531192805}
+  - component: {fileID: 2505731618596019251}
   m_Layer: 8
   m_Name: Star1
   m_TagString: Untagged
@@ -343,6 +344,7 @@ MonoBehaviour:
   emptyStar: {fileID: 21300000, guid: f32a7519d3797a640b47e5498016cf5d, type: 3}
   fullStar: {fileID: 21300000, guid: e6906831eb5638140afd0204ab62547f, type: 3}
   lerpSpeed: 0.4
+  bobController: {fileID: 2505731618596019251}
 --- !u!114 &986053195531192805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,6 +375,61 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2505731618596019251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3500515607387472961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f38c42688ec48419806bf848a71a69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.0839685
+      outSlope: 1.0839685
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.30335882
+    - serializedVersion: 3
+      time: 1.2692204
+      value: 1.0049438
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 3.7697282
+      value: -0.99669135
+      inSlope: 0.0042361245
+      outSlope: 0.0042361245
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.71655303
+    - serializedVersion: 3
+      time: 5.0015235
+      value: 0.0061168433
+      inSlope: 1.5075318
+      outSlope: 1.5075318
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.44958925
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  multiplier: 0.1
 --- !u!1 &4671662864060490030
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +442,7 @@ GameObject:
   - component: {fileID: 491081852863302036}
   - component: {fileID: 3231415210412094139}
   - component: {fileID: 1658522750744591107}
+  - component: {fileID: 8665781376706289178}
   m_Layer: 8
   m_Name: Star2
   m_TagString: Untagged
@@ -434,6 +492,7 @@ MonoBehaviour:
   emptyStar: {fileID: 21300000, guid: 373ee3d2bfc9dd649ae5ec2b8825a339, type: 3}
   fullStar: {fileID: 21300000, guid: 29ea01970faa797429d77ec55de0b3e2, type: 3}
   lerpSpeed: 0.4
+  bobController: {fileID: 8665781376706289178}
 --- !u!114 &1658522750744591107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,6 +523,61 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8665781376706289178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4671662864060490030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f38c42688ec48419806bf848a71a69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.0839685
+      outSlope: 1.0839685
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.30335882
+    - serializedVersion: 3
+      time: 1.2692204
+      value: 1.0049438
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 3.7697282
+      value: -0.99669135
+      inSlope: 0.0042361245
+      outSlope: 0.0042361245
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.71655303
+    - serializedVersion: 3
+      time: 5.0015235
+      value: 0.0061168433
+      inSlope: 1.5075318
+      outSlope: 1.5075318
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.44958925
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  multiplier: 0.1
 --- !u!1 &4811275951651201366
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,6 +685,7 @@ GameObject:
   - component: {fileID: 5063256135455860370}
   - component: {fileID: 8130513907423047081}
   - component: {fileID: 8977717065067528761}
+  - component: {fileID: 1620165027182988361}
   m_Layer: 8
   m_Name: Star1
   m_TagString: Untagged
@@ -620,6 +735,7 @@ MonoBehaviour:
   emptyStar: {fileID: 21300000, guid: 97fb59563f98d0b4cb9d21f77924d0d0, type: 3}
   fullStar: {fileID: 21300000, guid: 3c4ffe16abe6dd84581882f9a69c001b, type: 3}
   lerpSpeed: 0.4
+  bobController: {fileID: 1620165027182988361}
 --- !u!114 &8977717065067528761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,6 +766,61 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1620165027182988361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864041520847430243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f38c42688ec48419806bf848a71a69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.0839685
+      outSlope: 1.0839685
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.30335882
+    - serializedVersion: 3
+      time: 1.2692204
+      value: 1.0049438
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 3.7697282
+      value: -0.99669135
+      inSlope: 0.0042361245
+      outSlope: 0.0042361245
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.71655303
+    - serializedVersion: 3
+      time: 5.0015235
+      value: 0.0061168433
+      inSlope: 1.5075318
+      outSlope: 1.5075318
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.44958925
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  multiplier: 0.1
 --- !u!1 &5138296651340451107
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +871,7 @@ GameObject:
   - component: {fileID: 2576714959529527419}
   - component: {fileID: 7169191400551473094}
   - component: {fileID: 6021685263866179673}
+  - component: {fileID: 7815208181506825254}
   m_Layer: 8
   m_Name: Star2
   m_TagString: Untagged
@@ -749,6 +921,7 @@ MonoBehaviour:
   emptyStar: {fileID: 21300000, guid: adaa3b8eca2fdad4791657b5557b5934, type: 3}
   fullStar: {fileID: 21300000, guid: 2404d7d793632c646b713af698885c0b, type: 3}
   lerpSpeed: 0.4
+  bobController: {fileID: 7815208181506825254}
 --- !u!114 &6021685263866179673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -779,6 +952,61 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7815208181506825254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5255950455901908773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f38c42688ec48419806bf848a71a69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.0839685
+      outSlope: 1.0839685
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.30335882
+    - serializedVersion: 3
+      time: 1.2692204
+      value: 1.0049438
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 3.7697282
+      value: -0.99669135
+      inSlope: 0.0042361245
+      outSlope: 0.0042361245
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.71655303
+    - serializedVersion: 3
+      time: 5.0015235
+      value: 0.0061168433
+      inSlope: 1.5075318
+      outSlope: 1.5075318
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.44958925
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  multiplier: 0.1
 --- !u!1 &6855744673953196711
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,6 +1019,7 @@ GameObject:
   - component: {fileID: 4991487323563000081}
   - component: {fileID: 2284428866079842825}
   - component: {fileID: 840017713755993884}
+  - component: {fileID: 4222927959463662968}
   m_Layer: 8
   m_Name: Star3
   m_TagString: Untagged
@@ -840,6 +1069,7 @@ MonoBehaviour:
   emptyStar: {fileID: 21300000, guid: 6deb8fca3c436bf4d9f9d6abbe63322c, type: 3}
   fullStar: {fileID: 21300000, guid: 724a5ca5b6da05e44bdedafaf0951e02, type: 3}
   lerpSpeed: 0.4
+  bobController: {fileID: 4222927959463662968}
 --- !u!114 &840017713755993884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -870,6 +1100,61 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4222927959463662968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6855744673953196711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f38c42688ec48419806bf848a71a69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.0839685
+      outSlope: 1.0839685
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.30335882
+    - serializedVersion: 3
+      time: 1.2692204
+      value: 1.0049438
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 3.7697282
+      value: -0.99669135
+      inSlope: 0.0042361245
+      outSlope: 0.0042361245
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.71655303
+    - serializedVersion: 3
+      time: 5.0015235
+      value: 0.0061168433
+      inSlope: 1.5075318
+      outSlope: 1.5075318
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.44958925
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  multiplier: 0.1
 --- !u!1 &6905130811722249527
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,6 +1262,7 @@ GameObject:
   - component: {fileID: 1277138835132577483}
   - component: {fileID: 3998453221747822342}
   - component: {fileID: 3554050976305881922}
+  - component: {fileID: 2323521980417973790}
   m_Layer: 8
   m_Name: Star3
   m_TagString: Untagged
@@ -1026,6 +1312,7 @@ MonoBehaviour:
   emptyStar: {fileID: 21300000, guid: 189c6b473db8bd4478f860937c3086e1, type: 3}
   fullStar: {fileID: 21300000, guid: a3a6e38c589e68f469960abf3787874f, type: 3}
   lerpSpeed: 0.4
+  bobController: {fileID: 2323521980417973790}
 --- !u!114 &3554050976305881922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1056,6 +1343,61 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2323521980417973790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7545539666866767326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f38c42688ec48419806bf848a71a69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.0839685
+      outSlope: 1.0839685
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.30335882
+    - serializedVersion: 3
+      time: 1.2692204
+      value: 1.0049438
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 3.7697282
+      value: -0.99669135
+      inSlope: 0.0042361245
+      outSlope: 0.0042361245
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.71655303
+    - serializedVersion: 3
+      time: 5.0015235
+      value: 0.0061168433
+      inSlope: 1.5075318
+      outSlope: 1.5075318
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.44958925
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  multiplier: 0.1
 --- !u!1 &7724062672798927791
 GameObject:
   m_ObjectHideFlags: 0

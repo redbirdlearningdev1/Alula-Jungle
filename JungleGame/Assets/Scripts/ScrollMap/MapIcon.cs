@@ -149,7 +149,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     {
         if (currentStars == null)
             return;
-
+        
         StartCoroutine(RevealStarsRoutine());
     }
 
@@ -157,15 +157,23 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     {
         if (starsHidden)
         {
-            starsHidden = false;
             foreach(var star in currentStars)
             {
                 StartCoroutine(MoveStarRoutine(star.transform, currentStarRevealPos));
                 star.LerpStarAlphaScale(1f, 1f);
-                //star.SetRendererLayer(2);
-
                 yield return new WaitForSeconds(0.05f);
             }
+
+            starsHidden = false;
+
+            yield return new WaitForSeconds(0.5f);
+
+            // make stars bob
+            foreach(var star in currentStars)
+            {
+                star.bobController.StartBob();
+                yield return new WaitForSeconds(0.15f);
+            }            
         }
     }
 
@@ -181,7 +189,12 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     {
         if (!starsHidden)
         {
-            starsHidden = true;
+            // make stars not bob
+            foreach(var star in currentStars)
+            {
+                star.bobController.StopBob();
+            }
+
             foreach(var star in currentStars)
             {
                 StartCoroutine(MoveStarRoutine(star.transform, starsHiddenPosition));
@@ -190,6 +203,8 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
                 yield return new WaitForSeconds(0.05f);
             }
+
+            starsHidden = true;
         }
     }
 

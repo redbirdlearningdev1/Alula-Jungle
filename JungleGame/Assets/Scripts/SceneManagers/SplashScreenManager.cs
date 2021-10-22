@@ -61,6 +61,12 @@ public class SplashScreenManager : MonoBehaviour
 
         // get all three profiles
         var profiles = StudentInfoSystem.GetAllStudentDatas();
+
+        foreach (var profile in profiles)
+        {
+            print ("profile: " + profile);
+        }
+
         StudentPlayerData currProfile = null;
         // determine most recently used profile
         foreach (var profile in profiles)
@@ -69,8 +75,12 @@ public class SplashScreenManager : MonoBehaviour
                 currProfile = profile;
         }
 
-        print ("currProfile: " + currProfile.name);
-        print ("currChapter: " + currProfile.currentChapter);
+        if (currProfile != null)
+        {
+            print ("currProfile: " + currProfile.name);
+            print ("currChapter: " + currProfile.currentChapter);
+        }
+
 
         // default to chapter 0 animations
         BG3_animator.Play("3_Ch0");
