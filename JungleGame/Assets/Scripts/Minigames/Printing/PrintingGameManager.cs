@@ -155,7 +155,7 @@ public class PrintingGameManager : MonoBehaviour
         CannonController.instance.explosionAnimator.Play("hit");
 
         // drop coin into chest
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.75f);
         PirateRopeController.instance.printingCoin.SetActionWordValue(correctValue);
         yield return new WaitForSeconds(0.1f);
         PirateRopeController.instance.DropCoinAnimation();
