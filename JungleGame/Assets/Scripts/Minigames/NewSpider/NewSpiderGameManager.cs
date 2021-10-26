@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [System.Serializable]
 public struct SpiderwebTutorialList
@@ -11,8 +12,6 @@ public struct SpiderwebTutorialList
 public class NewSpiderGameManager : MonoBehaviour
 {
     public static NewSpiderGameManager instance;
-
-    private MapIconIdentfier mapID;
 
     public bool playingInEditor;
     public bool playTutorial;
@@ -42,6 +41,8 @@ public class NewSpiderGameManager : MonoBehaviour
     private int winCount = 0;
     private int timesMissed = 0;
 
+    private SpiderwebGameData gameData;
+
     [Header("Tutorial Stuff")]
     public List<SpiderwebTutorialList> tutorialLists;
     public int[] correctIndexes;
@@ -58,16 +59,16 @@ public class NewSpiderGameManager : MonoBehaviour
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
-        // stop music 
-        AudioManager.instance.StopMusic();
-
         if (!instance)
         {
             instance = this;
         }
 
+        // place menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+
         // get game data
-        mapID = GameManager.instance.mapID;
+        gameData = (SpiderwebGameData)GameManager.instance.GetData();
 
         if (!playingInEditor)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().spiderwebTutorial;
@@ -105,16 +106,15 @@ public class NewSpiderGameManager : MonoBehaviour
         // turn off raycaster
         SpiderRayCaster.instance.isOn = false;
 
-        globalCoinPool = new List<ActionWordEnum>();
 
         // Create Global Coin List
-        if (mapID != MapIconIdentfier.None)
+        if (gameData != null)
         {
-            globalCoinPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
+            globalCoinPool = gameData.wordPool;
         }
         else
         {
-            globalCoinPool.AddRange(GameManager.instance.GetGlobalActionWordList());
+            globalCoinPool = GameManager.instance.GetGlobalActionWordList();
         }
 
         unusedCoinPool = new List<ActionWordEnum>();
@@ -282,9 +282,6 @@ public class NewSpiderGameManager : MonoBehaviour
         bug.goToOrigin();
         yield return new WaitForSeconds(1f);
 
-        // show menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
-
         SetCoins();
         bug.StartToWeb();
         yield return new WaitForSeconds(1.5f);
@@ -313,9 +310,6 @@ public class NewSpiderGameManager : MonoBehaviour
 
     private IEnumerator StartTutorialGame()
     {
-        // show menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
-        
         // play tutorial audio 1
         AudioClip clip = AudioDatabase.instance.SpiderwebTutorial_1;
         AudioManager.instance.PlayTalk(clip);

@@ -71,6 +71,9 @@ public class PasswordGameManager : MonoBehaviour
     [SerializeField] private Transform CoinPosIn4;
     [SerializeField] private Transform CoinPosIn5;
     [SerializeField] private Transform CoinPosIn6;
+    [SerializeField] private List<Transform> CoinPosList;
+    [SerializeField] private List<Transform> CoinPosInList;
+    [SerializeField] private List<Transform> TabsOut;
     [SerializeField] private Transform CoinPosEnd1;
     [SerializeField] private Transform CoinPosEnd2;
     [SerializeField] private Transform CoinPosEnd3;
@@ -79,6 +82,7 @@ public class PasswordGameManager : MonoBehaviour
     [SerializeField] private Transform CoinPosEnd6;
     [SerializeField] private Transform CoinStartPos;
     [SerializeField] private Transform CoinEndPos;
+    [SerializeField] private List<Transform> CoinEndList;
 
     // coins in position or out
     private bool In1 = false;
@@ -102,6 +106,7 @@ public class PasswordGameManager : MonoBehaviour
     [SerializeField] private GameObject CoinAnim4;
     [SerializeField] private GameObject CoinAnim5;
     [SerializeField] private GameObject CoinAnim6;
+    [SerializeField] private List<GameObject> CoinAnims;
     [SerializeField] private Sprite Blank;
 
     [SerializeField] private GameObject LockObject;
@@ -112,10 +117,13 @@ public class PasswordGameManager : MonoBehaviour
 
 
 
-
-    [SerializeField] private List<UniversalCoinImage> waterCoins;
+    [SerializeField] private List<bool> CoinIns;
+    [SerializeField] private List<bool> CoinOuts;
+    [SerializeField] private List<bool> WhichCoin;
+    [SerializeField] private List<UniversalCoin> waterCoins;
     [SerializeField] private List<GameObject> tabs;
-    private UniversalCoinImage currWaterCoin;
+    [SerializeField] private List<UniversalCoin> LastCoin;
+    private UniversalCoin currWaterCoin;
 
     // other variables
     private ChallengeWord currentWord;
@@ -123,7 +131,7 @@ public class PasswordGameManager : MonoBehaviour
     private ChallengeWord currentTargetWord;
     private int currentSwipeIndex;
 
-    private List<UniversalCoinImage> currentCoins;
+    private List<UniversalCoin> currentCoins;
     private int numWins = 0;
     private int numMisses = 0;
     private bool playingCoinAudio = false;
@@ -140,7 +148,8 @@ public class PasswordGameManager : MonoBehaviour
     public int swipeIndex;
 
     public int numberLockedIn = 0;
-
+    private int numIn;
+    private int removePos;
 
     void Awake()
     {
@@ -199,13 +208,8 @@ public class PasswordGameManager : MonoBehaviour
 
     private IEnumerator StartGame(int index)
     {
-        //LockObject.SetActive(true);
-        In1 = false;
-        In2 = false;
-        In3 = false;
-        In4 = false;
-        In5 = false;
-        In6 = false;
+
+
         polaroidC.gameObject.transform.position = polaroidStartPos.position;
         polaroidC.LerpScale(0f, 0f);
 
@@ -225,6 +229,7 @@ public class PasswordGameManager : MonoBehaviour
 
             waterCoins[i].SetValue(coinOptions[i]);
             StartCoroutine(LerpMoveObject(waterCoins[i].transform, CoinStartPos.position, 0f));
+            waterCoins[i].SetLayer(2);
             waterCoins[i].ToggleGlowOutline(false);
         }
         CoinAnim1.GetComponent<Animator>().enabled = true;
@@ -292,24 +297,22 @@ public class PasswordGameManager : MonoBehaviour
         }
     }
 
-    public void GlowAndPlayAudioCoin(UniversalCoinImage coin)
+    public void GlowAndPlayAudioCoin(UniversalCoin coin)
     {
         if (playingCoinAudio)
             return;
 
         // check lists
-        if (waterCoins.Contains(coin))
-        {
-            StartCoroutine(GlowAndPlayAudioCoinRoutine(coin));
-        }
+
+            //StartCoroutine(GlowAndPlayAudioCoinRoutine(coin));
+
         // water coins
-        else if (waterCoins.Contains(coin))
-        {
+
             StartCoroutine(GlowAndPlayAudioCoinRoutine(coin, true));
-        }
+
     }
 
-    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoinImage coin, bool waterCoin = false)
+    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoin coin, bool waterCoin = false)
     {
         playingCoinAudio = true;
 
@@ -320,6 +323,7 @@ public class PasswordGameManager : MonoBehaviour
         //if (!waterCoin) coin.LerpSize(expandedCoinSize, 0.25f);
         //else coin.LerpSize(waterExpandedCoinSize, 0.25f);
         yield return new WaitForSeconds(0f);
+        playingCoinAudio = false;
         // return if current water coin
 
 
@@ -358,31 +362,8 @@ public class PasswordGameManager : MonoBehaviour
 
     public void EvaluateCoinLockIn(Polaroid polar)
     {
-        if(In1 && !In2 && !In3 && !In4 && !In5 && !In6)
-        {
-            numberLockedIn = 1;
-        }
-        else if (In1 && In2 && !In3 && !In4 && !In5 && !In6)
-            {
-            numberLockedIn = 2;
-        }
-        else if (In1 && In2 && In3 && !In4 && !In5 && !In6)
-                {
-            numberLockedIn = 3;
-        }
-        else if (In1 && In2 && In3 && In4 && !In5 && !In6)
-                    {
-            numberLockedIn = 4;
-        }
-        else if (In1 && In2 && In3 && In4 && In5 && !In6)
-        {
-            numberLockedIn = 5;
-        }
-        else if (In1 && In2 && In3 && In4 && In5 && In6)
-        {
-            numberLockedIn = 6;
-        }
-        if (numberLockedIn == polar.challengeWord.elkoninCount)
+
+        if (numIn == polar.challengeWord.elkoninCount)
         {
 
             Debug.Log("You WIN");
@@ -412,136 +393,97 @@ public class PasswordGameManager : MonoBehaviour
 
 
     }
-    public void SlotIn(GameObject currCoin)
+    public void SlotIn(UniversalCoin currCoin, GameObject currCoinAnim)
     {
 
         currCoin.gameObject.transform.SetParent(selectedObjectParentCoin);
 
-        if (currCoin.name == "Coin1")
+        for(int i = 5; i >= 0+numIn; i--)
         {
-            if(!In1)
-            {
 
-                CoinAnim1.GetComponent<Animator>().enabled = false;
-                CoinAnim1.GetComponent<SpriteRenderer>().sprite = Blank;
+                CoinOuts[i] = true;
 
-                In1 = true;
-                StartCoroutine(LerpMoveObject(waterCoins[0].transform, CoinPosIn1.position, .2f));
-                StartCoroutine(LerpMoveObject(tabs[0].transform, CoinPosIn1.position, .2f));
-            }
-            else
-            {
 
-                CoinAnim1.GetComponent<Animator>().enabled = true;
-                In1 = false;
-                StartCoroutine(LerpMoveObject(waterCoins[0].transform, CoinPos1.position, .2f));
-                StartCoroutine(LerpMoveObject(tabs[0].transform, TabIn1.position, .2f));
-            }
         }
-        else if (currCoin.name == "Coin2")
+
+
+        if (currCoin.name == "CoinOut")
         {
-            if (!In2)
+            LastCoin.Add(currCoin);
+            for(int i = 0; i<6;i++)
+            {
+                if(CoinOuts[i] == true)
+                {
+                    CoinOuts[i] = false;
+                    numIn++;
+                    break;
+                }
+            }
+
+            currCoin.name = "CoinIn";
+            currCoinAnim.GetComponentInChildren<Animator>().Play("_blankPerm"); 
+            //currCoinAnim.GetComponentInChildren<Animator>().enabled = false;
+            //currCoinAnim.GetComponentInChildren<SpriteRenderer>().sprite = Blank;
+            
+            for (int i = 0; i < 6; i++)
+            {
+                if(CoinIns[i] == false)
+                {
+                    StartCoroutine(LerpMoveObject(currCoin.transform, CoinPosInList[i].position, .2f));
+                    StartCoroutine(LerpMoveObject(tabs[i].transform, CoinPosInList[i].position, .2f));
+                    break;
+                }
+            }
+            for (int i = 0; i < numIn; i++)
+            {
+                CoinIns[i] = true;
+            }
+            for (int j = 0; j < waterCoins.Count; j++)
             {
 
-                CoinAnim2.GetComponent<Animator>().enabled = false;
-                CoinAnim2.GetComponent<SpriteRenderer>().sprite = Blank;
-                In2 = true;
-                StartCoroutine(LerpMoveObject(waterCoins[1].transform, CoinPosIn2.position, .2f));
-                StartCoroutine(LerpMoveObject(tabs[1].transform, CoinPosIn2.position, .2f));
-            }
-            else
-            {
 
-                CoinAnim2.GetComponent<Animator>().enabled = true;
-                In2 = false;
-                StartCoroutine(LerpMoveObject(waterCoins[1].transform, CoinPos2.position, .2f));
-                StartCoroutine(LerpMoveObject(tabs[1].transform, TabIn2.position, .2f));
+                    if(waterCoins[j].name == currCoin.name)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        removePos++;
+                    }
+                
             }
+
+            Debug.Log(removePos);
+            waterCoins.Remove(currCoin);
+            currCoinAnim.GetComponentInChildren<SpriteRenderer>().sprite = Blank;
         }
-        else if (currCoin.name == "Coin3")
+        else if(currCoin.name == "CoinIn")
         {
-            if (!In3)
-            {
+            LastCoin[numIn - 1].GetComponentInChildren<Animator>().Play("_blank");
+            
+            StartCoroutine(LerpMoveObject(LastCoin[numIn-1].transform, CoinPosList[numIn-1].position, .2f));
+            StartCoroutine(LerpMoveObject(tabs[numIn-1].transform, TabsOut[numIn-1].position, .2f));
 
-                CoinAnim3.GetComponent<Animator>().enabled = false;
-                CoinAnim3.GetComponent<SpriteRenderer>().sprite = Blank;
-                In3 = true;
-                StartCoroutine(LerpMoveObject(waterCoins[2].transform, CoinPosIn3.position, .2f));
-                StartCoroutine(LerpMoveObject(tabs[2].transform, CoinPosIn3.position, .2f));
-            }
-            else
-            {
-
-                CoinAnim3.GetComponent<Animator>().enabled = true;
-                In3 = false;
-                StartCoroutine(LerpMoveObject(waterCoins[2].transform, CoinPos3.position, .2f));
-                StartCoroutine(LerpMoveObject(tabs[2].transform, TabIn3.position, .2f));
-            }
+            CoinIns[numIn - 1] = false;
+            CoinOuts[numIn - 1] = true;
+            LastCoin[numIn- 1].name = "CoinOut";
+            waterCoins.Insert(0, LastCoin[numIn - 1]);
+            LastCoin.RemoveAt(numIn-1);
+            numIn--;
+            
         }
-        else if (currCoin.name == "Coin4")
+        for(int i = 0; i < removePos; i++)
         {
-            if (!In4)
-            {
-
-                CoinAnim4.GetComponent<Animator>().enabled = false;
-                CoinAnim4.GetComponent<SpriteRenderer>().sprite = Blank;
-                In4 = true;
-                StartCoroutine(LerpMoveObject(waterCoins[3].transform, CoinPosIn4.position, .2f));
-                StartCoroutine(LerpMoveObject(tabs[3].transform, CoinPosIn4.position, .2f));
-            }
-            else
-            {
-
-                CoinAnim4.GetComponent<Animator>().enabled = true;
-                In4 = false;
-                StartCoroutine(LerpMoveObject(waterCoins[3].transform, CoinPos4.position, .2f));
-                StartCoroutine(LerpMoveObject(tabs[3].transform, TabIn4.position, .2f));
-            }
+            StartCoroutine(LerpMoveObject(waterCoins[i].transform, CoinPosList[i+numIn].position, .2f));
         }
-        else if (currCoin.name == "Coin5")
-        {
-            if (!In5)
-            {
+        removePos = 0;
 
-                CoinAnim5.GetComponent<Animator>().enabled = false;
-                CoinAnim5.GetComponent<SpriteRenderer>().sprite = Blank;
-                In5 = true;
-                StartCoroutine(LerpMoveObject(waterCoins[4].transform, CoinPosIn5.position, .2f));
-                StartCoroutine(LerpMoveObject(tabs[4].transform, CoinPosIn5.position, .2f));
-            }
-            else
-            {
-
-                CoinAnim5.GetComponent<Animator>().enabled = true;
-                In5 = false;
-                StartCoroutine(LerpMoveObject(waterCoins[4].transform, CoinPos5.position, .2f));
-                StartCoroutine(LerpMoveObject(tabs[4].transform, TabIn5.position, .2f));
-            }
-        }
-        else
-        {
-            if (!In6)
-            {
-
-                CoinAnim6.GetComponent<Animator>().enabled = false;
-                CoinAnim6.GetComponent<SpriteRenderer>().sprite = Blank;
-                In6 = true;
-                StartCoroutine(LerpMoveObject(waterCoins[5].transform, CoinPosIn6.position, .2f));
-                StartCoroutine(LerpMoveObject(tabs[5].transform, CoinPosIn6.position, .2f));
-            }
-            else
-            {
-
-                CoinAnim6.GetComponent<Animator>().enabled = true;
-                In6 = false;
-                StartCoroutine(LerpMoveObject(waterCoins[5].transform, CoinPos6.position, .2f));
-                StartCoroutine(LerpMoveObject(tabs[5].transform, TabIn6.position, .2f));
-            }
-        }
     }
 
     private IEnumerator PostRound(bool win)
     {
+        
+
         Debug.Log(numberLockedIn);
         polaroidC.LerpScale(0f, 0f);
         if (win)
@@ -594,62 +536,24 @@ public class PasswordGameManager : MonoBehaviour
 
 
         yield return new WaitForSeconds(.15f);
-        if(!In1)
+        for(int i = 0; i < 6-numIn; i++)
         {
-            StartCoroutine(LerpMoveObject(waterCoins[0].transform, CoinPosEnd1.position, .5f));
+            StartCoroutine(LerpMoveObject(waterCoins[i].transform, CoinEndList[i+numIn].position, .5f));
         }
-        if (!In2)
-        {
-            StartCoroutine(LerpMoveObject(waterCoins[1].transform, CoinPosEnd2.position, .5f));
-        }
-        if (!In3)
-        {
-            StartCoroutine(LerpMoveObject(waterCoins[2].transform, CoinPosEnd3.position, .5f));
-        }
-        if (!In4)
-        {
-            StartCoroutine(LerpMoveObject(waterCoins[3].transform, CoinPosEnd4.position, .5f));
-        }
-        if (!In5)
-        {
-            StartCoroutine(LerpMoveObject(waterCoins[4].transform, CoinPosEnd5.position, .5f));
-        }
-        if (!In6)
-        {
-            StartCoroutine(LerpMoveObject(waterCoins[5].transform, CoinPosEnd6.position, .5f));
-        }
+        
         //Coins that are in
         if (win)
         {
-            if (In1)
+            for(int i = 0; i < numIn; i++)
             {
-                waterCoins[0].ToggleGlowOutline(true);
+                LastCoin[i].SetValue(polaroidC.challengeWord.elkoninList[i]);
+                LastCoin[i].GetComponentInChildren<Animator>().Play(polaroidC.challengeWord.elkoninList[i].ToString()+"Coin");
+                //LastCoin[i].ToggleGlowOutline(true);
+                GlowAndPlayAudioCoin(LastCoin[i]);
+                yield return new WaitForSeconds(1f);
+            }
 
-            }
-            if (In2)
-            {
-                waterCoins[1].ToggleGlowOutline(true);
-
-            }
-            if (In3)
-            {
-                waterCoins[2].ToggleGlowOutline(true);
-            }
-            if (In4)
-            {
-                waterCoins[3].ToggleGlowOutline(true);
-            }
-            if (In5)
-            {
-                waterCoins[4].ToggleGlowOutline(true);
-
-            }
-            if (In6)
-            {
-                waterCoins[5].ToggleGlowOutline(true);
-
-
-            }
+            
             yield return new WaitForSeconds(.5f);
             LockObject.GetComponent<Animator>().enabled = true;
             unlock.Play("UnlockAnim");
@@ -674,20 +578,23 @@ public class PasswordGameManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
      
         }
-        
-        StartCoroutine(LerpMoveObject(waterCoins[0].transform, CoinPosEnd1.position, .5f));
-        StartCoroutine(LerpMoveObject(tabs[0].transform, TabIn1.position, .2f));
-        StartCoroutine(LerpMoveObject(waterCoins[1].transform, CoinPosEnd2.position, .5f));
-        StartCoroutine(LerpMoveObject(tabs[1].transform, TabIn2.position, .2f));
-        StartCoroutine(LerpMoveObject(waterCoins[2].transform, CoinPosEnd3.position, .5f));
-        StartCoroutine(LerpMoveObject(tabs[2].transform, TabIn3.position, .2f));
-        StartCoroutine(LerpMoveObject(waterCoins[3].transform, CoinPosEnd4.position, .5f));
-        StartCoroutine(LerpMoveObject(tabs[3].transform, TabIn4.position, .2f));
-        StartCoroutine(LerpMoveObject(waterCoins[4].transform, CoinPosEnd5.position, .5f));
-        StartCoroutine(LerpMoveObject(tabs[4].transform, TabIn5.position, .2f));
-        StartCoroutine(LerpMoveObject(waterCoins[5].transform, CoinPosEnd6.position, .5f));
-        StartCoroutine(LerpMoveObject(tabs[5].transform, TabIn6.position, .2f));
-        if(win)
+
+        for(int i = 0; i < numIn; i++)
+        {
+            StartCoroutine(LerpMoveObject(LastCoin[i].transform, CoinEndList[i].position, .5f));
+            StartCoroutine(LerpMoveObject(tabs[i].transform, TabsOut[i].position, .2f));
+        }
+        int tempNum = numIn;
+        for (int i = 0; i < tempNum; i++)
+        {
+            LastCoin[numIn - 1].name = "CoinOut";
+            waterCoins.Insert(0, LastCoin[numIn - 1]);
+
+            LastCoin.RemoveAt(numIn - 1);
+            CoinIns[i] = false;
+            numIn--;
+        }
+        if (win)
         {
 
             StartCoroutine(LerpMoveObject(BG1.transform, BG1Pos.position, 1f));
