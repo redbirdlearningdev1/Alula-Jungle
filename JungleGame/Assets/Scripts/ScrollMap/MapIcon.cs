@@ -301,11 +301,11 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         {
             if (!opt)
             {
-                if (destroyAnimator) destroyAnimator.Play("destroyAnimation");
+                StartCoroutine(DestroyAnimation());
             }
             else
             {
-                if (repairAnimator) repairAnimator.Play("repairAnimation");
+                StartCoroutine(FixAnimation());
             }
         }
 
@@ -358,6 +358,26 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             }
             StudentInfoSystem.SaveStudentPlayerData();
         }
+    }
+
+    private IEnumerator FixAnimation()
+    {
+        GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
+        wiggleController.StartWiggle();
+        yield return new WaitForSeconds(0.2f);
+        if (repairAnimator) repairAnimator.Play("repairAnimation");
+        yield return new WaitForSeconds(0.2f);
+        wiggleController.StopWiggle();
+    }
+
+    private IEnumerator DestroyAnimation()
+    {
+        GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
+        wiggleController.StartWiggle();
+        yield return new WaitForSeconds(0.2f);
+        if (destroyAnimator) destroyAnimator.Play("destroyAnimation");
+        yield return new WaitForSeconds(0.2f);
+        wiggleController.StopWiggle();
     }
 
     /* 

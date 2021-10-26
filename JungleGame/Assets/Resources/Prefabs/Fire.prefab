@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 2512186891888730661}
   - component: {fileID: 7186678898831623268}
   - component: {fileID: 2960990336174669554}
+  - component: {fileID: 9138897103185537295}
   m_Layer: 8
   m_Name: Fire
   m_TagString: MapIcon
@@ -299,6 +300,18 @@ MonoBehaviour:
     m_PostInfinity: 1
     m_RotationOrder: 4
   multiplier: 5
+--- !u!114 &9138897103185537295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2512186891888730656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458d3b50667b6a944abf0cc4cfece9d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2887412090581168439
 GameObject:
   m_ObjectHideFlags: 0

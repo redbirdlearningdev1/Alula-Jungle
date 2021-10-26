@@ -1454,7 +1454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playingInEditor: 1
-  playTutorial: 0
+  playTutorial: 1
   orc: {fileID: 606159618}
   chest: {fileID: 1427296688}
   stretch: {fileID: 1256558084}
@@ -5522,7 +5522,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 45.201942
+      value: 45.245678
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

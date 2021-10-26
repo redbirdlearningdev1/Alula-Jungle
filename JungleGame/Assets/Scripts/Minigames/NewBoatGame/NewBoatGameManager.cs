@@ -158,7 +158,7 @@ public class NewBoatGameManager : MonoBehaviour
         repeatDuration = 10f;
         repeatAudio = true;
 
-        // turn on blue button glow + wiggle
+        // turn on mic button glow + wiggle
         ImageGlowController.instance.SetImageGlow(micButton.GetComponent<Image>(), true, GlowValue.glow_1_025);
         micButton.wiggleController.StartWiggle();
 
@@ -342,6 +342,10 @@ public class NewBoatGameManager : MonoBehaviour
                 // make fx sound
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
                 yield return new WaitForSeconds(1f);
+
+                // turn off mic button glow
+                ImageGlowController.instance.SetImageGlow(micButton.GetComponent<Image>(), false);
+                micButton.wiggleController.StopWiggle();
 
                 // turn off audio indicator
                 audioInputIndicator.GetComponent<LerpableObject>().LerpSpriteAlpha(audioInputIndicator, 0f, 0.25f);

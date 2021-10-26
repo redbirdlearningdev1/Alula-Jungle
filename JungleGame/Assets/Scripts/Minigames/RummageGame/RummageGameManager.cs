@@ -190,6 +190,9 @@ public class RummageGameManager : MonoBehaviour
         StartCoroutine(ShowDancingManRoutine());
         yield return new WaitForSeconds(1f);
 
+        // make coins interactable
+        SetCoinsInteractable(true);
+
         NextTutorialEvent();
     }
 
@@ -371,6 +374,9 @@ public class RummageGameManager : MonoBehaviour
         // make pile normal sized
         piles[currentPile].GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
         piles[currentPile].SetWiggleOff();
+
+        // make coins not interactable
+        SetCoinsInteractable(false);
 
         if (coin.type == selectedRummageCoin.type)
         {

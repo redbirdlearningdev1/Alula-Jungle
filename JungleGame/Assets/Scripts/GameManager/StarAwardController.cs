@@ -211,6 +211,109 @@ public class StarAwardController : MonoBehaviour
                     GameManager.instance.repairMapIconID = true;
                 }
                 break;
+
+            case MapIconIdentfier.MS_challenge_1:
+                    if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.stars < numStars)
+                    {
+                        coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.stars, numStars);
+                        StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.stars = numStars;
+                    }
+                    break;
+
+                case MapIconIdentfier.MS_challenge_2:
+                    if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.stars < numStars)
+                    {
+                        coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.stars, numStars);
+                        StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.stars = numStars;
+                    }
+                    break;
+
+                case MapIconIdentfier.MS_challenge_3:
+                    if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.stars < numStars)
+                    {
+                        coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.stars, numStars);
+                        StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.stars = numStars;
+                    }
+                    break;
+
+
+                /* 
+            ################################################
+            #   ORC VILLAGE
+            ################################################
+            */
+        
+            case MapIconIdentfier.OV_houseL:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OV_houseL.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.OV_houseL.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.OV_houseL.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.OV_houseL.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.OV_houseS:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OV_houseS.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.OV_houseS.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.OV_houseS.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.OV_houseS.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.OV_statue:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OV_statue.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.OV_statue.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.OV_statue.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.OV_statue.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+            
+            case MapIconIdentfier.OV_fire:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OV_fire.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.OV_fire.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.OV_fire.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.OV_fire.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.OV_challenge_1:
+                    if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.stars < numStars)
+                    {
+                        coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.stars, numStars);
+                        StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.stars = numStars;
+                    }
+                    break;
+
+                case MapIconIdentfier.OV_challenge_2:
+                    if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.stars < numStars)
+                    {
+                        coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.stars, numStars);
+                        StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.stars = numStars;
+                    }
+                    break;
+
+                case MapIconIdentfier.OV_challenge_3:
+                    if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.stars < numStars)
+                    {
+                        coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.stars, numStars);
+                        StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.stars = numStars;
+                    }
+                    break;
         }
 
         // challenge game stuff
@@ -333,8 +436,7 @@ public class StarAwardController : MonoBehaviour
         // update SIS and toolbar
         DropdownToolbar.instance.AwardGoldCoins(1);
 
-        StartCoroutine(ScaleObjectRoutine(star, shortScaleTime, normalScale));
-        yield return new WaitForSeconds(shortScaleTime);
+        StartCoroutine(ScaleObjectRoutine(star, longScaleTime, normalScale));
     }
 
     private IEnumerator GrowObject(GameObject gameObject)

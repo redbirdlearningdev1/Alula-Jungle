@@ -123,8 +123,21 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
                 break;
                 
             case MapLocation.Mudslide:
-                //triad = GameManager.instance.challengeGameTriads[1];
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.stars;
+                break;
 
+             case MapLocation.OrcVillage:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.stars;
                 break;
             // etc ...
         }
