@@ -10,6 +10,7 @@ public class LerpableObject : MonoBehaviour
     private Coroutine posRoutine;
     private Coroutine colorRoutine;
     private Coroutine followTransformRoutine;
+    private Coroutine rotationRoutine;
 
     public void LerpScale(Vector2 targetScale, float duration)
     {
@@ -257,6 +258,35 @@ public class LerpableObject : MonoBehaviour
 
             var tempColor = Color.Lerp(startColor, targetColor, timer / duration);
             sprite.color = tempColor;
+            yield return null;
+        }
+    }
+
+    public void LerpRotation(float targetAngle, float duration)
+    {
+        if (rotationRoutine != null)
+            StopCoroutine(rotationRoutine);
+
+        rotationRoutine = StartCoroutine(LerpRotationRoutine(targetAngle, duration));
+    }
+
+    private IEnumerator LerpRotationRoutine(float targetAngle, float duration)
+    {
+        float startRotation = transform.localRotation.eulerAngles.z;
+        float timer = 0f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > duration)
+            {
+                transform.localRotation = Quaternion.Euler(0f, 0f, targetAngle);
+                break;
+            }
+
+            float tempAngle = Mathf.Lerp(startRotation, targetAngle, timer / duration);
+            transform.localRotation = Quaternion.Euler(0f, 0f, tempAngle);
+            
             yield return null;
         }
     }

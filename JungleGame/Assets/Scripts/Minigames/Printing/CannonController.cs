@@ -4,33 +4,16 @@ using UnityEngine;
 
 public class CannonController : MonoBehaviour
 {
-    // Start is called before the first frame update\
-    private Animator animator;
+    public static CannonController instance;
 
+    public WiggleController wiggleController;
+
+    public Animator cannonAnimator;
+    public Animator explosionAnimator;
 
     void Awake()
     {
-        animator = GetComponent<Animator>();
+        if (instance == null)
+            instance = this;
     }
-    public void idle()
-    {
-        StartCoroutine(idleRoutine());
-    }
-    private IEnumerator idleRoutine()
-    {
-        yield return new WaitForSeconds(0f);
-        animator.Play("Idle");
-    }
-    public void Load()
-    {
-        StartCoroutine(LoadRoutine());
-    }
-    private IEnumerator LoadRoutine()
-    {
-
-        animator.Play("Load");
-        yield return new WaitForSeconds(0f);
-
-    }
-    
 }

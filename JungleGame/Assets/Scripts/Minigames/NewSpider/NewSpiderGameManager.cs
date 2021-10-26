@@ -13,6 +13,8 @@ public class NewSpiderGameManager : MonoBehaviour
 {
     public static NewSpiderGameManager instance;
 
+    private MapIconIdentfier mapID;
+
     public bool playingInEditor;
     public bool playTutorial;
 
@@ -41,8 +43,6 @@ public class NewSpiderGameManager : MonoBehaviour
     private int winCount = 0;
     private int timesMissed = 0;
 
-    private SpiderwebGameData gameData;
-
     [Header("Tutorial Stuff")]
     public List<SpiderwebTutorialList> tutorialLists;
     public int[] correctIndexes;
@@ -64,11 +64,11 @@ public class NewSpiderGameManager : MonoBehaviour
             instance = this;
         }
 
+        // get mapID
+        mapID = GameManager.instance.mapID;
+
         // place menu button
         SettingsManager.instance.ToggleMenuButtonActive(true);
-
-        // get game data
-        gameData = (SpiderwebGameData)GameManager.instance.GetData();
 
         if (!playingInEditor)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().spiderwebTutorial;
@@ -106,15 +106,14 @@ public class NewSpiderGameManager : MonoBehaviour
         // turn off raycaster
         SpiderRayCaster.instance.isOn = false;
 
-
         // Create Global Coin List
-        if (gameData != null)
+        if (mapID != MapIconIdentfier.None)
         {
-            globalCoinPool = gameData.wordPool;
+            globalCoinPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
         }
         else
         {
-            globalCoinPool = GameManager.instance.GetGlobalActionWordList();
+            globalCoinPool.AddRange(GameManager.instance.GetGlobalActionWordList());
         }
 
         unusedCoinPool = new List<ActionWordEnum>();

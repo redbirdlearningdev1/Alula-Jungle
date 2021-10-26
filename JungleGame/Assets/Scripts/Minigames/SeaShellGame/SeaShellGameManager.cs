@@ -6,6 +6,9 @@ public class SeaShellGameManager : MonoBehaviour
 {
     public static SeaShellGameManager instance;
 
+    public bool playingInEditor;
+    public bool playTutorial;
+
     [SerializeField] private BluMermaidController bluMermaid;
     [SerializeField] private PinkMermaidController pinkMermaid;
     [SerializeField] private BluMermaidController bluMermaidPlay;
@@ -16,7 +19,6 @@ public class SeaShellGameManager : MonoBehaviour
     [SerializeField] private TideController tide;
     [SerializeField] private TideController wash;
     [SerializeField] private ShellRayCaster caster;
-
 
     private bool gameSetup = false;
 
@@ -39,7 +41,7 @@ public class SeaShellGameManager : MonoBehaviour
     
 
     [Header("Tutorial Stuff")]
-    public List<SeaShellTutorialList> tutorialLists;
+    //public List<SeaShellTutorialList> tutorialLists;
     public int[] correctIndexes;
     private int tutorialEvent = 0;
 
@@ -57,9 +59,6 @@ public class SeaShellGameManager : MonoBehaviour
 
         // place menu button
         SettingsManager.instance.ToggleMenuButtonActive(true);
-
-        // get game data
-        gameData = (SpiderwebGameData)GameManager.instance.GetData();
 
         if (!playingInEditor)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().spiderwebTutorial;
@@ -101,25 +100,29 @@ public class SeaShellGameManager : MonoBehaviour
         SpiderRayCaster.instance.isOn = false;
 
 
-        // Create Global Coin List
-        if (gameData != null)
-        {
-            globalCoinPool = gameData.wordPool;
-        }
-        else
-        {
-            globalCoinPool = GameManager.instance.GetGlobalActionWordList();
-        }
+        // // Create Global Coin List
+        // if (gameData != null)
+        // {
+        //     globalCoinPool = gameData.wordPool;
+        // }
+        // else
+        // {
+        //     globalCoinPool = GameManager.instance.GetGlobalActionWordList();
+        // }
 
         unusedCoinPool = new List<ActionWordEnum>();
         unusedCoinPool.AddRange(globalCoinPool);
     }
 
+    public bool EvaluateSelectedShell(SeaShell shell)
+    {
+        return true;
+    }
 
     public bool EvaluateSelectedSeaShell(ActionWordEnum coin, UniversalCoinImage correctCoin)
     {
         // turn off raycaster
-        ShellRayCaster.instance.isOn = false;
+        //ShellRayCaster.instance.isOn = false;
 
         if (coin == ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value))
         {
@@ -158,16 +161,16 @@ public class SeaShellGameManager : MonoBehaviour
         // play wrong choice audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 1f);
 
-        timesMissed++;
-        bug.die();
-        yield return new WaitForSeconds(.5f);
-        spider.fail();
-        webber2.gameObject.SetActive(true);
-        webber2.grabBug();
-        yield return new WaitForSeconds(.4f);
-        bug.webGetEat();
-        yield return new WaitForSeconds(.5f);
-        webber2.gameObject.SetActive(false);
+        // timesMissed++;
+        // bug.die();
+        // yield return new WaitForSeconds(.5f);
+        // spider.fail();
+        // webber2.gameObject.SetActive(true);
+        // webber2.grabBug();
+        // yield return new WaitForSeconds(.4f);
+        // bug.webGetEat();
+        // yield return new WaitForSeconds(.5f);
+        // webber2.gameObject.SetActive(false);
 
         StartCoroutine(CoinsDown());
         yield return new WaitForSeconds(1f);
@@ -183,33 +186,33 @@ public class SeaShellGameManager : MonoBehaviour
         // play right choice audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
 
-        spider.success();
-        yield return new WaitForSeconds(1f);
-        webber.gameObject.SetActive(true);
-        if (selectedIndex == 0)
-        {
-            webber.grab1();
-        }
-        else if (selectedIndex == 1)
-        {
-            webber.grab2();
-        }
-        else if (selectedIndex == 2)
-        {
-            webber.grab3();
-        }
-        else if (selectedIndex == 3)
-        {
-            webber.grab4();
-        }
-        yield return new WaitForSeconds(.5f);
+        // spider.success();
+        // yield return new WaitForSeconds(1f);
+        // webber.gameObject.SetActive(true);
+        // if (selectedIndex == 0)
+        // {
+        //     webber.grab1();
+        // }
+        // else if (selectedIndex == 1)
+        // {
+        //     webber.grab2();
+        // }
+        // else if (selectedIndex == 2)
+        // {
+        //     webber.grab3();
+        // }
+        // else if (selectedIndex == 3)
+        // {
+        //     webber.grab4();
+        // }
+        // yield return new WaitForSeconds(.5f);
 
-        coin.ToggleVisibility(false, true);
-        yield return new WaitForSeconds(.15f);
-        ball.UpgradeChest();
+        // coin.ToggleVisibility(false, true);
+        // yield return new WaitForSeconds(.15f);
+        // ball.UpgradeChest();
 
-        StartCoroutine(bugLeaves());
-        webber.gameObject.SetActive(false);
+        // StartCoroutine(bugLeaves());
+        // webber.gameObject.SetActive(false);
 
         StartCoroutine(CoinsDown());
         yield return new WaitForSeconds(2f);
@@ -225,33 +228,33 @@ public class SeaShellGameManager : MonoBehaviour
         // play right choice audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
 
-        spider.success();
-        yield return new WaitForSeconds(1f);
-        webber.gameObject.SetActive(true);
-        if (selectedIndex == 0)
-        {
-            webber.grab1();
-        }
-        else if (selectedIndex == 1)
-        {
-            webber.grab2();
-        }
-        else if (selectedIndex == 2)
-        {
-            webber.grab3();
-        }
-        else if (selectedIndex == 3)
-        {
-            webber.grab4();
-        }
-        yield return new WaitForSeconds(.5f);
+        // spider.success();
+        // yield return new WaitForSeconds(1f);
+        // webber.gameObject.SetActive(true);
+        // if (selectedIndex == 0)
+        // {
+        //     webber.grab1();
+        // }
+        // else if (selectedIndex == 1)
+        // {
+        //     webber.grab2();
+        // }
+        // else if (selectedIndex == 2)
+        // {
+        //     webber.grab3();
+        // }
+        // else if (selectedIndex == 3)
+        // {
+        //     webber.grab4();
+        // }
+        // yield return new WaitForSeconds(.5f);
 
-        coin.ToggleVisibility(false, true);
-        yield return new WaitForSeconds(.15f);
-        ball.UpgradeChest();
+        // coin.ToggleVisibility(false, true);
+        // yield return new WaitForSeconds(.15f);
+        // ball.UpgradeChest();
 
-        StartCoroutine(bugLeaves());
-        webber.gameObject.SetActive(false);
+        // StartCoroutine(bugLeaves());
+        // webber.gameObject.SetActive(false);
 
         StartCoroutine(CoinsDown());
         yield return new WaitForSeconds(2f);
@@ -267,28 +270,28 @@ public class SeaShellGameManager : MonoBehaviour
 
     private IEnumerator StartGame()
     {
-        ResetCoins();
-        bug.goToOrigin();
+        // ResetCoins();
+        // bug.goToOrigin();
         yield return new WaitForSeconds(1f);
 
-        SetCoins();
-        bug.StartToWeb();
-        yield return new WaitForSeconds(1.5f);
+        // SetCoins();
+        // bug.StartToWeb();
+        // yield return new WaitForSeconds(1.5f);
 
-        web.webSmall();
-        bug.BugBounce();
-        yield return new WaitForSeconds(1.5f);
+        // web.webSmall();
+        // bug.BugBounce();
+        // yield return new WaitForSeconds(1.5f);
 
-        // play audio
-        bug.PlayPhonemeAudio();
-        yield return new WaitForSeconds(1f);
+        // // play audio
+        // bug.PlayPhonemeAudio();
+        // yield return new WaitForSeconds(1f);
 
-        // bring coins up
-        StartCoroutine(CoinsUp());
-        yield return new WaitForSeconds(1f);
+        // // bring coins up
+        // StartCoroutine(CoinsUp());
+        // yield return new WaitForSeconds(1f);
 
-        // turn on raycaster
-        SpiderRayCaster.instance.isOn = true;
+        // // turn on raycaster
+        // SpiderRayCaster.instance.isOn = true;
     }
 
     /* 
@@ -324,28 +327,28 @@ public class SeaShellGameManager : MonoBehaviour
 
     private IEnumerator PlayTutorialGame()
     {
-        ResetCoins();
-        bug.goToOrigin();
+        // ResetCoins();
+        // bug.goToOrigin();
         yield return new WaitForSeconds(1f);
 
-        SetCoins();
-        bug.StartToWeb();
-        yield return new WaitForSeconds(1.5f);
+        // SetCoins();
+        // bug.StartToWeb();
+        // yield return new WaitForSeconds(1.5f);
 
-        web.webSmall();
-        bug.BugBounce();
-        yield return new WaitForSeconds(1.5f);
+        // web.webSmall();
+        // bug.BugBounce();
+        // yield return new WaitForSeconds(1.5f);
 
-        // play audio
-        bug.PlayPhonemeAudio();
-        yield return new WaitForSeconds(1f);
+        // // play audio
+        // bug.PlayPhonemeAudio();
+        // yield return new WaitForSeconds(1f);
 
-        // bring coins up
-        StartCoroutine(CoinsUp());
-        yield return new WaitForSeconds(1f);
+        // // bring coins up
+        // StartCoroutine(CoinsUp());
+        // yield return new WaitForSeconds(1f);
 
-        // turn on raycaster
-        SpiderRayCaster.instance.isOn = true;
+        // // turn on raycaster
+        // SpiderRayCaster.instance.isOn = true;
     }
 
     private IEnumerator TutorialFailRoutine()
@@ -362,38 +365,38 @@ public class SeaShellGameManager : MonoBehaviour
         // play right choice audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
 
-        spider.success();
+        // spider.success();
         yield return new WaitForSeconds(1f);
-        webber.gameObject.SetActive(true);
-        if (selectedIndex == 0)
-        {
-            webber.grab1();
-        }
-        else if (selectedIndex == 1)
-        {
-            webber.grab2();
-        }
-        else if (selectedIndex == 2)
-        {
-            webber.grab3();
-        }
-        else if (selectedIndex == 3)
-        {
-            webber.grab4();
-        }
-        yield return new WaitForSeconds(.5f);
+        // webber.gameObject.SetActive(true);
+        // if (selectedIndex == 0)
+        // {
+        //     webber.grab1();
+        // }
+        // else if (selectedIndex == 1)
+        // {
+        //     webber.grab2();
+        // }
+        // else if (selectedIndex == 2)
+        // {
+        //     webber.grab3();
+        // }
+        // else if (selectedIndex == 3)
+        // {
+        //     webber.grab4();
+        // }
+        // yield return new WaitForSeconds(.5f);
 
-        coin.ToggleVisibility(false, true);
-        yield return new WaitForSeconds(.15f);
-        ball.UpgradeChest();
+        // coin.ToggleVisibility(false, true);
+        // yield return new WaitForSeconds(.15f);
+        // ball.UpgradeChest();
 
-        StartCoroutine(bugLeaves());
-        webber.gameObject.SetActive(false);
+        // StartCoroutine(bugLeaves());
+        // webber.gameObject.SetActive(false);
 
-        StartCoroutine(CoinsDown());
-        yield return new WaitForSeconds(2f);
+        // StartCoroutine(CoinsDown());
+        // yield return new WaitForSeconds(2f);
 
-        StartCoroutine(PlayTutorialGame());
+        // StartCoroutine(PlayTutorialGame());
     }
 
     private IEnumerator TutorialWinRoutine(UniversalCoinImage coin)
@@ -401,47 +404,47 @@ public class SeaShellGameManager : MonoBehaviour
         // play right choice audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
 
-        spider.success();
+        // spider.success();
         yield return new WaitForSeconds(1f);
-        webber.gameObject.SetActive(true);
-        if (selectedIndex == 0)
-        {
-            webber.grab1();
-        }
-        else if (selectedIndex == 1)
-        {
-            webber.grab2();
-        }
-        else if (selectedIndex == 2)
-        {
-            webber.grab3();
-        }
-        else if (selectedIndex == 3)
-        {
-            webber.grab4();
-        }
-        yield return new WaitForSeconds(.5f);
+        // webber.gameObject.SetActive(true);
+        // if (selectedIndex == 0)
+        // {
+        //     webber.grab1();
+        // }
+        // else if (selectedIndex == 1)
+        // {
+        //     webber.grab2();
+        // }
+        // else if (selectedIndex == 2)
+        // {
+        //     webber.grab3();
+        // }
+        // else if (selectedIndex == 3)
+        // {
+        //     webber.grab4();
+        // }
+        // yield return new WaitForSeconds(.5f);
 
-        coin.ToggleVisibility(false, true);
-        yield return new WaitForSeconds(.15f);
-        ball.UpgradeChest();
+        // coin.ToggleVisibility(false, true);
+        // yield return new WaitForSeconds(.15f);
+        // ball.UpgradeChest();
 
-        StartCoroutine(bugLeaves());
-        webber.gameObject.SetActive(false);
+        // StartCoroutine(bugLeaves());
+        // webber.gameObject.SetActive(false);
 
-        StartCoroutine(CoinsDown());
-        yield return new WaitForSeconds(2f);
+        // StartCoroutine(CoinsDown());
+        // yield return new WaitForSeconds(2f);
 
-        // play win tune
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+        // // play win tune
+        // AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
 
-        yield return new WaitForSeconds(2f);
+        // yield return new WaitForSeconds(2f);
 
-        // save to SIS
-        StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = true;
-        StudentInfoSystem.SaveStudentPlayerData();
+        // // save to SIS
+        // StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = true;
+        // StudentInfoSystem.SaveStudentPlayerData();
 
-        GameManager.instance.LoadScene("NewSpiderGame", true, 3f);
+        // GameManager.instance.LoadScene("NewSpiderGame", true, 3f);
     }
 
     /* 
@@ -455,21 +458,21 @@ public class SeaShellGameManager : MonoBehaviour
         // play right choice audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
 
-        spider.success();
-        StartCoroutine(bugLeaves());
-        webber.gameObject.SetActive(false);
+        // spider.success();
+        // StartCoroutine(bugLeaves());
+        // webber.gameObject.SetActive(false);
         yield return new WaitForSeconds(0.5f);
-        ball.UpgradeChest();
+        // ball.UpgradeChest();
 
-        yield return new WaitForSeconds(1.5f);
+        // yield return new WaitForSeconds(1.5f);
 
-        // play win tune
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+        // // play win tune
+        // AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
 
-        yield return new WaitForSeconds(2f);
+        // yield return new WaitForSeconds(2f);
 
-        // calculate and show stars
-        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+        // // calculate and show stars
+        // StarAwardController.instance.AwardStarsAndExit(CalculateStars());
     }
 
     private int CalculateStars()
@@ -484,44 +487,44 @@ public class SeaShellGameManager : MonoBehaviour
 
     private IEnumerator bugLeaves()
     {
-        web.webLarge();
-        bug.takeOff();
+        // web.webLarge();
+        // bug.takeOff();
         yield return new WaitForSeconds(.25f);
-        bug.leaveWeb();
+        // bug.leaveWeb();
     }
 
     private void SetCoins()
     {
-        // make new used word list and add current correct word
-        usedCoinPool = new List<ActionWordEnum>();
-        usedCoinPool.Clear();
+        // // make new used word list and add current correct word
+        // usedCoinPool = new List<ActionWordEnum>();
+        // usedCoinPool.Clear();
 
-        int i = 0;
-        foreach (var coin in coins)
-        {
-            ActionWordEnum type;
-            if (!playTutorial)
-                type = GetUnusedWord();
-            else
-            {
-                type = tutorialLists[tutorialEvent].list[i];
-                i++;
-            }
+        // int i = 0;
+        // foreach (var coin in coins)
+        // {
+        //     ActionWordEnum type;
+        //     if (!playTutorial)
+        //         type = GetUnusedWord();
+        //     else
+        //     {
+        //         type = tutorialLists[tutorialEvent].list[i];
+        //         i++;
+        //     }
 
-            coin.SetActionWordValue(type);
-            coin.ToggleVisibility(true, true);
-        }
+        //     coin.SetActionWordValue(type);
+        //     coin.ToggleVisibility(true, true);
+        // }
 
-        // select random coin OR tutorial coin
-        if (!playTutorial)
-            SelectRandomCoin();
-        else
-        {
-            selectedIndex = correctIndexes[tutorialEvent];
-            selectedCoin = coins[selectedIndex];
-            bug.SetCoinType(ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value));
-            tutorialEvent++;
-        }
+        // // select random coin OR tutorial coin
+        // if (!playTutorial)
+        //     SelectRandomCoin();
+        // else
+        // {
+        //     selectedIndex = correctIndexes[tutorialEvent];
+        //     selectedCoin = coins[selectedIndex];
+        //     bug.SetCoinType(ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value));
+        //     tutorialEvent++;
+        // }
     }
 
     private ActionWordEnum GetUnusedWord()
@@ -599,7 +602,7 @@ public class SeaShellGameManager : MonoBehaviour
     {
         selectedIndex = Random.Range(0, coins.Count);
         selectedCoin = coins[selectedIndex];
-        bug.SetCoinType(ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value));
+        //bug.SetCoinType(ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value));
     }
 }
 
