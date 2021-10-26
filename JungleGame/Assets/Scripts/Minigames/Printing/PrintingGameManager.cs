@@ -9,11 +9,15 @@ public class PrintingGameManager : MonoBehaviour
 
     private MapIconIdentfier mapID = MapIconIdentfier.None;
 
+    public bool glowCorrectCoin = false;
+
     private List<ActionWordEnum> globalCoinPool;
     private List<ActionWordEnum> unusedCoinPool;
     private List<ActionWordEnum> usedCoinPool;
 
-    private ActionWordEnum correctValue;
+    [HideInInspector] public ActionWordEnum correctValue;
+    private int timesMissed = 0;
+    private int timesCorrect = 0;
 
     void Awake()
     {
@@ -43,6 +47,7 @@ public class PrintingGameManager : MonoBehaviour
         PrintingRayCaster.instance.isOn = false;
         BallsController.instance.ResetBalls();
         PirateRopeController.instance.ResetRope();
+        ParrotController.instance.interactable = false;
 
         globalCoinPool = new List<ActionWordEnum>();
 
@@ -65,6 +70,9 @@ public class PrintingGameManager : MonoBehaviour
 
     private IEnumerator StartGame()
     {
+        // reset rope
+        PirateRopeController.instance.ResetRope();
+
         // get correct value
         int correctIndex = Random.Range(0, BallsController.instance.balls.Count);
 
@@ -84,7 +92,14 @@ public class PrintingGameManager : MonoBehaviour
             {
                 correctValue = value;
                 // for testing purposes
-                ImageGlowController.instance.SetImageGlow(ball.GetComponent<Image>(), true, GlowValue.glow_1_00);
+                if (glowCorrectCoin)
+                    ImageGlowController.instance.SetImageGlow(ball.GetComponent<Image>(), true, GlowValue.glow_1_00);
+            }
+            else
+            {
+                // for testing purposes
+                if (glowCorrectCoin)
+                    ImageGlowController.instance.SetImageGlow(ball.GetComponent<Image>(), false);
             }
                 
             i++;
@@ -94,15 +109,20 @@ public class PrintingGameManager : MonoBehaviour
         BallsController.instance.ShowBalls();
         yield return new WaitForSeconds(1f);
         PirateRopeController.instance.DropRope();
+        yield return new WaitForSeconds(0.5f);
+        ParrotController.instance.SayAudio(correctValue);
+        yield return new WaitForSeconds(1f);
 
-        // turn on raycaster
+        // turn on raycaster + parrot
         PrintingRayCaster.instance.isOn = true;
     }
 
     public bool EvaluateSelectedBall(ActionWordEnum ball)
     {
-        // turn off raycaster
+        // turn off raycaster + parrot
         PrintingRayCaster.instance.isOn = false;
+        ParrotController.instance.StopAllCoroutines();
+        ParrotController.instance.interactable = false;
 
         // correct!
         if (ball == correctValue)
@@ -120,26 +140,89 @@ public class PrintingGameManager : MonoBehaviour
 
     private IEnumerator CorrectBallRoutine()
     {
+        timesCorrect++;
+
+        // parrot animation
+        ParrotController.instance.CelebrateAnimation(3f);
+
+        // load cannon
         yield return new WaitForSeconds(0.5f);
         CannonController.instance.cannonAnimator.Play("Load");
         
-        yield return new WaitForSeconds(0.5f);
+        // shoot cannon
+        yield return new WaitForSeconds(0.25f);
         CannonController.instance.cannonAnimator.Play("Shoot");
         CannonController.instance.explosionAnimator.Play("hit");
 
+        // drop coin into chest
         yield return new WaitForSeconds(0.5f);
         PirateRopeController.instance.printingCoin.SetActionWordValue(correctValue);
+        yield return new WaitForSeconds(0.1f);
+        PirateRopeController.instance.DropCoinAnimation();
 
+        // upgrade coin
+        yield return new WaitForSeconds(1.25f);
+        PirateChest.instance.UpgradeChest();
+        yield return new WaitForSeconds(1f);
+
+        if (timesCorrect >= 4)
+        {
+            StartCoroutine(WinRoutine());
+            yield break;
+        }
+
+        // reset balls and start new round
+        BallsController.instance.ResetBalls();
+        StartCoroutine(StartGame());
     }
 
     private IEnumerator IncorrectBallRoutine()
     {
-        yield return null;
+        timesMissed++;
+
+        // parrot animation
+        ParrotController.instance.SadAnimation(3f);
+
+        // load cannon
+        yield return new WaitForSeconds(0.5f);
+        CannonController.instance.cannonAnimator.Play("Load");
+        
+        // shoot cannon
+        yield return new WaitForSeconds(0.25f);
+        CannonController.instance.cannonAnimator.Play("Shoot");
+        CannonController.instance.explosionAnimator.Play("miss");
+        yield return new WaitForSeconds(1f);
+
+        // raise rope
+        PirateRopeController.instance.RaiseRopeAnimation();
+        yield return new WaitForSeconds(2f);
+
+        // reset balls and start new round
+        BallsController.instance.ResetBalls();
+        StartCoroutine(StartGame());
     }
 
     private IEnumerator WinRoutine()
     {
-        yield return null;
+        // parrot fly!!!
+        ParrotController.instance.WinAnimation();
+
+        // play win tune
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+        yield return new WaitForSeconds(2f);
+
+        // calculate and show stars
+        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+    }
+
+    private int CalculateStars()
+    {
+        if (timesMissed <= 0)
+            return 3;
+        else if (timesMissed > 0 && timesMissed <= 2)
+            return 2;
+        else
+            return 1;
     }
 
     private ActionWordEnum GetUnusedWord()

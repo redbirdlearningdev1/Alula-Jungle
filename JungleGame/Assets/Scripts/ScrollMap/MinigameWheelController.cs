@@ -55,7 +55,7 @@ public class MinigameWheelController : MonoBehaviour
         minigameOptions.Add(GameType.FroggerGame);
         minigameOptions.Add(GameType.TurntablesGame);
         minigameOptions.Add(GameType.RummageGame);
-        //minigameOptions.Add(GameType.PirateGame);
+        minigameOptions.Add(GameType.PirateGame);
         minigameOptions.Add(GameType.SpiderwebGame);
         //minigameOptions.Add(GameType.SeashellGame);
 

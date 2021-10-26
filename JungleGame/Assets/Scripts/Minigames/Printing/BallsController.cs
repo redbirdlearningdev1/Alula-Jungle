@@ -26,6 +26,7 @@ public class BallsController : MonoBehaviour
 
         foreach (Ball ball in balls)
         {
+            ball.transform.localScale = new Vector3(1f, 1f, 1f);
             ball.transform.localPosition = ball.resetPos;
             ball.TogglePhysics(true);
         }

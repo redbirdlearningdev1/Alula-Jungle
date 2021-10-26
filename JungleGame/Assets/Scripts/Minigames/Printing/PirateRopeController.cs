@@ -19,6 +19,7 @@ public class PirateRopeController : MonoBehaviour
     [Header("Positions")]
     public Transform ropeOrigin;
     public Transform ropeDropPos;
+    public Transform printingCoinPos;
 
     [Header("Print Coin")]
     public UniversalCoinImage printingCoin;
@@ -52,6 +53,7 @@ public class PirateRopeController : MonoBehaviour
     public void ResetRope()
     {
         transform.localPosition = ropeOrigin.localPosition;
+        printingCoin.SetActionWordValue(ActionWordEnum._blank);
     }
 
     public void DropRope()
@@ -70,6 +72,48 @@ public class PirateRopeController : MonoBehaviour
 
     public void DropCoinAnimation()
     {
+        StartCoroutine(DropCoinAnimationRoutine());
+    }
+
+    private IEnumerator DropCoinAnimationRoutine()
+    {
         animator.Play("DropCoin");
+        yield return new WaitForSeconds(2f);
+
+        // return rope to origin
+        Vector2 bouncePos = ropeDropPos.position;
+        bouncePos.y -= 0.5f;
+        lerpableObject.LerpPosition(bouncePos, 0.3f, false);
+        yield return new WaitForSeconds(0.3f);
+
+        lerpableObject.LerpPosition(ropeOrigin.position, 0.2f, false);
+        yield return new WaitForSeconds(1f);
+
+        // reset rope
+        printingCoin.transform.localScale = new Vector3(1f, 1f, 1f);
+        printingCoin.transform.localPosition = printingCoinPos.localPosition;
+        animator.Play("IdleRope");
+    }
+
+    public void RaiseRopeAnimation()
+    {
+        StartCoroutine(RaiseRopeAnimationRoutine());
+    }
+
+    private IEnumerator RaiseRopeAnimationRoutine()
+    {
+        // return rope to origin
+        Vector2 bouncePos = ropeDropPos.position;
+        bouncePos.y -= 0.5f;
+        lerpableObject.LerpPosition(bouncePos, 0.3f, false);
+        yield return new WaitForSeconds(0.3f);
+
+        lerpableObject.LerpPosition(ropeOrigin.position, 0.2f, false);
+        yield return new WaitForSeconds(1f);
+
+        // reset rope
+        printingCoin.transform.localScale = new Vector3(1f, 1f, 1f);
+        printingCoin.transform.localPosition = printingCoinPos.localPosition;
+        animator.Play("IdleRope");
     }
 }
