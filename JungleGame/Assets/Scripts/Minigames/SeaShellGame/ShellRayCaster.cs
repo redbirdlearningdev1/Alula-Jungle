@@ -5,9 +5,10 @@ using UnityEngine.EventSystems;
 
 public class ShellRayCaster : MonoBehaviour
 {
+    public static ShellRayCaster instance;
+
     public bool isOn = false;
     private SeaShell selectedShell = null;
-    [SerializeField] private SpriteRenderer CoinHolderGlow;
     [SerializeField] private Transform selectedShellParent;
 
     void Update()
@@ -22,11 +23,11 @@ public class ShellRayCaster : MonoBehaviour
             Vector3 mousePosWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosWorldSpace.z = 0f;
             selectedShell.transform.position = mousePosWorldSpace;
-            CoinHolderGlow.enabled = true;
+            
         }
         else if (Input.GetMouseButtonUp(0) && selectedShell)
         {
-            CoinHolderGlow.enabled = false;
+            
             // send raycast to check for bag
             var pointerEventData = new PointerEventData(EventSystem.current);
             pointerEventData.position = Input.mousePosition;
@@ -40,7 +41,7 @@ public class ShellRayCaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("CoinHolder"))
                     {
-                        isCorrect = SeaShellGameManager.instance.EvaluateSelectedShell(selectedShell);
+                        isCorrect = SeaShellGameManager.instance.EvaluateSelectedShell(selectedShell.type);
                     }
                 }
             }
@@ -57,7 +58,7 @@ public class ShellRayCaster : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            CoinHolderGlow.enabled = false;
+            
             var pointerEventData = new PointerEventData(EventSystem.current);
             pointerEventData.position = Input.mousePosition;
             var raycastResults = new List<RaycastResult>();
