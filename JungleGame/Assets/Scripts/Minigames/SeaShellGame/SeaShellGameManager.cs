@@ -51,6 +51,9 @@ public class SeaShellGameManager : MonoBehaviour
 
     private IEnumerator PregameSetupRoutine()
     {
+        // turn off raycaster
+        ShellRayCaster.instance.isOn = false;
+        
         globalCoinPool = new List<ActionWordEnum>();
 
         // Create Global Coin List
@@ -99,7 +102,8 @@ public class SeaShellGameManager : MonoBehaviour
         // reveal shells
         ShellController.instance.RevealShells();
 
-
+        // turn on raycaster
+        ShellRayCaster.instance.isOn = true;
         yield return null;
     }
 
@@ -125,6 +129,23 @@ public class SeaShellGameManager : MonoBehaviour
         unusedCoinPool.Remove(word);
         usedCoinPool.Add(word);
         return word;
+    }
+
+    public bool EvaluateSelectedShell(ActionWordEnum value)
+    {
+        // turn off raycaster
+        ShellRayCaster.instance.isOn = false;
+
+        // correct!
+        if (value == currentCoin)
+        {
+            return true;
+        }
+        // incorrect
+        else
+        {
+            return false;
+        }
     }
 }
 

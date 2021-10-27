@@ -22,9 +22,9 @@ public class ShellController : MonoBehaviour
     void Start()
     {
         // hide shells
-        shell1.GetComponent<LerpableObject>().SetImageAlpha(shell1.GetComponent<Image>(), 0f);
-        shell2.GetComponent<LerpableObject>().SetImageAlpha(shell2.GetComponent<Image>(), 0f);
-        shell3.GetComponent<LerpableObject>().SetImageAlpha(shell3.GetComponent<Image>(), 0f);
+        shell1.ToggleShell(false);
+        shell2.ToggleShell(false);
+        shell3.ToggleShell(false);
     }
 
     public void RevealShells()
@@ -37,8 +37,8 @@ public class ShellController : MonoBehaviour
         tideAnimator.Play("tideWipe");
         yield return new WaitForSeconds(0.75f);
         // reveal shells
-        shell1.GetComponent<LerpableObject>().SetImageAlpha(shell1.GetComponent<Image>(), 1f);
-        shell2.GetComponent<LerpableObject>().SetImageAlpha(shell2.GetComponent<Image>(), 1f);
-        shell3.GetComponent<LerpableObject>().SetImageAlpha(shell3.GetComponent<Image>(), 1f);
+        shell1.ToggleShell(true);
+        shell2.ToggleShell(true);
+        shell3.ToggleShell(true);
     }
 }
