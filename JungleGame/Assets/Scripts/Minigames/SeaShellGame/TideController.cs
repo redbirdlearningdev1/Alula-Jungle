@@ -22,6 +22,15 @@ public class TideController : MonoBehaviour
         yield return new WaitForSeconds(time);
         gameObject.SetActive(false);
     }
+    public void waveAnimation(float time = 1.5f)
+    {
+        StartCoroutine(waveAnimationRoutine(time));
+    }
+    private IEnumerator waveAnimationRoutine(float time)
+    {
+        animator.Play("tideWipe");
+        yield return new WaitForSeconds(time);
+    }
 
 
 }

@@ -1,54 +1,62 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
+[System.Serializable]
+public struct SeaShellTutorialList
+{
+    public List<ActionWordEnum> list;
+}
+
 
 public class SeaShellGameManager : MonoBehaviour
 {
     public static SeaShellGameManager instance;
 
+    private MapIconIdentfier mapID;
+
     public bool playingInEditor;
     public bool playTutorial;
 
-    [SerializeField] private BluMermaidController bluMermaid;
-    [SerializeField] private PinkMermaidController pinkMermaid;
-    [SerializeField] private BluMermaidController bluMermaidPlay;
-    [SerializeField] private PinkMermaidController pinkMermaidPlay;
-    [SerializeField] private CoinHolder coinHolder;
-    [SerializeField] private Chest chest;
     [SerializeField] private OctoController octo;
+    [SerializeField] private GameObject tenticle;
+    [SerializeField] private BluMermaidController blu;
+    [SerializeField] private PinkMermaidController pink;
+    [SerializeField] private BluMermaidController bluPlay;
+    [SerializeField] private PinkMermaidController pinkPlay;
+    [SerializeField] private Chest chestAns;
     [SerializeField] private TideController tide;
-    [SerializeField] private TideController wash;
+    [SerializeField] private CoinHolder holder;
     [SerializeField] private ShellRayCaster caster;
 
-    private bool gameSetup = false;
-
     private List<ActionWordEnum> globalCoinPool;
+    [SerializeField] private List<ActionWordEnum> SectionOneCoinPool;
     private List<ActionWordEnum> unusedCoinPool;
     private List<ActionWordEnum> usedCoinPool;
 
 
     public List<UniversalCoinImage> coins;
-    public List<Transform> coinPosOffScreen;
-    public List<Transform> coinPosOnScreen;
+    public List<SeaShell> shells;
+      public List<GameObject> shellsObj;
+    public List<Transform> shellPos;
+    public List<Transform> winCoinPos;
+    public List<Transform> loseCoinPos;
+    public List<Transform> coinPos;
 
     private int selectedIndex;
-    [HideInInspector] public UniversalCoinImage selectedCoin;
-
+    [HideInInspector] public UniversalCoinImage selectedShell;
     private int winCount = 0;
     private int timesMissed = 0;
 
-    //private SeaShellGameData gameData;
-    
-
     [Header("Tutorial Stuff")]
-    //public List<SeaShellTutorialList> tutorialLists;
+    public List<SeaShellTutorialList> tutorialLists;
     public int[] correctIndexes;
     private int tutorialEvent = 0;
 
-
     void Awake()
     {
-        // every scene must call this in Awake()
+         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
         if (!instance)
@@ -56,28 +64,33 @@ public class SeaShellGameManager : MonoBehaviour
             instance = this;
         }
 
-
+        // get mapID
+        mapID = GameManager.instance.mapID;
+        
         // place menu button
         SettingsManager.instance.ToggleMenuButtonActive(true);
 
         if (!playingInEditor)
-            playTutorial = !StudentInfoSystem.GetCurrentProfile().spiderwebTutorial;
-
-
+        {
+            //playTutorial = !StudentInfoSystem.GetCurrentProfile().seashellTutorial;
+        }
+            
 
         PregameSetup();
 
         // start tutorial or normal game
         if (playTutorial)
             StartCoroutine(StartTutorialGame());
-        else
+        else 
         {
             // start song
-           // AudioManager.instance.InitSplitSong(SplitSong.Spiderweb);
+            //AudioManager.instance.InitSplitSong();
             //AudioManager.instance.IncreaseSplitSong();
-
+            
             StartCoroutine(StartGame());
         }
+        
+        
     }
 
     void Update()
@@ -89,60 +102,80 @@ public class SeaShellGameManager : MonoBehaviour
             {
                 StopAllCoroutines();
                 StartCoroutine(SkipToWinRoutine());
-                
             }
         }
     }
 
     private void PregameSetup()
     {
-        // turn off raycaster
-        SpiderRayCaster.instance.isOn = false;
-
-
-        // // Create Global Coin List
-        // if (gameData != null)
-        // {
-        //     globalCoinPool = gameData.wordPool;
-        // }
-        // else
-        // {
-        //     globalCoinPool = GameManager.instance.GetGlobalActionWordList();
-        // }
-
-        unusedCoinPool = new List<ActionWordEnum>();
-        unusedCoinPool.AddRange(globalCoinPool);
-    }
-
-    public bool EvaluateSelectedShell(SeaShell shell)
-    {
-        return true;
-    }
-
-    public bool EvaluateSelectedSeaShell(ActionWordEnum coin, UniversalCoinImage correctCoin)
-    {
+         Debug.Log("HerePregame");
         // turn off raycaster
         //ShellRayCaster.instance.isOn = false;
 
-        if (coin == ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value))
+        // Create Global Coin List
+        if (mapID != MapIconIdentfier.None)
         {
-            winCount++;
+            globalCoinPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
+        }
+        else
+        {
+            //This was causing an issue
+            //globalCoinPool.AddRange(GameManager.instance.GetGlobalActionWordList());
+            globalCoinPool = SectionOneCoinPool;
+        }
 
+        unusedCoinPool = new List<ActionWordEnum>();
+        unusedCoinPool.AddRange(SectionOneCoinPool);
+
+        //Asset setup
+        
+        for(int i = 0; i < shellsObj.Count; i++)
+                {
+                    shellsObj[i].SetActive(false);
+                }
+                
+    }
+
+    public bool EvaluateSelectedShell(ActionWordEnum coin)
+    {
+        // turn off raycaster
+        //ShellRayCaster.instance.isOn = false;
+        tenticle.SetActive(false);
+        if(coin ==  ChallengeWordDatabase.ElkoninValueToActionWord(coins[0].value))
+        {
+            shells[0].ToggleVisibility(false,false);
+        }
+        else if(coin ==  ChallengeWordDatabase.ElkoninValueToActionWord(coins[1].value))
+        {
+            shells[1].ToggleVisibility(false,false);
+        }
+        else
+        {
+            shells[2].ToggleVisibility(false,false);
+        }
+        
+        
+        
+        if (coin ==  ChallengeWordDatabase.ElkoninValueToActionWord(coins[selectedIndex].value))
+        {
+            
+            winCount++;
+            Debug.Log("Win");
             // success! go on to the next row or win game if on last row
             if (winCount < 4)
             {
                 if (!playTutorial)
-                    StartCoroutine(CoinSuccessRoutine(correctCoin));
-                else
-                    StartCoroutine(TutorialSuccessRoutine(correctCoin));
-
+                    StartCoroutine(CoinSuccessRoutine());
+                else 
+                    StartCoroutine(TutorialSuccessRoutine());
+                
             }
             else
             {
                 if (!playTutorial)
-                    StartCoroutine(WinRoutine(correctCoin));
-                else
-                    StartCoroutine(TutorialWinRoutine(correctCoin));
+                    StartCoroutine(WinRoutine());
+                else 
+                    StartCoroutine(TutorialWinRoutine());
             }
 
             return true;
@@ -152,381 +185,218 @@ public class SeaShellGameManager : MonoBehaviour
             StartCoroutine(CoinFailRoutine());
         else
             StartCoroutine(TutorialFailRoutine());
-
+    
         return false;
     }
 
+    private IEnumerator WinRoutine()
+    {
+        yield return new WaitForSeconds(1f);
+    }
+
+    private IEnumerator CoinSuccessRoutine()
+    {
+        holder.CorrectCoinHolder();
+        tide.waveAnimation();
+        yield return new WaitForSeconds(1f);
+        for(int i = 0; i < shellsObj.Count; i++)
+        {
+            shells[i].ToggleVisibility(false,false);
+        }
+                 
+         //yield return new WaitForSeconds(1f);
+         int pickMermaid = Random.Range(0,2);
+         if(pickMermaid == 0)
+         {
+            blu.diveAnimation();
+            yield return new WaitForSeconds(1f);
+            if(selectedIndex == 0)
+            {
+                bluPlay.pinkShellAnimation();
+            }
+            else if(selectedIndex == 1)
+            {
+                bluPlay.blueShellAnimation();
+            }
+            else
+            {
+                bluPlay.redShellAnimation();
+            }
+            blu.gameObject.SetActive(false);
+         }
+         else
+         {
+            pink.diveAnimation();
+            yield return new WaitForSeconds(1f);
+            if(selectedIndex == 0)
+            {
+                pinkPlay.pinkShellAnimation();
+            }
+            else if(selectedIndex == 1)
+            {
+                pinkPlay.blueShellAnimation();
+            }
+            else
+            {
+                pinkPlay.redShellAnimation();
+            }
+            pink.gameObject.SetActive(false);
+         }
+         yield return new WaitForSeconds(1f);
+         shells[selectedIndex].PlayPhonemeAudio();
+         yield return new WaitForSeconds(1f);
+         
+         
+         yield return new WaitForSeconds(.5f);
+         octo.correctAnimation();
+         yield return new WaitForSeconds(.5f);
+         tenticle.SetActive(true);
+         yield return new WaitForSeconds(.5f);
+         coins[selectedIndex].GetComponent<LerpableObject>().LerpPosition(winCoinPos[0].position, 0.5f, false);
+         yield return new WaitForSeconds(1.25f);
+         octo.correctAnimationTwo();
+         coins[selectedIndex].GetComponent<LerpableObject>().LerpPosition(winCoinPos[1].position, 0.25f, false);
+         yield return new WaitForSeconds(.25f);
+         coins[selectedIndex].GetComponent<LerpableObject>().LerpPosition(winCoinPos[2].position, 0.25f, false);
+         yield return new WaitForSeconds(.25f);
+         coins[selectedIndex].GetComponent<LerpableObject>().LerpPosition(winCoinPos[3].position, 0.25f, false);
+         yield return new WaitForSeconds(.25f);
+         coins[selectedIndex].ToggleVisibility(false,true);
+         chestAns.UpgradeChest();
+         StartCoroutine(StartGame());
+    }
     private IEnumerator CoinFailRoutine()
     {
-        // play wrong choice audio
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 1f);
-
-        // timesMissed++;
-        // bug.die();
-        // yield return new WaitForSeconds(.5f);
-        // spider.fail();
-        // webber2.gameObject.SetActive(true);
-        // webber2.grabBug();
-        // yield return new WaitForSeconds(.4f);
-        // bug.webGetEat();
-        // yield return new WaitForSeconds(.5f);
-        // webber2.gameObject.SetActive(false);
-
-        StartCoroutine(CoinsDown());
+        holder.IncorrectCoinHolder();
+        octo.incorrectAnimation();
+        tide.waveAnimation();
         yield return new WaitForSeconds(1f);
-
-        StartCoroutine(StartGame());
+        for(int i = 0; i < shellsObj.Count; i++)
+        {
+            shells[i].ToggleVisibility(false,false);
+        }
+        yield return new WaitForSeconds(1f);
+        tenticle.SetActive(true);
+        yield return new WaitForSeconds(.5f);
+         coins[selectedIndex].GetComponent<LerpableObject>().LerpPosition(loseCoinPos[0].position, 0.1f, false);
+         StartCoroutine(StartGame());
     }
 
-    private IEnumerator CoinSuccessRoutine(UniversalCoinImage coin)
-    {
-        // increase split song
-        AudioManager.instance.IncreaseSplitSong();
 
-        // play right choice audio
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
-
-        // spider.success();
-        // yield return new WaitForSeconds(1f);
-        // webber.gameObject.SetActive(true);
-        // if (selectedIndex == 0)
-        // {
-        //     webber.grab1();
-        // }
-        // else if (selectedIndex == 1)
-        // {
-        //     webber.grab2();
-        // }
-        // else if (selectedIndex == 2)
-        // {
-        //     webber.grab3();
-        // }
-        // else if (selectedIndex == 3)
-        // {
-        //     webber.grab4();
-        // }
-        // yield return new WaitForSeconds(.5f);
-
-        // coin.ToggleVisibility(false, true);
-        // yield return new WaitForSeconds(.15f);
-        // ball.UpgradeChest();
-
-        // StartCoroutine(bugLeaves());
-        // webber.gameObject.SetActive(false);
-
-        StartCoroutine(CoinsDown());
-        yield return new WaitForSeconds(2f);
-
-        StartCoroutine(StartGame());
-    }
-
-    private IEnumerator WinRoutine(UniversalCoinImage coin)
-    {
-        // increase split song
-        AudioManager.instance.IncreaseSplitSong();
-
-        // play right choice audio
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
-
-        // spider.success();
-        // yield return new WaitForSeconds(1f);
-        // webber.gameObject.SetActive(true);
-        // if (selectedIndex == 0)
-        // {
-        //     webber.grab1();
-        // }
-        // else if (selectedIndex == 1)
-        // {
-        //     webber.grab2();
-        // }
-        // else if (selectedIndex == 2)
-        // {
-        //     webber.grab3();
-        // }
-        // else if (selectedIndex == 3)
-        // {
-        //     webber.grab4();
-        // }
-        // yield return new WaitForSeconds(.5f);
-
-        // coin.ToggleVisibility(false, true);
-        // yield return new WaitForSeconds(.15f);
-        // ball.UpgradeChest();
-
-        // StartCoroutine(bugLeaves());
-        // webber.gameObject.SetActive(false);
-
-        StartCoroutine(CoinsDown());
-        yield return new WaitForSeconds(2f);
-
-        // play win tune
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-
-        yield return new WaitForSeconds(2f);
-
-        // calculate and show stars
-        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
-    }
 
     private IEnumerator StartGame()
     {
-        // ResetCoins();
-        // bug.goToOrigin();
+        yield return new WaitForSeconds(1f);
+        holder.BaseCoinHolder();
+        blu.gameObject.SetActive(true);
+        pink.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+         Debug.Log("HereStartGame");
+         tenticle.SetActive(true);
+          yield return new WaitForSeconds(.1f);
+        SetCoins();
+        StartCoroutine(ResetShells());
+
         yield return new WaitForSeconds(1f);
 
-        // SetCoins();
-        // bug.StartToWeb();
-        // yield return new WaitForSeconds(1.5f);
 
-        // web.webSmall();
-        // bug.BugBounce();
-        // yield return new WaitForSeconds(1.5f);
 
-        // // play audio
-        // bug.PlayPhonemeAudio();
-        // yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
 
-        // // bring coins up
-        // StartCoroutine(CoinsUp());
-        // yield return new WaitForSeconds(1f);
 
-        // // turn on raycaster
-        // SpiderRayCaster.instance.isOn = true;
+        yield return new WaitForSeconds(1.5f);
+
+        // play audio
+
+        yield return new WaitForSeconds(1f);
+
+        // bring coins up
+
+        yield return new WaitForSeconds(1f);
+
+        // turn on raycaster
+        //ShellRayCaster.instance.isOn = true;
     }
-
-    /* 
-    ################################################
-    #   TUTORIAL GAME METHODS
-    ################################################
-    */
 
     private IEnumerator StartTutorialGame()
     {
-        // play tutorial audio 1
-        AudioClip clip = AudioDatabase.instance.SpiderwebTutorial_1;
-        AudioManager.instance.PlayTalk(clip);
-        yield return new WaitForSeconds(clip.length + 1f);
-
-        // play tutorial audio 2
-        clip = AudioDatabase.instance.SpiderwebTutorial_2;
-        AudioManager.instance.PlayTalk(clip);
-        yield return new WaitForSeconds(clip.length + 1f);
-
-        // play tutorial audio 3
-        clip = AudioDatabase.instance.SpiderwebTutorial_3;
-        AudioManager.instance.PlayTalk(clip);
-        yield return new WaitForSeconds(clip.length + 1f);
-
-        // play tutorial audio 4
-        clip = AudioDatabase.instance.SpiderwebTutorial_4;
-        AudioManager.instance.PlayTalk(clip);
-        yield return new WaitForSeconds(clip.length + 1f);
-
-        StartCoroutine(PlayTutorialGame());
-    }
-
-    private IEnumerator PlayTutorialGame()
-    {
-        // ResetCoins();
-        // bug.goToOrigin();
-        yield return new WaitForSeconds(1f);
-
-        // SetCoins();
-        // bug.StartToWeb();
-        // yield return new WaitForSeconds(1.5f);
-
-        // web.webSmall();
-        // bug.BugBounce();
-        // yield return new WaitForSeconds(1.5f);
-
-        // // play audio
-        // bug.PlayPhonemeAudio();
-        // yield return new WaitForSeconds(1f);
-
-        // // bring coins up
-        // StartCoroutine(CoinsUp());
-        // yield return new WaitForSeconds(1f);
-
-        // // turn on raycaster
-        // SpiderRayCaster.instance.isOn = true;
+                yield return new WaitForSeconds(1f);
     }
 
     private IEnumerator TutorialFailRoutine()
     {
-        // play wrong choice audio
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 1f);
+        
         yield return new WaitForSeconds(1f);
-        // turn on raycaster
-        SpiderRayCaster.instance.isOn = true;
-    }
 
-    private IEnumerator TutorialSuccessRoutine(UniversalCoinImage coin)
+    }
+    private IEnumerator TutorialSuccessRoutine()
     {
-        // play right choice audio
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
 
-        // spider.success();
-        yield return new WaitForSeconds(1f);
-        // webber.gameObject.SetActive(true);
-        // if (selectedIndex == 0)
-        // {
-        //     webber.grab1();
-        // }
-        // else if (selectedIndex == 1)
-        // {
-        //     webber.grab2();
-        // }
-        // else if (selectedIndex == 2)
-        // {
-        //     webber.grab3();
-        // }
-        // else if (selectedIndex == 3)
-        // {
-        //     webber.grab4();
-        // }
-        // yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(2f);
 
-        // coin.ToggleVisibility(false, true);
-        // yield return new WaitForSeconds(.15f);
-        // ball.UpgradeChest();
-
-        // StartCoroutine(bugLeaves());
-        // webber.gameObject.SetActive(false);
-
-        // StartCoroutine(CoinsDown());
-        // yield return new WaitForSeconds(2f);
-
-        // StartCoroutine(PlayTutorialGame());
     }
-
-    private IEnumerator TutorialWinRoutine(UniversalCoinImage coin)
+    private IEnumerator TutorialWinRoutine()
     {
-        // play right choice audio
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
-
-        // spider.success();
-        yield return new WaitForSeconds(1f);
-        // webber.gameObject.SetActive(true);
-        // if (selectedIndex == 0)
-        // {
-        //     webber.grab1();
-        // }
-        // else if (selectedIndex == 1)
-        // {
-        //     webber.grab2();
-        // }
-        // else if (selectedIndex == 2)
-        // {
-        //     webber.grab3();
-        // }
-        // else if (selectedIndex == 3)
-        // {
-        //     webber.grab4();
-        // }
-        // yield return new WaitForSeconds(.5f);
-
-        // coin.ToggleVisibility(false, true);
-        // yield return new WaitForSeconds(.15f);
-        // ball.UpgradeChest();
-
-        // StartCoroutine(bugLeaves());
-        // webber.gameObject.SetActive(false);
-
-        // StartCoroutine(CoinsDown());
-        // yield return new WaitForSeconds(2f);
-
-        // // play win tune
-        // AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-
-        // yield return new WaitForSeconds(2f);
-
-        // // save to SIS
-        // StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = true;
-        // StudentInfoSystem.SaveStudentPlayerData();
-
-        // GameManager.instance.LoadScene("NewSpiderGame", true, 3f);
+         yield return new WaitForSeconds(2f);
     }
-
-    /* 
-    ################################################
-    #   UTIL METHODS
-    ################################################
-    */
 
     private IEnumerator SkipToWinRoutine()
-    {
-        // play right choice audio
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
-
-        // spider.success();
-        // StartCoroutine(bugLeaves());
-        // webber.gameObject.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
-        // ball.UpgradeChest();
-
-        // yield return new WaitForSeconds(1.5f);
-
-        // // play win tune
-        // AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-
-        // yield return new WaitForSeconds(2f);
-
-        // // calculate and show stars
-        // StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+    { 
+                yield return new WaitForSeconds(1f);
     }
-
-    private int CalculateStars()
-    {
-        if (timesMissed <= 0)
-            return 3;
-        else if (timesMissed > 0 && timesMissed <= 2)
-            return 2;
-        else
-            return 1;
-    }
-
-    private IEnumerator bugLeaves()
-    {
-        // web.webLarge();
-        // bug.takeOff();
-        yield return new WaitForSeconds(.25f);
-        // bug.leaveWeb();
+    private IEnumerator ResetShells()
+    { 
+        Debug.Log("Here");
+                for(int i = 0; i < shellsObj.Count; i++)
+                {
+                    shellsObj[i].SetActive(false);
+                }
+                yield return new WaitForSeconds(1f);
+                //wash.gameObject.SetActive(true);
+                tide.waveAnimation();
+                yield return new WaitForSeconds(1f);
+                for(int i = 0; i < shellsObj.Count; i++)
+                {
+                    shellsObj[i].SetActive(true);
+                    shells[i].ToggleVisibility(true,true);
+                }
+            SetShells();
     }
 
     private void SetCoins()
     {
-        // // make new used word list and add current correct word
-        // usedCoinPool = new List<ActionWordEnum>();
-        // usedCoinPool.Clear();
+        
+        // make new used word list and add current correct word
+        usedCoinPool = new List<ActionWordEnum>();
+        usedCoinPool.Clear();
 
-        // int i = 0;
-        // foreach (var coin in coins)
-        // {
-        //     ActionWordEnum type;
-        //     if (!playTutorial)
-        //         type = GetUnusedWord();
-        //     else
-        //     {
-        //         type = tutorialLists[tutorialEvent].list[i];
-        //         i++;
-        //     }
+        int i = 0;
+        foreach (var coin in coins)
+        {
+            ActionWordEnum type;
+            if (!playTutorial)
+                type = GetUnusedWord();
+            else
+            {   
+                type = tutorialLists[tutorialEvent].list[i];
+                i++;
+            }
+            
+            coin.SetActionWordValue(type);
+            coin.ToggleVisibility(false, false);
+        }
 
-        //     coin.SetActionWordValue(type);
-        //     coin.ToggleVisibility(true, true);
-        // }
-
-        // // select random coin OR tutorial coin
-        // if (!playTutorial)
-        //     SelectRandomCoin();
-        // else
-        // {
-        //     selectedIndex = correctIndexes[tutorialEvent];
-        //     selectedCoin = coins[selectedIndex];
-        //     bug.SetCoinType(ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value));
-        //     tutorialEvent++;
-        // }
+        // select random coin OR tutorial coin
+        if (!playTutorial)
+            SelectRandomCoin();
+        else
+        {
+            selectedIndex = correctIndexes[tutorialEvent];
+            selectedShell = coins[selectedIndex];
+            shells[selectedIndex].SetShellType(ChallengeWordDatabase.ElkoninValueToActionWord(selectedShell.value));
+            tutorialEvent++;
+        }
     }
-
     private ActionWordEnum GetUnusedWord()
     {
         // reset unused pool if empty
@@ -550,59 +420,21 @@ public class SeaShellGameManager : MonoBehaviour
         usedCoinPool.Add(word);
         return word;
     }
-
-    private IEnumerator CoinsUp()
-    {
-        for (int i = 0; i < coins.Count; i++)
-        {
-            Vector2 pos = coinPosOnScreen[i].position;
-            Vector2 bouncePos = pos;
-            bouncePos.y += 0.5f;
-
-            coins[i].GetComponent<LerpableObject>().LerpPosition(bouncePos, 0.2f, false);
-            yield return new WaitForSeconds(0.2f);
-            coins[i].GetComponent<LerpableObject>().LerpPosition(pos, 0.2f, false);
-            yield return new WaitForSeconds(0.05f);
-        }
-    }
-
-    private IEnumerator CoinsDown()
-    {
-        for (int i = 0; i < coins.Count; i++)
-        {
-            Vector2 pos = coinPosOffScreen[i].position;
-            Vector2 bouncePos = pos;
-            bouncePos.y += 0.5f;
-
-            coins[i].GetComponent<LerpableObject>().LerpPosition(bouncePos, 0.2f, false);
-            yield return new WaitForSeconds(0.2f);
-            coins[i].GetComponent<LerpableObject>().LerpPosition(pos, 0.2f, false);
-        }
-    }
-
-    private void ResetCoins()
-    {
-        for (int i = 0; i < coins.Count; i++)
-        {
-            coins[i].transform.position = coinPosOffScreen[i].position;
-        }
-    }
-
-    public void ReturnCoinsToPosition()
-    {
-        int i = 0;
-        foreach (var coin in coins)
-        {
-            coin.GetComponent<LerpableObject>().LerpPosition(coinPosOnScreen[i].position, 0.25f, false);
-            i++;
-        }
-    }
-
     private void SelectRandomCoin()
     {
-        selectedIndex = Random.Range(0, coins.Count);
-        selectedCoin = coins[selectedIndex];
-        //bug.SetCoinType(ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value));
+        
+        selectedIndex = Random.Range(0, shells.Count);
+        coins[selectedIndex].GetComponent<LerpableObject>().LerpPosition(coinPos[0].position, 0.0f, false);;
+        coins[selectedIndex].ToggleVisibility(true, true);
+        coins[selectedIndex].GetComponent<LerpableObject>().LerpPosition(coinPos[1].position, 0.15f, false);;
     }
+    private void SetShells()
+    {
+        for(int i = 0; i < shells.Count; i++)
+        {
+            shells[i].SetShellType(ChallengeWordDatabase.ElkoninValueToActionWord(coins[i].value));
+        }
+    }
+
 }
 
