@@ -6,8 +6,6 @@ public class BoatGameManager : MonoBehaviour
 {
     public static BoatGameManager instance;
 
-    public List<GlowOutlineController> glowOutlineControllers;
-
     private bool arrived = false;
 
     void Awake()
@@ -19,16 +17,8 @@ public class BoatGameManager : MonoBehaviour
         {
             instance = this;
         }
-
-        PregameSetup();
     }
 
-    private void PregameSetup()
-    {
-        // remove glow from icons
-        foreach (GlowOutlineController item in glowOutlineControllers)
-            item.ToggleGlowOutline(false);
-    }
 
     public void ArrivedAtIsland()
     {

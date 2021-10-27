@@ -5,10 +5,17 @@ using UnityEngine.EventSystems;
 
 public class PrintingRayCaster : MonoBehaviour
 {
+    public static PrintingRayCaster instance;
+
     public bool isOn = false;
-    private BallController selectedBall = null;
-    private PrintingCoin selectedPrintCoin = null;
+    private Ball selectedBall = null;
     [SerializeField] private Transform selectedBallParent;
+
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
 
     void Update()
     {
@@ -38,28 +45,20 @@ public class PrintingRayCaster : MonoBehaviour
             {
                 foreach (var result in raycastResults)
                 {
-                    if (result.gameObject.transform.CompareTag("Bag"))
+                    if (result.gameObject.transform.CompareTag("Cannon"))
                     {
-                        selectedBall.MoveBack();
-                        selectedBall.ToggleVisibility(false, false);
-                        isCorrect = PrintingGameManager.instance.EvaluateSelectedBall(selectedBall.type, selectedBall);
+                        isCorrect = PrintingGameManager.instance.EvaluateSelectedBall(selectedBall.type);
+                        BallsController.instance.ReleaseBalls();
                     }
                 }
             }
 
-
-            if (isCorrect)
-            {
-
-
-            }
-            else
-            {
-                selectedBall.MoveBack();
-                selectedBall = null;
-            }
-            //selectedShell.shadow.gameObject.SetActive(true);
+            BallsController.instance.ReDropBall(selectedBall);
             selectedBall = null;
+
+            // cannon stuff
+            CannonController.instance.wiggleController.StopWiggle();
+            CannonController.instance.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -74,17 +73,17 @@ public class PrintingRayCaster : MonoBehaviour
             {
                 foreach (var result in raycastResults)
                 {
-                    if (result.gameObject.transform.CompareTag("Coin"))
+                    if (result.gameObject.transform.CompareTag("Ball"))
                     {
-                        selectedBall = result.gameObject.GetComponent<BallController>();
+                        selectedBall = result.gameObject.GetComponent<Ball>();
+                        selectedBall.TogglePhysics(false);
+                        selectedBall.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
+                        selectedBall.GetComponent<LerpableObject>().LerpRotation(0f, 0.2f);
                         selectedBall.gameObject.transform.SetParent(selectedBallParent);
 
-                    }
-                    if (result.gameObject.transform.CompareTag("Shell"))
-                    {
-                        selectedPrintCoin = result.gameObject.GetComponent<PrintingCoin>();
-                        selectedPrintCoin.PlayPhonemeAudio();
-
+                        // cannon stuff
+                        CannonController.instance.wiggleController.StartWiggle();
+                        CannonController.instance.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.2f);
                     }
                 }
             }

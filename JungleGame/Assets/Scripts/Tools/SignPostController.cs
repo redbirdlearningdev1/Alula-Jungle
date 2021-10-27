@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
-    public int challengeGameTriadIndex;
+    public MapLocation signPostLocation;
 
     public Animator animator;
 
@@ -101,15 +101,15 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
             transform.localScale = new Vector3(1f, 1f, 1f);
 
             // open window 
-            RoyalDecreeController.instance.ToggleWindow(challengeGameTriadIndex);
+            RoyalDecreeController.instance.ToggleWindow(signPostLocation);
 
             // close settings menu if open
             SettingsManager.instance.CloseSettingsWindow();
 
-            // place copy over bg
-            var tempSignPost = TempObjectPlacer.instance.PlaceNewObject(this.gameObject, transform.localPosition);
-            StartCoroutine(DelaySignPostInteractableRoutine(tempSignPost.GetComponent<SignPostController>()));
-            tempSignPost.GetComponent<SignPostController>().SetStars(stars);
+            // // place copy over bg
+            // var tempSignPost = TempObjectPlacer.instance.PlaceNewObject(this.gameObject, transform.localPosition);
+            // StartCoroutine(DelaySignPostInteractableRoutine(tempSignPost.GetComponent<SignPostController>()));
+            // tempSignPost.GetComponent<SignPostController>().SetStars(stars);
         }
     }
 

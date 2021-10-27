@@ -19,6 +19,7 @@ public enum MapIconIdentfier
     None,
     Boat,
 
+    // gorilla village
     GV_house1,
     GV_house2,
     GV_statue,
@@ -26,7 +27,27 @@ public enum MapIconIdentfier
 
     GV_challenge_1,
     GV_challenge_2,
-    GV_challenge_3
+    GV_challenge_3,
+
+    // mudslide
+    MS_logs,
+    MS_pond,
+    MS_ramp,
+    MS_tower,
+
+    MS_challenge_1,
+    MS_challenge_2,
+    MS_challenge_3,
+
+    // orc village
+    OV_houseL,
+    OV_houseS,
+    OV_statue,
+    OV_fire,
+
+    OV_challenge_1,
+    OV_challenge_2,
+    OV_challenge_3,
 }
 
 public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
@@ -65,6 +86,13 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     public float starMoveSpeed;
     private bool starsHidden = true;
 
+    [Header("Wiggle Controller")]
+    public WiggleController wiggleController;
+    public float timeBetweenWiggles;
+    private bool wiggleIcon = false;
+    private bool waitForWiggle = false;
+    private float timer = 0f;
+
 
     void Awake() 
     {
@@ -74,7 +102,41 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         if (repairAnimator) repairAnimator.Play("defaultAnimation");
 
         // configure current stars
-        InitStars();
+        InitStars(); 
+    }
+
+    void Start()
+    {
+        // determine if icon should periodically wiggle
+        if (GetNumStars() == 0)
+        {
+            // offset wiggles by random amount
+            timer -= Random.Range(0f, 2.5f);
+            wiggleIcon = true;
+        }
+    }
+
+    void Update()
+    {
+        // wiggle icon every so often
+        if (wiggleIcon && !waitForWiggle && interactable)
+        {
+            timer += Time.deltaTime;
+            if (timer >= timeBetweenWiggles)
+            {
+                StartCoroutine(WiggleIconRoutine());
+            }
+        }
+    }
+
+    private IEnumerator WiggleIconRoutine()
+    {
+        waitForWiggle = true;
+        wiggleController.StartWiggle();
+        yield return new WaitForSeconds(1.5f);
+        wiggleController.StopWiggle();
+        timer = 0f;
+        waitForWiggle = false;
     }
 
     /* 
@@ -85,6 +147,9 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     public void RevealStars()
     {
+        if (currentStars == null)
+            return;
+        
         StartCoroutine(RevealStarsRoutine());
     }
 
@@ -92,20 +157,31 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     {
         if (starsHidden)
         {
-            starsHidden = false;
             foreach(var star in currentStars)
             {
                 StartCoroutine(MoveStarRoutine(star.transform, currentStarRevealPos));
                 star.LerpStarAlphaScale(1f, 1f);
-                //star.SetRendererLayer(2);
-
                 yield return new WaitForSeconds(0.05f);
             }
+
+            starsHidden = false;
+
+            yield return new WaitForSeconds(0.5f);
+
+            // make stars bob
+            foreach(var star in currentStars)
+            {
+                star.bobController.StartBob();
+                yield return new WaitForSeconds(0.15f);
+            }            
         }
     }
 
     public void HideStars()
     {   
+        if (currentStars == null)
+            return;
+            
         StartCoroutine(HideStarsRoutine());
     }
 
@@ -113,7 +189,12 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     {
         if (!starsHidden)
         {
-            starsHidden = true;
+            // make stars not bob
+            foreach(var star in currentStars)
+            {
+                star.bobController.StopBob();
+            }
+
             foreach(var star in currentStars)
             {
                 StartCoroutine(MoveStarRoutine(star.transform, starsHiddenPosition));
@@ -122,6 +203,8 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
                 yield return new WaitForSeconds(0.05f);
             }
+
+            starsHidden = true;
         }
     }
 
@@ -218,11 +301,11 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         {
             if (!opt)
             {
-                if (destroyAnimator) destroyAnimator.Play("destroyAnimation");
+                StartCoroutine(DestroyAnimation());
             }
             else
             {
-                if (repairAnimator) repairAnimator.Play("repairAnimation");
+                StartCoroutine(FixAnimation());
             }
         }
 
@@ -231,6 +314,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         {
             switch (identfier)
             {
+                // gorilla village
                 case MapIconIdentfier.GV_house1:
                     StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.isFixed = opt;
                     break;
@@ -243,9 +327,57 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 case MapIconIdentfier.GV_fire:
                     StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.isFixed = opt;
                     break;
+
+                // mudslide
+                case MapIconIdentfier.MS_logs:
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_logs.isFixed = opt;
+                    break;
+                case MapIconIdentfier.MS_pond:
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_pond.isFixed = opt;
+                    break;
+                case MapIconIdentfier.MS_ramp:
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_ramp.isFixed = opt;
+                    break;
+                case MapIconIdentfier.MS_tower:
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_tower.isFixed = opt;
+                    break;
+
+                // orc village
+                case MapIconIdentfier.OV_houseL:
+                    StudentInfoSystem.GetCurrentProfile().mapData.OV_houseL.isFixed = opt;
+                    break;
+                case MapIconIdentfier.OV_houseS:
+                    StudentInfoSystem.GetCurrentProfile().mapData.OV_houseS.isFixed = opt;
+                    break;
+                case MapIconIdentfier.OV_statue:
+                    StudentInfoSystem.GetCurrentProfile().mapData.OV_statue.isFixed = opt;
+                    break;
+                case MapIconIdentfier.OV_fire:
+                    StudentInfoSystem.GetCurrentProfile().mapData.OV_fire.isFixed = opt;
+                    break;
             }
             StudentInfoSystem.SaveStudentPlayerData();
         }
+    }
+
+    private IEnumerator FixAnimation()
+    {
+        GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
+        wiggleController.StartWiggle();
+        yield return new WaitForSeconds(0.2f);
+        if (repairAnimator) repairAnimator.Play("repairAnimation");
+        yield return new WaitForSeconds(0.2f);
+        wiggleController.StopWiggle();
+    }
+
+    private IEnumerator DestroyAnimation()
+    {
+        GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
+        wiggleController.StartWiggle();
+        yield return new WaitForSeconds(0.2f);
+        if (destroyAnimator) destroyAnimator.Play("destroyAnimation");
+        yield return new WaitForSeconds(0.2f);
+        wiggleController.StopWiggle();
     }
 
     /* 
@@ -311,6 +443,10 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     {
         switch (identfier)
         {
+            default:
+                return -1;
+
+            // gorilla village
             case MapIconIdentfier.GV_house1:
                 return StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.stars;
             case MapIconIdentfier.GV_house2:
@@ -319,8 +455,26 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 return StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.stars;
             case MapIconIdentfier.GV_fire:
                 return StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.stars;
-            default:
-                return 0;
-        }
+            
+            // mudslide
+            case MapIconIdentfier.MS_logs:
+                return StudentInfoSystem.GetCurrentProfile().mapData.MS_logs.stars;
+            case MapIconIdentfier.MS_pond:
+                return StudentInfoSystem.GetCurrentProfile().mapData.MS_pond.stars;
+            case MapIconIdentfier.MS_ramp:
+                return StudentInfoSystem.GetCurrentProfile().mapData.MS_ramp.stars;
+            case MapIconIdentfier.MS_tower:
+                return StudentInfoSystem.GetCurrentProfile().mapData.MS_tower.stars;
+
+            // orc village
+            case MapIconIdentfier.OV_houseL:
+                return StudentInfoSystem.GetCurrentProfile().mapData.OV_houseL.stars;
+            case MapIconIdentfier.OV_houseS:
+                return StudentInfoSystem.GetCurrentProfile().mapData.OV_houseS.stars;
+            case MapIconIdentfier.OV_statue:
+                return StudentInfoSystem.GetCurrentProfile().mapData.OV_statue.stars;
+            case MapIconIdentfier.OV_fire:
+                return StudentInfoSystem.GetCurrentProfile().mapData.OV_fire.stars;
+        }   
     }
 }

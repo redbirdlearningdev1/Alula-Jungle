@@ -79,9 +79,25 @@ public class TalkieDatabase : MonoBehaviour
 
     [Header("Mudslide")]
     public TalkieObject mudslideIntro; // script: ScrollMapManager.cs
+    public TalkieObject mudslideRebuilt_1; // script: ScrollMapManager.cs
+    public TalkieObject mudslideRebuilt_2; // script: ScrollMapManager.cs
+    public TalkieObject mudslideChallengeDefeated_1; // script: ScrollMapManager.cs
+    public TalkieObject mudslideChallengeDefeated_2; // script: ScrollMapManager.cs
+    public TalkieObject mudslideChallengeDefeated_3; // script: ScrollMapManager.cs
+
+    [Header("Orc Village")]
+    public TalkieObject orcVillageIntro_1; // script: ScrollMapManager.cs
+    public TalkieObject orcVillageIntro_2; // script: ScrollMapManager.cs
+    public TalkieObject orcVillageIntro_3; // script: MapCharacter.cs
+    public TalkieObject orcVillageRebuilt_1;
+    public TalkieObject orcVillageRebuilt_2;
+    public TalkieObject orcVillageChallengeDefeated_1;
+    public TalkieObject orcVillageChallengeDefeated_2;
+
 
     [Header("Quips")]
     public TalkieObject darwinQuips;    // script: MapCharacter.cs
+    public TalkieObject cloggQuips;    // script: MapCharacter.cs
 
     [Header("Character Sprites")]
     public List<TalkieDatabaseEntry> redSprites;
@@ -91,6 +107,7 @@ public class TalkieDatabase : MonoBehaviour
     public List<TalkieDatabaseEntry> marcusSprites;
     public List<TalkieDatabaseEntry> brutusSprites;
     public List<TalkieDatabaseEntry> lesterSprites;
+    public List<TalkieDatabaseEntry> cloggSprites;
 
     private List<TalkieObject> globalTalkieList; // list of all talkies in this database
 
@@ -100,6 +117,7 @@ public class TalkieDatabase : MonoBehaviour
             instance = this;
     }
 
+    // TODO: update this when all talkies are in
     public List<TalkieObject> GetGlobalTalkieList()
     {
         globalTalkieList = new List<TalkieObject>();
@@ -162,6 +180,8 @@ public class TalkieDatabase : MonoBehaviour
                 return FindSprite(brutusSprites, emotionNum, mouth, eyes);
             case TalkieCharacter.Lester:
                 return FindSprite(lesterSprites, emotionNum, mouth, eyes);
+            case TalkieCharacter.Clogg:
+                return FindSprite(cloggSprites, emotionNum, mouth, eyes);
         }
     }
 

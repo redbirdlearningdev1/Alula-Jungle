@@ -41,20 +41,18 @@ public class LoadSaveTestSceneManager : MonoBehaviour
         // get from UI elements
         studentData.active = isActiveToggle.isOn;
         studentData.name = studentNameField.text;
-        studentData.totalStars = System.Convert.ToInt32(totalStarsField.text);
 
         LoadSaveSystem.SaveStudentData(studentData);
     }
 
     public void LoadData()
     {
-        studentData = LoadSaveSystem.LoadStudentData(GetStudentIndex(dropdown.value));
+        studentData = LoadSaveSystem.LoadStudentData(GetStudentIndex(dropdown.value), true);
         if (studentData != null)
         {
             // set UI elements
             isActiveToggle.isOn = studentData.active;
             studentNameField.text = studentData.name;
-            totalStarsField.text = studentData.totalStars.ToString();
         }
     }
 

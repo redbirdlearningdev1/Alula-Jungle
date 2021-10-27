@@ -24,6 +24,8 @@ TagManager:
   - HideInventoryArea
   - OpenInventoryArea
   - CoinTarget
+  - Ball
+  - Cannon
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class IslandCutoutController : MonoBehaviour
@@ -15,6 +16,8 @@ public class IslandCutoutController : MonoBehaviour
     public Transform mainIslandParent;
     public float moveSpeed;
     public SpriteRenderer outline;
+    public Image islandCutout;
+    public Image mainIsland;
     public WiggleController outlineWiggleController;
     public WiggleController cutoutWiggleController;
 
@@ -36,7 +39,7 @@ public class IslandCutoutController : MonoBehaviour
         // follow transform position (only x)
         if (followTransform)
         {
-            transform.position = new Vector3(transformToFollow.position.x, transform.position.y, 1f);
+            mainIsland.transform.position = new Vector3(transformToFollow.position.x, mainIsland.transform.position.y, 1f);
             return;
         }
 
@@ -130,10 +133,14 @@ public class IslandCutoutController : MonoBehaviour
 
         // remove island outline
         StartCoroutine(LerpOutlineAlpha());
+        // make island cutout invisible
+        islandCutout.GetComponent<LerpableObject>().LerpImageAlpha(islandCutout, 0f, 0.1f);
+        // make main island visible
+        mainIsland.GetComponent<LerpableObject>().LerpImageAlpha(mainIsland, 1f, 0.1f);
         yield return new WaitForSeconds(2f);
 
         // set island parent
-        transform.SetParent(mainIslandParent);
+        mainIsland.transform.SetParent(mainIslandParent);
 
         // center boat to face main island + center main island
         NewParallaxController.instance.CenterOnIsland(transform);

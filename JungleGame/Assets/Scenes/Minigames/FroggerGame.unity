@@ -191,7 +191,7 @@ MonoBehaviour:
   - {fileID: 728974745}
   - {fileID: 1287270063}
   - {fileID: 1112553574}
-  playInEditor: 1
+  playInEditor: 0
   playTutorial: 0
   correctTutorialCoins: 00000000010000000200000000000000
   firstPair: 0800000000000000
@@ -1448,7 +1448,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 41.578247
+      value: 41.606014
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

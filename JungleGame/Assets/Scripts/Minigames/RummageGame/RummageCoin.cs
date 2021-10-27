@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class RummageCoin : MonoBehaviour
 {
     public ActionWordEnum type;
+    public bool interactable;
+
     public Transform clothPos;
     public Transform coinParent;
     public Vector3 pileMovement1;

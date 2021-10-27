@@ -1,542 +1,251 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PrintingGameManager : MonoBehaviour
 {
     public static PrintingGameManager instance;
 
+    private MapIconIdentfier mapID = MapIconIdentfier.None;
 
-    [SerializeField] private chester chest;
-    [SerializeField] private ParrotController Parrot;
-    [SerializeField] private ParrotController Explode;
-    [SerializeField] private PirateRopeController rope;
-    [SerializeField] private CannonController cannon;
-    [SerializeField] private PrintingCoin PrintingCoin;
-    [SerializeField] private PrintingRayCaster caster;
+    public bool glowCorrectCoin = false;
 
+    private List<ActionWordEnum> globalCoinPool;
+    private List<ActionWordEnum> unusedCoinPool;
+    private List<ActionWordEnum> usedCoinPool;
 
-    private bool gameSetup = false;
-
-    private List<ActionWordEnum> globalBallPool;
-    private List<ActionWordEnum> unusedBallPool;
-
-    [SerializeField] private List<BallController> Balls;
-
-
-    private List<BallController> allBalls = new List<BallController>();
-    private int selectedIndex;
-    public BallController selectedBall;
-
-    private int winCount = 0;
-
-    private bool firstTimePlaying = true;
-
+    [HideInInspector] public ActionWordEnum correctValue;
+    private int timesMissed = 0;
+    private int timesCorrect = 0;
 
     void Awake()
     {
         // every scene must call this in Awake()
-
         GameManager.instance.SceneInit();
+
+        // stop music 
+        AudioManager.instance.StopMusic();
 
         if (!instance)
         {
-
             instance = this;
-
         }
 
-        // dev object stuff
-        //devObject.SetActive(GameManager.instance.devModeActivated);
-        Debug.Log("In Pregame");
+        // get mapID
+        mapID = GameManager.instance.mapID;
+    }
+
+    void Start()
+    {
         PregameSetup();
-        StartCoroutine(StartGame(0));
-
-    }
-
-    void Update()
-    {
-
-    }
-
-
-
-    public bool EvaluateSelectedBall(ActionWordEnum ball, BallController correctBall)
-    {
-        Debug.Log(selectedBall.type);
-        
-        StartCoroutine(BallMovesShakes(correctBall.getChoice()));
-        if (ball == selectedBall.type)
-        {
-            // success! go on to the next row or win game if on last row
-            Debug.Log("YOU DID IT");
-            
-            if (winCount < 5)
-            {
-                winCount++;
-                StartCoroutine(BallSuccessRoutine(correctBall));
-            }
-            else
-            {
-                Debug.Log("YOU DID IT AGAIn");
-                StartCoroutine(WinRoutine());
-            }
-
-            return true;
-        }
-        StartCoroutine(BallFailRoutine(correctBall));
-        return false;
-    }
-
-    private IEnumerator BallMovesShakes(int Index)
-    {
-        //selectedIndex = 2;
-        if (Index == 1)
-        {
-            Balls[0].MoveOver();
-            yield return new WaitForSeconds(1f);
-            StartCoroutine(BallZeroShake());
-            yield return new WaitForSeconds(.25f);
-            StartCoroutine(BallTwoShakeIn());
-            yield return new WaitForSeconds(.25f);
-            StartCoroutine(BallThreeShakeIn());
-
-            
-
-
-        }
-        else if (Index == 2)
-        {
-            
-            Balls[1].MoveOver();
-            StartCoroutine(DelayZero());
-            yield return new WaitForSeconds(1f);
-
-            StartCoroutine(BallOneShake());
-            yield return new WaitForSeconds(.5f);
-            StartCoroutine(BallZeroShake());
-            StartCoroutine(BallThreeShakeIn());
-
-
-
-        }
-        else if (Index == 3)
-        {
-            Balls[2].MoveOver();
-            StartCoroutine(DelayZero());
-            StartCoroutine(DelayOne());
-            yield return new WaitForSeconds(1f);
-
-            StartCoroutine(BallTwoShake());
-            yield return new WaitForSeconds(.5f);
-            StartCoroutine(BallOneShake());
-            yield return new WaitForSeconds(.5f);
-            StartCoroutine(BallZeroShake());
-        }
-        yield return new WaitForSeconds(0f);
-    }
-    private IEnumerator BallZeroShake()
-    {
-        Balls[0].ShakeF();
-        yield return new WaitForSeconds(.5f);
-        Balls[0].ShakeB();
-        yield return new WaitForSeconds(.5f);
-        Balls[0].MoveOver();
-    }
-    private IEnumerator DelayZero()
-    {
-        yield return new WaitForSeconds(.5f);
-        Balls[0].MoveOver();
-    }
-    private IEnumerator DelayOne()
-    {
-        yield return new WaitForSeconds(.4f);
-        Balls[1].MoveOver();
-    }
-    private IEnumerator DelayTwo()
-    {
-        yield return new WaitForSeconds(.5f);
-        Balls[2].MoveOver();
-    }
-    private IEnumerator BallOneShake()
-    {
-        Balls[1].ShakeF();
-        yield return new WaitForSeconds(.5f);
-        Balls[1].ShakeB();
-
-        yield return new WaitForSeconds(.5f);
-        Balls[1].MoveOver();
-    }
-    private IEnumerator BallTwoShake()
-    {
-        Balls[2].ShakeF();
-        yield return new WaitForSeconds(.5f);
-        Balls[2].ShakeB();
-        yield return new WaitForSeconds(.5f);
-        Balls[2].MoveOver();
-    }
-    private IEnumerator BallThreeShake()
-    {
-        Balls[3].ShakeF();
-        yield return new WaitForSeconds(.5f);
-        Balls[3].ShakeB();
-        yield return new WaitForSeconds(.5f);
-        Balls[3].MoveOver();
-    }
-    private IEnumerator BallOneShakeIn()
-    {
-        Balls[1].ShakeInF();
-        yield return new WaitForSeconds(.5f);
-        Balls[1].ShakeInB();
-        yield return new WaitForSeconds(.5f);
-        Balls[1].MoveBack();
-    }
-    private IEnumerator BallTwoShakeIn()
-    {
-        Balls[2].ShakeInF();
-        yield return new WaitForSeconds(.5f);
-        Balls[2].ShakeInB();
-        yield return new WaitForSeconds(.5f);
-        Balls[2].MoveBack();
-
-    }
-    private IEnumerator BallThreeShakeIn()
-    {
-        Balls[3].ShakeInF();
-        yield return new WaitForSeconds(.5f);
-        Balls[3].ShakeInB();
-        yield return new WaitForSeconds(.5f);
-        Balls[3].MoveBack();
-    }
-
-
-
-    private IEnumerator BallFailRoutine(BallController ball)
-    {
-
-        cannon.Load();
-        Parrot.fail();
-        yield return new WaitForSeconds(.55f);
-        Explode.miss();
-        yield return new WaitForSeconds(.5f);
-        rope.GoToOrigin();
-        PrintingCoin.GoToOrigin();
-        yield return new WaitForSeconds(2.1f);
-        StartCoroutine(Rollout(ball.getChoice()));
-        yield return new WaitForSeconds(1.5f);
-        StartCoroutine(StartGame(0));
-    }
-
-    private IEnumerator BallSuccessRoutine(BallController ball)
-    {
-        cannon.Load();
-        Parrot.success();
-        yield return new WaitForSeconds(.55f);
-        Explode.hit();
-        yield return new WaitForSeconds(.9f);
-        PrintingCoin.SetCoinTypeSuccess(ball.type);
-        yield return new WaitForSeconds(.5f);
-        rope.breakRope();
-        PrintingCoin.drop();
-        yield return new WaitForSeconds(.5f);
-        PrintingCoin.ToggleVisibility(false, false);
-        
-        chest.UpgradeChest();
-        rope.GoToOrigin();
-        yield return new WaitForSeconds(.5f);
-        rope.fixRope();
-        yield return new WaitForSeconds(2.1f);
-        StartCoroutine(Rollout(ball.getChoice()));
-        yield return new WaitForSeconds(1.5f);
-        StartCoroutine(StartGame(0));
-    }
-    private IEnumerator Rollout(int index)
-    {
-        if(index == 0)
-        {
-            StartCoroutine(RolloutThree());
-            //yield return new WaitForSeconds(.05f);
-            StartCoroutine(RolloutTwo());
-            //yield return new WaitForSeconds(.15f);
-            StartCoroutine(RolloutOne());
-            //yield return new WaitForSeconds(.05f);
-
-        }
-        else if(index == 1)
-        {
-            StartCoroutine(RolloutThree());
-            //yield return new WaitForSeconds(.05f);
-            StartCoroutine(RolloutTwo());
-            //yield return new WaitForSeconds(.15f);
-            StartCoroutine(RolloutZeroSpecial());
-            //yield return new WaitForSeconds(.05f);
-        }
-        else if (index == 2)
-        {
-            StartCoroutine(RolloutThree());
-            //yield return new WaitForSeconds(.05f);
-            StartCoroutine(RolloutOneSpecial());
-            //yield return new WaitForSeconds(.15f);
-            StartCoroutine(RolloutZeroSpecial());
-            //yield return new WaitForSeconds(.05f);
-        }
-        else if (index == 3)
-        {
-            StartCoroutine(RolloutTwoSpecial());
-            //yield return new WaitForSeconds(.05f);
-            StartCoroutine(RolloutOneSpecial());
-            //yield return new WaitForSeconds(.15f);
-            StartCoroutine(RolloutZeroSpecial());
-            //yield return new WaitForSeconds(.05f);
-        }
-        yield return new WaitForSeconds(0f);
-    }
-    private IEnumerator RolloutZero()
-    {
-        Balls[0].movePos4();
-        yield return new WaitForSeconds(.45f);
-        Balls[0].moveOut1();
-        yield return new WaitForSeconds(.25f);
-        Balls[0].moveOut2();
-        yield return new WaitForSeconds(.02f);
-        Balls[0].moveOut3();
-        yield return new WaitForSeconds(.02f);
-        Balls[0].moveOut4();
-
-    }
-    private IEnumerator RolloutZeroSpecial()
-    {
-        Balls[0].movePos4();
-        yield return new WaitForSeconds(.15f);
-        Balls[0].moveOut1();
-        yield return new WaitForSeconds(.15f);
-        Balls[0].moveOut2();
-        yield return new WaitForSeconds(.07f);
-        Balls[0].moveOut3();
-        yield return new WaitForSeconds(.05f);
-        Balls[0].moveOut4();
-    }
-    private IEnumerator RolloutOne()
-    {
-        Balls[1].movePos4();
-        yield return new WaitForSeconds(.15f);
-        Balls[1].moveOut1();
-        yield return new WaitForSeconds(.15f);
-        Balls[1].moveOut2();
-        yield return new WaitForSeconds(.07f);
-        Balls[1].moveOut3();
-        yield return new WaitForSeconds(.05f);
-        Balls[1].moveOut4();
-    }
-    private IEnumerator RolloutOneSpecial()
-    {
-        Balls[1].movePos4();
-        yield return new WaitForSeconds(.05f);
-        Balls[1].moveOut1();
-        yield return new WaitForSeconds(.15f);
-        Balls[1].moveOut2();
-        yield return new WaitForSeconds(.07f);
-        Balls[1].moveOut3();
-        yield return new WaitForSeconds(.05f);
-        Balls[1].moveOut4();
-    }
-    private IEnumerator RolloutTwo()
-    {
-        Balls[2].movePos4();
-        yield return new WaitForSeconds(.05f);
-        Balls[2].moveOut1();
-        yield return new WaitForSeconds(.15f);
-        Balls[2].moveOut2();
-        yield return new WaitForSeconds(.07f);
-        Balls[2].moveOut3();
-        yield return new WaitForSeconds(.05f);
-        Balls[2].moveOut4();
-    }
-    private IEnumerator RolloutTwoSpecial()
-    {
-        Balls[2].moveOut1();
-        yield return new WaitForSeconds(.15f);
-        Balls[2].moveOut2();
-        yield return new WaitForSeconds(.07f);
-        Balls[2].moveOut3();
-        yield return new WaitForSeconds(.05f);
-        Balls[2].moveOut4();
-    }
-    private IEnumerator RolloutThree()
-    {
-        Balls[3].moveOut1();
-        yield return new WaitForSeconds(.15f);
-        Balls[3].moveOut2();
-        yield return new WaitForSeconds(.07f);
-        Balls[3].moveOut3();
-        yield return new WaitForSeconds(.05f);
-        Balls[3].moveOut4();
-    }
-
-    private IEnumerator WinRoutine()
-    {
-        yield return new WaitForSeconds(2f);
-
-        // TODO: change maens of finishing game (for now we just return to the scroll map)
-        GameManager.instance.LoadScene("ScrollMap", true, 3f);
     }
 
     private void PregameSetup()
     {
-        Debug.Log("IN PREGAME");
-        // create coin list
-        rope.ToggleVisibility(false, false);
-        PrintingCoin.GoToOrigin();
-        foreach (var ball in Balls)
-        {
-            //Debug.Log(coin);
-            allBalls.Add(ball);
-        }
+        // reset game parts
+        PrintingRayCaster.instance.isOn = false;
+        BallsController.instance.ResetBalls();
+        PirateRopeController.instance.ResetRope();
+        ParrotController.instance.interactable = false;
 
+        globalCoinPool = new List<ActionWordEnum>();
 
         // Create Global Coin List
-        globalBallPool = GameManager.instance.GetGlobalActionWordList();
-        unusedBallPool = new List<ActionWordEnum>();
-        unusedBallPool.AddRange(globalBallPool);
-
-        // disable all coins
-        foreach (var ball in allBalls)
+        if (mapID != MapIconIdentfier.None)
         {
-
-            ball.setOrigin();
-            Debug.Log(ball.transform.position);
+            globalCoinPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
         }
-
-
-
-        foreach (var coin in allBalls)
+        else
         {
-            //coin.gameObject.SetActive(false);
+            globalCoinPool.AddRange(GameManager.instance.GetGlobalActionWordList());
         }
+        
+        unusedCoinPool = new List<ActionWordEnum>();
+        unusedCoinPool.AddRange(globalCoinPool);
 
-
-
+        // start game
+        StartCoroutine(StartGame());
     }
 
-    private void walkThrough()
+    private IEnumerator StartGame()
     {
+        // reset rope
+        PirateRopeController.instance.ResetRope();
 
-    }
+        // get correct value
+        int correctIndex = Random.Range(0, BallsController.instance.balls.Count);
 
+        // make new used word list and add current correct word
+        usedCoinPool = new List<ActionWordEnum>();
 
-
-    private IEnumerator StartGame(int coins)
-    {
-        rope.ToggleVisibility(false, false);
-        Debug.Log("At Start Game");
-        rope.GoToOrigin();
-        //StartCoroutine(CoinsDown(coins));
-        PrintingCoin.GoToOrigin();
-        PrintingCoin.grow();
-        List<BallController> ballz = Getballs(coins);
-        foreach (var ball in ballz)
+        // set ball values
+        int i = 0;
+        foreach (Ball ball in BallsController.instance.balls)
         {
+            // set ball
+            ActionWordEnum value = GetUnusedWord();
+            ball.SetValue(value);
 
-            ball.ToggleVisibility(false, false);
-            ball.setToBaseRotation();
-            ball.MoveToOrigin();
-            yield return new WaitForSeconds(.1f);
-
-        }
-        yield return new WaitForSeconds(1.2f);
-        StartCoroutine(ShowBalls(coins));
-        yield return new WaitForSeconds(1f);
-        StartCoroutine(BallsUp(0));
-        Debug.Log("Working?");
-        yield return new WaitForSeconds(1f);
-        rope.ToggleVisibility(true, true);
-        PrintingCoin.moveIn();
-        rope.moveIn();
-    }
-
-    private IEnumerator ShowBalls(int index)
-    {
-        Debug.Log("ShowCoins???????????????");
-        List<BallController> currentBalls = Getballs(index);
-        foreach (var ball in currentBalls)
-        {
-            // set random type
-            if (unusedBallPool.Count == 0)
+            // find correct value
+            if (i == correctIndex)
             {
-                unusedBallPool.AddRange(globalBallPool);
+                correctValue = value;
+                // for testing purposes
+                if (glowCorrectCoin)
+                    ImageGlowController.instance.SetImageGlow(ball.GetComponent<Image>(), true, GlowValue.glow_1_00);
             }
-            ActionWordEnum type = unusedBallPool[Random.Range(0, unusedBallPool.Count)];
-            unusedBallPool.Remove(type);
-
-            ball.SetCoinType(type);
-            ball.ToggleVisibility(true, true);
-            Debug.Log("ShowCoins");
-            yield return new WaitForSeconds(0f);
+            else
+            {
+                // for testing purposes
+                if (glowCorrectCoin)
+                    ImageGlowController.instance.SetImageGlow(ball.GetComponent<Image>(), false);
+            }
+                
+            i++;
         }
 
-        //SelectRandomCoin(currRow);
+        yield return new WaitForSeconds(1f);
+        BallsController.instance.ShowBalls();
+        yield return new WaitForSeconds(1f);
+        PirateRopeController.instance.DropRope();
+        yield return new WaitForSeconds(0.5f);
+        ParrotController.instance.SayAudio(correctValue);
+        yield return new WaitForSeconds(1f);
+
+        // turn on raycaster + parrot
+        PrintingRayCaster.instance.isOn = true;
     }
 
-    private IEnumerator BallsUp(int index)
+    public bool EvaluateSelectedBall(ActionWordEnum ball)
     {
-        Debug.Log("ShowCoins");
-        List<BallController> coins = Getballs(index);
-        foreach (var ball in Balls)
+        // turn off raycaster + parrot
+        PrintingRayCaster.instance.isOn = false;
+        ParrotController.instance.StopAllCoroutines();
+        ParrotController.instance.interactable = false;
+
+        // correct!
+        if (ball == correctValue)
         {
-
-            ball.MoveIn();
-            yield return new WaitForSeconds(0f);
-
+            StartCoroutine(CorrectBallRoutine());
+            return true;
         }
-        SelectRandomCoin(index);
-    }
-    private IEnumerator CoinsDown(int index)
-    {
-        Debug.Log("ShowCoins");
-        List<BallController> coins = Getballs(index);
-        foreach (var ball in Balls)
+        // incorrcet!
+        else
         {
-
-            //ball.MoveDown();
-            yield return new WaitForSeconds(0f);
-
+            StartCoroutine(IncorrectBallRoutine());
+            return false;
         }
-        //SelectRandomCoin(index);
     }
 
-
-    private IEnumerator HideCoins(int index, RummageCoin exceptCoin = null)
+    private IEnumerator CorrectBallRoutine()
     {
-        List<BallController> row = Getballs(index);
-        foreach (var ball in row)
+        timesCorrect++;
+
+        // parrot animation
+        ParrotController.instance.CelebrateAnimation(3f);
+
+        // load cannon
+        yield return new WaitForSeconds(0.5f);
+        CannonController.instance.cannonAnimator.Play("Load");
+        
+        // shoot cannon
+        yield return new WaitForSeconds(0.25f);
+        CannonController.instance.cannonAnimator.Play("Shoot");
+        CannonController.instance.explosionAnimator.Play("hit");
+
+        // drop coin into chest
+        yield return new WaitForSeconds(0.75f);
+        PirateRopeController.instance.printingCoin.SetActionWordValue(correctValue);
+        yield return new WaitForSeconds(0.1f);
+        PirateRopeController.instance.DropCoinAnimation();
+
+        // upgrade coin
+        yield return new WaitForSeconds(1.25f);
+        PirateChest.instance.UpgradeChest();
+        yield return new WaitForSeconds(1f);
+
+        if (timesCorrect >= 4)
         {
-            if (ball != exceptCoin)
-                ball.ToggleVisibility(false, true);
-            yield return new WaitForSeconds(0.1f);
+            StartCoroutine(WinRoutine());
+            yield break;
         }
+
+        // reset balls and start new round
+        BallsController.instance.ResetBalls();
+        StartCoroutine(StartGame());
     }
 
-    private void SelectRandomCoin(int index)
+    private IEnumerator IncorrectBallRoutine()
     {
-        List<BallController> balls = Getballs(index);
-        selectedIndex = Random.Range(0, balls.Count);
+        timesMissed++;
 
-        print("selected index: " + selectedIndex);
-        selectedBall = balls[selectedIndex];
-        PrintingCoin.SetCoinType(selectedBall.type);
+        // parrot animation
+        ParrotController.instance.SadAnimation(3f);
 
+        // load cannon
+        yield return new WaitForSeconds(0.5f);
+        CannonController.instance.cannonAnimator.Play("Load");
+        
+        // shoot cannon
+        yield return new WaitForSeconds(0.25f);
+        CannonController.instance.cannonAnimator.Play("Shoot");
+        CannonController.instance.explosionAnimator.Play("miss");
+        yield return new WaitForSeconds(1f);
 
+        // raise rope
+        PirateRopeController.instance.RaiseRopeAnimation();
+        yield return new WaitForSeconds(2f);
+
+        // reset balls and start new round
+        BallsController.instance.ResetBalls();
+        StartCoroutine(StartGame());
     }
 
-    private List<BallController> Getballs(int index)
+    private IEnumerator WinRoutine()
     {
-        switch (index)
+        // parrot fly!!!
+        ParrotController.instance.WinAnimation();
+
+        // play win tune
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+        yield return new WaitForSeconds(2f);
+
+        // calculate and show stars
+        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+    }
+
+    private int CalculateStars()
+    {
+        if (timesMissed <= 0)
+            return 3;
+        else if (timesMissed > 0 && timesMissed <= 2)
+            return 2;
+        else
+            return 1;
+    }
+
+    private ActionWordEnum GetUnusedWord()
+    {
+        // reset unused pool if empty
+        if (unusedCoinPool.Count <= 0)
         {
-            default:
-            case 0:
-                return Balls;
-
-
+            unusedCoinPool.Clear();
+            unusedCoinPool.AddRange(globalCoinPool);
         }
+
+        int index = Random.Range(0, unusedCoinPool.Count);
+        ActionWordEnum word = unusedCoinPool[index];
+
+        // make sure word is not being used or already successfully completed
+        if (usedCoinPool.Contains(word))
+        {
+            unusedCoinPool.Remove(word);
+            return GetUnusedWord();
+        }
+
+        unusedCoinPool.Remove(word);
+        usedCoinPool.Add(word);
+        return word;
     }
 }

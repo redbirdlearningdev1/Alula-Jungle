@@ -8,7 +8,7 @@ public static class StudentInfoSystem
 
     public static StudentPlayerData GetCurrentProfile()
     {
-        // be default - use profile 1
+        // by default - use profile 1
         if (currentStudentPlayer == null)
         {
             SetStudentPlayer(StudentIndex.student_1);
@@ -19,10 +19,41 @@ public static class StudentInfoSystem
     public static void SetStudentPlayer(StudentIndex index)
     {
         SaveStudentPlayerData();
-        currentStudentPlayer = LoadSaveSystem.LoadStudentData(index); // load new student data
+        currentStudentPlayer = LoadSaveSystem.LoadStudentData(index, true); // load new student data
+
         SettingsManager.instance.LoadSettingsFromProfile(); // load profile settings
         DropdownToolbar.instance.LoadToolbarDataFromProfile(); // load profile coins
         GameManager.instance.SendLog("StudentInfoSystem", "current profile set to: " + index);
+    }
+
+    private static void SetMostRecentProfile(StudentIndex index)
+    {
+        GameManager.instance.SendLog("StudentInfoSystem", "setting most recent profile: " + index);
+
+        var data1 = LoadSaveSystem.LoadStudentData(StudentIndex.student_1, false);
+        var data2 = LoadSaveSystem.LoadStudentData(StudentIndex.student_2, false);
+        var data3 = LoadSaveSystem.LoadStudentData(StudentIndex.student_3, false);
+
+        data1.mostRecentProfile = false;
+        data2.mostRecentProfile = false;
+        data3.mostRecentProfile = false;
+
+        switch (index)
+        {
+            case StudentIndex.student_1:
+                data1.mostRecentProfile = true;
+                break;
+            case StudentIndex.student_2:
+                data2.mostRecentProfile = true;
+                break;
+            case StudentIndex.student_3:
+                data3.mostRecentProfile = true;
+                break;
+        }
+
+        LoadSaveSystem.SaveStudentData(data1, true);
+        LoadSaveSystem.SaveStudentData(data2, true);
+        LoadSaveSystem.SaveStudentData(data3, true);
     }
 
     public static void RemoveCurrentStudentPlayer()
@@ -33,14 +64,18 @@ public static class StudentInfoSystem
     public static void SaveStudentPlayerData()
     {
         if (currentStudentPlayer != null)
+        {
             LoadSaveSystem.SaveStudentData(currentStudentPlayer);  // save current student data
+            SetMostRecentProfile(currentStudentPlayer.studentIndex); // make profile most recent
+        }
+            
         else
             Debug.Log("Current student player is null.");
     }
 
     public static StudentPlayerData GetStudentData(StudentIndex index)
     {
-        return LoadSaveSystem.LoadStudentData(index);
+        return LoadSaveSystem.LoadStudentData(index, false);
     }
 
     public static List<StudentPlayerData> GetAllStudentDatas()
@@ -61,6 +96,47 @@ public static class StudentInfoSystem
     public static void AdvanceStoryBeat()
     {
         currentStudentPlayer.currStoryBeat = (StoryBeat)((int)currentStudentPlayer.currStoryBeat + 1);
+    }
+
+    public static GameType GetChallengeGameType(MapLocation location)
+    {
+        // create list of challenge game options
+        List<GameType> challengeGameOptions = new List<GameType>();
+        challengeGameOptions.Add(GameType.WordFactoryBlending);
+        challengeGameOptions.Add(GameType.WordFactoryBuilding);
+        challengeGameOptions.Add(GameType.WordFactoryDeleting);
+        challengeGameOptions.Add(GameType.WordFactorySubstituting);
+        challengeGameOptions.Add(GameType.TigerPawCoins);
+        challengeGameOptions.Add(GameType.TigerPawPhotos);
+
+
+        // remove options that are already used in this area
+        switch (location)
+        {
+            case MapLocation.GorillaVillage:
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType);
+                break;
+
+            case MapLocation.Mudslide:
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType);
+                break;
+
+            case MapLocation.OrcVillage:
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType);
+                break;
+
+            // add other cases here
+        }
+
+        // return random index
+        int index = Random.Range(0, challengeGameOptions.Count);
+        return challengeGameOptions[index];
     }
 
     /* 

@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public enum Character
 {
-    None, Darwin, Julius, Marcus, Brutus
+    None, Darwin, Julius, Marcus, Brutus, Clogg
 }
 
 public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
@@ -80,6 +80,14 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 yield break;
             }
         }
+        else if (character == Character.Clogg)
+        {
+            if (StudentInfoSystem.GetCurrentProfile().currStoryBeat > StoryBeat.OrcVillageMeetClogg)
+            {
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.cloggQuips);
+                yield break;
+            }
+        }
 
         print ("story beat: " + StudentInfoSystem.GetCurrentProfile().currStoryBeat);
 
@@ -102,7 +110,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 yield return null;
 
             // tiger and monkies walk in
-            MapAnimationController.instance.TigerAndMonkiesWalkIn();
+            MapAnimationController.instance.TigerAndMonkiesWalkInGV();
             // wait for animation to be done
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
@@ -160,7 +168,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             // save to SIS and exit to scroll map
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
-
+            
+            ScrollMapManager.instance.showStars = false;
             ScrollMapManager.instance.EnableAllMapIcons();
             yield break;
         }
@@ -179,7 +188,31 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                     yield return null;
             }
         }
-        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1)
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillageMeetClogg)
+        {
+            // only continue if tapped on gorilla
+            if (character == Character.Clogg)
+            {
+                // add pre story game talkie here
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcVillageIntro_3);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                ScrollMapManager.instance.showStars = true;
+                ScrollMapManager.instance.EnableAllMapIcons();
+                ScrollMapManager.instance.clogg.ShowExclamationMark(false);
+
+                // save to SIS and exit to scroll map
+                StudentInfoSystem.AdvanceStoryBeat();
+                StudentInfoSystem.SaveStudentPlayerData();
+                yield break;
+            }
+        }
+
+
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Mudslide_challengeGame_1 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_1)
         {
             if (character == Character.Julius)
             {
@@ -189,7 +222,9 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                     yield return null;
             }
         }
-        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2)
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Mudslide_challengeGame_2 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_2)
         {
             if (character == Character.Marcus)
             {
@@ -199,7 +234,9 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                     yield return null;
             }
         }
-        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3)
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Mudslide_challengeGame_3 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_3 )
         {
             if (character == Character.Brutus)
             {

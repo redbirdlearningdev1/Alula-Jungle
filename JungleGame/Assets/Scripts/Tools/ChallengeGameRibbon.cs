@@ -20,7 +20,10 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
     [Header("Logo Sprites")]
     public Sprite wordFactorySubstitutionLogo;
     public Sprite wordFactoryBlendingLogo;
+    public Sprite wordFactoryBuildingLogo;
+    public Sprite wordFactoryDeletingLogo;
     public Sprite tigerPawCoinsLogo;
+    public Sprite tigerPawPhotosLogo;
 
     private GameType myGameType;
 
@@ -40,6 +43,7 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
 
     public void OpenRibbon(GameType gameType)
     {
+        myGameType = gameType;
         StartCoroutine(OpenRibbonRoutine(gameType));
     }
 
@@ -87,6 +91,12 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
                 return wordFactoryBlendingLogo;
             case GameType.WordFactorySubstituting:
                 return wordFactorySubstitutionLogo;
+            case GameType.WordFactoryBuilding:
+                return wordFactoryBuildingLogo;
+            case GameType.WordFactoryDeleting:
+                return wordFactoryDeletingLogo;
+            case GameType.TigerPawPhotos:
+                return tigerPawPhotosLogo;
             case GameType.TigerPawCoins:
                 return tigerPawCoinsLogo;
         }
@@ -94,7 +104,6 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
 
     private void SetRibbonStars()
     {
-        ChallengeGameTriad triad;
         int stars = 0;
 
         // determine map area + get sis data
@@ -103,20 +112,32 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
             case MapLocation.NONE:
                 GameManager.instance.SendError(this, "Somehow you managed to get challenge games in an invalid area???");
                 break;
+
             case MapLocation.GorillaVillage:
-                triad = GameManager.instance.challengeGameTriads[0];
-
-                if (triad.juliusGame1 == myGameType)
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType == myGameType)
                     stars = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.stars;
-                else if (triad.marcusGame2 == myGameType)
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType == myGameType)
                     stars = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.stars;
-                else if (triad.brutusGame3 == myGameType)
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType == myGameType)
                     stars = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.stars;
-
                 break;
+                
             case MapLocation.Mudslide:
-                triad = GameManager.instance.challengeGameTriads[1];
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.stars;
+                break;
 
+             case MapLocation.OrcVillage:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.stars;
                 break;
             // etc ...
         }

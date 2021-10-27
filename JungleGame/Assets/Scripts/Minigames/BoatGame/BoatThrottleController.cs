@@ -16,8 +16,7 @@ public class BoatThrottleController : MonoBehaviour
     private bool firstTime = true;
     private bool boatRumbleStarted = false;
     public ThrottleButton throttleButton;
-    
-    public GlowOutlineController outlineController;
+
     public WiggleController wiggleController;
 
     void Awake()

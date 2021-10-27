@@ -1,71 +1,100 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class ParrotController : MonoBehaviour
+public class ParrotController : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
-    // Start is called before the first frame update\
-    private Animator animator;
+    public static ParrotController instance;
 
+    public bool interactable;
+    public float pressedScaleChange;
+    private bool isPressed;
+    public Animator animator;
 
     void Awake()
     {
-        animator = GetComponent<Animator>();
+        if (instance == null)
+            instance = this;
     }
-    public void idle()
+
+    public void CelebrateAnimation(float duration)
     {
-        StartCoroutine(idleRoutine());
+        StartCoroutine(CelebrateAnimationRoutine(duration));
     }
-    private IEnumerator idleRoutine()
+    private IEnumerator CelebrateAnimationRoutine(float duration)
     {
-        yield return new WaitForSeconds(0f);
+        animator.Play("Celebrate");
+        yield return new WaitForSeconds(duration);
         animator.Play("Idle");
     }
-    public void success()
-    {
-        StartCoroutine(successRoutine());
-    }
-    private IEnumerator successRoutine()
-    {
 
-        animator.Play("PreFly");
-        yield return new WaitForSeconds(1.3f);
-        animator.Play("Celebrate");
-
-    }
-    public void fail()
+    public void SadAnimation(float duration)
     {
-        StartCoroutine(failRoutine());
+        StartCoroutine(SadAnimationRoutine(duration));
     }
-    private IEnumerator failRoutine()
+    private IEnumerator SadAnimationRoutine(float duration)
     {
-
-        animator.Play("PreFly");
-        yield return new WaitForSeconds(1.3f);
         animator.Play("No");
-
+        yield return new WaitForSeconds(duration);
+        animator.Play("Idle");
     }
-    public void miss()
+
+    public void WinAnimation()
     {
-        StartCoroutine(missRoutine());
+        animator.Play("PreFly");
     }
-    private IEnumerator missRoutine()
+
+    public void SayAudio(ActionWordEnum word)
     {
-
-        animator.Play("miss");
-        yield return new WaitForSeconds(0f);
-
-
+        StartCoroutine(SayAudioRoutine(word));
     }
-    public void hit()
+
+    private IEnumerator SayAudioRoutine(ActionWordEnum word)
     {
-        StartCoroutine(hitRoutine());
+        interactable = false;
+
+        animator.Play("PreFly");
+        yield return new WaitForSeconds(0.1f);
+
+        // play audio
+        AudioManager.instance.PlayTalk(GameManager.instance.GetActionWord(word).audio);
+        yield return new WaitForSeconds(1.25f);
+
+        animator.Play("EndFly");
+        yield return new WaitForSeconds(0.25f);
+
+        interactable = true;
     }
-    private IEnumerator hitRoutine()
+
+    /* 
+    ################################################
+    #   POINTER METHODS
+    ################################################
+    */
+
+    public void OnPointerDown(PointerEventData eventData)
     {
+        // return if not interactable
+        if (!interactable)
+            return;
 
-        animator.Play("hit");
-        yield return new WaitForSeconds(0f);
+        if (!isPressed)
+        {
+            isPressed = true;
+            transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
+        }
+    }
 
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (isPressed)
+        {
+            // play audio blip
+            SayAudio(PrintingGameManager.instance.correctValue);
+
+            isPressed = false;
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
     }
 }

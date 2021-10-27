@@ -8,6 +8,7 @@ public class RoyalDecreeController : MonoBehaviour
     public static RoyalDecreeController instance;
 
     [Header("Window Pieces")]
+    public LerpableObject backButton;
     public LerpableObject dim_bg;
     public LerpableObject window;
     public LerpableObject scroll;
@@ -25,7 +26,7 @@ public class RoyalDecreeController : MonoBehaviour
     private bool isOpen = false;
     private bool waitToOpen = false;
 
-    private ChallengeGameTriad currTriad;
+    private List<GameType> currTriad;
     private GameType currGameType;
 
     void Awake()
@@ -43,9 +44,23 @@ public class RoyalDecreeController : MonoBehaviour
         confirmWindow.transform.localScale = new Vector3(1f, 0f, 1f);
         dim_bg_2.SetImageAlpha(dim_bg_2.GetComponent<Image>(), 0f);
         dim_bg_2.GetComponent<Image>().raycastTarget = false;
+
+        // hide back button
+        backButton.transform.localScale = new Vector3(0f, 0f, 1f);
     }
 
-    public void ToggleWindow(int triadIndex)
+    public void OnBackButtonPressed()
+    {
+        if (waitToOpen)
+            return;
+        
+        waitToOpen = true;
+        isOpen = !isOpen;
+
+        StartCoroutine(CloseWindowRoutine());
+    }
+
+    public void ToggleWindow(MapLocation mapLocation)
     {
         if (waitToOpen)
             return;
@@ -57,7 +72,7 @@ public class RoyalDecreeController : MonoBehaviour
         // open window
         if (isOpen)
         {
-            StartCoroutine(OpenWindowRoutine(triadIndex));
+            StartCoroutine(OpenWindowRoutine(mapLocation));
         }
         // close window
         else 
@@ -66,20 +81,33 @@ public class RoyalDecreeController : MonoBehaviour
         }
     }
 
-    private IEnumerator OpenWindowRoutine(int index)
+    private IEnumerator OpenWindowRoutine(MapLocation mapLocation)
     {
-        print ("index: " + index);
+        // remove UI buttons
+        SettingsManager.instance.ToggleMenuButtonActive(false);
+        SettingsManager.instance.ToggleWagonButtonActive(false);
 
         // get challenge game triads
-        ChallengeGameTriad triad = GameManager.instance.challengeGameTriads[index];
-
-        print ("triad: " + triad);
-
-        List<GameType> challengeGames = new List<GameType>();
-
-        challengeGames.Add(triad.juliusGame1);
-        challengeGames.Add(triad.marcusGame2);
-        challengeGames.Add(triad.brutusGame3);
+        currTriad = new List<GameType>();
+        
+        switch (mapLocation)
+        {
+            case MapLocation.GorillaVillage:
+                currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType);
+                currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType);
+                currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType);
+                break;
+            case MapLocation.Mudslide:
+                currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType);
+                currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType);
+                currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType);
+                break;
+            case MapLocation.OrcVillage:
+                currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType);
+                currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType);
+                currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType);
+                break;
+        }
 
         // dim bg
         dim_bg.LerpImageAlpha(dim_bg.GetComponent<Image>(), 0.65f, 0.5f);
@@ -94,10 +122,13 @@ public class RoyalDecreeController : MonoBehaviour
         int count = 0;
         foreach (var ribbon in ribbons)
         {
-            ribbon.OpenRibbon(challengeGames[count]);
+            ribbon.OpenRibbon(currTriad[count]);
             yield return new WaitForSeconds(0.1f);
             count++;
         }
+
+        // show back button
+        backButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.2f, 0.2f);
 
         waitToOpen = false;
     }
@@ -117,6 +148,9 @@ public class RoyalDecreeController : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
+        // remove back button
+        backButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.2f, 0.2f);
+
         // un-dim bg
         dim_bg.LerpImageAlpha(dim_bg.GetComponent<Image>(), 0f, 0.5f);
         dim_bg.GetComponent<Image>().raycastTarget = false;
@@ -129,6 +163,10 @@ public class RoyalDecreeController : MonoBehaviour
 
         // remove temp signpost
         TempObjectPlacer.instance.RemoveObject();
+
+        // add UI buttons
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+        SettingsManager.instance.ToggleWagonButtonActive(true);
 
         waitToOpen = false;
     }

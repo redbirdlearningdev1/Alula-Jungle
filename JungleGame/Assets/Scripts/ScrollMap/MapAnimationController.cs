@@ -16,31 +16,80 @@ public class MapAnimationController : MonoBehaviour
     public Transform boatNotDockedPos;
     public Transform boatDockedPos;
 
-    [Header("Gorilla")]
+    [Header("Gorilla GV")]
     public GameObject gorilla;
     public Transform gorillaGVPosSTART;
     public Transform gorillaGVPosEND;
 
-    [Header("Tiger")]
+    /* 
+    ################################################
+    #   TIGER POS
+    ################################################
+    */
+
+    [Header("Tiger GV")]
     public Animator tigerScreenSwipeAnim;
     public GameObject tiger;
     public Transform tigerGVPosSTART;
     public Transform tigerGVPosEND;
-    public Transform tigerChallengePos;
+    public Transform tigerGVChallengePos;
 
-    [Header("Brutus")]
+    [Header("Tiger MS")]
+    public Transform tigerMSPosSTART;
+    public Transform tigerMSPosEND;
+    public Transform tigerMSChallengePos;
+
+    [Header("Tiger OV")]
+    public Transform tigerOVPosSTART;
+    public Transform tigerOVPosEND;
+    public Transform tigerOVChallengePos;
+
+    /* 
+    ################################################
+    #   BRUTUS POS
+    ################################################
+    */
+
+    [Header("Brutus GV")]
     public GameObject brutus;
     public Transform brutusGVPosSTART;
     public Transform brutusGVPosEND;
-    public Transform brutusChallengePos;
+    public Transform brutusGVChallengePos;
 
+    [Header("Brutus MS")]
+    public Transform brutusMSPosSTART;
+    public Transform brutusMSPosEND;
+    public Transform brutusMSChallengePos;
 
-    [Header("Marcus")]
+    [Header("Brutus OV")]
+    public Transform brutusOVPosSTART;
+    public Transform brutusOVPosEND;
+    public Transform brutusOVChallengePos;
+
+    /* 
+    ################################################
+    #   MARCUS POS
+    ################################################
+    */
+
+    [Header("Marcus GV")]
     public GameObject marcus;
     public Transform marcusGVPosSTART;
     public Transform marcusGVPosEND;
-    public Transform marcusChallengePos;
+    public Transform marcusGVChallengePos;
 
+    [Header("Marcus MS")]
+    public Transform marcusMSPosSTART;
+    public Transform marcusMSPosEND;
+    public Transform marcusMSChallengePos;
+
+    [Header("Marcus OV")]
+    public Transform marcusOVPosSTART;
+    public Transform marcusOVPosEND;
+    public Transform marcusOVChallengePos;
+
+    [Header("Orc OV")]
+    public Transform cloggOVPosDEFAULT;
 
     void Awake()
     {
@@ -53,18 +102,6 @@ public class MapAnimationController : MonoBehaviour
         tiger.transform.position = offscreenPos.position;
         brutus.transform.position = offscreenPos.position;
         marcus.transform.position = offscreenPos.position;
-    }
-    
-    void Update()
-    {
-        // test out animations
-        if (GameManager.instance.devModeActivated)
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                TigerRunAwayGV();
-            }
-        }
     }
 
     // used to move object for animation
@@ -98,6 +135,256 @@ public class MapAnimationController : MonoBehaviour
         }
     }
 
+    /* 
+    ################################################
+    #   ORC VILLAGE ANIMATIONS
+    ################################################
+    */
+
+    public void MonkeyExitAnimationDefeatedOV()
+    {
+        StartCoroutine(MonkeyExitAnimationDefeatedOVRoutine());
+    }
+    private IEnumerator MonkeyExitAnimationDefeatedOVRoutine()
+    {
+        animationDone = false;
+
+        // place characters in end pos
+        marcus.transform.position = marcusOVChallengePos.position;
+        brutus.transform.position = brutusOVChallengePos.position;
+
+        // play laugh animations
+        marcus.GetComponent<Animator>().Play("marcusWin");
+        brutus.GetComponent<Animator>().Play("brutusWin");
+        yield return new WaitForSeconds(1.5f);
+
+
+        // play turn animation
+        marcus.GetComponent<Animator>().Play("marcusTurn");
+        brutus.GetComponent<Animator>().Play("brutusTurn");
+        yield return new WaitForSeconds(0.4f);
+
+        // move to off screen
+        StartCoroutine(MoveObjectOverTime(marcus, marcusOVPosSTART.position, 5f, true));
+        StartCoroutine(MoveObjectOverTime(brutus, brutusOVPosSTART.position, 5f, true));
+
+        yield return new WaitForSeconds(5f);
+
+        animationDone = true;
+    }
+
+    public void TigerRunAwayDefeatedOV()
+    {
+        StartCoroutine(TigerRunAwayDefeatedOVRoutine());
+    }
+    private IEnumerator TigerRunAwayDefeatedOVRoutine()
+    {
+        animationDone = false;
+
+        // place characters in end pos
+        tiger.transform.position = tigerOVChallengePos.position;
+
+        // play turn around animation
+        tiger.GetComponent<Animator>().Play("aTigerTurn");
+        yield return new WaitForSeconds(0.3f);
+        // move to off screen
+        StartCoroutine(MoveObjectOverTime(tiger, tigerOVPosSTART.position, 2f, true));
+
+        animationDone = true;
+    }
+
+    public void TigerAndMonkiesChallengePosOV()
+    {
+        StartCoroutine(TigerAndMonkiesChallengePosOVRoutine());
+    }
+    private IEnumerator TigerAndMonkiesChallengePosOVRoutine()
+    {
+        animationDone = false;
+
+        // place characters in end pos
+        tiger.transform.position = tigerOVPosEND.position;
+        marcus.transform.position = marcusOVPosEND.position;
+        brutus.transform.position = brutusOVPosEND.position;
+
+        // play correct walk in animation
+        tiger.GetComponent<Animator>().Play("tigerWalk");
+        marcus.GetComponent<Animator>().Play("marcusWalkIn");
+        brutus.GetComponent<Animator>().Play("brutusWalkIn");
+
+        // move characters to end positions on screen
+        StartCoroutine(MoveObjectOverTime(tiger, tigerOVChallengePos.position, 2f, true));
+        StartCoroutine(MoveObjectOverTime(marcus, marcusOVChallengePos.position, 2f, true));
+        StartCoroutine(MoveObjectOverTime(brutus, brutusOVChallengePos.position, 2f, true));
+        yield return new WaitForSeconds(2f);
+
+        // play correct idle in animation
+        tiger.GetComponent<Animator>().Play("aTigerIdle");
+        marcus.GetComponent<Animator>().Play("marcusFixed");
+        brutus.GetComponent<Animator>().Play("brutusFixed");
+
+        animationDone = true;
+    }
+
+    public void TigerAndMonkiesWalkInOV()
+    {
+        StartCoroutine(TigerAndMonkiesWalkInOVRoutine());
+    }
+    private IEnumerator TigerAndMonkiesWalkInOVRoutine()
+    {
+        animationDone = false;
+
+        // place characters in start pos
+        tiger.transform.position = tigerOVPosSTART.position;
+        marcus.transform.position = marcusOVPosSTART.position;
+        brutus.transform.position = brutusOVPosSTART.position;
+
+        // play correct walk in animation
+        tiger.GetComponent<Animator>().Play("tigerWalk");
+        marcus.GetComponent<Animator>().Play("marcusWalkIn");
+        brutus.GetComponent<Animator>().Play("brutusWalkIn");
+
+        // move characters to end positions on screen
+        StartCoroutine(MoveObjectOverTime(tiger, tigerOVPosEND.position, 5f, true));
+        StartCoroutine(MoveObjectOverTime(marcus, marcusOVPosEND.position, 5f, true));
+        StartCoroutine(MoveObjectOverTime(brutus, brutusOVPosEND.position, 5f, true));
+        yield return new WaitForSeconds(5f);
+
+        // play correct idle in animation
+        tiger.GetComponent<Animator>().Play("aTigerIdle");
+        marcus.GetComponent<Animator>().Play("marcusFixed");
+        brutus.GetComponent<Animator>().Play("brutusFixed");
+
+        animationDone = true;
+    }
+
+    /* 
+    ################################################
+    #   MUDSLIDE ANIMATIONS
+    ################################################
+    */
+
+    public void MonkeyExitAnimationDefeatedMS()
+    {
+        StartCoroutine(MonkeyExitAnimationDefeatedMSRoutine());
+    }
+    private IEnumerator MonkeyExitAnimationDefeatedMSRoutine()
+    {
+        animationDone = false;
+
+        // place characters in end pos
+        marcus.transform.position = marcusMSChallengePos.position;
+        brutus.transform.position = brutusMSChallengePos.position;
+
+        // play laugh animations
+        marcus.GetComponent<Animator>().Play("marcusWin");
+        brutus.GetComponent<Animator>().Play("brutusWin");
+        yield return new WaitForSeconds(1.5f);
+
+
+        // play turn animation
+        marcus.GetComponent<Animator>().Play("marcusTurn");
+        brutus.GetComponent<Animator>().Play("brutusTurn");
+        yield return new WaitForSeconds(0.4f);
+
+        // move to off screen
+        StartCoroutine(MoveObjectOverTime(marcus, marcusMSPosSTART.position, 5f, true));
+        StartCoroutine(MoveObjectOverTime(brutus, brutusMSPosSTART.position, 5f, true));
+
+        yield return new WaitForSeconds(5f);
+
+        animationDone = true;
+    }
+
+    public void TigerRunAwayDefeatedMS()
+    {
+        StartCoroutine(TigerRunAwayDefeatedMSRoutine());
+    }
+    private IEnumerator TigerRunAwayDefeatedMSRoutine()
+    {
+        animationDone = false;
+
+        // place characters in end pos
+        tiger.transform.position = tigerMSChallengePos.position;
+
+        // play turn around animation
+        tiger.GetComponent<Animator>().Play("aTigerTurn");
+        yield return new WaitForSeconds(0.3f);
+        // move to off screen
+        StartCoroutine(MoveObjectOverTime(tiger, tigerMSPosSTART.position, 2f, true));
+
+        animationDone = true;
+    }
+
+    public void TigerAndMonkiesChallengePosMS()
+    {
+        StartCoroutine(TigerAndMonkiesChallengePosMSRoutine());
+    }
+    private IEnumerator TigerAndMonkiesChallengePosMSRoutine()
+    {
+        animationDone = false;
+
+        // place characters in end pos
+        tiger.transform.position = tigerMSPosEND.position;
+        marcus.transform.position = marcusMSPosEND.position;
+        brutus.transform.position = brutusMSPosEND.position;
+
+        // play correct walk in animation
+        tiger.GetComponent<Animator>().Play("tigerWalk");
+        marcus.GetComponent<Animator>().Play("marcusWalkIn");
+        brutus.GetComponent<Animator>().Play("brutusWalkIn");
+
+        // move characters to end positions on screen
+        StartCoroutine(MoveObjectOverTime(tiger, tigerMSChallengePos.position, 2f, true));
+        StartCoroutine(MoveObjectOverTime(marcus, marcusMSChallengePos.position, 2f, true));
+        StartCoroutine(MoveObjectOverTime(brutus, brutusMSChallengePos.position, 2f, true));
+        yield return new WaitForSeconds(2f);
+
+        // play correct idle in animation
+        tiger.GetComponent<Animator>().Play("aTigerIdle");
+        marcus.GetComponent<Animator>().Play("marcusFixed");
+        brutus.GetComponent<Animator>().Play("brutusFixed");
+
+        animationDone = true;
+    }
+
+    public void TigerAndMonkiesWalkInMS()
+    {
+        StartCoroutine(TigerAndMonkiesWalkInMSRoutine());
+    }
+    private IEnumerator TigerAndMonkiesWalkInMSRoutine()
+    {
+        animationDone = false;
+
+        // place characters in start pos
+        tiger.transform.position = tigerMSPosSTART.position;
+        marcus.transform.position = marcusMSPosSTART.position;
+        brutus.transform.position = brutusMSPosSTART.position;
+
+        // play correct walk in animation
+        tiger.GetComponent<Animator>().Play("tigerWalk");
+        marcus.GetComponent<Animator>().Play("marcusWalkIn");
+        brutus.GetComponent<Animator>().Play("brutusWalkIn");
+
+        // move characters to end positions on screen
+        StartCoroutine(MoveObjectOverTime(tiger, tigerMSPosEND.position, 5f, true));
+        StartCoroutine(MoveObjectOverTime(marcus, marcusMSPosEND.position, 5f, true));
+        StartCoroutine(MoveObjectOverTime(brutus, brutusMSPosEND.position, 5f, true));
+        yield return new WaitForSeconds(5f);
+
+        // play correct idle in animation
+        tiger.GetComponent<Animator>().Play("aTigerIdle");
+        marcus.GetComponent<Animator>().Play("marcusFixed");
+        brutus.GetComponent<Animator>().Play("brutusFixed");
+
+        animationDone = true;
+    }
+
+    /* 
+    ################################################
+    #   GORILLA VILLAGE ANIMATIONS
+    ################################################
+    */
+
     public void MonkeyExitAnimationDefeatedGV()
     {
         StartCoroutine(MonkeyExitAnimationDefeatedGVRoutine());
@@ -107,8 +394,8 @@ public class MapAnimationController : MonoBehaviour
         animationDone = false;
 
         // place characters in end pos
-        marcus.transform.position = marcusChallengePos.position;
-        brutus.transform.position = brutusChallengePos.position;
+        marcus.transform.position = marcusGVChallengePos.position;
+        brutus.transform.position = brutusGVChallengePos.position;
 
         // play laugh animations
         marcus.GetComponent<Animator>().Play("marcusWin");
@@ -139,7 +426,7 @@ public class MapAnimationController : MonoBehaviour
         animationDone = false;
 
         // place characters in end pos
-        tiger.transform.position = tigerChallengePos.position;
+        tiger.transform.position = tigerGVChallengePos.position;
 
         // play turn around animation
         tiger.GetComponent<Animator>().Play("aTigerTurn");
@@ -150,11 +437,11 @@ public class MapAnimationController : MonoBehaviour
         animationDone = true;
     }
 
-    public void TigerAndMonkiesChallengePos()
+    public void TigerAndMonkiesChallengePosGV()
     {
-        StartCoroutine(TigerAndMonkiesChallengePosRoutine());
+        StartCoroutine(TigerAndMonkiesChallengePosGVRoutine());
     }
-    private IEnumerator TigerAndMonkiesChallengePosRoutine()
+    private IEnumerator TigerAndMonkiesChallengePosGVRoutine()
     {
         animationDone = false;
 
@@ -169,9 +456,9 @@ public class MapAnimationController : MonoBehaviour
         brutus.GetComponent<Animator>().Play("brutusWalkIn");
 
         // move characters to end positions on screen
-        StartCoroutine(MoveObjectOverTime(tiger, tigerChallengePos.position, 2f, true));
-        StartCoroutine(MoveObjectOverTime(marcus, marcusChallengePos.position, 2f, true));
-        StartCoroutine(MoveObjectOverTime(brutus, brutusChallengePos.position, 2f, true));
+        StartCoroutine(MoveObjectOverTime(tiger, tigerGVChallengePos.position, 2f, true));
+        StartCoroutine(MoveObjectOverTime(marcus, marcusGVChallengePos.position, 2f, true));
+        StartCoroutine(MoveObjectOverTime(brutus, brutusGVChallengePos.position, 2f, true));
         yield return new WaitForSeconds(2f);
 
         // play correct idle in animation
@@ -284,11 +571,11 @@ public class MapAnimationController : MonoBehaviour
         animationDone = true;
     }
 
-    public void TigerAndMonkiesWalkIn()
+    public void TigerAndMonkiesWalkInGV()
     {
-        StartCoroutine(TigerAndMonkiesWalkInRoutine());
+        StartCoroutine(TigerAndMonkiesWalkInGVRoutine());
     }
-    private IEnumerator TigerAndMonkiesWalkInRoutine()
+    private IEnumerator TigerAndMonkiesWalkInGVRoutine()
     {
         animationDone = false;
 

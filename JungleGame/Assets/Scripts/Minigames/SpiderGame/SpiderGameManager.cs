@@ -104,7 +104,7 @@ public class SpiderGameManager : MonoBehaviour
                         SelectCoin(hit.transform.gameObject);
                         if(introPlayed != true)
                         {
-                            coins[correctCoinIndex].GetComponent<GlowOutlineController>().SetGlowSettings(0f, 0, Color.white, false);
+                            //coins[correctCoinIndex].GetComponent<GlowOutlineController>().SetGlowSettings(0f, 0, Color.white, false);
                             bugGlow.enabled = false;
                             introPlayed = true;
                         }
@@ -125,7 +125,7 @@ public class SpiderGameManager : MonoBehaviour
                     }
                     if(introPlayed != true)
                     {
-                        coins[correctCoinIndex].GetComponent<GlowOutlineController>().SetGlowSettings(10f, 10, Color.white, false);
+                        //coins[correctCoinIndex].GetComponent<GlowOutlineController>().SetGlowSettings(10f, 10, Color.white, false);
                     }
                 }
             }

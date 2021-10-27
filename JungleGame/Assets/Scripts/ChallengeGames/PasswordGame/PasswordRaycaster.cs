@@ -74,7 +74,7 @@ public class PasswordRaycaster : MonoBehaviour
                         if(polar != "Polaroid")
                         {
                             selectedObject = result.gameObject;
-                            PasswordGameManager.instance.SlotIn(selectedObject.GetComponent<UniversalCoin>(), selectedObject);
+                            PasswordGameManager.instance.SlotIn(selectedObject.GetComponent<UniversalCoinImage>(), selectedObject);
                         }
 
                     }

@@ -75,7 +75,7 @@ public class PirateGameManager : MonoBehaviour
                         SelectBall(hit.transform.gameObject);
                         if (introPlayed != true)
                         {
-                            balls[correctCoinIndex].GetComponent<GlowOutlineController>().SetGlowSettings(0f, 0, Color.white, false);
+                            //balls[correctCoinIndex].GetComponent<GlowOutlineController>().SetGlowSettings(0f, 0, Color.white, false);
                             parrotGlow.enabled = false;
                             introPlayed = true;
                         }
@@ -95,7 +95,7 @@ public class PirateGameManager : MonoBehaviour
                     }
                     if (introPlayed != true)
                     {
-                        balls[correctCoinIndex].GetComponent<GlowOutlineController>().SetGlowSettings(10f, 10, Color.white, false);
+                        //balls[correctCoinIndex].GetComponent<GlowOutlineController>().SetGlowSettings(10f, 10, Color.white, false);
                     }
                 }
             }

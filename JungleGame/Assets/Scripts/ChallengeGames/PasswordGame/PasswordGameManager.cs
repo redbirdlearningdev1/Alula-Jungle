@@ -120,10 +120,10 @@ public class PasswordGameManager : MonoBehaviour
     [SerializeField] private List<bool> CoinIns;
     [SerializeField] private List<bool> CoinOuts;
     [SerializeField] private List<bool> WhichCoin;
-    [SerializeField] private List<UniversalCoin> waterCoins;
+    [SerializeField] private List<UniversalCoinImage> waterCoins;
     [SerializeField] private List<GameObject> tabs;
-    [SerializeField] private List<UniversalCoin> LastCoin;
-    private UniversalCoin currWaterCoin;
+    [SerializeField] private List<UniversalCoinImage> LastCoin;
+    private UniversalCoinImage currWaterCoin;
 
     // other variables
     private ChallengeWord currentWord;
@@ -131,7 +131,7 @@ public class PasswordGameManager : MonoBehaviour
     private ChallengeWord currentTargetWord;
     private int currentSwipeIndex;
 
-    private List<UniversalCoin> currentCoins;
+    private List<UniversalCoinImage> currentCoins;
     private int numWins = 0;
     private int numMisses = 0;
     private bool playingCoinAudio = false;
@@ -229,7 +229,7 @@ public class PasswordGameManager : MonoBehaviour
 
             waterCoins[i].SetValue(coinOptions[i]);
             StartCoroutine(LerpMoveObject(waterCoins[i].transform, CoinStartPos.position, 0f));
-            waterCoins[i].SetLayer(2);
+            //waterCoins[i].SetLayer(2);
             waterCoins[i].ToggleGlowOutline(false);
         }
         CoinAnim1.GetComponent<Animator>().enabled = true;
@@ -297,7 +297,7 @@ public class PasswordGameManager : MonoBehaviour
         }
     }
 
-    public void GlowAndPlayAudioCoin(UniversalCoin coin)
+    public void GlowAndPlayAudioCoin(UniversalCoinImage coin)
     {
         if (playingCoinAudio)
             return;
@@ -312,7 +312,7 @@ public class PasswordGameManager : MonoBehaviour
 
     }
 
-    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoin coin, bool waterCoin = false)
+    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoinImage coin, bool waterCoin = false)
     {
         playingCoinAudio = true;
 
@@ -393,7 +393,7 @@ public class PasswordGameManager : MonoBehaviour
 
 
     }
-    public void SlotIn(UniversalCoin currCoin, GameObject currCoinAnim)
+    public void SlotIn(UniversalCoinImage currCoin, GameObject currCoinAnim)
     {
 
         currCoin.gameObject.transform.SetParent(selectedObjectParentCoin);

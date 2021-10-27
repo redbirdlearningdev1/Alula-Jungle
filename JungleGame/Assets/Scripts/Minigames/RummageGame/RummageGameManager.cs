@@ -159,6 +159,8 @@ public class RummageGameManager : MonoBehaviour
 
         StartCoroutine(SetPileGlow(true));
         StartCoroutine(SetPileWiggles(true));
+        // make coins interactable
+        SetCoinsInteractable(true);
     }
 
     private IEnumerator StartTutorial()
@@ -187,6 +189,9 @@ public class RummageGameManager : MonoBehaviour
         // reveal dancing man
         StartCoroutine(ShowDancingManRoutine());
         yield return new WaitForSeconds(1f);
+
+        // make coins interactable
+        SetCoinsInteractable(true);
 
         NextTutorialEvent();
     }
@@ -370,6 +375,9 @@ public class RummageGameManager : MonoBehaviour
         piles[currentPile].GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
         piles[currentPile].SetWiggleOff();
 
+        // make coins not interactable
+        SetCoinsInteractable(false);
+
         if (coin.type == selectedRummageCoin.type)
         {
             // success! go on to the next row or win game if on last row
@@ -421,6 +429,10 @@ public class RummageGameManager : MonoBehaviour
             orc.failOrc();
             yield return new WaitForSeconds(1f);
             orc.channelOrc();
+
+            // make coins interactable
+            SetCoinsInteractable(true);
+
             yield break;
         }
 
@@ -443,6 +455,9 @@ public class RummageGameManager : MonoBehaviour
         piles[3].colliderOn();
         piles[4].colliderOn();
         StartCoroutine(SetPileGlow(true));
+
+        // make coins interactable
+        SetCoinsInteractable(true);
     }
 
     private IEnumerator CoinSuccessRoutine(GameObject currCoin)
@@ -518,6 +533,9 @@ public class RummageGameManager : MonoBehaviour
         }
         // unlock all piles
         UnlockAllPiles();
+
+        // make coins interactable
+        SetCoinsInteractable(true);
 
         if (playTutorial)
         {
@@ -980,6 +998,17 @@ public class RummageGameManager : MonoBehaviour
             Vector3 tempPos = Vector3.Lerp(bouncePos, dancingManOffScreen.position, timer / 0.1f);
             dancingMan.gameObject.transform.position = tempPos;
             yield return null;
+        }
+    }
+
+    public void SetCoinsInteractable(bool opt)
+    {
+        if (allCoins != null)
+        {
+            foreach (var coin in allCoins)
+            {
+                coin.interactable = opt;
+            }
         }
     }
 }

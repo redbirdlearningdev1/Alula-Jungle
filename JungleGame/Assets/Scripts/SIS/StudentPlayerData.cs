@@ -8,9 +8,8 @@ public class StudentPlayerData
     public string version;
     public StudentIndex studentIndex; // differentiate btwn student profiles
     public bool active; // bool to determine if someone has created this student player
+    public bool mostRecentProfile; // is this the most recently opend profile?
     public string name; // name of student
-    public int totalStars; // total number of stars
-    public int mapLimit; // how far player can move on map
 
     // coins
     public int goldCoins;
@@ -39,6 +38,8 @@ public class StudentPlayerData
     public List<ChallengeWord> challengeWordPool;
 
     // map data
+    public Chapter currentChapter; // completed chapter
+    public int mapLimit; // how far player can move on scroll map
     public MapData mapData;
 
     // sticker data
@@ -65,6 +66,7 @@ public enum StoryBeat
 {
     InitBoatGame, // 0
     UnlockGorillaVillage, // 1
+    
     GorillaVillageIntro, // 2
     PrologueStoryGame, // 3
     RedShowsStickerButton, // 4
@@ -73,8 +75,19 @@ public enum StoryBeat
     GorillaVillage_challengeGame_2, // 7
     GorillaVillage_challengeGame_3, // 8
     VillageChallengeDefeated, // 9
+
     MudslideUnlocked, // 10
-    MudslideRebuilt, // 11
+    Mudslide_challengeGame_1, // 11
+    Mudslide_challengeGame_2, // 12
+    Mudslide_challengeGame_3, // 13
+    MudslideRebuilt, // 14
+
+    OrcVillageMeetClogg, // 15
+    OrcVillageUnlocked, // 16
+    OrcVillage_challengeGame_1, // 17
+    OrcVillage_challengeGame_2, // 18
+    OrcVillage_challengeGame_3, // 19
+    OrcVillageRebuilt, // 20
     COUNT
 }
 
@@ -83,6 +96,19 @@ public enum StoryBeat
 #   MAP DATA
 ################################################
 */
+
+[System.Serializable]
+public enum Chapter
+{
+    chapter_0,
+    chapter_1,
+    chapter_2,
+    chapter_3,
+    chapter_4,
+    chapter_5,
+    chapter_6,
+    endGame_7
+}
 
 [System.Serializable]
 public class MapIconData
@@ -113,6 +139,32 @@ public class MapData
 
     public bool GV_signPost_unlocked;
     public int GV_signPost_stars;
+
+    // mudslide
+    public MapIconData MS_logs;
+    public MapIconData MS_pond;
+    public MapIconData MS_ramp;
+    public MapIconData MS_tower;
+
+    public ChallengeGameData MS_challenge1;
+    public ChallengeGameData MS_challenge2;
+    public ChallengeGameData MS_challenge3;
+
+    public bool MS_signPost_unlocked;
+    public int MS_signPost_stars;
+
+    // orc village
+    public MapIconData OV_houseL;
+    public MapIconData OV_houseS;
+    public MapIconData OV_statue;
+    public MapIconData OV_fire;
+
+    public ChallengeGameData OV_challenge1;
+    public ChallengeGameData OV_challenge2;
+    public ChallengeGameData OV_challenge3;
+
+    public bool OV_signPost_unlocked;
+    public int OV_signPost_stars;
 }
 
 /* 

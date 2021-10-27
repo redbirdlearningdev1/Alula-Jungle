@@ -6,6 +6,12 @@ using TMPro;
 
 public class SplashScreenManager : MonoBehaviour
 {
+    [Header("Splash Screen BGs")]
+    public Animator BG3_animator;
+    public Animator BG4_animator;
+    public Animator BG6_animator;
+
+    [Header("Profile Windows")]
     [SerializeField] CanvasGroup profileSelectWindow;
     [SerializeField] CanvasGroup newProfileWindow;
 
@@ -27,6 +33,7 @@ public class SplashScreenManager : MonoBehaviour
     [SerializeField] TMP_InputField newProfileInput;
 
     [SerializeField] WiggleController tapTextWiggleController;
+    public TextMeshProUGUI tapText;
 
     private StudentPlayerData data1;
     private StudentPlayerData data2;
@@ -51,6 +58,71 @@ public class SplashScreenManager : MonoBehaviour
     {
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
+
+        // get all three profiles
+        var profiles = StudentInfoSystem.GetAllStudentDatas();
+
+        foreach (var profile in profiles)
+        {
+            print ("profile: " + profile);
+        }
+
+        StudentPlayerData currProfile = null;
+        // determine most recently used profile
+        foreach (var profile in profiles)
+        {
+            if (profile.mostRecentProfile)
+                currProfile = profile;
+        }
+
+        if (currProfile != null)
+        {
+            print ("currProfile: " + currProfile.name);
+            print ("currChapter: " + currProfile.currentChapter);
+        }
+
+
+        // default to chapter 0 animations
+        BG3_animator.Play("3_Ch0");
+        BG4_animator.Play("4_Ch0");
+        BG6_animator.Play("6_Ch0");
+
+        // set correct chapter animations
+        if (currProfile != null)
+        {
+            // get most recent chapter
+            Chapter chapter = currProfile.currentChapter;
+            
+            if (chapter > Chapter.chapter_1)
+            {
+                BG3_animator.Play("3_Ch1");
+            }
+
+            if (chapter > Chapter.chapter_2)
+            {
+                BG6_animator.Play("6_Ch2");
+            }
+
+            if (chapter > Chapter.chapter_3)
+            {
+                BG4_animator.Play("4_Ch3");
+            }
+
+            if (chapter > Chapter.chapter_4)
+            {
+                BG4_animator.Play("4_Ch4");
+            }
+
+            if (chapter > Chapter.chapter_5)
+            {
+                BG6_animator.Play("6_Ch5");
+            }
+
+            if (chapter > Chapter.chapter_6)
+            {
+                BG4_animator.Play("4_Ch6");
+            }
+        }
 
         // set up profile window
         startButton.interactable = false;
@@ -129,7 +201,11 @@ public class SplashScreenManager : MonoBehaviour
         while (true)
         {
             timer += Time.deltaTime;
-            profileSelectWindow.alpha = Mathf.Lerp(0f, 1f, timer / totalTime);
+
+            var windowAlpha = Mathf.Lerp(0f, 1f, timer / totalTime);
+            var textAlpha = Mathf.Lerp(1f, 0f, timer / totalTime);
+            profileSelectWindow.alpha = windowAlpha;
+            tapText.color = new Color(1f, 1f, 1f, textAlpha);
 
             if (timer > totalTime)
                 break;

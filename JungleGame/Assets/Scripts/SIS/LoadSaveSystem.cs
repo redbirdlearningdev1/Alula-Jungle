@@ -10,10 +10,10 @@ using UnityEditor;
 public static class LoadSaveSystem
 {
     // default student player values
-    public static string default_version = "1.8";
+    public static string default_version = "2.0";
     // 1.6 added stickers to SIS
 
-    public static string default_name = "new profile :)";
+    public static string default_name = "new profile";
     public static int    default_stars = 0;
     public static int    default_map_limit = 0;
 
@@ -35,14 +35,15 @@ public static class LoadSaveSystem
 
 
 
-    public static void SaveStudentData(StudentPlayerData data, bool makeInactive = false)
+    public static void SaveStudentData(StudentPlayerData data, bool ignoreMakingActive = false)
     {
-        // saving data to profile makes it active
-        if (!data.active)
-            data.active = true;
-        if (makeInactive)
-            data.active = false;
-
+        if (!ignoreMakingActive)
+        {
+            // saving data to profile makes it active
+            if (!data.active)
+                data.active = true;
+        }
+        
         string jsonData = JsonUtility.ToJson(data);
         string path = GetStudentDataPath(data.studentIndex);
 
@@ -61,7 +62,7 @@ public static class LoadSaveSystem
 #endif
     }
 
-    public static StudentPlayerData LoadStudentData(StudentIndex index)
+    public static StudentPlayerData LoadStudentData(StudentIndex index, bool createNewIfNull)
     {
         string path = GetStudentDataPath(index);
         string file = "{}";
@@ -85,8 +86,12 @@ public static class LoadSaveSystem
         {
             // Debug.Log("Path not found: " + path.ToString() + "\nReturning null");
             // create new profile file
-            ResetStudentData(index);
-            return LoadStudentData(index);
+            if (createNewIfNull)
+            {
+                Debug.Log("profile not found, making new profile!");
+                ResetStudentData(index);
+                return LoadStudentData(index, false);
+            }
         }
 
         return null;
@@ -100,7 +105,8 @@ public static class LoadSaveSystem
         // set all variables to be default values
         new_data.version =      default_version;
         new_data.name =         default_name;
-        new_data.totalStars =   default_stars;
+        new_data.active = false;
+        new_data.mostRecentProfile = false;
 
         // coins
         new_data.goldCoins = default_gold_coins;
@@ -129,6 +135,8 @@ public static class LoadSaveSystem
         new_data.firstTimeLoseChallengeGame = false;
         new_data.everyOtherTimeLoseChallengeGame = false;
         
+        new_data.mapLimit = 0;
+        new_data.currentChapter = Chapter.chapter_0;
         new_data.mapData = new MapData();
         
         // gorilla village
@@ -155,14 +163,77 @@ public static class LoadSaveSystem
         new_data.mapData.GV_challenge2.stars = default_stars;
         new_data.mapData.GV_challenge3.stars = default_stars;
 
-        ChallengeGameTriad GV_triad = GameManager.instance.challengeGameTriads[0];
-
-        new_data.mapData.GV_challenge1.gameType = GV_triad.juliusGame1;
-        new_data.mapData.GV_challenge2.gameType = GV_triad.marcusGame2;
-        new_data.mapData.GV_challenge3.gameType = GV_triad.brutusGame3;
+        new_data.mapData.GV_challenge1.gameType = GameType.None;
+        new_data.mapData.GV_challenge2.gameType = GameType.None;
+        new_data.mapData.GV_challenge3.gameType = GameType.None;
 
         new_data.mapData.GV_signPost_unlocked = false;
         new_data.mapData.GV_signPost_stars = 0;
+
+
+        // mudslide
+        new_data.mapData.MS_logs = new MapIconData();
+        new_data.mapData.MS_pond = new MapIconData();
+        new_data.mapData.MS_ramp = new MapIconData();
+        new_data.mapData.MS_tower = new MapIconData();
+
+        new_data.mapData.MS_logs.isFixed = true;
+        new_data.mapData.MS_pond.isFixed = true;
+        new_data.mapData.MS_ramp.isFixed =   true;
+        new_data.mapData.MS_tower.isFixed = true;
+
+        new_data.mapData.MS_logs.stars =   default_mapDataStars;
+        new_data.mapData.MS_pond.stars =   default_mapDataStars;
+        new_data.mapData.MS_ramp.stars =     default_mapDataStars;
+        new_data.mapData.MS_tower.stars =   default_mapDataStars;
+
+        new_data.mapData.MS_challenge1 = new ChallengeGameData();
+        new_data.mapData.MS_challenge2 = new ChallengeGameData();
+        new_data.mapData.MS_challenge3 = new ChallengeGameData();
+
+        new_data.mapData.MS_challenge1.stars = default_stars;
+        new_data.mapData.MS_challenge2.stars = default_stars;
+        new_data.mapData.MS_challenge3.stars = default_stars;
+
+        new_data.mapData.MS_challenge1.gameType = GameType.None;
+        new_data.mapData.MS_challenge2.gameType = GameType.None;
+        new_data.mapData.MS_challenge3.gameType = GameType.None;
+
+        new_data.mapData.MS_signPost_unlocked = false;
+        new_data.mapData.MS_signPost_stars = 0;
+
+
+        // orc village
+        new_data.mapData.OV_houseL = new MapIconData();
+        new_data.mapData.OV_houseS = new MapIconData();
+        new_data.mapData.OV_statue = new MapIconData();
+        new_data.mapData.OV_fire = new MapIconData();
+
+        new_data.mapData.OV_houseL.isFixed = true;
+        new_data.mapData.OV_houseS.isFixed = true;
+        new_data.mapData.OV_statue.isFixed =   true;
+        new_data.mapData.OV_fire.isFixed = true;
+
+        new_data.mapData.OV_houseL.stars =   default_mapDataStars;
+        new_data.mapData.OV_houseS.stars =   default_mapDataStars;
+        new_data.mapData.OV_statue.stars =     default_mapDataStars;
+        new_data.mapData.OV_fire.stars =   default_mapDataStars;
+
+        new_data.mapData.OV_challenge1 = new ChallengeGameData();
+        new_data.mapData.OV_challenge2 = new ChallengeGameData();
+        new_data.mapData.OV_challenge3 = new ChallengeGameData();
+
+        new_data.mapData.OV_challenge1.stars = default_stars;
+        new_data.mapData.OV_challenge2.stars = default_stars;
+        new_data.mapData.OV_challenge3.stars = default_stars;
+
+        new_data.mapData.OV_challenge1.gameType = GameType.None;
+        new_data.mapData.OV_challenge2.gameType = GameType.None;
+        new_data.mapData.OV_challenge3.gameType = GameType.None;
+
+        new_data.mapData.OV_signPost_unlocked = false;
+        new_data.mapData.OV_signPost_stars = 0;
+
 
         // stickers
         new_data.stickerInventory = new List<InventoryStickerData>();
@@ -192,6 +263,7 @@ public static class LoadSaveSystem
 
 
         // save data as incative profile
+        new_data.active = false;
         SaveStudentData(new_data, true);
         GameManager.instance.SendLog("LoadSaveSystem", "reseting profile " + index);
     }
