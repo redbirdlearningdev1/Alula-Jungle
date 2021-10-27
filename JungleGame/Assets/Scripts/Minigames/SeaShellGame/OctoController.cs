@@ -4,68 +4,41 @@ using UnityEngine;
 
 public class OctoController : MonoBehaviour
 {
-    private Animator animator;
-    public GameObject tenticle;
+    public static OctoController instance;
+
+    public Animator octoAnimator;
+    public Animator tenticleAnimator;
+    public UniversalCoinImage coin;
+
+    [Header("Positions")]
+    public Transform coinStartPos;
+    public Transform coinHolderPos;
 
     void Awake()
     {
-        animator = GetComponent<Animator>();
+        if (instance == null)
+            instance = this;
     }
 
-    public void octoIdle()
+    void Start()
     {
-        StartCoroutine(octoIdleRoutine());
-    }
-    private IEnumerator octoIdleRoutine()
-    {
-        animator.Play("octoIdle");
-        yield return new WaitForSeconds(0f);
+        // reset coin
+        coin.SetTransparency(0f, false);
+        coin.transform.position = coinStartPos.position;
     }
 
-    public void incorrectAnimation(float time = 1.5f)
+
+    public void PlaceNewCoin(ActionWordEnum value)
     {
-        StartCoroutine(incorrectAnimationRoutine(time));
+        coin.SetActionWordValue(value);
+        StartCoroutine(PlaceNewCoinRoutine());
     }
 
-    private IEnumerator incorrectAnimationRoutine(float time)
+    private IEnumerator PlaceNewCoinRoutine()
     {
-        animator.Play("octoNo");
-        yield return new WaitForSeconds(time);
-        animator.Play("octoIdle");
+        tenticleAnimator.Play("armGrab");
+        yield return new WaitForSeconds(0.1f);
+        coin.GetComponent<LerpableObject>().LerpPosition(coinHolderPos.position, 0.2f, false);
+        coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.currImage, 1f, 0.2f);
     }
-    public void correctAnimation(float time = 1.5f)
-    {
-        StartCoroutine(correctAnimationRoutine(time));
-    }
-
-    private IEnumerator correctAnimationRoutine(float time)
-    {
-        animator.Play("octoGrabShow");
-        yield return new WaitForSeconds(time);
-        //tenticle.SetActive(true);
-        //tenticle.GetComponent<Animator>().Play("armGrab");
-        //yield return new WaitForSeconds(time);
-        //tenticle.SetActive(true);
-        //animator.Play("octoAway");
-        //yield return new WaitForSeconds(time);
-        //animator.Play("octoIdle");
-    }
-    public void correctAnimationTwo(float time = 1.5f)
-    {
-        StartCoroutine(correctTwoAnimationRoutine(time));
-    }
-
-    private IEnumerator correctTwoAnimationRoutine(float time)
-    {
-        //animator.Play("octoGrabShow");
-        //yield return new WaitForSeconds(time);
-        //tenticle.SetActive(true);
-        //tenticle.GetComponent<Animator>().Play("armGrab");
-        //yield return new WaitForSeconds(time);
-        //tenticle.SetActive(true);
-        animator.Play("octoAway");
-        yield return new WaitForSeconds(time);
-        //animator.Play("octoIdle");
-    }
-
 }

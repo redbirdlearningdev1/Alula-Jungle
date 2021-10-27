@@ -24,7 +24,7 @@ public class UniversalCoinImage : MonoBehaviour
     [SerializeField] private Image goldImage;
     [SerializeField] private Image silverImage;
     [SerializeField] private SpriteShakeController shakeController;
-    private Image currImage;
+    [HideInInspector] public Image currImage;
 
     void Awake()
     {

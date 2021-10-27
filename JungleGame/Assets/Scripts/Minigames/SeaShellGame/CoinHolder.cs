@@ -21,25 +21,18 @@ public class CoinHolder : MonoBehaviour
 
     public void CorrectCoinHolder()
     {
-        
-            currHolder = 1;
-        
-
+        currHolder = 1;
         coinHolder.sprite = holderSprites[currHolder];
     }
 
     public void IncorrectCoinHolder()
     {
         currHolder = 2;
-
         coinHolder.sprite = holderSprites[currHolder];
     }
     public void BaseCoinHolder()
     {
-
         currHolder = 0;
-
-
         coinHolder.sprite = holderSprites[currHolder];
     }
 }

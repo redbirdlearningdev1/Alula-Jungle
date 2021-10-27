@@ -41,16 +41,15 @@ public class ShellRayCaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("CoinHolder"))
                     {
-                        isCorrect = SeaShellGameManager.instance.EvaluateSelectedShell(selectedShell.type);
+                        //isCorrect = SeaShellGameManager.instance.EvaluateSelectedShell(selectedShell.type);
                     }
                 }
             }
 
-            selectedShell.ReturnToLog();
+            // selectedShell.ReturnToLog();
             if (isCorrect == false)
             {
-                selectedShell.shadow.gameObject.SetActive(true);
-
+                //selectedShell.shadow.gameObject.SetActive(true);
             }
             //selectedShell.shadow.gameObject.SetActive(true);
             selectedShell = null;
@@ -70,10 +69,10 @@ public class ShellRayCaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("Shell"))
                     {
-                        selectedShell = result.gameObject.GetComponent<SeaShell>();
-                        selectedShell.PlayPhonemeAudio();
-                        selectedShell.gameObject.transform.SetParent(selectedShellParent);
-                        selectedShell.shadow.gameObject.SetActive(false);
+                        // selectedShell = result.gameObject.GetComponent<SeaShell>();
+                        // selectedShell.PlayPhonemeAudio();
+                        // selectedShell.gameObject.transform.SetParent(selectedShellParent);
+                        // selectedShell.shadow.gameObject.SetActive(false);
                     }
                 }
             }
