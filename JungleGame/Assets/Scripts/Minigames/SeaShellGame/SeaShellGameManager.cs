@@ -18,6 +18,8 @@ public class SeaShellGameManager : MonoBehaviour
     public bool playTutorial = false;
 
     private ActionWordEnum currentCoin;
+    private int timesMissed = 0;
+    private int timesCorrect = 0;
 
     // coin lists
     private List<ActionWordEnum> globalCoinPool;
@@ -35,6 +37,9 @@ public class SeaShellGameManager : MonoBehaviour
         {
             instance = this;
         }
+
+        // stop music 
+        AudioManager.instance.StopMusic();
 
         // get mapID
         mapID = GameManager.instance.mapID;
@@ -98,6 +103,7 @@ public class SeaShellGameManager : MonoBehaviour
 
         // place coin
         OctoController.instance.PlaceNewCoin(currentCoin);
+        yield return new WaitForSeconds(2f);
 
         // reveal shells
         ShellController.instance.RevealShells();
@@ -131,21 +137,96 @@ public class SeaShellGameManager : MonoBehaviour
         return word;
     }
 
-    public bool EvaluateSelectedShell(ActionWordEnum value)
+    public bool EvaluateSelectedShell(ActionWordEnum value, int shellNum)
     {
         // turn off raycaster
         ShellRayCaster.instance.isOn = false;
+        
+        // hide shells
+        ShellController.instance.HideShells();
 
         // correct!
         if (value == currentCoin)
         {
+            StartCoroutine(CorrectRoutine(shellNum));
             return true;
         }
         // incorrect
         else
         {
+            StartCoroutine(IncorrectRoutine());
             return false;
         }
+    }
+
+    private IEnumerator CorrectRoutine(int shellNum)
+    {
+        timesCorrect++;
+
+        // play mermaid routine
+        MermaidController.instance.PlayShell(shellNum);
+        yield return new WaitForSeconds(3f);
+
+        // coin holder color
+        CoinHolder.instance.CorrectCoinHolder();
+        yield return new WaitForSeconds(1f);
+
+        // correct coin animation
+        OctoController.instance.CoinCorrect();
+        yield return new WaitForSeconds(3f);
+
+        // coin holder color
+        CoinHolder.instance.BaseCoinHolder();
+        yield return new WaitForSeconds(1f);
+
+        // check if win game
+        if (timesCorrect >= 4)
+        {
+            StartCoroutine(WinRoutine());
+        }
+        else
+        {
+            StartCoroutine(StartGame());
+        }
+    }
+
+    private IEnumerator WinRoutine()
+    {
+        // play win tune
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+        yield return new WaitForSeconds(2f);
+
+        // calculate and show stars
+        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+    }
+
+    private int CalculateStars()
+    {
+        if (timesMissed <= 0)
+            return 3;
+        else if (timesMissed > 0 && timesMissed <= 2)
+            return 2;
+        else
+            return 1;
+    }
+
+    private IEnumerator IncorrectRoutine()
+    {
+        timesMissed++;
+
+        // coin holder color
+        CoinHolder.instance.IncorrectCoinHolder();
+        yield return new WaitForSeconds(1f);
+
+        // correct coin animation
+        OctoController.instance.CoinIncorrect();
+        yield return new WaitForSeconds(3f);
+
+        // coin holder color
+        CoinHolder.instance.BaseCoinHolder();
+        yield return new WaitForSeconds(1f);
+
+        StartCoroutine(StartGame());
     }
 }
 

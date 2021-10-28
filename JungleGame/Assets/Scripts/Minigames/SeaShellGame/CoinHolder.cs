@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CoinHolder : MonoBehaviour
 {
+    public static CoinHolder instance;
+
     private int currHolder = 0;
     private const int maxHolder = 2;
 
@@ -16,6 +18,9 @@ public class CoinHolder : MonoBehaviour
 
     void Awake()
     {
+        if (instance == null)
+            instance = this;
+
         coinHolder.sprite = holderSprites[currHolder];
     }
 

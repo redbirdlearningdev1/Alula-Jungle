@@ -34,11 +34,31 @@ public class ShellController : MonoBehaviour
 
     private IEnumerator RevealShellsRoutine()
     {
+        // reset shell positions
+        shell1.transform.position = shell1.shellOrigin.position;
+        shell2.transform.position = shell2.shellOrigin.position;
+        shell3.transform.position = shell3.shellOrigin.position;
+
         tideAnimator.Play("tideWipe");
         yield return new WaitForSeconds(0.75f);
         // reveal shells
         shell1.ToggleShell(true);
         shell2.ToggleShell(true);
         shell3.ToggleShell(true);
+    }
+
+    public void HideShells()
+    {
+        StartCoroutine(HideShellsRoutine());
+    }
+
+    private IEnumerator HideShellsRoutine()
+    {
+        tideAnimator.Play("tideWipe");
+        yield return new WaitForSeconds(0.75f);
+        // reveal shells
+        shell1.ToggleShell(false);
+        shell2.ToggleShell(false);
+        shell3.ToggleShell(false);
     }
 }

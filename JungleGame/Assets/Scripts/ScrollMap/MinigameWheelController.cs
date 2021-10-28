@@ -52,12 +52,12 @@ public class MinigameWheelController : MonoBehaviour
     {
         // create minigame options list
         minigameOptions = new List<GameType>();
-        minigameOptions.Add(GameType.FroggerGame);
-        minigameOptions.Add(GameType.TurntablesGame);
-        minigameOptions.Add(GameType.RummageGame);
-        minigameOptions.Add(GameType.PirateGame);
-        minigameOptions.Add(GameType.SpiderwebGame);
-        //minigameOptions.Add(GameType.SeashellGame);
+        // minigameOptions.Add(GameType.FroggerGame);
+        // minigameOptions.Add(GameType.TurntablesGame);
+        // minigameOptions.Add(GameType.RummageGame);
+        // minigameOptions.Add(GameType.PirateGame);
+        // minigameOptions.Add(GameType.SpiderwebGame);
+        minigameOptions.Add(GameType.SeashellGame);
 
         // remove last played game
         if (minigameOptions.Contains(GameManager.instance.prevGameTypePlayed))

@@ -47,7 +47,7 @@ public class ShellRayCaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("CoinHolder"))
                     {
-                        isCorrect = SeaShellGameManager.instance.EvaluateSelectedShell(selectedShell.value);
+                        isCorrect = SeaShellGameManager.instance.EvaluateSelectedShell(selectedShell.value, selectedShell.shellNum);
                     }
                 }
             }

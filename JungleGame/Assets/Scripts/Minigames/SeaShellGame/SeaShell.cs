@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SeaShell : MonoBehaviour
 {
     public ActionWordEnum value;
+    public int shellNum;
     public Image shadow;
     public Transform shellOrigin;
 
@@ -28,6 +29,7 @@ public class SeaShell : MonoBehaviour
     {
         if (opt)
         {
+            transform.localScale = new Vector3(1f, 1f, 1f);
             GetComponent<LerpableObject>().SetImageAlpha(GetComponent<Image>(), 1f);
             shadow.GetComponent<LerpableObject>().SetImageAlpha(shadow, 1f);
         }
@@ -63,9 +65,16 @@ public class SeaShell : MonoBehaviour
 
     public void UnselectShell()
     {
+        StartCoroutine(UnselectShellRoutine());
+    }
+
+    private IEnumerator UnselectShellRoutine()
+    {
         shadow.GetComponent<LerpableObject>().LerpImageAlpha(shadow, 1f, 0.25f);
         GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
         GetComponent<LerpableObject>().LerpPosition(shellOrigin.position, 0.2f, false);
+        yield return new WaitForSeconds(1f);
+        transform.SetParent(shellOrigin);
     }
 
     public void CorrectShell()
@@ -76,7 +85,8 @@ public class SeaShell : MonoBehaviour
     private IEnumerator CorrectShellRoutine()
     {
         GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.3f, 1.3f), new Vector2(0f, 0f), 0.2f, 0.2f);
-        yield return new WaitForSeconds(0.5f);
-        UnselectShell();
+        yield return new WaitForSeconds(1f);
+        GetComponent<LerpableObject>().LerpPosition(shellOrigin.position, 0.2f, false);
+        transform.SetParent(shellOrigin);
     }
 }
