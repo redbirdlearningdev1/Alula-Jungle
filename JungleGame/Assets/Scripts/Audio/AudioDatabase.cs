@@ -139,4 +139,27 @@ public class AudioDatabase : MonoBehaviour
     public AudioClip MoveStoneStart;
     public AudioClip MoveStoneLoop;
     public AudioClip MoveStoneEnd;
+
+    [Header("Seashell Game")]
+    public AudioClip BubbleRise;
+    public AudioClip CoinFlip;
+    public AudioClip CoinOnRock;
+    public AudioClip Conch1;
+    public AudioClip Conch2;
+    public AudioClip Pop;
+    public AudioClip SandDrop;
+    public AudioClip SeaAmbiance;
+    public AudioClip WaterRipples;
+    public AudioClip WaterSplash;
+    public AudioClip WaveCrash;
+
+    [Header("Pirate Game")]
+    public AudioClip BirdWingFlap;
+    public AudioClip CannonDink;
+    public AudioClip CannonFall;
+    public AudioClip CannonHitCoin;
+    public AudioClip CannonShoot;
+    public AudioClip CannonLoad;
+    public AudioClip RopeDown;
+    public AudioClip RopeUp;
 }

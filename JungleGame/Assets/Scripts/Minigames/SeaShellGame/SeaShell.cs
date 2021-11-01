@@ -73,7 +73,9 @@ public class SeaShell : MonoBehaviour
         shadow.GetComponent<LerpableObject>().LerpImageAlpha(shadow, 1f, 0.25f);
         GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
         GetComponent<LerpableObject>().LerpPosition(shellOrigin.position, 0.2f, false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.2f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SandDrop, 0.5f);
+        yield return new WaitForSeconds(0.5f);
         transform.SetParent(shellOrigin);
     }
 
@@ -85,6 +87,8 @@ public class SeaShell : MonoBehaviour
     private IEnumerator CorrectShellRoutine()
     {
         GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.3f, 1.3f), new Vector2(0f, 0f), 0.2f, 0.2f);
+        yield return new WaitForSeconds(0.25f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 0.5f);
         yield return new WaitForSeconds(1f);
         GetComponent<LerpableObject>().LerpPosition(shellOrigin.position, 0.2f, false);
         transform.SetParent(shellOrigin);

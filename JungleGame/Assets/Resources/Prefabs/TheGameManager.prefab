@@ -3755,6 +3755,25 @@ MonoBehaviour:
   MoveStoneStart: {fileID: 8300000, guid: edcbbf3183649f748a78622653d28b0d, type: 3}
   MoveStoneLoop: {fileID: 8300000, guid: 3f92e936499ef6046b73c6f4dba9e511, type: 3}
   MoveStoneEnd: {fileID: 8300000, guid: 7b23ef10054b2634490ed56c28d61187, type: 3}
+  BirdWingFlap: {fileID: 8300000, guid: 1078e24cceeb926478cb76b55b9797e9, type: 3}
+  BubbleRise: {fileID: 8300000, guid: 815ae3c632cc97f468a3a1b548535b4e, type: 3}
+  CoinFlip: {fileID: 8300000, guid: 902df396971b82c4b8d09cd167a0b9de, type: 3}
+  CoinOnRock: {fileID: 8300000, guid: 1bf31ace643043c409a9e4760fa159f7, type: 3}
+  Conch1: {fileID: 8300000, guid: 7fb8c9f5c29d7d146b2dbc66597d2a6e, type: 3}
+  Conch2: {fileID: 8300000, guid: 30030ee08036f6c429f0a84c71c5d781, type: 3}
+  Pop: {fileID: 8300000, guid: 94c9dbabbe085c249bdbdc1c95c5126b, type: 3}
+  SandDrop: {fileID: 8300000, guid: ca3369e22d7b56d4ea97ae53144e18a0, type: 3}
+  SeaAmbiance: {fileID: 8300000, guid: dc2215c012631b044870c01d9ebc88bb, type: 3}
+  WaterRipples: {fileID: 8300000, guid: 1f0515a0a0628584ca03a1fb0e7676b5, type: 3}
+  WaterSplash: {fileID: 8300000, guid: 41002f72a28d72248bd958b3f01456e9, type: 3}
+  WaveCrash: {fileID: 8300000, guid: 2d81df18af26d724fb7f7d98c26c6cd2, type: 3}
+  CannonDink: {fileID: 8300000, guid: a3d7da285e8bb8d4386019388b98bbed, type: 3}
+  CannonFall: {fileID: 8300000, guid: ddd163ab3d230ea419c08969e89d5028, type: 3}
+  CannonHitCoin: {fileID: 8300000, guid: 63fa5bc8084704343b9bba90e7bab0c1, type: 3}
+  CannonShoot: {fileID: 8300000, guid: 8713a27b0edb1064bab55f086348c00b, type: 3}
+  CannonLoad: {fileID: 8300000, guid: 67a05dd385763a9498b47c3c95a43c63, type: 3}
+  RopeDown: {fileID: 8300000, guid: 68075f51aa056ee4fbbb4290a7ec09dd, type: 3}
+  RopeUp: {fileID: 8300000, guid: 2dd9bab081ab39246ad337663387b589, type: 3}
 --- !u!1 &1810638161
 GameObject:
   m_ObjectHideFlags: 0
@@ -4448,7 +4467,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3292304020975609992}
   m_Direction: 0
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.9999974
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -17989,7 +18008,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 44.006184, y: 0.005817631}
+  m_AnchoredPosition: {x: 44.114765, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

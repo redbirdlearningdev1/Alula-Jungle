@@ -58,6 +58,9 @@ public class SeaShellGameManager : MonoBehaviour
     {
         // turn off raycaster
         ShellRayCaster.instance.isOn = false;
+
+        // play ambiance sounds
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.SeaAmbiance, 0.25f, "sea_ambiance");
         
         globalCoinPool = new List<ActionWordEnum>();
 

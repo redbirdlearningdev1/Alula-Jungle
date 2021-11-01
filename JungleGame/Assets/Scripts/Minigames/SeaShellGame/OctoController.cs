@@ -43,11 +43,14 @@ public class OctoController : MonoBehaviour
     private IEnumerator PlaceNewCoinRoutine()
     {
         octoAnimator.Play("octoGrabShow");
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BubbleRise, 0.5f);
         yield return new WaitForSeconds(0.4f);
         tenticleAnimator.Play("armGrab");
         yield return new WaitForSeconds(0.1f);
         coin.GetComponent<LerpableObject>().LerpPosition(coinHolderPos.position, 0.2f, false);
         coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.currImage, 1f, 0.2f);
+
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinOnRock, 0.5f);
     }
 
     public void CoinIncorrect()
@@ -58,13 +61,16 @@ public class OctoController : MonoBehaviour
     private IEnumerator CoinIncorrectRoutine()
     {
         octoAnimator.Play("octoGrabShow");
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BubbleRise, 0.5f);
         yield return new WaitForSeconds(0.4f);
         tenticleAnimator.Play("armGrab");
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
         coin.GetComponent<LerpableObject>().LerpPosition(coinIncorrectPos.position, 0.2f, false);
         coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.currImage, 1f, 0.2f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinFlip, 0.5f);
         yield return new WaitForSeconds(0.5f);
         octoAnimator.Play("octoNo");
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
     }
 
     public void CoinCorrect()
@@ -77,15 +83,17 @@ public class OctoController : MonoBehaviour
         octoAnimator.Play("octoGrabShow");
         yield return new WaitForSeconds(0.25f);
         tenticleAnimator.Play("armGrab");
-        yield return new WaitForSeconds(0.8f);
-        coin.GetComponent<LerpableObject>().LerpPosition(coinCorrectPos.position, 0.4f, false);
-        coin.GetComponent<LerpableObject>().LerpScale(new Vector2(0.8f, 0.8f), 0.4f);
-        coin.GetComponent<LerpableObject>().LerpRotation(360f, 0.4f);
+        yield return new WaitForSeconds(0.4f);
+        coin.GetComponent<LerpableObject>().LerpPosition(coinCorrectPos.position, 0.6f, false);
+        coin.GetComponent<LerpableObject>().LerpScale(new Vector2(0.8f, 0.8f), 0.6f);
+        coin.GetComponent<LerpableObject>().LerpRotation(360f, 0.6f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinFlip, 0.5f);
         yield return new WaitForSeconds(1.5f);
         octoAnimator.Play("octoAway");
         coin.GetComponent<LerpableObject>().LerpPosition(coinChestPos.position, 0.35f, false);
         coin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.35f);
         yield return new WaitForSeconds(0.2f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
         Chest.instance.UpgradeChest();
     }
 }

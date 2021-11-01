@@ -39,6 +39,8 @@ public class ShellController : MonoBehaviour
         shell2.transform.position = shell2.shellOrigin.position;
         shell3.transform.position = shell3.shellOrigin.position;
 
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WaveCrash, 0.25f);
+        yield return new WaitForSeconds(0.7f);
         tideAnimator.Play("tideWipe");
         yield return new WaitForSeconds(0.75f);
         // reveal shells
@@ -54,6 +56,8 @@ public class ShellController : MonoBehaviour
 
     private IEnumerator HideShellsRoutine()
     {
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WaveCrash, 0.25f);
+        yield return new WaitForSeconds(0.7f);
         tideAnimator.Play("tideWipe");
         yield return new WaitForSeconds(0.75f);
         // reveal shells
