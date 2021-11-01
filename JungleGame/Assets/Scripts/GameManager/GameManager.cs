@@ -52,6 +52,7 @@ public class GameManager : DontDestroy<GameManager>
 
     public StoryGameData storyGameData;
     public MapIconIdentfier mapID;
+    public GameType currChallengeGame;
     public List<ActionWordEnum> actionWordPool;
     public List<ChallengeWord> challengeWordPool;
     

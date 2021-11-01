@@ -90,6 +90,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         }
 
         print ("story beat: " + StudentInfoSystem.GetCurrentProfile().currStoryBeat);
+        bool playingChallengeGame = false;
 
         if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillageIntro)
         {
@@ -209,7 +210,6 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             }
         }
 
-
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1 ||
                  StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Mudslide_challengeGame_1 ||
                  StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_1)
@@ -220,6 +220,9 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_challenges);
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
+                
+                // set bool to true
+                playingChallengeGame = true;
             }
         }
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2 ||
@@ -232,6 +235,9 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_challenges);
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
+                
+                // set bool to true
+                playingChallengeGame = true;
             }
         }
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3 ||
@@ -244,6 +250,9 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_challenges);
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
+                
+                // set bool to true
+                playingChallengeGame = true;
             }
         }
 
@@ -253,6 +262,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             TalkieManager.instance.doNotContinueToGame = false;
             yield break;
         }
+
+        GameManager.instance.playingChallengeGame = playingChallengeGame;
 
         // start game
         GoToGameDataSceneImmediately();

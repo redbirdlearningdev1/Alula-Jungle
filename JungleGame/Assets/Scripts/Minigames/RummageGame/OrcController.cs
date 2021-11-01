@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class OrcController : MonoBehaviour
 {
-
     [SerializeField] public GameObject shadow;
     
     private Vector3 origin = new Vector3(-2.4f, 1.5f, 0f);
@@ -34,7 +33,9 @@ public class OrcController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Vector3 pos = this.transform.position;
+        pos.y -= 0.2f;
+        shadow.transform.position = pos;
     }
 
     public int AtLocation()

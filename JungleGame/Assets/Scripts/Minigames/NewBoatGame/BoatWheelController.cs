@@ -35,8 +35,8 @@ public class BoatWheelController : MonoBehaviour
 
     void Update()
     {
-        // return if off
-        if (!isOn)
+        // return if off or holding island
+        if (!isOn || IslandCutoutController.instance.holdingIsland)
             return;
 
         if (Input.GetMouseButton(0) && holdingWheel)

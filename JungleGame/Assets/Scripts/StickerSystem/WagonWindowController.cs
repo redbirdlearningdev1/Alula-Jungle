@@ -472,6 +472,10 @@ public class WagonWindowController : MonoBehaviour
         backButton.GetComponent<LerpableObject>().LerpImageAlpha(backButton.GetComponent<Image>(), 0f, 0.1f);
         backButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.05f);
 
+        // gecko leave anim
+        GeckoAnim.Play("geckoLeave");
+        yield return new WaitForSeconds(1f);
+
         // remove windows
         if (buyBoardActive)
         {

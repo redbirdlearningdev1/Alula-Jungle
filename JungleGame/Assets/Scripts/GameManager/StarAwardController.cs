@@ -343,7 +343,6 @@ public class StarAwardController : MonoBehaviour
             }
 
             GameManager.instance.playingChallengeGame = false;
-            StudentInfoSystem.SaveStudentPlayerData();
         }
         
         // save data

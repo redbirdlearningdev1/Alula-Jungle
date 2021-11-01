@@ -597,7 +597,6 @@ public class ScrollMapManager : MonoBehaviour
 
                     // set game manager stuff
                     GameManager.instance.mapID = MapIconIdentfier.GV_challenge_1;
-                    GameManager.instance.playingChallengeGame = true;
 
                     // save to sis and continue
                     StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType = tiger.gameType;
@@ -630,7 +629,6 @@ public class ScrollMapManager : MonoBehaviour
 
             // set game manager stuff
             GameManager.instance.mapID = MapIconIdentfier.GV_challenge_1;
-            GameManager.instance.playingChallengeGame = true;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -674,7 +672,6 @@ public class ScrollMapManager : MonoBehaviour
 
             // set game manager stuff
             GameManager.instance.mapID = MapIconIdentfier.GV_challenge_2;
-            GameManager.instance.playingChallengeGame = true;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -736,7 +733,6 @@ public class ScrollMapManager : MonoBehaviour
             
             // set game manager stuff
             GameManager.instance.mapID = MapIconIdentfier.GV_challenge_3;
-            GameManager.instance.playingChallengeGame = true;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -917,7 +913,6 @@ public class ScrollMapManager : MonoBehaviour
 
                 // set game manager stuff
                 GameManager.instance.mapID = MapIconIdentfier.MS_challenge_1;
-                GameManager.instance.playingChallengeGame = true;
 
                 // save to sis and continue
                 StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType = tiger.gameType;
@@ -992,7 +987,6 @@ public class ScrollMapManager : MonoBehaviour
 
             // set game manager stuff
             GameManager.instance.mapID = MapIconIdentfier.MS_challenge_2;
-            GameManager.instance.playingChallengeGame = true;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -1054,7 +1048,6 @@ public class ScrollMapManager : MonoBehaviour
             
             // set game manager stuff
             GameManager.instance.mapID = MapIconIdentfier.MS_challenge_3;
-            GameManager.instance.playingChallengeGame = true;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -1244,7 +1237,6 @@ public class ScrollMapManager : MonoBehaviour
 
                 // set game manager stuff
                 GameManager.instance.mapID = MapIconIdentfier.OV_challenge_1;
-                GameManager.instance.playingChallengeGame = true;
 
                 // save to sis and continue
                 StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType = tiger.gameType;
@@ -1279,7 +1271,6 @@ public class ScrollMapManager : MonoBehaviour
 
             // set game manager stuff
             GameManager.instance.mapID = MapIconIdentfier.OV_challenge_1;
-            GameManager.instance.playingChallengeGame = true;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -1325,7 +1316,6 @@ public class ScrollMapManager : MonoBehaviour
 
             // set game manager stuff
             GameManager.instance.mapID = MapIconIdentfier.OV_challenge_2;
-            GameManager.instance.playingChallengeGame = true;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -1387,7 +1377,6 @@ public class ScrollMapManager : MonoBehaviour
             
             // set game manager stuff
             GameManager.instance.mapID = MapIconIdentfier.OV_challenge_3;
-            GameManager.instance.playingChallengeGame = true;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -1575,6 +1564,22 @@ public class ScrollMapManager : MonoBehaviour
         }
     }
 
+    public void SoftLockMapIcons(float duration)
+    {
+        StartCoroutine(SoftLockMapIconsRoutine(duration));
+    }
+
+    private IEnumerator SoftLockMapIconsRoutine(float duration)
+    {
+        var list = GetMapIcons();
+        foreach(var item in list)
+            item.interactable = false;
+        
+        yield return new WaitForSeconds(duration);
+        foreach(var item in list)
+            item.interactable = true;
+    }
+
     public void EnableAllMapIcons()
     {
         var list = GetMapIcons();
@@ -1727,6 +1732,7 @@ public class ScrollMapManager : MonoBehaviour
     public IEnumerator LeftPressedRoutine()
     {
         StartCoroutine(NavInputDelay(1.25f));
+        SoftLockMapIcons(1.25f);
 
         int prevMapPos = mapPosIndex;
 
@@ -1770,6 +1776,7 @@ public class ScrollMapManager : MonoBehaviour
     public IEnumerator RightPressedRoutine()
     {
         StartCoroutine(NavInputDelay(1.25f));
+        SoftLockMapIcons(1.25f);
 
         int prevMapPos = mapPosIndex;
 
