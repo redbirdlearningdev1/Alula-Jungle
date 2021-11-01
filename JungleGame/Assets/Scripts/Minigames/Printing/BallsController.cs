@@ -52,6 +52,7 @@ public class BallsController : MonoBehaviour
     private IEnumerator ReDropBallRoutine(LerpableObject ball)
     {
         ball.LerpScale(new Vector2(0f, 0f), 0.2f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 0.5f);
         yield return new WaitForSeconds(0.2f);
         ball.transform.localPosition = ballDropPos.localPosition;
         ball.transform.localScale = new Vector3(1f, 1f, 1f);

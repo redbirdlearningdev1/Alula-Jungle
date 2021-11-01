@@ -42,6 +42,7 @@ public class ParrotController : MonoBehaviour, IPointerUpHandler, IPointerDownHa
 
     public void WinAnimation()
     {
+        StartCoroutine(FlapWingsRoutine(true));
         animator.Play("PreFly");
     }
 
@@ -53,7 +54,8 @@ public class ParrotController : MonoBehaviour, IPointerUpHandler, IPointerDownHa
     private IEnumerator SayAudioRoutine(ActionWordEnum word)
     {
         interactable = false;
-
+        
+        StartCoroutine(FlapWingsRoutine(false));
         animator.Play("PreFly");
         yield return new WaitForSeconds(0.1f);
 
@@ -65,6 +67,28 @@ public class ParrotController : MonoBehaviour, IPointerUpHandler, IPointerDownHa
         yield return new WaitForSeconds(0.25f);
 
         interactable = true;
+    }
+
+    private IEnumerator FlapWingsRoutine(bool loop)
+    {
+        if (loop)
+        {
+            while (true)
+            {
+                // play sound
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BirdWingFlap, 0.5f);
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                // play sound
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BirdWingFlap, 0.5f);
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
     }
 
     /* 

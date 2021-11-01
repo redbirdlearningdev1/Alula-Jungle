@@ -63,6 +63,10 @@ public class PirateRopeController : MonoBehaviour
 
     private IEnumerator DropRopeRoutine()
     {
+        // play sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RopeDown, 0.5f);
+        yield return new WaitForSeconds(0.25f);
+
         Vector2 bouncePos = ropeDropPos.position;
         bouncePos.y -= 0.5f;
         lerpableObject.LerpPosition(bouncePos, 0.3f, false);
@@ -79,6 +83,9 @@ public class PirateRopeController : MonoBehaviour
     {
         animator.Play("DropCoin");
         yield return new WaitForSeconds(2f);
+
+        // play sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RopeUp, 0.5f);
 
         // return rope to origin
         Vector2 bouncePos = ropeDropPos.position;
@@ -102,6 +109,9 @@ public class PirateRopeController : MonoBehaviour
 
     private IEnumerator RaiseRopeAnimationRoutine()
     {
+        // play sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RopeUp, 0.5f);
+        
         // return rope to origin
         Vector2 bouncePos = ropeDropPos.position;
         bouncePos.y -= 0.5f;

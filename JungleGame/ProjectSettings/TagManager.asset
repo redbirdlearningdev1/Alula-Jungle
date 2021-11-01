@@ -26,6 +26,7 @@ TagManager:
   - CoinTarget
   - Ball
   - Cannon
+  - BallGrab
   layers:
   - Default
   - TransparentFX

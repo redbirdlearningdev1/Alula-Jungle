@@ -49,6 +49,9 @@ public class PrintingGameManager : MonoBehaviour
         PirateRopeController.instance.ResetRope();
         ParrotController.instance.interactable = false;
 
+        // add ambiance sounds
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.SeaAmbiance, 0.25f, "sea_ambiance");
+
         globalCoinPool = new List<ActionWordEnum>();
 
         // Create Global Coin List
@@ -153,16 +156,22 @@ public class PrintingGameManager : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         CannonController.instance.cannonAnimator.Play("Shoot");
         CannonController.instance.explosionAnimator.Play("hit");
+        yield return new WaitForSeconds(0.15f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CannonShoot, 0.5f);
+        yield return new WaitForSeconds(0.3f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CannonHitCoin, 0.5f);
 
         // drop coin into chest
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(0.5f);
         PirateRopeController.instance.printingCoin.SetActionWordValue(correctValue);
         yield return new WaitForSeconds(0.1f);
         PirateRopeController.instance.DropCoinAnimation();
 
-        // upgrade coin
+        // upgrade chest
         yield return new WaitForSeconds(1.25f);
         PirateChest.instance.UpgradeChest();
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
+        AudioManager.instance.PlayCoinDrop();
         yield return new WaitForSeconds(1f);
 
         if (timesCorrect >= 4)
@@ -191,7 +200,10 @@ public class PrintingGameManager : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         CannonController.instance.cannonAnimator.Play("Shoot");
         CannonController.instance.explosionAnimator.Play("miss");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.15f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CannonShoot, 0.5f);
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CannonFall, 0.25f);
 
         // raise rope
         PirateRopeController.instance.RaiseRopeAnimation();
