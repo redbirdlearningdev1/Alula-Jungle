@@ -69,23 +69,14 @@ public class NewSpiderGameManager : MonoBehaviour
 
         // place menu button
         SettingsManager.instance.ToggleMenuButtonActive(true);
+    }
 
+    void Start()
+    {
         if (!playingInEditor)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().spiderwebTutorial;
 
         PregameSetup();
-
-        // start tutorial or normal game
-        if (playTutorial)
-            StartCoroutine(StartTutorialGame());
-        else 
-        {
-            // start song
-            AudioManager.instance.InitSplitSong(SplitSong.Spiderweb);
-            AudioManager.instance.IncreaseSplitSong();
-
-            StartCoroutine(StartGame());
-        }
     }
 
     void Update()
@@ -103,8 +94,13 @@ public class NewSpiderGameManager : MonoBehaviour
 
     private void PregameSetup()
     {
+        // play forest ambiance
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 1f, "forest_ambiance");
+
         // turn off raycaster
         SpiderRayCaster.instance.isOn = false;
+
+        globalCoinPool = new List<ActionWordEnum>();
 
         // Create Global Coin List
         if (mapID != MapIconIdentfier.None)
@@ -118,6 +114,18 @@ public class NewSpiderGameManager : MonoBehaviour
 
         unusedCoinPool = new List<ActionWordEnum>();
         unusedCoinPool.AddRange(globalCoinPool);
+
+        // start tutorial or normal game
+        if (playTutorial)
+            StartCoroutine(StartTutorialGame());
+        else 
+        {
+            // start song
+            AudioManager.instance.InitSplitSong(SplitSong.Spiderweb);
+            AudioManager.instance.IncreaseSplitSong();
+
+            StartCoroutine(StartGame());
+        }
     }
 
     /* 
@@ -196,6 +204,10 @@ public class NewSpiderGameManager : MonoBehaviour
         spider.success();
         yield return new WaitForSeconds(1f);
         webber.gameObject.SetActive(true);
+
+        // play web grab sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WebWhip, 0.5f);
+
         if(selectedIndex == 0)
         {
             webber.grab1();
@@ -496,6 +508,10 @@ public class NewSpiderGameManager : MonoBehaviour
     {
         web.webLarge();
         bug.takeOff();
+
+        // play bug leave sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BugFlyOut, 0.5f);
+
         yield return new WaitForSeconds(.25f);
         bug.leaveWeb();
     }

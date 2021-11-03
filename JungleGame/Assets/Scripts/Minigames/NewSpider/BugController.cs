@@ -35,6 +35,9 @@ public class BugController : MonoBehaviour
 
     public void StartToWeb()
     {
+        // play bug fly sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BugFlyIn, 1f);
+
         animator.Play("Fly");
         StartCoroutine(ReturnToWebRoutine(WebLand.position));
         StartCoroutine(landRoutine());
@@ -53,6 +56,10 @@ public class BugController : MonoBehaviour
     private IEnumerator dieRoutine()
     {
         yield return new WaitForSeconds(0f);
+
+        // play bug wrap sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WebSwoop, 0.5f);
+
         animator.Play("Wrapped");
     }
 
@@ -60,7 +67,9 @@ public class BugController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.20f);
         animator.Play("Land");
+
         yield return new WaitForSeconds(.5f);
+
         animator.Play("Still");
     }
 
@@ -226,6 +235,9 @@ public class BugController : MonoBehaviour
         Vector2 pos = transform.position;
         Vector2 tempPos = pos;
         tempPos.y -= 0.25f;
+
+        // play web bounce sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WebBoing, 0.5f);
 
         GetComponent<LerpableObject>().LerpPosition(tempPos, 0.2f, false);
         yield return new WaitForSeconds(.2f);

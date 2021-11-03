@@ -50,6 +50,10 @@ public class SeaShellGameManager : MonoBehaviour
 
     void Start()
     {
+        // start song
+        AudioManager.instance.InitSplitSong(SplitSong.Seashells);
+        AudioManager.instance.IncreaseSplitSong();
+
         StartCoroutine(PregameSetupRoutine());
     }
 
@@ -164,6 +168,9 @@ public class SeaShellGameManager : MonoBehaviour
 
     private IEnumerator CorrectRoutine(int shellNum)
     {
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+        
         timesCorrect++;
 
         // play mermaid routine

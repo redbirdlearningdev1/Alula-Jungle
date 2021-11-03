@@ -52,6 +52,9 @@ public class WebberController : MonoBehaviour
     }
     private IEnumerator grabBugRoutine()
     {
+        // play bug wrap sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WebWhip, 0.5f);
+
         animator.Play("WebGrab");
         yield return new WaitForSeconds(0f);
     }

@@ -34,6 +34,9 @@ public class PrintingGameManager : MonoBehaviour
 
         // get mapID
         mapID = GameManager.instance.mapID;
+
+        // place menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
     }
 
     void Start()
@@ -66,6 +69,10 @@ public class PrintingGameManager : MonoBehaviour
         
         unusedCoinPool = new List<ActionWordEnum>();
         unusedCoinPool.AddRange(globalCoinPool);
+
+        // start song
+        AudioManager.instance.InitSplitSong(SplitSong.Pirate);
+        AudioManager.instance.IncreaseSplitSong();
 
         // start game
         StartCoroutine(StartGame());
@@ -143,6 +150,9 @@ public class PrintingGameManager : MonoBehaviour
 
     private IEnumerator CorrectBallRoutine()
     {
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
+
         timesCorrect++;
 
         // parrot animation

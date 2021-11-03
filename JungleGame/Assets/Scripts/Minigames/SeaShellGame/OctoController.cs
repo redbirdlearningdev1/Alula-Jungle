@@ -94,6 +94,7 @@ public class OctoController : MonoBehaviour
         coin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.35f);
         yield return new WaitForSeconds(0.2f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
+        AudioManager.instance.PlayCoinDrop();
         Chest.instance.UpgradeChest();
     }
 }

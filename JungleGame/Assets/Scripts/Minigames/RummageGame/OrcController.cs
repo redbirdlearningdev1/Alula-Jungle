@@ -305,6 +305,9 @@ public class OrcController : MonoBehaviour
         {
             StopCoroutine(current);
         }
+        // play grass sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WalkGrass, 1f);
+
         current = StartCoroutine(GoToOriginRoutine(origin));
     }
 
@@ -373,6 +376,8 @@ public class OrcController : MonoBehaviour
     {
         yield return new WaitForSeconds(0f);
         animator.Play("orcRummage");
+        // play rummage sound
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.WoodRummage, 0.5f, "wood_rummage");
     }
 
     public void successOrc()

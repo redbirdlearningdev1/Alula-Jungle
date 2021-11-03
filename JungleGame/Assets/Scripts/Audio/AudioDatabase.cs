@@ -31,6 +31,8 @@ public class AudioDatabase : MonoBehaviour
     public AudioClip[] TurntablesSongSplit;
     public AudioClip[] RummageSongSplit;
     public AudioClip[] SpiderwebSongSplit;
+    public AudioClip[] SeashellsSongSplit;
+    public AudioClip[] PirateSongSplit;
 
     /* 
     ################################################
@@ -162,4 +164,18 @@ public class AudioDatabase : MonoBehaviour
     public AudioClip CannonLoad;
     public AudioClip RopeDown;
     public AudioClip RopeUp;
+
+    [Header("Rummage Game")]
+    public AudioClip ForestAmbiance;
+    public AudioClip HealFixItem;
+    public AudioClip ScrollRoll;
+    public AudioClip WalkGrass;
+    public AudioClip WoodRummage;
+
+    [Header("Spiderweb Game")]
+    public AudioClip BugFlyIn;
+    public AudioClip BugFlyOut;
+    public AudioClip WebBoing;
+    public AudioClip WebSwoop;
+    public AudioClip WebWhip;
 }

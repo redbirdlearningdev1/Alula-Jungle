@@ -3659,6 +3659,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 74a0c122347b2ee4e8486461c6839fe4, type: 3}
   - {fileID: 8300000, guid: 438e640659e9e0b429fe13ddc13d68a6, type: 3}
   - {fileID: 8300000, guid: f22002b23871d414aa1f386254464a97, type: 3}
+  SeashellsSongSplit:
+  - {fileID: 8300000, guid: 03901e020f3dbe74d8d8122d47aa660f, type: 3}
+  - {fileID: 8300000, guid: 94e9a417a45899a47bb83ed63dfed7b3, type: 3}
+  - {fileID: 8300000, guid: f20b5a92be8a6414fb174a6ca1d6cb65, type: 3}
+  - {fileID: 8300000, guid: d533fc93c6c40524a8968ef8f12df98f, type: 3}
+  - {fileID: 8300000, guid: 684ce9e5bf351fd4bbcfc548d845bae9, type: 3}
+  PirateSongSplit:
+  - {fileID: 8300000, guid: 4d35f3d777ef3684e8730296f045dd0e, type: 3}
+  - {fileID: 8300000, guid: d11b7e97689ad754791f186e7691f151, type: 3}
+  - {fileID: 8300000, guid: b6274e7096fc67f4084e0771cd689024, type: 3}
+  - {fileID: 8300000, guid: c6d603d213f2ab74e8e2a4e4eb8303cb, type: 3}
+  - {fileID: 8300000, guid: 192482d6ab480394f811d5759289ee12, type: 3}
   FroggerTutorial_1: {fileID: 8300000, guid: 57334b8b7f5786449aae768fd2fa6be6, type: 3}
   FroggerTutorial_2: {fileID: 8300000, guid: b8cb085e2d406064db6e9d79696ac9d8, type: 3}
   FroggerTutorial_3: {fileID: 8300000, guid: eedcf1d3df9217e4fb3ac412cb60001e, type: 3}
@@ -3755,7 +3767,6 @@ MonoBehaviour:
   MoveStoneStart: {fileID: 8300000, guid: edcbbf3183649f748a78622653d28b0d, type: 3}
   MoveStoneLoop: {fileID: 8300000, guid: 3f92e936499ef6046b73c6f4dba9e511, type: 3}
   MoveStoneEnd: {fileID: 8300000, guid: 7b23ef10054b2634490ed56c28d61187, type: 3}
-  BirdWingFlap: {fileID: 8300000, guid: 1078e24cceeb926478cb76b55b9797e9, type: 3}
   BubbleRise: {fileID: 8300000, guid: 815ae3c632cc97f468a3a1b548535b4e, type: 3}
   CoinFlip: {fileID: 8300000, guid: 902df396971b82c4b8d09cd167a0b9de, type: 3}
   CoinOnRock: {fileID: 8300000, guid: 1bf31ace643043c409a9e4760fa159f7, type: 3}
@@ -3767,6 +3778,7 @@ MonoBehaviour:
   WaterRipples: {fileID: 8300000, guid: 1f0515a0a0628584ca03a1fb0e7676b5, type: 3}
   WaterSplash: {fileID: 8300000, guid: 41002f72a28d72248bd958b3f01456e9, type: 3}
   WaveCrash: {fileID: 8300000, guid: 2d81df18af26d724fb7f7d98c26c6cd2, type: 3}
+  BirdWingFlap: {fileID: 8300000, guid: 1078e24cceeb926478cb76b55b9797e9, type: 3}
   CannonDink: {fileID: 8300000, guid: a3d7da285e8bb8d4386019388b98bbed, type: 3}
   CannonFall: {fileID: 8300000, guid: ddd163ab3d230ea419c08969e89d5028, type: 3}
   CannonHitCoin: {fileID: 8300000, guid: 63fa5bc8084704343b9bba90e7bab0c1, type: 3}
@@ -3774,6 +3786,16 @@ MonoBehaviour:
   CannonLoad: {fileID: 8300000, guid: 67a05dd385763a9498b47c3c95a43c63, type: 3}
   RopeDown: {fileID: 8300000, guid: 68075f51aa056ee4fbbb4290a7ec09dd, type: 3}
   RopeUp: {fileID: 8300000, guid: 2dd9bab081ab39246ad337663387b589, type: 3}
+  ForestAmbiance: {fileID: 8300000, guid: b282f49d07cc05e4d889bb71a17a44fa, type: 3}
+  HealFixItem: {fileID: 8300000, guid: 4a940bc5a8eec72419fac99d4efad40f, type: 3}
+  ScrollRoll: {fileID: 8300000, guid: 464de85bc6b7529498ebe5d0e12aca07, type: 3}
+  WalkGrass: {fileID: 8300000, guid: 6f4bfb8dc34366448a5774fbdf3b104e, type: 3}
+  WoodRummage: {fileID: 8300000, guid: 7cc93c048a9bcf84ab3cb0a39f1bdae9, type: 3}
+  BugFlyIn: {fileID: 8300000, guid: b183934247dd4274cb817c4aee8c9e32, type: 3}
+  BugFlyOut: {fileID: 8300000, guid: 90cabe7518708d84aa4ccab122764665, type: 3}
+  WebBoing: {fileID: 8300000, guid: 9b82e0781aede6f41bb18e1e762415be, type: 3}
+  WebSwoop: {fileID: 8300000, guid: 23686943b70118648a1b014a1613ff40, type: 3}
+  WebWhip: {fileID: 8300000, guid: 59ebe55ed3942864c8a8aff45d4ed79d, type: 3}
 --- !u!1 &1810638161
 GameObject:
   m_ObjectHideFlags: 0
@@ -12056,6 +12078,7 @@ MonoBehaviour:
   devModeIndicator: {fileID: 6550831789426890278}
   storyGameData: {fileID: 0}
   mapID: 0
+  currChallengeGame: 0
   actionWordPool: 
   challengeWordPool: []
   repairMapIconID: 0
@@ -18008,7 +18031,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 44.114765, y: 0.005817631}
+  m_AnchoredPosition: {x: 44.29802, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

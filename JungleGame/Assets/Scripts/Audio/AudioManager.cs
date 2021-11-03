@@ -8,7 +8,9 @@ public enum SplitSong
     Frogger,
     Turntables,
     Rummage,
-    Spiderweb
+    Spiderweb,
+    Seashells,
+    Pirate
 }
 
 public class AudioManager : MonoBehaviour
@@ -205,6 +207,24 @@ public class AudioManager : MonoBehaviour
         {
             int count = 0;
             foreach(var split in AudioDatabase.instance.SpiderwebSongSplit)
+            {
+                musicSources[count].clip = split;
+                count++;
+            }
+        }
+        else if (song == SplitSong.Seashells)
+        {
+            int count = 0;
+            foreach(var split in AudioDatabase.instance.SeashellsSongSplit)
+            {
+                musicSources[count].clip = split;
+                count++;
+            }
+        }
+        else if (song == SplitSong.Pirate)
+        {
+            int count = 0;
+            foreach(var split in AudioDatabase.instance.PirateSongSplit)
             {
                 musicSources[count].clip = split;
                 count++;

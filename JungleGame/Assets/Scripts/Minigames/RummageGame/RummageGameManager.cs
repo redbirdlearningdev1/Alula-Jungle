@@ -89,6 +89,10 @@ public class RummageGameManager : MonoBehaviour
 
     private void PregameSetup()
     {
+        // start ambient sounds
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 1f, "forest_ambiance");
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.1f, "river_flowing");
+
         // create coin list
         foreach (var coin in pile1)
             allCoins.Add(coin);
@@ -378,6 +382,9 @@ public class RummageGameManager : MonoBehaviour
         // make coins not interactable
         SetCoinsInteractable(false);
 
+        // stop rummage sound
+        AudioManager.instance.StopFX("wood_rummage");
+
         if (coin.type == selectedRummageCoin.type)
         {
             // success! go on to the next row or win game if on last row
@@ -471,6 +478,8 @@ public class RummageGameManager : MonoBehaviour
         List<RummageCoin> pileSet = GetCoinPile(orc.AtLocation() - 1);
 
         Repairs[orc.AtLocation() - 1].SetActive(true);
+        // play heal sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.HealFixItem, 0.5f);
 
         currCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
         currCoin.GetComponent<LerpableObject>().LerpImageAlpha(currCoin.GetComponent<Image>(), 0f, 0.25f);
