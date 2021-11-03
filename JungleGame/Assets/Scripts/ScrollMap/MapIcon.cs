@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public enum AnimatedIcon 
 {
-    none, fire, shrine, lamp
+    none, fire, shrine, lamp, spider
 }
 
 public enum StarLocation
@@ -48,6 +48,16 @@ public enum MapIconIdentfier
     OV_challenge_1,
     OV_challenge_2,
     OV_challenge_3,
+
+    // spider webs
+    SF_lamp,
+    SF_web,
+    SF_shrine,
+    SF_spider,
+
+    SF_challenge_1,
+    SF_challenge_2,
+    SF_challenge_3,
 }
 
 public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
@@ -294,6 +304,10 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             case AnimatedIcon.lamp:
                 if (!opt) animator.Play("lampBroken");
                 else animator.Play("lampFixed");
+                break;
+            case AnimatedIcon.spider:
+                if (!opt) animator.Play("spider_broken");
+                else animator.Play("spider_fixed");
                 break;
         }
         // play animation

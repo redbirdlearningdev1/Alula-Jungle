@@ -89,10 +89,19 @@ public class TalkieDatabase : MonoBehaviour
     public TalkieObject orcVillageIntro_1; // script: ScrollMapManager.cs
     public TalkieObject orcVillageIntro_2; // script: ScrollMapManager.cs
     public TalkieObject orcVillageIntro_3; // script: MapCharacter.cs
-    public TalkieObject orcVillageRebuilt_1;
-    public TalkieObject orcVillageRebuilt_2;
-    public TalkieObject orcVillageChallengeDefeated_1;
-    public TalkieObject orcVillageChallengeDefeated_2;
+    public TalkieObject orcVillageRebuilt_1; // script: ScrollMapManager.cs
+    public TalkieObject orcVillageRebuilt_2; // script: ScrollMapManager.cs
+    public TalkieObject orcVillageChallengeDefeated_1; // script: ScrollMapManager.cs
+    public TalkieObject orcVillageChallengeDefeated_2; // script: ScrollMapManager.cs
+
+    [Header("Spooky Forest")]
+    public TalkieObject spiderIntro_1; // script: MapCharacter.cs
+    public TalkieObject spiderIntro_2; // script: MapCharacter.cs
+    public TalkieObject spiderIntro_3; // script: MapCharacter.cs
+    public TalkieObject spiderIntro_4; // script: MapCharacter.cs
+    public TalkieObject spiderIntro_5; // script: MapCharacter.cs
+    public TalkieObject spiderIntro_6; // script: MapCharacter.cs
+
 
 
     [Header("Quips")]

@@ -565,7 +565,33 @@ public class DevMenuManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
                 break;
-            
+
+            /* 
+            ################################################
+            #   SPOOKY FOREST
+            ################################################
+            */
+
+            case StoryBeat.SpookyForestUnlocked:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 5;
+                FixIconsUpTo(MapLocation.SpookyForest);
+                SetChallengeGamesUpTo(MapLocation.OrcVillage);
+                SetActionWordPool(MapLocation.OrcVillage);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
+            case StoryBeat.SpookyForestPlayGames:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 5;
+                FixIconsUpTo(MapLocation.OrcVillage);
+                SetChallengeGamesUpTo(MapLocation.OrcVillage);
+                SetActionWordPool(MapLocation.OrcVillage);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
             
             /* 
             ################################################
@@ -600,25 +626,37 @@ public class DevMenuManager : MonoBehaviour
                 SetMapIcons(MapLocation.GorillaVillage, false);
                 SetMapIcons(MapLocation.Mudslide, false);
                 SetMapIcons(MapLocation.OrcVillage, false);
+                SetMapIcons(MapLocation.SpookyForest, false);
                 break;
 
             case MapLocation.GorillaVillage:
                 SetMapIcons(MapLocation.GorillaVillage, true);
                 SetMapIcons(MapLocation.Mudslide, false);
                 SetMapIcons(MapLocation.OrcVillage, false);
+                SetMapIcons(MapLocation.SpookyForest, false);
                 break;
 
             case MapLocation.Mudslide:
                 SetMapIcons(MapLocation.GorillaVillage, true);
                 SetMapIcons(MapLocation.Mudslide, true);
                 SetMapIcons(MapLocation.OrcVillage, false);
+                SetMapIcons(MapLocation.SpookyForest, false);
                 break;
             
             case MapLocation.OrcVillage:
                 SetMapIcons(MapLocation.GorillaVillage, true);
                 SetMapIcons(MapLocation.Mudslide, true);
                 SetMapIcons(MapLocation.OrcVillage, true);
+                SetMapIcons(MapLocation.SpookyForest, false);
                 break;
+
+            case MapLocation.SpookyForest:
+                SetMapIcons(MapLocation.GorillaVillage, true);
+                SetMapIcons(MapLocation.Mudslide, true);
+                SetMapIcons(MapLocation.OrcVillage, true);
+                SetMapIcons(MapLocation.SpookyForest, true);
+                break;
+            
         }
     }
 
@@ -694,6 +732,29 @@ public class DevMenuManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().mapData.OV_fire.isFixed = isFixed;
 
                 break;
+            
+            case MapLocation.SpookyForest:
+                if (!isFixed)
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_lamp.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_shrine.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_spider.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_web.stars = 0;
+                }
+                else
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_lamp.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_shrine.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_spider.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_web.stars = 3;
+                }
+
+                StudentInfoSystem.GetCurrentProfile().mapData.SF_lamp.isFixed = isFixed;
+                StudentInfoSystem.GetCurrentProfile().mapData.SF_shrine.isFixed = isFixed;
+                StudentInfoSystem.GetCurrentProfile().mapData.SF_spider.isFixed = isFixed;
+                StudentInfoSystem.GetCurrentProfile().mapData.SF_web.isFixed = isFixed;
+
+                break;
         }
     }
 
@@ -705,24 +766,35 @@ public class DevMenuManager : MonoBehaviour
                 SetChallengeGame(MapLocation.GorillaVillage, 0);
                 SetChallengeGame(MapLocation.Mudslide, 0);
                 SetChallengeGame(MapLocation.OrcVillage, 0);
+                SetChallengeGame(MapLocation.SpookyForest, 0);
                 break;
 
             case MapLocation.GorillaVillage:
                 SetChallengeGame(MapLocation.GorillaVillage, 3);
                 SetChallengeGame(MapLocation.Mudslide, 0);
                 SetChallengeGame(MapLocation.OrcVillage, 0);
+                SetChallengeGame(MapLocation.SpookyForest, 0);
                 break;
 
             case MapLocation.Mudslide:
                 SetChallengeGame(MapLocation.GorillaVillage, 3);
                 SetChallengeGame(MapLocation.Mudslide, 3);
                 SetChallengeGame(MapLocation.OrcVillage, 0);
+                SetChallengeGame(MapLocation.SpookyForest, 0);
                 break;
             
             case MapLocation.OrcVillage:
                 SetChallengeGame(MapLocation.GorillaVillage, 3);
                 SetChallengeGame(MapLocation.Mudslide, 3);
                 SetChallengeGame(MapLocation.OrcVillage, 3);
+                SetChallengeGame(MapLocation.SpookyForest, 0);
+                break;
+
+            case MapLocation.SpookyForest:
+                SetChallengeGame(MapLocation.GorillaVillage, 3);
+                SetChallengeGame(MapLocation.Mudslide, 3);
+                SetChallengeGame(MapLocation.OrcVillage, 3);
+                SetChallengeGame(MapLocation.SpookyForest, 3);
                 break;
         }
     }
@@ -875,6 +947,55 @@ public class DevMenuManager : MonoBehaviour
                 
                     StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_unlocked = true;
+                }
+                break;
+
+            case MapLocation.SpookyForest:
+                StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_stars = 0;
+                StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_unlocked = false;
+
+                if (num == 0)
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.stars = 0;
+
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType = GameType.None;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType = GameType.None;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType = GameType.None;
+                }
+                else if (num == 1)
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.stars = 0;
+
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.SpookyForest);
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType = GameType.None;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType = GameType.None;
+                }
+                else if (num == 2)
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.stars = 0;
+
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.SpookyForest);
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.SpookyForest);
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType = GameType.None;
+                }
+                else
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.stars = 3;
+
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.SpookyForest);
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.SpookyForest);
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.SpookyForest);
+                
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_unlocked = true;
                 }
                 break;
         }

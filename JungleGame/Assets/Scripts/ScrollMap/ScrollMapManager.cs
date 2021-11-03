@@ -9,6 +9,7 @@ public enum MapLocation
     GorillaVillage,
     Mudslide,
     OrcVillage,
+    SpookyForest,
     COUNT
 }
 
@@ -350,6 +351,11 @@ public class ScrollMapManager : MonoBehaviour
             marcus.GetComponent<Animator>().Play("marcusFixed");
             // make brutus sad
             brutus.GetComponent<Animator>().Play("brutusFixed");
+        }
+        else if (playGameEvent == StoryBeat.SpookyForestUnlocked)
+        {
+            // place gorilla in GV
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaSFPosDEFAULT.position;
         }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {
@@ -1421,6 +1427,8 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.OrcVillageRebuilt)
         {
+            disableIcons = true;
+            showStars = false;
             SetMapPosition(4);
 
             // play orc village defeated 1
@@ -1455,11 +1463,38 @@ public class ScrollMapManager : MonoBehaviour
             // gv sign post springs into place
             mapIconsAtLocation[4].signPost.ShowSignPost(0);
             mapIconsAtLocation[4].signPost.GetComponent<SignPostController>().interactable = false;
+
+            // before unlocking spooky forest - set objects to be repaired
+            foreach (var icon in mapIconsAtLocation[5].mapIcons)
+                icon.SetFixed(true, false, true);
+
+            // place darwin in village
+            gorilla.transform.position = MapAnimationController.instance.gorillaSFPosDEFAULT.position;
+
+            // unlock spooky forest
+            StartCoroutine(UnlockMapArea(5, false));
+            gorilla.ShowExclamationMark(true);
+            gorilla.interactable = true;
+
+            yield return new WaitForSeconds(9f);
+
             // Save to SIS
             StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_2; // new chapter!
             StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_unlocked = true;
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
+        }
+        else if (playGameEvent == StoryBeat.SpookyForestUnlocked)
+        {
+            showStars = false;
+            disableIcons = true;
+            SetMapPosition(5);
+            gorilla.ShowExclamationMark(true);
+            gorilla.interactable = true;
+        }
+        else if (playGameEvent == StoryBeat.SpookyForestPlayGames)
+        {
+            
         }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {
@@ -1543,6 +1578,10 @@ public class ScrollMapManager : MonoBehaviour
                     case MapLocation.OrcVillage:
                         if (StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_unlocked)
                             mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_stars);
+                        break;
+                    case MapLocation.SpookyForest:
+                        if (StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_unlocked)
+                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_stars);
                         break;
                     // etc ...
                 }
@@ -1636,6 +1675,9 @@ public class ScrollMapManager : MonoBehaviour
             case 4:
                 LetterboxController.instance.ShowTextSmooth("3 - Orc Village");
                 break;
+            case 5:
+                LetterboxController.instance.ShowTextSmooth("4 - Spooky Forest");
+                break;
         }
         
 
@@ -1712,6 +1754,8 @@ public class ScrollMapManager : MonoBehaviour
                 return MapLocation.Mudslide;
             case 4:
                 return MapLocation.OrcVillage;
+            case 5:
+                return MapLocation.SpookyForest;
         }
     }
 

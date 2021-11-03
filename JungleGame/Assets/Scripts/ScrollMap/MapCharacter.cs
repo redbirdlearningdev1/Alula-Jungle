@@ -74,7 +74,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         // check for character quips
         if (character == Character.Darwin)
         {
-            if (StudentInfoSystem.GetCurrentProfile().currStoryBeat > StoryBeat.PrologueStoryGame)
+            if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.RedShowsStickerButton ||
+                StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.VillageRebuilt)
             {
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.darwinQuips);
                 yield break;
@@ -191,7 +192,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         }
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillageMeetClogg)
         {
-            // only continue if tapped on gorilla
+            // only continue if tapped on Clogg
             if (character == Character.Clogg)
             {
                 // add pre story game talkie here
@@ -202,6 +203,76 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 ScrollMapManager.instance.showStars = true;
                 ScrollMapManager.instance.EnableAllMapIcons();
                 ScrollMapManager.instance.clogg.ShowExclamationMark(false);
+
+                // save to SIS and exit to scroll map
+                StudentInfoSystem.AdvanceStoryBeat();
+                StudentInfoSystem.SaveStudentPlayerData();
+                yield break;
+            }
+        }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.SpookyForestUnlocked)
+        {
+            // only continue if tapped on gorilla
+            if (character == Character.Darwin)
+            {
+                ScrollMapManager.instance.gorilla.ShowExclamationMark(false);
+
+                // spider intro 1
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spiderIntro_1);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // tiger and monkies walk in
+                MapAnimationController.instance.TigerAndMonkiesWalkInSF();
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+
+                // spider intro 2
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spiderIntro_2);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // tiger destroy forest
+                MapAnimationController.instance.TigerDestroyForest();
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+
+                // spider intro 3
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spiderIntro_3);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // tiger run away
+                MapAnimationController.instance.TigerRunAwayDefeatedSF();
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+
+                // spider intro 4
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spiderIntro_4);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // tiger run away
+                MapAnimationController.instance.MonkeyExitAnimationDefeatedSF();
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+
+                // spider intro 5
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spiderIntro_5);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // spider intro 6
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spiderIntro_6);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                ScrollMapManager.instance.showStars = true;
+                ScrollMapManager.instance.EnableAllMapIcons();
 
                 // save to SIS and exit to scroll map
                 StudentInfoSystem.AdvanceStoryBeat();

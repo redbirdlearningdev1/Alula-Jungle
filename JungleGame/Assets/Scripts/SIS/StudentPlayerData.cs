@@ -88,6 +88,10 @@ public enum StoryBeat
     OrcVillage_challengeGame_2, // 18
     OrcVillage_challengeGame_3, // 19
     OrcVillageRebuilt, // 20
+
+    SpookyForestUnlocked, // 21
+    SpookyForestPlayGames, // 22
+
     COUNT
 }
 
@@ -165,6 +169,19 @@ public class MapData
 
     public bool OV_signPost_unlocked;
     public int OV_signPost_stars;
+
+    // spooky forest
+    public MapIconData SF_web;
+    public MapIconData SF_shrine;
+    public MapIconData SF_lamp;
+    public MapIconData SF_spider;
+
+    public ChallengeGameData SF_challenge1;
+    public ChallengeGameData SF_challenge2;
+    public ChallengeGameData SF_challenge3;
+
+    public bool SF_signPost_unlocked;
+    public int SF_signPost_stars;
 }
 
 /* 

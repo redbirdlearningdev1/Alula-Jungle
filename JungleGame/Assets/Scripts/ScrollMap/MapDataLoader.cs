@@ -24,6 +24,13 @@ public class MapDataLoader : MonoBehaviour
     public MapIcon OV_statue;
     public MapIcon OV_fire;
 
+    [Header("Spooky Forest")]
+    public MapIcon SF_lamp;
+    public MapIcon SF_web;
+    public MapIcon SF_shrine;
+    public MapIcon SF_spider;
+
+
     void Awake()
     {
         if (instance == null)
@@ -72,6 +79,19 @@ public class MapDataLoader : MonoBehaviour
 
         OV_fire.SetFixed(mapData.OV_fire.isFixed, false, false);
         OV_fire.SetStars(mapData.OV_fire.stars);
+
+        // spooky forest section
+        SF_lamp.SetFixed(mapData.SF_lamp.isFixed, false, false);
+        SF_lamp.SetStars(mapData.SF_lamp.stars);
+
+        SF_web.SetFixed(mapData.SF_web.isFixed, false, false);
+        SF_web.SetStars(mapData.SF_web.stars);
+
+        SF_shrine.SetFixed(mapData.SF_shrine.isFixed, false, false);
+        SF_shrine.SetStars(mapData.SF_shrine.stars);
+
+        SF_spider.SetFixed(mapData.SF_spider.isFixed, false, false);
+        SF_spider.SetStars(mapData.SF_spider.stars);
     }
 
     public MapIcon GetMapIconFromID(MapIconIdentfier id)
@@ -105,6 +125,15 @@ public class MapDataLoader : MonoBehaviour
                 return OV_statue;
             case MapIconIdentfier.OV_fire:
                 return OV_fire;
+
+            case MapIconIdentfier.SF_lamp:
+                return SF_lamp;
+            case MapIconIdentfier.SF_shrine:
+                return SF_shrine;
+            case MapIconIdentfier.SF_spider:
+                return SF_spider;
+            case MapIconIdentfier.SF_web:
+                return SF_web;
         }
     }
 }

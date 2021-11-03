@@ -14624,6 +14624,12 @@ MonoBehaviour:
     type: 2}
   orcVillageChallengeDefeated_2: {fileID: 11400000, guid: 69331d6913d60ea4cafceee27a05a778,
     type: 2}
+  spiderIntro_1: {fileID: 11400000, guid: 8899958982428ac4c9dfc23845d941d9, type: 2}
+  spiderIntro_2: {fileID: 11400000, guid: 134ea1ac2d45a4f48a484311853f5b53, type: 2}
+  spiderIntro_3: {fileID: 11400000, guid: c50f87ea9c66ea74c809c7a00e8761de, type: 2}
+  spiderIntro_4: {fileID: 11400000, guid: 18e997de7533aea4ca4ca4e6f0583676, type: 2}
+  spiderIntro_5: {fileID: 11400000, guid: 049935a37e5baab49b0047782649d4da, type: 2}
+  spiderIntro_6: {fileID: 11400000, guid: d5d92279d6961a84c8d7d0a863adfd57, type: 2}
   darwinQuips: {fileID: 11400000, guid: 6c3e00e7101d0164a9d40ee842197259, type: 2}
   cloggQuips: {fileID: 11400000, guid: fbfecbbc46222024b8e54dba52c5f5f6, type: 2}
   redSprites:
@@ -18031,7 +18037,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 44.29802, y: 0.005817631}
+  m_AnchoredPosition: {x: 44.33235, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768
