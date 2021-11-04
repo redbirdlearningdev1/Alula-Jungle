@@ -12082,7 +12082,6 @@ MonoBehaviour:
   actionWordPool: 
   challengeWordPool: []
   repairMapIconID: 0
-  prevMapPosition: 1
   prevGameTypePlayed: 0
   playingChallengeGame: 0
 --- !u!114 &220914617
@@ -14630,6 +14629,15 @@ MonoBehaviour:
   spiderIntro_4: {fileID: 11400000, guid: 18e997de7533aea4ca4ca4e6f0583676, type: 2}
   spiderIntro_5: {fileID: 11400000, guid: 049935a37e5baab49b0047782649d4da, type: 2}
   spiderIntro_6: {fileID: 11400000, guid: d5d92279d6961a84c8d7d0a863adfd57, type: 2}
+  spookyForest_1: {fileID: 11400000, guid: c988d80c1200c9742916286f7faf0149, type: 2}
+  spookyForest_2: {fileID: 11400000, guid: 685870f22cf0caa48a28fa8723b52113, type: 2}
+  spookyForest_3: {fileID: 11400000, guid: 7c10dab1b6149664da396689e3d285ad, type: 2}
+  spookyForestChallengeDefeated_1: {fileID: 11400000, guid: b2a92413d1ee4d6489248230e69768ff,
+    type: 2}
+  spookyForestChallengeDefeated_2: {fileID: 11400000, guid: f8041ce9d35b53a49ac7f757496f3c7e,
+    type: 2}
+  spookyForestChallengeDefeated_3: {fileID: 11400000, guid: 8a446daf3897ad84aac5efd8ef5481e1,
+    type: 2}
   darwinQuips: {fileID: 11400000, guid: 6c3e00e7101d0164a9d40ee842197259, type: 2}
   cloggQuips: {fileID: 11400000, guid: fbfecbbc46222024b8e54dba52c5f5f6, type: 2}
   redSprites:
@@ -18037,7 +18045,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 44.33235, y: 0.005817631}
+  m_AnchoredPosition: {x: 44.366688, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

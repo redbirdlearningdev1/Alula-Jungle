@@ -247,7 +247,7 @@ public class ScrollMapManager : MonoBehaviour
             // make marcus sad (ANGRY) 
             marcus.GetComponent<Animator>().Play("marcusFixed");
         }
-        else if (playGameEvent == StoryBeat.MudslideRebuilt)
+        else if (playGameEvent == StoryBeat.MudslideDefeated)
         {
             // place tiger and monkies on screen
             MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerMSChallengePos.position;
@@ -301,7 +301,7 @@ public class ScrollMapManager : MonoBehaviour
             // make marcus sad (ANGRY) 
             marcus.GetComponent<Animator>().Play("marcusFixed");
         }
-        else if (playGameEvent == StoryBeat.OrcVillageRebuilt)
+        else if (playGameEvent == StoryBeat.OrcVillageDefeated)
         {
             // place tiger and monkies on screen
             MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerOVChallengePos.position;
@@ -319,11 +319,13 @@ public class ScrollMapManager : MonoBehaviour
         {
             // place gorilla in SF
             MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaSFPosDEFAULT.position;
+            gorilla.FlipCharacterToRight();
         }
         else if (playGameEvent == StoryBeat.SpookyForestPlayGames)
         {
             // place gorilla in SF
             MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaSFPosDEFAULT.position;
+            gorilla.FlipCharacterToRight();
         }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {
@@ -1116,7 +1118,7 @@ public class ScrollMapManager : MonoBehaviour
             brutus.ShowExclamationMark(true);
             brutus.interactable = true;
         }
-        else if (playGameEvent == StoryBeat.MudslideRebuilt)
+        else if (playGameEvent == StoryBeat.MudslideDefeated)
         {
             // map pos
             EnableMapSectionsUpTo(MapLocation.Mudslide);
@@ -1467,7 +1469,7 @@ public class ScrollMapManager : MonoBehaviour
             brutus.ShowExclamationMark(true);
             brutus.interactable = true;
         }
-        else if (playGameEvent == StoryBeat.OrcVillageRebuilt)
+        else if (playGameEvent == StoryBeat.OrcVillageDefeated)
         {
             // map pos
             EnableMapSectionsUpTo(MapLocation.OrcVillage);
@@ -1543,7 +1545,6 @@ public class ScrollMapManager : MonoBehaviour
 
             // darwin interactable
             gorilla.ShowExclamationMark(true);
-            gorilla.FlipCharacterToRight();
             gorilla.interactable = true;
         }
         else if (playGameEvent == StoryBeat.SpookyForestPlayGames)
@@ -1555,10 +1556,321 @@ public class ScrollMapManager : MonoBehaviour
             activateMapNavigation = true;
             revealGMUI = true;
 
-            // darwin interactable
-            gorilla.ShowExclamationMark(false);
-            gorilla.FlipCharacterToRight();
-            gorilla.interactable = true;
+            // make sure player has rebuilt all the OV map icons
+            if (StudentInfoSystem.GetCurrentProfile().mapData.SF_lamp.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.SF_shrine.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.SF_spider.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.SF_web.isFixed)
+            {
+                // play spooky forest rebuilt talkie 1
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spookyForest_1);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // darwin moves off-screen
+                MapAnimationController.instance.GorillaExitAnimationSF();
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+
+                // play spooky forest rebuilt talkie 2
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spookyForest_2);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // tiger and monkies walk in
+                MapAnimationController.instance.TigerAndMonkiesWalkInSF();
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+
+                // play spooky forest rebuilt talkie 3
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spookyForest_3);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // make challenge games active
+                yield return new WaitForSeconds(0.5f);
+
+                // set tiger stuff
+                if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType == GameType.None)
+                {
+                    GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.SpookyForest);
+                    tiger.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                }
+                else
+                {
+                    tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType;
+                }
+                    
+                tiger.ShowExclamationMark(true);
+                tiger.interactable = true;
+                tiger.GetComponent<Animator>().Play("aTigerTwitch");
+
+                // set game manager stuff
+                GameManager.instance.mapID = MapIconIdentfier.SF_challenge_1;
+
+                // save to sis and continue
+                StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType = tiger.gameType;
+                StudentInfoSystem.AdvanceStoryBeat();
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
+            else
+            {
+                // darwin interactable
+                gorilla.ShowExclamationMark(false);
+                gorilla.interactable = true;
+            }
+        }
+        else if (playGameEvent == StoryBeat.SpookyForest_challengeGame_1)
+        {
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.SpookyForest);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
+
+            // set tiger stuff
+            if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType == GameType.None)
+            {
+                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.SpookyForest);
+                tiger.gameType = newGameType;
+                StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType = newGameType;
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
+            else
+            {
+                tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType;
+            }
+
+            // set game manager stuff
+            GameManager.instance.mapID = MapIconIdentfier.SF_challenge_1;
+
+            // play correct lose talkies
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play julius wins
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else if (
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play julius wins again
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins_again);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+
+            yield return new WaitForSeconds(1f);
+
+            tiger.interactable = true;
+            tiger.ShowExclamationMark(true);
+            tiger.GetComponent<Animator>().Play("aTigerTwitch");
+        }
+        else if (playGameEvent == StoryBeat.SpookyForest_challengeGame_2)
+        {
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.SpookyForest);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
+            
+            // set tiger stuff
+            if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType == GameType.None)
+            {
+                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.SpookyForest);
+                marcus.gameType = newGameType;
+                StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType = newGameType;
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
+            else
+            {
+                marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType;
+            }
+
+            // set game manager stuff
+            GameManager.instance.mapID = MapIconIdentfier.SF_challenge_2;
+
+            // play correct lose talkies
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play marcus wins
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_wins);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else if (
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play marcus wins again
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_wins_again);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else
+            {
+                // play julius loses + marcus challenges
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_loses__marcus_challenges);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // do not go to game if talkie manager says not to
+                if (TalkieManager.instance.doNotContinueToGame)
+                {
+                    TalkieManager.instance.doNotContinueToGame = false;
+                }
+                else
+                {
+                    // continue to marcus challenge game
+                    marcus.GoToGameDataSceneImmediately();
+                }
+            }
+
+            marcus.GetComponent<Animator>().Play("marcusLose");
+            marcus.ShowExclamationMark(true);
+            marcus.interactable = true;
+        }
+        else if (playGameEvent == StoryBeat.SpookyForest_challengeGame_3)
+        {
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.SpookyForest);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
+            
+            // set tiger stuff
+            if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType == GameType.None)
+            {
+                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.SpookyForest);
+                brutus.gameType = newGameType;
+                StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType = newGameType;
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
+            else
+            {
+                brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType;
+            }
+            
+            // set game manager stuff
+            GameManager.instance.mapID = MapIconIdentfier.SF_challenge_3;
+
+            // play correct lose talkies
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play brutus wins
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_wins);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else if (
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play brutus wins again
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_wins_again);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else
+            {
+                // play marcus loses + brutus challenges
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_loses__brutus_challenges);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // do not go to game if talkie manager says not to
+                if (TalkieManager.instance.doNotContinueToGame)
+                {
+                    TalkieManager.instance.doNotContinueToGame = false;
+                }
+                else
+                {
+                    // continue to marcus challenge game
+                    brutus.GoToGameDataSceneImmediately();
+                }
+            }
+
+            brutus.GetComponent<Animator>().Play("brutusLose");
+            brutus.ShowExclamationMark(true);
+            brutus.interactable = true;
+        }
+        else if (playGameEvent == StoryBeat.SpookyForestDefeated)
+        {
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.SpookyForest);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
+
+            // play spooky forest defeated 1
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spookyForestChallengeDefeated_1);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // tiger runs off screen
+            MapAnimationController.instance.TigerRunAwayDefeatedSF();
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+
+            // play spooky forest challenge 2
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spookyForestChallengeDefeated_2);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // monkies go hehe and haha then run off too
+            MapAnimationController.instance.MonkeyExitAnimationDefeatedSF();
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+
+            // play spooky forest challenge 2
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spookyForestChallengeDefeated_3);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // place tiger and monkies off screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.offscreenPos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.offscreenPos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.offscreenPos.position;
+
+            // SF sign post springs into place
+            mapIconsAtLocation[5].signPost.ShowSignPost(0, false);
+
+            // before unlocking orc camp - set objects to be repaired
+            foreach (var icon in mapIconsAtLocation[6].mapIcons)
+                icon.SetFixed(true, false, true);
+
+            // place clogg in orc camp
+            clogg.transform.position = MapAnimationController.instance.cloggOCPosDEFAULT.position;
+            clogg.ShowExclamationMark(true);
+            clogg.interactable = false;
+
+            // unlock orc camp
+            StartCoroutine(UnlockMapArea(6, false));
+            yield return new WaitForSeconds(10f);
+
+            // clogg is interactable
+            clogg.interactable = true;
+
+            // Save to SIS
+            StudentInfoSystem.GetCurrentProfile().mapLimit = 6;
+            StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_unlocked = true;
+            StudentInfoSystem.AdvanceStoryBeat();
+            StudentInfoSystem.SaveStudentPlayerData();
         }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {
@@ -1764,6 +2076,9 @@ public class ScrollMapManager : MonoBehaviour
                 break;
             case 5:
                 LetterboxController.instance.ShowTextSmooth("4 - Spooky Forest");
+                break;
+            case 6:
+                LetterboxController.instance.ShowTextSmooth("5 - Orc Camp");
                 break;
         }
         

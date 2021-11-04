@@ -21,11 +21,15 @@ public class MapAnimationController : MonoBehaviour
     public Transform gorillaGVPosSTART;
     public Transform gorillaGVPosEND;
 
-    [Header("Gorilla GV")]
+    [Header("Gorilla SF")]
     public Transform gorillaSFPosDEFAULT;
+    public Transform gorillaSFPosEXIT;
 
     [Header("Orc OV")]
     public Transform cloggOVPosDEFAULT;
+
+    [Header("Orc OC")]
+    public Transform cloggOCPosDEFAULT;
 
     /* 
     ################################################
@@ -159,6 +163,31 @@ public class MapAnimationController : MonoBehaviour
     #   SPOOKY FOREST ANIMATIONS
     ################################################
     */
+
+    public void GorillaExitAnimationSF()
+    {
+        StartCoroutine(GorillaExitAnimationSFRoutine());
+    }
+    private IEnumerator GorillaExitAnimationSFRoutine()
+    {
+        animationDone = false;
+
+        yield return new WaitForSeconds(1f);
+
+        // place gorilla in correct location
+        gorilla.transform.position = gorillaSFPosDEFAULT.position;
+
+        // play gorilla animation
+        gorilla.GetComponent<Animator>().Play("gorillaWalk");
+        gorilla.GetComponent<MapCharacter>().FlipCharacterToRight();
+
+        // move to off screen
+        StartCoroutine(MoveObjectOverTime(gorilla, gorillaSFPosEXIT.position, 7f, true));
+
+        yield return new WaitForSeconds(7f);
+
+        animationDone = true;
+    }
 
     public void TigerDestroyForest()
     {

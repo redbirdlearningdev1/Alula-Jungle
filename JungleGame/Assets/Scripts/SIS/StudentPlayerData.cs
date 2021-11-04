@@ -80,17 +80,21 @@ public enum StoryBeat
     Mudslide_challengeGame_1, // 11
     Mudslide_challengeGame_2, // 12
     Mudslide_challengeGame_3, // 13
-    MudslideRebuilt, // 14
+    MudslideDefeated, // 14
 
     OrcVillageMeetClogg, // 15
     OrcVillageUnlocked, // 16
     OrcVillage_challengeGame_1, // 17
     OrcVillage_challengeGame_2, // 18
     OrcVillage_challengeGame_3, // 19
-    OrcVillageRebuilt, // 20
+    OrcVillageDefeated, // 20
 
     SpookyForestUnlocked, // 21
     SpookyForestPlayGames, // 22
+    SpookyForest_challengeGame_1, // 23
+    SpookyForest_challengeGame_2, // 24
+    SpookyForest_challengeGame_3, // 25
+    SpookyForestDefeated,
 
     COUNT
 }

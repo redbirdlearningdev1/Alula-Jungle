@@ -101,6 +101,12 @@ public class TalkieDatabase : MonoBehaviour
     public TalkieObject spiderIntro_4; // script: MapCharacter.cs
     public TalkieObject spiderIntro_5; // script: MapCharacter.cs
     public TalkieObject spiderIntro_6; // script: MapCharacter.cs
+    public TalkieObject spookyForest_1; // script: ScrollMapManager.cs
+    public TalkieObject spookyForest_2; // script: ScrollMapManager.cs
+    public TalkieObject spookyForest_3; // script: ScrollMapManager.cs
+    public TalkieObject spookyForestChallengeDefeated_1; // script: ScrollMapManager.cs
+    public TalkieObject spookyForestChallengeDefeated_2; // script: ScrollMapManager.cs
+    public TalkieObject spookyForestChallengeDefeated_3; // script: ScrollMapManager.cs
 
 
 

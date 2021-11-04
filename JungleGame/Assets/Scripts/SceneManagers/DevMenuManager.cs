@@ -504,7 +504,7 @@ public class DevMenuManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
                 break;
 
-            case StoryBeat.MudslideRebuilt:
+            case StoryBeat.MudslideDefeated:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 3;
                 FixIconsUpTo(MapLocation.Mudslide);
                 SetChallengeGamesUpTo(MapLocation.Mudslide);
@@ -572,7 +572,7 @@ public class DevMenuManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
                 break;
 
-            case StoryBeat.OrcVillageRebuilt:
+            case StoryBeat.OrcVillageDefeated:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 4;
                 FixIconsUpTo(MapLocation.OrcVillage);
                 SetChallengeGamesUpTo(MapLocation.OrcVillage);
@@ -608,7 +608,6 @@ public class DevMenuManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
                 break;
 
-            
             /* 
             ################################################
             #   ETC...
