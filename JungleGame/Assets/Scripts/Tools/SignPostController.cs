@@ -16,9 +16,10 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
 
     private int stars;
 
-    public void ShowSignPost(int stars)
+    public void ShowSignPost(int stars, bool interact)
     {
         this.stars = stars;
+        this.interactable = interact;
 
         StartCoroutine(ShowSignPostRoutine());
     }
@@ -27,7 +28,6 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
     {
         yield return new WaitForSeconds(0.5f);
 
-        interactable = true;
         animator.Play("springUp");
 
         yield return new WaitForSeconds(0.5f);
@@ -67,7 +67,7 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
     {
         interactable = false;
 
-        yield return new WaitForSeconds (1f);
+        yield return new WaitForSeconds(1f);
         animator.Play("hidden");
     }
 
@@ -105,18 +105,6 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
 
             // close settings menu if open
             SettingsManager.instance.CloseSettingsWindow();
-
-            // // place copy over bg
-            // var tempSignPost = TempObjectPlacer.instance.PlaceNewObject(this.gameObject, transform.localPosition);
-            // StartCoroutine(DelaySignPostInteractableRoutine(tempSignPost.GetComponent<SignPostController>()));
-            // tempSignPost.GetComponent<SignPostController>().SetStars(stars);
         }
-    }
-
-    private IEnumerator DelaySignPostInteractableRoutine(SignPostController controller)
-    {
-        controller.interactable = false;
-        yield return new WaitForSeconds(1.5f);
-        controller.interactable = true;
     }
 }

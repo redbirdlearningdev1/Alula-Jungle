@@ -14,31 +14,22 @@ public enum MapLocation
 }
 
 [System.Serializable]
-public struct MapLocationIcons
+public class MapLocationIcons
 {
     public MapLocation location;
     public List<MapIcon> mapIcons;
     public SignPostController signPost;
+    public bool enabled;
 }
 
 public class ScrollMapManager : MonoBehaviour
 {
     public static ScrollMapManager instance;
 
-    [Header("Dev Stuff")]
-    public bool overideMapLimit;
-    [Range(0, 8)] public int mapLimitNum;
-
-    public bool overideGameEvent;
-    public StoryBeat gameEvent;
-
-    public bool overrideStartPosition;
-    public int startPos;
-
     private List<GameObject> mapIcons = new List<GameObject>();
     private bool repairingMapIcon = false;
 
-    private bool revealNavUI = false;
+    private bool activateMapNavigation = false;
     private bool revealGMUI = false;
     private bool waitingForGameEventRoutine = false;
 
@@ -52,8 +43,6 @@ public class ScrollMapManager : MonoBehaviour
 
     [Header("Map Icons @ Locations")]
     public List<MapLocationIcons> mapIconsAtLocation;
-    [HideInInspector] public bool showStars = true;
-    [HideInInspector] public bool disableIcons = false;
 
     [Header("Animations")]
     public float staticMapYPos;
@@ -104,46 +93,20 @@ public class ScrollMapManager : MonoBehaviour
         leftButton.interactable = false;
         rightButton.interactable = false;
         navButtonsDisabled = true;
-
-        // override start map pos
-        if (overrideStartPosition && GameManager.instance.devModeActivated)
-        {
-            mapPosIndex = startPos;
-        }
-        else
-        {
-            // start at prev position (or at 1 by default)
-            mapPosIndex = GameManager.instance.prevMapPosition;
-        }
-        GameManager.instance.SendLog(this, "starting scrollmap on position: " + mapPosIndex);
-        SetMapPosition(mapPosIndex);
-
-        // map limit
-        if (overideMapLimit && GameManager.instance.devModeActivated)
-            SetMapLimit(mapLimitNum); // set manual limit
-        else
-            SetMapLimit(StudentInfoSystem.GetCurrentProfile().mapLimit); // load map limit from SIS
+        activateMapNavigation = true;
+        revealGMUI = true;
 
         // load in map data from profile + disable all map icons
         MapDataLoader.instance.LoadMapData(StudentInfoSystem.GetCurrentProfile().mapData);
-        DisableAllMapIcons();
+        DisableAllMapIcons(true);
+
+        // set map location
+        int index = StudentInfoSystem.GetCurrentProfile().mapLimit;
+        SetMapPosition(index);
+        SetMapLimit(index);
 
         // get current game event
-        StoryBeat playGameEvent = StoryBeat.InitBoatGame; // default event
-        if (overideGameEvent && GameManager.instance.devModeActivated)
-        {
-            playGameEvent = gameEvent;
-            
-            StudentInfoSystem.GetCurrentProfile().currStoryBeat = gameEvent;
-            StudentInfoSystem.SaveStudentPlayerData();
-        }
-        else
-        {
-            playGameEvent = StudentInfoSystem.GetCurrentProfile().currStoryBeat;
-        }
-        
-        revealNavUI = true;
-        revealGMUI = true;
+        StoryBeat playGameEvent = StudentInfoSystem.GetCurrentProfile().currStoryBeat;
 
         /* 
         ################################################
@@ -155,7 +118,7 @@ public class ScrollMapManager : MonoBehaviour
         
         /* 
         ################################################
-        #   GAME EVENTS (REPAIR MAP ICON)
+        #   GAME EVENTS (repair map icon)
         ################################################
         */
 
@@ -175,7 +138,7 @@ public class ScrollMapManager : MonoBehaviour
         ################################################
         */
         // check for game events
-        CheckForGameEvent();
+        CheckForGameEvent(playGameEvent);
     }
 
     private void PlaceCharactersOnScrollMap(StoryBeat playGameEvent)
@@ -354,7 +317,7 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.SpookyForestUnlocked)
         {
-            // place gorilla in GV
+            // place gorilla in SF
             MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaSFPosDEFAULT.position;
         }
         else if (playGameEvent == StoryBeat.COUNT) // default
@@ -364,20 +327,14 @@ public class ScrollMapManager : MonoBehaviour
         }
     }
 
-    private void AfterGameEventStuff()
+    private IEnumerator AfterGameEventStuff()
     {
         // show UI
-        if (revealNavUI)
-        {
+        if (activateMapNavigation)
             ToggleNavButtons(true);
-        }
-
-        // show stars on current map location
-        StartCoroutine(ToggleLocationRoutine(true, mapPosIndex));
-
-        // enable map icons
-        if (!disableIcons)
-            EnableAllMapIcons();
+        
+        // update map icons
+        UpdateMapIcons();
 
         // show GM UI
         if (revealGMUI)
@@ -387,28 +344,26 @@ public class ScrollMapManager : MonoBehaviour
             if (StudentInfoSystem.GetCurrentProfile().unlockedStickerButton)
                 SettingsManager.instance.ToggleWagonButtonActive(true);
         }
+
+        // show stars on current map location
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(ToggleLocationRoutine(true, mapPosIndex));
     }
 
-    public void CheckForGameEvent()
+    public void CheckForGameEvent(StoryBeat gameEvent)
     {
-        StartCoroutine(CheckForGameEventRoutine());
+        StartCoroutine(CheckForGameEventRoutine(gameEvent));
     }   
-    private IEnumerator CheckForGameEventRoutine()
+    private IEnumerator CheckForGameEventRoutine(StoryBeat gameEvent)
     {
-        StoryBeat playGameEvent = StoryBeat.InitBoatGame; // default event
-        // get event from current profile if not null
-        playGameEvent = StudentInfoSystem.GetCurrentProfile().currStoryBeat;
+        GameManager.instance.SendLog(this, "Current Story Beat: " + gameEvent);
 
-        GameManager.instance.SendLog(this, "Current Story Beat: " + playGameEvent);
-
-        StartCoroutine(CheckForScrollMapGameEvents(playGameEvent));
+        StartCoroutine(CheckForScrollMapGameEvents(gameEvent));
         // wait here while game event stuff is happening
         while (waitingForGameEventRoutine)
             yield return null;
 
-        yield return new WaitForSeconds(0.5f);
-
-        AfterGameEventStuff();
+        StartCoroutine(AfterGameEventStuff());
     }
 
     private IEnumerator CheckForScrollMapGameEvents(StoryBeat playGameEvent)
@@ -417,11 +372,12 @@ public class ScrollMapManager : MonoBehaviour
 
         if (playGameEvent == StoryBeat.InitBoatGame)
         {   
-            SetMapPosition(0);
-            revealNavUI = false;
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.NONE);
+
+            // scroll map bools
+            activateMapNavigation = false;
             revealGMUI = false;
-            showStars = false;
-            disableIcons = true;
 
             // intro boat animation
             MapAnimationController.instance.BoatOceanIntro();
@@ -436,14 +392,14 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.UnlockGorillaVillage)
         {
-            revealNavUI = false;
-            revealGMUI = false;
-            showStars = false;
-            disableIcons = true;
-
-            // place camera on dock location + fog
+            // map pos
             SetMapPosition(1);
             SetMapLimit(1);
+            EnableMapSectionsUpTo(MapLocation.NONE);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = false;      
 
             // bring boat into dock
             MapAnimationController.instance.DockBoat();
@@ -459,12 +415,10 @@ public class ScrollMapManager : MonoBehaviour
                 yield return null;
 
             // place gorilla in GV
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaGVPosSTART.position;
             gorilla.ShowExclamationMark(true);
 
+            // unlock gorilla village
             StartCoroutine(UnlockMapArea(2, true));
-            gorilla.ShowExclamationMark(true);
-
             yield return new WaitForSeconds(10f);
 
             // play dock 2 talkie + wait for talkie to finish
@@ -473,6 +427,7 @@ public class ScrollMapManager : MonoBehaviour
                 yield return null;
 
             // advance story beat
+            StudentInfoSystem.GetCurrentProfile().mapLimit = 2;
             StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_1; // new chapter!
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
@@ -481,9 +436,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.GorillaVillageIntro)
         {
-            SetMapPosition(2);
-            showStars = false;
-            disableIcons = true;
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.NONE);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // make gorilla interactable
             gorilla.ShowExclamationMark(true);
@@ -491,9 +449,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.PrologueStoryGame)
         {
-            SetMapPosition(2);
-            EnableAllMapIcons();
-            showStars = false;
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // make gorilla interactable
             gorilla.ShowExclamationMark(true);
@@ -501,7 +462,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.RedShowsStickerButton)
         {
-            SetMapPosition(2);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // make gorilla interactable
             gorilla.interactable = true;
@@ -527,7 +493,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.VillageRebuilt)
         {
-            SetMapPosition(2);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // make sure player has done the sticker tutorial
             if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
@@ -618,7 +589,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_1)
         {
-            SetMapPosition(2);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType == GameType.None)
@@ -661,7 +637,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_2)
         {
-            SetMapPosition(2);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType == GameType.None)
@@ -722,7 +703,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_3)
         {
-            SetMapPosition(2);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType == GameType.None)
@@ -783,7 +769,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.VillageChallengeDefeated)
         {
-            SetMapPosition(2);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             yield return new WaitForSeconds(1f);
 
@@ -821,8 +812,7 @@ public class ScrollMapManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             // gv sign post springs into place
-            mapIconsAtLocation[2].signPost.ShowSignPost(0);
-            mapIconsAtLocation[2].signPost.GetComponent<SignPostController>().interactable = false;
+            mapIconsAtLocation[2].signPost.ShowSignPost(0, false);
             // Save to SIS
             StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_unlocked = true;
             StudentInfoSystem.SaveStudentPlayerData();
@@ -848,9 +838,7 @@ public class ScrollMapManager : MonoBehaviour
 
             // unlock mudslide
             StartCoroutine(UnlockMapArea(3, false));
-            gorilla.ShowExclamationMark(true);
-
-            yield return new WaitForSeconds(7f);
+            yield return new WaitForSeconds(10f);
 
             // play mudslide intro talkie
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.mudslideIntro);
@@ -862,12 +850,18 @@ public class ScrollMapManager : MonoBehaviour
             mapIconsAtLocation[2].signPost.GetComponent<SignPostController>().interactable = true;
 
             // save to SIS
+            StudentInfoSystem.GetCurrentProfile().mapLimit = 3;
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
         }
         else if (playGameEvent == StoryBeat.MudslideUnlocked)
         {
-            SetMapPosition(3);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.Mudslide);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // make sure player has rebuilt all the MS map icons
             if (StudentInfoSystem.GetCurrentProfile().mapData.MS_logs.isFixed &&
@@ -932,7 +926,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.Mudslide_challengeGame_1)
         {
-            SetMapPosition(3);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.Mudslide);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType == GameType.None)
@@ -976,7 +975,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.Mudslide_challengeGame_2)
         {
-            SetMapPosition(3);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.Mudslide);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
             
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType == GameType.None)
@@ -1037,7 +1041,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.Mudslide_challengeGame_3)
         {
-            SetMapPosition(3);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.Mudslide);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
             
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType == GameType.None)
@@ -1098,7 +1107,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.MudslideRebuilt)
         {
-            SetMapPosition(3);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.Mudslide);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
     
             // play mudslide defeated 1
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.mudslideChallengeDefeated_1);
@@ -1135,8 +1149,7 @@ public class ScrollMapManager : MonoBehaviour
                 yield return null;
 
             // gv sign post springs into place
-            mapIconsAtLocation[2].signPost.ShowSignPost(0);
-            mapIconsAtLocation[2].signPost.GetComponent<SignPostController>().interactable = false;
+            mapIconsAtLocation[2].signPost.ShowSignPost(0, false);
             // Save to SIS
             StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_unlocked = true;
             StudentInfoSystem.SaveStudentPlayerData();
@@ -1150,9 +1163,7 @@ public class ScrollMapManager : MonoBehaviour
 
             // unlock orc village
             StartCoroutine(UnlockMapArea(4, false));
-            gorilla.ShowExclamationMark(true);
-
-            yield return new WaitForSeconds(9f);
+            yield return new WaitForSeconds(10f);
 
             // play orc village intro talkie
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcVillageIntro_1);
@@ -1171,19 +1182,19 @@ public class ScrollMapManager : MonoBehaviour
             clogg.interactable = true;
             clogg.ShowExclamationMark(true);
 
-            // disable map icons
-            showStars = false;
-            disableIcons = true;
-
             // save to SIS
+            StudentInfoSystem.GetCurrentProfile().mapLimit = 4;
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
         }
         else if (playGameEvent == StoryBeat.OrcVillageMeetClogg) // default
         {
-            SetMapPosition(4);
-            disableIcons = true;
-            showStars = false;
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.Mudslide);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // make clogg interactable
             clogg.interactable = true;
@@ -1191,7 +1202,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.OrcVillageUnlocked)
         {
-            SetMapPosition(4);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.OrcVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // make sure player has rebuilt all the OV map icons
             if (StudentInfoSystem.GetCurrentProfile().mapData.OV_houseL.isFixed &&
@@ -1260,7 +1276,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.OrcVillage_challengeGame_1)
         {
-            SetMapPosition(4);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.OrcVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType == GameType.None)
@@ -1305,7 +1326,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.OrcVillage_challengeGame_2)
         {
-            SetMapPosition(4);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.OrcVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
             
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType == GameType.None)
@@ -1366,7 +1392,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.OrcVillage_challengeGame_3)
         {
-            SetMapPosition(4);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.OrcVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
             
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType == GameType.None)
@@ -1427,9 +1458,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.OrcVillageRebuilt)
         {
-            disableIcons = true;
-            showStars = false;
-            SetMapPosition(4);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.OrcVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // play orc village defeated 1
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcVillageChallengeDefeated_1);
@@ -1460,25 +1494,28 @@ public class ScrollMapManager : MonoBehaviour
             MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.offscreenPos.position;
             MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.offscreenPos.position;
 
-            // gv sign post springs into place
-            mapIconsAtLocation[4].signPost.ShowSignPost(0);
-            mapIconsAtLocation[4].signPost.GetComponent<SignPostController>().interactable = false;
+            // ov sign post springs into place
+            mapIconsAtLocation[4].signPost.ShowSignPost(0, false);
 
             // before unlocking spooky forest - set objects to be repaired
             foreach (var icon in mapIconsAtLocation[5].mapIcons)
                 icon.SetFixed(true, false, true);
 
-            // place darwin in village
+            // place darwin in spooky forest
             gorilla.transform.position = MapAnimationController.instance.gorillaSFPosDEFAULT.position;
+            gorilla.FlipCharacterToRight();
+            gorilla.ShowExclamationMark(true);
+            gorilla.interactable = false;
 
             // unlock spooky forest
             StartCoroutine(UnlockMapArea(5, false));
-            gorilla.ShowExclamationMark(true);
+            yield return new WaitForSeconds(10f);
+
+            // darwin is interactable
             gorilla.interactable = true;
 
-            yield return new WaitForSeconds(9f);
-
             // Save to SIS
+            StudentInfoSystem.GetCurrentProfile().mapLimit = 5;
             StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_2; // new chapter!
             StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_unlocked = true;
             StudentInfoSystem.AdvanceStoryBeat();
@@ -1486,15 +1523,26 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.SpookyForestUnlocked)
         {
-            showStars = false;
-            disableIcons = true;
-            SetMapPosition(5);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.OrcVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
+
+            // darwin interactable
             gorilla.ShowExclamationMark(true);
+            gorilla.FlipCharacterToRight();
             gorilla.interactable = true;
         }
         else if (playGameEvent == StoryBeat.SpookyForestPlayGames)
         {
-            
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.SpookyForest);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
         }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {
@@ -1511,6 +1559,7 @@ public class ScrollMapManager : MonoBehaviour
 
         MapIcon icon = MapDataLoader.instance.GetMapIconFromID(id);
         icon.SetFixed(true, true, true);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.HealFixItem, 0.5f);
         yield return new WaitForSeconds(2f);
 
         GameManager.instance.repairMapIconID = false;
@@ -1541,20 +1590,26 @@ public class ScrollMapManager : MonoBehaviour
         }
     }
 
+    public void RevealStarsAtCurrentLocation()
+    {
+        StartCoroutine(ToggleLocationRoutine(true, mapPosIndex));
+    }
+
     private IEnumerator ToggleLocationRoutine(bool opt, int location)
     {
-        // show / hide stars of current location
-        if (showStars)
-        {
-            foreach (var mapicon in mapIconsAtLocation[location].mapIcons)
-            {
-                if (opt)
-                    mapicon.RevealStars();
-                else
-                    mapicon.HideStars();
+        // return if section is disabled
+        if (!mapIconsAtLocation[location].enabled)
+            yield break;
 
-                yield return null;
-            }
+        // show / hide stars of current location
+        foreach (var mapicon in mapIconsAtLocation[location].mapIcons)
+        {
+            if (opt)
+                mapicon.RevealStars();
+            else
+                mapicon.HideStars();
+
+            yield return null;
         }
 
         // show / hide sign post
@@ -1569,19 +1624,19 @@ public class ScrollMapManager : MonoBehaviour
                         break;
                     case MapLocation.GorillaVillage:
                         if (StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_unlocked)
-                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_stars);
+                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_stars, GetMapLocationIcons(MapLocation.GorillaVillage).enabled);
                         break;
                     case MapLocation.Mudslide:
                         if (StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_unlocked)
-                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_stars);
+                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_stars, GetMapLocationIcons(MapLocation.Mudslide).enabled);
                         break;
                     case MapLocation.OrcVillage:
                         if (StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_unlocked)
-                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_stars);
+                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_stars, GetMapLocationIcons(MapLocation.OrcVillage).enabled);
                         break;
                     case MapLocation.SpookyForest:
                         if (StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_unlocked)
-                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_stars);
+                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_stars, GetMapLocationIcons(MapLocation.SpookyForest).enabled);
                         break;
                     // etc ...
                 }
@@ -1593,13 +1648,23 @@ public class ScrollMapManager : MonoBehaviour
         }
     }
 
-    public void DisableAllMapIcons()
+    public void DisableAllMapIcons(bool hideStars)
     {
+        // disable map icons
         var list = GetMapIcons();
         foreach(var item in list)
         {
             item.interactable = false;
-            item.HideStars();
+
+            if (hideStars)
+                item.HideStars();
+        }
+
+        // disable signPosts
+        var signPosts = GetSignPostControllers();
+        foreach(var item in signPosts)
+        {
+            item.interactable = false;
         }
     }
 
@@ -1610,38 +1675,44 @@ public class ScrollMapManager : MonoBehaviour
 
     private IEnumerator SoftLockMapIconsRoutine(float duration)
     {
-        var list = GetMapIcons();
-        foreach(var item in list)
-            item.interactable = false;
-        
+        DisableAllMapIcons(false);
         yield return new WaitForSeconds(duration);
-        foreach(var item in list)
-            item.interactable = true;
+        EnableMapIcons(mapIconsAtLocation[mapPosIndex], false);
     }
 
-    public void EnableAllMapIcons()
+    public void UpdateMapIcons()
     {
-        var list = GetMapIcons();
-        foreach(var item in list)
+        // reload data
+        MapDataLoader.instance.LoadMapData(StudentInfoSystem.GetCurrentProfile().mapData);
+        foreach (var item in mapIconsAtLocation)
         {
-            item.interactable = true;
-            if (showStars)
-                item.RevealStars();
+            EnableMapIcons(item, false);
         }
     }
 
-    public void SetPrevMapPos()
+    public void EnableMapIcons(MapLocationIcons obj, bool revealStars)
     {
-        print ("setting prev map pos to: " + mapPosIndex);
-        GameManager.instance.prevMapPosition = mapPosIndex;
+        // return if map locatioon has no icons
+        if (obj.mapIcons.Count == 0)
+            return;
+
+        // enable icons and signpost if section is enabled
+        if (obj.enabled)
+        {
+            foreach (var icon in obj.mapIcons)
+            {
+                icon.interactable = true;
+
+                if (revealStars)
+                    icon.RevealStars();
+            }
+
+            obj.signPost.interactable = true;
+        }
     }
 
     private IEnumerator UnlockMapArea(int mapIndex, bool leaveLetterboxUp = false)
     {
-        // save unlock to sis profile
-        StudentInfoSystem.GetCurrentProfile().mapLimit = mapIndex;
-        StudentInfoSystem.SaveStudentPlayerData();
-
         RaycastBlockerController.instance.CreateRaycastBlocker("UnlockMapArea");
 
         yield return new WaitForSeconds(1f);
@@ -1757,6 +1828,27 @@ public class ScrollMapManager : MonoBehaviour
             case 5:
                 return MapLocation.SpookyForest;
         }
+    }
+
+    public void EnableMapSectionsUpTo(MapLocation location)
+    {
+        for (int i = 0; i < mapIconsAtLocation.Count; i++)
+        {
+            if (mapIconsAtLocation[i].location <= location)
+            {
+                mapIconsAtLocation[i].enabled = true;
+            }
+        }
+    }
+
+    public MapLocationIcons GetMapLocationIcons(MapLocation location)
+    {
+        foreach (var item in mapIconsAtLocation)
+        {
+            if (item.location == location)
+                return item;
+        }
+        return null;
     }
 
     /* 
@@ -1954,6 +2046,19 @@ public class ScrollMapManager : MonoBehaviour
         }
 
         return mapIconList;
+    }
+
+    public List<SignPostController> GetSignPostControllers()
+    {
+        FindObjectsWithTag("SignPost");
+        List<SignPostController> signPosts = new List<SignPostController>();
+
+        foreach(var obj in mapIcons)
+        {
+            signPosts.Add(obj.GetComponent<SignPostController>());
+        }
+
+        return signPosts;
     }
 
     public void SetMapIconsBroke(bool opt)

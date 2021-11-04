@@ -176,11 +176,23 @@ public class MapAnimationController : MonoBehaviour
         // destroy GV objects one by one
         foreach(var icon in ScrollMapManager.instance.mapIconsAtLocation[5].mapIcons)
         {
-            icon.SetFixed(false, true, true);
+            icon.SetFixed(false, true, false);
             yield return new WaitForSeconds(0.1f);
         }
+        // set fixed to false
+        StudentInfoSystem.GetCurrentProfile().mapData.SF_lamp.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.SF_shrine.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.SF_spider.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.SF_web.isFixed = false;
+        // set stars to 0
+        StudentInfoSystem.GetCurrentProfile().mapData.SF_lamp.stars = 0;
+        StudentInfoSystem.GetCurrentProfile().mapData.SF_shrine.stars = 0;
+        StudentInfoSystem.GetCurrentProfile().mapData.SF_spider.stars = 0;
+        StudentInfoSystem.GetCurrentProfile().mapData.SF_web.stars = 0;
 
+        // save to SIS + reload map data
         yield return new WaitForSeconds(2f);
+        StudentInfoSystem.SaveStudentPlayerData();
 
         animationDone = true;
     }
@@ -297,6 +309,38 @@ public class MapAnimationController : MonoBehaviour
         tiger.GetComponent<Animator>().Play("aTigerIdle");
         marcus.GetComponent<Animator>().Play("marcusFixed");
         brutus.GetComponent<Animator>().Play("brutusFixed");
+
+        animationDone = true;
+    }
+
+    public void MonkeyExitAnimationSF()
+    {
+        StartCoroutine(MonkeyExitAnimationSFRoutine());
+    }
+    private IEnumerator MonkeyExitAnimationSFRoutine()
+    {
+        animationDone = false;
+
+        // place characters in end pos
+        marcus.transform.position = marcusSFPosEND.position;
+        brutus.transform.position = brutusSFPosEND.position;
+
+        // play laugh animations
+        marcus.GetComponent<Animator>().Play("marcusWin");
+        brutus.GetComponent<Animator>().Play("brutusWin");
+        yield return new WaitForSeconds(1.5f);
+
+
+        // play turn animation
+        marcus.GetComponent<Animator>().Play("marcusTurn");
+        brutus.GetComponent<Animator>().Play("brutusTurn");
+        yield return new WaitForSeconds(0.4f);
+
+        // move to off screen
+        StartCoroutine(MoveObjectOverTime(marcus, marcusSFPosSTART.position, 5f, true));
+        StartCoroutine(MoveObjectOverTime(brutus, brutusSFPosSTART.position, 5f, true));
+
+        yield return new WaitForSeconds(5f);
 
         animationDone = true;
     }
@@ -650,7 +694,7 @@ public class MapAnimationController : MonoBehaviour
 
         // play gorilla animation
         gorilla.GetComponent<Animator>().Play("gorillaWalk");
-        gorilla.transform.localScale = new Vector3(-1f, 1f, 1f); // flip to face right side
+        gorilla.GetComponent<MapCharacter>().FlipCharacterToRight();
 
         // move to off screen
         StartCoroutine(MoveObjectOverTime(gorilla, gorillaGVPosEND.position, 7f, true));
@@ -728,11 +772,23 @@ public class MapAnimationController : MonoBehaviour
         // destroy GV objects one by one
         foreach(var icon in ScrollMapManager.instance.mapIconsAtLocation[2].mapIcons)
         {
-            icon.SetFixed(false, true, true);
+            icon.SetFixed(false, true, false);
             yield return new WaitForSeconds(0.1f);
         }
+        // set fixed to false
+        StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.isFixed = false;
+        // set stars to 0
+        StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.stars = 0;
+        StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.stars = 0;
+        StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.stars = 0;
+        StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.stars = 0;
 
+        // save to SIS + reload map data
         yield return new WaitForSeconds(2f);
+        StudentInfoSystem.SaveStudentPlayerData();
 
         animationDone = true;
     }

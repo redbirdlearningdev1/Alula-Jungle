@@ -32,6 +32,16 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         exclamationMark.SetActive(opt);
     }
 
+    public void FlipCharacterToLeft()
+    {
+        transform.localScale = new Vector3(1f, 1f, 1f); // flip to face left side
+    }   
+
+    public void FlipCharacterToRight()
+    {
+        transform.localScale = new Vector3(-1f, 1f, 1f); // flip to face right side
+    }
+
     /* 
     ################################################
     #   POINTER METHODS
@@ -47,7 +57,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         if (!isPressed)
         {
             isPressed = true;
-            transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
+            transform.localScale = new Vector3(pressedScaleChange * transform.localScale.x, pressedScaleChange, 1f);
         }
     }
 
@@ -59,10 +69,11 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
             isPressed = false;
-            transform.localScale = new Vector3(1f, 1f, 1f);
-
-            // set prev map position
-            ScrollMapManager.instance.SetPrevMapPos();
+            // make sure x direction is consistent
+            if (transform.localScale.x < 0)
+                transform.localScale = new Vector3(-1, 1f, 1f);
+            else 
+                transform.localScale = new Vector3(1, 1f, 1f);
 
             // check for story beat before going to game
             StartCoroutine(CheckForStoryBeatRoutine());
@@ -75,7 +86,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         if (character == Character.Darwin)
         {
             if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.RedShowsStickerButton ||
-                StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.VillageRebuilt)
+                StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.VillageRebuilt ||
+                StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.SpookyForestPlayGames)
             {
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.darwinQuips);
                 yield break;
@@ -125,7 +137,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 yield return null;
 
             // turn gorilla to face right
-            MapAnimationController.instance.gorilla.transform.localScale = new Vector3(-1, 1, 1);
+            ScrollMapManager.instance.gorilla.FlipCharacterToRight();
 
             // play gorilla intro 3
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.gorillaIntro_3);
@@ -156,7 +168,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             yield return new WaitForSeconds(1f);
 
             // turn gorilla to face left
-            MapAnimationController.instance.gorilla.transform.localScale = new Vector3(1, 1, 1);
+            ScrollMapManager.instance.gorilla.FlipCharacterToLeft();
 
             // play gorilla intro 5
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.gorillaIntro_5);
@@ -166,13 +178,13 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             // make gorilla interactable
             ScrollMapManager.instance.gorilla.ShowExclamationMark(true);
             ScrollMapManager.instance.gorilla.interactable = true;
+            
+            ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.GorillaVillage);
+            ScrollMapManager.instance.UpdateMapIcons();
 
             // save to SIS and exit to scroll map
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
-            
-            ScrollMapManager.instance.showStars = false;
-            ScrollMapManager.instance.EnableAllMapIcons();
             yield break;
         }
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PrologueStoryGame)
@@ -200,8 +212,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
 
-                ScrollMapManager.instance.showStars = true;
-                ScrollMapManager.instance.EnableAllMapIcons();
+                ScrollMapManager.instance.UpdateMapIcons();
                 ScrollMapManager.instance.clogg.ShowExclamationMark(false);
 
                 // save to SIS and exit to scroll map
@@ -216,6 +227,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             if (character == Character.Darwin)
             {
                 ScrollMapManager.instance.gorilla.ShowExclamationMark(false);
+                ScrollMapManager.instance.gorilla.interactable = false;
 
                 // spider intro 1
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spiderIntro_1);
@@ -256,7 +268,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                     yield return null;
 
                 // tiger run away
-                MapAnimationController.instance.MonkeyExitAnimationDefeatedSF();
+                MapAnimationController.instance.MonkeyExitAnimationSF();
                 // wait for animation to be done
                 while (!MapAnimationController.instance.animationDone)
                     yield return null;
@@ -271,12 +283,18 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
 
-                ScrollMapManager.instance.showStars = true;
-                ScrollMapManager.instance.EnableAllMapIcons();
+                // enable spooky forest icons
+                ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.SpookyForest);
+                ScrollMapManager.instance.UpdateMapIcons();
+                ScrollMapManager.instance.RevealStarsAtCurrentLocation();
 
                 // save to SIS and exit to scroll map
                 StudentInfoSystem.AdvanceStoryBeat();
                 StudentInfoSystem.SaveStudentPlayerData();
+
+                // make darwin interactable
+                ScrollMapManager.instance.gorilla.interactable = true;
+
                 yield break;
             }
         }

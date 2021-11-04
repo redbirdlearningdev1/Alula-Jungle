@@ -334,7 +334,7 @@ public class DevMenuManager : MonoBehaviour
         {
             case StoryBeat.InitBoatGame:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 0;
-                FixIconsUpTo(MapLocation.NONE);
+                FixIconsUpTo(MapLocation.GorillaVillage);
                 SetChallengeGamesUpTo(MapLocation.NONE);
                 SetActionWordPool(MapLocation.NONE);
 
@@ -350,7 +350,7 @@ public class DevMenuManager : MonoBehaviour
 
             case StoryBeat.UnlockGorillaVillage:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 1;
-                FixIconsUpTo(MapLocation.NONE);
+                FixIconsUpTo(MapLocation.GorillaVillage);
                 SetChallengeGamesUpTo(MapLocation.NONE);
                 SetActionWordPool(MapLocation.NONE);
 
@@ -360,7 +360,7 @@ public class DevMenuManager : MonoBehaviour
 
             case StoryBeat.GorillaVillageIntro:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 2;
-                FixIconsUpTo(MapLocation.NONE);
+                FixIconsUpTo(MapLocation.GorillaVillage);
                 SetChallengeGamesUpTo(MapLocation.NONE);
                 SetActionWordPool(MapLocation.NONE);
 

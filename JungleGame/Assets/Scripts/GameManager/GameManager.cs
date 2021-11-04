@@ -57,7 +57,6 @@ public class GameManager : DontDestroy<GameManager>
     public List<ChallengeWord> challengeWordPool;
     
     [HideInInspector] public bool repairMapIconID; // when the scroll map appears -> repair this icon
-    [HideInInspector] public int prevMapPosition = 1; // what index player was on scroll map (1 by default)
     [HideInInspector] public GameType prevGameTypePlayed = GameType.None;
 
     // challenge game identification

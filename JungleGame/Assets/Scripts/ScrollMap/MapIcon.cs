@@ -369,6 +369,20 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 case MapIconIdentfier.OV_fire:
                     StudentInfoSystem.GetCurrentProfile().mapData.OV_fire.isFixed = opt;
                     break;
+
+                // spooky forest
+                case MapIconIdentfier.SF_lamp:
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_lamp.isFixed = opt;
+                    break;
+                case MapIconIdentfier.SF_shrine:
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_shrine.isFixed = opt;
+                    break;
+                case MapIconIdentfier.SF_spider:
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_spider.isFixed = opt;
+                    break;
+                case MapIconIdentfier.SF_web:
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_web.isFixed = opt;
+                    break;
             }
             StudentInfoSystem.SaveStudentPlayerData();
         }
@@ -422,9 +436,6 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
             isPressed = false;
             transform.localScale = new Vector3(1f, 1f, 1f);
-
-            // set prev map position
-            ScrollMapManager.instance.SetPrevMapPos();
 
             // check for story beat stuff
             StartCoroutine(CheckForStoryBeatRoutine());

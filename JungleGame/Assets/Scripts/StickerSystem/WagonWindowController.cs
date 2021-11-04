@@ -515,7 +515,7 @@ public class WagonWindowController : MonoBehaviour
         SettingsManager.instance.wagonButton.interactable = true;
 
         // check for scroll map game events
-        ScrollMapManager.instance.CheckForGameEvent();
+        ScrollMapManager.instance.CheckForGameEvent(StudentInfoSystem.GetCurrentProfile().currStoryBeat);
     }
 
     public void ResetWagonController()
