@@ -207,13 +207,18 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             // only continue if tapped on Clogg
             if (character == Character.Clogg)
             {
+                // remove exclamation mark
+                ScrollMapManager.instance.clogg.ShowExclamationMark(false);
+
                 // add pre story game talkie here
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcVillageIntro_3);
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
 
+                // unlock orc village
+                ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.OrcVillage);
                 ScrollMapManager.instance.UpdateMapIcons();
-                ScrollMapManager.instance.clogg.ShowExclamationMark(false);
+                ScrollMapManager.instance.RevealStarsAtCurrentLocation();
 
                 // save to SIS and exit to scroll map
                 StudentInfoSystem.AdvanceStoryBeat();

@@ -9897,6 +9897,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 0a11686de9e94574f9d9f0c82060aa20,
         type: 3}
+    - target: {fileID: 1375974568929445006, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
+        type: 3}
+      propertyPath: starLocation
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2017183202720352187, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -10326,6 +10331,11 @@ PrefabInstance:
         type: 3}
       propertyPath: brokenSprite
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375974568929445006, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
+        type: 3}
+      propertyPath: starLocation
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2017183202720352187, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
@@ -13694,7 +13704,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 54.450478
+      value: 54.62561
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -24056,8 +24066,7 @@ PrefabInstance:
         type: 3}
       propertyPath: fixedSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 45e0fe4bee5499143bb4743835aaadf1,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1375974568929445006, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
       propertyPath: animatedIcon
@@ -24069,6 +24078,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 842862b0d3f133649b6b0d9bc21955a0,
         type: 3}
+    - target: {fileID: 1375974568929445006, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
+        type: 3}
+      propertyPath: starLocation
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2017183202720352187, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -26175,6 +26189,11 @@ PrefabInstance:
         type: 3}
       propertyPath: brokenSprite
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375974568929445006, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
+        type: 3}
+      propertyPath: starLocation
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2017183202720352187, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}

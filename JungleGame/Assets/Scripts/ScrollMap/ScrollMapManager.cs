@@ -320,6 +320,11 @@ public class ScrollMapManager : MonoBehaviour
             // place gorilla in SF
             MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaSFPosDEFAULT.position;
         }
+        else if (playGameEvent == StoryBeat.SpookyForestPlayGames)
+        {
+            // place gorilla in SF
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaSFPosDEFAULT.position;
+        }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {
             // unlock everything
@@ -344,6 +349,9 @@ public class ScrollMapManager : MonoBehaviour
             if (StudentInfoSystem.GetCurrentProfile().unlockedStickerButton)
                 SettingsManager.instance.ToggleWagonButtonActive(true);
         }
+
+        // turn on navigation control
+        ToggleNavButtons(true);
 
         // show stars on current map location
         yield return new WaitForSeconds(1f);
@@ -851,6 +859,9 @@ public class ScrollMapManager : MonoBehaviour
 
             // save to SIS
             StudentInfoSystem.GetCurrentProfile().mapLimit = 3;
+            ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.Mudslide);
+            ScrollMapManager.instance.UpdateMapIcons();
+            ScrollMapManager.instance.RevealStarsAtCurrentLocation();
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
         }
@@ -1543,6 +1554,11 @@ public class ScrollMapManager : MonoBehaviour
             // scroll map bools
             activateMapNavigation = true;
             revealGMUI = true;
+
+            // darwin interactable
+            gorilla.ShowExclamationMark(false);
+            gorilla.FlipCharacterToRight();
+            gorilla.interactable = true;
         }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {
@@ -1759,9 +1775,6 @@ public class ScrollMapManager : MonoBehaviour
             LetterboxController.instance.ToggleLetterbox(false);
 
         yield return new WaitForSeconds(2f);
-
-        // show UI again
-        ToggleNavButtons(true);
 
         RaycastBlockerController.instance.RemoveRaycastBlocker("UnlockMapArea");
     }

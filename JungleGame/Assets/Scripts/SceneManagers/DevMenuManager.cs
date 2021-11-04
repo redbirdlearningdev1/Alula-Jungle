@@ -277,6 +277,22 @@ public class DevMenuManager : MonoBehaviour
         studentData.mapData.OV_signPost_unlocked = true;
         studentData.mapData.OV_signPost_stars = 3;
 
+        // Spooky forest
+        studentData.mapData.SF_lamp.isFixed = true;
+        studentData.mapData.SF_lamp.stars = 3;
+
+        studentData.mapData.SF_shrine.isFixed = true;
+        studentData.mapData.SF_shrine.stars = 3;
+
+        studentData.mapData.SF_spider.isFixed = true;
+        studentData.mapData.SF_spider.stars = 3;
+
+        studentData.mapData.SF_web.isFixed = true;
+        studentData.mapData.SF_web.stars = 3;
+
+        studentData.mapData.SF_signPost_unlocked = true;
+        studentData.mapData.SF_signPost_stars = 3;
+
         StudentInfoSystem.SaveStudentPlayerData();
     }
 

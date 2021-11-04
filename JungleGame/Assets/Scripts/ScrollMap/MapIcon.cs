@@ -271,6 +271,15 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     // set stars to empty or filled based on SIS data
     public void SetStars(int num)
     {
+        //print ("map icon: " + identfier + " setting stars to: " + num);
+
+        // set all stars to be empty
+        for (int i = 0; i < 3; i++)
+        {
+            currentStars[i].SetStar(false);
+        }
+
+        // set correct nuber of stars
         for (int i = 0; i < num; i++)
         {
             currentStars[i].SetStar(true);
@@ -500,6 +509,16 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 return StudentInfoSystem.GetCurrentProfile().mapData.OV_statue.stars;
             case MapIconIdentfier.OV_fire:
                 return StudentInfoSystem.GetCurrentProfile().mapData.OV_fire.stars;
+
+            // spooky village
+            case MapIconIdentfier.SF_lamp:
+                return StudentInfoSystem.GetCurrentProfile().mapData.SF_lamp.stars;
+            case MapIconIdentfier.SF_shrine:
+                return StudentInfoSystem.GetCurrentProfile().mapData.SF_shrine.stars;
+            case MapIconIdentfier.SF_spider:
+                return StudentInfoSystem.GetCurrentProfile().mapData.SF_spider.stars;
+            case MapIconIdentfier.SF_web:
+                return StudentInfoSystem.GetCurrentProfile().mapData.SF_web.stars;
         }   
     }
 }
