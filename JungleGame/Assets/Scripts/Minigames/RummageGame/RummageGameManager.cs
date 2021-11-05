@@ -14,7 +14,7 @@ public class RummageGameManager : MonoBehaviour
 {
     public static RummageGameManager instance;
 
-    private MapIconIdentfier mapID;
+    private MapIconIdentfier mapID = MapIconIdentfier.None;
 
     public bool playingInEditor;
     public bool playTutorial;
@@ -209,13 +209,16 @@ public class RummageGameManager : MonoBehaviour
             StartCoroutine(DancingManRoutine());
         }
 
-        // dev stuff for fx audio testing
+        // dev stuff for skipping minigame
         if (GameManager.instance.devModeActivated)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 StopAllCoroutines();
-                StartCoroutine(SkipToWinRoutine());
+                // play win tune
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // calculate and show stars
+                StarAwardController.instance.AwardStarsAndExit(3);
             }
         }
 
@@ -401,32 +404,6 @@ public class RummageGameManager : MonoBehaviour
         }
         StartCoroutine(CoinFailRoutine());
         return false;
-    }
-
-    private IEnumerator SkipToWinRoutine()
-    {        
-        stretch.stretchIn();
-        orc.GoToOrigin();
-        
-        yield return new WaitForSeconds(1f);
-        orc.successOrc();
-        yield return new WaitForSeconds(1f);
-        orc.stopOrc();
-        atPile = false;
-        piles[0].colliderOn();
-        piles[1].colliderOn();
-        piles[2].colliderOn();
-        piles[3].colliderOn();
-        piles[4].colliderOn();
-        // play win tune
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-        yield return new WaitForSeconds(1f);
-
-        // hide dancing man
-        StartCoroutine(HideDancingManRoutine());
-
-        // calculate and show stars
-        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
     }
 
     private IEnumerator CoinFailRoutine()

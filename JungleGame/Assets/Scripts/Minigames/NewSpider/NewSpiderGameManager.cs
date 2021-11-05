@@ -13,7 +13,7 @@ public class NewSpiderGameManager : MonoBehaviour
 {
     public static NewSpiderGameManager instance;
 
-    private MapIconIdentfier mapID;
+    private MapIconIdentfier mapID = MapIconIdentfier.None;
 
     public bool playingInEditor;
     public bool playTutorial;
@@ -81,13 +81,16 @@ public class NewSpiderGameManager : MonoBehaviour
 
     void Update()
     {
-        // dev stuff for fx audio testing
+        // dev stuff for skipping minigame
         if (GameManager.instance.devModeActivated)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 StopAllCoroutines();
-                StartCoroutine(SkipToWinRoutine());
+                // play win tune
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // calculate and show stars
+                StarAwardController.instance.AwardStarsAndExit(3);
             }
         }
     }
@@ -471,28 +474,6 @@ public class NewSpiderGameManager : MonoBehaviour
     #   UTIL METHODS
     ################################################
     */
-
-    private IEnumerator SkipToWinRoutine()
-    {        
-        // play right choice audio
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
-
-        spider.success();
-        StartCoroutine(bugLeaves());
-        webber.gameObject.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
-        ball.UpgradeChest();
-        
-        yield return new WaitForSeconds(1.5f);
-
-        // play win tune
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-
-        yield return new WaitForSeconds(2f);
-
-        // calculate and show stars
-        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
-    }
 
     private int CalculateStars()
     {

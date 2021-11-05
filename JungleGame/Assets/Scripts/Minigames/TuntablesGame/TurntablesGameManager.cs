@@ -6,8 +6,8 @@ public class TurntablesGameManager : MonoBehaviour
 {
     public static TurntablesGameManager instance;
 
-    private MapIconIdentfier mapID;
-
+    private MapIconIdentfier mapID = MapIconIdentfier.None;
+    
     public List<Door> doors;
     public List<Key> keys;
     public FrameIcon frameIcon;
@@ -89,13 +89,16 @@ public class TurntablesGameManager : MonoBehaviour
 
     void Update()
     {
-        // dev stuff for fx audio testing
+        // dev stuff for skipping minigame
         if (GameManager.instance.devModeActivated)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 StopAllCoroutines();
-                StartCoroutine(SkipToWinRoutine());
+                // play win tune
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // calculate and show stars
+                StarAwardController.instance.AwardStarsAndExit(3);
             }
         }
     }
@@ -125,7 +128,7 @@ public class TurntablesGameManager : MonoBehaviour
         globalWordPool = new List<ActionWordEnum>();
 
         // Create Global Coin List
-        if (mapID != null)
+        if (mapID != MapIconIdentfier.None)
         {
             print ("map ID");
             globalWordPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);

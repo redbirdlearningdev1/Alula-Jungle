@@ -77,7 +77,9 @@ public class StarAwardController : MonoBehaviour
         switch (GameManager.instance.mapID)
         {
             default:
-                GameManager.instance.SendLog(this, "No ID for game found - not awarding stars");
+                GameManager.instance.SendLog(this, "No ID for game found - not awarding stars nor coins");
+                // show window
+                StartCoroutine(AwardStarsRoutine(0, 0));
                 return;
 
             /* 

@@ -13,7 +13,7 @@ public class SeaShellGameManager : MonoBehaviour
 {
     public static SeaShellGameManager instance;
 
-    private MapIconIdentfier mapID;
+    private MapIconIdentfier mapID = MapIconIdentfier.None;
 
     public bool playTutorial = false;
 
@@ -55,6 +55,22 @@ public class SeaShellGameManager : MonoBehaviour
         AudioManager.instance.IncreaseSplitSong();
 
         StartCoroutine(PregameSetupRoutine());
+    }
+
+    void Update()
+    {
+        // dev stuff for skipping minigame
+        if (GameManager.instance.devModeActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StopAllCoroutines();
+                // play win tune
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // calculate and show stars
+                StarAwardController.instance.AwardStarsAndExit(3);
+            }
+        }
     }
 
 

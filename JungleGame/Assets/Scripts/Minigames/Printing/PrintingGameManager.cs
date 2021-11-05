@@ -44,6 +44,22 @@ public class PrintingGameManager : MonoBehaviour
         PregameSetup();
     }
 
+    void Update()
+    {
+        // dev stuff for skipping minigame
+        if (GameManager.instance.devModeActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StopAllCoroutines();
+                // play win tune
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // calculate and show stars
+                StarAwardController.instance.AwardStarsAndExit(3);
+            }
+        }
+    }
+
     private void PregameSetup()
     {
         // reset game parts

@@ -6,7 +6,7 @@ public class FroggerGameManager : MonoBehaviour
 {
     public static FroggerGameManager instance;
 
-    private MapIconIdentfier mapID;
+    private MapIconIdentfier mapID = MapIconIdentfier.None;
 
     [SerializeField] private GorillaController gorilla;
     [SerializeField] private Bag bag;
@@ -106,13 +106,16 @@ public class FroggerGameManager : MonoBehaviour
             StartCoroutine(DancingManRoutine());
         }
 
-        // dev stuff for fx audio testing
+        // dev stuff for skipping minigame
         if (GameManager.instance.devModeActivated)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 StopAllCoroutines();
-                StartCoroutine(SkipToWinRoutine());
+                // play win tune
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // calculate and show stars
+                StarAwardController.instance.AwardStarsAndExit(3);
             }
         }
     }
@@ -277,45 +280,6 @@ public class FroggerGameManager : MonoBehaviour
 
         gorilla.JumpForward(AudioDatabase.instance.GrassThump);
         yield return new WaitForSeconds(1.25f);
-        gorilla.CelebrateAnimation(10f);
-        taxi.CelebrateAnimation(10f);
-
-        // play win tune
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-
-        yield return new WaitForSeconds(2f);
-
-        // hide dancing man
-        StartCoroutine(HideDancingManRoutine());
-
-        // calculate and show stars
-        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
-    }
-
-    // This is a special fucntion that skips to the end of the game to win (DEV ONLY)
-    private IEnumerator SkipToWinRoutine()
-    {
-        while (currRow < 4)
-        {
-            StartCoroutine(HideCoins(currRow));
-            yield return new WaitForSeconds(0.5f);
-
-            rows[currRow].SinkAllExcept(1);
-            rows[currRow].MoveToCenterLog(1);
-            yield return new WaitForSeconds(0.5f);
-
-            gorilla.JumpForward(AudioDatabase.instance.WoodThump);
-            
-            currRow++;
-            if (currRow < 4)
-                rows[currRow].RiseAllLogs();
-            yield return new WaitForSeconds(0.5f);
-        }
-        yield return new WaitForSeconds(0.5f);
-
-        gorilla.JumpForward(AudioDatabase.instance.GrassThump);
-
-        yield return new WaitForSeconds(1.2f);
         gorilla.CelebrateAnimation(10f);
         taxi.CelebrateAnimation(10f);
 
