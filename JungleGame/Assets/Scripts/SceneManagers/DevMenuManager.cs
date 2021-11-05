@@ -277,7 +277,7 @@ public class DevMenuManager : MonoBehaviour
         studentData.mapData.OV_signPost_unlocked = true;
         studentData.mapData.OV_signPost_stars = 3;
 
-        // Spooky forest
+        // Spooky Forest
         studentData.mapData.SF_lamp.isFixed = true;
         studentData.mapData.SF_lamp.stars = 3;
 
@@ -597,12 +597,64 @@ public class DevMenuManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
                 break;
+            
+            case StoryBeat.BeginningStoryGame:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 5;
+                FixIconsUpTo(MapLocation.OrcVillage);
+                SetChallengeGamesUpTo(MapLocation.OrcVillage);
+                SetActionWordPool(MapLocation.SpookyForest);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
 
             case StoryBeat.SpookyForestPlayGames:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 5;
                 FixIconsUpTo(MapLocation.OrcVillage);
                 SetChallengeGamesUpTo(MapLocation.OrcVillage);
-                SetActionWordPool(MapLocation.OrcVillage);
+                SetActionWordPool(MapLocation.SpookyForest);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
+            case StoryBeat.SpookyForest_challengeGame_1:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 5;
+                FixIconsUpTo(MapLocation.SpookyForest);
+                SetChallengeGamesUpTo(MapLocation.OrcVillage);
+                SetActionWordPool(MapLocation.SpookyForest);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
+            case StoryBeat.SpookyForest_challengeGame_2:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 5;
+                FixIconsUpTo(MapLocation.SpookyForest);
+                SetChallengeGamesUpTo(MapLocation.OrcVillage);
+                SetChallengeGame(MapLocation.SpookyForest, 1);
+                SetActionWordPool(MapLocation.SpookyForest);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
+            case StoryBeat.SpookyForest_challengeGame_3:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 5;
+                FixIconsUpTo(MapLocation.SpookyForest);
+                SetChallengeGamesUpTo(MapLocation.OrcVillage);
+                SetChallengeGame(MapLocation.SpookyForest, 2);
+                SetActionWordPool(MapLocation.SpookyForest);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
+            case StoryBeat.SpookyForestDefeated:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 5;
+                FixIconsUpTo(MapLocation.SpookyForest);
+                SetChallengeGamesUpTo(MapLocation.SpookyForest);
+                SetActionWordPool(MapLocation.SpookyForest);
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
@@ -622,13 +674,24 @@ public class DevMenuManager : MonoBehaviour
     {
         StudentInfoSystem.GetCurrentProfile().actionWordPool.Clear();
 
-        if (location == MapLocation.GorillaVillage || location == MapLocation.Mudslide || location == MapLocation.OrcVillage)
+        // chapter 1 action words
+        if (location == MapLocation.GorillaVillage || location == MapLocation.Mudslide || location == MapLocation.OrcVillage ||
+            location == MapLocation.SpookyForest)
         {   
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.mudslide);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.listen);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.poop);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.orcs);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.think);
+        }
+        // chapter 2 action words
+        if (location == MapLocation.SpookyForest)
+        {
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.hello);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.spider);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.explorer);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.scared);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.thatguy);
         }
     }
 

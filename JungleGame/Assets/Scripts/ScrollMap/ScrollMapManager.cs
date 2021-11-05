@@ -321,6 +321,12 @@ public class ScrollMapManager : MonoBehaviour
             MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaSFPosDEFAULT.position;
             gorilla.FlipCharacterToRight();
         }
+        else if (playGameEvent == StoryBeat.BeginningStoryGame)
+        {
+            // place gorilla in SF
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaSFPosDEFAULT.position;
+            gorilla.FlipCharacterToRight();
+        }
         else if (playGameEvent == StoryBeat.SpookyForestPlayGames)
         {
             // place gorilla in SF
@@ -1535,6 +1541,19 @@ public class ScrollMapManager : MonoBehaviour
             StudentInfoSystem.SaveStudentPlayerData();
         }
         else if (playGameEvent == StoryBeat.SpookyForestUnlocked)
+        {
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.OrcVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
+
+            // darwin interactable
+            gorilla.ShowExclamationMark(true);
+            gorilla.interactable = true;
+        }
+        else if (playGameEvent == StoryBeat.BeginningStoryGame)
         {
             // map pos
             EnableMapSectionsUpTo(MapLocation.OrcVillage);

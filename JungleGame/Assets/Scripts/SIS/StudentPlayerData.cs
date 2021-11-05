@@ -90,10 +90,11 @@ public enum StoryBeat
     OrcVillageDefeated, // 20
 
     SpookyForestUnlocked, // 21
-    SpookyForestPlayGames, // 22
-    SpookyForest_challengeGame_1, // 23
-    SpookyForest_challengeGame_2, // 24
-    SpookyForest_challengeGame_3, // 25
+    BeginningStoryGame, // 22
+    SpookyForestPlayGames, // 23
+    SpookyForest_challengeGame_1, // 24
+    SpookyForest_challengeGame_2, // 25
+    SpookyForest_challengeGame_3, // 26
     SpookyForestDefeated,
 
     COUNT

@@ -295,11 +295,20 @@ public class StoryGameManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.poop);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.orcs);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.think);
-
-            // advance story beat
-            StudentInfoSystem.AdvanceStoryBeat();
-            StudentInfoSystem.SaveStudentPlayerData();
         }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.BeginningStoryGame)
+        {
+            // add action words to player's pool
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.hello);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.spider);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.explorer);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.scared);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.thatguy);
+        }
+
+        // advance story beat
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
         // return to scrollmap
         GameManager.instance.LoadScene("ScrollMap", true, 3f);
     }

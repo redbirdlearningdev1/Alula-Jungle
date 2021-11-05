@@ -288,19 +288,30 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
 
-                // enable spooky forest icons
-                ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.SpookyForest);
-                ScrollMapManager.instance.UpdateMapIcons();
-                ScrollMapManager.instance.RevealStarsAtCurrentLocation();
-
                 // save to SIS and exit to scroll map
                 StudentInfoSystem.AdvanceStoryBeat();
                 StudentInfoSystem.SaveStudentPlayerData();
 
                 // make darwin interactable
                 ScrollMapManager.instance.gorilla.interactable = true;
+                ScrollMapManager.instance.gorilla.ShowExclamationMark(true);
 
                 yield break;
+            }
+        }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.BeginningStoryGame)
+        {
+            // only continue if tapped on gorilla
+            if (character == Character.Darwin)
+            {
+                // set the story game
+                gameType = GameType.StoryGame;
+                GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[1];
+
+                // add pre story game talkie here
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.pre_darwin);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
             }
         }
 
