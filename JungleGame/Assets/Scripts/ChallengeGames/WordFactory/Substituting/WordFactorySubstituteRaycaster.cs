@@ -75,11 +75,11 @@ public class WordFactorySubstituteRaycaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("UniversalCoin"))
                     {
-                        WordFactorySubstitutingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
+                        WordFactorySubstitutingManager.instance.PlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
                     }
                     else if (result.gameObject.transform.CompareTag("WaterCoin"))
                     {
-                        WordFactorySubstitutingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
+                        WordFactorySubstitutingManager.instance.PlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
                         selectedObject = result.gameObject;
                     }
                     else if (result.gameObject.transform.CompareTag("Polaroid"))

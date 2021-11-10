@@ -85,12 +85,12 @@ public class WordFactoryBuildingRaycaster : MonoBehaviour
                     else if (result.gameObject.transform.CompareTag("UniversalCoin"))
                     {
                         // play audio
-                        WordFactoryBuildingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
+                        WordFactoryBuildingManager.instance.PlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
                     }
                     else if (result.gameObject.transform.CompareTag("WaterCoin"))
                     {
                         // play audio
-                        WordFactoryBuildingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
+                        WordFactoryBuildingManager.instance.PlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
 
                         // select object
                         selectedObject = result.gameObject;

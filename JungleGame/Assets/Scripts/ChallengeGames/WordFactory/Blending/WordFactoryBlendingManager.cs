@@ -201,12 +201,13 @@ public class WordFactoryBlendingManager : MonoBehaviour
             ElkoninValue value = currentWord.elkoninList[i];
             var coinObj = Instantiate(universalCoin, frames[i].position, Quaternion.identity, coinParent);
             var coin = coinObj.GetComponent<UniversalCoinImage>();
-            coin.ToggleVisibility(false, false);
-            coin.ToggleVisibility(true, true);
+            coin.transform.localScale = new Vector3(0f, 0f, 1f);
             coin.SetValue(currentWord.elkoninList[i]);
             coin.SetSize(normalCoinSize);
+            coin.ToggleVisibility(true, false);
+            coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
             currentCoins.Add(coin);
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.1f);
         }
 
         yield return new WaitForSeconds(0.5f);
@@ -227,7 +228,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
         // play audio in frame order
         for (int i = 0; i < currentWord.elkoninCount; i++)
         {
-            StartCoroutine(GlowAndPlayAudioCoinRoutine(currentCoins[i]));
+            StartCoroutine(PlayAudioCoinRoutine(currentCoins[i]));
             yield return new WaitForSeconds(1f);
         }
 
@@ -380,21 +381,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
         // play incorrect sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
-        yield return new WaitForSeconds(1f);
-
-        // re-do scales to show correct polaroid
-        foreach (Polaroid polaroid in polaroids)
-        {
-            if (polaroid.challengeWord == currentWord)
-            {
-                polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
-            }
-            else
-            {
-                polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(0.6f, 0.6f), 0.25f);
-            }
-        }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         // ####################
 
@@ -537,7 +524,6 @@ public class WordFactoryBlendingManager : MonoBehaviour
         // glow coins fast
         foreach (var coin in currentCoins)
         {
-            coin.ToggleGlowOutline(true);
             yield return new WaitForSeconds(0.05f);
         }
 
@@ -553,7 +539,17 @@ public class WordFactoryBlendingManager : MonoBehaviour
         foreach (Polaroid polaroid in polaroids)
         {
             if (polaroid != currentPolaroid)
-                polaroid.SetPolaroidAlpha(0.5f, 0.2f);
+                polaroid.SetPolaroidAlpha(0.5f, 0.5f);
+
+            // re-do scales to show correct polaroid
+            if (polaroid.challengeWord == currentWord)
+            {
+                polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
+            }
+            else
+            {
+                polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(0.6f, 0.6f), 0.25f);
+            }
         }
     }
 
@@ -595,29 +591,26 @@ public class WordFactoryBlendingManager : MonoBehaviour
         polaroids[2].ToggleGlowOutline(false);
     }
 
-    public void GlowAndPlayAudioCoin(UniversalCoinImage coin)
+    public void PlayAudioCoin(UniversalCoinImage coin)
     {
         if (playingCoinAudio)
             return;
 
         if (currentCoins.Contains(coin))
         {
-            StartCoroutine(GlowAndPlayAudioCoinRoutine(coin));
+            StartCoroutine(PlayAudioCoinRoutine(coin));
         }
     }
 
-    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoinImage coin)
+    private IEnumerator PlayAudioCoinRoutine(UniversalCoinImage coin)
     {
         playingCoinAudio = true;
 
-        // glow coin
-        coin.ToggleGlowOutline(true);
         AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(coin.value).audio);
         coin.LerpSize(expandedCoinSize, 0.25f);
 
         yield return new WaitForSeconds(1f);
         coin.LerpSize(normalCoinSize, 0.25f);
-        coin.ToggleGlowOutline(false);
 
         playingCoinAudio = false;
     }

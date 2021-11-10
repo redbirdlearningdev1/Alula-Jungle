@@ -31,8 +31,28 @@ public class WordFactoryBuildingManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
-
+        
+        // every scene must call this in Awake()
         GameManager.instance.SceneInit();
+
+        // stop music 
+        AudioManager.instance.StopMusic();
+    }
+
+    void Update()
+    {
+        // dev stuff for skipping minigame
+        if (GameManager.instance.devModeActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StopAllCoroutines();
+                // play win tune
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // calculate and show stars
+                StarAwardController.instance.AwardStarsAndExit(3);
+            }
+        }
     }
 
     void Start()
@@ -113,7 +133,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
         // say each letter + glow / grow coin
         foreach (var coin in currentCoins)
         {
-            GlowAndPlayAudioCoin(coin);
+            PlayAudioCoin(coin);
             yield return new WaitForSeconds(1f);
         }
         yield return new WaitForSeconds(0.5f);
@@ -369,29 +389,26 @@ public class WordFactoryBuildingManager : MonoBehaviour
         }
     }
 
-    public void GlowAndPlayAudioCoin(UniversalCoinImage coin)
+    public void PlayAudioCoin(UniversalCoinImage coin)
     {
         if (playingCoinAudio)
             return;
 
         if (currentCoins.Contains(coin) || WaterCoinsController.instance.waterCoins.Contains(coin))
         {
-            StartCoroutine(GlowAndPlayAudioCoinRoutine(coin));
+            StartCoroutine(PlayAudioCoinRoutine(coin));
         }
     }
 
-    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoinImage coin)
+    private IEnumerator PlayAudioCoinRoutine(UniversalCoinImage coin)
     {
         playingCoinAudio = true;
 
-        // glow coin
-        coin.ToggleGlowOutline(true);
         AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(coin.value).audio);
         coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
 
         yield return new WaitForSeconds(0.9f);
         coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
-        coin.ToggleGlowOutline(false);
 
         playingCoinAudio = false;
     }

@@ -80,7 +80,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
     public bool overrideWord;
     public SubstitutionPair testObject;
 
-    private void Start() 
+    void Awake()
     {
         if (instance == null)
             instance = this;
@@ -90,7 +90,10 @@ public class WordFactorySubstitutingManager : MonoBehaviour
 
         // stop music 
         AudioManager.instance.StopMusic();
+    }
 
+    private void Start() 
+    {
         PregameSetup();
     }
 
@@ -216,7 +219,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         // say polaroid elkonin audios
         foreach (var coin in currentCoins)
         {
-            GlowAndPlayAudioCoin(coin);
+            PlayAudioCoin(coin);
             yield return new WaitForSeconds(1f);
         }
         yield return new WaitForSeconds(1f);
@@ -224,7 +227,6 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         // say polaroid word
         foreach (var coin in currentCoins)
         {
-            coin.ToggleGlowOutline(true);
             coin.LerpSize(expandedCoinSize, 0.25f);
             yield return new WaitForSeconds(0.01f);
         }
@@ -237,7 +239,6 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         foreach (var coin in currentCoins)
         {
             coin.LerpSize(normalCoinSize, 0.25f);
-            coin.ToggleGlowOutline(false);
             yield return new WaitForSeconds(0.01f);
         }
 
@@ -428,7 +429,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         }
     }
 
-    public void GlowAndPlayAudioCoin(UniversalCoinImage coin)
+    public void PlayAudioCoin(UniversalCoinImage coin)
     {
         if (playingCoinAudio)
             return;
@@ -436,21 +437,19 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         // check lists
         if (currentCoins.Contains(coin))
         {
-            StartCoroutine(GlowAndPlayAudioCoinRoutine(coin));
+            StartCoroutine(PlayAudioCoinRoutine(coin));
         }
         // water coins
         else if (waterCoins.Contains(coin))
         {
-            StartCoroutine(GlowAndPlayAudioCoinRoutine(coin, true));
+            StartCoroutine(PlayAudioCoinRoutine(coin, true));
         }
     }
 
-    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoinImage coin, bool waterCoin = false)
+    private IEnumerator PlayAudioCoinRoutine(UniversalCoinImage coin, bool waterCoin = false)
     {
         playingCoinAudio = true;
 
-        // glow coin
-        coin.ToggleGlowOutline(true);
         AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(coin.value).audio);
         // water coin differential
         if (!waterCoin) coin.LerpSize(expandedCoinSize, 0.25f);
@@ -460,7 +459,6 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         // return if current water coin
         if (coin == currWaterCoin)
         {
-            coin.ToggleGlowOutline(false);
             playingCoinAudio = false;
             yield break;
         }
@@ -469,7 +467,6 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         if (!waterCoin) coin.LerpSize(normalCoinSize, 0.25f);
         else  coin.LerpSize(waterNormalCoinSize, 0.25f);
 
-        coin.ToggleGlowOutline(false);
 
         playingCoinAudio = false;
     }
