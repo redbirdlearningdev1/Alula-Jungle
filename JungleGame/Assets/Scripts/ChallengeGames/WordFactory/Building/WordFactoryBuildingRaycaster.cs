@@ -60,11 +60,7 @@ public class WordFactoryBuildingRaycaster : MonoBehaviour
 
             WaterCoinsController.instance.ReturnWaterCoins();
 
-            // stop wiggle empty frame
-            WordFactoryBuildingManager.instance.ToggleEmptyFrameWiggle(false);
-
-            // readd coin raycast
-            selectedObject.GetComponent<UniversalCoinImage>().ToggleRaycastTarget(true);
+            // read coin raycast
             selectedObject = null;
         }
 
@@ -82,8 +78,7 @@ public class WordFactoryBuildingRaycaster : MonoBehaviour
                     if (result.gameObject.transform.CompareTag("Polaroid"))
                     {
                         // play audio
-                        print (result.gameObject);
-                        print (result.gameObject.GetComponent<Polaroid>());
+                        result.gameObject.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.8f, 0.8f), new Vector2(1f, 1f), 0.1f, 0.1f);
                         StartCoroutine(PlayPolaroidAudio(result.gameObject.GetComponent<Polaroid>().challengeWord.audio));
                         return;
                     }
@@ -103,9 +98,6 @@ public class WordFactoryBuildingRaycaster : MonoBehaviour
 
                         // remove coin raycast
                         selectedObject.GetComponent<UniversalCoinImage>().ToggleRaycastTarget(false);
-
-                        // wiggle empty frame
-                        WordFactoryBuildingManager.instance.ToggleEmptyFrameWiggle(true);
                     }
                 }
             }

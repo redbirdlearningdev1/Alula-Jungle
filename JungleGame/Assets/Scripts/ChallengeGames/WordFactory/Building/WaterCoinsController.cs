@@ -14,6 +14,8 @@ public class WaterCoinsController : MonoBehaviour
     public HorizontalLayoutGroup activeCoinsGroup;
     public HorizontalLayoutGroup inactiveCoinsGroup;
 
+    public Transform waterCoinParent;
+
     public int numCoins;
 
     void Awake()
@@ -29,17 +31,30 @@ public class WaterCoinsController : MonoBehaviour
             if (waterCoins[i].gameObject.activeSelf && waterCoins[i] != WordFactoryBuildingManager.instance.currentCoin)
             {
                 waterCoins[i].GetComponent<LerpableObject>().LerpPosition(activeCoinPos[i].transform.position, 0.25f, false);
-                waterCoins[i].LerpSize(WordFactoryBuildingManager.instance.normalCoinSize, 0.2f);
+                waterCoins[i].GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
+                waterCoins[i].transform.SetParent(waterCoinParent);
+                waterCoins[i].GetComponent<UniversalCoinImage>().ToggleRaycastTarget(true);
             }
         }
     }
 
     public void ResetWaterCoins()
     {
+        StartCoroutine(ResetWaterCoinsRoutine());
+    }
+
+    private IEnumerator ResetWaterCoinsRoutine()
+    {
         for (int i = 0; i < 4; i++)
         {
-            waterCoins[i].GetComponent<LerpableObject>().LerpPosition(inactiveCoinPos[i].transform.position, 0.25f, false);
-            waterCoins[i].LerpSize(WordFactoryBuildingManager.instance.normalCoinSize, 0.2f);
+            Vector3 bouncePos = inactiveCoinPos[i].transform.position;
+            bouncePos.y += 0.5f;
+            waterCoins[i].GetComponent<LerpableObject>().LerpPosition(bouncePos, 0.2f, false);
+            yield return new WaitForSeconds(0.2f);
+            waterCoins[i].GetComponent<LerpableObject>().LerpPosition(inactiveCoinPos[i].transform.position, 0.1f, false);
+            waterCoins[i].GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
+            waterCoins[i].transform.SetParent(waterCoinParent);
+            waterCoins[i].GetComponent<UniversalCoinImage>().ToggleRaycastTarget(true);
         }
     }
 
@@ -104,8 +119,11 @@ public class WaterCoinsController : MonoBehaviour
     {
         for (int i = 0; i < numCoins; i++)
         {
-            waterCoins[i].GetComponent<LerpableObject>().LerpPosition(activeCoinPos[i].transform.position, 0.25f, false);
-            yield return new WaitForSeconds(0.1f);
+            Vector2 bouncePos = activeCoinPos[i].transform.position;
+            bouncePos.y += 0.5f;
+            waterCoins[i].GetComponent<LerpableObject>().LerpPosition(bouncePos, 0.2f, false);
+            yield return new WaitForSeconds(0.2f);
+            waterCoins[i].GetComponent<LerpableObject>().LerpPosition(activeCoinPos[i].transform.position, 0.2f, false);
         }
     }
 }

@@ -100,15 +100,15 @@ public class WordFactoryBuildingManager : MonoBehaviour
             ElkoninValue value = currentWord.elkoninList[i];
             var coinObj = Instantiate(universalCoinImage, VisibleFramesController.instance.frames[i].transform.position, Quaternion.identity, coinsParent);
             var coin = coinObj.GetComponent<UniversalCoinImage>();
-            coin.ToggleVisibility(false, false);
-            coin.ToggleVisibility(true, true);
+            coin.transform.localScale = new Vector3(0f, 0f, 1f);
             coin.SetValue(currentWord.elkoninList[i]);
             coin.SetSize(normalCoinSize);
+            coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
             currentCoins.Add(coin);
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.1f);
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         // say each letter + glow / grow coin
         foreach (var coin in currentCoins)
@@ -159,7 +159,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
 
-        // set tag for empty frame
+        // set tag for empty fram
         VisibleFramesController.instance.frames[currentPair.addIndex].tag = "CoinTarget";
         
         // create elkonin pool to choose water coins from
@@ -202,6 +202,8 @@ public class WordFactoryBuildingManager : MonoBehaviour
         // reveal water coins
         WaterCoinsController.instance.ShowWaterCoins();
 
+        // make frame wiggle
+        ToggleEmptyFrameWiggle(true);
 
         // turn on raycaster
         WordFactoryBuildingRaycaster.instance.isOn = true;
@@ -214,14 +216,14 @@ public class WordFactoryBuildingManager : MonoBehaviour
             return;
         evaluatingCoin = true;
 
+        // stop wiggle
+        ToggleEmptyFrameWiggle(false);
+
         // turn off raycaster
         WordFactoryBuildingRaycaster.instance.isOn = false;
         
         // return coins to position (except current coin)
         currentCoin = coin;
-
-        // print ("current coin value: " + currentCoin.value);
-        // print ("value looking for: " + currentPair.word1.elkoninList[currentPair.swipeIndex]);
 
         // win
         if (coin.value == currentPair.word2.elkoninList[currentPair.addIndex])
@@ -240,12 +242,13 @@ public class WordFactoryBuildingManager : MonoBehaviour
 
     private IEnumerator PostRound(bool win)
     {
+        // move current coin
+        currentCoin.GetComponent<LerpableObject>().LerpPosition(VisibleFramesController.instance.frames[currentPair.addIndex].transform.position, 0.25f, false);
+        yield return new WaitForSeconds(2f);
+
         // win round
         if (win)
         {
-            // move current coin
-            currentCoin.GetComponent<LerpableObject>().LerpPosition(VisibleFramesController.instance.frames[currentPair.addIndex].transform.position, 0.25f, false);
-
             // play correct sound
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
             yield return new WaitForSeconds(0.5f);
@@ -300,18 +303,18 @@ public class WordFactoryBuildingManager : MonoBehaviour
         WaterCoinsController.instance.ResetWaterCoins();
 
         // remove coins and frames
-        VisibleFramesController.instance.MoveFramesOffScreen();
+        VisibleFramesController.instance.RemoveFrames();
         foreach (var coin in currentCoins)
         {
-            coin.GetComponent<LerpableObject>().LerpPosition(new Vector2(coin.transform.position.x, coin.transform.position.y - 600f), 0.5f, false);
+            coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.2f, 0.2f);
         }
         yield return new WaitForSeconds(1f);
 
-        // remove coins
+        // remove word coins
         currentCoins.Remove(currentCoin);
         foreach (var coin in currentCoins)
         {
-            Destroy(coin.gameObject);
+            Destroy(coin);
         }
         currentCoins.Clear();
 
@@ -384,10 +387,10 @@ public class WordFactoryBuildingManager : MonoBehaviour
         // glow coin
         coin.ToggleGlowOutline(true);
         AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(coin.value).audio);
-        coin.LerpSize(expandedCoinSize, 0.25f);
+        coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
 
         yield return new WaitForSeconds(0.9f);
-        coin.LerpSize(normalCoinSize, 0.25f);
+        coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
         coin.ToggleGlowOutline(false);
 
         playingCoinAudio = false;

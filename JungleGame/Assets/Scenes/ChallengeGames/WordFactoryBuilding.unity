@@ -483,12 +483,12 @@ PrefabInstance:
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 180
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 210
+      value: 230
       objectReference: {fileID: 0}
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
@@ -783,12 +783,12 @@ PrefabInstance:
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 180
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 210
+      value: 230
       objectReference: {fileID: 0}
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
@@ -1871,12 +1871,12 @@ PrefabInstance:
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 180
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 210
+      value: 230
       objectReference: {fileID: 0}
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
@@ -2096,12 +2096,12 @@ PrefabInstance:
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 180
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 210
+      value: 230
       objectReference: {fileID: 0}
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
@@ -2348,6 +2348,7 @@ MonoBehaviour:
   - {fileID: 994659955}
   activeCoinsGroup: {fileID: 786275072}
   inactiveCoinsGroup: {fileID: 1255622511}
+  waterCoinParent: {fileID: 372027657}
   numCoins: 0
 --- !u!1 &643686899
 GameObject:
@@ -4319,6 +4320,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UniversalCoinImage
       objectReference: {fileID: 0}
+    - target: {fileID: 4576424004087786421, guid: c7e40a4389b3aea4591d46dac11754a0,
+        type: 3}
+      propertyPath: m_TagString
+      value: WaterCoin
+      objectReference: {fileID: 0}
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
       propertyPath: m_Pivot.x
@@ -4357,12 +4363,12 @@ PrefabInstance:
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 180
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 210
+      value: 230
       objectReference: {fileID: 0}
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
@@ -5294,7 +5300,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 41.289627
+      value: 42.431606
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -5718,12 +5724,12 @@ PrefabInstance:
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 180
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 210
+      value: 230
       objectReference: {fileID: 0}
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
@@ -6632,6 +6638,7 @@ GameObject:
   - component: {fileID: 8536610287690109944}
   - component: {fileID: 2214067723928426015}
   - component: {fileID: 3112401552660606052}
+  - component: {fileID: 3112401552660606053}
   m_Layer: 5
   m_Name: PolaroidObject
   m_TagString: Polaroid
@@ -6669,6 +6676,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3112401552660606053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3112401552660606051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458d3b50667b6a944abf0cc4cfece9d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &3112401552660606060
 CanvasRenderer:
   m_ObjectHideFlags: 0

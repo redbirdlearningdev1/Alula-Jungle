@@ -44,6 +44,10 @@ public class VisibleFramesController : MonoBehaviour
         // reset tags
         foreach(var frame in frames)
             frame.tag = "Untagged";
+
+        // reset tags
+        foreach(var frame in frames)
+            frame.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     public void PlaceActiveFrames(Vector2 pos)
@@ -132,18 +136,18 @@ public class VisibleFramesController : MonoBehaviour
         }
     }
 
-    public void MoveFramesOffScreen()
+    public void RemoveFrames()
     {
-        StartCoroutine(MoveFramesOffScreenRoutine());
+        StartCoroutine(RemoveFramesRoutine());
     }
 
-    private IEnumerator MoveFramesOffScreenRoutine()
+    private IEnumerator RemoveFramesRoutine()
     {
         foreach(var frame in frames)
         {
             if (frame.activeSelf)
             {
-                frame.GetComponent<LerpableObject>().LerpPosition(new Vector2(frame.transform.position.x, frame.transform.position.y - 550f), 0.5f, false);
+                frame.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.2f, 0.2f);
             }
         }
         yield return new WaitForSeconds(1f);

@@ -85,19 +85,27 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         if (instance == null)
             instance = this;
         
+        // every scene must call this in Awake()
         GameManager.instance.SceneInit();
+
+        // stop music 
+        AudioManager.instance.StopMusic();
 
         PregameSetup();
     }
 
     void Update()
     {
+        // dev stuff for skipping minigame
         if (GameManager.instance.devModeActivated)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 StopAllCoroutines();
-                StartCoroutine(WinRoutine());
+                // play win tune
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // calculate and show stars
+                StarAwardController.instance.AwardStarsAndExit(3);
             }
         }
     }

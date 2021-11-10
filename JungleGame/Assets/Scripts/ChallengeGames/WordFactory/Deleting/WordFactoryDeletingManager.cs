@@ -252,7 +252,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // remove coins and frames
-        VisibleFramesController.instance.MoveFramesOffScreen();
+        VisibleFramesController.instance.RemoveFrames();
         foreach (var coin in currentCoins)
         {
             coin.GetComponent<LerpableObject>().LerpPosition(new Vector2(coin.transform.position.x, coin.transform.position.y - 500f), 0.5f, false);
