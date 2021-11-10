@@ -10,6 +10,7 @@ public enum MapLocation
     Mudslide,
     OrcVillage,
     SpookyForest,
+    OrcCamp,
     COUNT
 }
 
@@ -332,6 +333,59 @@ public class ScrollMapManager : MonoBehaviour
             // place gorilla in SF
             MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaSFPosDEFAULT.position;
             gorilla.FlipCharacterToRight();
+        }
+        else if (playGameEvent == StoryBeat.SpookyForest_challengeGame_1)
+        {
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerSFChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusSFChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusSFChallengePos.position;
+        }
+        else if (playGameEvent == StoryBeat.SpookyForest_challengeGame_2)
+        {
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerSFChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusSFChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusSFChallengePos.position;
+
+            // make tiger sad
+            tiger.GetComponent<Animator>().Play("sTigerIdle");
+        }
+        else if (playGameEvent == StoryBeat.SpookyForest_challengeGame_3)
+        {
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerSFChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusSFChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusSFChallengePos.position;
+
+            // make tiger sad
+            tiger.GetComponent<Animator>().Play("sTigerIdle");
+            // make marcus sad (ANGRY) 
+            marcus.GetComponent<Animator>().Play("marcusFixed");
+        }
+        else if (playGameEvent == StoryBeat.SpookyForestDefeated)
+        {
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerSFChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusSFChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusSFChallengePos.position;
+
+            // make tiger sad
+            tiger.GetComponent<Animator>().Play("sTigerIdle");
+            // make marcus sad (ANGRY) 
+            marcus.GetComponent<Animator>().Play("marcusFixed");
+            // make brutus sad
+            brutus.GetComponent<Animator>().Play("brutusFixed");
+        }
+        else if (playGameEvent == StoryBeat.OrcCampUnlocked)
+        {
+            // place clogg in camp
+            clogg.transform.position = MapAnimationController.instance.cloggOCPosDEFAULT1.position;
+        }
+        else if (playGameEvent == StoryBeat.OrcCampPlayGames)
+        {
+            // place clogg in camp
+            clogg.transform.position = MapAnimationController.instance.cloggOCPosDEFAULT1.position;
         }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {
@@ -1869,12 +1923,12 @@ public class ScrollMapManager : MonoBehaviour
             // SF sign post springs into place
             mapIconsAtLocation[5].signPost.ShowSignPost(0, false);
 
-            // before unlocking orc camp - set objects to be repaired
+            // before unlocking orc camp - set objects to be destroyed
             foreach (var icon in mapIconsAtLocation[6].mapIcons)
-                icon.SetFixed(true, false, true);
+                icon.SetFixed(false, false, true);
 
             // place clogg in orc camp
-            clogg.transform.position = MapAnimationController.instance.cloggOCPosDEFAULT.position;
+            clogg.transform.position = MapAnimationController.instance.cloggOCPosDEFAULT1.position;
             clogg.ShowExclamationMark(true);
             clogg.interactable = false;
 
@@ -1890,6 +1944,31 @@ public class ScrollMapManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_unlocked = true;
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
+        }
+        else if (playGameEvent == StoryBeat.OrcCampUnlocked)
+        {
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.SpookyForest);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
+
+            // clogg is interactable
+            clogg.ShowExclamationMark(true);
+            clogg.interactable = true;
+        }
+        else if (playGameEvent == StoryBeat.OrcCampPlayGames)
+        {
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.OrcCamp);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
+
+            // clogg is interactable
+            clogg.interactable = true;
         }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {
@@ -1984,6 +2063,10 @@ public class ScrollMapManager : MonoBehaviour
                     case MapLocation.SpookyForest:
                         if (StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_unlocked)
                             mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_stars, GetMapLocationIcons(MapLocation.SpookyForest).enabled);
+                        break;
+                    case MapLocation.OrcCamp:
+                        if (StudentInfoSystem.GetCurrentProfile().mapData.OC_signPost_unlocked)
+                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.OC_signPost_stars, GetMapLocationIcons(MapLocation.OrcCamp).enabled);
                         break;
                     // etc ...
                 }
@@ -2174,6 +2257,8 @@ public class ScrollMapManager : MonoBehaviour
                 return MapLocation.OrcVillage;
             case 5:
                 return MapLocation.SpookyForest;
+            case 6:
+                return MapLocation.OrcCamp;
         }
     }
 
@@ -2360,7 +2445,6 @@ public class ScrollMapManager : MonoBehaviour
 
     private IEnumerator MapSmoothTransition(float start, float end, float transitionTime)
     {
-        //GameManager.instance.SetRaycastBlocker(true);
         float timer = 0f;
 
         Map.localPosition = new Vector3(start, staticMapYPos, 0f);
@@ -2372,8 +2456,6 @@ public class ScrollMapManager : MonoBehaviour
             yield return null;
         }
         Map.localPosition = new Vector3(end, staticMapYPos, 0f);
-
-        //GameManager.instance.SetRaycastBlocker(false);
     }
 
     /* 

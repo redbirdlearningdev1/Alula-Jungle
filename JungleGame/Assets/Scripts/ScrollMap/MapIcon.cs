@@ -58,6 +58,16 @@ public enum MapIconIdentfier
     SF_challenge_1,
     SF_challenge_2,
     SF_challenge_3,
+
+    // orc camp
+    OC_axe,
+    OC_bigTent,
+    OC_smallTent,
+    OC_fire,
+
+    OC_challenge_1,
+    OC_challenge_2,
+    OC_challenge_3,
 }
 
 public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
@@ -392,6 +402,20 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 case MapIconIdentfier.SF_web:
                     StudentInfoSystem.GetCurrentProfile().mapData.SF_web.isFixed = opt;
                     break;
+
+                // orc camp
+                case MapIconIdentfier.OC_axe:
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_axe.isFixed = opt;
+                    break;
+                case MapIconIdentfier.OC_bigTent:
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_bigTent.isFixed = opt;
+                    break;
+                case MapIconIdentfier.OC_smallTent:
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_smallTent.isFixed = opt;
+                    break;
+                case MapIconIdentfier.OC_fire:
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_fire.isFixed = opt;
+                    break;
             }
             StudentInfoSystem.SaveStudentPlayerData();
         }
@@ -519,6 +543,16 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 return StudentInfoSystem.GetCurrentProfile().mapData.SF_spider.stars;
             case MapIconIdentfier.SF_web:
                 return StudentInfoSystem.GetCurrentProfile().mapData.SF_web.stars;
+
+            // orc camp
+            case MapIconIdentfier.OC_axe:
+                return StudentInfoSystem.GetCurrentProfile().mapData.OC_axe.stars;
+            case MapIconIdentfier.OC_bigTent:
+                return StudentInfoSystem.GetCurrentProfile().mapData.OC_bigTent.stars;
+            case MapIconIdentfier.OC_smallTent:
+                return StudentInfoSystem.GetCurrentProfile().mapData.OC_smallTent.stars;
+            case MapIconIdentfier.OC_fire:
+                return StudentInfoSystem.GetCurrentProfile().mapData.OC_fire.stars;
         }   
     }
 }

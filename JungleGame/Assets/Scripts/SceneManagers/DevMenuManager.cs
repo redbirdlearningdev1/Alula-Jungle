@@ -42,8 +42,8 @@ public class DevMenuManager : MonoBehaviour
         };
 
     private string[] storyGames = new string[] {
-        "0 - Welcome",
-        "1 - The Prologue"
+        "1 - The Prologue",
+        "2 - The Beginning"
     };
 
     private List<StudentPlayerData> datas;                        
@@ -293,6 +293,22 @@ public class DevMenuManager : MonoBehaviour
         studentData.mapData.SF_signPost_unlocked = true;
         studentData.mapData.SF_signPost_stars = 3;
 
+        // Orc Camp
+        studentData.mapData.OC_axe.isFixed = true;
+        studentData.mapData.OC_axe.stars = 3;
+
+        studentData.mapData.OC_bigTent.isFixed = true;
+        studentData.mapData.OC_bigTent.stars = 3;
+
+        studentData.mapData.OC_smallTent.isFixed = true;
+        studentData.mapData.OC_smallTent.stars = 3;
+
+        studentData.mapData.OC_fire.isFixed = true;
+        studentData.mapData.OC_fire.stars = 3;
+
+        studentData.mapData.OC_signPost_unlocked = true;
+        studentData.mapData.OC_signPost_stars = 3;
+
         StudentInfoSystem.SaveStudentPlayerData();
     }
 
@@ -319,6 +335,18 @@ public class DevMenuManager : MonoBehaviour
         if (currMapLimit >= 4)
         {
             FixIconsUpTo(MapLocation.OrcVillage);
+        }
+
+        // orc village
+        if (currMapLimit >= 5)
+        {
+            FixIconsUpTo(MapLocation.SpookyForest);
+        }
+
+        // orc village
+        if (currMapLimit >= 6)
+        {
+            FixIconsUpTo(MapLocation.OrcCamp);
         }
 
         StudentInfoSystem.SaveStudentPlayerData();
@@ -662,6 +690,74 @@ public class DevMenuManager : MonoBehaviour
 
             /* 
             ################################################
+            #   ORC CAMP
+            ################################################
+            */
+
+            case StoryBeat.OrcCampUnlocked:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 6;
+                FixIconsUpTo(MapLocation.SpookyForest);
+                SetChallengeGamesUpTo(MapLocation.SpookyForest);
+                SetActionWordPool(MapLocation.OrcCamp);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+            
+            case StoryBeat.OrcCampPlayGames:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 6;
+                FixIconsUpTo(MapLocation.SpookyForest);
+                SetChallengeGamesUpTo(MapLocation.SpookyForest);
+                SetActionWordPool(MapLocation.OrcCamp);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
+            case StoryBeat.OrcCamp_challengeGame_1:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 6;
+                FixIconsUpTo(MapLocation.OrcCamp);
+                SetChallengeGamesUpTo(MapLocation.SpookyForest);
+                SetActionWordPool(MapLocation.OrcCamp);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
+            case StoryBeat.OrcCamp_challengeGame_2:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 6;
+                FixIconsUpTo(MapLocation.OrcCamp);
+                SetChallengeGamesUpTo(MapLocation.SpookyForest);
+                SetChallengeGame(MapLocation.OrcCamp, 1);
+                SetActionWordPool(MapLocation.OrcCamp);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
+            case StoryBeat.OrcCamp_challengeGame_3:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 6;
+                FixIconsUpTo(MapLocation.OrcCamp);
+                SetChallengeGamesUpTo(MapLocation.SpookyForest);
+                SetChallengeGame(MapLocation.OrcCamp, 2);
+                SetActionWordPool(MapLocation.OrcCamp);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
+            case StoryBeat.OrcCampDefeated:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = 6;
+                FixIconsUpTo(MapLocation.OrcCamp);
+                SetChallengeGamesUpTo(MapLocation.OrcCamp);
+                SetActionWordPool(MapLocation.OrcCamp);
+
+                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                break;
+
+            /* 
+            ################################################
             #   ETC...
             ################################################
             */
@@ -685,7 +781,7 @@ public class DevMenuManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.think);
         }
         // chapter 2 action words
-        if (location == MapLocation.SpookyForest)
+        if (location == MapLocation.SpookyForest || location == MapLocation.OrcCamp)
         {
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.hello);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.spider);
@@ -705,6 +801,7 @@ public class DevMenuManager : MonoBehaviour
                 SetMapIcons(MapLocation.Mudslide, false);
                 SetMapIcons(MapLocation.OrcVillage, false);
                 SetMapIcons(MapLocation.SpookyForest, false);
+                SetMapIcons(MapLocation.OrcCamp, false);
                 break;
 
             case MapLocation.GorillaVillage:
@@ -712,6 +809,7 @@ public class DevMenuManager : MonoBehaviour
                 SetMapIcons(MapLocation.Mudslide, false);
                 SetMapIcons(MapLocation.OrcVillage, false);
                 SetMapIcons(MapLocation.SpookyForest, false);
+                SetMapIcons(MapLocation.OrcCamp, false);
                 break;
 
             case MapLocation.Mudslide:
@@ -719,6 +817,7 @@ public class DevMenuManager : MonoBehaviour
                 SetMapIcons(MapLocation.Mudslide, true);
                 SetMapIcons(MapLocation.OrcVillage, false);
                 SetMapIcons(MapLocation.SpookyForest, false);
+                SetMapIcons(MapLocation.OrcCamp, false);
                 break;
             
             case MapLocation.OrcVillage:
@@ -726,6 +825,7 @@ public class DevMenuManager : MonoBehaviour
                 SetMapIcons(MapLocation.Mudslide, true);
                 SetMapIcons(MapLocation.OrcVillage, true);
                 SetMapIcons(MapLocation.SpookyForest, false);
+                SetMapIcons(MapLocation.OrcCamp, false);
                 break;
 
             case MapLocation.SpookyForest:
@@ -733,6 +833,15 @@ public class DevMenuManager : MonoBehaviour
                 SetMapIcons(MapLocation.Mudslide, true);
                 SetMapIcons(MapLocation.OrcVillage, true);
                 SetMapIcons(MapLocation.SpookyForest, true);
+                SetMapIcons(MapLocation.OrcCamp, false);
+                break;
+
+            case MapLocation.OrcCamp:
+                SetMapIcons(MapLocation.GorillaVillage, true);
+                SetMapIcons(MapLocation.Mudslide, true);
+                SetMapIcons(MapLocation.OrcVillage, true);
+                SetMapIcons(MapLocation.SpookyForest, true);
+                SetMapIcons(MapLocation.OrcCamp, true);
                 break;
             
         }
@@ -833,6 +942,29 @@ public class DevMenuManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().mapData.SF_web.isFixed = isFixed;
 
                 break;
+
+            case MapLocation.OrcCamp:
+                if (!isFixed)
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_axe.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_bigTent.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_smallTent.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_fire.stars = 0;
+                }
+                else
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_axe.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_bigTent.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_smallTent.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_fire.stars = 3;
+                }
+
+                StudentInfoSystem.GetCurrentProfile().mapData.OC_axe.isFixed = isFixed;
+                StudentInfoSystem.GetCurrentProfile().mapData.OC_bigTent.isFixed = isFixed;
+                StudentInfoSystem.GetCurrentProfile().mapData.OC_smallTent.isFixed = isFixed;
+                StudentInfoSystem.GetCurrentProfile().mapData.OC_fire.isFixed = isFixed;
+
+                break;
         }
     }
 
@@ -845,6 +977,7 @@ public class DevMenuManager : MonoBehaviour
                 SetChallengeGame(MapLocation.Mudslide, 0);
                 SetChallengeGame(MapLocation.OrcVillage, 0);
                 SetChallengeGame(MapLocation.SpookyForest, 0);
+                SetChallengeGame(MapLocation.OrcCamp, 0);
                 break;
 
             case MapLocation.GorillaVillage:
@@ -852,6 +985,7 @@ public class DevMenuManager : MonoBehaviour
                 SetChallengeGame(MapLocation.Mudslide, 0);
                 SetChallengeGame(MapLocation.OrcVillage, 0);
                 SetChallengeGame(MapLocation.SpookyForest, 0);
+                SetChallengeGame(MapLocation.OrcCamp, 0);
                 break;
 
             case MapLocation.Mudslide:
@@ -859,6 +993,7 @@ public class DevMenuManager : MonoBehaviour
                 SetChallengeGame(MapLocation.Mudslide, 3);
                 SetChallengeGame(MapLocation.OrcVillage, 0);
                 SetChallengeGame(MapLocation.SpookyForest, 0);
+                SetChallengeGame(MapLocation.OrcCamp, 0);
                 break;
             
             case MapLocation.OrcVillage:
@@ -866,6 +1001,7 @@ public class DevMenuManager : MonoBehaviour
                 SetChallengeGame(MapLocation.Mudslide, 3);
                 SetChallengeGame(MapLocation.OrcVillage, 3);
                 SetChallengeGame(MapLocation.SpookyForest, 0);
+                SetChallengeGame(MapLocation.OrcCamp, 0);
                 break;
 
             case MapLocation.SpookyForest:
@@ -873,6 +1009,15 @@ public class DevMenuManager : MonoBehaviour
                 SetChallengeGame(MapLocation.Mudslide, 3);
                 SetChallengeGame(MapLocation.OrcVillage, 3);
                 SetChallengeGame(MapLocation.SpookyForest, 3);
+                SetChallengeGame(MapLocation.OrcCamp, 0);
+                break;
+
+            case MapLocation.OrcCamp:
+                SetChallengeGame(MapLocation.GorillaVillage, 3);
+                SetChallengeGame(MapLocation.Mudslide, 3);
+                SetChallengeGame(MapLocation.OrcVillage, 3);
+                SetChallengeGame(MapLocation.SpookyForest, 3);
+                SetChallengeGame(MapLocation.OrcCamp, 3);
                 break;
         }
     }
@@ -1074,6 +1219,55 @@ public class DevMenuManager : MonoBehaviour
                 
                     StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_unlocked = true;
+                }
+                break;
+
+            case MapLocation.OrcCamp:
+                StudentInfoSystem.GetCurrentProfile().mapData.OC_signPost_stars = 0;
+                StudentInfoSystem.GetCurrentProfile().mapData.OC_signPost_unlocked = false;
+
+                if (num == 0)
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.stars = 0;
+
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.gameType = GameType.None;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.gameType = GameType.None;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.gameType = GameType.None;
+                }
+                else if (num == 1)
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.stars = 0;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.stars = 0;
+
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.OrcCamp);
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.gameType = GameType.None;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.gameType = GameType.None;
+                }
+                else if (num == 2)
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.stars = 0;
+
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.OrcCamp);
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.OrcCamp);
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.gameType = GameType.None;
+                }
+                else
+                {
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.stars = 3;
+
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.OrcCamp);
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.OrcCamp);
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.gameType = StudentInfoSystem.GetChallengeGameType(MapLocation.OrcCamp);
+                
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_signPost_stars = 3;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_signPost_unlocked = true;
                 }
                 break;
         }

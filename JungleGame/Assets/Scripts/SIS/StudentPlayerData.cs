@@ -95,7 +95,14 @@ public enum StoryBeat
     SpookyForest_challengeGame_1, // 24
     SpookyForest_challengeGame_2, // 25
     SpookyForest_challengeGame_3, // 26
-    SpookyForestDefeated,
+    SpookyForestDefeated, // 27
+
+    OrcCampUnlocked, // 28
+    OrcCampPlayGames, // 29
+    OrcCamp_challengeGame_1, // 24
+    OrcCamp_challengeGame_2, // 25
+    OrcCamp_challengeGame_3, // 26
+    OrcCampDefeated, // 27
 
     COUNT
 }
@@ -187,6 +194,19 @@ public class MapData
 
     public bool SF_signPost_unlocked;
     public int SF_signPost_stars;
+
+    // spooky forest
+    public MapIconData OC_axe;
+    public MapIconData OC_bigTent;
+    public MapIconData OC_smallTent;
+    public MapIconData OC_fire;
+
+    public ChallengeGameData OC_challenge1;
+    public ChallengeGameData OC_challenge2;
+    public ChallengeGameData OC_challenge3;
+
+    public bool OC_signPost_unlocked;
+    public int OC_signPost_stars;
 }
 
 /* 

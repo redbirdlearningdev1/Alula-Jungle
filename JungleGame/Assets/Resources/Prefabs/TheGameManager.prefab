@@ -6860,7 +6860,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -500.00006}
+  m_AnchoredPosition: {x: 0, y: -500}
   m_SizeDelta: {x: 1800, y: 150}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &3174749653948767468
@@ -14639,6 +14639,15 @@ MonoBehaviour:
     type: 2}
   spookyForestChallengeDefeated_3: {fileID: 11400000, guid: 8a446daf3897ad84aac5efd8ef5481e1,
     type: 2}
+  orcCampIntro_1: {fileID: 11400000, guid: 6ee7eaf666eebc14ea485fb3017decf3, type: 2}
+  orcCampRebuilt_1: {fileID: 11400000, guid: 8d4abd27922bc5c4abeffcd2480a6ec7, type: 2}
+  orcCampRebuilt_2: {fileID: 11400000, guid: 0fd01e7a88e5538439bf9f038958744b, type: 2}
+  orcCampChallengeDefeated_1: {fileID: 11400000, guid: f9a768ae03fcb7342915d5a4c00847d0,
+    type: 2}
+  orcCampChallengeDefeated_2: {fileID: 11400000, guid: 6a368cc28066f774e841a81959459079,
+    type: 2}
+  orcCampChallengeDefeated_3: {fileID: 11400000, guid: e8e62e813ea2b9647825da964f1549c4,
+    type: 2}
   darwinQuips: {fileID: 11400000, guid: 6c3e00e7101d0164a9d40ee842197259, type: 2}
   cloggQuips: {fileID: 11400000, guid: fbfecbbc46222024b8e54dba52c5f5f6, type: 2}
   redSprites:
@@ -17651,7 +17660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 500.00006}
+  m_AnchoredPosition: {x: 0, y: 500}
   m_SizeDelta: {x: 1800, y: 150}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &3476630059000522833
@@ -18046,7 +18055,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 55.220787, y: 0.005817631}
+  m_AnchoredPosition: {x: 55.269352, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

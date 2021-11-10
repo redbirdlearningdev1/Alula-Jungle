@@ -95,7 +95,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         }
         else if (character == Character.Clogg)
         {
-            if (StudentInfoSystem.GetCurrentProfile().currStoryBeat > StoryBeat.OrcVillageMeetClogg)
+            if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillageUnlocked ||
+                StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcCampPlayGames)
             {
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.cloggQuips);
                 yield break;
@@ -314,10 +315,40 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                     yield return null;
             }
         }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcCampUnlocked)
+        {
+            // only continue if tapped on clogg
+            if (character == Character.Clogg)
+            {
+                // remove exclamation mark
+                ScrollMapManager.instance.clogg.ShowExclamationMark(false);
+
+                // add orc camp intro
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcCampIntro_1);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // unlock orc camp
+                ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.OrcCamp);
+                ScrollMapManager.instance.UpdateMapIcons();
+                ScrollMapManager.instance.RevealStarsAtCurrentLocation();
+
+                // save to SIS and exit to scroll map
+                StudentInfoSystem.AdvanceStoryBeat();
+                StudentInfoSystem.SaveStudentPlayerData();
+                yield break;
+            }
+        }
+
+
+
+
+
 
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1 ||
                  StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Mudslide_challengeGame_1 ||
-                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_1)
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_1 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.SpookyForest_challengeGame_1)
         {
             if (character == Character.Julius)
             {
@@ -332,7 +363,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         }
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2 ||
                  StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Mudslide_challengeGame_2 ||
-                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_2)
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_2 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.SpookyForest_challengeGame_2)
         {
             if (character == Character.Marcus)
             {
@@ -347,7 +379,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         }
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3 ||
                  StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Mudslide_challengeGame_3 ||
-                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_3 )
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_3 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.SpookyForest_challengeGame_3)
         {
             if (character == Character.Brutus)
             {

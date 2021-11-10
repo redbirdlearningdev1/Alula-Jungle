@@ -29,7 +29,8 @@ public class MapAnimationController : MonoBehaviour
     public Transform cloggOVPosDEFAULT;
 
     [Header("Orc OC")]
-    public Transform cloggOCPosDEFAULT;
+    public Transform cloggOCPosDEFAULT1;
+    public Transform cloggOCPosDEFAULT2;
 
     /* 
     ################################################
@@ -54,10 +55,15 @@ public class MapAnimationController : MonoBehaviour
     public Transform tigerOVPosEND;
     public Transform tigerOVChallengePos;
 
-    [Header("Tiger OV")]
+    [Header("Tiger SF")]
     public Transform tigerSFPosSTART;
     public Transform tigerSFPosEND;
     public Transform tigerSFChallengePos;
+
+    [Header("Tiger OC")]
+    public Transform tigerOCPosSTART;
+    public Transform tigerOCPosEND;
+    public Transform tigerOCChallengePos;
 
     /* 
     ################################################
@@ -81,10 +87,15 @@ public class MapAnimationController : MonoBehaviour
     public Transform brutusOVPosEND;
     public Transform brutusOVChallengePos;
 
-    [Header("Brutus OV")]
+    [Header("Brutus SF")]
     public Transform brutusSFPosSTART;
     public Transform brutusSFPosEND;
     public Transform brutusSFChallengePos;
+
+    [Header("Brutus OC")]
+    public Transform brutusOCPosSTART;
+    public Transform brutusOCPosEND;
+    public Transform brutusOCChallengePos;
 
     /* 
     ################################################
@@ -108,10 +119,15 @@ public class MapAnimationController : MonoBehaviour
     public Transform marcusOVPosEND;
     public Transform marcusOVChallengePos;
 
-    [Header("Marcus OV")]
+    [Header("Marcus SF")]
     public Transform marcusSFPosSTART;
     public Transform marcusSFPosEND;
     public Transform marcusSFChallengePos;
+
+    [Header("Marcus OC")]
+    public Transform marcusOCPosSTART;
+    public Transform marcusOCPosEND;
+    public Transform marcusOCChallengePos;
 
 
     void Awake()
@@ -157,6 +173,12 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
         }
     }
+
+    /* 
+    ################################################
+    #    ORC CAMP ANIMATIONS
+    ################################################
+    */
 
     /* 
     ################################################
