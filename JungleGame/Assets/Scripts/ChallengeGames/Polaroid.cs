@@ -90,19 +90,35 @@ public class Polaroid : MonoBehaviour
         }
     }
 
-    public void SetLayer(int layer)
+    public void HideImage(float lerpAlphaDuration)
     {
-        // background.sortingOrder = layer;
-        // picture.sortingOrder = layer + 1;
+        pictureImg.GetComponent<LerpableObject>().LerpImageAlpha(pictureImg, 0f, lerpAlphaDuration);
+    }
+
+    public void RevealImage(float lerpAlphaDuration)
+    {
+        pictureImg.GetComponent<LerpableObject>().LerpImageAlpha(pictureImg, 1f, lerpAlphaDuration);
     }
 
     public void ToggleGlowOutline(bool opt)
     {
-        // background.GetComponent<GlowOutlineController>().ToggleGlowOutline(opt);
+        if (opt)
+            ImageGlowController.instance.SetImageGlow(backgroundImg, true, GlowValue.glow_1_025);
+        else
+            ImageGlowController.instance.SetImageGlow(backgroundImg, false);
     }
 
-    public void SetGlowColor(Color color)
+    public void SetPolaroidAlpha(float alpha, float lerpDuration)
     {
-        // background.GetComponent<GlowOutlineController>().SetColor(color);
+        backgroundImg.GetComponent<LerpableObject>().LerpImageAlpha(backgroundImg, alpha, lerpDuration);
+        pictureImg.GetComponent<LerpableObject>().LerpImageAlpha(pictureImg, alpha, lerpDuration);
+    }
+
+    public void ToggleWiggle(bool opt)
+    {
+        if (opt)
+            GetComponent<WiggleController>().StartWiggle();
+        else
+            GetComponent<WiggleController>().StopWiggle();
     }
 }

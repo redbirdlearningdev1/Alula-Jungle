@@ -12,8 +12,7 @@ public class WordFactoryRaycaster : MonoBehaviour
 
     private GameObject selectedObject = null;
     [SerializeField] private Transform selectedObjectParent;
-    [SerializeField] private Transform frontSprite;
-    public float lerpedScale;
+    public LerpableObject polaroidTarget;
 
     private bool polaroidAudioPlaying = false;
     
@@ -47,26 +46,32 @@ public class WordFactoryRaycaster : MonoBehaviour
             var raycastResults = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointerEventData, raycastResults);
 
-            bool isCorrect = false;
+            bool hitTarget = false;
             if(raycastResults.Count > 0)
             {
                 foreach(var result in raycastResults)
                 {
                     if (result.gameObject.transform.CompareTag("PolaroidTarget"))
                     {
-                        isCorrect = WordFactoryBlendingManager.instance.EvaluatePolaroid(selectedObject.GetComponent<Polaroid>());
+                        WordFactoryBlendingManager.instance.EvaluatePolaroid(selectedObject.GetComponent<Polaroid>());
+                        hitTarget = true;
                     }
                 }
             }
 
+            // start polaroid wiggle if didnt hit target
+            if (!hitTarget)
+            {
+                WordFactoryBlendingManager.instance.TogglePolaroidsWiggle(true);
+            }
+                
+            // reset polaroid target
+            polaroidTarget.LerpScale(new Vector2(1f, 1f), 0.2f);
+            polaroidTarget.GetComponent<WiggleController>().StopWiggle();
+
             // return polaroids to appropriate pos
             WordFactoryBlendingManager.instance.ResetPolaroids();
             selectedObject = null;
-
-            // un-toggle glow lines
-            // glowLineTop.ToggleGlow(false);
-            // glowLineBottom.ToggleGlow(false);
-            frontSprite.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -85,11 +90,13 @@ public class WordFactoryRaycaster : MonoBehaviour
                         selectedObject = result.gameObject;
                         selectedObject.gameObject.transform.SetParent(selectedObjectParent);
                         selectedObject.GetComponent<Polaroid>().LerpScale(1.25f, 0.1f);
-                        selectedObject.GetComponent<Polaroid>().SetLayer(6);
                         // play audio
                         StartCoroutine(PlayPolaroidAudio(selectedObject.GetComponent<Polaroid>().challengeWord.audio));
-                        frontSprite.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, lerpedScale), 0.1f);
-
+                        // scale and wiggle polaroid target
+                        polaroidTarget.LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
+                        polaroidTarget.GetComponent<WiggleController>().StartWiggle();
+                        // stop polaroid wiggle
+                        WordFactoryBlendingManager.instance.TogglePolaroidsWiggle(false);
                         return;
                     }
                     else if (result.gameObject.transform.CompareTag("UniversalCoin"))

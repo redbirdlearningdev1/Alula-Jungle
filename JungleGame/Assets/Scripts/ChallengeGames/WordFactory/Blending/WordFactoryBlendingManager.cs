@@ -68,20 +68,27 @@ public class WordFactoryBlendingManager : MonoBehaviour
         if (instance == null)
             instance = this;
         
+        // every scene must call this in Awake()
         GameManager.instance.SceneInit();
+
+        // stop music 
+        AudioManager.instance.StopMusic();
 
         PregameSetup();
     }
 
     void Update()
     {
+        // dev stuff for skipping minigame
         if (GameManager.instance.devModeActivated)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 StopAllCoroutines();
-                RaycastBlockerController.instance.ClearAllRaycastBlockers();
-                StartCoroutine(WinGameRoutine());
+                // play win tune
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // calculate and show stars
+                StarAwardController.instance.AwardStarsAndExit(3);
             }
         }
     }
@@ -117,16 +124,12 @@ public class WordFactoryBlendingManager : MonoBehaviour
         RaycastBlockerController.instance.CreateRaycastBlocker("WordFactoryBlending");
         WordFactoryRaycaster.instance.isOn = false;
 
-        // place polaroids in start pos
+        // place polaroids in start pos + reset alphas
         foreach (var pol in polaroids)
         {
             pol.gameObject.transform.position = polaroidStartPos.position;
+            pol.SetPolaroidAlpha(1f, 0f);
         }
-
-        // set correct layer
-        polaroids[0].SetLayer(4);
-        polaroids[1].SetLayer(0);
-        polaroids[2].SetLayer(2);
 
         // set frames to be invisible
         frameGroup.spacing = frameSpacing[0];
@@ -169,8 +172,9 @@ public class WordFactoryBlendingManager : MonoBehaviour
         }
 
         // show polaroids
+        yield return new WaitForSeconds(1f);
         StartCoroutine(ShowPolaroids());
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(3f);
 
         // deactivate unneeded frames
         int unneededFrames = 6 - currentWord.elkoninCount;
@@ -209,6 +213,15 @@ public class WordFactoryBlendingManager : MonoBehaviour
         StartCoroutine(StartRound());
     }
 
+    public void TogglePolaroidsWiggle(bool opt)
+    {
+        // wiggle polaroids
+        foreach(Polaroid polaroid in polaroids)
+        {
+            polaroid.ToggleWiggle(opt);
+        }
+    }
+
     private IEnumerator StartRound()
     {
         // play audio in frame order
@@ -217,6 +230,8 @@ public class WordFactoryBlendingManager : MonoBehaviour
             StartCoroutine(GlowAndPlayAudioCoinRoutine(currentCoins[i]));
             yield return new WaitForSeconds(1f);
         }
+
+        TogglePolaroidsWiggle(true);
 
         // remove raycast blocker
         RaycastBlockerController.instance.RemoveRaycastBlocker("WordFactoryBlending");
@@ -251,6 +266,8 @@ public class WordFactoryBlendingManager : MonoBehaviour
     {
         WordFactoryRaycaster.instance.isOn = false;
 
+        StartCoroutine(SelectedPolaroid(polaroid));
+
         if (polaroid.challengeWord == currentWord)
         {
             numWins++;
@@ -264,11 +281,31 @@ public class WordFactoryBlendingManager : MonoBehaviour
         return false;
     }
 
+    private IEnumerator SelectedPolaroid(Polaroid polaroid)
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        // select polaroid
+        foreach (Polaroid pol in polaroids)
+        {
+            if (pol.challengeWord == polaroid.challengeWord)
+            {
+                pol.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.3f);
+            }
+            else
+            {
+                pol.GetComponent<LerpableObject>().LerpScale(new Vector2(0.6f, 0.6f), 0.3f);
+            }
+        }
+    }
+
     private IEnumerator CorrectPolaroidRoutine()
     {
+        yield return new WaitForSeconds(2f);
+        
         // reveal the correct polaroid
         StartCoroutine(PolaroidRevealRoutine());
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         // play correct sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
@@ -335,12 +372,29 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
     private IEnumerator FailPolaroidRoutine()
     {
+        yield return new WaitForSeconds(2f);
+
         // reveal the correct polaroid
         StartCoroutine(PolaroidRevealRoutine());
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         // play incorrect sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
+        yield return new WaitForSeconds(1f);
+
+        // re-do scales to show correct polaroid
+        foreach (Polaroid polaroid in polaroids)
+        {
+            if (polaroid.challengeWord == currentWord)
+            {
+                polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
+            }
+            else
+            {
+                polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(0.6f, 0.6f), 0.25f);
+            }
+        }
+        yield return new WaitForSeconds(1f);
 
         // ####################
 
@@ -476,8 +530,6 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
     private IEnumerator PolaroidRevealRoutine()
     {
-        yield return new WaitForSeconds(1f);
-
         // read word aloud to player
         if (currentWord.audio != null)
             AudioManager.instance.PlayTalk(currentWord.audio);
@@ -497,11 +549,11 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
         // reveal correct polaroid 
         currentPolaroid.ToggleGlowOutline(true);
-        currentPolaroid.LerpScale(1.15f, 0.25f);
-        foreach (var polaroid in polaroids)
+        // make other polaroids transparent
+        foreach (Polaroid polaroid in polaroids)
         {
-            if (!currentPolaroid.Equals(polaroid))
-                polaroid.LerpScale(0.6f, 0.25f);
+            if (polaroid != currentPolaroid)
+                polaroid.SetPolaroidAlpha(0.5f, 0.2f);
         }
     }
 
@@ -537,20 +589,10 @@ public class WordFactoryBlendingManager : MonoBehaviour
         polaroids[1].transform.SetParent(polaroidParent);
         polaroids[2].transform.SetParent(polaroidParent);
 
-        // set correct layer
-        polaroids[0].SetLayer(4);
-        polaroids[1].SetLayer(0);
-        polaroids[2].SetLayer(2);
-
         // remove glow
         polaroids[0].ToggleGlowOutline(false);
         polaroids[1].ToggleGlowOutline(false);
         polaroids[2].ToggleGlowOutline(false);
-
-        // reset glow color
-        polaroids[0].SetGlowColor(normalGlow);
-        polaroids[1].SetGlowColor(normalGlow);
-        polaroids[2].SetGlowColor(normalGlow);
     }
 
     public void GlowAndPlayAudioCoin(UniversalCoinImage coin)
@@ -619,19 +661,46 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
     private IEnumerator ShowPolaroids()
     {   
-        // short 0.5s delay
-        yield return new WaitForSeconds(0.5f);
-
-        // move polaroids down
+        // hide polaroid images
         foreach (var polaroid in polaroids)
         {
-            polaroid.MovePolaroid(polaroidLandPos.position, 0.5f);
+            polaroid.HideImage(0f);
+        }
+
+        // short 0.5s delay
+        yield return new WaitForSeconds(0.5f);
+        
+        Vector3 bouncePos = polaroidLandPos.position;
+        bouncePos.y -= 0.5f;
+        // move polaroids down  
+        foreach (var polaroid in polaroids)
+        {
+            polaroid.MovePolaroid(bouncePos, 0.3f);
+        }
+        yield return new WaitForSeconds(0.3f);
+        // move polaroids down  
+        foreach (var polaroid in polaroids)
+        {
+            polaroid.MovePolaroid(polaroidLandPos.position, 0.2f);
         }
 
         yield return new WaitForSeconds(0.5f);
 
         // move each polaroid to their respective spot
         polaroids[0].MovePolaroid(polaroid0Pos.position, 0.5f);
+        yield return new WaitForSeconds(0.15f);
         polaroids[2].MovePolaroid(polaroid2Pos.position, 0.5f);
+        yield return new WaitForSeconds(0.8f);
+
+        // reveal polaroid images
+        foreach (var polaroid in polaroids)
+        {
+            polaroid.RevealImage(0.25f);
+        }
+        // scale polaroids when revealing images
+        foreach (var polaroid in polaroids)
+        {
+            polaroid.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
+        }
     }
 }

@@ -164,7 +164,10 @@ public class UniversalCoinImage : MonoBehaviour
 
     public void ToggleGlowOutline(bool opt)
     {
-        ImageGlowController.instance.SetImageGlow(currImage, opt);
+        if (opt)
+            ImageGlowController.instance.SetImageGlow(currImage, true, GlowValue.glow_1_00);
+        else
+            ImageGlowController.instance.SetImageGlow(currImage, false);
     }
 
     /* 

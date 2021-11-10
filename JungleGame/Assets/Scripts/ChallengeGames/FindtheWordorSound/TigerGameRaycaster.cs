@@ -54,7 +54,7 @@ public class TigerGameRaycaster : MonoBehaviour
             }
 
             TigerGameManager.instance.returnToPos(selectedObject);
-            currentPolaroid.GetComponent<Polaroid>().SetLayer(0);
+            //currentPolaroid.GetComponent<Polaroid>().SetLayer(0);
             selectedObject = null;
         }
 
@@ -79,7 +79,7 @@ public class TigerGameRaycaster : MonoBehaviour
                         selectedObject.gameObject.transform.SetParent(selectedObjectParent);
                         currentPolaroid = result.gameObject.transform;
                         // set upper layer
-                        currentPolaroid.GetComponent<Polaroid>().SetLayer(2);
+                        //currentPolaroid.GetComponent<Polaroid>().SetLayer(2);
                         // play audio
                         StartCoroutine(PlayPolaroidAudio(currentPolaroid.GetComponent<Polaroid>().challengeWord.audio));
                     }
