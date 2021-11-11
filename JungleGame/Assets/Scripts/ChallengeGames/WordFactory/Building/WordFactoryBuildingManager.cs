@@ -57,14 +57,18 @@ public class WordFactoryBuildingManager : MonoBehaviour
 
     void Start()
     {
+        // turn on settings button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+
+        // add ambiance
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.05f);
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 0.05f);
+
         PregameSetup();
     }
 
     private void PregameSetup()
     {
-        // remove UI button
-        SettingsManager.instance.ToggleWagonButtonActive(false);
-
         // set emerald head to be closed
         EmeraldHead.instance.animator.Play("PolaroidEatten");
 
@@ -84,6 +88,10 @@ public class WordFactoryBuildingManager : MonoBehaviour
         currentPair = GameManager.instance.buildingPairs[Random.Range(0, GameManager.instance.buildingPairs.Count)];
 
         // init game delay
+        yield return new WaitForSeconds(1f);
+
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.EmeraldSlide, 0.25f);
         yield return new WaitForSeconds(0.5f);
 
         // open emerald head
@@ -97,8 +105,21 @@ public class WordFactoryBuildingManager : MonoBehaviour
 
         // play start animations
         TigerController.instance.tigerAnim.Play("TigerSwipe");
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SmallWhoosh, 0.5f);
         yield return new WaitForSeconds(0.25f);
         EmeraldHead.instance.animator.Play("EnterPolaroid");
+        yield return new WaitForSeconds(0.25f);
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.GlassDink1, 0.5f);
+        yield return new WaitForSeconds(0.25f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.GlassDink2, 0.5f, "glass_dink", 1.5f);
+        yield return new WaitForSeconds(0.25f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.GlassDink1, 0.5f, "glass_dink", 1.2f);
+        yield return new WaitForSeconds(0.25f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.GlassDink2, 0.5f, "glass_dink", 0.8f);
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.EmeraldSlideShort, 0.25f);
 
         // set invisible frames
         InvisibleFrameLayout.instance.SetNumberOfFrames(currentWord.elkoninCount);
@@ -108,6 +129,8 @@ public class WordFactoryBuildingManager : MonoBehaviour
         // throw out real frames
         VisibleFramesController.instance.PlaceActiveFrames(polaroid.transform.localPosition);
         VisibleFramesController.instance.MoveFramesToInvisibleFrames();
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MagicReveal, 0.1f);
         yield return new WaitForSeconds(1f);
 
         // show challenge word coins
@@ -125,6 +148,8 @@ public class WordFactoryBuildingManager : MonoBehaviour
             coin.SetSize(normalCoinSize);
             coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
             currentCoins.Add(coin);
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", (1f + 0.25f * i));
             yield return new WaitForSeconds(0.1f);
         }
 
@@ -141,6 +166,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
 
         // say challenge word
         AudioManager.instance.PlayTalk(currentWord.audio);
+        polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
         foreach (var coin in currentCoins)
         {
             coin.LerpSize(expandedCoinSize, 0.25f);
@@ -152,16 +178,25 @@ public class WordFactoryBuildingManager : MonoBehaviour
             coin.LerpSize(normalCoinSize, 0.25f);
             yield return new WaitForSeconds(0.1f);
         }
+        yield return new WaitForSeconds(0.25f);
+        polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
 
         // transform polaroid
         // squish polaroid
         EmeraldHead.instance.animator.Play("SquishPolaroid");
-        yield return new WaitForSeconds(1.5f);
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.EmeraldSlideShort, 0.25f);
+        yield return new WaitForSeconds(0.25f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PolaroidCrunch, 0.5f);
+        yield return new WaitForSeconds(1.25f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PolaroidUnravel, 0.5f);
+        yield return new WaitForSeconds(0.5f);
 
         polaroid.SetPolaroid(currentPair.word2);
 
         // unsquish polaroid 
         EmeraldHead.instance.animator.Play("UnsquishPolaroid");
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.EmeraldSlideShort, 0.5f);
         yield return new WaitForSeconds(1.5f);
 
         // add extra frame
@@ -177,9 +212,9 @@ public class WordFactoryBuildingManager : MonoBehaviour
             }
             count++;
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
-        // set tag for empty fram
+        // set tag for empty frame
         VisibleFramesController.instance.frames[currentPair.addIndex].tag = "CoinTarget";
         
         // create elkonin pool to choose water coins from
@@ -221,6 +256,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
         
         // reveal water coins
         WaterCoinsController.instance.ShowWaterCoins();
+        yield return new WaitForSeconds(1f);
 
         // make frame wiggle
         ToggleEmptyFrameWiggle(true);
@@ -235,6 +271,9 @@ public class WordFactoryBuildingManager : MonoBehaviour
         if (evaluatingCoin)
             return;
         evaluatingCoin = true;
+
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SelectBoop, 0.5f);
 
         // stop wiggle
         ToggleEmptyFrameWiggle(false);
@@ -306,16 +345,23 @@ public class WordFactoryBuildingManager : MonoBehaviour
 
         // eat the polaroid
         EmeraldHead.instance.animator.Play("EatPolaroid");
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.EmeraldSlideShort, 0.25f);
+        yield return new WaitForSeconds(0.25f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PolaroidCrunch, 0.5f);
         yield return new WaitForSeconds(1.5f);
 
         // award card to correct person
         if (win)
         {
             WinCardsController.instance.AddPolaroid();
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.HappyBlip, 0.5f);
         }
         else
         {
             TigerController.instance.AddTigerPolaroid();
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SadBlip, 0.5f);
         }
         yield return new WaitForSeconds(1f);
 

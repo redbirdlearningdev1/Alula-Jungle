@@ -58,6 +58,9 @@ public class WordFactoryBuildingRaycaster : MonoBehaviour
                 }
             }
 
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f);
+
             WaterCoinsController.instance.ReturnWaterCoins();
 
             // read coin raycast
@@ -95,6 +98,8 @@ public class WordFactoryBuildingRaycaster : MonoBehaviour
                         // select object
                         selectedObject = result.gameObject;
                         selectedObject.gameObject.transform.SetParent(selectedObjectParent);
+                        // audio fx
+                        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 1.2f);
 
                         // remove coin raycast
                         selectedObject.GetComponent<UniversalCoinImage>().ToggleRaycastTarget(false);

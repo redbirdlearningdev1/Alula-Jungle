@@ -3796,6 +3796,26 @@ MonoBehaviour:
   WebBoing: {fileID: 8300000, guid: 9b82e0781aede6f41bb18e1e762415be, type: 3}
   WebSwoop: {fileID: 8300000, guid: 23686943b70118648a1b014a1613ff40, type: 3}
   WebWhip: {fileID: 8300000, guid: 59ebe55ed3942864c8a8aff45d4ed79d, type: 3}
+  BoxSlide: {fileID: 8300000, guid: d2920e6cfb963834ab14286ed6bac66e, type: 3}
+  CameraClick: {fileID: 8300000, guid: a45d75cce5f106f4aa47648e386bd308, type: 3}
+  CoinDink: {fileID: 8300000, guid: 79e7508441b8a744c9c698ea7f4cae6a, type: 3}
+  CoinRattle: {fileID: 8300000, guid: 54273b41d5c216348afad574ca58ee63, type: 3}
+  EmeraldSlide: {fileID: 8300000, guid: e6cb4a28f749db14b8549ee4c376c5b1, type: 3}
+  EmeraldSlideShort: {fileID: 8300000, guid: 39966aff3663b17459c19785094cd85e, type: 3}
+  GlassDink1: {fileID: 8300000, guid: ed61a8e7a0f977147ab7784b345b7a16, type: 3}
+  GlassDink2: {fileID: 8300000, guid: a806e55b3cf424542a215c0d93cba6f4, type: 3}
+  LeaveWater: {fileID: 8300000, guid: ddae3a2fd46784f48abfbb8f84f1bf0e, type: 3}
+  MagicReveal: {fileID: 8300000, guid: b755f2b2695fd7e46adb73cb97472a59, type: 3}
+  MedWhoosh: {fileID: 8300000, guid: feb9db88dc1e25640b7d843930b6acdd, type: 3}
+  PanDown: {fileID: 8300000, guid: 6ce93f570a8341a4291c30917e0d27a2, type: 3}
+  PanUp: {fileID: 8300000, guid: dafbdc17767944f4ba8544a8bb33f0ec, type: 3}
+  PolaroidCrunch: {fileID: 8300000, guid: eda9f3c308afb544a9deb5efc16fec55, type: 3}
+  PolaroidFall: {fileID: 8300000, guid: a92e280fa30a3e745a943eaa9e19f61d, type: 3}
+  PolaroidRattle: {fileID: 8300000, guid: fc69a0f3cf7b6644a9a206471aa6a7ba, type: 3}
+  PolaroidUnravel: {fileID: 8300000, guid: 6503559b28902ca49bb5e77c32caf682, type: 3}
+  SelectBoop: {fileID: 8300000, guid: 77263b02752e6f0429a2a539fea18f2a, type: 3}
+  SmallWhoosh: {fileID: 8300000, guid: 1709549a0da4c904297f41ed82a64909, type: 3}
+  TigerSwipe: {fileID: 8300000, guid: 616fb9d834f8b4748995d0621c827c19, type: 3}
 --- !u!1 &1810638161
 GameObject:
   m_ObjectHideFlags: 0
@@ -18055,7 +18075,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 55.269352, y: 0.005817631}
+  m_AnchoredPosition: {x: 55.40359, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

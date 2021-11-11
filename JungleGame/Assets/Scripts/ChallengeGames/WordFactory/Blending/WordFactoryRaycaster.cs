@@ -63,6 +63,13 @@ public class WordFactoryRaycaster : MonoBehaviour
             if (!hitTarget)
             {
                 WordFactoryBlendingManager.instance.TogglePolaroidsWiggle(true);
+                // audio fx
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 0.5f);
+            }
+            else
+            {
+                // audio fx
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SelectBoop, 0.5f);
             }
                 
             // reset polaroid target
@@ -97,6 +104,8 @@ public class WordFactoryRaycaster : MonoBehaviour
                         polaroidTarget.GetComponent<WiggleController>().StartWiggle();
                         // stop polaroid wiggle
                         WordFactoryBlendingManager.instance.TogglePolaroidsWiggle(false);
+                        // audio fx
+                        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 0.5f);
                         return;
                     }
                     else if (result.gameObject.transform.CompareTag("UniversalCoin"))

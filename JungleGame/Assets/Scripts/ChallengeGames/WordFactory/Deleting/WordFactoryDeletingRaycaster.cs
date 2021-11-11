@@ -66,6 +66,9 @@ public class WordFactoryDeletingRaycaster : MonoBehaviour
                 // return coins to frame
                 WordFactoryDeletingManager.instance.ReturnCoinsToFrame();
             }
+
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f);
         
             // wiggle tiger frame
             EmeraldTigerHolder.instance.GetComponent<WiggleController>().StopWiggle();
@@ -102,6 +105,8 @@ public class WordFactoryDeletingRaycaster : MonoBehaviour
                         // select object
                         selectedObject = result.gameObject;
                         selectedObject.gameObject.transform.SetParent(selectedObjectParent);
+                        // audio fx
+                        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 1.2f);
 
                         // remove coin raycast
                         selectedObject.GetComponent<UniversalCoinImage>().ToggleRaycastTarget(false);

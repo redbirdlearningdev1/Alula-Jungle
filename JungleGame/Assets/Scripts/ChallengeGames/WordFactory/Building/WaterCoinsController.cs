@@ -53,8 +53,12 @@ public class WaterCoinsController : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             waterCoins[i].GetComponent<LerpableObject>().LerpPosition(inactiveCoinPos[i].transform.position, 0.1f, false);
             waterCoins[i].GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WaterRipples, 0.1f, "water_splash", (1f - 0.25f * i));
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "water_splash", (1f - 0.2f * i));
             waterCoins[i].transform.SetParent(waterCoinParent);
             waterCoins[i].GetComponent<UniversalCoinImage>().ToggleRaycastTarget(true);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 
@@ -124,6 +128,9 @@ public class WaterCoinsController : MonoBehaviour
             waterCoins[i].GetComponent<LerpableObject>().LerpPosition(bouncePos, 0.2f, false);
             yield return new WaitForSeconds(0.2f);
             waterCoins[i].GetComponent<LerpableObject>().LerpPosition(activeCoinPos[i].transform.position, 0.2f, false);
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WaterRipples, 0.1f, "water_splash", (1f + 0.25f * i));
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "water_splash", (1f + 0.25f * i));
         }
     }
 }

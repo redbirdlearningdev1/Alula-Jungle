@@ -1410,9 +1410,9 @@ RectTransform:
   - {fileID: 180152438}
   - {fileID: 1016966751}
   - {fileID: 1057720943}
-  - {fileID: 730812432}
   - {fileID: 1369595943}
   - {fileID: 1613125556}
+  - {fileID: 730812432}
   - {fileID: 230708559}
   - {fileID: 502343580}
   - {fileID: 1370217689}
@@ -2017,7 +2017,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 415825061}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &767622902
 GameObject:
@@ -2582,6 +2582,7 @@ MonoBehaviour:
   - -50
   boxCoinParent: {fileID: 1016966751}
   swipeParent: {fileID: 1370217689}
+  waterCoinParent: {fileID: 1613125556}
   waterCoins:
   - {fileID: 1027132725}
   - {fileID: 1422831865}
@@ -2644,7 +2645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOn: 0
   objcetMoveSpeed: 0.1
-  selectedObjectParent: {fileID: 0}
+  selectedObjectParent: {fileID: 730812432}
 --- !u!4 &1160915250
 Transform:
   m_ObjectHideFlags: 0
@@ -3130,7 +3131,7 @@ RectTransform:
   - {fileID: 701813581}
   - {fileID: 1332007625}
   m_Father: {fileID: 415825061}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3884,7 +3885,7 @@ RectTransform:
   - {fileID: 2112887484}
   - {fileID: 145771825}
   m_Father: {fileID: 415825061}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -4501,7 +4502,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 9.020213
+      value: 9.248203
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

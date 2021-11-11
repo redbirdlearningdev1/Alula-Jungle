@@ -178,4 +178,27 @@ public class AudioDatabase : MonoBehaviour
     public AudioClip WebBoing;
     public AudioClip WebSwoop;
     public AudioClip WebWhip;
+
+
+    [Header("Word Factory Games")]
+    public AudioClip BoxSlide;
+    public AudioClip CameraClick;
+    public AudioClip CoinDink;
+    public AudioClip CoinRattle;
+    public AudioClip EmeraldSlide;
+    public AudioClip EmeraldSlideShort;
+    public AudioClip GlassDink1;
+    public AudioClip GlassDink2;
+    public AudioClip LeaveWater;
+    public AudioClip MagicReveal;
+    public AudioClip MedWhoosh;
+    public AudioClip PanDown;
+    public AudioClip PanUp;
+    public AudioClip PolaroidCrunch;
+    public AudioClip PolaroidFall;
+    public AudioClip PolaroidRattle;
+    public AudioClip PolaroidUnravel;
+    public AudioClip SelectBoop;
+    public AudioClip SmallWhoosh;
+    public AudioClip TigerSwipe;
 }

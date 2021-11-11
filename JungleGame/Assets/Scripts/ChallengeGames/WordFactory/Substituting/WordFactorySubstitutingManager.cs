@@ -16,6 +16,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
     [Header("Coins")]
     [SerializeField] private Transform boxCoinParent;
     [SerializeField] private Transform swipeParent;
+    public Transform waterCoinParent;
     [SerializeField] private List<UniversalCoinImage> waterCoins;
     private UniversalCoinImage currWaterCoin;
     [SerializeField] private List<Transform> waterCoinActivePos;
@@ -115,6 +116,13 @@ public class WordFactorySubstitutingManager : MonoBehaviour
 
     private void PregameSetup()
     {   
+        // turn on settings button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+
+        // add ambiance
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.05f);
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 0.05f);
+
         // begin first round
         StartCoroutine(NewRound());
     }
@@ -153,11 +161,14 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         // move tiger polaroid to middle pos
         tigerPolaroid.LerpScale(1f, 1f);
         tigerPolaroid.MovePolaroid(polaroid_middlePos.position, 1f);
-
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MagicReveal, 0.5f);
         yield return new WaitForSeconds(1.5f);
 
         // shake tiger polaroid
-        tigerPolaroid.GetComponent<SpriteShakeController>().ShakeObject(1f);
+        tigerPolaroid.GetComponent<SpriteShakeController>().ShakeObject(2f);
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PolaroidRattle, 0.5f);
 
         // place all real frames behind tiger polaroid and make scale 0
         foreach (var frame in framesReal)
@@ -187,7 +198,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         // move target frames
         StartCoroutine(LerpFrameSpacing(frameSpacings[currentWord.elkoninCount - 1], 0f));
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         // show + move real frames
         for (int i = 0; i < currentWord.elkoninCount; i++)
@@ -207,12 +218,14 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             ElkoninValue value = currentWord.elkoninList[i];
             var coinObj = Instantiate(universalCoin, framesReal[i].position, Quaternion.identity, boxCoinParent);
             var coin = coinObj.GetComponent<UniversalCoinImage>();
-            coin.ToggleVisibility(false, false);
-            coin.ToggleVisibility(true, true);
             coin.SetValue(currentWord.elkoninList[i]);
             coin.SetSize(normalCoinSize);
             currentCoins.Add(coin);
-            yield return new WaitForSeconds(0.05f);
+            coin.ToggleVisibility(true, false);
+            coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", (1f + 0.25f * i));
+            yield return new WaitForSeconds(0.1f);
         }
         yield return new WaitForSeconds(1f);
 
@@ -244,6 +257,9 @@ public class WordFactorySubstitutingManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinRattle, 0.1f);
+        yield return new WaitForSeconds(0.2f);
         // shake coin
         currentCoins[currentPair.swipeIndex].ShakeCoin(2f);
         yield return new WaitForSeconds(1f);
@@ -254,10 +270,12 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         var swipe = Instantiate(tigerSwipe, swipePos, Quaternion.identity, swipeParent);
         swipe.GetComponent<TigerSwipe>().PlayTigerSwipe();
         tigerAnimator.Play("TigerSwipe");
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.TigerSwipe, 0.5f);
         yield return new WaitForSeconds(0.25f);
 
         // remove coin
-        currentCoins[currentPair.swipeIndex].ToggleVisibility(false, true);
+        currentCoins[currentPair.swipeIndex].GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.3f, 1.3f), new Vector2(0f, 0f), 0.1f, 0.1f);
         redAnimator.Play("Lose");
 
         yield return new WaitForSeconds(2f);
@@ -279,6 +297,8 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         redPolaroid.LerpRotation(8f, 1f);
         redPolaroid.MovePolaroid(polaroidMiddlePos_left.position, 1f);
         currentTargetValue = currentTargetWord.elkoninList[currentPair.swipeIndex];
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MagicReveal, 0.1f, "red_reveal", 0.8f);
         yield return new WaitForSeconds(2f);
 
         // say red's word
@@ -324,6 +344,8 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         StartCoroutine(LerpMoveObject(moveableCanvas, bottomPos.position, 1f));
         StartCoroutine(LerpMoveObject(tigerPolaroid.transform, polaroidBottomPos_right.position, 1f));
         StartCoroutine(LerpMoveObject(redPolaroid.transform, polaroidBottomPos_left.position, 1f));
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PanDown, 0.1f);
         yield return new WaitForSeconds(2f);
 
         // move water coins up
@@ -335,12 +357,18 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             waterCoins[count].GetComponent<LerpableObject>().LerpPosition(bouncePos, 0.2f, false);
             yield return new WaitForSeconds(0.2f);
             waterCoins[count].GetComponent<LerpableObject>().LerpPosition(waterCoinActivePos[count].position, 0.2f, false);
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WaterRipples, 0.1f, "water_splash", (1f + 0.25f * count));
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "water_splash", (1f + 0.25f * count));
+            yield return new WaitForSeconds(0.05f);
             count++;
         }
         yield return new WaitForSeconds(1f);
 
         // reveal left arrow
         leftArrow.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CreateBlip, 0.25f);
         // make current frame wiggle
         framesReal[currentPair.swipeIndex].GetComponent<WiggleController>().StartWiggle();
 
@@ -501,6 +529,9 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             return;
         evaluatingCoin = true;
 
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SelectBoop, 0.5f);
+
         // remove left arrow
         leftArrow.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.2f, 0.2f);
         // make current frame stop wiggle
@@ -549,6 +580,8 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             // slide tiger polaroid under red polaroid
             tigerPolaroid.transform.SetAsFirstSibling();
             StartCoroutine(LerpMoveObject(tigerPolaroid.transform, redPolaroid.transform.position, 0.2f));
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SmallWhoosh, 0.5f);
             yield return new WaitForSeconds(0.5f);
 
             // shink and move both polaroids towards red
@@ -556,7 +589,9 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             StartCoroutine(LerpObjectScale(tigerPolaroid.transform, 0f, 0.5f));
             StartCoroutine(LerpMoveObject(redPolaroid.transform, polaroidStartPos_left.position, 0.5f));
             StartCoroutine(LerpMoveObject(tigerPolaroid.transform, polaroidStartPos_left.position, 0.5f));
-            yield return new WaitForSeconds(0.75f);
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MedWhoosh, 0.5f);
+            yield return new WaitForSeconds(1.5f);
 
             // play correct animations
             redAnimator.Play("Win");
@@ -577,6 +612,8 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                     redCards[redCardCount].GetComponent<Animator>().Play("Card3");
                     break;
             }
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.HappyBlip, 0.5f);
             redCardCount++;
         }
         else
@@ -589,6 +626,8 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             // slide tiger polaroid under red polaroid
             redPolaroid.transform.SetAsFirstSibling();
             StartCoroutine(LerpMoveObject(redPolaroid.transform, tigerPolaroid.transform.position, 0.5f));
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SmallWhoosh, 0.5f);
             yield return new WaitForSeconds(0.5f);
 
             // shink and move both polaroids towards red
@@ -596,7 +635,9 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             StartCoroutine(LerpObjectScale(tigerPolaroid.transform, 0f, 0.5f));
             StartCoroutine(LerpMoveObject(redPolaroid.transform, polaroidStartPos_right.position, 0.5f));
             StartCoroutine(LerpMoveObject(tigerPolaroid.transform, polaroidStartPos_right.position, 0.5f));
-            yield return new WaitForSeconds(0.75f);
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MedWhoosh, 0.5f);
+            yield return new WaitForSeconds(1.5f);
 
             // play correct animations
             redAnimator.Play("Lose");
@@ -617,6 +658,8 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                     tigerCards[tigerCardCount].GetComponent<Animator>().Play("Card3");
                     break;
             }
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SadBlip, 0.5f);
             tigerCardCount++;
         }
 
@@ -625,6 +668,8 @@ public class WordFactorySubstitutingManager : MonoBehaviour
 
         // pan camera up
         StartCoroutine(LerpMoveObject(moveableCanvas, normalPos.position, 1f));
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PanUp, 0.5f);
 
         // place polaroids in start pos
         tigerPolaroid.LerpScale(0f, 0.001f);

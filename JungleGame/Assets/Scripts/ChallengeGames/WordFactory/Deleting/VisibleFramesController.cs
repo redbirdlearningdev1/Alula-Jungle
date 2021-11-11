@@ -103,10 +103,14 @@ public class VisibleFramesController : MonoBehaviour
 
         // move frames to invisible frames
         StartCoroutine(MoveFramesToInvisibleFramesRoutine());
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BoxSlide, 0.5f);
         yield return new WaitForSeconds(1f);
 
         // reveal new frame
         frames[count].GetComponent<LerpableObject>().LerpImageAlpha(frames[count].GetComponent<Image>(), 1f, 0.5f);
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CreateBlip, 0.25f);
     }
 
     public void MoveFramesToInvisibleFrames()

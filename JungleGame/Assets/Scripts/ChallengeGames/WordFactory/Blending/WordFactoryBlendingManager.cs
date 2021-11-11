@@ -98,6 +98,10 @@ public class WordFactoryBlendingManager : MonoBehaviour
         // turn on settings button
         SettingsManager.instance.ToggleMenuButtonActive(true);
 
+        // add ambiance
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.05f);
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 0.05f);
+
         // create word lists
         ChallengeWordDatabase.InitCreateGlobalList(true);
         globalWordList = ChallengeWordDatabase.globalChallengeWordList;
@@ -191,9 +195,11 @@ public class WordFactoryBlendingManager : MonoBehaviour
         {
             StartCoroutine(LerpImageAlpha(frames[i].GetComponent<Image>(), 1f, 0.25f));
         }
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MagicReveal, 0.1f);
 
         currentCoins = new List<UniversalCoinImage>();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         // show coins + add to list
         for (int i = 0; i < currentWord.elkoninCount; i++)
@@ -207,6 +213,8 @@ public class WordFactoryBlendingManager : MonoBehaviour
             coin.ToggleVisibility(true, false);
             coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
             currentCoins.Add(coin);
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", (1f + 0.25f * i));
             yield return new WaitForSeconds(0.1f);
         }
 
@@ -298,6 +306,9 @@ public class WordFactoryBlendingManager : MonoBehaviour
                 pol.GetComponent<LerpableObject>().LerpScale(new Vector2(0.6f, 0.6f), 0.3f);
             }
         }
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MedWhoosh, 0.5f);
+        yield return new WaitForSeconds(0.1f);
     }
 
     private IEnumerator CorrectPolaroidRoutine()
@@ -305,11 +316,8 @@ public class WordFactoryBlendingManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         
         // reveal the correct polaroid
-        StartCoroutine(PolaroidRevealRoutine());
+        StartCoroutine(PolaroidRevealRoutine(true));
         yield return new WaitForSeconds(2f);
-
-        // play correct sound
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
 
         // ####################
 
@@ -332,10 +340,13 @@ public class WordFactoryBlendingManager : MonoBehaviour
             else if (count == 2)
             {
                 polaroid.MovePolaroid(away2Pos.position, 0.25f);
-            }    
+            }
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SmallWhoosh, 0.5f);
+            yield return new WaitForSeconds(0.1f);
             count++;
         }
-
+    
         // reset polaroids after delay
         yield return new WaitForSeconds(1f);
         ResetPolaroids(true, true);
@@ -355,6 +366,9 @@ public class WordFactoryBlendingManager : MonoBehaviour
                 redCards[redCardCount].GetComponent<Animator>().Play("Card3");
                 break;
         }
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.HappyBlip, 0.5f);
+        yield return new WaitForSeconds(0.1f);
         redCardCount++;
         
         // animate characters
@@ -376,11 +390,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         // reveal the correct polaroid
-        StartCoroutine(PolaroidRevealRoutine());
-        yield return new WaitForSeconds(2f);
-
-        // play incorrect sound
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
+        StartCoroutine(PolaroidRevealRoutine(false));
         yield return new WaitForSeconds(2f);
 
         // ####################
@@ -404,7 +414,10 @@ public class WordFactoryBlendingManager : MonoBehaviour
             else if (count == 2)
             {
                 polaroid.MovePolaroid(away2Pos.position, 0.25f);
-            }    
+            }
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SmallWhoosh, 0.5f);
+            yield return new WaitForSeconds(0.1f);
             count++;
         }
 
@@ -427,6 +440,9 @@ public class WordFactoryBlendingManager : MonoBehaviour
                 tigerCards[tigerCardCount].GetComponent<Animator>().Play("Card3");
                 break;
         }
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SadBlip, 0.5f);
+        yield return new WaitForSeconds(0.1f);
         tigerCardCount++;
         
         // animate characters
@@ -515,7 +531,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
             return 1;
     }
 
-    private IEnumerator PolaroidRevealRoutine()
+    private IEnumerator PolaroidRevealRoutine(bool isCorrect)
     {
         // read word aloud to player
         if (currentWord.audio != null)
@@ -535,6 +551,18 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
         // reveal correct polaroid 
         currentPolaroid.ToggleGlowOutline(true);
+        if (isCorrect)
+        {
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
+        }
+        else
+        {
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
+        }
+
+
         // make other polaroids transparent
         foreach (Polaroid polaroid in polaroids)
         {
@@ -670,6 +698,8 @@ public class WordFactoryBlendingManager : MonoBehaviour
         {
             polaroid.MovePolaroid(bouncePos, 0.3f);
         }
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PolaroidFall, 0.5f);
         yield return new WaitForSeconds(0.3f);
         // move polaroids down  
         foreach (var polaroid in polaroids)
@@ -681,8 +711,12 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
         // move each polaroid to their respective spot
         polaroids[0].MovePolaroid(polaroid0Pos.position, 0.5f);
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SmallWhoosh, 0.5f);
         yield return new WaitForSeconds(0.15f);
         polaroids[2].MovePolaroid(polaroid2Pos.position, 0.5f);
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SmallWhoosh, 0.5f);
         yield return new WaitForSeconds(0.8f);
 
         // reveal polaroid images
@@ -690,6 +724,8 @@ public class WordFactoryBlendingManager : MonoBehaviour
         {
             polaroid.RevealImage(0.25f);
         }
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CameraClick, 1f);
         // scale polaroids when revealing images
         foreach (var polaroid in polaroids)
         {
