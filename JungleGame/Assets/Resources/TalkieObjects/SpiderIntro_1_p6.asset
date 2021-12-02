@@ -19,7 +19,7 @@ MonoBehaviour:
   addLetterboxBeforeTalkie: 1
   ending: 0
   removeBackgroundAfterTalkie: 1
-  removeLetterboxAfterTalkie: 1
+  removeLetterboxAfterTalkie: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -30,9 +30,9 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 3
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Spindle_51_T1
@@ -41,30 +41,30 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftCharacter: 2
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 6
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
-    audioClipName: B_1_1_Red_52_T1
+    audioClipName: B_1_1_Wally_52_T1
     audioString: Hey are you okay!?
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftCharacter: 2
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 8
+    rightMouthEnum: 1
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Spindle_53_T1
@@ -73,14 +73,30 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 3
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftCharacter: 2
+    leftEmotionNum: 8
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 10
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: B_1_1_Spindle_53_T2
+    audioString: '*eats bug*'
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 9
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Darwin_54_T1
@@ -90,13 +106,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 4
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Darwin_54_T2
@@ -106,13 +122,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Darwin_54_T3
@@ -122,13 +138,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 4
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Darwin_54_T4
@@ -138,29 +154,29 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 2
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 3
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 11
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Wally_55_T1
-    audioString: "Hey~ I\u2019m Wally"
+    audioString: "Hey, I\u2019m Wally"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 11
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Red_56_T1
@@ -170,29 +186,29 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 2
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 11
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Red_56_T2
-    audioString: 'This is our friend~ they are an explorer! '
+    audioString: 'This is our friend, they''re an Explorer! '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 11
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Red_56_T3
@@ -202,13 +218,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 9
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Spindle_57_T1
@@ -218,13 +234,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 9
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 4
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Spindle_57_T2
@@ -234,13 +250,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 6
+    leftMouthEnum: 1
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 11
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Darwin_58_T1
@@ -250,13 +266,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 6
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Spindle_59_T1
@@ -266,13 +282,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 6
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 4
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Spindle_59_T2
@@ -282,13 +298,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 6
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 3
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Spindle_59_T3
@@ -298,13 +314,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 6
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Red_60_T1
@@ -314,13 +330,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 2
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 10
+    leftMouthEnum: 1
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 6
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Wally_61_T1
@@ -330,13 +346,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 2
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 9
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Spindle_62_T1
@@ -346,13 +362,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 12
+    leftMouthEnum: 1
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Red_63_T1
@@ -362,46 +378,77 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Red_63_T2
-    audioString: Wally~ the explorer~ and I can help clean up this place and patch
-      you up!
+    audioString: 'Wally, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 2
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: B_1_1_Red_63_T3
+    audioString: 'the Explorer, '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 3
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 9
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: B_1_1_Red_63_T4
+    audioString: and I can help clean up this place and patch you up!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 9
+    rightEmotionNum: 11
+    rightMouthEnum: 1
+    rightEyesEnum: 3
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Spindle_64_T1
-    audioString: Oh?!
+    audioString: Oh!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 3
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Wally_65_T1
@@ -411,13 +458,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Wally_65_T2
@@ -427,13 +474,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Darwin_66_T1
@@ -443,30 +490,29 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 11
+    rightMouthEnum: 1
+    rightEyesEnum: 4
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Wally_67_T1
-    audioString: 'It looks like the story you told the prince got to him a little
-      bit. '
+    audioString: It looks like your story got to Julius a little bit!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 11
+    rightMouthEnum: 1
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Wally_67_T2
@@ -476,13 +522,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 11
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Darwin_68_T1
@@ -492,29 +538,29 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Darwin_68_T2
-    audioString: 'I suppose so.. '
+    audioString: I suppose so...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 4
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Darwin_68_T3
@@ -524,45 +570,45 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 9
+    leftMouthEnum: 2
+    leftEyesEnum: 4
     rightCharacter: 1
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Red_69_T1
-    audioString: "That\u2019s okay!"
+    audioString: "It\u2019s okay!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 9
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 1
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 3
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Red_69_T2
-    audioString: You think of stories while we can up and help Spindle!
+    audioString: You think of stories while we clean up and help Spindle!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 9
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 1
     rightCharacter: 1
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 2
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Spindle_70_T1
@@ -572,13 +618,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 9
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 6
+    leftMouthEnum: 1
+    leftEyesEnum: 3
     rightCharacter: 1
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 7
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Spindle_70_T2
@@ -588,13 +634,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 9
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 9
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 1
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Red_71_T1
@@ -604,13 +650,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 9
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 9
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 1
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Red_71_T2
@@ -620,13 +666,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 9
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 11
+    leftMouthEnum: 1
+    leftEyesEnum: 1
     rightCharacter: 1
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 2
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Spindle_72_T1
@@ -636,13 +682,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 9
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 6
+    leftMouthEnum: 1
+    leftEyesEnum: 3
     rightCharacter: 1
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 7
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Spindle_72_T2
@@ -652,13 +698,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
-    rightCharacter: 0
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 1
+    rightEmotionNum: 11
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Darwin_73_T1
@@ -668,13 +714,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
-    rightCharacter: 0
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 1
+    rightEmotionNum: 11
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Darwin_73_T2
@@ -684,29 +730,29 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
-    rightCharacter: 0
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 4
+    rightCharacter: 1
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Darwin_73_T3
-    audioString: "I\u2019ll uh go think some more..."
+    audioString: "I\u2019ll... uh... go think some more..."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 2
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 2
     rightCharacter: 1
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 2
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Wally_74_T1
@@ -716,13 +762,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 2
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 2
     rightCharacter: 1
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 14
+    rightMouthEnum: 1
+    rightEyesEnum: 2
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Red_75_T1

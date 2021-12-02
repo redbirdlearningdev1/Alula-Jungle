@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -70,7 +69,23 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 73aeaf95d3d2278468f7e48d70b2e076, type: 3}
     audioClipName: P_1_1_Darwin_54_T2
-    audioString: Before you run off explorer...
+    audioString: Before you run off Explorer...
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 89a49a340ad192b438dcf3f3f3b2e9fc, type: 3}
+    audioClipName: P_1_1_Darwin_54_T3
+    audioString: uhh...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -84,8 +99,8 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 89a49a340ad192b438dcf3f3f3b2e9fc, type: 3}
-    audioClipName: P_1_1_Darwin_54_T3
+    audioClip: {fileID: 8300000, guid: 57414fd256ea5594397cc7d3ed54c189, type: 3}
+    audioClipName: P_1_1_Darwin_54_T4
     audioString: Let me help you navigate the area.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -100,6 +115,6 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 57414fd256ea5594397cc7d3ed54c189, type: 3}
-    audioClipName: P_1_1_Darwin_54_T4
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1_Darwin_54_T5
     audioString: tap on me when you're ready!

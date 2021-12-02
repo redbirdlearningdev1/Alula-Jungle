@@ -52,7 +52,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 9bda94302e9a3e3458846f5f47c45ebb, type: 3}
     audioClipName: P_1_4_Lester_1_T2
-    audioString: My name is Lester~
+    audioString: My name is Lester,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: b2e3c57134b39df4f9d4be8f2ba926f2, type: 3}
     audioClipName: P_1_4_Lester_2_T3
-    audioString: "I'll tell you what~ if you give me three coins I\u2019ll make you
+    audioString: "I'll tell you what, if you give me three coins I\u2019ll make you
       a one of a kind sticker!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0

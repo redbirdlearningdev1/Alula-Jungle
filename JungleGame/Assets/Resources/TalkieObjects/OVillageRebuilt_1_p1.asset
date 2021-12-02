@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 2
   removeBackgroundAfterTalkie: 0
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -117,7 +116,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_3_2_Clogg_4_T1
-    audioString: '"My name is Clogg~ not ""orc."""'
+    audioString: '"My name is Clogg, not ""orc."""'
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -197,7 +196,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 35a9d5402c020a647ad86874b6413cd1, type: 3}
     audioClipName: P_3_2_Red_7_T2
-    audioString: "They\u2019re an explorer."
+    audioString: "They\u2019re an Explorer."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -229,7 +228,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_3_2_Clogg_8_T1
-    audioString: I thank you for cleaning my Village~
+    audioString: I thank you for cleaning my Village,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -245,7 +244,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_3_2_Clogg_8_T2
-    audioString: If you wish to explain~ now I will listen.
+    audioString: 'Now, you can tell me what you were trying to say earlier. '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -261,7 +260,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: P_3_2_Wally_9_T1
-    audioString: Well Clogg~
+    audioString: Well Clogg,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -277,7 +276,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: P_3_2_Wally_9_T2
-    audioString: 'we came to your kingdom to help the prince while the king. '
+    audioString: we came to your kingdom to help the Prince while the King is away.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -293,7 +292,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: P_3_2_Wally_10_T1
-    audioString: Unfortunately~
+    audioString: Unfortunately,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -357,7 +356,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: b5b7503c311189b4b9249320436d9107, type: 3}
     audioClipName: P_3_2_Red_12_T2
-    audioString: But~ our friend Darwin is up ahead of us!
+    audioString: But, our friend Darwin is up ahead of us!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -373,7 +372,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 2ee3645280a683f498d6a402a80b8e10, type: 3}
     audioClipName: P_3_2_Red_12_T3
-    audioString: He used to be the king's advisor.
+    audioString: He used to be the King's advisor.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -390,7 +389,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 364ad6ec948b8b94589683c3c4f05cc4, type: 3}
     audioClipName: P_3_2_Red_12_T4
     audioString: "We\u2019re hoping he is able to come up with something to stop
-      the prince's behavior. "
+      the Prince's behavior. "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -406,7 +405,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_3_2_Clogg_13_T1
-    audioString: That doesn't sound like him..
+    audioString: That doesn't sound like Prince Julius.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -422,7 +421,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_3_2_Clogg_13_T2
-    audioString: He's young~ but he'd never..
+    audioString: Sure he has some spunk to him, but he'd never -
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -437,7 +436,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 0}
-    audioClipName: P_1_1_RedWally_9_T1
+    audioClipName: RedWally_Gasp
     audioString: '!!!'
   - endTalkieAfterThisSegment: 0
     requireYN: 0

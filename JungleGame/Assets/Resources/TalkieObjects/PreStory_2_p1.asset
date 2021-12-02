@@ -36,7 +36,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 09f1d4fb4d42b7d41b34128a39767242, type: 3}
     audioClipName: P_1_2_Darwin_1_T1
-    audioString: Are you ready to get started explorer?
+    audioString: Are you ready to get started, Explorer?
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0
@@ -51,8 +51,40 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 0
     audioClip: {fileID: 0}
-    audioClipName: P_1_2_Darwin_2_T1
-    audioString: Okay explorer~ come back when you are ready.
+    audioClipName: P_1_2_Darwin_2_T2
+    audioString: Okay Explorer...
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 4
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_2_Darwin_2_T3
+    audioString: uhh...
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_2_Darwin_2_T4
+    audioString: come back when you are ready.
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0
@@ -67,5 +99,5 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 0
     audioClip: {fileID: 0}
-    audioClipName: P_1_2_Darwin_3_T1
-    audioString: Alright explorer! Let's get started!
+    audioClipName: P_1_2_Darwin_3_T5
+    audioString: Alright Explorer! Let's get started!

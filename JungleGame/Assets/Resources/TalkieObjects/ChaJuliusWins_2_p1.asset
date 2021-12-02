@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -37,7 +36,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: aa9efcb80417ac949b2c4be482246748, type: 3}
     audioClipName: Cha_0_1a_Red_4_T1
-    audioString: "It\u2019s okay explorer! "
+    audioString: "It\u2019s okay Explorer! "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

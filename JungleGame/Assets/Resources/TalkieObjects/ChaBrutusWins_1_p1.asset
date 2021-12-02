@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -69,7 +68,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Cha_0_3a_Brutus_1_T3
-    audioString: "It looks like I win explorer\u2026"
+    audioString: "It looks like I win Explorer\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -85,7 +84,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Cha_0_3a_Brutus_1_T4
-    audioString: "yawn\u2026"
+    audioString: "Yawn\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -117,7 +116,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2a_Julius_2_T1
-    audioString: Take that explorer!
+    audioString: Take that Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -149,7 +148,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: aa9efcb80417ac949b2c4be482246748, type: 3}
     audioClipName: Cha_0_1a_Red_4_T1
-    audioString: "It\u2019s okay explorer! "
+    audioString: "It\u2019s okay Explorer! "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

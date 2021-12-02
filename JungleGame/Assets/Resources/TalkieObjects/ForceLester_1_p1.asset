@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -37,7 +36,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: e3d18eaa52625234098fa547bb62c4d6, type: 3}
     audioClipName: P_1_3b_Darwin_1_T1
-    audioString: Uhhh...
+    audioString: Hmm...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

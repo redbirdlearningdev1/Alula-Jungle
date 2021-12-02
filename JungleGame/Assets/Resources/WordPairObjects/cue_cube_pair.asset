@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f49655c47c49b747b3315e00db7aacd, type: 3}
+  m_Name: cue_cube_pair
+  m_EditorClassIdentifier: 
+  soundCoin: 10
+  pairType: 1
+  word1: {fileID: 11400000, guid: ffe37efb9248ba24fa5943a0b16482bf, type: 2}
+  word2: {fileID: 11400000, guid: ee23527a1460e604ca48003c3f5b463a, type: 2}

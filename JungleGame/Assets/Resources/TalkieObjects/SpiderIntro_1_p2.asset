@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -37,7 +36,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Julius_11_T1
-    audioString: Oh~
+    audioString: Oh,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -69,7 +68,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Darwin_12_T1
-    audioString: "Listen Julius~ you don't have to do this\u2026"
+    audioString: "Listen Julius, you don't have to do this\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -101,7 +100,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Marcus_13_T2
-    audioString: You have no right to speak to the prince!
+    audioString: You have no right to speak to the Prince!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -196,8 +195,8 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 0
     audioClip: {fileID: 0}
-    audioClipName: B_1_1_Marcus_16_T1
-    audioString: HAHAHA!
+    audioClipName: Marcus_Laugh
+    audioString: HA HA HA!!!!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -228,8 +227,8 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip: {fileID: 0}
-    audioClipName: B_1_1_Brutus_17_T1
-    audioString: Heh heh heh.
+    audioClipName: Brutus_Laugh
+    audioString: Heh heh...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -326,7 +325,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Darwin_21_T1
-    audioString: The village was getting all decorated~
+    audioString: The village was getting all decorated,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -459,7 +458,7 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 0
+    leftCharacter: 3
     leftEmotionNum: 6
     leftMouthEnum: 2
     leftEyesEnum: 1
@@ -518,7 +517,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Marcus_31_T2
-    audioString: I must say that just because you helped out those commoners~
+    audioString: I must say that just because you helped out those commoners,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -550,7 +549,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Marcus_31_T4
-    audioString: You helped them because you wanted to~
+    audioString: You helped them because you wanted to,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -583,7 +582,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Marcus_31_T6
-    audioString: You are the future king!
+    audioString: You are the future King!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -775,8 +774,8 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 0
     audioClip: {fileID: 0}
-    audioClipName: B_1_1_Marcus_38_T1
-    audioString: HAHAHA!
+    audioClipName: Marcus_Laugh
+    audioString: HA HA HA!!!!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -791,8 +790,8 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip: {fileID: 0}
-    audioClipName: B_1_1_Brutus_39_T1
-    audioString: Heh heh heh
+    audioClipName: Brutus_Laugh
+    audioString: Heh heh...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

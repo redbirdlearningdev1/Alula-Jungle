@@ -20,8 +20,23 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: Cha_0_1a_Julius_1_T1
+    audioString: Ha Ha! I win!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -35,9 +50,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 30dcae2be8f95d2438bc48fbcfaaa20a, type: 3}
-    audioClipName: Cha_0_1a_Marcus_1_T1
-    audioString: HAHAHA!
+    audioClip: {fileID: 0}
+    audioClipName: Marcus_Laugh
+    audioString: HA HA HA!!!!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -133,7 +148,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: aa9efcb80417ac949b2c4be482246748, type: 3}
     audioClipName: Cha_0_1a_Red_4_T1
-    audioString: "It\u2019s okay explorer! "
+    audioString: "It\u2019s okay Explorer! "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

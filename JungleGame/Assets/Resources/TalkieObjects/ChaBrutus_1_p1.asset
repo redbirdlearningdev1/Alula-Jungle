@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -36,8 +35,8 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip: {fileID: 0}
-    audioClipName: Cha_0_3b_Brutus_1_T1
-    audioString: he he he
+    audioClipName: Brutus_Laugh
+    audioString: Heh heh...
   - endTalkieAfterThisSegment: 0
     requireYN: 1
     onYesGoto: 2
@@ -53,7 +52,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Cha_0_3b_Brutus_1_T2
-    audioString: Are you ready explorer?
+    audioString: Are you ready Explorer?
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0
@@ -69,7 +68,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Cha_0_3b_Brutus_2_T1
-    audioString: Alright~ let's do this.
+    audioString: Alright, let's do this.
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0

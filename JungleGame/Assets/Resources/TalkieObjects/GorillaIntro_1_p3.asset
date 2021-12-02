@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -67,9 +66,9 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: bc62132cda536284295408b65f009f86, type: 3}
-    audioClipName: P_1_1_Marcus_26_T1
-    audioString: HAHAHA!
+    audioClip: {fileID: 0}
+    audioClipName: Marcus_Laugh
+    audioString: HA HA HA!!!!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -83,9 +82,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: e560a2f635330474a80ba89adf2c46d9, type: 3}
-    audioClipName: P_1_1_Brutus_27_T1
-    audioString: Heh heh heh...
+    audioClip: {fileID: 0}
+    audioClipName: Brutus_Laugh
+    audioString: Heh heh.....
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -117,7 +116,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 886e39fc1e64f03438798f6876197ca9, type: 3}
     audioClipName: P_1_1_Julius_28_T2
-    audioString: 
+    audioString: ...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -165,7 +164,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 3629df525a4fda84492e8eecbd788f92, type: 3}
     audioClipName: P_1_1_Julius_30_T1
-    audioString: Darwin!
+    audioString: Darwin!?
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -245,7 +244,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: cc0f0590d836b7d4ba85a32871a376c7, type: 3}
     audioClipName: P_1_1_Julius_32_T2
-    audioString: 
+    audioString: ...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -309,7 +308,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: c903364c14b5dd1419e95b5242efeb1b, type: 3}
     audioClipName: P_1_1_Darwin_33_T2
-    audioString: 
+    audioString: ...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -405,7 +404,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 9666afc7bed20e54db62afd9bd9fe320, type: 3}
     audioClipName: P_1_1_Julius_37_T1
-    audioString: They're right~ Darwin.
+    audioString: They're right, Darwin.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -421,7 +420,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 54c66e0554508da4cb4bd1dd17075ef7, type: 3}
     audioClipName: P_1_1_Julius_37_T2
-    audioString: I am the future king.
+    audioString: I am the future King.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -444,22 +443,6 @@ MonoBehaviour:
     onNoGoto: 0
     leftCharacter: 6
     leftEmotionNum: 6
-    leftMouthEnum: 2
-    leftEyesEnum: 0
-    rightCharacter: 5
-    rightEmotionNum: 8
-    rightMouthEnum: 1
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: ba82bc8ff9a39144bb7306525354c7cd, type: 3}
-    audioClipName: P_1_1_Brutus_38_T1
-    audioString: Heh heh heh.
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 6
-    leftEmotionNum: 6
     leftMouthEnum: 1
     leftEyesEnum: 0
     rightCharacter: 5
@@ -467,6 +450,22 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: bc62132cda536284295408b65f009f86, type: 3}
-    audioClipName: P_1_1_Marcus_26_T1
-    audioString: HAHAHA!
+    audioClip: {fileID: 0}
+    audioClipName: Marcus_Laugh
+    audioString: HA HA HA!!!!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 6
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 8
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: Brutus_Laugh
+    audioString: Heh heh...

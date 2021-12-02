@@ -20,104 +20,7 @@ MonoBehaviour:
   ending: 2
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 0
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
-    rightCharacter: 7
-    rightEmotionNum: 7
-    rightMouthEnum: 1
-    rightEyesEnum: 1
-    activeCharacter: 1
-    audioClip: {fileID: 0}
-    audioClipName: P_2_3_Julius_1_T1
-    audioString: Again?!
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 0
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
-    rightCharacter: 7
-    rightEmotionNum: 9
-    rightMouthEnum: 1
-    rightEyesEnum: 4
-    activeCharacter: 1
-    audioClip: {fileID: 0}
-    audioClipName: P_2_3_Julius_1_T2
-    audioString: This cannot be!
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 6
-    leftEmotionNum: 4
-    leftMouthEnum: 1
-    leftEyesEnum: 0
-    rightCharacter: 5
-    rightEmotionNum: 5
-    rightMouthEnum: 2
-    rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
-    audioClipName: P_2_3_Marcus_2_T1
-    audioString: IMPOSSIBLE!!!
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 6
-    leftEmotionNum: 5
-    leftMouthEnum: 2
-    leftEyesEnum: 0
-    rightCharacter: 5
-    rightEmotionNum: 6
-    rightMouthEnum: 1
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
-    audioClipName: P_2_3_Brutus_3_T1
-    audioString: "Yawn\u2026"
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 6
-    leftEmotionNum: 5
-    leftMouthEnum: 2
-    leftEyesEnum: 0
-    rightCharacter: 5
-    rightEmotionNum: 7
-    rightMouthEnum: 1
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
-    audioClipName: P_2_3_Brutus_3_T2
-    audioString: "Over already\u2026"
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 6
-    leftEmotionNum: 5
-    leftMouthEnum: 1
-    leftEyesEnum: 0
-    rightCharacter: 5
-    rightEmotionNum: 3
-    rightMouthEnum: 2
-    rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
-    audioClipName: P_2_3_Marcus_4_T1
-    audioString: Quiet you!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -131,8 +34,8 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: b86c192c6bd7c184990cf374a1bc91f0, type: 3}
-    audioClipName: P_2_3_Red_5_T1
+    audioClip: {fileID: 0}
+    audioClipName: P_2_3_Red_1_T1
     audioString: Hurray!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -147,8 +50,8 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: d6b475bb4df0ad247bf02395b0c33fb0, type: 3}
-    audioClipName: P_2_3_Red_5_T2
+    audioClip: {fileID: 0}
+    audioClipName: P_2_3_Red_1_T2
     audioString: I knew you could do it!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -164,8 +67,104 @@ MonoBehaviour:
     rightEyesEnum: 2
     activeCharacter: 1
     audioClip: {fileID: 0}
-    audioClipName: P_2_3_Wally_6_T1
-    audioString: Good job explorer!
+    audioClipName: P_2_3_Wally_2_T1
+    audioString: Good job Explorer!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: P_2_3_Julius_3_T1
+    audioString: Again?!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: P_2_3_Julius_3_T2
+    audioString: This can't be!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 5
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_2_3_Marcus_4_T1
+    audioString: IMPOSSIBLE!!!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: P_2_3_Brutus_5_T1
+    audioString: "Yawn\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: P_2_3_Brutus_5_T2
+    audioString: "Over already\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 3
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_2_3_Marcus_6_T1
+    audioString: Quiet you!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -180,5 +179,5 @@ MonoBehaviour:
     rightEyesEnum: 2
     activeCharacter: 1
     audioClip: {fileID: 0}
-    audioClipName: P_2_3_Julius_7_T1
+    audioClipName: P_2_3_Julius_9_T1
     audioString: You won't beat me next time! I promise!

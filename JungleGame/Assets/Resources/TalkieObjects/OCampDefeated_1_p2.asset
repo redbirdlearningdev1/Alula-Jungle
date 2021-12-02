@@ -20,19 +20,18 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 6
-    leftEmotionNum: 0
-    leftMouthEnum: 0
+    leftEmotionNum: 8
+    leftMouthEnum: 1
     leftEyesEnum: 0
     rightCharacter: 5
-    rightEmotionNum: 0
-    rightMouthEnum: 0
+    rightEmotionNum: 5
+    rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 0
     audioClip: {fileID: 0}
@@ -43,28 +42,28 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 6
-    leftEmotionNum: 0
-    leftMouthEnum: 0
+    leftEmotionNum: 2
+    leftMouthEnum: 1
     leftEyesEnum: 0
     rightCharacter: 5
-    rightEmotionNum: 0
-    rightMouthEnum: 0
+    rightEmotionNum: 5
+    rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_2_3_Marcus_8_T2
-    audioString: "Next time you\u2019ll be the losers!"
+    audioString: "Next time we\u2019ll beat you chumps!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 6
-    leftEmotionNum: 0
-    leftMouthEnum: 0
+    leftEmotionNum: 2
+    leftMouthEnum: 2
     leftEyesEnum: 0
     rightCharacter: 5
-    rightEmotionNum: 0
-    rightMouthEnum: 0
+    rightEmotionNum: 5
+    rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip: {fileID: 0}

@@ -20,16 +20,15 @@ MonoBehaviour:
   ending: 2
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 15
+    leftMouthEnum: 1
+    leftEyesEnum: 1
     rightCharacter: 0
     rightEmotionNum: 0
     rightMouthEnum: 0
@@ -37,19 +36,19 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_3_Red_7_T1
-    audioString: Darwin~ wait!
+    audioString: Darwin, wait!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 12
+    rightMouthEnum: 1
+    rightEyesEnum: 3
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_3_Wally_8_T1
@@ -59,29 +58,45 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 11
+    leftMouthEnum: 1
+    leftEyesEnum: 3
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 12
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_3_Red_9_T1
-    audioString: We will just have to catch up to him eventually.
+    audioString: Sigh...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 11
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 12
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: B_1_3_Red_9_T2
+    audioString: "We\u2019ll just have to catch up to him eventually.."
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 12
+    rightMouthEnum: 1
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_3_Spindle_10_T1
@@ -91,13 +106,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_3_Spindle_10_T2
@@ -107,13 +122,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 13
+    rightMouthEnum: 1
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_3_Spindle_10_T3
@@ -123,14 +138,14 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
-    rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 0
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
     audioClip: {fileID: 0}
-    audioClipName: B_1_3_Red_11_T1
-    audioString: What?!
+    audioClipName: RedWally_What
+    audioString: What??!

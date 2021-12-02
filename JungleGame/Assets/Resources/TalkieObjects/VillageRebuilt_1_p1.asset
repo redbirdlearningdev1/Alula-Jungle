@@ -20,24 +20,7 @@ MonoBehaviour:
   ending: 2
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 0
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
-    rightCharacter: 0
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
-    audioClipName: $Segments
-    audioString: 
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -82,7 +65,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 5beef886f8e84594ab91c2ea1917ad49, type: 3}
     audioClipName: P_1_5_Wally_2_T1
     audioString: Good job!
@@ -146,11 +129,11 @@ MonoBehaviour:
     rightEmotionNum: 9
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: b3d90f9a2a170f04a979335773f16d9f, type: 3}
     audioClipName: P_1_5_Wally_4_T1
     audioString: "Does this mean you\u2019re getting your memories back? Will they
-      be able to help the prince?"
+      be able to help the Prince?"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -211,7 +194,7 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 3
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: a6c541628eb928646b3617b273dfe236, type: 3}
     audioClipName: P_1_5_Red_6_T1
     audioString: I'm glad!
@@ -246,4 +229,4 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 41c5a2dccbbffcd44b6d0f02053cea42, type: 3}
     audioClipName: P_1_5_Darwin_7_T2
-    audioString: "I\u2019m going to run up ahead and try to catch up to the prince!"
+    audioString: "I\u2019m going to run up ahead and try to catch up to Julius!"

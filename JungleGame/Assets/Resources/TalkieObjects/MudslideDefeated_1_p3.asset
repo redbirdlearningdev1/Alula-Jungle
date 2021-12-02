@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 2
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -69,7 +68,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 1c78c94c82e102643b72694f2a0aa88b, type: 3}
     audioClipName: P_2_3_Red_11_T1
-    audioString: "Hopefully he\u2019s thought of something to help the prince."
+    audioString: "Hopefully he\u2019s thought of something to help the Prince."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -85,4 +84,4 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_2_3_Wally_12_T1
-    audioString: I agree~ let's hope he does.
+    audioString: I agree, let's hope he does.

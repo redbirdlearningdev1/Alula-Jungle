@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -35,9 +34,9 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: bc62132cda536284295408b65f009f86, type: 3}
-    audioClipName: P_1_1_Marcus_26_T1
-    audioString: HAHAHA!
+    audioClip: {fileID: 0}
+    audioClipName: Marcus_Laugh
+    audioString: HA HA HA!!!!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -51,54 +50,54 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: e560a2f635330474a80ba89adf2c46d9, type: 3}
-    audioClipName: P_1_1_Brutus_27_T1
-    audioString: 'Heh heh heh. '
+    audioClip: {fileID: 0}
+    audioClipName: Brutus_Laugh
+    audioString: 'Heh heh... '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 6
-    leftEmotionNum: 0
-    leftMouthEnum: 0
+    leftEmotionNum: 3
+    leftMouthEnum: 1
     leftEyesEnum: 0
     rightCharacter: 5
-    rightEmotionNum: 0
-    rightMouthEnum: 0
+    rightEmotionNum: 4
+    rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: FR_1_1_Marcus_42_T1
-    audioString: See you later chumps!
+    audioString: See you later, chumps!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 6
-    leftEmotionNum: 0
-    leftMouthEnum: 0
+    leftEmotionNum: 3
+    leftMouthEnum: 2
     leftEyesEnum: 0
     rightCharacter: 5
-    rightEmotionNum: 0
-    rightMouthEnum: 0
+    rightEmotionNum: 3
+    rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: FR_1_1_Brutus_43_T1
-    audioString: "bye\u2026"
+    audioString: "Bye\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 6
-    leftEmotionNum: 0
-    leftMouthEnum: 0
+    leftEmotionNum: 8
+    leftMouthEnum: 2
     leftEyesEnum: 0
     rightCharacter: 5
-    rightEmotionNum: 0
-    rightMouthEnum: 0
+    rightEmotionNum: 2
+    rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: FR_1_1_Brutus_43_T2
-    audioString: "chumps\u2026"
+    audioString: "Chumps\u2026"

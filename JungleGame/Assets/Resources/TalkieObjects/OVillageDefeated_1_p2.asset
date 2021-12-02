@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -53,7 +52,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 53dbaadf9a72a5349afe07928fa7311a, type: 3}
     audioClipName: P_3_3_Red_8_T1
-    audioString: "It\u2019s okay~"
+    audioString: "It\u2019s okay,"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -85,7 +84,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_3_3_Clogg_9_T1
-    audioString: "I see\u2026 So it really was the prince. "
+    audioString: "I see\u2026 So it really was the Prince. "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -101,7 +100,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_3_3_Clogg_9_T2
-    audioString: I apologize for doubting you.
+    audioString: 'My apologies for doubting you. '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -133,7 +132,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: bcb7df972d2dc2a40a52b51972c25216, type: 3}
     audioClipName: P_3_3_Red_10_T2
-    audioString: It does seem a bit strange that a prince would do this to their
+    audioString: It does seem a bit strange that a Prince would do this to their
       own kingdom.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -150,7 +149,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_3_3_Clogg_11_T1
-    audioString: I worry for the future of this kingdom.
+    audioString: 'It makes me worry for the future of this kingdom. '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -166,7 +165,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_3_3_Clogg_12_T1
-    audioString: Maybe the tigers aren't fit to rule.
+    audioString: Maybe it might be best if the tigers weren't rulers anymore.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -198,7 +197,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 430f7877a93dea649aeee611eae6370c, type: 3}
     audioClipName: P_3_3_Red_13_T2
-    audioString: "We\u2019re on a mission to help the pince~ and stop this!"
+    audioString: "We\u2019re on a mission to help the Prince, and stop this!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -214,7 +213,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_3_3_Clogg_14_T1
-    audioString: We will see.
+    audioString: 'I guess only time will tell. '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -278,7 +277,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_3_3_Wally_16_T1
-    audioString: Let's move forward~ team!
+    audioString: Let's move forward, team!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

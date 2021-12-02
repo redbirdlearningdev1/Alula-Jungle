@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 2
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -53,7 +52,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 03966973fcae46b47918f5daad0c015e, type: 3}
     audioClipName: P_0_1_Red_1_1_T2
-    audioString: Welcome to the Jungle kingdom explorer!
+    audioString: Welcome to the Jungle kingdom Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

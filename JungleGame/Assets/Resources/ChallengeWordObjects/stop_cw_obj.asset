@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdfd6af85ce95e84c9c41f78b3e3f482, type: 3}
   m_Name: stop_cw_obj
   m_EditorClassIdentifier: 
-  word: top
-  audio: {fileID: 8300000, guid: 9ab29efc7b27b444eb90af5620742608, type: 3}
-  sprite: {fileID: 0}
-  elkoninList: 270000000500000022000000000000000000000000000000
-  elkoninCount: 3
+  word: stop
+  audio: {fileID: 8300000, guid: c54194e709cb90f4a9a3a22a1c96bb44, type: 3}
+  sprite: {fileID: 21300000, guid: a7f7575a22a568b47be90e44c2d1d1fd, type: 3}
+  elkoninList: 250000002700000005000000220000000000000000000000
+  elkoninCount: 4
   set: 4

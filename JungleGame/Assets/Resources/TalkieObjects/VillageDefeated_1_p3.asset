@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 2
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -85,7 +84,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: d3b542e8ac178934281a0a4b82437897, type: 3}
     audioClipName: P_1_6_Red_12_T1
-    audioString: Alright explorer!
+    audioString: Alright Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

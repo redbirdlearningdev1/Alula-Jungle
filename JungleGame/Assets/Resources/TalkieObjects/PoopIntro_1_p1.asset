@@ -20,20 +20,19 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 16
+    leftMouthEnum: 1
+    leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 14
+    rightMouthEnum: 1
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_3_1_RedWally_1_T1
@@ -43,13 +42,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 6
+    leftMouthEnum: 1
+    leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 14
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_3_1_Red_2_T1
@@ -59,13 +58,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 16
+    leftMouthEnum: 1
+    leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 14
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_3_1_Red_2_T2
@@ -75,13 +74,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 16
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 14
+    rightMouthEnum: 1
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_3_1_Wally_3_T1
@@ -91,29 +90,29 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 10
+    leftMouthEnum: 1
+    leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 14
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_3_1_Red_4_T1
-    audioString: I agree~
+    audioString: I agree,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 16
+    leftMouthEnum: 1
+    leftEyesEnum: 4
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 14
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_3_1_Red_4_T2
@@ -123,13 +122,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 16
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 8
+    rightMouthEnum: 1
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_3_1_Wally_5_T1

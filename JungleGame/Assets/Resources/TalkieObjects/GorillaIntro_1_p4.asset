@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 0
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -37,7 +36,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 61612a9f20b43a24d999b6b213101f48, type: 3}
     audioClipName: P_1_1_Wally_40_T1
-    audioString: "If this is the prince we\u2019re supposed to help"
+    audioString: "If this is the Prince we\u2019re supposed to help"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -117,7 +116,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 800d2a658a39b9a4c978e43d1d6be6fb, type: 3}
     audioClipName: P_1_1_Darwin_41_T4
-    audioString: "umm\u2026this\u2026"
+    audioString: "uUmm\u2026this\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -197,7 +196,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 03962b3405b54f84d877bf8ca071d37f, type: 3}
     audioClipName: P_1_1_Red_46_T1
-    audioString: Darwin~ you know the prince the most.
+    audioString: Darwin, you know the Prince the most.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -357,7 +356,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: ec53dea83dcb8c143bf8a05ff4f26980, type: 3}
     audioClipName: P_1_1_Red_51_T2
-    audioString: Besides~ we shouldn't leave things messy anyway!
+    audioString: Besides, we shouldn't leave things messy anyway!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -421,7 +420,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 460444efba4c9ab4e9badc0483514504, type: 3}
     audioClipName: P_1_1_Red_53_T1
-    audioString: Okay explorer!
+    audioString: Okay Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

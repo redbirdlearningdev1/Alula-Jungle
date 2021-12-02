@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -69,7 +68,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: e7a96799435881f4d8959e5445ea75ba, type: 3}
     audioClipName: Cha_0_2_Red_2_T1
-    audioString: You're doing great explorer!
+    audioString: You're doing great Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -133,7 +132,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2_Brutus_4_T1
-    audioString: "yawn\u2026"
+    audioString: "Yawn\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -181,7 +180,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Cha_0_2_Brutus_5_T1
-    audioString: "Okay explorer\u2026"
+    audioString: "Okay Explorer\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

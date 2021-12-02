@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -37,7 +36,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: a1641fc8e763c664389476555c8100ab, type: 3}
     audioClipName: Boat_0_1_Red_1_1_T1
-    audioString: Hey there explorer!
+    audioString: Hey there Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -85,8 +84,8 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 7d19f1e4a11239d498a96c28c665efed, type: 3}
     audioClipName: Boat_0_1_Red_2_1_T1
-    audioString: You see~ my friend Darwin said that he needs help watching over
-      the Jungle kingdom while the king is away.
+    audioString: You see, my friend Darwin said that he needs help watching over
+      the Jungle kingdom while the King is away.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -102,7 +101,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 312fb340e8d5f864089ab482dc0599a3, type: 3}
     audioClipName: Boat_0_1_Red_2_1_T2
-    audioString: Prince Julius has been put in charge all by himself~ and needs as
+    audioString: Prince Julius has been put in charge all by himself, and needs as
       much help as he can get!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -119,7 +118,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: c36ab2d89876d6d4da78d77cf4d3b228, type: 3}
     audioClipName: Boat_0_1_Red_3_1_T1
-    audioString: I know how reliable you are~ friend~ that's why I'm so happy you
+    audioString: I know how reliable you are, friend, that's why I'm so happy you
       agreed to come along with us!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -136,5 +135,5 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: e954dcf77ad32994b8780566c28ab7ca, type: 3}
     audioClipName: Boat_0_1_Red_3_1_T2
-    audioString: "Plus~ this jungle is full of exciting games so I know that we\u2019ll
+    audioString: "Plus, this jungle is full of exciting games so I know that we\u2019ll
       have so much fun!"

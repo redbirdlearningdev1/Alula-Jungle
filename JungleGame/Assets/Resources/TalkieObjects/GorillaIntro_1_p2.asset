@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 1
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -85,7 +84,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: bf513c09fd8b44b4f9f1f986997b4b3f, type: 3}
     audioClipName: P_1_1_Brutus_13_T2
-    audioString: yawn...
+    audioString: Yawn...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -133,7 +132,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 9fb2311a06c13c24b968f28013ff5bdd, type: 3}
     audioClipName: P_1_1_Marcus_15_T2
-    audioString: Since you are the future king you can do anything you want! Haha!
+    audioString: Since you are the future King you can do anything you want! Haha!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -165,7 +164,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 7048447d3ff1f17489db9a8990b4b0a7, type: 3}
     audioClipName: P_1_1_Brutus_17_T1
-    audioString: "yeah\u2026"
+    audioString: "Yeah\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -181,7 +180,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: b276dc09c27a47b4b882eb8c6e7334bb, type: 3}
     audioClipName: P_1_1_Brutus_17_T2
-    audioString: "the whole kingdom is yours to do as you please\u2026"
+    audioString: "The whole kingdom is yours to do as you please\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -213,7 +212,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 26798a529a37e7f4b9f4e63e23f9afd3, type: 3}
     audioClipName: P_1_1_Marcus_18_T2
-    audioString: You can do anything your little heart desires my prince!
+    audioString: You can do anything your little heart desires my Prince!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -261,7 +260,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: a25980f281896b845a55460a3c2b42a5, type: 3}
     audioClipName: P_1_1_Brutus_20_T1
-    audioString: "Yes~ anything you want...take your frustration and nerves out on
+    audioString: "Yes, anything you want...take your frustration and nerves out on
       this village\u2026 "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -374,7 +373,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: b96b253dda4422143b9a95001a0e951b, type: 3}
     audioClipName: P_1_1_Marcus_21_T3
-    audioString: This is your playground my prince!
+    audioString: This is your playground my Prince!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -406,7 +405,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: be406c610bdcb134e8bf2f4216d2b42d, type: 3}
     audioClipName: P_1_1_Julius_22_T2
-    audioString: I am the future king!
+    audioString: I am the future King!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

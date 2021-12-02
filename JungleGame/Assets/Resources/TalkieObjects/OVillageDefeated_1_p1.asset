@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 0
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -69,7 +68,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 9e02e1edcb91385428c65c1755d50859, type: 3}
     audioClipName: P_3_3_Red_2_T1
-    audioString: Good Job explorer!
+    audioString: Good Job Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -117,7 +116,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: P_3_3_Marcus_4_T1
-    audioString: How dare you make a mockery of the future king!
+    audioString: How dare you make a monkey of the future King!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -149,7 +148,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_3_3_Brutus_5_T2
-    audioString: "dang\u2026"
+    audioString: "Dang\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

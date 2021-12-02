@@ -18,9 +18,8 @@ MonoBehaviour:
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
   ending: 2
-  removeBackgroundAfterTalkie: 0
+  removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -149,7 +148,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: fc8121f3289985c4297d3b962077efe9, type: 3}
     audioClipName: P_1_1_Red_5_T1
-    audioString: "And this here is the explorer! They\u2019re super smart and can't
+    audioString: "And this here is the Explorer! They\u2019re super smart and can't
       wait to help and learn!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -198,7 +197,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: d9ed2a554b335b94e97ea7e7f45a4d60, type: 3}
     audioClipName: P_1_1_Darwin_6_T3
-    audioString: "You see\u2026 I used to be the king's most trusted\u2026."
+    audioString: "You see\u2026 I used to be the King's most trusted\u2026."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -279,7 +278,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 964b1d563e1a8e74b964669b93740e44, type: 3}
     audioClipName: P_1_1_Wally_7_T1
-    audioString: Red was saying earlier that the king is away? Why is that?
+    audioString: Red was saying earlier that the King is away? Why is that?
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -311,7 +310,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: eae5170cf1ae9304691099ea744eb4a4, type: 3}
     audioClipName: P_1_1_Darwin_8_T2
-    audioString: "Yes yes the king is away to\u2026"
+    audioString: "Yes yes the King is away to\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -358,8 +357,8 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 0}
-    audioClipName: P_1_1_RedWally_9_T1
-    audioString: '!!!'
+    audioClipName: RedWally_Huh
+    audioString: Huh?!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -375,7 +374,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: bc5d406ddcb03da4ba8b61f968523572, type: 3}
     audioClipName: P_1_1_Darwin_11_T1
-    audioString: The king went out to help another kingdom in need!
+    audioString: The King went out to help another kingdom in need!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -407,7 +406,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 88bc25c84aeed4b4ea154674cf9d3f92, type: 3}
     audioClipName: P_1_1_Darwin_11_T3
-    audioString: A kind king indeed...
+    audioString: A kind King indeed...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

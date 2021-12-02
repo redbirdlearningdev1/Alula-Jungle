@@ -19,7 +19,7 @@ MonoBehaviour:
   addLetterboxBeforeTalkie: 1
   ending: 0
   removeBackgroundAfterTalkie: 0
-  removeLetterboxAfterTalkie: 1
+  removeLetterboxAfterTalkie: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: b1b7a462f0106694f98476f10ae64f7f, type: 3}
     audioClipName: P_1_4_Lester_5_T5
-    audioString: If you ever want to place your stickers or view your collection~
+    audioString: If you ever want to place your stickers or view your collection,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -117,3 +117,36 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 766bb0c364c0b1645a3c73a8a8d98493, type: 3}
     audioClipName: P_1_4_Lester_5_T6
     audioString: 'call for me again and click the stickerboard! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 4
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 1c3ad8270cfb8d44c908d9bcbc261df5, type: 3}
+    audioClipName: P_1_4_Lester_6_T1
+    audioString: If you have the funds you can also buy more boards to place your
+      stickers on!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 4
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 1e846e94dd4a127418751a455ad57ac9, type: 3}
+    audioClipName: P_1_4_Lester_6_T2
+    audioString: I have MANY cool boards from my travels! so help yourself!

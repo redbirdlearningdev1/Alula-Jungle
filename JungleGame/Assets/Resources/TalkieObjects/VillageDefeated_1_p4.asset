@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 2
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -89,7 +88,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: f4b3df70ec60fd34bb6d552a1a608d64, type: 3}
     audioClipName: P_1_6_Red_15_T1
-    audioString: That's weird~
+    audioString: That's weird,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -121,7 +120,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 244cc9f1a681bc54dac887248a08cf5b, type: 3}
     audioClipName: P_1_6_Red_16_T1
-    audioString: If you tap on it~ you can probably play the princes challenge games!
+    audioString: If you tap on it, you can probably play the Princes challenge games!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -138,3 +137,35 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 3983b4224b46db549a6d754f41a0085d, type: 3}
     audioClipName: P_1_6_Red_17_T1
     audioString: You should try it when you want to practice your skills!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_6_Wally_18_T1
+    audioString: I think you should consider using it, Explorer
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_6_Wally_19_T2
+    audioString: Practice makes perfect.

@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -100,8 +99,8 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip: {fileID: 0}
-    audioClipName: Cha_0_1_Marcus_2_T1
-    audioString: HA HA HA!!!
+    audioClipName: Marcus_Laugh
+    audioString: HA HA HA!!!!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -133,7 +132,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Cha_0_1_Marcus_2_T3
-    audioString: Are you ready to lose explorer!?
+    audioString: Are you ready to lose Explorer!?
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -148,8 +147,8 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip: {fileID: 0}
-    audioClipName: Cha_0_1_Marcus_3_T1
-    audioString: HA HA HA!!!
+    audioClipName: Marcus_Laugh
+    audioString: HA HA HA!!!!
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0
@@ -165,7 +164,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Cha_0_1_Marcus_3_T2
-    audioString: 'Prepare yourself explorer! '
+    audioString: 'Prepare yourself Explorer! '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -244,5 +243,5 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip: {fileID: 0}
-    audioClipName: Cha_0_1_Marcus_4_T5
-    audioString: HA HA HA!
+    audioClipName: Marcus_Laugh
+    audioString: HA HA HA!!!!

@@ -20,24 +20,7 @@ MonoBehaviour:
   ending: 2
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 0
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
-    rightCharacter: 0
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
-    audioClipName: $Segments
-    audioString: 
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -53,7 +36,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 157cc4dd5e2f58249a54665f3ec6b0b8, type: 3}
     audioClipName: P_1_5_Red_8_T1
-    audioString: Alright explorer!
+    audioString: Alright Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -82,7 +65,7 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 0}
-    audioClipName: P_1_5_RedWally_9_T3
-    audioString: '!!!'
+    audioClipName: RedWally_Oh
+    audioString: Oh!

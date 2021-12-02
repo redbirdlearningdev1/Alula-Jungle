@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdfd6af85ce95e84c9c41f78b3e3f482, type: 3}
   m_Name: cold_cw_obj
   m_EditorClassIdentifier: 
-  word: old
-  audio: {fileID: 8300000, guid: 327879473b1262949a8c615bc7b3337e, type: 3}
-  sprite: {fileID: 21300000, guid: ee5cc99766ef0534baad1b8a49db3381, type: 3}
-  elkoninList: 0a0000001f00000019000000000000000000000000000000
-  elkoninCount: 3
+  word: cold
+  audio: {fileID: 8300000, guid: 2a9bc9f2a8dd7b548bb967c484a52671, type: 3}
+  sprite: {fileID: 21300000, guid: a79d22e91116b7f49a1c3317a6b8cc17, type: 3}
+  elkoninList: 170000000a0000001f000000190000000000000000000000
+  elkoninCount: 4
   set: 9

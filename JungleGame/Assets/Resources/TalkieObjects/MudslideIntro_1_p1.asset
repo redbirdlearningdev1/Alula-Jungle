@@ -14,13 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: MudslideIntro_1_p1
   quipsCollection: 0
-  start: 1
+  start: 0
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
   ending: 2
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -35,9 +34,9 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 0}
-    audioClipName: P_2_1_Wally_1
-    audioString: It looks like they destroyed this area as well
+    audioClip: {fileID: 8300000, guid: e3104a849225c6b41b3663ba5d69c965, type: 3}
+    audioClipName: P_2_1_Wally_1_T1
+    audioString: It looks like they destroyed this area as well.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -51,6 +50,6 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
-    audioClipName: P_2_1_Red_2
+    audioClip: {fileID: 8300000, guid: 748f9445061b0d548bd0286f3633e0ee, type: 3}
+    audioClipName: P_2_1_Red_2_T1
     audioString: "Let\u2019s clean up before moving forward!"

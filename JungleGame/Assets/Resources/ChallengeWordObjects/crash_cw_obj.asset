@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdfd6af85ce95e84c9c41f78b3e3f482, type: 3}
   m_Name: crash_cw_obj
   m_EditorClassIdentifier: 
-  word: rash
-  audio: {fileID: 8300000, guid: 1990b335b7e7e2f44983dad186d07d60, type: 3}
+  word: crash
+  audio: {fileID: 8300000, guid: 5fcf438942c680e42a378edfcf4cd34a, type: 3}
   sprite: {fileID: 0}
-  elkoninList: 240000000200000026000000000000000000000000000000
-  elkoninCount: 3
+  elkoninList: 170000002400000002000000260000000000000000000000
+  elkoninCount: 4
   set: 1

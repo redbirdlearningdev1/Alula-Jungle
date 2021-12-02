@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 2
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -69,7 +68,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 72e9d40e9ba84844a8b75ee7557dcd0d, type: 3}
     audioClipName: P_2_2_Red_1_T3
-    audioString: Good job explorer!
+    audioString: Good job Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -132,5 +131,5 @@ MonoBehaviour:
     rightEyesEnum: 4
     activeCharacter: 1
     audioClip: {fileID: 0}
-    audioClipName: P_2_2_RedWally_3_T1
+    audioClipName: RedWally_Huh
     audioString: Huh?!

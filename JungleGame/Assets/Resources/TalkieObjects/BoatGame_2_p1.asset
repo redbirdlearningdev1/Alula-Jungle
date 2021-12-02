@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -37,7 +36,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: Boat_0_2_Red_1_T1
-    audioString: Whoa there explorer!
+    audioString: Whoa there Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -101,7 +100,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: Boat_0_2_Red_1_T5
-    audioString: 'Do you want to go on another boat ride explorer? '
+    audioString: 'Do you want to go on another boat ride Explorer? '
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0
@@ -133,4 +132,4 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: Boat_0_2_Red_3_T1
-    audioString: Then we better get back to the task at hand~ explorer!
+    audioString: Then we better get back to the task at hand, Explorer!

@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -53,7 +52,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: cc27ea3b65545234c8a76dcc35f8c0f7, type: 3}
     audioClipName: Cha_0_0_Julius_1_T2
-    audioString: You have guts
+    audioString: You've got guts
   - endTalkieAfterThisSegment: 0
     requireYN: 1
     onYesGoto: 3
@@ -85,7 +84,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 530d59319c9990a40b23741904bc7c32, type: 3}
     audioClipName: Cha_0_1b_Julius_2_T1
-    audioString: Alright~ let's do this.
+    audioString: Alright, let's do this.
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0

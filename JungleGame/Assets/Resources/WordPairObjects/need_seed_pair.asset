@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f49655c47c49b747b3315e00db7aacd, type: 3}
+  m_Name: need_seed_pair
+  m_EditorClassIdentifier: 
+  soundCoin: 7
+  pairType: 0
+  word1: {fileID: 11400000, guid: 48870957918ad0f4eb1c56586e0d91fa, type: 2}
+  word2: {fileID: 11400000, guid: f0e1a45abb0c4e647b360e6a92a8afdd, type: 2}

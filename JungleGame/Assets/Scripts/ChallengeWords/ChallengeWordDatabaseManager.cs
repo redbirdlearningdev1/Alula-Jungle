@@ -21,6 +21,14 @@ public struct ChallengeWordEntry
     }
 }
 
+public struct ChallengePairEntry
+{
+    public ActionWordEnum soundCoin;
+    public PairType pairType;
+    public ChallengeWord word1;
+    public ChallengeWord word2;
+}
+
 public class ChallengeWordDatabaseManager : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown fileDropdown;
@@ -28,12 +36,18 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textText;
     [SerializeField] private TextMeshProUGUI updateText;
 
+    [Header("Challenge Word Pairs")]
+    [SerializeField] private TMP_Dropdown pairsDropdown;
+    [SerializeField] private TextMeshProUGUI pairsText;
+
     private List<ChallengeWordEntry> challengeWords;
+    private List<ChallengePairEntry> challengePairs;
     private List<string> filePaths;
     private string fileText;
 
     private bool loadDone = false;
     private bool testDone = false;
+    private bool updateDone = false;
 
     private const string csv_folder_path = "Assets/Resources/CSV_folder/";
 
@@ -77,9 +91,14 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
             // add to list
             profileList.Add(filesInfo[i].Name);
         }
+        // update file dropdown
         fileDropdown.ClearOptions();
         fileDropdown.AddOptions(profileList);
         fileDropdown.value = 0;
+        // update pair dropdown
+        pairsDropdown.ClearOptions();
+        pairsDropdown.AddOptions(profileList);
+        pairsDropdown.value = 0;
     }
 
     private void SetupFilePathList(FileInfo[] filesInfo)
@@ -177,8 +196,6 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
 
                         case 8: // set
                             entry.set = ConvertToActionWord(cell);
-                            print ("set cell: " + cell);
-                            print ("set found: " + entry.set);
                             break;
                     }
                     column_count++;
@@ -236,6 +253,129 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
 
         updateText.color = Color.green;
         updateText.text = "database updated!";
+        updateDone = true;
+    }
+
+    public void OnUploadPairsPressed()
+    {
+        // get all text from correct file
+        fileText = System.IO.File.ReadAllText(filePaths[pairsDropdown.value]);
+        Debug.Log("uploading file '" + filePaths[pairsDropdown.value] + "'");
+        //print ("full-text: " + fileText);
+
+        UpdatePairs();
+
+        // change text and color
+        pairsText.color = Color.green;
+        pairsText.text = "challenge word pairs updated!";
+    }
+
+    public void UpdatePairs()
+    {
+        bool firstLine = true;
+        bool passTest = true;
+        string errorMsg = "";
+
+        // change text and color
+        textText.color = Color.cyan;
+        //textText.text = "testing file '" + pairsDropdown.options[pairsDropdown.value].text + "'";
+
+        challengePairs = new List<ChallengePairEntry>();
+
+        // create challenge word global list
+        ChallengeWordDatabase.InitCreateGlobalList();
+        //print ("challenge word global list: " + ChallengeWordDatabase.globalChallengeWordList.Count);
+
+        // split text into elkonin values
+        string[] lines = fileText.Split('\n');
+        int lineCount = 1;
+        foreach (string line in lines)
+        {
+            // skip first line
+            if (firstLine)
+            {
+                firstLine = false;
+                continue;
+            }
+
+            var entry = new ChallengePairEntry();
+            string[] rowData = line.Split(',');
+
+            // check that row is at least long
+            if (rowData.Length <= 4)
+            {   
+                passTest = false;
+                errorMsg = "invalid row size @ line " + lineCount;
+                break;
+            }
+
+            int column_count = 0;   
+
+            try 
+            {
+                foreach (string cell in rowData)
+                {
+                    switch (column_count)
+                    {
+                        case 0: // sound coin
+                            entry.soundCoin = ConvertToActionWord(cell);
+                            break;
+
+                        case 1: // sound coin length
+                            break;
+
+                        case 2: // e1
+                            var word1 = ChallengeWordDatabase.FindWord(cell);
+                            entry.word1 = word1;
+                            break;
+                        case 3: // e2
+                            var word2 = ChallengeWordDatabase.FindWord(cell);
+                            entry.word2 = word2;
+                            break;
+
+                        case 4: // pair type
+                            if (cell == "Sub")
+                                entry.pairType = PairType.sub;
+                            else 
+                                entry.pairType = PairType.del_add;
+                            break;
+                    }
+                    column_count++;
+                }
+            }
+            catch
+            {
+                passTest = false;
+                errorMsg = "invalid cell detected @ line " + lineCount + " column " + column_count;
+            }
+
+            // add entry to list
+            challengePairs.Add(entry);
+            lineCount++;
+        }
+
+        print ("word pairs found: " + challengePairs.Count);
+
+        // update challenge word pairs 
+#if UNITY_EDITOR
+        foreach (var entry in challengePairs)
+        {
+            ChallengeWordDatabase.UpdateCreatePair(entry);
+        }
+#endif
+
+        // change test outcome text
+        if (passTest)
+        {
+            textText.color = Color.green;
+            textText.text = "update complete - successful!";
+            testDone = true;
+        }
+        else
+        {
+            textText.color = Color.red;
+            textText.text = "update complete - fail: " + errorMsg;
+        }
     }
 
     private ElkoninValue ConvertToElkoninValue(string val)
@@ -434,5 +574,6 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
 
         loadDone = false;
         testDone = false;
+        updateDone = false;
     }
 }

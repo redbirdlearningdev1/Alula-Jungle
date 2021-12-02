@@ -11,14 +11,17 @@ public static class ChallengeWordDatabase
     public const string challenge_word_folder = "Assets/Resources/ChallengeWordObjects/";
     public const string challenge_word_sprites_folder = "Assets/Resources/PolaroidImages/WebImages/";
     public const string challenge_word_audio_folder = "Assets/Resources/ChallengeWordAudio/";
+    public const string challenge_word_pair_folder = "Assets/Resources/WordPairObjects/";
 
     public const string item_postfix = "_cw_obj";
     public const string sprite_postfix = "_cwimg";
     public const string audio_postfix = "_audio";
+    public const string pair_postfix = "_pair";
     
     public const int elkonin_word_separator = 21; // value at which > is consonant coins & <= are action word coins
 
     public static List<ChallengeWord> globalChallengeWordList;
+    public static List<WordPair> globalWordPairs;
 
     public static void InitCreateGlobalList(bool remove_incomplete_words = false)
     {
@@ -39,20 +42,42 @@ public static class ChallengeWordDatabase
         }
     }
 
+    public static void InitCreateGlobalPairList()
+    {
+        var words = Resources.LoadAll<WordPair>("WordPairObjects");
+
+        globalWordPairs = new List<WordPair>();
+        foreach (var word in words)
+        {
+            globalWordPairs.Add(word);
+        }
+    }
+
 #if UNITY_EDITOR
     public static void UpdateCreateWord(ChallengeWordEntry data)
     {   
-        string[] result = AssetDatabase.FindAssets(data.word + item_postfix);
-        ChallengeWord yourObject = null;
+        string exact_filename = data.word + item_postfix;
+        string[] results = AssetDatabase.FindAssets(exact_filename);
+        string result = "";
 
-        if (result.Length > 1)
+        // filter results to be exact string filename
+        foreach (var res in results)
         {
-            GameManager.instance.SendError("ChallengeWordDatabase", "multiple instances of challenge word -> " + data.word + item_postfix);
-            return;
+            string path = AssetDatabase.GUIDToAssetPath(res);
+            var split = path.Split('/');
+            var filename = split[split.Length - 1];
+
+            if (filename == exact_filename + ".asset")
+            {
+                result = path;
+                Debug.Log("result: " + result);
+            }
         }
 
+        ChallengeWord yourObject = null;
+
         // create new challenge word
-        if(result.Length == 0)
+        if(result == "")
         {
             GameManager.instance.SendLog("ChallengeWordDatabase", "!!! creating new challenge word -> " + data.word + item_postfix);
             yourObject = ScriptableObject.CreateInstance<ChallengeWord>();
@@ -62,11 +87,10 @@ public static class ChallengeWordDatabase
         else
         {
             GameManager.instance.SendLog("ChallengeWordDatabase", "%%% found challenge word -> " + data.word + item_postfix);
-            string path = AssetDatabase.GUIDToAssetPath(result[0]);
-            yourObject = (ChallengeWord)AssetDatabase.LoadAssetAtPath(path, typeof(ChallengeWord));
+            yourObject = (ChallengeWord)AssetDatabase.LoadAssetAtPath(result, typeof(ChallengeWord));
         }
 
-        GameManager.instance.SendLog("ChallengeWordDatabase", "yourObject -> " + yourObject);
+        GameManager.instance.SendLog("ChallengeWordDatabase", "yourObject -> " + yourObject.word);
 
         // Do your changes
         yourObject.word = data.word;
@@ -80,6 +104,57 @@ public static class ChallengeWordDatabase
 
         // find word audio
         yourObject.audio = FindWordAudio(data.word);
+
+        EditorUtility.SetDirty(yourObject);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+    }
+
+    public static void UpdateCreatePair(ChallengePairEntry entry)
+    {
+        Debug.Log(entry.word1.word + " & " + entry.word2.word + " - pair type:" + entry.pairType);
+
+        string exact_filename = entry.word1.word + "_" + entry.word2.word + pair_postfix;
+        string[] results = AssetDatabase.FindAssets(exact_filename);
+        string result = "";
+
+        // filter results to be exact string filename
+        foreach (var res in results)
+        {
+            string path = AssetDatabase.GUIDToAssetPath(res);
+            var split = path.Split('/');
+            var filename = split[split.Length - 1];
+
+            if (filename == exact_filename + ".asset")
+            {
+                result = path;
+                Debug.Log("result: " + result);
+            }
+        }
+
+        WordPair yourObject = null;
+
+        // create new word pair object
+        if(result == "")
+        {
+            GameManager.instance.SendLog("ChallengeWordDatabase", "!!! creating new challenge word pair -> " + exact_filename);
+            yourObject = ScriptableObject.CreateInstance<WordPair>();
+            AssetDatabase.CreateAsset(yourObject, challenge_word_pair_folder + exact_filename + ".asset");
+        }
+        // get word pair object
+        else
+        {
+            GameManager.instance.SendLog("ChallengeWordDatabase", "%%% found challenge word pair -> " + exact_filename);
+            yourObject = (WordPair)AssetDatabase.LoadAssetAtPath(result, typeof(WordPair));
+        }
+
+        //GameManager.instance.SendLog("ChallengeWordDatabase", "yourObject -> " + yourObject.word);
+
+        // Do your changes
+        yourObject.soundCoin = entry.soundCoin;
+        yourObject.pairType = entry.pairType;
+        yourObject.word1 = entry.word1;
+        yourObject.word2 = entry.word2;
 
         EditorUtility.SetDirty(yourObject);
         AssetDatabase.SaveAssets();

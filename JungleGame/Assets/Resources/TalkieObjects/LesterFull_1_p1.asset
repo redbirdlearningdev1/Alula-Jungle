@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -53,7 +52,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 8b666026ca7145f49b264688bcc79325, type: 3}
     audioClipName: Sticker_0_2_Lester_1_T2
-    audioString: "Hold your stickers there explorer! You\u2019re all out of inventory
+    audioString: "Hold your stickers there Explorer! You\u2019re all out of inventory
       space."
   - endTalkieAfterThisSegment: 0
     requireYN: 0

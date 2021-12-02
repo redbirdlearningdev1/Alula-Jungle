@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdfd6af85ce95e84c9c41f78b3e3f482, type: 3}
   m_Name: appear_cw_obj
   m_EditorClassIdentifier: 
-  word: pear
-  audio: {fileID: 8300000, guid: 8c9c256e07fd33845a20e059fd2e7cd1, type: 3}
-  sprite: {fileID: 21300000, guid: b32b83103c3d12b479295c4cb0f55a2d, type: 3}
-  elkoninList: 220000000d00000000000000000000000000000000000000
-  elkoninCount: 2
-  set: 12
+  word: appear
+  audio: {fileID: 0}
+  sprite: {fileID: 0}
+  elkoninList: 060000002200000000000000000000000000000000000000
+  elkoninCount: 3
+  set: 0

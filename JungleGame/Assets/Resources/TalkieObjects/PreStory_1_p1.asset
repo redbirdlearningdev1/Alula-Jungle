@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -37,7 +36,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: f034dfa15a307d34c8cd90278d6dd808, type: 3}
     audioClipName: P_1_1a_Darwin_1_T1
-    audioString: Hey wait! Not so fast explorer.
+    audioString: Hey wait! Not so fast Explorer.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -51,7 +50,38 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: fd15f2853518e664abdb2ed17c0f2ad7, type: 3}
-    audioClipName: P_1_1a_Darwin_2_T1
-    audioString: "Come talk to me so I can prepare you for the challenges you\u2019ll
-      face!"
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1a_Darwin_2_T2
+    audioString: Come talk to me so I can...
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 4
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1a_Darwin_2_T3
+    audioString: uhh...
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 0
+    audioClip: {fileID: 0}
+    audioClipName: P_1_1a_Darwin_2_T4
+    audioString: "prepare you for the challenges you\u2019ll face!"

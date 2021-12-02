@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdfd6af85ce95e84c9c41f78b3e3f482, type: 3}
   m_Name: curious_cw_obj
   m_EditorClassIdentifier: 
-  word: us
-  audio: {fileID: 8300000, guid: e29d307a5eed5724e8e70371582a50f0, type: 3}
-  sprite: {fileID: 21300000, guid: a78e9489071038b4faba5c1fbf82a12f, type: 3}
-  elkoninList: 060000000a00000000000000000000000000000000000000
-  elkoninCount: 2
-  set: 5
+  word: curious
+  audio: {fileID: 0}
+  sprite: {fileID: 0}
+  elkoninList: 170000001100000008000000000000002500000000000000
+  elkoninCount: 5
+  set: 16

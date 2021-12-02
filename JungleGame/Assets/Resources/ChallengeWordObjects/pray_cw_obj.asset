@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdfd6af85ce95e84c9c41f78b3e3f482, type: 3}
   m_Name: pray_cw_obj
   m_EditorClassIdentifier: 
-  word: ray
-  audio: {fileID: 8300000, guid: 9c5c7df4482ef004595417438649e0da, type: 3}
-  sprite: {fileID: 21300000, guid: f0cb2a159fce8c24d933f1be8d14dd0e, type: 3}
-  elkoninList: 240000000700000000000000000000000000000000000000
-  elkoninCount: 2
+  word: pray
+  audio: {fileID: 8300000, guid: 797420f87467bd54c88be583077f6418, type: 3}
+  sprite: {fileID: 21300000, guid: 77ceea9cf30664541aff4e8e69d43fc2, type: 3}
+  elkoninList: 220000002400000007000000000000000000000000000000
+  elkoninCount: 3
   set: 6

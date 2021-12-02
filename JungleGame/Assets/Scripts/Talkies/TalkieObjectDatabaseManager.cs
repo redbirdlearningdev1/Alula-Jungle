@@ -185,9 +185,10 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
 
         // split text into elkonin values
         string[] lines = fileText.Split('\n');
-        int lineCount = 1;
+        int lineCount = 0;
         foreach (string line in lines)
         {
+            lineCount++;
             int column_count = 0;
 
             // skip first line
@@ -448,7 +449,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
 
                                 break;
                             case 1: // text
-                                segment.audioString = cell;
+                                segment.audioString = cell.Replace("~", ",");
                                 break;
                             case 2: // index
                                 break;
@@ -638,8 +639,6 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                 e.PrintError();
                 return;
             }
-
-            lineCount++;
         }
 
         // change test outcome text

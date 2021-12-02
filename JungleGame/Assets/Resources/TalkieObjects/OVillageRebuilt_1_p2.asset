@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -35,9 +34,9 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: bc62132cda536284295408b65f009f86, type: 3}
-    audioClipName: P_1_1_Marcus_26_T1
-    audioString: HAHAHA!
+    audioClip: {fileID: 0}
+    audioClipName: Marcus_Laugh
+    audioString: HA HA HA!!!!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -51,9 +50,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: e560a2f635330474a80ba89adf2c46d9, type: 3}
-    audioClipName: P_1_1_Brutus_27_T1
-    audioString: 'Heh heh heh. '
+    audioClip: {fileID: 0}
+    audioClipName: Brutus_Laugh
+    audioString: 'Heh heh..... '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -85,7 +84,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: P_3_2_Wally_18_T1
-    audioString: "That\u2019s right."
+    audioString: "That\u2019s right,  we were."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -101,7 +100,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_3_2_Marcus_19_T1
-    audioString: You have no right to speak to the future king!
+    audioString: You have no right to speak to the future King!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -149,7 +148,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_3_2_Marcus_21_T1
-    audioString: QUIET YOU BUFFOON!
+    audioString: QUIET YOU BABOON!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -181,7 +180,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_3_2_Marcus_23_T1
-    audioString: 'The future king is simply doing what he is allowed to do! '
+    audioString: 'The future King is simply doing what he is allowed to do! '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -213,7 +212,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_3_2_Julius_24_T2
-    audioString: "I\u2019m the future king!"
+    audioString: I am the future King! And this is my kingdom!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -245,23 +244,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: P_3_2_Clogg_25_T1
-    audioString: Your majesty!
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 8
-    leftEmotionNum: 2
-    leftMouthEnum: 1
-    leftEyesEnum: 1
-    rightCharacter: 7
-    rightEmotionNum: 3
-    rightMouthEnum: 2
-    rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 0}
-    audioClipName: P_3_2_Clogg_25_T2
-    audioString: That isn't how-
+    audioString: Your highness that int how-
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -293,7 +276,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_3_2_Marcus_26_T2
-    audioString: Do not lecture your future king!
+    audioString: Do not lecture your future King!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -341,7 +324,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_3_2_Julius_27_T3
-    audioString: If you win~
+    audioString: If you win,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -373,7 +356,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: P_3_2_Julius_27_T5
-    audioString: But~ If I beat you~
+    audioString: But, If I beat you,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -421,7 +404,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 224c9087fd5c2754e89b919cd62f035e, type: 3}
     audioClipName: P_3_2_Red_29_T1
-    audioString: "You\u2019ve got this explorer!"
+    audioString: "You\u2019ve got this Explorer!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -437,7 +420,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: 715a4e6ff8ee81647abf7bfe0a5fb571, type: 3}
     audioClipName: P_3_2_Red_29_T2
-    audioString: 'Show the prince all that you''ve learned! '
+    audioString: 'Show the Prince all that you''ve learned! '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

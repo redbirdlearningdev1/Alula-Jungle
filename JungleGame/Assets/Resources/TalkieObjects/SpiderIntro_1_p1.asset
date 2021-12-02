@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 2
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -149,7 +148,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Darwin_3_T5
-    audioString: I just started remembering all of the good times I had here~
+    audioString: I just started remembering all of the good times I had here,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -181,7 +180,8 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Red_4_T1
-    audioString: "Well we\u2019re together now so that\u2019s what\u2019s important."
+    audioString: "That\u2019s at least good to hear! All that matters is that we
+      found you again."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Darwin_6_T2
-    audioString: Taking that walk has reminded me of so many things that the prince
+    audioString: Taking that walk has reminded me of so many things that the Prince
       did when he was a cub!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -267,18 +267,34 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 1
-    leftEmotionNum: 6
-    leftMouthEnum: 2
-    leftEyesEnum: 1
-    rightCharacter: 2
-    rightEmotionNum: 8
-    rightMouthEnum: 1
-    rightEyesEnum: 4
-    activeCharacter: 1
+    leftCharacter: 2
+    leftEmotionNum: 8
+    leftMouthEnum: 1
+    leftEyesEnum: 4
+    rightCharacter: 3
+    rightEmotionNum: 2
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: B_1_1_Wally_7_T1
     audioString: "Yeah about him\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 3
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: B_1_1_Darwin_10_T1
+    audioString: There you are!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -290,24 +306,8 @@ MonoBehaviour:
     rightCharacter: 2
     rightEmotionNum: 6
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 4
     activeCharacter: 1
     audioClip: {fileID: 0}
-    audioClipName: P_1_1_RedWally_9_T1
-    audioString: '!!!'
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 3
-    leftEmotionNum: 4
-    leftMouthEnum: 1
-    leftEyesEnum: 1
-    rightCharacter: 0
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
-    audioClipName: B_1_1_Darwin_10_T1
-    audioString: There you are!
+    audioClipName: RedWally_Oh
+    audioString: Oh!

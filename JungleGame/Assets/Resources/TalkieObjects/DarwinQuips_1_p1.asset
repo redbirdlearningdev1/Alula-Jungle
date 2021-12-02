@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 1
     requireYN: 0
@@ -101,7 +100,7 @@ MonoBehaviour:
     activeCharacter: 0
     audioClip: {fileID: 0}
     audioClipName: P_1_3_Darwin_5_T1
-    audioString: "I\u2019m sure I\u2019ll think of something soon explorer\u2026"
+    audioString: "I\u2019m sure I\u2019ll think of something soon Explorer\u2026"
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0
