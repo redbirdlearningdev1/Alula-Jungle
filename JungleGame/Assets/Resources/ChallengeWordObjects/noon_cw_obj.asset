@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdfd6af85ce95e84c9c41f78b3e3f482, type: 3}
   m_Name: noon_cw_obj
   m_EditorClassIdentifier: 
-  word: noon
-  audio: {fileID: 8300000, guid: a4e693ce59ff4aa48aa15f442235b17b, type: 3}
-  sprite: {fileID: 21300000, guid: 81553075ba03b004396d0a9de962f2f0, type: 3}
-  elkoninList: 210000000b00000021000000000000000000000000000000
-  elkoninCount: 3
-  set: 10
-  imageText: "\r"
+  word: on
+  audio: {fileID: 8300000, guid: 5d8fbed509dad854897a352673ba8af6, type: 3}
+  sprite: {fileID: 21300000, guid: dad9add17cb759b4faa9fed9176f5c96, type: 3}
+  elkoninList: 050000002100000000000000000000000000000000000000
+  elkoninCount: 2
+  set: 4

@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdfd6af85ce95e84c9c41f78b3e3f482, type: 3}
   m_Name: chair_cw_obj
   m_EditorClassIdentifier: 
-  word: chair
-  audio: {fileID: 8300000, guid: b77be8ecdaeb12d4a827223647a0d5e8, type: 3}
-  sprite: {fileID: 21300000, guid: 512c9c4619fce374fa7c29402bff83e3, type: 3}
-  elkoninList: 180000000d00000000000000000000000000000000000000
+  word: hair
+  audio: {fileID: 8300000, guid: ae607c7ac9c416a4d8d3dfe6f7d4da6d, type: 3}
+  sprite: {fileID: 21300000, guid: 4a1f78a3e69d3dc45b30fa1ddb20353c, type: 3}
+  elkoninList: 1c0000000d00000000000000000000000000000000000000
   elkoninCount: 2
   set: 12
-  imageText: "\r"

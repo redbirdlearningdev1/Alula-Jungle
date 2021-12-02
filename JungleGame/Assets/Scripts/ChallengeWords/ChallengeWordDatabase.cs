@@ -54,14 +54,14 @@ public static class ChallengeWordDatabase
         // create new challenge word
         if(result.Length == 0)
         {
-            GameManager.instance.SendLog("ChallengeWordDatabase", "creating new challenge word -> " + data.word + item_postfix);
+            GameManager.instance.SendLog("ChallengeWordDatabase", "!!! creating new challenge word -> " + data.word + item_postfix);
             yourObject = ScriptableObject.CreateInstance<ChallengeWord>();
             AssetDatabase.CreateAsset(yourObject, challenge_word_folder + data.word + item_postfix + ".asset");
         }
         // get challenge word object
         else
         {
-            GameManager.instance.SendLog("ChallengeWordDatabase", "found challenge word -> " + data.word + item_postfix);
+            GameManager.instance.SendLog("ChallengeWordDatabase", "%%% found challenge word -> " + data.word + item_postfix);
             string path = AssetDatabase.GUIDToAssetPath(result[0]);
             yourObject = (ChallengeWord)AssetDatabase.LoadAssetAtPath(path, typeof(ChallengeWord));
         }
@@ -72,8 +72,8 @@ public static class ChallengeWordDatabase
         yourObject.word = data.word;
         yourObject.elkoninList = data.elkoninList;
         yourObject.elkoninCount = data.elkoninCount;
-        yourObject.imageText = data.imageText;
         yourObject.set = data.set;
+        Debug.Log("data set: " + data.set);
 
         // find sprite image
         yourObject.sprite = FindWordSprite(data.word);
@@ -88,19 +88,28 @@ public static class ChallengeWordDatabase
 
     private static AudioClip FindWordAudio(string word)
     {
-        string[] result = AssetDatabase.FindAssets(word + audio_postfix);
+        string exact_filename = word + audio_postfix;
+        string[] results = AssetDatabase.FindAssets(exact_filename);
+        string correct_path = "";
 
-        foreach (var res in result)
+        // filter results to be exact string filename
+        foreach (var res in results)
         {
-            Debug.Log("res: " + AssetDatabase.GUIDToAssetPath(res));
+            string path = AssetDatabase.GUIDToAssetPath(res);
+            var split = path.Split('/');
+            var filename = split[split.Length - 1];
+
+            if (filename == exact_filename + ".wav")
+            {
+                correct_path = path;
+                //Debug.Log ("audio correct_path: " + correct_path);
+            }
         }
 
         // found correct audio file
-        if (result.Length == 1)
+        if (correct_path != "")
         {
-            GameManager.instance.SendLog("ChallengeWordDatabase", "found challenge word audio -> " + word + audio_postfix);
-            string path = AssetDatabase.GUIDToAssetPath(result[0]);
-            return (AudioClip)AssetDatabase.LoadAssetAtPath(path, typeof(AudioClip));
+            return (AudioClip)AssetDatabase.LoadAssetAtPath(correct_path, typeof(AudioClip));
         }
         else
         {
@@ -112,19 +121,28 @@ public static class ChallengeWordDatabase
 
     private static Sprite FindWordSprite(string word)
     {
-        string[] result = AssetDatabase.FindAssets(word + sprite_postfix); 
+        string exact_filename = word + sprite_postfix;
+        string[] results = AssetDatabase.FindAssets(word + sprite_postfix); 
+        string correct_path = "";
 
-        // foreach (var res in result)
-        // {
-        //     Debug.Log("res: " + AssetDatabase.GUIDToAssetPath(res));
-        // }
+        // filter results to be exact string filename
+        foreach (var res in results)
+        {
+            string path = AssetDatabase.GUIDToAssetPath(res);
+            var split = path.Split('/');
+            var filename = split[split.Length - 1];
+
+            if (filename == exact_filename + ".png")
+            {
+                correct_path = path;
+                //Debug.Log ("sprint correct_path: " + correct_path);
+            }
+        }
 
         // found correct sprite
-        if (result.Length == 1)
+        if (correct_path != "")
         {
-            GameManager.instance.SendLog("ChallengeWordDatabase", "found challenge word sprite -> " + word + sprite_postfix);
-            string path = AssetDatabase.GUIDToAssetPath(result[0]);
-            return (Sprite)AssetDatabase.LoadAssetAtPath(path, typeof(Sprite));
+            return (Sprite)AssetDatabase.LoadAssetAtPath(correct_path, typeof(Sprite));
         }
         // place default image
         else 

@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdfd6af85ce95e84c9c41f78b3e3f482, type: 3}
   m_Name: army_cw_obj
   m_EditorClassIdentifier: 
-  word: army
-  audio: {fileID: 8300000, guid: 8d4d6253ff0631e408586efc1eaa1094, type: 3}
-  sprite: {fileID: 21300000, guid: 5d2c74fe4261f014d8c60523ecd40d4e, type: 3}
-  elkoninList: 0e0000002000000008000000000000000000000000000000
-  elkoninCount: 3
-  set: 13
-  imageText: "\r"
+  word: my
+  audio: {fileID: 8300000, guid: da8901fe192a3db4786571fa797e6628, type: 3}
+  sprite: {fileID: 21300000, guid: 97fcf5040a1b9e74d8cb9bd554e96d3a, type: 3}
+  elkoninList: 200000000900000000000000000000000000000000000000
+  elkoninCount: 2
+  set: 8

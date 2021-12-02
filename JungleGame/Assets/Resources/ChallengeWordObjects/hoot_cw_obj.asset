@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: hoot_cw_obj
   m_EditorClassIdentifier: 
   word: hoot
-  audio: {fileID: 0}
-  sprite: {fileID: 0}
+  audio: {fileID: 8300000, guid: 8c19593a7aa1c9a43ab5bcc46f930ef0, type: 3}
+  sprite: {fileID: 21300000, guid: 4831ec241859b8a46b450410d6ed19a7, type: 3}
   elkoninList: 1c0000000b00000027000000000000000000000000000000
   elkoninCount: 3
   set: 10
-  imageText: "\r"

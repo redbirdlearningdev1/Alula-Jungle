@@ -15,7 +15,6 @@ MonoBehaviour:
   word: should
   audio: {fileID: 8300000, guid: 624370c28195ae541819fc54475f4244, type: 3}
   sprite: {fileID: 0}
-  elkoninList: 260000000600000019000000000000000000000000000000
+  elkoninList: 260000000000000019000000000000000000000000000000
   elkoninCount: 3
-  set: 5
-  imageText: "\r"
+  set: 17

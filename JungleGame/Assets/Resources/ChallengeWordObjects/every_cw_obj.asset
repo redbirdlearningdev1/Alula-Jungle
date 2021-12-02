@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdfd6af85ce95e84c9c41f78b3e3f482, type: 3}
   m_Name: every_cw_obj
   m_EditorClassIdentifier: 
-  word: every
-  audio: {fileID: 8300000, guid: 914f9abb7b732fc4389b6a7bee9ae46b, type: 3}
-  sprite: {fileID: 21300000, guid: 97699404accb48145a0b95bbe91e6ce7, type: 3}
-  elkoninList: 03000000290000000f000000080000000000000000000000
+  word: very
+  audio: {fileID: 8300000, guid: 15f7c919a51f21941859e92d46ff322f, type: 3}
+  sprite: {fileID: 21300000, guid: a9a63ea1d18d1df44a01527cd2f9ac39, type: 3}
+  elkoninList: 290000000700000024000000080000000000000000000000
   elkoninCount: 4
-  set: 2
-  imageText: "\r"
+  set: 6

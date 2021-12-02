@@ -468,7 +468,7 @@ public class ScrollMapManager : MonoBehaviour
             EnableMapSectionsUpTo(MapLocation.NONE);
 
             // scroll map bools
-            activateMapNavigation = true;
+            activateMapNavigation = false;
             revealGMUI = false;      
 
             // bring boat into dock

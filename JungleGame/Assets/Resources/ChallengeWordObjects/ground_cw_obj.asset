@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdfd6af85ce95e84c9c41f78b3e3f482, type: 3}
   m_Name: ground_cw_obj
   m_EditorClassIdentifier: 
-  word: ground
-  audio: {fileID: 8300000, guid: 2088414b300472942bed214372226262, type: 3}
-  sprite: {fileID: 21300000, guid: 835d877407d6a48468d481a3504a048c, type: 3}
-  elkoninList: 1b0000002400000014000000190000000000000000000000
+  word: round
+  audio: {fileID: 8300000, guid: f43b8b3025453284cb74e2f4b99bb32c, type: 3}
+  sprite: {fileID: 21300000, guid: d2f46c8971e467e41a1f4ecef7de0f54, type: 3}
+  elkoninList: 240000001400000021000000190000000000000000000000
   elkoninCount: 4
   set: 19
-  imageText: "\r"

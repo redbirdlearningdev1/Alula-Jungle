@@ -15,7 +15,6 @@ MonoBehaviour:
   word: soup
   audio: {fileID: 8300000, guid: 8bbe280de358a524f9d2c0fce1f7a9fe, type: 3}
   sprite: {fileID: 21300000, guid: cf9fee266287cb54e97eef28855a8843, type: 3}
-  elkoninList: 250000000b00000022000000000000000000000000000000
+  elkoninList: 250000000000000022000000000000000000000000000000
   elkoninCount: 3
   set: 17
-  imageText: "\r"

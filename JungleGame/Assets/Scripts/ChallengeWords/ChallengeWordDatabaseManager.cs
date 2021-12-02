@@ -14,11 +14,10 @@ public struct ChallengeWordEntry
     public int elkoninCount;
     public List<ElkoninValue> elkoninList;
     public ActionWordEnum set;
-    public string imageText;
 
     public string toString()
     {
-        return word + " - elkoninCount: " + elkoninCount + ", set: " + set + ", imageText: " + imageText;
+        return word + " - elkoninCount: " + elkoninCount + ", set: " + set;
     }
 }
 
@@ -143,8 +142,8 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
             entry.elkoninList = new List<ElkoninValue>();
             string[] rowData = line.Split(',');
 
-            // check that row is 10 long
-            if (rowData.Length != 10)
+            // check that row is 9 long
+            if (rowData.Length != 9)
             {   
                 passTest = false;
                 errorMsg = "invalid row size @ line " + lineCount;
@@ -178,9 +177,8 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
 
                         case 8: // set
                             entry.set = ConvertToActionWord(cell);
-                            break;
-                        case 9: // image text
-                            entry.imageText = cell;
+                            print ("set cell: " + cell);
+                            print ("set found: " + entry.set);
                             break;
                     }
                     column_count++;
@@ -348,10 +346,26 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
 
     private ActionWordEnum ConvertToActionWord(string val) 
     {
-        switch (val)
+        // print ("action word string: " + val);
+        // print ("string length: " + val.Length);
+        
+        // int i = 0;
+        // foreach (char c in val)
+        // {
+        //     print (i + ": " + ((byte)c));
+        //     i++;
+        // }
+
+        //print (((byte)'\r'));
+        string fixed_val = val.Replace("\r", "");
+
+        //print ("string length after replace: " + fixed_val.Length);
+            
+        switch (fixed_val)
         {
             // action words
             default:
+                return ActionWordEnum._blank;
             case "mudslide":
                 return ActionWordEnum.mudslide;
             case "listen":

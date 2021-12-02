@@ -72,5 +72,4 @@ public class ChallengeWord : ScriptableObject
     public List<ElkoninValue> elkoninList;
     public int elkoninCount;
     public ActionWordEnum set;
-    public string imageText;
 }
