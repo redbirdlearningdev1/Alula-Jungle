@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum BugType 
+{
+    Ladybug, Bee, Light
+}
+
 public class BugController : MonoBehaviour
 {
     public ActionWordEnum type;
@@ -12,6 +17,7 @@ public class BugController : MonoBehaviour
     public Transform origin;
     public float moveSpeed = 1f;
 
+    private BugType currentBugType;
     private Animator animator;
     private BoxCollider2D myCollider;
     private Image image;
@@ -23,14 +29,15 @@ public class BugController : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
-        animator.Play(type.ToString());
 
         RectTransform rt = GetComponent<RectTransform>();
         myCollider = gameObject.AddComponent<BoxCollider2D>();
         myCollider.size = rt.sizeDelta;
 
         image = GetComponent<Image>();
-        //setOrigin();
+        
+        // select random bug type
+        currentBugType = (BugType)Random.Range(0, 3);
     }
 
     public void StartToWeb()
@@ -38,13 +45,33 @@ public class BugController : MonoBehaviour
         // play bug fly sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BugFlyIn, 1f);
 
-        animator.Play("Fly");
+        switch (currentBugType)
+        {
+            case BugType.Ladybug:
+                animator.Play("LadybugFly");
+                break;
+            case BugType.Bee:
+                animator.Play("BeeFly");
+                break;
+            case BugType.Light:
+                animator.Play("LightningFly");
+                break;
+        }
+        
         StartCoroutine(ReturnToWebRoutine(WebLand.position));
         StartCoroutine(landRoutine());
     }
 
     public void goToOrigin()
     {
+        // select new bug type
+        List<BugType> bugChoices = new List<BugType>();
+        bugChoices.Add(BugType.Ladybug);
+        bugChoices.Add(BugType.Bee);
+        bugChoices.Add(BugType.Light);
+        bugChoices.Remove(currentBugType);
+        currentBugType = bugChoices[Random.Range(0, 2)];
+
         transform.position = origin.position;
     }
 
@@ -60,17 +87,50 @@ public class BugController : MonoBehaviour
         // play bug wrap sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WebSwoop, 0.5f);
 
-        animator.Play("Wrapped");
+        switch (currentBugType)
+        {
+            case BugType.Ladybug:
+                animator.Play("LadybugWrapped");
+                break;
+            case BugType.Bee:
+                animator.Play("BeeWrapped");
+                break;
+            case BugType.Light:
+                animator.Play("LightningWrapped");
+                break;
+        }
     }
 
     private IEnumerator landRoutine()
     {
         yield return new WaitForSeconds(1.20f);
-        animator.Play("Land");
+        switch (currentBugType)
+        {
+            case BugType.Ladybug:
+                animator.Play("LadybugLand");
+                break;
+            case BugType.Bee:
+                animator.Play("BeeLand");
+                break;
+            case BugType.Light:
+                animator.Play("LightningLand");
+                break;
+        }
 
         yield return new WaitForSeconds(.5f);
 
-        animator.Play("Still");
+        switch (currentBugType)
+        {
+            case BugType.Ladybug:
+                animator.Play("LadybugStill");
+                break;
+            case BugType.Bee:
+                animator.Play("BeeStill");
+                break;
+            case BugType.Light:
+                animator.Play("LightningStill");
+                break;
+        }
     }
 
     private IEnumerator ReturnToWebRoutine(Vector3 target)
@@ -168,12 +228,34 @@ public class BugController : MonoBehaviour
         GetComponent<LerpableObject>().LerpPosition(tempPos, 0.3f, false);
         yield return new WaitForSeconds(.3f);
 
-        animator.Play("Takeoff");
+        switch (currentBugType)
+        {
+            case BugType.Ladybug:
+                animator.Play("LadybugTakeoff");
+                break;
+            case BugType.Bee:
+                animator.Play("BeeTakeoff");
+                break;
+            case BugType.Light:
+                animator.Play("LightningTakeoff");
+                break;
+        }
     }
 
     public void leaveWeb()
     {
-        animator.Play("Takeoff");
+        switch (currentBugType)
+        {
+            case BugType.Ladybug:
+                animator.Play("LadybugTakeoff");
+                break;
+            case BugType.Bee:
+                animator.Play("BeeTakeoff");
+                break;
+            case BugType.Light:
+                animator.Play("LightningTakeoff");
+                break;
+        }
         GetComponent<LerpableObject>().LerpPosition(flyOffScreenPos.position, 0.8f, false);
     }
 
@@ -184,7 +266,18 @@ public class BugController : MonoBehaviour
 
     private IEnumerator webGetEatRoutine()
     {
-        animator.Play("Wrapped");
+        switch (currentBugType)
+        {
+            case BugType.Ladybug:
+                animator.Play("LadybugWrapped");
+                break;
+            case BugType.Bee:
+                animator.Play("BeeWrapped");
+                break;
+            case BugType.Light:
+                animator.Play("LightningWrapped");
+                break;
+        }
 
         Vector2 pos = transform.position;
         Vector2 tempPos = pos;
@@ -216,10 +309,32 @@ public class BugController : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
         WebController.instance.webSmall();
-        animator.Play("Twitch");
+        switch (currentBugType)
+        {
+            case BugType.Ladybug:
+                animator.Play("LadybugTwitch");
+                break;
+            case BugType.Bee:
+                animator.Play("BeeTwitch");
+                break;
+            case BugType.Light:
+                animator.Play("LightningTwitch");
+                break;
+        }
         BugBounce();
 
-        animator.Play("Still");
+        switch (currentBugType)
+        {
+            case BugType.Ladybug:
+                animator.Play("LadybugStill");
+                break;
+            case BugType.Bee:
+                animator.Play("BeeStill");
+                break;
+            case BugType.Light:
+                animator.Play("LightningStill");
+                break;
+        }
         yield return new WaitForSeconds(1f);
     
         audioPlaying = false;
