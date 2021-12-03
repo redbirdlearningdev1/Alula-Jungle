@@ -45,11 +45,7 @@ public class WagonWindowController : MonoBehaviour
     private bool waitingOnPlayerInput = false;
 
     [Header("Confirm Purchace Window")]
-    [SerializeField] private GameObject confirmStickerWindow;
-    public float hiddenScale;
-    public float maxScale;
-    public float normalScale;
-    private bool confirmStickerWindowActive;
+    
 
     public float longScaleTime;
     public float shortScaleTime;
@@ -64,9 +60,6 @@ public class WagonWindowController : MonoBehaviour
         Book.SetActive(false);
         board.SetActive(false);
         BackWindow.SetActive(false);
-
-        // reset window
-        confirmStickerWindow.transform.localScale = new Vector3(hiddenScale, hiddenScale, 0f);
 
         // activate wagon
         wagon.gameObject.SetActive(true);
@@ -103,11 +96,12 @@ public class WagonWindowController : MonoBehaviour
 
     public void NewWindow()
     {
-        // return if another window is up
-        if (confirmStickerWindowActive)
-            return;
+        // play sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
-        confirmStickerWindowActive = true;
+        // return if another window is up
+        if (StickerConfirmWindow.instance.windowActive)
+            return;
 
         StartCoroutine(NewWindowRoutine());
     }
@@ -139,7 +133,7 @@ public class WagonWindowController : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
         // hide window 
-        StartCoroutine(ShrinkObject(confirmStickerWindow));
+        StickerConfirmWindow.instance.CloseWindow();
 
         // disable wagon background
         wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0f, 0.1f);
@@ -273,8 +267,6 @@ public class WagonWindowController : MonoBehaviour
             backButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.2f, 0.01f);
         }
 
-        confirmStickerWindowActive = false;
-
         // play lester tutorial if first sticker roll
         if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
         {
@@ -300,8 +292,12 @@ public class WagonWindowController : MonoBehaviour
 
     private void CloseConfirmStickerWindow()
     {
-        // hide window 
-        StartCoroutine(ShrinkObject(confirmStickerWindow));
+        StartCoroutine(CloseConfirmWindowRoutine());
+    }
+
+    private IEnumerator CloseConfirmWindowRoutine()
+    {
+        StickerConfirmWindow.instance.CloseWindow();
 
         // disable wagon background
         wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0f, 0.1f);
@@ -309,7 +305,10 @@ public class WagonWindowController : MonoBehaviour
         // hide toolbar
         DropdownToolbar.instance.ToggleToolbar(false);
 
-        confirmStickerWindowActive = false;
+        yield return new WaitForSeconds(0.5f);
+
+        // show lester
+        GeckoAnim.Play("geckoIntro");
     }
 
     private IEnumerator NewWindowRoutine()
@@ -320,32 +319,13 @@ public class WagonWindowController : MonoBehaviour
         // enable wagon background
         wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0.75f, 0.1f);
 
-        yield return new WaitForSeconds(0.5f);
+        // hide lester
+        GeckoAnim.Play("geckoLeave");
+
+        yield return new WaitForSeconds(1f);
 
         // show window
-        StartCoroutine(GrowObject(confirmStickerWindow));
-    }
-
-    private IEnumerator GrowObject(GameObject gameObject)
-    {
-        StartCoroutine(ScaleObjectRoutine(gameObject, longScaleTime, maxScale));
-        yield return new WaitForSeconds(longScaleTime);
-        StartCoroutine(ScaleObjectRoutine(gameObject, shortScaleTime, normalScale));
-    }
-
-    private IEnumerator ShrinkObject(GameObject gameObject)
-    {
-        StartCoroutine(ScaleObjectRoutine(gameObject, shortScaleTime, maxScale));
-        yield return new WaitForSeconds(shortScaleTime);
-        StartCoroutine(ScaleObjectRoutine(gameObject, longScaleTime, hiddenScale));
-
-        yield return new WaitForSeconds(longScaleTime);
-
-        // HOPE THIS DOESNT CAUSE PROBLEMS LATER
-        //  - at the moment, the only game object that gets shrunken is the game 
-        //    window, so we can reset the window afterwards.
-        // reset window
-        confirmStickerWindow.transform.localScale = new Vector3(hiddenScale, hiddenScale, 0f);
+        StickerConfirmWindow.instance.OpenWindow();
     }
 
     private IEnumerator ScaleObjectRoutine(GameObject gameObject, float time, float scale)
@@ -483,10 +463,10 @@ public class WagonWindowController : MonoBehaviour
             ToggleBuyBoardWindow();
         }
 
-        if (confirmStickerWindowActive)
+        if (StickerConfirmWindow.instance.windowActive)
         {
             yield return new WaitForSeconds(0.5f);
-            CloseBuyBoardWindowRoutine();
+            CloseConfirmStickerWindow();
         }
 
         // roll off screen
@@ -538,7 +518,7 @@ public class WagonWindowController : MonoBehaviour
             ScrollMapManager.instance.ToggleNavButtons(true);
 
         // hide window 
-        StartCoroutine(ShrinkObject(confirmStickerWindow));
+        StickerConfirmWindow.instance.CloseWindow();
     }
 
     public void OnBackButtonPressed() // ORDER MATTERS HERE!!!
@@ -559,7 +539,7 @@ public class WagonWindowController : MonoBehaviour
         {
             ToggleBuyBoardWindow();
         }
-        else if (confirmStickerWindowActive)
+        else if (StickerConfirmWindow.instance.windowActive)
         {
             CloseConfirmStickerWindow();
         }

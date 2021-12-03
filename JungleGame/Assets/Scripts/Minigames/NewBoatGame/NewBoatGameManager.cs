@@ -18,8 +18,8 @@ public class NewBoatGameManager : MonoBehaviour
     public Transform islandOutline;
 
     [Header("Mic Input")]
+    public MicrophoneIndicator micIndicator;
     public float audioInputThreshold;
-    public SpriteRenderer audioInputIndicator;
     private bool waitingForMicButton = false;
 
     private int boatGameEvent = 0;
@@ -43,9 +43,6 @@ public class NewBoatGameManager : MonoBehaviour
 
         // stop music
         AudioManager.instance.StopMusic();
-
-        // remove audio input indicator
-        audioInputIndicator.color = new Color(1f, 1f, 1f, 0f);
 
         // play ambient sounds
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.AmbientOceanLoop, 0.45f);
@@ -120,6 +117,7 @@ public class NewBoatGameManager : MonoBehaviour
             //print ("volume level: " + volumeLevel);
             if (volumeLevel >= audioInputThreshold)
             {
+                micIndicator.AudioInputDetected();
                 boatGameEvent++;
 
                 // stop repeating audio
@@ -136,6 +134,9 @@ public class NewBoatGameManager : MonoBehaviour
         // stop repeating audio
         repeatAudio = false;
         AudioManager.instance.StopTalk();
+
+        // show no input on microphone
+        micIndicator.NoInputDetected();
 
         // red voiceover 17
         AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[16]);
@@ -329,8 +330,7 @@ public class NewBoatGameManager : MonoBehaviour
                 repeatAudio = true;
 
                 // turn on audio indicator
-                audioInputIndicator.GetComponent<LerpableObject>().LerpSpriteAlpha(audioInputIndicator, 1f, 0.25f);
-                audioInputIndicator.GetComponent<WiggleController>().StartWiggle();
+                micIndicator.ShowIndicator();
 
                 waitingForMicInput = true;
                 break;
@@ -348,8 +348,7 @@ public class NewBoatGameManager : MonoBehaviour
                 micButton.wiggleController.StopWiggle();
 
                 // turn off audio indicator
-                audioInputIndicator.GetComponent<LerpableObject>().LerpSpriteAlpha(audioInputIndicator, 0f, 0.25f);
-                audioInputIndicator.GetComponent<WiggleController>().StopWiggle();
+                micIndicator.HideIndicator();
 
                 // red voiceover 20
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[19]);
