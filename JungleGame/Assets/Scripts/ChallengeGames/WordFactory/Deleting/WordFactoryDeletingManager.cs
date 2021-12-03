@@ -12,8 +12,8 @@ public class WordFactoryDeletingManager : MonoBehaviour
     public Vector2 normalCoinSize;
     public Vector2 expandedCoinSize;
 
-
-    private DeletionPair currentPair;
+    private List<WordPair> pairPool;
+    private WordPair currentPair;
     private ChallengeWord currentWord;
     private UniversalCoinImage currentCoin;
 
@@ -66,6 +66,10 @@ public class WordFactoryDeletingManager : MonoBehaviour
 
     private void PregameSetup()
     {
+        // get pair pool from game manager
+        pairPool = new List<WordPair>();
+        pairPool.AddRange(GameManager.instance.GetAddDeleteWordPairs());
+
         // remove UI button
         SettingsManager.instance.ToggleWagonButtonActive(false);
 
@@ -85,7 +89,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
     private IEnumerator NewRound()
     {
         // new pair
-        currentPair = GameManager.instance.deletionPairs[Random.Range(0, GameManager.instance.deletionPairs.Count)];
+        currentPair = pairPool[Random.Range(0, pairPool.Count)];
 
         // init game delay
         yield return new WaitForSeconds(1f);
@@ -99,7 +103,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         // choose challenge word + play enter animation
-        currentWord = currentPair.word1;
+        currentWord = currentPair.word2;
         polaroid.SetPolaroid(currentWord);
         yield return new WaitForSeconds(1f);
 
@@ -190,7 +194,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PolaroidUnravel, 0.5f);
         yield return new WaitForSeconds(0.5f);
 
-        polaroid.SetPolaroid(currentPair.word2);
+        polaroid.SetPolaroid(currentPair.word1);
 
         // unsquish polaroid 
         EmeraldHead.instance.animator.Play("UnsquishPolaroid");
@@ -199,8 +203,8 @@ public class WordFactoryDeletingManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         // say new challenge word
         polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
-        AudioManager.instance.PlayTalk(currentPair.word2.audio);
-        yield return new WaitForSeconds(currentPair.word2.audio.length);
+        AudioManager.instance.PlayTalk(currentPair.word1.audio);
+        yield return new WaitForSeconds(currentPair.word1.audio.length);
         polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
 
         // turn on raycaster
@@ -222,7 +226,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
         WordFactoryDeletingManager.instance.ReturnCoinsToFrame();
 
         // win
-        if (coin.value == currentPair.word1.elkoninList[currentPair.swipeIndex])
+        if (coin.value == currentPair.word2.elkoninList[currentPair.index])
         {
             // audio fx
             AudioManager.instance.PlayCoinDrop();
@@ -264,7 +268,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
             InvisibleFrameLayout.instance.SetNumberOfFrames(currentWord.elkoninCount - 1);
 
             // shrink extra frame
-            VisibleFramesController.instance.frames[currentPair.swipeIndex].GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+            VisibleFramesController.instance.frames[currentPair.index].GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
             // audio fx
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 0.5f);
             yield return new WaitForSeconds(0.2f);
@@ -281,7 +285,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             // say new challenge word
-            AudioManager.instance.PlayTalk(currentPair.word2.audio);
+            AudioManager.instance.PlayTalk(currentPair.word1.audio);
             polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
             foreach (var coin in currentCoins)
             {

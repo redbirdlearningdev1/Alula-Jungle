@@ -155,6 +155,7 @@ public static class ChallengeWordDatabase
         yourObject.pairType = entry.pairType;
         yourObject.word1 = entry.word1;
         yourObject.word2 = entry.word2;
+        yourObject.index = entry.index;
 
         EditorUtility.SetDirty(yourObject);
         AssetDatabase.SaveAssets();

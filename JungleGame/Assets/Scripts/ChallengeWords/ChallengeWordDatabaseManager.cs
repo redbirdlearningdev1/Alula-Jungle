@@ -27,6 +27,7 @@ public struct ChallengePairEntry
     public PairType pairType;
     public ChallengeWord word1;
     public ChallengeWord word2;
+    public int index;
 }
 
 public class ChallengeWordDatabaseManager : MonoBehaviour
@@ -302,7 +303,7 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
             string[] rowData = line.Split(',');
 
             // check that row is at least long
-            if (rowData.Length <= 4)
+            if (rowData.Length <= 5)
             {   
                 passTest = false;
                 errorMsg = "invalid row size @ line " + lineCount;
@@ -328,6 +329,7 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
                             var word1 = ChallengeWordDatabase.FindWord(cell);
                             entry.word1 = word1;
                             break;
+                            
                         case 3: // e2
                             var word2 = ChallengeWordDatabase.FindWord(cell);
                             entry.word2 = word2;
@@ -338,6 +340,10 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
                                 entry.pairType = PairType.sub;
                             else 
                                 entry.pairType = PairType.del_add;
+                            break;
+
+                        case 5: // index
+                            entry.index = int.Parse(cell);
                             break;
                     }
                     column_count++;

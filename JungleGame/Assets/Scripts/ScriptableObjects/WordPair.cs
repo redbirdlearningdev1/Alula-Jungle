@@ -9,6 +9,7 @@ public class WordPair : ScriptableObject
     public PairType pairType;
     public ChallengeWord word1;
     public ChallengeWord word2;
+    public int index;
 }
 
 public enum PairType

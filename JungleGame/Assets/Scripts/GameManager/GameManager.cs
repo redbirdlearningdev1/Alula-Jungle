@@ -43,9 +43,8 @@ public class GameManager : DontDestroy<GameManager>
 
     [Header("Game Datas")]
     public List<StoryGameData> storyGameDatas;
-    public List<SubstitutionPair> substitutionPairs;
-    public List<DeletionPair> deletionPairs;
-    public List<BuildingPair> buildingPairs;
+    private List<WordPair> subWordPairs;
+    private List<WordPair> addDelWordPairs;
     
     [SerializeField] private GameObject devModeIndicator;
     private bool devIndicatorSet = false;
@@ -302,6 +301,56 @@ public class GameManager : DontDestroy<GameManager>
     #   GAME DATA
     ################################################
     */
+
+    public List<WordPair> GetSubstitutionWordPairs()
+    {
+        // if list already made - return it
+        if (subWordPairs != null)
+        {
+            return subWordPairs;
+        } 
+        // else make list  
+        else
+        {
+            // add all pairs to list and remove all non-sub pairs
+            subWordPairs = new List<WordPair>();
+            ChallengeWordDatabase.InitCreateGlobalPairList();
+            subWordPairs.AddRange(ChallengeWordDatabase.globalWordPairs);
+            foreach (var pair in subWordPairs)
+            {
+                if (pair.pairType != PairType.sub)
+                {
+                    subWordPairs.Remove(pair);
+                }
+            }
+            return subWordPairs;
+        }
+    }
+
+    public List<WordPair> GetAddDeleteWordPairs()
+    {
+        // if list already made - return it
+        if (addDelWordPairs != null)
+        {
+            return addDelWordPairs;
+        } 
+        // else make list
+        else
+        {
+            // add all pairs to list and remove all non-sub pairs
+            addDelWordPairs = new List<WordPair>();
+            ChallengeWordDatabase.InitCreateGlobalPairList();
+            addDelWordPairs.AddRange(ChallengeWordDatabase.globalWordPairs);
+            foreach (var pair in addDelWordPairs)
+            {
+                if (pair.pairType != PairType.del_add)
+                {
+                    addDelWordPairs.Remove(pair);
+                }
+            }
+            return addDelWordPairs;
+        }
+    }
 
     public string GameTypeToSceneName(GameType gameType)
     {

@@ -16,7 +16,8 @@ public class WordFactoryBuildingManager : MonoBehaviour
     public int numWaterCoins;
     private List<ElkoninValue> elkoninPool;
 
-    private BuildingPair currentPair;
+    private List<WordPair> pairPool;
+    private WordPair currentPair;
     private ChallengeWord currentWord;
     [HideInInspector] public UniversalCoinImage currentCoin;
 
@@ -69,6 +70,10 @@ public class WordFactoryBuildingManager : MonoBehaviour
 
     private void PregameSetup()
     {
+        // get pair pool from game manager
+        pairPool = new List<WordPair>();
+        pairPool.AddRange(GameManager.instance.GetAddDeleteWordPairs());
+
         // set emerald head to be closed
         EmeraldHead.instance.animator.Play("PolaroidEatten");
 
@@ -85,7 +90,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
     private IEnumerator NewRound()
     {
         // new pair
-        currentPair = GameManager.instance.buildingPairs[Random.Range(0, GameManager.instance.buildingPairs.Count)];
+        currentPair = pairPool[Random.Range(0, pairPool.Count)];
 
         // init game delay
         yield return new WaitForSeconds(1f);
@@ -215,7 +220,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         // set tag for empty frame
-        VisibleFramesController.instance.frames[currentPair.addIndex].tag = "CoinTarget";
+        VisibleFramesController.instance.frames[currentPair.index].tag = "CoinTarget";
         
         // create elkonin pool to choose water coins from
         elkoninPool = new List<ElkoninValue>();
@@ -230,7 +235,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
         elkoninPool.Remove(ElkoninValue.empty_silver);
         elkoninPool.Remove(ElkoninValue.COUNT);
         // remove specific swipe values
-        elkoninPool.Remove(currentPair.word2.elkoninList[currentPair.addIndex]);
+        elkoninPool.Remove(currentPair.word2.elkoninList[currentPair.index]);
 
         // set water coins
         WaterCoinsController.instance.SetNumberWaterCoins(numWaterCoins);
@@ -241,7 +246,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
         {
             if (i == correctIndex)
             {
-                WaterCoinsController.instance.waterCoins[i].SetValue(currentPair.word2.elkoninList[currentPair.addIndex]);
+                WaterCoinsController.instance.waterCoins[i].SetValue(currentPair.word2.elkoninList[currentPair.index]);
             }
             else 
             {
@@ -285,7 +290,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
         currentCoin = coin;
 
         // win
-        if (coin.value == currentPair.word2.elkoninList[currentPair.addIndex])
+        if (coin.value == currentPair.word2.elkoninList[currentPair.index])
         {
             numWins++;
             StartCoroutine(PostRound(true));
@@ -302,7 +307,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
     private IEnumerator PostRound(bool win)
     {
         // move current coin
-        currentCoin.GetComponent<LerpableObject>().LerpPosition(VisibleFramesController.instance.frames[currentPair.addIndex].transform.position, 0.25f, false);
+        currentCoin.GetComponent<LerpableObject>().LerpPosition(VisibleFramesController.instance.frames[currentPair.index].transform.position, 0.25f, false);
         yield return new WaitForSeconds(2f);
 
         // win round
@@ -463,13 +468,13 @@ public class WordFactoryBuildingManager : MonoBehaviour
     {
         if (opt)
         {
-            VisibleFramesController.instance.frames[currentPair.addIndex].GetComponent<WiggleController>().StartWiggle();
-            VisibleFramesController.instance.frames[currentPair.addIndex].GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
+            VisibleFramesController.instance.frames[currentPair.index].GetComponent<WiggleController>().StartWiggle();
+            VisibleFramesController.instance.frames[currentPair.index].GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
         }
         else
         {
-            VisibleFramesController.instance.frames[currentPair.addIndex].GetComponent<WiggleController>().StopWiggle();
-            VisibleFramesController.instance.frames[currentPair.addIndex].GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
+            VisibleFramesController.instance.frames[currentPair.index].GetComponent<WiggleController>().StopWiggle();
+            VisibleFramesController.instance.frames[currentPair.index].GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
         }
     }
 }
