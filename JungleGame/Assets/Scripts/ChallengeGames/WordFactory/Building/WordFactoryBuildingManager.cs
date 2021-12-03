@@ -160,7 +160,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        // say each letter + glow / grow coin
+        // say each letter + grow coin
         foreach (var coin in currentCoins)
         {
             PlayAudioCoin(coin);
@@ -206,16 +206,22 @@ public class WordFactoryBuildingManager : MonoBehaviour
 
         // add extra frame
         VisibleFramesController.instance.AddFrameSmooth();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         
-        int count = 0;
+        // int count = 0;
         foreach (var coin in currentCoins)
         {
-            if (coin.value == currentPair.word2.elkoninList[count])
+            // determine index of coin value in word 2
+            int i = 0;
+            foreach (var value in currentPair.word2.elkoninList)
             {
-                coin.GetComponent<LerpableObject>().LerpPosToTransform(VisibleFramesController.instance.frames[count].transform, 0.75f, false);
+                if (coin.value == value)
+                {
+                    coin.GetComponent<LerpableObject>().LerpPosToTransform(VisibleFramesController.instance.frames[i].transform, 0.75f, false);
+                    break;
+                }
+                i++;
             }
-            count++;
         }
         yield return new WaitForSeconds(2f);
 

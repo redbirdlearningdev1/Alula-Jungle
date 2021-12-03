@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: jar_bar_pair
   m_EditorClassIdentifier: 
   soundCoin: 13
-  pairType: 1
+  pairType: 0
   word1: {fileID: 11400000, guid: 355edf880ed4dd54199c01fa3f28b2d7, type: 2}
   word2: {fileID: 11400000, guid: 0493582534871234d92a30618a3aa4fa, type: 2}
+  index: 0

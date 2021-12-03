@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: car_far_pair
   m_EditorClassIdentifier: 
   soundCoin: 13
-  pairType: 1
+  pairType: 0
   word1: {fileID: 11400000, guid: f261548f8f29c7749b7afa35f34a05eb, type: 2}
   word2: {fileID: 11400000, guid: 2b502b552ba48f448aef504a4be1e516, type: 2}
+  index: 0

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: yard_yarn_pair
   m_EditorClassIdentifier: 
   soundCoin: 13
-  pairType: 1
+  pairType: 0
   word1: {fileID: 11400000, guid: 019b9923febc9444fb7510c6800f7e51, type: 2}
   word2: {fileID: 11400000, guid: 31ac69fed2ef5ae4e8cddffeca3af12e, type: 2}
+  index: 2

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: dark_mark_pair
   m_EditorClassIdentifier: 
   soundCoin: 13
-  pairType: 1
+  pairType: 0
   word1: {fileID: 11400000, guid: 00db3df0eed072349b7cee81b2feb559, type: 2}
   word2: {fileID: 11400000, guid: cedf76745ec0ad04485a320513f466a1, type: 2}
+  index: 0

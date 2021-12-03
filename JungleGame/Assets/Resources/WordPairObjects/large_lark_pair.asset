@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: large_lark_pair
   m_EditorClassIdentifier: 
   soundCoin: 13
-  pairType: 1
+  pairType: 0
   word1: {fileID: 11400000, guid: 11eb63afb249cf248bf5dca3a73e5df6, type: 2}
   word2: {fileID: 11400000, guid: 7c459d70cf0715641903d79fb881360b, type: 2}
+  index: 2

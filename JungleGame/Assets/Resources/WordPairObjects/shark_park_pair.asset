@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: shark_park_pair
   m_EditorClassIdentifier: 
   soundCoin: 13
-  pairType: 1
+  pairType: 0
   word1: {fileID: 11400000, guid: 52be386172e5881448810e418b7d8285, type: 2}
   word2: {fileID: 11400000, guid: 5eb0bac44ad321a48958ba9b7c68f131, type: 2}
+  index: 0

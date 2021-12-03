@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: card_yard_pair
   m_EditorClassIdentifier: 
   soundCoin: 13
-  pairType: 1
+  pairType: 0
   word1: {fileID: 11400000, guid: 3389f7e3ebaa13843b140ee05b29dad3, type: 2}
   word2: {fileID: 11400000, guid: 019b9923febc9444fb7510c6800f7e51, type: 2}
+  index: 0

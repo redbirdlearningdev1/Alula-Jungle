@@ -314,14 +314,20 @@ public class GameManager : DontDestroy<GameManager>
         {
             // add all pairs to list and remove all non-sub pairs
             subWordPairs = new List<WordPair>();
+            List<WordPair> deletePairs = new List<WordPair>();
             ChallengeWordDatabase.InitCreateGlobalPairList();
             subWordPairs.AddRange(ChallengeWordDatabase.globalWordPairs);
             foreach (var pair in subWordPairs)
             {
                 if (pair.pairType != PairType.sub)
                 {
-                    subWordPairs.Remove(pair);
+                    deletePairs.Add(pair);
                 }
+            }
+            // remove all invalid pairs
+            foreach (var pair in deletePairs)
+            {
+                subWordPairs.Remove(pair);
             }
             return subWordPairs;
         }
@@ -339,14 +345,20 @@ public class GameManager : DontDestroy<GameManager>
         {
             // add all pairs to list and remove all non-sub pairs
             addDelWordPairs = new List<WordPair>();
+            List<WordPair> deletePairs = new List<WordPair>();
             ChallengeWordDatabase.InitCreateGlobalPairList();
             addDelWordPairs.AddRange(ChallengeWordDatabase.globalWordPairs);
             foreach (var pair in addDelWordPairs)
             {
                 if (pair.pairType != PairType.del_add)
                 {
-                    addDelWordPairs.Remove(pair);
+                    deletePairs.Add(pair);
                 }
+            }
+            // remove all invalid pairs
+            foreach (var pair in deletePairs)
+            {
+                addDelWordPairs.Remove(pair);
             }
             return addDelWordPairs;
         }
