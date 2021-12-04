@@ -130,6 +130,10 @@ public class TalkieDatabase : MonoBehaviour
     public List<TalkieDatabaseEntry> brutusSprites;
     public List<TalkieDatabaseEntry> lesterSprites;
     public List<TalkieDatabaseEntry> cloggSprites;
+    public List<TalkieDatabaseEntry> bubblesSprites;
+    public List<TalkieDatabaseEntry> ollieSprites;
+    public List<TalkieDatabaseEntry> spindleSprites;
+    public List<TalkieDatabaseEntry> sylvieSprites;
 
     private List<TalkieObject> globalTalkieList; // list of all talkies in this database
 

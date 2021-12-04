@@ -4509,7 +4509,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3292304020975609992}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.9999974
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6911,7 +6911,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -500.00006}
+  m_AnchoredPosition: {x: 0, y: -500}
   m_SizeDelta: {x: 1800, y: 150}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &3174749653948767468
@@ -13447,7 +13447,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -787.12384, y: 0}
+  m_AnchoredPosition: {x: -787.1238, y: 0}
   m_SizeDelta: {x: -1574.2462, y: 52.3603}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &8580587518253173952
@@ -16125,6 +16125,1050 @@ MonoBehaviour:
     emotionNum: 9
     mouth: 1
     eyes: 1
+  bubblesSprites:
+  - sprite: {fileID: 21300000, guid: ac34d455967db20468ebad47b4895d3c, type: 3}
+    character: 10
+    emotionNum: 1
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: e035baee3c3eee3418e466e03cf6c117, type: 3}
+    character: 10
+    emotionNum: 1
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 0fa4238eb445e474991d97481ef70da3, type: 3}
+    character: 10
+    emotionNum: 1
+    mouth: 2
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: e7aa5b321afc99649bffc315e7dc3709, type: 3}
+    character: 10
+    emotionNum: 1
+    mouth: 2
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: 42604d826279a5e4f8c3cbc5547a121a, type: 3}
+    character: 10
+    emotionNum: 1
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: efceae28155da6640a69c38b502f9bdf, type: 3}
+    character: 10
+    emotionNum: 1
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 447f4d871df065547b2c5c6c4f7e2ba8, type: 3}
+    character: 10
+    emotionNum: 1
+    mouth: 1
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: bf475292cdc992c4b9ced6ab4aefe6e9, type: 3}
+    character: 10
+    emotionNum: 1
+    mouth: 1
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: 028b62403f49e8c48abadf2055e0c27f, type: 3}
+    character: 10
+    emotionNum: 2
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: a8a1a71393efa5f488fc64b817c8e24c, type: 3}
+    character: 10
+    emotionNum: 2
+    mouth: 2
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: e94cf06e154cece4296c8b13b5ffb370, type: 3}
+    character: 10
+    emotionNum: 2
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 24339b9ca7e11f74d87e4f9b17161346, type: 3}
+    character: 10
+    emotionNum: 2
+    mouth: 1
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: a8d1379a767c387449d8d03b1afbbd6c, type: 3}
+    character: 10
+    emotionNum: 3
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 92e7604e470f3ba499f378e85ad0aafe, type: 3}
+    character: 10
+    emotionNum: 4
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: eb88c4e9cbb8bc54a925d4f0cc62a215, type: 3}
+    character: 10
+    emotionNum: 5
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 3fb27da3bd3eabf49ab21a21beac8564, type: 3}
+    character: 10
+    emotionNum: 6
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 61959d6e41adb7b42a84731b13d62c07, type: 3}
+    character: 10
+    emotionNum: 7
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: d1b94a8bf1c1d5d46b2d3a7baf8ae78b, type: 3}
+    character: 10
+    emotionNum: 7
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: d4a0ecaa0a27e744a86f335c922fe6c8, type: 3}
+    character: 10
+    emotionNum: 8
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: e4a9183fa2157c84385f218262986e32, type: 3}
+    character: 10
+    emotionNum: 8
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 5fa3435f8fd524a458e3f7c317144c1b, type: 3}
+    character: 10
+    emotionNum: 8
+    mouth: 2
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: 43ac2f4e457864e4d92c7922f7367226, type: 3}
+    character: 10
+    emotionNum: 8
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: ee4d9631232707e489be2cebef7d1716, type: 3}
+    character: 10
+    emotionNum: 8
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 4595c086e1c00c94596f5cd008c9d299, type: 3}
+    character: 10
+    emotionNum: 8
+    mouth: 1
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: c002b089b6761bd4c970a2b1bd1f301d, type: 3}
+    character: 10
+    emotionNum: 9
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: a261b3e0c79bb0341aa7e0ea6ada0bbd, type: 3}
+    character: 10
+    emotionNum: 9
+    mouth: 2
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: 592e5e076d771a040bd793aed3f16758, type: 3}
+    character: 10
+    emotionNum: 9
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 58b4a2b3cc2402d43a36b52a736a7b11, type: 3}
+    character: 10
+    emotionNum: 9
+    mouth: 1
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: bc741c6c937504e43b3a4fa062f162b8, type: 3}
+    character: 10
+    emotionNum: 10
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: c13df586cd036a14895c0556452ed437, type: 3}
+    character: 10
+    emotionNum: 10
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: f6ed030b31d7f7842a44872a1d663cf5, type: 3}
+    character: 10
+    emotionNum: 10
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: b0ffa832ae3540a42a0dc8b4a1d520ea, type: 3}
+    character: 10
+    emotionNum: 11
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 819e92cae0f537a4da1df6f27439dce7, type: 3}
+    character: 10
+    emotionNum: 11
+    mouth: 2
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: d8402a5d0cc348140abb546d92c55ef9, type: 3}
+    character: 10
+    emotionNum: 11
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 86a9ffd0040022d4987ee92d1ee942e6, type: 3}
+    character: 10
+    emotionNum: 11
+    mouth: 1
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 8cae1d2bc21a5984b897e089f3342ade, type: 3}
+    character: 10
+    emotionNum: 12
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 9da7798acbd4a8548bb3a88df42b05ad, type: 3}
+    character: 10
+    emotionNum: 12
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 5647e9b3ae9cb6e4094988577c18804c, type: 3}
+    character: 10
+    emotionNum: 12
+    mouth: 2
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 2bbeb23956f72ab409fa36b22f9780b0, type: 3}
+    character: 10
+    emotionNum: 12
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 3c4043a44dbbdab47bf03a5bc41071c9, type: 3}
+    character: 10
+    emotionNum: 12
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 33366081fa26d754783c4726a4b74c3a, type: 3}
+    character: 10
+    emotionNum: 12
+    mouth: 1
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 564b99ef98a8b45409fa1d6e069b3678, type: 3}
+    character: 10
+    emotionNum: 13
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 868967631b9c21546bb60b7cc2605ca9, type: 3}
+    character: 10
+    emotionNum: 13
+    mouth: 1
+    eyes: 1
+  ollieSprites:
+  - sprite: {fileID: 21300000, guid: 90eae0792f68e5c4fa7ad4d7aed6bc47, type: 3}
+    character: 11
+    emotionNum: 1
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 0d1d0205873f0144b9b4102eeca00b5c, type: 3}
+    character: 11
+    emotionNum: 1
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 2c62f3378217ef0438857c52e4777adc, type: 3}
+    character: 11
+    emotionNum: 1
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 250e40ebd4e23ba4a8e3b2910e9bb153, type: 3}
+    character: 11
+    emotionNum: 1
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 06f56232d5f438641846cc6e6ae8e40f, type: 3}
+    character: 11
+    emotionNum: 2
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: e7ebaedd37ca9ee469f2614adc992f77, type: 3}
+    character: 11
+    emotionNum: 2
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: dfba804741fbf0048bc320df97a6a21f, type: 3}
+    character: 11
+    emotionNum: 2
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: b7d408410722dcb42a9730db7ff6d17a, type: 3}
+    character: 11
+    emotionNum: 2
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 8ac05a88fac647243bcbd0020b0e097f, type: 3}
+    character: 11
+    emotionNum: 3
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 383709fb84d6ef24db62d6996a006657, type: 3}
+    character: 11
+    emotionNum: 3
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 02007cb3827050f4b96a5c4ab761a6aa, type: 3}
+    character: 11
+    emotionNum: 4
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: d3b185ac2e7d2e74a97b22c94b0f6083, type: 3}
+    character: 11
+    emotionNum: 4
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 3864d2a6fbe470646bdc1c3df257a4ed, type: 3}
+    character: 11
+    emotionNum: 5
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 99f7d31c7f6e97147b35678217712bff, type: 3}
+    character: 11
+    emotionNum: 5
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: c6040846a34edf647a9d1a6268077889, type: 3}
+    character: 11
+    emotionNum: 6
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 0f8df0bf97f68f94a8b818aa5ef0de38, type: 3}
+    character: 11
+    emotionNum: 6
+    mouth: 2
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: 273deb424993b32499dfb581f32b18d7, type: 3}
+    character: 11
+    emotionNum: 6
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 9abbde45637983c4790297c42207876b, type: 3}
+    character: 11
+    emotionNum: 6
+    mouth: 1
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: 51eacab9d3ff4054ca56681afcd3562d, type: 3}
+    character: 11
+    emotionNum: 7
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: c6a59d304080d76478c963e657aeff8a, type: 3}
+    character: 11
+    emotionNum: 7
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: d95290ecd2dfd014c99edb2bbf524967, type: 3}
+    character: 11
+    emotionNum: 7
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 54919386d0604af459756cc221ed6884, type: 3}
+    character: 11
+    emotionNum: 7
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: cc3dd279dcd9d1040bc6c78e8071e650, type: 3}
+    character: 11
+    emotionNum: 8
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 99ea331f6eee790468fc60b0d8ee93ce, type: 3}
+    character: 11
+    emotionNum: 8
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: f6b45a49afa42c2439f02314551c9a70, type: 3}
+    character: 11
+    emotionNum: 8
+    mouth: 2
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 417b5a839d3f9664a94408449b460e34, type: 3}
+    character: 11
+    emotionNum: 8
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 5d0fdb93a0c7a4142aeb3d1cf894c7a3, type: 3}
+    character: 11
+    emotionNum: 8
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 58fbef845fe9c504c9f1d8eaa7919658, type: 3}
+    character: 11
+    emotionNum: 8
+    mouth: 1
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 54804852df4631f41800f5b8f8ab48a1, type: 3}
+    character: 11
+    emotionNum: 9
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 59fa987ebb0f069458bc7dc79972cc27, type: 3}
+    character: 11
+    emotionNum: 9
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 6bb53a5abfe19fd428b00fb0ce7f3b04, type: 3}
+    character: 11
+    emotionNum: 9
+    mouth: 2
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 41b0f5619b5ee2c459d069140a34def6, type: 3}
+    character: 11
+    emotionNum: 9
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 18197950850a6ff4e8d39ce9252997dc, type: 3}
+    character: 11
+    emotionNum: 9
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 8f9c02be9add8d242933c3c9d3dbe8b1, type: 3}
+    character: 11
+    emotionNum: 9
+    mouth: 1
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 637d35aef30ce2a4590eece558934dde, type: 3}
+    character: 11
+    emotionNum: 10
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 637d35aef30ce2a4590eece558934dde, type: 3}
+    character: 11
+    emotionNum: 10
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: d8237d8cd02d85e408fb57fd0f3d3482, type: 3}
+    character: 11
+    emotionNum: 10
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: dfe7c69749da56f46ab4ea01c0a58fcf, type: 3}
+    character: 11
+    emotionNum: 10
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: e3873f1da4c966646b44459e78acca5b, type: 3}
+    character: 11
+    emotionNum: 10
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: b6f920140d892c142acea8c5ed571528, type: 3}
+    character: 11
+    emotionNum: 11
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 9261c6d38ccfac8499f2ba3ccbc43611, type: 3}
+    character: 11
+    emotionNum: 11
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 5bcc0ae194c2c9a4b9fe28f7b05b1da5, type: 3}
+    character: 11
+    emotionNum: 11
+    mouth: 2
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: 9e8dc1474fc936e409204612b7ed5184, type: 3}
+    character: 11
+    emotionNum: 11
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 638a99f45de3a0846966d3953c563878, type: 3}
+    character: 11
+    emotionNum: 11
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 9a83873cd2d77c7448df8275aa3b6e72, type: 3}
+    character: 11
+    emotionNum: 11
+    mouth: 1
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: 71c0820ac9e198a48b7e6a44476220e8, type: 3}
+    character: 11
+    emotionNum: 12
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: c02bf81a6f8d6d6468701a0ac79c9956, type: 3}
+    character: 11
+    emotionNum: 12
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: cddb97f9cec167541bd177f5f88d3491, type: 3}
+    character: 11
+    emotionNum: 12
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 4241bb0b78cd51243abd21631f5244ba, type: 3}
+    character: 11
+    emotionNum: 12
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: a5c5bb817f355c646a1cd39fd777f5b1, type: 3}
+    character: 11
+    emotionNum: 13
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: a5c5bb817f355c646a1cd39fd777f5b1, type: 3}
+    character: 11
+    emotionNum: 13
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: ff3043fe581a41c438575c10ff25a04b, type: 3}
+    character: 11
+    emotionNum: 13
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: dad2a3b3265790548841dd4af2d66566, type: 3}
+    character: 11
+    emotionNum: 14
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 11453998808fd8b45ac6d257f25e6577, type: 3}
+    character: 11
+    emotionNum: 14
+    mouth: 1
+    eyes: 1
+  spindleSprites:
+  - sprite: {fileID: 21300000, guid: df32000991095294e8504d14b5adaf79, type: 3}
+    character: 9
+    emotionNum: 2
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: e72bc2f4aef5e8f41ad4c2aa741d3c89, type: 3}
+    character: 9
+    emotionNum: 2
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: b09b86a8fcbacde4f82d22d79d53046b, type: 3}
+    character: 9
+    emotionNum: 2
+    mouth: 2
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: de5739a1c60fc5847960fbc056cf5e1f, type: 3}
+    character: 9
+    emotionNum: 2
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: d567a48be07f6464a9d1958ec251265e, type: 3}
+    character: 9
+    emotionNum: 2
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 5ec45c6fe8644dc419465eb38c45bfc5, type: 3}
+    character: 9
+    emotionNum: 2
+    mouth: 1
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: 61105ea5ef77d284d87cfb061078d18b, type: 3}
+    character: 9
+    emotionNum: 3
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 6a4c9197490983044a4f35ecda80e664, type: 3}
+    character: 9
+    emotionNum: 3
+    mouth: 2
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: fc50394fda6b61040ba513718eee8394, type: 3}
+    character: 9
+    emotionNum: 3
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: e41d6f3ac7cc19b41bd6ab22da2656db, type: 3}
+    character: 9
+    emotionNum: 3
+    mouth: 1
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 31849bb15fc902042b6ab6490108be17, type: 3}
+    character: 9
+    emotionNum: 4
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 3a49021b3bd9e914fb837c759691ec96, type: 3}
+    character: 9
+    emotionNum: 4
+    mouth: 2
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 2462304ceb4fea846990cad099ff7d43, type: 3}
+    character: 9
+    emotionNum: 4
+    mouth: 2
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: a656480fcfe81944e8d7007b5dd92e15, type: 3}
+    character: 9
+    emotionNum: 4
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 4c5716b1c7927d543be7410bcdc1b50e, type: 3}
+    character: 9
+    emotionNum: 4
+    mouth: 1
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 61c3a55179c850c4ba963f022918b699, type: 3}
+    character: 9
+    emotionNum: 4
+    mouth: 1
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: 786ce8d54a0b6e2499a06d01a91d62ac, type: 3}
+    character: 9
+    emotionNum: 5
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 71844900bcaeffd40a7583034d8ef213, type: 3}
+    character: 9
+    emotionNum: 6
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 4493b8f75b85f004382cc16e741b8a31, type: 3}
+    character: 9
+    emotionNum: 6
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: bafd928f8a69930409dc55a6bde4dd23, type: 3}
+    character: 9
+    emotionNum: 6
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: cc277b5e8a58b3c41ab717c4b2e03aa4, type: 3}
+    character: 9
+    emotionNum: 6
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: a6f2a43e8fe12054088d79fe75962f7b, type: 3}
+    character: 9
+    emotionNum: 8
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 3e0029671e0cd864587405103216afa6, type: 3}
+    character: 9
+    emotionNum: 9
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: c564302fc9b4fe242a059b0c73ddc603, type: 3}
+    character: 9
+    emotionNum: 9
+    mouth: 2
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 276818dda161ef645b7351237178c800, type: 3}
+    character: 9
+    emotionNum: 9
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: bde911c4783429f41b8b76a88cfd6731, type: 3}
+    character: 9
+    emotionNum: 9
+    mouth: 1
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 64a4b7ede9031304a9624a6af403e24f, type: 3}
+    character: 9
+    emotionNum: 10
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 7d0ce4bc83edcc74682b8c25d169116e, type: 3}
+    character: 9
+    emotionNum: 10
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 0f44a32ce9dd4004cab4f9d3eecd02d9, type: 3}
+    character: 9
+    emotionNum: 11
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 14186f9aecc55534c9acb6b89bad8a66, type: 3}
+    character: 9
+    emotionNum: 11
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: feca843f7e91ac945b46f951bc289177, type: 3}
+    character: 9
+    emotionNum: 11
+    mouth: 2
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: 19157b05a69c0bd49adf6130a2ee231b, type: 3}
+    character: 9
+    emotionNum: 11
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: c38744c8488bad848900f6fef6d47f3e, type: 3}
+    character: 9
+    emotionNum: 11
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 72fb4eeafe73d5a4c96ad83636805b0a, type: 3}
+    character: 9
+    emotionNum: 11
+    mouth: 1
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: c0656784440b4ff40a8f0636617be091, type: 3}
+    character: 9
+    emotionNum: 12
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: edaac49d39d6dea46b597a831959e6b4, type: 3}
+    character: 9
+    emotionNum: 12
+    mouth: 2
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: e0c7022812139be459a9249d1cabd0d7, type: 3}
+    character: 9
+    emotionNum: 12
+    mouth: 2
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: 0fe35e6db9aaa7d4da7b6bdd10dcb463, type: 3}
+    character: 9
+    emotionNum: 12
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: ac6617874a114aa4083825497bf8d25c, type: 3}
+    character: 9
+    emotionNum: 12
+    mouth: 1
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: a5cba13da2e8550418ce2ca9cd7c22a3, type: 3}
+    character: 9
+    emotionNum: 12
+    mouth: 1
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: 70a47b6f719357d45b564fa3731e5d69, type: 3}
+    character: 9
+    emotionNum: 13
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: f2f32c7177a6bc943a037d4143dc9d97, type: 3}
+    character: 9
+    emotionNum: 13
+    mouth: 1
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: da6e143074cc74d42a890eaa197da0d4, type: 3}
+    character: 9
+    emotionNum: 14
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 5f48646083161054982d2a914c9f5a1f, type: 3}
+    character: 9
+    emotionNum: 14
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: acf966dd4c1255140967ef82671056ad, type: 3}
+    character: 9
+    emotionNum: 15
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: c8f3499715ae10849aa78c1923735eee, type: 3}
+    character: 9
+    emotionNum: 15
+    mouth: 2
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 8cd2d7fb8f2c68d43ad873d1711229ce, type: 3}
+    character: 9
+    emotionNum: 15
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 88fcc9d6c22bacb4ab5435f1fad56cc9, type: 3}
+    character: 9
+    emotionNum: 15
+    mouth: 1
+    eyes: 4
+  sylvieSprites:
+  - sprite: {fileID: 21300000, guid: 04974075b216a2144a8f90f51c8837b6, type: 3}
+    character: 13
+    emotionNum: 1
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 88b60d22732218748bb2bc57b232f6cb, type: 3}
+    character: 13
+    emotionNum: 1
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 1f4dfbf0efff1f841942cbdf739faa72, type: 3}
+    character: 13
+    emotionNum: 1
+    mouth: 2
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 67626d9f8ae600e41b61d6805039ea91, type: 3}
+    character: 13
+    emotionNum: 1
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 571744b7ef656a343b03b1cef93f3e36, type: 3}
+    character: 13
+    emotionNum: 1
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 1744255faca5b214a8f45c116ccf7996, type: 3}
+    character: 13
+    emotionNum: 1
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: e10aebc378863c94dafe6c301b6f5c51, type: 3}
+    character: 13
+    emotionNum: 2
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: a38760b5620524948b3512c3990d1913, type: 3}
+    character: 13
+    emotionNum: 2
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 2a209294d55208043ad454c79b02d5be, type: 3}
+    character: 13
+    emotionNum: 2
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 617895e216c483a408c47c6ee7f41b93, type: 3}
+    character: 13
+    emotionNum: 2
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: c0bd7c0575590364bb21045f42076731, type: 3}
+    character: 13
+    emotionNum: 3
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 59805ac33b6293348bd22f0dd3863404, type: 3}
+    character: 13
+    emotionNum: 3
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 59805ac33b6293348bd22f0dd3863404, type: 3}
+    character: 13
+    emotionNum: 3
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: c85b30154755e9e4fb69833957e6f3b6, type: 3}
+    character: 13
+    emotionNum: 3
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 58ef9a3a782e376429dcb198300838d3, type: 3}
+    character: 13
+    emotionNum: 3
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 2ab43c8101a5a4f4091d3bd461a9dd70, type: 3}
+    character: 13
+    emotionNum: 4
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 075a11d37d8ce3849a47ec2702fc0de5, type: 3}
+    character: 13
+    emotionNum: 4
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: d9dc843846b960b45b53eae069cc3742, type: 3}
+    character: 13
+    emotionNum: 4
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 6e373b8c7eec660478a3253ffa9f82fd, type: 3}
+    character: 13
+    emotionNum: 4
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 8b1913e3ee977434596d1550e6a88964, type: 3}
+    character: 13
+    emotionNum: 5
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 29c0afefe1151a94f9880934142c260c, type: 3}
+    character: 13
+    emotionNum: 5
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 177372bcbf082dd468b9a8b9c70c6200, type: 3}
+    character: 13
+    emotionNum: 5
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 304273fed659ad74ba8dfe80fb436512, type: 3}
+    character: 13
+    emotionNum: 5
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 1abd2744ceb047f4e815b62cdd0532c7, type: 3}
+    character: 13
+    emotionNum: 6
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: a5474cec251b29c4ab295d76f79aaf73, type: 3}
+    character: 13
+    emotionNum: 6
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: e9a37929f1af5e24089c8b74213d70f8, type: 3}
+    character: 13
+    emotionNum: 6
+    mouth: 2
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 96aadb3642528564db577a41c2dab9ff, type: 3}
+    character: 13
+    emotionNum: 6
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 34cf4712003b49f4d80381b4ca3c0d15, type: 3}
+    character: 13
+    emotionNum: 6
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 0c66228fa24d90b4283aaba46b3ee6df, type: 3}
+    character: 13
+    emotionNum: 6
+    mouth: 1
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 23369aa46b052414390defae54f2f1b4, type: 3}
+    character: 13
+    emotionNum: 7
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: fa57ee9b264f02b4492d130dd0e26a1c, type: 3}
+    character: 13
+    emotionNum: 7
+    mouth: 2
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: a0c67a7d725814f4d98ac51aa9da3d49, type: 3}
+    character: 13
+    emotionNum: 7
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 9a1d5105be8065f4789f5b2a0ce9f9fe, type: 3}
+    character: 13
+    emotionNum: 7
+    mouth: 1
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 064f92b729778384aa6e7b18661c0fe5, type: 3}
+    character: 13
+    emotionNum: 8
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: aa85057a81704234ab455e042b59a4d3, type: 3}
+    character: 13
+    emotionNum: 8
+    mouth: 2
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: f604366bdf6cedd4788a5ea95554e3aa, type: 3}
+    character: 13
+    emotionNum: 8
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 3b4b89d2eeca55846818022ed5ea09c7, type: 3}
+    character: 13
+    emotionNum: 8
+    mouth: 1
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 14a6503a0c4529648b85f717964a8e9c, type: 3}
+    character: 13
+    emotionNum: 9
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 8b2c408d823cc9242b6b3e587437cf5e, type: 3}
+    character: 13
+    emotionNum: 9
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 0c628a032a996c9489595ac5241fda7b, type: 3}
+    character: 13
+    emotionNum: 10
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: ec0cb100e89969242bc5a6b884b7c427, type: 3}
+    character: 13
+    emotionNum: 10
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: e7f726564f8e5f844ad98992eaae4333, type: 3}
+    character: 13
+    emotionNum: 11
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: fa0bcc2fda4f2be42af907cdd940e9e1, type: 3}
+    character: 13
+    emotionNum: 11
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 32cac4803a2d1bd4bade2393a714e1a9, type: 3}
+    character: 13
+    emotionNum: 11
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 04289bc1134099e41b79a28165dcf916, type: 3}
+    character: 13
+    emotionNum: 11
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 8c6da0bd1d1c72245877e0ed53015430, type: 3}
+    character: 13
+    emotionNum: 12
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 85a65adfc70a27a42bfbf8cb63f7f6fe, type: 3}
+    character: 13
+    emotionNum: 12
+    mouth: 2
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 4fc960f0d968c4547a8bb5ba857cb00a, type: 3}
+    character: 13
+    emotionNum: 12
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 659ca33ed05227c4380c9b04f4393a83, type: 3}
+    character: 13
+    emotionNum: 12
+    mouth: 1
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: f3f09d3eec50d2d4ab36c35c10b60ee2, type: 3}
+    character: 13
+    emotionNum: 13
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 81696c7fff1aa3541a79185fbd517000, type: 3}
+    character: 13
+    emotionNum: 13
+    mouth: 2
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: fb220df918aac4e42bac547fd4bfe53b, type: 3}
+    character: 13
+    emotionNum: 13
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: a107553cb61b06c469216107c63dbd77, type: 3}
+    character: 13
+    emotionNum: 13
+    mouth: 1
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 3121ab40e1b270240b7541ffaaf2542d, type: 3}
+    character: 13
+    emotionNum: 14
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 315a172d290f5f74e85c59029e8bdfd2, type: 3}
+    character: 13
+    emotionNum: 14
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 7e8684498afeafa47b06203a795f92bf, type: 3}
+    character: 13
+    emotionNum: 14
+    mouth: 1
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: 993096e9227fe7e4781e9afe534b6917, type: 3}
+    character: 13
+    emotionNum: 14
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: a82d2c93b2078ba43ba1be55741a2d11, type: 3}
+    character: 13
+    emotionNum: 15
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 496bf0a7803a4204aa975321de4923cc, type: 3}
+    character: 13
+    emotionNum: 15
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: c2a37e9f50af05c4480b3ffdc57bba12, type: 3}
+    character: 13
+    emotionNum: 16
+    mouth: 2
+    eyes: 3
+  - sprite: {fileID: 21300000, guid: b31ba0b520c758d4aa9314924e002a1b, type: 3}
+    character: 13
+    emotionNum: 16
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 6c1f8e83149894340b35b897abf63361, type: 3}
+    character: 13
+    emotionNum: 16
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: ffa5e16ea225f0846a43a093471c3be3, type: 3}
+    character: 13
+    emotionNum: 16
+    mouth: 1
+    eyes: 3
 --- !u!1 &6613152455417320149
 GameObject:
   m_ObjectHideFlags: 0
@@ -17845,7 +18889,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 500.00006}
+  m_AnchoredPosition: {x: 0, y: 500}
   m_SizeDelta: {x: 1800, y: 150}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &3476630059000522833
@@ -18240,7 +19284,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 58.016983, y: 0.005817631}
+  m_AnchoredPosition: {x: 62.27249, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768
