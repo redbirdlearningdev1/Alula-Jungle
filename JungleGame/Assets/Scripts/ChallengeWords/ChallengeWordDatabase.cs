@@ -242,6 +242,20 @@ public static class ChallengeWordDatabase
         return null;
     }
 
+    public static List<ChallengeWord> GetChallengeWordSet(ActionWordEnum set)
+    {
+        List<ChallengeWord> list = new List<ChallengeWord>();
+        
+        InitCreateGlobalList();
+        foreach (var word in globalChallengeWordList)
+        {
+            if (word.set == set)
+                list.Add(word);
+        }
+
+        return list;
+    }
+
     public static ConsonantEnum ElkoninValueToConsonantEnum(ElkoninValue value)
     {
         switch (value)

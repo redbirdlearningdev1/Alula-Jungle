@@ -16,10 +16,6 @@ public class TigerGameManager : MonoBehaviour
     [SerializeField] private List<GameObject> incorrectCoins;
     private bool gameSetup = false;
 
-    [Header("Values")]
-    [SerializeField] private Vector2 normalCoinSize;
-    [SerializeField] private Vector2 expandedCoinSize;
-
     [Header("Positions")]
     [SerializeField] private Transform coinStartPos;
     [SerializeField] private Transform coinLandPos;
@@ -31,8 +27,9 @@ public class TigerGameManager : MonoBehaviour
     [SerializeField] private Transform PhotoStartPos;
     [SerializeField] private Transform PhotoEndPos;
 
-    [SerializeField] private UniversalCoinImage waterCoins;
-    private UniversalCoinImage currWaterCoin;
+    public UniversalCoinImage currCoin;
+    private ActionWordEnum currSet; 
+    private ChallengeWord currWord;
 
     // other variables
     private ChallengeWord currentWord1;
@@ -40,8 +37,6 @@ public class TigerGameManager : MonoBehaviour
     private ChallengeWord currentWord3;
     private ChallengeWord currentWord4;
     private ChallengeWord currentWord5;
-    private ElkoninValue currentTargetValue;
-    private ChallengeWord currentTargetWord;
     private int currentSwipeIndex;
 
     private List<UniversalCoinImage> currentCoins;
@@ -55,18 +50,16 @@ public class TigerGameManager : MonoBehaviour
 
     [Header("Testing")] // ache -> bake
     public bool overrideWord;
-    //public ChallengeWord testChallengeWord;
-    public ChallengeWord targetChallengeWord1;
-    public ChallengeWord targetChallengeWord2;
-    public ChallengeWord targetChallengeWord3;
-    public ChallengeWord targetChallengeWord4;
-    public ChallengeWord targetChallengeWord5;
-    public List<ElkoninValue> coinOptions;
-    public int swipeIndex;
+    // //public ChallengeWord testChallengeWord;
+    // public ChallengeWord targetChallengeWord1;
+    // public ChallengeWord targetChallengeWord2;
+    // public ChallengeWord targetChallengeWord3;
+    // public ChallengeWord targetChallengeWord4;
+    // public ChallengeWord targetChallengeWord5;
+    // public List<ElkoninValue> coinOptions;
+    // public int swipeIndex;
 
     [SerializeField] private Vector2 noCoin;
-
-
 
     void Awake()
     {
@@ -77,9 +70,11 @@ public class TigerGameManager : MonoBehaviour
         {
             instance = this;
         }
+    }
 
+    void Start()
+    {
         PregameSetup();
-        StartCoroutine(StartGame());
     }
 
 
@@ -90,45 +85,79 @@ public class TigerGameManager : MonoBehaviour
         unusedWordList = globalWordList;
         usedWordList = new List<ChallengeWord>();
 
+        // set coin off-screen
+        currCoin.transform.position = coinStartPos.position;
+
         // set base pattern
         pattern.baseState();
+
+        StartCoroutine(StartGame());
     }
 
     private IEnumerator StartGame()
-    {
-        waterCoins.gameObject.transform.position = coinStartPos.position;
-        waterCoins.SetSize(noCoin);
-        
+    {   
+        currCoin.transform.position = coinStartPos.position;
+
         if (overrideWord)
         {
-            currentWord1 = targetChallengeWord1;
-            currentWord2 = targetChallengeWord2;
-            currentWord3 = targetChallengeWord3;
-            currentWord4 = targetChallengeWord4;
-            currentWord5 = targetChallengeWord5;
-            polaroidC[0].SetPolaroid(currentWord1);
-            polaroidC[1].SetPolaroid(currentWord2);
-            polaroidC[2].SetPolaroid(currentWord3);
-            polaroidC[3].SetPolaroid(currentWord4);
-            polaroidC[4].SetPolaroid(currentWord5);
+            // currentWord1 = targetChallengeWord1;
+            // currentWord2 = targetChallengeWord2;
+            // currentWord3 = targetChallengeWord3;
+            // currentWord4 = targetChallengeWord4;
+            // currentWord5 = targetChallengeWord5;
+            // polaroidC[0].SetPolaroid(currentWord1);
+            // polaroidC[1].SetPolaroid(currentWord2);
+            // polaroidC[2].SetPolaroid(currentWord3);
+            // polaroidC[3].SetPolaroid(currentWord4);
+            // polaroidC[4].SetPolaroid(currentWord5);
         }
         else
         {
-            // devise a query algorithm to determine polaroids / coin
-        }
+            List<ActionWordEnum> globalList = GameManager.instance.GetGlobalActionWordList();
+            currSet = globalList[Random.Range(0, globalList.Count)];
+            print ("set: " + currSet);
+            
+            // get challenge words from a set
+            List<ChallengeWord> word_pool = new List<ChallengeWord>();
+            word_pool.AddRange(ChallengeWordDatabase.GetChallengeWordSet(currSet));
+            print ("word pool: " + word_pool.Count);
 
+            // get all other challenge words (from other sets)
+            List<ChallengeWord> global_pool = new List<ChallengeWord>();
+            global_pool.AddRange(ChallengeWordDatabase.globalChallengeWordList);
+            foreach (var word in word_pool)
+            {
+                global_pool.Remove(word);
+            }
+
+            // determine current word
+            currWord = word_pool[Random.Range(0, word_pool.Count)];
+            // determine correct index
+            int correctindex = Random.Range(0, polaroidC.Count);
+
+            for (int i = 0; i < polaroidC.Count; i++)
+            {
+                if (i == correctindex)
+                {
+                    polaroidC[i].SetPolaroid(currWord);
+                }
+                else
+                {
+                    ChallengeWord otherWord = global_pool[Random.Range(0, global_pool.Count)];
+                    polaroidC[i].SetPolaroid(otherWord);
+                    global_pool.Remove(otherWord);
+                }
+            }
+        }
         yield return new WaitForSeconds(1f);
 
         pattern.baseState();
         yield return new WaitForSeconds(0.5f);
-
         Tiger.TigerDeal();
-        waterCoins.gameObject.transform.position = coinLandPos.position;
         yield return new WaitForSeconds(.6f);
-
-        waterCoins.SetValue(coinOptions[0]);
-        waterCoins.SetSize(normalCoinSize);
-        yield return new WaitForSeconds(.45f);
+        currCoin.gameObject.transform.position = coinLandPos.position;
+        currCoin.SetActionWordValue(currSet);
+        yield return new WaitForSeconds(.5f);
 
         for (int i = 0; i < 5; i++)
         {
@@ -165,10 +194,8 @@ public class TigerGameManager : MonoBehaviour
         }
         yield return new WaitForSeconds(.6f);
 
-        currentTargetWord = targetChallengeWord2;
-        currentTargetValue = currentTargetWord.elkoninList[swipeIndex];
-
-        yield return new WaitForSeconds(1f);
+        // disable raycaster
+        TigerGameRaycaster.instance.isOn = true;
     }
 
     private IEnumerator LerpMoveObject(Transform obj, Vector3 target, float lerpTime)
@@ -190,28 +217,24 @@ public class TigerGameManager : MonoBehaviour
         }
     }
 
-    public void GlowAndPlayAudioCoin(UniversalCoinImage coin)
+    public void PlayAudioCoin(UniversalCoinImage coin)
     {
         if (playingCoinAudio)
             return;
 
-        StartCoroutine(GlowAndPlayAudioCoinRoutine(coin));
+        StartCoroutine(PlayAudioCoinRoutine(coin));
     }
 
-    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoinImage coin)
+    private IEnumerator PlayAudioCoinRoutine(UniversalCoinImage coin)
     {
         playingCoinAudio = true;
 
         // glow coin
-        coin.ToggleGlowOutline(true);
         AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(coin.value).audio);
 
-        coin.LerpSize(expandedCoinSize, 0.25f);
-
-        yield return new WaitForSeconds(1.5f);
-
-        coin.LerpSize(normalCoinSize, 0.25f);
-        coin.ToggleGlowOutline(false);
+        coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.2f);
+        yield return new WaitForSeconds(0.5f);
+        coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.2f);
 
         playingCoinAudio = false;
     }
@@ -243,7 +266,10 @@ public class TigerGameManager : MonoBehaviour
 
     public void EvaluateWaterCoin(Polaroid Photo)
     {
-        if (Photo.challengeWord.elkoninList[swipeIndex] == waterCoins.value)
+        // disable raycaster
+        TigerGameRaycaster.instance.isOn = false;
+
+        if (Photo.challengeWord.set == currSet)
         {
             StartCoroutine(PostRound(true));
         }
@@ -258,23 +284,23 @@ public class TigerGameManager : MonoBehaviour
 
         currPhoto.gameObject.transform.SetParent(selectedObjectParentCoin);
 
-        if (currPhoto.name == "PolaroidObject1")
+        if (currPhoto.name == "Polaroid1")
         {
             StartCoroutine(LerpMoveObject(polaroidC[0].transform, PhotoPos1.position, .2f));
         }
-        else if (currPhoto.name == "PolaroidObject2")
+        else if (currPhoto.name == "Polaroid2")
         {
             StartCoroutine(LerpMoveObject(polaroidC[1].transform, PhotoPos2.position, .2f));
         }
-        else if (currPhoto.name == "PolaroidObject3")
+        else if (currPhoto.name == "Polaroid3")
         {
             StartCoroutine(LerpMoveObject(polaroidC[2].transform, PhotoPos3.position, .2f));
         }
-        else if (currPhoto.name == "PolaroidObject4")
+        else if (currPhoto.name == "Polaroid4")
         {
             StartCoroutine(LerpMoveObject(polaroidC[3].transform, PhotoPos4.position, .2f));
         }
-        else
+        else if (currPhoto.name == "Polaroid5")
         {
             StartCoroutine(LerpMoveObject(polaroidC[4].transform, PhotoPos5.position, .2f));
         }
@@ -292,7 +318,7 @@ public class TigerGameManager : MonoBehaviour
             numWins++;
             Tiger.TigerAway();
             yield return new WaitForSeconds(.55f);
-            waterCoins.gameObject.transform.position = coinStartPos.position;
+            currCoin.gameObject.transform.position = coinStartPos.position;
         }
         else
         {
@@ -304,7 +330,7 @@ public class TigerGameManager : MonoBehaviour
             numMisses++;
             Tiger.TigerAway();
             yield return new WaitForSeconds(.55f);
-            waterCoins.gameObject.transform.position = coinStartPos.position;
+            currCoin.gameObject.transform.position = coinStartPos.position;
         }
         yield return new WaitForSeconds(.5f);
 

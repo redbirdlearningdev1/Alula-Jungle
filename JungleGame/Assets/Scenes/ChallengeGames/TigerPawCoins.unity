@@ -648,7 +648,7 @@ PrefabInstance:
     - target: {fileID: 4576424004087786421, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
       propertyPath: m_Name
-      value: UniversalCoinImage
+      value: Coin1
       objectReference: {fileID: 0}
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
@@ -773,7 +773,7 @@ PrefabInstance:
     - target: {fileID: 4576424004087786421, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
       propertyPath: m_Name
-      value: UniversalCoinImage (2)
+      value: Coin3
       objectReference: {fileID: 0}
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
@@ -1067,7 +1067,7 @@ PrefabInstance:
     - target: {fileID: 4576424004087786421, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
       propertyPath: m_Name
-      value: UniversalCoinImage (3)
+      value: Coin4
       objectReference: {fileID: 0}
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
@@ -1361,12 +1361,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79290a62fb8d9794588d5d834d891035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deactivated: 1
-  glowTime: 0.2
-  brightnessOn: 3
-  brightnessOff: 0
-  outlineOn: 1
-  outlineOff: 0
 --- !u!114 &822371581 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4576424004087786420, guid: c7e40a4389b3aea4591d46dac11754a0,
@@ -1767,11 +1761,11 @@ RectTransform:
   m_Father: {fileID: 1901130634}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 307}
-  m_SizeDelta: {x: 0, y: -1000.795}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 800, y: 131.45999}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1312078683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2171,7 +2165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c2520ceca2dcb439dc19a6ad8ec38e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOn: 1
+  isOn: 0
   objcetMoveSpeed: 0.1
   selectedObjectParent: {fileID: 598657638}
 --- !u!114 &1695998803
@@ -2199,8 +2193,6 @@ MonoBehaviour:
   - {fileID: 989775926}
   - {fileID: 337221928}
   - {fileID: 1871300912}
-  normalCoinSize: {x: 107, y: 120}
-  expandedCoinSize: {x: 124, y: 140}
   polaroidStartPos: {fileID: 1116878434}
   polaroidLandPos: {fileID: 696727941}
   CoinPos1: {fileID: 233016401}
@@ -2249,7 +2241,7 @@ PrefabInstance:
     - target: {fileID: 4576424004087786421, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
       propertyPath: m_Name
-      value: UniversalCoinImage (1)
+      value: Coin2
       objectReference: {fileID: 0}
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
@@ -2746,7 +2738,7 @@ PrefabInstance:
     - target: {fileID: 4576424004087786421, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
       propertyPath: m_Name
-      value: UniversalCoinImage (4)
+      value: Coin5
       objectReference: {fileID: 0}
     - target: {fileID: 4576424004087786422, guid: c7e40a4389b3aea4591d46dac11754a0,
         type: 3}
@@ -3406,7 +3398,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 6.7496543
+      value: 6.9286795
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
