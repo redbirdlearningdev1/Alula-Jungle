@@ -20,58 +20,33 @@ MonoBehaviour:
     moveWord: 1
     actionWord: 0
     requireInput: 0
-    postText: "\r"
+    postText: 
+    advanceBG: 1
   - text: howler monkey
     audio: {fileID: 8300000, guid: 1b9b71f54db9b6343835fcb75b679aa6, type: 3}
     moveWord: 1
     actionWord: 18
     requireInput: 1
-    postText: "~\r"
+    postText: ~
+    advanceBG: 0
   - text: backpack
     audio: {fileID: 8300000, guid: 20efcdb1e34daa648895afc2ebd23452, type: 3}
     moveWord: 1
     actionWord: 17
     requireInput: 1
-    postText: "~\r"
+    postText: ~
+    advanceBG: 0
   - text: baby monkey
     audio: {fileID: 8300000, guid: f9bf33e13eb29b6498c6218dffa72a6d, type: 3}
     moveWord: 1
     actionWord: 20
     requireInput: 1
-    postText: "~\r"
+    postText: ~
+    advanceBG: 0
   - text: head
     audio: {fileID: 8300000, guid: e14219bc1723e18499a651d0f7330f0a, type: 3}
     moveWord: 1
-    actionWord: 0
+    actionWord: 19
     requireInput: 1
-    postText: ".\r"
-  - text: 'One more time:'
-    audio: {fileID: 8300000, guid: 28a82c8edf6307d459c9eb9f7efc7b75, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: "\r"
-  - text: howler monkey
-    audio: {fileID: 8300000, guid: 1b9b71f54db9b6343835fcb75b679aa6, type: 3}
-    moveWord: 1
-    actionWord: 18
-    requireInput: 1
-    postText: "~\r"
-  - text: backpack
-    audio: {fileID: 8300000, guid: 20efcdb1e34daa648895afc2ebd23452, type: 3}
-    moveWord: 1
-    actionWord: 17
-    requireInput: 1
-    postText: "~\r"
-  - text: baby monkey
-    audio: {fileID: 8300000, guid: f9bf33e13eb29b6498c6218dffa72a6d, type: 3}
-    moveWord: 1
-    actionWord: 20
-    requireInput: 1
-    postText: "~\r"
-  - text: head
-    audio: {fileID: 8300000, guid: e14219bc1723e18499a651d0f7330f0a, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 1
-    postText: ".\r"
+    postText: .
+    advanceBG: 0

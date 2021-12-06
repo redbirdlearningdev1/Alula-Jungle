@@ -39,7 +39,7 @@ public class StoryGameManager : MonoBehaviour
     public float audioInputThreshold;
 
     private List<Transform> wordTransforms;
-    private int currWord;
+    private int currWord = 0;
     private bool waitingForAudioInput = false;
     private bool playingDancingManAnimation = false;
 
@@ -92,7 +92,6 @@ public class StoryGameManager : MonoBehaviour
             //print ("volume level: " + volumeLevel);
             if (volumeLevel >= audioInputThreshold)
             {
-                microphone.AudioInputDetected();
                 waitingForAudioInput = false;
             }
         }
@@ -127,150 +126,139 @@ public class StoryGameManager : MonoBehaviour
         // make action word list
         wordTransforms = new List<Transform>();
 
-        // // add the text objects to the layout group
-        // foreach (StoryGameSegment seg in storyGameData.segments)
-        // {
-        //     if (seg.writeText)
-        //     {
-        //         // add space
-        //         var space = Instantiate(textWrapperObject, textLayoutGroup);
-        //         space.GetComponent<TextWrapper>().SetSpace();
+        // add the text objects to the layout group
+        foreach (StoryGameSegment seg in storyGameData.segments)
+        {
+            var textObj = Instantiate(textWrapperObject, textLayoutGroup);
+            textObj.GetComponent<TextWrapper>().SetText(seg.text.Replace("~", ","));
+            textObj.GetComponent<TextWrapper>().SetTextColor(defaultTextColor, false);
 
-        //         var textObj = Instantiate(textWrapperObject, textLayoutGroup);
-        //         textObj.GetComponent<TextWrapper>().SetText(seg.text);
-        //         textObj.GetComponent<TextWrapper>().SetTextColor(defaultTextColor, false);
-        //         //print ("adding text: " + seg.text);
-        //     }
+            if (seg.moveWord)
+            {
+                wordTransforms.Add(textObj.transform);
+            }
 
-        //     // add empty action word if segment says so
-        //     if (seg.moveWord)
-        //     {
-        //         var emptyWord = Instantiate(textWrapperObject, textLayoutGroup);
-        //         emptyWord.GetComponent<TextWrapper>().SetText("");
-        //         emptyWord.GetComponent<TextWrapper>().SetTextColor(defaultTextColor, false);
-        //         wordTransforms.Add(emptyWord.transform);
-        //     }
+            if (seg.actionWord != ActionWordEnum._blank)
+            {
+                textObj.GetComponent<TextWrapper>().SetText(seg.actionWord.ToString());
+            }
 
-        //     if (seg.containsActionWord)
-        //     {
-        //         // add space
-        //         var space = Instantiate(textWrapperObject, textLayoutGroup);
-        //         space.GetComponent<TextWrapper>().SetSpace();
+            if (seg.postText != "")
+            {
+                var postWordObj = Instantiate(textWrapperObject, textLayoutGroup);
+                postWordObj.GetComponent<TextWrapper>().SetText(seg.postText.Replace("~", ","));
+                postWordObj.GetComponent<TextWrapper>().SetTextColor(defaultTextColor, false);
 
-        //         var wordObj = Instantiate(textWrapperObject, textLayoutGroup);
-        //         wordObj.GetComponent<TextWrapper>().SetText(seg.actionWordText);
-        //         wordObj.GetComponent<TextWrapper>().SetTextColor(defaultTextColor, false);
-        //         wordTransforms.Add(wordObj.transform);
-        //         //print ("adding word: " + seg.actionWordText);
-        //     }
+                // add extra space
+                var extra_space = Instantiate(textWrapperObject, textLayoutGroup);
+                extra_space.GetComponent<TextWrapper>().SetSpace();
+            }   
 
-        //     if (seg.containsPostText)
-        //     {
-        //         var postWordObj = Instantiate(textWrapperObject, textLayoutGroup);
-        //         postWordObj.GetComponent<TextWrapper>().SetText(seg.postText);
-        //         postWordObj.GetComponent<TextWrapper>().SetTextColor(defaultTextColor, false);
-        //         //print ("adding word: " + seg.actionWordText);
-
-        //         // add space
-        //         var space = Instantiate(textWrapperObject, textLayoutGroup);
-        //         space.GetComponent<TextWrapper>().SetSpace();
-        //     }
-        // }
+            // add space
+            var space = Instantiate(textWrapperObject, textLayoutGroup);
+            space.GetComponent<TextWrapper>().SetSpace();
+        }
     }
 
     private IEnumerator GameRoutine()
     {
-        int segCount = 1;
         int segMax = wordTransforms.Count;
 
-        // set coin init before pause
-        coin.SetCoinType(ActionWordEnum._blank);
-        coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.image, 0.25f, 0.5f);
+        // // set coin init before pause
+        // coin.SetCoinType(ActionWordEnum._blank);
+        // coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.image, 0.25f, 0.5f);
 
         // small pause before game begins
         yield return new WaitForSeconds(2f);
         
-        // foreach (StoryGameSegment seg in storyGameData.segments)
-        // {
-        //     // set the coin in action word in segment
-        //     if (seg.containsActionWord)
-        //         coin.SetCoinType(seg.actionWord);
-        //     else
-        //         coin.SetCoinType(ActionWordEnum._blank);
-        //     // make coin transparent
-        //     coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.image, 0.25f, 0.5f);
+        foreach (StoryGameSegment seg in storyGameData.segments)
+        {
+            // start moving gorilla
+            ScrollingBackground.instance.StartMoving();
 
-        //     // read text if available
-        //     if (seg.readText)
-        //     {
-        //         AudioManager.instance.PlayTalk(seg.textAudio);
+            // advance BG if segment says so
+            if (seg.advanceBG)
+            {
+                ScrollingBackground.instance.IncreaseLoopIndex();
+            }
 
-        //         if (seg.containsActionWord || seg.moveWord)
-        //         {
-        //             // move text until action word is in place
-        //             StartCoroutine(MoveTextToNextActionWord(seg.textAudio.length));
+            coin.SetCoinType(seg.actionWord);
 
-        //             // increment currActionWord
-        //             if (seg.moveWord)
-        //                 currWord++;
-        //         }
+            // // make coin transparent
+            // coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.image, 0.25f, 0.5f);
 
-        //         yield return new WaitForSeconds(seg.textAudio.length);
-        //     }
-        //     // if no text - just scroll to next action word
-        //     else if (!seg.readText && seg.containsActionWord)
-        //     {
-        //         // move text until action word is in place
-        //         StartCoroutine(MoveTextToNextActionWord(seg.wordAudio.length));
-        //     }
+            if (seg.moveWord)
+            {
+                // move text until action word is in place
+                StartCoroutine(MoveTextToNextActionWord(seg.audio.length));
+            }
 
-        //     // read action word if available
-        //     if (seg.containsActionWord)
-        //     {
-        //         // remove coin transparency
-        //         coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.image, 1f, 0.5f);
+            // read text if available
+            if (seg.actionWord == ActionWordEnum._blank)
+            {
+                AudioManager.instance.PlayTalk(seg.audio);
+                yield return new WaitForSeconds(seg.audio.length);
+            }
 
-        //         // set current variables
-        //         currentEnum = seg.actionWord;
-        //         currentClip = seg.wordAudio;
+            // read action word if available
+            else
+            {
+                // // remove coin transparency
+                // coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.image, 1f, 0.5f);
 
-        //         dancingMan.PlayUsingPhonemeEnum(seg.actionWord);
-        //         AudioManager.instance.PlayTalk(seg.wordAudio);
-        //         // highlight action word
-        //         wordTransforms[currWord].GetComponent<TextWrapper>().SetTextColor(actionTextColor, true);
-        //         wordTransforms[currWord].GetComponent<TextWrapper>().SetTextSize(actionTextSize, true);
-        //         currWord++;
+                // set current variables
+                currentEnum = seg.actionWord;
 
-        //         if (seg.requireMicInput)
-        //         {
-        //             // wait for play input
-        //             waitingForAudioInput = true;
-        //             // activate microphone indicator
-        //             microphone.ShowIndicator();
-        //             StartCoroutine(RepeatWhileWating());
-        //             while (waitingForAudioInput)
-        //                 yield return null;
+                dancingMan.PlayUsingPhonemeEnum(seg.actionWord);
+                AudioManager.instance.PlayTalk(seg.audio);
+                // highlight action word
+                wordTransforms[currWord].GetComponent<TextWrapper>().SetTextColor(actionTextColor, true);
+                wordTransforms[currWord].GetComponent<TextWrapper>().SetTextSize(actionTextSize, true);
 
-        //             yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(seg.audio.length);
 
-        //             // play correct audio cue
-        //             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
-        //         }
+                if (seg.requireInput)
+                {
+                    // stop moving gorilla
+                    ScrollingBackground.instance.StopMoving();
 
-        //         yield return new WaitForSeconds(seg.wordAudio.length);
+                    // wait for play input
+                    waitingForAudioInput = true;
+                    // activate microphone indicator
+                    microphone.ShowIndicator();
+                    StartCoroutine(RepeatWhileWating());
+                    while (waitingForAudioInput)
+                        yield return null;
 
-        //         // successful input stuff
-        //         ShakeCoin();
-        //         dancingMan.PlayUsingPhonemeEnum(seg.actionWord);
-        //         AudioManager.instance.PlayTalk(GameManager.instance.GetActionWord(seg.actionWord).audio);
-        //     }
+                    yield return new WaitForSeconds(1f);
 
-        //     segCount++;
-        //     yield return new WaitForSeconds(2f);
-        // }
+                    // show mic indicator
+                    microphone.AudioInputDetected();
+
+                    // play correct audio cue
+                    AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
+                }
+
+                // successful input
+                ShakeCoin();
+                dancingMan.PlayUsingPhonemeEnum(seg.actionWord);
+                AudioClip clip = GameManager.instance.GetActionWord(seg.actionWord).audio;
+                AudioManager.instance.PlayTalk(clip);
+                yield return new WaitForSeconds(clip.length);
+                microphone.HideIndicator();
+            }
+
+            yield return new WaitForSeconds(2f);
+
+            // increment curret word if needed
+            if (seg.moveWord)
+            {
+                currWord++;
+            }
+        }
         
-        // make coin transparent
-        coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.image, 0.25f, 0.5f);
+        // // make coin transparent
+        // coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.image, 0.25f, 0.5f);
 
         EndGame();
     } 

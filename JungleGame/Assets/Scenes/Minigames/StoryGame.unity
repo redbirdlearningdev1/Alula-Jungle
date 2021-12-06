@@ -428,7 +428,7 @@ PrefabInstance:
     - target: {fileID: 8654782996621606249, guid: 740fe5be808859844b65a2168cab7263,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8654782996621606249, guid: 740fe5be808859844b65a2168cab7263,
         type: 3}
@@ -473,7 +473,7 @@ PrefabInstance:
     - target: {fileID: 8654782996621606249, guid: 740fe5be808859844b65a2168cab7263,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10800.001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8654782996621606249, guid: 740fe5be808859844b65a2168cab7263,
         type: 3}
@@ -503,7 +503,7 @@ PrefabInstance:
     - target: {fileID: 8654782996621606249, guid: 740fe5be808859844b65a2168cab7263,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8654782996621606249, guid: 740fe5be808859844b65a2168cab7263,
         type: 3}
@@ -1024,7 +1024,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 44.35552
+      value: 44.774628
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -1144,7 +1144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: a4fd16949f35ee44fad2e4328f1b77f6, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1661,7 +1661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overrideGame: 1
-  storyGameIndex: 1
+  storyGameIndex: 2
   coin: {fileID: 1653332658}
   dancingMan: {fileID: 1034302397}
   microphone: {fileID: 403777656}

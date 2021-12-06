@@ -20,70 +20,40 @@ MonoBehaviour:
     moveWord: 1
     actionWord: 0
     requireInput: 0
-    postText: "\r"
+    postText: 
+    advanceBG: 1
   - text: hello
     audio: {fileID: 8300000, guid: 4d7763508a2d3804090948243490ac22, type: 3}
     moveWord: 1
     actionWord: 6
     requireInput: 1
-    postText: "~\r"
+    postText: ~
+    advanceBG: 1
   - text: spider
     audio: {fileID: 8300000, guid: f8e9bbd4304b29b4dbca5595599d04c5, type: 3}
     moveWord: 1
     actionWord: 7
     requireInput: 1
-    postText: "~\r"
+    postText: ~
+    advanceBG: 0
   - text: explorer
     audio: {fileID: 8300000, guid: 40792462956dcb9468c1328fe19d7642, type: 3}
     moveWord: 1
     actionWord: 8
     requireInput: 1
-    postText: "~\r"
+    postText: ~
+    advanceBG: 0
   - text: scared
     audio: {fileID: 8300000, guid: 4657ed20fb692014893afd1881be2c77, type: 3}
     moveWord: 1
     actionWord: 9
     requireInput: 1
-    postText: "~\r"
+    postText: ~
+    advanceBG: 0
   - text: thatguy
     audio: {fileID: 8300000, guid: 5b3d9a1e43f4f434b902327c3164002b, type: 3}
     moveWord: 1
-    actionWord: 0
+    actionWord: 10
     requireInput: 1
-    postText: ".\r"
-  - text: 'One more time:'
-    audio: {fileID: 8300000, guid: 5edd8dcee0c496142ae2a3f8abf07792, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: "\r"
-  - text: hello
-    audio: {fileID: 8300000, guid: 4d7763508a2d3804090948243490ac22, type: 3}
-    moveWord: 1
-    actionWord: 6
-    requireInput: 1
-    postText: "~\r"
-  - text: spider
-    audio: {fileID: 8300000, guid: f8e9bbd4304b29b4dbca5595599d04c5, type: 3}
-    moveWord: 1
-    actionWord: 7
-    requireInput: 1
-    postText: "~\r"
-  - text: explorer
-    audio: {fileID: 8300000, guid: 40792462956dcb9468c1328fe19d7642, type: 3}
-    moveWord: 1
-    actionWord: 8
-    requireInput: 1
-    postText: "~\r"
-  - text: scared
-    audio: {fileID: 8300000, guid: 4657ed20fb692014893afd1881be2c77, type: 3}
-    moveWord: 1
-    actionWord: 9
-    requireInput: 1
-    postText: "~\r"
-  - text: thatguy
-    audio: {fileID: 8300000, guid: 5b3d9a1e43f4f434b902327c3164002b, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 1
-    postText: ".\r"
+    postText: .
+    advanceBG: 0

@@ -20,58 +20,68 @@ MonoBehaviour:
     moveWord: 1
     actionWord: 0
     requireInput: 0
-    postText: "\r"
+    postText: 
+    advanceBG: 0
   - text: listening
     audio: {fileID: 8300000, guid: 16f49b3499975a142aedf0792993f6f3, type: 3}
     moveWord: 1
     actionWord: 2
     requireInput: 1
-    postText: "~\r"
+    postText: ~
+    advanceBG: 0
   - text: the
     audio: {fileID: 8300000, guid: 57c015f4314573d48a413f0e41d225c7, type: 3}
     moveWord: 1
     actionWord: 0
     requireInput: 0
-    postText: "\r"
+    postText: 
+    advanceBG: 1
   - text: orcs
     audio: {fileID: 8300000, guid: 9747889ffe2470c4c89cf0652c1f4a50, type: 3}
     moveWord: 1
     actionWord: 4
     requireInput: 1
-    postText: "\r"
+    postText: 
+    advanceBG: 0
   - text: agreed to trade
     audio: {fileID: 8300000, guid: 63595770aec5e624083f95f014ce8d07, type: 3}
     moveWord: 1
     actionWord: 0
     requireInput: 0
-    postText: "\r"
+    postText: 
+    advanceBG: 0
   - text: that guy
     audio: {fileID: 8300000, guid: 7011224734fd48148a68d22bd6acb876, type: 3}
     moveWord: 1
-    actionWord: 0
+    actionWord: 10
     requireInput: 1
-    postText: "\r"
+    postText: 
+    advanceBG: 0
   - text: for the
     audio: {fileID: 8300000, guid: 25dc8fa23f1a9ee468f89cc407774b8f, type: 3}
     moveWord: 1
     actionWord: 0
     requireInput: 0
-    postText: "\r"
+    postText: 
+    advanceBG: 1
   - text: baby monkey
     audio: {fileID: 8300000, guid: 82b1953884f3b2942bc9c244fe985360, type: 3}
     moveWord: 1
     actionWord: 20
     requireInput: 1
-    postText: "\r"
-  - text: '"which made everyone happy~ even"'
+    postText: 
+    advanceBG: 0
+  - text: which made everyone happy~ even
     audio: {fileID: 8300000, guid: c304fdb586ee1c445ac9671b01a2ec0d, type: 3}
     moveWord: 1
     actionWord: 0
     requireInput: 0
-    postText: "\r"
+    postText: 
+    advanceBG: 0
   - text: the gorilla
     audio: {fileID: 8300000, guid: 0c7cee06296c2b343bf2cd8c7d60b256, type: 3}
     moveWord: 1
     actionWord: 14
     requireInput: 1
     postText: .
+    advanceBG: 0

@@ -15,75 +15,45 @@ MonoBehaviour:
   storyName: 1_StoryGame_ThePrologue
   background: 0
   segments:
-  - text: '"One more time~ say it with me:"'
+  - text: 'One more time~ say it with me:'
     audio: {fileID: 8300000, guid: dd7dd25926526b343a907a418211dbb4, type: 3}
     moveWord: 1
     actionWord: 0
     requireInput: 0
-    postText: "\r"
+    postText: 
+    advanceBG: 1
   - text: mudslide
     audio: {fileID: 8300000, guid: 17cf87c5e8de4c64bbddafa8a73a2cfa, type: 3}
     moveWord: 1
     actionWord: 1
     requireInput: 1
-    postText: "~\r"
+    postText: ~
+    advanceBG: 1
   - text: listen
     audio: {fileID: 8300000, guid: db3a1cd34bdc448408c57064f43dd09d, type: 3}
     moveWord: 1
     actionWord: 2
     requireInput: 1
-    postText: "~\r"
+    postText: ~
+    advanceBG: 0
   - text: poop
     audio: {fileID: 8300000, guid: ca309fc8ee161e147a620084c06041bf, type: 3}
     moveWord: 1
     actionWord: 3
     requireInput: 1
-    postText: "~\r"
+    postText: ~
+    advanceBG: 0
   - text: orcs
     audio: {fileID: 8300000, guid: 7c35feef77b00eb45b81b3261db13838, type: 3}
     moveWord: 1
     actionWord: 4
     requireInput: 1
-    postText: "~\r"
+    postText: ~
+    advanceBG: 0
   - text: think
     audio: {fileID: 8300000, guid: 39744953a5c971d4a89ea4b41e5db868, type: 3}
     moveWord: 1
     actionWord: 5
     requireInput: 1
-    postText: ".\r"
-  - text: '"One more time~ say it with me:"'
-    audio: {fileID: 8300000, guid: dd7dd25926526b343a907a418211dbb4, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: "\r"
-  - text: mudslide
-    audio: {fileID: 8300000, guid: 17cf87c5e8de4c64bbddafa8a73a2cfa, type: 3}
-    moveWord: 1
-    actionWord: 1
-    requireInput: 1
-    postText: "~\r"
-  - text: listen
-    audio: {fileID: 8300000, guid: db3a1cd34bdc448408c57064f43dd09d, type: 3}
-    moveWord: 1
-    actionWord: 2
-    requireInput: 1
-    postText: "~\r"
-  - text: poop
-    audio: {fileID: 8300000, guid: ca309fc8ee161e147a620084c06041bf, type: 3}
-    moveWord: 1
-    actionWord: 3
-    requireInput: 1
-    postText: "~\r"
-  - text: orcs
-    audio: {fileID: 8300000, guid: 7c35feef77b00eb45b81b3261db13838, type: 3}
-    moveWord: 1
-    actionWord: 4
-    requireInput: 1
-    postText: "~\r"
-  - text: think
-    audio: {fileID: 8300000, guid: 39744953a5c971d4a89ea4b41e5db868, type: 3}
-    moveWord: 1
-    actionWord: 5
-    requireInput: 1
-    postText: ".\r"
+    postText: .
+    advanceBG: 0

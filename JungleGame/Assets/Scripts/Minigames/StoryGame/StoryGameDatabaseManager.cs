@@ -23,6 +23,7 @@ public struct StoryGameSegmentEntry
     public ActionWordEnum actionWord;
     public bool requireInput;
     public string postText;
+    public bool advanceBG;
 }
 
 public class StroyGameObjectImportException : System.Exception
@@ -208,8 +209,8 @@ public class StoryGameDatabaseManager : MonoBehaviour
             // catch any parse errors
             try
             {
-                // check that row is 6 long
-                if (rowData.Length != 6)
+                // check that row is 7 long
+                if (rowData.Length != 7)
                 {   
                     throw new StroyGameObjectImportException("invalid row size", lineCount, column_count);
                 }
@@ -288,14 +289,14 @@ public class StoryGameDatabaseManager : MonoBehaviour
                         {
                             case 0: // string literal
 
-                                segment.text = cell;
-                                print ("text: " + segment.text);
+                                segment.text = cell.Replace("\"", "");
+                                //print ("text: " + segment.text);
                                 break;
 
                             case 1: // audio
 
                                 segment.audio = SearchForAudioByName(cell); // try to find audio
-                                print ("audio: " + segment.audio.name);
+                                //print ("audio: " + segment.audio.name);
                                 break;
 
                             case 2: // move word?
@@ -304,13 +305,13 @@ public class StoryGameDatabaseManager : MonoBehaviour
                                     segment.moveWord = true;
                                 else
                                     segment.moveWord = false;
-                                print ("moveword: " + segment.moveWord);
+                                //print ("moveword: " + segment.moveWord);
                                 break;
 
                             case 3: // action word
                                 if (cell != "")
                                     segment.actionWord = ConvertToActionWord(cell);
-                                print ("actionword: " + segment.actionWord);
+                                //print ("actionword: " + segment.actionWord);
                                 break;
 
                             case 4: // require mic input?
@@ -319,20 +320,30 @@ public class StoryGameDatabaseManager : MonoBehaviour
                                     segment.requireInput = true;
                                 else
                                     segment.requireInput = false;
-                                print ("micinput: " + segment.requireInput);
+                                //print ("micinput: " + segment.requireInput);
                                 break;
 
                             case 5: // post text
 
                                 segment.postText = cell;
-                                print ("posttext: " + segment.postText);
+                                //print ("posttext: " + segment.postText);
                                 break;
+
+                            case 6: // advance background
+
+                                if (cell.Contains("yes"))
+                                    segment.advanceBG = true;
+                                else 
+                                    segment.advanceBG = false;
+                                print ("seg.advanceBG: " + segment.advanceBG);
+                                break;
+
                         }
                         column_count++;
                     }
                     // add segment to entry
                     entry.segments.Add(segment);
-                    print ("adding segment");
+                    //print ("adding segment");
                 }
             }
             catch (StroyGameObjectImportException e)
@@ -412,7 +423,6 @@ public class StoryGameDatabaseManager : MonoBehaviour
             GameManager.instance.SendLog("StoryGameWordDatabase", "!!! creating new story game object -> " + exact_filename);
             yourObject = ScriptableObject.CreateInstance<StoryGameData>();
             AssetDatabase.CreateAsset(yourObject, storygame_folder_path + exact_filename + ".asset");
-            yourObject.segments = new List<StoryGameSegment>();
         }
         // get word pair object
         else
@@ -420,8 +430,8 @@ public class StoryGameDatabaseManager : MonoBehaviour
             GameManager.instance.SendLog("StoryGameWordDatabase", "%%% found story game object -> " + exact_filename);
             yourObject = (StoryGameData)AssetDatabase.LoadAssetAtPath(result, typeof(StoryGameData));
         }
-
-        //GameManager.instance.SendLog("ChallengeWordDatabase", "yourObject -> " + yourObject.word);
+        // new segments
+        yourObject.segments = new List<StoryGameSegment>();
 
         // Do your changes
         yourObject.storyName = entry.storyName;
@@ -435,12 +445,7 @@ public class StoryGameDatabaseManager : MonoBehaviour
             new_seg.actionWord = seg.actionWord;
             new_seg.requireInput = seg.requireInput;
             new_seg.postText = seg.postText;
-
-            print ("new_seg.text: " + new_seg.text);
-            print ("new_seg.audio: " + new_seg.audio);
-            print ("new_seg.moveWord: " + new_seg.moveWord);
-            print ("new_seg.actionWord: " + new_seg.actionWord);
-            print ("new_seg.postText: " + new_seg.postText);
+            new_seg.advanceBG = seg.advanceBG;
 
             yourObject.segments.Add(new_seg);
         }

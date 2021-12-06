@@ -147,7 +147,7 @@ public class ScrollingBackground : MonoBehaviour
             obj.transform.localPosition = new Vector3(lastBlock.transform.localPosition.x + (lastBlock.sizeDelta.x / 2) + (size.x / 2), 0f, 0f);
 
             // start deleting blocks if child size is too large
-            if (layer.childCount >= 5)
+            if (layer.childCount >= 8)
             {
                 Destroy(layer.GetChild(0).gameObject);
             }
@@ -186,7 +186,7 @@ public class ScrollingBackground : MonoBehaviour
         }
     }
 
-    private void AddConnector(StoryGameLayer layerEnum, Sprite sprite, Vector2 size)
+    private void AddConnector(StoryGameLayer layerEnum, Sprite sprite, Vector2 size, int currSize = 0)
     {
         Transform layer = null;
         switch (layerEnum)
@@ -202,12 +202,20 @@ public class ScrollingBackground : MonoBehaviour
                 layer = backLayer;
                 break;
         }
-        RectTransform lastBlock = layer.GetChild(layer.childCount - 1).GetComponent<RectTransform>();
+
+        RectTransform lastBlock = null;
+
+        if (layer.childCount > 0)
+            lastBlock = layer.GetChild(layer.childCount - 1).GetComponent<RectTransform>();
 
         // add block to end of layer
         GameObject obj = Instantiate(buildingBlock, layer);
         obj.GetComponent<ParallaxBlock>().SetBlock(sprite, size);
-        obj.transform.localPosition = new Vector3(lastBlock.transform.localPosition.x + (lastBlock.sizeDelta.x / 2) + (size.x / 2), 0f, 0f);
+
+        if (lastBlock != null)
+            obj.transform.localPosition = new Vector3(lastBlock.transform.localPosition.x + (lastBlock.sizeDelta.x / 2) + (size.x / 2), 0f, 0f);
+        else
+            obj.transform.localPosition = new Vector3(currSize + (size.x / 2), 0f, 0f);
     }
 
     public void SetBackgroundType(StoryGameBackground background)
@@ -305,10 +313,7 @@ public class ScrollingBackground : MonoBehaviour
         // add single connector
         if (isConnector)
         {
-            // add single block to layer
-            GameObject obj = Instantiate(buildingBlock, layer);
-            obj.GetComponent<ParallaxBlock>().SetBlock(sprite, size);
-            obj.transform.localPosition = new Vector3(size.x / 2, 0f, 0f);
+            AddConnector(layerEnum, sprite, size, currSize);
         }
         // fill layer until size is larger than screen width (800)
         else

@@ -12,6 +12,7 @@ public class StoryGameSegment
     public ActionWordEnum actionWord;
     public bool requireInput;
     public string postText;
+    public bool advanceBG;
 }
 
 public enum StoryGameBackground

@@ -42,6 +42,7 @@ public class TextWrapper : MonoBehaviour
     
     public void SetText(string text)
     {
+        isOn = true;
         textMesh.text = text;
     }
 
