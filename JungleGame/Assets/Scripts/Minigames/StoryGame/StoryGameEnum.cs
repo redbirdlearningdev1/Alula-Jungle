@@ -4,6 +4,6 @@ using UnityEngine;
 
 public enum StoryGameEnum
 {
-    _0_Welcome,
-    _1_ThePrologue
+    _1_Prologue,
+    _2_ThePrologue
 }

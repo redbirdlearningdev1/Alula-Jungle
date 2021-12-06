@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 1_StoryGame_ThePrologue
   m_EditorClassIdentifier: 
   storyName: The Prologue
-  background: 3
+  background: 0
   segments:
   - skipOnPart2: 0
     readText: 1

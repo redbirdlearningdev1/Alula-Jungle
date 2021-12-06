@@ -6,30 +6,17 @@ using UnityEngine.UI;
 [System.Serializable]
 public class StoryGameSegment
 {
-    public bool skipOnPart2;
-
-    [Header("Read Text")]
-    public bool readText;
-    public bool writeText;
     public string text;
-    public AudioClip textAudio;
-    public bool actAsActionWord;
-    
-    [Header("Action Word")]
-    public bool containsActionWord;
-    public bool requireMicInput;
-    public string actionWordText;
+    public AudioClip audio;
+    public bool moveWord;
     public ActionWordEnum actionWord;
-    public AudioClip wordAudio;
-
-    [Header("Extra Text")]
-    public bool containsPostText;
     public string postText;
+    public bool requireInput;
 }
 
 public enum StoryGameBackground
 {
-    Beginning, Emerging, FollowRed, Prologue, Resolution
+    Prologue, Beginning, FollowRed, Emerging, Resolution
 }
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/StoryGameData", order = 0)]

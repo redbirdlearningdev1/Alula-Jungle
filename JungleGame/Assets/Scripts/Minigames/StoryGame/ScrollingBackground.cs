@@ -3,34 +3,59 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[ExecuteInEditMode]
+[System.Serializable]
+public struct BackgroundSprites
+{
+    public StoryGameBackground gameBackground;
+    public Sprite skySprite;
+    public List<BackgroundLoop> loops;
+}
+
+[System.Serializable]
+public struct BackgroundLoop
+{
+    public bool isConnector;
+    public Sprite front;
+    public Sprite mid;
+    public Sprite back;
+    public Vector2 size;
+}
+
+public enum StoryGameLayer
+{
+    front, mid, back
+}
+
 public class ScrollingBackground : MonoBehaviour
 {
     public static ScrollingBackground instance;
 
-    [Header("Dev Stuff")]
-    public StoryGameBackground currBackground;
-    private StoryGameBackground prevBackground;
+    public Animator gorillaAnimator;
+    public GameObject buildingBlock;
+    public Vector2 fullLayerSize;
 
-    [Header("Scrolling Image Variables")]
-    [SerializeField] private List<Image> scrollingImages;
-    [Range(0,1)] public float scrollPos;
-    private float prevScrollPos;
-    public List<float> scrollMultipliers;
+    [Header("Background Sprite Database")]
+    public BackgroundSprites prologueSprites;
+    public BackgroundSprites beginningSprites;
+    public BackgroundSprites followRedSprites;
+    public BackgroundSprites emergingSprites;
+    public BackgroundSprites resolutionSprites;
 
-    [Header("Gorilla Variables")]
-    [SerializeField] private Transform gorilla;
-    [SerializeField] private Animator gorillaAnimator;
-    [SerializeField] private Transform startPos;
-    [SerializeField] private Transform endPos;
+    [Header("Layers")]
+    public Transform skyLayer;
+    public Transform backLayer;
+    public Transform midLayer;
+    public Transform frontLayer;
 
-    // Beginning, Emerging, FollowRed, Prologue, Resolution
-    [Header("Sprite Groups")]
-    [SerializeField] private List<Sprite> beginningSprites;
-    [SerializeField] private List<Sprite> emergingSprites;
-    [SerializeField] private List<Sprite> followRedSprites;
-    [SerializeField] private List<Sprite> prologueSprites;
-    [SerializeField] private List<Sprite> resolutionSprites;
+    [Header("Parallax Speeds")]
+    public float frontSpeed;
+    public float midSpeed;
+    public float backSpeed;
+
+    // private variables
+    private bool isMoving = false;
+    private BackgroundSprites currentSprites;
+    private int currIndex;
 
     void Awake()
     {
@@ -40,106 +65,264 @@ public class ScrollingBackground : MonoBehaviour
 
     void Update()
     {
-        // only for changing background in edit mode
-        if (Application.isEditor)
+        // dev testing stuff
+        if (Input.GetKeyDown(KeyCode.O))
         {
-            if (currBackground != prevBackground)
-            {
-                SetBackgroundType(currBackground);
-                prevBackground = currBackground;
-            }
+            if (isMoving) StopMoving();
+            else StartMoving();
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            IncreaseLoopIndex();
         }
 
-        // return if the prev parallax pos is the same
-        if (scrollPos != prevScrollPos)
-            prevScrollPos = scrollPos;
-        else
-            return;
 
-        // parallaxing happens here
-        for (int i = 0; i < scrollingImages.Count; i++)
+        if (isMoving)
         {
-            // set scrolling images position
-            Vector3 pos = new Vector3(scrollMultipliers[i] * scrollPos * -1, 0f, 0f);
-            scrollingImages[i].transform.localPosition = pos;
-
-            // set gorilla pos
-            Vector3 gorillaPos = Vector3.Lerp(startPos.position, endPos.position, scrollPos);
-            gorilla.position = gorillaPos;
+            MoveLayer(StoryGameLayer.front);
+            MoveLayer(StoryGameLayer.mid);
+            MoveLayer(StoryGameLayer.back);
         }
     }
 
-    public void SetBackgroundType(StoryGameBackground type)
+    private void MoveLayer(StoryGameLayer layerEnum)
     {
-        currBackground = type;
-        switch (type)
+        // grab layer transform and speed
+        Transform layer = null;
+        float speed = 0;
+        switch (layerEnum)
         {
-            case StoryGameBackground.Beginning:
-                // set scrolling images to be beginning sprites
-                for (int i = 0; i < scrollingImages.Count; i++)
-                    scrollingImages[i].sprite = beginningSprites[i];
+            default:
+            case StoryGameLayer.front:
+                layer = frontLayer;
+                speed = frontSpeed;
                 break;
-            case StoryGameBackground.Emerging:
-                // set scrolling images to be emerging sprites
-                for (int i = 0; i < scrollingImages.Count; i++)
-                    scrollingImages[i].sprite = emergingSprites[i];
+            case StoryGameLayer.mid:
+                layer = midLayer;
+                speed = midSpeed;
+                break;
+            case StoryGameLayer.back:
+                layer = backLayer;
+                speed = backSpeed;
+                break;
+        }
+
+        // move each child of layer transform left and equal amount
+        foreach(Transform t in layer)
+        {
+            Vector3 pos = t.transform.position;
+            pos.x -= speed;
+            t.transform.position = pos;
+        }
+
+        // if the last child in layer is near the edge of the right side of screen, add more blocks
+        RectTransform lastBlock = layer.GetChild(layer.childCount - 1).GetComponent<RectTransform>();
+
+        if (lastBlock.transform.localPosition.x + lastBlock.sizeDelta.x < 600)
+        {
+            // print ("last block pos x: " + lastBlock.transform.localPosition.x);
+            // print ("last width: " + lastBlock.sizeDelta.x);
+
+            BackgroundLoop loop = currentSprites.loops[currIndex];
+            // get sprite and size
+            Sprite sprite = null;
+            Vector2 size = loop.size;
+            switch (layerEnum)
+            {
+                default:
+                case StoryGameLayer.front:
+                    sprite = loop.front;
+                    break;
+                case StoryGameLayer.mid:
+                    sprite = loop.mid;
+                    break;
+                case StoryGameLayer.back:
+                    sprite = loop.back;
+                    break;
+            }
+
+            // add block to layer
+            GameObject obj = Instantiate(buildingBlock, layer);
+            obj.GetComponent<ParallaxBlock>().SetBlock(sprite, size);
+            obj.transform.localPosition = new Vector3(lastBlock.transform.localPosition.x + (lastBlock.sizeDelta.x / 2) + (size.x / 2), 0f, 0f);
+
+            // start deleting blocks if child size is too large
+            if (layer.childCount >= 5)
+            {
+                Destroy(layer.GetChild(0).gameObject);
+            }
+        }
+    }
+
+    public void StartMoving()
+    {
+        isMoving = true;
+        gorillaAnimator.Play("walk");
+    }
+
+    public void StopMoving()
+    {
+        isMoving = false;
+        gorillaAnimator.Play("sit_think");
+    }
+
+    public void IncreaseLoopIndex()
+    {
+        currIndex++;
+        if (currIndex >= currentSprites.loops.Count)
+        {
+            currIndex = 0;
+        }
+
+        // add connector to all layers if connector segment
+        BackgroundLoop loop = currentSprites.loops[currIndex];
+        if (loop.isConnector)
+        {
+            AddConnector(StoryGameLayer.front, loop.front, loop.size);
+            AddConnector(StoryGameLayer.mid, loop.mid, loop.size);
+            AddConnector(StoryGameLayer.back, loop.back, loop.size);
+
+            IncreaseLoopIndex();
+        }
+    }
+
+    private void AddConnector(StoryGameLayer layerEnum, Sprite sprite, Vector2 size)
+    {
+        Transform layer = null;
+        switch (layerEnum)
+        {
+            default:
+            case StoryGameLayer.front:
+                layer = frontLayer;
+                break;
+            case StoryGameLayer.mid:
+                layer = midLayer;
+                break;
+            case StoryGameLayer.back:
+                layer = backLayer;
+                break;
+        }
+        RectTransform lastBlock = layer.GetChild(layer.childCount - 1).GetComponent<RectTransform>();
+
+        // add block to end of layer
+        GameObject obj = Instantiate(buildingBlock, layer);
+        obj.GetComponent<ParallaxBlock>().SetBlock(sprite, size);
+        obj.transform.localPosition = new Vector3(lastBlock.transform.localPosition.x + (lastBlock.sizeDelta.x / 2) + (size.x / 2), 0f, 0f);
+    }
+
+    public void SetBackgroundType(StoryGameBackground background)
+    {
+        ResetLayers();
+
+        switch (background)
+        {
+            case StoryGameBackground.Prologue:
+                SetupBackground(prologueSprites);
+                break;
+            case StoryGameBackground.Beginning:
+                SetupBackground(beginningSprites);
                 break;
             case StoryGameBackground.FollowRed:
-                // set scrolling images to be followRed sprites
-                for (int i = 0; i < scrollingImages.Count; i++)
-                    scrollingImages[i].sprite = followRedSprites[i];
+                SetupBackground(followRedSprites);
                 break;
-            case StoryGameBackground.Prologue:
-                // set scrolling images to be prologue sprites
-                for (int i = 0; i < scrollingImages.Count; i++)
-                    scrollingImages[i].sprite = prologueSprites[i];
+            case StoryGameBackground.Emerging:
+                SetupBackground(emergingSprites);
                 break;
             case StoryGameBackground.Resolution:
-                // set scrolling images to be resolution sprites
-                for (int i = 0; i < scrollingImages.Count; i++)
-                    scrollingImages[i].sprite = resolutionSprites[i];
+                SetupBackground(resolutionSprites);
                 break;
         }
     }
 
-    public void LerpScrollPosTo(float newScrollPos, float duration)
+    private void ResetLayers()
     {
-        // assert that the new pos is valid (between 0 and 1)
-        if (newScrollPos < 0 || newScrollPos > 1)
-            return;
+        // destroy all children in sky layer
+        foreach(Transform t in skyLayer)
+            Destroy(t);
 
-        StartCoroutine(LerpScrollPosToRoutine(newScrollPos, duration));
+        // destroy all children in back layer
+        foreach(Transform t in backLayer)
+            Destroy(t);
+        
+        // destroy all children in mid layer
+        foreach(Transform t in midLayer)
+            Destroy(t);
+        
+        // destroy all children in front layer
+        foreach(Transform t in frontLayer)
+            Destroy(t);
+
+        currIndex = 0;
     }
 
-    private IEnumerator LerpScrollPosToRoutine(float newScrollPos, float duration)
+    private void SetupBackground(BackgroundSprites sprites)
     {
-        float timer = 0f;
-        float startPos = scrollPos;
-        float endPos = newScrollPos;
-        // gorilla animator -> walk
-        gorillaAnimator.Play("walk");
+        // set surrent sprites
+        currentSprites = sprites;
 
-        while (true) 
+        // add sky layer
+        GameObject obj = Instantiate(buildingBlock, skyLayer);
+        obj.GetComponent<ParallaxBlock>().SetBlock(currentSprites.skySprite, fullLayerSize);
+        obj.transform.localPosition = new Vector3(0f, 0f, 0f);
+
+        BackgroundLoop currLoop = currentSprites.loops[currIndex];
+        // fill first connector loop
+        if (currLoop.isConnector)
         {
-            timer += Time.deltaTime;
-            if (timer > duration)
-            {
-                scrollPos = endPos;
-                // gorilla animator -> think or yeah
-                if (endPos == 1f)
-                    gorillaAnimator.Play("sit_yeah");
-                else
-                    gorillaAnimator.Play("sit_think");
-                break;
-            }
-
-            scrollPos = Mathf.Lerp(startPos, endPos, timer / duration);
-            yield return null;
+            FillLayer(StoryGameLayer.front, currLoop.front, currLoop.size, true);
+            FillLayer(StoryGameLayer.mid, currLoop.mid, currLoop.size, true);
+            FillLayer(StoryGameLayer.back, currLoop.back, currLoop.size, true);
+            // go to next loop
+            currIndex++;
+            currLoop = currentSprites.loops[currIndex];
         }
+        // fill the rest of the layers
+        FillLayer(StoryGameLayer.front, currLoop.front, currLoop.size, false);
+        FillLayer(StoryGameLayer.mid, currLoop.mid, currLoop.size, false);
+        FillLayer(StoryGameLayer.back, currLoop.back, currLoop.size, false);
     }
 
-    public void GorillaCorrectAnim()
-    {
-        gorillaAnimator.Play("sit_yeah");
+    private void FillLayer(StoryGameLayer layerEnum, Sprite sprite, Vector2 size, bool isConnector = false)
+    {       
+        int currSize = -400;
+
+        // determine layer
+        Transform layer = null;
+        switch (layerEnum)
+        {
+            default:
+            case StoryGameLayer.front:
+                layer = frontLayer;
+                break;
+            case StoryGameLayer.mid:
+                layer = midLayer;
+                break;
+            case StoryGameLayer.back:
+                layer = backLayer;
+                break;
+        }
+
+        // add single connector
+        if (isConnector)
+        {
+            // add single block to layer
+            GameObject obj = Instantiate(buildingBlock, layer);
+            obj.GetComponent<ParallaxBlock>().SetBlock(sprite, size);
+            obj.transform.localPosition = new Vector3(size.x / 2, 0f, 0f);
+        }
+        // fill layer until size is larger than screen width (800)
+        else
+        {
+            while (currSize < 400)
+            {
+                // add block to layer
+                GameObject obj = Instantiate(buildingBlock, layer);
+                obj.GetComponent<ParallaxBlock>().SetBlock(sprite, size);
+                obj.transform.localPosition = new Vector3(currSize + obj.GetComponent<RectTransform>().sizeDelta.x / 2, 0f, 0f);
+
+                // increase layer size
+                currSize += (int)size.x;
+            }
+        }
     }
 }
