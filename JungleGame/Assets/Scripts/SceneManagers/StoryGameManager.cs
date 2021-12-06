@@ -217,8 +217,14 @@ public class StoryGameManager : MonoBehaviour
 
                 yield return new WaitForSeconds(seg.audio.length);
 
-                if (seg.requireInput)
+                if (seg.requireInput && !microphone.hasBeenPressed)
                 {
+                    // turn on mic button
+                    if (!microphone.interactable)
+                    {
+                        microphone.interactable = true;
+                    }
+
                     // stop moving gorilla
                     ScrollingBackground.instance.StopMoving();
 
@@ -228,15 +234,38 @@ public class StoryGameManager : MonoBehaviour
                     microphone.ShowIndicator();
                     StartCoroutine(RepeatWhileWating());
                     while (waitingForAudioInput)
+                    {
+                        // break from loop if button is mic button is pressed
+                        if (microphone.hasBeenPressed)
+                            break;
                         yield return null;
+                    }
+                        
+                    // start skipping mic inputs
+                    if (microphone.hasBeenPressed)
+                    {
+                        microphone.interactable = false;
+                        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 0.5f);
+                        microphone.NoInputDetected();
+                    }
+                    else
+                    {
+                        // show mic indicator
+                        microphone.AudioInputDetected();
+
+                        // play correct audio cue
+                        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
+
+                        yield return new WaitForSeconds(1f);    
+                    }              
+                }
+                
+                if (microphone.hasBeenPressed)
+                {
+                    // stop moving gorilla
+                    ScrollingBackground.instance.StopMoving();
 
                     yield return new WaitForSeconds(1f);
-
-                    // show mic indicator
-                    microphone.AudioInputDetected();
-
-                    // play correct audio cue
-                    AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
                 }
 
                 // successful input
@@ -245,7 +274,11 @@ public class StoryGameManager : MonoBehaviour
                 AudioClip clip = GameManager.instance.GetActionWord(seg.actionWord).audio;
                 AudioManager.instance.PlayTalk(clip);
                 yield return new WaitForSeconds(clip.length);
-                microphone.HideIndicator();
+
+                if (!microphone.hasBeenPressed)
+                {
+                    microphone.HideIndicator();
+                }
             }
 
             yield return new WaitForSeconds(2f);
