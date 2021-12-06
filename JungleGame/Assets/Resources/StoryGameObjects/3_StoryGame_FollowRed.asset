@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3d7995dc4e71046812b5c624cc38cd, type: 3}
+  m_Name: 3_StoryGame_FollowRed
+  m_EditorClassIdentifier: 
+  storyName: 3_StoryGame_FollowRed
+  background: 2
+  segments:
+  - text: 'One more time:'
+    audio: {fileID: 8300000, guid: c75a5a58488ffa543b04bb7feca9a42e, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: "\r"
+  - text: choice
+    audio: {fileID: 8300000, guid: fdb289080d6058b4992b5eef20dcf796, type: 3}
+    moveWord: 1
+    actionWord: 11
+    requireInput: 1
+    postText: "~\r"
+  - text: strong wind
+    audio: {fileID: 8300000, guid: 7d1677196b1ada7449b51675aeb88477, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 1
+    postText: "~\r"
+  - text: sound
+    audio: {fileID: 8300000, guid: 42f989b441e54b841a5e9a4a2e2e54ea, type: 3}
+    moveWord: 1
+    actionWord: 15
+    requireInput: 1
+    postText: "~\r"
+  - text: angry gorilla
+    audio: {fileID: 8300000, guid: 8c02a784471d64e4596d2e87dd37f5a5, type: 3}
+    moveWord: 1
+    actionWord: 14
+    requireInput: 1
+    postText: "~\r"
+  - text: pirate
+    audio: {fileID: 8300000, guid: 0322ae913c3d3b7498093489cc808990, type: 3}
+    moveWord: 1
+    actionWord: 13
+    requireInput: 1
+    postText: "~\r"
+  - text: give
+    audio: {fileID: 8300000, guid: b5b2fd87eddb7224ba8c7d5ab18ee163, type: 3}
+    moveWord: 1
+    actionWord: 16
+    requireInput: 1
+    postText: ".\r"
+  - text: 'One more time:'
+    audio: {fileID: 8300000, guid: c75a5a58488ffa543b04bb7feca9a42e, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: "\r"
+  - text: choice
+    audio: {fileID: 8300000, guid: fdb289080d6058b4992b5eef20dcf796, type: 3}
+    moveWord: 1
+    actionWord: 11
+    requireInput: 1
+    postText: "~\r"
+  - text: strong wind
+    audio: {fileID: 8300000, guid: 7d1677196b1ada7449b51675aeb88477, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 1
+    postText: "~\r"
+  - text: sound
+    audio: {fileID: 8300000, guid: 42f989b441e54b841a5e9a4a2e2e54ea, type: 3}
+    moveWord: 1
+    actionWord: 15
+    requireInput: 1
+    postText: "~\r"
+  - text: angry gorilla
+    audio: {fileID: 8300000, guid: 8c02a784471d64e4596d2e87dd37f5a5, type: 3}
+    moveWord: 1
+    actionWord: 14
+    requireInput: 1
+    postText: "~\r"
+  - text: pirate
+    audio: {fileID: 8300000, guid: 0322ae913c3d3b7498093489cc808990, type: 3}
+    moveWord: 1
+    actionWord: 13
+    requireInput: 1
+    postText: "~\r"
+  - text: give
+    audio: {fileID: 8300000, guid: b5b2fd87eddb7224ba8c7d5ab18ee163, type: 3}
+    moveWord: 1
+    actionWord: 16
+    requireInput: 1
+    postText: ".\r"

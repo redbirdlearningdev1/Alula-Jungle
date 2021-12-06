@@ -66,7 +66,7 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
 
     public void OnFileDropdownValueChange()
     {
-        Debug.Log("reseting data!");
+        Debug.Log("resetting data!");
         ResetData();
 
         // set up the path list

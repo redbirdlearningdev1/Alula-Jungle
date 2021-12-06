@@ -43,7 +43,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
     private const string csv_folder_path = "Assets/Resources/CSV_folder/";
     public const string talkie_audio_folder = "Assets/Resources/TalkieAudioFiles/";
 
-    public  List<AudioClip> globalTalkieAudioList;
+    public List<AudioClip> globalTalkieAudioList;
     private List<TalkieObject> localTalkieObjects;
     private List<string> filePaths;
     private string fileText;

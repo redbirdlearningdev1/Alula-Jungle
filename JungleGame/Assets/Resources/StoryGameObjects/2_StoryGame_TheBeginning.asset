@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3d7995dc4e71046812b5c624cc38cd, type: 3}
+  m_Name: 2_StoryGame_TheBeginning
+  m_EditorClassIdentifier: 
+  storyName: 2_StoryGame_TheBeginning
+  background: 1
+  segments:
+  - text: 'One more time:'
+    audio: {fileID: 8300000, guid: 5edd8dcee0c496142ae2a3f8abf07792, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: "\r"
+  - text: hello
+    audio: {fileID: 8300000, guid: 4d7763508a2d3804090948243490ac22, type: 3}
+    moveWord: 1
+    actionWord: 6
+    requireInput: 1
+    postText: "~\r"
+  - text: spider
+    audio: {fileID: 8300000, guid: f8e9bbd4304b29b4dbca5595599d04c5, type: 3}
+    moveWord: 1
+    actionWord: 7
+    requireInput: 1
+    postText: "~\r"
+  - text: explorer
+    audio: {fileID: 8300000, guid: 40792462956dcb9468c1328fe19d7642, type: 3}
+    moveWord: 1
+    actionWord: 8
+    requireInput: 1
+    postText: "~\r"
+  - text: scared
+    audio: {fileID: 8300000, guid: 4657ed20fb692014893afd1881be2c77, type: 3}
+    moveWord: 1
+    actionWord: 9
+    requireInput: 1
+    postText: "~\r"
+  - text: thatguy
+    audio: {fileID: 8300000, guid: 5b3d9a1e43f4f434b902327c3164002b, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 1
+    postText: ".\r"
+  - text: 'One more time:'
+    audio: {fileID: 8300000, guid: 5edd8dcee0c496142ae2a3f8abf07792, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: "\r"
+  - text: hello
+    audio: {fileID: 8300000, guid: 4d7763508a2d3804090948243490ac22, type: 3}
+    moveWord: 1
+    actionWord: 6
+    requireInput: 1
+    postText: "~\r"
+  - text: spider
+    audio: {fileID: 8300000, guid: f8e9bbd4304b29b4dbca5595599d04c5, type: 3}
+    moveWord: 1
+    actionWord: 7
+    requireInput: 1
+    postText: "~\r"
+  - text: explorer
+    audio: {fileID: 8300000, guid: 40792462956dcb9468c1328fe19d7642, type: 3}
+    moveWord: 1
+    actionWord: 8
+    requireInput: 1
+    postText: "~\r"
+  - text: scared
+    audio: {fileID: 8300000, guid: 4657ed20fb692014893afd1881be2c77, type: 3}
+    moveWord: 1
+    actionWord: 9
+    requireInput: 1
+    postText: "~\r"
+  - text: thatguy
+    audio: {fileID: 8300000, guid: 5b3d9a1e43f4f434b902327c3164002b, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 1
+    postText: ".\r"

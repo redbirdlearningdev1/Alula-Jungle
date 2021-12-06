@@ -4509,7 +4509,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3292304020975609992}
   m_Direction: 0
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.9999974
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -12136,8 +12136,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c80d98334716704c86b43283702c1c6, type: 2}
   - {fileID: 11400000, guid: dddf5a8aa0beb114f891aef0cc0ddecb, type: 2}
   storyGameDatas:
-  - {fileID: 11400000, guid: db337d8df4d64b14db5b29f92bf35ee2, type: 2}
-  - {fileID: 11400000, guid: 06e88a11501a3bd4584b31c608a9ab97, type: 2}
+  - {fileID: 11400000, guid: e10aa376be1f9f7489815eda5535b766, type: 2}
+  - {fileID: 11400000, guid: 3f4e777962e7f714793534be17591ae3, type: 2}
+  - {fileID: 11400000, guid: bf1267047db87384ebdf0fed9565bc83, type: 2}
+  - {fileID: 11400000, guid: 263de4e5eda35fe47b0472b5f4ee982f, type: 2}
+  - {fileID: 11400000, guid: c6786bb3e106d1d40bdd741e5589cef1, type: 2}
   devModeIndicator: {fileID: 6550831789426890278}
   storyGameData: {fileID: 0}
   mapID: 0
@@ -19284,7 +19287,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 62.27249, y: 0.005817631}
+  m_AnchoredPosition: {x: 62.313126, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

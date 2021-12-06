@@ -1,0 +1,54 @@
+text (string literal),audio file name,move word?,action word? (leave blank if none),require mic input? (leave blank if no),post text (commas and such)
+$Name,1_StoryGame_ThePrologue,,,,
+$Background,Prologue,,,,
+$Segments,,,,,
+"One more time~ say it with me:",S1_64_1,yes,,,
+mudslide,S1_65_1,yes,mudslide,yes,~
+listen,S1_66_1,yes,listen,yes,~
+poop,S1_67_1,yes,poop,yes,~
+orcs,S1_68_1,yes,orcs,yes,~
+think,S1_69_1,yes,think,yes,.
+,,,,,
+$Name,2_StoryGame_TheBeginning,,,,
+$Background,Beginning,,,,
+$Segments,,,,,
+One more time:,S2_62_1,yes,,,
+hello,S2_63_1,yes,hello,yes,~
+spider,S2_64_1,yes,spider,yes,~
+explorer,S2_65_1,yes,explorer,yes,~
+scared,S2_66_1,yes,scared,yes,~
+thatguy,S2_67_1,yes,thatguy,yes,.
+,,,,,
+$Name,3_StoryGame_FollowRed,,,,
+$Background,FollowRed,,,,
+$Segments,,,,,
+One more time:,S3_112_1,yes,,,
+choice,S3_113_1,yes,choice,yes,~
+strong wind,S3_114_1,yes,strong wind,yes,~
+sound,S3_115_1,yes,sounds,yes,~
+angry gorilla,S3_116_1,yes,gorilla,yes,~
+pirate,S3_117_1,yes,pirate,yes,~
+give,S3_118_1,yes,give,yes,.
+,,,,,
+$Name,4_StoryGame_Emerging,,,,
+$Background,Emerging,,,,
+$Segments,,,,,
+One more time:,S4_117_1,yes,,,
+howler monkey,S4_118_1,yes,frustrating,yes,~
+backpack,S4_119_1,yes,backpack,yes,~
+baby monkey,S4_120_1,yes,baby,yes,~
+head,S4_115_1,yes,bumphead,yes,.
+,,,,,
+$Name,5_StoryGame_Resolution,,,,
+$Background,Resolution,,,,
+$Segments,,,,,
+After a long conversation and a lot of ,S5_61_1,yes,,,
+listening,S5_62_1,yes,listen,yes,~
+the,S5_63_1,yes,,,
+orcs,S5_64_1,yes,orcs,yes,
+agreed to trade,S5_65_1,yes,,,
+that guy,S5_66_1,yes,thatguy,yes,
+for the,S5_67_1,yes,,,
+baby monkey,S5_68_1,yes,baby,yes,
+"which made everyone happy~ even",S5_69_1,yes,,,
+the gorilla,S5_70_1,yes,gorilla,yes,.
