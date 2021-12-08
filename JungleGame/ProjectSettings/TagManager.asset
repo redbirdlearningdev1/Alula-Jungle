@@ -28,6 +28,8 @@ TagManager:
   - Cannon
   - BallGrab
   - SignPost
+  - PasswordTube
+  - Target
   layers:
   - Default
   - TransparentFX

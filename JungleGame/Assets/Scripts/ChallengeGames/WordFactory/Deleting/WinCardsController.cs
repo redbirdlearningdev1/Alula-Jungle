@@ -18,6 +18,11 @@ public class WinCardsController : MonoBehaviour
             instance = this;
     }
 
+    public bool WinGame()
+    {
+        return currPolaroidCount >= 3;
+    }
+
     public void ResetCards()
     {
         card1Anim.Play("Card1Off");
