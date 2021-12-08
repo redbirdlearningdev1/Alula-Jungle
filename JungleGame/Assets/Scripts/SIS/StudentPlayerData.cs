@@ -10,6 +10,7 @@ public class StudentPlayerData
     public bool active; // bool to determine if someone has created this student player
     public bool mostRecentProfile; // is this the most recently opend profile?
     public string name; // name of student
+    public int minigamesPlayed;
 
     // coins
     public int goldCoins;

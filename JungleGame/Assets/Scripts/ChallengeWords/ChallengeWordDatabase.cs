@@ -246,7 +246,7 @@ public static class ChallengeWordDatabase
     {
         List<ChallengeWord> list = new List<ChallengeWord>();
         
-        InitCreateGlobalList();
+        InitCreateGlobalList(true);
         foreach (var word in globalChallengeWordList)
         {
             if (word.set == set)
@@ -254,6 +254,72 @@ public static class ChallengeWordDatabase
         }
 
         return list;
+    }
+
+    public static List<ChallengeWord> GetChallengeWords(List<ActionWordEnum> validSets)
+    {
+        List<ChallengeWord> list = new List<ChallengeWord>();
+        
+        InitCreateGlobalList(true);
+        foreach (var word in globalChallengeWordList)
+        {
+            if (validSets.Contains(word.set))
+                list.Add(word);
+        }
+
+        return list;
+    }
+
+    public static List<WordPair> GetSubstitutionWordPairs(List<ActionWordEnum> validSets)
+    {
+        // add all pairs to list and remove all non-sub pairs
+        List<WordPair> subWordPairs = new List<WordPair>();
+        subWordPairs = new List<WordPair>();
+
+        List<WordPair> deletePairs = new List<WordPair>();
+        ChallengeWordDatabase.InitCreateGlobalPairList();
+        subWordPairs.AddRange(ChallengeWordDatabase.globalWordPairs);
+        foreach (var pair in subWordPairs)
+        {
+            // if pair type is invalid OR pair set is invalid - remove from return list
+            if (pair.pairType != PairType.sub || !validSets.Contains(pair.soundCoin))
+            {
+                deletePairs.Add(pair);
+            }
+        }
+
+        // remove all invalid pairs
+        foreach (var pair in deletePairs)
+        {
+            subWordPairs.Remove(pair);
+        }
+        return subWordPairs;
+    }
+
+    public static List<WordPair> GetAddDeleteWordPairs(List<ActionWordEnum> validSets)
+    {
+        // add all pairs to list and remove all non-sub pairs
+        List<WordPair> addDelWordPairs = new List<WordPair>();
+        addDelWordPairs = new List<WordPair>();
+        
+        List<WordPair> deletePairs = new List<WordPair>();
+        ChallengeWordDatabase.InitCreateGlobalPairList();
+        addDelWordPairs.AddRange(ChallengeWordDatabase.globalWordPairs);
+        foreach (var pair in addDelWordPairs)
+        {
+            // if pair type is invalid OR pair set is invalid - remove from return list
+            if (pair.pairType != PairType.del_add || !validSets.Contains(pair.soundCoin))
+            {
+                deletePairs.Add(pair);
+            }
+        }
+
+        // remove all invalid pairs
+        foreach (var pair in deletePairs)
+        {
+            addDelWordPairs.Remove(pair);
+        }
+        return addDelWordPairs;
     }
 
     public static ConsonantEnum ElkoninValueToConsonantEnum(ElkoninValue value)

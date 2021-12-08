@@ -43,8 +43,6 @@ public class GameManager : DontDestroy<GameManager>
 
     [Header("Game Datas")]
     public List<StoryGameData> storyGameDatas;
-    private List<WordPair> subWordPairs;
-    private List<WordPair> addDelWordPairs;
     
     [SerializeField] private GameObject devModeIndicator;
     private bool devIndicatorSet = false;
@@ -52,8 +50,6 @@ public class GameManager : DontDestroy<GameManager>
     public StoryGameData storyGameData;
     public MapIconIdentfier mapID;
     public GameType currChallengeGame;
-    public List<ActionWordEnum> actionWordPool;
-    public List<ChallengeWord> challengeWordPool;
     
     [HideInInspector] public bool repairMapIconID; // when the scroll map appears -> repair this icon
     [HideInInspector] public GameType prevGameTypePlayed = GameType.None;
@@ -302,68 +298,6 @@ public class GameManager : DontDestroy<GameManager>
     ################################################
     */
 
-    public List<WordPair> GetSubstitutionWordPairs()
-    {
-        // if list already made - return it
-        if (subWordPairs != null)
-        {
-            return subWordPairs;
-        } 
-        // else make list  
-        else
-        {
-            // add all pairs to list and remove all non-sub pairs
-            subWordPairs = new List<WordPair>();
-            List<WordPair> deletePairs = new List<WordPair>();
-            ChallengeWordDatabase.InitCreateGlobalPairList();
-            subWordPairs.AddRange(ChallengeWordDatabase.globalWordPairs);
-            foreach (var pair in subWordPairs)
-            {
-                if (pair.pairType != PairType.sub)
-                {
-                    deletePairs.Add(pair);
-                }
-            }
-            // remove all invalid pairs
-            foreach (var pair in deletePairs)
-            {
-                subWordPairs.Remove(pair);
-            }
-            return subWordPairs;
-        }
-    }
-
-    public List<WordPair> GetAddDeleteWordPairs()
-    {
-        // if list already made - return it
-        if (addDelWordPairs != null)
-        {
-            return addDelWordPairs;
-        } 
-        // else make list
-        else
-        {
-            // add all pairs to list and remove all non-sub pairs
-            addDelWordPairs = new List<WordPair>();
-            List<WordPair> deletePairs = new List<WordPair>();
-            ChallengeWordDatabase.InitCreateGlobalPairList();
-            addDelWordPairs.AddRange(ChallengeWordDatabase.globalWordPairs);
-            foreach (var pair in addDelWordPairs)
-            {
-                if (pair.pairType != PairType.del_add)
-                {
-                    deletePairs.Add(pair);
-                }
-            }
-            // remove all invalid pairs
-            foreach (var pair in deletePairs)
-            {
-                addDelWordPairs.Remove(pair);
-            }
-            return addDelWordPairs;
-        }
-    }
-
     public string GameTypeToSceneName(GameType gameType)
     {
         switch (gameType)
@@ -403,6 +337,8 @@ public class GameManager : DontDestroy<GameManager>
                 return "TigerPawCoins";
             case GameType.TigerPawPhotos:
                 return "TigerPawPhotos";
+            case GameType.Password:
+                return "NewPasswordGame";
         }
     }
 }

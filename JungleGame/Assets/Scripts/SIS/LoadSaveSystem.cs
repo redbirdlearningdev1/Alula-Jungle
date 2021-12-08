@@ -107,6 +107,7 @@ public static class LoadSaveSystem
         new_data.name =         default_name;
         new_data.active = false;
         new_data.mostRecentProfile = false;
+        new_data.minigamesPlayed = 0;
 
         // coins
         new_data.goldCoins = default_gold_coins;

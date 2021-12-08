@@ -68,8 +68,8 @@ public class WordFactoryDeletingManager : MonoBehaviour
     {
         // get pair pool from game manager
         pairPool = new List<WordPair>();
-        pairPool.AddRange(GameManager.instance.GetAddDeleteWordPairs());
-
+        pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(StudentInfoSystem.GetCurrentProfile().actionWordPool));
+        
         // remove UI button
         SettingsManager.instance.ToggleWagonButtonActive(false);
 

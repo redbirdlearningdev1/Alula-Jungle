@@ -48,19 +48,6 @@ public class TigerGameManager : MonoBehaviour
     private List<ChallengeWord> unusedWordList;
     private List<ChallengeWord> usedWordList;
 
-    [Header("Testing")] // ache -> bake
-    public bool overrideWord;
-    // //public ChallengeWord testChallengeWord;
-    // public ChallengeWord targetChallengeWord1;
-    // public ChallengeWord targetChallengeWord2;
-    // public ChallengeWord targetChallengeWord3;
-    // public ChallengeWord targetChallengeWord4;
-    // public ChallengeWord targetChallengeWord5;
-    // public List<ElkoninValue> coinOptions;
-    // public int swipeIndex;
-
-    [SerializeField] private Vector2 noCoin;
-
     void Awake()
     {
         // every scene must call this in Awake()
@@ -77,11 +64,26 @@ public class TigerGameManager : MonoBehaviour
         PregameSetup();
     }
 
+    void Update()
+    {
+        // dev stuff for skipping minigame
+        if (GameManager.instance.devModeActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StopAllCoroutines();
+                // play win tune
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // calculate and show stars
+                StarAwardController.instance.AwardStarsAndExit(3);
+            }
+        }
+    }
 
     private void PregameSetup()
     {
-        ChallengeWordDatabase.InitCreateGlobalList(true);
-        globalWordList = ChallengeWordDatabase.globalChallengeWordList;
+        globalWordList = new List<ChallengeWord>();
+        globalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(StudentInfoSystem.GetCurrentProfile().actionWordPool));
         unusedWordList = globalWordList;
         usedWordList = new List<ChallengeWord>();
 
@@ -98,57 +100,40 @@ public class TigerGameManager : MonoBehaviour
     {   
         currCoin.transform.position = coinStartPos.position;
 
-        if (overrideWord)
+        List<ActionWordEnum> globalList = GameManager.instance.GetGlobalActionWordList();
+        currSet = globalList[Random.Range(0, globalList.Count)];
+        
+        // get challenge words from a set
+        List<ChallengeWord> word_pool = new List<ChallengeWord>();
+        word_pool.AddRange(ChallengeWordDatabase.GetChallengeWordSet(currSet));
+
+        // get all other challenge words (from other sets)
+        List<ChallengeWord> global_pool = new List<ChallengeWord>();
+        global_pool.AddRange(ChallengeWordDatabase.globalChallengeWordList);
+        foreach (var word in word_pool)
         {
-            // currentWord1 = targetChallengeWord1;
-            // currentWord2 = targetChallengeWord2;
-            // currentWord3 = targetChallengeWord3;
-            // currentWord4 = targetChallengeWord4;
-            // currentWord5 = targetChallengeWord5;
-            // polaroidC[0].SetPolaroid(currentWord1);
-            // polaroidC[1].SetPolaroid(currentWord2);
-            // polaroidC[2].SetPolaroid(currentWord3);
-            // polaroidC[3].SetPolaroid(currentWord4);
-            // polaroidC[4].SetPolaroid(currentWord5);
+            global_pool.Remove(word);
         }
-        else
+
+        // determine current word
+        currWord = word_pool[Random.Range(0, word_pool.Count)];
+        // determine correct index
+        int correctindex = Random.Range(0, polaroidC.Count);
+
+        for (int i = 0; i < polaroidC.Count; i++)
         {
-            List<ActionWordEnum> globalList = GameManager.instance.GetGlobalActionWordList();
-            currSet = globalList[Random.Range(0, globalList.Count)];
-            print ("set: " + currSet);
-            
-            // get challenge words from a set
-            List<ChallengeWord> word_pool = new List<ChallengeWord>();
-            word_pool.AddRange(ChallengeWordDatabase.GetChallengeWordSet(currSet));
-            print ("word pool: " + word_pool.Count);
-
-            // get all other challenge words (from other sets)
-            List<ChallengeWord> global_pool = new List<ChallengeWord>();
-            global_pool.AddRange(ChallengeWordDatabase.globalChallengeWordList);
-            foreach (var word in word_pool)
+            if (i == correctindex)
             {
-                global_pool.Remove(word);
+                polaroidC[i].SetPolaroid(currWord);
             }
-
-            // determine current word
-            currWord = word_pool[Random.Range(0, word_pool.Count)];
-            // determine correct index
-            int correctindex = Random.Range(0, polaroidC.Count);
-
-            for (int i = 0; i < polaroidC.Count; i++)
+            else
             {
-                if (i == correctindex)
-                {
-                    polaroidC[i].SetPolaroid(currWord);
-                }
-                else
-                {
-                    ChallengeWord otherWord = global_pool[Random.Range(0, global_pool.Count)];
-                    polaroidC[i].SetPolaroid(otherWord);
-                    global_pool.Remove(otherWord);
-                }
+                ChallengeWord otherWord = global_pool[Random.Range(0, global_pool.Count)];
+                polaroidC[i].SetPolaroid(otherWord);
+                global_pool.Remove(otherWord);
             }
         }
+
         yield return new WaitForSeconds(1f);
 
         pattern.baseState();
@@ -183,7 +168,6 @@ public class TigerGameManager : MonoBehaviour
 
         for (int i = 3; i < 5; i++)
         {
-
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos4.position, .2f));
         }
         yield return new WaitForSeconds(.11f);
@@ -312,30 +296,25 @@ public class TigerGameManager : MonoBehaviour
         {
             // play correct audio
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
-
             pattern.correct();
             correctCoins[numWins].SetActive(true);
             numWins++;
-            Tiger.TigerAway();
-            yield return new WaitForSeconds(.55f);
-            currCoin.gameObject.transform.position = coinStartPos.position;
         }
         else
         {
             // play correct audio
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
-            
             pattern.incorrect();
             incorrectCoins[numMisses].SetActive(true);
             numMisses++;
-            Tiger.TigerAway();
-            yield return new WaitForSeconds(.55f);
-            currCoin.gameObject.transform.position = coinStartPos.position;
         }
-        yield return new WaitForSeconds(.5f);
 
-        Tiger.TigerSwipe();
-        yield return new WaitForSeconds(.45f);
+        yield return new WaitForSeconds(1f);
+        Tiger.TigerDeal();
+        yield return new WaitForSeconds(.5f);
+        currCoin.gameObject.transform.position = coinStartPos.position;
+        yield return new WaitForSeconds(1f);
+
         for (int i = 0; i < 1; i++)
         {
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos2.position, .2f));
@@ -353,7 +332,6 @@ public class TigerGameManager : MonoBehaviour
         yield return new WaitForSeconds(.1f);
         for (int i = 0; i < 4; i++)
         {
-
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos5.position, .2f));
         }
         yield return new WaitForSeconds(.2f);
@@ -363,11 +341,11 @@ public class TigerGameManager : MonoBehaviour
         }
 
 
-        if (numWins == 3)
+        if (numWins >= 3)
         {
             StartCoroutine(WinRoutine());
         }
-        else if (numMisses == 3)
+        else if (numMisses >= 3)
         {
            StartCoroutine(LoseRoutine());
         }

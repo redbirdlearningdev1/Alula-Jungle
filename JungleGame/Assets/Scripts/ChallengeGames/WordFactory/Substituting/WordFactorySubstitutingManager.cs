@@ -126,7 +126,9 @@ public class WordFactorySubstitutingManager : MonoBehaviour
 
         // get pair pool from game manager
         pairPool = new List<WordPair>();
-        pairPool.AddRange(GameManager.instance.GetSubstitutionWordPairs());
+        pairPool.AddRange(ChallengeWordDatabase.GetSubstitutionWordPairs(StudentInfoSystem.GetCurrentProfile().actionWordPool));
+
+        print ("pairPool.count: " + pairPool.Count);
 
         // begin first round
         StartCoroutine(NewRound());

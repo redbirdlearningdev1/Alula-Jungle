@@ -60,6 +60,6 @@ EditorBuildSettings:
     path: Assets/Scenes/ChallengeGames/TigerPawPhotos.unity
     guid: b13ba50a5f55f20469dd4fea95939864
   - enabled: 1
-    path: Assets/Scenes/ChallengeGames/Password.unity
-    guid: 34a2b80170de6884db34e725c1882574
+    path: Assets/Scenes/ChallengeGames/NewPasswordGame.unity
+    guid: fb398f6dd5b78c34ab6372f15a7eba3d
   m_configObjects: {}

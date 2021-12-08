@@ -60,6 +60,22 @@ public class NewPasswordGameManager : MonoBehaviour
         PregameSetup();
     }
 
+    void Update()
+    {
+        // dev stuff for skipping minigame
+        if (GameManager.instance.devModeActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StopAllCoroutines();
+                // play win tune
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // calculate and show stars
+                StarAwardController.instance.AwardStarsAndExit(3);
+            }
+        }
+    }
+
     private void PregameSetup()
     {
         // reset win cards
@@ -69,9 +85,8 @@ public class NewPasswordGameManager : MonoBehaviour
         PasswordLock.instance.HideLock();
 
         // fill challenge word pool
-        ChallengeWordDatabase.InitCreateGlobalList();
         wordPool = new List<ChallengeWord>();
-        wordPool.AddRange(ChallengeWordDatabase.globalChallengeWordList);
+        wordPool.AddRange(ChallengeWordDatabase.GetChallengeWords(StudentInfoSystem.GetCurrentProfile().actionWordPool));
 
         // place charcters off screen
         tigerCharacter.position = tigerOffScreenPos.position;

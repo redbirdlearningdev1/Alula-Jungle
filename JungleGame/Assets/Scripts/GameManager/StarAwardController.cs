@@ -502,6 +502,12 @@ public class StarAwardController : MonoBehaviour
 
             GameManager.instance.playingChallengeGame = false;
         }
+        // minigame stuff
+        else
+        {
+            // increase number of minigames played
+            StudentInfoSystem.GetCurrentProfile().minigamesPlayed += 1;
+        }
         
         // save data
         StudentInfoSystem.SaveStudentPlayerData();

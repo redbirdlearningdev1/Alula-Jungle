@@ -102,9 +102,8 @@ public class WordFactoryBlendingManager : MonoBehaviour
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.05f);
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 0.05f);
 
-        // create word lists
-        ChallengeWordDatabase.InitCreateGlobalList(true);
-        globalWordList = ChallengeWordDatabase.globalChallengeWordList;
+        // create word lists based on unlocked action words
+        globalWordList = ChallengeWordDatabase.GetChallengeWords(StudentInfoSystem.GetCurrentProfile().actionWordPool);
         unusedWordList = globalWordList;
         usedWordList = new List<ChallengeWord>();
 

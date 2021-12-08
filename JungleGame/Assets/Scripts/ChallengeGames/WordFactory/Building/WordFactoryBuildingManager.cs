@@ -72,7 +72,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
     {
         // get pair pool from game manager
         pairPool = new List<WordPair>();
-        pairPool.AddRange(GameManager.instance.GetAddDeleteWordPairs());
+        pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(StudentInfoSystem.GetCurrentProfile().actionWordPool));
 
         // set emerald head to be closed
         EmeraldHead.instance.animator.Play("PolaroidEatten");

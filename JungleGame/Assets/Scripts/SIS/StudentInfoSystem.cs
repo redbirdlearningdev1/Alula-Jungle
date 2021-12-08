@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -98,52 +98,7 @@ public static class StudentInfoSystem
         currentStudentPlayer.currStoryBeat = (StoryBeat)((int)currentStudentPlayer.currStoryBeat + 1);
     }
 
-    public static GameType GetChallengeGameType(MapLocation location)
-    {
-        // create list of challenge game options
-        List<GameType> challengeGameOptions = new List<GameType>();
-        challengeGameOptions.Add(GameType.WordFactoryBlending);
-        challengeGameOptions.Add(GameType.WordFactoryBuilding);
-        challengeGameOptions.Add(GameType.WordFactoryDeleting);
-        challengeGameOptions.Add(GameType.WordFactorySubstituting);
-        challengeGameOptions.Add(GameType.TigerPawCoins);
-        challengeGameOptions.Add(GameType.TigerPawPhotos);
-
-
-        // remove options that are already used in this area
-        switch (location)
-        {
-            case MapLocation.GorillaVillage:
-                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType);
-                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType);
-                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType);
-                break;
-
-            case MapLocation.Mudslide:
-                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType);
-                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType);
-                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType);
-                break;
-
-            case MapLocation.OrcVillage:
-                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType);
-                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType);
-                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType);
-                break;
-
-            case MapLocation.SpookyForest:
-                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType);
-                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType);
-                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType);
-                break;
-
-            // add other cases here
-        }
-
-        // return random index
-        int index = Random.Range(0, challengeGameOptions.Count);
-        return challengeGameOptions[index];
-    }
+    
 
     /* 
     ################################################
