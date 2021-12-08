@@ -106,6 +106,10 @@ public class ScrollMapManager : MonoBehaviour
         SetMapPosition(index);
         SetMapLimit(index);
 
+        // remove game manager stuff
+        GameManager.instance.playingRoyalRumbleGame = false;
+        GameManager.instance.playingChallengeGame = false;
+
         // get current game event
         StoryBeat playGameEvent = StudentInfoSystem.GetCurrentProfile().currStoryBeat;
 
@@ -418,6 +422,9 @@ public class ScrollMapManager : MonoBehaviour
         // show stars on current map location
         yield return new WaitForSeconds(1f);
         StartCoroutine(ToggleLocationRoutine(true, mapPosIndex));
+
+        // set RR banner on map icon
+        MapDataLoader.instance.SetRoyalRumbleBanner();
     }
 
     public void CheckForGameEvent(StoryBeat gameEvent)

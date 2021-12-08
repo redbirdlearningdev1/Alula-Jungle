@@ -45,6 +45,14 @@ public class MapDataLoader : MonoBehaviour
         }
     }
 
+    public void SetRoyalRumbleBanner()
+    {
+        if (StudentInfoSystem.GetCurrentProfile().royalRumbleActive)
+        {
+            GetMapIconFromID(StudentInfoSystem.GetCurrentProfile().royalRumbleID).SetRoyalRumberBanner(true);
+        }
+    }
+
     public void LoadMapData(MapData mapData)
     {
         // gorilla village section

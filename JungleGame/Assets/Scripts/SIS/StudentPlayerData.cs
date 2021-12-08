@@ -38,6 +38,11 @@ public class StudentPlayerData
     public List<ActionWordEnum> actionWordPool;
     public List<ChallengeWord> challengeWordPool;
 
+    // royal rumble data
+    public bool royalRumbleActive;
+    public MapIconIdentfier royalRumbleID;
+    public GameType royalRumbleGame;
+
     // map data
     public Chapter currentChapter; // completed chapter
     public int mapLimit; // how far player can move on scroll map

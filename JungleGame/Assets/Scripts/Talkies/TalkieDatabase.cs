@@ -115,7 +115,12 @@ public class TalkieDatabase : MonoBehaviour
     public TalkieObject orcCampChallengeDefeated_1; // script: ScrollMapManager.cs
     public TalkieObject orcCampChallengeDefeated_2; // script: ScrollMapManager.cs
     public TalkieObject orcCampChallengeDefeated_3; // script: ScrollMapManager.cs
+    
 
+
+
+    [Header("Royal Rumble")]
+    public TalkieObject defaultRRTalkie; // MiniganeWheelController.cs
 
     [Header("Quips")]
     public TalkieObject darwinQuips;    // script: MapCharacter.cs

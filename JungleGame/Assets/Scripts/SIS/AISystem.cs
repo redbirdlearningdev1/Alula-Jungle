@@ -5,6 +5,7 @@ using UnityEngine;
 public static class AISystem
 {
     private static List<GameType> minigameOptions; 
+    private static float royalRumbleOdds = 0.05f; // 5%
 
     public static GameType DetermineMinigame(StudentPlayerData playerData)
     {
@@ -81,6 +82,38 @@ public static class AISystem
 
             // add other cases here
         }
+
+        // return random index
+        int index = Random.Range(0, challengeGameOptions.Count);
+        return challengeGameOptions[index];
+    }
+
+    public static bool DetermineRoyalRumble(StudentPlayerData playerData)
+    {
+        // player must have played all 6 minigames before RR
+        if (playerData.minigamesPlayed < 6)
+            return false;
+
+        // return false if royal rumble already active
+        if (playerData.royalRumbleActive)
+            return false;
+
+        // determine royal rumble
+        float num = Random.Range(0f, 1f);
+        return num <= royalRumbleOdds;
+    }
+
+    public static GameType DetermineRoyalRumbleGame()
+    {
+        // create list of challenge game options
+        List<GameType> challengeGameOptions = new List<GameType>();
+        challengeGameOptions.Add(GameType.WordFactoryBlending);
+        challengeGameOptions.Add(GameType.WordFactoryBuilding);
+        challengeGameOptions.Add(GameType.WordFactoryDeleting);
+        challengeGameOptions.Add(GameType.WordFactorySubstituting);
+        challengeGameOptions.Add(GameType.TigerPawCoins);
+        challengeGameOptions.Add(GameType.TigerPawPhotos);
+        challengeGameOptions.Add(GameType.Password);
 
         // return random index
         int index = Random.Range(0, challengeGameOptions.Count);

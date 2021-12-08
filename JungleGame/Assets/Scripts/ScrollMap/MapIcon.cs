@@ -14,6 +14,7 @@ public enum StarLocation
     up, down, none
 }
 
+[System.Serializable]
 public enum MapIconIdentfier
 {
     None,
@@ -98,6 +99,8 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     public StarLocation starLocation;
     [SerializeField] private Star[] upStars;
     [SerializeField] private Star[] downStars;
+    public LerpableObject topRRBanner;
+    public LerpableObject botRRBanner;
     [SerializeField] Transform upStarsTransform;
     [SerializeField] Transform downStarsTransform;
     private Star[] currentStars;
@@ -164,6 +167,24 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     #   STAR ANIMATION METHODS
     ################################################
     */
+
+    public void SetRoyalRumberBanner(bool opt)
+    {
+        if (starLocation == StarLocation.up)
+        {
+            if (opt)
+                topRRBanner.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
+            else
+                topRRBanner.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.1f, 0.1f);
+        }
+        else
+        {
+            if (opt)
+                botRRBanner.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
+            else
+                botRRBanner.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.1f, 0.1f);
+        }
+    }
 
     public void RevealStars()
     {
@@ -493,8 +514,30 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             yield break;
         }
 
-        MinigameWheelController.instance.RevealWheel(identfier);
-        yield break;
+        // check for royal rumble
+        if (StudentInfoSystem.GetCurrentProfile().royalRumbleActive && StudentInfoSystem.GetCurrentProfile().royalRumbleID == this.identfier)
+        {
+            // play default talkie for now
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.defaultRRTalkie);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // do not go to game if talkie manager says not to
+            if (TalkieManager.instance.doNotContinueToGame)
+            {
+                TalkieManager.instance.doNotContinueToGame = false;
+                yield break;
+            }
+
+            GameManager.instance.playingRoyalRumbleGame = true;
+            GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(StudentInfoSystem.GetCurrentProfile().royalRumbleGame), true, 0.5f, true);
+            yield break;
+        }
+        else
+        {
+            MinigameWheelController.instance.RevealWheel(identfier);
+            yield break;
+        }
     }
 
     public int GetNumStars()

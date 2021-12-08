@@ -54,8 +54,9 @@ public class GameManager : DontDestroy<GameManager>
     [HideInInspector] public bool repairMapIconID; // when the scroll map appears -> repair this icon
     [HideInInspector] public GameType prevGameTypePlayed = GameType.None;
 
-    // challenge game identification
+    // game identification
     [HideInInspector] public bool playingChallengeGame = false; // is player in a challenge game?
+    [HideInInspector] public bool playingRoyalRumbleGame = false; // is player in a RR game?
 
     void Start()
     {

@@ -37,7 +37,7 @@ public class DevMenuManager : MonoBehaviour
         "WordFactoryDeleting",
         "TigerPawCoins",
         "TigerPawPhotos",
-        "Password"
+        "NewPasswordGame"
 
         };
 
@@ -384,6 +384,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = false;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = false;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 0;
                 break;
             
             /* 
@@ -400,6 +401,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = false;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = false;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 0;
                 break;
 
             case StoryBeat.GorillaVillageIntro:
@@ -410,6 +412,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = false;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = false;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 0;
                 break;
 
             case StoryBeat.PrologueStoryGame:
@@ -420,6 +423,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = false;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = false;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 0;
                 break;
 
             case StoryBeat.RedShowsStickerButton:
@@ -430,6 +434,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = false;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = false;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 0;
                 break;
 
             case StoryBeat.VillageRebuilt:
@@ -440,6 +445,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.GorillaVillage_challengeGame_1:  
@@ -450,6 +456,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.GorillaVillage_challengeGame_2:
@@ -461,6 +468,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.GorillaVillage_challengeGame_3:
@@ -472,6 +480,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.VillageChallengeDefeated:
@@ -482,6 +491,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
             
             /* 
@@ -498,6 +508,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.Mudslide_challengeGame_1:
@@ -508,6 +519,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.Mudslide_challengeGame_2:
@@ -519,6 +531,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.Mudslide_challengeGame_3:
@@ -530,6 +543,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.MudslideDefeated:
@@ -540,6 +554,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             /* 
@@ -556,6 +571,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.OrcVillageMeetClogg:
@@ -566,6 +582,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.OrcVillage_challengeGame_1:
@@ -576,6 +593,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.OrcVillage_challengeGame_2:
@@ -587,6 +605,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.OrcVillage_challengeGame_3:
@@ -598,6 +617,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.OrcVillageDefeated:
@@ -608,6 +628,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             /* 
@@ -624,6 +645,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
             
             case StoryBeat.BeginningStoryGame:
@@ -634,6 +656,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.SpookyForestPlayGames:
@@ -644,6 +667,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.SpookyForest_challengeGame_1:
@@ -654,6 +678,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.SpookyForest_challengeGame_2:
@@ -665,6 +690,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.SpookyForest_challengeGame_3:
@@ -676,6 +702,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.SpookyForestDefeated:
@@ -686,6 +713,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             /* 
@@ -702,6 +730,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
             
             case StoryBeat.OrcCampPlayGames:
@@ -712,6 +741,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.OrcCamp_challengeGame_1:
@@ -722,6 +752,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.OrcCamp_challengeGame_2:
@@ -733,6 +764,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.OrcCamp_challengeGame_3:
@@ -744,6 +776,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.OrcCampDefeated:
@@ -754,6 +787,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             /* 

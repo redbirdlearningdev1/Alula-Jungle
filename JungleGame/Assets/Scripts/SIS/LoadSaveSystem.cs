@@ -129,13 +129,17 @@ public static class LoadSaveSystem
         // pools
         new_data.actionWordPool = new List<ActionWordEnum>();
         new_data.challengeWordPool = new List<ChallengeWord>();
+        
+        // royal rumble data
+        new_data.royalRumbleActive = false;
+        new_data.royalRumbleID = MapIconIdentfier.None;
+        new_data.royalRumbleGame = GameType.None;
 
         // story + map data
         new_data.unlockedStickerButton = default_unlockedStickerButton;
         new_data.currStoryBeat = default_gameEvent;
         new_data.firstTimeLoseChallengeGame = false;
         new_data.everyOtherTimeLoseChallengeGame = false;
-        
         new_data.mapLimit = 0;
         new_data.currentChapter = Chapter.chapter_0;
         new_data.mapData = new MapData();

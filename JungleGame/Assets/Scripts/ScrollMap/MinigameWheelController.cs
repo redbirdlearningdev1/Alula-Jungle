@@ -171,9 +171,21 @@ public class MinigameWheelController : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         // determine royal rumble
-        float num = Random.Range(0f, 100f);
-        if (num <= royalRumbleOdds)
+        bool startRR = AISystem.DetermineRoyalRumble(StudentInfoSystem.GetCurrentProfile());
+        print ("royal rumble?: " + startRR);
+
+        if (startRR)
         {
+            // save royal rumble to SIS
+            GameType RRgame = AISystem.DetermineRoyalRumbleGame();
+            StudentInfoSystem.GetCurrentProfile().royalRumbleGame = RRgame;
+            StudentInfoSystem.GetCurrentProfile().royalRumbleActive = true;
+            StudentInfoSystem.GetCurrentProfile().royalRumbleID = currentIdentifier;
+            StudentInfoSystem.SaveStudentPlayerData();
+
+            // banner on map icon
+            MapDataLoader.instance.SetRoyalRumbleBanner();
+
             // wheel break animation TODO -> change to guards break after chapter 3 or 4
             tigerDestroyAnimator.Play("TigerDestroy");
             yield return new WaitForSeconds(0.5f);
@@ -188,8 +200,30 @@ public class MinigameWheelController : MonoBehaviour
 
             rrImage.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.2f, 0.2f);
 
-            // play talkie to ask player y/n
+            yield return new WaitForSeconds(1f);
 
+            // play default talkie for now
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.defaultRRTalkie);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // do not go to game if talkie manager says not to
+            if (TalkieManager.instance.doNotContinueToGame)
+            {
+                TalkieManager.instance.doNotContinueToGame = false;
+
+                // remove RR stuff
+                wheelBreakAnimator.Play("WheelNone");
+                trumpetPlayAnimator.Play("TrumpetIn");
+                CloseWheel();
+                rrGradient.LerpImageAlpha(rrGradient.GetComponent<Image>(), 0f, 2f);
+                rrImage.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.2f, 0.2f);
+
+                yield break;
+            }
+
+            GameManager.instance.playingRoyalRumbleGame = true;
+            GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(RRgame), true, 0.5f, true);
             yield break;
         }
 

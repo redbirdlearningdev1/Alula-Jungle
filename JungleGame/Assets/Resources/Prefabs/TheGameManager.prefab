@@ -12145,8 +12145,6 @@ MonoBehaviour:
   storyGameData: {fileID: 0}
   mapID: 0
   currChallengeGame: 0
-  actionWordPool: 
-  challengeWordPool: []
   repairMapIconID: 0
   prevGameTypePlayed: 0
   playingChallengeGame: 0
@@ -14748,6 +14746,7 @@ MonoBehaviour:
     type: 2}
   orcCampChallengeDefeated_3: {fileID: 11400000, guid: e8e62e813ea2b9647825da964f1549c4,
     type: 2}
+  defaultRRTalkie: {fileID: 11400000, guid: 0af5dc78f8364c2448814e1c6ddad6d9, type: 2}
   darwinQuips: {fileID: 11400000, guid: 6c3e00e7101d0164a9d40ee842197259, type: 2}
   cloggQuips: {fileID: 11400000, guid: fbfecbbc46222024b8e54dba52c5f5f6, type: 2}
   redSprites:
@@ -19287,7 +19286,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 62.313126, y: 0.005817631}
+  m_AnchoredPosition: {x: 62.32191, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

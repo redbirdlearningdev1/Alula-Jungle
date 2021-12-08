@@ -73,6 +73,22 @@ public class StarAwardController : MonoBehaviour
 
         print ("map id: " + GameManager.instance.mapID);
 
+
+        // determine if royal rummble game
+        if (GameManager.instance.playingRoyalRumbleGame)
+        {
+            print ("ending royal rumble");
+
+            GameManager.instance.playingRoyalRumbleGame = false;
+            StudentInfoSystem.GetCurrentProfile().royalRumbleActive = false;
+            StudentInfoSystem.GetCurrentProfile().royalRumbleGame = GameType.None;
+            StudentInfoSystem.GetCurrentProfile().royalRumbleID = MapIconIdentfier.None;
+            StudentInfoSystem.SaveStudentPlayerData();
+            // show window
+            StartCoroutine(AwardStarsRoutine(numStars, coinsEarned));
+            return;
+        }
+
         // only update stars if earned more stars than in memory
         switch (GameManager.instance.mapID)
         {
@@ -477,6 +493,8 @@ public class StarAwardController : MonoBehaviour
         // challenge game stuff
         if (GameManager.instance.playingChallengeGame)
         {
+            GameManager.instance.playingChallengeGame = false;
+
             // lose?
             if (numStars <= 0)
             {
@@ -499,8 +517,6 @@ public class StarAwardController : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;
                 StudentInfoSystem.AdvanceStoryBeat();
             }
-
-            GameManager.instance.playingChallengeGame = false;
         }
         // minigame stuff
         else
