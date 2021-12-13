@@ -644,13 +644,22 @@ public class WagonWindowController : MonoBehaviour
         // enable wagon background
         wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0.75f, 0.1f);
 
+        yield return new WaitForSeconds(0.5f);
+
+        buyBoardReady = true;
+    }
+
+    private IEnumerator CloseBuyBoardWindowRoutine()
+    {
+        buyBoardWindow.SquishyScaleLerp(new Vector2(1.2f, 1f), new Vector2(0f, 1f), 0.05f, 0.1f);
+
         if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
         {
             // stop wiggling the book
             StickerBoardBook.instance.GetComponent<WiggleController>().StopWiggle();
 
-            // play lester intro 5
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.lester_intro_5);
+            // play lester intro 4
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.lester_intro_4);
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
@@ -673,15 +682,6 @@ public class WagonWindowController : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
             StudentInfoSystem.SaveStudentPlayerData();
         }
-
-        yield return new WaitForSeconds(0.5f);
-
-        buyBoardReady = true;
-    }
-
-    private IEnumerator CloseBuyBoardWindowRoutine()
-    {
-        buyBoardWindow.SquishyScaleLerp(new Vector2(1.2f, 1f), new Vector2(0f, 1f), 0.05f, 0.1f);
 
         // disable wagon background
         wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0f, 0.1f);

@@ -693,6 +693,8 @@ public class ScrollMapManager : MonoBehaviour
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
                 !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
             {
+                print ("julius wins first time");
+
                 // play julius wins
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins);
                 while (TalkieManager.instance.talkiePlaying)
@@ -702,11 +704,14 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
                 StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
             {
+                print ("julius wins every other time");
+
                 // play julius wins again
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins_again);
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
             }
+
 
             tiger.interactable = true;
             tiger.ShowExclamationMark(true);
@@ -741,6 +746,8 @@ public class ScrollMapManager : MonoBehaviour
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
                 !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
             {
+                print ("marcus wins first time");
+
                 // play marcus wins
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_wins);
                 while (TalkieManager.instance.talkiePlaying)
@@ -750,6 +757,8 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
                 StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
             {
+                print ("marcus wins every other time");
+
                 // play marcus wins again
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_wins_again);
                 while (TalkieManager.instance.talkiePlaying)
@@ -757,6 +766,8 @@ public class ScrollMapManager : MonoBehaviour
             }
             else
             {
+                print ("you beat julius!");
+
                 // play julius loses + marcus challenges
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_loses__marcus_challenges);
                 while (TalkieManager.instance.talkiePlaying)

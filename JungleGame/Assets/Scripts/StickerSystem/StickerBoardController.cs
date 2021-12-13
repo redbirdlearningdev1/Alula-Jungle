@@ -236,11 +236,6 @@ public class StickerBoardController : MonoBehaviour
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
-            // play lester intro 4
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.lester_intro_4);
-            while (TalkieManager.instance.talkiePlaying)
-                yield return null;
-
             // diable wagon background
             WagonWindowController.instance.wagonBackground.LerpImageAlpha(WagonWindowController.instance.wagonBackground.GetComponent<Image>(), 0f, 0.1f);
 

@@ -46,7 +46,6 @@ public class TalkieDatabase : MonoBehaviour
     public TalkieObject lester_intro_2; // script: StickerBoardController.cs
     public TalkieObject lester_intro_3; // script: StickerBoardController.cs
     public TalkieObject lester_intro_4; // script: StickerBoardController.cs
-    public TalkieObject lester_intro_5; // script: StickerBoardController.cs
 
     [Header("Village Rebuilt")]
     public TalkieObject villageRebuilt_1; // script: ScrollMapManager.cs

@@ -74,7 +74,7 @@ public class StarAwardController : MonoBehaviour
         print ("map id: " + GameManager.instance.mapID);
 
 
-        // determine if royal rummble game
+        // determine if royal rumble game
         if (GameManager.instance.playingRoyalRumbleGame)
         {
             print ("ending royal rumble");
@@ -87,6 +87,47 @@ public class StarAwardController : MonoBehaviour
             // show window
             StartCoroutine(AwardStarsRoutine(numStars, coinsEarned));
             return;
+        }
+
+        // determine if challenge game
+        if (GameManager.instance.playingChallengeGame)
+        {
+            GameManager.instance.playingChallengeGame = false;
+
+            // lose?
+            if (numStars <= 0)
+            {
+                // first time losing
+                if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame)
+                {
+                    print ("first time losing challenge game!");
+                    StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = true;
+                }
+                else
+                {
+                    // every other time losing
+                    if (!StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+                    {
+                        print ("every other time losing challenge game!");
+                        StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = true;
+                    }
+                }
+            }
+            // win?
+            else
+            {
+                print ("you won the challenge game!");
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = false;
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;
+                StudentInfoSystem.AdvanceStoryBeat();
+            }
+        }
+        // minigame stuff
+        else
+        {
+            // increase number of minigames played
+            StudentInfoSystem.GetCurrentProfile().minigamesPlayed += 1;
+            print ("you coompleted a minigame, minigames played: " + StudentInfoSystem.GetCurrentProfile().minigamesPlayed);
         }
 
         // only update stars if earned more stars than in memory
@@ -488,41 +529,6 @@ public class StarAwardController : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.stars = numStars;
                 }
                 break;
-        }
-
-        // challenge game stuff
-        if (GameManager.instance.playingChallengeGame)
-        {
-            GameManager.instance.playingChallengeGame = false;
-
-            // lose?
-            if (numStars <= 0)
-            {
-                // first time losing
-                if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame)
-                    StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = true;
-                else
-                {
-                    // every other time losing
-                    if (!StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
-                    {
-                        StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = true;
-                    }
-                }
-            }
-            // win?
-            else
-            {
-                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = false;
-                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;
-                StudentInfoSystem.AdvanceStoryBeat();
-            }
-        }
-        // minigame stuff
-        else
-        {
-            // increase number of minigames played
-            StudentInfoSystem.GetCurrentProfile().minigamesPlayed += 1;
         }
         
         // save data
