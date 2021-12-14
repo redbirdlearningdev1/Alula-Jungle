@@ -50,7 +50,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 9771ec17ca12c8549abbc45553d11312, type: 3}
     audioClipName: RR_0_0_Julius_1_T1
     audioString: "Hey! Not so fast! You\u2019re too good at this. Looks like you\u2019ll
       need a real challenge. ME!"

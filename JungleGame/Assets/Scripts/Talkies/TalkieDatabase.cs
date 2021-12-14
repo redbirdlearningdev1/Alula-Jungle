@@ -218,27 +218,36 @@ public class TalkieDatabase : MonoBehaviour
 #if UNITY_EDITOR
     public void UpdateCreateObject(TalkieObject talkie)
     {
-        string[] result = AssetDatabase.FindAssets(talkie.talkieName);
+        string[] results = AssetDatabase.FindAssets(talkie.talkieName);
         TalkieObject yourObject = null;
+        string result = "";
 
-        if (result.Length > 1)
+        // filter results to be exact string filename
+        foreach (var res in results)
         {
-            GameManager.instance.SendError(this, "multiple instances of talkie object -> " + talkie.talkieName);
-            return;
+            string path = AssetDatabase.GUIDToAssetPath(res);
+            var split = path.Split('/');
+            var filename = split[split.Length - 1];
+
+            if (filename == talkie.talkieName + ".asset")
+            {
+                result = path;
+                Debug.Log("result: " + result);
+            }
         }
 
-        // create new challenge word
-        if(result.Length == 0)
+        // create new word pair object
+        if(result == "")
         {
             GameManager.instance.SendLog(this, "creating new talkie object -> " + talkie.talkieName);
             yourObject = ScriptableObject.CreateInstance<TalkieObject>();
             AssetDatabase.CreateAsset(yourObject, talkie_object_folder + talkie.talkieName + ".asset");
         }
-        // get challenge word object
+        // get word pair object
         else
         {
             GameManager.instance.SendLog(this, "found talkie object -> " + talkie.talkieName);
-            string path = AssetDatabase.GUIDToAssetPath(result[0]);
+            string path = AssetDatabase.GUIDToAssetPath(results[0]);
             yourObject = (TalkieObject)AssetDatabase.LoadAssetAtPath(path, typeof(TalkieObject));
         }
 

@@ -45,9 +45,12 @@ public class NewBoatGameManager : MonoBehaviour
         AudioManager.instance.StopMusic();
 
         // play ambient sounds
-        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.AmbientOceanLoop, 0.45f);
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.AmbientOceanLoop, 0.1f);
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.AmbientSeagullsLoop, 0.1f);
+    }
 
+    void Start()
+    {
         StartCoroutine(ContinueBoatGame());
     }
 

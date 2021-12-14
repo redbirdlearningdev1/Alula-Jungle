@@ -41,7 +41,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI updateText;
 
     private const string csv_folder_path = "Assets/Resources/CSV_folder/";
-    public const string talkie_audio_folder = "Assets/Resources/TalkieAudioFiles/";
+    public const string talkie_audio_folder = "Assets/Resources/TalkieAudioFiles";
 
     public List<AudioClip> globalTalkieAudioList;
     private List<TalkieObject> localTalkieObjects;
@@ -222,11 +222,11 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                             if (entry != null)
                             {
                                 localTalkieObjects.Add(entry);
-                                print ("adding entry!");
+                                //print ("adding entry!");
                                 entry = null;
                             } 
 
-                            print ("making new talkie!");
+                            //print ("making new talkie!");
 
                             // make new talkie entry
                             entry = new TalkieObject();
@@ -316,25 +316,25 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
 
                         case "$Segments":
 
-                            print ("adding segments!");
+                            //print ("adding segments!");
                             readingSegments = true; // start reading segments
                             continue;
 
                         case "$Voiceover":
 
-                            print ("starting voiceovers!");
+                            //print ("starting voiceovers!");
                             readingVoiceovers = true;
                             break;
                     }
                 }
                 else if (rowData[0] == "")
                 {
-                    print ("empty line detected!");
+                    //print ("empty line detected!");
                     // add to local talkie list iff not null
                     if (entry != null)
                     {
                         localTalkieObjects.Add(entry);
-                        print ("finished talkie entry!");
+                        //print ("finished talkie entry!");
                         entry = null;
                     }        
                     
@@ -655,19 +655,19 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
         }
         
         print ("local talkies made: " + localTalkieObjects.Count);
-        print ("red word count: " + redWordCount);
-        print ("wally word count: " + wallyWordCount);
-        print ("darwin word count: " + darwinWordCount);
-        print ("lester word count: " + lesterWordCount);
-        print ("julius word count: " + juliusWordCount);
-        print ("brutus word count: " + brutusWordCount);
-        print ("marcus word count: " + marcusWordCount);
-        print ("clogg word count: " + cloggWordCount);
-        print ("spindle word count: " + spindleWordCount);
-        print ("bubbles word count: " + bubblesWordCount);
-        print ("ollie word count: " + ollieWordCount);
-        print ("celeste word count: " + celesteWordCount);
-        print ("sylvie word count: " + sylvieWordCount);
+        // print ("red word count: " + redWordCount);
+        // print ("wally word count: " + wallyWordCount);
+        // print ("darwin word count: " + darwinWordCount);
+        // print ("lester word count: " + lesterWordCount);
+        // print ("julius word count: " + juliusWordCount);
+        // print ("brutus word count: " + brutusWordCount);
+        // print ("marcus word count: " + marcusWordCount);
+        // print ("clogg word count: " + cloggWordCount);
+        // print ("spindle word count: " + spindleWordCount);
+        // print ("bubbles word count: " + bubblesWordCount);
+        // print ("ollie word count: " + ollieWordCount);
+        // print ("celeste word count: " + celesteWordCount);
+        // print ("sylvie word count: " + sylvieWordCount);
     }
 
     public void OnUpdatePressed()
@@ -819,12 +819,14 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
 
     private void InitCreateGlobalList()
     {
-        var files = Resources.LoadAll<AudioClip>("TalkieAudioFiles");
-
         globalTalkieAudioList = new List<AudioClip>();
-        foreach (var file in files)
+        var folders = AssetDatabase.GetSubFolders(talkie_audio_folder);
+
+        foreach (var folder in folders)
         {
-            globalTalkieAudioList.Add(file);
+            //print ("folder: " + folder);
+            var audio_files = Resources.LoadAll<AudioClip>(folder.Replace("Assets/Resources/", ""));
+            globalTalkieAudioList.AddRange(audio_files);
         }
 
         print ("global audio list: " + globalTalkieAudioList.Count);
@@ -832,16 +834,21 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
 
     private AudioClip SearchForAudioByName(string str)
     {
+        //print ("global audio list size: " + globalTalkieAudioList.Count);
+
         // linear search
         foreach (var file in globalTalkieAudioList)
         {
+            //print ("file name: " + file.name + " vs. str: " + str);
+
             if (file.name == str)
             {
                 //print ("found audio!");
                 return file;
             }
         }
-        // return null if not found
+        //print ("no audio file found for: " + str);
+        // return null if not founda
         return null;
     }
 }

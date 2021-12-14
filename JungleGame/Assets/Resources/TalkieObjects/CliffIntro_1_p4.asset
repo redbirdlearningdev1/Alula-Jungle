@@ -66,7 +66,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: bdcd95576fa0e014dabd16c5c80e643e, type: 3}
     audioClipName: FR_1_1_Marcus_42_T1
     audioString: See you later, chumps!
   - endTalkieAfterThisSegment: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: e78322ee26521b24d99c65045eea2034, type: 3}
     audioClipName: FR_1_1_Brutus_43_T1
     audioString: "Bye\u2026"
   - endTalkieAfterThisSegment: 0
@@ -98,6 +98,6 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: cd7d632b326fb9d4ba2076368c0388bd, type: 3}
     audioClipName: FR_1_1_Brutus_43_T2
     audioString: "Chumps\u2026"

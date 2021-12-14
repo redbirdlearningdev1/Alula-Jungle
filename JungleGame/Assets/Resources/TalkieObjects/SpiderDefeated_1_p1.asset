@@ -34,7 +34,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: a5e7c98df4a73f9499510402aed3b33f, type: 3}
     audioClipName: B_1_4_Julius_1_T1
     audioString: H-how!?
   - endTalkieAfterThisSegment: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: c208ca38be95dbc4c9aa9291e72f2171, type: 3}
     audioClipName: B_1_4_Julius_1_T2
     audioString: Again!?
   - endTalkieAfterThisSegment: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 8275ca3a12f1da94d81eb7f160b0ddb2, type: 3}
     audioClipName: B_1_4_Marcus_2_T1
     audioString: NO!
   - endTalkieAfterThisSegment: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 8300ca09dd9cf5b4a9f9ae00f18475f5, type: 3}
     audioClipName: B_1_4_Brutus_3_T1
     audioString: Aw...
   - endTalkieAfterThisSegment: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 0207842109f53824aa113b22d5415152, type: 3}
     audioClipName: B_1_4_Red_4_T1
     audioString: Good job Explorer!
   - endTalkieAfterThisSegment: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 537540308bae5234f91df98bd337fd7a, type: 3}
     audioClipName: B_1_4_Red_4_T2
     audioString: I knew you could do it!
   - endTalkieAfterThisSegment: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 026515b78e0e4ed479b268d69fb86ee4, type: 3}
     audioClipName: B_1_4_Wally_5_T1
     audioString: Amazing as always.
   - endTalkieAfterThisSegment: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 70c02d5fae202e246a680bdb785f99bd, type: 3}
     audioClipName: B_1_4_Spindle_6_T1
     audioString: T-that was p-pretty cool!
   - endTalkieAfterThisSegment: 0
@@ -162,7 +162,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 7e2070cece2823746854efa448cc96c6, type: 3}
     audioClipName: B_1_4_Marcus_7_T1
     audioString: SILENCE!
   - endTalkieAfterThisSegment: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: b2a9ee9f75c8d7b438bfbde084546735, type: 3}
     audioClipName: B_1_4_Marcus_7_T2
     audioString: You mock your future King!
   - endTalkieAfterThisSegment: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: b46a344c248a9e347928766119162ba6, type: 3}
     audioClipName: B_1_4_Brutus_8_T1
     audioString: Yawn...
   - endTalkieAfterThisSegment: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 94f8080a5c72cfb4382bac7a0bfb4074, type: 3}
     audioClipName: B_1_4_Brutus_8_T2
     audioString: "Yeah\u2026"
   - endTalkieAfterThisSegment: 0
@@ -226,7 +226,7 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: d9bb17dcf4d3ec941ae3c4bcdf1388ec, type: 3}
     audioClipName: B_1_4_Spindle_9_T1
     audioString: "O-Oh\u2026"
   - endTalkieAfterThisSegment: 0
@@ -242,7 +242,7 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 287f0060d39ec9d43b4183d51312231d, type: 3}
     audioClipName: B_1_4_Wally_10_T1
     audioString: "Hey! That\u2019s not nice!"
   - endTalkieAfterThisSegment: 0
@@ -258,7 +258,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 4
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: fdfe2c7e69a854d458de558cbb881851, type: 3}
     audioClipName: B_1_4_Julius_11_T1
     audioString: "\u2026"
   - endTalkieAfterThisSegment: 0
@@ -274,6 +274,6 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: a0e0f9f09a4b81644a119575bde5b84b, type: 3}
     audioClipName: B_1_4_Julius_11_T2
     audioString: "Whatever! I\u2019ll get you next time!"

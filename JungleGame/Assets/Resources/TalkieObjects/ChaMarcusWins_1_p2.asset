@@ -50,7 +50,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 524d27da410b7654fa713074077e58f8, type: 3}
     audioClipName: Cha_0_2a_Marcus_1_T2
     audioString: "I told you I\u2019d win!!!"
   - endTalkieAfterThisSegment: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 4a15775dfb85bd04a917509a489fb696, type: 3}
     audioClipName: Cha_0_2a_Brutus_2_T1
     audioString: "Heh heh\u2026 Yeah.. "
   - endTalkieAfterThisSegment: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: d2913ecbca635b942a0af9ed48dbeb52, type: 3}
     audioClipName: Cha_0_2a_Brutus_2_T2
     audioString: Show em.
   - endTalkieAfterThisSegment: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: aa9efcb80417ac949b2c4be482246748, type: 3}
+    audioClip: {fileID: 8300000, guid: 2162299b6e7dec64f9864c0a324e2a88, type: 3}
     audioClipName: Cha_0_1a_Red_4_T1
     audioString: "It\u2019s okay Explorer! "
   - endTalkieAfterThisSegment: 0
@@ -114,6 +114,6 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 05ad5055e58e1f244965cd0975bc9f15, type: 3}
+    audioClip: {fileID: 8300000, guid: 1c8f9da30fb2c39429cc13eb9e18edb7, type: 3}
     audioClipName: Cha_0_1a_Red_4_T2
     audioString: Let's go practice some more.

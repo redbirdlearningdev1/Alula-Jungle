@@ -34,7 +34,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: a97fa94960277f849abafc415e06b876, type: 3}
     audioClipName: P_3_1_Wally_1_T1
     audioString: It looks like they destroyed this area as well...
   - endTalkieAfterThisSegment: 0
@@ -50,6 +50,6 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 9a486be8e0a62624398bfe4fdafa63c6, type: 3}
+    audioClip: {fileID: 8300000, guid: 7a6361a7f72938c4bac6002c81f7f884, type: 3}
     audioClipName: P_3_1_Red_2_T1
     audioString: Oh!

@@ -14773,7 +14773,7 @@ MonoBehaviour:
   inactiveAlpha: 0.5
   subtitleBox: {fileID: 637793631071463847}
   subtitleText: {fileID: 5325537073712209177}
-  minMusicVolWhenTalkiePlaying: 0.1
+  minMusicVolWhenTalkiePlaying: 0
   yesButton: {fileID: 4601491164920418032}
   noButton: {fileID: 7336551867954870968}
   fastTalkieMoveSpeed: 0.1
@@ -19414,7 +19414,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 62.35695, y: 0.005817631}
+  m_AnchoredPosition: {x: 62.362804, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

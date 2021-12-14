@@ -34,7 +34,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 845535c8e082d214db1cb96cc9857910, type: 3}
     audioClipName: Cha_0_1e_Julius_1_T1
     audioString: Are you ready Explorer?
   - endTalkieAfterThisSegment: 1
@@ -50,7 +50,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: eef7debcec156e343a66e95c50f0f2a3, type: 3}
     audioClipName: Cha_0_1e_Julius_2_T1
     audioString: Alright, let's do this.
   - endTalkieAfterThisSegment: 1
@@ -66,6 +66,6 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: daa20d9bcd617154e92e555a988a64d2, type: 3}
     audioClipName: Cha_0_1e_Julius_3_T1
     audioString: "I\u2019ll be waiting..."

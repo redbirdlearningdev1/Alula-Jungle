@@ -34,7 +34,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 569b3ad580ad9704a82bb3b456688f39, type: 3}
     audioClipName: FR_1_1_Red_38_T1
     audioString: No! Not again!
   - endTalkieAfterThisSegment: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: ecd9c354d1e64d349813319344271626, type: 3}
     audioClipName: FR_1_1_Wally_39_T1
     audioString: '!!!'
   - endTalkieAfterThisSegment: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: d8e08f8d98aacb440b16fb387458431a, type: 3}
     audioClipName: FR_1_1_Darwin_40_T1
     audioString: No!
   - endTalkieAfterThisSegment: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: e7c222aeb155fcb42ad71d25e85de06b, type: 3}
     audioClipName: FR_1_1_Darwin_40_T2
     audioString: 'Your highness! '
   - endTalkieAfterThisSegment: 0
@@ -98,6 +98,6 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 7289e024008f9114ba39e31e34ded805, type: 3}
     audioClipName: FR_1_1_Julius_41_T1
     audioString: "Don\u2019t follow me!"

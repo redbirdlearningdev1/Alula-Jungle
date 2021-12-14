@@ -34,7 +34,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 157cc4dd5e2f58249a54665f3ec6b0b8, type: 3}
+    audioClip: {fileID: 8300000, guid: f9460b37cdbaffc45ad219b1cbb846ae, type: 3}
     audioClipName: P_1_5_Red_8_T1
     audioString: Alright Explorer!
   - endTalkieAfterThisSegment: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: a7716fdc37d8022458592534f1c66e4c, type: 3}
+    audioClip: {fileID: 8300000, guid: 72665a7ececb2ef42bacc6002b4a67d8, type: 3}
     audioClipName: P_1_5_Red_8_T2
     audioString: Let's follow Darwin!
   - endTalkieAfterThisSegment: 0

@@ -56,7 +56,7 @@ public class TalkieManager : MonoBehaviour
     public TextMeshProUGUI subtitleText;
 
     [Header("Audio Stuff")]
-    public float minMusicVolWhenTalkiePlaying = 0.1f;
+    public float minMusicVolWhenTalkiePlaying = 0f;
     private float prevMusicVolume;
 
     [Header("Yes No Stuff")]
@@ -189,11 +189,10 @@ public class TalkieManager : MonoBehaviour
         ResetTalkies();
 
         // set audio to be well balanced
-        if (AudioManager.instance.GetMusicVolume() > minMusicVolWhenTalkiePlaying)
-        {
-            prevMusicVolume = AudioManager.instance.GetMusicVolume();
-            AudioManager.instance.SetMusicVolume(minMusicVolWhenTalkiePlaying);
-        }
+        AudioManager.instance.ToggleMusicSmooth(false);
+
+        // set talk vol
+        AudioManager.instance.SetTalkVolume(StudentInfoSystem.GetCurrentProfile().talkVol);
 
         // disable nav buttons on scroll map
         if (SceneManager.GetActiveScene().name == "ScrollMap")
@@ -336,7 +335,7 @@ public class TalkieManager : MonoBehaviour
         }
 
         // set audio back to what it was before
-        AudioManager.instance.SetMusicVolume(prevMusicVolume);
+        AudioManager.instance.ToggleMusicSmooth(true);
 
         // stop playing talkie
         talkiePlaying = false;
@@ -479,7 +478,7 @@ public class TalkieManager : MonoBehaviour
             if (talkieSeg.audioClip != null)
             {
                 AudioManager.instance.PlayTalk(talkieSeg.audioClip);
-                yield return new WaitForSeconds(talkieSeg.audioClip.length + 0.5f);
+                yield return new WaitForSeconds(talkieSeg.audioClip.length + 0.1f);
             }
             else
             {

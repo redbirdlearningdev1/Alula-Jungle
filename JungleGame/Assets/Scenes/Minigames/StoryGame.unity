@@ -332,12 +332,12 @@ MonoBehaviour:
       front: {fileID: 21300000, guid: 57d236e2a3865694d9184c957a8e1f0e, type: 3}
       mid: {fileID: 21300000, guid: 8adc1a66e05069d42978b9693dfc5ecc, type: 3}
       back: {fileID: 21300000, guid: 235636ce63d62234596bed20d5a9b21e, type: 3}
-      size: {x: 120, y: 160}
+      size: {x: 180, y: 160}
     - isConnector: 0
       front: {fileID: 21300000, guid: 2af6e2e451b06354a99b369d60e790b4, type: 3}
       mid: {fileID: 21300000, guid: 3f19a9ea7201e024ba32d964ecb0b0cc, type: 3}
       back: {fileID: 21300000, guid: 97fbd722e888ae040ab87f3921cc5f91, type: 3}
-      size: {x: 300, y: 160}
+      size: {x: 500, y: 160}
     - isConnector: 1
       front: {fileID: 21300000, guid: 2385f7cc463f32448972eaec6d05f7b2, type: 3}
       mid: {fileID: 21300000, guid: 961de010f2ac2504681e7208f11df619, type: 3}
@@ -347,7 +347,7 @@ MonoBehaviour:
       front: {fileID: 21300000, guid: cf5ebeaee4aef5e4e9aea63fe34fd76f, type: 3}
       mid: {fileID: 21300000, guid: e3bd92d3d29de984db0d06734e7d36ad, type: 3}
       back: {fileID: 21300000, guid: 092ab8d400443e445a82d09c814d8956, type: 3}
-      size: {x: 300, y: 160}
+      size: {x: 500, y: 160}
   emergingSprites:
     gameBackground: 3
     skySprite: {fileID: 21300000, guid: 38a38bb6be85fbb46baffcdbccbe5945, type: 3}
@@ -361,7 +361,7 @@ MonoBehaviour:
       front: {fileID: 21300000, guid: 7d69246ba0a055044af4ccfcb0c38c97, type: 3}
       mid: {fileID: 21300000, guid: 2c17d9a696a7d4344b4f2a233876251f, type: 3}
       back: {fileID: 21300000, guid: e4aea4a6d0331e64287decf33ba3d7aa, type: 3}
-      size: {x: 300, y: 160}
+      size: {x: 500, y: 160}
     - isConnector: 1
       front: {fileID: 21300000, guid: ae7aad66c1a6d5340b78d1f68df78752, type: 3}
       mid: {fileID: 21300000, guid: 5c12b80f9187662498cd2acf8b4f1891, type: 3}
@@ -371,7 +371,7 @@ MonoBehaviour:
       front: {fileID: 21300000, guid: 6ec86580d0136194fa773cf883112984, type: 3}
       mid: {fileID: 21300000, guid: be0803d667aa40a4ba98c869111549f1, type: 3}
       back: {fileID: 21300000, guid: 9df7ca98a7aee5e499c2bf3a999a7b25, type: 3}
-      size: {x: 300, y: 160}
+      size: {x: 500, y: 160}
   resolutionSprites:
     gameBackground: 4
     skySprite: {fileID: 21300000, guid: acf13135189286f449a305478bf798d2, type: 3}
@@ -405,9 +405,9 @@ MonoBehaviour:
   backLayer: {fileID: 1228727340}
   midLayer: {fileID: 1237634160}
   frontLayer: {fileID: 1013389069}
-  frontSpeed: 0.01
-  midSpeed: 0.005
-  backSpeed: 0.0025
+  frontSpeed: 0.005
+  midSpeed: 0.0025
+  backSpeed: 0.0005
 --- !u!1001 &471674082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1024,7 +1024,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 44.85351
+      value: 45.77375
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -1660,8 +1660,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151db7b06aa6cba4d9ce1b2f0f684e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overrideGame: 1
-  storyGameIndex: 2
+  overrideGame: 0
+  storyGameIndex: 0
   coin: {fileID: 1653332658}
   dancingMan: {fileID: 1034302397}
   microphone: {fileID: 403777656}

@@ -15,6 +15,783 @@ MonoBehaviour:
   storyName: 3_StoryGame_FollowRed
   background: 2
   segments:
+  - text: The
+    audio: {fileID: 8300000, guid: 6cc1819e10e2b2147887bb70f0166923, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: explorer
+    audio: {fileID: 8300000, guid: 170cec00cc4a6aa41859d84ba35b7c57, type: 3}
+    moveWord: 1
+    actionWord: 8
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: was excited to finally begin the journey through the jungle~ when a
+    audio: {fileID: 8300000, guid: 998223873bc0ed6458c0253210c90cb6, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: choice
+    audio: {fileID: 8300000, guid: 2105e7f7cae4e8e448965a5c9859829f, type: 3}
+    moveWord: 1
+    actionWord: 11
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: had to be made
+    audio: {fileID: 8300000, guid: 5f77e513d2f6ea64ab6b2f5bbb454602, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: .
+    advanceBG: 0
+  - text: A fork in the pat split in two directions. Should the
+    audio: {fileID: 8300000, guid: 816846289e7709a4098e78df1c98ee0f, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: explorer
+    audio: {fileID: 8300000, guid: e8eb36af86cd1af46b46bef4f133fa42, type: 3}
+    moveWord: 1
+    actionWord: 8
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: choose
+    audio: {fileID: 8300000, guid: d61eac3cf3975a94cba17bdfe543065c, type: 3}
+    moveWord: 1
+    actionWord: 11
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 'to go left or right? '
+    audio: {fileID: 8300000, guid: f11ea3537a3cb6947bfa0c00f7c5410e, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: It was a difficult
+    audio: {fileID: 8300000, guid: 3a9f3a9f91359fe4c9703d75e2d53ce9, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: choice
+    audio: {fileID: 8300000, guid: 3d3dcb04eafff9e42ade8b469182f9fc, type: 3}
+    moveWord: 1
+    actionWord: 11
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: so the
+    audio: {fileID: 8300000, guid: 415d0fbf222cb5145807449a1a71608d, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: explorer
+    audio: {fileID: 8300000, guid: 6ad6a7c5c78edd24181192b0696e0447, type: 3}
+    moveWord: 1
+    actionWord: 8
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: decided to
+    audio: {fileID: 8300000, guid: 995afd5a5ec94e243a7f6bd85d295209, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: think
+    audio: {fileID: 8300000, guid: 726111d04530b1147bfd48210d7491a1, type: 3}
+    moveWord: 1
+    actionWord: 5
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: and
+    audio: {fileID: 8300000, guid: 8da66d4ea8edbad45abefcab9503611c, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: listen
+    audio: {fileID: 8300000, guid: 469a31bbacb3c5f489c553c00ec2c973, type: 3}
+    moveWord: 1
+    actionWord: 2
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: to keep from getting
+    audio: {fileID: 8300000, guid: eae253482e61c1644a2c309080ae422a, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: scared
+    audio: {fileID: 8300000, guid: cce735b549a2e9b4ca545a2f6ed1546a, type: 3}
+    moveWord: 1
+    actionWord: 9
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: like
+    audio: {fileID: 8300000, guid: 7c1f24ebbf442784b94764b312fd6ba8, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: that guy
+    audio: {fileID: 8300000, guid: 66cd8f40f8fcfa24d9a0df180806baee, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 'Suddenly~ the Redbird '
+    audio: {fileID: 8300000, guid: ba1dcf5c0986a224e85639f983d8b118, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: gave
+    audio: {fileID: 8300000, guid: b14f58ca2c9962d4e9978415fc6db0a1, type: 3}
+    moveWord: 1
+    actionWord: 16
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: a hint by flying down the left path and the
+    audio: {fileID: 8300000, guid: f6d89e681ec982d43982d5e736bbb089, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: explorer
+    audio: {fileID: 8300000, guid: a57939334365afc4daac2cea61f53bdd, type: 3}
+    moveWord: 1
+    actionWord: 8
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: waved
+    audio: {fileID: 8300000, guid: cca4762d14dcd004c82b9691bb782048, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: hello
+    audio: {fileID: 8300000, guid: c4787bc0a36f2c7419a53d7bf50b6ae9, type: 3}
+    moveWord: 1
+    actionWord: 6
+    requireInput: 0
+    postText: .
+    advanceBG: 0
+  - text: The
+    audio: {fileID: 8300000, guid: dcb8ea836bc44884e9952877554494b7, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: explorer
+    audio: {fileID: 8300000, guid: db6825e514d576540b2de89488474dea, type: 3}
+    moveWord: 1
+    actionWord: 8
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: chose
+    audio: {fileID: 8300000, guid: 5062beebbb0a57d4191fa118a7a5e2b3, type: 3}
+    moveWord: 1
+    actionWord: 11
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 'to follow the redbird''s hint and '
+    audio: {fileID: 8300000, guid: a1d2ab4aea71af24786211951f474b87, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: gave
+    audio: {fileID: 8300000, guid: f24553b672e7cf44dbeed8b1f5b79caf, type: 3}
+    moveWord: 1
+    actionWord: 16
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: chase after the bird. Not long afterwards~ the
+    audio: {fileID: 8300000, guid: 225199fbc3690e74eb236920e593ea03, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: explorer
+    audio: {fileID: 8300000, guid: 368395d167983b842bc7b470b7194fc0, type: 3}
+    moveWord: 1
+    actionWord: 8
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 'felt a '
+    audio: {fileID: 8300000, guid: a0006b2ea151ce74a8e72fad02cfbb3e, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: strong wind
+    audio: {fileID: 8300000, guid: 2666168a9da72404ea00f572ef657707, type: 3}
+    moveWord: 1
+    actionWord: 12
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: that smelled like
+    audio: {fileID: 8300000, guid: 9984d7a9eda5c8e41b997804991af90b, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: gorilla poop
+    audio: {fileID: 8300000, guid: a1cdedec7c8811448887f374c6186908, type: 3}
+    moveWord: 1
+    actionWord: 3
+    requireInput: 0
+    postText: .
+    advanceBG: 0
+  - text: The
+    audio: {fileID: 8300000, guid: bae176670ce4ae04691890e9f7f49742, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: explorer
+    audio: {fileID: 8300000, guid: fa50fd18e0052234c8ba22499ad7b8fe, type: 3}
+    moveWord: 1
+    actionWord: 8
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: decided to
+    audio: {fileID: 8300000, guid: 27c83d497ff27bc4aa04b5be542a1db4, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: listen
+    audio: {fileID: 8300000, guid: 5f41b3aeb3ddcf14192a6cc836747bc6, type: 3}
+    moveWord: 1
+    actionWord: 2
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: carefully for unusual
+    audio: {fileID: 8300000, guid: 84fce191d6e6d9e4c83fabb6ef5242f4, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: sounds
+    audio: {fileID: 8300000, guid: f1b8a87cb8ffe8b459b0ae0f3384fc4d, type: 3}
+    moveWord: 1
+    actionWord: 15
+    requireInput: 0
+    postText: .
+    advanceBG: 0
+  - text: You are probably wondering what type of
+    audio: {fileID: 8300000, guid: b30625a00bec2a6408dc5c67fbd7d402, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: sound
+    audio: {fileID: 8300000, guid: 2bcfe2ab346440a4eac59e0baf98c38b, type: 3}
+    moveWord: 1
+    actionWord: 15
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: is an unusual
+    audio: {fileID: 8300000, guid: 113eb3c8e0e6102498ab692ae8798390, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: sound
+    audio: {fileID: 8300000, guid: 55d11fc56d578a54789562b2ec823330, type: 3}
+    moveWord: 1
+    actionWord: 15
+    requireInput: 0
+    postText: .
+    advanceBG: 0
+  - text: Well~ this one was from an
+    audio: {fileID: 8300000, guid: ed134a0cc335e174d8eddee70f2f851f, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: angry gorilla
+    audio: {fileID: 8300000, guid: 49d621de4b51c01418becddde5e9067c, type: 3}
+    moveWord: 1
+    actionWord: 14
+    requireInput: 0
+    postText: .
+    advanceBG: 0
+  - text: Our
+    audio: {fileID: 8300000, guid: f082cf61dafa751488880bbd395c0d5e, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: explorer
+    audio: {fileID: 8300000, guid: e984a34d8e871d24db5496e2f1a72dd7, type: 3}
+    moveWord: 1
+    actionWord: 8
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 'was not afraid of '
+    audio: {fileID: 8300000, guid: 11a6476844a1db6458b3419234349b58, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: mudslides
+    audio: {fileID: 8300000, guid: af409dd671495ea4aa35f80f555607a7, type: 3}
+    moveWord: 1
+    actionWord: 1
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: orcs
+    audio: {fileID: 8300000, guid: 717cdefd1b9b8084abb3f2b540bbaa3f, type: 3}
+    moveWord: 1
+    actionWord: 4
+    requireInput: 0
+    postText: ~
+    advanceBG: 0
+  - text: or
+    audio: {fileID: 8300000, guid: d5d9a1bfe71f8c343a033cbed517f207, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: spiders
+    audio: {fileID: 8300000, guid: 8c4507e686a4958499c9e43a7659bfa3, type: 3}
+    moveWord: 1
+    actionWord: 7
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: but an
+    audio: {fileID: 8300000, guid: 034a05b8ceb40704ebbbd48190df4b7a, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: angry gorilla
+    audio: {fileID: 8300000, guid: 126b3ecf85060c943b232be02d829cfd, type: 3}
+    moveWord: 1
+    actionWord: 14
+    requireInput: 0
+    postText: .
+    advanceBG: 0
+  - text: might be enough to do the trick
+    audio: {fileID: 8300000, guid: 50c4a14599d0336489b65a4d56fe1dd4, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: .
+    advanceBG: 0
+  - text: The
+    audio: {fileID: 8300000, guid: 53ccba9a68eda3b4bb442e26436f906b, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: explorer
+    audio: {fileID: 8300000, guid: a42a00d8fe185124a9d507686ab228a8, type: 3}
+    moveWord: 1
+    actionWord: 8
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: sat down to
+    audio: {fileID: 8300000, guid: 3740b0f2dfd992a479646db7df00a345, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: think
+    audio: {fileID: 8300000, guid: 9476bbe4dd0ef344197afd9af8749dd1, type: 3}
+    moveWord: 1
+    actionWord: 5
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: and
+    audio: {fileID: 8300000, guid: 8b5990605b79e4e4690d5c54d0af18af, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: listen
+    audio: {fileID: 8300000, guid: 4d0d0e62e67023e4082e2d7957e7b24f, type: 3}
+    moveWord: 1
+    actionWord: 2
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: and
+    audio: {fileID: 8300000, guid: 8c6f5a8b36fd91c428656cbe6fd49a6b, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: give
+    audio: {fileID: 8300000, guid: f6acb75a1cdf9bd4692c0a7aef89e5cb, type: 3}
+    moveWord: 1
+    actionWord: 16
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: the animal some time to go away~ but the
+    audio: {fileID: 8300000, guid: 7486ac7388f417345a5f4d59166ef35f, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: strong wind
+    audio: {fileID: 8300000, guid: 3f3451eb4dab1254facbeeb9d4a7b77a, type: 3}
+    moveWord: 1
+    actionWord: 12
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 'with the smell of '
+    audio: {fileID: 8300000, guid: 67af8d0e150334f489784445544cf544, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: gorilla poop
+    audio: {fileID: 8300000, guid: edadbf0e14abbdc428a6ebac45e7e893, type: 3}
+    moveWord: 1
+    actionWord: 3
+    requireInput: 0
+    postText: .
+    advanceBG: 0
+  - text: was just too distracting.
+    audio: {fileID: 8300000, guid: ceb62117336369c419ef129e9dde7551, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: So~ our friend made a
+    audio: {fileID: 8300000, guid: 85777589d93caef4bbcd35d4b76ec5d2, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: sound
+    audio: {fileID: 8300000, guid: 8fcb193847557c445aa9cf41e0964d09, type: 3}
+    moveWord: 1
+    actionWord: 15
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: of his own to scare away the
+    audio: {fileID: 8300000, guid: 891ed9b124681004a8ecfee3d4805eae, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: angry gorilla
+    audio: {fileID: 8300000, guid: 3775ec12d157a554ea93e2e1c569eadc, type: 3}
+    moveWord: 1
+    actionWord: 14
+    requireInput: 0
+    postText: .
+    advanceBG: 0
+  - text: The
+    audio: {fileID: 8300000, guid: 60a571729d3dc254498b2b46523845e1, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: explorer
+    audio: {fileID: 8300000, guid: cbd06ccabfa8f41438ad6828494ce48f, type: 3}
+    moveWord: 1
+    actionWord: 8
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: shouted at the
+    audio: {fileID: 8300000, guid: d64d0d3b2337bfd42b65f7e3b51e24f5, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: strong wind
+    audio: {fileID: 8300000, guid: d847423a03f5cac4bacef610fcdfbb4b, type: 3}
+    moveWord: 1
+    actionWord: 12
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: i'm a
+    audio: {fileID: 8300000, guid: 8538f5fd8b61c954ebc1f2b5cd9b5d32, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: pirate
+    audio: {fileID: 8300000, guid: acf635f775fc53f42bd8d93d5e731988, type: 3}
+    moveWord: 1
+    actionWord: 13
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: and all
+    audio: {fileID: 8300000, guid: ad40e59432534fc4d81abd7d5a3ac793, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: angry gorilla's
+    audio: {fileID: 8300000, guid: afc0f3273d65f6d4fad831835ed49a14, type: 3}
+    moveWord: 1
+    actionWord: 14
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: should be
+    audio: {fileID: 8300000, guid: 2110f309887c0e84cb3bcabacd685a46, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: scared
+    audio: {fileID: 8300000, guid: 75b2aa1097d415e42ba01d517abaa19e, type: 3}
+    moveWord: 1
+    actionWord: 9
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: of
+    audio: {fileID: 8300000, guid: a8eef4e61c6fbd042bb649c6819faa62, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: pirates.
+    audio: {fileID: 8300000, guid: af4746093e1147e468c7b89e09407989, type: 3}
+    moveWord: 1
+    actionWord: 13
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: Our friend continued yelling
+    audio: {fileID: 8300000, guid: 866b9b9f1fb085d4d886aca10ad34f36, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: ~
+    advanceBG: 0
+  - text: Choose
+    audio: {fileID: 8300000, guid: 5c0233e4045c33f4e85ba3885a3ad287, type: 3}
+    moveWord: 1
+    actionWord: 11
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: carefully
+    audio: {fileID: 8300000, guid: 7bff4a317b8632b4699c29549f7432a7, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: angry gorilla
+    audio: {fileID: 8300000, guid: 67f0228d90fdc744393d65475ab14833, type: 3}
+    moveWord: 1
+    actionWord: 14
+    requireInput: 0
+    postText: ~
+    advanceBG: 0
+  - text: because this
+    audio: {fileID: 8300000, guid: 7356b4cc1a72dcb42b0b75a9edbb0761, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: pirate
+    audio: {fileID: 8300000, guid: 8bba9fe8e938c844bae6bb697a7fb7e7, type: 3}
+    moveWord: 1
+    actionWord: 13
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: will throw
+    audio: {fileID: 8300000, guid: f1a9968032f36764ab42d873e17cade4, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: gorilla poop
+    audio: {fileID: 8300000, guid: 06d495c45c7bcd34fa7cb042664f3264, type: 3}
+    moveWord: 1
+    actionWord: 3
+    requireInput: 0
+    postText: .
+    advanceBG: 0
+  - text: all over you.
+    audio: {fileID: 8300000, guid: 2fdcfc36114626a42a4bc4894a190269, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: When
+    audio: {fileID: 8300000, guid: 4f70c6db2533716419a1b2f707c56e8b, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: sounds
+    audio: {fileID: 8300000, guid: 8cb052486978e514fb4f271b43602294, type: 3}
+    moveWord: 1
+    actionWord: 15
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 'on a '
+    audio: {fileID: 8300000, guid: e5bb0377c65dec5429f4032abd6f7260, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: strong wind
+    audio: {fileID: 8300000, guid: 69df0fab4ff739f439a4f0538199f635, type: 3}
+    moveWord: 1
+    actionWord: 12
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: give you a
+    audio: {fileID: 8300000, guid: 7385e44be3b258a42b8314ef724e9737, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: choice
+    audio: {fileID: 8300000, guid: 0cfffe5fda3e24f49b19d18e5e1438a4, type: 3}
+    moveWord: 1
+    actionWord: 11
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: between an
+    audio: {fileID: 8300000, guid: efc91446e667b66448f67df567569a3c, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: angry gorilla
+    audio: {fileID: 8300000, guid: f196416b2b96185448b4ec1fce8a3eab, type: 3}
+    moveWord: 1
+    actionWord: 14
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 'and playing a '
+    audio: {fileID: 8300000, guid: 248679168635b9e4a93f3baccbe552c9, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: pirate
+    audio: {fileID: 8300000, guid: 8197d499cdecc644e9d66f4d657231ab, type: 3}
+    moveWord: 1
+    actionWord: 13
+    requireInput: 0
+    postText: ~
+    advanceBG: 0
+  - text: give
+    audio: {fileID: 8300000, guid: a7f4743ce32046e42b41c7a9a4914bf5, type: 3}
+    moveWord: 1
+    actionWord: 16
+    requireInput: 0
+    postText: ~
+    advanceBG: 0
+  - text: it some thought before you
+    audio: {fileID: 8300000, guid: 02137479525cad3428d458353cf01d12, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: choose
+    audio: {fileID: 8300000, guid: 8af78db124e8f4f4bb1d94f2f135ae3a, type: 3}
+    moveWord: 1
+    actionWord: 11
+    requireInput: 0
+    postText: .
+    advanceBG: 0
   - text: 'One more time:'
     audio: {fileID: 8300000, guid: c75a5a58488ffa543b04bb7feca9a42e, type: 3}
     moveWord: 1
@@ -27,40 +804,40 @@ MonoBehaviour:
     moveWord: 1
     actionWord: 11
     requireInput: 1
-    postText: ~
+    postText: 
     advanceBG: 0
   - text: strong wind
     audio: {fileID: 8300000, guid: 7d1677196b1ada7449b51675aeb88477, type: 3}
     moveWord: 1
     actionWord: 12
     requireInput: 1
-    postText: ~
-    advanceBG: 1
+    postText: 
+    advanceBG: 0
   - text: sound
     audio: {fileID: 8300000, guid: 42f989b441e54b841a5e9a4a2e2e54ea, type: 3}
     moveWord: 1
     actionWord: 15
     requireInput: 1
-    postText: ~
+    postText: 
     advanceBG: 0
   - text: angry gorilla
     audio: {fileID: 8300000, guid: 8c02a784471d64e4596d2e87dd37f5a5, type: 3}
     moveWord: 1
     actionWord: 14
     requireInput: 1
-    postText: ~
+    postText: 
     advanceBG: 0
   - text: pirate
     audio: {fileID: 8300000, guid: 0322ae913c3d3b7498093489cc808990, type: 3}
     moveWord: 1
     actionWord: 13
     requireInput: 1
-    postText: ~
+    postText: 
     advanceBG: 0
   - text: give
     audio: {fileID: 8300000, guid: b5b2fd87eddb7224ba8c7d5ab18ee163, type: 3}
     moveWord: 1
     actionWord: 16
     requireInput: 1
-    postText: .
+    postText: 
     advanceBG: 0

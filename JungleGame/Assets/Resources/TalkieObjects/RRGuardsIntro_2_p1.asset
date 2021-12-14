@@ -66,7 +66,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 8db04f0a69205e94c819db7099679113, type: 3}
     audioClipName: RR_1_0_Marcus_1_T1
     audioString: "Julius wasn\u2019t being hard ENOUGH on you, you\u2019re too good
       at cleaning up our messes!"
@@ -83,6 +83,6 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: e808a5fc46c13344ca9a6239344edf71, type: 3}
     audioClipName: RR_1_0_Brutus_2_T1
     audioString: "Looks like it\u2019s up to us to challenge you!"

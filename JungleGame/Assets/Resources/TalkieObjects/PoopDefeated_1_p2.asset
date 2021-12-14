@@ -34,7 +34,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 6d2f6704149ff3641b7ab64060ba24e2, type: 3}
     audioClipName: B_3_3_Marcus_5_T1
     audioString: "You\u2019ll see us soon enough!"
   - endTalkieAfterThisSegment: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 8f578f0ca05835549ba1d4f7c585ea9f, type: 3}
     audioClipName: B_3_3_Brutus_6_T1
     audioString: "Yeah\u2026"
   - endTalkieAfterThisSegment: 0
@@ -66,6 +66,6 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: a414d887ae1f2c847af770965dc50564, type: 3}
     audioClipName: B_3_3_Brutus_6_T2
     audioString: "Hopefully in a better smelling place\u2026"

@@ -374,6 +374,7 @@ public class StoryGameDatabaseManager : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
     public void OnUpdatePressed()
     {
         // only continue iff tests complete
@@ -393,7 +394,6 @@ public class StoryGameDatabaseManager : MonoBehaviour
         updateText.text = "database updated!";
     }
 
-#if UNITY_EDITOR
     public void UpdateCreateObject(StoryGameEntry entry)
     {
         string exact_filename = entry.storyName;

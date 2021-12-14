@@ -34,7 +34,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 04aef619f90d704439f804a68dce36ca, type: 3}
     audioClipName: Cha_0_0_Julius_4_T1
     audioString: "You want to go again\u2026?"
   - endTalkieAfterThisSegment: 1
@@ -50,7 +50,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: a44b7c76307b6194192a1dc60c972ce5, type: 3}
     audioClipName: Cha_0_0_Julius_4_T2
     audioString: Alright.
   - endTalkieAfterThisSegment: 1
@@ -66,6 +66,6 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 1a03b44b52bf7fc43a8a76a8f24735d4, type: 3}
     audioClipName: Cha_0_0_Julius_4_T3
     audioString: "\u2026Okay."

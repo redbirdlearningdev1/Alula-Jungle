@@ -34,7 +34,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 9226feab9877eff4a90eb5ff54d9b0cb, type: 3}
     audioClipName: RR_0_1_Julius_1_T1
     audioString: 'H-HUh?? You beat me?? '
   - endTalkieAfterThisSegment: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 8d62dcebd5bbc424c93c9edb48513d34, type: 3}
     audioClipName: RR_0_1_Julius_1_T2
     audioString: You really are good at this!
   - endTalkieAfterThisSegment: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: a9bb28ff995916946bdb62687677a015, type: 3}
     audioClipName: RR_0_1_Julius_1_T3
     audioString: "Don\u2019t worry, I\u2019ll have a better challenge next time"
   - endTalkieAfterThisSegment: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 2764bd8068b9a1341b8f3e3448c7f867, type: 3}
     audioClipName: RR_0_1_Julius_2_T1
     audioString: "WHAT?? Grrr I need to think of something even harder. I\u2019m
       out of here!"
@@ -99,6 +99,6 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 610e6931756502c43be225cb29eb860d, type: 3}
     audioClipName: RR_0_1_Julius_3_T1
     audioString: "No Way! That was still too easy for you? Ugh I\u2019m leaving!"

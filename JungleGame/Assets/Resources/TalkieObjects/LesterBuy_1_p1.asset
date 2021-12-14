@@ -34,7 +34,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 5e97a15c41e1de74c91abddb3e563436, type: 3}
     audioClipName: Sticker_0_1_Lester_1_T1
     audioString: Howdy there Explorer!
   - endTalkieAfterThisSegment: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 7c818ffb6abc2ee44930ea4632a4e73b, type: 3}
     audioClipName: Sticker_0_1_Lester_1_T2
     audioString: You ready to roll?
   - endTalkieAfterThisSegment: 1
@@ -66,7 +66,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 229b327cf8ffe744b837f18a9fb7d390, type: 3}
     audioClipName: Sticker_0_1_Lester_1_T3
     audioString: 
   - endTalkieAfterThisSegment: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: a7735c11ef01d0342b23f76e93f5693d, type: 3}
     audioClipName: Sticker_0_1_Lester_2_T1
     audioString: Howdy there Explorer!
   - endTalkieAfterThisSegment: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 88615344157bb0a4da5efaf1dc2ad0e4, type: 3}
     audioClipName: Sticker_0_1_Lester_2_T2
     audioString: Are you ready for me to make you a mighty fine sticker?!
   - endTalkieAfterThisSegment: 1
@@ -114,7 +114,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 1431da0a7b136234692e6d5c1d774e3d, type: 3}
     audioClipName: Sticker_0_1_Lester_2_T3
     audioString: 
   - endTalkieAfterThisSegment: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 52ff01d240f71da448b9a2059b6ff373, type: 3}
     audioClipName: Sticker_0_1_Lester_3_T1
     audioString: "I\u2019m excited to get started on your sticker Explorer!"
   - endTalkieAfterThisSegment: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: b69c54eaea794744d88f7bf0f70dad32, type: 3}
     audioClipName: Sticker_0_1_Lester_3_T2
     audioString: Are you ready?!
   - endTalkieAfterThisSegment: 1
@@ -162,6 +162,6 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: c6b520d712db35d40beab6cd2628fbc0, type: 3}
     audioClipName: Sticker_0_1_Lester_3_T3
     audioString: 

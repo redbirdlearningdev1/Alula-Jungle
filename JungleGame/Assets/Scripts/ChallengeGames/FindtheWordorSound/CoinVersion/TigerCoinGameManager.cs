@@ -44,16 +44,28 @@ public class TigerCoinGameManager : MonoBehaviour
 
     void Awake()
     {
-        // every scene must call this in Awake()
-        GameManager.instance.SceneInit();
-
         if (!instance)
         {
             instance = this;
         }
 
+        // every scene must call this in Awake()
+        GameManager.instance.SceneInit();
+
+        // stop music 
+        AudioManager.instance.StopMusic();
+    }
+
+    void Start()
+    {
+        // turn on settings button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+
+        // add ambiance
+        // AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.05f);
+        // AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 0.05f);
+
         PregameSetup();
-        StartCoroutine(StartGame());
     }
 
     void Update()
@@ -79,6 +91,8 @@ public class TigerCoinGameManager : MonoBehaviour
         unusedWordList = globalWordList;
         usedWordList = new List<ChallengeWord>();
         pattern.baseState();
+
+        StartCoroutine(StartGame());
     }
 
     private IEnumerator StartGame()

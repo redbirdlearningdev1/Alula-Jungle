@@ -158,6 +158,11 @@ public class StoryGameManager : MonoBehaviour
             var space = Instantiate(textWrapperObject, textLayoutGroup);
             space.GetComponent<TextWrapper>().SetSpace();
         }
+
+        // add last moveable word
+        var last_word = Instantiate(textWrapperObject, textLayoutGroup);
+        last_word.GetComponent<TextWrapper>().SetSpace();
+        wordTransforms.Add(last_word.transform);
     }
 
     private IEnumerator GameRoutine()
@@ -173,9 +178,6 @@ public class StoryGameManager : MonoBehaviour
         
         foreach (StoryGameSegment seg in storyGameData.segments)
         {
-            // start moving gorilla
-            ScrollingBackground.instance.StartMoving();
-
             // advance BG if segment says so
             if (seg.advanceBG)
             {
@@ -189,15 +191,22 @@ public class StoryGameManager : MonoBehaviour
 
             if (seg.moveWord)
             {
-                // move text until action word is in place
-                StartCoroutine(MoveTextToNextActionWord(seg.audio.length));
+                
             }
 
             // read text if available
             if (seg.actionWord == ActionWordEnum._blank)
             {
+                // start moving gorilla
+                ScrollingBackground.instance.StartMoving();
+                // move text until action word is in place
+                StartCoroutine(MoveTextToNextWord(seg.audio.length));
+
                 AudioManager.instance.PlayTalk(seg.audio);
+                // wait for audio to be over
                 yield return new WaitForSeconds(seg.audio.length);
+                // stop moving gorilla
+                ScrollingBackground.instance.StopMoving();
             }
 
             // read action word if available
@@ -217,8 +226,13 @@ public class StoryGameManager : MonoBehaviour
 
                 yield return new WaitForSeconds(seg.audio.length);
 
-                if (seg.requireInput && !microphone.hasBeenPressed)
+                if (seg.requireInput)
                 {
+                    if (microphone.hasBeenPressed)
+                    {
+                        continue;
+                    }
+
                     // turn on mic button
                     if (!microphone.interactable)
                     {
@@ -240,6 +254,9 @@ public class StoryGameManager : MonoBehaviour
                             break;
                         yield return null;
                     }
+
+                    // move text until action word is in place
+                    StartCoroutine(MoveTextToNextWord(seg.audio.length));
                         
                     // start skipping mic inputs
                     if (microphone.hasBeenPressed)
@@ -247,6 +264,8 @@ public class StoryGameManager : MonoBehaviour
                         microphone.interactable = false;
                         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 0.5f);
                         microphone.NoInputDetected();
+
+                        yield return new WaitForSeconds(1f);
                     }
                     else
                     {
@@ -255,33 +274,23 @@ public class StoryGameManager : MonoBehaviour
 
                         // play correct audio cue
                         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
+                        dancingMan.PlayUsingPhonemeEnum(seg.actionWord);
 
-                        yield return new WaitForSeconds(1f);    
+                        yield return new WaitForSeconds(1f);
                     }              
-                }
-                
-                if (microphone.hasBeenPressed)
-                {
-                    // stop moving gorilla
-                    ScrollingBackground.instance.StopMoving();
-
-                    yield return new WaitForSeconds(1f);
                 }
 
                 // successful input
                 ShakeCoin();
-                dancingMan.PlayUsingPhonemeEnum(seg.actionWord);
                 AudioClip clip = GameManager.instance.GetActionWord(seg.actionWord).audio;
                 AudioManager.instance.PlayTalk(clip);
                 yield return new WaitForSeconds(clip.length);
 
-                if (!microphone.hasBeenPressed)
+                if (seg.requireInput && !microphone.hasBeenPressed)
                 {
                     microphone.HideIndicator();
                 }
             }
-
-            yield return new WaitForSeconds(2f);
 
             // increment curret word if needed
             if (seg.moveWord)
@@ -350,13 +359,13 @@ public class StoryGameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator MoveTextToNextActionWord(float duration)
+    private IEnumerator MoveTextToNextWord(float duration)
     {
         float start = textLayoutGroup.position.x;
-        float end = start - Mathf.Abs(actionWordStopPos.position.x - wordTransforms[currWord].transform.position.x);
+        float end = start - Mathf.Abs(actionWordStopPos.position.x - wordTransforms[currWord + 1].transform.position.x); 
         float timer = 0f;
 
-        //print ("end: " + end);
+        print ("end: " + end);
 
         while (true)
         {

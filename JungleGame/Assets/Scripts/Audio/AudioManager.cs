@@ -36,7 +36,9 @@ public class AudioManager : MonoBehaviour
     public static float default_masterVol =     1f;
     public static float default_musicVol =      0.25f;
     public static float default_fxVol =         1f;
-    public static float default_talkVol =       1f;
+    public static float default_talkVol =       2f;
+
+    private Coroutine smoothSetMusicRoutine = null;
 
     void Awake() 
     {
@@ -72,6 +74,22 @@ public class AudioManager : MonoBehaviour
 
         vol = 20f * Mathf.Log10(vol);
         masterMixer.SetFloat("musicVol", vol);
+    }
+
+    public void ToggleMusicSmooth(bool opt)
+    {
+        if (opt)
+        {
+            if (smoothSetMusicRoutine != null)
+                StopCoroutine(smoothSetMusicRoutine);
+            smoothSetMusicRoutine = StartCoroutine(SmoothStartMusicSource(musicSources[0], 1f));
+        }
+        else
+        {
+            if (smoothSetMusicRoutine != null)
+                StopCoroutine(smoothSetMusicRoutine);
+            smoothSetMusicRoutine = StartCoroutine(SmoothEndMusicSource(musicSources[0], 1f));
+        }
     }
 
     public void SetFXVolume(float vol)
@@ -264,7 +282,7 @@ public class AudioManager : MonoBehaviour
 
             print ("currSplitIndex: " + currSplitIndex);
 
-            StartCoroutine(SmoothStartSource(musicSources[currSplitIndex], smoothSplitDuration));
+            StartCoroutine(SmoothStartMusicSource(musicSources[currSplitIndex], smoothSplitDuration));
             currSplitIndex++;
         }
     }
@@ -278,13 +296,13 @@ public class AudioManager : MonoBehaviour
             return;
 
         currSplitIndex--;
-        StartCoroutine(SmoothEndSource(musicSources[currSplitIndex], smoothSplitDuration));
+        StartCoroutine(SmoothEndMusicSource(musicSources[currSplitIndex], smoothSplitDuration));
     }
 
-    private IEnumerator SmoothStartSource(AudioSource source, float duration)
+    private IEnumerator SmoothStartMusicSource(AudioSource source, float duration)
     {
         float timer = 0f;
-        float endVol = 0.5f;
+        float endVol = StudentInfoSystem.GetCurrentProfile().musicVol;
 
         while (true)
         {   
@@ -301,7 +319,7 @@ public class AudioManager : MonoBehaviour
         }   
     }
 
-    private IEnumerator SmoothEndSource(AudioSource source, float duration)
+    private IEnumerator SmoothEndMusicSource(AudioSource source, float duration)
     {
         float timer = 0f;
         float startVol = source.volume;

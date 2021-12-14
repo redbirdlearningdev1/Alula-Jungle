@@ -34,7 +34,7 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 8fdcdbed6bccbb74b9cd3c82902ef9e5, type: 3}
+    audioClip: {fileID: 8300000, guid: c869b218ec9a66f489c3297b29c33df0, type: 3}
     audioClipName: P_0_1_Red_1_1_T1
     audioString: Hurray!
   - endTalkieAfterThisSegment: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 03966973fcae46b47918f5daad0c015e, type: 3}
+    audioClip: {fileID: 8300000, guid: 80545fb6e30709a4d8f3c20a52182386, type: 3}
     audioClipName: P_0_1_Red_1_1_T2
     audioString: Welcome to the Jungle kingdom Explorer!
   - endTalkieAfterThisSegment: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 9e61937f21b5f3b43ab9ff07caa4416c, type: 3}
+    audioClip: {fileID: 8300000, guid: f2ab015c02f941041b0b37b64d35a79d, type: 3}
     audioClipName: P_0_1_Red_1_1_T3
     audioString: "I\u2019m so excited to learn and help out my friend! "
   - endTalkieAfterThisSegment: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 54669cc2fd9ef4d46a75adc67857a252, type: 3}
+    audioClip: {fileID: 8300000, guid: 2a9c78e5f0dde3247afde3d984fdfe32, type: 3}
     audioClipName: P_0_1_Red_1_1_T4
     audioString: I can't wait for you to meet him!
   - endTalkieAfterThisSegment: 0
@@ -98,6 +98,6 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 0b7869ae9335c584e9190d26a2fe3243, type: 3}
+    audioClip: {fileID: 8300000, guid: dfbecfee4bf8a694796f3b996357dced, type: 3}
     audioClipName: P_0_1_Red_2_1_T1
     audioString: Oh! There he is up ahead!

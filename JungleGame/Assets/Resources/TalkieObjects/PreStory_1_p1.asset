@@ -34,7 +34,7 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: f034dfa15a307d34c8cd90278d6dd808, type: 3}
+    audioClip: {fileID: 8300000, guid: a235ea4f074abf447b1d873db39b3142, type: 3}
     audioClipName: P_1_1a_Darwin_1_T1
     audioString: Hey wait! Not so fast Explorer.
   - endTalkieAfterThisSegment: 0

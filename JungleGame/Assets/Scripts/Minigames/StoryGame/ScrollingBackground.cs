@@ -320,10 +320,19 @@ public class ScrollingBackground : MonoBehaviour
         {
             while (currSize < 400)
             {
+                // if the last child in layer is near the edge of the right side of screen, add more blocks
+                RectTransform lastBlock = null;
+                if (layer.childCount > 0)
+                    lastBlock = layer.GetChild(layer.childCount - 1).GetComponent<RectTransform>();
+
                 // add block to layer
                 GameObject obj = Instantiate(buildingBlock, layer);
                 obj.GetComponent<ParallaxBlock>().SetBlock(sprite, size);
-                obj.transform.localPosition = new Vector3(currSize + obj.GetComponent<RectTransform>().sizeDelta.x / 2, 0f, 0f);
+
+                if (lastBlock != null)
+                    obj.transform.localPosition = new Vector3(lastBlock.transform.localPosition.x + (lastBlock.sizeDelta.x / 2) + (size.x / 2), 0f, 0f);
+                else
+                    obj.transform.localPosition = new Vector3(currSize + (size.x / 2), 0f, 0f);
 
                 // increase layer size
                 currSize += (int)size.x;
