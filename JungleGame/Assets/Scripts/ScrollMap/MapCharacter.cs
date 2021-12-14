@@ -341,9 +341,11 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         }
 
 
-
-
-
+        /* 
+        ################################################
+        #   CHALLENGE GAMES
+        ################################################
+        */  
 
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1 ||
                  StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Mudslide_challengeGame_1 ||
@@ -403,6 +405,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
 
         GameManager.instance.playingChallengeGame = playingChallengeGame;
 
+        SetGameManagerMapID(StudentInfoSystem.GetCurrentProfile().currStoryBeat);
+
         // start game
         GoToGameDataSceneImmediately();
     }
@@ -410,5 +414,38 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
     public void GoToGameDataSceneImmediately()
     {
         GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(gameType), true, 0.5f, true);
+    }
+
+    private void SetGameManagerMapID(StoryBeat currStoryBeat)
+    {
+        switch (currStoryBeat)
+        {
+            // GV
+            case StoryBeat.GorillaVillage_challengeGame_1: GameManager.instance.mapID = MapIconIdentfier.GV_challenge_1; return;
+            case StoryBeat.GorillaVillage_challengeGame_2: GameManager.instance.mapID = MapIconIdentfier.GV_challenge_2; return;
+            case StoryBeat.GorillaVillage_challengeGame_3: GameManager.instance.mapID = MapIconIdentfier.GV_challenge_3; return;
+
+            // MS
+            case StoryBeat.Mudslide_challengeGame_1: GameManager.instance.mapID = MapIconIdentfier.MS_challenge_1; return;
+            case StoryBeat.Mudslide_challengeGame_2: GameManager.instance.mapID = MapIconIdentfier.MS_challenge_2; return;
+            case StoryBeat.Mudslide_challengeGame_3: GameManager.instance.mapID = MapIconIdentfier.MS_challenge_3; return;
+
+            // OC
+            case StoryBeat.OrcCamp_challengeGame_1: GameManager.instance.mapID = MapIconIdentfier.OC_challenge_1; return;
+            case StoryBeat.OrcCamp_challengeGame_2: GameManager.instance.mapID = MapIconIdentfier.OC_challenge_2; return;
+            case StoryBeat.OrcCamp_challengeGame_3: GameManager.instance.mapID = MapIconIdentfier.OC_challenge_3; return;
+
+            // OV
+            case StoryBeat.OrcVillage_challengeGame_1: GameManager.instance.mapID = MapIconIdentfier.OV_challenge_1; return;
+            case StoryBeat.OrcVillage_challengeGame_2: GameManager.instance.mapID = MapIconIdentfier.OV_challenge_2; return;
+            case StoryBeat.OrcVillage_challengeGame_3: GameManager.instance.mapID = MapIconIdentfier.OV_challenge_3; return;
+
+            // SF
+            case StoryBeat.SpookyForest_challengeGame_1: GameManager.instance.mapID = MapIconIdentfier.SF_challenge_1; return;
+            case StoryBeat.SpookyForest_challengeGame_2: GameManager.instance.mapID = MapIconIdentfier.SF_challenge_2; return;
+            case StoryBeat.SpookyForest_challengeGame_3: GameManager.instance.mapID = MapIconIdentfier.SF_challenge_3; return;
+
+            // ETC.
+        }   
     }
 }

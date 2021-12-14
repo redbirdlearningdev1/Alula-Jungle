@@ -465,7 +465,6 @@ public class ScrollMapManager : MonoBehaviour
             // wiggle boat
             boat.interactable = true;
             boat.GetComponent<WiggleController>().StartWiggle();
-            //boat.GetComponent<GlowOutlineController>().ToggleGlowOutline(true); turned off bcause looks weird
         }
         else if (playGameEvent == StoryBeat.UnlockGorillaVillage)
         {
@@ -561,7 +560,7 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 SettingsManager.instance.ToggleWagonButtonActive(true);
                 // add glow + wiggle
-                SettingsManager.instance.ToggleStickerButtonWiggle(true);
+                SettingsManager.instance.ToggleStickerButtonWiggleGlow(true);
 
                 // save to sis and continue
                 StudentInfoSystem.AdvanceStoryBeat();
@@ -584,6 +583,9 @@ public class ScrollMapManager : MonoBehaviour
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.darwin_forces);
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
+
+                // add glow + wiggle
+                SettingsManager.instance.ToggleStickerButtonWiggleGlow(true);
             }
             else
             {
@@ -638,24 +640,13 @@ public class ScrollMapManager : MonoBehaviour
                         GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage);
                         tiger.gameType = newGameType;
                         StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType = newGameType;
+                        StudentInfoSystem.AdvanceStoryBeat();
                         StudentInfoSystem.SaveStudentPlayerData();
-                    }
-                    else
-                    {
-                        tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType;
                     }
                         
                     tiger.ShowExclamationMark(true);
                     tiger.interactable = true;
                     tiger.GetComponent<Animator>().Play("aTigerTwitch");
-
-                    // set game manager stuff
-                    GameManager.instance.mapID = MapIconIdentfier.GV_challenge_1;
-
-                    // save to sis and continue
-                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType = tiger.gameType;
-                    StudentInfoSystem.AdvanceStoryBeat();
-                    StudentInfoSystem.SaveStudentPlayerData();
                 }
                 else
                 {
@@ -686,9 +677,6 @@ public class ScrollMapManager : MonoBehaviour
                 tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType;
             }
 
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.GV_challenge_1;
-
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
                 !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
@@ -712,7 +700,6 @@ public class ScrollMapManager : MonoBehaviour
                     yield return null;
             }
 
-
             tiger.interactable = true;
             tiger.ShowExclamationMark(true);
             tiger.GetComponent<Animator>().Play("aTigerTwitch");
@@ -726,7 +713,7 @@ public class ScrollMapManager : MonoBehaviour
             activateMapNavigation = true;
             revealGMUI = true;
 
-            // set tiger stuff
+            // set marcus stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType == GameType.None)
             {
                 GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage);
@@ -738,9 +725,6 @@ public class ScrollMapManager : MonoBehaviour
             {
                 marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType;
             }
-
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.GV_challenge_2;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -780,6 +764,10 @@ public class ScrollMapManager : MonoBehaviour
                 }
                 else
                 {
+                    // set game manager stuff
+                    GameManager.instance.mapID = MapIconIdentfier.GV_challenge_2;
+                    GameManager.instance.playingChallengeGame = true;
+
                     // continue to marcus challenge game
                     marcus.GoToGameDataSceneImmediately();
                 }
@@ -810,9 +798,6 @@ public class ScrollMapManager : MonoBehaviour
             {
                 brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType;
             }
-            
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.GV_challenge_3;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -846,6 +831,10 @@ public class ScrollMapManager : MonoBehaviour
                 }
                 else
                 {
+                    // set game manager stuff
+                    GameManager.instance.mapID = MapIconIdentfier.GV_challenge_3;
+                    GameManager.instance.playingChallengeGame = true;
+
                     // continue to marcus challenge game
                     brutus.GoToGameDataSceneImmediately();
                 }
@@ -907,18 +896,18 @@ public class ScrollMapManager : MonoBehaviour
 
             yield return new WaitForSeconds(2f);
 
-            // place temp copy over talkie bg
-            var tempSignPost = TempObjectPlacer.instance.PlaceNewObject(mapIconsAtLocation[2].signPost.gameObject, mapIconsAtLocation[2].signPost.transform.localPosition);
-            tempSignPost.GetComponent<SignPostController>().interactable = false;
-            tempSignPost.GetComponent<SignPostController>().SetStars(StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_stars);
+            // // place temp copy over talkie bg
+            // var tempSignPost = TempObjectPlacer.instance.PlaceNewObject(mapIconsAtLocation[2].signPost.gameObject, mapIconsAtLocation[2].signPost.transform.localPosition);
+            // tempSignPost.GetComponent<SignPostController>().interactable = false;
+            // tempSignPost.GetComponent<SignPostController>().SetStars(StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_stars);
 
             // play village challenge 3
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageChallengeDefeated_3);
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
-            // remove temp temp signpost
-            TempObjectPlacer.instance.RemoveObject();
+            // // remove temp temp signpost
+            // TempObjectPlacer.instance.RemoveObject();
 
             // before unlocking mudslide - set objects to be destroyed
             foreach (var icon in mapIconsAtLocation[3].mapIcons)
@@ -991,28 +980,13 @@ public class ScrollMapManager : MonoBehaviour
                     GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide);
                     tiger.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType = newGameType;
+                    StudentInfoSystem.AdvanceStoryBeat();
                     StudentInfoSystem.SaveStudentPlayerData();
-                }
-                else
-                {
-                    tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType;
                 }
                     
                 tiger.ShowExclamationMark(true);
                 tiger.interactable = true;
-                tiger.GetComponent<Animator>().Play("aTigerTwitch");
-
-                // set game manager stuff
-                GameManager.instance.mapID = MapIconIdentfier.MS_challenge_1;
-
-                // save to sis and continue
-                StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType = tiger.gameType;
-                StudentInfoSystem.AdvanceStoryBeat();
-                StudentInfoSystem.SaveStudentPlayerData();
-            }
-            else
-            {
-
+                tiger.GetComponent<Animator>().Play("aTigerTwitch"); 
             }
         }
         else if (playGameEvent == StoryBeat.Mudslide_challengeGame_1)
@@ -1036,10 +1010,6 @@ public class ScrollMapManager : MonoBehaviour
             {
                 tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType;
             }
-
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.MS_challenge_1;
-            GameManager.instance.playingChallengeGame = true;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -1086,9 +1056,6 @@ public class ScrollMapManager : MonoBehaviour
                 marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType;
             }
 
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.MS_challenge_2;
-
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
                 !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
@@ -1121,6 +1088,10 @@ public class ScrollMapManager : MonoBehaviour
                 }
                 else
                 {
+                    // set game manager stuff
+                    GameManager.instance.mapID = MapIconIdentfier.MS_challenge_2;
+                    GameManager.instance.playingChallengeGame = true;
+
                     // continue to marcus challenge game
                     marcus.GoToGameDataSceneImmediately();
                 }
@@ -1151,9 +1122,6 @@ public class ScrollMapManager : MonoBehaviour
             {
                 brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType;
             }
-            
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.MS_challenge_3;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -1187,6 +1155,10 @@ public class ScrollMapManager : MonoBehaviour
                 }
                 else
                 {
+                    // set game manager stuff
+                    GameManager.instance.mapID = MapIconIdentfier.MS_challenge_3;
+                    GameManager.instance.playingChallengeGame = true;
+
                     // continue to marcus challenge game
                     brutus.GoToGameDataSceneImmediately();
                 }
@@ -1337,24 +1309,13 @@ public class ScrollMapManager : MonoBehaviour
                     GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage);
                     tiger.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType = newGameType;
+                    StudentInfoSystem.AdvanceStoryBeat();
                     StudentInfoSystem.SaveStudentPlayerData();
-                }
-                else
-                {
-                    tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType;
                 }
                     
                 tiger.ShowExclamationMark(true);
                 tiger.interactable = true;
                 tiger.GetComponent<Animator>().Play("aTigerTwitch");
-
-                // set game manager stuff
-                GameManager.instance.mapID = MapIconIdentfier.OV_challenge_1;
-
-                // save to sis and continue
-                StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType = tiger.gameType;
-                StudentInfoSystem.AdvanceStoryBeat();
-                StudentInfoSystem.SaveStudentPlayerData();
             }
             else
             {
@@ -1386,9 +1347,6 @@ public class ScrollMapManager : MonoBehaviour
             {
                 tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType;
             }
-
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.OV_challenge_1;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -1437,9 +1395,6 @@ public class ScrollMapManager : MonoBehaviour
                 marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType;
             }
 
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.OV_challenge_2;
-
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
                 !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
@@ -1472,6 +1427,10 @@ public class ScrollMapManager : MonoBehaviour
                 }
                 else
                 {
+                    // set game manager stuff
+                    GameManager.instance.mapID = MapIconIdentfier.OV_challenge_2;
+                    GameManager.instance.playingChallengeGame = true;
+
                     // continue to marcus challenge game
                     marcus.GoToGameDataSceneImmediately();
                 }
@@ -1502,9 +1461,6 @@ public class ScrollMapManager : MonoBehaviour
             {
                 brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType;
             }
-            
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.OV_challenge_3;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -1538,6 +1494,10 @@ public class ScrollMapManager : MonoBehaviour
                 }
                 else
                 {
+                    // set game manager stuff
+                    GameManager.instance.mapID = MapIconIdentfier.OV_challenge_3;
+                    GameManager.instance.playingChallengeGame = true;
+
                     // continue to marcus challenge game
                     brutus.GoToGameDataSceneImmediately();
                 }
@@ -1689,24 +1649,13 @@ public class ScrollMapManager : MonoBehaviour
                     GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest);
                     tiger.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType = newGameType;
+                    StudentInfoSystem.AdvanceStoryBeat();
                     StudentInfoSystem.SaveStudentPlayerData();
-                }
-                else
-                {
-                    tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType;
                 }
                     
                 tiger.ShowExclamationMark(true);
                 tiger.interactable = true;
                 tiger.GetComponent<Animator>().Play("aTigerTwitch");
-
-                // set game manager stuff
-                GameManager.instance.mapID = MapIconIdentfier.SF_challenge_1;
-
-                // save to sis and continue
-                StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType = tiger.gameType;
-                StudentInfoSystem.AdvanceStoryBeat();
-                StudentInfoSystem.SaveStudentPlayerData();
             }
             else
             {
@@ -1736,9 +1685,6 @@ public class ScrollMapManager : MonoBehaviour
             {
                 tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType;
             }
-
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.SF_challenge_1;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -1787,9 +1733,6 @@ public class ScrollMapManager : MonoBehaviour
                 marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType;
             }
 
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.SF_challenge_2;
-
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
                 !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
@@ -1822,6 +1765,10 @@ public class ScrollMapManager : MonoBehaviour
                 }
                 else
                 {
+                    // set game manager stuff
+                    GameManager.instance.mapID = MapIconIdentfier.SF_challenge_2;
+                    GameManager.instance.playingChallengeGame = true;
+
                     // continue to marcus challenge game
                     marcus.GoToGameDataSceneImmediately();
                 }
@@ -1852,9 +1799,6 @@ public class ScrollMapManager : MonoBehaviour
             {
                 brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType;
             }
-            
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.SF_challenge_3;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -1888,6 +1832,10 @@ public class ScrollMapManager : MonoBehaviour
                 }
                 else
                 {
+                    // set game manager stuff
+                    GameManager.instance.mapID = MapIconIdentfier.SF_challenge_3;
+                    GameManager.instance.playingChallengeGame = true;
+
                     // continue to marcus challenge game
                     brutus.GoToGameDataSceneImmediately();
                 }

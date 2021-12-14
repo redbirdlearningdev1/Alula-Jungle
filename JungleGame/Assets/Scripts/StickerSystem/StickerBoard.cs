@@ -287,6 +287,13 @@ public class StickerBoard : MonoBehaviour
             newInventorySticker.SetStickerType(sticker);
             newInventorySticker.SetStickerBoard(this);
         }
+
+        // wiggle sticker if tutorial
+        if (StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            print ("wiggling sticker bcause of tutorial");
+            inventoryParent.GetChild(0).GetComponent<WiggleController>().StartWiggle();
+        }
     }
 
     public void ClearBoard()

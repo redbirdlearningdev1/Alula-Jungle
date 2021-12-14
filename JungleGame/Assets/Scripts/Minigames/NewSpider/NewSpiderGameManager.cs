@@ -59,6 +59,9 @@ public class NewSpiderGameManager : MonoBehaviour
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
+        // stop music 
+        AudioManager.instance.StopMusic();
+
         if (!instance)
         {
             instance = this;
@@ -390,6 +393,10 @@ public class NewSpiderGameManager : MonoBehaviour
         spider.success();
         yield return new WaitForSeconds(1f);
         webber.gameObject.SetActive(true);
+
+        // play web grab sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WebWhip, 0.5f);
+        
         if(selectedIndex == 0)
         {
             webber.grab1();

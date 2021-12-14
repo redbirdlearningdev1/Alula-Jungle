@@ -147,6 +147,9 @@ public class StickerBoardController : MonoBehaviour
         stickerBoards.LerpYPos(onScreenPos, time3, true);
         yield return new WaitForSeconds(time3);
 
+        // add stickers to classic board
+        classicBoard.AddAllStickersToBoard();
+
         // play lester tutorial
         if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
         {
@@ -170,9 +173,6 @@ public class StickerBoardController : MonoBehaviour
             WagonWindowController.instance.backButton.GetComponent<LerpableObject>().LerpImageAlpha(WagonWindowController.instance.backButton.GetComponent<Image>(), 1f, 0.1f);
             WagonWindowController.instance.backButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.2f, 0.01f);
         }
-
-        // add stickers to classic board
-        classicBoard.AddAllStickersToBoard();
 
         // activate buttons
         buttons.gameObject.SetActive(true);

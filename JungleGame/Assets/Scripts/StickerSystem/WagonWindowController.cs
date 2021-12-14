@@ -276,9 +276,6 @@ public class WagonWindowController : MonoBehaviour
 
             // make gecko unselectable
             Gecko.instance.isOn = false;
-
-            // StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-            // StudentInfoSystem.SaveStudentPlayerData();
         }
     }
 
@@ -321,6 +318,9 @@ public class WagonWindowController : MonoBehaviour
 
         // hide lester
         GeckoAnim.Play("geckoLeave");
+
+        // stop lester wiggle
+        gecko.GetComponent<WiggleController>().StopWiggle();
 
         yield return new WaitForSeconds(1f);
 
@@ -428,13 +428,17 @@ public class WagonWindowController : MonoBehaviour
         gecko.SetActive(true);
         GeckoAnim.Play("geckoIntro");
 
-
         if (StudentInfoSystem.GetCurrentProfile().stickerTutorial)
         {
             // show back button
             backButton.interactable = true;
             backButton.GetComponent<LerpableObject>().LerpImageAlpha(backButton.GetComponent<Image>(), 1f, 0.1f);
             backButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.2f, 0.01f);
+        }
+        else
+        {
+            // make lester wiggle
+            gecko.GetComponent<WiggleController>().StartWiggle();
         }
 
         // deactivate raycast blocker
