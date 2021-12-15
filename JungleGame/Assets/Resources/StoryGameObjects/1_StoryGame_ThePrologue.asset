@@ -133,7 +133,7 @@ MonoBehaviour:
     actionWord: 0
     requireInput: 0
     postText: 
-    advanceBG: 0
+    advanceBG: 1
   - text: gorilla poop
     audio: {fileID: 8300000, guid: f42f77c9dcfdd4644b25f17ffd7d3777, type: 3}
     moveWord: 1
@@ -385,7 +385,7 @@ MonoBehaviour:
     actionWord: 0
     requireInput: 0
     postText: 
-    advanceBG: 0
+    advanceBG: 1
   - text: mudslide
     audio: {fileID: 8300000, guid: c2135a4c0748f994fa0f1c2a285957a2, type: 3}
     moveWord: 1

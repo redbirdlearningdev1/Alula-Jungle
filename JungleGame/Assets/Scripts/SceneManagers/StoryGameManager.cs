@@ -184,14 +184,18 @@ public class StoryGameManager : MonoBehaviour
                 ScrollingBackground.instance.IncreaseLoopIndex();
             }
 
-            coin.SetCoinType(seg.actionWord);
-
-            // // make coin transparent
-            // coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.image, 0.25f, 0.5f);
-
-            if (seg.moveWord)
+            if (seg.actionWord == ActionWordEnum._blank)
             {
-                
+                coin.SetCoinType(seg.actionWord);
+            }
+            else if (coin.type != seg.actionWord)
+            {
+                // scale coin and swap values
+                coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.15f);
+                yield return new WaitForSeconds(0.15f);
+                coin.SetCoinType(seg.actionWord);
+                coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.15f);
+                yield return new WaitForSeconds(0.15f);
             }
 
             // read text if available

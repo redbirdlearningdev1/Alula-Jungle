@@ -126,7 +126,7 @@ MonoBehaviour:
     actionWord: 18
     requireInput: 0
     postText: 
-    advanceBG: 0
+    advanceBG: 1
   - text: start to smile.
     audio: {fileID: 8300000, guid: f08615ba0906bf34d96e606a2f90077a, type: 3}
     moveWord: 1
@@ -434,7 +434,7 @@ MonoBehaviour:
     actionWord: 14
     requireInput: 0
     postText: .
-    advanceBG: 0
+    advanceBG: 1
   - text: 'After a long conversation and a lot of '
     audio: {fileID: 8300000, guid: 0da184178df198640822c92cba1fdc7b, type: 3}
     moveWord: 1

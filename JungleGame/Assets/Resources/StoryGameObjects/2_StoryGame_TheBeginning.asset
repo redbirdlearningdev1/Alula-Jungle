@@ -176,7 +176,7 @@ MonoBehaviour:
     actionWord: 0
     requireInput: 0
     postText: 
-    advanceBG: 0
+    advanceBG: 1
   - text: spider
     audio: {fileID: 8300000, guid: 0294bf0202a8e02459a64d3788ba12b2, type: 3}
     moveWord: 1
@@ -379,7 +379,7 @@ MonoBehaviour:
     actionWord: 1
     requireInput: 0
     postText: .
-    advanceBG: 0
+    advanceBG: 1
   - text: So~ the
     audio: {fileID: 8300000, guid: 565fa1339f1dae044b900a786f91205c, type: 3}
     moveWord: 1
