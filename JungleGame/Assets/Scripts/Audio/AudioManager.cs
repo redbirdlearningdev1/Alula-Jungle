@@ -36,7 +36,7 @@ public class AudioManager : MonoBehaviour
     public static float default_masterVol =     1f;
     public static float default_musicVol =      0.25f;
     public static float default_fxVol =         1f;
-    public static float default_talkVol =       2f;
+    public static float default_talkVol =       3f;
 
     private Coroutine smoothSetMusicRoutine = null;
 
@@ -104,9 +104,9 @@ public class AudioManager : MonoBehaviour
 
     public void SetTalkVolume(float vol)
     {
-        // clamp between 0 and 1
+        // clamp between 0 and 3
         if (vol <= 0) vol = 0.00001f;
-        else if (vol > 1) vol = 1;
+        else if (vol > 3) vol = 3;
 
         vol = 20f * Mathf.Log10(vol);
         masterMixer.SetFloat("talkVol", vol);
