@@ -23,7 +23,7 @@ MonoBehaviour:
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 1
-    onYesGoto: 2
+    onYesGoto: 4
     onNoGoto: 1
     leftCharacter: 3
     leftEmotionNum: 7
@@ -37,7 +37,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: d22399de45c44a842a2b93c77a735547, type: 3}
     audioClipName: P_1_2_Darwin_1_T1
     audioString: Are you ready to get started, Explorer?
-  - endTalkieAfterThisSegment: 1
+  - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 8a65aa8264226774099318a571c07e19, type: 3}
     audioClipName: P_1_2_Darwin_2_T3
     audioString: uhh...
-  - endTalkieAfterThisSegment: 0
+  - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0

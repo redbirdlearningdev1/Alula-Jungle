@@ -341,6 +341,12 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                     readingSegments = false; // finish reading segmenets
                     readingVoiceovers = false; // finish reading voiceover
                 }
+                else if (rowData[0].StartsWith("//"))
+                {
+                    // comment detected - go to next line
+                    print ("comment found: " + rowData[0] + " skipping to next line.");
+                    continue;
+                }
 
                 // /* 
                 // ################################################
@@ -440,6 +446,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                         switch (column_count)
                         {
                             case 0: // audio file name
+
                                 segment.audioClipName = cell;
                                 segment.audioClip = SearchForAudioByName(cell); // try to find audio
 

@@ -25,23 +25,6 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 0
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
-    rightCharacter: 0
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
-    audioClipName: //Darwin STAYS onscreen from the last part and now moves to the
-      middle to talk to the player.
-    audioString: 
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
     leftCharacter: 3
     leftEmotionNum: 8
     leftMouthEnum: 1

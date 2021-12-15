@@ -25,26 +25,6 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 0
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
-    rightCharacter: 0
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
-    audioClipName: // this ones a wild one. Visually I'd like the bg to undim but
-      bars stay in place after the last segment so they we can watch the tiger sign
-      post spring in place. Then the bg dims for talkies again but the sign stays
-      OVER the dim so it's in focus letting Red speak on the left as if to look at
-      it.
-    audioString: 
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
     leftCharacter: 1
     leftEmotionNum: 5
     leftMouthEnum: 1
