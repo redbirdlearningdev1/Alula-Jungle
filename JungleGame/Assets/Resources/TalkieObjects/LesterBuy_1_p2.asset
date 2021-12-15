@@ -33,7 +33,7 @@ MonoBehaviour:
     rightEmotionNum: 9
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: c2efce6fc4cce9543bd0535c174eab3a, type: 3}
     audioClipName: Sticker_0_1_Lester_4_T1
     audioString: "Let\u2019s see what sticker you\u2019ll get!"
@@ -49,7 +49,7 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 4d077e529c5072948855ced0ff559d5f, type: 3}
     audioClipName: Sticker_0_1_Lester_5_T1
     audioString: "I\u2019ll whip up something good, Geckos honor!"
@@ -65,7 +65,7 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 1
     rightEyesEnum: 3
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 3e9de741ad75e584491adbde7c215b05, type: 3}
     audioClipName: Sticker_0_1_Lester_6_T1
     audioString: "It\u2019s sticker time Explorer!"
@@ -81,7 +81,7 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 1
     rightEyesEnum: 3
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 6e81c1959dccc2c4e85e21a1f40ddc72, type: 3}
     audioClipName: Sticker_0_1_Lester_7_T1
     audioString: "Wait here! I\u2019ll make a cute sticker in no time!"
@@ -97,7 +97,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 62480c5b4f88d964e825950297cff2e1, type: 3}
     audioClipName: Sticker_0_1_Lester_8_T1
     audioString: Sit back and enjoy!

@@ -33,7 +33,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 4664913c12ac2c24c930ab5f32b9770a, type: 3}
     audioClipName: P_2_3_Red_10_T1
     audioString: Alright!
@@ -49,7 +49,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 644bd0b32843fe74cb58ee09c8bc4b3e, type: 3}
     audioClipName: P_2_3_Red_10_T2
     audioString: 'let''s move forward and find Darwin! '
@@ -65,7 +65,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: eeb13d83f0e0f224c8124e93159d643d, type: 3}
     audioClipName: P_2_3_Red_11_T1
     audioString: "Hopefully he\u2019s thought of something to help the Prince."
@@ -81,7 +81,7 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 21e0cf1b30ffe214da0c70e39c15c53f, type: 3}
     audioClipName: P_2_3_Wally_12_T1
     audioString: I agree, let's hope he does.

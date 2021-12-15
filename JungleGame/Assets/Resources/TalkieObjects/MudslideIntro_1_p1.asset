@@ -33,7 +33,7 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 281e7d53cf551a449bb25b385a2dd71e, type: 3}
     audioClipName: P_2_1_Wally_1_T1
     audioString: It looks like they destroyed this area as well.
@@ -49,7 +49,7 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 40174f6022b5dfc4c8c87ad4c59b87e0, type: 3}
     audioClipName: P_2_1_Red_2_T1
     audioString: "Let\u2019s clean up before moving forward!"

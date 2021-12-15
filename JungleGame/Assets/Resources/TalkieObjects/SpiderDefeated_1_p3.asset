@@ -33,7 +33,7 @@ MonoBehaviour:
     rightEmotionNum: 15
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 96cebcd6de671004db92ec8fb797ada4, type: 3}
     audioClipName: B_1_4_Red_14_T1
     audioString: Are you alright, Spindle?
@@ -49,7 +49,7 @@ MonoBehaviour:
     rightEmotionNum: 15
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: ea5597b296bf8884689710b44b33481d, type: 3}
     audioClipName: B_1_4_Spindle_15_T1
     audioString: "Y-yeah\u2026"
@@ -65,7 +65,7 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: b12a9dd0cdcfb6d45bc656263206b8f5, type: 3}
     audioClipName: B_1_4_Spindle_15_T2
     audioString: "I-I never thought that the Prince would act this way\u2026"
@@ -81,7 +81,7 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: e7e970d58efdaf84095ac52c4b7f428d, type: 3}
     audioClipName: B_1_4_Spindle_15_T3
     audioString: "the future of this kingdom\u2026"
@@ -97,7 +97,7 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 2
     rightEyesEnum: 4
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: bad97faf6a169b943a996a55466e20f5, type: 3}
     audioClipName: B_1_4_Wally_16_T1
     audioString: Spindle?
@@ -113,7 +113,7 @@ MonoBehaviour:
     rightEmotionNum: 13
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: a1c177dd434ff704cbb7629802486239, type: 3}
     audioClipName: B_1_4_Spindle_17_T1
     audioString: "O-oh! S-sorry\u2026"
@@ -129,7 +129,7 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: c7713fd951b64cf4dba785399cbc151c, type: 3}
     audioClipName: B_1_4_Spindle_17_T2
     audioString: "I\u2019m just worried  is all..."
@@ -145,7 +145,7 @@ MonoBehaviour:
     rightEmotionNum: 15
     rightMouthEnum: 2
     rightEyesEnum: 4
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 8a2418b940dc7644a9ff2cd803aaf8e0, type: 3}
     audioClipName: B_1_4_Wally_18_T1
     audioString: Try to not worry so much.
@@ -161,7 +161,7 @@ MonoBehaviour:
     rightEmotionNum: 15
     rightMouthEnum: 2
     rightEyesEnum: 4
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: b05a420505ffb954dbafc19aaf368d72, type: 3}
     audioClipName: B_1_4_Wally_18_T2
     audioString: Okay Spindle?
@@ -177,7 +177,7 @@ MonoBehaviour:
     rightEmotionNum: 12
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: eda480dd0610ce144b93c12670d96ddb, type: 3}
     audioClipName: B_1_4_Red_19_T1
     audioString: "Yeah! We\u2019re going to help the Prince just wait and see!"
@@ -193,7 +193,7 @@ MonoBehaviour:
     rightEmotionNum: 12
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: bd82da2ff7064714c8cf80e4f1728ba0, type: 3}
     audioClipName: B_1_4_Spindle_20_T1
     audioString: "O-okay\u2026"
@@ -209,7 +209,7 @@ MonoBehaviour:
     rightEmotionNum: 12
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 5507767508a8be84790e50ea6241c8b5, type: 3}
     audioClipName: B_1_4_Spindle_20_T2
     audioString: Anyway.
@@ -225,7 +225,7 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: e5e77d96ef3e73646ab4b2bb97508829, type: 3}
     audioClipName: B_1_4_Spindle_20_T3
     audioString: 't-thank you for helping me! '
@@ -241,7 +241,7 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 3
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 837f4e2cf06ac544aa63ec34beef7819, type: 3}
     audioClipName: B_1_4_Spindle_20_T4
     audioString: You are always welcome here!
@@ -257,7 +257,7 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 0d867a2a74ffa8d41b5ad7c589d83199, type: 3}
     audioClipName: B_1_4_Red_21_T1
     audioString: "We\u2019re happy to help! "
@@ -273,7 +273,7 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: b47ccdcf9297de1419481ad428a1ea7c, type: 3}
     audioClipName: B_1_4_Red_21_T2
     audioString: "We\u2019ll come back soon!"
@@ -289,7 +289,7 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 3b992af9054b98747b0decd8f805bee2, type: 3}
     audioClipName: B_1_4_Wally_22_T1
     audioString: Alright team.
@@ -305,7 +305,7 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 6b744484f1f14c9469d8f54d4760e8e8, type: 3}
     audioClipName: B_1_4_Wally_22_T2
     audioString: Let's meet up with Darwin!
@@ -321,7 +321,7 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 329829776e1a280499d4ed8329a4ba45, type: 3}
     audioClipName: B_1_4_Red_23_T1
     audioString: Right!

@@ -33,7 +33,7 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 0}
     audioClipName: Brutus_Laugh
     audioString: Heh heh...
@@ -49,7 +49,7 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 5b40ac5f2b00f0a429f3a0a4e947c915, type: 3}
     audioClipName: Cha_0_3b_Brutus_1_T2
     audioString: Are you ready Explorer?
@@ -65,7 +65,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: b016069d15e30a44280bd9657cc1213e, type: 3}
     audioClipName: Cha_0_3b_Brutus_2_T1
     audioString: Alright, let's do this.
@@ -81,7 +81,7 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 5e19b6bd3fd3bc54dbf2164d0a8fab31, type: 3}
     audioClipName: Cha_0_3b_Brutus_3_T1
     audioString: "I\u2019ll be waiting."

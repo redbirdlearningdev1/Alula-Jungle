@@ -33,7 +33,7 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Marcus_Laugh
     audioString: HA HA HA!!!!
@@ -49,7 +49,7 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: e31cd16c33eecc3469644019ede3d1ca, type: 3}
     audioClipName: RR_1_1_Marcus_1_T1
     audioString: "Slow down Explorer! You\u2019ll ruin our fun by cleaning up so
@@ -66,7 +66,7 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 0}
     audioClipName: Brutus_Laugh
     audioString: Heh heh...
@@ -82,7 +82,7 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: cad5586fdd4c95045b13b4804e19c80f, type: 3}
     audioClipName: RR_1_1_Brutus_2_T1
     audioString: "Yeah, looks like we have to make this more\u2026 interesting!"

@@ -33,7 +33,7 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: e4a8104ae82474e41bda3e7d876fe593, type: 3}
     audioClipName: P_1_4_Lester_7_T1
     audioString: Isn't that exciting?!
@@ -49,7 +49,7 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: de7933c03c3332c4d8a9e675e0f30d1d, type: 3}
     audioClipName: P_1_4_Lester_8_T1
     audioString: "I\u2019m always a holler away,"
@@ -65,7 +65,7 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 26380dab024b82649995f7ff1937468e, type: 3}
     audioClipName: P_1_4_Lester_8_T2
     audioString: so call me with the cart button if you ever need me again!

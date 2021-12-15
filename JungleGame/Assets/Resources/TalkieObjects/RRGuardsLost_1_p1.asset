@@ -33,7 +33,7 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 62c90c6a74db3764084b0b8a4977678a, type: 3}
     audioClipName: RR_1_2_Marcus_1_T1
     audioString: "What!! You beat us?? Impossible! Let\u2019s get out of here!"
@@ -49,7 +49,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 03ce6471fc4541e48a777c39b00906f3, type: 3}
     audioClipName: RR_1_2_Brutus_2_T1
     audioString: "Hehe you beat us\u2026 not that I\u2019m shocked."
@@ -65,7 +65,7 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 09acfc36ca3f47844965974ae17c7aea, type: 3}
     audioClipName: RR_1_2_Marcus_3_T1
     audioString: "UGH let\u2019s just get out of here!!"
@@ -81,7 +81,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 0}
     audioClipName: RR_1_2_Brutus_4_T1
     audioString: "No Way! That was still too easy for you? Ugh we\u2019re leaving!"

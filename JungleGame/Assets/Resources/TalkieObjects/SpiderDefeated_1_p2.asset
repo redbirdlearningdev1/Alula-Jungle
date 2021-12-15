@@ -33,7 +33,7 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 948fd113694d9e54c865d7ab7006c1eb, type: 3}
     audioClipName: B_1_4_Marcus_12_T1
     audioString: "You won\u2019t be so lucky next time!"
@@ -49,7 +49,7 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Marcus_Laugh
     audioString: HA HA HA!!!!
@@ -65,7 +65,7 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 6f0fb7e4a620f66498064237ac5f2471, type: 3}
     audioClipName: B_1_4_Brutus_13_T1
     audioString: "Yeah\u2026"
@@ -81,7 +81,7 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 0}
     audioClipName: Brutus_Laugh
     audioString: 'Heh heh... '

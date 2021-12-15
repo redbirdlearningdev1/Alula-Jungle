@@ -33,7 +33,7 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Marcus_Laugh
     audioString: HA HA HA!!!!
@@ -49,7 +49,7 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 0}
     audioClipName: Brutus_Laugh
     audioString: 'Heh heh... '
@@ -65,7 +65,7 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 5f25e6057c522eb4cbc67cb1e16d503d, type: 3}
     audioClipName: B_2_2_Julius_6_T1
     audioString: You keep bothering me.
@@ -81,7 +81,7 @@ MonoBehaviour:
     rightEmotionNum: 13
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: b8ca1833aec006d47a5f9b51fdb1ae1a, type: 3}
     audioClipName: B_2_2_Julius_6_T2
     audioString: "It\u2019s getting old!"
@@ -97,7 +97,7 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 4297bf134346c3c4a8168ca03cf550f8, type: 3}
     audioClipName: B_2_2_Marcus_7_T1
     audioString: You should just leave the Prince alone!
@@ -113,7 +113,7 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 8e7cde64432bce84f8e625108f2f7a2b, type: 3}
     audioClipName: B_2_2_Marcus_7_T2
     audioString: And let him do as he pleases!
@@ -129,7 +129,7 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: a92883f191526bf47b73a9d2ee2ec565, type: 3}
     audioClipName: B_2_2_Brutus_8_T1
     audioString: "Yeah\u2026just leave him alone\u2026"
@@ -145,7 +145,7 @@ MonoBehaviour:
     rightEmotionNum: 13
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 530cbbc59e166b346826470502473c4d, type: 3}
     audioClipName: B_2_2_Red_9_T1
     audioString: 'Your highness! '
@@ -161,7 +161,7 @@ MonoBehaviour:
     rightEmotionNum: 12
     rightMouthEnum: 2
     rightEyesEnum: 4
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 2d36ebbfb35eeff488c9e309665868d9, type: 3}
     audioClipName: B_2_2_Red_9_T2
     audioString: "Ruining your subject's home's just isn\u2019t right!"
@@ -177,7 +177,7 @@ MonoBehaviour:
     rightEmotionNum: 12
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: ce530ff2e09d9584383d03db38b9841c, type: 3}
     audioClipName: B_2_2_Julius_10_T1
     audioString: "I\u2026"
@@ -193,7 +193,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 24cbe2e60bdde3d4ca4f34a7a3cddcde, type: 3}
     audioClipName: B_2_2_Marcus_11_T1
     audioString: SILENCE!
@@ -209,7 +209,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 1b21c228dabc64541b8a3e87033596ae, type: 3}
     audioClipName: B_2_2_Marcus_11_T2
     audioString: 'Everything in the future King''s kingdom is his! '
@@ -225,7 +225,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: a6c4458b7012b55428fee32796b2f034, type: 3}
     audioClipName: B_2_2_Marcus_11_T3
     audioString: 'These commoners should be thankful they even get to live here!  '
@@ -241,7 +241,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 1111dade1a4b38741b79fd681417c3c3, type: 3}
     audioClipName: B_2_2_Brutus_12_T1
     audioString: "Yeah\u2026."
@@ -257,7 +257,7 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: e18f9fe994ba07c4ea3802b73f1ad76e, type: 3}
     audioClipName: B_2_2_Brutus_12_T2
     audioString: "Exactly what he said\u2026."
@@ -273,7 +273,7 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 1211614530c728845b910b2d47fb1ebb, type: 3}
     audioClipName: B_2_2_Marcus_13_T1
     audioString: "You don\u2019t have to add onto everything I say!"
@@ -289,7 +289,7 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 0}
     audioClipName: Brutus_Laugh
     audioString: 'Heh heh... '
@@ -305,7 +305,7 @@ MonoBehaviour:
     rightEmotionNum: 12
     rightMouthEnum: 2
     rightEyesEnum: 4
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: d619c7b3d945efd4794a743334ebf908, type: 3}
     audioClipName: B_2_2_Wally_14_T1
     audioString: "Your majesty\u2026"
@@ -321,7 +321,7 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: d098f6324be4c664982198d70ef0933c, type: 3}
     audioClipName: B_2_2_Julius_15_T1
     audioString: 'UGH! Leave me alone! '
@@ -337,7 +337,7 @@ MonoBehaviour:
     rightEmotionNum: 9
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: a42ced7859cc07548a994b1e74ac5b07, type: 3}
     audioClipName: B_2_2_Julius_15_T2
     audioString: 'Quit bothering me already! '
@@ -353,7 +353,7 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 3
     audioClip: {fileID: 0}
     audioClipName: RedWally_Gasp
     audioString: '!!!'
@@ -369,7 +369,7 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 4d1ecbbf430539b4f9be78f7ef576cab, type: 3}
     audioClipName: B_2_2_Clogg_17_T1
     audioString: '*grunt*'
@@ -385,7 +385,7 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: f51c0ab6e57665d41816310c5172e763, type: 3}
     audioClipName: B_2_2_Julius_18_T1
     audioString: You know how it goes already!
@@ -401,7 +401,7 @@ MonoBehaviour:
     rightEmotionNum: 13
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 5a0581bb44f68484a93f608c971270b9, type: 3}
     audioClipName: B_2_2_Julius_18_T2
     audioString: Beat me and you can go forward.
@@ -417,7 +417,7 @@ MonoBehaviour:
     rightEmotionNum: 14
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 9441b0c2d89cca846a04306824f8ea1c, type: 3}
     audioClipName: B_2_2_Julius_18_T3
     audioString: 'But If I win '
@@ -433,7 +433,7 @@ MonoBehaviour:
     rightEmotionNum: 11
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: c639d54669dd739409d5659e0a4ec49e, type: 3}
     audioClipName: B_2_2_Julius_18_T4
     audioString: 'you have to leave me alone! '
@@ -449,7 +449,7 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Marcus_Laugh
     audioString: HA HA HA!!!!
@@ -465,7 +465,7 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 0}
     audioClipName: Brutus_Laugh
     audioString: 'Heh heh... '
@@ -481,7 +481,7 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: aac122766a16db540ab3948c7953121c, type: 3}
     audioClipName: B_2_2_Wally_19_T1
     audioString: We know.
@@ -497,7 +497,7 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 2d24eb511c92e8d46af35058736bcf44, type: 3}
     audioClipName: B_2_2_Red_20_T1
     audioString: "You\u2019ve got this Explorer! We believe in you! "
@@ -513,7 +513,7 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 04101cec9d67c8442b8e20fd710c7ecd, type: 3}
     audioClipName: B_2_2_Wally_21_T1
     audioString: Yeah! Go get 'em!
@@ -529,7 +529,7 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 3
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 6498508fc90ec6349a944c76c74f256d, type: 3}
     audioClipName: B_2_2_Julius_22_T1
     audioString: "Alright, let\u2019s begin."

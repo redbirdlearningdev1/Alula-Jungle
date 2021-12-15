@@ -33,7 +33,7 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: f859c875e5805654e801a4e091aed823, type: 3}
     audioClipName: B_1_3_Red_7_T1
     audioString: Darwin, wait!
@@ -49,7 +49,7 @@ MonoBehaviour:
     rightEmotionNum: 12
     rightMouthEnum: 1
     rightEyesEnum: 3
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: b030813ed7d7f244881806ca9c2b420a, type: 3}
     audioClipName: B_1_3_Wally_8_T1
     audioString: "There he goes again\u2026"
@@ -65,7 +65,7 @@ MonoBehaviour:
     rightEmotionNum: 12
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: d2767169b0fcb594b88d724d709ef6d0, type: 3}
     audioClipName: B_1_3_Red_9_T1
     audioString: Sigh...
@@ -81,7 +81,7 @@ MonoBehaviour:
     rightEmotionNum: 12
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 0a71f938b9a094747a1fbac12c2874c8, type: 3}
     audioClipName: B_1_3_Red_9_T2
     audioString: "We\u2019ll just have to catch up to him eventually.."
@@ -97,7 +97,7 @@ MonoBehaviour:
     rightEmotionNum: 12
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 7d83f0dc6225b1d4a98114c84a721098, type: 3}
     audioClipName: B_1_3_Spindle_10_T1
     audioString: I won't keep y-you here much longer!
@@ -113,7 +113,7 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 81b54fe1cd4e22a449e06c5777d1f28c, type: 3}
     audioClipName: B_1_3_Spindle_10_T2
     audioString: G-go catch up to your friend!
@@ -129,7 +129,7 @@ MonoBehaviour:
     rightEmotionNum: 13
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 12117234aa3353949af42fc782c08ec3, type: 3}
     audioClipName: B_1_3_Spindle_10_T3
     audioString: OH!
@@ -145,7 +145,7 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 3
     audioClip: {fileID: 0}
     audioClipName: RedWally_What
     audioString: What??!

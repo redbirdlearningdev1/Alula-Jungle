@@ -139,6 +139,20 @@ public class TalkieDatabase : MonoBehaviour
     public List<TalkieDatabaseEntry> spindleSprites;
     public List<TalkieDatabaseEntry> sylvieSprites;
 
+
+
+
+    [Header("Talkie Reaction Duplicates")]
+    public List<AudioClip> marcusLaughList;
+    public List<AudioClip> brutusLaughList;
+    public List<AudioClip> redWallyGaspList;
+    public List<AudioClip> redWallyWhatList;
+    public List<AudioClip> redWallyHuhList;
+    public List<AudioClip> redWallyOhList;
+    public List<AudioClip> redWallyDarwinList;
+
+
+
     private List<TalkieObject> globalTalkieList; // list of all talkies in this database
 
     void Awake()
@@ -187,6 +201,22 @@ public class TalkieDatabase : MonoBehaviour
 
         // GameManager.instance.SendError(this, "could not find talkie sprite");
         // return null;
+    }
+
+    public AudioClip GetTalkieReactionDuplicate(string str)
+    {
+        string lowercase_str = str.ToLower();
+        switch (lowercase_str)
+        {
+            default: return null;
+            case "marcus_laugh": return marcusLaughList[Random.Range(0, marcusLaughList.Count)];
+            case "brutus_laugh": return brutusLaughList[Random.Range(0, brutusLaughList.Count)];
+            case "redwally_gasp": return redWallyGaspList[Random.Range(0, redWallyGaspList.Count)];
+            case "redwally_what": return redWallyWhatList[Random.Range(0, redWallyWhatList.Count)];
+            case "redwally_huh": return redWallyHuhList[Random.Range(0, redWallyHuhList.Count)];
+            case "redwally_oh": return redWallyOhList[Random.Range(0, redWallyOhList.Count)];
+            case "redwally_darwin": return redWallyDarwinList[Random.Range(0, redWallyDarwinList.Count)];
+        }
     }
 
     public Sprite GetTalkieSprite(TalkieCharacter character, int emotionNum, TalkieMouth mouth, TalkieEyes eyes)

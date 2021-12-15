@@ -33,7 +33,7 @@ MonoBehaviour:
     rightEmotionNum: 10
     rightMouthEnum: 2
     rightEyesEnum: 4
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 9b55777791eb6fc41914bcdd0899b34e, type: 3}
     audioClipName: B_1_1_Red_1_T1
     audioString: Darwin!
@@ -49,7 +49,7 @@ MonoBehaviour:
     rightEmotionNum: 10
     rightMouthEnum: 2
     rightEyesEnum: 4
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 38719e57e14bf6d4484295db452d697c, type: 3}
     audioClipName: B_1_1_Wally_2_T1
     audioString: There you are!
@@ -65,7 +65,7 @@ MonoBehaviour:
     rightEmotionNum: 10
     rightMouthEnum: 2
     rightEyesEnum: 4
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 90f1de5d58f6db94c812744d39880f1f, type: 3}
     audioClipName: B_1_1_Wally_2_T2
     audioString: "We\u2019ve been looking for you! "
@@ -81,7 +81,7 @@ MonoBehaviour:
     rightEmotionNum: 13
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 9c224aa511b7e244b96688bb5c819f65, type: 3}
     audioClipName: B_1_1_Darwin_3_T1
     audioString: 'Oh! '
@@ -97,7 +97,7 @@ MonoBehaviour:
     rightEmotionNum: 11
     rightMouthEnum: 1
     rightEyesEnum: 3
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: a4b65fceac41f0a46ba05fc9f1287372, type: 3}
     audioClipName: B_1_1_Darwin_3_T2
     audioString: 'Hey there friends! '
@@ -113,7 +113,7 @@ MonoBehaviour:
     rightEmotionNum: 11
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 62c67bbdf0aa68b4c9cf86b585c98e07, type: 3}
     audioClipName: B_1_1_Darwin_3_T3
     audioString: "I\u2019m sorry for umm..."
@@ -129,7 +129,7 @@ MonoBehaviour:
     rightEmotionNum: 12
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 25d0af02b5d82a54194bd98983047092, type: 3}
     audioClipName: B_1_1_Darwin_3_T4
     audioString: 'running off without you... '
@@ -145,7 +145,7 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: c31638aabdd136f49898584d519b608b, type: 3}
     audioClipName: B_1_1_Darwin_3_T5
     audioString: I just started remembering all of the good times I had here,
@@ -161,7 +161,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 756be9c7d19415f4cb2d2afa3b3a15a3, type: 3}
     audioClipName: B_1_1_Darwin_3_T6
     audioString: and I just couldn't stop myself!
@@ -177,7 +177,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 8c87578f746c3f94ca4fa6a0943f4837, type: 3}
     audioClipName: B_1_1_Red_4_T1
     audioString: "That\u2019s at least good to hear! All that matters is that we
@@ -194,7 +194,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 719c9ef9c4204a8489eb55f6776ed69e, type: 3}
     audioClipName: B_1_1_Wally_5_T1
     audioString: Agreed.
@@ -210,7 +210,7 @@ MonoBehaviour:
     rightEmotionNum: 11
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 6db826a0137456447a2f263a38dc1516, type: 3}
     audioClipName: B_1_1_Darwin_6_T1
     audioString: "Well umm if it means anything\u2026"
@@ -226,7 +226,7 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 9072b6f345e3e394d8ff7c4324c44b7b, type: 3}
     audioClipName: B_1_1_Darwin_6_T2
     audioString: Taking that walk has reminded me of so many things that the Prince
@@ -243,7 +243,7 @@ MonoBehaviour:
     rightEmotionNum: 9
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 5d9374febf2a908459a0190898165afe, type: 3}
     audioClipName: B_1_1_Darwin_6_T3
     audioString: "Hopefully it\u2019ll ummm\u2026"
@@ -259,7 +259,7 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 3
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: ca501c574c9d4974c9f9b76ddf81619b, type: 3}
     audioClipName: B_1_1_Darwin_6_T4
     audioString: remind him of the good heart he has!
@@ -275,7 +275,7 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 8a68e6d7db536e746a2cc2b3cb909998, type: 3}
     audioClipName: B_1_1_Wally_7_T1
     audioString: "Yeah about him\u2026"
@@ -291,7 +291,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 5cbcb9afae83df444becc1baa2fa352b, type: 3}
     audioClipName: B_1_1_Darwin_10_T1
     audioString: There you are!
@@ -307,7 +307,7 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
+    activeCharacter: 3
     audioClip: {fileID: 0}
     audioClipName: RedWally_Oh
     audioString: Oh!

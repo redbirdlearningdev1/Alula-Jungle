@@ -33,7 +33,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 85c4cac50a2d7954c9d071bf223acd5e, type: 3}
     audioClipName: RR_0_2_Julius_1_T1
     audioString: "Hmph, looks like you still need some more practice. I\u2019m outta
@@ -50,7 +50,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 6da163faecd781c42a5576d99f74be3e, type: 3}
     audioClipName: RR_0_2_Julius_2_T1
     audioString: "Just keep practicing some more, I\u2019ll be back to challenge
@@ -67,7 +67,7 @@ MonoBehaviour:
     rightEmotionNum: 10
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: af63fb1173481b846b4f54bb78c99194, type: 3}
     audioClipName: RR_0_2_Julius_3_T1
     audioString: "Wha- I beat you? Uh- well- I\u2019ll see you in our next battle!"

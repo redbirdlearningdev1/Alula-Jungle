@@ -33,7 +33,7 @@ MonoBehaviour:
     rightEmotionNum: 9
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: eb6223fc231e1174a97f077d0e5dc551, type: 3}
     audioClipName: B_2_3_Clogg_10_T1
     audioString: I see nothing has changed.
@@ -49,7 +49,7 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: bcca9b35eb55387408976399d00afd2c, type: 3}
     audioClipName: B_2_3_Red_11_T1
     audioString: "I feel like we\u2019ve gotten through to him a little bit!"
@@ -65,7 +65,7 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 0006ea4cf561db544a5516618de810fd, type: 3}
     audioClipName: B_2_3_Wally_12_T1
     audioString: Yeah!
@@ -81,7 +81,7 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 2
     rightEyesEnum: 4
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 29897def1abc8ac4cbd817019985a275, type: 3}
     audioClipName: B_2_3_Clogg_13_T1
     audioString: "Hmmm\u2026"
@@ -97,7 +97,7 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 1
     rightEyesEnum: 3
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: d5caefdee1dc01a4e9bd7763a1ddb71b, type: 3}
     audioClipName: B_2_3_Clogg_13_T2
     audioString: Anyway,
@@ -113,7 +113,7 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: cb8d6fa7c4c6f8f43b479af01560d64c, type: 3}
     audioClipName: B_2_3_Clogg_13_T3
     audioString: thank you for helping me clean up again.
@@ -129,7 +129,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: b6eb50d56ad4550498a46943bfd8eca2, type: 3}
     audioClipName: B_2_3_Red_14_T1
     audioString: "You\u2019re welcome!"
@@ -145,7 +145,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 53cfc88eafcedfe4f941f621b0588c3e, type: 3}
     audioClipName: B_2_3_Wally_15_T1
     audioString: Always happy to help.
@@ -161,7 +161,7 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: a8538c7a5d92d0242b207a0853486469, type: 3}
     audioClipName: B_2_3_Clogg_16_T1
     audioString: "I\u2019ll see you kids around."
@@ -177,7 +177,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: e92a4df0ad8658643834cae606d59ced, type: 3}
     audioClipName: B_2_3_Red_17_T1
     audioString: Alright! Let's be on our way!
@@ -193,7 +193,7 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: cba7ef5c85d926244958b34dfcff29aa, type: 3}
     audioClipName: B_2_3_Wally_18_T1
     audioString: Roger that!

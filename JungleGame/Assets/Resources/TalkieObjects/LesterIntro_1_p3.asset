@@ -33,7 +33,7 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: d6d13506678d40346a7d0dda173cdd41, type: 3}
     audioClipName: P_1_4_Lester_5_T1
     audioString: Good job!
@@ -49,7 +49,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 99c081b47141e014ab055173de649d6d, type: 3}
     audioClipName: P_1_4_Lester_5_T2
     audioString: Now if you ever run out of space you can remove stickers!
@@ -65,7 +65,7 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: b7388bb17ce8ab74b8aa7370f9a68d6f, type: 3}
     audioClipName: P_1_4_Lester_5_T3
     audioString: 'However! Once you remove a sticker you can''t get it back. '
@@ -81,7 +81,7 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: e43584fce91ed7e4ea76a245ba930f2f, type: 3}
     audioClipName: P_1_4_Lester_5_T4
     audioString: So be careful!
@@ -97,7 +97,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 0a4a01e4466c840408468d0297ee3d19, type: 3}
     audioClipName: P_1_4_Lester_5_T5
     audioString: If you ever want to place your stickers or view your collection,
@@ -113,7 +113,7 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: e2df8364a1010144cb99f9d0b6875592, type: 3}
     audioClipName: P_1_4_Lester_5_T6
     audioString: 'call for me again and click the stickerboard! '
@@ -129,7 +129,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 572191193476def4db71effcf12613fa, type: 3}
     audioClipName: P_1_4_Lester_6_T1
     audioString: If you have the funds you can also buy more boards to place your
@@ -146,7 +146,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 6e32f15661be77945b3586a02b68cade, type: 3}
     audioClipName: P_1_4_Lester_6_T2
     audioString: I have MANY cool boards from my travels! so help yourself!

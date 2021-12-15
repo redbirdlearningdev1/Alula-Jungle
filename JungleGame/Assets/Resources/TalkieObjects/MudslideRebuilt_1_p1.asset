@@ -33,7 +33,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 09d0015f81bbf474e9a79dfcd8cae972, type: 3}
     audioClipName: P_2_2_Red_1_T1
     audioString: Wow!
@@ -49,7 +49,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 52a96808eb7c6df489a12069031a7067, type: 3}
     audioClipName: P_2_2_Red_1_T2
     audioString: This place looks amazing!
@@ -65,7 +65,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: ea1d92a9f62512a42955d6e85b8eb207, type: 3}
     audioClipName: P_2_2_Red_1_T3
     audioString: Good job Explorer!
@@ -81,7 +81,7 @@ MonoBehaviour:
     rightEmotionNum: 11
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 13fc4ad66be37b54ebb1022b2bf4ccd2, type: 3}
     audioClipName: P_2_2_Wally_2_T1
     audioString: Good job!
@@ -97,7 +97,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 2
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 14338da4c0d39fd4dbc8c251de02fe02, type: 3}
     audioClipName: P_2_2_Red_3_T1
     audioString: Alright!
@@ -113,7 +113,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 2
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 970939fc49f3dba40822b160af39ae9d, type: 3}
     audioClipName: P_2_2_Red_3_T2
     audioString: "Let\u2019s move forward!"
@@ -129,7 +129,7 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
+    activeCharacter: 3
     audioClip: {fileID: 0}
     audioClipName: RedWally_Huh
     audioString: Huh?!

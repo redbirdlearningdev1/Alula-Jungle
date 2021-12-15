@@ -33,7 +33,7 @@ MonoBehaviour:
     rightEmotionNum: 9
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 499d261522005284ea1b42a9752bec0f, type: 3}
     audioClipName: B_2_3_Julius_1_T1
     audioString: NO! How can this be?!
@@ -49,7 +49,7 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: e56d0f833cf798045b0c201c3a42e0eb, type: 3}
     audioClipName: B_2_3_Marcus_2_T1
     audioString: "This isn\u2019t right!"
@@ -65,7 +65,7 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 02d5fc38ebbf13f49badebd79870b0fe, type: 3}
     audioClipName: B_2_3_Marcus_2_T2
     audioString: He is the future King! How dare you make him look bad!
@@ -81,7 +81,7 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 7a15f6582f5474f40bea5751a1a8c617, type: 3}
     audioClipName: B_2_3_Brutus_3_T1
     audioString: "Yeah\u2026"
@@ -97,7 +97,7 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 020cf6fdcbbe892448829ea08362b0cd, type: 3}
     audioClipName: B_2_3_Brutus_3_T2
     audioString: "Yawn\u2026"
@@ -113,7 +113,7 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 53ef0ed61fcf9cd4a9ab6b4a25dccbf8, type: 3}
     audioClipName: B_2_3_Brutus_3_T3
     audioString: "because losing is what\u2019s making him look bad."
@@ -129,7 +129,7 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: e9946524e38991c46b7fb9064c4b5e35, type: 3}
     audioClipName: B_2_3_Marcus_4_T1
     audioString: "I\u2019ve had about enough of you!"
@@ -145,7 +145,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 2
     rightEyesEnum: 2
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 6eee06146f63f4a46bea1b9b486cd1fe, type: 3}
     audioClipName: B_2_3_Red_5_T1
     audioString: "Good job Explorer! I\u2019m proud of you!"
@@ -161,7 +161,7 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 71c10eb1e9d51f544b1057188eb6edbe, type: 3}
     audioClipName: B_2_3_Wally_6_T1
     audioString: Impressive as always!
@@ -177,7 +177,7 @@ MonoBehaviour:
     rightEmotionNum: 15
     rightMouthEnum: 1
     rightEyesEnum: 3
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 4200a4ec9e6837e49a9b238ebc6eead7, type: 3}
     audioClipName: B_2_3_Julius_7_T1
     audioString: 'This isn''t over! '
@@ -193,7 +193,7 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: e3d7b479e8ad8ce4cbe28ba323dce1cd, type: 3}
     audioClipName: B_2_3_Julius_7_T2
     audioString: "I\u2019ll win next time!"

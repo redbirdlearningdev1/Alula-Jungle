@@ -33,7 +33,7 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Marcus_Laugh
     audioString: HA HA HA!!!!
@@ -49,7 +49,7 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: cca9e0f8ab67b1f4f9bb15fd1ec47781, type: 3}
     audioClipName: Cha_0_1a_Marcus_1_T2
     audioString: 'Good job your majesty! '
@@ -65,7 +65,7 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 0ad16bbf50c6cba49b99ac5997ca2d78, type: 3}
     audioClipName: Cha_0_1a_Marcus_1_T3
     audioString: Show them who is in charge!
@@ -81,7 +81,7 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 4e2ed68ec816deb4aa138b2129903201, type: 3}
     audioClipName: Cha_0_1a_Brutus_2_T1
     audioString: "Heh heh\u2026 "
@@ -97,7 +97,7 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 2f1e36a741901484491219176e7598f2, type: 3}
     audioClipName: Cha_0_1a_Brutus_2_T2
     audioString: nice.
@@ -113,7 +113,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 780b69a1cab38bc44ba2f3fcadd614a6, type: 3}
     audioClipName: Cha_0_1c_Julius_1_T1
     audioString: I'll be fair and let you challenge me again.
@@ -129,7 +129,7 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 17fb86ab04211ca4d8e968d5cfcd4840, type: 3}
     audioClipName: Cha_0_1c_Marcus_2_T1
     audioString: "These commoners don\u2019t deserve your fairness, your highness!"
@@ -145,7 +145,7 @@ MonoBehaviour:
     rightEmotionNum: 13
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 2162299b6e7dec64f9864c0a324e2a88, type: 3}
     audioClipName: Cha_0_1a_Red_4_T1
     audioString: "It\u2019s okay Explorer! "
@@ -161,7 +161,7 @@ MonoBehaviour:
     rightEmotionNum: 13
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 1c8f9da30fb2c39429cc13eb9e18edb7, type: 3}
     audioClipName: Cha_0_1a_Red_4_T2
     audioString: Let's go practice some more.

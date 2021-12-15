@@ -445,7 +445,11 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
 
                                 // determine active character(s)
                                 activeCharacters = DetermineActiveCharacters(cell);
-                                //print ("active characters: " + activeCharacters[0]);
+                                // print ("active characters: ");
+                                // foreach (var character in activeCharacters)
+                                // {
+                                //     print (character);
+                                // }
 
                                 break;
                             case 1: // text
@@ -460,6 +464,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                                 if (activeCharacters.Contains(segment.leftCharacter))
                                 {
                                     segment.activeCharacter = ActiveCharacter.Left;
+                                    //print ("left active");
                                 }
 
                                 break;
@@ -469,13 +474,18 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                                 // check to see if active character is left
                                 if (activeCharacters.Contains(segment.rightCharacter))
                                 {
+                                    //print ("right active");
                                     // if active character was prev left -> both are active characters
                                     if (segment.activeCharacter == ActiveCharacter.Left)
                                     {
+                                        //print ("both active!");
                                         segment.activeCharacter = ActiveCharacter.Both;
                                     }
-                                    // else the right talkie is active
-                                    segment.activeCharacter = ActiveCharacter.Right;
+                                    else
+                                    {
+                                        // else the right talkie is active
+                                        segment.activeCharacter = ActiveCharacter.Right;
+                                    }
                                 }
 
                                 break;

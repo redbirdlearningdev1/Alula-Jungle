@@ -33,7 +33,7 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: f67cdff581486c743af79a88157ef912, type: 3}
     audioClipName: P_1_1_Wally_40_T1
     audioString: "If this is the Prince we\u2019re supposed to help"
@@ -49,7 +49,7 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 4ab4ba52f3987b546a566c549f6af190, type: 3}
     audioClipName: P_1_1_Wally_40_T2
     audioString: Then we're in big trouble.
@@ -65,7 +65,7 @@ MonoBehaviour:
     rightEmotionNum: 9
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 75af0cb58189374428145bc5096f6e25, type: 3}
     audioClipName: P_1_1_Darwin_41_T1
     audioString: 'I wonder what''s gotten into him... '
@@ -81,7 +81,7 @@ MonoBehaviour:
     rightEmotionNum: 12
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: d1a76fd4a56579e48b6b3f62261cf4c4, type: 3}
     audioClipName: P_1_1_Darwin_41_T2
     audioString: "He\u2019s always been a\u2026.little... troublemaker..."
@@ -97,7 +97,7 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 569cd1b5600ee334d861ec017cab522d, type: 3}
     audioClipName: P_1_1_Darwin_41_T3
     audioString: "But he\u2019s never acted out like\u2026"
@@ -113,7 +113,7 @@ MonoBehaviour:
     rightEmotionNum: 9
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 67ee080a10c7e4c4ebb4a1366e99cbac, type: 3}
     audioClipName: P_1_1_Darwin_41_T4
     audioString: "uUmm\u2026this\u2026"
@@ -129,7 +129,7 @@ MonoBehaviour:
     rightEmotionNum: 9
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: fcfd72fbe32ac314fb82c02e839b97eb, type: 3}
     audioClipName: P_1_1_Wally_42_T1
     audioString: So this type of behavior is new for him?
@@ -145,7 +145,7 @@ MonoBehaviour:
     rightEmotionNum: 9
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 3d450b2d5e2857c48ab094a664f502fe, type: 3}
     audioClipName: P_1_1_Darwin_43_T1
     audioString: "That\u2019s\u2026 uhh right. "
@@ -161,7 +161,7 @@ MonoBehaviour:
     rightEmotionNum: 9
     rightMouthEnum: 2
     rightEyesEnum: 4
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 4e5be1208f66b91408ee8713a6412123, type: 3}
     audioClipName: P_1_1_Red_44_T1
     audioString: "Then we must catch up to him and figure out what\u2019s wrong!"
@@ -177,7 +177,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: f8746ba3ca4e28842b7105cea0677ce9, type: 3}
     audioClipName: P_1_1_Wally_45_T1
     audioString: I agree.
@@ -193,7 +193,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 9d01a20efc0959e4c86ba9fdd83620df, type: 3}
     audioClipName: P_1_1_Red_46_T1
     audioString: Darwin, you know the Prince the most.
@@ -209,7 +209,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 9a7b9849a1d8bd042ae22119400676a4, type: 3}
     audioClipName: P_1_1_Red_46_T2
     audioString: "Can you think of anything that\u2019ll help him?"
@@ -225,7 +225,7 @@ MonoBehaviour:
     rightEmotionNum: 9
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: eefaaf74d3872ba4c9c19ea2eabaea48, type: 3}
     audioClipName: P_1_1_Darwin_47_T1
     audioString: "Hmm\u2026"
@@ -241,7 +241,7 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: f3f2d204425f78343815299a18166953, type: 3}
     audioClipName: P_1_1_Darwin_47_T2
     audioString: "Perhaps Julius has forgotten about how good he really is\u2026"
@@ -257,7 +257,7 @@ MonoBehaviour:
     rightEmotionNum: 9
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 20f77f78256fb5743a077c2cf0383981, type: 3}
     audioClipName: P_1_1_Red_48_T1
     audioString: Then maybe you can help him remember!
@@ -273,7 +273,7 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: f3e5c48af9db32a47a1b908b90a67307, type: 3}
     audioClipName: P_1_1_Darwin_49_T1
     audioString: You're right!
@@ -289,7 +289,7 @@ MonoBehaviour:
     rightEmotionNum: 11
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 5af6143e847ffb94a97ddfd7967181d4, type: 3}
     audioClipName: P_1_1_Darwin_49_T2
     audioString: However...
@@ -305,7 +305,7 @@ MonoBehaviour:
     rightEmotionNum: 12
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: c3b375b65df48f24fac067f89c4ba699, type: 3}
     audioClipName: P_1_1_Darwin_49_T3
     audioString: "I can\u2019t seem to remember anything specific\u2026 "
@@ -321,7 +321,7 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 6020bf117528ef54f825286460e32b11, type: 3}
     audioClipName: P_1_1_Darwin_50_T1
     audioString: "With this mess I can\u2019t seem to think straight! "
@@ -337,7 +337,7 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: e9440882463228f44a60d573907e1720, type: 3}
     audioClipName: P_1_1_Red_51_T1
     audioString: My friends and I can clean up while you think on things!
@@ -353,7 +353,7 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: f0a599620c7aa7747808293c7b0d433b, type: 3}
     audioClipName: P_1_1_Red_51_T2
     audioString: Besides, we shouldn't leave things messy anyway!
@@ -369,7 +369,7 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 7a4a81892a50b8f4aa90074fb949b21d, type: 3}
     audioClipName: P_1_1_Darwin_52_T1
     audioString: Alright!
@@ -385,7 +385,7 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 684678797a3e47b4d9e4d00363f458d8, type: 3}
     audioClipName: P_1_1_Darwin_52_T2
     audioString: "Uhhh\u2026"
@@ -401,7 +401,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: bd59d6851ac13d24d85c3c14973eb9ec, type: 3}
     audioClipName: P_1_1_Darwin_52_T3
     audioString: "I\u2019ll leave it to you guys!"
@@ -417,7 +417,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 2
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 1edd870aed95d524084238b0d20d18e6, type: 3}
     audioClipName: P_1_1_Red_53_T1
     audioString: Okay Explorer!
@@ -433,7 +433,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 2
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 6b452092ff45c3c449ad953e222136ad, type: 3}
     audioClipName: P_1_1_Red_53_T2
     audioString: Let's clean things up!
@@ -449,7 +449,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 2
-    activeCharacter: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 3b38469501644bb44981fe417819fef3, type: 3}
     audioClipName: P_1_1_Red_53_T3
     audioString: "Maybe we\u2019ll learn things while doing so!"

@@ -33,7 +33,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: a469902768263dd4c81135288030fc54, type: 3}
     audioClipName: P_1_4_Lester_4_T1
     audioString: Alright! Here you go! Now drag your sticker to the board to place
@@ -50,7 +50,7 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 7e6d4e7167d8ffb44bf64d40ed69b0cc, type: 3}
     audioClipName: P_1_4_Lester_4_T2
     audioString: Careful!
@@ -66,7 +66,7 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: dd03bfdbe1a055d4586093c95af95016, type: 3}
     audioClipName: P_1_4_Lester_4_T3
     audioString: You can only place your sticker once, so when you hit yes,
@@ -82,7 +82,7 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 1
     rightEyesEnum: 3
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: ed17c71febb995540810383a27bc7197, type: 3}
     audioClipName: P_1_4_Lester_4_T4
     audioString: 'make it count! '
