@@ -48,7 +48,6 @@ public class NewParallaxController : MonoBehaviour
     [HideInInspector] public bool verticalParallax = false;
     [Range(0,1)] public float verticalParallaxPos = 0f;
     public float vertParallaxSpeed;
-    private const float buildVertParallaxSpeed = 0.001f;
     public Transform islandPosition;
 
     private float prevVerticalParallaxPos;
@@ -86,11 +85,6 @@ public class NewParallaxController : MonoBehaviour
         {
             instance = this;
         }
-
-#if UNITY_EDITOR
-#else
-        vertParallaxSpeed = buildVertParallaxSpeed;
-#endif
     }
 
     void Update()
