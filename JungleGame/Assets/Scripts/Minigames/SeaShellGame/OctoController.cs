@@ -84,9 +84,9 @@ public class OctoController : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         tenticleAnimator.Play("armGrab");
         yield return new WaitForSeconds(0.4f);
-        coin.GetComponent<LerpableObject>().LerpPosition(coinCorrectPos.position, 0.6f, false);
+        coin.GetComponent<LerpableObject>().LerpPosition(coinCorrectPos.position, 0.8f, false);
         coin.GetComponent<LerpableObject>().LerpScale(new Vector2(0.8f, 0.8f), 0.6f);
-        coin.GetComponent<LerpableObject>().LerpRotation(360f, 0.6f);
+        coin.GetComponent<LerpableObject>().LerpRotation(720f, 0.8f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinFlip, 0.5f);
         yield return new WaitForSeconds(1.5f);
         octoAnimator.Play("octoAway");

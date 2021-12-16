@@ -49,21 +49,23 @@ public class MermaidController : MonoBehaviour
             {   
                 case 1:
                     playAnimator.Play("BluePlay1");
+                    yield return new WaitForSeconds(0.5f);
+                    AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell1.value).audio, 0.2f, "shell1", 0.9f);
                     break;
                 case 2:
                     playAnimator.Play("BluePlay2");
+                    yield return new WaitForSeconds(0.5f);
+                    AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell2.value).audio, 0.2f, "shell2", 0.9f);
                     break;
                 case 3:
                     playAnimator.Play("BluePlay3");
+                    yield return new WaitForSeconds(0.5f);
+                    AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell3.value).audio, 0.2f, "shell3", 0.9f);
                     break;
             }
 
-            // play conch 1
-            yield return new WaitForSeconds(0.25f);
-            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Conch1, 0.5f);
-
             // splash sound
-            yield return new WaitForSeconds(1.75f);
+            yield return new WaitForSeconds(1.8f);
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WaterSplash, 0.5f);
 
             // pink rise
@@ -81,21 +83,23 @@ public class MermaidController : MonoBehaviour
             {   
                 case 1:
                     playAnimator.Play("PinkPlay1");
+                    yield return new WaitForSeconds(0.5f);
+                    AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell1.value).audio, 0.2f, "shell1", 0.9f);
                     break;
                 case 2:
                     playAnimator.Play("PinkPlay2");
+                    yield return new WaitForSeconds(0.5f);
+                    AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell2.value).audio, 0.2f, "shell2", 0.9f);
                     break;
                 case 3:
                     playAnimator.Play("PinkPlay3");
+                    yield return new WaitForSeconds(0.5f);
+                    AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell3.value).audio, 0.2f, "shell3", 0.9f);
                     break;
             }
 
-            // play conch 1
-            yield return new WaitForSeconds(0.25f);
-            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Conch2, 0.5f);
-
             // splash sound
-            yield return new WaitForSeconds(1.75f);
+            yield return new WaitForSeconds(1.8f);
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WaterSplash, 0.5f);
 
             // pink rise
