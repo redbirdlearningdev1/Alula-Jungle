@@ -103,9 +103,6 @@ public class RummageCoinRaycaster : MonoBehaviour
                     }
                     if (result.gameObject.transform.CompareTag("Pile"))
                     {
-                        // play grass sound
-                        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WalkGrass, 1f);
-
                         if (result.gameObject.name == "Pile1")
                         {
                             piles[0].pileChose();

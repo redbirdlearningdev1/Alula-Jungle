@@ -74,6 +74,8 @@ public class OrcController : MonoBehaviour
         {
             StopCoroutine(current);
         }
+        // play grass sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WalkGrass, 1f);
         current = StartCoroutine(GoToPile1Routine(pilePosition1));
     }
     
@@ -119,7 +121,8 @@ public class OrcController : MonoBehaviour
         {
             StopCoroutine(current);
         }
-            
+        // play grass sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WalkGrass, 1f);
         current = StartCoroutine(GoToPile2Routine(pilePosition2));
     }
 
@@ -165,6 +168,8 @@ public class OrcController : MonoBehaviour
         {
             StopCoroutine(current);
         }
+        // play grass sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WalkGrass, 1f);
         current = StartCoroutine(GoToPile3Routine(pilePosition3));
     }
 
@@ -215,6 +220,8 @@ public class OrcController : MonoBehaviour
         {
             StopCoroutine(current);
         }
+        // play grass sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WalkGrass, 1f);
         current = StartCoroutine(GoToPile4Routine(pilePosition4));
     }
 
@@ -260,6 +267,8 @@ public class OrcController : MonoBehaviour
         {
             StopCoroutine(current);
         }
+        // play grass sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WalkGrass, 1f);
         current = StartCoroutine(GoToPile5Routine(pilePosition5));
     }
 
@@ -307,7 +316,6 @@ public class OrcController : MonoBehaviour
         }
         // play grass sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WalkGrass, 1f);
-
         current = StartCoroutine(GoToOriginRoutine(origin));
     }
 

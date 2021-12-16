@@ -409,7 +409,9 @@ public class RummageGameManager : MonoBehaviour
             return true;
         }
 
-        selectedRummageCoin = null;
+        if (!playTutorial)
+            selectedRummageCoin = null;
+        
         StartCoroutine(CoinFailRoutine());
         return false;
     }
