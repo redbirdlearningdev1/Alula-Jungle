@@ -230,7 +230,7 @@ public class TalkieManager : MonoBehaviour
 
         // activate letterbox and background if need be
         if (currentTalkie.addLetterboxBeforeTalkie)
-            LetterboxController.instance.ToggleLetterbox(true, 1f);
+            LetterboxController.instance.ToggleLetterbox(true);
         if (currentTalkie.addBackgroundBeforeTalkie)
             DefaultBackground.instance.Activate();
 
@@ -324,7 +324,7 @@ public class TalkieManager : MonoBehaviour
         if (currentTalkie.removeBackgroundAfterTalkie)
             DefaultBackground.instance.Deactivate();
         if (currentTalkie.removeLetterboxAfterTalkie)
-            LetterboxController.instance.ToggleLetterbox(false, 1f);
+            LetterboxController.instance.ToggleLetterbox(false);
 
         // clear subtitles
         subtitleText.text = "";

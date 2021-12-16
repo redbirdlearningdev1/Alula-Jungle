@@ -643,6 +643,18 @@ public class WagonWindowController : MonoBehaviour
 
     private IEnumerator OpenBuyBoardWindowRoutine()
     {
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            // stop book wiggle
+            Book.GetComponent<WiggleController>().StopWiggle();
+        }
+
+        // enable back button
+        backButton.gameObject.SetActive(true);
+        backButton.interactable = true;
+        backButton.GetComponent<LerpableObject>().LerpImageAlpha(backButton.GetComponent<Image>(), 1f, 0.1f);
+        backButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.05f);
+
         buyBoardWindow.SquishyScaleLerp(new Vector2(1.2f, 1f), new Vector2(1f, 1f), 0.2f, 0.05f);
 
         // enable wagon background
@@ -660,7 +672,7 @@ public class WagonWindowController : MonoBehaviour
         if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
         {
             // stop wiggling the book
-            StickerBoardBook.instance.GetComponent<WiggleController>().StopWiggle();
+           Book.GetComponent<WiggleController>().StopWiggle();
 
             // play lester intro 4
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.lester_intro_4);
