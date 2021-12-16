@@ -93,24 +93,25 @@ public class VisibleFramesController : MonoBehaviour
 
         // make frame to add invisible frames
         InvisibleFrameLayout.instance.SetNumberOfFrames(count + 1);
+        yield return new WaitForSeconds(0.1f);
 
         // make newest frame invisible
         frames[count].GetComponent<LerpableObject>().SetImageAlpha(frames[count].GetComponent<Image>(), 0f);
+        frames[count].transform.localScale = new Vector3(0f, 0f, 1f);
 
         // make frame active
         SetNumberOfFrames(count + 1);
-        yield return new WaitForSeconds(0.5f);
-
         // move frames to invisible frames
-        StartCoroutine(MoveFramesToInvisibleFramesRoutine());
-        // audio fx
+        StartCoroutine(SetFramesPosFast());
+        // play sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BoxSlide, 0.5f);
         yield return new WaitForSeconds(1f);
 
         // reveal new frame
-        frames[count].GetComponent<LerpableObject>().LerpImageAlpha(frames[count].GetComponent<Image>(), 1f, 0.5f);
+        frames[count].GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
+        frames[count].GetComponent<LerpableObject>().LerpImageAlpha(frames[count].GetComponent<Image>(), 1f, 0.2f);
         // audio fx
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CreateBlip, 0.25f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 0.25f);
     }
 
     public void MoveFramesToInvisibleFrames()
@@ -134,6 +135,20 @@ public class VisibleFramesController : MonoBehaviour
             {
                 frame.GetComponent<LerpableObject>().LerpPosition(InvisibleFrameLayout.instance.frames[count].transform.position, 0.5f, false);
                 frame.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.5f);
+                yield return new WaitForSeconds(0.1f);
+            }
+            count++;
+        }
+    }
+
+    private IEnumerator SetFramesPosFast()
+    {
+        int count = 0;
+        foreach(var frame in frames)
+        {
+            if (frame.activeSelf)
+            {
+                frame.GetComponent<LerpableObject>().LerpPosition(InvisibleFrameLayout.instance.frames[count].transform.position, 0.1f, false);
                 yield return new WaitForSeconds(0.1f);
             }
             count++;

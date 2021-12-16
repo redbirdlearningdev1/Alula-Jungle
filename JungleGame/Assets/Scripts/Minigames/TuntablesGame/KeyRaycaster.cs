@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class KeyRaycaster : MonoBehaviour
 {
     public bool isOn = false;
-    public float keyMoveSpeed = 0.1f;
+    public float keyMoveSpeed = 1f;
     public Vector3 oddOffset;
     public Vector3 evenOffset;
 

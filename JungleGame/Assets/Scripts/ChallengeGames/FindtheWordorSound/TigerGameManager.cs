@@ -103,6 +103,9 @@ public class TigerGameManager : MonoBehaviour
         // set base pattern
         pattern.baseState();
 
+        // turn off raycaster
+        TigerGameRaycaster.instance.isOn = false;
+
         StartCoroutine(StartGame());
     }
 
@@ -228,7 +231,7 @@ public class TigerGameManager : MonoBehaviour
 
         coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.2f);
         yield return new WaitForSeconds(0.5f);
-        coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.2f);
+        coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
 
         playingCoinAudio = false;
     }

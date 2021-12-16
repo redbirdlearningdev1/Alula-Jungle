@@ -1088,7 +1088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOn: 1
-  keyMoveSpeed: 0.04
+  keyMoveSpeed: 0.5
   oddOffset: {x: -0.02, y: 0.03, z: 0}
   evenOffset: {x: 0.02, y: 0.03, z: 0}
   selectedKeyParent: {fileID: 1883585368}
@@ -2182,7 +2182,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 44.615276
+      value: 44.63833
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

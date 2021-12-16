@@ -143,7 +143,8 @@ public class WordFactoryBuildingManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // show coins + add to list
-        for (int i = 0; i < currentWord.elkoninCount; i++)
+        int i = 0;
+        for (i = 0; i < currentWord.elkoninCount; i++)
         {
             ElkoninValue value = currentWord.elkoninList[i];
             var coinObj = Instantiate(universalCoinImage, VisibleFramesController.instance.frames[i].transform.position, Quaternion.identity, coinsParent);
@@ -204,6 +205,18 @@ public class WordFactoryBuildingManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.EmeraldSlideShort, 0.5f);
         yield return new WaitForSeconds(1.5f);
 
+        // hide coins
+        i = 0;
+        foreach (var coin in currentCoins)
+        {
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", (1f + 0.25f * i));
+            coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+            yield return new WaitForSeconds(0.1f);
+            i++;
+        }
+        yield return new WaitForSeconds(0.5f);
+
         // add extra frame
         VisibleFramesController.instance.AddFrameSmooth();
         yield return new WaitForSeconds(1f);
@@ -212,18 +225,29 @@ public class WordFactoryBuildingManager : MonoBehaviour
         foreach (var coin in currentCoins)
         {
             // determine index of coin value in word 2
-            int i = 0;
+            i = 0;
             foreach (var value in currentPair.word2.elkoninList)
             {
-                if (coin.value == value)
+                if (coin.value == value && i != currentPair.index)
                 {
-                    coin.GetComponent<LerpableObject>().LerpPosToTransform(VisibleFramesController.instance.frames[i].transform, 0.75f, false);
+                    coin.GetComponent<LerpableObject>().LerpPosToTransform(VisibleFramesController.instance.frames[i].transform, 0f, false);
                     break;
                 }
                 i++;
             }
         }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
+        // show coins
+        i = 0;
+        foreach (var coin in currentCoins)
+        {
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", (1.5f - 0.25f * i));
+            coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
+            yield return new WaitForSeconds(0.1f);
+            i++;
+        }
+        yield return new WaitForSeconds(1f);
 
         // set tag for empty frame
         VisibleFramesController.instance.frames[currentPair.index].tag = "CoinTarget";
@@ -232,7 +256,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
         elkoninPool = new List<ElkoninValue>();
         // add ALL values
         string[] allElkoninValues = System.Enum.GetNames(typeof(ElkoninValue));
-        for (int i = 0; i < allElkoninValues.Length; i++)
+        for (i = 0; i < allElkoninValues.Length; i++)
         {
             elkoninPool.Add((ElkoninValue)System.Enum.Parse(typeof(ElkoninValue), allElkoninValues[i]));
         }
@@ -247,8 +271,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
         WaterCoinsController.instance.SetNumberWaterCoins(numWaterCoins);
 
         int correctIndex = Random.Range(0, numWaterCoins);
-
-        for (int i = 0; i < numWaterCoins; i++)
+        for (i = 0; i < numWaterCoins; i++)
         {
             if (i == correctIndex)
             {
@@ -314,6 +337,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
     {
         // move current coin
         currentCoin.GetComponent<LerpableObject>().LerpPosition(VisibleFramesController.instance.frames[currentPair.index].transform.position, 0.25f, false);
+        currentCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.25f);
         yield return new WaitForSeconds(2f);
 
         // win round

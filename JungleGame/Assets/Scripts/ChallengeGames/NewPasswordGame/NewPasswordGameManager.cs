@@ -150,12 +150,21 @@ public class NewPasswordGameManager : MonoBehaviour
         polaroid.GetComponent<LerpableObject>().LerpPosToTransform(polaroidOnScreenPos, 0.5f, false);
         yield return new WaitForSeconds(0.2f);
         polaroid.SetPolaroidAlpha(1f, 0.2f);
+        yield return new WaitForSeconds(0.5f);
+
+        // say polaroid word
+        polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
+        AudioManager.instance.PlayTalk(polaroid.challengeWord.audio);
+        yield return new WaitForSeconds(polaroid.challengeWord.audio.length + 0.1f);
+        polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
 
         // show coins
         int i = 0;
         foreach(var coin in coins)
         {
             coin.GetComponent<LerpableObject>().LerpPosToTransform(coinOnScreenPositions[i], 0.25f, false);
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.25f, "coin_dink", 0.8f + (0.1f * i));
             yield return new WaitForSeconds(0.1f);
             i++;
         }

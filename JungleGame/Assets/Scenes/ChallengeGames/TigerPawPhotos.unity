@@ -3296,7 +3296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c408e2a6199e640b57374a9bfcaf09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOn: 1
+  isOn: 0
   objcetMoveSpeed: 0.1
   selectedObjectParent: {fileID: 1141252423}
 --- !u!114 &1657006932
@@ -3829,7 +3829,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 7.4168253
+      value: 7.4584684
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

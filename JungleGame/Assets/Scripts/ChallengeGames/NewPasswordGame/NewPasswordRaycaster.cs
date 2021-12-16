@@ -52,6 +52,9 @@ public class NewPasswordRaycaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("PasswordTube") && hasCoin)
                     {
+                        // audio fx
+                        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f);
+
                         // add coin to password tube
                         selectedObject.transform.SetParent(PasswordTube.instance.tubeCoinParent);
                         PasswordTube.instance.AddCoin(selectedObject);
@@ -81,6 +84,9 @@ public class NewPasswordRaycaster : MonoBehaviour
 
             if (!hitTarget && hasCoin)
             {
+                // audio fx
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 1f);
+
                 // return coin to original position
                 selectedObject.transform.SetParent(NewPasswordGameManager.instance.coinParent);
                 NewPasswordGameManager.instance.ResetCoins();
@@ -132,6 +138,11 @@ public class NewPasswordRaycaster : MonoBehaviour
                         // tube coin
                         if (PasswordTube.instance.tubeCoins.Contains(foundObject.GetComponent<UniversalCoinImage>()))
                         {
+                            // audio fx
+                            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 0.5f);
+                            // audio fx
+                            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.25f, "coin_dink", 1f);
+
                             // remove coin raycast
                             foundObject.GetComponent<UniversalCoinImage>().ToggleRaycastTarget(false);
                             PasswordTube.instance.RemoveCoin(foundObject); 
