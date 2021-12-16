@@ -360,7 +360,11 @@ public class RummageGameManager : MonoBehaviour
 
     private IEnumerator DancingManRoutine()
     {
-        if (playingDancingManAnimation || selectedRummageCoin == null)
+        // return if coin is null
+        if (selectedRummageCoin == null)
+            yield break;
+        // return if already animating
+        if (playingDancingManAnimation)
             yield break;
         
         playingDancingManAnimation = true;
@@ -390,6 +394,8 @@ public class RummageGameManager : MonoBehaviour
 
         if (coin.type == selectedRummageCoin.type)
         {
+            selectedRummageCoin = null;
+
             // success! go on to the next row or win game if on last row
             if (winCount < 4)
             {
@@ -402,6 +408,8 @@ public class RummageGameManager : MonoBehaviour
                 
             return true;
         }
+
+        selectedRummageCoin = null;
         StartCoroutine(CoinFailRoutine());
         return false;
     }
@@ -454,7 +462,7 @@ public class RummageGameManager : MonoBehaviour
         yield return new WaitForSeconds(.01f);
         List<RummageCoin> pileSet = GetCoinPile(orc.AtLocation() - 1);
 
-        Repairs[orc.AtLocation() - 1].SetActive(true);
+        Repairs[orc.AtLocation() - 1].GetComponent<Animator>().Play("repairAnimation");
         // play heal sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.HealFixItem, 0.5f);
 
@@ -479,9 +487,7 @@ public class RummageGameManager : MonoBehaviour
 
         orc.GoToOrigin();
         
-        yield return new WaitForSeconds(1.0f);
-        Repairs[lastLocation - 1].SetActive(false);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2f);
         orc.successOrc();
         yield return new WaitForSeconds(1f);
         orc.stopOrc();
@@ -546,7 +552,7 @@ public class RummageGameManager : MonoBehaviour
         yield return new WaitForSeconds(.01f);
         List<RummageCoin> pileSet = GetCoinPile(orc.AtLocation() - 1);
 
-        Repairs[orc.AtLocation() - 1].SetActive(true);
+        Repairs[orc.AtLocation() - 1].GetComponent<Animator>().Play("repairAnimation");
 
         currCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
         currCoin.GetComponent<LerpableObject>().LerpImageAlpha(currCoin.GetComponent<Image>(), 0f, 0.25f);
@@ -569,9 +575,7 @@ public class RummageGameManager : MonoBehaviour
 
         orc.GoToOrigin();
         
-        yield return new WaitForSeconds(1.0f);
-        Repairs[lastLocation-1].SetActive(false);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2f);
         orc.successOrc();
         yield return new WaitForSeconds(1f);
         orc.stopOrc();
