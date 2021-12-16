@@ -77,6 +77,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
     private bool evaluatingCoin = false;
 
     private List<ElkoninValue> elkoninPool;
+    private List<ElkoninValue> lockedPool;
 
     [Header("Testing")] // ache -> bake
     public bool overrideWord;
@@ -129,6 +130,14 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         pairPool.AddRange(ChallengeWordDatabase.GetSubstitutionWordPairs(StudentInfoSystem.GetCurrentProfile().actionWordPool));
 
         print ("pairPool.count: " + pairPool.Count);
+
+        lockedPool = new List<ElkoninValue>();
+        // add all action words excpet unlocked ones
+        foreach (var coin in GameManager.instance.actionWords)
+        {
+            if (!StudentInfoSystem.GetCurrentProfile().actionWordPool.Contains(ChallengeWordDatabase.ElkoninValueToActionWord(coin.elkoninValue)))
+                lockedPool.Add(coin.elkoninValue);
+        }
 
         // begin first round
         StartCoroutine(NewRound());
@@ -332,6 +341,11 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         // remove specific swipe values
         elkoninPool.Remove(currentPair.word2.elkoninList[currentPair.index]);
         elkoninPool.Remove(currentPair.word1.elkoninList[currentPair.index]);
+        // remove any locked action word coins
+        foreach(var value in lockedPool)
+        {
+            elkoninPool.Remove(value);
+        }
 
         // place water coins
         ResetWaterCoins();

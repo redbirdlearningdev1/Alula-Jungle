@@ -113,8 +113,10 @@ public class TigerGameManager : MonoBehaviour
     {   
         currCoin.transform.position = coinStartPos.position;
 
-        List<ActionWordEnum> globalList = GameManager.instance.GetGlobalActionWordList();
-        currSet = globalList[Random.Range(0, globalList.Count)];
+        // get an unlocked set
+        List<ActionWordEnum> unlockedSets = new List<ActionWordEnum>();
+        unlockedSets.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
+        currSet = unlockedSets[Random.Range(0, unlockedSets.Count)];
         
         // get challenge words from a set
         List<ChallengeWord> word_pool = new List<ChallengeWord>();
@@ -189,7 +191,9 @@ public class TigerGameManager : MonoBehaviour
         {
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos5.position, .2f));
         }
-        yield return new WaitForSeconds(.6f);
+
+        PlayAudioCoin(currCoin);
+        yield return new WaitForSeconds(1f);
 
         // disable raycaster
         TigerGameRaycaster.instance.isOn = true;

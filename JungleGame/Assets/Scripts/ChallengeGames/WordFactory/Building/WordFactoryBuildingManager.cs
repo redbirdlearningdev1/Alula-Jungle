@@ -15,6 +15,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
     [Header("Water Coins")]
     public int numWaterCoins;
     private List<ElkoninValue> elkoninPool;
+    private List<ElkoninValue> lockedPool;
 
     private List<WordPair> pairPool;
     private WordPair currentPair;
@@ -82,6 +83,14 @@ public class WordFactoryBuildingManager : MonoBehaviour
 
         // set tiger cards to be inactive
         TigerController.instance.ResetCards();
+
+        lockedPool = new List<ElkoninValue>();
+        // add all action words excpet unlocked ones
+        foreach (var coin in GameManager.instance.actionWords)
+        {
+            if (!StudentInfoSystem.GetCurrentProfile().actionWordPool.Contains(ChallengeWordDatabase.ElkoninValueToActionWord(coin.elkoninValue)))
+                lockedPool.Add(coin.elkoninValue);
+        }
 
         // start game
         StartCoroutine(NewRound());
@@ -266,6 +275,11 @@ public class WordFactoryBuildingManager : MonoBehaviour
         elkoninPool.Remove(ElkoninValue.COUNT);
         // remove specific swipe values
         elkoninPool.Remove(currentPair.word2.elkoninList[currentPair.index]);
+        // remove any locked action word coins
+        foreach(var value in lockedPool)
+        {
+            elkoninPool.Remove(value);
+        }
 
         // set water coins
         WaterCoinsController.instance.SetNumberWaterCoins(numWaterCoins);

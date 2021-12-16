@@ -30,6 +30,9 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
 
         animator.Play("springUp");
 
+        // play pop sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 0.5f);
+
         yield return new WaitForSeconds(0.5f);
 
         SetStars(stars);
