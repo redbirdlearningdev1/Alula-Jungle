@@ -64,6 +64,9 @@ public class RummageCoinRaycaster : MonoBehaviour
             else
                 selectedRummageCoin.ReturnToCloth();
 
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f);
+
             Chester.chestGlowNo();
             selectedRummageCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(2f, 2f), 0.1f);
             selectedRummageCoin = null;
@@ -88,6 +91,9 @@ public class RummageCoinRaycaster : MonoBehaviour
 
                         // make other coin not interactable
                         RummageGameManager.instance.SetCoinsInteractable(false);
+
+                        // audio fx
+                        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 1.2f);
 
                         selectedRummageCoin = coin;
                         selectedRummageCoin.PlayPhonemeAudio();

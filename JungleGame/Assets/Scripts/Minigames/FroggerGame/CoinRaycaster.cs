@@ -61,14 +61,15 @@ public class CoinRaycaster : MonoBehaviour
                 }
             }
 
-            // bag glow effect off
-            ImageGlowController.instance.SetImageGlow(Bag.instance.GetComponent<Image>(), false);
+            // bag effect off
+            Bag.instance.ToggleScaleAndWiggle(false);
+
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f);
 
             if (!isCorrect)
                 selectedCoin.ReturnToLog();
 
-            // make coin normal size
-            selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
             selectedCoin = null;
         }
 
@@ -91,8 +92,11 @@ public class CoinRaycaster : MonoBehaviour
                         // make coin larger
                         selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.75f, 1.75f), 0.2f);
 
-                        // bag glow effect on
-                        ImageGlowController.instance.SetImageGlow(Bag.instance.GetComponent<Image>(), true, GlowValue.glow_1_025);
+                        // audio fx
+                        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 1.2f);
+
+                        // bag grow and shake
+                        Bag.instance.ToggleScaleAndWiggle(true);
                     } 
                 }
             }

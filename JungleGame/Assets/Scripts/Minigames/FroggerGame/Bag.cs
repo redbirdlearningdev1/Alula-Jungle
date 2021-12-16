@@ -68,4 +68,18 @@ public class Bag : MonoBehaviour
         // play wrong choice sound effect
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 1f);
     }
+
+    public void ToggleScaleAndWiggle(bool opt)
+    {
+        if (opt)
+        {
+            GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
+            GetComponent<WiggleController>().StartWiggle();
+        }
+        else
+        {
+            GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
+            GetComponent<WiggleController>().StopWiggle();
+        }
+    }
 }

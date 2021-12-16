@@ -53,6 +53,9 @@ public class SpiderRayCaster : MonoBehaviour
                 }
             }
 
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f);
+
             webBallGlow.chestGlowNo();
             NewSpiderGameManager.instance.ReturnCoinsToPosition();
 
@@ -73,6 +76,9 @@ public class SpiderRayCaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("UniversalCoin"))
                     {
+                        // audio fx
+                        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 1.2f);
+
                         selectedCoin = result.gameObject.GetComponent<UniversalCoinImage>();
                         selectedCoin.gameObject.transform.SetParent(selectedCoinParent);
                         selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.25f, 1.25f), 0.25f);

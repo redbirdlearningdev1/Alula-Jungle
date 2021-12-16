@@ -220,13 +220,14 @@ public class FroggerGameManager : MonoBehaviour
         // increase split song
         AudioManager.instance.IncreaseSplitSong();
 
-        // TODO: animate coin into bag
         rows[currRow].ResetCoinPos(selectedCoin);
         taxi.CelebrateAnimation();
         bag.UpgradeBag();
 
         // remove selected coin
-        selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.5f);
+        selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.25f);
+        selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
+        selectedCoin.GetComponent<LerpableObject>().LerpPosToTransform(Bag.instance.transform, 0.25f, false);
         yield return new WaitForSeconds(1f);
         selectedCoin.ReturnToLog();
 
@@ -263,7 +264,9 @@ public class FroggerGameManager : MonoBehaviour
         bag.UpgradeBag();
 
         // remove selected coin
-        selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.5f);
+        selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.25f);
+        selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
+        selectedCoin.GetComponent<LerpableObject>().LerpPosToTransform(Bag.instance.transform, 0.25f, false);
         yield return new WaitForSeconds(1f);
         selectedCoin.ReturnToLog();
         selectedCoin = null;
@@ -384,9 +387,10 @@ public class FroggerGameManager : MonoBehaviour
         bag.UpgradeBag();
 
         // remove selected coin
-        selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.5f);
+        selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.25f);
+        selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
+        selectedCoin.GetComponent<LerpableObject>().LerpPosToTransform(Bag.instance.transform, 0.25f, false);
         yield return new WaitForSeconds(1f);
-        
         selectedCoin.ReturnToLog();
         selectedCoin = null;
 
@@ -437,7 +441,9 @@ public class FroggerGameManager : MonoBehaviour
         bag.UpgradeBag();
 
         // remove selected coin
-        selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.5f);
+        selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.25f);
+        selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
+        selectedCoin.GetComponent<LerpableObject>().LerpPosToTransform(Bag.instance.transform, 0.25f, false);
         yield return new WaitForSeconds(1f);
         selectedCoin.ReturnToLog();
         selectedCoin = null;
@@ -772,6 +778,10 @@ public class FroggerGameManager : MonoBehaviour
     // used to control dancing man's animations
     private IEnumerator DancingManRoutine()
     {
+        // return if coin is null
+        if (selectedCoin == null)
+            yield break;
+        // dont play if already playing animation
         if (playingDancingManAnimation)
             yield break;
         playingDancingManAnimation = true;
