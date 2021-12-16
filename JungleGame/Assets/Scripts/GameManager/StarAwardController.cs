@@ -22,10 +22,10 @@ public class StarAwardController : MonoBehaviour
 
     public float starMoveSpeed;
 
-    [Header("Star Paths")]
-    public List<Transform> path1;
-    public List<Transform> path2;
-    public List<Transform> path3;
+    public GameObject coinObject;
+    public Transform coinTarget;
+    public Transform coinParent;
+    private int newCoins = 1;
 
     void Awake()
     {
@@ -552,7 +552,8 @@ public class StarAwardController : MonoBehaviour
         StartCoroutine(GrowObject(window));
         yield return new WaitForSeconds(0.5f);
 
-    
+        print ("num stars: " + numStars);
+
         // show appropriate number of stars
         for (int i = 0; i < numStars; i++)
         {
@@ -570,20 +571,24 @@ public class StarAwardController : MonoBehaviour
                     break;
             }
 
+            // play audio
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.GlassDink1, 0.5f, "star_sound", 1f + 0.2f * i);
+
             // time bewteen stars
             yield return new WaitForSeconds(0.5f);
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         // show toolbar
         DropdownToolbar.instance.ToggleToolbar(true);
+        int coinsEarndedCopy = coinsEarnded;
         
         // animate stars that are awarding coins
         for (int i = numStars - 1; i >= 0; i--)
         {
             // stop awarding coins when 0 is reached
-            if (coinsEarnded == 0)
+            if (coinsEarndedCopy == 0)
                 break;
 
             switch (i)
@@ -600,13 +605,19 @@ public class StarAwardController : MonoBehaviour
                     break;
             }
             // reduce coins earned after one is given
-            coinsEarnded--;
+            coinsEarndedCopy--;
+
+            // play audio
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "star_sound", 1f + 0.2f * i);
 
             // time bewteen stars
             yield return new WaitForSeconds(0.5f);
         }
 
         yield return new WaitForSeconds(0.5f);
+
+        // update SIS and toolbar
+        DropdownToolbar.instance.AwardGoldCoins(coinsEarnded);
 
         // activate button
         button.interactable = true;
@@ -616,10 +627,9 @@ public class StarAwardController : MonoBehaviour
     {
         StartCoroutine(ScaleObjectRoutine(star, longScaleTime, maxScale));
         yield return new WaitForSeconds(longScaleTime);
-        // place particle system thing here
 
-        // update SIS and toolbar
-        DropdownToolbar.instance.AwardGoldCoins(1);
+        // place particle system thing here
+        StartCoroutine(AwardCoinAnimation(star.transform.position));
 
         StartCoroutine(ScaleObjectRoutine(star, longScaleTime, normalScale));
     }
@@ -656,5 +666,20 @@ public class StarAwardController : MonoBehaviour
             gameObject.transform.localScale = new Vector3(temp, temp, 0f);
             yield return null;
         }
+    }
+
+    private IEnumerator AwardCoinAnimation(Vector3 startPos)
+    {
+        GameObject coin = Instantiate(coinObject, startPos, Quaternion.identity, coinParent);
+        coin.transform.localScale = new Vector3(0f, 0f, 1f);
+        coin.GetComponent<LerpableObject>().LerpPosToTransform(coinTarget, 0.5f, false);
+        coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.5f, 1.5f), new Vector2(0f, 0f), 0.25f, 0.25f);
+        yield return new WaitForSeconds(0.5f);
+
+        // play audio
+        AudioManager.instance.PlayCoinDrop();
+        coinTarget.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
+        DropdownToolbar.instance.SetGoldText((StudentInfoSystem.GetCurrentProfile().goldCoins + newCoins).ToString());
+        newCoins++;
     }
 }
