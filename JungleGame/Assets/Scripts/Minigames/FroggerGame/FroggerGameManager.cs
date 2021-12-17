@@ -246,6 +246,23 @@ public class FroggerGameManager : MonoBehaviour
         yield return new WaitForSeconds(1.25f);
         gorilla.CelebrateAnimation();
 
+        // play encouragement popup
+        AudioClip clip = null;
+        switch (currRow)
+        {
+            case 0:
+                clip = GameIntroDatabase.instance.froggerEncouragement1;
+                break;
+            case 1:
+                clip = GameIntroDatabase.instance.froggerEncouragement3;
+                break;
+            case 2:
+                clip = GameIntroDatabase.instance.froggerEncouragement4;
+                break;
+        }
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
         currRow++;
         rows[currRow].RiseAllLogs();
         yield return new WaitForSeconds(1f);
@@ -341,15 +358,14 @@ public class FroggerGameManager : MonoBehaviour
         // show menu button
         SettingsManager.instance.ToggleMenuButtonActive(true);
 
-        // play tutorial audio
-        AudioClip clip = AudioDatabase.instance.FroggerTutorial_1;
-        AudioManager.instance.PlayTalk(clip);
-        yield return new WaitForSeconds(clip.length + 0.5f);
+        yield return new WaitForSeconds(1f);
 
         // play tutorial audio
-        clip = AudioDatabase.instance.FroggerTutorial_2;
-        StartCoroutine(RepeatTutorialAudioRoutine(clip));
-        yield return new WaitForSeconds(clip.length + 0.5f);
+        List<AudioClip> clips = new List<AudioClip>();
+        clips.Add(GameIntroDatabase.instance.froggerIntro1);
+        clips.Add(GameIntroDatabase.instance.froggerIntro2);
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clips);
+        yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
 
         // reveal dancing man
         StartCoroutine(ShowDancingManRoutine());
@@ -381,7 +397,6 @@ public class FroggerGameManager : MonoBehaviour
 
     private IEnumerator ContinueTutorialRoutine()
     {
-        // TODO: animate coin into bag
         rows[currRow].ResetCoinPos(selectedCoin);
         taxi.CelebrateAnimation();
         bag.UpgradeBag();
@@ -404,6 +419,34 @@ public class FroggerGameManager : MonoBehaviour
         gorilla.JumpForward(AudioDatabase.instance.WoodThump);
         yield return new WaitForSeconds(1.25f);
         gorilla.CelebrateAnimation();
+
+        // play tutorial audio
+        if (currRow == 0)
+        {
+            // play tutorial audio
+            List<AudioClip> clips = new List<AudioClip>();
+            clips.Add(GameIntroDatabase.instance.froggerIntro3);
+            clips.Add(GameIntroDatabase.instance.froggerIntro4);
+            clips.Add(GameIntroDatabase.instance.froggerIntro5);
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clips);
+            yield return new WaitForSeconds(clips[0].length + clips[1].length + clips[2].length + 1f);
+        }
+        else    
+        {
+            // play encouragement popup
+            AudioClip clip = null;
+            switch (currRow)
+            {
+                case 1:
+                    clip = GameIntroDatabase.instance.froggerEncouragement2;
+                    break;
+                case 2:
+                    clip = GameIntroDatabase.instance.froggerEncouragement4;
+                    break;
+            }
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clip);
+            yield return new WaitForSeconds(clip.length + 1f);
+        }
         
         currRow++;
         rows[currRow].RiseAllLogs();
@@ -502,13 +545,15 @@ public class FroggerGameManager : MonoBehaviour
 
     private IEnumerator PlayTutorialAudio()
     {
-        // play audio iff currRow == 1
-        if (currRow == 1)
-        {
-            AudioClip clip = AudioDatabase.instance.FroggerTutorial_3;
-            AudioManager.instance.PlayTalk(clip);
-            yield return new WaitForSeconds(clip.length + 0.5f);
-        }
+        // // play audio iff currRow == 1
+        // if (currRow == 1)
+        // {
+        //     AudioClip clip = AudioDatabase.instance.FroggerTutorial_3;
+        //     AudioManager.instance.PlayTalk(clip);
+        //     yield return new WaitForSeconds(clip.length + 0.5f);
+        // }
+
+        yield return null;
 
         // turn on raycaster
         CoinRaycaster.instance.isOn = true;
