@@ -558,7 +558,6 @@ public class ScrollMapManager : MonoBehaviour
 
                 // unlock button in SIS
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                SettingsManager.instance.ToggleWagonButtonActive(true);
                 // add glow + wiggle
                 SettingsManager.instance.ToggleStickerButtonWiggleGlow(true);
 

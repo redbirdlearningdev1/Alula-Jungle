@@ -62,7 +62,7 @@ public class SeaShellGameManager : MonoBehaviour
     {
         // only turn off tutorial if false
         if (!playTutorial)
-            playTutorial = !StudentInfoSystem.GetCurrentProfile().pirateTutorial;
+            playTutorial = !StudentInfoSystem.GetCurrentProfile().seashellTutorial;
 
         if (playTutorial)
         {
@@ -311,7 +311,7 @@ public class SeaShellGameManager : MonoBehaviour
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Celeste, clip);
             yield return new WaitForSeconds(clip.length + 1f);
         }
-        else
+        else if (t_currRound <= 2)
         {
             // play random encouragement popup
             int index = Random.Range(0, 3);

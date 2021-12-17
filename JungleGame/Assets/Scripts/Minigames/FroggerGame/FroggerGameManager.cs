@@ -80,7 +80,7 @@ public class FroggerGameManager : MonoBehaviour
     {
         // only turn off tutorial if false
         if (!playTutorial)
-            playTutorial = !StudentInfoSystem.GetCurrentProfile().pirateTutorial;
+            playTutorial = !StudentInfoSystem.GetCurrentProfile().froggerTutorial;
 
         PregameSetup();
 
