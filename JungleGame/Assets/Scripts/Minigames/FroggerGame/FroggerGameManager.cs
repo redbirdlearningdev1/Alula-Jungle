@@ -38,7 +38,6 @@ public class FroggerGameManager : MonoBehaviour
     private LogCoin selectedCoin;
 
     [Header("Tutorial Stuff")]
-    public bool playInEditor;
     public bool playTutorial;
     public int[] correctTutorialCoins;
     public List<ActionWordEnum> firstPair;
@@ -79,8 +78,9 @@ public class FroggerGameManager : MonoBehaviour
 
     void Start()
     {
-        if (!playInEditor)
-            playTutorial = !StudentInfoSystem.GetCurrentProfile().froggerTutorial;
+        // only turn off tutorial if false
+        if (!playTutorial)
+            playTutorial = !StudentInfoSystem.GetCurrentProfile().pirateTutorial;
 
         PregameSetup();
 

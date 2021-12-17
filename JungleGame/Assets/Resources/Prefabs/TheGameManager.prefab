@@ -18293,6 +18293,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f08b2d47363e70a4b88537710b78da57, type: 3}
   - {fileID: 8300000, guid: f44b8f93f85a5e64c97ed7b2a987b243, type: 3}
   - {fileID: 8300000, guid: 57638604c06b25e45835f0fba1ff87b5, type: 3}
+  seashellIntro1: {fileID: 8300000, guid: 32cbbe93d39d18d40a49e59a0655603f, type: 3}
+  seashellIntro2: {fileID: 8300000, guid: 8aaa3847bba7f1142b51d63585a96f7a, type: 3}
+  seashellIntro3: {fileID: 8300000, guid: 7b85bf206cccd6d45925747c4539afc2, type: 3}
+  seashellIntro4: {fileID: 8300000, guid: da2455486221076438c4abee4ceeab63, type: 3}
+  seashellIntro5: {fileID: 8300000, guid: a36549d32873d854aadda3fd54419289, type: 3}
+  seashellReminder1: {fileID: 8300000, guid: 6d9aed41e2ee7c04785b38bdf464f45d, type: 3}
+  seashellReminder2: {fileID: 8300000, guid: 65311cf740fd9b1428324a8cdb6487f7, type: 3}
+  seashellEncouragementClips:
+  - {fileID: 8300000, guid: b5b40ef5095a3234d93d0bc1a882df3b, type: 3}
+  - {fileID: 8300000, guid: 58511fa696d13f840a951bdaaa0950de, type: 3}
+  - {fileID: 8300000, guid: 0a14f6fd67cd3e744b1ba3c0582051c9, type: 3}
 --- !u!1 &7026129080566916980
 GameObject:
   m_ObjectHideFlags: 0
@@ -19820,7 +19831,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 44.42121, y: 0.005817631}
+  m_AnchoredPosition: {x: 44.48892, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

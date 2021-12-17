@@ -43,4 +43,16 @@ public class GameIntroDatabase : MonoBehaviour
     public AudioClip pirateReminder2;
 
     public List<AudioClip> pirateEncouragementClips;
+
+    [Header("Seashell Game")]
+    public AudioClip seashellIntro1;
+    public AudioClip seashellIntro2;
+    public AudioClip seashellIntro3;
+    public AudioClip seashellIntro4;
+    public AudioClip seashellIntro5;
+
+    public AudioClip seashellReminder1;
+    public AudioClip seashellReminder2;
+
+    public List<AudioClip> seashellEncouragementClips;
 }

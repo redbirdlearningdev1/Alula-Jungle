@@ -28,6 +28,16 @@ public class SeaShellGameManager : MonoBehaviour
     private ActionWordEnum prevCorrectCoin;
 
 
+    [Header("Tutorial Variables")]
+    public int[] t_correctIndexes;
+    public List<ActionWordEnum> t_firstRound;
+    public List<ActionWordEnum> t_secondRound;
+    public List<ActionWordEnum> t_thirdRound;
+    public List<ActionWordEnum> t_fourthRound;
+
+    private int t_currRound = 0;
+
+
     void Awake()
     {
         // every scene must call this in Awake()
@@ -50,11 +60,22 @@ public class SeaShellGameManager : MonoBehaviour
 
     void Start()
     {
-        // start song
-        AudioManager.instance.InitSplitSong(SplitSong.Seashells);
-        AudioManager.instance.IncreaseSplitSong();
+        // only turn off tutorial if false
+        if (!playTutorial)
+            playTutorial = !StudentInfoSystem.GetCurrentProfile().pirateTutorial;
 
-        StartCoroutine(PregameSetupRoutine());
+        if (playTutorial)
+        {
+            StartCoroutine(StartTutorial());
+        }
+        else
+        {
+            // start song
+            AudioManager.instance.InitSplitSong(SplitSong.Seashells);
+            AudioManager.instance.IncreaseSplitSong();
+
+            StartCoroutine(PregameSetupRoutine());
+        }
     }
 
     void Update()
@@ -71,6 +92,36 @@ public class SeaShellGameManager : MonoBehaviour
                 StarAwardController.instance.AwardStarsAndExit(3);
             }
         }
+    }
+
+    private IEnumerator StartTutorial()
+    {
+        // small delay before starting
+        yield return new WaitForSeconds(2f);
+
+        // show mermaids
+        MermaidController.instance.ShowMermaids();
+
+        // small delay before starting
+        yield return new WaitForSeconds(1f);
+
+        // turn off raycaster
+        ShellRayCaster.instance.isOn = false;
+
+        // play ambiance sounds
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.SeaAmbiance, 0.1f, "sea_ambiance");
+
+        // play tutorial audio
+        AudioClip clip = GameIntroDatabase.instance.seashellIntro1;
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Sylvie, clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
+        // play tutorial audio
+        clip = GameIntroDatabase.instance.seashellIntro2;
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Celeste, clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
+        StartCoroutine(StartGame());
     }
 
 
@@ -109,16 +160,38 @@ public class SeaShellGameManager : MonoBehaviour
 
     private IEnumerator StartGame()
     {
+
         // get shell options
         usedCoinPool = new List<ActionWordEnum>();
         List<ActionWordEnum> shellOptions = new List<ActionWordEnum>();
-        for (int i = 0; i < 3; i++)
+
+        if (playTutorial)
         {
-            shellOptions.Add(GetUnusedWord());
+            for (int i = 0; i < 3; i++)
+            {
+                switch (t_currRound)
+                {
+                    case 0: shellOptions.Add(t_firstRound[i]); break;
+                    case 1: shellOptions.Add(t_secondRound[i]); break;
+                    case 2: shellOptions.Add(t_thirdRound[i]); break;
+                    case 3: shellOptions.Add(t_fourthRound[i]); break;
+                }
+            } 
+
+            currentCoin = shellOptions[t_correctIndexes[t_currRound]];
         }
-        // get correct option
-        int correctIndex = Random.Range(0, 3);
-        currentCoin = shellOptions[correctIndex];
+        else
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                shellOptions.Add(GetUnusedWord());
+            }
+            // get correct option
+            int correctIndex = Random.Range(0, 3);
+            currentCoin = shellOptions[correctIndex];
+        }
+        
+        
         // set shells
         ShellController.instance.shell1.SetValue(shellOptions[0]);
         ShellController.instance.shell2.SetValue(shellOptions[1]);
@@ -130,6 +203,16 @@ public class SeaShellGameManager : MonoBehaviour
 
         // reveal shells
         ShellController.instance.RevealShells();
+
+        if (playTutorial && t_currRound == 0)
+        {
+            yield return new WaitForSeconds(3f);
+
+            // play tutorial audio
+            AudioClip clip = GameIntroDatabase.instance.seashellIntro3;
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Sylvie, clip);
+            yield return new WaitForSeconds(clip.length + 1f);
+        }
 
         // turn on raycaster
         ShellRayCaster.instance.isOn = true;
@@ -177,7 +260,16 @@ public class SeaShellGameManager : MonoBehaviour
         // incorrect
         else
         {
-            StartCoroutine(IncorrectRoutine());
+            if (playTutorial)
+            {
+                // turn on raycaster
+                ShellRayCaster.instance.isOn = true;
+            }
+            else
+            {
+                StartCoroutine(IncorrectRoutine());
+            }
+            
             return false;
         }
     }
@@ -205,6 +297,48 @@ public class SeaShellGameManager : MonoBehaviour
         CoinHolder.instance.BaseCoinHolder();
         yield return new WaitForSeconds(1f);
 
+
+        // play tutorial audio
+        if (playTutorial && t_currRound == 0)
+        {
+            // play tutorial intro
+            AudioClip clip = GameIntroDatabase.instance.seashellIntro4;
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Bubbles, clip);
+            yield return new WaitForSeconds(clip.length + 1f);
+
+            // play tutorial intro
+            clip = GameIntroDatabase.instance.seashellIntro5;
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Celeste, clip);
+            yield return new WaitForSeconds(clip.length + 1f);
+        }
+        else
+        {
+            // play random encouragement popup
+            int index = Random.Range(0, 3);
+            AudioClip clip = null;
+            switch (index)
+            {
+                case 0:
+                    clip = GameIntroDatabase.instance.seashellEncouragementClips[index];
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Bubbles, clip);
+                    yield return new WaitForSeconds(clip.length + 1f);
+                    break;
+                case 1:
+                    clip = GameIntroDatabase.instance.seashellEncouragementClips[index];
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Sylvie, clip);
+                    yield return new WaitForSeconds(clip.length + 1f);
+                    break;
+                case 2:
+                    clip = GameIntroDatabase.instance.seashellEncouragementClips[index];
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Celeste, clip);
+                    yield return new WaitForSeconds(clip.length + 1f);
+                    break;
+            }
+        }
+
+
+        t_currRound++;
+
         // check if win game
         if (timesCorrect >= 4)
         {
@@ -222,8 +356,19 @@ public class SeaShellGameManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
         yield return new WaitForSeconds(2f);
 
-        // calculate and show stars
-        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+        if (playTutorial)
+        {
+            // save to SIS
+            StudentInfoSystem.GetCurrentProfile().seashellTutorial = true;
+            StudentInfoSystem.SaveStudentPlayerData();
+
+            GameManager.instance.LoadScene("SeaShellGame", true, 3f);
+        }
+        else
+        {
+            // calculate and show stars
+            StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+        }
     }
 
     private int CalculateStars()
