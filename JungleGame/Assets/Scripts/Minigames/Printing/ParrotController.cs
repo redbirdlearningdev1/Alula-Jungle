@@ -46,12 +46,12 @@ public class ParrotController : MonoBehaviour, IPointerUpHandler, IPointerDownHa
         animator.Play("PreFly");
     }
 
-    public void SayAudio(ActionWordEnum word)
+    public void SayAudio(ActionWordEnum word, bool interactableAfter = true)
     {
-        StartCoroutine(SayAudioRoutine(word));
+        StartCoroutine(SayAudioRoutine(word, interactableAfter));
     }
 
-    private IEnumerator SayAudioRoutine(ActionWordEnum word)
+    private IEnumerator SayAudioRoutine(ActionWordEnum word, bool interactableAfter = true)
     {
         interactable = false;
         
@@ -66,7 +66,8 @@ public class ParrotController : MonoBehaviour, IPointerUpHandler, IPointerDownHa
         animator.Play("EndFly");
         yield return new WaitForSeconds(0.25f);
 
-        interactable = true;
+
+        interactable = interactableAfter;
     }
 
     private IEnumerator FlapWingsRoutine(bool loop)
@@ -115,7 +116,15 @@ public class ParrotController : MonoBehaviour, IPointerUpHandler, IPointerDownHa
         if (isPressed)
         {
             // play audio blip
-            SayAudio(PrintingGameManager.instance.correctValue);
+            SayAudio(PrintingGameManager.instance.correctValue, false);
+
+            // stop wiggling if tutorial
+            if (PrintingGameManager.instance.playTutorial && PrintingGameManager.instance.t_waitingForPlayer)
+            {
+                PrintingGameManager.instance.t_waitingForPlayer = false;
+                interactable = false;
+                GetComponent<WiggleController>().StopWiggle();
+            }
 
             isPressed = false;
             transform.localScale = new Vector3(1f, 1f, 1f);

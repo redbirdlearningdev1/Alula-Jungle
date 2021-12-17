@@ -48,7 +48,24 @@ public class PrintingRayCaster : MonoBehaviour
                     if (result.gameObject.transform.CompareTag("Cannon"))
                     {
                         isCorrect = PrintingGameManager.instance.EvaluateSelectedBall(selectedBall.type);
-                        BallsController.instance.ReleaseBalls();
+
+                        if (PrintingGameManager.instance.playTutorial)
+                        {
+                            // release balls if correct
+                            if (isCorrect)
+                            {
+                                BallsController.instance.ReleaseBalls();
+                            }
+                            // else just ignore ball
+                            else
+                            {
+                                
+                            }
+                        }
+                        else
+                        {
+                            BallsController.instance.ReleaseBalls();
+                        }
                     }
                 }
             }

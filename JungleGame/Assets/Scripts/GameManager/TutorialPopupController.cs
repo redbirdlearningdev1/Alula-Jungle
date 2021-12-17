@@ -76,11 +76,11 @@ public class TutorialPopupController : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 0.5f);
 
         if (facingLeft)
-            popup.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
+            popup.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
         else
-            popup.SquishyScaleLerp(new Vector2(-1.2f, 1.2f), new Vector2(-1f, 1f), 0.2f, 0.2f);
+            popup.SquishyScaleLerp(new Vector2(-1.2f, 1.2f), new Vector2(-1f, 1f), 0.1f, 0.1f);
 
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.2f);
 
         AudioManager.instance.PlayTalk(clip);
 
@@ -89,11 +89,11 @@ public class TutorialPopupController : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 0.5f);
 
         if (facingLeft)
-            popup.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.2f, 0.2f);
+            popup.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.1f, 0.1f);
         else
-            popup.SquishyScaleLerp(new Vector2(-1.2f, 1.2f), new Vector2(-0f, 0f), 0.2f, 0.2f);
+            popup.SquishyScaleLerp(new Vector2(-1.2f, 1.2f), new Vector2(-0f, 0f), 0.1f, 0.1f);
 
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.2f);
 
         Destroy(popup.gameObject);
     }
@@ -103,11 +103,11 @@ public class TutorialPopupController : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 0.5f);
 
         if (facingLeft)
-            popup.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
+            popup.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
         else
-            popup.SquishyScaleLerp(new Vector2(-1.2f, 1.2f), new Vector2(-1f, 1f), 0.2f, 0.2f);
+            popup.SquishyScaleLerp(new Vector2(-1.2f, 1.2f), new Vector2(-1f, 1f), 0.1f, 0.1f);
 
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.2f);
 
         foreach (var clip in clips)
         {
@@ -118,11 +118,11 @@ public class TutorialPopupController : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 0.5f);
 
         if (facingLeft)
-            popup.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.2f, 0.2f);
+            popup.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.1f, 0.1f);
         else
-            popup.SquishyScaleLerp(new Vector2(-1.2f, 1.2f), new Vector2(-0f, 0f), 0.2f, 0.2f);
+            popup.SquishyScaleLerp(new Vector2(-1.2f, 1.2f), new Vector2(-0f, 0f), 0.1f, 0.1f);
 
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.2f);
 
         Destroy(popup.gameObject);
     }

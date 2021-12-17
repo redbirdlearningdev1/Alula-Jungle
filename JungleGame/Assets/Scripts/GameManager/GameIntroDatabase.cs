@@ -16,7 +16,7 @@ public class GameIntroDatabase : MonoBehaviour
 
     /* 
     ################################################
-    #   FROGGER DATABASE
+    #   IN-GAME AUDIO DATABASE
     ################################################
     */
 
@@ -30,8 +30,17 @@ public class GameIntroDatabase : MonoBehaviour
     public AudioClip froggerReminder1;
     public AudioClip froggerReminder2;
 
-    public AudioClip froggerEncouragement1;
-    public AudioClip froggerEncouragement2;
-    public AudioClip froggerEncouragement3;
-    public AudioClip froggerEncouragement4;
+    public List<AudioClip> froggerEncouragementClips;
+
+    [Header("Pirate Game")]
+    public AudioClip pirateIntro1;
+    public AudioClip pirateIntro2;
+    public AudioClip pirateIntro3;
+    public AudioClip pirateIntro4;
+    public AudioClip pirateIntro5;
+
+    public AudioClip pirateReminder1;
+    public AudioClip pirateReminder2;
+
+    public List<AudioClip> pirateEncouragementClips;
 }

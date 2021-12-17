@@ -8,6 +8,7 @@ public class PrintingGameManager : MonoBehaviour
     public static PrintingGameManager instance;
 
     private MapIconIdentfier mapID = MapIconIdentfier.None;
+    public bool playTutorial;
 
     public bool glowCorrectCoin = false;
 
@@ -18,6 +19,16 @@ public class PrintingGameManager : MonoBehaviour
     [HideInInspector] public ActionWordEnum correctValue;
     private int timesMissed = 0;
     private int timesCorrect = 0;
+
+    [Header("Tutorial Variables")]
+    public int[] t_correctIndexes;
+    public List<ActionWordEnum> t_firstRound;
+    public List<ActionWordEnum> t_secondRound;
+    public List<ActionWordEnum> t_thirdRound;
+    public List<ActionWordEnum> t_fourthRound;
+
+    private int t_currRound = 0;
+    [HideInInspector] public bool t_waitingForPlayer = false;
 
     void Awake()
     {
@@ -41,6 +52,10 @@ public class PrintingGameManager : MonoBehaviour
 
     void Start()
     {
+        // only turn off tutorial if false
+        if (!playTutorial)
+            playTutorial = !StudentInfoSystem.GetCurrentProfile().pirateTutorial;
+        
         PregameSetup();
     }
 
@@ -69,7 +84,7 @@ public class PrintingGameManager : MonoBehaviour
         ParrotController.instance.interactable = false;
 
         // add ambiance sounds
-        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.SeaAmbiance, 0.25f, "sea_ambiance");
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.SeaAmbiance, 0.1f, "sea_ambiance");
 
         globalCoinPool = new List<ActionWordEnum>();
 
@@ -86,11 +101,55 @@ public class PrintingGameManager : MonoBehaviour
         unusedCoinPool = new List<ActionWordEnum>();
         unusedCoinPool.AddRange(globalCoinPool);
 
-        // start song
-        AudioManager.instance.InitSplitSong(SplitSong.Pirate);
-        AudioManager.instance.IncreaseSplitSong();
 
-        // start game
+        // play tutorial if first time
+        if (playTutorial)
+        {
+            StartCoroutine(StartTutorial());
+        }
+        else
+        {
+            // start song
+            AudioManager.instance.InitSplitSong(SplitSong.Pirate);
+            AudioManager.instance.IncreaseSplitSong();
+
+            // start game
+            StartCoroutine(StartGame());
+        }
+    }
+
+    private IEnumerator StartTutorial()
+    {
+        // small delay before starting
+        yield return new WaitForSeconds(2f);
+
+        // play tutorial audio
+        List<AudioClip> clips = new List<AudioClip>();
+        clips.Add(GameIntroDatabase.instance.pirateIntro1);
+        clips.Add(GameIntroDatabase.instance.pirateIntro2);
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Ollie, clips);
+        yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
+
+
+        // reset rope
+        correctValue = t_firstRound[t_correctIndexes[0]];
+        yield return new WaitForSeconds(1f);
+        ParrotController.instance.GetComponent<WiggleController>().StartWiggle();
+        t_waitingForPlayer = true;
+        ParrotController.instance.interactable = true;
+
+
+        // wait for player input
+        while (t_waitingForPlayer)
+            yield return null;
+
+        yield return new WaitForSeconds(2f);
+        
+        // play tutorial audio
+        AudioClip clip = GameIntroDatabase.instance.pirateIntro3;
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Ollie, clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
         StartCoroutine(StartGame());
     }
 
@@ -100,7 +159,16 @@ public class PrintingGameManager : MonoBehaviour
         PirateRopeController.instance.ResetRope();
 
         // get correct value
-        int correctIndex = Random.Range(0, BallsController.instance.balls.Count);
+        int correctIndex = 0;
+        if (playTutorial)
+        {
+            correctIndex = t_correctIndexes[t_currRound];
+        }
+        else
+        {
+            correctIndex = Random.Range(0, BallsController.instance.balls.Count);
+        }
+        
 
         // make new used word list and add current correct word
         usedCoinPool = new List<ActionWordEnum>();
@@ -109,8 +177,22 @@ public class PrintingGameManager : MonoBehaviour
         int i = 0;
         foreach (Ball ball in BallsController.instance.balls)
         {
-            // set ball
-            ActionWordEnum value = GetUnusedWord();
+            // set ball value
+            ActionWordEnum value = ActionWordEnum._blank;
+            if (playTutorial)
+            {
+                switch (t_currRound)
+                {
+                    case 0: value = t_firstRound[i]; break;
+                    case 1: value = t_secondRound[i]; break;
+                    case 2: value = t_thirdRound[i]; break;
+                    case 3: value = t_fourthRound[i]; break;
+                }
+            }
+            else
+            {
+                value = GetUnusedWord();
+            }
             ball.SetValue(value);
 
             // find correct value
@@ -159,7 +241,17 @@ public class PrintingGameManager : MonoBehaviour
         // incorrcet!
         else
         {
-            StartCoroutine(IncorrectBallRoutine());
+            if (playTutorial)
+            {
+                // turn on raycaster + parrot
+                PrintingRayCaster.instance.isOn = true;
+                ParrotController.instance.interactable = true;
+            }
+            else
+            {
+                StartCoroutine(IncorrectBallRoutine());
+            }
+                
             return false;
         }
     }
@@ -208,6 +300,28 @@ public class PrintingGameManager : MonoBehaviour
 
         // reset balls and start new round
         BallsController.instance.ResetBalls();
+
+        // play tutorial audio
+        if (playTutorial && t_currRound == 0)
+        {
+            List<AudioClip> clips = new List<AudioClip>();
+            clips.Add(GameIntroDatabase.instance.pirateIntro4);
+            clips.Add(GameIntroDatabase.instance.pirateIntro5);
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Ollie, clips);
+            yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
+        }
+        else
+        {
+            // play random encouragement popup
+            AudioClip clip = GameIntroDatabase.instance.pirateEncouragementClips[Random.Range(0, 4)];
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Ollie, clip);
+            yield return new WaitForSeconds(clip.length + 1f);
+        }
+
+
+        // increase tutorial round
+        t_currRound++;
+
         StartCoroutine(StartGame());
     }
 
@@ -249,8 +363,19 @@ public class PrintingGameManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
         yield return new WaitForSeconds(2f);
 
-        // calculate and show stars
-        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+        if (playTutorial)
+        {
+            // save to SIS
+            StudentInfoSystem.GetCurrentProfile().pirateTutorial = true;
+            StudentInfoSystem.SaveStudentPlayerData();
+
+            GameManager.instance.LoadScene("NewPirateGame", true, 3f);
+        }
+        else
+        {
+            // calculate and show stars
+            StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+        }
     }
 
     private int CalculateStars()

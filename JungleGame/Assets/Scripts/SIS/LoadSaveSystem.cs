@@ -19,11 +19,7 @@ public static class LoadSaveSystem
 
     public static int   default_micDevice = 0;
 
-    public static bool  default_stickerTutorial = false;
-    public static bool  default_froggerTutorial = false;
-    public static bool  default_turntablesTutorial = false;
-    public static bool  default_spiderwebTutorial = false;
-    public static bool  default_rummageTutorial = false;
+    public static bool  default_tutorial = false;
 
     public static StoryBeat default_gameEvent = StoryBeat.InitBoatGame;
     public static bool default_unlockedStickerButton = false;
@@ -120,11 +116,13 @@ public static class LoadSaveSystem
         new_data.micDevice =    default_micDevice;
 
         // tutorials
-        new_data.stickerTutorial =      default_stickerTutorial;
-        new_data.froggerTutorial =      default_froggerTutorial;
-        new_data.turntablesTutorial =   default_turntablesTutorial;
-        new_data.spiderwebTutorial =    default_spiderwebTutorial;
-        new_data.rummageTutorial =      default_rummageTutorial;
+        new_data.stickerTutorial =      default_tutorial;
+        new_data.froggerTutorial =      default_tutorial;
+        new_data.turntablesTutorial =   default_tutorial;
+        new_data.spiderwebTutorial =    default_tutorial;
+        new_data.rummageTutorial =      default_tutorial;
+        new_data.pirateTutorial =      default_tutorial;
+        new_data.seashellTutorial =      default_tutorial;
 
         // pools
         new_data.actionWordPool = new List<ActionWordEnum>();

@@ -18276,14 +18276,23 @@ MonoBehaviour:
   froggerIntro5: {fileID: 8300000, guid: 932410381264af248a51739e0f09bb0e, type: 3}
   froggerReminder1: {fileID: 8300000, guid: da50ca4d8e5989448ad6a620a5413c90, type: 3}
   froggerReminder2: {fileID: 8300000, guid: c9783f2ed56c7524eb40dd2f98d6dce9, type: 3}
-  froggerEncouragement1: {fileID: 8300000, guid: 4e8185204cfe14044b888c011ee8928e,
-    type: 3}
-  froggerEncouragement2: {fileID: 8300000, guid: 58a47f961a4affe4e8738dc52cc2c40b,
-    type: 3}
-  froggerEncouragement3: {fileID: 8300000, guid: a2b31582497719f4fbe610ebf7e120a3,
-    type: 3}
-  froggerEncouragement4: {fileID: 8300000, guid: 7fc60b3bf31e08f4883114c890a8a5cc,
-    type: 3}
+  froggerEncouragementClips:
+  - {fileID: 8300000, guid: 4e8185204cfe14044b888c011ee8928e, type: 3}
+  - {fileID: 8300000, guid: 58a47f961a4affe4e8738dc52cc2c40b, type: 3}
+  - {fileID: 8300000, guid: a2b31582497719f4fbe610ebf7e120a3, type: 3}
+  - {fileID: 8300000, guid: 7fc60b3bf31e08f4883114c890a8a5cc, type: 3}
+  pirateIntro1: {fileID: 8300000, guid: 6baab725b7b509846a77c0c6536dde58, type: 3}
+  pirateIntro2: {fileID: 8300000, guid: a3a6db6553f47ac42a1adc41f9bcf246, type: 3}
+  pirateIntro3: {fileID: 8300000, guid: eb5596424f4ba314baf483b5ee372017, type: 3}
+  pirateIntro4: {fileID: 8300000, guid: c4930580df3a2604d8419a0b7391dbd7, type: 3}
+  pirateIntro5: {fileID: 8300000, guid: 215cd0bc5c29b864da37e8eea6e1908e, type: 3}
+  pirateReminder1: {fileID: 8300000, guid: dc43734f072fcd347a95e334e1c6aa16, type: 3}
+  pirateReminder2: {fileID: 8300000, guid: bf322247819eda04b9be02ca55bc0cca, type: 3}
+  pirateEncouragementClips:
+  - {fileID: 8300000, guid: 93274cb1d3724c04b80f3a811b707a22, type: 3}
+  - {fileID: 8300000, guid: f08b2d47363e70a4b88537710b78da57, type: 3}
+  - {fileID: 8300000, guid: f44b8f93f85a5e64c97ed7b2a987b243, type: 3}
+  - {fileID: 8300000, guid: 57638604c06b25e45835f0fba1ff87b5, type: 3}
 --- !u!1 &7026129080566916980
 GameObject:
   m_ObjectHideFlags: 0
@@ -19811,7 +19820,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 44.233986, y: 0.005817631}
+  m_AnchoredPosition: {x: 44.42121, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

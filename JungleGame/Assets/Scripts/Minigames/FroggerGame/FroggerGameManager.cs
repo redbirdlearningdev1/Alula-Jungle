@@ -251,13 +251,11 @@ public class FroggerGameManager : MonoBehaviour
         switch (currRow)
         {
             case 0:
-                clip = GameIntroDatabase.instance.froggerEncouragement1;
-                break;
             case 1:
-                clip = GameIntroDatabase.instance.froggerEncouragement3;
+                clip = GameIntroDatabase.instance.froggerEncouragementClips[Random.Range(0, 3)];
                 break;
             case 2:
-                clip = GameIntroDatabase.instance.froggerEncouragement4;
+                clip = GameIntroDatabase.instance.froggerEncouragementClips[3];
                 break;
         }
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clip);
@@ -437,11 +435,12 @@ public class FroggerGameManager : MonoBehaviour
             AudioClip clip = null;
             switch (currRow)
             {
+                case 0:
                 case 1:
-                    clip = GameIntroDatabase.instance.froggerEncouragement2;
+                    clip = GameIntroDatabase.instance.froggerEncouragementClips[Random.Range(0, 3)];
                     break;
                 case 2:
-                    clip = GameIntroDatabase.instance.froggerEncouragement4;
+                    clip = GameIntroDatabase.instance.froggerEncouragementClips[3];
                     break;
             }
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clip);

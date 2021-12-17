@@ -28,6 +28,8 @@ public class StudentPlayerData
     public bool turntablesTutorial;
     public bool spiderwebTutorial;
     public bool rummageTutorial;
+    public bool pirateTutorial;
+    public bool seashellTutorial;
 
     // game progression
     public StoryBeat currStoryBeat;
