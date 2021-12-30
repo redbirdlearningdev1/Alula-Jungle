@@ -236,6 +236,9 @@ public class TalkieManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        // turn on particles
+        ParticleController.instance.isOn = true;
+
         // clear subtitles
         subtitleText.text = "";
         subtitleBox.color = new Color(0f, 0f, 0f, 100f / 255f);
@@ -329,6 +332,9 @@ public class TalkieManager : MonoBehaviour
         // clear subtitles
         subtitleText.text = "";
         subtitleBox.color = new Color(0f, 0f, 0f, 0f);
+
+        // turn off particles
+        ParticleController.instance.isOn = false;
 
         // enable nav buttons on scroll map
         if (SceneManager.GetActiveScene().name == "ScrollMap")
@@ -687,6 +693,9 @@ public class TalkieManager : MonoBehaviour
     {
         ResetLeft();
         ResetRight();
+        
+        // turn off particles
+        ParticleController.instance.isOn = false;
     }
 
     private void ResetLeft()
