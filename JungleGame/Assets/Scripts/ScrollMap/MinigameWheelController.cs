@@ -16,7 +16,6 @@ public class MinigameWheelController : MonoBehaviour
     private MapIconIdentfier currentIdentifier;
 
     [Header("Royal Rumble")]
-    public float royalRumbleOdds;
     public LerpableObject rrGradient;
     public LerpableObject rrImage;
 

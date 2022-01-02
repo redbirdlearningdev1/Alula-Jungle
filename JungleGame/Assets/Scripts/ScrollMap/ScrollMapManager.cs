@@ -549,7 +549,7 @@ public class ScrollMapManager : MonoBehaviour
             gorilla.interactable = true;
 
             // check if player has enough coins
-            if (StudentInfoSystem.GetCurrentProfile().goldCoins >= 3)
+            if (StudentInfoSystem.GetCurrentProfile().goldCoins >= 4)
             {
                 // play red notices lester talkie
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.red_notices_lester);

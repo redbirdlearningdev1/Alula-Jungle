@@ -9,7 +9,7 @@ public class ShellRayCaster : MonoBehaviour
 
     public bool isOn = false;
     private SeaShell selectedShell = null;
-    [SerializeField] private Transform selectedShellParent;
+    public  Transform selectedShellParent;
 
     void Awake()
     {

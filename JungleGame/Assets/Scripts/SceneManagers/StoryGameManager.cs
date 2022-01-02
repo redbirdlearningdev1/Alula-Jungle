@@ -317,6 +317,7 @@ public class StoryGameManager : MonoBehaviour
         if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PrologueStoryGame)
         {
             // add action words to player's pool
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.explorer);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.mudslide);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.listen);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.poop);
@@ -328,7 +329,6 @@ public class StoryGameManager : MonoBehaviour
             // add action words to player's pool
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.hello);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.spider);
-            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.explorer);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.scared);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.thatguy);
         }

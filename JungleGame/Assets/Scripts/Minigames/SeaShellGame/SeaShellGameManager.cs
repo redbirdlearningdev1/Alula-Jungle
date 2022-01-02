@@ -17,7 +17,7 @@ public class SeaShellGameManager : MonoBehaviour
 
     public bool playTutorial = false;
 
-    private ActionWordEnum currentCoin;
+    [HideInInspector] public ActionWordEnum currentCoin;
     private int timesMissed = 0;
     private int timesCorrect = 0;
 
@@ -247,9 +247,6 @@ public class SeaShellGameManager : MonoBehaviour
     {
         // turn off raycaster
         ShellRayCaster.instance.isOn = false;
-        
-        // hide shells
-        ShellController.instance.HideShells();
 
         // correct!
         if (value == currentCoin)
@@ -280,6 +277,9 @@ public class SeaShellGameManager : MonoBehaviour
         AudioManager.instance.IncreaseSplitSong();
         
         timesCorrect++;
+
+        // hide shells
+        ShellController.instance.HideShells();
 
         // play mermaid routine
         MermaidController.instance.PlayShell(shellNum);
@@ -385,11 +385,15 @@ public class SeaShellGameManager : MonoBehaviour
     {
         timesMissed++;
 
+        // play incorrect audio
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
+
         // coin holder color
         CoinHolder.instance.IncorrectCoinHolder();
         yield return new WaitForSeconds(1f);
 
-        // correct coin animation
+        // incorrect coin animation
         OctoController.instance.CoinIncorrect();
         yield return new WaitForSeconds(3f);
 

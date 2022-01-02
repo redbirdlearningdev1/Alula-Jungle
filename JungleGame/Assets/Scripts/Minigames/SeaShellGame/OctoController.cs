@@ -60,6 +60,14 @@ public class OctoController : MonoBehaviour
 
     private IEnumerator CoinIncorrectRoutine()
     {
+        // show and play correct shell
+        ShellController.instance.ShowCorrectShell();
+        yield return new WaitForSeconds(2f);
+
+        // hide shells
+        ShellController.instance.HideShells();
+
+        // incorrect animation
         octoAnimator.Play("octoGrabShow");
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BubbleRise, 0.5f);
         yield return new WaitForSeconds(0.4f);
@@ -70,7 +78,6 @@ public class OctoController : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinFlip, 0.5f);
         yield return new WaitForSeconds(0.5f);
         octoAnimator.Play("octoNo");
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
     }
 
     public void CoinCorrect()

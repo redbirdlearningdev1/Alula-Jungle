@@ -224,6 +224,8 @@ public class DevMenuManager : MonoBehaviour
         studentData.turntablesTutorial = true;
         studentData.spiderwebTutorial = true;
         studentData.rummageTutorial = true;
+        studentData.seashellTutorial = true;
+        studentData.pirateTutorial = true;
 
         studentData.currStoryBeat = StoryBeat.COUNT;
         studentData.unlockedStickerButton = true;
@@ -373,6 +375,8 @@ public class DevMenuManager : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().turntablesTutorial = true;
         StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = true;
         StudentInfoSystem.GetCurrentProfile().rummageTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().seashellTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().pirateTutorial = true;
         
         switch ((StoryBeat)beat)
         {
@@ -434,6 +438,7 @@ public class DevMenuManager : MonoBehaviour
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = false;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = false;
+                StudentInfoSystem.GetCurrentProfile().goldCoins = 4;
                 StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 0;
                 break;
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum ParticleType
 {
-    stars, sand, swirl
+    stars, sand, swirl, block, bubble
 }
 
 public class ParticleController : MonoBehaviour
@@ -17,6 +17,11 @@ public class ParticleController : MonoBehaviour
     public GameObject starParticle;
     public GameObject sandParticle;
     public GameObject swirlParticle;
+    public GameObject blockParticle;
+    public GameObject bubbleParticle;
+
+    public List<GameObject> colliderObjects;
+    private bool colliderState = false; // off by default
 
     public float switchParticleTime;
     private float switchTimer = 0f;
@@ -33,13 +38,31 @@ public class ParticleController : MonoBehaviour
     {
         if (instance == null)
             instance = this;
+
+        // turn off collider objects
+        ToggleColliderObjects(false);
     }
 
     void Update()
     {
         // return if not on
         if (!isOn)
+        {
+            // turn off colliders iff on
+            if (colliderState)
+            {
+                colliderState = false;
+                ToggleColliderObjects(false);
+            }
             return;
+        }
+
+        // turn on colliders iff off
+        if (!colliderState)
+        {
+            colliderState = true;
+            ToggleColliderObjects(true);
+        }
 
         switchTimer += Time.deltaTime;
         if (switchTimer > switchParticleTime)
@@ -47,7 +70,7 @@ public class ParticleController : MonoBehaviour
             switchTimer = 0f;
 
             particleType++;
-            if (particleType > ParticleType.swirl)
+            if (particleType > ParticleType.bubble)
             {
                 particleType = ParticleType.stars;
             }
@@ -77,6 +100,14 @@ public class ParticleController : MonoBehaviour
                 case ParticleType.swirl: 
                     currentParticle = swirlParticle;
                     break;
+
+                case ParticleType.block: 
+                    currentParticle = blockParticle;
+                    break;
+
+                case ParticleType.bubble: 
+                    currentParticle = bubbleParticle;
+                    break;
             }
 
             currentRate = currentParticle.GetComponent<FunParticle>().rate;
@@ -91,6 +122,14 @@ public class ParticleController : MonoBehaviour
                 GameObject star = Instantiate(currentParticle, position, Quaternion.identity, this.transform);
                 star.GetComponent<FunParticle>().StartParticle();
             }
+        }
+    }
+
+    private void ToggleColliderObjects(bool opt)
+    {
+        foreach (var collider in colliderObjects)
+        {
+            collider.SetActive(opt);
         }
     }
 }

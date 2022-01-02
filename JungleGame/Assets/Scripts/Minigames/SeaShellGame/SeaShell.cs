@@ -48,6 +48,32 @@ public class SeaShell : MonoBehaviour
         audioPlaying = false;
     }
 
+    public void ShowShell()
+    {
+        StartCoroutine(ShowShellRoutine());
+    }
+
+    private IEnumerator ShowShellRoutine()
+    {
+        transform.SetParent(ShellRayCaster.instance.selectedShellParent);
+        shadow.GetComponent<LerpableObject>().LerpImageAlpha(shadow, 0f, 0.25f);
+        GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
+        GetComponent<LerpableObject>().LerpYPos(shellOrigin.position.y + 1f, 0.2f, false);
+
+        GetComponent<WiggleController>().StartWiggle();
+        PlayPhonemeAudio();
+        yield return new WaitForSeconds(1f);
+        GetComponent<WiggleController>().StopWiggle();
+
+        shadow.GetComponent<LerpableObject>().LerpImageAlpha(shadow, 1f, 0.25f);
+        GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
+        GetComponent<LerpableObject>().LerpYPos(shellOrigin.position.y, 0.2f, false);
+
+        yield return new WaitForSeconds(0.2f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SandDrop, 0.5f);
+        transform.SetParent(shellOrigin);
+    }   
+
     public void SelectShell()
     {
         shadow.GetComponent<LerpableObject>().LerpImageAlpha(shadow, 0f, 0.25f);

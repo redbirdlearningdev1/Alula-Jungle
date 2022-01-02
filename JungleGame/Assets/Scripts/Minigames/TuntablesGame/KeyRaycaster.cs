@@ -90,6 +90,8 @@ public class KeyRaycaster : MonoBehaviour
 
             // rock lock glow effect off
             ImageGlowController.instance.SetImageGlow(RockLock.instance.image, false);
+            RockLock.instance.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.5f);
+            RockLock.instance.GetComponent<WiggleController>().StopWiggle();
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -122,6 +124,8 @@ public class KeyRaycaster : MonoBehaviour
 
                         // rock lock glow effect on
                         ImageGlowController.instance.SetImageGlow(RockLock.instance.image, true, GlowValue.glow_1_025);
+                        RockLock.instance.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.5f);
+                        RockLock.instance.GetComponent<WiggleController>().StartWiggle();
 
                         // remove key glow if tutorial key
                         if (selectedKey.glowingKey)

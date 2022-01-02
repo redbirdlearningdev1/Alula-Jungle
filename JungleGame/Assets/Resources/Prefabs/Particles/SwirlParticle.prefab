@@ -116,6 +116,7 @@ MonoBehaviour:
   image: {fileID: 8631230204902873846}
   duration: 2
   rate: 0.25
+  randomizeRotation: 1
   forceRange: {x: 50, y: 50}
   torqueRange: {x: -100, y: 100}
   scaleRange: {x: 3, y: 3}

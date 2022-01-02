@@ -34,6 +34,11 @@ public class TutorialPopupController : MonoBehaviour
             instance = this;
     }
 
+    public void StopAllPopups()
+    {
+        StopAllCoroutines();
+    }
+
     private Sprite GetCharacterPopupSprite(TalkieCharacter character)
     {
         switch (character)

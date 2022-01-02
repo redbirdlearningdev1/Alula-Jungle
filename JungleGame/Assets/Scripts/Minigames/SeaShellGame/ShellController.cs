@@ -65,4 +65,21 @@ public class ShellController : MonoBehaviour
         shell2.ToggleShell(false);
         shell3.ToggleShell(false);
     }
+
+    public void ShowCorrectShell()
+    {
+        // find correct shell 
+        if (shell1.value == SeaShellGameManager.instance.currentCoin)
+        {
+            shell1.ShowShell();
+        }
+        else if (shell2.value == SeaShellGameManager.instance.currentCoin)
+        {
+            shell2.ShowShell();
+        }
+        else if (shell3.value == SeaShellGameManager.instance.currentCoin)
+        {
+            shell3.ShowShell();
+        }
+    }
 }

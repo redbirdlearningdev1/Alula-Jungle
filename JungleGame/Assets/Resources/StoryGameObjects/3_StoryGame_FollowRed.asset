@@ -158,7 +158,7 @@ MonoBehaviour:
   - text: that guy
     audio: {fileID: 8300000, guid: 66cd8f40f8fcfa24d9a0df180806baee, type: 3}
     moveWord: 1
-    actionWord: 0
+    actionWord: 10
     requireInput: 0
     postText: 
     advanceBG: 0

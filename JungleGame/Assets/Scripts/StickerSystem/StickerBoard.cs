@@ -239,6 +239,17 @@ public class StickerBoard : MonoBehaviour
         else
         {
             stickerInventoryWindow.SquishyScaleLerp(new Vector2(1.2f, 1f), new Vector2(0f, 1f), 0.05f, 0.1f);
+
+            // add back button if tutorial
+            if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+            {
+                // // add back button so player can leave >:)
+                WagonWindowController.instance.backButton.gameObject.SetActive(true);
+                WagonWindowController.instance.backButton.interactable = true;
+                WagonWindowController.instance.backButton.GetComponent<LerpableObject>().LerpImageAlpha(WagonWindowController.instance.backButton.GetComponent<Image>(), 1f, 0.1f);
+                WagonWindowController.instance.backButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.2f, 0.01f);
+                WagonWindowController.instance.backButton.GetComponent<WiggleController>().StartWiggle();
+            }
         }
     }
 
@@ -260,6 +271,17 @@ public class StickerBoard : MonoBehaviour
         else
         {
             stickerInventoryWindow.SquishyScaleLerp(new Vector2(1.2f, 1f), new Vector2(0f, 1f), 0.05f, 0.1f);
+
+            // add back button if tutorial
+            if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+            {
+                // // add back button so player can leave >:)
+                WagonWindowController.instance.backButton.gameObject.SetActive(true);
+                WagonWindowController.instance.backButton.interactable = true;
+                WagonWindowController.instance.backButton.GetComponent<LerpableObject>().LerpImageAlpha(WagonWindowController.instance.backButton.GetComponent<Image>(), 1f, 0.1f);
+                WagonWindowController.instance.backButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.2f, 0.01f);
+                WagonWindowController.instance.backButton.GetComponent<WiggleController>().StartWiggle();
+            }
         }
     }
 

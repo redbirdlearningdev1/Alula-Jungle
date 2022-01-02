@@ -209,6 +209,11 @@ public class NewBoatGameManager : MonoBehaviour
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[3]);
                 yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[3].length + 0.5f);
 
+                // turn on blue button glow + wiggle
+                ImageGlowController.instance.SetImageGlow(blueButton.GetComponent<Image>(), true, GlowValue.glow_1_025);
+                blueButton.wiggleController.StartWiggle();
+                waitForBlueButton = false;
+
                 // red voiceover 5
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[4]);
                 yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[4].length + 0.5f);
@@ -218,11 +223,6 @@ public class NewBoatGameManager : MonoBehaviour
                 repeatTimer = 0f;
                 repeatDuration = 5f;
                 repeatAudio = true;
-
-                // turn on blue button glow + wiggle
-                ImageGlowController.instance.SetImageGlow(blueButton.GetComponent<Image>(), true, GlowValue.glow_1_025);
-                blueButton.wiggleController.StartWiggle();
-                waitForBlueButton = false;
                 break;
 
             case 1:
@@ -232,6 +232,9 @@ public class NewBoatGameManager : MonoBehaviour
                 // red voiceover 6
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[5]);
                 yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[5].length + 0.5f);
+
+                // turn on wheel
+                BoatWheelController.instance.isOn = true;
 
                 // red voiceover 7
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[6]);
@@ -249,9 +252,6 @@ public class NewBoatGameManager : MonoBehaviour
                 repeatDuration = 20f;
                 repeatAudio = true;
 
-                // turn on wheel
-                BoatWheelController.instance.isOn = true;
-
                 // wiggle island outline
                 IslandCutoutController.instance.outlineWiggleController.StartWiggle();
                 break;
@@ -259,6 +259,10 @@ public class NewBoatGameManager : MonoBehaviour
             case 2:
                 // wait for sounds to finish
                 yield return new WaitForSeconds(2f);
+
+                // turn on island cutout
+                IslandCutoutController.instance.isOn = true;
+                IslandCutoutController.instance.cutoutWiggleController.StartWiggle();
 
                 // red voiceover 9
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[8]);
@@ -280,14 +284,18 @@ public class NewBoatGameManager : MonoBehaviour
                 repeatDuration = 20f;
                 repeatAudio = true;
 
-                // turn on island cutout
-                IslandCutoutController.instance.isOn = true;
-                IslandCutoutController.instance.cutoutWiggleController.StartWiggle();
                 break;
 
             case 3:
                 // wait for sounds to finish
                 yield return new WaitForSeconds(2f);
+
+                // turn on throttle glow + wiggle
+                ImageGlowController.instance.SetImageGlow(BoatThrottleController.instance.GetComponent<Image>(), true, GlowValue.glow_1_025);
+                BoatThrottleController.instance.wiggleController.StartWiggle();
+
+                // enable throtle control
+                BoatThrottleController.instance.isOn = true;
 
                 // red voiceover 12
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[11]);
@@ -303,12 +311,6 @@ public class NewBoatGameManager : MonoBehaviour
                 repeatDuration = 5f;
                 repeatAudio = true;
 
-                // turn on throttle glow + wiggle
-                ImageGlowController.instance.SetImageGlow(BoatThrottleController.instance.GetComponent<Image>(), true, GlowValue.glow_1_025);
-                BoatThrottleController.instance.wiggleController.StartWiggle();
-
-                // enable throtle control
-                BoatThrottleController.instance.isOn = true;
                 break;
 
             case 4:

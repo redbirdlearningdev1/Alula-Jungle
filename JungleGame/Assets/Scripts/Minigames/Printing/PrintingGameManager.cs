@@ -282,10 +282,15 @@ public class PrintingGameManager : MonoBehaviour
         // drop coin into chest
         yield return new WaitForSeconds(0.5f);
         PirateRopeController.instance.printingCoin.SetActionWordValue(correctValue);
-        yield return new WaitForSeconds(0.1f);
-        PirateRopeController.instance.DropCoinAnimation();
+
+        // play sound coin audio
+        PirateRopeController.instance.printingCoin.LerpScale(new Vector2(1.2f, 1.2f), 0.1f);
+        AudioManager.instance.PlayPhoneme(correctValue);
+        yield return new WaitForSeconds(0.5f);
+        PirateRopeController.instance.printingCoin.LerpScale(new Vector2(1f, 1f), 0.1f);
 
         // upgrade chest
+        PirateRopeController.instance.DropCoinAnimation();
         yield return new WaitForSeconds(1.25f);
         PirateChest.instance.UpgradeChest();
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
@@ -313,7 +318,13 @@ public class PrintingGameManager : MonoBehaviour
         else
         {
             // play random encouragement popup
-            AudioClip clip = GameIntroDatabase.instance.pirateEncouragementClips[Random.Range(0, 4)];
+            int index = Random.Range(0, 3);
+            
+            // skip #3 on jeff's request
+            if (index == 2)
+                index = 3;
+
+            AudioClip clip = GameIntroDatabase.instance.pirateEncouragementClips[index];
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Ollie, clip);
             yield return new WaitForSeconds(clip.length + 1f);
         }
@@ -344,6 +355,14 @@ public class PrintingGameManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CannonShoot, 0.5f);
         yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CannonFall, 0.25f);
+
+        // play "so-close" quip if not in tutorial
+        if (!playTutorial)
+        {
+            AudioClip clip = GameIntroDatabase.instance.pirateEncouragementClips[2];
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Ollie, clip);
+            yield return new WaitForSeconds(clip.length + 1f);
+        }
 
         // raise rope
         PirateRopeController.instance.RaiseRopeAnimation();

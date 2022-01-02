@@ -291,6 +291,9 @@ public class GameManager : DontDestroy<GameManager>
 
         // close settings menu if open
         SettingsManager.instance.CloseSettingsWindow();
+
+        // remove tutorial popups
+        TutorialPopupController.instance.StopAllPopups();
     }
 
     /*

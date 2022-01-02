@@ -11,6 +11,7 @@ public class FunParticle : MonoBehaviour
 
     public float duration;
     public float rate;
+    public bool randomizeRotation;
 
     public Vector2 forceRange;
     public Vector2 torqueRange;
@@ -30,6 +31,12 @@ public class FunParticle : MonoBehaviour
         // set scale to 0
         transform.localScale = new Vector3(0f, 0f, 1f);
         float randomScale = Random.Range(scaleRange.x, scaleRange.y);
+
+        // randomize rotation
+        if (randomizeRotation)
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
+        }
 
         // get random vector direction
         Vector2 randomVector = Random.insideUnitCircle;

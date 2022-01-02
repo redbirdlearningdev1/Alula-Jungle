@@ -130,6 +130,12 @@ public class UniversalCoinImage : MonoBehaviour
         GetComponent<RectTransform>().sizeDelta = size;
     }
 
+    public void LerpScale(Vector2 targetScale, float totalTime)
+    {
+        StopAllCoroutines();
+        currImage.GetComponent<LerpableObject>().LerpScale(targetScale, totalTime);
+    }
+
     public void LerpSize(Vector2 targetSize, float totalTime)
     {
         StopAllCoroutines();
