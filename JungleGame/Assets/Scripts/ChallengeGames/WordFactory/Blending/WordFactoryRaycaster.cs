@@ -12,7 +12,6 @@ public class WordFactoryRaycaster : MonoBehaviour
 
     private GameObject selectedObject = null;
     [SerializeField] private Transform selectedObjectParent;
-    public LerpableObject polaroidTarget;
 
     private bool polaroidAudioPlaying = false;
     
@@ -71,10 +70,6 @@ public class WordFactoryRaycaster : MonoBehaviour
                 // audio fx
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SelectBoop, 0.5f);
             }
-                
-            // reset polaroid target
-            polaroidTarget.LerpScale(new Vector2(1f, 1f), 0.2f);
-            polaroidTarget.GetComponent<WiggleController>().StopWiggle();
 
             // return polaroids to appropriate pos
             WordFactoryBlendingManager.instance.ResetPolaroids();
@@ -99,9 +94,6 @@ public class WordFactoryRaycaster : MonoBehaviour
                         selectedObject.GetComponent<Polaroid>().LerpScale(1.25f, 0.1f);
                         // play audio
                         StartCoroutine(PlayPolaroidAudio(selectedObject.GetComponent<Polaroid>().challengeWord.audio));
-                        // scale and wiggle polaroid target
-                        polaroidTarget.LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
-                        polaroidTarget.GetComponent<WiggleController>().StartWiggle();
                         // stop polaroid wiggle
                         WordFactoryBlendingManager.instance.TogglePolaroidsWiggle(false);
                         // audio fx
