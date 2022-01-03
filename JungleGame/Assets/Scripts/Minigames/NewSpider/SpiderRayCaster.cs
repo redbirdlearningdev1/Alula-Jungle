@@ -87,10 +87,39 @@ public class SpiderRayCaster : MonoBehaviour
                     if (result.gameObject.transform.CompareTag("Shell"))
                     {
                         selectedBug = result.gameObject.GetComponent<BugController>();
-                        selectedBug.PlayPhonemeAudio();
+
+                        if (NewSpiderGameManager.instance.playTutorial && NewSpiderGameManager.instance.tutorialEvent == 1)
+                        {
+                            StartCoroutine(NextSpiderwebTutorialPart());
+                        }   
+                        else
+                        {
+                            selectedBug.PlayPhonemeAudio();
+                        }
                     }
                 }
             }
         }
+    }
+
+    private IEnumerator NextSpiderwebTutorialPart()
+    {
+        // turn off raycaster
+        isOn = false;
+        // remove glow
+        ImageGlowController.instance.SetImageGlow(BugController.instance.image, false);
+
+        selectedBug.PlayPhonemeAudio();
+
+        yield return new WaitForSeconds(1f);
+
+        // play tutorial audio
+        List<AudioClip> clips = new List<AudioClip>();
+        clips.Add(GameIntroDatabase.instance.spiderwebsIntro3);
+        clips.Add(GameIntroDatabase.instance.spiderwebsIntro4);
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Spindle, clips);
+        yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
+        
+        NewSpiderGameManager.instance.ContinueTutorialPart();
     }
 }

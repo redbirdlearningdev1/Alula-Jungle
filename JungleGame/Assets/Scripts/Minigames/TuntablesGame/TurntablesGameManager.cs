@@ -34,11 +34,7 @@ public class TurntablesGameManager : MonoBehaviour
     public Color winDoorColor;
 
     [Header("Tutorial")]
-    public bool playInEditor;
     public bool playTutorial;
-
-    private bool repeatTutorialAudio = false;
-    private float timeBetweenRepeats = 8f;
 
     public int[] correctTutorialIcons;
     public List<ActionWordEnum> firstQuartet;
@@ -71,7 +67,8 @@ public class TurntablesGameManager : MonoBehaviour
         // get game data
         mapID = GameManager.instance.mapID;
 
-        if (!playInEditor)
+        // only turn off tutorial if false
+        if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().turntablesTutorial;
 
         PregameSetup();
@@ -193,11 +190,21 @@ public class TurntablesGameManager : MonoBehaviour
         }
 
         // set up the keys
-        KeySetup();
+        if (playTutorial)
+        {
+            TutorialKeySetup();
+        }
+        else
+        {
+            KeySetup();
+        }
+        
         // set first frame icon
         frameIcon.SetFrameIcon(doorWords[currentDoorIndex]);
-        // make keys interactable
-        SetKeysInteractable(true);
+        // turn off keyRaycaster
+        KeyRaycaster.instance.isOn = false;
+        // make keys not interactable
+        SetKeysInteractable(false);
     }
 
     /* 
@@ -249,11 +256,21 @@ public class TurntablesGameManager : MonoBehaviour
         yield return new WaitForSeconds(RopeController.instance.moveTime * 0.75f);
         RopeController.instance.AnimateKeysDown();
         gameStart = true;
+
+        // turn on keyRaycaster
+        KeyRaycaster.instance.isOn = true;
+        // make keys interactable
+        SetKeysInteractable(true);
     }  
 
     // evaluate selected key
     public bool EvaluateSelectedKey(Key key)
     {
+        // turn off keyRaycaster
+        KeyRaycaster.instance.isOn = false;
+        // make keys not interactable
+        SetKeysInteractable(false);
+
         // tutorial evaluation if in tutorial game
         if (playTutorial)
         {
@@ -302,6 +319,11 @@ public class TurntablesGameManager : MonoBehaviour
         // play stone moving audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.ErrieGlow, 0.2f);
 
+        // play encouragement popup
+        AudioClip clip = GameIntroDatabase.instance.turntablesEncouragementClips[Random.Range(0, GameIntroDatabase.instance.turntablesEncouragementClips.Count)];
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
         // increment values
         currentDoorIndex++;
         // toggle outline on
@@ -322,6 +344,8 @@ public class TurntablesGameManager : MonoBehaviour
         yield return new WaitForSeconds(RopeController.instance.moveTime * 0.75f);
         RopeController.instance.AnimateKeysDown();
 
+        // turn on keyRaycaster
+        KeyRaycaster.instance.isOn = true;
         // make keys interactable
         SetKeysInteractable(true);
     }
@@ -338,6 +362,17 @@ public class TurntablesGameManager : MonoBehaviour
         RopeController.instance.AnimateKeysUp();
         yield return new WaitForSeconds(animateKeysDownDelay);
         RopeController.instance.MoveFromNormalToEnd();
+
+
+        // play reminder popup
+        List<AudioClip> clips = new List<AudioClip>();
+        clips.Add(GameIntroDatabase.instance.turntablesReminder1);
+        clips.Add(GameIntroDatabase.instance.turntablesReminder2);
+        clips.Add(GameIntroDatabase.instance.turntablesReminder3);
+
+        AudioClip clip = clips[Random.Range(0, clips.Count)];
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
+        yield return new WaitForSeconds(clip.length + 1f);
         
         // change door to have a new icon
         ActionWordEnum newWord = GetUnusedWord();
@@ -383,6 +418,8 @@ public class TurntablesGameManager : MonoBehaviour
         yield return new WaitForSeconds(RopeController.instance.moveTime * 0.75f);
         RopeController.instance.AnimateKeysDown();
 
+        // turn on keyRaycaster
+        KeyRaycaster.instance.isOn = true;
         // make keys interactable
         SetKeysInteractable(true);
     }
@@ -479,18 +516,8 @@ public class TurntablesGameManager : MonoBehaviour
         SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // play tutorial audio 1
-        AudioClip clip = AudioDatabase.instance.TurntablesTutorial_1;
-        AudioManager.instance.PlayTalk(clip);
-        yield return new WaitForSeconds(clip.length + 1f);
-
-        // play tutorial audio 2
-        clip = AudioDatabase.instance.TurntablesTutorial_2;
-        AudioManager.instance.PlayTalk(clip);
-        yield return new WaitForSeconds(clip.length + 1f);
-
-        // play tutorial audio 3
-        clip = AudioDatabase.instance.TurntablesTutorial_3;
-        AudioManager.instance.PlayTalk(clip);
+        AudioClip clip = GameIntroDatabase.instance.turntablesIntro1;
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
         yield return new WaitForSeconds(clip.length + 1f);
 
         // toggle outline on
@@ -500,30 +527,20 @@ public class TurntablesGameManager : MonoBehaviour
         RopeController.instance.AnimateKeysDown();
         // glow the correct key
         RopeController.instance.SetKeyGlow(keys[correctKeyIndex], true);
+
+        yield return new WaitForSeconds(1f);
+
+        // play tutorial audio 2
+        clip = GameIntroDatabase.instance.turntablesIntro2;
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Red, clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
         gameStart = true;
 
+        // turn on keyRaycaster
+        KeyRaycaster.instance.isOn = true;
         // make keys interactable
         SetKeysInteractable(true);
-    }
-
-    private IEnumerator RepeatTutorialAudioRoutine(AudioClip clip)
-    {
-        // play initially
-        AudioManager.instance.PlayTalk(clip);
-
-        // repeat until bool is false
-        float timer = 0f;
-        repeatTutorialAudio = true;
-        while (repeatTutorialAudio)
-        {
-            timer += Time.deltaTime;
-            if (timer > timeBetweenRepeats)
-            {
-                AudioManager.instance.PlayTalk(clip);
-                timer = 0f;
-            }
-            yield return null;
-        }
     }
 
     // evaluate selected key
@@ -535,13 +552,6 @@ public class TurntablesGameManager : MonoBehaviour
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.KeyUnlock, 1f);
             AudioManager.instance.PlayKeyJingle();
 
-            // play tutorial audio 4
-            if (currentDoorIndex == 0)
-            {
-                AudioClip clip = AudioDatabase.instance.TurntablesTutorial_4;
-                AudioManager.instance.PlayTalk(clip);
-            }
-
             // success! go on to the next door or win game if on last door
             if (currentDoorIndex < 3)
                 StartCoroutine(TutorialCorrectRoutine());
@@ -549,9 +559,6 @@ public class TurntablesGameManager : MonoBehaviour
                 StartCoroutine(TutorialCompleteRoutine());
             return true;
         }
-        // play success audio
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 1f);
-        AudioManager.instance.PlayKeyJingle();
 
         // incorrect choice - try again
         StartCoroutine(TutorialIncorrectRoutine());
@@ -577,7 +584,23 @@ public class TurntablesGameManager : MonoBehaviour
         // play stone moving audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.ErrieGlow, 0.2f);
 
-        // increment value
+        // play tutorial intro 4
+        if (currentDoorIndex == 0)
+        {
+            // play tutorial audio 4
+            AudioClip clip = GameIntroDatabase.instance.turntablesIntro4;
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Red, clip);
+            yield return new WaitForSeconds(clip.length + 1f);
+        }
+        else
+        {
+            // play encouragement popup
+            AudioClip clip = GameIntroDatabase.instance.turntablesEncouragementClips[Random.Range(0, GameIntroDatabase.instance.turntablesEncouragementClips.Count)];
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
+            yield return new WaitForSeconds(clip.length + 1f);
+        }
+
+        // increment values
         currentDoorIndex++;
         // toggle outline on
         GlowOutline(currentDoorIndex);
@@ -592,13 +615,15 @@ public class TurntablesGameManager : MonoBehaviour
 
         // get new keys
         RopeController.instance.InitNewRope();
-        TutorialKeySetup();
+        KeySetup();
         RopeController.instance.MoveFromInitToNormal();
         yield return new WaitForSeconds(RopeController.instance.moveTime * 0.75f);
         RopeController.instance.AnimateKeysDown();
         // glow the correct key
         RopeController.instance.SetKeyGlow(keys[correctKeyIndex], true);
 
+        // turn on keyRaycaster
+        KeyRaycaster.instance.isOn = true;
         // make keys interactable
         SetKeysInteractable(true);
     }
@@ -613,10 +638,20 @@ public class TurntablesGameManager : MonoBehaviour
         RopeController.instance.AnimateKeysUp();
         yield return new WaitForSeconds(animateKeysDownDelay);
         RopeController.instance.MoveFromNormalToEnd();
-        
         // play icon switch audio
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.LargeRockSlide, 1f);
         yield return new WaitForSeconds(0.2f);
+
+        // play reminder popup
+        List<AudioClip> clips = new List<AudioClip>();
+        clips.Add(GameIntroDatabase.instance.turntablesReminder1);
+        clips.Add(GameIntroDatabase.instance.turntablesReminder2);
+        clips.Add(GameIntroDatabase.instance.turntablesReminder3);
+
+        AudioClip clip = clips[Random.Range(0, clips.Count)];
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
         // shake the door icon
         doors[currentDoorIndex].ShakeIconSwitch(doorWords[currentDoorIndex]);
         
@@ -634,6 +669,8 @@ public class TurntablesGameManager : MonoBehaviour
         // glow the correct key
         RopeController.instance.SetKeyGlow(keys[correctKeyIndex], true);
 
+        // turn on keyRaycaster
+        KeyRaycaster.instance.isOn = true;
         // make keys interactable
         SetKeysInteractable(true);
     }
@@ -724,7 +761,7 @@ public class TurntablesGameManager : MonoBehaviour
     {
         // get new keys from rope controller
         keys = RopeController.instance.GetKeys();
-
+        
         // set current key
         if (randomizeKeyPosition)
             correctKeyIndex = Random.Range(0, 4);
@@ -732,29 +769,16 @@ public class TurntablesGameManager : MonoBehaviour
             correctKeyIndex = 0;
         keys[correctKeyIndex].SetKeyActionWord(doorWords[currentDoorIndex]);
 
-        if (!playTutorial)
+        // set other keys to be random word (not current or other door words)
+        List<ActionWordEnum> exceptList = new List<ActionWordEnum>();
+        exceptList.Add(doorWords[currentDoorIndex]);
+        for (int j = 0; j < 4; j++)
         {
-            // set other keys to be random word (not current or other door words)
-            List<ActionWordEnum> exceptList = new List<ActionWordEnum>();
-            exceptList.Add(doorWords[currentDoorIndex]);
-            for (int j = 0; j < 4; j++)
+            if (j != correctKeyIndex)
             {
-                if (j != correctKeyIndex)
-                {
-                    ActionWordEnum word = GetRandomWord(exceptList);
-                    exceptList.Add(word);
-                    keys[j].SetKeyActionWord(word);
-                }
-            }
-        }
-        else
-        {
-            for (int j = 0; j < 4; j++)
-            {
-                if (j != correctKeyIndex)
-                {
-                    keys[j].SetKeyActionWord(ActionWordEnum._blank);
-                }
+                ActionWordEnum word = GetRandomWord(exceptList);
+                exceptList.Add(word);
+                keys[j].SetKeyActionWord(word);
             }
         }
     }

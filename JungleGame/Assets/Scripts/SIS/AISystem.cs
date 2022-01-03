@@ -83,6 +83,8 @@ public static class AISystem
             // add other cases here
         }
 
+        
+
         // return random index
         int index = Random.Range(0, challengeGameOptions.Count);
         return challengeGameOptions[index];

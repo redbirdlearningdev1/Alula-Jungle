@@ -401,6 +401,23 @@ public class SeaShellGameManager : MonoBehaviour
         CoinHolder.instance.BaseCoinHolder();
         yield return new WaitForSeconds(1f);
 
+        // play random reminder popup
+        int index = Random.Range(0, 2);
+        AudioClip clip = null;
+        switch (index)
+        {
+            case 0:
+                clip = GameIntroDatabase.instance.seashellReminder1;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Sylvie, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+                break;
+            case 1:
+                clip = GameIntroDatabase.instance.seashellReminder2;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Celeste, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+                break;
+        }
+
         StartCoroutine(StartGame());
     }
 }

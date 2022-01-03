@@ -18912,6 +18912,40 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b5b40ef5095a3234d93d0bc1a882df3b, type: 3}
   - {fileID: 8300000, guid: 58511fa696d13f840a951bdaaa0950de, type: 3}
   - {fileID: 8300000, guid: 0a14f6fd67cd3e744b1ba3c0582051c9, type: 3}
+  turntablesIntro1: {fileID: 8300000, guid: a8856ba9479a36d48aa84f9f6cacd17a, type: 3}
+  turntablesIntro2: {fileID: 8300000, guid: 9b6e733552c549342b88cef33ebdaba8, type: 3}
+  turntablesIntro3: {fileID: 8300000, guid: f0dfa1ca43a15dc4d8826fe421bd1037, type: 3}
+  turntablesIntro4: {fileID: 8300000, guid: cac56f22ba0a15842acb5018cc3b5cc0, type: 3}
+  turntablesReminder1: {fileID: 8300000, guid: 757e94868286bbd4fb2b773ca68545f2, type: 3}
+  turntablesReminder2: {fileID: 8300000, guid: 9a296e95162a7ea49933ee3d69a297d4, type: 3}
+  turntablesReminder3: {fileID: 8300000, guid: 43752af12d180b24eb0996b693b0515d, type: 3}
+  turntablesEncouragementClips:
+  - {fileID: 8300000, guid: dbeaaae5df10ef24a9f44345e35ac258, type: 3}
+  - {fileID: 8300000, guid: 6aaf453f7123ef444a8669be7fc7b532, type: 3}
+  - {fileID: 8300000, guid: d8fe17c203b8c374fa4f811336f8339a, type: 3}
+  rummageIntro1: {fileID: 8300000, guid: 9ffa4b3405d35b443a0d51999309604c, type: 3}
+  rummageIntro2: {fileID: 8300000, guid: 70bd65a9ed9a6904c82f29eb768f01b3, type: 3}
+  rummageIntro3: {fileID: 8300000, guid: 9e607177c176216428236e0f8514b45e, type: 3}
+  rummageIntro4: {fileID: 8300000, guid: 83d838e81e3e65e4c9cc5c400a14be47, type: 3}
+  rummageIntro5: {fileID: 8300000, guid: d1310fad6276c6d45b90984eb90cef91, type: 3}
+  rummageReminder1: {fileID: 8300000, guid: 6dc62e256adbe1047968811156fac5fe, type: 3}
+  rummageReminder2: {fileID: 8300000, guid: 98a39d0a195e5cc419ed854d69f1d8a7, type: 3}
+  rummageReminder3: {fileID: 8300000, guid: c415bd0ec11427f4dac776d6802a5045, type: 3}
+  rummageEncouragementClips:
+  - {fileID: 8300000, guid: d9fa4dc9f9186514abcf82a2c01e2ae3, type: 3}
+  - {fileID: 8300000, guid: f0a4f1bfd2626d647ad99963aae44e42, type: 3}
+  - {fileID: 8300000, guid: 9f363a05af914ec4fb3910f3536cc98f, type: 3}
+  spiderwebsIntro1: {fileID: 8300000, guid: 8f299e56a47204146911752d877564a7, type: 3}
+  spiderwebsIntro2: {fileID: 8300000, guid: a189bd93abb318f49ab4a693af3363d0, type: 3}
+  spiderwebsIntro3: {fileID: 8300000, guid: cb584528ba5e7754f85f23964cfa23b8, type: 3}
+  spiderwebsIntro4: {fileID: 8300000, guid: 2f155172d40d26d4a84f7c2a189e1b75, type: 3}
+  spiderwebsIntro5: {fileID: 8300000, guid: 87c759aa51eaad340bc8f0fc4c00c656, type: 3}
+  spiderwebsReminder1: {fileID: 8300000, guid: aee4b40ff45be404994337fd6c222c3e, type: 3}
+  spiderwebsReminder2: {fileID: 8300000, guid: 82ff9fffe19ae6740ba7e11e1968e79f, type: 3}
+  spiderwebsEncouragementClips:
+  - {fileID: 8300000, guid: 8f34dd1beea1e984c861dcb9bab47c14, type: 3}
+  - {fileID: 8300000, guid: 0fa9f5072eee0d1429cbc753be7899e4, type: 3}
+  - {fileID: 8300000, guid: 602e0cfff93e2054a9a244f39d544b2e, type: 3}
 --- !u!1 &7026129080566916980
 GameObject:
   m_ObjectHideFlags: 0
@@ -20439,7 +20473,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 46.3464, y: 0.005817631}
+  m_AnchoredPosition: {x: 46.592503, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

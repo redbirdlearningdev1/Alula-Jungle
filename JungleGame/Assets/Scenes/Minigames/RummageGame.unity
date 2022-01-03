@@ -1435,7 +1435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f6710a9b7d8d574ba3cd4dc6b690ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOn: 1
+  isOn: 0
   pileChosen: 0
   Chester: {fileID: 1427296688}
   piles:
@@ -1471,8 +1471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b50bb302fe09c346a637cd003e82718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playingInEditor: 0
-  playTutorial: 0
   orc: {fileID: 606159618}
   chest: {fileID: 1427296688}
   stretch: {fileID: 1256558084}
@@ -1518,6 +1516,7 @@ MonoBehaviour:
   - {fileID: 1107992950}
   - {fileID: 2042882692}
   selectedRummageCoin: {fileID: 0}
+  playTutorial: 0
   tutorialPiles:
   - list: 01000000000000000000000000000000
   - list: 02000000000000000000000000000000
@@ -5510,7 +5509,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 47.024757
+      value: 47.320152
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

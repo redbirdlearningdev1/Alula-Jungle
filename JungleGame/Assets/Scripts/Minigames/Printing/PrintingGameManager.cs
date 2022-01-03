@@ -356,10 +356,16 @@ public class PrintingGameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CannonFall, 0.25f);
 
-        // play "so-close" quip if not in tutorial
+        
         if (!playTutorial)
         {
-            AudioClip clip = GameIntroDatabase.instance.pirateEncouragementClips[2];
+            // play reminder popup
+            List<AudioClip> clips = new List<AudioClip>();
+            clips.Add(GameIntroDatabase.instance.pirateReminder1);
+            clips.Add(GameIntroDatabase.instance.pirateReminder2);
+            clips.Add( GameIntroDatabase.instance.pirateEncouragementClips[2]);
+            
+            AudioClip clip = clips[Random.Range(0, clips.Count)];
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Ollie, clip);
             yield return new WaitForSeconds(clip.length + 1f);
         }

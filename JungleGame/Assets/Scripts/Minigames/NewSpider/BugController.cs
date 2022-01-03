@@ -10,6 +10,9 @@ public enum BugType
 
 public class BugController : MonoBehaviour
 {
+    public static BugController instance;
+
+
     public ActionWordEnum type;
     public Transform WebLand;
     public Transform flyOffScreenPos;
@@ -20,7 +23,7 @@ public class BugController : MonoBehaviour
     private BugType currentBugType;
     private Animator animator;
     private BoxCollider2D myCollider;
-    private Image image;
+    public Image image;
     private bool audioPlaying;
 
     // original vars
@@ -28,6 +31,9 @@ public class BugController : MonoBehaviour
 
     void Awake()
     {
+        if (instance == null)
+            instance = this;
+
         animator = GetComponent<Animator>();
 
         RectTransform rt = GetComponent<RectTransform>();

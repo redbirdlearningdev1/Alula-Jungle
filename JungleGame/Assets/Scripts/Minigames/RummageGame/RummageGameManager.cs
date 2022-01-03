@@ -16,9 +16,6 @@ public class RummageGameManager : MonoBehaviour
 
     private MapIconIdentfier mapID = MapIconIdentfier.None;
 
-    public bool playingInEditor;
-    public bool playTutorial;
-
     private int timesMissed = 0;
     private int currentPile = 0;
 
@@ -60,6 +57,7 @@ public class RummageGameManager : MonoBehaviour
     private int lastLocation;
 
     [Header("Tutorial Stuff")]
+    public bool playTutorial;
     public List<RummageTutorialList> tutorialPiles;
     public int[] correctIndexes;
     private int tutorialEvent = 0;
@@ -80,11 +78,28 @@ public class RummageGameManager : MonoBehaviour
 
         // get game data
         mapID = GameManager.instance.mapID;
+    }
 
-        if (!playingInEditor)
+    void Start()
+    {
+        // only turn off tutorial if false
+        if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().rummageTutorial;
 
         PregameSetup();
+
+        if (playTutorial)
+        {
+            StartCoroutine(StartTutorial());
+        }   
+        else
+        {
+            // start song
+            AudioManager.instance.InitSplitSong(SplitSong.Rummage);
+            AudioManager.instance.IncreaseSplitSong();
+
+            StartCoroutine(StartGame());
+        }
     }
 
     private void PregameSetup()
@@ -92,6 +107,9 @@ public class RummageGameManager : MonoBehaviour
         // start ambient sounds
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 1f, "forest_ambiance");
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.1f, "river_flowing");
+
+        // turn off raycaster
+        RummageCoinRaycaster.instance.isOn = false;
 
         // create coin list
         foreach (var coin in pile1)
@@ -135,19 +153,6 @@ public class RummageGameManager : MonoBehaviour
         }
 
         prevMainCoins = new List<ActionWordEnum>();
-
-        if (playTutorial)
-        {
-            StartCoroutine(StartTutorial());
-        }   
-        else
-        {
-            // start song
-            AudioManager.instance.InitSplitSong(SplitSong.Rummage);
-            AudioManager.instance.IncreaseSplitSong();
-
-            StartCoroutine(StartGame());
-        }
     }
 
     private IEnumerator StartGame()
@@ -163,8 +168,11 @@ public class RummageGameManager : MonoBehaviour
 
         StartCoroutine(SetPileGlow(true));
         StartCoroutine(SetPileWiggles(true));
+
         // make coins interactable
         SetCoinsInteractable(true);
+        // turn on raycaster
+        RummageCoinRaycaster.instance.isOn = true;
     }
 
     private IEnumerator StartTutorial()
@@ -175,27 +183,19 @@ public class RummageGameManager : MonoBehaviour
         // show menu button
         SettingsManager.instance.ToggleMenuButtonActive(true);
 
-        // play tutorial audio 1
-        AudioClip clip = AudioDatabase.instance.RummageTutorial_1;
-        AudioManager.instance.PlayTalk(clip);
-        yield return new WaitForSeconds(clip.length + 1f);
-
-        // play tutorial audio 2
-        clip = AudioDatabase.instance.RummageTutorial_2;
-        AudioManager.instance.PlayTalk(clip);
-        yield return new WaitForSeconds(clip.length + 1f);
-
-        // play tutorial audio 3
-        clip = AudioDatabase.instance.RummageTutorial_3;
-        AudioManager.instance.PlayTalk(clip);
-        yield return new WaitForSeconds(clip.length + 1f);
+        // play tutorial audio
+        List<AudioClip> clips = new List<AudioClip>();
+        clips.Add(GameIntroDatabase.instance.rummageIntro1);
+        clips.Add(GameIntroDatabase.instance.rummageIntro2);
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Clogg, clips);
+        yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
 
         // reveal dancing man
         StartCoroutine(ShowDancingManRoutine());
         yield return new WaitForSeconds(1f);
 
-        // make coins interactable
-        SetCoinsInteractable(true);
+        // turn on raycaster
+        RummageCoinRaycaster.instance.isOn = true;
 
         NextTutorialEvent();
     }
@@ -375,12 +375,8 @@ public class RummageGameManager : MonoBehaviour
 
     public bool EvaluateSelectedRummageCoin(RummageCoin coin)
     {
-        // play audio iff winCount == 0
-        if (winCount == 0)
-        {
-            AudioClip clip = AudioDatabase.instance.FroggerTutorial_3;
-            AudioManager.instance.PlayTalk(clip);
-        }
+        // turn off raycaster
+        RummageCoinRaycaster.instance.isOn = false;
 
         // make pile normal sized
         piles[currentPile].GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
@@ -424,6 +420,8 @@ public class RummageGameManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
             orc.channelOrc();
 
+            // turn on raycaster
+            RummageCoinRaycaster.instance.isOn = true;
             // make coins interactable
             SetCoinsInteractable(true);
 
@@ -439,9 +437,24 @@ public class RummageGameManager : MonoBehaviour
         stretch.stretchIn();
         yield return new WaitForSeconds(1f);
         orc.GoToOrigin();
+
         yield return new WaitForSeconds(2.0f);
         orc.stopOrc();
         atPile = false;
+
+
+        // play reminder popup
+        List<AudioClip> clips = new List<AudioClip>();
+        clips.Add(GameIntroDatabase.instance.rummageReminder1);
+        clips.Add(GameIntroDatabase.instance.rummageReminder2);
+        clips.Add(GameIntroDatabase.instance.rummageReminder3);
+
+        AudioClip clip = clips[Random.Range(0, clips.Count)];
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Clogg, clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
+
+
         UnlockAllPiles();
         piles[0].colliderOn();
         piles[1].colliderOn();
@@ -452,6 +465,8 @@ public class RummageGameManager : MonoBehaviour
 
         // make coins interactable
         SetCoinsInteractable(true);
+        // turn on raycaster
+        RummageCoinRaycaster.instance.isOn = true;
     }
 
     private IEnumerator CoinSuccessRoutine(GameObject currCoin)
@@ -488,6 +503,7 @@ public class RummageGameManager : MonoBehaviour
         stretch.stretchIn();
 
         orc.GoToOrigin();
+
         
         yield return new WaitForSeconds(2f);
         orc.successOrc();
@@ -533,8 +549,35 @@ public class RummageGameManager : MonoBehaviour
 
         if (playTutorial)
         {
+            if (tutorialEvent == 1)
+            {
+                // play tutorial audio
+                AudioClip clip = GameIntroDatabase.instance.rummageIntro5;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Clogg, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+            }
+            else
+            {
+                // play encouragement popup
+                List<AudioClip> clips = GameIntroDatabase.instance.rummageEncouragementClips;
+                AudioClip clip = clips[Random.Range(0, clips.Count)];
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Clogg, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+            }
+
+            // turn on raycaster
+            RummageCoinRaycaster.instance.isOn = true;
+
             NextTutorialEvent();
             yield break;
+        }
+        else
+        {
+            // play encouragement popup
+            List<AudioClip> clips = GameIntroDatabase.instance.rummageEncouragementClips;
+            AudioClip clip = clips[Random.Range(0, clips.Count)];
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Clogg, clip);
+            yield return new WaitForSeconds(clip.length + 1f);
         }
 
         yield return new WaitForSeconds(.25f);
@@ -542,6 +585,9 @@ public class RummageGameManager : MonoBehaviour
 
         StartCoroutine(SetPileWiggles(true));
         yield return new WaitForSeconds(.25f);
+
+        // turn on raycaster
+        RummageCoinRaycaster.instance.isOn = true;
     }
 
     private IEnumerator WinRoutine(GameObject currCoin)
@@ -709,6 +755,21 @@ public class RummageGameManager : MonoBehaviour
         }
 
         SelectTutorialCoin(pileSet, index);
+
+        if (index == 0)
+        {
+            // play tutorial audio
+            List<AudioClip> clips = new List<AudioClip>();
+            clips.Add(GameIntroDatabase.instance.rummageIntro3);
+            clips.Add(GameIntroDatabase.instance.rummageIntro4);
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Clogg, clips);
+            yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
+        }
+        
+        // turn on raycaster
+        RummageCoinRaycaster.instance.isOn = true;
+        // make coins not interactable
+        SetCoinsInteractable(true);
     }
 
     private void SelectTutorialCoin(List<RummageCoin> pile, int index)

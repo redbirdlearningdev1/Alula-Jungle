@@ -192,11 +192,17 @@ public class FroggerGameManager : MonoBehaviour
         StartCoroutine(HideCoins(currRow));
         yield return new WaitForSeconds(1f);
 
-        // play "so close!" popup
-        AudioClip clip = GameIntroDatabase.instance.froggerEncouragementClips[1];
+        // play reminder popup
+        List<AudioClip> clips = new List<AudioClip>();
+        clips.Add(GameIntroDatabase.instance.froggerReminder1);
+        clips.Add(GameIntroDatabase.instance.froggerReminder2);
+        clips.Add( GameIntroDatabase.instance.froggerEncouragementClips[1]);
+        
+        AudioClip clip = clips[Random.Range(0, clips.Count)];
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clip);
         yield return new WaitForSeconds(clip.length + 1f);
 
+        // sink logs
         rows[currRow].SinkAllLogs();
         yield return new WaitForSeconds(1f);
         

@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class KeyRaycaster : MonoBehaviour
 {
+    public static KeyRaycaster instance;
+
     public bool isOn = false;
     public float keyMoveSpeed = 1f;
     public Vector3 oddOffset;
@@ -12,6 +14,14 @@ public class KeyRaycaster : MonoBehaviour
 
     private Key selectedKey = null;
     [SerializeField] private Transform selectedKeyParent;
+
+    private bool playedKeyTutorialPart = false;
+
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
 
     void Update()
     {
@@ -115,6 +125,15 @@ public class KeyRaycaster : MonoBehaviour
 
                         selectedKey = key;
 
+                        // play tutorial intro 3 if tutorial
+                        if (TurntablesGameManager.instance.playTutorial && !playedKeyTutorialPart)
+                        {
+                            playedKeyTutorialPart = true;
+
+                            StartCoroutine(TutorialPopupRoutine());
+                            return;
+                        }
+
                         // make other keys not interactable
                         TurntablesGameManager.instance.SetKeysInteractable(false);
 
@@ -135,4 +154,23 @@ public class KeyRaycaster : MonoBehaviour
             }
         }
     }
+
+    private IEnumerator TutorialPopupRoutine()
+    {
+        isOn = false;
+        selectedKey.PlayAudio();
+
+        yield return new WaitForSeconds(1f);
+
+        // play tutorial audio 3
+        AudioClip clip = GameIntroDatabase.instance.turntablesIntro3;
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Red, clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
+        // reset key
+        selectedKey.ReturnToRope();
+        selectedKey = null;
+
+        isOn = true;
+    }   
 }

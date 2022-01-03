@@ -458,7 +458,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 114.64, y: 186.83}
+  m_AnchoredPosition: {x: 114.64, y: 186.83002}
   m_SizeDelta: {x: 684.66, y: 909.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &541689694
@@ -1285,7 +1285,6 @@ MonoBehaviour:
   randomizeKeyPosition: 1
   finishedDoorColor: {r: 1, g: 0.79205453, b: 0, a: 1}
   winDoorColor: {r: 0, g: 0.71623945, b: 1, a: 1}
-  playInEditor: 0
   playTutorial: 0
   correctTutorialIcons: 00000000010000000200000003000000
   firstQuartet: 08000000000000000000000000000000
@@ -1304,7 +1303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950624137457efb4996fbcca0fbe6806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOn: 1
+  isOn: 0
   keyMoveSpeed: 0.5
   oddOffset: {x: -0.02, y: 0.03, z: 0}
   evenOffset: {x: 0.02, y: 0.03, z: 0}
@@ -2399,7 +2398,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 44.9764
+      value: 45.313366
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

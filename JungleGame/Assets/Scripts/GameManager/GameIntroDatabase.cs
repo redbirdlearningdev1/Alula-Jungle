@@ -55,4 +55,41 @@ public class GameIntroDatabase : MonoBehaviour
     public AudioClip seashellReminder2;
 
     public List<AudioClip> seashellEncouragementClips;
+
+    [Header("Turntables Game")]
+    public AudioClip turntablesIntro1;
+    public AudioClip turntablesIntro2;
+    public AudioClip turntablesIntro3;
+    public AudioClip turntablesIntro4;
+
+    public AudioClip turntablesReminder1;
+    public AudioClip turntablesReminder2;
+    public AudioClip turntablesReminder3;
+
+    public List<AudioClip> turntablesEncouragementClips;
+
+    [Header("Rummage Game")]
+    public AudioClip rummageIntro1;
+    public AudioClip rummageIntro2;
+    public AudioClip rummageIntro3;
+    public AudioClip rummageIntro4;
+    public AudioClip rummageIntro5;
+
+    public AudioClip rummageReminder1;
+    public AudioClip rummageReminder2;
+    public AudioClip rummageReminder3;
+
+    public List<AudioClip> rummageEncouragementClips;
+
+    [Header("Spiderwebs Game")]
+    public AudioClip spiderwebsIntro1;
+    public AudioClip spiderwebsIntro2;
+    public AudioClip spiderwebsIntro3;
+    public AudioClip spiderwebsIntro4;
+    public AudioClip spiderwebsIntro5;
+
+    public AudioClip spiderwebsReminder1;
+    public AudioClip spiderwebsReminder2;
+
+    public List<AudioClip> spiderwebsEncouragementClips;
 }

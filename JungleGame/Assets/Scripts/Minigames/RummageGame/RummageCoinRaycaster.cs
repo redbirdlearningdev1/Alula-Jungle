@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class RummageCoinRaycaster : MonoBehaviour
 {
+    public static RummageCoinRaycaster instance;
+
     public bool isOn = false;
     public bool pileChosen = false;
     private RummageCoin selectedRummageCoin = null;
@@ -12,6 +14,12 @@ public class RummageCoinRaycaster : MonoBehaviour
     [SerializeField]  private chest Chester;
     [SerializeField] private List<pileRummage> piles;
     [SerializeField] private Transform selectedCoinParent;
+
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
 
     void Update()
     {
