@@ -121,8 +121,13 @@ public static class LoadSaveSystem
         new_data.turntablesTutorial =   default_tutorial;
         new_data.spiderwebTutorial =    default_tutorial;
         new_data.rummageTutorial =      default_tutorial;
-        new_data.pirateTutorial =      default_tutorial;
-        new_data.seashellTutorial =      default_tutorial;
+        new_data.pirateTutorial =       default_tutorial;
+        new_data.seashellTutorial =     default_tutorial;
+
+        new_data.wordFactoryBlendingTutorial =      default_tutorial;
+        new_data.wordFactoryBuildingTutorial =      default_tutorial;
+        new_data.wordFactoryDeletingTutorial =      default_tutorial;
+        new_data.wordFactorySubstitutingTutorial =  default_tutorial;
 
         // pools
         new_data.actionWordPool = new List<ActionWordEnum>();

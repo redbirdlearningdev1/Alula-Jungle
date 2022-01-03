@@ -377,6 +377,11 @@ public class DevMenuManager : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().rummageTutorial = true;
         StudentInfoSystem.GetCurrentProfile().seashellTutorial = true;
         StudentInfoSystem.GetCurrentProfile().pirateTutorial = true;
+        // challenge game tutorials
+        StudentInfoSystem.GetCurrentProfile().wordFactoryBlendingTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().wordFactoryBuildingTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().wordFactoryDeletingTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().wordFactorySubstitutingTutorial = true;
         
         switch ((StoryBeat)beat)
         {

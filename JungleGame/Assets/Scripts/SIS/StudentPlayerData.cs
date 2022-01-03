@@ -31,6 +31,11 @@ public class StudentPlayerData
     public bool pirateTutorial;
     public bool seashellTutorial;
 
+    public bool wordFactoryBlendingTutorial;
+    public bool wordFactoryBuildingTutorial;
+    public bool wordFactoryDeletingTutorial;
+    public bool wordFactorySubstitutingTutorial;
+
     // game progression
     public StoryBeat currStoryBeat;
     public bool unlockedStickerButton;

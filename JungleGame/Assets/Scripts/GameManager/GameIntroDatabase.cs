@@ -16,7 +16,7 @@ public class GameIntroDatabase : MonoBehaviour
 
     /* 
     ################################################
-    #   IN-GAME AUDIO DATABASE
+    #   MINIGAME AUDIO DATABASE
     ################################################
     */
 
@@ -92,4 +92,30 @@ public class GameIntroDatabase : MonoBehaviour
     public AudioClip spiderwebsReminder2;
 
     public List<AudioClip> spiderwebsEncouragementClips;
+
+    /* 
+    ################################################
+    #   CHALLENGE GAME AUDIO DATABASE
+    ################################################
+    */
+
+    [Header("Word Factory Blending Game")]
+    // tutorial clips
+    public AudioClip blendingIntro1;
+    public AudioClip blendingIntro2;
+    public AudioClip blendingIntro3;
+    public AudioClip blendingIntro4;
+    public AudioClip blendingIntro5;
+    public AudioClip blendingIntro6;
+    public AudioClip blendingIntro7;
+    public AudioClip blendingIntro8;
+    public AudioClip blendingIntro9;
+    public AudioClip blendingIntro10;
+    public AudioClip blendingIntro11;
+
+    // non-tutorial clips
+    public AudioClip blendingStart1;
+    public AudioClip blendingStart2;
+
+    public List<AudioClip> blendingReminderClips;
 }

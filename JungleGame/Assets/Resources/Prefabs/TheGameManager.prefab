@@ -18105,6 +18105,40 @@ MonoBehaviour:
   - {fileID: 8300000, guid: dd80230870bf90c44be206174b421963, type: 3}
   - {fileID: 8300000, guid: 89574d8b49a9eb6478fa09bce038709b, type: 3}
   - {fileID: 8300000, guid: 6d4e6291319617a419d4c12d251e78c0, type: 3}
+  juliusHahaList:
+  - {fileID: 8300000, guid: 4ba1e420cb2d0794f8b9a22068da693d, type: 3}
+  - {fileID: 8300000, guid: 801dec953266daa4d98138ee7bcae6c1, type: 3}
+  - {fileID: 8300000, guid: 33cde7854fa0e354990e62e9a048470d, type: 3}
+  juliusAhHahList:
+  - {fileID: 8300000, guid: 277898a00b1344642820bbe76d72ec3c, type: 3}
+  - {fileID: 8300000, guid: 82ee2ca09e3fa6441a10c0f67ccd201f, type: 3}
+  - {fileID: 8300000, guid: 67fd1067e4d512b44874db9494117cae, type: 3}
+  juliusHrmList:
+  - {fileID: 8300000, guid: 3579f3fdb9da6b14098274fe2f412893, type: 3}
+  - {fileID: 8300000, guid: 0ff7007046e59a64cbcaa42a09ecbb4b, type: 3}
+  - {fileID: 8300000, guid: 7162fdd4a62b48f47bdbd7b9d540a70c, type: 3}
+  juliusUghList:
+  - {fileID: 8300000, guid: 8ca88e9d2dfe75c4eba1cf7a8f54020c, type: 3}
+  - {fileID: 8300000, guid: 5e76a14c9bf011c43a9314d3f642665d, type: 3}
+  juliusGrrList:
+  - {fileID: 8300000, guid: 543efb1b28309d14c81a60ea570a8460, type: 3}
+  - {fileID: 8300000, guid: eb790293043024346966dec15648d9d0, type: 3}
+  redGaspList:
+  - {fileID: 8300000, guid: 8ebf401591090e846887fcb5c2ed0db1, type: 3}
+  - {fileID: 8300000, guid: cc2d1962122d7a241ab3d6c484fc0d8b, type: 3}
+  - {fileID: 8300000, guid: 97e1d97c075d05042a7b66eb318daa39, type: 3}
+  redWoohooList:
+  - {fileID: 8300000, guid: d46353b07cbe0694992efafdd6f4a014, type: 3}
+  - {fileID: 8300000, guid: c4d32cbdfcbb5ba4a8190f5e4685aac2, type: 3}
+  - {fileID: 8300000, guid: fa8e51fe50227054cae3f7983fd0e7ae, type: 3}
+  redHurrahList:
+  - {fileID: 8300000, guid: e2d3da4b48685584f8d9b3dafa08fcdb, type: 3}
+  - {fileID: 8300000, guid: 0560034b469e7e44b99a99ceeda32539, type: 3}
+  - {fileID: 8300000, guid: dc7b8cdc0ffdde14cbc32ec13976e143, type: 3}
+  redUhHuhList:
+  - {fileID: 8300000, guid: fcb50b2ce4ff55740bc46d7adb3afce0, type: 3}
+  - {fileID: 8300000, guid: 80f0cf465d8f05d4685f110c8612ec1d, type: 3}
+  - {fileID: 8300000, guid: 55962799c77af9c44be086bae98a180b, type: 3}
 --- !u!1 &6601884044968615698
 GameObject:
   m_ObjectHideFlags: 0
@@ -18946,6 +18980,23 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8f34dd1beea1e984c861dcb9bab47c14, type: 3}
   - {fileID: 8300000, guid: 0fa9f5072eee0d1429cbc753be7899e4, type: 3}
   - {fileID: 8300000, guid: 602e0cfff93e2054a9a244f39d544b2e, type: 3}
+  blendingIntro1: {fileID: 8300000, guid: c8f4f5e216eeefe4d94293cf38cbfadd, type: 3}
+  blendingIntro2: {fileID: 8300000, guid: 67d544d774b747940b38dac15f1f3ad0, type: 3}
+  blendingIntro3: {fileID: 8300000, guid: 47e022ad4220bc74f8957015fa4fb4ab, type: 3}
+  blendingIntro4: {fileID: 8300000, guid: 7135abf3c8868864380274ede9405790, type: 3}
+  blendingIntro5: {fileID: 8300000, guid: 10ba4e90bf9d2a14b898374fe7e8b97e, type: 3}
+  blendingIntro6: {fileID: 8300000, guid: 5980dd28628f0ef47914e0ff0f45e87f, type: 3}
+  blendingIntro7: {fileID: 8300000, guid: 90366c5939a7ae84eacdbbc194b7a0e2, type: 3}
+  blendingIntro8: {fileID: 8300000, guid: 3daac3c63dd47eb46a08e75510103071, type: 3}
+  blendingIntro9: {fileID: 8300000, guid: b257a5359930d5a49a001eca832f535e, type: 3}
+  blendingIntro10: {fileID: 8300000, guid: d7f8dc26608158a4e992c899c3171f04, type: 3}
+  blendingIntro11: {fileID: 8300000, guid: 7dd42274cb2620b4081f3dab91e9effb, type: 3}
+  blendingStart1: {fileID: 8300000, guid: 8c0e2f716b7f14f47a7e531d9c46c408, type: 3}
+  blendingStart2: {fileID: 8300000, guid: 2f2d846343ec735418dc1f341c7f5a8a, type: 3}
+  blendingReminderClips:
+  - {fileID: 8300000, guid: c6ad3f7f534320b44aaa83b95dd5a00b, type: 3}
+  - {fileID: 8300000, guid: e5a947c000bc47f498b6707972a30602, type: 3}
+  - {fileID: 8300000, guid: 4111716145bf1e84986d995e692fccff, type: 3}
 --- !u!1 &7026129080566916980
 GameObject:
   m_ObjectHideFlags: 0
@@ -20473,7 +20524,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 46.592503, y: 0.005817631}
+  m_AnchoredPosition: {x: 46.977604, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

@@ -151,6 +151,18 @@ public class TalkieDatabase : MonoBehaviour
     public List<AudioClip> redWallyOhList;
     public List<AudioClip> redWallyDarwinList;
 
+    public List<AudioClip> juliusHahaList;
+    public List<AudioClip> juliusAhHahList;
+    public List<AudioClip> juliusHrmList;
+    public List<AudioClip> juliusUghList;
+    public List<AudioClip> juliusGrrList;
+
+    public List<AudioClip> redGaspList;
+    public List<AudioClip> redWoohooList;
+    public List<AudioClip> redHurrahList;
+    public List<AudioClip> redUhHuhList;
+
+
 
 
     private List<TalkieObject> globalTalkieList; // list of all talkies in this database
@@ -216,6 +228,17 @@ public class TalkieDatabase : MonoBehaviour
             case "redwally_huh": return redWallyHuhList[Random.Range(0, redWallyHuhList.Count)];
             case "redwally_oh": return redWallyOhList[Random.Range(0, redWallyOhList.Count)];
             case "redwally_darwin": return redWallyDarwinList[Random.Range(0, redWallyDarwinList.Count)];
+
+            case "julius_haha": return juliusHahaList[Random.Range(0, juliusHahaList.Count)];
+            case "julius_ahhhah": return juliusAhHahList[Random.Range(0, juliusAhHahList.Count)];
+            case "julius_hrm": return juliusHrmList[Random.Range(0, juliusHrmList.Count)];
+            case "julius_ugh": return juliusUghList[Random.Range(0, juliusUghList.Count)];
+            case "julius_grr": return juliusGrrList[Random.Range(0, juliusGrrList.Count)];
+
+            case "red_gasp": return redGaspList[Random.Range(0, redGaspList.Count)];
+            case "red_woohoo": return redWoohooList[Random.Range(0, redWoohooList.Count)];
+            case "red_hurrah": return redHurrahList[Random.Range(0, redHurrahList.Count)];
+            case "red_uhhuh": return redUhHuhList[Random.Range(0, redUhHuhList.Count)];
         }
     }
 
