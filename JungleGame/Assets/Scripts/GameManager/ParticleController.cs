@@ -69,11 +69,11 @@ public class ParticleController : MonoBehaviour
         {
             switchTimer = 0f;
 
-            particleType++;
-            if (particleType > ParticleType.bubble)
-            {
-                particleType = ParticleType.stars;
-            }
+            //particleType++;
+            //if (particleType > ParticleType.bubble)
+            //{
+            //    particleType = ParticleType.stars;
+            //}
         }
 
         // if mouse button held down
@@ -131,5 +131,30 @@ public class ParticleController : MonoBehaviour
         {
             collider.SetActive(opt);
         }
+    }
+
+    public void SetActiveParticles(string charName)
+    {
+        if(charName == "Red" || charName == "Wally")
+        {
+            particleType = ParticleType.stars;
+        }
+        else if(charName == "Clogg" || charName == "Ollie" || charName == "Lester")
+        {
+            particleType = ParticleType.sand;
+        }
+        else if(charName == "Julius" || charName == "Marcus" || charName == "Brutus")
+        {
+            particleType = ParticleType.swirl;
+        }
+        else if(charName == "Bubbles" || charName == "Sylvie" || charName == "Celest")
+        {
+            particleType = ParticleType.bubble;
+        }
+        else if(charName == "Darwin" || charName == "Taxi Bird" || charName == "Spindle")
+        {
+            particleType = ParticleType.block;
+        }
+       
     }
 }
