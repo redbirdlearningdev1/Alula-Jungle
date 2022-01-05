@@ -19012,6 +19012,21 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a1854f5193328424c8771b69c50c4866, type: 3}
   - {fileID: 8300000, guid: 68eabf5b9c6b7dc459c4f8660fdbc48d, type: 3}
   - {fileID: 8300000, guid: 48497ff87dce118438177392cae8a2f8, type: 3}
+  buildingIntro1: {fileID: 8300000, guid: 669aaee3e9524444180692b692225db0, type: 3}
+  buildingIntro2: {fileID: 8300000, guid: eb5123032b0b21543bb33809060d4d3c, type: 3}
+  buildingIntro3: {fileID: 8300000, guid: 372e369faf3c6a34ebc18fcf7926dcb3, type: 3}
+  buildingIntro4: {fileID: 8300000, guid: a0e702d542fe94f43b9e08740bc60f35, type: 3}
+  buildingIntro5: {fileID: 8300000, guid: 9d8d56c1ea10eea4e9ac4c236b899266, type: 3}
+  buildingReminderClipsChapters1_4:
+  - {fileID: 8300000, guid: 7fe49ea17e5f1564c903b92db7169a74, type: 3}
+  - {fileID: 8300000, guid: b559924a81f6c754cbccf52f7b51c56c, type: 3}
+  - {fileID: 8300000, guid: e210196ca7036f44b95e3c1b6da94496, type: 3}
+  - {fileID: 8300000, guid: d8fb24fca9b0a0a47a310f982e95fd9e, type: 3}
+  buildingReminderClipsChapter5:
+  - {fileID: 8300000, guid: 3a5a9e2a0a8a7b441b7ee5f6996a29ab, type: 3}
+  - {fileID: 8300000, guid: 1191f0fd11e0b764dbb4dcea5d0a7861, type: 3}
+  - {fileID: 8300000, guid: 4cfceaed5aa171a4d8763888e9b66295, type: 3}
+  - {fileID: 8300000, guid: b3f10cc123215fb498b066659931a715, type: 3}
 --- !u!1 &7026129080566916980
 GameObject:
   m_ObjectHideFlags: 0
@@ -20539,7 +20554,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 47.066265, y: 0.005817631}
+  m_AnchoredPosition: {x: 47.155796, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

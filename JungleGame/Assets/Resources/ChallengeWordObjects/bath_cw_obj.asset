@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: bath
   audio: {fileID: 8300000, guid: e39aa298e59c4a243b7f6cd701d635a0, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 6ee93a41b8c36ae40b6e401eb1f844c6, type: 3}
   elkoninList: 160000000200000028000000000000000000000000000000
   elkoninCount: 3
   set: 1

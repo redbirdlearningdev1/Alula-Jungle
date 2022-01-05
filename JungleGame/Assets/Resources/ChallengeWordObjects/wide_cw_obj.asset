@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: wide
   audio: {fileID: 8300000, guid: c54edc4d05f8a554da8fdcff1dc4e7e9, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 5dae660e2e1d25c43ad2d66d6d92bdd9, type: 3}
   elkoninList: 2a0000000900000019000000000000000000000000000000
   elkoninCount: 3
   set: 8

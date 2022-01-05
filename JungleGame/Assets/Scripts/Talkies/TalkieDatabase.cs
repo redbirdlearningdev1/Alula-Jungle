@@ -230,7 +230,7 @@ public class TalkieDatabase : MonoBehaviour
             case "redwally_darwin": return redWallyDarwinList[Random.Range(0, redWallyDarwinList.Count)];
 
             case "julius_haha": return juliusHahaList[Random.Range(0, juliusHahaList.Count)];
-            case "julius_ahhhah": return juliusAhHahList[Random.Range(0, juliusAhHahList.Count)];
+            case "julius_ahhah": return juliusAhHahList[Random.Range(0, juliusAhHahList.Count)];
             case "julius_hrm": return juliusHrmList[Random.Range(0, juliusHrmList.Count)];
             case "julius_ugh": return juliusUghList[Random.Range(0, juliusUghList.Count)];
             case "julius_grr": return juliusGrrList[Random.Range(0, juliusGrrList.Count)];

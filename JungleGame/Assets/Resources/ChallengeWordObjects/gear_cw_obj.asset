@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: gear
   audio: {fileID: 8300000, guid: 3937afb65d5820e46a5fb36e2854c3cb, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 66caccac112f42a48acfb00c9f403359, type: 3}
   elkoninList: 1b0000000000000000000000000000000000000000000000
   elkoninCount: 2
   set: 0

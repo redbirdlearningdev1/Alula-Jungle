@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: snooze
   audio: {fileID: 8300000, guid: 72b994dd4c09e674fb0ebe3e3904663d, type: 3}
-  sprite: {fileID: 21300000, guid: f9ebee98b6ea9814db82f8211f482ff6, type: 3}
+  sprite: {fileID: 0}
   elkoninList: 25000000210000000b0000002d0000000000000000000000
   elkoninCount: 4
   set: 10

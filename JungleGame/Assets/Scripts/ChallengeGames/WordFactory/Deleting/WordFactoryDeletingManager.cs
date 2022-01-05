@@ -27,7 +27,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
 
     [Header("Tutorial")]
     public bool playTutorial;
-    public int tutorialEvent = 0;
+    private int tutorialEvent = 0;
     public WordPair tutorialPair1;
     public WordPair tutorialPair2;
     public WordPair tutorialPair3;

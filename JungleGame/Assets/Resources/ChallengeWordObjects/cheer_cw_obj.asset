@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: cheer
   audio: {fileID: 8300000, guid: 95d759f682e2b934f98165dcb536ed76, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: ab96797466fbf5540b46772175b2744b, type: 3}
   elkoninList: 180000000000000000000000000000000000000000000000
   elkoninCount: 2
   set: 0

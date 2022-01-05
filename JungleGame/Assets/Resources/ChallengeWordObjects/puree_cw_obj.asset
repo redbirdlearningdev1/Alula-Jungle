@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: puree
   audio: {fileID: 8300000, guid: 6d418d51e68aca9489454b33423a04cd, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: ddbe9a15c8550234d8d78c2d65efbd62, type: 3}
   elkoninList: 220000001100000007000000000000000000000000000000
   elkoninCount: 3
   set: 16

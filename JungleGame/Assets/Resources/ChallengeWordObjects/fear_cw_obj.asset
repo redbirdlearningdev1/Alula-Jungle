@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: fear
   audio: {fileID: 8300000, guid: 6d053e84994b7984b9a14d86ae0682b5, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 6615fed1205c59240b2f592c3d326eca, type: 3}
   elkoninList: 1a0000000000000000000000000000000000000000000000
   elkoninCount: 2
   set: 0

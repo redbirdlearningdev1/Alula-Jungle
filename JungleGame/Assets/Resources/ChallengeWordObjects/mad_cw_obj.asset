@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: mad
   audio: {fileID: 8300000, guid: 7e2a6e000139cd542b24aa040e3a54c5, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: f6267c017efc4984d90d6ccdfdaa097b, type: 3}
   elkoninList: 200000000200000019000000000000000000000000000000
   elkoninCount: 3
   set: 1

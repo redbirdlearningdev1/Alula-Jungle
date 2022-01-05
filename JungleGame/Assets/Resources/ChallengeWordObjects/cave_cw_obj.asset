@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: cave
   audio: {fileID: 8300000, guid: 92c32fc5c8b3a834e9f0da25c51ece8f, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 044f823a4a345c84e9d928170a71ef7f, type: 3}
   elkoninList: 170000000700000029000000000000000000000000000000
   elkoninCount: 3
   set: 6

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: spear
   audio: {fileID: 0}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: c6c37e95d47e25c40a42e721c616bb21, type: 3}
   elkoninList: 250000002200000000000000000000000000000000000000
   elkoninCount: 3
   set: 0

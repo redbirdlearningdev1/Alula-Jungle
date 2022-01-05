@@ -131,4 +131,17 @@ public class GameIntroDatabase : MonoBehaviour
     public List<AudioClip> deletingReminderClipsChapters1_4;
     // reminders chapters 5
     public List<AudioClip> deletingReminderClipsChapter5;
+
+    [Header("Word Factory Building Game")]
+    // tutorial clips
+    public AudioClip buildingIntro1;
+    public AudioClip buildingIntro2;
+    public AudioClip buildingIntro3;
+    public AudioClip buildingIntro4;
+    public AudioClip buildingIntro5;
+
+    // reminders chapters 1-4
+    public List<AudioClip> buildingReminderClipsChapters1_4;
+    // reminders chapters 5
+    public List<AudioClip> buildingReminderClipsChapter5;
 }

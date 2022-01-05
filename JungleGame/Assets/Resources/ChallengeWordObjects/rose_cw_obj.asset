@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: rose
   audio: {fileID: 8300000, guid: 671406425c0310d4e8541f69d7fc7e5a, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: aa7241d3ede168f448da8522c6d17a02, type: 3}
   elkoninList: 240000000a00000025000000000000000000000000000000
   elkoninCount: 3
   set: 9

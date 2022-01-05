@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: pig
   audio: {fileID: 8300000, guid: 992b91716d6e4844089fbef8f6bec6c1, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 895616a8c3ea7504286e91fd0df5b8f3, type: 3}
   elkoninList: 22000000040000001b000000000000000000000000000000
   elkoninCount: 3
   set: 3

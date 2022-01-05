@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: bell
   audio: {fileID: 8300000, guid: 5e0e110d77d3d114da7e2fda9e8bf5fc, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: d0e46f899b8343f449f4abc34d68bca5, type: 3}
   elkoninList: 16000000030000001f000000000000000000000000000000
   elkoninCount: 3
   set: 2

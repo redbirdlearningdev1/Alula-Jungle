@@ -25,9 +25,17 @@ public class WordFactoryBuildingManager : MonoBehaviour
     private List<UniversalCoinImage> currentCoins;
     private bool playingCoinAudio;
     private bool evaluatingCoin = false;
+    private bool playIntro = false;
 
     private int numWins = 0;
     private int numMisses = 0;
+
+    [Header("Tutorial")]
+    public bool playTutorial;
+    private int tutorialEvent = 0;
+    public WordPair tutorialPair1;
+    public WordPair tutorialPair2;
+    public WordPair tutorialPair3;
 
     void Awake()
     {
@@ -66,6 +74,10 @@ public class WordFactoryBuildingManager : MonoBehaviour
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.05f);
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 0.05f);
 
+        // only turn off tutorial if false
+        if (!playTutorial)
+            playTutorial = !StudentInfoSystem.GetCurrentProfile().wordFactoryBuildingTutorial;
+
         PregameSetup();
     }
 
@@ -98,11 +110,55 @@ public class WordFactoryBuildingManager : MonoBehaviour
 
     private IEnumerator NewRound()
     {
-        // new pair
-        currentPair = pairPool[Random.Range(0, pairPool.Count)];
+        // choose correct pair
+        if (playTutorial)
+        {
+            switch (tutorialEvent)
+            {
+                case 0:
+                    currentPair = tutorialPair1;
+                    break;
+                case 1:
+                    currentPair = tutorialPair2;
+                    break;
+                case 2:
+                    currentPair = tutorialPair3;
+                    break;
+            }
+            tutorialEvent++;
+        }
+        else
+        {
+            // new pair
+            currentPair = pairPool[Random.Range(0, pairPool.Count)];
+        }
 
         // init game delay
         yield return new WaitForSeconds(1f);
+
+        // tutorial stuff
+        if (playTutorial)
+        {
+            if (tutorialEvent == 1)
+            {
+                // play tutorial intro 1
+                AudioClip clip = GameIntroDatabase.instance.buildingIntro1;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+            }
+        }
+        else
+        {
+            if (!playIntro)
+            {
+                playIntro = true;
+
+                // play start 1
+                AudioClip clip = GameIntroDatabase.instance.blendingStart1;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+            }
+        }
 
         // audio fx
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.EmeraldSlide, 0.25f);
@@ -196,7 +252,25 @@ public class WordFactoryBuildingManager : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
 
-        // transform polaroid
+        // tutorial stuff
+        if (playTutorial)
+        {
+            if (tutorialEvent == 1)
+            {
+                yield return new WaitForSeconds(1f);
+
+                // play tutorial intro 2
+                AudioClip clip = GameIntroDatabase.instance.buildingIntro2;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+
+                // play tutorial intro 3
+                clip = GameIntroDatabase.instance.buildingIntro3;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+            }
+        }
+
         // squish polaroid
         EmeraldHead.instance.animator.Play("SquishPolaroid");
         // audio fx
@@ -309,6 +383,20 @@ public class WordFactoryBuildingManager : MonoBehaviour
         // make frame wiggle
         ToggleEmptyFrameWiggle(true);
 
+        // tutorial stuff
+        if (playTutorial)
+        {
+            if (tutorialEvent == 1)
+            {
+                yield return new WaitForSeconds(1f);
+
+                // play tutorial intro 4
+                AudioClip clip = GameIntroDatabase.instance.buildingIntro4;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+            }
+        }
+
         // turn on raycaster
         WordFactoryBuildingRaycaster.instance.isOn = true;
         evaluatingCoin = false;
@@ -341,8 +429,9 @@ public class WordFactoryBuildingManager : MonoBehaviour
         // lose 
         else
         {
-            numMisses++;
-            currentCoin = coin;
+            // only increase misses if not playing tutorial
+            if (!playTutorial)
+                numMisses++;
             StartCoroutine(PostRound(false));
         }
     }
@@ -379,6 +468,20 @@ public class WordFactoryBuildingManager : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);
             }
             yield return new WaitForSeconds(0.5f);
+
+            // tutorial stuff
+            if (playTutorial)
+            {
+                if (tutorialEvent == 1)
+                {
+                    yield return new WaitForSeconds(1f);
+
+                    // play tutorial intro 5
+                    AudioClip clip = GameIntroDatabase.instance.buildingIntro5;
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                    yield return new WaitForSeconds(clip.length + 1f);
+                }
+            }
         }
         // lose round
         else
@@ -390,6 +493,16 @@ public class WordFactoryBuildingManager : MonoBehaviour
             // play incorrect sound
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
             yield return new WaitForSeconds(1f);
+
+            if (playTutorial)
+            {
+                // turn on raycaster
+                WordFactoryBuildingRaycaster.instance.isOn = true;
+
+                evaluatingCoin = false;
+
+                yield break;
+            }
         }
 
         // eat the polaroid
@@ -432,6 +545,63 @@ public class WordFactoryBuildingManager : MonoBehaviour
             Destroy(coin);
         }
         currentCoins.Clear();
+
+
+        // play appropriate reminder / encouragement popup
+        if (playTutorial && tutorialEvent > 1 || !playTutorial)
+        {
+            if (win)
+            {
+                int index = Random.Range(0, 2);
+                AudioClip clip = null;
+                if (index == 0)
+                {
+                    clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_ugh");
+                }
+                else if (index == 1)
+                {
+                    clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_grr");
+                }
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+            }
+            else
+            {
+                int index = Random.Range(0, 3);
+                AudioClip clip = null;
+                if (index == 0)
+                {
+                    clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_haha");
+                }
+                else if (index == 1)
+                {
+                    clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_ahhah");
+                }
+                else if (index == 2)
+                {
+                    clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_hrm");
+                }
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+
+                // play reminder popup
+                if (StudentInfoSystem.GetCurrentProfile().currentChapter < Chapter.chapter_5)
+                {
+                    List<AudioClip> clips = GameIntroDatabase.instance.buildingReminderClipsChapters1_4;
+                    clip = clips[Random.Range(0, clips.Count)];
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                    yield return new WaitForSeconds(clip.length + 1f);
+                }
+                else
+                {
+                    List<AudioClip> clips = GameIntroDatabase.instance.buildingReminderClipsChapter5;
+                    clip = clips[Random.Range(0, clips.Count)];
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                    yield return new WaitForSeconds(clip.length + 1f);
+                }
+                
+            }
+        }
 
         // win or lose game ?
         if (numWins >= 3)

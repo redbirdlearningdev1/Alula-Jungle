@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: tap
   audio: {fileID: 8300000, guid: e7f123c4c6b6c8448bbbd9e5d26f2541, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 9002fc2eba2eb4f4c98384d3ad15638e, type: 3}
   elkoninList: 270000000200000022000000000000000000000000000000
   elkoninCount: 3
   set: 1

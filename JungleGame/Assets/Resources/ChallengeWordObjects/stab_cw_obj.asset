@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: stab
   audio: {fileID: 8300000, guid: a1ad9fb62233e574d9ef9a5b8b2a428a, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 6e0326b565b0f144eb7b8ff7614d87b5, type: 3}
   elkoninList: 250000002700000002000000160000000000000000000000
   elkoninCount: 4
   set: 1

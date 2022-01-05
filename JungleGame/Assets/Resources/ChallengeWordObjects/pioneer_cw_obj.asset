@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: pioneer
   audio: {fileID: 8300000, guid: 5270edde29ad62e4ebf34f5578a8ea0a, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 12da0bc2b1001934cb3a70f9fa56f57f, type: 3}
   elkoninList: 22000000090000000a000000210000000000000000000000
   elkoninCount: 5
   set: 0

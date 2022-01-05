@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: grief
   audio: {fileID: 8300000, guid: da8c92dcd31d70144bdb3d964ad589cf, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 5c2a1b232cb079d45bd340480320cb7b, type: 3}
   elkoninList: 1b00000024000000080000001a0000000000000000000000
   elkoninCount: 4
   set: 7

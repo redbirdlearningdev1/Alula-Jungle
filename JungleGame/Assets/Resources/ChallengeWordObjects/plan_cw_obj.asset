@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: plan
   audio: {fileID: 8300000, guid: 3aca4eab397a5c544988554d7f8eaddd, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 07f0c4bc729675049bc666c679086f5b, type: 3}
   elkoninList: 220000001f00000002000000210000000000000000000000
   elkoninCount: 4
   set: 1

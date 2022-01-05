@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: deer
   audio: {fileID: 8300000, guid: eba4a0276ef5d2644a92117f82684fc5, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: fc347fef20f9fe24581889cae56a7420, type: 3}
   elkoninList: 190000000000000000000000000000000000000000000000
   elkoninCount: 2
   set: 0
