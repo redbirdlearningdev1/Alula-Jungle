@@ -373,30 +373,6 @@ public class DevMenuManager : MonoBehaviour
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
-        // add tutorials
-        StudentInfoSystem.GetCurrentProfile().froggerTutorial = false;
-        StudentInfoSystem.GetCurrentProfile().turntablesTutorial = false;
-        StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = false;
-        StudentInfoSystem.GetCurrentProfile().rummageTutorial = false;
-        StudentInfoSystem.GetCurrentProfile().seashellTutorial = false;
-        StudentInfoSystem.GetCurrentProfile().pirateTutorial = false;
-        // add challenge game tutorials
-        StudentInfoSystem.GetCurrentProfile().wordFactoryBlendingTutorial = false;
-        StudentInfoSystem.GetCurrentProfile().wordFactoryBuildingTutorial = false;
-        StudentInfoSystem.GetCurrentProfile().wordFactoryDeletingTutorial = false;
-        StudentInfoSystem.GetCurrentProfile().wordFactorySubstitutingTutorial = false;
-        StudentInfoSystem.GetCurrentProfile().tigerPawCoinsTutorial = false;
-        StudentInfoSystem.GetCurrentProfile().tigerPawPhotosTutorial = false;
-        StudentInfoSystem.GetCurrentProfile().passwordTutorial = false;
-
-        StudentInfoSystem.SaveStudentPlayerData();
-    }
-
-    public void LockAllTutorials()
-    {
-        // play audio blip
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
-
         // skip tutorials
         StudentInfoSystem.GetCurrentProfile().froggerTutorial = true;
         StudentInfoSystem.GetCurrentProfile().turntablesTutorial = true;
@@ -412,6 +388,30 @@ public class DevMenuManager : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().tigerPawCoinsTutorial = true;
         StudentInfoSystem.GetCurrentProfile().tigerPawPhotosTutorial = true;
         StudentInfoSystem.GetCurrentProfile().passwordTutorial = true;
+
+        StudentInfoSystem.SaveStudentPlayerData();
+    }
+
+    public void LockAllTutorials()
+    {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        // add tutorials
+        StudentInfoSystem.GetCurrentProfile().froggerTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().turntablesTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().rummageTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().seashellTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().pirateTutorial = false;
+        // add challenge game tutorials
+        StudentInfoSystem.GetCurrentProfile().wordFactoryBlendingTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().wordFactoryBuildingTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().wordFactoryDeletingTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().wordFactorySubstitutingTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().tigerPawCoinsTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().tigerPawPhotosTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().passwordTutorial = false;
 
         StudentInfoSystem.SaveStudentPlayerData();
     }

@@ -2207,7 +2207,7 @@ MonoBehaviour:
   coinsParent: {fileID: 282431114}
   normalCoinSize: {x: 210, y: 250}
   expandedCoinSize: {x: 230, y: 275}
-  playTutorial: 1
+  playTutorial: 0
   tutorialEvent: 0
   tutorialPair1: {fileID: 11400000, guid: 01cfaf6318f414d4490a095da02be9da, type: 2}
   tutorialPair2: {fileID: 11400000, guid: 20524d6f157b10242912593224fd3020, type: 2}
@@ -2811,7 +2811,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 37.06918
+      value: 37.151524
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

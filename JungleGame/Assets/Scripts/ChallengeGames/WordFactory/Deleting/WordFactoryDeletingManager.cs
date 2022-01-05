@@ -328,8 +328,9 @@ public class WordFactoryDeletingManager : MonoBehaviour
         // lose 
         else
         {
-            numMisses++;
-            currentCoin = coin;
+            // only increase misses if not playing tutorial
+            if (!playTutorial)
+                numMisses++;
             StartCoroutine(PostRound(false));
         }
     }
@@ -409,7 +410,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
         // lose round
         else
         {
-            // play correct sound
+            // play wrong sound
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
 
             // return coin to frame
@@ -421,7 +422,9 @@ public class WordFactoryDeletingManager : MonoBehaviour
             {
                 // turn on raycaster
                 WordFactoryDeletingRaycaster.instance.isOn = true;
-                
+
+                evaluatingCoin = false;
+
                 yield break;
             }
         }
@@ -469,6 +472,63 @@ public class WordFactoryDeletingManager : MonoBehaviour
         }
         currentCoins.Clear();
 
+
+        // play appropriate reminder / encouragement popup
+        if (playTutorial && tutorialEvent > 1 || !playTutorial)
+        {
+            if (win)
+            {
+                int index = Random.Range(0, 2);
+                AudioClip clip = null;
+                if (index == 0)
+                {
+                    clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_ugh");
+                }
+                else if (index == 1)
+                {
+                    clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_grr");
+                }
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+            }
+            else
+            {
+                int index = Random.Range(0, 3);
+                AudioClip clip = null;
+                if (index == 0)
+                {
+                    clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_haha");
+                }
+                else if (index == 1)
+                {
+                    clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_ahhah");
+                }
+                else if (index == 2)
+                {
+                    clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_hrm");
+                }
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+
+                // play reminder popup
+                if (StudentInfoSystem.GetCurrentProfile().currentChapter < Chapter.chapter_5)
+                {
+                    List<AudioClip> clips = GameIntroDatabase.instance.deletingReminderClipsChapters1_4;
+                    clip = clips[Random.Range(0, clips.Count)];
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                    yield return new WaitForSeconds(clip.length + 1f);
+                }
+                else
+                {
+                    List<AudioClip> clips = GameIntroDatabase.instance.deletingReminderClipsChapter5;
+                    clip = clips[Random.Range(0, clips.Count)];
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                    yield return new WaitForSeconds(clip.length + 1f);
+                }
+                
+            }
+        }
+
         // win or lose game ?
         if (numWins >= 3)
             StartCoroutine(WinRoutine());
@@ -486,8 +546,18 @@ public class WordFactoryDeletingManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
         yield return new WaitForSeconds(1f);
 
-        // show stars
-        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+        if (playTutorial)
+        {
+            StudentInfoSystem.GetCurrentProfile().wordFactoryDeletingTutorial = true;
+            StudentInfoSystem.SaveStudentPlayerData();
+
+            GameManager.instance.LoadScene("WordFactoryDeleting", true, 3f);
+        }
+        else
+        {
+            // show stars
+            StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+        }        
     }
 
     private int CalculateStars()
