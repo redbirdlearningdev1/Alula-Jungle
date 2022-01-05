@@ -20,9 +20,17 @@ public class WordFactoryDeletingManager : MonoBehaviour
     private List<UniversalCoinImage> currentCoins;
     private bool playingCoinAudio;
     private bool evaluatingCoin = false;
+    private bool playIntro = false;
 
     private int numWins = 0;
     private int numMisses = 0;
+
+    [Header("Tutorial")]
+    public bool playTutorial;
+    public int tutorialEvent = 0;
+    public WordPair tutorialPair1;
+    public WordPair tutorialPair2;
+    public WordPair tutorialPair3;
 
     void Awake()
     {
@@ -61,6 +69,10 @@ public class WordFactoryDeletingManager : MonoBehaviour
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.05f);
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 0.05f);
 
+        // only turn off tutorial if false
+        if (!playTutorial)
+            playTutorial = !StudentInfoSystem.GetCurrentProfile().wordFactoryDeletingTutorial;
+
         PregameSetup();
     }
 
@@ -88,11 +100,56 @@ public class WordFactoryDeletingManager : MonoBehaviour
 
     private IEnumerator NewRound()
     {
-        // new pair
-        currentPair = pairPool[Random.Range(0, pairPool.Count)];
+        // choose correct pair
+        if (playTutorial)
+        {
+            switch (tutorialEvent)
+            {
+                case 0:
+                    currentPair = tutorialPair1;
+                    break;
+                case 1:
+                    currentPair = tutorialPair2;
+                    break;
+                case 2:
+                    currentPair = tutorialPair3;
+                    break;
+            }
+            tutorialEvent++;
+        }
+        else
+        {
+            // new pair
+            currentPair = pairPool[Random.Range(0, pairPool.Count)];
+        }
+        
 
         // init game delay
         yield return new WaitForSeconds(1f);
+
+        // tutorial stuff
+        if (playTutorial)
+        {
+            if (tutorialEvent == 1)
+            {
+                // play tutorial intro 1
+                AudioClip clip = GameIntroDatabase.instance.deletingIntro1;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+            }
+        }
+        else
+        {
+            if (!playIntro)
+            {
+                playIntro = true;
+
+                // play start 1
+                AudioClip clip = GameIntroDatabase.instance.blendingStart1;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+            }
+        }
 
         // audio fx
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.EmeraldSlide, 0.25f);
@@ -184,6 +241,26 @@ public class WordFactoryDeletingManager : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
 
+
+        // tutorial stuff
+        if (playTutorial)
+        {
+            if (tutorialEvent == 1)
+            {
+                yield return new WaitForSeconds(1f);
+
+                // play tutorial intro 2
+                AudioClip clip = GameIntroDatabase.instance.deletingIntro2;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+
+                // play tutorial intro 3
+                clip = GameIntroDatabase.instance.deletingIntro3;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+            }
+        }
+
         // squish polaroid
         EmeraldHead.instance.animator.Play("SquishPolaroid");
         // audio fx
@@ -206,6 +283,20 @@ public class WordFactoryDeletingManager : MonoBehaviour
         AudioManager.instance.PlayTalk(currentPair.word1.audio);
         yield return new WaitForSeconds(currentPair.word1.audio.length);
         polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
+
+        // tutorial stuff
+        if (playTutorial)
+        {
+            if (tutorialEvent == 1)
+            {
+                yield return new WaitForSeconds(1f);
+
+                // play tutorial intro 4
+                AudioClip clip = GameIntroDatabase.instance.deletingIntro4;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+            }
+        }
 
         // turn on raycaster
         WordFactoryDeletingRaycaster.instance.isOn = true;
@@ -300,6 +391,20 @@ public class WordFactoryDeletingManager : MonoBehaviour
             }
             yield return new WaitForSeconds(0.25f);
             polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
+
+            // tutorial stuff
+            if (playTutorial)
+            {
+                if (tutorialEvent == 1)
+                {
+                    yield return new WaitForSeconds(1f);
+
+                    // play tutorial intro 5
+                    AudioClip clip = GameIntroDatabase.instance.deletingIntro5;
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                    yield return new WaitForSeconds(clip.length + 1f);
+                }
+            }
         }
         // lose round
         else
@@ -311,6 +416,14 @@ public class WordFactoryDeletingManager : MonoBehaviour
             currentCoin = null;
             WordFactoryDeletingManager.instance.ReturnCoinsToFrame();
             yield return new WaitForSeconds(1f);
+
+            if (playTutorial)
+            {
+                // turn on raycaster
+                WordFactoryDeletingRaycaster.instance.isOn = true;
+                
+                yield break;
+            }
         }
 
         // eat the polaroid

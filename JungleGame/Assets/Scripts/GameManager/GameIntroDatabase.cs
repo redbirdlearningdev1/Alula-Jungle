@@ -118,4 +118,17 @@ public class GameIntroDatabase : MonoBehaviour
     public AudioClip blendingStart2;
 
     public List<AudioClip> blendingReminderClips;
+
+    [Header("Word Factory Deleting Game")]
+    // tutorial clips
+    public AudioClip deletingIntro1;
+    public AudioClip deletingIntro2;
+    public AudioClip deletingIntro3;
+    public AudioClip deletingIntro4;
+    public AudioClip deletingIntro5;
+
+    // reminders chapters 1-4
+    public List<AudioClip> deletingReminderClipsChapters1_4;
+    // reminders chapters 5
+    public List<AudioClip> deletingReminderClipsChapter5;
 }

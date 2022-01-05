@@ -128,6 +128,9 @@ public static class LoadSaveSystem
         new_data.wordFactoryBuildingTutorial =      default_tutorial;
         new_data.wordFactoryDeletingTutorial =      default_tutorial;
         new_data.wordFactorySubstitutingTutorial =  default_tutorial;
+        new_data.tigerPawCoinsTutorial =    default_tutorial;
+        new_data.tigerPawPhotosTutorial =   default_tutorial;
+        new_data.passwordTutorial =         default_tutorial;
 
         // pools
         new_data.actionWordPool = new List<ActionWordEnum>();

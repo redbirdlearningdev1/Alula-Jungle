@@ -35,6 +35,9 @@ public class StudentPlayerData
     public bool wordFactoryBuildingTutorial;
     public bool wordFactoryDeletingTutorial;
     public bool wordFactorySubstitutingTutorial;
+    public bool tigerPawCoinsTutorial;
+    public bool tigerPawPhotosTutorial;
+    public bool passwordTutorial;
 
     // game progression
     public StoryBeat currStoryBeat;

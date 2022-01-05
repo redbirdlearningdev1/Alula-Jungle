@@ -43,7 +43,10 @@ public class DevMenuManager : MonoBehaviour
 
     private string[] storyGames = new string[] {
         "1 - The Prologue",
-        "2 - The Beginning"
+        "2 - The Beginning",
+        "3 - Follow Red",
+        "4 - Emerging",
+        "5 - The Resolution"
     };
 
     private List<StudentPlayerData> datas;                        
@@ -227,6 +230,11 @@ public class DevMenuManager : MonoBehaviour
         studentData.seashellTutorial = true;
         studentData.pirateTutorial = true;
 
+        studentData.wordFactoryBlendingTutorial = true;
+        studentData.wordFactoryBuildingTutorial = true;
+        studentData.wordFactoryDeletingTutorial = true;
+        studentData.wordFactorySubstitutingTutorial = true;
+
         studentData.currStoryBeat = StoryBeat.COUNT;
         studentData.unlockedStickerButton = true;
 
@@ -356,6 +364,60 @@ public class DevMenuManager : MonoBehaviour
 
     /* 
     ################################################
+    #   TUTORIALS SECTION
+    ################################################
+    */
+
+    public void UnlockAllTutorials()
+    {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        // add tutorials
+        StudentInfoSystem.GetCurrentProfile().froggerTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().turntablesTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().rummageTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().seashellTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().pirateTutorial = false;
+        // add challenge game tutorials
+        StudentInfoSystem.GetCurrentProfile().wordFactoryBlendingTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().wordFactoryBuildingTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().wordFactoryDeletingTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().wordFactorySubstitutingTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().tigerPawCoinsTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().tigerPawPhotosTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().passwordTutorial = false;
+
+        StudentInfoSystem.SaveStudentPlayerData();
+    }
+
+    public void LockAllTutorials()
+    {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        // skip tutorials
+        StudentInfoSystem.GetCurrentProfile().froggerTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().turntablesTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().rummageTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().seashellTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().pirateTutorial = true;
+        // skip challenge game tutorials
+        StudentInfoSystem.GetCurrentProfile().wordFactoryBlendingTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().wordFactoryBuildingTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().wordFactoryDeletingTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().wordFactorySubstitutingTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().tigerPawCoinsTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().tigerPawPhotosTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().passwordTutorial = true;
+
+        StudentInfoSystem.SaveStudentPlayerData();
+    }
+
+    /* 
+    ################################################
     #   STORY BEAT SECTION
     ################################################
     */
@@ -369,19 +431,6 @@ public class DevMenuManager : MonoBehaviour
         int beat = storyBeatDropdown.value;
 
         StudentInfoSystem.GetCurrentProfile().currStoryBeat = (StoryBeat)beat;
-
-        // skip tutorials
-        StudentInfoSystem.GetCurrentProfile().froggerTutorial = true;
-        StudentInfoSystem.GetCurrentProfile().turntablesTutorial = true;
-        StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = true;
-        StudentInfoSystem.GetCurrentProfile().rummageTutorial = true;
-        StudentInfoSystem.GetCurrentProfile().seashellTutorial = true;
-        StudentInfoSystem.GetCurrentProfile().pirateTutorial = true;
-        // challenge game tutorials
-        StudentInfoSystem.GetCurrentProfile().wordFactoryBlendingTutorial = true;
-        StudentInfoSystem.GetCurrentProfile().wordFactoryBuildingTutorial = true;
-        StudentInfoSystem.GetCurrentProfile().wordFactoryDeletingTutorial = true;
-        StudentInfoSystem.GetCurrentProfile().wordFactorySubstitutingTutorial = true;
         
         switch ((StoryBeat)beat)
         {
