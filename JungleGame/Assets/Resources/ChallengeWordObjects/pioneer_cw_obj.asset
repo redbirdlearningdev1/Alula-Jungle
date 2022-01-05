@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdfd6af85ce95e84c9c41f78b3e3f482, type: 3}
+  m_Name: pioneer_cw_obj
+  m_EditorClassIdentifier: 
+  word: pioneer
+  audio: {fileID: 8300000, guid: 5270edde29ad62e4ebf34f5578a8ea0a, type: 3}
+  sprite: {fileID: 0}
+  elkoninList: 22000000090000000a000000210000000000000000000000
+  elkoninCount: 5
+  set: 0

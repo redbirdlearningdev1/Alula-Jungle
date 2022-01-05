@@ -31,6 +31,8 @@ public class AudioDatabase : MonoBehaviour
     public AudioClip[] TurntablesSongSplit;
     public AudioClip[] RummageSongSplit;
     public AudioClip[] SpiderwebSongSplit;
+    public AudioClip[] SeashellsSongSplit;
+    public AudioClip[] PirateSongSplit;
 
     /* 
     ################################################
@@ -139,4 +141,64 @@ public class AudioDatabase : MonoBehaviour
     public AudioClip MoveStoneStart;
     public AudioClip MoveStoneLoop;
     public AudioClip MoveStoneEnd;
+
+    [Header("Seashell Game")]
+    public AudioClip BubbleRise;
+    public AudioClip CoinFlip;
+    public AudioClip CoinOnRock;
+    public AudioClip Conch1;
+    public AudioClip Conch2;
+    public AudioClip Pop;
+    public AudioClip SandDrop;
+    public AudioClip SeaAmbiance;
+    public AudioClip WaterRipples;
+    public AudioClip WaterSplash;
+    public AudioClip WaveCrash;
+
+    [Header("Pirate Game")]
+    public AudioClip BirdWingFlap;
+    public AudioClip CannonDink;
+    public AudioClip CannonFall;
+    public AudioClip CannonHitCoin;
+    public AudioClip CannonShoot;
+    public AudioClip CannonLoad;
+    public AudioClip RopeDown;
+    public AudioClip RopeUp;
+
+    [Header("Rummage Game")]
+    public AudioClip ForestAmbiance;
+    public AudioClip HealFixItem;
+    public AudioClip ScrollRoll;
+    public AudioClip WalkGrass;
+    public AudioClip WoodRummage;
+
+    [Header("Spiderweb Game")]
+    public AudioClip BugFlyIn;
+    public AudioClip BugFlyOut;
+    public AudioClip WebBoing;
+    public AudioClip WebSwoop;
+    public AudioClip WebWhip;
+
+
+    [Header("Word Factory Games")]
+    public AudioClip BoxSlide;
+    public AudioClip CameraClick;
+    public AudioClip CoinDink;
+    public AudioClip CoinRattle;
+    public AudioClip EmeraldSlide;
+    public AudioClip EmeraldSlideShort;
+    public AudioClip GlassDink1;
+    public AudioClip GlassDink2;
+    public AudioClip LeaveWater;
+    public AudioClip MagicReveal;
+    public AudioClip MedWhoosh;
+    public AudioClip PanDown;
+    public AudioClip PanUp;
+    public AudioClip PolaroidCrunch;
+    public AudioClip PolaroidFall;
+    public AudioClip PolaroidRattle;
+    public AudioClip PolaroidUnravel;
+    public AudioClip SelectBoop;
+    public AudioClip SmallWhoosh;
+    public AudioClip TigerSwipe;
 }

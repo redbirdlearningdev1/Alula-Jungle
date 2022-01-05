@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: round_cw_obj
   m_EditorClassIdentifier: 
   word: round
-  audio: {fileID: 0}
-  sprite: {fileID: 0}
+  audio: {fileID: 8300000, guid: f43b8b3025453284cb74e2f4b99bb32c, type: 3}
+  sprite: {fileID: 21300000, guid: d2f46c8971e467e41a1f4ecef7de0f54, type: 3}
   elkoninList: 240000001400000021000000190000000000000000000000
   elkoninCount: 4
   set: 19
-  imageText: "\r"

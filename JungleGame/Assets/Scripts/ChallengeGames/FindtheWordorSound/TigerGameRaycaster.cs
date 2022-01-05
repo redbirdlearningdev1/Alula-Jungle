@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class TigerGameRaycaster : MonoBehaviour
 {
+    public static TigerGameRaycaster instance;
+
     public bool isOn = false;
     public float objcetMoveSpeed = 0.1f;
 
@@ -14,6 +16,13 @@ public class TigerGameRaycaster : MonoBehaviour
     private bool polaroidAudioPlaying = false;
     private Transform currentPolaroid;
 
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     void Update()
     {
@@ -54,7 +63,7 @@ public class TigerGameRaycaster : MonoBehaviour
             }
 
             TigerGameManager.instance.returnToPos(selectedObject);
-            currentPolaroid.GetComponent<Polaroid>().SetLayer(0);
+            //currentPolaroid.GetComponent<Polaroid>().SetLayer(0);
             selectedObject = null;
         }
 
@@ -71,7 +80,7 @@ public class TigerGameRaycaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("UniversalCoin"))
                     {
-                        TigerGameManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
+                        TigerGameManager.instance.PlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
                     }
                     else if (result.gameObject.transform.CompareTag("Polaroid"))
                     {
@@ -79,7 +88,7 @@ public class TigerGameRaycaster : MonoBehaviour
                         selectedObject.gameObject.transform.SetParent(selectedObjectParent);
                         currentPolaroid = result.gameObject.transform;
                         // set upper layer
-                        currentPolaroid.GetComponent<Polaroid>().SetLayer(2);
+                        //currentPolaroid.GetComponent<Polaroid>().SetLayer(2);
                         // play audio
                         StartCoroutine(PlayPolaroidAudio(currentPolaroid.GetComponent<Polaroid>().challengeWord.audio));
                     }

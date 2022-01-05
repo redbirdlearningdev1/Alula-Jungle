@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 2
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -34,8 +33,8 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: ef09f1d72e1f2b0408863a8a213f9eab, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 09d0015f81bbf474e9a79dfcd8cae972, type: 3}
     audioClipName: P_2_2_Red_1_T1
     audioString: Wow!
   - endTalkieAfterThisSegment: 0
@@ -50,8 +49,8 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: aeaa1c2465e53144782c3607cd3eaaad, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 52a96808eb7c6df489a12069031a7067, type: 3}
     audioClipName: P_2_2_Red_1_T2
     audioString: This place looks amazing!
   - endTalkieAfterThisSegment: 0
@@ -66,10 +65,10 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 72e9d40e9ba84844a8b75ee7557dcd0d, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: ea1d92a9f62512a42955d6e85b8eb207, type: 3}
     audioClipName: P_2_2_Red_1_T3
-    audioString: Good job explorer!
+    audioString: Good job Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -82,8 +81,8 @@ MonoBehaviour:
     rightEmotionNum: 11
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 4f20e389412ee3a4899b659a9431812c, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 13fc4ad66be37b54ebb1022b2bf4ccd2, type: 3}
     audioClipName: P_2_2_Wally_2_T1
     audioString: Good job!
   - endTalkieAfterThisSegment: 0
@@ -98,8 +97,8 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 2
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 8a18dbf3475072348b44699791a16028, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 14338da4c0d39fd4dbc8c251de02fe02, type: 3}
     audioClipName: P_2_2_Red_3_T1
     audioString: Alright!
   - endTalkieAfterThisSegment: 0
@@ -114,8 +113,8 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 2
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 109fbc8366cb67c44977c53316548a10, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 970939fc49f3dba40822b160af39ae9d, type: 3}
     audioClipName: P_2_2_Red_3_T2
     audioString: "Let\u2019s move forward!"
   - endTalkieAfterThisSegment: 0
@@ -130,7 +129,7 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
+    activeCharacter: 3
     audioClip: {fileID: 0}
-    audioClipName: P_2_2_RedWally_3_T1
+    audioClipName: RedWally_Huh
     audioString: Huh?!

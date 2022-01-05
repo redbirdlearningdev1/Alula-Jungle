@@ -1,0 +1,215 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: ChaJulius_2_p3
+  m_EditorClassIdentifier: 
+  talkieName: ChaJulius_2_p3
+  quipsCollection: 0
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 21
+    rightMouthEnum: 2
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: fbed3cc123a36674f9023bac1005f473, type: 3}
+    audioClipName: Cha_0_1h_Julius_1_T1
+    audioString: ...
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 7
+    leftEmotionNum: 21
+    leftMouthEnum: 2
+    leftEyesEnum: 4
+    rightCharacter: 6
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 62910586f82a17e4591f7360b897f2c6, type: 3}
+    audioClipName: Cha_0_1h_Marcus_2_T1
+    audioString: UGH!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 7
+    leftEmotionNum: 21
+    leftMouthEnum: 2
+    leftEyesEnum: 4
+    rightCharacter: 6
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 3343063a50949d94db49f4ad1e5c0051, type: 3}
+    audioClipName: Cha_0_1h_Marcus_2_T2
+    audioString: 'Useless! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 7
+    leftEmotionNum: 21
+    leftMouthEnum: 2
+    leftEyesEnum: 4
+    rightCharacter: 6
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: fc75a463e5d9ea9408119973920835de, type: 3}
+    audioClipName: Cha_0_1h_Marcus_2_T3
+    audioString: "I should have known I\u2019d have to handle this myself!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 1
+    onYesGoto: 5
+    onNoGoto: 7
+    leftCharacter: 7
+    leftEmotionNum: 21
+    leftMouthEnum: 2
+    leftEyesEnum: 4
+    rightCharacter: 6
+    rightEmotionNum: 3
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 3ff59d729d6c249419439c4005b0dc3d, type: 3}
+    audioClipName: Cha_0_1h_Marcus_2_T4
+    audioString: Come at me Explorer, you ready to lose?
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 6
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 0}
+    audioClipName: Marcus_Laugh
+    audioString: HA HA HA!!!!
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 6
+    rightEmotionNum: 3
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: c5a9f81d9dcbaf449881228e11e0da85, type: 3}
+    audioClipName: Cha_0_1_Marcus_3_T2
+    audioString: 'Prepare yourself Explorer! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 6
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 3ec054dbdc8b7b84fa94ab17acee571a, type: 3}
+    audioClipName: Cha_0_1_Marcus_4_T1
+    audioString: WHAT!? EXCUSE ME!?
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 6
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 8ab101462b709b749993067da9eb2005, type: 3}
+    audioClipName: Cha_0_1_Marcus_4_T2
+    audioString: "\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 6
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: c304dc764380a1d468f1a2b25e2fa207, type: 3}
+    audioClipName: Cha_0_1_Marcus_4_T3
+    audioString: Whatever.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 6
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: a77414fa7edd7df41be793d41376211d, type: 3}
+    audioClipName: Cha_0_1_Marcus_4_T4
+    audioString: Come back when you're ready for my victory!
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 6
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 0}
+    audioClipName: Marcus_Laugh
+    audioString: HA HA HA!!!!

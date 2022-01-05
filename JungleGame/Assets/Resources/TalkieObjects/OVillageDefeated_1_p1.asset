@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 0
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -34,8 +33,8 @@ MonoBehaviour:
     rightEmotionNum: 9
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: f695910a5a0a69c46af1d70b44657d43, type: 3}
     audioClipName: P_3_3_Julius_1_T1
     audioString: Drats!
   - endTalkieAfterThisSegment: 0
@@ -50,8 +49,8 @@ MonoBehaviour:
     rightEmotionNum: 12
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 79d89be2376c57c4383a4e2dbed61e4f, type: 3}
     audioClipName: P_3_3_Julius_1_T2
     audioString: I lost again?!
   - endTalkieAfterThisSegment: 0
@@ -66,10 +65,10 @@ MonoBehaviour:
     rightEmotionNum: 12
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 9e02e1edcb91385428c65c1755d50859, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: b75165242dde7fc4d872f65aa79507a3, type: 3}
     audioClipName: P_3_3_Red_2_T1
-    audioString: Good Job explorer!
+    audioString: Good Job Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -82,8 +81,8 @@ MonoBehaviour:
     rightEmotionNum: 12
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 9f55af9d93ddec34ca539704d0bb3772, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 948d3c76d1ffe6046a42b30dd522fc80, type: 3}
     audioClipName: P_3_3_Red_2_T2
     audioString: I knew you could do it!
   - endTalkieAfterThisSegment: 0
@@ -98,8 +97,8 @@ MonoBehaviour:
     rightEmotionNum: 12
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 8e33a33af19a9714b8634ddae75490c8, type: 3}
     audioClipName: P_3_3_Wally_3_T1
     audioString: Amazing!
   - endTalkieAfterThisSegment: 0
@@ -114,10 +113,10 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 18dbb5201f1a77e489020a1dec2133b0, type: 3}
     audioClipName: P_3_3_Marcus_4_T1
-    audioString: How dare you make a mockery of the future king!
+    audioString: How dare you make a monkey of the future King!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -130,8 +129,8 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: c3ffe3cbaf1bc754bb4736617fa1c108, type: 3}
     audioClipName: P_3_3_Brutus_5_T1
     audioString: "Yawn\u2026"
   - endTalkieAfterThisSegment: 0
@@ -146,10 +145,10 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 277901f29e54c4443951b4143e4558c3, type: 3}
     audioClipName: P_3_3_Brutus_5_T2
-    audioString: "dang\u2026"
+    audioString: "Dang\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -162,8 +161,8 @@ MonoBehaviour:
     rightEmotionNum: 9
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 78582f7eb42188544bfd8f38ae03daf8, type: 3}
     audioClipName: P_3_3_Julius_6_T1
     audioString: "I\u2019ll win next time!"
   - endTalkieAfterThisSegment: 0
@@ -178,7 +177,7 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 66f13db506ddcf145b2aed529ab7f24a, type: 3}
     audioClipName: P_3_3_Julius_6_T2
     audioString: Just you wait!

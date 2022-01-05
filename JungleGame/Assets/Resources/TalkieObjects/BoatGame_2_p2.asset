@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -34,10 +33,10 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 20d4d82ff6736684ba9059612822d62b, type: 3}
     audioClipName: Boat_0_2_Red_14_T1
-    audioString: "And we\u2019re back~ explorer!"
+    audioString: "And we\u2019re back, Explorer!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -50,8 +49,8 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: b660582d57abdd2418fa666e6c2c978e, type: 3}
     audioClipName: Boat_0_2_Red_14_T2
     audioString: Thank you for the boat ride!
   - endTalkieAfterThisSegment: 0
@@ -66,8 +65,8 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 834c1d378b638da4985e22a32a220c4d, type: 3}
     audioClipName: Boat_0_2_Red_14_T3
     audioString: "It\u2019s nice to take a break once and a while."
   - endTalkieAfterThisSegment: 0
@@ -82,7 +81,7 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 6782cf5cada2c8949a59105b634bde90, type: 3}
     audioClipName: Boat_0_2_Red_14_T4
-    audioString: When you're ready~ come on out so we can get back to work.
+    audioString: When you're ready, come on out so we can get back to work.

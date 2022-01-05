@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 1
     requireYN: 0
@@ -34,8 +33,8 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: f5ba6485451107d44827b40b4a35ddf9, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: d6f69854019008c4e8aa23811e0c9e56, type: 3}
     audioClipName: P_1_3_Darwin_1_T1
     audioString: "Hmm\u2026 I can\u2019t seem to remember\u2026"
   - endTalkieAfterThisSegment: 1
@@ -50,8 +49,8 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: c52f01de33add394786341706d5e7a60, type: 3}
     audioClipName: P_1_3_Darwin_2_T1
     audioString: "Hmm\u2026 think think think\u2026."
   - endTalkieAfterThisSegment: 1
@@ -66,8 +65,8 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 7244d908af9e8e54893514af1c8fbc8f, type: 3}
     audioClipName: P_1_3_Darwin_3_T1
     audioString: ".... what happened here\u2026"
   - endTalkieAfterThisSegment: 1
@@ -82,8 +81,8 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 5ff2b0824d0e5634589054e1acc3b321, type: 3}
     audioClipName: P_1_3_Darwin_4_T1
     audioString: "Hmm\u2026"
   - endTalkieAfterThisSegment: 0
@@ -98,10 +97,10 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 78338ac6e69cec241832996df04a7deb, type: 3}
     audioClipName: P_1_3_Darwin_5_T1
-    audioString: "I\u2019m sure I\u2019ll think of something soon explorer\u2026"
+    audioString: "I\u2019m sure I\u2019ll think of something soon Explorer\u2026"
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0
@@ -114,7 +113,7 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: a7a1ff0b9745bab439ee6030138655f6, type: 3}
     audioClipName: P_1_3_Darwin_5_T2
     audioString: I hope...

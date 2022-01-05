@@ -9,7 +9,13 @@ public class ShellRayCaster : MonoBehaviour
 
     public bool isOn = false;
     private SeaShell selectedShell = null;
-    [SerializeField] private Transform selectedShellParent;
+    public  Transform selectedShellParent;
+
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
 
     void Update()
     {
@@ -41,18 +47,20 @@ public class ShellRayCaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("CoinHolder"))
                     {
-                        isCorrect = SeaShellGameManager.instance.EvaluateSelectedShell(selectedShell.type);
+                        isCorrect = SeaShellGameManager.instance.EvaluateSelectedShell(selectedShell.value, selectedShell.shellNum);
                     }
                 }
             }
 
-            selectedShell.ReturnToLog();
-            if (isCorrect == false)
+            if (isCorrect)
             {
-                selectedShell.shadow.gameObject.SetActive(true);
-
+                selectedShell.CorrectShell();
             }
-            //selectedShell.shadow.gameObject.SetActive(true);
+            else
+            {
+                selectedShell.UnselectShell();
+            }
+
             selectedShell = null;
         }
 
@@ -71,9 +79,8 @@ public class ShellRayCaster : MonoBehaviour
                     if (result.gameObject.transform.CompareTag("Shell"))
                     {
                         selectedShell = result.gameObject.GetComponent<SeaShell>();
-                        selectedShell.PlayPhonemeAudio();
+                        selectedShell.SelectShell();
                         selectedShell.gameObject.transform.SetParent(selectedShellParent);
-                        selectedShell.shadow.gameObject.SetActive(false);
                     }
                 }
             }

@@ -10,6 +10,7 @@ public class StudentPlayerData
     public bool active; // bool to determine if someone has created this student player
     public bool mostRecentProfile; // is this the most recently opend profile?
     public string name; // name of student
+    public int minigamesPlayed;
 
     // coins
     public int goldCoins;
@@ -27,6 +28,13 @@ public class StudentPlayerData
     public bool turntablesTutorial;
     public bool spiderwebTutorial;
     public bool rummageTutorial;
+    public bool pirateTutorial;
+    public bool seashellTutorial;
+
+    public bool wordFactoryBlendingTutorial;
+    public bool wordFactoryBuildingTutorial;
+    public bool wordFactoryDeletingTutorial;
+    public bool wordFactorySubstitutingTutorial;
 
     // game progression
     public StoryBeat currStoryBeat;
@@ -36,6 +44,11 @@ public class StudentPlayerData
 
     public List<ActionWordEnum> actionWordPool;
     public List<ChallengeWord> challengeWordPool;
+
+    // royal rumble data
+    public bool royalRumbleActive;
+    public MapIconIdentfier royalRumbleID;
+    public GameType royalRumbleGame;
 
     // map data
     public Chapter currentChapter; // completed chapter
@@ -80,14 +93,30 @@ public enum StoryBeat
     Mudslide_challengeGame_1, // 11
     Mudslide_challengeGame_2, // 12
     Mudslide_challengeGame_3, // 13
-    MudslideRebuilt, // 14
+    MudslideDefeated, // 14
 
     OrcVillageMeetClogg, // 15
     OrcVillageUnlocked, // 16
     OrcVillage_challengeGame_1, // 17
     OrcVillage_challengeGame_2, // 18
     OrcVillage_challengeGame_3, // 19
-    OrcVillageRebuilt, // 20
+    OrcVillageDefeated, // 20
+
+    SpookyForestUnlocked, // 21
+    BeginningStoryGame, // 22
+    SpookyForestPlayGames, // 23
+    SpookyForest_challengeGame_1, // 24
+    SpookyForest_challengeGame_2, // 25
+    SpookyForest_challengeGame_3, // 26
+    SpookyForestDefeated, // 27
+
+    OrcCampUnlocked, // 28
+    OrcCampPlayGames, // 29
+    OrcCamp_challengeGame_1, // 24
+    OrcCamp_challengeGame_2, // 25
+    OrcCamp_challengeGame_3, // 26
+    OrcCampDefeated, // 27
+
     COUNT
 }
 
@@ -165,6 +194,32 @@ public class MapData
 
     public bool OV_signPost_unlocked;
     public int OV_signPost_stars;
+
+    // spooky forest
+    public MapIconData SF_web;
+    public MapIconData SF_shrine;
+    public MapIconData SF_lamp;
+    public MapIconData SF_spider;
+
+    public ChallengeGameData SF_challenge1;
+    public ChallengeGameData SF_challenge2;
+    public ChallengeGameData SF_challenge3;
+
+    public bool SF_signPost_unlocked;
+    public int SF_signPost_stars;
+
+    // spooky forest
+    public MapIconData OC_axe;
+    public MapIconData OC_bigTent;
+    public MapIconData OC_smallTent;
+    public MapIconData OC_fire;
+
+    public ChallengeGameData OC_challenge1;
+    public ChallengeGameData OC_challenge2;
+    public ChallengeGameData OC_challenge3;
+
+    public bool OC_signPost_unlocked;
+    public int OC_signPost_stars;
 }
 
 /* 

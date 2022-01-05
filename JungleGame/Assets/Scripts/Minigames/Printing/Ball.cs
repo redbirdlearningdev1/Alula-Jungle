@@ -45,4 +45,17 @@ public class Ball : MonoBehaviour
             colider.enabled = false;
         }
     }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "Ball")
+        {
+            // play sound
+            float xVelocityNorm = rb.velocity.normalized.x;
+            if (xVelocityNorm > 0.7f)
+            {
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CannonDink, 0.25f, "dink_sound", xVelocityNorm * 1.1f);
+            }
+        }
+    }
 }

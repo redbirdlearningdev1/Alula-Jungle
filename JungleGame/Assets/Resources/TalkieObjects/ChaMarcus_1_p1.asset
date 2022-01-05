@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -34,10 +33,10 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 4e307964f4bd5e84fa1eec2cc69e5146, type: 3}
-    audioClipName: Cha_0_2b_Marcus_1_T1
-    audioString: HAHAHA
+    activeCharacter: 2
+    audioClip: {fileID: 0}
+    audioClipName: Marcus_Laugh
+    audioString: HA HA HA!!!!
   - endTalkieAfterThisSegment: 0
     requireYN: 1
     onYesGoto: 2
@@ -50,10 +49,10 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 273180dc957f1944bb668c56747c95ca, type: 3}
     audioClipName: Cha_0_2b_Marcus_1_T2
-    audioString: Are you ready explorer?
+    audioString: Are you ready Explorer?
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0
@@ -66,10 +65,10 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 27dd2f996bdb6ff44ae496a6771eb374, type: 3}
     audioClipName: Cha_0_2b_Marcus_2_T1
-    audioString: Alright~ let's do this.
+    audioString: Alright, let's do this.
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0
@@ -82,7 +81,7 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 5f63a195d82f97740a346ff8286f3cf5, type: 3}
     audioClipName: Cha_0_2b_Marcus_3_T1
     audioString: "I\u2019ll be waiting."

@@ -43,24 +43,20 @@ public class GameManager : DontDestroy<GameManager>
 
     [Header("Game Datas")]
     public List<StoryGameData> storyGameDatas;
-    public List<SubstitutionPair> substitutionPairs;
-    public List<DeletionPair> deletionPairs;
-    public List<BuildingPair> buildingPairs;
     
     [SerializeField] private GameObject devModeIndicator;
     private bool devIndicatorSet = false;
 
     public StoryGameData storyGameData;
     public MapIconIdentfier mapID;
-    public List<ActionWordEnum> actionWordPool;
-    public List<ChallengeWord> challengeWordPool;
+    public GameType currChallengeGame;
     
     [HideInInspector] public bool repairMapIconID; // when the scroll map appears -> repair this icon
-    [HideInInspector] public int prevMapPosition = 1; // what index player was on scroll map (1 by default)
     [HideInInspector] public GameType prevGameTypePlayed = GameType.None;
 
-    // challenge game identification
+    // game identification
     [HideInInspector] public bool playingChallengeGame = false; // is player in a challenge game?
+    [HideInInspector] public bool playingRoyalRumbleGame = false; // is player in a RR game?
 
     void Start()
     {
@@ -295,6 +291,9 @@ public class GameManager : DontDestroy<GameManager>
 
         // close settings menu if open
         SettingsManager.instance.CloseSettingsWindow();
+
+        // remove tutorial popups
+        TutorialPopupController.instance.StopAllPopups();
     }
 
     /*
@@ -342,6 +341,8 @@ public class GameManager : DontDestroy<GameManager>
                 return "TigerPawCoins";
             case GameType.TigerPawPhotos:
                 return "TigerPawPhotos";
+            case GameType.Password:
+                return "NewPasswordGame";
         }
     }
 }

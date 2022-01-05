@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdfd6af85ce95e84c9c41f78b3e3f482, type: 3}
   m_Name: snail_cw_obj
   m_EditorClassIdentifier: 
-  word: nail
-  audio: {fileID: 0}
-  sprite: {fileID: 0}
-  elkoninList: 21000000070000001f000000000000000000000000000000
-  elkoninCount: 3
+  word: snail
+  audio: {fileID: 8300000, guid: b407f6bb71e7737438d09938c0bccd1b, type: 3}
+  sprite: {fileID: 21300000, guid: 581836b5053ebf9429e29a9db6116e21, type: 3}
+  elkoninList: 2500000021000000070000001f0000000000000000000000
+  elkoninCount: 4
   set: 6
-  imageText: "\r"

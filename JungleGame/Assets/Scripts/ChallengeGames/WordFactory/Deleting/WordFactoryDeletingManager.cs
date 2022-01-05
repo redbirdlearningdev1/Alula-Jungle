@@ -12,8 +12,8 @@ public class WordFactoryDeletingManager : MonoBehaviour
     public Vector2 normalCoinSize;
     public Vector2 expandedCoinSize;
 
-
-    private DeletionPair currentPair;
+    private List<WordPair> pairPool;
+    private WordPair currentPair;
     private ChallengeWord currentWord;
     private UniversalCoinImage currentCoin;
 
@@ -28,17 +28,48 @@ public class WordFactoryDeletingManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
-
+        
+        // every scene must call this in Awake()
         GameManager.instance.SceneInit();
+
+        // stop music 
+        AudioManager.instance.StopMusic();
+    }
+
+    void Update()
+    {
+        // dev stuff for skipping minigame
+        if (GameManager.instance.devModeActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StopAllCoroutines();
+                // play win tune
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // calculate and show stars
+                StarAwardController.instance.AwardStarsAndExit(3);
+            }
+        }
     }
 
     void Start()
     {
+        // turn on settings button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+
+        // add ambiance
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.05f);
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 0.05f);
+
         PregameSetup();
     }
 
     private void PregameSetup()
     {
+        // get pair pool from game manager
+        pairPool = new List<WordPair>();
+        pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(StudentInfoSystem.GetCurrentProfile().actionWordPool));
+        
         // remove UI button
         SettingsManager.instance.ToggleWagonButtonActive(false);
 
@@ -58,9 +89,13 @@ public class WordFactoryDeletingManager : MonoBehaviour
     private IEnumerator NewRound()
     {
         // new pair
-        currentPair = GameManager.instance.deletionPairs[Random.Range(0, GameManager.instance.deletionPairs.Count)];
+        currentPair = pairPool[Random.Range(0, pairPool.Count)];
 
         // init game delay
+        yield return new WaitForSeconds(1f);
+
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.EmeraldSlide, 0.25f);
         yield return new WaitForSeconds(0.5f);
 
         // open emerald head
@@ -68,14 +103,27 @@ public class WordFactoryDeletingManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         // choose challenge word + play enter animation
-        currentWord = currentPair.word1;
+        currentWord = currentPair.word2;
         polaroid.SetPolaroid(currentWord);
         yield return new WaitForSeconds(1f);
 
         // play start animations
         TigerController.instance.tigerAnim.Play("TigerSwipe");
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SmallWhoosh, 0.5f);
         yield return new WaitForSeconds(0.25f);
         EmeraldHead.instance.animator.Play("EnterPolaroid");
+        yield return new WaitForSeconds(0.25f);
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.GlassDink1, 0.5f);
+        yield return new WaitForSeconds(0.25f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.GlassDink2, 0.5f, "glass_dink", 1.5f);
+        yield return new WaitForSeconds(0.25f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.GlassDink1, 0.5f, "glass_dink", 1.2f);
+        yield return new WaitForSeconds(0.25f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.GlassDink2, 0.5f, "glass_dink", 0.8f);
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.EmeraldSlideShort, 0.25f);
 
         // set invisible frames
         InvisibleFrameLayout.instance.SetNumberOfFrames(currentWord.elkoninCount);
@@ -85,6 +133,8 @@ public class WordFactoryDeletingManager : MonoBehaviour
         // throw out real frames
         VisibleFramesController.instance.PlaceActiveFrames(polaroid.transform.localPosition);
         VisibleFramesController.instance.MoveFramesToInvisibleFrames();
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MagicReveal, 0.1f);
         yield return new WaitForSeconds(1f);
 
         // show challenge word coins
@@ -97,27 +147,29 @@ public class WordFactoryDeletingManager : MonoBehaviour
             ElkoninValue value = currentWord.elkoninList[i];
             var coinObj = Instantiate(universalCoinImage, VisibleFramesController.instance.frames[i].transform.position, Quaternion.identity, coinsParent);
             var coin = coinObj.GetComponent<UniversalCoinImage>();
-            coin.ToggleVisibility(false, false);
-            coin.ToggleVisibility(true, true);
             coin.SetValue(currentWord.elkoninList[i]);
             coin.SetSize(normalCoinSize);
+            coin.ToggleVisibility(true, false);
+            coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
             currentCoins.Add(coin);
-            yield return new WaitForSeconds(0.05f);
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", (1f + 0.25f * i));
+            yield return new WaitForSeconds(0.1f);
         }
 
         yield return new WaitForSeconds(0.5f);
 
-        // say each letter + glow / grow coin
+        // say each letter + grow coin
         foreach (var coin in currentCoins)
         {
-            GlowAndPlayAudioCoin(coin);
+            PlayAudioCoin(coin);
             yield return new WaitForSeconds(1f);
         }
         yield return new WaitForSeconds(0.5f);
 
-
         // say challenge word
         AudioManager.instance.PlayTalk(currentWord.audio);
+        polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
         foreach (var coin in currentCoins)
         {
             coin.LerpSize(expandedCoinSize, 0.25f);
@@ -129,6 +181,31 @@ public class WordFactoryDeletingManager : MonoBehaviour
             coin.LerpSize(normalCoinSize, 0.25f);
             yield return new WaitForSeconds(0.1f);
         }
+        yield return new WaitForSeconds(0.25f);
+        polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
+
+        // squish polaroid
+        EmeraldHead.instance.animator.Play("SquishPolaroid");
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.EmeraldSlideShort, 0.25f);
+        yield return new WaitForSeconds(0.25f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PolaroidCrunch, 0.5f);
+        yield return new WaitForSeconds(1.25f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PolaroidUnravel, 0.5f);
+        yield return new WaitForSeconds(0.5f);
+
+        polaroid.SetPolaroid(currentPair.word1);
+
+        // unsquish polaroid 
+        EmeraldHead.instance.animator.Play("UnsquishPolaroid");
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.EmeraldSlideShort, 0.25f);
+        yield return new WaitForSeconds(1.5f);
+        // say new challenge word
+        polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
+        AudioManager.instance.PlayTalk(currentPair.word1.audio);
+        yield return new WaitForSeconds(currentPair.word1.audio.length);
+        polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
 
         // turn on raycaster
         WordFactoryDeletingRaycaster.instance.isOn = true;
@@ -148,12 +225,12 @@ public class WordFactoryDeletingManager : MonoBehaviour
         currentCoin = coin;
         WordFactoryDeletingManager.instance.ReturnCoinsToFrame();
 
-        print ("current coin value: " + currentCoin.value);
-        print ("value looking for: " + currentPair.word1.elkoninList[currentPair.swipeIndex]);
-
         // win
-        if (coin.value == currentPair.word1.elkoninList[currentPair.swipeIndex])
+        if (coin.value == currentPair.word2.elkoninList[currentPair.index])
         {
+            // audio fx
+            AudioManager.instance.PlayCoinDrop();
+
             numWins++;
             StartCoroutine(PostRound(true));
         }
@@ -171,6 +248,9 @@ public class WordFactoryDeletingManager : MonoBehaviour
         // win round
         if (win)
         {
+            // play correct sound
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
+
             // move current coin
             currentCoin.GetComponent<LerpableObject>().LerpPosition(EmeraldTigerHolder.instance.transform.position, 0.25f, false);
             currentCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
@@ -184,21 +264,13 @@ public class WordFactoryDeletingManager : MonoBehaviour
 
             yield return new WaitForSeconds(1f);
 
-            // squish polaroid
-            EmeraldHead.instance.animator.Play("SquishPolaroid");
-            yield return new WaitForSeconds(1.5f);
-
-            polaroid.SetPolaroid(currentPair.word2);
-
-            // unsquish polaroid 
-            EmeraldHead.instance.animator.Play("UnsquishPolaroid");
-            yield return new WaitForSeconds(1.5f);
-
             // remove one frame
             InvisibleFrameLayout.instance.SetNumberOfFrames(currentWord.elkoninCount - 1);
 
             // shrink extra frame
-            VisibleFramesController.instance.frames[currentPair.swipeIndex].GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+            VisibleFramesController.instance.frames[currentPair.index].GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 0.5f);
             yield return new WaitForSeconds(0.2f);
 
             // move coins to frames
@@ -213,7 +285,8 @@ public class WordFactoryDeletingManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             // say new challenge word
-            AudioManager.instance.PlayTalk(currentPair.word2.audio);
+            AudioManager.instance.PlayTalk(currentPair.word1.audio);
+            polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
             foreach (var coin in currentCoins)
             {
                 coin.LerpSize(expandedCoinSize, 0.25f);
@@ -225,11 +298,15 @@ public class WordFactoryDeletingManager : MonoBehaviour
                 coin.LerpSize(normalCoinSize, 0.25f);
                 yield return new WaitForSeconds(0.1f);
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.25f);
+            polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
         }
         // lose round
         else
         {
+            // play correct sound
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
+
             // return coin to frame
             currentCoin = null;
             WordFactoryDeletingManager.instance.ReturnCoinsToFrame();
@@ -238,24 +315,37 @@ public class WordFactoryDeletingManager : MonoBehaviour
 
         // eat the polaroid
         EmeraldHead.instance.animator.Play("EatPolaroid");
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.EmeraldSlideShort, 0.25f);
+        yield return new WaitForSeconds(0.25f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PolaroidCrunch, 0.5f);
         yield return new WaitForSeconds(1.5f);
 
         // award card to correct person
         if (win)
         {
             WinCardsController.instance.AddPolaroid();
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.HappyBlip, 0.5f);
         }
         else
         {
             TigerController.instance.AddTigerPolaroid();
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SadBlip, 0.5f);
         }
         yield return new WaitForSeconds(1f);
 
         // remove coins and frames
-        VisibleFramesController.instance.MoveFramesOffScreen();
+        VisibleFramesController.instance.RemoveFrames();
+        int i = 0;
         foreach (var coin in currentCoins)
         {
-            coin.GetComponent<LerpableObject>().LerpPosition(new Vector2(coin.transform.position.x, coin.transform.position.y - 500f), 0.5f, false);
+            coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.1f, 0.1f);
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WaterRipples, 0.1f, "water_splash", (1f - 0.25f * i));
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "water_splash", (1f - 0.2f * i));
+            yield return new WaitForSeconds(0.05f);
+            i++;
         }
         yield return new WaitForSeconds(0.5f);
 
@@ -309,7 +399,6 @@ public class WordFactoryDeletingManager : MonoBehaviour
 
     public void ReturnCoinsToFrame()
     {
-        // say each letter + glow / grow coin
         int count = 0;
         foreach (var coin in currentCoins)
         {
@@ -321,29 +410,26 @@ public class WordFactoryDeletingManager : MonoBehaviour
         }
     }
 
-    public void GlowAndPlayAudioCoin(UniversalCoinImage coin)
+    public void PlayAudioCoin(UniversalCoinImage coin)
     {
         if (playingCoinAudio)
             return;
 
         if (currentCoins.Contains(coin))
         {
-            StartCoroutine(GlowAndPlayAudioCoinRoutine(coin));
+            StartCoroutine(PlayAudioCoinRoutine(coin));
         }
     }
 
-    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoinImage coin)
+    private IEnumerator PlayAudioCoinRoutine(UniversalCoinImage coin)
     {
         playingCoinAudio = true;
 
-        // glow coin
-        coin.ToggleGlowOutline(true);
         AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(coin.value).audio);
         coin.LerpSize(expandedCoinSize, 0.25f);
 
         yield return new WaitForSeconds(0.9f);
         coin.LerpSize(normalCoinSize, 0.25f);
-        coin.ToggleGlowOutline(false);
 
         playingCoinAudio = false;
     }

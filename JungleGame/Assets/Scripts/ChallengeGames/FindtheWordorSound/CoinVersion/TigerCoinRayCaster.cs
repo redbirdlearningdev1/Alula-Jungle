@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 
 public class TigerCoinRayCaster : MonoBehaviour
 {
+    public static TigerCoinRayCaster instance;
+
+
     public bool isOn = false;
     public float objcetMoveSpeed = 0.1f;
 
@@ -13,6 +16,14 @@ public class TigerCoinRayCaster : MonoBehaviour
 
     private bool polaroidAudioPlaying = false;
     private Transform currentPolaroid;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     void Update()
     {
@@ -32,7 +43,6 @@ public class TigerCoinRayCaster : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0) && selectedObject)
         {
-
             // send raycast to check for bag
             var pointerEventData = new PointerEventData(EventSystem.current);
             pointerEventData.position = Input.mousePosition;
@@ -72,7 +82,7 @@ public class TigerCoinRayCaster : MonoBehaviour
                     {
                         selectedObject = result.gameObject;
                         selectedObject.gameObject.transform.SetParent(selectedObjectParent);
-                        TigerCoinGameManager.instance.GlowAndPlayAudioCoin(selectedObject.GetComponent<UniversalCoinImage>());
+                        TigerCoinGameManager.instance.PlayCoinAudio(selectedObject.GetComponent<UniversalCoinImage>());
                     }
                     else if (result.gameObject.transform.CompareTag("Polaroid"))
                     {

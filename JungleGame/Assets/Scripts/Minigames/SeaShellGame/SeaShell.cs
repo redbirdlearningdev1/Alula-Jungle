@@ -5,77 +5,16 @@ using UnityEngine.UI;
 
 public class SeaShell : MonoBehaviour
 {
+    public ActionWordEnum value;
+    public int shellNum;
+    public Image shadow;
+    public Transform shellOrigin;
 
-    [SerializeField] public GameObject shell;
-    [SerializeField] public GameObject shadow;
-
-    public ActionWordEnum type;
-    public int logIndex;
-    public Transform originalPos;
-    public Transform shellParent;
-    public float moveSpeed = 5f;
-
-
-
-    private BoxCollider2D myCollider;
-    private Image image;
     private bool audioPlaying;
 
-    // original vars
-    
-    private bool originalSet = false;
-    public bool raycast;
-    [HideInInspector] public bool isClicked;
-
-    void Awake()
+    public void SetValue(ActionWordEnum newValue)
     {
-
-        RectTransform rt = GetComponent<RectTransform>();
-        myCollider = gameObject.AddComponent<BoxCollider2D>();
-        myCollider.size = rt.sizeDelta;
-
-        image = GetComponent<Image>();
-    }
-
-    void Update()
-    {
-        
-    }
-
-    public void ReturnToLog()
-    {
-        StartCoroutine(ReturnToOriginalPosRoutine(originalPos.position));
-    }
-
-    private IEnumerator ReturnToOriginalPosRoutine(Vector3 target)
-    {
-        Vector3 currStart = transform.position;
-        float timer = 0f;
-        float maxTime = 0.5f;
-
-        while (true)
-        {
-            // animate movement
-            timer += Time.deltaTime * moveSpeed;
-            if (timer < maxTime)
-            {
-                transform.position = Vector3.Lerp(currStart, target, timer / maxTime);
-            }
-            else
-            {
-                transform.position = target;
-                transform.SetParent(shellParent);
-                yield break;
-            }
-
-            yield return null;
-        }
-    }
-
-    public void SetShellType(ActionWordEnum type)
-    {
-        this.type = type;
-        
+        value = newValue;
     }
 
     public void PlayPhonemeAudio()
@@ -86,48 +25,98 @@ public class SeaShell : MonoBehaviour
         }
     }
 
+    public void ToggleShell(bool opt)
+    {
+        if (opt)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+            GetComponent<LerpableObject>().SetImageAlpha(GetComponent<Image>(), 1f);
+            shadow.GetComponent<LerpableObject>().SetImageAlpha(shadow, 1f);
+        }
+        else
+        {
+            GetComponent<LerpableObject>().SetImageAlpha(GetComponent<Image>(), 0f);
+            shadow.GetComponent<LerpableObject>().SetImageAlpha(shadow, 0f);
+        }
+    }
 
     private IEnumerator PlayPhonemeAudioRoutine()
     {
         audioPlaying = true;
-        Debug.Log(type);
-        AudioManager.instance.PlayPhoneme(type);
+        AudioManager.instance.PlayPhoneme(value);
         yield return new WaitForSeconds(1f);
         audioPlaying = false;
     }
 
-    public void ToggleVisibility(bool opt, bool smooth)
+    public void ShowShell()
     {
-        if (smooth)
-            StartCoroutine(ToggleVisibilityRoutine(opt));
-        else
-        {
-            if (!image)
-                image = GetComponent<Image>();
-            Color temp = image.color;
-            if (opt) { temp.a = 1f; }
-            else { temp.a = 0; }
-            image.color = temp;
-        }
+        StartCoroutine(ShowShellRoutine());
     }
 
-    private IEnumerator ToggleVisibilityRoutine(bool opt)
+    private IEnumerator ShowShellRoutine()
     {
-        float end = 0f;
-        if (opt) { end = 1f; }
-        float timer = 0f;
-        while (true)
-        {
-            timer += Time.deltaTime;
-            Color temp = image.color;
-            temp.a = Mathf.Lerp(temp.a, end, timer);
-            image.color = temp;
+        transform.SetParent(ShellRayCaster.instance.selectedShellParent);
+        shadow.GetComponent<LerpableObject>().LerpImageAlpha(shadow, 0f, 0.25f);
+        GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
+        GetComponent<LerpableObject>().LerpYPos(shellOrigin.position.y + 1f, 0.2f, false);
 
-            if (image.color.a == end)
-            {
-                break;
-            }
-            yield return null;
-        }
+        GetComponent<WiggleController>().StartWiggle();
+        PlayPhonemeAudio();
+        yield return new WaitForSeconds(1f);
+        GetComponent<WiggleController>().StopWiggle();
+
+        shadow.GetComponent<LerpableObject>().LerpImageAlpha(shadow, 1f, 0.25f);
+        GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
+        GetComponent<LerpableObject>().LerpYPos(shellOrigin.position.y, 0.2f, false);
+
+        yield return new WaitForSeconds(0.2f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SandDrop, 0.5f);
+        transform.SetParent(shellOrigin);
+    }   
+
+    public void SelectShell()
+    {
+        shadow.GetComponent<LerpableObject>().LerpImageAlpha(shadow, 0f, 0.25f);
+        GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
+        PlayPhonemeAudio();
+        StartCoroutine(SelectShellRoutine());
+    }
+
+    private IEnumerator SelectShellRoutine()
+    {
+        GetComponent<WiggleController>().StartWiggle();
+        yield return new WaitForSeconds(1f);
+        GetComponent<WiggleController>().StopWiggle();
+    }
+
+    public void UnselectShell()
+    {
+        StartCoroutine(UnselectShellRoutine());
+    }
+
+    private IEnumerator UnselectShellRoutine()
+    {
+        shadow.GetComponent<LerpableObject>().LerpImageAlpha(shadow, 1f, 0.25f);
+        GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
+        GetComponent<LerpableObject>().LerpPosition(shellOrigin.position, 0.2f, false);
+        yield return new WaitForSeconds(0.2f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SandDrop, 0.5f);
+        yield return new WaitForSeconds(0.5f);
+        transform.SetParent(shellOrigin);
+    }
+
+    public void CorrectShell()
+    {
+        StartCoroutine(CorrectShellRoutine());
+    }
+
+    private IEnumerator CorrectShellRoutine()
+    {
+        GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.3f, 1.3f), new Vector2(0f, 0f), 0.2f, 0.2f);
+        yield return new WaitForSeconds(0.25f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 0.5f);
+        yield return new WaitForSeconds(1f);
+        GetComponent<LerpableObject>().LerpPosition(shellOrigin.position, 0.2f, false);
+        transform.SetParent(shellOrigin);
     }
 }

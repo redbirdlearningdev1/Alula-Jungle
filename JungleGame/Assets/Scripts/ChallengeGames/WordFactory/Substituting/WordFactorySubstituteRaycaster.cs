@@ -57,8 +57,13 @@ public class WordFactorySubstituteRaycaster : MonoBehaviour
                 }
             }
 
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f);
+
             // return water coins to original position
             WordFactorySubstitutingManager.instance.ReturnWaterCoins();
+            selectedObject.transform.SetParent(WordFactorySubstitutingManager.instance.waterCoinParent);
+            selectedObject.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
             selectedObject = null;
         }
 
@@ -75,12 +80,16 @@ public class WordFactorySubstituteRaycaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("UniversalCoin"))
                     {
-                        WordFactorySubstitutingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
+                        WordFactorySubstitutingManager.instance.PlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
                     }
                     else if (result.gameObject.transform.CompareTag("WaterCoin"))
                     {
-                        WordFactorySubstitutingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
+                        WordFactorySubstitutingManager.instance.PlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
                         selectedObject = result.gameObject;
+                        selectedObject.transform.SetParent(selectedObjectParent);
+                        selectedObject.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.1f);
+                        // audio fx
+                        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 1.2f);
                     }
                     else if (result.gameObject.transform.CompareTag("Polaroid"))
                     {

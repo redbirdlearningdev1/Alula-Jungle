@@ -20,22 +20,21 @@ MonoBehaviour:
   ending: 2
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 11
+    leftMouthEnum: 1
+    leftEyesEnum: 3
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: b8b84f93eaa7d7f4b9de0d9bddc461d3, type: 3}
     audioClipName: B_2_2_Red_1_T1
     audioString: All done!
   - endTalkieAfterThisSegment: 0
@@ -43,31 +42,31 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 11
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    rightEmotionNum: 13
+    rightMouthEnum: 1
+    rightEyesEnum: 3
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: d1c2db1923a177341a1c2c05713767dc, type: 3}
     audioClipName: B_2_2_Wally_2_T1
-    audioString: Whew~
+    audioString: Whew,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 11
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    rightEmotionNum: 15
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 989df734370690944858d6a16d6406c1, type: 3}
     audioClipName: B_2_2_Wally_2_T2
     audioString: that was a lot of hard work!
   - endTalkieAfterThisSegment: 0
@@ -75,15 +74,15 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 8
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 35b73b7dcae38fa428888a9319014988, type: 3}
     audioClipName: B_2_2_Clogg_3_T1
     audioString: Thank you for your help
   - endTalkieAfterThisSegment: 0
@@ -91,15 +90,15 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 8
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 3
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: c6859582638a96b4b8ff46b7a11f8fc1, type: 3}
     audioClipName: B_2_2_Clogg_3_T2
     audioString: You did well.
   - endTalkieAfterThisSegment: 0
@@ -107,15 +106,15 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 1
     rightCharacter: 8
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    rightEmotionNum: 5
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 3cae550684ceb274cb1b58e19436d435, type: 3}
     audioClipName: B_2_2_Red_4_T1
     audioString: It was no trouble at all-
   - endTalkieAfterThisSegment: 0
@@ -129,24 +128,24 @@ MonoBehaviour:
     rightCharacter: 2
     rightEmotionNum: 6
     rightMouthEnum: 1
-    rightEyesEnum: 1
-    activeCharacter: 1
+    rightEyesEnum: 4
+    activeCharacter: 3
     audioClip: {fileID: 0}
-    audioClipName: P_1_1_RedWally_9_T1
-    audioString: '!!!'
+    audioClipName: RedWally_Oh
+    audioString: Oh!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 8
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 4
+    leftMouthEnum: 2
+    leftEyesEnum: 1
     rightCharacter: 0
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: c54723b641764804c84e0a23b83a78c1, type: 3}
     audioClipName: B_2_2_Clogg_5_T1
     audioString: ...

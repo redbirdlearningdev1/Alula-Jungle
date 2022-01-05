@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: are_cw_obj
   m_EditorClassIdentifier: 
   word: are
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 9498915ed7ef8e04e81a579c654aa76f, type: 3}
   sprite: {fileID: 0}
   elkoninList: 0e0000000000000000000000000000000000000000000000
   elkoninCount: 1
   set: 13
-  imageText: "\r"

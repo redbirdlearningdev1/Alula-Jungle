@@ -30,7 +30,6 @@ public class pileRummage : MonoBehaviour
         }
 
         image.sprite = pileSprites[currPile];
-
     }
 
     public void pileChose()

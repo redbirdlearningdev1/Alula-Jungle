@@ -20,22 +20,21 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 6
-    leftEmotionNum: 0
-    leftMouthEnum: 0
+    leftEmotionNum: 4
+    leftMouthEnum: 1
     leftEyesEnum: 0
     rightCharacter: 5
-    rightEmotionNum: 0
-    rightMouthEnum: 0
+    rightEmotionNum: 10
+    rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 6d2f6704149ff3641b7ab64060ba24e2, type: 3}
     audioClipName: B_3_3_Marcus_5_T1
     audioString: "You\u2019ll see us soon enough!"
   - endTalkieAfterThisSegment: 0
@@ -43,30 +42,30 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 6
-    leftEmotionNum: 0
-    leftMouthEnum: 0
+    leftEmotionNum: 5
+    leftMouthEnum: 2
     leftEyesEnum: 0
     rightCharacter: 5
-    rightEmotionNum: 0
-    rightMouthEnum: 0
+    rightEmotionNum: 6
+    rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 8f578f0ca05835549ba1d4f7c585ea9f, type: 3}
     audioClipName: B_3_3_Brutus_6_T1
-    audioString: "yeah\u2026"
+    audioString: "Yeah\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 6
-    leftEmotionNum: 0
-    leftMouthEnum: 0
+    leftEmotionNum: 5
+    leftMouthEnum: 2
     leftEyesEnum: 0
     rightCharacter: 5
-    rightEmotionNum: 0
-    rightMouthEnum: 0
+    rightEmotionNum: 10
+    rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: a414d887ae1f2c847af770965dc50564, type: 3}
     audioClipName: B_3_3_Brutus_6_T2
     audioString: "Hopefully in a better smelling place\u2026"

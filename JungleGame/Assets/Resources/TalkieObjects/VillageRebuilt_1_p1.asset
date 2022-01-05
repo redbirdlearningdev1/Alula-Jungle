@@ -20,24 +20,7 @@ MonoBehaviour:
   ending: 2
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 0
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
-    rightCharacter: 0
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
-    audioClipName: $Segments
-    audioString: 
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -51,7 +34,7 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: b92b25b2b1f0ca640bc630bcd67fe3c2, type: 3}
+    audioClip: {fileID: 8300000, guid: 2349b4af541aa134a87d8aff987e51e6, type: 3}
     audioClipName: P_1_5_Red_1_T1
     audioString: Wow!
   - endTalkieAfterThisSegment: 0
@@ -67,7 +50,7 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: cbaf175408644be40809f7a10ec90e07, type: 3}
+    audioClip: {fileID: 8300000, guid: 2ee1052fe68200643ac1dc52e08a33b2, type: 3}
     audioClipName: P_1_5_Red_1_T2
     audioString: 'The village looks great! '
   - endTalkieAfterThisSegment: 0
@@ -82,8 +65,8 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 5beef886f8e84594ab91c2ea1917ad49, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 6cf00cde598cf594482b8823d234e789, type: 3}
     audioClipName: P_1_5_Wally_2_T1
     audioString: Good job!
   - endTalkieAfterThisSegment: 0
@@ -99,7 +82,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: cff1eef3f3d2bf645a05a6eac9af13b5, type: 3}
+    audioClip: {fileID: 8300000, guid: d68eba83cf04e144e9df35c7e18fb3b2, type: 3}
     audioClipName: P_1_5_Darwin_3_T1
     audioString: Wow this looks incredible!
   - endTalkieAfterThisSegment: 0
@@ -115,7 +98,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: ff19c90cbe53d0249977f82961dcc051, type: 3}
+    audioClip: {fileID: 8300000, guid: ef07ddedd84f89f4e9bc565e8b44d0bd, type: 3}
     audioClipName: P_1_5_Darwin_3_T2
     audioString: I uhh...
   - endTalkieAfterThisSegment: 0
@@ -131,7 +114,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 3f3eb3a0cbd0428439621a8666a30884, type: 3}
+    audioClip: {fileID: 8300000, guid: d6c7af0b77eb0dc40972da10f1d395cc, type: 3}
     audioClipName: P_1_5_Darwin_3_T3
     audioString: "Can\u2019t believe how good it looks!"
   - endTalkieAfterThisSegment: 0
@@ -146,11 +129,11 @@ MonoBehaviour:
     rightEmotionNum: 9
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: b3d90f9a2a170f04a979335773f16d9f, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: cd4e6c4d3180160429c582c2a3df38dd, type: 3}
     audioClipName: P_1_5_Wally_4_T1
     audioString: "Does this mean you\u2019re getting your memories back? Will they
-      be able to help the prince?"
+      be able to help the Prince?"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -164,7 +147,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: da0d3d026edfb2944ba2a0fd793a48f6, type: 3}
+    audioClip: {fileID: 8300000, guid: fb8afba92f634bf4aac5e05207abca4d, type: 3}
     audioClipName: P_1_5_Darwin_5_T1
     audioString: "They\u2019re starting to come back!"
   - endTalkieAfterThisSegment: 0
@@ -180,7 +163,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 828b41e9d9d74f74dbe01bacf2a88614, type: 3}
+    audioClip: {fileID: 8300000, guid: 864af8193ec2d204fa125c88a272574e, type: 3}
     audioClipName: P_1_5_Darwin_5_T2
     audioString: "It\u2019s been so long that it makes remembering harder\u2026"
   - endTalkieAfterThisSegment: 0
@@ -196,7 +179,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: b4e3de611184d8e4790a330a87fb66fe, type: 3}
+    audioClip: {fileID: 8300000, guid: 7984c2f84981ff043afd58b608459b2a, type: 3}
     audioClipName: P_1_5_Darwin_5_T3
     audioString: "But with the village being all cleaned up it\u2019s making it easier! "
   - endTalkieAfterThisSegment: 0
@@ -211,8 +194,8 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 3
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: a6c541628eb928646b3617b273dfe236, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: fb0b46c9a76674e40be528d0cf97cde3, type: 3}
     audioClipName: P_1_5_Red_6_T1
     audioString: I'm glad!
   - endTalkieAfterThisSegment: 0
@@ -228,7 +211,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: ff51cdeaac624d44492a8668bf4ddfc3, type: 3}
+    audioClip: {fileID: 8300000, guid: 336d3a08da4711746bd4d36e78a7b247, type: 3}
     audioClipName: P_1_5_Darwin_7_T1
     audioString: As am I!
   - endTalkieAfterThisSegment: 0
@@ -244,6 +227,6 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 41c5a2dccbbffcd44b6d0f02053cea42, type: 3}
+    audioClip: {fileID: 8300000, guid: 4fcd0464d2da4c04790c2391d45f280b, type: 3}
     audioClipName: P_1_5_Darwin_7_T2
-    audioString: "I\u2019m going to run up ahead and try to catch up to the prince!"
+    audioString: "I\u2019m going to run up ahead and try to catch up to Julius!"

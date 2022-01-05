@@ -9,13 +9,20 @@ public class WiggleController : MonoBehaviour
     private bool wiggle;
     private float randomTimeAddition = 0f;
     private float timer = 0f;
+    private Vector3 startRotation;
+    private bool setRotation = false;
+
+    void Awake()
+    {
+        startRotation = transform.rotation.eulerAngles;
+    }
 
     void Update()
     {
         if (wiggle)
         {
             timer += Time.deltaTime;
-            var quat = Quaternion.Euler(0f, 0f, curve.Evaluate(timer + randomTimeAddition) * multiplier);
+            var quat = Quaternion.Euler(startRotation.x, startRotation.y, startRotation.z + curve.Evaluate(timer + randomTimeAddition) * multiplier);
             transform.rotation = quat;
             
             // reset timer
@@ -26,7 +33,11 @@ public class WiggleController : MonoBehaviour
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            if (!setRotation)
+            {
+                transform.rotation = Quaternion.Euler(startRotation);
+                setRotation = true;
+            }
         }
     }
 
@@ -34,6 +45,7 @@ public class WiggleController : MonoBehaviour
     {
         randomTimeAddition = Random.Range(0.1f, 0.5f);
         wiggle = true;
+        setRotation = false;
     }
 
     public void StopWiggle()

@@ -8,7 +8,9 @@ public enum SplitSong
     Frogger,
     Turntables,
     Rummage,
-    Spiderweb
+    Spiderweb,
+    Seashells,
+    Pirate
 }
 
 public class AudioManager : MonoBehaviour
@@ -34,7 +36,9 @@ public class AudioManager : MonoBehaviour
     public static float default_masterVol =     1f;
     public static float default_musicVol =      0.25f;
     public static float default_fxVol =         1f;
-    public static float default_talkVol =       1f;
+    public static float default_talkVol =       3f;
+
+    private Coroutine smoothSetMusicRoutine = null;
 
     void Awake() 
     {
@@ -72,6 +76,22 @@ public class AudioManager : MonoBehaviour
         masterMixer.SetFloat("musicVol", vol);
     }
 
+    public void ToggleMusicSmooth(bool opt)
+    {
+        if (opt)
+        {
+            if (smoothSetMusicRoutine != null)
+                StopCoroutine(smoothSetMusicRoutine);
+            smoothSetMusicRoutine = StartCoroutine(SmoothStartMusicSource(musicSources[0], 1f));
+        }
+        else
+        {
+            if (smoothSetMusicRoutine != null)
+                StopCoroutine(smoothSetMusicRoutine);
+            smoothSetMusicRoutine = StartCoroutine(SmoothEndMusicSource(musicSources[0], 1f));
+        }
+    }
+
     public void SetFXVolume(float vol)
     {
         // clamp between 0 and 1
@@ -84,9 +104,9 @@ public class AudioManager : MonoBehaviour
 
     public void SetTalkVolume(float vol)
     {
-        // clamp between 0 and 1
+        // clamp between 0 and 3
         if (vol <= 0) vol = 0.00001f;
-        else if (vol > 1) vol = 1;
+        else if (vol > 3) vol = 3;
 
         vol = 20f * Mathf.Log10(vol);
         masterMixer.SetFloat("talkVol", vol);
@@ -210,6 +230,24 @@ public class AudioManager : MonoBehaviour
                 count++;
             }
         }
+        else if (song == SplitSong.Seashells)
+        {
+            int count = 0;
+            foreach(var split in AudioDatabase.instance.SeashellsSongSplit)
+            {
+                musicSources[count].clip = split;
+                count++;
+            }
+        }
+        else if (song == SplitSong.Pirate)
+        {
+            int count = 0;
+            foreach(var split in AudioDatabase.instance.PirateSongSplit)
+            {
+                musicSources[count].clip = split;
+                count++;
+            }
+        }
 
         setUpSplitSong = true;
     }
@@ -244,7 +282,7 @@ public class AudioManager : MonoBehaviour
 
             print ("currSplitIndex: " + currSplitIndex);
 
-            StartCoroutine(SmoothStartSource(musicSources[currSplitIndex], smoothSplitDuration));
+            StartCoroutine(SmoothStartMusicSource(musicSources[currSplitIndex], smoothSplitDuration));
             currSplitIndex++;
         }
     }
@@ -258,13 +296,13 @@ public class AudioManager : MonoBehaviour
             return;
 
         currSplitIndex--;
-        StartCoroutine(SmoothEndSource(musicSources[currSplitIndex], smoothSplitDuration));
+        StartCoroutine(SmoothEndMusicSource(musicSources[currSplitIndex], smoothSplitDuration));
     }
 
-    private IEnumerator SmoothStartSource(AudioSource source, float duration)
+    private IEnumerator SmoothStartMusicSource(AudioSource source, float duration)
     {
         float timer = 0f;
-        float endVol = 0.5f;
+        float endVol = StudentInfoSystem.GetCurrentProfile().musicVol;
 
         while (true)
         {   
@@ -281,7 +319,7 @@ public class AudioManager : MonoBehaviour
         }   
     }
 
-    private IEnumerator SmoothEndSource(AudioSource source, float duration)
+    private IEnumerator SmoothEndMusicSource(AudioSource source, float duration)
     {
         float timer = 0f;
         float startVol = source.volume;

@@ -33,8 +33,8 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 002450db809afc743bc66b3c96974163, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: bc51eaa4d12b82244ba62eb840fada89, type: 3}
     audioClipName: P_1_4_Lester_1_T1
     audioString: Howdy there friend!
   - endTalkieAfterThisSegment: 0
@@ -49,10 +49,10 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 9bda94302e9a3e3458846f5f47c45ebb, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: dd4f4aa5b002f6449b343e72247a5807, type: 3}
     audioClipName: P_1_4_Lester_1_T2
-    audioString: My name is Lester~
+    audioString: My name is Lester,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -65,8 +65,8 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 1
     rightEyesEnum: 3
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 4f990154191e02142945d918d7843d7b, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 9f8e9aa9d2f025e468be95a3405880f8, type: 3}
     audioClipName: P_1_4_Lester_1_T3
     audioString: and I absolutely love making stickers!
   - endTalkieAfterThisSegment: 0
@@ -81,8 +81,8 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 15f9dd1e39da8944892a2b092ff7bd0a, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: b5ead3b8740033d42ab9ad8fee8ab29e, type: 3}
     audioClipName: P_1_4_Lester_2_T1
     audioString: Say there!
   - endTalkieAfterThisSegment: 0
@@ -97,8 +97,8 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 3a108406170496748979a436236fa00b, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: a8c013b39803880468a8d737af2ee476, type: 3}
     audioClipName: P_1_4_Lester_2_T2
     audioString: "I see you\u2019ve got some coins there!"
   - endTalkieAfterThisSegment: 0
@@ -113,10 +113,10 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: b2e3c57134b39df4f9d4be8f2ba926f2, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 3dec7483e8739674a8279bb5a5e4f03d, type: 3}
     audioClipName: P_1_4_Lester_2_T3
-    audioString: "I'll tell you what~ if you give me three coins I\u2019ll make you
+    audioString: "I'll tell you what, if you give me three coins I\u2019ll make you
       a one of a kind sticker!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -130,8 +130,8 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 0e6f3bc0b2c34db4fb2bdd9f75fabdd5, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 258935eae395d154ea295de9097a2e6e, type: 3}
     audioClipName: P_1_4_Lester_2_T4
     audioString: I promise you won't find another kind like it!
   - endTalkieAfterThisSegment: 0
@@ -146,8 +146,8 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: cb5a63734ebf26743b4b7f28e1f675ce, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: fc320fc8005d15d48adacf71f8514951, type: 3}
     audioClipName: P_1_4_Lester_2_T5
     audioString: 'Guaranteed! '
   - endTalkieAfterThisSegment: 0
@@ -162,8 +162,8 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: b0923740dca14d7449d05a194cc591e6, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 8f984a8b77d381840bb5ec38d2cf4cec, type: 3}
     audioClipName: P_1_4_Lester_2_T6
     audioString: How does that sound?!
   - endTalkieAfterThisSegment: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
     rightEmotionNum: 9
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 1df2c4c394740f748b0890dfa001e7fd, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 0}
     audioClipName: P_1_4_Lester_3_T1
     audioString: Why don't we try for one now!

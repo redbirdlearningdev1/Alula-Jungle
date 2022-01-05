@@ -42,8 +42,10 @@ public class TalkieManager : MonoBehaviour
     public Image rightImage;
 
     [Header("Talkie Positions")]
-    public Transform inactivePos;
-    public Transform activePos;
+    public Transform leftInactivePos;
+    public Transform rightInactivePos;
+    public Transform leftActivePos;
+    public Transform rightActivePos;
     public Transform leftSideHiddenPos;
     public Transform rightSideHiddenPos;
 
@@ -56,7 +58,7 @@ public class TalkieManager : MonoBehaviour
     public TextMeshProUGUI subtitleText;
 
     [Header("Audio Stuff")]
-    public float minMusicVolWhenTalkiePlaying = 0.1f;
+    public float minMusicVolWhenTalkiePlaying = 0f;
     private float prevMusicVolume;
 
     [Header("Yes No Stuff")]
@@ -171,8 +173,8 @@ public class TalkieManager : MonoBehaviour
         subtitleBox.color = new Color(0f, 0f, 0f, 0f);
         
         // bring talkies down
-        StartCoroutine(MoveObjectRouitne(leftTalkie, inactivePos.position, talkieMoveSpeed));
-        StartCoroutine(MoveObjectRouitne(rightTalkie, inactivePos.position, talkieMoveSpeed));
+        StartCoroutine(MoveObjectRouitne(leftTalkie, leftInactivePos.position, talkieMoveSpeed));
+        StartCoroutine(MoveObjectRouitne(rightTalkie, rightInactivePos.position, talkieMoveSpeed));
 
         // deactivate letterbox and background
         LetterboxController.instance.ToggleLetterbox(false);
@@ -189,11 +191,10 @@ public class TalkieManager : MonoBehaviour
         ResetTalkies();
 
         // set audio to be well balanced
-        if (AudioManager.instance.GetMusicVolume() > minMusicVolWhenTalkiePlaying)
-        {
-            prevMusicVolume = AudioManager.instance.GetMusicVolume();
-            AudioManager.instance.SetMusicVolume(minMusicVolWhenTalkiePlaying);
-        }
+        AudioManager.instance.ToggleMusicSmooth(false);
+
+        // set talk vol
+        AudioManager.instance.SetTalkVolume(StudentInfoSystem.GetCurrentProfile().talkVol);
 
         // disable nav buttons on scroll map
         if (SceneManager.GetActiveScene().name == "ScrollMap")
@@ -206,8 +207,8 @@ public class TalkieManager : MonoBehaviour
         {
             default:
             case TalkieStart.EnterUp:
-                leftTalkie.position = inactivePos.position;
-                rightTalkie.position = inactivePos.position;
+                leftTalkie.position = leftInactivePos.position;
+                rightTalkie.position = rightInactivePos.position;
                 break;
             case TalkieStart.EnterSides:
                 leftTalkie.position = leftSideHiddenPos.position;
@@ -229,11 +230,14 @@ public class TalkieManager : MonoBehaviour
 
         // activate letterbox and background if need be
         if (currentTalkie.addLetterboxBeforeTalkie)
-            LetterboxController.instance.ToggleLetterbox(true, 1f);
+            LetterboxController.instance.ToggleLetterbox(true);
         if (currentTalkie.addBackgroundBeforeTalkie)
             DefaultBackground.instance.Activate();
 
         yield return new WaitForSeconds(1f);
+
+        // turn on particles
+        ParticleController.instance.isOn = true;
 
         // clear subtitles
         subtitleText.text = "";
@@ -290,9 +294,9 @@ public class TalkieManager : MonoBehaviour
             case TalkieEnding.ExitDown:
                 // bring talkies down
                 if (!leftHidden)
-                    StartCoroutine(MoveObjectRouitne(leftTalkie, inactivePos.position, talkieMoveSpeed));
+                    StartCoroutine(MoveObjectRouitne(leftTalkie, leftInactivePos.position, talkieMoveSpeed));
                 if (!rightHidden)
-                    StartCoroutine(MoveObjectRouitne(rightTalkie, inactivePos.position, talkieMoveSpeed));
+                    StartCoroutine(MoveObjectRouitne(rightTalkie, rightInactivePos.position, talkieMoveSpeed));
                 break;
             case TalkieEnding.ExitSides:
                 // bring talkies to sides
@@ -323,11 +327,14 @@ public class TalkieManager : MonoBehaviour
         if (currentTalkie.removeBackgroundAfterTalkie)
             DefaultBackground.instance.Deactivate();
         if (currentTalkie.removeLetterboxAfterTalkie)
-            LetterboxController.instance.ToggleLetterbox(false, 1f);
+            LetterboxController.instance.ToggleLetterbox(false);
 
         // clear subtitles
         subtitleText.text = "";
         subtitleBox.color = new Color(0f, 0f, 0f, 0f);
+
+        // turn off particles
+        ParticleController.instance.isOn = false;
 
         // enable nav buttons on scroll map
         if (SceneManager.GetActiveScene().name == "ScrollMap")
@@ -336,7 +343,7 @@ public class TalkieManager : MonoBehaviour
         }
 
         // set audio back to what it was before
-        AudioManager.instance.SetMusicVolume(prevMusicVolume);
+        AudioManager.instance.ToggleMusicSmooth(true);
 
         // stop playing talkie
         talkiePlaying = false;
@@ -390,7 +397,7 @@ public class TalkieManager : MonoBehaviour
             if (!leftHidden)
             {
                 leftHidden = true;
-                StartCoroutine(MoveObjectRouitne(leftTalkie, inactivePos.position, talkieMoveSpeed));
+                StartCoroutine(MoveObjectRouitne(leftTalkie, leftInactivePos.position, talkieMoveSpeed));
                 ResetLeft();
             }    
         }
@@ -441,7 +448,7 @@ public class TalkieManager : MonoBehaviour
             if (!rightHidden)
             {
                 rightHidden = true;
-                StartCoroutine(MoveObjectRouitne(rightTalkie, inactivePos.position, talkieMoveSpeed));
+                StartCoroutine(MoveObjectRouitne(rightTalkie, rightInactivePos.position, talkieMoveSpeed));
                 ResetRight();
             }
         }
@@ -469,6 +476,11 @@ public class TalkieManager : MonoBehaviour
                 StartCoroutine(LerpScaleAndAlpha(leftImage, inactiveScale, inactiveAlpha, true));
             }
         }
+        else if (talkieSeg.activeCharacter == ActiveCharacter.Both)
+        {
+            StartCoroutine(LerpScaleAndAlpha(leftImage, 1f, 1f, true));
+            StartCoroutine(LerpScaleAndAlpha(rightImage, 1f, 1f, false));
+        }
 
         // add subtitles
         subtitleText.text = talkieSeg.audioString;
@@ -479,12 +491,23 @@ public class TalkieManager : MonoBehaviour
             if (talkieSeg.audioClip != null)
             {
                 AudioManager.instance.PlayTalk(talkieSeg.audioClip);
-                yield return new WaitForSeconds(talkieSeg.audioClip.length + 0.5f);
+                yield return new WaitForSeconds(talkieSeg.audioClip.length + 0.2f);
             }
             else
             {
-                print ("no audio clip found: \'" + talkieSeg.audioClipName + "\'");
-                yield return new WaitForSeconds(1.5f);
+                // attempt to match audio clip name to reaction duplicate
+                AudioClip clip = TalkieDatabase.instance.GetTalkieReactionDuplicate(talkieSeg.audioClipName);
+
+                if (clip != null)
+                {
+                    AudioManager.instance.PlayTalk(clip);
+                    yield return new WaitForSeconds(clip.length + 0.2f);
+                }
+                else
+                {   
+                    print ("no audio clip found: \'" + talkieSeg.audioClipName + "\'");
+                    yield return new WaitForSeconds(1.5f);
+                }
             }
         }
         else
@@ -622,7 +645,10 @@ public class TalkieManager : MonoBehaviour
         // bring down talkie iff not hidden
         if (isLeft && !leftHidden || !isLeft && !rightHidden)
         {
-            StartCoroutine(MoveObjectRouitne(tform, inactivePos.position, talkieMoveSpeed));
+            if (isLeft)
+                StartCoroutine(MoveObjectRouitne(tform, leftInactivePos.position, talkieMoveSpeed));
+            else
+                StartCoroutine(MoveObjectRouitne(tform, rightInactivePos.position, talkieMoveSpeed));
             yield return new WaitForSeconds(talkieMoveSpeed);
         }
 
@@ -630,7 +656,10 @@ public class TalkieManager : MonoBehaviour
         image.sprite = TalkieDatabase.instance.GetTalkieSprite(character, emotionNum, mouth, eyes);
 
         // bring up talkie
-        StartCoroutine(MoveObjectRouitne(tform, activePos.position, talkieMoveSpeed));
+        if (isLeft)
+            StartCoroutine(MoveObjectRouitne(tform, leftActivePos.position, talkieMoveSpeed));
+        else
+            StartCoroutine(MoveObjectRouitne(tform, rightActivePos.position, talkieMoveSpeed));
         yield return new WaitForSeconds(talkieMoveSpeed);
     }
 
@@ -664,12 +693,15 @@ public class TalkieManager : MonoBehaviour
     {
         ResetLeft();
         ResetRight();
+        
+        // turn off particles
+        ParticleController.instance.isOn = false;
     }
 
     private void ResetLeft()
     {
         leftHidden = true;
-        leftTalkie.position = inactivePos.position;
+        leftTalkie.position = leftInactivePos.position;
         currLeftCharacter = TalkieCharacter.None;
         leftImage.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
         leftImage.color = new Color(1f, 1f, 1f, 0f);
@@ -679,7 +711,7 @@ public class TalkieManager : MonoBehaviour
     private void ResetRight()
     {
         rightHidden = true;
-        rightTalkie.position = inactivePos.position;
+        rightTalkie.position = rightInactivePos.position;
         currRightCharacter = TalkieCharacter.None;
         rightImage.gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
         rightImage.color = new Color(1f, 1f, 1f, 0f);

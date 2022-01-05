@@ -9,35 +9,28 @@ public enum MapLocation
     GorillaVillage,
     Mudslide,
     OrcVillage,
+    SpookyForest,
+    OrcCamp,
     COUNT
 }
 
 [System.Serializable]
-public struct MapLocationIcons
+public class MapLocationIcons
 {
     public MapLocation location;
     public List<MapIcon> mapIcons;
     public SignPostController signPost;
+    public bool enabled;
 }
 
 public class ScrollMapManager : MonoBehaviour
 {
     public static ScrollMapManager instance;
 
-    [Header("Dev Stuff")]
-    public bool overideMapLimit;
-    [Range(0, 8)] public int mapLimitNum;
-
-    public bool overideGameEvent;
-    public StoryBeat gameEvent;
-
-    public bool overrideStartPosition;
-    public int startPos;
-
     private List<GameObject> mapIcons = new List<GameObject>();
     private bool repairingMapIcon = false;
 
-    private bool revealNavUI = false;
+    private bool activateMapNavigation = false;
     private bool revealGMUI = false;
     private bool waitingForGameEventRoutine = false;
 
@@ -51,8 +44,6 @@ public class ScrollMapManager : MonoBehaviour
 
     [Header("Map Icons @ Locations")]
     public List<MapLocationIcons> mapIconsAtLocation;
-    [HideInInspector] public bool showStars = true;
-    [HideInInspector] public bool disableIcons = false;
 
     [Header("Animations")]
     public float staticMapYPos;
@@ -103,46 +94,24 @@ public class ScrollMapManager : MonoBehaviour
         leftButton.interactable = false;
         rightButton.interactable = false;
         navButtonsDisabled = true;
-
-        // override start map pos
-        if (overrideStartPosition && GameManager.instance.devModeActivated)
-        {
-            mapPosIndex = startPos;
-        }
-        else
-        {
-            // start at prev position (or at 1 by default)
-            mapPosIndex = GameManager.instance.prevMapPosition;
-        }
-        GameManager.instance.SendLog(this, "starting scrollmap on position: " + mapPosIndex);
-        SetMapPosition(mapPosIndex);
-
-        // map limit
-        if (overideMapLimit && GameManager.instance.devModeActivated)
-            SetMapLimit(mapLimitNum); // set manual limit
-        else
-            SetMapLimit(StudentInfoSystem.GetCurrentProfile().mapLimit); // load map limit from SIS
+        activateMapNavigation = true;
+        revealGMUI = true;
 
         // load in map data from profile + disable all map icons
         MapDataLoader.instance.LoadMapData(StudentInfoSystem.GetCurrentProfile().mapData);
-        DisableAllMapIcons();
+        DisableAllMapIcons(true);
+
+        // set map location
+        int index = StudentInfoSystem.GetCurrentProfile().mapLimit;
+        SetMapPosition(index);
+        SetMapLimit(index);
+
+        // remove game manager stuff
+        GameManager.instance.playingRoyalRumbleGame = false;
+        GameManager.instance.playingChallengeGame = false;
 
         // get current game event
-        StoryBeat playGameEvent = StoryBeat.InitBoatGame; // default event
-        if (overideGameEvent && GameManager.instance.devModeActivated)
-        {
-            playGameEvent = gameEvent;
-            
-            StudentInfoSystem.GetCurrentProfile().currStoryBeat = gameEvent;
-            StudentInfoSystem.SaveStudentPlayerData();
-        }
-        else
-        {
-            playGameEvent = StudentInfoSystem.GetCurrentProfile().currStoryBeat;
-        }
-        
-        revealNavUI = true;
-        revealGMUI = true;
+        StoryBeat playGameEvent = StudentInfoSystem.GetCurrentProfile().currStoryBeat;
 
         /* 
         ################################################
@@ -154,7 +123,7 @@ public class ScrollMapManager : MonoBehaviour
         
         /* 
         ################################################
-        #   GAME EVENTS (REPAIR MAP ICON)
+        #   GAME EVENTS (repair map icon)
         ################################################
         */
 
@@ -174,7 +143,7 @@ public class ScrollMapManager : MonoBehaviour
         ################################################
         */
         // check for game events
-        CheckForGameEvent();
+        CheckForGameEvent(playGameEvent);
     }
 
     private void PlaceCharactersOnScrollMap(StoryBeat playGameEvent)
@@ -283,7 +252,7 @@ public class ScrollMapManager : MonoBehaviour
             // make marcus sad (ANGRY) 
             marcus.GetComponent<Animator>().Play("marcusFixed");
         }
-        else if (playGameEvent == StoryBeat.MudslideRebuilt)
+        else if (playGameEvent == StoryBeat.MudslideDefeated)
         {
             // place tiger and monkies on screen
             MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerMSChallengePos.position;
@@ -337,7 +306,7 @@ public class ScrollMapManager : MonoBehaviour
             // make marcus sad (ANGRY) 
             marcus.GetComponent<Animator>().Play("marcusFixed");
         }
-        else if (playGameEvent == StoryBeat.OrcVillageRebuilt)
+        else if (playGameEvent == StoryBeat.OrcVillageDefeated)
         {
             // place tiger and monkies on screen
             MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerOVChallengePos.position;
@@ -351,6 +320,77 @@ public class ScrollMapManager : MonoBehaviour
             // make brutus sad
             brutus.GetComponent<Animator>().Play("brutusFixed");
         }
+        else if (playGameEvent == StoryBeat.SpookyForestUnlocked)
+        {
+            // place gorilla in SF
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaSFPosDEFAULT.position;
+            gorilla.FlipCharacterToRight();
+        }
+        else if (playGameEvent == StoryBeat.BeginningStoryGame)
+        {
+            // place gorilla in SF
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaSFPosDEFAULT.position;
+            gorilla.FlipCharacterToRight();
+        }
+        else if (playGameEvent == StoryBeat.SpookyForestPlayGames)
+        {
+            // place gorilla in SF
+            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaSFPosDEFAULT.position;
+            gorilla.FlipCharacterToRight();
+        }
+        else if (playGameEvent == StoryBeat.SpookyForest_challengeGame_1)
+        {
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerSFChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusSFChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusSFChallengePos.position;
+        }
+        else if (playGameEvent == StoryBeat.SpookyForest_challengeGame_2)
+        {
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerSFChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusSFChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusSFChallengePos.position;
+
+            // make tiger sad
+            tiger.GetComponent<Animator>().Play("sTigerIdle");
+        }
+        else if (playGameEvent == StoryBeat.SpookyForest_challengeGame_3)
+        {
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerSFChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusSFChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusSFChallengePos.position;
+
+            // make tiger sad
+            tiger.GetComponent<Animator>().Play("sTigerIdle");
+            // make marcus sad (ANGRY) 
+            marcus.GetComponent<Animator>().Play("marcusFixed");
+        }
+        else if (playGameEvent == StoryBeat.SpookyForestDefeated)
+        {
+            // place tiger and monkies on screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerSFChallengePos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusSFChallengePos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusSFChallengePos.position;
+
+            // make tiger sad
+            tiger.GetComponent<Animator>().Play("sTigerIdle");
+            // make marcus sad (ANGRY) 
+            marcus.GetComponent<Animator>().Play("marcusFixed");
+            // make brutus sad
+            brutus.GetComponent<Animator>().Play("brutusFixed");
+        }
+        else if (playGameEvent == StoryBeat.OrcCampUnlocked)
+        {
+            // place clogg in camp
+            clogg.transform.position = MapAnimationController.instance.cloggOCPosDEFAULT1.position;
+        }
+        else if (playGameEvent == StoryBeat.OrcCampPlayGames)
+        {
+            // place clogg in camp
+            clogg.transform.position = MapAnimationController.instance.cloggOCPosDEFAULT1.position;
+        }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {
             // unlock everything
@@ -358,20 +398,14 @@ public class ScrollMapManager : MonoBehaviour
         }
     }
 
-    private void AfterGameEventStuff()
+    private IEnumerator AfterGameEventStuff()
     {
         // show UI
-        if (revealNavUI)
-        {
+        if (activateMapNavigation)
             ToggleNavButtons(true);
-        }
-
-        // show stars on current map location
-        StartCoroutine(ToggleLocationRoutine(true, mapPosIndex));
-
-        // enable map icons
-        if (!disableIcons)
-            EnableAllMapIcons();
+        
+        // update map icons
+        UpdateMapIcons();
 
         // show GM UI
         if (revealGMUI)
@@ -381,28 +415,32 @@ public class ScrollMapManager : MonoBehaviour
             if (StudentInfoSystem.GetCurrentProfile().unlockedStickerButton)
                 SettingsManager.instance.ToggleWagonButtonActive(true);
         }
+
+        // turn on navigation control
+        ToggleNavButtons(true);
+
+        // show stars on current map location
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(ToggleLocationRoutine(true, mapPosIndex));
+
+        // set RR banner on map icon
+        MapDataLoader.instance.SetRoyalRumbleBanner();
     }
 
-    public void CheckForGameEvent()
+    public void CheckForGameEvent(StoryBeat gameEvent)
     {
-        StartCoroutine(CheckForGameEventRoutine());
+        StartCoroutine(CheckForGameEventRoutine(gameEvent));
     }   
-    private IEnumerator CheckForGameEventRoutine()
+    private IEnumerator CheckForGameEventRoutine(StoryBeat gameEvent)
     {
-        StoryBeat playGameEvent = StoryBeat.InitBoatGame; // default event
-        // get event from current profile if not null
-        playGameEvent = StudentInfoSystem.GetCurrentProfile().currStoryBeat;
+        GameManager.instance.SendLog(this, "Current Story Beat: " + gameEvent);
 
-        GameManager.instance.SendLog(this, "Current Story Beat: " + playGameEvent);
-
-        StartCoroutine(CheckForScrollMapGameEvents(playGameEvent));
+        StartCoroutine(CheckForScrollMapGameEvents(gameEvent));
         // wait here while game event stuff is happening
         while (waitingForGameEventRoutine)
             yield return null;
 
-        yield return new WaitForSeconds(0.5f);
-
-        AfterGameEventStuff();
+        StartCoroutine(AfterGameEventStuff());
     }
 
     private IEnumerator CheckForScrollMapGameEvents(StoryBeat playGameEvent)
@@ -411,11 +449,12 @@ public class ScrollMapManager : MonoBehaviour
 
         if (playGameEvent == StoryBeat.InitBoatGame)
         {   
-            SetMapPosition(0);
-            revealNavUI = false;
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.NONE);
+
+            // scroll map bools
+            activateMapNavigation = false;
             revealGMUI = false;
-            showStars = false;
-            disableIcons = true;
 
             // intro boat animation
             MapAnimationController.instance.BoatOceanIntro();
@@ -426,18 +465,17 @@ public class ScrollMapManager : MonoBehaviour
             // wiggle boat
             boat.interactable = true;
             boat.GetComponent<WiggleController>().StartWiggle();
-            //boat.GetComponent<GlowOutlineController>().ToggleGlowOutline(true); turned off bcause looks weird
         }
         else if (playGameEvent == StoryBeat.UnlockGorillaVillage)
         {
-            revealNavUI = false;
-            revealGMUI = false;
-            showStars = false;
-            disableIcons = true;
-
-            // place camera on dock location + fog
+            // map pos
             SetMapPosition(1);
             SetMapLimit(1);
+            EnableMapSectionsUpTo(MapLocation.NONE);
+
+            // scroll map bools
+            activateMapNavigation = false;
+            revealGMUI = false;      
 
             // bring boat into dock
             MapAnimationController.instance.DockBoat();
@@ -453,12 +491,10 @@ public class ScrollMapManager : MonoBehaviour
                 yield return null;
 
             // place gorilla in GV
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaGVPosSTART.position;
             gorilla.ShowExclamationMark(true);
 
+            // unlock gorilla village
             StartCoroutine(UnlockMapArea(2, true));
-            gorilla.ShowExclamationMark(true);
-
             yield return new WaitForSeconds(10f);
 
             // play dock 2 talkie + wait for talkie to finish
@@ -467,6 +503,7 @@ public class ScrollMapManager : MonoBehaviour
                 yield return null;
 
             // advance story beat
+            StudentInfoSystem.GetCurrentProfile().mapLimit = 2;
             StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_1; // new chapter!
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
@@ -475,9 +512,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.GorillaVillageIntro)
         {
-            SetMapPosition(2);
-            showStars = false;
-            disableIcons = true;
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.NONE);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // make gorilla interactable
             gorilla.ShowExclamationMark(true);
@@ -485,9 +525,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.PrologueStoryGame)
         {
-            SetMapPosition(2);
-            EnableAllMapIcons();
-            showStars = false;
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // make gorilla interactable
             gorilla.ShowExclamationMark(true);
@@ -495,13 +538,18 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.RedShowsStickerButton)
         {
-            SetMapPosition(2);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // make gorilla interactable
             gorilla.interactable = true;
 
             // check if player has enough coins
-            if (StudentInfoSystem.GetCurrentProfile().goldCoins >= 3)
+            if (StudentInfoSystem.GetCurrentProfile().goldCoins >= 4)
             {
                 // play red notices lester talkie
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.red_notices_lester);
@@ -510,9 +558,8 @@ public class ScrollMapManager : MonoBehaviour
 
                 // unlock button in SIS
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                SettingsManager.instance.ToggleWagonButtonActive(true);
                 // add glow + wiggle
-                SettingsManager.instance.ToggleStickerButtonWiggle(true);
+                SettingsManager.instance.ToggleStickerButtonWiggleGlow(true);
 
                 // save to sis and continue
                 StudentInfoSystem.AdvanceStoryBeat();
@@ -521,7 +568,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.VillageRebuilt)
         {
-            SetMapPosition(2);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // make sure player has done the sticker tutorial
             if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
@@ -530,6 +582,9 @@ public class ScrollMapManager : MonoBehaviour
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.darwin_forces);
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
+
+                // add glow + wiggle
+                SettingsManager.instance.ToggleStickerButtonWiggleGlow(true);
             }
             else
             {
@@ -581,28 +636,16 @@ public class ScrollMapManager : MonoBehaviour
                     // set tiger stuff
                     if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType == GameType.None)
                     {
-                        GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.GorillaVillage);
+                        GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage);
                         tiger.gameType = newGameType;
                         StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType = newGameType;
+                        StudentInfoSystem.AdvanceStoryBeat();
                         StudentInfoSystem.SaveStudentPlayerData();
-                    }
-                    else
-                    {
-                        tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType;
                     }
                         
                     tiger.ShowExclamationMark(true);
                     tiger.interactable = true;
                     tiger.GetComponent<Animator>().Play("aTigerTwitch");
-
-                    // set game manager stuff
-                    GameManager.instance.mapID = MapIconIdentfier.GV_challenge_1;
-                    GameManager.instance.playingChallengeGame = true;
-
-                    // save to sis and continue
-                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType = tiger.gameType;
-                    StudentInfoSystem.AdvanceStoryBeat();
-                    StudentInfoSystem.SaveStudentPlayerData();
                 }
                 else
                 {
@@ -613,12 +656,17 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_1)
         {
-            SetMapPosition(2);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType == GameType.None)
             {
-                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.GorillaVillage);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage);
                 tiger.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -628,14 +676,12 @@ public class ScrollMapManager : MonoBehaviour
                 tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType;
             }
 
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.GV_challenge_1;
-            GameManager.instance.playingChallengeGame = true;
-
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
                 !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
             {
+                print ("julius wins first time");
+
                 // play julius wins
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins);
                 while (TalkieManager.instance.talkiePlaying)
@@ -645,6 +691,8 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
                 StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
             {
+                print ("julius wins every other time");
+
                 // play julius wins again
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins_again);
                 while (TalkieManager.instance.talkiePlaying)
@@ -657,12 +705,17 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_2)
         {
-            SetMapPosition(2);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
 
-            // set tiger stuff
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
+
+            // set marcus stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType == GameType.None)
             {
-                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.GorillaVillage);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage);
                 marcus.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -672,14 +725,12 @@ public class ScrollMapManager : MonoBehaviour
                 marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType;
             }
 
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.GV_challenge_2;
-            GameManager.instance.playingChallengeGame = true;
-
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
                 !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
             {
+                print ("marcus wins first time");
+
                 // play marcus wins
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_wins);
                 while (TalkieManager.instance.talkiePlaying)
@@ -689,6 +740,8 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
                 StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
             {
+                print ("marcus wins every other time");
+
                 // play marcus wins again
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_wins_again);
                 while (TalkieManager.instance.talkiePlaying)
@@ -696,6 +749,8 @@ public class ScrollMapManager : MonoBehaviour
             }
             else
             {
+                print ("you beat julius!");
+
                 // play julius loses + marcus challenges
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_loses__marcus_challenges);
                 while (TalkieManager.instance.talkiePlaying)
@@ -708,6 +763,10 @@ public class ScrollMapManager : MonoBehaviour
                 }
                 else
                 {
+                    // set game manager stuff
+                    GameManager.instance.mapID = MapIconIdentfier.GV_challenge_2;
+                    GameManager.instance.playingChallengeGame = true;
+
                     // continue to marcus challenge game
                     marcus.GoToGameDataSceneImmediately();
                 }
@@ -719,12 +778,17 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_3)
         {
-            SetMapPosition(2);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType == GameType.None)
             {
-                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.GorillaVillage);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage);
                 brutus.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -733,10 +797,6 @@ public class ScrollMapManager : MonoBehaviour
             {
                 brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType;
             }
-            
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.GV_challenge_3;
-            GameManager.instance.playingChallengeGame = true;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -770,6 +830,10 @@ public class ScrollMapManager : MonoBehaviour
                 }
                 else
                 {
+                    // set game manager stuff
+                    GameManager.instance.mapID = MapIconIdentfier.GV_challenge_3;
+                    GameManager.instance.playingChallengeGame = true;
+
                     // continue to marcus challenge game
                     brutus.GoToGameDataSceneImmediately();
                 }
@@ -781,7 +845,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.VillageChallengeDefeated)
         {
-            SetMapPosition(2);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             yield return new WaitForSeconds(1f);
 
@@ -819,26 +888,25 @@ public class ScrollMapManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             // gv sign post springs into place
-            mapIconsAtLocation[2].signPost.ShowSignPost(0);
-            mapIconsAtLocation[2].signPost.GetComponent<SignPostController>().interactable = false;
+            mapIconsAtLocation[2].signPost.ShowSignPost(0, false);
             // Save to SIS
             StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_unlocked = true;
             StudentInfoSystem.SaveStudentPlayerData();
 
             yield return new WaitForSeconds(2f);
 
-            // place temp copy over talkie bg
-            var tempSignPost = TempObjectPlacer.instance.PlaceNewObject(mapIconsAtLocation[2].signPost.gameObject, mapIconsAtLocation[2].signPost.transform.localPosition);
-            tempSignPost.GetComponent<SignPostController>().interactable = false;
-            tempSignPost.GetComponent<SignPostController>().SetStars(StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_stars);
+            // // place temp copy over talkie bg
+            // var tempSignPost = TempObjectPlacer.instance.PlaceNewObject(mapIconsAtLocation[2].signPost.gameObject, mapIconsAtLocation[2].signPost.transform.localPosition);
+            // tempSignPost.GetComponent<SignPostController>().interactable = false;
+            // tempSignPost.GetComponent<SignPostController>().SetStars(StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_stars);
 
             // play village challenge 3
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageChallengeDefeated_3);
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
-            // remove temp temp signpost
-            TempObjectPlacer.instance.RemoveObject();
+            // // remove temp temp signpost
+            // TempObjectPlacer.instance.RemoveObject();
 
             // before unlocking mudslide - set objects to be destroyed
             foreach (var icon in mapIconsAtLocation[3].mapIcons)
@@ -846,9 +914,7 @@ public class ScrollMapManager : MonoBehaviour
 
             // unlock mudslide
             StartCoroutine(UnlockMapArea(3, false));
-            gorilla.ShowExclamationMark(true);
-
-            yield return new WaitForSeconds(7f);
+            yield return new WaitForSeconds(10f);
 
             // play mudslide intro talkie
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.mudslideIntro);
@@ -860,12 +926,21 @@ public class ScrollMapManager : MonoBehaviour
             mapIconsAtLocation[2].signPost.GetComponent<SignPostController>().interactable = true;
 
             // save to SIS
+            StudentInfoSystem.GetCurrentProfile().mapLimit = 3;
+            ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.Mudslide);
+            ScrollMapManager.instance.UpdateMapIcons();
+            ScrollMapManager.instance.RevealStarsAtCurrentLocation();
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
         }
         else if (playGameEvent == StoryBeat.MudslideUnlocked)
         {
-            SetMapPosition(3);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.Mudslide);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // make sure player has rebuilt all the MS map icons
             if (StudentInfoSystem.GetCurrentProfile().mapData.MS_logs.isFixed &&
@@ -901,42 +976,31 @@ public class ScrollMapManager : MonoBehaviour
                 // set tiger stuff
                 if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType == GameType.None)
                 {
-                    GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.Mudslide);
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide);
                     tiger.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType = newGameType;
+                    StudentInfoSystem.AdvanceStoryBeat();
                     StudentInfoSystem.SaveStudentPlayerData();
-                }
-                else
-                {
-                    tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType;
                 }
                     
                 tiger.ShowExclamationMark(true);
                 tiger.interactable = true;
-                tiger.GetComponent<Animator>().Play("aTigerTwitch");
-
-                // set game manager stuff
-                GameManager.instance.mapID = MapIconIdentfier.MS_challenge_1;
-                GameManager.instance.playingChallengeGame = true;
-
-                // save to sis and continue
-                StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType = tiger.gameType;
-                StudentInfoSystem.AdvanceStoryBeat();
-                StudentInfoSystem.SaveStudentPlayerData();
-            }
-            else
-            {
-
+                tiger.GetComponent<Animator>().Play("aTigerTwitch"); 
             }
         }
         else if (playGameEvent == StoryBeat.Mudslide_challengeGame_1)
         {
-            SetMapPosition(3);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.Mudslide);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType == GameType.None)
             {
-                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.Mudslide);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide);
                 tiger.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -945,10 +1009,6 @@ public class ScrollMapManager : MonoBehaviour
             {
                 tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType;
             }
-
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.MS_challenge_1;
-            GameManager.instance.playingChallengeGame = true;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -975,12 +1035,17 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.Mudslide_challengeGame_2)
         {
-            SetMapPosition(3);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.Mudslide);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
             
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType == GameType.None)
             {
-                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.Mudslide);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide);
                 marcus.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -989,10 +1054,6 @@ public class ScrollMapManager : MonoBehaviour
             {
                 marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType;
             }
-
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.MS_challenge_2;
-            GameManager.instance.playingChallengeGame = true;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -1026,6 +1087,10 @@ public class ScrollMapManager : MonoBehaviour
                 }
                 else
                 {
+                    // set game manager stuff
+                    GameManager.instance.mapID = MapIconIdentfier.MS_challenge_2;
+                    GameManager.instance.playingChallengeGame = true;
+
                     // continue to marcus challenge game
                     marcus.GoToGameDataSceneImmediately();
                 }
@@ -1037,12 +1102,17 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.Mudslide_challengeGame_3)
         {
-            SetMapPosition(3);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.Mudslide);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
             
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType == GameType.None)
             {
-                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.Mudslide);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide);
                 brutus.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -1051,10 +1121,6 @@ public class ScrollMapManager : MonoBehaviour
             {
                 brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType;
             }
-            
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.MS_challenge_3;
-            GameManager.instance.playingChallengeGame = true;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -1088,6 +1154,10 @@ public class ScrollMapManager : MonoBehaviour
                 }
                 else
                 {
+                    // set game manager stuff
+                    GameManager.instance.mapID = MapIconIdentfier.MS_challenge_3;
+                    GameManager.instance.playingChallengeGame = true;
+
                     // continue to marcus challenge game
                     brutus.GoToGameDataSceneImmediately();
                 }
@@ -1097,9 +1167,14 @@ public class ScrollMapManager : MonoBehaviour
             brutus.ShowExclamationMark(true);
             brutus.interactable = true;
         }
-        else if (playGameEvent == StoryBeat.MudslideRebuilt)
+        else if (playGameEvent == StoryBeat.MudslideDefeated)
         {
-            SetMapPosition(3);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.Mudslide);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
     
             // play mudslide defeated 1
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.mudslideChallengeDefeated_1);
@@ -1136,8 +1211,7 @@ public class ScrollMapManager : MonoBehaviour
                 yield return null;
 
             // gv sign post springs into place
-            mapIconsAtLocation[2].signPost.ShowSignPost(0);
-            mapIconsAtLocation[2].signPost.GetComponent<SignPostController>().interactable = false;
+            mapIconsAtLocation[2].signPost.ShowSignPost(0, false);
             // Save to SIS
             StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_unlocked = true;
             StudentInfoSystem.SaveStudentPlayerData();
@@ -1151,9 +1225,7 @@ public class ScrollMapManager : MonoBehaviour
 
             // unlock orc village
             StartCoroutine(UnlockMapArea(4, false));
-            gorilla.ShowExclamationMark(true);
-
-            yield return new WaitForSeconds(9f);
+            yield return new WaitForSeconds(10f);
 
             // play orc village intro talkie
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcVillageIntro_1);
@@ -1172,19 +1244,19 @@ public class ScrollMapManager : MonoBehaviour
             clogg.interactable = true;
             clogg.ShowExclamationMark(true);
 
-            // disable map icons
-            showStars = false;
-            disableIcons = true;
-
             // save to SIS
+            StudentInfoSystem.GetCurrentProfile().mapLimit = 4;
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
         }
         else if (playGameEvent == StoryBeat.OrcVillageMeetClogg) // default
         {
-            SetMapPosition(4);
-            disableIcons = true;
-            showStars = false;
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.Mudslide);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // make clogg interactable
             clogg.interactable = true;
@@ -1192,7 +1264,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.OrcVillageUnlocked)
         {
-            SetMapPosition(4);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.OrcVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // make sure player has rebuilt all the OV map icons
             if (StudentInfoSystem.GetCurrentProfile().mapData.OV_houseL.isFixed &&
@@ -1228,28 +1305,16 @@ public class ScrollMapManager : MonoBehaviour
                 // set tiger stuff
                 if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType == GameType.None)
                 {
-                    GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.OrcVillage);
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage);
                     tiger.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType = newGameType;
+                    StudentInfoSystem.AdvanceStoryBeat();
                     StudentInfoSystem.SaveStudentPlayerData();
-                }
-                else
-                {
-                    tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType;
                 }
                     
                 tiger.ShowExclamationMark(true);
                 tiger.interactable = true;
                 tiger.GetComponent<Animator>().Play("aTigerTwitch");
-
-                // set game manager stuff
-                GameManager.instance.mapID = MapIconIdentfier.OV_challenge_1;
-                GameManager.instance.playingChallengeGame = true;
-
-                // save to sis and continue
-                StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType = tiger.gameType;
-                StudentInfoSystem.AdvanceStoryBeat();
-                StudentInfoSystem.SaveStudentPlayerData();
             }
             else
             {
@@ -1262,12 +1327,17 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.OrcVillage_challengeGame_1)
         {
-            SetMapPosition(4);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.OrcVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType == GameType.None)
             {
-                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.OrcVillage);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage);
                 tiger.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -1276,10 +1346,6 @@ public class ScrollMapManager : MonoBehaviour
             {
                 tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType;
             }
-
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.OV_challenge_1;
-            GameManager.instance.playingChallengeGame = true;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -1308,12 +1374,17 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.OrcVillage_challengeGame_2)
         {
-            SetMapPosition(4);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.OrcVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
             
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType == GameType.None)
             {
-                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.OrcVillage);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage);
                 marcus.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -1322,10 +1393,6 @@ public class ScrollMapManager : MonoBehaviour
             {
                 marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType;
             }
-
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.OV_challenge_2;
-            GameManager.instance.playingChallengeGame = true;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -1359,6 +1426,10 @@ public class ScrollMapManager : MonoBehaviour
                 }
                 else
                 {
+                    // set game manager stuff
+                    GameManager.instance.mapID = MapIconIdentfier.OV_challenge_2;
+                    GameManager.instance.playingChallengeGame = true;
+
                     // continue to marcus challenge game
                     marcus.GoToGameDataSceneImmediately();
                 }
@@ -1370,12 +1441,17 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.OrcVillage_challengeGame_3)
         {
-            SetMapPosition(4);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.OrcVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
             
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType == GameType.None)
             {
-                GameType newGameType = StudentInfoSystem.GetChallengeGameType(MapLocation.OrcVillage);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage);
                 brutus.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -1384,10 +1460,6 @@ public class ScrollMapManager : MonoBehaviour
             {
                 brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType;
             }
-            
-            // set game manager stuff
-            GameManager.instance.mapID = MapIconIdentfier.OV_challenge_3;
-            GameManager.instance.playingChallengeGame = true;
 
             // play correct lose talkies
             if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -1421,6 +1493,10 @@ public class ScrollMapManager : MonoBehaviour
                 }
                 else
                 {
+                    // set game manager stuff
+                    GameManager.instance.mapID = MapIconIdentfier.OV_challenge_3;
+                    GameManager.instance.playingChallengeGame = true;
+
                     // continue to marcus challenge game
                     brutus.GoToGameDataSceneImmediately();
                 }
@@ -1430,9 +1506,14 @@ public class ScrollMapManager : MonoBehaviour
             brutus.ShowExclamationMark(true);
             brutus.interactable = true;
         }
-        else if (playGameEvent == StoryBeat.OrcVillageRebuilt)
+        else if (playGameEvent == StoryBeat.OrcVillageDefeated)
         {
-            SetMapPosition(4);
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.OrcVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
 
             // play orc village defeated 1
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcVillageChallengeDefeated_1);
@@ -1463,14 +1544,396 @@ public class ScrollMapManager : MonoBehaviour
             MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.offscreenPos.position;
             MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.offscreenPos.position;
 
-            // gv sign post springs into place
-            mapIconsAtLocation[4].signPost.ShowSignPost(0);
-            mapIconsAtLocation[4].signPost.GetComponent<SignPostController>().interactable = false;
+            // ov sign post springs into place
+            mapIconsAtLocation[4].signPost.ShowSignPost(0, false);
+
+            // before unlocking spooky forest - set objects to be repaired
+            foreach (var icon in mapIconsAtLocation[5].mapIcons)
+                icon.SetFixed(true, false, true);
+
+            // place darwin in spooky forest
+            gorilla.transform.position = MapAnimationController.instance.gorillaSFPosDEFAULT.position;
+            gorilla.FlipCharacterToRight();
+            gorilla.ShowExclamationMark(true);
+            gorilla.interactable = false;
+
+            // unlock spooky forest
+            StartCoroutine(UnlockMapArea(5, false));
+            yield return new WaitForSeconds(10f);
+
+            // darwin is interactable
+            gorilla.interactable = true;
+
             // Save to SIS
+            StudentInfoSystem.GetCurrentProfile().mapLimit = 5;
             StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_2; // new chapter!
             StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_unlocked = true;
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
+        }
+        else if (playGameEvent == StoryBeat.SpookyForestUnlocked)
+        {
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.OrcVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
+
+            // darwin interactable
+            gorilla.ShowExclamationMark(true);
+            gorilla.interactable = true;
+        }
+        else if (playGameEvent == StoryBeat.BeginningStoryGame)
+        {
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.OrcVillage);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
+
+            // darwin interactable
+            gorilla.ShowExclamationMark(true);
+            gorilla.interactable = true;
+        }
+        else if (playGameEvent == StoryBeat.SpookyForestPlayGames)
+        {
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.SpookyForest);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
+
+            // make sure player has rebuilt all the OV map icons
+            if (StudentInfoSystem.GetCurrentProfile().mapData.SF_lamp.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.SF_shrine.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.SF_spider.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.SF_web.isFixed)
+            {
+                // play spooky forest rebuilt talkie 1
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spookyForest_1);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // darwin moves off-screen
+                MapAnimationController.instance.GorillaExitAnimationSF();
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+
+                // play spooky forest rebuilt talkie 2
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spookyForest_2);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // tiger and monkies walk in
+                MapAnimationController.instance.TigerAndMonkiesWalkInSF();
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+
+                // play spooky forest rebuilt talkie 3
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spookyForest_3);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // make challenge games active
+                yield return new WaitForSeconds(0.5f);
+
+                // set tiger stuff
+                if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest);
+                    tiger.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType = newGameType;
+                    StudentInfoSystem.AdvanceStoryBeat();
+                    StudentInfoSystem.SaveStudentPlayerData();
+                }
+                    
+                tiger.ShowExclamationMark(true);
+                tiger.interactable = true;
+                tiger.GetComponent<Animator>().Play("aTigerTwitch");
+            }
+            else
+            {
+                // darwin interactable
+                gorilla.ShowExclamationMark(false);
+                gorilla.interactable = true;
+            }
+        }
+        else if (playGameEvent == StoryBeat.SpookyForest_challengeGame_1)
+        {
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.SpookyForest);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
+
+            // set tiger stuff
+            if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType == GameType.None)
+            {
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest);
+                tiger.gameType = newGameType;
+                StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType = newGameType;
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
+            else
+            {
+                tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType;
+            }
+
+            // play correct lose talkies
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play julius wins
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else if (
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play julius wins again
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins_again);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+
+            yield return new WaitForSeconds(1f);
+
+            tiger.interactable = true;
+            tiger.ShowExclamationMark(true);
+            tiger.GetComponent<Animator>().Play("aTigerTwitch");
+        }
+        else if (playGameEvent == StoryBeat.SpookyForest_challengeGame_2)
+        {
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.SpookyForest);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
+            
+            // set tiger stuff
+            if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType == GameType.None)
+            {
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest);
+                marcus.gameType = newGameType;
+                StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType = newGameType;
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
+            else
+            {
+                marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType;
+            }
+
+            // play correct lose talkies
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play marcus wins
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_wins);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else if (
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play marcus wins again
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_wins_again);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else
+            {
+                // play julius loses + marcus challenges
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_loses__marcus_challenges);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // do not go to game if talkie manager says not to
+                if (TalkieManager.instance.doNotContinueToGame)
+                {
+                    TalkieManager.instance.doNotContinueToGame = false;
+                }
+                else
+                {
+                    // set game manager stuff
+                    GameManager.instance.mapID = MapIconIdentfier.SF_challenge_2;
+                    GameManager.instance.playingChallengeGame = true;
+
+                    // continue to marcus challenge game
+                    marcus.GoToGameDataSceneImmediately();
+                }
+            }
+
+            marcus.GetComponent<Animator>().Play("marcusLose");
+            marcus.ShowExclamationMark(true);
+            marcus.interactable = true;
+        }
+        else if (playGameEvent == StoryBeat.SpookyForest_challengeGame_3)
+        {
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.SpookyForest);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
+            
+            // set tiger stuff
+            if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType == GameType.None)
+            {
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest);
+                brutus.gameType = newGameType;
+                StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType = newGameType;
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
+            else
+            {
+                brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType;
+            }
+
+            // play correct lose talkies
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play brutus wins
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_wins);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else if (
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+            {
+                // play brutus wins again
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_wins_again);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+            else
+            {
+                // play marcus loses + brutus challenges
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_loses__brutus_challenges);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // do not go to game if talkie manager says not to
+                if (TalkieManager.instance.doNotContinueToGame)
+                {
+                    TalkieManager.instance.doNotContinueToGame = false;
+                }
+                else
+                {
+                    // set game manager stuff
+                    GameManager.instance.mapID = MapIconIdentfier.SF_challenge_3;
+                    GameManager.instance.playingChallengeGame = true;
+
+                    // continue to marcus challenge game
+                    brutus.GoToGameDataSceneImmediately();
+                }
+            }
+
+            brutus.GetComponent<Animator>().Play("brutusLose");
+            brutus.ShowExclamationMark(true);
+            brutus.interactable = true;
+        }
+        else if (playGameEvent == StoryBeat.SpookyForestDefeated)
+        {
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.SpookyForest);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
+
+            // play spooky forest defeated 1
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spookyForestChallengeDefeated_1);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // tiger runs off screen
+            MapAnimationController.instance.TigerRunAwayDefeatedSF();
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+
+            // play spooky forest challenge 2
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spookyForestChallengeDefeated_2);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // monkies go hehe and haha then run off too
+            MapAnimationController.instance.MonkeyExitAnimationDefeatedSF();
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+
+            // play spooky forest challenge 2
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spookyForestChallengeDefeated_3);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // place tiger and monkies off screen
+            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.offscreenPos.position;
+            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.offscreenPos.position;
+            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.offscreenPos.position;
+
+            // SF sign post springs into place
+            mapIconsAtLocation[5].signPost.ShowSignPost(0, false);
+
+            // before unlocking orc camp - set objects to be destroyed
+            foreach (var icon in mapIconsAtLocation[6].mapIcons)
+                icon.SetFixed(false, false, true);
+
+            // place clogg in orc camp
+            clogg.transform.position = MapAnimationController.instance.cloggOCPosDEFAULT1.position;
+            clogg.ShowExclamationMark(true);
+            clogg.interactable = false;
+
+            // unlock orc camp
+            StartCoroutine(UnlockMapArea(6, false));
+            yield return new WaitForSeconds(10f);
+
+            // clogg is interactable
+            clogg.interactable = true;
+
+            // Save to SIS
+            StudentInfoSystem.GetCurrentProfile().mapLimit = 6;
+            StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_unlocked = true;
+            StudentInfoSystem.AdvanceStoryBeat();
+            StudentInfoSystem.SaveStudentPlayerData();
+        }
+        else if (playGameEvent == StoryBeat.OrcCampUnlocked)
+        {
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.SpookyForest);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
+
+            // clogg is interactable
+            clogg.ShowExclamationMark(true);
+            clogg.interactable = true;
+        }
+        else if (playGameEvent == StoryBeat.OrcCampPlayGames)
+        {
+            // map pos
+            EnableMapSectionsUpTo(MapLocation.OrcCamp);
+
+            // scroll map bools
+            activateMapNavigation = true;
+            revealGMUI = true;
+
+            // clogg is interactable
+            clogg.interactable = true;
         }
         else if (playGameEvent == StoryBeat.COUNT) // default
         {
@@ -1487,6 +1950,7 @@ public class ScrollMapManager : MonoBehaviour
 
         MapIcon icon = MapDataLoader.instance.GetMapIconFromID(id);
         icon.SetFixed(true, true, true);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.HealFixItem, 0.5f);
         yield return new WaitForSeconds(2f);
 
         GameManager.instance.repairMapIconID = false;
@@ -1517,20 +1981,26 @@ public class ScrollMapManager : MonoBehaviour
         }
     }
 
+    public void RevealStarsAtCurrentLocation()
+    {
+        StartCoroutine(ToggleLocationRoutine(true, mapPosIndex));
+    }
+
     private IEnumerator ToggleLocationRoutine(bool opt, int location)
     {
-        // show / hide stars of current location
-        if (showStars)
-        {
-            foreach (var mapicon in mapIconsAtLocation[location].mapIcons)
-            {
-                if (opt)
-                    mapicon.RevealStars();
-                else
-                    mapicon.HideStars();
+        // return if section is disabled
+        if (!mapIconsAtLocation[location].enabled)
+            yield break;
 
-                yield return null;
-            }
+        // show / hide stars of current location
+        foreach (var mapicon in mapIconsAtLocation[location].mapIcons)
+        {
+            if (opt)
+                mapicon.RevealStars();
+            else
+                mapicon.HideStars();
+
+            yield return null;
         }
 
         // show / hide sign post
@@ -1545,15 +2015,23 @@ public class ScrollMapManager : MonoBehaviour
                         break;
                     case MapLocation.GorillaVillage:
                         if (StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_unlocked)
-                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_stars);
+                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_stars, GetMapLocationIcons(MapLocation.GorillaVillage).enabled);
                         break;
                     case MapLocation.Mudslide:
                         if (StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_unlocked)
-                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_stars);
+                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_stars, GetMapLocationIcons(MapLocation.Mudslide).enabled);
                         break;
                     case MapLocation.OrcVillage:
                         if (StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_unlocked)
-                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_stars);
+                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_stars, GetMapLocationIcons(MapLocation.OrcVillage).enabled);
+                        break;
+                    case MapLocation.SpookyForest:
+                        if (StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_unlocked)
+                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_stars, GetMapLocationIcons(MapLocation.SpookyForest).enabled);
+                        break;
+                    case MapLocation.OrcCamp:
+                        if (StudentInfoSystem.GetCurrentProfile().mapData.OC_signPost_unlocked)
+                            mapIconsAtLocation[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.OC_signPost_stars, GetMapLocationIcons(MapLocation.OrcCamp).enabled);
                         break;
                     // etc ...
                 }
@@ -1565,39 +2043,71 @@ public class ScrollMapManager : MonoBehaviour
         }
     }
 
-    public void DisableAllMapIcons()
+    public void DisableAllMapIcons(bool hideStars)
     {
+        // disable map icons
         var list = GetMapIcons();
         foreach(var item in list)
         {
             item.interactable = false;
-            item.HideStars();
-        }
-    }
 
-    public void EnableAllMapIcons()
-    {
-        var list = GetMapIcons();
-        foreach(var item in list)
+            if (hideStars)
+                item.HideStars();
+        }
+
+        // disable signPosts
+        var signPosts = GetSignPostControllers();
+        foreach(var item in signPosts)
         {
-            item.interactable = true;
-            if (showStars)
-                item.RevealStars();
+            item.interactable = false;
         }
     }
 
-    public void SetPrevMapPos()
+    public void SoftLockMapIcons(float duration)
     {
-        print ("setting prev map pos to: " + mapPosIndex);
-        GameManager.instance.prevMapPosition = mapPosIndex;
+        StartCoroutine(SoftLockMapIconsRoutine(duration));
+    }
+
+    private IEnumerator SoftLockMapIconsRoutine(float duration)
+    {
+        DisableAllMapIcons(false);
+        yield return new WaitForSeconds(duration);
+        EnableMapIcons(mapIconsAtLocation[mapPosIndex], false);
+    }
+
+    public void UpdateMapIcons()
+    {
+        // reload data
+        MapDataLoader.instance.LoadMapData(StudentInfoSystem.GetCurrentProfile().mapData);
+        foreach (var item in mapIconsAtLocation)
+        {
+            EnableMapIcons(item, false);
+        }
+    }
+
+    public void EnableMapIcons(MapLocationIcons obj, bool revealStars)
+    {
+        // return if map locatioon has no icons
+        if (obj.mapIcons.Count == 0)
+            return;
+
+        // enable icons and signpost if section is enabled
+        if (obj.enabled)
+        {
+            foreach (var icon in obj.mapIcons)
+            {
+                icon.interactable = true;
+
+                if (revealStars)
+                    icon.RevealStars();
+            }
+
+            obj.signPost.interactable = true;
+        }
     }
 
     private IEnumerator UnlockMapArea(int mapIndex, bool leaveLetterboxUp = false)
     {
-        // save unlock to sis profile
-        StudentInfoSystem.GetCurrentProfile().mapLimit = mapIndex;
-        StudentInfoSystem.SaveStudentPlayerData();
-
         RaycastBlockerController.instance.CreateRaycastBlocker("UnlockMapArea");
 
         yield return new WaitForSeconds(1f);
@@ -1631,6 +2141,12 @@ public class ScrollMapManager : MonoBehaviour
             case 4:
                 LetterboxController.instance.ShowTextSmooth("3 - Orc Village");
                 break;
+            case 5:
+                LetterboxController.instance.ShowTextSmooth("4 - Spooky Forest");
+                break;
+            case 6:
+                LetterboxController.instance.ShowTextSmooth("5 - Orc Camp");
+                break;
         }
         
 
@@ -1641,9 +2157,6 @@ public class ScrollMapManager : MonoBehaviour
             LetterboxController.instance.ToggleLetterbox(false);
 
         yield return new WaitForSeconds(2f);
-
-        // show UI again
-        ToggleNavButtons(true);
 
         RaycastBlockerController.instance.RemoveRaycastBlocker("UnlockMapArea");
     }
@@ -1707,7 +2220,32 @@ public class ScrollMapManager : MonoBehaviour
                 return MapLocation.Mudslide;
             case 4:
                 return MapLocation.OrcVillage;
+            case 5:
+                return MapLocation.SpookyForest;
+            case 6:
+                return MapLocation.OrcCamp;
         }
+    }
+
+    public void EnableMapSectionsUpTo(MapLocation location)
+    {
+        for (int i = 0; i < mapIconsAtLocation.Count; i++)
+        {
+            if (mapIconsAtLocation[i].location <= location)
+            {
+                mapIconsAtLocation[i].enabled = true;
+            }
+        }
+    }
+
+    public MapLocationIcons GetMapLocationIcons(MapLocation location)
+    {
+        foreach (var item in mapIconsAtLocation)
+        {
+            if (item.location == location)
+                return item;
+        }
+        return null;
     }
 
     /* 
@@ -1727,6 +2265,7 @@ public class ScrollMapManager : MonoBehaviour
     public IEnumerator LeftPressedRoutine()
     {
         StartCoroutine(NavInputDelay(1.25f));
+        SoftLockMapIcons(1.25f);
 
         int prevMapPos = mapPosIndex;
 
@@ -1770,6 +2309,7 @@ public class ScrollMapManager : MonoBehaviour
     public IEnumerator RightPressedRoutine()
     {
         StartCoroutine(NavInputDelay(1.25f));
+        SoftLockMapIcons(1.25f);
 
         int prevMapPos = mapPosIndex;
 
@@ -1870,7 +2410,6 @@ public class ScrollMapManager : MonoBehaviour
 
     private IEnumerator MapSmoothTransition(float start, float end, float transitionTime)
     {
-        //GameManager.instance.SetRaycastBlocker(true);
         float timer = 0f;
 
         Map.localPosition = new Vector3(start, staticMapYPos, 0f);
@@ -1882,8 +2421,6 @@ public class ScrollMapManager : MonoBehaviour
             yield return null;
         }
         Map.localPosition = new Vector3(end, staticMapYPos, 0f);
-
-        //GameManager.instance.SetRaycastBlocker(false);
     }
 
     /* 
@@ -1903,6 +2440,19 @@ public class ScrollMapManager : MonoBehaviour
         }
 
         return mapIconList;
+    }
+
+    public List<SignPostController> GetSignPostControllers()
+    {
+        FindObjectsWithTag("SignPost");
+        List<SignPostController> signPosts = new List<SignPostController>();
+
+        foreach(var obj in mapIcons)
+        {
+            signPosts.Add(obj.GetComponent<SignPostController>());
+        }
+
+        return signPosts;
     }
 
     public void SetMapIconsBroke(bool opt)

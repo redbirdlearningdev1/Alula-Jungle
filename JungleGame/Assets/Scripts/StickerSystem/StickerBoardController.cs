@@ -147,6 +147,9 @@ public class StickerBoardController : MonoBehaviour
         stickerBoards.LerpYPos(onScreenPos, time3, true);
         yield return new WaitForSeconds(time3);
 
+        // add stickers to classic board
+        classicBoard.AddAllStickersToBoard();
+
         // play lester tutorial
         if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
         {
@@ -158,21 +161,11 @@ public class StickerBoardController : MonoBehaviour
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.lester_intro_2);
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
-
-            yield return new WaitForSeconds(1f);
             
-            // toggle on inventory
-            activeStickerBoards[currentBoardIndex].ToggleStickerInventory(true);
-
-            // add back button so player can leave >:)
-            WagonWindowController.instance.backButton.gameObject.SetActive(true);
-            WagonWindowController.instance.backButton.interactable = true;
-            WagonWindowController.instance.backButton.GetComponent<LerpableObject>().LerpImageAlpha(WagonWindowController.instance.backButton.GetComponent<Image>(), 1f, 0.1f);
-            WagonWindowController.instance.backButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.2f, 0.01f);
+            // wiggle inventory button
+            StickerInventoryButton.instance.GetComponent<WiggleController>().StartWiggle();
+            ImageGlowController.instance.SetImageGlow(StickerInventoryButton.instance.GetComponent<Image>(), true, GlowValue.glow_1_00);
         }
-
-        // add stickers to classic board
-        classicBoard.AddAllStickersToBoard();
 
         // activate buttons
         buttons.gameObject.SetActive(true);
@@ -233,11 +226,6 @@ public class StickerBoardController : MonoBehaviour
 
             // play lester intro 3
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.lester_intro_3);
-            while (TalkieManager.instance.talkiePlaying)
-                yield return null;
-
-            // play lester intro 4
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.lester_intro_4);
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 

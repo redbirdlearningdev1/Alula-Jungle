@@ -20,104 +20,7 @@ MonoBehaviour:
   ending: 2
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 0
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
-    rightCharacter: 7
-    rightEmotionNum: 7
-    rightMouthEnum: 1
-    rightEyesEnum: 1
-    activeCharacter: 1
-    audioClip: {fileID: 0}
-    audioClipName: P_2_3_Julius_1_T1
-    audioString: Again?!
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 0
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
-    rightCharacter: 7
-    rightEmotionNum: 9
-    rightMouthEnum: 1
-    rightEyesEnum: 4
-    activeCharacter: 1
-    audioClip: {fileID: 0}
-    audioClipName: P_2_3_Julius_1_T2
-    audioString: This cannot be!
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 6
-    leftEmotionNum: 4
-    leftMouthEnum: 1
-    leftEyesEnum: 0
-    rightCharacter: 5
-    rightEmotionNum: 5
-    rightMouthEnum: 2
-    rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
-    audioClipName: P_2_3_Marcus_2_T1
-    audioString: IMPOSSIBLE!!!
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 6
-    leftEmotionNum: 5
-    leftMouthEnum: 2
-    leftEyesEnum: 0
-    rightCharacter: 5
-    rightEmotionNum: 6
-    rightMouthEnum: 1
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
-    audioClipName: P_2_3_Brutus_3_T1
-    audioString: "Yawn\u2026"
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 6
-    leftEmotionNum: 5
-    leftMouthEnum: 2
-    leftEyesEnum: 0
-    rightCharacter: 5
-    rightEmotionNum: 7
-    rightMouthEnum: 1
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
-    audioClipName: P_2_3_Brutus_3_T2
-    audioString: "Over already\u2026"
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 6
-    leftEmotionNum: 5
-    leftMouthEnum: 1
-    leftEyesEnum: 0
-    rightCharacter: 5
-    rightEmotionNum: 3
-    rightMouthEnum: 2
-    rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
-    audioClipName: P_2_3_Marcus_4_T1
-    audioString: Quiet you!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -130,9 +33,9 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: b86c192c6bd7c184990cf374a1bc91f0, type: 3}
-    audioClipName: P_2_3_Red_5_T1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: b09942356e4bfeb4aa248a3795f6b933, type: 3}
+    audioClipName: P_2_3_Red_1_T1
     audioString: Hurray!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -146,9 +49,9 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: d6b475bb4df0ad247bf02395b0c33fb0, type: 3}
-    audioClipName: P_2_3_Red_5_T2
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 8913d7cb93a68f84ebc9855c790971cf, type: 3}
+    audioClipName: P_2_3_Red_1_T2
     audioString: I knew you could do it!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -162,10 +65,106 @@ MonoBehaviour:
     rightEmotionNum: 11
     rightMouthEnum: 1
     rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 5b7933e5e2470764fb34260c0c19ca43, type: 3}
+    audioClipName: P_2_3_Wally_2_T1
+    audioString: Good job Explorer!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: c5fc3b5e8a01b7343be9e4dca96bbe57, type: 3}
+    audioClipName: P_2_3_Julius_3_T1
+    audioString: Again?!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: a041c8aca9abb7445a1f4695e2a9b2b0, type: 3}
+    audioClipName: P_2_3_Julius_3_T2
+    audioString: This can't be!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 5
+    rightMouthEnum: 2
+    rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
-    audioClipName: P_2_3_Wally_6_T1
-    audioString: Good job explorer!
+    audioClip: {fileID: 8300000, guid: b36b5d6848b267148a7d454d2ec277d6, type: 3}
+    audioClipName: P_2_3_Marcus_4_T1
+    audioString: IMPOSSIBLE!!!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 5a54637bf88fa9f4f80dbc1ba73d2400, type: 3}
+    audioClipName: P_2_3_Brutus_5_T1
+    audioString: "Yawn\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 3acf8a3e76c92f04caf1059ed7c3fad9, type: 3}
+    audioClipName: P_2_3_Brutus_5_T2
+    audioString: "Over already\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 3
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 361065485a8a0f14ebbf9cd4ee42c162, type: 3}
+    audioClipName: P_2_3_Marcus_6_T1
+    audioString: Quiet you!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -178,7 +177,7 @@ MonoBehaviour:
     rightEmotionNum: 9
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 0}
-    audioClipName: P_2_3_Julius_7_T1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: e86453d35f1130c4691a4519f9fd0559, type: 3}
+    audioClipName: P_2_3_Julius_9_T1
     audioString: You won't beat me next time! I promise!

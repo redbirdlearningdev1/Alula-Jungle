@@ -41,9 +41,9 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI updateText;
 
     private const string csv_folder_path = "Assets/Resources/CSV_folder/";
-    public const string talkie_audio_folder = "Assets/Resources/TalkieAudioFiles/";
+    public const string talkie_audio_folder = "Assets/Resources/TalkieAudioFiles";
 
-    public  List<AudioClip> globalTalkieAudioList;
+    public List<AudioClip> globalTalkieAudioList;
     private List<TalkieObject> localTalkieObjects;
     private List<string> filePaths;
     private string fileText;
@@ -185,9 +185,10 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
 
         // split text into elkonin values
         string[] lines = fileText.Split('\n');
-        int lineCount = 1;
+        int lineCount = 0;
         foreach (string line in lines)
         {
+            lineCount++;
             int column_count = 0;
 
             // skip first line
@@ -221,11 +222,11 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                             if (entry != null)
                             {
                                 localTalkieObjects.Add(entry);
-                                print ("adding entry!");
+                                //print ("adding entry!");
                                 entry = null;
                             } 
 
-                            print ("making new talkie!");
+                            //print ("making new talkie!");
 
                             // make new talkie entry
                             entry = new TalkieObject();
@@ -315,30 +316,36 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
 
                         case "$Segments":
 
-                            print ("adding segments!");
+                            //print ("adding segments!");
                             readingSegments = true; // start reading segments
                             continue;
 
                         case "$Voiceover":
 
-                            print ("starting voiceovers!");
+                            //print ("starting voiceovers!");
                             readingVoiceovers = true;
                             break;
                     }
                 }
                 else if (rowData[0] == "")
                 {
-                    print ("empty line detected!");
+                    //print ("empty line detected!");
                     // add to local talkie list iff not null
                     if (entry != null)
                     {
                         localTalkieObjects.Add(entry);
-                        print ("finished talkie entry!");
+                        //print ("finished talkie entry!");
                         entry = null;
                     }        
                     
                     readingSegments = false; // finish reading segmenets
                     readingVoiceovers = false; // finish reading voiceover
+                }
+                else if (rowData[0].StartsWith("//"))
+                {
+                    // comment detected - go to next line
+                    print ("comment found: " + rowData[0] + " skipping to next line.");
+                    continue;
                 }
 
                 // /* 
@@ -439,16 +446,21 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                         switch (column_count)
                         {
                             case 0: // audio file name
+
                                 segment.audioClipName = cell;
                                 segment.audioClip = SearchForAudioByName(cell); // try to find audio
 
                                 // determine active character(s)
                                 activeCharacters = DetermineActiveCharacters(cell);
-                                //print ("active characters: " + activeCharacters[0]);
+                                // print ("active characters: ");
+                                // foreach (var character in activeCharacters)
+                                // {
+                                //     print (character);
+                                // }
 
                                 break;
                             case 1: // text
-                                segment.audioString = cell;
+                                segment.audioString = cell.Replace("~", ",");
                                 break;
                             case 2: // index
                                 break;
@@ -459,6 +471,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                                 if (activeCharacters.Contains(segment.leftCharacter))
                                 {
                                     segment.activeCharacter = ActiveCharacter.Left;
+                                    //print ("left active");
                                 }
 
                                 break;
@@ -468,13 +481,18 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                                 // check to see if active character is left
                                 if (activeCharacters.Contains(segment.rightCharacter))
                                 {
+                                    //print ("right active");
                                     // if active character was prev left -> both are active characters
                                     if (segment.activeCharacter == ActiveCharacter.Left)
                                     {
+                                        //print ("both active!");
                                         segment.activeCharacter = ActiveCharacter.Both;
                                     }
-                                    // else the right talkie is active
-                                    segment.activeCharacter = ActiveCharacter.Right;
+                                    else
+                                    {
+                                        // else the right talkie is active
+                                        segment.activeCharacter = ActiveCharacter.Right;
+                                    }
                                 }
 
                                 break;
@@ -638,8 +656,6 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                 e.PrintError();
                 return;
             }
-
-            lineCount++;
         }
 
         // change test outcome text
@@ -656,19 +672,19 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
         }
         
         print ("local talkies made: " + localTalkieObjects.Count);
-        print ("red word count: " + redWordCount);
-        print ("wally word count: " + wallyWordCount);
-        print ("darwin word count: " + darwinWordCount);
-        print ("lester word count: " + lesterWordCount);
-        print ("julius word count: " + juliusWordCount);
-        print ("brutus word count: " + brutusWordCount);
-        print ("marcus word count: " + marcusWordCount);
-        print ("clogg word count: " + cloggWordCount);
-        print ("spindle word count: " + spindleWordCount);
-        print ("bubbles word count: " + bubblesWordCount);
-        print ("ollie word count: " + ollieWordCount);
-        print ("celeste word count: " + celesteWordCount);
-        print ("sylvie word count: " + sylvieWordCount);
+        // print ("red word count: " + redWordCount);
+        // print ("wally word count: " + wallyWordCount);
+        // print ("darwin word count: " + darwinWordCount);
+        // print ("lester word count: " + lesterWordCount);
+        // print ("julius word count: " + juliusWordCount);
+        // print ("brutus word count: " + brutusWordCount);
+        // print ("marcus word count: " + marcusWordCount);
+        // print ("clogg word count: " + cloggWordCount);
+        // print ("spindle word count: " + spindleWordCount);
+        // print ("bubbles word count: " + bubblesWordCount);
+        // print ("ollie word count: " + ollieWordCount);
+        // print ("celeste word count: " + celesteWordCount);
+        // print ("sylvie word count: " + sylvieWordCount);
     }
 
     public void OnUpdatePressed()
@@ -820,12 +836,14 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
 
     private void InitCreateGlobalList()
     {
-        var files = Resources.LoadAll<AudioClip>("TalkieAudioFiles");
-
         globalTalkieAudioList = new List<AudioClip>();
-        foreach (var file in files)
+        var folders = AssetDatabase.GetSubFolders(talkie_audio_folder);
+
+        foreach (var folder in folders)
         {
-            globalTalkieAudioList.Add(file);
+            //print ("folder: " + folder);
+            var audio_files = Resources.LoadAll<AudioClip>(folder.Replace("Assets/Resources/", ""));
+            globalTalkieAudioList.AddRange(audio_files);
         }
 
         print ("global audio list: " + globalTalkieAudioList.Count);
@@ -833,16 +851,21 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
 
     private AudioClip SearchForAudioByName(string str)
     {
+        //print ("global audio list size: " + globalTalkieAudioList.Count);
+
         // linear search
         foreach (var file in globalTalkieAudioList)
         {
+            //print ("file name: " + file.name + " vs. str: " + str);
+
             if (file.name == str)
             {
                 //print ("found audio!");
                 return file;
             }
         }
-        // return null if not found
+        //print ("no audio file found for: " + str);
+        // return null if not founda
         return null;
     }
 }

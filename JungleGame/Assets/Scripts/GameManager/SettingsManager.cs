@@ -148,10 +148,18 @@ public class SettingsManager : MonoBehaviour
     ################################################
     */
 
-    public void ToggleStickerButtonWiggle(bool opt)
+    public void ToggleStickerButtonWiggleGlow(bool opt)
     {
-        if (opt) wagonButton.GetComponent<WiggleController>().StartWiggle();
-        else wagonButton.GetComponent<WiggleController>().StopWiggle();
+        if (opt)
+        {
+            wagonButton.GetComponent<WiggleController>().StartWiggle();
+            ImageGlowController.instance.SetImageGlow(wagonButton.GetComponent<Image>(), true, GlowValue.glow_1_025);
+        }
+        else 
+        {
+            wagonButton.GetComponent<WiggleController>().StopWiggle();
+            ImageGlowController.instance.SetImageGlow(wagonButton.GetComponent<Image>(), false, GlowValue.none);
+        }
     }
 
     public void SetWagonButton(bool opt)
@@ -273,7 +281,7 @@ public class SettingsManager : MonoBehaviour
     public void OnWagonButtonPressed()
     {   
         // remove wiggle if need be
-        ToggleStickerButtonWiggle(false);
+        ToggleStickerButtonWiggleGlow(false);
 
         // only workable on scroll map scene (or dev menu)
         if (SceneManager.GetActiveScene().name == "ScrollMap" ||

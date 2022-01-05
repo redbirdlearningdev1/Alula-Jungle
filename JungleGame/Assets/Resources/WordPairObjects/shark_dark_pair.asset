@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f49655c47c49b747b3315e00db7aacd, type: 3}
+  m_Name: shark_dark_pair
+  m_EditorClassIdentifier: 
+  soundCoin: 13
+  pairType: 0
+  word1: {fileID: 11400000, guid: 52be386172e5881448810e418b7d8285, type: 2}
+  word2: {fileID: 11400000, guid: 00db3df0eed072349b7cee81b2feb559, type: 2}
+  index: 0

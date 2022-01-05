@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 2
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -34,8 +33,8 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 85212f61077cbc449b72d0b5437f8c4b, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 0d83b1d7e7bb77e4194cc5c2386d48dc, type: 3}
     audioClipName: P_1_6_Red_10_T1
     audioString: "I don't know why he\u2019s acting this way."
   - endTalkieAfterThisSegment: 0
@@ -50,8 +49,8 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 9f4b0099f86b05648b8624d34d58efab, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 15f9be87d21a04b4382572615d555567, type: 3}
     audioClipName: P_1_6_Wally_11_T1
     audioString: "I\u2019m sure we\u2019ll find out in time."
   - endTalkieAfterThisSegment: 0
@@ -66,8 +65,8 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 01e07e380b48a23489feab486063aaf7, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: f91d356ef202112478571254cb2b5286, type: 3}
     audioClipName: P_1_6_Wally_11_T2
     audioString: For now let's move forward
   - endTalkieAfterThisSegment: 0
@@ -82,10 +81,10 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: d3b542e8ac178934281a0a4b82437897, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: fb5a5f8609d67044b854cbe58f5e5d5e, type: 3}
     audioClipName: P_1_6_Red_12_T1
-    audioString: Alright explorer!
+    audioString: Alright Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -98,7 +97,7 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 3
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: d2159e3d08c0fe747bde37372889fa32, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: bc087f92d7cb43a468b5263e68551e80, type: 3}
     audioClipName: P_1_6_Red_12_T2
     audioString: "Let\u2019s head out!"

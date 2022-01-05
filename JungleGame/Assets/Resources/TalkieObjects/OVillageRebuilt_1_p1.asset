@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 2
   removeBackgroundAfterTalkie: 0
   removeLetterboxAfterTalkie: 0
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -34,8 +33,8 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 2
     rightEyesEnum: 4
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 9bcb8791c09398b459260d65173e4ee4, type: 3}
     audioClipName: P_3_2_Red_1_T1
     audioString: Tah dah!
   - endTalkieAfterThisSegment: 0
@@ -50,8 +49,8 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 2
     rightEyesEnum: 4
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 78126ec50365eb14ab5001a240f54a27, type: 3}
     audioClipName: P_3_2_Red_1_T2
     audioString: All cleaned up Mr. Orc!
   - endTalkieAfterThisSegment: 0
@@ -66,8 +65,8 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 2
     rightEyesEnum: 4
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: bc230a9d8973d384fa77c7fc501e953c, type: 3}
     audioClipName: P_3_2_Clogg_2_T1
     audioString: ...
   - endTalkieAfterThisSegment: 0
@@ -82,8 +81,8 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 87831fa508b8f544e94052f4e72e352c, type: 3}
     audioClipName: P_3_2_Clogg_2_T2
     audioString: Clogg.
   - endTalkieAfterThisSegment: 0
@@ -98,8 +97,8 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 0642014c51f9ebe4ebfe14bc96aeae9f, type: 3}
     audioClipName: P_3_2_Wally_3_T1
     audioString: Huh?
   - endTalkieAfterThisSegment: 0
@@ -114,10 +113,10 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 29cce33485ea6764cadaa690cd7f3c00, type: 3}
     audioClipName: P_3_2_Clogg_4_T1
-    audioString: '"My name is Clogg~ not ""orc."""'
+    audioString: '"My name is Clogg, not ""orc."""'
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -130,8 +129,8 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: b82075cd20313184ab64c28f7378d803, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 9b83b27cf0fb21043a5b16b501d052b7, type: 3}
     audioClipName: P_3_2_Red_5_T1
     audioString: "Well it\u2019s a pleasure to meet you Clogg!"
   - endTalkieAfterThisSegment: 0
@@ -146,8 +145,8 @@ MonoBehaviour:
     rightEmotionNum: 7
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 87db6fcfa72c098418b82c79bbc775dc, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: ede1807ffc3f5894a9e846b6a35f9c97, type: 3}
     audioClipName: P_3_2_Red_5_T2
     audioString: My name is Red and this is Wally!
   - endTalkieAfterThisSegment: 0
@@ -162,8 +161,8 @@ MonoBehaviour:
     rightEmotionNum: 11
     rightMouthEnum: 1
     rightEyesEnum: 4
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 034cd77418896264099dc8cee53c2b4b, type: 3}
     audioClipName: P_3_2_Wally_6_T1
     audioString: H-hello
   - endTalkieAfterThisSegment: 0
@@ -178,8 +177,8 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 2
     rightEyesEnum: 4
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 739b97681b140b84dba8989ef1692cc4, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 3ae15b02a2517d2419747f29e021bbfb, type: 3}
     audioClipName: P_3_2_Red_7_T1
     audioString: And this is my friend!
   - endTalkieAfterThisSegment: 0
@@ -194,10 +193,10 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 2
     rightEyesEnum: 4
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 35a9d5402c020a647ad86874b6413cd1, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 6a146c9f7e6ca6241bc111c413552209, type: 3}
     audioClipName: P_3_2_Red_7_T2
-    audioString: "They\u2019re an explorer."
+    audioString: "They\u2019re an Explorer."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -210,8 +209,8 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 2
     rightEyesEnum: 4
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 69499c4c7911c1a46aa6cbd833df549a, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 0a22ea8efbee93448a09325b55e2bd64, type: 3}
     audioClipName: P_3_2_Red_7_T3
     audioString: They did most of the work!
   - endTalkieAfterThisSegment: 0
@@ -226,10 +225,10 @@ MonoBehaviour:
     rightEmotionNum: 5
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 32bc0b8b5dbb2ad4b8ed83559b743193, type: 3}
     audioClipName: P_3_2_Clogg_8_T1
-    audioString: I thank you for cleaning my Village~
+    audioString: I thank you for cleaning my Village,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -242,10 +241,10 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: a2c0fd46b2f68074d8d67a1fe3896b49, type: 3}
     audioClipName: P_3_2_Clogg_8_T2
-    audioString: If you wish to explain~ now I will listen.
+    audioString: 'Now, you can tell me what you were trying to say earlier. '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -258,10 +257,10 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 524bb3c430e533d40948d53aeea1ac78, type: 3}
     audioClipName: P_3_2_Wally_9_T1
-    audioString: Well Clogg~
+    audioString: Well Clogg,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -274,10 +273,10 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 91e060d22344ff943afc0ae06be880fd, type: 3}
     audioClipName: P_3_2_Wally_9_T2
-    audioString: 'we came to your kingdom to help the prince while the king. '
+    audioString: we came to your kingdom to help the Prince while the King is away.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -290,10 +289,10 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 7a788138eb0636641bbf506c5c63540b, type: 3}
     audioClipName: P_3_2_Wally_10_T1
-    audioString: Unfortunately~
+    audioString: Unfortunately,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -306,8 +305,8 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 292696eb0eaad614080cc26f1763acce, type: 3}
     audioClipName: P_3_2_Wally_10_T2
     audioString: "he\u2019s destroying everything around him."
   - endTalkieAfterThisSegment: 0
@@ -322,8 +321,8 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 42475e27e9af53040910bfb075b7f0a2, type: 3}
     audioClipName: P_3_2_Clogg_11_T1
     audioString: Is he now?
   - endTalkieAfterThisSegment: 0
@@ -338,8 +337,8 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 4d8c9d5634c639445b11fe0e4bef765f, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 14d2bb1b395871247b090c33ed804647, type: 3}
     audioClipName: P_3_2_Red_12_T1
     audioString: Sadly.
   - endTalkieAfterThisSegment: 0
@@ -354,10 +353,10 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: b5b7503c311189b4b9249320436d9107, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 2b8eea612dd876b47acfd6ae1b10ab24, type: 3}
     audioClipName: P_3_2_Red_12_T2
-    audioString: But~ our friend Darwin is up ahead of us!
+    audioString: But, our friend Darwin is up ahead of us!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -370,10 +369,10 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 2ee3645280a683f498d6a402a80b8e10, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: df3694463988d57498263c9e14288a7b, type: 3}
     audioClipName: P_3_2_Red_12_T3
-    audioString: He used to be the king's advisor.
+    audioString: He used to be the King's advisor.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -386,11 +385,11 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 364ad6ec948b8b94589683c3c4f05cc4, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 4d8749c314825b541b91b6dceee2e2c1, type: 3}
     audioClipName: P_3_2_Red_12_T4
     audioString: "We\u2019re hoping he is able to come up with something to stop
-      the prince's behavior. "
+      the Prince's behavior. "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -403,10 +402,10 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: d916d73cf4740d642939bd31ad94e048, type: 3}
     audioClipName: P_3_2_Clogg_13_T1
-    audioString: That doesn't sound like him..
+    audioString: That doesn't sound like Prince Julius.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -419,10 +418,10 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 3c5e90bfc0a3a344c9fdbf7ff092c277, type: 3}
     audioClipName: P_3_2_Clogg_13_T2
-    audioString: He's young~ but he'd never..
+    audioString: Sure he has some spunk to him, but he'd never -
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -435,9 +434,9 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 3
     audioClip: {fileID: 0}
-    audioClipName: P_1_1_RedWally_9_T1
+    audioClipName: RedWally_Gasp
     audioString: '!!!'
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -451,7 +450,7 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 771f48e778c3f4445a675af71c5c4df7, type: 3}
     audioClipName: P_3_1a_Clogg_3_T1
     audioString: ...

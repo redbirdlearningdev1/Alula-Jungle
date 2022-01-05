@@ -42,18 +42,20 @@ public class ParrotController : MonoBehaviour, IPointerUpHandler, IPointerDownHa
 
     public void WinAnimation()
     {
+        StartCoroutine(FlapWingsRoutine(true));
         animator.Play("PreFly");
     }
 
-    public void SayAudio(ActionWordEnum word)
+    public void SayAudio(ActionWordEnum word, bool interactableAfter = true)
     {
-        StartCoroutine(SayAudioRoutine(word));
+        StartCoroutine(SayAudioRoutine(word, interactableAfter));
     }
 
-    private IEnumerator SayAudioRoutine(ActionWordEnum word)
+    private IEnumerator SayAudioRoutine(ActionWordEnum word, bool interactableAfter = true)
     {
         interactable = false;
-
+        
+        StartCoroutine(FlapWingsRoutine(false));
         animator.Play("PreFly");
         yield return new WaitForSeconds(0.1f);
 
@@ -64,7 +66,30 @@ public class ParrotController : MonoBehaviour, IPointerUpHandler, IPointerDownHa
         animator.Play("EndFly");
         yield return new WaitForSeconds(0.25f);
 
-        interactable = true;
+
+        interactable = interactableAfter;
+    }
+
+    private IEnumerator FlapWingsRoutine(bool loop)
+    {
+        if (loop)
+        {
+            while (true)
+            {
+                // play sound
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BirdWingFlap, 0.5f);
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                // play sound
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BirdWingFlap, 0.5f);
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
     }
 
     /* 
@@ -91,7 +116,15 @@ public class ParrotController : MonoBehaviour, IPointerUpHandler, IPointerDownHa
         if (isPressed)
         {
             // play audio blip
-            SayAudio(PrintingGameManager.instance.correctValue);
+            SayAudio(PrintingGameManager.instance.correctValue, false);
+
+            // stop wiggling if tutorial
+            if (PrintingGameManager.instance.playTutorial && PrintingGameManager.instance.t_waitingForPlayer)
+            {
+                PrintingGameManager.instance.t_waitingForPlayer = false;
+                interactable = false;
+                GetComponent<WiggleController>().StopWiggle();
+            }
 
             isPressed = false;
             transform.localScale = new Vector3(1f, 1f, 1f);

@@ -48,7 +48,24 @@ public class PrintingRayCaster : MonoBehaviour
                     if (result.gameObject.transform.CompareTag("Cannon"))
                     {
                         isCorrect = PrintingGameManager.instance.EvaluateSelectedBall(selectedBall.type);
-                        BallsController.instance.ReleaseBalls();
+
+                        if (PrintingGameManager.instance.playTutorial)
+                        {
+                            // release balls if correct
+                            if (isCorrect)
+                            {
+                                BallsController.instance.ReleaseBalls();
+                            }
+                            // else just ignore ball
+                            else
+                            {
+                                
+                            }
+                        }
+                        else
+                        {
+                            BallsController.instance.ReleaseBalls();
+                        }
                     }
                 }
             }
@@ -63,7 +80,6 @@ public class PrintingRayCaster : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-
             var pointerEventData = new PointerEventData(EventSystem.current);
             pointerEventData.position = Input.mousePosition;
             var raycastResults = new List<RaycastResult>();
@@ -73,9 +89,9 @@ public class PrintingRayCaster : MonoBehaviour
             {
                 foreach (var result in raycastResults)
                 {
-                    if (result.gameObject.transform.CompareTag("Ball"))
+                    if (result.gameObject.transform.CompareTag("BallGrab"))
                     {
-                        selectedBall = result.gameObject.GetComponent<Ball>();
+                        selectedBall = result.gameObject.GetComponentInParent<Ball>();
                         selectedBall.TogglePhysics(false);
                         selectedBall.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
                         selectedBall.GetComponent<LerpableObject>().LerpRotation(0f, 0.2f);

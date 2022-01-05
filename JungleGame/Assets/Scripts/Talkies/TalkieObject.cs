@@ -20,7 +20,7 @@ public enum TalkieEyes
 
 public enum ActiveCharacter
 {
-    Left, Right, Both
+    None, Left, Right, Both
 }
 
 public enum TalkieStart

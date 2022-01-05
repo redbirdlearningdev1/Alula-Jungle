@@ -44,6 +44,10 @@ public class VisibleFramesController : MonoBehaviour
         // reset tags
         foreach(var frame in frames)
             frame.tag = "Untagged";
+
+        // reset tags
+        foreach(var frame in frames)
+            frame.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     public void PlaceActiveFrames(Vector2 pos)
@@ -89,20 +93,25 @@ public class VisibleFramesController : MonoBehaviour
 
         // make frame to add invisible frames
         InvisibleFrameLayout.instance.SetNumberOfFrames(count + 1);
+        yield return new WaitForSeconds(0.1f);
 
         // make newest frame invisible
         frames[count].GetComponent<LerpableObject>().SetImageAlpha(frames[count].GetComponent<Image>(), 0f);
+        frames[count].transform.localScale = new Vector3(0f, 0f, 1f);
 
         // make frame active
         SetNumberOfFrames(count + 1);
-        yield return new WaitForSeconds(0.5f);
-
         // move frames to invisible frames
-        StartCoroutine(MoveFramesToInvisibleFramesRoutine());
+        StartCoroutine(SetFramesPosFast());
+        // play sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BoxSlide, 0.5f);
         yield return new WaitForSeconds(1f);
 
         // reveal new frame
-        frames[count].GetComponent<LerpableObject>().LerpImageAlpha(frames[count].GetComponent<Image>(), 1f, 0.5f);
+        frames[count].GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
+        frames[count].GetComponent<LerpableObject>().LerpImageAlpha(frames[count].GetComponent<Image>(), 1f, 0.2f);
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 0.25f);
     }
 
     public void MoveFramesToInvisibleFrames()
@@ -132,18 +141,32 @@ public class VisibleFramesController : MonoBehaviour
         }
     }
 
-    public void MoveFramesOffScreen()
+    private IEnumerator SetFramesPosFast()
     {
-        StartCoroutine(MoveFramesOffScreenRoutine());
+        int count = 0;
+        foreach(var frame in frames)
+        {
+            if (frame.activeSelf)
+            {
+                frame.GetComponent<LerpableObject>().LerpPosition(InvisibleFrameLayout.instance.frames[count].transform.position, 0.1f, false);
+                yield return new WaitForSeconds(0.1f);
+            }
+            count++;
+        }
     }
 
-    private IEnumerator MoveFramesOffScreenRoutine()
+    public void RemoveFrames()
+    {
+        StartCoroutine(RemoveFramesRoutine());
+    }
+
+    private IEnumerator RemoveFramesRoutine()
     {
         foreach(var frame in frames)
         {
             if (frame.activeSelf)
             {
-                frame.GetComponent<LerpableObject>().LerpPosition(new Vector2(frame.transform.position.x, frame.transform.position.y - 550f), 0.5f, false);
+                frame.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.2f, 0.2f);
             }
         }
         yield return new WaitForSeconds(1f);

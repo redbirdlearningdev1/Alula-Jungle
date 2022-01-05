@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -34,10 +33,10 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 0}
-    audioClipName: Cha_0_2a_Marcus_1_T1
-    audioString: HA HA HA!!!
+    audioClipName: Marcus_Laugh
+    audioString: HA HA HA!!!!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -50,8 +49,8 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 524d27da410b7654fa713074077e58f8, type: 3}
     audioClipName: Cha_0_2a_Marcus_1_T2
     audioString: "I told you I\u2019d win!!!"
   - endTalkieAfterThisSegment: 0
@@ -66,10 +65,10 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 30783096a88650f41a5d5be2c5e292a3, type: 3}
     audioClipName: Cha_0_2a_Julius_2_T1
-    audioString: Take that explorer!
+    audioString: Take that Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -82,8 +81,8 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 3
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: d8606cb43cb44164b88c74fc2a7acb11, type: 3}
     audioClipName: Cha_0_2a_Julius_2_T2
     audioString: "I knew we\u2019d beat you!"
   - endTalkieAfterThisSegment: 0
@@ -98,10 +97,10 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: aa9efcb80417ac949b2c4be482246748, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 2162299b6e7dec64f9864c0a324e2a88, type: 3}
     audioClipName: Cha_0_1a_Red_4_T1
-    audioString: "It\u2019s okay explorer! "
+    audioString: "It\u2019s okay Explorer! "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -114,7 +113,7 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 05ad5055e58e1f244965cd0975bc9f15, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 1c8f9da30fb2c39429cc13eb9e18edb7, type: 3}
     audioClipName: Cha_0_1a_Red_4_T2
     audioString: Let's go practice some more.

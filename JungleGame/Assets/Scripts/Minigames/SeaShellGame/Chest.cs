@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Chest : MonoBehaviour
 {
+    public static Chest instance;
+
     private int currChest = 0;
     private const int maxChest = 4;
 
@@ -16,6 +18,9 @@ public class Chest : MonoBehaviour
 
     void Awake()
     {
+        if (instance == null)
+            instance = this;
+            
         chest.sprite = chestSprites[currChest];
     }
 

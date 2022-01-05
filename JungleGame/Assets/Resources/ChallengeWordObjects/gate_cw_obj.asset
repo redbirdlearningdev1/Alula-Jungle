@@ -15,7 +15,6 @@ MonoBehaviour:
   word: gate
   audio: {fileID: 8300000, guid: b139743da1159c749940fff2e2812c13, type: 3}
   sprite: {fileID: 21300000, guid: 2a9c35fa76e329049a0994a9c80022f7, type: 3}
-  elkoninList: 070000002700000000000000000000000000000000000000
-  elkoninCount: 2
+  elkoninList: 1b0000000700000027000000000000000000000000000000
+  elkoninCount: 3
   set: 6
-  imageText: "\r"

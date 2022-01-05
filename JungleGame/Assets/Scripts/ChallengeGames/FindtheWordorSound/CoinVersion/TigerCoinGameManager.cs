@@ -15,11 +15,6 @@ public class TigerCoinGameManager : MonoBehaviour
     [SerializeField] private List<GameObject> incorrectCoins;
     private bool gameSetup = false;
 
-    //maybe old??
-
-    [Header("Values")]
-    [SerializeField] private Vector2 normalCoinSize;
-    [SerializeField] private Vector2 expandedCoinSize;
 
     [Header("Positions")]
     [SerializeField] private Transform polaroidStartPos;
@@ -33,15 +28,12 @@ public class TigerCoinGameManager : MonoBehaviour
     [SerializeField] private Transform CoinEndPos;
 
     [SerializeField] private List<UniversalCoinImage> waterCoins;
-    private UniversalCoinImage currWaterCoin;
 
     // other variables
     [SerializeField]  private ChallengeWord currentWord;
     [SerializeField]  private ElkoninValue currentTargetValue;
     [SerializeField]  private ChallengeWord currentTargetWord;
-    private int currentSwipeIndex;
 
-    private List<UniversalCoinImage> currentCoins;
     private int numWins = 0;
     private int numMisses = 0;
     private bool playingCoinAudio = false;
@@ -50,67 +42,97 @@ public class TigerCoinGameManager : MonoBehaviour
     private List<ChallengeWord> unusedWordList;
     private List<ChallengeWord> usedWordList;
 
-    [Header("Testing")] // ache -> bake
-    public bool overrideWord;
-    //public ChallengeWord testChallengeWord;
-    public ChallengeWord targetChallengeWord;
-    public List<ElkoninValue> coinOptions;
-    public List<ElkoninValue> BadCoinOptions;
-
-    public int swipeIndex;
-
     void Awake()
     {
-        // every scene must call this in Awake()
-        GameManager.instance.SceneInit();
-
         if (!instance)
         {
             instance = this;
         }
 
+        // every scene must call this in Awake()
+        GameManager.instance.SceneInit();
+
+        // stop music 
+        AudioManager.instance.StopMusic();
+    }
+
+    void Start()
+    {
+        // turn on settings button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+
+        // add ambiance
+        // AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.05f);
+        // AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 0.05f);
+
         PregameSetup();
-        StartCoroutine(StartGame());
+    }
+
+    void Update()
+    {
+        // dev stuff for skipping minigame
+        if (GameManager.instance.devModeActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StopAllCoroutines();
+                // play win tune
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // calculate and show stars
+                StarAwardController.instance.AwardStarsAndExit(3);
+            }
+        }
     }
 
     private void PregameSetup()
     {
-        ChallengeWordDatabase.InitCreateGlobalList(true);
-        globalWordList = ChallengeWordDatabase.globalChallengeWordList;
+        globalWordList = new List<ChallengeWord>();
+        globalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(StudentInfoSystem.GetCurrentProfile().actionWordPool));
         unusedWordList = globalWordList;
         usedWordList = new List<ChallengeWord>();
         pattern.baseState();
+
+        StartCoroutine(StartGame());
     }
 
     private IEnumerator StartGame()
     {
-        swipeIndex = 0;
+        // reset coin positions
+        foreach (var coin in waterCoins)
+            coin.transform.position = CoinStartPos.position;
+
+        yield return new WaitForSeconds(0.5f);
+
         polaroidC.gameObject.transform.position = polaroidStartPos.position;
         polaroidC.LerpScale(0f, 0f);
 
-        if (overrideWord)
+        // get random word
+        currentWord = GetUnusedWord();
+        polaroidC.SetPolaroid(currentWord);
+        currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(currentWord.set);
+
+        print ("current value: " + currentTargetValue);
+
+        // set coin options
+        List<ActionWordEnum> coinOptions = new List<ActionWordEnum>();
+        coinOptions.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
+        coinOptions.Remove(currentWord.set);
+
+        print ("coin options: " + coinOptions.Count);
+
+        int correctIndex = Random.Range(0, waterCoins.Count);
+
+        for (int i = 0; i < 5; i++)
         {
-            currentWord = targetChallengeWord;
-            polaroidC.SetPolaroid(currentWord);
-        }
-        else
-        {
-            // use random words
-            ChallengeWord word = GetUnusedWord();
-            polaroidC.SetPolaroid(word);
-            currentWord = word;
-        }
-        
-        currentTargetValue = currentWord.elkoninList[swipeIndex];
-        for (int d = 0; d < 6; d++)
-        {
-            for (int i = 0; i < BadCoinOptions.Count; i++)
+            if (i == correctIndex)
             {
-                if (currentTargetValue == BadCoinOptions[i])
-                {
-                    swipeIndex++;
-                    currentTargetValue = currentWord.elkoninList[swipeIndex];
-                }
+                waterCoins[i].SetValue(currentTargetValue);
+            }   
+            else
+            {
+                int rand = Random.Range(0, coinOptions.Count);
+                waterCoins[i].SetActionWordValue(coinOptions[rand]);
+                coinOptions.RemoveAt(rand);
             }
         }
 
@@ -126,52 +148,11 @@ public class TigerCoinGameManager : MonoBehaviour
         polaroidC.LerpScale(1f, 0f);
         yield return new WaitForSeconds(0.85f);
 
-        for (int i = 0; i < 5; i++)
-        {
-            int rand = Random.Range(0, coinOptions.Count);
-            waterCoins[i].SetValue(coinOptions[rand]);
-            coinOptions.RemoveAt(rand); 
-            waterCoins[i].transform.position = CoinPos1.position;            
-        }
 
         for (int i = 0; i < 5; i++)
         {
-            coinOptions.Add(waterCoins[i].value);
+            StartCoroutine(LerpMoveObject(waterCoins[i].transform, CoinPos1.position, .2f));
         }
-
-        if (waterCoins[0].value == currentTargetValue)
-        {
-
-
-        }
-        else if (waterCoins[1].value == currentTargetValue)
-        {
-
-
-        }
-        else if (waterCoins[2].value == currentTargetValue)
-        {
-
-
-        }
-        else if (waterCoins[3].value == currentTargetValue)
-        {
-
-
-        }
-        else if (waterCoins[4].value == currentTargetValue)
-        {
-
-
-        }
-        else
-        {
-            int rand2 = Random.Range(0, 5);
-            waterCoins[rand2].SetValue(currentTargetValue);
-            Debug.Log(waterCoins[rand2]);
-        }
-
-
         yield return new WaitForSeconds(.15f);
         for (int i = 1; i < 5; i++)
         {
@@ -192,6 +173,9 @@ public class TigerCoinGameManager : MonoBehaviour
         {
             StartCoroutine(LerpMoveObject(waterCoins[i].transform, CoinPos5.position, .2f));
         }
+
+        // turn on raycaster
+        TigerCoinRayCaster.instance.isOn = true;
     }
 
     private IEnumerator LerpMoveObject(Transform obj, Vector3 target, float lerpTime)
@@ -213,38 +197,25 @@ public class TigerCoinGameManager : MonoBehaviour
         }
     }
 
-    public void GlowAndPlayAudioCoin(UniversalCoinImage coin)
+    public void PlayCoinAudio(UniversalCoinImage coin)
     {
         if (playingCoinAudio)
             return;
 
         if (waterCoins.Contains(coin))
         {
-            StartCoroutine(GlowAndPlayAudioCoinRoutine(coin, true));
+            StartCoroutine(PlayCoinAudioRoutine(coin, true));
         }
     }
 
-    private IEnumerator GlowAndPlayAudioCoinRoutine(UniversalCoinImage coin, bool waterCoin = false)
+    private IEnumerator PlayCoinAudioRoutine(UniversalCoinImage coin, bool waterCoin = false)
     {
         playingCoinAudio = true;
 
-        // glow coin
-        coin.ToggleGlowOutline(true);
-        AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(coin.value).audio);
-        coin.LerpSize(expandedCoinSize, 0.25f);
-
+        coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.2f);
+        AudioManager.instance.PlayPhoneme(ChallengeWordDatabase.ElkoninValueToActionWord(coin.value));
         yield return new WaitForSeconds(0.5f);
-        // return if current water coin
-        if (coin == currWaterCoin)
-        {
-            coin.ToggleGlowOutline(false);
-            playingCoinAudio = false;
-            yield break;
-        }
-
-        coin.LerpSize(normalCoinSize, 0.25f);
-        yield return new WaitForSeconds(0.25f);
-        coin.ToggleGlowOutline(false);
+        coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
 
         playingCoinAudio = false;
     }
@@ -276,9 +247,11 @@ public class TigerCoinGameManager : MonoBehaviour
 
     public void EvaluateWaterCoin(UniversalCoinImage coin)
     {
+        // turn off raycaster
+        TigerCoinRayCaster.instance.isOn = false;
+
         if (coin.value == currentTargetValue)
         {
-            currWaterCoin = coin;
             StartCoroutine(PostRound(true));
         }
         else
@@ -307,7 +280,7 @@ public class TigerCoinGameManager : MonoBehaviour
         {
             StartCoroutine(LerpMoveObject(waterCoins[3].transform, CoinPos4.position, .2f));
         }
-        else
+        else if (currCoin.name == "Coin5")
         {
             StartCoroutine(LerpMoveObject(waterCoins[4].transform, CoinPos5.position, .2f));
         }
@@ -319,13 +292,9 @@ public class TigerCoinGameManager : MonoBehaviour
         {
             // play correct audio
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
-
             pattern.correct();
             correctCoins[numWins].SetActive(true);
-            numWins++;
-            Tiger.TigerAway();
-            yield return new WaitForSeconds(.4f);
-            polaroidC.gameObject.transform.position = polaroidStartPos.position;
+            numWins++;  
         }
         else
         {
@@ -335,15 +304,13 @@ public class TigerCoinGameManager : MonoBehaviour
             pattern.incorrect();
             incorrectCoins[numMisses].SetActive(true);
             numMisses++;
-            Tiger.TigerAway();
-            yield return new WaitForSeconds(.4f);
-            polaroidC.gameObject.transform.position = polaroidStartPos.position;
         }
 
-        yield return new WaitForSeconds(.5f);
+        Tiger.TigerDeal();
+        yield return new WaitForSeconds(.4f);
+        polaroidC.gameObject.transform.position = polaroidStartPos.position;
+        yield return new WaitForSeconds(1f);
 
-        Tiger.TigerSwipe();
-        yield return new WaitForSeconds(.5f);
         for (int i = 0; i < 1; i++)
         {
             StartCoroutine(LerpMoveObject(waterCoins[i].transform, CoinPos2.position, .2f));
@@ -368,6 +335,10 @@ public class TigerCoinGameManager : MonoBehaviour
         {
             StartCoroutine(LerpMoveObject(waterCoins[i].transform, CoinEndPos.position, .2f));
         }
+        yield return new WaitForSeconds(0.5f);
+        // reset coin positions
+        foreach (var coin in waterCoins)
+            coin.transform.position = CoinStartPos.position;
 
 
         if (numWins == 3)

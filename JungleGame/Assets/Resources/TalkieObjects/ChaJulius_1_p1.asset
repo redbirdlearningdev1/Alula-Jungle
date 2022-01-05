@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 1
@@ -34,10 +33,10 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: a86822988c82dd448b6e4bd91f610d60, type: 3}
     audioClipName: Cha_0_1b_Julius_1_T1
-    audioString: Are you ready explorer?
+    audioString: Grrowr! Come on Explorer, are you ready to challenge me again?
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0
@@ -50,10 +49,10 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 530d59319c9990a40b23741904bc7c32, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 1ebd329fb5f924e4782643c0484fa592, type: 3}
     audioClipName: Cha_0_1b_Julius_2_T1
-    audioString: Alright~ let's do this.
+    audioString: Alright, let's do this!
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0
@@ -66,7 +65,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 464c454b8d26a704c996ee973bc9a526, type: 3}
     audioClipName: Cha_0_1b_Julius_3_T1
-    audioString: "I\u2019ll be waiting."
+    audioString: "Hmmph, I\u2019ll be waiting."

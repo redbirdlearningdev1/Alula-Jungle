@@ -24,7 +24,7 @@ public class UniversalCoinImage : MonoBehaviour
     [SerializeField] private Image goldImage;
     [SerializeField] private Image silverImage;
     [SerializeField] private SpriteShakeController shakeController;
-    private Image currImage;
+    [HideInInspector] public Image currImage;
 
     void Awake()
     {
@@ -130,6 +130,12 @@ public class UniversalCoinImage : MonoBehaviour
         GetComponent<RectTransform>().sizeDelta = size;
     }
 
+    public void LerpScale(Vector2 targetScale, float totalTime)
+    {
+        StopAllCoroutines();
+        currImage.GetComponent<LerpableObject>().LerpScale(targetScale, totalTime);
+    }
+
     public void LerpSize(Vector2 targetSize, float totalTime)
     {
         StopAllCoroutines();
@@ -164,7 +170,10 @@ public class UniversalCoinImage : MonoBehaviour
 
     public void ToggleGlowOutline(bool opt)
     {
-        ImageGlowController.instance.SetImageGlow(currImage, opt);
+        if (opt)
+            ImageGlowController.instance.SetImageGlow(currImage, true, GlowValue.glow_1_00);
+        else
+            ImageGlowController.instance.SetImageGlow(currImage, false);
     }
 
     /* 

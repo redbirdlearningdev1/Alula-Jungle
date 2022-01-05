@@ -29,10 +29,14 @@ public class RummageChest : MonoBehaviour
 
     public void stretchOut()
     {
+        // play stretch sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.ScrollRoll, 0.5f);
         StartCoroutine(stretchRoutine(scaleNormal));
     }
     public void stretchIn()
     {
+        // play stretch sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.ScrollRoll, 0.5f);
         StartCoroutine(stretchRoutine(scaleSmall));
     }
 

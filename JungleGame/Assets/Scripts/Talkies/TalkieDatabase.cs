@@ -46,7 +46,6 @@ public class TalkieDatabase : MonoBehaviour
     public TalkieObject lester_intro_2; // script: StickerBoardController.cs
     public TalkieObject lester_intro_3; // script: StickerBoardController.cs
     public TalkieObject lester_intro_4; // script: StickerBoardController.cs
-    public TalkieObject lester_intro_5; // script: StickerBoardController.cs
 
     [Header("Village Rebuilt")]
     public TalkieObject villageRebuilt_1; // script: ScrollMapManager.cs
@@ -89,11 +88,38 @@ public class TalkieDatabase : MonoBehaviour
     public TalkieObject orcVillageIntro_1; // script: ScrollMapManager.cs
     public TalkieObject orcVillageIntro_2; // script: ScrollMapManager.cs
     public TalkieObject orcVillageIntro_3; // script: MapCharacter.cs
-    public TalkieObject orcVillageRebuilt_1;
-    public TalkieObject orcVillageRebuilt_2;
-    public TalkieObject orcVillageChallengeDefeated_1;
-    public TalkieObject orcVillageChallengeDefeated_2;
+    public TalkieObject orcVillageRebuilt_1; // script: ScrollMapManager.cs
+    public TalkieObject orcVillageRebuilt_2; // script: ScrollMapManager.cs
+    public TalkieObject orcVillageChallengeDefeated_1; // script: ScrollMapManager.cs
+    public TalkieObject orcVillageChallengeDefeated_2; // script: ScrollMapManager.cs
 
+    [Header("Spooky Forest")]
+    public TalkieObject spiderIntro_1; // script: MapCharacter.cs
+    public TalkieObject spiderIntro_2; // script: MapCharacter.cs
+    public TalkieObject spiderIntro_3; // script: MapCharacter.cs
+    public TalkieObject spiderIntro_4; // script: MapCharacter.cs
+    public TalkieObject spiderIntro_5; // script: MapCharacter.cs
+    public TalkieObject spiderIntro_6; // script: MapCharacter.cs
+    public TalkieObject spookyForest_1; // script: ScrollMapManager.cs
+    public TalkieObject spookyForest_2; // script: ScrollMapManager.cs
+    public TalkieObject spookyForest_3; // script: ScrollMapManager.cs
+    public TalkieObject spookyForestChallengeDefeated_1; // script: ScrollMapManager.cs
+    public TalkieObject spookyForestChallengeDefeated_2; // script: ScrollMapManager.cs
+    public TalkieObject spookyForestChallengeDefeated_3; // script: ScrollMapManager.cs
+
+    [Header("Orc Camp")]
+    public TalkieObject orcCampIntro_1; // script: MapCharacter.cs
+    public TalkieObject orcCampRebuilt_1; // script: ScrollMapManager.cs
+    public TalkieObject orcCampRebuilt_2; // script: ScrollMapManager.cs
+    public TalkieObject orcCampChallengeDefeated_1; // script: ScrollMapManager.cs
+    public TalkieObject orcCampChallengeDefeated_2; // script: ScrollMapManager.cs
+    public TalkieObject orcCampChallengeDefeated_3; // script: ScrollMapManager.cs
+    
+
+
+
+    [Header("Royal Rumble")]
+    public TalkieObject defaultRRTalkie; // MiniganeWheelController.cs
 
     [Header("Quips")]
     public TalkieObject darwinQuips;    // script: MapCharacter.cs
@@ -108,6 +134,36 @@ public class TalkieDatabase : MonoBehaviour
     public List<TalkieDatabaseEntry> brutusSprites;
     public List<TalkieDatabaseEntry> lesterSprites;
     public List<TalkieDatabaseEntry> cloggSprites;
+    public List<TalkieDatabaseEntry> bubblesSprites;
+    public List<TalkieDatabaseEntry> ollieSprites;
+    public List<TalkieDatabaseEntry> spindleSprites;
+    public List<TalkieDatabaseEntry> sylvieSprites;
+
+
+
+
+    [Header("Talkie Reaction Duplicates")]
+    public List<AudioClip> marcusLaughList;
+    public List<AudioClip> brutusLaughList;
+    public List<AudioClip> redWallyGaspList;
+    public List<AudioClip> redWallyWhatList;
+    public List<AudioClip> redWallyHuhList;
+    public List<AudioClip> redWallyOhList;
+    public List<AudioClip> redWallyDarwinList;
+
+    public List<AudioClip> juliusHahaList;
+    public List<AudioClip> juliusAhHahList;
+    public List<AudioClip> juliusHrmList;
+    public List<AudioClip> juliusUghList;
+    public List<AudioClip> juliusGrrList;
+
+    public List<AudioClip> redGaspList;
+    public List<AudioClip> redWoohooList;
+    public List<AudioClip> redHurrahList;
+    public List<AudioClip> redUhHuhList;
+
+
+
 
     private List<TalkieObject> globalTalkieList; // list of all talkies in this database
 
@@ -159,6 +215,33 @@ public class TalkieDatabase : MonoBehaviour
         // return null;
     }
 
+    public AudioClip GetTalkieReactionDuplicate(string str)
+    {
+        string lowercase_str = str.ToLower();
+        switch (lowercase_str)
+        {
+            default: return null;
+            case "marcus_laugh": return marcusLaughList[Random.Range(0, marcusLaughList.Count)];
+            case "brutus_laugh": return brutusLaughList[Random.Range(0, brutusLaughList.Count)];
+            case "redwally_gasp": return redWallyGaspList[Random.Range(0, redWallyGaspList.Count)];
+            case "redwally_what": return redWallyWhatList[Random.Range(0, redWallyWhatList.Count)];
+            case "redwally_huh": return redWallyHuhList[Random.Range(0, redWallyHuhList.Count)];
+            case "redwally_oh": return redWallyOhList[Random.Range(0, redWallyOhList.Count)];
+            case "redwally_darwin": return redWallyDarwinList[Random.Range(0, redWallyDarwinList.Count)];
+
+            case "julius_haha": return juliusHahaList[Random.Range(0, juliusHahaList.Count)];
+            case "julius_ahhhah": return juliusAhHahList[Random.Range(0, juliusAhHahList.Count)];
+            case "julius_hrm": return juliusHrmList[Random.Range(0, juliusHrmList.Count)];
+            case "julius_ugh": return juliusUghList[Random.Range(0, juliusUghList.Count)];
+            case "julius_grr": return juliusGrrList[Random.Range(0, juliusGrrList.Count)];
+
+            case "red_gasp": return redGaspList[Random.Range(0, redGaspList.Count)];
+            case "red_woohoo": return redWoohooList[Random.Range(0, redWoohooList.Count)];
+            case "red_hurrah": return redHurrahList[Random.Range(0, redHurrahList.Count)];
+            case "red_uhhuh": return redUhHuhList[Random.Range(0, redUhHuhList.Count)];
+        }
+    }
+
     public Sprite GetTalkieSprite(TalkieCharacter character, int emotionNum, TalkieMouth mouth, TalkieEyes eyes)
     {
         switch (character)
@@ -188,27 +271,36 @@ public class TalkieDatabase : MonoBehaviour
 #if UNITY_EDITOR
     public void UpdateCreateObject(TalkieObject talkie)
     {
-        string[] result = AssetDatabase.FindAssets(talkie.talkieName);
+        string[] results = AssetDatabase.FindAssets(talkie.talkieName);
         TalkieObject yourObject = null;
+        string result = "";
 
-        if (result.Length > 1)
+        // filter results to be exact string filename
+        foreach (var res in results)
         {
-            GameManager.instance.SendError(this, "multiple instances of talkie object -> " + talkie.talkieName);
-            return;
+            string path = AssetDatabase.GUIDToAssetPath(res);
+            var split = path.Split('/');
+            var filename = split[split.Length - 1];
+
+            if (filename == talkie.talkieName + ".asset")
+            {
+                result = path;
+                Debug.Log("result: " + result);
+            }
         }
 
-        // create new challenge word
-        if(result.Length == 0)
+        // create new word pair object
+        if(result == "")
         {
             GameManager.instance.SendLog(this, "creating new talkie object -> " + talkie.talkieName);
             yourObject = ScriptableObject.CreateInstance<TalkieObject>();
             AssetDatabase.CreateAsset(yourObject, talkie_object_folder + talkie.talkieName + ".asset");
         }
-        // get challenge word object
+        // get word pair object
         else
         {
             GameManager.instance.SendLog(this, "found talkie object -> " + talkie.talkieName);
-            string path = AssetDatabase.GUIDToAssetPath(result[0]);
+            string path = AssetDatabase.GUIDToAssetPath(results[0]);
             yourObject = (TalkieObject)AssetDatabase.LoadAssetAtPath(path, typeof(TalkieObject));
         }
 

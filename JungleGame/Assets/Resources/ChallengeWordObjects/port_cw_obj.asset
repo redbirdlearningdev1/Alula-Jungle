@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: port_cw_obj
   m_EditorClassIdentifier: 
   word: port
-  audio: {fileID: 0}
-  sprite: {fileID: 0}
+  audio: {fileID: 8300000, guid: 7ea41d00ba2c074458de7f46adfac48d, type: 3}
+  sprite: {fileID: 21300000, guid: 4ae2a99da5791fc41a2f3ef80a854dad, type: 3}
   elkoninList: 220000000c00000027000000000000000000000000000000
   elkoninCount: 3
   set: 11
-  imageText: "\r"

@@ -1960,6 +1960,7 @@ MonoBehaviour:
   eattenPos: {fileID: 2063310491}
   origin: {fileID: 1098618990}
   moveSpeed: 1
+  image: {fileID: 0}
 --- !u!114 &1504216282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2055,8 +2056,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dedd98ea5aba70409fa73b327ecfe73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playingInEditor: 0
-  playTutorial: 0
   spider: {fileID: 11587614}
   ball: {fileID: 1930867529}
   bug: {fileID: 1504216281}
@@ -2080,12 +2079,14 @@ MonoBehaviour:
   - {fileID: 1598731379}
   - {fileID: 1290366972}
   selectedCoin: {fileID: 0}
+  playTutorial: 0
   tutorialLists:
   - list: 01000000000000000000000000000000
   - list: 00000000020000000000000000000000
   - list: 00000000000000000300000000000000
   - list: 00000000000000000000000004000000
   correctIndexes: 00000000010000000200000003000000
+  tutorialEvent: 0
 --- !u!4 &1505519755
 Transform:
   m_ObjectHideFlags: 0
@@ -2525,7 +2526,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 47.250847
+      value: 47.45984
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

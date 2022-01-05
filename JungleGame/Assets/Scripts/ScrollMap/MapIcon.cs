@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public enum AnimatedIcon 
 {
-    none, fire, shrine, lamp
+    none, fire, shrine, lamp, spider
 }
 
 public enum StarLocation
@@ -14,6 +14,7 @@ public enum StarLocation
     up, down, none
 }
 
+[System.Serializable]
 public enum MapIconIdentfier
 {
     None,
@@ -48,6 +49,26 @@ public enum MapIconIdentfier
     OV_challenge_1,
     OV_challenge_2,
     OV_challenge_3,
+
+    // spider webs
+    SF_lamp,
+    SF_web,
+    SF_shrine,
+    SF_spider,
+
+    SF_challenge_1,
+    SF_challenge_2,
+    SF_challenge_3,
+
+    // orc camp
+    OC_axe,
+    OC_bigTent,
+    OC_smallTent,
+    OC_fire,
+
+    OC_challenge_1,
+    OC_challenge_2,
+    OC_challenge_3,
 }
 
 public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
@@ -78,6 +99,8 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     public StarLocation starLocation;
     [SerializeField] private Star[] upStars;
     [SerializeField] private Star[] downStars;
+    public LerpableObject topRRBanner;
+    public LerpableObject botRRBanner;
     [SerializeField] Transform upStarsTransform;
     [SerializeField] Transform downStarsTransform;
     private Star[] currentStars;
@@ -144,6 +167,24 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     #   STAR ANIMATION METHODS
     ################################################
     */
+
+    public void SetRoyalRumberBanner(bool opt)
+    {
+        if (starLocation == StarLocation.up)
+        {
+            if (opt)
+                topRRBanner.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
+            else
+                topRRBanner.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.1f, 0.1f);
+        }
+        else
+        {
+            if (opt)
+                botRRBanner.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
+            else
+                botRRBanner.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.1f, 0.1f);
+        }
+    }
 
     public void RevealStars()
     {
@@ -261,6 +302,15 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     // set stars to empty or filled based on SIS data
     public void SetStars(int num)
     {
+        //print ("map icon: " + identfier + " setting stars to: " + num);
+
+        // set all stars to be empty
+        for (int i = 0; i < 3; i++)
+        {
+            currentStars[i].SetStar(false);
+        }
+
+        // set correct nuber of stars
         for (int i = 0; i < num; i++)
         {
             currentStars[i].SetStar(true);
@@ -294,6 +344,10 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             case AnimatedIcon.lamp:
                 if (!opt) animator.Play("lampBroken");
                 else animator.Play("lampFixed");
+                break;
+            case AnimatedIcon.spider:
+                if (!opt) animator.Play("spider_broken");
+                else animator.Play("spider_fixed");
                 break;
         }
         // play animation
@@ -355,6 +409,34 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 case MapIconIdentfier.OV_fire:
                     StudentInfoSystem.GetCurrentProfile().mapData.OV_fire.isFixed = opt;
                     break;
+
+                // spooky forest
+                case MapIconIdentfier.SF_lamp:
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_lamp.isFixed = opt;
+                    break;
+                case MapIconIdentfier.SF_shrine:
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_shrine.isFixed = opt;
+                    break;
+                case MapIconIdentfier.SF_spider:
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_spider.isFixed = opt;
+                    break;
+                case MapIconIdentfier.SF_web:
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_web.isFixed = opt;
+                    break;
+
+                // orc camp
+                case MapIconIdentfier.OC_axe:
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_axe.isFixed = opt;
+                    break;
+                case MapIconIdentfier.OC_bigTent:
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_bigTent.isFixed = opt;
+                    break;
+                case MapIconIdentfier.OC_smallTent:
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_smallTent.isFixed = opt;
+                    break;
+                case MapIconIdentfier.OC_fire:
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_fire.isFixed = opt;
+                    break;
             }
             StudentInfoSystem.SaveStudentPlayerData();
         }
@@ -409,9 +491,6 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             isPressed = false;
             transform.localScale = new Vector3(1f, 1f, 1f);
 
-            // set prev map position
-            ScrollMapManager.instance.SetPrevMapPos();
-
             // check for story beat stuff
             StartCoroutine(CheckForStoryBeatRoutine());
         }
@@ -435,8 +514,30 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             yield break;
         }
 
-        MinigameWheelController.instance.RevealWheel(identfier);
-        yield break;
+        // check for royal rumble
+        if (StudentInfoSystem.GetCurrentProfile().royalRumbleActive && StudentInfoSystem.GetCurrentProfile().royalRumbleID == this.identfier)
+        {
+            // play default talkie for now
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.defaultRRTalkie);
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // do not go to game if talkie manager says not to
+            if (TalkieManager.instance.doNotContinueToGame)
+            {
+                TalkieManager.instance.doNotContinueToGame = false;
+                yield break;
+            }
+
+            GameManager.instance.playingRoyalRumbleGame = true;
+            GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(StudentInfoSystem.GetCurrentProfile().royalRumbleGame), true, 0.5f, true);
+            yield break;
+        }
+        else
+        {
+            MinigameWheelController.instance.RevealWheel(identfier);
+            yield break;
+        }
     }
 
     public int GetNumStars()
@@ -475,6 +576,26 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 return StudentInfoSystem.GetCurrentProfile().mapData.OV_statue.stars;
             case MapIconIdentfier.OV_fire:
                 return StudentInfoSystem.GetCurrentProfile().mapData.OV_fire.stars;
+
+            // spooky village
+            case MapIconIdentfier.SF_lamp:
+                return StudentInfoSystem.GetCurrentProfile().mapData.SF_lamp.stars;
+            case MapIconIdentfier.SF_shrine:
+                return StudentInfoSystem.GetCurrentProfile().mapData.SF_shrine.stars;
+            case MapIconIdentfier.SF_spider:
+                return StudentInfoSystem.GetCurrentProfile().mapData.SF_spider.stars;
+            case MapIconIdentfier.SF_web:
+                return StudentInfoSystem.GetCurrentProfile().mapData.SF_web.stars;
+
+            // orc camp
+            case MapIconIdentfier.OC_axe:
+                return StudentInfoSystem.GetCurrentProfile().mapData.OC_axe.stars;
+            case MapIconIdentfier.OC_bigTent:
+                return StudentInfoSystem.GetCurrentProfile().mapData.OC_bigTent.stars;
+            case MapIconIdentfier.OC_smallTent:
+                return StudentInfoSystem.GetCurrentProfile().mapData.OC_smallTent.stars;
+            case MapIconIdentfier.OC_fire:
+                return StudentInfoSystem.GetCurrentProfile().mapData.OC_fire.stars;
         }   
     }
 }

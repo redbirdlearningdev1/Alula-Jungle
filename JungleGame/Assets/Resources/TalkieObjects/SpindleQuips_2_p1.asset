@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -31,11 +30,11 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    rightEmotionNum: 12
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 1ec04897106ce7949be12e972a9ba590, type: 3}
     audioClipName: B_1_2b_Spindle_1_T1
     audioString: 'H-hey there friend! '
   - endTalkieAfterThisSegment: 1
@@ -47,11 +46,11 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 3815dd3161374f94dbdeedcefd7daa93, type: 3}
     audioClipName: B_1_2b_Spindle_1_T2
     audioString: Do you want to play some more?
   - endTalkieAfterThisSegment: 0
@@ -63,11 +62,11 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    rightEmotionNum: 13
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 36b689c43a0877445b218650aaaeb289, type: 3}
     audioClipName: B_1_2b_Spindle_2_T1
     audioString: 'OH! AH! What!? '
   - endTalkieAfterThisSegment: 0
@@ -79,11 +78,11 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    rightEmotionNum: 14
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: eb3b64109a4d3e4428f29d41d251f1a4, type: 3}
     audioClipName: B_1_2b_Spindle_2_T2
     audioString: '*eats bug*'
   - endTalkieAfterThisSegment: 1
@@ -95,11 +94,11 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 3
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 56acc9ca8568a624494f7985771da9a3, type: 3}
     audioClipName: B_1_2b_Spindle_2_T3
     audioString: "\u2026Sorry\u2026 you startled me for a second."
   - endTalkieAfterThisSegment: 0
@@ -111,13 +110,13 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 3
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 56f6f1dcee8495842abb6811cc374525, type: 3}
     audioClipName: B_1_2b_Spindle_3_T1
-    audioString: N-nice to see you again friend! Do you want to practice some more?
+    audioString: 'N-nice to see you again friend! '
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0
@@ -127,11 +126,11 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: faad2381c3233eb489a58e9db3d2a232, type: 3}
     audioClipName: B_1_2b_Spindle_3_T2
     audioString: Do you want to practice some more?
   - endTalkieAfterThisSegment: 1
@@ -143,13 +142,13 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    rightEmotionNum: 12
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: e0376364cb017c649830f85454a09dad, type: 3}
     audioClipName: B_1_2b_Spindle_4_T1
-    audioString: "Let\u2019s p-play some more~ yes?"
+    audioString: "Let\u2019s p-play some more, yes?"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -159,11 +158,11 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    rightEmotionNum: 13
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 2b4ae4943243b4a4196b3b278632ebd3, type: 3}
     audioClipName: B_1_2b_Spindle_5_T1
     audioString: 'OH! '
   - endTalkieAfterThisSegment: 0
@@ -175,11 +174,11 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    rightEmotionNum: 12
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 8abef484bebebd94b8666b0729622fdf, type: 3}
     audioClipName: B_1_2b_Spindle_5_T2
     audioString: H-hello friend!
   - endTalkieAfterThisSegment: 1
@@ -191,10 +190,10 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 9
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 3
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 3643f63c7c369924e9b5573da8ed4aae, type: 3}
     audioClipName: B_1_2b_Spindle_5_T3
     audioString: Do you want to play?

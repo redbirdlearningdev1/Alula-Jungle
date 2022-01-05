@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -34,8 +33,8 @@ MonoBehaviour:
     rightEmotionNum: 10
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 42b61730bc2888945938073b29644e4c, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: edc9463ecf65e904d953cd9a2d0ee9be, type: 3}
     audioClipName: Cha_0_0_Julius_1_T1
     audioString: You want to challenge me again?
   - endTalkieAfterThisSegment: 0
@@ -50,10 +49,10 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: cc27ea3b65545234c8a76dcc35f8c0f7, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: c570e577671ef244096038f765b4bb7d, type: 3}
     audioClipName: Cha_0_0_Julius_1_T2
-    audioString: You have guts
+    audioString: You've got guts
   - endTalkieAfterThisSegment: 0
     requireYN: 1
     onYesGoto: 3
@@ -66,8 +65,8 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 3
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 2966b377c8ce5474cb01653935340edc, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 88e25fa0350b18b42bf2fd6afaebefa3, type: 3}
     audioClipName: Cha_0_0_Julius_1_T3
     audioString: show me what you got!
   - endTalkieAfterThisSegment: 1
@@ -82,10 +81,10 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 530d59319c9990a40b23741904bc7c32, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 1ebd329fb5f924e4782643c0484fa592, type: 3}
     audioClipName: Cha_0_1b_Julius_2_T1
-    audioString: Alright~ let's do this.
+    audioString: Alright, let's do this.
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0
@@ -98,7 +97,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 1
-    audioClip: {fileID: 0}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 464c454b8d26a704c996ee973bc9a526, type: 3}
     audioClipName: Cha_0_1b_Julius_3_T1
     audioString: "I\u2019ll be waiting."

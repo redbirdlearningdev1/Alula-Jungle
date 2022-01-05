@@ -6,7 +6,7 @@ public class FroggerGameManager : MonoBehaviour
 {
     public static FroggerGameManager instance;
 
-    private MapIconIdentfier mapID;
+    private MapIconIdentfier mapID = MapIconIdentfier.None;
 
     [SerializeField] private GorillaController gorilla;
     [SerializeField] private Bag bag;
@@ -38,7 +38,6 @@ public class FroggerGameManager : MonoBehaviour
     private LogCoin selectedCoin;
 
     [Header("Tutorial Stuff")]
-    public bool playInEditor;
     public bool playTutorial;
     public int[] correctTutorialCoins;
     public List<ActionWordEnum> firstPair;
@@ -79,7 +78,8 @@ public class FroggerGameManager : MonoBehaviour
 
     void Start()
     {
-        if (!playInEditor)
+        // only turn off tutorial if false
+        if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().froggerTutorial;
 
         PregameSetup();
@@ -106,13 +106,16 @@ public class FroggerGameManager : MonoBehaviour
             StartCoroutine(DancingManRoutine());
         }
 
-        // dev stuff for fx audio testing
+        // dev stuff for skipping minigame
         if (GameManager.instance.devModeActivated)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 StopAllCoroutines();
-                StartCoroutine(SkipToWinRoutine());
+                // play win tune
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // calculate and show stars
+                StarAwardController.instance.AwardStarsAndExit(3);
             }
         }
     }
@@ -189,6 +192,17 @@ public class FroggerGameManager : MonoBehaviour
         StartCoroutine(HideCoins(currRow));
         yield return new WaitForSeconds(1f);
 
+        // play reminder popup
+        List<AudioClip> clips = new List<AudioClip>();
+        clips.Add(GameIntroDatabase.instance.froggerReminder1);
+        clips.Add(GameIntroDatabase.instance.froggerReminder2);
+        clips.Add( GameIntroDatabase.instance.froggerEncouragementClips[1]);
+        
+        AudioClip clip = clips[Random.Range(0, clips.Count)];
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
+        // sink logs
         rows[currRow].SinkAllLogs();
         yield return new WaitForSeconds(1f);
         
@@ -217,13 +231,14 @@ public class FroggerGameManager : MonoBehaviour
         // increase split song
         AudioManager.instance.IncreaseSplitSong();
 
-        // TODO: animate coin into bag
         rows[currRow].ResetCoinPos(selectedCoin);
         taxi.CelebrateAnimation();
         bag.UpgradeBag();
 
         // remove selected coin
-        selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.5f);
+        selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.25f);
+        selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
+        selectedCoin.GetComponent<LerpableObject>().LerpPosToTransform(Bag.instance.transform, 0.25f, false);
         yield return new WaitForSeconds(1f);
         selectedCoin.ReturnToLog();
 
@@ -241,6 +256,23 @@ public class FroggerGameManager : MonoBehaviour
         gorilla.JumpForward(AudioDatabase.instance.WoodThump);
         yield return new WaitForSeconds(1.25f);
         gorilla.CelebrateAnimation();
+
+        // play encouragement popup
+        AudioClip clip = null;
+        switch (currRow)
+        {
+            case 0:
+                clip = GameIntroDatabase.instance.froggerEncouragementClips[0];
+                break;
+            case 1:
+                clip = GameIntroDatabase.instance.froggerEncouragementClips[2];
+                break;
+            case 2:
+                clip = GameIntroDatabase.instance.froggerEncouragementClips[3];
+                break;
+        }
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clip);
+        yield return new WaitForSeconds(clip.length + 1f);
 
         currRow++;
         rows[currRow].RiseAllLogs();
@@ -260,7 +292,9 @@ public class FroggerGameManager : MonoBehaviour
         bag.UpgradeBag();
 
         // remove selected coin
-        selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.5f);
+        selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.25f);
+        selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
+        selectedCoin.GetComponent<LerpableObject>().LerpPosToTransform(Bag.instance.transform, 0.25f, false);
         yield return new WaitForSeconds(1f);
         selectedCoin.ReturnToLog();
         selectedCoin = null;
@@ -277,45 +311,6 @@ public class FroggerGameManager : MonoBehaviour
 
         gorilla.JumpForward(AudioDatabase.instance.GrassThump);
         yield return new WaitForSeconds(1.25f);
-        gorilla.CelebrateAnimation(10f);
-        taxi.CelebrateAnimation(10f);
-
-        // play win tune
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-
-        yield return new WaitForSeconds(2f);
-
-        // hide dancing man
-        StartCoroutine(HideDancingManRoutine());
-
-        // calculate and show stars
-        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
-    }
-
-    // This is a special fucntion that skips to the end of the game to win (DEV ONLY)
-    private IEnumerator SkipToWinRoutine()
-    {
-        while (currRow < 4)
-        {
-            StartCoroutine(HideCoins(currRow));
-            yield return new WaitForSeconds(0.5f);
-
-            rows[currRow].SinkAllExcept(1);
-            rows[currRow].MoveToCenterLog(1);
-            yield return new WaitForSeconds(0.5f);
-
-            gorilla.JumpForward(AudioDatabase.instance.WoodThump);
-            
-            currRow++;
-            if (currRow < 4)
-                rows[currRow].RiseAllLogs();
-            yield return new WaitForSeconds(0.5f);
-        }
-        yield return new WaitForSeconds(0.5f);
-
-        gorilla.JumpForward(AudioDatabase.instance.GrassThump);
-
-        yield return new WaitForSeconds(1.2f);
         gorilla.CelebrateAnimation(10f);
         taxi.CelebrateAnimation(10f);
 
@@ -374,15 +369,14 @@ public class FroggerGameManager : MonoBehaviour
         // show menu button
         SettingsManager.instance.ToggleMenuButtonActive(true);
 
-        // play tutorial audio
-        AudioClip clip = AudioDatabase.instance.FroggerTutorial_1;
-        AudioManager.instance.PlayTalk(clip);
-        yield return new WaitForSeconds(clip.length + 0.5f);
+        yield return new WaitForSeconds(1f);
 
         // play tutorial audio
-        clip = AudioDatabase.instance.FroggerTutorial_2;
-        StartCoroutine(RepeatTutorialAudioRoutine(clip));
-        yield return new WaitForSeconds(clip.length + 0.5f);
+        List<AudioClip> clips = new List<AudioClip>();
+        clips.Add(GameIntroDatabase.instance.froggerIntro1);
+        clips.Add(GameIntroDatabase.instance.froggerIntro2);
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clips);
+        yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
 
         // reveal dancing man
         StartCoroutine(ShowDancingManRoutine());
@@ -414,15 +408,15 @@ public class FroggerGameManager : MonoBehaviour
 
     private IEnumerator ContinueTutorialRoutine()
     {
-        // TODO: animate coin into bag
         rows[currRow].ResetCoinPos(selectedCoin);
         taxi.CelebrateAnimation();
         bag.UpgradeBag();
 
         // remove selected coin
-        selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.5f);
+        selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.25f);
+        selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
+        selectedCoin.GetComponent<LerpableObject>().LerpPosToTransform(Bag.instance.transform, 0.25f, false);
         yield return new WaitForSeconds(1f);
-        
         selectedCoin.ReturnToLog();
         selectedCoin = null;
 
@@ -436,6 +430,37 @@ public class FroggerGameManager : MonoBehaviour
         gorilla.JumpForward(AudioDatabase.instance.WoodThump);
         yield return new WaitForSeconds(1.25f);
         gorilla.CelebrateAnimation();
+
+        // play tutorial audio
+        if (currRow == 0)
+        {
+            // play tutorial audio
+            List<AudioClip> clips = new List<AudioClip>();
+            clips.Add(GameIntroDatabase.instance.froggerIntro3);
+            clips.Add(GameIntroDatabase.instance.froggerIntro4);
+            clips.Add(GameIntroDatabase.instance.froggerIntro5);
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clips);
+            yield return new WaitForSeconds(clips[0].length + clips[1].length + clips[2].length + 1f);
+        }
+        else    
+        {
+            // play encouragement popup
+            AudioClip clip = null;
+            switch (currRow)
+            {
+                case 0:
+                    clip = GameIntroDatabase.instance.froggerEncouragementClips[0];
+                    break;
+                case 1:
+                    clip = GameIntroDatabase.instance.froggerEncouragementClips[2];
+                    break;
+                case 2:
+                    clip = GameIntroDatabase.instance.froggerEncouragementClips[3];
+                    break;
+            }
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clip);
+            yield return new WaitForSeconds(clip.length + 1f);
+        }
         
         currRow++;
         rows[currRow].RiseAllLogs();
@@ -473,7 +498,9 @@ public class FroggerGameManager : MonoBehaviour
         bag.UpgradeBag();
 
         // remove selected coin
-        selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.5f);
+        selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.25f);
+        selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
+        selectedCoin.GetComponent<LerpableObject>().LerpPosToTransform(Bag.instance.transform, 0.25f, false);
         yield return new WaitForSeconds(1f);
         selectedCoin.ReturnToLog();
         selectedCoin = null;
@@ -532,13 +559,15 @@ public class FroggerGameManager : MonoBehaviour
 
     private IEnumerator PlayTutorialAudio()
     {
-        // play audio iff currRow == 1
-        if (currRow == 1)
-        {
-            AudioClip clip = AudioDatabase.instance.FroggerTutorial_3;
-            AudioManager.instance.PlayTalk(clip);
-            yield return new WaitForSeconds(clip.length + 0.5f);
-        }
+        // // play audio iff currRow == 1
+        // if (currRow == 1)
+        // {
+        //     AudioClip clip = AudioDatabase.instance.FroggerTutorial_3;
+        //     AudioManager.instance.PlayTalk(clip);
+        //     yield return new WaitForSeconds(clip.length + 0.5f);
+        // }
+
+        yield return null;
 
         // turn on raycaster
         CoinRaycaster.instance.isOn = true;
@@ -808,6 +837,10 @@ public class FroggerGameManager : MonoBehaviour
     // used to control dancing man's animations
     private IEnumerator DancingManRoutine()
     {
+        // return if coin is null
+        if (selectedCoin == null)
+            yield break;
+        // dont play if already playing animation
         if (playingDancingManAnimation)
             yield break;
         playingDancingManAnimation = true;

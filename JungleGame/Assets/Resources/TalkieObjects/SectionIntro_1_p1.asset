@@ -20,25 +20,7 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 0
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
-    rightCharacter: 0
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
-    audioClipName: //Darwin STAYS onscreen from the last part and now moves to the
-      middle to talk to the player.
-    audioString: 
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -51,8 +33,8 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 2d8f277efbc83f54a8f697ed5e3b7cc0, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 31fa948bad2a132468288e1122b47145, type: 3}
     audioClipName: P_1_1_Darwin_54_T1
     audioString: Oh!
   - endTalkieAfterThisSegment: 0
@@ -67,10 +49,26 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 73aeaf95d3d2278468f7e48d70b2e076, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: c9856b6ac8c2a8742bb7d05116338ee8, type: 3}
     audioClipName: P_1_1_Darwin_54_T2
-    audioString: Before you run off explorer...
+    audioString: Before you run off Explorer...
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 8a3c1b4901acd6d469a0fa673f693ad6, type: 3}
+    audioClipName: P_1_1_Darwin_54_T3
+    audioString: uhh...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -83,9 +81,9 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 89a49a340ad192b438dcf3f3f3b2e9fc, type: 3}
-    audioClipName: P_1_1_Darwin_54_T3
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 1d3747f311444244f8de2a68340bf3e8, type: 3}
+    audioClipName: P_1_1_Darwin_54_T4
     audioString: Let me help you navigate the area.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -99,7 +97,7 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 57414fd256ea5594397cc7d3ed54c189, type: 3}
-    audioClipName: P_1_1_Darwin_54_T4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: a5f74d95b531be14982e7464c3266b0b, type: 3}
+    audioClipName: P_1_1_Darwin_54_T5
     audioString: tap on me when you're ready!

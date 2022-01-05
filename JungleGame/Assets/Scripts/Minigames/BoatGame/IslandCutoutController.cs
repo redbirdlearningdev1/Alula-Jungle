@@ -8,14 +8,14 @@ public class IslandCutoutController : MonoBehaviour
 {
     public static IslandCutoutController instance;
 
-    private bool holdingIsland;
+    public bool holdingIsland;
     public bool isOn = true;
 
     public Transform originalPos;
     public Transform oceanPos;
     public Transform mainIslandParent;
     public float moveSpeed;
-    public SpriteRenderer outline;
+    public Image outline;
     public Image islandCutout;
     public Image mainIsland;
     public WiggleController outlineWiggleController;

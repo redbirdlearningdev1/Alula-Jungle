@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
@@ -36,6 +37,10 @@ public class StickerInventoryButton : MonoBehaviour, IPointerUpHandler, IPointer
         {
             isPressed = true;
             transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
+
+            // stop wiggle inventory button
+            GetComponent<WiggleController>().StopWiggle();
+            ImageGlowController.instance.SetImageGlow(GetComponent<Image>(), false, GlowValue.none);
         }
     }
 

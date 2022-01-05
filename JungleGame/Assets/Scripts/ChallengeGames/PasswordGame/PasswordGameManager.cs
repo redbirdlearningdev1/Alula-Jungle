@@ -14,9 +14,6 @@ public class PasswordGameManager : MonoBehaviour
 
     private bool gameSetup = false;
 
-
-
-
     [Header("Animators")]
     [SerializeField] private Animator tiger;
     [SerializeField] private Animator monkey1;
@@ -26,7 +23,6 @@ public class PasswordGameManager : MonoBehaviour
     [SerializeField] private Animator win1;
     [SerializeField] private Animator win2;
     [SerializeField] private Animator win3;
-
 
     [Header("Values")]
     [SerializeField] private Vector2 normalCoinSize;

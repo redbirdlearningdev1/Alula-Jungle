@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: cure_cw_obj
   m_EditorClassIdentifier: 
   word: cure
-  audio: {fileID: 0}
-  sprite: {fileID: 0}
+  audio: {fileID: 8300000, guid: 0dacc035770244c44a69cff9718060bf, type: 3}
+  sprite: {fileID: 21300000, guid: 3aeb684bbcb6863458dc4b9db5349bc7, type: 3}
   elkoninList: 170000001100000000000000000000000000000000000000
   elkoninCount: 2
   set: 16
-  imageText: "\r"

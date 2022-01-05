@@ -1,0 +1,487 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3d7995dc4e71046812b5c624cc38cd, type: 3}
+  m_Name: 2_StoryGame_TheBeginning
+  m_EditorClassIdentifier: 
+  storyName: 2_StoryGame_TheBeginning
+  background: 1
+  segments:
+  - text: 'The '
+    audio: {fileID: 8300000, guid: 99b7b938cb2e6ab4eb81eab4f87139da, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: explorer
+    audio: {fileID: 8300000, guid: 5c8137cc37d73d94da4dafe00c4d2a54, type: 3}
+    moveWord: 1
+    actionWord: 8
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 'begins a jungle trip by saying '
+    audio: {fileID: 8300000, guid: caaf7678f20651548958df0eca2ff041, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: hello
+    audio: {fileID: 8300000, guid: 40a2d6a921cdcc44ca0d2064e07ca874, type: 3}
+    moveWord: 1
+    actionWord: 6
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: to the jungle
+    audio: {fileID: 8300000, guid: 6bfa3ee3bdf33ee42b505727cb34112d, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: .
+    advanceBG: 0
+  - text: 'The '
+    audio: {fileID: 8300000, guid: 5129c412fc7c4124c8439c0d197cb859, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: hello
+    audio: {fileID: 8300000, guid: d40149719b0c6fb49a4a5ce8b67ce0be, type: 3}
+    moveWord: 1
+    actionWord: 6
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 'is important~ because the '
+    audio: {fileID: 8300000, guid: b4a4a33f5123a5f48926192fe96277b6, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: explorer
+    audio: {fileID: 8300000, guid: 3723bf7cca3ebac4dba18899a03010d9, type: 3}
+    moveWord: 1
+    actionWord: 8
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: must have respect for the dangerous trip
+    audio: {fileID: 8300000, guid: 8857f04f6cf83964689490597b72a08f, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: .
+    advanceBG: 0
+  - text: Do you remember the three dangers we have previously discussed?
+    audio: {fileID: 8300000, guid: 0edcf41e907032541b60a53931d2501a, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: mudslides
+    audio: {fileID: 8300000, guid: 5ac5b134f34d441408eff3116dabb684, type: 3}
+    moveWord: 1
+    actionWord: 1
+    requireInput: 0
+    postText: ~
+    advanceBG: 0
+  - text: orcs
+    audio: {fileID: 8300000, guid: 0ff5e02fb4c672e4daa6eb562d0998c1, type: 3}
+    moveWord: 1
+    actionWord: 4
+    requireInput: 0
+    postText: ~
+    advanceBG: 0
+  - text: and
+    audio: {fileID: 8300000, guid: aa9606b83937444478f510c819381380, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: gorilla poop
+    audio: {fileID: 8300000, guid: 3a27128fc49e2a3468aa060c827611b2, type: 3}
+    moveWord: 1
+    actionWord: 3
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 'All of these could '
+    audio: {fileID: 8300000, guid: 7be69fee84d4f7b4a9f0ee9a0e469b09, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: scare
+    audio: {fileID: 8300000, guid: d765c6408d2fff54484c74a5fe31df89, type: 3}
+    moveWord: 1
+    actionWord: 9
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: a normal person~ but an
+    audio: {fileID: 8300000, guid: cec8a001e84a2ee42b23dedb028974c4, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: explorer
+    audio: {fileID: 8300000, guid: c8842d2efaf223641a6c762719d0956e, type: 3}
+    moveWord: 1
+    actionWord: 8
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: does not
+    audio: {fileID: 8300000, guid: 1cab560199498444e9d497d278183e4c, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: scare
+    audio: {fileID: 8300000, guid: 4e8c3e8a22f4c9845b6dd4efba639e11, type: 3}
+    moveWord: 1
+    actionWord: 9
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: easily
+    audio: {fileID: 8300000, guid: ddf7460685d612c4389f1fe11144daee, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: We begin our trip at the very edge of the jungle~ next to the web of a
+      big
+    audio: {fileID: 8300000, guid: e764c7275f6e0d2448c5b055f4e40d82, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 1
+  - text: spider
+    audio: {fileID: 8300000, guid: 0294bf0202a8e02459a64d3788ba12b2, type: 3}
+    moveWord: 1
+    actionWord: 7
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 'The '
+    audio: {fileID: 8300000, guid: 6db7b70264a37fa4999a1c38d6cb2ed8, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: spider
+    audio: {fileID: 8300000, guid: cbbe679f99e61da4b8cc903f8e77dfe2, type: 3}
+    moveWord: 1
+    actionWord: 7
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: would
+    audio: {fileID: 8300000, guid: b95f92c9962dd294397c2838244d77f1, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: scare
+    audio: {fileID: 8300000, guid: 9d5ca40539fa1b64ca6ed13f94bd2d93, type: 3}
+    moveWord: 1
+    actionWord: 9
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: a normal person~ like
+    audio: {fileID: 8300000, guid: 87cb9d162087bc84a98ef926b10c4614, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: that guy
+    audio: {fileID: 8300000, guid: 9cabf46a19f98074484012d55e004a24, type: 3}
+    moveWord: 1
+    actionWord: 10
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: but not an
+    audio: {fileID: 8300000, guid: 7b7316fe2fff9d84bb63166139b6cddd, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: explorer
+    audio: {fileID: 8300000, guid: c19006518271c184da53685943688869, type: 3}
+    moveWord: 1
+    actionWord: 8
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: In fact
+    audio: {fileID: 8300000, guid: 758cab3d97c39564ba34ec20fc656093, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: that guy
+    audio: {fileID: 8300000, guid: a30140632f4888549a7b80522ba617f8, type: 3}
+    moveWord: 1
+    actionWord: 10
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: would probably get
+    audio: {fileID: 8300000, guid: a087bdc7d1e0a8e4fadf97e6df3a6ab0, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: scared
+    audio: {fileID: 8300000, guid: 706c037bdd159aa4ca1bad73a0e11c69, type: 3}
+    moveWord: 1
+    actionWord: 9
+    requireInput: 0
+    postText: ~
+    advanceBG: 0
+  - text: run away and step in
+    audio: {fileID: 8300000, guid: cdcf90cc66b834944b3468e40519bcc7, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: gorilla poop
+    audio: {fileID: 8300000, guid: 519beb1885137274894d884f73faed12, type: 3}
+    moveWord: 1
+    actionWord: 3
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: What do you
+    audio: {fileID: 8300000, guid: 1e93119ae1269c34bb7580118d405da7, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: think?
+    audio: {fileID: 8300000, guid: a56985ea55bf39f4fb80a0062bd9a859, type: 3}
+    moveWord: 1
+    actionWord: 5
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: Listen
+    audio: {fileID: 8300000, guid: bdb21d1e64ba6694f9f01fefcd0008fc, type: 3}
+    moveWord: 1
+    actionWord: 2
+    requireInput: 0
+    postText: ~
+    advanceBG: 0
+  - text: do you hear
+    audio: {fileID: 8300000, guid: 6221fb8a23baba94dabec1bfe5489d08, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: that guy
+    audio: {fileID: 8300000, guid: e6e2148bfafefd346a90be359dabc358, type: 3}
+    moveWord: 1
+    actionWord: 10
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: scream?
+    audio: {fileID: 8300000, guid: 4acea2e0dbf47a14fa2e7292c7a00a15, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 'He just ran into the giant '
+    audio: {fileID: 8300000, guid: b55ff2847b69d4b4093be00ae6b1430b, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: spider
+    audio: {fileID: 8300000, guid: c238dc12cc0f10545bff43a961f152e0, type: 3}
+    moveWord: 1
+    actionWord: 7
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: He better
+    audio: {fileID: 8300000, guid: 8bc525ad262a7cb4895804b945e0ffb6, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: listen
+    audio: {fileID: 8300000, guid: 925335149ebf72d41b0408ee01fc1587, type: 3}
+    moveWord: 1
+    actionWord: 2
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: carefully or he might run into
+    audio: {fileID: 8300000, guid: c442bc4d69484a44dadba2c0af6f429f, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: orcs
+    audio: {fileID: 8300000, guid: 39d1d0e2aee138943b7bf99fd3771dab, type: 3}
+    moveWord: 1
+    actionWord: 4
+    requireInput: 0
+    postText: ~
+    advanceBG: 0
+  - text: or fall down a
+    audio: {fileID: 8300000, guid: b0bfac32b7968194ca16a720f9f1ba9b, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: mudslide
+    audio: {fileID: 8300000, guid: 64f301dae2047194aae281cc09bde923, type: 3}
+    moveWord: 1
+    actionWord: 1
+    requireInput: 0
+    postText: .
+    advanceBG: 1
+  - text: So~ the
+    audio: {fileID: 8300000, guid: 565fa1339f1dae044b900a786f91205c, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: explorer
+    audio: {fileID: 8300000, guid: a8e4d9e03ea976d40847bff3a37aec55, type: 3}
+    moveWord: 1
+    actionWord: 8
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 'says '
+    audio: {fileID: 8300000, guid: 26794dae5ba80cc48ab6f681b238ac4d, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: hello
+    audio: {fileID: 8300000, guid: c6d6876aea5715842b17cb8804ae589f, type: 3}
+    moveWord: 1
+    actionWord: 6
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: to the jungle to avoid the
+    audio: {fileID: 8300000, guid: 9b439b960c1b2d441a1b808d70a7b416, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: spider
+    audio: {fileID: 8300000, guid: 70ef4aa59fa4d4948b77eca3839db2b2, type: 3}
+    moveWord: 1
+    actionWord: 7
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: that
+    audio: {fileID: 8300000, guid: 1f36b53d80a56984991d726e778eb6cc, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: scared
+    audio: {fileID: 8300000, guid: 44cfa043e1b33e245a0e29e945c9015d, type: 3}
+    moveWord: 1
+    actionWord: 9
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: that guy
+    audio: {fileID: 8300000, guid: d86252ba3862a8146923bc044d16e3be, type: 3}
+    moveWord: 1
+    actionWord: 10
+    requireInput: 0
+    postText: .
+    advanceBG: 0
+  - text: 'One more time:'
+    audio: {fileID: 8300000, guid: 5edd8dcee0c496142ae2a3f8abf07792, type: 3}
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: hello
+    audio: {fileID: 8300000, guid: 4d7763508a2d3804090948243490ac22, type: 3}
+    moveWord: 1
+    actionWord: 6
+    requireInput: 1
+    postText: 
+    advanceBG: 0
+  - text: spider
+    audio: {fileID: 8300000, guid: f8e9bbd4304b29b4dbca5595599d04c5, type: 3}
+    moveWord: 1
+    actionWord: 7
+    requireInput: 1
+    postText: 
+    advanceBG: 0
+  - text: explorer
+    audio: {fileID: 8300000, guid: 40792462956dcb9468c1328fe19d7642, type: 3}
+    moveWord: 1
+    actionWord: 8
+    requireInput: 1
+    postText: 
+    advanceBG: 0
+  - text: scared
+    audio: {fileID: 8300000, guid: 4657ed20fb692014893afd1881be2c77, type: 3}
+    moveWord: 1
+    actionWord: 9
+    requireInput: 1
+    postText: 
+    advanceBG: 0
+  - text: thatguy
+    audio: {fileID: 8300000, guid: 5b3d9a1e43f4f434b902327c3164002b, type: 3}
+    moveWord: 1
+    actionWord: 10
+    requireInput: 1
+    postText: 
+    advanceBG: 0

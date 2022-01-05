@@ -271,6 +271,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyActionWord: 0
+  interactable: 1
+  glowingKey: 0
   animator: {fileID: 5927028568652847161}
   image: {fileID: 4455117024149822690}
   grabPos: {fileID: 2570738431755657852}
@@ -278,7 +280,7 @@ MonoBehaviour:
   ropePos: {fileID: 5927028569662598142}
   keyParent: {fileID: 5927028569662598142}
   moveSpeed: 5
-  dissipateTime: 1
+  dissipateTime: 0.2
 --- !u!222 &5927028568652847142
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -598,6 +600,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyActionWord: 0
+  interactable: 1
+  glowingKey: 0
   animator: {fileID: 5927028569044657564}
   image: {fileID: 4600911400663538905}
   grabPos: {fileID: 5638011273570477995}
@@ -605,7 +609,7 @@ MonoBehaviour:
   ropePos: {fileID: 5927028569939174624}
   keyParent: {fileID: 5927028569939174624}
   moveSpeed: 5
-  dissipateTime: 1
+  dissipateTime: 0.2
 --- !u!222 &5927028569044657565
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -812,6 +816,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyActionWord: 0
+  interactable: 1
+  glowingKey: 0
   animator: {fileID: 5927028569142070332}
   image: {fileID: 4946188309646181114}
   grabPos: {fileID: 921721807140959609}
@@ -819,7 +825,7 @@ MonoBehaviour:
   ropePos: {fileID: 5927028569830633265}
   keyParent: {fileID: 5927028569830633265}
   moveSpeed: 5
-  dissipateTime: 1
+  dissipateTime: 0.2
 --- !u!222 &5927028569142070333
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1184,6 +1190,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyActionWord: 0
+  interactable: 1
+  glowingKey: 0
   animator: {fileID: 5927028569634830175}
   image: {fileID: 7483894458656373646}
   grabPos: {fileID: 7483847901319154496}
@@ -1191,7 +1199,7 @@ MonoBehaviour:
   ropePos: {fileID: 5927028568577692115}
   keyParent: {fileID: 5927028568577692115}
   moveSpeed: 5
-  dissipateTime: 1
+  dissipateTime: 0.2
 --- !u!222 &5927028569634830172
 CanvasRenderer:
   m_ObjectHideFlags: 0

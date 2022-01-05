@@ -58,13 +58,12 @@ public class WordFactoryBuildingRaycaster : MonoBehaviour
                 }
             }
 
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f);
+
             WaterCoinsController.instance.ReturnWaterCoins();
 
-            // stop wiggle empty frame
-            WordFactoryBuildingManager.instance.ToggleEmptyFrameWiggle(false);
-
-            // readd coin raycast
-            selectedObject.GetComponent<UniversalCoinImage>().ToggleRaycastTarget(true);
+            // read coin raycast
             selectedObject = null;
         }
 
@@ -82,30 +81,28 @@ public class WordFactoryBuildingRaycaster : MonoBehaviour
                     if (result.gameObject.transform.CompareTag("Polaroid"))
                     {
                         // play audio
-                        print (result.gameObject);
-                        print (result.gameObject.GetComponent<Polaroid>());
+                        result.gameObject.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.8f, 0.8f), new Vector2(1f, 1f), 0.1f, 0.1f);
                         StartCoroutine(PlayPolaroidAudio(result.gameObject.GetComponent<Polaroid>().challengeWord.audio));
                         return;
                     }
                     else if (result.gameObject.transform.CompareTag("UniversalCoin"))
                     {
                         // play audio
-                        WordFactoryBuildingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
+                        WordFactoryBuildingManager.instance.PlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
                     }
                     else if (result.gameObject.transform.CompareTag("WaterCoin"))
                     {
                         // play audio
-                        WordFactoryBuildingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
+                        WordFactoryBuildingManager.instance.PlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
 
                         // select object
                         selectedObject = result.gameObject;
                         selectedObject.gameObject.transform.SetParent(selectedObjectParent);
+                        // audio fx
+                        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 1.2f);
 
                         // remove coin raycast
                         selectedObject.GetComponent<UniversalCoinImage>().ToggleRaycastTarget(false);
-
-                        // wiggle empty frame
-                        WordFactoryBuildingManager.instance.ToggleEmptyFrameWiggle(true);
                     }
                 }
             }

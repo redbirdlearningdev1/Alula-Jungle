@@ -46,7 +46,7 @@ public class WordFactoryDeletingRaycaster : MonoBehaviour
             var raycastResults = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointerEventData, raycastResults);
 
-            bool isCorrect = false;
+            bool hitTarget = false;
             if(raycastResults.Count > 0)
             {
                 foreach(var result in raycastResults)
@@ -56,15 +56,25 @@ public class WordFactoryDeletingRaycaster : MonoBehaviour
                     if (result.gameObject.transform.CompareTag("CoinTarget"))
                     {
                         WordFactoryDeletingManager.instance.EvaluateCoin(selectedObject.GetComponent<UniversalCoinImage>());
+                        hitTarget = true;
                     }
                 }
             }
 
+            if (!hitTarget)
+            {
+                // return coins to frame
+                WordFactoryDeletingManager.instance.ReturnCoinsToFrame();
+            }
+
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f);
+        
             // wiggle tiger frame
             EmeraldTigerHolder.instance.GetComponent<WiggleController>().StopWiggle();
             // scale up tiger
             EmeraldTigerHolder.instance.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.25f);
-            // readd coin raycast
+            // read coin raycast
             selectedObject.GetComponent<UniversalCoinImage>().ToggleRaycastTarget(true);
             selectedObject = null;
         }
@@ -83,17 +93,20 @@ public class WordFactoryDeletingRaycaster : MonoBehaviour
                     if (result.gameObject.transform.CompareTag("Polaroid"))
                     {
                         // play audio
+                        result.gameObject.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.8f, 0.8f), new Vector2(1f, 1f), 0.1f, 0.1f);
                         StartCoroutine(PlayPolaroidAudio(result.gameObject.GetComponent<Polaroid>().challengeWord.audio));
                         return;
                     }
                     else if (result.gameObject.transform.CompareTag("UniversalCoin"))
                     {
                         // play audio
-                        WordFactoryDeletingManager.instance.GlowAndPlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
+                        WordFactoryDeletingManager.instance.PlayAudioCoin(result.gameObject.GetComponent<UniversalCoinImage>());
 
                         // select object
                         selectedObject = result.gameObject;
                         selectedObject.gameObject.transform.SetParent(selectedObjectParent);
+                        // audio fx
+                        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 1.2f);
 
                         // remove coin raycast
                         selectedObject.GetComponent<UniversalCoinImage>().ToggleRaycastTarget(false);

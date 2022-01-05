@@ -20,28 +20,7 @@ MonoBehaviour:
   ending: 2
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 0
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
-    rightCharacter: 0
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 0}
-    audioClipName: // this ones a wild one. Visually I'd like the bg to undim but
-      bars stay in place after the last segment so they we can watch the tiger sign
-      post spring in place. Then the bg dims for talkies again but the sign stays
-      OVER the dim so it's in focus letting Red speak on the left as if to look at
-      it.
-    audioString: 
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -54,8 +33,8 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 833cf89fb3edda9479df77ac9bf39425, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 62796ee48b6fe7141abaf40d88e01dde, type: 3}
     audioClipName: P_1_6_Red_13_T1
     audioString: Oh!
   - endTalkieAfterThisSegment: 0
@@ -70,8 +49,8 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: fd4fa8fcde50b3d4f9dc14edebc6a4f0, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 0}
     audioClipName: P_1_6_Wally_14_T1
     audioString: "What\u2019s that? "
   - endTalkieAfterThisSegment: 0
@@ -86,10 +65,10 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: f4b3df70ec60fd34bb6d552a1a608d64, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 2d4ace47eb0b27a40a2e8dc95a167611, type: 3}
     audioClipName: P_1_6_Red_15_T1
-    audioString: That's weird~
+    audioString: That's weird,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -102,8 +81,8 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 4c6b636c0ac0de6459fd38b70358bced, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 5a56984311314b4419a0183a600f6f2b, type: 3}
     audioClipName: P_1_6_Red_15_T2
     audioString: a signpost just popped up.
   - endTalkieAfterThisSegment: 0
@@ -118,10 +97,10 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 244cc9f1a681bc54dac887248a08cf5b, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 1b88a8dafa435704ca39333025132523, type: 3}
     audioClipName: P_1_6_Red_16_T1
-    audioString: If you tap on it~ you can probably play the princes challenge games!
+    audioString: If you tap on it, you can probably play the Princes challenge games!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -134,7 +113,39 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 3983b4224b46db549a6d754f41a0085d, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: ae290fe9ad2541344b680718066d0867, type: 3}
     audioClipName: P_1_6_Red_17_T1
     audioString: You should try it when you want to practice your skills!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: bf8eb3cc6ee13184783318fae290b7f6, type: 3}
+    audioClipName: P_1_6_Wally_18_T1
+    audioString: I think you should consider using it, Explorer
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 9c74e7a8cebf6c2408484eb618b62299, type: 3}
+    audioClipName: P_1_6_Wally_19_T2
+    audioString: Practice makes perfect.

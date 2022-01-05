@@ -20,8 +20,23 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 00c52206acb744f4caf350382846f48b, type: 3}
+    audioClipName: Cha_0_1a_Julius_1_T1
+    audioString: Ha Ha! I win!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -34,10 +49,10 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 30dcae2be8f95d2438bc48fbcfaaa20a, type: 3}
-    audioClipName: Cha_0_1a_Marcus_1_T1
-    audioString: HAHAHA!
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: Marcus_Laugh
+    audioString: HA HA HA!!!!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -50,8 +65,8 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: c114bc128ddfd074ea473816dc306480, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: cca9e0f8ab67b1f4f9bb15fd1ec47781, type: 3}
     audioClipName: Cha_0_1a_Marcus_1_T2
     audioString: 'Good job your majesty! '
   - endTalkieAfterThisSegment: 0
@@ -66,8 +81,8 @@ MonoBehaviour:
     rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: f101ff620bf09514696c4bd4b274980a, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 0ad16bbf50c6cba49b99ac5997ca2d78, type: 3}
     audioClipName: Cha_0_1a_Marcus_1_T3
     audioString: Show them who is in charge!
   - endTalkieAfterThisSegment: 0
@@ -82,8 +97,8 @@ MonoBehaviour:
     rightEmotionNum: 8
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: b5a1c3b0996dc6f4a907d51ce572d368, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 4e2ed68ec816deb4aa138b2129903201, type: 3}
     audioClipName: Cha_0_1a_Brutus_2_T1
     audioString: "Heh heh\u2026 "
   - endTalkieAfterThisSegment: 0
@@ -98,8 +113,8 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 5c405890da5669f4b84a41761a06b03e, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 2f1e36a741901484491219176e7598f2, type: 3}
     audioClipName: Cha_0_1a_Brutus_2_T2
     audioString: nice.
   - endTalkieAfterThisSegment: 0
@@ -114,8 +129,8 @@ MonoBehaviour:
     rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 68424a75202bc4c48a707950536e8cfb, type: 3}
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 9a34f54b848357248b2866f63e209f18, type: 3}
     audioClipName: Cha_0_1a_Julius_3_T1
     audioString: I'll be generous and let you challenge me again.
   - endTalkieAfterThisSegment: 0
@@ -130,10 +145,10 @@ MonoBehaviour:
     rightEmotionNum: 13
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: aa9efcb80417ac949b2c4be482246748, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 2162299b6e7dec64f9864c0a324e2a88, type: 3}
     audioClipName: Cha_0_1a_Red_4_T1
-    audioString: "It\u2019s okay explorer! "
+    audioString: "It\u2019s okay Explorer! "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -146,7 +161,7 @@ MonoBehaviour:
     rightEmotionNum: 13
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 05ad5055e58e1f244965cd0975bc9f15, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 1c8f9da30fb2c39429cc13eb9e18edb7, type: 3}
     audioClipName: Cha_0_1a_Red_4_T2
     audioString: Let's go practice some more.

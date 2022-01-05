@@ -22,10 +22,10 @@ public class StarAwardController : MonoBehaviour
 
     public float starMoveSpeed;
 
-    [Header("Star Paths")]
-    public List<Transform> path1;
-    public List<Transform> path2;
-    public List<Transform> path3;
+    public GameObject coinObject;
+    public Transform coinTarget;
+    public Transform coinParent;
+    private int newCoins = 1;
 
     void Awake()
     {
@@ -73,11 +73,70 @@ public class StarAwardController : MonoBehaviour
 
         print ("map id: " + GameManager.instance.mapID);
 
+
+        // determine if royal rumble game
+        if (GameManager.instance.playingRoyalRumbleGame)
+        {
+            print ("ending royal rumble");
+
+            GameManager.instance.playingRoyalRumbleGame = false;
+            StudentInfoSystem.GetCurrentProfile().royalRumbleActive = false;
+            StudentInfoSystem.GetCurrentProfile().royalRumbleGame = GameType.None;
+            StudentInfoSystem.GetCurrentProfile().royalRumbleID = MapIconIdentfier.None;
+            StudentInfoSystem.SaveStudentPlayerData();
+            // show window
+            StartCoroutine(AwardStarsRoutine(numStars, coinsEarned));
+            return;
+        }
+
+        // determine if challenge game
+        if (GameManager.instance.playingChallengeGame)
+        {
+            GameManager.instance.playingChallengeGame = false;
+
+            // lose?
+            if (numStars <= 0)
+            {
+                // first time losing
+                if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame)
+                {
+                    print ("first time losing challenge game!");
+                    StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = true;
+                }
+                else
+                {
+                    // every other time losing
+                    if (!StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
+                    {
+                        print ("every other time losing challenge game!");
+                        StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = true;
+                    }
+                }
+            }
+            // win?
+            else
+            {
+                print ("you won the challenge game!");
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = false;
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;
+                StudentInfoSystem.AdvanceStoryBeat();
+            }
+        }
+        // minigame stuff
+        else
+        {
+            // increase number of minigames played
+            StudentInfoSystem.GetCurrentProfile().minigamesPlayed += 1;
+            print ("you coompleted a minigame, minigames played: " + StudentInfoSystem.GetCurrentProfile().minigamesPlayed);
+        }
+
         // only update stars if earned more stars than in memory
         switch (GameManager.instance.mapID)
         {
             default:
-                GameManager.instance.SendLog(this, "No ID for game found - not awarding stars");
+                GameManager.instance.SendLog(this, "No ID for game found - not awarding stars nor coins");
+                // show window
+                StartCoroutine(AwardStarsRoutine(0, 0));
                 return;
 
             /* 
@@ -220,24 +279,24 @@ public class StarAwardController : MonoBehaviour
                     }
                     break;
 
-                case MapIconIdentfier.MS_challenge_2:
-                    if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.stars < numStars)
-                    {
-                        coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.stars, numStars);
-                        StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.stars = numStars;
-                    }
-                    break;
+            case MapIconIdentfier.MS_challenge_2:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.stars = numStars;
+                }
+                break;
 
-                case MapIconIdentfier.MS_challenge_3:
-                    if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.stars < numStars)
-                    {
-                        coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.stars, numStars);
-                        StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.stars = numStars;
-                    }
-                    break;
+            case MapIconIdentfier.MS_challenge_3:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.stars = numStars;
+                }
+                break;
 
 
-                /* 
+            /* 
             ################################################
             #   ORC VILLAGE
             ################################################
@@ -299,51 +358,177 @@ public class StarAwardController : MonoBehaviour
                     }
                     break;
 
-                case MapIconIdentfier.OV_challenge_2:
-                    if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.stars < numStars)
-                    {
-                        coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.stars, numStars);
-                        StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.stars = numStars;
-                    }
-                    break;
-
-                case MapIconIdentfier.OV_challenge_3:
-                    if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.stars < numStars)
-                    {
-                        coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.stars, numStars);
-                        StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.stars = numStars;
-                    }
-                    break;
-        }
-
-        // challenge game stuff
-        if (GameManager.instance.playingChallengeGame)
-        {
-            // lose?
-            if (numStars <= 0)
-            {
-                // first time losing
-                if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame)
-                    StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = true;
-                else
+            case MapIconIdentfier.OV_challenge_2:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.stars < numStars)
                 {
-                    // every other time losing
-                    if (!StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
-                    {
-                        StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = true;
-                    }
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.stars = numStars;
                 }
-            }
-            // win?
-            else
-            {
-                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = false;
-                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;
-                StudentInfoSystem.AdvanceStoryBeat();
-            }
+                break;
 
-            GameManager.instance.playingChallengeGame = false;
-            StudentInfoSystem.SaveStudentPlayerData();
+            case MapIconIdentfier.OV_challenge_3:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.stars = numStars;
+                }
+                break;
+
+            /* 
+            ################################################
+            #   SPOOKY FOREST
+            ################################################
+            */
+        
+            case MapIconIdentfier.SF_lamp:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.SF_lamp.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.SF_lamp.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_lamp.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.SF_lamp.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.SF_shrine:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.SF_shrine.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.SF_shrine.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_shrine.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.SF_shrine.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.SF_spider:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.SF_spider.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.SF_spider.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_spider.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.SF_spider.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+            
+            case MapIconIdentfier.SF_web:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.SF_web.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.SF_web.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_web.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.SF_web.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.SF_challenge_1:
+                    if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.stars < numStars)
+                    {
+                        coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.stars, numStars);
+                        StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.stars = numStars;
+                    }
+                    break;
+
+            case MapIconIdentfier.SF_challenge_2:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.stars = numStars;
+                }
+                break;
+
+            case MapIconIdentfier.SF_challenge_3:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.stars = numStars;
+                }
+                break;
+
+            /* 
+            ################################################
+            #   ORC CAMP
+            ################################################
+            */
+        
+            case MapIconIdentfier.OC_axe:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OC_axe.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.OC_axe.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_axe.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.OC_axe.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.OC_bigTent:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OC_bigTent.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.OC_bigTent.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_bigTent.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.OC_bigTent.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.OC_smallTent:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OC_smallTent.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.OC_smallTent.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_smallTent.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.OC_smallTent.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+            
+            case MapIconIdentfier.OC_fire:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OC_fire.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.OC_fire.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_fire.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.OC_fire.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.OC_challenge_1:
+                    if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.stars < numStars)
+                    {
+                        coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.stars, numStars);
+                        StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.stars = numStars;
+                    }
+                    break;
+
+            case MapIconIdentfier.OC_challenge_2:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.stars = numStars;
+                }
+                break;
+
+            case MapIconIdentfier.OC_challenge_3:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.stars = numStars;
+                }
+                break;
         }
         
         // save data
@@ -367,7 +552,8 @@ public class StarAwardController : MonoBehaviour
         StartCoroutine(GrowObject(window));
         yield return new WaitForSeconds(0.5f);
 
-    
+        print ("num stars: " + numStars);
+
         // show appropriate number of stars
         for (int i = 0; i < numStars; i++)
         {
@@ -385,20 +571,24 @@ public class StarAwardController : MonoBehaviour
                     break;
             }
 
+            // play audio
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.GlassDink1, 0.5f, "star_sound", 1f + 0.2f * i);
+
             // time bewteen stars
             yield return new WaitForSeconds(0.5f);
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         // show toolbar
         DropdownToolbar.instance.ToggleToolbar(true);
+        int coinsEarndedCopy = coinsEarnded;
         
         // animate stars that are awarding coins
         for (int i = numStars - 1; i >= 0; i--)
         {
             // stop awarding coins when 0 is reached
-            if (coinsEarnded == 0)
+            if (coinsEarndedCopy == 0)
                 break;
 
             switch (i)
@@ -415,13 +605,19 @@ public class StarAwardController : MonoBehaviour
                     break;
             }
             // reduce coins earned after one is given
-            coinsEarnded--;
+            coinsEarndedCopy--;
+
+            // play audio
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "star_sound", 1f + 0.2f * i);
 
             // time bewteen stars
             yield return new WaitForSeconds(0.5f);
         }
 
         yield return new WaitForSeconds(0.5f);
+
+        // update SIS and toolbar
+        DropdownToolbar.instance.AwardGoldCoins(coinsEarnded);
 
         // activate button
         button.interactable = true;
@@ -431,10 +627,9 @@ public class StarAwardController : MonoBehaviour
     {
         StartCoroutine(ScaleObjectRoutine(star, longScaleTime, maxScale));
         yield return new WaitForSeconds(longScaleTime);
-        // place particle system thing here
 
-        // update SIS and toolbar
-        DropdownToolbar.instance.AwardGoldCoins(1);
+        // place particle system thing here
+        StartCoroutine(AwardCoinAnimation(star.transform.position));
 
         StartCoroutine(ScaleObjectRoutine(star, longScaleTime, normalScale));
     }
@@ -471,5 +666,20 @@ public class StarAwardController : MonoBehaviour
             gameObject.transform.localScale = new Vector3(temp, temp, 0f);
             yield return null;
         }
+    }
+
+    private IEnumerator AwardCoinAnimation(Vector3 startPos)
+    {
+        GameObject coin = Instantiate(coinObject, startPos, Quaternion.identity, coinParent);
+        coin.transform.localScale = new Vector3(0f, 0f, 1f);
+        coin.GetComponent<LerpableObject>().LerpPosToTransform(coinTarget, 0.5f, false);
+        coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.5f, 1.5f), new Vector2(0f, 0f), 0.25f, 0.25f);
+        yield return new WaitForSeconds(0.5f);
+
+        // play audio
+        AudioManager.instance.PlayCoinDrop();
+        coinTarget.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
+        DropdownToolbar.instance.SetGoldText((StudentInfoSystem.GetCurrentProfile().goldCoins + newCoins).ToString());
+        newCoins++;
     }
 }

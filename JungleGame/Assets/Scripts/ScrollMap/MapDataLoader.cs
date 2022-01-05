@@ -24,11 +24,32 @@ public class MapDataLoader : MonoBehaviour
     public MapIcon OV_statue;
     public MapIcon OV_fire;
 
+    [Header("Spooky Forest")]
+    public MapIcon SF_lamp;
+    public MapIcon SF_web;
+    public MapIcon SF_shrine;
+    public MapIcon SF_spider;
+
+    [Header("Orc Camp")]
+    public MapIcon OC_axe;
+    public MapIcon OC_bigTent;
+    public MapIcon OC_smallTent;
+    public MapIcon OC_fire;
+
+
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
+        }
+    }
+
+    public void SetRoyalRumbleBanner()
+    {
+        if (StudentInfoSystem.GetCurrentProfile().royalRumbleActive)
+        {
+            GetMapIconFromID(StudentInfoSystem.GetCurrentProfile().royalRumbleID).SetRoyalRumberBanner(true);
         }
     }
 
@@ -72,6 +93,32 @@ public class MapDataLoader : MonoBehaviour
 
         OV_fire.SetFixed(mapData.OV_fire.isFixed, false, false);
         OV_fire.SetStars(mapData.OV_fire.stars);
+
+        // spooky forest section
+        SF_lamp.SetFixed(mapData.SF_lamp.isFixed, false, false);
+        SF_lamp.SetStars(mapData.SF_lamp.stars);
+
+        SF_web.SetFixed(mapData.SF_web.isFixed, false, false);
+        SF_web.SetStars(mapData.SF_web.stars);
+
+        SF_shrine.SetFixed(mapData.SF_shrine.isFixed, false, false);
+        SF_shrine.SetStars(mapData.SF_shrine.stars);
+
+        SF_spider.SetFixed(mapData.SF_spider.isFixed, false, false);
+        SF_spider.SetStars(mapData.SF_spider.stars);
+
+        // orc camp section
+        OC_axe.SetFixed(mapData.OC_axe.isFixed, false, false);
+        OC_axe.SetStars(mapData.OC_axe.stars);
+
+        OC_bigTent.SetFixed(mapData.OC_bigTent.isFixed, false, false);
+        OC_bigTent.SetStars(mapData.OC_bigTent.stars);
+
+        OC_smallTent.SetFixed(mapData.OC_smallTent.isFixed, false, false);
+        OC_smallTent.SetStars(mapData.OC_smallTent.stars);
+
+        OC_fire.SetFixed(mapData.OC_fire.isFixed, false, false);
+        OC_fire.SetStars(mapData.OC_fire.stars);
     }
 
     public MapIcon GetMapIconFromID(MapIconIdentfier id)
@@ -105,6 +152,24 @@ public class MapDataLoader : MonoBehaviour
                 return OV_statue;
             case MapIconIdentfier.OV_fire:
                 return OV_fire;
+
+            case MapIconIdentfier.SF_lamp:
+                return SF_lamp;
+            case MapIconIdentfier.SF_shrine:
+                return SF_shrine;
+            case MapIconIdentfier.SF_spider:
+                return SF_spider;
+            case MapIconIdentfier.SF_web:
+                return SF_web;
+
+            case MapIconIdentfier.OC_axe:
+                return OC_axe;
+            case MapIconIdentfier.OC_bigTent:
+                return OC_bigTent;
+            case MapIconIdentfier.OC_smallTent:
+                return OC_smallTent;
+            case MapIconIdentfier.OC_fire:
+                return OC_fire;
         }
     }
 }

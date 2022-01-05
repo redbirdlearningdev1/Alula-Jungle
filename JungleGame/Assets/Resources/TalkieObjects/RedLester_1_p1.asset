@@ -20,7 +20,6 @@ MonoBehaviour:
   ending: 0
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
-  endAction: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -34,8 +33,8 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: d31223244507cb34a967011d69369945, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: e3ea2dbaa2651db498e605e2743efa06, type: 3}
     audioClipName: P_1_3a_Red_1_T1
     audioString: Wow! Look at all the coins you received!
   - endTalkieAfterThisSegment: 0
@@ -50,8 +49,8 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 8435bb32ff37160498119b9004ddcb0a, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: e1be96a48e5bf404492055e4338261c9, type: 3}
     audioClipName: P_1_3a_Red_1_T2
     audioString: Hey!
   - endTalkieAfterThisSegment: 0
@@ -66,8 +65,8 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 06a75c24693145441b530c1f71848cff, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 631bc7cbae17c334b87620b064fce990, type: 3}
     audioClipName: P_1_3a_Red_1_T3
     audioString: What's that button up there
   - endTalkieAfterThisSegment: 0
@@ -82,7 +81,7 @@ MonoBehaviour:
     rightEmotionNum: 0
     rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 940e4190bf96456469d52b4325036719, type: 3}
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 93e07783e4977884a9975034ef138352, type: 3}
     audioClipName: P_1_3a_Red_2_T1
     audioString: Tap on it and let's see what happens!

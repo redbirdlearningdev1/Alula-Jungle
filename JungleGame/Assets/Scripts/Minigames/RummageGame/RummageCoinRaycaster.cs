@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class RummageCoinRaycaster : MonoBehaviour
 {
+    public static RummageCoinRaycaster instance;
+
     public bool isOn = false;
     public bool pileChosen = false;
     private RummageCoin selectedRummageCoin = null;
@@ -12,6 +14,12 @@ public class RummageCoinRaycaster : MonoBehaviour
     [SerializeField]  private chest Chester;
     [SerializeField] private List<pileRummage> piles;
     [SerializeField] private Transform selectedCoinParent;
+
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
 
     void Update()
     {
@@ -64,7 +72,10 @@ public class RummageCoinRaycaster : MonoBehaviour
             else
                 selectedRummageCoin.ReturnToCloth();
 
-            Chester.chestGlowNo();
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f);
+
+            Chester.ToggleScaleAndWiggle(false);
             selectedRummageCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(2f, 2f), 0.1f);
             selectedRummageCoin = null;
         }
@@ -89,11 +100,14 @@ public class RummageCoinRaycaster : MonoBehaviour
                         // make other coin not interactable
                         RummageGameManager.instance.SetCoinsInteractable(false);
 
+                        // audio fx
+                        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 1.2f);
+
                         selectedRummageCoin = coin;
                         selectedRummageCoin.PlayPhonemeAudio();
                         selectedRummageCoin.gameObject.transform.SetParent(selectedCoinParent);
                         selectedRummageCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(2.25f, 2.25f), 0.1f);
-                        Chester.chestGlow();
+                        Chester.ToggleScaleAndWiggle(true);
                     }
                     if (result.gameObject.transform.CompareTag("Pile"))
                     {

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f49655c47c49b747b3315e00db7aacd, type: 3}
+  m_Name: pure_puree_pair
+  m_EditorClassIdentifier: 
+  soundCoin: 16
+  pairType: 1
+  word1: {fileID: 11400000, guid: 1e23a475cfe71634b86e8c9563a2a5d9, type: 2}
+  word2: {fileID: 11400000, guid: efcf3964c7c9d9d42a2f51c6090d759d, type: 2}
+  index: 2
