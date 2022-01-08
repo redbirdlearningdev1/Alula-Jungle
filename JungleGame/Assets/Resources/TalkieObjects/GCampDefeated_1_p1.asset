@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: GCampDefeated_1_p1
+  m_EditorClassIdentifier: 
+  talkieName: GCampDefeated_1_p1
+  quipsCollection: 0
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 0
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 21
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 1e44a308e2154f5488ac1ba392e881a7, type: 3}
+    audioClipName: R_2_4_Julius_1_T1
+    audioString: ...
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 3
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 2
+    rightEmotionNum: 15
+    rightMouthEnum: 2
+    rightEyesEnum: 3
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 045bfe41352d91b40b9b6ea185271c3e, type: 3}
+    audioClipName: R_2_4_Red_2_T1
+    audioString: Amazing job, Explorer!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 4
+    leftMouthEnum: 2
+    leftEyesEnum: 3
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 8780da72b910987469655120fa5a0334, type: 3}
+    audioClipName: R_2_4_Wally_3_T1
+    audioString: Good job.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 5
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 28890c928d2386b438c1b7c103f70ba6, type: 3}
+    audioClipName: R_2_4_Marcus_4_T1
+    audioString: UNBELIEVABLE!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: e05cc7f3d91783f4fabc833a81904a75, type: 3}
+    audioClipName: R_2_4_Brutus_5_T1
+    audioString: "Yawn\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 21
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 6f81ad8a9eb876248a8eb0ecf76044e7, type: 3}
+    audioClipName: R_2_4_Julius_6_T1
+    audioString: "Let\u2019s just go\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 21
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: a8b7d3b5746b87f4a901d1ee1e312d3e, type: 3}
+    audioClipName: R_2_4_Marcus_7_T1
+    audioString: BUT!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 21
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 6e549b650f97b2b45827cee12b70388b, type: 3}
+    audioClipName: R_2_4_Marcus_7_T2
+    audioString: Your highness!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 4
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 21
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 4b53d89f7b58a3a40b6de6f85a9e0a65, type: 3}
+    audioClipName: R_2_4_Julius_8_T1
+    audioString: "I\u2019m leaving\u2026"

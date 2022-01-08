@@ -42,7 +42,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 1
+    leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
@@ -58,7 +58,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 1
+    leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
@@ -74,7 +74,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 1
+    leftEmotionNum: 9
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
@@ -90,7 +90,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 1
+    leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
@@ -155,7 +155,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 1
+    leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
@@ -187,7 +187,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 1
+    leftEmotionNum: 8
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
@@ -203,7 +203,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 1
+    leftEmotionNum: 8
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
@@ -219,7 +219,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 1
+    leftEmotionNum: 11
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
@@ -235,7 +235,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 1
+    leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
@@ -267,15 +267,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 3
-    leftEmotionNum: 1
-    leftMouthEnum: 2
+    leftCharacter: 2
+    leftEmotionNum: 9
+    leftMouthEnum: 1
     leftEyesEnum: 1
-    rightCharacter: 2
-    rightEmotionNum: 9
-    rightMouthEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 1
+    rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 2
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: af0f0054d67fe264ca68026b48b6864d, type: 3}
     audioClipName: P_1_1_Wally_7_T1
     audioString: Red was saying earlier that the King is away? Why is that?
@@ -283,15 +283,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 3
-    leftEmotionNum: 8
-    leftMouthEnum: 1
+    leftCharacter: 2
+    leftEmotionNum: 4
+    leftMouthEnum: 2
     leftEyesEnum: 1
-    rightCharacter: 2
-    rightEmotionNum: 9
-    rightMouthEnum: 2
+    rightCharacter: 3
+    rightEmotionNum: 8
+    rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 934112f179c98a943b0348805ca3d68f, type: 3}
     audioClipName: P_1_1_Darwin_8_T1
     audioString: Oh right!
@@ -299,15 +299,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 3
-    leftEmotionNum: 7
-    leftMouthEnum: 1
-    leftEyesEnum: 4
-    rightCharacter: 2
-    rightEmotionNum: 9
-    rightMouthEnum: 2
-    rightEyesEnum: 1
-    activeCharacter: 1
+    leftCharacter: 2
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: c4f8a67f128664d42bef94d3603ca400, type: 3}
     audioClipName: P_1_1_Darwin_8_T2
     audioString: "Yes yes the King is away to\u2026"
@@ -315,15 +315,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 3
-    leftEmotionNum: 9
-    leftMouthEnum: 1
-    leftEyesEnum: 4
-    rightCharacter: 2
+    leftCharacter: 2
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
     rightEmotionNum: 9
-    rightMouthEnum: 2
-    rightEyesEnum: 1
-    activeCharacter: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 6a8b1717e196ebf44a66b0111b9ad4d6, type: 3}
     audioClipName: P_1_1_Darwin_8_T3
     audioString: "Uhh\u2026"
@@ -331,15 +331,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 3
-    leftEmotionNum: 4
-    leftMouthEnum: 1
-    leftEyesEnum: 2
-    rightCharacter: 2
-    rightEmotionNum: 9
-    rightMouthEnum: 2
-    rightEyesEnum: 1
-    activeCharacter: 1
+    leftCharacter: 2
+    leftEmotionNum: 6
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 03efbcaf84abf7a499362ed67326b916, type: 3}
     audioClipName: P_1_1_Darwin_8_T4
     audioString: OH! YES!
@@ -347,12 +347,12 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 1
-    leftEmotionNum: 5
+    leftCharacter: 2
+    leftEmotionNum: 6
     leftMouthEnum: 1
     leftEyesEnum: 1
-    rightCharacter: 2
-    rightEmotionNum: 6
+    rightCharacter: 1
+    rightEmotionNum: 5
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 3
@@ -363,15 +363,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 3
-    leftEmotionNum: 2
-    leftMouthEnum: 1
+    leftCharacter: 1
+    leftEmotionNum: 8
+    leftMouthEnum: 2
     leftEyesEnum: 1
-    rightCharacter: 1
-    rightEmotionNum: 8
-    rightMouthEnum: 2
+    rightCharacter: 3
+    rightEmotionNum: 2
+    rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 5d9ab5faa96250348bead776186ee0cc, type: 3}
     audioClipName: P_1_1_Darwin_11_T1
     audioString: The King went out to help another kingdom in need!
@@ -379,15 +379,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 3
+    leftCharacter: 1
     leftEmotionNum: 11
-    leftMouthEnum: 1
-    leftEyesEnum: 4
-    rightCharacter: 1
-    rightEmotionNum: 8
-    rightMouthEnum: 2
-    rightEyesEnum: 1
-    activeCharacter: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 11
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: a2906459090bc054097c5cac10472896, type: 3}
     audioClipName: P_1_1_Darwin_11_T2
     audioString: How silly of me to forget.
@@ -395,15 +395,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 3
-    leftEmotionNum: 7
-    leftMouthEnum: 1
-    leftEyesEnum: 4
-    rightCharacter: 1
-    rightEmotionNum: 8
-    rightMouthEnum: 2
-    rightEyesEnum: 1
-    activeCharacter: 1
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 158c4919a725705468ece1b6b3bfc81e, type: 3}
     audioClipName: P_1_1_Darwin_11_T3
     audioString: A kind King indeed...
@@ -411,15 +411,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 3
+    leftCharacter: 1
     leftEmotionNum: 2
-    leftMouthEnum: 1
-    leftEyesEnum: 3
-    rightCharacter: 1
-    rightEmotionNum: 11
-    rightMouthEnum: 2
-    rightEyesEnum: 1
-    activeCharacter: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 3
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 7d45b1248348b344384ed7a5f7a16134, type: 3}
     audioClipName: P_1_1_Darwin_11_T4
     audioString: I even remember when he had Julius!
@@ -427,15 +427,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 3
-    leftEmotionNum: 4
-    leftMouthEnum: 1
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
     leftEyesEnum: 1
-    rightCharacter: 1
-    rightEmotionNum: 11
-    rightMouthEnum: 2
+    rightCharacter: 3
+    rightEmotionNum: 4
+    rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 5d4f3cf2aef20a44b94bf75bd3f81a02, type: 3}
     audioClipName: P_1_1_Darwin_11_T5
     audioString: "I can\u2019t wait to see him again!"

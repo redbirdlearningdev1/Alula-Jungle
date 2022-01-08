@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: RuinsDefeated_1_p2
+  m_EditorClassIdentifier: 
+  talkieName: RuinsDefeated_1_p2
+  quipsCollection: 0
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 0
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 62d45fb3281f00d4888bd4ff9bbdc44e, type: 3}
+    audioClipName: EJ_2_3_Marcus_6_T1
+    audioString: "This isn\u2019t over!!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 0aa29d64d4f68864784f33cffd8d7991, type: 3}
+    audioClipName: EJ_2_3_Marcus_6_T2
+    audioString: Stop ruining everything!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 019476e960eb22a428b412077f55d14c, type: 3}
+    audioClipName: EJ_2_3_Brutus_7_T1
+    audioString: Yeah...
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 3
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: ab7d2520b8f95ea40bcd9b56965ab939, type: 3}
+    audioClipName: EJ_2_3_Brutus_7_T2
+    audioString: Not like how we ruined these ruins...
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 3
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 2a1963471acad604e923e51c0a5f28fc, type: 3}
+    audioClipName: EJ_2_3_Marcus_8_T1
+    audioString: gRRR! You better watch it, Brutus!

@@ -1,0 +1,554 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: MermaidIntro_1_p5
+  m_EditorClassIdentifier: 
+  talkieName: MermaidIntro_1_p5
+  quipsCollection: 0
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 12
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: c852eea3c4cca8041a0a88be217bd63d, type: 3}
+    audioClipName: EJ_1_1_Darwin_50_T1
+    audioString: "Oh Julius\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 8
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 7
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 69bcd195b99b9d04eb9a893bca8ff0fe, type: 3}
+    audioClipName: EJ_1_1_Red_51_T1
+    audioString: Sigh..
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 7
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 3a9086d00a360cd46a97e6c46f91d33c, type: 3}
+    audioClipName: EJ_1_1_Red_51_T2
+    audioString: "I know he just destroyed this area, but It seems like we\u2019re
+      getting through to him."
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: e0b62630df36ed841be9a97658aef388, type: 3}
+    audioClipName: EJ_1_1_Wally_52_T1
+    audioString: I guess so.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 0d57a474bc156444ba0160ef91cc819f, type: 3}
+    audioClipName: EJ_1_1_Red_53_T1
+    audioString: What do you think Dar-
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 6
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 3
+    audioClip: {fileID: 8300000, guid: a7a115746dc45a649900bb2acb94e4e9, type: 3}
+    audioClipName: EJ_1_1_RedWally_54_T1
+    audioString: HELP US! PUH LEESAAH!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 6
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 3
+    audioClip: {fileID: 8300000, guid: b1269e92d94f48b4f96b1efd6944d5e4, type: 3}
+    audioClipName: EJ_1_1_RedWally_55_T1
+    audioString: PLEASE HELP US!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 3
+    audioClip: {fileID: 0}
+    audioClipName: RedWally_Oh
+    audioString: Oh!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: e0f8bd9afcf90854b90f40b32c44ad75, type: 3}
+    audioClipName: EJ_1_1_Darwin_56_T1
+    audioString: Huh?!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 13
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 12
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: b7c98e6acde670a4b945a19d18418544, type: 3}
+    audioClipName: EJ_1_1_Celeste_57_T1
+    audioString: "Don\u2019t just stand there help uuuussss!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 13
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 12
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 9a695139f56160d40a538ee4923e3140, type: 3}
+    audioClipName: EJ_1_1_Sylvie_58_T1
+    audioString: Please help us!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 12
+    rightEmotionNum: 2
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 41f50b10dd08a5b41b1e4a646e32ac82, type: 3}
+    audioClipName: EJ_1_1_Red_59_T1
+    audioString: 'Oh no! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 12
+    rightEmotionNum: 2
+    rightMouthEnum: 2
+    rightEyesEnum: 3
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: ab5649f6ecac2824ea0c89ecb1ef504d, type: 3}
+    audioClipName: EJ_1_1_Red_59_T2
+    audioString: What happened to you two?!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 12
+    rightEmotionNum: 2
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 33d7196dd79b2da408d9e859683b5f56, type: 3}
+    audioClipName: EJ_1_1_Wally_60_T1
+    audioString: Are you guys alright!?
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 12
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 0d887aa1ab2f861478c8b6beba86f746, type: 3}
+    audioClipName: EJ_1_1_Celeste_61_T1
+    audioString: Ugh! Do we look alright?!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 152bc282e189451439728fe357f87aa7, type: 3}
+    audioClipName: EJ_1_1_Sylvie_62_T1
+    audioString: Celeste and I heard some yelling and so we swam up to investigate,
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 3
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 71de6fec04dc4d448ad27766325c2fb6, type: 3}
+    audioClipName: EJ_1_1_Sylvie_62_T2
+    audioString: and I guess we just got caught up in it.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 13
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 0fec49f7dcc587c42b5dde5bc1ef42fb, type: 3}
+    audioClipName: EJ_1_1_Celeste_63_T1
+    audioString: "Whatevaaa, I just don\u2019t feel well."
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 4
+    rightCharacter: 13
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 9c9a0d4f14cdac544a062d20bc9afde6, type: 3}
+    audioClipName: EJ_1_1_Celeste_63_T2
+    audioString: This trash STINKS!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 3
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 3c12126f8da3e364a9fa401e21b07b60, type: 3}
+    audioClipName: EJ_1_1_Sylvie_64_T1
+    audioString: "I don\u2019t feel so good either\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 8
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 3
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: bfc93b47f85bded49b6900a246a07501, type: 3}
+    audioClipName: EJ_1_1_Red_65_T1
+    audioString: 'Oh you poor things! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 8144c2065c67b3647a665b5cebd15cd0, type: 3}
+    audioClipName: EJ_1_1_Red_65_T2
+    audioString: "Don\u2019t worry, my friends and I will patch you up! You\u2019ll
+      be all good as new!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: d1d522b6163da254d994af212f1de19b, type: 3}
+    audioClipName: EJ_1_1_Wally_66_T1
+    audioString: "We\u2019ll clean up as well, just rest."
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 3
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 3
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 14a9ebf041a13614da64ebd346eac039, type: 3}
+    audioClipName: EJ_1_1_Sylvie_67_T1
+    audioString: "You\u2019ll do that for us?"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 3
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 3
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 6c2dfea3d70b9e94ea088013b1c16514, type: 3}
+    audioClipName: EJ_1_1_Celeste_68_T1
+    audioString: Seriously?
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 3
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: b50e3144940404e4fbdf799a5819fffe, type: 3}
+    audioClipName: EJ_1_1_Red_69_T1
+    audioString: Of course! Just leave it to us!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 10
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 0ec679c3225e9f845a930a9cb0da3b11, type: 3}
+    audioClipName: EJ_1_1_Wally_70_T1
+    audioString: Darwin,
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 4
+    rightCharacter: 3
+    rightEmotionNum: 13
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: aab1805c9d44f7049b7bf44241e772b9, type: 3}
+    audioClipName: EJ_1_1_Wally_70_T2
+    audioString: "Do you think you\u2019ll be able to think of more stories while
+      we clean up?"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 290f83dc39dd68a43af318471e9d69cb, type: 3}
+    audioClipName: EJ_1_1_Darwin_71_T1
+    audioString: Haha! I think so!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: db188c9ccafd22f499a7df7e3c49810c, type: 3}
+    audioClipName: EJ_1_1_Darwin_71_T2
+    audioString: "Hmmm\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 3
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 894412e7f8b81aa41832adf1b69757db, type: 3}
+    audioClipName: EJ_1_1_Red_72_T1
+    audioString: Alright team!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 14
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: d030937cc75691f4f866dbf09811a96b, type: 3}
+    audioClipName: EJ_1_1_Red_72_T2
+    audioString: "Let\u2019s get to work!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 3
+    leftMouthEnum: 2
+    leftEyesEnum: 3
+    rightCharacter: 2
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 0}
+    audioClipName: EJ_1_1_Wally_73_T1
+    audioString: Right!

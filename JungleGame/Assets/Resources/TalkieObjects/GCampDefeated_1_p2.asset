@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: GCampDefeated_1_p2
+  m_EditorClassIdentifier: 
+  talkieName: GCampDefeated_1_p2
+  quipsCollection: 0
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 0
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 5
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: f4603522a40ecae4ca8b1997f2dcb4c6, type: 3}
+    audioClipName: R_2_4_Marcus_9_T1
+    audioString: "Ugh. I\u2019m getting tired of him."
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: d35ca50dc4b2be0489d4a92b18d165ec, type: 3}
+    audioClipName: R_2_4_Brutus_10_T1
+    audioString: "Yawn\u2026 I\u2019m just tired."
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 23933b5f6ef89e149b16680a90dd0821, type: 3}
+    audioClipName: R_2_4_Brutus_10_T2
+    audioString: "Let\u2019s just go\u2026"

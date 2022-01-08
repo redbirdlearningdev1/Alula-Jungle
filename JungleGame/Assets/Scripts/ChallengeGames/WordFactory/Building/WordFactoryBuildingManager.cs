@@ -620,8 +620,18 @@ public class WordFactoryBuildingManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
         yield return new WaitForSeconds(1f);
 
-        // show stars
-        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+        if (playTutorial)
+        {
+            StudentInfoSystem.GetCurrentProfile().wordFactoryBuildingTutorial = true;
+            StudentInfoSystem.SaveStudentPlayerData();
+
+            GameManager.instance.LoadScene("WordFactoryBuilding", true, 3f);
+        }
+        else
+        {
+            // show stars
+            StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+        }
     }
 
     private int CalculateStars()

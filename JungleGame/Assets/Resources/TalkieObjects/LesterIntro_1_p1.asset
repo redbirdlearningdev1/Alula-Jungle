@@ -36,7 +36,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: bc51eaa4d12b82244ba62eb840fada89, type: 3}
     audioClipName: P_1_4_Lester_1_T1
-    audioString: Howdy there friend!
+    audioString: Hey there friend!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: a8c013b39803880468a8d737af2ee476, type: 3}
     audioClipName: P_1_4_Lester_2_T2
-    audioString: "I see you\u2019ve got some coins there!"
+    audioString: "I see you\u2019ve got some coins!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

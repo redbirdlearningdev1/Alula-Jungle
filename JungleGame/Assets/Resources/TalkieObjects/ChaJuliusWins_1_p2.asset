@@ -30,8 +30,8 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 0
     rightCharacter: 5
-    rightEmotionNum: 6
-    rightMouthEnum: 1
+    rightEmotionNum: 7
+    rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip: {fileID: 0}
@@ -46,8 +46,8 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 0
     rightCharacter: 5
-    rightEmotionNum: 6
-    rightMouthEnum: 1
+    rightEmotionNum: 7
+    rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: cca9e0f8ab67b1f4f9bb15fd1ec47781, type: 3}
@@ -62,8 +62,8 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 0
     rightCharacter: 5
-    rightEmotionNum: 6
-    rightMouthEnum: 1
+    rightEmotionNum: 7
+    rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 0ad16bbf50c6cba49b99ac5997ca2d78, type: 3}
@@ -126,9 +126,9 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 0
     rightCharacter: 7
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 17fb86ab04211ca4d8e968d5cfcd4840, type: 3}
     audioClipName: Cha_0_1c_Marcus_2_T1

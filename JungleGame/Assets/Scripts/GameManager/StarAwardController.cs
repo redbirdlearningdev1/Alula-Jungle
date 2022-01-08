@@ -583,6 +583,7 @@ public class StarAwardController : MonoBehaviour
         // show toolbar
         DropdownToolbar.instance.ToggleToolbar(true);
         int coinsEarndedCopy = coinsEarnded;
+        newCoins = 1;
         
         // animate stars that are awarding coins
         for (int i = numStars - 1; i >= 0; i--)

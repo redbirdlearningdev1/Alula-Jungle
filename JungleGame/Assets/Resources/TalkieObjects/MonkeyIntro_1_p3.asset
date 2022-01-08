@@ -1,0 +1,392 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: MonkeyIntro_1_p3
+  m_EditorClassIdentifier: 
+  talkieName: MonkeyIntro_1_p3
+  quipsCollection: 0
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: b9f01c274675f8644805c1183637f5f2, type: 3}
+    audioClipName: R_3_1_Marcus_8_T1
+    audioString: ACK!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 9
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 76195709e7c9a6d4f84c7dd5ad684bbb, type: 3}
+    audioClipName: R_3_1_Brutus_9_T1
+    audioString: Uh?
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 5
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 59033c39ec8f3e743bee2811d0bdbea5, type: 3}
+    audioClipName: R_3_1_Marcus_10_T1
+    audioString: YOU!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 5
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 00fde7f86bb16074ea1ea2429d43cb4d, type: 3}
+    audioClipName: R_3_1_Marcus_10_T2
+    audioString: How long have you been there?!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 9
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 2efa443f04c2b644bb7b930331634fbd, type: 3}
+    audioClipName: R_3_1_Brutus_11_T1
+    audioString: "I've seen them up there for a while now\u2026 "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 5
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: db524fdaaabe58e4b936d63573720c0f, type: 3}
+    audioClipName: R_3_1_Marcus_12_T1
+    audioString: "And you didn\u2019t say anything?!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 5
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 2ae82ea76dd39eb469a59f2c3f07c422, type: 3}
+    audioClipName: R_3_1_Marcus_12_T2
+    audioString: YOU BABOON!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 4
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: b8131993973551f46abb7cfffc446864, type: 3}
+    audioClipName: R_3_1_Brutus_13_T1
+    audioString: Yawn...
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: d1556c11f3e4d574b86c00d4e0547b9b, type: 3}
+    audioClipName: R_3_1_Brutus_13_T2
+    audioString: "I thought you knew\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 8e7278921b12c4c43832912b5e87000b, type: 3}
+    audioClipName: R_3_1_Marcus_14_T1
+    audioString: Never mind that now!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 3
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: c5976bd2d79ceed4990880ebd08f105f, type: 3}
+    audioClipName: R_3_1_Marcus_14_T2
+    audioString: They know too much.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 6
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 5c14dc6bf57075f408de488febcd5900, type: 3}
+    audioClipName: R_3_1_Red_15_T1
+    audioString: We don't know anything!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 134a5ee535a297349bf4219754ecdf66, type: 3}
+    audioClipName: R_3_1_Wally_16_T1
+    audioString: 'Honest! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 10
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 8
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: ed45599cc5b2c544385d847e25fb6028, type: 3}
+    audioClipName: R_3_1_Red_17_T1
+    audioString: We just need to get through.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 10
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 6
+    rightEmotionNum: 3
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 311e844b810c3dd47b8f6c4297c619fd, type: 3}
+    audioClipName: R_3_1_Marcus_18_T1
+    audioString: "Hmm\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 10
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 6
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 3a35f1d6370f44149860e8c5e4091b1f, type: 3}
+    audioClipName: R_3_1_Marcus_18_T2
+    audioString: You know what.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 10
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 6
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: e5fa4642bf7dc4545bce6e6ed9bbcd9f, type: 3}
+    audioClipName: R_3_1_Marcus_18_T3
+    audioString: You could make this more interesting.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 6
+    rightEmotionNum: 3
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 65e7472cbbb900546bbf23df5ba6bb38, type: 3}
+    audioClipName: R_3_1_Marcus_18_T4
+    audioString: I'll tell you what.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 11
+    leftMouthEnum: 2
+    leftEyesEnum: 3
+    rightCharacter: 6
+    rightEmotionNum: 8
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 74271a8786de6634d87e863babc8bc98, type: 3}
+    audioClipName: R_3_1_Marcus_18_T5
+    audioString: If you clean up this mess, and then beat our challenge in the end,
+      we will let you pass!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 5
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 6
+    rightEmotionNum: 5
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 85d0ed2c7fe69f64a8e58391cca5d190, type: 3}
+    audioClipName: R_3_1_Brutus_19_T1
+    audioString: "So\u2026 exactly what you\u2019ve been doing before\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 5
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 6
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: f781128ad57472343894179a01cbf405, type: 3}
+    audioClipName: R_3_1_Marcus_20_T1
+    audioString: HUSH!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 099201b58e4bebf41a354a4f597c03dc, type: 3}
+    audioClipName: R_3_1_Red_21_T1
+    audioString: "If we have no other choice then that\u2019s what we\u2019ll do."
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 14
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: f9ecf1571c38a2f4f87f03f58fa3e103, type: 3}
+    audioClipName: R_3_1_Red_21_T2
+    audioString: "Let\u2019s get to it, Explorer!"

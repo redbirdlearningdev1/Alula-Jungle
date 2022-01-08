@@ -40,6 +40,15 @@ public class NewPasswordGameManager : MonoBehaviour
     // challenge word pool
     private List<ChallengeWord> wordPool;
 
+
+    [Header("Tutorial")]
+    public bool playTutorial;
+    private bool playIntro = false;
+    private int tutorialEvent = 0;
+    public ChallengeWord tutorialPolaroid1;
+    public ChallengeWord tutorialPolaroid2;
+    public ChallengeWord tutorialPolaroid3;
+
     void Awake()
     {
         if (instance == null)
@@ -56,6 +65,10 @@ public class NewPasswordGameManager : MonoBehaviour
     {
         // turn on settings button
         SettingsManager.instance.ToggleMenuButtonActive(true);
+
+        // only turn off tutorial if false
+        if (!playTutorial)
+            playTutorial = !StudentInfoSystem.GetCurrentProfile().passwordTutorial;
 
         PregameSetup();
     }
@@ -110,8 +123,31 @@ public class NewPasswordGameManager : MonoBehaviour
         polaroid.transform.position = polaroidOffScreenPos.position;
 
         // select challenge word + reset polaroid
-        currentWord = wordPool[Random.Range(0, wordPool.Count)];
-        wordPool.Remove(currentWord);
+        if (playTutorial)
+        {
+            switch (tutorialEvent)
+            {
+                case 0:
+                    currentWord = tutorialPolaroid1;
+                    break;
+
+                case 1:
+                    currentWord = tutorialPolaroid2;
+                    break;
+
+                case 2:
+                    currentWord = tutorialPolaroid3;
+                    break;
+            }
+            tutorialEvent++;
+        }
+        else
+        {
+            currentWord = wordPool[Random.Range(0, wordPool.Count)];
+            wordPool.Remove(currentWord);
+        }
+
+        
         polaroid.SetPolaroid(currentWord);
         polaroid.SetPolaroidAlpha(0f, 0f);
         yield return new WaitForSeconds(1f);
@@ -146,6 +182,61 @@ public class NewPasswordGameManager : MonoBehaviour
         PasswordLock.instance.ShowLock();
         yield return new WaitForSeconds(1f);
 
+        if (playTutorial)
+        {
+            if (tutorialEvent == 1)
+            {
+                // play tutorial intro 1
+                AudioClip clip = GameIntroDatabase.instance.passwordIntro1;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+
+                // play tutorial intro 2
+                clip = GameIntroDatabase.instance.passwordIntro2;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Marcus, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+
+                // play tutorial intro 3
+                clip = GameIntroDatabase.instance.passwordIntro3;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Brutus, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+
+                // play tutorial intro 4
+                clip = GameIntroDatabase.instance.passwordIntro4;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Marcus, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+
+                // play tutorial intro 5 + 6
+                List<AudioClip> clips = new List<AudioClip>();
+                clips.Add(GameIntroDatabase.instance.passwordIntro5);
+                clips.Add(GameIntroDatabase.instance.passwordIntro6);
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clips);
+                yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
+            }
+        }
+        else
+        {
+            if (!playIntro)
+            {
+                playIntro = true;
+
+                // play start 1
+                AudioClip clip = GameIntroDatabase.instance.passwordStart1;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Marcus, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+
+                // play start 2
+                clip = GameIntroDatabase.instance.passwordStart2;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Brutus, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+
+                // play start 3
+                clip = GameIntroDatabase.instance.passwordStart3;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+            }
+        }
+
         // show polaroid
         polaroid.GetComponent<LerpableObject>().LerpPosToTransform(polaroidOnScreenPos, 0.5f, false);
         yield return new WaitForSeconds(0.2f);
@@ -167,6 +258,47 @@ public class NewPasswordGameManager : MonoBehaviour
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.25f, "coin_dink", 0.8f + (0.1f * i));
             yield return new WaitForSeconds(0.1f);
             i++;
+        }
+
+        if (playTutorial && tutorialEvent == 1)
+        {
+            // play tutorial intro 7
+            AudioClip clip = GameIntroDatabase.instance.passwordIntro7;
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
+            yield return new WaitForSeconds(clip.length + 1f);
+
+            // play tutorial intro 8 + 9
+            List<AudioClip> clips = new List<AudioClip>();
+            clips.Add(GameIntroDatabase.instance.passwordIntro8);
+            clips.Add(GameIntroDatabase.instance.passwordIntro9);
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Brutus, clips);
+            yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
+
+            // play tutorial intro 10
+            clip = GameIntroDatabase.instance.passwordIntro10;
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
+            yield return new WaitForSeconds(clip.length + 1f);
+        }
+        else
+        {
+            // play new photo popup
+            int index = Random.Range(0, GameIntroDatabase.instance.passwordNewPhoto.Count);
+            AudioClip clip = GameIntroDatabase.instance.passwordNewPhoto[index];
+
+            switch (index)
+            {
+                case 0:
+                case 1:
+                case 2:
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
+                    yield return new WaitForSeconds(clip.length + 1f);
+                    break;
+
+                case 3:
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Brutus, clip);
+                    yield return new WaitForSeconds(clip.length + 1f);
+                    break;
+            }
         }
 
         // turn on raycaster
@@ -235,6 +367,57 @@ public class NewPasswordGameManager : MonoBehaviour
             }
             else
             {
+                // play appropriate popup
+                if (playTutorial && tutorialEvent == 1)
+                {
+                    // play tutorial intro 11
+                    AudioClip clip = GameIntroDatabase.instance.passwordIntro11;
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
+                    yield return new WaitForSeconds(clip.length + 1f);
+
+                    // play tutorial intro 12
+                    clip = GameIntroDatabase.instance.passwordIntro12;
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Marcus, clip);
+                    yield return new WaitForSeconds(clip.length + 1f);
+                }
+                else
+                {
+                    AudioClip clip = null;
+                    int index = Random.Range(0, 5);
+                    switch (index)
+                    {
+                        case 0:
+                            clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_ugh");
+                            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
+                            yield return new WaitForSeconds(clip.length + 1f);
+                            break;
+
+                        case 1:
+                            clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_grr");
+                            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
+                            yield return new WaitForSeconds(clip.length + 1f);
+                            break;
+
+                        case 2:
+                            clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("marcus_argh");
+                            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Marcus, clip);
+                            yield return new WaitForSeconds(clip.length + 1f);
+                            break;
+
+                        case 3:
+                            clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("brutus_heh");
+                            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Brutus, clip);
+                            yield return new WaitForSeconds(clip.length + 1f);
+                            break;
+
+                        case 4:
+                            clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("marcus_grr");
+                            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Marcus, clip);
+                            yield return new WaitForSeconds(clip.length + 1f);
+                            break;
+                    }
+                }
+
                 // tiger run away
                 tigerCharacter.GetComponent<Animator>().Play("aTigerTurn");
                 yield return new WaitForSeconds(0.25f);
@@ -255,10 +438,25 @@ public class NewPasswordGameManager : MonoBehaviour
         }
         else
         {
-            numMisses++;
+            // only count misses if not playing tutorial
+            if (!playTutorial)
+                numMisses++;
 
             // play wrong audio
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
+
+            if (playTutorial)
+            {
+                // show polaroid
+                polaroid.GetComponent<LerpableObject>().LerpPosToTransform(polaroidOnScreenPos, 0.5f, false);
+                yield return new WaitForSeconds(0.2f);
+                polaroid.SetPolaroidAlpha(1f, 0.2f);
+                yield return new WaitForSeconds(0.5f);
+
+                // turn on raycaster
+                NewPasswordRaycaster.instance.isOn = true;
+                yield break;
+            }
 
             PasswordLock.instance.UpgradeLock();
 
@@ -276,8 +474,40 @@ public class NewPasswordGameManager : MonoBehaviour
                 StartCoroutine(LoseRoutine());
                 yield break;
             }
-        }
+            else
+            {
+                // play appropriate popup
+                AudioClip clip = null;
+                int index = Random.Range(0, 4);
+                switch (index)
+                {
+                    case 0:
+                        clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_haha");
+                        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
+                        yield return new WaitForSeconds(clip.length + 1f);
+                        break;
 
+                    case 1:
+                        clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_ahhah");
+                        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
+                        yield return new WaitForSeconds(clip.length + 1f);
+                        break;
+
+                    case 2:
+                        clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("marcus_laugh");
+                        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Marcus, clip);
+                        yield return new WaitForSeconds(clip.length + 1f);
+                        break;
+
+                    case 3:
+                        clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("brutus_laugh");
+                        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Brutus, clip);
+                        yield return new WaitForSeconds(clip.length + 1f);
+                        break;
+                }
+            }
+        }
+        
         yield return new WaitForSeconds(0.5f);
 
         // begin next round
@@ -300,8 +530,18 @@ public class NewPasswordGameManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
         yield return new WaitForSeconds(2f);
 
-        // show stars
-        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+        if (playTutorial)
+        {
+            StudentInfoSystem.GetCurrentProfile().passwordTutorial = true;
+            StudentInfoSystem.SaveStudentPlayerData();
+
+            GameManager.instance.LoadScene("NewPasswordGame", true, 3f);
+        }
+        else
+        {
+            // show stars
+            StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+        }
     }
 
     private int CalculateStars()

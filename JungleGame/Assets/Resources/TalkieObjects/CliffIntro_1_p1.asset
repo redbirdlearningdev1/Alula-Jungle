@@ -62,7 +62,7 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 4
+    rightEmotionNum: 13
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
@@ -74,7 +74,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 1
+    leftEmotionNum: 11
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 2
@@ -90,11 +90,11 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 1
+    leftEmotionNum: 11
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 11
+    rightEmotionNum: 13
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2

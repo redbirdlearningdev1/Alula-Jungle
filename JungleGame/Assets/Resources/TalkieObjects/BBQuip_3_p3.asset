@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: BBQuip_3_p3
+  m_EditorClassIdentifier: 
+  talkieName: BBQuip_3_p3
+  quipsCollection: 0
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 7
+    rightEmotionNum: 3
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: ab7673961960c3e48ad2c71f0e96cfae, type: 3}
+    audioClipName: E_5_3_Wally_1_T1
+    audioString: Hang in there.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 4
+    leftMouthEnum: 2
+    leftEyesEnum: 2
+    rightCharacter: 7
+    rightEmotionNum: 21
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 99a77c4246501d34d954a4c4a833b498, type: 3}
+    audioClipName: E_5_3_Julius_2_T1
+    audioString: Ugh...

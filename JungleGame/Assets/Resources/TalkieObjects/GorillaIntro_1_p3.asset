@@ -212,7 +212,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: f9f7961150b609d42bb570c82c303996, type: 3}
     audioClipName: P_1_1_Darwin_31_T2
-    audioString: Why did you do this?
+    audioString: Why did you do this, Julius?
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

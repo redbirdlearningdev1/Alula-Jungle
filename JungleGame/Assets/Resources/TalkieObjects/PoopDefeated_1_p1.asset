@@ -59,15 +59,15 @@ MonoBehaviour:
     onNoGoto: 0
     leftCharacter: 6
     leftEmotionNum: 10
-    leftMouthEnum: 2
+    leftMouthEnum: 1
     leftEyesEnum: 0
     rightCharacter: 5
     rightEmotionNum: 10
-    rightMouthEnum: 1
+    rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 2
-    audioClip: {fileID: 0}
-    audioClipName: B_3_3_Brutus_3_T1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: b69bd1b5fa8ce5c45b0ab81ddd3e27d1, type: 3}
+    audioClipName: B_3_3_Marcus_2_T2
     audioString: It smells awful, let's just move on ahead.
   - endTalkieAfterThisSegment: 0
     requireYN: 0

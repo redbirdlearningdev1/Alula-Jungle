@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: BBTryAgain_1_p1
+  m_EditorClassIdentifier: 
+  talkieName: BBTryAgain_1_p1
+  quipsCollection: 0
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 1
+    onYesGoto: 3
+    onNoGoto: 1
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: b061a09af4c6c684e9728fe035df8694, type: 3}
+    audioClipName: E_2_3_Julius_1_T1
+    audioString: Are you ready to challenge me?
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: d79617fc6872d9f4687f035372121352, type: 3}
+    audioClipName: E_2_3_Julius_2_T1
+    audioString: "Hmph\u2026"
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 21
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 3906f18a5857e73449eb317fd4c20f08, type: 3}
+    audioClipName: E_2_3_Julius_2_T2
+    audioString: "Then leave me alone\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 3
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 49b280b091c6a3448b9fde909510aaf2, type: 3}
+    audioClipName: E_2_3_Julius_3_T1
+    audioString: "Alright\u2026"
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 675e823019d55f24c90cebea142de53f, type: 3}
+    audioClipName: E_2_3_Julius_3_T2
+    audioString: Let's do this.

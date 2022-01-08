@@ -2766,6 +2766,10 @@ MonoBehaviour:
   expandedCoinSize: {x: 124, y: 140}
   waterNormalCoinSize: {x: 90, y: 100}
   waterExpandedCoinSize: {x: 100, y: 115}
+  playTutorial: 0
+  tutorialPair1: {fileID: 11400000, guid: 8744e1f160aaf0e4990f0bb337778163, type: 2}
+  tutorialPair2: {fileID: 11400000, guid: f834ec4cd9b3d724889d0c88fef45c0e, type: 2}
+  tutorialPair3: {fileID: 11400000, guid: 0cc4303c876b83a4d9699658ad785b0b, type: 2}
   overrideWord: 0
   testObject: {fileID: 0}
 --- !u!114 &1160915249
@@ -4776,7 +4780,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 10.214114
+      value: 10.49492
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

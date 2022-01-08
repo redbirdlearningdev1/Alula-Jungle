@@ -3262,7 +3262,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 10.371097
+      value: 10.618788
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -4432,7 +4432,7 @@ GameObject:
   - component: {fileID: 884763317}
   - component: {fileID: 884763316}
   m_Layer: 5
-  m_Name: unlockAllButton
+  m_Name: activateAllButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4455,7 +4455,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -129, y: -32.874}
+  m_AnchoredPosition: {x: -129, y: -32.874004}
   m_SizeDelta: {x: 239.94, y: 65.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &884763316
@@ -4504,7 +4504,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1239563237}
         m_TargetAssemblyTypeName: DevMenuManager, Assembly-CSharp
-        m_MethodName: UnlockAllTutorials
+        m_MethodName: ActivateAllTutorials
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6552,7 +6552,7 @@ GameObject:
   - component: {fileID: 1293421098}
   - component: {fileID: 1293421097}
   m_Layer: 5
-  m_Name: lockAllButton
+  m_Name: disableAllButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6575,7 +6575,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 127, y: -32.875}
+  m_AnchoredPosition: {x: 127, y: -32.874996}
   m_SizeDelta: {x: 239.94, y: 65.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1293421097
@@ -6624,7 +6624,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1239563237}
         m_TargetAssemblyTypeName: DevMenuManager, Assembly-CSharp
-        m_MethodName: LockAllTutorials
+        m_MethodName: DisableAllTutorials
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7271,7 +7271,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: lock all
+  m_text: disable all
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5fb3e891f6ca42f488b7612cc49bf181, type: 2}
   m_sharedMaterial: {fileID: 6940129555951141546, guid: 5fb3e891f6ca42f488b7612cc49bf181,
@@ -8796,7 +8796,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: unlock game tutorials
+  m_text: set game tutorials
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5fb3e891f6ca42f488b7612cc49bf181, type: 2}
   m_sharedMaterial: {fileID: 6940129555951141546, guid: 5fb3e891f6ca42f488b7612cc49bf181,
@@ -10198,7 +10198,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: unlock all
+  m_text: activate all
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5fb3e891f6ca42f488b7612cc49bf181, type: 2}
   m_sharedMaterial: {fileID: 6940129555951141546, guid: 5fb3e891f6ca42f488b7612cc49bf181,

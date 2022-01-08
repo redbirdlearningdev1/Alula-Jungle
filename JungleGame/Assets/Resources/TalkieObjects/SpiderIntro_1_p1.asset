@@ -138,7 +138,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 2
-    leftEmotionNum: 7
+    leftEmotionNum: 13
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
@@ -154,7 +154,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 2
-    leftEmotionNum: 7
+    leftEmotionNum: 13
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3

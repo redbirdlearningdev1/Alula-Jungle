@@ -1,0 +1,200 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: DarwinQuips_1_p3
+  m_EditorClassIdentifier: 
+  talkieName: DarwinQuips_1_p3
+  quipsCollection: 1
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 151de9e7483fa3b419d9706a73a029c9, type: 3}
+    audioClipName: R_2_2_Darwin_1_T1
+    audioString: Ah!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: aa2b0ff61bb7f4f4784b8876999ba785, type: 3}
+    audioClipName: R_2_2_Darwin_1_T2
+    audioString: Look at this one!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 15
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 2bae134d7c44e1246bdb7d6263e91cf5, type: 3}
+    audioClipName: R_2_2_Darwin_1_T3
+    audioString: 'He loved drawing stripes on everything... '
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 76668805d6b474949bb9ac09b67c62a7, type: 3}
+    audioClipName: R_2_2_Darwin_1_T4
+    audioString: Such a funny cub.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: deaeaf9af0a155446bb62ae0be025f82, type: 3}
+    audioClipName: R_2_2_Darwin_2_T1
+    audioString: 'I know we can do it! '
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: a87773c1040a43745b1d9bb11ee6cfa0, type: 3}
+    audioClipName: R_2_2_Darwin_2_T2
+    audioString: I know we can help him!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 32bacf13b710ff047b49d586a86a9494, type: 3}
+    audioClipName: R_2_2_Darwin_3_T1
+    audioString: "This drawing\u2019s my uh... "
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 15
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 3c0e4c585f2553d4c94ec443919713e8, type: 3}
+    audioClipName: R_2_2_Darwin_3_T2
+    audioString: favorite...
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 12
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: bd9eadd676607df439bbd4bb64c75caa, type: 3}
+    audioClipName: R_2_2_Darwin_4_T1
+    audioString: "He has to know how much he matters\u2026 "
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 12
+    leftMouthEnum: 1
+    leftEyesEnum: 4
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 2050228852760e74e862a58db87d51de, type: 3}
+    audioClipName: R_2_2_Darwin_4_T2
+    audioString: "He doesn\u2019t have to do things he doesn\u2019t want to do to
+      have friends..."
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 12
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: a50b7ab13372d7f4abf38eec495a87ff, type: 3}
+    audioClipName: R_2_2_Darwin_5_T1
+    audioString: Julius needs us! I just know it!

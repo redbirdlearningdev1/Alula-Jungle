@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: MermaidQuips_1_p1
+  m_EditorClassIdentifier: 
+  talkieName: MermaidQuips_1_p1
+  quipsCollection: 1
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  segmnets:
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 12
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: c0782ae9e76203b4d8fbd8fe7544ffc6, type: 3}
+    audioClipName: EJ_1_2_Celeste_1_T1
+    audioString: "Can\u2019t believe they trashed the ocean or whateva!"
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 13
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 7a03e92c8826a8e409d5d6f06b65aa5e, type: 3}
+    audioClipName: EJ_1_2_Sylvie_2_T1
+    audioString: Ugh this trash stinks, please hurry up and help us clean it!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: d528641fa3442db4ab9a76455260b8dc, type: 3}
+    audioClipName: EJ_1_2_Celeste_3_T1
+    audioString: "It\u2019s like, not good to put plastic in the ocean or whateva!"
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: e11712f92dc897d48bbb0dd488aa4d4d, type: 3}
+    audioClipName: EJ_1_2_Sylvie_3_T2
+    audioString: Yeah! Not cool!

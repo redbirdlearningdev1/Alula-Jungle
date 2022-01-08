@@ -105,15 +105,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 0
-    leftEmotionNum: 0
-    leftMouthEnum: 0
+    leftCharacter: 6
+    leftEmotionNum: 2
+    leftMouthEnum: 2
     leftEyesEnum: 0
-    rightCharacter: 6
-    rightEmotionNum: 2
+    rightCharacter: 5
+    rightEmotionNum: 7
     rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 2
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: a53f12abd3f94df4f8f721fee9a7c8a5, type: 3}
     audioClipName: Cha_0_2a_Marcus_2_T1
     audioString: Take that Explorer!
@@ -121,15 +121,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 0
-    leftEmotionNum: 0
-    leftMouthEnum: 0
+    leftCharacter: 6
+    leftEmotionNum: 3
+    leftMouthEnum: 2
     leftEyesEnum: 0
-    rightCharacter: 6
-    rightEmotionNum: 3
+    rightCharacter: 5
+    rightEmotionNum: 7
     rightMouthEnum: 2
     rightEyesEnum: 0
-    activeCharacter: 2
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 9b9e798724cdde94ea18e2f942e1898e, type: 3}
     audioClipName: Cha_0_2a_Marcus_2_T2
     audioString: "I knew we\u2019d beat you!"

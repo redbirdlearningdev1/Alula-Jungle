@@ -1,0 +1,184 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: PirateIntro_1_p1
+  m_EditorClassIdentifier: 
+  talkieName: PirateIntro_1_p1
+  quipsCollection: 0
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 0
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 6
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 7addd09270d284349b95a36bb60e0b6f, type: 3}
+    audioClipName: FR_2_1_Red_1_T1
+    audioString: Whoa! Look at that!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 31238184c61cdd64cbbf01d2ff500387, type: 3}
+    audioClipName: FR_2_1_Wally_2_T1
+    audioString: "I\u2019ve never seen a pirate ship before!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 01b0f36bc8132ee47b78e04937d3fe25, type: 3}
+    audioClipName: FR_2_1_Red_3_T1
+    audioString: Me neither!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: d99d3ce7eda21c441aa1281461322359, type: 3}
+    audioClipName: FR_2_1_Wally_4_T1
+    audioString: "Hmm\u2026 It seems to be in rough shape."
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 294e0673c1a480e419f68cad2df8d631, type: 3}
+    audioClipName: FR_2_1_Red_5_T1
+    audioString: Do you think the Prince did this?
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 8
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 3a64da67b02a48a48bab3056625c0cfc, type: 3}
+    audioClipName: FR_2_1_Wally_6_T1
+    audioString: "I wouldn\u2019t be surprised."
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 0462622dbaff1904c80a2c988cc3e0ee, type: 3}
+    audioClipName: FR_2_1_Wally_6_T2
+    audioString: However, this ship looks like it's been falling apart for a while
+      now.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 27060c42ab1c80447a56613f2f6aaa75, type: 3}
+    audioClipName: FR_2_1_Red_7_T1
+    audioString: True, it does look that way.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 3
+    audioClip: {fileID: 8300000, guid: db2be0575ae2e9b499eef04593277cb3, type: 3}
+    audioClipName: FR_2_1_RedWally_8_T1
+    audioString: "H-Help! \u2026. Help\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 3
+    audioClip: {fileID: 0}
+    audioClipName: RedWally_Huh
+    audioString: Huh?!

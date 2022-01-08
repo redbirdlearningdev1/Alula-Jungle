@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: MermaidQuips_2_p1
+  m_EditorClassIdentifier: 
+  talkieName: MermaidQuips_2_p1
+  quipsCollection: 1
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 0
+  segmnets:
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 13
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 3
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: b425b4eeef5ee6e44825f30bd9540afc, type: 3}
+    audioClipName: EJ_1_3_Sylvie_1_T1
+    audioString: "Hey Explorer! Wanna come in for a swim? The water\u2019s great!"
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 12
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 85d009501e2a6a5409f90f86f01201e1, type: 3}
+    audioClipName: EJ_1_3_Celeste_2_T1
+    audioString: "Did you come to enjoy the sun too? I\u2019m getting my like, tan
+      on!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 5
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 9406b17f767349b4f95fd98e3eda0a09, type: 3}
+    audioClipName: EJ_1_3_Celeste_3_T1
+    audioString: I love hanging out with friends or whateva, but especially with
+      Sylvie!
+  - endTalkieAfterThisSegment: 1
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 8
+    leftMouthEnum: 2
+    leftEyesEnum: 3
+    rightCharacter: 13
+    rightEmotionNum: 8
+    rightMouthEnum: 1
+    rightEyesEnum: 3
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: c44ee8850b9a82d4abf8d200bfe1d276, type: 3}
+    audioClipName: EJ_1_3_Sylvie_3_T2
+    audioString: "The water\u2019s always better with you Celeste!"

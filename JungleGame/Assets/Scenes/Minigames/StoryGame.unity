@@ -1024,7 +1024,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 45.90257
+      value: 45.911213
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -1660,7 +1660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151db7b06aa6cba4d9ce1b2f0f684e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overrideGame: 1
+  overrideGame: 0
   storyGameIndex: 1
   coin: {fileID: 1653332658}
   dancingMan: {fileID: 1034302397}

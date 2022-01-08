@@ -30,7 +30,7 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 7
-    rightEmotionNum: 2
+    rightEmotionNum: 12
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
@@ -46,7 +46,7 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 7
-    rightEmotionNum: 4
+    rightEmotionNum: 9
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
@@ -62,9 +62,9 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 7
-    rightEmotionNum: 1
-    rightMouthEnum: 1
-    rightEyesEnum: 2
+    rightEmotionNum: 21
+    rightMouthEnum: 2
+    rightEyesEnum: 4
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 8d236431ef850d248a8eb372ee4b2baf, type: 3}
     audioClipName: Cha_0_1f_Julius_3_T1

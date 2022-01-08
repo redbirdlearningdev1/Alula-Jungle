@@ -50,8 +50,8 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
-    audioClipName: P_1_1a_Darwin_2_T2
+    audioClip: {fileID: 8300000, guid: 1fd6d540b4ee0f5479da36901d5196cf, type: 3}
+    audioClipName: P_1_1a_Darwin_1_T2
     audioString: Come talk to me so I can...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -66,8 +66,8 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
-    audioClipName: P_1_1a_Darwin_2_T3
+    audioClip: {fileID: 8300000, guid: dc6e46f4956e6db4eaffe33ca7787aa7, type: 3}
+    audioClipName: P_1_1a_Darwin_1_T3
     audioString: uhh...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -82,6 +82,6 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
-    audioClipName: P_1_1a_Darwin_2_T4
+    audioClip: {fileID: 8300000, guid: c729728bb1c39b7448c8632a5d7b8eb5, type: 3}
+    audioClipName: P_1_1a_Darwin_1_T4
     audioString: "prepare you for the challenges you\u2019ll face!"

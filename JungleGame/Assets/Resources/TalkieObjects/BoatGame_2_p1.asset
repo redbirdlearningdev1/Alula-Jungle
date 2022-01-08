@@ -68,7 +68,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 3e8533b54289fb545b602dbfd5d6b9ee, type: 3}
     audioClipName: Boat_0_2_Red_1_T3
-    audioString: 'Well.. '
+    audioString: '... Well.. '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

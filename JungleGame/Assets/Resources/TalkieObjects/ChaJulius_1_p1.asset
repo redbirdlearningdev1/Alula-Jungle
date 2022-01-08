@@ -22,9 +22,9 @@ MonoBehaviour:
   removeLetterboxAfterTalkie: 1
   segmnets:
   - endTalkieAfterThisSegment: 0
-    requireYN: 1
-    onYesGoto: 1
-    onNoGoto: 2
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
     leftCharacter: 0
     leftEmotionNum: 0
     leftMouthEnum: 0
@@ -36,7 +36,39 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: a86822988c82dd448b6e4bd91f610d60, type: 3}
     audioClipName: Cha_0_1b_Julius_1_T1
-    audioString: Grrowr! Come on Explorer, are you ready to challenge me again?
+    audioString: 'Grrowr! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 0}
+    audioClipName: Cha_0_1b_Julius_1_T2
+    audioString: Come on Explorer,
+  - endTalkieAfterThisSegment: 0
+    requireYN: 1
+    onYesGoto: 3
+    onNoGoto: 4
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 0}
+    audioClipName: Cha_0_1b_Julius_1_T3
+    audioString: are you ready to challenge me again?
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0

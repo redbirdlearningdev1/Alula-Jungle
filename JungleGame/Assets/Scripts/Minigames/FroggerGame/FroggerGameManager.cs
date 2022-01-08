@@ -375,6 +375,14 @@ public class FroggerGameManager : MonoBehaviour
         List<AudioClip> clips = new List<AudioClip>();
         clips.Add(GameIntroDatabase.instance.froggerIntro1);
         clips.Add(GameIntroDatabase.instance.froggerIntro2);
+
+        Debug.Log("frogger intro 1: " + GameIntroDatabase.instance.froggerIntro1);
+        Debug.Log("frogger intro 2: " + GameIntroDatabase.instance.froggerIntro2);
+
+        Debug.Log("tutorial popup controller instance: " + TutorialPopupController.instance);
+        Debug.Log("tutorial popup controller position: " + TutorialPopupController.instance.topRight);
+        Debug.Log("clips: " + clips);
+
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clips);
         yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
 

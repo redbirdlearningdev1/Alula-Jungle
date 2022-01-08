@@ -762,6 +762,8 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                 return TalkieCharacter.Celeste;
             case "sylvie":
                 return TalkieCharacter.Sylvie;
+            case "taxi":
+                return TalkieCharacter.Taxi;
             default:    
                 GameManager.instance.SendError(this, "invalid talkie character: \'" + str + "\'");
                 return TalkieCharacter.None;

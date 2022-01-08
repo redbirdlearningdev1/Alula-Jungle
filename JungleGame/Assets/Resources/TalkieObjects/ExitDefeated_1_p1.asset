@@ -1,0 +1,215 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: ExitDefeated_1_p1
+  m_EditorClassIdentifier: 
+  talkieName: ExitDefeated_1_p1
+  quipsCollection: 0
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 0
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 21
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: f23c508119696064dadcd61fa45bfee7, type: 3}
+    audioClipName: R_1_3_Julius_1_T1
+    audioString: "\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 3
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 5898eac2e3180204bae73b7614816c90, type: 3}
+    audioClipName: R_1_3_Red_2_T1
+    audioString: 'Good job Explorer! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 2
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 2118549aa85e98e4aae7b689d7b595d8, type: 3}
+    audioClipName: R_1_3_Red_2_T2
+    audioString: I knew you could do it!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 2
+    rightCharacter: 2
+    rightEmotionNum: 15
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 1ddb5a711fcd8d142aff99b4d1807d26, type: 3}
+    audioClipName: R_1_3_Wally_3_T1
+    audioString: Awesome job, Explorer.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 5
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 82c9623ed8d5507449f15f829dc9c167, type: 3}
+    audioClipName: R_1_3_Marcus_4_T1
+    audioString: HOW DARE YOU!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 31cb8be906d8a174684124129cad4f05, type: 3}
+    audioClipName: R_1_3_Brutus_5_T1
+    audioString: "Yawn\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 7
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 49f20e1a3e9df31469a6fcc9e2d986c4, type: 3}
+    audioClipName: R_1_3_Brutus_5_T2
+    audioString: "Dang\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 7
+    leftEmotionNum: 21
+    leftMouthEnum: 1
+    leftEyesEnum: 4
+    rightCharacter: 5
+    rightEmotionNum: 5
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 6362f9c36af18c944aa4e5c274bcbc7b, type: 3}
+    audioClipName: R_1_3_Julius_6_T1
+    audioString: "Let's just go\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 7
+    leftEmotionNum: 21
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 6
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 2693ce5412c11854eb5d9aff5879c16a, type: 3}
+    audioClipName: R_1_3_Marcus_7_T1
+    audioString: But your highness!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 7
+    leftEmotionNum: 21
+    leftMouthEnum: 2
+    leftEyesEnum: 4
+    rightCharacter: 6
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 0d4c56687836b224b9f8c0cbd3b07149, type: 3}
+    audioClipName: R_1_3_Julius_8_T1
+    audioString: "\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 7
+    leftEmotionNum: 21
+    leftMouthEnum: 2
+    leftEyesEnum: 4
+    rightCharacter: 5
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 5436af6174065f142a3c7aa08c8ad09a, type: 3}
+    audioClipName: R_1_3_Brutus_9_T1
+    audioString: "Yeah\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 7
+    leftEmotionNum: 21
+    leftMouthEnum: 2
+    leftEyesEnum: 4
+    rightCharacter: 5
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 1753b3303e5b2e648848f26d9df2fd1c, type: 3}
+    audioClipName: R_1_3_Brutus_9_T2
+    audioString: "Whatever\u2026"

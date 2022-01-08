@@ -145,6 +145,10 @@ public class TalkieDatabase : MonoBehaviour
     [Header("Talkie Reaction Duplicates")]
     public List<AudioClip> marcusLaughList;
     public List<AudioClip> brutusLaughList;
+    public List<AudioClip> marcusArghList;
+    public List<AudioClip> marcusGrrList;
+    public List<AudioClip> brutusHehList;
+
     public List<AudioClip> redWallyGaspList;
     public List<AudioClip> redWallyWhatList;
     public List<AudioClip> redWallyHuhList;
@@ -223,6 +227,10 @@ public class TalkieDatabase : MonoBehaviour
             default: return null;
             case "marcus_laugh": return marcusLaughList[Random.Range(0, marcusLaughList.Count)];
             case "brutus_laugh": return brutusLaughList[Random.Range(0, brutusLaughList.Count)];
+            case "brutus_heh": return brutusHehList[Random.Range(0, brutusHehList.Count)];
+            case "marcus_argh": return marcusArghList[Random.Range(0, marcusArghList.Count)];
+            case "marcus_grr": return marcusGrrList[Random.Range(0, marcusGrrList.Count)];
+
             case "redwally_gasp": return redWallyGaspList[Random.Range(0, redWallyGaspList.Count)];
             case "redwally_what": return redWallyWhatList[Random.Range(0, redWallyWhatList.Count)];
             case "redwally_huh": return redWallyHuhList[Random.Range(0, redWallyHuhList.Count)];

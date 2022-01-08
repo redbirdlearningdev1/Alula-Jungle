@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: BBLose_1_p1
+  m_EditorClassIdentifier: 
+  talkieName: BBLose_1_p1
+  quipsCollection: 0
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 14
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 2
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 2fca55934b7b07b4ebcf0ecc83d2d65f, type: 3}
+    audioClipName: E_2_2_Darwin_1_T1
+    audioString: Julius!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 14
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 2
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 1fd7e8911ef3e224fa2079d7ee9f468c, type: 3}
+    audioClipName: E_2_2_Darwin_1_T2
+    audioString: Wait!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 6
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 71d69f2e0e807664d9143b4114548dd3, type: 3}
+    audioClipName: E_2_2_Julius_2_T1
+    audioString: No Darwin!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 6
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 5500ff8570cec6d429d6152995f6e5b4, type: 3}
+    audioClipName: E_2_2_Julius_2_T2
+    audioString: A deal is a deal.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 6
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 2a810ef1f385c3146bc348848df000fc, type: 3}
+    audioClipName: E_2_2_Julius_2_T3
+    audioString: "Come back and challenge me again when you\u2019re ready."
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 14
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 36d478d79663c89438e4fbadd6cb958e, type: 3}
+    audioClipName: E_2_2_Red_3_T1
+    audioString: "Let\u2019s go practice some more, Explorer!"

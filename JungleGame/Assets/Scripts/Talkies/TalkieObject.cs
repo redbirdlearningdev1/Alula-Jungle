@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum TalkieCharacter
 {
-    None, Red, Wally, Darwin, Lester, Brutus, Marcus, Julius, Clogg, Spindle, Bubbles, Ollie, Celeste, Sylvie
+    None, Red, Wally, Darwin, Lester, Brutus, Marcus, Julius, Clogg, Spindle, Bubbles, Ollie, Celeste, Sylvie, Taxi
 }
 
 public enum TalkieMouth

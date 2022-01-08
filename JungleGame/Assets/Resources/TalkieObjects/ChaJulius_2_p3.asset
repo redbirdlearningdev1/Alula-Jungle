@@ -25,15 +25,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 0
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
-    rightCharacter: 7
-    rightEmotionNum: 21
-    rightMouthEnum: 2
-    rightEyesEnum: 2
-    activeCharacter: 2
+    leftCharacter: 7
+    leftEmotionNum: 21
+    leftMouthEnum: 2
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: fbed3cc123a36674f9023bac1005f473, type: 3}
     audioClipName: Cha_0_1h_Julius_1_T1
     audioString: ...

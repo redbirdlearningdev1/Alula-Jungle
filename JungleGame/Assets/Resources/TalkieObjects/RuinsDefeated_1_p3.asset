@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: RuinsDefeated_1_p3
+  m_EditorClassIdentifier: 
+  talkieName: RuinsDefeated_1_p3
+  quipsCollection: 0
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 21c89258b8022df41b4db0a682cd2d19, type: 3}
+    audioClipName: EJ_2_3_Red_8_T1
+    audioString: "I\u2019m really proud of you Explorer! "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 17
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 41184b1ae19ab714b9b93382a0c77163, type: 3}
+    audioClipName: EJ_2_3_Red_8_T2
+    audioString: "You\u2019ve learned so much!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 3
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 663d9d35f30ea6246a23472dcf25ccd2, type: 3}
+    audioClipName: EJ_2_3_Wally_9_T1
+    audioString: Good work.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 3
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 7a1b2ed65a879b940a68aaf4cf974212, type: 3}
+    audioClipName: EJ_2_3_Red_10_T1
+    audioString: Darwin should be up ahead!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 14
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 2
+    rightEmotionNum: 5
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 747cb8e7460c802488a997bc2ec43f22, type: 3}
+    audioClipName: EJ_2_3_Red_10_T2
+    audioString: "Let\u2019s get going!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 14
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: e74a0994d331f0044be4eb4c91f7b411, type: 3}
+    audioClipName: EJ_2_3_Wally_11_T1
+    audioString: You betcha!

@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: Taxi_1_p1
+  m_EditorClassIdentifier: 
+  talkieName: Taxi_1_p1
+  quipsCollection: 0
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 14
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 9344169872126d0489409d75f125711a, type: 3}
+    audioClipName: E_1_1_Taxi_1_T1
+    audioString: Woah there Explorer!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 14
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 9745a1273995f7641a807aca37a25192, type: 3}
+    audioClipName: E_1_1_Taxi_1_T2
+    audioString: "This old bird isn\u2019t ready for take off yet."
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 14
+    rightEmotionNum: 3
+    rightMouthEnum: 1
+    rightEyesEnum: 3
+    activeCharacter: 0
+    audioClip: {fileID: 8300000, guid: 104b2053bb2306e41a71284152d743c5, type: 3}
+    audioClipName: E_1_1_Taxi_1_T3
+    audioString: Laugh

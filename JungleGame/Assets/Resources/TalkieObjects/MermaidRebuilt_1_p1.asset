@@ -1,0 +1,231 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: MermaidRebuilt_1_p1
+  m_EditorClassIdentifier: 
+  talkieName: MermaidRebuilt_1_p1
+  quipsCollection: 0
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 0
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: a6be06998ac569249bbfa1d62b04eebc, type: 3}
+    audioClipName: EJ_1_4_Red_1_T1
+    audioString: There!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 3
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 15fe9a74ca10e834f9e0c9889845c845, type: 3}
+    audioClipName: EJ_1_4_Red_1_T2
+    audioString: All done!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: a18ec540dda410740bb743d3167ddde7, type: 3}
+    audioClipName: EJ_1_4_Wally_2_T1
+    audioString: How do you guys feel?
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 13
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 4263422a9dd9c4c41845e182db381a86, type: 3}
+    audioClipName: EJ_1_4_Sylvie_3_T1
+    audioString: Sooo much better,
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 13
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 2
+    rightEmotionNum: 2
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 3f372da99a288554a88d8bec5700c2a8, type: 3}
+    audioClipName: EJ_1_4_Sylvie_3_T2
+    audioString: thank you guys so much!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 2
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: fc15244732d2d5740bca055da0221fc3, type: 3}
+    audioClipName: EJ_1_4_Celeste_4_T1
+    audioString: Yeah! Like thank you or whatevaa.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 11
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 7babe14dbd875eb4b97f1ebd49001b3c, type: 3}
+    audioClipName: EJ_1_4_Red_5_T1
+    audioString: I'm so glad we were able to help!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 10
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: b520ca1d59525744887afd8aa5cc1c37, type: 3}
+    audioClipName: EJ_1_4_Wally_6_T1
+    audioString: Hey Darwin,
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 10
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: becd967d36555b64d98754e65513a334, type: 3}
+    audioClipName: EJ_1_4_Wally_6_T2
+    audioString: have you thought of any stories to tell?
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 13
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: e686ba499c5cdad42b3b201ea2b8450f, type: 3}
+    audioClipName: EJ_1_4_Darwin_7_T1
+    audioString: Oh yes indeed!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 3
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 3
+    rightEmotionNum: 2
+    rightMouthEnum: 2
+    rightEyesEnum: 3
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 2c66d6317fc3eed469e7013f235d4119, type: 3}
+    audioClipName: EJ_1_4_Red_8_T1
+    audioString: That makes me so happy!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 11
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 2
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: baf87585a4965aa478be35708e3c16d2, type: 3}
+    audioClipName: EJ_1_4_Wally_9_T1
+    audioString: "Now don\u2019t go running off on us- "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 6
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 3
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 18c08debb1c40d449b03206ebda187ea, type: 3}
+    audioClipName: EJ_1_4_Darwin_10_T1
+    audioString: I'm so excited! I just have to go find Julius!

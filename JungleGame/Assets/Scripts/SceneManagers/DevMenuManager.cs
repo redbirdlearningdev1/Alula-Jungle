@@ -368,7 +368,7 @@ public class DevMenuManager : MonoBehaviour
     ################################################
     */
 
-    public void UnlockAllTutorials()
+    public void DisableAllTutorials()
     {
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
@@ -392,7 +392,7 @@ public class DevMenuManager : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
     }
 
-    public void LockAllTutorials()
+    public void ActivateAllTutorials()
     {
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);

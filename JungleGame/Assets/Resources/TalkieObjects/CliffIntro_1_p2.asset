@@ -153,15 +153,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 0
-    leftEmotionNum: 0
-    leftMouthEnum: 0
+    leftCharacter: 6
+    leftEmotionNum: 4
+    leftMouthEnum: 1
     leftEyesEnum: 0
-    rightCharacter: 6
-    rightEmotionNum: 4
-    rightMouthEnum: 1
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 2
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 987b5d984fb8e964f9ea91a9a72d3bee, type: 3}
     audioClipName: FR_1_1_Marcus_13_T1
     audioString: You know nothing!
@@ -298,7 +298,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 1
+    leftEmotionNum: 15
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 7
@@ -315,7 +315,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 1
+    leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 7
@@ -331,7 +331,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 1
+    leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 7
@@ -347,7 +347,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 1
+    leftEmotionNum: 15
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 7
@@ -363,7 +363,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 2
+    leftEmotionNum: 15
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 7

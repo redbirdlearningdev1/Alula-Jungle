@@ -52,8 +52,23 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: e31cd16c33eecc3469644019ede3d1ca, type: 3}
     audioClipName: RR_1_1_Marcus_1_T1
-    audioString: "Slow down Explorer! You\u2019ll ruin our fun by cleaning up so
-      fast!"
+    audioString: 'Slow down Explorer! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 3
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 4f0be29577ef28f42bfd94542b2f6cf5, type: 3}
+    audioClipName: RR_1_1_Marcus_1_T2
+    audioString: "You\u2019ll ruin our fun by cleaning up so fast!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

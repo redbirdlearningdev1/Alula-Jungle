@@ -58,9 +58,9 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 0
-    leftMouthEnum: 0
-    leftEyesEnum: 0
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 2
     rightCharacter: 0
     rightEmotionNum: 0
     rightMouthEnum: 0

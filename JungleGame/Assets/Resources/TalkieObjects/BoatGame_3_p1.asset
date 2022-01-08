@@ -28,7 +28,7 @@ MonoBehaviour:
     leftCharacter: 1
     leftEmotionNum: 9
     leftMouthEnum: 1
-    leftEyesEnum: 4
+    leftEyesEnum: 2
     rightCharacter: 0
     rightEmotionNum: 0
     rightMouthEnum: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
     leftCharacter: 1
     leftEmotionNum: 9
     leftMouthEnum: 1
-    leftEyesEnum: 4
+    leftEyesEnum: 2
     rightCharacter: 0
     rightEmotionNum: 0
     rightMouthEnum: 0

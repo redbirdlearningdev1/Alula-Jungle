@@ -208,7 +208,7 @@ MonoBehaviour:
     leftEyesEnum: 0
     rightCharacter: 8
     rightEmotionNum: 8
-    rightMouthEnum: 2
+    rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 29ad3798123b24f419fe62f5b7854b9a, type: 3}

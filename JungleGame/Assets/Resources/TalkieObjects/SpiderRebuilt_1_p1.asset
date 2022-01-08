@@ -46,9 +46,9 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 3
     rightCharacter: 2
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 45df7d3fe9ea99143a5519581ce8f60a, type: 3}
     audioClipName: B_1_3_Red_1_T2
@@ -186,7 +186,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 1
+    leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
@@ -202,7 +202,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 1
+    leftEmotionNum: 14
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3

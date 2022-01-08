@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: BBQuip_2_p1
+  m_EditorClassIdentifier: 
+  talkieName: BBQuip_2_p1
+  quipsCollection: 0
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 14
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 255545e72798dc9449ad4058c89856d3, type: 3}
+    audioClipName: E_4_1_Darwin_1_T1
+    audioString: Julius!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 6
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: d88a3e7602f153749ab2843d0cb50549, type: 3}
+    audioClipName: E_4_1_Darwin_1_T2
+    audioString: "There\u2019s more I have to tell you!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 12
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 3
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 52f21306c8570cc489054850e215c7a3, type: 3}
+    audioClipName: E_4_1_Julius_2_T1
+    audioString: "\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 12
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 21
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 921725811c0cff947b064b6fb9f37394, type: 3}
+    audioClipName: E_4_1_Julius_2_T2
+    audioString: "You left me Darwin\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 6
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 21
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 857a830a01544bc4083896732e82d074, type: 3}
+    audioClipName: E_4_1_Julius_2_T3
+    audioString: "I don\u2019t want to hear it..."

@@ -436,7 +436,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 1ca4e0cc63d18af4f9b4c6e345acac87, type: 3}
     audioClipName: P_1_5_Brutus_26_T2
-    audioString: you tell them buddy...
+    audioString: what he said...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

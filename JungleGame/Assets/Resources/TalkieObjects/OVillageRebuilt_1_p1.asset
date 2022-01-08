@@ -116,7 +116,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 29cce33485ea6764cadaa690cd7f3c00, type: 3}
     audioClipName: P_3_2_Clogg_4_T1
-    audioString: '"My name is Clogg, not ""orc."""'
+    audioString: That's my name, Clogg
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -260,7 +260,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 524bb3c430e533d40948d53aeea1ac78, type: 3}
     audioClipName: P_3_2_Wally_9_T1
-    audioString: Well Clogg,
+    audioString: Well, you see Clogg,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

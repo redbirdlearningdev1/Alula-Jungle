@@ -111,7 +111,7 @@ MonoBehaviour:
     leftEyesEnum: 0
     rightCharacter: 5
     rightEmotionNum: 7
-    rightMouthEnum: 1
+    rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 98d628f8a6770184e897795f3d256a68, type: 3}
@@ -127,7 +127,7 @@ MonoBehaviour:
     leftEyesEnum: 0
     rightCharacter: 5
     rightEmotionNum: 7
-    rightMouthEnum: 1
+    rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: b59406335d3563c4dbefefefc3a96d83, type: 3}
@@ -340,7 +340,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: d82c3ff62fbf24648b0a954a86a01eaf, type: 3}
     audioClipName: B_1_3_Julius_19_T5
-    audioString: you can keep getting in my way and move forward. But,
+    audioString: 'you can keep getting in my way and move forward. '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -356,7 +356,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 59d879fdc48f0364aaac3e5fdd883a56, type: 3}
     audioClipName: B_1_3_Julius_19_T6
-    audioString: If I beat you,
+    audioString: But, If I beat you,
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

@@ -68,9 +68,6 @@ public class RummageGameManager : MonoBehaviour
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
-        // stop music 
-        AudioManager.instance.StopMusic();
-
         if (!instance)
         {
             instance = this;
@@ -82,6 +79,9 @@ public class RummageGameManager : MonoBehaviour
 
     void Start()
     {
+        // stop music 
+        AudioManager.instance.StopMusic();
+        
         // only turn off tutorial if false
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().rummageTutorial;
@@ -503,13 +503,46 @@ public class RummageGameManager : MonoBehaviour
         stretch.stretchIn();
 
         orc.GoToOrigin();
-
         
         yield return new WaitForSeconds(2f);
         orc.successOrc();
         yield return new WaitForSeconds(1f);
         orc.stopOrc();
         atPile = false;
+
+        if (playTutorial)
+        {
+            if (tutorialEvent == 1)
+            {
+                // play tutorial audio
+                AudioClip clip = GameIntroDatabase.instance.rummageIntro5;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Clogg, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+            }
+            else
+            {
+                // play encouragement popup
+                List<AudioClip> clips = GameIntroDatabase.instance.rummageEncouragementClips;
+                AudioClip clip = clips[Random.Range(0, clips.Count)];
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Clogg, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+            }
+
+            // turn on raycaster
+            RummageCoinRaycaster.instance.isOn = true;
+
+            NextTutorialEvent();
+        }
+        else
+        {
+            // play encouragement popup
+            List<AudioClip> clips = GameIntroDatabase.instance.rummageEncouragementClips;
+            AudioClip clip = clips[Random.Range(0, clips.Count)];
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Clogg, clip);
+            yield return new WaitForSeconds(clip.length + 1f);
+        }
+
+
         piles[0].colliderOn();
         piles[1].colliderOn();
         piles[2].colliderOn();
@@ -541,44 +574,16 @@ public class RummageGameManager : MonoBehaviour
             pileCompleteArray[4] = true;
             piles[4].pileLock();
         }
+
+        // leave routine iff tutorial
+        if (playTutorial)
+            yield break;
+
         // unlock all piles
         UnlockAllPiles();
 
         // make coins interactable
         SetCoinsInteractable(true);
-
-        if (playTutorial)
-        {
-            if (tutorialEvent == 1)
-            {
-                // play tutorial audio
-                AudioClip clip = GameIntroDatabase.instance.rummageIntro5;
-                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Clogg, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
-            }
-            else
-            {
-                // play encouragement popup
-                List<AudioClip> clips = GameIntroDatabase.instance.rummageEncouragementClips;
-                AudioClip clip = clips[Random.Range(0, clips.Count)];
-                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Clogg, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
-            }
-
-            // turn on raycaster
-            RummageCoinRaycaster.instance.isOn = true;
-
-            NextTutorialEvent();
-            yield break;
-        }
-        else
-        {
-            // play encouragement popup
-            List<AudioClip> clips = GameIntroDatabase.instance.rummageEncouragementClips;
-            AudioClip clip = clips[Random.Range(0, clips.Count)];
-            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Clogg, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
-        }
 
         yield return new WaitForSeconds(.25f);
         StartCoroutine(SetPileGlow(true));

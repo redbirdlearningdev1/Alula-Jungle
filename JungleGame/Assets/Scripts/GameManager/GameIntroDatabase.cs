@@ -119,6 +119,24 @@ public class GameIntroDatabase : MonoBehaviour
 
     public List<AudioClip> blendingReminderClips;
 
+    [Header("Word Factory Substituting Game")]
+    // tutorial clips
+    public AudioClip substitutingIntro1;
+    public AudioClip substitutingIntro2;
+    public AudioClip substitutingIntro3;
+    public AudioClip substitutingIntro4;
+    public AudioClip substitutingIntro5;
+    public AudioClip substitutingIntro6;
+    public AudioClip substitutingIntro7;
+    public AudioClip substitutingIntro8;
+    public AudioClip substitutingIntro9;
+    public AudioClip substitutingIntro10;
+    public AudioClip substitutingIntro11;
+    public AudioClip substitutingIntro12;
+    public AudioClip substitutingIntro13;
+
+    public List<AudioClip> substitutingReminderClips;
+
     [Header("Word Factory Deleting Game")]
     // tutorial clips
     public AudioClip deletingIntro1;
@@ -144,4 +162,69 @@ public class GameIntroDatabase : MonoBehaviour
     public List<AudioClip> buildingReminderClipsChapters1_4;
     // reminders chapters 5
     public List<AudioClip> buildingReminderClipsChapter5;
+
+    [Header("Tiger Paw Coin - Find the Sound")]
+    // tutorial clips
+    public AudioClip tigerPawCoinIntro1;
+    public AudioClip tigerPawCoinIntro2;
+    public AudioClip tigerPawCoinIntro3;
+    public AudioClip tigerPawCoinIntro4;
+    public AudioClip tigerPawCoinIntro5;
+    public AudioClip tigerPawCoinIntro6;
+    public AudioClip tigerPawCoinIntro7;
+
+    public AudioClip tigerPawCoinStart;
+
+    // new photo
+    public List<AudioClip> tigerPawCoinNewPhotosChapters1_4;
+    public List<AudioClip> tigerPawCoinNewPhotosChapter5;
+
+    // julius wins
+    public List<AudioClip> tigerPawCoinJuliusWinChapters1_4;
+    public List<AudioClip> tigerPawCoinJuliusWinChapter5;
+
+    // julius lose
+    public List<AudioClip> tigerPawCoinJuliusLoseChapters1_4;
+    public List<AudioClip> tigerPawCoinJuliusLoseChapter5;
+
+    // final julius win
+    public AudioClip tigerPawCoinFinalJuliusWinChapters1_4; 
+    public AudioClip tigerPawCoinFinalWinChapter5;
+
+    // final julius lose
+    public AudioClip tigerPawCoinFinalJuliusLoseChapters1_4; 
+    public AudioClip tigerPawCoinFinalLoseChapter5;
+
+    [Header("Tiger Paw Photos - Find the Word")]
+    // tutorial clips
+    public AudioClip tigerPawPhotosIntro1;
+    public AudioClip tigerPawPhotosIntro2;
+    public AudioClip tigerPawPhotosIntro3;
+    public AudioClip tigerPawPhotosIntro4;
+    public AudioClip tigerPawPhotosIntro5;
+    public AudioClip tigerPawPhotosIntro6;
+    public AudioClip tigerPawPhotosIntro7;
+
+    [Header("Password")]
+    // tutorial clips
+    public AudioClip passwordIntro1;
+    public AudioClip passwordIntro2;
+    public AudioClip passwordIntro3;
+    public AudioClip passwordIntro4;
+    public AudioClip passwordIntro5;
+    public AudioClip passwordIntro6;
+    public AudioClip passwordIntro7;
+    public AudioClip passwordIntro8;
+    public AudioClip passwordIntro9;
+    public AudioClip passwordIntro10;
+    public AudioClip passwordIntro11;
+    public AudioClip passwordIntro12;
+
+    // start clips
+    public AudioClip passwordStart1;
+    public AudioClip passwordStart2;
+    public AudioClip passwordStart3;
+
+    // new photo
+    public List<AudioClip> passwordNewPhoto;
 }

@@ -1,0 +1,776 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: MermaidRebuilt_1_p3
+  m_EditorClassIdentifier: 
+  talkieName: MermaidRebuilt_1_p3
+  quipsCollection: 0
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 6
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 8
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: Marcus_Laugh
+    audioString: HA HA HA!!!!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 6
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 8
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 0}
+    audioClipName: Brutus_Laugh
+    audioString: 'Heh heh... '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 3
+    audioClip: {fileID: 0}
+    audioClipName: RedWally_Gasp
+    audioString: '!!!'
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 7e8597a45f005d340ac92053ba70737b, type: 3}
+    audioClipName: EJ_1_4_Celeste_22_T1
+    audioString: 'What?! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 9
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 08108552bf7c5e24bb297443365d789d, type: 3}
+    audioClipName: EJ_1_4_Sylvie_23_T1
+    audioString: Oh no!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 3
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: b119b3aa088e3fe4fa888e423a9c17a4, type: 3}
+    audioClipName: EJ_1_4_Julius_24_T1
+    audioString: "You\u2019ve fixed everything yet again\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 3
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 5
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 75920893bec2824449e90d06dfda0d10, type: 3}
+    audioClipName: EJ_1_4_Marcus_25_T1
+    audioString: "Cleaning up the Princes\u2019 mess like a commoner would! "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 3
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 39815e5e580bbdc4ca2930ebeb632a5d, type: 3}
+    audioClipName: EJ_1_4_Brutus_26_T1
+    audioString: "Yawn\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 3
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: a08802d2887d1ed4ea18c940f10fb670, type: 3}
+    audioClipName: EJ_1_4_Brutus_26_T2
+    audioString: "Exactly\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 10
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 6
+    rightEmotionNum: 5
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 07a5a7cd710586c4694cc4cc3324b835, type: 3}
+    audioClipName: EJ_1_4_Wally_27_T1
+    audioString: "He shouldn\u2019t be making those messes in the first place!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 10
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 6
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: f975fe119892eb940aea5693f92d6957, type: 3}
+    audioClipName: EJ_1_4_Marcus_28_T1
+    audioString: 'Correction! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 10
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 6
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 7a1a3cf445e07ea41adb2559c4ab8703, type: 3}
+    audioClipName: EJ_1_4_Marcus_28_T2
+    audioString: He can do whatever he wants! He is the future King!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 6
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 56973a0a2c233954ba8fe0b63536ae7d, type: 3}
+    audioClipName: EJ_1_4_Celeste_29_T1
+    audioString: 'Listen here Prince! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 6
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 3ba96e910c97d0644996aa997fa130bc, type: 3}
+    audioClipName: EJ_1_4_Celeste_29_T2
+    audioString: "I\u2019ve got a bone to pick with you!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 13
+    leftEmotionNum: 10
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 3
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: c5a02d1e8090b7940b548b7d034e1d5a, type: 3}
+    audioClipName: EJ_1_4_Sylvie_30_T1
+    audioString: 'How dare you do that to the Ocean! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 13
+    leftEmotionNum: 6
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 3
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 70bd541f727013f479cb1b81b8fde445, type: 3}
+    audioClipName: EJ_1_4_Sylvie_30_T2
+    audioString: Your Ocean!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 6
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 3
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 26d4bf74e90bcd7499e87c16f46a3c1b, type: 3}
+    audioClipName: EJ_1_4_Celeste_31_T1
+    audioString: 'How dare you put Sylvie in any danger! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 6
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 3
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: ccd45b0fe8b206c48bf493634b5eafe6, type: 3}
+    audioClipName: EJ_1_4_Celeste_31_T2
+    audioString: 'We are your people! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 6
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 21
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: d2b92a85779310e46a90ad29c111198f, type: 3}
+    audioClipName: EJ_1_4_Celeste_31_T3
+    audioString: Do you have no shame?!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 21
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 72617d830ad79ee48b2a764b7152bb77, type: 3}
+    audioClipName: EJ_1_4_Celeste_31_T4
+    audioString: "If I could climb across this beach I\u2019d-"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 9
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 11
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 22d1b42f5da8a60459704cb61649e7db, type: 3}
+    audioClipName: EJ_1_4_Sylvie_32_T1
+    audioString: Celeste! Calm down,
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 9
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 10
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 8c8b7348b6c60d5419758f42d54eac64, type: 3}
+    audioClipName: EJ_1_4_Sylvie_32_T2
+    audioString: nothing good comes from destruction,
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 12
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 823a788d00fb4944ab9f045b22111d6f, type: 3}
+    audioClipName: EJ_1_4_Sylvie_32_T3
+    audioString: which is a principle the Prince should know.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 3
+    rightCharacter: 13
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 010c54416a80e064b9928abc1e8e0ad2, type: 3}
+    audioClipName: EJ_1_4_Sylvie_32_T4
+    audioString: "I\u2019m so disappointed\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 21
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 15663a4eced933a489f247eb3b7ff968, type: 3}
+    audioClipName: EJ_1_4_Julius_32_T1
+    audioString: "I\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 21
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 36a9d9ea96280234491e6920f8b8851f, type: 3}
+    audioClipName: EJ_1_4_Marcus_33_T1
+    audioString: ENOUGH!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 21
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: de9da0a02252d5149b94ae9f4b15292d, type: 3}
+    audioClipName: EJ_1_4_Marcus_33_T2
+    audioString: 'Julius may do whatever he pleases! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 21
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 2776f3345e8b3254ebecdadffb49ed0b, type: 3}
+    audioClipName: EJ_1_4_Marcus_33_T3
+    audioString: Quit complaining, and be grateful that you live in the seas of the
+      future King!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 05fd0be126577a1458182a66dcfcf3e4, type: 3}
+    audioClipName: EJ_1_4_Brutus_34_T1
+    audioString: "Yeah\u2026 "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 3
+    rightMouthEnum: 1
+    rightEyesEnum: 0
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 257f1f6df71baa24991672195056eb4e, type: 3}
+    audioClipName: EJ_1_4_Brutus_34_T2
+    audioString: "Be grateful for your trash\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 6
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 3
+    rightMouthEnum: 2
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: b95da716c88e418449367d556c6f3a25, type: 3}
+    audioClipName: EJ_1_4_Marcus_35_T1
+    audioString: Your comments are starting to get old!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 8
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 21
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: d42a0399b791a704fbb83d017bf96874, type: 3}
+    audioClipName: EJ_1_4_Red_36_T1
+    audioString: "Your highness\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 21
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: ee6b590f9d2f33d4db7678016d3f4f44, type: 3}
+    audioClipName: EJ_1_4_Julius_37_T1
+    audioString: "I don't have time for this\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: b1cfc06130e2a1248b78a9e12094cb4e, type: 3}
+    audioClipName: EJ_1_4_Julius_37_T2
+    audioString: "It\u2019s time for our challenge Explorer!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 09efdbc54e778f84d951ddabd56c58ea, type: 3}
+    audioClipName: EJ_1_4_Julius_37_T3
+    audioString: You know the rules.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 11
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: a622aeca8f63f424e828246193b4ddf6, type: 3}
+    audioClipName: EJ_1_4_Julius_37_T4
+    audioString: If you win you can continue on.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 14
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 2975269f89ddc4243853e241d07b3f65, type: 3}
+    audioClipName: EJ_1_4_Julius_37_T5
+    audioString: If I win,
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 21
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: c4c3155ee37617a4b9fd96739cacca7b, type: 3}
+    audioClipName: EJ_1_4_Julius_37_T6
+    audioString: you have to leave me alone.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 6
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 8
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: cdaf75841f8067c4780f4e83c00fd0ec, type: 3}
+    audioClipName: EJ_1_4_Red_38_T1
+    audioString: Sigh.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: eb17785a3e663264d84874157afb9b18, type: 3}
+    audioClipName: EJ_1_4_Red_38_T2
+    audioString: Alright Explorer.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 14
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 2
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 2
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: f8a14f206561ba6469f9f164d3784eba, type: 3}
+    audioClipName: EJ_1_4_Red_38_T3
+    audioString: Give it your all!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 14
+    leftMouthEnum: 2
+    leftEyesEnum: 2
+    rightCharacter: 2
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 28094848e159c614aa5fd34d00683f09, type: 3}
+    audioClipName: EJ_1_4_Wally_39_T1
+    audioString: "You\u2019ve got this!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 5
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: d3e6bd0f27fe39d4bad17e1db1798c16, type: 3}
+    audioClipName: EJ_1_4_Celeste_40_T1
+    audioString: Kick tail or whatevaa!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 4
+    leftMouthEnum: 2
+    leftEyesEnum: 3
+    rightCharacter: 13
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 3
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 50076d53af0f78f46ac51a17e3804e8c, type: 3}
+    audioClipName: EJ_1_4_Sylvie_41_T1
+    audioString: "We\u2019re counting on you, Explorer!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 4
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 12
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: cdc25c17afe0ad44c922f13d010575f7, type: 3}
+    audioClipName: EJ_1_4_Sylvie_41_T2
+    audioString: Show this Prince that his actions have consequences!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 3
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: b5a6a2082dff96a4aa8191fc3fe0d8ec, type: 3}
+    audioClipName: EJ_1_4_Julius_42_T1
+    audioString: "\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 80cd0d9abce930145ac875087c7dcb96, type: 3}
+    audioClipName: EJ_1_4_Julius_42_T2
+    audioString: Let's begin!

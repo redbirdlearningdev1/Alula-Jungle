@@ -50,8 +50,8 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 8fe5767015ea9af43a23f0392e13bea4, type: 3}
-    audioClipName: P_1_2_Darwin_2_T2
+    audioClip: {fileID: 8300000, guid: b759a22f0fdf5bb479c647acac8d4baa, type: 3}
+    audioClipName: P_1_2_Darwin_2_T1
     audioString: Okay Explorer...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -66,8 +66,8 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 8a65aa8264226774099318a571c07e19, type: 3}
-    audioClipName: P_1_2_Darwin_2_T3
+    audioClip: {fileID: 8300000, guid: 8fe5767015ea9af43a23f0392e13bea4, type: 3}
+    audioClipName: P_1_2_Darwin_2_T2
     audioString: uhh...
   - endTalkieAfterThisSegment: 1
     requireYN: 0
@@ -82,8 +82,8 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
-    audioClipName: P_1_2_Darwin_2_T4
+    audioClip: {fileID: 8300000, guid: 8a65aa8264226774099318a571c07e19, type: 3}
+    audioClipName: P_1_2_Darwin_2_T3
     audioString: come back when you are ready.
   - endTalkieAfterThisSegment: 1
     requireYN: 0
@@ -98,6 +98,6 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
-    audioClipName: P_1_2_Darwin_3_T5
+    audioClip: {fileID: 8300000, guid: 94ce8c53bb778654498eb7cf3d50119f, type: 3}
+    audioClipName: P_1_2_Darwin_3_T1
     audioString: Alright Explorer! Let's get started!

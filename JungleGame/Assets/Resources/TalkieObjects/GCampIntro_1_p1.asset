@@ -1,0 +1,842 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: GCampIntro_1_p1
+  m_EditorClassIdentifier: 
+  talkieName: GCampIntro_1_p1
+  quipsCollection: 0
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: RedWally_Darwin
+    audioString: Darwin!!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 11
+    leftMouthEnum: 2
+    leftEyesEnum: 3
+    rightCharacter: 3
+    rightEmotionNum: 10
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 4f4587bced121cb4c9fafaf36de64a7c, type: 3}
+    audioClipName: R_2_1_Darwin_2_T1
+    audioString: "\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 11
+    leftMouthEnum: 2
+    leftEyesEnum: 3
+    rightCharacter: 3
+    rightEmotionNum: 13
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 5e30096e36c8cc148b3b3ec8534bf590, type: 3}
+    audioClipName: R_2_1_Darwin_2_T2
+    audioString: 'OH! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 11
+    leftMouthEnum: 2
+    leftEyesEnum: 3
+    rightCharacter: 3
+    rightEmotionNum: 11
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: df63fbee082e2f941a122b06d65c1d1e, type: 3}
+    audioClipName: R_2_1_Darwin_2_T3
+    audioString: "Sorry guys\u2026 I uh,"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 11
+    leftMouthEnum: 2
+    leftEyesEnum: 3
+    rightCharacter: 3
+    rightEmotionNum: 11
+    rightMouthEnum: 1
+    rightEyesEnum: 3
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 6d06661744f14504db4e97aa5d7dd2d8, type: 3}
+    audioClipName: R_2_1_Darwin_2_T4
+    audioString: "I was hoping some of my old notes would help me remember\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 11
+    leftMouthEnum: 2
+    leftEyesEnum: 3
+    rightCharacter: 3
+    rightEmotionNum: 12
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: bcf8120ac2fbc67408c4ca8e4026d5b5, type: 3}
+    audioClipName: R_2_1_Darwin_2_T5
+    audioString: "\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 12
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: c3b1bf03ae5ad9540807c6a21311c77c, type: 3}
+    audioClipName: R_2_1_Wally_3_T1
+    audioString: It looks like you used to teach here.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 8
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 88afe76e91fc5624685c6647679cd027, type: 3}
+    audioClipName: R_2_1_Red_4_T1
+    audioString: "Are\u2026 are you okay Darwin?"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 40290c3553cf11242a45b615f3158447, type: 3}
+    audioClipName: R_2_1_Red_4_T2
+    audioString: "Are you sure that\u2019s the only reason you\u2019re here?"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 8
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 12
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 6f2890491163de24896fc935236de257, type: 3}
+    audioClipName: R_2_1_Darwin_5_T1
+    audioString: ...
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 8
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 76ef0dcb8d87dcf41b8cbe7218bab8ae, type: 3}
+    audioClipName: R_2_1_Darwin_5_T2
+    audioString: "No.. you\u2019re right. "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 8
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: b4e14b9004a243b45926d0c0ed805f1b, type: 3}
+    audioClipName: R_2_1_Darwin_5_T3
+    audioString: "I\u2019m just so worried about him, you know? "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 8
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 12
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 8b9a9e203f9163e43a8dd79e2867bf99, type: 3}
+    audioClipName: R_2_1_Darwin_5_T4
+    audioString: "I can\u2019t help but feel like this is all my fault. "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 12
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: dfd033941f027414c8ec4e4476abf424, type: 3}
+    audioClipName: R_2_1_Darwin_5_T5
+    audioString: If only I had been here..
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 12
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 4b8ad3848bb4502489db20138548ae28, type: 3}
+    audioClipName: R_2_1_Red_6_T1
+    audioString: "What do you mean? This isn\u2019t your fault!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 12
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 423b0152debe82d4080cab6eec67ce0a, type: 3}
+    audioClipName: R_2_1_Darwin_7_T1
+    audioString: ...
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: f8e116b39bb3aa6498564feeeaf6251a, type: 3}
+    audioClipName: R_2_1_Darwin_7_T2
+    audioString: "I\u2019d been his Father\u2019s royal advisor for many years before
+      Julius was born. "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 674546e0e54418446884cc4b60b2a092, type: 3}
+    audioClipName: R_2_1_Darwin_7_T3
+    audioString: We were childhood friends, and I was more than happy to advise the
+      King.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 72007a44f9fca8f4abf2ed1589932df8, type: 3}
+    audioClipName: R_2_1_Darwin_7_T4
+    audioString: 'But I had always dreamed of exploring '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 0d49aa68923f1ea44be74535caa31adb, type: 3}
+    audioClipName: R_2_1_Darwin_7_T5
+    audioString: "uhh... further than this island\u2026 "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 3
+    rightCharacter: 3
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 5f69ba4dcf231f14e86f67228d17fc33, type: 3}
+    audioClipName: R_2_1_Darwin_7_T6
+    audioString: just like you Explorer!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 15
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 31b42f25160159441839c9ca95430efe, type: 3}
+    audioClipName: R_2_1_Darwin_7_T7
+    audioString: When Julius was born, I became his teacher.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 3
+    rightCharacter: 3
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 3945a493e5432844caf1340ff2c85136, type: 3}
+    audioClipName: R_2_1_Darwin_7_T8
+    audioString: I taught him all I knew about the island,
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 12
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: a2d2d5f995be82d41b825866bab47ad7, type: 3}
+    audioClipName: R_2_1_Darwin_7_T9
+    audioString: 'until one day, '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 5
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 12
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 1c504be016405d34998494395e6fcfab, type: 3}
+    audioClipName: R_2_1_Darwin_7_T10
+    audioString: it was time for me to go.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 12
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: e83666802b961344e85ea5969dea10d2, type: 3}
+    audioClipName: R_2_1_Darwin_7_T11
+    audioString: "But I shouldn\u2019t have left! He needed me!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 7
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 12
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: d1158aeca8d737741b12576183bbf7d3, type: 3}
+    audioClipName: R_2_1_Darwin_7_T12
+    audioString: This is all my fault!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 17
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 3
+    rightEmotionNum: 12
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: fc0c5574c65a8d2438715c6b81809363, type: 3}
+    audioClipName: R_2_1_Red_8_T1
+    audioString: "Oh Darwin, please don\u2019t blame yourself. "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 12
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: f7d105749e1f72b44ae88745755c0a83, type: 3}
+    audioClipName: R_2_1_Red_8_T2
+    audioString: "You can\u2019t change the past."
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 768e2b21da54f3141a2e43915c99fd5c, type: 3}
+    audioClipName: R_2_1_Wally_9_T1
+    audioString: "And you can\u2019t blame yourself for things you can\u2019t control. "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 3
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 240d0b4d9d989ca4fabb439c2f115a44, type: 3}
+    audioClipName: R_2_1_Wally_9_T2
+    audioString: Julius is his own tiger, and he has a family who loves him.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: c7751efc348ad384baf111a7f423f128, type: 3}
+    audioClipName: R_2_1_Wally_9_T3
+    audioString: "You couldn\u2019t change his decision to be friends with the monkeys."
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 3
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 9212e8f24c357004d856182649a9e6af, type: 3}
+    audioClipName: R_2_1_Red_10_T1
+    audioString: 'Right! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 14
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 53541d626fe2dbd49af3a00aa030e1ad, type: 3}
+    audioClipName: R_2_1_Red_10_T2
+    audioString: "You\u2019d be no better than those bullies if you made him do what
+      you wanted him to do!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 13
+    leftMouthEnum: 2
+    leftEyesEnum: 3
+    rightCharacter: 3
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: a1767fc86e08c20478b2568b29b61c78, type: 3}
+    audioClipName: R_2_1_Darwin_11_T1
+    audioString: "You\u2019re right.. "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 1
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 2468b4a24b3b7de42959657a8112f095, type: 3}
+    audioClipName: R_2_1_Darwin_11_T2
+    audioString: 'I just wish I could have been here to help guide him. '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 3
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: e9f4352bdd6c22448ac5632483bad372, type: 3}
+    audioClipName: R_2_1_Darwin_11_T3
+    audioString: "But I\u2019m here now!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 3
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 3
+    rightEmotionNum: 2
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 01f71a73554abfd4e9edb259ad3b9ac1, type: 3}
+    audioClipName: R_2_1_Red_12_T1
+    audioString: Right!!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 2
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 3fec8165dec882e4eb3059c17347c69a, type: 3}
+    audioClipName: R_2_1_Darwin_13_T1
+    audioString: And I can
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 1
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 3
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: f74d83032a78e9848a50e8c4bdeb3309, type: 3}
+    audioClipName: R_2_1_Darwin_13_T2
+    audioString: "uhh\u2026 "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 4
+    rightCharacter: 3
+    rightEmotionNum: 8
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 0ad5c9e890f36cd43b3f964312f49c96, type: 3}
+    audioClipName: R_2_1_Darwin_13_T3
+    audioString: Do everything I can to be here for him!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 3
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 34ba4080ecac6f948b97e01a687bc186, type: 3}
+    audioClipName: R_2_1_Wally_14_T1
+    audioString: 'YES! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 477a08f36a85f4f4fab9dba8bf36d57d, type: 3}
+    audioClipName: R_2_1_Wally_14_T2
+    audioString: 'It looks like those bullies are using him to do what they want, '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 2
+    rightCharacter: 2
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: c1ec1811a35bb3b438c52992810601c5, type: 3}
+    audioClipName: R_2_1_Wally_14_T3
+    audioString: 'we have to do more than just tell Julius how good he used to be. '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 3
+    rightCharacter: 2
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 127b5df344ffed44e8f71b89d47e0827, type: 3}
+    audioClipName: R_2_1_Wally_14_T4
+    audioString: He has to remember there are people who love him no matter what!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 2
+    rightEmotionNum: 11
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 6d010bcdf2b4893468959b887149f64c, type: 3}
+    audioClipName: R_2_1_Darwin_15_T1
+    audioString: "You\u2019re right!!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 14
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 2
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 80a7999eaee22b3439fc77dddc32a877, type: 3}
+    audioClipName: R_2_1_Red_16_T1
+    audioString: "Then let\u2019s do it, team! Explorer, let\u2019s clean up!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 13
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: d55c10e48a3dcdb45bf8170b04042098, type: 3}
+    audioClipName: R_2_1_Darwin_17_T1
+    audioString: "And I\u2019ll look through all these old notes! "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 46a13e28bd547be4f80c7cdc132e7cb3, type: 3}
+    audioClipName: R_2_1_Darwin_17_T2
+    audioString: "I know I kept a bunch of Julius\u2019s uhh.. "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 20550ec18f5ef9740bc3a472ca4a3a2c, type: 3}
+    audioClipName: R_2_1_Darwin_17_T3
+    audioString: old drawing around here somewhere!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 4
+    leftMouthEnum: 2
+    leftEyesEnum: 3
+    rightCharacter: 2
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 2
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 62c7e76f7a6be5140b05201078e0614b, type: 3}
+    audioClipName: R_2_1_Wally_18_T1
+    audioString: "Let\u2019s do this!"

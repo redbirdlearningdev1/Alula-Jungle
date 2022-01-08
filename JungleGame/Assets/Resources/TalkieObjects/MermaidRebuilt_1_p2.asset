@@ -1,0 +1,361 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
+  m_Name: MermaidRebuilt_1_p2
+  m_EditorClassIdentifier: 
+  talkieName: MermaidRebuilt_1_p2
+  quipsCollection: 0
+  start: 1
+  addBackgroundBeforeTalkie: 1
+  addLetterboxBeforeTalkie: 1
+  ending: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 0
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 12
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 5cb747f0b7dc141439063735ac59e4c8, type: 3}
+    audioClipName: EJ_1_4_Red_11_T1
+    audioString: Sigh,
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 12
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 20a8f586fe8cec045afac886ba0bcc26, type: 3}
+    audioClipName: EJ_1_4_Red_11_T2
+    audioString: there he goes again..
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 13
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 12
+    rightMouthEnum: 1
+    rightEyesEnum: 3
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: c5ab27e1764b0bd45b828ec051e917c5, type: 3}
+    audioClipName: EJ_1_4_Wally_12_T1
+    audioString: "I don\u2019t know what we were expecting."
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 1
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: d15ef630a9013bb4a805f898866fc7ea, type: 3}
+    audioClipName: EJ_1_4_Red_13_T1
+    audioString: Anyway.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 3
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 013dc0258d4d0fb4a84de6b374158f6d, type: 3}
+    audioClipName: EJ_1_4_Red_13_T2
+    audioString: I'm so glad we could help you guys!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 4
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 3
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 61819b2e778fc2645b1583de1b5c8b22, type: 3}
+    audioClipName: EJ_1_4_Sylvie_14_T1
+    audioString: "I don\u2019t know what we would do without you!"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 4
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: c18bba8a76b833f44b9a45bea57375a6, type: 3}
+    audioClipName: EJ_1_4_Sylvie_14_T2
+    audioString: "I just wish we knew why the Prince would do such a thing\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 12
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 4
+    rightCharacter: 13
+    rightEmotionNum: 6
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 384d4fe6789045244a94063a6703597d, type: 3}
+    audioClipName: EJ_1_4_Celeste_15_T1
+    audioString: "Yuh! It\u2019s seriously concerning or whatevva. "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 13
+    leftMouthEnum: 1
+    leftEyesEnum: 4
+    rightCharacter: 13
+    rightEmotionNum: 6
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 9a6cc93df0c53d04e89c8d6e46dc7d75, type: 3}
+    audioClipName: EJ_1_4_Red_16_T1
+    audioString: "Yeah\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 12
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 6
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 08a2025ee6eaf1f4bb943b6465220dcd, type: 3}
+    audioClipName: EJ_1_4_Red_16_T2
+    audioString: "But I feel like we\u2019re getting through to him. He was a lot
+      worse before, believe it or not."
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 8
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 13
+    rightEmotionNum: 6
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 544f661ab8ff7934f88d03c466983efe, type: 3}
+    audioClipName: EJ_1_4_Wally_17_T1
+    audioString: "Worse is an understatement\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 8
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 12
+    rightEmotionNum: 5
+    rightMouthEnum: 1
+    rightEyesEnum: 3
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: b088736027536d349b9b4f25cad91bb5, type: 3}
+    audioClipName: EJ_1_4_Celeste_18_T1
+    audioString: Worse or not, thank you for helping or whatever, seriously.
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 2
+    leftEmotionNum: 8
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 12
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 136d91a2d5196a04f90e17e1c009f144, type: 3}
+    audioClipName: EJ_1_4_Celeste_18_T2
+    audioString: It makes my blood boil knowing what the Prince did to Sylvie!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 13
+    leftEmotionNum: 6
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 12
+    rightEmotionNum: 7
+    rightMouthEnum: 2
+    rightEyesEnum: 3
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 65d51a6d0e52a1349969e897bdadb049, type: 3}
+    audioClipName: EJ_1_4_Sylvie_19_T1
+    audioString: "Oh Celeste\u2026 "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 13
+    leftEmotionNum: 7
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 12
+    rightEmotionNum: 7
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 2f98eafa331a6364db9de5ad4e7e9fe2, type: 3}
+    audioClipName: EJ_1_4_Sylvie_19_T3
+    audioString: "It\u2019s okay, I promise."
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 13
+    leftEmotionNum: 8
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 12
+    rightEmotionNum: 7
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 36837c64cc9ef06409f01c13039d05a5, type: 3}
+    audioClipName: EJ_1_4_Sylvie_19_T4
+    audioString: "We\u2019re both alright now, and that\u2019s all that matters to
+      me... "
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 13
+    leftEmotionNum: 8
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 12
+    rightEmotionNum: 8
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 16347962b4b276a42b22040c8f50188b, type: 3}
+    audioClipName: EJ_1_4_Celeste_20_T1
+    audioString: ...
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 13
+    leftEmotionNum: 4
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 12
+    rightEmotionNum: 8
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 97f9bcc37d1a1fe478eed7030785323a, type: 3}
+    audioClipName: EJ_1_4_Sylvie_21_T1
+    audioString: In any case...
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 13
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 12
+    rightEmotionNum: 8
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: b6428176dca22d24c97f5a9425f56326, type: 3}
+    audioClipName: EJ_1_4_Sylvie_21_T2
+    audioString: I'm just happy you guys were able to fix everything! It was a mess!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 3
+    leftMouthEnum: 1
+    leftEyesEnum: 3
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 815f2fbdca334854286dc246f33c565e, type: 3}
+    audioClipName: EJ_1_4_Red_22_T1
+    audioString: 'I''m just glad everything worked out okay! '
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: efab14e331d939641999dc1ccb9d0019, type: 3}
+    audioClipName: EJ_1_4_Wally_23_T1
+    audioString: Me to-

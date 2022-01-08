@@ -25,15 +25,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 0
-    leftEmotionNum: 0
-    leftMouthEnum: 0
+    leftCharacter: 6
+    leftEmotionNum: 6
+    leftMouthEnum: 1
     leftEyesEnum: 0
-    rightCharacter: 6
-    rightEmotionNum: 6
-    rightMouthEnum: 1
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 2
+    activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Marcus_Laugh
     audioString: HA HA HA!!!!
@@ -41,15 +41,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 0
-    leftEmotionNum: 0
-    leftMouthEnum: 0
+    leftCharacter: 6
+    leftEmotionNum: 2
+    leftMouthEnum: 1
     leftEyesEnum: 0
-    rightCharacter: 6
-    rightEmotionNum: 2
-    rightMouthEnum: 1
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
     rightEyesEnum: 0
-    activeCharacter: 2
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 524d27da410b7654fa713074077e58f8, type: 3}
     audioClipName: Cha_0_2a_Marcus_1_T2
     audioString: "I told you I\u2019d win!!!"

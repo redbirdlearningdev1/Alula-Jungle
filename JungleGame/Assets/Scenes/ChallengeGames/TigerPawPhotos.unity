@@ -3339,6 +3339,10 @@ MonoBehaviour:
   PhotoStartPos: {fileID: 805968724}
   PhotoEndPos: {fileID: 1439797602}
   currCoin: {fileID: 1989127353}
+  playTutorial: 0
+  tutorialSet1: 1
+  tutorialSet2: 2
+  tutorialSet3: 3
 --- !u!4 &1657006933
 Transform:
   m_ObjectHideFlags: 0
@@ -3829,7 +3833,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 7.4584684
+      value: 7.6223435
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
