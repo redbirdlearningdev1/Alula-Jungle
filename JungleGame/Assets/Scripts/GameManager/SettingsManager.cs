@@ -30,9 +30,16 @@ public class SettingsManager : MonoBehaviour
     [Header("Microphone Settings")]
     [SerializeField] private TMP_Dropdown microphoneDropdown;
 
-    // settings window
-    [SerializeField] private GameObject settingsWindow;
+    // settings windows
+    public LerpableObject settingsWindow;
+    public LerpableObject settingsWindowBG;
+    public LerpableObject returnToScrollMapWindow;
+    public LerpableObject returnToScrollMapButton;
+    public LerpableObject returnToScrollMapConfirmWindow;
+    
+
     private bool settingsWindowOpen;
+    private bool animatingWindow = false;
 
 
     void Awake()
@@ -53,8 +60,12 @@ public class SettingsManager : MonoBehaviour
         menuButton.transform.localPosition = new Vector3(menuButton.transform.localPosition.x, hiddenButtonYvalue, 1f);
         wagonButton.transform.localPosition = new Vector3(wagonButton.transform.localPosition.x, hiddenButtonYvalue, 1f);
 
-        // close window
-        settingsWindow.SetActive(false);
+        // close settings windows + hide BG
+        settingsWindow.transform.localScale = new Vector3(0f, 0f, 1f);
+        settingsWindowBG.SetImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f);
+        returnToScrollMapWindow.transform.localScale = new Vector3(0f, 0f, 1f);
+        returnToScrollMapButton.transform.localScale = new Vector3(0f, 0f, 1f);
+        returnToScrollMapConfirmWindow.transform.localScale = new Vector3(0f, 0f, 1f);
     }
 
     public void SaveSettingsToProfile()
@@ -269,14 +280,116 @@ public class SettingsManager : MonoBehaviour
     public void ToggleSettingsWindow()
     {
         settingsWindowOpen = !settingsWindowOpen;
-        settingsWindow.SetActive(settingsWindowOpen);
+
+        if (animatingWindow)
+            return;
+        animatingWindow = true;
+        
+        // open settings window iff at scroll map
+        if (SceneManager.GetActiveScene().name == "ScrollMap")
+        {
+            StartCoroutine(ToggleSettingsWindow(settingsWindowOpen));
+        } 
+        // else open return to scroll map window
+        else
+        {
+            StartCoroutine(ToggleReturnToScrollMapWindow(settingsWindowOpen));
+        }
+    }
+
+    public IEnumerator ToggleSettingsWindow(bool opt)
+    {
+        yield return null;
+
+        animatingWindow = false;
+    }
+
+    public IEnumerator ToggleReturnToScrollMapWindow(bool opt)
+    {
+        if (opt)
+        {
+            // open window
+            returnToScrollMapWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
+            yield return new WaitForSeconds(0.2f);
+            returnToScrollMapButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
+        }
+        else
+        {
+            // close window
+            returnToScrollMapButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+            yield return new WaitForSeconds(0.2f);
+            returnToScrollMapWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+        }
+        animatingWindow = false;
+    }
+
+    public void OpenConfirmScrollMapWindow()
+    {
+        StartCoroutine(ToggleReturnToScrollMapsConfirmWindow(true));
+    }
+
+    public void CloseConfirmScrollMapWindow()
+    {
+        StartCoroutine(ToggleReturnToScrollMapsConfirmWindow(false));
+    }
+
+    public void GoToScrollMapButtonPressed()
+    {
+        StartCoroutine(GoToScollMapButtonRoutine());
+    }
+
+    private IEnumerator GoToScollMapButtonRoutine()
+    {
+        // close confirm window
+        returnToScrollMapConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+        settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
+        settingsWindowBG.GetComponent<Image>().raycastTarget = false;
+
+        // close settings window
+        returnToScrollMapButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+        yield return new WaitForSeconds(0.2f);
+        returnToScrollMapWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+
+        // go to scroll map scene
+        GameManager.instance.LoadScene("ScrollMap", true, 0.5f, true);
+    }
+
+    public IEnumerator ToggleReturnToScrollMapsConfirmWindow(bool opt)
+    {
+        if (opt)
+        {
+            // open window
+            returnToScrollMapConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
+            settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0.75f, 0.2f);
+            settingsWindowBG.GetComponent<Image>().raycastTarget = true;
+            yield return new WaitForSeconds(0.2f);
+        }
+        else
+        {
+            // close window
+            returnToScrollMapConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+            settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
+            settingsWindowBG.GetComponent<Image>().raycastTarget = false;
+            yield return new WaitForSeconds(0.2f);
+
+            // close window too
+            StartCoroutine(ToggleReturnToScrollMapWindow(false));
+            settingsWindowOpen = false;
+            yield return new WaitForSeconds(0.2f);
+        }
+        animatingWindow = false;
     }
 
     public void CloseSettingsWindow()
     {
-        settingsWindowOpen = false;
-        settingsWindow.SetActive(false);
+        // do this thing
     }
+
+
+
+
+
+
 
     public void OnWagonButtonPressed()
     {   
