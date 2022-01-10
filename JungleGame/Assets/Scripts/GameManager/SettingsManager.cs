@@ -31,7 +31,6 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private TMP_Dropdown microphoneDropdown;
 
     // settings windows
-    public LerpableObject settingsWindow;
     public LerpableObject settingsWindowBG;
     public LerpableObject returnToScrollMapWindow;
     public LerpableObject returnToScrollMapButton;
@@ -61,7 +60,6 @@ public class SettingsManager : MonoBehaviour
         wagonButton.transform.localPosition = new Vector3(wagonButton.transform.localPosition.x, hiddenButtonYvalue, 1f);
 
         // close settings windows + hide BG
-        settingsWindow.transform.localScale = new Vector3(0f, 0f, 1f);
         settingsWindowBG.SetImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f);
         returnToScrollMapWindow.transform.localScale = new Vector3(0f, 0f, 1f);
         returnToScrollMapButton.transform.localScale = new Vector3(0f, 0f, 1f);
@@ -299,7 +297,22 @@ public class SettingsManager : MonoBehaviour
 
     public IEnumerator ToggleSettingsWindow(bool opt)
     {
-        yield return null;
+        if (opt)
+        {
+            // open window
+            SettingsWindowController.instance.OpenWindow();
+            settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0.75f, 0.2f);
+            settingsWindowBG.GetComponent<Image>().raycastTarget = true;
+        }
+        else
+        {
+            // close window
+            SettingsWindowController.instance.CloseAllWindows();
+            settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
+            settingsWindowBG.GetComponent<Image>().raycastTarget = false;
+        }
+
+        yield return new WaitForSeconds(0.2f);
 
         animatingWindow = false;
     }
