@@ -67,13 +67,14 @@ public class TalkieManager : MonoBehaviour
     private int yesGoto;
     private int noGoto;
 
-    [Header("Dev Stuff")]
+    [Header("Fast Talkies")]
+    public float normalTalkieMoveSpeed;
+    public float normalTalkieDeactivateSpeed;
+
     public float fastTalkieMoveSpeed;
     public float fastTalkieDeactivateSpeed;
     public float fastTalkieDuration;
     private bool fastTalkies = false;
-    private float prevMoveSpeed;
-    private float prevDeactivateSpeed;
 
     // private vars
     private int currSegmentIndex = 0;
@@ -89,19 +90,14 @@ public class TalkieManager : MonoBehaviour
         if (opt)
         {
             fastTalkies = true;
-
-            prevMoveSpeed = talkieMoveSpeed;
             talkieMoveSpeed = fastTalkieMoveSpeed;
-
-            prevDeactivateSpeed = talkieDeactivateSpeed;
             talkieDeactivateSpeed = fastTalkieDeactivateSpeed;
         }
         else
         {
             fastTalkies = false;
-
-            talkieMoveSpeed = prevMoveSpeed;
-            talkieDeactivateSpeed = prevDeactivateSpeed;
+            talkieMoveSpeed = normalTalkieMoveSpeed;
+            talkieDeactivateSpeed = normalTalkieDeactivateSpeed;
         }
     }
 
@@ -156,6 +152,10 @@ public class TalkieManager : MonoBehaviour
 
         // close settings menu if open
         SettingsManager.instance.CloseSettingsWindow();
+        SettingsManager.instance.ToggleMenuButtonActive(false);
+
+        // set fast talkies
+        SetFastTalkies(StudentInfoSystem.GetCurrentProfile().talkieFast);
 
         if (!currentTalkie.quipsCollection)
             StartCoroutine(PlayTalkieRoutine());
@@ -179,6 +179,7 @@ public class TalkieManager : MonoBehaviour
         // deactivate letterbox and background
         LetterboxController.instance.ToggleLetterbox(false);
         DefaultBackground.instance.Deactivate();
+        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // stop playing talkie
         talkiePlaying = false;
@@ -237,7 +238,8 @@ public class TalkieManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // turn on particles
-        ParticleController.instance.isOn = true;
+        if (StudentInfoSystem.GetCurrentProfile().talkieParticles)
+            ParticleController.instance.isOn = true;
 
         // clear subtitles
         subtitleText.text = "";
@@ -344,6 +346,9 @@ public class TalkieManager : MonoBehaviour
 
         // set audio back to what it was before
         AudioManager.instance.ToggleMusicSmooth(true);
+
+        // readd menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // stop playing talkie
         talkiePlaying = false;
@@ -483,7 +488,10 @@ public class TalkieManager : MonoBehaviour
         }
 
         // add subtitles
-        subtitleText.text = talkieSeg.audioString;
+        if (StudentInfoSystem.GetCurrentProfile().talkieSubtitles)
+            subtitleText.text = talkieSeg.audioString;
+        else
+            subtitleText.text = "";
 
         if (!fastTalkies)
         {

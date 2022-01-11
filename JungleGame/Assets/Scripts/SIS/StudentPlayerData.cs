@@ -21,6 +21,11 @@ public class StudentPlayerData
     public float fxVol;
     public float talkVol;
     public int micDevice;
+    // talkie options
+    public bool talkieSubtitles;
+    public bool talkieFast;
+    public bool talkieParticles;
+
 
     // tutorial bools
     public bool stickerTutorial;

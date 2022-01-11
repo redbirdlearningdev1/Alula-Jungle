@@ -115,6 +115,11 @@ public static class LoadSaveSystem
         new_data.talkVol =      AudioManager.default_talkVol;
         new_data.micDevice =    default_micDevice;
 
+        // talkie options
+        new_data.talkieSubtitles = true;
+        new_data.talkieFast = false;
+        new_data.talkieParticles = true;
+
         // tutorials
         new_data.stickerTutorial =      default_tutorial;
         new_data.froggerTutorial =      default_tutorial;

@@ -21,7 +21,7 @@ public class SettingsManager : MonoBehaviour
     private bool menuButtonShown = false;
     private bool wagonButtonShown = false;
 
-    [Header("Audio Settings")]
+    [Header("Volume Sliders")]
     [SerializeField] private Slider masterVol;
     [SerializeField] private Slider musicVol;
     [SerializeField] private Slider fxVol;
@@ -30,11 +30,17 @@ public class SettingsManager : MonoBehaviour
     [Header("Microphone Settings")]
     [SerializeField] private TMP_Dropdown microphoneDropdown;
 
+    [Header("Talkie Toggles")]
+    public Toggle talkieSubtitlesToggle;
+    public Toggle fastTalkiesToggle;
+    public Toggle talkieParticlesToggle;
+
     // settings windows
     public LerpableObject settingsWindowBG;
     public LerpableObject returnToScrollMapWindow;
     public LerpableObject returnToScrollMapButton;
     public LerpableObject returnToScrollMapConfirmWindow;
+    public LerpableObject returnToSplashScreenConfirmWindow;
     
 
     private bool settingsWindowOpen;
@@ -68,9 +74,6 @@ public class SettingsManager : MonoBehaviour
 
     public void SaveSettingsToProfile()
     {
-        // play audio blip
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CreateBlip, 1f);
-
         var data = StudentInfoSystem.GetCurrentProfile();
 
         // volumes
@@ -80,6 +83,11 @@ public class SettingsManager : MonoBehaviour
         data.talkVol = Mathf.Round(talkVol.value * 1000.0f) / 1000.0f;
         // mic
         data.micDevice = MicInput.instance.micDeviceIndex;
+        // talkie options
+        data.talkieSubtitles = talkieSubtitlesToggle.isOn;
+        data.talkieFast = fastTalkiesToggle.isOn;
+        data.talkieParticles = talkieParticlesToggle.isOn;
+
         // save to profile
         StudentInfoSystem.SaveStudentPlayerData();
     }
@@ -103,6 +111,11 @@ public class SettingsManager : MonoBehaviour
         // mic
         MicInput.instance.SwitchDevice(data.micDevice);
         microphoneDropdown.value = data.micDevice;
+
+        // toggles
+        talkieSubtitlesToggle.isOn = data.talkieSubtitles;
+        fastTalkiesToggle.isOn = data.talkieFast;
+        talkieParticlesToggle.isOn = data.talkieParticles;
     }
 
     private void SetUpVolumes()
@@ -122,6 +135,87 @@ public class SettingsManager : MonoBehaviour
         // talk vol
         talkVol.onValueChanged.AddListener(delegate { OnTalkVolumeSliderChanged(); });
         talkVol.value = AudioManager.instance.GetTalkVolume();
+    }
+
+    /* 
+    ################################################
+    #   GAMEPLAY SETTINGS
+    ################################################
+    */
+
+    public void ToggleTalkieSubtitles()
+    {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        var data = StudentInfoSystem.GetCurrentProfile();
+        StudentInfoSystem.GetCurrentProfile().talkieSubtitles = !data.talkieSubtitles;
+    }
+
+    public void ToggleFastTalkies()
+    {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        var data = StudentInfoSystem.GetCurrentProfile();
+        StudentInfoSystem.GetCurrentProfile().talkieFast = !data.talkieFast;
+    }
+
+    public void ToggleTalkieParticles()
+    {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        var data = StudentInfoSystem.GetCurrentProfile();
+        StudentInfoSystem.GetCurrentProfile().talkieParticles = !data.talkieParticles;
+    }
+
+    public void AllTutorialsOff()
+    {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        // skip tutorials
+        StudentInfoSystem.GetCurrentProfile().froggerTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().turntablesTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().rummageTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().seashellTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().pirateTutorial = true;
+        // skip challenge game tutorials
+        StudentInfoSystem.GetCurrentProfile().wordFactoryBlendingTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().wordFactoryBuildingTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().wordFactoryDeletingTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().wordFactorySubstitutingTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().tigerPawCoinsTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().tigerPawPhotosTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().passwordTutorial = true;
+
+        StudentInfoSystem.SaveStudentPlayerData();
+    }
+
+    public void AllTutorialsOn()
+    {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        // add tutorials
+        StudentInfoSystem.GetCurrentProfile().froggerTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().turntablesTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().rummageTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().seashellTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().pirateTutorial = false;
+        // add challenge game tutorials
+        StudentInfoSystem.GetCurrentProfile().wordFactoryBlendingTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().wordFactoryBuildingTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().wordFactoryDeletingTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().wordFactorySubstitutingTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().tigerPawCoinsTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().tigerPawPhotosTutorial = false;
+        StudentInfoSystem.GetCurrentProfile().passwordTutorial = false;
+
+        StudentInfoSystem.SaveStudentPlayerData();
     }
 
     /* 
@@ -306,10 +400,20 @@ public class SettingsManager : MonoBehaviour
         }
         else
         {
+            // save settings to profile
+            SaveSettingsToProfile();
+
             // close window
             SettingsWindowController.instance.CloseAllWindows();
             settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
             settingsWindowBG.GetComponent<Image>().raycastTarget = false;
+
+            // close confirm windows iff open
+            if (returnToScrollMapConfirmWindow.transform.localScale.x > 0f)
+                CloseConfirmScrollMapWindow();
+            if (returnToSplashScreenConfirmWindow.transform.localScale.x > 0f)
+                CloseConfirmSplashScreenWindow();
+            
         }
 
         yield return new WaitForSeconds(0.2f);
@@ -398,6 +502,61 @@ public class SettingsManager : MonoBehaviour
         // do this thing
     }
 
+
+
+
+
+
+    public IEnumerator ToggleReturnToSplashScreenConfirmWindow(bool opt)
+    {
+        if (opt)
+        {
+            // open window
+            returnToSplashScreenConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
+            settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0.75f, 0.2f);
+            settingsWindowBG.GetComponent<Image>().raycastTarget = true;
+            yield return new WaitForSeconds(0.2f);
+        }
+        else
+        {
+            // close window
+            returnToSplashScreenConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+            settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
+            settingsWindowBG.GetComponent<Image>().raycastTarget = false;
+            yield return new WaitForSeconds(0.2f);
+        }
+        animatingWindow = false;
+    }
+
+    public void OpenConfirmSplashScreenWindow()
+    {
+        StartCoroutine(ToggleReturnToSplashScreenConfirmWindow(true));
+    }
+
+    public void CloseConfirmSplashScreenWindow()
+    {
+        StartCoroutine(ToggleReturnToSplashScreenConfirmWindow(false));
+    }
+
+    public void GoToSplashScreenButtonPressed()
+    {
+        StartCoroutine(GoToSplashScreenButtonRoutine());
+    }
+
+    private IEnumerator GoToSplashScreenButtonRoutine()
+    {
+        // close confirm window
+        returnToSplashScreenConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+        settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
+        settingsWindowBG.GetComponent<Image>().raycastTarget = false;
+
+        // close settings window
+        SettingsWindowController.instance.CloseAllWindows();
+        yield return new WaitForSeconds(0.2f);
+
+        // go to scroll map scene
+        GameManager.instance.LoadScene("SplashScene", true, 0.5f, true);
+    }
 
 
 
