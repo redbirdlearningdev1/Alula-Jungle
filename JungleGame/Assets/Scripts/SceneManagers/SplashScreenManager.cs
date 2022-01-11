@@ -6,6 +6,8 @@ using TMPro;
 
 public class SplashScreenManager : MonoBehaviour
 {
+    public Animator mainAnimator;
+
     [Header("Splash Screen BGs")]
     public Animator BG3_animator;
     public Animator BG4_animator;
@@ -30,6 +32,10 @@ public class SplashScreenManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI profile2Text;
     [SerializeField] TextMeshProUGUI profile3Text;
 
+    public Animator profile1SelectAnimator;
+    public Animator profile2SelectAnimator;
+    public Animator profile3SelectAnimator;
+
     [SerializeField] TMP_InputField newProfileInput;
 
     [SerializeField] WiggleController tapTextWiggleController;
@@ -41,6 +47,8 @@ public class SplashScreenManager : MonoBehaviour
 
     private int selectedProfile = 0;
     private bool screenTapped = false;
+    private bool screenTapReady = false;
+    private bool switchingProfiles = false;
 
     public float selectedAlpha;
     public float unselectedAlpha;
@@ -53,6 +61,13 @@ public class SplashScreenManager : MonoBehaviour
     public Sprite selectedSprite;
 
     private StudentIndex newProfileIndex;
+
+    [Header("Button Stuff")]
+    public Image buttonBG;
+    public Image buttonText;
+    public Sprite boxGreen;
+    public Sprite textWhite;
+    public Sprite textGreen;
 
     void Start() 
     {
@@ -126,10 +141,6 @@ public class SplashScreenManager : MonoBehaviour
 
         // set up profile window
         startButton.interactable = false;
-        startButton.GetComponentInChildren<TextMeshProUGUI>().text = "select profile";
-        SetImageAlpha(profile1Image, unselectedAlpha);
-        SetImageAlpha(profile2Image, unselectedAlpha);
-        SetImageAlpha(profile3Image, unselectedAlpha);
         profileSelectWindow.interactable = false;
         profileSelectWindow.blocksRaycasts = false;
         profileSelectWindow.alpha = 0f;
@@ -142,12 +153,21 @@ public class SplashScreenManager : MonoBehaviour
         // wiggle text controller
         tapTextWiggleController.StartWiggle();
 
+        // start screen tap delay
+        StartCoroutine(ScreenTapDelay());
+
         SetUpProfiles();
+    }
+
+    private IEnumerator ScreenTapDelay()
+    {
+        yield return new WaitForSeconds(2f);
+        screenTapReady = true;
     }
 
     void Update() 
     {
-        if ((Input.touchCount > 0 || Input.GetMouseButtonDown(0)) && !screenTapped)
+        if ((Input.touchCount > 0 || Input.GetMouseButtonDown(0)) && !screenTapped && screenTapReady)
         {
             screenTapped = true;
 
@@ -196,6 +216,13 @@ public class SplashScreenManager : MonoBehaviour
     {
         // wiggle text controller
         tapTextWiggleController.StopWiggle();
+
+        mainAnimator.Play("Tapped");
+
+        yield return new WaitForSeconds(3f);
+
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         float timer = 0f;
         while (true)
@@ -314,6 +341,10 @@ public class SplashScreenManager : MonoBehaviour
 
     private void LoadProfileAndContinue(StudentIndex index)
     {
+        // change button sprites
+        buttonBG.sprite = boxGreen;
+        buttonText.sprite = textGreen;
+
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.HappyBlip, 1f);
         // set profile to be current player
@@ -324,23 +355,25 @@ public class SplashScreenManager : MonoBehaviour
 
     public void SelectProfile(int profileNum)
     {
+        if (switchingProfiles)
+            return;
+        switchingProfiles = true;
+        
         if (profileNum <= 0 || profileNum > 3)
             return;
-        
-        selectedProfile = profileNum;
 
+        // select correct profile
+        StartCoroutine(SelectProfileRoutine(profileNum));
+        
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
-        // make start button interactabl
+        // make start button interactable
         if (!startButton.interactable)
         {
             startButton.interactable = true;
+            buttonText.sprite = textWhite;
         }
-
-        SetImageAlpha(profile1Image, unselectedAlpha);
-        SetImageAlpha(profile2Image, unselectedAlpha);
-        SetImageAlpha(profile3Image, unselectedAlpha);
 
         profile1Image.GetComponent<LerpableObject>().LerpScale(new Vector2(unselectedScale, unselectedScale), lerpSpeed);
         profile2Image.GetComponent<LerpableObject>().LerpScale(new Vector2(unselectedScale, unselectedScale), lerpSpeed);
@@ -367,14 +400,37 @@ public class SplashScreenManager : MonoBehaviour
                 studentData = StudentInfoSystem.GetStudentData(StudentIndex.student_3);
                 break;
         }
+    }
 
-        if (studentData.active)
+    private IEnumerator SelectProfileRoutine(int profileIndex)
+    {
+        switch (selectedProfile)
         {
-            startButton.GetComponentInChildren<TextMeshProUGUI>().text = "begin game!";
+            case 0: 
+                break;
+            case 1: 
+                profile1SelectAnimator.Play("UnselectProfile"); 
+                yield return new WaitForSeconds(0.5f);
+                break;
+            case 2: 
+                profile2SelectAnimator.Play("UnselectProfile"); 
+                yield return new WaitForSeconds(0.5f);
+                break;
+            case 3: 
+                profile3SelectAnimator.Play("UnselectProfile"); 
+                yield return new WaitForSeconds(0.5f);
+                break;
         }
-        else
+
+        selectedProfile = profileIndex;
+
+        switch (selectedProfile)
         {
-            startButton.GetComponentInChildren<TextMeshProUGUI>().text = "create new profile!";
+            case 1: profile1SelectAnimator.Play("SelectProfile"); break;
+            case 2: profile2SelectAnimator.Play("SelectProfile"); break;
+            case 3: profile3SelectAnimator.Play("SelectProfile"); break;
         }
+
+        switchingProfiles = false;
     }
 }

@@ -179,7 +179,9 @@ public class TalkieManager : MonoBehaviour
         // deactivate letterbox and background
         LetterboxController.instance.ToggleLetterbox(false);
         DefaultBackground.instance.Deactivate();
-        SettingsManager.instance.ToggleMenuButtonActive(true);
+
+        if (talkiePlaying)
+            SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // stop playing talkie
         talkiePlaying = false;

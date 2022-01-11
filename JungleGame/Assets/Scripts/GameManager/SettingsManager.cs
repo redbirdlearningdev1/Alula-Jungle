@@ -146,7 +146,7 @@ public class SettingsManager : MonoBehaviour
     public void ToggleTalkieSubtitles()
     {
         // play audio blip
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+        //AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
         var data = StudentInfoSystem.GetCurrentProfile();
         StudentInfoSystem.GetCurrentProfile().talkieSubtitles = !data.talkieSubtitles;
@@ -155,7 +155,7 @@ public class SettingsManager : MonoBehaviour
     public void ToggleFastTalkies()
     {
         // play audio blip
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+        //AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
         var data = StudentInfoSystem.GetCurrentProfile();
         StudentInfoSystem.GetCurrentProfile().talkieFast = !data.talkieFast;
@@ -164,7 +164,7 @@ public class SettingsManager : MonoBehaviour
     public void ToggleTalkieParticles()
     {
         // play audio blip
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+        //AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
         var data = StudentInfoSystem.GetCurrentProfile();
         StudentInfoSystem.GetCurrentProfile().talkieParticles = !data.talkieParticles;
@@ -378,7 +378,7 @@ public class SettingsManager : MonoBehaviour
         animatingWindow = true;
         
         // open settings window iff at scroll map
-        if (SceneManager.GetActiveScene().name == "ScrollMap")
+        if (SceneManager.GetActiveScene().name == "ScrollMap" || SceneManager.GetActiveScene().name == "SplashScene")
         {
             StartCoroutine(ToggleSettingsWindow(settingsWindowOpen));
         } 
