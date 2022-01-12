@@ -387,6 +387,10 @@ public class TalkieManager : MonoBehaviour
                     talkieSeg.leftEyesEnum, 
                     true));
                 leftHidden = false;
+                
+                StartCoroutine(ChangeParticles(talkieSeg.leftCharacter.ToString()));
+                
+                
             }
             // if they are the same, check if emotion is the same
             else if (currLeftEmotionNum != talkieSeg.leftEmotionNum ||
@@ -438,6 +442,7 @@ public class TalkieManager : MonoBehaviour
                     talkieSeg.rightEyesEnum, 
                     false));
                 rightHidden = false;
+                
             }
             // if they are the same, check if emotion is the same
             else if (currRightEmotionNum != talkieSeg.rightEmotionNum ||
@@ -469,6 +474,7 @@ public class TalkieManager : MonoBehaviour
         // scale and alpha talkies
         if (talkieSeg.activeCharacter == ActiveCharacter.Left)
         {
+            StartCoroutine(ChangeParticles(talkieSeg.leftCharacter.ToString()));
             StartCoroutine(LerpScaleAndAlpha(leftImage, 1f, 1f, true));
             if (!rightHidden) 
             {
@@ -477,6 +483,7 @@ public class TalkieManager : MonoBehaviour
         }
         else if (talkieSeg.activeCharacter == ActiveCharacter.Right)
         {
+            StartCoroutine(ChangeParticles(talkieSeg.rightCharacter.ToString()));
             StartCoroutine(LerpScaleAndAlpha(rightImage, 1f, 1f, false));
             if (!leftHidden) 
             {
@@ -697,6 +704,12 @@ public class TalkieManager : MonoBehaviour
             obj.position = tempPos;
             yield return null;
         }
+    }
+    private IEnumerator ChangeParticles(string charName)
+    {
+        
+        ParticleController.instance.SetActiveParticles(charName);
+        yield return new WaitForSeconds(0f);
     }
 
     private void ResetTalkies()
