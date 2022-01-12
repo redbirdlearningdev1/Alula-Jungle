@@ -94,6 +94,9 @@ public class TurntablesGameManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // save to sis
+                StudentInfoSystem.GetCurrentProfile().turntablesTutorial = true;
+                StudentInfoSystem.SaveStudentPlayerData();
                 // calculate and show stars
                 StarAwardController.instance.AwardStarsAndExit(3);
             }
@@ -362,7 +365,6 @@ public class TurntablesGameManager : MonoBehaviour
         RopeController.instance.AnimateKeysUp();
         yield return new WaitForSeconds(animateKeysDownDelay);
         RopeController.instance.MoveFromNormalToEnd();
-
 
         // play reminder popup
         List<AudioClip> clips = new List<AudioClip>();

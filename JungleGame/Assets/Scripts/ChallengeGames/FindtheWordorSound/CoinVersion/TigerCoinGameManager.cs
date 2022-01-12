@@ -91,6 +91,9 @@ public class TigerCoinGameManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // save to sis
+                StudentInfoSystem.GetCurrentProfile().tigerPawCoinsTutorial = true;
+                StudentInfoSystem.SaveStudentPlayerData();
                 // calculate and show stars
                 StarAwardController.instance.AwardStarsAndExit(3);
             }

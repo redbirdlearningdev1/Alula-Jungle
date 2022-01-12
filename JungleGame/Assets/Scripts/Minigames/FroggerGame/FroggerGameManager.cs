@@ -114,6 +114,9 @@ public class FroggerGameManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // save to sis
+                StudentInfoSystem.GetCurrentProfile().froggerTutorial = true;
+                StudentInfoSystem.SaveStudentPlayerData();
                 // calculate and show stars
                 StarAwardController.instance.AwardStarsAndExit(3);
             }
@@ -479,18 +482,9 @@ public class FroggerGameManager : MonoBehaviour
 
     private IEnumerator TryAgainRoutine()
     {
+        yield return null;
         rows[currRow].ResetCoinPos(null);
         taxi.TwitchAnimation();
-        StartCoroutine(HideCoins(currRow));
-        yield return new WaitForSeconds(1f);
-
-        rows[currRow].SinkAllLogs();
-        yield return new WaitForSeconds(1f);
-        
-        rows[currRow].RiseAllLogs();
-        rows[currRow].ResetLogRow();
-        yield return new WaitForSeconds(1f);
-
         ShowTutorialCoins();
     }
 
@@ -562,25 +556,9 @@ public class FroggerGameManager : MonoBehaviour
                 break;
         }
 
-        StartCoroutine(PlayTutorialAudio());
-    } 
-
-    private IEnumerator PlayTutorialAudio()
-    {
-        // // play audio iff currRow == 1
-        // if (currRow == 1)
-        // {
-        //     AudioClip clip = AudioDatabase.instance.FroggerTutorial_3;
-        //     AudioManager.instance.PlayTalk(clip);
-        //     yield return new WaitForSeconds(clip.length + 0.5f);
-        // }
-
-        yield return null;
-
         // turn on raycaster
         CoinRaycaster.instance.isOn = true;
-    }
-
+    } 
 
     /* 
     ################################################

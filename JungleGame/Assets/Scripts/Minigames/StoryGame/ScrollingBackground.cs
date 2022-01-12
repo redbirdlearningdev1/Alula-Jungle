@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -56,6 +57,7 @@ public class ScrollingBackground : MonoBehaviour
     private bool isMoving = false;
     private BackgroundSprites currentSprites;
     private int currIndex;
+    private float overlapAmount = 0.1f;
 
     void Awake()
     {
@@ -144,7 +146,7 @@ public class ScrollingBackground : MonoBehaviour
             // add block to layer
             GameObject obj = Instantiate(buildingBlock, layer);
             obj.GetComponent<ParallaxBlock>().SetBlock(sprite, size);
-            obj.transform.localPosition = new Vector3(lastBlock.transform.localPosition.x + (lastBlock.sizeDelta.x / 2) + (size.x / 2), 0f, 0f);
+            obj.transform.localPosition = new Vector3(lastBlock.transform.localPosition.x + (lastBlock.sizeDelta.x / 2) + (size.x / 2) - overlapAmount, 0f, 0f);
 
             // start deleting blocks if child size is too large
             if (layer.childCount >= 8)
@@ -213,7 +215,7 @@ public class ScrollingBackground : MonoBehaviour
         obj.GetComponent<ParallaxBlock>().SetBlock(sprite, size);
 
         if (lastBlock != null)
-            obj.transform.localPosition = new Vector3(lastBlock.transform.localPosition.x + (lastBlock.sizeDelta.x / 2) + (size.x / 2), 0f, 0f);
+            obj.transform.localPosition = new Vector3(lastBlock.transform.localPosition.x + (lastBlock.sizeDelta.x / 2) + (size.x / 2) - overlapAmount, 0f, 0f);
         else
             obj.transform.localPosition = new Vector3(currSize + (size.x / 2), 0f, 0f);
     }
@@ -330,7 +332,7 @@ public class ScrollingBackground : MonoBehaviour
                 obj.GetComponent<ParallaxBlock>().SetBlock(sprite, size);
 
                 if (lastBlock != null)
-                    obj.transform.localPosition = new Vector3(lastBlock.transform.localPosition.x + (lastBlock.sizeDelta.x / 2) + (size.x / 2), 0f, 0f);
+                    obj.transform.localPosition = new Vector3(lastBlock.transform.localPosition.x + (lastBlock.sizeDelta.x / 2) + (size.x / 2) - overlapAmount, 0f, 0f);
                 else
                     obj.transform.localPosition = new Vector3(currSize + (size.x / 2), 0f, 0f);
 

@@ -39,7 +39,6 @@ public class LogCoin : MonoBehaviour
 
     public void ReturnToLog()
     {
-        transform.localScale = new Vector3(1f, 1f, 1f);
         StartCoroutine(ReturnToOriginalPosRoutine(logPos.position));
     }
 

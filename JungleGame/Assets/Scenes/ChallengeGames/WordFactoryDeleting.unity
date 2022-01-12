@@ -2208,7 +2208,6 @@ MonoBehaviour:
   normalCoinSize: {x: 210, y: 250}
   expandedCoinSize: {x: 230, y: 275}
   playTutorial: 0
-  tutorialEvent: 0
   tutorialPair1: {fileID: 11400000, guid: 01cfaf6318f414d4490a095da02be9da, type: 2}
   tutorialPair2: {fileID: 11400000, guid: 20524d6f157b10242912593224fd3020, type: 2}
   tutorialPair3: {fileID: 11400000, guid: 80dd9e91d2ca76e4da82759f172e1bb5, type: 2}
@@ -2398,6 +2397,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 121750354, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162192037, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244780262, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656799373, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 870513693240039170, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2811,7 +2826,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 37.151524
+      value: 37.16805
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

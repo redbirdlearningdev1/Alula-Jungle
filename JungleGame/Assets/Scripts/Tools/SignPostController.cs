@@ -11,15 +11,19 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
 
     public float pressedScaleChange;
 
-    public bool interactable;
+    private bool interactable;
     private bool isPressed;
+    public bool isEnabled = false;
 
     private int stars;
 
     public void ShowSignPost(int stars, bool interact)
     {
+        print ("showing signpost!");
+
         this.stars = stars;
         this.interactable = interact;
+        this.isEnabled = true;
 
         StartCoroutine(ShowSignPostRoutine());
     }
@@ -36,6 +40,11 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
         yield return new WaitForSeconds(0.5f);
 
         SetStars(stars);
+    }
+
+    public void SetInteractability(bool opt)
+    {
+        this.interactable = opt;
     }
 
     public void SetStars(int stars)
@@ -68,7 +77,10 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
 
     private IEnumerator HideSignPostRoutine()
     {
-        interactable = false;
+        print ("hiding signpost!");
+
+        this.interactable = false;
+        this.isEnabled = false;
 
         yield return new WaitForSeconds(1f);
         animator.Play("hidden");

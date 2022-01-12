@@ -54,6 +54,9 @@ public class WordFactoryDeletingManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // save to sis
+                StudentInfoSystem.GetCurrentProfile().wordFactoryDeletingTutorial = true;
+                StudentInfoSystem.SaveStudentPlayerData();
                 // calculate and show stars
                 StarAwardController.instance.AwardStarsAndExit(3);
             }

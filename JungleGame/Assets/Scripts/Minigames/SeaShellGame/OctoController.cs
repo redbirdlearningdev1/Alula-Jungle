@@ -42,7 +42,7 @@ public class OctoController : MonoBehaviour
 
     private IEnumerator PlaceNewCoinRoutine()
     {
-        octoAnimator.Play("octoGrabShow");
+        octoAnimator.Play("octoPlaceCoin");
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BubbleRise, 0.5f);
         yield return new WaitForSeconds(0.4f);
         tenticleAnimator.Play("armGrab");

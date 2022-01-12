@@ -436,6 +436,12 @@ public class SettingsManager : MonoBehaviour
             returnToScrollMapButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
             yield return new WaitForSeconds(0.2f);
             returnToScrollMapWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+
+            // close confirm windows iff open
+            if (returnToScrollMapConfirmWindow.transform.localScale.x > 0f)
+                CloseConfirmScrollMapWindow();
+            if (returnToSplashScreenConfirmWindow.transform.localScale.x > 0f)
+                CloseConfirmSplashScreenWindow();
         }
         animatingWindow = false;
     }
@@ -487,11 +493,6 @@ public class SettingsManager : MonoBehaviour
             returnToScrollMapConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
             settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
             settingsWindowBG.GetComponent<Image>().raycastTarget = false;
-            yield return new WaitForSeconds(0.2f);
-
-            // close window too
-            StartCoroutine(ToggleReturnToScrollMapWindow(false));
-            settingsWindowOpen = false;
             yield return new WaitForSeconds(0.2f);
         }
         animatingWindow = false;

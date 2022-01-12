@@ -67,6 +67,9 @@ public class CoinRaycaster : MonoBehaviour
             // audio fx
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f);
 
+            // make coin normal size
+            selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
+
             if (!isCorrect)
                 selectedCoin.ReturnToLog();
 

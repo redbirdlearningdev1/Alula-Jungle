@@ -59,6 +59,9 @@ public class WordFactoryBuildingManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // save to sis
+                StudentInfoSystem.GetCurrentProfile().wordFactoryBuildingTutorial = true;
+                StudentInfoSystem.SaveStudentPlayerData();
                 // calculate and show stars
                 StarAwardController.instance.AwardStarsAndExit(3);
             }
