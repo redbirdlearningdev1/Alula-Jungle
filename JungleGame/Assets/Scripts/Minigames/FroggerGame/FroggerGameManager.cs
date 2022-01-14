@@ -95,6 +95,9 @@ public class FroggerGameManager : MonoBehaviour
             AudioManager.instance.InitSplitSong(SplitSong.Frogger);
             AudioManager.instance.IncreaseSplitSong();
 
+            // show menu button
+            SettingsManager.instance.ToggleMenuButtonActive(true);
+
             StartCoroutine(StartGame());
         }
     }
@@ -180,6 +183,21 @@ public class FroggerGameManager : MonoBehaviour
     #   GAME FLOW METHODS
     ################################################
     */
+
+    private IEnumerator StartGame()
+    {
+        // wait a moment for the setup to finish
+        while (!gameSetup)
+            yield return null;
+
+        // reveal dancing man
+        StartCoroutine(ShowDancingManRoutine());
+        yield return new WaitForSeconds(1f);
+
+        currRow = 0;
+        // show first row coins
+        StartCoroutine(ShowCoins(currRow));
+    }
 
     private IEnumerator CoinFailRoutine()
     {
@@ -339,23 +357,6 @@ public class FroggerGameManager : MonoBehaviour
             return 1;
     }
 
-    private IEnumerator StartGame()
-    {
-        // wait a moment for the setup to finish
-        while (!gameSetup)
-            yield return null;
-
-        // show menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
-
-        // reveal dancing man
-        StartCoroutine(ShowDancingManRoutine());
-        yield return new WaitForSeconds(1f);
-
-        currRow = 0;
-        // show first row coins
-        StartCoroutine(ShowCoins(currRow));
-    }
 
     /* 
     ################################################
@@ -368,9 +369,6 @@ public class FroggerGameManager : MonoBehaviour
         // wait a moment for the setup to finish
         while (!gameSetup)
             yield return null;
-
-        // show menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         yield return new WaitForSeconds(1f);
 

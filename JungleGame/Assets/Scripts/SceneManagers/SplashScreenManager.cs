@@ -74,6 +74,12 @@ public class SplashScreenManager : MonoBehaviour
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
+        // stop music 
+        AudioManager.instance.StopMusic();
+
+        // play song
+        AudioManager.instance.PlaySong(AudioDatabase.instance.Sunrise_LouieZong);
+
         // get all three profiles
         var profiles = StudentInfoSystem.GetAllStudentDatas();
 
@@ -95,7 +101,6 @@ public class SplashScreenManager : MonoBehaviour
             print ("currProfile: " + currProfile.name);
             print ("currChapter: " + currProfile.currentChapter);
         }
-
 
         // default to chapter 0 animations
         BG3_animator.Play("3_Ch0");

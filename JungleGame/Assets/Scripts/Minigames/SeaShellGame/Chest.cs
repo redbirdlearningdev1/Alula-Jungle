@@ -31,6 +31,7 @@ public class Chest : MonoBehaviour
             currChest++;
         }
 
+        chest.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
         chest.sprite = chestSprites[currChest];
     }
 

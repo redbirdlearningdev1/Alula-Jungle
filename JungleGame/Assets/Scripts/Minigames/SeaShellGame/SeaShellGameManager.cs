@@ -53,9 +53,6 @@ public class SeaShellGameManager : MonoBehaviour
 
         // get mapID
         mapID = GameManager.instance.mapID;
-        
-        // place menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
     }
 
     void Start()
@@ -73,6 +70,9 @@ public class SeaShellGameManager : MonoBehaviour
             // start song
             AudioManager.instance.InitSplitSong(SplitSong.Seashells);
             AudioManager.instance.IncreaseSplitSong();
+
+            // show menu button
+            SettingsManager.instance.ToggleMenuButtonActive(true);
 
             StartCoroutine(PregameSetupRoutine());
         }
@@ -215,6 +215,11 @@ public class SeaShellGameManager : MonoBehaviour
             AudioClip clip = GameIntroDatabase.instance.seashellIntro3;
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Sylvie, clip);
             yield return new WaitForSeconds(clip.length + 1f);
+        }
+        else
+        {
+            // short pause before making shells interactable
+            yield return new WaitForSeconds(3f);
         }
 
         // turn on raycaster

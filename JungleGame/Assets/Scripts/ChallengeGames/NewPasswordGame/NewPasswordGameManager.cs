@@ -63,12 +63,16 @@ public class NewPasswordGameManager : MonoBehaviour
 
     void Start()
     {
-        // turn on settings button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
-
         // only turn off tutorial if false
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().passwordTutorial;
+
+        // add settings button if not playing tutorial
+        if (!playTutorial)
+        {
+            // turn on settings button
+            SettingsManager.instance.ToggleMenuButtonActive(true);
+        }
 
         PregameSetup();
     }

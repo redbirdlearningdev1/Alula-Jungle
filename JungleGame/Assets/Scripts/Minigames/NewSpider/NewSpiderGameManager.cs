@@ -67,9 +67,6 @@ public class NewSpiderGameManager : MonoBehaviour
 
         // get mapID
         mapID = GameManager.instance.mapID;
-
-        // place menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
     }
 
     void Start()
@@ -90,6 +87,9 @@ public class NewSpiderGameManager : MonoBehaviour
             // start song
             AudioManager.instance.InitSplitSong(SplitSong.Spiderweb);
             AudioManager.instance.IncreaseSplitSong();
+
+            // place menu button
+            SettingsManager.instance.ToggleMenuButtonActive(true);
 
             StartCoroutine(StartGame());
         }
@@ -117,7 +117,7 @@ public class NewSpiderGameManager : MonoBehaviour
     private void PregameSetup()
     {
         // play forest ambiance
-        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 1f, "forest_ambiance");
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 0.1f, "forest_ambiance");
 
         // turn off raycaster
         SpiderRayCaster.instance.isOn = false;

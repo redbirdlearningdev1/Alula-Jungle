@@ -114,8 +114,12 @@ public class WordFactoryBlendingManager : MonoBehaviour
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().wordFactoryBlendingTutorial;
 
-        // turn on settings button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
+        // add settings button if not playing tutorial
+        if (!playTutorial)
+        {
+            // turn on settings button
+            SettingsManager.instance.ToggleMenuButtonActive(true);
+        }
 
         // add ambiance
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.05f);

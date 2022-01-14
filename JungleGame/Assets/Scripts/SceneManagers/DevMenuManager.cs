@@ -625,7 +625,7 @@ public class DevMenuManager : MonoBehaviour
             case StoryBeat.OrcVillageUnlocked:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 4;
                 FixIconsUpTo(MapLocation.Mudslide);
-                SetChallengeGamesUpTo(MapLocation.OrcVillage);
+                SetChallengeGamesUpTo(MapLocation.Mudslide);
                 SetActionWordPool(MapLocation.OrcVillage);
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
@@ -636,7 +636,7 @@ public class DevMenuManager : MonoBehaviour
             case StoryBeat.OrcVillageMeetClogg:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 4;
                 FixIconsUpTo(MapLocation.Mudslide);
-                SetChallengeGamesUpTo(MapLocation.OrcVillage);
+                SetChallengeGamesUpTo(MapLocation.Mudslide);
                 SetActionWordPool(MapLocation.OrcVillage);
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;

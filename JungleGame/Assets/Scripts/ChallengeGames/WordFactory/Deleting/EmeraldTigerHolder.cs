@@ -26,6 +26,7 @@ public class EmeraldTigerHolder : MonoBehaviour
 
         numCoins = amount;
 
+        GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
         StartCoroutine(SwitchCoinSprite(amount));
     }
 

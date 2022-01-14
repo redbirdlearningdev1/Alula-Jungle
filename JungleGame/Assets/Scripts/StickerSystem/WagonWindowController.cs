@@ -112,12 +112,14 @@ public class WagonWindowController : MonoBehaviour
         if (StudentInfoSystem.GetCurrentProfile().goldCoins < 3)
         {
             // play sound
-            AudioManager.instance.PlayCoinDrop();
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SadBlip, 1f);
             return;
         }
         // if they do, remove coins from player profile
         else 
         {
+            // play sound
+            AudioManager.instance.PlayCoinDrop();
             DropdownToolbar.instance.RemoveGoldCoins(3);
         }
 
@@ -384,9 +386,9 @@ public class WagonWindowController : MonoBehaviour
         // disable nav buttons
         ScrollMapManager.instance.ToggleNavButtons(false);
 
-        // disable ui buttons
-        SettingsManager.instance.menuButton.interactable = false;
-        SettingsManager.instance.wagonButton.interactable = false;
+        // remove ui buttons
+        SettingsManager.instance.ToggleMenuButtonActive(false);
+        SettingsManager.instance.ToggleWagonButtonActive(false);
 
         // activate raycast blocker + background
         RaycastBlockerController.instance.CreateRaycastBlocker("StickerCartBlocker");
@@ -495,8 +497,8 @@ public class WagonWindowController : MonoBehaviour
         ScrollMapManager.instance.ToggleNavButtons(true);
 
         // enable ui buttons
-        SettingsManager.instance.menuButton.interactable = true;
-        SettingsManager.instance.wagonButton.interactable = true;
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+        SettingsManager.instance.ToggleWagonButtonActive(true);
 
         // check for scroll map game events
         ScrollMapManager.instance.CheckForGameEvent(StudentInfoSystem.GetCurrentProfile().currStoryBeat);

@@ -18,7 +18,7 @@ public class SettingsManager : MonoBehaviour
     private bool movingMenuButton = false;
     private bool movingWagonButton = false;
 
-    private bool menuButtonShown = false;
+    [HideInInspector] public bool menuButtonShown = false;
     private bool wagonButtonShown = false;
 
     [Header("Volume Sliders")]
@@ -41,8 +41,8 @@ public class SettingsManager : MonoBehaviour
     public LerpableObject returnToScrollMapButton;
     public LerpableObject returnToScrollMapConfirmWindow;
     public LerpableObject returnToSplashScreenConfirmWindow;
+    public LerpableObject exitApplicationConfirmWindow;
     
-
     private bool settingsWindowOpen;
     private bool animatingWindow = false;
 
@@ -363,6 +363,9 @@ public class SettingsManager : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             menuButton.GetComponent<LerpableObject>().LerpYPos(hiddenButtonYvalue, 0.2f, true);
             yield return new WaitForSeconds(0.2f);
+
+            // close settings window if open
+            StartCoroutine(ToggleSettingsWindow(false));
         }
 
         menuButtonShown = opt;
@@ -376,6 +379,9 @@ public class SettingsManager : MonoBehaviour
         if (animatingWindow)
             return;
         animatingWindow = true;
+
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
         
         // open settings window iff at scroll map
         if (SceneManager.GetActiveScene().name == "ScrollMap" || SceneManager.GetActiveScene().name == "SplashScene")
@@ -413,12 +419,15 @@ public class SettingsManager : MonoBehaviour
                 CloseConfirmScrollMapWindow();
             if (returnToSplashScreenConfirmWindow.transform.localScale.x > 0f)
                 CloseConfirmSplashScreenWindow();
+            if (exitApplicationConfirmWindow.transform.localScale.x > 0f)
+                CloseConfirmSplashScreenWindow();
             
         }
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(1f);
 
         animatingWindow = false;
+        settingsWindowOpen = opt;
     }
 
     public IEnumerator ToggleReturnToScrollMapWindow(bool opt)
@@ -442,7 +451,12 @@ public class SettingsManager : MonoBehaviour
                 CloseConfirmScrollMapWindow();
             if (returnToSplashScreenConfirmWindow.transform.localScale.x > 0f)
                 CloseConfirmSplashScreenWindow();
+            if (exitApplicationConfirmWindow.transform.localScale.x > 0f)
+                CloseConfirmSplashScreenWindow();
         }
+
+        yield return new WaitForSeconds(1f);
+
         animatingWindow = false;
     }
 
@@ -500,11 +514,8 @@ public class SettingsManager : MonoBehaviour
 
     public void CloseSettingsWindow()
     {
-        // do this thing
+        ToggleSettingsWindow(false);
     }
-
-
-
 
 
 
@@ -512,6 +523,12 @@ public class SettingsManager : MonoBehaviour
     {
         if (opt)
         {
+            if (exitApplicationConfirmWindow.transform.localScale.x > 0f)
+            {
+                CloseExitApplicationConfirmWindow();
+                yield return new WaitForSeconds(0.2f);
+            }
+
             // open window
             returnToSplashScreenConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
             settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0.75f, 0.2f);
@@ -561,6 +578,78 @@ public class SettingsManager : MonoBehaviour
 
 
 
+
+
+
+    public IEnumerator ToggleExitApplicationConfirmWindow(bool opt)
+    {
+        if (opt)
+        {
+            if (returnToSplashScreenConfirmWindow.transform.localScale.x > 0f)
+            {
+                CloseConfirmSplashScreenWindow();
+                yield return new WaitForSeconds(0.2f);
+            }
+
+            // open window
+            exitApplicationConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
+            settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0.75f, 0.2f);
+            settingsWindowBG.GetComponent<Image>().raycastTarget = true;
+            yield return new WaitForSeconds(0.2f);
+        }
+        else
+        {
+            // close window
+            exitApplicationConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+            settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
+            settingsWindowBG.GetComponent<Image>().raycastTarget = false;
+            yield return new WaitForSeconds(0.2f);
+        }
+        animatingWindow = false;
+    }
+
+    public void OpenExitApplicationConfirmWindow()
+    {
+        StartCoroutine(ToggleExitApplicationConfirmWindow(true));
+    }
+
+    public void CloseExitApplicationConfirmWindow()
+    {
+        StartCoroutine(ToggleExitApplicationConfirmWindow(false));
+    }
+
+    public void ExitApplicationButtonPressed()
+    {
+        StartCoroutine(ExitApplicationButtonRoutine());
+    }
+
+    private IEnumerator ExitApplicationButtonRoutine()
+    {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+
+        // add raycast blocker
+        RaycastBlockerController.instance.CreateRaycastBlocker("exit game lol");
+
+        // close confirm window
+        exitApplicationConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+        settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
+        settingsWindowBG.GetComponent<Image>().raycastTarget = false;
+
+        // close settings window
+        SettingsWindowController.instance.CloseAllWindows();
+        yield return new WaitForSeconds(0.2f);
+
+        // fade out to black
+        FadeObject.instance.FadeOut(3f);
+        yield return new WaitForSeconds(3f);
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 
 
 

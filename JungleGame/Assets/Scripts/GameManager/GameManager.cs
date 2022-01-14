@@ -208,7 +208,7 @@ public class GameManager : DontDestroy<GameManager>
 
     public void ReturnToScrollMap()
     {
-        LoadScene("ScrollMap", true);
+        LoadScene("ScrollMap", true, 0.5f, true);
     }
 
     public void LoadScene(string sceneName, bool fadeOut, float time = transitionTime, bool useLoadScene = false)

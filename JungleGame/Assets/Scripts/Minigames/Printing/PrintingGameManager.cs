@@ -45,9 +45,6 @@ public class PrintingGameManager : MonoBehaviour
 
         // get mapID
         mapID = GameManager.instance.mapID;
-
-        // place menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
     }
 
     void Start()
@@ -115,6 +112,9 @@ public class PrintingGameManager : MonoBehaviour
             // start song
             AudioManager.instance.InitSplitSong(SplitSong.Pirate);
             AudioManager.instance.IncreaseSplitSong();
+
+            // place menu button
+            SettingsManager.instance.ToggleMenuButtonActive(true);
 
             // start game
             StartCoroutine(StartGame());

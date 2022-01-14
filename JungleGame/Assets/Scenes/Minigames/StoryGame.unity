@@ -405,9 +405,9 @@ MonoBehaviour:
   backLayer: {fileID: 1228727340}
   midLayer: {fileID: 1237634160}
   frontLayer: {fileID: 1013389069}
-  frontSpeed: 0.005
-  midSpeed: 0.0025
-  backSpeed: 0.0005
+  frontSpeed: 0.0025
+  midSpeed: 0.00125
+  backSpeed: 0.00025
 --- !u!1001 &471674082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1040,7 +1040,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 45.92866
+      value: 46.18091
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -1266,7 +1266,7 @@ PrefabInstance:
     - target: {fileID: 2259954281568042473, guid: 85c2fafb3e6e29f4f91648da342fa566,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2259954281568042473, guid: 85c2fafb3e6e29f4f91648da342fa566,
         type: 3}
@@ -1676,7 +1676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151db7b06aa6cba4d9ce1b2f0f684e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overrideGame: 1
+  overrideGame: 0
   storyGameIndex: 0
   coin: {fileID: 1653332658}
   dancingMan: {fileID: 1034302397}

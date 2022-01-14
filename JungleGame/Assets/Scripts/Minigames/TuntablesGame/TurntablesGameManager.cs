@@ -514,9 +514,6 @@ public class TurntablesGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        // show menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
-
         // play tutorial audio 1
         AudioClip clip = GameIntroDatabase.instance.turntablesIntro1;
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);

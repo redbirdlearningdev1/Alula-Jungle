@@ -26,6 +26,7 @@ public class AudioDatabase : MonoBehaviour
     public AudioClip MainThemeSong;
     public AudioClip FroggerGameSong;
     public AudioClip TurntablesGameSong;
+    public AudioClip Sunrise_LouieZong;
 
     public AudioClip[] FroggerSongSplit;
     public AudioClip[] TurntablesSongSplit;

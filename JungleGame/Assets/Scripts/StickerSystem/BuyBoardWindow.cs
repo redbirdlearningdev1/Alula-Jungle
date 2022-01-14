@@ -84,12 +84,14 @@ public class BuyBoardWindow : MonoBehaviour
         if (StudentInfoSystem.GetCurrentProfile().goldCoins < price)
         {
             // play sound
-            AudioManager.instance.PlayCoinDrop();
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SadBlip, 1f);
             return;
         }
         // if they do, remove coins from player profile
         else 
         {
+            // play sound
+            AudioManager.instance.PlayCoinDrop();
             DropdownToolbar.instance.RemoveGoldCoins(price);
         }
 

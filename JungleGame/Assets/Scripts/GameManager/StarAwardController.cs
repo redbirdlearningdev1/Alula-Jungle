@@ -60,6 +60,9 @@ public class StarAwardController : MonoBehaviour
         // close settings menu if open
         SettingsManager.instance.CloseSettingsWindow();
 
+        // remove settings button
+        SettingsManager.instance.ToggleMenuButtonActive(false);
+
         // end split music (default)
         AudioManager.instance.EndSplitSong();
 

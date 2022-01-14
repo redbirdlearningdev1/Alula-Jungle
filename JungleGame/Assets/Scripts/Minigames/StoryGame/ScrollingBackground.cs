@@ -57,7 +57,7 @@ public class ScrollingBackground : MonoBehaviour
     private bool isMoving = false;
     private BackgroundSprites currentSprites;
     private int currIndex;
-    private float overlapAmount = 0.1f;
+    private float overlapAmount = 1f;
 
     void Awake()
     {

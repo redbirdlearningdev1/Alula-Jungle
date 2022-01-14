@@ -75,6 +75,9 @@ public class StoryGameManager : MonoBehaviour
 
         // send log
         GameManager.instance.SendLog(this, "starting story game: " + storyGameData.name);
+
+        // activate settings button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
     }
 
     void Start()
@@ -232,11 +235,6 @@ public class StoryGameManager : MonoBehaviour
 
                 if (seg.requireInput)
                 {
-                    if (microphone.hasBeenPressed)
-                    {
-                        continue;
-                    }
-
                     // turn on mic button
                     if (!microphone.interactable)
                     {
@@ -250,7 +248,13 @@ public class StoryGameManager : MonoBehaviour
                     waitingForAudioInput = true;
                     // activate microphone indicator
                     microphone.ShowIndicator();
-                    StartCoroutine(RepeatWhileWating());
+                    // repeat word if microphone has not been pressed
+                    if (!microphone.hasBeenPressed)
+                        StartCoroutine(RepeatWhileWating());
+                    else
+                    {
+                        StopCoroutine(RepeatWhileWating());
+                    }
                     while (waitingForAudioInput)
                     {
                         // break from loop if button is mic button is pressed
@@ -266,10 +270,7 @@ public class StoryGameManager : MonoBehaviour
                     if (microphone.hasBeenPressed)
                     {
                         microphone.interactable = false;
-                        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 0.5f);
                         microphone.NoInputDetected();
-
-                        yield return new WaitForSeconds(1f);
                     }
                     else
                     {
@@ -279,8 +280,6 @@ public class StoryGameManager : MonoBehaviour
                         // play correct audio cue
                         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
                         dancingMan.PlayUsingPhonemeEnum(seg.actionWord);
-
-                        yield return new WaitForSeconds(1f);
                     }              
                 }
 
@@ -288,7 +287,7 @@ public class StoryGameManager : MonoBehaviour
                 ShakeCoin();
                 AudioClip clip = GameManager.instance.GetActionWord(seg.actionWord).audio;
                 AudioManager.instance.PlayTalk(clip);
-                yield return new WaitForSeconds(clip.length);
+                yield return new WaitForSeconds(clip.length + 1f);
 
                 if (seg.requireInput && !microphone.hasBeenPressed)
                 {

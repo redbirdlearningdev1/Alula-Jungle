@@ -35,18 +35,6 @@ public class MermaidController : MonoBehaviour
         StartCoroutine(PlayShellRoutine(shellNum));
     }
 
-    private IEnumerator PlayShellSoundReverbRoutine(AudioClip clip)
-    {
-        AudioManager.instance.PlayFX_oneShot(clip, 0.6f, "shell1", 0.9f);
-        yield return new WaitForSeconds(0.005f);
-        AudioManager.instance.PlayFX_oneShot(clip, 0.2f, "shell2", 0.9f);
-        yield return new WaitForSeconds(0.005f);
-        AudioManager.instance.PlayFX_oneShot(clip, 0.1f, "shell3", 0.9f);
-        yield return new WaitForSeconds(0.005f);
-        AudioManager.instance.PlayFX_oneShot(clip, 0.05f, "shell4", 0.9f);
-
-    }
-
     private IEnumerator PlayShellRoutine(int shellNum)
     {
         int mermaid = Random.Range(0, 2);
@@ -62,17 +50,17 @@ public class MermaidController : MonoBehaviour
                 case 1:
                     playAnimator.Play("BluePlay1");
                     yield return new WaitForSeconds(0.5f);
-                    StartCoroutine(PlayShellSoundReverbRoutine(GameManager.instance.GetActionWord(ShellController.instance.shell1.value).audio));
+                    AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell1.value).audio, 0.6f, "shell1", 0.9f);
                     break;
                 case 2:
                     playAnimator.Play("BluePlay2");
                     yield return new WaitForSeconds(0.5f);
-                    StartCoroutine(PlayShellSoundReverbRoutine(GameManager.instance.GetActionWord(ShellController.instance.shell2.value).audio));
+                    AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell2.value).audio, 0.6f, "shell2", 0.9f);
                     break;
                 case 3:
                     playAnimator.Play("BluePlay3");
                     yield return new WaitForSeconds(0.5f);
-                    StartCoroutine(PlayShellSoundReverbRoutine(GameManager.instance.GetActionWord(ShellController.instance.shell3.value).audio));
+                    AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell3.value).audio, 0.6f, "shell3", 0.9f);
                     break;
             }
 
@@ -96,17 +84,17 @@ public class MermaidController : MonoBehaviour
                 case 1:
                     playAnimator.Play("PinkPlay1");
                     yield return new WaitForSeconds(0.5f);
-                    StartCoroutine(PlayShellSoundReverbRoutine(GameManager.instance.GetActionWord(ShellController.instance.shell1.value).audio));
+                    AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell1.value).audio, 0.6f, "shell1", 0.9f);
                     break;
                 case 2:
                     playAnimator.Play("PinkPlay2");
                     yield return new WaitForSeconds(0.5f);
-                    StartCoroutine(PlayShellSoundReverbRoutine(GameManager.instance.GetActionWord(ShellController.instance.shell2.value).audio));
+                    AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell2.value).audio, 0.6f, "shell2", 0.9f);
                     break;
                 case 3:
                     playAnimator.Play("PinkPlay3");
                     yield return new WaitForSeconds(0.5f);
-                    StartCoroutine(PlayShellSoundReverbRoutine(GameManager.instance.GetActionWord(ShellController.instance.shell3.value).audio));
+                    AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell3.value).audio, 0.6f, "shell3", 0.9f);
                     break;
             }
 

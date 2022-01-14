@@ -70,9 +70,6 @@ public class WordFactoryBuildingManager : MonoBehaviour
 
     void Start()
     {
-        // turn on settings button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
-
         // add ambiance
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.05f);
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 0.05f);
@@ -80,6 +77,14 @@ public class WordFactoryBuildingManager : MonoBehaviour
         // only turn off tutorial if false
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().wordFactoryBuildingTutorial;
+
+        // add settings button if not playing tutorial
+        if (!playTutorial)
+        {
+            // turn on settings button
+            SettingsManager.instance.ToggleMenuButtonActive(true);
+        }
+
 
         PregameSetup();
     }

@@ -4084,7 +4084,7 @@ MonoBehaviour:
   fIslandSpeed: 2.5
   verticalParallax: 0
   verticalParallaxPos: 0
-  vertParallaxSpeed: 0.001
+  vertParallaxSpeed: 0.0005
   islandPosition: {fileID: 240943840}
   centeringOnIsland: 0
   skyScale: 1.1
@@ -7582,7 +7582,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 14.6508665
+      value: 14.660072
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

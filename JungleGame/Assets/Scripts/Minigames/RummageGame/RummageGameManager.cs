@@ -98,6 +98,9 @@ public class RummageGameManager : MonoBehaviour
             AudioManager.instance.InitSplitSong(SplitSong.Rummage);
             AudioManager.instance.IncreaseSplitSong();
 
+            // show menu button
+            SettingsManager.instance.ToggleMenuButtonActive(true);
+
             StartCoroutine(StartGame());
         }
     }
@@ -105,7 +108,7 @@ public class RummageGameManager : MonoBehaviour
     private void PregameSetup()
     {
         // start ambient sounds
-        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 1f, "forest_ambiance");
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 0.1f, "forest_ambiance");
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.1f, "river_flowing");
 
         // turn off raycaster
@@ -159,9 +162,6 @@ public class RummageGameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        // show menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
-
         // reveal dancing man
         StartCoroutine(ShowDancingManRoutine());
         yield return new WaitForSeconds(1f);
@@ -179,9 +179,6 @@ public class RummageGameManager : MonoBehaviour
     {
         LockAllPiles();
         yield return new WaitForSeconds(1f);
-
-        // show menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // play tutorial audio
         List<AudioClip> clips = new List<AudioClip>();

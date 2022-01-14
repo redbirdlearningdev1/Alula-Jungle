@@ -85,6 +85,7 @@ public class TalkieManager : MonoBehaviour
     private int newSegmentIndex;
     private bool endingTalkie;
 
+
     public void SetFastTalkies(bool opt)
     {
         if (opt)
@@ -152,7 +153,6 @@ public class TalkieManager : MonoBehaviour
 
         // close settings menu if open
         SettingsManager.instance.CloseSettingsWindow();
-        SettingsManager.instance.ToggleMenuButtonActive(false);
 
         // set fast talkies
         SetFastTalkies(StudentInfoSystem.GetCurrentProfile().talkieFast);
@@ -179,9 +179,6 @@ public class TalkieManager : MonoBehaviour
         // deactivate letterbox and background
         LetterboxController.instance.ToggleLetterbox(false);
         DefaultBackground.instance.Deactivate();
-
-        if (talkiePlaying)
-            SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // stop playing talkie
         talkiePlaying = false;
@@ -349,9 +346,6 @@ public class TalkieManager : MonoBehaviour
         // set audio back to what it was before
         AudioManager.instance.ToggleMusicSmooth(true);
 
-        // readd menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
-
         // stop playing talkie
         talkiePlaying = false;
         currentTalkie = null;
@@ -388,7 +382,7 @@ public class TalkieManager : MonoBehaviour
                     true));
                 leftHidden = false;
                 
-                StartCoroutine(ChangeParticles(talkieSeg.leftCharacter.ToString()));
+                StartCoroutine(ChangeParticles(talkieSeg.leftCharacter));
                 
                 
             }
@@ -474,7 +468,7 @@ public class TalkieManager : MonoBehaviour
         // scale and alpha talkies
         if (talkieSeg.activeCharacter == ActiveCharacter.Left)
         {
-            StartCoroutine(ChangeParticles(talkieSeg.leftCharacter.ToString()));
+            StartCoroutine(ChangeParticles(talkieSeg.leftCharacter));
             StartCoroutine(LerpScaleAndAlpha(leftImage, 1f, 1f, true));
             if (!rightHidden) 
             {
@@ -483,7 +477,7 @@ public class TalkieManager : MonoBehaviour
         }
         else if (talkieSeg.activeCharacter == ActiveCharacter.Right)
         {
-            StartCoroutine(ChangeParticles(talkieSeg.rightCharacter.ToString()));
+            StartCoroutine(ChangeParticles(talkieSeg.rightCharacter));
             StartCoroutine(LerpScaleAndAlpha(rightImage, 1f, 1f, false));
             if (!leftHidden) 
             {
@@ -705,10 +699,9 @@ public class TalkieManager : MonoBehaviour
             yield return null;
         }
     }
-    private IEnumerator ChangeParticles(string charName)
-    {
-        
-        ParticleController.instance.SetActiveParticles(charName);
+    private IEnumerator ChangeParticles(TalkieCharacter character)
+    {   
+        ParticleController.instance.SetActiveParticles(character);
         yield return new WaitForSeconds(0f);
     }
 

@@ -426,9 +426,6 @@ public class ScrollMapManager : MonoBehaviour
                 SettingsManager.instance.ToggleWagonButtonActive(true);
         }
 
-        // turn on navigation control
-        ToggleNavButtons(true);
-
         // show stars on current map location
         yield return new WaitForSeconds(1f);
         StartCoroutine(ToggleLocationRoutine(true, mapPosIndex));
@@ -486,7 +483,7 @@ public class ScrollMapManager : MonoBehaviour
 
             // scroll map bools
             activateMapNavigation = false;
-            revealGMUI = false;      
+            revealGMUI = true;    
 
             // bring boat into dock
             MapAnimationController.instance.DockBoat();
@@ -518,6 +515,8 @@ public class ScrollMapManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_1; // new chapter!
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
+
+            yield return new WaitForSeconds(1f);
 
             gorilla.interactable = true;
         }
@@ -567,6 +566,8 @@ public class ScrollMapManager : MonoBehaviour
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
 
+                yield return new WaitForSeconds(1f);
+
                 // unlock button in SIS
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
                 // add glow + wiggle
@@ -593,6 +594,8 @@ public class ScrollMapManager : MonoBehaviour
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.darwin_forces);
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
+
+                yield return new WaitForSeconds(1f);
 
                 // add glow + wiggle
                 SettingsManager.instance.ToggleStickerButtonWiggleGlow(true);
@@ -2127,9 +2130,6 @@ public class ScrollMapManager : MonoBehaviour
                 if (revealStars)
                     icon.RevealStars();
             }
-
-            // attempt to enable signpost at locations
-            EnableSignPostAtLocation(obj.index);
         }
     }
 

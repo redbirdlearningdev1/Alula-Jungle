@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum ParticleType
 {
-    stars, sand, swirl, block, bubble
+    Darwin_crate, Red_feather, Wally_stars, Monkey_bananas, Julius_swirls, Lester_sand, Clogg_swirls, Spindle_bugs, Ollie_feathers, Celeste_sand, Sylvie_sand, Taxi_feathers
 }
 
 public class ParticleController : MonoBehaviour
@@ -14,11 +14,20 @@ public class ParticleController : MonoBehaviour
     public bool isOn = false;
     public ParticleType particleType;
 
-    public GameObject starParticle;
-    public GameObject sandParticle;
-    public GameObject swirlParticle;
-    public GameObject blockParticle;
-    public GameObject bubbleParticle;
+    public GameObject darwinCrateParticle;
+    public GameObject redFeatherParticle;
+    public GameObject wallyStarsParticle;
+
+    public GameObject bananaParticle;
+    public GameObject juliusSwirlParticle;
+
+    public GameObject lesterSandParticle;
+    public GameObject cloggSwirlParticle;
+    public GameObject spindleBugParticle;
+    public GameObject ollieFeatherParticle;
+    public GameObject celesteSandParticle;
+    public GameObject sylvieSandParticle;
+    public GameObject taxiFeatherParticle;
 
     public List<GameObject> colliderObjects;
     private bool colliderState = false; // off by default
@@ -88,25 +97,52 @@ public class ParticleController : MonoBehaviour
             switch (particleType)
             {
                 default:
-                case ParticleType.stars: 
-                    currentParticle = starParticle;
-                    
+                case ParticleType.Darwin_crate: 
+                    currentParticle = darwinCrateParticle;
                     break;
                 
-                case ParticleType.sand: 
-                    currentParticle = sandParticle;
+                case ParticleType.Red_feather: 
+                    currentParticle = redFeatherParticle;
                     break;
 
-                case ParticleType.swirl: 
-                    currentParticle = swirlParticle;
+                case ParticleType.Wally_stars: 
+                    currentParticle = wallyStarsParticle;
                     break;
 
-                case ParticleType.block: 
-                    currentParticle = blockParticle;
+                case ParticleType.Monkey_bananas: 
+                    currentParticle = bananaParticle;
                     break;
 
-                case ParticleType.bubble: 
-                    currentParticle = bubbleParticle;
+                case ParticleType.Julius_swirls: 
+                    currentParticle = juliusSwirlParticle;
+                    break;
+
+                case ParticleType.Lester_sand: 
+                    currentParticle = lesterSandParticle;
+                    break;
+
+                case ParticleType.Clogg_swirls: 
+                    currentParticle = cloggSwirlParticle;
+                    break;
+
+                case ParticleType.Spindle_bugs: 
+                    currentParticle = spindleBugParticle;
+                    break;
+
+                case ParticleType.Ollie_feathers: 
+                    currentParticle = ollieFeatherParticle;
+                    break;
+
+                case ParticleType.Celeste_sand: 
+                    currentParticle = celesteSandParticle;
+                    break;
+
+                case ParticleType.Sylvie_sand: 
+                    currentParticle = sylvieSandParticle;
+                    break;
+
+                case ParticleType.Taxi_feathers: 
+                    currentParticle = taxiFeatherParticle;
                     break;
             }
 
@@ -133,28 +169,55 @@ public class ParticleController : MonoBehaviour
         }
     }
 
-    public void SetActiveParticles(string charName)
+    public void SetActiveParticles(TalkieCharacter character)
     {
-        if(charName == "Red" || charName == "Wally")
+        if (character == TalkieCharacter.Red)
         {
-            particleType = ParticleType.stars;
+            particleType = ParticleType.Red_feather;
         }
-        else if(charName == "Clogg" || charName == "Ollie" || charName == "Lester")
+        else if(character == TalkieCharacter.Darwin)
         {
-            particleType = ParticleType.sand;
+            particleType = ParticleType.Darwin_crate;
         }
-        else if(charName == "Julius" || charName == "Marcus" || charName == "Brutus")
+        else if(character == TalkieCharacter.Wally)
         {
-            particleType = ParticleType.swirl;
+            particleType = ParticleType.Wally_stars;
         }
-        else if(charName == "Bubbles" || charName == "Sylvie" || charName == "Celest")
+        else if(character == TalkieCharacter.Marcus || character == TalkieCharacter.Brutus)
         {
-            particleType = ParticleType.bubble;
+            particleType = ParticleType.Monkey_bananas;
         }
-        else if(charName == "Darwin" || charName == "Taxi Bird" || charName == "Spindle")
+        else if(character == TalkieCharacter.Julius)
         {
-            particleType = ParticleType.block;
+            particleType = ParticleType.Julius_swirls;
         }
-       
+        else if(character == TalkieCharacter.Lester)
+        {
+            particleType = ParticleType.Lester_sand;
+        }
+        else if(character == TalkieCharacter.Clogg)
+        {
+            particleType = ParticleType.Clogg_swirls;
+        }
+        else if(character == TalkieCharacter.Spindle)
+        {
+            particleType = ParticleType.Spindle_bugs;
+        }
+        else if(character == TalkieCharacter.Ollie)
+        {
+            particleType = ParticleType.Ollie_feathers;
+        }
+        else if(character == TalkieCharacter.Celeste)
+        {
+            particleType = ParticleType.Celeste_sand;
+        }
+        else if(character == TalkieCharacter.Sylvie)
+        {
+            particleType = ParticleType.Sylvie_sand;
+        }
+        else if(character == TalkieCharacter.Taxi)
+        {
+            particleType = ParticleType.Taxi_feathers;
+        }
     }
 }
