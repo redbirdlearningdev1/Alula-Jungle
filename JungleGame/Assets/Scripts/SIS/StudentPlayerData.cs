@@ -11,6 +11,7 @@ public class StudentPlayerData
     public bool mostRecentProfile; // is this the most recently opend profile?
     public string name; // name of student
     public int minigamesPlayed;
+    public int profileAvatar;
 
     // coins
     public int goldCoins;

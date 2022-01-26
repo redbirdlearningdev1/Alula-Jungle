@@ -16,6 +16,7 @@ public class SplashScreenManager : MonoBehaviour
     [Header("Profile Windows")]
     [SerializeField] CanvasGroup profileSelectWindow;
     [SerializeField] CanvasGroup newProfileWindow;
+    [SerializeField] CanvasGroup editProfileWindow;
 
     [SerializeField] Button startButton;
     [SerializeField] Button newProfileButton;
@@ -23,6 +24,10 @@ public class SplashScreenManager : MonoBehaviour
     [SerializeField] Button profile1Button;
     [SerializeField] Button profile2Button;
     [SerializeField] Button profile3Button;
+
+    [SerializeField] Button editProfile1Button;
+    [SerializeField] Button editProfile2Button;
+    [SerializeField] Button editProfile3Button;
 
     [SerializeField] Image profile1Image;
     [SerializeField] Image profile2Image;
@@ -58,9 +63,14 @@ public class SplashScreenManager : MonoBehaviour
 
     public float lerpSpeed;
 
-    public Sprite selectedSprite;
-
     private StudentIndex newProfileIndex;
+    private int profileAvatarIndex;
+    public Image selectedProfileImage;
+
+
+    [Header("Edit Profile")]
+    public Image editProfileImage;
+    public TMP_InputField editProfileInput;
 
     [Header("Button Stuff")]
     public Image buttonBG;
@@ -155,6 +165,16 @@ public class SplashScreenManager : MonoBehaviour
         newProfileWindow.blocksRaycasts = false;
         newProfileWindow.alpha = 0f;
 
+        // set up new profile window
+        editProfileWindow.interactable = false;
+        editProfileWindow.blocksRaycasts = false;
+        editProfileWindow.alpha = 0f;
+
+        // set edit profile buttons to be off
+        editProfile1Button.gameObject.SetActive(false);
+        editProfile2Button.gameObject.SetActive(false);
+        editProfile3Button.gameObject.SetActive(false);
+
         // wiggle text controller
         tapTextWiggleController.StartWiggle();
 
@@ -189,7 +209,8 @@ public class SplashScreenManager : MonoBehaviour
         if (data1.active)
         {
             profile1Text.text = data1.name;
-            profile1Image.sprite = selectedSprite; // TODO: custom icon selected
+            profile1Image.sprite = GameManager.instance.avatars[data1.profileAvatar];
+            editProfile1Button.gameObject.SetActive(true);
         }
 
         // profile 2
@@ -197,7 +218,8 @@ public class SplashScreenManager : MonoBehaviour
         if (data2.active)
         {
             profile2Text.text = data2.name;
-            profile2Image.sprite = selectedSprite; // TODO: custom icon selected
+            profile2Image.sprite = GameManager.instance.avatars[data2.profileAvatar];
+            editProfile2Button.gameObject.SetActive(true);
         }
 
         // profile 3
@@ -205,7 +227,8 @@ public class SplashScreenManager : MonoBehaviour
         if (data3.active)
         {
             profile3Text.text = data3.name;
-            profile3Image.sprite = selectedSprite; // TODO: custom icon selected
+            profile3Image.sprite = GameManager.instance.avatars[data3.profileAvatar];
+            editProfile3Button.gameObject.SetActive(true);
         }
     }
 
@@ -261,6 +284,10 @@ public class SplashScreenManager : MonoBehaviour
                 break;
             yield return null;
         }
+
+        // new profile avatar is 10 by default (red)
+        profileAvatarIndex = 10;
+        selectedProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
 
         newProfileWindow.interactable = true;
         newProfileWindow.blocksRaycasts = true;
@@ -332,6 +359,7 @@ public class SplashScreenManager : MonoBehaviour
         StudentInfoSystem.ResetProfile(newProfileIndex);
         StudentInfoSystem.SetStudentPlayer(newProfileIndex);
         StudentInfoSystem.GetCurrentProfile().name = newProfileInput.text;
+        StudentInfoSystem.GetCurrentProfile().profileAvatar = profileAvatarIndex;
         StudentInfoSystem.SaveStudentPlayerData();
 
         SetUpProfiles();
@@ -437,5 +465,129 @@ public class SplashScreenManager : MonoBehaviour
         }
 
         switchingProfiles = false;
+    }
+
+    public void OnLeftArrowPressed()
+    {   
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        // reduce index, iff less than 0, return to max number
+        profileAvatarIndex--;
+        if (profileAvatarIndex < 0)
+            profileAvatarIndex = GameManager.instance.avatars.Count - 1;
+
+        selectedProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+        editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+    }
+
+    public void OnRightArrowPressed()
+    {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        // increase index, iff greater than max, return to 0
+        profileAvatarIndex++;
+        if (profileAvatarIndex >= GameManager.instance.avatars.Count)
+            profileAvatarIndex = 0;
+
+        selectedProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+        editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+    }
+
+    /* 
+    ################################################
+    #   EDIT PROFILE WINDOW
+    ################################################
+    */
+
+    public void OpenEditProfileWindow(int num)
+    {
+        if (num == 1)
+        {
+            OpenEditProfileWindow(StudentIndex.student_1);
+        }
+        else if (num == 2)
+        {
+            OpenEditProfileWindow(StudentIndex.student_2);
+        }
+        else if (num == 3)
+        {
+            OpenEditProfileWindow(StudentIndex.student_3);
+        }
+    }
+
+    private void OpenEditProfileWindow(StudentIndex index)
+    {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.HappyBlip, 1f);
+
+        // set correct avatar
+        newProfileIndex = index;
+        profileAvatarIndex = StudentInfoSystem.GetStudentData(index).profileAvatar;
+        editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+
+        // set correct name
+        editProfileInput.text = StudentInfoSystem.GetStudentData(index).name;
+
+        profileSelectWindow.interactable = true;
+        profileSelectWindow.blocksRaycasts = true;
+        StartCoroutine(RevealEditProfileWindow(0.5f));
+    }
+
+    public void UpdateProfilePressed()
+    {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CreateBlip, 1f);
+
+        StudentInfoSystem.SetStudentPlayer(newProfileIndex);
+        StudentInfoSystem.GetCurrentProfile().name = editProfileInput.text;
+        StudentInfoSystem.GetCurrentProfile().profileAvatar = profileAvatarIndex;
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        SetUpProfiles();
+
+        SelectProfile((int)newProfileIndex + 1);
+        startButton.interactable = true;
+
+        StartCoroutine(HideEditProfileWindow(0.5f));
+        editProfileWindow.interactable = true;
+        editProfileWindow.blocksRaycasts = true;
+    }
+
+    private IEnumerator RevealEditProfileWindow(float totalTime)
+    {
+        float timer = 0f;
+        while (true)
+        {
+            timer += Time.deltaTime;
+            editProfileWindow.alpha = Mathf.Lerp(0f, 1f, timer / totalTime);
+
+            if (timer > totalTime)
+                break;
+            yield return null;
+        }
+
+        editProfileWindow.interactable = true;
+        editProfileWindow.blocksRaycasts = true;
+        editProfileWindow.alpha = 1f;
+    }
+
+    private IEnumerator HideEditProfileWindow(float totalTime)
+    {
+        float timer = 0f;
+        while (true)
+        {
+            timer += Time.deltaTime;
+            editProfileWindow.alpha = Mathf.Lerp(1f, 0f, timer / totalTime);
+
+            if (timer > totalTime)
+                break;
+            yield return null;
+        }
+
+        editProfileWindow.interactable = false;
+        editProfileWindow.blocksRaycasts = false;
+        editProfileWindow.alpha = 0f;
     }
 }

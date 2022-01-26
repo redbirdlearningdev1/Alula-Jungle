@@ -497,16 +497,12 @@ public class SettingsManager : MonoBehaviour
         {
             // open window
             returnToScrollMapConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
-            settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0.75f, 0.2f);
-            settingsWindowBG.GetComponent<Image>().raycastTarget = true;
             yield return new WaitForSeconds(0.2f);
         }
         else
         {
             // close window
             returnToScrollMapConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
-            settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
-            settingsWindowBG.GetComponent<Image>().raycastTarget = false;
             yield return new WaitForSeconds(0.2f);
         }
         animatingWindow = false;
@@ -531,16 +527,12 @@ public class SettingsManager : MonoBehaviour
 
             // open window
             returnToSplashScreenConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
-            settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0.75f, 0.2f);
-            settingsWindowBG.GetComponent<Image>().raycastTarget = true;
             yield return new WaitForSeconds(0.2f);
         }
         else
         {
             // close window
             returnToSplashScreenConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
-            settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
-            settingsWindowBG.GetComponent<Image>().raycastTarget = false;
             yield return new WaitForSeconds(0.2f);
         }
         animatingWindow = false;
@@ -593,16 +585,12 @@ public class SettingsManager : MonoBehaviour
 
             // open window
             exitApplicationConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
-            settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0.75f, 0.2f);
-            settingsWindowBG.GetComponent<Image>().raycastTarget = true;
             yield return new WaitForSeconds(0.2f);
         }
         else
         {
             // close window
             exitApplicationConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
-            settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
-            settingsWindowBG.GetComponent<Image>().raycastTarget = false;
             yield return new WaitForSeconds(0.2f);
         }
         animatingWindow = false;
