@@ -138,6 +138,8 @@ public class TalkieDatabase : MonoBehaviour
     public List<TalkieDatabaseEntry> ollieSprites;
     public List<TalkieDatabaseEntry> spindleSprites;
     public List<TalkieDatabaseEntry> sylvieSprites;
+    public List<TalkieDatabaseEntry> celesteSprites;
+    public List<TalkieDatabaseEntry> taxiSprites;
 
 
 
@@ -273,6 +275,18 @@ public class TalkieDatabase : MonoBehaviour
                 return FindSprite(lesterSprites, emotionNum, mouth, eyes);
             case TalkieCharacter.Clogg:
                 return FindSprite(cloggSprites, emotionNum, mouth, eyes);
+            case TalkieCharacter.Bubbles:
+                return FindSprite(bubblesSprites, emotionNum, mouth, eyes);
+            case TalkieCharacter.Ollie:
+                return FindSprite(ollieSprites, emotionNum, mouth, eyes);
+            case TalkieCharacter.Spindle:
+                return FindSprite(spindleSprites, emotionNum, mouth, eyes);
+            case TalkieCharacter.Sylvie:
+                return FindSprite(sylvieSprites, emotionNum, mouth, eyes);
+            case TalkieCharacter.Celeste:
+                return FindSprite(celesteSprites, emotionNum, mouth, eyes);
+            case TalkieCharacter.Taxi:
+                return FindSprite(taxiSprites, emotionNum, mouth, eyes);
         }
     }
 
