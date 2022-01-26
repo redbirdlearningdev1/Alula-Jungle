@@ -139,6 +139,7 @@ public static class StudentInfoSystem
         return -1;
     }
 
+
     public static int GetStickerCount(Sticker sticker)
     {
         if (currentStudentPlayer != null)

@@ -105,6 +105,8 @@ public class NewSpiderGameManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // update AI data
+                AIData(StudentInfoSystem.GetCurrentProfile());
                 // calculate and show stars
                 StarAwardController.instance.AwardStarsAndExit(3);
             }
@@ -308,8 +310,21 @@ public class NewSpiderGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
+
+        AIData(StudentInfoSystem.GetCurrentProfile());
+
         // calculate and show stars
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+    }
+
+    public void AIData(StudentPlayerData playerData)
+    {
+        playerData.starsGameBeforeLastPlayed = playerData.starsLastGamePlayed;
+        playerData.starsLastGamePlayed = CalculateStars();
+        playerData.gameBeforeLastPlayed = playerData.lastGamePlayed;
+        playerData.lastGamePlayed = GameType.SpiderwebGame;
+        playerData.starsSpiderweb = CalculateStars() + playerData.starsSpiderweb;
+        playerData.totalStarsSpiderweb = 3 + playerData.totalStarsSpiderweb;
     }
 
     private IEnumerator StartGame()

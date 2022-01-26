@@ -8,6 +8,7 @@ public class FroggerGameManager : MonoBehaviour
 
     private MapIconIdentfier mapID = MapIconIdentfier.None;
 
+
     [SerializeField] private GorillaController gorilla;
     [SerializeField] private Bag bag;
     [SerializeField] private TaxiController taxi;
@@ -47,6 +48,8 @@ public class FroggerGameManager : MonoBehaviour
 
     private bool repeatTutorialAudio = false;
     private float timeBetweenRepeats = 8f;
+
+   
 
     [Header("Dev Stuff")]
     [SerializeField] private GameObject devObject;
@@ -114,6 +117,9 @@ public class FroggerGameManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // update AI data
+                AIData(StudentInfoSystem.GetCurrentProfile());
+
                 // calculate and show stars
                 StarAwardController.instance.AwardStarsAndExit(3);
             }
@@ -322,12 +328,30 @@ public class FroggerGameManager : MonoBehaviour
         // hide dancing man
         StartCoroutine(HideDancingManRoutine());
 
+        // AI Store
+
+        
+        AIData(StudentInfoSystem.GetCurrentProfile());
+        
+        
         // calculate and show stars
+
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+    }
+
+    public void AIData(StudentPlayerData playerData)
+    {
+        playerData.starsGameBeforeLastPlayed = playerData.starsLastGamePlayed;
+        playerData.starsLastGamePlayed = CalculateStars();
+        playerData.gameBeforeLastPlayed = playerData.lastGamePlayed;
+        playerData.lastGamePlayed = GameType.FroggerGame;
+        playerData.starsFrogger = CalculateStars() + playerData.starsFrogger;
+        playerData.totalStarsFrogger = 3 + playerData.totalStarsFrogger;
     }
 
     private int CalculateStars()
     {
+        
         if (timesMissed <= 0)
             return 3;
         else if (timesMissed > 0 && timesMissed <= 2)

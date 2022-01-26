@@ -94,6 +94,8 @@ public class TurntablesGameManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // update AI data
+                AIData(StudentInfoSystem.GetCurrentProfile());
                 // calculate and show stars
                 StarAwardController.instance.AwardStarsAndExit(3);
             }
@@ -455,8 +457,21 @@ public class TurntablesGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
+        AIData(StudentInfoSystem.GetCurrentProfile());
+    
         // calculate and show stars
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+    }
+
+    public void AIData(StudentPlayerData playerData)
+    {
+        playerData.starsGameBeforeLastPlayed = playerData.starsLastGamePlayed;
+        playerData.starsLastGamePlayed = CalculateStars();
+        
+        playerData.gameBeforeLastPlayed = playerData.lastGamePlayed;
+        playerData.lastGamePlayed = GameType.TurntablesGame;
+        playerData.starsTurntables = CalculateStars() + playerData.starsTurntables;
+        playerData.totalStarsTurntables = 3 + playerData.totalStarsTurntables;
     }
 
     private int CalculateStars()
