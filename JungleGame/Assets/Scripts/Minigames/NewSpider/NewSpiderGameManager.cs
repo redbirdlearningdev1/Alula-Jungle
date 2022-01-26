@@ -67,6 +67,9 @@ public class NewSpiderGameManager : MonoBehaviour
 
         // get mapID
         mapID = GameManager.instance.mapID;
+
+        // place menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
     }
 
     void Start()
@@ -88,9 +91,6 @@ public class NewSpiderGameManager : MonoBehaviour
             AudioManager.instance.InitSplitSong(SplitSong.Spiderweb);
             AudioManager.instance.IncreaseSplitSong();
 
-            // place menu button
-            SettingsManager.instance.ToggleMenuButtonActive(true);
-
             StartCoroutine(StartGame());
         }
     }
@@ -105,9 +105,8 @@ public class NewSpiderGameManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-                // save to sis
-                StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = true;
-                StudentInfoSystem.SaveStudentPlayerData();
+                // update AI data
+                AIData(StudentInfoSystem.GetCurrentProfile());
                 // calculate and show stars
                 StarAwardController.instance.AwardStarsAndExit(3);
             }
@@ -117,7 +116,7 @@ public class NewSpiderGameManager : MonoBehaviour
     private void PregameSetup()
     {
         // play forest ambiance
-        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 0.1f, "forest_ambiance");
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 1f, "forest_ambiance");
 
         // turn off raycaster
         SpiderRayCaster.instance.isOn = false;
@@ -311,8 +310,21 @@ public class NewSpiderGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
+
+        AIData(StudentInfoSystem.GetCurrentProfile());
+
         // calculate and show stars
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+    }
+
+    public void AIData(StudentPlayerData playerData)
+    {
+        playerData.starsGameBeforeLastPlayed = playerData.starsLastGamePlayed;
+        playerData.starsLastGamePlayed = CalculateStars();
+        playerData.gameBeforeLastPlayed = playerData.lastGamePlayed;
+        playerData.lastGamePlayed = GameType.SpiderwebGame;
+        playerData.starsSpiderweb = CalculateStars() + playerData.starsSpiderweb;
+        playerData.totalStarsSpiderweb = 3 + playerData.totalStarsSpiderweb;
     }
 
     private IEnumerator StartGame()

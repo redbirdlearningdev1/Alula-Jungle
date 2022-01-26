@@ -94,9 +94,8 @@ public class TurntablesGameManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-                // save to sis
-                StudentInfoSystem.GetCurrentProfile().turntablesTutorial = true;
-                StudentInfoSystem.SaveStudentPlayerData();
+                // update AI data
+                AIData(StudentInfoSystem.GetCurrentProfile());
                 // calculate and show stars
                 StarAwardController.instance.AwardStarsAndExit(3);
             }
@@ -366,6 +365,7 @@ public class TurntablesGameManager : MonoBehaviour
         yield return new WaitForSeconds(animateKeysDownDelay);
         RopeController.instance.MoveFromNormalToEnd();
 
+
         // play reminder popup
         List<AudioClip> clips = new List<AudioClip>();
         clips.Add(GameIntroDatabase.instance.turntablesReminder1);
@@ -457,8 +457,21 @@ public class TurntablesGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
+        AIData(StudentInfoSystem.GetCurrentProfile());
+    
         // calculate and show stars
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+    }
+
+    public void AIData(StudentPlayerData playerData)
+    {
+        playerData.starsGameBeforeLastPlayed = playerData.starsLastGamePlayed;
+        playerData.starsLastGamePlayed = CalculateStars();
+        
+        playerData.gameBeforeLastPlayed = playerData.lastGamePlayed;
+        playerData.lastGamePlayed = GameType.TurntablesGame;
+        playerData.starsTurntables = CalculateStars() + playerData.starsTurntables;
+        playerData.totalStarsTurntables = 3 + playerData.totalStarsTurntables;
     }
 
     private int CalculateStars()
@@ -513,6 +526,9 @@ public class TurntablesGameManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(2f);
+
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // play tutorial audio 1
         AudioClip clip = GameIntroDatabase.instance.turntablesIntro1;

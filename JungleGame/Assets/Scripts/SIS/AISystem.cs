@@ -5,12 +5,32 @@ using UnityEngine;
 public static class AISystem
 {
     private static List<GameType> minigameOptions; 
+    private static List<float> gameRatio;
+
     private static float royalRumbleOdds = 0.05f; // 5%
 
     public static GameType DetermineMinigame(StudentPlayerData playerData)
     {
+        Debug.Log("Last Game Played " + playerData.lastGamePlayed);
+        Debug.Log("Game Before Last Game Played " +playerData.gameBeforeLastPlayed);
+        Debug.Log("Stars Last Game Played " +playerData.starsLastGamePlayed);
+        Debug.Log("Stars Before Last Game Played " +playerData.starsGameBeforeLastPlayed);
+        Debug.Log("Total Number of Stars Frogger " + playerData.totalStarsFrogger);
+        Debug.Log("Total Number of Stars Sea "  + playerData.totalStarsSeashell);
+        Debug.Log("Total Number of Stars Spider " + playerData.totalStarsSpiderweb);
+        Debug.Log("Total Number of Stars Turn " + playerData.totalStarsTurntables);
+        Debug.Log("Total Number of Stars Pirate " + playerData.totalStarsPirate);
+        Debug.Log("Total Number of Stars Rummage " + playerData.totalStarsRummage);
+        Debug.Log("Number of Stars Frogger " + playerData.starsFrogger);
+        Debug.Log("Number of Stars Sea " + playerData.starsSeashell);
+        Debug.Log("Number of Stars Spider " + playerData.starsSpiderweb);
+        Debug.Log("Number of Stars Turn " + playerData.starsTurntables);
+        Debug.Log("Number of Stars Pirate " + playerData.starsPirate);
+        Debug.Log("Number of Stars Rummage " + playerData.starsRummage);
+
         switch (playerData.minigamesPlayed)
         {
+            
             case 0: return GameType.FroggerGame;
             case 1: return GameType.RummageGame;
             case 2: return GameType.SeashellGame;
@@ -19,11 +39,122 @@ public static class AISystem
             case 5: return GameType.PirateGame;
 
             default: 
-                CreateMinigameList();
+                minigameOptions = new List<GameType>();
+                gameRatio = new List<float>();
+
+                int addedFrog = 0;
+                int addedSea = 0;
+                int addedSpider = 0;
+                int addedTurn = 0;
+                int addedPirate = 0;
+                int addedRummage = 0;
+
+
+                float frogSuccessRatio = (float)playerData.starsFrogger/(float)playerData.totalStarsFrogger;
+                float seaSuccessRatio = (float)playerData.starsSeashell/(float)playerData.totalStarsSeashell;
+                float spiderSuccessRatio = (float)playerData.starsSpiderweb/(float)playerData.totalStarsSpiderweb;
+                float turnSuccessRatio = (float)playerData.starsTurntables/(float)playerData.totalStarsTurntables;
+                float pirateSuccessRatio = (float)playerData.starsPirate/(float)playerData.totalStarsPirate;
+                float rummageSuccessRatio = (float)playerData.starsRummage/(float)playerData.totalStarsRummage;
+                
+                gameRatio.Add(frogSuccessRatio);
+                gameRatio.Add(seaSuccessRatio);
+                gameRatio.Add(spiderSuccessRatio);
+                gameRatio.Add(turnSuccessRatio);
+                gameRatio.Add(pirateSuccessRatio);
+                
+                gameRatio.Add(rummageSuccessRatio);
+                gameRatio.Sort();
+
+                Debug.Log(gameRatio[0]);
+                Debug.Log(gameRatio[1]);
+                Debug.Log(gameRatio[2]);
+                Debug.Log(gameRatio[3]);
+                Debug.Log(gameRatio[4]);
+                Debug.Log(gameRatio[5]);
+
+                for(int i = 0 ; i < gameRatio.Count ; i++)
+                {
+                    if(frogSuccessRatio == gameRatio[i] && addedFrog == 0)
+                    {
+                        minigameOptions.Add(GameType.FroggerGame);
+                        addedFrog = 1;
+                    }
+                    if(seaSuccessRatio == gameRatio[i] && addedSea == 0)
+                    {
+                        minigameOptions.Add(GameType.SeashellGame);
+                        addedSea = 1;
+                    }
+                    if(spiderSuccessRatio == gameRatio[i] && addedSpider == 0)
+                    {
+                        minigameOptions.Add(GameType.SpiderwebGame);
+                        addedSpider = 1;
+                    }
+                    if(turnSuccessRatio == gameRatio[i] && addedTurn == 0)
+                    {
+                        minigameOptions.Add(GameType.TurntablesGame);
+                        addedTurn = 1;
+                    }
+                    if(pirateSuccessRatio == gameRatio[i] && addedPirate == 0)
+                    {
+                        minigameOptions.Add(GameType.PirateGame);
+                        addedPirate = 1;
+                    }
+                    if(rummageSuccessRatio == gameRatio[i] && addedRummage == 0)
+                    {
+                        minigameOptions.Add(GameType.RummageGame);
+                        addedRummage = 1;
+                    }
+                }
+                
+                Debug.Log(minigameOptions[0]);
+                Debug.Log(minigameOptions[1]);
+                Debug.Log(minigameOptions[2]);
+                Debug.Log(minigameOptions[3]);
+                Debug.Log(minigameOptions[4]);
+                Debug.Log(minigameOptions[5]);
+
+                if(playerData.starsLastGamePlayed+playerData.starsGameBeforeLastPlayed == 2 || playerData.starsLastGamePlayed+playerData.starsGameBeforeLastPlayed == 3)
+                {
+                    if(playerData.lastGamePlayed != minigameOptions[5])
+                    {
+                        return minigameOptions[5];
+                    }
+                    else
+                    {
+                        return minigameOptions[4];
+                    }
+                }
+                //else if(playerData.starsLastGamePlayed+playerData.starsGameBeforeLastPlayed >= 5)
+                //{
+                    
+                //}
+                else
+                {
+                    if(playerData.lastGamePlayed != minigameOptions[0] )
+                    {
+                        return minigameOptions[0];
+                    }
+                    else if(playerData.starsLastGamePlayed + playerData.starsGameBeforeLastPlayed == 4)
+                    {
+                        return minigameOptions[2];
+                    }
+                    else if(playerData.starsLastGamePlayed + playerData.starsGameBeforeLastPlayed == 5)
+                    {
+                        return minigameOptions[3];
+                    }
+                    else
+                    {
+                        return minigameOptions[1];
+                    }
+                    
+                }
                 return minigameOptions[Random.Range(0, minigameOptions.Count)];
+                
+               
         }
     }
-
+ 
     private static void CreateMinigameList()
     {
         // create minigame options list
@@ -34,7 +165,7 @@ public static class AISystem
         minigameOptions.Add(GameType.PirateGame);
         minigameOptions.Add(GameType.SpiderwebGame);
         minigameOptions.Add(GameType.SeashellGame);
-
+        
         // remove last played game
         if (minigameOptions.Contains(GameManager.instance.prevGameTypePlayed))
             minigameOptions.Remove(GameManager.instance.prevGameTypePlayed);
@@ -116,7 +247,7 @@ public static class AISystem
         challengeGameOptions.Add(GameType.TigerPawCoins);
         challengeGameOptions.Add(GameType.TigerPawPhotos);
         challengeGameOptions.Add(GameType.Password);
-
+        
         // return random index
         int index = Random.Range(0, challengeGameOptions.Count);
         return challengeGameOptions[index];

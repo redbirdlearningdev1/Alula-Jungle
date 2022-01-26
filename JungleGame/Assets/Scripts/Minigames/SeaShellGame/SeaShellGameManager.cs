@@ -53,6 +53,9 @@ public class SeaShellGameManager : MonoBehaviour
 
         // get mapID
         mapID = GameManager.instance.mapID;
+        
+        // place menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
     }
 
     void Start()
@@ -71,9 +74,6 @@ public class SeaShellGameManager : MonoBehaviour
             AudioManager.instance.InitSplitSong(SplitSong.Seashells);
             AudioManager.instance.IncreaseSplitSong();
 
-            // show menu button
-            SettingsManager.instance.ToggleMenuButtonActive(true);
-
             StartCoroutine(PregameSetupRoutine());
         }
     }
@@ -88,9 +88,8 @@ public class SeaShellGameManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-                // save to sis
-                StudentInfoSystem.GetCurrentProfile().seashellTutorial = true;
-                StudentInfoSystem.SaveStudentPlayerData();
+                // update AI data
+                AIData(StudentInfoSystem.GetCurrentProfile());
                 // calculate and show stars
                 StarAwardController.instance.AwardStarsAndExit(3);
             }
@@ -215,11 +214,6 @@ public class SeaShellGameManager : MonoBehaviour
             AudioClip clip = GameIntroDatabase.instance.seashellIntro3;
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Sylvie, clip);
             yield return new WaitForSeconds(clip.length + 1f);
-        }
-        else
-        {
-            // short pause before making shells interactable
-            yield return new WaitForSeconds(3f);
         }
 
         // turn on raycaster
@@ -374,9 +368,22 @@ public class SeaShellGameManager : MonoBehaviour
         }
         else
         {
+
+            AIData(StudentInfoSystem.GetCurrentProfile());
+    
             // calculate and show stars
             StarAwardController.instance.AwardStarsAndExit(CalculateStars());
         }
+    }
+
+    public void AIData(StudentPlayerData playerData)
+    {
+        playerData.starsGameBeforeLastPlayed = playerData.starsLastGamePlayed;
+        playerData.starsLastGamePlayed = CalculateStars();
+        playerData.gameBeforeLastPlayed = playerData.lastGamePlayed;
+        playerData.lastGamePlayed = GameType.SeashellGame;
+        playerData.starsSeashell = CalculateStars() + playerData.starsSeashell;
+        playerData.totalStarsSeashell = 3 + playerData.totalStarsSeashell;
     }
 
     private int CalculateStars()

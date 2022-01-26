@@ -8,6 +8,7 @@ public class FroggerGameManager : MonoBehaviour
 
     private MapIconIdentfier mapID = MapIconIdentfier.None;
 
+
     [SerializeField] private GorillaController gorilla;
     [SerializeField] private Bag bag;
     [SerializeField] private TaxiController taxi;
@@ -47,6 +48,8 @@ public class FroggerGameManager : MonoBehaviour
 
     private bool repeatTutorialAudio = false;
     private float timeBetweenRepeats = 8f;
+
+   
 
     [Header("Dev Stuff")]
     [SerializeField] private GameObject devObject;
@@ -95,9 +98,6 @@ public class FroggerGameManager : MonoBehaviour
             AudioManager.instance.InitSplitSong(SplitSong.Frogger);
             AudioManager.instance.IncreaseSplitSong();
 
-            // show menu button
-            SettingsManager.instance.ToggleMenuButtonActive(true);
-
             StartCoroutine(StartGame());
         }
     }
@@ -117,9 +117,9 @@ public class FroggerGameManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-                // save to sis
-                StudentInfoSystem.GetCurrentProfile().froggerTutorial = true;
-                StudentInfoSystem.SaveStudentPlayerData();
+                // update AI data
+                AIData(StudentInfoSystem.GetCurrentProfile());
+
                 // calculate and show stars
                 StarAwardController.instance.AwardStarsAndExit(3);
             }
@@ -183,21 +183,6 @@ public class FroggerGameManager : MonoBehaviour
     #   GAME FLOW METHODS
     ################################################
     */
-
-    private IEnumerator StartGame()
-    {
-        // wait a moment for the setup to finish
-        while (!gameSetup)
-            yield return null;
-
-        // reveal dancing man
-        StartCoroutine(ShowDancingManRoutine());
-        yield return new WaitForSeconds(1f);
-
-        currRow = 0;
-        // show first row coins
-        StartCoroutine(ShowCoins(currRow));
-    }
 
     private IEnumerator CoinFailRoutine()
     {
@@ -343,12 +328,30 @@ public class FroggerGameManager : MonoBehaviour
         // hide dancing man
         StartCoroutine(HideDancingManRoutine());
 
+        // AI Store
+
+        
+        AIData(StudentInfoSystem.GetCurrentProfile());
+        
+        
         // calculate and show stars
+
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+    }
+
+    public void AIData(StudentPlayerData playerData)
+    {
+        playerData.starsGameBeforeLastPlayed = playerData.starsLastGamePlayed;
+        playerData.starsLastGamePlayed = CalculateStars();
+        playerData.gameBeforeLastPlayed = playerData.lastGamePlayed;
+        playerData.lastGamePlayed = GameType.FroggerGame;
+        playerData.starsFrogger = CalculateStars() + playerData.starsFrogger;
+        playerData.totalStarsFrogger = 3 + playerData.totalStarsFrogger;
     }
 
     private int CalculateStars()
     {
+        
         if (timesMissed <= 0)
             return 3;
         else if (timesMissed > 0 && timesMissed <= 2)
@@ -357,6 +360,23 @@ public class FroggerGameManager : MonoBehaviour
             return 1;
     }
 
+    private IEnumerator StartGame()
+    {
+        // wait a moment for the setup to finish
+        while (!gameSetup)
+            yield return null;
+
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+
+        // reveal dancing man
+        StartCoroutine(ShowDancingManRoutine());
+        yield return new WaitForSeconds(1f);
+
+        currRow = 0;
+        // show first row coins
+        StartCoroutine(ShowCoins(currRow));
+    }
 
     /* 
     ################################################
@@ -370,20 +390,15 @@ public class FroggerGameManager : MonoBehaviour
         while (!gameSetup)
             yield return null;
 
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+
         yield return new WaitForSeconds(1f);
 
         // play tutorial audio
         List<AudioClip> clips = new List<AudioClip>();
         clips.Add(GameIntroDatabase.instance.froggerIntro1);
         clips.Add(GameIntroDatabase.instance.froggerIntro2);
-
-        Debug.Log("frogger intro 1: " + GameIntroDatabase.instance.froggerIntro1);
-        Debug.Log("frogger intro 2: " + GameIntroDatabase.instance.froggerIntro2);
-
-        Debug.Log("tutorial popup controller instance: " + TutorialPopupController.instance);
-        Debug.Log("tutorial popup controller position: " + TutorialPopupController.instance.topRight);
-        Debug.Log("clips: " + clips);
-
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clips);
         yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
 
@@ -480,9 +495,18 @@ public class FroggerGameManager : MonoBehaviour
 
     private IEnumerator TryAgainRoutine()
     {
-        yield return null;
         rows[currRow].ResetCoinPos(null);
         taxi.TwitchAnimation();
+        StartCoroutine(HideCoins(currRow));
+        yield return new WaitForSeconds(1f);
+
+        rows[currRow].SinkAllLogs();
+        yield return new WaitForSeconds(1f);
+        
+        rows[currRow].RiseAllLogs();
+        rows[currRow].ResetLogRow();
+        yield return new WaitForSeconds(1f);
+
         ShowTutorialCoins();
     }
 
@@ -554,9 +578,25 @@ public class FroggerGameManager : MonoBehaviour
                 break;
         }
 
+        StartCoroutine(PlayTutorialAudio());
+    } 
+
+    private IEnumerator PlayTutorialAudio()
+    {
+        // // play audio iff currRow == 1
+        // if (currRow == 1)
+        // {
+        //     AudioClip clip = AudioDatabase.instance.FroggerTutorial_3;
+        //     AudioManager.instance.PlayTalk(clip);
+        //     yield return new WaitForSeconds(clip.length + 0.5f);
+        // }
+
+        yield return null;
+
         // turn on raycaster
         CoinRaycaster.instance.isOn = true;
-    } 
+    }
+
 
     /* 
     ################################################

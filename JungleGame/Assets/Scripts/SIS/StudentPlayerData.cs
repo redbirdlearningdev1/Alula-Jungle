@@ -11,6 +11,30 @@ public class StudentPlayerData
     public bool mostRecentProfile; // is this the most recently opend profile?
     public string name; // name of student
     public int minigamesPlayed;
+    public GameType lastGamePlayed;
+    public GameType gameBeforeLastPlayed;
+
+    public int starsLastGamePlayed;
+    public int starsGameBeforeLastPlayed;
+
+    // Track of Stars in minigames
+
+    public int starsFrogger;
+    public int starsSeashell;
+    public int starsRummage;
+    public int starsTurntables;
+    public int starsPirate;
+    public int starsSpiderweb;
+
+    public int totalStarsFrogger;
+    public int totalStarsSeashell;
+    public int totalStarsRummage;
+    public int totalStarsTurntables;
+    public int totalStarsPirate;
+    public int totalStarsSpiderweb;
+    
+    //public int totalStarsPotential;
+
 
     // coins
     public int goldCoins;
@@ -91,7 +115,7 @@ public enum StoryBeat
     GorillaVillageIntro, // 2
     PrologueStoryGame, // 3
     RedShowsStickerButton, // 4
-    VillageRebuilt, // 5
+    VillageRebuilt, // 5  
     GorillaVillage_challengeGame_1, // 6
     GorillaVillage_challengeGame_2, // 7
     GorillaVillage_challengeGame_3, // 8

@@ -45,6 +45,9 @@ public class PrintingGameManager : MonoBehaviour
 
         // get mapID
         mapID = GameManager.instance.mapID;
+
+        // place menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
     }
 
     void Start()
@@ -66,9 +69,8 @@ public class PrintingGameManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-                // save to sis
-                StudentInfoSystem.GetCurrentProfile().pirateTutorial = true;
-                StudentInfoSystem.SaveStudentPlayerData();
+                // update AI data
+                AIData(StudentInfoSystem.GetCurrentProfile());
                 // calculate and show stars
                 StarAwardController.instance.AwardStarsAndExit(3);
             }
@@ -112,9 +114,6 @@ public class PrintingGameManager : MonoBehaviour
             // start song
             AudioManager.instance.InitSplitSong(SplitSong.Pirate);
             AudioManager.instance.IncreaseSplitSong();
-
-            // place menu button
-            SettingsManager.instance.ToggleMenuButtonActive(true);
 
             // start game
             StartCoroutine(StartGame());
@@ -402,9 +401,22 @@ public class PrintingGameManager : MonoBehaviour
         else
         {
             // calculate and show stars
+            AIData(StudentInfoSystem.GetCurrentProfile());
+            
             StarAwardController.instance.AwardStarsAndExit(CalculateStars());
         }
     }
+
+        public void AIData(StudentPlayerData playerData)
+    {
+        playerData.starsGameBeforeLastPlayed = playerData.starsLastGamePlayed;
+        playerData.starsLastGamePlayed = CalculateStars();
+        playerData.gameBeforeLastPlayed = playerData.lastGamePlayed;
+        playerData.lastGamePlayed = GameType.PirateGame;
+        playerData.starsPirate = CalculateStars() + playerData.starsPirate;
+        playerData.totalStarsPirate = 3 + playerData.totalStarsPirate;
+    }
+
 
     private int CalculateStars()
     {
