@@ -15,6 +15,8 @@ public class WiggleController : MonoBehaviour
     void Awake()
     {
         startRotation = transform.rotation.eulerAngles;
+
+        print ("curve length: " + curve.length);
     }
 
     void Update()
@@ -26,7 +28,7 @@ public class WiggleController : MonoBehaviour
             transform.rotation = quat;
             
             // reset timer
-            if (timer >= curve.length)
+            if (timer >= curve.length - 1)
             {
                 timer = 0f;
             }
