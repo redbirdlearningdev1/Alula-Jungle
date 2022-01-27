@@ -763,8 +763,8 @@ GameObject:
   - component: {fileID: 529655427}
   - component: {fileID: 529655429}
   - component: {fileID: 529655433}
-  - component: {fileID: 529655428}
   - component: {fileID: 529655430}
+  - component: {fileID: 529655428}
   - component: {fileID: 529655431}
   m_Layer: 5
   m_Name: Door1
@@ -835,9 +835,62 @@ MonoBehaviour:
   m_GameObject: {fileID: 529655426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 458d3b50667b6a944abf0cc4cfece9d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 45bcc5d63f25bbb4b96f61833cb32678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 15.508638
+      outSlope: 15.508638
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.2062644
+    - serializedVersion: 3
+      time: 0.05010035
+      value: 1.0024828
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.09864472
+      value: 0.007260777
+      inSlope: -28.347097
+      outSlope: -28.347097
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.19315684
+    - serializedVersion: 3
+      time: 0.14889696
+      value: -0.992163
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.1997921
+      value: 0.0072442265
+      inSlope: 16.816702
+      outSlope: 16.816702
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19446003
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  multiplier: 4
+  curveLength: 0.2
 --- !u!114 &529655433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -850,7 +903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 1100fd2c1e9497340b7f10cd336732f5, type: 2}
+  m_Material: {fileID: 2100000, guid: a4fd16949f35ee44fad2e4328f1b77f6, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -881,6 +934,7 @@ GameObject:
   - component: {fileID: 537847144}
   - component: {fileID: 537847145}
   - component: {fileID: 537847146}
+  - component: {fileID: 537847148}
   m_Layer: 5
   m_Name: doorTile
   m_TagString: Untagged
@@ -919,7 +973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 1100fd2c1e9497340b7f10cd336732f5, type: 2}
+  m_Material: {fileID: 2100000, guid: a4fd16949f35ee44fad2e4328f1b77f6, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -971,6 +1025,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537847142}
   m_CullTransparentMesh: 1
+--- !u!114 &537847148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537847142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45bcc5d63f25bbb4b96f61833cb32678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: -0
+      inSlope: 15.508638
+      outSlope: 15.508638
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.2062644
+    - serializedVersion: 3
+      time: 0.10028002
+      value: 1.0024828
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.19744562
+      value: 0.007260777
+      inSlope: -10.086724
+      outSlope: -10.086724
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.29802963
+      value: -0.992163
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.3999005
+      value: 0.0072442265
+      inSlope: 16.816702
+      outSlope: 16.816702
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19446003
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  multiplier: 4
+  curveLength: 0.2
 --- !u!1 &541689692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1949,9 +2068,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -672.31036, y: -166.09903}
+  m_AnchoredPosition: {x: -0.000061035156, y: -166.09906}
   m_SizeDelta: {x: -1344.6206, y: -664.3954}
-  m_Pivot: {x: 0.5, y: 0.25}
+  m_Pivot: {x: 0, y: 0.25}
 --- !u!114 &934339465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2465,7 +2584,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playTutorial: 0
-  glowCorrectKey: 1
+  glowCorrectKey: 0
+  tutorialIcons: 01000000020000000300000004000000
   bigDoor: {fileID: 822199909}
   doors:
   - {fileID: 529655428}
@@ -2473,10 +2593,15 @@ MonoBehaviour:
   - {fileID: 12137851}
   - {fileID: 1370068922}
   doorTiles:
-  - {fileID: 529655428}
-  - {fileID: 1937416588}
-  - {fileID: 2074776820}
-  - {fileID: 537847146}
+  - {fileID: 529655430}
+  - {fileID: 1937416587}
+  - {fileID: 2074776819}
+  - {fileID: 537847145}
+  moveStonePitch:
+  - 0.8
+  - 0.9
+  - 1
+  - 1.2
   keyRope: {fileID: 346756076}
   keyRopePositions:
   - {fileID: 1481374070}
@@ -2489,6 +2614,7 @@ MonoBehaviour:
   - {fileID: 621508264}
   frame: {fileID: 1100385286}
   rockLock: {fileID: 934339467}
+  musicStartDelay: 4.5
 --- !u!114 &1266065045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3122,6 +3248,7 @@ GameObject:
   - component: {fileID: 1937416585}
   - component: {fileID: 1937416587}
   - component: {fileID: 1937416588}
+  - component: {fileID: 1937416589}
   m_Layer: 5
   m_Name: doorTile
   m_TagString: Untagged
@@ -3160,7 +3287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 1100fd2c1e9497340b7f10cd336732f5, type: 2}
+  m_Material: {fileID: 2100000, guid: a4fd16949f35ee44fad2e4328f1b77f6, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -3212,6 +3339,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458d3b50667b6a944abf0cc4cfece9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1937416589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937416583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45bcc5d63f25bbb4b96f61833cb32678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: -0
+      inSlope: 15.508638
+      outSlope: 15.508638
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.2062644
+    - serializedVersion: 3
+      time: 0.10028002
+      value: 1.0024828
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.19744562
+      value: 0.007260777
+      inSlope: -10.086724
+      outSlope: -10.086724
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.29802963
+      value: -0.992163
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.3999005
+      value: 0.0072442265
+      inSlope: 16.816702
+      outSlope: 16.816702
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19446003
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  multiplier: 4
+  curveLength: 0.2
 --- !u!1 &1954527776
 GameObject:
   m_ObjectHideFlags: 0
@@ -3422,6 +3614,7 @@ GameObject:
   - component: {fileID: 2074776818}
   - component: {fileID: 2074776819}
   - component: {fileID: 2074776820}
+  - component: {fileID: 2074776822}
   m_Layer: 5
   m_Name: doorTile
   m_TagString: Untagged
@@ -3460,7 +3653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 1100fd2c1e9497340b7f10cd336732f5, type: 2}
+  m_Material: {fileID: 2100000, guid: a4fd16949f35ee44fad2e4328f1b77f6, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -3512,6 +3705,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2074776816}
   m_CullTransparentMesh: 1
+--- !u!114 &2074776822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074776816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45bcc5d63f25bbb4b96f61833cb32678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: -0
+      inSlope: 15.508638
+      outSlope: 15.508638
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.2062644
+    - serializedVersion: 3
+      time: 0.10028002
+      value: 1.0024828
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.19744562
+      value: 0.007260777
+      inSlope: -10.086724
+      outSlope: -10.086724
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.29802963
+      value: -0.992163
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.3999005
+      value: 0.0072442265
+      inSlope: 16.816702
+      outSlope: 16.816702
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19446003
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  multiplier: 4
+  curveLength: 0.2
 --- !u!1001 &2079152831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3948,7 +4206,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 48.883907
+      value: 50.706448
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Key : MonoBehaviour
@@ -18,6 +19,15 @@ public class Key : MonoBehaviour
     public ActionWordEnum GetKeyType()
     {
         return currentWord;
+    }
+
+    public void ResetKey()
+    {
+        KeyResetAnim();
+        transform.SetParent(origin);
+        transform.position = origin.position;
+        transform.localScale = new Vector3(1f, 1f, 1f);
+        ImageGlowController.instance.SetImageGlow(GetComponent<Image>(), false, GlowValue.none);
     }
 
     public void PlayAudio()
@@ -41,7 +51,7 @@ public class Key : MonoBehaviour
 
     public void MoveIntoRockLock()
     {
-        // make key normal size
+        // shirnk key to 0
         GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
         // return to origin
         GetComponent<LerpableObject>().LerpPosToTransform(TurntablesGameManager.instance.rockLock.transform, 0.25f, false);
@@ -66,6 +76,17 @@ public class Key : MonoBehaviour
             case 2: animator.Play("k2_first_move"); break;
             case 3: animator.Play("k3_first_move"); break;
             case 4: animator.Play("k4_first_move"); break;
+        }
+    }
+
+    public void KeyResetAnim()
+    {
+        switch (keyNum)
+        {
+            case 1: animator.Play("k1_move_still"); break;
+            case 2: animator.Play("k2_move_still"); break;
+            case 3: animator.Play("k3_move_still"); break;
+            case 4: animator.Play("k4_move_still"); break;
         }
     }
 

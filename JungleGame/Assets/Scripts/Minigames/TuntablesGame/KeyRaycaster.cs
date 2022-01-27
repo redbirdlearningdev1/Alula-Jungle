@@ -10,8 +10,9 @@ public class KeyRaycaster : MonoBehaviour
     public bool isOn = false;
     public Transform selectedKeyParent;
 
-    // private variable
+    // private variables
     private Key selectedKey;
+    private bool playedKeyTutorialPart = false;
 
     // move speeds
     public float moveSpeed = 0.1f;
@@ -66,6 +67,7 @@ public class KeyRaycaster : MonoBehaviour
             // reset lock rock
             TurntablesGameManager.instance.rockLock.LerpScale(new Vector2(1f, 1f), 0.2f);
             TurntablesGameManager.instance.rockLock.GetComponent<WiggleController>().StopWiggle();
+            ImageGlowController.instance.SetImageGlow(TurntablesGameManager.instance.rockLock.GetComponent<Image>(), false, GlowValue.none);
 
             // audio fx
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f);
@@ -75,12 +77,6 @@ public class KeyRaycaster : MonoBehaviour
                 selectedKey.ReturnToRope();
             else
                 selectedKey.MoveIntoRockLock();
-
-            // remove glow
-            if (TurntablesGameManager.instance.glowCorrectKey)
-            {
-                ImageGlowController.instance.SetImageGlow(selectedKey.GetComponent<Image>(), false, GlowValue.none);
-            }
 
             selectedKey = null;
         }
@@ -102,6 +98,22 @@ public class KeyRaycaster : MonoBehaviour
                     {
                         selectedKey = result.gameObject.GetComponentInParent<Key>();
                         selectedKey.PlayAudio();
+
+                        // remove glow
+                        if (TurntablesGameManager.instance.glowCorrectKey)
+                        {
+                            ImageGlowController.instance.SetImageGlow(selectedKey.GetComponent<Image>(), false, GlowValue.none);
+                        }
+
+                        // play tutorial intro 3 if tutorial
+                        if (TurntablesGameManager.instance.playTutorial && !playedKeyTutorialPart)
+                        {
+                            playedKeyTutorialPart = true;
+
+                            StartCoroutine(TutorialPopupRoutine());
+                            return;
+                        }
+
                         selectedKey.gameObject.transform.SetParent(selectedKeyParent);
                         // make key larger
                         selectedKey.GetComponent<LerpableObject>().LerpScale(new Vector2(1.5f, 1.5f), 0.2f);
@@ -112,9 +124,29 @@ public class KeyRaycaster : MonoBehaviour
                         // show lock rock
                         TurntablesGameManager.instance.rockLock.LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
                         TurntablesGameManager.instance.rockLock.GetComponent<WiggleController>().StartWiggle();
+                        ImageGlowController.instance.SetImageGlow(TurntablesGameManager.instance.rockLock.GetComponent<Image>(), true, GlowValue.glow_1_00);
                     } 
                 }
             }
         }
     }
+
+    private IEnumerator TutorialPopupRoutine()
+    {
+        isOn = false;
+        selectedKey.PlayAudio();
+
+        yield return new WaitForSeconds(1f);
+
+        // play tutorial audio 3
+        AudioClip clip = GameIntroDatabase.instance.turntablesIntro3;
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Red, clip);
+        yield return new WaitForSeconds(clip.length + 1f);
+
+        // reset key
+        selectedKey.ReturnToRope();
+        selectedKey = null;
+
+        isOn = true;
+    }   
 }

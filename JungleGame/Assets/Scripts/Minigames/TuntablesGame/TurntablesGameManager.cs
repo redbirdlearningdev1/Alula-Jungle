@@ -13,12 +13,14 @@ public class TurntablesGameManager : MonoBehaviour
     [Header("Tutorial Stuff")]
     public bool playTutorial;
     public bool glowCorrectKey;
+    public List<ActionWordEnum> tutorialIcons;
 
     [Header("Game Stuff")]
     // doors
     public LerpableObject bigDoor;
     public List<LerpableObject> doors;
-    public List<LerpableObject> doorTiles;
+    public List<DoorTile> doorTiles;
+    public List<float> moveStonePitch;
     // keys
     public LerpableObject keyRope;
     public List<Transform> keyRopePositions;
@@ -27,11 +29,13 @@ public class TurntablesGameManager : MonoBehaviour
     public Image frame;
     // rock lock
     public LerpableObject rockLock;
+    public float musicStartDelay;
 
 
     // private game varibales
     private List<ActionWordEnum> doorValues;
     private int currentDoor = 0;
+    private int numMisses = 0;
     
 
     void Awake()
@@ -55,8 +59,14 @@ public class TurntablesGameManager : MonoBehaviour
 
         // only turn off tutorial if false
         if (!playTutorial)
+        {
             playTutorial = !StudentInfoSystem.GetCurrentProfile().turntablesTutorial;
+        }
 
+        // turn on key glow iff tutorial
+        if (playTutorial)
+            glowCorrectKey = true;
+            
         PregameSetup();
     }
 
@@ -87,8 +97,12 @@ public class TurntablesGameManager : MonoBehaviour
 
     private void PregameSetup()
     {
+        if (!playTutorial)
+            StartCoroutine(StartMusicDelay(musicStartDelay));
+        
         // start ambient sounds
-        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.1f, "river_loop");
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.BreezeLoop, 0.01f);
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.QuarryLoop, 0.01f);
 
         // turn off raycaster
         KeyRaycaster.instance.isOn = false;
@@ -105,18 +119,34 @@ public class TurntablesGameManager : MonoBehaviour
         }
 
         // set door values
-        doorValues = new List<ActionWordEnum>();
-        for (int i = 0; i < 4; i++)
+        if (playTutorial)
         {
-            doorValues.Add(GetNewValue());
-            doors[i].GetComponentInChildren<DoorTile>().SetTile(doorValues[i], true);
+            doorValues = new List<ActionWordEnum>();
+            doorValues.AddRange(tutorialIcons);
+            for (int i = 0; i < 4; i++)
+            {
+                doors[i].GetComponentInChildren<DoorTile>().SetTile(doorValues[i], true);
+            }
         }
+        else
+        {
+            doorValues = new List<ActionWordEnum>();
+            for (int i = 0; i < 4; i++)
+            {
+                doorValues.Add(GetNewValue());
+                doors[i].GetComponentInChildren<DoorTile>().SetTile(doorValues[i], true);
+                // remove glows
+                ImageGlowController.instance.SetImageGlow(doors[i].GetComponentInChildren<DoorTile>().image, false, GlowValue.none);
+            }
+        }
+        
         // set frame icon
         frame.sprite = GameManager.instance.GetActionWord(doorValues[0]).frameIcon;
         
         // start game
         StartCoroutine(StartGame());
     }
+
 
     private IEnumerator StartGame()
     {
@@ -128,21 +158,36 @@ public class TurntablesGameManager : MonoBehaviour
 
         // lerp doors to be in locked positions
         doors[0].LerpRotation(-180, 3f);
+        // play stone moving audio
+        AudioManager.instance.PlayMoveStoneSound(3f, moveStonePitch[0]);
         yield return new WaitForSeconds(0.25f);
+
         doors[1].LerpRotation(45, 2.75f);
+        // play stone moving audio
+        AudioManager.instance.PlayMoveStoneSound(2.75f, moveStonePitch[1]);
         yield return new WaitForSeconds(0.5f);
+
         doors[2].LerpRotation(-45, 2.25f);
+        // play stone moving audio
+        AudioManager.instance.PlayMoveStoneSound(2.25f, moveStonePitch[2]);
         yield return new WaitForSeconds(0.5f);
+
         doors[3].LerpRotation(45, 1.75f);
+        // play stone moving audio
+        AudioManager.instance.PlayMoveStoneSound(1.75f, moveStonePitch[3]);
         yield return new WaitForSeconds(1.75f);
+
         // grow / shrink door tiles
         foreach (var d in doorTiles)
         {
-            d.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
+            d.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
         }
 
         // stop big door wiggle
         bigDoor.GetComponent<WiggleController>().StopWiggle();
+
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // start new round
         StartCoroutine(NewRound());
@@ -150,8 +195,19 @@ public class TurntablesGameManager : MonoBehaviour
 
     private IEnumerator NewRound()
     {
-        // shoet delay before new round
+        // short delay before new round
         yield return new WaitForSeconds(1f);
+
+        if (playTutorial && currentDoor == 0)
+        {
+            // small delay
+            yield return new WaitForSeconds(1f);
+
+            // play tutorial audio 1
+            AudioClip clip = GameIntroDatabase.instance.turntablesIntro1;
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
+            yield return new WaitForSeconds(clip.length + 1f);
+        }
 
         // set key values
         List<ActionWordEnum> values = new List<ActionWordEnum>();
@@ -164,7 +220,7 @@ public class TurntablesGameManager : MonoBehaviour
             k.SetKeyType(randomvalue);
 
             // glow correct key
-            if (glowCorrectKey)
+            if (glowCorrectKey || playTutorial)
             {
                 if (randomvalue == doorValues[currentDoor])
                 {
@@ -178,6 +234,31 @@ public class TurntablesGameManager : MonoBehaviour
 
         // show keys
         StartCoroutine(ShowKeys());
+
+        if (playTutorial && currentDoor == 0)
+        {
+            // small delay
+            yield return new WaitForSeconds(1f);
+
+            // play tutorial audio 2
+            AudioClip clip = GameIntroDatabase.instance.turntablesIntro2;
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Red, clip);
+            yield return new WaitForSeconds(clip.length + 1f);
+        }
+        else
+        {
+            // small delay
+            yield return new WaitForSeconds(1.5f);
+        }
+
+        // scale door tile
+        doorTiles[currentDoor].GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.5f, 1.5f), new Vector2(1f, 1f), 0.1f, 0.1f);
+        yield return new WaitForSeconds(0.1f);
+        // add glow to door tile
+        ImageGlowController.instance.SetImageGlow(doorTiles[currentDoor].image, true, GlowValue.glow_1_00);
+        // play sound effect
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 1f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MoveStoneEnd, 1f, "door_tile", 1.5f);
 
         // turn on key raycaster
         KeyRaycaster.instance.isOn = true;
@@ -207,14 +288,140 @@ public class TurntablesGameManager : MonoBehaviour
     {
         if (isCorrect)
         {
-            
+            // play success audio
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.KeyUnlock, 1f);
+            AudioManager.instance.PlayKeyJingle();
         }
         else
         {
-
+            // play audio
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 1f);
+            AudioManager.instance.PlayKeyJingle();
         }
 
-        yield return null;
+        // short delay before routine
+        yield return new WaitForSeconds(1f);
+
+        if (isCorrect)
+        {
+            // move door to correct position
+            doors[currentDoor].LerpRotation(0f, 1.5f);
+            // play stone moving audio
+            AudioManager.instance.PlayMoveStoneSound(1.5f, moveStonePitch[currentDoor]);
+            yield return new WaitForSeconds(2f);
+
+            // scale door tile
+            doorTiles[currentDoor].GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
+            yield return new WaitForSeconds(0.2f);
+            // play sound effect
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 1f);
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MoveStoneEnd, 1f, "door_tile", 1.5f);
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.ErrieGlow, 0.2f);
+            // increase split song
+            AudioManager.instance.IncreaseSplitSong();
+            // increment door num
+            currentDoor++;
+
+            yield return new WaitForSeconds(1f);
+
+            // play tutorial intro 4
+            if (currentDoor == 1)
+            {
+                // play tutorial audio 4
+                AudioClip clip = GameIntroDatabase.instance.turntablesIntro4;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Red, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+            }
+            else
+            {
+                // play encouragement popup
+                AudioClip clip = GameIntroDatabase.instance.turntablesEncouragementClips[Random.Range(0, GameIntroDatabase.instance.turntablesEncouragementClips.Count)];
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
+            }
+        }
+        else
+        {
+            // skip if playing tutorial
+            if (playTutorial)
+            {
+                // turn on raycaster
+                KeyRaycaster.instance.isOn = true;
+
+                yield break;
+            }
+
+            // change door tile to new tile
+            doorValues[currentDoor] = GetNewValue();
+            doorTiles[currentDoor].SetTile(doorValues[currentDoor]);
+            AudioManager.instance.PlayMoveStoneSound(1f, 1f);
+            yield return new WaitForSeconds(0.4f);
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 1f);
+            doorTiles[currentDoor].GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
+            yield return new WaitForSeconds(0.2f);
+
+            // set frame icon
+            frame.sprite = GameManager.instance.GetActionWord(doorValues[currentDoor]).frameIcon;
+
+            // increment wins
+            numMisses++;
+
+            // play reminder popup
+            List<AudioClip> clips = new List<AudioClip>();
+            clips.Add(GameIntroDatabase.instance.turntablesReminder1);
+            clips.Add(GameIntroDatabase.instance.turntablesReminder2);
+            clips.Add(GameIntroDatabase.instance.turntablesReminder3);
+
+            AudioClip clip = clips[Random.Range(0, clips.Count)];
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
+            yield return new WaitForSeconds(clip.length + 1f);
+        }
+
+        // move keys down
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(RemoveKeys());
+
+        // determine if win
+        if (isCorrect && currentDoor == 4)
+        {
+            StartCoroutine(WinRoutine());
+        }
+        // else next round
+        else
+        {
+            StartCoroutine(NewRound());
+        }
+    }
+
+    private IEnumerator WinRoutine()
+    {
+        // play win tune
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+        yield return new WaitForSeconds(2f);
+
+        if (playTutorial)
+        {
+            // save to SIS
+            StudentInfoSystem.GetCurrentProfile().turntablesTutorial = true;
+            StudentInfoSystem.SaveStudentPlayerData();
+
+            GameManager.instance.LoadScene("TurntablesGame", true, 3f);
+        }
+        else
+        {
+            // calculate and show stars
+            StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+        }
+    }
+
+    private int CalculateStars()
+    {
+        if (numMisses <= 0)
+            return 3;
+        else if (numMisses > 0 && numMisses <= 2)
+            return 2;
+        else
+            return 1;
     }
 
 
@@ -231,7 +438,7 @@ public class TurntablesGameManager : MonoBehaviour
         // make keys be in up position
         foreach (Key k in keys)
         {
-            k.KeyUpAnim();
+            k.ResetKey();
         }
     }
 
@@ -252,6 +459,9 @@ public class TurntablesGameManager : MonoBehaviour
         {
             k.KeyDownAnim();
         }
+
+        // play key jingle
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.KeyLatch, 1f);
     }
 
     private IEnumerator RemoveKeys()
@@ -265,6 +475,10 @@ public class TurntablesGameManager : MonoBehaviour
         {
             k.KeyUpAnim();
         }
+        yield return new WaitForSeconds(0.25f);
+
+        // play key jingle
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.KeyLatch, 1f);
 
         // move rope down
         keyRope.LerpPosition(bouncePos, 0.1f, false);
@@ -281,6 +495,13 @@ public class TurntablesGameManager : MonoBehaviour
     #   UTILITY FUNCTIONS
     ################################################
     */
+
+    private IEnumerator StartMusicDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        AudioManager.instance.InitSplitSong(SplitSong.Turntables);
+        AudioManager.instance.IncreaseSplitSong();
+    }
 
     private ActionWordEnum GetNewValue()
     {

@@ -51,6 +51,9 @@ public class WiggleController : MonoBehaviour
         else
             randomTimeAddition = 0f;
 
+        // set start rotation and position
+        startRotation = transform.rotation.eulerAngles;
+
         wiggle = true;
         setRotation = false;
     }
@@ -59,5 +62,7 @@ public class WiggleController : MonoBehaviour
     {
         wiggle = false;
         timer = 0f;
+        // reset position and rotation
+        transform.rotation = Quaternion.Euler(startRotation);
     }
 }
