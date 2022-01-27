@@ -1,139 +1,82 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Key : MonoBehaviour
 {
-    public ActionWordEnum keyActionWord;
-    public bool interactable = true;
+    public int keyNum;
+    public Animator animator;
+    public Transform origin;
 
-    private bool canBePressed = false;
-    private bool isDissipating = false;
-    [HideInInspector] public bool glowingKey = false;
+    private ActionWordEnum currentWord;
 
-    [SerializeField] private Animator animator;
-    public Image image;
-    public Transform grabPos;
-
-    public string keyName;
-    public Transform ropePos;
-    public Transform keyParent;
-    public float moveSpeed;
-    public float dissipateTime;
-    public const float scaleMult = 0.99f;
-
-    private Coroutine currentRoutine;
-
-    public void StartMovingAnimation()
+    public void SetKeyType(ActionWordEnum word)
     {
-        if (isDissipating) return;
-        string animation_name = keyName + "_first_move";
-        animator.Play(animation_name);
+        currentWord = word;
     }
 
-    public void StopMovingAnimation()
+    public ActionWordEnum GetKeyType()
     {
-        if (isDissipating) return;
-        string animation_name = keyName + "_last_move";
-        animator.Play(animation_name);
-    }
-
-    public void SetKeyActionWord(ActionWordEnum word)
-    {
-        keyActionWord = word;
-        canBePressed = true;
+        return currentWord;
     }
 
     public void PlayAudio()
     {
-        if (!canBePressed)
-            return;
-        if (currentRoutine != null)
-            StopCoroutine(currentRoutine);
-        AudioManager.instance.PlayPhoneme(keyActionWord);
-        PlaySoundAnimation(1f);
-
-        // play key tap
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.KeyTap, 1f);
-    }
-
-    private void PlaySoundAnimation(float duration)
-    {
-        currentRoutine = StartCoroutine(PlaySoundRoutine(duration));
-    }
-
-    private IEnumerator PlaySoundRoutine(float duration)
-    {
-        string animation_name = keyName + "_audio_play";
-        animator.Play(animation_name);
-
-        yield return new WaitForSeconds(duration);
+        // wiggle key
+        KeyWiggleAnim();
         
-        animation_name = keyName + "_still";
-        animator.Play(animation_name);
+        // play correct audio
+        AudioManager.instance.PlayPhoneme(currentWord);
     }
 
     public void ReturnToRope()
     {
-        StartCoroutine(ReturnToOriginalPosRoutine(ropePos.position));
+        // make key normal size
+        GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
+        // return to origin
+        GetComponent<LerpableObject>().LerpPosToTransform(origin, 0.2f, false);
+        // set origin as parent
+        transform.SetParent(origin);
     }
 
-    public void Dissipate()
+    public void MoveIntoRockLock()
     {
-        isDissipating = true;
-        // make key invisible over time
-        StartCoroutine(DissipateAndDestroy());
+        // make key normal size
+        GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
+        // return to origin
+        GetComponent<LerpableObject>().LerpPosToTransform(TurntablesGameManager.instance.rockLock.transform, 0.25f, false);
     }
 
-    private IEnumerator DissipateAndDestroy()
+    public void KeyDownAnim()
     {
-        Vector3 startPos = transform.position;
-        Vector3 endPos = RockLock.instance.transform.position;
-
-        float timer = 0f;
-        while (true)
+        switch (keyNum)
         {
-            timer += Time.deltaTime;
-            if (timer > dissipateTime)
-            {
-                Destroy(this.gameObject);
-                break;
-            }
-            // reduce alpha over time
-            float a = Mathf.Lerp(1, 0, timer / dissipateTime);
-            image.color = new Color(1f, 1f, 1f, a);
-            // decrease in scale over time
-            transform.localScale = transform.localScale * scaleMult;
-            yield return null;
-            // move towards rock lock
-            Vector3 tempPos = Vector3.Lerp(startPos, endPos, timer / dissipateTime);
-            transform.position = tempPos;
+            case 1: animator.Play("k1_last_move"); break;
+            case 2: animator.Play("k2_last_move"); break;
+            case 3: animator.Play("k3_last_move"); break;
+            case 4: animator.Play("k4_last_move"); break;
         }
     }
 
-    private IEnumerator ReturnToOriginalPosRoutine(Vector3 target)
+    public void KeyUpAnim()
     {
-        Vector3 currStart = transform.position;
-        float timer = 0f;
-        float maxTime = 0.5f;
-
-        while (true)
+        switch (keyNum)
         {
-            // animate movement
-            timer += Time.deltaTime * moveSpeed;
-            if (timer < maxTime)
-            {
-                transform.position = Vector3.Lerp(currStart, target, timer / maxTime);
-            }
-            else
-            {
-                transform.position = target;
-                transform.SetParent(keyParent);
-                yield break;
-            }
+            case 1: animator.Play("k1_first_move"); break;
+            case 2: animator.Play("k2_first_move"); break;
+            case 3: animator.Play("k3_first_move"); break;
+            case 4: animator.Play("k4_first_move"); break;
+        }
+    }
 
-            yield return null;
+    public void KeyWiggleAnim()
+    {
+        switch (keyNum)
+        {
+            case 1: animator.Play("k1_audio_play"); break;
+            case 2: animator.Play("k2_audio_play"); break;
+            case 3: animator.Play("k3_audio_play"); break;
+            case 4: animator.Play("k4_audio_play"); break;
         }
     }
 }

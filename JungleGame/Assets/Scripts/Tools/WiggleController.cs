@@ -6,6 +6,8 @@ public class WiggleController : MonoBehaviour
 {
     public AnimationCurve curve;
     public float multiplier;
+    public float curveLength;
+
     private bool wiggle;
     private float randomTimeAddition = 0f;
     private float timer = 0f;
@@ -15,8 +17,6 @@ public class WiggleController : MonoBehaviour
     void Awake()
     {
         startRotation = transform.rotation.eulerAngles;
-
-        print ("curve length: " + curve.length);
     }
 
     void Update()
@@ -28,7 +28,7 @@ public class WiggleController : MonoBehaviour
             transform.rotation = quat;
             
             // reset timer
-            if (timer >= curve.length - 1)
+            if (timer >= curveLength)
             {
                 timer = 0f;
             }
@@ -45,7 +45,12 @@ public class WiggleController : MonoBehaviour
 
     public void StartWiggle(bool randomTime = false)
     {
-        randomTimeAddition = Random.Range(0.1f, 0.5f);
+        // only add random time if passed though the start function
+        if (randomTime)
+            randomTimeAddition = Random.Range(0.1f, 0.5f);
+        else
+            randomTimeAddition = 0f;
+
         wiggle = true;
         setRotation = false;
     }
