@@ -260,6 +260,9 @@ public class TurntablesGameManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 1f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MoveStoneEnd, 1f, "door_tile", 1.5f);
 
+        // set frame icon
+        frame.sprite = GameManager.instance.GetActionWord(doorValues[currentDoor]).frameIcon;
+
         // turn on key raycaster
         KeyRaycaster.instance.isOn = true;
     }
@@ -325,7 +328,7 @@ public class TurntablesGameManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             // play tutorial intro 4
-            if (currentDoor == 1)
+            if (playTutorial && currentDoor == 1)
             {
                 // play tutorial audio 4
                 AudioClip clip = GameIntroDatabase.instance.turntablesIntro4;

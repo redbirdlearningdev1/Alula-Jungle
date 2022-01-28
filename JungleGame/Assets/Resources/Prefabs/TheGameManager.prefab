@@ -9002,6 +9002,7 @@ MonoBehaviour:
     m_PostInfinity: 1
     m_RotationOrder: 4
   multiplier: 5
+  curveLength: 0
 --- !u!1 &1982281683011336171
 GameObject:
   m_ObjectHideFlags: 0
@@ -11163,6 +11164,7 @@ MonoBehaviour:
     m_PostInfinity: 1
     m_RotationOrder: 4
   multiplier: 5
+  curveLength: 0
 --- !u!1 &3060358010164376195
 GameObject:
   m_ObjectHideFlags: 0
@@ -11616,14 +11618,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOn: 0
-  particleType: 3
-  darwinCrateParticle: {fileID: 7423938205038367350, guid: 6250b32a177e58b4c9272fd65ca5d990,
+  currentParticleCharacter: 0
+  darwinPaperStack: {fileID: 6724293732988603406, guid: f11686ad80d92094891200b1943e328b,
+    type: 3}
+  darwinBook: {fileID: 1260765485773224646, guid: b52a550485d4527499670d34c170a3b9,
+    type: 3}
+  darwinPaper: {fileID: 6548058765376980301, guid: 79aecda9d7430814f95bfc88824c889e,
     type: 3}
   redFeatherParticle: {fileID: 7423938205038367350, guid: 913eab24b142a57409cc5375296b4bb3,
     type: 3}
   wallyStarsParticle: {fileID: 7423938205038367350, guid: aceeaa82c6964dc45a89b82fb46c1937,
     type: 3}
-  bananaParticle: {fileID: 7423938205038367350, guid: bdc9942f767e2144281a62c029605d06,
+  marcusbananaParticle: {fileID: 3047845514426812580, guid: 9eb9024b030055f40a11292d3cba0760,
+    type: 3}
+  brutusbananaParticle: {fileID: 3471873725371638514, guid: 5e3b2c257f77be04e8612111964056b0,
     type: 3}
   juliusSwirlParticle: {fileID: 7423938205038367350, guid: 79ff2a636cdee87498fe89eb6bb1f990,
     type: 3}
@@ -11646,7 +11654,6 @@ MonoBehaviour:
   - {fileID: 612202781251268795}
   - {fileID: 831572960758839355}
   - {fileID: 3480669406174100804}
-  switchParticleTime: 10
   delta: {x: 0, y: 0}
 --- !u!1 &3324044682073554643
 GameObject:
@@ -16874,6 +16881,7 @@ MonoBehaviour:
     m_PostInfinity: 1
     m_RotationOrder: 4
   multiplier: 5
+  curveLength: 0
 --- !u!114 &1398013590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17001,6 +17009,7 @@ MonoBehaviour:
     m_PostInfinity: 1
     m_RotationOrder: 4
   multiplier: 5
+  curveLength: 0
 --- !u!1 &5724440949134106680
 GameObject:
   m_ObjectHideFlags: 0
@@ -18065,6 +18074,7 @@ MonoBehaviour:
     m_PostInfinity: 1
     m_RotationOrder: 4
   multiplier: 5
+  curveLength: 0
 --- !u!1 &6109514861544430467
 GameObject:
   m_ObjectHideFlags: 0
@@ -23536,6 +23546,7 @@ MonoBehaviour:
     m_PostInfinity: 1
     m_RotationOrder: 4
   multiplier: 5
+  curveLength: 0
 --- !u!114 &1052916515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26279,7 +26290,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 54.460342, y: 0.005817631}
+  m_AnchoredPosition: {x: 49.27498, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768
@@ -28278,6 +28289,7 @@ MonoBehaviour:
     m_PostInfinity: 1
     m_RotationOrder: 4
   multiplier: 5
+  curveLength: 0
 --- !u!1 &8877321544570526331
 GameObject:
   m_ObjectHideFlags: 0
