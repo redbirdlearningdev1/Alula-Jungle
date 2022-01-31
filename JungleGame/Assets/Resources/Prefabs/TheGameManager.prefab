@@ -6116,7 +6116,7 @@ GameObject:
   - component: {fileID: 3820276745331592849}
   m_Layer: 17
   m_Name: LeftWall
-  m_TagString: Untagged
+  m_TagString: Sticky
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6522,7 +6522,7 @@ GameObject:
   - component: {fileID: 5358645069372424259}
   m_Layer: 17
   m_Name: RightWall
-  m_TagString: Untagged
+  m_TagString: Sticky
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9058,7 +9058,7 @@ GameObject:
   - component: {fileID: 979076242788056226}
   m_Layer: 17
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Sticky
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11625,29 +11625,59 @@ MonoBehaviour:
     type: 3}
   darwinPaper: {fileID: 6548058765376980301, guid: 79aecda9d7430814f95bfc88824c889e,
     type: 3}
-  redFeatherParticle: {fileID: 7423938205038367350, guid: 913eab24b142a57409cc5375296b4bb3,
+  redFeather: {fileID: 7423938205038367350, guid: 88737ec00b94eaa40a1de280246ebcec,
     type: 3}
-  wallyStarsParticle: {fileID: 7423938205038367350, guid: aceeaa82c6964dc45a89b82fb46c1937,
+  wallyHay: {fileID: 7423938205038367350, guid: 3292ea1beafda4f41b7bddc0ee22794b,
     type: 3}
   marcusbananaParticle: {fileID: 3047845514426812580, guid: 9eb9024b030055f40a11292d3cba0760,
     type: 3}
   brutusbananaParticle: {fileID: 3471873725371638514, guid: 5e3b2c257f77be04e8612111964056b0,
     type: 3}
-  juliusSwirlParticle: {fileID: 7423938205038367350, guid: 79ff2a636cdee87498fe89eb6bb1f990,
+  juliusJewel1: {fileID: 7423938205038367350, guid: c6208c54b7e3be5428a17fd0d3fdfa75,
     type: 3}
-  lesterSandParticle: {fileID: 7423938205038367350, guid: a14cd455c77da8a4fa4acaa1519643bd,
+  juliusJewel2: {fileID: 7423938205038367350, guid: 3ea9f1e51099fc94a8ea079cc8ffdb8a,
     type: 3}
-  cloggSwirlParticle: {fileID: 7423938205038367350, guid: b3b7cc0c3fbe5b040900829138d8c797,
+  juliusJewel3: {fileID: 7423938205038367350, guid: 1576b44580971d0459b957563dde8a5a,
     type: 3}
-  spindleBugParticle: {fileID: 7423938205038367350, guid: 3b7a0c98f5936b74e986d7ba573fb7f5,
+  lesterChest1: {fileID: 6548058765376980301, guid: e623cd1330b38c544a21b4fdb8472471,
     type: 3}
-  ollieFeatherParticle: {fileID: 7423938205038367350, guid: 69b464f09e4d62141bd5a39c452c8dfb,
+  lesterChest2: {fileID: 6548058765376980301, guid: ca37a656eea4c504ebf8ec2faf7a2338,
     type: 3}
-  celesteSandParticle: {fileID: 7423938205038367350, guid: 44ce908692ec2d741a7d611d84c63a55,
+  lesterChest3: {fileID: 6548058765376980301, guid: 3552c05d1ca81bb43a157dd282d750ff,
     type: 3}
-  sylvieSandParticle: {fileID: 7423938205038367350, guid: 36bc675191bb3e14ab10b9fddbe17184,
+  lesterChest4: {fileID: 6548058765376980301, guid: d11cfd2f10c0e8d4c89b9e744fc07760,
     type: 3}
-  taxiFeatherParticle: {fileID: 7423938205038367350, guid: b67163ffb641cb8448af28fd3f761b21,
+  cloggAxe: {fileID: 7423938205038367350, guid: db6323dc89773c440a1ec691ecda9c20,
+    type: 3}
+  cloggAxeReverse: {fileID: 7423938205038367350, guid: 0c4b99613f51f72419de261f589965cc,
+    type: 3}
+  bubblesBubble: {fileID: 6548058765376980301, guid: 9bb4ad6d4934b3444a8f480e6ee637cc,
+    type: 3}
+  ollieCoin: {fileID: 7423938205038367350, guid: 577f53f7bd0bbc04d8065a6f9fd2be49,
+    type: 3}
+  spindleBug1: {fileID: 7423938205038367350, guid: 5272e21e958e8d644a7727b927877da0,
+    type: 3}
+  spindleBug2: {fileID: 7423938205038367350, guid: 1d63511e53f185c4287bf8a9f94f995e,
+    type: 3}
+  spindleBug3: {fileID: 7423938205038367350, guid: 911918a61d016b049b3147875938eecd,
+    type: 3}
+  celesteSand: {fileID: 7423938205038367350, guid: 44ce908692ec2d741a7d611d84c63a55,
+    type: 3}
+  celesteShell1: {fileID: 3471873725371638514, guid: 6e17918dfe153f34e8e57de01969d6f8,
+    type: 3}
+  celesteShell2: {fileID: 3471873725371638514, guid: eff53f0019bfd684ead48336aa536ff0,
+    type: 3}
+  celesteShell3: {fileID: 3471873725371638514, guid: ad7d252584fa5284eb523af2cc5ee156,
+    type: 3}
+  sylvieSand: {fileID: 7423938205038367350, guid: 36bc675191bb3e14ab10b9fddbe17184,
+    type: 3}
+  sylvieShell1: {fileID: 3471873725371638514, guid: 5a2544471d429a94fb5c2b519f029e6d,
+    type: 3}
+  sylvieShell2: {fileID: 3471873725371638514, guid: 7bc485be100d8724f83c14ab8bd675fa,
+    type: 3}
+  sylvieShell3: {fileID: 3471873725371638514, guid: 3a36ff056f964504cb3eb33517634677,
+    type: 3}
+  taxiFeather: {fileID: 7423938205038367350, guid: 79eef659463ab594bbe57f8e18b1d62a,
     type: 3}
   colliderObjects:
   - {fileID: 2041857581783057908}
@@ -12004,7 +12034,7 @@ GameObject:
   - component: {fileID: 7397257550121100705}
   m_Layer: 17
   m_Name: Roof
-  m_TagString: Untagged
+  m_TagString: Sticky
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26290,7 +26320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 49.27498, y: 0.005817631}
+  m_AnchoredPosition: {x: 49.625477, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

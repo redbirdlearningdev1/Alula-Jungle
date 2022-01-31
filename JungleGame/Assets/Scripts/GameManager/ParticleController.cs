@@ -2,11 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ParticleType
-{
-    Darwin_crate, Red_feather, Wally_stars, Monkey_bananas, Julius_swirls, Lester_sand, Clogg_swirls, Spindle_bugs, Ollie_feathers, Celeste_sand, Sylvie_sand, Taxi_feathers
-}
-
 public class ParticleController : MonoBehaviour
 {
     public static ParticleController instance;
@@ -19,21 +14,43 @@ public class ParticleController : MonoBehaviour
     public GameObject darwinBook;
     public GameObject darwinPaper;
 
-
-    public GameObject redFeatherParticle;
-    public GameObject wallyStarsParticle;
+    public GameObject redFeather;
+    public GameObject wallyHay;
 
     public GameObject marcusbananaParticle;
     public GameObject brutusbananaParticle;
-    public GameObject juliusSwirlParticle;
 
-    public GameObject lesterSandParticle;
-    public GameObject cloggSwirlParticle;
-    public GameObject spindleBugParticle;
-    public GameObject ollieFeatherParticle;
-    public GameObject celesteSandParticle;
-    public GameObject sylvieSandParticle;
-    public GameObject taxiFeatherParticle;
+    public GameObject juliusJewel1;
+    public GameObject juliusJewel2;
+    public GameObject juliusJewel3;
+
+    public GameObject lesterChest1;
+    public GameObject lesterChest2;
+    public GameObject lesterChest3;
+    public GameObject lesterChest4;
+
+    public GameObject cloggAxe;
+    public GameObject cloggAxeReverse;
+
+    public GameObject bubblesBubble;
+
+    public GameObject ollieCoin;
+
+    public GameObject spindleBug1;
+    public GameObject spindleBug2;
+    public GameObject spindleBug3;
+    
+    public GameObject celesteSand;
+    public GameObject celesteShell1;
+    public GameObject celesteShell2;
+    public GameObject celesteShell3;
+
+    public GameObject sylvieSand;
+    public GameObject sylvieShell1;
+    public GameObject sylvieShell2;
+    public GameObject sylvieShell3;
+
+    public GameObject taxiFeather;
 
     public List<GameObject> colliderObjects;
     private bool colliderState = false; // off by default
@@ -90,6 +107,7 @@ public class ParticleController : MonoBehaviour
             {
                 timer = 0f;
                 float randomNum = Random.Range(0f, 1f);
+                //print ("random number: " + randomNum);
 
                 switch (currentParticleCharacter)
                 {
@@ -114,11 +132,11 @@ public class ParticleController : MonoBehaviour
                         break;
                     
                     case TalkieCharacter.Red: 
-                        currentParticle = redFeatherParticle;
+                        currentParticle = redFeather;
                         break;
 
                     case TalkieCharacter.Wally: 
-                        currentParticle = wallyStarsParticle;
+                        currentParticle = wallyHay;
                         break;
 
                     case TalkieCharacter.Marcus: 
@@ -130,35 +148,121 @@ public class ParticleController : MonoBehaviour
                         break;
 
                     case TalkieCharacter.Julius: 
-                        currentParticle = juliusSwirlParticle;
+                        if (randomNum < 0.33f)
+                        {
+                            currentParticle = juliusJewel1;
+                        }
+                        else if (randomNum >= 0.33f && randomNum < 0.66f)
+                        {
+                            currentParticle = juliusJewel2;
+                        }
+                        else
+                        {
+                            currentParticle = juliusJewel3;
+                        }
                         break;
 
                     case TalkieCharacter.Lester: 
-                        currentParticle = lesterSandParticle;
+                        if (randomNum < 0.4f)
+                        {
+                            currentParticle = lesterChest1;
+                        }
+                        else if (randomNum >= 0.4f && randomNum < 0.7f)
+                        {
+                            currentParticle = lesterChest2;
+                        }
+                        else if (randomNum >= 0.7f && randomNum < 0.9f)
+                        {
+                            currentParticle = lesterChest3;
+                        }
+                        else
+                        {
+                            currentParticle = lesterChest4;
+                        }
                         break;
 
-                    case TalkieCharacter.Clogg: 
-                        currentParticle = cloggSwirlParticle;
+                    case TalkieCharacter.Clogg:
+                        if (randomNum < 0.5f)
+                        {
+                            currentParticle = cloggAxe;
+                        }
+                        else
+                        {
+                            currentParticle = cloggAxeReverse;
+                        }
+                        break;
+
+                    case TalkieCharacter.Bubbles:
+                        currentParticle = bubblesBubble;
                         break;
 
                     case TalkieCharacter.Spindle: 
-                        currentParticle = spindleBugParticle;
+                        if (randomNum < 0.33f)
+                        {
+                            currentParticle = spindleBug1;
+                        }
+                        else if (randomNum >= 0.33f && randomNum < 0.66f)
+                        {
+                            currentParticle = spindleBug2;
+                        }
+                        else
+                        {
+                            currentParticle = spindleBug3;
+                        }
                         break;
 
                     case TalkieCharacter.Ollie: 
-                        currentParticle = ollieFeatherParticle;
+                        currentParticle = ollieCoin;
                         break;
 
                     case TalkieCharacter.Celeste: 
-                        currentParticle = celesteSandParticle;
+                        if (randomNum < 0.995f)
+                        {
+                            currentParticle = celesteSand;
+                        }
+                        else
+                        {
+                            int randomShell = Random.Range(0, 3);
+                            switch (randomShell)
+                            {
+                                case 0:
+                                    currentParticle = celesteShell1;
+                                    break;
+                                case 1:
+                                    currentParticle = celesteShell2;
+                                    break;
+                                case 2:
+                                    currentParticle = celesteShell3;
+                                    break;
+                            }
+                        }
                         break;
 
                     case TalkieCharacter.Sylvie: 
-                        currentParticle = sylvieSandParticle;
+                        if (randomNum < 0.995f)
+                        {
+                            currentParticle = sylvieSand;
+                        }
+                        else
+                        {
+                            int randomShell = Random.Range(0, 3);
+                            switch (randomShell)
+                            {
+                                case 0:
+                                    currentParticle = sylvieShell1;
+                                    break;
+                                case 1:
+                                    currentParticle = sylvieShell2;
+                                    break;
+                                case 2:
+                                    currentParticle = sylvieShell3;
+                                    break;
+                            }
+                        }
                         break;
 
                     case TalkieCharacter.Taxi: 
-                        currentParticle = taxiFeatherParticle;
+                        currentParticle = taxiFeather;
                         break;
                 }
 
@@ -169,7 +273,7 @@ public class ParticleController : MonoBehaviour
                 Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 position.z = 0f;
 
-                print ("current particle: " + currentParticle);
+                // print ("current particle: " + currentParticle);
                 GameObject particle = Instantiate(currentParticle, position, Quaternion.identity, this.transform);
                 particle.GetComponent<FunParticle>().StartParticle();
             }
