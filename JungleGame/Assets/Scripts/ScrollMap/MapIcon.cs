@@ -124,7 +124,35 @@ public enum MapIconIdentfier
     R_face,
     R_arch,
 
-    R_challenge_1
+    R_challenge_1,
+    R_challenge_2,
+    R_challenge_3,
+
+    // exit jungle
+    EJ_puppy,
+    EJ_bridge,
+    EJ_sign,
+    EJ_torch,
+
+    EJ_challenge_1,
+    EJ_challenge_2,
+    EJ_challenge_3,
+
+    // gorilla study
+    GS_tent1,
+    GS_tent2,
+    GS_statue,
+    GS_fire,
+
+    GS_challenge_1,
+    GS_challenge_2,
+    GS_challenge_3,
+
+    // monkeys
+    M_flower,
+    M_tree,
+    M_bananas,
+    M_guards,
 }
 
 public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
