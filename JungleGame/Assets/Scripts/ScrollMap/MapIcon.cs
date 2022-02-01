@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public enum AnimatedIcon 
 {
-    none, fire, shrine, lamp, spider
+    none, fire, shrine, lamp, spider, octo, parrot, mermaids, puppyFire, torch
 }
 
 public enum StarLocation
@@ -69,6 +69,62 @@ public enum MapIconIdentfier
     OC_challenge_1,
     OC_challenge_2,
     OC_challenge_3,
+
+    // gorilla poop
+    GP_outhouse1,
+    GP_outhouse2,
+    GP_rocks1,
+    GP_rocks2,
+
+    GP_challenge_1,
+    GP_challenge_2,
+    GP_challenge_3,
+
+    // windy cliff
+    WC_statue,
+    WC_lighthouse,
+    WC_ladder,
+    WC_rock,
+    WC_sign,
+    WC_octo,
+
+    WC_challenge_1,
+    WC_challenge_2,
+    WC_challenge_3,
+
+    // pirate ship
+    PS_wheel,
+    PS_sail,
+    PS_boat,
+    PS_bridge,
+    PS_front,
+    PS_parrot,
+
+    PS_challenge_1,
+    PS_challenge_2,
+    PS_challenge_3,
+
+    // mermaid beach
+    MB_mermaids,
+    MB_rock,
+    MB_castle,
+    MB_bucket,
+    MB_umbrella,
+    MB_ladder,
+
+    MB_challenge_1,
+    MB_challenge_2,
+    MB_challenge_3,
+
+    // ruins
+    R_lizard1,
+    R_lizard2,
+    R_caveRock,
+    R_pyramid,
+    R_face,
+    R_arch,
+
+    R_challenge_1
 }
 
 public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
@@ -348,6 +404,26 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             case AnimatedIcon.spider:
                 if (!opt) animator.Play("spider_broken");
                 else animator.Play("spider_fixed");
+                break;
+            case AnimatedIcon.octo:
+                if (!opt) animator.Play("octo_broken");
+                else animator.Play("octo_fixed");
+                break;
+            case AnimatedIcon.parrot:
+                if (!opt) animator.Play("parrot_broken");
+                else animator.Play("parrot_fixed");
+                break;
+            case AnimatedIcon.mermaids:
+                if (!opt) animator.Play("mermaids_broken");
+                else animator.Play("mermaids_fixed");
+                break;
+            case AnimatedIcon.puppyFire:
+                if (!opt) animator.Play("puppyFire_broken");
+                else animator.Play("puppyFire_fixed");
+                break;
+            case AnimatedIcon.torch:
+                if (!opt) animator.Play("torch_broken");
+                else animator.Play("torch_fixed");
                 break;
         }
         // play animation
