@@ -11,6 +11,15 @@ public enum MapLocation
     OrcVillage,
     SpookyForest,
     OrcCamp,
+    GorillaPoop,
+    WindyCliff,
+    PirateShip,
+    MermaidBeach,
+    Ruins,
+    ExitJungle,
+    GorillaStudy,
+    Monkeys,
+    PalaceIntro,
     COUNT
 }
 

@@ -9,19 +9,6 @@ public class TutorialPopupController : MonoBehaviour
 
     public GameObject popupObject;
 
-    [Header("Character Popups")]
-    public Sprite brutusPopup;
-    public Sprite bubblesPopup;
-    public Sprite celestePopup;
-    public Sprite cloggPopup;
-    public Sprite darwinPopup;
-    public Sprite juliusPopup;
-    public Sprite marcusPopup;
-    public Sprite olliePopup;
-    public Sprite redPopup;
-    public Sprite spindlePopup;
-    public Sprite sylviePopup;
-
     [Header("Popup Positions")]
     public Transform topLeft;
     public Transform topRight;
@@ -39,30 +26,11 @@ public class TutorialPopupController : MonoBehaviour
         StopAllCoroutines();
     }
 
-    private Sprite GetCharacterPopupSprite(TalkieCharacter character)
-    {
-        switch (character)
-        {
-            default: return brutusPopup;
-            case TalkieCharacter.Brutus: return brutusPopup;
-            case TalkieCharacter.Bubbles: return bubblesPopup;
-            case TalkieCharacter.Celeste: return celestePopup;
-            case TalkieCharacter.Clogg: return cloggPopup;
-            case TalkieCharacter.Darwin: return darwinPopup;
-            case TalkieCharacter.Julius: return juliusPopup;
-            case TalkieCharacter.Marcus: return marcusPopup;
-            case TalkieCharacter.Ollie: return olliePopup;
-            case TalkieCharacter.Red: return redPopup;
-            case TalkieCharacter.Spindle: return spindlePopup;
-            case TalkieCharacter.Sylvie: return sylviePopup;
-        }
-    }
-
     public void NewPopup(Vector3 pos, bool facingLeft, TalkieCharacter character, AudioClip clip)
     {
         GameObject newPopup = Instantiate(popupObject, pos, Quaternion.identity, this.transform);
         newPopup.transform.localScale = new Vector3(0f, 0f, 1f);
-        newPopup.GetComponent<Image>().sprite = GetCharacterPopupSprite(character);
+        newPopup.GetComponent<PopupObject>().SetPopupCharacter(character);
 
         StartCoroutine(NewPopupRoutine(newPopup.GetComponent<LerpableObject>(), clip, facingLeft));
     }
@@ -71,7 +39,7 @@ public class TutorialPopupController : MonoBehaviour
     {
         GameObject newPopup = Instantiate(popupObject, pos, Quaternion.identity, this.transform);
         newPopup.transform.localScale = new Vector3(0f, 0f, 1f);
-        newPopup.GetComponent<Image>().sprite = GetCharacterPopupSprite(character);
+        newPopup.GetComponent<PopupObject>().SetPopupCharacter(character);
 
         StartCoroutine(NewPopupRoutine(newPopup.GetComponent<LerpableObject>(), clips, facingLeft));
     }

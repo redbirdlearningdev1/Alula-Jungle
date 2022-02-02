@@ -2,38 +2,58 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ParticleType
-{
-    Darwin_crate, Red_feather, Wally_stars, Monkey_bananas, Julius_swirls, Lester_sand, Clogg_swirls, Spindle_bugs, Ollie_feathers, Celeste_sand, Sylvie_sand, Taxi_feathers
-}
-
 public class ParticleController : MonoBehaviour
 {
     public static ParticleController instance;
 
     public bool isOn = false;
-    public ParticleType particleType;
+    public TalkieCharacter currentParticleCharacter;
 
-    public GameObject darwinCrateParticle;
-    public GameObject redFeatherParticle;
-    public GameObject wallyStarsParticle;
+    // darwin
+    public GameObject darwinPaperStack;
+    public GameObject darwinBook;
+    public GameObject darwinPaper;
 
-    public GameObject bananaParticle;
-    public GameObject juliusSwirlParticle;
+    public GameObject redFeather;
+    public GameObject wallyHay;
 
-    public GameObject lesterSandParticle;
-    public GameObject cloggSwirlParticle;
-    public GameObject spindleBugParticle;
-    public GameObject ollieFeatherParticle;
-    public GameObject celesteSandParticle;
-    public GameObject sylvieSandParticle;
-    public GameObject taxiFeatherParticle;
+    public GameObject marcusbananaParticle;
+    public GameObject brutusbananaParticle;
+
+    public GameObject juliusJewel1;
+    public GameObject juliusJewel2;
+    public GameObject juliusJewel3;
+
+    public GameObject lesterChest1;
+    public GameObject lesterChest2;
+    public GameObject lesterChest3;
+    public GameObject lesterChest4;
+
+    public GameObject cloggAxe;
+    public GameObject cloggAxeReverse;
+
+    public GameObject bubblesBubble;
+
+    public GameObject ollieCoin;
+
+    public GameObject spindleBug1;
+    public GameObject spindleBug2;
+    public GameObject spindleBug3;
+    
+    public GameObject celesteSand;
+    public GameObject celesteShell1;
+    public GameObject celesteShell2;
+    public GameObject celesteShell3;
+
+    public GameObject sylvieSand;
+    public GameObject sylvieShell1;
+    public GameObject sylvieShell2;
+    public GameObject sylvieShell3;
+
+    public GameObject taxiFeather;
 
     public List<GameObject> colliderObjects;
     private bool colliderState = false; // off by default
-
-    public float switchParticleTime;
-    private float switchTimer = 0f;
 
     private float timer = 0f;
 
@@ -73,18 +93,6 @@ public class ParticleController : MonoBehaviour
             ToggleColliderObjects(true);
         }
 
-        switchTimer += Time.deltaTime;
-        if (switchTimer > switchParticleTime)
-        {
-            switchTimer = 0f;
-
-            //particleType++;
-            //if (particleType > ParticleType.bubble)
-            //{
-            //    particleType = ParticleType.stars;
-            //}
-        }
-
         // if mouse button held down
         if (Input.GetMouseButton(0))
         {
@@ -94,69 +102,180 @@ public class ParticleController : MonoBehaviour
             lastPos = Input.mousePosition;
             timer += Time.deltaTime;
 
-            switch (particleType)
-            {
-                default:
-                case ParticleType.Darwin_crate: 
-                    currentParticle = darwinCrateParticle;
-                    break;
-                
-                case ParticleType.Red_feather: 
-                    currentParticle = redFeatherParticle;
-                    break;
-
-                case ParticleType.Wally_stars: 
-                    currentParticle = wallyStarsParticle;
-                    break;
-
-                case ParticleType.Monkey_bananas: 
-                    currentParticle = bananaParticle;
-                    break;
-
-                case ParticleType.Julius_swirls: 
-                    currentParticle = juliusSwirlParticle;
-                    break;
-
-                case ParticleType.Lester_sand: 
-                    currentParticle = lesterSandParticle;
-                    break;
-
-                case ParticleType.Clogg_swirls: 
-                    currentParticle = cloggSwirlParticle;
-                    break;
-
-                case ParticleType.Spindle_bugs: 
-                    currentParticle = spindleBugParticle;
-                    break;
-
-                case ParticleType.Ollie_feathers: 
-                    currentParticle = ollieFeatherParticle;
-                    break;
-
-                case ParticleType.Celeste_sand: 
-                    currentParticle = celesteSandParticle;
-                    break;
-
-                case ParticleType.Sylvie_sand: 
-                    currentParticle = sylvieSandParticle;
-                    break;
-
-                case ParticleType.Taxi_feathers: 
-                    currentParticle = taxiFeatherParticle;
-                    break;
-            }
-
-            currentRate = currentParticle.GetComponent<FunParticle>().rate;
-
+            // spawn new particle
             if (timer > currentRate)
             {
                 timer = 0f;
+                float randomNum = Random.Range(0f, 1f);
+                //print ("random number: " + randomNum);
 
+                switch (currentParticleCharacter)
+                {
+                    default:
+                    case TalkieCharacter.None: 
+                        currentParticle = null;
+                        return;
+
+                    case TalkieCharacter.Darwin:
+                        if (randomNum < 0.75f)
+                        {
+                            currentParticle = darwinPaper;
+                        }
+                        else if (randomNum >= 0.75f && randomNum < 0.9f)
+                        {
+                            currentParticle = darwinPaperStack;
+                        }
+                        else
+                        {
+                            currentParticle = darwinBook;
+                        }
+                        break;
+                    
+                    case TalkieCharacter.Red: 
+                        currentParticle = redFeather;
+                        break;
+
+                    case TalkieCharacter.Wally: 
+                        currentParticle = wallyHay;
+                        break;
+
+                    case TalkieCharacter.Marcus: 
+                        currentParticle = marcusbananaParticle;
+                        break;
+                        
+                    case TalkieCharacter.Brutus: 
+                        currentParticle = brutusbananaParticle;
+                        break;
+
+                    case TalkieCharacter.Julius: 
+                        if (randomNum < 0.33f)
+                        {
+                            currentParticle = juliusJewel1;
+                        }
+                        else if (randomNum >= 0.33f && randomNum < 0.66f)
+                        {
+                            currentParticle = juliusJewel2;
+                        }
+                        else
+                        {
+                            currentParticle = juliusJewel3;
+                        }
+                        break;
+
+                    case TalkieCharacter.Lester: 
+                        if (randomNum < 0.4f)
+                        {
+                            currentParticle = lesterChest1;
+                        }
+                        else if (randomNum >= 0.4f && randomNum < 0.7f)
+                        {
+                            currentParticle = lesterChest2;
+                        }
+                        else if (randomNum >= 0.7f && randomNum < 0.9f)
+                        {
+                            currentParticle = lesterChest3;
+                        }
+                        else
+                        {
+                            currentParticle = lesterChest4;
+                        }
+                        break;
+
+                    case TalkieCharacter.Clogg:
+                        if (randomNum < 0.5f)
+                        {
+                            currentParticle = cloggAxe;
+                        }
+                        else
+                        {
+                            currentParticle = cloggAxeReverse;
+                        }
+                        break;
+
+                    case TalkieCharacter.Bubbles:
+                        currentParticle = bubblesBubble;
+                        break;
+
+                    case TalkieCharacter.Spindle: 
+                        if (randomNum < 0.33f)
+                        {
+                            currentParticle = spindleBug1;
+                        }
+                        else if (randomNum >= 0.33f && randomNum < 0.66f)
+                        {
+                            currentParticle = spindleBug2;
+                        }
+                        else
+                        {
+                            currentParticle = spindleBug3;
+                        }
+                        break;
+
+                    case TalkieCharacter.Ollie: 
+                        currentParticle = ollieCoin;
+                        break;
+
+                    case TalkieCharacter.Celeste: 
+                        if (randomNum < 0.995f)
+                        {
+                            currentParticle = celesteSand;
+                        }
+                        else
+                        {
+                            int randomShell = Random.Range(0, 3);
+                            switch (randomShell)
+                            {
+                                case 0:
+                                    currentParticle = celesteShell1;
+                                    break;
+                                case 1:
+                                    currentParticle = celesteShell2;
+                                    break;
+                                case 2:
+                                    currentParticle = celesteShell3;
+                                    break;
+                            }
+                        }
+                        break;
+
+                    case TalkieCharacter.Sylvie: 
+                        if (randomNum < 0.995f)
+                        {
+                            currentParticle = sylvieSand;
+                        }
+                        else
+                        {
+                            int randomShell = Random.Range(0, 3);
+                            switch (randomShell)
+                            {
+                                case 0:
+                                    currentParticle = sylvieShell1;
+                                    break;
+                                case 1:
+                                    currentParticle = sylvieShell2;
+                                    break;
+                                case 2:
+                                    currentParticle = sylvieShell3;
+                                    break;
+                            }
+                        }
+                        break;
+
+                    case TalkieCharacter.Taxi: 
+                        currentParticle = taxiFeather;
+                        break;
+                }
+
+                // set new rate
+                currentRate = currentParticle.GetComponent<FunParticle>().rate;
+
+                // spawn particle
                 Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 position.z = 0f;
 
-                GameObject star = Instantiate(currentParticle, position, Quaternion.identity, this.transform);
-                star.GetComponent<FunParticle>().StartParticle();
+                // print ("current particle: " + currentParticle);
+                GameObject particle = Instantiate(currentParticle, position, Quaternion.identity, this.transform);
+                particle.GetComponent<FunParticle>().StartParticle();
             }
         }
     }
@@ -169,55 +288,34 @@ public class ParticleController : MonoBehaviour
         }
     }
 
+    public void IncreaseCharacterParticle()
+    {
+        // increase current character by 1 - set to 0 iff at max
+        int nextCharacter = (int)currentParticleCharacter;
+        nextCharacter++;
+
+        if (nextCharacter > 14)
+        {
+            nextCharacter = 0;
+        }
+        currentParticleCharacter = (TalkieCharacter)nextCharacter;
+    }
+
+    public void DecreaseCharacterParticle()
+    {
+        // decrease current character by 1 - set to 14 iff < 0
+        int nextCharacter = (int)currentParticleCharacter;
+        nextCharacter--;
+
+        if (nextCharacter < 0)
+        {
+            nextCharacter = 14;
+        }
+        currentParticleCharacter = (TalkieCharacter)nextCharacter;
+    }
+
     public void SetActiveParticles(TalkieCharacter character)
     {
-        if (character == TalkieCharacter.Red)
-        {
-            particleType = ParticleType.Red_feather;
-        }
-        else if(character == TalkieCharacter.Darwin)
-        {
-            particleType = ParticleType.Darwin_crate;
-        }
-        else if(character == TalkieCharacter.Wally)
-        {
-            particleType = ParticleType.Wally_stars;
-        }
-        else if(character == TalkieCharacter.Marcus || character == TalkieCharacter.Brutus)
-        {
-            particleType = ParticleType.Monkey_bananas;
-        }
-        else if(character == TalkieCharacter.Julius)
-        {
-            particleType = ParticleType.Julius_swirls;
-        }
-        else if(character == TalkieCharacter.Lester)
-        {
-            particleType = ParticleType.Lester_sand;
-        }
-        else if(character == TalkieCharacter.Clogg)
-        {
-            particleType = ParticleType.Clogg_swirls;
-        }
-        else if(character == TalkieCharacter.Spindle)
-        {
-            particleType = ParticleType.Spindle_bugs;
-        }
-        else if(character == TalkieCharacter.Ollie)
-        {
-            particleType = ParticleType.Ollie_feathers;
-        }
-        else if(character == TalkieCharacter.Celeste)
-        {
-            particleType = ParticleType.Celeste_sand;
-        }
-        else if(character == TalkieCharacter.Sylvie)
-        {
-            particleType = ParticleType.Sylvie_sand;
-        }
-        else if(character == TalkieCharacter.Taxi)
-        {
-            particleType = ParticleType.Taxi_feathers;
-        }
+        currentParticleCharacter = character;
     }
 }

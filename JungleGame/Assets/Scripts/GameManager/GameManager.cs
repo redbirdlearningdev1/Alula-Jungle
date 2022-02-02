@@ -58,6 +58,10 @@ public class GameManager : DontDestroy<GameManager>
     [HideInInspector] public bool playingChallengeGame = false; // is player in a challenge game?
     [HideInInspector] public bool playingRoyalRumbleGame = false; // is player in a RR game?
 
+    
+    [Header("Avatars")]
+    public List<Sprite> avatars;
+
     void Start()
     {
         // set game resolution

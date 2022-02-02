@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum SettingsTab
 {
-    none, audio, game, exit
+    none, audio, game, exit, map
 }
 
 public class SettingsWindowController : MonoBehaviour
@@ -14,10 +14,12 @@ public class SettingsWindowController : MonoBehaviour
     public LerpableObject audioWindow;
     public LerpableObject gameWindow;
     public LerpableObject exitWindow;
+    public LerpableObject mapWindow;
 
     public LerpableObject audioTab;
     public LerpableObject gameTab;
     public LerpableObject exitTab;
+    public LerpableObject mapTab;
 
     private SettingsTab currentTab;
 
@@ -34,10 +36,12 @@ public class SettingsWindowController : MonoBehaviour
         audioWindow.transform.localScale = new Vector3(0f, 0f, 0f);
         gameWindow.transform.localScale = new Vector3(0f, 0f, 1f);
         exitWindow.transform.localScale = new Vector3(0f, 0f, 1f);
+        mapWindow.transform.localScale = new Vector3(0f, 0f, 1f);
 
         audioTab.transform.localScale = new Vector3(0f, 0f, 0f);
         gameTab.transform.localScale = new Vector3(0f, 0f, 0f);
         exitTab.transform.localScale = new Vector3(0f, 0f, 0f);
+        mapTab.transform.localScale = new Vector3(0f, 0f, 0f);
     }
 
     public void CloseAllWindows()
@@ -97,6 +101,15 @@ public class SettingsWindowController : MonoBehaviour
         StartCoroutine(TabPressedRoutine(SettingsTab.exit));
     }
 
+    public void MapTabPressed()
+    {
+        if (currentTab == SettingsTab.map || isAnimating)
+            return;
+
+        isAnimating = true;
+        StartCoroutine(TabPressedRoutine(SettingsTab.map));
+    }
+
 
     private IEnumerator TabPressedRoutine(SettingsTab tab)
     {
@@ -130,6 +143,11 @@ public class SettingsWindowController : MonoBehaviour
                 currentTab = SettingsTab.exit;
                 exitWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.2f, 0.2f);
                 break;
+
+            case SettingsTab.map:
+                currentTab = SettingsTab.map;
+                mapWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.2f, 0.2f);
+                break;
         }
 
         yield return new WaitForSeconds(0.4f);
@@ -156,6 +174,10 @@ public class SettingsWindowController : MonoBehaviour
             case SettingsTab.exit:
                 exitWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.2f, 0.2f);
                 break;
+
+            case SettingsTab.map:
+                mapWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.2f, 0.2f);
+                break;
         }
     }
 
@@ -177,18 +199,22 @@ public class SettingsWindowController : MonoBehaviour
     private IEnumerator HideTabs()
     {
         audioTab.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.05f);
         gameTab.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.05f);
         exitTab.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+        yield return new WaitForSeconds(0.05f);
+        mapTab.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
     }
 
     private IEnumerator ShowTabs()
     {
         audioTab.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.05f);
         gameTab.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.05f);
         exitTab.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
+        yield return new WaitForSeconds(0.05f);
+        mapTab.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
     }
 }

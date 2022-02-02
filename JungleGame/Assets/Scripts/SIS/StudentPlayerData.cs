@@ -34,7 +34,7 @@ public class StudentPlayerData
     public int totalStarsSpiderweb;
     
     //public int totalStarsPotential;
-
+    public int profileAvatar;
 
     // coins
     public int goldCoins;

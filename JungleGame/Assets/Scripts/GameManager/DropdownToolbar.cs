@@ -28,13 +28,13 @@ public class DropdownToolbar : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.instance.devModeActivated)
-        {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-                ToggleToolbar(false);
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-                ToggleToolbar(true);
-        }
+        // if (GameManager.instance.devModeActivated)
+        // {
+        //     if (Input.GetKeyDown(KeyCode.UpArrow))
+        //         ToggleToolbar(false);
+        //     if (Input.GetKeyDown(KeyCode.DownArrow))
+        //         ToggleToolbar(true);
+        // }
     }
 
     public void LoadToolbarDataFromProfile()
