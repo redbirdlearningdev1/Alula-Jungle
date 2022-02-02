@@ -70,14 +70,6 @@ public class ScrollMapManager : MonoBehaviour
     public float bumpAnimationTime;
     public float bumpAmount;
 
-    [Header("Map Characters")]
-    public MapIcon boat;
-    public MapCharacter gorilla;
-    public MapCharacter tiger;
-    public MapCharacter marcus;
-    public MapCharacter brutus;
-    public MapCharacter clogg;
-
 
     void Awake()
     {
@@ -122,6 +114,7 @@ public class ScrollMapManager : MonoBehaviour
 
         // get current game event
         StoryBeat playGameEvent = StudentInfoSystem.GetCurrentProfile().currStoryBeat;
+        GameManager.instance.SendLog(this, "Current Story Beat: " + playGameEvent);
 
         /* 
         ################################################
@@ -129,7 +122,7 @@ public class ScrollMapManager : MonoBehaviour
         ################################################
         */
 
-        PlaceCharactersOnScrollMap(playGameEvent);
+        MapAnimationController.instance.PlaceCharactersOnMap(playGameEvent);
         
         /* 
         ################################################
@@ -152,273 +145,19 @@ public class ScrollMapManager : MonoBehaviour
         #   GAME EVENTS (STORY BEATS)
         ################################################
         */
+
         // check for game events
-        CheckForGameEvent(playGameEvent);
-    }
+        StartCoroutine(CheckForScrollMapGameEvents(playGameEvent));
+        // wait here while game event stuff is happening
+        while (waitingForGameEventRoutine)
+            yield return null;
 
-    private void PlaceCharactersOnScrollMap(StoryBeat playGameEvent)
-    {
-        // after prologue story game -> place boat in docked position
-        if (playGameEvent >= StoryBeat.PrologueStoryGame)
-        {
-            // dock boat in ocean + make not interactable
-            MapAnimationController.instance.boat.transform.position = MapAnimationController.instance.boatDockedPos.position;
-            boat.interactable = false;
-        }
-
-
-        if (playGameEvent == StoryBeat.InitBoatGame)
-        {   
-            
-        }
-        else if (playGameEvent == StoryBeat.UnlockGorillaVillage)
-        {
-            // place gorilla in GV
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaGVPosSTART.position;
-        }
-        else if (playGameEvent == StoryBeat.GorillaVillageIntro)
-        {
-            // place gorilla in GV
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaGVPosSTART.position;
-        }
-        else if (playGameEvent == StoryBeat.PrologueStoryGame)
-        {
-            // place gorilla in GV
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaGVPosSTART.position;
-        }
-        else if (playGameEvent == StoryBeat.RedShowsStickerButton)
-        {
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaGVPosSTART.position;
-        }
-        else if (playGameEvent == StoryBeat.VillageRebuilt)
-        {
-            // place gorilla in GV
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaGVPosSTART.position;
-        }
-        else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_1)
-        {
-            // place tiger and monkies on screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerGVChallengePos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusGVChallengePos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusGVChallengePos.position;
-        }
-        else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_2)
-        {
-            // place tiger and monkies on screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerGVChallengePos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusGVChallengePos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusGVChallengePos.position;
-
-            // make tiger sad
-            tiger.GetComponent<Animator>().Play("sTigerIdle");
-        }
-        else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_3)
-        {
-            // place tiger and monkies on screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerGVChallengePos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusGVChallengePos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusGVChallengePos.position;
-
-            // make tiger sad
-            tiger.GetComponent<Animator>().Play("sTigerIdle");
-            // make marcus sad (ANGRY) 
-            marcus.GetComponent<Animator>().Play("marcusFixed");
-        }
-        else if (playGameEvent == StoryBeat.VillageChallengeDefeated)
-        {
-            // place tiger and monkies on screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerGVChallengePos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusGVChallengePos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusGVChallengePos.position;
-
-            // make tiger sad
-            tiger.GetComponent<Animator>().Play("sTigerIdle");
-            // make marcus sad (ANGRY) 
-            marcus.GetComponent<Animator>().Play("marcusFixed");
-            // make brutus sad
-            brutus.GetComponent<Animator>().Play("brutusFixed");
-        }
-        else if (playGameEvent == StoryBeat.MudslideUnlocked)
-        {
-            
-        }
-        else if (playGameEvent == StoryBeat.Mudslide_challengeGame_1)
-        {       
-            // place tiger and monkies on screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerMSChallengePos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusMSChallengePos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusMSChallengePos.position;
-        }
-        else if (playGameEvent == StoryBeat.Mudslide_challengeGame_2)
-        {
-            // place tiger and monkies on screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerMSChallengePos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusMSChallengePos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusMSChallengePos.position;
-
-            // make tiger sad
-            tiger.GetComponent<Animator>().Play("sTigerIdle");
-        }
-        else if (playGameEvent == StoryBeat.Mudslide_challengeGame_3)
-        {
-            // place tiger and monkies on screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerMSChallengePos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusMSChallengePos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusMSChallengePos.position;
-
-            // make tiger sad
-            tiger.GetComponent<Animator>().Play("sTigerIdle");
-            // make marcus sad (ANGRY) 
-            marcus.GetComponent<Animator>().Play("marcusFixed");
-        }
-        else if (playGameEvent == StoryBeat.MudslideDefeated)
-        {
-            // place tiger and monkies on screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerMSChallengePos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusMSChallengePos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusMSChallengePos.position;
-
-            // make tiger sad
-            tiger.GetComponent<Animator>().Play("sTigerIdle");
-            // make marcus sad (ANGRY) 
-            marcus.GetComponent<Animator>().Play("marcusFixed");
-            // make brutus sad
-            brutus.GetComponent<Animator>().Play("brutusFixed");
-
-        }
-        else if (playGameEvent == StoryBeat.OrcVillageMeetClogg) // default
-        {
-            // place clogg in village
-            clogg.transform.position = MapAnimationController.instance.cloggOVPosDEFAULT.position;
-        }
-        else if (playGameEvent == StoryBeat.OrcVillageUnlocked)
-        {
-            // place clogg in village
-            clogg.transform.position = MapAnimationController.instance.cloggOVPosDEFAULT.position;
-        }
-        else if (playGameEvent == StoryBeat.OrcVillage_challengeGame_1)
-        {
-            // place tiger and monkies on screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerOVChallengePos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusOVChallengePos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusOVChallengePos.position;
-        }
-        else if (playGameEvent == StoryBeat.OrcVillage_challengeGame_2)
-        {
-            // place tiger and monkies on screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerOVChallengePos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusOVChallengePos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusOVChallengePos.position;
-
-            // make tiger sad
-            tiger.GetComponent<Animator>().Play("sTigerIdle");
-        }
-        else if (playGameEvent == StoryBeat.OrcVillage_challengeGame_3)
-        {
-            // place tiger and monkies on screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerOVChallengePos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusOVChallengePos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusOVChallengePos.position;
-
-            // make tiger sad
-            tiger.GetComponent<Animator>().Play("sTigerIdle");
-            // make marcus sad (ANGRY) 
-            marcus.GetComponent<Animator>().Play("marcusFixed");
-        }
-        else if (playGameEvent == StoryBeat.OrcVillageDefeated)
-        {
-            // place tiger and monkies on screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerOVChallengePos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusOVChallengePos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusOVChallengePos.position;
-
-            // make tiger sad
-            tiger.GetComponent<Animator>().Play("sTigerIdle");
-            // make marcus sad (ANGRY) 
-            marcus.GetComponent<Animator>().Play("marcusFixed");
-            // make brutus sad
-            brutus.GetComponent<Animator>().Play("brutusFixed");
-        }
-        else if (playGameEvent == StoryBeat.SpookyForestUnlocked)
-        {
-            // place gorilla in SF
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaSFPosDEFAULT.position;
-            gorilla.FlipCharacterToRight();
-        }
-        else if (playGameEvent == StoryBeat.BeginningStoryGame)
-        {
-            // place gorilla in SF
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaSFPosDEFAULT.position;
-            gorilla.FlipCharacterToRight();
-        }
-        else if (playGameEvent == StoryBeat.SpookyForestPlayGames)
-        {
-            // place gorilla in SF
-            MapAnimationController.instance.gorilla.transform.position = MapAnimationController.instance.gorillaSFPosDEFAULT.position;
-            gorilla.FlipCharacterToRight();
-        }
-        else if (playGameEvent == StoryBeat.SpookyForest_challengeGame_1)
-        {
-            // place tiger and monkies on screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerSFChallengePos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusSFChallengePos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusSFChallengePos.position;
-        }
-        else if (playGameEvent == StoryBeat.SpookyForest_challengeGame_2)
-        {
-            // place tiger and monkies on screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerSFChallengePos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusSFChallengePos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusSFChallengePos.position;
-
-            // make tiger sad
-            tiger.GetComponent<Animator>().Play("sTigerIdle");
-        }
-        else if (playGameEvent == StoryBeat.SpookyForest_challengeGame_3)
-        {
-            // place tiger and monkies on screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerSFChallengePos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusSFChallengePos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusSFChallengePos.position;
-
-            // make tiger sad
-            tiger.GetComponent<Animator>().Play("sTigerIdle");
-            // make marcus sad (ANGRY) 
-            marcus.GetComponent<Animator>().Play("marcusFixed");
-        }
-        else if (playGameEvent == StoryBeat.SpookyForestDefeated)
-        {
-            // place tiger and monkies on screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.tigerSFChallengePos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.marcusSFChallengePos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.brutusSFChallengePos.position;
-
-            // make tiger sad
-            tiger.GetComponent<Animator>().Play("sTigerIdle");
-            // make marcus sad (ANGRY) 
-            marcus.GetComponent<Animator>().Play("marcusFixed");
-            // make brutus sad
-            brutus.GetComponent<Animator>().Play("brutusFixed");
-        }
-        else if (playGameEvent == StoryBeat.OrcCampUnlocked)
-        {
-            // place clogg in camp
-            clogg.transform.position = MapAnimationController.instance.cloggOCPosDEFAULT1.position;
-        }
-        else if (playGameEvent == StoryBeat.OrcCampPlayGames)
-        {
-            // place clogg in camp
-            clogg.transform.position = MapAnimationController.instance.cloggOCPosDEFAULT1.position;
-        }
-        else if (playGameEvent == StoryBeat.COUNT) // default
-        {
-            // unlock everything
-            
-        }
-    }
-
-    private IEnumerator AfterGameEventStuff()
-    {
+        /* 
+        ################################################
+        #   GAME EVENTS (AFTER STORY BEAT)
+        ################################################
+        */
+        
         // show UI
         if (activateMapNavigation)
             ToggleNavButtons(true);
@@ -443,127 +182,57 @@ public class ScrollMapManager : MonoBehaviour
         MapDataLoader.instance.SetRoyalRumbleBanner();
     }
 
-    public void CheckForGameEvent(StoryBeat gameEvent)
-    {
-        StartCoroutine(CheckForGameEventRoutine(gameEvent));
-    }   
-    private IEnumerator CheckForGameEventRoutine(StoryBeat gameEvent)
-    {
-        GameManager.instance.SendLog(this, "Current Story Beat: " + gameEvent);
-
-        StartCoroutine(CheckForScrollMapGameEvents(gameEvent));
-        // wait here while game event stuff is happening
-        while (waitingForGameEventRoutine)
-            yield return null;
-
-        StartCoroutine(AfterGameEventStuff());
-    }
-
     private IEnumerator CheckForScrollMapGameEvents(StoryBeat playGameEvent)
     {
+        // game event in progress
         waitingForGameEventRoutine = true;
+
+        // default bool values
+        activateMapNavigation = true;
+        revealGMUI = true;
+
+        // enable map sections up to current section
+        EnableMapSectionsUpTo(mapLocations[currMapLocation].location);
 
         if (playGameEvent == StoryBeat.InitBoatGame)
         {   
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.Ocean);
-
-            // scroll map bools
+            // change scroll map bools
             activateMapNavigation = false;
             revealGMUI = false;
             minMapLimit = 0;
 
-            // intro boat animation
-            MapAnimationController.instance.BoatOceanIntro();
+            // play boat ocean intro animation
+            MapAnimationController.instance.PlayMapAnim(MapAnim.BoatIntro);
             // wait for animation to be done
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
-
-            // wiggle boat
-            boat.interactable = true;
-            boat.GetComponent<WiggleController>().StartWiggle();
         }
         else if (playGameEvent == StoryBeat.UnlockGorillaVillage)
         {
-            // map pos
-            SetMapPosition(1);
-            SetMapLimit(1);
-            EnableMapSectionsUpTo(MapLocation.BoatHouse);
-
-            // scroll map bools
+            // change scroll map bools
             activateMapNavigation = false;
             revealGMUI = true;    
 
             // bring boat into dock
-            MapAnimationController.instance.DockBoat();
+            MapAnimationController.instance.PlayMapAnim(MapAnim.RevealGorillaVillage);
             // wait for animation to be done
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
-
-            yield return new WaitForSeconds(1f);
-
-            // play dock 1 talkie + wait for talkie to finish
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.dock_1);
-            while (TalkieManager.instance.talkiePlaying)
-                yield return null;
-
-            // place gorilla in GV
-            gorilla.ShowExclamationMark(true);
-
-            // unlock gorilla village
-            StartCoroutine(UnlockMapArea(2, true));
-            yield return new WaitForSeconds(10f);
-
-            // play dock 2 talkie + wait for talkie to finish
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.dock_2);
-            while (TalkieManager.instance.talkiePlaying)
-                yield return null;
-
-            // advance story beat
-            StudentInfoSystem.GetCurrentProfile().mapLimit = 2;
-            StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_1; // new chapter!
-            StudentInfoSystem.AdvanceStoryBeat();
-            StudentInfoSystem.SaveStudentPlayerData();
-
-            yield return new WaitForSeconds(1f);
-
-            gorilla.interactable = true;
         }
         else if (playGameEvent == StoryBeat.GorillaVillageIntro)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.BoatHouse);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
             // make gorilla interactable
             gorilla.ShowExclamationMark(true);
             gorilla.interactable = true;
         }
         else if (playGameEvent == StoryBeat.PrologueStoryGame)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
             // make gorilla interactable
             gorilla.ShowExclamationMark(true);
             gorilla.interactable = true;
         }
         else if (playGameEvent == StoryBeat.RedShowsStickerButton)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
             // make gorilla interactable
             gorilla.interactable = true;
 
@@ -589,13 +258,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.VillageRebuilt)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
             // make sure player has done the sticker tutorial
             if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
             {
@@ -679,13 +341,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_1)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType == GameType.None)
             {
@@ -728,13 +383,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_2)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
             // set marcus stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType == GameType.None)
             {
@@ -798,13 +446,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_3)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType == GameType.None)
             {
@@ -863,15 +504,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.VillageChallengeDefeated)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.GorillaVillage);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
-            yield return new WaitForSeconds(1f);
-
             // play village challenge 1
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageChallengeDefeated_1);
             while (TalkieManager.instance.talkiePlaying)
@@ -953,13 +585,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.MudslideUnlocked)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.Mudslide);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
             // make sure player has rebuilt all the MS map icons
             if (StudentInfoSystem.GetCurrentProfile().mapData.MS_logs.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.MS_pond.isFixed &&
@@ -1008,13 +633,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.Mudslide_challengeGame_1)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.Mudslide);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType == GameType.None)
             {
@@ -1053,13 +671,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.Mudslide_challengeGame_2)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.Mudslide);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-            
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType == GameType.None)
             {
@@ -1118,13 +729,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.Mudslide_challengeGame_3)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.Mudslide);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-            
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType == GameType.None)
             {
@@ -1185,10 +789,6 @@ public class ScrollMapManager : MonoBehaviour
         {
             // map pos
             EnableMapSectionsUpTo(MapLocation.Mudslide);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
     
             // play mudslide defeated 1
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.mudslideChallengeDefeated_1);
@@ -1265,26 +865,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.OrcVillageMeetClogg) // default
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.Mudslide);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
             // make clogg interactable
             clogg.interactable = true;
             clogg.ShowExclamationMark(true);
         }
         else if (playGameEvent == StoryBeat.OrcVillageUnlocked)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.OrcVillage);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
             // make sure player has rebuilt all the OV map icons
             if (StudentInfoSystem.GetCurrentProfile().mapData.OV_houseL.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.OV_houseS.isFixed &&
@@ -1341,13 +927,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.OrcVillage_challengeGame_1)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.OrcVillage);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType == GameType.None)
             {
@@ -1388,13 +967,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.OrcVillage_challengeGame_2)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.OrcVillage);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-            
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType == GameType.None)
             {
@@ -1453,13 +1025,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.OrcVillage_challengeGame_3)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.OrcVillage);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-            
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType == GameType.None)
             {
@@ -1518,13 +1083,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.OrcVillageDefeated)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.OrcVillage);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
             // play orc village defeated 1
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcVillageChallengeDefeated_1);
             while (TalkieManager.instance.talkiePlaying)
@@ -1583,39 +1141,18 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.SpookyForestUnlocked)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.OrcVillage);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
             // darwin interactable
             gorilla.ShowExclamationMark(true);
             gorilla.interactable = true;
         }
         else if (playGameEvent == StoryBeat.BeginningStoryGame)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.OrcVillage);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
             // darwin interactable
             gorilla.ShowExclamationMark(true);
             gorilla.interactable = true;
         }
         else if (playGameEvent == StoryBeat.SpookyForestPlayGames)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.SpookyForest);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
             // make sure player has rebuilt all the OV map icons
             if (StudentInfoSystem.GetCurrentProfile().mapData.SF_lamp.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.SF_shrine.isFixed &&
@@ -1675,13 +1212,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.SpookyForest_challengeGame_1)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.SpookyForest);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType == GameType.None)
             {
@@ -1722,13 +1252,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.SpookyForest_challengeGame_2)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.SpookyForest);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-            
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType == GameType.None)
             {
@@ -1787,13 +1310,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.SpookyForest_challengeGame_3)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.SpookyForest);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-            
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType == GameType.None)
             {
@@ -1852,13 +1368,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.SpookyForestDefeated)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.SpookyForest);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
             // play spooky forest defeated 1
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spookyForestChallengeDefeated_1);
             while (TalkieManager.instance.talkiePlaying)
@@ -1918,26 +1427,12 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.OrcCampUnlocked)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.SpookyForest);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
             // clogg is interactable
             clogg.ShowExclamationMark(true);
             clogg.interactable = true;
         }
         else if (playGameEvent == StoryBeat.OrcCampPlayGames)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.OrcCamp);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
-
             // clogg is interactable
             clogg.interactable = true;
         }
@@ -1945,12 +1440,9 @@ public class ScrollMapManager : MonoBehaviour
         {
             // unlock everything
             EnableMapSectionsUpTo(MapLocation.PalaceIntro);
-
-            // scroll map bools
-            activateMapNavigation = true;
-            revealGMUI = true;
         }
 
+        // game event is over
         waitingForGameEventRoutine = false;
     }
 

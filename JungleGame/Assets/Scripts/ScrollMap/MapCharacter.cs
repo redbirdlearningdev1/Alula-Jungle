@@ -11,6 +11,7 @@ public enum Character
 public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     public bool interactable = true;
+    public Animator animator;
     [SerializeField] private GameObject exclamationMark;
     public Character character;
 
@@ -125,14 +126,14 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 yield return null;
 
             // tiger and monkies walk in
-            MapAnimationController.instance.TigerAndMonkiesWalkInGV();
+            ///MapAnimationController.instance.TigerAndMonkiesWalkInGV();
             // wait for animation to be done
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
 
             yield return new WaitForSeconds(1f);
 
-            MapAnimationController.instance.TigerDestroyVillage();
+            ///MapAnimationController.instance.TigerDestroyVillage();
             // wait for animation to be done
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
@@ -148,7 +149,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             yield return new WaitForSeconds(1f);
 
             // tiger runs off screen
-            MapAnimationController.instance.TigerRunAwayGV();
+            ///MapAnimationController.instance.TigerRunAwayGV();
             // wait for animation to be done
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
@@ -156,7 +157,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             yield return new WaitForSeconds(1f);
 
             // monkies go hehe and haha then run off too
-            MapAnimationController.instance.MonkeyExitAnimationGV();
+            ///MapAnimationController.instance.MonkeyExitAnimationGV();
             // wait for animation to be done
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
@@ -241,7 +242,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                     yield return null;
 
                 // tiger and monkies walk in
-                MapAnimationController.instance.TigerAndMonkiesWalkInSF();
+                ///MapAnimationController.instance.TigerAndMonkiesWalkInSF();
                 // wait for animation to be done
                 while (!MapAnimationController.instance.animationDone)
                     yield return null;
@@ -252,7 +253,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                     yield return null;
 
                 // tiger destroy forest
-                MapAnimationController.instance.TigerDestroyForest();
+                ///MapAnimationController.instance.TigerDestroyForest();
                 // wait for animation to be done
                 while (!MapAnimationController.instance.animationDone)
                     yield return null;
@@ -263,7 +264,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                     yield return null;
 
                 // tiger run away
-                MapAnimationController.instance.TigerRunAwayDefeatedSF();
+                ///MapAnimationController.instance.TigerRunAwayDefeatedSF();
                 // wait for animation to be done
                 while (!MapAnimationController.instance.animationDone)
                     yield return null;
@@ -274,7 +275,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                     yield return null;
 
                 // tiger run away
-                MapAnimationController.instance.MonkeyExitAnimationSF();
+                ///MapAnimationController.instance.MonkeyExitAnimationSF();
                 // wait for animation to be done
                 while (!MapAnimationController.instance.animationDone)
                     yield return null;
