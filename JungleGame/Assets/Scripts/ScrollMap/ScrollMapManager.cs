@@ -49,7 +49,6 @@ public class ScrollMapManager : MonoBehaviour
 
     [Header("Map Navigation")]
     [SerializeField] private RectTransform Map; // full map
-    [SerializeField] private List<float> fogLocations; // the positions where the fog is placed
     [SerializeField] private Button leftButton;
     [SerializeField] private Button rightButton;
 
@@ -2168,7 +2167,7 @@ public class ScrollMapManager : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
 
         // move fog out of the way
-        FogController.instance.MoveFogAnimation(fogLocations[mapIndex], 3f);
+        FogController.instance.MoveFogAnimation(mapLocations[mapIndex].fogLocation, 3f);
 
         switch (mapIndex)
         {
@@ -2412,7 +2411,7 @@ public class ScrollMapManager : MonoBehaviour
         // print ("index: " + index);
         if (index >= 0 && index < mapLocations.Count)
         {
-            //FogController.instance.mapXpos = fogLocations[index];
+            FogController.instance.mapXpos = mapLocations[index].fogLocation;
             mapLimit = index;
         }
     }

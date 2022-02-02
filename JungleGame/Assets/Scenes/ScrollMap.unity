@@ -8058,13 +8058,13 @@ MonoBehaviour:
   - location: 0
     mapIcons: []
     cameraLocation: {fileID: 1903586732}
-    fogLocation: 0
+    fogLocation: 1500
     signPost: {fileID: 0}
     enabled: 0
   - location: 1
     mapIcons: []
     cameraLocation: {fileID: 2079528892}
-    fogLocation: 0
+    fogLocation: 3600
     signPost: {fileID: 0}
     enabled: 0
   - location: 2
@@ -8074,7 +8074,7 @@ MonoBehaviour:
     - {fileID: 824763108}
     - {fileID: 221261998}
     cameraLocation: {fileID: 1829915623}
-    fogLocation: 0
+    fogLocation: 5435
     signPost: {fileID: 747270723}
     enabled: 0
   - location: 3
@@ -8084,7 +8084,7 @@ MonoBehaviour:
     - {fileID: 312371131}
     - {fileID: 1309855722}
     cameraLocation: {fileID: 1407774209}
-    fogLocation: 0
+    fogLocation: 7350
     signPost: {fileID: 937231944}
     enabled: 0
   - location: 4
@@ -8094,7 +8094,7 @@ MonoBehaviour:
     - {fileID: 296037978}
     - {fileID: 684544322}
     cameraLocation: {fileID: 1210945966}
-    fogLocation: 0
+    fogLocation: 9140
     signPost: {fileID: 1340074154}
     enabled: 0
   - location: 5
@@ -8104,7 +8104,7 @@ MonoBehaviour:
     - {fileID: 809214397}
     - {fileID: 2118754808}
     cameraLocation: {fileID: 2115941686}
-    fogLocation: 0
+    fogLocation: 11220
     signPost: {fileID: 1457972856}
     enabled: 0
   - location: 6
@@ -8114,7 +8114,7 @@ MonoBehaviour:
     - {fileID: 1855925112}
     - {fileID: 683579830}
     cameraLocation: {fileID: 699376488}
-    fogLocation: 0
+    fogLocation: 13546
     signPost: {fileID: 548010504}
     enabled: 0
   - location: 7
@@ -8124,7 +8124,7 @@ MonoBehaviour:
     - {fileID: 204643613}
     - {fileID: 1740584663}
     cameraLocation: {fileID: 647168016}
-    fogLocation: 0
+    fogLocation: 15410
     signPost: {fileID: 530361208}
     enabled: 0
   - location: 8
@@ -8136,7 +8136,7 @@ MonoBehaviour:
     - {fileID: 1872685023}
     - {fileID: 1019196454}
     cameraLocation: {fileID: 238639742}
-    fogLocation: 0
+    fogLocation: 17180
     signPost: {fileID: 726695185}
     enabled: 0
   - location: 9
@@ -8148,7 +8148,7 @@ MonoBehaviour:
     - {fileID: 1470291003}
     - {fileID: 263751464}
     cameraLocation: {fileID: 1624012992}
-    fogLocation: 0
+    fogLocation: 18585
     signPost: {fileID: 1055058709}
     enabled: 0
   - location: 10
@@ -8160,7 +8160,7 @@ MonoBehaviour:
     - {fileID: 1288898422}
     - {fileID: 650362898}
     cameraLocation: {fileID: 1701707078}
-    fogLocation: 0
+    fogLocation: 20275
     signPost: {fileID: 1474901317}
     enabled: 0
   - location: 11
@@ -8169,7 +8169,7 @@ MonoBehaviour:
     - {fileID: 984383726}
     - {fileID: 1726208158}
     cameraLocation: {fileID: 1332952281}
-    fogLocation: 0
+    fogLocation: 23090
     signPost: {fileID: 0}
     enabled: 0
   - location: 12
@@ -8178,7 +8178,7 @@ MonoBehaviour:
     - {fileID: 980948525}
     - {fileID: 725235736}
     cameraLocation: {fileID: 835809009}
-    fogLocation: 0
+    fogLocation: 23090
     signPost: {fileID: 107234813}
     enabled: 0
   - location: 13
@@ -8188,7 +8188,7 @@ MonoBehaviour:
     - {fileID: 702598808}
     - {fileID: 519318764}
     cameraLocation: {fileID: 1618587945}
-    fogLocation: 0
+    fogLocation: 24837
     signPost: {fileID: 1268336110}
     enabled: 0
   - location: 14
@@ -8198,7 +8198,7 @@ MonoBehaviour:
     - {fileID: 208275159}
     - {fileID: 1429079211}
     cameraLocation: {fileID: 1780217764}
-    fogLocation: 0
+    fogLocation: 26337
     signPost: {fileID: 1394279707}
     enabled: 0
   - location: 15
@@ -8208,13 +8208,13 @@ MonoBehaviour:
     - {fileID: 200983239}
     - {fileID: 1495141476}
     cameraLocation: {fileID: 1652802454}
-    fogLocation: 0
+    fogLocation: 28166
     signPost: {fileID: 1378487155}
     enabled: 0
   - location: 16
     mapIcons: []
     cameraLocation: {fileID: 312490858}
-    fogLocation: 0
+    fogLocation: 30000
     signPost: {fileID: 0}
     enabled: 0
   staticMapYPos: -600
@@ -22304,7 +22304,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 77.16798
+      value: 77.62838
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
