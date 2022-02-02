@@ -104,6 +104,27 @@ public static class LoadSaveSystem
         new_data.active = false;
         new_data.mostRecentProfile = false;
         new_data.minigamesPlayed = 0;
+
+        new_data.lastGamePlayed = GameType.None;
+        new_data.gameBeforeLastPlayed = GameType.None;
+
+        new_data.starsLastGamePlayed = 0;
+        new_data.starsGameBeforeLastPlayed = 0;
+
+        new_data.starsFrogger = 0;
+        new_data.starsSeashell = 0;
+        new_data.starsRummage = 0;
+        new_data.starsTurntables = 0;
+        new_data.starsPirate = 0;
+        new_data.starsSpiderweb = 0;
+
+        new_data.totalStarsFrogger = 0;
+        new_data.totalStarsSeashell = 0;
+        new_data.totalStarsRummage = 0;
+        new_data.totalStarsTurntables = 0;
+        new_data.totalStarsPirate = 0;
+        new_data.totalStarsSpiderweb = 0;
+        
         new_data.profileAvatar = 11;
 
         // coins

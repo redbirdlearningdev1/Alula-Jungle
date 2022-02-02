@@ -267,6 +267,12 @@ public static class ChallengeWordDatabase
                 list.Add(word);
         }
 
+        // if list is empty (only during dev testing) -> add all challenge words
+        if (list.Count == 0)
+        {
+            list.AddRange(globalChallengeWordList);
+        }
+
         return list;
     }
 

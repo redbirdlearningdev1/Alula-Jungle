@@ -23,7 +23,8 @@ public class NewPasswordGameManager : MonoBehaviour
     public List<Transform> coinTubePositions;
 
     [Header("Polaroid Positions")]
-    public Transform polaroidOffScreenPos;
+    public Transform polaroidOffScreenTigerPos;
+    public Transform polaroidOffScreenPlayerPos;
     public Transform polaroidOnScreenPos;
 
     [Header("Character Positions")]
@@ -127,7 +128,7 @@ public class NewPasswordGameManager : MonoBehaviour
             coin.transform.position = coinOffScreenPos.position;
             
         // place polaroid off-screen
-        polaroid.transform.position = polaroidOffScreenPos.position;
+        polaroid.transform.position = polaroidOffScreenTigerPos.position;
 
         // select challenge word + reset polaroid
         if (playTutorial)
@@ -337,11 +338,6 @@ public class NewPasswordGameManager : MonoBehaviour
         // small delay
         yield return new WaitForSeconds(1f);
 
-        // get current coins (not in tube)
-        List<Transform> extraCoins = new List<Transform>();
-        foreach (Transform t in coinParent)
-            extraCoins.Add(t);
-
         bool winGame = false;
 
         // determine if correct num of coins
@@ -351,6 +347,18 @@ public class NewPasswordGameManager : MonoBehaviour
 
             // play right audio
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
+            yield return new WaitForSeconds(1f);
+
+            // turn empty coins into polaroid coins
+            PasswordTube.instance.ShowPolaroidCoins(currentWord, coins, true);
+            while (PasswordTube.instance.playingAnimation)
+                yield return null;
+
+            yield return new WaitForSeconds(1f);
+
+            // move polaroid to player off-screen pos
+            polaroid.GetComponent<LerpableObject>().LerpPosToTransform(polaroidOffScreenPlayerPos, 0.2f, false);
+            yield return new WaitForSeconds(0.5f);
 
             // unlock lock
             PasswordLock.instance.Unlock();
@@ -364,6 +372,15 @@ public class NewPasswordGameManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
             
             // remove extra coins
+            // create list of non tube coins
+            List<UniversalCoinImage> extraCoins = new List<UniversalCoinImage>();
+            extraCoins.AddRange(coins);
+
+            // remove tube coins
+            foreach (var tubeCoin in PasswordTube.instance.tubeCoins)
+            {
+                extraCoins.Remove(tubeCoin);
+            }
             RemoveExtraCoins(extraCoins);
 
             // determine if win
@@ -451,6 +468,7 @@ public class NewPasswordGameManager : MonoBehaviour
 
             // play wrong audio
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
+            yield return new WaitForSeconds(1f);
 
             if (playTutorial)
             {
@@ -465,6 +483,17 @@ public class NewPasswordGameManager : MonoBehaviour
                 yield break;
             }
 
+            // turn empty coins into polaroid coins
+            PasswordTube.instance.ShowPolaroidCoins(currentWord, coins, false);
+            while (PasswordTube.instance.playingAnimation)
+                yield return null;
+
+            yield return new WaitForSeconds(1f);
+
+            // move polaroid to tiger off-screen pos
+            polaroid.GetComponent<LerpableObject>().LerpPosToTransform(polaroidOffScreenTigerPos, 0.2f, false);
+            yield return new WaitForSeconds(0.5f);
+
             PasswordLock.instance.UpgradeLock();
 
             // coin animation reset
@@ -473,6 +502,15 @@ public class NewPasswordGameManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
 
             // remove extra coins
+            // create list of non tube coins
+            List<UniversalCoinImage> extraCoins = new List<UniversalCoinImage>();
+            extraCoins.AddRange(coins);
+
+            // remove tube coins
+            foreach (var tubeCoin in PasswordTube.instance.tubeCoins)
+            {
+                extraCoins.Remove(tubeCoin);
+            }
             RemoveExtraCoins(extraCoins);
 
             // determine if lose
@@ -521,7 +559,7 @@ public class NewPasswordGameManager : MonoBehaviour
         StartCoroutine(NewRound(winGame));
     }
 
-    private void RemoveExtraCoins(List<Transform> extraCoins)
+    private void RemoveExtraCoins(List<UniversalCoinImage> extraCoins)
     {
         int i = 0;
         foreach (var coin in extraCoins)
@@ -529,6 +567,23 @@ public class NewPasswordGameManager : MonoBehaviour
             coin.GetComponent<LerpableObject>().LerpPosToTransform(coinDownPositions[i], 0.2f, false);
             i++;
         }
+    }
+
+    public void SayPolaroidWord()
+    {
+        // return if there is no word
+        if (currentWord == null)
+            return;
+
+        StartCoroutine(SayPolaroidWordRoutine());
+    }
+
+    private IEnumerator SayPolaroidWordRoutine()
+    {
+        polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
+        AudioManager.instance.PlayTalk(currentWord.audio);
+        yield return new WaitForSeconds(currentWord.audio.length + 1f);
+        polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
     }
 
     private IEnumerator WinRoutine()

@@ -11,6 +11,7 @@ public class StudentPlayerData
     public bool mostRecentProfile; // is this the most recently opend profile?
     public string name; // name of student
     public int minigamesPlayed;
+    
     public GameType lastGamePlayed;
     public GameType gameBeforeLastPlayed;
 
@@ -18,7 +19,6 @@ public class StudentPlayerData
     public int starsGameBeforeLastPlayed;
 
     // Track of Stars in minigames
-
     public int starsFrogger;
     public int starsSeashell;
     public int starsRummage;

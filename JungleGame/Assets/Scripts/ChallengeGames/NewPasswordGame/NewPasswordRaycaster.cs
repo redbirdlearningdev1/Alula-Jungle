@@ -69,10 +69,10 @@ public class NewPasswordRaycaster : MonoBehaviour
                     }
                     else if (result.gameObject.transform.CompareTag("Target") && !hasCoin)
                     {
-                        // remove and reset polaroid
+                        // reset polaroid position
                         selectedObject.gameObject.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
                         selectedObject.transform.SetParent(NewPasswordGameManager.instance.polaroidParent);
-                        selectedObject.GetComponent<Polaroid>().SetPolaroidAlpha(0f, 0.2f);
+                        selectedObject.gameObject.GetComponent<LerpableObject>().LerpPosToTransform(NewPasswordGameManager.instance.polaroidOnScreenPos, 0.2f, false);
                         hitTarget = true;
                         selectedObject = null;
 
