@@ -109,7 +109,8 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
         // determine map area + get sis data
         switch (ScrollMapManager.instance.GetCurrentMapLocation())
         {
-            case MapLocation.NONE:
+            case MapLocation.Ocean:
+            case MapLocation.BoatHouse:
                 GameManager.instance.SendError(this, "Somehow you managed to get challenge games in an invalid area???");
                 break;
 

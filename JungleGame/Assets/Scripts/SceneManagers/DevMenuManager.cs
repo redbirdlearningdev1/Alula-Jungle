@@ -437,8 +437,8 @@ public class DevMenuManager : MonoBehaviour
             case StoryBeat.InitBoatGame:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 0;
                 FixIconsUpTo(MapLocation.GorillaVillage);
-                SetChallengeGamesUpTo(MapLocation.NONE);
-                SetActionWordPool(MapLocation.NONE);
+                SetChallengeGamesUpTo(MapLocation.Ocean);
+                SetActionWordPool(MapLocation.Ocean);
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = false;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = false;
@@ -454,8 +454,8 @@ public class DevMenuManager : MonoBehaviour
             case StoryBeat.UnlockGorillaVillage:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 1;
                 FixIconsUpTo(MapLocation.GorillaVillage);
-                SetChallengeGamesUpTo(MapLocation.NONE);
-                SetActionWordPool(MapLocation.NONE);
+                SetChallengeGamesUpTo(MapLocation.BoatHouse);
+                SetActionWordPool(MapLocation.BoatHouse);
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = false;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = false;
@@ -465,8 +465,8 @@ public class DevMenuManager : MonoBehaviour
             case StoryBeat.GorillaVillageIntro:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 2;
                 FixIconsUpTo(MapLocation.GorillaVillage);
-                SetChallengeGamesUpTo(MapLocation.NONE);
-                SetActionWordPool(MapLocation.NONE);
+                SetChallengeGamesUpTo(MapLocation.BoatHouse);
+                SetActionWordPool(MapLocation.BoatHouse);
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = false;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = false;
@@ -475,8 +475,8 @@ public class DevMenuManager : MonoBehaviour
 
             case StoryBeat.PrologueStoryGame:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 2;
-                FixIconsUpTo(MapLocation.NONE);
-                SetChallengeGamesUpTo(MapLocation.NONE);
+                FixIconsUpTo(MapLocation.BoatHouse);
+                SetChallengeGamesUpTo(MapLocation.BoatHouse);
                 SetActionWordPool(MapLocation.GorillaVillage);
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = false;
@@ -486,8 +486,8 @@ public class DevMenuManager : MonoBehaviour
 
             case StoryBeat.RedShowsStickerButton:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 2;
-                FixIconsUpTo(MapLocation.NONE);
-                SetChallengeGamesUpTo(MapLocation.NONE);
+                FixIconsUpTo(MapLocation.BoatHouse);
+                SetChallengeGamesUpTo(MapLocation.BoatHouse);
                 SetActionWordPool(MapLocation.GorillaVillage);
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = false;
@@ -499,7 +499,7 @@ public class DevMenuManager : MonoBehaviour
             case StoryBeat.VillageRebuilt:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 2;
                 FixIconsUpTo(MapLocation.GorillaVillage);
-                SetChallengeGamesUpTo(MapLocation.NONE);
+                SetChallengeGamesUpTo(MapLocation.BoatHouse);
                 SetActionWordPool(MapLocation.GorillaVillage);
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
@@ -510,7 +510,7 @@ public class DevMenuManager : MonoBehaviour
             case StoryBeat.GorillaVillage_challengeGame_1:  
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 2;
                 FixIconsUpTo(MapLocation.GorillaVillage);
-                SetChallengeGamesUpTo(MapLocation.NONE);
+                SetChallengeGamesUpTo(MapLocation.BoatHouse);
                 SetActionWordPool(MapLocation.GorillaVillage);
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
@@ -521,7 +521,7 @@ public class DevMenuManager : MonoBehaviour
             case StoryBeat.GorillaVillage_challengeGame_2:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 2;
                 FixIconsUpTo(MapLocation.GorillaVillage);
-                SetChallengeGamesUpTo(MapLocation.NONE);
+                SetChallengeGamesUpTo(MapLocation.BoatHouse);
                 SetChallengeGame(MapLocation.GorillaVillage, 1);
                 SetActionWordPool(MapLocation.GorillaVillage);
 
@@ -533,7 +533,7 @@ public class DevMenuManager : MonoBehaviour
             case StoryBeat.GorillaVillage_challengeGame_3:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 2;
                 FixIconsUpTo(MapLocation.GorillaVillage);
-                SetChallengeGamesUpTo(MapLocation.NONE);
+                SetChallengeGamesUpTo(MapLocation.BoatHouse);
                 SetChallengeGame(MapLocation.GorillaVillage, 2);
                 SetActionWordPool(MapLocation.GorillaVillage);
 
@@ -573,7 +573,7 @@ public class DevMenuManager : MonoBehaviour
             case StoryBeat.Mudslide_challengeGame_1:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = 3;
                 FixIconsUpTo(MapLocation.Mudslide);
-                SetChallengeGamesUpTo(MapLocation.NONE);
+                SetChallengeGamesUpTo(MapLocation.GorillaVillage);
                 SetActionWordPool(MapLocation.Mudslide);
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
@@ -889,7 +889,8 @@ public class DevMenuManager : MonoBehaviour
     {
         switch (location)
         {
-            case MapLocation.NONE:
+            case MapLocation.Ocean:
+            case MapLocation.BoatHouse:
                 SetMapIcons(MapLocation.GorillaVillage, false);
                 SetMapIcons(MapLocation.Mudslide, false);
                 SetMapIcons(MapLocation.OrcVillage, false);
@@ -1065,7 +1066,8 @@ public class DevMenuManager : MonoBehaviour
     {
         switch (location)
         {
-            case MapLocation.NONE:
+            case MapLocation.Ocean:
+            case MapLocation.BoatHouse:
                 SetChallengeGame(MapLocation.GorillaVillage, 0);
                 SetChallengeGame(MapLocation.Mudslide, 0);
                 SetChallengeGame(MapLocation.OrcVillage, 0);

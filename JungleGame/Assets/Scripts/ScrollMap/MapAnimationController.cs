@@ -225,7 +225,7 @@ public class MapAnimationController : MonoBehaviour
         // shake screen
         ScrollMapManager.instance.ShakeMap();
         // destroy GV objects one by one
-        foreach(var icon in ScrollMapManager.instance.mapIconsAtLocation[5].mapIcons)
+        foreach(var icon in ScrollMapManager.instance.mapLocations[5].mapIcons)
         {
             icon.SetFixed(false, true, false);
             yield return new WaitForSeconds(0.1f);
@@ -821,7 +821,7 @@ public class MapAnimationController : MonoBehaviour
         // shake screen
         ScrollMapManager.instance.ShakeMap();
         // destroy GV objects one by one
-        foreach(var icon in ScrollMapManager.instance.mapIconsAtLocation[2].mapIcons)
+        foreach(var icon in ScrollMapManager.instance.mapLocations[2].mapIcons)
         {
             icon.SetFixed(false, true, false);
             yield return new WaitForSeconds(0.1f);
