@@ -287,20 +287,19 @@ public class ScrollMapManager : MonoBehaviour
                 }
             }
         }
-        /*
         else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_1)
         {
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType == GameType.None)
             {
                 GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage);
-                tiger.gameType = newGameType;
+                MapAnimationController.instance.julius.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
             }
             else
             {
-                tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType;
+                MapAnimationController.instance.julius.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType;
             }
 
             // play correct lose talkies
@@ -325,10 +324,6 @@ public class ScrollMapManager : MonoBehaviour
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
             }
-
-            tiger.interactable = true;
-            tiger.ShowExclamationMark(true);
-            tiger.GetComponent<Animator>().Play("aTigerTwitch");
         }
         else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_2)
         {
@@ -337,7 +332,7 @@ public class ScrollMapManager : MonoBehaviour
             {
                 print ("you beat julius!");
                 GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage);
-                marcus.gameType = newGameType;
+                MapAnimationController.instance.marcus.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
 
@@ -358,12 +353,12 @@ public class ScrollMapManager : MonoBehaviour
                     GameManager.instance.playingChallengeGame = true;
 
                     // continue to marcus challenge game
-                    marcus.GoToGameDataSceneImmediately();
+                    MapAnimationController.instance.marcus.GoToGameDataSceneImmediately();
                 }
             }
             else
             {
-                marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType;
+                MapAnimationController.instance.marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType;
             }
 
             // play correct lose talkies
@@ -388,18 +383,15 @@ public class ScrollMapManager : MonoBehaviour
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
             }
-
-            marcus.GetComponent<Animator>().Play("marcusLose");
-            marcus.ShowExclamationMark(true);
-            marcus.interactable = true;
         }
+        
         else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_3)
         {
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType == GameType.None)
             {
                 GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage);
-                brutus.gameType = newGameType;
+                MapAnimationController.instance.brutus.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
 
@@ -420,12 +412,12 @@ public class ScrollMapManager : MonoBehaviour
                     GameManager.instance.playingChallengeGame = true;
 
                     // continue to marcus challenge game
-                    brutus.GoToGameDataSceneImmediately();
+                    MapAnimationController.instance.brutus.GoToGameDataSceneImmediately();
                 }
             }
             else
             {
-                brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType;
+                MapAnimationController.instance.brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType;
             }
 
             // play correct lose talkies
@@ -446,92 +438,16 @@ public class ScrollMapManager : MonoBehaviour
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
             }
-
-            brutus.GetComponent<Animator>().Play("brutusLose");
-            brutus.ShowExclamationMark(true);
-            brutus.interactable = true;
         }
         else if (playGameEvent == StoryBeat.VillageChallengeDefeated)
         {
-            // play village challenge 1
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageChallengeDefeated_1);
-            while (TalkieManager.instance.talkiePlaying)
-                yield return null;
-
-            // tiger runs off screen
-            MapAnimationController.instance.TigerRunAwayDefeatedGV();
+            // play village defeated animation
+            MapAnimationController.instance.PlayMapAnim(MapAnim.GorillaVillageDefeated);
             // wait for animation to be done
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
-
-            yield return new WaitForSeconds(1f);
-
-            // monkies go hehe and haha then run off too
-            MapAnimationController.instance.MonkeyExitAnimationDefeatedGV();
-            // wait for animation to be done
-            while (!MapAnimationController.instance.animationDone)
-                yield return null;
-
-            yield return new WaitForSeconds(1f);
-
-            // place tiger and monkies off screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.offscreenPos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.offscreenPos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.offscreenPos.position;
-
-            // play village challenge 2
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageChallengeDefeated_2);
-            while (TalkieManager.instance.talkiePlaying)
-                yield return null;
-
-            yield return new WaitForSeconds(1f);
-
-            // gv sign post springs into place
-            mapLocations[2].signPost.ShowSignPost(0, false);
-            // Save to SIS
-            StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_unlocked = true;
-            StudentInfoSystem.SaveStudentPlayerData();
-
-            yield return new WaitForSeconds(2f);
-
-            // // place temp copy over talkie bg
-            // var tempSignPost = TempObjectPlacer.instance.PlaceNewObject(mapIconsAtLocation[2].signPost.gameObject, mapIconsAtLocation[2].signPost.transform.localPosition);
-            // tempSignPost.GetComponent<SignPostController>().interactable = false;
-            // tempSignPost.GetComponent<SignPostController>().SetStars(StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_stars);
-
-            // play village challenge 3
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageChallengeDefeated_3);
-            while (TalkieManager.instance.talkiePlaying)
-                yield return null;
-
-            // // remove temp temp signpost
-            // TempObjectPlacer.instance.RemoveObject();
-
-            // before unlocking mudslide - set objects to be destroyed
-            foreach (var icon in mapLocations[3].mapIcons)
-                icon.SetFixed(false, false, true);
-
-            // unlock mudslide
-            StartCoroutine(UnlockMapArea(3, false));
-            yield return new WaitForSeconds(10f);
-
-            // play mudslide intro talkie
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.mudslideIntro);
-            while (TalkieManager.instance.talkiePlaying)
-                yield return null;
-
-            yield return new WaitForSeconds(1f);
-
-            mapLocations[2].signPost.GetComponent<SignPostController>().SetInteractability(true);
-
-            // save to SIS
-            StudentInfoSystem.GetCurrentProfile().mapLimit = 3;
-            ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.Mudslide);
-            ScrollMapManager.instance.UpdateMapIcons();
-            ScrollMapManager.instance.RevealStarsAtCurrentLocation();
-            StudentInfoSystem.AdvanceStoryBeat();
-            StudentInfoSystem.SaveStudentPlayerData();
         }
+        /*
         else if (playGameEvent == StoryBeat.MudslideUnlocked)
         {
             // make sure player has rebuilt all the MS map icons

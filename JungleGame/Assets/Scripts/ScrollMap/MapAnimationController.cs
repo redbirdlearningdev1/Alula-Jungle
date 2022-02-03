@@ -7,7 +7,8 @@ public enum MapAnim
     BoatIntro,
     RevealGorillaVillage,
     GorillaVillageIntro,
-    GorillaVillageRebuilt
+    GorillaVillageRebuilt,
+    GorillaVillageDefeated
 }
 
 public class MapAnimationController : MonoBehaviour
@@ -71,6 +72,60 @@ public class MapAnimationController : MonoBehaviour
                 darwin.mapAnimator.Play("DarwinGVPos");
                 darwin.interactable = true;
                 break;
+
+            case StoryBeat.GorillaVillage_challengeGame_1:
+                // place julius in GV
+                julius.mapAnimator.Play("JuliusGVPos");
+                julius.characterAnimator.Play("aTigerTwitch");
+                julius.ShowExclamationMark(true);
+                julius.interactable = true;
+                // place marcus in GV
+                marcus.mapAnimator.Play("MarcusGVPos");
+                marcus.characterAnimator.Play("marcusLose");
+                // place brutus in GV
+                brutus.mapAnimator.Play("BrutusGVPos");
+                brutus.characterAnimator.Play("brutusBroken");
+                break;
+
+            case StoryBeat.GorillaVillage_challengeGame_2:
+                // place julius in GV
+                julius.mapAnimator.Play("JuliusGVPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                // place marcus in GV
+                marcus.mapAnimator.Play("MarcusGVPos");
+                marcus.characterAnimator.Play("marcusWin");
+                marcus.ShowExclamationMark(true);
+                marcus.interactable = true;
+                // place brutus in GV
+                brutus.mapAnimator.Play("BrutusGVPos");
+                brutus.characterAnimator.Play("brutusBroken");
+                break;
+
+            case StoryBeat.GorillaVillage_challengeGame_3:
+                // place julius in GV
+                julius.mapAnimator.Play("JuliusGVPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                // place marcus in GV
+                marcus.mapAnimator.Play("MarcusGVPos");
+                marcus.characterAnimator.Play("marcusLose");
+                // place brutus in GV
+                brutus.mapAnimator.Play("BrutusGVPos");
+                brutus.characterAnimator.Play("brutusWin");
+                brutus.ShowExclamationMark(true);
+                brutus.interactable = true;
+                break;
+
+            case StoryBeat.VillageChallengeDefeated:
+                // place julius in GV
+                julius.mapAnimator.Play("JuliusGVPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                // place marcus in GV
+                marcus.mapAnimator.Play("MarcusGVPos");
+                marcus.characterAnimator.Play("marcusLose");
+                // place brutus in GV
+                brutus.mapAnimator.Play("BrutusGVPos");
+                brutus.characterAnimator.Play("brutusLose");
+                break;
         }
     }   
 
@@ -94,6 +149,10 @@ public class MapAnimationController : MonoBehaviour
 
             case MapAnim.GorillaVillageRebuilt:
                 StartCoroutine(GorillaVillageRebuilt());
+                break;
+
+            case MapAnim.GorillaVillageDefeated:
+                StartCoroutine(GorillaVillageDefeated());
                 break;
         }
     }
@@ -329,9 +388,6 @@ public class MapAnimationController : MonoBehaviour
         brutus.characterAnimator.Play("brutusBroken");
 
         yield return new WaitForSeconds(0.5f);
-        // wait for animation to be done
-        while (!MapAnimationController.instance.animationDone)
-            yield return null;
 
         // play village rebuilt talkie 3
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageRebuilt_3);
@@ -354,5 +410,108 @@ public class MapAnimationController : MonoBehaviour
         julius.ShowExclamationMark(true);
         julius.interactable = true;
         julius.characterAnimator.Play("aTigerTwitch");
+    }
+
+    private IEnumerator GorillaVillageDefeated()
+    {
+        // play village challenge 1
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageChallengeDefeated_1);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // tiger runs off screen
+        julius.characterAnimator.Play("aTigerTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        julius.mapAnimator.Play("JuliusWalkOutGV");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutGV"));
+
+        // monkies go hehe and haha then run off too
+        marcus.characterAnimator.Play("marcusWin");
+        brutus.characterAnimator.Play("brutusWin");
+
+        yield return new WaitForSeconds(1f);
+
+        marcus.characterAnimator.Play("marcusTurn");
+        brutus.characterAnimator.Play("brutusTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        marcus.mapAnimator.Play("MarcusWalkOutGV");
+        brutus.mapAnimator.Play("BrutusWalkOutGV");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutGV"));
+
+        // place tiger and monkies off screen
+        julius.transform.localScale = Vector3.zero;
+        marcus.transform.localScale = Vector3.zero;
+        brutus.transform.localScale = Vector3.zero;
+
+        julius.mapAnimator.Play("JuliusOffScreenPos");
+        marcus.mapAnimator.Play("MarcusOffScreenPos");
+        brutus.mapAnimator.Play("BrutusOffScreenPos");
+
+        yield return new WaitForSeconds(0.1f);
+
+        julius.transform.localScale = Vector3.one;
+        marcus.transform.localScale = Vector3.one;
+        brutus.transform.localScale = Vector3.one;
+
+        // play village challenge 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageChallengeDefeated_2);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        yield return new WaitForSeconds(1f);
+
+        // gv sign post springs into place
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.GorillaVillage].signPost.ShowSignPost(0, false);
+        // Save to SIS
+        StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_unlocked = true;
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        yield return new WaitForSeconds(2f);
+
+        // // place temp copy over talkie bg
+        // var tempSignPost = TempObjectPlacer.instance.PlaceNewObject(mapIconsAtLocation[2].signPost.gameObject, mapIconsAtLocation[2].signPost.transform.localPosition);
+        // tempSignPost.GetComponent<SignPostController>().interactable = false;
+        // tempSignPost.GetComponent<SignPostController>().SetStars(StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_stars);
+
+        // play village challenge 3
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageChallengeDefeated_3);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // // remove temp temp signpost
+        // TempObjectPlacer.instance.RemoveObject();
+
+        // before unlocking mudslide - set objects to be destroyed
+        foreach (var icon in ScrollMapManager.instance.mapLocations[(int)MapLocation.Mudslide].mapIcons)
+            icon.SetFixed(false, false, true);
+
+        // unlock mudslide
+        ScrollMapManager.instance.UnlockMapArea(MapLocation.Mudslide, false);
+        yield return new WaitForSeconds(10f);
+
+        // play mudslide intro talkie
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.mudslideIntro);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        yield return new WaitForSeconds(1f);
+
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.GorillaVillage].signPost.GetComponent<SignPostController>().SetInteractability(true);
+
+        // save to SIS
+        StudentInfoSystem.GetCurrentProfile().mapLimit = 3;
+        ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.Mudslide);
+        ScrollMapManager.instance.UpdateMapIcons();
+        ScrollMapManager.instance.RevealStarsAtCurrentLocation();
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
     }
 }

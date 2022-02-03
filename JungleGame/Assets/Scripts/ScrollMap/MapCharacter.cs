@@ -279,7 +279,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         ################################################
         */  
 
-        /*
+        
 
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1 ||
                  StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Mudslide_challengeGame_1 ||
@@ -340,10 +340,6 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         GameManager.instance.playingChallengeGame = playingChallengeGame;
 
         SetGameManagerMapID(StudentInfoSystem.GetCurrentProfile().currStoryBeat);
-
-        */
-
-        yield return null;
 
         // start game
         GoToGameDataSceneImmediately();
