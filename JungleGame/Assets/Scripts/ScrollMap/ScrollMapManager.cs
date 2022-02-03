@@ -106,7 +106,7 @@ public class ScrollMapManager : MonoBehaviour
         // set map location
         int index = StudentInfoSystem.GetCurrentProfile().mapLimit;
         SetMapPosition(index);
-        SetMapLimit(mapLocations.Count - 1); // used to be (index)
+        SetMapLimit(index);
 
         // remove game manager stuff
         GameManager.instance.playingRoyalRumbleGame = false;
@@ -147,7 +147,7 @@ public class ScrollMapManager : MonoBehaviour
         */
 
         // check for game events
-        StartCoroutine(CheckForScrollMapGameEvents(playGameEvent));
+        CheckForScrollMapGameEvent(playGameEvent);
         // wait here while game event stuff is happening
         while (waitingForGameEventRoutine)
             yield return null;
@@ -182,7 +182,12 @@ public class ScrollMapManager : MonoBehaviour
         MapDataLoader.instance.SetRoyalRumbleBanner();
     }
 
-    private IEnumerator CheckForScrollMapGameEvents(StoryBeat playGameEvent)
+    public void CheckForScrollMapGameEvent(StoryBeat playGameEvent)
+    {
+        StartCoroutine(GameEventRoutine(playGameEvent));
+    }
+
+    private IEnumerator GameEventRoutine(StoryBeat playGameEvent)
     {
         // game event in progress
         waitingForGameEventRoutine = true;
@@ -211,7 +216,11 @@ public class ScrollMapManager : MonoBehaviour
         {
             // change scroll map bools
             activateMapNavigation = false;
-            revealGMUI = true;    
+            revealGMUI = true;
+
+            // start on boat dock
+            SetMapPosition((int)MapLocation.BoatHouse);
+            SetMapLimit((int)MapLocation.BoatHouse);
 
             // bring boat into dock
             MapAnimationController.instance.PlayMapAnim(MapAnim.RevealGorillaVillage);
@@ -221,21 +230,11 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.GorillaVillageIntro)
         {
-            // make gorilla interactable
-            gorilla.ShowExclamationMark(true);
-            gorilla.interactable = true;
-        }
-        else if (playGameEvent == StoryBeat.PrologueStoryGame)
-        {
-            // make gorilla interactable
-            gorilla.ShowExclamationMark(true);
-            gorilla.interactable = true;
+            // change enabled map sections
+            EnableMapSectionsUpTo(MapLocation.BoatHouse);
         }
         else if (playGameEvent == StoryBeat.RedShowsStickerButton)
         {
-            // make gorilla interactable
-            gorilla.interactable = true;
-
             // check if player has enough coins
             if (StudentInfoSystem.GetCurrentProfile().goldCoins >= 4)
             {
@@ -256,6 +255,7 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.SaveStudentPlayerData();
             }
         }
+        
         else if (playGameEvent == StoryBeat.VillageRebuilt)
         {
             // make sure player has done the sticker tutorial
@@ -279,66 +279,15 @@ public class ScrollMapManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.isFixed &&
                     StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.isFixed)
                 {
-                    // make darwin inactive
-                    gorilla.interactable = false;
-
-                    // play village rebuilt talkie 1
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageRebuilt_1);
-                    while (TalkieManager.instance.talkiePlaying)
-                        yield return null;
-
-                    // move darwin off screen
-                    MapAnimationController.instance.GorillaExitAnimationGV();
+                    // bring boat into dock
+                    MapAnimationController.instance.PlayMapAnim(MapAnim.GorillaVillageRebuilt);
                     // wait for animation to be done
                     while (!MapAnimationController.instance.animationDone)
                         yield return null;
-
-                    // play village rebuilt talkie 2
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageRebuilt_2);
-                    while (TalkieManager.instance.talkiePlaying)
-                        yield return null;
-
-                    // tiger and monkies walk in
-                    MapAnimationController.instance.TigerAndMonkiesWalkInGV();
-                    // wait for animation to be done
-                    while (!MapAnimationController.instance.animationDone)
-                        yield return null;
-
-                    // play village rebuilt talkie 3
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.villageRebuilt_3);
-                    while (TalkieManager.instance.talkiePlaying)
-                        yield return null;
-
-                    // challenge game begins
-                    MapAnimationController.instance.TigerAndMonkiesChallengePosGV();
-                    // wait for animation to be done
-                    while (!MapAnimationController.instance.animationDone)
-                        yield return null;
-
-                    // make challenge games active
-                    yield return new WaitForSeconds(0.5f);
-
-                    // set tiger stuff
-                    if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType == GameType.None)
-                    {
-                        GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage);
-                        tiger.gameType = newGameType;
-                        StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType = newGameType;
-                        StudentInfoSystem.AdvanceStoryBeat();
-                        StudentInfoSystem.SaveStudentPlayerData();
-                    }
-                        
-                    tiger.ShowExclamationMark(true);
-                    tiger.interactable = true;
-                    tiger.GetComponent<Animator>().Play("aTigerTwitch");
-                }
-                else
-                {
-                    // darwin quips
-                    gorilla.interactable = true;
                 }
             }
         }
+        /*
         else if (playGameEvent == StoryBeat.GorillaVillage_challengeGame_1)
         {
             // set tiger stuff
@@ -1441,6 +1390,7 @@ public class ScrollMapManager : MonoBehaviour
             // unlock everything
             EnableMapSectionsUpTo(MapLocation.PalaceIntro);
         }
+        */
 
         // game event is over
         waitingForGameEventRoutine = false;
@@ -1639,7 +1589,12 @@ public class ScrollMapManager : MonoBehaviour
         }
     }
 
-    private IEnumerator UnlockMapArea(int mapIndex, bool leaveLetterboxUp = false)
+    public void UnlockMapArea(MapLocation location, bool leaveLetterboxUp = false)
+    {
+        StartCoroutine(UnlockMapAreaRoutine(location, leaveLetterboxUp));
+    }
+
+    private IEnumerator UnlockMapAreaRoutine(MapLocation location, bool leaveLetterboxUp = false)
     {
         RaycastBlockerController.instance.CreateRaycastBlocker("UnlockMapArea");
 
@@ -1650,18 +1605,19 @@ public class ScrollMapManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        mapLimit = mapIndex;
-        currMapLocation = mapIndex;
+        currMapLocation = (int)location;
+        mapLimit = currMapLocation;
+
         // move map to next right map location
-        float x = GetXPosFromMapLocationIndex(mapIndex);
+        float x = GetXPosFromMapLocationIndex(currMapLocation);
         StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
 
         yield return new WaitForSeconds(2.5f);
 
         // move fog out of the way
-        FogController.instance.MoveFogAnimation(mapLocations[mapIndex].fogLocation, 3f);
+        FogController.instance.MoveFogAnimation(mapLocations[currMapLocation].fogLocation, 3f);
 
-        switch (mapIndex)
+        switch (currMapLocation)
         {
             default:
                 break;
@@ -1746,6 +1702,13 @@ public class ScrollMapManager : MonoBehaviour
 
     public void EnableMapSectionsUpTo(MapLocation location)
     {
+        // disable all map sections first
+        foreach (var loc in mapLocations)
+        {
+            loc.enabled = false;
+        }
+
+        // enable sections
         for (int i = 0; i < mapLocations.Count; i++)
         {
             if (mapLocations[i].location <= location)

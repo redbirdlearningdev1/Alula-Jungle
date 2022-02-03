@@ -501,7 +501,7 @@ public class WagonWindowController : MonoBehaviour
         SettingsManager.instance.ToggleWagonButtonActive(true);
 
         // check for scroll map game events
-        ScrollMapManager.instance.CheckForGameEvent(StudentInfoSystem.GetCurrentProfile().currStoryBeat);
+        ScrollMapManager.instance.CheckForScrollMapGameEvent(StudentInfoSystem.GetCurrentProfile().currStoryBeat);
     }
 
     public void ResetWagonController()

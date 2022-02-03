@@ -27,10 +27,4 @@ public class LoadingSceneManager : MonoBehaviour
             yield return null;
         FadeObject.instance.FadeOut(0f);
     }
-
-    void Update()
-    {
-        // move background
-
-    }
 }
