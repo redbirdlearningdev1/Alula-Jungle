@@ -21,109 +21,319 @@ public class TalkieDatabase : MonoBehaviour
     public static TalkieDatabase instance;
     private const string talkie_object_folder = "Assets/Resources/TalkieObjects/";
 
-    [Header("Boat Game")]          // Where in the code base is the talkie called from?
-    public TalkieObject boatGame;       // script: NewBoatGameManager.cs
-    public TalkieObject dock_1;         // script: ScrollMapManager.cs   
-    public TalkieObject dock_2;         // script: ScrollMapManager.cs   
+    /* 
+    ################################################
+    #   TALKIE OBJECTS
+    ################################################
+    */
 
-    [Header("Gorilla Intro")]
-    public TalkieObject gorillaIntro_1; // script: MapCharacter.cs
-    public TalkieObject gorillaIntro_2; // script: MapCharacter.cs
-    public TalkieObject gorillaIntro_3; // script: MapCharacter.cs
-    public TalkieObject gorillaIntro_4; // script: MapCharacter.cs
-    public TalkieObject gorillaIntro_5; // script: MapCharacter.cs
+    public TalkieObject BBChallenge_1_p1;
+    public TalkieObject BBChallenge_1_p2;
+    public TalkieObject BBChallenge_1_p3;
+    public TalkieObject BBLose_1_p1;
+    public TalkieObject BBLose_2_p1;
+    public TalkieObject BBQuip_1_p1;
+    public TalkieObject BBQuip_1_p2;
+    public TalkieObject BBQuip_1_p3;
+    public TalkieObject BBQuip_2_p1;
+    public TalkieObject BBQuip_2_p2;
+    public TalkieObject BBQuip_2_p3;
+    public TalkieObject BBQuip_3_p1;
+    public TalkieObject BBQuip_3_p2;
+    public TalkieObject BBQuip_3_p3;
+    public TalkieObject BBStory_1_p1;
+    public TalkieObject BBStory_2_p1;
+    public TalkieObject BBTryAgain_1_p1;
+    public TalkieObject BBTryAgain_1_p2;
+    public TalkieObject BBWin_1_p1;
+    public TalkieObject BoatGame_1_p1;
+    public TalkieObject BoatGame_2_p1;
+    public TalkieObject BoatGame_2_p2;
+    public TalkieObject BoatGame_3_p1;
+    public TalkieObject ChaBrutus_1_p1;
+    public TalkieObject ChaBrutusWins_1_p1;
+    public TalkieObject ChaBrutusWins_1_p2;
+    public TalkieObject ChaJulius_1_p1;
+    public TalkieObject ChaJulius_1_p2;
+    public TalkieObject ChaJulius_1_p3;
+    public TalkieObject ChaJulius_2_p1;
+    public TalkieObject ChaJulius_2_p2;
+    public TalkieObject ChaJulius_2_p3;
+    public TalkieObject ChaJuliusWins_1_p1;
+    public TalkieObject ChaJuliusWins_1_p2;
+    public TalkieObject ChaJuliusWins_1_p3;
+    public TalkieObject ChaJuliusWins_2_p1;
+    public TalkieObject ChaMarcus_1_p1;
+    public TalkieObject ChaMarcus_2_p1;
+    public TalkieObject ChaMarcus_2_p2;
+    public TalkieObject ChaMarcusWins_1_p1;
+    public TalkieObject ChaMarcusWins_1_p2;
+    public TalkieObject ChaSignPost_1_p1;
+    public TalkieObject ChaSignPost_1_p2;
+    public TalkieObject ChaSignPost_1_p3;
+    public TalkieObject ChaSignPost_1_p4;
+    public TalkieObject ChaSignPost_1_p5;
+    public TalkieObject CliffDefeated_1_p1;
+    public TalkieObject CliffDefeated_1_p2;
+    public TalkieObject CliffDefeated_1_p3;
+    public TalkieObject CliffIntro_1_p1;
+    public TalkieObject CliffIntro_1_p2;
+    public TalkieObject CliffIntro_1_p3;
+    public TalkieObject CliffIntro_1_p4;
+    public TalkieObject CliffIntro_1_p5;
+    public TalkieObject CliffRebuilt_1_p1;
+    public TalkieObject CliffRebuilt_1_p2;
+    public TalkieObject CliffRebuilt_1_p3;
+    public TalkieObject CloggQuips_1_p1;
+    public TalkieObject DarwinQuips_1_p1;
+    public TalkieObject DarwinQuips_1_p2;
+    public TalkieObject DarwinQuips_1_p3;
+    public TalkieObject Dock_1_p1;
+    public TalkieObject Dock_1_p2;
+    public TalkieObject End_1_p1;
+    public TalkieObject End_1_p2;
+    public TalkieObject End_1_p3;
+    public TalkieObject ExitDefeated_1_p1;
+    public TalkieObject ExitDefeated_1_p2;
+    public TalkieObject ExitDefeated_1_p3;
+    public TalkieObject ExitIntro_1_p1;
+    public TalkieObject ExitIntro_1_p2;
+    public TalkieObject ExitIntro_1_p3;
+    public TalkieObject ExitIntro_1_p4;
+    public TalkieObject ExitIntro_1_p5;
+    public TalkieObject ExitRebuilt_1_p1;
+    public TalkieObject ExitRebuilt_1_p2;
+    public TalkieObject FinalBoss_1_p1;
+    public TalkieObject FinalBoss_2_p1;
+    public TalkieObject ForceLester_1_p1;
+    public TalkieObject GCampDefeated_1_p1;
+    public TalkieObject GCampDefeated_1_p2;
+    public TalkieObject GCampDefeated_1_p3;
+    public TalkieObject GCampIntro_1_p1;
+    public TalkieObject GCampRebuilt_1_p1;
+    public TalkieObject GCampRebuilt_1_p2;
+    public TalkieObject GCampRebuilt_1_p3;
+    public TalkieObject GorillaIntro_1_p1;
+    public TalkieObject GorillaIntro_1_p2;
+    public TalkieObject GorillaIntro_1_p3;
+    public TalkieObject GorillaIntro_1_p4;
+    public TalkieObject LesterBuy_1_p1;
+    public TalkieObject LesterBuy_1_p2;
+    public TalkieObject LesterBuy_1_p3;
+    public TalkieObject LesterFull_1_p1;
+    public TalkieObject LesterIntro_1_p1;
+    public TalkieObject LesterIntro_1_p2;
+    public TalkieObject LesterIntro_1_p3;
+    public TalkieObject LesterIntro_1_p4;
+    public TalkieObject MermaidDefeated_1_p1;
+    public TalkieObject MermaidDefeated_1_p2;
+    public TalkieObject MermaidDefeated_1_p3;
+    public TalkieObject MermaidDefeated_1_p4;
+    public TalkieObject MermaidDefeated_1_p5;
+    public TalkieObject MermaidQuip_1_p1;
+    public TalkieObject MermaidQuip_1_p2;
+    public TalkieObject MermaidRebuilt_1_p1;
+    public TalkieObject MermaidRebuilt_1_p2;
+    public TalkieObject MermaidRebuilt_1_p3;
+    public TalkieObject MonkeyDefeated_1_p1;
+    public TalkieObject MonkeyDefeated_1_p2;
+    public TalkieObject MonkeyIntro_1_p1;
+    public TalkieObject MonkeyIntro_1_p2;
+    public TalkieObject MonkeyIntro_1_p3;
+    public TalkieObject MonkeyQuips_1_p1;
+    public TalkieObject MonkeyRebuilt_1_p1;
+    public TalkieObject MonkeyRebuilt_1_p2;
+    public TalkieObject MudslideDefeated_1_p1;
+    public TalkieObject MudslideDefeated_1_p2;
+    public TalkieObject MudslideDefeated_1_p3;
+    public TalkieObject MudslideIntro_1_p1;
+    public TalkieObject MudslideRebuilt_1_p1;
+    public TalkieObject MudslideRebuilt_1_p2;
+    public TalkieObject OCampDefeated_1_p1;
+    public TalkieObject OCampDefeated_1_p2;
+    public TalkieObject OCampDefeated_1_p3;
+    public TalkieObject OCampIntro_1_p1;
+    public TalkieObject OCampRebuilt_1_p1;
+    public TalkieObject OCampRebuilt_1_p2;
+    public TalkieObject OctopusQuips_1_p1;
+    public TalkieObject OctopusQuips_2_p1;
+    public TalkieObject OllieQuips_1_p1;
+    public TalkieObject OllieQuips_2_p1;
+    public TalkieObject OVillageDefeated_1_p1;
+    public TalkieObject OVillageDefeated_1_p2;
+    public TalkieObject OVillageIntro_1_p1;
+    public TalkieObject OVillageIntro_1_p2;
+    public TalkieObject OVillageIntro_2_p1;
+    public TalkieObject OVillageRebuilt_1_p1;
+    public TalkieObject OVillageRebuilt_1_p2;
+    public TalkieObject PirateDefeated_1_p1;
+    public TalkieObject PirateDefeated_1_p2;
+    public TalkieObject PirateDefeated_1_p3;
+    public TalkieObject PirateIntro_1_p1;
+    public TalkieObject PirateIntro_1_p2;
+    public TalkieObject PirateRebuilt_1_p1;
+    public TalkieObject PirateRebuilt_1_p2;
+    public TalkieObject PoopDefeated_1_p1;
+    public TalkieObject PoopDefeated_1_p2;
+    public TalkieObject PoopDefeated_1_p3;
+    public TalkieObject PoopIntro_1_p1;
+    public TalkieObject PoopRebuilt_1_p1;
+    public TalkieObject PoopRebuilt_1_p2;
+    public TalkieObject PreStory_1_p1;
+    public TalkieObject PreStory_2_p1;
+    public TalkieObject RedLester_1_p1;
+    public TalkieObject RRGuardsIntro_1_p1;
+    public TalkieObject RRGuardsIntro_2_p1;
+    public TalkieObject RRGuardsIntro_2_p2;
+    public TalkieObject RRGuardsLost_1_p1;
+    public TalkieObject RRGuardsWins_1_p1;
+    public TalkieObject RRJuliusIntro_1_p1;
+    public TalkieObject RRJuliusLost_1_p1;
+    public TalkieObject RRJuliusWins_1_p1;
+    public TalkieObject RuinsDefeated_1_p1;
+    public TalkieObject RuinsDefeated_1_p2;
+    public TalkieObject RuinsDefeated_1_p3;
+    public TalkieObject RuinsIntro_1_p1;
+    public TalkieObject RuinsRebuilt_1_p1;
+    public TalkieObject RuinsRebuilt_1_p2;
+    public TalkieObject SectionIntro_1_p1;
+    public TalkieObject SpiderDefeated_1_p1;
+    public TalkieObject SpiderDefeated_1_p2;
+    public TalkieObject SpiderDefeated_1_p3;
+    public TalkieObject SpiderIntro_1_p1;
+    public TalkieObject SpiderIntro_1_p2;
+    public TalkieObject SpiderIntro_1_p3;
+    public TalkieObject SpiderIntro_1_p4;
+    public TalkieObject SpiderIntro_1_p5;
+    public TalkieObject SpiderIntro_1_p6;
+    public TalkieObject SpiderRebuilt_1_p1;
+    public TalkieObject SpiderRebuilt_1_p2;
+    public TalkieObject SpiderRebuilt_1_p3;
+    public TalkieObject SpindleQuips_1_p1;
+    public TalkieObject SpindleQuips_2_p1;
+    public TalkieObject Taxi_1_p1;
+    public TalkieObject Taxi_2_p1;
+    public TalkieObject VillageDefeated_1_p1;
+    public TalkieObject VillageDefeated_1_p3;
+    public TalkieObject VillageDefeated_1_p4;
+    public TalkieObject VillageRebuilt_1_p1;
+    public TalkieObject VillageRebuilt_1_p2;
+    public TalkieObject VillageRebuilt_1_p3;
 
-    [Header("Pre Minigames")]
-    public TalkieObject pre_minigame;   // script: MapIcon.cs
-    public TalkieObject pre_darwin;     // script: MapCharacter.cs
 
-    [Header("Pre Lester")]
-    public TalkieObject red_notices_lester; // script: ScrollMapManager.cs
-    public TalkieObject darwin_forces;      // script: ScrollMapManager.cs
 
-    [Header("Pre Lester")]
-    public TalkieObject lester_intro_1; // script: WagonWindowController.cs
-    public TalkieObject lester_intro_2; // script: StickerBoardController.cs
-    public TalkieObject lester_intro_3; // script: StickerBoardController.cs
-    public TalkieObject lester_intro_4; // script: StickerBoardController.cs
 
-    [Header("Village Rebuilt")]
-    public TalkieObject villageRebuilt_1; // script: ScrollMapManager.cs
-    public TalkieObject villageRebuilt_2; // script: ScrollMapManager.cs
-    public TalkieObject villageRebuilt_3; // script: ScrollMapManager.cs
+    // [Header("Boat Game")]          // Where in the code base is the talkie called from?
+    // public TalkieObject boatGame;       // script: NewBoatGameManager.cs
+    // public TalkieObject dock_1;         // script: ScrollMapManager.cs   
+    // public TalkieObject dock_2;         // script: ScrollMapManager.cs   
 
-    [Header("Julius Challenge GV")]
-    public TalkieObject julius_challenges; // script: MapCharacter.cs
-    public TalkieObject julius_wins;       // script: ScrollMapManager.cs
-    public TalkieObject julius_wins_again; // script: ScrollMapManager.cs
+    // [Header("Gorilla Intro")]
+    // public TalkieObject gorillaIntro_1; // script: MapCharacter.cs
+    // public TalkieObject gorillaIntro_2; // script: MapCharacter.cs
+    // public TalkieObject gorillaIntro_3; // script: MapCharacter.cs
+    // public TalkieObject gorillaIntro_4; // script: MapCharacter.cs
+    // public TalkieObject gorillaIntro_5; // script: MapCharacter.cs
 
-    [Header("Marcus Challenge GV")]
-    public TalkieObject julius_loses__marcus_challenges; // script: ScrollMapManager.cs
-    public TalkieObject marcus_challenges; // script: MapCharacter.cs
-    public TalkieObject marcus_wins;       // script: ScrollMapManager.cs
-    public TalkieObject marcus_wins_again; // script: ScrollMapManager.cs
+    // [Header("Pre Minigames")]
+    // public TalkieObject pre_minigame;   // script: MapIcon.cs
+    // public TalkieObject pre_darwin;     // script: MapCharacter.cs
 
-    [Header("Brutus Challenge GV")]
-    public TalkieObject marcus_loses__brutus_challenges;// script: ScrollMapManager.cs
-    public TalkieObject brutus_challenges; // script: MapCharacter.cs
-    public TalkieObject brutus_wins;       // script: ScrollMapManager.cs
-    public TalkieObject brutus_wins_again; // script: ScrollMapManager.cs
+    // [Header("Pre Lester")]
+    // public TalkieObject red_notices_lester; // script: ScrollMapManager.cs
+    // public TalkieObject darwin_forces;      // script: ScrollMapManager.cs
 
-    public TalkieObject challengeSignQuips;
+    // [Header("Pre Lester")]
+    // public TalkieObject lester_intro_1; // script: WagonWindowController.cs
+    // public TalkieObject lester_intro_2; // script: StickerBoardController.cs
+    // public TalkieObject lester_intro_3; // script: StickerBoardController.cs
+    // public TalkieObject lester_intro_4; // script: StickerBoardController.cs
 
-    [Header("Village Defeated")]
-    public TalkieObject villageChallengeDefeated_1; // script: ScrollMapManager.cs
-    public TalkieObject villageChallengeDefeated_2; // script: ScrollMapManager.cs
-    public TalkieObject villageChallengeDefeated_3; // script: ScrollMapManager.cs
+    // [Header("Village Rebuilt")]
+    // public TalkieObject villageRebuilt_1; // script: ScrollMapManager.cs
+    // public TalkieObject villageRebuilt_2; // script: ScrollMapManager.cs
+    // public TalkieObject villageRebuilt_3; // script: ScrollMapManager.cs
 
-    [Header("Mudslide")]
-    public TalkieObject mudslideIntro; // script: ScrollMapManager.cs
-    public TalkieObject mudslideRebuilt_1; // script: ScrollMapManager.cs
-    public TalkieObject mudslideRebuilt_2; // script: ScrollMapManager.cs
-    public TalkieObject mudslideChallengeDefeated_1; // script: ScrollMapManager.cs
-    public TalkieObject mudslideChallengeDefeated_2; // script: ScrollMapManager.cs
-    public TalkieObject mudslideChallengeDefeated_3; // script: ScrollMapManager.cs
+    // [Header("Julius Challenge GV")]
+    // public TalkieObject julius_challenges; // script: MapCharacter.cs
+    // public TalkieObject julius_wins;       // script: ScrollMapManager.cs
+    // public TalkieObject julius_wins_again; // script: ScrollMapManager.cs
 
-    [Header("Orc Village")]
-    public TalkieObject orcVillageIntro_1; // script: ScrollMapManager.cs
-    public TalkieObject orcVillageIntro_2; // script: ScrollMapManager.cs
-    public TalkieObject orcVillageIntro_3; // script: MapCharacter.cs
-    public TalkieObject orcVillageRebuilt_1; // script: ScrollMapManager.cs
-    public TalkieObject orcVillageRebuilt_2; // script: ScrollMapManager.cs
-    public TalkieObject orcVillageChallengeDefeated_1; // script: ScrollMapManager.cs
-    public TalkieObject orcVillageChallengeDefeated_2; // script: ScrollMapManager.cs
+    // [Header("Marcus Challenge GV")]
+    // public TalkieObject julius_loses__marcus_challenges; // script: ScrollMapManager.cs
+    // public TalkieObject marcus_challenges; // script: MapCharacter.cs
+    // public TalkieObject marcus_wins;       // script: ScrollMapManager.cs
+    // public TalkieObject marcus_wins_again; // script: ScrollMapManager.cs
 
-    [Header("Spooky Forest")]
-    public TalkieObject spiderIntro_1; // script: MapCharacter.cs
-    public TalkieObject spiderIntro_2; // script: MapCharacter.cs
-    public TalkieObject spiderIntro_3; // script: MapCharacter.cs
-    public TalkieObject spiderIntro_4; // script: MapCharacter.cs
-    public TalkieObject spiderIntro_5; // script: MapCharacter.cs
-    public TalkieObject spiderIntro_6; // script: MapCharacter.cs
-    public TalkieObject spookyForest_1; // script: ScrollMapManager.cs
-    public TalkieObject spookyForest_2; // script: ScrollMapManager.cs
-    public TalkieObject spookyForest_3; // script: ScrollMapManager.cs
-    public TalkieObject spookyForestChallengeDefeated_1; // script: ScrollMapManager.cs
-    public TalkieObject spookyForestChallengeDefeated_2; // script: ScrollMapManager.cs
-    public TalkieObject spookyForestChallengeDefeated_3; // script: ScrollMapManager.cs
+    // [Header("Brutus Challenge GV")]
+    // public TalkieObject marcus_loses__brutus_challenges;// script: ScrollMapManager.cs
+    // public TalkieObject brutus_challenges; // script: MapCharacter.cs
+    // public TalkieObject brutus_wins;       // script: ScrollMapManager.cs
+    // public TalkieObject brutus_wins_again; // script: ScrollMapManager.cs
 
-    [Header("Orc Camp")]
-    public TalkieObject orcCampIntro_1; // script: MapCharacter.cs
-    public TalkieObject orcCampRebuilt_1; // script: ScrollMapManager.cs
-    public TalkieObject orcCampRebuilt_2; // script: ScrollMapManager.cs
-    public TalkieObject orcCampChallengeDefeated_1; // script: ScrollMapManager.cs
-    public TalkieObject orcCampChallengeDefeated_2; // script: ScrollMapManager.cs
-    public TalkieObject orcCampChallengeDefeated_3; // script: ScrollMapManager.cs
+    // public TalkieObject challengeSignQuips;
+
+    // [Header("Village Defeated")]
+    // public TalkieObject villageChallengeDefeated_1; // script: ScrollMapManager.cs
+    // public TalkieObject villageChallengeDefeated_2; // script: ScrollMapManager.cs
+    // public TalkieObject villageChallengeDefeated_3; // script: ScrollMapManager.cs
+
+    // [Header("Mudslide")]
+    // public TalkieObject mudslideIntro; // script: ScrollMapManager.cs
+    // public TalkieObject mudslideRebuilt_1; // script: ScrollMapManager.cs
+    // public TalkieObject mudslideRebuilt_2; // script: ScrollMapManager.cs
+    // public TalkieObject mudslideChallengeDefeated_1; // script: ScrollMapManager.cs
+    // public TalkieObject mudslideChallengeDefeated_2; // script: ScrollMapManager.cs
+    // public TalkieObject mudslideChallengeDefeated_3; // script: ScrollMapManager.cs
+
+    // [Header("Orc Village")]
+    // public TalkieObject orcVillageIntro_1; // script: ScrollMapManager.cs
+    // public TalkieObject orcVillageIntro_2; // script: ScrollMapManager.cs
+    // public TalkieObject orcVillageIntro_3; // script: MapCharacter.cs
+    // public TalkieObject orcVillageRebuilt_1; // script: ScrollMapManager.cs
+    // public TalkieObject orcVillageRebuilt_2; // script: ScrollMapManager.cs
+    // public TalkieObject orcVillageChallengeDefeated_1; // script: ScrollMapManager.cs
+    // public TalkieObject orcVillageChallengeDefeated_2; // script: ScrollMapManager.cs
+
+    // [Header("Spooky Forest")]
+    // public TalkieObject spiderIntro_1; // script: MapCharacter.cs
+    // public TalkieObject spiderIntro_2; // script: MapCharacter.cs
+    // public TalkieObject spiderIntro_3; // script: MapCharacter.cs
+    // public TalkieObject spiderIntro_4; // script: MapCharacter.cs
+    // public TalkieObject spiderIntro_5; // script: MapCharacter.cs
+    // public TalkieObject spiderIntro_6; // script: MapCharacter.cs
+    // public TalkieObject spookyForest_1; // script: ScrollMapManager.cs
+    // public TalkieObject spookyForest_2; // script: ScrollMapManager.cs
+    // public TalkieObject spookyForest_3; // script: ScrollMapManager.cs
+    // public TalkieObject spookyForestChallengeDefeated_1; // script: ScrollMapManager.cs
+    // public TalkieObject spookyForestChallengeDefeated_2; // script: ScrollMapManager.cs
+    // public TalkieObject spookyForestChallengeDefeated_3; // script: ScrollMapManager.cs
+
+    // [Header("Orc Camp")]
+    // public TalkieObject orcCampIntro_1; // script: MapCharacter.cs
+    // public TalkieObject orcCampRebuilt_1; // script: ScrollMapManager.cs
+    // public TalkieObject orcCampRebuilt_2; // script: ScrollMapManager.cs
+    // public TalkieObject orcCampChallengeDefeated_1; // script: ScrollMapManager.cs
+    // public TalkieObject orcCampChallengeDefeated_2; // script: ScrollMapManager.cs
+    // public TalkieObject orcCampChallengeDefeated_3; // script: ScrollMapManager.cs
     
 
 
 
-    [Header("Royal Rumble")]
-    public TalkieObject defaultRRTalkie; // MiniganeWheelController.cs
+    // [Header("Royal Rumble")]
+    // public TalkieObject defaultRRTalkie; // MiniganeWheelController.cs
 
-    [Header("Quips")]
-    public TalkieObject darwinQuips;    // script: MapCharacter.cs
-    public TalkieObject cloggQuips;    // script: MapCharacter.cs
+    // [Header("Quips")]
+    // public TalkieObject darwinQuips;    // script: MapCharacter.cs
+    // public TalkieObject cloggQuips;    // script: MapCharacter.cs
+
+
+
+    /* 
+    ################################################
+    #   TALKIE SPRITES
+    ################################################
+    */
 
     [Header("Character Sprites")]
     public List<TalkieDatabaseEntry> redSprites;
@@ -140,8 +350,6 @@ public class TalkieDatabase : MonoBehaviour
     public List<TalkieDatabaseEntry> sylvieSprites;
     public List<TalkieDatabaseEntry> celesteSprites;
     public List<TalkieDatabaseEntry> taxiSprites;
-
-
 
 
     [Header("Talkie Reaction Duplicates")]
@@ -168,9 +376,6 @@ public class TalkieDatabase : MonoBehaviour
     public List<AudioClip> redHurrahList;
     public List<AudioClip> redUhHuhList;
 
-
-
-
     private List<TalkieObject> globalTalkieList; // list of all talkies in this database
 
     void Awake()
@@ -184,23 +389,23 @@ public class TalkieDatabase : MonoBehaviour
     {
         globalTalkieList = new List<TalkieObject>();
         
-        globalTalkieList.Add(boatGame);
-        globalTalkieList.Add(dock_1);
-        globalTalkieList.Add(dock_2);
-        globalTalkieList.Add(gorillaIntro_1);
-        globalTalkieList.Add(gorillaIntro_2);
-        globalTalkieList.Add(gorillaIntro_3);
-        globalTalkieList.Add(gorillaIntro_4);
-        globalTalkieList.Add(gorillaIntro_5);
-        globalTalkieList.Add(pre_minigame);
-        globalTalkieList.Add(pre_darwin);
-        globalTalkieList.Add(red_notices_lester);
-        globalTalkieList.Add(darwin_forces);
-        globalTalkieList.Add(lester_intro_1);
-        globalTalkieList.Add(villageRebuilt_1);
-        globalTalkieList.Add(villageRebuilt_2);
-        globalTalkieList.Add(villageRebuilt_3);
-        globalTalkieList.Add(darwinQuips);
+        // globalTalkieList.Add(boatGame);
+        // globalTalkieList.Add(dock_1);
+        // globalTalkieList.Add(dock_2);
+        // globalTalkieList.Add(gorillaIntro_1);
+        // globalTalkieList.Add(gorillaIntro_2);
+        // globalTalkieList.Add(gorillaIntro_3);
+        // globalTalkieList.Add(gorillaIntro_4);
+        // globalTalkieList.Add(gorillaIntro_5);
+        // globalTalkieList.Add(pre_minigame);
+        // globalTalkieList.Add(pre_darwin);
+        // globalTalkieList.Add(red_notices_lester);
+        // globalTalkieList.Add(darwin_forces);
+        // globalTalkieList.Add(lester_intro_1);
+        // globalTalkieList.Add(villageRebuilt_1);
+        // globalTalkieList.Add(villageRebuilt_2);
+        // globalTalkieList.Add(villageRebuilt_3);
+        // globalTalkieList.Add(darwinQuips);
 
         return globalTalkieList;
     }

@@ -240,7 +240,7 @@ public class MapData
     public bool SF_signPost_unlocked;
     public int SF_signPost_stars;
 
-    // spooky forest
+    // orc camp
     public MapIconData OC_axe;
     public MapIconData OC_bigTent;
     public MapIconData OC_smallTent;
@@ -252,6 +252,118 @@ public class MapData
 
     public bool OC_signPost_unlocked;
     public int OC_signPost_stars;
+
+    // gorilla poop
+    public MapIconData GP_house1;
+    public MapIconData GP_house2;
+    public MapIconData GP_rock1;
+    public MapIconData GP_rock2;
+
+    public ChallengeGameData GP_challenge1;
+    public ChallengeGameData GP_challenge2;
+    public ChallengeGameData GP_challenge3;
+
+    public bool GP_signPost_unlocked;
+    public int GP_signPost_stars;
+
+    // windy cliff
+    public MapIconData WC_statue;
+    public MapIconData WC_lighthouse;
+    public MapIconData WC_ladder;
+    public MapIconData WC_rock;
+    public MapIconData WC_sign;
+    public MapIconData WC_octo;
+
+    public ChallengeGameData WC_challenge1;
+    public ChallengeGameData WC_challenge2;
+    public ChallengeGameData WC_challenge3;
+
+    public bool WC_signPost_unlocked;
+    public int WC_signPost_stars;
+
+    // pirate ship
+    public MapIconData PS_wheel;
+    public MapIconData PS_sail;
+    public MapIconData PS_boat;
+    public MapIconData PS_bridge;
+    public MapIconData PS_front;
+    public MapIconData PS_parrot;
+
+    public ChallengeGameData PS_challenge1;
+    public ChallengeGameData PS_challenge2;
+    public ChallengeGameData PS_challenge3;
+
+    public bool PS_signPost_unlocked;
+    public int PS_signPost_stars;
+
+    // mermaid beach
+    public MapIconData MB_mermaids;
+    public MapIconData MB_rock;
+    public MapIconData MB_castle;
+    public MapIconData MB_bucket;
+    public MapIconData MB_umbrella;
+    public MapIconData MB_ladder;
+
+    public ChallengeGameData MB_challenge1;
+    public ChallengeGameData MB_challenge2;
+    public ChallengeGameData MB_challenge3;
+
+    public bool MB_signPost_unlocked;
+    public int MB_signPost_stars;
+
+    // ruins 1 + 2
+    public MapIconData R_lizard1;
+    public MapIconData R_lizard2;
+    public MapIconData R_caveRock;
+    public MapIconData R_pyramid;
+    public MapIconData R_face;
+    public MapIconData R_arch;
+
+    public ChallengeGameData R_challenge1;
+    public ChallengeGameData R_challenge2;
+    public ChallengeGameData R_challenge3;
+
+    public bool R_signPost_unlocked;
+    public int R_signPost_stars;
+
+    // exit surgery
+    public MapIconData EJ_puppy;
+    public MapIconData EJ_bridge;
+    public MapIconData EJ_sign;
+    public MapIconData EJ_torch;
+
+    public ChallengeGameData EJ_challenge1;
+    public ChallengeGameData EJ_challenge2;
+    public ChallengeGameData EJ_challenge3;
+
+    public bool EJ_signPost_unlocked;
+    public int EJ_signPost_stars;
+
+    // gorilla study
+    public MapIconData GS_tent1;
+    public MapIconData GS_tent2;
+    public MapIconData GS_statue;
+    public MapIconData GS_fire;
+
+    public ChallengeGameData GS_challenge1;
+    public ChallengeGameData GS_challenge2;
+    public ChallengeGameData GS_challenge3;
+
+    public bool GS_signPost_unlocked;
+    public int GS_signPost_stars;
+
+    // monkeys
+    public MapIconData M_flower;
+    public MapIconData M_tree;
+    public MapIconData M_bananas;
+    public MapIconData M_guards;
+
+    public ChallengeGameData M_challenge1;
+    public ChallengeGameData M_challenge2;
+    public ChallengeGameData M_challenge3;
+
+    public bool M_signPost_unlocked;
+    public int M_signPost_stars;
 }
 
 /* 

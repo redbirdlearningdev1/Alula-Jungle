@@ -273,6 +273,286 @@ public static class LoadSaveSystem
         new_data.mapData.OV_signPost_stars = 0;
 
 
+        // gorilla poop
+        new_data.mapData.GP_house1 = new MapIconData();
+        new_data.mapData.GP_house2 = new MapIconData();
+        new_data.mapData.GP_rock1 = new MapIconData();
+        new_data.mapData.GP_rock2 = new MapIconData();
+
+        new_data.mapData.GP_house1.isFixed = true;
+        new_data.mapData.GP_house2.isFixed = true;
+        new_data.mapData.GP_rock1.isFixed =   true;
+        new_data.mapData.GP_rock2.isFixed = true;
+
+        new_data.mapData.GP_house1.stars =   default_mapDataStars;
+        new_data.mapData.GP_house2.stars =   default_mapDataStars;
+        new_data.mapData.GP_rock1.stars =     default_mapDataStars;
+        new_data.mapData.GP_rock2.stars =   default_mapDataStars;
+
+        new_data.mapData.GP_challenge1 = new ChallengeGameData();
+        new_data.mapData.GP_challenge2 = new ChallengeGameData();
+        new_data.mapData.GP_challenge3 = new ChallengeGameData();
+
+        new_data.mapData.GP_challenge1.stars = default_stars;
+        new_data.mapData.GP_challenge2.stars = default_stars;
+        new_data.mapData.GP_challenge3.stars = default_stars;
+
+        new_data.mapData.GP_challenge1.gameType = GameType.None;
+        new_data.mapData.GP_challenge2.gameType = GameType.None;
+        new_data.mapData.GP_challenge3.gameType = GameType.None;
+
+        new_data.mapData.GP_signPost_unlocked = false;
+        new_data.mapData.GP_signPost_stars = 0;
+
+
+        // windy cliff
+        new_data.mapData.WC_ladder = new MapIconData();
+        new_data.mapData.WC_lighthouse = new MapIconData();
+        new_data.mapData.WC_octo = new MapIconData();
+        new_data.mapData.WC_rock = new MapIconData();
+        new_data.mapData.WC_sign = new MapIconData();
+        new_data.mapData.WC_statue = new MapIconData();
+
+        new_data.mapData.WC_ladder.isFixed = true;
+        new_data.mapData.WC_lighthouse.isFixed = true;
+        new_data.mapData.WC_octo.isFixed =   true;
+        new_data.mapData.WC_rock.isFixed = true;
+        new_data.mapData.WC_sign.isFixed = true;
+        new_data.mapData.WC_statue.isFixed = true;
+
+        new_data.mapData.WC_ladder.stars =   default_mapDataStars;
+        new_data.mapData.WC_lighthouse.stars =   default_mapDataStars;
+        new_data.mapData.WC_octo.stars =     default_mapDataStars;
+        new_data.mapData.WC_rock.stars =   default_mapDataStars;
+        new_data.mapData.WC_sign.stars =   default_mapDataStars;
+        new_data.mapData.WC_statue.stars =   default_mapDataStars;
+
+        new_data.mapData.WC_challenge1 = new ChallengeGameData();
+        new_data.mapData.WC_challenge2 = new ChallengeGameData();
+        new_data.mapData.WC_challenge3 = new ChallengeGameData();
+
+        new_data.mapData.WC_challenge1.stars = default_stars;
+        new_data.mapData.WC_challenge2.stars = default_stars;
+        new_data.mapData.WC_challenge3.stars = default_stars;
+
+        new_data.mapData.WC_challenge1.gameType = GameType.None;
+        new_data.mapData.WC_challenge2.gameType = GameType.None;
+        new_data.mapData.WC_challenge3.gameType = GameType.None;
+
+        new_data.mapData.WC_signPost_unlocked = false;
+        new_data.mapData.WC_signPost_stars = 0;
+
+
+        // pirate ship
+        new_data.mapData.PS_boat = new MapIconData();
+        new_data.mapData.PS_bridge = new MapIconData();
+        new_data.mapData.PS_front = new MapIconData();
+        new_data.mapData.PS_parrot = new MapIconData();
+        new_data.mapData.PS_sail = new MapIconData();
+        new_data.mapData.PS_wheel = new MapIconData();
+
+        new_data.mapData.PS_boat.isFixed = true;
+        new_data.mapData.PS_bridge.isFixed = true;
+        new_data.mapData.PS_front.isFixed =   true;
+        new_data.mapData.PS_parrot.isFixed = true;
+        new_data.mapData.PS_sail.isFixed = true;
+        new_data.mapData.PS_wheel.isFixed = true;
+
+        new_data.mapData.PS_boat.stars =   default_mapDataStars;
+        new_data.mapData.PS_bridge.stars =   default_mapDataStars;
+        new_data.mapData.PS_front.stars =     default_mapDataStars;
+        new_data.mapData.PS_parrot.stars =   default_mapDataStars;
+        new_data.mapData.PS_sail.stars =   default_mapDataStars;
+        new_data.mapData.PS_wheel.stars =   default_mapDataStars;
+
+        new_data.mapData.PS_challenge1 = new ChallengeGameData();
+        new_data.mapData.PS_challenge2 = new ChallengeGameData();
+        new_data.mapData.PS_challenge3 = new ChallengeGameData();
+
+        new_data.mapData.PS_challenge1.stars = default_stars;
+        new_data.mapData.PS_challenge2.stars = default_stars;
+        new_data.mapData.PS_challenge3.stars = default_stars;
+
+        new_data.mapData.PS_challenge1.gameType = GameType.None;
+        new_data.mapData.PS_challenge2.gameType = GameType.None;
+        new_data.mapData.PS_challenge3.gameType = GameType.None;
+
+        new_data.mapData.PS_signPost_unlocked = false;
+        new_data.mapData.PS_signPost_stars = 0;
+
+
+        // mermaid beach
+        new_data.mapData.MB_bucket = new MapIconData();
+        new_data.mapData.MB_castle = new MapIconData();
+        new_data.mapData.MB_ladder = new MapIconData();
+        new_data.mapData.MB_mermaids = new MapIconData();
+        new_data.mapData.MB_rock = new MapIconData();
+        new_data.mapData.MB_umbrella = new MapIconData();
+
+        new_data.mapData.MB_bucket.isFixed = true;
+        new_data.mapData.MB_castle.isFixed = true;
+        new_data.mapData.MB_ladder.isFixed =   true;
+        new_data.mapData.MB_mermaids.isFixed = true;
+        new_data.mapData.MB_rock.isFixed = true;
+        new_data.mapData.MB_umbrella.isFixed = true;
+
+        new_data.mapData.MB_bucket.stars =   default_mapDataStars;
+        new_data.mapData.MB_castle.stars =   default_mapDataStars;
+        new_data.mapData.MB_ladder.stars =     default_mapDataStars;
+        new_data.mapData.MB_mermaids.stars =   default_mapDataStars;
+        new_data.mapData.MB_rock.stars =   default_mapDataStars;
+        new_data.mapData.MB_umbrella.stars =   default_mapDataStars;
+
+        new_data.mapData.MB_challenge1 = new ChallengeGameData();
+        new_data.mapData.MB_challenge2 = new ChallengeGameData();
+        new_data.mapData.MB_challenge3 = new ChallengeGameData();
+
+        new_data.mapData.MB_challenge1.stars = default_stars;
+        new_data.mapData.MB_challenge2.stars = default_stars;
+        new_data.mapData.MB_challenge3.stars = default_stars;
+
+        new_data.mapData.MB_challenge1.gameType = GameType.None;
+        new_data.mapData.MB_challenge2.gameType = GameType.None;
+        new_data.mapData.MB_challenge3.gameType = GameType.None;
+
+        new_data.mapData.MB_signPost_unlocked = false;
+        new_data.mapData.MB_signPost_stars = 0;
+
+
+        // ruins 1 + 2
+        new_data.mapData.R_arch = new MapIconData();
+        new_data.mapData.R_caveRock = new MapIconData();
+        new_data.mapData.R_face = new MapIconData();
+        new_data.mapData.R_lizard1 = new MapIconData();
+        new_data.mapData.R_lizard2 = new MapIconData();
+        new_data.mapData.R_pyramid = new MapIconData();
+
+        new_data.mapData.R_arch.isFixed = true;
+        new_data.mapData.R_caveRock.isFixed = true;
+        new_data.mapData.R_face.isFixed =   true;
+        new_data.mapData.R_lizard1.isFixed = true;
+        new_data.mapData.R_lizard2.isFixed = true;
+        new_data.mapData.R_pyramid.isFixed = true;
+
+        new_data.mapData.R_arch.stars =   default_mapDataStars;
+        new_data.mapData.R_caveRock.stars =   default_mapDataStars;
+        new_data.mapData.R_face.stars =     default_mapDataStars;
+        new_data.mapData.R_lizard1.stars =   default_mapDataStars;
+        new_data.mapData.R_lizard2.stars =   default_mapDataStars;
+        new_data.mapData.R_pyramid.stars =   default_mapDataStars;
+
+        new_data.mapData.R_challenge1 = new ChallengeGameData();
+        new_data.mapData.R_challenge2 = new ChallengeGameData();
+        new_data.mapData.R_challenge3 = new ChallengeGameData();
+
+        new_data.mapData.R_challenge1.stars = default_stars;
+        new_data.mapData.R_challenge2.stars = default_stars;
+        new_data.mapData.R_challenge3.stars = default_stars;
+
+        new_data.mapData.R_challenge1.gameType = GameType.None;
+        new_data.mapData.R_challenge2.gameType = GameType.None;
+        new_data.mapData.R_challenge3.gameType = GameType.None;
+
+        new_data.mapData.R_signPost_unlocked = false;
+        new_data.mapData.R_signPost_stars = 0;
+
+
+        // exit jungle
+        new_data.mapData.EJ_bridge = new MapIconData();
+        new_data.mapData.EJ_puppy = new MapIconData();
+        new_data.mapData.EJ_sign = new MapIconData();
+        new_data.mapData.EJ_torch = new MapIconData();
+
+        new_data.mapData.EJ_bridge.isFixed = true;
+        new_data.mapData.EJ_puppy.isFixed = true;
+        new_data.mapData.EJ_sign.isFixed =   true;
+        new_data.mapData.EJ_torch.isFixed = true;
+
+        new_data.mapData.EJ_bridge.stars =   default_mapDataStars;
+        new_data.mapData.EJ_puppy.stars =   default_mapDataStars;
+        new_data.mapData.EJ_sign.stars =     default_mapDataStars;
+        new_data.mapData.EJ_torch.stars =   default_mapDataStars;
+
+        new_data.mapData.EJ_challenge1 = new ChallengeGameData();
+        new_data.mapData.EJ_challenge2 = new ChallengeGameData();
+        new_data.mapData.EJ_challenge3 = new ChallengeGameData();
+
+        new_data.mapData.EJ_challenge1.stars = default_stars;
+        new_data.mapData.EJ_challenge2.stars = default_stars;
+        new_data.mapData.EJ_challenge3.stars = default_stars;
+
+        new_data.mapData.EJ_challenge1.gameType = GameType.None;
+        new_data.mapData.EJ_challenge2.gameType = GameType.None;
+        new_data.mapData.EJ_challenge3.gameType = GameType.None;
+
+        new_data.mapData.EJ_signPost_unlocked = false;
+        new_data.mapData.EJ_signPost_stars = 0;
+
+
+        // exit jungle
+        new_data.mapData.GS_fire = new MapIconData();
+        new_data.mapData.GS_statue = new MapIconData();
+        new_data.mapData.GS_tent1 = new MapIconData();
+        new_data.mapData.GS_tent2 = new MapIconData();
+
+        new_data.mapData.GS_fire.isFixed = true;
+        new_data.mapData.GS_statue.isFixed = true;
+        new_data.mapData.GS_tent1.isFixed =   true;
+        new_data.mapData.GS_tent2.isFixed = true;
+
+        new_data.mapData.GS_fire.stars =   default_mapDataStars;
+        new_data.mapData.GS_statue.stars =   default_mapDataStars;
+        new_data.mapData.GS_tent1.stars =     default_mapDataStars;
+        new_data.mapData.GS_tent2.stars =   default_mapDataStars;
+
+        new_data.mapData.GS_challenge1 = new ChallengeGameData();
+        new_data.mapData.GS_challenge2 = new ChallengeGameData();
+        new_data.mapData.GS_challenge3 = new ChallengeGameData();
+
+        new_data.mapData.GS_challenge1.stars = default_stars;
+        new_data.mapData.GS_challenge2.stars = default_stars;
+        new_data.mapData.GS_challenge3.stars = default_stars;
+
+        new_data.mapData.GS_challenge1.gameType = GameType.None;
+        new_data.mapData.GS_challenge2.gameType = GameType.None;
+        new_data.mapData.GS_challenge3.gameType = GameType.None;
+
+        new_data.mapData.GS_signPost_unlocked = false;
+        new_data.mapData.GS_signPost_stars = 0;
+
+
+        // monkeys
+        new_data.mapData.M_bananas = new MapIconData();
+        new_data.mapData.M_flower = new MapIconData();
+        new_data.mapData.M_guards = new MapIconData();
+        new_data.mapData.M_tree = new MapIconData();
+
+        new_data.mapData.M_bananas.isFixed = true;
+        new_data.mapData.M_flower.isFixed = true;
+        new_data.mapData.M_guards.isFixed =   true;
+        new_data.mapData.M_tree.isFixed = true;
+
+        new_data.mapData.M_bananas.stars =   default_mapDataStars;
+        new_data.mapData.M_flower.stars =   default_mapDataStars;
+        new_data.mapData.M_guards.stars =     default_mapDataStars;
+        new_data.mapData.M_tree.stars =   default_mapDataStars;
+
+        new_data.mapData.M_challenge1 = new ChallengeGameData();
+        new_data.mapData.M_challenge2 = new ChallengeGameData();
+        new_data.mapData.M_challenge3 = new ChallengeGameData();
+
+        new_data.mapData.M_challenge1.stars = default_stars;
+        new_data.mapData.M_challenge2.stars = default_stars;
+        new_data.mapData.M_challenge3.stars = default_stars;
+
+        new_data.mapData.M_challenge1.gameType = GameType.None;
+        new_data.mapData.M_challenge2.gameType = GameType.None;
+        new_data.mapData.M_challenge3.gameType = GameType.None;
+
+        new_data.mapData.M_signPost_unlocked = false;
+        new_data.mapData.M_signPost_stars = 0;
+        
+
         // stickers
         new_data.stickerInventory = new List<InventoryStickerData>();
         // classic sticker board
