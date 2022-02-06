@@ -656,10 +656,11 @@ public class MapAnimationController : MonoBehaviour
 
     private IEnumerator ChallengeGame1Routine(MapLocation location)
     {
+        // get current chapter
         Chapter currChapter = StudentInfoSystem.GetCurrentProfile().currentChapter;
 
         // set julius's challenge game
-        SetJuliusChallengeGame(location);
+        bool firstTime = SetJuliusChallengeGame(location);
 
         // play correct player lose talkies
         if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -706,19 +707,51 @@ public class MapAnimationController : MonoBehaviour
 
     private IEnumerator ChallengeGame2Routine(MapLocation location)
     {
+        // get current chapter
+        Chapter currChapter = StudentInfoSystem.GetCurrentProfile().currentChapter;
+
         // set marcus stuff
         bool firstTime = SetMarcusChallengeGame(location);
 
         if (firstTime)
         {
+            // play julius loses
+            switch (currChapter)
+            {
+                case Chapter.chapter_0:
+                case Chapter.chapter_1:
+                case Chapter.chapter_2:
+                case Chapter.chapter_3:
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaJulius_2_p1);
+                    break;
 
+                case Chapter.chapter_4:
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaJulius_2_p2);
+                    break;
+
+                case Chapter.chapter_5:
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaJulius_2_p3);
+                    break;
+            }
+            
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // do not go to game if talkie manager says not to
+            if (TalkieManager.instance.doNotContinueToGame)
+            {
+                TalkieManager.instance.doNotContinueToGame = false;
+            }
+            else
+            {
+                // set game manager stuff
+                GameManager.instance.mapID = MapIconIdentfier.GV_challenge_2;
+                GameManager.instance.playingChallengeGame = true;
+
+                // continue to marcus challenge game
+                marcus.GoToGameDataSceneImmediately();
+            }
         }
-        else
-        {
-
-        }
-
-        Chapter currChapter = StudentInfoSystem.GetCurrentProfile().currentChapter;
 
         // play correct lose talkies
         if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
@@ -762,16 +795,30 @@ public class MapAnimationController : MonoBehaviour
 
     private IEnumerator ChallengeGame3Routine(MapLocation location)
     {
-        // set tiger stuff
-        if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType == GameType.None)
-        {
-            GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage);
-            MapAnimationController.instance.brutus.gameType = newGameType;
-            StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType = newGameType;
-            StudentInfoSystem.SaveStudentPlayerData();
+        // get current chapter
+        Chapter currChapter = StudentInfoSystem.GetCurrentProfile().currentChapter;
 
-            // play marcus loses + brutus challenges
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_loses__brutus_challenges);
+        // set brutus stuff
+        bool firstTime = SetBrutusChallengeGame(location);
+
+        if (firstTime)
+        {
+            // play marcus loses
+            switch (currChapter)
+            {
+                case Chapter.chapter_0:
+                case Chapter.chapter_1:
+                case Chapter.chapter_2:
+                case Chapter.chapter_3:
+                case Chapter.chapter_4:
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaMarcus_2_p1);
+                    break;
+
+                case Chapter.chapter_5:
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaMarcus_2_p2);
+                    break;
+            }
+            
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
@@ -790,17 +837,29 @@ public class MapAnimationController : MonoBehaviour
                 MapAnimationController.instance.brutus.GoToGameDataSceneImmediately();
             }
         }
-        else
-        {
-            MapAnimationController.instance.brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType;
-        }
 
         // play correct lose talkies
         if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
             !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
         {
+            print ("brutus wins first time");
+
             // play brutus wins
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_wins);
+            switch (currChapter)
+            {
+                case Chapter.chapter_0:
+                case Chapter.chapter_1:
+                case Chapter.chapter_2:
+                case Chapter.chapter_3:
+                case Chapter.chapter_4:
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaBrutusWins_1_p1);
+                    break;
+
+                case Chapter.chapter_5:
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaBrutusWins_1_p2);
+                    break;
+            }
+
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
         }
@@ -808,8 +867,10 @@ public class MapAnimationController : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
             StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
         {
-            // play brutus wins again
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_wins_again);
+            print ("brutus wins every other time");
+
+            // play marcus wins again
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaJuliusWins_2_p1);
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
         }
@@ -831,13 +892,14 @@ public class MapAnimationController : MonoBehaviour
                     julius.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType = newGameType;
                     StudentInfoSystem.SaveStudentPlayerData();
-                    return true;
+                    firstTime = true;
                 }
                 else
                 {
                     julius.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType;
-                    return false;
+                    firstTime = false;
                 }
+                break;
 
             case MapLocation.Mudslide:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType == GameType.None)
@@ -846,19 +908,24 @@ public class MapAnimationController : MonoBehaviour
                     julius.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType = newGameType;
                     StudentInfoSystem.SaveStudentPlayerData();
-                    return
+                    firstTime = true;
                 }
                 else
                 {
                     julius.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType;
+                    firstTime = false;
                 }
                 break;
         }
+
+        return firstTime;
     }
 
     // i hate that i have to do this this way but i have no choice :,)
-    private void SetMarcusChallengeGame(MapLocation location)
+    private bool SetMarcusChallengeGame(MapLocation location)
     {
+        bool firstTime = false;
+
         switch (location)
         {
             case MapLocation.GorillaVillage:
@@ -869,32 +936,61 @@ public class MapAnimationController : MonoBehaviour
                     marcus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType = newGameType;
                     StudentInfoSystem.SaveStudentPlayerData();
-
-                    // play julius loses + marcus challenges
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_loses__marcus_challenges);
-                    while (TalkieManager.instance.talkiePlaying)
-                        yield return null;
-
-                    // do not go to game if talkie manager says not to
-                    if (TalkieManager.instance.doNotContinueToGame)
-                    {
-                        TalkieManager.instance.doNotContinueToGame = false;
-                    }
-                    else
-                    {
-                        // set game manager stuff
-                        GameManager.instance.mapID = MapIconIdentfier.GV_challenge_2;
-                        GameManager.instance.playingChallengeGame = true;
-
-                        // continue to marcus challenge game
-                        marcus.GoToGameDataSceneImmediately();
-                    }
+                    firstTime = true;
                 }
                 else
                 {
                     marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.Mudslide:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType == GameType.None)
+                {
+                    print ("you beat julius!");
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide);
+                    marcus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType;
+                    firstTime = false;
                 }
                 break;
         }
+
+        return firstTime;
+    }
+
+    // i hate that i have to do this this way but i have no choice :,)
+    private bool SetBrutusChallengeGame(MapLocation location)
+    {
+        bool firstTime = false;
+
+        switch (location)
+        {
+            case MapLocation.GorillaVillage:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage);
+                    brutus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType;
+                    firstTime = false;
+                }
+                break;
+
+        }
+
+        return firstTime;
     }
 }

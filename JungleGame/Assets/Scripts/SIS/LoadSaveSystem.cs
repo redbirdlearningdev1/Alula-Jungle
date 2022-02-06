@@ -173,6 +173,7 @@ public static class LoadSaveSystem
         new_data.currStoryBeat = default_gameEvent;
         new_data.firstTimeLoseChallengeGame = false;
         new_data.everyOtherTimeLoseChallengeGame = false;
+        new_data.firstGuradsRoyalRumble = true;
         new_data.mapLimit = 0;
         new_data.currentChapter = Chapter.chapter_0;
         new_data.mapData = new MapData();

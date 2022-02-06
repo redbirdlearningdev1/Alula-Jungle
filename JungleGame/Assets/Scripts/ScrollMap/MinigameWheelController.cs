@@ -201,10 +201,52 @@ public class MinigameWheelController : MonoBehaviour
 
             yield return new WaitForSeconds(1f);
 
-            // play default talkie for now
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.defaultRRTalkie);
-            while (TalkieManager.instance.talkiePlaying)
-                yield return null;
+            // get current chapter
+            Chapter currChapter = StudentInfoSystem.GetCurrentProfile().currentChapter;
+
+            // play correct RR talkie based on current chapter
+            switch (currChapter)
+            {
+                case Chapter.chapter_0:
+                case Chapter.chapter_1:
+                case Chapter.chapter_2:
+                case Chapter.chapter_3:
+                    // play julius RR intro
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRJuliusIntro_1_p1);
+                    while (TalkieManager.instance.talkiePlaying)
+                        yield return null;
+                    break;
+
+                case Chapter.chapter_4:
+                case Chapter.chapter_5:
+                    // play guards RR intro
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRGuardsIntro_1_p1);
+                    while (TalkieManager.instance.talkiePlaying)
+                        yield return null;
+                    // first guards RR?
+                    if (StudentInfoSystem.GetCurrentProfile().firstGuradsRoyalRumble)
+                    {
+                        // play guards RR intro 2 p1
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRGuardsIntro_2_p1);
+                        while (TalkieManager.instance.talkiePlaying)
+                            yield return null;
+
+                        // save to SIS
+                        StudentInfoSystem.GetCurrentProfile().firstGuradsRoyalRumble = false;
+                        StudentInfoSystem.SaveStudentPlayerData();
+                    }
+                    else
+                    {
+                        // play guards RR intro 2 p2
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRGuardsIntro_2_p2);
+                        while (TalkieManager.instance.talkiePlaying)
+                            yield return null;
+                    }
+                    break;
+
+            }
+
+            
 
             // do not go to game if talkie manager says not to
             if (TalkieManager.instance.doNotContinueToGame)

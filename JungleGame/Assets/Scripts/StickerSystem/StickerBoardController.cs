@@ -158,7 +158,7 @@ public class StickerBoardController : MonoBehaviour
             Board.instance.isOn = false;
 
             // play lester intro 2
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.lester_intro_2);
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.LesterIntro_1_p2);
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
             
@@ -225,7 +225,7 @@ public class StickerBoardController : MonoBehaviour
             WagonWindowController.instance.wagonBackground.LerpImageAlpha(WagonWindowController.instance.wagonBackground.GetComponent<Image>(), 0.75f, 0.1f);
 
             // play lester intro 3
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.lester_intro_3);
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.LesterIntro_1_p3);
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 

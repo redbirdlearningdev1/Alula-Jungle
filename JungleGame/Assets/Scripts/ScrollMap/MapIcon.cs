@@ -161,7 +161,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     //public bool popupWindow;
 
     [Header("Map ID")]
-    public MapIconIdentfier identfier;
+    public MapIconIdentfier identifier;
 
     [Header("Animation Stuff")]
     public bool canBeFixed;
@@ -470,7 +470,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         // save to SIS
         if (saveToSIS)
         {
-            switch (identfier)
+            switch (identifier)
             {
                 // gorilla village
                 case MapIconIdentfier.GV_house1:
@@ -611,7 +611,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PrologueStoryGame)
         {  
             // pre story game interaction
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.pre_minigame);
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PreStory_1_p1);
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
@@ -619,12 +619,51 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         }
 
         // check for royal rumble
-        if (StudentInfoSystem.GetCurrentProfile().royalRumbleActive && StudentInfoSystem.GetCurrentProfile().royalRumbleID == this.identfier)
+        if (StudentInfoSystem.GetCurrentProfile().royalRumbleActive && StudentInfoSystem.GetCurrentProfile().royalRumbleID == this.identifier)
         {
-            // play default talkie for now
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.defaultRRTalkie);
-            while (TalkieManager.instance.talkiePlaying)
-                yield return null;
+            // get current chapter
+            Chapter currChapter = StudentInfoSystem.GetCurrentProfile().currentChapter;
+
+            // play correct RR talkie based on current chapter
+            switch (currChapter)
+            {
+                case Chapter.chapter_0:
+                case Chapter.chapter_1:
+                case Chapter.chapter_2:
+                case Chapter.chapter_3:
+                    // play julius RR intro
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRJuliusIntro_1_p1);
+                    while (TalkieManager.instance.talkiePlaying)
+                        yield return null;
+                    break;
+
+                case Chapter.chapter_4:
+                case Chapter.chapter_5:
+                    // play guards RR intro
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRGuardsIntro_1_p1);
+                    while (TalkieManager.instance.talkiePlaying)
+                        yield return null;
+                    // first guards RR?
+                    if (StudentInfoSystem.GetCurrentProfile().firstGuradsRoyalRumble)
+                    {
+                        // play guards RR intro 2 p1
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRGuardsIntro_2_p1);
+                        while (TalkieManager.instance.talkiePlaying)
+                            yield return null;
+
+                        // save to SIS
+                        StudentInfoSystem.GetCurrentProfile().firstGuradsRoyalRumble = false;
+                        StudentInfoSystem.SaveStudentPlayerData();
+                    }
+                    else
+                    {
+                        // play guards RR intro 2 p2
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRGuardsIntro_2_p2);
+                        while (TalkieManager.instance.talkiePlaying)
+                            yield return null;
+                    }
+                    break;
+            }
 
             // do not go to game if talkie manager says not to
             if (TalkieManager.instance.doNotContinueToGame)
@@ -639,14 +678,14 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         }
         else
         {
-            MinigameWheelController.instance.RevealWheel(identfier);
+            MinigameWheelController.instance.RevealWheel(identifier);
             yield break;
         }
     }
 
     public int GetNumStars()
     {
-        switch (identfier)
+        switch (identifier)
         {
             default:
                 return -1;

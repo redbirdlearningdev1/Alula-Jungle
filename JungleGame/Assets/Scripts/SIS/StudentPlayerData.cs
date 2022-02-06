@@ -73,6 +73,7 @@ public class StudentPlayerData
     public bool unlockedStickerButton;
     public bool firstTimeLoseChallengeGame;
     public bool everyOtherTimeLoseChallengeGame;
+    public bool firstGuradsRoyalRumble;
 
     public List<ActionWordEnum> actionWordPool;
     public List<ChallengeWord> challengeWordPool;
@@ -167,8 +168,7 @@ public enum Chapter
     chapter_3,
     chapter_4,
     chapter_5,
-    chapter_6,
-    endGame_7
+    chapter_final
 }
 
 [System.Serializable]

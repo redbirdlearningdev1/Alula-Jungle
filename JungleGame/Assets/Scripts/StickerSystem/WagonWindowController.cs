@@ -419,7 +419,7 @@ public class WagonWindowController : MonoBehaviour
             wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0.75f, 0.5f);
 
             // play lester intro 1
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.lester_intro_1);
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.LesterIntro_1_p1);
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
@@ -677,7 +677,7 @@ public class WagonWindowController : MonoBehaviour
            Book.GetComponent<WiggleController>().StopWiggle();
 
             // play lester intro 4
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.lester_intro_4);
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.LesterIntro_1_p4);
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 

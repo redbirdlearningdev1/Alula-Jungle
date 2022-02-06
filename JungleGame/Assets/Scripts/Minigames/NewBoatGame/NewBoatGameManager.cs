@@ -198,7 +198,7 @@ public class NewBoatGameManager : MonoBehaviour
                 yield return new WaitForSeconds(3f);
 
                 // play talkie and wait for it to finish
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.boatGame);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.BoatGame_1_p1);
                 while (TalkieManager.instance.talkiePlaying)
                 {
                     yield return null;

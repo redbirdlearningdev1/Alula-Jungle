@@ -92,16 +92,24 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.VillageRebuilt ||
                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.SpookyForestPlayGames)
             {
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.darwinQuips);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.DarwinQuips_1_p1);
                 yield break;
             }
+
+            // other story beats
+            // TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.DarwinQuips_1_p2);
+            // yield break;
+
+            // other story beats
+            // TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.DarwinQuips_1_p3);
+            // yield break;
         }
         else if (character == Character.Clogg)
         {
             if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillageUnlocked ||
                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcCampPlayGames)
             {
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.cloggQuips);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CloggQuips_1_p1);
                 yield break;
             }
         }
@@ -127,7 +135,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[0];
 
                 // add pre story game talkie here
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.pre_darwin);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PreStory_2_p1);
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
             }
@@ -278,9 +286,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         #   CHALLENGE GAMES
         ################################################
         */  
-
         
-
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1 ||
                  StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Mudslide_challengeGame_1 ||
                  StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_1 ||
@@ -288,11 +294,37 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         {
             if (character == Character.Julius)
             {
-                // play julius challenges
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_challenges);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-                
+                // get current chapter
+                Chapter currChapter = StudentInfoSystem.GetCurrentProfile().currentChapter;
+
+                // play correct RR talkie based on current chapter
+                switch (currChapter)
+                {
+                    case Chapter.chapter_0:
+                    case Chapter.chapter_1:
+                    case Chapter.chapter_2:
+                    case Chapter.chapter_3:
+                        // play julius challenges
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaJulius_1_p1);
+                        while (TalkieManager.instance.talkiePlaying)
+                            yield return null;
+                        break;
+
+                    case Chapter.chapter_4:
+                        // play julius challenges
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaJulius_1_p2);
+                        while (TalkieManager.instance.talkiePlaying)
+                            yield return null;
+                        break;
+
+                    case Chapter.chapter_5:
+                        // play julius challenges
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaJulius_1_p3);
+                        while (TalkieManager.instance.talkiePlaying)
+                            yield return null;
+                        break;
+                }
+
                 // set bool to true
                 playingChallengeGame = true;
             }
@@ -304,8 +336,9 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         {
             if (character == Character.Marcus)
             {
-                // play julius challenges
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_challenges);
+
+                // play marcus challenges
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaMarcus_1_p1);
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
                 
@@ -320,8 +353,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         {
             if (character == Character.Brutus)
             {
-                // play julius challenges
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_challenges);
+                // play brutus challenges
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaBrutus_1_p1);
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
                 

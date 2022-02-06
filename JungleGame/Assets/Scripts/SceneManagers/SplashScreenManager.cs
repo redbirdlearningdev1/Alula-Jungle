@@ -148,7 +148,7 @@ public class SplashScreenManager : MonoBehaviour
                 BG6_animator.Play("6_Ch5");
             }
 
-            if (chapter > Chapter.chapter_6)
+            if (chapter > Chapter.chapter_final)
             {
                 BG4_animator.Play("4_Ch6");
             }
