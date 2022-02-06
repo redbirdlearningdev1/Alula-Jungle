@@ -15,6 +15,9 @@ public enum MapAnim
     MudslideDefeated,
     OrcVillageRebuilt,
     OrcVillageDefeated,
+    SpookyForestIntro,
+    SpookyForestRebuilt,
+    SpookyForestDefeated,
 
 
     ChallengeGame1,
@@ -265,6 +268,26 @@ public class MapAnimationController : MonoBehaviour
                 darwin.ShowExclamationMark(true);
                 darwin.interactable = true;
                 break;
+
+            case StoryBeat.SpookyForestPlayGames:
+                // place darwin in SF
+                darwin.mapAnimator.Play("DarwinSFPos");
+                darwin.FlipCharacterToRight();
+                darwin.interactable = true;
+                break;
+
+            case StoryBeat.OrcCampUnlocked:
+                // place clogg in OC
+                clogg.mapAnimator.Play("CloggOCPos");
+                clogg.ShowExclamationMark(true);
+                clogg.interactable = true;
+                break;
+
+            case StoryBeat.OrcCampPlayGames:
+                // place clogg in OC
+                clogg.mapAnimator.Play("CloggOCPos");
+                clogg.interactable = true;
+                break;
         }
     }
 
@@ -332,6 +355,18 @@ public class MapAnimationController : MonoBehaviour
 
             case MapAnim.OrcVillageDefeated:
                 StartCoroutine(OrcVillageDefeated());
+                break;
+
+            case MapAnim.SpookyForestIntro:
+                StartCoroutine(SpookyForestIntro());
+                break;
+
+            case MapAnim.SpookyForestRebuilt:
+                StartCoroutine(SpookyForestRebuilt());
+                break;
+
+            case MapAnim.SpookyForestDefeated:
+                StartCoroutine(SpookyForestDefeated());
                 break;
         }
     }
@@ -996,6 +1031,249 @@ public class MapAnimationController : MonoBehaviour
         animationDone = false;
     }
 
+    private IEnumerator SpookyForestIntro()
+    {
+        darwin.ShowExclamationMark(false);
+        darwin.interactable = false;
+
+        // spider intro 1
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderIntro_1_p1);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // tiger and monkies walk in
+        julius.characterAnimator.Play("tigerWalk");
+        marcus.characterAnimator.Play("marcusWalkIn");
+        brutus.characterAnimator.Play("brutusWalkIn");
+
+        julius.mapAnimator.Play("JuliusWalkInSF");
+        marcus.mapAnimator.Play("MarcusWalkInSF");
+        brutus.mapAnimator.Play("BrutusWalkInSF");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkInSF"));
+
+        // idle animations
+        julius.characterAnimator.Play("aTigerIdle");
+        marcus.characterAnimator.Play("marcusBroken");
+        brutus.characterAnimator.Play("brutusBroken");
+
+        yield return new WaitForSeconds(0.5f);
+
+        // spider intro 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderIntro_1_p2);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // destroy village
+        tigerSwipeAnim.Play("tigerScreenSwipe");
+        julius.characterAnimator.Play("tigerSwipe");
+        ScrollMapManager.instance.ShakeMap();
+        // destroy gorilla village assets
+        foreach (var mapIcon in ScrollMapManager.instance.mapLocations[5].mapIcons)
+        {
+            mapIcon.SetFixed(false, true, false);
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        // spider intro 3
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderIntro_1_p3);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // tiger runs off screen
+        julius.characterAnimator.Play("aTigerTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        julius.mapAnimator.Play("JuliusWalkOutSF");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutSF"));
+
+        // spider intro 4
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderIntro_1_p4);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // monkies go hehe and haha then run off too
+        marcus.characterAnimator.Play("marcusWin");
+        brutus.characterAnimator.Play("brutusWin");
+
+        yield return new WaitForSeconds(1f);
+
+        marcus.characterAnimator.Play("marcusTurn");
+        brutus.characterAnimator.Play("brutusTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        marcus.mapAnimator.Play("MarcusWalkOutSF");
+        brutus.mapAnimator.Play("BrutusWalkOutSF");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "MarcusWalkOutSF"));
+
+        // spider intro 5
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderIntro_1_p5);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // spider intro 6
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderIntro_1_p6);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // save to SIS and exit to scroll map
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        // make darwin interactable
+        darwin.interactable = true;
+        darwin.ShowExclamationMark(true);
+
+        yield break;
+    }
+
+    private IEnumerator SpookyForestRebuilt()
+    {
+        // play spooky forest rebuilt talkie 1
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderRebuilt_1_p1);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // move darwin off screen
+        darwin.FlipCharacterToRight();
+        darwin.characterAnimator.Play("gorillaWalk");
+        darwin.mapAnimator.Play("DarwinWalkOutSF");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(darwin.mapAnimator, "DarwinWalkOutSF"));
+
+        // play spooky forest rebuilt talkie 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderRebuilt_1_p2);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // tiger and monkies walk in
+        julius.characterAnimator.Play("tigerWalk");
+        marcus.characterAnimator.Play("marcusWalkIn");
+        brutus.characterAnimator.Play("brutusWalkIn");
+
+        julius.mapAnimator.Play("JuliusWalkInSF");
+        marcus.mapAnimator.Play("MarcusWalkInSF");
+        brutus.mapAnimator.Play("BrutusWalkInSF");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkInSF"));
+
+        // idle animations
+        julius.characterAnimator.Play("aTigerIdle");
+        marcus.characterAnimator.Play("marcusBroken");
+        brutus.characterAnimator.Play("brutusBroken");
+
+        yield return new WaitForSeconds(0.5f);
+
+        // play spooky forest rebuilt talkie 3
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderRebuilt_1_p3);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // make challenge games active
+        yield return new WaitForSeconds(0.5f);
+
+        // set julius challenge game
+        SetJuliusChallengeGame(MapLocation.SpookyForest);
+            
+        julius.ShowExclamationMark(true);
+        julius.interactable = true;
+        julius.GetComponent<Animator>().Play("aTigerTwitch");
+    }
+
+    private IEnumerator SpookyForestDefeated()
+    {
+        // play spooky forest defeated 1
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderDefeated_1_p1);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // tiger runs off screen
+        julius.characterAnimator.Play("aTigerTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        julius.mapAnimator.Play("JuliusWalkOutSF");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutSF"));
+
+        // play spooky forest challenge 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderDefeated_1_p2);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // monkies go hehe and haha then run off too
+        marcus.characterAnimator.Play("marcusWin");
+        brutus.characterAnimator.Play("brutusWin");
+
+        yield return new WaitForSeconds(1f);
+
+        marcus.characterAnimator.Play("marcusTurn");
+        brutus.characterAnimator.Play("brutusTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        marcus.mapAnimator.Play("MarcusWalkOutSF");
+        brutus.mapAnimator.Play("BrutusWalkOutSF");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutSF"));
+
+        // place tiger and monkies off screen
+        julius.transform.localScale = Vector3.zero;
+        marcus.transform.localScale = Vector3.zero;
+        brutus.transform.localScale = Vector3.zero;
+
+        julius.mapAnimator.Play("JuliusOffScreenPos");
+        marcus.mapAnimator.Play("MarcusOffScreenPos");
+        brutus.mapAnimator.Play("BrutusOffScreenPos");
+
+        yield return new WaitForSeconds(0.1f);
+
+        julius.transform.localScale = Vector3.one;
+        marcus.transform.localScale = Vector3.one;
+        brutus.transform.localScale = Vector3.one;
+
+        // play spooky forest challenge 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderDefeated_1_p3);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // SF sign post springs into place
+        ScrollMapManager.instance.mapLocations[5].signPost.ShowSignPost(0, false);
+
+        // before unlocking orc camp - set objects to be destroyed
+        foreach (var icon in ScrollMapManager.instance.mapLocations[6].mapIcons)
+            icon.SetFixed(false, false, true);
+
+        // place clogg in orc camp
+        clogg.mapAnimator.Play("CloggOCPos");
+        clogg.ShowExclamationMark(true);
+        clogg.interactable = false;
+
+        // unlock orc camp
+        ScrollMapManager.instance.UnlockMapArea(MapLocation.OrcCamp, false);
+        yield return new WaitForSeconds(10f);
+
+        // clogg is interactable
+        clogg.interactable = true;
+
+        // Save to SIS
+        StudentInfoSystem.GetCurrentProfile().mapLimit = 6;
+        StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_unlocked = true;
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
+    }
 
 
 
@@ -1271,6 +1549,183 @@ public class MapAnimationController : MonoBehaviour
                     firstTime = false;
                 }
                 break;
+
+            case MapLocation.OrcVillage:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage);
+                    julius.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    julius.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.SpookyForest:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest);
+                    julius.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    julius.gameType = StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.OrcCamp:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcCamp);
+                    julius.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    julius.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.GorillaPoop:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge1.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop);
+                    julius.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge1.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    julius.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge1.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.WindyCliff:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge1.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff);
+                    julius.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge1.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    julius.gameType = StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge1.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.PirateShip:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge1.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip);
+                    julius.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge1.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    julius.gameType = StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge1.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.MermaidBeach:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach);
+                    julius.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    julius.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.Ruins1:
+            case MapLocation.Ruins2:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.R_challenge1.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1);
+                    julius.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.R_challenge1.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    julius.gameType = StudentInfoSystem.GetCurrentProfile().mapData.R_challenge1.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.ExitJungle:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge1.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle);
+                    julius.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge1.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    julius.gameType = StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge1.gameType;
+                    firstTime = false;
+                }
+                break;
+            
+            case MapLocation.GorillaStudy:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge1.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy);
+                    julius.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge1.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    julius.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge1.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.Monkeys:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.M_challenge1.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys);
+                    julius.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.M_challenge1.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    julius.gameType = StudentInfoSystem.GetCurrentProfile().mapData.M_challenge1.gameType;
+                    firstTime = false;
+                }
+                break;
         }
 
         return firstTime;
@@ -1286,7 +1741,6 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.GorillaVillage:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType == GameType.None)
                 {
-                    print ("you beat julius!");
                     GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage);
                     marcus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType = newGameType;
@@ -1303,7 +1757,6 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.Mudslide:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType == GameType.None)
                 {
-                    print ("you beat julius!");
                     GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide);
                     marcus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType = newGameType;
@@ -1313,6 +1766,183 @@ public class MapAnimationController : MonoBehaviour
                 else
                 {
                     marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.OrcVillage:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage);
+                    marcus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.SpookyForest:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest);
+                    marcus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.OrcCamp:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcCamp);
+                    marcus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.GorillaPoop:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge2.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop);
+                    marcus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge2.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge2.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.WindyCliff:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge2.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff);
+                    marcus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge2.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge2.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.PirateShip:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge2.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip);
+                    marcus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge2.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge2.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.MermaidBeach:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach);
+                    marcus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.Ruins1:
+            case MapLocation.Ruins2:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.R_challenge2.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1);
+                    marcus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.R_challenge2.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.R_challenge2.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.ExitJungle:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge2.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle);
+                    marcus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge2.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge2.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.GorillaStudy:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge2.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy);
+                    marcus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge2.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge2.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.Monkeys:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.M_challenge2.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys);
+                    marcus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.M_challenge2.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.M_challenge2.gameType;
                     firstTime = false;
                 }
                 break;
@@ -1344,6 +1974,198 @@ public class MapAnimationController : MonoBehaviour
                 }
                 break;
 
+            case MapLocation.Mudslide:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide);
+                    brutus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.OrcVillage:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage);
+                    brutus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.SpookyForest:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest);
+                    brutus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.OrcCamp:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcCamp);
+                    brutus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.GorillaPoop:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge3.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop);
+                    brutus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge3.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge3.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.WindyCliff:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge3.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff);
+                    brutus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge3.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge3.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.PirateShip:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge3.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip);
+                    brutus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge3.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge3.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.MermaidBeach:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach);
+                    brutus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.Ruins1:
+            case MapLocation.Ruins2:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.R_challenge3.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1);
+                    brutus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.R_challenge3.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.R_challenge3.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.ExitJungle:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge3.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle);
+                    brutus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge3.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge3.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.GorillaStudy:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge3.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy);
+                    brutus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge3.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge3.gameType;
+                    firstTime = false;
+                }
+                break;
+
+            case MapLocation.Monkeys:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.M_challenge3.gameType == GameType.None)
+                {
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys);
+                    brutus.gameType = newGameType;
+                    StudentInfoSystem.GetCurrentProfile().mapData.M_challenge3.gameType = newGameType;
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    firstTime = true;
+                }
+                else
+                {
+                    brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.M_challenge3.gameType;
+                    firstTime = false;
+                }
+                break;
         }
 
         return firstTime;

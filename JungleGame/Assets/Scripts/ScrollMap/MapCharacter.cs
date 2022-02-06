@@ -164,78 +164,16 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 yield break;
             }
         }
-        /*
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.SpookyForestUnlocked)
         {
             // only continue if tapped on gorilla
             if (character == Character.Darwin)
             {
-                ScrollMapManager.instance.gorilla.ShowExclamationMark(false);
-                ScrollMapManager.instance.gorilla.interactable = false;
-
-                // spider intro 1
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spiderIntro_1);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-
-                // tiger and monkies walk in
-                ///MapAnimationController.instance.TigerAndMonkiesWalkInSF();
+                // play SF unlocked
+                MapAnimationController.instance.PlayMapAnim(MapAnim.SpookyForestIntro);
                 // wait for animation to be done
                 while (!MapAnimationController.instance.animationDone)
                     yield return null;
-
-                // spider intro 2
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spiderIntro_2);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-
-                // tiger destroy forest
-                ///MapAnimationController.instance.TigerDestroyForest();
-                // wait for animation to be done
-                while (!MapAnimationController.instance.animationDone)
-                    yield return null;
-
-                // spider intro 3
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spiderIntro_3);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-
-                // tiger run away
-                ///MapAnimationController.instance.TigerRunAwayDefeatedSF();
-                // wait for animation to be done
-                while (!MapAnimationController.instance.animationDone)
-                    yield return null;
-
-                // spider intro 4
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spiderIntro_4);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-
-                // tiger run away
-                ///MapAnimationController.instance.MonkeyExitAnimationSF();
-                // wait for animation to be done
-                while (!MapAnimationController.instance.animationDone)
-                    yield return null;
-
-                // spider intro 5
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spiderIntro_5);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-
-                // spider intro 6
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.spiderIntro_6);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-
-                // save to SIS and exit to scroll map
-                StudentInfoSystem.AdvanceStoryBeat();
-                StudentInfoSystem.SaveStudentPlayerData();
-
-                // make darwin interactable
-                ScrollMapManager.instance.gorilla.interactable = true;
-                ScrollMapManager.instance.gorilla.ShowExclamationMark(true);
-
-                yield break;
             }
         }
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.BeginningStoryGame)
@@ -248,7 +186,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[1];
 
                 // add pre story game talkie here
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.pre_darwin);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PreStory_2_p1);
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
             }
@@ -259,10 +197,10 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             if (character == Character.Clogg)
             {
                 // remove exclamation mark
-                ScrollMapManager.instance.clogg.ShowExclamationMark(false);
+                MapAnimationController.instance.clogg.ShowExclamationMark(false);
 
                 // add orc camp intro
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcCampIntro_1);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.OCampIntro_1_p1);
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
 
@@ -277,9 +215,6 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 yield break;
             }
         }
-
-        */
-
 
         /* 
         ################################################
