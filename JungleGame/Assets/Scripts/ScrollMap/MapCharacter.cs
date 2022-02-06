@@ -140,17 +140,16 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                     yield return null;
             }
         }
-        /*
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillageMeetClogg)
         {
             // only continue if tapped on Clogg
             if (character == Character.Clogg)
             {
                 // remove exclamation mark
-                ScrollMapManager.instance.clogg.ShowExclamationMark(false);
+                MapAnimationController.instance.clogg.ShowExclamationMark(false);
 
                 // add pre story game talkie here
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcVillageIntro_3);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.OVillageIntro_2_p1);
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
 
@@ -165,6 +164,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 yield break;
             }
         }
+        /*
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.SpookyForestUnlocked)
         {
             // only continue if tapped on gorilla

@@ -245,7 +245,6 @@ public class ScrollMapManager : MonoBehaviour
                     yield return null;
             }
         }
-        
         else if (playGameEvent == StoryBeat.VillageRebuilt)
         {
             // make sure player has done the sticker tutorial
@@ -320,244 +319,37 @@ public class ScrollMapManager : MonoBehaviour
                     yield return null;
             }
         }
-        /*
         else if (playGameEvent == StoryBeat.Mudslide_challengeGame_1)
         {
-            // set tiger stuff
-            if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType == GameType.None)
-            {
-                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide);
-                tiger.gameType = newGameType;
-                StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType = newGameType;
-                StudentInfoSystem.SaveStudentPlayerData();
-            }
-            else
-            {
-                tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType;
-            }
-
-            // play correct lose talkies
-            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
-                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
-            {
-                // play julius wins
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-            }
-            else if (
-                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
-                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
-            {
-                // play julius wins again
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins_again);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-            }
-
-            tiger.interactable = true;
-            tiger.ShowExclamationMark(true);
-            tiger.GetComponent<Animator>().Play("aTigerTwitch");
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame1, MapLocation.Mudslide);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
         }
         else if (playGameEvent == StoryBeat.Mudslide_challengeGame_2)
         {
-            // set tiger stuff
-            if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType == GameType.None)
-            {
-                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide);
-                marcus.gameType = newGameType;
-                StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType = newGameType;
-                StudentInfoSystem.SaveStudentPlayerData();
-
-                // play julius loses + marcus challenges
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_loses__marcus_challenges);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-
-                // do not go to game if talkie manager says not to
-                if (TalkieManager.instance.doNotContinueToGame)
-                {
-                    TalkieManager.instance.doNotContinueToGame = false;
-                }
-                else
-                {
-                    // set game manager stuff
-                    GameManager.instance.mapID = MapIconIdentfier.MS_challenge_2;
-                    GameManager.instance.playingChallengeGame = true;
-
-                    // continue to marcus challenge game
-                    marcus.GoToGameDataSceneImmediately();
-                }
-            }
-            else
-            {
-                marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType;
-            }
-
-            // play correct lose talkies
-            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
-                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
-            {
-                // play marcus wins
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_wins);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-            }
-            else if (
-                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
-                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
-            {
-                // play marcus wins again
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_wins_again);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-            }
-
-            marcus.GetComponent<Animator>().Play("marcusLose");
-            marcus.ShowExclamationMark(true);
-            marcus.interactable = true;
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame2, MapLocation.Mudslide);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
         }
         else if (playGameEvent == StoryBeat.Mudslide_challengeGame_3)
         {
-            // set tiger stuff
-            if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType == GameType.None)
-            {
-                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide);
-                brutus.gameType = newGameType;
-                StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType = newGameType;
-                StudentInfoSystem.SaveStudentPlayerData();
-
-                // play marcus loses + brutus challenges
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_loses__brutus_challenges);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-
-                // do not go to game if talkie manager says not to
-                if (TalkieManager.instance.doNotContinueToGame)
-                {
-                    TalkieManager.instance.doNotContinueToGame = false;
-                }
-                else
-                {
-                    // set game manager stuff
-                    GameManager.instance.mapID = MapIconIdentfier.MS_challenge_3;
-                    GameManager.instance.playingChallengeGame = true;
-
-                    // continue to marcus challenge game
-                    brutus.GoToGameDataSceneImmediately();
-                }
-            }
-            else
-            {
-                brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType;
-            }
-
-            // play correct lose talkies
-            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
-                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
-            {
-                // play brutus wins
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_wins);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-            }
-            else if (
-                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
-                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
-            {
-                // play brutus wins again
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_wins_again);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-            }
-
-            brutus.GetComponent<Animator>().Play("brutusLose");
-            brutus.ShowExclamationMark(true);
-            brutus.interactable = true;
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame3, MapLocation.Mudslide);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
         }
         else if (playGameEvent == StoryBeat.MudslideDefeated)
         {
-            // map pos
-            EnableMapSectionsUpTo(MapLocation.Mudslide);
-    
-            // play mudslide defeated 1
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.mudslideChallengeDefeated_1);
-            while (TalkieManager.instance.talkiePlaying)
-                yield return null;
-
-            // tiger runs off screen
-            MapAnimationController.instance.TigerRunAwayDefeatedMS();
+            // play MS defeated
+            MapAnimationController.instance.PlayMapAnim(MapAnim.MudslideDefeated);
             // wait for animation to be done
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
-
-            yield return new WaitForSeconds(2f);
-
-            // play mudslide challenge 2
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.mudslideChallengeDefeated_2);
-            while (TalkieManager.instance.talkiePlaying)
-                yield return null;
-
-            // monkies go hehe and haha then run off too
-            MapAnimationController.instance.MonkeyExitAnimationDefeatedMS();
-            // wait for animation to be done
-            while (!MapAnimationController.instance.animationDone)
-                yield return null;
-
-            // place tiger and monkies off screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.offscreenPos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.offscreenPos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.offscreenPos.position;
-
-            // play mudslide challenge 3
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.mudslideChallengeDefeated_3);
-            while (TalkieManager.instance.talkiePlaying)
-                yield return null;
-
-            // gv sign post springs into place
-            mapLocations[2].signPost.ShowSignPost(0, false);
-            // Save to SIS
-            StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_unlocked = true;
-            StudentInfoSystem.SaveStudentPlayerData();
-
-            // before unlocking orc village - set objects to be destroyed
-            foreach (var icon in mapLocations[4].mapIcons)
-                icon.SetFixed(false, false, true);
-
-            // place clogg in village
-            clogg.transform.position = MapAnimationController.instance.cloggOVPosDEFAULT.position;
-
-            // unlock orc village
-            StartCoroutine(UnlockMapArea(4, false));
-            yield return new WaitForSeconds(10f);
-
-            // play orc village intro talkie
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcVillageIntro_1);
-            while (TalkieManager.instance.talkiePlaying)
-                yield return null;
-
-            // play orc village intro talkie
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcVillageIntro_2);
-            while (TalkieManager.instance.talkiePlaying)
-                yield return null;
-
-            yield return new WaitForSeconds(1f);
-            mapLocations[3].signPost.GetComponent<SignPostController>().SetInteractability(true);
-
-            // make clogg interactable
-            clogg.interactable = true;
-            clogg.ShowExclamationMark(true);
-
-            // save to SIS
-            StudentInfoSystem.GetCurrentProfile().mapLimit = 4;
-            StudentInfoSystem.AdvanceStoryBeat();
-            StudentInfoSystem.SaveStudentPlayerData();
-        }
-        else if (playGameEvent == StoryBeat.OrcVillageMeetClogg) // default
-        {
-            // make clogg interactable
-            clogg.interactable = true;
-            clogg.ShowExclamationMark(true);
         }
         else if (playGameEvent == StoryBeat.OrcVillageUnlocked)
         {
@@ -567,280 +359,46 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().mapData.OV_statue.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.OV_fire.isFixed)
             {
-                // play orc village rebuilt talkie 1
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcVillageRebuilt_1);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-
-                // move tiger and monkies onscreen
-                MapAnimationController.instance.TigerAndMonkiesWalkInOV();
+                // play OV rebuilt
+                MapAnimationController.instance.PlayMapAnim(MapAnim.OrcVillageRebuilt);
                 // wait for animation to be done
                 while (!MapAnimationController.instance.animationDone)
                     yield return null;
-
-                // play orc village rebuilt talkie 2
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcVillageRebuilt_2);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-
-                // move tiger and monkies to challenge pos
-                MapAnimationController.instance.TigerAndMonkiesChallengePosOV();
-                // wait for animation to be done
-                while (!MapAnimationController.instance.animationDone)
-                    yield return null;
-
-                // make challenge games active
-                    yield return new WaitForSeconds(0.5f);
-
-                // set tiger stuff
-                if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType == GameType.None)
-                {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage);
-                    tiger.gameType = newGameType;
-                    StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType = newGameType;
-                    StudentInfoSystem.AdvanceStoryBeat();
-                    StudentInfoSystem.SaveStudentPlayerData();
-                }
-                    
-                tiger.ShowExclamationMark(true);
-                tiger.interactable = true;
-                tiger.GetComponent<Animator>().Play("aTigerTwitch");
-            }
-            else
-            {
-                // place clogg in village
-                clogg.transform.position = MapAnimationController.instance.cloggOVPosDEFAULT.position;
-
-                // make clogg interactable
-                clogg.interactable = true;
             }
         }
         else if (playGameEvent == StoryBeat.OrcVillage_challengeGame_1)
         {
-            // set tiger stuff
-            if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType == GameType.None)
-            {
-                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage);
-                tiger.gameType = newGameType;
-                StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType = newGameType;
-                StudentInfoSystem.SaveStudentPlayerData();
-            }
-            else
-            {
-                tiger.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType;
-            }
-
-            // play correct lose talkies
-            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
-                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
-            {
-                // play julius wins
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-            }
-            else if (
-                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
-                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
-            {
-                // play julius wins again
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_wins_again);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-            }
-
-            yield return new WaitForSeconds(1f);
-
-            tiger.interactable = true;
-            tiger.ShowExclamationMark(true);
-            tiger.GetComponent<Animator>().Play("aTigerTwitch");
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame1, MapLocation.OrcVillage);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
         }
         else if (playGameEvent == StoryBeat.OrcVillage_challengeGame_2)
         {
-            // set tiger stuff
-            if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType == GameType.None)
-            {
-                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage);
-                marcus.gameType = newGameType;
-                StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType = newGameType;
-                StudentInfoSystem.SaveStudentPlayerData();
-
-                // play julius loses + marcus challenges
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.julius_loses__marcus_challenges);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-
-                // do not go to game if talkie manager says not to
-                if (TalkieManager.instance.doNotContinueToGame)
-                {
-                    TalkieManager.instance.doNotContinueToGame = false;
-                }
-                else
-                {
-                    // set game manager stuff
-                    GameManager.instance.mapID = MapIconIdentfier.OV_challenge_2;
-                    GameManager.instance.playingChallengeGame = true;
-
-                    // continue to marcus challenge game
-                    marcus.GoToGameDataSceneImmediately();
-                }
-            }
-            else
-            {
-                marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType;
-            }
-
-            // play correct lose talkies
-            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
-                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
-            {
-                // play marcus wins
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_wins);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-            }
-            else if (
-                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
-                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
-            {
-                // play marcus wins again
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_wins_again);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-            }
-
-            marcus.GetComponent<Animator>().Play("marcusLose");
-            marcus.ShowExclamationMark(true);
-            marcus.interactable = true;
+            // play challenge game 2 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame2, MapLocation.OrcVillage);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
         }
         else if (playGameEvent == StoryBeat.OrcVillage_challengeGame_3)
         {
-            // set tiger stuff
-            if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType == GameType.None)
-            {
-                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage);
-                brutus.gameType = newGameType;
-                StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType = newGameType;
-                StudentInfoSystem.SaveStudentPlayerData();
-
-                // play marcus loses + brutus challenges
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.marcus_loses__brutus_challenges);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-
-                // do not go to game if talkie manager says not to
-                if (TalkieManager.instance.doNotContinueToGame)
-                {
-                    TalkieManager.instance.doNotContinueToGame = false;
-                }
-                else
-                {
-                    // set game manager stuff
-                    GameManager.instance.mapID = MapIconIdentfier.OV_challenge_3;
-                    GameManager.instance.playingChallengeGame = true;
-
-                    // continue to marcus challenge game
-                    brutus.GoToGameDataSceneImmediately();
-                }
-            }
-            else
-            {
-                brutus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType;
-            }
-
-            // play correct lose talkies
-            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
-                !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
-            {
-                // play brutus wins
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_wins);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-            }
-            else if (
-                StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
-                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
-            {
-                // play brutus wins again
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.brutus_wins_again);
-                while (TalkieManager.instance.talkiePlaying)
-                    yield return null;
-            }
-
-            brutus.GetComponent<Animator>().Play("brutusLose");
-            brutus.ShowExclamationMark(true);
-            brutus.interactable = true;
+            // play challenge game 3 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame3, MapLocation.OrcVillage);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
         }
         else if (playGameEvent == StoryBeat.OrcVillageDefeated)
         {
-            // play orc village defeated 1
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcVillageChallengeDefeated_1);
-            while (TalkieManager.instance.talkiePlaying)
-                yield return null;
-
-            // tiger runs off screen
-            MapAnimationController.instance.TigerRunAwayDefeatedOV();
+            // play OV defeated
+            MapAnimationController.instance.PlayMapAnim(MapAnim.OrcVillageDefeated);
             // wait for animation to be done
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
-
-            yield return new WaitForSeconds(2f);
-
-            // monkies go hehe and haha then run off too
-            MapAnimationController.instance.MonkeyExitAnimationDefeatedOV();
-            // wait for animation to be done
-            while (!MapAnimationController.instance.animationDone)
-                yield return null;
-
-            // play orc village challenge 2
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.orcVillageChallengeDefeated_2);
-            while (TalkieManager.instance.talkiePlaying)
-                yield return null;
-
-            // place tiger and monkies off screen
-            MapAnimationController.instance.tiger.transform.position = MapAnimationController.instance.offscreenPos.position;
-            MapAnimationController.instance.marcus.transform.position = MapAnimationController.instance.offscreenPos.position;
-            MapAnimationController.instance.brutus.transform.position = MapAnimationController.instance.offscreenPos.position;
-
-            // ov sign post springs into place
-            mapLocations[4].signPost.ShowSignPost(0, false);
-
-            // before unlocking spooky forest - set objects to be repaired
-            foreach (var icon in mapLocations[5].mapIcons)
-                icon.SetFixed(true, false, true);
-
-            // place darwin in spooky forest
-            gorilla.transform.position = MapAnimationController.instance.gorillaSFPosDEFAULT.position;
-            gorilla.FlipCharacterToRight();
-            gorilla.ShowExclamationMark(true);
-            gorilla.interactable = false;
-
-            // unlock spooky forest
-            StartCoroutine(UnlockMapArea(5, false));
-            yield return new WaitForSeconds(10f);
-
-            // darwin is interactable
-            gorilla.interactable = true;
-
-            // Save to SIS
-            StudentInfoSystem.GetCurrentProfile().mapLimit = 5;
-            StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_2; // new chapter!
-            StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_unlocked = true;
-            StudentInfoSystem.AdvanceStoryBeat();
-            StudentInfoSystem.SaveStudentPlayerData();
         }
-        else if (playGameEvent == StoryBeat.SpookyForestUnlocked)
-        {
-            // darwin interactable
-            gorilla.ShowExclamationMark(true);
-            gorilla.interactable = true;
-        }
-        else if (playGameEvent == StoryBeat.BeginningStoryGame)
-        {
-            // darwin interactable
-            gorilla.ShowExclamationMark(true);
-            gorilla.interactable = true;
-        }
+        /*
         else if (playGameEvent == StoryBeat.SpookyForestPlayGames)
         {
             // make sure player has rebuilt all the OV map icons
