@@ -204,14 +204,23 @@ public class MapAnimationController : MonoBehaviour
                 break;
 
             case StoryBeat.OrcVillageMeetClogg:
-            case StoryBeat.OrcVillageUnlocked:
                 // place clogg in OV
                 clogg.mapAnimator.Play("CloggOVPos");
                 clogg.ShowExclamationMark(true);
                 clogg.interactable = true;
                 break;
 
+            case StoryBeat.OrcVillageUnlocked:
+                // place clogg in OV
+                clogg.mapAnimator.Play("CloggOVPos");
+                clogg.interactable = true;
+                break;
+
             case StoryBeat.OrcVillage_challengeGame_1:
+                // place clogg in OV
+                clogg.mapAnimator.Play("CloggOVPos");
+                clogg.interactable = true;
+                clogg.FlipCharacterToRight();
                 // place julius in OV
                 julius.mapAnimator.Play("JuliusOVPos");
                 julius.characterAnimator.Play("aTigerTwitch");
@@ -226,6 +235,10 @@ public class MapAnimationController : MonoBehaviour
                 break;
 
             case StoryBeat.OrcVillage_challengeGame_2:
+                // place clogg in OV
+                clogg.mapAnimator.Play("CloggOVPos");
+                clogg.interactable = true;
+                clogg.FlipCharacterToRight();
                 // place julius in OV
                 julius.mapAnimator.Play("JuliusOVPos");
                 julius.characterAnimator.Play("sTigerIdle");
@@ -240,6 +253,10 @@ public class MapAnimationController : MonoBehaviour
                 break;
                 
             case StoryBeat.OrcVillage_challengeGame_3:
+                // place clogg in OV
+                clogg.mapAnimator.Play("CloggOVPos");
+                clogg.interactable = true;
+                clogg.FlipCharacterToRight();
                 // place julius in OV
                 julius.mapAnimator.Play("JuliusOVPos");
                 julius.characterAnimator.Play("sTigerIdle");
@@ -254,6 +271,10 @@ public class MapAnimationController : MonoBehaviour
                 break;
 
             case StoryBeat.OrcVillageDefeated:
+                // place clogg in OV
+                clogg.mapAnimator.Play("CloggOVPos");
+                clogg.interactable = true;
+                clogg.FlipCharacterToRight();
                 // place julius in OV
                 julius.mapAnimator.Play("JuliusOVPos");
                 julius.characterAnimator.Play("sTigerIdle");
@@ -337,6 +358,9 @@ public class MapAnimationController : MonoBehaviour
                 break;
 
             case StoryBeat.OrcCamp_challengeGame_1:
+                // place clogg in OC
+                clogg.mapAnimator.Play("CloggOCPos");
+                clogg.interactable = true;
                 // place julius in OC
                 julius.mapAnimator.Play("JuliusOCPos");
                 julius.characterAnimator.Play("aTigerTwitch");
@@ -351,6 +375,9 @@ public class MapAnimationController : MonoBehaviour
                 break;
 
             case StoryBeat.OrcCamp_challengeGame_2:
+                // place clogg in OC
+                clogg.mapAnimator.Play("CloggOCPos");
+                clogg.interactable = true;
                 // place julius in OC
                 julius.mapAnimator.Play("JuliusOCPos");
                 julius.characterAnimator.Play("sTigerIdle");
@@ -365,6 +392,9 @@ public class MapAnimationController : MonoBehaviour
                 break;
                 
             case StoryBeat.OrcCamp_challengeGame_3:
+                // place clogg in OC
+                clogg.mapAnimator.Play("CloggOCPos");
+                clogg.interactable = true;
                 // place julius in OC
                 julius.mapAnimator.Play("JuliusOCPos");
                 julius.characterAnimator.Play("sTigerIdle");
@@ -480,6 +510,10 @@ public class MapAnimationController : MonoBehaviour
                 StartCoroutine(MudslideRebuilt());
                 break;
 
+            case MapAnim.MudslideDefeated:
+                StartCoroutine(MudslideDefeated());
+                break;
+
             case MapAnim.OrcVillageRebuilt:
                 StartCoroutine(OrcVillageRebuilt());
                 break;
@@ -545,7 +579,7 @@ public class MapAnimationController : MonoBehaviour
         boat.GetComponent<MapIcon>().interactable = true;
         boat.GetComponent<WiggleController>().StartWiggle();
 
-        animationDone = false;
+        animationDone = true;
     }
 
     private IEnumerator RevealGorillaVillage()
@@ -583,7 +617,7 @@ public class MapAnimationController : MonoBehaviour
 
         darwin.interactable = true;
 
-        animationDone = false;
+        animationDone = true;
     }
 
     private IEnumerator GorillaVillageIntro()
@@ -704,7 +738,7 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
         
-        animationDone = false;
+        animationDone = true;
     }
 
     private IEnumerator RedShowsStickerButton()
@@ -725,7 +759,7 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
 
-        animationDone = false;
+        animationDone = true;
     }
 
     private IEnumerator DarwinForcesLesterInteraction()
@@ -740,7 +774,7 @@ public class MapAnimationController : MonoBehaviour
         // add glow + wiggle
         SettingsManager.instance.ToggleStickerButtonWiggleGlow(true);
 
-        animationDone = false;
+        animationDone = true;
     }
 
     private IEnumerator GorillaVillageRebuilt()
@@ -798,11 +832,15 @@ public class MapAnimationController : MonoBehaviour
         // set julius challenge game
         SetJuliusChallengeGame(MapLocation.GorillaVillage);
 
+        // advance story beat
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
+
         julius.ShowExclamationMark(true);
         julius.interactable = true;
         julius.characterAnimator.Play("aTigerTwitch");
 
-        animationDone = false;
+        animationDone = true;
     }
 
     private IEnumerator GorillaVillageDefeated()
@@ -907,7 +945,7 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
 
-        animationDone = false;
+        animationDone = true;
     }
 
     private IEnumerator MudslideRebuilt()
@@ -946,12 +984,16 @@ public class MapAnimationController : MonoBehaviour
 
         // set julius challenge game
         SetJuliusChallengeGame(MapLocation.Mudslide);
+
+        // advance story beat
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
             
         julius.ShowExclamationMark(true);
         julius.interactable = true;
         julius.GetComponent<Animator>().Play("aTigerTwitch");
 
-        animationDone = false;
+        animationDone = true;
     }
 
     private IEnumerator MudslideDefeated()
@@ -1052,7 +1094,7 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
 
-        animationDone = false;
+        animationDone = true;
     }
 
     private IEnumerator OrcVillageRebuilt()
@@ -1081,6 +1123,9 @@ public class MapAnimationController : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
+        // turn gorilla to face right
+        clogg.FlipCharacterToRight();
+
         // play orc village rebuilt talkie 2
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.OVillageRebuilt_1_p2);
         while (TalkieManager.instance.talkiePlaying)
@@ -1091,12 +1136,16 @@ public class MapAnimationController : MonoBehaviour
 
         // set julius challenge game
         SetJuliusChallengeGame(MapLocation.OrcVillage);
+
+        // advance story beat
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
             
         julius.ShowExclamationMark(true);
         julius.interactable = true;
         julius.GetComponent<Animator>().Play("aTigerTwitch");
 
-        animationDone = false;
+        animationDone = true;
     }
 
     private IEnumerator OrcVillageDefeated()
@@ -1175,7 +1224,7 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
 
-        animationDone = false;
+        animationDone = true;
     }
 
     private IEnumerator SpookyForestIntro()
@@ -1219,7 +1268,7 @@ public class MapAnimationController : MonoBehaviour
         // destroy gorilla village assets
         foreach (var mapIcon in ScrollMapManager.instance.mapLocations[5].mapIcons)
         {
-            mapIcon.SetFixed(false, true, false);
+            mapIcon.SetFixed(false, true, true);
         }
 
         yield return new WaitForSeconds(2f);
@@ -1279,7 +1328,7 @@ public class MapAnimationController : MonoBehaviour
         darwin.interactable = true;
         darwin.ShowExclamationMark(true);
 
-        yield break;
+        animationDone = true;
     }
 
     private IEnumerator SpookyForestRebuilt()
@@ -1331,10 +1380,16 @@ public class MapAnimationController : MonoBehaviour
 
         // set julius challenge game
         SetJuliusChallengeGame(MapLocation.SpookyForest);
+
+        // advance story beat
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
             
         julius.ShowExclamationMark(true);
         julius.interactable = true;
         julius.GetComponent<Animator>().Play("aTigerTwitch");
+
+        animationDone = true;
     }
 
     private IEnumerator SpookyForestDefeated()
@@ -1420,6 +1475,8 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_unlocked = true;
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
+
+        animationDone = true;
     }
 
     private IEnumerator OrcCampRebuilt()
@@ -1458,10 +1515,16 @@ public class MapAnimationController : MonoBehaviour
 
         // set julius challenge game
         SetJuliusChallengeGame(MapLocation.OrcCamp);
+
+        // advance story beat
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
             
         julius.ShowExclamationMark(true);
         julius.interactable = true;
         julius.GetComponent<Animator>().Play("aTigerTwitch");
+
+        animationDone = true;
     }
 
     private IEnumerator OrcCampDefeated()
@@ -1544,6 +1607,8 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().mapData.OC_signPost_unlocked = true;
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
+
+        animationDone = true;
     }
 
     private IEnumerator GorillaPoopRebuilt()
@@ -1582,10 +1647,16 @@ public class MapAnimationController : MonoBehaviour
 
         // set julius challenge game
         SetJuliusChallengeGame(MapLocation.GorillaPoop);
+
+        // advance story beat
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
             
         julius.ShowExclamationMark(true);
         julius.interactable = true;
         julius.GetComponent<Animator>().Play("aTigerTwitch");
+
+        animationDone = true;
     }
 
     private IEnumerator GorillaPoopDefeated()
@@ -1668,7 +1739,16 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_3; // new chapter!
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
+
+        animationDone = true;
     }
+
+
+
+
+
+
+
 
 
     /* 
@@ -2108,7 +2188,6 @@ public class MapAnimationController : MonoBehaviour
         // advance story beat and save to SIS
         if (firstTime)
         {
-            StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
         }
 
@@ -2322,7 +2401,6 @@ public class MapAnimationController : MonoBehaviour
         // advance story beat and save to SIS
         if (firstTime)
         {
-            StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
         }
 
@@ -2536,7 +2614,6 @@ public class MapAnimationController : MonoBehaviour
         // advance story beat and save to SIS
         if (firstTime)
         {
-            StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
         }
 

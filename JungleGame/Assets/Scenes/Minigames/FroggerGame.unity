@@ -1050,6 +1050,21 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 539031248657479079, guid: d28125f2c69703845bae5a93a83bd1b1,
+        type: 3}
+      propertyPath: curveLength
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 539031248657479079, guid: d28125f2c69703845bae5a93a83bd1b1,
+        type: 3}
+      propertyPath: curve.m_Curve.Array.data[11].time
+      value: 2.0010376
+      objectReference: {fileID: 0}
+    - target: {fileID: 539031248657479079, guid: d28125f2c69703845bae5a93a83bd1b1,
+        type: 3}
+      propertyPath: curve.m_Curve.Array.data[11].value
+      value: -0.0022258759
+      objectReference: {fileID: 0}
     - target: {fileID: 870513693240039170, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1463,7 +1478,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 43.42912
+      value: 43.58638
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -1525,7 +1540,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1398013590, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
 --- !u!20 &220914616 stripped
 Camera:
@@ -8168,12 +8184,12 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.007598877
       value: 0
-      inSlope: -2.1394796
-      outSlope: -2.1394796
+      inSlope: -0.9806233
+      outSlope: -0.9806233
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.5018914
+      outWeight: 0.4552222
     - serializedVersion: 3
       time: 0.14467216
       value: -0.16036355
@@ -8265,27 +8281,19 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.32526806
     - serializedVersion: 3
-      time: 1.578834
-      value: 0.004051588
-      inSlope: -13.227985
-      outSlope: -13.227985
+      time: 1.6003795
+      value: -0.0002513905
+      inSlope: -7.293392
+      outSlope: -7.293392
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.38933134
+      inWeight: 0.12504749
       outWeight: 0
-    - serializedVersion: 3
-      time: 1.5869342
-      value: 0.031281322
-      inSlope: Infinity
-      outSlope: Infinity
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
     m_PreInfinity: 1
     m_PostInfinity: 1
     m_RotationOrder: 4
   multiplier: 5
+  curveLength: 1.6
 --- !u!114 &1702049590
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -545,6 +545,142 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 case MapIconIdentfier.OC_fire:
                     StudentInfoSystem.GetCurrentProfile().mapData.OC_fire.isFixed = opt;
                     break;
+
+                // gorilla poop
+                case MapIconIdentfier.GP_outhouse1:
+                    StudentInfoSystem.GetCurrentProfile().mapData.GP_house1.isFixed = opt;
+                    break;
+                case MapIconIdentfier.GP_outhouse2:
+                    StudentInfoSystem.GetCurrentProfile().mapData.GP_house2.isFixed = opt;
+                    break;
+                case MapIconIdentfier.GP_rocks1:
+                    StudentInfoSystem.GetCurrentProfile().mapData.GP_rock1.isFixed = opt;
+                    break;
+                case MapIconIdentfier.GP_rocks2:
+                    StudentInfoSystem.GetCurrentProfile().mapData.GP_rock2.isFixed = opt;
+                    break;
+
+                // windy cliff
+                case MapIconIdentfier.WC_ladder:
+                    StudentInfoSystem.GetCurrentProfile().mapData.WC_ladder.isFixed = opt;
+                    break;
+                case MapIconIdentfier.WC_lighthouse:
+                    StudentInfoSystem.GetCurrentProfile().mapData.WC_lighthouse.isFixed = opt;
+                    break;
+                case MapIconIdentfier.WC_octo:
+                    StudentInfoSystem.GetCurrentProfile().mapData.WC_octo.isFixed = opt;
+                    break;
+                case MapIconIdentfier.WC_rock:
+                    StudentInfoSystem.GetCurrentProfile().mapData.WC_rock.isFixed = opt;
+                    break;
+                case MapIconIdentfier.WC_sign:
+                    StudentInfoSystem.GetCurrentProfile().mapData.WC_sign.isFixed = opt;
+                    break;
+                case MapIconIdentfier.WC_statue:
+                    StudentInfoSystem.GetCurrentProfile().mapData.WC_statue.isFixed = opt;
+                    break;
+
+                // pirate ship
+                case MapIconIdentfier.PS_boat:
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_boat.isFixed = opt;
+                    break;
+                case MapIconIdentfier.PS_bridge:
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_boat.isFixed = opt;
+                    break;
+                case MapIconIdentfier.PS_front:
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_boat.isFixed = opt;
+                    break;
+                case MapIconIdentfier.PS_parrot:
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_boat.isFixed = opt;
+                    break;
+                case MapIconIdentfier.PS_sail:
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_boat.isFixed = opt;
+                    break;
+                case MapIconIdentfier.PS_wheel:
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_boat.isFixed = opt;
+                    break;
+
+                // mermaid beach
+                case MapIconIdentfier.MB_bucket:
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_bucket.isFixed = opt;
+                    break;
+                case MapIconIdentfier.MB_castle:
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_castle.isFixed = opt;
+                    break;
+                case MapIconIdentfier.MB_ladder:
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_ladder.isFixed = opt;
+                    break;
+                case MapIconIdentfier.MB_mermaids:
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_mermaids.isFixed = opt;
+                    break;
+                case MapIconIdentfier.MB_rock:
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_rock.isFixed = opt;
+                    break;
+                case MapIconIdentfier.MB_umbrella:
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_umbrella.isFixed = opt;
+                    break;
+
+                // ruins
+                case MapIconIdentfier.R_arch:
+                    StudentInfoSystem.GetCurrentProfile().mapData.R_arch.isFixed = opt;
+                    break;
+                case MapIconIdentfier.R_caveRock:
+                    StudentInfoSystem.GetCurrentProfile().mapData.R_caveRock.isFixed = opt;
+                    break;
+                case MapIconIdentfier.R_face:
+                    StudentInfoSystem.GetCurrentProfile().mapData.R_face.isFixed = opt;
+                    break;
+                case MapIconIdentfier.R_lizard1:
+                    StudentInfoSystem.GetCurrentProfile().mapData.R_lizard1.isFixed = opt;
+                    break;
+                case MapIconIdentfier.R_lizard2:
+                    StudentInfoSystem.GetCurrentProfile().mapData.R_lizard2.isFixed = opt;
+                    break;
+                case MapIconIdentfier.R_pyramid:
+                    StudentInfoSystem.GetCurrentProfile().mapData.R_pyramid.isFixed = opt;
+                    break;
+
+                // exit jungle
+                case MapIconIdentfier.EJ_bridge:
+                    StudentInfoSystem.GetCurrentProfile().mapData.EJ_bridge.isFixed = opt;
+                    break;
+                case MapIconIdentfier.EJ_puppy:
+                    StudentInfoSystem.GetCurrentProfile().mapData.EJ_puppy.isFixed = opt;
+                    break;
+                case MapIconIdentfier.EJ_sign:
+                    StudentInfoSystem.GetCurrentProfile().mapData.EJ_sign.isFixed = opt;
+                    break;
+                case MapIconIdentfier.EJ_torch:
+                    StudentInfoSystem.GetCurrentProfile().mapData.EJ_torch.isFixed = opt;
+                    break;
+
+                // gorilla study
+                case MapIconIdentfier.GS_fire:
+                    StudentInfoSystem.GetCurrentProfile().mapData.GS_fire.isFixed = opt;
+                    break;
+                case MapIconIdentfier.GS_statue:
+                    StudentInfoSystem.GetCurrentProfile().mapData.GS_statue.isFixed = opt;
+                    break;
+                case MapIconIdentfier.GS_tent1:
+                    StudentInfoSystem.GetCurrentProfile().mapData.GS_tent1.isFixed = opt;
+                    break;
+                case MapIconIdentfier.GS_tent2:
+                    StudentInfoSystem.GetCurrentProfile().mapData.GS_tent2.isFixed = opt;
+                    break;
+
+                // monkeys
+                case MapIconIdentfier.M_bananas:
+                    StudentInfoSystem.GetCurrentProfile().mapData.M_bananas.isFixed = opt;
+                    break;
+                case MapIconIdentfier.M_flower:
+                    StudentInfoSystem.GetCurrentProfile().mapData.M_flower.isFixed = opt;
+                    break;
+                case MapIconIdentfier.M_guards:
+                    StudentInfoSystem.GetCurrentProfile().mapData.M_guards.isFixed = opt;
+                    break;
+                case MapIconIdentfier.M_tree:
+                    StudentInfoSystem.GetCurrentProfile().mapData.M_tree.isFixed = opt;
+                    break;
             }
             StudentInfoSystem.SaveStudentPlayerData();
         }
@@ -743,6 +879,102 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 return StudentInfoSystem.GetCurrentProfile().mapData.OC_smallTent.stars;
             case MapIconIdentfier.OC_fire:
                 return StudentInfoSystem.GetCurrentProfile().mapData.OC_fire.stars;
+
+            // gorilla poop
+            case MapIconIdentfier.GP_outhouse1:
+                return StudentInfoSystem.GetCurrentProfile().mapData.GP_house1.stars;
+            case MapIconIdentfier.GP_outhouse2:
+                return StudentInfoSystem.GetCurrentProfile().mapData.GP_house2.stars;
+            case MapIconIdentfier.GP_rocks1:
+                return StudentInfoSystem.GetCurrentProfile().mapData.GP_rock1.stars;
+            case MapIconIdentfier.GP_rocks2:
+                return StudentInfoSystem.GetCurrentProfile().mapData.GP_rock2.stars;
+
+            // windy cliff
+            case MapIconIdentfier.WC_ladder:
+                return StudentInfoSystem.GetCurrentProfile().mapData.WC_ladder.stars;
+            case MapIconIdentfier.WC_lighthouse:
+                return StudentInfoSystem.GetCurrentProfile().mapData.WC_lighthouse.stars;
+            case MapIconIdentfier.WC_octo:
+                return StudentInfoSystem.GetCurrentProfile().mapData.WC_octo.stars;
+            case MapIconIdentfier.WC_rock:
+                return StudentInfoSystem.GetCurrentProfile().mapData.WC_rock.stars;
+            case MapIconIdentfier.WC_sign:
+                return StudentInfoSystem.GetCurrentProfile().mapData.WC_sign.stars;
+            case MapIconIdentfier.WC_statue:
+                return StudentInfoSystem.GetCurrentProfile().mapData.WC_statue.stars;
+
+            // pirate ship
+            case MapIconIdentfier.PS_boat:
+                return StudentInfoSystem.GetCurrentProfile().mapData.PS_boat.stars;
+            case MapIconIdentfier.PS_bridge:
+                return StudentInfoSystem.GetCurrentProfile().mapData.PS_bridge.stars;
+            case MapIconIdentfier.PS_front:
+                return StudentInfoSystem.GetCurrentProfile().mapData.PS_front.stars;
+            case MapIconIdentfier.PS_parrot:
+                return StudentInfoSystem.GetCurrentProfile().mapData.PS_parrot.stars;
+            case MapIconIdentfier.PS_sail:
+                return StudentInfoSystem.GetCurrentProfile().mapData.PS_sail.stars;
+            case MapIconIdentfier.PS_wheel:
+                return StudentInfoSystem.GetCurrentProfile().mapData.PS_wheel.stars;
+
+            // mermaid beach
+            case MapIconIdentfier.MB_bucket:
+                return StudentInfoSystem.GetCurrentProfile().mapData.MB_bucket.stars;
+            case MapIconIdentfier.MB_castle:
+                return StudentInfoSystem.GetCurrentProfile().mapData.MB_castle.stars;
+            case MapIconIdentfier.MB_ladder:
+                return StudentInfoSystem.GetCurrentProfile().mapData.MB_ladder.stars;
+            case MapIconIdentfier.MB_mermaids:
+                return StudentInfoSystem.GetCurrentProfile().mapData.MB_mermaids.stars;
+            case MapIconIdentfier.MB_rock:
+                return StudentInfoSystem.GetCurrentProfile().mapData.MB_rock.stars;
+            case MapIconIdentfier.MB_umbrella:
+                return StudentInfoSystem.GetCurrentProfile().mapData.MB_umbrella.stars;
+
+            // ruins
+            case MapIconIdentfier.R_arch:
+                return StudentInfoSystem.GetCurrentProfile().mapData.R_arch.stars;
+            case MapIconIdentfier.R_caveRock:
+                return StudentInfoSystem.GetCurrentProfile().mapData.R_caveRock.stars;
+            case MapIconIdentfier.R_face:
+                return StudentInfoSystem.GetCurrentProfile().mapData.R_face.stars;
+            case MapIconIdentfier.R_lizard1:
+                return StudentInfoSystem.GetCurrentProfile().mapData.R_lizard1.stars;
+            case MapIconIdentfier.R_lizard2:
+                return StudentInfoSystem.GetCurrentProfile().mapData.R_lizard2.stars;
+            case MapIconIdentfier.R_pyramid:
+                return StudentInfoSystem.GetCurrentProfile().mapData.R_pyramid.stars;
+
+            // exit jungle
+            case MapIconIdentfier.EJ_bridge:
+                return StudentInfoSystem.GetCurrentProfile().mapData.EJ_bridge.stars;
+            case MapIconIdentfier.EJ_puppy:
+                return StudentInfoSystem.GetCurrentProfile().mapData.EJ_puppy.stars;
+            case MapIconIdentfier.EJ_sign:
+                return StudentInfoSystem.GetCurrentProfile().mapData.EJ_sign.stars;
+            case MapIconIdentfier.EJ_torch:
+                return StudentInfoSystem.GetCurrentProfile().mapData.EJ_torch.stars;
+            
+            // gorilla study
+            case MapIconIdentfier.GS_fire:
+                return StudentInfoSystem.GetCurrentProfile().mapData.GS_fire.stars;
+            case MapIconIdentfier.GS_statue:
+                return StudentInfoSystem.GetCurrentProfile().mapData.GS_statue.stars;
+            case MapIconIdentfier.GS_tent1:
+                return StudentInfoSystem.GetCurrentProfile().mapData.GS_tent1.stars;
+            case MapIconIdentfier.GS_tent2:
+                return StudentInfoSystem.GetCurrentProfile().mapData.GS_tent2.stars;
+
+            // monkeys
+            case MapIconIdentfier.M_bananas:
+                return StudentInfoSystem.GetCurrentProfile().mapData.M_bananas.stars;
+            case MapIconIdentfier.M_flower:
+                return StudentInfoSystem.GetCurrentProfile().mapData.M_flower.stars;
+            case MapIconIdentfier.M_guards:
+                return StudentInfoSystem.GetCurrentProfile().mapData.M_guards.stars;
+            case MapIconIdentfier.M_tree:
+                return StudentInfoSystem.GetCurrentProfile().mapData.M_tree.stars;
         }   
     }
 }

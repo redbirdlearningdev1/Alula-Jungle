@@ -29,8 +29,7 @@ public static class AISystem
         Debug.Log("Number of Stars Rummage " + playerData.starsRummage);
 
         switch (playerData.minigamesPlayed)
-        {
-            
+        {    
             case 0: return GameType.FroggerGame;
             case 1: return GameType.RummageGame;
             case 2: return GameType.SeashellGame;
@@ -131,7 +130,7 @@ public static class AISystem
                 //}
                 else
                 {
-                    if(playerData.lastGamePlayed != minigameOptions[0] )
+                    if(playerData.lastGamePlayed != minigameOptions[0])
                     {
                         return minigameOptions[0];
                     }

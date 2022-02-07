@@ -258,7 +258,7 @@ public class SettingsManager : MonoBehaviour
             wagonButton.GetComponent<WiggleController>().StartWiggle();
             ImageGlowController.instance.SetImageGlow(wagonButton.GetComponent<Image>(), true, GlowValue.glow_1_025);
         }
-        else 
+        else
         {
             wagonButton.GetComponent<WiggleController>().StopWiggle();
             ImageGlowController.instance.SetImageGlow(wagonButton.GetComponent<Image>(), false, GlowValue.none);

@@ -272,6 +272,37 @@ public static class LoadSaveSystem
         new_data.mapData.OV_signPost_unlocked = false;
         new_data.mapData.OV_signPost_stars = 0;
 
+        // spooky forest
+        new_data.mapData.SF_lamp = new MapIconData();
+        new_data.mapData.SF_shrine = new MapIconData();
+        new_data.mapData.SF_spider = new MapIconData();
+        new_data.mapData.SF_web = new MapIconData();
+
+        new_data.mapData.SF_lamp.isFixed = true;
+        new_data.mapData.SF_shrine.isFixed = true;
+        new_data.mapData.SF_spider.isFixed =   true;
+        new_data.mapData.SF_web.isFixed = true;
+
+        new_data.mapData.SF_lamp.stars =   default_mapDataStars;
+        new_data.mapData.SF_shrine.stars =   default_mapDataStars;
+        new_data.mapData.SF_spider.stars =     default_mapDataStars;
+        new_data.mapData.SF_web.stars =   default_mapDataStars;
+
+        new_data.mapData.SF_challenge1 = new ChallengeGameData();
+        new_data.mapData.SF_challenge2 = new ChallengeGameData();
+        new_data.mapData.SF_challenge3 = new ChallengeGameData();
+
+        new_data.mapData.SF_challenge1.stars = default_stars;
+        new_data.mapData.SF_challenge2.stars = default_stars;
+        new_data.mapData.SF_challenge3.stars = default_stars;
+
+        new_data.mapData.SF_challenge1.gameType = GameType.None;
+        new_data.mapData.SF_challenge2.gameType = GameType.None;
+        new_data.mapData.SF_challenge3.gameType = GameType.None;
+
+        new_data.mapData.SF_signPost_unlocked = false;
+        new_data.mapData.SF_signPost_stars = 0;
+
 
         // gorilla poop
         new_data.mapData.GP_house1 = new MapIconData();

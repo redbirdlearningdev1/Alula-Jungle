@@ -388,8 +388,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.32526806
     - serializedVersion: 3
-      time: 1.958374
-      value: -0.0044231415
+      time: 2.0010376
+      value: -0.00002861023
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -400,6 +400,7 @@ MonoBehaviour:
     m_PostInfinity: 1
     m_RotationOrder: 4
   multiplier: 5
+  curveLength: 2
 --- !u!114 &3238766148405361011
 MonoBehaviour:
   m_ObjectHideFlags: 0

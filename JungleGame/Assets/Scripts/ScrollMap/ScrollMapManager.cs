@@ -165,9 +165,13 @@ public class ScrollMapManager : MonoBehaviour
         // update map icons
         UpdateMapIcons();
 
+        print ("revealGMUI: " + revealGMUI);
+
         // show GM UI
         if (revealGMUI)
         {
+            print ("showing buttons!");
+
             SettingsManager.instance.ToggleMenuButtonActive(true);
             // show sticker button if unlocked
             if (StudentInfoSystem.GetCurrentProfile().unlockedStickerButton)
@@ -216,7 +220,6 @@ public class ScrollMapManager : MonoBehaviour
         {
             // change scroll map bools
             activateMapNavigation = false;
-            revealGMUI = true;
 
             // start on boat dock
             SetMapPosition((int)MapLocation.BoatHouse);
@@ -255,6 +258,8 @@ public class ScrollMapManager : MonoBehaviour
                 // wait for animation to be done
                 while (!MapAnimationController.instance.animationDone)
                     yield return null;
+
+                print ("here!");
             }
             else
             {
@@ -351,6 +356,11 @@ public class ScrollMapManager : MonoBehaviour
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
         }
+        else if (playGameEvent == StoryBeat.OrcVillageMeetClogg)
+        {
+            // change enabled map sections
+            EnableMapSectionsUpTo(MapLocation.Mudslide);
+        }
         else if (playGameEvent == StoryBeat.OrcVillageUnlocked)
         {
             // make sure player has rebuilt all the OV map icons
@@ -398,6 +408,16 @@ public class ScrollMapManager : MonoBehaviour
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
         }
+        else if (playGameEvent == StoryBeat.SpookyForestUnlocked)
+        {
+            // change enabled map sections
+            EnableMapSectionsUpTo(MapLocation.OrcVillage);
+        }
+        else if (playGameEvent == StoryBeat.BeginningStoryGame)
+        {
+            // change enabled map sections
+            EnableMapSectionsUpTo(MapLocation.OrcVillage);
+        }
         else if (playGameEvent == StoryBeat.SpookyForestPlayGames)
         {
             // make sure player has rebuilt all the SF map icons
@@ -444,6 +464,11 @@ public class ScrollMapManager : MonoBehaviour
             // wait for animation to be done
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
+        }
+        else if (playGameEvent == StoryBeat.OrcCampUnlocked)
+        {
+            // change enabled map sections
+            EnableMapSectionsUpTo(MapLocation.SpookyForest);
         }
         else if (playGameEvent == StoryBeat.OrcCampPlayGames)
         {
@@ -542,7 +567,7 @@ public class ScrollMapManager : MonoBehaviour
 
 
 
-
+        
 
 
         

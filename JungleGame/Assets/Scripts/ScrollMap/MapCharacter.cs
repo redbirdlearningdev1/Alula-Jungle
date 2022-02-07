@@ -107,6 +107,9 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         else if (character == Character.Clogg)
         {
             if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillageUnlocked ||
+                StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_1 ||
+                StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_2 ||
+                StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_3 ||
                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcCampPlayGames)
             {
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CloggQuips_1_p1);
@@ -138,6 +141,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PreStory_2_p1);
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
+
+                yield break;
             }
         }
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillageMeetClogg)
@@ -174,6 +179,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 // wait for animation to be done
                 while (!MapAnimationController.instance.animationDone)
                     yield return null;
+
+                yield break;
             }
         }
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.BeginningStoryGame)

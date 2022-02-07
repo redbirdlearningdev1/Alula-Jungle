@@ -672,7 +672,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 51.66374
+      value: 51.733578
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -1293,27 +1293,19 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.32526806
     - serializedVersion: 3
-      time: 1.578834
-      value: 0.004051588
+      time: 1.6003795
+      value: 0.0011829357
       inSlope: -13.227985
       outSlope: -13.227985
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.38933134
       outWeight: 0
-    - serializedVersion: 3
-      time: 1.5869342
-      value: 0.031281322
-      inSlope: Infinity
-      outSlope: Infinity
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
     m_PreInfinity: 1
     m_PostInfinity: 1
     m_RotationOrder: 4
   multiplier: 5
+  curveLength: 1.6
 --- !u!114 &508367271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3742,27 +3734,19 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.32526806
     - serializedVersion: 3
-      time: 1.578834
-      value: 0.004051588
+      time: 1.6025157
+      value: -0.0016857167
       inSlope: -13.227985
       outSlope: -13.227985
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.38933134
       outWeight: 0
-    - serializedVersion: 3
-      time: 1.5869342
-      value: 0.031281322
-      inSlope: Infinity
-      outSlope: Infinity
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
     m_PreInfinity: 1
     m_PostInfinity: 1
     m_RotationOrder: 4
   multiplier: 5
+  curveLength: 1.6
 --- !u!1 &1808481924
 GameObject:
   m_ObjectHideFlags: 0

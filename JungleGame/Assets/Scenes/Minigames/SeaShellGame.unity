@@ -866,8 +866,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.32526806
     - serializedVersion: 3
-      time: 1.958374
-      value: -0.0044231415
+      time: 2.0010376
+      value: -0.0022258759
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -878,6 +878,7 @@ MonoBehaviour:
     m_PostInfinity: 1
     m_RotationOrder: 4
   multiplier: 5
+  curveLength: 2
 --- !u!1 &732918312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,8 +1434,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.32526806
     - serializedVersion: 3
-      time: 1.958374
-      value: -0.0044231415
+      time: 2.0010376
+      value: -0.0022258759
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1445,6 +1446,7 @@ MonoBehaviour:
     m_PostInfinity: 1
     m_RotationOrder: 4
   multiplier: 5
+  curveLength: 2
 --- !u!1 &1109237882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1761,8 +1763,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.32526806
     - serializedVersion: 3
-      time: 1.958374
-      value: -0.0044231415
+      time: 2.0010376
+      value: -0.0022258759
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1773,6 +1775,7 @@ MonoBehaviour:
     m_PostInfinity: 1
     m_RotationOrder: 4
   multiplier: 5
+  curveLength: 2
 --- !u!1 &1314731712
 GameObject:
   m_ObjectHideFlags: 0
@@ -3113,7 +3116,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 54.81162
+      value: 54.85472
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
