@@ -145,10 +145,40 @@ public enum StoryBeat
 
     OrcCampUnlocked, // 28
     OrcCampPlayGames, // 29
-    OrcCamp_challengeGame_1, // 24
-    OrcCamp_challengeGame_2, // 25
-    OrcCamp_challengeGame_3, // 26
-    OrcCampDefeated, // 27
+    OrcCamp_challengeGame_1, // 30
+    OrcCamp_challengeGame_2, // 31
+    OrcCamp_challengeGame_3, // 32
+    OrcCampDefeated, // 33
+
+    GorillaPoopPlayGames, // 34
+    GorillaPoop_challengeGame_1, // 35
+    GorillaPoop_challengeGame_2, // 36
+    GorillaPoop_challengeGame_3, // 37
+    GorillaPoopDefeated, // 38
+
+    WindyCliff_challengeGame_1,
+    WindyCliff_challengeGame_2,
+    WindyCliff_challengeGame_3,
+
+    PirateShip_challengeGame_1,
+    PirateShip_challengeGame_2,
+    PirateShip_challengeGame_3,
+
+    MermaidBeach_challengeGame_1,
+    MermaidBeach_challengeGame_2,
+    MermaidBeach_challengeGame_3,
+
+    Ruins_challengeGame_1,
+    Ruins_challengeGame_2,
+    Ruins_challengeGame_3,
+
+    ExitJungle_challengeGame_1,
+    ExitJungle_challengeGame_2,
+    ExitJungle_challengeGame_3,
+
+    GorillaStudy_challengeGame_1,
+    GorillaStudy_challengeGame_2,
+    GorillaStudy_challengeGame_3,
 
     COUNT
 }

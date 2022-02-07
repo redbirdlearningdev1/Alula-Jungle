@@ -332,11 +332,6 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             case StoryBeat.Mudslide_challengeGame_2: GameManager.instance.mapID = MapIconIdentfier.MS_challenge_2; return;
             case StoryBeat.Mudslide_challengeGame_3: GameManager.instance.mapID = MapIconIdentfier.MS_challenge_3; return;
 
-            // OC
-            case StoryBeat.OrcCamp_challengeGame_1: GameManager.instance.mapID = MapIconIdentfier.OC_challenge_1; return;
-            case StoryBeat.OrcCamp_challengeGame_2: GameManager.instance.mapID = MapIconIdentfier.OC_challenge_2; return;
-            case StoryBeat.OrcCamp_challengeGame_3: GameManager.instance.mapID = MapIconIdentfier.OC_challenge_3; return;
-
             // OV
             case StoryBeat.OrcVillage_challengeGame_1: GameManager.instance.mapID = MapIconIdentfier.OV_challenge_1; return;
             case StoryBeat.OrcVillage_challengeGame_2: GameManager.instance.mapID = MapIconIdentfier.OV_challenge_2; return;
@@ -347,7 +342,45 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             case StoryBeat.SpookyForest_challengeGame_2: GameManager.instance.mapID = MapIconIdentfier.SF_challenge_2; return;
             case StoryBeat.SpookyForest_challengeGame_3: GameManager.instance.mapID = MapIconIdentfier.SF_challenge_3; return;
 
-            // ETC.
+            // OC
+            case StoryBeat.OrcCamp_challengeGame_1: GameManager.instance.mapID = MapIconIdentfier.OC_challenge_1; return;
+            case StoryBeat.OrcCamp_challengeGame_2: GameManager.instance.mapID = MapIconIdentfier.OC_challenge_2; return;
+            case StoryBeat.OrcCamp_challengeGame_3: GameManager.instance.mapID = MapIconIdentfier.OC_challenge_3; return;
+
+            // GP
+            case StoryBeat.GorillaPoop_challengeGame_1: GameManager.instance.mapID = MapIconIdentfier.GP_challenge_1; return;
+            case StoryBeat.GorillaPoop_challengeGame_2: GameManager.instance.mapID = MapIconIdentfier.GP_challenge_2; return;
+            case StoryBeat.GorillaPoop_challengeGame_3: GameManager.instance.mapID = MapIconIdentfier.GP_challenge_3; return;
+
+            // WC
+            case StoryBeat.WindyCliff_challengeGame_1: GameManager.instance.mapID = MapIconIdentfier.WC_challenge_1; return;
+            case StoryBeat.WindyCliff_challengeGame_2: GameManager.instance.mapID = MapIconIdentfier.WC_challenge_2; return;
+            case StoryBeat.WindyCliff_challengeGame_3: GameManager.instance.mapID = MapIconIdentfier.WC_challenge_3; return;
+
+            // PS
+            case StoryBeat.PirateShip_challengeGame_1: GameManager.instance.mapID = MapIconIdentfier.PS_challenge_1; return;
+            case StoryBeat.PirateShip_challengeGame_2: GameManager.instance.mapID = MapIconIdentfier.PS_challenge_2; return;
+            case StoryBeat.PirateShip_challengeGame_3: GameManager.instance.mapID = MapIconIdentfier.PS_challenge_3; return;
+
+            // MB
+            case StoryBeat.MermaidBeach_challengeGame_1: GameManager.instance.mapID = MapIconIdentfier.MB_challenge_1; return;
+            case StoryBeat.MermaidBeach_challengeGame_2: GameManager.instance.mapID = MapIconIdentfier.MB_challenge_2; return;
+            case StoryBeat.MermaidBeach_challengeGame_3: GameManager.instance.mapID = MapIconIdentfier.MB_challenge_3; return;
+
+            // R
+            case StoryBeat.Ruins_challengeGame_1: GameManager.instance.mapID = MapIconIdentfier.R_challenge_1; return;
+            case StoryBeat.Ruins_challengeGame_2: GameManager.instance.mapID = MapIconIdentfier.R_challenge_2; return;
+            case StoryBeat.Ruins_challengeGame_3: GameManager.instance.mapID = MapIconIdentfier.R_challenge_3; return;
+
+            // EJ
+            case StoryBeat.ExitJungle_challengeGame_1: GameManager.instance.mapID = MapIconIdentfier.EJ_challenge_1; return;
+            case StoryBeat.ExitJungle_challengeGame_2: GameManager.instance.mapID = MapIconIdentfier.EJ_challenge_2; return;
+            case StoryBeat.ExitJungle_challengeGame_3: GameManager.instance.mapID = MapIconIdentfier.EJ_challenge_3; return;
+
+            // GS
+            case StoryBeat.GorillaStudy_challengeGame_1: GameManager.instance.mapID = MapIconIdentfier.GS_challenge_1; return;
+            case StoryBeat.GorillaStudy_challengeGame_2: GameManager.instance.mapID = MapIconIdentfier.GS_challenge_2; return;
+            case StoryBeat.GorillaStudy_challengeGame_3: GameManager.instance.mapID = MapIconIdentfier.GS_challenge_3; return;
         }   
     }
 }

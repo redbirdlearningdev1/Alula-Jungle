@@ -400,7 +400,7 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.SpookyForestPlayGames)
         {
-            // make sure player has rebuilt all the OV map icons
+            // make sure player has rebuilt all the SF map icons
             if (StudentInfoSystem.GetCurrentProfile().mapData.SF_lamp.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.SF_shrine.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.SF_spider.isFixed &&
@@ -441,6 +441,100 @@ public class ScrollMapManager : MonoBehaviour
         {
             // play SF defeated
             MapAnimationController.instance.PlayMapAnim(MapAnim.SpookyForestDefeated);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.OrcCampPlayGames)
+        {
+            // make sure player has rebuilt all the OC map icons
+            if (StudentInfoSystem.GetCurrentProfile().mapData.OC_axe.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.OC_bigTent.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.OC_fire.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.OC_smallTent.isFixed)
+            {
+                // play OC rebuilt
+                MapAnimationController.instance.PlayMapAnim(MapAnim.OrcCampRebuilt);
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+            }
+        }
+        else if (playGameEvent == StoryBeat.OrcCamp_challengeGame_1)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame1, MapLocation.OrcCamp);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.OrcCamp_challengeGame_2)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame2, MapLocation.OrcCamp);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.OrcCamp_challengeGame_3)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame3, MapLocation.OrcCamp);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.OrcCampDefeated)
+        {
+            // play SF defeated
+            MapAnimationController.instance.PlayMapAnim(MapAnim.OrcCampDefeated);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.GorillaPoopPlayGames)
+        {
+            // make sure player has rebuilt all the OC map icons
+            if (StudentInfoSystem.GetCurrentProfile().mapData.GP_house1.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.GP_house2.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.GP_rock1.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.GP_rock2.isFixed)
+            {
+                // play OC rebuilt
+                MapAnimationController.instance.PlayMapAnim(MapAnim.GorillaPoopRebuilt);
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+            }
+        }
+        else if (playGameEvent == StoryBeat.GorillaPoop_challengeGame_1)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame1, MapLocation.GorillaPoop);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.GorillaPoop_challengeGame_2)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame2, MapLocation.GorillaPoop);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.GorillaPoop_challengeGame_3)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame3, MapLocation.GorillaPoop);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.GorillaPoopDefeated)
+        {
+            // play GP defeated
+            MapAnimationController.instance.PlayMapAnim(MapAnim.GorillaPoopDefeated);
             // wait for animation to be done
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
