@@ -381,6 +381,11 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             case StoryBeat.GorillaStudy_challengeGame_1: GameManager.instance.mapID = MapIconIdentfier.GS_challenge_1; return;
             case StoryBeat.GorillaStudy_challengeGame_2: GameManager.instance.mapID = MapIconIdentfier.GS_challenge_2; return;
             case StoryBeat.GorillaStudy_challengeGame_3: GameManager.instance.mapID = MapIconIdentfier.GS_challenge_3; return;
+
+            // M
+            case StoryBeat.Monkeys_challengeGame_1: GameManager.instance.mapID = MapIconIdentfier.M_challenge_1; return;
+            case StoryBeat.Monkeys_challengeGame_2: GameManager.instance.mapID = MapIconIdentfier.M_challenge_2; return;
+            case StoryBeat.Monkeys_challengeGame_3: GameManager.instance.mapID = MapIconIdentfier.M_challenge_3; return;
         }   
     }
 }

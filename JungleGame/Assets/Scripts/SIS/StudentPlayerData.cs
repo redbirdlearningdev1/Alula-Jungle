@@ -74,9 +74,7 @@ public class StudentPlayerData
     public bool firstTimeLoseChallengeGame;
     public bool everyOtherTimeLoseChallengeGame;
     public bool firstGuradsRoyalRumble;
-
     public List<ActionWordEnum> actionWordPool;
-    public List<ChallengeWord> challengeWordPool;
 
     // royal rumble data
     public bool royalRumbleActive;
@@ -179,6 +177,10 @@ public enum StoryBeat
     GorillaStudy_challengeGame_1,
     GorillaStudy_challengeGame_2,
     GorillaStudy_challengeGame_3,
+
+    Monkeys_challengeGame_1,
+    Monkeys_challengeGame_2,
+    Monkeys_challengeGame_3,
 
     COUNT
 }

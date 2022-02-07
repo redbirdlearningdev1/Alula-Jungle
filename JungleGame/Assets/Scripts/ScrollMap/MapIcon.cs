@@ -153,6 +153,10 @@ public enum MapIconIdentfier
     M_tree,
     M_bananas,
     M_guards,
+
+    M_challenge_1,
+    M_challenge_2,
+    M_challenge_3,
 }
 
 public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
