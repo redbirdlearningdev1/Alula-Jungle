@@ -128,8 +128,11 @@ public class TalkieDatabase : MonoBehaviour
     public TalkieObject MermaidDefeated_1_p1;
     public TalkieObject MermaidDefeated_1_p2;
     public TalkieObject MermaidDefeated_1_p3;
-    public TalkieObject MermaidDefeated_1_p4;
-    public TalkieObject MermaidDefeated_1_p5;
+    public TalkieObject MermaidIntro_1_p1;
+    public TalkieObject MermaidIntro_1_p2;
+    public TalkieObject MermaidIntro_1_p3;
+    public TalkieObject MermaidIntro_1_p4;
+    public TalkieObject MermaidIntro_1_p5;
     public TalkieObject MermaidQuip_1_p1;
     public TalkieObject MermaidQuip_1_p2;
     public TalkieObject MermaidRebuilt_1_p1;
@@ -220,112 +223,6 @@ public class TalkieDatabase : MonoBehaviour
     public TalkieObject VillageRebuilt_1_p2;
     public TalkieObject VillageRebuilt_1_p3;
 
-
-
-
-    // [Header("Boat Game")]          // Where in the code base is the talkie called from?
-    // public TalkieObject boatGame;       // script: NewBoatGameManager.cs
-    // public TalkieObject dock_1;         // script: ScrollMapManager.cs   
-    // public TalkieObject dock_2;         // script: ScrollMapManager.cs   
-
-    // [Header("Gorilla Intro")]
-    // public TalkieObject gorillaIntro_1; // script: MapCharacter.cs
-    // public TalkieObject gorillaIntro_2; // script: MapCharacter.cs
-    // public TalkieObject gorillaIntro_3; // script: MapCharacter.cs
-    // public TalkieObject gorillaIntro_4; // script: MapCharacter.cs
-    // public TalkieObject gorillaIntro_5; // script: MapCharacter.cs
-
-    // [Header("Pre Minigames")]
-    // public TalkieObject pre_minigame;   // script: MapIcon.cs
-    // public TalkieObject pre_darwin;     // script: MapCharacter.cs
-
-    // [Header("Pre Lester")]
-    // public TalkieObject red_notices_lester; // script: ScrollMapManager.cs
-    // public TalkieObject darwin_forces;      // script: ScrollMapManager.cs
-
-    // [Header("Pre Lester")]
-    // public TalkieObject lester_intro_1; // script: WagonWindowController.cs
-    // public TalkieObject lester_intro_2; // script: StickerBoardController.cs
-    // public TalkieObject lester_intro_3; // script: StickerBoardController.cs
-    // public TalkieObject lester_intro_4; // script: StickerBoardController.cs
-
-    // [Header("Village Rebuilt")]
-    // public TalkieObject villageRebuilt_1; // script: ScrollMapManager.cs
-    // public TalkieObject villageRebuilt_2; // script: ScrollMapManager.cs
-    // public TalkieObject villageRebuilt_3; // script: ScrollMapManager.cs
-
-    // [Header("Julius Challenge GV")]
-    // public TalkieObject julius_challenges; // script: MapCharacter.cs
-    // public TalkieObject julius_wins;       // script: ScrollMapManager.cs
-    // public TalkieObject julius_wins_again; // script: ScrollMapManager.cs
-
-    // [Header("Marcus Challenge GV")]
-    // public TalkieObject julius_loses__marcus_challenges; // script: ScrollMapManager.cs
-    // public TalkieObject marcus_challenges; // script: MapCharacter.cs
-    // public TalkieObject marcus_wins;       // script: ScrollMapManager.cs
-    // public TalkieObject marcus_wins_again; // script: ScrollMapManager.cs
-
-    // [Header("Brutus Challenge GV")]
-    // public TalkieObject marcus_loses__brutus_challenges;// script: ScrollMapManager.cs
-    // public TalkieObject brutus_challenges; // script: MapCharacter.cs
-    // public TalkieObject brutus_wins;       // script: ScrollMapManager.cs
-    // public TalkieObject brutus_wins_again; // script: ScrollMapManager.cs
-
-    // public TalkieObject challengeSignQuips;
-
-    // [Header("Village Defeated")]
-    // public TalkieObject villageChallengeDefeated_1; // script: ScrollMapManager.cs
-    // public TalkieObject villageChallengeDefeated_2; // script: ScrollMapManager.cs
-    // public TalkieObject villageChallengeDefeated_3; // script: ScrollMapManager.cs
-
-    // [Header("Mudslide")]
-    // public TalkieObject mudslideIntro; // script: ScrollMapManager.cs
-    // public TalkieObject mudslideRebuilt_1; // script: ScrollMapManager.cs
-    // public TalkieObject mudslideRebuilt_2; // script: ScrollMapManager.cs
-    // public TalkieObject mudslideChallengeDefeated_1; // script: ScrollMapManager.cs
-    // public TalkieObject mudslideChallengeDefeated_2; // script: ScrollMapManager.cs
-    // public TalkieObject mudslideChallengeDefeated_3; // script: ScrollMapManager.cs
-
-    // [Header("Orc Village")]
-    // public TalkieObject orcVillageIntro_1; // script: ScrollMapManager.cs
-    // public TalkieObject orcVillageIntro_2; // script: ScrollMapManager.cs
-    // public TalkieObject orcVillageIntro_3; // script: MapCharacter.cs
-    // public TalkieObject orcVillageRebuilt_1; // script: ScrollMapManager.cs
-    // public TalkieObject orcVillageRebuilt_2; // script: ScrollMapManager.cs
-    // public TalkieObject orcVillageChallengeDefeated_1; // script: ScrollMapManager.cs
-    // public TalkieObject orcVillageChallengeDefeated_2; // script: ScrollMapManager.cs
-
-    // [Header("Spooky Forest")]
-    // public TalkieObject spiderIntro_1; // script: MapCharacter.cs
-    // public TalkieObject spiderIntro_2; // script: MapCharacter.cs
-    // public TalkieObject spiderIntro_3; // script: MapCharacter.cs
-    // public TalkieObject spiderIntro_4; // script: MapCharacter.cs
-    // public TalkieObject spiderIntro_5; // script: MapCharacter.cs
-    // public TalkieObject spiderIntro_6; // script: MapCharacter.cs
-    // public TalkieObject spookyForest_1; // script: ScrollMapManager.cs
-    // public TalkieObject spookyForest_2; // script: ScrollMapManager.cs
-    // public TalkieObject spookyForest_3; // script: ScrollMapManager.cs
-    // public TalkieObject spookyForestChallengeDefeated_1; // script: ScrollMapManager.cs
-    // public TalkieObject spookyForestChallengeDefeated_2; // script: ScrollMapManager.cs
-    // public TalkieObject spookyForestChallengeDefeated_3; // script: ScrollMapManager.cs
-
-    // [Header("Orc Camp")]
-    // public TalkieObject orcCampIntro_1; // script: MapCharacter.cs
-    // public TalkieObject orcCampRebuilt_1; // script: ScrollMapManager.cs
-    // public TalkieObject orcCampRebuilt_2; // script: ScrollMapManager.cs
-    // public TalkieObject orcCampChallengeDefeated_1; // script: ScrollMapManager.cs
-    // public TalkieObject orcCampChallengeDefeated_2; // script: ScrollMapManager.cs
-    // public TalkieObject orcCampChallengeDefeated_3; // script: ScrollMapManager.cs
-    
-
-
-
-    // [Header("Royal Rumble")]
-    // public TalkieObject defaultRRTalkie; // MiniganeWheelController.cs
-
-    // [Header("Quips")]
-    // public TalkieObject darwinQuips;    // script: MapCharacter.cs
-    // public TalkieObject cloggQuips;    // script: MapCharacter.cs
 
 
 

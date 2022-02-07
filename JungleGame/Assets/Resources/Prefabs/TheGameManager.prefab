@@ -19779,92 +19779,230 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764b8d34a6042ef428cdcb3bb3e9bd7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boatGame: {fileID: 11400000, guid: 1a6e6f820f86af74c952de93929d3037, type: 2}
-  dock_1: {fileID: 11400000, guid: 66d18c25ea1900442ae209a8eae3d99b, type: 2}
-  dock_2: {fileID: 11400000, guid: a5983c4fb9e172e48b64177fb5c5803c, type: 2}
-  gorillaIntro_1: {fileID: 11400000, guid: d2ef6885d79b4214bb97b6198ecb76ff, type: 2}
-  gorillaIntro_2: {fileID: 11400000, guid: de651f2defd57e74689b97609663e87a, type: 2}
-  gorillaIntro_3: {fileID: 11400000, guid: 6001392b0932e2741b02e78de20fdb8a, type: 2}
-  gorillaIntro_4: {fileID: 11400000, guid: d4255b26e6ba0fc4a878043fd67ebd6d, type: 2}
-  gorillaIntro_5: {fileID: 11400000, guid: ba69f5e88178a0f4c8c419392594dbb8, type: 2}
-  pre_minigame: {fileID: 11400000, guid: c6a653b7cb9bb2d478d1f19081dfbf97, type: 2}
-  pre_darwin: {fileID: 11400000, guid: 0269edfb08cf8a047bd0356174b053a5, type: 2}
-  red_notices_lester: {fileID: 11400000, guid: a346c97886a678e4993d1c93cbc591fb, type: 2}
-  darwin_forces: {fileID: 11400000, guid: 6da220778b65aee4ebd9c161631c26dd, type: 2}
-  lester_intro_1: {fileID: 11400000, guid: c715a75596477d346b0f2a2334ebac28, type: 2}
-  lester_intro_2: {fileID: 11400000, guid: 2521e6f2ae83e6d40af79c23cbe8427a, type: 2}
-  lester_intro_3: {fileID: 11400000, guid: b5a6baf9007054f4d8c55223303067d3, type: 2}
-  lester_intro_4: {fileID: 11400000, guid: 14a3c06dbfa50fc49a8e3e38cf877ded, type: 2}
-  villageRebuilt_1: {fileID: 11400000, guid: 3c7ecdd6d8b7c944991336174c37e3c1, type: 2}
-  villageRebuilt_2: {fileID: 11400000, guid: 59cc2155c3295e84fb0b22758c1e3745, type: 2}
-  villageRebuilt_3: {fileID: 11400000, guid: ade41446f0ad1bf419900b83280035fc, type: 2}
-  julius_challenges: {fileID: 11400000, guid: e4308c2c7f584f248802fee41ff8a6c0, type: 2}
-  julius_wins: {fileID: 11400000, guid: d0c954ef0d284994e89452c1ec090658, type: 2}
-  julius_wins_again: {fileID: 11400000, guid: e70c1ba2b72a32140964d57faea38aac, type: 2}
-  julius_loses__marcus_challenges: {fileID: 11400000, guid: d17106678eb39c743b7f2e0584217df5,
+  BBChallenge_1_p1: {fileID: 11400000, guid: ca55181098a120c479c14aff2ad240e9, type: 2}
+  BBChallenge_1_p2: {fileID: 11400000, guid: f619550ff1afd294fa807719ca1675db, type: 2}
+  BBChallenge_1_p3: {fileID: 11400000, guid: 534e8c2b2022d1843acaf6e44f8a2ce4, type: 2}
+  BBLose_1_p1: {fileID: 11400000, guid: f603c0cb1e7a2c943a53bd15fce065cc, type: 2}
+  BBLose_2_p1: {fileID: 11400000, guid: f603c0cb1e7a2c943a53bd15fce065cc, type: 2}
+  BBQuip_1_p1: {fileID: 11400000, guid: 39269b933238c534c8ea211b0afd2fc8, type: 2}
+  BBQuip_1_p2: {fileID: 11400000, guid: 22771d577ff362743af8298ae98203cc, type: 2}
+  BBQuip_1_p3: {fileID: 11400000, guid: 5de232fdcd28c7949a79de3ca9f11649, type: 2}
+  BBQuip_2_p1: {fileID: 11400000, guid: 7ea9fd3cb3015a342975e4f9772804d1, type: 2}
+  BBQuip_2_p2: {fileID: 11400000, guid: 48e100e369137cc478eedd40e6220560, type: 2}
+  BBQuip_2_p3: {fileID: 11400000, guid: 28d679c986d4316488994d3f931f5804, type: 2}
+  BBQuip_3_p1: {fileID: 11400000, guid: 474fd818d12f215459539d3ab68b69ad, type: 2}
+  BBQuip_3_p2: {fileID: 11400000, guid: c6daabc0a95f7034c8411a465091f744, type: 2}
+  BBQuip_3_p3: {fileID: 11400000, guid: 919bc827a444a1945af403941d44a07b, type: 2}
+  BBStory_1_p1: {fileID: 11400000, guid: cf9a19d7d776faa41a5019a52cb1ebb5, type: 2}
+  BBStory_2_p1: {fileID: 11400000, guid: cd6e99f002ccbe94d8e905975771320a, type: 2}
+  BBTryAgain_1_p1: {fileID: 11400000, guid: 7f1502ba40718db43bd1555fe77f558a, type: 2}
+  BBTryAgain_1_p2: {fileID: 11400000, guid: 2c50cdc754f5c204089eb990a1df2c6b, type: 2}
+  BBWin_1_p1: {fileID: 11400000, guid: ea9c39625db80b142b6a003239631b19, type: 2}
+  BoatGame_1_p1: {fileID: 11400000, guid: 1a6e6f820f86af74c952de93929d3037, type: 2}
+  BoatGame_2_p1: {fileID: 11400000, guid: 4d3e035ca8bc4714a912615db24678ad, type: 2}
+  BoatGame_2_p2: {fileID: 11400000, guid: 197c4663206ea884c95ea8ce87f2b21a, type: 2}
+  BoatGame_3_p1: {fileID: 11400000, guid: bd27244b48147c74d9d5a439dda7374d, type: 2}
+  ChaBrutus_1_p1: {fileID: 11400000, guid: 75084a2bee3302042a926a652b874034, type: 2}
+  ChaBrutusWins_1_p1: {fileID: 11400000, guid: d978ac59e9d9d82419a19317222c7496, type: 2}
+  ChaBrutusWins_1_p2: {fileID: 11400000, guid: da5c92feca5b846429468bb5a4795bdd, type: 2}
+  ChaJulius_1_p1: {fileID: 11400000, guid: e4308c2c7f584f248802fee41ff8a6c0, type: 2}
+  ChaJulius_1_p2: {fileID: 11400000, guid: 3e1018a11bb295a4dac4f3d35786af95, type: 2}
+  ChaJulius_1_p3: {fileID: 11400000, guid: 7f7b4df6f791c1b4e96f18c650df755c, type: 2}
+  ChaJulius_2_p1: {fileID: 11400000, guid: d17106678eb39c743b7f2e0584217df5, type: 2}
+  ChaJulius_2_p2: {fileID: 11400000, guid: 1f649be796976274f9d5acfa80057f4a, type: 2}
+  ChaJulius_2_p3: {fileID: 11400000, guid: b61d230cd2011734fa37468b27bdd82b, type: 2}
+  ChaJuliusWins_1_p1: {fileID: 11400000, guid: d0c954ef0d284994e89452c1ec090658, type: 2}
+  ChaJuliusWins_1_p2: {fileID: 11400000, guid: 9f70f22c025692f44a6bf08f6e2c8acb, type: 2}
+  ChaJuliusWins_1_p3: {fileID: 11400000, guid: 453834db5c41f844e8abdc23c9b8500f, type: 2}
+  ChaJuliusWins_2_p1: {fileID: 11400000, guid: e70c1ba2b72a32140964d57faea38aac, type: 2}
+  ChaMarcus_1_p1: {fileID: 11400000, guid: 1a5eb6d3628d10d409b75290f3c6cace, type: 2}
+  ChaMarcus_2_p1: {fileID: 11400000, guid: 1a4a01c4a847c0848828b82441553939, type: 2}
+  ChaMarcus_2_p2: {fileID: 11400000, guid: c88e5da65b2dc404a942e9ecdea10c13, type: 2}
+  ChaMarcusWins_1_p1: {fileID: 11400000, guid: 12d70ec94c7ac734cb6fbae77d03e416, type: 2}
+  ChaMarcusWins_1_p2: {fileID: 11400000, guid: 7ebbfc6e303b38542862a7e5386ccd4c, type: 2}
+  ChaSignPost_1_p1: {fileID: 11400000, guid: 5dd2800ca1a55f942ad289ac770636ed, type: 2}
+  ChaSignPost_1_p2: {fileID: 11400000, guid: fbb40df3cfb53c84d82e54b1c59e6e60, type: 2}
+  ChaSignPost_1_p3: {fileID: 11400000, guid: 45fc03d28d7a959498b93b54bcda41c2, type: 2}
+  ChaSignPost_1_p4: {fileID: 11400000, guid: 5a5e93317e6fa7543b8b691aee9a9aae, type: 2}
+  ChaSignPost_1_p5: {fileID: 11400000, guid: c4db044c2c85bd247b83aad378623e8f, type: 2}
+  CliffDefeated_1_p1: {fileID: 11400000, guid: 654c241074b3781419e65445c88b0c39, type: 2}
+  CliffDefeated_1_p2: {fileID: 11400000, guid: 9786bb7340b96d449b3af1feb2f1d70d, type: 2}
+  CliffDefeated_1_p3: {fileID: 11400000, guid: b6cd66b4c1e978c4aac91e7911ed4987, type: 2}
+  CliffIntro_1_p1: {fileID: 11400000, guid: cae7297024fa9b444805b375120bcf4b, type: 2}
+  CliffIntro_1_p2: {fileID: 11400000, guid: 9df6222ae1e127e4b8bff43c74f8c064, type: 2}
+  CliffIntro_1_p3: {fileID: 11400000, guid: fed98397847b39c4fbf852a5c470b6f3, type: 2}
+  CliffIntro_1_p4: {fileID: 11400000, guid: 8ee71198be34f0f40b47c072d82a17e6, type: 2}
+  CliffIntro_1_p5: {fileID: 11400000, guid: 1bec87c192a173148bb4ed32050b6149, type: 2}
+  CliffRebuilt_1_p1: {fileID: 11400000, guid: b3e57f10226cb83408304b48bc734f96, type: 2}
+  CliffRebuilt_1_p2: {fileID: 11400000, guid: fe589e8f27fdde84b80eca5170c64292, type: 2}
+  CliffRebuilt_1_p3: {fileID: 11400000, guid: bdaed119be6aa5c4f9c58ba5d1a924ff, type: 2}
+  CloggQuips_1_p1: {fileID: 11400000, guid: fbfecbbc46222024b8e54dba52c5f5f6, type: 2}
+  DarwinQuips_1_p1: {fileID: 11400000, guid: 6c3e00e7101d0164a9d40ee842197259, type: 2}
+  DarwinQuips_1_p2: {fileID: 11400000, guid: ec5fceccdef6b6040bacf02b751cbfd4, type: 2}
+  DarwinQuips_1_p3: {fileID: 11400000, guid: e545ba6b8331caa4caf0b7ad49c5953e, type: 2}
+  Dock_1_p1: {fileID: 11400000, guid: 66d18c25ea1900442ae209a8eae3d99b, type: 2}
+  Dock_1_p2: {fileID: 11400000, guid: a5983c4fb9e172e48b64177fb5c5803c, type: 2}
+  End_1_p1: {fileID: 11400000, guid: 3e66ce822fc6aa54189d444d0a8b7e12, type: 2}
+  End_1_p2: {fileID: 11400000, guid: a80d09eb75ff13341a578f940f2025b2, type: 2}
+  End_1_p3: {fileID: 11400000, guid: ae659164036b82349a38dda86c5464ef, type: 2}
+  ExitDefeated_1_p1: {fileID: 11400000, guid: 18ba08857c72da34eb51b665fcaa1971, type: 2}
+  ExitDefeated_1_p2: {fileID: 11400000, guid: e2c5763e72bea7445b99f97eb940d620, type: 2}
+  ExitDefeated_1_p3: {fileID: 11400000, guid: 857abce8c93ad744088cb3045d30b3e3, type: 2}
+  ExitIntro_1_p1: {fileID: 11400000, guid: 5b145a0550a7922448d3850dfb43d127, type: 2}
+  ExitIntro_1_p2: {fileID: 11400000, guid: 1b8974fae831ee342b085bb2a48e7ed8, type: 2}
+  ExitIntro_1_p3: {fileID: 11400000, guid: 446818415f4253d4bb875a65e58ad686, type: 2}
+  ExitIntro_1_p4: {fileID: 11400000, guid: 23b988fd855665842a6d5d6873c8d450, type: 2}
+  ExitIntro_1_p5: {fileID: 11400000, guid: 6a6b54590c5b1ea4fb6da939b110463c, type: 2}
+  ExitRebuilt_1_p1: {fileID: 11400000, guid: d842f85329369a047a69069a007879d6, type: 2}
+  ExitRebuilt_1_p2: {fileID: 11400000, guid: cfacf4561392057419fb284d32534e26, type: 2}
+  FinalBoss_1_p1: {fileID: 11400000, guid: ec7e81a9078392c419cad1dff6522aaf, type: 2}
+  FinalBoss_2_p1: {fileID: 11400000, guid: 1b9c3f898e66cd94f9e6d4244a8a0968, type: 2}
+  ForceLester_1_p1: {fileID: 11400000, guid: 6da220778b65aee4ebd9c161631c26dd, type: 2}
+  GCampDefeated_1_p1: {fileID: 11400000, guid: e58984a6f3dbeba40b4aeda2841bf671, type: 2}
+  GCampDefeated_1_p2: {fileID: 11400000, guid: 6e42ae1064fd5d347b830a2cbfa42719, type: 2}
+  GCampDefeated_1_p3: {fileID: 11400000, guid: 7bcda7506be5f864e8aede39e45ebfed, type: 2}
+  GCampIntro_1_p1: {fileID: 11400000, guid: 94ebcab7c39d6f842b14be1a354b2352, type: 2}
+  GCampRebuilt_1_p1: {fileID: 11400000, guid: f5dc709aba4fa31478ae4004c425d707, type: 2}
+  GCampRebuilt_1_p2: {fileID: 11400000, guid: 2ccf5b7dd40cab145b85675bf8ee232f, type: 2}
+  GCampRebuilt_1_p3: {fileID: 11400000, guid: 68910380e1166c3439104073d2c66f33, type: 2}
+  GorillaIntro_1_p1: {fileID: 11400000, guid: d2ef6885d79b4214bb97b6198ecb76ff, type: 2}
+  GorillaIntro_1_p2: {fileID: 11400000, guid: de651f2defd57e74689b97609663e87a, type: 2}
+  GorillaIntro_1_p3: {fileID: 11400000, guid: 6001392b0932e2741b02e78de20fdb8a, type: 2}
+  GorillaIntro_1_p4: {fileID: 11400000, guid: d4255b26e6ba0fc4a878043fd67ebd6d, type: 2}
+  LesterBuy_1_p1: {fileID: 11400000, guid: 2a4d2fe8810c0bf409cb754f1d054885, type: 2}
+  LesterBuy_1_p2: {fileID: 11400000, guid: d6899fab609a5a5409513e0b96f991e1, type: 2}
+  LesterBuy_1_p3: {fileID: 11400000, guid: 884dea514b4a97842a34f9265ae2dd5c, type: 2}
+  LesterFull_1_p1: {fileID: 11400000, guid: 56e906252452ad041bcf493587823611, type: 2}
+  LesterIntro_1_p1: {fileID: 11400000, guid: c715a75596477d346b0f2a2334ebac28, type: 2}
+  LesterIntro_1_p2: {fileID: 11400000, guid: 2521e6f2ae83e6d40af79c23cbe8427a, type: 2}
+  LesterIntro_1_p3: {fileID: 11400000, guid: b5a6baf9007054f4d8c55223303067d3, type: 2}
+  LesterIntro_1_p4: {fileID: 11400000, guid: 14a3c06dbfa50fc49a8e3e38cf877ded, type: 2}
+  MermaidDefeated_1_p1: {fileID: 11400000, guid: 80b7330ac73dfdd45b4f3052a09d7eb9,
     type: 2}
-  marcus_challenges: {fileID: 11400000, guid: 1a5eb6d3628d10d409b75290f3c6cace, type: 2}
-  marcus_wins: {fileID: 11400000, guid: 12d70ec94c7ac734cb6fbae77d03e416, type: 2}
-  marcus_wins_again: {fileID: 11400000, guid: e70c1ba2b72a32140964d57faea38aac, type: 2}
-  marcus_loses__brutus_challenges: {fileID: 11400000, guid: 1a4a01c4a847c0848828b82441553939,
+  MermaidDefeated_1_p2: {fileID: 11400000, guid: aa3be17b00b1aed44b19878264afb075,
     type: 2}
-  brutus_challenges: {fileID: 11400000, guid: 75084a2bee3302042a926a652b874034, type: 2}
-  brutus_wins: {fileID: 11400000, guid: d978ac59e9d9d82419a19317222c7496, type: 2}
-  brutus_wins_again: {fileID: 11400000, guid: e70c1ba2b72a32140964d57faea38aac, type: 2}
-  challengeSignQuips: {fileID: 11400000, guid: 5dd2800ca1a55f942ad289ac770636ed, type: 2}
-  villageChallengeDefeated_1: {fileID: 11400000, guid: 15569eece5a7bed4794a0e6abe4d8422,
+  MermaidDefeated_1_p3: {fileID: 11400000, guid: 48990b75a38f201408de9f6d60eeb940,
     type: 2}
-  villageChallengeDefeated_2: {fileID: 11400000, guid: 0e5c7fcd50f036d45a33256bdf8b66ee,
+  MermaidIntro_1_p1: {fileID: 11400000, guid: 51a4ccaaeb34aeb428020f093cd50f59, type: 2}
+  MermaidIntro_1_p2: {fileID: 11400000, guid: 3af0bf702bcf939498cff031c9eff29e, type: 2}
+  MermaidIntro_1_p3: {fileID: 11400000, guid: f03199a34a7f8d448a8306507ae0ecdf, type: 2}
+  MermaidIntro_1_p4: {fileID: 11400000, guid: 0647ad407df205c47ba4a6b8f69f5316, type: 2}
+  MermaidIntro_1_p5: {fileID: 11400000, guid: 1a708fa4db85c8044bd45074e1e54bfd, type: 2}
+  MermaidQuip_1_p1: {fileID: 11400000, guid: a5fef71fc169126489e34e1a962a8fff, type: 2}
+  MermaidQuip_1_p2: {fileID: 11400000, guid: 09aa848c769f3904e95f3d554b88fc5f, type: 2}
+  MermaidRebuilt_1_p1: {fileID: 11400000, guid: d531eda9403098d428d2b98c313a54e3,
     type: 2}
-  villageChallengeDefeated_3: {fileID: 11400000, guid: baa42894e75312644a235bb89e8b60ef,
+  MermaidRebuilt_1_p2: {fileID: 11400000, guid: aff2c9578e3112c41844dcbd16c544eb,
     type: 2}
-  mudslideIntro: {fileID: 11400000, guid: 8c29438673fd1864ab48a0aab2298be5, type: 2}
-  mudslideRebuilt_1: {fileID: 11400000, guid: f60f7bdf1b43c044d841d3df7f0f3f52, type: 2}
-  mudslideRebuilt_2: {fileID: 11400000, guid: 32a22628492b9124da499511add28e4f, type: 2}
-  mudslideChallengeDefeated_1: {fileID: 11400000, guid: 3fe532d17f284304896e72a9a79fabe0,
+  MermaidRebuilt_1_p3: {fileID: 11400000, guid: 76f1df6ad4f32774493b01c977c63e9f,
     type: 2}
-  mudslideChallengeDefeated_2: {fileID: 11400000, guid: 7392fab7e20b2e54481d08e283df4711,
+  MonkeyDefeated_1_p1: {fileID: 11400000, guid: 398101e937e2a924e8ba6a0b8645dff3,
     type: 2}
-  mudslideChallengeDefeated_3: {fileID: 11400000, guid: a1f3439ad349b784ba7a7f68ba5947b0,
+  MonkeyDefeated_1_p2: {fileID: 11400000, guid: ecff387572d3c724c8adb0e25761beab,
     type: 2}
-  orcVillageIntro_1: {fileID: 11400000, guid: a1c6b2f6829d5d24ba4e97c239810fc1, type: 2}
-  orcVillageIntro_2: {fileID: 11400000, guid: 2cec0bb21fe537d4cb989e4e36fd75d2, type: 2}
-  orcVillageIntro_3: {fileID: 11400000, guid: d4e99ce403bcf02449c22bd63bc7cbb9, type: 2}
-  orcVillageRebuilt_1: {fileID: 11400000, guid: 2255fb26e80dcef45b11b16b237b6300,
+  MonkeyIntro_1_p1: {fileID: 11400000, guid: f0223491cc621dd47a7f98d3876f1322, type: 2}
+  MonkeyIntro_1_p2: {fileID: 11400000, guid: 0b7acd24b48ef0d4d91386a19d635b6a, type: 2}
+  MonkeyIntro_1_p3: {fileID: 11400000, guid: 7ca7d569fb0023646a07fb81bccc7e1b, type: 2}
+  MonkeyQuips_1_p1: {fileID: 11400000, guid: d77a2884565b85e4fba2551fa09afd9f, type: 2}
+  MonkeyRebuilt_1_p1: {fileID: 11400000, guid: a7aa9bb8f1e720c4eb0e1983ae1298e6, type: 2}
+  MonkeyRebuilt_1_p2: {fileID: 11400000, guid: 07a3919213cb5a0469415db14270d2bc, type: 2}
+  MudslideDefeated_1_p1: {fileID: 11400000, guid: 3fe532d17f284304896e72a9a79fabe0,
     type: 2}
-  orcVillageRebuilt_2: {fileID: 11400000, guid: 2108fe19f2621584893b291ea033d77a,
+  MudslideDefeated_1_p2: {fileID: 11400000, guid: 7392fab7e20b2e54481d08e283df4711,
     type: 2}
-  orcVillageChallengeDefeated_1: {fileID: 11400000, guid: 50fd4e2ba9c202e41a546340ce94c4de,
+  MudslideDefeated_1_p3: {fileID: 11400000, guid: a1f3439ad349b784ba7a7f68ba5947b0,
     type: 2}
-  orcVillageChallengeDefeated_2: {fileID: 11400000, guid: 69331d6913d60ea4cafceee27a05a778,
+  MudslideIntro_1_p1: {fileID: 11400000, guid: 8c29438673fd1864ab48a0aab2298be5, type: 2}
+  MudslideRebuilt_1_p1: {fileID: 11400000, guid: f60f7bdf1b43c044d841d3df7f0f3f52,
     type: 2}
-  spiderIntro_1: {fileID: 11400000, guid: 8899958982428ac4c9dfc23845d941d9, type: 2}
-  spiderIntro_2: {fileID: 11400000, guid: 134ea1ac2d45a4f48a484311853f5b53, type: 2}
-  spiderIntro_3: {fileID: 11400000, guid: c50f87ea9c66ea74c809c7a00e8761de, type: 2}
-  spiderIntro_4: {fileID: 11400000, guid: 18e997de7533aea4ca4ca4e6f0583676, type: 2}
-  spiderIntro_5: {fileID: 11400000, guid: 049935a37e5baab49b0047782649d4da, type: 2}
-  spiderIntro_6: {fileID: 11400000, guid: d5d92279d6961a84c8d7d0a863adfd57, type: 2}
-  spookyForest_1: {fileID: 11400000, guid: c988d80c1200c9742916286f7faf0149, type: 2}
-  spookyForest_2: {fileID: 11400000, guid: 685870f22cf0caa48a28fa8723b52113, type: 2}
-  spookyForest_3: {fileID: 11400000, guid: 7c10dab1b6149664da396689e3d285ad, type: 2}
-  spookyForestChallengeDefeated_1: {fileID: 11400000, guid: b2a92413d1ee4d6489248230e69768ff,
+  MudslideRebuilt_1_p2: {fileID: 11400000, guid: 32a22628492b9124da499511add28e4f,
     type: 2}
-  spookyForestChallengeDefeated_2: {fileID: 11400000, guid: f8041ce9d35b53a49ac7f757496f3c7e,
+  OCampDefeated_1_p1: {fileID: 11400000, guid: f9a768ae03fcb7342915d5a4c00847d0, type: 2}
+  OCampDefeated_1_p2: {fileID: 11400000, guid: 6a368cc28066f774e841a81959459079, type: 2}
+  OCampDefeated_1_p3: {fileID: 11400000, guid: e8e62e813ea2b9647825da964f1549c4, type: 2}
+  OCampIntro_1_p1: {fileID: 11400000, guid: 6ee7eaf666eebc14ea485fb3017decf3, type: 2}
+  OCampRebuilt_1_p1: {fileID: 11400000, guid: 8d4abd27922bc5c4abeffcd2480a6ec7, type: 2}
+  OCampRebuilt_1_p2: {fileID: 11400000, guid: 0fd01e7a88e5538439bf9f038958744b, type: 2}
+  OctopusQuips_1_p1: {fileID: 11400000, guid: 0a12f4c37ba3cd34fa956ec759b448a3, type: 2}
+  OctopusQuips_2_p1: {fileID: 11400000, guid: 462f7f662dd0adf4098cf79ca78aeb54, type: 2}
+  OllieQuips_1_p1: {fileID: 11400000, guid: f91cdb245d43f98439f75166a4d37f5e, type: 2}
+  OllieQuips_2_p1: {fileID: 11400000, guid: 27a0bfb2172fbc64489f6b7add738628, type: 2}
+  OVillageDefeated_1_p1: {fileID: 11400000, guid: 50fd4e2ba9c202e41a546340ce94c4de,
     type: 2}
-  spookyForestChallengeDefeated_3: {fileID: 11400000, guid: 8a446daf3897ad84aac5efd8ef5481e1,
+  OVillageDefeated_1_p2: {fileID: 11400000, guid: 69331d6913d60ea4cafceee27a05a778,
     type: 2}
-  orcCampIntro_1: {fileID: 11400000, guid: 6ee7eaf666eebc14ea485fb3017decf3, type: 2}
-  orcCampRebuilt_1: {fileID: 11400000, guid: 8d4abd27922bc5c4abeffcd2480a6ec7, type: 2}
-  orcCampRebuilt_2: {fileID: 11400000, guid: 0fd01e7a88e5538439bf9f038958744b, type: 2}
-  orcCampChallengeDefeated_1: {fileID: 11400000, guid: f9a768ae03fcb7342915d5a4c00847d0,
+  OVillageIntro_1_p1: {fileID: 11400000, guid: a1c6b2f6829d5d24ba4e97c239810fc1, type: 2}
+  OVillageIntro_1_p2: {fileID: 11400000, guid: 2cec0bb21fe537d4cb989e4e36fd75d2, type: 2}
+  OVillageIntro_2_p1: {fileID: 11400000, guid: d4e99ce403bcf02449c22bd63bc7cbb9, type: 2}
+  OVillageRebuilt_1_p1: {fileID: 11400000, guid: 2255fb26e80dcef45b11b16b237b6300,
     type: 2}
-  orcCampChallengeDefeated_2: {fileID: 11400000, guid: 6a368cc28066f774e841a81959459079,
+  OVillageRebuilt_1_p2: {fileID: 11400000, guid: 2108fe19f2621584893b291ea033d77a,
     type: 2}
-  orcCampChallengeDefeated_3: {fileID: 11400000, guid: e8e62e813ea2b9647825da964f1549c4,
+  PirateDefeated_1_p1: {fileID: 11400000, guid: d143233043049ed42a7d4f28d73c5911,
     type: 2}
-  defaultRRTalkie: {fileID: 11400000, guid: 0af5dc78f8364c2448814e1c6ddad6d9, type: 2}
-  darwinQuips: {fileID: 11400000, guid: 6c3e00e7101d0164a9d40ee842197259, type: 2}
-  cloggQuips: {fileID: 11400000, guid: fbfecbbc46222024b8e54dba52c5f5f6, type: 2}
+  PirateDefeated_1_p2: {fileID: 11400000, guid: baac5889e65bbc84c96fc83141e23bda,
+    type: 2}
+  PirateDefeated_1_p3: {fileID: 11400000, guid: f6033fe4728e88143986fa5323ac4907,
+    type: 2}
+  PirateIntro_1_p1: {fileID: 11400000, guid: c992a3e642df4694298d1bace6ab6560, type: 2}
+  PirateIntro_1_p2: {fileID: 11400000, guid: 64d20a8b7fee0e94cabddc0bd3f862b1, type: 2}
+  PirateRebuilt_1_p1: {fileID: 11400000, guid: 23a88baff20386b47a1448e1d7d227e3, type: 2}
+  PirateRebuilt_1_p2: {fileID: 11400000, guid: 8a85ffa8f9d58d44687dc45e4581a76c, type: 2}
+  PoopDefeated_1_p1: {fileID: 11400000, guid: 2c0a00bf9bb704244aba805e5ed0bbdb, type: 2}
+  PoopDefeated_1_p2: {fileID: 11400000, guid: fa43f6d4d1945694b8481b0eb1bf1d27, type: 2}
+  PoopDefeated_1_p3: {fileID: 11400000, guid: fcfc5335eb4068a40adcd4d76453d41e, type: 2}
+  PoopIntro_1_p1: {fileID: 11400000, guid: 06a8ae3e3571e26449ccca108f748d40, type: 2}
+  PoopRebuilt_1_p1: {fileID: 11400000, guid: 9c990690069302143b9770c707ae77b5, type: 2}
+  PoopRebuilt_1_p2: {fileID: 11400000, guid: 56666c8580419bf40b1ae78f138bb68c, type: 2}
+  PreStory_1_p1: {fileID: 11400000, guid: c6a653b7cb9bb2d478d1f19081dfbf97, type: 2}
+  PreStory_2_p1: {fileID: 11400000, guid: 0269edfb08cf8a047bd0356174b053a5, type: 2}
+  RedLester_1_p1: {fileID: 11400000, guid: a346c97886a678e4993d1c93cbc591fb, type: 2}
+  RRGuardsIntro_1_p1: {fileID: 11400000, guid: 0af5dc78f8364c2448814e1c6ddad6d9, type: 2}
+  RRGuardsIntro_2_p1: {fileID: 11400000, guid: 98d649bd0552e6646affbb135c6d6673, type: 2}
+  RRGuardsIntro_2_p2: {fileID: 11400000, guid: ebff19955113a4c428eeda45ac93363e, type: 2}
+  RRGuardsLost_1_p1: {fileID: 11400000, guid: cc150fce602b930458c9236a29b3d6a5, type: 2}
+  RRGuardsWins_1_p1: {fileID: 11400000, guid: 2f77a7a8ec4e92b4ba74aec8ae23d4d3, type: 2}
+  RRJuliusIntro_1_p1: {fileID: 11400000, guid: f2d2c1180b6ef7145a6915277849aac5, type: 2}
+  RRJuliusLost_1_p1: {fileID: 11400000, guid: 4b7a27e038d4a4d45872b536072b31aa, type: 2}
+  RRJuliusWins_1_p1: {fileID: 11400000, guid: 79802c7d4df14744385406d80f8c0b28, type: 2}
+  RuinsDefeated_1_p1: {fileID: 11400000, guid: 7c314a2fb9ec19a4aa2a7d4b0df611d6, type: 2}
+  RuinsDefeated_1_p2: {fileID: 11400000, guid: 3347b8afd1f996f48b5d9551cb00d7b8, type: 2}
+  RuinsDefeated_1_p3: {fileID: 11400000, guid: 7feef22fd73fcfb4f83bfe679a5075ab, type: 2}
+  RuinsIntro_1_p1: {fileID: 11400000, guid: c64f4534fc2d1b44592b25cb0dbf569d, type: 2}
+  RuinsRebuilt_1_p1: {fileID: 11400000, guid: b80d5cb3387edb847958aebe82253bed, type: 2}
+  RuinsRebuilt_1_p2: {fileID: 11400000, guid: 25bf73573bb674348843c027741fe93e, type: 2}
+  SectionIntro_1_p1: {fileID: 11400000, guid: ba69f5e88178a0f4c8c419392594dbb8, type: 2}
+  SpiderDefeated_1_p1: {fileID: 11400000, guid: b2a92413d1ee4d6489248230e69768ff,
+    type: 2}
+  SpiderDefeated_1_p2: {fileID: 11400000, guid: f8041ce9d35b53a49ac7f757496f3c7e,
+    type: 2}
+  SpiderDefeated_1_p3: {fileID: 11400000, guid: 8a446daf3897ad84aac5efd8ef5481e1,
+    type: 2}
+  SpiderIntro_1_p1: {fileID: 11400000, guid: 8899958982428ac4c9dfc23845d941d9, type: 2}
+  SpiderIntro_1_p2: {fileID: 11400000, guid: 134ea1ac2d45a4f48a484311853f5b53, type: 2}
+  SpiderIntro_1_p3: {fileID: 11400000, guid: c50f87ea9c66ea74c809c7a00e8761de, type: 2}
+  SpiderIntro_1_p4: {fileID: 11400000, guid: 18e997de7533aea4ca4ca4e6f0583676, type: 2}
+  SpiderIntro_1_p5: {fileID: 11400000, guid: 049935a37e5baab49b0047782649d4da, type: 2}
+  SpiderIntro_1_p6: {fileID: 11400000, guid: d5d92279d6961a84c8d7d0a863adfd57, type: 2}
+  SpiderRebuilt_1_p1: {fileID: 11400000, guid: c988d80c1200c9742916286f7faf0149, type: 2}
+  SpiderRebuilt_1_p2: {fileID: 11400000, guid: 685870f22cf0caa48a28fa8723b52113, type: 2}
+  SpiderRebuilt_1_p3: {fileID: 11400000, guid: 7c10dab1b6149664da396689e3d285ad, type: 2}
+  SpindleQuips_1_p1: {fileID: 11400000, guid: 7830eb32077af3f4b82be1852f78d143, type: 2}
+  SpindleQuips_2_p1: {fileID: 11400000, guid: 39e38030dbdde144e883c057dc67553e, type: 2}
+  Taxi_1_p1: {fileID: 11400000, guid: 167a80030ce2f5d4597bed0ca6e4fc3f, type: 2}
+  Taxi_2_p1: {fileID: 11400000, guid: 60c45e5532254e643942a917a01b842e, type: 2}
+  VillageDefeated_1_p1: {fileID: 11400000, guid: 15569eece5a7bed4794a0e6abe4d8422,
+    type: 2}
+  VillageDefeated_1_p3: {fileID: 11400000, guid: 0e5c7fcd50f036d45a33256bdf8b66ee,
+    type: 2}
+  VillageDefeated_1_p4: {fileID: 11400000, guid: baa42894e75312644a235bb89e8b60ef,
+    type: 2}
+  VillageRebuilt_1_p1: {fileID: 11400000, guid: 3c7ecdd6d8b7c944991336174c37e3c1,
+    type: 2}
+  VillageRebuilt_1_p2: {fileID: 11400000, guid: 59cc2155c3295e84fb0b22758c1e3745,
+    type: 2}
+  VillageRebuilt_1_p3: {fileID: 11400000, guid: ade41446f0ad1bf419900b83280035fc,
+    type: 2}
   redSprites:
   - sprite: {fileID: 21300000, guid: 4d5a0905dfb71a04aa647991be62cffe, type: 3}
     character: 1
@@ -26320,7 +26458,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 49.625477, y: 0.005817631}
+  m_AnchoredPosition: {x: 50.784645, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

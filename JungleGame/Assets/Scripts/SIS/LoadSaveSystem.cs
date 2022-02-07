@@ -161,7 +161,6 @@ public static class LoadSaveSystem
 
         // pools
         new_data.actionWordPool = new List<ActionWordEnum>();
-        new_data.challengeWordPool = new List<ChallengeWord>();
         
         // royal rumble data
         new_data.royalRumbleActive = false;
