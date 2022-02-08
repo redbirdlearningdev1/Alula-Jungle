@@ -108,6 +108,10 @@ public class ScrollMapManager : MonoBehaviour
         SetMapPosition(index);
         SetMapLimit(index);
 
+        // update settings map
+        SettingsWindowController.instance.UpdateRedPos(mapLocations[index].location);
+        SettingsWindowController.instance.UpdateMapSprite();
+
         // remove game manager stuff
         GameManager.instance.playingRoyalRumbleGame = false;
         GameManager.instance.playingChallengeGame = false;
@@ -879,6 +883,9 @@ public class ScrollMapManager : MonoBehaviour
         // hide sign
         ChapterEnterVisualController.instance.HideSign();
 
+        // update settings map
+        SettingsWindowController.instance.UpdateMapSprite();
+
         yield return new WaitForSeconds(1f);
 
         RaycastBlockerController.instance.RemoveRaycastBlocker("UnlockMapArea");
@@ -1004,6 +1011,9 @@ public class ScrollMapManager : MonoBehaviour
         float x = GetXPosFromMapLocationIndex(currMapLocation);
         StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, transitionTime));
 
+        // update map pos
+        SettingsWindowController.instance.UpdateRedPos(mapLocations[currMapLocation].location);
+
         yield return new WaitForSeconds(0.25f);
 
         // show stars on current map location
@@ -1056,6 +1066,9 @@ public class ScrollMapManager : MonoBehaviour
         // move map to next right map location
         float x = GetXPosFromMapLocationIndex(currMapLocation);
         StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, transitionTime));
+
+        // update map pos
+        SettingsWindowController.instance.UpdateRedPos(mapLocations[currMapLocation].location);
 
         yield return new WaitForSeconds(0.25f);
 
