@@ -367,23 +367,39 @@ public class WordFactoryDeletingManager : MonoBehaviour
 
             yield return new WaitForSeconds(1f);
 
-            // remove one frame
-            InvisibleFrameLayout.instance.SetNumberOfFrames(currentWord.elkoninCount - 1);
-
-            // shrink extra frame
-            VisibleFramesController.instance.frames[currentPair.index].GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
-            // audio fx
-            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 0.5f);
-            yield return new WaitForSeconds(0.2f);
-
-            // move coins to frames
-            VisibleFramesController.instance.SetNumberOfFrames(currentWord.elkoninCount - 1);
-            VisibleFramesController.instance.LerpFramesToInvisibleFrames();
-            int count = 0;
+            // hide coins
+            int x = 0;
             foreach (var coin in currentCoins)
             {
-                coin.GetComponent<LerpableObject>().LerpPosition(InvisibleFrameLayout.instance.frames[count].transform.position, 0.5f, false);
-                count++;
+                // audio fx
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", (1f + 0.25f * x));
+                coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+                yield return new WaitForSeconds(0.1f);
+                x++;
+            }
+            yield return new WaitForSeconds(0.5f);
+
+            // remove extra frame
+            VisibleFramesController.instance.RemoveFrameSmooth(currentPair.index);
+            yield return new WaitForSeconds(1f);
+
+            x = 0;
+            foreach (var coin in currentCoins)
+            {
+                coin.GetComponent<LerpableObject>().LerpPosToTransform(VisibleFramesController.instance.frames[x].transform, 0f, false);
+                x++;
+            }
+            yield return new WaitForSeconds(0.5f);
+
+            // show coins
+            x = 0;
+            foreach (var coin in currentCoins)
+            {
+                // audio fx
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", (1.5f - 0.25f * x));
+                coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
+                yield return new WaitForSeconds(0.1f);
+                x++;
             }
             yield return new WaitForSeconds(1f);
 

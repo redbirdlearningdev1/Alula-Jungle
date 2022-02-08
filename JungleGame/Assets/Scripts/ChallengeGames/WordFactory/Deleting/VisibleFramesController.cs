@@ -114,6 +114,49 @@ public class VisibleFramesController : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 0.25f);
     }
 
+
+    public void RemoveFrameSmooth(int index)
+    {
+        StartCoroutine(RemoveFrameSmoothRoutine(index));
+    }
+
+    private IEnumerator RemoveFrameSmoothRoutine(int index)
+    {
+        // count active frames
+        int count = 0;
+        foreach(var frame in frames)
+        {
+            if (frame.activeSelf)
+            {
+                count++;
+            }
+        }
+
+        // remove frame to add invisible frames
+        InvisibleFrameLayout.instance.SetNumberOfFrames(count - 1);
+        yield return new WaitForSeconds(0.1f);
+
+        // make visible frame disapear
+        frames[index].GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+        yield return new WaitForSeconds(0.2f);
+        frames[index].SetActive(false);
+        
+        // remove frame from list
+        GameObject oldFrame = frames[index];
+        frames.Remove(oldFrame);
+        // readd frame to list
+        frames.Add(oldFrame);
+
+        // audio fx
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 0.25f);
+
+        // move frames to invisible frames
+        StartCoroutine(SetFramesPosFast());
+        // play sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BoxSlide, 0.5f);
+    }
+
+
     public void MoveFramesToInvisibleFrames()
     {
         foreach(var frame in frames)
@@ -150,8 +193,8 @@ public class VisibleFramesController : MonoBehaviour
             {
                 frame.GetComponent<LerpableObject>().LerpPosition(InvisibleFrameLayout.instance.frames[count].transform.position, 0.1f, false);
                 yield return new WaitForSeconds(0.1f);
+                count++;
             }
-            count++;
         }
     }
 
