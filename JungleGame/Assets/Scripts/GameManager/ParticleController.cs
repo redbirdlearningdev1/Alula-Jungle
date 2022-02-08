@@ -148,18 +148,7 @@ public class ParticleController : MonoBehaviour
                         break;
 
                     case TalkieCharacter.Julius: 
-                        if (randomNum < 0.33f)
-                        {
-                            currentParticle = juliusJewel1;
-                        }
-                        else if (randomNum >= 0.33f && randomNum < 0.66f)
-                        {
-                            currentParticle = juliusJewel2;
-                        }
-                        else
-                        {
-                            currentParticle = juliusJewel3;
-                        }
+                        DetermineJuliusParticle();
                         break;
 
                     case TalkieCharacter.Lester: 
@@ -277,6 +266,28 @@ public class ParticleController : MonoBehaviour
                 GameObject particle = Instantiate(currentParticle, position, Quaternion.identity, this.transform);
                 particle.GetComponent<FunParticle>().StartParticle();
             }
+        }
+    }
+
+    private void DetermineJuliusParticle()
+    {
+        Chapter currChapter = StudentInfoSystem.GetCurrentProfile().currentChapter;
+
+        switch (currChapter)
+        {
+            case Chapter.chapter_0:
+            case Chapter.chapter_1:
+            case Chapter.chapter_2:
+            case Chapter.chapter_3:
+                currentParticle = juliusJewel1;
+                break;
+            case Chapter.chapter_4:
+                currentParticle = juliusJewel2;
+                break;
+            case Chapter.chapter_5:
+            case Chapter.chapter_final:
+                currentParticle = juliusJewel3;
+                break;
         }
     }
 

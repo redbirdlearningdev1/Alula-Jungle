@@ -323,6 +323,10 @@ public class WordFactoryDeletingManager : MonoBehaviour
         currentCoin = coin;
         WordFactoryDeletingManager.instance.ReturnCoinsToFrame();
 
+        // eat current coin
+        currentCoin.GetComponent<LerpableObject>().LerpPosition(EmeraldTigerHolder.instance.transform.position, 0.25f, false);
+        currentCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
+
         // win
         if (coin.value == currentPair.word2.elkoninList[currentPair.index])
         {
@@ -344,19 +348,19 @@ public class WordFactoryDeletingManager : MonoBehaviour
 
     private IEnumerator PostRound(bool win)
     {
+        // emerald tiger thinking
+        EmeraldTigerHolder.instance.Thinking();
+        yield return new WaitForSeconds(3f);
+
+
         // win round
         if (win)
         {
             // play correct sound
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
 
-            // move current coin
-            currentCoin.GetComponent<LerpableObject>().LerpPosition(EmeraldTigerHolder.instance.transform.position, 0.25f, false);
-            currentCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
-            yield return new WaitForSeconds(0.25f);
-
-            // add coin to tiger
-            EmeraldTigerHolder.instance.SetNumberCoins(numWins);
+            // emerald tiger correct
+            EmeraldTigerHolder.instance.SetCorrect(true);
 
             // remove coin from list
             currentCoins.Remove(currentCoin);
@@ -419,6 +423,9 @@ public class WordFactoryDeletingManager : MonoBehaviour
         {
             // play wrong sound
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
+
+            // emerald tiger wrong
+            EmeraldTigerHolder.instance.SetCorrect(false);
 
             // return coin to frame
             currentCoin = null;

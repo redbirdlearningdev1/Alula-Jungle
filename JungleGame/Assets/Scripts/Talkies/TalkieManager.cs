@@ -56,6 +56,7 @@ public class TalkieManager : MonoBehaviour
     [Header("Subtitles")]
     public Image subtitleBox;
     public TextMeshProUGUI subtitleText;
+    public TextMeshProUGUI currentTalkieText;
 
     [Header("Audio Stuff")]
     public float minMusicVolWhenTalkiePlaying = 0f;
@@ -110,6 +111,7 @@ public class TalkieManager : MonoBehaviour
         // clear subtitles
         subtitleText.text = "";
         subtitleBox.color = new Color(0f, 0f, 0f, 0f);
+        currentTalkieText.text = "";
 
         // clear yes no buttons
         yesButton.transform.localScale = new Vector3(0f, 0f, 1f);
@@ -157,10 +159,8 @@ public class TalkieManager : MonoBehaviour
         // set fast talkies
         SetFastTalkies(StudentInfoSystem.GetCurrentProfile().talkieFast);
 
-        if (!currentTalkie.quipsCollection)
-            StartCoroutine(PlayTalkieRoutine());
-        else
-            StartCoroutine(PlayTalkieRoutine(true));
+        // start talkie
+        StartCoroutine(PlayTalkieRoutine());
     }
 
     // stops current talkie from continuing
@@ -171,6 +171,7 @@ public class TalkieManager : MonoBehaviour
         // clear subtitles
         subtitleText.text = "";
         subtitleBox.color = new Color(0f, 0f, 0f, 0f);
+        currentTalkieText.text = "";
         
         // bring talkies down
         StartCoroutine(MoveObjectRouitne(leftTalkie, leftInactivePos.position, talkieMoveSpeed));
@@ -186,7 +187,7 @@ public class TalkieManager : MonoBehaviour
         ResetTalkies();
     }
 
-    private IEnumerator PlayTalkieRoutine(bool playRandomSegment = false)
+    private IEnumerator PlayTalkieRoutine()
     {
         ResetTalkies();
 
@@ -244,36 +245,39 @@ public class TalkieManager : MonoBehaviour
         subtitleText.text = "";
         subtitleBox.color = new Color(0f, 0f, 0f, 100f / 255f);
 
-        if (playRandomSegment)
+        // set current talkie name
+        if (GameManager.instance.devModeActivated)
+            currentTalkieText.text = "current talkie name: " + currentTalkie.name;
+
+        // segment to start talkie on
+        int startIndex = 0;
+        
+        // only for quips collection
+        if (currentTalkie.quipsCollection)
         {
-            // play one segment randomly
-            int index = Random.Range(0, currentTalkie.segmnets.Count);
-            StartCoroutine(PlaySegment(currentTalkie.segmnets[index]));
+            // start talkie at a random segment
+            startIndex = currSegmentIndex = Random.Range(0, currentTalkie.segmnets.Count);
+        }
+        
+        // play segments in order
+        for (currSegmentIndex = startIndex; currSegmentIndex < currentTalkie.segmnets.Count; currSegmentIndex++)
+        {
+            StartCoroutine(PlaySegment(currentTalkie.segmnets[currSegmentIndex]));
             while (playingSegment)
                 yield return null;
-        }
-        else 
-        {
-            // play segments in order
-            for (currSegmentIndex = 0; currSegmentIndex < currentTalkie.segmnets.Count; currSegmentIndex++)
+
+            // end talkie if segment says so
+            if (currentTalkie.segmnets[currSegmentIndex].endTalkieAfterThisSegment)
+                break;
+
+            // override talkie segment
+            if (overrideSegmentIndex)
             {
-                StartCoroutine(PlaySegment(currentTalkie.segmnets[currSegmentIndex]));
-                while (playingSegment)
-                    yield return null;
-
-                // end talkie if segment says so
-                if (currentTalkie.segmnets[currSegmentIndex].endTalkieAfterThisSegment)
-                    break;
-
-                // override talkie segment
-                if (overrideSegmentIndex)
-                {
-                    overrideSegmentIndex = false;
-                    currSegmentIndex = newSegmentIndex;
-                }
+                overrideSegmentIndex = false;
+                currSegmentIndex = newSegmentIndex;
             }
         }
-
+        
         /* 
         ################################################
         #   END TALKIE
@@ -333,6 +337,7 @@ public class TalkieManager : MonoBehaviour
         // clear subtitles
         subtitleText.text = "";
         subtitleBox.color = new Color(0f, 0f, 0f, 0f);
+        currentTalkieText.text = "";
 
         // turn off particles
         ParticleController.instance.isOn = false;
@@ -516,7 +521,7 @@ public class TalkieManager : MonoBehaviour
                 }
                 else
                 {   
-                    print ("no audio clip found: \'" + talkieSeg.audioClipName + "\'");
+                    Debug.LogError("no audio clip found: \'" + talkieSeg.audioClipName + "\' in talkie: \'" + currentTalkie.name + "\'");
                     yield return new WaitForSeconds(1.5f);
                 }
             }

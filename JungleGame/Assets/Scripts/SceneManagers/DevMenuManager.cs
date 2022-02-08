@@ -637,6 +637,20 @@ public class DevMenuManager : MonoBehaviour
         int beat = storyBeatDropdown.value;
 
         StudentInfoSystem.GetCurrentProfile().currStoryBeat = (StoryBeat)beat;
+
+        // set star amounts so AI system is happy :)
+        StudentInfoSystem.GetCurrentProfile().starsFrogger = 1;
+        StudentInfoSystem.GetCurrentProfile().starsSeashell = 1;
+        StudentInfoSystem.GetCurrentProfile().starsRummage = 1;
+        StudentInfoSystem.GetCurrentProfile().starsTurntables = 1;
+        StudentInfoSystem.GetCurrentProfile().starsPirate = 1;
+        StudentInfoSystem.GetCurrentProfile().starsSpiderweb = 1;
+        StudentInfoSystem.GetCurrentProfile().totalStarsFrogger = 1;
+        StudentInfoSystem.GetCurrentProfile().totalStarsSeashell = 1;
+        StudentInfoSystem.GetCurrentProfile().totalStarsRummage = 1;
+        StudentInfoSystem.GetCurrentProfile().totalStarsTurntables = 1;
+        StudentInfoSystem.GetCurrentProfile().totalStarsPirate = 1;
+        StudentInfoSystem.GetCurrentProfile().totalStarsSpiderweb = 1;
         
         switch ((StoryBeat)beat)
         {

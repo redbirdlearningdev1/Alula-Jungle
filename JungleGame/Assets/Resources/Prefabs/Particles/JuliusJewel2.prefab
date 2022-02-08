@@ -119,8 +119,15 @@ MonoBehaviour:
   rate: 0.25
   randomizeRotation: 1
   forceRange: {x: 100, y: 200}
+  addForceSidedways: 0
   torqueRange: {x: -0.25, y: 0.25}
-  scaleRange: {x: 3, y: 3.5}
+  scaleRange: {x: 1, y: 2}
+  reverseObject: 0
+  isBug: 0
+  bugRotateTime: {x: 0, y: 0}
+  bugAngleOffset: 0
+  isBubble: 0
+  poppedBubble: {fileID: 0}
   colors: []
 --- !u!114 &379738175261615459
 MonoBehaviour:

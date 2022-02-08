@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 379738175261615459}
   - component: {fileID: 3499908264471545191}
   - component: {fileID: 2964713048866546478}
+  - component: {fileID: 3327708976680687107}
   m_Layer: 17
   m_Name: OllieCoin
   m_TagString: Untagged
@@ -70,7 +71,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9f172605d79958547a4042b023ec6131, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9151a1d4c323aa844bc9ec3be7abb55e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -119,11 +120,14 @@ MonoBehaviour:
   duration: 3
   rate: 0.1
   randomizeRotation: 1
-  forceRange: {x: 100, y: 100}
+  forceRange: {x: 300, y: 300}
   addForceSidedways: 0
   torqueRange: {x: -500, y: 500}
   scaleRange: {x: 2, y: 2}
   reverseObject: 0
+  isBug: 0
+  bugRotateTime: {x: 0, y: 0}
+  bugAngleOffset: 0
   isBubble: 0
   poppedBubble: {fileID: 0}
   colors: []
@@ -182,5 +186,23 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10, y: 45}
+  m_Size: {x: 44, y: 48}
   m_EdgeRadius: 0
+--- !u!114 &3327708976680687107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7423938205038367350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4183fb9b7d541449851432855db4c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 8631230204902873846}
+  turnedCoin: {fileID: 21300000, guid: 74617bf0d06d7524691d00156ae3a6ff, type: 3}
+  rb: {fileID: 6748568326504335629}
+  flatCoin: {fileID: 7423938205038367350, guid: 66d6a5cdc182c924a881ee322f48c7fd,
+    type: 3}
+  flatCoinDuration: 3

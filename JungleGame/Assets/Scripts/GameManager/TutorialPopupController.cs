@@ -8,6 +8,7 @@ public class TutorialPopupController : MonoBehaviour
     public static TutorialPopupController instance;
 
     public GameObject popupObject;
+    public Transform popupParent;
 
     [Header("Popup Positions")]
     public Transform topLeft;
@@ -24,11 +25,18 @@ public class TutorialPopupController : MonoBehaviour
     public void StopAllPopups()
     {
         StopAllCoroutines();
+
+        // remove all popups
+        foreach (Transform childPopup in popupParent)
+        {
+            print ("destroying popup!");
+            Destroy(childPopup.gameObject);
+        }
     }
 
     public void NewPopup(Vector3 pos, bool facingLeft, TalkieCharacter character, AudioClip clip)
     {
-        GameObject newPopup = Instantiate(popupObject, pos, Quaternion.identity, this.transform);
+        GameObject newPopup = Instantiate(popupObject, pos, Quaternion.identity, popupParent);
         newPopup.transform.localScale = new Vector3(0f, 0f, 1f);
         newPopup.GetComponent<PopupObject>().SetPopupCharacter(character);
 
@@ -37,7 +45,7 @@ public class TutorialPopupController : MonoBehaviour
 
     public void NewPopup(Vector3 pos, bool facingLeft, TalkieCharacter character, List<AudioClip> clips)
     {
-        GameObject newPopup = Instantiate(popupObject, pos, Quaternion.identity, this.transform);
+        GameObject newPopup = Instantiate(popupObject, pos, Quaternion.identity, popupParent);
         newPopup.transform.localScale = new Vector3(0f, 0f, 1f);
         newPopup.GetComponent<PopupObject>().SetPopupCharacter(character);
 

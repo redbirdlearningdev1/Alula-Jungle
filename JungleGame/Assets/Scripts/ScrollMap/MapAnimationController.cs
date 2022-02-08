@@ -100,7 +100,7 @@ public class MapAnimationController : MonoBehaviour
                 julius.interactable = true;
                 // place marcus in GV
                 marcus.mapAnimator.Play("MarcusGVPos");
-                marcus.characterAnimator.Play("marcusLose");
+                marcus.characterAnimator.Play("marcusBroken");
                 // place brutus in GV
                 brutus.mapAnimator.Play("BrutusGVPos");
                 brutus.characterAnimator.Play("brutusBroken");
@@ -126,7 +126,7 @@ public class MapAnimationController : MonoBehaviour
                 julius.characterAnimator.Play("sTigerIdle");
                 // place marcus in GV
                 marcus.mapAnimator.Play("MarcusGVPos");
-                marcus.characterAnimator.Play("marcusLose");
+                marcus.characterAnimator.Play("marcusFixed");
                 // place brutus in GV
                 brutus.mapAnimator.Play("BrutusGVPos");
                 brutus.characterAnimator.Play("brutusWin");
@@ -140,10 +140,10 @@ public class MapAnimationController : MonoBehaviour
                 julius.characterAnimator.Play("sTigerIdle");
                 // place marcus in GV
                 marcus.mapAnimator.Play("MarcusGVPos");
-                marcus.characterAnimator.Play("marcusLose");
+                marcus.characterAnimator.Play("marcusFixed");
                 // place brutus in GV
                 brutus.mapAnimator.Play("BrutusGVPos");
-                brutus.characterAnimator.Play("brutusLose");
+                brutus.characterAnimator.Play("brutusFixed");
                 break;
 
             case StoryBeat.MudslideUnlocked:
@@ -157,7 +157,7 @@ public class MapAnimationController : MonoBehaviour
                 julius.interactable = true;
                 // place marcus in MS
                 marcus.mapAnimator.Play("MarcusMSPos");
-                marcus.characterAnimator.Play("marcusLose");
+                marcus.characterAnimator.Play("marcusBroken");
                 // place brutus in MS
                 brutus.mapAnimator.Play("BrutusMSPos");
                 brutus.characterAnimator.Play("brutusBroken");
@@ -183,7 +183,7 @@ public class MapAnimationController : MonoBehaviour
                 julius.characterAnimator.Play("sTigerIdle");
                 // place marcus in MS
                 marcus.mapAnimator.Play("MarcusMSPos");
-                marcus.characterAnimator.Play("marcusLose");
+                marcus.characterAnimator.Play("marcusFixed");
                 // place brutus in MS
                 brutus.mapAnimator.Play("BrutusMSPos");
                 brutus.characterAnimator.Play("brutusWin");
@@ -197,10 +197,10 @@ public class MapAnimationController : MonoBehaviour
                 julius.characterAnimator.Play("sTigerIdle");
                 // place marcus in MS
                 marcus.mapAnimator.Play("MarcusMSPos");
-                marcus.characterAnimator.Play("marcusLose");
+                marcus.characterAnimator.Play("marcusFixed");
                 // place brutus in MS
                 brutus.mapAnimator.Play("BrutusMSPos");
-                brutus.characterAnimator.Play("brutusLose");
+                brutus.characterAnimator.Play("brutusFixed");
                 break;
 
             case StoryBeat.OrcVillageMeetClogg:
@@ -228,7 +228,7 @@ public class MapAnimationController : MonoBehaviour
                 julius.interactable = true;
                 // place marcus in OV
                 marcus.mapAnimator.Play("MarcusOVPos");
-                marcus.characterAnimator.Play("marcusLose");
+                marcus.characterAnimator.Play("marcusBroken");
                 // place brutus in OV
                 brutus.mapAnimator.Play("BrutusOVPos");
                 brutus.characterAnimator.Play("brutusBroken");
@@ -262,7 +262,7 @@ public class MapAnimationController : MonoBehaviour
                 julius.characterAnimator.Play("sTigerIdle");
                 // place marcus in OV
                 marcus.mapAnimator.Play("MarcusOVPos");
-                marcus.characterAnimator.Play("marcusLose");
+                marcus.characterAnimator.Play("marcusFixed");
                 // place brutus in OV
                 brutus.mapAnimator.Play("BrutusOVPos");
                 brutus.characterAnimator.Play("brutusWin");
@@ -273,17 +273,16 @@ public class MapAnimationController : MonoBehaviour
             case StoryBeat.OrcVillageDefeated:
                 // place clogg in OV
                 clogg.mapAnimator.Play("CloggOVPos");
-                clogg.interactable = true;
                 clogg.FlipCharacterToRight();
                 // place julius in OV
                 julius.mapAnimator.Play("JuliusOVPos");
                 julius.characterAnimator.Play("sTigerIdle");
                 // place marcus in OV
                 marcus.mapAnimator.Play("MarcusOVPos");
-                marcus.characterAnimator.Play("marcusLose");
+                marcus.characterAnimator.Play("marcusFixed");
                 // place brutus in OV
                 brutus.mapAnimator.Play("BrutusOVPos");
-                brutus.characterAnimator.Play("brutusLose");
+                brutus.characterAnimator.Play("brutusFixed");
                 break;
 
             case StoryBeat.SpookyForestUnlocked:
@@ -310,7 +309,7 @@ public class MapAnimationController : MonoBehaviour
                 julius.interactable = true;
                 // place marcus in SF
                 marcus.mapAnimator.Play("MarcusSFPos");
-                marcus.characterAnimator.Play("marcusLose");
+                marcus.characterAnimator.Play("marcusBroken");
                 // place brutus in SF
                 brutus.mapAnimator.Play("BrutusSFPos");
                 brutus.characterAnimator.Play("brutusBroken");
@@ -336,12 +335,24 @@ public class MapAnimationController : MonoBehaviour
                 julius.characterAnimator.Play("sTigerIdle");
                 // place marcus in SF
                 marcus.mapAnimator.Play("MarcusSFPos");
-                marcus.characterAnimator.Play("marcusLose");
+                marcus.characterAnimator.Play("marcusFixed");
                 // place brutus in SF
                 brutus.mapAnimator.Play("BrutusSFPos");
                 brutus.characterAnimator.Play("brutusWin");
                 brutus.ShowExclamationMark(true);
                 brutus.interactable = true;
+                break;
+
+            case StoryBeat.SpookyForestDefeated:
+                // place julius in SF
+                julius.mapAnimator.Play("JuliusSFPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                // place marcus in SF
+                marcus.mapAnimator.Play("MarcusSFPos");
+                marcus.characterAnimator.Play("marcusFixed");
+                // place brutus in SF
+                brutus.mapAnimator.Play("BrutusSFPos");
+                brutus.characterAnimator.Play("brutusFixed");
                 break;
 
             case StoryBeat.OrcCampUnlocked:
@@ -368,7 +379,7 @@ public class MapAnimationController : MonoBehaviour
                 julius.interactable = true;
                 // place marcus in OC
                 marcus.mapAnimator.Play("MarcusOCPos");
-                marcus.characterAnimator.Play("marcusLose");
+                marcus.characterAnimator.Play("marcusBroken");
                 // place brutus in OC
                 brutus.mapAnimator.Play("BrutusOCPos");
                 brutus.characterAnimator.Play("brutusBroken");
@@ -400,12 +411,27 @@ public class MapAnimationController : MonoBehaviour
                 julius.characterAnimator.Play("sTigerIdle");
                 // place marcus in OC
                 marcus.mapAnimator.Play("MarcusOCPos");
-                marcus.characterAnimator.Play("marcusLose");
+                marcus.characterAnimator.Play("marcusFixed");
                 // place brutus in OC
                 brutus.mapAnimator.Play("BrutusOCPos");
                 brutus.characterAnimator.Play("brutusWin");
                 brutus.ShowExclamationMark(true);
                 brutus.interactable = true;
+                break;
+
+            case StoryBeat.OrcCampDefeated:
+                // place clogg in OC
+                clogg.mapAnimator.Play("CloggOCPos");
+                clogg.interactable = true;
+                // place julius in OC
+                julius.mapAnimator.Play("JuliusOCPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                // place marcus in OC
+                marcus.mapAnimator.Play("MarcusOCPos");
+                marcus.characterAnimator.Play("marcusFixed");
+                // place brutus in OC
+                brutus.mapAnimator.Play("BrutusOCPos");
+                brutus.characterAnimator.Play("brutusFixed");
                 break;
 
             case StoryBeat.GorillaPoop_challengeGame_1:
@@ -416,7 +442,7 @@ public class MapAnimationController : MonoBehaviour
                 julius.interactable = true;
                 // place marcus in GP
                 marcus.mapAnimator.Play("MarcusGPPos");
-                marcus.characterAnimator.Play("marcusLose");
+                marcus.characterAnimator.Play("marcusBroken");
                 // place brutus in GP
                 brutus.mapAnimator.Play("BrutusGPPos");
                 brutus.characterAnimator.Play("brutusBroken");
@@ -442,12 +468,24 @@ public class MapAnimationController : MonoBehaviour
                 julius.characterAnimator.Play("sTigerIdle");
                 // place marcus in GP
                 marcus.mapAnimator.Play("MarcusGPPos");
-                marcus.characterAnimator.Play("marcusLose");
+                marcus.characterAnimator.Play("marcusFixed");
                 // place brutus in GP
                 brutus.mapAnimator.Play("BrutusGPPos");
                 brutus.characterAnimator.Play("brutusWin");
                 brutus.ShowExclamationMark(true);
                 brutus.interactable = true;
+                break;
+
+            case StoryBeat.GorillaPoopDefeated:
+                // place julius in GP
+                julius.mapAnimator.Play("JuliusGPPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                // place marcus in GP
+                marcus.mapAnimator.Play("MarcusGPPos");
+                marcus.characterAnimator.Play("marcusFixed");
+                // place brutus in GP
+                brutus.mapAnimator.Play("BrutusGPPos");
+                brutus.characterAnimator.Play("brutusFixed");
                 break;
         }
     }
@@ -1805,7 +1843,7 @@ public class MapAnimationController : MonoBehaviour
                 yield return null;
         }
 
-        animationDone = false;
+        animationDone = true;
     }
 
     private IEnumerator ChallengeGame2Routine(MapLocation location)
@@ -1893,7 +1931,7 @@ public class MapAnimationController : MonoBehaviour
                 yield return null;
         }
 
-        animationDone = false;
+        animationDone = true;
     }
 
     private IEnumerator ChallengeGame3Routine(MapLocation location)
@@ -1978,7 +2016,7 @@ public class MapAnimationController : MonoBehaviour
                 yield return null;
         }
 
-        animationDone = false;
+        animationDone = true;
     }
 
     // i hate that i have to do this this way but i have no choice :,)

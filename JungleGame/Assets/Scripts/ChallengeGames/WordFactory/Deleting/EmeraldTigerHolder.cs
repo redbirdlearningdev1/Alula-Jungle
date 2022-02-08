@@ -7,8 +7,7 @@ public class EmeraldTigerHolder : MonoBehaviour
 {
     public static EmeraldTigerHolder instance;
 
-    public List<Sprite> sprites;
-    private int numCoins;
+    public Animator animator;
 
     void Awake()
     {
@@ -16,26 +15,53 @@ public class EmeraldTigerHolder : MonoBehaviour
             instance = this;
     }
 
-    public void SetNumberCoins(int amount)
+    public void OpenMouth()
     {
-        if (numCoins == amount)
-            return;
-
-        if (amount < 0 || amount > 3)
-            return;
-
-        numCoins = amount;
-
-        GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
-        StartCoroutine(SwitchCoinSprite(amount));
+        animator.Play("Open");
     }
 
-    private IEnumerator SwitchCoinSprite(int num)
+    public void CloseMouth()
     {
+        animator.Play("Close");
+    }
+
+    public void Thinking()
+    {
+        // start wiggle
         GetComponent<WiggleController>().StartWiggle();
-        yield return new WaitForSeconds(0.25f);
-        GetComponent<Image>().sprite = sprites[num];
-        yield return new WaitForSeconds(0.25f);
-        GetComponent<WiggleController>().StopWiggle();
+
+        animator.Play("Thinking");
     }
+
+    public void SetCorrect(bool isCorrect)
+    {
+        StartCoroutine(SetCorrectRoutine(isCorrect));
+    }
+
+    private IEnumerator SetCorrectRoutine(bool isCorrect)
+    {
+        // start wiggle
+        GetComponent<WiggleController>().StopWiggle();
+
+        if (isCorrect)
+        {
+            animator.Play("ThinkCorrect");
+        }
+        else
+        {
+            animator.Play("ThinkWrong");
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        if (isCorrect)
+        {
+            animator.Play("CorrectClose");
+        }
+        else
+        {
+            animator.Play("WrongClose");
+        }
+    }
+
 }

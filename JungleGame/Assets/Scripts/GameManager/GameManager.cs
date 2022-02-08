@@ -132,7 +132,7 @@ public class GameManager : DontDestroy<GameManager>
 
     public void RestartGame()
     {
-        LoadScene(0, true);
+        LoadScene("SplashScene", true);
     }
 
     public void SendError(Object errorContext, string errorMsg)
@@ -221,12 +221,6 @@ public class GameManager : DontDestroy<GameManager>
         StartCoroutine(LoadSceneCoroutine(sceneName, fadeOut, time, useLoadScene));
     }
 
-    public void LoadScene(int sceneNum, bool fadeOut, float time = transitionTime)
-    {
-        RaycastBlockerController.instance.CreateRaycastBlocker("LoadingScene");
-        StartCoroutine(LoadSceneCoroutine(sceneNum, fadeOut, time));
-    }
-
     private IEnumerator LoadSceneCoroutine(string sceneName, bool fadeOut, float time, bool useLoadScene)
     {
         if (fadeOut)
@@ -236,6 +230,12 @@ public class GameManager : DontDestroy<GameManager>
             
         yield return new WaitForSeconds(time);
 
+        // remove any popups
+        TutorialPopupController.instance.StopAllPopups();
+        // clean up scene
+        SceneCleanup();
+
+        SendLog(this, "Loading new scene - " + sceneName);
         if (useLoadScene)
         {
             SceneManager.LoadSceneAsync("LoadingScene");
@@ -243,7 +243,6 @@ public class GameManager : DontDestroy<GameManager>
         }
         else
         {
-            SendLog(this, "Loading new scene - " + sceneName);
             SceneManager.LoadSceneAsync(sceneName);
         }
     }
@@ -252,19 +251,6 @@ public class GameManager : DontDestroy<GameManager>
     {
         yield return new WaitForSeconds(2f);
         LoadingSceneManager.instance.LoadNextScene(sceneName);
-    }
-
-    private IEnumerator LoadSceneCoroutine(int sceneNum, bool fadeOut, float time)
-    {
-        if (fadeOut)
-        {
-            FadeObject.instance.FadeOut(time);
-        }
-            
-        yield return new WaitForSeconds(time);
-
-        SceneCleanup();
-        SceneManager.LoadSceneAsync(sceneNum);
     }
 
     private void SceneCleanup()
@@ -295,9 +281,6 @@ public class GameManager : DontDestroy<GameManager>
 
         // close settings menu if open
         SettingsManager.instance.CloseSettingsWindow();
-
-        // remove tutorial popups
-        TutorialPopupController.instance.StopAllPopups();
     }
 
     /*

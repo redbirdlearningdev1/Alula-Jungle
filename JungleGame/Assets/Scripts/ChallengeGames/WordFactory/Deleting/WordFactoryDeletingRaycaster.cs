@@ -65,13 +65,13 @@ public class WordFactoryDeletingRaycaster : MonoBehaviour
             {
                 // return coins to frame
                 WordFactoryDeletingManager.instance.ReturnCoinsToFrame();
+                // close emerald tiger mouth
+                EmeraldTigerHolder.instance.CloseMouth();
             }
 
             // audio fx
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f);
         
-            // wiggle tiger frame
-            EmeraldTigerHolder.instance.GetComponent<WiggleController>().StopWiggle();
             // scale up tiger
             EmeraldTigerHolder.instance.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.25f);
             // read coin raycast
@@ -110,11 +110,11 @@ public class WordFactoryDeletingRaycaster : MonoBehaviour
 
                         // remove coin raycast
                         selectedObject.GetComponent<UniversalCoinImage>().ToggleRaycastTarget(false);
-
-                        // wiggle tiger frame
-                        EmeraldTigerHolder.instance.GetComponent<WiggleController>().StartWiggle();
+                        
                         // scale up tiger
                         EmeraldTigerHolder.instance.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.25f);
+                        // open emerald tiger mouth
+                        EmeraldTigerHolder.instance.OpenMouth();
                     }
                 }
             }

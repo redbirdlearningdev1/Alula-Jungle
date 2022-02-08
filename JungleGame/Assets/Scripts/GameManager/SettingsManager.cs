@@ -374,14 +374,15 @@ public class SettingsManager : MonoBehaviour
 
     public void ToggleSettingsWindow()
     {
-        settingsWindowOpen = !settingsWindowOpen;
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
         if (animatingWindow)
             return;
         animatingWindow = true;
 
-        // play audio blip
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+        // change bool
+        settingsWindowOpen = !settingsWindowOpen;
         
         // open settings window iff at scroll map
         if (SceneManager.GetActiveScene().name == "ScrollMap" || SceneManager.GetActiveScene().name == "SplashScene")

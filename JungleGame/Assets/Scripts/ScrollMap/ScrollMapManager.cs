@@ -705,7 +705,71 @@ public class ScrollMapManager : MonoBehaviour
                         return;
                     }
                     break;
-                // etc ...
+
+                case MapLocation.GorillaPoop:
+                    if (StudentInfoSystem.GetCurrentProfile().mapData.GP_signPost_unlocked)
+                    {
+                        mapLocations[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.GP_signPost_stars, GetMapLocationIcons(MapLocation.GorillaPoop).enabled);
+                        return;
+                    }
+                    break;
+
+                case MapLocation.WindyCliff:
+                    if (StudentInfoSystem.GetCurrentProfile().mapData.WC_signPost_unlocked)
+                    {
+                        mapLocations[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.WC_signPost_stars, GetMapLocationIcons(MapLocation.WindyCliff).enabled);
+                        return;
+                    }
+                    break;
+                
+                case MapLocation.PirateShip:
+                    if (StudentInfoSystem.GetCurrentProfile().mapData.PS_signPost_unlocked)
+                    {
+                        mapLocations[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.PS_signPost_stars, GetMapLocationIcons(MapLocation.PirateShip).enabled);
+                        return;
+                    }
+                    break;
+
+                case MapLocation.MermaidBeach:
+                    if (StudentInfoSystem.GetCurrentProfile().mapData.MB_signPost_unlocked)
+                    {
+                        mapLocations[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.MB_signPost_stars, GetMapLocationIcons(MapLocation.MermaidBeach).enabled);
+                        return;
+                    }
+                    break;
+
+                case MapLocation.Ruins1:
+                case MapLocation.Ruins2:
+                    if (StudentInfoSystem.GetCurrentProfile().mapData.R_signPost_unlocked)
+                    {
+                        mapLocations[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.R_signPost_stars, GetMapLocationIcons(MapLocation.Ruins1).enabled);
+                        return;
+                    }
+                    break;
+
+                case MapLocation.ExitJungle:
+                    if (StudentInfoSystem.GetCurrentProfile().mapData.EJ_signPost_unlocked)
+                    {
+                        mapLocations[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.EJ_signPost_stars, GetMapLocationIcons(MapLocation.ExitJungle).enabled);
+                        return;
+                    }
+                    break;
+
+                case MapLocation.GorillaStudy:
+                    if (StudentInfoSystem.GetCurrentProfile().mapData.GS_signPost_unlocked)
+                    {
+                        mapLocations[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.GS_signPost_stars, GetMapLocationIcons(MapLocation.GorillaStudy).enabled);
+                        return;
+                    }
+                    break;
+
+                case MapLocation.Monkeys:
+                    if (StudentInfoSystem.GetCurrentProfile().mapData.M_signPost_unlocked)
+                    {
+                        mapLocations[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.M_signPost_stars, GetMapLocationIcons(MapLocation.Monkeys).enabled);
+                        return;
+                    }
+                    break;
             }
 
             // hide signpost if not unlocked
@@ -802,35 +866,20 @@ public class ScrollMapManager : MonoBehaviour
         // move fog out of the way
         FogController.instance.MoveFogAnimation(mapLocations[currMapLocation].fogLocation, 3f);
 
-        switch (currMapLocation)
-        {
-            default:
-                break;
-            case 2:
-                LetterboxController.instance.ShowTextSmooth("1 - Gorilla Village");
-                break;
-            case 3:
-                LetterboxController.instance.ShowTextSmooth("2 - Mudslide");
-                break;
-            case 4:
-                LetterboxController.instance.ShowTextSmooth("3 - Orc Village");
-                break;
-            case 5:
-                LetterboxController.instance.ShowTextSmooth("4 - Spooky Forest");
-                break;
-            case 6:
-                LetterboxController.instance.ShowTextSmooth("5 - Orc Camp");
-                break;
-        }
-        
+        // set sign
+        ChapterEnterVisualController.instance.SetSign(location);
+        ChapterEnterVisualController.instance.ShowSign();
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
 
         // move letterbox out of the way
         if (!leaveLetterboxUp)
             LetterboxController.instance.ToggleLetterbox(false);
 
-        yield return new WaitForSeconds(2f);
+        // hide sign
+        ChapterEnterVisualController.instance.HideSign();
+
+        yield return new WaitForSeconds(1f);
 
         RaycastBlockerController.instance.RemoveRaycastBlocker("UnlockMapArea");
     }
