@@ -97,15 +97,21 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 yield break;
             }
 
-            if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.MermaidBeachPlayGames)
+            else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.MermaidBeachPlayGames ||
+                     StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.ExitJunglePlayGames)
             {
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.DarwinQuips_1_p2);
                 yield break;
             }
 
-            // other story beats
-            // TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.DarwinQuips_1_p3);
-            // yield break;
+            else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaStudyPlayGames ||
+                     StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaPoop_challengeGame_1 ||
+                     StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaPoop_challengeGame_2 ||
+                     StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaPoop_challengeGame_3)
+            {
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.DarwinQuips_1_p3);
+                yield break;
+            }
         }
         else if (character == Character.Clogg)
         {
@@ -312,7 +318,34 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                     yield return null;
             }
         }
-        
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaStudyUnlocked)
+        {
+            // only continue if tapped on gorilla
+            if (character == Character.Darwin)
+            {
+                // play EJ intro
+                MapAnimationController.instance.PlayMapAnim(MapAnim.GorillaStudyIntro);
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+
+                yield break;
+            }
+        }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PalaceIntro)
+        {
+            // only continue if tapped on gorilla
+            if (character == Character.Darwin)
+            {
+                // play PI intro
+                MapAnimationController.instance.PlayMapAnim(MapAnim.PalaceIntro);
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+
+                yield break;
+            }
+        }
 
 
 

@@ -811,6 +811,100 @@ public class ScrollMapManager : MonoBehaviour
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
         }
+        else if (playGameEvent == StoryBeat.GorillaStudyPlayGames)
+        {
+            // make sure player has rebuilt all the GS map icons
+            if (StudentInfoSystem.GetCurrentProfile().mapData.GS_fire.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.GS_statue.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.GS_tent1.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.GS_tent2.isFixed)
+            {
+                // play GS rebuilt
+                MapAnimationController.instance.PlayMapAnim(MapAnim.GorillaStudyRebuilt);
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+            }
+        }
+        else if (playGameEvent == StoryBeat.GorillaStudy_challengeGame_1)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame1, MapLocation.GorillaStudy);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.GorillaStudy_challengeGame_2)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame2, MapLocation.GorillaStudy);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.GorillaStudy_challengeGame_3)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame3, MapLocation.GorillaStudy);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.GorillaStudyDefeated)
+        {
+            // play GS defeated
+            MapAnimationController.instance.PlayMapAnim(MapAnim.GorillaStudyDefeated);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.MonkeysPlayGames)
+        {
+            // make sure player has rebuilt all the GS map icons
+            if (StudentInfoSystem.GetCurrentProfile().mapData.M_bananas.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.M_flower.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.M_guards.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.M_tree.isFixed)
+            {
+                // play M rebuilt
+                MapAnimationController.instance.PlayMapAnim(MapAnim.MonkeysRebuilt);
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+            }
+        }
+        else if (playGameEvent == StoryBeat.Monkeys_challengeGame_1)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame1, MapLocation.Monkeys);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.Monkeys_challengeGame_2)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame2, MapLocation.Monkeys);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.Monkeys_challengeGame_3)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame3, MapLocation.Monkeys);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.MonkeysDefeated)
+        {
+            // play M defeated
+            MapAnimationController.instance.PlayMapAnim(MapAnim.MonkeysDefeated);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
 
 
         

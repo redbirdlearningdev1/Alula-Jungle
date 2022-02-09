@@ -163,14 +163,13 @@ public enum StoryBeat
     WindyCliffDefeated, // 46
     
     PirateShipPlayGames, // 47
-    PirateShipRebuilt, // 48
-    PirateShip_challengeGame_1, // 49
-    PirateShip_challengeGame_2, // 50
-    PirateShip_challengeGame_3, // 51
-    PirateShipDefeated, // 52
+    PirateShip_challengeGame_1, // 48
+    PirateShip_challengeGame_2, // 49
+    PirateShip_challengeGame_3, // 50
+    PirateShipDefeated, // 51
 
-    MermaidBeachUnlocked, // 53
-    EmergingStoryGame, // 54
+    MermaidBeachUnlocked, // 52
+    EmergingStoryGame, // 53
     MermaidBeachPlayGames, // 54
     MermaidBeach_challengeGame_1, // 55
     MermaidBeach_challengeGame_2, // 56
@@ -178,7 +177,6 @@ public enum StoryBeat
     MermaidBeachDefeated, // 58
 
     RuinsPlayGames, // 59
-    RuinsRebuilt, // 60
     Ruins_challengeGame_1, // 61
     Ruins_challengeGame_2, // 62
     Ruins_challengeGame_3, // 63
@@ -193,13 +191,19 @@ public enum StoryBeat
     ExitJungleDefeated, // 71
 
     GorillaStudyUnlocked, // 72
-    GorillaStudy_challengeGame_1,
-    GorillaStudy_challengeGame_2,
-    GorillaStudy_challengeGame_3,
+    GorillaStudyPlayGames, // 73
+    GorillaStudy_challengeGame_1, // 74
+    GorillaStudy_challengeGame_2, // 75
+    GorillaStudy_challengeGame_3, // 76
+    GorillaStudyDefeated, // 77
 
-    Monkeys_challengeGame_1,
-    Monkeys_challengeGame_2,
-    Monkeys_challengeGame_3,
+    MonkeysPlayGames, // 78
+    Monkeys_challengeGame_1, // 79
+    Monkeys_challengeGame_2, // 80
+    Monkeys_challengeGame_3, // 81
+    MonkeysDefeated, // 82
+
+    PalaceIntro, 
 
     COUNT
 }
