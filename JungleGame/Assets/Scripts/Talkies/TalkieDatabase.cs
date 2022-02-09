@@ -173,7 +173,6 @@ public class TalkieDatabase : MonoBehaviour
     public TalkieObject PirateDefeated_1_p2;
     public TalkieObject PirateDefeated_1_p3;
     public TalkieObject PirateIntro_1_p1;
-    public TalkieObject PirateIntro_1_p2;
     public TalkieObject PirateRebuilt_1_p1;
     public TalkieObject PirateRebuilt_1_p2;
     public TalkieObject PoopDefeated_1_p1;

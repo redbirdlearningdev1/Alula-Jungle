@@ -90,15 +90,18 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         {
             if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.RedShowsStickerButton ||
                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.VillageRebuilt ||
-                StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.SpookyForestPlayGames)
+                StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.SpookyForestPlayGames ||
+                StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.WindyCliffPlayGames)
             {
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.DarwinQuips_1_p1);
                 yield break;
             }
 
-            // other story beats
-            // TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.DarwinQuips_1_p2);
-            // yield break;
+            if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.MermaidBeachPlayGames)
+            {
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.DarwinQuips_1_p2);
+                yield break;
+            }
 
             // other story beats
             // TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.DarwinQuips_1_p3);
@@ -222,6 +225,97 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 yield break;
             }
         }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.WindyCliffUnlocked)
+        {
+            // only continue if tapped on gorilla
+            if (character == Character.Darwin)
+            {
+                // play WC intro
+                MapAnimationController.instance.PlayMapAnim(MapAnim.WindyCliffIntro);
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+
+                yield break;
+            }
+        }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.FollowRedStoryGame)
+        {
+            // only continue if tapped on gorilla
+            if (character == Character.Darwin)
+            {
+                // set the story game
+                gameType = GameType.StoryGame;
+                GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[2];
+
+                // add pre story game talkie here
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PreStory_2_p1);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+        }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.MermaidBeachUnlocked)
+        {
+            // only continue if tapped on gorilla
+            if (character == Character.Darwin)
+            {
+                // play MB intro
+                MapAnimationController.instance.PlayMapAnim(MapAnim.MermaidBeachIntro);
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+
+                yield break;
+            }
+        }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.EmergingStoryGame)
+        {
+            // only continue if tapped on gorilla
+            if (character == Character.Darwin)
+            {
+                // set the story game
+                gameType = GameType.StoryGame;
+                GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[3];
+
+                // add pre story game talkie here
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PreStory_2_p1);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+        }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.ExitJungleUnlocked)
+        {
+            // only continue if tapped on gorilla
+            if (character == Character.Darwin)
+            {
+                // play EJ intro
+                MapAnimationController.instance.PlayMapAnim(MapAnim.ExitJungleIntro);
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+
+                yield break;
+            }
+        }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.ResolutionStoryGame)
+        {
+            // only continue if tapped on gorilla
+            if (character == Character.Darwin)
+            {
+                // set the story game
+                gameType = GameType.StoryGame;
+                GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[4];
+
+                // add pre story game talkie here
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PreStory_2_p1);
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+            }
+        }
+        
+
+
+
 
         /* 
         ################################################

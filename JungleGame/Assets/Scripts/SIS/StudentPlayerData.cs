@@ -154,26 +154,45 @@ public enum StoryBeat
     GorillaPoop_challengeGame_3, // 37
     GorillaPoopDefeated, // 38
 
-    WindyCliff_challengeGame_1,
-    WindyCliff_challengeGame_2,
-    WindyCliff_challengeGame_3,
+    WindyCliffUnlocked, // 39
+    FollowRedStoryGame, // 40
+    WindyCliffPlayGames, // 41
+    WindyCliff_challengeGame_1, // 42
+    WindyCliff_challengeGame_2, // 43
+    WindyCliff_challengeGame_3, // 45
+    WindyCliffDefeated, // 46
+    
+    PirateShipPlayGames, // 47
+    PirateShipRebuilt, // 48
+    PirateShip_challengeGame_1, // 49
+    PirateShip_challengeGame_2, // 50
+    PirateShip_challengeGame_3, // 51
+    PirateShipDefeated, // 52
 
-    PirateShip_challengeGame_1,
-    PirateShip_challengeGame_2,
-    PirateShip_challengeGame_3,
+    MermaidBeachUnlocked, // 53
+    EmergingStoryGame, // 54
+    MermaidBeachPlayGames, // 54
+    MermaidBeach_challengeGame_1, // 55
+    MermaidBeach_challengeGame_2, // 56
+    MermaidBeach_challengeGame_3, // 57
+    MermaidBeachDefeated, // 58
 
-    MermaidBeach_challengeGame_1,
-    MermaidBeach_challengeGame_2,
-    MermaidBeach_challengeGame_3,
+    RuinsPlayGames, // 59
+    RuinsRebuilt, // 60
+    Ruins_challengeGame_1, // 61
+    Ruins_challengeGame_2, // 62
+    Ruins_challengeGame_3, // 63
+    RuinsDefeated, // 64
 
-    Ruins_challengeGame_1,
-    Ruins_challengeGame_2,
-    Ruins_challengeGame_3,
+    ExitJungleUnlocked, // 65
+    ResolutionStoryGame, // 66
+    ExitJunglePlayGames, // 67
+    ExitJungle_challengeGame_1, // 68
+    ExitJungle_challengeGame_2, // 69
+    ExitJungle_challengeGame_3, // 70
+    ExitJungleDefeated, // 71
 
-    ExitJungle_challengeGame_1,
-    ExitJungle_challengeGame_2,
-    ExitJungle_challengeGame_3,
-
+    GorillaStudyUnlocked, // 72
     GorillaStudy_challengeGame_1,
     GorillaStudy_challengeGame_2,
     GorillaStudy_challengeGame_3,

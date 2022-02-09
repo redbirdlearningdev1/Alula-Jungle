@@ -568,7 +568,249 @@ public class ScrollMapManager : MonoBehaviour
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
         }
-
+        else if (playGameEvent == StoryBeat.WindyCliffPlayGames)
+        {
+            // make sure player has rebuilt all the WC map icons
+            if (StudentInfoSystem.GetCurrentProfile().mapData.WC_ladder.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.WC_lighthouse.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.WC_octo.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.WC_rock.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.WC_sign.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.WC_statue.isFixed)
+            {
+                // play WCS rebuilt
+                MapAnimationController.instance.PlayMapAnim(MapAnim.WindyCliffRebuilt);
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+            }
+        }
+        else if (playGameEvent == StoryBeat.WindyCliff_challengeGame_1)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame1, MapLocation.WindyCliff);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.WindyCliff_challengeGame_2)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame2, MapLocation.WindyCliff);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.WindyCliff_challengeGame_3)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame3, MapLocation.WindyCliff);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.WindyCliffDefeated)
+        {
+            // play WC defeated
+            MapAnimationController.instance.PlayMapAnim(MapAnim.WindyCliffDefeated);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.PirateShipPlayGames)
+        {
+            // make sure player has rebuilt all the PS map icons
+            if (StudentInfoSystem.GetCurrentProfile().mapData.PS_boat.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.PS_bridge.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.PS_front.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.PS_parrot.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.PS_sail.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.PS_wheel.isFixed)
+            {
+                // play PS rebuilt
+                MapAnimationController.instance.PlayMapAnim(MapAnim.PirateShipRebuilt);
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+            }
+        }
+        else if (playGameEvent == StoryBeat.PirateShip_challengeGame_1)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame1, MapLocation.PirateShip);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.PirateShip_challengeGame_2)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame2, MapLocation.PirateShip);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.PirateShip_challengeGame_3)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame3, MapLocation.PirateShip);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.PirateShipDefeated)
+        {
+            // play PS defeated
+            MapAnimationController.instance.PlayMapAnim(MapAnim.PirateShipDefeated);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.MermaidBeachPlayGames)
+        {
+            // make sure player has rebuilt all the PS map icons
+            if (StudentInfoSystem.GetCurrentProfile().mapData.MB_bucket.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.MB_castle.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.MB_ladder.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.MB_mermaids.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.MB_rock.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.MB_umbrella.isFixed)
+            {
+                // play MB rebuilt
+                MapAnimationController.instance.PlayMapAnim(MapAnim.MermaidBeachRebuilt);
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+            }
+        }
+        else if (playGameEvent == StoryBeat.MermaidBeach_challengeGame_1)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame1, MapLocation.MermaidBeach);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.MermaidBeach_challengeGame_2)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame2, MapLocation.MermaidBeach);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.MermaidBeach_challengeGame_3)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame3, MapLocation.MermaidBeach);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.MermaidBeachDefeated)
+        {
+            // play PS defeated
+            MapAnimationController.instance.PlayMapAnim(MapAnim.MermaidBeachDefeated);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.RuinsPlayGames)
+        {
+            // make sure player has rebuilt all the R map icons
+            if (StudentInfoSystem.GetCurrentProfile().mapData.R_arch.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.R_caveRock.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.R_face.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.R_lizard1.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.R_lizard2.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.R_pyramid.isFixed)
+            {
+                // play R rebuilt
+                MapAnimationController.instance.PlayMapAnim(MapAnim.RuinsRebuilt);
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+            }
+        }
+        else if (playGameEvent == StoryBeat.Ruins_challengeGame_1)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame1, MapLocation.Ruins1);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.Ruins_challengeGame_2)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame2, MapLocation.Ruins1);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.Ruins_challengeGame_3)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame3, MapLocation.Ruins1);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.RuinsDefeated)
+        {
+            // play R defeated
+            MapAnimationController.instance.PlayMapAnim(MapAnim.RuinsDefeated);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.ExitJunglePlayGames)
+        {
+            // make sure player has rebuilt all the R map icons
+            if (StudentInfoSystem.GetCurrentProfile().mapData.EJ_bridge.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.EJ_puppy.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.EJ_sign.isFixed &&
+                StudentInfoSystem.GetCurrentProfile().mapData.EJ_torch.isFixed)
+            {
+                // play R rebuilt
+                MapAnimationController.instance.PlayMapAnim(MapAnim.ExitJungleRebuilt);
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+            }
+        }
+        else if (playGameEvent == StoryBeat.ExitJungle_challengeGame_1)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame1, MapLocation.ExitJungle);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.ExitJungle_challengeGame_2)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame2, MapLocation.ExitJungle);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.ExitJungle_challengeGame_3)
+        {
+            // play challenge game 1 map animation
+            MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame3, MapLocation.ExitJungle);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.ExitJungleDefeated)
+        {
+            // play EJ defeated
+            MapAnimationController.instance.PlayMapAnim(MapAnim.ExitJungleDefeated);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
 
 
         
@@ -1127,6 +1369,13 @@ public class ScrollMapManager : MonoBehaviour
             //print ("index: " + index + ", pos: " + tempX);
             Map.localPosition = new Vector3(tempX, staticMapYPos, 0f);
         }   
+    }
+
+    public void GoToMapPosition(MapLocation location)
+    {
+        // move map to map location
+        float x = GetXPosFromMapLocationIndex((int)location);
+        StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
     }
 
     private float GetXPosFromMapLocationIndex(int index)

@@ -5,26 +5,62 @@ using UnityEngine;
 public enum MapAnim
 {
     BoatIntro,
+
+    /// CHAPTER 1
+    // gorilla village
     RevealGorillaVillage,
     GorillaVillageIntro,
     RedShowsStickerButton,
     DarwinForcesLesterInteraction,
     GorillaVillageRebuilt,
     GorillaVillageDefeated,
+    // mudslide
     MudslideRebuilt,
     MudslideDefeated,
+    // orc village
     OrcVillageRebuilt,
     OrcVillageDefeated,
+
+    /// CHAPTER 2
+    // gorilla village
     SpookyForestIntro,
     SpookyForestRebuilt,
     SpookyForestDefeated,
+    // orc camp
     OrcCampRebuilt,
     OrcCampDefeated,
+    // gorilla poop
     GorillaPoopRebuilt,
     GorillaPoopDefeated,
 
+    /// CHAPTER 3
+    // windy cliff
+    WindyCliffIntro,
+    WindyCliffRebuilt,
+    WindyCliffDefeated,
+    // pirate ship
+    PirateShipRebuilt,
+    PirateShipDefeated,
+
+    /// CHAPTER 4
+    // mermaid beach
+    MermaidBeachIntro,
+    MermaidBeachRebuilt,
+    MermaidBeachDefeated,
+    // ruins
+    RuinsRebuilt,
+    RuinsDefeated,
+
+    /// CHAPTER 4
+    // exit jungle
+    ExitJungleIntro,
+    ExitJungleRebuilt,
+    ExitJungleDefeated,
 
 
+
+
+    // all challenge games
     ChallengeGame1,
     ChallengeGame2,
     ChallengeGame3,
@@ -487,7 +523,265 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusGPPos");
                 brutus.characterAnimator.Play("brutusFixed");
                 break;
-        }
+
+            case StoryBeat.WindyCliffUnlocked:
+            case StoryBeat.FollowRedStoryGame:
+                // place darwin in WC
+                darwin.mapAnimator.Play("DarwinWCPos");
+                darwin.ShowExclamationMark(true);
+                darwin.interactable = true;
+                break;
+
+            case StoryBeat.WindyCliffPlayGames:
+                // place darwin in WC
+                darwin.mapAnimator.Play("DarwinWCPos");
+                darwin.interactable = true;
+                break;
+
+            case StoryBeat.WindyCliff_challengeGame_1:
+                // place julius in WC
+                julius.mapAnimator.Play("JuliusWCPos");
+                julius.characterAnimator.Play("aTigerTwitch");
+                julius.ShowExclamationMark(true);
+                julius.interactable = true;
+                // place marcus in WC
+                marcus.mapAnimator.Play("MarcusWCPos");
+                marcus.characterAnimator.Play("marcusBroken");
+                // place brutus in WC
+                brutus.mapAnimator.Play("BrutusWCPos");
+                brutus.characterAnimator.Play("brutusBroken");
+                break;
+
+            case StoryBeat.WindyCliff_challengeGame_2:
+                // place julius in WC
+                julius.mapAnimator.Play("JuliusWCPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                // place marcus in WC
+                marcus.mapAnimator.Play("MarcusWCPos");
+                marcus.characterAnimator.Play("marcusWin");
+                marcus.ShowExclamationMark(true);
+                marcus.interactable = true;
+                // place brutus in WC
+                brutus.mapAnimator.Play("BrutusWCPos");
+                brutus.characterAnimator.Play("brutusBroken");
+                break;
+                
+            case StoryBeat.WindyCliff_challengeGame_3:
+                // place julius in WC
+                julius.mapAnimator.Play("JuliusWCPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                // place marcus in WC
+                marcus.mapAnimator.Play("MarcusWCPos");
+                marcus.characterAnimator.Play("marcusFixed");
+                // place brutus in WC
+                brutus.mapAnimator.Play("BrutusWCPos");
+                brutus.characterAnimator.Play("brutusWin");
+                brutus.ShowExclamationMark(true);
+                brutus.interactable = true;
+                break;
+
+            case StoryBeat.WindyCliffDefeated:
+                // place julius in WC
+                julius.mapAnimator.Play("JuliusWCPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                // place marcus in WC
+                marcus.mapAnimator.Play("MarcusWCPos");
+                marcus.characterAnimator.Play("marcusFixed");
+                // place brutus in WC
+                brutus.mapAnimator.Play("BrutusWCPos");
+                brutus.characterAnimator.Play("brutusFixed");
+                break;
+
+            case StoryBeat.PirateShip_challengeGame_1:
+                // place julius in PS
+                julius.mapAnimator.Play("JuliusPSPos");
+                julius.characterAnimator.Play("aTigerTwitch");
+                julius.ShowExclamationMark(true);
+                julius.interactable = true;
+                // place marcus in PS
+                marcus.mapAnimator.Play("MarcusPSPos");
+                marcus.characterAnimator.Play("marcusBroken");
+                // place brutus in PS
+                brutus.mapAnimator.Play("BrutusPSPos");
+                brutus.characterAnimator.Play("brutusBroken");
+                break;
+
+            case StoryBeat.PirateShip_challengeGame_2:
+                // place julius in PS
+                julius.mapAnimator.Play("JuliusPSPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                // place marcus in PS
+                marcus.mapAnimator.Play("MarcusPSPos");
+                marcus.characterAnimator.Play("marcusWin");
+                marcus.ShowExclamationMark(true);
+                marcus.interactable = true;
+                // place brutus in PS
+                brutus.mapAnimator.Play("BrutusPSPos");
+                brutus.characterAnimator.Play("brutusBroken");
+                break;
+                
+            case StoryBeat.PirateShip_challengeGame_3:
+                // place julius in PS
+                julius.mapAnimator.Play("JuliusPSPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                // place marcus in PS
+                marcus.mapAnimator.Play("MarcusPSPos");
+                marcus.characterAnimator.Play("marcusFixed");
+                // place brutus in PS
+                brutus.mapAnimator.Play("BrutusPSPos");
+                brutus.characterAnimator.Play("brutusWin");
+                brutus.ShowExclamationMark(true);
+                brutus.interactable = true;
+                break;
+
+            case StoryBeat.PirateShipDefeated:
+                // place julius in PS
+                julius.mapAnimator.Play("JuliusPSPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                // place marcus in PS
+                marcus.mapAnimator.Play("MarcusPSPos");
+                marcus.characterAnimator.Play("marcusFixed");
+                // place brutus in PS
+                brutus.mapAnimator.Play("BrutusPSPos");
+                brutus.characterAnimator.Play("brutusFixed");
+                break;
+
+            case StoryBeat.MermaidBeachUnlocked:
+            case StoryBeat.EmergingStoryGame:
+                // place darwin in MB
+                darwin.mapAnimator.Play("DarwinMBPos");
+                darwin.ShowExclamationMark(true);
+                darwin.interactable = true;
+                break;
+
+            case StoryBeat.MermaidBeachPlayGames:
+                // place darwin in MB
+                darwin.mapAnimator.Play("DarwinMBPos");
+                darwin.interactable = true;
+                break;
+
+            case StoryBeat.MermaidBeach_challengeGame_1:
+                // place julius in MB
+                julius.mapAnimator.Play("JuliusMBPos");
+                julius.characterAnimator.Play("aTigerTwitch");
+                julius.ShowExclamationMark(true);
+                julius.interactable = true;
+                // place marcus in MB
+                marcus.mapAnimator.Play("MarcusMBPos");
+                marcus.characterAnimator.Play("marcusBroken");
+                // place brutus in MB
+                brutus.mapAnimator.Play("BrutusMBPos");
+                brutus.characterAnimator.Play("brutusBroken");
+                break;
+
+            case StoryBeat.MermaidBeach_challengeGame_2:
+                // place julius in MB
+                julius.mapAnimator.Play("JuliusMBPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                // place marcus in MB
+                marcus.mapAnimator.Play("MarcusMBPos");
+                marcus.characterAnimator.Play("marcusWin");
+                marcus.ShowExclamationMark(true);
+                marcus.interactable = true;
+                // place brutus in MB
+                brutus.mapAnimator.Play("BrutusMBPos");
+                brutus.characterAnimator.Play("brutusBroken");
+                break;
+                
+            case StoryBeat.MermaidBeach_challengeGame_3:
+                // place julius in MMB
+                julius.mapAnimator.Play("JuliusMBPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                // place marcus in MB
+                marcus.mapAnimator.Play("MarcusMBPos");
+                marcus.characterAnimator.Play("marcusFixed");
+                // place brutus in MB
+                brutus.mapAnimator.Play("BrutusMBPos");
+                brutus.characterAnimator.Play("brutusWin");
+                brutus.ShowExclamationMark(true);
+                brutus.interactable = true;
+                break;
+
+            case StoryBeat.MermaidBeachDefeated:
+                // place julius in MB
+                julius.mapAnimator.Play("JuliusMBPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                // place marcus in MB
+                marcus.mapAnimator.Play("MarcusMBPos");
+                marcus.characterAnimator.Play("marcusFixed");
+                // place brutus in MB
+                brutus.mapAnimator.Play("BrutusMBPos");
+                brutus.characterAnimator.Play("brutusFixed");
+                break;
+
+            case StoryBeat.Ruins_challengeGame_1:
+                // place julius in R
+                julius.mapAnimator.Play("JuliusRPos");
+                julius.characterAnimator.Play("aTigerTwitch");
+                julius.ShowExclamationMark(true);
+                julius.interactable = true;
+                // place marcus in R
+                marcus.mapAnimator.Play("MarcusRPos");
+                marcus.characterAnimator.Play("marcusBroken");
+                // place brutus in R
+                brutus.mapAnimator.Play("BrutusRPos");
+                brutus.characterAnimator.Play("brutusBroken");
+                break;
+
+            case StoryBeat.Ruins_challengeGame_2:
+                // place julius in R
+                julius.mapAnimator.Play("JuliusRPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                // place marcus in R
+                marcus.mapAnimator.Play("MarcusRPos");
+                marcus.characterAnimator.Play("marcusWin");
+                marcus.ShowExclamationMark(true);
+                marcus.interactable = true;
+                // place brutus in R
+                brutus.mapAnimator.Play("BrutusRPos");
+                brutus.characterAnimator.Play("brutusBroken");
+                break;
+                
+            case StoryBeat.Ruins_challengeGame_3:
+                // place julius in R
+                julius.mapAnimator.Play("JuliusRPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                // place marcus in R
+                marcus.mapAnimator.Play("MarcusRPos");
+                marcus.characterAnimator.Play("marcusFixed");
+                // place brutus in R
+                brutus.mapAnimator.Play("BrutusRPos");
+                brutus.characterAnimator.Play("brutusWin");
+                brutus.ShowExclamationMark(true);
+                brutus.interactable = true;
+                break;
+
+            case StoryBeat.RuinsDefeated:
+                // place julius in R
+                julius.mapAnimator.Play("JuliusRPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                // place marcus in R
+                marcus.mapAnimator.Play("MarcusRPos");
+                marcus.characterAnimator.Play("marcusFixed");
+                // place brutus in R
+                brutus.mapAnimator.Play("BrutusRPos");
+                brutus.characterAnimator.Play("brutusFixed");
+                break;
+            
+            case StoryBeat.ExitJungleUnlocked:
+            case StoryBeat.ResolutionStoryGame:
+                // place darwin in EJ
+                darwin.mapAnimator.Play("DarwinEJPos");
+                darwin.ShowExclamationMark(true);
+                darwin.interactable = true;
+                break;
+
+            case StoryBeat.ExitJunglePlayGames:
+                // place darwin in EJ
+                darwin.mapAnimator.Play("DarwinEJPos");
+                darwin.interactable = true;
+                break;
+        }   
     }
 
     public void PlayChallengeGameMapAnim(MapAnim animation, MapLocation location)
@@ -586,6 +880,50 @@ public class MapAnimationController : MonoBehaviour
 
             case MapAnim.GorillaPoopDefeated:
                 StartCoroutine(GorillaPoopDefeated());
+                break;
+
+            case MapAnim.WindyCliffIntro:
+                StartCoroutine(WindyCliffIntro());
+                break;
+
+            case MapAnim.WindyCliffRebuilt:
+                StartCoroutine(WindyCliffRebuilt());
+                break;
+
+            case MapAnim.WindyCliffDefeated:
+                StartCoroutine(WindyCliffDefeated());
+                break;
+
+            case MapAnim.MermaidBeachIntro:
+                StartCoroutine(MermaidBeachIntro());
+                break;
+
+            case MapAnim.MermaidBeachRebuilt:
+                StartCoroutine(MermaidBeachRebuilt());
+                break;
+
+            case MapAnim.MermaidBeachDefeated:
+                StartCoroutine(MermaidBeachDefeated());
+                break;
+
+            case MapAnim.RuinsRebuilt:
+                StartCoroutine(RuinsRebuilt());
+                break;
+
+            case MapAnim.RuinsDefeated:
+                StartCoroutine(RuinsDefeated());
+                break;
+
+            case MapAnim.ExitJungleIntro:
+                StartCoroutine(ExitJungleIntro());
+                break;
+
+            case MapAnim.ExitJungleRebuilt:
+                StartCoroutine(ExitJungleRebuilt());
+                break;
+
+            case MapAnim.ExitJungleDefeated:
+                StartCoroutine(ExitJungleDefeated());
                 break;
         }
     }
@@ -1781,11 +2119,998 @@ public class MapAnimationController : MonoBehaviour
         animationDone = true;
     }
 
+    private IEnumerator WindyCliffIntro()
+    {
+        darwin.ShowExclamationMark(false);
+        darwin.interactable = false;
 
+        // windy cliff intro 1
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffIntro_1_p1);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
 
+        // tiger and monkies walk in
+        julius.characterAnimator.Play("tigerWalk");
+        marcus.characterAnimator.Play("marcusWalkIn");
+        brutus.characterAnimator.Play("brutusWalkIn");
 
+        julius.mapAnimator.Play("JuliusWalkInWC");
+        marcus.mapAnimator.Play("MarcusWalkInWC");
+        brutus.mapAnimator.Play("BrutusWalkInWC");
 
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkInWC"));
 
+        // idle animations
+        julius.characterAnimator.Play("aTigerIdle");
+        marcus.characterAnimator.Play("marcusBroken");
+        brutus.characterAnimator.Play("brutusBroken");
+
+        yield return new WaitForSeconds(0.5f);
+
+        darwin.FlipCharacterToRight();
+
+        // windy cliff intro 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffIntro_1_p2);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // destroy cliff
+        tigerSwipeAnim.Play("tigerScreenSwipe");
+        julius.characterAnimator.Play("tigerSwipe");
+        ScrollMapManager.instance.ShakeMap();
+        // destroy cliff assets
+        foreach (var mapIcon in ScrollMapManager.instance.mapLocations[8].mapIcons)
+        {
+            mapIcon.SetFixed(false, true, true);
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        // windy cliff intro 3
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffIntro_1_p3);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // tiger runs off screen
+        julius.characterAnimator.Play("aTigerTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        julius.mapAnimator.Play("JuliusWalkOutWC");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutWC"));
+
+        // windy cliff intro 4
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffIntro_1_p4);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // monkies go hehe and haha then run off too
+        marcus.characterAnimator.Play("marcusWin");
+        brutus.characterAnimator.Play("brutusWin");
+
+        yield return new WaitForSeconds(1f);
+
+        marcus.characterAnimator.Play("marcusTurn");
+        brutus.characterAnimator.Play("brutusTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        marcus.mapAnimator.Play("MarcusWalkOutWC");
+        brutus.mapAnimator.Play("BrutusWalkOutWC");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "MarcusWalkOutWC"));
+
+        // spider intro 5
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffIntro_1_p5);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // save to SIS and exit to scroll map
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        // make darwin interactable
+        darwin.interactable = true;
+        darwin.ShowExclamationMark(true);
+        darwin.FlipCharacterToRight();
+
+        animationDone = true;
+    }
+
+    private IEnumerator WindyCliffRebuilt()
+    {
+        // play WC rebuilt talkie 1
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffRebuilt_1_p1);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // move darwin off screen
+        darwin.FlipCharacterToRight();
+        darwin.characterAnimator.Play("gorillaWalk");
+        darwin.mapAnimator.Play("DarwinWalkOutWC");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(darwin.mapAnimator, "DarwinWalkOutWC"));
+
+        // play WC rebuilt talkie 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffRebuilt_1_p2);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // tiger and monkies walk in
+        julius.characterAnimator.Play("tigerWalk");
+        marcus.characterAnimator.Play("marcusWalkIn");
+        brutus.characterAnimator.Play("brutusWalkIn");
+
+        julius.mapAnimator.Play("JuliusWalkInWC");
+        marcus.mapAnimator.Play("MarcusWalkInWC");
+        brutus.mapAnimator.Play("BrutusWalkInWC");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkInWC"));
+
+        // idle animations
+        julius.characterAnimator.Play("aTigerIdle");
+        marcus.characterAnimator.Play("marcusBroken");
+        brutus.characterAnimator.Play("brutusBroken");
+
+        yield return new WaitForSeconds(0.5f);
+
+        // play WC rebuilt talkie 3
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffRebuilt_1_p3);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // make challenge games active
+        yield return new WaitForSeconds(0.5f);
+
+        // set julius challenge game
+        SetJuliusChallengeGame(MapLocation.WindyCliff);
+
+        // advance story beat
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
+            
+        julius.ShowExclamationMark(true);
+        julius.interactable = true;
+        julius.GetComponent<Animator>().Play("aTigerTwitch");
+
+        animationDone = true;
+    }
+
+    private IEnumerator WindyCliffDefeated()
+    {
+        // play WC defeated 1
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffDefeated_1_p1);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // tiger runs off screen
+        julius.characterAnimator.Play("aTigerTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        julius.mapAnimator.Play("JuliusWalkOutWC");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutWC"));
+
+        // play WC defeated 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffDefeated_1_p2);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // monkies go hehe and haha then run off too
+        marcus.characterAnimator.Play("marcusWin");
+        brutus.characterAnimator.Play("brutusWin");
+
+        yield return new WaitForSeconds(1f);
+
+        marcus.characterAnimator.Play("marcusTurn");
+        brutus.characterAnimator.Play("brutusTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        marcus.mapAnimator.Play("MarcusWalkOutWC");
+        brutus.mapAnimator.Play("BrutusWalkOutWC");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutWC"));
+
+        // place tiger and monkies off screen
+        julius.transform.localScale = Vector3.zero;
+        marcus.transform.localScale = Vector3.zero;
+        brutus.transform.localScale = Vector3.zero;
+
+        julius.mapAnimator.Play("JuliusOffScreenPos");
+        marcus.mapAnimator.Play("MarcusOffScreenPos");
+        brutus.mapAnimator.Play("BrutusOffScreenPos");
+
+        yield return new WaitForSeconds(0.1f);
+
+        julius.transform.localScale = Vector3.one;
+        marcus.transform.localScale = Vector3.one;
+        brutus.transform.localScale = Vector3.one;
+
+        // play WC defeated 3
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffDefeated_1_p3);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // SF sign post springs into place
+        ScrollMapManager.instance.mapLocations[8].signPost.ShowSignPost(0, false);
+
+        // before unlocking pirate ship - set objects to be destroyed
+        foreach (var icon in ScrollMapManager.instance.mapLocations[9].mapIcons)
+            icon.SetFixed(false, false, true);
+
+        // unlock pirate ship
+        ScrollMapManager.instance.UnlockMapArea(MapLocation.PirateShip, false);
+        yield return new WaitForSeconds(10f);
+
+        // play PS intro 
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PirateIntro_1_p1);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // Save to SIS
+        StudentInfoSystem.GetCurrentProfile().mapLimit = 9;
+        StudentInfoSystem.GetCurrentProfile().mapData.WC_signPost_unlocked = true;
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        animationDone = true;
+    }
+
+    private IEnumerator PirateShipRebuilt()
+    {
+        // play PS rebuilt talkie 1
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PirateRebuilt_1_p1);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // tiger and monkies walk in
+        julius.characterAnimator.Play("tigerWalk");
+        marcus.characterAnimator.Play("marcusWalkIn");
+        brutus.characterAnimator.Play("brutusWalkIn");
+
+        julius.mapAnimator.Play("JuliusWalkInPS");
+        marcus.mapAnimator.Play("MarcusWalkInPS");
+        brutus.mapAnimator.Play("BrutusWalkInPS");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkInPS"));
+
+        // idle animations
+        julius.characterAnimator.Play("aTigerIdle");
+        marcus.characterAnimator.Play("marcusBroken");
+        brutus.characterAnimator.Play("brutusBroken");
+
+        yield return new WaitForSeconds(0.5f);
+
+        // play PS rebuilt talkie 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PirateRebuilt_1_p2);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // make challenge games active
+        yield return new WaitForSeconds(0.5f);
+
+        // set julius challenge game
+        SetJuliusChallengeGame(MapLocation.PirateShip);
+
+        // advance story beat
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
+            
+        julius.ShowExclamationMark(true);
+        julius.interactable = true;
+        julius.GetComponent<Animator>().Play("aTigerTwitch");
+
+        animationDone = true;
+    }
+
+    private IEnumerator PirateShipDefeated()
+    {
+        // play WC defeated 1
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PirateDefeated_1_p1);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // tiger runs off screen
+        julius.characterAnimator.Play("aTigerTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        julius.mapAnimator.Play("JuliusWalkOutPS");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutPS"));
+
+        // play WC defeated 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffDefeated_1_p2);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // monkies go hehe and haha then run off too
+        marcus.characterAnimator.Play("marcusWin");
+        brutus.characterAnimator.Play("brutusWin");
+
+        yield return new WaitForSeconds(1f);
+
+        marcus.characterAnimator.Play("marcusTurn");
+        brutus.characterAnimator.Play("brutusTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        marcus.mapAnimator.Play("MarcusWalkOutPS");
+        brutus.mapAnimator.Play("BrutusWalkOutPS");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutPS"));
+
+        // place tiger and monkies off screen
+        julius.transform.localScale = Vector3.zero;
+        marcus.transform.localScale = Vector3.zero;
+        brutus.transform.localScale = Vector3.zero;
+
+        julius.mapAnimator.Play("JuliusOffScreenPos");
+        marcus.mapAnimator.Play("MarcusOffScreenPos");
+        brutus.mapAnimator.Play("BrutusOffScreenPos");
+
+        yield return new WaitForSeconds(0.1f);
+
+        julius.transform.localScale = Vector3.one;
+        marcus.transform.localScale = Vector3.one;
+        brutus.transform.localScale = Vector3.one;
+
+        // play PS defeated 3
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PirateDefeated_1_p3);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // PS sign post springs into place
+        ScrollMapManager.instance.mapLocations[9].signPost.ShowSignPost(0, false);
+
+        // place darwin in MB
+        darwin.mapAnimator.Play("DarwinMBPos");
+        darwin.ShowExclamationMark(true);
+        darwin.interactable = false;
+
+        // unlock mermaid beach
+        ScrollMapManager.instance.UnlockMapArea(MapLocation.MermaidBeach, false);
+        yield return new WaitForSeconds(10f);
+
+        // Save to SIS
+        StudentInfoSystem.GetCurrentProfile().mapLimit = 10;
+        StudentInfoSystem.GetCurrentProfile().mapData.PS_signPost_unlocked = true;
+        StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_4; // new chapter!
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        animationDone = true;
+    }
+
+    private IEnumerator MermaidBeachIntro()
+    {
+        darwin.ShowExclamationMark(false);
+        darwin.interactable = false;
+
+        // mermaid beach intro 1
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidIntro_1_p1);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // tiger and monkies walk in
+        julius.characterAnimator.Play("tigerWalk");
+        marcus.characterAnimator.Play("marcusWalkIn");
+        brutus.characterAnimator.Play("brutusWalkIn");
+
+        julius.mapAnimator.Play("JuliusWalkInMB");
+        marcus.mapAnimator.Play("MarcusWalkInMB");
+        brutus.mapAnimator.Play("BrutusWalkInMB");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkInMB"));
+
+        // idle animations
+        julius.characterAnimator.Play("aTigerIdle");
+        marcus.characterAnimator.Play("marcusBroken");
+        brutus.characterAnimator.Play("brutusBroken");
+
+        yield return new WaitForSeconds(0.5f);
+
+        darwin.FlipCharacterToRight();
+
+        // mermaid beach intro 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidIntro_1_p2);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // destroy mermaid beach
+        tigerSwipeAnim.Play("tigerScreenSwipe");
+        julius.characterAnimator.Play("tigerSwipe");
+        ScrollMapManager.instance.ShakeMap();
+        // destroy mermaid beach assets
+        foreach (var mapIcon in ScrollMapManager.instance.mapLocations[10].mapIcons)
+        {
+            mapIcon.SetFixed(false, true, true);
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        // mermaid beach intro 3
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidIntro_1_p3);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // tiger runs off screen
+        julius.characterAnimator.Play("aTigerTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        julius.mapAnimator.Play("JuliusWalkOutMB");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutMB"));
+
+        // mermaid beach intro 4
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidIntro_1_p4);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // monkies go hehe and haha then run off too
+        marcus.characterAnimator.Play("marcusWin");
+        brutus.characterAnimator.Play("brutusWin");
+
+        yield return new WaitForSeconds(1f);
+
+        marcus.characterAnimator.Play("marcusTurn");
+        brutus.characterAnimator.Play("brutusTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        marcus.mapAnimator.Play("MarcusWalkOutMB");
+        brutus.mapAnimator.Play("BrutusWalkOutMB");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "MarcusWalkOutMB"));
+
+        // mermaid beach intro 5
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidIntro_1_p5);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // save to SIS and exit to scroll map
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        // make darwin interactable
+        darwin.interactable = true;
+        darwin.ShowExclamationMark(true);
+        darwin.FlipCharacterToLeft();
+
+        animationDone = true;
+    }
+
+    private IEnumerator MermaidBeachRebuilt()
+    {
+        // play MB rebuilt talkie 1
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidRebuilt_1_p1);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // move darwin off screen
+        darwin.FlipCharacterToRight();
+        darwin.characterAnimator.Play("gorillaWalk");
+        darwin.mapAnimator.Play("DarwinWalkOutMB");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(darwin.mapAnimator, "DarwinWalkOutMB"));
+
+        // play MB rebuilt talkie 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidRebuilt_1_p2);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // tiger and monkies walk in
+        julius.characterAnimator.Play("tigerWalk");
+        marcus.characterAnimator.Play("marcusWalkIn");
+        brutus.characterAnimator.Play("brutusWalkIn");
+
+        julius.mapAnimator.Play("JuliusWalkInMB");
+        marcus.mapAnimator.Play("MarcusWalkInMB");
+        brutus.mapAnimator.Play("BrutusWalkInMB");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkInMB"));
+
+        // idle animations
+        julius.characterAnimator.Play("aTigerIdle");
+        marcus.characterAnimator.Play("marcusBroken");
+        brutus.characterAnimator.Play("brutusBroken");
+
+        yield return new WaitForSeconds(0.5f);
+
+        // play MB rebuilt talkie 3
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidRebuilt_1_p3);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // make challenge games active
+        yield return new WaitForSeconds(0.5f);
+
+        // set julius challenge game
+        SetJuliusChallengeGame(MapLocation.MermaidBeach);
+
+        // advance story beat
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
+            
+        julius.ShowExclamationMark(true);
+        julius.interactable = true;
+        julius.GetComponent<Animator>().Play("aTigerTwitch");
+
+        animationDone = true;
+    }
+
+    private IEnumerator MermaidBeachDefeated()
+    {
+        // play MB defeated 1
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidDefeated_1_p1);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // tiger runs off screen
+        julius.characterAnimator.Play("aTigerTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        julius.mapAnimator.Play("JuliusWalkOutMB");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutMB"));
+
+        // play MB defeated 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidDefeated_1_p2);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // monkies go hehe and haha then run off too
+        marcus.characterAnimator.Play("marcusWin");
+        brutus.characterAnimator.Play("brutusWin");
+
+        yield return new WaitForSeconds(1f);
+
+        marcus.characterAnimator.Play("marcusTurn");
+        brutus.characterAnimator.Play("brutusTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        marcus.mapAnimator.Play("MarcusWalkOutMB");
+        brutus.mapAnimator.Play("BrutusWalkOutMB");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutMB"));
+
+        // place tiger and monkies off screen
+        julius.transform.localScale = Vector3.zero;
+        marcus.transform.localScale = Vector3.zero;
+        brutus.transform.localScale = Vector3.zero;
+
+        julius.mapAnimator.Play("JuliusOffScreenPos");
+        marcus.mapAnimator.Play("MarcusOffScreenPos");
+        brutus.mapAnimator.Play("BrutusOffScreenPos");
+
+        yield return new WaitForSeconds(0.1f);
+
+        julius.transform.localScale = Vector3.one;
+        marcus.transform.localScale = Vector3.one;
+        brutus.transform.localScale = Vector3.one;
+
+        // play MB defeated 3
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidDefeated_1_p3);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // MB sign post springs into place
+        ScrollMapManager.instance.mapLocations[10].signPost.ShowSignPost(0, false);
+
+        // before unlocking ruins 1 - set objects to be destroyed
+        foreach (var icon in ScrollMapManager.instance.mapLocations[11].mapIcons)
+            icon.SetFixed(false, false, true);
+        // before unlocking ruins 2 - set objects to be destroyed
+        foreach (var icon in ScrollMapManager.instance.mapLocations[12].mapIcons)
+            icon.SetFixed(false, false, true);
+
+        // unlock ruins
+        ScrollMapManager.instance.UnlockMapArea(MapLocation.Ruins2, false);
+        yield return new WaitForSeconds(10f);
+
+        // play R intro 1
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RuinsIntro_1_p1);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // Save to SIS
+        StudentInfoSystem.GetCurrentProfile().mapLimit = 12;
+        StudentInfoSystem.GetCurrentProfile().mapData.MB_signPost_unlocked = true;
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        animationDone = true;
+    }
+
+    private IEnumerator RuinsRebuilt()
+    {
+        // make sure scroll map is on Ruins 1!!!
+        ScrollMapManager.instance.GoToMapPosition(MapLocation.Ruins1);
+        yield return new WaitForSeconds(1f);
+
+        // play R rebuilt talkie 1
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RuinsRebuilt_1_p1);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // tiger and monkies walk in
+        julius.characterAnimator.Play("tigerWalk");
+        marcus.characterAnimator.Play("marcusWalkIn");
+        brutus.characterAnimator.Play("brutusWalkIn");
+
+        julius.mapAnimator.Play("JuliusWalkInR");
+        marcus.mapAnimator.Play("MarcusWalkInR");
+        brutus.mapAnimator.Play("BrutusWalkInR");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkInR"));
+
+        // idle animations
+        julius.characterAnimator.Play("aTigerIdle");
+        marcus.characterAnimator.Play("marcusBroken");
+        brutus.characterAnimator.Play("brutusBroken");
+
+        yield return new WaitForSeconds(0.5f);
+
+        // play R rebuilt talkie 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RuinsRebuilt_1_p2);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // make challenge games active
+        yield return new WaitForSeconds(0.5f);
+
+        // set julius challenge game
+        SetJuliusChallengeGame(MapLocation.Ruins1);
+
+        // advance story beat
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
+            
+        julius.ShowExclamationMark(true);
+        julius.interactable = true;
+        julius.GetComponent<Animator>().Play("aTigerTwitch");
+
+        animationDone = true;
+    }
+
+    private IEnumerator RuinsDefeated()
+    {
+        // play R defeated 1
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RuinsDefeated_1_p1);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // tiger runs off screen
+        julius.characterAnimator.Play("aTigerTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        julius.mapAnimator.Play("JuliusWalkOutR");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutR"));
+
+        // play R defeated 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RuinsDefeated_1_p2);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // monkies go hehe and haha then run off too
+        marcus.characterAnimator.Play("marcusWin");
+        brutus.characterAnimator.Play("brutusWin");
+
+        yield return new WaitForSeconds(1f);
+
+        marcus.characterAnimator.Play("marcusTurn");
+        brutus.characterAnimator.Play("brutusTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        marcus.mapAnimator.Play("MarcusWalkOutR");
+        brutus.mapAnimator.Play("BrutusWalkOutR");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutR"));
+
+        // place tiger and monkies off screen
+        julius.transform.localScale = Vector3.zero;
+        marcus.transform.localScale = Vector3.zero;
+        brutus.transform.localScale = Vector3.zero;
+
+        julius.mapAnimator.Play("JuliusOffScreenPos");
+        marcus.mapAnimator.Play("MarcusOffScreenPos");
+        brutus.mapAnimator.Play("BrutusOffScreenPos");
+
+        yield return new WaitForSeconds(0.1f);
+
+        julius.transform.localScale = Vector3.one;
+        marcus.transform.localScale = Vector3.one;
+        brutus.transform.localScale = Vector3.one;
+
+        // play R defeated 3
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RuinsDefeated_1_p3);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // R sign post springs into place
+        ScrollMapManager.instance.mapLocations[12].signPost.ShowSignPost(0, false);
+
+        // place darwin in EJ
+        darwin.mapAnimator.Play("DarwinEJPos");
+        darwin.ShowExclamationMark(true);
+        darwin.interactable = false;
+
+        // unlock exit jungle
+        ScrollMapManager.instance.UnlockMapArea(MapLocation.ExitJungle, false);
+        yield return new WaitForSeconds(10f);
+
+        // Save to SIS
+        StudentInfoSystem.GetCurrentProfile().mapLimit = 12;
+        StudentInfoSystem.GetCurrentProfile().mapData.MB_signPost_unlocked = true;
+        StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_5; // new chapter!
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        animationDone = true;
+    }
+
+    private IEnumerator ExitJungleIntro()
+    {
+        darwin.ShowExclamationMark(false);
+        darwin.interactable = false;
+
+        // exit jungle intro 1
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ExitIntro_1_p1);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // tiger and monkies walk in
+        julius.characterAnimator.Play("tigerWalk");
+        marcus.characterAnimator.Play("marcusWalkIn");
+        brutus.characterAnimator.Play("brutusWalkIn");
+
+        julius.mapAnimator.Play("JuliusWalkInEJ");
+        marcus.mapAnimator.Play("MarcusWalkInEJ");
+        brutus.mapAnimator.Play("BrutusWalkInEJ");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkInEJ"));
+
+        // idle animations
+        julius.characterAnimator.Play("aTigerIdle");
+        marcus.characterAnimator.Play("marcusBroken");
+        brutus.characterAnimator.Play("brutusBroken");
+
+        yield return new WaitForSeconds(0.5f);
+
+        darwin.FlipCharacterToRight();
+
+        // exit jungle intro 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ExitIntro_1_p2);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // destroy exit jungle
+        tigerSwipeAnim.Play("tigerScreenSwipe");
+        julius.characterAnimator.Play("tigerSwipe");
+        ScrollMapManager.instance.ShakeMap();
+        // destroy mermaid beach assets
+        foreach (var mapIcon in ScrollMapManager.instance.mapLocations[13].mapIcons)
+        {
+            mapIcon.SetFixed(false, true, true);
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        // exit jungle intro 3
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ExitIntro_1_p3);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // tiger runs off screen
+        julius.characterAnimator.Play("aTigerTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        julius.mapAnimator.Play("JuliusWalkOutEJ");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutEJ"));
+
+        // exit jungle intro 4
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ExitIntro_1_p4);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // monkies go hehe and haha then run off too
+        marcus.characterAnimator.Play("marcusWin");
+        brutus.characterAnimator.Play("brutusWin");
+
+        yield return new WaitForSeconds(1f);
+
+        marcus.characterAnimator.Play("marcusTurn");
+        brutus.characterAnimator.Play("brutusTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        marcus.mapAnimator.Play("MarcusWalkOutEJ");
+        brutus.mapAnimator.Play("BrutusWalkOutEJ");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "MarcusWalkOutEj"));
+
+        // exit jungle intro 5
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ExitIntro_1_p5);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // save to SIS and exit to scroll map
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        // make darwin interactable
+        darwin.interactable = true;
+        darwin.ShowExclamationMark(true);
+        darwin.FlipCharacterToLeft();
+
+        animationDone = true;
+    }
+
+    private IEnumerator ExitJungleRebuilt()
+    {
+        // play EJ rebuilt talkie 1
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ExitRebuilt_1_p1);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // tiger and monkies walk in
+        julius.characterAnimator.Play("tigerWalk");
+        marcus.characterAnimator.Play("marcusWalkIn");
+        brutus.characterAnimator.Play("brutusWalkIn");
+
+        julius.mapAnimator.Play("JuliusWalkInEJ");
+        marcus.mapAnimator.Play("MarcusWalkInEJ");
+        brutus.mapAnimator.Play("BrutusWalkInEJ");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkInEJ"));
+
+        // idle animations
+        julius.characterAnimator.Play("aTigerIdle");
+        marcus.characterAnimator.Play("marcusBroken");
+        brutus.characterAnimator.Play("brutusBroken");
+
+        yield return new WaitForSeconds(0.5f);
+
+        // play EJ rebuilt talkie 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ExitRebuilt_1_p2);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // make challenge games active
+        yield return new WaitForSeconds(0.5f);
+
+        // set julius challenge game
+        SetJuliusChallengeGame(MapLocation.ExitJungle);
+
+        // advance story beat
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
+            
+        julius.ShowExclamationMark(true);
+        julius.interactable = true;
+        julius.GetComponent<Animator>().Play("aTigerTwitch");
+
+        animationDone = true;
+    }
+
+    private IEnumerator ExitJungleDefeated()
+    {
+        // play EJ defeated 1
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ExitDefeated_1_p1);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // tiger runs off screen
+        julius.characterAnimator.Play("aTigerTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        julius.mapAnimator.Play("JuliusWalkOutEJ");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutEJ"));
+
+        // play EJ defeated 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ExitDefeated_1_p2);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // monkies go hehe and haha then run off too
+        marcus.characterAnimator.Play("marcusWin");
+        brutus.characterAnimator.Play("brutusWin");
+
+        yield return new WaitForSeconds(1f);
+
+        marcus.characterAnimator.Play("marcusTurn");
+        brutus.characterAnimator.Play("brutusTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        marcus.mapAnimator.Play("MarcusWalkOutEJ");
+        brutus.mapAnimator.Play("BrutusWalkOutEJ");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutEJ"));
+
+        // place tiger and monkies off screen
+        julius.transform.localScale = Vector3.zero;
+        marcus.transform.localScale = Vector3.zero;
+        brutus.transform.localScale = Vector3.zero;
+
+        julius.mapAnimator.Play("JuliusOffScreenPos");
+        marcus.mapAnimator.Play("MarcusOffScreenPos");
+        brutus.mapAnimator.Play("BrutusOffScreenPos");
+
+        yield return new WaitForSeconds(0.1f);
+
+        julius.transform.localScale = Vector3.one;
+        marcus.transform.localScale = Vector3.one;
+        brutus.transform.localScale = Vector3.one;
+
+        // play MB defeated 3
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ExitDefeated_1_p3);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // EJ sign post springs into place
+        ScrollMapManager.instance.mapLocations[13].signPost.ShowSignPost(0, false);
+
+        // before unlocking gorilla study - set objects to be destroyed
+        foreach (var icon in ScrollMapManager.instance.mapLocations[14].mapIcons)
+            icon.SetFixed(false, false, true);
+
+        // place darwin in gorilla study
+        darwin.mapAnimator.Play("DarwinGSPos");
+        darwin.ShowExclamationMark(true);
+        darwin.interactable = false;
+
+        // unlock gorilla study
+        ScrollMapManager.instance.UnlockMapArea(MapLocation.GorillaStudy, false);
+        yield return new WaitForSeconds(10f);
+
+        // Save to SIS
+        StudentInfoSystem.GetCurrentProfile().mapLimit = 14;
+        StudentInfoSystem.GetCurrentProfile().mapData.EJ_signPost_unlocked = true;
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        animationDone = true;
+    }
 
 
 
