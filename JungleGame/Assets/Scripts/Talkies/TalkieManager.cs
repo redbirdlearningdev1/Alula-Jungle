@@ -247,7 +247,7 @@ public class TalkieManager : MonoBehaviour
 
         // set current talkie name
         if (GameManager.instance.devModeActivated)
-            currentTalkieText.text = "current talkie name: " + currentTalkie.name;
+            currentTalkieText.text = "database name: " + currentTalkie.name;
 
         // segment to start talkie on
         int startIndex = 0;
@@ -521,7 +521,7 @@ public class TalkieManager : MonoBehaviour
                 }
                 else
                 {   
-                    Debug.LogError("no audio clip found: \'" + talkieSeg.audioClipName + "\' in talkie: \'" + currentTalkie.name + "\'");
+                    Debug.LogError("no audio clip found: \'" + talkieSeg.audioClipName + "\' in: \'" + currentTalkie.name + "\'");
                     yield return new WaitForSeconds(1.5f);
                 }
             }

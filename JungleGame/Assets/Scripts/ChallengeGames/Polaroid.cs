@@ -9,7 +9,6 @@ public class Polaroid : MonoBehaviour
     public ChallengeWord challengeWord;
     [SerializeField] private Image pictureImg;
     [SerializeField] private Image backgroundImg;
-    [SerializeField] private Image filerImage;
     [SerializeField] private Image frameImage;
 
     public void SetPolaroid(ChallengeWord word)
@@ -114,7 +113,6 @@ public class Polaroid : MonoBehaviour
     {
         backgroundImg.GetComponent<LerpableObject>().LerpImageAlpha(backgroundImg, alpha, lerpDuration);
         pictureImg.GetComponent<LerpableObject>().LerpImageAlpha(pictureImg, alpha, lerpDuration);
-        filerImage.GetComponent<LerpableObject>().LerpImageAlpha(filerImage, alpha, lerpDuration);
         frameImage.GetComponent<LerpableObject>().LerpImageAlpha(frameImage, alpha, lerpDuration);
     }
 

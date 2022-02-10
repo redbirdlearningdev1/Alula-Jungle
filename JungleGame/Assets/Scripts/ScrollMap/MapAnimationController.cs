@@ -1115,6 +1115,14 @@ public class MapAnimationController : MonoBehaviour
             case MapAnim.WindyCliffDefeated:
                 StartCoroutine(WindyCliffDefeated());
                 break;
+            
+            case MapAnim.PirateShipRebuilt:
+                StartCoroutine(PirateShipRebuilt());
+                break;
+
+            case MapAnim.PirateShipDefeated:
+                StartCoroutine(PirateShipDefeated());
+                break;
 
             case MapAnim.MermaidBeachIntro:
                 StartCoroutine(MermaidBeachIntro());
@@ -1170,6 +1178,10 @@ public class MapAnimationController : MonoBehaviour
 
             case MapAnim.PalaceIntro:
                 StartCoroutine(PalaceIntro());
+                break;
+
+            default:
+                Debug.LogError("Could not start map animation: " + animation);
                 break;
         }       
     }
@@ -1286,7 +1298,7 @@ public class MapAnimationController : MonoBehaviour
         // destroy gorilla village assets
         foreach (var mapIcon in ScrollMapManager.instance.mapLocations[2].mapIcons)
         {
-            mapIcon.SetFixed(false, true, false);
+            mapIcon.SetFixed(false, true, true);
         }
 
         yield return new WaitForSeconds(2f);
@@ -1349,12 +1361,6 @@ public class MapAnimationController : MonoBehaviour
         
         ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.GorillaVillage);
         ScrollMapManager.instance.UpdateMapIcons();
-
-        // save map icon data to SIS
-        StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.isFixed = false;
-        StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.isFixed = false;
-        StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.isFixed = false;
-        StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.isFixed = false;
 
         // save to SIS and exit to scroll map
         StudentInfoSystem.AdvanceStoryBeat();
@@ -1883,11 +1889,11 @@ public class MapAnimationController : MonoBehaviour
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
-        // destroy village
+        // destroy spider forest
         tigerSwipeAnim.Play("tigerScreenSwipe");
         julius.characterAnimator.Play("tigerSwipe");
         ScrollMapManager.instance.ShakeMap();
-        // destroy gorilla village assets
+        // destroy spider forest assets
         foreach (var mapIcon in ScrollMapManager.instance.mapLocations[5].mapIcons)
         {
             mapIcon.SetFixed(false, true, true);
@@ -2224,6 +2230,10 @@ public class MapAnimationController : MonoBehaviour
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
+        // enable icons in GP
+        ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.GorillaPoop);
+        ScrollMapManager.instance.UpdateMapIcons();
+
         // Save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 7;
         StudentInfoSystem.GetCurrentProfile().mapData.OC_signPost_unlocked = true;
@@ -2345,14 +2355,18 @@ public class MapAnimationController : MonoBehaviour
 
         // place darwin in WC
         darwin.mapAnimator.Play("DarwinWCPos");
-        darwin.ShowExclamationMark(true);
         darwin.interactable = false;
+
+        // before unlocking windy cliff - set objects to be fixed
+        foreach (var icon in ScrollMapManager.instance.mapLocations[(int)MapLocation.WindyCliff].mapIcons)
+            icon.SetFixed(true, false, true);
 
         // unlock windy cliff
         ScrollMapManager.instance.UnlockMapArea(MapLocation.WindyCliff, false);
         yield return new WaitForSeconds(10f);
 
         // make darwin interactable
+        darwin.ShowExclamationMark(true);
         darwin.interactable = true;
 
         // Save to SIS
@@ -2603,6 +2617,10 @@ public class MapAnimationController : MonoBehaviour
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
+        // enable icons in PS
+        ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.PirateShip);
+        ScrollMapManager.instance.UpdateMapIcons();
+
         // Save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 9;
         StudentInfoSystem.GetCurrentProfile().mapData.WC_signPost_unlocked = true;
@@ -2724,12 +2742,15 @@ public class MapAnimationController : MonoBehaviour
 
         // place darwin in MB
         darwin.mapAnimator.Play("DarwinMBPos");
-        darwin.ShowExclamationMark(true);
         darwin.interactable = false;
 
         // unlock mermaid beach
         ScrollMapManager.instance.UnlockMapArea(MapLocation.MermaidBeach, false);
         yield return new WaitForSeconds(10f);
+
+        // make darwin interactable
+        darwin.ShowExclamationMark(true);
+        darwin.interactable = true;
 
         // Save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 10;
@@ -2982,6 +3003,9 @@ public class MapAnimationController : MonoBehaviour
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
+        ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.Ruins2);
+        ScrollMapManager.instance.UpdateMapIcons();
+
         // Save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 12;
         StudentInfoSystem.GetCurrentProfile().mapData.MB_signPost_unlocked = true;
@@ -3045,6 +3069,10 @@ public class MapAnimationController : MonoBehaviour
 
     private IEnumerator RuinsDefeated()
     {
+        // make sure scroll map is on Ruins 1!!!
+        ScrollMapManager.instance.GoToMapPosition(MapLocation.Ruins1);
+        yield return new WaitForSeconds(1f);
+
         // play R defeated 1
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RuinsDefeated_1_p1);
         while (TalkieManager.instance.talkiePlaying)
@@ -3107,16 +3135,22 @@ public class MapAnimationController : MonoBehaviour
 
         // place darwin in EJ
         darwin.mapAnimator.Play("DarwinEJPos");
-        darwin.ShowExclamationMark(true);
-        darwin.interactable = false;
+
+        // before unlocking exit jungle - set objects to be fixed
+        foreach (var icon in ScrollMapManager.instance.mapLocations[(int)MapLocation.ExitJungle].mapIcons)
+            icon.SetFixed(true, false, true);
 
         // unlock exit jungle
         ScrollMapManager.instance.UnlockMapArea(MapLocation.ExitJungle, false);
         yield return new WaitForSeconds(10f);
 
+        // make darwin interactable
+        darwin.ShowExclamationMark(true);
+        darwin.interactable = true;
+
         // Save to SIS
-        StudentInfoSystem.GetCurrentProfile().mapLimit = 12;
-        StudentInfoSystem.GetCurrentProfile().mapData.MB_signPost_unlocked = true;
+        StudentInfoSystem.GetCurrentProfile().mapLimit = 13;
+        StudentInfoSystem.GetCurrentProfile().mapData.R_signPost_unlocked = true;
         StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_5; // new chapter!
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
@@ -3763,12 +3797,8 @@ public class MapAnimationController : MonoBehaviour
             }
             else
             {
-                // set game manager stuff
-                GameManager.instance.mapID = MapIconIdentfier.GV_challenge_2;
-                GameManager.instance.playingChallengeGame = true;
-
                 // continue to marcus challenge game
-                marcus.GoToGameDataSceneImmediately();
+                marcus.GoToGameDataSceneImmediately(true);
             }
         }
 
@@ -3848,12 +3878,8 @@ public class MapAnimationController : MonoBehaviour
             }
             else
             {
-                // set game manager stuff
-                GameManager.instance.mapID = MapIconIdentfier.GV_challenge_3;
-                GameManager.instance.playingChallengeGame = true;
-
                 // continue to marcus challenge game
-                MapAnimationController.instance.brutus.GoToGameDataSceneImmediately();
+                brutus.GoToGameDataSceneImmediately(true);
             }
         }
 
@@ -4130,6 +4156,7 @@ public class MapAnimationController : MonoBehaviour
                     marcus.gameType = StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType;
                     firstTime = false;
                 }
+                // set game manager stuff
                 break;
 
             case MapLocation.Mudslide:

@@ -136,6 +136,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             // wait for animation to be done
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
+
+            yield break;
         }
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PrologueStoryGame)
         {  
@@ -150,8 +152,6 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PreStory_2_p1);
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
-
-                yield break;
             }
         }
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillageMeetClogg)
@@ -359,7 +359,16 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1 ||
                  StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Mudslide_challengeGame_1 ||
                  StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_1 ||
-                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.SpookyForest_challengeGame_1)
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.SpookyForest_challengeGame_1 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcCamp_challengeGame_1 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaPoop_challengeGame_1 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.WindyCliff_challengeGame_1 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PirateShip_challengeGame_1 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.MermaidBeach_challengeGame_1 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Ruins_challengeGame_1 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.ExitJungle_challengeGame_1 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaStudy_challengeGame_1 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Monkeys_challengeGame_1)
         {
             if (character == Character.Julius)
             {
@@ -401,7 +410,16 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_2 ||
                  StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Mudslide_challengeGame_2 ||
                  StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_2 ||
-                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.SpookyForest_challengeGame_2)
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.SpookyForest_challengeGame_2 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcCamp_challengeGame_2 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaPoop_challengeGame_2 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.WindyCliff_challengeGame_2 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PirateShip_challengeGame_2 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.MermaidBeach_challengeGame_2 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Ruins_challengeGame_2 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.ExitJungle_challengeGame_2 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaStudy_challengeGame_2 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Monkeys_challengeGame_2)
         {
             if (character == Character.Marcus)
             {
@@ -418,7 +436,16 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_3 ||
                  StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Mudslide_challengeGame_3 ||
                  StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_3 ||
-                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.SpookyForest_challengeGame_3)
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.SpookyForest_challengeGame_3 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcCamp_challengeGame_3 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaPoop_challengeGame_3 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.WindyCliff_challengeGame_3 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PirateShip_challengeGame_3 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.MermaidBeach_challengeGame_3 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Ruins_challengeGame_3 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.ExitJungle_challengeGame_3 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaStudy_challengeGame_3 ||
+                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Monkeys_challengeGame_3)
         {
             if (character == Character.Brutus)
             {
@@ -439,16 +466,18 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             yield break;
         }
 
-        GameManager.instance.playingChallengeGame = playingChallengeGame;
-
-        SetGameManagerMapID(StudentInfoSystem.GetCurrentProfile().currStoryBeat);
-
         // start game
-        GoToGameDataSceneImmediately();
+        GoToGameDataSceneImmediately(playingChallengeGame);
     }
 
-    public void GoToGameDataSceneImmediately()
+    public void GoToGameDataSceneImmediately(bool playingChallengeGame = false)
     {
+        if (playingChallengeGame)
+        {
+            GameManager.instance.playingChallengeGame = true;
+            SetGameManagerMapID(StudentInfoSystem.GetCurrentProfile().currStoryBeat);
+        }
+        
         GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(gameType), true, 0.5f, true);
     }
 

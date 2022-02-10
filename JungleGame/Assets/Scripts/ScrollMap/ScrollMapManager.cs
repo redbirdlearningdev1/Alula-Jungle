@@ -240,6 +240,11 @@ public class ScrollMapManager : MonoBehaviour
             // change enabled map sections
             EnableMapSectionsUpTo(MapLocation.BoatHouse);
         }
+        else if (playGameEvent == StoryBeat.PrologueStoryGame)
+        {
+            // change enabled map sections
+            EnableMapSectionsUpTo(MapLocation.BoatHouse);
+        }
         else if (playGameEvent == StoryBeat.RedShowsStickerButton)
         {
             // check if player has enough coins
@@ -568,6 +573,11 @@ public class ScrollMapManager : MonoBehaviour
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
         }
+        else if (playGameEvent == StoryBeat.WindyCliffUnlocked)
+        {
+            // change enabled map sections
+            EnableMapSectionsUpTo(MapLocation.GorillaPoop);
+        }
         else if (playGameEvent == StoryBeat.WindyCliffPlayGames)
         {
             // make sure player has rebuilt all the WC map icons
@@ -666,6 +676,11 @@ public class ScrollMapManager : MonoBehaviour
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
         }
+        else if (playGameEvent == StoryBeat.MermaidBeachUnlocked)
+        {
+            // change enabled map sections
+            EnableMapSectionsUpTo(MapLocation.PirateShip);
+        }
         else if (playGameEvent == StoryBeat.MermaidBeachPlayGames)
         {
             // make sure player has rebuilt all the PS map icons
@@ -676,6 +691,8 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().mapData.MB_rock.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.MB_umbrella.isFixed)
             {
+                print ("mermaids");
+
                 // play MB rebuilt
                 MapAnimationController.instance.PlayMapAnim(MapAnim.MermaidBeachRebuilt);
                 // wait for animation to be done

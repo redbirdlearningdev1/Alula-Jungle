@@ -49,7 +49,6 @@ public class GameManager : DontDestroy<GameManager>
 
     public StoryGameData storyGameData;
     public MapIconIdentfier mapID;
-    public GameType currChallengeGame;
     
     [HideInInspector] public bool repairMapIconID; // when the scroll map appears -> repair this icon
     [HideInInspector] public GameType prevGameTypePlayed = GameType.None;

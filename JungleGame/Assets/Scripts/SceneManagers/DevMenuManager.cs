@@ -1574,7 +1574,7 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.MB_umbrella.stars = 3;
                 }
 
-                StudentInfoSystem.GetCurrentProfile().mapData.MB_umbrella.isFixed = isFixed;
+                StudentInfoSystem.GetCurrentProfile().mapData.MB_bucket.isFixed = isFixed;
                 StudentInfoSystem.GetCurrentProfile().mapData.MB_castle.isFixed = isFixed;
                 StudentInfoSystem.GetCurrentProfile().mapData.MB_ladder.isFixed = isFixed;
                 StudentInfoSystem.GetCurrentProfile().mapData.MB_mermaids.isFixed = isFixed;
