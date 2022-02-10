@@ -255,8 +255,8 @@ public class TalkieManager : MonoBehaviour
         // only for quips collection
         if (currentTalkie.quipsCollection)
         {
-            // start talkie at a random segment
-            startIndex = currSegmentIndex = Random.Range(0, currentTalkie.segmnets.Count);
+            // start talkie at a random VALID segment
+            startIndex = currentTalkie.validQuipIndexes[Random.Range(0, currentTalkie.validQuipIndexes.Count)];
         }
         
         // play segments in order

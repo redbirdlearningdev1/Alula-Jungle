@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: RRGuardsIntro_2_p1
   quipsCollection: 0
+  validQuipIndexes: 
   start: 1
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
@@ -36,7 +37,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Marcus_Laugh
-    audioString: HA HA HA!!!!
+    audioString: HA HA HA!!!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

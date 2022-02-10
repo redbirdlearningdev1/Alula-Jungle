@@ -8692,8 +8692,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -17506,11 +17506,12 @@ MonoBehaviour:
   devModeIndicator: {fileID: 6550831789426890278}
   storyGameData: {fileID: 0}
   mapID: 0
-  currChallengeGame: 0
   repairMapIconID: 0
   prevGameTypePlayed: 0
   playingChallengeGame: 0
   playingRoyalRumbleGame: 0
+  finishedRoyalRumbleGame: 0
+  wonRoyalRumbleGame: 0
   avatars:
   - {fileID: 21300000, guid: da3f7e78289a2d8469c82daacaa6333a, type: 3}
   - {fileID: 21300000, guid: 549747dbc6c25a146bf524fb0b27dc6a, type: 3}
@@ -21654,7 +21655,6 @@ MonoBehaviour:
   PirateDefeated_1_p3: {fileID: 11400000, guid: f6033fe4728e88143986fa5323ac4907,
     type: 2}
   PirateIntro_1_p1: {fileID: 11400000, guid: c992a3e642df4694298d1bace6ab6560, type: 2}
-  PirateIntro_1_p2: {fileID: 11400000, guid: 64d20a8b7fee0e94cabddc0bd3f862b1, type: 2}
   PirateRebuilt_1_p1: {fileID: 11400000, guid: 23a88baff20386b47a1448e1d7d227e3, type: 2}
   PirateRebuilt_1_p2: {fileID: 11400000, guid: 8a85ffa8f9d58d44687dc45e4581a76c, type: 2}
   PoopDefeated_1_p1: {fileID: 11400000, guid: 2c0a00bf9bb704244aba805e5ed0bbdb, type: 2}
@@ -28204,7 +28204,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 108.1424, y: 0.005817631}
+  m_AnchoredPosition: {x: 108.15223, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: DarwinQuips_1_p1
   quipsCollection: 1
+  validQuipIndexes: 0000000001000000020000000300000004000000
   start: 0
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
@@ -52,7 +53,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: c52f01de33add394786341706d5e7a60, type: 3}
     audioClipName: P_1_3_Darwin_2_T1
-    audioString: "Hmm\u2026 think think think\u2026."
+    audioString: "Hmm\u2026 think think think\u2026"
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0

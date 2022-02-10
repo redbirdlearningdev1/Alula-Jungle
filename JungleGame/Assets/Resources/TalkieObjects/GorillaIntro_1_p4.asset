@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: GorillaIntro_1_p4
   quipsCollection: 0
+  validQuipIndexes: 
   start: 0
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
@@ -84,7 +85,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: d1a76fd4a56579e48b6b3f62261cf4c4, type: 3}
     audioClipName: P_1_1_Darwin_41_T2
-    audioString: "He\u2019s always been a\u2026.little... troublemaker..."
+    audioString: "He\u2019s always been a\u2026 little... troublemaker..."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -116,7 +117,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 67ee080a10c7e4c4ebb4a1366e99cbac, type: 3}
     audioClipName: P_1_1_Darwin_41_T4
-    audioString: "uUmm\u2026this\u2026"
+    audioString: "Umm\u2026 this\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

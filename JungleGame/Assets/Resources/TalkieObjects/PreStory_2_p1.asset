@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: PreStory_2_p1
   quipsCollection: 0
+  validQuipIndexes: 
   start: 0
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
@@ -68,7 +69,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 8fe5767015ea9af43a23f0392e13bea4, type: 3}
     audioClipName: P_1_2_Darwin_2_T2
-    audioString: uhh...
+    audioString: umm...
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0

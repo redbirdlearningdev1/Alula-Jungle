@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: GorillaIntro_1_p1
   quipsCollection: 0
+  validQuipIndexes: 
   start: 1
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
@@ -84,7 +85,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: e1fd028e41e5b7c4985cc3f3e2efb8f0, type: 3}
     audioClipName: P_1_1_Darwin_2_T2
-    audioString: "I \u2026. Uhh"
+    audioString: "I\u2026 Uhh"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -229,7 +230,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: cfd0e9885161534429b9aaccdafd0850, type: 3}
     audioClipName: P_1_1_Darwin_6_T5
-    audioString: Advisor!!
+    audioString: Advisor!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

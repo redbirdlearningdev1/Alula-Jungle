@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: SpiderIntro_1_p5
   quipsCollection: 0
+  validQuipIndexes: 
   start: 1
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
@@ -100,7 +101,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: d81908e50be12684aae523e2ac68700e, type: 3}
     audioClipName: B_1_1_Red_46_T2
-    audioString: "you\u2019re right Wally. I just wish we could help him"
+    audioString: "you\u2019re right Wally. I just wish we could help him."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -203,11 +204,11 @@ MonoBehaviour:
     onNoGoto: 0
     leftCharacter: 1
     leftEmotionNum: 5
-    leftMouthEnum: 1
+    leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 2
     rightEmotionNum: 6
-    rightMouthEnum: 1
+    rightMouthEnum: 2
     rightEyesEnum: 4
     activeCharacter: 3
     audioClip: {fileID: 8300000, guid: a9330623ae5ea6945a5b1cd6d4fcb56a, type: 3}

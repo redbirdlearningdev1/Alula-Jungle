@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: VillageRebuilt_1_p3
   quipsCollection: 0
+  validQuipIndexes: 
   start: 1
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
@@ -36,7 +37,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 0}
     audioClipName: Marcus_Laugh
-    audioString: HA HA HA!!!!
+    audioString: HA HA HA!!!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -260,7 +261,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 42b93d7a041aa7747ae9c7ff619d11ce, type: 3}
     audioClipName: P_1_5_Brutus_21_T1
-    audioString: Heh heh.....
+    audioString: Heh heh...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -276,7 +277,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 2ad6076449250d447a9718a6fd1f207c, type: 3}
     audioClipName: P_1_5_Brutus_21_T2
-    audioString: yeah
+    audioString: yeah.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -388,7 +389,7 @@ MonoBehaviour:
     activeCharacter: 3
     audioClip: {fileID: 0}
     audioClipName: RedWally_What
-    audioString: What??!
+    audioString: What?!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -548,7 +549,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Marcus_Laugh
-    audioString: HA HA HA!!!!
+    audioString: HA HA HA!!!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -564,7 +565,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 0}
     audioClipName: Brutus_Laugh
-    audioString: Heh heh.....
+    audioString: Heh heh...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

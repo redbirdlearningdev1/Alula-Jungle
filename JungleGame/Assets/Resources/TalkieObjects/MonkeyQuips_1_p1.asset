@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: MonkeyQuips_1_p1
   m_EditorClassIdentifier: 
   talkieName: MonkeyQuips_1_p1
-  quipsCollection: 1
+  quipsCollection: 0
+  validQuipIndexes: 
   start: 1
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
@@ -21,7 +22,7 @@ MonoBehaviour:
   removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 1
   segmnets:
-  - endTalkieAfterThisSegment: 1
+  - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0

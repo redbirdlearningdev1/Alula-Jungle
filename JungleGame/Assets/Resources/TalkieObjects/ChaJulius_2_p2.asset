@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: ChaJulius_2_p2
   quipsCollection: 0
+  validQuipIndexes: 
   start: 1
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
@@ -36,7 +37,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 2b5033505f4ae304083e93c499dc9a21, type: 3}
     audioClipName: Cha_0_1g_Julius_1_T1
-    audioString: ARGH! How do you keep beating me!!
+    audioString: ARGH! How do you keep beating me!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -68,7 +69,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 0}
     audioClipName: Marcus_Laugh
-    audioString: HA HA HA!!!!
+    audioString: HA HA HA!!!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -116,7 +117,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 0}
     audioClipName: Marcus_Laugh
-    audioString: HA HA HA!!!!
+    audioString: HA HA HA!!!
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0
@@ -212,4 +213,4 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 0}
     audioClipName: Marcus_Laugh
-    audioString: HA HA HA!!!!
+    audioString: HA HA HA!!!

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: GorillaIntro_1_p3
   quipsCollection: 0
+  validQuipIndexes: 
   start: 1
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
@@ -68,7 +69,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Marcus_Laugh
-    audioString: HA HA HA!!!!
+    audioString: HA HA HA!!!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -84,7 +85,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 0}
     audioClipName: Brutus_Laugh
-    audioString: Heh heh.....
+    audioString: Heh heh...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -228,7 +229,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 87f624fc1728e6c44a66c0381699087e, type: 3}
     audioClipName: P_1_1_Julius_32_T1
-    audioString: I.....
+    audioString: I...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -452,7 +453,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Marcus_Laugh
-    audioString: HA HA HA!!!!
+    audioString: HA HA HA!!!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

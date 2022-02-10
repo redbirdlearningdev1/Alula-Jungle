@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: Dock_1_p2
   quipsCollection: 0
+  validQuipIndexes: 
   start: 0
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
@@ -25,15 +26,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 1
-    leftEmotionNum: 2
-    leftMouthEnum: 2
-    leftEyesEnum: 1
-    rightCharacter: 2
-    rightEmotionNum: 1
-    rightMouthEnum: 1
-    rightEyesEnum: 2
-    activeCharacter: 2
+    leftCharacter: 2
+    leftEmotionNum: 1
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 0
+    rightEmotionNum: 0
+    rightMouthEnum: 0
+    rightEyesEnum: 0
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: e5529057820bc8a4c9623e91d77f6960, type: 3}
     audioClipName: P_0_1_Wally_3_T1
     audioString: Let's get going.

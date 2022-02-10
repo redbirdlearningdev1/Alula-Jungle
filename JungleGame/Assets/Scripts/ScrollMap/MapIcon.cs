@@ -174,7 +174,12 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     [SerializeField] private Sprite brokenSprite;
     [SerializeField] private Sprite fixedSprite;
 
-    private MeshRenderer meshRenderer;
+
+    [Header("Quips")]
+    public bool playQuips;
+    public TalkieObject brokenQuips;
+    public TalkieObject fixedQuips;
+
     private Image image;
     private Animator animator;
     [SerializeField] private Animator repairAnimator;
@@ -207,7 +212,6 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     void Awake() 
     {
-        meshRenderer = GetComponent<MeshRenderer>();
         image = GetComponent<Image>();
         if (animatedIcon != AnimatedIcon.none) animator = GetComponent<Animator>();
         if (repairAnimator) repairAnimator.Play("defaultAnimation");
@@ -405,21 +409,28 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         }
     }
 
-    public void SetOutineColor(Color color)
-    {
-        meshRenderer.material.color = color;
-    }
-
     public void SetFixed(bool opt, bool animate, bool saveToSIS)
     {
         if (!canBeFixed) return;
+
+        this.isFixed = opt;
 
         switch (animatedIcon)
         {
             default:
             case AnimatedIcon.none:
-                if (!opt) image.sprite = brokenSprite;
-                else image.sprite = fixedSprite;
+                // special case for monkey guards
+                if (this.identifier == MapIconIdentfier.M_guards)
+                {
+                    MapAnimationController.instance.marcus.characterAnimator.Play("marcusFixed");
+                    MapAnimationController.instance.darwin.characterAnimator.Play("darwinFixed");
+                }
+                else
+                {
+                    if (!opt) image.sprite = brokenSprite;
+                    else image.sprite = fixedSprite;
+                }
+                
                 break;
             case AnimatedIcon.fire:
                 if (!opt) animator.Play("fireBroken");
@@ -818,6 +829,30 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         }
         else
         {
+            // play quip
+            if (playQuips)
+            {
+                // remove settings and wagon buttons
+                SettingsManager.instance.ToggleMenuButtonActive(false);
+                SettingsManager.instance.ToggleWagonButtonActive(false);
+
+                // add raycast blocker
+                RaycastBlockerController.instance.CreateRaycastBlocker("map_icon_quip");
+
+                if (isFixed)
+                {
+                    // play fixed quip
+                    TalkieManager.instance.PlayTalkie(fixedQuips);
+                }
+                else
+                {   
+                    // play fixed quip
+                    TalkieManager.instance.PlayTalkie(brokenQuips);
+                }
+                while (TalkieManager.instance.talkiePlaying)
+                        yield return null;
+            }
+
             MinigameWheelController.instance.RevealWheel(identifier);
             yield break;
         }

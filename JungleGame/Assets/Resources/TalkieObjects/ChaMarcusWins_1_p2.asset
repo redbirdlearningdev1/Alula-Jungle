@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: ChaMarcusWins_1_p2
   quipsCollection: 0
+  validQuipIndexes: 
   start: 1
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
@@ -36,7 +37,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Marcus_Laugh
-    audioString: HA HA HA!!!!
+    audioString: HA HA HA!!!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -52,7 +53,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 524d27da410b7654fa713074077e58f8, type: 3}
     audioClipName: Cha_0_2a_Marcus_1_T2
-    audioString: "I told you I\u2019d win!!!"
+    audioString: "I told you I\u2019d win!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -68,7 +69,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 4a15775dfb85bd04a917509a489fb696, type: 3}
     audioClipName: Cha_0_2a_Brutus_2_T1
-    audioString: "Heh heh\u2026 Yeah.. "
+    audioString: "Heh heh\u2026 Yeah..."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

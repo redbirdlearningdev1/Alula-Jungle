@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: SpindleQuips_2_p1
   quipsCollection: 1
+  validQuipIndexes: 0000000002000000050000000700000008000000
   start: 0
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1

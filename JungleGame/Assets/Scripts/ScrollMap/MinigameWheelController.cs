@@ -74,6 +74,9 @@ public class MinigameWheelController : MonoBehaviour
         wheelButton.interactable = true;
         wheelButton.GetComponent<Image>().raycastTarget = true;
 
+        // remove map icon quip raycast blocker
+        RaycastBlockerController.instance.RemoveRaycastBlocker("map_icon_quip");
+
         animator.Play("wheelReveal");
     }
 

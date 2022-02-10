@@ -56,6 +56,8 @@ public class GameManager : DontDestroy<GameManager>
     // game identification
     [HideInInspector] public bool playingChallengeGame = false; // is player in a challenge game?
     [HideInInspector] public bool playingRoyalRumbleGame = false; // is player in a RR game?
+    [HideInInspector] public bool finishedRoyalRumbleGame = false; // for playing talkies after RR game
+    [HideInInspector] public bool wonRoyalRumbleGame = false; // for playing talkies after RR game
 
     
     [Header("Avatars")]

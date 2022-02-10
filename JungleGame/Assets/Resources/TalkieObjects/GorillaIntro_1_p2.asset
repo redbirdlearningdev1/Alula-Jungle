@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: GorillaIntro_1_p2
   quipsCollection: 0
+  validQuipIndexes: 
   start: 3
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
@@ -293,7 +294,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: d7541318a83e2c641bcf0940c0f643fd, type: 3}
     audioClipName: P_1_1_Brutus_20_T3
-    audioString: "It is your kingdom\u2026."
+    audioString: "It is your kingdom\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

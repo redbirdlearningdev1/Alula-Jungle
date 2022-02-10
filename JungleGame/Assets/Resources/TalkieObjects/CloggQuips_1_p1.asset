@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: CloggQuips_1_p1
   quipsCollection: 1
+  validQuipIndexes: 00000000010000000200000003000000040000000500000006000000
   start: 0
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1

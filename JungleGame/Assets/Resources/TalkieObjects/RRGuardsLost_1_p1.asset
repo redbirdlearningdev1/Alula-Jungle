@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: RRGuardsLost_1_p1
   quipsCollection: 1
+  validQuipIndexes: 00000000010000000200000003000000
   start: 1
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
@@ -36,7 +37,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 62c90c6a74db3764084b0b8a4977678a, type: 3}
     audioClipName: RR_1_2_Marcus_1_T1
-    audioString: "What!! You beat us?? Impossible! Let\u2019s get out of here!"
+    audioString: "What!? You beat us!? Impossible! Let\u2019s get out of here!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

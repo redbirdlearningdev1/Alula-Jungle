@@ -357,6 +357,7 @@ public class SplashScreenManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CreateBlip, 1f);
 
         StudentInfoSystem.ResetProfile(newProfileIndex);
+        StudentInfoSystem.RemoveCurrentStudentPlayer();
         StudentInfoSystem.SetStudentPlayer(newProfileIndex);
         StudentInfoSystem.GetCurrentProfile().name = newProfileInput.text;
         StudentInfoSystem.GetCurrentProfile().profileAvatar = profileAvatarIndex;
@@ -479,6 +480,9 @@ public class SplashScreenManager : MonoBehaviour
 
         selectedProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
         editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+
+        selectedProfileImage.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.1f, 0.1f);
+        editProfileImage.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.1f, 0.1f);
     }
 
     public void OnRightArrowPressed()
@@ -493,6 +497,9 @@ public class SplashScreenManager : MonoBehaviour
 
         selectedProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
         editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+
+        selectedProfileImage.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.1f, 0.1f);
+        editProfileImage.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.1f, 0.1f);
     }
 
     /* 

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: BoatGame_2_p1
   quipsCollection: 0
+  validQuipIndexes: 
   start: 2
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
@@ -68,7 +69,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 3e8533b54289fb545b602dbfd5d6b9ee, type: 3}
     audioClipName: Boat_0_2_Red_1_T3
-    audioString: '... Well.. '
+    audioString: "... Well\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

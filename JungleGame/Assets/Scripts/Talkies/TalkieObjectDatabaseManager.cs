@@ -239,7 +239,10 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                         case "$Quip Collection": // denotes if talkie is a quip collection
 
                             if (rowData[1] == "yes")
+                            {
                                 entry.quipsCollection = true;
+                                entry.validQuipIndexes = new List<int>();
+                            }
                             else if (rowData[1] == "no")
                                 entry.quipsCollection = false;
                             else
@@ -463,6 +466,14 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                                 segment.audioString = cell.Replace("~", ",");
                                 break;
                             case 2: // index
+                                // determine if vaild quip index iff entry is quips collection
+                                if (entry.quipsCollection)
+                                {
+                                    if (segment.audioClipName.EndsWith("T1"))
+                                    {
+                                        entry.validQuipIndexes.Add(int.Parse(cell));
+                                    }
+                                }
                                 break;
                             case 3: // left character
                                 segment.leftCharacter = GetCharacterFromString(cell);

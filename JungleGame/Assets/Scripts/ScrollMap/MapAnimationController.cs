@@ -928,10 +928,12 @@ public class MapAnimationController : MonoBehaviour
                 break;
 
             case StoryBeat.MonkeysPlayGames:
-                // place monkeys in M
+                // place monkeys in pos
                 marcus.mapAnimator.Play("MarcusMPos");
+                marcus.characterAnimator.Play("marcusBroken");
                 marcus.FlipCharacterToRight();
                 brutus.mapAnimator.Play("BrutusMPos");
+                brutus.characterAnimator.Play("brutusBroken");
                 brutus.FlipCharacterToRight();
                 break;
 
@@ -946,7 +948,7 @@ public class MapAnimationController : MonoBehaviour
                 marcus.characterAnimator.Play("marcusBroken");
                 marcus.FlipCharacterToRight();
                 // place brutus in M
-                brutus.mapAnimator.Play("BrutusGSPos");
+                brutus.mapAnimator.Play("BrutusMPos");
                 brutus.characterAnimator.Play("brutusBroken");
                 brutus.FlipCharacterToRight();
                 break;
@@ -1187,7 +1189,7 @@ public class MapAnimationController : MonoBehaviour
     }
     
     // get the length of an animation clip
-    private float GetAnimationTime(Animator anim, string animName)
+    public float GetAnimationTime(Animator anim, string animName)
     {
         RuntimeAnimatorController rac = anim.runtimeAnimatorController; 
         foreach (var clip in rac.animationClips)
@@ -1229,7 +1231,6 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // gorilla exclamation point
-        darwin.ShowExclamationMark(true);
         darwin.mapAnimator.Play("DarwinGVPos");
 
         // unlock gorilla village
@@ -1247,9 +1248,14 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
 
+        // update settings map
+        SettingsWindowController.instance.UpdateMapSprite();
+        SettingsWindowController.instance.UpdateRedPos(MapLocation.GorillaVillage);
+
         yield return new WaitForSeconds(1f);
 
         darwin.interactable = true;
+        darwin.ShowExclamationMark(true);
 
         animationDone = true;
     }
@@ -1298,7 +1304,7 @@ public class MapAnimationController : MonoBehaviour
         // destroy gorilla village assets
         foreach (var mapIcon in ScrollMapManager.instance.mapLocations[2].mapIcons)
         {
-            mapIcon.SetFixed(false, true, true);
+            mapIcon.SetFixed(false, true, false);
         }
 
         yield return new WaitForSeconds(2f);
@@ -1358,13 +1364,18 @@ public class MapAnimationController : MonoBehaviour
         // make gorilla interactable
         darwin.ShowExclamationMark(true);
         darwin.interactable = true;
-        
-        ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.GorillaVillage);
-        ScrollMapManager.instance.UpdateMapIcons();
 
         // save to SIS and exit to scroll map
+        StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.isFixed = false;
+
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
+
+        ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.GorillaVillage);
+        ScrollMapManager.instance.UpdateMapIcons(true);
         
         animationDone = true;
     }
@@ -1529,9 +1540,6 @@ public class MapAnimationController : MonoBehaviour
 
         // gv sign post springs into place
         ScrollMapManager.instance.mapLocations[(int)MapLocation.GorillaVillage].signPost.ShowSignPost(0, false);
-        // Save to SIS
-        StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_unlocked = true;
-        StudentInfoSystem.SaveStudentPlayerData();
 
         yield return new WaitForSeconds(2f);
 
@@ -1568,10 +1576,15 @@ public class MapAnimationController : MonoBehaviour
         // save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 3;
         ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.Mudslide);
-        ScrollMapManager.instance.UpdateMapIcons();
+        ScrollMapManager.instance.UpdateMapIcons(true);
         ScrollMapManager.instance.RevealStarsAtCurrentLocation();
+        StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_unlocked = true;
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
+
+        // update settings map
+        SettingsWindowController.instance.UpdateMapSprite();
+        SettingsWindowController.instance.UpdateRedPos(MapLocation.Mudslide);
 
         animationDone = true;
     }
@@ -1685,9 +1698,6 @@ public class MapAnimationController : MonoBehaviour
 
         // MS sign post springs into place
         ScrollMapManager.instance.mapLocations[3].signPost.ShowSignPost(0, false);
-        // Save to SIS
-        StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_unlocked = true;
-        StudentInfoSystem.SaveStudentPlayerData();
 
         // before unlocking orc village - set objects to be destroyed
         foreach (var icon in ScrollMapManager.instance.mapLocations[4].mapIcons)
@@ -1719,8 +1729,13 @@ public class MapAnimationController : MonoBehaviour
 
         // save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 4;
+        StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_unlocked = true;
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
+
+        // update settings map
+        SettingsWindowController.instance.UpdateMapSprite();
+        SettingsWindowController.instance.UpdateRedPos(MapLocation.OrcVillage);
 
         animationDone = true;
     }
@@ -1825,6 +1840,11 @@ public class MapAnimationController : MonoBehaviour
         marcus.transform.localScale = Vector3.one;
         brutus.transform.localScale = Vector3.one;
 
+        // play orc village defeated 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.OVillageDefeated_1_p2);
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
         // OV sign post springs into place
         ScrollMapManager.instance.mapLocations[4].signPost.ShowSignPost(0, false);
 
@@ -1835,7 +1855,6 @@ public class MapAnimationController : MonoBehaviour
         // place darwin in spooky forest
         darwin.mapAnimator.Play("DarwinSFPos");
         darwin.FlipCharacterToRight();
-        darwin.ShowExclamationMark(true);
         darwin.interactable = false;
 
         // unlock spooky forest
@@ -1843,6 +1862,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(10f);
 
         // darwin is interactable
+        darwin.ShowExclamationMark(true);
         darwin.interactable = true;
 
         // Save to SIS
@@ -1851,6 +1871,10 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_unlocked = true;
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
+
+        // update settings map
+        SettingsWindowController.instance.UpdateMapSprite();
+        SettingsWindowController.instance.UpdateRedPos(MapLocation.SpookyForest);
 
         animationDone = true;
     }
@@ -1896,7 +1920,7 @@ public class MapAnimationController : MonoBehaviour
         // destroy spider forest assets
         foreach (var mapIcon in ScrollMapManager.instance.mapLocations[5].mapIcons)
         {
-            mapIcon.SetFixed(false, true, true);
+            mapIcon.SetFixed(false, true, false);
         }
 
         yield return new WaitForSeconds(2f);
@@ -1949,6 +1973,11 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // save to SIS and exit to scroll map
+        StudentInfoSystem.GetCurrentProfile().mapData.SF_lamp.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.SF_shrine.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.SF_spider.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.SF_web.isFixed = false;
+
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
 
@@ -2088,7 +2117,6 @@ public class MapAnimationController : MonoBehaviour
 
         // place clogg in orc camp
         clogg.mapAnimator.Play("CloggOCPos");
-        clogg.ShowExclamationMark(true);
         clogg.interactable = false;
 
         // unlock orc camp
@@ -2096,6 +2124,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(10f);
 
         // clogg is interactable
+        clogg.ShowExclamationMark(true);
         clogg.interactable = true;
 
         // Save to SIS
@@ -2103,6 +2132,10 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_unlocked = true;
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
+
+        // update settings map
+        SettingsWindowController.instance.UpdateMapSprite();
+        SettingsWindowController.instance.UpdateRedPos(MapLocation.OrcCamp);
 
         animationDone = true;
     }
@@ -2232,13 +2265,17 @@ public class MapAnimationController : MonoBehaviour
 
         // enable icons in GP
         ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.GorillaPoop);
-        ScrollMapManager.instance.UpdateMapIcons();
+        ScrollMapManager.instance.UpdateMapIcons(true);
 
         // Save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 7;
         StudentInfoSystem.GetCurrentProfile().mapData.OC_signPost_unlocked = true;
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
+
+        // update settings map
+        SettingsWindowController.instance.UpdateMapSprite();
+        SettingsWindowController.instance.UpdateRedPos(MapLocation.GorillaPoop);
 
         animationDone = true;
     }
@@ -2371,10 +2408,14 @@ public class MapAnimationController : MonoBehaviour
 
         // Save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 8;
-        StudentInfoSystem.GetCurrentProfile().mapData.OC_signPost_unlocked = true;
+        StudentInfoSystem.GetCurrentProfile().mapData.GP_signPost_unlocked = true;
         StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_3; // new chapter!
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
+
+        // update settings map
+        SettingsWindowController.instance.UpdateMapSprite();
+        SettingsWindowController.instance.UpdateRedPos(MapLocation.WindyCliff);
 
         animationDone = true;
     }
@@ -2422,7 +2463,7 @@ public class MapAnimationController : MonoBehaviour
         // destroy cliff assets
         foreach (var mapIcon in ScrollMapManager.instance.mapLocations[8].mapIcons)
         {
-            mapIcon.SetFixed(false, true, true);
+            mapIcon.SetFixed(false, true, false);
         }
 
         yield return new WaitForSeconds(2f);
@@ -2470,6 +2511,13 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // save to SIS and exit to scroll map
+        StudentInfoSystem.GetCurrentProfile().mapData.WC_ladder.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.WC_lighthouse.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.WC_octo.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.WC_rock.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.WC_sign.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.WC_statue.isFixed = false;
+
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
 
@@ -2619,13 +2667,17 @@ public class MapAnimationController : MonoBehaviour
 
         // enable icons in PS
         ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.PirateShip);
-        ScrollMapManager.instance.UpdateMapIcons();
+        ScrollMapManager.instance.UpdateMapIcons(true);
 
         // Save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 9;
         StudentInfoSystem.GetCurrentProfile().mapData.WC_signPost_unlocked = true;
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
+
+        // update settings map
+        SettingsWindowController.instance.UpdateMapSprite();
+        SettingsWindowController.instance.UpdateRedPos(MapLocation.PirateShip);
 
         animationDone = true;
     }
@@ -2759,6 +2811,10 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
 
+        // update settings map
+        SettingsWindowController.instance.UpdateMapSprite();
+        SettingsWindowController.instance.UpdateRedPos(MapLocation.MermaidBeach);
+
         animationDone = true;
     }
 
@@ -2805,7 +2861,7 @@ public class MapAnimationController : MonoBehaviour
         // destroy mermaid beach assets
         foreach (var mapIcon in ScrollMapManager.instance.mapLocations[10].mapIcons)
         {
-            mapIcon.SetFixed(false, true, true);
+            mapIcon.SetFixed(false, true, false);
         }
 
         yield return new WaitForSeconds(2f);
@@ -2853,6 +2909,13 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // save to SIS and exit to scroll map
+        StudentInfoSystem.GetCurrentProfile().mapData.MB_bucket.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.MB_castle.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.MB_ladder.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.MB_mermaids.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.MB_rock.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.MB_umbrella.isFixed = false;
+
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
 
@@ -3004,13 +3067,17 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.Ruins2);
-        ScrollMapManager.instance.UpdateMapIcons();
+        ScrollMapManager.instance.UpdateMapIcons(true);
 
         // Save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 12;
         StudentInfoSystem.GetCurrentProfile().mapData.MB_signPost_unlocked = true;
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
+
+        // update settings map
+        SettingsWindowController.instance.UpdateMapSprite();
+        SettingsWindowController.instance.UpdateRedPos(MapLocation.Ruins1);
 
         animationDone = true;
     }
@@ -3155,6 +3222,10 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
 
+        // update settings map
+        SettingsWindowController.instance.UpdateMapSprite();
+        SettingsWindowController.instance.UpdateRedPos(MapLocation.ExitJungle);
+
         animationDone = true;
     }
 
@@ -3201,7 +3272,7 @@ public class MapAnimationController : MonoBehaviour
         // destroy mermaid beach assets
         foreach (var mapIcon in ScrollMapManager.instance.mapLocations[13].mapIcons)
         {
-            mapIcon.SetFixed(false, true, true);
+            mapIcon.SetFixed(false, true, false);
         }
 
         yield return new WaitForSeconds(2f);
@@ -3249,6 +3320,11 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // save to SIS and exit to scroll map
+        StudentInfoSystem.GetCurrentProfile().mapData.EJ_bridge.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.EJ_puppy.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.EJ_sign.isFixed = false;
+        StudentInfoSystem.GetCurrentProfile().mapData.EJ_torch.isFixed = false;
+
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
 
@@ -3376,12 +3452,15 @@ public class MapAnimationController : MonoBehaviour
 
         // place darwin in gorilla study
         darwin.mapAnimator.Play("DarwinGSPos");
-        darwin.ShowExclamationMark(true);
         darwin.interactable = false;
 
         // unlock gorilla study
         ScrollMapManager.instance.UnlockMapArea(MapLocation.GorillaStudy, false);
         yield return new WaitForSeconds(10f);
+
+        // make darwin interactable
+        darwin.ShowExclamationMark(true);
+        darwin.interactable = true;
 
         // Save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 14;
@@ -3389,12 +3468,15 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
 
+        // update settings map
+        SettingsWindowController.instance.UpdateMapSprite();
+        SettingsWindowController.instance.UpdateRedPos(MapLocation.GorillaStudy);
+
         animationDone = true;
     }
 
     private IEnumerator GorillaStudyIntro()
     {
-        darwin.ShowExclamationMark(false);
         darwin.interactable = false;
 
         // gorilla study intro 1
@@ -3407,7 +3489,12 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
 
         // make darwin interactable
+        darwin.ShowExclamationMark(false);
         darwin.interactable = true;
+
+        // change enabled map sections
+        ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.GorillaStudy);
+        ScrollMapManager.instance.UpdateMapIcons(true);
 
         animationDone = true;
     }
@@ -3533,8 +3620,10 @@ public class MapAnimationController : MonoBehaviour
 
         // place monkeys in pos
         marcus.mapAnimator.Play("MarcusMPos");
+        marcus.characterAnimator.Play("marcusBroken");
         marcus.FlipCharacterToRight();
         brutus.mapAnimator.Play("BrutusMPos");
+        brutus.characterAnimator.Play("brutusBroken");
         brutus.FlipCharacterToRight();
 
         // unlock monkeys
@@ -3562,6 +3651,14 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
 
+        // change enabled map sections
+        ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.Monkeys);
+        ScrollMapManager.instance.UpdateMapIcons(true);
+
+        // update settings map
+        SettingsWindowController.instance.UpdateRedPos(MapLocation.Monkeys);
+        SettingsWindowController.instance.UpdateMapSprite();
+
         animationDone = true;
     }
 
@@ -3574,12 +3671,7 @@ public class MapAnimationController : MonoBehaviour
 
         // tiger and monkies walk in
         julius.characterAnimator.Play("tigerWalk");
-        marcus.characterAnimator.Play("marcusWalkIn");
-        brutus.characterAnimator.Play("brutusWalkIn");
-
         julius.mapAnimator.Play("JuliusWalkInM");
-        marcus.mapAnimator.Play("MarcusWalkInM");
-        brutus.mapAnimator.Play("BrutusWalkInM");
 
         // wait for animation to be done
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkInM"));
@@ -3684,6 +3776,10 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().mapData.M_signPost_unlocked = true;
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
+
+        // update settings map
+        SettingsWindowController.instance.UpdateMapSprite();
+        SettingsWindowController.instance.UpdateRedPos(MapLocation.PalaceIntro);
 
         animationDone = true;
     }

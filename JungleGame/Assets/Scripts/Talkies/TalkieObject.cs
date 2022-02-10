@@ -75,7 +75,8 @@ public struct TalkieSegment
 public class TalkieObject : ScriptableObject
 {
     public string talkieName;
-    public bool quipsCollection = false; // instead of a series of segments - this object is a collection of quips (only one will randomly play)
+    public bool quipsCollection = false; // instead of a series of segments - this object is a collection of quips
+    public List<int> validQuipIndexes; // where a quip can begin
 
     [Header("Before Talkie Options")]
     public TalkieStart start;

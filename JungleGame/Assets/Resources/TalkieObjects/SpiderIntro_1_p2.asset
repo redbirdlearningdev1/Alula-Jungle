@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: SpiderIntro_1_p2
   quipsCollection: 0
+  validQuipIndexes: 
   start: 1
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
@@ -196,7 +197,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 0}
     audioClipName: Marcus_Laugh
-    audioString: HA HA HA!!!!
+    audioString: HA HA HA!!!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -357,7 +358,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: ca4b2ca65e49bd44ca5fb34b6b0d07d0, type: 3}
     audioClipName: B_1_1_Julius_22_T1
-    audioString: "Yeah\u2026"
+    audioString: Yeah...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

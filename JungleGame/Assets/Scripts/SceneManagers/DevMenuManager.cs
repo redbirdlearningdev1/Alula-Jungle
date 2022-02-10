@@ -651,6 +651,11 @@ public class DevMenuManager : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().totalStarsTurntables = 1;
         StudentInfoSystem.GetCurrentProfile().totalStarsPirate = 1;
         StudentInfoSystem.GetCurrentProfile().totalStarsSpiderweb = 1;
+
+        // default stuff
+        StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
+        StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+        StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
         
         switch ((StoryBeat)beat)
         {
@@ -659,6 +664,12 @@ public class DevMenuManager : MonoBehaviour
                 FixIconsUpTo(MapLocation.GorillaVillage);
                 SetChallengeGamesUpTo(MapLocation.Ocean);
                 SetActionWordPool(MapLocation.Ocean);
+
+                // remove stars from GV map icons
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.stars = 0;
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.stars = 0;
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.stars = 0;
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.stars = 0;
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = false;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = false;
@@ -677,6 +688,12 @@ public class DevMenuManager : MonoBehaviour
                 SetChallengeGamesUpTo(MapLocation.BoatHouse);
                 SetActionWordPool(MapLocation.BoatHouse);
 
+                // remove stars from GV map icons
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.stars = 0;
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.stars = 0;
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.stars = 0;
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.stars = 0;
+
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = false;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = false;
                 StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 0;
@@ -687,6 +704,12 @@ public class DevMenuManager : MonoBehaviour
                 FixIconsUpTo(MapLocation.GorillaVillage);
                 SetChallengeGamesUpTo(MapLocation.BoatHouse);
                 SetActionWordPool(MapLocation.BoatHouse);
+
+                // remove stars from GV map icons
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_house1.stars = 0;
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_house2.stars = 0;
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.stars = 0;
+                StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.stars = 0;
 
                 StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = false;
                 StudentInfoSystem.GetCurrentProfile().stickerTutorial = false;
@@ -721,10 +744,6 @@ public class DevMenuManager : MonoBehaviour
                 FixIconsUpTo(MapLocation.GorillaVillage);
                 SetChallengeGamesUpTo(MapLocation.BoatHouse);
                 SetActionWordPool(MapLocation.GorillaVillage);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.GorillaVillage_challengeGame_1:  
@@ -732,10 +751,6 @@ public class DevMenuManager : MonoBehaviour
                 FixIconsUpTo(MapLocation.GorillaVillage);
                 SetChallengeGamesUpTo(MapLocation.BoatHouse);
                 SetActionWordPool(MapLocation.GorillaVillage);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.GorillaVillage_challengeGame_2:
@@ -744,10 +759,6 @@ public class DevMenuManager : MonoBehaviour
                 SetChallengeGamesUpTo(MapLocation.BoatHouse);
                 SetChallengeGame(MapLocation.GorillaVillage, 1);
                 SetActionWordPool(MapLocation.GorillaVillage);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.GorillaVillage_challengeGame_3:
@@ -756,10 +767,6 @@ public class DevMenuManager : MonoBehaviour
                 SetChallengeGamesUpTo(MapLocation.BoatHouse);
                 SetChallengeGame(MapLocation.GorillaVillage, 2);
                 SetActionWordPool(MapLocation.GorillaVillage);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.VillageChallengeDefeated:
@@ -767,10 +774,6 @@ public class DevMenuManager : MonoBehaviour
                 FixIconsUpTo(MapLocation.GorillaVillage);
                 SetChallengeGamesUpTo(MapLocation.GorillaVillage);
                 SetActionWordPool(MapLocation.GorillaVillage);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
             
             /* 
@@ -785,9 +788,6 @@ public class DevMenuManager : MonoBehaviour
                 SetChallengeGamesUpTo(MapLocation.GorillaVillage);
                 SetActionWordPool(MapLocation.Mudslide);
 
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.Mudslide_challengeGame_1:
@@ -795,10 +795,6 @@ public class DevMenuManager : MonoBehaviour
                 FixIconsUpTo(MapLocation.Mudslide);
                 SetChallengeGamesUpTo(MapLocation.GorillaVillage);
                 SetActionWordPool(MapLocation.Mudslide);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.Mudslide_challengeGame_2:
@@ -807,10 +803,6 @@ public class DevMenuManager : MonoBehaviour
                 SetChallengeGamesUpTo(MapLocation.GorillaVillage);
                 SetChallengeGame(MapLocation.Mudslide, 1);
                 SetActionWordPool(MapLocation.Mudslide);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.Mudslide_challengeGame_3:
@@ -819,10 +811,6 @@ public class DevMenuManager : MonoBehaviour
                 SetChallengeGamesUpTo(MapLocation.GorillaVillage);
                 SetChallengeGame(MapLocation.Mudslide, 2);
                 SetActionWordPool(MapLocation.Mudslide);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.MudslideDefeated:
@@ -830,10 +818,6 @@ public class DevMenuManager : MonoBehaviour
                 FixIconsUpTo(MapLocation.Mudslide);
                 SetChallengeGamesUpTo(MapLocation.Mudslide);
                 SetActionWordPool(MapLocation.Mudslide);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             /* 
@@ -847,10 +831,6 @@ public class DevMenuManager : MonoBehaviour
                 FixIconsUpTo(MapLocation.Mudslide);
                 SetChallengeGamesUpTo(MapLocation.Mudslide);
                 SetActionWordPool(MapLocation.OrcVillage);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.OrcVillageMeetClogg:
@@ -858,10 +838,6 @@ public class DevMenuManager : MonoBehaviour
                 FixIconsUpTo(MapLocation.Mudslide);
                 SetChallengeGamesUpTo(MapLocation.Mudslide);
                 SetActionWordPool(MapLocation.OrcVillage);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.OrcVillage_challengeGame_1:
@@ -869,10 +845,6 @@ public class DevMenuManager : MonoBehaviour
                 FixIconsUpTo(MapLocation.OrcVillage);
                 SetChallengeGamesUpTo(MapLocation.Mudslide);
                 SetActionWordPool(MapLocation.OrcVillage);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.OrcVillage_challengeGame_2:
@@ -881,10 +853,6 @@ public class DevMenuManager : MonoBehaviour
                 SetChallengeGamesUpTo(MapLocation.Mudslide);
                 SetChallengeGame(MapLocation.OrcVillage, 1);
                 SetActionWordPool(MapLocation.OrcVillage);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.OrcVillage_challengeGame_3:
@@ -893,10 +861,6 @@ public class DevMenuManager : MonoBehaviour
                 SetChallengeGamesUpTo(MapLocation.Mudslide);
                 SetChallengeGame(MapLocation.OrcVillage, 2);
                 SetActionWordPool(MapLocation.OrcVillage);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.OrcVillageDefeated:
@@ -904,10 +868,6 @@ public class DevMenuManager : MonoBehaviour
                 FixIconsUpTo(MapLocation.OrcVillage);
                 SetChallengeGamesUpTo(MapLocation.OrcVillage);
                 SetActionWordPool(MapLocation.OrcVillage);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             /* 
@@ -921,10 +881,6 @@ public class DevMenuManager : MonoBehaviour
                 FixIconsUpTo(MapLocation.SpookyForest);
                 SetChallengeGamesUpTo(MapLocation.OrcVillage);
                 SetActionWordPool(MapLocation.OrcVillage);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
             
             case StoryBeat.BeginningStoryGame:
@@ -932,10 +888,6 @@ public class DevMenuManager : MonoBehaviour
                 FixIconsUpTo(MapLocation.OrcVillage);
                 SetChallengeGamesUpTo(MapLocation.OrcVillage);
                 SetActionWordPool(MapLocation.SpookyForest);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.SpookyForestPlayGames:
@@ -943,10 +895,6 @@ public class DevMenuManager : MonoBehaviour
                 FixIconsUpTo(MapLocation.OrcVillage);
                 SetChallengeGamesUpTo(MapLocation.OrcVillage);
                 SetActionWordPool(MapLocation.SpookyForest);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.SpookyForest_challengeGame_1:
@@ -954,10 +902,6 @@ public class DevMenuManager : MonoBehaviour
                 FixIconsUpTo(MapLocation.SpookyForest);
                 SetChallengeGamesUpTo(MapLocation.OrcVillage);
                 SetActionWordPool(MapLocation.SpookyForest);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.SpookyForest_challengeGame_2:
@@ -966,10 +910,6 @@ public class DevMenuManager : MonoBehaviour
                 SetChallengeGamesUpTo(MapLocation.OrcVillage);
                 SetChallengeGame(MapLocation.SpookyForest, 1);
                 SetActionWordPool(MapLocation.SpookyForest);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.SpookyForest_challengeGame_3:
@@ -978,10 +918,6 @@ public class DevMenuManager : MonoBehaviour
                 SetChallengeGamesUpTo(MapLocation.OrcVillage);
                 SetChallengeGame(MapLocation.SpookyForest, 2);
                 SetActionWordPool(MapLocation.SpookyForest);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.SpookyForestDefeated:
@@ -989,10 +925,6 @@ public class DevMenuManager : MonoBehaviour
                 FixIconsUpTo(MapLocation.SpookyForest);
                 SetChallengeGamesUpTo(MapLocation.SpookyForest);
                 SetActionWordPool(MapLocation.SpookyForest);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             /* 
@@ -1006,10 +938,6 @@ public class DevMenuManager : MonoBehaviour
                 FixIconsUpTo(MapLocation.SpookyForest);
                 SetChallengeGamesUpTo(MapLocation.SpookyForest);
                 SetActionWordPool(MapLocation.OrcCamp);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
             
             case StoryBeat.OrcCampPlayGames:
@@ -1017,10 +945,6 @@ public class DevMenuManager : MonoBehaviour
                 FixIconsUpTo(MapLocation.SpookyForest);
                 SetChallengeGamesUpTo(MapLocation.SpookyForest);
                 SetActionWordPool(MapLocation.OrcCamp);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.OrcCamp_challengeGame_1:
@@ -1028,10 +952,6 @@ public class DevMenuManager : MonoBehaviour
                 FixIconsUpTo(MapLocation.OrcCamp);
                 SetChallengeGamesUpTo(MapLocation.SpookyForest);
                 SetActionWordPool(MapLocation.OrcCamp);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.OrcCamp_challengeGame_2:
@@ -1040,10 +960,6 @@ public class DevMenuManager : MonoBehaviour
                 SetChallengeGamesUpTo(MapLocation.SpookyForest);
                 SetChallengeGame(MapLocation.OrcCamp, 1);
                 SetActionWordPool(MapLocation.OrcCamp);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.OrcCamp_challengeGame_3:
@@ -1052,10 +968,6 @@ public class DevMenuManager : MonoBehaviour
                 SetChallengeGamesUpTo(MapLocation.SpookyForest);
                 SetChallengeGame(MapLocation.OrcCamp, 2);
                 SetActionWordPool(MapLocation.OrcCamp);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             case StoryBeat.OrcCampDefeated:
@@ -1063,17 +975,413 @@ public class DevMenuManager : MonoBehaviour
                 FixIconsUpTo(MapLocation.OrcCamp);
                 SetChallengeGamesUpTo(MapLocation.OrcCamp);
                 SetActionWordPool(MapLocation.OrcCamp);
-
-                StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
-                StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-                StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
                 break;
 
             /* 
             ################################################
-            #   ETC...
-            ################################################
+            #   GORILLA POOP
+            ###############################################
             */
+
+            case StoryBeat.GorillaPoopPlayGames:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.GorillaPoop;
+                FixIconsUpTo(MapLocation.OrcCamp);
+                SetChallengeGamesUpTo(MapLocation.OrcCamp);
+                SetActionWordPool(MapLocation.GorillaPoop);
+                break;
+
+            case StoryBeat.GorillaPoop_challengeGame_1:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.GorillaPoop;
+                FixIconsUpTo(MapLocation.GorillaPoop);
+                SetChallengeGamesUpTo(MapLocation.OrcCamp);
+                SetActionWordPool(MapLocation.GorillaPoop);
+                break;
+
+            case StoryBeat.GorillaPoop_challengeGame_2:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.GorillaPoop;
+                FixIconsUpTo(MapLocation.GorillaPoop);
+                SetChallengeGamesUpTo(MapLocation.OrcCamp);
+                SetChallengeGame(MapLocation.GorillaPoop, 1);
+                SetActionWordPool(MapLocation.GorillaPoop);
+                break;
+
+            case StoryBeat.GorillaPoop_challengeGame_3:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.GorillaPoop;
+                FixIconsUpTo(MapLocation.GorillaPoop);
+                SetChallengeGamesUpTo(MapLocation.OrcCamp);
+                SetChallengeGame(MapLocation.GorillaPoop, 2);
+                SetActionWordPool(MapLocation.GorillaPoop);
+                break;
+
+            case StoryBeat.GorillaPoopDefeated:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.GorillaPoop;
+                FixIconsUpTo(MapLocation.GorillaPoop);
+                SetChallengeGamesUpTo(MapLocation.GorillaPoop);
+                SetActionWordPool(MapLocation.GorillaPoop);
+                break;
+
+            /* 
+            ################################################
+            #   WINDY CLIFF
+            ###############################################
+            */
+
+            case StoryBeat.WindyCliffUnlocked:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.WindyCliff;
+                FixIconsUpTo(MapLocation.GorillaPoop);
+                SetChallengeGamesUpTo(MapLocation.GorillaPoop);
+                SetActionWordPool(MapLocation.GorillaPoop);
+                break;
+
+            case StoryBeat.FollowRedStoryGame:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.WindyCliff;
+                FixIconsUpTo(MapLocation.GorillaPoop);
+                SetChallengeGamesUpTo(MapLocation.GorillaPoop);
+                SetActionWordPool(MapLocation.GorillaPoop);
+                break;
+
+            case StoryBeat.WindyCliffPlayGames:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.WindyCliff;
+                FixIconsUpTo(MapLocation.GorillaPoop);
+                SetChallengeGamesUpTo(MapLocation.GorillaPoop);
+                SetActionWordPool(MapLocation.WindyCliff);
+                break;
+
+            case StoryBeat.WindyCliff_challengeGame_1:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.WindyCliff;
+                FixIconsUpTo(MapLocation.WindyCliff);
+                SetChallengeGamesUpTo(MapLocation.GorillaPoop);
+                SetActionWordPool(MapLocation.WindyCliff);
+                break;
+
+            case StoryBeat.WindyCliff_challengeGame_2:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.WindyCliff;
+                FixIconsUpTo(MapLocation.WindyCliff);
+                SetChallengeGamesUpTo(MapLocation.GorillaPoop);
+                SetChallengeGame(MapLocation.WindyCliff, 1);
+                SetActionWordPool(MapLocation.WindyCliff);
+                break;
+
+            case StoryBeat.WindyCliff_challengeGame_3:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.WindyCliff;
+                FixIconsUpTo(MapLocation.WindyCliff);
+                SetChallengeGamesUpTo(MapLocation.GorillaPoop);
+                SetChallengeGame(MapLocation.WindyCliff, 2);
+                SetActionWordPool(MapLocation.WindyCliff);
+                break;
+
+            case StoryBeat.WindyCliffDefeated:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.WindyCliff;
+                FixIconsUpTo(MapLocation.WindyCliff);
+                SetChallengeGamesUpTo(MapLocation.WindyCliff);
+                SetActionWordPool(MapLocation.WindyCliff);
+                break;
+
+            /* 
+            ################################################
+            #   PIRATE SHIP
+            ###############################################
+            */
+
+            case StoryBeat.PirateShipPlayGames:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.PirateShip;
+                FixIconsUpTo(MapLocation.WindyCliff);
+                SetChallengeGamesUpTo(MapLocation.WindyCliff);
+                SetActionWordPool(MapLocation.PirateShip);
+                break;
+
+            case StoryBeat.PirateShip_challengeGame_1:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.PirateShip;
+                FixIconsUpTo(MapLocation.PirateShip);
+                SetChallengeGamesUpTo(MapLocation.WindyCliff);
+                SetActionWordPool(MapLocation.PirateShip);
+                break;
+
+            case StoryBeat.PirateShip_challengeGame_2:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.PirateShip;
+                FixIconsUpTo(MapLocation.WindyCliff);
+                SetChallengeGamesUpTo(MapLocation.WindyCliff);
+                SetChallengeGame(MapLocation.PirateShip, 1);
+                SetActionWordPool(MapLocation.PirateShip);
+                break;
+
+            case StoryBeat.PirateShip_challengeGame_3:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.PirateShip;
+                FixIconsUpTo(MapLocation.WindyCliff);
+                SetChallengeGamesUpTo(MapLocation.WindyCliff);
+                SetChallengeGame(MapLocation.PirateShip, 2);
+                SetActionWordPool(MapLocation.PirateShip);
+                break;
+
+            case StoryBeat.PirateShipDefeated:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.PirateShip;
+                FixIconsUpTo(MapLocation.PirateShip);
+                SetChallengeGamesUpTo(MapLocation.PirateShip);
+                SetActionWordPool(MapLocation.PirateShip);
+                break;
+
+            /* 
+            ################################################
+            #   MERMAID BEACH
+            ###############################################
+            */
+
+            case StoryBeat.MermaidBeachUnlocked:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.MermaidBeach;
+                FixIconsUpTo(MapLocation.PirateShip);
+                SetChallengeGamesUpTo(MapLocation.PirateShip);
+                SetActionWordPool(MapLocation.PirateShip);
+                break;
+
+            case StoryBeat.EmergingStoryGame:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.MermaidBeach;
+                FixIconsUpTo(MapLocation.PirateShip);
+                SetChallengeGamesUpTo(MapLocation.PirateShip);
+                SetActionWordPool(MapLocation.PirateShip);
+                break;
+
+            case StoryBeat.MermaidBeachPlayGames:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.MermaidBeach;
+                FixIconsUpTo(MapLocation.PirateShip);
+                SetChallengeGamesUpTo(MapLocation.PirateShip);
+                SetActionWordPool(MapLocation.MermaidBeach);
+                break;
+
+            case StoryBeat.MermaidBeach_challengeGame_1:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.MermaidBeach;
+                FixIconsUpTo(MapLocation.MermaidBeach);
+                SetChallengeGamesUpTo(MapLocation.PirateShip);
+                SetActionWordPool(MapLocation.MermaidBeach);
+                break;
+
+            case StoryBeat.MermaidBeach_challengeGame_2:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.MermaidBeach;
+                FixIconsUpTo(MapLocation.MermaidBeach);
+                SetChallengeGamesUpTo(MapLocation.PirateShip);
+                SetChallengeGame(MapLocation.MermaidBeach, 1);
+                SetActionWordPool(MapLocation.MermaidBeach);
+                break;
+
+            case StoryBeat.MermaidBeach_challengeGame_3:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.MermaidBeach;
+                FixIconsUpTo(MapLocation.MermaidBeach);
+                SetChallengeGamesUpTo(MapLocation.PirateShip);
+                SetChallengeGame(MapLocation.MermaidBeach, 2);
+                SetActionWordPool(MapLocation.MermaidBeach);
+                break;
+
+            case StoryBeat.MermaidBeachDefeated:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.MermaidBeach;
+                FixIconsUpTo(MapLocation.MermaidBeach);
+                SetChallengeGamesUpTo(MapLocation.MermaidBeach);
+                SetActionWordPool(MapLocation.MermaidBeach);
+                break;
+
+            /* 
+            ################################################
+            #   RUINS
+            ###############################################
+            */
+
+            case StoryBeat.RuinsPlayGames:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.Ruins2;
+                FixIconsUpTo(MapLocation.MermaidBeach);
+                SetChallengeGamesUpTo(MapLocation.MermaidBeach);
+                SetActionWordPool(MapLocation.Ruins1);
+                break;
+
+            case StoryBeat.Ruins_challengeGame_1:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.Ruins2;
+                FixIconsUpTo(MapLocation.Ruins2);
+                SetChallengeGamesUpTo(MapLocation.MermaidBeach);
+                SetActionWordPool(MapLocation.Ruins1);
+                break;
+
+            case StoryBeat.Ruins_challengeGame_2:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.Ruins2;
+                FixIconsUpTo(MapLocation.MermaidBeach);
+                SetChallengeGamesUpTo(MapLocation.MermaidBeach);
+                SetChallengeGame(MapLocation.Ruins1, 1);
+                SetActionWordPool(MapLocation.Ruins1);
+                break;
+
+            case StoryBeat.Ruins_challengeGame_3:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.Ruins2;
+                FixIconsUpTo(MapLocation.MermaidBeach);
+                SetChallengeGamesUpTo(MapLocation.MermaidBeach);
+                SetChallengeGame(MapLocation.Ruins1, 2);
+                SetActionWordPool(MapLocation.Ruins1);
+                break;
+
+            case StoryBeat.RuinsDefeated:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.Ruins2;
+                FixIconsUpTo(MapLocation.Ruins2);
+                SetChallengeGamesUpTo(MapLocation.Ruins1);
+                SetActionWordPool(MapLocation.Ruins1);
+                break;
+
+            /* 
+            ################################################
+            #   EXIT JUNGLE
+            ###############################################
+            */
+
+            case StoryBeat.ExitJungleUnlocked:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.ExitJungle;
+                FixIconsUpTo(MapLocation.Ruins2);
+                SetChallengeGamesUpTo(MapLocation.Ruins1);
+                SetActionWordPool(MapLocation.Ruins1);
+                break;
+
+            case StoryBeat.ResolutionStoryGame:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.ExitJungle;
+                FixIconsUpTo(MapLocation.Ruins2);
+                SetChallengeGamesUpTo(MapLocation.Ruins1);
+                SetActionWordPool(MapLocation.Ruins1);
+                break;
+
+            case StoryBeat.ExitJunglePlayGames:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.ExitJungle;
+                FixIconsUpTo(MapLocation.Ruins2);
+                SetChallengeGamesUpTo(MapLocation.Ruins1);
+                SetActionWordPool(MapLocation.ExitJungle);
+                break;
+
+            case StoryBeat.ExitJungle_challengeGame_1:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.ExitJungle;
+                FixIconsUpTo(MapLocation.ExitJungle);
+                SetChallengeGamesUpTo(MapLocation.Ruins1);
+                SetActionWordPool(MapLocation.ExitJungle);
+                break;
+
+            case StoryBeat.ExitJungle_challengeGame_2:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.ExitJungle;
+                FixIconsUpTo(MapLocation.ExitJungle);
+                SetChallengeGamesUpTo(MapLocation.Ruins1);
+                SetChallengeGame(MapLocation.ExitJungle, 1);
+                SetActionWordPool(MapLocation.ExitJungle);
+                break;
+
+            case StoryBeat.ExitJungle_challengeGame_3:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.ExitJungle;
+                FixIconsUpTo(MapLocation.ExitJungle);
+                SetChallengeGamesUpTo(MapLocation.Ruins1);
+                SetChallengeGame(MapLocation.ExitJungle, 2);
+                SetActionWordPool(MapLocation.ExitJungle);
+                break;
+
+            case StoryBeat.ExitJungleDefeated:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.ExitJungle;
+                FixIconsUpTo(MapLocation.ExitJungle);
+                SetChallengeGamesUpTo(MapLocation.ExitJungle);
+                SetActionWordPool(MapLocation.ExitJungle);
+                break;
+
+            /* 
+            ################################################
+            #   GORILLA STUDY
+            ###############################################
+            */
+
+            case StoryBeat.GorillaStudyUnlocked:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.GorillaStudy;
+                FixIconsUpTo(MapLocation.ExitJungle);
+                SetChallengeGamesUpTo(MapLocation.ExitJungle);
+                SetActionWordPool(MapLocation.GorillaStudy);
+                break;
+
+            case StoryBeat.GorillaStudyPlayGames:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.GorillaStudy;
+                FixIconsUpTo(MapLocation.ExitJungle);
+                SetChallengeGamesUpTo(MapLocation.ExitJungle);
+                SetActionWordPool(MapLocation.GorillaStudy);
+                break;
+
+            case StoryBeat.GorillaStudy_challengeGame_1:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.GorillaStudy;
+                FixIconsUpTo(MapLocation.GorillaStudy);
+                SetChallengeGamesUpTo(MapLocation.ExitJungle);
+                SetActionWordPool(MapLocation.GorillaStudy);
+                break;
+
+            case StoryBeat.GorillaStudy_challengeGame_2:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.GorillaStudy;
+                FixIconsUpTo(MapLocation.GorillaStudy);
+                SetChallengeGamesUpTo(MapLocation.ExitJungle);
+                SetChallengeGame(MapLocation.GorillaStudy, 1);
+                SetActionWordPool(MapLocation.GorillaStudy);
+                break;
+
+            case StoryBeat.GorillaStudy_challengeGame_3:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.GorillaStudy;
+                FixIconsUpTo(MapLocation.GorillaStudy);
+                SetChallengeGamesUpTo(MapLocation.ExitJungle);
+                SetChallengeGame(MapLocation.GorillaStudy, 2);
+                SetActionWordPool(MapLocation.GorillaStudy);
+                break;
+
+            case StoryBeat.GorillaStudyDefeated:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.GorillaStudy;
+                FixIconsUpTo(MapLocation.GorillaStudy);
+                SetChallengeGamesUpTo(MapLocation.GorillaStudy);
+                SetActionWordPool(MapLocation.GorillaStudy);
+                break;
+
+            /* 
+            ################################################
+            #   MONKEYS
+            ###############################################
+            */
+
+            case StoryBeat.MonkeysPlayGames:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.Monkeys;
+                FixIconsUpTo(MapLocation.GorillaStudy);
+                SetChallengeGamesUpTo(MapLocation.GorillaStudy);
+                SetActionWordPool(MapLocation.Monkeys);
+                break;
+
+            case StoryBeat.Monkeys_challengeGame_1:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.Monkeys;
+                FixIconsUpTo(MapLocation.Monkeys);
+                SetChallengeGamesUpTo(MapLocation.GorillaStudy);
+                SetActionWordPool(MapLocation.Monkeys);
+                break;
+
+            case StoryBeat.Monkeys_challengeGame_2:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.Monkeys;
+                FixIconsUpTo(MapLocation.Monkeys);
+                SetChallengeGamesUpTo(MapLocation.GorillaStudy);
+                SetChallengeGame(MapLocation.Monkeys, 1);
+                SetActionWordPool(MapLocation.Monkeys);
+                break;
+
+            case StoryBeat.Monkeys_challengeGame_3:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.Monkeys;
+                FixIconsUpTo(MapLocation.Monkeys);
+                SetChallengeGamesUpTo(MapLocation.GorillaStudy);
+                SetChallengeGame(MapLocation.Monkeys, 2);
+                SetActionWordPool(MapLocation.Monkeys);
+                break;
+
+            case StoryBeat.MonkeysDefeated:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.Monkeys;
+                FixIconsUpTo(MapLocation.Monkeys);
+                SetChallengeGamesUpTo(MapLocation.Monkeys);
+                SetActionWordPool(MapLocation.Monkeys);
+                break;
+
+            /* 
+            ################################################
+            #   PALACE
+            ###############################################
+            */
+
+            case StoryBeat.PalaceIntro:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.PalaceIntro;
+                FixIconsUpTo(MapLocation.Monkeys);
+                SetChallengeGamesUpTo(MapLocation.Monkeys);
+                SetActionWordPool(MapLocation.Monkeys);
+                break;
         }
 
         StudentInfoSystem.SaveStudentPlayerData();
@@ -1084,8 +1392,7 @@ public class DevMenuManager : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().actionWordPool.Clear();
 
         // chapter 1 action words
-        if (location == MapLocation.GorillaVillage || location == MapLocation.Mudslide || location == MapLocation.OrcVillage ||
-            location == MapLocation.SpookyForest)
+        if (location <= MapLocation.SpookyForest)
         {   
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.mudslide);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.listen);
@@ -1094,7 +1401,7 @@ public class DevMenuManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.think);
         }
         // chapter 2 action words
-        if (location == MapLocation.SpookyForest || location == MapLocation.OrcCamp || location == MapLocation.GorillaPoop)
+        if (location <= MapLocation.GorillaPoop)
         {
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.hello);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.spider);
@@ -1103,7 +1410,7 @@ public class DevMenuManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.thatguy);
         }
         // chapter 3 action words
-        if (location == MapLocation.WindyCliff || location == MapLocation.PirateShip)
+        if (location <= MapLocation.PirateShip)
         {
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.choice);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.strongwind);
@@ -1113,7 +1420,7 @@ public class DevMenuManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.give);
         }
         // chapter 4 action words
-        if (location == MapLocation.MermaidBeach || location == MapLocation.Ruins1 || location == MapLocation.Ruins2)
+        if (location <= MapLocation.Ruins2)
         {
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.backpack);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.frustrating);
@@ -1129,6 +1436,7 @@ public class DevMenuManager : MonoBehaviour
         {
             case MapLocation.Ocean:
             case MapLocation.BoatHouse:
+                StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_0;
                 SetMapIcons(MapLocation.GorillaVillage, false);
                 SetMapIcons(MapLocation.Mudslide, false);
                 SetMapIcons(MapLocation.OrcVillage, false);
@@ -1145,6 +1453,7 @@ public class DevMenuManager : MonoBehaviour
                 break;
 
             case MapLocation.GorillaVillage:
+                StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_1;
                 SetMapIcons(MapLocation.GorillaVillage, true);
                 SetMapIcons(MapLocation.Mudslide, false);
                 SetMapIcons(MapLocation.OrcVillage, false);
@@ -1161,6 +1470,7 @@ public class DevMenuManager : MonoBehaviour
                 break;
 
             case MapLocation.Mudslide:
+                StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_1;
                 SetMapIcons(MapLocation.GorillaVillage, true);
                 SetMapIcons(MapLocation.Mudslide, true);
                 SetMapIcons(MapLocation.OrcVillage, false);
@@ -1177,6 +1487,7 @@ public class DevMenuManager : MonoBehaviour
                 break;
             
             case MapLocation.OrcVillage:
+                StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_1;
                 SetMapIcons(MapLocation.GorillaVillage, true);
                 SetMapIcons(MapLocation.Mudslide, true);
                 SetMapIcons(MapLocation.OrcVillage, true);
@@ -1193,6 +1504,7 @@ public class DevMenuManager : MonoBehaviour
                 break;
 
             case MapLocation.SpookyForest:
+                StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_2;
                 SetMapIcons(MapLocation.GorillaVillage, true);
                 SetMapIcons(MapLocation.Mudslide, true);
                 SetMapIcons(MapLocation.OrcVillage, true);
@@ -1209,6 +1521,7 @@ public class DevMenuManager : MonoBehaviour
                 break;
 
             case MapLocation.OrcCamp:
+                StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_2;
                 SetMapIcons(MapLocation.GorillaVillage, true);
                 SetMapIcons(MapLocation.Mudslide, true);
                 SetMapIcons(MapLocation.OrcVillage, true);
@@ -1225,6 +1538,7 @@ public class DevMenuManager : MonoBehaviour
                 break;
 
             case MapLocation.GorillaPoop:
+                StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_2;
                 SetMapIcons(MapLocation.GorillaVillage, true);
                 SetMapIcons(MapLocation.Mudslide, true);
                 SetMapIcons(MapLocation.OrcVillage, true);
@@ -1241,6 +1555,7 @@ public class DevMenuManager : MonoBehaviour
                 break;
 
             case MapLocation.WindyCliff:
+                StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_3;
                 SetMapIcons(MapLocation.GorillaVillage, true);
                 SetMapIcons(MapLocation.Mudslide, true);
                 SetMapIcons(MapLocation.OrcVillage, true);
@@ -1257,6 +1572,7 @@ public class DevMenuManager : MonoBehaviour
                 break;
             
             case MapLocation.PirateShip:
+                StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_3;
                 SetMapIcons(MapLocation.GorillaVillage, true);
                 SetMapIcons(MapLocation.Mudslide, true);
                 SetMapIcons(MapLocation.OrcVillage, true);
@@ -1273,6 +1589,7 @@ public class DevMenuManager : MonoBehaviour
                 break;
 
             case MapLocation.MermaidBeach:
+                StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_4;
                 SetMapIcons(MapLocation.GorillaVillage, true);
                 SetMapIcons(MapLocation.Mudslide, true);
                 SetMapIcons(MapLocation.OrcVillage, true);
@@ -1289,6 +1606,8 @@ public class DevMenuManager : MonoBehaviour
                 break;
 
             case MapLocation.Ruins1:
+            case MapLocation.Ruins2:
+                StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_4;
                 SetMapIcons(MapLocation.GorillaVillage, true);
                 SetMapIcons(MapLocation.Mudslide, true);
                 SetMapIcons(MapLocation.OrcVillage, true);
@@ -1305,6 +1624,7 @@ public class DevMenuManager : MonoBehaviour
                 break;
 
             case MapLocation.ExitJungle:
+                StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_5;
                 SetMapIcons(MapLocation.GorillaVillage, true);
                 SetMapIcons(MapLocation.Mudslide, true);
                 SetMapIcons(MapLocation.OrcVillage, true);
@@ -1321,6 +1641,7 @@ public class DevMenuManager : MonoBehaviour
                 break;
 
             case MapLocation.GorillaStudy:
+                StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_5;
                 SetMapIcons(MapLocation.GorillaVillage, true);
                 SetMapIcons(MapLocation.Mudslide, true);
                 SetMapIcons(MapLocation.OrcVillage, true);
@@ -1337,6 +1658,7 @@ public class DevMenuManager : MonoBehaviour
                 break;
 
             case MapLocation.Monkeys:
+                StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_5;
                 SetMapIcons(MapLocation.GorillaVillage, true);
                 SetMapIcons(MapLocation.Mudslide, true);
                 SetMapIcons(MapLocation.OrcVillage, true);
@@ -1350,6 +1672,10 @@ public class DevMenuManager : MonoBehaviour
                 SetMapIcons(MapLocation.ExitJungle, true);
                 SetMapIcons(MapLocation.GorillaStudy, true);
                 SetMapIcons(MapLocation.Monkeys, true);
+                break;
+
+            case MapLocation.PalaceIntro:
+                StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_final;
                 break;
         }   
     }

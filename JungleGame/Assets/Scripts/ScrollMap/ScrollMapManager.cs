@@ -146,6 +146,69 @@ public class ScrollMapManager : MonoBehaviour
 
         /* 
         ################################################
+        #   GAME EVENTS (AFTER ROYAL RUMBLE TALKIES)
+        ################################################
+        */
+
+        if (GameManager.instance.finishedRoyalRumbleGame)
+        {
+            GameManager.instance.finishedRoyalRumbleGame = false;
+
+            Chapter currChapter = StudentInfoSystem.GetCurrentProfile().currentChapter;
+
+            if (GameManager.instance.wonRoyalRumbleGame)
+            {
+                // correct player win quip
+                switch (currChapter)
+                {
+                    case Chapter.chapter_0:
+                    case Chapter.chapter_1:
+                    case Chapter.chapter_2:
+                    case Chapter.chapter_3:
+                        // play julius loses to player
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRJuliusLost_1_p1);
+                        while (TalkieManager.instance.talkiePlaying)
+                            yield return null;
+                        break;
+                    case Chapter.chapter_4:
+                    case Chapter.chapter_5:
+                    case Chapter.chapter_final:
+                        // play guard loses to player
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRGuardsLost_1_p1);
+                        while (TalkieManager.instance.talkiePlaying)
+                            yield return null;
+                        break;
+                }
+            }
+            else
+            {
+                // correct player lose quip 
+                switch (currChapter)
+                {
+                    case Chapter.chapter_0:
+                    case Chapter.chapter_1:
+                    case Chapter.chapter_2:
+                    case Chapter.chapter_3:
+                        // play julius wins to player
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRJuliusWins_1_p1);
+                        while (TalkieManager.instance.talkiePlaying)
+                            yield return null;
+                        break;
+                    case Chapter.chapter_4:
+                    case Chapter.chapter_5:
+                    case Chapter.chapter_final:
+                        // play guard wins to player
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRGuardsWins_1_p1);
+                        while (TalkieManager.instance.talkiePlaying)
+                            yield return null;
+                        break;
+                }
+            }
+        }
+
+
+        /* 
+        ################################################
         #   GAME EVENTS (STORY BEATS)
         ################################################
         */
@@ -167,7 +230,7 @@ public class ScrollMapManager : MonoBehaviour
             ToggleNavButtons(true);
         
         // update map icons
-        UpdateMapIcons();
+        UpdateMapIcons(true);
 
         print ("revealGMUI: " + revealGMUI);
 
@@ -578,6 +641,11 @@ public class ScrollMapManager : MonoBehaviour
             // change enabled map sections
             EnableMapSectionsUpTo(MapLocation.GorillaPoop);
         }
+        else if (playGameEvent == StoryBeat.FollowRedStoryGame)
+        {
+            // change enabled map sections
+            EnableMapSectionsUpTo(MapLocation.GorillaPoop);
+        }
         else if (playGameEvent == StoryBeat.WindyCliffPlayGames)
         {
             // make sure player has rebuilt all the WC map icons
@@ -781,6 +849,16 @@ public class ScrollMapManager : MonoBehaviour
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
         }
+        else if (playGameEvent == StoryBeat.ExitJungleUnlocked)
+        {
+            // change enabled map sections
+            EnableMapSectionsUpTo(MapLocation.Ruins2);
+        }
+        else if (playGameEvent == StoryBeat.ResolutionStoryGame)
+        {
+            // change enabled map sections
+            EnableMapSectionsUpTo(MapLocation.Ruins2);
+        }
         else if (playGameEvent == StoryBeat.ExitJunglePlayGames)
         {
             // make sure player has rebuilt all the R map icons
@@ -827,6 +905,11 @@ public class ScrollMapManager : MonoBehaviour
             // wait for animation to be done
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
+        }
+        else if (playGameEvent == StoryBeat.GorillaStudyUnlocked)
+        {
+            // change enabled map sections
+            EnableMapSectionsUpTo(MapLocation.ExitJungle);
         }
         else if (playGameEvent == StoryBeat.GorillaStudyPlayGames)
         {
@@ -883,6 +966,9 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().mapData.M_guards.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.M_tree.isFixed)
             {
+                // change enabled map sections
+                EnableMapSectionsUpTo(MapLocation.GorillaStudy);
+
                 // play M rebuilt
                 MapAnimationController.instance.PlayMapAnim(MapAnim.MonkeysRebuilt);
                 // wait for animation to be done
@@ -892,6 +978,9 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.Monkeys_challengeGame_1)
         {
+            // change enabled map sections
+            EnableMapSectionsUpTo(MapLocation.GorillaStudy);
+
             // play challenge game 1 map animation
             MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame1, MapLocation.Monkeys);
             // wait for animation to be done
@@ -900,6 +989,9 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.Monkeys_challengeGame_2)
         {
+            // change enabled map sections
+            EnableMapSectionsUpTo(MapLocation.GorillaStudy);
+
             // play challenge game 1 map animation
             MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame2, MapLocation.Monkeys);
             // wait for animation to be done
@@ -908,6 +1000,9 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.Monkeys_challengeGame_3)
         {
+            // change enabled map sections
+            EnableMapSectionsUpTo(MapLocation.GorillaStudy);
+
             // play challenge game 1 map animation
             MapAnimationController.instance.PlayChallengeGameMapAnim(MapAnim.ChallengeGame3, MapLocation.Monkeys);
             // wait for animation to be done
@@ -1166,13 +1261,13 @@ public class ScrollMapManager : MonoBehaviour
         EnableMapIcons(mapLocations[currMapLocation], false);
     }
 
-    public void UpdateMapIcons()
+    public void UpdateMapIcons(bool revealStars)
     {
         // reload data
         MapDataLoader.instance.LoadMapData(StudentInfoSystem.GetCurrentProfile().mapData);
         foreach (var item in mapLocations)
         {
-            EnableMapIcons(item, false);
+            EnableMapIcons(item, revealStars);
         }
     }
 
@@ -1235,9 +1330,6 @@ public class ScrollMapManager : MonoBehaviour
 
         // hide sign
         ChapterEnterVisualController.instance.HideSign();
-
-        // update settings map
-        SettingsWindowController.instance.UpdateMapSprite();
 
         yield return new WaitForSeconds(1f);
 

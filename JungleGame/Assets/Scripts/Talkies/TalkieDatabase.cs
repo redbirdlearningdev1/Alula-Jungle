@@ -430,6 +430,12 @@ public class TalkieDatabase : MonoBehaviour
         yourObject.talkieName = talkie.talkieName;
         yourObject.quipsCollection = talkie.quipsCollection;
 
+        if (talkie.quipsCollection)
+        {
+            yourObject.validQuipIndexes = new List<int>();
+            yourObject.validQuipIndexes.AddRange(talkie.validQuipIndexes);
+        }
+
         yourObject.start = talkie.start;
         yourObject.addBackgroundBeforeTalkie = talkie.addBackgroundBeforeTalkie;
         yourObject.addLetterboxBeforeTalkie = talkie.addLetterboxBeforeTalkie;

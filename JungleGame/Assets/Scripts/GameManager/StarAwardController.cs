@@ -80,9 +80,10 @@ public class StarAwardController : MonoBehaviour
         // determine if royal rumble game
         if (GameManager.instance.playingRoyalRumbleGame)
         {
-            print ("ending royal rumble");
-
             GameManager.instance.playingRoyalRumbleGame = false;
+            GameManager.instance.finishedRoyalRumbleGame = true;
+            GameManager.instance.wonRoyalRumbleGame = numStars > 0;
+
             StudentInfoSystem.GetCurrentProfile().royalRumbleActive = false;
             StudentInfoSystem.GetCurrentProfile().royalRumbleGame = GameType.None;
             StudentInfoSystem.GetCurrentProfile().royalRumbleID = MapIconIdentfier.None;

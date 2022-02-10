@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: MermaidQuips_1_p1
   quipsCollection: 1
+  validQuipIndexes: 000000000100000002000000
   start: 1
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: RRJuliusWins_1_p1
   quipsCollection: 1
+  validQuipIndexes: 000000000200000004000000
   start: 1
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
@@ -52,7 +53,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 23ca3030d604b354fbc4855bb4e15d63, type: 3}
     audioClipName: RR_0_2_Julius_1_T2
-    audioString: " I\u2019m outta here."
+    audioString: "I\u2019m outta here."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

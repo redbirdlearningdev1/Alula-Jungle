@@ -1496,6 +1496,7 @@ MonoBehaviour:
     m_PostInfinity: 1
     m_RotationOrder: 4
   multiplier: 5
+  curveLength: 0
 --- !u!1 &601592148
 GameObject:
   m_ObjectHideFlags: 0
@@ -5706,6 +5707,7 @@ GameObject:
   - component: {fileID: 1839254694}
   - component: {fileID: 1839254696}
   - component: {fileID: 1839254695}
+  - component: {fileID: 1839254697}
   m_Layer: 5
   m_Name: ProfileImage
   m_TagString: Untagged
@@ -5772,6 +5774,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1839254693}
   m_CullTransparentMesh: 1
+--- !u!114 &1839254697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839254693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458d3b50667b6a944abf0cc4cfece9d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1878603620
 GameObject:
   m_ObjectHideFlags: 0
@@ -5783,6 +5797,7 @@ GameObject:
   - component: {fileID: 1878603621}
   - component: {fileID: 1878603623}
   - component: {fileID: 1878603622}
+  - component: {fileID: 1878603624}
   m_Layer: 5
   m_Name: ProfileImage
   m_TagString: Untagged
@@ -5847,6 +5862,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878603620}
   m_CullTransparentMesh: 1
+--- !u!114 &1878603624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878603620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458d3b50667b6a944abf0cc4cfece9d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1961876772
 GameObject:
   m_ObjectHideFlags: 0
@@ -6820,7 +6847,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 58.93504
+      value: 58.96913
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

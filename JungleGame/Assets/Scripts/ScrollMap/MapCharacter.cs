@@ -26,13 +26,21 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
     void Awake()
     {
         // remove exclamation mark by default + make not interactable
-        ShowExclamationMark(false);
+        exclamationMark.transform.localScale = Vector3.zero;
         interactable = false;
     }
 
     public void ShowExclamationMark(bool opt)
     {
-        exclamationMark.SetActive(opt);
+        if (opt)
+        {
+            exclamationMark.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+        }
+        else
+        {
+            exclamationMark.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+        }
+        
     }
 
     public void FlipCharacterToLeft()
@@ -169,7 +177,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
 
                 // unlock orc village
                 ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.OrcVillage);
-                ScrollMapManager.instance.UpdateMapIcons();
+                ScrollMapManager.instance.UpdateMapIcons(true);
                 ScrollMapManager.instance.RevealStarsAtCurrentLocation();
 
                 // save to SIS and exit to scroll map
@@ -222,7 +230,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
 
                 // unlock orc camp
                 ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.OrcCamp);
-                ScrollMapManager.instance.UpdateMapIcons();
+                ScrollMapManager.instance.UpdateMapIcons(true);
                 ScrollMapManager.instance.RevealStarsAtCurrentLocation();
 
                 // save to SIS and exit to scroll map

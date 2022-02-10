@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkieName: OVillageDefeated_1_p1
   quipsCollection: 0
+  validQuipIndexes: 
   start: 1
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
@@ -148,7 +149,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 277901f29e54c4443951b4143e4558c3, type: 3}
     audioClipName: P_3_3_Brutus_5_T2
-    audioString: "Dang\u2026"
+    audioString: Dang...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
