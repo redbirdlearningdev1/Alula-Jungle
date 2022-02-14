@@ -71,6 +71,7 @@ public class NewPasswordGameManager : MonoBehaviour
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
                 // calculate and show stars
+                AIData(StudentInfoSystem.GetCurrentProfile());
                 StarAwardController.instance.AwardStarsAndExit(3);
             }
         }
@@ -301,7 +302,15 @@ public class NewPasswordGameManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         // show stars
+        AIData(StudentInfoSystem.GetCurrentProfile());
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+    }
+
+    public void AIData(StudentPlayerData playerData)
+    {
+        playerData.passPlayed = playerData.passPlayed + 1;
+        playerData.starsPass = CalculateStars() + playerData.starsPass;
+        
     }
 
     private int CalculateStars()
@@ -319,6 +328,7 @@ public class NewPasswordGameManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         // show stars
+        AIData(StudentInfoSystem.GetCurrentProfile());
         StarAwardController.instance.AwardStarsAndExit(0);
     }
 }

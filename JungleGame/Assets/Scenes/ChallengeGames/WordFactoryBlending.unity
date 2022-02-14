@@ -1586,6 +1586,27 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8230e1b969c2b39428a47e994ff382cc, type: 2}
   - {fileID: 11400000, guid: 4a67f34cf3f3155418297c6d822f97e0, type: 2}
   - {fileID: 11400000, guid: 8658073a7d248a944a73a73eb8459bab, type: 2}
+  polaroidsScripted1:
+  - {fileID: 11400000, guid: 4cc3970b7ebe6e04e8c33dd8f3b52d78, type: 2}
+  - {fileID: 11400000, guid: 365e37419abbe3447ac7b96dd8acd999, type: 2}
+  - {fileID: 11400000, guid: 1a14c37a654abb244ab43df598f84402, type: 2}
+  polaroidsScripted2:
+  - {fileID: 11400000, guid: 51689ca864befb449af14e6b030c89ec, type: 2}
+  - {fileID: 11400000, guid: a87bd9df5f4a59945a6da1fb18082f64, type: 2}
+  - {fileID: 11400000, guid: e5808723122703445a5780d9142c6b26, type: 2}
+  polaroidsScripted3:
+  - {fileID: 11400000, guid: e194ab03a82a0b247aab327aab52aaad, type: 2}
+  - {fileID: 11400000, guid: 1288dd72156ecec4eb7414f76d8adae2, type: 2}
+  - {fileID: 11400000, guid: a3545d043e464ad43b2ede8fd48253fe, type: 2}
+  polaroidsScripted4:
+  - {fileID: 11400000, guid: 5d1dd72ce61399f4db5fe7995a0cae0c, type: 2}
+  - {fileID: 11400000, guid: ba2d2a43b8f18214aab5992a9b14e2f7, type: 2}
+  - {fileID: 11400000, guid: 8d6ae4c8a30d947449d4a588c0e1024d, type: 2}
+  polaroidsScripted5:
+  - {fileID: 11400000, guid: 38ea91df9f063a040941ed386b67e878, type: 2}
+  - {fileID: 11400000, guid: e9ddd7e34144b9a4ba27ce5d5c42dcf7, type: 2}
+  - {fileID: 11400000, guid: dbfbd4f7812f83b4481208b729dfbe0d, type: 2}
+  testthis: 0
   overridePool: 0
   testChallengeWords:
   - {fileID: 11400000, guid: e33b56ac456ca6f409a72c95bb25b1e9, type: 2}
@@ -2527,7 +2548,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 43.679592
+      value: 44.11958
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

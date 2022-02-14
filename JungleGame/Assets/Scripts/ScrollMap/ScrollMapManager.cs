@@ -636,7 +636,7 @@ public class ScrollMapManager : MonoBehaviour
                     // set tiger stuff
                     if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType == GameType.None)
                     {
-                        GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage);
+                        GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage, StudentInfoSystem.GetCurrentProfile());
                         tiger.gameType = newGameType;
                         StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType = newGameType;
                         StudentInfoSystem.AdvanceStoryBeat();
@@ -666,7 +666,7 @@ public class ScrollMapManager : MonoBehaviour
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType == GameType.None)
             {
-                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage, StudentInfoSystem.GetCurrentProfile());
                 tiger.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -715,7 +715,7 @@ public class ScrollMapManager : MonoBehaviour
             // set marcus stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType == GameType.None)
             {
-                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage, StudentInfoSystem.GetCurrentProfile());
                 marcus.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -788,7 +788,7 @@ public class ScrollMapManager : MonoBehaviour
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType == GameType.None)
             {
-                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage, StudentInfoSystem.GetCurrentProfile());
                 brutus.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -976,7 +976,7 @@ public class ScrollMapManager : MonoBehaviour
                 // set tiger stuff
                 if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide);
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide, StudentInfoSystem.GetCurrentProfile());
                     tiger.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType = newGameType;
                     StudentInfoSystem.AdvanceStoryBeat();
@@ -1000,7 +1000,7 @@ public class ScrollMapManager : MonoBehaviour
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType == GameType.None)
             {
-                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide, StudentInfoSystem.GetCurrentProfile());
                 tiger.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -1045,7 +1045,7 @@ public class ScrollMapManager : MonoBehaviour
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType == GameType.None)
             {
-                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide, StudentInfoSystem.GetCurrentProfile());
                 marcus.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -1112,7 +1112,7 @@ public class ScrollMapManager : MonoBehaviour
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType == GameType.None)
             {
-                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide, StudentInfoSystem.GetCurrentProfile());
                 brutus.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -1305,7 +1305,7 @@ public class ScrollMapManager : MonoBehaviour
                 // set tiger stuff
                 if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage);
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage, StudentInfoSystem.GetCurrentProfile());
                     tiger.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType = newGameType;
                     StudentInfoSystem.AdvanceStoryBeat();
@@ -1337,7 +1337,7 @@ public class ScrollMapManager : MonoBehaviour
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType == GameType.None)
             {
-                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage, StudentInfoSystem.GetCurrentProfile());
                 tiger.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -1384,7 +1384,7 @@ public class ScrollMapManager : MonoBehaviour
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType == GameType.None)
             {
-                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage, StudentInfoSystem.GetCurrentProfile());
                 marcus.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -1451,7 +1451,7 @@ public class ScrollMapManager : MonoBehaviour
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType == GameType.None)
             {
-                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage, StudentInfoSystem.GetCurrentProfile());
                 brutus.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -1645,7 +1645,7 @@ public class ScrollMapManager : MonoBehaviour
                 // set tiger stuff
                 if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest);
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest, StudentInfoSystem.GetCurrentProfile());
                     tiger.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType = newGameType;
                     StudentInfoSystem.AdvanceStoryBeat();
@@ -1675,7 +1675,7 @@ public class ScrollMapManager : MonoBehaviour
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType == GameType.None)
             {
-                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest, StudentInfoSystem.GetCurrentProfile());
                 tiger.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -1722,7 +1722,7 @@ public class ScrollMapManager : MonoBehaviour
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType == GameType.None)
             {
-                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest, StudentInfoSystem.GetCurrentProfile());
                 marcus.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();
@@ -1789,7 +1789,7 @@ public class ScrollMapManager : MonoBehaviour
             // set tiger stuff
             if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType == GameType.None)
             {
-                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest);
+                GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest, StudentInfoSystem.GetCurrentProfile());
                 brutus.gameType = newGameType;
                 StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType = newGameType;
                 StudentInfoSystem.SaveStudentPlayerData();

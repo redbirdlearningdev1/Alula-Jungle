@@ -2032,8 +2032,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -34}
-  m_SizeDelta: {x: 170.98, y: 178.23}
+  m_AnchoredPosition: {x: -0.54, y: -34}
+  m_SizeDelta: {x: 376.7, y: 178.23}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1027910487
 MonoBehaviour:
@@ -3299,6 +3299,51 @@ MonoBehaviour:
   isOn: 0
   objcetMoveSpeed: 0.1
   selectedObjectParent: {fileID: 1141252423}
+  numClick: 0
+  wordAudioParts:
+  - {fileID: 8300000, guid: 8b27351136cd7e94fb4cba1d6029e80e, type: 3}
+  - {fileID: 8300000, guid: 7597a9f0588dc074880dae515b85234f, type: 3}
+  - {fileID: 8300000, guid: ceb1d7f8e4fb46d4cba1fab8017b97c3, type: 3}
+  - {fileID: 8300000, guid: 793a097a0e9448e48bba67a8e7a07bc4, type: 3}
+  - {fileID: 8300000, guid: ebb5d171b5e76ec41841373d756b00fe, type: 3}
+  - {fileID: 8300000, guid: ba7429587a24343498ee8ce6008e0292, type: 3}
+  - {fileID: 8300000, guid: 0b8064cab3ace344abfc2f23439c1695, type: 3}
+  - {fileID: 8300000, guid: 35c9d9038cbb37c4faa83a75e42512ae, type: 3}
+  - {fileID: 8300000, guid: 15cb2341965e3da40a2d8f4b785856ae, type: 3}
+  - {fileID: 8300000, guid: 8d4b8dd61abaeb84f995b64a44e27c3a, type: 3}
+  - {fileID: 8300000, guid: 1acd1b8565159534299eb88a6d0bff0e, type: 3}
+  - {fileID: 8300000, guid: 622dcaf79a39ea14eb0c1fc6f9990ef5, type: 3}
+  - {fileID: 8300000, guid: 5c4cbd03a3d3ca74a82094e32b1afbc2, type: 3}
+  - {fileID: 8300000, guid: 84899e996a484e94886a1eddc96e8dc6, type: 3}
+  - {fileID: 8300000, guid: 9fae4e9d423e4ea44bd666b6c2ac1e62, type: 3}
+  - {fileID: 8300000, guid: 8e47e5dec531365438466443b74d0318, type: 3}
+  - {fileID: 8300000, guid: 467507ce0c32b204d8930b0bd9f29bb3, type: 3}
+  - {fileID: 8300000, guid: 3f468203786cde5419c28816a0493bd7, type: 3}
+  - {fileID: 8300000, guid: 5bca01979ece61b4a90e401655219c16, type: 3}
+  - {fileID: 8300000, guid: bbb5579c141518f4c921daa0d37f609a, type: 3}
+  - {fileID: 8300000, guid: 4601dc771e9aca14e99bbfabf47c17b0, type: 3}
+  - {fileID: 8300000, guid: f19da36efc9c69b4897e80827ec002d2, type: 3}
+  - {fileID: 8300000, guid: 3130384dbcba2974dba3b40e39ab3d32, type: 3}
+  - {fileID: 8300000, guid: ae43683a12a66264783adaebc9f47ce9, type: 3}
+  - {fileID: 8300000, guid: 12ab8ca073d63d844889ad8462775573, type: 3}
+  - {fileID: 8300000, guid: 560d24aa5ebb5564bab8110f33dbf1ae, type: 3}
+  - {fileID: 8300000, guid: 2edf536d542a0c3488052bb6b3a68784, type: 3}
+  - {fileID: 8300000, guid: 7adb4315e8639a74182e83956c8e982d, type: 3}
+  - {fileID: 8300000, guid: e48a061c03c0a624896c8eaff7f7af1b, type: 3}
+  - {fileID: 8300000, guid: 7ec3745752cbe1249b962467e45be2b2, type: 3}
+  - {fileID: 8300000, guid: de388e44ab0e2114e844c6a7129db650, type: 3}
+  - {fileID: 8300000, guid: e2f92675d74077e42867411e67fb705b, type: 3}
+  - {fileID: 8300000, guid: 7e00734a4cf4d6f499d599571d4a4c16, type: 3}
+  - {fileID: 8300000, guid: c994e9acf23307c489e73de2276cfc33, type: 3}
+  - {fileID: 8300000, guid: 7b5e2fab8982d7847af05b828fdb1a25, type: 3}
+  - {fileID: 8300000, guid: 3ece1c2cb4726c94b94767a446026bdf, type: 3}
+  - {fileID: 8300000, guid: 16a6d763f4887464f805cc8da1845105, type: 3}
+  - {fileID: 8300000, guid: 7c201ede0750abc4d80b3adecc2656cf, type: 3}
+  - {fileID: 8300000, guid: c6a794dd2727f0741b012abecc489c22, type: 3}
+  - {fileID: 8300000, guid: acc4c3fe58ac17245a1c5f2e66b1ce9b, type: 3}
+  - {fileID: 8300000, guid: 01e65904cc5c3c44285d093944c485e2, type: 3}
+  - {fileID: 8300000, guid: e844fa8347a685240a89a0cc85535698, type: 3}
+  - {fileID: 8300000, guid: 77e258a99c729ea4791e2643890651c7, type: 3}
 --- !u!114 &1657006932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3339,6 +3384,37 @@ MonoBehaviour:
   PhotoStartPos: {fileID: 805968724}
   PhotoEndPos: {fileID: 1439797602}
   currCoin: {fileID: 1989127353}
+  polaroidsScripted1:
+  - {fileID: 11400000, guid: ab4985bb3c1d802458263bc09dbe33ab, type: 2}
+  - {fileID: 11400000, guid: 8fb21858b1f35ad4798e038fb79a392d, type: 2}
+  - {fileID: 11400000, guid: 862fa47f771ae934f81e28a2a1a7d778, type: 2}
+  - {fileID: 11400000, guid: b71c7d15c0026274a9f2b2424bc377c0, type: 2}
+  - {fileID: 11400000, guid: 59cbe7ef5a2515f40a3c3adbec414aa9, type: 2}
+  polaroidsScripted2:
+  - {fileID: 11400000, guid: ab4985bb3c1d802458263bc09dbe33ab, type: 2}
+  - {fileID: 11400000, guid: 5754b17e206b35e4ca1a2fc5064d9493, type: 2}
+  - {fileID: 11400000, guid: 3251c72ac563c69488e3a19d0412efce, type: 2}
+  - {fileID: 11400000, guid: 4b2a3f375b3198747833c54c66d2af2e, type: 2}
+  - {fileID: 11400000, guid: 960ec3d884fe45f4aba44316357197b4, type: 2}
+  polaroidsScripted3:
+  - {fileID: 11400000, guid: ab4985bb3c1d802458263bc09dbe33ab, type: 2}
+  - {fileID: 11400000, guid: d4474fabc318cc149a3f32d293740d4e, type: 2}
+  - {fileID: 11400000, guid: 70773d35bfde76949ad240c8b65de768, type: 2}
+  - {fileID: 11400000, guid: 3e3a6c7bc6790194f838f7fd0f697532, type: 2}
+  - {fileID: 11400000, guid: 389f7234573cff641a7931117e918183, type: 2}
+  polaroidsScripted4:
+  - {fileID: 11400000, guid: ab4985bb3c1d802458263bc09dbe33ab, type: 2}
+  - {fileID: 11400000, guid: 9cbf10622bfa2224a8f954b36c9f5c22, type: 2}
+  - {fileID: 11400000, guid: ca00c708bfae14549b95c98c04f55d9a, type: 2}
+  - {fileID: 11400000, guid: e649affc5a97fe54aacd5ff337f00a1c, type: 2}
+  - {fileID: 11400000, guid: bc9793f4125a44941ad2b9052624be4a, type: 2}
+  polaroidsScripted5:
+  - {fileID: 11400000, guid: ab4985bb3c1d802458263bc09dbe33ab, type: 2}
+  - {fileID: 11400000, guid: da9ef2375cfb68d4d8739adb86fa37e3, type: 2}
+  - {fileID: 11400000, guid: e194ab03a82a0b247aab327aab52aaad, type: 2}
+  - {fileID: 11400000, guid: 5d12b611d01ea43469691bad8342e203, type: 2}
+  - {fileID: 11400000, guid: 68a1041240cb96d46be09caf2b5210fb, type: 2}
+  testthis: 0
 --- !u!4 &1657006933
 Transform:
   m_ObjectHideFlags: 0
@@ -3829,7 +3905,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 7.4584684
+      value: 8.886998
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

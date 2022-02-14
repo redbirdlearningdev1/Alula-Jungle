@@ -52,6 +52,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
                 // calculate and show stars
+                AIData(StudentInfoSystem.GetCurrentProfile());
                 StarAwardController.instance.AwardStarsAndExit(3);
             }
         }
@@ -451,7 +452,16 @@ public class WordFactoryBuildingManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // show stars
+
+        AIData(StudentInfoSystem.GetCurrentProfile());
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+    }
+
+        public void AIData(StudentPlayerData playerData)
+    {
+        playerData.buildPlayed = playerData.buildPlayed + 1;
+        playerData.starsBuild = CalculateStars() + playerData.starsBuild;
+        
     }
 
     private int CalculateStars()
@@ -468,6 +478,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         // show stars
+        AIData(StudentInfoSystem.GetCurrentProfile());
         StarAwardController.instance.AwardStarsAndExit(0);
     }
 

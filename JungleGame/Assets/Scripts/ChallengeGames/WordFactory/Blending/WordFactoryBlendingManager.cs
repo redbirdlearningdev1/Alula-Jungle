@@ -65,6 +65,15 @@ public class WordFactoryBlendingManager : MonoBehaviour
     public List<ChallengeWord> polaroids1;
     public List<ChallengeWord> polaroids2;
     public List<ChallengeWord> polaroids3;
+    [Header("Scripted")]
+    private int scriptedEvent = 0;
+    public List<ChallengeWord> polaroidsScripted1;
+    public List<ChallengeWord> polaroidsScripted2;
+    public List<ChallengeWord> polaroidsScripted3;
+    public List<ChallengeWord> polaroidsScripted4;
+    public List<ChallengeWord> polaroidsScripted5;
+
+    public bool testthis;
 
 
 
@@ -100,6 +109,8 @@ public class WordFactoryBlendingManager : MonoBehaviour
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
                 // calculate and show stars
+
+                AIData(StudentInfoSystem.GetCurrentProfile());
                 StarAwardController.instance.AwardStarsAndExit(3);
             }
         }
@@ -260,17 +271,71 @@ public class WordFactoryBlendingManager : MonoBehaviour
                 count++;
             }
         }
+        else if(StudentInfoSystem.GetCurrentProfile().blendPlayed == 0 || testthis)
+        {
+            // get correct tutorial polaroids
+            List<ChallengeWord> scriptedList = new List<ChallengeWord>();
+            switch (scriptedEvent)
+            {
+                case 0:
+                    scriptedList.AddRange(polaroidsScripted1);
+                    currentWords.AddRange(polaroidsScripted1);
+                    correctIndex = correctTutorialIndex[1];
+                    break;
+                case 1:
+                    scriptedList.AddRange(polaroidsScripted2);
+                    currentWords.AddRange(polaroidsScripted2);
+                    correctIndex = correctTutorialIndex[0];
+                    break;
+                case 2:
+                    scriptedList.AddRange(polaroidsScripted3);
+                    currentWords.AddRange(polaroidsScripted3);
+                    correctIndex = correctTutorialIndex[0];
+                    break;
+                case 3:
+                    scriptedList.AddRange(polaroidsScripted4);
+                    currentWords.AddRange(polaroidsScripted4);
+                    correctIndex = correctTutorialIndex[2];
+                    break;
+                case 4:
+                    scriptedList.AddRange(polaroidsScripted5);
+                    currentWords.AddRange(polaroidsScripted5);
+                    correctIndex = correctTutorialIndex[1];
+                    break;
+            }
+            scriptedEvent++;
+
+            // set tutorial polaroids
+            for (int i = 0; i < 3; i++)
+            {
+                polaroids[i].SetPolaroid(scriptedList[i]);
+            }
+
+            currentWord = currentWords[correctIndex];
+            currentPolaroid = polaroids[correctIndex];
+        }
         else
         {   
             // use random words
             foreach (var polaroid in polaroids)
             {
-                ChallengeWord word = GetUnusedWord();
-                polaroid.SetPolaroid(word);
-                currentWords.Add(word);
+                List<ChallengeWord> tempChallengeWordList = new List<ChallengeWord>();
+                tempChallengeWordList = AISystem.ChallengeWordSelectionBlending(StudentInfoSystem.GetCurrentProfile());
+                ChallengeWord correctWord = tempChallengeWordList[0];
+                ChallengeWord incorrectWord1 = tempChallengeWordList[1];
+                ChallengeWord incorrectWord2 = tempChallengeWordList[2];
+                int randIndex = Random.Range(0, tempChallengeWordList.Count);
+                //ChallengeWord word = GetUnusedWord();
+                if(randIndex == 0)
+                {
+                    correctIndex = randIndex;
+                }
+                polaroid.SetPolaroid(tempChallengeWordList[randIndex]);
+                currentWords.Add(tempChallengeWordList[randIndex]);
+                tempChallengeWordList.RemoveAt(randIndex);
             }
 
-            correctIndex = Random.Range(0, 3);
+            
             currentWord = currentWords[correctIndex];
             currentPolaroid = polaroids[correctIndex];
         }
@@ -464,7 +529,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
     private IEnumerator CorrectPolaroidRoutine()
     {
-        yield return new WaitForSeconds(2f);
+        //yield return new WaitForSeconds(2f);
         
         // reveal the correct polaroid
         StartCoroutine(PolaroidRevealRoutine(true));
@@ -719,6 +784,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // show stars
+        AIData(StudentInfoSystem.GetCurrentProfile());
         StarAwardController.instance.AwardStarsAndExit(0);
     }
 
@@ -745,8 +811,17 @@ public class WordFactoryBlendingManager : MonoBehaviour
         else
         {
             // show stars
+            AIData(StudentInfoSystem.GetCurrentProfile());
+
             StarAwardController.instance.AwardStarsAndExit(CalculateStars());
         }        
+    }
+
+    public void AIData(StudentPlayerData playerData)
+    {
+        playerData.blendPlayed = playerData.blendPlayed + 1;
+        playerData.starsBlend = CalculateStars() + playerData.starsBlend;
+        
     }
 
     private int CalculateStars()
