@@ -92,6 +92,7 @@ public class NewPasswordGameManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().passwordTutorial = true;
                 StudentInfoSystem.SaveStudentPlayerData();
                 // calculate and show stars
+                AIData(StudentInfoSystem.GetCurrentProfile());
                 StarAwardController.instance.AwardStarsAndExit(3);
             }
         }
@@ -602,8 +603,16 @@ public class NewPasswordGameManager : MonoBehaviour
         else
         {
             // show stars
+            AIData(StudentInfoSystem.GetCurrentProfile());
             StarAwardController.instance.AwardStarsAndExit(CalculateStars());
         }
+    }
+
+    public void AIData(StudentPlayerData playerData)
+    {
+        playerData.passPlayed = playerData.passPlayed + 1;
+        playerData.starsPass = CalculateStars() + playerData.starsPass;
+        
     }
 
     private int CalculateStars()
@@ -621,6 +630,7 @@ public class NewPasswordGameManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         // show stars
+        AIData(StudentInfoSystem.GetCurrentProfile());
         StarAwardController.instance.AwardStarsAndExit(0);
     }
 }

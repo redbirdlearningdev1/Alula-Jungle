@@ -179,7 +179,7 @@ public class MinigameWheelController : MonoBehaviour
         if (startRR)
         {
             // save royal rumble to SIS
-            GameType RRgame = AISystem.DetermineRoyalRumbleGame();
+            GameType RRgame = AISystem.DetermineRoyalRumbleGame(StudentInfoSystem.GetCurrentProfile());
             StudentInfoSystem.GetCurrentProfile().royalRumbleGame = RRgame;
             StudentInfoSystem.GetCurrentProfile().royalRumbleActive = true;
             StudentInfoSystem.GetCurrentProfile().royalRumbleID = currentIdentifier;

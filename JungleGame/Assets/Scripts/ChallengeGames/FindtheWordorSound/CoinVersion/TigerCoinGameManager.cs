@@ -28,6 +28,7 @@ public class TigerCoinGameManager : MonoBehaviour
     [SerializeField] private Transform CoinEndPos;
 
     [SerializeField] private List<UniversalCoinImage> waterCoins;
+    
 
     // other variables
     [SerializeField]  private ChallengeWord currentWord;
@@ -50,6 +51,17 @@ public class TigerCoinGameManager : MonoBehaviour
     public ChallengeWord tutorialPhoto1;
     public ChallengeWord tutorialPhoto2;
     public ChallengeWord tutorialPhoto3;
+
+    [Header("Scripted")]
+    private int scriptedEvent = 0;
+    public ChallengeWord coinsScripted1;
+    public ChallengeWord coinsScripted2;
+    public ChallengeWord coinsScripted3;
+    public ChallengeWord coinsScripted4;
+    public ChallengeWord coinsScripted5;
+
+    public bool testthis;
+    
 
     void Awake()
     {
@@ -99,6 +111,7 @@ public class TigerCoinGameManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().tigerPawCoinsTutorial = true;
                 StudentInfoSystem.SaveStudentPlayerData();
                 // calculate and show stars
+                AIData(StudentInfoSystem.GetCurrentProfile());
                 StarAwardController.instance.AwardStarsAndExit(3);
             }
         }
@@ -155,29 +168,97 @@ public class TigerCoinGameManager : MonoBehaviour
 
         print ("current value: " + currentTargetValue);
 
-        // set coin options
-        List<ActionWordEnum> coinOptions = new List<ActionWordEnum>();
-        coinOptions.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
-        coinOptions.Remove(currentWord.set);
+        yield return new WaitForSeconds(0.5f);
 
-        print ("coin options: " + coinOptions.Count);
+        polaroidC.gameObject.transform.position = polaroidStartPos.position;
+        polaroidC.LerpScale(0f, 0f);
 
-        int correctIndex = Random.Range(0, waterCoins.Count);
-
-        for (int i = 0; i < 5; i++)
+        //Scripted Tiger Paw Photo
+        if (StudentInfoSystem.GetCurrentProfile().tPawCoinPlayed == 0 || testthis)
         {
-            if (i == correctIndex)
+            // get correct tutorial polaroids
+            switch (scriptedEvent)
             {
-                waterCoins[i].SetValue(currentTargetValue);
-            }   
-            else
+                case 0:
+                    polaroidC.SetPolaroid(coinsScripted1);
+                    currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(coinsScripted1.set);
+                    waterCoins[0].SetValue(ElkoninValue.explorer);
+                    waterCoins[1].SetValue(ElkoninValue.hello);
+                    waterCoins[2].SetValue(currentTargetValue);
+                    waterCoins[3].SetValue(ElkoninValue.poop);
+                    waterCoins[4].SetValue(ElkoninValue.think); 
+                    break;
+                case 1:
+                    polaroidC.SetPolaroid(coinsScripted2);
+                    currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(coinsScripted2.set);
+                    waterCoins[0].SetValue(ElkoninValue.mudslide);
+                    waterCoins[1].SetValue(ElkoninValue.listen);
+                    waterCoins[3].SetValue(currentTargetValue);
+                    waterCoins[2].SetValue(ElkoninValue.explorer);
+                    waterCoins[4].SetValue(ElkoninValue.poop); 
+                    break;
+                case 2:
+                    polaroidC.SetPolaroid(coinsScripted3);
+                    currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(coinsScripted3.set);
+                    waterCoins[2].SetValue(ElkoninValue.poop);
+                    waterCoins[1].SetValue(ElkoninValue.hello);
+                    waterCoins[0].SetValue(currentTargetValue);
+                    waterCoins[3].SetValue(ElkoninValue.think);
+                    waterCoins[4].SetValue(ElkoninValue.listen); 
+                    break;
+                case 3:
+                    polaroidC.SetPolaroid(coinsScripted4);
+                    currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(coinsScripted4.set);
+                    waterCoins[0].SetValue(ElkoninValue.poop);
+                    waterCoins[1].SetValue(ElkoninValue.think);
+                    waterCoins[4].SetValue(currentTargetValue);
+                    waterCoins[3].SetValue(ElkoninValue.orcs);
+                    waterCoins[2].SetValue(ElkoninValue.hello); 
+                    break;
+                case 4:
+                    polaroidC.SetPolaroid(coinsScripted5);
+                    currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(coinsScripted5.set);
+                    waterCoins[0].SetValue(ElkoninValue.orcs);
+                    waterCoins[1].SetValue(ElkoninValue.listen);
+                    waterCoins[2].SetValue(currentTargetValue);
+                    waterCoins[3].SetValue(ElkoninValue.explorer);
+                    waterCoins[4].SetValue(ElkoninValue.mudslide); 
+                    break;
+            }
+            scriptedEvent++;
+
+            // set tutorial polaroids
+        }
+        else
+        {
+            // get random word
+            List<ChallengeWord> CurrentChallengeList = new List<ChallengeWord>();
+            CurrentChallengeList = AISystem.ChallengeWordSelectionTigerPawCoin(StudentInfoSystem.GetCurrentProfile());
+            currentWord = CurrentChallengeList[0];
+            polaroidC.SetPolaroid(currentWord);
+
+            //currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(currentWord.set);
+
+            //print ("current value: " + currentTargetValue);
+
+            // set coin options
+            List<ActionWordEnum> coinOptions = new List<ActionWordEnum>();
+            //coinOptions.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
+            //coinOptions.Remove(currentWord.set);
+            coinOptions = AISystem.TigerPawCoinsCoinSelection(StudentInfoSystem.GetCurrentProfile(), CurrentChallengeList);
+
+            //print ("coin options: " + coinOptions.Count);
+
+            //int correctIndex = Random.Range(0, waterCoins.Count);
+
+            for (int i = 0; i < 5; i++)
             {
-                int rand = Random.Range(0, coinOptions.Count);
-                waterCoins[i].SetActionWordValue(coinOptions[rand]);
-                coinOptions.RemoveAt(rand);
+
+                    int rand = Random.Range(0, coinOptions.Count);
+                    waterCoins[i].SetActionWordValue(coinOptions[rand]);
+                    coinOptions.RemoveAt(rand);
             }
         }
-
         // return pattern to base state
         pattern.baseState();
         
@@ -354,7 +435,7 @@ public class TigerCoinGameManager : MonoBehaviour
         // turn off raycaster
         TigerCoinRayCaster.instance.isOn = false;
 
-        if (coin.value == currentTargetValue)
+        if (coin.value == currentWord.elkoninList[0]|| coin.value == currentWord.elkoninList[1]|| coin.value == currentWord.elkoninList[2] ||coin.value == currentWord.elkoninList[3])
         {
             StartCoroutine(PostRound(true));
         }
@@ -450,9 +531,6 @@ public class TigerCoinGameManager : MonoBehaviour
         // reset coin positions
         foreach (var coin in waterCoins)
             coin.transform.position = CoinStartPos.position;
-
-
-
 
         // play appropriate popup
         if (win)
@@ -556,6 +634,7 @@ public class TigerCoinGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // show stars
+        AIData(StudentInfoSystem.GetCurrentProfile());
         StarAwardController.instance.AwardStarsAndExit(0);
     }
 
@@ -567,6 +646,7 @@ public class TigerCoinGameManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
         yield return new WaitForSeconds(1f);
         
+
         if (playTutorial)
         {
             StudentInfoSystem.GetCurrentProfile().tigerPawCoinsTutorial = true;
@@ -577,8 +657,16 @@ public class TigerCoinGameManager : MonoBehaviour
         else
         {
             // show stars
+            AIData(StudentInfoSystem.GetCurrentProfile());
             StarAwardController.instance.AwardStarsAndExit(CalculateStars());
-        }
+        }  
+    }
+
+    public void AIData(StudentPlayerData playerData)
+    {
+        playerData.tPawCoinPlayed = playerData.tPawCoinPlayed + 1;
+        playerData.starsTPawCoin = CalculateStars() + playerData.starsTPawCoin;
+        
     }
 
     private int CalculateStars()

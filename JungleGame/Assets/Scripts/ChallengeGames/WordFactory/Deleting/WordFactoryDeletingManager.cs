@@ -58,6 +58,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().wordFactoryDeletingTutorial = true;
                 StudentInfoSystem.SaveStudentPlayerData();
                 // calculate and show stars
+                AIData(StudentInfoSystem.GetCurrentProfile());
                 StarAwardController.instance.AwardStarsAndExit(3);
             }
         }
@@ -437,6 +438,19 @@ public class WordFactoryDeletingManager : MonoBehaviour
         // lose round
         else
         {
+            currentCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.0f);
+            currentCoins.Remove(currentCoin);
+            yield return new WaitForSeconds(.5f);
+
+            foreach (var coin in currentCoins)
+            {
+                PlayAudioCoin(coin);
+                yield return new WaitForSeconds(1f);
+            }
+
+            AudioManager.instance.PlayTalk(currentPair.word1.audio);
+            yield return new WaitForSeconds(currentPair.word1.audio.length);
+
             // play wrong sound
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
 
@@ -586,8 +600,16 @@ public class WordFactoryDeletingManager : MonoBehaviour
         else
         {
             // show stars
+            AIData(StudentInfoSystem.GetCurrentProfile());
             StarAwardController.instance.AwardStarsAndExit(CalculateStars());
-        }        
+        }
+    }
+
+    public void AIData(StudentPlayerData playerData)
+    {
+        playerData.delPlayed = playerData.delPlayed + 1;
+        playerData.starsDel = CalculateStars() + playerData.starsDel;
+        
     }
 
     private int CalculateStars()
@@ -607,6 +629,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // show stars
+        AIData(StudentInfoSystem.GetCurrentProfile());
         StarAwardController.instance.AwardStarsAndExit(0);
     }
 

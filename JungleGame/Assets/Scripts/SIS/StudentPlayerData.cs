@@ -32,7 +32,27 @@ public class StudentPlayerData
     public int totalStarsTurntables;
     public int totalStarsPirate;
     public int totalStarsSpiderweb;
+
+    // Track of Stars in Challengegame
     
+    public int starsBlend;
+    public int starsSub;
+    public int starsDel;
+    public int starsBuild;
+    public int starsPass;
+    public int starsTPawCoin;
+    public int starsTPawPol;
+
+    public int blendPlayed;
+    public int subPlayed;
+    public int delPlayed;
+    public int buildPlayed;
+    public int passPlayed;
+    public int tPawCoinPlayed;
+    public int tPawPolPlayed;
+
+    public int tPawCoinCounter;
+
     //public int totalStarsPotential;
     public int profileAvatar;
 

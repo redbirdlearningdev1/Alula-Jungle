@@ -134,6 +134,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().wordFactorySubstitutingTutorial = true;
                 StudentInfoSystem.SaveStudentPlayerData();
                 // calculate and show stars
+                AIData(StudentInfoSystem.GetCurrentProfile());
                 StarAwardController.instance.AwardStarsAndExit(3);
             }
         }
@@ -435,6 +436,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         
         // remove coin from current coins list
         currentCoins[currentPair.index].gameObject.SetActive(false);
+        Debug.Log(currentPair.index);
         currentCoins.RemoveAt(currentPair.index);
 
         // move tiger polaroid out of the way
@@ -717,7 +719,18 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         if (evaluatingCoin)
             return;
         evaluatingCoin = true;
+        if(currentPair.index == 0)
+        {
+            currentCoins.Insert(0,coin);
+        }
+        else
+        {
+            currentCoins.Add(coin);
+        }
 
+
+
+        
         // audio fx
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SelectBoop, 0.5f);
 
@@ -817,6 +830,15 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             // only increase misses if not playing tutorial
             if (!playTutorial)
                 numMisses++;
+
+            foreach (var coin in currentCoins)
+            {
+                PlayAudioCoin(coin);
+                yield return new WaitForSeconds(1f);
+            }
+
+            yield return new WaitForSeconds(1.5f);
+            AudioManager.instance.PlayTalk(tigerPolaroid.challengeWord.audio);
 
             // play wrong sound
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
@@ -1030,8 +1052,15 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         else
         {
             // show stars
+            AIData(StudentInfoSystem.GetCurrentProfile());
             StarAwardController.instance.AwardStarsAndExit(CalculateStars());
         }
+    }
+
+    public void AIData(StudentPlayerData playerData)
+    {
+        playerData.subPlayed = playerData.subPlayed + 1;
+        playerData.starsSub = CalculateStars() + playerData.starsSub;
     }
 
     private int CalculateStars()
@@ -1052,6 +1081,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // show stars
+        AIData(StudentInfoSystem.GetCurrentProfile());
         StarAwardController.instance.AwardStarsAndExit(0);
     }
 }

@@ -2286,10 +2286,12 @@ MonoBehaviour:
   currentWord: {fileID: 0}
   currentTargetValue: 0
   currentTargetWord: {fileID: 0}
-  playTutorial: 0
-  tutorialPhoto1: {fileID: 11400000, guid: 4b2a3f375b3198747833c54c66d2af2e, type: 2}
-  tutorialPhoto2: {fileID: 11400000, guid: e93b69875c1ac2b48afef0bc2e30c2d3, type: 2}
-  tutorialPhoto3: {fileID: 11400000, guid: 7fb59178ecfb53d48a9a2e39bbfb98e7, type: 2}
+  coinsScripted1: {fileID: 11400000, guid: fc7dd7945723f4c43bb11570f8fc84b0, type: 2}
+  coinsScripted2: {fileID: 11400000, guid: f82ed8e55e89c334d9a362a8ea4ef24c, type: 2}
+  coinsScripted3: {fileID: 11400000, guid: 10a28be9825f78b45a01352fb6702203, type: 2}
+  coinsScripted4: {fileID: 11400000, guid: ab4985bb3c1d802458263bc09dbe33ab, type: 2}
+  coinsScripted5: {fileID: 11400000, guid: df2ad72da62b5e546a3572a9489d2803, type: 2}
+  testthis: 0
 --- !u!4 &1695998804
 Transform:
   m_ObjectHideFlags: 0
@@ -3472,7 +3474,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 7.9442987
+      value: 7.5642996
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

@@ -56,6 +56,15 @@ public class TigerGameManager : MonoBehaviour
     public ActionWordEnum tutorialSet2;
     public ActionWordEnum tutorialSet3;
 
+    [Header("Scripted")]
+    private int scriptedEvent = 0;
+    public List<ChallengeWord> polaroidsScripted1;
+    public List<ChallengeWord> polaroidsScripted2;
+    public List<ChallengeWord> polaroidsScripted3;
+    public List<ChallengeWord> polaroidsScripted4;
+    public List<ChallengeWord> polaroidsScripted5;
+
+    public bool testthis;
 
     void Awake()
     {
@@ -105,6 +114,7 @@ public class TigerGameManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().tigerPawPhotosTutorial = true;
                 StudentInfoSystem.SaveStudentPlayerData();
                 // calculate and show stars
+                AIData(StudentInfoSystem.GetCurrentProfile());
                 StarAwardController.instance.AwardStarsAndExit(3);
             }
         }
@@ -132,6 +142,7 @@ public class TigerGameManager : MonoBehaviour
     private IEnumerator StartGame()
     {   
         currCoin.transform.position = coinStartPos.position;
+
 
         // get an unlocked set
         List<ActionWordEnum> unlockedSets = new List<ActionWordEnum>();
@@ -178,17 +189,117 @@ public class TigerGameManager : MonoBehaviour
         // determine correct index
         int correctindex = Random.Range(0, polaroidC.Count);
 
-        for (int i = 0; i < polaroidC.Count; i++)
+        //Scripted Tiger Paw Photo
+        if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 || testthis)
         {
-            if (i == correctindex)
+            // get correct tutorial polaroids
+            List<ChallengeWord> scriptedList = new List<ChallengeWord>();
+            switch (scriptedEvent)
             {
-                polaroidC[i].SetPolaroid(currWord);
+                case 0:
+                    scriptedList.AddRange(polaroidsScripted1);
+                    currWord = polaroidsScripted1[4];
+                    currSet = ActionWordEnum.mudslide;
+                    
+                    for (int i = 0; i < polaroidC.Count; i++)
+                    {
+                        
+                        polaroidC[i].SetPolaroid(polaroidsScripted1[i]);
+                        
+                    }
+                    break;
+                case 1:
+                    scriptedList.AddRange(polaroidsScripted2);
+                    currWord = polaroidsScripted2[2];
+                    currSet = ActionWordEnum.orcs;
+                    
+                    for (int i = 0; i < polaroidC.Count; i++)
+                    {
+                        
+                        polaroidC[i].SetPolaroid(polaroidsScripted2[i]);
+                        
+                    }
+                    break;
+                case 2:
+                    scriptedList.AddRange(polaroidsScripted3);
+                    currWord = polaroidsScripted3[1];
+                    currSet = ActionWordEnum.poop;
+                    
+                    for (int i = 0; i < polaroidC.Count; i++)
+                    {
+                        
+                        polaroidC[i].SetPolaroid(polaroidsScripted3[i]);
+                        
+                    }
+                    break;
+                case 3:
+                    scriptedList.AddRange(polaroidsScripted4);
+                    currWord = polaroidsScripted4[4];
+                    currSet = ActionWordEnum.listen;
+                    
+                    for (int i = 0; i < polaroidC.Count; i++)
+                    {
+                        
+                        polaroidC[i].SetPolaroid(polaroidsScripted4[i]);
+                        
+                    }
+                    break;
+                case 4:
+                    scriptedList.AddRange(polaroidsScripted5);
+                    currWord = polaroidsScripted5[3];
+                    currSet = ActionWordEnum.explorer;
+                    
+                    for (int i = 0; i < polaroidC.Count; i++)
+                    {
+                        
+                        polaroidC[i].SetPolaroid(polaroidsScripted5[i]);
+                        
+                    }
+                    break;
             }
-            else
+            scriptedEvent++;
+
+            // set tutorial polaroids
+            
+
+        }
+        else
+        {
+            // get an unlocked set
+            List<ActionWordEnum> unlockedSets = new List<ActionWordEnum>();
+            unlockedSets.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
+            //currSet = unlockedSets[Random.Range(0, unlockedSets.Count)];
+
+            currSet = AISystem.TigerPawPhotosCoinSelection(StudentInfoSystem.GetCurrentProfile());
+            //Debug.Log("HERERERER");
+
+            // get challenge words from a set
+            //List<ChallengeWord> word_pool = new List<ChallengeWord>();
+            //word_pool.AddRange(ChallengeWordDatabase.GetChallengeWordSet(currSet));
+
+            // get all other challenge words (from other sets)
+            //List<ChallengeWord> global_pool = new List<ChallengeWord>();
+            //global_pool.AddRange(ChallengeWordDatabase.globalChallengeWordList);
+            //foreach (var word in word_pool)
+            //{
+            //    global_pool.Remove(word);
+            //}
+
+            List<ChallengeWord> word_pool = new List<ChallengeWord>();
+            word_pool = AISystem.ChallengeWordSelectionTigerPawPol(StudentInfoSystem.GetCurrentProfile(), currSet);
+
+            // determine current word
+            //currWord = word_pool[Random.Range(0, word_pool.Count)];
+            // determine correct index
+
+            Debug.Log("HERERERER");
+            for (int i = 0; i < polaroidC.Count; i++)
             {
-                ChallengeWord otherWord = global_pool[Random.Range(0, global_pool.Count)];
-                polaroidC[i].SetPolaroid(otherWord);
-                global_pool.Remove(otherWord);
+                int randomIndex = Random.Range(0, word_pool.Count);
+                
+                polaroidC[i].SetPolaroid(word_pool[randomIndex]);
+                word_pool.RemoveAt(randomIndex);
+
             }
         }
 
@@ -258,6 +369,10 @@ public class TigerGameManager : MonoBehaviour
         }
         for (int i = 0; i < 5; i++)
         {
+            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 ||testthis && i == 0)
+            {
+                i = i+1;
+            }
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos1.position, .2f));
         }
         yield return new WaitForSeconds(.35f);
@@ -448,26 +563,46 @@ public class TigerGameManager : MonoBehaviour
 
         for (int i = 0; i < 1; i++)
         {
+            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 ||testthis && i == 0)
+            {
+                i = i+1;
+            }
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos2.position, .2f));
         }
         yield return new WaitForSeconds(.1f);
         for (int i = 0; i < 2; i++)
         {
+            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 ||testthis && i == 0)
+            {
+                i = i+1;
+            }
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos3.position, .2f));
         }
         yield return new WaitForSeconds(.1f);
         for (int i = 0; i < 3; i++)
         {
+            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 ||testthis && i == 0)
+            {
+                i = i+1;
+            }
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos4.position, .2f));
         }
         yield return new WaitForSeconds(.1f);
         for (int i = 0; i < 4; i++)
         {
+            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 ||testthis && i == 0)
+            {
+                i = i+1;
+            }
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos5.position, .2f));
         }
         yield return new WaitForSeconds(.2f);
         for (int i = 0; i < 5; i++)
         {
+            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 || testthis && i == 0)
+            {
+                i = i+1;
+            }
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoEndPos.position, .2f));
         }
 
@@ -576,6 +711,7 @@ public class TigerGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // show stars
+        AIData(StudentInfoSystem.GetCurrentProfile());
         StarAwardController.instance.AwardStarsAndExit(0);
     }
 
@@ -597,10 +733,17 @@ public class TigerGameManager : MonoBehaviour
         else
         {
             // show stars
+            AIData(StudentInfoSystem.GetCurrentProfile());
             StarAwardController.instance.AwardStarsAndExit(CalculateStars());
         }
     }
 
+    public void AIData(StudentPlayerData playerData)
+    {
+        playerData.tPawPolPlayed = playerData.tPawPolPlayed + 1;
+        playerData.starsTPawPol= CalculateStars() + playerData.starsTPawPol;
+        
+    }
     private int CalculateStars()
     {
         if (numMisses <= 0)
