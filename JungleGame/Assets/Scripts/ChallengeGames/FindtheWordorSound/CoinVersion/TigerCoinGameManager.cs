@@ -155,26 +155,15 @@ public class TigerCoinGameManager : MonoBehaviour
                     break;
             }
             tutorialEvent++;
+            polaroidC.SetPolaroid(currentWord);
+            currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(currentWord.set);
+            int rand = Random.Range(0,5);
+            waterCoins[rand].SetValue(currentTargetValue);
+
         }
-        else
-        {   
-            // get random word
-            currentWord = GetUnusedWord();
-        }
-
-        polaroidC.SetPolaroid(currentWord);
-        currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(currentWord.set);
-
-
-        print ("current value: " + currentTargetValue);
-
-        yield return new WaitForSeconds(0.5f);
-
-        polaroidC.gameObject.transform.position = polaroidStartPos.position;
-        polaroidC.LerpScale(0f, 0f);
 
         //Scripted Tiger Paw Photo
-        if (StudentInfoSystem.GetCurrentProfile().tPawCoinPlayed == 0 || testthis)
+        else if (StudentInfoSystem.GetCurrentProfile().tPawCoinPlayed == 0 && testthis)
         {
             // get correct tutorial polaroids
             switch (scriptedEvent)
@@ -250,7 +239,7 @@ public class TigerCoinGameManager : MonoBehaviour
             //print ("coin options: " + coinOptions.Count);
 
             //int correctIndex = Random.Range(0, waterCoins.Count);
-
+            currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(currentWord.set);
             for (int i = 0; i < 5; i++)
             {
 
@@ -259,6 +248,18 @@ public class TigerCoinGameManager : MonoBehaviour
                     coinOptions.RemoveAt(rand);
             }
         }
+
+
+        
+
+
+        print ("current value: " + currentTargetValue);
+
+        yield return new WaitForSeconds(0.5f);
+
+        polaroidC.gameObject.transform.position = polaroidStartPos.position;
+        polaroidC.LerpScale(0f, 0f);
+
         // return pattern to base state
         pattern.baseState();
         
@@ -435,7 +436,7 @@ public class TigerCoinGameManager : MonoBehaviour
         // turn off raycaster
         TigerCoinRayCaster.instance.isOn = false;
 
-        if (coin.value == currentWord.elkoninList[0]|| coin.value == currentWord.elkoninList[1]|| coin.value == currentWord.elkoninList[2] ||coin.value == currentWord.elkoninList[3])
+        if (coin.value == currentTargetValue)
         {
             StartCoroutine(PostRound(true));
         }

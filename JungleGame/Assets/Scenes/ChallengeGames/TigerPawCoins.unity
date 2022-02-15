@@ -2286,6 +2286,10 @@ MonoBehaviour:
   currentWord: {fileID: 0}
   currentTargetValue: 0
   currentTargetWord: {fileID: 0}
+  playTutorial: 0
+  tutorialPhoto1: {fileID: 11400000, guid: 4b2a3f375b3198747833c54c66d2af2e, type: 2}
+  tutorialPhoto2: {fileID: 11400000, guid: b71c7d15c0026274a9f2b2424bc377c0, type: 2}
+  tutorialPhoto3: {fileID: 11400000, guid: ba2d2a43b8f18214aab5992a9b14e2f7, type: 2}
   coinsScripted1: {fileID: 11400000, guid: fc7dd7945723f4c43bb11570f8fc84b0, type: 2}
   coinsScripted2: {fileID: 11400000, guid: f82ed8e55e89c334d9a362a8ea4ef24c, type: 2}
   coinsScripted3: {fileID: 11400000, guid: 10a28be9825f78b45a01352fb6702203, type: 2}
@@ -3061,6 +3065,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 121750354, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162192037, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244780262, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656799373, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 870513693240039170, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -3474,7 +3494,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 7.5642996
+      value: 7.8576756
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

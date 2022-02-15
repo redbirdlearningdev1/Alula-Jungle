@@ -65,6 +65,8 @@ public class TigerGameManager : MonoBehaviour
     public List<ChallengeWord> polaroidsScripted5;
 
     public bool testthis;
+    List<ChallengeWord> word_pool = new List<ChallengeWord>();
+    
 
     void Awake()
     {
@@ -145,10 +147,10 @@ public class TigerGameManager : MonoBehaviour
 
 
         // get an unlocked set
-        List<ActionWordEnum> unlockedSets = new List<ActionWordEnum>();
-        unlockedSets.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
+        //List<ActionWordEnum> unlockedSets = new List<ActionWordEnum>();
+        //unlockedSets.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
 
-        if (playTutorial)
+        if (!playTutorial)
         {
             switch (tutorialEvent)
             {
@@ -165,20 +167,14 @@ public class TigerGameManager : MonoBehaviour
                     break;
             }
             tutorialEvent++;
-        }   
-        else
-        {
-            currSet = unlockedSets[Random.Range(0, unlockedSets.Count)];
-        }
+                    // get challenge words from a set
         
-    
-        // get challenge words from a set
-        List<ChallengeWord> word_pool = new List<ChallengeWord>();
         word_pool.AddRange(ChallengeWordDatabase.GetChallengeWordSet(currSet));
 
         // get all other challenge words (from other sets)
         List<ChallengeWord> global_pool = new List<ChallengeWord>();
         global_pool.AddRange(ChallengeWordDatabase.globalChallengeWordList);
+        
         foreach (var word in word_pool)
         {
             global_pool.Remove(word);
@@ -189,9 +185,19 @@ public class TigerGameManager : MonoBehaviour
         // determine correct index
         int correctindex = Random.Range(0, polaroidC.Count);
 
-        //Scripted Tiger Paw Photo
-        if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 || testthis)
+        for (int i = 0; i < polaroidC.Count; i++)
+            {
+                int randomIndex = Random.Range(0, word_pool.Count);
+                
+                polaroidC[i].SetPolaroid(word_pool[randomIndex]);
+                word_pool.RemoveAt(randomIndex);
+
+            }
+        
+        }   
+        else if((StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 && testthis))
         {
+            Debug.Log("HERE?");
             // get correct tutorial polaroids
             List<ChallengeWord> scriptedList = new List<ChallengeWord>();
             switch (scriptedEvent)
@@ -265,9 +271,10 @@ public class TigerGameManager : MonoBehaviour
         }
         else
         {
+            
             // get an unlocked set
-            List<ActionWordEnum> unlockedSets = new List<ActionWordEnum>();
-            unlockedSets.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
+            //List<ActionWordEnum> unlockedSets = new List<ActionWordEnum>();
+            //unlockedSets.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
             //currSet = unlockedSets[Random.Range(0, unlockedSets.Count)];
 
             currSet = AISystem.TigerPawPhotosCoinSelection(StudentInfoSystem.GetCurrentProfile());
@@ -285,7 +292,7 @@ public class TigerGameManager : MonoBehaviour
             //    global_pool.Remove(word);
             //}
 
-            List<ChallengeWord> word_pool = new List<ChallengeWord>();
+            
             word_pool = AISystem.ChallengeWordSelectionTigerPawPol(StudentInfoSystem.GetCurrentProfile(), currSet);
 
             // determine current word
@@ -308,7 +315,7 @@ public class TigerGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // tutorial stuff
-        if (playTutorial && tutorialEvent == 1)
+        if (!playTutorial && tutorialEvent == 1)
         {
             // play tutorial intro 1-2
             List<AudioClip> clips = new List<AudioClip>();
@@ -356,7 +363,7 @@ public class TigerGameManager : MonoBehaviour
             yield return new WaitForSeconds(clip.length + 1f);
         }
 
-
+        
         Tiger.TigerDeal();
         yield return new WaitForSeconds(.6f);
         currCoin.gameObject.transform.position = coinLandPos.position;
@@ -369,7 +376,8 @@ public class TigerGameManager : MonoBehaviour
         }
         for (int i = 0; i < 5; i++)
         {
-            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 ||testthis && i == 0)
+            Debug.Log("HERERE");
+            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 && i == 0)
             {
                 i = i+1;
             }
@@ -563,7 +571,7 @@ public class TigerGameManager : MonoBehaviour
 
         for (int i = 0; i < 1; i++)
         {
-            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 ||testthis && i == 0)
+            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 && i == 0)
             {
                 i = i+1;
             }
@@ -572,7 +580,7 @@ public class TigerGameManager : MonoBehaviour
         yield return new WaitForSeconds(.1f);
         for (int i = 0; i < 2; i++)
         {
-            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 ||testthis && i == 0)
+            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 && i == 0)
             {
                 i = i+1;
             }
@@ -581,7 +589,7 @@ public class TigerGameManager : MonoBehaviour
         yield return new WaitForSeconds(.1f);
         for (int i = 0; i < 3; i++)
         {
-            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 ||testthis && i == 0)
+            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 && i == 0)
             {
                 i = i+1;
             }
@@ -590,7 +598,7 @@ public class TigerGameManager : MonoBehaviour
         yield return new WaitForSeconds(.1f);
         for (int i = 0; i < 4; i++)
         {
-            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 ||testthis && i == 0)
+            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 && i == 0)
             {
                 i = i+1;
             }
@@ -599,7 +607,7 @@ public class TigerGameManager : MonoBehaviour
         yield return new WaitForSeconds(.2f);
         for (int i = 0; i < 5; i++)
         {
-            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 || testthis && i == 0)
+            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 && i == 0)
             {
                 i = i+1;
             }

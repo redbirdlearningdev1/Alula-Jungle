@@ -324,26 +324,28 @@ public class WordFactoryBlendingManager : MonoBehaviour
         else
         {   
             // use random words
+            
+            List<ChallengeWord> tempChallengeWordList = new List<ChallengeWord>();
+            tempChallengeWordList = AISystem.ChallengeWordSelectionBlending(StudentInfoSystem.GetCurrentProfile());
+            ChallengeWord correctWord = tempChallengeWordList[0];
+            ChallengeWord incorrectWord1 = tempChallengeWordList[1];
+            ChallengeWord incorrectWord2 = tempChallengeWordList[2];
+            Debug.Log("THIS IS THE CORRECT WORD");
+            Debug.Log(correctWord);
+            
+            //ChallengeWord word = GetUnusedWord();
+            
             foreach (var polaroid in polaroids)
-            {
-                List<ChallengeWord> tempChallengeWordList = new List<ChallengeWord>();
-                tempChallengeWordList = AISystem.ChallengeWordSelectionBlending(StudentInfoSystem.GetCurrentProfile());
-                ChallengeWord correctWord = tempChallengeWordList[0];
-                ChallengeWord incorrectWord1 = tempChallengeWordList[1];
-                ChallengeWord incorrectWord2 = tempChallengeWordList[2];
-                int randIndex = Random.Range(0, tempChallengeWordList.Count);
-                //ChallengeWord word = GetUnusedWord();
-                if(randIndex == 0)
                 {
-                    correctIndex = randIndex;
+                    int randIndex = Random.Range(0, tempChallengeWordList.Count);
+
+                    polaroid.SetPolaroid(tempChallengeWordList[randIndex]);
+                    currentWords.Add(tempChallengeWordList[randIndex]);
+                    tempChallengeWordList.RemoveAt(randIndex);
                 }
-                polaroid.SetPolaroid(tempChallengeWordList[randIndex]);
-                currentWords.Add(tempChallengeWordList[randIndex]);
-                tempChallengeWordList.RemoveAt(randIndex);
-            }
 
             
-            currentWord = currentWords[correctIndex];
+            currentWord = correctWord;
             currentPolaroid = polaroids[correctIndex];
         }
 
