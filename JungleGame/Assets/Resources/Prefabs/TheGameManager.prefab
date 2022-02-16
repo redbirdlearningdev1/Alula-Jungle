@@ -32253,8 +32253,10 @@ MonoBehaviour:
   blendingIntro9: {fileID: 8300000, guid: b257a5359930d5a49a001eca832f535e, type: 3}
   blendingIntro10: {fileID: 8300000, guid: d7f8dc26608158a4e992c899c3171f04, type: 3}
   blendingIntro11: {fileID: 8300000, guid: 7dd42274cb2620b4081f3dab91e9effb, type: 3}
-  blendingStart1: {fileID: 8300000, guid: 8c0e2f716b7f14f47a7e531d9c46c408, type: 3}
+  blendingStart1: {fileID: 8300000, guid: 7135abf3c8868864380274ede9405790, type: 3}
   blendingStart2: {fileID: 8300000, guid: 2f2d846343ec735418dc1f341c7f5a8a, type: 3}
+  blendingEnd1: {fileID: 8300000, guid: 8c0e2f716b7f14f47a7e531d9c46c408, type: 3}
+  blendingEnd2: {fileID: 8300000, guid: 2f2d846343ec735418dc1f341c7f5a8a, type: 3}
   blendingReminderClips:
   - {fileID: 8300000, guid: c6ad3f7f534320b44aaa83b95dd5a00b, type: 3}
   - {fileID: 8300000, guid: e5a947c000bc47f498b6707972a30602, type: 3}
@@ -35377,7 +35379,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 109.753174, y: 0.005817631}
+  m_AnchoredPosition: {x: 109.77642, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

@@ -119,6 +119,10 @@ public class GameIntroDatabase : MonoBehaviour
     public AudioClip blendingStart1;
     public AudioClip blendingStart2;
 
+    // non-tutorial clips
+    public AudioClip blendingEnd1;
+    public AudioClip blendingEnd2;
+
     public List<AudioClip> blendingReminderClips;
 
     [Header("Word Factory Substituting Game")]

@@ -111,9 +111,9 @@ public class Polaroid : MonoBehaviour
 
     public void SetPolaroidAlpha(float alpha, float lerpDuration)
     {
-        backgroundImg.GetComponent<LerpableObject>().LerpImageAlpha(backgroundImg, alpha, lerpDuration);
+        //backgroundImg.GetComponent<LerpableObject>().LerpImageAlpha(backgroundImg, alpha, lerpDuration);
         pictureImg.GetComponent<LerpableObject>().LerpImageAlpha(pictureImg, alpha, lerpDuration);
-        frameImage.GetComponent<LerpableObject>().LerpImageAlpha(frameImage, alpha, lerpDuration);
+        //frameImage.GetComponent<LerpableObject>().LerpImageAlpha(frameImage, alpha, lerpDuration);
     }
 
     public void ToggleWiggle(bool opt)

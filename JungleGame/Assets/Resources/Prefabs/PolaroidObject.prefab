@@ -147,7 +147,6 @@ MonoBehaviour:
   challengeWord: {fileID: 0}
   pictureImg: {fileID: 7690649841822363165}
   backgroundImg: {fileID: 3020443049163456614}
-  filerImage: {fileID: 0}
   frameImage: {fileID: 6192921541033677916}
 --- !u!222 &3112401552482905169
 CanvasRenderer:

@@ -1626,7 +1626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOn: 1
-  moveSpeed: 0.2
+  moveSpeed: 0.3
   selectedObjectParent: {fileID: 730812432}
 --- !u!4 &1160915250
 Transform:
@@ -2585,7 +2585,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 44.13712
+      value: 44.414135
       objectReference: {fileID: 0}
     - target: {fileID: 8032072505287944566, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

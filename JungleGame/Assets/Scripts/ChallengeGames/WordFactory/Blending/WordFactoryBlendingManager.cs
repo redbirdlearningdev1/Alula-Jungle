@@ -128,13 +128,6 @@ public class WordFactoryBlendingManager : MonoBehaviour
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().wordFactoryBlendingTutorial;
 
-        // add settings button if not playing tutorial
-        if (!playTutorial)
-        {
-            // turn on settings button
-            SettingsManager.instance.ToggleMenuButtonActive(true);
-        }
-
         // add ambiance
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.05f);
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 0.05f);
@@ -203,22 +196,20 @@ public class WordFactoryBlendingManager : MonoBehaviour
             else
             {
                 // play tutorial intro 3
-                AudioClip  clip = GameIntroDatabase.instance.blendingIntro3;
+                AudioClip clip = GameIntroDatabase.instance.blendingIntro3;
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
                 yield return new WaitForSeconds(clip.length + 1f);
 
-                // play tutorial intro 4
-                clip = GameIntroDatabase.instance.blendingIntro4;
-                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(clip.length + 1f);                
+                // // play tutorial intro 4
+                // clip = GameIntroDatabase.instance.blendingIntro4;
+                // TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                // yield return new WaitForSeconds(clip.length + 1f);                
             }
         }
         else
         {
             if (!playIntro)
             {
-                playIntro = true;
-
                 // short pause before start
                 yield return new WaitForSeconds(1f);
 
@@ -232,6 +223,13 @@ public class WordFactoryBlendingManager : MonoBehaviour
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
                 yield return new WaitForSeconds(clip.length + 1f);
             }
+        }
+
+        // add menu button
+        if (!playIntro)
+        {
+            playIntro = true;
+            SettingsManager.instance.ToggleMenuButtonActive(true);
         }
 
         // get challenge words
@@ -813,6 +811,19 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
         if (playTutorial)
         {
+            // short pause before start
+            yield return new WaitForSeconds(1f);
+
+            // play end 1
+            AudioClip clip = GameIntroDatabase.instance.blendingEnd1;
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+            yield return new WaitForSeconds(clip.length + 1f);
+
+            // play end 2
+            clip = GameIntroDatabase.instance.blendingEnd2;
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
+            yield return new WaitForSeconds(clip.length + 1f);
+
             StudentInfoSystem.GetCurrentProfile().wordFactoryBlendingTutorial = true;
             StudentInfoSystem.SaveStudentPlayerData();
 
@@ -883,7 +894,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
         foreach (Polaroid polaroid in polaroids)
         {
             if (polaroid != currentPolaroid)
-                polaroid.SetPolaroidAlpha(0.5f, 0.5f);
+                polaroid.SetPolaroidAlpha(0.2f, 0.5f);
 
             // re-do scales to show correct polaroid
             if (polaroid.challengeWord == currentWord)
