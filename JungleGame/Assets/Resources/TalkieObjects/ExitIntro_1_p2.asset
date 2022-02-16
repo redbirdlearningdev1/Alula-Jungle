@@ -237,7 +237,7 @@ MonoBehaviour:
     leftCharacter: 3
     leftEmotionNum: 12
     leftMouthEnum: 1
-    leftEyesEnum: 3
+    leftEyesEnum: 4
     rightCharacter: 7
     rightEmotionNum: 3
     rightMouthEnum: 2
@@ -315,7 +315,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 7
+    leftEmotionNum: 15
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 7
@@ -380,7 +380,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 7
+    leftEmotionNum: 15
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 7
@@ -445,7 +445,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 7
+    leftEmotionNum: 15
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 7
@@ -547,7 +547,7 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 7
-    rightEmotionNum: 10
+    rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
@@ -563,9 +563,9 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 7
-    rightEmotionNum: 10
+    rightEmotionNum: 3
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 4
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 48bccb54313b8f843b94089a72438791, type: 3}
     audioClipName: R_1_1_Julius_25_T2

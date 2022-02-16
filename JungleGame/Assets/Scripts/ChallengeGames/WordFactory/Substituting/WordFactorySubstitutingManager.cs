@@ -55,13 +55,6 @@ public class WordFactorySubstitutingManager : MonoBehaviour
 
     [SerializeField] private Transform polaroid_middlePos;
 
-    [Header("Values")]
-    [SerializeField] private Vector2 normalCoinSize;
-    [SerializeField] private Vector2 expandedCoinSize;
-    // water coins
-    [SerializeField] private Vector2 waterNormalCoinSize;
-    [SerializeField] private Vector2 waterExpandedCoinSize;
-
     // other variables
     private List<WordPair> pairPool;
     private WordPair currentPair;
@@ -111,13 +104,6 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         // only turn off tutorial if false
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().wordFactorySubstitutingTutorial;
-
-        // add settings button if not playing tutorial
-        if (!playTutorial)
-        {
-            // turn on settings button
-            SettingsManager.instance.ToggleMenuButtonActive(true);
-        }
 
         PregameSetup();
     }
@@ -213,31 +199,36 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
                 yield return new WaitForSeconds(clip.length + 1f);
 
-                // play tutorial intro 4
-                clip = GameIntroDatabase.instance.substitutingIntro4;
-                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(clip.length + 1f);                
+                // // play tutorial intro 4
+                // clip = GameIntroDatabase.instance.substitutingIntro4;
+                // TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                // yield return new WaitForSeconds(clip.length + 1f);                
             }
         }
         else
         {
             if (!playIntro)
             {
-                playIntro = true;
-
                 // short pause before start
                 yield return new WaitForSeconds(1f);
 
                 // play start 1
-                AudioClip clip = GameIntroDatabase.instance.blendingStart1;
+                AudioClip clip = GameIntroDatabase.instance.substitutingStart1;
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
                 yield return new WaitForSeconds(clip.length + 1f);
 
                 // play start 2
-                clip = GameIntroDatabase.instance.blendingStart2;
+                clip = GameIntroDatabase.instance.substitutingStart2;
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
                 yield return new WaitForSeconds(clip.length + 1f);
             }
+        }
+
+        if (!playIntro)
+        {
+            playIntro = true;
+            // turn on settings button
+            SettingsManager.instance.ToggleMenuButtonActive(true);
         }
 
         // get challenge words
@@ -344,7 +335,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             var coinObj = Instantiate(universalCoin, framesReal[i].position, Quaternion.identity, boxCoinParent);
             var coin = coinObj.GetComponent<UniversalCoinImage>();
             coin.SetValue(currentWord.elkoninList[i]);
-            coin.SetSize(normalCoinSize);
+            coin.LerpScale(new Vector2(1.2f, 1.2f), 0.1f);
             currentCoins.Add(coin);
             coin.ToggleVisibility(true, false);
             coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
@@ -365,7 +356,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         // say polaroid word
         foreach (var coin in currentCoins)
         {
-            coin.LerpSize(expandedCoinSize, 0.25f);
+            coin.LerpScale(new Vector2(1.35f, 1.35f), 0.25f);
             yield return new WaitForSeconds(0.01f);
         }
 
@@ -376,7 +367,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
 
         foreach (var coin in currentCoins)
         {
-            coin.LerpSize(normalCoinSize, 0.25f);
+            coin.LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
             yield return new WaitForSeconds(0.01f);
         }
 
@@ -493,7 +484,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         }
 
         // place water coins
-        ResetWaterCoins();
+        ResetWaterCoins(false);
         for (int i = 0; i < 4; i++)
         {
             if (i == correctIndex)
@@ -546,21 +537,25 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         {
             if (tutorialEvent == 1)
             {
-                // play tutorial intro 10
-                AudioClip clip = GameIntroDatabase.instance.substitutingIntro10;
-                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
-
                 // grow and wiggle correct coin
                 foreach(var coin in waterCoins)
                 {
                     if (coin.value == currentTargetValue)
                     {
                         coin.GetComponent<WiggleController>().StartWiggle();
-                        coin.LerpScale(new Vector2(1.2f, 1.2f), 0.1f);
-                        continue;
+                        coin.LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
+                    }
+                    else
+                    {   
+                        coin.LerpScale(new Vector2(0.8f, 0.8f), 0.1f);
+                        coin.SetTransparency(0.5f, true);
                     }
                 }   
+
+                // play tutorial intro 10
+                AudioClip clip = GameIntroDatabase.instance.substitutingIntro10;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
+                yield return new WaitForSeconds(clip.length + 1f);
             }
         }
 
@@ -679,8 +674,8 @@ public class WordFactorySubstitutingManager : MonoBehaviour
 
         AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(coin.value).audio);
         // water coin differential
-        if (!waterCoin) coin.LerpSize(expandedCoinSize, 0.25f);
-        else  coin.LerpSize(waterExpandedCoinSize, 0.25f);
+        if (!waterCoin) coin.LerpScale(new Vector2(1.35f, 1.35f), 0.25f);
+        else  coin.LerpScale(new Vector2(1.1f, 1.1f), 0.25f);
 
         yield return new WaitForSeconds(1f);
         // return if current water coin
@@ -691,9 +686,8 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         }
 
         // water coin differential
-        if (!waterCoin) coin.LerpSize(normalCoinSize, 0.25f);
-        else  coin.LerpSize(waterNormalCoinSize, 0.25f);
-
+        if (!waterCoin) coin.LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
+        else  coin.LerpScale(Vector2.one, 0.25f);
 
         playingCoinAudio = false;
     }
@@ -705,19 +699,24 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             if (waterCoins[i] != currWaterCoin)
             {
                 StartCoroutine(LerpMoveObject(waterCoins[i].transform, waterCoinActivePos[i].position, 0.25f));
-                waterCoins[i].LerpSize(waterNormalCoinSize, 0.2f);
+                waterCoins[i].LerpScale(Vector2.one, 0.1f);
             }
         }
     }
 
-    public void ResetWaterCoins()
+    public void ResetWaterCoins(bool skipCurrentCoin)
     {
         for (int i = 0; i < 4; i++)
         {
-            if (waterCoins[i] != currWaterCoin)
+            if (skipCurrentCoin && waterCoins[i] == currWaterCoin)
+            { 
+                // skip coin
+            }
+            else
             {
                 StartCoroutine(LerpMoveObject(waterCoins[i].transform, waterCoinInactivePos[i].position, 0.25f));
-                waterCoins[i].LerpSize(waterNormalCoinSize, 0.2f);
+                waterCoins[i].LerpScale(Vector2.one, 0.1f);
+                waterCoins[i].SetTransparency(1f, true);
             }
         }
     }
@@ -735,9 +734,6 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         {
             currentCoins.Add(coin);
         }
-
-
-
         
         // audio fx
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SelectBoop, 0.5f);
@@ -752,7 +748,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             currWaterCoin = coin;
 
             // scale water coin correctly
-            coin.LerpSize(normalCoinSize, 0.25f);
+            coin.LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
 
             // lerp coin to frame position
             StartCoroutine(LerpMoveObject(coin.transform, framesReal[currentPair.index].position, 0.25f));
@@ -763,7 +759,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             currWaterCoin = coin;
 
             // scale water coin correctly
-            coin.LerpSize(normalCoinSize, 0.25f);
+            coin.LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
 
             // lerp coin to frame position
             StartCoroutine(LerpMoveObject(coin.transform, framesReal[currentPair.index].position, 0.25f));
@@ -771,7 +767,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         }
 
         // return water coins
-        WordFactorySubstitutingManager.instance.ResetWaterCoins();
+        WordFactorySubstitutingManager.instance.ResetWaterCoins(true);
     }
 
     private IEnumerator PostRound(bool win)
@@ -788,11 +784,24 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             if (playTutorial)
             {
                 currWaterCoin.GetComponent<WiggleController>().StopWiggle();
-                currWaterCoin.LerpScale(new Vector2(1f, 1f), 0.1f);
+            }
+
+            // say each letter
+            foreach (var coin in currentCoins)
+            {
+                PlayAudioCoin(coin);
+                yield return new WaitForSeconds(1f);
             }
 
             // play correct sound
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
+            yield return new WaitForSeconds(1f);
+
+            // say new challenge word
+            redPolaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
+            AudioManager.instance.PlayTalk(currentTargetWord.audio);
+            yield return new WaitForSeconds(currentTargetWord.audio.length + 0.5f);
+            redPolaroid.GetComponent<LerpableObject>().LerpScale(Vector2.one, 0.1f);
 
             // slide tiger polaroid under red polaroid
             tigerPolaroid.transform.SetAsFirstSibling();
@@ -845,9 +854,6 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                 yield return new WaitForSeconds(1f);
             }
 
-            yield return new WaitForSeconds(1.5f);
-            AudioManager.instance.PlayTalk(tigerPolaroid.challengeWord.audio);
-
             // play wrong sound
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
 
@@ -856,6 +862,9 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             {
                 firstEntry = false;
                 WordFactorySubstituteRaycaster.instance.isOn = true;
+
+                // remove coin from current coins
+                currentCoins.Remove(currWaterCoin);
                 currWaterCoin = null;
                 ReturnWaterCoins();
 
@@ -953,7 +962,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         currWaterCoin.transform.position = waterCoinInactivePos[0].position;
         currWaterCoin.transform.localScale = new Vector3(1f, 1f, 1f);
         currWaterCoin = null;
-        ResetWaterCoins();
+        ResetWaterCoins(false);
         yield return new WaitForSeconds(0.5f);
 
         if (playTutorial && tutorialEvent == 1)

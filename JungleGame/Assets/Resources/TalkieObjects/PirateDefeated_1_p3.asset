@@ -111,9 +111,9 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 11
-    rightEmotionNum: 14
+    rightEmotionNum: 9
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 4
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 219a57b6acc56db41b242c0b78d03886, type: 3}
     audioClipName: FR_2_5_Ollie_13_T2
@@ -127,7 +127,7 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 11
-    rightEmotionNum: 14
+    rightEmotionNum: 9
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
@@ -143,7 +143,7 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 11
-    rightEmotionNum: 14
+    rightEmotionNum: 9
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
@@ -159,7 +159,7 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 3
     rightCharacter: 11
-    rightEmotionNum: 14
+    rightEmotionNum: 9
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
@@ -175,7 +175,7 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 11
-    rightEmotionNum: 14
+    rightEmotionNum: 9
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
@@ -207,7 +207,7 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 11
-    rightEmotionNum: 10
+    rightEmotionNum: 14
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
@@ -239,7 +239,7 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 11
-    rightEmotionNum: 5
+    rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
@@ -271,9 +271,9 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 11
-    rightEmotionNum: 11
+    rightEmotionNum: 12
     rightMouthEnum: 1
-    rightEyesEnum: 3
+    rightEyesEnum: 1
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 51f8ee584f6b47c41a50bbfb2260cad2, type: 3}
     audioClipName: FR_2_5_Ollie_16_T6

@@ -163,7 +163,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: ef998d7c3f1f5484f83d609f4be29182, type: 3}
     audioClipName: FR_1_3_Bubbles_5_T1
     audioString: Boorble Burble Bubble!
   - endTalkieAfterThisSegment: 0

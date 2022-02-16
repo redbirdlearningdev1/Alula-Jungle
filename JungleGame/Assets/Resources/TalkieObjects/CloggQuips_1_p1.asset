@@ -112,7 +112,7 @@ MonoBehaviour:
     leftEyesEnum: 0
     rightCharacter: 8
     rightEmotionNum: 6
-    rightMouthEnum: 2
+    rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 43756740d5edcfc49b512deef759db6a, type: 3}
@@ -127,9 +127,9 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 8
-    rightEmotionNum: 9
-    rightMouthEnum: 2
-    rightEyesEnum: 3
+    rightEmotionNum: 7
+    rightMouthEnum: 1
+    rightEyesEnum: 2
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 1ead0093fd15a214ba7c8fab84a43350, type: 3}
     audioClipName: P_3_1a_Clogg_7_T1

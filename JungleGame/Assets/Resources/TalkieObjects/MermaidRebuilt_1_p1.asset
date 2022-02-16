@@ -122,15 +122,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 1
-    leftEmotionNum: 11
-    leftMouthEnum: 1
-    leftEyesEnum: 3
-    rightCharacter: 2
-    rightEmotionNum: 4
-    rightMouthEnum: 2
-    rightEyesEnum: 1
-    activeCharacter: 1
+    leftCharacter: 12
+    leftEmotionNum: 4
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 1
+    rightEmotionNum: 11
+    rightMouthEnum: 1
+    rightEyesEnum: 3
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 7babe14dbd875eb4b97f1ebd49001b3c, type: 3}
     audioClipName: EJ_1_4_Red_5_T1
     audioString: I'm so glad we were able to help!

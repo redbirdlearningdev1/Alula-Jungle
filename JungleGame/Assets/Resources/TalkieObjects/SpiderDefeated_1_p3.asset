@@ -139,7 +139,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 2
-    leftEmotionNum: 2
+    leftEmotionNum: 10
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 9

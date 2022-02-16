@@ -303,9 +303,9 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 3
+    rightEmotionNum: 5
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 2
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 6ea51c3f9d226864099ff1797e3044d8, type: 3}
     audioClipName: P_2_2_Wally_10_T1

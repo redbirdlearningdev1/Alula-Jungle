@@ -33,7 +33,7 @@ MonoBehaviour:
     rightCharacter: 7
     rightEmotionNum: 6
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 2
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 10ff7d8fc598fc448bd94be5d8efd280, type: 3}
     audioClipName: E_2_4_Julius_1_T1
@@ -81,7 +81,7 @@ MonoBehaviour:
     rightCharacter: 7
     rightEmotionNum: 3
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 2
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 49b280b091c6a3448b9fde909510aaf2, type: 3}
     audioClipName: E_2_3_Julius_3_T1

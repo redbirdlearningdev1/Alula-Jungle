@@ -141,6 +141,10 @@ public class GameIntroDatabase : MonoBehaviour
     public AudioClip substitutingIntro12;
     public AudioClip substitutingIntro13;
 
+    // non-tutorial clips
+    public AudioClip substitutingStart1;
+    public AudioClip substitutingStart2;
+
     public List<AudioClip> substitutingReminderClips;
 
     [Header("Word Factory Deleting Game")]

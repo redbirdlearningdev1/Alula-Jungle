@@ -158,11 +158,11 @@ MonoBehaviour:
     leftEmotionNum: 1
     leftMouthEnum: 2
     leftEyesEnum: 1
-    rightCharacter: 3
+    rightCharacter: 2
     rightEmotionNum: 1
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 3
     audioClip: {fileID: 8300000, guid: 5fc6f2f442681464c8fe692c190223dc, type: 3}
     audioClipName: R_2_3_RedWally_3_T1
     audioString: ...
@@ -174,11 +174,11 @@ MonoBehaviour:
     leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 1
-    rightCharacter: 3
+    rightCharacter: 2
     rightEmotionNum: 4
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 3
     audioClip: {fileID: 8300000, guid: 7bbb9f90babfba54280cb182840861c2, type: 3}
     audioClipName: R_2_3_RedWally_3_T2
     audioString: ...
@@ -190,11 +190,11 @@ MonoBehaviour:
     leftEmotionNum: 17
     leftMouthEnum: 1
     leftEyesEnum: 3
-    rightCharacter: 3
+    rightCharacter: 2
     rightEmotionNum: 4
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 3
     audioClip: {fileID: 8300000, guid: 3b42c7457948b914db798bc8020fc4f1, type: 3}
     audioClipName: R_2_3_RedWally_4_T1
     audioString: "Go ahead Darwin, we won\u2019t stop you."
@@ -269,7 +269,7 @@ MonoBehaviour:
     leftCharacter: 3
     leftEmotionNum: 11
     leftMouthEnum: 1
-    leftEyesEnum: 1
+    leftEyesEnum: 3
     rightCharacter: 0
     rightEmotionNum: 0
     rightMouthEnum: 0

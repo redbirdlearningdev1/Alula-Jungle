@@ -26,38 +26,6 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 6
-    leftEmotionNum: 6
-    leftMouthEnum: 1
-    leftEyesEnum: 0
-    rightCharacter: 5
-    rightEmotionNum: 8
-    rightMouthEnum: 2
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 0}
-    audioClipName: Marcus_Laugh
-    audioString: HA HA HA!!!!
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 6
-    leftEmotionNum: 6
-    leftMouthEnum: 2
-    leftEyesEnum: 0
-    rightCharacter: 5
-    rightEmotionNum: 8
-    rightMouthEnum: 1
-    rightEyesEnum: 0
-    activeCharacter: 2
-    audioClip: {fileID: 0}
-    audioClipName: Brutus_Laugh
-    audioString: Heh heh...
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
     leftCharacter: 0
     leftEmotionNum: 0
     leftMouthEnum: 0

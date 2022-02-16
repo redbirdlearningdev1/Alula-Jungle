@@ -63,9 +63,9 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 11
-    rightEmotionNum: 5
+    rightEmotionNum: 11
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 2
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: e9ba00a72ef2ec64faf796efd620e3f8, type: 3}
     audioClipName: FR_2_3_Ollie_1_T3
@@ -175,7 +175,7 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 11
-    rightEmotionNum: 5
+    rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2

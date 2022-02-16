@@ -133,7 +133,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: e9946524e38991c46b7fb9064c4b5e35, type: 3}
     audioClipName: B_2_3_Marcus_4_T1
-    audioString: "I\u2019ve had about enough of you!"
+    audioString: "I\u2019ve had enough of you!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

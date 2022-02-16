@@ -91,9 +91,9 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 11
-    leftEmotionNum: 6
+    leftEmotionNum: 8
     leftMouthEnum: 1
-    leftEyesEnum: 1
+    leftEyesEnum: 4
     rightCharacter: 7
     rightEmotionNum: 1
     rightMouthEnum: 2
@@ -642,7 +642,7 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 7
-    rightEmotionNum: 1
+    rightEmotionNum: 9
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
@@ -690,7 +690,7 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 7
-    rightEmotionNum: 3
+    rightEmotionNum: 9
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
@@ -706,9 +706,9 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 7
-    rightEmotionNum: 21
+    rightEmotionNum: 7
     rightMouthEnum: 1
-    rightEyesEnum: 4
+    rightEyesEnum: 1
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 65630e2520e673e448b921d93ffa9ba4, type: 3}
     audioClipName: FR_2_4_Julius_42_T6
@@ -734,11 +734,11 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 8
+    leftEmotionNum: 6
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 7
+    rightEmotionNum: 10
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 3
@@ -770,7 +770,7 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 7
-    rightEmotionNum: 1
+    rightEmotionNum: 7
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2

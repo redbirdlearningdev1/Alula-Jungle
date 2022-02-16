@@ -63,7 +63,7 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 6
-    rightEmotionNum: 3
+    rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
@@ -85,4 +85,4 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 5f63a195d82f97740a346ff8286f3cf5, type: 3}
     audioClipName: Cha_0_2b_Marcus_3_T1
-    audioString: "I\u2019ll be waiting."
+    audioString: "We\u2019ll be waiting."

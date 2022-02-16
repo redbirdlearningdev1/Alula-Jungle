@@ -245,7 +245,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 536a0e7eac4839f47a7ec459b1df9d8c, type: 3}
     audioClipName: P_3_2_Clogg_25_T1
-    audioString: Your highness that int how-
+    audioString: Your highness that isn't how-
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

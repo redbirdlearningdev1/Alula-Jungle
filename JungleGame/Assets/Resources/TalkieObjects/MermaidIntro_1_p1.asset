@@ -32,7 +32,7 @@ MonoBehaviour:
     leftEyesEnum: 3
     rightCharacter: 2
     rightEmotionNum: 4
-    rightMouthEnum: 2
+    rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 3
     audioClip: {fileID: 0}

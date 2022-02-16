@@ -192,9 +192,9 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 11
-    rightEmotionNum: 2
+    rightEmotionNum: 7
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 3
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 54872236d32c69542bd66a8e5682324b, type: 3}
     audioClipName: FR_2_1_Ollie_9_T1
@@ -208,9 +208,9 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 11
-    rightEmotionNum: 2
+    rightEmotionNum: 7
     rightMouthEnum: 2
-    rightEyesEnum: 3
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 88cf1cbb09a2b47418ec21db5708542e, type: 3}
     audioClipName: FR_2_1_Red_10_T1
@@ -224,9 +224,9 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 11
-    rightEmotionNum: 2
+    rightEmotionNum: 7
     rightMouthEnum: 2
-    rightEyesEnum: 1
+    rightEyesEnum: 3
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 213cb99d0b74f3c4985a91f7f0a9f6e9, type: 3}
     audioClipName: FR_2_1_Red_10_T2
@@ -240,9 +240,9 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 11
-    rightEmotionNum: 1
+    rightEmotionNum: 8
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 3
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: e2f8aaa8fe98dd94f892d543d2eb82f4, type: 3}
     audioClipName: FR_2_1_Ollie_11_T1
@@ -257,7 +257,7 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 11
-    rightEmotionNum: 1
+    rightEmotionNum: 8
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
@@ -354,7 +354,7 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 3
     rightCharacter: 11
-    rightEmotionNum: 3
+    rightEmotionNum: 4
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
@@ -388,7 +388,7 @@ MonoBehaviour:
     rightCharacter: 2
     rightEmotionNum: 7
     rightMouthEnum: 2
-    rightEyesEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 62bbeab2a8fb61740b3eee4df5be59fd, type: 3}
     audioClipName: FR_2_1_Red_19_T1

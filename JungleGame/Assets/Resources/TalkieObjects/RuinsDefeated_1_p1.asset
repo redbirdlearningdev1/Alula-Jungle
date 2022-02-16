@@ -86,7 +86,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: e0bf58883c9f4fd4c8663698d750fe86, type: 3}
     audioClipName: EJ_2_3_Brutus_3_T2
     audioString: "Well\u2026 technically they\u2019re not from here so Julius isn\u2019t
-      their kKng\u2026."
+      their king\u2026."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

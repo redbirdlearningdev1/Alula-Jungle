@@ -239,9 +239,9 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 3
-    rightEmotionNum: 12
+    rightEmotionNum: 6
     rightMouthEnum: 1
-    rightEyesEnum: 4
+    rightEyesEnum: 1
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: f1f7a720995601b4684f68eaf8105591, type: 3}
     audioClipName: E_1_0_Darwin_9_T3
@@ -319,9 +319,9 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
-    rightEmotionNum: 12
+    rightEmotionNum: 6
     rightMouthEnum: 1
-    rightEyesEnum: 4
+    rightEyesEnum: 1
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 12f3d97be8240504aa7ded8a0361f273, type: 3}
     audioClipName: E_1_0_Darwin_11_T4
@@ -511,9 +511,9 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
-    rightEmotionNum: 2
+    rightEmotionNum: 11
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 3
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 6a595cac744bea04790e759a9ab9cd46, type: 3}
     audioClipName: E_1_0_Darwin_17_T2
@@ -544,7 +544,7 @@ MonoBehaviour:
     leftEyesEnum: 3
     rightCharacter: 3
     rightEmotionNum: 4
-    rightMouthEnum: 1
+    rightMouthEnum: 2
     rightEyesEnum: 3
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 1e2834f665a375e4381e127296ae64d3, type: 3}

@@ -59,7 +59,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 1
+    leftEmotionNum: 7
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 2
@@ -76,7 +76,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 1
+    leftEmotionNum: 7
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 2
@@ -92,7 +92,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 2
+    leftEmotionNum: 1
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 2
@@ -463,7 +463,7 @@ MonoBehaviour:
     leftCharacter: 2
     leftEmotionNum: 9
     leftMouthEnum: 1
-    leftEyesEnum: 4
+    leftEyesEnum: 1
     rightCharacter: 3
     rightEmotionNum: 13
     rightMouthEnum: 2
@@ -550,6 +550,6 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: ac0ca84200c724e40b5ccccdbd53237e, type: 3}
     audioClipName: EJ_1_1_Wally_73_T1
     audioString: Right!

@@ -63,7 +63,7 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 4
+    rightEmotionNum: 7
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
@@ -79,7 +79,7 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 1
+    rightEmotionNum: 7
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
@@ -95,9 +95,9 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 4
+    rightEmotionNum: 7
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 4
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 7c1d1d6e7b3a76d4cb08e3f873d28136, type: 3}
     audioClipName: R_1_1_Wally_43_T2

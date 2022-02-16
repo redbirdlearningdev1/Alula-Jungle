@@ -4159,7 +4159,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.GorillaVillage:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage);
                     julius.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType = newGameType;
                     firstTime = true;
@@ -4174,7 +4174,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.Mudslide:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide);
                     julius.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType = newGameType;
                     firstTime = true;
@@ -4189,7 +4189,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.OrcVillage:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage);
                     julius.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType = newGameType;
                     firstTime = true;
@@ -4204,7 +4204,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.SpookyForest:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest);
                     julius.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType = newGameType;
                     firstTime = true;
@@ -4219,7 +4219,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.OrcCamp:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcCamp, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcCamp);
                     julius.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.gameType = newGameType;
                     firstTime = true;
@@ -4234,7 +4234,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.GorillaPoop:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge1.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop);
                     julius.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge1.gameType = newGameType;
                     firstTime = true;
@@ -4249,7 +4249,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.WindyCliff:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge1.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff);
                     julius.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge1.gameType = newGameType;
                     firstTime = true;
@@ -4264,7 +4264,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.PirateShip:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge1.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip);
                     julius.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge1.gameType = newGameType;
                     firstTime = true;
@@ -4279,7 +4279,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.MermaidBeach:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach);
                     julius.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.gameType = newGameType;
                     firstTime = true;
@@ -4295,7 +4295,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.Ruins2:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.R_challenge1.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1);
                     julius.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.R_challenge1.gameType = newGameType;
                     firstTime = true;
@@ -4310,7 +4310,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.ExitJungle:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge1.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle);
                     julius.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge1.gameType = newGameType;
                     firstTime = true;
@@ -4325,7 +4325,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.GorillaStudy:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge1.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy);
                     julius.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge1.gameType = newGameType;
                     firstTime = true;
@@ -4340,7 +4340,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.Monkeys:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.M_challenge1.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys);
                     julius.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.M_challenge1.gameType = newGameType;
                     firstTime = true;
@@ -4372,7 +4372,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.GorillaVillage:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage);
                     marcus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType = newGameType;
                     firstTime = true;
@@ -4388,7 +4388,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.Mudslide:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide);
                     marcus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType = newGameType;
                     firstTime = true;
@@ -4403,7 +4403,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.OrcVillage:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage);
                     marcus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType = newGameType;
                     firstTime = true;
@@ -4418,7 +4418,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.SpookyForest:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest);
                     marcus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType = newGameType;
                     firstTime = true;
@@ -4433,7 +4433,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.OrcCamp:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcCamp, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcCamp);
                     marcus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.gameType = newGameType;
                     firstTime = true;
@@ -4448,7 +4448,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.GorillaPoop:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge2.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop);
                     marcus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge2.gameType = newGameType;
                     firstTime = true;
@@ -4463,7 +4463,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.WindyCliff:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge2.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff);
                     marcus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge2.gameType = newGameType;
                     firstTime = true;
@@ -4478,7 +4478,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.PirateShip:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge2.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip);
                     marcus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge2.gameType = newGameType;
                     firstTime = true;
@@ -4493,7 +4493,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.MermaidBeach:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach);
                     marcus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.gameType = newGameType;
                     firstTime = true;
@@ -4509,7 +4509,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.Ruins2:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.R_challenge2.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1);
                     marcus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.R_challenge2.gameType = newGameType;
                     firstTime = true;
@@ -4524,7 +4524,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.ExitJungle:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge2.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle);
                     marcus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge2.gameType = newGameType;
                     firstTime = true;
@@ -4539,7 +4539,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.GorillaStudy:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge2.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy);
                     marcus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge2.gameType = newGameType;
                     firstTime = true;
@@ -4554,7 +4554,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.Monkeys:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.M_challenge2.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys);
                     marcus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.M_challenge2.gameType = newGameType;
                     firstTime = true;
@@ -4586,7 +4586,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.GorillaVillage:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaVillage);
                     brutus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType = newGameType;
                     firstTime = true;
@@ -4601,7 +4601,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.Mudslide:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Mudslide);
                     brutus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType = newGameType;
                     firstTime = true;
@@ -4616,7 +4616,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.OrcVillage:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcVillage);
                     brutus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType = newGameType;
                     firstTime = true;
@@ -4631,7 +4631,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.SpookyForest:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.SpookyForest);
                     brutus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType = newGameType;
                     firstTime = true;
@@ -4646,7 +4646,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.OrcCamp:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcCamp, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.OrcCamp);
                     brutus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.gameType = newGameType;
                     firstTime = true;
@@ -4661,7 +4661,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.GorillaPoop:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge3.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop);
                     brutus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge3.gameType = newGameType;
                     firstTime = true;
@@ -4676,7 +4676,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.WindyCliff:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge3.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff);
                     brutus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge3.gameType = newGameType;
                     firstTime = true;
@@ -4691,7 +4691,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.PirateShip:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge3.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip);
                     brutus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge3.gameType = newGameType;
                     firstTime = true;
@@ -4706,7 +4706,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.MermaidBeach:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach);
                     brutus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.gameType = newGameType;
                     firstTime = true;
@@ -4722,7 +4722,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.Ruins2:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.R_challenge3.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1);
                     brutus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.R_challenge3.gameType = newGameType;
                     firstTime = true;
@@ -4737,7 +4737,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.ExitJungle:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge3.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle);
                     brutus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge3.gameType = newGameType;
                     firstTime = true;
@@ -4752,7 +4752,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.GorillaStudy:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge3.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy);
                     brutus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge3.gameType = newGameType;
                     firstTime = true;
@@ -4767,7 +4767,7 @@ public class MapAnimationController : MonoBehaviour
             case MapLocation.Monkeys:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.M_challenge3.gameType == GameType.None)
                 {
-                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys, StudentInfoSystem.GetCurrentProfile());
+                    GameType newGameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys);
                     brutus.gameType = newGameType;
                     StudentInfoSystem.GetCurrentProfile().mapData.M_challenge3.gameType = newGameType;
                     firstTime = true;

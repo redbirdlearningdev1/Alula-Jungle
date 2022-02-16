@@ -97,7 +97,7 @@ MonoBehaviour:
     rightCharacter: 9
     rightEmotionNum: 2
     rightMouthEnum: 1
-    rightEyesEnum: 3
+    rightEyesEnum: 2
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 56acc9ca8568a624494f7985771da9a3, type: 3}
     audioClipName: B_1_2b_Spindle_2_T3

@@ -539,7 +539,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
     private IEnumerator CorrectPolaroidRoutine()
     {
-        //yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2f);
         
         // reveal the correct polaroid
         StartCoroutine(PolaroidRevealRoutine(true));
@@ -862,6 +862,22 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
     private IEnumerator PolaroidRevealRoutine(bool isCorrect)
     {
+        // make other polaroids transparent
+        foreach (Polaroid polaroid in polaroids)
+        {
+            // re-do scales to show correct polaroid
+            if (polaroid.challengeWord == currentWord)
+            {
+                polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
+                currentPolaroid = polaroid;
+            }
+            else
+            {
+                polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(0.6f, 0.6f), 0.25f);
+                polaroid.SetPolaroidAlpha(0.2f, 0.2f);
+            }
+        }
+
         // read word aloud to player
         if (currentWord.audio != null)
             AudioManager.instance.PlayTalk(currentWord.audio);
@@ -879,7 +895,6 @@ public class WordFactoryBlendingManager : MonoBehaviour
             yield return new WaitForSeconds(2f);
 
         // reveal correct polaroid 
-        currentPolaroid.ToggleGlowOutline(true);
         if (isCorrect)
         {
             // audio fx
@@ -891,23 +906,13 @@ public class WordFactoryBlendingManager : MonoBehaviour
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
         }
 
+        // shake polaroid
+        currentPolaroid.ToggleWiggle(true);
 
-        // make other polaroids transparent
-        foreach (Polaroid polaroid in polaroids)
-        {
-            if (polaroid != currentPolaroid)
-                polaroid.SetPolaroidAlpha(0.2f, 0.5f);
+        yield return new WaitForSeconds(1.6f);
 
-            // re-do scales to show correct polaroid
-            if (polaroid.challengeWord == currentWord)
-            {
-                polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
-            }
-            else
-            {
-                polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(0.6f, 0.6f), 0.25f);
-            }
-        }
+        // shake polaroid
+        currentPolaroid.ToggleWiggle(false);
     }
 
     public void ResetPolaroids(bool instant = false, bool startPos = false)

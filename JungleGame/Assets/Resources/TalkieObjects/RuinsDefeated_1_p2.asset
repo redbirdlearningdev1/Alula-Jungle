@@ -43,7 +43,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 6
-    leftEmotionNum: 4
+    leftEmotionNum: 5
     leftMouthEnum: 1
     leftEyesEnum: 0
     rightCharacter: 5
@@ -64,7 +64,7 @@ MonoBehaviour:
     leftEyesEnum: 0
     rightCharacter: 5
     rightEmotionNum: 4
-    rightMouthEnum: 2
+    rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 019476e960eb22a428b412077f55d14c, type: 3}
@@ -75,12 +75,12 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 6
-    leftEmotionNum: 5
+    leftEmotionNum: 4
     leftMouthEnum: 2
     leftEyesEnum: 0
     rightCharacter: 5
     rightEmotionNum: 3
-    rightMouthEnum: 2
+    rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: ab7d2520b8f95ea40bcd9b56965ab939, type: 3}

@@ -309,7 +309,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 26357a2b958be8249bdbafad8ac6eef5, type: 3}
     audioClipName: FR_1_1_Bubbles_52_T1
-    audioString: Bubble bubble bubble! Gurgle Borp Bubble!*
+    audioString: Bubble bubble bubble! Gurgle Borp Bubble!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -461,7 +461,7 @@ MonoBehaviour:
     leftCharacter: 1
     leftEmotionNum: 9
     leftMouthEnum: 1
-    leftEyesEnum: 4
+    leftEyesEnum: 1
     rightCharacter: 10
     rightEmotionNum: 5
     rightMouthEnum: 1
@@ -493,7 +493,7 @@ MonoBehaviour:
     leftCharacter: 1
     leftEmotionNum: 9
     leftMouthEnum: 1
-    leftEyesEnum: 4
+    leftEyesEnum: 1
     rightCharacter: 10
     rightEmotionNum: 1
     rightMouthEnum: 2
@@ -509,7 +509,7 @@ MonoBehaviour:
     leftCharacter: 1
     leftEmotionNum: 9
     leftMouthEnum: 2
-    leftEyesEnum: 4
+    leftEyesEnum: 1
     rightCharacter: 10
     rightEmotionNum: 6
     rightMouthEnum: 1
@@ -579,7 +579,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: e9c176e95f324f3478e025390dd350f2, type: 3}
     audioClipName: FR_1_1_Bubbles_61_T2
     audioString: Gorp... ooooo...
   - endTalkieAfterThisSegment: 0
@@ -676,7 +676,7 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: f3e0a68a6516fb645a0f02b8ace5b022, type: 3}
     audioClipName: FR_1_1_Bubbles_66_T1
     audioString: Bubble!
   - endTalkieAfterThisSegment: 0

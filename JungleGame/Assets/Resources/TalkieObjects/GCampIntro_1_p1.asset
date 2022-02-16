@@ -30,11 +30,11 @@ MonoBehaviour:
     leftEmotionNum: 4
     leftMouthEnum: 1
     leftEyesEnum: 3
-    rightCharacter: 0
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 1
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 3
     audioClip: {fileID: 0}
     audioClipName: RedWally_Darwin
     audioString: Darwin!!
@@ -45,7 +45,7 @@ MonoBehaviour:
     leftCharacter: 1
     leftEmotionNum: 11
     leftMouthEnum: 2
-    leftEyesEnum: 3
+    leftEyesEnum: 1
     rightCharacter: 3
     rightEmotionNum: 10
     rightMouthEnum: 2
@@ -61,7 +61,7 @@ MonoBehaviour:
     leftCharacter: 1
     leftEmotionNum: 11
     leftMouthEnum: 2
-    leftEyesEnum: 3
+    leftEyesEnum: 1
     rightCharacter: 3
     rightEmotionNum: 13
     rightMouthEnum: 1
@@ -77,7 +77,7 @@ MonoBehaviour:
     leftCharacter: 1
     leftEmotionNum: 11
     leftMouthEnum: 2
-    leftEyesEnum: 3
+    leftEyesEnum: 1
     rightCharacter: 3
     rightEmotionNum: 11
     rightMouthEnum: 1
@@ -93,7 +93,7 @@ MonoBehaviour:
     leftCharacter: 1
     leftEmotionNum: 11
     leftMouthEnum: 2
-    leftEyesEnum: 3
+    leftEyesEnum: 1
     rightCharacter: 3
     rightEmotionNum: 11
     rightMouthEnum: 1
@@ -107,9 +107,9 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 11
+    leftEmotionNum: 8
     leftMouthEnum: 2
-    leftEyesEnum: 3
+    leftEyesEnum: 1
     rightCharacter: 3
     rightEmotionNum: 12
     rightMouthEnum: 2
@@ -144,7 +144,7 @@ MonoBehaviour:
     leftEyesEnum: 1
     rightCharacter: 2
     rightEmotionNum: 7
-    rightMouthEnum: 1
+    rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 88afe76e91fc5624685c6647679cd027, type: 3}
@@ -160,7 +160,7 @@ MonoBehaviour:
     leftEyesEnum: 1
     rightCharacter: 2
     rightEmotionNum: 7
-    rightMouthEnum: 1
+    rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 40290c3553cf11242a45b615f3158447, type: 3}
@@ -191,7 +191,7 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
-    rightEmotionNum: 1
+    rightEmotionNum: 12
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
@@ -287,7 +287,7 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
-    rightEmotionNum: 1
+    rightEmotionNum: 15
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
@@ -304,7 +304,7 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
-    rightEmotionNum: 2
+    rightEmotionNum: 1
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
@@ -337,7 +337,7 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
-    rightEmotionNum: 4
+    rightEmotionNum: 9
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
@@ -355,7 +355,7 @@ MonoBehaviour:
     rightCharacter: 3
     rightEmotionNum: 4
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 2
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 5f69ba4dcf231f14e86f67228d17fc33, type: 3}
     audioClipName: R_2_1_Darwin_7_T6
@@ -429,11 +429,11 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 7
+    leftEmotionNum: 8
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
-    rightEmotionNum: 12
+    rightEmotionNum: 6
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
@@ -445,13 +445,13 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 7
+    leftEmotionNum: 8
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
     rightEmotionNum: 12
     rightMouthEnum: 1
-    rightEyesEnum: 4
+    rightEyesEnum: 1
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: d1158aeca8d737741b12576183bbf7d3, type: 3}
     audioClipName: R_2_1_Darwin_7_T12
@@ -461,9 +461,9 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 17
+    leftEmotionNum: 7
     leftMouthEnum: 1
-    leftEyesEnum: 3
+    leftEyesEnum: 1
     rightCharacter: 3
     rightEmotionNum: 12
     rightMouthEnum: 2
@@ -477,7 +477,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 1
+    leftEmotionNum: 11
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 3
@@ -782,7 +782,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 13
+    leftEmotionNum: 8
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 2
@@ -824,7 +824,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 20550ec18f5ef9740bc3a472ca4a3a2c, type: 3}
     audioClipName: R_2_1_Darwin_17_T3
-    audioString: old drawing around here somewhere!
+    audioString: old drawings around here somewhere!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

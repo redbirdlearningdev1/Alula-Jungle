@@ -47,14 +47,14 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 7
-    rightEmotionNum: 1
+    rightEmotionNum: 7
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 8d62dcebd5bbc424c93c9edb48513d34, type: 3}
     audioClipName: RR_0_1_Julius_1_T2
     audioString: You really are good at this!
-  - endTalkieAfterThisSegment: 0
+  - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
@@ -97,12 +97,12 @@ MonoBehaviour:
     rightCharacter: 7
     rightEmotionNum: 7
     rightMouthEnum: 1
-    rightEyesEnum: 4
+    rightEyesEnum: 2
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 80de8a519f0d18447a86956ae4360a43, type: 3}
     audioClipName: RR_0_1_Julius_2_T2
     audioString: Grrr I need to think of something even harder.
-  - endTalkieAfterThisSegment: 0
+  - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
     rightCharacter: 7
     rightEmotionNum: 7
     rightMouthEnum: 1
-    rightEyesEnum: 2
+    rightEyesEnum: 4
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 2bd3e320adc7924459f42aff4168450b, type: 3}
     audioClipName: RR_0_1_Julius_2_T3
@@ -150,7 +150,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 5e9999dfb7db72a4699141ebc78808b6, type: 3}
     audioClipName: RR_0_1_Julius_3_T2
     audioString: That was still too easy for you?
-  - endTalkieAfterThisSegment: 0
+  - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0

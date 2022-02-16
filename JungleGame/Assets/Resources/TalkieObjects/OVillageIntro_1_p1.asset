@@ -20,7 +20,7 @@ MonoBehaviour:
   addLetterboxBeforeTalkie: 1
   ending: 2
   removeBackgroundAfterTalkie: 1
-  removeLetterboxAfterTalkie: 0
+  removeLetterboxAfterTalkie: 1
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -54,3 +54,35 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 7a6361a7f72938c4bac6002c81f7f884, type: 3}
     audioClipName: P_3_1_Red_2_T1
     audioString: Oh!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 9
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 6
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: a0e2ab0901e49f54483b6b9905ee8d1a, type: 3}
+    audioClipName: P_3_1_Red_3_T1
+    audioString: An orc!
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 2
+    leftMouthEnum: 1
+    leftEyesEnum: 2
+    rightCharacter: 2
+    rightEmotionNum: 3
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 84902850489516243b85183e3cb1ae56, type: 3}
+    audioClipName: P_3_1_Red_3_T2
+    audioString: 'Let''s go over and talk to him. '

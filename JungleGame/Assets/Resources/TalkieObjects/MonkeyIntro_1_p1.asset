@@ -53,7 +53,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: d85fa412f930e1a4689e70d83cb99e0c, type: 3}
     audioClipName: R_3_1_Wally_2_T1
-    audioString: Yeah.
+    audioString: Uhgh, Yeah.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -63,7 +63,7 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 2
+    rightEmotionNum: 15
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 2

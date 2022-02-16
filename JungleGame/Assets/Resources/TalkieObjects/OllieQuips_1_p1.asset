@@ -47,9 +47,9 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 11
-    rightEmotionNum: 4
+    rightEmotionNum: 8
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 3
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 07f574ce4e9f74d4ca0890fbe6fb228a, type: 3}
     audioClipName: FR_2_2_Ollie_1_T2
@@ -63,9 +63,9 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 11
-    rightEmotionNum: 4
+    rightEmotionNum: 8
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 3
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 713619d5329dff948b72f42c84f120e4, type: 3}
     audioClipName: FR_2_2_Ollie_2_T1
@@ -79,9 +79,9 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 11
-    rightEmotionNum: 4
+    rightEmotionNum: 8
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 3
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 88bf5d3f9aeae4f45939eca891c62980, type: 3}
     audioClipName: FR_2_2_Ollie_3_T1

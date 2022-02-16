@@ -180,6 +180,6 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 8b255e6de72203d47be71db4f3577f54, type: 3}
     audioClipName: P_1_4_Lester_3_T1
     audioString: Why don't we try for one now!

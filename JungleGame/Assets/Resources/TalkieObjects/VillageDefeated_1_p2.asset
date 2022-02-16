@@ -10,47 +10,47 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7f766f3b3cb11343afe3e852d9a1331, type: 3}
-  m_Name: OVillageIntro_1_p2
+  m_Name: VillageDefeated_1_p2
   m_EditorClassIdentifier: 
-  talkieName: OVillageIntro_1_p2
+  talkieName: VillageDefeated_1_p2
   quipsCollection: 0
   validQuipIndexes: 
   start: 1
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
-  ending: 0
+  ending: 2
   removeBackgroundAfterTalkie: 1
-  removeLetterboxAfterTalkie: 1
+  removeLetterboxAfterTalkie: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 1
-    leftEmotionNum: 9
+    leftCharacter: 6
+    leftEmotionNum: 8
     leftMouthEnum: 1
-    leftEyesEnum: 1
-    rightCharacter: 0
-    rightEmotionNum: 0
-    rightMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 3
+    rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: a0e2ab0901e49f54483b6b9905ee8d1a, type: 3}
-    audioClipName: P_3_1_Red_3_T1
-    audioString: An orc!
+    audioClip: {fileID: 8300000, guid: bdc8252a28338204eb406fc48d8f91b3, type: 3}
+    audioClipName: P_1_6_Marcus_8
+    audioString: Next time you won't be so lucky!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 1
-    leftEmotionNum: 2
-    leftMouthEnum: 1
-    leftEyesEnum: 2
-    rightCharacter: 0
-    rightEmotionNum: 0
-    rightMouthEnum: 0
+    leftCharacter: 6
+    leftEmotionNum: 3
+    leftMouthEnum: 2
+    leftEyesEnum: 0
+    rightCharacter: 5
+    rightEmotionNum: 6
+    rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 84902850489516243b85183e3cb1ae56, type: 3}
-    audioClipName: P_3_1_Red_3_T2
-    audioString: 'Let''s go over and talk to him. '
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 373353a9b855705468263103b1e3d223, type: 3}
+    audioClipName: P_1_6_Brutus_9
+    audioString: "Yawn...yeah\u2026 what he said\u2026"

@@ -30,11 +30,11 @@ MonoBehaviour:
     leftEmotionNum: 4
     leftMouthEnum: 1
     leftEyesEnum: 1
-    rightCharacter: 0
-    rightEmotionNum: 10
-    rightMouthEnum: 2
-    rightEyesEnum: 4
-    activeCharacter: 1
+    rightCharacter: 2
+    rightEmotionNum: 4
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 3
     audioClip: {fileID: 0}
     audioClipName: RedWally_Darwin
     audioString: Darwin!
@@ -187,9 +187,9 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 13
+    leftEmotionNum: 11
     leftMouthEnum: 2
-    leftEyesEnum: 4
+    leftEyesEnum: 1
     rightCharacter: 3
     rightEmotionNum: 11
     rightMouthEnum: 1
@@ -219,8 +219,8 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 13
-    leftMouthEnum: 2
+    leftEmotionNum: 11
+    leftMouthEnum: 1
     leftEyesEnum: 3
     rightCharacter: 2
     rightEmotionNum: 12
@@ -299,7 +299,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 3
+    leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 3
     rightCharacter: 2

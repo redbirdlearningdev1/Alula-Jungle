@@ -128,7 +128,7 @@ MonoBehaviour:
     leftEyesEnum: 1
     rightCharacter: 11
     rightEmotionNum: 7
-    rightMouthEnum: 1
+    rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 29984f67adbd4e84fa2e2a54e1273acb, type: 3}
@@ -287,9 +287,9 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 11
-    rightEmotionNum: 9
+    rightEmotionNum: 7
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 3
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 55fb0a2e2182d4542ad6a19519e4398c, type: 3}
     audioClipName: FR_2_4_Ollie_9_T2
@@ -544,9 +544,9 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 11
-    rightEmotionNum: 14
+    rightEmotionNum: 7
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 3
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 8ae3a6df9a87a3748a384c58690f06c6, type: 3}
     audioClipName: FR_2_4_Ollie_17_T3
@@ -636,7 +636,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 2
-    leftEmotionNum: 10
+    leftEmotionNum: 8
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 1
@@ -742,4 +742,4 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 69e46de3d016cc447b85d3ec5a50c8e4, type: 3}
     audioClipName: FR_2_4_Ollie_25_T2
-    audioString: You all are-
+    audioString: You all are invi-

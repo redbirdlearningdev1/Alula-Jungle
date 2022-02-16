@@ -32274,6 +32274,8 @@ MonoBehaviour:
   substitutingIntro11: {fileID: 8300000, guid: ec3db3ed6e66ee04093072898e590848, type: 3}
   substitutingIntro12: {fileID: 8300000, guid: ec67ba9bf08ce764a90e9b496d33796d, type: 3}
   substitutingIntro13: {fileID: 8300000, guid: 7dd42274cb2620b4081f3dab91e9effb, type: 3}
+  substitutingStart1: {fileID: 8300000, guid: 937a2ca561438354383ba5f033d26cc7, type: 3}
+  substitutingStart2: {fileID: 8300000, guid: 2f2d846343ec735418dc1f341c7f5a8a, type: 3}
   substitutingReminderClips:
   - {fileID: 8300000, guid: b0eff97b8487d8247970eb5e7c999a46, type: 3}
   - {fileID: 8300000, guid: a62abe42cb9505640a02a9fdb838b5bd, type: 3}
@@ -35379,7 +35381,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 109.77642, y: 0.005817631}
+  m_AnchoredPosition: {x: 109.79974, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

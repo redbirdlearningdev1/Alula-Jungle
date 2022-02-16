@@ -91,7 +91,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 15
+    leftEmotionNum: 2
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 7
@@ -112,7 +112,7 @@ MonoBehaviour:
     leftEyesEnum: 1
     rightCharacter: 7
     rightEmotionNum: 21
-    rightMouthEnum: 2
+    rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 5124c339993bd9549b3bff86e73f8ce7, type: 3}
@@ -128,7 +128,7 @@ MonoBehaviour:
     leftEyesEnum: 1
     rightCharacter: 7
     rightEmotionNum: 21
-    rightMouthEnum: 2
+    rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: c592b9c1cd7bbd641a4ab8c79af531a9, type: 3}
@@ -144,7 +144,7 @@ MonoBehaviour:
     leftEyesEnum: 1
     rightCharacter: 7
     rightEmotionNum: 21
-    rightMouthEnum: 2
+    rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: d41c6435ea840ae468deb5c80b7b633b, type: 3}
@@ -160,7 +160,7 @@ MonoBehaviour:
     leftEyesEnum: 1
     rightCharacter: 7
     rightEmotionNum: 21
-    rightMouthEnum: 2
+    rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: a7b514a47d8f4814cbd585deb9c06e33, type: 3}
@@ -239,9 +239,9 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 7
-    rightEmotionNum: 9
+    rightEmotionNum: 22
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 4
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 642b38f4380b53843896dd2cc348a733, type: 3}
     audioClipName: E_1_3_Julius_6_T2
@@ -271,7 +271,7 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 7
-    rightEmotionNum: 9
+    rightEmotionNum: 7
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
@@ -287,9 +287,9 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 7
-    rightEmotionNum: 9
+    rightEmotionNum: 15
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 3
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 8738040b24ff3584da15403bd9b2409f, type: 3}
     audioClipName: E_1_3_Julius_6_T5
@@ -303,9 +303,9 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 7
-    rightEmotionNum: 9
+    rightEmotionNum: 7
     rightMouthEnum: 2
-    rightEyesEnum: 4
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 5fa510afebc05d4458d6d54c9448cf6d, type: 3}
     audioClipName: E_1_3_Darwin_7_T1
@@ -319,9 +319,9 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 4
     rightCharacter: 7
-    rightEmotionNum: 9
+    rightEmotionNum: 7
     rightMouthEnum: 2
-    rightEyesEnum: 4
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 18c69b9ec498c974aab38ddaf6e97c42, type: 3}
     audioClipName: E_1_3_Darwin_7_T2
@@ -351,7 +351,7 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 7
-    rightEmotionNum: 9
+    rightEmotionNum: 7
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
@@ -411,7 +411,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 8
+    leftEmotionNum: 15
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 7
@@ -463,9 +463,9 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 7
-    rightEmotionNum: 7
+    rightEmotionNum: 15
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 3
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: b98ac9771d891f148a21079e188c2321, type: 3}
     audioClipName: E_1_3_Julius_11_T2
@@ -495,9 +495,9 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 7
-    rightEmotionNum: 7
+    rightEmotionNum: 15
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 3
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 9bb88c5359708364aa3b66916ad778eb, type: 3}
     audioClipName: E_1_3_Julius_11_T4
@@ -559,7 +559,7 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 7
-    rightEmotionNum: 7
+    rightEmotionNum: 9
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
@@ -575,9 +575,9 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 7
-    rightEmotionNum: 7
+    rightEmotionNum: 15
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 3
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: c1acff30b308b0643b86a6b93965d78a, type: 3}
     audioClipName: E_1_3_Julius_13_T3
@@ -603,7 +603,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 2
-    leftEmotionNum: 10
+    leftEmotionNum: 7
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 7
@@ -667,7 +667,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 7
+    leftEmotionNum: 8
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 7
@@ -735,7 +735,7 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 7
-    rightEmotionNum: 2
+    rightEmotionNum: 11
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
@@ -795,7 +795,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 2
+    leftEmotionNum: 15
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 7
@@ -831,7 +831,7 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 6
+    rightEmotionNum: 7
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
@@ -1135,7 +1135,7 @@ MonoBehaviour:
     leftMouthEnum: 0
     leftEyesEnum: 0
     rightCharacter: 7
-    rightEmotionNum: 2
+    rightEmotionNum: 21
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2

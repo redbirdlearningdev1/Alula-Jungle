@@ -384,9 +384,9 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 7
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
+    rightEmotionNum: 21
+    rightMouthEnum: 2
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 04346f8e97ae0e84e95b44157750979c, type: 3}
     audioClipName: EJ_2_2_Wally_13_T1
@@ -577,7 +577,7 @@ MonoBehaviour:
     leftEyesEnum: 2
     rightCharacter: 2
     rightEmotionNum: 5
-    rightMouthEnum: 2
+    rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 7b3badf1a0345854082505c88102b5de, type: 3}

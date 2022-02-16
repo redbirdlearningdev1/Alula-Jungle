@@ -143,9 +143,9 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 2
     rightCharacter: 7
-    rightEmotionNum: 13
+    rightEmotionNum: 21
     rightMouthEnum: 2
-    rightEyesEnum: 1
+    rightEyesEnum: 4
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 2162299b6e7dec64f9864c0a324e2a88, type: 3}
     audioClipName: Cha_0_1a_Red_4_T1
@@ -159,9 +159,9 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 2
     rightCharacter: 7
-    rightEmotionNum: 13
+    rightEmotionNum: 21
     rightMouthEnum: 2
-    rightEyesEnum: 1
+    rightEyesEnum: 4
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 1c8f9da30fb2c39429cc13eb9e18edb7, type: 3}
     audioClipName: Cha_0_1a_Red_4_T2

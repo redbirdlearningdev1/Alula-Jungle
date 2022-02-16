@@ -33,7 +33,7 @@ MonoBehaviour:
     rightCharacter: 14
     rightEmotionNum: 1
     rightMouthEnum: 1
-    rightEyesEnum: 1
+    rightEyesEnum: 2
     activeCharacter: 0
     audioClip: {fileID: 8300000, guid: abab8f6268139ac4188e7c4420fcf92d, type: 3}
     audioClipName: E_1_2_Taxi_1_T1

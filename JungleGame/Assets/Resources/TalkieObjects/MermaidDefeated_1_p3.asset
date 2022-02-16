@@ -171,7 +171,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 1
+    leftEmotionNum: 7
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 13
@@ -191,7 +191,7 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 13
-    rightEmotionNum: 10
+    rightEmotionNum: 6
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
@@ -207,7 +207,7 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 13
-    rightEmotionNum: 10
+    rightEmotionNum: 6
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
@@ -223,7 +223,7 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 13
-    rightEmotionNum: 10
+    rightEmotionNum: 6
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
@@ -271,7 +271,7 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 13
-    rightEmotionNum: 9
+    rightEmotionNum: 5
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
@@ -287,9 +287,9 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 13
-    rightEmotionNum: 9
+    rightEmotionNum: 5
     rightMouthEnum: 2
-    rightEyesEnum: 1
+    rightEyesEnum: 3
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: bd3892777df3186489cfa97abdde4aea, type: 3}
     audioClipName: EJ_1_5_Red_21_T1
@@ -383,11 +383,11 @@ MonoBehaviour:
     leftEmotionNum: 9
     leftMouthEnum: 1
     leftEyesEnum: 1
-    rightCharacter: 13
-    rightEmotionNum: 5
-    rightMouthEnum: 2
+    rightCharacter: 2
+    rightEmotionNum: 8
+    rightMouthEnum: 1
     rightEyesEnum: 1
-    activeCharacter: 1
+    activeCharacter: 3
     audioClip: {fileID: 0}
     audioClipName: EJ_1_5_RedWally_23_T1
     audioString: Uhh...
@@ -468,22 +468,22 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: d7dae7d1e153e2c45b8de7db906bf171, type: 3}
-    audioClipName: EJ_1_5_Red_27_T1
+    audioClip: {fileID: 8300000, guid: 17f4a7ddb7a8d4d4cb6e6d0c63a6fb44, type: 3}
+    audioClipName: EJ_1_5_Red_27_T2
     audioString: It was no trouble at all!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 1
+    leftCharacter: 2
     leftEmotionNum: 2
     leftMouthEnum: 1
     leftEyesEnum: 1
-    rightCharacter: 2
+    rightCharacter: 13
     rightEmotionNum: 5
     rightMouthEnum: 2
     rightEyesEnum: 1
-    activeCharacter: 2
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: f256c72edef32174fbbb2b9d8b16bdaf, type: 3}
     audioClipName: EJ_1_5_Wally_28_T1
     audioString: Yeah!
@@ -491,15 +491,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 1
+    leftCharacter: 2
     leftEmotionNum: 5
     leftMouthEnum: 1
     leftEyesEnum: 1
-    rightCharacter: 2
+    rightCharacter: 13
     rightEmotionNum: 5
     rightMouthEnum: 2
     rightEyesEnum: 3
-    activeCharacter: 2
+    activeCharacter: 1
     audioClip: {fileID: 8300000, guid: fe58a51adea232345bc5da7a99dfcd31, type: 3}
     audioClipName: EJ_1_5_Wally_28_T2
     audioString: "We\u2019re always happy to help a friend in need!"
@@ -507,8 +507,8 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 1
-    leftEmotionNum: 2
+    leftCharacter: 2
+    leftEmotionNum: 4
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 13
@@ -523,10 +523,10 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 1
-    leftEmotionNum: 2
+    leftCharacter: 2
+    leftEmotionNum: 4
     leftMouthEnum: 2
-    leftEyesEnum: 3
+    leftEyesEnum: 1
     rightCharacter: 13
     rightEmotionNum: 5
     rightMouthEnum: 1

@@ -83,7 +83,7 @@ MonoBehaviour:
     rightCharacter: 13
     rightEmotionNum: 8
     rightMouthEnum: 1
-    rightEyesEnum: 3
+    rightEyesEnum: 1
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: c44ee8850b9a82d4abf8d200bfe1d276, type: 3}
     audioClipName: EJ_1_3_Sylvie_3_T2

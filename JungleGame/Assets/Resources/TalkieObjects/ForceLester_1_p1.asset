@@ -53,7 +53,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 8bc0cd88c04e95e478f001f13836332f, type: 3}
     audioClipName: P_1_3b_Darwin_1_T2
-    audioString: "I think there\u2019s someone you\u2019ll still need to meet before
+    audioString: "I think there\u2019s someone you still need to meet before can
       we move forward... "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
