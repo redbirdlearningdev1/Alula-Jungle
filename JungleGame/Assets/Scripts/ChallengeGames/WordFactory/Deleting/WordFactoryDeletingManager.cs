@@ -32,6 +32,8 @@ public class WordFactoryDeletingManager : MonoBehaviour
     public WordPair tutorialPair2;
     public WordPair tutorialPair3;
 
+    public bool firstTry;
+
     void Awake()
     {
         if (instance == null)
@@ -108,6 +110,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
 
     private IEnumerator NewRound()
     {
+        firstTry = true;
         // choose correct pair
         if (playTutorial)
         {

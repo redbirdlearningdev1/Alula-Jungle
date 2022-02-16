@@ -92,6 +92,8 @@ public class WordFactorySubstitutingManager : MonoBehaviour
     public bool overrideWord;
     public WordPair testObject;
 
+    public bool firstEntry;
+
     void Awake()
     {
         if (instance == null)
@@ -166,6 +168,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
 
     private IEnumerator NewRound()
     {
+        firstEntry = true;
         WordFactorySubstituteRaycaster.instance.isOn = false;
 
         // place polaroids in start pos
@@ -845,8 +848,9 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
 
             // skip if playing tutorial
-            if (playTutorial)
+            if (playTutorial || firstEntry)
             {
+                firstEntry = false;
                 WordFactorySubstituteRaycaster.instance.isOn = true;
                 currWaterCoin = null;
                 ReturnWaterCoins();

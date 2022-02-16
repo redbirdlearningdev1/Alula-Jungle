@@ -2756,6 +2756,7 @@ MonoBehaviour:
   tutorialPair3: {fileID: 11400000, guid: 0cc4303c876b83a4d9699658ad785b0b, type: 2}
   overrideWord: 0
   testObject: {fileID: 0}
+  firstEntry: 0
 --- !u!114 &1160915249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4756,7 +4757,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 10.533742
+      value: 10.596726
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
