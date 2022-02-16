@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public enum MapAnim
@@ -101,15 +102,30 @@ public class MapAnimationController : MonoBehaviour
         brutus.mapAnimator.Play("BrutusOffScreenPos");
         marcus.mapAnimator.Play("MarcusOffScreenPos");
         clogg.mapAnimator.Play("CloggOffScreenPos");
+
+        boat.GetComponent<Image>().raycastTarget = false;
+        darwin.GetComponent<Image>().raycastTarget = false;
+        julius.GetComponent<Image>().raycastTarget = false;
+        brutus.GetComponent<Image>().raycastTarget = false;
+        marcus.GetComponent<Image>().raycastTarget = false;
+        clogg.GetComponent<Image>().raycastTarget = false;
     }
 
     public void PlaceCharactersOnMap(StoryBeat storyBeat)
     {
+        /// default positions on all story beats:
+        // place boat in dock
+        boat.mapAnimator.Play("BoatDockedPos");
+        boat.GetComponent<Image>().raycastTarget = false;
+        // place clogg in OV
+        clogg.mapAnimator.Play("CloggOVPos");
+        clogg.GetComponent<Image>().raycastTarget = true;
+        clogg.interactable = true;
+        
+
         switch (storyBeat)
         {
             default:
-                // place boat in dock
-                boat.mapAnimator.Play("BoatDockedPos");
                 break;
 
             case StoryBeat.InitBoatGame:
@@ -121,18 +137,21 @@ public class MapAnimationController : MonoBehaviour
                 // place darwin in GV
                 darwin.ShowExclamationMark(true);
                 darwin.mapAnimator.Play("DarwinGVPos");
+                darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 break;
 
             case StoryBeat.RedShowsStickerButton:
                 // place darwin in GV
                 darwin.mapAnimator.Play("DarwinGVPos");
+                darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 break;
             
             case StoryBeat.VillageRebuilt:
                 // place darwin in GV
                 darwin.mapAnimator.Play("DarwinGVPos");
+                darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 break;
 
@@ -141,6 +160,7 @@ public class MapAnimationController : MonoBehaviour
                 julius.mapAnimator.Play("JuliusGVPos");
                 julius.characterAnimator.Play("aTigerTwitch");
                 julius.ShowExclamationMark(true);
+                julius.GetComponent<Image>().raycastTarget = true;
                 julius.interactable = true;
                 // place marcus in GV
                 marcus.mapAnimator.Play("MarcusGVPos");
@@ -158,6 +178,7 @@ public class MapAnimationController : MonoBehaviour
                 marcus.mapAnimator.Play("MarcusGVPos");
                 marcus.characterAnimator.Play("marcusWin");
                 marcus.ShowExclamationMark(true);
+                marcus.GetComponent<Image>().raycastTarget = true;
                 marcus.interactable = true;
                 // place brutus in GV
                 brutus.mapAnimator.Play("BrutusGVPos");
@@ -175,6 +196,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusGVPos");
                 brutus.characterAnimator.Play("brutusWin");
                 brutus.ShowExclamationMark(true);
+                brutus.GetComponent<Image>().raycastTarget = true;
                 brutus.interactable = true;
                 break;
 
@@ -198,6 +220,7 @@ public class MapAnimationController : MonoBehaviour
                 julius.mapAnimator.Play("JuliusMSPos");
                 julius.characterAnimator.Play("aTigerTwitch");
                 julius.ShowExclamationMark(true);
+                julius.GetComponent<Image>().raycastTarget = true;
                 julius.interactable = true;
                 // place marcus in MS
                 marcus.mapAnimator.Play("MarcusMSPos");
@@ -215,6 +238,7 @@ public class MapAnimationController : MonoBehaviour
                 marcus.mapAnimator.Play("MarcusMSPos");
                 marcus.characterAnimator.Play("marcusWin");
                 marcus.ShowExclamationMark(true);
+                marcus.GetComponent<Image>().raycastTarget = true;
                 marcus.interactable = true;
                 // place brutus in MS
                 brutus.mapAnimator.Play("BrutusMSPos");
@@ -232,6 +256,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusMSPos");
                 brutus.characterAnimator.Play("brutusWin");
                 brutus.ShowExclamationMark(true);
+                brutus.GetComponent<Image>().raycastTarget = true;
                 brutus.interactable = true;
                 break;
 
@@ -251,24 +276,28 @@ public class MapAnimationController : MonoBehaviour
                 // place clogg in OV
                 clogg.mapAnimator.Play("CloggOVPos");
                 clogg.ShowExclamationMark(true);
+                clogg.GetComponent<Image>().raycastTarget = true;
                 clogg.interactable = true;
                 break;
 
             case StoryBeat.OrcVillageUnlocked:
                 // place clogg in OV
                 clogg.mapAnimator.Play("CloggOVPos");
+                clogg.GetComponent<Image>().raycastTarget = true;
                 clogg.interactable = true;
                 break;
 
             case StoryBeat.OrcVillage_challengeGame_1:
                 // place clogg in OV
                 clogg.mapAnimator.Play("CloggOVPos");
+                clogg.GetComponent<Image>().raycastTarget = true;
                 clogg.interactable = true;
                 clogg.FlipCharacterToRight();
                 // place julius in OV
                 julius.mapAnimator.Play("JuliusOVPos");
                 julius.characterAnimator.Play("aTigerTwitch");
                 julius.ShowExclamationMark(true);
+                julius.GetComponent<Image>().raycastTarget = true;
                 julius.interactable = true;
                 // place marcus in OV
                 marcus.mapAnimator.Play("MarcusOVPos");
@@ -281,6 +310,7 @@ public class MapAnimationController : MonoBehaviour
             case StoryBeat.OrcVillage_challengeGame_2:
                 // place clogg in OV
                 clogg.mapAnimator.Play("CloggOVPos");
+                clogg.GetComponent<Image>().raycastTarget = true;
                 clogg.interactable = true;
                 clogg.FlipCharacterToRight();
                 // place julius in OV
@@ -290,6 +320,7 @@ public class MapAnimationController : MonoBehaviour
                 marcus.mapAnimator.Play("MarcusOVPos");
                 marcus.characterAnimator.Play("marcusWin");
                 marcus.ShowExclamationMark(true);
+                marcus.GetComponent<Image>().raycastTarget = true;
                 marcus.interactable = true;
                 // place brutus in OV
                 brutus.mapAnimator.Play("BrutusOVPos");
@@ -299,6 +330,7 @@ public class MapAnimationController : MonoBehaviour
             case StoryBeat.OrcVillage_challengeGame_3:
                 // place clogg in OV
                 clogg.mapAnimator.Play("CloggOVPos");
+                clogg.GetComponent<Image>().raycastTarget = true;
                 clogg.interactable = true;
                 clogg.FlipCharacterToRight();
                 // place julius in OV
@@ -311,6 +343,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusOVPos");
                 brutus.characterAnimator.Play("brutusWin");
                 brutus.ShowExclamationMark(true);
+                brutus.GetComponent<Image>().raycastTarget = true;
                 brutus.interactable = true;
                 break;
 
@@ -335,6 +368,7 @@ public class MapAnimationController : MonoBehaviour
                 darwin.mapAnimator.Play("DarwinSFPos");
                 darwin.FlipCharacterToRight();
                 darwin.ShowExclamationMark(true);
+                darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 break;
 
@@ -342,6 +376,7 @@ public class MapAnimationController : MonoBehaviour
                 // place darwin in SF
                 darwin.mapAnimator.Play("DarwinSFPos");
                 darwin.FlipCharacterToRight();
+                darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 break;
 
@@ -350,6 +385,7 @@ public class MapAnimationController : MonoBehaviour
                 julius.mapAnimator.Play("JuliusSFPos");
                 julius.characterAnimator.Play("aTigerTwitch");
                 julius.ShowExclamationMark(true);
+                julius.GetComponent<Image>().raycastTarget = true;
                 julius.interactable = true;
                 // place marcus in SF
                 marcus.mapAnimator.Play("MarcusSFPos");
@@ -367,6 +403,7 @@ public class MapAnimationController : MonoBehaviour
                 marcus.mapAnimator.Play("MarcusSFPos");
                 marcus.characterAnimator.Play("marcusWin");
                 marcus.ShowExclamationMark(true);
+                marcus.GetComponent<Image>().raycastTarget = true;
                 marcus.interactable = true;
                 // place brutus in SF
                 brutus.mapAnimator.Play("BrutusSFPos");
@@ -384,6 +421,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusSFPos");
                 brutus.characterAnimator.Play("brutusWin");
                 brutus.ShowExclamationMark(true);
+                brutus.GetComponent<Image>().raycastTarget = true;
                 brutus.interactable = true;
                 break;
 
@@ -403,23 +441,27 @@ public class MapAnimationController : MonoBehaviour
                 // place clogg in OC
                 clogg.mapAnimator.Play("CloggOCPos");
                 clogg.ShowExclamationMark(true);
+                clogg.GetComponent<Image>().raycastTarget = true;
                 clogg.interactable = true;
                 break;
 
             case StoryBeat.OrcCampPlayGames:
                 // place clogg in OC
                 clogg.mapAnimator.Play("CloggOCPos");
+                clogg.GetComponent<Image>().raycastTarget = true;
                 clogg.interactable = true;
                 break;
 
             case StoryBeat.OrcCamp_challengeGame_1:
                 // place clogg in OC
                 clogg.mapAnimator.Play("CloggOCPos");
+                clogg.GetComponent<Image>().raycastTarget = true;
                 clogg.interactable = true;
                 // place julius in OC
                 julius.mapAnimator.Play("JuliusOCPos");
                 julius.characterAnimator.Play("aTigerTwitch");
                 julius.ShowExclamationMark(true);
+                julius.GetComponent<Image>().raycastTarget = true;
                 julius.interactable = true;
                 // place marcus in OC
                 marcus.mapAnimator.Play("MarcusOCPos");
@@ -432,6 +474,7 @@ public class MapAnimationController : MonoBehaviour
             case StoryBeat.OrcCamp_challengeGame_2:
                 // place clogg in OC
                 clogg.mapAnimator.Play("CloggOCPos");
+                clogg.GetComponent<Image>().raycastTarget = true;
                 clogg.interactable = true;
                 // place julius in OC
                 julius.mapAnimator.Play("JuliusOCPos");
@@ -440,6 +483,7 @@ public class MapAnimationController : MonoBehaviour
                 marcus.mapAnimator.Play("MarcusOCPos");
                 marcus.characterAnimator.Play("marcusWin");
                 marcus.ShowExclamationMark(true);
+                marcus.GetComponent<Image>().raycastTarget = true;
                 marcus.interactable = true;
                 // place brutus in OC
                 brutus.mapAnimator.Play("BrutusOCPos");
@@ -449,6 +493,7 @@ public class MapAnimationController : MonoBehaviour
             case StoryBeat.OrcCamp_challengeGame_3:
                 // place clogg in OC
                 clogg.mapAnimator.Play("CloggOCPos");
+                clogg.GetComponent<Image>().raycastTarget = true;
                 clogg.interactable = true;
                 // place julius in OC
                 julius.mapAnimator.Play("JuliusOCPos");
@@ -460,12 +505,14 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusOCPos");
                 brutus.characterAnimator.Play("brutusWin");
                 brutus.ShowExclamationMark(true);
+                brutus.GetComponent<Image>().raycastTarget = true;
                 brutus.interactable = true;
                 break;
 
             case StoryBeat.OrcCampDefeated:
                 // place clogg in OC
                 clogg.mapAnimator.Play("CloggOCPos");
+                clogg.GetComponent<Image>().raycastTarget = true;
                 clogg.interactable = true;
                 // place julius in OC
                 julius.mapAnimator.Play("JuliusOCPos");
@@ -483,6 +530,7 @@ public class MapAnimationController : MonoBehaviour
                 julius.mapAnimator.Play("JuliusGPPos");
                 julius.characterAnimator.Play("aTigerTwitch");
                 julius.ShowExclamationMark(true);
+                julius.GetComponent<Image>().raycastTarget = true;
                 julius.interactable = true;
                 // place marcus in GP
                 marcus.mapAnimator.Play("MarcusGPPos");
@@ -500,6 +548,7 @@ public class MapAnimationController : MonoBehaviour
                 marcus.mapAnimator.Play("MarcusGPPos");
                 marcus.characterAnimator.Play("marcusWin");
                 marcus.ShowExclamationMark(true);
+                marcus.GetComponent<Image>().raycastTarget = true;
                 marcus.interactable = true;
                 // place brutus in GP
                 brutus.mapAnimator.Play("BrutusGPPos");
@@ -517,6 +566,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusGPPos");
                 brutus.characterAnimator.Play("brutusWin");
                 brutus.ShowExclamationMark(true);
+                brutus.GetComponent<Image>().raycastTarget = true;
                 brutus.interactable = true;
                 break;
 
@@ -537,12 +587,14 @@ public class MapAnimationController : MonoBehaviour
                 // place darwin in WC
                 darwin.mapAnimator.Play("DarwinWCPos");
                 darwin.ShowExclamationMark(true);
+                darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 break;
 
             case StoryBeat.WindyCliffPlayGames:
                 // place darwin in WC
                 darwin.mapAnimator.Play("DarwinWCPos");
+                darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 break;
 
@@ -551,6 +603,7 @@ public class MapAnimationController : MonoBehaviour
                 julius.mapAnimator.Play("JuliusWCPos");
                 julius.characterAnimator.Play("aTigerTwitch");
                 julius.ShowExclamationMark(true);
+                julius.GetComponent<Image>().raycastTarget = true;
                 julius.interactable = true;
                 // place marcus in WC
                 marcus.mapAnimator.Play("MarcusWCPos");
@@ -568,6 +621,7 @@ public class MapAnimationController : MonoBehaviour
                 marcus.mapAnimator.Play("MarcusWCPos");
                 marcus.characterAnimator.Play("marcusWin");
                 marcus.ShowExclamationMark(true);
+                marcus.GetComponent<Image>().raycastTarget = true;
                 marcus.interactable = true;
                 // place brutus in WC
                 brutus.mapAnimator.Play("BrutusWCPos");
@@ -585,6 +639,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusWCPos");
                 brutus.characterAnimator.Play("brutusWin");
                 brutus.ShowExclamationMark(true);
+                brutus.GetComponent<Image>().raycastTarget = true;
                 brutus.interactable = true;
                 break;
 
@@ -605,6 +660,7 @@ public class MapAnimationController : MonoBehaviour
                 julius.mapAnimator.Play("JuliusPSPos");
                 julius.characterAnimator.Play("aTigerTwitch");
                 julius.ShowExclamationMark(true);
+                julius.GetComponent<Image>().raycastTarget = true;
                 julius.interactable = true;
                 // place marcus in PS
                 marcus.mapAnimator.Play("MarcusPSPos");
@@ -622,6 +678,7 @@ public class MapAnimationController : MonoBehaviour
                 marcus.mapAnimator.Play("MarcusPSPos");
                 marcus.characterAnimator.Play("marcusWin");
                 marcus.ShowExclamationMark(true);
+                marcus.GetComponent<Image>().raycastTarget = true;
                 marcus.interactable = true;
                 // place brutus in PS
                 brutus.mapAnimator.Play("BrutusPSPos");
@@ -639,6 +696,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusPSPos");
                 brutus.characterAnimator.Play("brutusWin");
                 brutus.ShowExclamationMark(true);
+                brutus.GetComponent<Image>().raycastTarget = true;
                 brutus.interactable = true;
                 break;
 
@@ -659,12 +717,14 @@ public class MapAnimationController : MonoBehaviour
                 // place darwin in MB
                 darwin.mapAnimator.Play("DarwinMBPos");
                 darwin.ShowExclamationMark(true);
+                darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 break;
 
             case StoryBeat.MermaidBeachPlayGames:
                 // place darwin in MB
                 darwin.mapAnimator.Play("DarwinMBPos");
+                darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 break;
 
@@ -673,6 +733,7 @@ public class MapAnimationController : MonoBehaviour
                 julius.mapAnimator.Play("JuliusMBPos");
                 julius.characterAnimator.Play("aTigerTwitch");
                 julius.ShowExclamationMark(true);
+                julius.GetComponent<Image>().raycastTarget = true;
                 julius.interactable = true;
                 // place marcus in MB
                 marcus.mapAnimator.Play("MarcusMBPos");
@@ -690,6 +751,7 @@ public class MapAnimationController : MonoBehaviour
                 marcus.mapAnimator.Play("MarcusMBPos");
                 marcus.characterAnimator.Play("marcusWin");
                 marcus.ShowExclamationMark(true);
+                marcus.GetComponent<Image>().raycastTarget = true;
                 marcus.interactable = true;
                 // place brutus in MB
                 brutus.mapAnimator.Play("BrutusMBPos");
@@ -707,6 +769,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusMBPos");
                 brutus.characterAnimator.Play("brutusWin");
                 brutus.ShowExclamationMark(true);
+                brutus.GetComponent<Image>().raycastTarget = true;
                 brutus.interactable = true;
                 break;
 
@@ -727,6 +790,7 @@ public class MapAnimationController : MonoBehaviour
                 julius.mapAnimator.Play("JuliusRPos");
                 julius.characterAnimator.Play("aTigerTwitch");
                 julius.ShowExclamationMark(true);
+                julius.GetComponent<Image>().raycastTarget = true;
                 julius.interactable = true;
                 // place marcus in R
                 marcus.mapAnimator.Play("MarcusRPos");
@@ -744,6 +808,7 @@ public class MapAnimationController : MonoBehaviour
                 marcus.mapAnimator.Play("MarcusRPos");
                 marcus.characterAnimator.Play("marcusWin");
                 marcus.ShowExclamationMark(true);
+                marcus.GetComponent<Image>().raycastTarget = true;
                 marcus.interactable = true;
                 // place brutus in R
                 brutus.mapAnimator.Play("BrutusRPos");
@@ -761,6 +826,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusRPos");
                 brutus.characterAnimator.Play("brutusWin");
                 brutus.ShowExclamationMark(true);
+                brutus.GetComponent<Image>().raycastTarget = true;
                 brutus.interactable = true;
                 break;
 
@@ -781,12 +847,14 @@ public class MapAnimationController : MonoBehaviour
                 // place darwin in EJ
                 darwin.mapAnimator.Play("DarwinEJPos");
                 darwin.ShowExclamationMark(true);
+                darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 break;
 
             case StoryBeat.ExitJunglePlayGames:
                 // place darwin in EJ
                 darwin.mapAnimator.Play("DarwinEJPos");
+                darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 break;
 
@@ -795,6 +863,7 @@ public class MapAnimationController : MonoBehaviour
                 julius.mapAnimator.Play("JuliusEJPos");
                 julius.characterAnimator.Play("aTigerTwitch");
                 julius.ShowExclamationMark(true);
+                julius.GetComponent<Image>().raycastTarget = true;
                 julius.interactable = true;
                 // place marcus in EJ
                 marcus.mapAnimator.Play("MarcusEJPos");
@@ -812,6 +881,7 @@ public class MapAnimationController : MonoBehaviour
                 marcus.mapAnimator.Play("MarcusEJPos");
                 marcus.characterAnimator.Play("marcusWin");
                 marcus.ShowExclamationMark(true);
+                marcus.GetComponent<Image>().raycastTarget = true;
                 marcus.interactable = true;
                 // place brutus in EJ
                 brutus.mapAnimator.Play("BrutusEJPos");
@@ -829,6 +899,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusEJPos");
                 brutus.characterAnimator.Play("brutusWin");
                 brutus.ShowExclamationMark(true);
+                brutus.GetComponent<Image>().raycastTarget = true;
                 brutus.interactable = true;
                 break;
 
@@ -848,24 +919,28 @@ public class MapAnimationController : MonoBehaviour
                 // place darwin in GS
                 darwin.mapAnimator.Play("DarwinGSPos");
                 darwin.ShowExclamationMark(true);
+                darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 break;
 
             case StoryBeat.GorillaStudyPlayGames:
                 // place darwin in GS
                 darwin.mapAnimator.Play("DarwinGSPos");
+                darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 break;
 
             case StoryBeat.GorillaStudy_challengeGame_1:
                 // place darwin in GS
                 darwin.mapAnimator.Play("DarwinGSPos");
+                darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 darwin.FlipCharacterToRight();
                 // place julius in GS
                 julius.mapAnimator.Play("JuliusGSPos");
                 julius.characterAnimator.Play("aTigerTwitch");
                 julius.ShowExclamationMark(true);
+                julius.GetComponent<Image>().raycastTarget = true;
                 julius.interactable = true;
                 // place marcus in GS
                 marcus.mapAnimator.Play("MarcusGSPos");
@@ -878,6 +953,7 @@ public class MapAnimationController : MonoBehaviour
             case StoryBeat.GorillaStudy_challengeGame_2:
                 // place darwin in GS
                 darwin.mapAnimator.Play("DarwinGSPos");
+                darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 darwin.FlipCharacterToRight();
                 // place julius in GS
@@ -887,6 +963,7 @@ public class MapAnimationController : MonoBehaviour
                 marcus.mapAnimator.Play("MarcusGSPos");
                 marcus.characterAnimator.Play("marcusWin");
                 marcus.ShowExclamationMark(true);
+                marcus.GetComponent<Image>().raycastTarget = true;
                 marcus.interactable = true;
                 // place brutus in GS
                 brutus.mapAnimator.Play("BrutusGSPos");
@@ -896,6 +973,7 @@ public class MapAnimationController : MonoBehaviour
             case StoryBeat.GorillaStudy_challengeGame_3:
                 // place darwin in GS
                 darwin.mapAnimator.Play("DarwinGSPos");
+                darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 darwin.FlipCharacterToRight();
                 // place julius in GS
@@ -908,12 +986,14 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusGSPos");
                 brutus.characterAnimator.Play("brutusWin");
                 brutus.ShowExclamationMark(true);
+                brutus.GetComponent<Image>().raycastTarget = true;
                 brutus.interactable = true;
                 break;
 
             case StoryBeat.GorillaStudyDefeated:
                 // place darwin in GS
                 darwin.mapAnimator.Play("DarwinGSPos");
+                darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 darwin.FlipCharacterToRight();
                 // place julius in GS
@@ -942,6 +1022,7 @@ public class MapAnimationController : MonoBehaviour
                 julius.mapAnimator.Play("JuliusMPos");
                 julius.characterAnimator.Play("aTigerTwitch");
                 julius.ShowExclamationMark(true);
+                julius.GetComponent<Image>().raycastTarget = true;
                 julius.interactable = true;
                 // place marcus in M
                 marcus.mapAnimator.Play("MarcusMPos");
@@ -962,6 +1043,7 @@ public class MapAnimationController : MonoBehaviour
                 marcus.characterAnimator.Play("marcusWin");
                 marcus.FlipCharacterToRight();
                 marcus.ShowExclamationMark(true);
+                marcus.GetComponent<Image>().raycastTarget = true;
                 marcus.interactable = true;
                 // place brutus in M
                 brutus.mapAnimator.Play("BrutusMPos");
@@ -982,6 +1064,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.characterAnimator.Play("brutusWin");
                 brutus.FlipCharacterToRight();
                 brutus.ShowExclamationMark(true);
+                brutus.GetComponent<Image>().raycastTarget = true;
                 brutus.interactable = true;
                 break;
 
@@ -1002,6 +1085,7 @@ public class MapAnimationController : MonoBehaviour
             case StoryBeat.PalaceIntro:
                 // place darwin in PI
                 darwin.mapAnimator.Play("DarwinPIPos");
+                darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 darwin.ShowExclamationMark(true);
                 break;
@@ -1032,6 +1116,10 @@ public class MapAnimationController : MonoBehaviour
     {
         animationDone = false;
 
+        // hide stars on map
+        ScrollMapManager.instance.HideStarsAtCurrentLocation();
+        
+        // play appropriate animation routine
         switch (animation)
         {
             case MapAnim.BoatIntro:
@@ -1212,6 +1300,7 @@ public class MapAnimationController : MonoBehaviour
 
         // wiggle boat
         boat.ShowExclamationMark(true);
+        boat.GetComponent<Image>().raycastTarget = true;
         boat.GetComponent<MapIcon>().interactable = true;
         boat.GetComponent<WiggleController>().StartWiggle();
 
@@ -1254,6 +1343,7 @@ public class MapAnimationController : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        darwin.GetComponent<Image>().raycastTarget = true;
         darwin.interactable = true;
         darwin.ShowExclamationMark(true);
 
@@ -1264,6 +1354,7 @@ public class MapAnimationController : MonoBehaviour
     {
         // remove exclamation mark from gorilla
         darwin.ShowExclamationMark(false);
+        darwin.GetComponent<Image>().raycastTarget = false;
         darwin.interactable = false;
 
         // play gorilla intro 1
@@ -1363,6 +1454,7 @@ public class MapAnimationController : MonoBehaviour
 
         // make gorilla interactable
         darwin.ShowExclamationMark(true);
+        darwin.GetComponent<Image>().raycastTarget = true;
         darwin.interactable = true;
 
         // save to SIS and exit to scroll map
@@ -1419,6 +1511,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator GorillaVillageRebuilt()
     {
         // make darwin inactive
+        darwin.GetComponent<Image>().raycastTarget = false;
         darwin.interactable = false;
 
         yield return new WaitForSeconds(1f);
@@ -1476,6 +1569,7 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
 
         julius.ShowExclamationMark(true);
+        julius.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
         julius.characterAnimator.Play("aTigerTwitch");
 
@@ -1539,7 +1633,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // gv sign post springs into place
-        ScrollMapManager.instance.mapLocations[(int)MapLocation.GorillaVillage].signPost.ShowSignPost(0, false);
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.GorillaVillage].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_stars, false);
 
         yield return new WaitForSeconds(2f);
 
@@ -1571,7 +1665,8 @@ public class MapAnimationController : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        ScrollMapManager.instance.mapLocations[(int)MapLocation.GorillaVillage].signPost.GetComponent<SignPostController>().SetInteractability(true);
+        // enable sign post in GV
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.GorillaVillage].signPost.SetInteractability(true);
 
         // save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 3;
@@ -1631,6 +1726,7 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
             
         julius.ShowExclamationMark(true);
+        julius.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
         julius.GetComponent<Animator>().Play("aTigerTwitch");
 
@@ -1697,7 +1793,7 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // MS sign post springs into place
-        ScrollMapManager.instance.mapLocations[3].signPost.ShowSignPost(0, false);
+        ScrollMapManager.instance.mapLocations[3].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_stars, false);
 
         // before unlocking orc village - set objects to be destroyed
         foreach (var icon in ScrollMapManager.instance.mapLocations[4].mapIcons)
@@ -1724,6 +1820,7 @@ public class MapAnimationController : MonoBehaviour
         ScrollMapManager.instance.mapLocations[3].signPost.GetComponent<SignPostController>().SetInteractability(true);
 
         // make clogg interactable
+        clogg.GetComponent<Image>().raycastTarget = true;
         clogg.interactable = true;
         clogg.ShowExclamationMark(true);
 
@@ -1785,6 +1882,7 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
             
         julius.ShowExclamationMark(true);
+        julius.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
         julius.GetComponent<Animator>().Play("aTigerTwitch");
 
@@ -1846,7 +1944,7 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // OV sign post springs into place
-        ScrollMapManager.instance.mapLocations[4].signPost.ShowSignPost(0, false);
+        ScrollMapManager.instance.mapLocations[4].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_stars, false);
 
         // before unlocking spooky forest - set objects to be repaired
         foreach (var icon in ScrollMapManager.instance.mapLocations[5].mapIcons)
@@ -1855,6 +1953,7 @@ public class MapAnimationController : MonoBehaviour
         // place darwin in spooky forest
         darwin.mapAnimator.Play("DarwinSFPos");
         darwin.FlipCharacterToRight();
+        darwin.GetComponent<Image>().raycastTarget = false;
         darwin.interactable = false;
 
         // unlock spooky forest
@@ -1863,6 +1962,7 @@ public class MapAnimationController : MonoBehaviour
 
         // darwin is interactable
         darwin.ShowExclamationMark(true);
+        darwin.GetComponent<Image>().raycastTarget = true;
         darwin.interactable = true;
 
         // Save to SIS
@@ -1882,6 +1982,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator SpookyForestIntro()
     {
         darwin.ShowExclamationMark(false);
+        darwin.GetComponent<Image>().raycastTarget = false;
         darwin.interactable = false;
 
         // spider intro 1
@@ -1982,6 +2083,7 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
 
         // make darwin interactable
+        darwin.GetComponent<Image>().raycastTarget = true;
         darwin.interactable = true;
         darwin.ShowExclamationMark(true);
 
@@ -2043,6 +2145,7 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
             
         julius.ShowExclamationMark(true);
+        julius.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
         julius.GetComponent<Animator>().Play("aTigerTwitch");
 
@@ -2109,7 +2212,7 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // SF sign post springs into place
-        ScrollMapManager.instance.mapLocations[5].signPost.ShowSignPost(0, false);
+        ScrollMapManager.instance.mapLocations[5].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.OC_signPost_stars, false);
 
         // before unlocking orc camp - set objects to be destroyed
         foreach (var icon in ScrollMapManager.instance.mapLocations[6].mapIcons)
@@ -2117,6 +2220,7 @@ public class MapAnimationController : MonoBehaviour
 
         // place clogg in orc camp
         clogg.mapAnimator.Play("CloggOCPos");
+        clogg.GetComponent<Image>().raycastTarget = false;
         clogg.interactable = false;
 
         // unlock orc camp
@@ -2125,6 +2229,7 @@ public class MapAnimationController : MonoBehaviour
 
         // clogg is interactable
         clogg.ShowExclamationMark(true);
+        clogg.GetComponent<Image>().raycastTarget = true;
         clogg.interactable = true;
 
         // Save to SIS
@@ -2182,6 +2287,7 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
             
         julius.ShowExclamationMark(true);
+        julius.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
         julius.GetComponent<Animator>().Play("aTigerTwitch");
 
@@ -2248,7 +2354,7 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // SF sign post springs into place
-        ScrollMapManager.instance.mapLocations[6].signPost.ShowSignPost(0, false);
+        ScrollMapManager.instance.mapLocations[6].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_stars, false);
 
         // before unlocking gorilla poop - set objects to be destroyed
         foreach (var icon in ScrollMapManager.instance.mapLocations[7].mapIcons)
@@ -2322,6 +2428,7 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
             
         julius.ShowExclamationMark(true);
+        julius.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
         julius.GetComponent<Animator>().Play("aTigerTwitch");
 
@@ -2388,10 +2495,11 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // SF sign post springs into place
-        ScrollMapManager.instance.mapLocations[7].signPost.ShowSignPost(0, false);
+        ScrollMapManager.instance.mapLocations[7].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.GP_signPost_stars, false);
 
         // place darwin in WC
         darwin.mapAnimator.Play("DarwinWCPos");
+        darwin.GetComponent<Image>().raycastTarget = false;
         darwin.interactable = false;
 
         // before unlocking windy cliff - set objects to be fixed
@@ -2404,6 +2512,7 @@ public class MapAnimationController : MonoBehaviour
 
         // make darwin interactable
         darwin.ShowExclamationMark(true);
+        darwin.GetComponent<Image>().raycastTarget = true;
         darwin.interactable = true;
 
         // Save to SIS
@@ -2423,6 +2532,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator WindyCliffIntro()
     {
         darwin.ShowExclamationMark(false);
+        darwin.GetComponent<Image>().raycastTarget = false;
         darwin.interactable = false;
 
         // windy cliff intro 1
@@ -2523,6 +2633,7 @@ public class MapAnimationController : MonoBehaviour
 
         // make darwin interactable
         darwin.interactable = true;
+        darwin.GetComponent<Image>().raycastTarget = true;
         darwin.ShowExclamationMark(true);
         darwin.FlipCharacterToRight();
 
@@ -2584,6 +2695,7 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
             
         julius.ShowExclamationMark(true);
+        julius.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
         julius.GetComponent<Animator>().Play("aTigerTwitch");
 
@@ -2650,7 +2762,7 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // SF sign post springs into place
-        ScrollMapManager.instance.mapLocations[8].signPost.ShowSignPost(0, false);
+        ScrollMapManager.instance.mapLocations[8].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.WC_signPost_stars, false);
 
         // before unlocking pirate ship - set objects to be destroyed
         foreach (var icon in ScrollMapManager.instance.mapLocations[9].mapIcons)
@@ -2724,6 +2836,7 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
             
         julius.ShowExclamationMark(true);
+        julius.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
         julius.GetComponent<Animator>().Play("aTigerTwitch");
 
@@ -2790,10 +2903,11 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // PS sign post springs into place
-        ScrollMapManager.instance.mapLocations[9].signPost.ShowSignPost(0, false);
+        ScrollMapManager.instance.mapLocations[9].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.PS_signPost_stars, false);
 
         // place darwin in MB
         darwin.mapAnimator.Play("DarwinMBPos");
+        darwin.GetComponent<Image>().raycastTarget = false;
         darwin.interactable = false;
 
         // unlock mermaid beach
@@ -2802,6 +2916,7 @@ public class MapAnimationController : MonoBehaviour
 
         // make darwin interactable
         darwin.ShowExclamationMark(true);
+        darwin.GetComponent<Image>().raycastTarget = true;
         darwin.interactable = true;
 
         // Save to SIS
@@ -2821,6 +2936,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator MermaidBeachIntro()
     {
         darwin.ShowExclamationMark(false);
+        darwin.GetComponent<Image>().raycastTarget = false;
         darwin.interactable = false;
 
         // mermaid beach intro 1
@@ -2921,6 +3037,7 @@ public class MapAnimationController : MonoBehaviour
 
         // make darwin interactable
         darwin.interactable = true;
+        darwin.GetComponent<Image>().raycastTarget = true;
         darwin.ShowExclamationMark(true);
         darwin.FlipCharacterToLeft();
 
@@ -2983,6 +3100,7 @@ public class MapAnimationController : MonoBehaviour
             
         julius.ShowExclamationMark(true);
         julius.interactable = true;
+        julius.GetComponent<Image>().raycastTarget = true;
         julius.GetComponent<Animator>().Play("aTigerTwitch");
 
         animationDone = true;
@@ -3048,7 +3166,7 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // MB sign post springs into place
-        ScrollMapManager.instance.mapLocations[10].signPost.ShowSignPost(0, false);
+        ScrollMapManager.instance.mapLocations[10].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.MB_signPost_stars, false);
 
         // before unlocking ruins 1 - set objects to be destroyed
         foreach (var icon in ScrollMapManager.instance.mapLocations[11].mapIcons)
@@ -3129,6 +3247,7 @@ public class MapAnimationController : MonoBehaviour
             
         julius.ShowExclamationMark(true);
         julius.interactable = true;
+        julius.GetComponent<Image>().raycastTarget = true;
         julius.GetComponent<Animator>().Play("aTigerTwitch");
 
         animationDone = true;
@@ -3198,7 +3317,7 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // R sign post springs into place
-        ScrollMapManager.instance.mapLocations[12].signPost.ShowSignPost(0, false);
+        ScrollMapManager.instance.mapLocations[12].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.R_signPost_stars, false);
 
         // place darwin in EJ
         darwin.mapAnimator.Play("DarwinEJPos");
@@ -3213,6 +3332,7 @@ public class MapAnimationController : MonoBehaviour
 
         // make darwin interactable
         darwin.ShowExclamationMark(true);
+        darwin.GetComponent<Image>().raycastTarget = true;
         darwin.interactable = true;
 
         // Save to SIS
@@ -3232,6 +3352,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator ExitJungleIntro()
     {
         darwin.ShowExclamationMark(false);
+        darwin.GetComponent<Image>().raycastTarget = false;
         darwin.interactable = false;
 
         // exit jungle intro 1
@@ -3330,6 +3451,7 @@ public class MapAnimationController : MonoBehaviour
 
         // make darwin interactable
         darwin.interactable = true;
+        darwin.GetComponent<Image>().raycastTarget = true;
         darwin.ShowExclamationMark(true);
         darwin.FlipCharacterToLeft();
 
@@ -3378,6 +3500,7 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
             
         julius.ShowExclamationMark(true);
+        julius.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
         julius.GetComponent<Animator>().Play("aTigerTwitch");
 
@@ -3444,7 +3567,7 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // EJ sign post springs into place
-        ScrollMapManager.instance.mapLocations[13].signPost.ShowSignPost(0, false);
+        ScrollMapManager.instance.mapLocations[13].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.EJ_signPost_stars, false);
 
         // before unlocking gorilla study - set objects to be destroyed
         foreach (var icon in ScrollMapManager.instance.mapLocations[14].mapIcons)
@@ -3452,6 +3575,7 @@ public class MapAnimationController : MonoBehaviour
 
         // place darwin in gorilla study
         darwin.mapAnimator.Play("DarwinGSPos");
+        darwin.GetComponent<Image>().raycastTarget = false;
         darwin.interactable = false;
 
         // unlock gorilla study
@@ -3460,6 +3584,7 @@ public class MapAnimationController : MonoBehaviour
 
         // make darwin interactable
         darwin.ShowExclamationMark(true);
+        darwin.GetComponent<Image>().raycastTarget = true;
         darwin.interactable = true;
 
         // Save to SIS
@@ -3478,6 +3603,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator GorillaStudyIntro()
     {
         darwin.interactable = false;
+        darwin.GetComponent<Image>().raycastTarget = false;
 
         // gorilla study intro 1
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GCampIntro_1_p1);
@@ -3489,7 +3615,8 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
 
         // make darwin interactable
-        darwin.ShowExclamationMark(false);
+        darwin.GetComponent<Image>().raycastTarget = true;
+        darwin.ShowExclamationMark(true);
         darwin.interactable = true;
 
         // change enabled map sections
@@ -3546,6 +3673,7 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
             
         julius.ShowExclamationMark(true);
+        darwin.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
         julius.GetComponent<Animator>().Play("aTigerTwitch");
 
@@ -3612,7 +3740,7 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // GS sign post springs into place
-        ScrollMapManager.instance.mapLocations[14].signPost.ShowSignPost(0, false);
+        ScrollMapManager.instance.mapLocations[14].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.GS_signPost_stars, false);
 
         // before unlocking monkeys - set objects to be destroyed
         foreach (var icon in ScrollMapManager.instance.mapLocations[15].mapIcons)
@@ -3699,6 +3827,7 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
             
         julius.ShowExclamationMark(true);
+        julius.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
         julius.GetComponent<Animator>().Play("aTigerTwitch");
 
@@ -3760,10 +3889,11 @@ public class MapAnimationController : MonoBehaviour
         brutus.transform.localScale = Vector3.one;
 
         // M sign post springs into place
-        ScrollMapManager.instance.mapLocations[15].signPost.ShowSignPost(0, false);
+        ScrollMapManager.instance.mapLocations[15].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.M_signPost_stars, false);
 
         // place darwin in PI
         darwin.mapAnimator.Play("DarwinPIPos");
+        darwin.GetComponent<Image>().raycastTarget = true;
         darwin.interactable = true;
         darwin.ShowExclamationMark(true);
 

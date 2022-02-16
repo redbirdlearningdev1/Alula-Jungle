@@ -242,7 +242,7 @@ MonoBehaviour:
     rightCharacter: 11
     rightEmotionNum: 1
     rightMouthEnum: 1
-    rightEyesEnum: 4
+    rightEyesEnum: 1
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: e2f8aaa8fe98dd94f892d543d2eb82f4, type: 3}
     audioClipName: FR_2_1_Ollie_11_T1

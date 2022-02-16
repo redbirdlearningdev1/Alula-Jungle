@@ -164,8 +164,11 @@ public static class AISystem
             minigameOptions.Remove(GameManager.instance.prevGameTypePlayed);
     }
 
-    public static GameType DetermineChallengeGame(MapLocation location, StudentPlayerData playerData)
+    public static GameType DetermineChallengeGame(MapLocation location)
     {
+        // get student data
+        StudentPlayerData playerData = StudentInfoSystem.GetCurrentProfile();
+
         // create list of challenge game options
         List<GameType> challengeGameOptions = new List<GameType>();
         challengeGameOptions.Add(GameType.WordFactoryBlending);

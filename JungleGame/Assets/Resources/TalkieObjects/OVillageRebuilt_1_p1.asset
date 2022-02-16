@@ -285,7 +285,7 @@ MonoBehaviour:
     leftCharacter: 2
     leftEmotionNum: 8
     leftMouthEnum: 1
-    leftEyesEnum: 4
+    leftEyesEnum: 1
     rightCharacter: 8
     rightEmotionNum: 3
     rightMouthEnum: 2
@@ -293,23 +293,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 7a788138eb0636641bbf506c5c63540b, type: 3}
     audioClipName: P_3_2_Wally_10_T1
-    audioString: Unfortunately,
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 2
-    leftEmotionNum: 8
-    leftMouthEnum: 1
-    leftEyesEnum: 1
-    rightCharacter: 8
-    rightEmotionNum: 3
-    rightMouthEnum: 2
-    rightEyesEnum: 1
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 292696eb0eaad614080cc26f1763acce, type: 3}
-    audioClipName: P_3_2_Wally_10_T2
-    audioString: "he\u2019s destroying everything around him."
+    audioString: "Unfortunately, he\u2019s destroying everything around him."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

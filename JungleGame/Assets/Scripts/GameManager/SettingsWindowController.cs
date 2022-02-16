@@ -24,7 +24,7 @@ public class SettingsWindowController : MonoBehaviour
 
     private SettingsTab currentTab;
 
-    private bool isAnimating = false;
+    [HideInInspector] public bool isAnimating = false;
     private bool tabsOn = false;
 
     public Image mapImage;
@@ -90,16 +90,18 @@ public class SettingsWindowController : MonoBehaviour
 
     public void CloseAllWindows()
     {   
-        if (currentTab == SettingsTab.none || isAnimating)
+        if (currentTab == SettingsTab.none)
             return;
+        
+        if (isAnimating)
+            return;
+        isAnimating = true;
 
         StartCoroutine(CloseAllWindowsRoutine());
     }
 
     private IEnumerator CloseAllWindowsRoutine()
-    {
-        isAnimating = true;
-        
+    { 
         ToggleTabs(false);
 
         yield return new WaitForSeconds(0.3f);
@@ -107,50 +109,72 @@ public class SettingsWindowController : MonoBehaviour
         CloseCurrentWindow();
 
         yield return new WaitForSeconds(0.4f);
+
+        // remove background
+        SettingsManager.instance.settingsWindowBG.LerpImageAlpha(SettingsManager.instance.settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
+        SettingsManager.instance.settingsWindowBG.GetComponent<Image>().raycastTarget = false;
         
-        currentTab = SettingsTab.none;
         isAnimating = false;
     }
 
     public void OpenWindow()
     {
+        if (isAnimating)
+            return;
         isAnimating = true;
+
+        // add background
+        SettingsManager.instance.settingsWindowBG.LerpImageAlpha(SettingsManager.instance.settingsWindowBG.GetComponent<Image>(), 0.75f, 0.2f);
+        SettingsManager.instance.settingsWindowBG.GetComponent<Image>().raycastTarget = true;
+
         StartCoroutine(TabPressedRoutine(SettingsTab.map));
     }
 
     public void AudioTabPressed()
     {
-        if (currentTab == SettingsTab.audio || isAnimating)
+        if (currentTab == SettingsTab.audio)
             return;
 
+        if (isAnimating)
+            return;
         isAnimating = true;
+
         StartCoroutine(TabPressedRoutine(SettingsTab.audio));
     }
 
     public void GameTabPressed()
     {
-        if (currentTab == SettingsTab.game || isAnimating)
+        if (currentTab == SettingsTab.game)
             return;
 
+        if (isAnimating)
+            return;
         isAnimating = true;
+
         StartCoroutine(TabPressedRoutine(SettingsTab.game));
     }
 
     public void ExitTabPressed()
     {
-        if (currentTab == SettingsTab.exit || isAnimating)
+        if (currentTab == SettingsTab.exit)
             return;
 
+        if (isAnimating)
+            return;
         isAnimating = true;
+
         StartCoroutine(TabPressedRoutine(SettingsTab.exit));
     }
 
     public void MapTabPressed()
     {
-        if (currentTab == SettingsTab.map || isAnimating)
+        if (currentTab == SettingsTab.map)
             return;
 
+        if (isAnimating)
+            return;
         isAnimating = true;
+
         StartCoroutine(TabPressedRoutine(SettingsTab.map));
     }
 
@@ -223,6 +247,8 @@ public class SettingsWindowController : MonoBehaviour
                 mapWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.2f, 0.2f);
                 break;
         }
+
+        currentTab = SettingsTab.none;
     }
 
 

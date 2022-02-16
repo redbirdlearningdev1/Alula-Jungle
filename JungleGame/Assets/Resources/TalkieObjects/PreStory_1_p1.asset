@@ -53,23 +53,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 1fd6d540b4ee0f5479da36901d5196cf, type: 3}
     audioClipName: P_1_1a_Darwin_1_T2
-    audioString: Come talk to me so I can...
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 3
-    leftEmotionNum: 7
-    leftMouthEnum: 1
-    leftEyesEnum: 4
-    rightCharacter: 0
-    rightEmotionNum: 0
-    rightMouthEnum: 0
-    rightEyesEnum: 0
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: dc6e46f4956e6db4eaffe33ca7787aa7, type: 3}
-    audioClipName: P_1_1a_Darwin_1_T3
-    audioString: uhh...
+    audioString: Come talk to me so I can... uhh...
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

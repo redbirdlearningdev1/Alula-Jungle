@@ -8,6 +8,8 @@ public class Key : MonoBehaviour
     public int keyNum;
     public Animator animator;
     public Transform origin;
+    public Vector2 grabPivot;
+    [HideInInspector] public bool interactable = true;
 
     private ActionWordEnum currentWord;
 
@@ -24,10 +26,17 @@ public class Key : MonoBehaviour
     public void ResetKey()
     {
         KeyResetAnim();
+        GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
         transform.SetParent(origin);
         transform.position = origin.position;
         transform.localScale = new Vector3(1f, 1f, 1f);
         ImageGlowController.instance.SetImageGlow(GetComponent<Image>(), false, GlowValue.none);
+    }
+
+    private IEnumerator DelaySetInteractable(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        interactable = true;
     }
 
     public void PlayAudio()
@@ -41,12 +50,16 @@ public class Key : MonoBehaviour
 
     public void ReturnToRope()
     {
+        // reset pivot
+        GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
         // make key normal size
         GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
         // return to origin
         GetComponent<LerpableObject>().LerpPosToTransform(origin, 0.2f, false);
         // set origin as parent
         transform.SetParent(origin);
+        // make interactable after delay
+        StartCoroutine(DelaySetInteractable(0.5f));
     }
 
     public void MoveIntoRockLock()
@@ -55,6 +68,8 @@ public class Key : MonoBehaviour
         GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
         // return to origin
         GetComponent<LerpableObject>().LerpPosToTransform(TurntablesGameManager.instance.rockLock.transform, 0.25f, false);
+        // make interactable after delay
+        StartCoroutine(DelaySetInteractable(0.5f));
     }
 
     public void KeyDownAnim()

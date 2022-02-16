@@ -116,7 +116,7 @@ public class ParrotController : MonoBehaviour, IPointerUpHandler, IPointerDownHa
         if (isPressed)
         {
             // play audio blip
-            SayAudio(PrintingGameManager.instance.correctValue, false);
+            SayAudio(PrintingGameManager.instance.correctValue, true);
 
             // stop wiggling if tutorial
             if (PrintingGameManager.instance.playTutorial && PrintingGameManager.instance.t_waitingForPlayer)

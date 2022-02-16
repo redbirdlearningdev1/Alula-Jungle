@@ -10,6 +10,7 @@ public class SpiderRayCaster : MonoBehaviour
     public bool isOn = false;
     private UniversalCoinImage selectedCoin = null;
     private BugController selectedBug = null;
+    public float moveSpeed;
     [SerializeField] private Transform selectedCoinParent;
     [SerializeField] private WebBall webBallGlow;
 
@@ -30,8 +31,9 @@ public class SpiderRayCaster : MonoBehaviour
         {
             Vector3 mousePosWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosWorldSpace.z = 0f;
-            selectedCoin.transform.position = mousePosWorldSpace;
 
+            Vector3 pos = Vector3.Lerp(selectedCoin.transform.position, mousePosWorldSpace, 1 - Mathf.Pow(1 - moveSpeed, Time.deltaTime * 60));
+            selectedCoin.transform.position = pos;
         }
         else if (Input.GetMouseButtonUp(0) && selectedCoin)
         {
@@ -56,8 +58,11 @@ public class SpiderRayCaster : MonoBehaviour
             // audio fx
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f);
 
-            webBallGlow.chestGlowNo();
             NewSpiderGameManager.instance.ReturnCoinsToPosition();
+
+            // grow webball
+            WebBall.instance.GetComponent<LerpableObject>().LerpScale(Vector2.one, 0.2f);
+            WebBall.instance.GetComponent<WiggleController>().StopWiggle();
 
             selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.25f);
             selectedCoin = null;
@@ -82,7 +87,10 @@ public class SpiderRayCaster : MonoBehaviour
                         selectedCoin = result.gameObject.GetComponent<UniversalCoinImage>();
                         selectedCoin.gameObject.transform.SetParent(selectedCoinParent);
                         selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.25f, 1.25f), 0.25f);
-                        webBallGlow.chestGlow();
+
+                        // grow webball
+                        WebBall.instance.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
+                        WebBall.instance.GetComponent<WiggleController>().StartWiggle();
                     }
                     if (result.gameObject.transform.CompareTag("Shell"))
                     {

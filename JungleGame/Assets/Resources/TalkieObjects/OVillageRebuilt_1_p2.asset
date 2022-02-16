@@ -115,7 +115,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: ac6988d5faa0b954c82c1bc26b083d9d, type: 3}
     audioClipName: P_3_2_Brutus_20_T1
     audioString: Yeah...
   - endTalkieAfterThisSegment: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: c2f995d9569f98c4fae3e4c95c1835fe, type: 3}
     audioClipName: P_3_2_Brutus_20_T2
     audioString: No right to speak after being spoken to.
   - endTalkieAfterThisSegment: 0

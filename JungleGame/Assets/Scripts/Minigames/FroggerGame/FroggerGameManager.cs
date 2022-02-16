@@ -117,11 +117,16 @@ public class FroggerGameManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // save tutorial done to SIS
+                StudentInfoSystem.GetCurrentProfile().turntablesTutorial = true;
+                // times missed set to 0
+                timesMissed = 0;
                 // update AI data
                 AIData(StudentInfoSystem.GetCurrentProfile());
-
                 // calculate and show stars
-                StarAwardController.instance.AwardStarsAndExit(3);
+                StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+                // remove all raycast blockers
+                RaycastBlockerController.instance.ClearAllRaycastBlockers();
             }
         }
     }
@@ -328,14 +333,10 @@ public class FroggerGameManager : MonoBehaviour
         // hide dancing man
         StartCoroutine(HideDancingManRoutine());
 
-        // AI Store
-
-        
+        // AI stuff
         AIData(StudentInfoSystem.GetCurrentProfile());
         
-        
         // calculate and show stars
-
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());
     }
 
@@ -346,12 +347,14 @@ public class FroggerGameManager : MonoBehaviour
         playerData.gameBeforeLastPlayed = playerData.lastGamePlayed;
         playerData.lastGamePlayed = GameType.FroggerGame;
         playerData.starsFrogger = CalculateStars() + playerData.starsFrogger;
-        playerData.totalStarsFrogger = 3 + playerData.totalStarsFrogger;
+        playerData.totalStarsFrogger += 3;
+
+        // save to SIS
+        StudentInfoSystem.SaveStudentPlayerData();
     }
 
     private int CalculateStars()
     {
-        
         if (timesMissed <= 0)
             return 3;
         else if (timesMissed > 0 && timesMissed <= 2)

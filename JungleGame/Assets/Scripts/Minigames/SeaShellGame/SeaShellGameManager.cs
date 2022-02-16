@@ -88,10 +88,16 @@ public class SeaShellGameManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // save tutorial done to SIS
+                StudentInfoSystem.GetCurrentProfile().seashellTutorial = true;
+                // times missed set to 0
+                timesMissed = 0;
                 // update AI data
                 AIData(StudentInfoSystem.GetCurrentProfile());
                 // calculate and show stars
-                StarAwardController.instance.AwardStarsAndExit(3);
+                StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+                // remove all raycast blockers
+                RaycastBlockerController.instance.ClearAllRaycastBlockers();
             }
         }
     }
@@ -368,7 +374,7 @@ public class SeaShellGameManager : MonoBehaviour
         }
         else
         {
-
+            // AI stuff
             AIData(StudentInfoSystem.GetCurrentProfile());
     
             // calculate and show stars
@@ -384,6 +390,9 @@ public class SeaShellGameManager : MonoBehaviour
         playerData.lastGamePlayed = GameType.SeashellGame;
         playerData.starsSeashell = CalculateStars() + playerData.starsSeashell;
         playerData.totalStarsSeashell = 3 + playerData.totalStarsSeashell;
+
+        // save to SIS
+        StudentInfoSystem.SaveStudentPlayerData();
     }
 
     private int CalculateStars()

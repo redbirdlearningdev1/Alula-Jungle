@@ -611,6 +611,6 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 0}
-    audioClipName: P_1_5_Wally_34
+    audioClip: {fileID: 8300000, guid: 440492fb01370154b898373db71adaa7, type: 3}
+    audioClipName: P_1_5_Wally_34_T1
     audioString: Good luck.

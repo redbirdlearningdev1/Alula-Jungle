@@ -11,6 +11,8 @@ public class ShellRayCaster : MonoBehaviour
     private SeaShell selectedShell = null;
     public  Transform selectedShellParent;
 
+    public float moveSpeed;
+
     void Awake()
     {
         if (instance == null)
@@ -28,8 +30,9 @@ public class ShellRayCaster : MonoBehaviour
         {
             Vector3 mousePosWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosWorldSpace.z = 0f;
-            selectedShell.transform.position = mousePosWorldSpace;
-            
+
+            Vector3 pos = Vector3.Lerp(selectedShell.transform.position, mousePosWorldSpace, 1 - Mathf.Pow(1 - moveSpeed, Time.deltaTime * 60));
+            selectedShell.transform.position = pos;
         }
         else if (Input.GetMouseButtonUp(0) && selectedShell)
         {

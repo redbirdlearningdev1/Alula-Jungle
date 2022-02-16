@@ -405,9 +405,9 @@ MonoBehaviour:
   backLayer: {fileID: 1228727340}
   midLayer: {fileID: 1237634160}
   frontLayer: {fileID: 1013389069}
-  frontSpeed: 0.0025
-  midSpeed: 0.00125
-  backSpeed: 0.00025
+  frontSpeed: 0.5
+  midSpeed: 0.25
+  backSpeed: 0.05
 --- !u!1001 &471674082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1040,7 +1040,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 46.18091
+      value: 46.325397
       objectReference: {fileID: 0}
     - target: {fileID: 8495042698246909739, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

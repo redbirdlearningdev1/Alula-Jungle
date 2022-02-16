@@ -11,6 +11,7 @@ public class RummageCoinRaycaster : MonoBehaviour
     public bool pileChosen = false;
     private RummageCoin selectedRummageCoin = null;
     private pileRummage pile = null;
+    public float moveSpeed;
     [SerializeField]  private chest Chester;
     [SerializeField] private List<pileRummage> piles;
     [SerializeField] private Transform selectedCoinParent;
@@ -32,7 +33,9 @@ public class RummageCoinRaycaster : MonoBehaviour
         {
             Vector3 mousePosWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosWorldSpace.z = 0f;
-            selectedRummageCoin.transform.position = mousePosWorldSpace;
+
+            Vector3 pos = Vector3.Lerp(selectedRummageCoin.transform.position, mousePosWorldSpace, 1 - Mathf.Pow(1 - moveSpeed, Time.deltaTime * 60));
+            selectedRummageCoin.transform.position = pos;
         }
         else if (Input.GetMouseButtonUp(0) && selectedRummageCoin)
         {

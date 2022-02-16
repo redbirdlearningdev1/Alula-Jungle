@@ -106,15 +106,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 6
-    leftEmotionNum: 4
-    leftMouthEnum: 1
-    leftEyesEnum: 0
-    rightCharacter: 5
-    rightEmotionNum: 7
-    rightMouthEnum: 2
+    leftCharacter: 9
+    leftEmotionNum: 3
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 6
+    rightEmotionNum: 4
+    rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 98d628f8a6770184e897795f3d256a68, type: 3}
     audioClipName: B_1_3_Marcus_14_T1
     audioString: SILENCE!
@@ -122,15 +122,15 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 6
-    leftEmotionNum: 7
-    leftMouthEnum: 1
-    leftEyesEnum: 0
-    rightCharacter: 5
+    leftCharacter: 9
+    leftEmotionNum: 3
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 6
     rightEmotionNum: 7
-    rightMouthEnum: 2
+    rightMouthEnum: 1
     rightEyesEnum: 0
-    activeCharacter: 1
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: b59406335d3563c4dbefefefc3a96d83, type: 3}
     audioClipName: B_1_3_Marcus_14_T2
     audioString: He wasn't speaking to you, commoner!
@@ -138,10 +138,10 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 6
+    leftCharacter: 9
     leftEmotionNum: 3
     leftMouthEnum: 2
-    leftEyesEnum: 0
+    leftEyesEnum: 1
     rightCharacter: 5
     rightEmotionNum: 5
     rightMouthEnum: 1
@@ -154,10 +154,10 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 6
+    leftCharacter: 9
     leftEmotionNum: 3
     leftMouthEnum: 2
-    leftEyesEnum: 0
+    leftEyesEnum: 1
     rightCharacter: 5
     rightEmotionNum: 4
     rightMouthEnum: 1
@@ -170,10 +170,10 @@ MonoBehaviour:
     requireYN: 0
     onYesGoto: 0
     onNoGoto: 0
-    leftCharacter: 6
+    leftCharacter: 9
     leftEmotionNum: 3
     leftMouthEnum: 2
-    leftEyesEnum: 0
+    leftEyesEnum: 1
     rightCharacter: 5
     rightEmotionNum: 6
     rightMouthEnum: 1

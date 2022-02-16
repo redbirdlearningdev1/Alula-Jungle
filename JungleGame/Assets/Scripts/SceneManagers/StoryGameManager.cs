@@ -331,24 +331,24 @@ public class StoryGameManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.scared);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.thatguy);
         }
-        // // chapter 3 action words
-        // else if ()
-        // {
-        //     StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.choice);
-        //     StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.strongwind);
-        //     StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.pirate);
-        //     StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.gorilla);
-        //     StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.sounds);
-        //     StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.give);
-        // }
-        // // chapter 4 action words
-        // else if ()
-        // {
-        //     StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.backpack);
-        //     StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.frustrating);
-        //     StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.bumphead);
-        //     StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.baby);
-        // }
+        // chapter 3 action words
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.FollowRedStoryGame)
+        {
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.choice);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.strongwind);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.pirate);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.gorilla);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.sounds);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.give);
+        }
+        // chapter 4 action words
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.EmergingStoryGame)
+        {
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.backpack);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.frustrating);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.bumphead);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.baby);
+        }
 
         // advance story beat
         StudentInfoSystem.AdvanceStoryBeat();

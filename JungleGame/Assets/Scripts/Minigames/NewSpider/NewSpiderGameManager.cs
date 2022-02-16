@@ -105,10 +105,16 @@ public class NewSpiderGameManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // save tutorial done to SIS
+                StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = true;
+                // times missed set to 0
+                timesMissed = 0;
                 // update AI data
                 AIData(StudentInfoSystem.GetCurrentProfile());
                 // calculate and show stars
-                StarAwardController.instance.AwardStarsAndExit(3);
+                StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+                // remove all raycast blockers
+                RaycastBlockerController.instance.ClearAllRaycastBlockers();
             }
         }
     }
@@ -188,17 +194,19 @@ public class NewSpiderGameManager : MonoBehaviour
         timesMissed++;
         bug.die();
         yield return new WaitForSeconds(.5f);
-        spider.fail();
         webber2.gameObject.SetActive(true);
         webber2.grabBug();
         yield return new WaitForSeconds(.4f);
         bug.webGetEat();
         yield return new WaitForSeconds(.5f);
         webber2.gameObject.SetActive(false);
-
         StartCoroutine(CoinsDown());
-        yield return new WaitForSeconds(1f);
 
+        // play om nom nom sound
+        spider.fail();
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Spindle, GameIntroDatabase.instance.spiderwebsOmNomNom);
+        yield return new WaitForSeconds(GameIntroDatabase.instance.spiderwebsOmNomNom.length + 1f);
+        spider.idle();
 
         // play reminder popup
         List<AudioClip> clips = new List<AudioClip>();
@@ -310,7 +318,7 @@ public class NewSpiderGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-
+        // AI stuff
         AIData(StudentInfoSystem.GetCurrentProfile());
 
         // calculate and show stars
@@ -325,6 +333,9 @@ public class NewSpiderGameManager : MonoBehaviour
         playerData.lastGamePlayed = GameType.SpiderwebGame;
         playerData.starsSpiderweb = CalculateStars() + playerData.starsSpiderweb;
         playerData.totalStarsSpiderweb = 3 + playerData.totalStarsSpiderweb;
+
+        // save to SIS
+        StudentInfoSystem.SaveStudentPlayerData();
     }
 
     private IEnumerator StartGame()

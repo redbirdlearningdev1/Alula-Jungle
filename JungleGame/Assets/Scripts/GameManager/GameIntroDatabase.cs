@@ -91,6 +91,8 @@ public class GameIntroDatabase : MonoBehaviour
     public AudioClip spiderwebsReminder1;
     public AudioClip spiderwebsReminder2;
 
+    public AudioClip spiderwebsOmNomNom;
+
     public List<AudioClip> spiderwebsEncouragementClips;
 
     /* 

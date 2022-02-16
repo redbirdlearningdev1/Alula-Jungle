@@ -69,10 +69,16 @@ public class PrintingGameManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // save tutorial done to SIS
+                StudentInfoSystem.GetCurrentProfile().pirateTutorial = true;
+                // times missed set to 0
+                timesMissed = 0;
                 // update AI data
                 AIData(StudentInfoSystem.GetCurrentProfile());
                 // calculate and show stars
-                StarAwardController.instance.AwardStarsAndExit(3);
+                StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+                // remove all raycast blockers
+                RaycastBlockerController.instance.ClearAllRaycastBlockers();
             }
         }
     }
@@ -84,6 +90,7 @@ public class PrintingGameManager : MonoBehaviour
         BallsController.instance.ResetBalls();
         PirateRopeController.instance.ResetRope();
         ParrotController.instance.interactable = false;
+        RopeCoin.instance.interactable = false;
 
         // add ambiance sounds
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.SeaAmbiance, 0.1f, "sea_ambiance");
@@ -134,18 +141,27 @@ public class PrintingGameManager : MonoBehaviour
 
 
         // reset rope
+        PirateRopeController.instance.ResetRope();
+        PirateRopeController.instance.DropRope();
+        yield return new WaitForSeconds(1f);
+
         correctValue = t_firstRound[t_correctIndexes[0]];
         yield return new WaitForSeconds(1f);
-        ParrotController.instance.GetComponent<WiggleController>().StartWiggle();
+        RopeCoin.instance.GetComponent<WiggleController>().StartWiggle();
         t_waitingForPlayer = true;
-        ParrotController.instance.interactable = true;
+        RopeCoin.instance.interactable = true;
 
 
         // wait for player input
         while (t_waitingForPlayer)
             yield return null;
-
+        
+        // disable rope coin
+        RopeCoin.instance.GetComponent<WiggleController>().StopWiggle();
         yield return new WaitForSeconds(2f);
+        RopeCoin.instance.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        RopeCoin.instance.interactable = false;
+        yield return new WaitForSeconds(1f);
         
         // play tutorial audio
         AudioClip clip = GameIntroDatabase.instance.pirateIntro3;
@@ -158,7 +174,15 @@ public class PrintingGameManager : MonoBehaviour
     private IEnumerator StartGame()
     {
         // reset rope
-        PirateRopeController.instance.ResetRope();
+        if (playTutorial && t_currRound == 0)
+        {
+            // do nothing :)
+        }
+        else
+        {
+            PirateRopeController.instance.ResetRope();
+        }
+        
 
         // get correct value
         int correctIndex = 0;
@@ -218,13 +242,23 @@ public class PrintingGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         BallsController.instance.ShowBalls();
         yield return new WaitForSeconds(1f);
-        PirateRopeController.instance.DropRope();
-        yield return new WaitForSeconds(0.5f);
-        ParrotController.instance.SayAudio(correctValue);
+
+        if (playTutorial && t_currRound == 0)
+        {
+            // do nothing :)
+        }
+        else
+        {
+            PirateRopeController.instance.DropRope();
+            yield return new WaitForSeconds(0.5f);
+        }
+        
+        ParrotController.instance.SayAudio(correctValue, true);
         yield return new WaitForSeconds(1f);
 
         // turn on raycaster + parrot
         PrintingRayCaster.instance.isOn = true;
+        RopeCoin.instance.interactable = true;
     }
 
     public bool EvaluateSelectedBall(ActionWordEnum ball)
@@ -233,6 +267,8 @@ public class PrintingGameManager : MonoBehaviour
         PrintingRayCaster.instance.isOn = false;
         ParrotController.instance.StopAllCoroutines();
         ParrotController.instance.interactable = false;
+        RopeCoin.instance.StopAllCoroutines();
+        RopeCoin.instance.interactable = false;
 
         // correct!
         if (ball == correctValue)
@@ -248,6 +284,7 @@ public class PrintingGameManager : MonoBehaviour
                 // turn on raycaster + parrot
                 PrintingRayCaster.instance.isOn = true;
                 ParrotController.instance.interactable = true;
+                RopeCoin.instance.interactable = true;
             }
             else
             {
@@ -282,18 +319,19 @@ public class PrintingGameManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CannonHitCoin, 0.5f);
 
         // drop coin into chest
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         PirateRopeController.instance.printingCoin.SetActionWordValue(correctValue);
 
         // play sound coin audio
         PirateRopeController.instance.printingCoin.LerpScale(new Vector2(1.2f, 1.2f), 0.1f);
         AudioManager.instance.PlayPhoneme(correctValue);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
         PirateRopeController.instance.printingCoin.LerpScale(new Vector2(1f, 1f), 0.1f);
+        yield return new WaitForSeconds(1f);
 
         // upgrade chest
         PirateRopeController.instance.DropCoinAnimation();
-        yield return new WaitForSeconds(1.25f);
+        yield return new WaitForSeconds(0.4f);
         PirateChest.instance.UpgradeChest();
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
         AudioManager.instance.PlayCoinDrop();
@@ -400,14 +438,15 @@ public class PrintingGameManager : MonoBehaviour
         }
         else
         {
-            // calculate and show stars
+            // AI stuff
             AIData(StudentInfoSystem.GetCurrentProfile());
-            
+
+            // calculate and show stars
             StarAwardController.instance.AwardStarsAndExit(CalculateStars());
         }
     }
 
-        public void AIData(StudentPlayerData playerData)
+    public void AIData(StudentPlayerData playerData)
     {
         playerData.starsGameBeforeLastPlayed = playerData.starsLastGamePlayed;
         playerData.starsLastGamePlayed = CalculateStars();
@@ -415,6 +454,9 @@ public class PrintingGameManager : MonoBehaviour
         playerData.lastGamePlayed = GameType.PirateGame;
         playerData.starsPirate = CalculateStars() + playerData.starsPirate;
         playerData.totalStarsPirate = 3 + playerData.totalStarsPirate;
+
+        // save to SIS
+        StudentInfoSystem.SaveStudentPlayerData();
     }
 
 

@@ -110,12 +110,16 @@ public class TigerGameManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-                // save to sis
+                // save tutorial done to SIS
                 StudentInfoSystem.GetCurrentProfile().tigerPawPhotosTutorial = true;
-                StudentInfoSystem.SaveStudentPlayerData();
-                // calculate and show stars
+                // times missed set to 0
+                numMisses = 0;
+                // update AI data
                 AIData(StudentInfoSystem.GetCurrentProfile());
-                StarAwardController.instance.AwardStarsAndExit(3);
+                // calculate and show stars
+                StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+                // remove all raycast blockers
+                RaycastBlockerController.instance.ClearAllRaycastBlockers();
             }
         }
     }
@@ -143,7 +147,6 @@ public class TigerGameManager : MonoBehaviour
     {   
         currCoin.transform.position = coinStartPos.position;
 
-
         // get an unlocked set
         List<ActionWordEnum> unlockedSets = new List<ActionWordEnum>();
         unlockedSets.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
@@ -166,31 +169,7 @@ public class TigerGameManager : MonoBehaviour
             }
             tutorialEvent++;
         }   
-        else
-        {
-            currSet = unlockedSets[Random.Range(0, unlockedSets.Count)];
-        }
-        
-    
-        // get challenge words from a set
-        List<ChallengeWord> word_pool = new List<ChallengeWord>();
-        word_pool.AddRange(ChallengeWordDatabase.GetChallengeWordSet(currSet));
-
-        // get all other challenge words (from other sets)
-        List<ChallengeWord> global_pool = new List<ChallengeWord>();
-        global_pool.AddRange(ChallengeWordDatabase.globalChallengeWordList);
-        foreach (var word in word_pool)
-        {
-            global_pool.Remove(word);
-        }
-        // determine current word
-        currWord = word_pool[Random.Range(0, word_pool.Count)];
-
-        // determine correct index
-        int correctindex = Random.Range(0, polaroidC.Count);
-
-        //Scripted Tiger Paw Photo
-        if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 || testthis)
+        else if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 || testthis)
         {
             // get correct tutorial polaroids
             List<ChallengeWord> scriptedList = new List<ChallengeWord>();
@@ -203,11 +182,10 @@ public class TigerGameManager : MonoBehaviour
                     
                     for (int i = 0; i < polaroidC.Count; i++)
                     {
-                        
                         polaroidC[i].SetPolaroid(polaroidsScripted1[i]);
-                        
                     }
                     break;
+
                 case 1:
                     scriptedList.AddRange(polaroidsScripted2);
                     currWord = polaroidsScripted2[2];
@@ -215,11 +193,10 @@ public class TigerGameManager : MonoBehaviour
                     
                     for (int i = 0; i < polaroidC.Count; i++)
                     {
-                        
                         polaroidC[i].SetPolaroid(polaroidsScripted2[i]);
-                        
                     }
                     break;
+
                 case 2:
                     scriptedList.AddRange(polaroidsScripted3);
                     currWord = polaroidsScripted3[1];
@@ -227,11 +204,10 @@ public class TigerGameManager : MonoBehaviour
                     
                     for (int i = 0; i < polaroidC.Count; i++)
                     {
-                        
                         polaroidC[i].SetPolaroid(polaroidsScripted3[i]);
-                        
                     }
                     break;
+
                 case 3:
                     scriptedList.AddRange(polaroidsScripted4);
                     currWord = polaroidsScripted4[4];
@@ -239,11 +215,10 @@ public class TigerGameManager : MonoBehaviour
                     
                     for (int i = 0; i < polaroidC.Count; i++)
                     {
-                        
                         polaroidC[i].SetPolaroid(polaroidsScripted4[i]);
-                        
                     }
                     break;
+
                 case 4:
                     scriptedList.AddRange(polaroidsScripted5);
                     currWord = polaroidsScripted5[3];
@@ -251,22 +226,16 @@ public class TigerGameManager : MonoBehaviour
                     
                     for (int i = 0; i < polaroidC.Count; i++)
                     {
-                        
                         polaroidC[i].SetPolaroid(polaroidsScripted5[i]);
-                        
                     }
                     break;
             }
             scriptedEvent++;
-
-            // set tutorial polaroids
-            
-
         }
         else
         {
             // get an unlocked set
-            List<ActionWordEnum> unlockedSets = new List<ActionWordEnum>();
+            unlockedSets = new List<ActionWordEnum>();
             unlockedSets.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
             //currSet = unlockedSets[Random.Range(0, unlockedSets.Count)];
 
@@ -292,14 +261,11 @@ public class TigerGameManager : MonoBehaviour
             //currWord = word_pool[Random.Range(0, word_pool.Count)];
             // determine correct index
 
-            Debug.Log("HERERERER");
             for (int i = 0; i < polaroidC.Count; i++)
             {
                 int randomIndex = Random.Range(0, word_pool.Count);
-                
                 polaroidC[i].SetPolaroid(word_pool[randomIndex]);
                 word_pool.RemoveAt(randomIndex);
-
             }
         }
 
@@ -732,8 +698,10 @@ public class TigerGameManager : MonoBehaviour
         }
         else
         {
-            // show stars
+            // AI stuff
             AIData(StudentInfoSystem.GetCurrentProfile());
+
+            // calculate and show stars
             StarAwardController.instance.AwardStarsAndExit(CalculateStars());
         }
     }
@@ -742,8 +710,11 @@ public class TigerGameManager : MonoBehaviour
     {
         playerData.tPawPolPlayed = playerData.tPawPolPlayed + 1;
         playerData.starsTPawPol= CalculateStars() + playerData.starsTPawPol;
-        
+
+        // save to SIS
+        StudentInfoSystem.SaveStudentPlayerData();
     }
+    
     private int CalculateStars()
     {
         if (numMisses <= 0)

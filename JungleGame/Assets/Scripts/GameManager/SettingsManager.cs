@@ -37,8 +37,6 @@ public class SettingsManager : MonoBehaviour
 
     // settings windows
     public LerpableObject settingsWindowBG;
-    public LerpableObject returnToScrollMapWindow;
-    public LerpableObject returnToScrollMapButton;
     public LerpableObject returnToScrollMapConfirmWindow;
     public LerpableObject returnToSplashScreenConfirmWindow;
     public LerpableObject exitApplicationConfirmWindow;
@@ -67,8 +65,6 @@ public class SettingsManager : MonoBehaviour
 
         // close settings windows + hide BG
         settingsWindowBG.SetImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f);
-        returnToScrollMapWindow.transform.localScale = new Vector3(0f, 0f, 1f);
-        returnToScrollMapButton.transform.localScale = new Vector3(0f, 0f, 1f);
         returnToScrollMapConfirmWindow.transform.localScale = new Vector3(0f, 0f, 1f);
     }
 
@@ -377,6 +373,16 @@ public class SettingsManager : MonoBehaviour
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
+        print ("settings window is animating: " + SettingsWindowController.instance.isAnimating);
+        print ("in game settings window is animating: " + InGameSettingsWindowController.instance.isAnimating);
+
+        // return if windows are animating
+        if (SettingsWindowController.instance.isAnimating || 
+            InGameSettingsWindowController.instance.isAnimating ||
+            SplashScreenSettingsWindowController.instance.isAnimating)
+            return;
+
+        // return if animating window
         if (animatingWindow)
             return;
         animatingWindow = true;
@@ -384,15 +390,20 @@ public class SettingsManager : MonoBehaviour
         // change bool
         settingsWindowOpen = !settingsWindowOpen;
         
-        // open settings window iff at scroll map
-        if (SceneManager.GetActiveScene().name == "ScrollMap" || SceneManager.GetActiveScene().name == "SplashScene")
+        // open normal scroll map settings window
+        if (SceneManager.GetActiveScene().name == "ScrollMap")
         {
             StartCoroutine(ToggleSettingsWindow(settingsWindowOpen));
         } 
-        // else open return to scroll map window
+        // open splash screen settings window
+        else if (SceneManager.GetActiveScene().name == "SplashScene")
+        {
+            StartCoroutine(ToggleSplashScreenSettingsWindow(settingsWindowOpen));
+        }
+        // else open in game settings window
         else
         {
-            StartCoroutine(ToggleReturnToScrollMapWindow(settingsWindowOpen));
+            StartCoroutine(ToggleInGameSettingsWindow(settingsWindowOpen));
         }
     }
 
@@ -402,18 +413,15 @@ public class SettingsManager : MonoBehaviour
         {
             // open window
             SettingsWindowController.instance.OpenWindow();
-            settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0.75f, 0.2f);
-            settingsWindowBG.GetComponent<Image>().raycastTarget = true;
         }
         else
         {
             // save settings to profile
             SaveSettingsToProfile();
 
-            // close window
+            // close windows
             SettingsWindowController.instance.CloseAllWindows();
-            settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
-            settingsWindowBG.GetComponent<Image>().raycastTarget = false;
+            InGameSettingsWindowController.instance.CloseAllWindows();
 
             // close confirm windows iff open
             if (returnToScrollMapConfirmWindow.transform.localScale.x > 0f)
@@ -422,7 +430,6 @@ public class SettingsManager : MonoBehaviour
                 CloseConfirmSplashScreenWindow();
             if (exitApplicationConfirmWindow.transform.localScale.x > 0f)
                 CloseConfirmSplashScreenWindow();
-            
         }
 
         yield return new WaitForSeconds(1f);
@@ -431,21 +438,20 @@ public class SettingsManager : MonoBehaviour
         settingsWindowOpen = opt;
     }
 
-    public IEnumerator ToggleReturnToScrollMapWindow(bool opt)
+    public IEnumerator ToggleSplashScreenSettingsWindow(bool opt)
     {
         if (opt)
         {
             // open window
-            returnToScrollMapWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
-            yield return new WaitForSeconds(0.2f);
-            returnToScrollMapButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
+            SplashScreenSettingsWindowController.instance.OpenWindow();
         }
         else
         {
+            // save settings to profile
+            SaveSettingsToProfile();
+
             // close window
-            returnToScrollMapButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
-            yield return new WaitForSeconds(0.2f);
-            returnToScrollMapWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+            SplashScreenSettingsWindowController.instance.CloseAllWindows();
 
             // close confirm windows iff open
             if (returnToScrollMapConfirmWindow.transform.localScale.x > 0f)
@@ -459,6 +465,37 @@ public class SettingsManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         animatingWindow = false;
+        settingsWindowOpen = opt;
+    }
+
+    public IEnumerator ToggleInGameSettingsWindow(bool opt)
+    {
+        if (opt)
+        {
+            // open window
+            InGameSettingsWindowController.instance.OpenWindow();
+        }
+        else
+        {
+            // save settings to profile
+            SaveSettingsToProfile();
+
+            // close window
+            InGameSettingsWindowController.instance.CloseAllWindows();
+
+            // close confirm windows iff open
+            if (returnToScrollMapConfirmWindow.transform.localScale.x > 0f)
+                CloseConfirmScrollMapWindow();
+            if (returnToSplashScreenConfirmWindow.transform.localScale.x > 0f)
+                CloseConfirmSplashScreenWindow();
+            if (exitApplicationConfirmWindow.transform.localScale.x > 0f)
+                CloseConfirmSplashScreenWindow();
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        animatingWindow = false;
+        settingsWindowOpen = opt;
     }
 
     public void OpenConfirmScrollMapWindow()
@@ -484,9 +521,8 @@ public class SettingsManager : MonoBehaviour
         settingsWindowBG.GetComponent<Image>().raycastTarget = false;
 
         // close settings window
-        returnToScrollMapButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
-        yield return new WaitForSeconds(0.2f);
-        returnToScrollMapWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+       InGameSettingsWindowController.instance.CloseAllWindows();
+       yield return new WaitForSeconds(1f);
 
         // go to scroll map scene
         GameManager.instance.LoadScene("ScrollMap", true, 0.5f, true);

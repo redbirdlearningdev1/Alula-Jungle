@@ -107,12 +107,16 @@ public class TigerCoinGameManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-                // save to sis
+                // save tutorial done to SIS
                 StudentInfoSystem.GetCurrentProfile().tigerPawCoinsTutorial = true;
-                StudentInfoSystem.SaveStudentPlayerData();
-                // calculate and show stars
+                // times missed set to 0
+                numMisses = 0;
+                // update AI data
                 AIData(StudentInfoSystem.GetCurrentProfile());
-                StarAwardController.instance.AwardStarsAndExit(3);
+                // calculate and show stars
+                StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+                // remove all raycast blockers
+                RaycastBlockerController.instance.ClearAllRaycastBlockers();
             }
         }
     }
@@ -137,7 +141,6 @@ public class TigerCoinGameManager : MonoBehaviour
         polaroidC.gameObject.transform.position = polaroidStartPos.position;
         polaroidC.LerpScale(0f, 0f);
 
-
         if (playTutorial)
         {
             switch (tutorialEvent)
@@ -156,25 +159,7 @@ public class TigerCoinGameManager : MonoBehaviour
             }
             tutorialEvent++;
         }
-        else
-        {   
-            // get random word
-            currentWord = GetUnusedWord();
-        }
-
-        polaroidC.SetPolaroid(currentWord);
-        currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(currentWord.set);
-
-
-        print ("current value: " + currentTargetValue);
-
-        yield return new WaitForSeconds(0.5f);
-
-        polaroidC.gameObject.transform.position = polaroidStartPos.position;
-        polaroidC.LerpScale(0f, 0f);
-
-        //Scripted Tiger Paw Photo
-        if (StudentInfoSystem.GetCurrentProfile().tPawCoinPlayed == 0 || testthis)
+        else if (StudentInfoSystem.GetCurrentProfile().tPawCoinPlayed == 0 || testthis)
         {
             // get correct tutorial polaroids
             switch (scriptedEvent)
@@ -226,8 +211,6 @@ public class TigerCoinGameManager : MonoBehaviour
                     break;
             }
             scriptedEvent++;
-
-            // set tutorial polaroids
         }
         else
         {
@@ -253,10 +236,9 @@ public class TigerCoinGameManager : MonoBehaviour
 
             for (int i = 0; i < 5; i++)
             {
-
-                    int rand = Random.Range(0, coinOptions.Count);
-                    waterCoins[i].SetActionWordValue(coinOptions[rand]);
-                    coinOptions.RemoveAt(rand);
+                int rand = Random.Range(0, coinOptions.Count);
+                waterCoins[i].SetActionWordValue(coinOptions[rand]);
+                coinOptions.RemoveAt(rand);
             }
         }
         // return pattern to base state
@@ -656,8 +638,10 @@ public class TigerCoinGameManager : MonoBehaviour
         }
         else
         {
-            // show stars
+            // AI stuff
             AIData(StudentInfoSystem.GetCurrentProfile());
+
+            // calculate and show stars
             StarAwardController.instance.AwardStarsAndExit(CalculateStars());
         }  
     }
@@ -667,6 +651,8 @@ public class TigerCoinGameManager : MonoBehaviour
         playerData.tPawCoinPlayed = playerData.tPawCoinPlayed + 1;
         playerData.starsTPawCoin = CalculateStars() + playerData.starsTPawCoin;
         
+        // save to SIS
+        StudentInfoSystem.SaveStudentPlayerData();
     }
 
     private int CalculateStars()

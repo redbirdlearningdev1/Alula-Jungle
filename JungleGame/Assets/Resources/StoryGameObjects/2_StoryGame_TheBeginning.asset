@@ -91,7 +91,7 @@ MonoBehaviour:
     actionWord: 0
     requireInput: 0
     postText: 
-    advanceBG: 0
+    advanceBG: 1
   - text: mudslides
     audio: {fileID: 8300000, guid: 5ac5b134f34d441408eff3116dabb684, type: 3}
     moveWord: 1
@@ -176,7 +176,7 @@ MonoBehaviour:
     actionWord: 0
     requireInput: 0
     postText: 
-    advanceBG: 1
+    advanceBG: 0
   - text: spider
     audio: {fileID: 8300000, guid: 0294bf0202a8e02459a64d3788ba12b2, type: 3}
     moveWord: 1
@@ -225,7 +225,7 @@ MonoBehaviour:
     actionWord: 10
     requireInput: 0
     postText: 
-    advanceBG: 0
+    advanceBG: 1
   - text: but not an
     audio: {fileID: 8300000, guid: 7b7316fe2fff9d84bb63166139b6cddd, type: 3}
     moveWord: 1
@@ -379,7 +379,7 @@ MonoBehaviour:
     actionWord: 1
     requireInput: 0
     postText: .
-    advanceBG: 1
+    advanceBG: 0
   - text: So~ the
     audio: {fileID: 8300000, guid: 565fa1339f1dae044b900a786f91205c, type: 3}
     moveWord: 1

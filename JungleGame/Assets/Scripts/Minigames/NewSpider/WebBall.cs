@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class WebBall : MonoBehaviour
 {
+    public static WebBall instance;
+
     private int currBall = 0;
     private const int maxBall = 4;
 
@@ -17,6 +19,11 @@ public class WebBall : MonoBehaviour
 
     void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+
         image.sprite = chestBall[currBall];
     }
 
@@ -34,6 +41,8 @@ public class WebBall : MonoBehaviour
     {
         GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
         image.sprite = chestBall[currBall];
+        // play coin drop sound
+        AudioManager.instance.PlayCoinDrop();
         yield return new WaitForSeconds(0.2f);
         GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
     }
@@ -46,16 +55,4 @@ public class WebBall : MonoBehaviour
         }
         image.sprite = chestBall[currBall];
     }
-
-    public void chestGlow()
-    {
-        ImageGlowController.instance.SetImageGlow(image, true, GlowValue.glow_1_00);
-    }
-
-    public void chestGlowNo()
-    {
-        ImageGlowController.instance.SetImageGlow(image, false);
-    }
-
-
 }

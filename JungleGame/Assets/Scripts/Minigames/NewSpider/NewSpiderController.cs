@@ -34,13 +34,6 @@ public class NewSpiderController : MonoBehaviour
     }
     public void fail()
     {
-        StartCoroutine(failRoutine());
-    }
-    private IEnumerator failRoutine()
-    {
-
         animator.Play("Hungry");
-        yield return new WaitForSeconds(0f);
-
     }
 }

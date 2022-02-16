@@ -9,7 +9,7 @@ public class TigerCoinRayCaster : MonoBehaviour
 
 
     public bool isOn = false;
-    public float objcetMoveSpeed = 0.1f;
+    public float moveSpeed;
 
     private GameObject selectedObject = null;
     [SerializeField] private Transform selectedObjectParent;
@@ -37,9 +37,8 @@ public class TigerCoinRayCaster : MonoBehaviour
             Vector3 mousePosWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosWorldSpace.z = 0f;
 
-            Vector3 pos = Vector3.Lerp(selectedObject.transform.position, mousePosWorldSpace, objcetMoveSpeed);
+            Vector3 pos = Vector3.Lerp(selectedObject.transform.position, mousePosWorldSpace, 1 - Mathf.Pow(1 - moveSpeed, Time.deltaTime * 60));
             selectedObject.transform.position = pos;
-
         }
         else if (Input.GetMouseButtonUp(0) && selectedObject)
         {

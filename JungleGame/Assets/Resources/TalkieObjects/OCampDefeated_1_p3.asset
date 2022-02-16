@@ -33,7 +33,7 @@ MonoBehaviour:
     rightCharacter: 8
     rightEmotionNum: 9
     rightMouthEnum: 1
-    rightEyesEnum: 0
+    rightEyesEnum: 1
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: eb6223fc231e1174a97f077d0e5dc551, type: 3}
     audioClipName: B_2_3_Clogg_10_T1

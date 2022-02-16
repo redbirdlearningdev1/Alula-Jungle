@@ -15,18 +15,12 @@ public class KeyRaycaster : MonoBehaviour
     private bool playedKeyTutorialPart = false;
 
     // move speeds
-    public float moveSpeed = 0.1f;
-    private const float buildmoveSpeed = 0.5f;
+    public float moveSpeed;
 
     void Awake()
     {
         if (instance == null)
             instance = this;
-
-#if UNITY_EDITOR
-#else
-        moveSpeed = buildmoveSpeed;
-#endif
     }
 
     void Update()
@@ -41,11 +35,12 @@ public class KeyRaycaster : MonoBehaviour
             Vector3 mousePosWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosWorldSpace.z = 0f;
 
-            Vector3 pos = Vector3.Lerp(selectedKey.transform.position, mousePosWorldSpace, moveSpeed);
+            Vector3 pos = Vector3.Lerp(selectedKey.transform.position, mousePosWorldSpace, 1 - Mathf.Pow(1 - moveSpeed, Time.deltaTime * 60));
             selectedKey.transform.position = pos;
         }
         else if (Input.GetMouseButtonUp(0) && selectedKey)
         {   
+            print ("here!");
             // send raycast to check for rock lock
             var pointerEventData = new PointerEventData(EventSystem.current);
             pointerEventData.position = Input.mousePosition;
@@ -72,11 +67,11 @@ public class KeyRaycaster : MonoBehaviour
             // audio fx
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f);
 
-            // return key to rope if incorrect
-            if (!isCorrect)
-                selectedKey.ReturnToRope();
-            else
+            // move key into rock lock if correct
+            if (isCorrect)
                 selectedKey.MoveIntoRockLock();
+            else
+                selectedKey.ReturnToRope();
 
             selectedKey = null;
         }
@@ -84,7 +79,11 @@ public class KeyRaycaster : MonoBehaviour
         
         // on pointer down
         if (Input.GetMouseButtonDown(0))
-        {
+        {   
+            // return if already selected a key
+            if (selectedKey)
+                return;
+
             var pointerEventData = new PointerEventData(EventSystem.current);
             pointerEventData.position = Input.mousePosition;
             var raycastResults = new List<RaycastResult>();
@@ -96,7 +95,11 @@ public class KeyRaycaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("Key"))
                     {
+                        if (!result.gameObject.GetComponentInParent<Key>().interactable)
+                            return;
+
                         selectedKey = result.gameObject.GetComponentInParent<Key>();
+                        selectedKey.interactable = false;
                         selectedKey.PlayAudio();
 
                         // remove glow
@@ -113,7 +116,9 @@ public class KeyRaycaster : MonoBehaviour
                             StartCoroutine(TutorialPopupRoutine());
                             return;
                         }
-
+                        // set new pivot
+                        selectedKey.GetComponent<RectTransform>().pivot = selectedKey.grabPivot;
+                        // set parent
                         selectedKey.gameObject.transform.SetParent(selectedKeyParent);
                         // make key larger
                         selectedKey.GetComponent<LerpableObject>().LerpScale(new Vector2(1.5f, 1.5f), 0.2f);
@@ -125,6 +130,8 @@ public class KeyRaycaster : MonoBehaviour
                         TurntablesGameManager.instance.rockLock.LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
                         TurntablesGameManager.instance.rockLock.GetComponent<WiggleController>().StartWiggle();
                         ImageGlowController.instance.SetImageGlow(TurntablesGameManager.instance.rockLock.GetComponent<Image>(), true, GlowValue.glow_1_00);
+
+                        return;
                     } 
                 }
             }

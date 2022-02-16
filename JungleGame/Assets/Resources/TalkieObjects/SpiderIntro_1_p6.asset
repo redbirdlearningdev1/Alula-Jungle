@@ -419,7 +419,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 289fe44562943784cb7fc7b6c4a14df2, type: 3}
     audioClipName: B_1_1_Red_63_T4
     audioString: and I can help clean up this place and patch you up!
   - endTalkieAfterThisSegment: 0

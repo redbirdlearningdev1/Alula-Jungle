@@ -35,7 +35,7 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 5c39e9f2d5abd26419cd1e3af5d0892a, type: 3}
     audioClipName: P_1_3b_Darwin_1_T1
     audioString: Hmm...
   - endTalkieAfterThisSegment: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 8bc0cd88c04e95e478f001f13836332f, type: 3}
     audioClipName: P_1_3b_Darwin_1_T2
     audioString: "I think there\u2019s someone you\u2019ll still need to meet before
       we move forward... "
@@ -68,6 +68,6 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: f7f6ac3db222f264ab8b6b30f1deae64, type: 3}
     audioClipName: P_1_3b_Darwin_1_T3
     audioString: Tap the glowing cart button!

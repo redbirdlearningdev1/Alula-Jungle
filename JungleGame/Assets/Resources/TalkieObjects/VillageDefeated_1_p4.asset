@@ -51,9 +51,9 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: b730477ba5b66e34b86d70d00c7fc0cd, type: 3}
     audioClipName: P_1_6_Wally_14_T1
-    audioString: "What\u2019s that? "
+    audioString: "What\u2019 was that?"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

@@ -59,12 +59,16 @@ public class WordFactoryBuildingManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-                // save to sis
+                // save tutorial done to SIS
                 StudentInfoSystem.GetCurrentProfile().wordFactoryBuildingTutorial = true;
-                StudentInfoSystem.SaveStudentPlayerData();
-                // calculate and show stars
+                // times missed set to 0
+                numMisses = 0;
+                // update AI data
                 AIData(StudentInfoSystem.GetCurrentProfile());
-                StarAwardController.instance.AwardStarsAndExit(3);
+                // calculate and show stars
+                StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+                // remove all raycast blockers
+                RaycastBlockerController.instance.ClearAllRaycastBlockers();
             }
         }
     }
@@ -638,17 +642,21 @@ public class WordFactoryBuildingManager : MonoBehaviour
         }
         else
         {
-            // show stars
+            // AI stuff
             AIData(StudentInfoSystem.GetCurrentProfile());
+
+            // calculate and show stars
             StarAwardController.instance.AwardStarsAndExit(CalculateStars());
         }
     }
 
-        public void AIData(StudentPlayerData playerData)
+    public void AIData(StudentPlayerData playerData)
     {
         playerData.buildPlayed = playerData.buildPlayed + 1;
         playerData.starsBuild = CalculateStars() + playerData.starsBuild;
         
+        // save to SIS
+        StudentInfoSystem.SaveStudentPlayerData();
     }
 
     private int CalculateStars()

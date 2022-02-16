@@ -9,6 +9,7 @@ public class PrintingRayCaster : MonoBehaviour
 
     public bool isOn = false;
     private Ball selectedBall = null;
+    public float moveSpeed;
     [SerializeField] private Transform selectedBallParent;
 
     void Awake()
@@ -28,8 +29,9 @@ public class PrintingRayCaster : MonoBehaviour
         {
             Vector3 mousePosWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosWorldSpace.z = 0f;
-            selectedBall.transform.position = mousePosWorldSpace;
 
+            Vector3 pos = Vector3.Lerp(selectedBall.transform.position, mousePosWorldSpace, 1 - Mathf.Pow(1 - moveSpeed, Time.deltaTime * 60));
+            selectedBall.transform.position = pos;
         }
         else if (Input.GetMouseButtonUp(0) && selectedBall)
         {

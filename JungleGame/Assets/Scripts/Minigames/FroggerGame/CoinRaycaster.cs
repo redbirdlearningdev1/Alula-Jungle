@@ -9,8 +9,7 @@ public class CoinRaycaster : MonoBehaviour
     public static CoinRaycaster instance;
 
     public bool isOn = false;
-    public float coinMoveSpeed = 0.1f;
-    private const float buildCoinMoveSpeed = 0.5f;
+    public float coinMoveSpeed;
 
     private LogCoin selectedCoin = null;
     [SerializeField] private Transform selectedCoinParent;
@@ -19,11 +18,6 @@ public class CoinRaycaster : MonoBehaviour
     {
         if (instance == null)
             instance = this;
-
-#if UNITY_EDITOR
-#else
-        coinMoveSpeed = buildCoinMoveSpeed;
-#endif
     }
 
     void Update()
@@ -38,7 +32,7 @@ public class CoinRaycaster : MonoBehaviour
             Vector3 mousePosWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosWorldSpace.z = 0f;
 
-            Vector3 pos = Vector3.Lerp(selectedCoin.transform.position, mousePosWorldSpace, coinMoveSpeed);
+            Vector3 pos = Vector3.Lerp(selectedCoin.transform.position, mousePosWorldSpace, 1 - Mathf.Pow(1 - coinMoveSpeed, Time.deltaTime * 60));
             selectedCoin.transform.position = pos;
         }
         else if (Input.GetMouseButtonUp(0) && selectedCoin)

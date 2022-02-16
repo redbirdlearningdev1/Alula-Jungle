@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class OrcController : MonoBehaviour
 {
-    [SerializeField] public GameObject shadow;
-    
     private Vector3 origin = new Vector3(-2.4f, 1.5f, 0f);
     private Vector3 pilePosition1 = new Vector3(-2.4f, 0f, 0f);
     private Vector3 pilePosition2 = new Vector3(.15f, 1.85f, 0f);
@@ -35,7 +33,6 @@ public class OrcController : MonoBehaviour
     {
         Vector3 pos = this.transform.position;
         pos.y -= 0.2f;
-        shadow.transform.position = pos;
     }
 
     public int AtLocation()

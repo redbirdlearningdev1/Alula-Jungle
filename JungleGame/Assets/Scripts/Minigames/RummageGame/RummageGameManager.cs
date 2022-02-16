@@ -217,10 +217,16 @@ public class RummageGameManager : MonoBehaviour
                 StopAllCoroutines();
                 // play win tune
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                // save tutorial done to SIS
+                StudentInfoSystem.GetCurrentProfile().rummageTutorial = true;
+                // times missed set to 0
+                timesMissed = 0;
                 // update AI data
                 AIData(StudentInfoSystem.GetCurrentProfile());
                 // calculate and show stars
-                StarAwardController.instance.AwardStarsAndExit(3);
+                StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+                // remove all raycast blockers
+                RaycastBlockerController.instance.ClearAllRaycastBlockers();
             }
         }
 
@@ -652,13 +658,14 @@ public class RummageGameManager : MonoBehaviour
         // hide dancing man
         StartCoroutine(HideDancingManRoutine());
 
+        // AI stuff
         AIData(StudentInfoSystem.GetCurrentProfile());
 
         // calculate and show stars
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());
     }
 
-        public void AIData(StudentPlayerData playerData)
+    public void AIData(StudentPlayerData playerData)
     {
         playerData.starsGameBeforeLastPlayed = playerData.starsLastGamePlayed;
         playerData.starsLastGamePlayed = CalculateStars();
@@ -666,6 +673,9 @@ public class RummageGameManager : MonoBehaviour
         playerData.lastGamePlayed = GameType.RummageGame;
         playerData.starsRummage = CalculateStars() + playerData.starsRummage;
         playerData.totalStarsRummage = 3 + playerData.totalStarsRummage;
+
+        // save to SIS
+        StudentInfoSystem.SaveStudentPlayerData();
     }
 
 

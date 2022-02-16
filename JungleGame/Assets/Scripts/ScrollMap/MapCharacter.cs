@@ -123,11 +123,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         }
         else if (character == Character.Clogg)
         {
-            if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillageUnlocked ||
-                StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_1 ||
-                StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_2 ||
-                StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_3 ||
-                StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcCampPlayGames)
+            if (StudentInfoSystem.GetCurrentProfile().currStoryBeat != StoryBeat.OrcVillageMeetClogg ||
+                StudentInfoSystem.GetCurrentProfile().currStoryBeat != StoryBeat.OrcCampUnlocked)
             {
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CloggQuips_1_p1);
                 yield break;

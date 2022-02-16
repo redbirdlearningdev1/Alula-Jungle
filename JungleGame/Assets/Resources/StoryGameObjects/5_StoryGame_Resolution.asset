@@ -91,7 +91,7 @@ MonoBehaviour:
     actionWord: 0
     requireInput: 0
     postText: 
-    advanceBG: 0
+    advanceBG: 1
   - text: scared
     audio: {fileID: 8300000, guid: 78001e28f81c22a43a480d315541dd06, type: 3}
     moveWord: 1
@@ -126,7 +126,7 @@ MonoBehaviour:
     actionWord: 18
     requireInput: 0
     postText: 
-    advanceBG: 1
+    advanceBG: 0
   - text: start to smile.
     audio: {fileID: 8300000, guid: f08615ba0906bf34d96e606a2f90077a, type: 3}
     moveWord: 1
@@ -329,7 +329,7 @@ MonoBehaviour:
     actionWord: 14
     requireInput: 0
     postText: .
-    advanceBG: 0
+    advanceBG: 1
   - text: Our friend walked carefully waving
     audio: {fileID: 8300000, guid: 25a47a80cac8a3f43ad4ff1f31ed9043, type: 3}
     moveWord: 1
@@ -434,7 +434,7 @@ MonoBehaviour:
     actionWord: 14
     requireInput: 0
     postText: .
-    advanceBG: 1
+    advanceBG: 0
   - text: 'After a long conversation and a lot of '
     audio: {fileID: 8300000, guid: 0da184178df198640822c92cba1fdc7b, type: 3}
     moveWord: 1

@@ -1070,6 +1070,11 @@ public class ScrollMapManager : MonoBehaviour
         }
     }
 
+    public void HideStarsAtCurrentLocation()
+    {
+        StartCoroutine(ToggleLocationRoutine(false, currMapLocation));
+    }
+
     public void RevealStarsAtCurrentLocation()
     {
         StartCoroutine(ToggleLocationRoutine(true, currMapLocation));
@@ -1330,6 +1335,9 @@ public class ScrollMapManager : MonoBehaviour
 
         // hide sign
         ChapterEnterVisualController.instance.HideSign();
+
+        // disable previous location
+        StartCoroutine(ToggleLocationRoutine(false, currMapLocation - 1));
 
         yield return new WaitForSeconds(1f);
 

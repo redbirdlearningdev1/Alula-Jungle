@@ -82,9 +82,14 @@ public class TurntablesGameManager : MonoBehaviour
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
                 // save to sis
                 StudentInfoSystem.GetCurrentProfile().turntablesTutorial = true;
-                StudentInfoSystem.SaveStudentPlayerData();
+                // times missed set to 0
+                numMisses = 0;
+                // update AI data
+                AIData(StudentInfoSystem.GetCurrentProfile());
                 // calculate and show stars
-                StarAwardController.instance.AwardStarsAndExit(3);
+                StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+                // remove all raycast blockers
+                RaycastBlockerController.instance.ClearAllRaycastBlockers();
             }
         }
     }
@@ -254,7 +259,7 @@ public class TurntablesGameManager : MonoBehaviour
         // scale door tile
         doorTiles[currentDoor].GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.5f, 1.5f), new Vector2(1f, 1f), 0.1f, 0.1f);
         yield return new WaitForSeconds(0.1f);
-        // add glow to door tile
+        // add glow to current door tile
         ImageGlowController.instance.SetImageGlow(doorTiles[currentDoor].image, true, GlowValue.glow_1_00);
         // play sound effect
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 1f);
@@ -320,6 +325,8 @@ public class TurntablesGameManager : MonoBehaviour
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 1f);
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MoveStoneEnd, 1f, "door_tile", 1.5f);
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.ErrieGlow, 0.2f);
+            // remove glow to current door tile
+            ImageGlowController.instance.SetImageGlow(doorTiles[currentDoor].image, false, GlowValue.none);
             // increase split song
             AudioManager.instance.IncreaseSplitSong();
             // increment door num
@@ -412,9 +419,25 @@ public class TurntablesGameManager : MonoBehaviour
         }
         else
         {
+            // AI stuff
+            AIData(StudentInfoSystem.GetCurrentProfile());
+
             // calculate and show stars
             StarAwardController.instance.AwardStarsAndExit(CalculateStars());
         }
+    }
+
+    public void AIData(StudentPlayerData playerData)
+    {
+        playerData.starsGameBeforeLastPlayed = playerData.starsLastGamePlayed;
+        playerData.starsLastGamePlayed = CalculateStars();
+        playerData.gameBeforeLastPlayed = playerData.lastGamePlayed;
+        playerData.lastGamePlayed = GameType.TurntablesGame;
+        playerData.starsTurntables = CalculateStars() + playerData.starsTurntables;
+        playerData.totalStarsTurntables += 3;
+
+        // save to SIS
+        StudentInfoSystem.SaveStudentPlayerData();
     }
 
     private int CalculateStars()

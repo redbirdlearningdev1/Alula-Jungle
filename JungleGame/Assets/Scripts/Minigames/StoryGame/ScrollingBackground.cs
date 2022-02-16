@@ -113,7 +113,7 @@ public class ScrollingBackground : MonoBehaviour
         foreach(Transform t in layer)
         {
             Vector3 pos = t.transform.position;
-            pos.x -= speed;
+            pos.x -= speed * Time.deltaTime;
             t.transform.position = pos;
         }
 

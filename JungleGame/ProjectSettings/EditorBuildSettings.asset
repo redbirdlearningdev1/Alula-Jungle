@@ -62,4 +62,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ChallengeGames/NewPasswordGame.unity
     guid: fb398f6dd5b78c34ab6372f15a7eba3d
+  - enabled: 1
+    path: Assets/Scenes/TestingScenes/TalkieTestScene.unity
+    guid: 28f02cb424ced12449d1560558a4b03e
   m_configObjects: {}

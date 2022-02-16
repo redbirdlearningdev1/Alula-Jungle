@@ -119,7 +119,7 @@ public class NewParallaxController : MonoBehaviour
 
             // get throttle speed
             float num = BoatThrottleController.instance.GetThrottleSpeed();
-            verticalParallaxPos += num * vertParallaxSpeed;
+            verticalParallaxPos += num * vertParallaxSpeed * Time.deltaTime;
 
             // return if the prev parallax pos is the same
             if (verticalParallaxPos != prevVerticalParallaxPos)

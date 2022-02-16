@@ -1,147 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
+using TMPro;
 
 public class TalkieTestSceneManager : MonoBehaviour
 {
-    public TalkieObject placeTalkieHere;
+    public TMP_Dropdown talkieDropdown;
 
-    public Toggle fastTalkieToggle;
+    private TalkieObject currentTalkie;
 
-    public const string talkie_audio_folder = "Assets/Resources/TalkieAudioFiles/";
+    public static List<TalkieObject> globalTalkieList;
 
-    public static List<AudioClip> globalTalkieAudioList;
+    private bool isPaused = false;
 
-    public static void InitCreateGlobalList()
+    void Awake()
     {
-        // return if list already created for efficiency
-        if (globalTalkieAudioList != null)
-            return;
+        // every scene must call this in Awake()
+        GameManager.instance.SceneInit();
 
-        var files = Resources.LoadAll<AudioClip>("TalkieAudioFiles");
+        // remove music
+        AudioManager.instance.StopMusic();
+    }
 
-        globalTalkieAudioList = new List<AudioClip>();
-        foreach (var file in files)
+    void Start()
+    {
+        // show settings button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+
+        // get global talkie list and 
+        globalTalkieList = TalkieDatabase.instance.GetGlobalTalkieList();
+
+        // add talkie objects to dropdown
+        List<string> talkieStringList = new List<string>();
+        for(int i = 0; i < globalTalkieList.Count; i++)
         {
-            globalTalkieAudioList.Add(file);
+            talkieStringList.Add("" + i + " - " + globalTalkieList[i].name);
         }
+        talkieDropdown.ClearOptions();
+        talkieDropdown.AddOptions(talkieStringList);
+        talkieDropdown.value = 0;
     }
 
     void Update()
     {
-        // press space to end talkie
+        // press space to pause talkie
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            TalkieManager.instance.StopTalkieSystem();
-        }
-    }
+            isPaused = !isPaused;
 
-    public void OnFastTalkiesToggled()
-    {
-        TalkieManager.instance.SetFastTalkies(fastTalkieToggle.isOn);
-    }
-
-    public void OnTestTalkiePressed()
-    {
-        if (placeTalkieHere != null)
-        {
-            TalkieManager.instance.PlayTalkie(placeTalkieHere);
-        }
-    }
-
-
-#if UNITY_EDITOR
-    public void OnAddAudioPressed()
-    {
-        AddAudioToTalkie(placeTalkieHere);
-    }
-
-    private void AddAudioToTalkie(TalkieObject talkieObject)
-    {
-        // get all audio clips in one list
-        InitCreateGlobalList();
-
-        // make a copy of talkie object to iterate though
-        TalkieSegment[] talkieSegments = new TalkieSegment[talkieObject.segmnets.Count];
-        talkieObject.segmnets.CopyTo(talkieSegments);
-
-        // go though each segment
-        int index = 0;
-        foreach (var seg in talkieSegments)
-        {
-            // only attempt search if audio clip is misisng
-            if (seg.audioClip == null)
+            if (isPaused)
             {
-                AudioClip foundClip = SearchForAudioByName(seg.audioClipName);
-                if (foundClip != null)
-                {
-                    TalkieSegment updatedSegment = new TalkieSegment();
-                    // update new segment with prev values
-                    updatedSegment.endTalkieAfterThisSegment = seg.endTalkieAfterThisSegment;
-                    updatedSegment.requireYN = seg.requireYN;
-                    updatedSegment.onYesGoto = seg.onYesGoto;
-                    updatedSegment.onNoGoto = seg.onNoGoto;
-
-                    updatedSegment.leftCharacter = seg.leftCharacter;
-                    updatedSegment.leftEmotionNum = seg.leftEmotionNum;
-                    updatedSegment.leftMouthEnum = seg.leftMouthEnum;
-                    updatedSegment.leftEyesEnum = seg.leftEyesEnum;
-
-                    updatedSegment.rightCharacter = seg.rightCharacter;
-                    updatedSegment.rightEmotionNum = seg.rightEmotionNum;
-                    updatedSegment.rightMouthEnum = seg.rightMouthEnum;
-                    updatedSegment.rightEyesEnum = seg.rightEyesEnum;
-
-                    updatedSegment.activeCharacter = seg.activeCharacter;
-
-                    // add file to object segment and save
-                    updatedSegment.audioClip = foundClip; // audio to play
-                    updatedSegment.audioClipName = seg.audioClipName;
-                    updatedSegment.audioString = seg.audioString;
-
-                    talkieObject.segmnets[index] = updatedSegment;
-
-                    EditorUtility.SetDirty(talkieObject);
-                    AssetDatabase.SaveAssets();
-                    AssetDatabase.Refresh();
-
-                    print ("updated segment " + index + " with audio clip " + foundClip.name);
-                }
+                Time.timeScale = 0f;
             }
-            index++;
+            else
+            {
+                Time.timeScale = 1f;
+            }
         }
     }
 
-    public static AudioClip SearchForAudioByName(string str)
+    public void OnPlayTalkiePressed()
     {
-        // return if list already created for efficiency
-        if (globalTalkieAudioList == null)
-            InitCreateGlobalList();
-
-        // linear search
-        foreach (var file in globalTalkieAudioList)
-        {
-            if (file.name == str)
-                return file;
-        }
-        // return null if not found
-        return null;
+        currentTalkie = globalTalkieList[talkieDropdown.value];
+        TalkieManager.instance.PlayTalkie(currentTalkie);
     }
-
-    public void UpdateAllTalkieObjects()
-    {
-        // get global talkie list
-        List<TalkieObject> globalTalkieObjects = TalkieDatabase.instance.GetGlobalTalkieList();
-        foreach(var talkie in globalTalkieObjects)
-        {
-            AddAudioToTalkie(talkie);
-            print ("successfully added audio to talkie: " + talkie.name);
-        }
-    }
-#endif
 }

@@ -186,7 +186,7 @@ public class SplashScreenManager : MonoBehaviour
 
     private IEnumerator ScreenTapDelay()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         screenTapReady = true;
     }
 
@@ -444,19 +444,18 @@ public class SplashScreenManager : MonoBehaviour
                 break;
             case 1: 
                 profile1SelectAnimator.Play("UnselectProfile"); 
-                yield return new WaitForSeconds(0.5f);
                 break;
             case 2: 
                 profile2SelectAnimator.Play("UnselectProfile"); 
-                yield return new WaitForSeconds(0.5f);
                 break;
             case 3: 
                 profile3SelectAnimator.Play("UnselectProfile"); 
-                yield return new WaitForSeconds(0.5f);
                 break;
         }
 
         selectedProfile = profileIndex;
+
+        yield return new WaitForSeconds(0.1f);
 
         switch (selectedProfile)
         {
