@@ -265,7 +265,8 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             }
             else
             {
-                currentPair = pairPool[Random.Range(0, pairPool.Count)];
+                //currentPair = pairPool[Random.Range(0, pairPool.Count)];
+                currentPair = AISystem.ChallengeWordSub(StudentInfoSystem.GetCurrentProfile());
                 currentWord = currentPair.word1;
             }
         }

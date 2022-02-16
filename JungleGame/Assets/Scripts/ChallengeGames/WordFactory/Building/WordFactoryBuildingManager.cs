@@ -139,7 +139,8 @@ public class WordFactoryBuildingManager : MonoBehaviour
         else
         {
             // new pair
-            currentPair = pairPool[Random.Range(0, pairPool.Count)];
+            //currentPair = pairPool[Random.Range(0, pairPool.Count)];
+            currentPair = AISystem.ChallengeWordBuildingDeleting(StudentInfoSystem.GetCurrentProfile());
         }
 
         // init game delay
