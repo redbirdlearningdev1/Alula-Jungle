@@ -2515,7 +2515,7 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge2.stars = 0;
                     StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge3.stars = 0;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop, StudentInfoSystem.GetCurrentProfile());
                     StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge2.gameType = GameType.None;
                     StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge3.gameType = GameType.None;
                 }
@@ -2525,8 +2525,8 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge2.stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge3.stars = 0;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop);
-                    StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop, StudentInfoSystem.GetCurrentProfile());
                     StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge3.gameType = GameType.None;
                 }
                 else
@@ -2535,9 +2535,9 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge2.stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge3.stars = 3;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop);
-                    StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop);
-                    StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge3.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge3.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaPoop, StudentInfoSystem.GetCurrentProfile());
                 
                     StudentInfoSystem.GetCurrentProfile().mapData.GP_signPost_stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.GP_signPost_unlocked = true;
@@ -2564,7 +2564,7 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge2.stars = 0;
                     StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge3.stars = 0;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff);
+                    StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff, StudentInfoSystem.GetCurrentProfile());
                     StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge2.gameType = GameType.None;
                     StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge3.gameType = GameType.None;
                 }
@@ -2574,8 +2574,8 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge2.stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge3.stars = 0;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff);
-                    StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff);
+                    StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff, StudentInfoSystem.GetCurrentProfile());
                     StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge3.gameType = GameType.None;
                 }
                 else
@@ -2584,9 +2584,9 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge2.stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge3.stars = 3;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff);
-                    StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff);
-                    StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge3.gameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff);
+                    StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge3.gameType = AISystem.DetermineChallengeGame(MapLocation.WindyCliff, StudentInfoSystem.GetCurrentProfile());
                 
                     StudentInfoSystem.GetCurrentProfile().mapData.WC_signPost_stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.WC_signPost_unlocked = true;
@@ -2613,7 +2613,7 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge2.stars = 0;
                     StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge3.stars = 0;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip);
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip, StudentInfoSystem.GetCurrentProfile());
                     StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge2.gameType = GameType.None;
                     StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge3.gameType = GameType.None;
                 }
@@ -2623,8 +2623,8 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge2.stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge3.stars = 0;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip);
-                    StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip);
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip, StudentInfoSystem.GetCurrentProfile());
                     StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge3.gameType = GameType.None;
                 }
                 else
@@ -2633,9 +2633,9 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge2.stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge3.stars = 3;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip);
-                    StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip);
-                    StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge3.gameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip);
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge3.gameType = AISystem.DetermineChallengeGame(MapLocation.PirateShip, StudentInfoSystem.GetCurrentProfile());
                 
                     StudentInfoSystem.GetCurrentProfile().mapData.PS_signPost_stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.PS_signPost_unlocked = true;
@@ -2662,7 +2662,7 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.stars = 0;
                     StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.stars = 0;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach, StudentInfoSystem.GetCurrentProfile());
                     StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.gameType = GameType.None;
                     StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.gameType = GameType.None;
                 }
@@ -2672,8 +2672,8 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.stars = 0;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach);
-                    StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach, StudentInfoSystem.GetCurrentProfile());
                     StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.gameType = GameType.None;
                 }
                 else
@@ -2682,9 +2682,9 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.stars = 3;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach);
-                    StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach);
-                    StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.gameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.gameType = AISystem.DetermineChallengeGame(MapLocation.MermaidBeach, StudentInfoSystem.GetCurrentProfile());
                 
                     StudentInfoSystem.GetCurrentProfile().mapData.MB_signPost_stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.MB_signPost_unlocked = true;
@@ -2712,7 +2712,7 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.R_challenge2.stars = 0;
                     StudentInfoSystem.GetCurrentProfile().mapData.R_challenge3.stars = 0;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.R_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1);
+                    StudentInfoSystem.GetCurrentProfile().mapData.R_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1, StudentInfoSystem.GetCurrentProfile());
                     StudentInfoSystem.GetCurrentProfile().mapData.R_challenge2.gameType = GameType.None;
                     StudentInfoSystem.GetCurrentProfile().mapData.R_challenge3.gameType = GameType.None;
                 }
@@ -2722,8 +2722,8 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.R_challenge2.stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.R_challenge3.stars = 0;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.R_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1);
-                    StudentInfoSystem.GetCurrentProfile().mapData.R_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1);
+                    StudentInfoSystem.GetCurrentProfile().mapData.R_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.R_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1, StudentInfoSystem.GetCurrentProfile());
                     StudentInfoSystem.GetCurrentProfile().mapData.R_challenge3.gameType = GameType.None;
                 }
                 else
@@ -2732,9 +2732,9 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.R_challenge2.stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.R_challenge3.stars = 3;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.R_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1);
-                    StudentInfoSystem.GetCurrentProfile().mapData.R_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1);
-                    StudentInfoSystem.GetCurrentProfile().mapData.R_challenge3.gameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1);
+                    StudentInfoSystem.GetCurrentProfile().mapData.R_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.R_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.R_challenge3.gameType = AISystem.DetermineChallengeGame(MapLocation.Ruins1, StudentInfoSystem.GetCurrentProfile());
                 
                     StudentInfoSystem.GetCurrentProfile().mapData.R_signPost_stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.R_signPost_unlocked = true;
@@ -2761,7 +2761,7 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge2.stars = 0;
                     StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge3.stars = 0;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle);
+                    StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle, StudentInfoSystem.GetCurrentProfile());
                     StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge2.gameType = GameType.None;
                     StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge3.gameType = GameType.None;
                 }
@@ -2771,8 +2771,8 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge2.stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge3.stars = 0;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle);
-                    StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle);
+                    StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle, StudentInfoSystem.GetCurrentProfile());
                     StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge3.gameType = GameType.None;
                 }
                 else
@@ -2781,9 +2781,9 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge2.stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge3.stars = 3;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle);
-                    StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle);
-                    StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge3.gameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle);
+                    StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge3.gameType = AISystem.DetermineChallengeGame(MapLocation.ExitJungle, StudentInfoSystem.GetCurrentProfile());
                 
                     StudentInfoSystem.GetCurrentProfile().mapData.EJ_signPost_stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.EJ_signPost_unlocked = true;
@@ -2810,7 +2810,7 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge2.stars = 0;
                     StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge3.stars = 0;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy, StudentInfoSystem.GetCurrentProfile());
                     StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge2.gameType = GameType.None;
                     StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge3.gameType = GameType.None;
                 }
@@ -2820,8 +2820,8 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge2.stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge3.stars = 0;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy);
-                    StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy, StudentInfoSystem.GetCurrentProfile());
                     StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge3.gameType = GameType.None;
                 }
                 else
@@ -2830,9 +2830,9 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge2.stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge3.stars = 3;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy);
-                    StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy);
-                    StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge3.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy);
+                    StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge3.gameType = AISystem.DetermineChallengeGame(MapLocation.GorillaStudy, StudentInfoSystem.GetCurrentProfile());
                 
                     StudentInfoSystem.GetCurrentProfile().mapData.GS_signPost_stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.GS_signPost_unlocked = true;
@@ -2859,7 +2859,7 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.M_challenge2.stars = 0;
                     StudentInfoSystem.GetCurrentProfile().mapData.M_challenge3.stars = 0;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.M_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys);
+                    StudentInfoSystem.GetCurrentProfile().mapData.M_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys, StudentInfoSystem.GetCurrentProfile());
                     StudentInfoSystem.GetCurrentProfile().mapData.M_challenge2.gameType = GameType.None;
                     StudentInfoSystem.GetCurrentProfile().mapData.M_challenge3.gameType = GameType.None;
                 }
@@ -2869,8 +2869,8 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.M_challenge2.stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.M_challenge3.stars = 0;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.M_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys);
-                    StudentInfoSystem.GetCurrentProfile().mapData.M_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys);
+                    StudentInfoSystem.GetCurrentProfile().mapData.M_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.M_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys, StudentInfoSystem.GetCurrentProfile());
                     StudentInfoSystem.GetCurrentProfile().mapData.M_challenge3.gameType = GameType.None;
                 }
                 else
@@ -2879,9 +2879,9 @@ public class DevMenuManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.M_challenge2.stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.M_challenge3.stars = 3;
 
-                    StudentInfoSystem.GetCurrentProfile().mapData.M_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys);
-                    StudentInfoSystem.GetCurrentProfile().mapData.M_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys);
-                    StudentInfoSystem.GetCurrentProfile().mapData.M_challenge3.gameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys);
+                    StudentInfoSystem.GetCurrentProfile().mapData.M_challenge1.gameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.M_challenge2.gameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys, StudentInfoSystem.GetCurrentProfile());
+                    StudentInfoSystem.GetCurrentProfile().mapData.M_challenge3.gameType = AISystem.DetermineChallengeGame(MapLocation.Monkeys, StudentInfoSystem.GetCurrentProfile());
                 
                     StudentInfoSystem.GetCurrentProfile().mapData.M_signPost_stars = 3;
                     StudentInfoSystem.GetCurrentProfile().mapData.M_signPost_unlocked = true;

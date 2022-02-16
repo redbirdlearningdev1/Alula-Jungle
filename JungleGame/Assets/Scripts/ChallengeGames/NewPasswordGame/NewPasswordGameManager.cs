@@ -136,7 +136,7 @@ public class NewPasswordGameManager : MonoBehaviour
         polaroid.transform.position = polaroidOffScreenTigerPos.position;
 
         // select challenge word + reset polaroid
-        if (playTutorial)
+        if (!playTutorial)
         {
             switch (tutorialEvent)
             {
@@ -156,7 +156,9 @@ public class NewPasswordGameManager : MonoBehaviour
         }
         else
         {
-            currentWord = wordPool[Random.Range(0, wordPool.Count)];
+            List<ChallengeWord> ChallengeWordList = new List<ChallengeWord>();
+            ChallengeWordList = AISystem.ChallengeWordPassword(StudentInfoSystem.GetCurrentProfile());
+            currentWord = ChallengeWordList[0];
             wordPool.Remove(currentWord);
         }
 
@@ -195,7 +197,7 @@ public class NewPasswordGameManager : MonoBehaviour
         PasswordLock.instance.ShowLock();
         yield return new WaitForSeconds(1f);
 
-        if (playTutorial)
+        if (!playTutorial)
         {
             if (tutorialEvent == 1)
             {
