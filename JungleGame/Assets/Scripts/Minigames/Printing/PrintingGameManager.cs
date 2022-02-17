@@ -158,7 +158,8 @@ public class PrintingGameManager : MonoBehaviour
         
         // disable rope coin
         RopeCoin.instance.GetComponent<WiggleController>().StopWiggle();
-        yield return new WaitForSeconds(2f);
+
+        yield return new WaitForSeconds(1.25f);
         RopeCoin.instance.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         RopeCoin.instance.interactable = false;
         yield return new WaitForSeconds(1f);
@@ -336,8 +337,9 @@ public class PrintingGameManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
         AudioManager.instance.PlayCoinDrop();
         yield return new WaitForSeconds(1f);
-
-        if (timesCorrect >= 4)
+        
+        // end tutorial after 3 turns
+        if (timesCorrect >= 4 || t_currRound == 2)
         {
             StartCoroutine(WinRoutine());
             yield break;
@@ -371,7 +373,8 @@ public class PrintingGameManager : MonoBehaviour
 
 
         // increase tutorial round
-        t_currRound++;
+        if (playTutorial)
+            t_currRound++;
 
         StartCoroutine(StartGame());
     }

@@ -57,6 +57,10 @@ public class RopeCoin : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        // return if not interactable
+        if (!interactable)
+            return;
+
         if (isPressed)
         {
             // play audio blip

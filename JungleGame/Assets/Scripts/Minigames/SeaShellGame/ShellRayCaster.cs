@@ -13,6 +13,8 @@ public class ShellRayCaster : MonoBehaviour
 
     public float moveSpeed;
 
+    private bool canGrabShell = true;
+
     void Awake()
     {
         if (instance == null)
@@ -69,7 +71,6 @@ public class ShellRayCaster : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            
             var pointerEventData = new PointerEventData(EventSystem.current);
             pointerEventData.position = Input.mousePosition;
             var raycastResults = new List<RaycastResult>();
@@ -81,6 +82,10 @@ public class ShellRayCaster : MonoBehaviour
                 {
                     if (result.gameObject.transform.CompareTag("Shell"))
                     {
+                        if (!canGrabShell)
+                            return;
+
+                        StartCoroutine(DelayShellGrab());
                         selectedShell = result.gameObject.GetComponent<SeaShell>();
                         selectedShell.SelectShell();
                         selectedShell.gameObject.transform.SetParent(selectedShellParent);
@@ -88,5 +93,12 @@ public class ShellRayCaster : MonoBehaviour
                 }
             }
         }
+    }
+
+    private IEnumerator DelayShellGrab()
+    {
+        canGrabShell = false;
+        yield return new WaitForSeconds(1f);
+        canGrabShell = true;
     }
 }
