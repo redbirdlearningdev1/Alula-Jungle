@@ -60,6 +60,9 @@ public class TigerCoinGameManager : MonoBehaviour
     public ChallengeWord coinsScripted4;
     public ChallengeWord coinsScripted5;
 
+    
+    
+
     public bool testthis;
     
 
@@ -219,6 +222,7 @@ public class TigerCoinGameManager : MonoBehaviour
             CurrentChallengeList = AISystem.ChallengeWordSelectionTigerPawCoin(StudentInfoSystem.GetCurrentProfile());
             currentWord = CurrentChallengeList[0];
             polaroidC.SetPolaroid(currentWord);
+            
 
             //currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(currentWord.set);
 

@@ -6,7 +6,7 @@ public static class AISystem
 {
     private static List<GameType> minigameOptions; 
     private static List<float> gameRatio;
-    private static float rRumblePlayed = 0;
+    
     private static float royalRumbleOdds = 0.05f; // 5%
 
     
@@ -121,15 +121,15 @@ public static class AISystem
                         return minigameOptions[4];
                     }
                 }
-                else if (playerData.starsLastGamePlayed+playerData.starsGameBeforeLastPlayed >= 5 && rRumblePlayed == 0 && playerData.minigamesPlayed > 6)
+                else if(playerData.starsLastGamePlayed+playerData.starsGameBeforeLastPlayed >= 5 && playerData.rRumblePlayed == 1 && playerData.minigamesPlayed > 6)
                 {
-                    rRumblePlayed = 1;
+                    playerData.rRumblePlayed = 0;
                     DetermineRoyalRumbleGame(playerData);
                 }
                 else if (minigameOptions.Count > 0) // make sure list is not empty
                 {
-                    rRumblePlayed = 0;
-                    return minigameOptions[Random.Range(0, minigameOptions.Count)]; 
+                    playerData.rRumblePlayed = 1;
+                    return minigameOptions[Random.Range(0, minigameOptions.Count)];   
                 }
 
                 // failsafe to return a game
@@ -305,8 +305,8 @@ public static class AISystem
             return false;
 
         // determine royal rumble
-        Debug.Log(rRumblePlayed);
-        return rRumblePlayed <= royalRumbleOdds;
+        
+        return playerData.rRumblePlayed < royalRumbleOdds;
     }
 
     public static GameType DetermineRoyalRumbleGame(StudentPlayerData playerData)
@@ -510,8 +510,19 @@ public static class AISystem
 
         int index = Random.Range(0, unusedWordList.Count);
         ChallengeWord word = unusedWordList[index];
-        
-        if (playerData.starsBlend < 9)
+        try
+        {
+            if(word == playerData.lastWordFaced)
+            {
+                ChallengeWordSelectionBlending(playerData);
+            }
+        }
+        catch
+        {
+            Debug.Log("This Broke maybe");
+        }   
+        playerData.lastWordFaced = word;     
+        if(playerData.starsBlend < 9)
         {
             try
             {
@@ -1255,6 +1266,17 @@ public static class AISystem
 
         int index = Random.Range(0, unusedWordList.Count);
         ChallengeWord word = unusedWordList[index];
+        try{
+            if(word == playerData.lastWordFaced)
+            {
+                ChallengeWordSelectionTigerPawCoin(playerData);
+            }
+        }
+        catch
+        {
+            Debug.Log("This Broke maybe");
+        }   
+        playerData.lastWordFaced = word;
         if(playerData.starsTPawCoin  < 9)
         {
             try
@@ -1641,6 +1663,17 @@ public static class AISystem
 
         int index = Random.Range(0, unusedWordList.Count);
         ChallengeWord word = unusedWordList[index];
+        try{
+            if(word == playerData.lastWordFaced)
+            {
+                ChallengeWordPassword(playerData);
+            }
+        }
+        catch
+        {
+            Debug.Log("This Broke maybe");
+        }   
+        playerData.lastWordFaced = word; 
         if(playerData.starsPass  < 9)
         {
             try
@@ -1856,6 +1889,17 @@ public static WordPair ChallengeWordBuildingDeleting(StudentPlayerData playerDat
 
         int index = Random.Range(0, pairPool.Count);
         selectedPairPool = pairPool[index];
+        try{
+            if(selectedPairPool == playerData.lastWordPairFaced)
+            {
+                ChallengeWordBuildingDeleting(playerData);
+            }
+        }
+        catch
+        {
+            Debug.Log("This Broke maybe");
+        }   
+        playerData.lastWordPairFaced = selectedPairPool;
         if(playerData.starsBuild  < 9)
         {
             try{
@@ -2068,6 +2112,17 @@ public static WordPair ChallengeWordSub(StudentPlayerData playerData)
 
         int index = Random.Range(0, pairPool.Count);
         selectedPairPool = pairPool[index];
+        try{
+            if(selectedPairPool == playerData.lastWordPairFaced)
+            {
+                ChallengeWordSub(playerData);
+            }
+        }
+        catch
+        {
+            Debug.Log("This Broke maybe");
+        }   
+        playerData.lastWordPairFaced = selectedPairPool;
         if(playerData.starsBuild  < 9)
         {
             try{
