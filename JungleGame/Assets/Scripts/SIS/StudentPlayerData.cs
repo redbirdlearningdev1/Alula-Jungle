@@ -53,6 +53,11 @@ public class StudentPlayerData
 
     public int tPawCoinCounter;
 
+    public int rRumblePlayed;
+
+    public ChallengeWord lastWordFaced;
+    public WordPair lastWordPairFaced;
+
     //public int totalStarsPotential;
     public int profileAvatar;
 
