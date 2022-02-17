@@ -155,6 +155,10 @@ public class GameIntroDatabase : MonoBehaviour
     public AudioClip deletingIntro4;
     public AudioClip deletingIntro5;
 
+    public AudioClip deletingStart1;
+    public AudioClip deletingStart2Chapters1_3;
+    public AudioClip deletingStart2Chapters4_5;
+
     // reminders chapters 1-4
     public List<AudioClip> deletingReminderClipsChapters1_4;
     // reminders chapters 5
@@ -167,6 +171,10 @@ public class GameIntroDatabase : MonoBehaviour
     public AudioClip buildingIntro3;
     public AudioClip buildingIntro4;
     public AudioClip buildingIntro5;
+
+    public AudioClip buildingStart1;
+    public AudioClip buildingStart2Chapters1_3;
+    public AudioClip buildingStart2Chapters4_5;
 
     // reminders chapters 1-4
     public List<AudioClip> buildingReminderClipsChapters1_4;
@@ -214,6 +222,9 @@ public class GameIntroDatabase : MonoBehaviour
     public AudioClip tigerPawPhotosIntro5;
     public AudioClip tigerPawPhotosIntro6;
     public AudioClip tigerPawPhotosIntro7;
+    public AudioClip tigerPawPhotosIntro8;
+
+    public AudioClip tigerPawPhotosStart;
 
     [Header("Password")]
     // tutorial clips

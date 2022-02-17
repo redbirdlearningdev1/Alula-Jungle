@@ -165,7 +165,6 @@ public class TalkieDatabase : MonoBehaviour
     public TalkieObject OVillageDefeated_1_p1;
     public TalkieObject OVillageDefeated_1_p2;
     public TalkieObject OVillageIntro_1_p1;
-    public TalkieObject OVillageIntro_1_p2;
     public TalkieObject OVillageIntro_2_p1;
     public TalkieObject OVillageRebuilt_1_p1;
     public TalkieObject OVillageRebuilt_1_p2;
@@ -423,7 +422,6 @@ public class TalkieDatabase : MonoBehaviour
         globalTalkieList.Add(OVillageDefeated_1_p1);
         globalTalkieList.Add(OVillageDefeated_1_p2);
         globalTalkieList.Add(OVillageIntro_1_p1);
-        globalTalkieList.Add(OVillageIntro_1_p2);
         globalTalkieList.Add(OVillageIntro_2_p1);
         globalTalkieList.Add(OVillageRebuilt_1_p1);
         globalTalkieList.Add(OVillageRebuilt_1_p2);

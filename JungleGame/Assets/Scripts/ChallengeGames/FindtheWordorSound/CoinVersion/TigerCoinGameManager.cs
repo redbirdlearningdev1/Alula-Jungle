@@ -87,13 +87,6 @@ public class TigerCoinGameManager : MonoBehaviour
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().tigerPawCoinsTutorial;
 
-        // add settings button if not playing tutorial
-        if (!playTutorial)
-        {
-            // turn on settings button
-            SettingsManager.instance.ToggleMenuButtonActive(true);
-        }
-
         PregameSetup();
     }
 
@@ -250,9 +243,6 @@ public class TigerCoinGameManager : MonoBehaviour
         }
 
 
-        
-
-
         print ("current value: " + currentTargetValue);
 
         yield return new WaitForSeconds(0.5f);
@@ -287,8 +277,6 @@ public class TigerCoinGameManager : MonoBehaviour
         }
         else if (!playIntro)
         {
-            playIntro = true;
-
             // short pause before start
             yield return new WaitForSeconds(1f);
 
@@ -312,6 +300,13 @@ public class TigerCoinGameManager : MonoBehaviour
 
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
             yield return new WaitForSeconds(clip.length + 1f);
+        }
+
+        if (!playIntro)
+        {
+            playIntro = true;
+            // turn on settings button
+            SettingsManager.instance.ToggleMenuButtonActive(true);
         }
 
         Tiger.TigerDeal();

@@ -789,7 +789,6 @@ public static class AISystem
         List<ActionWordEnum> set3 = new List<ActionWordEnum>();
         List<ActionWordEnum> set4 = new List<ActionWordEnum>();
         List<ActionWordEnum> set5 = new List<ActionWordEnum>();
-        bool containSound = false;
 
         set1.Add(ActionWordEnum.mudslide);
         set1.Add(ActionWordEnum.listen);
@@ -838,25 +837,24 @@ public static class AISystem
         
         set5.Remove(coin);
 
-        allGlobalWordList = ChallengeWordDatabase.GetChallengeWords(set5);
-        coinGlobalWordList = ChallengeWordDatabase.GetChallengeWords(coinList);
+        allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
+        coinGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(coinList));
         int index = Random.Range(0, coinGlobalWordList.Count);
         ChallengeWord word = coinGlobalWordList[index];
-        for(int i = 0; i < 2; i++)
+        for (int i = 0; i < 2; i++)
         {
-            containSound = false;
             index = Random.Range(0, coinGlobalWordList.Count);
             word = coinGlobalWordList[index];
             if(playerData.starsTPawPol < 9)
             {
                 try
                 {
-                while(word.elkoninCount != 2)
-                {
-                    int randIndex = Random.Range(0, coinGlobalWordList.Count);
-                    word = coinGlobalWordList[randIndex];
-                    coinGlobalWordList.Remove(word);
-                }
+                    while(word.elkoninCount != 2)
+                    {
+                        int randIndex = Random.Range(0, coinGlobalWordList.Count);
+                        word = coinGlobalWordList[randIndex];
+                        coinGlobalWordList.Remove(word);
+                    }
                 }
                 catch
                 {
@@ -1266,7 +1264,7 @@ public static class AISystem
         CurrentChallengeList.Add(word);
 
         return CurrentChallengeList;
-        }
+    }
         
         
     public static List<ActionWordEnum> TigerPawCoinsCoinSelection(StudentPlayerData playerData, List<ChallengeWord> Pold )

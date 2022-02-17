@@ -1811,11 +1811,6 @@ public class MapAnimationController : MonoBehaviour
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
-        // play orc village intro talkie
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.OVillageIntro_1_p2);
-        while (TalkieManager.instance.talkiePlaying)
-            yield return null;
-
         yield return new WaitForSeconds(1f);
         ScrollMapManager.instance.mapLocations[3].signPost.GetComponent<SignPostController>().SetInteractability(true);
 

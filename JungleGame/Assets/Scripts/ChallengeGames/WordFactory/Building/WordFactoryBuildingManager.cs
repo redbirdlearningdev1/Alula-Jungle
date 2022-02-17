@@ -10,7 +10,6 @@ public class WordFactoryBuildingManager : MonoBehaviour
     public GameObject universalCoinImage; // universal coin prefab
     public Transform coinsParent;
     public Vector2 normalCoinSize;
-    public Vector2 expandedCoinSize;
 
     [Header("Water Coins")]
     public int numWaterCoins;
@@ -36,6 +35,8 @@ public class WordFactoryBuildingManager : MonoBehaviour
     public WordPair tutorialPair1;
     public WordPair tutorialPair2;
     public WordPair tutorialPair3;
+
+    private bool firstTry;
 
     void Awake()
     {
@@ -83,14 +84,6 @@ public class WordFactoryBuildingManager : MonoBehaviour
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().wordFactoryBuildingTutorial;
 
-        // add settings button if not playing tutorial
-        if (!playTutorial)
-        {
-            // turn on settings button
-            SettingsManager.instance.ToggleMenuButtonActive(true);
-        }
-
-
         PregameSetup();
     }
 
@@ -123,6 +116,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
 
     private IEnumerator NewRound()
     {
+        firstTry = true;
         // choose correct pair
         if (playTutorial)
         {
@@ -165,13 +159,33 @@ public class WordFactoryBuildingManager : MonoBehaviour
         {
             if (!playIntro)
             {
-                playIntro = true;
-
                 // play start 1
-                AudioClip clip = GameIntroDatabase.instance.blendingStart1;
+                AudioClip clip = GameIntroDatabase.instance.buildingStart1;
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
                 yield return new WaitForSeconds(clip.length + 1f);
+
+                if (StudentInfoSystem.GetCurrentProfile().currentChapter < Chapter.chapter_4)
+                {
+                    // play start 2
+                    clip = GameIntroDatabase.instance.buildingStart2Chapters1_3;
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                    yield return new WaitForSeconds(clip.length + 1f);
+                }
+                else
+                {
+                    // play start 2
+                    clip = GameIntroDatabase.instance.buildingStart2Chapters4_5;
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                    yield return new WaitForSeconds(clip.length + 1f);
+                }
             }
+        }
+
+        if (!playIntro)
+        {
+            playIntro = true;
+            // turn on settings button
+            SettingsManager.instance.ToggleMenuButtonActive(true);
         }
 
         // audio fx
@@ -231,7 +245,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
             coin.transform.localScale = new Vector3(0f, 0f, 1f);
             coin.SetValue(currentWord.elkoninList[i]);
             coin.SetSize(normalCoinSize);
-            coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
+            coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.2f, 0.2f);
             currentCoins.Add(coin);
             // audio fx
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", (1f + 0.25f * i));
@@ -254,13 +268,13 @@ public class WordFactoryBuildingManager : MonoBehaviour
         polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
         foreach (var coin in currentCoins)
         {
-            coin.LerpSize(expandedCoinSize, 0.25f);
+            coin.LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
             yield return new WaitForSeconds(0.1f);
         }
         yield return new WaitForSeconds(1f);
         foreach (var coin in currentCoins)
         {
-            coin.LerpSize(normalCoinSize, 0.25f);
+            coin.LerpScale(Vector2.one, 0.25f);
             yield return new WaitForSeconds(0.1f);
         }
         yield return new WaitForSeconds(0.25f);
@@ -308,7 +322,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
         {
             // audio fx
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", (1f + 0.25f * i));
-            coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
+            coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
             yield return new WaitForSeconds(0.1f);
             i++;
         }
@@ -340,7 +354,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
         {
             // audio fx
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", (1.5f - 0.25f * i));
-            coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
+            coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
             yield return new WaitForSeconds(0.1f);
             i++;
         }
@@ -454,8 +468,8 @@ public class WordFactoryBuildingManager : MonoBehaviour
     {
         // move current coin
         currentCoin.GetComponent<LerpableObject>().LerpPosition(VisibleFramesController.instance.frames[currentPair.index].transform.position, 0.25f, false);
-        currentCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.25f);
-        yield return new WaitForSeconds(2f);
+        currentCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0.9f, 0.9f), 0.25f);
+        yield return new WaitForSeconds(0.5f);
 
         // win round
         if (win)
@@ -472,13 +486,13 @@ public class WordFactoryBuildingManager : MonoBehaviour
             AudioManager.instance.PlayTalk(currentPair.word2.audio);
             foreach (var coin in currentCoins)
             {
-                coin.LerpSize(expandedCoinSize, 0.25f);
+                coin.LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
                 yield return new WaitForSeconds(0.1f);
             }
             yield return new WaitForSeconds(1f);
             foreach (var coin in currentCoins)
             {
-                coin.LerpSize(normalCoinSize, 0.25f);
+                coin.LerpScale(Vector2.one, 0.25f);
                 yield return new WaitForSeconds(0.1f);
             }
             yield return new WaitForSeconds(0.5f);
@@ -500,16 +514,20 @@ public class WordFactoryBuildingManager : MonoBehaviour
         // lose round
         else
         {
-            // return coin to frame
+            // current coin is null
             currentCoin = null;
-            WaterCoinsController.instance.ReturnWaterCoins();
 
             // play incorrect sound
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
             yield return new WaitForSeconds(1f);
 
-            if (playTutorial)
+            // return coin to frame
+            WaterCoinsController.instance.ReturnWaterCoins();
+
+            if (playTutorial || firstTry)
             {
+                firstTry = false;
+
                 // turn on raycaster
                 WordFactoryBuildingRaycaster.instance.isOn = true;
 
@@ -541,14 +559,11 @@ public class WordFactoryBuildingManager : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
 
-        // reset water coins
-        WaterCoinsController.instance.ResetWaterCoins();
-
         // remove coins and frames
         VisibleFramesController.instance.RemoveFrames();
         foreach (var coin in currentCoins)
         {
-            coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.2f, 0.2f);
+            coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.1f, 0.1f);
         }
         yield return new WaitForSeconds(1f);
 
@@ -559,6 +574,9 @@ public class WordFactoryBuildingManager : MonoBehaviour
             Destroy(coin);
         }
         currentCoins.Clear();
+
+        // reset water coins
+        WaterCoinsController.instance.ResetWaterCoins();
 
 
         // play appropriate reminder / encouragement popup
@@ -710,7 +728,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
         coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
 
         yield return new WaitForSeconds(0.9f);
-        coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
+        coin.GetComponent<LerpableObject>().LerpScale(Vector2.one, 0.2f);
 
         playingCoinAudio = false;
     }

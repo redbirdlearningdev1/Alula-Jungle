@@ -219,7 +219,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 6
+    leftEmotionNum: 8
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 2
@@ -229,23 +229,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: e93c0acc4f35a2546a7ae6da5ceb4bd8, type: 3}
     audioClipName: B_1_3_Red_17_T1
-    audioString: 'Hey! '
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 1
-    leftEmotionNum: 8
-    leftMouthEnum: 1
-    leftEyesEnum: 1
-    rightCharacter: 2
-    rightEmotionNum: 7
-    rightMouthEnum: 2
-    rightEyesEnum: 1
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 2657aa31f3925a34f9b27fc4ec61ed59, type: 3}
-    audioClipName: B_1_3_Red_17_T2
-    audioString: "It\u2019s not nice to speak to people like that!"
+    audioString: "Hey! It\u2019s not nice to speak to people like that!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

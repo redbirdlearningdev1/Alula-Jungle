@@ -107,22 +107,6 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 12
-    leftMouthEnum: 1
-    leftEyesEnum: 4
-    rightCharacter: 7
-    rightEmotionNum: 13
-    rightMouthEnum: 2
-    rightEyesEnum: 1
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 694e18c7907958d4c974db514b405a35, type: 3}
-    audioClipName: FR_1_1_Darwin_11_T3
-    audioString: or even future Kings,
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 3
     leftEmotionNum: 6
     leftMouthEnum: 1
     leftEyesEnum: 1
@@ -131,9 +115,9 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: bd99b4af092996842983df4a3996dbc3, type: 3}
-    audioClipName: FR_1_1_Darwin_11_T4
-    audioString: should be doing.
+    audioClip: {fileID: 8300000, guid: 694e18c7907958d4c974db514b405a35, type: 3}
+    audioClipName: FR_1_1_Darwin_11_T3
+    audioString: or even future Kings, should be doing.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -524,22 +508,6 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 3
-    leftEmotionNum: 7
-    leftMouthEnum: 1
-    leftEyesEnum: 4
-    rightCharacter: 7
-    rightEmotionNum: 20
-    rightMouthEnum: 2
-    rightEyesEnum: 1
-    activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 28360dbe4af97a44d9292342de06a720, type: 3}
-    audioClipName: FR_1_1_Darwin_24_T2
-    audioString: You know,
-  - endTalkieAfterThisSegment: 0
-    requireYN: 0
-    onYesGoto: 0
-    onNoGoto: 0
-    leftCharacter: 3
     leftEmotionNum: 4
     leftMouthEnum: 1
     leftEyesEnum: 3
@@ -548,9 +516,9 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 19e03d6a4ac6d0647b79a1367dc67d21, type: 3}
-    audioClipName: FR_1_1_Darwin_24_T3
-    audioString: your parents and I were so proud of you Julius.
+    audioClip: {fileID: 8300000, guid: 28360dbe4af97a44d9292342de06a720, type: 3}
+    audioClipName: FR_1_1_Darwin_24_T2
+    audioString: You know, your parents and I were so proud of you Julius.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

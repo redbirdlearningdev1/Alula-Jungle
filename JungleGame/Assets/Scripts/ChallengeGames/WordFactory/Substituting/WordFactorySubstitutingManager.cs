@@ -85,7 +85,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
     public bool overrideWord;
     public WordPair testObject;
 
-    public bool firstEntry;
+    private bool firstEntry;
 
     void Awake()
     {
@@ -844,10 +844,6 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         }
         else
         {
-            // only increase misses if not playing tutorial
-            if (!playTutorial)
-                numMisses++;
-
             foreach (var coin in currentCoins)
             {
                 PlayAudioCoin(coin);
@@ -877,6 +873,10 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                 
                 yield break;
             }
+
+            // only increase misses if not playing tutorial
+            if (!playTutorial)
+                numMisses++;
 
             // slide tiger polaroid under red polaroid
             redPolaroid.transform.SetAsFirstSibling();

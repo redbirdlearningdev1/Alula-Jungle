@@ -376,8 +376,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5, y: -5}
-  m_SizeDelta: {x: -10, y: -10}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &204132064
 MonoBehaviour:
@@ -1225,8 +1225,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5, y: -5}
-  m_SizeDelta: {x: -10, y: -10}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &806181220
 MonoBehaviour:
@@ -2030,12 +2030,12 @@ MonoBehaviour:
   universalCoinImage: {fileID: 4576424004087786421, guid: c7e40a4389b3aea4591d46dac11754a0,
     type: 3}
   coinsParent: {fileID: 282431114}
-  normalCoinSize: {x: 210, y: 250}
-  expandedCoinSize: {x: 230, y: 275}
+  normalCoinSize: {x: 220, y: 250}
   playTutorial: 0
-  tutorialPair1: {fileID: 11400000, guid: 01cfaf6318f414d4490a095da02be9da, type: 2}
-  tutorialPair2: {fileID: 11400000, guid: 20524d6f157b10242912593224fd3020, type: 2}
-  tutorialPair3: {fileID: 11400000, guid: 80dd9e91d2ca76e4da82759f172e1bb5, type: 2}
+  tutorialPair1: {fileID: 11400000, guid: 853213200b9cbca4aa5a84cc95c885a9, type: 2}
+  tutorialPair2: {fileID: 11400000, guid: fc4239c7ba610d94fa8c16d8be8b66d1, type: 2}
+  tutorialPair3: {fileID: 11400000, guid: bc62d87ba7d17a747a25e98f5ddf1da9, type: 2}
+  firstTry: 0
 --- !u!114 &1431170222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2671,7 +2671,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 37.465054
+      value: 37.941998
       objectReference: {fileID: 0}
     - target: {fileID: 8032072505287944566, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -3602,7 +3602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

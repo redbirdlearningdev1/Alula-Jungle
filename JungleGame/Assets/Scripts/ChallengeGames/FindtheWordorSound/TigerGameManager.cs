@@ -55,6 +55,9 @@ public class TigerGameManager : MonoBehaviour
     public ActionWordEnum tutorialSet1;
     public ActionWordEnum tutorialSet2;
     public ActionWordEnum tutorialSet3;
+    public List<ChallengeWord> tutorialWords1;
+    public List<ChallengeWord> tutorialWords2;
+    public List<ChallengeWord> tutorialWords3;
 
     [Header("Scripted")]
     private int scriptedEvent = 0;
@@ -91,13 +94,6 @@ public class TigerGameManager : MonoBehaviour
         // only turn off tutorial if false
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().tigerPawPhotosTutorial;
-
-        // add settings button if not playing tutorial
-        if (!playTutorial)
-        {
-            // turn on settings button
-            SettingsManager.instance.ToggleMenuButtonActive(true);
-        }
 
         PregameSetup();
     }
@@ -149,58 +145,39 @@ public class TigerGameManager : MonoBehaviour
     {   
         currCoin.transform.position = coinStartPos.position;
 
-        // get an unlocked set
-        //List<ActionWordEnum> unlockedSets = new List<ActionWordEnum>();
-        //unlockedSets.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
-
         if (playTutorial)
         {
             switch (tutorialEvent)
             {
                 case 0:
                     currSet = tutorialSet1;
+                    for (int i = 1; i < 4; i++)
+                    {
+                        polaroidC[i].SetPolaroid(tutorialWords1[i - 1]);
+                    }
                     break;
 
                 case 1:
                     currSet = tutorialSet2;
+                    for (int i = 1; i < 4; i++)
+                    {
+                        polaroidC[i].SetPolaroid(tutorialWords2[i - 1]);
+                    }
                     break;
 
                 case 2:
                     currSet = tutorialSet3;
+
+                    for (int i = 1; i < 4; i++)
+                    {
+                        polaroidC[i].SetPolaroid(tutorialWords3[i - 1]);
+                    }
                     break;
             }
             tutorialEvent++;
-                    
-            // get challenge words from a set
-            word_pool.AddRange(ChallengeWordDatabase.GetChallengeWordSet(currSet));
-
-            // get all other challenge words (from other sets)
-            List<ChallengeWord> global_pool = new List<ChallengeWord>();
-            global_pool.AddRange(ChallengeWordDatabase.globalChallengeWordList);
-            
-            foreach (var word in word_pool)
-            {
-                global_pool.Remove(word);
-            }
-            // determine current word
-            currWord = word_pool[Random.Range(0, word_pool.Count)];
-
-            // determine correct index
-            int correctindex = Random.Range(0, polaroidC.Count);
-
-            for (int i = 0; i < polaroidC.Count; i++)
-            {
-                int randomIndex = Random.Range(0, word_pool.Count);
-                
-                polaroidC[i].SetPolaroid(word_pool[randomIndex]);
-                word_pool.RemoveAt(randomIndex);
-
-            }
-        
         }   
         else if((StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 || testthis))
         {
-            Debug.Log("HERE?");
             // get correct tutorial polaroids
             List<ChallengeWord> scriptedList = new List<ChallengeWord>();
             switch (scriptedEvent)
@@ -264,32 +241,8 @@ public class TigerGameManager : MonoBehaviour
         }
         else
         {
-            // get an unlocked set
-            //List<ActionWordEnum> unlockedSets = new List<ActionWordEnum>();
-            //unlockedSets.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
-            //currSet = unlockedSets[Random.Range(0, unlockedSets.Count)];
-
             currSet = AISystem.TigerPawPhotosCoinSelection(StudentInfoSystem.GetCurrentProfile());
-            //Debug.Log("HERERERER");
-
-            // get challenge words from a set
-            //List<ChallengeWord> word_pool = new List<ChallengeWord>();
-            //word_pool.AddRange(ChallengeWordDatabase.GetChallengeWordSet(currSet));
-
-            // get all other challenge words (from other sets)
-            //List<ChallengeWord> global_pool = new List<ChallengeWord>();
-            //global_pool.AddRange(ChallengeWordDatabase.globalChallengeWordList);
-            //foreach (var word in word_pool)
-            //{
-            //    global_pool.Remove(word);
-            //}
-
-            
             word_pool = AISystem.ChallengeWordSelectionTigerPawPol(StudentInfoSystem.GetCurrentProfile(), currSet);
-
-            // determine current word
-            //currWord = word_pool[Random.Range(0, word_pool.Count)];
-            // determine correct index
 
             for (int i = 0; i < polaroidC.Count; i++)
             {
@@ -304,7 +257,7 @@ public class TigerGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // tutorial stuff
-        if (!playTutorial && tutorialEvent == 1)
+        if (playTutorial && tutorialEvent == 1)
         {
             // play tutorial intro 1-2
             List<AudioClip> clips = new List<AudioClip>();
@@ -325,13 +278,8 @@ public class TigerGameManager : MonoBehaviour
         }
         else if (!playIntro)
         {
-            playIntro = true;
-
-            // short pause before start
-            yield return new WaitForSeconds(1f);
-
             // play start 1
-            AudioClip clip = GameIntroDatabase.instance.tigerPawCoinStart;
+            AudioClip clip = GameIntroDatabase.instance.tigerPawPhotosStart;
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
             yield return new WaitForSeconds(clip.length + 1f);
         }
@@ -352,6 +300,13 @@ public class TigerGameManager : MonoBehaviour
             yield return new WaitForSeconds(clip.length + 1f);
         }
 
+        if (!playIntro)
+        {
+            playIntro = true;
+            // turn on settings button
+            SettingsManager.instance.ToggleMenuButtonActive(true);
+        }
+
         
         Tiger.TigerDeal();
         yield return new WaitForSeconds(.6f);
@@ -359,42 +314,45 @@ public class TigerGameManager : MonoBehaviour
         currCoin.SetActionWordValue(currSet);
         yield return new WaitForSeconds(.5f);
 
-        for (int i = 0; i < 5; i++)
+        int startPolaroid = 0;
+        int endPolaroid = 5;
+        if (playTutorial)
+        {
+            startPolaroid = 1;
+            endPolaroid = 4;
+        }
+
+        for (int i = startPolaroid; i < endPolaroid; i++)
         {
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoStartPos.position, 0f));
         }
-        for (int i = 0; i < 5; i++)
+        for (int i = startPolaroid; i < endPolaroid; i++)
         {
-            Debug.Log("HERERE");
-            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 && i == 0)
-            {
-                i = i+1;
-            }
-            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos1.position, .2f));
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, GetPolaroidPosition(startPolaroid), .2f));
         }
         yield return new WaitForSeconds(.35f);
 
-        for (int i = 1; i < 5; i++)
+        for (int i = 1 + startPolaroid; i < endPolaroid; i++)
         {
-            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos2.position, .2f));
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, GetPolaroidPosition(startPolaroid + 1), .2f));
         }
         yield return new WaitForSeconds(.11f);
 
-        for (int i = 2; i < 5; i++)
+        for (int i = 2 + startPolaroid; i < endPolaroid; i++)
         {
-            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos3.position, .2f));
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, GetPolaroidPosition(startPolaroid + 2), .2f));
         }
         yield return new WaitForSeconds(.11f);
 
-        for (int i = 3; i < 5; i++)
+        for (int i = 3 + startPolaroid; i < endPolaroid; i++)
         {
-            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos4.position, .2f));
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, GetPolaroidPosition(startPolaroid + 3), .2f));
         }
         yield return new WaitForSeconds(.11f);
 
-        for (int i = 4; i < 5; i++)
+        for (int i = 4 + startPolaroid; i < endPolaroid; i++)
         {
-            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos5.position, .2f));
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, GetPolaroidPosition(startPolaroid + 4), .2f));
         }
 
         PlayAudioCoin(currCoin);
@@ -412,9 +370,21 @@ public class TigerGameManager : MonoBehaviour
             yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
         }
 
-
         // disable raycaster
         TigerGameRaycaster.instance.isOn = true;
+    }
+
+    private Vector3 GetPolaroidPosition(int index)
+    {
+        switch (index)
+        {
+            default: return PhotoStartPos.position;
+            case 0: return PhotoPos1.position;
+            case 1: return PhotoPos2.position;
+            case 2: return PhotoPos3.position;
+            case 3: return PhotoPos4.position;
+            case 4: return PhotoPos5.position;
+        }
     }
 
     private IEnumerator LerpMoveObject(Transform obj, Vector3 target, float lerpTime)
@@ -485,8 +455,9 @@ public class TigerGameManager : MonoBehaviour
 
     public void EvaluateWaterCoin(Polaroid Photo)
     {
-        // disable raycaster
+        // disable raycaster + stop coroutines
         TigerGameRaycaster.instance.isOn = false;
+        TigerGameRaycaster.instance.EndAudioRoutine();
 
         if (Photo.challengeWord.set == currSet)
         {
@@ -558,51 +529,38 @@ public class TigerGameManager : MonoBehaviour
         currCoin.gameObject.transform.position = coinStartPos.position;
         yield return new WaitForSeconds(1f);
 
-        for (int i = 0; i < 1; i++)
+        int startPolaroid = 0;
+        int endPolaroid = 5;
+        if (playTutorial)
         {
-            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 && i == 0)
-            {
-                i = i+1;
-            }
-            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos2.position, .2f));
-        }
-        yield return new WaitForSeconds(.1f);
-        for (int i = 0; i < 2; i++)
-        {
-            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 && i == 0)
-            {
-                i = i+1;
-            }
-            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos3.position, .2f));
-        }
-        yield return new WaitForSeconds(.1f);
-        for (int i = 0; i < 3; i++)
-        {
-            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 && i == 0)
-            {
-                i = i+1;
-            }
-            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos4.position, .2f));
-        }
-        yield return new WaitForSeconds(.1f);
-        for (int i = 0; i < 4; i++)
-        {
-            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 && i == 0)
-            {
-                i = i+1;
-            }
-            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoPos5.position, .2f));
-        }
-        yield return new WaitForSeconds(.2f);
-        for (int i = 0; i < 5; i++)
-        {
-            if(StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 && i == 0)
-            {
-                i = i+1;
-            }
-            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoEndPos.position, .2f));
+            startPolaroid = 1;
+            endPolaroid = 4;
         }
 
+        for (int i = startPolaroid; i < endPolaroid - 4; i++)
+        {
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, GetPolaroidPosition(startPolaroid), .2f));
+        }
+        yield return new WaitForSeconds(.1f);
+        for (int i = startPolaroid; i < endPolaroid - 3; i++)
+        {
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, GetPolaroidPosition(startPolaroid + 1), .2f));
+        }
+        yield return new WaitForSeconds(.1f);
+        for (int i = startPolaroid; i < endPolaroid - 2; i++)
+        {
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, GetPolaroidPosition(startPolaroid + 2), .2f));
+        }
+        yield return new WaitForSeconds(.1f);
+        for (int i = startPolaroid; i < endPolaroid - 1; i++)
+        {
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, GetPolaroidPosition(startPolaroid + 3), .2f));
+        }
+        yield return new WaitForSeconds(.2f);
+        for (int i = startPolaroid; i < endPolaroid; i++)
+        {
+            StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoEndPos.position, .2f));
+        }
 
 
         // play appropriate popup
@@ -637,14 +595,22 @@ public class TigerGameManager : MonoBehaviour
                 // play julius final lose popup
                 AudioClip clip = null;
 
-                if (StudentInfoSystem.GetCurrentProfile().currentChapter < Chapter.chapter_5)
+                if (playTutorial)
                 {
-                    clip = GameIntroDatabase.instance.tigerPawCoinFinalJuliusLoseChapters1_4;
-                }   
+                    clip = GameIntroDatabase.instance.tigerPawPhotosIntro8;
+                }
                 else
                 {
-                    clip = GameIntroDatabase.instance.tigerPawCoinFinalJuliusLoseChapters1_4;
-                }       
+                    if (StudentInfoSystem.GetCurrentProfile().currentChapter < Chapter.chapter_5)
+                    {
+                        clip = GameIntroDatabase.instance.tigerPawCoinFinalJuliusLoseChapters1_4;
+                    }   
+                    else
+                    {
+                        clip = GameIntroDatabase.instance.tigerPawCoinFinalJuliusLoseChapters1_4;
+                    }   
+                }
+                    
 
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
                 yield return new WaitForSeconds(clip.length + 1f);

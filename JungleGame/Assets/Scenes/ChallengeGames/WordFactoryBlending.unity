@@ -1572,20 +1572,20 @@ MonoBehaviour:
   away2Pos: {fileID: 384235039}
   normalCoinSize: {x: 107, y: 120}
   expandedCoinSize: {x: 124, y: 140}
-  playTutorial: 0
+  playTutorial: 1
   correctTutorialIndex: 000000000100000002000000
   polaroids1:
-  - {fileID: 11400000, guid: 4b2a3f375b3198747833c54c66d2af2e, type: 2}
-  - {fileID: 11400000, guid: 909156988118e2d4dbebd3e608608cc5, type: 2}
-  - {fileID: 11400000, guid: e3abdcbb0c9f75a428554f950c6e6125, type: 2}
+  - {fileID: 11400000, guid: 3251c72ac563c69488e3a19d0412efce, type: 2}
+  - {fileID: 11400000, guid: 38ea91df9f063a040941ed386b67e878, type: 2}
+  - {fileID: 11400000, guid: 83a22c9d9acb75346af3d908f4582e53, type: 2}
   polaroids2:
-  - {fileID: 11400000, guid: f96198c46d809974da6fe9a97f308388, type: 2}
-  - {fileID: 11400000, guid: a6ff8ca894beb41478830edb70c456c2, type: 2}
-  - {fileID: 11400000, guid: e33b56ac456ca6f409a72c95bb25b1e9, type: 2}
+  - {fileID: 11400000, guid: 3c2f5f02fd05cc645847dead8f8196e8, type: 2}
+  - {fileID: 11400000, guid: 537e06bf12eb5394481103bfb864c910, type: 2}
+  - {fileID: 11400000, guid: 960ec3d884fe45f4aba44316357197b4, type: 2}
   polaroids3:
-  - {fileID: 11400000, guid: 8230e1b969c2b39428a47e994ff382cc, type: 2}
-  - {fileID: 11400000, guid: 4a67f34cf3f3155418297c6d822f97e0, type: 2}
-  - {fileID: 11400000, guid: 8658073a7d248a944a73a73eb8459bab, type: 2}
+  - {fileID: 11400000, guid: 061268d91774c974eba925b1a87117ed, type: 2}
+  - {fileID: 11400000, guid: e481539cbd34e4647b5466eee968c9f9, type: 2}
+  - {fileID: 11400000, guid: 0f64f30ea3acc184abaad773e18e2905, type: 2}
   polaroidsScripted1:
   - {fileID: 11400000, guid: 4cc3970b7ebe6e04e8c33dd8f3b52d78, type: 2}
   - {fileID: 11400000, guid: 365e37419abbe3447ac7b96dd8acd999, type: 2}
@@ -2585,7 +2585,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 44.546116
+      value: 44.78806
       objectReference: {fileID: 0}
     - target: {fileID: 8032072505287944566, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

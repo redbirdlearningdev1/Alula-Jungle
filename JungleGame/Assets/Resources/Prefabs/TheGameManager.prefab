@@ -28030,7 +28030,6 @@ MonoBehaviour:
   OVillageDefeated_1_p2: {fileID: 11400000, guid: 69331d6913d60ea4cafceee27a05a778,
     type: 2}
   OVillageIntro_1_p1: {fileID: 11400000, guid: a1c6b2f6829d5d24ba4e97c239810fc1, type: 2}
-  OVillageIntro_1_p2: {fileID: 11400000, guid: 2cec0bb21fe537d4cb989e4e36fd75d2, type: 2}
   OVillageIntro_2_p1: {fileID: 11400000, guid: d4e99ce403bcf02449c22bd63bc7cbb9, type: 2}
   OVillageRebuilt_1_p1: {fileID: 11400000, guid: 2255fb26e80dcef45b11b16b237b6300,
     type: 2}
@@ -28156,6 +28155,11 @@ MonoBehaviour:
     emotionNum: 3
     mouth: 1
     eyes: 3
+  - sprite: {fileID: 21300000, guid: d07bd0e69409ce54da2df875b4331910, type: 3}
+    character: 1
+    emotionNum: 3
+    mouth: 1
+    eyes: 1
   - sprite: {fileID: 21300000, guid: b7ff3ee6247b5bc40801e9b3a35e532c, type: 3}
     character: 1
     emotionNum: 3
@@ -28194,7 +28198,7 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: 874cb2aaf08f9484aa181cd2e15a49af, type: 3}
     character: 1
     emotionNum: 6
-    mouth: 2
+    mouth: 1
     eyes: 1
   - sprite: {fileID: 21300000, guid: e3f8afabfaf536647a0e020954a29fb2, type: 3}
     character: 1
@@ -28592,6 +28596,41 @@ MonoBehaviour:
     emotionNum: 13
     mouth: 1
     eyes: 2
+  - sprite: {fileID: 21300000, guid: 30472b522582670408ddc0f400f7527d, type: 3}
+    character: 3
+    emotionNum: 14
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: c630844349f509c4c81f5d495ad05182, type: 3}
+    character: 3
+    emotionNum: 15
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 0ed0ccf3d99d7484e90a8c793d37ddd6, type: 3}
+    character: 3
+    emotionNum: 15
+    mouth: 2
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 89559f9c22cc33c488e20c92205a2343, type: 3}
+    character: 3
+    emotionNum: 15
+    mouth: 2
+    eyes: 2
+  - sprite: {fileID: 21300000, guid: 1f676c2dc3233f14f8a9c31302306818, type: 3}
+    character: 3
+    emotionNum: 15
+    mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 9c5b334cafacf87449b884b3c55610bb, type: 3}
+    character: 3
+    emotionNum: 15
+    mouth: 1
+    eyes: 4
+  - sprite: {fileID: 21300000, guid: 8c74eb5595dc3a747ae9431a1f4bdbf9, type: 3}
+    character: 3
+    emotionNum: 15
+    mouth: 1
+    eyes: 2
   wallySprites:
   - sprite: {fileID: 21300000, guid: b31e72f566d17ef42a552f3e78dc55a4, type: 3}
     character: 2
@@ -28693,6 +28732,16 @@ MonoBehaviour:
     emotionNum: 4
     mouth: 1
     eyes: 2
+  - sprite: {fileID: 21300000, guid: 674acbe8cb9be834695d29f2de9fd971, type: 3}
+    character: 2
+    emotionNum: 5
+    mouth: 2
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: 91f20443a47295b4d927bdf7d6747e4c, type: 3}
+    character: 2
+    emotionNum: 5
+    mouth: 2
+    eyes: 2
   - sprite: {fileID: 21300000, guid: 3491b388b4a7efc43889e67bf453d3eb, type: 3}
     character: 2
     emotionNum: 5
@@ -28782,6 +28831,11 @@ MonoBehaviour:
     character: 2
     emotionNum: 9
     mouth: 1
+    eyes: 1
+  - sprite: {fileID: 21300000, guid: c73f411b309fc154eb3fa7145529f96d, type: 3}
+    character: 2
+    emotionNum: 10
+    mouth: 2
     eyes: 1
   - sprite: {fileID: 21300000, guid: eaaea52e8a24c474abb0679cadc40547, type: 3}
     character: 2
@@ -28999,6 +29053,11 @@ MonoBehaviour:
     emotionNum: 3
     mouth: 1
     eyes: 4
+  - sprite: {fileID: 21300000, guid: 8cb8d2504617ffc4c8e535858b626abc, type: 3}
+    character: 7
+    emotionNum: 3
+    mouth: 1
+    eyes: 2
   - sprite: {fileID: 21300000, guid: ada36c2d6b805c34286cdee05cd0eb13, type: 3}
     character: 7
     emotionNum: 4
@@ -29054,6 +29113,11 @@ MonoBehaviour:
     emotionNum: 6
     mouth: 1
     eyes: 1
+  - sprite: {fileID: 21300000, guid: 02f6318eab9614e4dbedc87da147086d, type: 3}
+    character: 7
+    emotionNum: 6
+    mouth: 1
+    eyes: 2
   - sprite: {fileID: 21300000, guid: 6b22536046e92ea44b4bb6b603e3d374, type: 3}
     character: 7
     emotionNum: 7
@@ -29069,6 +29133,11 @@ MonoBehaviour:
     emotionNum: 7
     mouth: 1
     eyes: 1
+  - sprite: {fileID: 21300000, guid: d294f146ee39aba4b85816a2f6bc4675, type: 3}
+    character: 7
+    emotionNum: 7
+    mouth: 1
+    eyes: 4
   - sprite: {fileID: 21300000, guid: e0d6ba280ed24b1468586cd0215b668c, type: 3}
     character: 7
     emotionNum: 7
@@ -29159,6 +29228,11 @@ MonoBehaviour:
     emotionNum: 11
     mouth: 1
     eyes: 1
+  - sprite: {fileID: 21300000, guid: 4c12ebc399921ba46a37e76d140174fa, type: 3}
+    character: 7
+    emotionNum: 11
+    mouth: 1
+    eyes: 2
   - sprite: {fileID: 21300000, guid: b7733b9c5b71de04092de4b1979109e2, type: 3}
     character: 7
     emotionNum: 12
@@ -29199,6 +29273,11 @@ MonoBehaviour:
     emotionNum: 13
     mouth: 2
     eyes: 4
+  - sprite: {fileID: 21300000, guid: 8ca7f0196a6612040ae39d1ef66f49eb, type: 3}
+    character: 7
+    emotionNum: 13
+    mouth: 2
+    eyes: 2
   - sprite: {fileID: 21300000, guid: 55b854718912d354ca2f9c45b871cdca, type: 3}
     character: 7
     emotionNum: 13
@@ -29209,6 +29288,11 @@ MonoBehaviour:
     emotionNum: 13
     mouth: 1
     eyes: 4
+  - sprite: {fileID: 21300000, guid: 73e905942a888c24ea8b87d6648af784, type: 3}
+    character: 7
+    emotionNum: 13
+    mouth: 1
+    eyes: 2
   - sprite: {fileID: 21300000, guid: a12b12d8692f26048ab73b27fd0591f3, type: 3}
     character: 7
     emotionNum: 14
@@ -29299,11 +29383,21 @@ MonoBehaviour:
     emotionNum: 19
     mouth: 1
     eyes: 4
+  - sprite: {fileID: 21300000, guid: fd603d4c1be0d284e9ed8c8e0c9a4de0, type: 3}
+    character: 7
+    emotionNum: 20
+    mouth: 2
+    eyes: 1
   - sprite: {fileID: 21300000, guid: 9b47b055d2b5f464c9652147ced80d9b, type: 3}
     character: 7
     emotionNum: 20
     mouth: 2
     eyes: 4
+  - sprite: {fileID: 21300000, guid: 46a4fb70b86e4874baa7533f7fa0be64, type: 3}
+    character: 7
+    emotionNum: 20
+    mouth: 1
+    eyes: 1
   - sprite: {fileID: 21300000, guid: 36815a31bd142f2428d0011d02fe24ef, type: 3}
     character: 7
     emotionNum: 20
@@ -32285,6 +32379,11 @@ MonoBehaviour:
   deletingIntro3: {fileID: 8300000, guid: 372e369faf3c6a34ebc18fcf7926dcb3, type: 3}
   deletingIntro4: {fileID: 8300000, guid: a477499480b10564caf220a0de750669, type: 3}
   deletingIntro5: {fileID: 8300000, guid: fe2a08d174b41fc4884db61c42345fb2, type: 3}
+  deletingStart1: {fileID: 8300000, guid: 669aaee3e9524444180692b692225db0, type: 3}
+  deletingStart2Chapters1_3: {fileID: 8300000, guid: 7fe49ea17e5f1564c903b92db7169a74,
+    type: 3}
+  deletingStart2Chapters4_5: {fileID: 8300000, guid: 3a5a9e2a0a8a7b441b7ee5f6996a29ab,
+    type: 3}
   deletingReminderClipsChapters1_4:
   - {fileID: 8300000, guid: 44038e5899c5c554f86e00d1bebdd36e, type: 3}
   - {fileID: 8300000, guid: 3f632781b45d40041bc09a563d67d44c, type: 3}
@@ -32300,6 +32399,11 @@ MonoBehaviour:
   buildingIntro3: {fileID: 8300000, guid: 372e369faf3c6a34ebc18fcf7926dcb3, type: 3}
   buildingIntro4: {fileID: 8300000, guid: a0e702d542fe94f43b9e08740bc60f35, type: 3}
   buildingIntro5: {fileID: 8300000, guid: 9d8d56c1ea10eea4e9ac4c236b899266, type: 3}
+  buildingStart1: {fileID: 8300000, guid: 669aaee3e9524444180692b692225db0, type: 3}
+  buildingStart2Chapters1_3: {fileID: 8300000, guid: 7fe49ea17e5f1564c903b92db7169a74,
+    type: 3}
+  buildingStart2Chapters4_5: {fileID: 8300000, guid: 3a5a9e2a0a8a7b441b7ee5f6996a29ab,
+    type: 3}
   buildingReminderClipsChapters1_4:
   - {fileID: 8300000, guid: 7fe49ea17e5f1564c903b92db7169a74, type: 3}
   - {fileID: 8300000, guid: b559924a81f6c754cbccf52f7b51c56c, type: 3}
@@ -32317,7 +32421,7 @@ MonoBehaviour:
   tigerPawCoinIntro5: {fileID: 8300000, guid: 073514b69222cd34594a6cf1630f6eb3, type: 3}
   tigerPawCoinIntro6: {fileID: 8300000, guid: 0f14bceb4d0a85d4c84fd60f21aefc57, type: 3}
   tigerPawCoinIntro7: {fileID: 8300000, guid: 066307f445ece664397231754e4fadae, type: 3}
-  tigerPawCoinStart: {fileID: 8300000, guid: 8c0e2f716b7f14f47a7e531d9c46c408, type: 3}
+  tigerPawCoinStart: {fileID: 8300000, guid: ffcc2d6f1e608ba4b81700891e1c27c9, type: 3}
   tigerPawCoinNewPhotosChapters1_4:
   - {fileID: 8300000, guid: badb17ff456552f4badaf68b30474844, type: 3}
   - {fileID: 8300000, guid: 15657415dd737844dbb5b3212914720c, type: 3}
@@ -32370,6 +32474,9 @@ MonoBehaviour:
     type: 3}
   tigerPawPhotosIntro7: {fileID: 8300000, guid: 066307f445ece664397231754e4fadae,
     type: 3}
+  tigerPawPhotosIntro8: {fileID: 8300000, guid: 8c0e2f716b7f14f47a7e531d9c46c408,
+    type: 3}
+  tigerPawPhotosStart: {fileID: 8300000, guid: d192d74c0dc83c347a1cd132e08570c2, type: 3}
   passwordIntro1: {fileID: 8300000, guid: 2120322236882c44286f54b320d94602, type: 3}
   passwordIntro2: {fileID: 8300000, guid: 422f76a4cc7d64d44b083024c58beb86, type: 3}
   passwordIntro3: {fileID: 8300000, guid: b2c804f23067e6f499313856efd205f5, type: 3}
@@ -35381,7 +35488,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 109.79974, y: 0.005817631}
+  m_AnchoredPosition: {x: 111.49394, y: 0.005817631}
   m_SizeDelta: {x: 0, y: 677.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6698549014864973768

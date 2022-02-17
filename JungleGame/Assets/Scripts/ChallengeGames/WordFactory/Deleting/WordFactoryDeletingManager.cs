@@ -10,7 +10,6 @@ public class WordFactoryDeletingManager : MonoBehaviour
     public GameObject universalCoinImage; // universal coin prefab
     public Transform coinsParent;
     public Vector2 normalCoinSize;
-    public Vector2 expandedCoinSize;
 
     private List<WordPair> pairPool;
     private WordPair currentPair;
@@ -32,7 +31,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
     public WordPair tutorialPair2;
     public WordPair tutorialPair3;
 
-    public bool firstTry;
+    private bool firstTry;
 
     void Awake()
     {
@@ -80,13 +79,6 @@ public class WordFactoryDeletingManager : MonoBehaviour
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().wordFactoryDeletingTutorial;
 
-        // add settings button if not playing tutorial
-        if (!playTutorial)
-        {
-            // turn on settings button
-            SettingsManager.instance.ToggleMenuButtonActive(true);
-        }
-
         PregameSetup();
     }
 
@@ -95,9 +87,6 @@ public class WordFactoryDeletingManager : MonoBehaviour
         // get pair pool from game manager
         pairPool = new List<WordPair>();
         pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(StudentInfoSystem.GetCurrentProfile().actionWordPool));
-        
-        // remove UI button
-        SettingsManager.instance.ToggleWagonButtonActive(false);
 
         // set emerald head to be closed
         EmeraldHead.instance.animator.Play("PolaroidEatten");
@@ -158,13 +147,33 @@ public class WordFactoryDeletingManager : MonoBehaviour
         {
             if (!playIntro)
             {
-                playIntro = true;
-
                 // play start 1
-                AudioClip clip = GameIntroDatabase.instance.blendingStart1;
+                AudioClip clip = GameIntroDatabase.instance.deletingStart1;
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
                 yield return new WaitForSeconds(clip.length + 1f);
+
+                if (StudentInfoSystem.GetCurrentProfile().currentChapter < Chapter.chapter_4)
+                {
+                    // play start 2
+                    clip = GameIntroDatabase.instance.deletingStart2Chapters1_3;
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                    yield return new WaitForSeconds(clip.length + 1f);
+                }
+                else
+                {
+                    // play start 2
+                    clip = GameIntroDatabase.instance.deletingStart2Chapters4_5;
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                    yield return new WaitForSeconds(clip.length + 1f);
+                }
             }
+        }
+
+        // add settings button
+        if (!playIntro)
+        {
+            playIntro = true;
+            SettingsManager.instance.ToggleWagonButtonActive(true);
         }
 
         // audio fx
@@ -223,7 +232,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
             coin.SetValue(currentWord.elkoninList[i]);
             coin.SetSize(normalCoinSize);
             coin.ToggleVisibility(true, false);
-            coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
+            coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
             currentCoins.Add(coin);
             // audio fx
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", (1f + 0.25f * i));
@@ -245,13 +254,13 @@ public class WordFactoryDeletingManager : MonoBehaviour
         polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
         foreach (var coin in currentCoins)
         {
-            coin.LerpSize(expandedCoinSize, 0.25f);
+            coin.LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
             yield return new WaitForSeconds(0.1f);
         }
         yield return new WaitForSeconds(1f);
         foreach (var coin in currentCoins)
         {
-            coin.LerpSize(normalCoinSize, 0.25f);
+            coin.LerpScale(Vector2.one, 0.25f);
             yield return new WaitForSeconds(0.1f);
         }
         yield return new WaitForSeconds(0.25f);
@@ -348,9 +357,6 @@ public class WordFactoryDeletingManager : MonoBehaviour
         // lose 
         else
         {
-            // only increase misses if not playing tutorial
-            if (!playTutorial)
-                numMisses++;
             StartCoroutine(PostRound(false));
         }
     }
@@ -359,8 +365,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
     {
         // emerald tiger thinking
         EmeraldTigerHolder.instance.Thinking();
-        yield return new WaitForSeconds(3f);
-
+        yield return new WaitForSeconds(1.5f);
 
         // win round
         if (win)
@@ -417,13 +422,13 @@ public class WordFactoryDeletingManager : MonoBehaviour
             polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
             foreach (var coin in currentCoins)
             {
-                coin.LerpSize(expandedCoinSize, 0.25f);
+                coin.LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
                 yield return new WaitForSeconds(0.1f);
             }
             yield return new WaitForSeconds(1f);
             foreach (var coin in currentCoins)
             {
-                coin.LerpSize(normalCoinSize, 0.25f);
+                coin.LerpScale(Vector2.one, 0.25f);
                 yield return new WaitForSeconds(0.1f);
             }
             yield return new WaitForSeconds(0.25f);
@@ -446,32 +451,22 @@ public class WordFactoryDeletingManager : MonoBehaviour
         // lose round
         else
         {
-            currentCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.0f);
-            currentCoins.Remove(currentCoin);
-            yield return new WaitForSeconds(.5f);
-
-            foreach (var coin in currentCoins)
-            {
-                PlayAudioCoin(coin);
-                yield return new WaitForSeconds(1f);
-            }
-
-            AudioManager.instance.PlayTalk(currentPair.word1.audio);
-            yield return new WaitForSeconds(currentPair.word1.audio.length);
-
             // play wrong sound
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
 
             // emerald tiger wrong
             EmeraldTigerHolder.instance.SetCorrect(false);
 
-            // return coin to frame
-            currentCoin = null;
-            WordFactoryDeletingManager.instance.ReturnCoinsToFrame();
-            yield return new WaitForSeconds(1f);
-
-            if (playTutorial)
+            if (playTutorial || firstTry)
             {
+                // return coin to frame
+                currentCoin.GetComponent<LerpableObject>().LerpScale(Vector2.one, 0.5f);
+                currentCoin = null;
+                WordFactoryDeletingManager.instance.ReturnCoinsToFrame();
+                yield return new WaitForSeconds(1f);
+
+                firstTry = false;
+
                 // turn on raycaster
                 WordFactoryDeletingRaycaster.instance.isOn = true;
 
@@ -479,6 +474,10 @@ public class WordFactoryDeletingManager : MonoBehaviour
 
                 yield break;
             }
+
+            // only increase misses if not playing tutorial
+            if (!playTutorial)
+                numMisses++;
         }
 
         // eat the polaroid
@@ -502,6 +501,10 @@ public class WordFactoryDeletingManager : MonoBehaviour
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SadBlip, 0.5f);
         }
         yield return new WaitForSeconds(1f);
+
+        // remove current coin
+        currentCoins.Remove(currentCoin);
+        Destroy(currentCoin.gameObject);
 
         // remove coins and frames
         VisibleFramesController.instance.RemoveFrames();
@@ -674,10 +677,10 @@ public class WordFactoryDeletingManager : MonoBehaviour
         playingCoinAudio = true;
 
         AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(coin.value).audio);
-        coin.LerpSize(expandedCoinSize, 0.25f);
+        coin.LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
 
         yield return new WaitForSeconds(0.9f);
-        coin.LerpSize(normalCoinSize, 0.25f);
+        coin.LerpScale(Vector2.one, 0.25f);
 
         playingCoinAudio = false;
     }

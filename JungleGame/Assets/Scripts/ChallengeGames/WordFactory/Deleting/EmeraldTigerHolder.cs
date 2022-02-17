@@ -15,6 +15,11 @@ public class EmeraldTigerHolder : MonoBehaviour
             instance = this;
     }
 
+    public void ResetToIdle()
+    {
+        animator.Play("Idle");
+    }
+
     public void OpenMouth()
     {
         animator.Play("Open");
