@@ -1323,6 +1323,9 @@ public class ScrollMapManager : MonoBehaviour
         // move fog out of the way
         FogController.instance.MoveFogAnimation(mapLocations[currMapLocation].fogLocation, 3f);
 
+        // play sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.FoundIslandSparkle, 0.5f);
+
         // set sign
         ChapterEnterVisualController.instance.SetSign(location);
         ChapterEnterVisualController.instance.ShowSign();

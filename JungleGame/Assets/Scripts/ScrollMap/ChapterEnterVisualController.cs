@@ -115,10 +115,16 @@ public class ChapterEnterVisualController : MonoBehaviour
     public void ShowSign()
     {
         animator.Play("ShowPanel");
+
+        // play sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RopeDown, 0.5f);
     }
 
     public void HideSign()
     {
         animator.Play("HidePanel");
+
+        // play sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RopeUp, 0.5f);
     }
 }

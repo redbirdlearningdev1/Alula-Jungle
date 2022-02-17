@@ -114,14 +114,18 @@ public class MapAnimationController : MonoBehaviour
     public void PlaceCharactersOnMap(StoryBeat storyBeat)
     {
         /// default positions on all story beats:
-        // place boat in dock
-        boat.mapAnimator.Play("BoatDockedPos");
-        boat.GetComponent<Image>().raycastTarget = false;
+
+        if (storyBeat >= StoryBeat.GorillaVillageIntro)
+        {
+            // place boat in dock
+            boat.mapAnimator.Play("BoatDockedPos");
+            boat.GetComponent<Image>().raycastTarget = false;
+        }   
+    
         // place clogg in OV
         clogg.mapAnimator.Play("CloggOVPos");
         clogg.GetComponent<Image>().raycastTarget = true;
         clogg.interactable = true;
-        
 
         switch (storyBeat)
         {
@@ -1392,6 +1396,7 @@ public class MapAnimationController : MonoBehaviour
         tigerSwipeAnim.Play("tigerScreenSwipe");
         julius.characterAnimator.Play("tigerSwipe");
         ScrollMapManager.instance.ShakeMap();
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.DestroyArea, 0.5f);
         // destroy gorilla village assets
         foreach (var mapIcon in ScrollMapManager.instance.mapLocations[2].mapIcons)
         {

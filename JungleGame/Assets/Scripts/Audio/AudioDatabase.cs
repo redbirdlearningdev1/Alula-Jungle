@@ -86,6 +86,7 @@ public class AudioDatabase : MonoBehaviour
     public AudioClip WrongChoice;
     public AudioClip WinTune;
     public AudioClip Whoosh;
+    public AudioClip DestroyArea;
 
     [Header("Blips")]
     public AudioClip HappyBlip;
