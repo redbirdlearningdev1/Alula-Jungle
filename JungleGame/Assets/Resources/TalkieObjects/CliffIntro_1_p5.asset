@@ -85,7 +85,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: f15ad2387c07c3644a7b03613063b8e0, type: 3}
     audioClipName: FR_1_1_Wally_45_T2
-    audioString: "Maybe if he tells the Prince more stories, he\u2019ll come around."
+    audioString: "Maybe if he tells the Prince more stories,  he\u2019ll come around."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 5d7fca745d4618e4fb8ae7c683ce9dd2, type: 3}
     audioClipName: FR_1_1_Darwin_47_T3
-    audioString: But as always, the mess isn't helping my memory.
+    audioString: But as always,  the mess isn't helping my memory.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -213,7 +213,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 957c262da42d0c2488003930862dda32, type: 3}
     audioClipName: FR_1_1_Wally_48_T2
-    audioString: "Sit back, and we\u2019ll clean this mess up."
+    audioString: "Sit back,  and we\u2019ll clean this mess up."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -405,7 +405,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 559aac5cfa8e402439550bf623a48274, type: 3}
     audioClipName: FR_1_1_Red_56_T1
-    audioString: Yeah, neither can I.
+    audioString: Yeah,  neither can I.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -597,8 +597,8 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 64df64e8569f13a4f910152cf1046a3a, type: 3}
     audioClipName: FR_1_1_Darwin_62_T1
-    audioString: "While we can\u2019t fully understand you, I can at least tell you\u2019re
-      injured"
+    audioString: "While we can\u2019t fully understand you,  I can at least tell
+      you\u2019re injured"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -662,7 +662,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 89bd2975e7bc0ff43bb1ae501b1e762d, type: 3}
     audioClipName: FR_1_1_Red_65_T3
-    audioString: My friends and I will help patch you up, and clean up your space!
+    audioString: My friends and I will help patch you up,  and clean up your space!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -710,7 +710,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: bbd4c5aa9b5cd86488af9d3b44b6f760, type: 3}
     audioClipName: FR_1_1_Wally_67_T2
-    audioString: Darwin, you keep trying to come up with stories to help Julius.
+    audioString: Darwin,  you keep trying to come up with stories to help Julius.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -726,7 +726,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 76a29ba8c3edeb94d8cc81c6f6bf62dc, type: 3}
     audioClipName: FR_1_1_Wally_67_T3
-    audioString: Red, the Explorer, and I will clean this place up and help Bubbles.
+    audioString: Red,  the Explorer,  and I will clean this place up and help Bubbles.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

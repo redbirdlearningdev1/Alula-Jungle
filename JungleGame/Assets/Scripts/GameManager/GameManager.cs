@@ -216,7 +216,7 @@ public class GameManager : DontDestroy<GameManager>
         LoadScene("ScrollMap", true, 0.5f, true);
     }
 
-    public void LoadScene(string sceneName, bool fadeOut, float time = transitionTime, bool useLoadScene = false)
+    public void LoadScene(string sceneName, bool fadeOut, float time = transitionTime, bool useLoadScene = true)
     {
         RaycastBlockerController.instance.CreateRaycastBlocker("LoadingScene");
         StartCoroutine(LoadSceneCoroutine(sceneName, fadeOut, time, useLoadScene));

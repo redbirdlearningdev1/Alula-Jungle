@@ -213,7 +213,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: f9f7961150b609d42bb570c82c303996, type: 3}
     audioClipName: P_1_1_Darwin_31_T2
-    audioString: Why did you do this, Julius?
+    audioString: Why did you do this,  Julius?
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -405,7 +405,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 86468cb0c7b21c044951bd64b733c3ad, type: 3}
     audioClipName: P_1_1_Julius_37_T1
-    audioString: They're right, Darwin.
+    audioString: They're right,  Darwin.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

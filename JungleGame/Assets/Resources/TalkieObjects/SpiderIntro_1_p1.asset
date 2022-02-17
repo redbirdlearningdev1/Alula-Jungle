@@ -149,7 +149,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: c31638aabdd136f49898584d519b608b, type: 3}
     audioClipName: B_1_1_Darwin_3_T5
-    audioString: I just started remembering all of the good times I had here,
+    audioString: 'I just started remembering all of the good times I had here, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

@@ -101,7 +101,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: ccc9bba8386240a44a7fa22ecc915a2b, type: 3}
     audioClipName: E_1_0_Red_5_T1
-    audioString: Darwin, what's wrong?
+    audioString: Darwin,  what's wrong?
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 2fafbf3531de72a4ea7a86ee0f5b00e4, type: 3}
     audioClipName: E_1_0_Red_8_T1
-    audioString: 'Why not, Darwin? '
+    audioString: 'Why not,  Darwin? '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -421,7 +421,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 366dfc5e87a3ad94f8e40fe5bdb369be, type: 3}
     audioClipName: E_1_0_Red_15_T1
-    audioString: "Wally\u2019s right, Darwin! "
+    audioString: "Wally\u2019s right,  Darwin! "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -565,7 +565,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 1a7e71470e1e2084aa0d0f6fe3926bbf, type: 3}
     audioClipName: E_1_0_Red_18_T2
-    audioString: "Let\u2019s go, Explorer! "
+    audioString: "Let\u2019s go,  Explorer! "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

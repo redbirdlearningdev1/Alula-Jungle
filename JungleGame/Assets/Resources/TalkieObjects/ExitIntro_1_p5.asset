@@ -69,7 +69,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 81b63bbfc6dd48743bb624905bb9b633, type: 3}
     audioClipName: R_1_1_Red_42_T2
-    audioString: 'Still, I feel so bad for the Prince. '
+    audioString: 'Still,  I feel so bad for the Prince. '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

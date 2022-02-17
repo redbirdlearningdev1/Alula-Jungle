@@ -37,7 +37,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 61f9f91cb754c474187cec6d0c50d97d, type: 3}
     audioClipName: E_4_3_Wally_1_T1
-    audioString: Good job, Explorer.
+    audioString: Good job,  Explorer.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

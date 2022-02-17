@@ -37,7 +37,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 3f989ac697383fb44aba66e52f8d27c1, type: 3}
     audioClipName: E_4_2_Red_1_T1
-    audioString: "You\u2019ve got this, Explorer!"
+    audioString: "You\u2019ve got this,  Explorer!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

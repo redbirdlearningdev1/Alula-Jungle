@@ -463,7 +463,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
 
                                 break;
                             case 1: // text
-                                segment.audioString = cell.Replace("~", ",");
+                                segment.audioString = cell.Replace("~", ", ");
                                 break;
                             case 2: // index
                                 // determine if vaild quip index iff entry is quips collection

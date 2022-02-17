@@ -53,7 +53,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 4d077e529c5072948855ced0ff559d5f, type: 3}
     audioClipName: Sticker_0_1_Lester_5_T1
-    audioString: "I\u2019ll whip up something good, Geckos honor!"
+    audioString: "I\u2019ll whip up something good,  Geckos honor!"
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0

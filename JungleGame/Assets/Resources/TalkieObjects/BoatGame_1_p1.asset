@@ -85,7 +85,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: dad0382c5482e8e4cac881f70bacb706, type: 3}
     audioClipName: Boat_0_1_Red_2_1_T1
-    audioString: You see, my friend Darwin said that he needs help watching over
+    audioString: You see,  my friend Darwin said that he needs help watching over
       the Jungle kingdom while the King is away.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -102,8 +102,8 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 16271aa7df152b64d99c705e677dfaae, type: 3}
     audioClipName: Boat_0_1_Red_2_1_T2
-    audioString: Prince Julius has been put in charge all by himself, and needs as
-      much help as he can get!
+    audioString: Prince Julius has been put in charge all by himself,  and needs
+      as much help as he can get!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -119,7 +119,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 07af13a01ccf56e42a6946a09003ebdb, type: 3}
     audioClipName: Boat_0_1_Red_3_1_T1
-    audioString: I know how reliable you are, friend, that's why I'm so happy you
+    audioString: I know how reliable you are,  friend,  that's why I'm so happy you
       agreed to come along with us!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -136,5 +136,5 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: b9fbc227125b68044947391976f1c175, type: 3}
     audioClipName: Boat_0_1_Red_3_1_T2
-    audioString: "Plus, this jungle is full of exciting games so I know that we\u2019ll
+    audioString: "Plus,  this jungle is full of exciting games so I know that we\u2019ll
       have so much fun!"

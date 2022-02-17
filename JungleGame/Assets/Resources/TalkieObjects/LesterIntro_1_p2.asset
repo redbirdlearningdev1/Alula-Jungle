@@ -70,7 +70,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: dd03bfdbe1a055d4586093c95af95016, type: 3}
     audioClipName: P_1_4_Lester_4_T3
-    audioString: You can only place your sticker once, so when you hit yes,
+    audioString: 'You can only place your sticker once,  so when you hit yes, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

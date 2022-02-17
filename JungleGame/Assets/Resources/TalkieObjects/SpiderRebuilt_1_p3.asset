@@ -133,7 +133,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: b59406335d3563c4dbefefefc3a96d83, type: 3}
     audioClipName: B_1_3_Marcus_14_T2
-    audioString: He wasn't speaking to you, commoner!
+    audioString: He wasn't speaking to you,  commoner!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -341,7 +341,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 59d879fdc48f0364aaac3e5fdd883a56, type: 3}
     audioClipName: B_1_3_Julius_19_T6
-    audioString: But, If I beat you,
+    audioString: 'But,  If I beat you, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

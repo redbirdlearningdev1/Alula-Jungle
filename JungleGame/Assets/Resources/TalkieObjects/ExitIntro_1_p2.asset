@@ -505,7 +505,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: f6d42ac24900d9246a86304ae72a2b75, type: 3}
     audioClipName: R_1_1_Darwin_24_T2
-    audioString: By the time you found it, the sun was already setting.
+    audioString: By the time you found it,  the sun was already setting.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -713,7 +713,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: e7e5eb32c26adb14593360d3a18590ea, type: 3}
     audioClipName: R_1_1_Marcus_28_T2
-    audioString: Your highness, none of this even matters!
+    audioString: Your highness,  none of this even matters!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -761,7 +761,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: b80a0ee73aca99f44809bf2edbd4559a, type: 3}
     audioClipName: R_1_1_Marcus_31_T1
-    audioString: "Your highness, all he\u2019s doing is telling you how you were
+    audioString: "Your highness,  all he\u2019s doing is telling you how you were
       in the past."
   - endTalkieAfterThisSegment: 0
     requireYN: 0

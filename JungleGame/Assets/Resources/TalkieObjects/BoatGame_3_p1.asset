@@ -133,7 +133,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: fac093b8a1d274b438f54a2c20191b62, type: 3}
     audioClipName: Boat_0_3_Red_4_T1
-    audioString: Then we better get back to the task at hand, Explorer!
+    audioString: Then we better get back to the task at hand,  Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 0310d23cbb207b8478c9ff6a3ef732f3, type: 3}
     audioClipName: Boat_0_3_Red_5_T2
-    audioString: Let's have some fun, Explorer!
+    audioString: Let's have some fun,  Explorer!
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0

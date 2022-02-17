@@ -37,7 +37,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: f859c875e5805654e801a4e091aed823, type: 3}
     audioClipName: B_1_3_Red_7_T1
-    audioString: Darwin, wait!
+    audioString: Darwin,  wait!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

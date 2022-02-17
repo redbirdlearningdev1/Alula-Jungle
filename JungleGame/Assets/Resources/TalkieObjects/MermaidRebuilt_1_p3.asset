@@ -357,7 +357,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 22d1b42f5da8a60459704cb61649e7db, type: 3}
     audioClipName: EJ_1_4_Sylvie_32_T1
-    audioString: Celeste! Calm down,
+    audioString: 'Celeste! Calm down, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -373,7 +373,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 8c8b7348b6c60d5419758f42d54eac64, type: 3}
     audioClipName: EJ_1_4_Sylvie_32_T2
-    audioString: nothing good comes from destruction,
+    audioString: 'nothing good comes from destruction, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -469,8 +469,8 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 2776f3345e8b3254ebecdadffb49ed0b, type: 3}
     audioClipName: EJ_1_4_Marcus_33_T3
-    audioString: Quit complaining, and be grateful that you live in the seas of the
-      future King!
+    audioString: Quit complaining,  and be grateful that you live in the seas of
+      the future King!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -614,7 +614,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 2975269f89ddc4243853e241d07b3f65, type: 3}
     audioClipName: EJ_1_4_Julius_37_T5
-    audioString: If I win,
+    audioString: 'If I win, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -726,7 +726,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 50076d53af0f78f46ac51a17e3804e8c, type: 3}
     audioClipName: EJ_1_4_Sylvie_41_T1
-    audioString: "We\u2019re counting on you, Explorer!"
+    audioString: "We\u2019re counting on you,  Explorer!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

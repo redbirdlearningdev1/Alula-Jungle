@@ -117,7 +117,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: a203beca2b807224d8cc6d87b3371f70, type: 3}
     audioClipName: EJ_1_5_Sylvie_15_T2
-    audioString: Although,
+    audioString: 'Although, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: d8ed15f064909814aa0d174cf3153c82, type: 3}
     audioClipName: EJ_1_5_Sylvie_15_T3
-    audioString: "with him being the future King, his actions are quite concerning\u2026"
+    audioString: "with him being the future King,  his actions are quite concerning\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -213,7 +213,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 4ad033932f0f3b046a9552b66b1ca933, type: 3}
     audioClipName: EJ_1_5_Wally_18_T1
-    audioString: "Yeah, we\u2019re not going to let the Prince hurt any more creatures."
+    audioString: "Yeah,  we\u2019re not going to let the Prince hurt any more creatures."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -309,7 +309,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 47a06a51d6b548b4f9445d58a2e5e0b4, type: 3}
     audioClipName: EJ_1_5_Sylvie_22_T1
-    audioString: 'The esteemed Baron Ulysses Billiam Bastian, '
+    audioString: 'The esteemed Baron Ulysses Billiam Bastian,  '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -325,7 +325,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: a0b03be8eb51dfa4097586d612615d92, type: 3}
     audioClipName: EJ_1_5_Sylvie_22_T2
-    audioString: Loyal Earl of the Seas,
+    audioString: 'Loyal Earl of the Seas, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -406,7 +406,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 914aadc33f2e843429bb13b040135e2e, type: 3}
     audioClipName: EJ_1_5_Celeste_24_T1
-    audioString: "Haha, Sylvie you\u2019re losing them."
+    audioString: "Haha,  Sylvie you\u2019re losing them."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -422,7 +422,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: bc97a2fdb6e2a234db21c3f579dae70c, type: 3}
     audioClipName: EJ_1_5_Celeste_24_T2
-    audioString: He also goes by like, Bubbles or whatever for short.
+    audioString: He also goes by like,  Bubbles or whatever for short.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -438,7 +438,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 2609aa09358318147bb003a2d41cf397, type: 3}
     audioClipName: EJ_1_5_Sylvie_25_T1
-    audioString: Oh, haha!
+    audioString: Oh,  haha!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

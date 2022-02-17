@@ -37,7 +37,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 20d4d82ff6736684ba9059612822d62b, type: 3}
     audioClipName: Boat_0_2_Red_14_T1
-    audioString: "And we\u2019re back, Explorer!"
+    audioString: "And we\u2019re back,  Explorer!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -85,4 +85,4 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 6782cf5cada2c8949a59105b634bde90, type: 3}
     audioClipName: Boat_0_2_Red_14_T4
-    audioString: When you're ready, come on out so we can get back to work.
+    audioString: When you're ready,  come on out so we can get back to work.

@@ -37,7 +37,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: d4aa149e386abda4ab1e56e69d9e682f, type: 3}
     audioClipName: B_1_1_Julius_11_T1
-    audioString: Oh,
+    audioString: 'Oh, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 2a11316be77edf5449e9b76d54d4a121, type: 3}
     audioClipName: B_1_1_Darwin_12_T1
-    audioString: "Listen Julius, you don't have to do this\u2026"
+    audioString: "Listen Julius,  you don't have to do this\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -326,7 +326,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 9c72eefc23767464faa9c9b1ccbfdd5c, type: 3}
     audioClipName: B_1_1_Darwin_21_T1
-    audioString: The village was getting all decorated,
+    audioString: 'The village was getting all decorated, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -518,7 +518,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 6fbf4361970e29d4fb1d94404d2020bf, type: 3}
     audioClipName: B_1_1_Marcus_31_T2
-    audioString: I must say that just because you helped out those commoners,
+    audioString: 'I must say that just because you helped out those commoners, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -550,7 +550,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: f6e9ea3ceccc21b4a92b31cfd3396d34, type: 3}
     audioClipName: B_1_1_Marcus_31_T4
-    audioString: You helped them because you wanted to,
+    audioString: 'You helped them because you wanted to, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

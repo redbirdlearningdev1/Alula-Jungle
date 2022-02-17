@@ -37,7 +37,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: fd0218ea157c5bf4b92659805805590a, type: 3}
     audioClipName: EJ_1_1_Marcus_48_T1
-    audioString: Just give up already! Make like a tree and uh, get outta here!
+    audioString: Just give up already! Make like a tree and uh,  get outta here!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

@@ -69,7 +69,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 1ebd329fb5f924e4782643c0484fa592, type: 3}
     audioClipName: Cha_0_1b_Julius_2_T1
-    audioString: Alright, let's do this.
+    audioString: Alright,  let's do this.
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0
@@ -85,4 +85,4 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: c921c3c51509e084fb42cdefb9a87534, type: 3}
     audioClipName: Cha_0_0_Julius_2_T3
-    audioString: "Ugh, why\u2019d you call me then!"
+    audioString: "Ugh,  why\u2019d you call me then!"

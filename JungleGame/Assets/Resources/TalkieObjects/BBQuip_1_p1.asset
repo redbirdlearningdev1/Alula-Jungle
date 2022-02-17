@@ -53,7 +53,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 676c842edc740204b84e7ecf68a5046e, type: 3}
     audioClipName: E_3_1_Julius_2_T1
-    audioString: Stop talking, Darwin!
+    audioString: Stop talking,  Darwin!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

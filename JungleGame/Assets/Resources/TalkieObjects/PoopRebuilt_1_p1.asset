@@ -85,7 +85,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: d0bc2a88761f8054991d21d8cafda36b, type: 3}
     audioClipName: B_3_2_Red_3_T1
-    audioString: Yeah I agree, Let's get out of here-
+    audioString: Yeah I agree,  Let's get out of here-
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

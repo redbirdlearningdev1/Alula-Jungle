@@ -101,7 +101,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: d5caefdee1dc01a4e9bd7763a1ddb71b, type: 3}
     audioClipName: B_2_3_Clogg_13_T2
-    audioString: Anyway,
+    audioString: 'Anyway, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

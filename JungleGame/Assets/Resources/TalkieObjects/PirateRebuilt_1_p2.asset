@@ -262,7 +262,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 17e3a15489e34c5418df2c4fc11c92ab, type: 3}
     audioClipName: FR_2_4_Marcus_30_T2
-    audioString: 'He has every right to talk down on your sad, silly little ship! '
+    audioString: 'He has every right to talk down on your sad,  silly little ship! '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -487,7 +487,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: dd332a72d5878c24b96aa9e834958f56, type: 3}
     audioClipName: FR_2_4_Marcus_37_T3
-    audioString: And since we are his friends, we can do the same!
+    audioString: And since we are his friends,  we can do the same!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

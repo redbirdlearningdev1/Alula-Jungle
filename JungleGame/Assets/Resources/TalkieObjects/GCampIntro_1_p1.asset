@@ -85,7 +85,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: df63fbee082e2f941a122b06d65c1d1e, type: 3}
     audioClipName: R_2_1_Darwin_2_T3
-    audioString: "Sorry guys\u2026 I uh,"
+    audioString: "Sorry guys\u2026 I uh, "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -213,7 +213,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: b4e14b9004a243b45926d0c0ed805f1b, type: 3}
     audioClipName: R_2_1_Darwin_5_T3
-    audioString: "I\u2019m just so worried about him, you know? "
+    audioString: "I\u2019m just so worried about him,  you know? "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -310,8 +310,8 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 674546e0e54418446884cc4b60b2a092, type: 3}
     audioClipName: R_2_1_Darwin_7_T3
-    audioString: We were childhood friends, and I was more than happy to advise the
-      King.
+    audioString: We were childhood friends,  and I was more than happy to advise
+      the King.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -375,7 +375,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 31b42f25160159441839c9ca95430efe, type: 3}
     audioClipName: R_2_1_Darwin_7_T7
-    audioString: When Julius was born, I became his teacher.
+    audioString: When Julius was born,  I became his teacher.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -391,7 +391,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 3945a493e5432844caf1340ff2c85136, type: 3}
     audioClipName: R_2_1_Darwin_7_T8
-    audioString: I taught him all I knew about the island,
+    audioString: 'I taught him all I knew about the island, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -407,7 +407,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: a2d2d5f995be82d41b825866bab47ad7, type: 3}
     audioClipName: R_2_1_Darwin_7_T9
-    audioString: 'until one day, '
+    audioString: 'until one day,  '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -471,7 +471,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: fc0c5574c65a8d2438715c6b81809363, type: 3}
     audioClipName: R_2_1_Red_8_T1
-    audioString: "Oh Darwin, please don\u2019t blame yourself. "
+    audioString: "Oh Darwin,  please don\u2019t blame yourself. "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -519,7 +519,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 240d0b4d9d989ca4fabb439c2f115a44, type: 3}
     audioClipName: R_2_1_Wally_9_T2
-    audioString: Julius is his own tiger, and he has a family who loves him.
+    audioString: Julius is his own tiger,  and he has a family who loves him.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -712,7 +712,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 477a08f36a85f4f4fab9dba8bf36d57d, type: 3}
     audioClipName: R_2_1_Wally_14_T2
-    audioString: 'It looks like those bullies are using him to do what they want, '
+    audioString: 'It looks like those bullies are using him to do what they want,  '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -776,7 +776,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 80a7999eaee22b3439fc77dddc32a877, type: 3}
     audioClipName: R_2_1_Red_16_T1
-    audioString: "Then let\u2019s do it, team! Explorer, let\u2019s clean up!"
+    audioString: "Then let\u2019s do it,  team! Explorer,  let\u2019s clean up!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

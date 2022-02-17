@@ -133,7 +133,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 8825989bb61002941b338ac9614e2e4e, type: 3}
     audioClipName: B_1_3_Red_3_T1
-    audioString: I'm so glad we could help you feel better, Spindle!
+    audioString: I'm so glad we could help you feel better,  Spindle!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 3ebbf01a9045a06469e3108a74ab3329, type: 3}
     audioClipName: B_1_3_Red_5_T1
-    audioString: Have you thought of any stories, Darwin?
+    audioString: Have you thought of any stories,  Darwin?
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

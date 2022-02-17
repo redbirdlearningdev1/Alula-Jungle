@@ -101,7 +101,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: bca678b75f310be4791fce6f69b275e7, type: 3}
     audioClipName: R_1_3_Red_16_T2
-    audioString: "At any rate, it\u2019s time to move on!"
+    audioString: "At any rate,  it\u2019s time to move on!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

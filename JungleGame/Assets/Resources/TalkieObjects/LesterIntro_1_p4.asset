@@ -53,7 +53,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: de7933c03c3332c4d8a9e675e0f30d1d, type: 3}
     audioClipName: P_1_4_Lester_8_T1
-    audioString: "I\u2019m always a holler away,"
+    audioString: "I\u2019m always a holler away, "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

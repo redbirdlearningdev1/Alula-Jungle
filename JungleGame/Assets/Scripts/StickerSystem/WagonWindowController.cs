@@ -17,7 +17,7 @@ public class WagonWindowController : MonoBehaviour
     public GameObject Book, board, BackWindow, gecko;
     [SerializeField] private Animator Wagon;
     public Animator GeckoAnim;
-    private bool stickerCartOut;
+    private bool stickerCartOut = false;
     private bool cartBusy;
     private bool stickerButtonsDisabled;
 
@@ -45,10 +45,12 @@ public class WagonWindowController : MonoBehaviour
     private bool waitingOnPlayerInput = false;
 
     [Header("Confirm Purchace Window")]
-    
-
     public float longScaleTime;
     public float shortScaleTime;
+
+    public LerpableObject inDevelopmentWindow;
+    private bool readyToSkip = false;
+    private bool skipped = false;
 
 
     void Awake()
@@ -78,6 +80,18 @@ public class WagonWindowController : MonoBehaviour
 
     void Update() 
     {
+        // skip lester stuff
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (!readyToSkip)
+                return;
+            if (skipped)
+                return;
+            skipped = true;
+            StopAllCoroutines();
+            StartCoroutine(SkipLester());
+        }
+
         if (waitingOnPlayerInput)
         {
             if ((Input.touchCount > 0 || Input.GetMouseButtonDown(0)))
@@ -86,6 +100,23 @@ public class WagonWindowController : MonoBehaviour
                 waitingOnPlayerInput = false;
             }
         }
+    }
+
+    private IEnumerator SkipLester()
+    {        
+        // save to SIS
+        StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        // enable wagon background
+        wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0f, 0.5f);
+
+        // hide in development window
+        inDevelopmentWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.2f, 0.2f);
+        cartBusy = false;
+        ToggleCart();
+        RaycastBlockerController.instance.ClearAllRaycastBlockers();
+        yield return new WaitForSeconds(2f);
     }
 
     /* 
@@ -366,6 +397,9 @@ public class WagonWindowController : MonoBehaviour
     {
         if (cartBusy)
             return;
+
+        cartBusy = true;
+        
         
         if (!stickerCartOut)
             StartCoroutine(RollOnScreen());
@@ -373,7 +407,7 @@ public class WagonWindowController : MonoBehaviour
             StartCoroutine(RollOffScreen());
 
         stickerCartOut = !stickerCartOut;
-        cartBusy = true;
+        
     }
 
     private IEnumerator RollOnScreen()
@@ -401,6 +435,16 @@ public class WagonWindowController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Wagon.Play("Idle");
 
+        // enable wagon background
+        wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0.75f, 0.5f);
+
+        // show in development window
+        inDevelopmentWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.one, 0.1f, 0.1f);
+
+        RaycastBlockerController.instance.RemoveRaycastBlocker("StickerCartBlocker");
+        readyToSkip = true;
+
+        /*
         Book.SetActive(true);
         board.SetActive(true);
         BackWindow.SetActive(true);
@@ -408,15 +452,7 @@ public class WagonWindowController : MonoBehaviour
         // play lester talkies if first time
         if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
         {
-            // turn off other buttons
-            Board.instance.isOn = false;
-            StickerBoardBook.instance.isOn = false;
-
-            // remove back button so player cannot leave >:)
-            backButton.gameObject.SetActive(false);
-
-            // enable wagon background
-            wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0.75f, 0.5f);
+            
 
             // play lester intro 1
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.LesterIntro_1_p1);
@@ -443,9 +479,10 @@ public class WagonWindowController : MonoBehaviour
             gecko.GetComponent<WiggleController>().StartWiggle();
         }
 
+        */
+
         // deactivate raycast blocker
-        RaycastBlockerController.instance.RemoveRaycastBlocker("StickerCartBlocker");
-        cartBusy = false;
+        
     }
 
     private IEnumerator RollOffScreen()
@@ -491,7 +528,6 @@ public class WagonWindowController : MonoBehaviour
         // deactivate raycast blocker + background
         RaycastBlockerController.instance.RemoveRaycastBlocker("StickerCartBlocker");
         DefaultBackground.instance.Deactivate();
-        cartBusy = false;
 
         // enable nav buttons
         ScrollMapManager.instance.ToggleNavButtons(true);

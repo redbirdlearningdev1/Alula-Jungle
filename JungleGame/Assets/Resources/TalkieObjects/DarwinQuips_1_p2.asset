@@ -69,7 +69,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: e54356c4d3ff73849be6902a14f639f1, type: 3}
     audioClipName: EJ_1_2_Darwin_3_T1
-    audioString: "Oh.. uhh.. Hey Explorer! I\u2019m okay, thanks for checking on
+    audioString: "Oh.. uhh.. Hey Explorer! I\u2019m okay,  thanks for checking on
       me."
   - endTalkieAfterThisSegment: 1
     requireYN: 0

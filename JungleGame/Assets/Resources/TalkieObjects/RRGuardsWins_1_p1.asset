@@ -85,7 +85,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: c083b5cf50b4c0d448ae2578cf1da32b, type: 3}
     audioClipName: RR_1_3_Brutus_2_T1
-    audioString: "Don\u2019t worry, we\u2019ll be back."
+    audioString: "Don\u2019t worry,  we\u2019ll be back."
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0

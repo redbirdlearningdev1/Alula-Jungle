@@ -37,7 +37,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 372e2b359a82e0f4c9e7c1b7f061f3b6, type: 3}
     audioClipName: R_1_3_Marcus_10_T1
-    audioString: Gosh, what a buzzkill. Who tied HIS tail in a knot?
+    audioString: Gosh,  what a buzzkill. Who tied HIS tail in a knot?
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

@@ -69,7 +69,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: b016069d15e30a44280bd9657cc1213e, type: 3}
     audioClipName: Cha_0_3b_Brutus_2_T1
-    audioString: Alright, let's do this.
+    audioString: Alright,  let's do this.
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0

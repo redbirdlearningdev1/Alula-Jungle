@@ -133,7 +133,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 0462622dbaff1904c80a2c988cc3e0ee, type: 3}
     audioClipName: FR_2_1_Wally_6_T2
-    audioString: However, this ship looks like it's been falling apart for a while
+    audioString: However,  this ship looks like it's been falling apart for a while
       now.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -150,7 +150,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 27060c42ab1c80447a56613f2f6aaa75, type: 3}
     audioClipName: FR_2_1_Red_7_T1
-    audioString: True, it does look that way.
+    audioString: True,  it does look that way.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -311,7 +311,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: e9777bf7da3139343864ec9c3673fc66, type: 3}
     audioClipName: FR_2_1_Red_14_T2
-    audioString: "Don\u2019t worry, We\u2019re going to get you and your ship all
+    audioString: "Don\u2019t worry,  We\u2019re going to get you and your ship all
       patched up okay?"
   - endTalkieAfterThisSegment: 0
     requireYN: 0

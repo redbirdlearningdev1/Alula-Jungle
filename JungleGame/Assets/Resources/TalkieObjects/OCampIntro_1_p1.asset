@@ -53,7 +53,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 4f1edc50ea1805f46bbc2d63c9e48968, type: 3}
     audioClipName: B_2_1_Red_1_T2
-    audioString: "It\u2019s good to see you, Clogg!"
+    audioString: "It\u2019s good to see you,  Clogg!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 14693ea8df5fb574c8978549e79d5abb, type: 3}
     audioClipName: B_2_1_Clogg_2_T1
-    audioString: "Ah, it\u2019s you guys again."
+    audioString: "Ah,  it\u2019s you guys again."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 2775a488009338c4fa9ad80121e07c48, type: 3}
     audioClipName: B_2_1_Red_5_T1
-    audioString: Unfortunately,
+    audioString: 'Unfortunately, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 05c1755034ef6854fb3d7bf05389a1a2, type: 3}
     audioClipName: B_2_1_Clogg_6_T2
-    audioString: In any case,
+    audioString: 'In any case, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

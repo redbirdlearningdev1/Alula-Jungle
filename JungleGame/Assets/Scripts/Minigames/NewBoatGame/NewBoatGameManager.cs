@@ -174,7 +174,11 @@ public class NewBoatGameManager : MonoBehaviour
         foreach (var audio in audiosToRepeat)
         {
             if (!repeatAudio)
+            {
+                AudioManager.instance.StopTalk();
                 break;
+            }
+                
             AudioManager.instance.PlayTalk(audio);
             yield return new WaitForSeconds(audio.length + 0.5f);
         }
@@ -195,7 +199,6 @@ public class NewBoatGameManager : MonoBehaviour
                 BoatWheelController.instance.isOn = false;
                 BoatThrottleController.instance.isOn = false;
                 IslandCutoutController.instance.isOn = false;
-                yield return new WaitForSeconds(3f);
 
                 // play talkie and wait for it to finish
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.BoatGame_1_p1);
@@ -390,7 +393,7 @@ public class NewBoatGameManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         // exit boat game
-        GameManager.instance.LoadScene("ScrollMap", true, 3f);
+        GameManager.instance.LoadScene("ScrollMap", true, 3f, true);
     }
 
     public void BoatButtonPressed(BoatButtonID id)

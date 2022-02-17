@@ -85,7 +85,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 4263422a9dd9c4c41845e182db381a86, type: 3}
     audioClipName: EJ_1_4_Sylvie_3_T1
-    audioString: Sooo much better,
+    audioString: 'Sooo much better, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -149,7 +149,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: b520ca1d59525744887afd8aa5cc1c37, type: 3}
     audioClipName: EJ_1_4_Wally_6_T1
-    audioString: Hey Darwin,
+    audioString: 'Hey Darwin, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

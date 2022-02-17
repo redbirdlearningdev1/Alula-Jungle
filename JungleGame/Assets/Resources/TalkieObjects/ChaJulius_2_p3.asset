@@ -101,7 +101,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 3ff59d729d6c249419439c4005b0dc3d, type: 3}
     audioClipName: Cha_0_1h_Marcus_2_T4
-    audioString: Come at me Explorer, you ready to lose?
+    audioString: Come at me Explorer,  you ready to lose?
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

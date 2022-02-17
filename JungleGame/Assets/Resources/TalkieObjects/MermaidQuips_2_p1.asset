@@ -53,7 +53,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 85d009501e2a6a5409f90f86f01201e1, type: 3}
     audioClipName: EJ_1_3_Celeste_2_T1
-    audioString: "Did you come to enjoy the sun too? I\u2019m getting my like, tan
+    audioString: "Did you come to enjoy the sun too? I\u2019m getting my like,  tan
       on!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -70,7 +70,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 9406b17f767349b4f95fd98e3eda0a09, type: 3}
     audioClipName: EJ_1_3_Celeste_3_T1
-    audioString: I love hanging out with friends or whateva, but especially with
+    audioString: I love hanging out with friends or whateva,  but especially with
       Sylvie!
   - endTalkieAfterThisSegment: 1
     requireYN: 0

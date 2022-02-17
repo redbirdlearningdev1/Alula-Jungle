@@ -325,7 +325,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 74271a8786de6634d87e863babc8bc98, type: 3}
     audioClipName: R_3_1_Marcus_18_T5
-    audioString: If you clean up this mess, and then beat our challenge in the end,
+    audioString: If you clean up this mess,  and then beat our challenge in the end, 
       we will let you pass!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -390,4 +390,4 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: f9ecf1571c38a2f4f87f03f58fa3e103, type: 3}
     audioClipName: R_3_1_Red_21_T2
-    audioString: "Let\u2019s get to it, Explorer!"
+    audioString: "Let\u2019s get to it,  Explorer!"

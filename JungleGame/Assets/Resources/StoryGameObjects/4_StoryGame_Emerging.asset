@@ -406,7 +406,7 @@ MonoBehaviour:
     actionWord: 2
     requireInput: 0
     postText: 
-    advanceBG: 0
+    advanceBG: 1
   - text: for the
     audio: {fileID: 8300000, guid: 1303337ac0565d0439e0764a4bf97f49, type: 3}
     moveWord: 1
@@ -735,7 +735,7 @@ MonoBehaviour:
     actionWord: 17
     requireInput: 0
     postText: 
-    advanceBG: 1
+    advanceBG: 0
   - text: on top of the books and walked away carefully to avoid the
     audio: {fileID: 8300000, guid: 16c6f57b0a618d940872724c28fc668e, type: 3}
     moveWord: 1

@@ -69,7 +69,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 63e7a6f13a612444b973ed6b3575cbe8, type: 3}
     audioClipName: R_3_3_Red_4_T1
-    audioString: 'Good job, Explorer! '
+    audioString: 'Good job,  Explorer! '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: f96e4daad2e640f4e92c78aa8a5144bf, type: 3}
     audioClipName: R_3_3_Red_7_T1
-    audioString: Alright, Explorer!
+    audioString: Alright,  Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

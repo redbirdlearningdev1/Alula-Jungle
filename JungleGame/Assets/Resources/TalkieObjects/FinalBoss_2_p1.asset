@@ -85,7 +85,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 2f2891e22d8d44648b894ab5257c36f6, type: 3}
     audioClipName: E_1_3_Darwin_3_T1
-    audioString: "I\u2019m here to help you, Julius\u2026"
+    audioString: "I\u2019m here to help you,  Julius\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -389,7 +389,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 7b5b266a1e5026847bd98fbfe0c06ef9, type: 3}
     audioClipName: E_1_3_Red_9_T1
-    audioString: 'But, your highness! '
+    audioString: 'But,  your highness! '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -773,7 +773,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: d52825282d496894a90d60bf4d41c068, type: 3}
     audioClipName: E_1_3_Julius_18_T6
-    audioString: "If I win, just go away\u2026"
+    audioString: "If I win,  just go away\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -869,7 +869,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 7fe0d37bc2c4d004ca02719f7d6f5494, type: 3}
     audioClipName: E_1_3_Wally_21_T1
-    audioString: "They\u2019re right, Darwin. "
+    audioString: "They\u2019re right,  Darwin. "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -917,7 +917,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: fd3820ea98bc86945a62599f959f98c3, type: 3}
     audioClipName: E_1_3_Darwin_22_T3
-    audioString: But I want to do this,
+    audioString: 'But I want to do this, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -965,7 +965,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 2d29efcf6eda5954c8f48799a436d144, type: 3}
     audioClipName: E_1_3_Red_23_T2
-    audioString: 'Alright, Darwin. '
+    audioString: 'Alright,  Darwin. '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -1077,7 +1077,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: e7472f555b1ea804fbc11a004b3b5028, type: 3}
     audioClipName: E_1_3_Red_26_T1
-    audioString: "He\u2019s right, Explorer!"
+    audioString: "He\u2019s right,  Explorer!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -1093,7 +1093,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 316b98b49344f104db6b0df81bbd4aa1, type: 3}
     audioClipName: E_1_3_Red_26_T2
-    audioString: With your help, I know we can do it!
+    audioString: With your help,  I know we can do it!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -1125,7 +1125,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 8c663ecccee24d646b202c2884b841af, type: 3}
     audioClipName: E_1_3_Red_28_T1
-    audioString: Good luck, Explorer!
+    audioString: Good luck,  Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

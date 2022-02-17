@@ -117,7 +117,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: fc2453a34cca4394fb1c9cc1e7583cfd, type: 3}
     audioClipName: R_2_4_Red_15_T1
-    audioString: At any rate, we should move forward.
+    audioString: At any rate,  we should move forward.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

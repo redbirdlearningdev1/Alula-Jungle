@@ -69,7 +69,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: a9bb28ff995916946bdb62687677a015, type: 3}
     audioClipName: RR_0_1_Julius_1_T3
-    audioString: "Don\u2019t worry, I\u2019ll have a better challenge next time"
+    audioString: "Don\u2019t worry,  I\u2019ll have a better challenge next time"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

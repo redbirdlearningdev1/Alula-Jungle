@@ -69,7 +69,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 3a9086d00a360cd46a97e6c46f91d33c, type: 3}
     audioClipName: EJ_1_1_Red_51_T2
-    audioString: "I know he just destroyed this area, but It seems like we\u2019re
+    audioString: "I know he just destroyed this area,  but It seems like we\u2019re
       getting through to him."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -278,7 +278,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 152bc282e189451439728fe357f87aa7, type: 3}
     audioClipName: EJ_1_1_Sylvie_62_T1
-    audioString: Celeste and I heard some yelling and so we swam up to investigate,
+    audioString: 'Celeste and I heard some yelling and so we swam up to investigate, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -310,7 +310,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 0fec49f7dcc587c42b5dde5bc1ef42fb, type: 3}
     audioClipName: EJ_1_1_Celeste_63_T1
-    audioString: "Whatevaaa, I just don\u2019t feel well."
+    audioString: "Whatevaaa,  I just don\u2019t feel well."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -374,7 +374,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 8144c2065c67b3647a665b5cebd15cd0, type: 3}
     audioClipName: EJ_1_1_Red_65_T2
-    audioString: "Don\u2019t worry, my friends and I will patch you up! You\u2019ll
+    audioString: "Don\u2019t worry,  my friends and I will patch you up! You\u2019ll
       be all good as new!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -391,7 +391,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: d1d522b6163da254d994af212f1de19b, type: 3}
     audioClipName: EJ_1_1_Wally_66_T1
-    audioString: "We\u2019ll clean up as well, just rest."
+    audioString: "We\u2019ll clean up as well,  just rest."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -455,7 +455,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 0ec679c3225e9f845a930a9cb0da3b11, type: 3}
     audioClipName: EJ_1_1_Wally_70_T1
-    audioString: Darwin,
+    audioString: 'Darwin, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

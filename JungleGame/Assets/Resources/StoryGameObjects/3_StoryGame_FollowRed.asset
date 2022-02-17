@@ -483,7 +483,7 @@ MonoBehaviour:
     actionWord: 0
     requireInput: 0
     postText: 
-    advanceBG: 0
+    advanceBG: 1
   - text: give
     audio: {fileID: 8300000, guid: f6acb75a1cdf9bd4692c0a7aef89e5cb, type: 3}
     moveWord: 1
@@ -721,7 +721,7 @@ MonoBehaviour:
     actionWord: 0
     requireInput: 0
     postText: 
-    advanceBG: 1
+    advanceBG: 0
   - text: strong wind
     audio: {fileID: 8300000, guid: 69df0fab4ff739f439a4f0538199f635, type: 3}
     moveWord: 1

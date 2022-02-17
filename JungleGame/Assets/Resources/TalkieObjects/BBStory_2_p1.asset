@@ -149,7 +149,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: b560a058f17258c4fb1f1d99c5af7980, type: 3}
     audioClipName: E_4_4_Red_4_T1
-    audioString: "Darwin\u2019s right, Julius!"
+    audioString: "Darwin\u2019s right,  Julius!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 704d7b07c7b7420469ec0068f3d63e59, type: 3}
     audioClipName: E_4_4_Red_7_T1
-    audioString: Let's finish this, Explorer!
+    audioString: Let's finish this,  Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

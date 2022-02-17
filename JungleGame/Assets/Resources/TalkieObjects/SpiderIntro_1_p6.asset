@@ -165,7 +165,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 93c41f09af5af0440ab789868b1bcf21, type: 3}
     audioClipName: B_1_1_Wally_55_T1
-    audioString: "Hey, I\u2019m Wally"
+    audioString: "Hey,  I\u2019m Wally"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 46417e3dc1317c447aa55aadb8e242e9, type: 3}
     audioClipName: B_1_1_Red_56_T2
-    audioString: 'This is our friend, they''re an Explorer! '
+    audioString: 'This is our friend,  they''re an Explorer! '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -389,7 +389,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 7f3abab727858454cad101700bcafd02, type: 3}
     audioClipName: B_1_1_Red_63_T2
-    audioString: 'Wally, '
+    audioString: 'Wally,  '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -405,7 +405,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: d03448032d6c91541afe207fcecbc9ef, type: 3}
     audioClipName: B_1_1_Red_63_T3
-    audioString: 'the Explorer, '
+    audioString: 'the Explorer,  '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

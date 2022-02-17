@@ -181,7 +181,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 78d7dfe537653674dadcc89dc432ae3e, type: 3}
     audioClipName: FR_2_5_Wally_15_T1
-    audioString: Yeah, put your faith in us.
+    audioString: Yeah,  put your faith in us.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 069bc5be9d8358c46a8ad109f72c63cb, type: 3}
     audioClipName: FR_2_5_Ollie_16_T3
-    audioString: In any case, thank you for helping me and my ship!
+    audioString: In any case,  thank you for helping me and my ship!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

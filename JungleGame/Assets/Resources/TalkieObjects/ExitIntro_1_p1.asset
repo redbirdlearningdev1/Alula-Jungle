@@ -133,7 +133,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 7dcd9f2ae3047724b9bff5b4337f9b1a, type: 3}
     audioClipName: R_1_1_Red_4_T1
-    audioString: "No, I don't think he is\u2026"
+    audioString: "No,  I don't think he is\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

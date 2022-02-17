@@ -261,8 +261,8 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 4e2b487d75fb94644968c79e2008c6eb, type: 3}
     audioClipName: P_1_1_Brutus_20_T1
-    audioString: "Yes, anything you want...take your frustration and nerves out on
-      this village\u2026 "
+    audioString: "Yes,  anything you want...take your frustration and nerves out
+      on this village\u2026 "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

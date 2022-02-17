@@ -117,7 +117,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: bcb629446a8c3034e93495428acb3050, type: 3}
     audioClipName: EJ_2_1_Wally_4_T2
-    audioString: "Well it\u2019s never a good idea to mess with historical sights,
+    audioString: "Well it\u2019s never a good idea to mess with historical sights, 
       but we can definitely pick up after ourselves. "
   - endTalkieAfterThisSegment: 0
     requireYN: 0

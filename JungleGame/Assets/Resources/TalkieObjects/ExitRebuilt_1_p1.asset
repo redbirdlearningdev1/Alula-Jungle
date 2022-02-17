@@ -149,7 +149,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 9b4c81effb36e1f47b95c39d9713ed2e, type: 3}
     audioClipName: R_1_2_Wally_5_T1
-    audioString: "Yeah, they\u2019re right."
+    audioString: "Yeah,  they\u2019re right."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

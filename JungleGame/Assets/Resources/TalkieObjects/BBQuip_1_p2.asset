@@ -53,7 +53,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 40dbf43de61c71740b09a5e8678bac1c, type: 3}
     audioClipName: E_3_2_Red_1_T2
-    audioString: Please, listen to us!
+    audioString: Please,  listen to us!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

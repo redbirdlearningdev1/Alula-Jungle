@@ -37,7 +37,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 2ef8e23a0a3cc7c4798fde93d34728dd, type: 3}
     audioClipName: FR_1_4_Julius_1_T1
-    audioString: Augh, This is just embarrassing!
+    audioString: Augh,  This is just embarrassing!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: fcd58670a72bb474faf2ed52d2f5b525, type: 3}
     audioClipName: FR_1_4_Marcus_2_T1
-    audioString: Yeah, you got that right!
+    audioString: Yeah,  you got that right!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

@@ -133,7 +133,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 17fb86ab04211ca4d8e968d5cfcd4840, type: 3}
     audioClipName: Cha_0_1c_Marcus_2_T1
-    audioString: "These commoners don\u2019t deserve your fairness, your highness!"
+    audioString: "These commoners don\u2019t deserve your fairness,  your highness!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

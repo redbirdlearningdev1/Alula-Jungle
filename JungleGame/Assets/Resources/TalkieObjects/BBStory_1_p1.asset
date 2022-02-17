@@ -165,7 +165,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: c765065e0293b9445b7ae74a2843e3ac, type: 3}
     audioClipName: E_3_4_Red_5_T1
-    audioString: But friends don't do that, Julius!
+    audioString: But friends don't do that,  Julius!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 10292df90f028064398de9f0d6507ebf, type: 3}
     audioClipName: E_3_4_Red_8_T1
-    audioString: Alright, Explorer!
+    audioString: Alright,  Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

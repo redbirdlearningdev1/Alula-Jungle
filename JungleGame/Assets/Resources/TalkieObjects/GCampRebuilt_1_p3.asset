@@ -245,7 +245,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 9c834f8c8fed20f41acb08d14e37f881, type: 3}
     audioClipName: R_2_3_Marcus_12_T1
-    audioString: Just do as you're told, commoners!
+    audioString: Just do as you're told,  commoners!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -373,7 +373,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: cd81f0eba37dfe54db2650af71fcd33d, type: 3}
     audioClipName: R_2_3_Red_15_T4
-    audioString: I know you can do it, Explorer!
+    audioString: I know you can do it,  Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

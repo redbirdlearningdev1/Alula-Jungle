@@ -101,7 +101,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 0a4a01e4466c840408468d0297ee3d19, type: 3}
     audioClipName: P_1_4_Lester_5_T5
-    audioString: If you ever want to place your stickers or view your collection,
+    audioString: 'If you ever want to place your stickers or view your collection, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

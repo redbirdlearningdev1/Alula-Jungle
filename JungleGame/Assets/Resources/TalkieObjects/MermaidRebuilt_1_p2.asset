@@ -37,7 +37,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 5cb747f0b7dc141439063735ac59e4c8, type: 3}
     audioClipName: EJ_1_4_Red_11_T1
-    audioString: Sigh,
+    audioString: 'Sigh, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 08a2025ee6eaf1f4bb943b6465220dcd, type: 3}
     audioClipName: EJ_1_4_Red_16_T2
     audioString: "But I feel like we\u2019re getting through to him. He was a lot
-      worse before, believe it or not."
+      worse before,  believe it or not."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: b088736027536d349b9b4f25cad91bb5, type: 3}
     audioClipName: EJ_1_4_Celeste_18_T1
-    audioString: Worse or not, thank you for helping or whatever, seriously.
+    audioString: Worse or not,  thank you for helping or whatever,  seriously.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -262,7 +262,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 2f98eafa331a6364db9de5ad4e7e9fe2, type: 3}
     audioClipName: EJ_1_4_Sylvie_19_T3
-    audioString: "It\u2019s okay, I promise."
+    audioString: "It\u2019s okay,  I promise."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -278,8 +278,8 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 36837c64cc9ef06409f01c13039d05a5, type: 3}
     audioClipName: EJ_1_4_Sylvie_19_T4
-    audioString: "We\u2019re both alright now, and that\u2019s all that matters to
-      me... "
+    audioString: "We\u2019re both alright now,  and that\u2019s all that matters
+      to me... "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

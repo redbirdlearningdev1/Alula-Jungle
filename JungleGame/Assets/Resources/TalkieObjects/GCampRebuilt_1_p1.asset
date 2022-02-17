@@ -37,7 +37,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 4145f244d2f0b7149a66c2870ee85bd8, type: 3}
     audioClipName: R_2_3_Red_1_T1
-    audioString: Great job, Explorer!
+    audioString: Great job,  Explorer!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
     activeCharacter: 3
     audioClip: {fileID: 8300000, guid: 3b42c7457948b914db798bc8020fc4f1, type: 3}
     audioClipName: R_2_3_RedWally_4_T1
-    audioString: "Go ahead Darwin, we won\u2019t stop you."
+    audioString: "Go ahead Darwin,  we won\u2019t stop you."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 8bb720323f2b1534db67ffdf1fce485b, type: 3}
     audioClipName: R_2_3_Wally_5_T2
-    audioString: I remember when a patient friend helped me in my time of need,
+    audioString: 'I remember when a patient friend helped me in my time of need, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

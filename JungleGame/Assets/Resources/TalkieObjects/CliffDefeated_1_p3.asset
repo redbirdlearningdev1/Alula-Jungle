@@ -101,7 +101,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 447217d30385f6f40bc90fd3dc0a8d53, type: 3}
     audioClipName: FR_1_4_Red_13_T1
-    audioString: "Don\u2019t worry Bubbles, we\u2019ll help your Prince out!"
+    audioString: "Don\u2019t worry Bubbles,  we\u2019ll help your Prince out!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: ab0e2ac8eab8c294ba8a47bf784bf2e6, type: 3}
     audioClipName: FR_1_4_Red_16_T2
-    audioString: "Let\u2019s move forward, friends!"
+    audioString: "Let\u2019s move forward,  friends!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

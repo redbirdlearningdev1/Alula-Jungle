@@ -101,7 +101,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 00dbedb898a184544937099ace96cf02, type: 3}
     audioClipName: EJ_1_1_Red_4_T1
-    audioString: Darwin,
+    audioString: 'Darwin, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -149,7 +149,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 8e5b59ed439e5e644abda905fb5a757a, type: 3}
     audioClipName: EJ_1_1_Darwin_5_T2
-    audioString: I did it again, did I?!
+    audioString: I did it again,  did I?!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 3949aff26453f924eb7d191d63590dbe, type: 3}
     audioClipName: EJ_1_1_Wally_6_T1
-    audioString: Ha ha,
+    audioString: 'Ha ha, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -230,7 +230,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: d9cd81ab916071b4b8ce218a8ea2b4f7, type: 3}
     audioClipName: EJ_1_1_Red_7_T2
-    audioString: We'll see, thank you for apologizing!
+    audioString: We'll see,  thank you for apologizing!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -294,7 +294,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: eed739888e2cf9d43a22a50c7469d194, type: 3}
     audioClipName: EJ_1_1_Red_10_T1
-    audioString: By the way Darwin,
+    audioString: 'By the way Darwin, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

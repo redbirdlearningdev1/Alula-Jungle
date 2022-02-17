@@ -197,7 +197,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 9d01a20efc0959e4c86ba9fdd83620df, type: 3}
     audioClipName: P_1_1_Red_46_T1
-    audioString: Darwin, you know the Prince the most.
+    audioString: Darwin,  you know the Prince the most.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: f0a599620c7aa7747808293c7b0d433b, type: 3}
     audioClipName: P_1_1_Red_51_T2
-    audioString: Besides, we shouldn't leave things messy anyway!
+    audioString: Besides,  we shouldn't leave things messy anyway!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

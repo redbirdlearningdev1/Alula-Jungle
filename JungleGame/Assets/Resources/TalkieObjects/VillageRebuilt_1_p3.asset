@@ -325,7 +325,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: bf337d7afd0782a48aae76fdec61fc61, type: 3}
     audioClipName: P_1_5_Julius_22_T3
-    audioString: If you win,
+    audioString: 'If you win, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 09cbe452f8c18ad468b7df147cade33e, type: 3}
     audioClipName: P_1_5_Julius_22_T5
-    audioString: But If I win,
+    audioString: 'But If I win, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

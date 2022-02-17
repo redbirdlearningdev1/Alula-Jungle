@@ -53,7 +53,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 423afebd0aaad554087018d80fcdd61e, type: 3}
     audioClipName: Cha_0_1b_Julius_1_T2
-    audioString: Come on Explorer,
+    audioString: 'Come on Explorer, '
   - endTalkieAfterThisSegment: 0
     requireYN: 1
     onYesGoto: 3
@@ -85,7 +85,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 1ebd329fb5f924e4782643c0484fa592, type: 3}
     audioClipName: Cha_0_1b_Julius_2_T1
-    audioString: Alright, let's do this!
+    audioString: Alright,  let's do this!
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0
@@ -101,4 +101,4 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 464c454b8d26a704c996ee973bc9a526, type: 3}
     audioClipName: Cha_0_1b_Julius_3_T1
-    audioString: "Hmmph, I\u2019ll be waiting."
+    audioString: "Hmmph,  I\u2019ll be waiting."

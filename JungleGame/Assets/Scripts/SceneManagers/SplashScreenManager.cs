@@ -88,15 +88,10 @@ public class SplashScreenManager : MonoBehaviour
         AudioManager.instance.StopMusic();
 
         // play song
-        AudioManager.instance.PlaySong(AudioDatabase.instance.Sunrise_LouieZong);
+        AudioManager.instance.PlaySong(AudioDatabase.instance.FroggerGameSong);
 
         // get all three profiles
         var profiles = StudentInfoSystem.GetAllStudentDatas();
-
-        foreach (var profile in profiles)
-        {
-            print ("profile: " + profile);
-        }
 
         StudentPlayerData currProfile = null;
         // determine most recently used profile

@@ -21,7 +21,7 @@ MonoBehaviour:
     actionWord: 0
     requireInput: 0
     postText: 
-    advanceBG: 0
+    advanceBG: 1
   - text: explorer
     audio: {fileID: 8300000, guid: a7ed727b3bb333f438b1f899d87db9a2, type: 3}
     moveWord: 1
@@ -91,7 +91,7 @@ MonoBehaviour:
     actionWord: 0
     requireInput: 0
     postText: 
-    advanceBG: 1
+    advanceBG: 0
   - text: scared
     audio: {fileID: 8300000, guid: 78001e28f81c22a43a480d315541dd06, type: 3}
     moveWord: 1
@@ -112,7 +112,7 @@ MonoBehaviour:
     actionWord: 14
     requireInput: 0
     postText: .
-    advanceBG: 0
+    advanceBG: 1
   - text: noises made the baby
     audio: {fileID: 8300000, guid: 41cee8fbc0c87be4b9791b65bc51063e, type: 3}
     moveWord: 1
@@ -329,7 +329,7 @@ MonoBehaviour:
     actionWord: 14
     requireInput: 0
     postText: .
-    advanceBG: 1
+    advanceBG: 0
   - text: Our friend walked carefully waving
     audio: {fileID: 8300000, guid: 25a47a80cac8a3f43ad4ff1f31ed9043, type: 3}
     moveWord: 1

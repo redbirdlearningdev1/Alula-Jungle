@@ -85,7 +85,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 1ddb5a711fcd8d142aff99b4d1807d26, type: 3}
     audioClipName: R_1_3_Wally_3_T1
-    audioString: Awesome job, Explorer.
+    audioString: Awesome job,  Explorer.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

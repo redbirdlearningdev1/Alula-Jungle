@@ -21,7 +21,7 @@ MonoBehaviour:
     actionWord: 0
     requireInput: 0
     postText: 
-    advanceBG: 0
+    advanceBG: 1
   - text: explorer
     audio: {fileID: 8300000, guid: 5c8137cc37d73d94da4dafe00c4d2a54, type: 3}
     moveWord: 1
@@ -91,14 +91,14 @@ MonoBehaviour:
     actionWord: 0
     requireInput: 0
     postText: 
-    advanceBG: 1
+    advanceBG: 0
   - text: mudslides
     audio: {fileID: 8300000, guid: 5ac5b134f34d441408eff3116dabb684, type: 3}
     moveWord: 1
     actionWord: 1
     requireInput: 0
     postText: ~
-    advanceBG: 0
+    advanceBG: 1
   - text: orcs
     audio: {fileID: 8300000, guid: 0ff5e02fb4c672e4daa6eb562d0998c1, type: 3}
     moveWord: 1
@@ -225,7 +225,7 @@ MonoBehaviour:
     actionWord: 10
     requireInput: 0
     postText: 
-    advanceBG: 1
+    advanceBG: 0
   - text: but not an
     audio: {fileID: 8300000, guid: 7b7316fe2fff9d84bb63166139b6cddd, type: 3}
     moveWord: 1

@@ -53,7 +53,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 7a03e92c8826a8e409d5d6f06b65aa5e, type: 3}
     audioClipName: EJ_1_2_Sylvie_2_T1
-    audioString: Ugh this trash stinks, please hurry up and help us clean it!
+    audioString: Ugh this trash stinks,  please hurry up and help us clean it!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: d528641fa3442db4ab9a76455260b8dc, type: 3}
     audioClipName: EJ_1_2_Celeste_3_T1
-    audioString: "It\u2019s like, not good to put plastic in the ocean or whateva!"
+    audioString: "It\u2019s like,  not good to put plastic in the ocean or whateva!"
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0

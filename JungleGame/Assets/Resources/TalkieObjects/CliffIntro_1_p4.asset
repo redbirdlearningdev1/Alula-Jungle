@@ -69,7 +69,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: bdcd95576fa0e014dabd16c5c80e643e, type: 3}
     audioClipName: FR_1_1_Marcus_42_T1
-    audioString: See you later, chumps!
+    audioString: See you later,  chumps!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

@@ -486,7 +486,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 2907a611a44135240a1e6ad9bd59dfb8, type: 3}
     audioClipName: EJ_2_2_Julius_14_T4
-    audioString: 'Now, enough talking. '
+    audioString: 'Now,  enough talking. '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

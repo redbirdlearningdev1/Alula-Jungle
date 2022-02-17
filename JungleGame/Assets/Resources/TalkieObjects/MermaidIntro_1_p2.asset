@@ -358,7 +358,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 4d69b2c34101b044ba5f0b952706f9ed, type: 3}
     audioClipName: EJ_1_1_Darwin_25_T1
-    audioString: Do you remember when you were just a small cub,
+    audioString: 'Do you remember when you were just a small cub, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -455,8 +455,8 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 628995bec7d5f7447ad43ff3ae19787c, type: 3}
     audioClipName: EJ_1_1_Julius_28_T3
-    audioString: "I don\u2019t know how people can throw things into the ocean, with
-      no regard to the animals that live there."
+    audioString: "I don\u2019t know how people can throw things into the ocean, 
+      with no regard to the animals that live there."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -472,7 +472,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 7b95e93bf69a0c04bb70fc23b3ac8b76, type: 3}
     audioClipName: EJ_1_1_Darwin_31_T1
-    audioString: I know, it was terrible.
+    audioString: I know,  it was terrible.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -602,7 +602,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 26bfdb8aa6121d044baa77f562179272, type: 3}
     audioClipName: EJ_1_1_Darwin_35_T1
-    audioString: And I know one day, THAT Julius will be an excellent King.
+    audioString: And I know one day,  THAT Julius will be an excellent King.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -650,7 +650,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: cc53b1d1272162848ab7583d456cbfb7, type: 3}
     audioClipName: EJ_1_1_Marcus_37_T2
-    audioString: "Your highness, I am so tired of hearing these useless stories!
+    audioString: "Your highness,  I am so tired of hearing these useless stories!
       I don\u2019t understand! "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -731,8 +731,8 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 1a151e5eb818dc04db22c73f22380ae5, type: 3}
     audioClipName: EJ_1_1_Marcus_40_T1
-    audioString: I, am his friend, and I, know him best!  I, know what he can and
-      can't do!
+    audioString: I,  am his friend,  and I,  know him best!  I,  know what he can
+      and can't do!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -796,7 +796,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: dcf3fd9f9b708564299d06a1a15ad07a, type: 3}
     audioClipName: EJ_1_1_Darwin_43_T1
-    audioString: Julius please, believe in yourself!
+    audioString: Julius please,  believe in yourself!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

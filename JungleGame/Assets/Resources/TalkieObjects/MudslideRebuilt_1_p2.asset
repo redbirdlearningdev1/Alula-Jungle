@@ -181,7 +181,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 6c2659a6c7a17f045bef65aa7642faa6, type: 3}
     audioClipName: P_2_2_Julius_7_T3
-    audioString: If you win,
+    audioString: 'If you win, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -213,7 +213,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 61414a26f39800b4982c72b6c5a88fd7, type: 3}
     audioClipName: P_2_2_Julius_7_T5
-    audioString: But If I win,
+    audioString: 'But If I win, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 9955332212766d94797eb319156c9770, type: 3}
     audioClipName: P_2_2_Julius_7_T6
-    audioString: you have to leave me alone, and let me do what I want!
+    audioString: you have to leave me alone,  and let me do what I want!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -325,7 +325,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 6b54b90af4c66e645a72cfced82417bc, type: 3}
     audioClipName: P_2_2_Julius_11_T1
-    audioString: Alright, Lets begin!
+    audioString: Alright,  Lets begin!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

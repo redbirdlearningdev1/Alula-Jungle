@@ -101,7 +101,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: a14d6f8d027df8b4f8bf3fec078dd55d, type: 3}
     audioClipName: B_3_1_Red_4_T1
-    audioString: I agree,
+    audioString: 'I agree, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

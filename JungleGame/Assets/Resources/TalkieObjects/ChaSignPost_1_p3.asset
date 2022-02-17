@@ -69,7 +69,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 1ebd329fb5f924e4782643c0484fa592, type: 3}
     audioClipName: Cha_0_1b_Julius_2_T1
-    audioString: Alright, let's do this.
+    audioString: Alright,  let's do this.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -85,7 +85,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: fa385e453923a904095cb2923352dbd8, type: 3}
     audioClipName: Cha_0_0_Julius_3_T3
-    audioString: Hmph,
+    audioString: 'Hmph, '
   - endTalkieAfterThisSegment: 1
     requireYN: 0
     onYesGoto: 0

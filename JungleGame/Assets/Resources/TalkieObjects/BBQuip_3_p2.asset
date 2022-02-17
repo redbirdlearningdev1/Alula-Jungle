@@ -37,7 +37,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 61924bcd55fdc4c4495a70916c65aaca, type: 3}
     audioClipName: E_5_2_Red_1_T1
-    audioString: "We\u2019re almost there, Explorer!"
+    audioString: "We\u2019re almost there,  Explorer!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

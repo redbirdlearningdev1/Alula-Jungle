@@ -21,7 +21,7 @@ MonoBehaviour:
     actionWord: 0
     requireInput: 0
     postText: 
-    advanceBG: 0
+    advanceBG: 1
   - text: explorer
     audio: {fileID: 8300000, guid: eedb0a0dba9d8e6499d81d58193fe960, type: 3}
     moveWord: 1
@@ -98,7 +98,7 @@ MonoBehaviour:
     actionWord: 2
     requireInput: 0
     postText: ~
-    advanceBG: 1
+    advanceBG: 0
   - text: the
     audio: {fileID: 8300000, guid: a25af5cc8576a454f8592b739b305bb3, type: 3}
     moveWord: 1
@@ -140,7 +140,7 @@ MonoBehaviour:
     actionWord: 3
     requireInput: 0
     postText: .
-    advanceBG: 0
+    advanceBG: 1
   - text: 'Do you '
     audio: {fileID: 8300000, guid: bfa8ea3ed14f7944da94e294bd0407bc, type: 3}
     moveWord: 1
@@ -252,7 +252,7 @@ MonoBehaviour:
     actionWord: 4
     requireInput: 0
     postText: .
-    advanceBG: 1
+    advanceBG: 0
   - text: 'A surprise '
     audio: {fileID: 8300000, guid: 5115229b3c00d87479f5b1dde96d7407, type: 3}
     moveWord: 1

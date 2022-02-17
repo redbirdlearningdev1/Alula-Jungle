@@ -69,7 +69,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 2d4ace47eb0b27a40a2e8dc95a167611, type: 3}
     audioClipName: P_1_6_Red_15_T1
-    audioString: That's weird,
+    audioString: 'That''s weird, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 1b88a8dafa435704ca39333025132523, type: 3}
     audioClipName: P_1_6_Red_16_T1
-    audioString: If you tap on it, you can probably play the Princes challenge games!
+    audioString: If you tap on it,  you can probably play the Princes challenge games!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: bf8eb3cc6ee13184783318fae290b7f6, type: 3}
     audioClipName: P_1_6_Wally_18_T1
-    audioString: I think you should consider using it, Explorer
+    audioString: I think you should consider using it,  Explorer
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

@@ -85,7 +85,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 02afa1bcd3f71f140afa4bd865e722a4, type: 3}
     audioClipName: P_3_2_Wally_18_T1
-    audioString: "That\u2019s right,  we were."
+    audioString: "That\u2019s right,   we were."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -325,7 +325,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 947f203506fedbd4c87a105d104ef601, type: 3}
     audioClipName: P_3_2_Julius_27_T3
-    audioString: If you win,
+    audioString: 'If you win, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 65d3f63dae7eeb84dbb54c325a9cfb98, type: 3}
     audioClipName: P_3_2_Julius_27_T5
-    audioString: But, If I beat you,
+    audioString: 'But,  If I beat you, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

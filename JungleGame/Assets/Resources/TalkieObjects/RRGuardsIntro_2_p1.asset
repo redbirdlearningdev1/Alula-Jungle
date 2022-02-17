@@ -69,7 +69,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 8db04f0a69205e94c819db7099679113, type: 3}
     audioClipName: RR_1_0_Marcus_1_T1
-    audioString: "Julius wasn\u2019t being hard ENOUGH on you, you\u2019re too good
+    audioString: "Julius wasn\u2019t being hard ENOUGH on you,  you\u2019re too good
       at cleaning up our messes!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0

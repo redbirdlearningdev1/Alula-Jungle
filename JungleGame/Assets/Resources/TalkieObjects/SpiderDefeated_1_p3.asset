@@ -37,7 +37,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 96cebcd6de671004db92ec8fb797ada4, type: 3}
     audioClipName: B_1_4_Red_14_T1
-    audioString: Are you alright, Spindle?
+    audioString: Are you alright,  Spindle?
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

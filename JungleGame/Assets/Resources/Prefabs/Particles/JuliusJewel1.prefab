@@ -128,7 +128,10 @@ MonoBehaviour:
   bugAngleOffset: 0
   isBubble: 0
   poppedBubble: {fileID: 0}
-  colors: []
+  colors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
+  - {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
 --- !u!114 &379738175261615459
 MonoBehaviour:
   m_ObjectHideFlags: 0

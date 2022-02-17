@@ -53,7 +53,7 @@ MonoBehaviour:
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: d1c2db1923a177341a1c2c05713767dc, type: 3}
     audioClipName: B_2_2_Wally_2_T1
-    audioString: Whew,
+    audioString: 'Whew, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

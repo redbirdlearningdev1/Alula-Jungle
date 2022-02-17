@@ -101,7 +101,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: d2fab732cae2e37409ef26e14bfe7865, type: 3}
     audioClipName: FR_1_1_Darwin_11_T2
-    audioString: "You need to stop what you\u2019re doing. It isn\u2019t what Princes, "
+    audioString: "You need to stop what you\u2019re doing. It isn\u2019t what Princes,  "
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 694e18c7907958d4c974db514b405a35, type: 3}
     audioClipName: FR_1_1_Darwin_11_T3
-    audioString: or even future Kings, should be doing.
+    audioString: or even future Kings,  should be doing.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -245,7 +245,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 6a216851b65f6c744a6b06c266c85c32, type: 3}
     audioClipName: FR_1_1_Red_16_T1
-    audioString: Please,
+    audioString: 'Please, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -293,7 +293,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: eb2fb3b693c8b20419f484fc6f332c75, type: 3}
     audioClipName: FR_1_1_Darwin_18_T1
-    audioString: Remember when you were small, and we went on an adventure through
+    audioString: Remember when you were small,  and we went on an adventure through
       the Spider Forest?
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -406,7 +406,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 5d302dc0284020149b74ca5661c7a207, type: 3}
     audioClipName: FR_1_1_Darwin_22_T2
-    audioString: I remember you picking her up with your little paws,
+    audioString: 'I remember you picking her up with your little paws, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -518,7 +518,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 28360dbe4af97a44d9292342de06a720, type: 3}
     audioClipName: FR_1_1_Darwin_24_T2
-    audioString: You know, your parents and I were so proud of you Julius.
+    audioString: You know,  your parents and I were so proud of you Julius.
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -566,7 +566,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 58d6e36d56530a541861e6634f46946b, type: 3}
     audioClipName: FR_1_1_Darwin_26_T2
-    audioString: Please,
+    audioString: 'Please, '
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -646,7 +646,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: cca0e9a867bf65349a0a9d42ce74b4c1, type: 3}
     audioClipName: FR_1_1_Marcus_28_T3
-    audioString: "Just because you helped that commoner, doesn\u2019t mean anything!"
+    audioString: "Just because you helped that commoner,  doesn\u2019t mean anything!"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
@@ -742,7 +742,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: b0a7cd877308f7844a90e5679d7fd1bc, type: 3}
     audioClipName: FR_1_1_Brutus_29_T4
-    audioString: "We\u2019re your real friends, your highness\u2026"
+    audioString: "We\u2019re your real friends,  your highness\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0

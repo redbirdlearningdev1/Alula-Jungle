@@ -37,7 +37,7 @@ MonoBehaviour:
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: d22399de45c44a842a2b93c77a735547, type: 3}
     audioClipName: P_1_2_Darwin_1_T1
-    audioString: Are you ready to get started, Explorer?
+    audioString: Are you ready to get started,  Explorer?
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
