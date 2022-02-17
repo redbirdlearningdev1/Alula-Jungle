@@ -1500,7 +1500,7 @@ MonoBehaviour:
   - {fileID: 1107992950}
   - {fileID: 2042882692}
   selectedRummageCoin: {fileID: 0}
-  playTutorial: 0
+  playTutorial: 1
   tutorialPiles:
   - list: 01000000000000000000000000000000
   - list: 02000000000000000000000000000000
@@ -5504,7 +5504,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 47.71206
+      value: 47.75204
       objectReference: {fileID: 0}
     - target: {fileID: 8032072505287944566, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
