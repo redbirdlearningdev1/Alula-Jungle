@@ -68,13 +68,6 @@ public class NewPasswordGameManager : MonoBehaviour
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().passwordTutorial;
 
-        // add settings button if not playing tutorial
-        if (!playTutorial)
-        {
-            // turn on settings button
-            SettingsManager.instance.ToggleMenuButtonActive(true);
-        }
-
         PregameSetup();
     }
 
@@ -136,7 +129,7 @@ public class NewPasswordGameManager : MonoBehaviour
         polaroid.transform.position = polaroidOffScreenTigerPos.position;
 
         // select challenge word + reset polaroid
-        if (!playTutorial)
+        if (playTutorial)
         {
             switch (tutorialEvent)
             {
@@ -162,7 +155,7 @@ public class NewPasswordGameManager : MonoBehaviour
             wordPool.Remove(currentWord);
         }
 
-        
+        PasswordTube.instance.TurnTube();
         polaroid.SetPolaroid(currentWord);
         polaroid.SetPolaroidAlpha(0f, 0f);
         yield return new WaitForSeconds(1f);
@@ -172,8 +165,7 @@ public class NewPasswordGameManager : MonoBehaviour
         {
             PasswordLock.instance.ResetLock();
             BGManager.instance.MoveToNextSection();
-            PasswordTube.instance.TurnTube();
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             PasswordTube.instance.StopTube();
             yield return new WaitForSeconds(0.5f);
 
@@ -197,7 +189,7 @@ public class NewPasswordGameManager : MonoBehaviour
         PasswordLock.instance.ShowLock();
         yield return new WaitForSeconds(1f);
 
-        if (!playTutorial)
+        if (playTutorial)
         {
             if (tutorialEvent == 1)
             {
@@ -233,8 +225,6 @@ public class NewPasswordGameManager : MonoBehaviour
         {
             if (!playIntro)
             {
-                playIntro = true;
-
                 // play start 1
                 AudioClip clip = GameIntroDatabase.instance.passwordStart1;
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Marcus, clip);
@@ -250,6 +240,14 @@ public class NewPasswordGameManager : MonoBehaviour
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
                 yield return new WaitForSeconds(clip.length + 1f);
             }
+        }
+
+        // add settings button if not playing tutorial
+        if (!playIntro)
+        {
+            playIntro = true;
+            // turn on settings button
+            SettingsManager.instance.ToggleMenuButtonActive(true);
         }
 
         // show polaroid
@@ -342,6 +340,9 @@ public class NewPasswordGameManager : MonoBehaviour
 
     private IEnumerator EvaluateCoinsRoutine()
     {
+        // play right audio
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 0.5f);
+
         // small delay
         yield return new WaitForSeconds(1f);
 
@@ -410,6 +411,9 @@ public class NewPasswordGameManager : MonoBehaviour
                     clip = GameIntroDatabase.instance.passwordIntro12;
                     TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Marcus, clip);
                     yield return new WaitForSeconds(clip.length + 1f);
+
+                    StartCoroutine(WinRoutine());
+                    yield break;
                 }
                 else
                 {
@@ -475,7 +479,6 @@ public class NewPasswordGameManager : MonoBehaviour
 
             // play wrong audio
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
-            yield return new WaitForSeconds(1f);
 
             if (playTutorial)
             {
@@ -563,7 +566,7 @@ public class NewPasswordGameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // begin next round
-        StartCoroutine(NewRound(winGame));
+        StartCoroutine(NewRound(true));
     }
 
     private void RemoveExtraCoins(List<UniversalCoinImage> extraCoins)
