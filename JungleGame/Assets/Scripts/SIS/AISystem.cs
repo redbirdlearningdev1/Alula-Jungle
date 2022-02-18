@@ -316,11 +316,11 @@ public static class AISystem
         set1.Add(ActionWordEnum.poop);
         set1.Add(ActionWordEnum.orcs);
         set1.Add(ActionWordEnum.think);
+        set1.Add(ActionWordEnum.explorer);
 
         set2.Add(ActionWordEnum.hello);
         set2.Add(ActionWordEnum.spider);
         set2.Add(ActionWordEnum.scared);
-        set2.Add(ActionWordEnum.explorer);
         set2.Add(ActionWordEnum.thatguy);
         
         set3.Add(ActionWordEnum.choice);
@@ -668,11 +668,11 @@ public static class AISystem
         set1.Add(ActionWordEnum.poop);
         set1.Add(ActionWordEnum.orcs);
         set1.Add(ActionWordEnum.think);
+        set1.Add(ActionWordEnum.explorer);
 
         set2.Add(ActionWordEnum.hello);
         set2.Add(ActionWordEnum.spider);
         set2.Add(ActionWordEnum.scared);
-        set2.Add(ActionWordEnum.explorer);
         set2.Add(ActionWordEnum.thatguy);
         
         set3.Add(ActionWordEnum.choice);
@@ -806,11 +806,11 @@ public static class AISystem
         set1.Add(ActionWordEnum.poop);
         set1.Add(ActionWordEnum.orcs);
         set1.Add(ActionWordEnum.think);
+        set1.Add(ActionWordEnum.explorer);
 
         set2.Add(ActionWordEnum.hello);
         set2.Add(ActionWordEnum.spider);
         set2.Add(ActionWordEnum.scared);
-        set2.Add(ActionWordEnum.explorer);
         set2.Add(ActionWordEnum.thatguy);
         
         set3.Add(ActionWordEnum.choice);
@@ -1076,11 +1076,11 @@ public static class AISystem
         set1.Add(ActionWordEnum.poop);
         set1.Add(ActionWordEnum.orcs);
         set1.Add(ActionWordEnum.think);
+        set1.Add(ActionWordEnum.explorer);
 
         set2.Add(ActionWordEnum.hello);
         set2.Add(ActionWordEnum.spider);
         set2.Add(ActionWordEnum.scared);
-        set2.Add(ActionWordEnum.explorer);
         set2.Add(ActionWordEnum.thatguy);
         
         set3.Add(ActionWordEnum.choice);
@@ -1304,11 +1304,11 @@ public static class AISystem
         set1.Add(ActionWordEnum.poop);
         set1.Add(ActionWordEnum.orcs);
         set1.Add(ActionWordEnum.think);
+        set1.Add(ActionWordEnum.explorer);
 
         set2.Add(ActionWordEnum.hello);
         set2.Add(ActionWordEnum.spider);
         set2.Add(ActionWordEnum.scared);
-        set2.Add(ActionWordEnum.explorer);
         set2.Add(ActionWordEnum.thatguy);
         
         set3.Add(ActionWordEnum.choice);
@@ -1473,11 +1473,11 @@ public static class AISystem
         set1.Add(ActionWordEnum.poop);
         set1.Add(ActionWordEnum.orcs);
         set1.Add(ActionWordEnum.think);
+        set1.Add(ActionWordEnum.explorer);
 
         set2.Add(ActionWordEnum.hello);
         set2.Add(ActionWordEnum.spider);
         set2.Add(ActionWordEnum.scared);
-        set2.Add(ActionWordEnum.explorer);
         set2.Add(ActionWordEnum.thatguy);
         
         set3.Add(ActionWordEnum.choice);
@@ -1704,11 +1704,11 @@ public static WordPair ChallengeWordBuildingDeleting(StudentPlayerData playerDat
         set1.Add(ActionWordEnum.poop);
         set1.Add(ActionWordEnum.orcs);
         set1.Add(ActionWordEnum.think);
+        set1.Add(ActionWordEnum.explorer);
 
         set2.Add(ActionWordEnum.hello);
         set2.Add(ActionWordEnum.spider);
         set2.Add(ActionWordEnum.scared);
-        set2.Add(ActionWordEnum.explorer);
         set2.Add(ActionWordEnum.thatguy);
         
         set3.Add(ActionWordEnum.choice);
@@ -1927,11 +1927,11 @@ public static WordPair ChallengeWordSub(StudentPlayerData playerData)
         set1.Add(ActionWordEnum.poop);
         set1.Add(ActionWordEnum.orcs);
         set1.Add(ActionWordEnum.think);
+        set1.Add(ActionWordEnum.explorer);
 
         set2.Add(ActionWordEnum.hello);
         set2.Add(ActionWordEnum.spider);
         set2.Add(ActionWordEnum.scared);
-        set2.Add(ActionWordEnum.explorer);
         set2.Add(ActionWordEnum.thatguy);
         
         set3.Add(ActionWordEnum.choice);
