@@ -132,12 +132,15 @@ public static class AISystem
                 }
                 else if(playerData.starsLastGamePlayed+playerData.starsGameBeforeLastPlayed >= 5 && playerData.rRumblePlayed == 1 && playerData.minigamesPlayed > 6)
                 {
-                    playerData.rRumblePlayed = 0;
-                    DetermineRoyalRumbleGame(playerData);
+                    Debug.Log("ROYALRUMBLEDONE");
+                    StudentInfoSystem.SaveStudentPlayerData();
+                    return minigameOptions[Random.Range(0, minigameOptions.Count)];
+                    //DetermineRoyalRumbleGame(playerData);
                 }
                 else
                 {
-                    playerData.rRumblePlayed = 1;
+                    Debug.Log("ROYALRUMBLENOTDONE");
+                    StudentInfoSystem.SaveStudentPlayerData();
                     return minigameOptions[Random.Range(0, minigameOptions.Count)];
                     
                 }
@@ -244,17 +247,30 @@ public static class AISystem
 
     public static bool DetermineRoyalRumble(StudentPlayerData playerData)
     {
+        Debug.Log("THIS IS THE RrumbePlayed");
+        Debug.Log(playerData.rRumblePlayed);
         // player must have played all 6 minigames before RR
         if (playerData.minigamesPlayed < 6)
             return false;
 
         // return false if royal rumble already active
-        if (playerData.royalRumbleActive)
+        if (playerData.rRumblePlayed == 1)
+        {
+            playerData.rRumblePlayed = 0;
+            return true;
+        }
+        else if(playerData.rRumblePlayed == 0)
+        {
+            playerData.rRumblePlayed = 1;
             return false;
+        }
+        else
+        {
+            return false;
+        }
 
         // determine royal rumble
         
-        return playerData.rRumblePlayed < royalRumbleOdds;
     }
 
     public static GameType DetermineRoyalRumbleGame(StudentPlayerData playerData)
