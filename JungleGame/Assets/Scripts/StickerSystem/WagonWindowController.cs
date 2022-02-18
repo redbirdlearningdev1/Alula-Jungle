@@ -81,7 +81,7 @@ public class WagonWindowController : MonoBehaviour
     void Update() 
     {
         // skip lester stuff
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !StudentInfoSystem.GetCurrentProfile().stickerTutorial)
         {
             if (!readyToSkip)
                 return;

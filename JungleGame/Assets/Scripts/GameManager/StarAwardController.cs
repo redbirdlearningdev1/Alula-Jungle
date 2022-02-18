@@ -76,23 +76,6 @@ public class StarAwardController : MonoBehaviour
 
         print ("map id: " + GameManager.instance.mapID);
 
-
-        // determine if royal rumble game
-        if (GameManager.instance.playingRoyalRumbleGame)
-        {
-            GameManager.instance.playingRoyalRumbleGame = false;
-            GameManager.instance.finishedRoyalRumbleGame = true;
-            GameManager.instance.wonRoyalRumbleGame = numStars > 0;
-
-            StudentInfoSystem.GetCurrentProfile().royalRumbleActive = false;
-            StudentInfoSystem.GetCurrentProfile().royalRumbleGame = GameType.None;
-            StudentInfoSystem.GetCurrentProfile().royalRumbleID = MapIconIdentfier.None;
-            StudentInfoSystem.SaveStudentPlayerData();
-            // show window
-            StartCoroutine(AwardStarsRoutine(numStars, coinsEarned));
-            return;
-        }
-
         // determine if challenge game
         if (GameManager.instance.playingChallengeGame)
         {
@@ -1151,6 +1134,18 @@ public class StarAwardController : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.M_challenge3.stars = numStars;
                 }
                 break;
+        }
+
+        // determine if royal rumble game
+        if (GameManager.instance.playingRoyalRumbleGame)
+        {
+            GameManager.instance.playingRoyalRumbleGame = false;
+            GameManager.instance.finishedRoyalRumbleGame = true;
+            GameManager.instance.wonRoyalRumbleGame = numStars > 0;
+
+            StudentInfoSystem.GetCurrentProfile().royalRumbleActive = false;
+            StudentInfoSystem.GetCurrentProfile().royalRumbleGame = GameType.None;
+            StudentInfoSystem.GetCurrentProfile().royalRumbleID = MapIconIdentfier.None;
         }
         
         // save data

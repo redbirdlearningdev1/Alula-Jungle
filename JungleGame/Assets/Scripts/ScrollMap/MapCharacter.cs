@@ -93,6 +93,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
 
     private IEnumerator CheckForStoryBeatRoutine()
     {
+        print ("story beat: " + StudentInfoSystem.GetCurrentProfile().currStoryBeat);
+
         // check for character quips
         if (character == Character.Darwin)
         {
@@ -123,7 +125,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         }
         else if (character == Character.Clogg)
         {
-            if (StudentInfoSystem.GetCurrentProfile().currStoryBeat != StoryBeat.OrcVillageMeetClogg ||
+            if (StudentInfoSystem.GetCurrentProfile().currStoryBeat != StoryBeat.OrcVillageMeetClogg &&
                 StudentInfoSystem.GetCurrentProfile().currStoryBeat != StoryBeat.OrcCampUnlocked)
             {
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CloggQuips_1_p1);
@@ -131,7 +133,6 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             }
         }
 
-        print ("story beat: " + StudentInfoSystem.GetCurrentProfile().currStoryBeat);
         bool playingChallengeGame = false;
 
         if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillageIntro)

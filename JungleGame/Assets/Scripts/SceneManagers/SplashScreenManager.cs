@@ -158,7 +158,7 @@ public class SplashScreenManager : MonoBehaviour
         }
 
         // set up profile window
-        startButton.interactable = false;
+        startButton.interactable = true;
         profileSelectWindow.interactable = false;
         profileSelectWindow.blocksRaycasts = false;
         profileSelectWindow.alpha = 0f;
@@ -193,7 +193,7 @@ public class SplashScreenManager : MonoBehaviour
         screenTapReady = true;
     }
 
-    void Update() 
+    void Update()
     {
         if ((Input.touchCount > 0 || Input.GetMouseButtonDown(0)) && !screenTapped && screenTapReady)
         {
