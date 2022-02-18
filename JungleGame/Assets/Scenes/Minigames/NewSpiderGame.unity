@@ -2082,11 +2082,11 @@ MonoBehaviour:
   selectedCoin: {fileID: 0}
   playTutorial: 0
   tutorialLists:
-  - list: 01000000000000000000000000000000
-  - list: 00000000020000000000000000000000
-  - list: 00000000000000000300000000000000
+  - list: 00000000010000000000000000000000
+  - list: 00000000000000000200000000000000
+  - list: 03000000000000000000000000000000
   - list: 00000000000000000000000004000000
-  correctIndexes: 00000000010000000200000003000000
+  correctIndexes: 01000000020000000000000003000000
   tutorialEvent: 0
 --- !u!4 &1505519755
 Transform:
@@ -2563,7 +2563,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 48.73046
+      value: 48.86773
       objectReference: {fileID: 0}
     - target: {fileID: 8032072505287944566, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

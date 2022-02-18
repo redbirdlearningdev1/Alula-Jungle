@@ -369,7 +369,7 @@ public class FroggerGameManager : MonoBehaviour
         while (!gameSetup)
             yield return null;
 
-        // show menu button
+        // show settings button
         SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // reveal dancing man
@@ -393,9 +393,6 @@ public class FroggerGameManager : MonoBehaviour
         while (!gameSetup)
             yield return null;
 
-        // show menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
-
         yield return new WaitForSeconds(1f);
 
         // play tutorial audio
@@ -408,6 +405,9 @@ public class FroggerGameManager : MonoBehaviour
         // reveal dancing man
         StartCoroutine(ShowDancingManRoutine());
         yield return new WaitForSeconds(1f);
+
+        // show settings button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         currRow = 0;
         ShowTutorialCoins();
@@ -586,14 +586,6 @@ public class FroggerGameManager : MonoBehaviour
 
     private IEnumerator PlayTutorialAudio()
     {
-        // // play audio iff currRow == 1
-        // if (currRow == 1)
-        // {
-        //     AudioClip clip = AudioDatabase.instance.FroggerTutorial_3;
-        //     AudioManager.instance.PlayTalk(clip);
-        //     yield return new WaitForSeconds(clip.length + 0.5f);
-        // }
-
         yield return null;
 
         // turn on raycaster

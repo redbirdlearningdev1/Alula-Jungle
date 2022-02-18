@@ -10,7 +10,7 @@ using UnityEditor;
 public static class LoadSaveSystem
 {
     // default student player values
-    public static string default_version = "2.0";
+    public static string default_version = "alpha1.0";
     // 1.6 added stickers to SIS
 
     public static string default_name = "new profile";
@@ -29,17 +29,8 @@ public static class LoadSaveSystem
 
     public static int default_gold_coins = 0;
 
-
-
-    public static void SaveStudentData(StudentPlayerData data, bool ignoreMakingActive = false)
-    {
-        if (!ignoreMakingActive)
-        {
-            // saving data to profile makes it active
-            if (!data.active)
-                data.active = true;
-        }
-        
+    public static void SaveStudentData(StudentPlayerData data)
+    {        
         string jsonData = JsonUtility.ToJson(data);
         string path = GetStudentDataPath(data.studentIndex);
 
@@ -73,6 +64,25 @@ public static class LoadSaveSystem
             }
             
             StudentPlayerData studentData = JsonUtility.FromJson<StudentPlayerData>(file);
+
+            // check to make sure data is correct version
+            if (studentData.version != "alpha1.0")
+            {
+                Debug.LogError("Student data is wrong version");
+
+                // create new profile file
+                if (createNewIfNull)
+                {
+                    Debug.Log("profile not found, making new profile!");
+                    ResetStudentData(index);
+                    return LoadStudentData(index, false);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+
             if (studentData != null)
                 return studentData;
             else
@@ -611,9 +621,9 @@ public static class LoadSaveSystem
         new_data.beachStickerBoard.stickers = new List<StickerData>();
 
 
-        // save data as incative profile
+        // save data as inactive profile
         new_data.active = false;
-        SaveStudentData(new_data, true);
+        SaveStudentData(new_data);
         GameManager.instance.SendLog("LoadSaveSystem", "reseting profile " + index);
     }
 

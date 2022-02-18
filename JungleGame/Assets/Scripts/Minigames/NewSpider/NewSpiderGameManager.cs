@@ -67,9 +67,6 @@ public class NewSpiderGameManager : MonoBehaviour
 
         // get mapID
         mapID = GameManager.instance.mapID;
-
-        // place menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
     }
 
     void Start()
@@ -157,6 +154,14 @@ public class NewSpiderGameManager : MonoBehaviour
         if (coin ==  ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value))
         {
             winCount++;
+
+
+            // finish tutorial after 3 rounds
+            if (playTutorial && winCount == 3)
+            {
+                StartCoroutine(TutorialWinRoutine(correctCoin));
+                return true;
+            }
 
             // success! go on to the next row or win game if on last row
             if (winCount < 4)
@@ -360,6 +365,9 @@ public class NewSpiderGameManager : MonoBehaviour
         StartCoroutine(CoinsUp());
         yield return new WaitForSeconds(1f);
 
+        // place menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+
         // turn on raycaster
         SpiderRayCaster.instance.isOn = true;
     }
@@ -380,6 +388,9 @@ public class NewSpiderGameManager : MonoBehaviour
         clips.Add(GameIntroDatabase.instance.spiderwebsIntro2);
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Spindle, clips);
         yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
+
+        // place menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         StartCoroutine(PlayTutorialGame());
     }

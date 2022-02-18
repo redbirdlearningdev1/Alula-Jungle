@@ -240,8 +240,9 @@ public class ScrollMapManager : MonoBehaviour
             print ("showing buttons!");
 
             SettingsManager.instance.ToggleMenuButtonActive(true);
+
             // show sticker button if unlocked
-            if (StudentInfoSystem.GetCurrentProfile().unlockedStickerButton)
+            if (StudentInfoSystem.GetCurrentProfile().unlockedStickerButton && StudentInfoSystem.GetCurrentProfile().goldCoins <= 6)
                 SettingsManager.instance.ToggleWagonButtonActive(true);
         }
 
@@ -1324,7 +1325,7 @@ public class ScrollMapManager : MonoBehaviour
         FogController.instance.MoveFogAnimation(mapLocations[currMapLocation].fogLocation, 3f);
 
         // play sound
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.FoundIslandSparkle, 0.5f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.FoundIslandSparkle, 0.5f, "section_reveal", 0.6f);
 
         // set sign
         ChapterEnterVisualController.instance.SetSign(location);

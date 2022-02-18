@@ -51,9 +51,9 @@ public static class StudentInfoSystem
                 break;
         }
 
-        LoadSaveSystem.SaveStudentData(data1, true);
-        LoadSaveSystem.SaveStudentData(data2, true);
-        LoadSaveSystem.SaveStudentData(data3, true);
+        LoadSaveSystem.SaveStudentData(data1);
+        LoadSaveSystem.SaveStudentData(data2);
+        LoadSaveSystem.SaveStudentData(data3);
     }
 
     public static void RemoveCurrentStudentPlayer()
@@ -75,7 +75,7 @@ public static class StudentInfoSystem
 
     public static StudentPlayerData GetStudentData(StudentIndex index)
     {
-        return LoadSaveSystem.LoadStudentData(index, false);
+        return LoadSaveSystem.LoadStudentData(index, true);
     }
 
     public static List<StudentPlayerData> GetAllStudentDatas()

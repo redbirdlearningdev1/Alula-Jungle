@@ -173,7 +173,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
         if (!playIntro)
         {
             playIntro = true;
-            SettingsManager.instance.ToggleWagonButtonActive(true);
+            SettingsManager.instance.ToggleMenuButtonActive(true);
         }
 
         // audio fx
@@ -526,6 +526,14 @@ public class WordFactoryDeletingManager : MonoBehaviour
             Destroy(coin.gameObject);
         }
         currentCoins.Clear();
+
+
+        // end tutorial
+        if (playTutorial && tutorialEvent == 1)
+        {
+            StartCoroutine(WinRoutine());
+            yield break;
+        }
 
 
         // play appropriate reminder / encouragement popup

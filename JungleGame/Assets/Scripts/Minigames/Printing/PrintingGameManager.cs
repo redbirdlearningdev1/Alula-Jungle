@@ -45,9 +45,6 @@ public class PrintingGameManager : MonoBehaviour
 
         // get mapID
         mapID = GameManager.instance.mapID;
-
-        // place menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
     }
 
     void Start()
@@ -122,6 +119,9 @@ public class PrintingGameManager : MonoBehaviour
             AudioManager.instance.InitSplitSong(SplitSong.Pirate);
             AudioManager.instance.IncreaseSplitSong();
 
+            // place menu button
+            SettingsManager.instance.ToggleMenuButtonActive(true);
+
             // start game
             StartCoroutine(StartGame());
         }
@@ -151,6 +151,8 @@ public class PrintingGameManager : MonoBehaviour
         t_waitingForPlayer = true;
         RopeCoin.instance.interactable = true;
 
+        // place menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // wait for player input
         while (t_waitingForPlayer)

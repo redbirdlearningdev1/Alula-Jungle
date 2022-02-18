@@ -282,6 +282,9 @@ public class GameManager : DontDestroy<GameManager>
 
         // close settings menu if open
         SettingsManager.instance.CloseSettingsWindow();
+
+        // close in development window
+        WagonWindowController.instance.CloseInDevelopmentWindow();
     }
 
     /*

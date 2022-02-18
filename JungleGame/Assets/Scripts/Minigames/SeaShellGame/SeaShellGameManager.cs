@@ -53,9 +53,6 @@ public class SeaShellGameManager : MonoBehaviour
 
         // get mapID
         mapID = GameManager.instance.mapID;
-        
-        // place menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
     }
 
     void Start()
@@ -168,6 +165,8 @@ public class SeaShellGameManager : MonoBehaviour
 
     private IEnumerator StartGame()
     {
+        // place menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // get shell options
         usedCoinPool = new List<ActionWordEnum>();
@@ -198,7 +197,6 @@ public class SeaShellGameManager : MonoBehaviour
             int correctIndex = Random.Range(0, 3);
             currentCoin = shellOptions[correctIndex];
         }
-        
         
         // set shells
         ShellController.instance.shell1.SetValue(shellOptions[0]);
@@ -347,10 +345,18 @@ public class SeaShellGameManager : MonoBehaviour
 
         t_currRound++;
 
+        // finish tutorial after 3 rounds
+        if (playTutorial && t_currRound == 3)
+        {
+            StartCoroutine(WinRoutine());
+            yield break;
+        }
+
         // check if win game
         if (timesCorrect >= 4)
         {
             StartCoroutine(WinRoutine());
+            yield break;
         }
         else
         {

@@ -4071,7 +4071,7 @@ MonoBehaviour:
   sky2: {fileID: 1028542664}
   skyMid1: {fileID: 355282743}
   skyMid2: {fileID: 1893296371}
-  skySpeed: 1
+  skySpeed: 0.25
   bIsland1: {fileID: 1665270105}
   bIsland2: {fileID: 1384531844}
   bIslandMid1: {fileID: 99719808}
@@ -7609,7 +7609,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 14.723795
+      value: 14.759934
       objectReference: {fileID: 0}
     - target: {fileID: 8032072505287944566, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

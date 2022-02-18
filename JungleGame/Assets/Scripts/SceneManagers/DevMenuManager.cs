@@ -223,7 +223,6 @@ public class DevMenuManager : MonoBehaviour
 
         var studentData = StudentInfoSystem.GetCurrentProfile();
         // unlock everything - (update this as game is developed)
-        studentData.active = true;
         studentData.mapLimit = 16;
         studentData.goldCoins = 999;
 

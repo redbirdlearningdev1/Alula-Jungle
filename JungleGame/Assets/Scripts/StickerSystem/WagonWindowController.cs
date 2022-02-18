@@ -108,15 +108,27 @@ public class WagonWindowController : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
         StudentInfoSystem.SaveStudentPlayerData();
 
-        // enable wagon background
+        // disable wagon background
         wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0f, 0.5f);
 
         // hide in development window
         inDevelopmentWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.2f, 0.2f);
         cartBusy = false;
+        stickerCartOut = true;
         ToggleCart();
         RaycastBlockerController.instance.ClearAllRaycastBlockers();
         yield return new WaitForSeconds(2f);
+    }
+
+    public void CloseInDevelopmentWindow()
+    {
+        // hide in development window
+        inDevelopmentWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.2f, 0.2f);
+        // disable wagon background
+        wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0f, 0.5f);
+        // set bools to false
+        cartBusy = false;
+        stickerCartOut = false;
     }
 
     /* 

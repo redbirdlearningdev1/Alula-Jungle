@@ -692,7 +692,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 52.178543
+      value: 52.211388
       objectReference: {fileID: 0}
     - target: {fileID: 8032072505287944566, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -1652,7 +1652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee4f6c915a8e03d439b3eccb2d1e9cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playTutorial: 1
+  playTutorial: 0
   glowCorrectCoin: 0
   correctValue: 0
   t_correctIndexes: 00000000010000000200000003000000

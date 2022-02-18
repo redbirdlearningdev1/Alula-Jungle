@@ -578,6 +578,12 @@ public class WordFactoryBuildingManager : MonoBehaviour
         // reset water coins
         WaterCoinsController.instance.ResetWaterCoins();
 
+        // end tutorial
+        if (playTutorial && tutorialEvent == 1)
+        {
+            StartCoroutine(WinRoutine());
+            yield break;
+        }
 
         // play appropriate reminder / encouragement popup
         if (playTutorial && tutorialEvent > 1 || !playTutorial)

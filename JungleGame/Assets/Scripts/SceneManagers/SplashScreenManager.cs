@@ -66,11 +66,14 @@ public class SplashScreenManager : MonoBehaviour
     private StudentIndex newProfileIndex;
     private int profileAvatarIndex;
     public Image selectedProfileImage;
+    public Sprite emptyAvatarSprite;
 
 
     [Header("Edit Profile")]
     public Image editProfileImage;
     public TMP_InputField editProfileInput;
+    public LerpableObject confirmDeleteProfileWindow;
+    public LerpableObject confirmDeleteProfileBG;
 
     [Header("Button Stuff")]
     public Image buttonBG;
@@ -89,6 +92,11 @@ public class SplashScreenManager : MonoBehaviour
 
         // play song
         AudioManager.instance.PlaySong(AudioDatabase.instance.FroggerGameSong);
+
+        // close confirmation window
+        confirmDeleteProfileWindow.transform.localScale = Vector2.zero;
+        confirmDeleteProfileBG.LerpImageAlpha(confirmDeleteProfileBG.GetComponent<Image>(), 0f, 0f);
+        confirmDeleteProfileBG.GetComponent<Image>().raycastTarget = false;
 
         // get all three profiles
         var profiles = StudentInfoSystem.GetAllStudentDatas();
@@ -160,7 +168,7 @@ public class SplashScreenManager : MonoBehaviour
         newProfileWindow.blocksRaycasts = false;
         newProfileWindow.alpha = 0f;
 
-        // set up new profile window
+        // set up edit profile window
         editProfileWindow.interactable = false;
         editProfileWindow.blocksRaycasts = false;
         editProfileWindow.alpha = 0f;
@@ -207,6 +215,12 @@ public class SplashScreenManager : MonoBehaviour
             profile1Image.sprite = GameManager.instance.avatars[data1.profileAvatar];
             editProfile1Button.gameObject.SetActive(true);
         }
+        else
+        {
+            profile1Text.text = "empty";
+            profile1Image.sprite = emptyAvatarSprite;
+            editProfile1Button.gameObject.SetActive(false);
+        }
 
         // profile 2
         data2 = StudentInfoSystem.GetStudentData(StudentIndex.student_2);
@@ -216,6 +230,12 @@ public class SplashScreenManager : MonoBehaviour
             profile2Image.sprite = GameManager.instance.avatars[data2.profileAvatar];
             editProfile2Button.gameObject.SetActive(true);
         }
+        else
+        {
+            profile2Text.text = "empty";
+            profile2Image.sprite = emptyAvatarSprite;
+            editProfile2Button.gameObject.SetActive(false);
+        }
 
         // profile 3
         data3 = StudentInfoSystem.GetStudentData(StudentIndex.student_3);
@@ -224,6 +244,12 @@ public class SplashScreenManager : MonoBehaviour
             profile3Text.text = data3.name;
             profile3Image.sprite = GameManager.instance.avatars[data3.profileAvatar];
             editProfile3Button.gameObject.SetActive(true);
+        }
+        else
+        {
+            profile3Text.text = "empty";
+            profile3Image.sprite = emptyAvatarSprite;
+            editProfile3Button.gameObject.SetActive(false);
         }
     }
 
@@ -356,6 +382,7 @@ public class SplashScreenManager : MonoBehaviour
         StudentInfoSystem.SetStudentPlayer(newProfileIndex);
         StudentInfoSystem.GetCurrentProfile().name = newProfileInput.text;
         StudentInfoSystem.GetCurrentProfile().profileAvatar = profileAvatarIndex;
+        StudentInfoSystem.GetCurrentProfile().active = true; // this profile is now active!!!
         StudentInfoSystem.SaveStudentPlayerData();
 
         SetUpProfiles();
@@ -384,6 +411,10 @@ public class SplashScreenManager : MonoBehaviour
 
     public void SelectProfile(int profileNum)
     {
+        // cannot select already selected profile
+        if (selectedProfile == profileNum)
+            return;
+
         if (switchingProfiles)
             return;
         switchingProfiles = true;
@@ -398,11 +429,8 @@ public class SplashScreenManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
         // make start button interactable
-        if (!startButton.interactable)
-        {
-            startButton.interactable = true;
-            buttonText.sprite = textWhite;
-        }
+        startButton.interactable = true;
+        buttonText.sprite = textWhite;
 
         profile1Image.GetComponent<LerpableObject>().LerpScale(new Vector2(unselectedScale, unselectedScale), lerpSpeed);
         profile2Image.GetComponent<LerpableObject>().LerpScale(new Vector2(unselectedScale, unselectedScale), lerpSpeed);
@@ -552,8 +580,8 @@ public class SplashScreenManager : MonoBehaviour
         startButton.interactable = true;
 
         StartCoroutine(HideEditProfileWindow(0.5f));
-        editProfileWindow.interactable = true;
-        editProfileWindow.blocksRaycasts = true;
+        editProfileWindow.interactable = false;
+        editProfileWindow.blocksRaycasts = false;
     }
 
     private IEnumerator RevealEditProfileWindow(float totalTime)
@@ -590,5 +618,49 @@ public class SplashScreenManager : MonoBehaviour
         editProfileWindow.interactable = false;
         editProfileWindow.blocksRaycasts = false;
         editProfileWindow.alpha = 0f;
+    }
+
+    public void OnDeleteProfileButtonPressed()
+    {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        // open confirmation window
+        confirmDeleteProfileWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.one, 0.1f, 0.1f);
+        confirmDeleteProfileBG.LerpImageAlpha(confirmDeleteProfileBG.GetComponent<Image>(), 0.8f, 0.5f);
+        confirmDeleteProfileBG.GetComponent<Image>().raycastTarget = true;
+    }
+
+    public void OnYesDeleteProfilePressed()
+    {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SadBlip, 1f);
+
+        // close confirmation window
+        confirmDeleteProfileWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
+        confirmDeleteProfileBG.LerpImageAlpha(confirmDeleteProfileBG.GetComponent<Image>(), 0f, 0.5f);
+        confirmDeleteProfileBG.GetComponent<Image>().raycastTarget = false;
+
+        // close edit profile window
+        StartCoroutine(HideEditProfileWindow(0.5f));
+        editProfileWindow.interactable = false;
+        editProfileWindow.blocksRaycasts = false;
+
+        // reset profile
+        StudentInfoSystem.ResetProfile(StudentInfoSystem.GetCurrentProfile().studentIndex);
+        SettingsManager.instance.LoadSettingsFromProfile();
+
+        SetUpProfiles();
+    }
+
+    public void OnNoDeleteProfilePressed()
+    {
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        // close confirmation window
+        confirmDeleteProfileWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
+        confirmDeleteProfileBG.LerpImageAlpha(confirmDeleteProfileBG.GetComponent<Image>(), 0f, 0.5f);
+        confirmDeleteProfileBG.GetComponent<Image>().raycastTarget = false;
     }
 }

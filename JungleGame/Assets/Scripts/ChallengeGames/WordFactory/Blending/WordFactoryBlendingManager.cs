@@ -620,6 +620,10 @@ public class WordFactoryBlendingManager : MonoBehaviour
             clip = GameIntroDatabase.instance.blendingIntro11;
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
             yield return new WaitForSeconds(clip.length + 1f);
+
+            // end tutorial
+            StartCoroutine(WinGameRoutine());
+            yield break;
         }
         else
         {

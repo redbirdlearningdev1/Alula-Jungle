@@ -392,10 +392,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playTutorial: 0
   currentCoin: 0
-  t_correctIndexes: 00000000010000000000000002000000
+  t_correctIndexes: 00000000010000000200000002000000
   t_firstRound: 010000000000000000000000
   t_secondRound: 000000000200000000000000
-  t_thirdRound: 030000000000000000000000
+  t_thirdRound: 000000000000000003000000
   t_fourthRound: 000000000000000004000000
 --- !u!114 &265815574
 MonoBehaviour:
@@ -3137,7 +3137,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 55.432682
+      value: 55.57473
       objectReference: {fileID: 0}
     - target: {fileID: 8032072505287944566, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}

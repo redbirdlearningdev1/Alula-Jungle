@@ -977,11 +977,14 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
             yield return new WaitForSeconds(clip.length + 1f);
 
-
             // play tutorial intro 13
             clip = GameIntroDatabase.instance.substitutingIntro13;
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
             yield return new WaitForSeconds(clip.length + 1f);
+
+            // finish tutorial
+            StartCoroutine(WinRoutine());
+            yield break;
         }
         else
         {

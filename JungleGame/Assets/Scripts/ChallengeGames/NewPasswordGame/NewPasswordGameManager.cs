@@ -246,7 +246,6 @@ public class NewPasswordGameManager : MonoBehaviour
         if (!playIntro)
         {
             playIntro = true;
-            // turn on settings button
             SettingsManager.instance.ToggleMenuButtonActive(true);
         }
 

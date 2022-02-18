@@ -179,15 +179,15 @@ public class RummageGameManager : MonoBehaviour
         LockAllPiles();
         yield return new WaitForSeconds(1f);
 
-        // show menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
-
         // play tutorial audio
         List<AudioClip> clips = new List<AudioClip>();
         clips.Add(GameIntroDatabase.instance.rummageIntro1);
         clips.Add(GameIntroDatabase.instance.rummageIntro2);
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Clogg, clips);
         yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
+
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
 
         // reveal dancing man
         StartCoroutine(ShowDancingManRoutine());
@@ -398,6 +398,7 @@ public class RummageGameManager : MonoBehaviour
             if (playTutorial && tutorialEvent == 3)
             {
                 StartCoroutine(WinRoutine(coin.gameObject));
+                return true;
             }   
 
             // success! go on to the next row or win game if on last row
@@ -480,21 +481,21 @@ public class RummageGameManager : MonoBehaviour
     {
         // increase split song
         AudioManager.instance.IncreaseSplitSong();
-
         winCount++;
 
         yield return new WaitForSeconds(.01f);
         List<RummageCoin> pileSet = GetCoinPile(orc.AtLocation() - 1);
 
+        yield return new WaitForSeconds(0.5f);
+        
+        // repair pile
         Repairs[orc.AtLocation() - 1].GetComponent<Animator>().Play("repairAnimation");
+        piles[orc.AtLocation()-1].GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.2f, 0.2f);
+        yield return new  WaitForSeconds(0.2f);
+        piles[orc.AtLocation()-1].pileDone();
         // play heal sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.HealFixItem, 0.5f);
-
-        currCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
-        currCoin.GetComponent<LerpableObject>().LerpImageAlpha(currCoin.GetComponent<Image>(), 0f, 0.25f);
-        yield return new WaitForSeconds(0.5f);
-        chest.UpgradeBag();
-
+        
         foreach (var coin in pileSet)
         {
             if (coin != currCoin)
@@ -506,9 +507,8 @@ public class RummageGameManager : MonoBehaviour
         foreach (var coin in pileSet)
             coin.gameObject.SetActive(false);
 
-        piles[orc.AtLocation()-1].pileDone();
-        stretch.stretchIn();
 
+        stretch.stretchIn();
         orc.GoToOrigin();
 
         
@@ -606,11 +606,6 @@ public class RummageGameManager : MonoBehaviour
         List<RummageCoin> pileSet = GetCoinPile(orc.AtLocation() - 1);
 
         Repairs[orc.AtLocation() - 1].GetComponent<Animator>().Play("repairAnimation");
-
-        currCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
-        currCoin.GetComponent<LerpableObject>().LerpImageAlpha(currCoin.GetComponent<Image>(), 0f, 0.25f);
-        yield return new WaitForSeconds(0.5f);
-        chest.UpgradeBag();
 
         foreach (var coin in pileSet)
         {
@@ -751,9 +746,13 @@ public class RummageGameManager : MonoBehaviour
 
     private IEnumerator TutorialGame(int index)
     {
-        print ("index: " + index);
         StartCoroutine(SetPilesActive(false));
         orc.channelOrc();
+
+        // make pile larger
+        currentPile = index;
+        piles[currentPile].GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.1f);
+        piles[currentPile].SetWiggleOn();
 
         List<RummageCoin> pileSet = GetCoinPile(index);
         int i = 0;
@@ -965,8 +964,12 @@ public class RummageGameManager : MonoBehaviour
                         continue;
                 }
 
-                p.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
-                p.SetWiggleOn();
+                // set active if pile not locked
+                if (p.currPileLock)
+                {   
+                    p.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
+                    p.SetWiggleOn();
+                }
                 yield return new WaitForSeconds(0.1f);
             }
         }
