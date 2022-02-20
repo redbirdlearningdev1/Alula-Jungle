@@ -229,11 +229,11 @@ public static class AISystem
         }
         else if( playerData.tPawPolPlayed == 0)
         {
-             return challengeGameOptions[1];
+             return challengeGameOptions[0];
         }
         else if( playerData.tPawCoinPlayed == 0)
         {
-             return challengeGameOptions[2];
+             return challengeGameOptions[0];
         }
         else
         {
@@ -259,7 +259,7 @@ public static class AISystem
             playerData.rRumblePlayed = 0;
             return true;
         }
-        else if(playerData.rRumblePlayed == 0)
+        else if(playerData.rRumblePlayed == 0 && playerData.starsLastGamePlayed+playerData.starsGameBeforeLastPlayed >= 5) 
         {
             playerData.rRumblePlayed = 1;
             return false;
