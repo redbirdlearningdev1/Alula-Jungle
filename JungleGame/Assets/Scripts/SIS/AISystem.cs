@@ -467,7 +467,7 @@ public static class AISystem
         try{
             if(word == playerData.lastWordFaced)
             {
-                ChallengeWordSelectionBlending(playerData);
+                return ChallengeWordSelectionBlending(playerData);
             }
         }
         catch
@@ -1227,7 +1227,7 @@ public static class AISystem
         try{
             if(word == playerData.lastWordFaced)
             {
-                ChallengeWordSelectionTigerPawCoin(playerData);
+                return ChallengeWordSelectionTigerPawCoin(playerData);
             }
         }
         catch
@@ -1624,7 +1624,7 @@ public static class AISystem
         try{
             if(word == playerData.lastWordFaced)
             {
-                ChallengeWordPassword(playerData);
+                return ChallengeWordPassword(playerData);
             }
         }
         catch
