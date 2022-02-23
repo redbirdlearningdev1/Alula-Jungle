@@ -117,7 +117,6 @@ public class NewBoatGameManager : MonoBehaviour
         {
             // get mic input and determine if input is loud enough
             float volumeLevel = MicInput.MicLoudness * 200;
-            //print ("volume level: " + volumeLevel);
             if (volumeLevel >= audioInputThreshold)
             {
                 micIndicator.AudioInputDetected();
@@ -190,7 +189,7 @@ public class NewBoatGameManager : MonoBehaviour
 
     private IEnumerator ContinueBoatGame()
     {
-        print ("boat game event: " + boatGameEvent);
+        GameManager.instance.SendLog(this, "current boat event: " + boatGameEvent);
 
         switch (boatGameEvent)
         {

@@ -16,9 +16,6 @@ public class LogCoin : MonoBehaviour
     public Image image;
     private bool audioPlaying;
 
-    // original vars
-    private bool originalSet = false;
-
     void Awake() 
     {
         animator = GetComponent<Animator>();

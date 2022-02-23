@@ -48,7 +48,6 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
 
     private bool loadDone = false;
     private bool testDone = false;
-    private bool updateDone = false;
 
     private const string csv_folder_path = "Assets/Resources/CSV_folder/";
 
@@ -254,7 +253,6 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
 
         updateText.color = Color.green;
         updateText.text = "database updated!";
-        updateDone = true;
     }
 
     public void OnUploadPairsPressed()
@@ -580,6 +578,5 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
 
         loadDone = false;
         testDone = false;
-        updateDone = false;
     }
 }

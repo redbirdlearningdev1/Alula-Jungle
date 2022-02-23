@@ -9,10 +9,6 @@ using UnityEditor;
 
 public static class LoadSaveSystem
 {
-    // default student player values
-    public static string default_version = "alpha1.0";
-    // 1.6 added stickers to SIS
-
     public static string default_name = "new profile";
     public static int    default_stars = 0;
     public static int    default_map_limit = 0;
@@ -38,7 +34,7 @@ public static class LoadSaveSystem
         {
             using (StreamWriter writer = new StreamWriter(fileStream))
             {
-                Debug.Log("json data: " + jsonData);
+                //Debug.Log("json data: " + jsonData);
                 writer.Write(jsonData);
                 writer.Close();
             }
@@ -66,14 +62,14 @@ public static class LoadSaveSystem
             StudentPlayerData studentData = JsonUtility.FromJson<StudentPlayerData>(file);
 
             // check to make sure data is correct version
-            if (studentData.version != "alpha1.0")
+            if (studentData.version != GameManager.currentGameVersion)
             {
-                Debug.LogError("Student data is wrong version");
+                GameManager.instance.SendError("LoadSaveSystem", "Student data is wrong version");
 
                 // create new profile file
                 if (createNewIfNull)
                 {
-                    Debug.Log("profile not found, making new profile!");
+                    GameManager.instance.SendLog("LoadSaveSystem", "profile not found, making a new profile!");
                     ResetStudentData(index);
                     return LoadStudentData(index, false);
                 }
@@ -86,7 +82,7 @@ public static class LoadSaveSystem
             if (studentData != null)
                 return studentData;
             else
-                Debug.Log("StudentPlayerData is null, returning null.");
+                GameManager.instance.SendLog("LoadSaveSystem", "StudentPlayerData is null, returning null.");
         }
         else
         {
@@ -94,7 +90,7 @@ public static class LoadSaveSystem
             // create new profile file
             if (createNewIfNull)
             {
-                Debug.Log("profile not found, making new profile!");
+                GameManager.instance.SendLog("LoadSaveSystem", "profile not found, making a new profile!");
                 ResetStudentData(index);
                 return LoadStudentData(index, false);
             }
@@ -109,7 +105,7 @@ public static class LoadSaveSystem
         new_data.studentIndex = index;
 
         // set all variables to be default values
-        new_data.version =      default_version;
+        new_data.version =      GameManager.currentGameVersion;
         new_data.name =         default_name;
         new_data.active = false;
         new_data.mostRecentProfile = false;

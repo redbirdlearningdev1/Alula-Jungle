@@ -92,7 +92,6 @@ public class StoryGameManager : MonoBehaviour
         {
             // get mic input and determine if input is loud enough
             float volumeLevel = MicInput.MicLoudness * 200;
-            //print ("volume level: " + volumeLevel);
             if (volumeLevel >= audioInputThreshold)
             {
                 waitingForAudioInput = false;
@@ -386,8 +385,6 @@ public class StoryGameManager : MonoBehaviour
         float end = start - Mathf.Abs(actionWordStopPos.position.x - wordTransforms[currWord + 1].transform.position.x); 
         float timer = 0f;
 
-        print ("end: " + end);
-
         while (true)
         {
             timer += Time.deltaTime;
@@ -437,7 +434,6 @@ public class StoryGameManager : MonoBehaviour
         if (playingDancingManAnimation)
             yield break;
         playingDancingManAnimation = true;
-        // print ("dancing man animation -> " + selectedCoin.type);
         dancingMan.PlayUsingPhonemeEnum(currentEnum);
         AudioManager.instance.PlayTalk(currentClip);
 

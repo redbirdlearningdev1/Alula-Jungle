@@ -214,7 +214,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     {
         image = GetComponent<Image>();
         if (animatedIcon != AnimatedIcon.none) animator = GetComponent<Animator>();
-        if (repairAnimator) repairAnimator.Play("defaultAnimation");
+        if (repairAnimator) repairAnimator.Play("clearAnimation");
 
         // configure current stars
         InitStars(); 
@@ -423,7 +423,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 if (this.identifier == MapIconIdentfier.M_guards)
                 {
                     MapAnimationController.instance.marcus.characterAnimator.Play("marcusFixed");
-                    MapAnimationController.instance.darwin.characterAnimator.Play("darwinFixed");
+                    MapAnimationController.instance.brutus.characterAnimator.Play("brutusFixed");
                 }
                 else
                 {

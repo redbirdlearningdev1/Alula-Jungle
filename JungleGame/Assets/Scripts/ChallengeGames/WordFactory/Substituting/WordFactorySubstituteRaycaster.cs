@@ -45,7 +45,6 @@ public class WordFactorySubstituteRaycaster : MonoBehaviour
             var raycastResults = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointerEventData, raycastResults);
 
-            bool isCorrect = false;
             if(raycastResults.Count > 0)
             {
                 foreach(var result in raycastResults)

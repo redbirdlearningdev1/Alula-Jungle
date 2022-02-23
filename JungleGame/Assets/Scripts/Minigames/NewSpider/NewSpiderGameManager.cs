@@ -23,8 +23,6 @@ public class NewSpiderGameManager : MonoBehaviour
     [SerializeField] private WebController web;
     [SerializeField] private SpiderRayCaster caster;
 
-    private bool gameSetup = false;
-
     private List<ActionWordEnum> globalCoinPool;
     private List<ActionWordEnum> unusedCoinPool;
     private List<ActionWordEnum> usedCoinPool;

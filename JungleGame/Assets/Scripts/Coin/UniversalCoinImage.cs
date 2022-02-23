@@ -15,7 +15,6 @@ public class UniversalCoinImage : MonoBehaviour
 {
     public CoinType coinType;
     private CoinType prevCoinType;
-    private bool coinSet;
     public ElkoninValue value;
 
     // coin objects
@@ -39,7 +38,6 @@ public class UniversalCoinImage : MonoBehaviour
     {
         if (coinType != prevCoinType)
         {
-            coinSet = false;
             prevCoinType = coinType;
 
             // change value if needed
@@ -66,8 +64,6 @@ public class UniversalCoinImage : MonoBehaviour
                 consonantCoin.SetCoinType(ChallengeWordDatabase.ElkoninValueToConsonantEnum(value));
                 consonantCoin.gameObject.SetActive(true);
             }
-
-            coinSet = true;
         }
     }
 

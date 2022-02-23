@@ -93,8 +93,6 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
 
     private IEnumerator CheckForStoryBeatRoutine()
     {
-        print ("story beat: " + StudentInfoSystem.GetCurrentProfile().currStoryBeat);
-
         // check for character quips
         if (character == Character.Darwin)
         {

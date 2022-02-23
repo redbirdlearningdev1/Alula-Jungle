@@ -10,7 +10,6 @@ public class RummageCoinRaycaster : MonoBehaviour
     public bool isOn = false;
     public bool pileChosen = false;
     private RummageCoin selectedRummageCoin = null;
-    private pileRummage pile = null;
     public float moveSpeed;
     [SerializeField] private chest Chester;
     [SerializeField] private List<pileRummage> piles;

@@ -26,9 +26,6 @@ public class Poloroid : MonoBehaviour
     private Image image;
 
 
-    // original vars
-    private bool originalSet = false;
-
     void Awake()
     {
         //print(type.ToString());

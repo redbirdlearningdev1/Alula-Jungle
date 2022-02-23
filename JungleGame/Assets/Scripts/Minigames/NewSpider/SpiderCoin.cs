@@ -18,10 +18,6 @@ public class SpiderCoin : MonoBehaviour
     private BoxCollider2D myCollider;
     private Image image;
 
-
-    // original vars
-    private bool originalSet = false;
-
     void Awake()
     {
         animator = GetComponent<Animator>();

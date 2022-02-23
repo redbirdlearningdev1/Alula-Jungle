@@ -26,9 +26,6 @@ public class BugController : MonoBehaviour
     public Image image;
     private bool audioPlaying;
 
-    // original vars
-    private bool originalSet = false;
-
     void Awake()
     {
         if (instance == null)

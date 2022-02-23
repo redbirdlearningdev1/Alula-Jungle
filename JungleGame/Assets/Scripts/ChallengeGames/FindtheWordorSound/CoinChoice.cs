@@ -18,9 +18,6 @@ public class CoinChoice : MonoBehaviour
     private Image image;
     private bool audioPlaying;
 
-    // original vars
-    private bool originalSet = false;
-
     void Awake()
     {
         animator = GetComponent<Animator>();

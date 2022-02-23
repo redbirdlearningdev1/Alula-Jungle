@@ -12,7 +12,6 @@ public class Board : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     private Animator animator;
 
     private bool isPressed = false;
-    private bool isFixed = false;
     public bool isOn = true;
 
     void Awake()

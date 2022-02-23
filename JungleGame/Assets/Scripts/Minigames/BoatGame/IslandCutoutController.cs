@@ -71,7 +71,6 @@ public class IslandCutoutController : MonoBehaviour
             {
                 foreach(var result in raycastResults)
                 {
-                    print (result.gameObject.name);
                     if (result.gameObject.name == "IslandOutlineTarget")
                     {
                         isCorrect = true;
@@ -101,8 +100,6 @@ public class IslandCutoutController : MonoBehaviour
             {
                 foreach(var result in raycastResults)
                 {
-                    //print ("result: " + result.gameObject.name);
-
                     if (result.gameObject.transform.name == "IslandCutout")
                     {
                         holdingIsland = true;

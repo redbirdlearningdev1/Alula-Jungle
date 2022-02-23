@@ -12,7 +12,6 @@ public class StickerBoardBook : MonoBehaviour, IPointerUpHandler, IPointerDownHa
     private Animator animator;
 
     private bool isPressed = false;
-    private bool isFixed = false;
     
     public bool isOn = true;
 

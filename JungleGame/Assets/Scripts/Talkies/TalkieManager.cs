@@ -138,7 +138,7 @@ public class TalkieManager : MonoBehaviour
                     {
                         if (!endingTalkie)
                         {
-                            GameManager.instance.SendLog(this, "manual end talkie");
+                            GameManager.instance.SendLog(this, "skipping talkie");
                             StopAllCoroutines();
                             StartCoroutine(EndTalkie());
                         }
@@ -589,8 +589,6 @@ public class TalkieManager : MonoBehaviour
 
         overrideSegmentIndex = true;
         newSegmentIndex = gotoIndex;
-
-        print ("goto: " + newSegmentIndex);
 
         // on yes
         if (isYes)

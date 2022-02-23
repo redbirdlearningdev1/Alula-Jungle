@@ -14,7 +14,6 @@ public class TigerGameManager : MonoBehaviour
     [SerializeField] private Transform selectedObjectParentCoin;
     [SerializeField] private List<GameObject> correctCoins;
     [SerializeField] private List<GameObject> incorrectCoins;
-    private bool gameSetup = false;
 
     [Header("Positions")]
     [SerializeField] private Transform coinStartPos;

@@ -31,9 +31,10 @@ public enum GameType
 
 public class GameManager : DontDestroy<GameManager>
 {
+    public static string currentGameVersion = "alpha1.1";
+
     public bool devModeActivated;
     public const float transitionTime = 0.5f; // time to fade into and out of a scene (total transition time is: transitionTime * 2)
-    public Vector2Int gameResolution;
     public Camera globalCamera;
 
     // game data
@@ -63,12 +64,6 @@ public class GameManager : DontDestroy<GameManager>
     [Header("Avatars")]
     public List<Sprite> avatars;
 
-    void Start()
-    {
-        // set game resolution
-        Screen.SetResolution(gameResolution.x, gameResolution.y, FullScreenMode.FullScreenWindow);
-    }
-
     private void Update()
     {
         if (devModeActivated)
@@ -76,17 +71,24 @@ public class GameManager : DontDestroy<GameManager>
             // set dev mode indicator on (once)
             if (!devIndicatorSet)
             {
-                SendLog(this, "Dev Mode - ON");
+                SendLog(this, "Dev Mode set as - ON");
                 devIndicatorSet = true;
                 devModeIndicator.SetActive(true);
             }
-            // press 'Shift + D' to go to the dev menu
+            
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
+                // press 'Shift + D' to go to the dev menu
                 if (Input.GetKeyDown(KeyCode.D))
                 {
                     LoadScene("DevMenu", true);
-                }                
+                }    
+
+                // press 'Shift + C' to open console
+                if (Input.GetKeyDown(KeyCode.C))
+                {
+                    Debug.LogError("Forcing the build console to open...");
+                }       
             }
         }
         else
@@ -94,7 +96,7 @@ public class GameManager : DontDestroy<GameManager>
             // set dev mode indicator off (once)
             if (!devIndicatorSet)
             {
-                SendLog(this, "Dev Mode - OFF");
+                SendLog(this, "Dev Mode set as - OFF");
                 devIndicatorSet = true;
                 devModeIndicator.SetActive(false);
             }
@@ -236,7 +238,7 @@ public class GameManager : DontDestroy<GameManager>
         // clean up scene
         SceneCleanup();
 
-        SendLog(this, "Loading new scene - " + sceneName);
+        SendLog(this, "loading new scene - \"" + sceneName + "\"");
         if (useLoadScene)
         {
             SceneManager.LoadSceneAsync("LoadingScene");

@@ -34,11 +34,11 @@ public class MicInput : MonoBehaviour
             {
                 _device = Microphone.devices[0];
                 micDeviceIndex = 0;
-                print("audio input device set to: " + _device);
+                GameManager.instance.SendLog("MicInput", "audio input device set to: " + _device);
             }
             else
             {   
-                GameManager.instance.SendLog(this, "no microphone devices found");
+                GameManager.instance.SendLog("MicInput", "no microphone devices found");
                 return;
             }
         }
@@ -59,7 +59,7 @@ public class MicInput : MonoBehaviour
         {
             _device = Microphone.devices[num];
             micDeviceIndex = num;
-            GameManager.instance.SendLog(this, "switching to device: " + _device);
+            GameManager.instance.SendLog("MicInput", "switching audio input device to: " + _device);
         }
     }
 

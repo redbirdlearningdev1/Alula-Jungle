@@ -30,9 +30,7 @@ public class RummageGameManager : MonoBehaviour
     [SerializeField] private RummageCoinRaycaster caster;
     [SerializeField] private List<GameObject> Repairs;
 
-    private bool waitingForCoinSelection = false;
     private bool playingDancingManAnimation = false;
-    private bool gameSetup = false;
 
     private List<ActionWordEnum> globalCoinPool;
     private List<ActionWordEnum> unusedCoinPool;
@@ -802,7 +800,6 @@ public class RummageGameManager : MonoBehaviour
 
         // dancing man animation
         StartCoroutine(DancingManRoutine());
-        waitingForCoinSelection = true;
     }
 
     private IEnumerator ShowCoins(int index, bool tutorial = false)
@@ -930,8 +927,6 @@ public class RummageGameManager : MonoBehaviour
         prevMainCoins.Add(selectedRummageCoin.type);
 
         StartCoroutine(DancingManRoutine());
-        //StartCoroutine(RepeatWhileWating());
-        waitingForCoinSelection = true;
     }
 
     private List<RummageCoin> GetCoinPile(int index)

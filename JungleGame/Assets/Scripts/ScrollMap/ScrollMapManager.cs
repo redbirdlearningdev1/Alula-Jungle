@@ -118,7 +118,7 @@ public class ScrollMapManager : MonoBehaviour
 
         // get current game event
         StoryBeat playGameEvent = StudentInfoSystem.GetCurrentProfile().currStoryBeat;
-        GameManager.instance.SendLog(this, "Current Story Beat: " + playGameEvent);
+        GameManager.instance.SendLog(this, "current story beat: \"" + playGameEvent + "\"");
 
         /* 
         ################################################
@@ -232,13 +232,9 @@ public class ScrollMapManager : MonoBehaviour
         // update map icons
         UpdateMapIcons(true);
 
-        print ("revealGMUI: " + revealGMUI);
-
         // show GM UI
         if (revealGMUI)
         {
-            print ("showing buttons!");
-
             SettingsManager.instance.ToggleMenuButtonActive(true);
 
             // show sticker button if unlocked
@@ -331,8 +327,6 @@ public class ScrollMapManager : MonoBehaviour
                 // wait for animation to be done
                 while (!MapAnimationController.instance.animationDone)
                     yield return null;
-
-                print ("here!");
             }
             else
             {
@@ -760,8 +754,6 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().mapData.MB_rock.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.MB_umbrella.isFixed)
             {
-                print ("mermaids");
-
                 // play MB rebuilt
                 MapAnimationController.instance.PlayMapAnim(MapAnim.MermaidBeachRebuilt);
                 // wait for animation to be done
@@ -1053,7 +1045,6 @@ public class ScrollMapManager : MonoBehaviour
     }
     private IEnumerator ShakeMapRoutine()
     {
-        //print ("curve.length: " + curve.length);
         float timer = 0f;
         Vector3 originalPos = Map.position;
         while (true)
@@ -1450,7 +1441,6 @@ public class ScrollMapManager : MonoBehaviour
         currMapLocation--;
         if (currMapLocation < minMapLimit)
         {
-            print ("left bump!");
             currMapLocation = minMapLimit;
             StartCoroutine(BumpAnimation(true));
             yield break;
@@ -1498,7 +1488,6 @@ public class ScrollMapManager : MonoBehaviour
         // cant scroll past map limit
         if (currMapLocation > mapLimit)
         {
-            print ("you hit da limit!");
             currMapLocation = mapLimit;
             StartCoroutine(BumpAnimation(false));
             yield break;
@@ -1506,7 +1495,6 @@ public class ScrollMapManager : MonoBehaviour
         // cant scroll past map end
         else if (currMapLocation > mapLocations.Count - 1)
         {
-            print ("right bump!");
             currMapLocation = mapLocations.Count - 1;
             StartCoroutine(BumpAnimation(false));
             yield break;
@@ -1567,7 +1555,6 @@ public class ScrollMapManager : MonoBehaviour
     // set the index where the player can no longer go forward
     public void SetMapLimit(int index)
     {
-        // print ("index: " + index);
         if (index >= 0 && index < mapLocations.Count)
         {
             FogController.instance.mapXpos = mapLocations[index].fogLocation;
@@ -1581,7 +1568,6 @@ public class ScrollMapManager : MonoBehaviour
         {
             currMapLocation = index;
             float tempX = GetXPosFromMapLocationIndex(index);
-            //print ("index: " + index + ", pos: " + tempX);
             Map.localPosition = new Vector3(tempX, staticMapYPos, 0f);
         }   
     }

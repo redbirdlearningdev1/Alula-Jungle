@@ -23,12 +23,12 @@ public static class StudentInfoSystem
 
         SettingsManager.instance.LoadSettingsFromProfile(); // load profile settings
         DropdownToolbar.instance.LoadToolbarDataFromProfile(); // load profile coins
-        GameManager.instance.SendLog("StudentInfoSystem", "current profile set to: " + index);
+        GameManager.instance.SendLog("StudentInfoSystem", "set current profile to: " + index);
     }
 
     private static void SetMostRecentProfile(StudentIndex index)
     {
-        GameManager.instance.SendLog("StudentInfoSystem", "setting most recent profile: " + index);
+        GameManager.instance.SendLog("StudentInfoSystem", "set most recent profile to: " + index);
 
         var data1 = LoadSaveSystem.LoadStudentData(StudentIndex.student_1, false);
         var data2 = LoadSaveSystem.LoadStudentData(StudentIndex.student_2, false);
@@ -67,10 +67,11 @@ public static class StudentInfoSystem
         {
             LoadSaveSystem.SaveStudentData(currentStudentPlayer);  // save current student data
             SetMostRecentProfile(currentStudentPlayer.studentIndex); // make profile most recent
+            GameManager.instance.SendLog("StudentInfoSystem", "saving current player data - " + currentStudentPlayer.studentIndex);
         }
             
         else
-            Debug.Log("Current student player is null.");
+            GameManager.instance.SendLog("StudentInfoSystem", "could not save player data - current player is null");
     }
 
     public static StudentPlayerData GetStudentData(StudentIndex index)

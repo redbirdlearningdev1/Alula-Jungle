@@ -24,8 +24,6 @@ public class DancingManController : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
-                print("clicked on: " + hit.collider.gameObject.name);
-
                 if (hit.collider.gameObject.transform.CompareTag("DancingMan"))
                 {
                     isClicked = true;

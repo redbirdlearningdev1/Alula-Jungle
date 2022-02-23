@@ -111,8 +111,8 @@ public class SplashScreenManager : MonoBehaviour
 
         if (currProfile != null)
         {
-            print ("currProfile: " + currProfile.name);
-            print ("currChapter: " + currProfile.currentChapter);
+            GameManager.instance.SendLog("SplashScreenManager", "current profile: " + currProfile.name);
+            GameManager.instance.SendLog("SplashScreenManager", "current chapter: " + currProfile.currentChapter);
         }
 
         // default to chapter 0 animations

@@ -345,13 +345,9 @@ public class NewPasswordGameManager : MonoBehaviour
         // small delay
         yield return new WaitForSeconds(1f);
 
-        bool winGame = false;
-
         // determine if correct num of coins
         if (currentWord.elkoninCount == PasswordTube.instance.tubeCoins.Count)
         {
-            winGame = true;
-
             // play right audio
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
             yield return new WaitForSeconds(1f);

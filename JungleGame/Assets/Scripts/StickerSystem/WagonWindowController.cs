@@ -19,7 +19,6 @@ public class WagonWindowController : MonoBehaviour
     public Animator GeckoAnim;
     private bool stickerCartOut = false;
     private bool cartBusy;
-    private bool stickerButtonsDisabled;
 
     public Transform cartStartPosition;
     public Transform cartOnScreenPosition;
@@ -64,7 +63,7 @@ public class WagonWindowController : MonoBehaviour
         BackWindow.SetActive(false);
 
         // activate wagon
-        wagon.gameObject.SetActive(true);
+        wagon.gameObject.SetActive(false);
 
         // disable wagon background
         wagonBackground.SetImageAlpha(wagonBackground.GetComponent<Image>(), 0f);
@@ -402,7 +401,6 @@ public class WagonWindowController : MonoBehaviour
     private IEnumerator StickerInputDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        stickerButtonsDisabled = false;
     }
 
     public void ToggleCart()
@@ -424,6 +422,9 @@ public class WagonWindowController : MonoBehaviour
 
     private IEnumerator RollOnScreen()
     {
+        // activate wagon
+        wagon.gameObject.SetActive(true);
+
         wagon.transform.position = cartStartPosition.position;
 
         // close settings menu if open
@@ -547,6 +548,9 @@ public class WagonWindowController : MonoBehaviour
         // enable ui buttons
         SettingsManager.instance.ToggleMenuButtonActive(true);
         SettingsManager.instance.ToggleWagonButtonActive(true);
+
+        // activate wagon
+        wagon.gameObject.SetActive(false);
 
         // check for scroll map game events
         ScrollMapManager.instance.CheckForScrollMapGameEvent(StudentInfoSystem.GetCurrentProfile().currStoryBeat);

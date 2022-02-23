@@ -289,9 +289,7 @@ public class SettingsWindowController : MonoBehaviour
     }
 
     public void UpdateMapSprite()
-    {   
-        print ("settings map: " + StudentInfoSystem.GetCurrentProfile().mapLimit);
-
+    {
         // get current map limit
         switch (StudentInfoSystem.GetCurrentProfile().mapLimit)
         {

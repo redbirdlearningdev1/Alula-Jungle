@@ -60,7 +60,6 @@ public class StoryGameDatabaseManager : MonoBehaviour
 
     private bool loadDone = false;
     private bool testDone = false;
-    private bool updateDone = false;
 
     private const string csv_folder_path = "Assets/Resources/CSV_folder/";
     private const string storygame_folder_path = "Assets/Resources/StoryGameObjects/";
@@ -144,7 +143,6 @@ public class StoryGameDatabaseManager : MonoBehaviour
 
         loadDone = false;
         testDone = false;
-        updateDone = false;
 
         InitCreateGlobalList();
     }

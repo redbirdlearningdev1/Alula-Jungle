@@ -19,7 +19,6 @@ public class Coin : MonoBehaviour
     private Vector3 scaleNormal = new Vector3(.8f, .8f, 0f);
     private Vector3 scaleChange = new Vector3(.3f, .3f, 0f);
     // original vars
-    private bool originalSet = false;
     private int moveSpeed = 2;
     private Animator animator;
     

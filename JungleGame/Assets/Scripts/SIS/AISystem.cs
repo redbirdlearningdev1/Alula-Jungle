@@ -7,10 +7,6 @@ public static class AISystem
     private static List<GameType> minigameOptions; 
     private static List<float> gameRatio;
     
-    private static float royalRumbleOdds = 0.05f; // 5%
-
-    
-
     public static GameType DetermineMinigame(StudentPlayerData playerData)
     {
         //Debug.Log("Last Game Played " + playerData.lastGamePlayed);
@@ -144,10 +140,6 @@ public static class AISystem
                     return minigameOptions[Random.Range(0, minigameOptions.Count)];
                     
                 }
-            return minigameOptions[Random.Range(0, minigameOptions.Count)];
-                
-                
-               
         }
     }
  
@@ -815,7 +807,6 @@ public static class AISystem
         List<ActionWordEnum> set3 = new List<ActionWordEnum>();
         List<ActionWordEnum> set4 = new List<ActionWordEnum>();
         List<ActionWordEnum> set5 = new List<ActionWordEnum>();
-        bool containSound = false;
 
         set1.Add(ActionWordEnum.mudslide);
         set1.Add(ActionWordEnum.listen);
@@ -870,7 +861,6 @@ public static class AISystem
         ChallengeWord word = coinGlobalWordList[index];
         for(int i = 0; i < 2; i++)
         {
-            containSound = false;
             index = Random.Range(0, coinGlobalWordList.Count);
             word = coinGlobalWordList[index];
             if(playerData.starsTPawPol < 9)
