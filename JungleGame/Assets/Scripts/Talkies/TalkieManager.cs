@@ -247,7 +247,7 @@ public class TalkieManager : MonoBehaviour
 
         // set current talkie name
         if (GameManager.instance.devModeActivated)
-            currentTalkieText.text = "database name: " + currentTalkie.name;
+            currentTalkieText.text = currentTalkie.name;
 
         // segment to start talkie on
         int startIndex = 0;

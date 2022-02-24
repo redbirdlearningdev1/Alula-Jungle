@@ -60,11 +60,16 @@ public class GameManager : DontDestroy<GameManager>
     [HideInInspector] public bool finishedRoyalRumbleGame = false; // for playing talkies after RR game
     [HideInInspector] public bool wonRoyalRumbleGame = false; // for playing talkies after RR game
 
-    
     [Header("Avatars")]
     public List<Sprite> avatars;
 
-    private void Update()
+    void Start()
+    {
+        // set game resolution
+        Screen.SetResolution(GameAwake.gameResolution.x, GameAwake.gameResolution.y, true);
+    }
+
+    void Update()
     {
         if (devModeActivated)
         {
@@ -87,7 +92,8 @@ public class GameManager : DontDestroy<GameManager>
                 // press 'Shift + C' to open console
                 if (Input.GetKeyDown(KeyCode.C))
                 {
-                    Debug.LogError("Forcing the build console to open...");
+                    Debug.LogError("forcing open Development Console...");
+                    StartCoroutine(LogDateTimeNow(2f));
                 }       
             }
         }
@@ -101,6 +107,12 @@ public class GameManager : DontDestroy<GameManager>
                 devModeIndicator.SetActive(false);
             }
         }
+    }
+
+    private IEnumerator LogDateTimeNow(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Debug.LogError("it is currently " + System.DateTime.Now);
     }
 
     /* 

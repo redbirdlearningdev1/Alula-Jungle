@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class GameAwake : MonoBehaviour
 {
-    public Vector2Int gameResolution;
+    public static Vector2Int gameResolution = new Vector2Int(1350, 900);
+
+    public Camera mainCam;
 
     void Awake()
     {
         // set game resolution
-        Screen.SetResolution(gameResolution.x, gameResolution.y, FullScreenMode.ExclusiveFullScreen);
+        Screen.SetResolution(gameResolution.x, gameResolution.y, true);
     }
 }

@@ -1639,8 +1639,9 @@ public class MapAnimationController : MonoBehaviour
 
         // gv sign post springs into place
         ScrollMapManager.instance.mapLocations[(int)MapLocation.GorillaVillage].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_stars, false);
-
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
+        yield return new WaitForSeconds(1f);
 
         // // place temp copy over talkie bg
         // var tempSignPost = TempObjectPlacer.instance.PlaceNewObject(mapIconsAtLocation[2].signPost.gameObject, mapIconsAtLocation[2].signPost.transform.localPosition);
@@ -1799,6 +1800,10 @@ public class MapAnimationController : MonoBehaviour
 
         // MS sign post springs into place
         ScrollMapManager.instance.mapLocations[3].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_stars, false);
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
+        yield return new WaitForSeconds(1f);
+
 
         // before unlocking orc village - set objects to be destroyed
         foreach (var icon in ScrollMapManager.instance.mapLocations[4].mapIcons)
@@ -1945,6 +1950,10 @@ public class MapAnimationController : MonoBehaviour
 
         // OV sign post springs into place
         ScrollMapManager.instance.mapLocations[4].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_stars, false);
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
+        yield return new WaitForSeconds(1f);
+
 
         // before unlocking spooky forest - set objects to be repaired
         foreach (var icon in ScrollMapManager.instance.mapLocations[5].mapIcons)
@@ -2213,6 +2222,10 @@ public class MapAnimationController : MonoBehaviour
 
         // SF sign post springs into place
         ScrollMapManager.instance.mapLocations[5].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.OC_signPost_stars, false);
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
+        yield return new WaitForSeconds(1f);
+
 
         // before unlocking orc camp - set objects to be destroyed
         foreach (var icon in ScrollMapManager.instance.mapLocations[6].mapIcons)
@@ -2355,6 +2368,10 @@ public class MapAnimationController : MonoBehaviour
 
         // SF sign post springs into place
         ScrollMapManager.instance.mapLocations[6].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_stars, false);
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
+        yield return new WaitForSeconds(1f);
+
 
         // before unlocking gorilla poop - set objects to be destroyed
         foreach (var icon in ScrollMapManager.instance.mapLocations[7].mapIcons)
@@ -2496,6 +2513,10 @@ public class MapAnimationController : MonoBehaviour
 
         // SF sign post springs into place
         ScrollMapManager.instance.mapLocations[7].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.GP_signPost_stars, false);
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
+        yield return new WaitForSeconds(1f);
+
 
         // place darwin in WC
         darwin.mapAnimator.Play("DarwinWCPos");
@@ -2763,6 +2784,10 @@ public class MapAnimationController : MonoBehaviour
 
         // SF sign post springs into place
         ScrollMapManager.instance.mapLocations[8].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.WC_signPost_stars, false);
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
+        yield return new WaitForSeconds(1f);
+
 
         // before unlocking pirate ship - set objects to be destroyed
         foreach (var icon in ScrollMapManager.instance.mapLocations[9].mapIcons)
@@ -2904,6 +2929,10 @@ public class MapAnimationController : MonoBehaviour
 
         // PS sign post springs into place
         ScrollMapManager.instance.mapLocations[9].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.PS_signPost_stars, false);
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
+        yield return new WaitForSeconds(1f);
+
 
         // place darwin in MB
         darwin.mapAnimator.Play("DarwinMBPos");
@@ -3167,6 +3196,10 @@ public class MapAnimationController : MonoBehaviour
 
         // MB sign post springs into place
         ScrollMapManager.instance.mapLocations[10].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.MB_signPost_stars, false);
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
+        yield return new WaitForSeconds(1f);
+
 
         // before unlocking ruins 1 - set objects to be destroyed
         foreach (var icon in ScrollMapManager.instance.mapLocations[11].mapIcons)
@@ -3318,6 +3351,10 @@ public class MapAnimationController : MonoBehaviour
 
         // R sign post springs into place
         ScrollMapManager.instance.mapLocations[12].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.R_signPost_stars, false);
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
+        yield return new WaitForSeconds(1f);
+
 
         // place darwin in EJ
         darwin.mapAnimator.Play("DarwinEJPos");
@@ -3568,6 +3605,10 @@ public class MapAnimationController : MonoBehaviour
 
         // EJ sign post springs into place
         ScrollMapManager.instance.mapLocations[13].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.EJ_signPost_stars, false);
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
+        yield return new WaitForSeconds(1f);
+
 
         // before unlocking gorilla study - set objects to be destroyed
         foreach (var icon in ScrollMapManager.instance.mapLocations[14].mapIcons)
@@ -3741,6 +3782,10 @@ public class MapAnimationController : MonoBehaviour
 
         // GS sign post springs into place
         ScrollMapManager.instance.mapLocations[14].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.GS_signPost_stars, false);
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
+        yield return new WaitForSeconds(1f);
+
 
         // before unlocking monkeys - set objects to be destroyed
         foreach (var icon in ScrollMapManager.instance.mapLocations[15].mapIcons)
@@ -3890,6 +3935,10 @@ public class MapAnimationController : MonoBehaviour
 
         // M sign post springs into place
         ScrollMapManager.instance.mapLocations[15].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.M_signPost_stars, false);
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
+        yield return new WaitForSeconds(1f);
+
 
         // place darwin in PI
         darwin.mapAnimator.Play("DarwinPIPos");

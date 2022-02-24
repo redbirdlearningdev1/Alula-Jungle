@@ -10,6 +10,7 @@ public class TestSplashSceneManager : MonoBehaviour
     public CanvasGroup loadingScreenCanvasGroup;
     public float loadFadeInTime;
     public WiggleController textWiggleController;
+    public Animator gorillaWalkAnimator;
 
     void Awake()
     {
@@ -34,6 +35,9 @@ public class TestSplashSceneManager : MonoBehaviour
         }
 
         loadingScreenCanvasGroup.alpha = 1f;
+
+        // start gorilla walk animation
+        gorillaWalkAnimator.Play("GorillaWalkAcrossScreen");
 
         // load splash scene after short delay
         yield return new WaitForSeconds(1f);

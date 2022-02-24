@@ -1145,6 +1145,9 @@ public class StarAwardController : MonoBehaviour
 
             StudentInfoSystem.GetCurrentProfile().royalRumbleActive = false;
             StudentInfoSystem.GetCurrentProfile().royalRumbleGame = GameType.None;
+            
+            GameManager.instance.repairMapIconID = true;
+            GameManager.instance.mapID = StudentInfoSystem.GetCurrentProfile().royalRumbleID;
             StudentInfoSystem.GetCurrentProfile().royalRumbleID = MapIconIdentfier.None;
         }
         
