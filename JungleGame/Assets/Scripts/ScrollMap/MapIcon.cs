@@ -824,6 +824,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             }
 
             GameManager.instance.playingRoyalRumbleGame = true;
+            GameManager.instance.mapID = identifier;
             GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(StudentInfoSystem.GetCurrentProfile().royalRumbleGame), true, 0.5f, true);
             yield break;
         }

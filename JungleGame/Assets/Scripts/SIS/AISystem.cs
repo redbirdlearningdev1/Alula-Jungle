@@ -24,7 +24,7 @@ public static class AISystem
         //Debug.Log("Number of Stars Spider " + playerData.starsSpiderweb);
         //Debug.Log("Number of Stars Turn " + playerData.starsTurntables);
         //Debug.Log("Number of Stars Pirate " + playerData.starsPirate);
-        //Debug.Log("Number of Stars Rummage " + playerData.starsRummage);
+        //Debug.Log("Number of Stars Rummage " + playerData.starsRummage); 
 
         switch (playerData.minigamesPlayed)
         {

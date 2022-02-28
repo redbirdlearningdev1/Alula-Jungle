@@ -265,6 +265,9 @@ public class ParticleController : MonoBehaviour
                 // print ("current particle: " + currentParticle);
                 GameObject particle = Instantiate(currentParticle, position, Quaternion.identity, this.transform);
                 particle.GetComponent<FunParticle>().StartParticle();
+
+                // play pop sound effect!
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 0.1f, "particle_spawn", 0.7f);
             }
         }
     }

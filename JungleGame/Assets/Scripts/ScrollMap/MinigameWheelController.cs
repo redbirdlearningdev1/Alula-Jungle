@@ -178,7 +178,6 @@ public class MinigameWheelController : MonoBehaviour
 
         if (startRR)
         {
-            
             // save royal rumble to SIS
             GameType RRgame = AISystem.DetermineRoyalRumbleGame(StudentInfoSystem.GetCurrentProfile());
             StudentInfoSystem.GetCurrentProfile().royalRumbleGame = RRgame;
@@ -268,6 +267,7 @@ public class MinigameWheelController : MonoBehaviour
             }
 
             GameManager.instance.playingRoyalRumbleGame = true;
+            GameManager.instance.mapID = currentIdentifier;
             GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(RRgame), true, 0.5f, true);
             yield break;
         }
