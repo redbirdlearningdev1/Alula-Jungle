@@ -240,8 +240,8 @@ public class TigerGameManager : MonoBehaviour
         }
         else
         {
-            currSet = AISystem.TigerPawPhotosCoinSelection(StudentInfoSystem.GetCurrentProfile());
-            word_pool = AISystem.ChallengeWordSelectionTigerPawPol(StudentInfoSystem.GetCurrentProfile(), currSet);
+            currSet = AISystem.TigerPawPhotosCoinSelection();
+            word_pool = AISystem.ChallengeWordSelectionTigerPawPol(currSet);
 
             for (int i = 0; i < polaroidC.Count; i++)
             {
