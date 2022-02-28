@@ -216,7 +216,7 @@ public class MinigameWheelController : MonoBehaviour
                 case Chapter.chapter_2:
                 case Chapter.chapter_3:
                     // play julius RR intro
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRJuliusIntro_1_p1);
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRJuliusIntro_1_p1"));
                     while (TalkieManager.instance.talkiePlaying)
                         yield return null;
                     break;
@@ -224,14 +224,14 @@ public class MinigameWheelController : MonoBehaviour
                 case Chapter.chapter_4:
                 case Chapter.chapter_5:
                     // play guards RR intro
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRGuardsIntro_1_p1);
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRGuardsIntro_1_p1"));
                     while (TalkieManager.instance.talkiePlaying)
                         yield return null;
                     // first guards RR?
                     if (StudentInfoSystem.GetCurrentProfile().firstGuradsRoyalRumble)
                     {
                         // play guards RR intro 2 p1
-                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRGuardsIntro_2_p1);
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRGuardsIntro_2_p1"));
                         while (TalkieManager.instance.talkiePlaying)
                             yield return null;
 
@@ -242,7 +242,7 @@ public class MinigameWheelController : MonoBehaviour
                     else
                     {
                         // play guards RR intro 2 p2
-                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRGuardsIntro_2_p2);
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRGuardsIntro_2_p2"));
                         while (TalkieManager.instance.talkiePlaying)
                             yield return null;
                     }

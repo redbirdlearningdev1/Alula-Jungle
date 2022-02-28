@@ -101,14 +101,14 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.SpookyForestPlayGames ||
                 StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.WindyCliffPlayGames)
             {
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.DarwinQuips_1_p1);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("DarwinQuips_1_p1"));
                 yield break;
             }
 
             else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.MermaidBeachPlayGames ||
                      StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.ExitJunglePlayGames)
             {
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.DarwinQuips_1_p2);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("DarwinQuips_1_p2"));
                 yield break;
             }
 
@@ -117,7 +117,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                      StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaPoop_challengeGame_2 ||
                      StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaPoop_challengeGame_3)
             {
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.DarwinQuips_1_p3);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("DarwinQuips_1_p3"));
                 yield break;
             }
         }
@@ -126,7 +126,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             if (StudentInfoSystem.GetCurrentProfile().currStoryBeat != StoryBeat.OrcVillageMeetClogg &&
                 StudentInfoSystem.GetCurrentProfile().currStoryBeat != StoryBeat.OrcCampUnlocked)
             {
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CloggQuips_1_p1);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("CloggQuips_1_p1"));
                 yield break;
             }
         }
@@ -153,7 +153,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[0];
 
                 // add pre story game talkie here
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PreStory_2_p1);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PreStory_2_p1"));
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
             }
@@ -167,7 +167,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 MapAnimationController.instance.clogg.ShowExclamationMark(false);
 
                 // add pre story game talkie here
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.OVillageIntro_2_p1);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("OVillageIntro_2_p1"));
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
 
@@ -206,7 +206,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[1];
 
                 // add pre story game talkie here
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PreStory_2_p1);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PreStory_2_p1"));
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
             }
@@ -220,7 +220,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 MapAnimationController.instance.clogg.ShowExclamationMark(false);
 
                 // add orc camp intro
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.OCampIntro_1_p1);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("OCampIntro_1_p1"));
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
 
@@ -259,7 +259,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[2];
 
                 // add pre story game talkie here
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PreStory_2_p1);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PreStory_2_p1"));
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
             }
@@ -288,7 +288,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[3];
 
                 // add pre story game talkie here
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PreStory_2_p1);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PreStory_2_p1"));
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
             }
@@ -317,7 +317,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[4];
 
                 // add pre story game talkie here
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PreStory_2_p1);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PreStory_2_p1"));
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
             }
@@ -387,21 +387,21 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                     case Chapter.chapter_2:
                     case Chapter.chapter_3:
                         // play julius challenges
-                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaJulius_1_p1);
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaJulius_1_p1"));
                         while (TalkieManager.instance.talkiePlaying)
                             yield return null;
                         break;
 
                     case Chapter.chapter_4:
                         // play julius challenges
-                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaJulius_1_p2);
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaJulius_1_p2"));
                         while (TalkieManager.instance.talkiePlaying)
                             yield return null;
                         break;
 
                     case Chapter.chapter_5:
                         // play julius challenges
-                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaJulius_1_p3);
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaJulius_1_p3"));
                         while (TalkieManager.instance.talkiePlaying)
                             yield return null;
                         break;
@@ -429,7 +429,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             {
 
                 // play marcus challenges
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaMarcus_1_p1);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaMarcus_1_p1"));
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
                 
@@ -454,7 +454,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             if (character == Character.Brutus)
             {
                 // play brutus challenges
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaBrutus_1_p1);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaBrutus_1_p1"));
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
                 

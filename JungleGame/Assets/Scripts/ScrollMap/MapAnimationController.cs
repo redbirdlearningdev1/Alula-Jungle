@@ -1319,7 +1319,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(boat.mapAnimator, "BoatDock"));
 
         // play dock 1 talkie + wait for talkie to finish
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.Dock_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("Dock_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1331,7 +1331,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(10f);
 
         // play dock 2 talkie + wait for talkie to finish
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.Dock_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("Dock_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1362,14 +1362,14 @@ public class MapAnimationController : MonoBehaviour
         darwin.interactable = false;
 
         // play gorilla intro 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GorillaIntro_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("GorillaIntro_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
         yield return new WaitForSeconds(0.5f);
 
         // play gorilla intro 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GorillaIntro_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("GorillaIntro_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1409,7 +1409,7 @@ public class MapAnimationController : MonoBehaviour
         darwin.FlipCharacterToRight();
 
         // play gorilla intro 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GorillaIntro_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("GorillaIntro_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1443,7 +1443,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "MarcusWalkOutGV"));
 
         // play gorilla intro 4
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GorillaIntro_1_p4);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("GorillaIntro_1_p4"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1453,7 +1453,7 @@ public class MapAnimationController : MonoBehaviour
         darwin.FlipCharacterToLeft();
 
         // play gorilla intro 5
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SectionIntro_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("SectionIntro_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1480,7 +1480,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator RedShowsStickerButton()
     {
         // play red notices lester talkie
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RedLester_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RedLester_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1501,7 +1501,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator DarwinForcesLesterInteraction()
     {
         // play darwin forces talkie
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ForceLester_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ForceLester_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1522,7 +1522,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // play village rebuilt talkie 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.VillageRebuilt_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("VillageRebuilt_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1535,7 +1535,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(darwin.mapAnimator, "DarwinWalkOutGV"));
 
         // play village rebuilt talkie 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.VillageRebuilt_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("VillageRebuilt_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1559,7 +1559,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // play village rebuilt talkie 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.VillageRebuilt_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("VillageRebuilt_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1584,7 +1584,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator GorillaVillageDefeated()
     {
         // play village challenge 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.VillageDefeated_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("VillageDefeated_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1631,7 +1631,7 @@ public class MapAnimationController : MonoBehaviour
         brutus.transform.localScale = Vector3.one;
 
         // play village challenge 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.VillageDefeated_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("VillageDefeated_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1649,7 +1649,7 @@ public class MapAnimationController : MonoBehaviour
         // tempSignPost.GetComponent<SignPostController>().SetStars(StudentInfoSystem.GetCurrentProfile().mapData.GV_signPost_stars);
 
         // play village challenge 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.VillageDefeated_1_p4);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("VillageDefeated_1_p4"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1665,7 +1665,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(10f);
 
         // play mudslide intro talkie
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MudslideIntro_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MudslideIntro_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1693,7 +1693,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator MudslideRebuilt()
     {
         // play mudslide rebuilt talkie 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MudslideRebuilt_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MudslideRebuilt_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1717,7 +1717,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // play mudslide rebuilt talkie 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MudslideRebuilt_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MudslideRebuilt_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1742,7 +1742,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator MudslideDefeated()
     {
         // play mudslide defeated 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MudslideDefeated_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MudslideDefeated_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1757,7 +1757,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutMS"));
 
         // play mudslide challenge 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MudslideDefeated_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MudslideDefeated_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1794,7 +1794,7 @@ public class MapAnimationController : MonoBehaviour
         brutus.transform.localScale = Vector3.one;
 
         // play mudslide challenge 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MudslideDefeated_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MudslideDefeated_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1817,7 +1817,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(10f);
 
         // play orc village intro talkie
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.OVillageIntro_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("OVillageIntro_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1845,7 +1845,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator OrcVillageRebuilt()
     {
         // play orc village rebuilt talkie 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.OVillageRebuilt_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("OVillageRebuilt_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1872,7 +1872,7 @@ public class MapAnimationController : MonoBehaviour
         clogg.FlipCharacterToRight();
 
         // play orc village rebuilt talkie 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.OVillageRebuilt_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("OVillageRebuilt_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1897,7 +1897,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator OrcVillageDefeated()
     {
         // play orc village defeated 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.OVillageDefeated_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("OVillageDefeated_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1944,7 +1944,7 @@ public class MapAnimationController : MonoBehaviour
         brutus.transform.localScale = Vector3.one;
 
         // play orc village defeated 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.OVillageDefeated_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("OVillageDefeated_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -1995,7 +1995,7 @@ public class MapAnimationController : MonoBehaviour
         darwin.interactable = false;
 
         // spider intro 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderIntro_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("SpiderIntro_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2019,7 +2019,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // spider intro 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderIntro_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("SpiderIntro_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2036,7 +2036,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         // spider intro 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderIntro_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("SpiderIntro_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2051,7 +2051,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutSF"));
 
         // spider intro 4
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderIntro_1_p4);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("SpiderIntro_1_p4"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2073,12 +2073,12 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "MarcusWalkOutSF"));
 
         // spider intro 5
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderIntro_1_p5);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("SpiderIntro_1_p5"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
         // spider intro 6
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderIntro_1_p6);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("SpiderIntro_1_p6"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2102,7 +2102,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator SpookyForestRebuilt()
     {
         // play spooky forest rebuilt talkie 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderRebuilt_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("SpiderRebuilt_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2115,7 +2115,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(darwin.mapAnimator, "DarwinWalkOutSF"));
 
         // play spooky forest rebuilt talkie 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderRebuilt_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("SpiderRebuilt_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2139,7 +2139,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // play spooky forest rebuilt talkie 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderRebuilt_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("SpiderRebuilt_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2164,7 +2164,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator SpookyForestDefeated()
     {
         // play spooky forest defeated 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderDefeated_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("SpiderDefeated_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2179,7 +2179,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutSF"));
 
         // play spooky forest challenge 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderDefeated_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("SpiderDefeated_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2216,7 +2216,7 @@ public class MapAnimationController : MonoBehaviour
         brutus.transform.localScale = Vector3.one;
 
         // play spooky forest challenge 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.SpiderDefeated_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("SpiderDefeated_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2261,7 +2261,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator OrcCampRebuilt()
     {
         // play spooky forest rebuilt talkie 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.OCampRebuilt_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("OCampRebuilt_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2285,7 +2285,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // play spooky forest rebuilt talkie 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.OCampRebuilt_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("OCampRebuilt_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2310,7 +2310,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator OrcCampDefeated()
     {
         // play OC defeated 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.OCampDefeated_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("OCampDefeated_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2325,7 +2325,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutOC"));
 
         // play OC challenge 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.OCampDefeated_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("OCampDefeated_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2362,7 +2362,7 @@ public class MapAnimationController : MonoBehaviour
         brutus.transform.localScale = Vector3.one;
 
         // play spooky forest challenge 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.OCampDefeated_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("OCampDefeated_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2382,7 +2382,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(10f);
 
         // play gorilla poop intro
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PoopIntro_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PoopIntro_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2406,7 +2406,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator GorillaPoopRebuilt()
     {
         // play GP rebuilt talkie 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PoopRebuilt_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PoopRebuilt_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2430,7 +2430,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // play spooky forest rebuilt talkie 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PoopRebuilt_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PoopRebuilt_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2455,7 +2455,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator GorillaPoopDefeated()
     {
         // play GP defeated 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PoopDefeated_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PoopDefeated_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2470,7 +2470,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutGP"));
 
         // play OC challenge 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PoopDefeated_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PoopDefeated_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2507,7 +2507,7 @@ public class MapAnimationController : MonoBehaviour
         brutus.transform.localScale = Vector3.one;
 
         // play GP challenge 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PoopDefeated_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PoopDefeated_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2557,7 +2557,7 @@ public class MapAnimationController : MonoBehaviour
         darwin.interactable = false;
 
         // windy cliff intro 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffIntro_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("CliffIntro_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2583,7 +2583,7 @@ public class MapAnimationController : MonoBehaviour
         darwin.FlipCharacterToRight();
 
         // windy cliff intro 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffIntro_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("CliffIntro_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2600,7 +2600,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         // windy cliff intro 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffIntro_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("CliffIntro_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2615,7 +2615,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutWC"));
 
         // windy cliff intro 4
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffIntro_1_p4);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("CliffIntro_1_p4"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2637,7 +2637,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "MarcusWalkOutWC"));
 
         // spider intro 5
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffIntro_1_p5);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("CliffIntro_1_p5"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2664,7 +2664,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator WindyCliffRebuilt()
     {
         // play WC rebuilt talkie 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffRebuilt_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("CliffRebuilt_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2677,7 +2677,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(darwin.mapAnimator, "DarwinWalkOutWC"));
 
         // play WC rebuilt talkie 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffRebuilt_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("CliffRebuilt_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2701,7 +2701,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // play WC rebuilt talkie 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffRebuilt_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("CliffRebuilt_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2726,7 +2726,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator WindyCliffDefeated()
     {
         // play WC defeated 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffDefeated_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("CliffDefeated_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2741,7 +2741,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutWC"));
 
         // play WC defeated 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffDefeated_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("CliffDefeated_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2778,7 +2778,7 @@ public class MapAnimationController : MonoBehaviour
         brutus.transform.localScale = Vector3.one;
 
         // play WC defeated 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffDefeated_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("CliffDefeated_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2798,7 +2798,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(10f);
 
         // play PS intro 
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PirateIntro_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PirateIntro_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2822,7 +2822,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator PirateShipRebuilt()
     {
         // play PS rebuilt talkie 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PirateRebuilt_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PirateRebuilt_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2846,7 +2846,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // play PS rebuilt talkie 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PirateRebuilt_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PirateRebuilt_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2871,7 +2871,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator PirateShipDefeated()
     {
         // play WC defeated 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PirateDefeated_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PirateDefeated_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2886,7 +2886,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutPS"));
 
         // play WC defeated 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.CliffDefeated_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("CliffDefeated_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2923,7 +2923,7 @@ public class MapAnimationController : MonoBehaviour
         brutus.transform.localScale = Vector3.one;
 
         // play PS defeated 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PirateDefeated_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PirateDefeated_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2969,7 +2969,7 @@ public class MapAnimationController : MonoBehaviour
         darwin.interactable = false;
 
         // mermaid beach intro 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidIntro_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MermaidIntro_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -2995,7 +2995,7 @@ public class MapAnimationController : MonoBehaviour
         darwin.FlipCharacterToRight();
 
         // mermaid beach intro 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidIntro_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MermaidIntro_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3012,7 +3012,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         // mermaid beach intro 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidIntro_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MermaidIntro_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3027,7 +3027,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutMB"));
 
         // mermaid beach intro 4
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidIntro_1_p4);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MermaidIntro_1_p4"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3049,7 +3049,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "MarcusWalkOutMB"));
 
         // mermaid beach intro 5
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidIntro_1_p5);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MermaidIntro_1_p5"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3076,7 +3076,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator MermaidBeachRebuilt()
     {
         // play MB rebuilt talkie 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidRebuilt_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MermaidRebuilt_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3089,7 +3089,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(darwin.mapAnimator, "DarwinWalkOutMB"));
 
         // play MB rebuilt talkie 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidRebuilt_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MermaidRebuilt_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3113,7 +3113,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // play MB rebuilt talkie 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidRebuilt_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MermaidRebuilt_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3138,7 +3138,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator MermaidBeachDefeated()
     {
         // play MB defeated 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidDefeated_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MermaidDefeated_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3153,7 +3153,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutMB"));
 
         // play MB defeated 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidDefeated_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MermaidDefeated_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3190,7 +3190,7 @@ public class MapAnimationController : MonoBehaviour
         brutus.transform.localScale = Vector3.one;
 
         // play MB defeated 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MermaidDefeated_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MermaidDefeated_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3213,7 +3213,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(10f);
 
         // play R intro 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RuinsIntro_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RuinsIntro_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3240,7 +3240,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // play R rebuilt talkie 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RuinsRebuilt_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RuinsRebuilt_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3264,7 +3264,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // play R rebuilt talkie 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RuinsRebuilt_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RuinsRebuilt_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3293,7 +3293,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // play R defeated 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RuinsDefeated_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RuinsDefeated_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3308,7 +3308,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutR"));
 
         // play R defeated 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RuinsDefeated_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RuinsDefeated_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3345,7 +3345,7 @@ public class MapAnimationController : MonoBehaviour
         brutus.transform.localScale = Vector3.one;
 
         // play R defeated 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RuinsDefeated_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RuinsDefeated_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3393,7 +3393,7 @@ public class MapAnimationController : MonoBehaviour
         darwin.interactable = false;
 
         // exit jungle intro 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ExitIntro_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ExitIntro_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3419,7 +3419,7 @@ public class MapAnimationController : MonoBehaviour
         darwin.FlipCharacterToRight();
 
         // exit jungle intro 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ExitIntro_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ExitIntro_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3436,7 +3436,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         // exit jungle intro 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ExitIntro_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ExitIntro_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3451,7 +3451,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutEJ"));
 
         // exit jungle intro 4
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ExitIntro_1_p4);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ExitIntro_1_p4"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3473,7 +3473,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "MarcusWalkOutEj"));
 
         // exit jungle intro 5
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ExitIntro_1_p5);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ExitIntro_1_p5"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3498,7 +3498,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator ExitJungleRebuilt()
     {
         // play EJ rebuilt talkie 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ExitRebuilt_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ExitRebuilt_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3522,7 +3522,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // play EJ rebuilt talkie 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ExitRebuilt_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ExitRebuilt_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3547,7 +3547,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator ExitJungleDefeated()
     {
         // play EJ defeated 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ExitDefeated_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ExitDefeated_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3562,7 +3562,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutEJ"));
 
         // play EJ defeated 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ExitDefeated_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ExitDefeated_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3599,7 +3599,7 @@ public class MapAnimationController : MonoBehaviour
         brutus.transform.localScale = Vector3.one;
 
         // play MB defeated 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ExitDefeated_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ExitDefeated_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3647,7 +3647,7 @@ public class MapAnimationController : MonoBehaviour
         darwin.GetComponent<Image>().raycastTarget = false;
 
         // gorilla study intro 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GCampIntro_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("GCampIntro_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3670,12 +3670,12 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator GorillaStudyRebuilt()
     {
         // play GS rebuilt talkie 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GCampRebuilt_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("GCampRebuilt_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
         // play GS rebuilt talkie 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GCampRebuilt_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("GCampRebuilt_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3699,7 +3699,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // play GS rebuilt talkie 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GCampRebuilt_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("GCampRebuilt_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3724,7 +3724,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator GorillaStudyDefeated()
     {
         // play GS defeated 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GCampDefeated_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("GCampDefeated_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3739,7 +3739,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutGS"));
 
         // play GS defeated 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GCampDefeated_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("GCampDefeated_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3776,7 +3776,7 @@ public class MapAnimationController : MonoBehaviour
         brutus.transform.localScale = Vector3.one;
 
         // play GS defeated 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GCampDefeated_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("GCampDefeated_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3804,17 +3804,17 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(10f);
 
         // play M intro 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MonkeyIntro_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MonkeyIntro_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
         // play M intro 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MonkeyIntro_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MonkeyIntro_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
         // play M intro 3
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MonkeyIntro_1_p3);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MonkeyIntro_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3838,7 +3838,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator MonkeysRebuilt()
     {
         // play M rebuilt talkie 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MonkeyRebuilt_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MonkeyRebuilt_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3857,7 +3857,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // play M rebuilt talkie 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MonkeyRebuilt_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MonkeyRebuilt_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3882,7 +3882,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator MonkeysDefeated()
     {
         // play GS defeated 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MonkeyDefeated_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MonkeyDefeated_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3897,7 +3897,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutM"));
 
         // play GS defeated 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.MonkeyDefeated_1_p2);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MonkeyDefeated_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -3966,7 +3966,7 @@ public class MapAnimationController : MonoBehaviour
     private IEnumerator PalaceIntro()
     {
         // play Final Boss 1
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.FinalBoss_1_p1);
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("FinalBoss_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -4003,15 +4003,15 @@ public class MapAnimationController : MonoBehaviour
                 case Chapter.chapter_1:
                 case Chapter.chapter_2:
                 case Chapter.chapter_3:
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaJuliusWins_1_p1);
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaJuliusWins_1_p1"));
                     break;
 
                 case Chapter.chapter_4:
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaJuliusWins_1_p2);
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaJuliusWins_1_p2"));
                     break;
 
                 case Chapter.chapter_5:
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaJuliusWins_1_p3);
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaJuliusWins_1_p3"));
                     break;
             }
             
@@ -4025,7 +4025,7 @@ public class MapAnimationController : MonoBehaviour
             print ("julius wins every other time");
 
             // play julius wins again
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaJuliusWins_2_p1);
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaJuliusWins_2_p1"));
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
         }
@@ -4050,15 +4050,15 @@ public class MapAnimationController : MonoBehaviour
                 case Chapter.chapter_1:
                 case Chapter.chapter_2:
                 case Chapter.chapter_3:
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaJulius_2_p1);
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaJulius_2_p1"));
                     break;
 
                 case Chapter.chapter_4:
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaJulius_2_p2);
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaJulius_2_p2"));
                     break;
 
                 case Chapter.chapter_5:
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaJulius_2_p3);
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaJulius_2_p3"));
                     break;
             }
             
@@ -4091,11 +4091,11 @@ public class MapAnimationController : MonoBehaviour
                 case Chapter.chapter_2:
                 case Chapter.chapter_3:
                 case Chapter.chapter_4:
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaMarcusWins_1_p1);
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaMarcusWins_1_p1"));
                     break;
 
                 case Chapter.chapter_5:
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaMarcusWins_1_p2);
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaMarcusWins_1_p2"));
                     break;
             }
 
@@ -4109,7 +4109,7 @@ public class MapAnimationController : MonoBehaviour
             print ("marcus wins every other time");
 
             // play marcus wins again
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaJuliusWins_2_p1);
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaJuliusWins_2_p1"));
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
         }
@@ -4135,11 +4135,11 @@ public class MapAnimationController : MonoBehaviour
                 case Chapter.chapter_2:
                 case Chapter.chapter_3:
                 case Chapter.chapter_4:
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaMarcus_2_p1);
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaMarcus_2_p1"));
                     break;
 
                 case Chapter.chapter_5:
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaMarcus_2_p2);
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaMarcus_2_p2"));
                     break;
             }
             
@@ -4172,11 +4172,11 @@ public class MapAnimationController : MonoBehaviour
                 case Chapter.chapter_2:
                 case Chapter.chapter_3:
                 case Chapter.chapter_4:
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaBrutusWins_1_p1);
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaBrutusWins_1_p1"));
                     break;
 
                 case Chapter.chapter_5:
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaBrutusWins_1_p2);
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaBrutusWins_1_p2"));
                     break;
             }
 
@@ -4190,7 +4190,7 @@ public class MapAnimationController : MonoBehaviour
             print ("brutus wins every other time");
 
             // play marcus wins again
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaJuliusWins_2_p1);
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaJuliusWins_2_p1"));
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
         }

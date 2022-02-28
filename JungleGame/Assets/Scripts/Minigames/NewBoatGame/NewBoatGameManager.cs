@@ -200,7 +200,7 @@ public class NewBoatGameManager : MonoBehaviour
                 IslandCutoutController.instance.isOn = false;
 
                 // play talkie and wait for it to finish
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.BoatGame_1_p1);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BoatGame_1_p1"));
                 while (TalkieManager.instance.talkiePlaying)
                 {
                     yield return null;

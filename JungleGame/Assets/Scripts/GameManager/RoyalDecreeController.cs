@@ -238,24 +238,24 @@ public class RoyalDecreeController : MonoBehaviour
         {
             case Chapter.chapter_0:
             case Chapter.chapter_1:
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaSignPost_1_p1);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaSignPost_1_p1"));
                 break;
 
             case Chapter.chapter_2:
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaSignPost_1_p2);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaSignPost_1_p2"));
                 break;
 
             case Chapter.chapter_3:
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaSignPost_1_p3);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaSignPost_1_p3"));
                 break;
 
             case Chapter.chapter_4:
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaSignPost_1_p4);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaSignPost_1_p4"));
                 break;
 
             case Chapter.chapter_5:
             case Chapter.chapter_final:
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.ChaSignPost_1_p5);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaSignPost_1_p5"));
                 break;
         }
 

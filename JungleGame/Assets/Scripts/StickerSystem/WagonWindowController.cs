@@ -729,7 +729,7 @@ public class WagonWindowController : MonoBehaviour
            Book.GetComponent<WiggleController>().StopWiggle();
 
             // play lester intro 4
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.LesterIntro_1_p4);
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("LesterIntro_1_p4"));
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 

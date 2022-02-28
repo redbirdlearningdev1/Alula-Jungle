@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class TestSplashSceneManager : MonoBehaviour
 {
     public Button goToSplashSceneButton;
+    public CanvasGroup fadeInCanvasGroup;
     public CanvasGroup loadingScreenCanvasGroup;
     public float loadFadeInTime;
     public WiggleController textWiggleController;
@@ -15,6 +16,24 @@ public class TestSplashSceneManager : MonoBehaviour
     void Awake()
     {
         textWiggleController.StartWiggle();
+        StartCoroutine(FadeIntoScene());
+    }
+
+    private IEnumerator FadeIntoScene()
+    {
+        fadeInCanvasGroup.alpha = 1f;
+
+        yield return new WaitForSeconds(1f);
+
+        float timer = 0f;
+        while (timer < loadFadeInTime)
+        {
+            timer += Time.deltaTime;
+            fadeInCanvasGroup.alpha = Mathf.Lerp(1f, 0f, timer / loadFadeInTime);
+            yield return null;
+        }
+
+        loadingScreenCanvasGroup.alpha = 0f;
     }
 
     public void OnGoToSplashSceneButtonPressed()
