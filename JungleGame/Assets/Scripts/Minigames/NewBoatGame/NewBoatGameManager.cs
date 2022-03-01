@@ -59,11 +59,14 @@ public class NewBoatGameManager : MonoBehaviour
         // dev stuff for fx audio testing
         if (GameManager.instance.devModeActivated)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
-                StopAllCoroutines();
-                TalkieManager.instance.StopTalkieSystem();
-                StartCoroutine(WinBoatGame());
+                if (Input.GetKeyDown(KeyCode.S))
+                {
+                    StopAllCoroutines();
+                    TalkieManager.instance.StopTalkieSystem();
+                    StartCoroutine(WinBoatGame());
+                }
             }
         }
 

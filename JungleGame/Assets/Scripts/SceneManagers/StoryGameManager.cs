@@ -73,6 +73,9 @@ public class StoryGameManager : MonoBehaviour
             storyGameData = GameManager.instance.storyGameData;
         }
 
+        // set flag location
+        ScrollingBackground.instance.SetFlagPosition(storyGameData.background);
+
         // send log
         GameManager.instance.SendLog(this, "starting story game: " + storyGameData.name);
 
@@ -213,6 +216,8 @@ public class StoryGameManager : MonoBehaviour
                 yield return new WaitForSeconds(seg.audio.length);
                 // stop moving gorilla
                 ScrollingBackground.instance.StopMoving();
+                // small delay
+                yield return new WaitForSeconds(0.2f);
             }
 
             // read action word if available
@@ -239,9 +244,6 @@ public class StoryGameManager : MonoBehaviour
                     {
                         microphone.interactable = true;
                     }
-
-                    // stop moving gorilla
-                    ScrollingBackground.instance.StopMoving();
 
                     // wait for play input
                     waitingForAudioInput = true;
