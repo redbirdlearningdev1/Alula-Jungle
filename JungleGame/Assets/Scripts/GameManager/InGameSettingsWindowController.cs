@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class InGameSettingsWindowController : MonoBehaviour
@@ -178,6 +179,21 @@ public class InGameSettingsWindowController : MonoBehaviour
 
         yield return new WaitForSeconds(0.4f);
 
+        // if playing a game with wally - readd wally
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (sceneName == "StoryGame")
+        {
+            StoryGameManager.instance.ToggleWally(true);
+        }
+        else if (sceneName == "FroggerGame")
+        {
+            FroggerGameManager.instance.ToggleWally(true);
+        }
+        else if (sceneName == "RummageGame")
+        {
+            RummageGameManager.instance.ToggleWally(true);
+        }
+
         // remove background
         SettingsManager.instance.settingsWindowBG.LerpImageAlpha(SettingsManager.instance.settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
         SettingsManager.instance.settingsWindowBG.GetComponent<Image>().raycastTarget = false;
@@ -190,6 +206,21 @@ public class InGameSettingsWindowController : MonoBehaviour
         if (isAnimating)
             return;
         isAnimating = true;
+
+        // if playing a game with wally - remove wally
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (sceneName == "StoryGame")
+        {
+            StoryGameManager.instance.ToggleWally(false);
+        }
+        else if (sceneName == "FroggerGame")
+        {
+            FroggerGameManager.instance.ToggleWally(false);
+        }
+        else if (sceneName == "RummageGame")
+        {
+            RummageGameManager.instance.ToggleWally(false);
+        }
 
         // load from profile
         LoadSettingsFromProfile();

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 [System.Serializable]
 public struct RummageTutorialList
 {
@@ -985,6 +984,18 @@ public class RummageGameManager : MonoBehaviour
                 p.SetWiggleOff();
                 yield return new WaitForSeconds(0.1f);
             }
+        }
+    }
+
+    public void ToggleWally(bool opt)
+    {
+        if (opt)
+        {
+            StartCoroutine(ShowDancingManRoutine());
+        }
+        else
+        {
+            StartCoroutine(HideDancingManRoutine());
         }
     }
 

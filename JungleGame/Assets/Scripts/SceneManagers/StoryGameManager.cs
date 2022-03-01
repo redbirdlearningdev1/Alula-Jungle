@@ -6,6 +6,8 @@ using TMPro;
 
 public class StoryGameManager : MonoBehaviour
 {   
+    public static StoryGameManager instance;
+
     [Header("Dev Mode Stuff")]
     public bool overrideGame;
     public StoryGameBackground storyGameIndex;
@@ -13,6 +15,8 @@ public class StoryGameManager : MonoBehaviour
     [Header("Game Object Variables")]
     [SerializeField] private LogCoin coin;
     [SerializeField] private DancingManController dancingMan;
+    public Transform dancingManOffScreen;
+    public Transform dancingManOnScreen;
     public MicrophoneIndicator microphone;
     public float timeBetweenRepeat;
 
@@ -51,6 +55,11 @@ public class StoryGameManager : MonoBehaviour
 
     void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+
         // every scene must call this in awake
         GameManager.instance.SceneInit();
 
@@ -462,6 +471,88 @@ public class StoryGameManager : MonoBehaviour
                 StartCoroutine(DancingManRoutine());
             }
 
+            yield return null;
+        }
+    }
+
+    public void ToggleWally(bool opt)
+    {
+        if (opt)
+        {
+            StartCoroutine(ShowDancingManRoutine());
+        }
+        else
+        {
+            StartCoroutine(HideDancingManRoutine());
+        }
+    }
+
+    private IEnumerator ShowDancingManRoutine()
+    {
+        float timer = 0f;
+        float moveTime = 0.3f;
+        Vector3 bouncePos = dancingManOnScreen.position;
+        bouncePos.y += 0.5f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > moveTime)
+            {
+                break;
+            }
+
+            Vector3 tempPos = Vector3.Lerp(dancingManOffScreen.position, bouncePos, timer / moveTime);
+            dancingMan.gameObject.transform.position = tempPos;
+            yield return null;
+        }
+        timer = 0f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > 0.1f)
+            {
+                break;
+            }
+
+            Vector3 tempPos = Vector3.Lerp(bouncePos, dancingManOnScreen.position, timer / 0.1f);
+            dancingMan.gameObject.transform.position = tempPos;
+            yield return null;
+        }
+    }
+
+    private IEnumerator HideDancingManRoutine()
+    {
+        float timer = 0f;
+        float moveTime = 0.3f;
+        Vector3 bouncePos = dancingManOnScreen.position;
+        bouncePos.y += 0.5f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > moveTime)
+            {
+                break;
+            }
+
+            Vector3 tempPos = Vector3.Lerp(dancingManOnScreen.position, bouncePos, timer / moveTime);
+            dancingMan.gameObject.transform.position = tempPos;
+            yield return null;
+        }
+        timer = 0f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > 0.1f)
+            {
+                break;
+            }
+
+            Vector3 tempPos = Vector3.Lerp(bouncePos, dancingManOffScreen.position, timer / 0.1f);
+            dancingMan.gameObject.transform.position = tempPos;
             yield return null;
         }
     }

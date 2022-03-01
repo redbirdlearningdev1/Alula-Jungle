@@ -30,6 +30,12 @@ public class ShellRayCaster : MonoBehaviour
         // drag select coin while mouse 1 down
         if (Input.GetMouseButton(0) && selectedShell)
         {
+            // set selected coin parent if not set
+            if (selectedShell.transform.parent != selectedShellParent)
+            {
+                selectedShell.gameObject.transform.SetParent(selectedShellParent);
+            }
+
             Vector3 mousePosWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosWorldSpace.z = 0f;
 

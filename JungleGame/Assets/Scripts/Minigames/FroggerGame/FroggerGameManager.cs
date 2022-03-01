@@ -8,7 +8,6 @@ public class FroggerGameManager : MonoBehaviour
 
     private MapIconIdentfier mapID = MapIconIdentfier.None;
 
-
     [SerializeField] private GorillaController gorilla;
     [SerializeField] private Bag bag;
     [SerializeField] private TaxiController taxi;
@@ -785,6 +784,18 @@ public class FroggerGameManager : MonoBehaviour
     #   MISC UTIL FUNCTIONS
     ################################################
     */
+
+    public void ToggleWally(bool opt)
+    {
+        if (opt)
+        {
+            StartCoroutine(ShowDancingManRoutine());
+        }
+        else
+        {
+            StartCoroutine(HideDancingManRoutine());
+        }
+    }
 
     private IEnumerator ShowDancingManRoutine()
     {

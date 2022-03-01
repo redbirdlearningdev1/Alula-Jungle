@@ -373,9 +373,6 @@ public class SettingsManager : MonoBehaviour
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
-        print ("settings window is animating: " + SettingsWindowController.instance.isAnimating);
-        print ("in game settings window is animating: " + InGameSettingsWindowController.instance.isAnimating);
-
         // return if windows are animating
         if (SettingsWindowController.instance.isAnimating || 
             InGameSettingsWindowController.instance.isAnimating ||
@@ -429,7 +426,7 @@ public class SettingsManager : MonoBehaviour
             if (returnToSplashScreenConfirmWindow.transform.localScale.x > 0f)
                 CloseConfirmSplashScreenWindow();
             if (exitApplicationConfirmWindow.transform.localScale.x > 0f)
-                CloseConfirmSplashScreenWindow();
+                CloseExitApplicationConfirmWindow();
         }
 
         yield return new WaitForSeconds(1f);
@@ -459,7 +456,7 @@ public class SettingsManager : MonoBehaviour
             if (returnToSplashScreenConfirmWindow.transform.localScale.x > 0f)
                 CloseConfirmSplashScreenWindow();
             if (exitApplicationConfirmWindow.transform.localScale.x > 0f)
-                CloseConfirmSplashScreenWindow();
+                CloseExitApplicationConfirmWindow();
         }
 
         yield return new WaitForSeconds(1f);
@@ -489,7 +486,7 @@ public class SettingsManager : MonoBehaviour
             if (returnToSplashScreenConfirmWindow.transform.localScale.x > 0f)
                 CloseConfirmSplashScreenWindow();
             if (exitApplicationConfirmWindow.transform.localScale.x > 0f)
-                CloseConfirmSplashScreenWindow();
+                CloseExitApplicationConfirmWindow();
         }
 
         yield return new WaitForSeconds(1f);
