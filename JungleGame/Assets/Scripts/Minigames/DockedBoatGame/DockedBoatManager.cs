@@ -32,6 +32,8 @@ public class DockedBoatManager : MonoBehaviour
     [SerializeField] private float birdScaleMax;
     [SerializeField][Range(0f, 1f)] private float percentBirdsToSpawn;
     [SerializeField] private float birdSpawnDelay;
+    [SerializeField] private float birdSpeedMin;
+    [SerializeField] private float birdSpeedMax;
 
 
     [Header("Random Bubble Spawn Settings")]
@@ -223,8 +225,12 @@ public class DockedBoatManager : MonoBehaviour
         // Randomly choose the bird color
         bird.gameObject.GetComponent<Image>().color = birdColors[Random.Range(0, birdColors.Count)];
 
+        // Set random animation play speed
+        float birdSpeed = Random.Range(birdSpeedMin, birdSpeedMax);
+        bird.gameObject.GetComponent<Animator>().SetFloat("SpeedMultiplier", birdSpeed);
+
         // Wait for bird animation to finish playing
-        yield return new WaitForSeconds(birdsClip.length);
+        yield return new WaitForSeconds(birdsClip.length * (1.0f / birdSpeed));
 
         // Destroy the bird
         Destroy(bird);

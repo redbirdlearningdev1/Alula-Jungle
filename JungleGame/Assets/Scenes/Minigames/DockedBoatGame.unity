@@ -519,6 +519,8 @@ MonoBehaviour:
   birdScaleMax: 1.2
   percentBirdsToSpawn: 0.4
   birdSpawnDelay: 0.5
+  birdSpeedMin: 1
+  birdSpeedMax: 1
   bubbleSpawnpoint: {fileID: 1889689505}
   bubbleSpawnHitbox: {fileID: 1851005665}
   bubbleSpawnHitboxLeftBound: {fileID: 820433261}
@@ -526,7 +528,7 @@ MonoBehaviour:
   bubbleScaleMin: 0.3
   bubbleScaleMax: 0.8
   bubbleSpawnIntervalMin: 0
-  bubbleSpawnIntervalMax: 1
+  bubbleSpawnIntervalMax: 0.6
   bubbleSpeedMin: 1
   bubbleSpeedMax: 1.5
 --- !u!114 &193716455
@@ -1759,7 +1761,7 @@ PrefabInstance:
     - target: {fileID: 7904006482728128156, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 143.51707
+      value: 143.63113
       objectReference: {fileID: 0}
     - target: {fileID: 8032072505287944566, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
