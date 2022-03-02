@@ -45,14 +45,12 @@ public class DockedBoatWheelController : MonoBehaviour
             {
                 // parallax to the left
                 DockedParallaxController.instance.SetBoatDirection(BoatParallaxDirection.Left);
-
                 //TODO: Move to the left
             }
             else
             {
                 // parallax to the right
                 DockedParallaxController.instance.SetBoatDirection(BoatParallaxDirection.Right);
-
                 //TODO: Move to the right
             }
         }
@@ -60,6 +58,7 @@ public class DockedBoatWheelController : MonoBehaviour
         {
             LetGoOfWheel();
         }
+
         if (Input.GetMouseButtonDown(0))
         {
             var pointerEventData = new PointerEventData(EventSystem.current);
@@ -76,12 +75,14 @@ public class DockedBoatWheelController : MonoBehaviour
                         holdingWheel = true;
                         RotateWheelLeft();
                         ToggleBoatPannelShake(true);
+                        DockedBoatManager.instance.spider.PlaySpider();
                     }
                     else if (result.gameObject.transform.name == "RightWheelButton")
                     {
                         holdingWheel = true;
                         RotateWheelRight();
                         ToggleBoatPannelShake(true);
+                        DockedBoatManager.instance.spider.PlaySpider();
                     }
                 }
             }
@@ -115,6 +116,7 @@ public class DockedBoatWheelController : MonoBehaviour
         // play sound effect + stop other wheel sound effects
         AudioManager.instance.StopFX("wheel_left");
         AudioManager.instance.StopFX("wheel_right");
+        AudioManager.instance.StopFX("boat_move");
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.TurnWheelLeft, 1f, "wheel_left");
 
         // boat moving sound effect
@@ -131,6 +133,7 @@ public class DockedBoatWheelController : MonoBehaviour
         // play sound effect + stop other wheel sound effects
         AudioManager.instance.StopFX("wheel_left");
         AudioManager.instance.StopFX("wheel_right");
+        AudioManager.instance.StopFX("boat_move");
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.TurnWheelLeft, 1f, "wheel_right");
 
         // boat moving sound effect
