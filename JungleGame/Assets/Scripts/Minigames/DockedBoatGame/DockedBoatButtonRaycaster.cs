@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class BoatButtonRaycaster : MonoBehaviour
+public class DockedBoatButtonRaycaster : MonoBehaviour
 {
     public bool isOn;
     BoatButton currentButton;
