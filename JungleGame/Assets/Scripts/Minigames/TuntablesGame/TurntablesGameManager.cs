@@ -12,7 +12,7 @@ public class TurntablesGameManager : MonoBehaviour
 
     [Header("Tutorial Stuff")]
     public bool playTutorial;
-    public bool glowCorrectKey;
+    public bool showCorrectKey;
     public List<ActionWordEnum> tutorialIcons;
 
     [Header("Game Stuff")]
@@ -65,7 +65,7 @@ public class TurntablesGameManager : MonoBehaviour
 
         // turn on key glow iff tutorial
         if (playTutorial)
-            glowCorrectKey = true;
+            showCorrectKey = true;
             
         PregameSetup();
     }
@@ -217,29 +217,6 @@ public class TurntablesGameManager : MonoBehaviour
             yield return new WaitForSeconds(clip.length + 1f);
         }
 
-        // set key values
-        List<ActionWordEnum> values = new List<ActionWordEnum>();
-        values.AddRange(doorValues);
-        foreach (Key k in keys)
-        {
-            // set each door value to a random key
-            int randomIndex = Random.Range(0, values.Count);
-            var randomvalue = values[randomIndex];
-            k.SetKeyType(randomvalue);
-
-            // glow correct key
-            if (glowCorrectKey || playTutorial)
-            {
-                if (randomvalue == doorValues[currentDoor])
-                {
-                    ImageGlowController.instance.SetImageGlow(k.GetComponent<Image>(), true, GlowValue.glow_1_00);
-                }
-            }
-            
-            // remove value from list
-            values.Remove(randomvalue);
-        }
-
         // show keys
         StartCoroutine(ShowKeys());
 
@@ -270,6 +247,48 @@ public class TurntablesGameManager : MonoBehaviour
 
         // set frame icon
         frame.sprite = GameManager.instance.GetActionWord(doorValues[currentDoor]).frameIcon;
+
+        if (showCorrectKey || playTutorial)
+        {
+            // wait a small amount of time if playing tutorial
+            yield return new WaitForSeconds(1.5f);
+        }
+
+        // set key values
+        List<ActionWordEnum> values = new List<ActionWordEnum>();
+        values.AddRange(doorValues);
+        foreach (Key k in keys)
+        {
+            // set each door value to a random key
+            int randomIndex = Random.Range(0, values.Count);
+            var randomvalue = values[randomIndex];
+            k.SetKeyType(randomvalue);
+
+            // scale correct key
+            if (showCorrectKey || playTutorial)
+            {
+                if (randomvalue == doorValues[currentDoor])
+                {
+                    k.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.5f);
+                    k.GetComponent<LerpableObject>().LerpImageAlpha(k.GetComponent<Image>(), 1f, 0.5f);
+                }
+                else
+                {
+                    k.GetComponent<LerpableObject>().LerpScale(new Vector2(0.8f, 0.8f), 0.5f);
+                    k.GetComponent<LerpableObject>().LerpImageAlpha(k.GetComponent<Image>(), 0.5f, 0.5f);
+                }
+            }
+            
+            // remove value from list
+            values.Remove(randomvalue);
+        }
+
+        if (showCorrectKey || playTutorial)
+        {
+            // play sound effect 
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MagicReveal, 0.25f);
+            yield return new WaitForSeconds(1f);
+        }
 
         // turn on key raycaster
         KeyRaycaster.instance.isOn = true;

@@ -75,6 +75,7 @@ public enum MapAnim
     ChallengeGame3,
 }
 
+[ExecuteInEditMode]
 public class MapAnimationController : MonoBehaviour
 {
     public static MapAnimationController instance;
@@ -89,6 +90,717 @@ public class MapAnimationController : MonoBehaviour
     public MapCharacter julius;
     public MapCharacter brutus;
     public MapCharacter marcus;
+
+    [Header("Dev Test Walk-ins and Walk-outs")]
+    public MapLocation mapLocationToTest;
+
+    
+    void Update()
+    {
+        if (Application.isEditor)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StopAllCoroutines();
+                StartCoroutine(TestWalkInWalkOut());
+            }
+        }
+    }
+
+    private IEnumerator TestWalkInWalkOut()
+    {
+        switch (mapLocationToTest)
+        {
+            default:
+            case MapLocation.Ocean:
+            case MapLocation.BoatHouse:
+                break;
+
+            case MapLocation.GorillaVillage:
+                // set fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[(int)MapLocation.GorillaVillage].fogLocation;
+
+                // tiger and monkies walk in
+                julius.characterAnimator.Play("tigerWalk");
+                marcus.characterAnimator.Play("marcusWalkIn");
+                brutus.characterAnimator.Play("brutusWalkIn");
+
+                julius.mapAnimator.Play("JuliusWalkInGV");
+                marcus.mapAnimator.Play("MarcusWalkInGV");
+                brutus.mapAnimator.Play("BrutusWalkInGV");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkInGV"));
+
+                // idle animations
+                julius.characterAnimator.Play("aTigerIdle");
+                marcus.characterAnimator.Play("marcusBroken");
+                brutus.characterAnimator.Play("brutusBroken");
+
+                yield return new WaitForSeconds(2f);
+
+                // tiger runs off screen
+                julius.characterAnimator.Play("aTigerTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                julius.mapAnimator.Play("JuliusWalkOutGV");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutGV"));
+
+                // monkies go hehe and haha then run off too
+                marcus.characterAnimator.Play("marcusWin");
+                brutus.characterAnimator.Play("brutusWin");
+
+                yield return new WaitForSeconds(1f);
+
+                marcus.characterAnimator.Play("marcusTurn");
+                brutus.characterAnimator.Play("brutusTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                marcus.mapAnimator.Play("MarcusWalkOutGV");
+                brutus.mapAnimator.Play("BrutusWalkOutGV");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutGV"));
+                // reset fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[StudentInfoSystem.GetCurrentProfile().mapLimit].fogLocation;
+                break;
+
+            case MapLocation.Mudslide:
+                // set fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[(int)MapLocation.Mudslide].fogLocation;
+
+                // tiger and monkies walk in
+                julius.characterAnimator.Play("tigerWalk");
+                marcus.characterAnimator.Play("marcusWalkIn");
+                brutus.characterAnimator.Play("brutusWalkIn");
+
+                julius.mapAnimator.Play("JuliusWalkInMS");
+                marcus.mapAnimator.Play("MarcusWalkInMS");
+                brutus.mapAnimator.Play("BrutusWalkInMS");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkInMS"));
+
+                // idle animations
+                julius.characterAnimator.Play("aTigerIdle");
+                marcus.characterAnimator.Play("marcusBroken");
+                brutus.characterAnimator.Play("brutusBroken");
+
+                yield return new WaitForSeconds(2f);
+
+                // tiger runs off screen
+                julius.characterAnimator.Play("aTigerTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                julius.mapAnimator.Play("JuliusWalkOutMS");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutMS"));
+
+                // monkies go hehe and haha then run off too
+                marcus.characterAnimator.Play("marcusWin");
+                brutus.characterAnimator.Play("brutusWin");
+
+                yield return new WaitForSeconds(1f);
+
+                marcus.characterAnimator.Play("marcusTurn");
+                brutus.characterAnimator.Play("brutusTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                marcus.mapAnimator.Play("MarcusWalkOutMS");
+                brutus.mapAnimator.Play("BrutusWalkOutMS");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutMS"));
+                // reset fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[StudentInfoSystem.GetCurrentProfile().mapLimit].fogLocation;
+                break;
+
+            case MapLocation.OrcVillage:
+                // set fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[(int)MapLocation.OrcVillage].fogLocation;
+
+                // tiger and monkies walk in
+                julius.characterAnimator.Play("tigerWalk");
+                marcus.characterAnimator.Play("marcusWalkIn");
+                brutus.characterAnimator.Play("brutusWalkIn");
+
+                julius.mapAnimator.Play("JuliusWalkInOV");
+                marcus.mapAnimator.Play("MarcusWalkInOV");
+                brutus.mapAnimator.Play("BrutusWalkInOV");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkInOV"));
+
+                // idle animations
+                julius.characterAnimator.Play("aTigerIdle");
+                marcus.characterAnimator.Play("marcusBroken");
+                brutus.characterAnimator.Play("brutusBroken");
+
+                yield return new WaitForSeconds(2f);
+
+                // tiger runs off screen
+                julius.characterAnimator.Play("aTigerTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                julius.mapAnimator.Play("JuliusWalkOutOV");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutOV"));
+
+                // monkies go hehe and haha then run off too
+                marcus.characterAnimator.Play("marcusWin");
+                brutus.characterAnimator.Play("brutusWin");
+
+                yield return new WaitForSeconds(1f);
+
+                marcus.characterAnimator.Play("marcusTurn");
+                brutus.characterAnimator.Play("brutusTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                marcus.mapAnimator.Play("MarcusWalkOutOV");
+                brutus.mapAnimator.Play("BrutusWalkOutOV");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutOV"));
+                // reset fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[StudentInfoSystem.GetCurrentProfile().mapLimit].fogLocation;
+                break;
+
+            case MapLocation.SpookyForest:
+                // set fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[(int)MapLocation.SpookyForest].fogLocation;
+
+                // tiger and monkies walk in
+                julius.characterAnimator.Play("tigerWalk");
+                marcus.characterAnimator.Play("marcusWalkIn");
+                brutus.characterAnimator.Play("brutusWalkIn");
+
+                julius.mapAnimator.Play("JuliusWalkInSF");
+                marcus.mapAnimator.Play("MarcusWalkInSF");
+                brutus.mapAnimator.Play("BrutusWalkInSF");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkInSF"));
+
+                // idle animations
+                julius.characterAnimator.Play("aTigerIdle");
+                marcus.characterAnimator.Play("marcusBroken");
+                brutus.characterAnimator.Play("brutusBroken");
+
+                yield return new WaitForSeconds(2f);
+
+                // tiger runs off screen
+                julius.characterAnimator.Play("aTigerTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                julius.mapAnimator.Play("JuliusWalkOutSF");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutSF"));
+
+                // monkies go hehe and haha then run off too
+                marcus.characterAnimator.Play("marcusWin");
+                brutus.characterAnimator.Play("brutusWin");
+
+                yield return new WaitForSeconds(1f);
+
+                marcus.characterAnimator.Play("marcusTurn");
+                brutus.characterAnimator.Play("brutusTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                marcus.mapAnimator.Play("MarcusWalkOutSF");
+                brutus.mapAnimator.Play("BrutusWalkOutSF");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutSF"));
+                // reset fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[StudentInfoSystem.GetCurrentProfile().mapLimit].fogLocation;
+                break;
+
+            case MapLocation.OrcCamp:
+                // set fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[(int)MapLocation.OrcCamp].fogLocation;
+
+                // tiger and monkies walk in
+                julius.characterAnimator.Play("tigerWalk");
+                marcus.characterAnimator.Play("marcusWalkIn");
+                brutus.characterAnimator.Play("brutusWalkIn");
+
+                julius.mapAnimator.Play("JuliusWalkInOC");
+                marcus.mapAnimator.Play("MarcusWalkInOC");
+                brutus.mapAnimator.Play("BrutusWalkInOC");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkInOC"));
+
+                // idle animations
+                julius.characterAnimator.Play("aTigerIdle");
+                marcus.characterAnimator.Play("marcusBroken");
+                brutus.characterAnimator.Play("brutusBroken");
+
+                yield return new WaitForSeconds(2f);
+
+                // tiger runs off screen
+                julius.characterAnimator.Play("aTigerTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                julius.mapAnimator.Play("JuliusWalkOutOC");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutOC"));
+
+                // monkies go hehe and haha then run off too
+                marcus.characterAnimator.Play("marcusWin");
+                brutus.characterAnimator.Play("brutusWin");
+
+                yield return new WaitForSeconds(1f);
+
+                marcus.characterAnimator.Play("marcusTurn");
+                brutus.characterAnimator.Play("brutusTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                marcus.mapAnimator.Play("MarcusWalkOutOC");
+                brutus.mapAnimator.Play("BrutusWalkOutOC");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutOC"));
+                // reset fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[StudentInfoSystem.GetCurrentProfile().mapLimit].fogLocation;
+                break;
+
+            case MapLocation.GorillaPoop:
+                // set fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[(int)MapLocation.GorillaPoop].fogLocation;
+
+                // tiger and monkies walk in
+                julius.characterAnimator.Play("tigerWalk");
+                marcus.characterAnimator.Play("marcusWalkIn");
+                brutus.characterAnimator.Play("brutusWalkIn");
+
+                julius.mapAnimator.Play("JuliusWalkInGP");
+                marcus.mapAnimator.Play("MarcusWalkInGP");
+                brutus.mapAnimator.Play("BrutusWalkInGP");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkInGP"));
+
+                // idle animations
+                julius.characterAnimator.Play("aTigerIdle");
+                marcus.characterAnimator.Play("marcusBroken");
+                brutus.characterAnimator.Play("brutusBroken");
+
+                yield return new WaitForSeconds(2f);
+
+                // tiger runs off screen
+                julius.characterAnimator.Play("aTigerTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                julius.mapAnimator.Play("JuliusWalkOutGP");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutGP"));
+
+                // monkies go hehe and haha then run off too
+                marcus.characterAnimator.Play("marcusWin");
+                brutus.characterAnimator.Play("brutusWin");
+
+                yield return new WaitForSeconds(1f);
+
+                marcus.characterAnimator.Play("marcusTurn");
+                brutus.characterAnimator.Play("brutusTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                marcus.mapAnimator.Play("MarcusWalkOutGP");
+                brutus.mapAnimator.Play("BrutusWalkOutGP");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutGP"));
+                // reset fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[StudentInfoSystem.GetCurrentProfile().mapLimit].fogLocation;
+                break;
+
+            case MapLocation.WindyCliff:
+                // set fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[(int)MapLocation.WindyCliff].fogLocation;
+
+                // tiger and monkies walk in
+                julius.characterAnimator.Play("tigerWalk");
+                marcus.characterAnimator.Play("marcusWalkIn");
+                brutus.characterAnimator.Play("brutusWalkIn");
+
+                julius.mapAnimator.Play("JuliusWalkInWC");
+                marcus.mapAnimator.Play("MarcusWalkInWC");
+                brutus.mapAnimator.Play("BrutusWalkInWC");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkInWC"));
+
+                // idle animations
+                julius.characterAnimator.Play("aTigerIdle");
+                marcus.characterAnimator.Play("marcusBroken");
+                brutus.characterAnimator.Play("brutusBroken");
+
+                yield return new WaitForSeconds(2f);
+
+                // tiger runs off screen
+                julius.characterAnimator.Play("aTigerTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                julius.mapAnimator.Play("JuliusWalkOutWC");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutWC"));
+
+                // monkies go hehe and haha then run off too
+                marcus.characterAnimator.Play("marcusWin");
+                brutus.characterAnimator.Play("brutusWin");
+
+                yield return new WaitForSeconds(1f);
+
+                marcus.characterAnimator.Play("marcusTurn");
+                brutus.characterAnimator.Play("brutusTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                marcus.mapAnimator.Play("MarcusWalkOutWC");
+                brutus.mapAnimator.Play("BrutusWalkOutWC");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutWC"));
+                // reset fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[StudentInfoSystem.GetCurrentProfile().mapLimit].fogLocation;
+                break;
+
+            case MapLocation.PirateShip:
+                // set fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[(int)MapLocation.PirateShip].fogLocation;
+
+                // tiger and monkies walk in
+                julius.characterAnimator.Play("tigerWalk");
+                marcus.characterAnimator.Play("marcusWalkIn");
+                brutus.characterAnimator.Play("brutusWalkIn");
+
+                julius.mapAnimator.Play("JuliusWalkInPS");
+                marcus.mapAnimator.Play("MarcusWalkInPS");
+                brutus.mapAnimator.Play("BrutusWalkInPS");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkInPS"));
+
+                // idle animations
+                julius.characterAnimator.Play("aTigerIdle");
+                marcus.characterAnimator.Play("marcusBroken");
+                brutus.characterAnimator.Play("brutusBroken");
+
+                yield return new WaitForSeconds(2f);
+
+                // monkies go hehe and haha then run off too
+                marcus.characterAnimator.Play("marcusWin");
+                brutus.characterAnimator.Play("brutusWin");
+
+                yield return new WaitForSeconds(1f);
+
+                marcus.characterAnimator.Play("marcusTurn");
+                brutus.characterAnimator.Play("brutusTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                marcus.mapAnimator.Play("MarcusWalkOutPS");
+                brutus.mapAnimator.Play("BrutusWalkOutPS");
+
+                // tiger runs off screen
+                julius.characterAnimator.Play("aTigerTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                julius.mapAnimator.Play("JuliusWalkOutPS");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutPS"));
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutPS"));
+                // reset fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[StudentInfoSystem.GetCurrentProfile().mapLimit].fogLocation;
+                break;
+
+            case MapLocation.MermaidBeach:
+                // set fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[(int)MapLocation.MermaidBeach].fogLocation;
+
+                // tiger and monkies walk in
+                julius.characterAnimator.Play("tigerWalk");
+                marcus.characterAnimator.Play("marcusWalkIn");
+                brutus.characterAnimator.Play("brutusWalkIn");
+
+                julius.mapAnimator.Play("JuliusWalkInMB");
+                marcus.mapAnimator.Play("MarcusWalkInMB");
+                brutus.mapAnimator.Play("BrutusWalkInMB");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkInMB"));
+
+                // idle animations
+                julius.characterAnimator.Play("aTigerIdle");
+                marcus.characterAnimator.Play("marcusBroken");
+                brutus.characterAnimator.Play("brutusBroken");
+
+                yield return new WaitForSeconds(2f);
+
+                // tiger runs off screen
+                julius.characterAnimator.Play("aTigerTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                julius.mapAnimator.Play("JuliusWalkOutMB");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutMB"));
+
+                // monkies go hehe and haha then run off too
+                marcus.characterAnimator.Play("marcusWin");
+                brutus.characterAnimator.Play("brutusWin");
+
+                yield return new WaitForSeconds(1f);
+
+                marcus.characterAnimator.Play("marcusTurn");
+                brutus.characterAnimator.Play("brutusTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                marcus.mapAnimator.Play("MarcusWalkOutMB");
+                brutus.mapAnimator.Play("BrutusWalkOutMB");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutMB"));
+                // reset fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[StudentInfoSystem.GetCurrentProfile().mapLimit].fogLocation;
+                break;
+
+            case MapLocation.Ruins1:
+            case MapLocation.Ruins2:
+                // make sure scroll map is on Ruins 1!!!
+                ScrollMapManager.instance.GoToMapPosition(MapLocation.Ruins1);
+                yield return new WaitForSeconds(2f);
+
+                // set fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[(int)MapLocation.Ruins1].fogLocation;
+
+                // tiger and monkies walk in
+                julius.characterAnimator.Play("tigerWalk");
+                marcus.characterAnimator.Play("marcusWalkIn");
+                brutus.characterAnimator.Play("brutusWalkIn");
+
+                julius.mapAnimator.Play("JuliusWalkInR");
+                marcus.mapAnimator.Play("MarcusWalkInR");
+                brutus.mapAnimator.Play("BrutusWalkInR");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkInR"));
+
+                // idle animations
+                julius.characterAnimator.Play("aTigerIdle");
+                marcus.characterAnimator.Play("marcusBroken");
+                brutus.characterAnimator.Play("brutusBroken");
+
+                yield return new WaitForSeconds(2f);
+
+                // tiger runs off screen
+                julius.characterAnimator.Play("aTigerTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                julius.mapAnimator.Play("JuliusWalkOutR");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutR"));
+
+                // monkies go hehe and haha then run off too
+                marcus.characterAnimator.Play("marcusWin");
+                brutus.characterAnimator.Play("brutusWin");
+
+                yield return new WaitForSeconds(1f);
+
+                marcus.characterAnimator.Play("marcusTurn");
+                brutus.characterAnimator.Play("brutusTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                marcus.mapAnimator.Play("MarcusWalkOutR");
+                brutus.mapAnimator.Play("BrutusWalkOutR");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutR"));
+                // reset fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[StudentInfoSystem.GetCurrentProfile().mapLimit].fogLocation;
+                break;
+
+            case MapLocation.ExitJungle:
+                // set fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[(int)MapLocation.ExitJungle].fogLocation;
+
+                // tiger and monkies walk in
+                julius.characterAnimator.Play("tigerWalk");
+                marcus.characterAnimator.Play("marcusWalkIn");
+                brutus.characterAnimator.Play("brutusWalkIn");
+
+                julius.mapAnimator.Play("JuliusWalkInEJ");
+                marcus.mapAnimator.Play("MarcusWalkInEJ");
+                brutus.mapAnimator.Play("BrutusWalkInEJ");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkInEJ"));
+
+                // idle animations
+                julius.characterAnimator.Play("aTigerIdle");
+                marcus.characterAnimator.Play("marcusBroken");
+                brutus.characterAnimator.Play("brutusBroken");
+
+                yield return new WaitForSeconds(2f);
+
+                // tiger runs off screen
+                julius.characterAnimator.Play("aTigerTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                julius.mapAnimator.Play("JuliusWalkOutEJ");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutEJ"));
+
+                // monkies go hehe and haha then run off too
+                marcus.characterAnimator.Play("marcusWin");
+                brutus.characterAnimator.Play("brutusWin");
+
+                yield return new WaitForSeconds(1f);
+
+                marcus.characterAnimator.Play("marcusTurn");
+                brutus.characterAnimator.Play("brutusTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                marcus.mapAnimator.Play("MarcusWalkOutEJ");
+                brutus.mapAnimator.Play("BrutusWalkOutEJ");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutEJ"));
+                // reset fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[StudentInfoSystem.GetCurrentProfile().mapLimit].fogLocation;
+                break;
+
+            case MapLocation.GorillaStudy:
+                // set fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[(int)MapLocation.GorillaStudy].fogLocation;
+
+                // tiger and monkies walk in
+                julius.characterAnimator.Play("tigerWalk");
+                marcus.characterAnimator.Play("marcusWalkIn");
+                brutus.characterAnimator.Play("brutusWalkIn");
+
+                julius.mapAnimator.Play("JuliusWalkInGS");
+                marcus.mapAnimator.Play("MarcusWalkInGS");
+                brutus.mapAnimator.Play("BrutusWalkInGS");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkInGS"));
+
+                // idle animations
+                julius.characterAnimator.Play("aTigerIdle");
+                marcus.characterAnimator.Play("marcusBroken");
+                brutus.characterAnimator.Play("brutusBroken");
+
+                yield return new WaitForSeconds(2f);
+
+                // tiger runs off screen
+                julius.characterAnimator.Play("aTigerTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                julius.mapAnimator.Play("JuliusWalkOutGS");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutGS"));
+
+                // monkies go hehe and haha then run off too
+                marcus.characterAnimator.Play("marcusWin");
+                brutus.characterAnimator.Play("brutusWin");
+
+                yield return new WaitForSeconds(1f);
+
+                marcus.characterAnimator.Play("marcusTurn");
+                brutus.characterAnimator.Play("brutusTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                marcus.mapAnimator.Play("MarcusWalkOutGS");
+                brutus.mapAnimator.Play("BrutusWalkOutGS");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutGS"));
+                // reset fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[StudentInfoSystem.GetCurrentProfile().mapLimit].fogLocation;
+                break;
+
+            case MapLocation.Monkeys:
+                // set fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[(int)MapLocation.Monkeys].fogLocation;
+
+                // tiger and monkies walk in
+                julius.characterAnimator.Play("tigerWalk");
+                julius.mapAnimator.Play("JuliusWalkInM");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkInM"));
+
+                // idle animations
+                julius.characterAnimator.Play("aTigerIdle");
+
+                yield return new WaitForSeconds(2f);
+
+                // tiger runs off screen
+                julius.characterAnimator.Play("aTigerTurn");
+
+                yield return new WaitForSeconds(0.25f);
+
+                julius.mapAnimator.Play("JuliusWalkOutM");
+
+                // wait for animation to be done
+                yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutM"));
+
+                // reset fog location
+                FogController.instance.mapXpos = ScrollMapManager.instance.mapLocations[StudentInfoSystem.GetCurrentProfile().mapLimit].fogLocation;
+                break;
+        }
+
+        // place tiger and monkies off screen
+        julius.transform.localScale = Vector3.zero;
+        marcus.transform.localScale = Vector3.zero;
+        brutus.transform.localScale = Vector3.zero;
+
+        julius.mapAnimator.Play("JuliusOffScreenPos");
+        
+        yield return new WaitForSeconds(0.1f);
+
+        julius.transform.localScale = Vector3.one;
+        marcus.transform.localScale = Vector3.one;
+        brutus.transform.localScale = Vector3.one;
+    }
 
     void Awake()
     {
@@ -2634,7 +3346,7 @@ public class MapAnimationController : MonoBehaviour
         brutus.mapAnimator.Play("BrutusWalkOutWC");
 
         // wait for animation to be done
-        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "MarcusWalkOutWC"));
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutWC"));
 
         // spider intro 5
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("CliffIntro_1_p5"));
@@ -2875,16 +3587,6 @@ public class MapAnimationController : MonoBehaviour
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
-        // tiger runs off screen
-        julius.characterAnimator.Play("aTigerTurn");
-
-        yield return new WaitForSeconds(0.25f);
-
-        julius.mapAnimator.Play("JuliusWalkOutPS");
-
-        // wait for animation to be done
-        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutPS"));
-
         // play WC defeated 2
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("CliffDefeated_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
@@ -2906,6 +3608,16 @@ public class MapAnimationController : MonoBehaviour
 
         // wait for animation to be done
         yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutPS"));
+
+        // tiger runs off screen
+        julius.characterAnimator.Play("aTigerTurn");
+
+        yield return new WaitForSeconds(0.25f);
+
+        julius.mapAnimator.Play("JuliusWalkOutPS");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(julius.mapAnimator, "JuliusWalkOutPS"));
 
         // place tiger and monkies off screen
         julius.transform.localScale = Vector3.zero;
@@ -3237,7 +3949,7 @@ public class MapAnimationController : MonoBehaviour
     {
         // make sure scroll map is on Ruins 1!!!
         ScrollMapManager.instance.GoToMapPosition(MapLocation.Ruins1);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         // play R rebuilt talkie 1
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RuinsRebuilt_1_p1"));
@@ -3290,7 +4002,7 @@ public class MapAnimationController : MonoBehaviour
     {
         // make sure scroll map is on Ruins 1!!!
         ScrollMapManager.instance.GoToMapPosition(MapLocation.Ruins1);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         // play R defeated 1
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RuinsDefeated_1_p1"));

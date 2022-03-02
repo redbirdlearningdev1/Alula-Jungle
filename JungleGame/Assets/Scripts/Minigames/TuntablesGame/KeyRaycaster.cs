@@ -40,7 +40,6 @@ public class KeyRaycaster : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0) && selectedKey)
         {   
-            print ("here!");
             // send raycast to check for rock lock
             var pointerEventData = new PointerEventData(EventSystem.current);
             pointerEventData.position = Input.mousePosition;
@@ -101,12 +100,6 @@ public class KeyRaycaster : MonoBehaviour
                         selectedKey = result.gameObject.GetComponentInParent<Key>();
                         selectedKey.interactable = false;
                         selectedKey.PlayAudio();
-
-                        // remove glow
-                        if (TurntablesGameManager.instance.glowCorrectKey)
-                        {
-                            ImageGlowController.instance.SetImageGlow(selectedKey.GetComponent<Image>(), false, GlowValue.none);
-                        }
 
                         // play tutorial intro 3 if tutorial
                         if (TurntablesGameManager.instance.playTutorial && !playedKeyTutorialPart)

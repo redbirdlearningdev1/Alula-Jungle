@@ -171,20 +171,15 @@ public static class AISystem
         challengeGameOptions.Add(GameType.TigerPawCoins);
         
 
-        if( (playerData.starsBlend + playerData.starsBuild + playerData.starsTPawCoin + playerData.starsTPawPol) >= 9)
+        if ((playerData.starsBlend + playerData.starsBuild + playerData.starsTPawCoin + playerData.starsTPawPol) >= 9)
         {
             challengeGameOptions.Add(GameType.Password);
         }   
-        if( (playerData.starsBlend + playerData.starsBuild + playerData.starsTPawCoin + playerData.starsTPawPol + playerData.starsPass) >= 18)
+        if ((playerData.starsBlend + playerData.starsBuild + playerData.starsTPawCoin + playerData.starsTPawPol + playerData.starsPass) >= 18)
         {
             challengeGameOptions.Add(GameType.WordFactoryDeleting);
             challengeGameOptions.Add(GameType.WordFactorySubstituting);
-        }   
-        
-
-
-
-
+        }
 
         // remove options that are already used in this area
         switch (location)
@@ -213,28 +208,98 @@ public static class AISystem
                 challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType);
                 break;
 
-            // add other cases here
+            case MapLocation.OrcCamp:
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.gameType);
+                break;
+            
+            case MapLocation.GorillaPoop:
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge1.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge2.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge3.gameType);
+                break;
+
+            case MapLocation.WindyCliff:
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge1.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge2.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge3.gameType);
+                break;
+
+            case MapLocation.PirateShip:
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge1.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge2.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge3.gameType);
+                break;
+
+            case MapLocation.MermaidBeach:
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.gameType);
+                break;
+
+            case MapLocation.Ruins1:
+            case MapLocation.Ruins2:
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.R_challenge1.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.R_challenge2.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.R_challenge3.gameType);
+                break;
+
+            case MapLocation.ExitJungle:
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge1.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge2.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge3.gameType);
+                break;
+
+            case MapLocation.GorillaStudy:
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge1.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge2.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge3.gameType);
+                break;
+
+            case MapLocation.Monkeys:
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.M_challenge1.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.M_challenge2.gameType);
+                challengeGameOptions.Remove(StudentInfoSystem.GetCurrentProfile().mapData.M_challenge3.gameType);
+                break;
         }
-        if( playerData.blendPlayed == 0)
+
+
+
+        if (playerData.blendPlayed == 0 && challengeGameOptions.Count > 0)
         {
-             return challengeGameOptions[0];
+            return challengeGameOptions[0];
         }
-        else if( playerData.tPawPolPlayed == 0)
+        else if (playerData.tPawPolPlayed == 0 && challengeGameOptions.Count > 0)
         {
-             return challengeGameOptions[0];
+            return challengeGameOptions[0];
         }
-        else if( playerData.tPawCoinPlayed == 0)
+        else if (playerData.tPawCoinPlayed == 0 && challengeGameOptions.Count > 0)
         {
-             return challengeGameOptions[0];
+            return challengeGameOptions[0];
         }
-        else
+        else if (challengeGameOptions.Count > 0 && challengeGameOptions.Count > 0)
         {
             int index = Random.Range(0, challengeGameOptions.Count);
             return challengeGameOptions[index];
-            // return random index
         }
+        else
+        {
+            // return random index
+            challengeGameOptions.Clear();
+            challengeGameOptions.Add(GameType.WordFactoryBlending);
+            challengeGameOptions.Add(GameType.TigerPawPhotos);
+            challengeGameOptions.Add(GameType.TigerPawCoins);
+            challengeGameOptions.Add(GameType.WordFactoryBuilding);
+            challengeGameOptions.Add(GameType.WordFactorySubstituting);
+            challengeGameOptions.Add(GameType.WordFactoryDeleting);
+            challengeGameOptions.Add(GameType.Password);
 
+            Debug.Log("challenge game options: " + challengeGameOptions.Count);
 
+            int index = Random.Range(0, challengeGameOptions.Count);
+            return challengeGameOptions[index];
+        }
     }
 
     public static bool DetermineRoyalRumble(StudentPlayerData playerData)
