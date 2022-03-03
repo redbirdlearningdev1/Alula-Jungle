@@ -263,7 +263,6 @@ public class GameManager : DontDestroy<GameManager>
 
         // remove star award window + levelPreview + toolbar 
         StarAwardController.instance.ResetWindow();
-        LevelPreviewWindow.instance.ResetWindow();
         DropdownToolbar.instance.ToggleToolbar(false);
 
         // remove all raycast blockers
@@ -283,7 +282,7 @@ public class GameManager : DontDestroy<GameManager>
         WagonWindowController.instance.ResetWagonController();
 
         // close settings menu if open
-        SettingsManager.instance.CloseSettingsWindow();
+        SettingsManager.instance.CloseAllSettingsWindows();
 
         // close in development window
         WagonWindowController.instance.CloseInDevelopmentWindow();

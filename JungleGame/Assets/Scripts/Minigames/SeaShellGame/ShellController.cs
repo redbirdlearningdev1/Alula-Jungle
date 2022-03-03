@@ -11,6 +11,9 @@ public class ShellController : MonoBehaviour
     public SeaShell shell2;
     public SeaShell shell3;
 
+    // same shells as above but stored in a list
+    public List<SeaShell> shells;
+
     public Animator tideAnimator;
 
     void Awake()
@@ -60,7 +63,7 @@ public class ShellController : MonoBehaviour
         yield return new WaitForSeconds(0.7f);
         tideAnimator.Play("tideWipe");
         yield return new WaitForSeconds(0.75f);
-        // reveal shells
+        // hide shells
         shell1.ToggleShell(false);
         shell2.ToggleShell(false);
         shell3.ToggleShell(false);

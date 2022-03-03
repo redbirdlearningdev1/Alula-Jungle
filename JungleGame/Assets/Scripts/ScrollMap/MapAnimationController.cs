@@ -4702,6 +4702,15 @@ public class MapAnimationController : MonoBehaviour
         // set julius's challenge game
         bool firstTime = SetJuliusChallengeGame(location);
 
+        print ("playing challenge game? -> " + GameManager.instance.playingChallengeGame);
+
+        // only continue with talkies if just played a challenge game
+        if (!GameManager.instance.playingChallengeGame)
+        {
+            animationDone = true;
+            yield break;
+        }
+
         // play correct player lose talkies
         if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
             !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
@@ -4789,6 +4798,13 @@ public class MapAnimationController : MonoBehaviour
             }
         }
 
+        // only continue with talkies if just played a challenge game
+        if (!GameManager.instance.playingChallengeGame)
+        {
+            animationDone = true;
+            yield break;
+        }
+
         // play correct lose talkies
         if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
             !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
@@ -4868,6 +4884,13 @@ public class MapAnimationController : MonoBehaviour
                 // continue to marcus challenge game
                 brutus.GoToGameDataSceneImmediately(true);
             }
+        }
+
+        // only continue with talkies if just played a challenge game
+        if (!GameManager.instance.playingChallengeGame)
+        {
+            animationDone = true;
+            yield break;
         }
 
         // play correct lose talkies

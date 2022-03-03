@@ -99,12 +99,15 @@ public class MinigameWheelController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // remove background
-        background.raycastTarget = false;
         background.GetComponent<LerpableObject>().LerpImageAlpha(background, 0f, 0.5f);
 
         // show UI buttons
         SettingsManager.instance.ToggleMenuButtonActive(true);
         SettingsManager.instance.ToggleWagonButtonActive(true);
+
+        yield return new WaitForSeconds(1f);
+
+        background.raycastTarget = false;
     }
 
     public void OnWheelButtonPressed()

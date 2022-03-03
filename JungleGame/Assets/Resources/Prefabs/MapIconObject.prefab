@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3999598219766758947}
   - component: {fileID: 8053114830495287970}
   - component: {fileID: 3608258684879254900}
+  - component: {fileID: 3717828469653704722}
   m_Layer: 8
   m_Name: MapIconObject
   m_TagString: MapIcon
@@ -66,11 +67,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactable: 0
-  identfier: 0
+  identifier: 0
   canBeFixed: 0
   animatedIcon: 0
   brokenSprite: {fileID: 0}
   fixedSprite: {fileID: 0}
+  playQuips: 0
+  brokenQuips: {fileID: 0}
+  fixedQuips: {fileID: 0}
   repairAnimator: {fileID: 6646019494824358958}
   destroyAnimator: {fileID: 7705858291643078949}
   starLocation: 0
@@ -260,6 +264,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458d3b50667b6a944abf0cc4cfece9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!60 &3717828469653704722
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375974568929444995}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -27.131836, y: 141.67914}
+      - {x: -183.94318, y: 48.489502}
+      - {x: -153.19373, y: -40.37653}
+      - {x: 26.083847, y: -137.80615}
+      - {x: 153.78725, y: -67.86578}
+      - {x: 184.45532, y: 15.141476}
 --- !u!1 &3100282830454333559
 GameObject:
   m_ObjectHideFlags: 0

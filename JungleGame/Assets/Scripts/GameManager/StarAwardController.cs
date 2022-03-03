@@ -58,7 +58,7 @@ public class StarAwardController : MonoBehaviour
         }
 
         // close settings menu if open
-        SettingsManager.instance.CloseSettingsWindow();
+        SettingsManager.instance.CloseAllSettingsWindows();
 
         // remove settings button
         SettingsManager.instance.ToggleMenuButtonActive(false);
@@ -79,8 +79,6 @@ public class StarAwardController : MonoBehaviour
         // determine if challenge game
         if (GameManager.instance.playingChallengeGame)
         {
-            GameManager.instance.playingChallengeGame = false;
-
             // lose?
             if (numStars <= 0)
             {

@@ -170,6 +170,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     [Header("Animation Stuff")]
     public bool canBeFixed;
     public AnimatedIcon animatedIcon;
+    public Transform additionalIconObject;
 
     [SerializeField] private Sprite brokenSprite;
     [SerializeField] private Sprite fixedSprite;
@@ -723,28 +724,64 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     ################################################
     */
 
+    private bool isOver = false;
+
+    void OnMouseOver()
+    {
+        // skip if not interactable
+        if (!interactable)
+            return;
+        
+        if (!isOver)
+        {
+            isOver = true;
+            GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
+
+            if (additionalIconObject != null)
+                additionalIconObject.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
+        }
+    }
+
+    void OnMouseExit()
+    {
+        if (isOver)
+        {
+            isOver = false;
+            GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
+
+            if (additionalIconObject != null)
+                additionalIconObject.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
+        }
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         // return if not interactable
-        if (!interactable)
+        if (!interactable || !isOver)
             return;
 
         if (!isPressed)
         {
             isPressed = true;
-            transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
+            GetComponent<LerpableObject>().LerpScale(new Vector2(0.9f, 0.9f), 0.1f);
+
+            if (additionalIconObject != null)
+                additionalIconObject.GetComponent<LerpableObject>().LerpScale(new Vector2(0.9f, 0.9f), 0.1f);
         }
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (isPressed)
+        if (isPressed && isOver)
         {
             // play audio blip
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
             isPressed = false;
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
+
+            if (additionalIconObject != null)
+                additionalIconObject.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
 
             // check for story beat stuff
             StartCoroutine(CheckForStoryBeatRoutine());

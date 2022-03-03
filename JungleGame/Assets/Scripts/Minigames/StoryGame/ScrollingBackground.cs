@@ -62,6 +62,13 @@ public class ScrollingBackground : MonoBehaviour
     public float emergingFlagPos;
     public float resolutionFlagPos;
 
+    [Header("Darwin Y Positions")]
+    public float prologueDarwinHeight;
+    public float beginningDarwinHeight;
+    public float followRedDarwinHeight;
+    public float emergingDarwinHeight;
+    public float resolutionDarwinHeight;
+
     // private variables
     private bool isMoving = false;
     private BackgroundSprites currentSprites;
@@ -85,24 +92,29 @@ public class ScrollingBackground : MonoBehaviour
         }
     }
 
-    public void SetFlagPosition(StoryGameBackground game)
+    public void SetStoryGamePositions(StoryGameBackground game)
     {
         switch (game)
         {
             case StoryGameBackground.Prologue:
                 flagObject.localPosition = new Vector3(prologueFlagPos, -12, 1f);
+                gorillaAnimator.transform.localPosition = new Vector3(-340f, prologueDarwinHeight, 0f);
                 break;
             case StoryGameBackground.Beginning:
                 flagObject.localPosition = new Vector3(beginningFlagPos, -12, 1f);
+                gorillaAnimator.transform.localPosition = new Vector3(-340f, beginningDarwinHeight, 0f);
                 break;
             case StoryGameBackground.FollowRed:
                 flagObject.localPosition = new Vector3(followRedFlagPos, -12, 1f);
+                gorillaAnimator.transform.localPosition = new Vector3(-340f, followRedDarwinHeight, 0f);
                 break;
             case StoryGameBackground.Emerging:
                 flagObject.localPosition = new Vector3(emergingFlagPos, -12, 1f);
+                gorillaAnimator.transform.localPosition = new Vector3(-340f, emergingDarwinHeight, 0f);
                 break;
             case StoryGameBackground.Resolution:
                 flagObject.localPosition = new Vector3(resolutionFlagPos, -12, 1f);
+                gorillaAnimator.transform.localPosition = new Vector3(-340f, resolutionDarwinHeight, 0f);
                 break;
         }
     }

@@ -83,7 +83,7 @@ public class StoryGameManager : MonoBehaviour
         }
 
         // set flag location
-        ScrollingBackground.instance.SetFlagPosition(storyGameData.background);
+        ScrollingBackground.instance.SetStoryGamePositions(storyGameData.background);
 
         // send log
         GameManager.instance.SendLog(this, "starting story game: " + storyGameData.name);

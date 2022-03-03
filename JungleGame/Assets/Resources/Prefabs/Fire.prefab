@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 7186678898831623268}
   - component: {fileID: 2960990336174669554}
   - component: {fileID: 9138897103185537295}
+  - component: {fileID: 6438086149260064849}
   m_Layer: 8
   m_Name: Fire
   m_TagString: MapIcon
@@ -102,11 +103,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactable: 0
-  identfier: 0
+  identifier: 0
   canBeFixed: 1
   animatedIcon: 1
   brokenSprite: {fileID: 21300000, guid: eadcc6bf467dc594aa2fe33709c80a47, type: 3}
   fixedSprite: {fileID: 21300000, guid: e4df938781d9c78418359cfe9f6e7437, type: 3}
+  playQuips: 0
+  brokenQuips: {fileID: 0}
+  fixedQuips: {fileID: 0}
   repairAnimator: {fileID: 4365006022846204987}
   destroyAnimator: {fileID: 6099113648299542755}
   starLocation: 1
@@ -315,6 +319,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458d3b50667b6a944abf0cc4cfece9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!60 &6438086149260064849
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2512186891888730656}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 91.495804, y: -7.4901733}
+      - {x: 59.27557, y: 34.74383}
+      - {x: 33.630795, y: 18.609013}
+      - {x: 17.620224, y: -5.91687}
+      - {x: 16.905056, y: -41.42169}
+      - {x: 50.794014, y: -57.30859}
+      - {x: 86.93386, y: -40.007633}
 --- !u!1 &2887412090581168439
 GameObject:
   m_ObjectHideFlags: 0

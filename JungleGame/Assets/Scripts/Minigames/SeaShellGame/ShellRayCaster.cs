@@ -72,6 +72,12 @@ public class ShellRayCaster : MonoBehaviour
                 selectedShell.UnselectShell();
             }
 
+            // stop grow + wiggle coinholder
+            CoinHolder.instance.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
+            CoinHolder.instance.GetComponent<WiggleController>().StopWiggle();
+            OctoController.instance.coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
+            OctoController.instance.coin.GetComponent<WiggleController>().StopWiggle();
+
             selectedShell = null;
         }
 
@@ -95,6 +101,12 @@ public class ShellRayCaster : MonoBehaviour
                         selectedShell = result.gameObject.GetComponent<SeaShell>();
                         selectedShell.SelectShell();
                         selectedShell.gameObject.transform.SetParent(selectedShellParent);
+
+                        // grow + wiggle coinholder
+                        CoinHolder.instance.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.2f);
+                        CoinHolder.instance.GetComponent<WiggleController>().StartWiggle();
+                        OctoController.instance.coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.2f);
+                        OctoController.instance.coin.GetComponent<WiggleController>().StartWiggle();
                     }
                 }
             }

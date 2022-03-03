@@ -542,9 +542,11 @@ public class SettingsManager : MonoBehaviour
         animatingWindow = false;
     }
 
-    public void CloseSettingsWindow()
+    public void CloseAllSettingsWindows()
     {
         ToggleSettingsWindow(false);
+        ToggleInGameSettingsWindow(false);
+        ToggleSplashScreenSettingsWindow(false);
     }
 
 

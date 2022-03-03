@@ -27,7 +27,6 @@ public class NewSpiderController : MonoBehaviour
     }
     private IEnumerator successRoutine()
     {
-        
         animator.Play("Success");
         yield return new WaitForSeconds(1f);
         animator.Play("WebShoot");

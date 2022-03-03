@@ -35,6 +35,7 @@ public class SeaShell : MonoBehaviour
         }
         else
         {
+            transform.localScale = new Vector3(1f, 1f, 1f);
             GetComponent<LerpableObject>().SetImageAlpha(GetComponent<Image>(), 0f);
             shadow.GetComponent<LerpableObject>().SetImageAlpha(shadow, 0f);
         }
