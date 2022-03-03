@@ -10,8 +10,9 @@ public class DockedBoatButtonRaycaster : MonoBehaviour
 
     void Update()
     {
-        // return if off, else do thing
-        if (!isOn)
+        // return if off or if Talkie is playing, else do thing
+        Debug.Log("Talkie Playing: " + TalkieManager.instance.talkiePlaying);
+        if (!isOn || TalkieManager.instance.talkiePlaying)
             return;
 
         if (Input.GetMouseButtonUp(0) && currentButton)

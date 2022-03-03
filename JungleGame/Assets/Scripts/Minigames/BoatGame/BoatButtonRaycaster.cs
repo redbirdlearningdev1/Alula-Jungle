@@ -37,7 +37,7 @@ public class BoatButtonRaycaster : MonoBehaviour
                         currentButton.SetPressedSprite(true);
                         
                         
-                        DockedBoatManager.instance.BoatButtonPressed(currentButton.id);
+                        NewBoatGameManager.instance.BoatButtonPressed(currentButton.id);
                     }
                 }
             }

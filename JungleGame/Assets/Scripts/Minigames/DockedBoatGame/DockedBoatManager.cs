@@ -65,12 +65,27 @@ public class DockedBoatManager : MonoBehaviour
     void Start()
     {
         DockedBoatWheelController.instance.isOn = false;
+        //StartCoroutine(PlayDockedBoatTalkie());
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    IEnumerator PlayDockedBoatTalkie()
+    {
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BoatGame_2_p1"));
+        while (TalkieManager.instance.talkiePlaying)
+        {
+            yield return null;
+        }
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BoatGame_2_p2"));
+        while (TalkieManager.instance.talkiePlaying)
+        {
+            yield return null;
+        }
     }
 
     public void BoatButtonPressed(BoatButtonID id)
@@ -176,7 +191,7 @@ public class DockedBoatManager : MonoBehaviour
         bubble.gameObject.GetComponent<Animator>().SetFloat("SpeedMultiplier", bubbleSpeed);
 
         // Wait for bubble to despawn
-        yield return new WaitForSeconds(bubblesClip.length * ( 1.0f / bubbleSpeed));
+        yield return new WaitForSeconds(bubblesClip.length * (1.0f / bubbleSpeed));
 
         // Destroy Bubble
         Destroy(bubble);
