@@ -827,12 +827,20 @@ public class MapAnimationController : MonoBehaviour
     {
         /// default positions on all story beats:
 
-        if (storyBeat >= StoryBeat.GorillaVillageIntro)
+        if (storyBeat >= StoryBeat.GorillaVillageIntro && storyBeat < StoryBeat.RedShowsStickerButton)
         {
             // place boat in dock
             boat.mapAnimator.Play("BoatDockedPos");
+            boat.GetComponent<MapIcon>().interactable = false;
             boat.GetComponent<Image>().raycastTarget = false;
-        }   
+        }
+        else if (storyBeat >= StoryBeat.RedShowsStickerButton)
+        {
+            // place boat in dock
+            boat.mapAnimator.Play("BoatDockedPos");
+            boat.GetComponent<MapIcon>().interactable = true;
+            boat.GetComponent<Image>().raycastTarget = true;
+        }
     
         // place clogg in OV
         clogg.mapAnimator.Play("CloggOVPos");

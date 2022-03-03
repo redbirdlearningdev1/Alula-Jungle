@@ -202,13 +202,16 @@ public class NewBoatGameManager : MonoBehaviour
                 BoatThrottleController.instance.isOn = false;
                 IslandCutoutController.instance.isOn = false;
 
-                // play talkie and wait for it to finish
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BoatGame_1_p1"));
-                while (TalkieManager.instance.talkiePlaying)
+                if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.InitBoatGame)
                 {
-                    yield return null;
+                    // play talkie and wait for it to finish
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BoatGame_1_p1"));
+                    while (TalkieManager.instance.talkiePlaying)
+                    {
+                        yield return null;
+                    }
+                    yield return new WaitForSeconds(1f);
                 }
-                yield return new WaitForSeconds(1f);
 
                 // red voiceover 0
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[0]);
@@ -391,11 +394,21 @@ public class NewBoatGameManager : MonoBehaviour
         {
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
+            yield return new WaitForSeconds(2f);
+            // exit boat game
+            GameManager.instance.LoadScene("ScrollMap", true, 3f, true);
         }
-        yield return new WaitForSeconds(2f);
+        else
+        {
+            if (StudentInfoSystem.GetCurrentProfile().currBoatEncounter == BoatEncounter.FirstTime)
+            {
+                StudentInfoSystem.GetCurrentProfile().currBoatEncounter = BoatEncounter.SecondTime;
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
 
-        // exit boat game
-        GameManager.instance.LoadScene("ScrollMap", true, 3f, true);
+            GameManager.instance.finishedBoatGame = true;
+            GameManager.instance.LoadScene("DockedBoatGame", true, 3f, true);
+        }
     }
 
     public void BoatButtonPressed(BoatButtonID id)

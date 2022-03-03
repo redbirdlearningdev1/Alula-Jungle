@@ -223,6 +223,7 @@ public class ScrollMapManager : MonoBehaviour
         // remove game manager stuff
         GameManager.instance.playingRoyalRumbleGame = false;
         GameManager.instance.playingChallengeGame = false;
+        GameManager.instance.finishedBoatGame = false;
         
         // show UI
         if (activateMapNavigation)

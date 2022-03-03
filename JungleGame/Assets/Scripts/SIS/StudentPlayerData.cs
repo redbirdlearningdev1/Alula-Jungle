@@ -95,6 +95,7 @@ public class StudentPlayerData
 
     // game progression
     public StoryBeat currStoryBeat;
+    public BoatEncounter currBoatEncounter;
     public bool unlockedStickerButton;
     public bool firstTimeLoseChallengeGame;
     public bool everyOtherTimeLoseChallengeGame;
@@ -125,6 +126,13 @@ public class StudentPlayerData
 #   PROFILE + STORY DATA
 ################################################
 */
+
+public enum BoatEncounter
+{
+    FirstTime,
+    SecondTime,
+    EveryOtherTime,
+}
 
 public enum StudentIndex
 {

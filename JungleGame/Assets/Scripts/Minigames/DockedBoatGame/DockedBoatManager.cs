@@ -59,13 +59,14 @@ public class DockedBoatManager : MonoBehaviour
             instance = this;
         }
 
+        GameManager.instance.SceneInit();
     }
 
     // Start is called before the first frame update
     void Start()
     {
         DockedBoatWheelController.instance.isOn = false;
-        //StartCoroutine(PlayDockedBoatTalkie());
+        StartCoroutine(PlayDockedBoatTalkie());
     }
 
     // Update is called once per frame
@@ -76,15 +77,71 @@ public class DockedBoatManager : MonoBehaviour
 
     IEnumerator PlayDockedBoatTalkie()
     {
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BoatGame_2_p1"));
-        while (TalkieManager.instance.talkiePlaying)
+        if (StudentInfoSystem.GetCurrentProfile().currBoatEncounter == BoatEncounter.FirstTime)
         {
-            yield return null;
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BoatGame_2_p1"));
+            while (TalkieManager.instance.talkiePlaying)
+            {
+                yield return null;
+            }
+
+            StudentInfoSystem.GetCurrentProfile().currBoatEncounter = BoatEncounter.EveryOtherTime;
+            StudentInfoSystem.SaveStudentPlayerData();
+
+            if (TalkieManager.instance.doNotContinueToGame)
+            {
+                TalkieManager.instance.doNotContinueToGame = false;
+                GameManager.instance.ReturnToScrollMap();
+                yield break;
+            }
+            else
+            {
+                GameManager.instance.LoadScene("NewBoatGame", true);
+                yield break;
+            }
         }
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BoatGame_2_p2"));
-        while (TalkieManager.instance.talkiePlaying)
+        else if (StudentInfoSystem.GetCurrentProfile().currBoatEncounter == BoatEncounter.SecondTime)
         {
-            yield return null;
+            StudentInfoSystem.GetCurrentProfile().currBoatEncounter = BoatEncounter.EveryOtherTime;
+            StudentInfoSystem.SaveStudentPlayerData();
+
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BoatGame_2_p2"));
+            while (TalkieManager.instance.talkiePlaying)
+            {
+                yield return null;
+            }
+        }
+        else if (StudentInfoSystem.GetCurrentProfile().currBoatEncounter == BoatEncounter.EveryOtherTime)
+        {
+            if (GameManager.instance.finishedBoatGame)
+            {
+                GameManager.instance.finishedBoatGame = false;
+
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BoatGame_2_p2"));
+                while (TalkieManager.instance.talkiePlaying)
+                {
+                    yield return null;
+                }
+            }
+            else
+            {
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BoatGame_3_p1"));
+                while (TalkieManager.instance.talkiePlaying)
+                {
+                    yield return null;
+                }
+
+                if (TalkieManager.instance.doNotContinueToGame)
+                {
+                    TalkieManager.instance.doNotContinueToGame = false;
+                    yield break;
+                }
+                else
+                {
+                    GameManager.instance.LoadScene("NewBoatGame", true);
+                    yield break;
+                }
+            }
         }
     }
 
@@ -144,7 +201,7 @@ public class DockedBoatManager : MonoBehaviour
 
     public void EscapeButtonPressed()
     {
-        //TODO: Return to scrollmap
+        GameManager.instance.ReturnToScrollMap();
     }
 
     public void StartEngineBubbles()

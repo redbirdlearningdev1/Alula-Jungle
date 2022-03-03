@@ -789,12 +789,22 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     private IEnumerator CheckForStoryBeatRoutine()
     {   
-        // go to boat game if story beat correct
-        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.InitBoatGame)
+
+        if (identifier == MapIconIdentfier.Boat)
         {
-            GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(GameType.BoatGame), true);
-            yield break;
+            // go to boat game if story beat correct
+            if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.InitBoatGame)
+            {
+                GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(GameType.BoatGame), true);
+                yield break;
+            }
+            else
+            {
+                GameManager.instance.LoadScene("DockedBoatGame", true);
+                yield break;
+            }
         }
+        
         if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PrologueStoryGame)
         {  
             // pre story game interaction
