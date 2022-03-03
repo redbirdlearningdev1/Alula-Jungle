@@ -185,7 +185,6 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     private Animator animator;
     [SerializeField] private Animator repairAnimator;
     [SerializeField] private Animator destroyAnimator;
-    private static float pressedScaleChange = 0.95f;
     private bool isPressed = false;
     private bool isFixed = false;
 

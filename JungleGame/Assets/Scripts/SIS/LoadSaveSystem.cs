@@ -64,7 +64,7 @@ public static class LoadSaveSystem
             // check to make sure data is correct version
             if (studentData.version != GameManager.currentGameVersion)
             {
-                GameManager.instance.SendError("LoadSaveSystem", "Student data is wrong version");
+                GameManager.instance.SendError("LoadSaveSystem", "Student data is wrong version - deleting old profile");
 
                 // create new profile file
                 if (createNewIfNull)
