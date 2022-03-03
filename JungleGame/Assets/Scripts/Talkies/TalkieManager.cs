@@ -341,6 +341,7 @@ public class TalkieManager : MonoBehaviour
 
         // turn off particles
         ParticleController.instance.isOn = false;
+        ParticleController.instance.SetActiveParticles(TalkieCharacter.None);
 
         // enable nav buttons on scroll map
         if (SceneManager.GetActiveScene().name == "ScrollMap")
@@ -388,8 +389,6 @@ public class TalkieManager : MonoBehaviour
                 leftHidden = false;
                 
                 StartCoroutine(ChangeParticles(talkieSeg.leftCharacter));
-                
-                
             }
             // if they are the same, check if emotion is the same
             else if (currLeftEmotionNum != talkieSeg.leftEmotionNum ||
@@ -715,6 +714,7 @@ public class TalkieManager : MonoBehaviour
         
         // turn off particles
         ParticleController.instance.isOn = false;
+        ParticleController.instance.SetActiveParticles(TalkieCharacter.None);
     }
 
     private void ResetLeft()

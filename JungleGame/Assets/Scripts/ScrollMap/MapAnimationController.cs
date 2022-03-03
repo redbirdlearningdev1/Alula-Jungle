@@ -2739,6 +2739,7 @@ public class MapAnimationController : MonoBehaviour
         tigerSwipeAnim.Play("tigerScreenSwipe");
         julius.characterAnimator.Play("tigerSwipe");
         ScrollMapManager.instance.ShakeMap();
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.DestroyArea, 0.5f);
         // destroy spider forest assets
         foreach (var mapIcon in ScrollMapManager.instance.mapLocations[5].mapIcons)
         {
@@ -3303,6 +3304,7 @@ public class MapAnimationController : MonoBehaviour
         tigerSwipeAnim.Play("tigerScreenSwipe");
         julius.characterAnimator.Play("tigerSwipe");
         ScrollMapManager.instance.ShakeMap();
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.DestroyArea, 0.5f);
         // destroy cliff assets
         foreach (var mapIcon in ScrollMapManager.instance.mapLocations[8].mapIcons)
         {
@@ -3715,6 +3717,7 @@ public class MapAnimationController : MonoBehaviour
         tigerSwipeAnim.Play("tigerScreenSwipe");
         julius.characterAnimator.Play("tigerSwipe");
         ScrollMapManager.instance.ShakeMap();
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.DestroyArea, 0.5f);
         // destroy mermaid beach assets
         foreach (var mapIcon in ScrollMapManager.instance.mapLocations[10].mapIcons)
         {
@@ -4139,6 +4142,7 @@ public class MapAnimationController : MonoBehaviour
         tigerSwipeAnim.Play("tigerScreenSwipe");
         julius.characterAnimator.Play("tigerSwipe");
         ScrollMapManager.instance.ShakeMap();
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.DestroyArea, 0.5f);
         // destroy mermaid beach assets
         foreach (var mapIcon in ScrollMapManager.instance.mapLocations[13].mapIcons)
         {
