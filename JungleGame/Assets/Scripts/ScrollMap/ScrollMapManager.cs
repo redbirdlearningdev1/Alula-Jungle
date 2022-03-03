@@ -166,7 +166,7 @@ public class ScrollMapManager : MonoBehaviour
                     case Chapter.chapter_2:
                     case Chapter.chapter_3:
                         // play julius loses to player
-                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRJuliusLost_1_p1);
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRJuliusLost_1_p1"));
                         while (TalkieManager.instance.talkiePlaying)
                             yield return null;
                         break;
@@ -174,7 +174,7 @@ public class ScrollMapManager : MonoBehaviour
                     case Chapter.chapter_5:
                     case Chapter.chapter_final:
                         // play guard loses to player
-                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRGuardsLost_1_p1);
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRGuardsLost_1_p1"));
                         while (TalkieManager.instance.talkiePlaying)
                             yield return null;
                         break;
@@ -190,7 +190,7 @@ public class ScrollMapManager : MonoBehaviour
                     case Chapter.chapter_2:
                     case Chapter.chapter_3:
                         // play julius wins to player
-                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRJuliusWins_1_p1);
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRJuliusWins_1_p1"));
                         while (TalkieManager.instance.talkiePlaying)
                             yield return null;
                         break;
@@ -198,7 +198,7 @@ public class ScrollMapManager : MonoBehaviour
                     case Chapter.chapter_5:
                     case Chapter.chapter_final:
                         // play guard wins to player
-                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRGuardsWins_1_p1);
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRGuardsWins_1_p1"));
                         while (TalkieManager.instance.talkiePlaying)
                             yield return null;
                         break;

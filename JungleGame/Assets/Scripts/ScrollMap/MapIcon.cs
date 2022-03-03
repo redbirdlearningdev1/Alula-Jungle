@@ -762,7 +762,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PrologueStoryGame)
         {  
             // pre story game interaction
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.PreStory_1_p1);
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PreStory_1_p1"));
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
@@ -783,7 +783,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 case Chapter.chapter_2:
                 case Chapter.chapter_3:
                     // play julius RR intro
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRJuliusIntro_1_p1);
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRJuliusIntro_1_p1"));
                     while (TalkieManager.instance.talkiePlaying)
                         yield return null;
                     break;
@@ -791,14 +791,14 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 case Chapter.chapter_4:
                 case Chapter.chapter_5:
                     // play guards RR intro
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRGuardsIntro_1_p1);
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRGuardsIntro_1_p1"));
                     while (TalkieManager.instance.talkiePlaying)
                         yield return null;
                     // first guards RR?
                     if (StudentInfoSystem.GetCurrentProfile().firstGuradsRoyalRumble)
                     {
                         // play guards RR intro 2 p1
-                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRGuardsIntro_2_p1);
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRGuardsIntro_2_p1"));
                         while (TalkieManager.instance.talkiePlaying)
                             yield return null;
 
@@ -809,7 +809,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                     else
                     {
                         // play guards RR intro 2 p2
-                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRGuardsIntro_2_p2);
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRGuardsIntro_2_p2"));
                         while (TalkieManager.instance.talkiePlaying)
                             yield return null;
                     }
@@ -824,6 +824,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             }
 
             GameManager.instance.playingRoyalRumbleGame = true;
+            GameManager.instance.mapID = identifier;
             GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(StudentInfoSystem.GetCurrentProfile().royalRumbleGame), true, 0.5f, true);
             yield break;
         }

@@ -24,7 +24,7 @@ public struct BackgroundLoop
 
 public enum StoryGameLayer
 {
-    front, mid, back
+    flag, front, mid, back
 }
 
 public class ScrollingBackground : MonoBehaviour
@@ -34,6 +34,7 @@ public class ScrollingBackground : MonoBehaviour
     public Animator gorillaAnimator;
     public GameObject buildingBlock;
     public Vector2 fullLayerSize;
+    public Transform flagObject;
 
     [Header("Background Sprite Database")]
     public BackgroundSprites prologueSprites;
@@ -47,11 +48,19 @@ public class ScrollingBackground : MonoBehaviour
     public Transform backLayer;
     public Transform midLayer;
     public Transform frontLayer;
+    public Transform flagLayer;
 
     [Header("Parallax Speeds")]
     public float frontSpeed;
     public float midSpeed;
     public float backSpeed;
+
+    [Header("Flag X Positions")]
+    public float prologueFlagPos;
+    public float beginningFlagPos;
+    public float followRedFlagPos;
+    public float emergingFlagPos;
+    public float resolutionFlagPos;
 
     // private variables
     private bool isMoving = false;
@@ -67,23 +76,34 @@ public class ScrollingBackground : MonoBehaviour
 
     void Update()
     {
-        // dev testing stuff
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            if (isMoving) StopMoving();
-            else StartMoving();
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            IncreaseLoopIndex();
-        }
-
-
         if (isMoving)
         {
+            MoveLayer(StoryGameLayer.flag);
             MoveLayer(StoryGameLayer.front);
             MoveLayer(StoryGameLayer.mid);
             MoveLayer(StoryGameLayer.back);
+        }
+    }
+
+    public void SetFlagPosition(StoryGameBackground game)
+    {
+        switch (game)
+        {
+            case StoryGameBackground.Prologue:
+                flagObject.localPosition = new Vector3(prologueFlagPos, -12, 1f);
+                break;
+            case StoryGameBackground.Beginning:
+                flagObject.localPosition = new Vector3(beginningFlagPos, -12, 1f);
+                break;
+            case StoryGameBackground.FollowRed:
+                flagObject.localPosition = new Vector3(followRedFlagPos, -12, 1f);
+                break;
+            case StoryGameBackground.Emerging:
+                flagObject.localPosition = new Vector3(emergingFlagPos, -12, 1f);
+                break;
+            case StoryGameBackground.Resolution:
+                flagObject.localPosition = new Vector3(resolutionFlagPos, -12, 1f);
+                break;
         }
     }
 
@@ -95,6 +115,10 @@ public class ScrollingBackground : MonoBehaviour
         switch (layerEnum)
         {
             default:
+            case StoryGameLayer.flag:
+                layer = flagLayer;
+                speed = frontSpeed;
+                break;
             case StoryGameLayer.front:
                 layer = frontLayer;
                 speed = frontSpeed;
@@ -117,41 +141,45 @@ public class ScrollingBackground : MonoBehaviour
             t.transform.position = pos;
         }
 
-        // if the last child in layer is near the edge of the right side of screen, add more blocks
-        RectTransform lastBlock = layer.GetChild(layer.childCount - 1).GetComponent<RectTransform>();
-
-        if (lastBlock.transform.localPosition.x + lastBlock.sizeDelta.x < 600)
+        // ignore this iff flag layer
+        if (layerEnum != StoryGameLayer.flag)
         {
-            // print ("last block pos x: " + lastBlock.transform.localPosition.x);
-            // print ("last width: " + lastBlock.sizeDelta.x);
+            // if the last child in layer is near the edge of the right side of screen, add more blocks
+            RectTransform lastBlock = layer.GetChild(layer.childCount - 1).GetComponent<RectTransform>();
 
-            BackgroundLoop loop = currentSprites.loops[currIndex];
-            // get sprite and size
-            Sprite sprite = null;
-            Vector2 size = loop.size;
-            switch (layerEnum)
+            if (lastBlock.transform.localPosition.x + lastBlock.sizeDelta.x < 600)
             {
-                default:
-                case StoryGameLayer.front:
-                    sprite = loop.front;
-                    break;
-                case StoryGameLayer.mid:
-                    sprite = loop.mid;
-                    break;
-                case StoryGameLayer.back:
-                    sprite = loop.back;
-                    break;
-            }
+                // print ("last block pos x: " + lastBlock.transform.localPosition.x);
+                // print ("last width: " + lastBlock.sizeDelta.x);
 
-            // add block to layer
-            GameObject obj = Instantiate(buildingBlock, layer);
-            obj.GetComponent<ParallaxBlock>().SetBlock(sprite, size);
-            obj.transform.localPosition = new Vector3(lastBlock.transform.localPosition.x + (lastBlock.sizeDelta.x / 2) + (size.x / 2) - overlapAmount, 0f, 0f);
+                BackgroundLoop loop = currentSprites.loops[currIndex];
+                // get sprite and size
+                Sprite sprite = null;
+                Vector2 size = loop.size;
+                switch (layerEnum)
+                {
+                    default:
+                    case StoryGameLayer.front:
+                        sprite = loop.front;
+                        break;
+                    case StoryGameLayer.mid:
+                        sprite = loop.mid;
+                        break;
+                    case StoryGameLayer.back:
+                        sprite = loop.back;
+                        break;
+                }
 
-            // start deleting blocks if child size is too large
-            if (layer.childCount >= 8)
-            {
-                Destroy(layer.GetChild(0).gameObject);
+                // add block to layer
+                GameObject obj = Instantiate(buildingBlock, layer);
+                obj.GetComponent<ParallaxBlock>().SetBlock(sprite, size);
+                obj.transform.localPosition = new Vector3(lastBlock.transform.localPosition.x + (lastBlock.sizeDelta.x / 2) + (size.x / 2) - overlapAmount, 0f, 0f);
+
+                // start deleting blocks if child size is too large
+                if (layer.childCount >= 8)
+                {
+                    Destroy(layer.GetChild(0).gameObject);
+                }
             }
         }
     }

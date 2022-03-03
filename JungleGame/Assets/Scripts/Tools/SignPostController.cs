@@ -77,8 +77,6 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
 
     private IEnumerator HideSignPostRoutine()
     {
-        print ("hiding signpost!");
-
         this.interactable = false;
         this.isEnabled = false;
 

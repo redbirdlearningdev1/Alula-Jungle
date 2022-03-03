@@ -280,8 +280,6 @@ public class AudioManager : MonoBehaviour
             if (currSplitIndex >= musicSources.Count)
                 return;
 
-            print ("currSplitIndex: " + currSplitIndex);
-
             StartCoroutine(SmoothStartMusicSource(musicSources[currSplitIndex], smoothSplitDuration));
             currSplitIndex++;
         }

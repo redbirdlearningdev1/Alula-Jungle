@@ -178,7 +178,6 @@ public class MinigameWheelController : MonoBehaviour
 
         if (startRR)
         {
-            
             // save royal rumble to SIS
             GameType RRgame = AISystem.DetermineRoyalRumbleGame(StudentInfoSystem.GetCurrentProfile());
             StudentInfoSystem.GetCurrentProfile().royalRumbleGame = RRgame;
@@ -216,7 +215,7 @@ public class MinigameWheelController : MonoBehaviour
                 case Chapter.chapter_2:
                 case Chapter.chapter_3:
                     // play julius RR intro
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRJuliusIntro_1_p1);
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRJuliusIntro_1_p1"));
                     while (TalkieManager.instance.talkiePlaying)
                         yield return null;
                     break;
@@ -224,14 +223,14 @@ public class MinigameWheelController : MonoBehaviour
                 case Chapter.chapter_4:
                 case Chapter.chapter_5:
                     // play guards RR intro
-                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRGuardsIntro_1_p1);
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRGuardsIntro_1_p1"));
                     while (TalkieManager.instance.talkiePlaying)
                         yield return null;
                     // first guards RR?
                     if (StudentInfoSystem.GetCurrentProfile().firstGuradsRoyalRumble)
                     {
                         // play guards RR intro 2 p1
-                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRGuardsIntro_2_p1);
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRGuardsIntro_2_p1"));
                         while (TalkieManager.instance.talkiePlaying)
                             yield return null;
 
@@ -242,7 +241,7 @@ public class MinigameWheelController : MonoBehaviour
                     else
                     {
                         // play guards RR intro 2 p2
-                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.RRGuardsIntro_2_p2);
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRGuardsIntro_2_p2"));
                         while (TalkieManager.instance.talkiePlaying)
                             yield return null;
                     }
@@ -268,6 +267,7 @@ public class MinigameWheelController : MonoBehaviour
             }
 
             GameManager.instance.playingRoyalRumbleGame = true;
+            GameManager.instance.mapID = currentIdentifier;
             GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(RRgame), true, 0.5f, true);
             yield break;
         }

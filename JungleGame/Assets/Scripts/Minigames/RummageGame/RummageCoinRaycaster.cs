@@ -78,7 +78,7 @@ public class RummageCoinRaycaster : MonoBehaviour
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f);
 
             Chester.ToggleScaleAndWiggle(false);
-            // selectedRummageCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(2f, 2f), 0.1f);
+            selectedRummageCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(2f, 2f), 0.1f);
             selectedRummageCoin = null;
         }
 

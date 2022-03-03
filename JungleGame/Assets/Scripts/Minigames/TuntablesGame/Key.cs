@@ -31,6 +31,7 @@ public class Key : MonoBehaviour
         transform.position = origin.position;
         transform.localScale = new Vector3(1f, 1f, 1f);
         ImageGlowController.instance.SetImageGlow(GetComponent<Image>(), false, GlowValue.none);
+        GetComponent<LerpableObject>().LerpImageAlpha(GetComponent<Image>(), 1f, 0f);
     }
 
     private IEnumerator DelaySetInteractable(float delay)

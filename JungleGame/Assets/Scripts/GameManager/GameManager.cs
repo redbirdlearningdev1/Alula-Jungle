@@ -31,7 +31,7 @@ public enum GameType
 
 public class GameManager : DontDestroy<GameManager>
 {
-    public static string currentGameVersion = "alpha1.1";
+    public static string currentGameVersion = "alpha1.2";
 
     public bool devModeActivated;
     public const float transitionTime = 0.5f; // time to fade into and out of a scene (total transition time is: transitionTime * 2)
@@ -44,9 +44,6 @@ public class GameManager : DontDestroy<GameManager>
 
     [Header("Game Datas")]
     public List<StoryGameData> storyGameDatas;
-    
-    [SerializeField] private GameObject devModeIndicator;
-    private bool devIndicatorSet = false;
 
     public StoryGameData storyGameData;
     public MapIconIdentfier mapID;
@@ -67,27 +64,28 @@ public class GameManager : DontDestroy<GameManager>
     {
         // set game resolution
         Screen.SetResolution(GameAwake.gameResolution.x, GameAwake.gameResolution.y, true);
+
+        if (devModeActivated)
+        {
+            SendLog(this, "Dev Mode set as - ON");
+        }
+        else
+        {
+            SendLog(this, "Dev Mode set as - OFF");
+        }
     }
 
     void Update()
     {
         if (devModeActivated)
-        {
-            // set dev mode indicator on (once)
-            if (!devIndicatorSet)
-            {
-                SendLog(this, "Dev Mode set as - ON");
-                devIndicatorSet = true;
-                devModeIndicator.SetActive(true);
-            }
-            
+        {            
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
                 // press 'Shift + D' to go to the dev menu
                 if (Input.GetKeyDown(KeyCode.D))
                 {
                     LoadScene("DevMenu", true);
-                }    
+                }
 
                 // press 'Shift + C' to open console
                 if (Input.GetKeyDown(KeyCode.C))
@@ -95,16 +93,6 @@ public class GameManager : DontDestroy<GameManager>
                     Debug.LogError("forcing open Development Console...");
                     StartCoroutine(LogDateTimeNow(2f));
                 }       
-            }
-        }
-        else
-        {
-            // set dev mode indicator off (once)
-            if (!devIndicatorSet)
-            {
-                SendLog(this, "Dev Mode set as - OFF");
-                devIndicatorSet = true;
-                devModeIndicator.SetActive(false);
             }
         }
     }

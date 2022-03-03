@@ -59,11 +59,14 @@ public class NewBoatGameManager : MonoBehaviour
         // dev stuff for fx audio testing
         if (GameManager.instance.devModeActivated)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
-                StopAllCoroutines();
-                TalkieManager.instance.StopTalkieSystem();
-                StartCoroutine(WinBoatGame());
+                if (Input.GetKeyDown(KeyCode.S))
+                {
+                    StopAllCoroutines();
+                    TalkieManager.instance.StopTalkieSystem();
+                    StartCoroutine(WinBoatGame());
+                }
             }
         }
 
@@ -200,7 +203,7 @@ public class NewBoatGameManager : MonoBehaviour
                 IslandCutoutController.instance.isOn = false;
 
                 // play talkie and wait for it to finish
-                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.BoatGame_1_p1);
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BoatGame_1_p1"));
                 while (TalkieManager.instance.talkiePlaying)
                 {
                     yield return null;

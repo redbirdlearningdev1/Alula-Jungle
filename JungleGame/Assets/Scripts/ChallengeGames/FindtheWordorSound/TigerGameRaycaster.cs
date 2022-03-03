@@ -120,7 +120,7 @@ public class TigerGameRaycaster : MonoBehaviour
         currentPolaroid.GetComponent<WiggleController>().StartWiggle();
         currentPolaroid.GetComponent<Polaroid>().LerpScale(1.1f, 0.1f);
 
-        if (numClick != 2)
+        if (numClick != 1)
         {
             AudioManager.instance.PlayTalk(word.audio);
             yield return new WaitForSeconds(word.audio.length + 0.1f);

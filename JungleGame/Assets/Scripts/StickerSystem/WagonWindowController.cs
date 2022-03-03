@@ -72,9 +72,6 @@ public class WagonWindowController : MonoBehaviour
         backButton.interactable = false;
         backButton.GetComponent<LerpableObject>().SetImageAlpha(backButton.GetComponent<Image>(), 0f);
         backButton.transform.localScale = new Vector3(0f, 0f, 0f);
-
-        // close buy board window
-        buyBoardWindow.LerpScale(new Vector2(0f, 1f), 0.0001f);
     }
 
     void Update() 
@@ -121,13 +118,16 @@ public class WagonWindowController : MonoBehaviour
 
     public void CloseInDevelopmentWindow()
     {
-        // hide in development window
-        inDevelopmentWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.2f, 0.2f);
-        // disable wagon background
-        wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0f, 0.5f);
-        // set bools to false
-        cartBusy = false;
-        stickerCartOut = false;
+        if (inDevelopmentWindow.transform.localScale.x > 0f)
+        {
+            // hide in development window
+            inDevelopmentWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.2f, 0.2f);
+            // disable wagon background
+            wagonBackground.LerpImageAlpha(wagonBackground.GetComponent<Image>(), 0f, 0.5f);
+            // set bools to false
+            cartBusy = false;
+            stickerCartOut = false;   
+        }
     }
 
     /* 
@@ -729,7 +729,7 @@ public class WagonWindowController : MonoBehaviour
            Book.GetComponent<WiggleController>().StopWiggle();
 
             // play lester intro 4
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.LesterIntro_1_p4);
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("LesterIntro_1_p4"));
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 

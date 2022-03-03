@@ -8,7 +8,6 @@ public class FroggerGameManager : MonoBehaviour
 
     private MapIconIdentfier mapID = MapIconIdentfier.None;
 
-
     [SerializeField] private GorillaController gorilla;
     [SerializeField] private Bag bag;
     [SerializeField] private TaxiController taxi;
@@ -112,21 +111,24 @@ public class FroggerGameManager : MonoBehaviour
         // dev stuff for skipping minigame
         if (GameManager.instance.devModeActivated)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
-                StopAllCoroutines();
-                // play win tune
-                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-                // save tutorial done to SIS
-                StudentInfoSystem.GetCurrentProfile().turntablesTutorial = true;
-                // times missed set to 0
-                timesMissed = 0;
-                // update AI data
-                AIData(StudentInfoSystem.GetCurrentProfile());
-                // calculate and show stars
-                StarAwardController.instance.AwardStarsAndExit(CalculateStars());
-                // remove all raycast blockers
-                RaycastBlockerController.instance.ClearAllRaycastBlockers();
+                if (Input.GetKeyDown(KeyCode.S))
+                {
+                    StopAllCoroutines();
+                    // play win tune
+                    AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                    // save tutorial done to SIS
+                    StudentInfoSystem.GetCurrentProfile().turntablesTutorial = true;
+                    // times missed set to 0
+                    timesMissed = 0;
+                    // update AI data
+                    AIData(StudentInfoSystem.GetCurrentProfile());
+                    // calculate and show stars
+                    StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+                    // remove all raycast blockers
+                    RaycastBlockerController.instance.ClearAllRaycastBlockers();
+                }
             }
         }
     }
@@ -782,6 +784,18 @@ public class FroggerGameManager : MonoBehaviour
     #   MISC UTIL FUNCTIONS
     ################################################
     */
+
+    public void ToggleWally(bool opt)
+    {
+        if (opt)
+        {
+            StartCoroutine(ShowDancingManRoutine());
+        }
+        else
+        {
+            StartCoroutine(HideDancingManRoutine());
+        }
+    }
 
     private IEnumerator ShowDancingManRoutine()
     {

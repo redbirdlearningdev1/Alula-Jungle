@@ -29,6 +29,12 @@ public class CoinRaycaster : MonoBehaviour
         // drag select coin while mouse 1 down
         if (Input.GetMouseButton(0) && selectedCoin)
         {
+            // set selected coin parent if not set
+            if (selectedCoin.transform.parent != selectedCoinParent)
+            {
+                selectedCoin.gameObject.transform.SetParent(selectedCoinParent);
+            }
+
             Vector3 mousePosWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosWorldSpace.z = 0f;
 

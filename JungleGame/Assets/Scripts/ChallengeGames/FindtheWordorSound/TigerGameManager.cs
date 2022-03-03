@@ -102,21 +102,24 @@ public class TigerGameManager : MonoBehaviour
         // dev stuff for skipping minigame
         if (GameManager.instance.devModeActivated)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
-                StopAllCoroutines();
-                // play win tune
-                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-                // save tutorial done to SIS
-                StudentInfoSystem.GetCurrentProfile().tigerPawPhotosTutorial = true;
-                // times missed set to 0
-                numMisses = 0;
-                // update AI data
-                AIData(StudentInfoSystem.GetCurrentProfile());
-                // calculate and show stars
-                StarAwardController.instance.AwardStarsAndExit(CalculateStars());
-                // remove all raycast blockers
-                RaycastBlockerController.instance.ClearAllRaycastBlockers();
+                if (Input.GetKeyDown(KeyCode.S))
+                {
+                    StopAllCoroutines();
+                    // play win tune
+                    AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+                    // save tutorial done to SIS
+                    StudentInfoSystem.GetCurrentProfile().tigerPawPhotosTutorial = true;
+                    // times missed set to 0
+                    numMisses = 0;
+                    // update AI data
+                    AIData(StudentInfoSystem.GetCurrentProfile());
+                    // calculate and show stars
+                    StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+                    // remove all raycast blockers
+                    RaycastBlockerController.instance.ClearAllRaycastBlockers();
+                }
             }
         }
     }
@@ -240,8 +243,8 @@ public class TigerGameManager : MonoBehaviour
         }
         else
         {
-            currSet = AISystem.TigerPawPhotosCoinSelection(StudentInfoSystem.GetCurrentProfile());
-            word_pool = AISystem.ChallengeWordSelectionTigerPawPol(StudentInfoSystem.GetCurrentProfile(), currSet);
+            currSet = AISystem.TigerPawPhotosCoinSelection();
+            word_pool = AISystem.ChallengeWordSelectionTigerPawPol(currSet);
 
             for (int i = 0; i < polaroidC.Count; i++)
             {
