@@ -11,6 +11,7 @@ public class MinigameWheelController : MonoBehaviour
     public Image background;
     public LerpableObject backButton;
     public Button wheelButton;
+    [HideInInspector] public bool minigameWheelOut = false;
 
     private bool isSpinning = false;
     private MapIconIdentfier currentIdentifier;
@@ -51,6 +52,7 @@ public class MinigameWheelController : MonoBehaviour
     public void RevealWheel(MapIconIdentfier identfier)
     {
         currentIdentifier = identfier;
+        minigameWheelOut = true;
         StartCoroutine(RevealWheelRoutine());
     }
 
@@ -108,6 +110,7 @@ public class MinigameWheelController : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         background.raycastTarget = false;
+        minigameWheelOut = false;
     }
 
     public void OnWheelButtonPressed()

@@ -41,7 +41,7 @@ public class SettingsManager : MonoBehaviour
     public LerpableObject returnToSplashScreenConfirmWindow;
     public LerpableObject exitApplicationConfirmWindow;
     
-    private bool settingsWindowOpen;
+    [HideInInspector] public bool settingsWindowOpen;
     private bool animatingWindow = false;
 
 
