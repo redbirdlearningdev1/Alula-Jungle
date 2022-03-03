@@ -22,18 +22,18 @@ public class DockedBoatManager : MonoBehaviour
     public BoatButton escapeButton;
 
     [Header("Prefabs")]
-    [SerializeField] private GameObject birdPrefab;
+    public GameObject birdPrefab;
     [SerializeField] private GameObject bubblesPrefab;
 
-    [Header("Random Bird Spawn Settings")]
-    [SerializeField] private List<Transform> birdSpawnPoints;
-    [SerializeField] private List<Color> birdColors;
-    [SerializeField] private float birdScaleMin;
-    [SerializeField] private float birdScaleMax;
-    [SerializeField][Range(0f, 1f)] private float percentBirdsToSpawn;
-    [SerializeField] private float birdSpawnDelay;
-    [SerializeField] private float birdSpeedMin;
-    [SerializeField] private float birdSpeedMax;
+    [Header("Global Bird Spawn Settings")]
+    public List<DockedBirdSpawnPoint> birdSpawnPoints;
+    public List<Color> birdColors;
+    public float birdScaleMin;
+    public float birdScaleMax;
+    [Range(0f, 1f)] public float percentBirdsToSpawn;
+    public float birdSpawnDelay;
+    public float birdSpeedMin;
+    public float birdSpeedMax;
 
 
     [Header("Random Bubble Spawn Settings")]
@@ -48,7 +48,7 @@ public class DockedBoatManager : MonoBehaviour
     [SerializeField] private float bubbleSpeedMin;
     [SerializeField] private float bubbleSpeedMax;
 
-    private int birdCoroutines;
+    [HideInInspector] public int birdCoroutines;
     private int currentBubbleCoroutinesCount;
     private Coroutine bubblesCoroutine;
 
@@ -196,44 +196,10 @@ public class DockedBoatManager : MonoBehaviour
     {
         if (birdCoroutines == 0)
         {
-            foreach (Transform spawnPoint in birdSpawnPoints)
+            foreach (DockedBirdSpawnPoint spawnPoint in birdSpawnPoints)
             {
-                if (Random.Range(0f, 1f) < percentBirdsToSpawn)
-                {
-                    StartCoroutine(SpawnBirdsCoroutine(Random.Range(0f, birdSpawnDelay), spawnPoint));
-                }
+                spawnPoint.SpawnBird();
             }
         }
-    }
-
-    IEnumerator SpawnBirdsCoroutine(float secondsToWait, Transform spawnPoint)
-    {
-        birdCoroutines++;
-        
-        // Wait the starting amount before spawning bird
-        yield return new WaitForSeconds(secondsToWait);
-
-        // Spawn bird
-        GameObject bird = Instantiate(birdPrefab, spawnPoint);
-
-        // Randomly scale the bird size
-        Vector3 birdLocalScale = bird.transform.localScale;
-        bird.transform.localScale = birdLocalScale * Random.Range(birdScaleMin, birdScaleMax);
-        birdLocalScale = bird.transform.localScale;
-        bird.transform.localScale = new Vector3(birdLocalScale.x * (Random.Range(0, 2) * 2 - 1), birdLocalScale.y, birdLocalScale.z);
-
-        // Randomly choose the bird color
-        bird.gameObject.GetComponent<Image>().color = birdColors[Random.Range(0, birdColors.Count)];
-
-        // Set random animation play speed
-        float birdSpeed = Random.Range(birdSpeedMin, birdSpeedMax);
-        bird.gameObject.GetComponent<Animator>().SetFloat("SpeedMultiplier", birdSpeed);
-
-        // Wait for bird animation to finish playing
-        yield return new WaitForSeconds(birdsClip.length * (1.0f / birdSpeed));
-
-        // Destroy the bird
-        Destroy(bird);
-        birdCoroutines--;
     }
 }
