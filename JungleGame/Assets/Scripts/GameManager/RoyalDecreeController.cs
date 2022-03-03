@@ -86,10 +86,16 @@ public class RoyalDecreeController : MonoBehaviour
 
     private IEnumerator OpenWindowRoutine()
     {
+        // add raycast blocker
+        RaycastBlockerController.instance.CreateRaycastBlocker("royal_decree_controller");
+
         // remove UI buttons
         SettingsManager.instance.ToggleMenuButtonActive(false);
         SettingsManager.instance.ToggleWagonButtonActive(false);
 
+        // disable map nav
+        ScrollMapManager.instance.ToggleNavButtons(false);
+        
         // get challenge game triads + bring julius on screen
         currTriad = new List<GameType>();
 
@@ -231,6 +237,9 @@ public class RoyalDecreeController : MonoBehaviour
         }
 
         yield return new WaitForSeconds(0.5f);
+
+        // remove raycast blocker
+        RaycastBlockerController.instance.RemoveRaycastBlocker("royal_decree_controller");
 
         // play sign post talkie
         Chapter currChapter = StudentInfoSystem.GetCurrentProfile().currentChapter;
@@ -404,8 +413,13 @@ public class RoyalDecreeController : MonoBehaviour
         SettingsManager.instance.ToggleMenuButtonActive(true);
         SettingsManager.instance.ToggleWagonButtonActive(true);
 
+        // enble map nav
+        ScrollMapManager.instance.ToggleNavButtons(true);
+
         waitToOpen = false;
         isOpen = false;
+
+        yield return new WaitForSeconds(1f);
 
         // remove raycast blocker
         RaycastBlockerController.instance.RemoveRaycastBlocker("exit_challenge_banner");

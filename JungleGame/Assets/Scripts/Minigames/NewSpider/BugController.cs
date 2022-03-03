@@ -212,11 +212,6 @@ public class BugController : MonoBehaviour
         }
     }
 
-    public void takeOff()
-    {
-        StartCoroutine(takeOffRoutine());
-    }
-
     private IEnumerator takeOffRoutine()
     {
         Vector2 pos = transform.position;
@@ -228,8 +223,8 @@ public class BugController : MonoBehaviour
         tempPos = pos;
         tempPos.y += 0.15f;
 
-        GetComponent<LerpableObject>().LerpPosition(tempPos, 0.3f, false);
-        yield return new WaitForSeconds(.3f);
+        GetComponent<LerpableObject>().LerpPosition(tempPos, 0.1f, false);
+        yield return new WaitForSeconds(.1f);
 
         switch (currentBugType)
         {
@@ -243,23 +238,13 @@ public class BugController : MonoBehaviour
                 animator.Play("LightningTakeoff");
                 break;
         }
+
+        GetComponent<LerpableObject>().LerpPosition(flyOffScreenPos.position, 0.8f, false);
     }
 
     public void leaveWeb()
     {
-        switch (currentBugType)
-        {
-            case BugType.Ladybug:
-                animator.Play("LadybugTakeoff");
-                break;
-            case BugType.Bee:
-                animator.Play("BeeTakeoff");
-                break;
-            case BugType.Light:
-                animator.Play("LightningTakeoff");
-                break;
-        }
-        GetComponent<LerpableObject>().LerpPosition(flyOffScreenPos.position, 0.8f, false);
+        StartCoroutine(takeOffRoutine());
     }
 
     public void webGetEat()

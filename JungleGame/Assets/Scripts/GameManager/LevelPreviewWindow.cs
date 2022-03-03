@@ -69,7 +69,7 @@ public class LevelPreviewWindow : MonoBehaviour
         }
 
         // close settings menu if open
-        SettingsManager.instance.CloseSettingsWindow();
+        SettingsManager.instance.CloseAllSettingsWindows();
 
         windowUp = true;
         id = identfier;

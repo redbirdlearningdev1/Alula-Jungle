@@ -576,13 +576,11 @@ public class NewSpiderGameManager : MonoBehaviour
     private IEnumerator bugLeaves()
     {
         web.webLarge();
-        bug.takeOff();
+        bug.leaveWeb();
 
         // play bug leave sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BugFlyOut, 0.5f);
-
-        yield return new WaitForSeconds(.25f);
-        bug.leaveWeb();
+        yield return null;
     }
 
     private void SetCoins()

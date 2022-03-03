@@ -19,8 +19,6 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
 
     public void ShowSignPost(int stars, bool interact)
     {
-        print ("showing signpost!");
-
         this.stars = stars;
         this.interactable = interact;
         this.isEnabled = true;
@@ -90,6 +88,30 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
     ################################################
     */
 
+    private bool isOver = false;
+
+    void OnMouseOver()
+    {
+        // skip if not interactable
+        if (!interactable)
+            return;
+        
+        if (!isOver)
+        {
+            isOver = true;
+            GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
+        }
+    }
+
+    void OnMouseExit()
+    {
+        if (isOver)
+        {
+            isOver = false;
+            GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
+        }
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         // return if not interactable
@@ -99,7 +121,7 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
         if (!isPressed)
         {
             isPressed = true;
-            transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
+            GetComponent<LerpableObject>().LerpScale(new Vector2(0.9f, 0.9f), 0.1f);
         }
     }
 
@@ -111,13 +133,13 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
             isPressed = false;
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
 
             // open window 
             RoyalDecreeController.instance.ToggleWindow(signPostLocation);
 
             // close settings menu if open
-            SettingsManager.instance.CloseSettingsWindow();
+            SettingsManager.instance.CloseAllSettingsWindows();
         }
     }
 }

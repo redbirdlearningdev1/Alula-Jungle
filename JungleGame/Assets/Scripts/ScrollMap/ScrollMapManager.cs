@@ -112,10 +112,6 @@ public class ScrollMapManager : MonoBehaviour
         SettingsWindowController.instance.UpdateRedPos(mapLocations[index].location);
         SettingsWindowController.instance.UpdateMapSprite();
 
-        // remove game manager stuff
-        GameManager.instance.playingRoyalRumbleGame = false;
-        GameManager.instance.playingChallengeGame = false;
-
         // get current game event
         StoryBeat playGameEvent = StudentInfoSystem.GetCurrentProfile().currStoryBeat;
         GameManager.instance.SendLog(this, "current story beat: \"" + playGameEvent + "\"");
@@ -206,7 +202,6 @@ public class ScrollMapManager : MonoBehaviour
             }
         }
 
-
         /* 
         ################################################
         #   GAME EVENTS (STORY BEATS)
@@ -224,6 +219,10 @@ public class ScrollMapManager : MonoBehaviour
         #   GAME EVENTS (AFTER STORY BEAT)
         ################################################
         */
+
+        // remove game manager stuff
+        GameManager.instance.playingRoyalRumbleGame = false;
+        GameManager.instance.playingChallengeGame = false;
         
         // show UI
         if (activateMapNavigation)

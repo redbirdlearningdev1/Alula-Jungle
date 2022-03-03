@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 [System.Serializable]
 public struct SeaShellTutorialList
@@ -221,6 +221,29 @@ public class SeaShellGameManager : MonoBehaviour
             AudioClip clip = GameIntroDatabase.instance.seashellIntro3;
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Sylvie, clip);
             yield return new WaitForSeconds(clip.length + 1f);
+        }
+
+        // show correct shell if playing tutorial
+        if (playTutorial)
+        {   
+            // only wait if not first round
+            if (t_currRound != 0)
+                yield return new WaitForSeconds(3f);
+
+            for (int i = 0; i < 3; i++)
+            {
+                SeaShell shell = ShellController.instance.shells[i];
+                if (i == t_correctIndexes[t_currRound])
+                {
+                    shell.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.5f);
+                }
+                else
+                {
+                    shell.GetComponent<LerpableObject>().LerpScale(new Vector2(0.9f, 0.9f), 0.5f);
+                    shell.GetComponent<LerpableObject>().LerpImageAlpha(shell.GetComponent<Image>(), 0.5f, 0.5f);
+                }
+            }
+            
         }
 
         // turn on raycaster
