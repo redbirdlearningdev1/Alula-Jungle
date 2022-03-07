@@ -67,7 +67,7 @@ public class DropdownToolbar : MonoBehaviour
 
     public void UpdateSilverCoins()
     {
-        silverText.text = StudentInfoSystem.GetCurrentProfile().stickerInventory.Count.ToString() + "/" + StickerDatabase.instance.GetTotalStickerAmount();
+        //silverText.text = StudentInfoSystem.GetCurrentProfile().stickerInventory.Count.ToString() + "/" + StickerDatabase.instance.GetTotalStickerAmount();
     }
 
     public void SetGoldText(string text)

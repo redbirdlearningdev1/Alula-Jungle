@@ -276,17 +276,17 @@ public class GameManager : DontDestroy<GameManager>
         TalkieManager.instance.StopTalkieSystem();
 
         // remove ui buttons
-        SettingsManager.instance.SetWagonButton(false);
+        //SettingsManager.instance.SetWagonButton(false);
         SettingsManager.instance.SetMenuButton(false);
 
         // remove wagon controller stuff
-        WagonWindowController.instance.ResetWagonController();
+        //WagonWindowController.instance.ResetWagonController();
 
         // close settings menu if open
         SettingsManager.instance.CloseAllSettingsWindows();
 
         // close in development window
-        WagonWindowController.instance.CloseInDevelopmentWindow();
+        //WagonWindowController.instance.CloseInDevelopmentWindow();
     }
 
     /*

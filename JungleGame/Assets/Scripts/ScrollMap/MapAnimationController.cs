@@ -2209,7 +2209,7 @@ public class MapAnimationController : MonoBehaviour
         // unlock button in SIS
         StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
         // add glow + wiggle
-        SettingsManager.instance.ToggleStickerButtonWiggleGlow(true);
+        StickerSystem.instance.ToggleStickerButtonWiggleGlow(true);
 
         // save to sis and continue
         StudentInfoSystem.AdvanceStoryBeat();
@@ -2228,7 +2228,7 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // add glow + wiggle
-        SettingsManager.instance.ToggleStickerButtonWiggleGlow(true);
+        StickerSystem.instance.ToggleStickerButtonWiggleGlow(true);
 
         animationDone = true;
     }

@@ -732,7 +732,8 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             TalkieManager.instance.talkiePlaying || 
             MinigameWheelController.instance.minigameWheelOut || 
             SettingsManager.instance.settingsWindowOpen || 
-            RoyalDecreeController.instance.isOpen)
+            RoyalDecreeController.instance.isOpen ||
+            StickerSystem.instance.wagonOpen)
             
             return;
         
