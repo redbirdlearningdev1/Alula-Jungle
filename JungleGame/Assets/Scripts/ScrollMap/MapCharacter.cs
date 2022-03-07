@@ -463,11 +463,23 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             }
         }
 
-        // do not go to game if talkie manager says not to
-        if (TalkieManager.instance.doNotContinueToGame)
+        if (TalkieManager.instance.yesNoChoices.Count == 1)
         {
-            TalkieManager.instance.doNotContinueToGame = false;
-            yield break;
+            // if player chooses yes
+            if (TalkieManager.instance.yesNoChoices[0])
+            {
+                TalkieManager.instance.yesNoChoices.Clear();
+            }
+            else // if the player chooses no, break and do not go to next game scene
+            {
+                TalkieManager.instance.yesNoChoices.Clear();
+                yield break;
+            }
+        }
+        else
+        {
+            TalkieManager.instance.yesNoChoices.Clear();
+            Debug.LogError("Error: Incorrect number of Yes/No choices for last talkie");
         }
 
         // start game

@@ -88,16 +88,26 @@ public class DockedBoatManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().currBoatEncounter = BoatEncounter.EveryOtherTime;
             StudentInfoSystem.SaveStudentPlayerData();
 
-            if (TalkieManager.instance.doNotContinueToGame)
+            if (TalkieManager.instance.yesNoChoices.Count == 1)
             {
-                TalkieManager.instance.doNotContinueToGame = false;
-                GameManager.instance.ReturnToScrollMap();
-                yield break;
+                // if yes, go to NewBoatGame
+                if (TalkieManager.instance.yesNoChoices[0])
+                {
+                    TalkieManager.instance.yesNoChoices.Clear();
+                    GameManager.instance.LoadScene("NewBoatGame", true);
+                    yield break;
+                }
+                else // if no, return to Scroll Map
+                {
+                    TalkieManager.instance.yesNoChoices.Clear();
+                    GameManager.instance.ReturnToScrollMap();
+                    yield break;
+                }
             }
             else
             {
-                GameManager.instance.LoadScene("NewBoatGame", true);
-                yield break;
+                TalkieManager.instance.yesNoChoices.Clear();
+                Debug.LogError("Error: Incorrect number of Yes/No choices for last talkie");
             }
         }
         else if (StudentInfoSystem.GetCurrentProfile().currBoatEncounter == BoatEncounter.SecondTime)
@@ -131,15 +141,49 @@ public class DockedBoatManager : MonoBehaviour
                     yield return null;
                 }
 
-                if (TalkieManager.instance.doNotContinueToGame)
+                if (TalkieManager.instance.yesNoChoices.Count == 1)
                 {
-                    TalkieManager.instance.doNotContinueToGame = false;
-                    yield break;
+                    // If yes to first, go to NewBoatGame
+                    if (TalkieManager.instance.yesNoChoices[0])
+                    {
+                        TalkieManager.instance.yesNoChoices.Clear();
+                        GameManager.instance.LoadScene("NewBoatGame", true);
+                        yield break;
+                    }
+                    else
+                    {
+                        TalkieManager.instance.yesNoChoices.Clear();
+                        Debug.LogError("Error: Player selected No to go to NewBoatGame and somehow did not receive second question prompt");
+                    }
+                }
+                else if (TalkieManager.instance.yesNoChoices.Count == 2)
+                {
+                    // If no to first, go to NewBoatGame
+                    if (!TalkieManager.instance.yesNoChoices[0])
+                    {
+                        // If yes to second, do nothing and stay in DockedBoatGame
+                        if (TalkieManager.instance.yesNoChoices[1])
+                        {
+                            TalkieManager.instance.yesNoChoices.Clear();
+                            yield break;
+                        }
+                        else // If no to second, return to scrollmap
+                        {
+                            TalkieManager.instance.yesNoChoices.Clear();
+                            GameManager.instance.ReturnToScrollMap();
+                            yield break;
+                        }
+                    }
+                    else
+                    {
+                        TalkieManager.instance.yesNoChoices.Clear();
+                        Debug.LogError("Error: Player selected Yes to go to NewBoatGame and somehow instead stayed to answer the second question");
+                    }
                 }
                 else
                 {
-                    GameManager.instance.LoadScene("NewBoatGame", true);
-                    yield break;
+                    TalkieManager.instance.yesNoChoices.Clear();
+                    Debug.LogError("Error: Incorrect number of Yes/No choices for last talkie");
                 }
             }
         }

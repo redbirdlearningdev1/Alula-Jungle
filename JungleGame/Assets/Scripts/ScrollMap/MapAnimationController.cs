@@ -94,7 +94,7 @@ public class MapAnimationController : MonoBehaviour
     [Header("Dev Test Walk-ins and Walk-outs")]
     public MapLocation mapLocationToTest;
 
-    
+
     void Update()
     {
         if (Application.isEditor)
@@ -794,7 +794,7 @@ public class MapAnimationController : MonoBehaviour
         brutus.transform.localScale = Vector3.zero;
 
         julius.mapAnimator.Play("JuliusOffScreenPos");
-        
+
         yield return new WaitForSeconds(0.1f);
 
         julius.transform.localScale = Vector3.one;
@@ -841,7 +841,7 @@ public class MapAnimationController : MonoBehaviour
             boat.GetComponent<MapIcon>().interactable = true;
             boat.GetComponent<Image>().raycastTarget = true;
         }
-    
+
         // place clogg in OV
         clogg.mapAnimator.Play("CloggOVPos");
         clogg.GetComponent<Image>().raycastTarget = true;
@@ -871,7 +871,7 @@ public class MapAnimationController : MonoBehaviour
                 darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 break;
-            
+
             case StoryBeat.VillageRebuilt:
                 // place darwin in GV
                 darwin.mapAnimator.Play("DarwinGVPos");
@@ -968,7 +968,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusMSPos");
                 brutus.characterAnimator.Play("brutusBroken");
                 break;
-                
+
             case StoryBeat.Mudslide_challengeGame_3:
                 // place julius in MS
                 julius.mapAnimator.Play("JuliusMSPos");
@@ -1050,7 +1050,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusOVPos");
                 brutus.characterAnimator.Play("brutusBroken");
                 break;
-                
+
             case StoryBeat.OrcVillage_challengeGame_3:
                 // place clogg in OV
                 clogg.mapAnimator.Play("CloggOVPos");
@@ -1133,7 +1133,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusSFPos");
                 brutus.characterAnimator.Play("brutusBroken");
                 break;
-                
+
             case StoryBeat.SpookyForest_challengeGame_3:
                 // place julius in SF
                 julius.mapAnimator.Play("JuliusSFPos");
@@ -1213,7 +1213,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusOCPos");
                 brutus.characterAnimator.Play("brutusBroken");
                 break;
-                
+
             case StoryBeat.OrcCamp_challengeGame_3:
                 // place clogg in OC
                 clogg.mapAnimator.Play("CloggOCPos");
@@ -1278,7 +1278,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusGPPos");
                 brutus.characterAnimator.Play("brutusBroken");
                 break;
-                
+
             case StoryBeat.GorillaPoop_challengeGame_3:
                 // place julius in GP
                 julius.mapAnimator.Play("JuliusGPPos");
@@ -1351,7 +1351,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusWCPos");
                 brutus.characterAnimator.Play("brutusBroken");
                 break;
-                
+
             case StoryBeat.WindyCliff_challengeGame_3:
                 // place julius in WC
                 julius.mapAnimator.Play("JuliusWCPos");
@@ -1408,7 +1408,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusPSPos");
                 brutus.characterAnimator.Play("brutusBroken");
                 break;
-                
+
             case StoryBeat.PirateShip_challengeGame_3:
                 // place julius in PS
                 julius.mapAnimator.Play("JuliusPSPos");
@@ -1481,7 +1481,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusMBPos");
                 brutus.characterAnimator.Play("brutusBroken");
                 break;
-                
+
             case StoryBeat.MermaidBeach_challengeGame_3:
                 // place julius in MMB
                 julius.mapAnimator.Play("JuliusMBPos");
@@ -1538,7 +1538,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusRPos");
                 brutus.characterAnimator.Play("brutusBroken");
                 break;
-                
+
             case StoryBeat.Ruins_challengeGame_3:
                 // place julius in R
                 julius.mapAnimator.Play("JuliusRPos");
@@ -1565,7 +1565,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusRPos");
                 brutus.characterAnimator.Play("brutusFixed");
                 break;
-            
+
             case StoryBeat.ExitJungleUnlocked:
             case StoryBeat.ResolutionStoryGame:
                 // place darwin in EJ
@@ -1611,7 +1611,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusEJPos");
                 brutus.characterAnimator.Play("brutusBroken");
                 break;
-                
+
             case StoryBeat.ExitJungle_challengeGame_3:
                 // place julius in EJ
                 julius.mapAnimator.Play("JuliusEJPos");
@@ -1693,7 +1693,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusGSPos");
                 brutus.characterAnimator.Play("brutusBroken");
                 break;
-                
+
             case StoryBeat.GorillaStudy_challengeGame_3:
                 // place darwin in GS
                 darwin.mapAnimator.Play("DarwinGSPos");
@@ -1774,7 +1774,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.characterAnimator.Play("brutusBroken");
                 brutus.FlipCharacterToRight();
                 break;
-                
+
             case StoryBeat.Monkeys_challengeGame_3:
                 // place julius in M
                 julius.mapAnimator.Play("JuliusMPos");
@@ -1813,7 +1813,7 @@ public class MapAnimationController : MonoBehaviour
                 darwin.interactable = true;
                 darwin.ShowExclamationMark(true);
                 break;
-        }   
+        }
     }
 
     public void PlayChallengeGameMapAnim(MapAnim animation, MapLocation location)
@@ -1842,14 +1842,14 @@ public class MapAnimationController : MonoBehaviour
 
         // hide stars on map
         ScrollMapManager.instance.HideStarsAtCurrentLocation();
-        
+
         // play appropriate animation routine
         switch (animation)
         {
             case MapAnim.BoatIntro:
                 StartCoroutine(BoatIntro());
                 break;
-            
+
             case MapAnim.RevealGorillaVillage:
                 StartCoroutine(RevealGorillaVillage());
                 break;
@@ -1929,7 +1929,7 @@ public class MapAnimationController : MonoBehaviour
             case MapAnim.WindyCliffDefeated:
                 StartCoroutine(WindyCliffDefeated());
                 break;
-            
+
             case MapAnim.PirateShipRebuilt:
                 StartCoroutine(PirateShipRebuilt());
                 break;
@@ -1997,13 +1997,13 @@ public class MapAnimationController : MonoBehaviour
             default:
                 Debug.LogError("Could not start map animation: " + animation);
                 break;
-        }       
+        }
     }
-    
+
     // get the length of an animation clip
     public float GetAnimationTime(Animator anim, string animName)
     {
-        RuntimeAnimatorController rac = anim.runtimeAnimatorController; 
+        RuntimeAnimatorController rac = anim.runtimeAnimatorController;
         foreach (var clip in rac.animationClips)
         {
             if (clip.name == animName)
@@ -2193,7 +2193,7 @@ public class MapAnimationController : MonoBehaviour
 
         ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.GorillaVillage);
         ScrollMapManager.instance.UpdateMapIcons(true);
-        
+
         animationDone = true;
     }
 
@@ -2450,7 +2450,7 @@ public class MapAnimationController : MonoBehaviour
         // advance story beat
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
-            
+
         julius.ShowExclamationMark(true);
         julius.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
@@ -2605,7 +2605,7 @@ public class MapAnimationController : MonoBehaviour
         // advance story beat
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
-            
+
         julius.ShowExclamationMark(true);
         julius.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
@@ -2873,7 +2873,7 @@ public class MapAnimationController : MonoBehaviour
         // advance story beat
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
-            
+
         julius.ShowExclamationMark(true);
         julius.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
@@ -3019,7 +3019,7 @@ public class MapAnimationController : MonoBehaviour
         // advance story beat
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
-            
+
         julius.ShowExclamationMark(true);
         julius.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
@@ -3164,7 +3164,7 @@ public class MapAnimationController : MonoBehaviour
         // advance story beat
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
-            
+
         julius.ShowExclamationMark(true);
         julius.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
@@ -3436,7 +3436,7 @@ public class MapAnimationController : MonoBehaviour
         // advance story beat
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
-            
+
         julius.ShowExclamationMark(true);
         julius.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
@@ -3581,7 +3581,7 @@ public class MapAnimationController : MonoBehaviour
         // advance story beat
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
-            
+
         julius.ShowExclamationMark(true);
         julius.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
@@ -3849,7 +3849,7 @@ public class MapAnimationController : MonoBehaviour
         // advance story beat
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
-            
+
         julius.ShowExclamationMark(true);
         julius.interactable = true;
         julius.GetComponent<Image>().raycastTarget = true;
@@ -4000,7 +4000,7 @@ public class MapAnimationController : MonoBehaviour
         // advance story beat
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
-            
+
         julius.ShowExclamationMark(true);
         julius.interactable = true;
         julius.GetComponent<Image>().raycastTarget = true;
@@ -4259,7 +4259,7 @@ public class MapAnimationController : MonoBehaviour
         // advance story beat
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
-            
+
         julius.ShowExclamationMark(true);
         julius.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
@@ -4436,7 +4436,7 @@ public class MapAnimationController : MonoBehaviour
         // advance story beat
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
-            
+
         julius.ShowExclamationMark(true);
         darwin.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
@@ -4594,7 +4594,7 @@ public class MapAnimationController : MonoBehaviour
         // advance story beat
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
-            
+
         julius.ShowExclamationMark(true);
         julius.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
@@ -4714,7 +4714,7 @@ public class MapAnimationController : MonoBehaviour
         // set julius's challenge game
         bool firstTime = SetJuliusChallengeGame(location);
 
-        print ("playing challenge game? -> " + GameManager.instance.playingChallengeGame);
+        print("playing challenge game? -> " + GameManager.instance.playingChallengeGame);
 
         // only continue with talkies if just played a challenge game
         if (!GameManager.instance.playingChallengeGame)
@@ -4727,7 +4727,7 @@ public class MapAnimationController : MonoBehaviour
         if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
             !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
         {
-            print ("julius wins first time");
+            print("julius wins first time");
 
             // play julius wins
             switch (currChapter)
@@ -4747,7 +4747,7 @@ public class MapAnimationController : MonoBehaviour
                     TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaJuliusWins_1_p3"));
                     break;
             }
-            
+
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
         }
@@ -4755,7 +4755,7 @@ public class MapAnimationController : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
             StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
         {
-            print ("julius wins every other time");
+            print("julius wins every other time");
 
             // play julius wins again
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaJuliusWins_2_p1"));
@@ -4794,20 +4794,29 @@ public class MapAnimationController : MonoBehaviour
                     TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaJulius_2_p3"));
                     break;
             }
-            
+
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
-            // do not go to game if talkie manager says not to
-            if (TalkieManager.instance.doNotContinueToGame)
+            if (TalkieManager.instance.yesNoChoices.Count == 1)
             {
-                TalkieManager.instance.doNotContinueToGame = false;
+                // if player chooses yes - go to marcus challenge game
+                if (TalkieManager.instance.yesNoChoices[0])
+                {
+                    TalkieManager.instance.yesNoChoices.Clear();
+                    marcus.GoToGameDataSceneImmediately(true);
+                }
+                else
+                {
+                    TalkieManager.instance.yesNoChoices.Clear();
+                }
             }
             else
             {
-                // continue to marcus challenge game
-                marcus.GoToGameDataSceneImmediately(true);
+                TalkieManager.instance.yesNoChoices.Clear();
+                Debug.LogError("Error: Incorrect number of Yes/No choices for last talkie");
             }
+
         }
 
         // only continue with talkies if just played a challenge game
@@ -4821,7 +4830,7 @@ public class MapAnimationController : MonoBehaviour
         if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
             !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
         {
-            print ("marcus wins first time");
+            print("marcus wins first time");
 
             // play marcus wins
             switch (currChapter)
@@ -4846,7 +4855,7 @@ public class MapAnimationController : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
             StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
         {
-            print ("marcus wins every other time");
+            print("marcus wins every other time");
 
             // play marcus wins again
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaJuliusWins_2_p1"));
@@ -4882,19 +4891,27 @@ public class MapAnimationController : MonoBehaviour
                     TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaMarcus_2_p2"));
                     break;
             }
-            
+
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
 
-            // do not go to game if talkie manager says not to
-            if (TalkieManager.instance.doNotContinueToGame)
+            if (TalkieManager.instance.yesNoChoices.Count == 1)
             {
-                TalkieManager.instance.doNotContinueToGame = false;
+                // if player chooses yes go to brutus challenge game
+                if (TalkieManager.instance.yesNoChoices[0])
+                {
+                    TalkieManager.instance.yesNoChoices.Clear();
+                    brutus.GoToGameDataSceneImmediately(true);
+                }
+                else // if the player chooses no
+                {
+                    TalkieManager.instance.yesNoChoices.Clear();
+                }
             }
             else
             {
-                // continue to marcus challenge game
-                brutus.GoToGameDataSceneImmediately(true);
+                TalkieManager.instance.yesNoChoices.Clear();
+                Debug.LogError("Error: Incorrect number of Yes/No choices for last talkie");
             }
         }
 
@@ -4909,7 +4926,7 @@ public class MapAnimationController : MonoBehaviour
         if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
             !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
         {
-            print ("brutus wins first time");
+            print("brutus wins first time");
 
             // play brutus wins
             switch (currChapter)
@@ -4934,7 +4951,7 @@ public class MapAnimationController : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame &&
             StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame)
         {
-            print ("brutus wins every other time");
+            print("brutus wins every other time");
 
             // play marcus wins again
             TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaJuliusWins_2_p1"));
@@ -5117,7 +5134,7 @@ public class MapAnimationController : MonoBehaviour
                     firstTime = false;
                 }
                 break;
-            
+
             case MapLocation.GorillaStudy:
                 if (StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge1.gameType == GameType.None)
                 {

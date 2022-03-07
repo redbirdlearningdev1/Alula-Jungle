@@ -10,7 +10,8 @@ public class TalkieManager : MonoBehaviour
     public static TalkieManager instance;
 
     // public vars for other scripts to access
-    [HideInInspector] public bool doNotContinueToGame = false;
+    //[HideInInspector] public bool doNotContinueToGame = false;
+    [HideInInspector] public List<bool> yesNoChoices;
 
     [HideInInspector] public bool talkiePlaying = false; // used to pause routines while talkies are playing
     private TalkieObject currentTalkie;
@@ -592,12 +593,13 @@ public class TalkieManager : MonoBehaviour
         // on yes
         if (isYes)
         {
-            
+            yesNoChoices.Add(true);
         }
         // on no
         else
         {
-            doNotContinueToGame = true;
+            yesNoChoices.Add(false);
+            //doNotContinueToGame = true;
         }
 
         waitingForYesNoInput = false;
