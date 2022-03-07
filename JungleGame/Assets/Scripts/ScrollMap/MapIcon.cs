@@ -862,11 +862,23 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                     break;
             }
 
-            // do not go to game if talkie manager says not to
-            if (TalkieManager.instance.doNotContinueToGame)
+            if (TalkieManager.instance.yesNoChoices.Count == 1)
             {
-                TalkieManager.instance.doNotContinueToGame = false;
-                yield break;
+                // if player chooses yes
+                if (TalkieManager.instance.yesNoChoices[0])
+                {
+                    TalkieManager.instance.yesNoChoices.Clear();
+                }
+                else // if the player chooses no
+                {
+                    TalkieManager.instance.yesNoChoices.Clear();
+                    yield break;
+                }
+            }
+            else
+            {
+                TalkieManager.instance.yesNoChoices.Clear();
+                Debug.LogError("Error: Incorrect number of Yes/No choices for last talkie");
             }
 
             GameManager.instance.playingRoyalRumbleGame = true;

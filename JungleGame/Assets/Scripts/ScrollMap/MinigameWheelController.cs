@@ -252,21 +252,32 @@ public class MinigameWheelController : MonoBehaviour
 
             }
 
-            
-
-            // do not go to game if talkie manager says not to
-            if (TalkieManager.instance.doNotContinueToGame)
+            if (TalkieManager.instance.yesNoChoices.Count == 1)
             {
-                TalkieManager.instance.doNotContinueToGame = false;
+                // if player chooses yes
+                if (TalkieManager.instance.yesNoChoices[0])
+                {
+                    TalkieManager.instance.yesNoChoices.Clear();
+                }
+                else // if the player chooses no
+                {
+                    TalkieManager.instance.yesNoChoices.Clear();
 
-                // remove RR stuff
-                wheelBreakAnimator.Play("WheelNone");
-                trumpetPlayAnimator.Play("TrumpetIn");
-                CloseWheel();
-                rrGradient.LerpImageAlpha(rrGradient.GetComponent<Image>(), 0f, 2f);
-                rrImage.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.2f, 0.2f);
+                    // remove RR stuff
+                    wheelBreakAnimator.Play("WheelNone");
+                    trumpetPlayAnimator.Play("TrumpetIn");
+                    CloseWheel();
+                    rrGradient.LerpImageAlpha(rrGradient.GetComponent<Image>(), 0f, 2f);
+                    rrImage.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.2f, 0.2f);
 
-                yield break;
+                    yield break;
+
+                }
+            }
+            else
+            {
+                TalkieManager.instance.yesNoChoices.Clear();
+                Debug.LogError("Error: Incorrect number of Yes/No choices for last talkie");
             }
 
             GameManager.instance.playingRoyalRumbleGame = true;

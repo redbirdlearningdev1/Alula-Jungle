@@ -271,12 +271,24 @@ public class RoyalDecreeController : MonoBehaviour
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
-        // if player chooses no - exit to scroll map
-        if (TalkieManager.instance.doNotContinueToGame)
+        if (TalkieManager.instance.yesNoChoices.Count == 1)
         {
-            TalkieManager.instance.doNotContinueToGame = false;
-            StartCoroutine(CloseWindowRoutine(true));
-            yield break;
+            // if player chooses yes - do nothing
+            if (TalkieManager.instance.yesNoChoices[0])
+            {
+                TalkieManager.instance.yesNoChoices.Clear();
+            }
+            else // if player chooses no - exit to scroll map
+            {
+                TalkieManager.instance.yesNoChoices.Clear();
+                StartCoroutine(CloseWindowRoutine(true));
+                yield break;
+            }
+        }
+        else
+        {
+            TalkieManager.instance.yesNoChoices.Clear();
+            Debug.LogError("Error: Incorrect number of Yes/No choices for last talkie");
         }
 
         // dim bg

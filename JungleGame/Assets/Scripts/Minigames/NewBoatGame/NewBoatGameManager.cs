@@ -112,7 +112,7 @@ public class NewBoatGameManager : MonoBehaviour
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.FoundIslandSparkle, 1f);
 
                 StartCoroutine(ContinueBoatGame());
-            } 
+            }
         }
 
         // continue boat game when microphone input is detected
@@ -180,7 +180,7 @@ public class NewBoatGameManager : MonoBehaviour
                 AudioManager.instance.StopTalk();
                 break;
             }
-                
+
             AudioManager.instance.PlayTalk(audio);
             yield return new WaitForSeconds(audio.length + 0.5f);
         }
@@ -351,7 +351,7 @@ public class NewBoatGameManager : MonoBehaviour
             case 5:
                 // short break between mic input and next event
                 yield return new WaitForSeconds(2f);
-                
+
                 // make fx sound
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 1f);
                 yield return new WaitForSeconds(1f);
@@ -459,7 +459,7 @@ public class NewBoatGameManager : MonoBehaviour
     }
 
     public void BlueButtonPressed()
-    {   
+    {
         if (boatGameEvent == 0 && !waitForBlueButton)
         {
             boatGameEvent++;
@@ -496,7 +496,7 @@ public class NewBoatGameManager : MonoBehaviour
 
             StartCoroutine(ContinueBoatGame());
         }
-    }   
+    }
 
     public void IslandCentered()
     {
