@@ -17,10 +17,11 @@ public class LesterButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
 
     private bool isAsleep = false;
     private bool isBlinking = false;
+    [HideInInspector] public bool isHidden = false;
 
     void Update()
     {
-        if (isAsleep || StickerSystem.instance.wagonAnimating || !StickerSystem.instance.wagonOpen)
+        if (isAsleep || StickerSystem.instance.wagonAnimating || !StickerSystem.instance.wagonOpen || isHidden)
             return;
 
         // lester falls asleep after some time
@@ -77,6 +78,12 @@ public class LesterButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         {
             isOver = true;
             GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
+
+            if (isAsleep)
+            {
+                isAsleep = false;
+                lesterAnimator.Play("geckoWakeUp");
+            }
         }
     }
 

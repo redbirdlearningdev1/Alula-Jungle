@@ -71,5 +71,6 @@ public class BoardBookButton : MonoBehaviour, IPointerUpHandler, IPointerDownHan
     public void OpenBoardBookMenu()
     {
         boardBookAnimator.Play("BoardBookClicked");
+        StickerSystem.instance.OpenBoardBook();
     }
 }

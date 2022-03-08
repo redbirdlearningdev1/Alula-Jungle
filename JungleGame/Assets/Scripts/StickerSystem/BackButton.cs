@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
+public enum BackButtonType
+{
+    Wagon,
+    StickerBoard
+}
+
 public class BackButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     public bool interactable;
+    public BackButtonType buttonType;
     private bool isPressed = false;
-
 
     /* 
     ################################################
@@ -40,8 +46,6 @@ public class BackButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         {
             isOver = false;
             GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
-
-            print ("this");
         }
     }
 
@@ -65,7 +69,17 @@ public class BackButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             // play audio blip
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
-            StickerSystem.instance.OnBackButtonPressed();
+            switch (buttonType)
+            {
+                case BackButtonType.Wagon:
+                    StickerSystem.instance.OnBackButtonPressed();
+                    break;
+                
+                case BackButtonType.StickerBoard:
+                    StickerSystem.instance.CloseStickerBoards();
+                    break;
+            }
+            
             isPressed = false;
         }
     }

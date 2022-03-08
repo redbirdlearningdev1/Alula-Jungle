@@ -71,5 +71,6 @@ public class StickerBoardButton : MonoBehaviour, IPointerUpHandler, IPointerDown
     public void OpenStickerBoardMenu()
     {
         stickerboardAnimator.Play("StickerBoardClicked");
+        StickerSystem.instance.OpenStickerBoards();
     }
 }

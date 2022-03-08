@@ -238,7 +238,7 @@ public class ScrollMapManager : MonoBehaviour
             SettingsManager.instance.ToggleMenuButtonActive(true);
 
             // show sticker button if unlocked
-            if (StudentInfoSystem.GetCurrentProfile().unlockedStickerButton && StudentInfoSystem.GetCurrentProfile().goldCoins <= 6)
+            if (StudentInfoSystem.GetCurrentProfile().unlockedStickerButton)
                 SettingsManager.instance.ToggleWagonButtonActive(true);
         }
 

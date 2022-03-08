@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StickerConfirmWindow : MonoBehaviour
+public class BoardBookWindow : MonoBehaviour
 {
-    public static StickerConfirmWindow instance;
+    public static BoardBookWindow instance;
 
     public LerpableObject BG;
     public LerpableObject window;
@@ -40,6 +40,10 @@ public class StickerConfirmWindow : MonoBehaviour
         // hide wagon lester
         StickerSystem.instance.lesterAnimator.Play("geckoLeave");
         StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().isHidden = true;
+
+        // hide back button
+        StickerSystem.instance.backButton.GetComponent<BackButton>().interactable = false;
+        StickerSystem.instance.backButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
 
         // set buttons to be not interactable
         StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().interactable = false;
@@ -100,33 +104,14 @@ public class StickerConfirmWindow : MonoBehaviour
         StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().interactable = true;
         StickerSystem.instance.stickerBoard.GetComponent<StickerBoardButton>().interactable = true;
         StickerSystem.instance.boardBook.GetComponent<BoardBookButton>().interactable = true;
+
+        // show back button + dropdown toolbar
+        StickerSystem.instance.backButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+        StickerSystem.instance.backButton.GetComponent<BackButton>().interactable = true;
     }
 
-    public void CloseWindowForStickerRoll()
+    public void OnYesPressed()
     {
-        if (windowActive)
-        {
-            StartCoroutine(CloseWindowForStickerRollRoutine());
-        }
-    }
-
-    private IEnumerator CloseWindowForStickerRollRoutine()
-    {
-        // hide lester
-        Vector3 bouncePos = lesterShownPos.position;
-        bouncePos.y += 0.1f;
-        lester.LerpPosition(bouncePos, 0.2f, false);
-        yield return new WaitForSeconds(0.2f);
-        lester.LerpPosition(lesterHiddenPos.position, 0.2f, false);
-        // show window
-        window.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.2f, 0.2f);
-        yield return new WaitForSeconds(0.5f);
-        windowActive = false;
-
-        yield return new WaitForSeconds(1f);
-
-        // remove BG
-        BG.LerpImageAlpha(BG.GetComponent<Image>(), 0f, 0.5f);
-        BG.GetComponent<Image>().raycastTarget = false;
+        CloseWindow();
     }
 }
