@@ -8,12 +8,17 @@ public class BoardBookWindow : MonoBehaviour
     public static BoardBookWindow instance;
 
     public LerpableObject BG;
-    public LerpableObject window;
+    public LerpableObject window;    
     public LerpableObject lester;
     public Transform lesterHiddenPos;
     public Transform lesterShownPos;
 
     public bool windowActive;
+
+    [Header("Scroll Items")]
+    public ScrollRect boardPreviewScrollRect;
+    public Scrollbar boardPreviewScrollbar;
+    public List<StickerBoardPreview> boardPreviewElements;
 
     void Awake()
     {
@@ -113,5 +118,54 @@ public class BoardBookWindow : MonoBehaviour
     public void OnYesPressed()
     {
         CloseWindow();
+    }
+
+
+    public void CenterOnBoardPreview(int boardIndex)
+    {
+        StartCoroutine(CenterOnBoardPreviewRoutine(boardIndex));
+    }
+
+    private IEnumerator CenterOnBoardPreviewRoutine(int boardIndex)
+    {
+        // set board and elements to be not interactable
+        boardPreviewScrollbar.interactable = false;
+        foreach (var board in boardPreviewElements)
+        {
+            board.interactable = false;
+            // select this board
+            if (boardIndex == board.boardPreviewIndex)
+            {
+                board.SetBoardSelected(true);
+            }
+            else
+            {
+                board.SetBoardSelected(false);
+            }
+        }
+
+        // lerp scroll pos to be centered on selected board elements
+        float timer = 0f;
+        float startScrollPos = boardPreviewScrollbar.value;
+        float endScrollPos = (float)boardIndex / ((float)boardPreviewElements.Count - 1f);
+
+        // print ("index: " + (float)boardIndex);
+        // print ("board count: " + ((float)boardPreviewElements.Count - 1f));
+        // print ("endScrollPos: " + endScrollPos);
+
+        while (timer < 0.5f)
+        {
+            timer += Time.deltaTime;
+            boardPreviewScrollbar.value = Mathf.Lerp(startScrollPos, endScrollPos, timer / 0.5f);
+            yield return null;
+        }
+        boardPreviewScrollbar.value = endScrollPos;
+
+        // set board and elements to be interactable
+        boardPreviewScrollbar.interactable = true;
+        foreach (var board in boardPreviewElements)
+        {
+            board.interactable = true;
+        }
     }
 }
