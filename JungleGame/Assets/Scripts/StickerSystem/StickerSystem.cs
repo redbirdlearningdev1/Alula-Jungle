@@ -23,6 +23,7 @@ public class StickerSystem : MonoBehaviour
     [Header("Wagon Parts")]
     public Transform stickerBoard;
     public Transform boardBook;
+    public Transform lesterButton;
 
     private bool wagonButtonShown = false;
     private bool movingWagonButton = false;
@@ -43,6 +44,7 @@ public class StickerSystem : MonoBehaviour
         BG.GetComponent<Image>().raycastTarget = false;
         stickerBoard.GetComponent<StickerBoardButton>().interactable = false;
         boardBook.GetComponent<BoardBookButton>().interactable = false;
+        lesterButton.GetComponent<LesterButton>().interactable = false;
     }
 
     /* 
@@ -93,6 +95,7 @@ public class StickerSystem : MonoBehaviour
         // set buttons not interactable
         stickerBoard.GetComponent<StickerBoardButton>().interactable = false;
         boardBook.GetComponent<BoardBookButton>().interactable = false;
+        lesterButton.GetComponent<LesterButton>().interactable = false;
 
         // show BG
         BG.LerpImageAlpha(BG.GetComponent<Image>(), 0.95f, 1f);
@@ -122,6 +125,7 @@ public class StickerSystem : MonoBehaviour
         // set buttons interactable
         stickerBoard.GetComponent<StickerBoardButton>().interactable = true;
         boardBook.GetComponent<BoardBookButton>().interactable = true;
+        lesterButton.GetComponent<LesterButton>().interactable = true;
 
         // animation done - remove raycast
         RaycastBlockerController.instance.RemoveRaycastBlocker("show_wagon_raycast");
@@ -136,6 +140,7 @@ public class StickerSystem : MonoBehaviour
         // set buttons not interactable
         stickerBoard.GetComponent<StickerBoardButton>().interactable = false;
         boardBook.GetComponent<BoardBookButton>().interactable = false;
+        lesterButton.GetComponent<LesterButton>().interactable = false;
 
         // hide back button + dropdown toolbar
         backButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
