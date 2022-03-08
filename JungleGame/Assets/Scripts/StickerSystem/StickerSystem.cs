@@ -10,6 +10,9 @@ public class StickerSystem : MonoBehaviour
     public LerpableObject backButton;
     public LerpableObject BG;
 
+    [Header("Get Sticker")]
+    public StickerConfirmWindow stickerConfirmWindow;
+
     [Header("Sticker Button")]
     public Transform stickerWagonButton;
     public float hiddenButtonPos;
@@ -29,7 +32,7 @@ public class StickerSystem : MonoBehaviour
     private bool movingWagonButton = false;
 
     [HideInInspector] public bool wagonOpen = false;
-    private bool wagonAnimating = false;
+    [HideInInspector] public bool wagonAnimating = false;
 
     void Awake()
     {
@@ -42,9 +45,27 @@ public class StickerSystem : MonoBehaviour
         backButton.transform.localScale = Vector3.zero;
 
         BG.GetComponent<Image>().raycastTarget = false;
+
         stickerBoard.GetComponent<StickerBoardButton>().interactable = false;
         boardBook.GetComponent<BoardBookButton>().interactable = false;
         lesterButton.GetComponent<LesterButton>().interactable = false;
+        backButton.GetComponent<BackButton>().interactable = false;
+    }
+
+    /* 
+    ################################################
+    #   LESTER STICKER FUNCTIONS
+    ################################################
+    */
+
+    public void OnLesterPressed()
+    {
+        stickerConfirmWindow.OpenWindow();
+    }
+
+    public void RollForNewSticker()
+    {
+        stickerConfirmWindow.CloseWindow();
     }
 
     /* 
@@ -82,6 +103,10 @@ public class StickerSystem : MonoBehaviour
             return;
         }
 
+        // hide back button
+        backButton.GetComponent<BackButton>().interactable = false;
+        backButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+
         wagonAnimating = true;
         wagonOpen = false;
         StartCoroutine(HideWagon());
@@ -96,6 +121,10 @@ public class StickerSystem : MonoBehaviour
         stickerBoard.GetComponent<StickerBoardButton>().interactable = false;
         boardBook.GetComponent<BoardBookButton>().interactable = false;
         lesterButton.GetComponent<LesterButton>().interactable = false;
+        backButton.GetComponent<BackButton>().interactable = false;
+
+        // reset lester timers
+        lesterButton.GetComponent<LesterButton>().ResetLesterTimers();
 
         // show BG
         BG.LerpImageAlpha(BG.GetComponent<Image>(), 0.95f, 1f);
@@ -107,13 +136,12 @@ public class StickerSystem : MonoBehaviour
 
         // wagon rolls in
         wagonMovementAnimator.Play("WagonShow");
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.8f);
         wagonImageAnimator.Play("WagonMoving");
 
         yield return new WaitForSeconds(3f);
 
         // stop wagon
-        wagonMovementAnimator.Play("WagonIdle");
         lesterAnimator.Play("geckoIntro");
 
         // show back button + dropdown toolbar
@@ -126,6 +154,7 @@ public class StickerSystem : MonoBehaviour
         stickerBoard.GetComponent<StickerBoardButton>().interactable = true;
         boardBook.GetComponent<BoardBookButton>().interactable = true;
         lesterButton.GetComponent<LesterButton>().interactable = true;
+        backButton.GetComponent<BackButton>().interactable = true;
 
         // animation done - remove raycast
         RaycastBlockerController.instance.RemoveRaycastBlocker("show_wagon_raycast");
@@ -141,13 +170,15 @@ public class StickerSystem : MonoBehaviour
         stickerBoard.GetComponent<StickerBoardButton>().interactable = false;
         boardBook.GetComponent<BoardBookButton>().interactable = false;
         lesterButton.GetComponent<LesterButton>().interactable = false;
+        backButton.GetComponent<BackButton>().interactable = false;
 
         // hide back button + dropdown toolbar
-        backButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
         DropdownToolbar.instance.ToggleToolbar(false);
 
         // hide lester
         lesterAnimator.Play("geckoLeave");
+        // reset lester timers
+        lesterButton.GetComponent<LesterButton>().ResetLesterTimers();
 
         yield return new WaitForSeconds(1f);
 

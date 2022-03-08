@@ -20,7 +20,7 @@ public class StickerBoardButton : MonoBehaviour, IPointerUpHandler, IPointerDown
 
     void OnMouseOver()
     {
-        // skip if not interactable OR playing talkie OR minigamewheel out OR settings window open OR royal decree open
+        // skip if not interactable
         if (!interactable)
             return;
         

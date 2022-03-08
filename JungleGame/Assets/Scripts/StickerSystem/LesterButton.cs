@@ -20,7 +20,7 @@ public class LesterButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
 
     void Update()
     {
-        if (isAsleep)
+        if (isAsleep || StickerSystem.instance.wagonAnimating || !StickerSystem.instance.wagonOpen)
             return;
 
         // lester falls asleep after some time
@@ -50,7 +50,12 @@ public class LesterButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         lesterAnimator.Play("geckoBlink");
         yield return new WaitForSeconds(1.2f);
         isBlinking = false;
+    }
 
+    public void ResetLesterTimers()
+    {
+        sleepTimer = 0f;
+        blinkTimer = 0f;
     }
 
 
@@ -119,6 +124,7 @@ public class LesterButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             isAsleep = false;
             lesterAnimator.Play("geckoWakeUp");
         }
-        
+
+        StickerSystem.instance.OnLesterPressed();
     }
 }

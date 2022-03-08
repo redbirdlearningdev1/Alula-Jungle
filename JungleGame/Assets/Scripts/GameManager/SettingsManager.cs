@@ -16,10 +16,7 @@ public class SettingsManager : MonoBehaviour
     public float shownButtonYvalue;
 
     private bool movingMenuButton = false;
-    private bool movingWagonButton = false;
-
     [HideInInspector] public bool menuButtonShown = false;
-    private bool wagonButtonShown = false;
 
     [Header("Volume Sliders")]
     [SerializeField] private Slider masterVol;

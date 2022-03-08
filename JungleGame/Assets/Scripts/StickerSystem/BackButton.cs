@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class BoardBookButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
+public class BackButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     public bool interactable;
     private bool isPressed = false;
 
-    public Animator boardBookAnimator;
 
     /* 
     ################################################
@@ -33,10 +32,16 @@ public class BoardBookButton : MonoBehaviour, IPointerUpHandler, IPointerDownHan
 
     void OnMouseExit()
     {
+        // skip if not interactable 
+        if (!interactable)
+            return;
+            
         if (isOver)
         {
             isOver = false;
             GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
+
+            print ("this");
         }
     }
 
@@ -60,16 +65,8 @@ public class BoardBookButton : MonoBehaviour, IPointerUpHandler, IPointerDownHan
             // play audio blip
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
+            StickerSystem.instance.OnBackButtonPressed();
             isPressed = false;
-            GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
-
-            // open board book menu
-            OpenBoardBookMenu();
         }
-    }
-
-    public void OpenBoardBookMenu()
-    {
-        boardBookAnimator.Play("BoardBookClicked");
     }
 }
