@@ -7,6 +7,7 @@ using UnityEngine.Video;
 
 public class WagonWindowController : MonoBehaviour
 {
+    /*
     public static WagonWindowController instance;
 
     public LerpableObject wagonBackground;
@@ -135,6 +136,8 @@ public class WagonWindowController : MonoBehaviour
     #   CONFIRM PURCHACE WINDOW METHODS
     ################################################
     */
+
+    /*
 
     public void NewWindow()
     {
@@ -398,6 +401,8 @@ public class WagonWindowController : MonoBehaviour
     ################################################
     */
 
+    /*
+
     private IEnumerator StickerInputDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -492,7 +497,6 @@ public class WagonWindowController : MonoBehaviour
             gecko.GetComponent<WiggleController>().StartWiggle();
         }
 
-        */
 
         // deactivate raycast blocker
         
@@ -500,6 +504,8 @@ public class WagonWindowController : MonoBehaviour
 
     private IEnumerator RollOffScreen()
     {
+
+        
         // activate raycast blocker + background
         RaycastBlockerController.instance.CreateRaycastBlocker("StickerCartBlocker");
 
@@ -666,6 +672,8 @@ public class WagonWindowController : MonoBehaviour
     ################################################
     */
 
+    /*
+
     public LerpableObject buyBoardWindow;
 
     private bool buyBoardActive = false;
@@ -760,4 +768,5 @@ public class WagonWindowController : MonoBehaviour
 
         buyBoardReady = true;
     }
+    */
 }

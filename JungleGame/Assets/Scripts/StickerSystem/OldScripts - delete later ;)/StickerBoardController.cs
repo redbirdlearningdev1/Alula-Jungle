@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class StickerBoardController : MonoBehaviour
 {
+    /*
     public static StickerBoardController instance;
 
     public LerpableObject stickerBoards;
@@ -368,4 +369,5 @@ public class StickerBoardController : MonoBehaviour
     {
         activeStickerBoards[currentBoardIndex].OnStickerInventoryPressed();
     }
+    */
 }

@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class StickerImage : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
+public class StickerImage : MonoBehaviour
 {
+    /*
     [HideInInspector] public Transform inventoryStickerParent;
     public Button placeButtonTop;
     public Button placeButtonBottom;
@@ -74,11 +75,7 @@ public class StickerImage : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         inventoryStickerParent.GetComponent<InventorySticker>().UseOneSticker();
     }
 
-    /* 
-    ################################################
-    #   POINTER METHODS
-    ################################################
-    */
+    
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -111,4 +108,5 @@ public class StickerImage : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             stickerBoard.PlaceCurrentStickerDown();
         }
     }
+    */
 }

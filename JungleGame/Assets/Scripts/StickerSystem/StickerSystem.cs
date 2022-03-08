@@ -42,10 +42,21 @@ public class StickerSystem : MonoBehaviour
     [HideInInspector] public bool wagonAnimating = false;
 
     [Header("Stickerboards")]
+    public List<StickerBoard> stickerboards;
+
     public LerpableObject stickerboardLayoutGroup;
     public LerpableObject stickerboardBackButton;
+    public LerpableObject stickerboardLeftButton;
+    public LerpableObject stickerboardRightButton;
+
     public Transform stickerboardHiddenPos;
     public Transform stickerboardShownPos;
+
+    public float bumpAmount;
+
+    private bool stickerboardButtonsDeactivated = false;
+    private int currentBoardIndex = 0;
+    private int numActiveBoards;
 
     [HideInInspector] public bool stickerboardsOpen = false;
 
@@ -62,6 +73,8 @@ public class StickerSystem : MonoBehaviour
         stickerWagonButton.transform.localPosition = new Vector3(stickerWagonButton.transform.localPosition.x, hiddenButtonPos, 1f);
         backButton.transform.localScale = Vector3.zero;
         stickerboardBackButton.transform.localScale = Vector3.zero;
+        stickerboardLeftButton.transform.localScale = Vector3.zero;
+        stickerboardRightButton.transform.localScale = Vector3.zero;
 
         BG.GetComponent<Image>().raycastTarget = false;
 
@@ -70,6 +83,8 @@ public class StickerSystem : MonoBehaviour
         lesterButton.GetComponent<LesterButton>().interactable = false;
         backButton.GetComponent<BackButton>().interactable = false;
         stickerboardBackButton.GetComponent<BackButton>().interactable = false;
+        stickerboardLeftButton.GetComponent<Button>().interactable = false;
+        stickerboardRightButton.GetComponent<Button>().interactable = false;
     }
 
     void Update() 
@@ -121,6 +136,34 @@ public class StickerSystem : MonoBehaviour
         // activate raycast blocker
         RaycastBlockerController.instance.CreateRaycastBlocker("stickerboard_blocker");
 
+        // set stickerboards active
+        numActiveBoards = 1;
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        foreach(var board in stickerboards)
+        {
+            bool isActive = false;
+            if (board.boardType == StickerBoardType.Mossy)
+            {
+                isActive = data.mossyStickerBoard.active;
+                board.gameObject.SetActive(isActive);
+            }
+            else if (board.boardType == StickerBoardType.Emerald)
+            {
+                isActive = data.emeraldStickerBoard.active;
+                board.gameObject.SetActive(isActive);
+            }
+            else if (board.boardType == StickerBoardType.Beach)
+            {
+                isActive = data.beachStickerBoard.active;
+                board.gameObject.SetActive(isActive);
+            }
+
+            if (isActive)
+            {
+                numActiveBoards++;
+            }
+        }
+
         // hide dropdown toolbar
         DropdownToolbar.instance.ToggleToolbar(false);
 
@@ -128,15 +171,20 @@ public class StickerSystem : MonoBehaviour
         Vector3 bouncePos = stickerboardShownPos.position;
         bouncePos.y += 1f;
 
-        stickerboardLayoutGroup.LerpPosition(bouncePos, 0.2f, false);
+        stickerboardLayoutGroup.LerpYPos(bouncePos.y, 0.2f, false);
         yield return new WaitForSeconds(0.2f);
-        stickerboardLayoutGroup.LerpPosition(stickerboardShownPos.position, 0.2f, false);
+        stickerboardLayoutGroup.LerpYPos(stickerboardShownPos.position.y, 0.2f, false);
 
         yield return new WaitForSeconds(0.5f);
 
         // show sticker board back button
         stickerboardBackButton.GetComponent<BackButton>().interactable = true;
         stickerboardBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+
+        stickerboardLeftButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+        stickerboardRightButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+        stickerboardLeftButton.GetComponent<Button>().interactable = true;
+        stickerboardRightButton.GetComponent<Button>().interactable = true;
 
         // deactivate raycast blocker
         RaycastBlockerController.instance.RemoveRaycastBlocker("stickerboard_blocker");
@@ -158,6 +206,11 @@ public class StickerSystem : MonoBehaviour
         stickerboardBackButton.GetComponent<BackButton>().interactable = false;
         stickerboardBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
 
+        stickerboardLeftButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+        stickerboardRightButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+        stickerboardLeftButton.GetComponent<Button>().interactable = false;
+        stickerboardRightButton.GetComponent<Button>().interactable = false;
+
         yield return new WaitForSeconds(0.5f);
 
         // activate raycast blocker
@@ -167,9 +220,9 @@ public class StickerSystem : MonoBehaviour
         Vector3 bouncePos = stickerboardShownPos.position;
         bouncePos.y += 1f;
 
-        stickerboardLayoutGroup.LerpPosition(bouncePos, 0.2f, false);
+        stickerboardLayoutGroup.LerpYPos(bouncePos.y, 0.2f, false);
         yield return new WaitForSeconds(0.2f);
-        stickerboardLayoutGroup.LerpPosition(stickerboardHiddenPos.position, 0.2f, false);
+        stickerboardLayoutGroup.LerpYPos(stickerboardHiddenPos.position.y, 0.2f, false);
 
         // hide dropdown toolbar
         DropdownToolbar.instance.ToggleToolbar(true);
@@ -181,6 +234,87 @@ public class StickerSystem : MonoBehaviour
         StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().interactable = true;
         StickerSystem.instance.stickerBoard.GetComponent<StickerBoardButton>().interactable = true;
         StickerSystem.instance.boardBook.GetComponent<BoardBookButton>().interactable = true;
+    }
+
+    public void OnLeftButtonPressed()
+    {
+        if (stickerboardButtonsDeactivated)
+            return;
+        stickerboardButtonsDeactivated = true;
+
+        currentBoardIndex--;
+        if (currentBoardIndex < 0)
+        {
+            currentBoardIndex = 0;
+            // bump board left
+            StartCoroutine(BumpAnimation(true));
+            return;
+        }
+
+        // move board left
+        StartCoroutine(MoveToLeftBoard());
+    }
+
+    public void OnRightButtonPressed()
+    {
+        if (stickerboardButtonsDeactivated)
+            return;
+        stickerboardButtonsDeactivated = true;
+
+        currentBoardIndex++;
+        if (currentBoardIndex >= numActiveBoards)
+        {
+            currentBoardIndex = numActiveBoards - 1;
+            // bump board right
+            StartCoroutine(BumpAnimation(false));
+            return;
+        }
+
+        // move board right
+        StartCoroutine(MoveToRightBoard());
+    }
+
+    private IEnumerator MoveToLeftBoard()
+    {
+        stickerboardLayoutGroup.LerpXPos(stickerboardLayoutGroup.transform.localPosition.x - bumpAmount, 0.1f, true);
+        yield return new WaitForSeconds(0.1f);
+        stickerboardLayoutGroup.LerpXPos(stickerboardLayoutGroup.transform.localPosition.x + bumpAmount + 1800f, 0.2f, true);
+        yield return new WaitForSeconds(0.2f);
+
+        stickerboardButtonsDeactivated = false;
+    }
+
+    private IEnumerator MoveToRightBoard()
+    {
+        stickerboardLayoutGroup.LerpXPos(stickerboardLayoutGroup.transform.localPosition.x + bumpAmount, 0.1f, true);
+        yield return new WaitForSeconds(0.1f);
+        stickerboardLayoutGroup.LerpXPos(stickerboardLayoutGroup.transform.localPosition.x - bumpAmount - 1800f, 0.2f, true);
+        yield return new WaitForSeconds(0.2f);
+
+        stickerboardButtonsDeactivated = false;
+    }
+
+    private IEnumerator BumpAnimation(bool isLeft)
+    {   
+        // play audio blip
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SadBlip, 1f);
+
+        if (isLeft)
+        {
+            stickerboardLayoutGroup.LerpXPos(stickerboardLayoutGroup.transform.localPosition.x + bumpAmount, 0.1f, true);
+            yield return new WaitForSeconds(0.1f);
+            stickerboardLayoutGroup.LerpXPos(stickerboardLayoutGroup.transform.localPosition.x - bumpAmount, 0.1f, true);
+            yield return new WaitForSeconds(0.1f);
+        }
+        else
+        {
+            stickerboardLayoutGroup.LerpXPos(stickerboardLayoutGroup.transform.localPosition.x - bumpAmount, 0.1f, true);
+            yield return new WaitForSeconds(0.1f);
+            stickerboardLayoutGroup.LerpXPos(stickerboardLayoutGroup.transform.localPosition.x + bumpAmount, 0.1f, true);
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        stickerboardButtonsDeactivated = false;
     }
 
 

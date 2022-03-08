@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BoardBookWindow : MonoBehaviour
 {
@@ -12,8 +13,13 @@ public class BoardBookWindow : MonoBehaviour
     public LerpableObject lester;
     public Transform lesterHiddenPos;
     public Transform lesterShownPos;
-
     public bool windowActive;
+
+    public Button yesBuyButton;
+    private StickerBoardType selectedBoard;
+
+    public TextMeshProUGUI priceText;
+    public LerpableObject coinImage;
 
     [Header("Scroll Items")]
     public ScrollRect boardPreviewScrollRect;
@@ -29,7 +35,11 @@ public class BoardBookWindow : MonoBehaviour
 
         window.transform.localScale = new Vector3(0f, 0f, 1f);
         lester.transform.position = lesterHiddenPos.position;
+        yesBuyButton.interactable = false;
         windowActive = false;
+
+        priceText.text = "";
+        coinImage.transform.localScale = Vector3.zero;
     }
 
     public void OpenWindow()
@@ -42,6 +52,19 @@ public class BoardBookWindow : MonoBehaviour
 
     private IEnumerator OpenWindowRoutine()
     {
+        // update boards
+        UpdateStickerBoardPreviews();
+        yesBuyButton.interactable = false;
+        foreach (var board in boardPreviewElements)
+        {
+            board.interactable = true;
+            board.SetBoardSelected(false);
+        }
+
+        // reset price UI
+        priceText.text = "";
+        coinImage.transform.localScale = Vector3.zero;
+
         // hide wagon lester
         StickerSystem.instance.lesterAnimator.Play("geckoLeave");
         StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().isHidden = true;
@@ -115,12 +138,6 @@ public class BoardBookWindow : MonoBehaviour
         StickerSystem.instance.backButton.GetComponent<BackButton>().interactable = true;
     }
 
-    public void OnYesPressed()
-    {
-        CloseWindow();
-    }
-
-
     public void CenterOnBoardPreview(int boardIndex)
     {
         StartCoroutine(CenterOnBoardPreviewRoutine(boardIndex));
@@ -137,6 +154,8 @@ public class BoardBookWindow : MonoBehaviour
             if (boardIndex == board.boardPreviewIndex)
             {
                 board.SetBoardSelected(true);
+                // update UI and stuff
+                SelectedBoard(board.boardType);
             }
             else
             {
@@ -148,10 +167,6 @@ public class BoardBookWindow : MonoBehaviour
         float timer = 0f;
         float startScrollPos = boardPreviewScrollbar.value;
         float endScrollPos = (float)boardIndex / ((float)boardPreviewElements.Count - 1f);
-
-        // print ("index: " + (float)boardIndex);
-        // print ("board count: " + ((float)boardPreviewElements.Count - 1f));
-        // print ("endScrollPos: " + endScrollPos);
 
         while (timer < 0.5f)
         {
@@ -166,6 +181,146 @@ public class BoardBookWindow : MonoBehaviour
         foreach (var board in boardPreviewElements)
         {
             board.interactable = true;
+        }
+    }
+
+    private int GetBoardPrice(StickerBoardType boardType)
+    {
+        switch (boardType)
+        {
+            default:
+            case StickerBoardType.Classic:
+                return 0;
+
+            case StickerBoardType.Mossy:
+                return 10;
+            
+            case StickerBoardType.Beach:
+                return 20;
+
+            case StickerBoardType.Emerald:
+                return 30;
+        }
+    }
+
+    public void OnYesPressed()
+    {
+        int price = GetBoardPrice(selectedBoard);
+
+        // check to make sure player has sufficent funds
+        if (StudentInfoSystem.GetCurrentProfile().goldCoins < price)
+        {
+            // play sound
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SadBlip, 1f);
+            return;
+        }
+        // if they do, remove coins from player profile
+        else 
+        {
+            // play sound
+            AudioManager.instance.PlayCoinDrop();
+            DropdownToolbar.instance.RemoveGoldCoins(price);
+        }
+
+        // unlock specific board
+        switch (selectedBoard)
+        {
+            case StickerBoardType.Classic:
+                StudentInfoSystem.GetCurrentProfile().classicStickerBoard.active = true;
+                StudentInfoSystem.SaveStudentPlayerData();
+                break;
+            case StickerBoardType.Mossy:
+                StudentInfoSystem.GetCurrentProfile().mossyStickerBoard.active = true;
+                StudentInfoSystem.SaveStudentPlayerData();
+                break;
+            case StickerBoardType.Beach:
+                StudentInfoSystem.GetCurrentProfile().beachStickerBoard.active = true;
+                StudentInfoSystem.SaveStudentPlayerData();
+                break;
+            case StickerBoardType.Emerald:
+                StudentInfoSystem.GetCurrentProfile().emeraldStickerBoard.active = true;
+                StudentInfoSystem.SaveStudentPlayerData();
+                break;
+        }
+
+        // update UI
+        yesBuyButton.interactable = false;
+        // reset price UI
+        priceText.text = "";
+        if (coinImage.transform.localScale.x != 0)
+        {
+            coinImage.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+        }
+        UpdateStickerBoardPreviews();
+    }
+
+    private void SelectedBoard(StickerBoardType boardType)
+    {
+        selectedBoard = boardType;
+
+        // check if board is already bought
+        if (BoardBoughtAlready(selectedBoard))
+        {
+            yesBuyButton.interactable = false;
+
+            // reset price UI
+            priceText.text = "";
+            if (coinImage.transform.localScale.x != 0)
+            {
+                coinImage.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+            }
+        }
+        else
+        {
+            yesBuyButton.interactable = true;
+
+            // set price UI
+            priceText.text = "x" + GetBoardPrice(selectedBoard);
+            coinImage.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+        }
+    }
+
+    private bool BoardBoughtAlready(StickerBoardType boardType)
+    {
+        switch (boardType)
+        {
+            default:
+            case StickerBoardType.Classic:
+                return StudentInfoSystem.GetCurrentProfile().classicStickerBoard.active;
+
+            case StickerBoardType.Mossy:
+                return StudentInfoSystem.GetCurrentProfile().mossyStickerBoard.active;
+            
+            case StickerBoardType.Beach:
+                return StudentInfoSystem.GetCurrentProfile().beachStickerBoard.active;
+
+            case StickerBoardType.Emerald:
+                return StudentInfoSystem.GetCurrentProfile().emeraldStickerBoard.active;
+        }
+    }
+
+    public void UpdateStickerBoardPreviews()
+    {
+        foreach (var board in boardPreviewElements)
+        {
+            switch (board.boardType)
+            {
+                case StickerBoardType.Classic:
+                    board.SetBoardSoldOut(StudentInfoSystem.GetCurrentProfile().classicStickerBoard.active);
+                    break;
+
+                case StickerBoardType.Mossy:
+                    board.SetBoardSoldOut(StudentInfoSystem.GetCurrentProfile().mossyStickerBoard.active);
+                    break;
+                
+                case StickerBoardType.Beach:
+                    board.SetBoardSoldOut(StudentInfoSystem.GetCurrentProfile().beachStickerBoard.active);
+                    break;
+
+                case StickerBoardType.Emerald:
+                    board.SetBoardSoldOut(StudentInfoSystem.GetCurrentProfile().emeraldStickerBoard.active);
+                    break;
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ using UnityEngine;
 public class StickerBoardPreview : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     public int boardPreviewIndex;
+    public StickerBoardType boardType;
 
     public Image boardImage;
     public Image soldOutImage;

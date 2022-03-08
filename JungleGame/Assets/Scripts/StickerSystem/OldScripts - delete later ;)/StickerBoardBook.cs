@@ -4,8 +4,9 @@ using UnityEngine.EventSystems;
 
 
 
-public class StickerBoardBook : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
+public class StickerBoardBook : MonoBehaviour
 {
+    /*
     public static StickerBoardBook instance;
 
     private SpriteRenderer spriteRenderer;
@@ -29,6 +30,7 @@ public class StickerBoardBook : MonoBehaviour, IPointerUpHandler, IPointerDownHa
     #   POINTER METHODS
     ################################################
     */
+    /*
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -51,4 +53,5 @@ public class StickerBoardBook : MonoBehaviour, IPointerUpHandler, IPointerDownHa
             isPressed = false;
         }
     }
+    */
 }
