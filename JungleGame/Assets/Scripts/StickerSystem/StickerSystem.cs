@@ -8,11 +8,12 @@ public class StickerSystem : MonoBehaviour
 {
     public static StickerSystem instance;
 
-    public LerpableObject backButton;
-    public LerpableObject BG;
+    public LerpableObject wagonBackButton;
+    public LerpableObject wagonBG;
 
     [Header("Get Sticker")]
     public StickerConfirmWindow stickerConfirmWindow;
+    public Image revealSticker;
     public VideoPlayer commonVP;
     public VideoPlayer uncommonVP;
     public VideoPlayer rareVP;
@@ -70,18 +71,19 @@ public class StickerSystem : MonoBehaviour
             instance = this;
         }
 
+        revealSticker.transform.localScale = Vector3.zero;
         stickerWagonButton.transform.localPosition = new Vector3(stickerWagonButton.transform.localPosition.x, hiddenButtonPos, 1f);
-        backButton.transform.localScale = Vector3.zero;
+        wagonBackButton.transform.localScale = Vector3.zero;
         stickerboardBackButton.transform.localScale = Vector3.zero;
         stickerboardLeftButton.transform.localScale = Vector3.zero;
         stickerboardRightButton.transform.localScale = Vector3.zero;
 
-        BG.GetComponent<Image>().raycastTarget = false;
+        wagonBG.GetComponent<Image>().raycastTarget = false;
 
         stickerBoard.GetComponent<StickerBoardButton>().interactable = false;
         boardBook.GetComponent<BoardBookButton>().interactable = false;
         lesterButton.GetComponent<LesterButton>().interactable = false;
-        backButton.GetComponent<BackButton>().interactable = false;
+        wagonBackButton.GetComponent<BackButton>().interactable = false;
         stickerboardBackButton.GetComponent<BackButton>().interactable = false;
         stickerboardLeftButton.GetComponent<Button>().interactable = false;
         stickerboardRightButton.GetComponent<Button>().interactable = false;
@@ -181,10 +183,14 @@ public class StickerSystem : MonoBehaviour
         stickerboardBackButton.GetComponent<BackButton>().interactable = true;
         stickerboardBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
 
+        // show left and right buttons
         stickerboardLeftButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
         stickerboardRightButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
         stickerboardLeftButton.GetComponent<Button>().interactable = true;
         stickerboardRightButton.GetComponent<Button>().interactable = true;
+
+        // show inventory button
+        StickerInventory.instance.SetInventoryState(InventoryState.ShowTab);
 
         // deactivate raycast blocker
         RaycastBlockerController.instance.RemoveRaycastBlocker("stickerboard_blocker");
@@ -206,10 +212,14 @@ public class StickerSystem : MonoBehaviour
         stickerboardBackButton.GetComponent<BackButton>().interactable = false;
         stickerboardBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
 
+        // hide left and right buttons
         stickerboardLeftButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
         stickerboardRightButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
         stickerboardLeftButton.GetComponent<Button>().interactable = false;
         stickerboardRightButton.GetComponent<Button>().interactable = false;
+
+        // hide inventroy button
+        StickerInventory.instance.SetInventoryState(InventoryState.Hidden);
 
         yield return new WaitForSeconds(0.5f);
 
@@ -276,6 +286,13 @@ public class StickerSystem : MonoBehaviour
 
     private IEnumerator MoveToLeftBoard()
     {
+        // close inventory iff open
+        if (StickerInventory.instance.currentState == InventoryState.Open)
+        {   
+            StickerInventory.instance.SetInventoryState(InventoryState.ShowTab);
+            yield return new WaitForSeconds(0.5f);
+        }
+
         stickerboardLayoutGroup.LerpXPos(stickerboardLayoutGroup.transform.localPosition.x - bumpAmount, 0.1f, true);
         yield return new WaitForSeconds(0.1f);
         stickerboardLayoutGroup.LerpXPos(stickerboardLayoutGroup.transform.localPosition.x + bumpAmount + 1800f, 0.2f, true);
@@ -286,6 +303,13 @@ public class StickerSystem : MonoBehaviour
 
     private IEnumerator MoveToRightBoard()
     {
+        // close inventory iff open
+        if (StickerInventory.instance.currentState == InventoryState.Open)
+        {   
+            StickerInventory.instance.SetInventoryState(InventoryState.ShowTab);
+            yield return new WaitForSeconds(0.5f);
+        }
+
         stickerboardLayoutGroup.LerpXPos(stickerboardLayoutGroup.transform.localPosition.x + bumpAmount, 0.1f, true);
         yield return new WaitForSeconds(0.1f);
         stickerboardLayoutGroup.LerpXPos(stickerboardLayoutGroup.transform.localPosition.x - bumpAmount - 1800f, 0.2f, true);
@@ -359,8 +383,9 @@ public class StickerSystem : MonoBehaviour
         // activate raycast blocker
         RaycastBlockerController.instance.CreateRaycastBlocker("StickerVideoBlocker");
 
-        // roll for a random sticker
+        // roll for a random sticker + set reveal sticker
         Sticker sticker = StickerDatabase.instance.RollForSticker();
+        revealSticker.sprite = sticker.sprite;
 
         GameManager.instance.SendLog(this, "you got a sticker! " + sticker.rarity + " " + sticker.id);
 
@@ -407,29 +432,29 @@ public class StickerSystem : MonoBehaviour
         RaycastBlockerController.instance.RemoveRaycastBlocker("StickerVideoBlocker");
 
         // reveal sticker here after certain amount of time
-        //StickerRevealCanvas.instance.RevealSticker(sticker);
+        revealSticker.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.2f, 0.2f);
 
         // wait for player input to continue
         waitingOnPlayerInput = true;
         while (waitingOnPlayerInput)
             yield return null;
 
+        // hide sticker
+        revealSticker.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.2f, 0.2f);
+
         // activate raycast blocker
         RaycastBlockerController.instance.CreateRaycastBlocker("StickerVideoBlocker");
 
         // fade to black
-        FadeObject.instance.FadeOut(2f);
-        yield return new WaitForSeconds(2f);
+        FadeObject.instance.FadeOut(1f);
+        yield return new WaitForSeconds(1f);
 
         // stop video player
         currentVideo.Stop();
 
-        // hide reveal sticker
-        //StickerRevealCanvas.instance.HideSticker();
-        yield return new WaitForSeconds(0.5f);
-
         // Fade back in 
-        FadeObject.instance.FadeIn(2f);
+        FadeObject.instance.FadeIn(1f);
+        yield return new WaitForSeconds(1f);
 
         // deactivate raycast blocker
         RaycastBlockerController.instance.RemoveRaycastBlocker("StickerVideoBlocker");
@@ -483,8 +508,8 @@ public class StickerSystem : MonoBehaviour
         }
 
         // hide back button
-        backButton.GetComponent<BackButton>().interactable = false;
-        backButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+        wagonBackButton.GetComponent<BackButton>().interactable = false;
+        wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
 
         wagonAnimating = true;
         wagonOpen = false;
@@ -500,14 +525,14 @@ public class StickerSystem : MonoBehaviour
         stickerBoard.GetComponent<StickerBoardButton>().interactable = false;
         boardBook.GetComponent<BoardBookButton>().interactable = false;
         lesterButton.GetComponent<LesterButton>().interactable = false;
-        backButton.GetComponent<BackButton>().interactable = false;
+        wagonBackButton.GetComponent<BackButton>().interactable = false;
 
         // reset lester timers
         lesterButton.GetComponent<LesterButton>().ResetLesterTimers();
 
         // show BG
-        BG.LerpImageAlpha(BG.GetComponent<Image>(), 0.95f, 1f);
-        BG.GetComponent<Image>().raycastTarget = true;
+        wagonBG.LerpImageAlpha(wagonBG.GetComponent<Image>(), 0.95f, 1f);
+        wagonBG.GetComponent<Image>().raycastTarget = true;
 
         // hide settings and wagon buttons
         SettingsManager.instance.ToggleMenuButtonActive(false);
@@ -524,7 +549,7 @@ public class StickerSystem : MonoBehaviour
         lesterAnimator.Play("geckoIntro");
 
         // show back button + dropdown toolbar
-        backButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+        wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
         DropdownToolbar.instance.ToggleToolbar(true);
 
         yield return new WaitForSeconds(0.5f);
@@ -533,7 +558,7 @@ public class StickerSystem : MonoBehaviour
         stickerBoard.GetComponent<StickerBoardButton>().interactable = true;
         boardBook.GetComponent<BoardBookButton>().interactable = true;
         lesterButton.GetComponent<LesterButton>().interactable = true;
-        backButton.GetComponent<BackButton>().interactable = true;
+        wagonBackButton.GetComponent<BackButton>().interactable = true;
 
         // animation done - remove raycast
         RaycastBlockerController.instance.RemoveRaycastBlocker("show_wagon_raycast");
@@ -549,7 +574,7 @@ public class StickerSystem : MonoBehaviour
         stickerBoard.GetComponent<StickerBoardButton>().interactable = false;
         boardBook.GetComponent<BoardBookButton>().interactable = false;
         lesterButton.GetComponent<LesterButton>().interactable = false;
-        backButton.GetComponent<BackButton>().interactable = false;
+        wagonBackButton.GetComponent<BackButton>().interactable = false;
 
         // hide back button + dropdown toolbar
         DropdownToolbar.instance.ToggleToolbar(false);
@@ -568,8 +593,8 @@ public class StickerSystem : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         // remove BG
-        BG.LerpImageAlpha(BG.GetComponent<Image>(), 0f, 1f);
-        BG.GetComponent<Image>().raycastTarget = false;
+        wagonBG.LerpImageAlpha(wagonBG.GetComponent<Image>(), 0f, 1f);
+        wagonBG.GetComponent<Image>().raycastTarget = false;
 
         // show settings and wagon buttons
         SettingsManager.instance.ToggleMenuButtonActive(true);

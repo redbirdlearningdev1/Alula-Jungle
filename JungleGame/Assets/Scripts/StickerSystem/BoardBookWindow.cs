@@ -70,8 +70,8 @@ public class BoardBookWindow : MonoBehaviour
         StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().isHidden = true;
 
         // hide back button
-        StickerSystem.instance.backButton.GetComponent<BackButton>().interactable = false;
-        StickerSystem.instance.backButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+        StickerSystem.instance.wagonBackButton.GetComponent<BackButton>().interactable = false;
+        StickerSystem.instance.wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
 
         // set buttons to be not interactable
         StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().interactable = false;
@@ -93,6 +93,11 @@ public class BoardBookWindow : MonoBehaviour
         // show window
         window.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
         yield return new WaitForSeconds(0.5f);
+
+        // center on first element
+        CenterOnBoardPreview(0, true);
+        yield return new WaitForSeconds(0.1f);
+
         windowActive = true;
     }
 
@@ -134,16 +139,16 @@ public class BoardBookWindow : MonoBehaviour
         StickerSystem.instance.boardBook.GetComponent<BoardBookButton>().interactable = true;
 
         // show back button + dropdown toolbar
-        StickerSystem.instance.backButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
-        StickerSystem.instance.backButton.GetComponent<BackButton>().interactable = true;
+        StickerSystem.instance.wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+        StickerSystem.instance.wagonBackButton.GetComponent<BackButton>().interactable = true;
     }
 
-    public void CenterOnBoardPreview(int boardIndex)
+    public void CenterOnBoardPreview(int boardIndex, bool fast = false)
     {
-        StartCoroutine(CenterOnBoardPreviewRoutine(boardIndex));
+        StartCoroutine(CenterOnBoardPreviewRoutine(boardIndex, fast));
     }
 
-    private IEnumerator CenterOnBoardPreviewRoutine(int boardIndex)
+    private IEnumerator CenterOnBoardPreviewRoutine(int boardIndex, bool fast)
     {
         // set board and elements to be not interactable
         boardPreviewScrollbar.interactable = false;
@@ -165,10 +170,17 @@ public class BoardBookWindow : MonoBehaviour
 
         // lerp scroll pos to be centered on selected board elements
         float timer = 0f;
+        float time = 0.5f;
         float startScrollPos = boardPreviewScrollbar.value;
         float endScrollPos = (float)boardIndex / ((float)boardPreviewElements.Count - 1f);
 
-        while (timer < 0.5f)
+        // change time to be faster
+        if (fast)
+        {
+            time = 0.1f;
+        }
+
+        while (timer < time)
         {
             timer += Time.deltaTime;
             boardPreviewScrollbar.value = Mathf.Lerp(startScrollPos, endScrollPos, timer / 0.5f);

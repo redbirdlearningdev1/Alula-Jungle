@@ -46,6 +46,10 @@ public class StickerConfirmWindow : MonoBehaviour
         StickerSystem.instance.stickerBoard.GetComponent<StickerBoardButton>().interactable = false;
         StickerSystem.instance.boardBook.GetComponent<BoardBookButton>().interactable = false;
 
+        // hide back button
+        StickerSystem.instance.wagonBackButton.GetComponent<BackButton>().interactable = false;
+        StickerSystem.instance.wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+
         yield return new WaitForSeconds(0.5f);
 
         // show BG
@@ -100,6 +104,10 @@ public class StickerConfirmWindow : MonoBehaviour
         StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().interactable = true;
         StickerSystem.instance.stickerBoard.GetComponent<StickerBoardButton>().interactable = true;
         StickerSystem.instance.boardBook.GetComponent<BoardBookButton>().interactable = true;
+
+        // show back button
+        StickerSystem.instance.wagonBackButton.GetComponent<BackButton>().interactable = true;
+        StickerSystem.instance.wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
     }
 
     public void CloseWindowForStickerRoll()
