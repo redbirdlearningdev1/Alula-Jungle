@@ -471,7 +471,7 @@ public class InventoryStickerData
     {
         this.rarity = sticker.rarity;
         this.id = sticker.id;
-        this.count = 0;
+        this.count = 1;
     }
 }
 

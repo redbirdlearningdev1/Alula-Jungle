@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public enum InventoryState
 {
@@ -23,6 +24,12 @@ public class StickerInventory : MonoBehaviour
     public Transform hiddenPos;
     public Transform showTabPos;
     public Transform openPos;
+
+    [Header("Rarity Texts")]
+    public TextMeshProUGUI commonText;
+    public TextMeshProUGUI uncommonText;
+    public TextMeshProUGUI rareText;
+    public TextMeshProUGUI legendaryText;
 
     void Awake() 
     {
@@ -59,17 +66,17 @@ public class StickerInventory : MonoBehaviour
         // set current state
         currentState = state;
 
-        // update sticker inventory iff opening
-        if (currentState == InventoryState.Open)
+        // return sticker to inventory if sticker is ready to be glued but not glued
+        if (currentState == InventoryState.Open && StickerSystem.instance.readyToGlueSticker)
         {
-            UpdateStickerInventory();
+            StickerSystem.instance.ReturnStickerToInventory();
         }
 
         // start coroutine
         StartCoroutine(SetInventoryStateRoutine());
     }
 
-    private void UpdateStickerInventory()
+    public void UpdateStickerInventory()
     {
         // remove all previous stickers
         foreach (Transform child in inventoryStickerParent.transform)

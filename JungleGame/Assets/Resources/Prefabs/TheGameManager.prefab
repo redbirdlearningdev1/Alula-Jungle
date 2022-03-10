@@ -5324,6 +5324,22 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 060cf59059188d74193700753f868ac5, type: 3}
   - {fileID: 8300000, guid: 7a232f4dcb46da74bbdebde213816c4d, type: 3}
   - {fileID: 8300000, guid: 4220944b68d9cb2428d645381c105997, type: 3}
+  commonStickerVoiceovers:
+  - {fileID: 8300000, guid: a95c98c2ed68cb6469100bf9a6ee4106, type: 3}
+  - {fileID: 8300000, guid: 89c3e4bff9be2814e81cb1f6743e86a5, type: 3}
+  - {fileID: 8300000, guid: 3a634fc7e761bf643810f25c16e2a825, type: 3}
+  uncommonStickerVoiceovers:
+  - {fileID: 8300000, guid: 25de7429952f4a84f876056e67fc38ad, type: 3}
+  - {fileID: 8300000, guid: 16b9597ccda3e6e4899a1fe833b84641, type: 3}
+  - {fileID: 8300000, guid: 4f173412ba2ec1b4dab935287f341b43, type: 3}
+  rareStickerVoiceovers:
+  - {fileID: 8300000, guid: 93cc2fdb4d0a4114aa776c101901beae, type: 3}
+  - {fileID: 8300000, guid: 3c8012cdb6a3ce54da137839a3625db4, type: 3}
+  - {fileID: 8300000, guid: e6220290eb5ebb24281252d72fd72a4a, type: 3}
+  legendaryStickerVoiceovers:
+  - {fileID: 8300000, guid: 350c6931b62e3da44b2aef55433171a6, type: 3}
+  - {fileID: 8300000, guid: e482fe0f2684fa14d90ddbbae2ef0bc4, type: 3}
+  - {fileID: 8300000, guid: 345967c923d49ac48a106179969eb62d, type: 3}
   testSound1: {fileID: 8300000, guid: c350fcdede53aa647b93c6b0ce53e7cd, type: 3}
   RightChoice: {fileID: 8300000, guid: 33ff1a3562326b24e80a23820344a8c4, type: 3}
   WrongChoice: {fileID: 8300000, guid: 2b787eac70b58ff459bacc25ca095636, type: 3}

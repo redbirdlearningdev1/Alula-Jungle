@@ -84,12 +84,6 @@ public class BoardBookWindow : MonoBehaviour
         BG.LerpImageAlpha(BG.GetComponent<Image>(), 0.95f, 0.5f);
         BG.GetComponent<Image>().raycastTarget = true;
 
-        // show lester
-        Vector3 bouncePos = lesterShownPos.position;
-        bouncePos.y += 0.1f;
-        lester.LerpPosition(bouncePos, 0.2f, false);
-        yield return new WaitForSeconds(0.2f);
-        lester.LerpPosition(lesterShownPos.position, 0.2f, false);
         // show window
         window.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
         yield return new WaitForSeconds(0.5f);
@@ -97,6 +91,13 @@ public class BoardBookWindow : MonoBehaviour
         // center on first element
         CenterOnBoardPreview(0, true);
         yield return new WaitForSeconds(0.1f);
+
+        // show lester
+        Vector3 bouncePos = lesterShownPos.position;
+        bouncePos.y += 0.1f;
+        lester.LerpPosition(bouncePos, 0.2f, false);
+        yield return new WaitForSeconds(0.2f);
+        lester.LerpPosition(lesterShownPos.position, 0.2f, false);
 
         windowActive = true;
     }
@@ -125,6 +126,26 @@ public class BoardBookWindow : MonoBehaviour
         // remove BG
         BG.LerpImageAlpha(BG.GetComponent<Image>(), 0f, 0.5f);
         BG.GetComponent<Image>().raycastTarget = false;
+
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            // add talkie bg
+            StickerSystem.instance.talkieBG.GetComponent<Image>().raycastTarget = true;
+             StickerSystem.instance.talkieBG.LerpImageAlpha(StickerSystem.instance.talkieBG.GetComponent<Image>(), 0.9f, 0.5f);
+
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("LesterIntro_1_p4"));
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // remove talkie bg
+            StickerSystem.instance.talkieBG.GetComponent<Image>().raycastTarget = false;
+            StickerSystem.instance.talkieBG.LerpImageAlpha( StickerSystem.instance.talkieBG.GetComponent<Image>(), 0f, 0.5f);
+
+            // done with sticker tutorial
+            StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+            StudentInfoSystem.SaveStudentPlayerData();
+            StickerSystem.instance.ToggleStickerButtonWiggleGlow(false);
+        }
 
         // show wagon lester
         StickerSystem.instance.lesterAnimator.Play("geckoIntro");

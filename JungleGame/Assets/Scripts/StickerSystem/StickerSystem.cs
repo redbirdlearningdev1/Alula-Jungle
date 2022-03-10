@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.EventSystems;
 
 public class StickerSystem : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class StickerSystem : MonoBehaviour
 
     public LerpableObject wagonBackButton;
     public LerpableObject wagonBG;
+    public LerpableObject talkieBG;
 
     [Header("Get Sticker")]
     public StickerConfirmWindow stickerConfirmWindow;
@@ -54,7 +56,8 @@ public class StickerSystem : MonoBehaviour
     public Transform stickerboardShownPos;
 
     public float bumpAmount;
-
+    
+    private List<StickerBoard> activeStickerboards;
     private bool stickerboardButtonsDeactivated = false;
     private int currentBoardIndex = 0;
     private int numActiveBoards;
@@ -64,12 +67,32 @@ public class StickerSystem : MonoBehaviour
     [Header("Board Book")]
     public BoardBookWindow boardBookWindow;
 
+    [Header("Stickers")]
+    public GameObject gluedStickerObject;
+    public float stickerMoveSpeed;
+    public Transform selectedStickerParent;
+    public Transform gluedStickerParent;
+    public Image hideInventoryArea;
+    public Image openInventoryArea;
+
+
+    private Transform currentHeldSticker;
+    private bool holdingSticker;
+    private bool readyToPlaceSticker;
+    [HideInInspector] public bool readyToGlueSticker;
+
+
+
+
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
+
+        activeStickerboards = new List<StickerBoard>();
+        activeStickerboards.Add(stickerboards[0]);
 
         revealSticker.transform.localScale = Vector3.zero;
         stickerWagonButton.transform.localPosition = new Vector3(stickerWagonButton.transform.localPosition.x, hiddenButtonPos, 1f);
@@ -80,6 +103,9 @@ public class StickerSystem : MonoBehaviour
 
         wagonBG.GetComponent<Image>().raycastTarget = false;
 
+        hideInventoryArea.raycastTarget = false;
+        openInventoryArea.raycastTarget = false;
+
         stickerBoard.GetComponent<StickerBoardButton>().interactable = false;
         boardBook.GetComponent<BoardBookButton>().interactable = false;
         lesterButton.GetComponent<LesterButton>().interactable = false;
@@ -87,6 +113,15 @@ public class StickerSystem : MonoBehaviour
         stickerboardBackButton.GetComponent<BackButton>().interactable = false;
         stickerboardLeftButton.GetComponent<Button>().interactable = false;
         stickerboardRightButton.GetComponent<Button>().interactable = false;
+
+        talkieBG.GetComponent<Image>().raycastTarget = false;
+        talkieBG.LerpImageAlpha(talkieBG.GetComponent<Image>(), 0f, 0f);
+
+        // set video player cameras
+        commonVP.targetCamera = GameManager.instance.globalCamera;
+        uncommonVP.targetCamera = GameManager.instance.globalCamera;
+        rareVP.targetCamera = GameManager.instance.globalCamera;
+        legendaryVP.targetCamera = GameManager.instance.globalCamera;
     }
 
     void Update() 
@@ -99,6 +134,129 @@ public class StickerSystem : MonoBehaviour
                 waitingOnPlayerInput = false;
             }
         }
+
+        if (currentHeldSticker == null)
+        {
+            holdingSticker = false;
+        }
+
+        if (holdingSticker)
+        {
+            // let go of sticker after clicking again
+            if (Input.GetMouseButtonDown(0) && readyToPlaceSticker)
+            {
+                holdingSticker = false; 
+
+                hideInventoryArea.raycastTarget = false;
+                openInventoryArea.raycastTarget = false;
+
+                // stop sticker wiggle
+                currentHeldSticker.GetComponent<StickerImage>().wiggleController.StopWiggle();
+
+                // return sticker to inventory if inventory is open
+                if (StickerInventory.instance.currentState == InventoryState.Open)
+                {
+                    ReturnStickerToInventory();
+                }
+                // place sticker on current stickerboard (not glue)
+                else
+                {
+                    StartCoroutine(PlaceStickerOnStickerBoard());
+                }
+            }
+
+            Vector3 mousePosWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosWorldSpace.z = 0f;
+
+            Vector3 pos = Vector3.Lerp(currentHeldSticker.transform.position, mousePosWorldSpace, 1 - Mathf.Pow(1 - stickerMoveSpeed, Time.deltaTime * 60));
+            currentHeldSticker.transform.position = pos;
+
+            // send raycast to check for open inventory
+            var pointerEventData = new PointerEventData(EventSystem.current);
+            pointerEventData.position = Input.mousePosition;
+            var raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointerEventData, raycastResults);
+
+            if (raycastResults.Count > 0)
+            {
+                foreach(var result in raycastResults)
+                {
+                    if (result.gameObject.transform.CompareTag("OpenInventoryArea") && StickerInventory.instance.currentState != InventoryState.Open)
+                    {
+                        StickerInventory.instance.SetInventoryState(InventoryState.Open);
+                    }
+                    else if (result.gameObject.transform.CompareTag("HideInventoryArea") && StickerInventory.instance.currentState != InventoryState.ShowTab)
+                    {
+                        StickerInventory.instance.SetInventoryState(InventoryState.ShowTab);
+                    }
+                }
+            }
+        }   
+    }
+
+    /* 
+    ################################################
+    #   STICKER FUNCTIONS
+    ################################################
+    */
+
+    public StickerBoardType GetCurrentBoard()
+    {
+        return activeStickerboards[currentBoardIndex].boardType;
+    }
+
+    public void SetCurrentHeldSticker(Transform sticker)
+    {
+        currentHeldSticker = sticker;
+        currentHeldSticker.SetParent(selectedStickerParent);
+        currentHeldSticker.GetComponent<StickerImage>().wiggleController.StartWiggle();
+
+        readyToPlaceSticker = false;
+        holdingSticker = true;
+        StartCoroutine(ReadyToPlaceStickerDelay(0.5f));
+
+        hideInventoryArea.raycastTarget = true;
+        openInventoryArea.raycastTarget = true;
+    }
+
+    private IEnumerator ReadyToPlaceStickerDelay(float time)
+    {
+        yield return new WaitForSeconds(time);
+        readyToPlaceSticker = true;
+    }
+
+    public void ReturnStickerToInventory()
+    {
+        StartCoroutine(ReturnStickerToInventoryRoutine());
+    }
+
+    private IEnumerator ReturnStickerToInventoryRoutine()
+    {
+        // return if held sticker is null
+        if (currentHeldSticker == null)
+            yield break;
+
+        readyToGlueSticker = false;
+        currentHeldSticker.GetComponent<StickerImage>().HideYesNoButtons();
+
+        currentHeldSticker.SetParent(selectedStickerParent);
+        currentHeldSticker.GetComponent<LerpableObject>().LerpPosToTransform(currentHeldSticker.GetComponent<StickerImage>().inventorySticker.transform, 0.25f, false);
+        yield return new WaitForSeconds(0.25f);
+        currentHeldSticker.SetParent(currentHeldSticker.GetComponent<StickerImage>().inventorySticker.transform);
+        StickerInventory.instance.UpdateStickerInventory();
+        currentHeldSticker = null;
+    }
+
+    private IEnumerator PlaceStickerOnStickerBoard()
+    {
+        // set image parent as current stickerboard
+        currentHeldSticker.SetParent(gluedStickerParent);
+
+        currentHeldSticker.GetComponent<StickerImage>().ShowYesNoButtons();
+        // ready to glue sticker
+        readyToGlueSticker = true;
+    
+        yield return null;
     }
 
     /* 
@@ -109,6 +267,10 @@ public class StickerSystem : MonoBehaviour
 
     public void OpenBoardBook()
     {
+        // reset lester timers
+        lesterButton.GetComponent<LesterButton>().ResetLesterTimers();
+        
+        boardBook.GetComponent<WiggleController>().StopWiggle();
         boardBookWindow.OpenWindow();
     }
 
@@ -117,6 +279,64 @@ public class StickerSystem : MonoBehaviour
     #   STICKER BOARDS FUNCTIONS
     ################################################
     */
+
+    public void GlueSelectedStickerToBoard(Sticker sticker, Vector3 pos)
+    {
+        GameObject gluedSticker = Instantiate(gluedStickerObject, gluedStickerParent);
+        gluedSticker.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.2f, 0.2f);
+        gluedSticker.GetComponent<GluedSticker>().SetStickerData(sticker, pos);
+
+        // play lester tutorial part 3
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            StartCoroutine(AfterGlueStickerTutorial());
+        }
+    }
+
+    private IEnumerator AfterGlueStickerTutorial()
+    {
+        // add talkie bg
+        talkieBG.GetComponent<Image>().raycastTarget = true;
+        talkieBG.LerpImageAlpha(talkieBG.GetComponent<Image>(), 0.9f, 0.5f);
+
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("LesterIntro_1_p3"));
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // remove talkie bg
+            talkieBG.GetComponent<Image>().raycastTarget = false;
+            talkieBG.LerpImageAlpha(talkieBG.GetComponent<Image>(), 0f, 0.5f);
+
+        // show sticker board back button + wiggle
+        stickerboardBackButton.GetComponent<BackButton>().interactable = true;
+        stickerboardBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+        stickerboardBackButton.GetComponent<WiggleController>().StartWiggle();
+    }
+
+    public void AddAllGluedStickersToCurrentBoard()
+    {
+        // remove all stickers
+        RemoveAllStickers();
+       
+        // get sticker board data
+        StickerBoardData data = StudentInfoSystem.GetStickerBoardData(GetCurrentBoard());
+
+        foreach (var sticker in data.stickers)
+        {
+            GameObject gluedSticker = Instantiate(gluedStickerObject, gluedStickerParent);
+            gluedSticker.transform.localScale = Vector3.zero;
+            gluedSticker.GetComponent<GluedSticker>().SetStickerData(sticker);
+            gluedSticker.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+        }      
+    }
+
+    public void RemoveAllStickers()
+    {
+        foreach (Transform child in gluedStickerParent)
+        {
+            child.GetComponent<GluedSticker>().DeleteSticker();
+        }
+    }
 
     public void OpenStickerBoards()
     {
@@ -130,16 +350,20 @@ public class StickerSystem : MonoBehaviour
 
     private IEnumerator OpenStickerBoardsRoutine()
     {
+        stickerBoard.GetComponent<WiggleController>().StopWiggle();
+
         // set buttons to be not interactable 
-        StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().interactable = false;
-        StickerSystem.instance.stickerBoard.GetComponent<StickerBoardButton>().interactable = false;
-        StickerSystem.instance.boardBook.GetComponent<BoardBookButton>().interactable = false;
+        lesterAnimator.GetComponent<LesterButton>().interactable = false;
+        stickerBoard.GetComponent<StickerBoardButton>().interactable = false;
+        boardBook.GetComponent<BoardBookButton>().interactable = false;
 
         // activate raycast blocker
         RaycastBlockerController.instance.CreateRaycastBlocker("stickerboard_blocker");
 
         // set stickerboards active
         numActiveBoards = 1;
+        activeStickerboards.Clear();
+        activeStickerboards.Add(stickerboards[0]);
         StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
         foreach(var board in stickerboards)
         {
@@ -148,16 +372,19 @@ public class StickerSystem : MonoBehaviour
             {
                 isActive = data.mossyStickerBoard.active;
                 board.gameObject.SetActive(isActive);
+                activeStickerboards.Add(stickerboards[1]);
             }
             else if (board.boardType == StickerBoardType.Emerald)
             {
                 isActive = data.emeraldStickerBoard.active;
                 board.gameObject.SetActive(isActive);
+                activeStickerboards.Add(stickerboards[2]);
             }
             else if (board.boardType == StickerBoardType.Beach)
             {
                 isActive = data.beachStickerBoard.active;
                 board.gameObject.SetActive(isActive);
+                activeStickerboards.Add(stickerboards[3]);
             }
 
             if (isActive)
@@ -179,18 +406,46 @@ public class StickerSystem : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        // show sticker board back button
-        stickerboardBackButton.GetComponent<BackButton>().interactable = true;
-        stickerboardBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+        // play lester tutorial part 2
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            // add talkie bg
+            talkieBG.GetComponent<Image>().raycastTarget = true;
+            talkieBG.LerpImageAlpha(talkieBG.GetComponent<Image>(), 0.9f, 0.5f);
 
-        // show left and right buttons
-        stickerboardLeftButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
-        stickerboardRightButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
-        stickerboardLeftButton.GetComponent<Button>().interactable = true;
-        stickerboardRightButton.GetComponent<Button>().interactable = true;
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("LesterIntro_1_p2"));
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // remove talkie bg
+            talkieBG.GetComponent<Image>().raycastTarget = false;
+            talkieBG.LerpImageAlpha(talkieBG.GetComponent<Image>(), 0f, 0.5f);
+        }
+        else
+        {
+            // show sticker board back button
+            stickerboardBackButton.GetComponent<BackButton>().interactable = true;
+            stickerboardBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+
+            // show left and right buttons
+            stickerboardLeftButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+            stickerboardRightButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+            stickerboardLeftButton.GetComponent<Button>().interactable = true;
+            stickerboardRightButton.GetComponent<Button>().interactable = true;
+        }
 
         // show inventory button
         StickerInventory.instance.SetInventoryState(InventoryState.ShowTab);
+        // update inventory
+        StickerInventory.instance.UpdateStickerInventory();
+        // open inventory if tutorial
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            StickerInventory.instance.SetInventoryState(InventoryState.Open);
+        }
+
+        // add stickers to board
+        AddAllGluedStickersToCurrentBoard();
 
         // deactivate raycast blocker
         RaycastBlockerController.instance.RemoveRaycastBlocker("stickerboard_blocker");
@@ -208,20 +463,33 @@ public class StickerSystem : MonoBehaviour
 
     private IEnumerator CloseStickerBoardsRoutine()
     {   
+        // reset lester timers
+        lesterButton.GetComponent<LesterButton>().ResetLesterTimers();
+
         // hide sticker board back button
         stickerboardBackButton.GetComponent<BackButton>().interactable = false;
         stickerboardBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
-
-        // hide left and right buttons
-        stickerboardLeftButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
-        stickerboardRightButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
-        stickerboardLeftButton.GetComponent<Button>().interactable = false;
-        stickerboardRightButton.GetComponent<Button>().interactable = false;
+        stickerboardBackButton.GetComponent<WiggleController>().StopWiggle();
+        
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            // do nothing :)
+        }
+        else
+        {
+            // hide left and right buttons
+            stickerboardLeftButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+            stickerboardRightButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+            stickerboardLeftButton.GetComponent<Button>().interactable = false;
+            stickerboardRightButton.GetComponent<Button>().interactable = false;
+        }
 
         // hide inventroy button
         StickerInventory.instance.SetInventoryState(InventoryState.Hidden);
 
-        yield return new WaitForSeconds(0.5f);
+        // remove stickers on board
+        RemoveAllStickers();
+        yield return new WaitForSeconds(0.2f);
 
         // activate raycast blocker
         RaycastBlockerController.instance.CreateRaycastBlocker("stickerboard_blocker");
@@ -240,10 +508,19 @@ public class StickerSystem : MonoBehaviour
         // deactivate raycast blocker
         RaycastBlockerController.instance.RemoveRaycastBlocker("stickerboard_blocker");
 
-        // set buttons to be not interactable 
-        StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().interactable = true;
-        StickerSystem.instance.stickerBoard.GetComponent<StickerBoardButton>().interactable = true;
-        StickerSystem.instance.boardBook.GetComponent<BoardBookButton>().interactable = true;
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            // only board book interactable
+            boardBook.GetComponent<BoardBookButton>().interactable = true;
+            boardBook.GetComponent<WiggleController>().StartWiggle();
+        }
+        else
+        {
+            // set buttons to be not interactable 
+            lesterAnimator.GetComponent<LesterButton>().interactable = true;
+            stickerBoard.GetComponent<StickerBoardButton>().interactable = true;
+            boardBook.GetComponent<BoardBookButton>().interactable = true;
+        }
     }
 
     public void OnLeftButtonPressed()
@@ -293,10 +570,24 @@ public class StickerSystem : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
 
+        // return unglued sticker to inventory
+        if (readyToGlueSticker)
+        {
+            ReturnStickerToInventory();
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        // remove all stickers from prev board
+        RemoveAllStickers();
+        yield return new WaitForSeconds(0.1f);
+
         stickerboardLayoutGroup.LerpXPos(stickerboardLayoutGroup.transform.localPosition.x - bumpAmount, 0.1f, true);
         yield return new WaitForSeconds(0.1f);
         stickerboardLayoutGroup.LerpXPos(stickerboardLayoutGroup.transform.localPosition.x + bumpAmount + 1800f, 0.2f, true);
         yield return new WaitForSeconds(0.2f);
+
+        // add stickers to board
+        AddAllGluedStickersToCurrentBoard();
 
         stickerboardButtonsDeactivated = false;
     }
@@ -310,10 +601,24 @@ public class StickerSystem : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
 
+        // return unglued sticker to inventory
+        if (readyToGlueSticker)
+        {
+            ReturnStickerToInventory();
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        // remove all stickers from prev board
+        RemoveAllStickers();
+        yield return new WaitForSeconds(0.1f);
+
         stickerboardLayoutGroup.LerpXPos(stickerboardLayoutGroup.transform.localPosition.x + bumpAmount, 0.1f, true);
         yield return new WaitForSeconds(0.1f);
         stickerboardLayoutGroup.LerpXPos(stickerboardLayoutGroup.transform.localPosition.x - bumpAmount - 1800f, 0.2f, true);
         yield return new WaitForSeconds(0.2f);
+
+        // add stickers to board
+        AddAllGluedStickersToCurrentBoard();
 
         stickerboardButtonsDeactivated = false;
     }
@@ -326,15 +631,19 @@ public class StickerSystem : MonoBehaviour
         if (isLeft)
         {
             stickerboardLayoutGroup.LerpXPos(stickerboardLayoutGroup.transform.localPosition.x + bumpAmount, 0.1f, true);
+            gluedStickerParent.GetComponent<LerpableObject>().LerpXPos(gluedStickerParent.transform.localPosition.x + bumpAmount, 0.1f, true);
             yield return new WaitForSeconds(0.1f);
             stickerboardLayoutGroup.LerpXPos(stickerboardLayoutGroup.transform.localPosition.x - bumpAmount, 0.1f, true);
+            gluedStickerParent.GetComponent<LerpableObject>().LerpXPos(gluedStickerParent.transform.localPosition.x - bumpAmount, 0.1f, true);
             yield return new WaitForSeconds(0.1f);
         }
         else
         {
             stickerboardLayoutGroup.LerpXPos(stickerboardLayoutGroup.transform.localPosition.x - bumpAmount, 0.1f, true);
+            gluedStickerParent.GetComponent<LerpableObject>().LerpXPos(gluedStickerParent.transform.localPosition.x - bumpAmount, 0.1f, true);
             yield return new WaitForSeconds(0.1f);
             stickerboardLayoutGroup.LerpXPos(stickerboardLayoutGroup.transform.localPosition.x + bumpAmount, 0.1f, true);
+            gluedStickerParent.GetComponent<LerpableObject>().LerpXPos(gluedStickerParent.transform.localPosition.x + bumpAmount, 0.1f, true);
             yield return new WaitForSeconds(0.1f);
         }
 
@@ -373,12 +682,23 @@ public class StickerSystem : MonoBehaviour
         // play sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
+        lesterButton.GetComponent<WiggleController>().StopWiggle();
+
         StartCoroutine(RollForNewStickerRoutine());
     }
 
     public IEnumerator RollForNewStickerRoutine()
     {
         stickerConfirmWindow.CloseWindowForStickerRoll();
+    
+        // play lester buy talkie 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("LesterBuy_1_p2"));
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // remove BG
+        StickerConfirmWindow.instance.BG.LerpImageAlpha(StickerConfirmWindow.instance.BG.GetComponent<Image>(), 0f, 0.5f);
+        StickerConfirmWindow.instance.BG.GetComponent<Image>().raycastTarget = false;
 
         // activate raycast blocker
         RaycastBlockerController.instance.CreateRaycastBlocker("StickerVideoBlocker");
@@ -434,6 +754,34 @@ public class StickerSystem : MonoBehaviour
         // reveal sticker here after certain amount of time
         revealSticker.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.2f, 0.2f);
 
+        // get appropriate sticker voiceover
+        AudioClip stickerVoiceover = null;
+        switch (sticker.rarity)
+        {
+            default:
+            case StickerRarity.Common:
+                stickerVoiceover = AudioDatabase.instance.commonStickerVoiceovers[Random.Range(0, 3)];
+                break;
+
+            case StickerRarity.Uncommon:
+                stickerVoiceover = AudioDatabase.instance.commonStickerVoiceovers[Random.Range(0, 3)];
+                break;
+
+            case StickerRarity.Rare:
+                stickerVoiceover = AudioDatabase.instance.commonStickerVoiceovers[Random.Range(0, 3)];
+                break;
+
+            case StickerRarity.Legendary:
+                stickerVoiceover = AudioDatabase.instance.commonStickerVoiceovers[Random.Range(0, 3)];
+                break;
+        }
+        // play voiceover
+        AudioManager.instance.PlayTalk(stickerVoiceover);
+        yield return new WaitForSeconds(stickerVoiceover.length);
+
+        // wiggle reveal sticker
+        revealSticker.GetComponent<WiggleController>().StartWiggle();
+
         // wait for player input to continue
         waitingOnPlayerInput = true;
         while (waitingOnPlayerInput)
@@ -441,6 +789,8 @@ public class StickerSystem : MonoBehaviour
 
         // hide sticker
         revealSticker.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.2f, 0.2f);
+        // stop wiggle reveal sticker
+        revealSticker.GetComponent<WiggleController>().StopWiggle();
 
         // activate raycast blocker
         RaycastBlockerController.instance.CreateRaycastBlocker("StickerVideoBlocker");
@@ -460,16 +810,25 @@ public class StickerSystem : MonoBehaviour
         RaycastBlockerController.instance.RemoveRaycastBlocker("StickerVideoBlocker");
 
         // show lester
-        StickerSystem.instance.lesterAnimator.Play("geckoIntro");
-        StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().isHidden = false;
-        StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().ResetLesterTimers();
+        lesterAnimator.Play("geckoIntro");
+        lesterAnimator.GetComponent<LesterButton>().isHidden = false;
+        lesterAnimator.GetComponent<LesterButton>().ResetLesterTimers();
 
         yield return new WaitForSeconds(0.5f);
 
-        // set buttons to be interactable 
-        StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().interactable = true;
-        StickerSystem.instance.stickerBoard.GetComponent<StickerBoardButton>().interactable = true;
-        StickerSystem.instance.boardBook.GetComponent<BoardBookButton>().interactable = true;
+        // only make stickerboard interactable if tutorial
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            stickerBoard.GetComponent<WiggleController>().StartWiggle();
+            stickerBoard.GetComponent<StickerBoardButton>().interactable = true;
+        }
+        else
+        {
+            // set buttons to be interactable 
+            lesterAnimator.GetComponent<LesterButton>().interactable = true;
+            stickerBoard.GetComponent<StickerBoardButton>().interactable = true;
+            boardBook.GetComponent<BoardBookButton>().interactable = true;
+        }
     }
 
     /* 
@@ -521,6 +880,13 @@ public class StickerSystem : MonoBehaviour
         // add raycast
         RaycastBlockerController.instance.CreateRaycastBlocker("show_wagon_raycast");
 
+        // stop music
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlaySong(AudioDatabase.instance.TurntablesGameSong);
+
+        // reset lester timers
+        lesterButton.GetComponent<LesterButton>().ResetLesterTimers();
+
         // set buttons not interactable
         stickerBoard.GetComponent<StickerBoardButton>().interactable = false;
         boardBook.GetComponent<BoardBookButton>().interactable = false;
@@ -545,20 +911,50 @@ public class StickerSystem : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        // stop wagon
+        // play lester tutorial 1
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            // add talkie bg
+            talkieBG.GetComponent<Image>().raycastTarget = true;
+            talkieBG.LerpImageAlpha(talkieBG.GetComponent<Image>(), 0.9f, 0.5f);
+
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("LesterIntro_1_p1"));
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+
+            // remove talkie bg
+            talkieBG.GetComponent<Image>().raycastTarget = false;
+            talkieBG.LerpImageAlpha(talkieBG.GetComponent<Image>(), 0f, 0.5f);
+        }
+        
         lesterAnimator.Play("geckoIntro");
 
-        // show back button + dropdown toolbar
-        wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+        // show back button + dropdown toolbar (dont show back button iff tutorial)
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            // do nothing :)
+        }
+        else
+        {   
+            wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+        }
         DropdownToolbar.instance.ToggleToolbar(true);
 
         yield return new WaitForSeconds(0.5f);
 
         // set buttons interactable
-        stickerBoard.GetComponent<StickerBoardButton>().interactable = true;
-        boardBook.GetComponent<BoardBookButton>().interactable = true;
-        lesterButton.GetComponent<LesterButton>().interactable = true;
-        wagonBackButton.GetComponent<BackButton>().interactable = true;
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            lesterButton.GetComponent<LesterButton>().interactable = true;
+            lesterButton.GetComponent<WiggleController>().StartWiggle();
+        }
+        else
+        {
+            stickerBoard.GetComponent<StickerBoardButton>().interactable = true;
+            boardBook.GetComponent<BoardBookButton>().interactable = true;
+            lesterButton.GetComponent<LesterButton>().interactable = true;
+            wagonBackButton.GetComponent<BackButton>().interactable = true;
+        }
 
         // animation done - remove raycast
         RaycastBlockerController.instance.RemoveRaycastBlocker("show_wagon_raycast");
@@ -601,6 +997,10 @@ public class StickerSystem : MonoBehaviour
         this.ToggleWagonButtonActive(true);
 
         yield return new WaitForSeconds(0.5f);
+
+        // play scroll map song
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlaySong(AudioDatabase.instance.MainThemeSong);
 
         // animation done - remove raycast
         RaycastBlockerController.instance.RemoveRaycastBlocker("hide_wagon_raycast");

@@ -165,9 +165,11 @@ public static class StudentInfoSystem
                 SaveStudentPlayerData();
                 DropdownToolbar.instance.UpdateSilverCoins();
             }
-
-            // increment sticker count by one
-            currentStudentPlayer.stickerInventory[FindInventoryIndex(sticker)].count++;
+            else
+            {
+                // increment sticker count by one
+                currentStudentPlayer.stickerInventory[FindInventoryIndex(sticker)].count++;
+            }
         }
     }
 

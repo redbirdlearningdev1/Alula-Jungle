@@ -19,8 +19,8 @@ MonoBehaviour:
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
   ending: 1
-  removeBackgroundAfterTalkie: 0
-  removeLetterboxAfterTalkie: 0
+  removeBackgroundAfterTalkie: 1
+  removeLetterboxAfterTalkie: 1
   segmnets:
   - endTalkieAfterThisSegment: 0
     requireYN: 0
