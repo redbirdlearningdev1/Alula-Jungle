@@ -6,8 +6,10 @@ using UnityEngine;
 public class GluedSticker : MonoBehaviour
 {
     public Image image;
-
     private StickerData stickerData;
+    public LerpableObject deleteButton;
+
+    private bool deleteMode = false;
 
     public void SetStickerData(StickerData data)
     {
@@ -33,5 +35,28 @@ public class GluedSticker : MonoBehaviour
         GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
         yield return new WaitForSeconds(0.2f);
         Destroy(this.gameObject);
+    }
+
+    public void SetDeleteButton(bool opt)
+    {   
+        if (opt == deleteMode)
+            return;
+
+        deleteMode = opt;
+
+        if (opt)
+        {
+            deleteButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+        }
+        else
+        {
+            deleteButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+        }
+    }
+
+    public void OnDeleteButtonPressed()
+    {
+        // open window
+        ConfirmDeleteWindow.instance.OpenWindow(stickerData, this);
     }
 }

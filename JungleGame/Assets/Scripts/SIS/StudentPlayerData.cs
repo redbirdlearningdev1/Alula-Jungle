@@ -114,6 +114,11 @@ public class StudentPlayerData
 
     // sticker data
     public List<InventoryStickerData> stickerInventory;
+    // unlocked stickers
+    public bool[] commonStickerUnlocked;
+    public bool[] uncommonStickerUnlocked; 
+    public bool[] rareStickerUnlocked; 
+    public bool[] legendaryStickerUnlocked;
     // sticker boards
     public StickerBoardData classicStickerBoard;
     public StickerBoardData mossyStickerBoard;

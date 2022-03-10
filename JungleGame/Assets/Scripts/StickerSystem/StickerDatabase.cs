@@ -29,25 +29,53 @@ public class StickerDatabase : MonoBehaviour
         int totalRarity = commonRarity + uncommonRarity + rareRarity + legendaryRarity;
         int index = Random.Range(0, totalRarity);
 
+        Sticker randomSticker = null;
+
         // common
         if (index >= 0 && index < commonRarity)
         {
-            return GetRandomSticker(StickerRarity.Common);
+            randomSticker = GetRandomSticker(StickerRarity.Common);
         }
         // uncommon
         else if (index >= commonRarity && index < commonRarity + uncommonRarity)
         {
-            return GetRandomSticker(StickerRarity.Uncommon);
+            randomSticker = GetRandomSticker(StickerRarity.Uncommon);
         }
         // rare
         else if (index >= commonRarity + uncommonRarity && index < commonRarity + uncommonRarity + rareRarity)
         {
-            return GetRandomSticker(StickerRarity.Rare);
+            randomSticker = GetRandomSticker(StickerRarity.Rare);
         }
         // legendary
         else if (index >= commonRarity + uncommonRarity + rareRarity && index < totalRarity)
         {
-            return GetRandomSticker(StickerRarity.Legendary);
+            randomSticker = GetRandomSticker(StickerRarity.Legendary);
+        }
+
+        if (randomSticker != null)
+        {
+            // unlock sticker in SIS
+            switch (randomSticker.rarity)
+            {
+                case StickerRarity.Common:
+                    StudentInfoSystem.GetCurrentProfile().commonStickerUnlocked[randomSticker.id - 1] = true;
+                    break;
+
+                case StickerRarity.Uncommon:
+                    StudentInfoSystem.GetCurrentProfile().uncommonStickerUnlocked[randomSticker.id - 1] = true;
+                    break;
+
+                case StickerRarity.Rare:
+                    StudentInfoSystem.GetCurrentProfile().rareStickerUnlocked[randomSticker.id - 1] = true;
+                    break;
+
+                case StickerRarity.Legendary:
+                    StudentInfoSystem.GetCurrentProfile().legendaryStickerUnlocked[randomSticker.id - 1] = true;
+                    break;
+            }
+            StudentInfoSystem.SaveStudentPlayerData();
+
+            return randomSticker;
         }
 
         // should never get to this point

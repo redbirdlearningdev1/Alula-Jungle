@@ -253,6 +253,65 @@ public static class StudentInfoSystem
         SaveStudentPlayerData();
     }
 
+    public static void DeleteStickerFromBoard(StickerData stickerData, StickerBoardType board)
+    {
+        switch (board)
+        {
+            case StickerBoardType.Classic:
+                // search for sticker in board data - delete if found
+                StickerBoardData classicBoardData = currentStudentPlayer.classicStickerBoard;
+                foreach (var data in classicBoardData.stickers)
+                {
+                    if (data == stickerData)
+                    {
+                        classicBoardData.stickers.Remove(data);
+                        break;
+                    }
+                }
+                break;
+            
+            case StickerBoardType.Mossy:
+                // search for sticker in board data - delete if found
+                StickerBoardData mossyBoardData = currentStudentPlayer.classicStickerBoard;
+                foreach (var data in mossyBoardData.stickers)
+                {
+                    if (data == stickerData)
+                    {
+                        mossyBoardData.stickers.Remove(data);
+                        break;
+                    }
+                }
+                break;
+
+            case StickerBoardType.Emerald:
+                // search for sticker in board data - delete if found
+                StickerBoardData emeraldBoardData = currentStudentPlayer.classicStickerBoard;
+                foreach (var data in emeraldBoardData.stickers)
+                {
+                    if (data == stickerData)
+                    {
+                        emeraldBoardData.stickers.Remove(data);
+                        break;
+                    }
+                }
+                break;
+
+            case StickerBoardType.Beach:
+                // search for sticker in board data - delete if found
+                StickerBoardData beachBoardData = currentStudentPlayer.classicStickerBoard;
+                foreach (var data in beachBoardData.stickers)
+                {
+                    if (data == stickerData)
+                    {
+                        beachBoardData.stickers.Remove(data);
+                        break;
+                    }
+                }
+                break;
+        }
+        SaveStudentPlayerData();
+    }
+
     public static StickerBoardData GetStickerBoardData(StickerBoardType board)
     {
         switch (board)

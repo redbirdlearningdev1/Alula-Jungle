@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
@@ -48,10 +49,13 @@ public class StickerInventory : MonoBehaviour
         // switch between open and show tab
         if (currentState == InventoryState.ShowTab)
         {
+            StickerSystem.instance.SetDeleteStickerModeOFF();
+            StickerSystem.instance.deleteStickerButton.GetComponent<Button>().interactable = false;
             SetInventoryState(InventoryState.Open);
         }
         else if (currentState == InventoryState.Open)
         {
+            StickerSystem.instance.deleteStickerButton.GetComponent<Button>().interactable = true;
             SetInventoryState(InventoryState.ShowTab);
         }
     }
@@ -92,6 +96,20 @@ public class StickerInventory : MonoBehaviour
             GameObject newInventorySticker = Instantiate(inventoryStickerPrefab, inventoryStickerParent);
             newInventorySticker.GetComponent<InventorySticker>().SetSticker(data);
         }
+
+        // update sticker unlocks
+        commonText.text = CountTrues(StudentInfoSystem.GetCurrentProfile().commonStickerUnlocked) + "/60"; // 60 common stickers
+        uncommonText.text = CountTrues(StudentInfoSystem.GetCurrentProfile().uncommonStickerUnlocked) + "/36"; // 36 uncommon stickers
+        rareText.text = CountTrues(StudentInfoSystem.GetCurrentProfile().rareStickerUnlocked) + "/12"; // 12 rare stickers
+        legendaryText.text = CountTrues(StudentInfoSystem.GetCurrentProfile().legendaryStickerUnlocked) + "/12"; // 12 legendary stickers
+    }
+
+    public static int CountTrues(bool[] array)
+    {
+        int count = 0;
+        foreach (bool b in array)
+            if (b) count++;
+        return count;
     }
 
     private IEnumerator SetInventoryStateRoutine()

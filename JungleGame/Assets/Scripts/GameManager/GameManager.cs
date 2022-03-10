@@ -33,6 +33,8 @@ public class GameManager : DontDestroy<GameManager>
 {
     public static string currentGameVersion = "alpha1.3";
 
+    public static int stickerInventorySize = 16;
+
     public bool devModeActivated;
     public const float transitionTime = 0.5f; // time to fade into and out of a scene (total transition time is: transitionTime * 2)
     public Camera globalCamera;

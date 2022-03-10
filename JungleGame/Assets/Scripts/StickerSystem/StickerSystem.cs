@@ -16,6 +16,7 @@ public class StickerSystem : MonoBehaviour
     [Header("Get Sticker")]
     public StickerConfirmWindow stickerConfirmWindow;
     public Image revealSticker;
+    public LerpableObject lesterSpeechBubble;
     public VideoPlayer commonVP;
     public VideoPlayer uncommonVP;
     public VideoPlayer rareVP;
@@ -74,11 +75,13 @@ public class StickerSystem : MonoBehaviour
     public Transform gluedStickerParent;
     public Image hideInventoryArea;
     public Image openInventoryArea;
+    public LerpableObject deleteStickerButton;
 
 
     private Transform currentHeldSticker;
     private bool holdingSticker;
     private bool readyToPlaceSticker;
+    private bool deleteStickerMode;
     [HideInInspector] public bool readyToGlueSticker;
 
 
@@ -95,11 +98,14 @@ public class StickerSystem : MonoBehaviour
         activeStickerboards.Add(stickerboards[0]);
 
         revealSticker.transform.localScale = Vector3.zero;
+        lesterSpeechBubble.transform.localScale = Vector3.zero;
+
         stickerWagonButton.transform.localPosition = new Vector3(stickerWagonButton.transform.localPosition.x, hiddenButtonPos, 1f);
         wagonBackButton.transform.localScale = Vector3.zero;
         stickerboardBackButton.transform.localScale = Vector3.zero;
         stickerboardLeftButton.transform.localScale = Vector3.zero;
         stickerboardRightButton.transform.localScale = Vector3.zero;
+        deleteStickerButton.transform.localScale = Vector3.zero;
 
         wagonBG.GetComponent<Image>().raycastTarget = false;
 
@@ -113,6 +119,7 @@ public class StickerSystem : MonoBehaviour
         stickerboardBackButton.GetComponent<BackButton>().interactable = false;
         stickerboardLeftButton.GetComponent<Button>().interactable = false;
         stickerboardRightButton.GetComponent<Button>().interactable = false;
+        deleteStickerButton.GetComponent<Button>().interactable = false;
 
         talkieBG.GetComponent<Image>().raycastTarget = false;
         talkieBG.LerpImageAlpha(talkieBG.GetComponent<Image>(), 0f, 0f);
@@ -200,6 +207,52 @@ public class StickerSystem : MonoBehaviour
     ################################################
     */
 
+    public void ToggleDeleteStickerMode()
+    {
+        deleteStickerMode = !deleteStickerMode;
+
+        if (deleteStickerMode)
+        {
+            SetDeleteStickerModeON();
+        }
+        else
+        {
+            SetDeleteStickerModeOFF();
+        }
+    }
+
+    public void SetDeleteStickerModeON()
+    {
+        deleteStickerMode = true;
+
+        deleteStickerButton.SquishyScaleLerp(new Vector2(0.9f, 0.9f), new Vector2(1.1f, 1.1f), 0.1f, 0.1f);
+
+        foreach (Transform child in gluedStickerParent)
+        {
+            if (child.tag == "GluedSticker")
+            {
+                child.GetComponent<WiggleController>().StartWiggle();
+                child.GetComponent<GluedSticker>().SetDeleteButton(true);
+            }
+        }
+    }
+
+    public void SetDeleteStickerModeOFF()
+    {
+        deleteStickerMode = false;
+
+        deleteStickerButton.SquishyScaleLerp(new Vector2(0.9f, 0.9f), new Vector2(1.1f, 1.1f), 0.1f, 0.1f);
+
+        foreach (Transform child in gluedStickerParent)
+        {
+            if (child.tag == "GluedSticker")
+            {
+                child.GetComponent<WiggleController>().StopWiggle();
+                child.GetComponent<GluedSticker>().SetDeleteButton(false);
+            }
+        }
+    }
+
     public StickerBoardType GetCurrentBoard()
     {
         return activeStickerboards[currentBoardIndex].boardType;
@@ -207,6 +260,10 @@ public class StickerSystem : MonoBehaviour
 
     public void SetCurrentHeldSticker(Transform sticker)
     {
+        // set delete sticker mode off
+        SetDeleteStickerModeOFF();
+        StickerSystem.instance.deleteStickerButton.GetComponent<Button>().interactable = false;
+
         currentHeldSticker = sticker;
         currentHeldSticker.SetParent(selectedStickerParent);
         currentHeldSticker.GetComponent<StickerImage>().wiggleController.StartWiggle();
@@ -236,6 +293,9 @@ public class StickerSystem : MonoBehaviour
         if (currentHeldSticker == null)
             yield break;
 
+        // set delete sticker mode off
+        StickerSystem.instance.deleteStickerButton.GetComponent<Button>().interactable = true;
+
         readyToGlueSticker = false;
         currentHeldSticker.GetComponent<StickerImage>().HideYesNoButtons();
 
@@ -251,7 +311,6 @@ public class StickerSystem : MonoBehaviour
     {
         // set image parent as current stickerboard
         currentHeldSticker.SetParent(gluedStickerParent);
-
         currentHeldSticker.GetComponent<StickerImage>().ShowYesNoButtons();
         // ready to glue sticker
         readyToGlueSticker = true;
@@ -282,9 +341,15 @@ public class StickerSystem : MonoBehaviour
 
     public void GlueSelectedStickerToBoard(Sticker sticker, Vector3 pos)
     {
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SelectBoop, 0.5f);
+
         GameObject gluedSticker = Instantiate(gluedStickerObject, gluedStickerParent);
         gluedSticker.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.2f, 0.2f);
         gluedSticker.GetComponent<GluedSticker>().SetStickerData(sticker, pos);
+
+        // set delete sticker mode off
+        SetDeleteStickerModeOFF();
+        StickerSystem.instance.deleteStickerButton.GetComponent<Button>().interactable = true;
 
         // play lester tutorial part 3
         if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
@@ -304,8 +369,8 @@ public class StickerSystem : MonoBehaviour
             yield return null;
 
         // remove talkie bg
-            talkieBG.GetComponent<Image>().raycastTarget = false;
-            talkieBG.LerpImageAlpha(talkieBG.GetComponent<Image>(), 0f, 0.5f);
+        talkieBG.GetComponent<Image>().raycastTarget = false;
+        talkieBG.LerpImageAlpha(talkieBG.GetComponent<Image>(), 0f, 0.5f);
 
         // show sticker board back button + wiggle
         stickerboardBackButton.GetComponent<BackButton>().interactable = true;
@@ -334,7 +399,10 @@ public class StickerSystem : MonoBehaviour
     {
         foreach (Transform child in gluedStickerParent)
         {
-            child.GetComponent<GluedSticker>().DeleteSticker();
+            if (child.tag == "GluedSticker")
+            {   
+                child.GetComponent<GluedSticker>().DeleteSticker();
+            }   
         }
     }
 
@@ -351,6 +419,9 @@ public class StickerSystem : MonoBehaviour
     private IEnumerator OpenStickerBoardsRoutine()
     {
         stickerBoard.GetComponent<WiggleController>().StopWiggle();
+
+        // set delete sticker mode to OFF
+        SetDeleteStickerModeOFF();
 
         // set buttons to be not interactable 
         lesterAnimator.GetComponent<LesterButton>().interactable = false;
@@ -432,6 +503,10 @@ public class StickerSystem : MonoBehaviour
             stickerboardRightButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
             stickerboardLeftButton.GetComponent<Button>().interactable = true;
             stickerboardRightButton.GetComponent<Button>().interactable = true;
+
+            // show delete sticker button
+            deleteStickerButton.GetComponent<Button>().interactable = true;
+            deleteStickerButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.one, 0.1f, 0.1f);
         }
 
         // show inventory button
@@ -470,6 +545,10 @@ public class StickerSystem : MonoBehaviour
         stickerboardBackButton.GetComponent<BackButton>().interactable = false;
         stickerboardBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
         stickerboardBackButton.GetComponent<WiggleController>().StopWiggle();
+
+        // hide delete sticker button
+        deleteStickerButton.GetComponent<Button>().interactable = false;
+        deleteStickerButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
         
         if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
         {
@@ -486,6 +565,13 @@ public class StickerSystem : MonoBehaviour
 
         // hide inventroy button
         StickerInventory.instance.SetInventoryState(InventoryState.Hidden);
+
+        // return selected sticker to inventory
+        if (readyToGlueSticker)
+        {
+            ReturnStickerToInventory();
+            yield return new WaitForSeconds(0.5f);
+        }
 
         // remove stickers on board
         RemoveAllStickers();
@@ -664,6 +750,16 @@ public class StickerSystem : MonoBehaviour
 
     public void OnYesButtonStickerConfirmPressed()
     {
+        // play sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        // check if there is room in inventory
+        if (StudentInfoSystem.GetCurrentProfile().stickerInventory.Count >= GameManager.stickerInventorySize)
+        {
+            StartCoroutine(InventoryFullRoutine());
+            return;
+        }
+
         // check to make sure player has sufficent funds
         if (StudentInfoSystem.GetCurrentProfile().goldCoins < 3)
         {
@@ -679,12 +775,20 @@ public class StickerSystem : MonoBehaviour
             DropdownToolbar.instance.RemoveGoldCoins(3);
         }
 
-        // play sound
-        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
-
         lesterButton.GetComponent<WiggleController>().StopWiggle();
 
         StartCoroutine(RollForNewStickerRoutine());
+    }
+
+    private IEnumerator InventoryFullRoutine()
+    {
+        // play inventory full talkie
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("LesterFull_1_p1"));
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // close window
+        stickerConfirmWindow.CloseWindow();
     }
 
     public IEnumerator RollForNewStickerRoutine()
@@ -764,20 +868,22 @@ public class StickerSystem : MonoBehaviour
                 break;
 
             case StickerRarity.Uncommon:
-                stickerVoiceover = AudioDatabase.instance.commonStickerVoiceovers[Random.Range(0, 3)];
+                stickerVoiceover = AudioDatabase.instance.uncommonStickerVoiceovers[Random.Range(0, 3)];
                 break;
 
             case StickerRarity.Rare:
-                stickerVoiceover = AudioDatabase.instance.commonStickerVoiceovers[Random.Range(0, 3)];
+                stickerVoiceover = AudioDatabase.instance.rareStickerVoiceovers[Random.Range(0, 3)];
                 break;
 
             case StickerRarity.Legendary:
-                stickerVoiceover = AudioDatabase.instance.commonStickerVoiceovers[Random.Range(0, 3)];
+                stickerVoiceover = AudioDatabase.instance.legendaryStickerVoiceovers[Random.Range(0, 3)];
                 break;
         }
         // play voiceover
+        lesterSpeechBubble.SquishyScaleLerp(new Vector2(-1.2f, 1.2f), new Vector2(-1f, 1f), 0.1f, 0.1f);
         AudioManager.instance.PlayTalk(stickerVoiceover);
-        yield return new WaitForSeconds(stickerVoiceover.length);
+        yield return new WaitForSeconds(stickerVoiceover.length + 0.2f);
+        lesterSpeechBubble.SquishyScaleLerp(new Vector2(-1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
 
         // wiggle reveal sticker
         revealSticker.GetComponent<WiggleController>().StartWiggle();

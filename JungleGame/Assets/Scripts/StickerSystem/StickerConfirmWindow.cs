@@ -69,11 +69,73 @@ public class StickerConfirmWindow : MonoBehaviour
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
-        // show window
-        window.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
+        if (TalkieManager.instance.yesNoChoices.Count == 1)
+        {
+            // if player chooses yes
+            if (TalkieManager.instance.yesNoChoices[0])
+            {
+                TalkieManager.instance.yesNoChoices.Clear();
 
-        yield return new WaitForSeconds(0.5f);
-        windowActive = true;
+                // show window
+                window.SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.2f, 0.2f);
+                yield return new WaitForSeconds(0.5f);
+                windowActive = true;
+                
+                yield break;
+                
+            }
+            else // if the player chooses no
+            {
+                TalkieManager.instance.yesNoChoices.Clear();
+
+                // play lester buy talkie 2
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("LesterBuy_1_p3"));
+                while (TalkieManager.instance.talkiePlaying)
+                    yield return null;
+
+                // remove BG
+                BG.LerpImageAlpha(BG.GetComponent<Image>(), 0f, 0.5f);
+                BG.GetComponent<Image>().raycastTarget = false;
+
+                // set buttons interactable
+                if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+                {
+                    StickerSystem.instance.lesterAnimator.Play("geckoIntro");
+                    StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().isHidden = false;
+                    StickerSystem.instance.lesterButton.GetComponent<WiggleController>().StartWiggle();
+                    StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().ResetLesterTimers();
+
+                    yield return new WaitForSeconds(0.5f);
+
+                    StickerSystem.instance.lesterButton.GetComponent<LesterButton>().interactable = true;
+                }
+                else
+                {
+                    // show wagon lester
+                    StickerSystem.instance.lesterAnimator.Play("geckoIntro");
+                    StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().isHidden = false;
+                    StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().ResetLesterTimers();
+
+                    yield return new WaitForSeconds(0.5f);
+
+                    // set buttons to be interactable 
+                    StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().interactable = true;
+                    StickerSystem.instance.stickerBoard.GetComponent<StickerBoardButton>().interactable = true;
+                    StickerSystem.instance.boardBook.GetComponent<BoardBookButton>().interactable = true;
+
+                    // show back button
+                    StickerSystem.instance.wagonBackButton.GetComponent<BackButton>().interactable = true;
+                    StickerSystem.instance.wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+                }
+                
+                yield break;
+            }
+        }
+        else
+        {
+            TalkieManager.instance.yesNoChoices.Clear();
+            Debug.LogError("Error: Incorrect number of Yes/No choices for last talkie");
+        }
     }
 
     public void OnNoPressed()
