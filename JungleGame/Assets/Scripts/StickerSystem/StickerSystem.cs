@@ -920,6 +920,10 @@ public class StickerSystem : MonoBehaviour
         lesterAnimator.GetComponent<LesterButton>().isHidden = false;
         lesterAnimator.GetComponent<LesterButton>().ResetLesterTimers();
 
+        // show wagon back button
+        wagonBackButton.GetComponent<BackButton>().interactable = true;
+        wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+
         yield return new WaitForSeconds(0.5f);
 
         // only make stickerboard interactable if tutorial
