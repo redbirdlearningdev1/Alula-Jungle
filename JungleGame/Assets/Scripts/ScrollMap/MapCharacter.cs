@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public enum Character
 {
-    None, Darwin, Julius, Marcus, Brutus, Clogg
+    None, Darwin, Julius, Marcus, Brutus, Clogg, TaxiBird
 }
 
 public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
@@ -129,6 +129,11 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("CloggQuips_1_p1"));
                 yield break;
             }
+        }
+        else if (character == Character.TaxiBird)
+        {
+            // worry about this later!
+            print ("clicked on taxi bird!~");
         }
 
         bool playingChallengeGame = false;
@@ -350,6 +355,65 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 yield break;
             }
         }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PreBossBattle)
+        {
+            // only continue if tapped on julius
+            if (character == Character.Julius)
+            {
+                // play pre boss battle
+                MapAnimationController.instance.PlayMapAnim(MapAnim.PreBossBattle);
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+
+                yield break;
+            }
+        }
+
+
+
+
+
+
+
+
+        /* 
+        ################################################
+        #   BOSS BATTLES
+        ################################################
+        */ 
+
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.BossBattle1)
+        {
+            // only continue if tapped on julius
+            if (character == Character.Julius)
+            {
+                MapAnimationController.instance.PlayBossBattleGameMapAnim(MapAnim.BossBattle1);
+                yield break;
+            }
+        }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.BossBattle2)
+        {
+            // only continue if tapped on julius
+            if (character == Character.Julius)
+            {
+                MapAnimationController.instance.PlayBossBattleGameMapAnim(MapAnim.BossBattle2);
+                yield break;
+            }
+        }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.BossBattle3)
+        {
+            // only continue if tapped on julius
+            if (character == Character.Julius)
+            {
+                MapAnimationController.instance.PlayBossBattleGameMapAnim(MapAnim.BossBattle3);
+                yield break;
+            }
+        }
+
+
+
+        
 
 
 

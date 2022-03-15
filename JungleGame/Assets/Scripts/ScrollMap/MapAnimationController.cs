@@ -67,12 +67,18 @@ public enum MapAnim
 
     /// CHAPTER 6
     PalaceIntro,
+    PreBossBattle,
 
 
     // all challenge games
     ChallengeGame1,
     ChallengeGame2,
     ChallengeGame3,
+
+    // all boss battles
+    BossBattle1,
+    BossBattle2,
+    BossBattle3,
 }
 
 [ExecuteInEditMode]
@@ -90,6 +96,7 @@ public class MapAnimationController : MonoBehaviour
     public MapCharacter julius;
     public MapCharacter brutus;
     public MapCharacter marcus;
+    public MapCharacter taxiBird;
 
     [Header("Dev Test Walk-ins and Walk-outs")]
     public MapLocation mapLocationToTest;
@@ -105,6 +112,29 @@ public class MapAnimationController : MonoBehaviour
                 StartCoroutine(TestWalkInWalkOut());
             }
         }
+    }
+
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+
+        // place all characters off screen
+        boat.mapAnimator.Play("BoatOffScreenPos");
+        darwin.mapAnimator.Play("DarwinOffScreenPos");
+        julius.mapAnimator.Play("JuliusOffScreenPos");
+        brutus.mapAnimator.Play("BrutusOffScreenPos");
+        marcus.mapAnimator.Play("MarcusOffScreenPos");
+        clogg.mapAnimator.Play("CloggOffScreenPos");
+        taxiBird.mapAnimator.Play("TaxiBirdOffScreenPos");
+
+        boat.GetComponent<Image>().raycastTarget = false;
+        darwin.GetComponent<Image>().raycastTarget = false;
+        julius.GetComponent<Image>().raycastTarget = false;
+        brutus.GetComponent<Image>().raycastTarget = false;
+        marcus.GetComponent<Image>().raycastTarget = false;
+        clogg.GetComponent<Image>().raycastTarget = false;
+        taxiBird.GetComponent<Image>().raycastTarget = false;
     }
 
     private IEnumerator TestWalkInWalkOut()
@@ -800,27 +830,6 @@ public class MapAnimationController : MonoBehaviour
         julius.transform.localScale = Vector3.one;
         marcus.transform.localScale = Vector3.one;
         brutus.transform.localScale = Vector3.one;
-    }
-
-    void Awake()
-    {
-        if (instance == null)
-            instance = this;
-
-        // place all characters off screen
-        boat.mapAnimator.Play("BoatOffScreenPos");
-        darwin.mapAnimator.Play("DarwinOffScreenPos");
-        julius.mapAnimator.Play("JuliusOffScreenPos");
-        brutus.mapAnimator.Play("BrutusOffScreenPos");
-        marcus.mapAnimator.Play("MarcusOffScreenPos");
-        clogg.mapAnimator.Play("CloggOffScreenPos");
-
-        boat.GetComponent<Image>().raycastTarget = false;
-        darwin.GetComponent<Image>().raycastTarget = false;
-        julius.GetComponent<Image>().raycastTarget = false;
-        brutus.GetComponent<Image>().raycastTarget = false;
-        marcus.GetComponent<Image>().raycastTarget = false;
-        clogg.GetComponent<Image>().raycastTarget = false;
     }
 
     public void PlaceCharactersOnMap(StoryBeat storyBeat)
@@ -1813,7 +1822,36 @@ public class MapAnimationController : MonoBehaviour
                 darwin.interactable = true;
                 darwin.ShowExclamationMark(true);
                 break;
+            
+            case StoryBeat.PreBossBattle:
+                // place darwin in P
+                darwin.FlipCharacterToRight();
+                darwin.mapAnimator.Play("DarwinPPos");
+                darwin.interactable = false;
+                // place julius in P
+                julius.ShowExclamationMark(true);
+                julius.mapAnimator.Play("JuliusPPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                julius.GetComponent<Image>().raycastTarget = true;
+                julius.interactable = true;
+                break;
+
+            case StoryBeat.BossBattle1:
+            case StoryBeat.BossBattle2:
+            case StoryBeat.BossBattle3:
+                // place darwin in P
+                darwin.FlipCharacterToRight();
+                darwin.mapAnimator.Play("DarwinPPos");
+                darwin.interactable = false;
+                // place julius in P
+                julius.ShowExclamationMark(true);
+                julius.mapAnimator.Play("JuliusPPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                julius.GetComponent<Image>().raycastTarget = true;
+                julius.interactable = true;
+                break;
         }
+
     }
 
     public void PlayChallengeGameMapAnim(MapAnim animation, MapLocation location)
@@ -1832,6 +1870,26 @@ public class MapAnimationController : MonoBehaviour
 
             case MapAnim.ChallengeGame3:
                 StartCoroutine(ChallengeGame3Routine(location));
+                break;
+        }
+    }
+
+    public void PlayBossBattleGameMapAnim(MapAnim animation)
+    {
+        animationDone = false;
+
+        switch (animation)
+        {
+            case MapAnim.BossBattle1:
+                StartCoroutine(BossBattle1Routine());
+                break;
+
+            case MapAnim.BossBattle2:
+                StartCoroutine(BossBattle2Routine());
+                break;
+
+            case MapAnim.BossBattle3:
+                StartCoroutine(BossBattle3Routine());
                 break;
         }
     }
@@ -1992,6 +2050,10 @@ public class MapAnimationController : MonoBehaviour
 
             case MapAnim.PalaceIntro:
                 StartCoroutine(PalaceIntro());
+                break;
+
+            case MapAnim.PreBossBattle:
+                StartCoroutine(PreBossBattle());
                 break;
 
             default:
@@ -4629,33 +4691,11 @@ public class MapAnimationController : MonoBehaviour
         marcus.characterAnimator.Play("marcusWin");
         brutus.characterAnimator.Play("brutusWin");
 
-        yield return new WaitForSeconds(1f);
-
-        marcus.characterAnimator.Play("marcusTurn");
-        brutus.characterAnimator.Play("brutusTurn");
-
-        yield return new WaitForSeconds(0.25f);
-
-        marcus.mapAnimator.Play("MarcusWalkOutM");
-        brutus.mapAnimator.Play("BrutusWalkOutM");
-
-        // wait for animation to be done
-        yield return new WaitForSeconds(GetAnimationTime(marcus.mapAnimator, "MarcusWalkOutM"));
-
-        // place tiger and monkies off screen
+        // place tiger off screen
         julius.transform.localScale = Vector3.zero;
-        marcus.transform.localScale = Vector3.zero;
-        brutus.transform.localScale = Vector3.zero;
-
         julius.mapAnimator.Play("JuliusOffScreenPos");
-        marcus.mapAnimator.Play("MarcusOffScreenPos");
-        brutus.mapAnimator.Play("BrutusOffScreenPos");
-
         yield return new WaitForSeconds(0.1f);
-
         julius.transform.localScale = Vector3.one;
-        marcus.transform.localScale = Vector3.one;
-        brutus.transform.localScale = Vector3.one;
 
         // M sign post springs into place
         ScrollMapManager.instance.mapLocations[15].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.M_signPost_stars, false);
@@ -4663,16 +4703,21 @@ public class MapAnimationController : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
         yield return new WaitForSeconds(1f);
 
-
         // place darwin in PI
         darwin.mapAnimator.Play("DarwinPIPos");
         darwin.GetComponent<Image>().raycastTarget = true;
         darwin.interactable = true;
-        darwin.ShowExclamationMark(true);
+        // place julius in P
+        julius.mapAnimator.Play("JuliusPPos");
+        julius.GetComponent<Image>().raycastTarget = true;
+        julius.interactable = true;
 
         // unlock palace
         ScrollMapManager.instance.UnlockMapArea(MapLocation.PalaceIntro, false);
         yield return new WaitForSeconds(10f);
+
+        // hide signpost
+        ScrollMapManager.instance.mapLocations[15].signPost.HideSignPost();
 
         // Save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 16;
@@ -4689,13 +4734,109 @@ public class MapAnimationController : MonoBehaviour
 
     private IEnumerator PalaceIntro()
     {
+        // remove darwin's exclamation point
+        darwin.ShowExclamationMark(false);
+
         // play Final Boss 1
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("FinalBoss_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
+        // move darwin into palace
+        darwin.characterAnimator.Play("gorillaWalk");
+        darwin.mapAnimator.Play("DarwinWalkOutPI");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(darwin.mapAnimator, "DarwinWalkOutPI"));
+
+        // place darwin in palace pos
+        darwin.FlipCharacterToRight();
+        darwin.characterAnimator.Play("gorillaIdle");
+        darwin.mapAnimator.Play("DarwinPPos");
+
+        // place julius in palace pos
+        julius.ShowExclamationMark(true);
+        julius.characterAnimator.Play("sTigerIdle");
+        julius.mapAnimator.Play("JuliusPPos");
+        julius.GetComponent<Image>().raycastTarget = true;
+        julius.interactable = true;
+
         // show arrow to go up to palace
+        PalaceArrow.instance.ShowArrow();
+        PalaceArrow.instance.GetComponent<WiggleController>().StartWiggle();
+
+        // advance story beat
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        animationDone = true;
     }
+
+    private IEnumerator PreBossBattle()
+    {
+        // remove julius's exclamation point
+        julius.ShowExclamationMark(false);
+
+        // play Final Boss 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("FinalBoss_2_p1"));
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // advance story beat
+        StudentInfoSystem.AdvanceStoryBeat();
+        StudentInfoSystem.SaveStudentPlayerData();
+
+        animationDone = true;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* 
+    ################################################
+    #   BOSS BATTLE GAMES
+    ################################################
+    */
+
+    private IEnumerator BossBattle1Routine()
+    {
+        yield return null;
+    }
+
+    private IEnumerator BossBattle2Routine()
+    {
+        yield return null;
+    }
+
+    private IEnumerator BossBattle3Routine()
+    {
+        yield return null;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

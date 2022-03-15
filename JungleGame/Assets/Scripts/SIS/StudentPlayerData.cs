@@ -241,7 +241,12 @@ public enum StoryBeat
     Monkeys_challengeGame_3, // 81
     MonkeysDefeated, // 82
 
-    PalaceIntro, 
+    PalaceIntro,  // 83
+    PreBossBattle, // 84
+    BossBattle1, // 85
+    BossBattle2, // 86
+    BossBattle3, // 87
+    EndBossBattle, // 88
 
     COUNT
 }

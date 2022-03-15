@@ -54,6 +54,8 @@ public class ScrollMapManager : MonoBehaviour
 
     [Header("Map Icons @ Locations")]
     public List<MapLocationData> mapLocations;
+    public Transform prePalaceCamPos;
+    public Transform palaceCamPos;
 
     [Header("Animations")]
     public float staticMapYPos;
@@ -224,6 +226,12 @@ public class ScrollMapManager : MonoBehaviour
         GameManager.instance.playingRoyalRumbleGame = false;
         GameManager.instance.playingChallengeGame = false;
         GameManager.instance.finishedBoatGame = false;
+
+        // show palace arrow if past story beat
+        if (playGameEvent >= StoryBeat.PreBossBattle)
+        {   
+            PalaceArrow.instance.ShowArrow();
+        }
         
         // show UI
         if (activateMapNavigation)
@@ -1010,6 +1018,14 @@ public class ScrollMapManager : MonoBehaviour
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
         }
+        else if (playGameEvent == StoryBeat.PalaceIntro)
+        {
+
+        }
+        else if (playGameEvent == StoryBeat.PreBossBattle)
+        {
+            
+        }
 
 
         
@@ -1308,7 +1324,7 @@ public class ScrollMapManager : MonoBehaviour
 
         // move map to next right map location
         float x = GetXPosFromMapLocationIndex(currMapLocation);
-        StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
+        StartCoroutine(MapSmoothTransitionX(Map.localPosition.x, x, 2f));
 
         yield return new WaitForSeconds(2.5f);
 
@@ -1337,6 +1353,42 @@ public class ScrollMapManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         RaycastBlockerController.instance.RemoveRaycastBlocker("UnlockMapArea");
+    }
+
+    public void PanIntoPalace()
+    {
+        StartCoroutine(PanIntoPalaceRoutine());
+    }   
+
+    private IEnumerator PanIntoPalaceRoutine()
+    {
+        // move map to pre palace pos
+        float x = prePalaceCamPos.localPosition.x;
+        StartCoroutine(MapSmoothTransitionX(Map.localPosition.x, x, 1f));
+        yield return new WaitForSeconds(1.2f);
+
+        // pan camera up to palace
+        float y = palaceCamPos.localPosition.y;
+        StartCoroutine(MapSmoothTransitionY(Map.localPosition.y, y, 3f));
+        yield return new WaitForSeconds(3f);
+    }
+
+    public void PanOutOfPalace()
+    {
+        StartCoroutine(PanOutOfPalaceRoutine());
+    }   
+
+    private IEnumerator PanOutOfPalaceRoutine()
+    {
+        // pan camera up to palace
+        float y = staticMapYPos;
+        StartCoroutine(MapSmoothTransitionY(Map.localPosition.y, y, 3f));
+        yield return new WaitForSeconds(3f);
+
+        // move map to pre palace pos
+        float x = mapLocations[16].cameraLocation.localPosition.x;
+        StartCoroutine(MapSmoothTransitionX(Map.localPosition.x, x, 1f));
+        yield return new WaitForSeconds(1.2f);
     }
 
     public void ToggleNavButtons(bool opt)
@@ -1446,6 +1498,13 @@ public class ScrollMapManager : MonoBehaviour
             yield break;
         }
 
+        // hide arrow if leaving palace intro
+        if (prevMapPos == 16 && StudentInfoSystem.GetCurrentProfile().currStoryBeat > StoryBeat.PalaceIntro)
+        {
+            // show arrow to go up to palace
+            PalaceArrow.instance.HideArrow();
+        }
+
         // hide stars from prev map pos
         StartCoroutine(ToggleLocationRoutine(false, prevMapPos));
 
@@ -1456,7 +1515,7 @@ public class ScrollMapManager : MonoBehaviour
 
         // move map to next left map location
         float x = GetXPosFromMapLocationIndex(currMapLocation);
-        StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, transitionTime));
+        StartCoroutine(MapSmoothTransitionX(Map.localPosition.x, x, transitionTime));
 
         // update map pos
         SettingsWindowController.instance.UpdateRedPos(mapLocations[currMapLocation].location);
@@ -1510,7 +1569,7 @@ public class ScrollMapManager : MonoBehaviour
         
         // move map to next right map location
         float x = GetXPosFromMapLocationIndex(currMapLocation);
-        StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, transitionTime));
+        StartCoroutine(MapSmoothTransitionX(Map.localPosition.x, x, transitionTime));
 
         // update map pos
         SettingsWindowController.instance.UpdateRedPos(mapLocations[currMapLocation].location);
@@ -1519,6 +1578,15 @@ public class ScrollMapManager : MonoBehaviour
 
         // show stars on current map location
         StartCoroutine(ToggleLocationRoutine(true, currMapLocation));
+
+        yield return new WaitForSeconds(0.5f);
+
+        // if new location is palace intro - show arrow if past story beat
+        if (currMapLocation == 16 && StudentInfoSystem.GetCurrentProfile().currStoryBeat > StoryBeat.PalaceIntro)
+        {
+            // show arrow to go up to palace
+            PalaceArrow.instance.ShowArrow();
+        }
     }
 
     private IEnumerator NavInputDelay(float delay)
@@ -1534,15 +1602,15 @@ public class ScrollMapManager : MonoBehaviour
 
         if (isLeft)
         {
-            StartCoroutine(MapSmoothTransition(Map.localPosition.x, Map.localPosition.x + bumpAmount, (bumpAnimationTime / 2)));
+            StartCoroutine(MapSmoothTransitionX(Map.localPosition.x, Map.localPosition.x + bumpAmount, (bumpAnimationTime / 2)));
             yield return new WaitForSeconds((bumpAnimationTime / 2));
-            StartCoroutine(MapSmoothTransition(Map.localPosition.x, GetXPosFromMapLocationIndex(minMapLimit), (bumpAnimationTime / 2)));
+            StartCoroutine(MapSmoothTransitionX(Map.localPosition.x, GetXPosFromMapLocationIndex(minMapLimit), (bumpAnimationTime / 2)));
         }
         else
         {
-            StartCoroutine(MapSmoothTransition(Map.localPosition.x, Map.localPosition.x - bumpAmount, (bumpAnimationTime / 2)));
+            StartCoroutine(MapSmoothTransitionX(Map.localPosition.x, Map.localPosition.x - bumpAmount, (bumpAnimationTime / 2)));
             yield return new WaitForSeconds((bumpAnimationTime / 2));
-            StartCoroutine(MapSmoothTransition(Map.localPosition.x, GetXPosFromMapLocationIndex(mapLimit), (bumpAnimationTime / 2)));
+            StartCoroutine(MapSmoothTransitionX(Map.localPosition.x, GetXPosFromMapLocationIndex(mapLimit), (bumpAnimationTime / 2)));
         }
     }
 
@@ -1576,7 +1644,7 @@ public class ScrollMapManager : MonoBehaviour
     {
         // move map to map location
         float x = GetXPosFromMapLocationIndex((int)location);
-        StartCoroutine(MapSmoothTransition(Map.localPosition.x, x, 2f));
+        StartCoroutine(MapSmoothTransitionX(Map.localPosition.x, x, 2f));
     }
 
     private float GetXPosFromMapLocationIndex(int index)
@@ -1584,7 +1652,7 @@ public class ScrollMapManager : MonoBehaviour
         return mapLocations[index].cameraLocation.localPosition.x;
     }
 
-    private IEnumerator MapSmoothTransition(float start, float end, float transitionTime)
+    private IEnumerator MapSmoothTransitionX(float start, float end, float transitionTime)
     {
         float timer = 0f;
 
@@ -1598,6 +1666,24 @@ public class ScrollMapManager : MonoBehaviour
         }
         Map.localPosition = new Vector3(end, staticMapYPos, 0f);
     }
+
+    private IEnumerator MapSmoothTransitionY(float start, float end, float transitionTime)
+    {
+        float timer = 0f;
+        float currXPos = Map.localPosition.x;
+
+        Map.localPosition = new Vector3(currXPos, staticMapYPos, 0f);
+        while (timer < transitionTime)
+        {
+            timer += Time.deltaTime;
+            float pos = Mathf.Lerp(start, end, Mathf.SmoothStep(0f, 1f, timer / transitionTime));
+            Map.localPosition = new Vector3(currXPos, pos, 0f);
+            yield return null;
+        }
+        Map.localPosition = new Vector3(currXPos, end, 0f);
+    }
+
+    
 
     /* 
     ################################################
