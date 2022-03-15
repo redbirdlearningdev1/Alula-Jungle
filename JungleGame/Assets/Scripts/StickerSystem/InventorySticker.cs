@@ -1,56 +1,97 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using UnityEngine;
 using TMPro;
 
-public class InventorySticker : MonoBehaviour //, IPointerUpHandler, IPointerDownHandler
+public class InventorySticker : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
+    public TextMeshProUGUI countText;
     public Image stickerImage;
-    public TextMeshProUGUI stickerCountText;
+    public LerpableObject stickerLerpableObject;
 
-    private bool isPressed;
-    public float pressedScaleChange;
+    private bool interactable = true;
+    private bool isPressed = false;
 
-    public Sticker myStickerObject;
-    private StickerBoard stickerBoard;
+    [HideInInspector] public InventoryStickerData currentStickerData;
 
-    public void SetStickerType(Sticker sticker, bool currentSticker = false)
+    public void SetSticker(InventoryStickerData stickerData)
     {
-        myStickerObject = new Sticker(sticker);
+        currentStickerData = stickerData;
+        countText.text = "x" + currentStickerData.count;
+        Sticker sticker = StickerDatabase.instance.GetSticker(currentStickerData);
+        stickerImage.sprite = sticker.sprite;
+    }
 
-        if (!currentSticker)
+    public void RemoveStickerIfValid()
+    {
+        if ((currentStickerData.count - 1) <= 0)
         {
-            stickerImage.sprite = myStickerObject.sprite;
-            stickerCountText.text = "x" + StudentInfoSystem.GetStickerCount(myStickerObject);
+            Destroy(this.gameObject);
         }
-        else 
-        {
-            int count = StudentInfoSystem.GetStickerCount(myStickerObject) - 1;
-            stickerCountText.text = "x" + count.ToString();
-        }
+    }
+
+    /* 
+    ################################################
+    #   POINTER METHODS
+    ################################################
+    */
+
+    private bool isOver = false;
+
+    void OnMouseOver()
+    {
+        // skip if not interactable 
+        if (!interactable)
+            return;
         
+        if (!isOver)
+        {
+            isOver = true;
+            stickerLerpableObject.LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
+        }
     }
 
-    public void SetStickerBoard(StickerBoard board)
+    void OnMouseExit()
     {
-        this.stickerBoard = board;
-        stickerImage.GetComponent<StickerImage>().SetStickerBoard(board);
+        if (isOver)
+        {
+            isOver = false;
+            stickerLerpableObject.LerpScale(new Vector2(1f, 1f), 0.1f);
+        }
     }
 
-
-    public void UpdateStickerCount(int newVal)
+    public void OnPointerDown(PointerEventData eventData)
     {
-        print ("new val count: " + newVal);
-        stickerCountText.text = "x" + newVal;
+        // return if not interactable
+        if (!interactable || !isOver)
+            return;
+
+        if (!isPressed)
+        {
+            isPressed = true;
+            stickerLerpableObject.LerpScale(new Vector2(0.9f, 0.9f), 0.1f);
+
+            // play audio blip
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+            // reduce count by 1
+            countText.text = "x" + (currentStickerData.count - 1);
+
+            // select this sticker
+            StickerSystem.instance.SetCurrentHeldSticker(stickerImage.transform);
+
+            // close sticker inventory
+            StickerInventory.instance.SetInventoryState(InventoryState.ShowTab);
+        }
     }
 
-    public void UseOneSticker()
+    public void OnPointerUp(PointerEventData eventData)
     {
-        // remove sticker from inventory
-        StudentInfoSystem.RemoveStickerFromInventory(myStickerObject);
-        // update SIS
-        stickerBoard.UpdateStickerInventory();
+        if (isPressed)
+        {
+            isPressed = false;
+        }
     }
 }

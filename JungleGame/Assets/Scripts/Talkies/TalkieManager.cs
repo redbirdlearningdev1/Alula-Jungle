@@ -285,8 +285,6 @@ public class TalkieManager : MonoBehaviour
         ################################################
         */
 
-        yield return new WaitForSeconds(1f);
-
         StartCoroutine(EndTalkie());
     }
 
@@ -522,7 +520,7 @@ public class TalkieManager : MonoBehaviour
                 else
                 {   
                     Debug.LogError("no audio clip found: \'" + talkieSeg.audioClipName + "\' in: \'" + currentTalkie.name + "\'");
-                    yield return new WaitForSeconds(1.5f);
+                    yield return new WaitForSeconds(0.2f);
                 }
             }
         }
@@ -560,8 +558,6 @@ public class TalkieManager : MonoBehaviour
 
             while (waitingForYesNoInput)
                 yield return null;
-
-            yield return new WaitForSeconds(1f);
         }
 
         playingSegment = false;

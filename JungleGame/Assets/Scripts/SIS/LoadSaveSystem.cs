@@ -593,6 +593,12 @@ public static class LoadSaveSystem
 
         // stickers
         new_data.stickerInventory = new List<InventoryStickerData>();
+        // unlocked sticker lists
+        new_data.commonStickerUnlocked = new bool[60];
+        new_data.uncommonStickerUnlocked = new bool[36];
+        new_data.rareStickerUnlocked = new bool[12];
+        new_data.legendaryStickerUnlocked = new bool[12];
+        
         // classic sticker board
         new_data.classicStickerBoard = new StickerBoardData();
         new_data.classicStickerBoard.boardType = StickerBoardType.Classic;

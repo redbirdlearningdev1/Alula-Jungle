@@ -727,8 +727,14 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     void OnMouseOver()
     {
-        // skip if not interactable
-        if (!interactable)
+        // skip if not interactable OR playing talkie OR minigamewheel out OR settings window open OR royal decree open
+        if (!interactable || 
+            TalkieManager.instance.talkiePlaying || 
+            MinigameWheelController.instance.minigameWheelOut || 
+            SettingsManager.instance.settingsWindowOpen || 
+            RoyalDecreeController.instance.isOpen ||
+            StickerSystem.instance.wagonOpen)
+            
             return;
         
         if (!isOver)

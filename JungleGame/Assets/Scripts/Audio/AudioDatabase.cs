@@ -74,6 +74,18 @@ public class AudioDatabase : MonoBehaviour
 
     /* 
     ################################################
+    #   STICKER VOICEOVERS DATABASE
+    ################################################
+    */
+
+    [Header("Sticker Voiceovers Audio")]
+    public List<AudioClip> commonStickerVoiceovers;
+    public List<AudioClip> uncommonStickerVoiceovers;
+    public List<AudioClip> rareStickerVoiceovers;
+    public List<AudioClip> legendaryStickerVoiceovers;
+
+    /* 
+    ################################################
     #   FX DATABASE
     ################################################
     */

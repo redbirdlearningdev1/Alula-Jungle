@@ -114,6 +114,11 @@ public class StudentPlayerData
 
     // sticker data
     public List<InventoryStickerData> stickerInventory;
+    // unlocked stickers
+    public bool[] commonStickerUnlocked;
+    public bool[] uncommonStickerUnlocked; 
+    public bool[] rareStickerUnlocked; 
+    public bool[] legendaryStickerUnlocked;
     // sticker boards
     public StickerBoardData classicStickerBoard;
     public StickerBoardData mossyStickerBoard;
@@ -471,7 +476,7 @@ public class InventoryStickerData
     {
         this.rarity = sticker.rarity;
         this.id = sticker.id;
-        this.count = 0;
+        this.count = 1;
     }
 }
 

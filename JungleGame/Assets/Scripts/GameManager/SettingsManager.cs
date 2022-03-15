@@ -10,16 +10,13 @@ public class SettingsManager : MonoBehaviour
     public static SettingsManager instance;
 
     public Button menuButton;
-    public Button wagonButton;
+    //public Button wagonButton;
 
     public float hiddenButtonYvalue;
     public float shownButtonYvalue;
 
     private bool movingMenuButton = false;
-    private bool movingWagonButton = false;
-
     [HideInInspector] public bool menuButtonShown = false;
-    private bool wagonButtonShown = false;
 
     [Header("Volume Sliders")]
     [SerializeField] private Slider masterVol;
@@ -41,7 +38,7 @@ public class SettingsManager : MonoBehaviour
     public LerpableObject returnToSplashScreenConfirmWindow;
     public LerpableObject exitApplicationConfirmWindow;
     
-    private bool settingsWindowOpen;
+    [HideInInspector] public bool settingsWindowOpen;
     private bool animatingWindow = false;
 
 
@@ -61,7 +58,6 @@ public class SettingsManager : MonoBehaviour
 
         // hide buttons
         menuButton.transform.localPosition = new Vector3(menuButton.transform.localPosition.x, hiddenButtonYvalue, 1f);
-        wagonButton.transform.localPosition = new Vector3(wagonButton.transform.localPosition.x, hiddenButtonYvalue, 1f);
 
         // close settings windows + hide BG
         settingsWindowBG.SetImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f);
@@ -247,36 +243,6 @@ public class SettingsManager : MonoBehaviour
     ################################################
     */
 
-    public void ToggleStickerButtonWiggleGlow(bool opt)
-    {
-        if (opt)
-        {
-            wagonButton.GetComponent<WiggleController>().StartWiggle();
-            ImageGlowController.instance.SetImageGlow(wagonButton.GetComponent<Image>(), true, GlowValue.glow_1_025);
-        }
-        else
-        {
-            wagonButton.GetComponent<WiggleController>().StopWiggle();
-            ImageGlowController.instance.SetImageGlow(wagonButton.GetComponent<Image>(), false, GlowValue.none);
-        }
-    }
-
-    public void SetWagonButton(bool opt)
-    {
-        if (opt)
-        {
-            wagonButtonShown = true;
-            movingWagonButton = false;
-            wagonButton.transform.localPosition = new Vector3(wagonButton.transform.localPosition.x, shownButtonYvalue, 1f);
-        }
-        else 
-        {
-            wagonButtonShown = false;
-            movingWagonButton = false;
-            wagonButton.transform.localPosition = new Vector3(wagonButton.transform.localPosition.x, hiddenButtonYvalue, 1f);
-        }
-    }
-
     public void SetMenuButton(bool opt)
     {
         if (opt)
@@ -295,38 +261,10 @@ public class SettingsManager : MonoBehaviour
 
     public void ToggleWagonButtonActive(bool opt)
     {
-        StartCoroutine(ToggleWagonButtonRoutine(opt));
-    }
-
-    private IEnumerator ToggleWagonButtonRoutine(bool opt)
-    {
-        // check if bools are equal
-        if (opt == wagonButtonShown)
-            yield break;
-
-        // wait for bool to be false
-        while (movingWagonButton)
-            yield return null;
-
-        movingWagonButton = true;
-
-        if (opt)
+        if (SceneManager.GetActiveScene().name == "ScrollMap")
         {
-            wagonButton.GetComponent<LerpableObject>().LerpYPos(shownButtonYvalue - 50, 0.2f, true);
-            yield return new WaitForSeconds(0.2f);
-            wagonButton.GetComponent<LerpableObject>().LerpYPos(shownButtonYvalue, 0.2f, true);
-            yield return new WaitForSeconds(0.2f);
+            StickerSystem.instance.ToggleWagonButtonActive(opt);
         }
-        else
-        {
-            wagonButton.GetComponent<LerpableObject>().LerpYPos(shownButtonYvalue - 50, 0.2f, true);
-            yield return new WaitForSeconds(0.2f);
-            wagonButton.GetComponent<LerpableObject>().LerpYPos(hiddenButtonYvalue, 0.2f, true);
-            yield return new WaitForSeconds(0.2f);
-        }
-
-        wagonButtonShown = opt;
-        movingWagonButton = false;
     }
 
     public void ToggleMenuButtonActive(bool opt)
@@ -673,19 +611,6 @@ public class SettingsManager : MonoBehaviour
 #else
         Application.Quit();
 #endif
-    }
-
-
-
-    public void OnWagonButtonPressed()
-    {   
-        // remove wiggle if need be
-        ToggleStickerButtonWiggleGlow(false);
-
-        // only workable on scroll map scene (or dev menu)
-        if (SceneManager.GetActiveScene().name == "ScrollMap" ||
-            SceneManager.GetActiveScene().name == "DevMenu")
-            WagonWindowController.instance.ToggleCart();
     }
 
     public void OnMasterVolumeSliderChanged()

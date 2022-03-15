@@ -19,7 +19,7 @@ MonoBehaviour:
   addBackgroundBeforeTalkie: 1
   addLetterboxBeforeTalkie: 1
   ending: 1
-  removeBackgroundAfterTalkie: 0
+  removeBackgroundAfterTalkie: 1
   removeLetterboxAfterTalkie: 0
   segmnets:
   - endTalkieAfterThisSegment: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
     audioClipName: Sticker_0_1_Lester_1_T2
     audioString: You ready to roll?
   - endTalkieAfterThisSegment: 1
-    requireYN: 0
+    requireYN: 1
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 229b327cf8ffe744b837f18a9fb7d390, type: 3}
+    audioClip: {fileID: 8300000, guid: fdab5e318218847498f635ac2b6ecaf2, type: 3}
     audioClipName: Sticker_0_1_Lester_1_T3
     audioString: 
   - endTalkieAfterThisSegment: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
     audioClipName: Sticker_0_1_Lester_2_T2
     audioString: Are you ready for me to make you a mighty fine sticker?!
   - endTalkieAfterThisSegment: 1
-    requireYN: 0
+    requireYN: 1
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 1431da0a7b136234692e6d5c1d774e3d, type: 3}
+    audioClip: {fileID: 8300000, guid: c3720c85acf7e324886960a938ffa50a, type: 3}
     audioClipName: Sticker_0_1_Lester_2_T3
     audioString: 
   - endTalkieAfterThisSegment: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
     audioClipName: Sticker_0_1_Lester_3_T2
     audioString: Are you ready?!
   - endTalkieAfterThisSegment: 1
-    requireYN: 0
+    requireYN: 1
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 0
@@ -163,6 +163,6 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: c6b520d712db35d40beab6cd2628fbc0, type: 3}
+    audioClip: {fileID: 8300000, guid: f1a2d1a64ed74c4409a1a01ee6d61d80, type: 3}
     audioClipName: Sticker_0_1_Lester_3_T3
     audioString: 

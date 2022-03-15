@@ -23,7 +23,7 @@ public class RoyalDecreeController : MonoBehaviour
     public float scrollHiddenY;
     public float scrollShownY;
 
-    private bool isOpen = false;
+    [HideInInspector] public bool isOpen = false;
     private bool waitToOpen = false;
 
     private List<GameType> currTriad;

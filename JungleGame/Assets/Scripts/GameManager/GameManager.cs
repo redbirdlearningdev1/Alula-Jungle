@@ -33,6 +33,8 @@ public class GameManager : DontDestroy<GameManager>
 {
     public static string currentGameVersion = "alpha1.3";
 
+    public static int stickerInventorySize = 16;
+
     public bool devModeActivated;
     public const float transitionTime = 0.5f; // time to fade into and out of a scene (total transition time is: transitionTime * 2)
     public Camera globalCamera;
@@ -276,17 +278,17 @@ public class GameManager : DontDestroy<GameManager>
         TalkieManager.instance.StopTalkieSystem();
 
         // remove ui buttons
-        SettingsManager.instance.SetWagonButton(false);
+        //SettingsManager.instance.SetWagonButton(false);
         SettingsManager.instance.SetMenuButton(false);
 
         // remove wagon controller stuff
-        WagonWindowController.instance.ResetWagonController();
+        //WagonWindowController.instance.ResetWagonController();
 
         // close settings menu if open
         SettingsManager.instance.CloseAllSettingsWindows();
 
         // close in development window
-        WagonWindowController.instance.CloseInDevelopmentWindow();
+        //WagonWindowController.instance.CloseInDevelopmentWindow();
     }
 
     /*

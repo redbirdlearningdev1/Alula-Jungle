@@ -1,114 +1,85 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
-public class StickerImage : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
+public class StickerImage : MonoBehaviour
 {
-    [HideInInspector] public Transform inventoryStickerParent;
-    public Button placeButtonTop;
-    public Button placeButtonBottom;
+    public InventorySticker inventorySticker;
+    public WiggleController wiggleController;
 
-    [HideInInspector] public bool isPressed;
-    public float pressedScaleChange;
-    private bool isGlued = false;
+    public LerpableObject yesButton;
+    public LerpableObject noButton;
 
-    private StickerBoard stickerBoard;
+    [HideInInspector] public bool yesNoShown = false;
 
     void Awake()
     {
-        // deactivate buttons
-        placeButtonTop.gameObject.SetActive(false);
-        placeButtonBottom.gameObject.SetActive(false);
+        yesButton.transform.localScale = Vector3.zero;
+        noButton.transform.localScale = Vector3.zero;
     }
 
-    public void SetStickerBoard(StickerBoard board)
+    public void ShowYesNoButtons()
     {
-        this.stickerBoard = board;
-    }
-
-    public void SetStickerType(StickerData data)
-    {
-        isGlued = true;
-        GetComponent<Image>().sprite = StickerDatabase.instance.GetSticker(data).sprite;
-        transform.localPosition = data.boardPos;
-    }
-
-    public void DeleteSticker()
-    {
-        StartCoroutine(DeleteStickerRoutine());
-    }
-
-    private IEnumerator DeleteStickerRoutine()
-    {
-        GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.05f);
-        yield return new WaitForSeconds(0.25f);
-        Destroy(this.gameObject);
-    }
-
-    public void OnPlaceButtonPressed()
-    {
-        isGlued = true;
-        // deactivate buttons
-        placeButtonTop.gameObject.SetActive(false);
-        placeButtonBottom.gameObject.SetActive(false);
-        // glue sticker to board
-        stickerBoard.GlueCurrentSticker();
-    }
-
-    public void ReturnStickerImageToParent()
-    {
-        StartCoroutine(ReturnStickerRoutine());
-    }
-    private IEnumerator ReturnStickerRoutine()
-    {
-        GetComponent<LerpableObject>().LerpPosToTransform(inventoryStickerParent.transform, 0.25f, false);
-        yield return new WaitForSeconds(0.25f);
-        transform.SetParent(inventoryStickerParent);
-        transform.localPosition = Vector3.zero;
-    }
-
-    public void UseOneSticker()
-    {
-        inventoryStickerParent.GetComponent<InventorySticker>().UseOneSticker();
-    }
-
-    /* 
-    ################################################
-    #   POINTER METHODS
-    ################################################
-    */
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        if (isGlued)
+        if (yesNoShown)
             return;
 
-        if (!isPressed)
-        {
-            isPressed = true;
-            transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
+        yesNoShown = true;
 
-            stickerBoard.SetCurrentSticker(inventoryStickerParent.GetComponent<InventorySticker>(), transform);
-            stickerBoard.PickUpCurrentSticker();
+        yesButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+        noButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+
+        yesButton.GetComponent<WiggleController>().StartWiggle();
+        noButton.GetComponent<WiggleController>().StartWiggle();
+    }
+
+    public void HideYesNoButtons()
+    {
+        if (!yesNoShown)
+            return;
+
+        yesNoShown = false;
+
+        yesButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+        noButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+
+        yesButton.GetComponent<WiggleController>().StopWiggle();
+        noButton.GetComponent<WiggleController>().StopWiggle();
+    }
+
+    public void OnYesPressed()
+    {
+        if (StickerSystem.instance.readyToGlueSticker)
+        {
+            StickerSystem.instance.readyToGlueSticker = false;
+            HideYesNoButtons();
+
+            // save to SIS
+            Sticker sticker = StickerDatabase.instance.GetSticker(inventorySticker.currentStickerData);
+            StudentInfoSystem.GlueStickerToBoard(sticker, transform.position, StickerSystem.instance.GetCurrentBoard());
+            StudentInfoSystem.RemoveStickerFromInventory(sticker);
+            StudentInfoSystem.SaveStudentPlayerData();
+
+            StickerSystem.instance.GlueSelectedStickerToBoard(sticker, transform.position);
+            StickerInventory.instance.UpdateStickerInventory();
+
+            // delete this sticker image
+            Destroy(this.gameObject);
         }
     }
 
-    public void OnPointerUp(PointerEventData eventData)
+    public void OnNoPressed()
     {
-        if (isGlued)
+        if (!yesNoShown)
             return;
 
-        if (isPressed)
-        {
-            // play audio blip
-            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+        yesNoShown = false;
 
-            isPressed = false;
-            transform.localScale = new Vector3(1f, 1f, 1f);
+        yesButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+        noButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
 
-            stickerBoard.PlaceCurrentStickerDown();
-        }
+        yesButton.GetComponent<WiggleController>().StopWiggle();
+        noButton.GetComponent<WiggleController>().StopWiggle();
+
+        StickerSystem.instance.ReturnStickerToInventory();
     }
 }
