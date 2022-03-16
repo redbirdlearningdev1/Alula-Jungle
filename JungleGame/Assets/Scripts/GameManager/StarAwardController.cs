@@ -70,12 +70,71 @@ public class StarAwardController : MonoBehaviour
         UpdateSIS(numStars);
     }
 
-    private void UpdateSIS(int numStars)
+    private async void UpdateSIS(int numStars)
     {
         int coinsEarned = 0;
 
         print ("map id: " + GameManager.instance.mapID);
 
+        // determine if boss battle
+        if (GameManager.instance.playingBossBattleGame)
+        {
+            // lose?
+            if (numStars == 0)
+            {   
+                // first time losing
+                if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle)
+                {
+                    print ("first time losing boss battle game!");
+                    StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle = true;
+                }
+                else
+                {
+                    // every other time losing
+                    if (!StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseBossBattle)
+                    {
+                        print ("every other time losing boss battle game!");
+                        StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseBossBattle = true;
+                    }
+                }
+            }
+            // win?
+            else
+            {
+                print ("you won the boss battle game!");
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle = false;
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseBossBattle = false;
+                
+
+                // award points based on num stars won
+                if (numStars == 1)
+                {
+                    StudentInfoSystem.GetCurrentProfile().bossBattlePoints += 11;
+                }
+                else if (numStars == 2)
+                {
+                    StudentInfoSystem.GetCurrentProfile().bossBattlePoints += 22;
+                }
+                else if (numStars == 3)
+                {
+                    StudentInfoSystem.GetCurrentProfile().bossBattlePoints += 33;
+                }
+
+                // determine if advance boss battle story beat
+                if (StudentInfoSystem.GetCurrentProfile().bossBattlePoints >= 33 && StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.BossBattle1 ||
+                    StudentInfoSystem.GetCurrentProfile().bossBattlePoints >= 66 && StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.BossBattle2 ||
+                    StudentInfoSystem.GetCurrentProfile().bossBattlePoints >= 99 && StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.BossBattle3)
+                {
+                    GameManager.instance.newBossBattleStoryBeat = true;
+                    StudentInfoSystem.AdvanceStoryBeat();
+                }
+            }
+            
+            // show window
+            StudentInfoSystem.SaveStudentPlayerData();
+            StartCoroutine(AwardStarsRoutine(numStars, 0));
+            return;
+        }
         // determine if challenge game
         if (GameManager.instance.playingChallengeGame)
         {

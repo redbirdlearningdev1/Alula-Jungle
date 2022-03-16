@@ -60,6 +60,9 @@ public class GameManager : DontDestroy<GameManager>
     [HideInInspector] public bool wonRoyalRumbleGame = false; // for playing talkies after RR game
     [HideInInspector] public bool finishedBoatGame = false; // used for docked boat scene talkies
 
+    [HideInInspector] public bool playingBossBattleGame = false; // is player in a boss battle game?
+    [HideInInspector] public bool newBossBattleStoryBeat = false; // did player move to a new boss battle story beat?
+
     [Header("Avatars")]
     public List<Sprite> avatars;
 

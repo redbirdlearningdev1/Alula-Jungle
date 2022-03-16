@@ -987,6 +987,9 @@ public class StickerSystem : MonoBehaviour
 
     private IEnumerator ShowWagon()
     {
+        // disable map icon colliders
+        ScrollMapManager.instance.ToggleCurrentMapIconColliders(false);
+
         // add raycast
         RaycastBlockerController.instance.CreateRaycastBlocker("show_wagon_raycast");
 
@@ -1073,6 +1076,9 @@ public class StickerSystem : MonoBehaviour
 
     private IEnumerator HideWagon()
     {
+        // enable map icon colliders
+        ScrollMapManager.instance.ToggleCurrentMapIconColliders(true);
+
         // add raycast
         RaycastBlockerController.instance.CreateRaycastBlocker("hide_wagon_raycast");
 

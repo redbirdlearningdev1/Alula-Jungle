@@ -388,7 +388,25 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             // only continue if tapped on julius
             if (character == Character.Julius)
             {
-                MapAnimationController.instance.PlayBossBattleGameMapAnim(MapAnim.BossBattle1);
+                // play julius try again talkie
+                if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle)
+                {
+                    int random = Random.Range(0, 2);
+
+                    if (random == 0)
+                    {
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBTryAgain_1_p1"));
+                    }
+                    else if (random == 1)
+                    {
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBTryAgain_1_p2"));
+                    }
+
+                    while (TalkieManager.instance.talkiePlaying)
+                        yield return null;
+                }
+
+                MapAnimationController.instance.PlayBossBattleGame(MapAnim.BossBattle1);
                 yield break;
             }
         }
@@ -397,7 +415,25 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             // only continue if tapped on julius
             if (character == Character.Julius)
             {
-                MapAnimationController.instance.PlayBossBattleGameMapAnim(MapAnim.BossBattle2);
+                // play julius try again talkie
+                if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle)
+                {
+                    int random = Random.Range(0, 2);
+
+                    if (random == 0)
+                    {
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBTryAgain_1_p1"));
+                    }
+                    else if (random == 1)
+                    {
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBTryAgain_1_p2"));
+                    }
+
+                    while (TalkieManager.instance.talkiePlaying)
+                        yield return null;
+                }
+
+                MapAnimationController.instance.PlayBossBattleGame(MapAnim.BossBattle2);
                 yield break;
             }
         }
@@ -406,7 +442,25 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             // only continue if tapped on julius
             if (character == Character.Julius)
             {
-                MapAnimationController.instance.PlayBossBattleGameMapAnim(MapAnim.BossBattle3);
+                // play julius try again talkie
+                if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle)
+                {
+                    int random = Random.Range(0, 2);
+
+                    if (random == 0)
+                    {
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBTryAgain_1_p1"));
+                    }
+                    else if (random == 1)
+                    {
+                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBTryAgain_1_p2"));
+                    }
+
+                    while (TalkieManager.instance.talkiePlaying)
+                        yield return null;
+                }
+                
+                MapAnimationController.instance.PlayBossBattleGame(MapAnim.BossBattle3);
                 yield break;
             }
         }

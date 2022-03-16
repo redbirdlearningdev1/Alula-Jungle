@@ -20,6 +20,7 @@ public class TalkieDatabase : MonoBehaviour
 {
     public static TalkieDatabase instance;
     private const string talkie_object_folder = "TalkieObjects/";
+    private const string talkie_object_creation_folder = "Assets/Resources/TalkieObjects/";
 
     /* s
     ################################################
@@ -224,7 +225,7 @@ public class TalkieDatabase : MonoBehaviour
         {
             GameManager.instance.SendLog(this, "creating new talkie object -> " + talkie.talkieName);
             yourObject = ScriptableObject.CreateInstance<TalkieObject>();
-            AssetDatabase.CreateAsset(yourObject, talkie_object_folder + talkie.talkieName + ".asset");
+            AssetDatabase.CreateAsset(yourObject, talkie_object_creation_folder + talkie.talkieName + ".asset");
         }
         // get word pair object
         else

@@ -79,6 +79,8 @@ public enum MapAnim
     BossBattle1,
     BossBattle2,
     BossBattle3,
+
+    EndBossBattle
 }
 
 [ExecuteInEditMode]
@@ -1821,6 +1823,14 @@ public class MapAnimationController : MonoBehaviour
                 darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 darwin.ShowExclamationMark(true);
+                // place marcus in M
+                marcus.mapAnimator.Play("MarcusMPos");
+                marcus.characterAnimator.Play("marcusBroken");
+                marcus.FlipCharacterToRight();
+                // place brutus in M
+                brutus.mapAnimator.Play("BrutusMPos");
+                brutus.characterAnimator.Play("brutusBroken");
+                brutus.FlipCharacterToRight();
                 break;
             
             case StoryBeat.PreBossBattle:
@@ -1834,6 +1844,14 @@ public class MapAnimationController : MonoBehaviour
                 julius.characterAnimator.Play("sTigerIdle");
                 julius.GetComponent<Image>().raycastTarget = true;
                 julius.interactable = true;
+                // place marcus in M
+                marcus.mapAnimator.Play("MarcusMPos");
+                marcus.characterAnimator.Play("marcusBroken");
+                marcus.FlipCharacterToRight();
+                // place brutus in M
+                brutus.mapAnimator.Play("BrutusMPos");
+                brutus.characterAnimator.Play("brutusBroken");
+                brutus.FlipCharacterToRight();
                 break;
 
             case StoryBeat.BossBattle1:
@@ -1848,7 +1866,15 @@ public class MapAnimationController : MonoBehaviour
                 julius.mapAnimator.Play("JuliusPPos");
                 julius.characterAnimator.Play("sTigerIdle");
                 julius.GetComponent<Image>().raycastTarget = true;
-                julius.interactable = true;
+                julius.interactable = true; 
+                // place marcus in M
+                marcus.mapAnimator.Play("MarcusMPos");
+                marcus.characterAnimator.Play("marcusBroken");
+                marcus.FlipCharacterToRight();
+                // place brutus in M
+                brutus.mapAnimator.Play("BrutusMPos");
+                brutus.characterAnimator.Play("brutusBroken");
+                brutus.FlipCharacterToRight();
                 break;
         }
 
@@ -1874,22 +1900,36 @@ public class MapAnimationController : MonoBehaviour
         }
     }
 
-    public void PlayBossBattleGameMapAnim(MapAnim animation)
+    public void PlayPreBossBattleGameMapAnim(MapAnim animation)
     {
         animationDone = false;
 
         switch (animation)
         {
             case MapAnim.BossBattle1:
-                StartCoroutine(BossBattle1Routine());
+                StartCoroutine(PreBossBattle1Routine());
                 break;
 
             case MapAnim.BossBattle2:
-                StartCoroutine(BossBattle2Routine());
+                StartCoroutine(PreBossBattle2Routine());
                 break;
 
             case MapAnim.BossBattle3:
-                StartCoroutine(BossBattle3Routine());
+                StartCoroutine(PreBossBattle3Routine());
+                break;
+        }
+    }
+
+    public void PlayBossBattleGame(MapAnim animation)
+    {
+        animationDone = false;
+
+        switch (animation)
+        {
+            case MapAnim.BossBattle1:
+            case MapAnim.BossBattle2:
+            case MapAnim.BossBattle3:
+                StartCoroutine(BossBattleRoutine(animation));
                 break;
         }
     }
@@ -2054,6 +2094,10 @@ public class MapAnimationController : MonoBehaviour
 
             case MapAnim.PreBossBattle:
                 StartCoroutine(PreBossBattle());
+                break;
+
+            case MapAnim.EndBossBattle:
+                StartCoroutine(EndBossBattle());
                 break;
 
             default:
@@ -4789,6 +4833,20 @@ public class MapAnimationController : MonoBehaviour
         animationDone = true;
     }
 
+    private IEnumerator EndBossBattle()
+    {
+        // play last win challenge game
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBWin_1_p1"));
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // play ending talkies
+        
+
+        animationDone = true;
+    }
+    
+
 
 
 
@@ -4811,19 +4869,233 @@ public class MapAnimationController : MonoBehaviour
     ################################################
     */
 
-    private IEnumerator BossBattle1Routine()
+    private IEnumerator BossBattleRoutine(MapAnim mapAnim)
     {
-        yield return null;
+        if (mapAnim == MapAnim.BossBattle1)
+        {
+            // play BBChallenge_1_p1 talkie
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBChallenge_1_p1"));
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+        }
+        else if (mapAnim == MapAnim.BossBattle2)
+        {
+            // play BBChallenge_1_p2 talkie
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBChallenge_1_p2"));
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+        }
+        else if (mapAnim == MapAnim.BossBattle3)
+        {
+            // play BBChallenge_1_p3 talkie
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBChallenge_1_p3"));
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+        }
+        else
+        {
+            yield break;
+        }
+
+        if (TalkieManager.instance.yesNoChoices.Count == 1)
+        {
+            // if player chooses yes
+            if (TalkieManager.instance.yesNoChoices[0])
+            {
+                TalkieManager.instance.yesNoChoices.Clear();
+
+                // play boss battle game
+                GameManager.instance.playingBossBattleGame = true;
+                GameType bossBattleGame = AISystem.DetermineBossBattleGame();
+                GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(bossBattleGame), true, 0.5f, true);
+
+            }
+            else // if the player chooses no, break and do not go to next game scene
+            {
+                TalkieManager.instance.yesNoChoices.Clear();
+                yield break;
+            }
+        }
+        else
+        {
+            TalkieManager.instance.yesNoChoices.Clear();
+            Debug.LogError("Error: Incorrect number of Yes/No choices for last talkie");
+        }
+
+        animationDone = true;
     }
 
-    private IEnumerator BossBattle2Routine()
+    
+    private IEnumerator PreBossBattle1Routine()
     {
-        yield return null;
+        // only continue with talkies if just played a boss battle game
+        if (!GameManager.instance.playingBossBattleGame)
+        {
+            animationDone = true;
+            yield break;
+        }
+
+        // play correct player lose talkies
+        if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle)
+        {
+            // play boss battle quips 1
+            int random = Random.Range(0, 3);
+
+            if (random == 0)
+            {
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBQuip_1_p1"));
+            }
+            else if (random == 1)
+            {
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBQuip_1_p2"));
+            }
+            else if (random == 1)
+            {
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBQuip_1_p3"));
+            }
+            
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+        }
+        else if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle &&
+            !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseBossBattle)
+        {
+            // play julius wins boss battle
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBLose_1_p1"));
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+        }
+        else if (
+            StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle &&
+            StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseBossBattle)
+        {
+            // play julius wins boss battle again
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBLose_2_p1"));
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+        }
+
+        animationDone = true;
     }
 
-    private IEnumerator BossBattle3Routine()
+    private IEnumerator PreBossBattle2Routine()
     {
-        yield return null;
+        // only continue with talkies if just played a boss battle game
+        if (!GameManager.instance.playingBossBattleGame)
+        {
+            animationDone = true;
+            yield break;
+        }
+
+        // play story beat talkie 1
+        if (GameManager.instance.newBossBattleStoryBeat)
+        {
+            GameManager.instance.newBossBattleStoryBeat = false;
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBStory_1_p1"));
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+        }
+        // play correct player lose talkies
+        else if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle)
+        {
+            // play boss battle quips 2
+            int random = Random.Range(0, 3);
+
+            if (random == 0)
+            {
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBQuip_2_p1"));
+            }
+            else if (random == 1)
+            {
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBQuip_2_p2"));
+            }
+            else if (random == 1)
+            {
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBQuip_2_p3"));
+            }
+            
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+        }
+        else if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle &&
+            !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseBossBattle)
+        {
+            // play julius wins boss battle
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBLose_1_p1"));
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+        }
+        else if (
+            StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle &&
+            StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseBossBattle)
+        {
+            // play julius wins boss battle again
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBLose_2_p1"));
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+        }
+
+        animationDone = true;
+    }
+
+    private IEnumerator PreBossBattle3Routine()
+    {
+        // only continue with talkies if just played a boss battle game
+        if (!GameManager.instance.playingBossBattleGame)
+        {
+            animationDone = true;
+            yield break;
+        }
+
+        // play story beat talkie 2
+        if (GameManager.instance.newBossBattleStoryBeat)
+        {
+            GameManager.instance.newBossBattleStoryBeat = false;
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBStory_2_p1"));
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+        }
+        // play correct player lose talkies
+        else if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle)
+        {
+            // play boss battle quips 1
+            int random = Random.Range(0, 3);
+
+            if (random == 0)
+            {
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBQuip_3_p1"));
+            }
+            else if (random == 1)
+            {
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBQuip_3_p2"));
+            }
+            else if (random == 1)
+            {
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBQuip_3_p3"));
+            }
+            
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+        }
+        else if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle &&
+            !StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseBossBattle)
+        {
+            // play julius wins boss battle
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBLose_1_p1"));
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+        }
+        else if (
+            StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle &&
+            StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseBossBattle)
+        {
+            // play julius wins boss battle again
+            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBLose_2_p1"));
+            while (TalkieManager.instance.talkiePlaying)
+                yield return null;
+        }
+
+        animationDone = true;
     }
 
 

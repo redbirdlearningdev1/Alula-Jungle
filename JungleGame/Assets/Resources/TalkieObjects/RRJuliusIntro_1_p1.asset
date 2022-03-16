@@ -35,7 +35,7 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: e4663064802afe349a003a81fc1b7273, type: 3}
+    audioClip: {fileID: 0}
     audioClipName: RR_0_0_Announcer_1
     audioString: TIME FOR A ROYAL RUMBLE (tiger roar)
   - endTalkieAfterThisSegment: 0

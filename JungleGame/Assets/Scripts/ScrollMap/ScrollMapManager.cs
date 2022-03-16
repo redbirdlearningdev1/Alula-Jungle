@@ -225,6 +225,7 @@ public class ScrollMapManager : MonoBehaviour
         // remove game manager stuff
         GameManager.instance.playingRoyalRumbleGame = false;
         GameManager.instance.playingChallengeGame = false;
+        GameManager.instance.playingBossBattleGame = false;
         GameManager.instance.finishedBoatGame = false;
 
         // show palace arrow if past story beat
@@ -1026,6 +1027,38 @@ public class ScrollMapManager : MonoBehaviour
         {
             
         }
+        else if (playGameEvent == StoryBeat.BossBattle1)
+        {   
+            // play boss battle game 1 map animation
+            MapAnimationController.instance.PlayPreBossBattleGameMapAnim(MapAnim.BossBattle1);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.BossBattle2)
+        {
+            // play boss battle game 2 map animation
+            MapAnimationController.instance.PlayPreBossBattleGameMapAnim(MapAnim.BossBattle2);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.BossBattle3)
+        {
+            // play boss battle game 3 map animation
+            MapAnimationController.instance.PlayPreBossBattleGameMapAnim(MapAnim.BossBattle3);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
+        else if (playGameEvent == StoryBeat.EndBossBattle)
+        {
+            // play end boss battle
+            MapAnimationController.instance.PlayPreBossBattleGameMapAnim(MapAnim.EndBossBattle);
+            // wait for animation to be done
+            while (!MapAnimationController.instance.animationDone)
+                yield return null;
+        }
 
 
         
@@ -1616,7 +1649,7 @@ public class ScrollMapManager : MonoBehaviour
 
     /* 
     ################################################
-    #   MAP NAVIGATION FUNCTIONS
+    #   OTHER MAP FUNCTIONS
     ################################################
     */
 
@@ -1684,12 +1717,22 @@ public class ScrollMapManager : MonoBehaviour
     }
 
     
-
     /* 
     ################################################
     #   DEV FUNCTIONS 
     ################################################
     */
+
+    public void ToggleCurrentMapIconColliders(bool opt)
+    {
+        List<MapIcon> mapIcons = new List<MapIcon>();
+        mapIcons.AddRange(mapLocations[currMapLocation].mapIcons);
+
+        foreach (var icon in mapIcons)
+        {
+            icon.GetComponent<PolygonCollider2D>().enabled = opt;
+        }
+    }
 
     public List<MapIcon> GetMapIcons()
     {

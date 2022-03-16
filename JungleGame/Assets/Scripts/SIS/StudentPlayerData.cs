@@ -97,8 +97,14 @@ public class StudentPlayerData
     public StoryBeat currStoryBeat;
     public BoatEncounter currBoatEncounter;
     public bool unlockedStickerButton;
+
     public bool firstTimeLoseChallengeGame;
     public bool everyOtherTimeLoseChallengeGame;
+
+    public bool firstTimeLoseBossBattle;
+    public bool everyOtherTimeLoseBossBattle;
+    public int bossBattlePoints;
+
     public bool firstGuradsRoyalRumble;
     public List<ActionWordEnum> actionWordPool;
 

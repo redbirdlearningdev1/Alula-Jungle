@@ -6,6 +6,7 @@ public static class AISystem
 {
     private static List<GameType> minigameOptions; 
     private static List<float> gameRatio;
+
     
     public static GameType DetermineMinigame(StudentPlayerData playerData)
     {
@@ -2371,4 +2372,24 @@ public static WordPair ChallengeWordSub(StudentPlayerData playerData)
 
 
     
+    private static Queue<GameType> bossBattleGameQueue;
+
+    // placing boss battle determination functiuons here for noe :) will move l8r
+    public static GameType DetermineBossBattleGame()
+    {
+        if (bossBattleGameQueue == null || bossBattleGameQueue.Count == 0)
+        {
+            bossBattleGameQueue = new Queue<GameType>();
+            bossBattleGameQueue.Enqueue(GameType.WordFactoryBlending);
+            bossBattleGameQueue.Enqueue(GameType.WordFactoryBuilding);
+            bossBattleGameQueue.Enqueue(GameType.WordFactoryDeleting);
+            bossBattleGameQueue.Enqueue(GameType.WordFactorySubstituting);
+            bossBattleGameQueue.Enqueue(GameType.TigerPawCoins);
+            bossBattleGameQueue.Enqueue(GameType.TigerPawPhotos);
+            bossBattleGameQueue.Enqueue(GameType.Password);
+        }
+
+        GameType nextGame = bossBattleGameQueue.Dequeue();
+        return nextGame;
+    }
 }
