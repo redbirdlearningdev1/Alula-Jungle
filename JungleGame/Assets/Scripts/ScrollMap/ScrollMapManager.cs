@@ -229,9 +229,9 @@ public class ScrollMapManager : MonoBehaviour
         GameManager.instance.finishedBoatGame = false;
 
         // show palace arrow if past story beat
-        if (playGameEvent >= StoryBeat.PreBossBattle)
+        if (playGameEvent >= StoryBeat.PreBossBattle && currMapLocation == (int)MapLocation.PalaceIntro)
         {   
-            PalaceArrow.instance.ShowArrow();
+            StartCoroutine(DelayShowPalaceArrow());
         }
         
         // show UI
@@ -257,6 +257,12 @@ public class ScrollMapManager : MonoBehaviour
 
         // set RR banner on map icon
         MapDataLoader.instance.SetRoyalRumbleBanner();
+    }
+
+    private IEnumerator DelayShowPalaceArrow()
+    {
+        yield return new WaitForSeconds(1f);
+        PalaceArrow.instance.ShowArrow();
     }
 
     public void CheckForScrollMapGameEvent(StoryBeat playGameEvent)

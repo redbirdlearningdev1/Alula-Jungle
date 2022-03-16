@@ -1376,11 +1376,16 @@ public class DevMenuManager : MonoBehaviour
 
             /* 
             ################################################
-            #   PALACE
+            #   PALACE + BOSS BATTLE
             ###############################################
             */
 
             case StoryBeat.PalaceIntro:
+            case StoryBeat.PreBossBattle:
+            case StoryBeat.BossBattle1:
+            case StoryBeat.BossBattle2:
+            case StoryBeat.BossBattle3:
+            case StoryBeat.EndBossBattle:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.PalaceIntro;
                 FixIconsUpTo(MapLocation.Monkeys);
                 SetChallengeGamesUpTo(MapLocation.Monkeys);

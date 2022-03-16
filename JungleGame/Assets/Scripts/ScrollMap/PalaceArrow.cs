@@ -127,6 +127,10 @@ public class PalaceArrow : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
         yield return new WaitForSeconds(5f);
 
+        // show boss battle bar
+        BossBattleBar.instance.ShowBar();
+        yield return new WaitForSeconds(1.5f);
+
         // show down arrow
         PalaceArrowDown.instance.ShowArrow();
         PalaceArrowDown.instance.interactable = true;

@@ -113,6 +113,10 @@ public class PalaceArrowDown : MonoBehaviour, IPointerUpHandler, IPointerDownHan
         interactable = false;
         HideArrow();
 
+        // show boss battle bar
+        BossBattleBar.instance.HideBar();
+        yield return new WaitForSeconds(1f);
+
         // enable all map locations
         ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.PalaceIntro);
 
