@@ -660,6 +660,8 @@ public class DevMenuManager : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
         StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
         StudentInfoSystem.GetCurrentProfile().minigamesPlayed = 6;
+        StudentInfoSystem.GetCurrentProfile().goldCoins = 3;
+        StudentInfoSystem.GetCurrentProfile().bossBattlePoints = 0;
         
         switch ((StoryBeat)beat)
         {

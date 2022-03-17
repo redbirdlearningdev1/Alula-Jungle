@@ -48,8 +48,14 @@ public class PalaceArrow : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     void OnMouseOver()
     {
-        // skip if not interactable 
-        if (!interactable)
+        // skip if not interactable OR playing talkie OR minigamewheel out OR settings window open OR royal decree open OR wagon open
+        if (!interactable || 
+            TalkieManager.instance.talkiePlaying || 
+            MinigameWheelController.instance.minigameWheelOut || 
+            SettingsManager.instance.settingsWindowOpen || 
+            RoyalDecreeController.instance.isOpen ||
+            StickerSystem.instance.wagonOpen)
+            
             return;
         
         if (!isOver)
@@ -127,13 +133,16 @@ public class PalaceArrow : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
         yield return new WaitForSeconds(5f);
 
-        // show boss battle bar
-        BossBattleBar.instance.ShowBar();
-        yield return new WaitForSeconds(1.5f);
+        // only show arrow and boss battle bar iff boss battle begun
+        if (StudentInfoSystem.GetCurrentProfile().currStoryBeat >= StoryBeat.BossBattle1)
+        {
+            // show boss battle bar
+            BossBattleBar.instance.ShowBar();
 
-        // show down arrow
-        PalaceArrowDown.instance.ShowArrow();
-        PalaceArrowDown.instance.interactable = true;
+            // show down arrow
+            PalaceArrowDown.instance.ShowArrow();
+            PalaceArrowDown.instance.interactable = true;
+        }
 
         // add player input
         RaycastBlockerController.instance.RemoveRaycastBlocker("entering_palace");

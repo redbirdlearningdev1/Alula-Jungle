@@ -1035,6 +1035,8 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.BossBattle1)
         {   
+            // start camera on palace location
+            Map.localPosition = new Vector3(prePalaceCamPos.localPosition.x, palaceCamPos.localPosition.y, 0f);
             // play boss battle game 1 map animation
             MapAnimationController.instance.PlayPreBossBattleGameMapAnim(MapAnim.BossBattle1);
             // wait for animation to be done
@@ -1043,6 +1045,8 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.BossBattle2)
         {
+            // start camera on palace location
+            Map.localPosition = new Vector3(prePalaceCamPos.localPosition.x, palaceCamPos.localPosition.y, 0f);
             // play boss battle game 2 map animation
             MapAnimationController.instance.PlayPreBossBattleGameMapAnim(MapAnim.BossBattle2);
             // wait for animation to be done
@@ -1051,6 +1055,8 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.BossBattle3)
         {
+            // start camera on palace location
+            Map.localPosition = new Vector3(prePalaceCamPos.localPosition.x, palaceCamPos.localPosition.y, 0f);
             // play boss battle game 3 map animation
             MapAnimationController.instance.PlayPreBossBattleGameMapAnim(MapAnim.BossBattle3);
             // wait for animation to be done
@@ -1059,8 +1065,10 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.EndBossBattle)
         {
+            // start camera on palace location
+            Map.localPosition = new Vector3(prePalaceCamPos.localPosition.x, palaceCamPos.localPosition.y, 0f);
             // play end boss battle
-            MapAnimationController.instance.PlayPreBossBattleGameMapAnim(MapAnim.EndBossBattle);
+            MapAnimationController.instance.PlayMapAnim(MapAnim.EndBossBattle);
             // wait for animation to be done
             while (!MapAnimationController.instance.animationDone)
                 yield return null;

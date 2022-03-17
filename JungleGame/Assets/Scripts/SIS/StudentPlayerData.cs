@@ -104,6 +104,7 @@ public class StudentPlayerData
     public bool firstTimeLoseBossBattle;
     public bool everyOtherTimeLoseBossBattle;
     public int bossBattlePoints;
+    public GameType[] bossBattleGameQueue;
 
     public bool firstGuradsRoyalRumble;
     public List<ActionWordEnum> actionWordPool;

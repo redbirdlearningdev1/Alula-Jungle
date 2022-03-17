@@ -2374,22 +2374,42 @@ public static WordPair ChallengeWordSub(StudentPlayerData playerData)
     
     private static Queue<GameType> bossBattleGameQueue;
 
-    // placing boss battle determination functiuons here for noe :) will move l8r
+    // placing boss battle determination function here for noe :) will move l8r
     public static GameType DetermineBossBattleGame()
     {
-        if (bossBattleGameQueue == null || bossBattleGameQueue.Count == 0)
+        // get array from SIS
+        GameType[] sisArray = (GameType[])StudentInfoSystem.GetCurrentProfile().bossBattleGameQueue.Clone();
+
+        // populate array iff empty
+        if (sisArray.Length == 0)
         {
-            bossBattleGameQueue = new Queue<GameType>();
-            bossBattleGameQueue.Enqueue(GameType.WordFactoryBlending);
-            bossBattleGameQueue.Enqueue(GameType.WordFactoryBuilding);
-            bossBattleGameQueue.Enqueue(GameType.WordFactoryDeleting);
-            bossBattleGameQueue.Enqueue(GameType.WordFactorySubstituting);
-            bossBattleGameQueue.Enqueue(GameType.TigerPawCoins);
-            bossBattleGameQueue.Enqueue(GameType.TigerPawPhotos);
-            bossBattleGameQueue.Enqueue(GameType.Password);
+            sisArray = new GameType[7];
+            sisArray[0] = GameType.WordFactoryBlending;
+            sisArray[1] = GameType.TigerPawPhotos;
+            sisArray[2] = GameType.TigerPawCoins;
+            sisArray[3] = GameType.WordFactoryBuilding;
+            sisArray[4] = GameType.WordFactorySubstituting;
+            sisArray[5] = GameType.WordFactoryDeleting;
+            sisArray[6] = GameType.Password;
+
+            // save to SIS
+            StudentInfoSystem.GetCurrentProfile().bossBattleGameQueue = (GameType[])sisArray.Clone();
+            StudentInfoSystem.SaveStudentPlayerData();
         }
 
+        // load in queue from SIS array
+        bossBattleGameQueue = new Queue<GameType>();
+        foreach (GameType game in sisArray)
+        {
+            bossBattleGameQueue.Enqueue(game);
+        }
+        // get next game type
         GameType nextGame = bossBattleGameQueue.Dequeue();
+
+        // save new queue to SIS
+        StudentInfoSystem.GetCurrentProfile().bossBattleGameQueue = bossBattleGameQueue.ToArray();
+        StudentInfoSystem.SaveStudentPlayerData();
+
         return nextGame;
     }
 }

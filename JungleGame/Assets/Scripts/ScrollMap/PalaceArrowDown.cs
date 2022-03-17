@@ -26,6 +26,10 @@ public class PalaceArrowDown : MonoBehaviour, IPointerUpHandler, IPointerDownHan
 
     public void ShowArrow()
     {
+        // return if arrow already hidden
+        if (arrow.transform.localScale.x == 1f)
+            return;
+
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 0.5f);
 
         arrow.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.2f, 0.2f);
@@ -34,6 +38,10 @@ public class PalaceArrowDown : MonoBehaviour, IPointerUpHandler, IPointerDownHan
 
     public void HideArrow()
     {
+        // return if arrow already hidden
+        if (arrow.transform.localScale.x == 0f)
+            return;
+        
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 0.5f);
 
         arrow.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.2f, 0.2f);
@@ -48,8 +56,14 @@ public class PalaceArrowDown : MonoBehaviour, IPointerUpHandler, IPointerDownHan
 
     void OnMouseOver()
     {
-        // skip if not interactable 
-        if (!interactable)
+        // skip if not interactable OR playing talkie OR minigamewheel out OR settings window open OR royal decree open OR wagon open
+        if (!interactable || 
+            TalkieManager.instance.talkiePlaying || 
+            MinigameWheelController.instance.minigameWheelOut || 
+            SettingsManager.instance.settingsWindowOpen || 
+            RoyalDecreeController.instance.isOpen ||
+            StickerSystem.instance.wagonOpen)
+            
             return;
         
         if (!isOver)

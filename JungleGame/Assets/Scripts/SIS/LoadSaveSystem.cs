@@ -177,11 +177,15 @@ public static class LoadSaveSystem
         new_data.unlockedStickerButton = default_unlockedStickerButton;
         new_data.currStoryBeat = default_gameEvent;
         new_data.currBoatEncounter = BoatEncounter.FirstTime;
+
         new_data.firstTimeLoseChallengeGame = false;
         new_data.everyOtherTimeLoseChallengeGame = false;
+
         new_data.firstTimeLoseBossBattle = false;
         new_data.everyOtherTimeLoseBossBattle = false;
         new_data.bossBattlePoints = 0;
+        new_data.bossBattleGameQueue = new GameType[0];
+
         new_data.firstGuradsRoyalRumble = true;
         new_data.mapLimit = 0;
         new_data.currentChapter = Chapter.chapter_0;

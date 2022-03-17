@@ -1864,9 +1864,29 @@ public class MapAnimationController : MonoBehaviour
                 // place julius in P
                 julius.ShowExclamationMark(true);
                 julius.mapAnimator.Play("JuliusPPos");
-                julius.characterAnimator.Play("sTigerIdle");
+                julius.characterAnimator.Play("aTigerTwitch");
                 julius.GetComponent<Image>().raycastTarget = true;
-                julius.interactable = true; 
+                julius.interactable = true;
+                // place marcus in M
+                marcus.mapAnimator.Play("MarcusMPos");
+                marcus.characterAnimator.Play("marcusBroken");
+                marcus.FlipCharacterToRight();
+                // place brutus in M
+                brutus.mapAnimator.Play("BrutusMPos");
+                brutus.characterAnimator.Play("brutusBroken");
+                brutus.FlipCharacterToRight();
+                break;
+
+            case StoryBeat.EndBossBattle:
+                // place darwin in P
+                darwin.FlipCharacterToRight();
+                darwin.mapAnimator.Play("DarwinPPos");
+                darwin.interactable = false;
+                // place julius in P
+                julius.ShowExclamationMark(true);
+                julius.mapAnimator.Play("JuliusPPos");
+                julius.characterAnimator.Play("sTigerIdle");
+                julius.interactable = false;
                 // place marcus in M
                 marcus.mapAnimator.Play("MarcusMPos");
                 marcus.characterAnimator.Play("marcusBroken");
@@ -4821,10 +4841,26 @@ public class MapAnimationController : MonoBehaviour
         // remove julius's exclamation point
         julius.ShowExclamationMark(false);
 
+        // remove down arrow
+        PalaceArrowDown.instance.HideArrow();
+
         // play Final Boss 2
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("FinalBoss_2_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
+
+        // julius angry and ready to fight
+        julius.characterAnimator.Play("aTigerTwitch");
+        julius.ShowExclamationMark(true);
+
+        yield return new WaitForSeconds(1f);
+
+        // show down arrow
+        PalaceArrowDown.instance.ShowArrow();
+
+        // show boss battle bar
+        BossBattleBar.instance.ShowBar();
+        
 
         // advance story beat
         StudentInfoSystem.AdvanceStoryBeat();
@@ -4835,12 +4871,25 @@ public class MapAnimationController : MonoBehaviour
 
     private IEnumerator EndBossBattle()
     {
+        yield return new WaitForSeconds(1f);
+
         // play last win challenge game
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBWin_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
-        // play ending talkies
+        // move darwin towards julius
+        darwin.mapAnimator.Play("DarwinWalkTowardsJulius");
+        darwin.characterAnimator.Play("gorillaWalk");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(darwin.mapAnimator, "DarwinWalkTowardsJulius"));
+
+        // move darwin towards julius
+        darwin.mapAnimator.Play("DarwinNextJuliusPos");
+        darwin.characterAnimator.Play("gorillaIdle");
+
+        // play end talkies
         
 
         animationDone = true;
@@ -4871,6 +4920,9 @@ public class MapAnimationController : MonoBehaviour
 
     private IEnumerator BossBattleRoutine(MapAnim mapAnim)
     {
+        // remove julius exclamation mark
+        julius.ShowExclamationMark(false);
+
         if (mapAnim == MapAnim.BossBattle1)
         {
             // play BBChallenge_1_p1 talkie
@@ -4912,6 +4964,9 @@ public class MapAnimationController : MonoBehaviour
             }
             else // if the player chooses no, break and do not go to next game scene
             {
+                // show julius exclamation mark again
+                julius.ShowExclamationMark(true);
+
                 TalkieManager.instance.yesNoChoices.Clear();
                 yield break;
             }
@@ -4931,9 +4986,22 @@ public class MapAnimationController : MonoBehaviour
         // only continue with talkies if just played a boss battle game
         if (!GameManager.instance.playingBossBattleGame)
         {
+            yield return new WaitForSeconds(1f);
+
+            // show boss battle bar
+            BossBattleBar.instance.ShowBar();
+
+            yield return new WaitForSeconds(2f);
+
+            // show down arrow
+            PalaceArrowDown.instance.ShowArrow();
+            PalaceArrowDown.instance.interactable = true;
+
             animationDone = true;
             yield break;
         }
+
+        yield return new WaitForSeconds(0.5f);
 
         // play correct player lose talkies
         if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle)
@@ -4975,6 +5043,16 @@ public class MapAnimationController : MonoBehaviour
                 yield return null;
         }
 
+        // show boss battle bar
+        BossBattleBar.instance.ShowBar();
+
+        yield return new WaitForSeconds(1f);
+
+        // show down arrow
+        PalaceArrowDown.instance.ShowArrow();
+        PalaceArrowDown.instance.interactable = true;
+
+        
         animationDone = true;
     }
 
@@ -4983,9 +5061,22 @@ public class MapAnimationController : MonoBehaviour
         // only continue with talkies if just played a boss battle game
         if (!GameManager.instance.playingBossBattleGame)
         {
+            yield return new WaitForSeconds(1f);
+
+            // show boss battle bar
+            BossBattleBar.instance.ShowBar();
+
+            yield return new WaitForSeconds(2f);
+
+            // show down arrow
+            PalaceArrowDown.instance.ShowArrow();
+            PalaceArrowDown.instance.interactable = true;
+
             animationDone = true;
             yield break;
         }
+
+        yield return new WaitForSeconds(0.5f);
 
         // play story beat talkie 1
         if (GameManager.instance.newBossBattleStoryBeat)
@@ -5035,6 +5126,15 @@ public class MapAnimationController : MonoBehaviour
                 yield return null;
         }
 
+        // show boss battle bar
+        BossBattleBar.instance.ShowBar();
+
+        yield return new WaitForSeconds(1f);
+
+        // show down arrow
+        PalaceArrowDown.instance.ShowArrow();
+        PalaceArrowDown.instance.interactable = true;
+
         animationDone = true;
     }
 
@@ -5043,9 +5143,22 @@ public class MapAnimationController : MonoBehaviour
         // only continue with talkies if just played a boss battle game
         if (!GameManager.instance.playingBossBattleGame)
         {
+            yield return new WaitForSeconds(1f);
+
+            // show boss battle bar
+            BossBattleBar.instance.ShowBar();
+
+            yield return new WaitForSeconds(2f);
+
+            // show down arrow
+            PalaceArrowDown.instance.ShowArrow();
+            PalaceArrowDown.instance.interactable = true;
+
             animationDone = true;
             yield break;
         }
+
+        yield return new WaitForSeconds(0.5f);
 
         // play story beat talkie 2
         if (GameManager.instance.newBossBattleStoryBeat)
@@ -5094,6 +5207,15 @@ public class MapAnimationController : MonoBehaviour
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
         }
+
+        // show boss battle bar
+        BossBattleBar.instance.ShowBar();
+
+        yield return new WaitForSeconds(1f);
+
+        // show down arrow
+        PalaceArrowDown.instance.ShowArrow();
+        PalaceArrowDown.instance.interactable = true;
 
         animationDone = true;
     }
