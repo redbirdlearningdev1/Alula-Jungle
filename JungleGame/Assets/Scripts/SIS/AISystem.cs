@@ -383,21 +383,31 @@ public static class AISystem
 
         if (playerData.blendPlayed == 0)
         {
-            return challengeGameOptions[0];
+            //return challengeGameOptions[0];
+            return GameType.WordFactoryBlending;
         }
         else if (playerData.tPawPolPlayed == 0)
         {
-            return challengeGameOptions[1];
+            //return challengeGameOptions[1];
+            return GameType.TigerPawPhotos;
         }
         else if (playerData.tPawCoinPlayed == 0)
         {
-            return challengeGameOptions[2];
+            //return challengeGameOptions[2];
+            return GameType.TigerPawCoins;
         }
         else
         {
             // return random index
-            int index = Random.Range(0, challengeGameOptions.Count);
-            return challengeGameOptions[index];
+            if (challengeGameOptions.Count > 0)
+            {
+                int index = Random.Range(0, challengeGameOptions.Count);
+                return challengeGameOptions[index]; 
+            }
+            else
+            {
+                return GameType.WordFactoryBlending;
+            }
         }
     }
 
@@ -459,8 +469,8 @@ public static class AISystem
         set5.Add(ActionWordEnum.bumphead);
         set5.Add(ActionWordEnum.baby);
 
-
-        int EightyTwenty = Random.Range(0, 10);
+        
+        int EightyTwenty = Random.Range(1, 11);
         allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
 
         if (playerData.currentChapter == Chapter.chapter_0 || playerData.currentChapter == Chapter.chapter_1)
@@ -495,7 +505,7 @@ public static class AISystem
             }
             else
             {
-                int random = Random.Range(0, 1);
+                int random = Random.Range(0, 2);
                 if (random == 0)
                 {
                     globalWordList.Clear();
@@ -520,7 +530,7 @@ public static class AISystem
             }
             else
             {
-                int random = Random.Range(0, 2);
+                int random = Random.Range(0, 3);
                 if (random == 0)
                 {
                     globalWordList.Clear();
@@ -554,19 +564,13 @@ public static class AISystem
             unusedWordList.AddRange(globalWordList);
         }
 
+        if (unusedWordList.Contains(playerData.lastWordFaced))
+        {
+            unusedWordList.Remove(playerData.lastWordFaced);
+        }
+
         int index = Random.Range(0, unusedWordList.Count);
         ChallengeWord word = unusedWordList[index];
-        try
-        {
-            if (word == playerData.lastWordFaced)
-            {
-                return ChallengeWordSelectionBlending(playerData);
-            }
-        }
-        catch
-        {
-            Debug.Log("This Broke maybe");
-        }
 
         playerData.lastWordFaced = word;
 
