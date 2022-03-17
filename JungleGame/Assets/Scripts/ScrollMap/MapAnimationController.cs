@@ -1818,8 +1818,13 @@ public class MapAnimationController : MonoBehaviour
                 break;
 
             case StoryBeat.PalaceIntro:
+                // place taxi bird in PI
+                taxiBird.mapAnimator.Play("TaxiBirdPIPos");
+                taxiBird.GetComponent<Image>().raycastTarget = true;
+                taxiBird.interactable = true;
                 // place darwin in PI
                 darwin.mapAnimator.Play("DarwinPIPos");
+                darwin.FlipCharacterToLeft();
                 darwin.GetComponent<Image>().raycastTarget = true;
                 darwin.interactable = true;
                 darwin.ShowExclamationMark(true);
@@ -1834,6 +1839,10 @@ public class MapAnimationController : MonoBehaviour
                 break;
             
             case StoryBeat.PreBossBattle:
+                // place taxi bird in PI
+                taxiBird.mapAnimator.Play("TaxiBirdPIPos");
+                taxiBird.GetComponent<Image>().raycastTarget = true;
+                taxiBird.interactable = true;
                 // place darwin in P
                 darwin.FlipCharacterToRight();
                 darwin.mapAnimator.Play("DarwinPPos");
@@ -1857,6 +1866,10 @@ public class MapAnimationController : MonoBehaviour
             case StoryBeat.BossBattle1:
             case StoryBeat.BossBattle2:
             case StoryBeat.BossBattle3:
+                // place taxi bird in PI
+                taxiBird.mapAnimator.Play("TaxiBirdPIPos");
+                taxiBird.GetComponent<Image>().raycastTarget = true;
+                taxiBird.interactable = true;
                 // place darwin in P
                 darwin.FlipCharacterToRight();
                 darwin.mapAnimator.Play("DarwinPPos");
@@ -1878,12 +1891,15 @@ public class MapAnimationController : MonoBehaviour
                 break;
 
             case StoryBeat.EndBossBattle:
+                // place taxi bird in PI
+                taxiBird.mapAnimator.Play("TaxiBirdPIPos");
+                taxiBird.GetComponent<Image>().raycastTarget = true;
+                taxiBird.interactable = true;
                 // place darwin in P
                 darwin.FlipCharacterToRight();
                 darwin.mapAnimator.Play("DarwinPPos");
                 darwin.interactable = false;
                 // place julius in P
-                julius.ShowExclamationMark(true);
                 julius.mapAnimator.Play("JuliusPPos");
                 julius.characterAnimator.Play("sTigerIdle");
                 julius.interactable = false;
@@ -1896,6 +1912,22 @@ public class MapAnimationController : MonoBehaviour
                 brutus.characterAnimator.Play("brutusBroken");
                 brutus.FlipCharacterToRight();
                 break;
+
+            case StoryBeat.FinishedGame:
+                // place taxi bird in PI
+                taxiBird.mapAnimator.Play("TaxiBirdPIPos");
+                taxiBird.GetComponent<Image>().raycastTarget = true;
+                taxiBird.interactable = true;
+                // place marcus in M
+                marcus.mapAnimator.Play("MarcusMPos");
+                marcus.characterAnimator.Play("marcusBroken");
+                marcus.FlipCharacterToRight();
+                // place brutus in M
+                brutus.mapAnimator.Play("BrutusMPos");
+                brutus.characterAnimator.Play("brutusBroken");
+                brutus.FlipCharacterToRight();
+                break;
+
         }
 
     }
@@ -4889,8 +4921,10 @@ public class MapAnimationController : MonoBehaviour
         darwin.mapAnimator.Play("DarwinNextJuliusPos");
         darwin.characterAnimator.Play("gorillaIdle");
 
+        yield return new WaitForSeconds(1f);
+
         // play end talkies
-        
+        GameManager.instance.LoadScene("EndScene", true, 0.5f, false);
 
         animationDone = true;
     }

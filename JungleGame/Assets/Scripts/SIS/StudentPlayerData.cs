@@ -109,6 +109,8 @@ public class StudentPlayerData
     public bool firstGuradsRoyalRumble;
     public List<ActionWordEnum> actionWordPool;
 
+    public bool clickedTaxiBird;
+
     // royal rumble data
     public bool royalRumbleActive;
     public MapIconIdentfier royalRumbleID;
@@ -254,6 +256,8 @@ public enum StoryBeat
     BossBattle2, // 86
     BossBattle3, // 87
     EndBossBattle, // 88
+
+    FinishedGame, // 89
 
     COUNT
 }

@@ -190,6 +190,8 @@ public static class LoadSaveSystem
         new_data.mapLimit = 0;
         new_data.currentChapter = Chapter.chapter_0;
         new_data.mapData = new MapData();
+
+        new_data.clickedTaxiBird = false;
         
         // gorilla village
         new_data.mapData.GV_house1 = new MapIconData();

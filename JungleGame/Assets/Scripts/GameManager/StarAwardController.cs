@@ -70,7 +70,7 @@ public class StarAwardController : MonoBehaviour
         UpdateSIS(numStars);
     }
 
-    private async void UpdateSIS(int numStars)
+    private void UpdateSIS(int numStars)
     {
         int coinsEarned = 0;
 
@@ -118,6 +118,12 @@ public class StarAwardController : MonoBehaviour
                 else if (numStars == 3)
                 {
                     StudentInfoSystem.GetCurrentProfile().bossBattlePoints += 33;
+                }
+
+                // cap at 99 points
+                if (StudentInfoSystem.GetCurrentProfile().bossBattlePoints > 99)
+                {
+                    StudentInfoSystem.GetCurrentProfile().bossBattlePoints = 99;
                 }
 
                 // determine if advance boss battle story beat

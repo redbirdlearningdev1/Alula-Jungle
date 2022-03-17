@@ -68,9 +68,13 @@ public class BossBattleBar : MonoBehaviour
                 break;
         }
         
-        //tigerHead.transform.position = tigerSpawnPos.position;
-        tigerHead.SquishyScaleLerp(targetTigerScale * 1.2f, targetTigerScale, 0.1f, 0.1f);
-        tigerHead.GetComponent<WiggleController>().StartWiggle();
+        if (currentBossBattlePoints < 99f)
+        {
+            //tigerHead.transform.position = tigerSpawnPos.position;
+            tigerHead.SquishyScaleLerp(targetTigerScale * 1.2f, targetTigerScale, 0.1f, 0.1f);
+            tigerHead.GetComponent<WiggleController>().StartWiggle();
+        }
+        
 
         // start bobbing
         GetComponent<BobController>().StartBob();

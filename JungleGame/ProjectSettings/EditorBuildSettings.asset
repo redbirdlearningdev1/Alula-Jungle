@@ -71,4 +71,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestingScenes/TalkieTestScene.unity
     guid: 28f02cb424ced12449d1560558a4b03e
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: f98fe981be5612243b001ba8e3142994
+  - enabled: 1
+    path: Assets/Scenes/CreditsScene.unity
+    guid: ed9c0d8c4f66cdc4ba6626509b59db52
   m_configObjects: {}

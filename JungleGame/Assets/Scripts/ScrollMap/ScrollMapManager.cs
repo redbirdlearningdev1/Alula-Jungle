@@ -1065,6 +1065,8 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.EndBossBattle)
         {
+            // do not show UI buttons
+            revealGMUI = false;
             // start camera on palace location
             Map.localPosition = new Vector3(prePalaceCamPos.localPosition.x, palaceCamPos.localPosition.y, 0f);
             // play end boss battle
@@ -1072,6 +1074,11 @@ public class ScrollMapManager : MonoBehaviour
             // wait for animation to be done
             while (!MapAnimationController.instance.animationDone)
                 yield return null;
+        }
+        else if (playGameEvent == StoryBeat.FinishedGame)
+        {
+            // start on boat house
+            SetMapPosition((int)MapLocation.BoatHouse);
         }
 
 

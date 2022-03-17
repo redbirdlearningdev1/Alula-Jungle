@@ -20,5 +20,117 @@ MonoBehaviour:
   addLetterboxBeforeTalkie: 1
   ending: 0
   removeBackgroundAfterTalkie: 0
-  removeLetterboxAfterTalkie: 1
-  segmnets: []
+  removeLetterboxAfterTalkie: 0
+  segmnets:
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 0
+    leftEmotionNum: 0
+    leftMouthEnum: 0
+    leftEyesEnum: 0
+    rightCharacter: 7
+    rightEmotionNum: 9
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 6fd664d0ad3b7144ebe3df67f620b1cf, type: 3}
+    audioClipName: E_6_1_Julius_1_T1
+    audioString: "Huff...huff\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 8
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 9
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 8300000, guid: 042090a3bee4a3342a842e16de41940f, type: 3}
+    audioClipName: E_6_1_Red_2_T1
+    audioString: Now,  will you finally hear Darwin out?
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 8
+    leftMouthEnum: 2
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 3
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 2
+    audioClip: {fileID: 8300000, guid: 336971822ad45f143947c187b2191088, type: 3}
+    audioClipName: E_6_1_Julius_3_T1
+    audioString: "Hrm\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 6
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 3
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: E_6_1_Darwin_4_T1
+    audioString: "Julius\u2026"
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 6
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 3
+    rightMouthEnum: 2
+    rightEyesEnum: 4
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: E_6_1_Darwin_4_T2
+    audioString: What I was trying to say was-
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 3
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 7
+    rightEmotionNum: 10
+    rightMouthEnum: 2
+    rightEyesEnum: 1
+    activeCharacter: 1
+    audioClip: {fileID: 0}
+    audioClipName: E_6_1_Darwin_4_T3
+    audioString: Oh!?
+  - endTalkieAfterThisSegment: 0
+    requireYN: 0
+    onYesGoto: 0
+    onNoGoto: 0
+    leftCharacter: 1
+    leftEmotionNum: 5
+    leftMouthEnum: 1
+    leftEyesEnum: 1
+    rightCharacter: 2
+    rightEmotionNum: 6
+    rightMouthEnum: 1
+    rightEyesEnum: 1
+    activeCharacter: 3
+    audioClip: {fileID: 0}
+    audioClipName: RedWally_Gasp
+    audioString: '!!!'

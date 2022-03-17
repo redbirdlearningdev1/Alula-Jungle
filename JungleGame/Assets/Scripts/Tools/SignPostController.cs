@@ -99,6 +99,8 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
             SettingsManager.instance.settingsWindowOpen || 
             RoyalDecreeController.instance.isOpen ||
             StickerSystem.instance.wagonOpen)
+
+            return;
         
         if (!isOver)
         {

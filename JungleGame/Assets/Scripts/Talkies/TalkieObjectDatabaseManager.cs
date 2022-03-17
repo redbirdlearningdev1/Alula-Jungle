@@ -717,7 +717,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
         updateText.text = "database updated!";
     }
 
-    string[] characterNames = new string[] { "red", "wally", "darwin", "lester", "brutus", "marcus", "julius", "clogg", "spindle", "bubbles", "ollie", "celeste", "sylvie" };
+    string[] characterNames = new string[] { "red", "wally", "darwin", "lester", "brutus", "marcus", "julius", "clogg", "spindle", "bubbles", "ollie", "celeste", "sylvie", "taxi" };
     private List<TalkieCharacter> DetermineActiveCharacters(string str)
     {
         List<TalkieCharacter> activeCharacters = new List<TalkieCharacter>();

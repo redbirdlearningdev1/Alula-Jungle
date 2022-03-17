@@ -132,8 +132,19 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         }
         else if (character == Character.TaxiBird)
         {
-            // worry about this later!
-            print ("clicked on taxi bird!~");
+            if (!StudentInfoSystem.GetCurrentProfile().clickedTaxiBird)
+            {
+                StudentInfoSystem.GetCurrentProfile().clickedTaxiBird = true;
+                StudentInfoSystem.SaveStudentPlayerData();
+
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("Taxi_1_p1"));
+                yield break;
+            }
+            else
+            {
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("Taxi_2_p1"));
+                yield break;
+            }
         }
 
         bool playingChallengeGame = false;

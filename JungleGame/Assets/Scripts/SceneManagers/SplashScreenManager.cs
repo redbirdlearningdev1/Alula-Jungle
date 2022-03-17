@@ -41,6 +41,10 @@ public class SplashScreenManager : MonoBehaviour
     public Animator profile2SelectAnimator;
     public Animator profile3SelectAnimator;
 
+    public LerpableObject winCrown1;
+    public LerpableObject winCrown2;
+    public LerpableObject winCrown3;
+
     [SerializeField] TMP_InputField newProfileInput;
 
     [SerializeField] WiggleController tapTextWiggleController;
@@ -291,6 +295,62 @@ public class SplashScreenManager : MonoBehaviour
         profileSelectWindow.interactable = true;
         profileSelectWindow.blocksRaycasts = true;
         profileSelectWindow.alpha = 1f;
+
+        SetUpWinCrowns();
+    }
+
+    private void SetUpWinCrowns()
+    {
+        // show crowns if profile has won game
+        data1 = StudentInfoSystem.GetStudentData(StudentIndex.student_1);
+        if (data1.active && data1.currStoryBeat >= StoryBeat.FinishedGame)
+        {
+            winCrown1.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.2f, 0.2f);
+            winCrown1.GetComponent<BobController>().StartBob();
+        }
+        else
+        {
+            // remove crown if crown is active
+            if (winCrown1.transform.localScale.x > 0f)
+            {
+                winCrown1.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.2f, 0.2f);
+                winCrown1.GetComponent<BobController>().StopBob();
+            }
+        }
+
+        // profile 2
+        data2 = StudentInfoSystem.GetStudentData(StudentIndex.student_2);
+        if (data2.active && data2.currStoryBeat >= StoryBeat.FinishedGame)
+        {
+            winCrown2.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.2f, 0.2f);
+            winCrown2.GetComponent<BobController>().StartBob();
+        }
+        else
+        {
+            // remove crown if crown is active
+            if (winCrown2.transform.localScale.x > 0f)
+            {
+                winCrown2.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.2f, 0.2f);
+                winCrown2.GetComponent<BobController>().StopBob();
+            }
+        }
+
+        // profile 3
+        data3 = StudentInfoSystem.GetStudentData(StudentIndex.student_3);
+        if (data3.active && data3.currStoryBeat >= StoryBeat.FinishedGame)
+        {
+            winCrown3.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.2f, 0.2f);
+            winCrown3.GetComponent<BobController>().StartBob();
+        }
+        else
+        {
+            // remove crown if crown is active
+            if (winCrown3.transform.localScale.x > 0f)
+            {
+                winCrown3.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.2f, 0.2f);
+                winCrown3.GetComponent<BobController>().StopBob();
+            }
+        }
     }
 
     private IEnumerator RevealNewProfileWindow(float totalTime)
@@ -651,6 +711,7 @@ public class SplashScreenManager : MonoBehaviour
         SettingsManager.instance.LoadSettingsFromProfile();
 
         SetUpProfiles();
+        SetUpWinCrowns();
     }
 
     public void OnNoDeleteProfilePressed()

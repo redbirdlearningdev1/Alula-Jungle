@@ -34,7 +34,7 @@ MonoBehaviour:
     rightEmotionNum: 2
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 0
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 9344169872126d0489409d75f125711a, type: 3}
     audioClipName: E_1_1_Taxi_1_T1
     audioString: Woah there Explorer!
@@ -50,7 +50,7 @@ MonoBehaviour:
     rightEmotionNum: 1
     rightMouthEnum: 1
     rightEyesEnum: 2
-    activeCharacter: 0
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 9745a1273995f7641a807aca37a25192, type: 3}
     audioClipName: E_1_1_Taxi_1_T2
     audioString: "This old bird isn\u2019t ready for take off just yet."
@@ -66,7 +66,7 @@ MonoBehaviour:
     rightEmotionNum: 3
     rightMouthEnum: 1
     rightEyesEnum: 3
-    activeCharacter: 0
+    activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 104b2053bb2306e41a71284152d743c5, type: 3}
     audioClipName: E_1_1_Taxi_1_T3
     audioString: Laugh
