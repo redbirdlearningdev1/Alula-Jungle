@@ -7595,6 +7595,7 @@ RectTransform:
   - {fileID: 9014162588613071745}
   - {fileID: 2313622913589714028}
   - {fileID: 3355770534534112081}
+  - {fileID: 8469540566591635378}
   - {fileID: 3633422846769646734}
   - {fileID: 3191374251820634710}
   - {fileID: 5960576933132843806}
@@ -8850,7 +8851,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -500}
+  m_AnchoredPosition: {x: 0, y: -500.00006}
   m_SizeDelta: {x: 1800, y: 150}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &3174749653948767468
@@ -10845,6 +10846,94 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &2525612394375446377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8469540566591635378}
+  - component: {fileID: 6306489273043972666}
+  - component: {fileID: 1763247207156296364}
+  - component: {fileID: 1792199988334641941}
+  m_Layer: 17
+  m_Name: ConfirmWindowBG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8469540566591635378
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2525612394375446377}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6009013322423762922}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6306489273043972666
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2525612394375446377}
+  m_CullTransparentMesh: 1
+--- !u!114 &1763247207156296364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2525612394375446377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1792199988334641941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2525612394375446377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458d3b50667b6a944abf0cc4cfece9d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2556604931754446766
 GameObject:
   m_ObjectHideFlags: 0
@@ -18287,6 +18376,8 @@ MonoBehaviour:
   finishedRoyalRumbleGame: 0
   wonRoyalRumbleGame: 0
   finishedBoatGame: 0
+  playingBossBattleGame: 0
+  newBossBattleStoryBeat: 0
   avatars:
   - {fileID: 21300000, guid: da3f7e78289a2d8469c82daacaa6333a, type: 3}
   - {fileID: 21300000, guid: 549747dbc6c25a146bf524fb0b27dc6a, type: 3}
@@ -18328,6 +18419,7 @@ MonoBehaviour:
   fastTalkiesToggle: {fileID: 3298705919701481653}
   talkieParticlesToggle: {fileID: 512078252585435447}
   settingsWindowBG: {fileID: 4003909239714568074}
+  confirmWindowBG: {fileID: 1792199988334641941}
   returnToScrollMapConfirmWindow: {fileID: 7291438810687254192}
   returnToSplashScreenConfirmWindow: {fileID: 157531246031065608}
   exitApplicationConfirmWindow: {fileID: 2100463112006368352}
@@ -19179,7 +19271,7 @@ RectTransform:
   - {fileID: 5198324536354652692}
   - {fileID: 8194580798256719612}
   m_Father: {fileID: 6009013322423762922}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -21159,6 +21251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yesNoChoices: 
   talkiePlaying: 0
+  currentTalkie: {fileID: 0}
   talkieMoveSpeed: 0.25
   talkieDeactivateSpeed: 0.25
   leftTalkie: {fileID: 2725319633311727417}
@@ -25594,7 +25687,7 @@ RectTransform:
   - {fileID: 2851165237430043813}
   - {fileID: 5114938894058296281}
   m_Father: {fileID: 6009013322423762922}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -27079,7 +27172,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 500}
+  m_AnchoredPosition: {x: 0, y: 500.00006}
   m_SizeDelta: {x: 1800, y: 150}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &3476630059000522833
@@ -30401,7 +30494,7 @@ RectTransform:
   - {fileID: 575427993885828984}
   - {fileID: 2029116184417086953}
   m_Father: {fileID: 6009013322423762922}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

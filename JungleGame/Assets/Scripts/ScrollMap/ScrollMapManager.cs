@@ -46,6 +46,7 @@ public class ScrollMapManager : MonoBehaviour
     private bool activateMapNavigation = false;
     private bool revealGMUI = false;
     private bool waitingForGameEventRoutine = false;
+    [HideInInspector] public bool updateGameManagerBools;
 
     [Header("Map Navigation")]
     [SerializeField] private RectTransform Map; // full map
@@ -93,6 +94,9 @@ public class ScrollMapManager : MonoBehaviour
     private IEnumerator DelayedStart(float delay)
     {
         yield return new WaitForSeconds(delay);
+
+        // by deafult - update GM bools
+        updateGameManagerBools = true;
 
         // disable UI
         leftButton.interactable = false;
@@ -223,10 +227,14 @@ public class ScrollMapManager : MonoBehaviour
         */
 
         // remove game manager stuff
-        GameManager.instance.playingRoyalRumbleGame = false;
-        GameManager.instance.playingChallengeGame = false;
-        GameManager.instance.playingBossBattleGame = false;
-        GameManager.instance.finishedBoatGame = false;
+        if (updateGameManagerBools)
+        {
+            GameManager.instance.playingRoyalRumbleGame = false;
+            GameManager.instance.playingChallengeGame = false;
+            GameManager.instance.playingBossBattleGame = false;
+            GameManager.instance.finishedBoatGame = false;
+        }
+        
 
         // show palace arrow if past story beat
         if (playGameEvent >= StoryBeat.PreBossBattle && currMapLocation == (int)MapLocation.PalaceIntro)

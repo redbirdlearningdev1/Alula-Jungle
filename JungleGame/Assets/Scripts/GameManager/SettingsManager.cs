@@ -34,6 +34,7 @@ public class SettingsManager : MonoBehaviour
 
     // settings windows
     public LerpableObject settingsWindowBG;
+    public LerpableObject confirmWindowBG;
     public LerpableObject returnToScrollMapConfirmWindow;
     public LerpableObject returnToSplashScreenConfirmWindow;
     public LerpableObject exitApplicationConfirmWindow;
@@ -61,7 +62,11 @@ public class SettingsManager : MonoBehaviour
 
         // close settings windows + hide BG
         settingsWindowBG.SetImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f);
+        confirmWindowBG.SetImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f);
+        confirmWindowBG.GetComponent<Image>().raycastTarget = false;
         returnToScrollMapConfirmWindow.transform.localScale = new Vector3(0f, 0f, 1f);
+        exitApplicationConfirmWindow.transform.localScale = new Vector3(0f, 0f, 1f);
+        returnToSplashScreenConfirmWindow.transform.localScale = new Vector3(0f, 0f, 1f);
     }
 
     public void SaveSettingsToProfile()
@@ -468,12 +473,16 @@ public class SettingsManager : MonoBehaviour
         if (opt)
         {
             // open window
+            confirmWindowBG.LerpImageAlpha(confirmWindowBG.GetComponent<Image>(), 0.95f, 0.5f);
+            confirmWindowBG.GetComponent<Image>().raycastTarget = true;
             returnToScrollMapConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
             yield return new WaitForSeconds(0.2f);
         }
         else
         {
             // close window
+            confirmWindowBG.LerpImageAlpha(confirmWindowBG.GetComponent<Image>(), 0f, 0.5f);
+            confirmWindowBG.GetComponent<Image>().raycastTarget = false;
             returnToScrollMapConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
             yield return new WaitForSeconds(0.2f);
         }
@@ -500,12 +509,16 @@ public class SettingsManager : MonoBehaviour
             }
 
             // open window
+            confirmWindowBG.LerpImageAlpha(confirmWindowBG.GetComponent<Image>(), 0.95f, 0.5f);
+            confirmWindowBG.GetComponent<Image>().raycastTarget = true;
             returnToSplashScreenConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
             yield return new WaitForSeconds(0.2f);
         }
         else
         {
             // close window
+            confirmWindowBG.LerpImageAlpha(confirmWindowBG.GetComponent<Image>(), 0f, 0.5f);
+            confirmWindowBG.GetComponent<Image>().raycastTarget = false;
             returnToSplashScreenConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
             yield return new WaitForSeconds(0.2f);
         }
@@ -558,12 +571,16 @@ public class SettingsManager : MonoBehaviour
             }
 
             // open window
+            confirmWindowBG.LerpImageAlpha(confirmWindowBG.GetComponent<Image>(), 0.95f, 0.5f);
+            confirmWindowBG.GetComponent<Image>().raycastTarget = true;
             exitApplicationConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(1f, 1f), 0.1f, 0.1f);
             yield return new WaitForSeconds(0.2f);
         }
         else
         {
             // close window
+            confirmWindowBG.LerpImageAlpha(confirmWindowBG.GetComponent<Image>(), 0f, 0.5f);
+            confirmWindowBG.GetComponent<Image>().raycastTarget = false;
             exitApplicationConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
             yield return new WaitForSeconds(0.2f);
         }

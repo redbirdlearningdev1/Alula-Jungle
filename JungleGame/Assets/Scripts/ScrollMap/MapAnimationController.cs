@@ -2327,9 +2327,6 @@ public class MapAnimationController : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        // turn gorilla to face left
-        darwin.FlipCharacterToLeft();
-
         // play gorilla intro 5
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("SectionIntro_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
@@ -5373,6 +5370,7 @@ public class MapAnimationController : MonoBehaviour
                 if (TalkieManager.instance.yesNoChoices[0])
                 {
                     TalkieManager.instance.yesNoChoices.Clear();
+                    ScrollMapManager.instance.updateGameManagerBools = false; // do not update GM bools
                     marcus.GoToGameDataSceneImmediately(true);
                 }
                 else
@@ -5470,6 +5468,7 @@ public class MapAnimationController : MonoBehaviour
                 if (TalkieManager.instance.yesNoChoices[0])
                 {
                     TalkieManager.instance.yesNoChoices.Clear();
+                    ScrollMapManager.instance.updateGameManagerBools = false; // do not update GM bools
                     brutus.GoToGameDataSceneImmediately(true);
                 }
                 else // if the player chooses no
@@ -5542,7 +5541,7 @@ public class MapAnimationController : MonoBehaviour
 
 
 
-    
+
 
     // i hate that i have to do this this way but i have no choice :,)
     private bool SetJuliusChallengeGame(MapLocation location)
