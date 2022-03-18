@@ -650,7 +650,7 @@ public static class AISystem
         // re-add words to list if size is reduced to 0
         if (allGlobalWordList.Count == 0)
             allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
-
+        
         CurrentChallengeList.Add(word);
         for (int i = 0; i < 2; i++)
         {
@@ -890,7 +890,7 @@ public static class AISystem
         set5.Add(ActionWordEnum.baby);
 
 
-        int EightyTwenty = Random.Range(0, 10);
+        int EightyTwenty = Random.Range(1, 11);
         if (playerData.currentChapter == Chapter.chapter_0 || playerData.currentChapter == Chapter.chapter_1)
         {
             Selected = set1[Random.Range(0, set1.Count)];
@@ -916,7 +916,7 @@ public static class AISystem
             }
             else
             {
-                int random = Random.Range(0, 1);
+                int random = Random.Range(0, 2);
                 if (random == 0)
                 {
                     Selected = set2[Random.Range(0, set2.Count)];
@@ -939,7 +939,7 @@ public static class AISystem
             }
             else
             {
-                int random = Random.Range(0, 2);
+                int random = Random.Range(0, 3);
                 if (random == 0)
                 {
                     Selected = set2[Random.Range(0, set2.Count)];
@@ -1382,7 +1382,7 @@ public static class AISystem
         set5.Add(ActionWordEnum.baby);
 
 
-        int EightyTwenty = Random.Range(0, 10);
+        int EightyTwenty = Random.Range(1, 11);
         allGlobalWordList = ChallengeWordDatabase.GetChallengeWords(set5);
 
         if (playerData.currentChapter == Chapter.chapter_0 || playerData.currentChapter == Chapter.chapter_1)
@@ -1417,7 +1417,7 @@ public static class AISystem
             }
             else
             {
-                int random = Random.Range(0, 1);
+                int random = Random.Range(0, 2);
                 if (random == 0)
                 {
                     globalWordList.Clear();
@@ -1443,7 +1443,7 @@ public static class AISystem
             }
             else
             {
-                int random = Random.Range(0, 2);
+                int random = Random.Range(0, 3);
                 if (random == 0)
                 {
                     globalWordList.Clear();
@@ -1624,7 +1624,7 @@ public static class AISystem
         set5.Remove(Pold[0].set);
         for (int i = 0; i < 4; i++)
         {
-            int EightyTwenty = Random.Range(0, 10);
+            int EightyTwenty = Random.Range(1, 11);
             if (playerData.currentChapter == Chapter.chapter_0 || playerData.currentChapter == Chapter.chapter_1)
             {
 
@@ -1659,7 +1659,7 @@ public static class AISystem
                 }
                 else
                 {
-                    int random = Random.Range(0, 1);
+                    int random = Random.Range(0, 2);
                     if (random == 0)
                     {
                         int randSet2 = Random.Range(0, set2.Count);
@@ -1688,7 +1688,7 @@ public static class AISystem
                 }
                 else
                 {
-                    int random = Random.Range(0, 2);
+                    int random = Random.Range(0, 3);
                     if (random == 0)
                     {
                         int randSet2 = Random.Range(0, set2.Count);
@@ -1785,7 +1785,7 @@ public static class AISystem
         set5.Add(ActionWordEnum.baby);
 
 
-        int EightyTwenty = Random.Range(0, 10);
+        int EightyTwenty = Random.Range(1, 11);
         allGlobalWordList = ChallengeWordDatabase.GetChallengeWords(set5);
         if (playerData.currentChapter == Chapter.chapter_0 || playerData.currentChapter == Chapter.chapter_1)
         {
@@ -1816,7 +1816,7 @@ public static class AISystem
             }
             else
             {
-                int random = Random.Range(0, 1);
+                int random = Random.Range(0, 2);
                 if (random == 0)
                 {
                     globalWordList = ChallengeWordDatabase.GetChallengeWords(set2);
@@ -1842,7 +1842,7 @@ public static class AISystem
             }
             else
             {
-                int random = Random.Range(0, 2);
+                int random = Random.Range(0, 3);
                 if (random == 0)
                 {
                     globalWordList = ChallengeWordDatabase.GetChallengeWords(set2);
@@ -2017,7 +2017,7 @@ public static class AISystem
         set5.Add(ActionWordEnum.baby);
 
 
-        int EightyTwenty = Random.Range(0, 10);
+        int EightyTwenty = Random.Range(1, 11);
         if (playerData.currentChapter == Chapter.chapter_0 || playerData.currentChapter == Chapter.chapter_1)
         {
 
@@ -2047,7 +2047,7 @@ public static class AISystem
             }
             else
             {
-                int random = Random.Range(0, 1);
+                int random = Random.Range(0, 2);
                 if (random == 0)
                 {
 
@@ -2073,7 +2073,7 @@ public static class AISystem
             }
             else
             {
-                int random = Random.Range(0, 2);
+                int random = Random.Range(0, 3);
                 if (random == 0)
                 {
 
@@ -2247,7 +2247,7 @@ public static class AISystem
         set5.Add(ActionWordEnum.baby);
 
 
-        int EightyTwenty = Random.Range(0, 10);
+        int EightyTwenty = Random.Range(1, 11);
         if (playerData.currentChapter == Chapter.chapter_0 || playerData.currentChapter == Chapter.chapter_1)
         {
 
@@ -2277,7 +2277,7 @@ public static class AISystem
             }
             else
             {
-                int random = Random.Range(0, 1);
+                int random = Random.Range(0, 2);
                 if (random == 0)
                 {
 
@@ -2303,7 +2303,7 @@ public static class AISystem
             }
             else
             {
-                int random = Random.Range(0, 2);
+                int random = Random.Range(0, 3);
                 if (random == 0)
                 {
 
