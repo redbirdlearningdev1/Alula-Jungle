@@ -69,9 +69,13 @@ public class BoardBookWindow : MonoBehaviour
         StickerSystem.instance.lesterAnimator.Play("geckoLeave");
         StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().isHidden = true;
 
-        // hide back button
-        StickerSystem.instance.wagonBackButton.GetComponent<BackButton>().interactable = false;
-        StickerSystem.instance.wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+        // hide back button iff active
+        if (StickerSystem.instance.wagonBackButton.transform.localScale.x > 0)
+        {
+            StickerSystem.instance.wagonBackButton.GetComponent<BackButton>().interactable = false;
+            StickerSystem.instance.wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+        }
+        
 
         // set buttons to be not interactable
         StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().interactable = false;

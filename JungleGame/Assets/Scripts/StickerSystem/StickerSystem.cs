@@ -550,19 +550,12 @@ public class StickerSystem : MonoBehaviour
         deleteStickerButton.GetComponent<Button>().interactable = false;
         deleteStickerButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
         
-        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
-        {
-            // do nothing :)
-        }
-        else
-        {
-            // hide left and right buttons
-            stickerboardLeftButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
-            stickerboardRightButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
-            stickerboardLeftButton.GetComponent<Button>().interactable = false;
-            stickerboardRightButton.GetComponent<Button>().interactable = false;
-        }
-
+        // hide left and right buttons
+        stickerboardLeftButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+        stickerboardRightButton.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+        stickerboardLeftButton.GetComponent<Button>().interactable = false;
+        stickerboardRightButton.GetComponent<Button>().interactable = false;
+        
         // hide inventroy button
         StickerInventory.instance.SetInventoryState(InventoryState.Hidden);
 
@@ -920,10 +913,6 @@ public class StickerSystem : MonoBehaviour
         lesterAnimator.GetComponent<LesterButton>().isHidden = false;
         lesterAnimator.GetComponent<LesterButton>().ResetLesterTimers();
 
-        // show wagon back button
-        wagonBackButton.GetComponent<BackButton>().interactable = true;
-        wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
-
         yield return new WaitForSeconds(0.5f);
 
         // only make stickerboard interactable if tutorial
@@ -938,6 +927,10 @@ public class StickerSystem : MonoBehaviour
             lesterAnimator.GetComponent<LesterButton>().interactable = true;
             stickerBoard.GetComponent<StickerBoardButton>().interactable = true;
             boardBook.GetComponent<BoardBookButton>().interactable = true;
+
+            // show wagon back button
+            wagonBackButton.GetComponent<BackButton>().interactable = true;
+            wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
         }
     }
 

@@ -5531,6 +5531,19 @@ public class MapAnimationController : MonoBehaviour
         animationDone = true;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+    
+
     // i hate that i have to do this this way but i have no choice :,)
     private bool SetJuliusChallengeGame(MapLocation location)
     {

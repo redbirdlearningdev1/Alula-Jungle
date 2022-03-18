@@ -14,7 +14,7 @@ public class TalkieManager : MonoBehaviour
     [HideInInspector] public List<bool> yesNoChoices;
 
     [HideInInspector] public bool talkiePlaying = false; // used to pause routines while talkies are playing
-    private TalkieObject currentTalkie;
+    [HideInInspector] public TalkieObject currentTalkie;
 
     private TalkieCharacter currLeftCharacter;
     private TalkieCharacter currRightCharacter;
@@ -565,11 +565,13 @@ public class TalkieManager : MonoBehaviour
 
     public void OnYesPressed()
     {
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 0.5f);
         DoYesNoAction(yesGoto, true);
     }
 
     public void OnNoPressed()
     {
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 0.5f);
         DoYesNoAction(noGoto, false);
     }
 
@@ -664,7 +666,7 @@ public class TalkieManager : MonoBehaviour
         }
 
         // swap sprite
-        image.sprite = TalkieDatabase.instance.GetTalkieSprite(character, emotionNum, mouth, eyes);
+        image.sprite = TalkieDatabase.instance.GetTalkieSprite(character, emotionNum, mouth, eyes, currSegmentIndex);
 
         // bring up talkie
         if (isLeft)
@@ -677,7 +679,7 @@ public class TalkieManager : MonoBehaviour
     public void SwapTalkieEmotion(Image image, TalkieCharacter character, int emotionNum, TalkieMouth mouth, TalkieEyes eyes)
     {
         // swap sprite
-        image.sprite = TalkieDatabase.instance.GetTalkieSprite(character, emotionNum, mouth, eyes);
+        image.sprite = TalkieDatabase.instance.GetTalkieSprite(character, emotionNum, mouth, eyes, currSegmentIndex);
     }
 
     private IEnumerator MoveObjectRouitne(Transform obj, Vector3 targetPos, float duration)
