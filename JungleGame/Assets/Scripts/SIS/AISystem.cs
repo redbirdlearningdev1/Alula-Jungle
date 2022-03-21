@@ -7,7 +7,7 @@ public static class AISystem
     private static List<GameType> minigameOptions;
     private static List<float> gameRatio;
 
-    
+
     public static GameType DetermineMinigame(StudentPlayerData playerData)
     {
         //Debug.Log("Last Game Played " + playerData.lastGamePlayed);
@@ -36,7 +36,7 @@ public static class AISystem
             case 3: return GameType.SpiderwebGame;
             case 4: return GameType.TurntablesGame;
             case 5: return GameType.PirateGame;
-            
+
             default:
                 minigameOptions = new List<GameType>();
                 gameRatio = new List<float>();
@@ -403,7 +403,7 @@ public static class AISystem
             if (challengeGameOptions.Count > 0)
             {
                 int index = Random.Range(0, challengeGameOptions.Count);
-                return challengeGameOptions[index]; 
+                return challengeGameOptions[index];
             }
             else
             {
@@ -470,7 +470,7 @@ public static class AISystem
         set5.Add(ActionWordEnum.bumphead);
         set5.Add(ActionWordEnum.baby);
 
-        
+
         int EightyTwenty = Random.Range(1, 11);
         allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
 
@@ -570,8 +570,19 @@ public static class AISystem
             unusedWordList.Remove(playerData.lastWordFaced);
         }
 
-        int index = Random.Range(0, unusedWordList.Count);
-        ChallengeWord word = unusedWordList[index];
+        ChallengeWord word;
+        int index;
+        if (unusedWordList.Count > 0)
+        {
+            index = Random.Range(0, unusedWordList.Count);
+            word = unusedWordList[index];
+        }
+        else
+        {
+            unusedWordList.AddRange(globalWordList);
+            index = Random.Range(0, unusedWordList.Count);
+            word = unusedWordList[index];
+        }
 
         playerData.lastWordFaced = word;
 
@@ -651,7 +662,7 @@ public static class AISystem
         // re-add words to list if size is reduced to 0
         if (allGlobalWordList.Count == 0)
             allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
-        
+
         CurrentChallengeList.Add(word);
         for (int i = 0; i < 2; i++)
         {
@@ -894,46 +905,60 @@ public static class AISystem
         int EightyTwenty = Random.Range(1, 11);
         if (playerData.currentChapter == Chapter.chapter_0 || playerData.currentChapter == Chapter.chapter_1)
         {
-            Selected = set1[Random.Range(0, set1.Count)];
-        }
-        else if (playerData.currentChapter == Chapter.chapter_2)
-        {
-            if (EightyTwenty > 2)
-            {
-                Selected = set2[Random.Range(0, set2.Count)];
-            }
-            else
+            if (set1.Count > 0)
             {
                 Selected = set1[Random.Range(0, set1.Count)];
             }
-
+            else
+            {
+                Debug.LogError("Not enough action words in set 1");
+                Selected = ActionWordEnum._blank;
+            }
+        }
+        else if (playerData.currentChapter == Chapter.chapter_2)
+        {
+            if (EightyTwenty > 2 && set2.Count > 0)
+            {
+                Selected = set2[Random.Range(0, set2.Count)];
+            }
+            else if (set1.Count > 0)
+            {
+                Selected = set1[Random.Range(0, set1.Count)];
+            }
+            else
+            {
+                Debug.LogError("Not enough action words in set 1");
+                Selected = ActionWordEnum._blank;
+            }
         }
         else if (playerData.currentChapter == Chapter.chapter_3)
         {
-            if (EightyTwenty > 2)
+            if (EightyTwenty > 2 && set3.Count > 0)
             {
-
                 Selected = set3[Random.Range(0, set3.Count)];
             }
             else
             {
                 int random = Random.Range(0, 2);
-                if (random == 0)
+                if (random == 0 && set2.Count > 0)
                 {
                     Selected = set2[Random.Range(0, set2.Count)];
                 }
-                else
+                else if (set1.Count > 0)
                 {
                     Selected = set1[Random.Range(0, set1.Count)];
                 }
-
+                else
+                {
+                    Debug.LogError("Not enough action words in set 1 or 2");
+                    Selected = ActionWordEnum._blank;
+                }
             }
-
         }
 
         else if (playerData.currentChapter == Chapter.chapter_4)
         {
-            if (EightyTwenty > 2)
+            if (EightyTwenty > 2 && set4.Count > 0)
             {
 
                 Selected = set4[Random.Range(0, set4.Count)];
@@ -941,25 +966,36 @@ public static class AISystem
             else
             {
                 int random = Random.Range(0, 3);
-                if (random == 0)
+                if (random == 0 && set2.Count > 0)
                 {
                     Selected = set2[Random.Range(0, set2.Count)];
                 }
-                else if (random == 1)
+                else if (random == 1 && set1.Count > 0)
                 {
                     Selected = set1[Random.Range(0, set1.Count)];
                 }
-                else
+                else if (set3.Count > 0)
                 {
                     Selected = set3[Random.Range(0, set3.Count)];
                 }
-
+                else
+                {
+                    Debug.LogError("Not enough action words in sets 1, 2, or 3");
+                    Selected = ActionWordEnum._blank;
+                }
             }
-
         }
         else
         {
-            Selected = set5[Random.Range(0, set5.Count)];
+            if (set5.Count > 0)
+            {
+                Selected = set5[Random.Range(0, set5.Count)];
+            }
+            else
+            {
+                Debug.LogError("Not enough action words in set 5");
+                Selected = ActionWordEnum._blank;
+            }
         }
 
         return Selected;
@@ -1564,7 +1600,7 @@ public static class AISystem
 
     public static List<ActionWordEnum> TigerPawCoinsCoinSelection(StudentPlayerData playerData, List<ChallengeWord> Pold)
     {
-        List<ActionWordEnum> Selected = new List<ActionWordEnum>(); ;
+        List<ActionWordEnum> Selected = new List<ActionWordEnum>();
         List<ActionWordEnum> set1 = new List<ActionWordEnum>();
         List<ActionWordEnum> set2 = new List<ActionWordEnum>();
         List<ActionWordEnum> set3 = new List<ActionWordEnum>();
@@ -1616,7 +1652,6 @@ public static class AISystem
         set5.Add(ActionWordEnum.bumphead);
         set5.Add(ActionWordEnum.baby);
 
-
         Selected.Add(Pold[0].set);
         set1.Remove(Pold[0].set);
         set2.Remove(Pold[0].set);
@@ -1628,32 +1663,40 @@ public static class AISystem
             int EightyTwenty = Random.Range(1, 11);
             if (playerData.currentChapter == Chapter.chapter_0 || playerData.currentChapter == Chapter.chapter_1)
             {
-
-                int randSet1 = Random.Range(0, set1.Count);
-                Selected.Add(set1[randSet1]);
-                set1.RemoveAt(randSet1);
-            }
-            else if (playerData.currentChapter == Chapter.chapter_2)
-            {
-                if (EightyTwenty > 2)
-                {
-                    int randSet2 = Random.Range(0, set2.Count);
-                    Selected.Add(set2[randSet2]);
-                    set2.RemoveAt(randSet2);
-                }
-                else
+                if (set1.Count > 0)
                 {
                     int randSet1 = Random.Range(0, set1.Count);
                     Selected.Add(set1[randSet1]);
                     set1.RemoveAt(randSet1);
                 }
-
+                else
+                {
+                    Debug.LogError("No more action words to add to selection");
+                }
+            }
+            else if (playerData.currentChapter == Chapter.chapter_2)
+            {
+                if (EightyTwenty > 2 && set2.Count > 0)
+                {
+                    int randSet2 = Random.Range(0, set2.Count);
+                    Selected.Add(set2[randSet2]);
+                    set2.RemoveAt(randSet2);
+                }
+                else if (set1.Count > 0)
+                {
+                    int randSet1 = Random.Range(0, set1.Count);
+                    Selected.Add(set1[randSet1]);
+                    set1.RemoveAt(randSet1);
+                }
+                else
+                {
+                    Debug.LogError("No more action words to add to selection");
+                }
             }
             else if (playerData.currentChapter == Chapter.chapter_3)
             {
-                if (EightyTwenty > 2)
+                if (EightyTwenty > 2 && set3.Count > 0)
                 {
-
                     int randSet3 = Random.Range(0, set3.Count);
                     Selected.Add(set3[randSet3]);
                     set3.RemoveAt(randSet3);
@@ -1661,28 +1704,30 @@ public static class AISystem
                 else
                 {
                     int random = Random.Range(0, 2);
-                    if (random == 0)
+                    if (random == 0 && set2.Count > 0)
                     {
                         int randSet2 = Random.Range(0, set2.Count);
                         Selected.Add(set2[randSet2]);
                         set2.RemoveAt(randSet2);
                     }
-                    else
+                    else if (set1.Count > 0)
                     {
                         int randSet1 = Random.Range(0, set1.Count);
                         Selected.Add(set1[randSet1]);
                         set1.RemoveAt(randSet1);
                     }
+                    else
+                    {
+                        Debug.LogError("No more action words to add to selection");
+                    }
 
                 }
 
             }
-
             else if (playerData.currentChapter == Chapter.chapter_4)
             {
-                if (EightyTwenty > 2)
+                if (EightyTwenty > 2 && set4.Count > 0)
                 {
-
                     int randSet4 = Random.Range(0, set4.Count);
                     Selected.Add(set4[randSet4]);
                     set4.RemoveAt(randSet4);
@@ -1690,25 +1735,28 @@ public static class AISystem
                 else
                 {
                     int random = Random.Range(0, 3);
-                    if (random == 0)
+                    if (random == 0 && set2.Count > 0)
                     {
                         int randSet2 = Random.Range(0, set2.Count);
                         Selected.Add(set2[randSet2]);
                         set2.RemoveAt(randSet2);
                     }
-                    else if (random == 1)
+                    else if (random == 1 && set1.Count > 0)
                     {
                         int randSet1 = Random.Range(0, set1.Count);
                         Selected.Add(set1[randSet1]);
                         set1.RemoveAt(randSet1);
                     }
-                    else
+                    else if (set3.Count > 0)
                     {
                         int randSet3 = Random.Range(0, set3.Count);
                         Selected.Add(set3[randSet3]);
                         set3.RemoveAt(randSet3);
                     }
-
+                    else
+                    {
+                        Debug.LogError("No more action words to add to selection");
+                    }
                 }
 
             }
@@ -1717,6 +1765,7 @@ public static class AISystem
                 Selected.Add(set5[Random.Range(0, set5.Count)]);
             }
         }
+
         Debug.Log(Selected[0]);
         Debug.Log(Selected[1]);
         Debug.Log(Selected[2]);
@@ -2380,7 +2429,6 @@ public static class AISystem
             }
             catch
             {
-                Debug.Log("In catch");
                 pairPool.AddRange(ChallengeWordDatabase.GetSubstitutionWordPairs(set5));
                 index = Random.Range(0, pairPool.Count);
                 selectedPairPool = pairPool[index];
@@ -2393,7 +2441,6 @@ public static class AISystem
             {
                 while (pairPool[index].word1.elkoninCount < 4)
                 {
-                    Debug.Log("In hereere");
                     pairPool.RemoveAt(index);
                     index = Random.Range(0, pairPool.Count);
                     selectedPairPool = pairPool[index];
@@ -2401,7 +2448,6 @@ public static class AISystem
             }
             catch
             {
-                Debug.Log("In catch");
                 pairPool.AddRange(ChallengeWordDatabase.GetSubstitutionWordPairs(set5));
                 index = Random.Range(0, pairPool.Count);
                 selectedPairPool = pairPool[index];
@@ -2423,7 +2469,7 @@ public static class AISystem
 
 
 
-    
+
     private static Queue<GameType> bossBattleGameQueue;
 
     // placing boss battle determination function here for noe :) will move l8r

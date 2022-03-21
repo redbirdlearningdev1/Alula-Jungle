@@ -162,7 +162,6 @@ public class TigerCoinGameManager : MonoBehaviour
             int rand = Random.Range(0,5);
             waterCoins[rand].SetValue(currentTargetValue);
         }
-
         //Scripted Tiger Paw Photo
         else if (StudentInfoSystem.GetCurrentProfile().tPawCoinPlayed == 0 || testthis)
         {
