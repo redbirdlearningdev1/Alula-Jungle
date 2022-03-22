@@ -47,6 +47,9 @@ public class NewBoatGameManager : MonoBehaviour
         // play ambient sounds
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.AmbientOceanLoop, 0.1f);
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.AmbientSeagullsLoop, 0.1f);
+
+        // initialize list
+        audiosToRepeat = new List<AudioClip>();
     }
 
     void Start()
@@ -106,6 +109,7 @@ public class NewBoatGameManager : MonoBehaviour
 
                 // stop repeating audio
                 repeatAudio = false;
+                audiosToRepeat.Clear();
                 AudioManager.instance.StopTalk();
 
                 // play sound effect
@@ -127,6 +131,7 @@ public class NewBoatGameManager : MonoBehaviour
 
                 // stop repeating audio
                 repeatAudio = false;
+                audiosToRepeat.Clear();
                 AudioManager.instance.StopTalk();
 
                 StartCoroutine(ContinueBoatGame());
@@ -138,6 +143,7 @@ public class NewBoatGameManager : MonoBehaviour
     {
         // stop repeating audio
         repeatAudio = false;
+        audiosToRepeat.Clear();
         AudioManager.instance.StopTalk();
 
         // show no input on microphone
@@ -449,6 +455,7 @@ public class NewBoatGameManager : MonoBehaviour
 
             // stop repeating audio
             repeatAudio = false;
+            audiosToRepeat.Clear();
             AudioManager.instance.StopTalk();
 
             // play sound effects
@@ -470,6 +477,7 @@ public class NewBoatGameManager : MonoBehaviour
 
             // stop repeating audio
             repeatAudio = false;
+            audiosToRepeat.Clear();
             AudioManager.instance.StopTalk();
 
             // play sound effects
@@ -492,6 +500,7 @@ public class NewBoatGameManager : MonoBehaviour
 
             // stop repeating audio
             repeatAudio = false;
+            audiosToRepeat.Clear();
             AudioManager.instance.StopTalk();
 
             StartCoroutine(ContinueBoatGame());
@@ -504,6 +513,7 @@ public class NewBoatGameManager : MonoBehaviour
 
         // stop repeating audio
         repeatAudio = false;
+        audiosToRepeat.Clear();
         AudioManager.instance.StopTalk();
 
         // turn off island cutout

@@ -97,7 +97,7 @@ MonoBehaviour:
     rightCharacter: 2
     rightEmotionNum: 2
     rightMouthEnum: 2
-    rightEyesEnum: 0
+    rightEyesEnum: 4
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 6cbcd4f389bd0aa42a74323d023cca3d, type: 3}
     audioClipName: FR_1_1_Red_46_T1

@@ -487,6 +487,7 @@ public class RoyalDecreeController : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
         // go to game scene
+        GameManager.instance.prevMapLocation = ScrollMapManager.instance.GetCurrentMapLocation();
         GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(currGameType), true);
     }   
 

@@ -396,7 +396,7 @@ MonoBehaviour:
     onNoGoto: 0
     leftCharacter: 6
     leftEmotionNum: 4
-    leftMouthEnum: 0
+    leftMouthEnum: 1
     leftEyesEnum: 0
     rightCharacter: 5
     rightEmotionNum: 7

@@ -285,12 +285,14 @@ public class MinigameWheelController : MonoBehaviour
 
             GameManager.instance.playingRoyalRumbleGame = true;
             GameManager.instance.mapID = currentIdentifier;
+            GameManager.instance.prevMapLocation = ScrollMapManager.instance.GetCurrentMapLocation();
             GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(RRgame), true, 0.5f, true);
             yield break;
         }
 
         GameManager.instance.prevGameTypePlayed = game;
         GameManager.instance.mapID = currentIdentifier;
+        GameManager.instance.prevMapLocation = ScrollMapManager.instance.GetCurrentMapLocation();
         GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(game), true, 0.5f, true);
     }
 }

@@ -215,6 +215,12 @@ public class SettingsManager : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
     }
 
+    public void GoToMapLocation(int location)
+    {
+        MapLocation mapLocation = (MapLocation)location;
+        ScrollMapManager.instance.SmoothGoToMapLocation(mapLocation);
+    }
+
     /* 
     ################################################
     #   MICROPHONE SETTINGS
@@ -244,7 +250,7 @@ public class SettingsManager : MonoBehaviour
 
     /* 
     ################################################
-    #   MISC FUNCTIONS
+    #   UI BUTTON FUNCTIONS
     ################################################
     */
 
@@ -266,7 +272,7 @@ public class SettingsManager : MonoBehaviour
 
     public void ToggleWagonButtonActive(bool opt)
     {
-        if (SceneManager.GetActiveScene().name == "ScrollMap")
+        if (SceneManager.GetActiveScene().name == "ScrollMap" && StickerSystem.instance != null)
         {
             StickerSystem.instance.ToggleWagonButtonActive(opt);
         }
@@ -311,6 +317,12 @@ public class SettingsManager : MonoBehaviour
         movingMenuButton = false;
     }
 
+    /* 
+    ################################################
+    #   SCROLL MAP SETTINGS WINDOW FUNCTIONS
+    ################################################
+    */
+
     public void ToggleSettingsWindow()
     {
         // play audio blip
@@ -349,6 +361,8 @@ public class SettingsManager : MonoBehaviour
 
     public IEnumerator ToggleSettingsWindow(bool opt)
     {
+        print ("here!");
+
         if (opt)
         {
             // open window
@@ -362,35 +376,6 @@ public class SettingsManager : MonoBehaviour
             // close windows
             SettingsWindowController.instance.CloseAllWindows();
             InGameSettingsWindowController.instance.CloseAllWindows();
-
-            // close confirm windows iff open
-            if (returnToScrollMapConfirmWindow.transform.localScale.x > 0f)
-                CloseConfirmScrollMapWindow();
-            if (returnToSplashScreenConfirmWindow.transform.localScale.x > 0f)
-                CloseConfirmSplashScreenWindow();
-            if (exitApplicationConfirmWindow.transform.localScale.x > 0f)
-                CloseExitApplicationConfirmWindow();
-        }
-
-        yield return new WaitForSeconds(1f);
-
-        animatingWindow = false;
-        settingsWindowOpen = opt;
-    }
-
-    public IEnumerator ToggleSplashScreenSettingsWindow(bool opt)
-    {
-        if (opt)
-        {
-            // open window
-            SplashScreenSettingsWindowController.instance.OpenWindow();
-        }
-        else
-        {
-            // save settings to profile
-            SaveSettingsToProfile();
-
-            // close window
             SplashScreenSettingsWindowController.instance.CloseAllWindows();
 
             // close confirm windows iff open
@@ -408,20 +393,46 @@ public class SettingsManager : MonoBehaviour
         settingsWindowOpen = opt;
     }
 
-    public IEnumerator ToggleInGameSettingsWindow(bool opt)
+    public void CloseAllSettingsWindows()
+    {
+        StartCoroutine(ToggleSettingsWindow(false));
+        StartCoroutine(ToggleInGameSettingsWindow(false));
+        StartCoroutine(ToggleSplashScreenSettingsWindow(false));
+    }
+
+    public void CloseAllConfirmWindows()
+    {
+        // close confirm windows iff open
+        if (returnToScrollMapConfirmWindow.transform.localScale.x > 0f)
+            CloseConfirmScrollMapWindow();
+        if (returnToSplashScreenConfirmWindow.transform.localScale.x > 0f)
+            CloseConfirmSplashScreenWindow();
+        if (exitApplicationConfirmWindow.transform.localScale.x > 0f)
+            CloseExitApplicationConfirmWindow();
+    }
+
+    /* 
+    ################################################
+    #   SPLASH SCREEN SETTINGS WINDOW FUNCTIONS
+    ################################################
+    */
+
+    public IEnumerator ToggleSplashScreenSettingsWindow(bool opt)
     {
         if (opt)
         {
             // open window
-            InGameSettingsWindowController.instance.OpenWindow();
+            SplashScreenSettingsWindowController.instance.OpenWindow();
         }
         else
         {
             // save settings to profile
             SaveSettingsToProfile();
 
-            // close window
+            // close windows
+            SettingsWindowController.instance.CloseAllWindows();
             InGameSettingsWindowController.instance.CloseAllWindows();
+            SplashScreenSettingsWindowController.instance.CloseAllWindows();
 
             // close confirm windows iff open
             if (returnToScrollMapConfirmWindow.transform.localScale.x > 0f)
@@ -437,6 +448,50 @@ public class SettingsManager : MonoBehaviour
         animatingWindow = false;
         settingsWindowOpen = opt;
     }
+
+    /* 
+    ################################################
+    #   IN-GAME SETTINGS WINDOW FUNCTIONS
+    ################################################
+    */
+
+    public IEnumerator ToggleInGameSettingsWindow(bool opt)
+    {
+        if (opt)
+        {
+            // open window
+            InGameSettingsWindowController.instance.OpenWindow();
+        }
+        else
+        {
+            // save settings to profile
+            SaveSettingsToProfile();
+
+            // close windows
+            SettingsWindowController.instance.CloseAllWindows();
+            InGameSettingsWindowController.instance.CloseAllWindows();
+            SplashScreenSettingsWindowController.instance.CloseAllWindows();
+
+            // close confirm windows iff open
+            if (returnToScrollMapConfirmWindow.transform.localScale.x > 0f)
+                CloseConfirmScrollMapWindow();
+            if (returnToSplashScreenConfirmWindow.transform.localScale.x > 0f)
+                CloseConfirmSplashScreenWindow();
+            if (exitApplicationConfirmWindow.transform.localScale.x > 0f)
+                CloseExitApplicationConfirmWindow();
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        animatingWindow = false;
+        settingsWindowOpen = opt;
+    }
+
+    /* 
+    ################################################
+    #   CONFIRM SCROLL MAP WINDOW FUNCTIONS
+    ################################################
+    */
 
     public void OpenConfirmScrollMapWindow()
     {
@@ -457,12 +512,14 @@ public class SettingsManager : MonoBehaviour
     {
         // close confirm window
         returnToScrollMapConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
-        settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
-        settingsWindowBG.GetComponent<Image>().raycastTarget = false;
+        confirmWindowBG.LerpImageAlpha(confirmWindowBG.GetComponent<Image>(), 0f, 0.5f);
+        confirmWindowBG.GetComponent<Image>().raycastTarget = false;
 
         // close settings window
-       InGameSettingsWindowController.instance.CloseAllWindows();
-       yield return new WaitForSeconds(1f);
+        InGameSettingsWindowController.instance.CloseAllWindows();
+        settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
+        settingsWindowBG.GetComponent<Image>().raycastTarget = false;
+        yield return new WaitForSeconds(1f);
 
         // go to scroll map scene
         GameManager.instance.LoadScene("ScrollMap", true, 0.5f, true);
@@ -489,14 +546,11 @@ public class SettingsManager : MonoBehaviour
         animatingWindow = false;
     }
 
-    public void CloseAllSettingsWindows()
-    {
-        ToggleSettingsWindow(false);
-        ToggleInGameSettingsWindow(false);
-        ToggleSplashScreenSettingsWindow(false);
-    }
-
-
+    /* 
+    ################################################
+    #   CONFIRM SPLASH SCREEN WINDOW FUNCTIONS
+    ################################################
+    */
 
     public IEnumerator ToggleReturnToSplashScreenConfirmWindow(bool opt)
     {
@@ -544,21 +598,24 @@ public class SettingsManager : MonoBehaviour
     {
         // close confirm window
         returnToSplashScreenConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
-        settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
-        settingsWindowBG.GetComponent<Image>().raycastTarget = false;
+        confirmWindowBG.LerpImageAlpha(confirmWindowBG.GetComponent<Image>(), 0f, 0.5f);
+        confirmWindowBG.GetComponent<Image>().raycastTarget = false;
 
         // close settings window
         SettingsWindowController.instance.CloseAllWindows();
+        settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
+        settingsWindowBG.GetComponent<Image>().raycastTarget = false;
         yield return new WaitForSeconds(0.2f);
 
         // go to scroll map scene
         GameManager.instance.LoadScene("SplashScene", true, 0.5f, true);
     }
 
-
-
-
-
+    /* 
+    ################################################
+    #   CONFIRM EXIT APP WINDOW FUNCTIONS
+    ################################################
+    */
 
     public IEnumerator ToggleExitApplicationConfirmWindow(bool opt)
     {
@@ -612,11 +669,13 @@ public class SettingsManager : MonoBehaviour
 
         // close confirm window
         exitApplicationConfirmWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.1f, 0.1f);
-        settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
-        settingsWindowBG.GetComponent<Image>().raycastTarget = false;
+        confirmWindowBG.LerpImageAlpha(confirmWindowBG.GetComponent<Image>(), 0f, 0.5f);
+        confirmWindowBG.GetComponent<Image>().raycastTarget = false;
 
         // close settings window
         SettingsWindowController.instance.CloseAllWindows();
+        settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
+        settingsWindowBG.GetComponent<Image>().raycastTarget = false;
         yield return new WaitForSeconds(0.2f);
 
         // fade out to black
@@ -629,6 +688,12 @@ public class SettingsManager : MonoBehaviour
         Application.Quit();
 #endif
     }
+
+    /* 
+    ################################################
+    #   ON VOLUME SLIDER CHANGED FUNCTIONS
+    ################################################
+    */
 
     public void OnMasterVolumeSliderChanged()
     {

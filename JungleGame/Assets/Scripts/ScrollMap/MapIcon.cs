@@ -596,19 +596,19 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                     StudentInfoSystem.GetCurrentProfile().mapData.PS_boat.isFixed = opt;
                     break;
                 case MapIconIdentfier.PS_bridge:
-                    StudentInfoSystem.GetCurrentProfile().mapData.PS_boat.isFixed = opt;
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_bridge.isFixed = opt;
                     break;
                 case MapIconIdentfier.PS_front:
-                    StudentInfoSystem.GetCurrentProfile().mapData.PS_boat.isFixed = opt;
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_front.isFixed = opt;
                     break;
                 case MapIconIdentfier.PS_parrot:
-                    StudentInfoSystem.GetCurrentProfile().mapData.PS_boat.isFixed = opt;
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_parrot.isFixed = opt;
                     break;
                 case MapIconIdentfier.PS_sail:
-                    StudentInfoSystem.GetCurrentProfile().mapData.PS_boat.isFixed = opt;
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_sail.isFixed = opt;
                     break;
                 case MapIconIdentfier.PS_wheel:
-                    StudentInfoSystem.GetCurrentProfile().mapData.PS_boat.isFixed = opt;
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_wheel.isFixed = opt;
                     break;
 
                 // mermaid beach
@@ -889,6 +889,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
             GameManager.instance.playingRoyalRumbleGame = true;
             GameManager.instance.mapID = identifier;
+            GameManager.instance.prevMapLocation = ScrollMapManager.instance.GetCurrentMapLocation();
             GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(StudentInfoSystem.GetCurrentProfile().royalRumbleGame), true, 0.5f, true);
             yield break;
         }

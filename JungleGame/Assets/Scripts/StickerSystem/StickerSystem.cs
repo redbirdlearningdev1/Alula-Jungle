@@ -75,6 +75,7 @@ public class StickerSystem : MonoBehaviour
     public Transform gluedStickerParent;
     public Image hideInventoryArea;
     public Image openInventoryArea;
+    public Image validInventoryArea;
     public LerpableObject deleteStickerButton;
 
 
@@ -309,11 +310,46 @@ public class StickerSystem : MonoBehaviour
 
     private IEnumerator PlaceStickerOnStickerBoard()
     {
-        // set image parent as current stickerboard
-        currentHeldSticker.SetParent(gluedStickerParent);
-        currentHeldSticker.GetComponent<StickerImage>().ShowYesNoButtons();
-        // ready to glue sticker
-        readyToGlueSticker = true;
+        // make area raycastable
+        validInventoryArea.raycastTarget = true;
+
+        // make sure sticker is in valid bounds
+        bool validArea = false;
+        // send raycast to check for open inventory
+        var pointerEventData = new PointerEventData(EventSystem.current);
+        pointerEventData.position = Input.mousePosition;
+        var raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerEventData, raycastResults);
+
+        if (raycastResults.Count > 0)
+        {
+            foreach(var result in raycastResults)
+            {
+                if (result.gameObject.transform.CompareTag("ValidStickerArea"))
+                {
+                    validArea = true;
+                }
+            }
+        }
+
+        // make area no longer raycastable
+        validInventoryArea.raycastTarget = false;
+
+        if (validArea)
+        {
+            // set image parent as current stickerboard
+            currentHeldSticker.SetParent(gluedStickerParent);
+            currentHeldSticker.GetComponent<StickerImage>().ShowYesNoButtons();
+            // ready to glue sticker
+            readyToGlueSticker = true;
+        }
+        else
+        {
+            // return sticker to inventory
+            ReturnStickerToInventory();
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
+        }
+        
     
         yield return null;
     }
@@ -967,6 +1003,17 @@ public class StickerSystem : MonoBehaviour
         if (wagonAnimating)
         {
             return;
+        }
+
+        // check for scroll map story beat if finishing tutorial
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            // done with sticker tutorial
+            StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
+            StudentInfoSystem.SaveStudentPlayerData();
+            StickerSystem.instance.ToggleStickerButtonWiggleGlow(false);
+
+            ScrollMapManager.instance.CheckForScrollMapGameEvent(StudentInfoSystem.GetCurrentProfile().currStoryBeat);
         }
 
         // hide back button

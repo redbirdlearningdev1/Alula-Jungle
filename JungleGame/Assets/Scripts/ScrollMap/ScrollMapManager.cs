@@ -22,7 +22,8 @@ public enum MapLocation
     GorillaStudy,
     Monkeys,
     PalaceIntro,
-    COUNT
+
+    NONE
 }
 
 [System.Serializable]
@@ -109,13 +110,20 @@ public class ScrollMapManager : MonoBehaviour
         MapDataLoader.instance.LoadMapData(StudentInfoSystem.GetCurrentProfile().mapData);
         DisableAllMapIcons(true);
 
-        // set map location
-        int index = StudentInfoSystem.GetCurrentProfile().mapLimit;
-        SetMapPosition(index);
-        SetMapLimit(index);
+        // set map location to be prev location if not null
+        if (GameManager.instance.prevMapLocation != MapLocation.NONE)
+        {
+            SetMapPosition((int)GameManager.instance.prevMapLocation);
+            GameManager.instance.prevMapLocation = MapLocation.NONE;
+        }
+        else
+        {   
+            SetMapPosition(StudentInfoSystem.GetCurrentProfile().mapLimit);
+        }
+        SetMapLimit(StudentInfoSystem.GetCurrentProfile().mapLimit);
 
         // update settings map
-        SettingsWindowController.instance.UpdateRedPos(mapLocations[index].location);
+        SettingsWindowController.instance.UpdateRedPos(mapLocations[currMapLocation].location);
         SettingsWindowController.instance.UpdateMapSprite();
 
         // get current game event
@@ -245,9 +253,6 @@ public class ScrollMapManager : MonoBehaviour
         // show UI
         if (activateMapNavigation)
             ToggleNavButtons(true);
-        
-        // update map icons
-        UpdateMapIcons(true);
 
         // show GM UI
         if (revealGMUI)
@@ -265,6 +270,15 @@ public class ScrollMapManager : MonoBehaviour
 
         // set RR banner on map icon
         MapDataLoader.instance.SetRoyalRumbleBanner();
+
+        // update map icons
+        StartCoroutine(DelayUpdateMapIcons(0.5f, true));
+    }
+
+    private IEnumerator DelayShowGMUI()
+    {
+        yield return new WaitForSeconds(1f);
+        PalaceArrow.instance.ShowArrow();
     }
 
     private IEnumerator DelayShowPalaceArrow()
@@ -287,8 +301,8 @@ public class ScrollMapManager : MonoBehaviour
         activateMapNavigation = true;
         revealGMUI = true;
 
-        // enable map sections up to current section
-        EnableMapSectionsUpTo(mapLocations[currMapLocation].location);
+        // enable map sections up to map limit
+        EnableMapSectionsUpTo(mapLocations[mapLimit].location);
 
         if (playGameEvent == StoryBeat.InitBoatGame)
         {   
@@ -359,6 +373,8 @@ public class ScrollMapManager : MonoBehaviour
                     StudentInfoSystem.GetCurrentProfile().mapData.GV_statue.isFixed &&
                     StudentInfoSystem.GetCurrentProfile().mapData.GV_fire.isFixed)
                 {
+                    // override map location
+                    SetMapPosition((int)MapLocation.GorillaVillage);
                     // play GV rebuilt
                     MapAnimationController.instance.PlayMapAnim(MapAnim.GorillaVillageRebuilt);
                     // wait for animation to be done
@@ -393,6 +409,8 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.VillageChallengeDefeated)
         {
+            // override map location
+            SetMapPosition((int)MapLocation.GorillaVillage);
             // play village defeated animation
             MapAnimationController.instance.PlayMapAnim(MapAnim.GorillaVillageDefeated);
             // wait for animation to be done
@@ -407,6 +425,8 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().mapData.MS_ramp.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.MS_tower.isFixed)
             {
+                // override map location
+                SetMapPosition((int)MapLocation.Mudslide);
                 // play MS rebuilt
                 MapAnimationController.instance.PlayMapAnim(MapAnim.MudslideRebuilt);
                 // wait for animation to be done
@@ -440,6 +460,8 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.MudslideDefeated)
         {
+            // override map location
+            SetMapPosition((int)MapLocation.Mudslide);
             // play MS defeated
             MapAnimationController.instance.PlayMapAnim(MapAnim.MudslideDefeated);
             // wait for animation to be done
@@ -459,6 +481,8 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().mapData.OV_statue.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.OV_fire.isFixed)
             {
+                // override map location
+                SetMapPosition((int)MapLocation.OrcVillage);
                 // play OV rebuilt
                 MapAnimationController.instance.PlayMapAnim(MapAnim.OrcVillageRebuilt);
                 // wait for animation to be done
@@ -492,6 +516,8 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.OrcVillageDefeated)
         {
+            // override map location
+            SetMapPosition((int)MapLocation.OrcVillage);
             // play OV defeated
             MapAnimationController.instance.PlayMapAnim(MapAnim.OrcVillageDefeated);
             // wait for animation to be done
@@ -516,6 +542,8 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().mapData.SF_spider.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.SF_web.isFixed)
             {
+                // override map location
+                SetMapPosition((int)MapLocation.SpookyForest);
                 // play SF rebuilt
                 MapAnimationController.instance.PlayMapAnim(MapAnim.SpookyForestRebuilt);
                 // wait for animation to be done
@@ -549,6 +577,8 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.SpookyForestDefeated)
         {
+            // override map location
+            SetMapPosition((int)MapLocation.SpookyForest);
             // play SF defeated
             MapAnimationController.instance.PlayMapAnim(MapAnim.SpookyForestDefeated);
             // wait for animation to be done
@@ -568,6 +598,8 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().mapData.OC_fire.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.OC_smallTent.isFixed)
             {
+                // override map location
+                SetMapPosition((int)MapLocation.OrcCamp);
                 // play OC rebuilt
                 MapAnimationController.instance.PlayMapAnim(MapAnim.OrcCampRebuilt);
                 // wait for animation to be done
@@ -601,6 +633,8 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.OrcCampDefeated)
         {
+            // override map location
+            SetMapPosition((int)MapLocation.OrcCamp);
             // play SF defeated
             MapAnimationController.instance.PlayMapAnim(MapAnim.OrcCampDefeated);
             // wait for animation to be done
@@ -615,6 +649,8 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().mapData.GP_rock1.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.GP_rock2.isFixed)
             {
+                // override map location
+            SetMapPosition((int)MapLocation.GorillaPoop);
                 // play OC rebuilt
                 MapAnimationController.instance.PlayMapAnim(MapAnim.GorillaPoopRebuilt);
                 // wait for animation to be done
@@ -648,6 +684,8 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.GorillaPoopDefeated)
         {
+            // override map location
+            SetMapPosition((int)MapLocation.GorillaPoop);
             // play GP defeated
             MapAnimationController.instance.PlayMapAnim(MapAnim.GorillaPoopDefeated);
             // wait for animation to be done
@@ -674,6 +712,8 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().mapData.WC_sign.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.WC_statue.isFixed)
             {
+                // override map location
+                SetMapPosition((int)MapLocation.WindyCliff);
                 // play WCS rebuilt
                 MapAnimationController.instance.PlayMapAnim(MapAnim.WindyCliffRebuilt);
                 // wait for animation to be done
@@ -707,6 +747,8 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.WindyCliffDefeated)
         {
+            // override map location
+            SetMapPosition((int)MapLocation.WindyCliff);
             // play WC defeated
             MapAnimationController.instance.PlayMapAnim(MapAnim.WindyCliffDefeated);
             // wait for animation to be done
@@ -723,6 +765,8 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().mapData.PS_sail.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.PS_wheel.isFixed)
             {
+                // override map location
+                SetMapPosition((int)MapLocation.PirateShip);
                 // play PS rebuilt
                 MapAnimationController.instance.PlayMapAnim(MapAnim.PirateShipRebuilt);
                 // wait for animation to be done
@@ -756,6 +800,8 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.PirateShipDefeated)
         {
+            // override map location
+            SetMapPosition((int)MapLocation.PirateShip);
             // play PS defeated
             MapAnimationController.instance.PlayMapAnim(MapAnim.PirateShipDefeated);
             // wait for animation to be done
@@ -777,6 +823,8 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().mapData.MB_rock.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.MB_umbrella.isFixed)
             {
+                // override map location
+                SetMapPosition((int)MapLocation.MermaidBeach);
                 // play MB rebuilt
                 MapAnimationController.instance.PlayMapAnim(MapAnim.MermaidBeachRebuilt);
                 // wait for animation to be done
@@ -810,6 +858,8 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.MermaidBeachDefeated)
         {
+            // override map location
+            SetMapPosition((int)MapLocation.MermaidBeach);
             // play PS defeated
             MapAnimationController.instance.PlayMapAnim(MapAnim.MermaidBeachDefeated);
             // wait for animation to be done
@@ -826,6 +876,8 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().mapData.R_lizard2.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.R_pyramid.isFixed)
             {
+                // override map location
+                SetMapPosition((int)MapLocation.Ruins1);
                 // play R rebuilt
                 MapAnimationController.instance.PlayMapAnim(MapAnim.RuinsRebuilt);
                 // wait for animation to be done
@@ -859,6 +911,8 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.RuinsDefeated)
         {
+            // override map location
+            SetMapPosition((int)MapLocation.Ruins1);
             // play R defeated
             MapAnimationController.instance.PlayMapAnim(MapAnim.RuinsDefeated);
             // wait for animation to be done
@@ -883,6 +937,8 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().mapData.EJ_sign.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.EJ_torch.isFixed)
             {
+                // override map location
+                SetMapPosition((int)MapLocation.ExitJungle);
                 // play R rebuilt
                 MapAnimationController.instance.PlayMapAnim(MapAnim.ExitJungleRebuilt);
                 // wait for animation to be done
@@ -916,6 +972,8 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.ExitJungleDefeated)
         {
+            // override map location
+            SetMapPosition((int)MapLocation.ExitJungle);
             // play EJ defeated
             MapAnimationController.instance.PlayMapAnim(MapAnim.ExitJungleDefeated);
             // wait for animation to be done
@@ -935,6 +993,8 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().mapData.GS_tent1.isFixed &&
                 StudentInfoSystem.GetCurrentProfile().mapData.GS_tent2.isFixed)
             {
+                // override map location
+                SetMapPosition((int)MapLocation.GorillaStudy);
                 // play GS rebuilt
                 MapAnimationController.instance.PlayMapAnim(MapAnim.GorillaStudyRebuilt);
                 // wait for animation to be done
@@ -968,6 +1028,8 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.GorillaStudyDefeated)
         {
+            // override map location
+            SetMapPosition((int)MapLocation.GorillaStudy);
             // play GS defeated
             MapAnimationController.instance.PlayMapAnim(MapAnim.GorillaStudyDefeated);
             // wait for animation to be done
@@ -984,7 +1046,8 @@ public class ScrollMapManager : MonoBehaviour
             {
                 // change enabled map sections
                 EnableMapSectionsUpTo(MapLocation.GorillaStudy);
-
+                // override map location
+                SetMapPosition((int)MapLocation.Monkeys);
                 // play M rebuilt
                 MapAnimationController.instance.PlayMapAnim(MapAnim.MonkeysRebuilt);
                 // wait for animation to be done
@@ -1027,6 +1090,8 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.MonkeysDefeated)
         {
+            // override map location
+            SetMapPosition((int)MapLocation.Monkeys);
             // play M defeated
             MapAnimationController.instance.PlayMapAnim(MapAnim.MonkeysDefeated);
             // wait for animation to be done
@@ -1087,17 +1152,6 @@ public class ScrollMapManager : MonoBehaviour
         {
             // start on boat house
             SetMapPosition((int)MapLocation.BoatHouse);
-        }
-
-
-        
-
-
-        
-        else
-        {
-            // unlock everything
-            EnableMapSectionsUpTo(MapLocation.PalaceIntro);
         }
 
         // game event is over
@@ -1336,6 +1390,12 @@ public class ScrollMapManager : MonoBehaviour
         EnableMapIcons(mapLocations[currMapLocation], false);
     }
 
+    private IEnumerator DelayUpdateMapIcons(float delay, bool revealStars)
+    {
+        yield return new WaitForSeconds(delay);
+        UpdateMapIcons(revealStars);
+    }
+
     public void UpdateMapIcons(bool revealStars)
     {
         // reload data
@@ -1364,6 +1424,48 @@ public class ScrollMapManager : MonoBehaviour
             }
         }
     }
+
+    public void SmoothGoToMapLocation(MapLocation location)
+    {
+        // return if already at map location
+        if ((int)location == currMapLocation)
+            return;
+
+        // return if location is past map limit
+        if ((int)location > mapLimit)
+            return;
+
+        StartCoroutine(SmoothGoToMapLocationRoutine(location));
+    }
+
+    private IEnumerator SmoothGoToMapLocationRoutine(MapLocation location)
+    {
+        RaycastBlockerController.instance.CreateRaycastBlocker("GoToMapLocation");
+
+        // close settings window
+        SettingsManager.instance.CloseAllSettingsWindows();
+        // remove all stars
+        DisableAllMapIcons(true);
+
+        yield return new WaitForSeconds(1f);
+
+        currMapLocation = (int)location;
+
+        // move map to next right map location
+        float x = GetXPosFromMapLocationIndex(currMapLocation);
+        StartCoroutine(MapSmoothTransitionX(Map.localPosition.x, x, 2f));
+
+        yield return new WaitForSeconds(2.5f);
+
+        // show current stars
+        EnableMapIcons(mapLocations[currMapLocation], true);
+
+        // update settings map
+        SettingsWindowController.instance.UpdateRedPos(location);
+
+        RaycastBlockerController.instance.RemoveRaycastBlocker("GoToMapLocation");
+    }
+
 
     public void UnlockMapArea(MapLocation location, bool leaveLetterboxUp = false)
     {

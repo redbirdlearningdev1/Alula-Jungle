@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class StarAwardController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class StarAwardController : MonoBehaviour
     [SerializeField] private GameObject star2;
     [SerializeField] private GameObject star3;
     [SerializeField] private Button button;
+
+    public TextMeshProUGUI windowText;
 
     public float longScaleTime;
     public float shortScaleTime;
@@ -55,6 +58,26 @@ public class StarAwardController : MonoBehaviour
         {
             GameManager.instance.SendError(this, "invalid number of stars awarded");
             return;
+        }
+
+        // set text based on 
+        switch (numStars)
+        {
+            case 0:
+                windowText.text = "try again!";
+                break;
+
+            case 1:
+                windowText.text = "nice job!";
+                break;
+
+            case 2:
+                windowText.text = "congratulations!";
+                break;
+
+            case 3:
+                windowText.text = "perfect!";
+                break;
         }
 
         // close settings menu if open
@@ -859,6 +882,108 @@ public class StarAwardController : MonoBehaviour
                 {
                     coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge3.stars, numStars);
                     StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge3.stars = numStars;
+                }
+                break;
+
+            /* 
+            ################################################
+            #   PIRATE SHIP
+            ################################################
+            */
+        
+            case MapIconIdentfier.MB_bucket:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MB_bucket.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MB_bucket.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_bucket.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.MB_bucket.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.MB_castle:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MB_castle.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MB_castle.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_castle.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.MB_castle.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.MB_ladder:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MB_ladder.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MB_ladder.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_ladder.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.MB_ladder.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+            
+            case MapIconIdentfier.MB_mermaids:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MB_mermaids.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MB_mermaids.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_mermaids.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.MB_mermaids.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.MB_rock:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MB_rock.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MB_rock.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_rock.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.MB_rock.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.MB_umbrella:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MB_umbrella.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MB_umbrella.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_umbrella.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.MB_umbrella.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.MB_challenge_1:
+                    if (StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.stars < numStars)
+                    {
+                        coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.stars, numStars);
+                        StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.stars = numStars;
+                    }
+                    break;
+
+            case MapIconIdentfier.MB_challenge_2:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge2.stars = numStars;
+                }
+                break;
+
+            case MapIconIdentfier.MB_challenge_3:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.stars = numStars;
                 }
                 break;
 

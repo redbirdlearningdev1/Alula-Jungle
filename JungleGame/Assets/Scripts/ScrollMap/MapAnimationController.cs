@@ -3665,7 +3665,6 @@ public class MapAnimationController : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
         yield return new WaitForSeconds(1f);
 
-
         // before unlocking pirate ship - set objects to be destroyed
         foreach (var icon in ScrollMapManager.instance.mapLocations[9].mapIcons)
             icon.SetFixed(false, false, true);

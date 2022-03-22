@@ -49,6 +49,7 @@ public class GameManager : DontDestroy<GameManager>
 
     public StoryGameData storyGameData;
     public MapIconIdentfier mapID;
+    public MapLocation prevMapLocation = MapLocation.NONE;
     
     [HideInInspector] public bool repairMapIconID; // when the scroll map appears -> repair this icon
     [HideInInspector] public GameType prevGameTypePlayed = GameType.None;
@@ -103,6 +104,20 @@ public class GameManager : DontDestroy<GameManager>
         }
     }
 
+    void OnApplicationFocus(bool focus)
+    {
+        if (focus)
+        {
+            // turn on audio
+            AudioManager.instance.SetMasterVolume(StudentInfoSystem.GetCurrentProfile().masterVol);
+        }
+        else
+        {
+            // turn off audio
+            AudioManager.instance.SetMasterVolume(0f);
+        }
+    }
+
     private IEnumerator LogDateTimeNow(float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -122,7 +137,7 @@ public class GameManager : DontDestroy<GameManager>
 
     private IEnumerator SceneInitCoroutine()
     {
-        // clean up enviroment
+        // clean up environment
         SceneCleanup();
 
         FadeObject.instance.SetFadeImmediate(true); // turn on black fade
@@ -281,17 +296,12 @@ public class GameManager : DontDestroy<GameManager>
         TalkieManager.instance.StopTalkieSystem();
 
         // remove ui buttons
-        //SettingsManager.instance.SetWagonButton(false);
         SettingsManager.instance.SetMenuButton(false);
+        SettingsManager.instance.ToggleWagonButtonActive(false);
 
-        // remove wagon controller stuff
-        //WagonWindowController.instance.ResetWagonController();
-
-        // close settings menu if open
+        // close settings windows if open
         SettingsManager.instance.CloseAllSettingsWindows();
-
-        // close in development window
-        //WagonWindowController.instance.CloseInDevelopmentWindow();
+        SettingsManager.instance.CloseAllConfirmWindows();
     }
 
     /*

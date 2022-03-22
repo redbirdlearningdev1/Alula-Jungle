@@ -144,11 +144,6 @@ public class BoardBookWindow : MonoBehaviour
             // remove talkie bg
             StickerSystem.instance.talkieBG.GetComponent<Image>().raycastTarget = false;
             StickerSystem.instance.talkieBG.LerpImageAlpha( StickerSystem.instance.talkieBG.GetComponent<Image>(), 0f, 0.5f);
-
-            // done with sticker tutorial
-            StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-            StudentInfoSystem.SaveStudentPlayerData();
-            StickerSystem.instance.ToggleStickerButtonWiggleGlow(false);
         }
 
         // show wagon lester

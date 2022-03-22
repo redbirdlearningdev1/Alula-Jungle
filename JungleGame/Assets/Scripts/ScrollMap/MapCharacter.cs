@@ -617,6 +617,9 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
 
     public void GoToGameDataSceneImmediately(bool playingChallengeGame = false)
     {
+        // set prev map location
+        GameManager.instance.prevMapLocation = ScrollMapManager.instance.GetCurrentMapLocation();
+
         if (playingChallengeGame)
         {
             GameManager.instance.playingChallengeGame = true;
