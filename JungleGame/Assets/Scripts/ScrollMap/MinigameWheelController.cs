@@ -280,7 +280,7 @@ public class MinigameWheelController : MonoBehaviour
             else
             {
                 TalkieManager.instance.yesNoChoices.Clear();
-                Debug.LogError("Error: Incorrect number of Yes/No choices for last talkie");
+                //Debug.LogError("Error: Incorrect number of Yes/No choices for last talkie");
             }
 
             GameManager.instance.playingRoyalRumbleGame = true;
