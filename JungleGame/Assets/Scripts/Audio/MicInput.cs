@@ -188,7 +188,7 @@ public class MicInput : MonoBehaviour
         if (!focus)
         {
             // Debug.Log("Pause");
-            StopMicrophone();
+            //StopMicrophone();
             //Debug.Log("Stop Mic");
         }
     }
