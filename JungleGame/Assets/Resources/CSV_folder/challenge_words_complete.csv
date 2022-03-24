@@ -1,4 +1,4 @@
-Challenge_Word,Elkonin_Count,E1,E2,E3,E4,E5,E6,Gold_Coin_set
+Challenge_Word,Elkonin_Count,E1,E2,E3,E4,E5,E6,Set
 ace,2,hello,s,,,,,hello
 ache,2,hello,k,,,,,hello
 after,4,mudslide,f,t,gorilla,,,mudslide
@@ -34,7 +34,7 @@ boast,4,b,scare,s,t,,,scare
 boat,3,b,scare,t,,,,scare
 boil,3,b,howler_monkey,l,,,,howler_monkey
 bone,3,b,scare,n,,,,scare
-book,3,l,backback,k,,,,backpack
+book,3,b,backback,k,,,,backpack
 born,3,b,choice,n,,,,choice
 bought,3,b,orcs,t,,,,orcs
 box,3,b,orcs,x,,,,orcs
@@ -85,7 +85,7 @@ coat,3,c,scare,t,,,,scare
 coil,3,c,howler_monkey,l,,,,howler_monkey
 coin,3,c,howler_monkey,n,,,,howler_monkey
 cold,4,c,scare,l,d,,,scare
-collar,4,c,orcs,l,pirate,,,orcs
+collar,4,c,orcs,l,r,,,orcs
 come,3,c,think,m,,,,think
 cone,3,c,scare,n,,,,scare
 cook,3,c,backback,k,,,,backpack
@@ -128,7 +128,7 @@ dig,3,d,poop,g,,,,poop
 dirt,3,d,gorilla,t,,,,gorilla
 dive,3,d,explorer,v,,,,explorer
 dog,3,d,orcs,g,,,,orcs
-dollar,4,d,orcs,l,pirate,,,orcs
+dollar,4,d,orcs,l,r,,,orcs
 done,3,d,think,n,,,,think
 dough,2,d,scare,,,,,scare
 dove,3,d,think,v,,,,think
@@ -278,7 +278,7 @@ lab,3,l,mudslide,b,,,,mudslide
 large,3,l,pirate,g,,,,pirate
 lark,3,l,pirate,k,,,,pirate
 lawn,3,l,baby_monkey,n,,,,baby_monkey
-lead,3,l,listen,d,,,,listen
+lead,3,l,spider,d,,,,spider
 learn,3,l,gorilla,n,,,,gorilla
 leave,3,l,spider,v,,,,spider
 left,4,l,listen,f,t,,,listen
@@ -366,7 +366,7 @@ pay,2,p,hello,,,,,hello
 pear,2,p,strong_wind,,,,,strong_wind
 pen,3,p,listen,n,,,,listen
 pet,3,p,listen,t,,,,listen
-pew,2,f,that_guy,,,,,that_guy
+pew,2,p,that_guy,,,,,that_guy
 pie,2,p,explorer,,,,,explorer
 pig,3,p,poop,g,,,,poop
 pine,3,p,explorer,n,,,,explorer
@@ -549,7 +549,7 @@ tube,3,t,that_guy,b,,,,that_guy
 turn,3,t,gorilla,n,,,,gorilla
 up,2,think,p,,,,,think
 upon,4,think,p,orcs,n,,,think
-us,2,think,scare,,,,,think
+us,2,think,s,,,,,think
 use,2,that_guy,s,,,,,that_guy
 veil,3,v,hello,l,,,,hello
 vein,3,v,hello,n,,,,hello

@@ -419,7 +419,7 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
                 return ElkoninValue.pirate;
             case "gorilla":
                 return ElkoninValue.gorilla;
-            case "sounds":
+            case "sound":
                 return ElkoninValue.sounds;
             case "give":
                 return ElkoninValue.give;

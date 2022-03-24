@@ -64,9 +64,6 @@ public class ConsonantCoin : MonoBehaviour
             animationName = type.ToString();
         else
             animationName = type.ToString() + "Coin";
-
-        print ("animation name: " + animationName);
-        
         animator.Play(animationName);
     }
 
