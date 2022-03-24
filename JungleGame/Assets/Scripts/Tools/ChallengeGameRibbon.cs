@@ -143,7 +143,33 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
                 else if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType == myGameType)
                     stars = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.stars;
                 break;
-            // etc ...
+            
+            case MapLocation.SpookyForest:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.stars;
+                break;
+
+            case MapLocation.OrcCamp:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.stars;
+                break;
+
+            case MapLocation.GorillaPoop:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.stars;
+                break;
         }
 
         // place correct sprite

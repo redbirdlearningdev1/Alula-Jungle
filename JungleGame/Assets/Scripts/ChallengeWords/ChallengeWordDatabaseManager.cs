@@ -490,17 +490,7 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
 
     private ActionWordEnum ConvertToActionWord(string val) 
     {
-        // print ("action word string: " + val);
-        // print ("string length: " + val.Length);
-        
-        // int i = 0;
-        // foreach (char c in val)
-        // {
-        //     print (i + ": " + ((byte)c));
-        //     i++;
-        // }
 
-        //print (((byte)'\r'));
         string fixed_val = val.Replace("\r", "");
 
         //print ("string length after replace: " + fixed_val.Length);
@@ -540,7 +530,7 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
                 return ActionWordEnum.pirate;
             case "gorilla":
                 return ActionWordEnum.gorilla;
-            case "sounds":
+            case "sound":
                 return ActionWordEnum.sounds;
             case "give":
                 return ActionWordEnum.give;
