@@ -190,6 +190,7 @@ public class StarAwardController : MonoBehaviour
             else
             {
                 print ("you won the challenge game!");
+                SetSignPostStarAmount();
                 StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = false;
                 StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;
                 StudentInfoSystem.AdvanceStoryBeat();
@@ -1490,5 +1491,252 @@ public class StarAwardController : MonoBehaviour
         coinTarget.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
         DropdownToolbar.instance.SetGoldText((StudentInfoSystem.GetCurrentProfile().goldCoins + newCoins).ToString());
         newCoins++;
+    }
+
+    private void SetSignPostStarAmount()
+    {
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        int starCount = 0;
+
+        // only update stars if earned more stars than in memory
+        switch (GameManager.instance.mapID)
+        {
+            default:
+                GameManager.instance.SendLog(this, "No ID for game found");
+                return;
+
+            /* 
+            ################################################
+            #   GORILLA VILLAGE
+            ################################################
+            */
+
+            case MapIconIdentfier.GV_challenge_1:
+            case MapIconIdentfier.GV_challenge_2:
+            case MapIconIdentfier.GV_challenge_3:
+                if (data.mapData.GV_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.GV_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.GV_challenge3.stars == 3)
+                    starCount += 1;
+                data.mapData.GV_signPost_stars = starCount;
+                break;
+            /* 
+            ################################################
+            #   MUDSLIDE
+            ################################################
+            */
+        
+            case MapIconIdentfier.MS_challenge_1:
+            case MapIconIdentfier.MS_challenge_2:
+            case MapIconIdentfier.MS_challenge_3:
+                if (data.mapData.MS_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.MS_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.MS_challenge3.stars == 3)
+                    starCount += 1;
+                data.mapData.MS_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   ORC VILLAGE
+            ################################################
+            */
+        
+            case MapIconIdentfier.OV_challenge_1:
+            case MapIconIdentfier.OV_challenge_2:
+            case MapIconIdentfier.OV_challenge_3:
+                if (data.mapData.OV_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.OV_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.OV_challenge3.stars == 3)
+                    starCount += 1;
+                data.mapData.OV_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   SPOOKY FOREST
+            ################################################
+            */
+        
+            case MapIconIdentfier.SF_challenge_1:
+            case MapIconIdentfier.SF_challenge_2:
+            case MapIconIdentfier.SF_challenge_3:
+                if (data.mapData.SF_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.SF_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.SF_challenge3.stars == 3)
+                    starCount += 1;
+                data.mapData.SF_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   ORC CAMP
+            ################################################
+            */
+
+            case MapIconIdentfier.OC_challenge_1:
+            case MapIconIdentfier.OC_challenge_2:
+            case MapIconIdentfier.OC_challenge_3:
+                if (data.mapData.OC_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.OC_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.OC_challenge3.stars == 3)
+                    starCount += 1;
+                data.mapData.OC_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   GORILLA POOP
+            ################################################
+            */
+        
+            case MapIconIdentfier.GP_challenge_1:
+            case MapIconIdentfier.GP_challenge_2:
+            case MapIconIdentfier.GP_challenge_3:
+                if (data.mapData.GP_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.GP_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.GP_challenge3.stars == 3)
+                    starCount += 1;
+                data.mapData.GP_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   WINDY CLIFF
+            ################################################
+            */
+        
+            case MapIconIdentfier.WC_challenge_1:
+            case MapIconIdentfier.WC_challenge_2:
+            case MapIconIdentfier.WC_challenge_3:
+                if (data.mapData.WC_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.WC_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.WC_challenge3.stars == 3)
+                    starCount += 1;
+                data.mapData.WC_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   PIRATE SHIP
+            ################################################
+            */
+        
+            case MapIconIdentfier.PS_challenge_1:
+            case MapIconIdentfier.PS_challenge_2:
+            case MapIconIdentfier.PS_challenge_3:
+                if (data.mapData.PS_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.PS_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.PS_challenge3.stars == 3)
+                    starCount += 1;
+                data.mapData.PS_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   PIRATE SHIP
+            ################################################
+            */
+        
+            case MapIconIdentfier.MB_challenge_1:
+            case MapIconIdentfier.MB_challenge_2:
+            case MapIconIdentfier.MB_challenge_3:
+                if (data.mapData.MB_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.MB_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.MB_challenge3.stars == 3)
+                    starCount += 1;
+                data.mapData.MB_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   RUINS
+            ################################################
+            */
+
+            case MapIconIdentfier.R_challenge_1:
+            case MapIconIdentfier.R_challenge_2:
+            case MapIconIdentfier.R_challenge_3:
+                if (data.mapData.R_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.R_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.R_challenge3.stars == 3)
+                    starCount += 1;
+                data.mapData.R_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   EXIT JUNGLE
+            ################################################
+            */
+
+            case MapIconIdentfier.EJ_challenge_1:
+            case MapIconIdentfier.EJ_challenge_2:
+            case MapIconIdentfier.EJ_challenge_3:
+                if (data.mapData.EJ_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.EJ_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.EJ_challenge3.stars == 3)
+                    starCount += 1;
+                data.mapData.EJ_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   GORILLA STUDY
+            ################################################
+            */
+
+            case MapIconIdentfier.GS_challenge_1:
+            case MapIconIdentfier.GS_challenge_2:
+            case MapIconIdentfier.GS_challenge_3:
+                if (data.mapData.GS_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.GS_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.GS_challenge3.stars == 3)
+                    starCount += 1;
+                data.mapData.GS_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   MONKEYS
+            ################################################
+            */
+
+            case MapIconIdentfier.M_challenge_1:
+            case MapIconIdentfier.M_challenge_2:
+            case MapIconIdentfier.M_challenge_3:
+                if (data.mapData.M_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.M_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.M_challenge3.stars == 3)
+                    starCount += 1;
+                data.mapData.M_signPost_stars = starCount;
+                break;
+        }
     }
 }
