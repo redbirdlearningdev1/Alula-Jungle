@@ -184,6 +184,11 @@ public class NewPasswordGameManager : MonoBehaviour
             brutusCharacter.GetComponent<LerpableObject>().LerpPosToTransform(brutusOnScreenPos, moveTime, false);
             yield return new WaitForSeconds(moveTime);
         }
+        else
+        {
+            yield return new WaitForSeconds(0.7f);
+            PasswordTube.instance.StopTube();
+        }
 
         // play idle animations + show lock
         tigerCharacter.GetComponent<Animator>().Play("aTigerIdle");
@@ -349,8 +354,11 @@ public class NewPasswordGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // determine if correct num of coins
+        bool winRound = false;
         if (currentWord.elkoninCount == PasswordTube.instance.tubeCoins.Count)
         {
+            winRound = true;
+
             // play right audio
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
             yield return new WaitForSeconds(1f);
@@ -564,7 +572,7 @@ public class NewPasswordGameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // begin next round
-        StartCoroutine(NewRound(true));
+        StartCoroutine(NewRound(winRound));
     }
 
     private void RemoveExtraCoins(List<UniversalCoinImage> extraCoins)

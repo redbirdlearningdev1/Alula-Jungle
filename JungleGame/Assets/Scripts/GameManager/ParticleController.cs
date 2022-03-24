@@ -285,9 +285,9 @@ public class ParticleController : MonoBehaviour
                 currentParticle = juliusJewel1;
                 break;
             case Chapter.chapter_4:
+            case Chapter.chapter_5:
                 currentParticle = juliusJewel2;
                 break;
-            case Chapter.chapter_5:
             case Chapter.chapter_final:
                 currentParticle = juliusJewel3;
                 break;

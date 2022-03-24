@@ -1666,11 +1666,6 @@ public class MapAnimationController : MonoBehaviour
                 break;
 
             case StoryBeat.GorillaStudy_challengeGame_1:
-                // place darwin in GS
-                darwin.mapAnimator.Play("DarwinGSPos");
-                darwin.GetComponent<Image>().raycastTarget = true;
-                darwin.interactable = true;
-                darwin.FlipCharacterToRight();
                 // place julius in GS
                 julius.mapAnimator.Play("JuliusGSPos");
                 julius.characterAnimator.Play("aTigerTwitch");
@@ -1686,11 +1681,6 @@ public class MapAnimationController : MonoBehaviour
                 break;
 
             case StoryBeat.GorillaStudy_challengeGame_2:
-                // place darwin in GS
-                darwin.mapAnimator.Play("DarwinGSPos");
-                darwin.GetComponent<Image>().raycastTarget = true;
-                darwin.interactable = true;
-                darwin.FlipCharacterToRight();
                 // place julius in GS
                 julius.mapAnimator.Play("JuliusGSPos");
                 julius.characterAnimator.Play("sTigerIdle");
@@ -1706,11 +1696,6 @@ public class MapAnimationController : MonoBehaviour
                 break;
 
             case StoryBeat.GorillaStudy_challengeGame_3:
-                // place darwin in GS
-                darwin.mapAnimator.Play("DarwinGSPos");
-                darwin.GetComponent<Image>().raycastTarget = true;
-                darwin.interactable = true;
-                darwin.FlipCharacterToRight();
                 // place julius in GS
                 julius.mapAnimator.Play("JuliusGSPos");
                 julius.characterAnimator.Play("sTigerIdle");
@@ -1726,11 +1711,6 @@ public class MapAnimationController : MonoBehaviour
                 break;
 
             case StoryBeat.GorillaStudyDefeated:
-                // place darwin in GS
-                darwin.mapAnimator.Play("DarwinGSPos");
-                darwin.GetComponent<Image>().raycastTarget = true;
-                darwin.interactable = true;
-                darwin.FlipCharacterToRight();
                 // place julius in GS
                 julius.mapAnimator.Play("JuliusGSPos");
                 julius.characterAnimator.Play("sTigerIdle");
@@ -1847,6 +1827,7 @@ public class MapAnimationController : MonoBehaviour
                 darwin.FlipCharacterToRight();
                 darwin.mapAnimator.Play("DarwinPPos");
                 darwin.interactable = false;
+                darwin.GetComponent<Image>().raycastTarget = false;
                 // place julius in P
                 julius.ShowExclamationMark(true);
                 julius.mapAnimator.Play("JuliusPPos");
@@ -1873,6 +1854,7 @@ public class MapAnimationController : MonoBehaviour
                 // place darwin in P
                 darwin.FlipCharacterToRight();
                 darwin.mapAnimator.Play("DarwinPPos");
+                darwin.GetComponent<Image>().raycastTarget = false;
                 darwin.interactable = false;
                 // place julius in P
                 julius.ShowExclamationMark(true);
@@ -1898,6 +1880,7 @@ public class MapAnimationController : MonoBehaviour
                 // place darwin in P
                 darwin.FlipCharacterToRight();
                 darwin.mapAnimator.Play("DarwinPPos");
+                darwin.GetComponent<Image>().raycastTarget = false;
                 darwin.interactable = false;
                 // place julius in P
                 julius.mapAnimator.Play("JuliusPPos");
@@ -4227,7 +4210,7 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // R sign post springs into place
-        ScrollMapManager.instance.mapLocations[12].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.R_signPost_stars, false);
+        ScrollMapManager.instance.mapLocations[11].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.R_signPost_stars, false);
         yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
         yield return new WaitForSeconds(1f);
@@ -4368,7 +4351,6 @@ public class MapAnimationController : MonoBehaviour
         darwin.interactable = true;
         darwin.GetComponent<Image>().raycastTarget = true;
         darwin.ShowExclamationMark(true);
-        darwin.FlipCharacterToLeft();
 
         animationDone = true;
     }
@@ -4377,6 +4359,19 @@ public class MapAnimationController : MonoBehaviour
     {
         // play EJ rebuilt talkie 1
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ExitRebuilt_1_p1"));
+        while (TalkieManager.instance.talkiePlaying)
+            yield return null;
+
+        // move darwin off screen
+        darwin.FlipCharacterToRight();
+        darwin.characterAnimator.Play("gorillaWalk");
+        darwin.mapAnimator.Play("DarwinWalkOutEJ");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(darwin.mapAnimator, "DarwinWalkOutEJ"));
+
+        // play EJ rebuilt talkie 2
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ExitRebuilt_1_p2"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -4399,8 +4394,8 @@ public class MapAnimationController : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        // play EJ rebuilt talkie 2
-        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ExitRebuilt_1_p2"));
+        // play EJ rebuilt talkie 3
+        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ExitRebuilt_1_p3"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
@@ -4523,6 +4518,7 @@ public class MapAnimationController : MonoBehaviour
     {
         darwin.interactable = false;
         darwin.GetComponent<Image>().raycastTarget = false;
+        darwin.ShowExclamationMark(false);
 
         // gorilla study intro 1
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("GCampIntro_1_p1"));
@@ -4535,7 +4531,6 @@ public class MapAnimationController : MonoBehaviour
 
         // make darwin interactable
         darwin.GetComponent<Image>().raycastTarget = true;
-        darwin.ShowExclamationMark(true);
         darwin.interactable = true;
 
         // change enabled map sections
@@ -4551,6 +4546,14 @@ public class MapAnimationController : MonoBehaviour
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("GCampRebuilt_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
+
+        // move darwin off screen
+        darwin.FlipCharacterToRight();
+        darwin.characterAnimator.Play("gorillaWalk");
+        darwin.mapAnimator.Play("DarwinWalkOutGS");
+
+        // wait for animation to be done
+        yield return new WaitForSeconds(GetAnimationTime(darwin.mapAnimator, "DarwinWalkOutGS"));
 
         // play GS rebuilt talkie 2
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("GCampRebuilt_1_p2"));
@@ -4592,7 +4595,7 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
 
         julius.ShowExclamationMark(true);
-        darwin.GetComponent<Image>().raycastTarget = true;
+        julius.GetComponent<Image>().raycastTarget = true;
         julius.interactable = true;
         julius.GetComponent<Animator>().Play("aTigerTwitch");
 
@@ -4795,9 +4798,15 @@ public class MapAnimationController : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
         yield return new WaitForSeconds(1f);
 
+        // place taxi bird in PI
+        taxiBird.mapAnimator.Play("TaxiBirdPIPos");
+        taxiBird.GetComponent<Image>().raycastTarget = true;
+        taxiBird.interactable = true;
         // place darwin in PI
         darwin.mapAnimator.Play("DarwinPIPos");
         darwin.GetComponent<Image>().raycastTarget = true;
+        darwin.ShowExclamationMark(true);
+        darwin.FlipCharacterToLeft();
         darwin.interactable = true;
         // place julius in P
         julius.mapAnimator.Play("JuliusPPos");
@@ -4814,6 +4823,7 @@ public class MapAnimationController : MonoBehaviour
         // Save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 16;
         StudentInfoSystem.GetCurrentProfile().mapData.M_signPost_unlocked = true;
+        StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_final; // new chapter!
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
 
@@ -4828,6 +4838,8 @@ public class MapAnimationController : MonoBehaviour
     {
         // remove darwin's exclamation point
         darwin.ShowExclamationMark(false);
+        julius.GetComponent<Image>().raycastTarget = false;
+        darwin.interactable = false;
 
         // play Final Boss 1
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("FinalBoss_1_p1"));
@@ -4889,7 +4901,6 @@ public class MapAnimationController : MonoBehaviour
         // show boss battle bar
         BossBattleBar.instance.ShowBar();
         
-
         // advance story beat
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
@@ -4955,22 +4966,75 @@ public class MapAnimationController : MonoBehaviour
 
         if (mapAnim == MapAnim.BossBattle1)
         {
-            // play BBChallenge_1_p1 talkie
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBChallenge_1_p1"));
+            // play julius try again talkie
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle || StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseBossBattle)
+            {
+                int random = Random.Range(0, 2);
+
+                if (random == 0)
+                {
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBTryAgain_1_p1"));
+                }
+                else if (random == 1)
+                {
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBTryAgain_1_p2"));
+                }
+            }
+            else
+            {
+                // play BBChallenge_1_p1 talkie
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBChallenge_1_p1"));
+            }
+            
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
         }
         else if (mapAnim == MapAnim.BossBattle2)
         {
-            // play BBChallenge_1_p2 talkie
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBChallenge_1_p2"));
+            // play julius try again talkie
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle || StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseBossBattle)
+            {
+                int random = Random.Range(0, 2);
+
+                if (random == 0)
+                {
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBTryAgain_1_p1"));
+                }
+                else if (random == 1)
+                {
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBTryAgain_1_p2"));
+                }
+            }
+            else
+            {
+                // play BBChallenge_1_p2 talkie
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBChallenge_1_p2"));
+            }
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
         }
         else if (mapAnim == MapAnim.BossBattle3)
         {
-            // play BBChallenge_1_p3 talkie
-            TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBChallenge_1_p3"));
+
+            // play julius try again talkie
+            if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle || StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseBossBattle)
+            {
+                int random = Random.Range(0, 2);
+
+                if (random == 0)
+                {
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBTryAgain_1_p1"));
+                }
+                else if (random == 1)
+                {
+                    TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBTryAgain_1_p2"));
+                }
+            }
+            else
+            {
+                // play BBChallenge_1_p3 talkie
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBChallenge_1_p3"));
+            }
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
         }

@@ -1323,7 +1323,7 @@ public class ScrollMapManager : MonoBehaviour
                 case MapLocation.Ruins2:
                     if (StudentInfoSystem.GetCurrentProfile().mapData.R_signPost_unlocked)
                     {
-                        mapLocations[location].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.R_signPost_stars, GetMapLocationIcons(MapLocation.Ruins1).enabled);
+                        mapLocations[(int)MapLocation.Ruins1].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.R_signPost_stars, GetMapLocationIcons(MapLocation.Ruins1).enabled);
                         return;
                     }
                     break;

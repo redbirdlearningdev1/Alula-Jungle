@@ -1388,10 +1388,12 @@ public class DevMenuManager : MonoBehaviour
             case StoryBeat.BossBattle2:
             case StoryBeat.BossBattle3:
             case StoryBeat.EndBossBattle:
+            case StoryBeat.FinishedGame:
+            case StoryBeat.COUNT:
                 StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.PalaceIntro;
-                FixIconsUpTo(MapLocation.Monkeys);
-                SetChallengeGamesUpTo(MapLocation.Monkeys);
-                SetActionWordPool(MapLocation.Monkeys);
+                FixIconsUpTo(MapLocation.PalaceIntro);
+                SetChallengeGamesUpTo(MapLocation.PalaceIntro);
+                SetActionWordPool(MapLocation.PalaceIntro);
                 break;
         }
 
@@ -2235,6 +2237,7 @@ public class DevMenuManager : MonoBehaviour
                 break;
 
             case MapLocation.Monkeys:
+            case MapLocation.PalaceIntro:
                 SetChallengeGame(MapLocation.GorillaVillage, 3);
                 SetChallengeGame(MapLocation.Mudslide, 3);
                 SetChallengeGame(MapLocation.OrcVillage, 3);

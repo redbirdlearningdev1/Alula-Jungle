@@ -108,6 +108,10 @@ public class ChapterEnterVisualController : MonoBehaviour
             case MapLocation.Monkeys:
                 chapterImage.sprite = chapter5;
                 sectionImage.sprite = BeforeBossSign;
+                break;
+            case MapLocation.PalaceIntro:
+                chapterImage.sprite = chapter6;
+                sectionImage.sprite = BossSign;
                 break;             
         }
     }

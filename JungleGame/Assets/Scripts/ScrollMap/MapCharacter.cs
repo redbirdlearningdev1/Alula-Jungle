@@ -399,24 +399,6 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             // only continue if tapped on julius
             if (character == Character.Julius)
             {
-                // play julius try again talkie
-                if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle)
-                {
-                    int random = Random.Range(0, 2);
-
-                    if (random == 0)
-                    {
-                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBTryAgain_1_p1"));
-                    }
-                    else if (random == 1)
-                    {
-                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBTryAgain_1_p2"));
-                    }
-
-                    while (TalkieManager.instance.talkiePlaying)
-                        yield return null;
-                }
-
                 MapAnimationController.instance.PlayBossBattleGame(MapAnim.BossBattle1);
                 yield break;
             }
@@ -426,24 +408,6 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             // only continue if tapped on julius
             if (character == Character.Julius)
             {
-                // play julius try again talkie
-                if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle)
-                {
-                    int random = Random.Range(0, 2);
-
-                    if (random == 0)
-                    {
-                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBTryAgain_1_p1"));
-                    }
-                    else if (random == 1)
-                    {
-                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBTryAgain_1_p2"));
-                    }
-
-                    while (TalkieManager.instance.talkiePlaying)
-                        yield return null;
-                }
-
                 MapAnimationController.instance.PlayBossBattleGame(MapAnim.BossBattle2);
                 yield break;
             }
@@ -453,24 +417,6 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             // only continue if tapped on julius
             if (character == Character.Julius)
             {
-                // play julius try again talkie
-                if (StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle)
-                {
-                    int random = Random.Range(0, 2);
-
-                    if (random == 0)
-                    {
-                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBTryAgain_1_p1"));
-                    }
-                    else if (random == 1)
-                    {
-                        TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBTryAgain_1_p2"));
-                    }
-
-                    while (TalkieManager.instance.talkiePlaying)
-                        yield return null;
-                }
-                
                 MapAnimationController.instance.PlayBossBattleGame(MapAnim.BossBattle3);
                 yield break;
             }
@@ -505,10 +451,13 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         {
             if (character == Character.Julius)
             {
+                // remove exclamation mark
+                ShowExclamationMark(false);
+
                 // get current chapter
                 Chapter currChapter = StudentInfoSystem.GetCurrentProfile().currentChapter;
 
-                // play correct RR talkie based on current chapter
+                // play correct talkie based on current chapter
                 switch (currChapter)
                 {
                     case Chapter.chapter_0:
@@ -556,6 +505,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         {
             if (character == Character.Marcus)
             {
+                // remove exclamation mark
+                ShowExclamationMark(false);
 
                 // play marcus challenges
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaMarcus_1_p1"));
@@ -582,6 +533,9 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         {
             if (character == Character.Brutus)
             {
+                // remove exclamation mark
+                ShowExclamationMark(false);
+
                 // play brutus challenges
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaBrutus_1_p1"));
                 while (TalkieManager.instance.talkiePlaying)
@@ -601,6 +555,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             }
             else // if the player chooses no, break and do not go to next game scene
             {
+                // readd exclamation mark
+                ShowExclamationMark(true);
                 TalkieManager.instance.yesNoChoices.Clear();
                 yield break;
             }

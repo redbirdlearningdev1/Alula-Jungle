@@ -85,7 +85,10 @@ public class SettingsWindowController : MonoBehaviour
         mapTab.transform.localScale = new Vector3(0f, 0f, 0f);
 
         // update map sprite
-        UpdateMapSprite();
+        if (StudentInfoSystem.GetCurrentProfile() != null)
+        {
+            UpdateMapSprite();
+        }   
     }
 
     public void CloseAllWindows()

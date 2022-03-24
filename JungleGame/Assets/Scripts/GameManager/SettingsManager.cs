@@ -361,8 +361,6 @@ public class SettingsManager : MonoBehaviour
 
     public IEnumerator ToggleSettingsWindow(bool opt)
     {
-        print ("here!");
-
         if (opt)
         {
             // open window

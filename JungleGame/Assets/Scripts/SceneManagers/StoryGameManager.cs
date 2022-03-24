@@ -120,11 +120,14 @@ public class StoryGameManager : MonoBehaviour
         // skip story game w SPACE if in dev mode
         if (GameManager.instance.devModeActivated)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
-                GameManager.instance.SendLog(this, "skipping story game!");
-                StopAllCoroutines();
-                EndGame();
+                if (Input.GetKeyDown(KeyCode.S))
+                {
+                    GameManager.instance.SendLog(this, "skipping story game!");
+                    StopAllCoroutines();
+                    EndGame();
+                }
             }
         }
     }

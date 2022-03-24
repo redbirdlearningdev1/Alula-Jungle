@@ -8,11 +8,13 @@ public static class StudentInfoSystem
 
     public static StudentPlayerData GetCurrentProfile()
     {
-        // by default - use profile 1
+        // by default - use profile 1 if in editor
+#if UNITY_EDITOR
         if (currentStudentPlayer == null)
         {
             SetStudentPlayer(StudentIndex.student_1);
         }
+#endif
         return currentStudentPlayer;
     }
 
@@ -28,11 +30,9 @@ public static class StudentInfoSystem
 
     private static void SetMostRecentProfile(StudentIndex index)
     {
-        GameManager.instance.SendLog("StudentInfoSystem", "set most recent profile to: " + index);
-
-        var data1 = LoadSaveSystem.LoadStudentData(StudentIndex.student_1, false);
-        var data2 = LoadSaveSystem.LoadStudentData(StudentIndex.student_2, false);
-        var data3 = LoadSaveSystem.LoadStudentData(StudentIndex.student_3, false);
+        var data1 = LoadSaveSystem.LoadStudentData(StudentIndex.student_1, true);
+        var data2 = LoadSaveSystem.LoadStudentData(StudentIndex.student_2, true);
+        var data3 = LoadSaveSystem.LoadStudentData(StudentIndex.student_3, true);
 
         data1.mostRecentProfile = false;
         data2.mostRecentProfile = false;
@@ -50,6 +50,8 @@ public static class StudentInfoSystem
                 data3.mostRecentProfile = true;
                 break;
         }
+
+        GameManager.instance.SendLog("StudentInfoSystem", "set most recent profile to: " + index);
 
         LoadSaveSystem.SaveStudentData(data1);
         LoadSaveSystem.SaveStudentData(data2);
@@ -69,7 +71,6 @@ public static class StudentInfoSystem
             SetMostRecentProfile(currentStudentPlayer.studentIndex); // make profile most recent
             GameManager.instance.SendLog("StudentInfoSystem", "saving current player data - " + currentStudentPlayer.studentIndex);
         }
-            
         else
             GameManager.instance.SendLog("StudentInfoSystem", "could not save player data - current player is null");
     }
