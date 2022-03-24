@@ -24,6 +24,7 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
     public Sprite wordFactoryDeletingLogo;
     public Sprite tigerPawCoinsLogo;
     public Sprite tigerPawPhotosLogo;
+    public Sprite passwordLogo;
 
     private GameType myGameType;
 
@@ -99,6 +100,8 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
                 return tigerPawPhotosLogo;
             case GameType.TigerPawCoins:
                 return tigerPawCoinsLogo;
+            case GameType.Password:
+                return passwordLogo;
         }
     }
 

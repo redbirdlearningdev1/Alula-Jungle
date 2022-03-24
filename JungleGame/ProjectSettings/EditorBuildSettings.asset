@@ -72,6 +72,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TestingScenes/TalkieTestScene.unity
     guid: 28f02cb424ced12449d1560558a4b03e
   - enabled: 1
+    path: Assets/Scenes/TestingScenes/ChallengeWordTestScene.unity
+    guid: c2b3aace56cad8f46a803e9d4d3cab3c
+  - enabled: 1
     path: Assets/Scenes/EndScene.unity
     guid: f98fe981be5612243b001ba8e3142994
   - enabled: 1

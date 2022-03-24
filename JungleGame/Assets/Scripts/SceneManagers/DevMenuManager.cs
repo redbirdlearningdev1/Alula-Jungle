@@ -104,6 +104,11 @@ public class DevMenuManager : MonoBehaviour
         GameManager.instance.LoadScene("TalkieTestScene", true, 0.5f, true);
     }
 
+    public void OnChallengeWordSceneButtonPresseds()
+    {
+        GameManager.instance.LoadScene("ChallengeWordTestScene", true, 0.5f, true);
+    }
+
     /* 
     ################################################
     #   PROFILE SECTION
