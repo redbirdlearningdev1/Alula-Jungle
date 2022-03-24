@@ -106,15 +106,17 @@ public class GameManager : DontDestroy<GameManager>
 
     void OnApplicationFocus(bool focus)
     {
+        //Debug.Log(AudioManager.instance.GetMasterVolume());
         if (focus)
         {
             // turn on audio
-            AudioManager.instance.SetMasterVolume(StudentInfoSystem.GetCurrentProfile().masterVol);
+            //AudioManager.instance.SetMasterVolume(StudentInfoSystem.GetCurrentProfile().masterVol);
         }
         else
         {
             // turn off audio
-            AudioManager.instance.SetMasterVolume(0f);
+            //AudioManager.instance.SetMasterVolume(0f);
+            //AudioManager.instance.SetMasterVolume(StudentInfoSystem.GetCurrentProfile().masterVol / 3f);
         }
     }
 
