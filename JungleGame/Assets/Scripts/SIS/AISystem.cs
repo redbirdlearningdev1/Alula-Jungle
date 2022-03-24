@@ -1514,18 +1514,24 @@ public static class AISystem
             unusedWordList.AddRange(globalWordList);
         }
 
-        int index = Random.Range(0, unusedWordList.Count);
-        ChallengeWord word = unusedWordList[index];
-        try
+
+        if (unusedWordList.Contains(playerData.lastWordFaced))
         {
-            if (word == playerData.lastWordFaced)
-            {
-                return ChallengeWordSelectionTigerPawCoin(playerData);
-            }
+            unusedWordList.Remove(playerData.lastWordFaced);
         }
-        catch
+
+        int index;
+        ChallengeWord word;
+        if (unusedWordList.Count > 0)
         {
-            Debug.Log("This Broke maybe");
+            index = Random.Range(0, unusedWordList.Count);
+            word = unusedWordList[index];
+        }
+        else
+        {
+            unusedWordList.AddRange(globalWordList);
+            index = Random.Range(0, unusedWordList.Count);
+            word = unusedWordList[index];
         }
 
         playerData.lastWordFaced = word;
