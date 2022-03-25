@@ -437,6 +437,9 @@ public class RummageGameManager : MonoBehaviour
             yield break;
         }
 
+        // play incorrect sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
+
         timesMissed++;
         orc.failOrc();
         yield return new WaitForSeconds(.75f);
@@ -449,8 +452,6 @@ public class RummageGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2.0f);
         orc.stopOrc();
-        atPile = false;
-
 
         // play reminder popup
         List<AudioClip> clips = new List<AudioClip>();
@@ -467,12 +468,17 @@ public class RummageGameManager : MonoBehaviour
         piles[2].colliderOn();
         piles[3].colliderOn();
         piles[4].colliderOn();
-        StartCoroutine(SetPilesActive(true));
 
         // make coins interactable
         SetCoinsInteractable(true);
-        // unlock piles
+
+        yield return new WaitForSeconds(0.25f);
+        StartCoroutine(SetPilesActive(true));
+        yield return new WaitForSeconds(0.25f);
+
+        // unlock all piles
         UnlockAllPiles();
+        atPile = false;
         // turn on raycaster
         RummageCoinRaycaster.instance.isOn = true;
     }
@@ -516,7 +522,7 @@ public class RummageGameManager : MonoBehaviour
         orc.successOrc();
         yield return new WaitForSeconds(1f);
         orc.stopOrc();
-        atPile = false;
+    
         piles[0].colliderOn();
         piles[1].colliderOn();
         piles[2].colliderOn();
@@ -591,6 +597,7 @@ public class RummageGameManager : MonoBehaviour
 
         // unlock all piles
         UnlockAllPiles();
+        atPile = false;
         // turn on raycaster
         RummageCoinRaycaster.instance.isOn = true;
     }
@@ -683,7 +690,7 @@ public class RummageGameManager : MonoBehaviour
 
     private IEnumerator StartGame(int index)
     {
-        StartCoroutine(SetPilesActive(false));
+        StartCoroutine(SetPilesActive(false, true));
         orc.channelOrc();
         
         // make pile larger

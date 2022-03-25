@@ -145,6 +145,13 @@ public class BoardBookWindow : MonoBehaviour
             StickerSystem.instance.talkieBG.GetComponent<Image>().raycastTarget = false;
             StickerSystem.instance.talkieBG.LerpImageAlpha( StickerSystem.instance.talkieBG.GetComponent<Image>(), 0f, 0.5f);
         }
+        else
+        {
+            // set buttons to be interactable 
+            StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().interactable = true;
+            StickerSystem.instance.stickerBoard.GetComponent<StickerBoardButton>().interactable = true;
+            StickerSystem.instance.boardBook.GetComponent<BoardBookButton>().interactable = true;
+        }
 
         // show wagon lester
         StickerSystem.instance.lesterAnimator.Play("geckoIntro");
@@ -152,12 +159,7 @@ public class BoardBookWindow : MonoBehaviour
         StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().ResetLesterTimers();
 
         yield return new WaitForSeconds(0.5f);
-
-        // set buttons to be interactable 
-        StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().interactable = true;
-        StickerSystem.instance.stickerBoard.GetComponent<StickerBoardButton>().interactable = true;
-        StickerSystem.instance.boardBook.GetComponent<BoardBookButton>().interactable = true;
-
+        
         // show back button + dropdown toolbar
         StickerSystem.instance.wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
         StickerSystem.instance.wagonBackButton.GetComponent<BackButton>().interactable = true;

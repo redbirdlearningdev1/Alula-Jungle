@@ -34,6 +34,10 @@ public class NewBoatGameManager : MonoBehaviour
     private bool waitForGreenButton = true;
     private bool waitingForMicInput = false;
 
+
+    private Coroutine repeatAudioRoutine;
+    private Coroutine boatGameRoutine;
+
     void Awake()
     {
         if (instance == null)
@@ -54,7 +58,7 @@ public class NewBoatGameManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(ContinueBoatGame());
+        boatGameRoutine = StartCoroutine(ContinueBoatGame());
     }
 
     void Update()
@@ -75,13 +79,14 @@ public class NewBoatGameManager : MonoBehaviour
 
         if (repeatAudio)
         {
+            print ("repeat audio = on");
             repeatTimer += Time.deltaTime;
             if (repeatTimer > repeatDuration)
             {
                 if (!playingRepeatAudios)
                 {
                     playingRepeatAudios = true;
-                    StartCoroutine(PlayRepeatAudios());
+                    repeatAudioRoutine = StartCoroutine(PlayRepeatAudios());
 
                     // only repeat 3 times on event 4
                     if (boatGameEvent == 4)
@@ -93,6 +98,17 @@ public class NewBoatGameManager : MonoBehaviour
                         }
                     }
                 }
+            }
+        }
+        else
+        {
+            print ("repeat audio = off");
+            if (repeatAudioRoutine != null)
+            {
+                StopCoroutine(repeatAudioRoutine);
+                repeatAudioRoutine = null;
+                repeatTimer = 0f;
+                playingRepeatAudios = false;
             }
         }
 
@@ -115,7 +131,8 @@ public class NewBoatGameManager : MonoBehaviour
                 // play sound effect
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.FoundIslandSparkle, 1f);
 
-                StartCoroutine(ContinueBoatGame());
+                StopCoroutine(boatGameRoutine);
+                boatGameRoutine = StartCoroutine(ContinueBoatGame());
             }
         }
 
@@ -134,7 +151,8 @@ public class NewBoatGameManager : MonoBehaviour
                 audiosToRepeat.Clear();
                 AudioManager.instance.StopTalk();
 
-                StartCoroutine(ContinueBoatGame());
+                StopCoroutine(boatGameRoutine);
+                boatGameRoutine = StartCoroutine(ContinueBoatGame());
             }
         }
     }
@@ -183,8 +201,11 @@ public class NewBoatGameManager : MonoBehaviour
         {
             if (!repeatAudio)
             {
+                // reset audio repeat timer
+                playingRepeatAudios = false;
+                repeatTimer = 0f;
                 AudioManager.instance.StopTalk();
-                break;
+                yield break;
             }
 
             AudioManager.instance.PlayTalk(audio);
@@ -461,7 +482,8 @@ public class NewBoatGameManager : MonoBehaviour
             // play sound effects
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BoatHorn, 0.5f);
 
-            StartCoroutine(ContinueBoatGame());
+            StopCoroutine(boatGameRoutine);
+            boatGameRoutine = StartCoroutine(ContinueBoatGame());
         }
     }
 
@@ -484,7 +506,8 @@ public class NewBoatGameManager : MonoBehaviour
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.EngineStart, 0.5f);
             AudioManager.instance.PlayFX_loop(AudioDatabase.instance.AmbientEngineRumble, 0.2f);
 
-            StartCoroutine(ContinueBoatGame());
+            StopCoroutine(boatGameRoutine);
+            boatGameRoutine = StartCoroutine(ContinueBoatGame());
         }
     }
 
@@ -503,7 +526,8 @@ public class NewBoatGameManager : MonoBehaviour
             audiosToRepeat.Clear();
             AudioManager.instance.StopTalk();
 
-            StartCoroutine(ContinueBoatGame());
+            StopCoroutine(boatGameRoutine);
+            boatGameRoutine = StartCoroutine(ContinueBoatGame());
         }
     }
 
@@ -522,7 +546,8 @@ public class NewBoatGameManager : MonoBehaviour
         // play happy sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
 
-        StartCoroutine(ContinueBoatGame());
+        StopCoroutine(boatGameRoutine);
+        boatGameRoutine = StartCoroutine(ContinueBoatGame());
     }
 
     public void ArrivedAtIsland()
@@ -534,6 +559,7 @@ public class NewBoatGameManager : MonoBehaviour
         // move throttle down
         BoatThrottleController.instance.StopThrottle();
 
-        StartCoroutine(ContinueBoatGame());
+        StopCoroutine(boatGameRoutine);
+        boatGameRoutine = StartCoroutine(ContinueBoatGame());
     }
 }

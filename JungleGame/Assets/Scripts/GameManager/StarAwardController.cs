@@ -164,6 +164,8 @@ public class StarAwardController : MonoBehaviour
             StartCoroutine(AwardStarsRoutine(numStars, 0));
             return;
         }
+
+
         // determine if challenge game
         if (GameManager.instance.playingChallengeGame)
         {
@@ -190,10 +192,10 @@ public class StarAwardController : MonoBehaviour
             else
             {
                 print ("you won the challenge game!");
-                SetSignPostStarAmount();
                 StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = false;
                 StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;
                 StudentInfoSystem.AdvanceStoryBeat();
+                StudentInfoSystem.SaveStudentPlayerData();
             }
         }
         // minigame stuff
@@ -201,7 +203,7 @@ public class StarAwardController : MonoBehaviour
         {
             // increase number of minigames played
             StudentInfoSystem.GetCurrentProfile().minigamesPlayed += 1;
-            print ("you coompleted a minigame, minigames played: " + StudentInfoSystem.GetCurrentProfile().minigamesPlayed);
+            print ("you completed a minigame, minigames played: " + StudentInfoSystem.GetCurrentProfile().minigamesPlayed);
         }
 
         // only update stars if earned more stars than in memory
@@ -1332,6 +1334,12 @@ public class StarAwardController : MonoBehaviour
             GameManager.instance.finishedRoyalRumbleGame = true;
             GameManager.instance.wonRoyalRumbleGame = numStars > 0;
 
+            // do not repair map icon if player failed royal rumble
+            if (numStars == 0)
+            {
+                GameManager.instance.repairMapIconID = false;
+            }
+
             StudentInfoSystem.GetCurrentProfile().royalRumbleActive = false;
             StudentInfoSystem.GetCurrentProfile().royalRumbleGame = GameType.None;
             
@@ -1339,6 +1347,9 @@ public class StarAwardController : MonoBehaviour
             GameManager.instance.mapID = StudentInfoSystem.GetCurrentProfile().royalRumbleID;
             StudentInfoSystem.GetCurrentProfile().royalRumbleID = MapIconIdentfier.None;
         }
+
+        // update signpost stars
+        SetSignPostStarAmount();
         
         // save data
         StudentInfoSystem.SaveStudentPlayerData();
@@ -1502,7 +1513,7 @@ public class StarAwardController : MonoBehaviour
         switch (GameManager.instance.mapID)
         {
             default:
-                GameManager.instance.SendLog(this, "No ID for game found");
+                GameManager.instance.SendLog(this, "No ID for game found - not playing a challenge game");
                 return;
 
             /* 
@@ -1520,6 +1531,9 @@ public class StarAwardController : MonoBehaviour
                     starCount += 1;
                 if (data.mapData.GV_challenge3.stars == 3)
                     starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
                 data.mapData.GV_signPost_stars = starCount;
                 break;
             /* 
@@ -1537,6 +1551,9 @@ public class StarAwardController : MonoBehaviour
                     starCount += 1;
                 if (data.mapData.MS_challenge3.stars == 3)
                     starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
                 data.mapData.MS_signPost_stars = starCount;
                 break;
 
@@ -1555,6 +1572,9 @@ public class StarAwardController : MonoBehaviour
                     starCount += 1;
                 if (data.mapData.OV_challenge3.stars == 3)
                     starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
                 data.mapData.OV_signPost_stars = starCount;
                 break;
 
@@ -1573,6 +1593,9 @@ public class StarAwardController : MonoBehaviour
                     starCount += 1;
                 if (data.mapData.SF_challenge3.stars == 3)
                     starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
                 data.mapData.SF_signPost_stars = starCount;
                 break;
 
@@ -1591,6 +1614,9 @@ public class StarAwardController : MonoBehaviour
                     starCount += 1;
                 if (data.mapData.OC_challenge3.stars == 3)
                     starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
                 data.mapData.OC_signPost_stars = starCount;
                 break;
 
@@ -1609,6 +1635,9 @@ public class StarAwardController : MonoBehaviour
                     starCount += 1;
                 if (data.mapData.GP_challenge3.stars == 3)
                     starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
                 data.mapData.GP_signPost_stars = starCount;
                 break;
 
@@ -1627,6 +1656,9 @@ public class StarAwardController : MonoBehaviour
                     starCount += 1;
                 if (data.mapData.WC_challenge3.stars == 3)
                     starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
                 data.mapData.WC_signPost_stars = starCount;
                 break;
 
@@ -1645,6 +1677,9 @@ public class StarAwardController : MonoBehaviour
                     starCount += 1;
                 if (data.mapData.PS_challenge3.stars == 3)
                     starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
                 data.mapData.PS_signPost_stars = starCount;
                 break;
 
@@ -1663,6 +1698,9 @@ public class StarAwardController : MonoBehaviour
                     starCount += 1;
                 if (data.mapData.MB_challenge3.stars == 3)
                     starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
                 data.mapData.MB_signPost_stars = starCount;
                 break;
 
@@ -1681,6 +1719,9 @@ public class StarAwardController : MonoBehaviour
                     starCount += 1;
                 if (data.mapData.R_challenge3.stars == 3)
                     starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
                 data.mapData.R_signPost_stars = starCount;
                 break;
 
@@ -1699,6 +1740,9 @@ public class StarAwardController : MonoBehaviour
                     starCount += 1;
                 if (data.mapData.EJ_challenge3.stars == 3)
                     starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
                 data.mapData.EJ_signPost_stars = starCount;
                 break;
 
@@ -1717,6 +1761,9 @@ public class StarAwardController : MonoBehaviour
                     starCount += 1;
                 if (data.mapData.GS_challenge3.stars == 3)
                     starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
                 data.mapData.GS_signPost_stars = starCount;
                 break;
 
@@ -1735,6 +1782,9 @@ public class StarAwardController : MonoBehaviour
                     starCount += 1;
                 if (data.mapData.M_challenge3.stars == 3)
                     starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
                 data.mapData.M_signPost_stars = starCount;
                 break;
         }

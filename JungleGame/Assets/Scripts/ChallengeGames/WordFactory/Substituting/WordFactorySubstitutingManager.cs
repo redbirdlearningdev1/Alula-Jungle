@@ -662,11 +662,13 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         // check lists
         if (currentCoins.Contains(coin))
         {
+            print ("normal coin");
             StartCoroutine(PlayAudioCoinRoutine(coin));
         }
         // water coins
         else if (waterCoins.Contains(coin))
         {
+            print ("water coin");
             StartCoroutine(PlayAudioCoinRoutine(coin, true));
         }
     }
@@ -682,7 +684,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         // return if current water coin
-        if (coin == currWaterCoin)
+        if (coin == currWaterCoin && waterCoin)
         {
             playingCoinAudio = false;
             yield break;
@@ -729,9 +731,10 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         if (evaluatingCoin)
             return;
         evaluatingCoin = true;
-        if(currentPair.index == 0)
+
+        if (currentPair.index == 0)
         {
-            currentCoins.Insert(0,coin);
+            currentCoins.Insert(0, coin);
         }
         else
         {
@@ -746,31 +749,21 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         // make current frame stop wiggle
         framesReal[currentPair.index].GetComponent<WiggleController>().StopWiggle();
 
+        currWaterCoin = coin;
+        // scale water coin correctly
+        coin.LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
+
+        // lerp coin to frame position
+        StartCoroutine(LerpMoveObject(coin.transform, framesReal[currentPair.index].position, 0.25f));
+
         if (coin.value == currentTargetValue)
         {
-            currWaterCoin = coin;
-
-            // scale water coin correctly
-            coin.LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
-
-            // lerp coin to frame position
-            StartCoroutine(LerpMoveObject(coin.transform, framesReal[currentPair.index].position, 0.25f));
             StartCoroutine(PostRound(true));
         }
         else
         {
-            currWaterCoin = coin;
-
-            // scale water coin correctly
-            coin.LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
-
-            // lerp coin to frame position
-            StartCoroutine(LerpMoveObject(coin.transform, framesReal[currentPair.index].position, 0.25f));
             StartCoroutine(PostRound(false));
         }
-
-        // return water coins
-        WordFactorySubstitutingManager.instance.ResetWaterCoins(true);
     }
 
     private IEnumerator PostRound(bool win)
@@ -783,7 +776,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         {   
             numWins++;
 
-            // reset coin wiggle and size
+            // reset coin wiggle
             if (playTutorial)
             {
                 currWaterCoin.GetComponent<WiggleController>().StopWiggle();
@@ -941,9 +934,9 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         // get rid of coins
         foreach(var coin in currentCoins)
         {
-            coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.2f, 0.2f);
+            coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.1f, 0.1f);
         }
-        currWaterCoin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.2f, 0.2f);
+        currWaterCoin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.1f, 0.1f);
         yield return new WaitForSeconds(1f);
 
         // make frames scale 0

@@ -70,8 +70,12 @@ public class SettingsManager : MonoBehaviour
     }
 
     public void SaveSettingsToProfile()
-    {
+    {        
         var data = StudentInfoSystem.GetCurrentProfile();
+
+        // return if no profile is selected
+        if (data == null)
+            return;
 
         // volumes
         data.masterVol = Mathf.Round(masterVol.value * 1000.0f) / 1000.0f;

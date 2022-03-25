@@ -214,10 +214,7 @@ public class StickerConfirmWindow : MonoBehaviour
 
     public void CloseWindowForStickerRoll()
     {
-        if (windowActive)
-        {
-            StartCoroutine(CloseWindowForStickerRollRoutine());
-        }
+        StartCoroutine(CloseWindowForStickerRollRoutine());
     }
 
     private IEnumerator CloseWindowForStickerRollRoutine()

@@ -72,6 +72,9 @@ public class GameManager : DontDestroy<GameManager>
         // set game resolution
         Screen.SetResolution(GameAwake.gameResolution.x, GameAwake.gameResolution.y, true);
 
+        // init mic
+        MicInput.instance.InitMic();
+
         if (devModeActivated)
         {
             SendLog(this, "Dev Mode set as - ON");
@@ -106,17 +109,13 @@ public class GameManager : DontDestroy<GameManager>
 
     void OnApplicationFocus(bool focus)
     {
-        //Debug.Log(AudioManager.instance.GetMasterVolume());
         if (focus)
         {
-            // turn on audio
-            //AudioManager.instance.SetMasterVolume(StudentInfoSystem.GetCurrentProfile().masterVol);
+
         }
         else
         {
-            // turn off audio
-            //AudioManager.instance.SetMasterVolume(0f);
-            //AudioManager.instance.SetMasterVolume(StudentInfoSystem.GetCurrentProfile().masterVol / 3f);
+
         }
     }
 

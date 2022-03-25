@@ -27,7 +27,9 @@ public class RoyalDecreeController : MonoBehaviour
     private bool waitToOpen = false;
 
     private List<GameType> currTriad;
+    private List<MapIconIdentfier> currTriadMapID;
     private GameType currGameType;
+    private MapIconIdentfier currMapID;
     private MapLocation mapLocation;
 
     void Awake()
@@ -98,6 +100,7 @@ public class RoyalDecreeController : MonoBehaviour
         
         // get challenge game triads + bring julius on screen
         currTriad = new List<GameType>();
+        currTriadMapID = new List<MapIconIdentfier>();
 
         MapAnimationController.instance.julius.characterAnimator.Play("tigerWalk");
         MapAnimationController.instance.julius.ShowExclamationMark(false);
@@ -112,6 +115,11 @@ public class RoyalDecreeController : MonoBehaviour
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge1.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge2.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.GV_challenge3.gameType);
+
+                currTriadMapID.Add(MapIconIdentfier.GV_challenge_1);
+                currTriadMapID.Add(MapIconIdentfier.GV_challenge_2);
+                currTriadMapID.Add(MapIconIdentfier.GV_challenge_3);
+
                 break;
 
             case MapLocation.Mudslide:
@@ -122,6 +130,11 @@ public class RoyalDecreeController : MonoBehaviour
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge1.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge2.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.MS_challenge3.gameType);
+                
+                currTriadMapID.Add(MapIconIdentfier.MS_challenge_1);
+                currTriadMapID.Add(MapIconIdentfier.MS_challenge_2);
+                currTriadMapID.Add(MapIconIdentfier.MS_challenge_3);
+                
                 break;
 
             case MapLocation.OrcVillage:
@@ -132,6 +145,11 @@ public class RoyalDecreeController : MonoBehaviour
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge1.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge2.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType);
+                
+                currTriadMapID.Add(MapIconIdentfier.OC_challenge_1);
+                currTriadMapID.Add(MapIconIdentfier.OC_challenge_2);
+                currTriadMapID.Add(MapIconIdentfier.OC_challenge_3);
+                
                 break;
 
             case MapLocation.SpookyForest:
@@ -142,6 +160,11 @@ public class RoyalDecreeController : MonoBehaviour
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType);
+                
+                currTriadMapID.Add(MapIconIdentfier.SF_challenge_1);
+                currTriadMapID.Add(MapIconIdentfier.SF_challenge_2);
+                currTriadMapID.Add(MapIconIdentfier.SF_challenge_3);
+                
                 break;    
 
             case MapLocation.OrcCamp:
@@ -152,6 +175,11 @@ public class RoyalDecreeController : MonoBehaviour
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.gameType);
+                
+                currTriadMapID.Add(MapIconIdentfier.OC_challenge_1);
+                currTriadMapID.Add(MapIconIdentfier.OC_challenge_2);
+                currTriadMapID.Add(MapIconIdentfier.OC_challenge_3);
+                
                 break;
 
             case MapLocation.GorillaPoop:
@@ -162,6 +190,11 @@ public class RoyalDecreeController : MonoBehaviour
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge1.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge2.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.GP_challenge3.gameType);
+                
+                currTriadMapID.Add(MapIconIdentfier.GP_challenge_1);
+                currTriadMapID.Add(MapIconIdentfier.GP_challenge_2);
+                currTriadMapID.Add(MapIconIdentfier.GP_challenge_3);
+                
                 break;
 
             case MapLocation.WindyCliff:
@@ -172,6 +205,11 @@ public class RoyalDecreeController : MonoBehaviour
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge1.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge2.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge3.gameType);
+                
+                currTriadMapID.Add(MapIconIdentfier.WC_challenge_1);
+                currTriadMapID.Add(MapIconIdentfier.WC_challenge_2);
+                currTriadMapID.Add(MapIconIdentfier.WC_challenge_3);
+                
                 break;
 
             case MapLocation.PirateShip:
@@ -182,6 +220,11 @@ public class RoyalDecreeController : MonoBehaviour
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge1.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge2.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge3.gameType);
+                
+                currTriadMapID.Add(MapIconIdentfier.PS_challenge_1);
+                currTriadMapID.Add(MapIconIdentfier.PS_challenge_2);
+                currTriadMapID.Add(MapIconIdentfier.PS_challenge_3);
+                
                 break;
 
             case MapLocation.MermaidBeach:
@@ -192,6 +235,11 @@ public class RoyalDecreeController : MonoBehaviour
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.gameType);
+                
+                currTriadMapID.Add(MapIconIdentfier.MB_challenge_1);
+                currTriadMapID.Add(MapIconIdentfier.MB_challenge_2);
+                currTriadMapID.Add(MapIconIdentfier.MB_challenge_3);
+                
                 break;
 
             case MapLocation.Ruins1:
@@ -203,6 +251,11 @@ public class RoyalDecreeController : MonoBehaviour
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.R_challenge1.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.R_challenge2.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.R_challenge3.gameType);
+                
+                currTriadMapID.Add(MapIconIdentfier.R_challenge_1);
+                currTriadMapID.Add(MapIconIdentfier.R_challenge_2);
+                currTriadMapID.Add(MapIconIdentfier.R_challenge_3);
+                
                 break;
 
             case MapLocation.ExitJungle:
@@ -213,6 +266,11 @@ public class RoyalDecreeController : MonoBehaviour
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge1.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge2.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge3.gameType);
+                
+                currTriadMapID.Add(MapIconIdentfier.EJ_challenge_1);
+                currTriadMapID.Add(MapIconIdentfier.EJ_challenge_2);
+                currTriadMapID.Add(MapIconIdentfier.EJ_challenge_3);
+                
                 break;
 
             case MapLocation.GorillaStudy:
@@ -223,6 +281,11 @@ public class RoyalDecreeController : MonoBehaviour
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge1.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge2.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge3.gameType);
+                
+                currTriadMapID.Add(MapIconIdentfier.GS_challenge_1);
+                currTriadMapID.Add(MapIconIdentfier.GS_challenge_2);
+                currTriadMapID.Add(MapIconIdentfier.GS_challenge_3);
+                
                 break;
 
             case MapLocation.Monkeys:
@@ -233,6 +296,11 @@ public class RoyalDecreeController : MonoBehaviour
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.M_challenge1.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.M_challenge2.gameType);
                 currTriad.Add(StudentInfoSystem.GetCurrentProfile().mapData.M_challenge3.gameType);
+                
+                currTriadMapID.Add(MapIconIdentfier.M_challenge_1);
+                currTriadMapID.Add(MapIconIdentfier.M_challenge_2);
+                currTriadMapID.Add(MapIconIdentfier.M_challenge_3);
+                
                 break;
         }
 
@@ -304,7 +372,7 @@ public class RoyalDecreeController : MonoBehaviour
         int count = 0;
         foreach (var ribbon in ribbons)
         {
-            ribbon.OpenRibbon(currTriad[count]);
+            ribbon.OpenRibbon(currTriad[count], currTriadMapID[count]);
             yield return new WaitForSeconds(0.1f);
             count++;
         }
@@ -443,12 +511,13 @@ public class RoyalDecreeController : MonoBehaviour
     ################################################
     */
 
-    public void OpenConfirmWindow(GameType gameType)
+    public void OpenConfirmWindow(GameType gameType, MapIconIdentfier mapID)
     {
         if (confirmWindowUp)
             return;
         
         currGameType = gameType;
+        currMapID = mapID;
         confirmWindowUp = true;
 
         StartCoroutine(OpenConfirmWindowRoutine());
@@ -488,6 +557,7 @@ public class RoyalDecreeController : MonoBehaviour
 
         // go to game scene
         GameManager.instance.prevMapLocation = ScrollMapManager.instance.GetCurrentMapLocation();
+        GameManager.instance.mapID = currMapID;
         GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(currGameType), true);
     }   
 

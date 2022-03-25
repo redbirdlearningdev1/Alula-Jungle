@@ -154,42 +154,4 @@ public class MicInput : MonoBehaviour
     }
 
     bool _isInitialized;
-    // // start mic when scene starts
-    // void OnEnable()
-    // {
-    //    InitMic();
-    // }
-
-    // //stop mic when loading a new level or quit application
-    // void OnDisable()
-    // {
-    //     StopMicrophone();
-    // }
-
-    // void OnDestroy()
-    // {
-    //     StopMicrophone();
-    // }
-
-
-    // make sure the mic gets started & stopped when application gets focused
-    void OnApplicationFocus(bool focus)
-    {
-        if (focus)
-        {
-            // Debug.Log("Focus");
-
-            if (!_isInitialized)
-            {
-                //Debug.Log("Init Mic");
-                InitMic();
-            }
-        }
-        if (!focus)
-        {
-            // Debug.Log("Pause");
-            //StopMicrophone();
-            //Debug.Log("Stop Mic");
-        }
-    }
 }

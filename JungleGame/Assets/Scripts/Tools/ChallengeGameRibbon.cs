@@ -27,6 +27,7 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
     public Sprite passwordLogo;
 
     private GameType myGameType;
+    private MapIconIdentfier myMapID;
 
     [Header("Pressed Values")]
     public float pressedScaleChange;
@@ -42,9 +43,10 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
         crown.transform.localScale = new Vector3(0f, 0f, 1f);
     }
 
-    public void OpenRibbon(GameType gameType)
+    public void OpenRibbon(GameType gameType, MapIconIdentfier mapID)
     {
         myGameType = gameType;
+        myMapID = mapID;
         StartCoroutine(OpenRibbonRoutine(gameType));
     }
 
@@ -272,7 +274,7 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
             isPressed = true;
             transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
 
-            RoyalDecreeController.instance.OpenConfirmWindow(myGameType);
+            RoyalDecreeController.instance.OpenConfirmWindow(myGameType, myMapID);
         }
     }
 

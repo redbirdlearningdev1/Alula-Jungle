@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3310824e6079dc349b9a9d50da51fd18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: 1
+  interactable: 0
   character: 6
   mapAnimator: {fileID: 1026933300}
   characterAnimator: {fileID: 17137245}
@@ -11602,6 +11602,7 @@ GameObject:
   - component: {fileID: 486639796}
   - component: {fileID: 486639795}
   - component: {fileID: 486639794}
+  - component: {fileID: 486639797}
   m_Layer: 5
   m_Name: ConfrimWindow
   m_TagString: Untagged
@@ -11681,6 +11682,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 486639792}
   m_CullTransparentMesh: 1
+--- !u!114 &486639797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486639792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0.4822326, b: 0.5188679, a: 1}
+  m_EffectDistance: {x: 8, y: 8}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &488760485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19229,7 +19245,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 529179.9, y: 0}
+  m_AnchoredPosition: {x: 549070.06, y: 0}
   m_SizeDelta: {x: 0, y: 256.55}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &753620794
@@ -25534,7 +25550,7 @@ PrefabInstance:
     - target: {fileID: 2512186891888730657, guid: b2db9681c4636dc46a76b26d7c5e295a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100.4
+      value: -100.399994
       objectReference: {fileID: 0}
     - target: {fileID: 2512186891888730657, guid: b2db9681c4636dc46a76b26d7c5e295a,
         type: 3}
@@ -38648,7 +38664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3310824e6079dc349b9a9d50da51fd18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: 1
+  interactable: 0
   character: 5
   mapAnimator: {fileID: 1152082823}
   characterAnimator: {fileID: 1490366814}
@@ -46618,32 +46634,32 @@ PrefabInstance:
     - target: {fileID: 3717828469653704722, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
-      value: -112.06531
+      value: -35.52172
       objectReference: {fileID: 0}
     - target: {fileID: 3717828469653704722, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
-      value: 25.19838
+      value: 226.12663
       objectReference: {fileID: 0}
     - target: {fileID: 3717828469653704722, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
-      value: -282.14658
+      value: -199.2236
       objectReference: {fileID: 0}
     - target: {fileID: 3717828469653704722, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
-      value: 52.086224
+      value: 88.23204
       objectReference: {fileID: 0}
     - target: {fileID: 3717828469653704722, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
-      value: -314.9826
+      value: -278.8376
       objectReference: {fileID: 0}
     - target: {fileID: 3717828469653704722, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
-      value: -55.85785
+      value: -50.542267
       objectReference: {fileID: 0}
     - target: {fileID: 3717828469653704722, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
@@ -46668,22 +46684,22 @@ PrefabInstance:
     - target: {fileID: 3717828469653704722, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].x
-      value: 157.42738
+      value: 136.16518
       objectReference: {fileID: 0}
     - target: {fileID: 3717828469653704722, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].y
-      value: -177.06648
+      value: -151.55177
       objectReference: {fileID: 0}
     - target: {fileID: 3717828469653704722, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].x
-      value: 75.25305
+      value: 88.01001
       objectReference: {fileID: 0}
     - target: {fileID: 3717828469653704722, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].y
-      value: -100.125916
+      value: -29.960495
       objectReference: {fileID: 0}
     - target: {fileID: 5138296651340451107, guid: fc0cacc38a1d9274b865c72cb7c2c2f5,
         type: 3}
@@ -50062,7 +50078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3310824e6079dc349b9a9d50da51fd18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: 1
+  interactable: 0
   character: 1
   mapAnimator: {fileID: 2078017283}
   characterAnimator: {fileID: 1874534198}

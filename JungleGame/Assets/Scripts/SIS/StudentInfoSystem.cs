@@ -15,6 +15,12 @@ public static class StudentInfoSystem
             SetStudentPlayer(StudentIndex.student_1);
         }
 #endif
+
+        // if current play is null in the game - send error
+        if (currentStudentPlayer == null)
+        {
+            GameManager.instance.SendError("StudentInfoSystem", "Current player is null");
+        }
         return currentStudentPlayer;
     }
 

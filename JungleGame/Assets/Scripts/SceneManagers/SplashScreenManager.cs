@@ -106,17 +106,25 @@ public class SplashScreenManager : MonoBehaviour
         var profiles = StudentInfoSystem.GetAllStudentDatas();
 
         StudentPlayerData currProfile = null;
-        // determine most recently used profile
+        // determine most recently used profile + set current student
         foreach (var profile in profiles)
         {
             if (profile.mostRecentProfile)
+            {
+                StudentInfoSystem.SetStudentPlayer(profile.studentIndex);
                 currProfile = profile;
+            }
         }
 
         if (currProfile != null)
         {
             GameManager.instance.SendLog("SplashScreenManager", "current profile: " + currProfile.name);
             GameManager.instance.SendLog("SplashScreenManager", "current chapter: " + currProfile.currentChapter);
+        }
+        // if no most recently used profile - set profile 1 as current profile
+        else
+        {
+            StudentInfoSystem.SetStudentPlayer(StudentIndex.student_1);
         }
 
         // default to chapter 0 animations

@@ -25,6 +25,10 @@ public class CoinRaycaster : MonoBehaviour
         // return if off, else do thing
         if (!isOn)
             return;
+        
+        // return if settings window is open
+        if (SettingsManager.instance.settingsWindowOpen)
+            return;
 
         // drag select coin while mouse 1 down
         if (Input.GetMouseButton(0) && selectedCoin)

@@ -161,7 +161,7 @@ public enum MapIconIdentfier
 
 public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
-    public bool interactable = true;
+    public bool interactable = false;
     //public bool popupWindow;
 
     [Header("Map ID")]
