@@ -1835,7 +1835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overrideGame: 0
-  storyGameIndex: 0
+  storyGameIndex: 3
   coin: {fileID: 1653332658}
   dancingMan: {fileID: 1034302397}
   dancingManOffScreen: {fileID: 1993491053}

@@ -8,9 +8,9 @@ public enum SettingsTab
     none, audio, game, exit, map
 }
 
-public class SettingsWindowController : MonoBehaviour
+public class ScrollSettingsWindowController : MonoBehaviour
 {
-    public static SettingsWindowController instance;
+    public static ScrollSettingsWindowController instance;
 
     public LerpableObject audioWindow;
     public LerpableObject gameWindow;

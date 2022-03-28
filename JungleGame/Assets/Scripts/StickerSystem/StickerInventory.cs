@@ -75,6 +75,15 @@ public class StickerInventory : MonoBehaviour
         {
             StickerSystem.instance.ReturnStickerToInventory();
         }
+        // set sticker colliders active
+        if (currentState == InventoryState.Open)
+        {
+            ToggleStickerColliders(true);
+        }
+        else
+        {
+            ToggleStickerColliders(false);
+        }
 
         // start coroutine
         StartCoroutine(SetInventoryStateRoutine());
@@ -95,6 +104,7 @@ public class StickerInventory : MonoBehaviour
         {
             GameObject newInventorySticker = Instantiate(inventoryStickerPrefab, inventoryStickerParent);
             newInventorySticker.GetComponent<InventorySticker>().SetSticker(data);
+            newInventorySticker.GetComponent<CircleCollider2D>().enabled = false;
         }
 
         // update sticker unlocks
@@ -141,6 +151,15 @@ public class StickerInventory : MonoBehaviour
             case InventoryState.Open:
                 inventoryWindow.LerpXPos(openPos.position.x, 0.2f, false);
                 break;
+        }
+    }
+
+    public void ToggleStickerColliders(bool opt)
+    {
+        // remove all previous stickers
+        foreach (Transform child in inventoryStickerParent.transform)
+        {
+            child.GetComponent<CircleCollider2D>().enabled = opt;
         }
     }
 }

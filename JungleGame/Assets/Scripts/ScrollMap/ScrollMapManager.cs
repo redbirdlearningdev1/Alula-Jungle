@@ -43,6 +43,7 @@ public class ScrollMapManager : MonoBehaviour
 
     private List<GameObject> mapIcons = new List<GameObject>();
     private bool repairingMapIcon = false;
+    private bool inPalace = false; // is the place in the palace?
 
     private bool activateMapNavigation = false;
     private bool revealGMUI = false;
@@ -123,8 +124,8 @@ public class ScrollMapManager : MonoBehaviour
         SetMapLimit(StudentInfoSystem.GetCurrentProfile().mapLimit);
 
         // update settings map
-        SettingsWindowController.instance.UpdateRedPos(mapLocations[currMapLocation].location);
-        SettingsWindowController.instance.UpdateMapSprite();
+        ScrollSettingsWindowController.instance.UpdateRedPos(mapLocations[currMapLocation].location);
+        ScrollSettingsWindowController.instance.UpdateMapSprite();
 
         // get current game event
         StoryBeat playGameEvent = StudentInfoSystem.GetCurrentProfile().currStoryBeat;
@@ -252,7 +253,9 @@ public class ScrollMapManager : MonoBehaviour
         
         // show UI
         if (activateMapNavigation)
-            ToggleNavButtons(true);
+        {
+            StartCoroutine(DelayToggleNavButtons());
+        }
 
         // show GM UI
         if (revealGMUI)
@@ -272,7 +275,13 @@ public class ScrollMapManager : MonoBehaviour
         MapDataLoader.instance.SetRoyalRumbleBanner();
 
         // update map icons
-        StartCoroutine(DelayUpdateMapIcons(0.5f, true));
+        StartCoroutine(DelayUpdateMapIcons(0.5f, false));
+    }
+
+    private IEnumerator DelayToggleNavButtons()
+    {
+        yield return new WaitForSeconds(2f);
+        ToggleNavButtons(true);
     }
 
     private IEnumerator DelayShowGMUI()
@@ -1110,6 +1119,7 @@ public class ScrollMapManager : MonoBehaviour
         {   
             // start camera on palace location
             Map.localPosition = new Vector3(prePalaceCamPos.localPosition.x, palaceCamPos.localPosition.y, 0f);
+            inPalace = true;
             // play boss battle game 1 map animation
             MapAnimationController.instance.PlayPreBossBattleGameMapAnim(MapAnim.BossBattle1);
             // wait for animation to be done
@@ -1120,6 +1130,7 @@ public class ScrollMapManager : MonoBehaviour
         {
             // start camera on palace location
             Map.localPosition = new Vector3(prePalaceCamPos.localPosition.x, palaceCamPos.localPosition.y, 0f);
+            inPalace = true;
             // play boss battle game 2 map animation
             MapAnimationController.instance.PlayPreBossBattleGameMapAnim(MapAnim.BossBattle2);
             // wait for animation to be done
@@ -1130,6 +1141,7 @@ public class ScrollMapManager : MonoBehaviour
         {
             // start camera on palace location
             Map.localPosition = new Vector3(prePalaceCamPos.localPosition.x, palaceCamPos.localPosition.y, 0f);
+            inPalace = true;
             // play boss battle game 3 map animation
             MapAnimationController.instance.PlayPreBossBattleGameMapAnim(MapAnim.BossBattle3);
             // wait for animation to be done
@@ -1140,6 +1152,7 @@ public class ScrollMapManager : MonoBehaviour
         {
             // do not show UI buttons
             revealGMUI = false;
+            inPalace = true;
             // start camera on palace location
             Map.localPosition = new Vector3(prePalaceCamPos.localPosition.x, palaceCamPos.localPosition.y, 0f);
             // play end boss battle
@@ -1423,6 +1436,7 @@ public class ScrollMapManager : MonoBehaviour
                     icon.RevealStars();
             }
         }
+        
     }
 
     public void SmoothGoToMapLocation(MapLocation location)
@@ -1446,8 +1460,25 @@ public class ScrollMapManager : MonoBehaviour
         SettingsManager.instance.CloseAllSettingsWindows();
         // remove all stars
         DisableAllMapIcons(true);
+        // remove GM UI
+        SettingsManager.instance.ToggleMenuButtonActive(false);
+        // remove sticker button if unlocked
+        if (StudentInfoSystem.GetCurrentProfile().unlockedStickerButton)
+            SettingsManager.instance.ToggleWagonButtonActive(false);
 
         yield return new WaitForSeconds(1f);
+
+        // if in palace, hide battle bar + pan down to palace intro
+        if (inPalace)
+        {
+            // hide UI
+            PalaceArrowDown.instance.HideArrow();
+            PalaceArrow.instance.HideArrow();
+            BossBattleBar.instance.HideBar();
+
+            PanOutOfPalace();
+            yield return new WaitForSeconds(4f);
+        }
 
         currMapLocation = (int)location;
 
@@ -1458,10 +1489,17 @@ public class ScrollMapManager : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
 
         // show current stars
-        EnableMapIcons(mapLocations[currMapLocation], true);
+        StartCoroutine(ToggleLocationRoutine(true, currMapLocation));
 
         // update settings map
-        SettingsWindowController.instance.UpdateRedPos(location);
+        ScrollSettingsWindowController.instance.UpdateRedPos(location);
+        ScrollSettingsWindowController.instance.UpdateMapSprite();
+
+        // add GM UI
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+        // add sticker button if unlocked
+        if (StudentInfoSystem.GetCurrentProfile().unlockedStickerButton)
+            SettingsManager.instance.ToggleWagonButtonActive(true);
 
         RaycastBlockerController.instance.RemoveRaycastBlocker("GoToMapLocation");
     }
@@ -1526,6 +1564,12 @@ public class ScrollMapManager : MonoBehaviour
 
     private IEnumerator PanIntoPalaceRoutine()
     {
+        // remove GM UI
+        SettingsManager.instance.ToggleMenuButtonActive(false);
+        // remove sticker button if unlocked
+        if (StudentInfoSystem.GetCurrentProfile().unlockedStickerButton)
+            SettingsManager.instance.ToggleWagonButtonActive(false);
+
         // move map to pre palace pos
         float x = prePalaceCamPos.localPosition.x;
         StartCoroutine(MapSmoothTransitionX(Map.localPosition.x, x, 1f));
@@ -1535,6 +1579,14 @@ public class ScrollMapManager : MonoBehaviour
         float y = palaceCamPos.localPosition.y;
         StartCoroutine(MapSmoothTransitionY(Map.localPosition.y, y, 3f));
         yield return new WaitForSeconds(3f);
+
+        // add GM UI
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+        // add sticker button if unlocked
+        if (StudentInfoSystem.GetCurrentProfile().unlockedStickerButton)
+            SettingsManager.instance.ToggleWagonButtonActive(true);
+
+        inPalace = true;
     }
 
     public void PanOutOfPalace()
@@ -1544,6 +1596,12 @@ public class ScrollMapManager : MonoBehaviour
 
     private IEnumerator PanOutOfPalaceRoutine()
     {
+        // remove GM UI
+        SettingsManager.instance.ToggleMenuButtonActive(false);
+        // remove sticker button if unlocked
+        if (StudentInfoSystem.GetCurrentProfile().unlockedStickerButton)
+            SettingsManager.instance.ToggleWagonButtonActive(false);
+
         // pan camera up to palace
         float y = staticMapYPos;
         StartCoroutine(MapSmoothTransitionY(Map.localPosition.y, y, 3f));
@@ -1553,6 +1611,14 @@ public class ScrollMapManager : MonoBehaviour
         float x = mapLocations[16].cameraLocation.localPosition.x;
         StartCoroutine(MapSmoothTransitionX(Map.localPosition.x, x, 1f));
         yield return new WaitForSeconds(1.2f);
+
+        // remove GM UI
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+        // remove sticker button if unlocked
+        if (StudentInfoSystem.GetCurrentProfile().unlockedStickerButton)
+            SettingsManager.instance.ToggleWagonButtonActive(true);
+
+        inPalace = false;
     }
 
     public void ToggleNavButtons(bool opt)
@@ -1682,9 +1748,9 @@ public class ScrollMapManager : MonoBehaviour
         StartCoroutine(MapSmoothTransitionX(Map.localPosition.x, x, transitionTime));
 
         // update map pos
-        SettingsWindowController.instance.UpdateRedPos(mapLocations[currMapLocation].location);
+        ScrollSettingsWindowController.instance.UpdateRedPos(mapLocations[currMapLocation].location);
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.8f);
 
         // show stars on current map location
         StartCoroutine(ToggleLocationRoutine(true, currMapLocation));
@@ -1736,9 +1802,9 @@ public class ScrollMapManager : MonoBehaviour
         StartCoroutine(MapSmoothTransitionX(Map.localPosition.x, x, transitionTime));
 
         // update map pos
-        SettingsWindowController.instance.UpdateRedPos(mapLocations[currMapLocation].location);
+        ScrollSettingsWindowController.instance.UpdateRedPos(mapLocations[currMapLocation].location);
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.8f);
 
         // show stars on current map location
         StartCoroutine(ToggleLocationRoutine(true, currMapLocation));

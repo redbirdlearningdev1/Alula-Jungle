@@ -561,17 +561,17 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: of a baby
+  - text: of a
     audio: {fileID: 8300000, guid: 2778c5919871b6e45a5116cd4c1538c9, type: 3}
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: monkey
+  - text: baby monkey
     audio: {fileID: 8300000, guid: 357a7c4815ae141408c2b30d9de6a9bb, type: 3}
     moveWord: 1
-    actionWord: 18
+    actionWord: 20
     requireInput: 0
     postText: .
     advanceBG: 0
@@ -603,17 +603,17 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: to the baby
+  - text: to the
     audio: {fileID: 8300000, guid: 8e8189d325a8b37469e1d415090bd978, type: 3}
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: monkey
+  - text: baby monkey
     audio: {fileID: 8300000, guid: 8d9308cc36097fa4dbbcfd8e665fdd48, type: 3}
     moveWord: 1
-    actionWord: 18
+    actionWord: 20
     requireInput: 0
     postText: .
     advanceBG: 0
@@ -631,17 +631,17 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: the baby
+  - text: the
     audio: {fileID: 8300000, guid: d5fad86f0382baf4e88560663abd91e2, type: 3}
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: monkey
+  - text: baby monkey
     audio: {fileID: 8300000, guid: f22b1e1cad050394794092e02e748a18, type: 3}
     moveWord: 1
-    actionWord: 18
+    actionWord: 20
     requireInput: 0
     postText: 
     advanceBG: 0
@@ -652,17 +652,17 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: The baby
+  - text: The
     audio: {fileID: 8300000, guid: 3df47999adf0c8c42ada65aad3e3f23b, type: 3}
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: monkey
+  - text: baby monkey
     audio: {fileID: 8300000, guid: 9ea04eb4f37cd0149a2434f42cf04af8, type: 3}
     moveWord: 1
-    actionWord: 18
+    actionWord: 20
     requireInput: 0
     postText: 
     advanceBG: 0
@@ -708,17 +708,17 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: put the baby
+  - text: put the
     audio: {fileID: 8300000, guid: 55a40091e47d4374cb3282b37109f888, type: 3}
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: monkey
+  - text: baby monkey
     audio: {fileID: 8300000, guid: 989e9f7b7b01f624a9302617b6b7a953, type: 3}
     moveWord: 1
-    actionWord: 18
+    actionWord: 20
     requireInput: 0
     postText: 
     advanceBG: 0
@@ -764,17 +764,17 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: So baby
+  - text: So
     audio: {fileID: 8300000, guid: facd3a7d7e9d85241aa1c376a46d344b, type: 3}
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: monkeys
+  - text: baby monkeys
     audio: {fileID: 8300000, guid: 56d4437780cdc8242bc7904d1f9c37ad, type: 3}
     moveWord: 1
-    actionWord: 18
+    actionWord: 20
     requireInput: 0
     postText: 
     advanceBG: 0

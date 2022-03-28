@@ -53,7 +53,7 @@ public class InGameSettingsWindowController : MonoBehaviour
         SetUpVolumes();
     }
 
-    public void SaveSettingsToProfile()
+    public void SaveInGameSettingsToProfile()
     {
         var data = StudentInfoSystem.GetCurrentProfile();
 
@@ -64,6 +64,8 @@ public class InGameSettingsWindowController : MonoBehaviour
         data.talkVol = Mathf.Round(talkVol.value * 1000.0f) / 1000.0f;
         // mic
         data.micDevice = MicInput.instance.micDeviceIndex;
+
+        GameManager.instance.SendLog(this, "saving in-game settings to current profile");
 
         // save to profile
         StudentInfoSystem.SaveStudentPlayerData();
@@ -168,9 +170,6 @@ public class InGameSettingsWindowController : MonoBehaviour
 
     private IEnumerator CloseAllWindowsRoutine()
     {
-        // save settings to profile
-        SaveSettingsToProfile();
-        
         ToggleTabs(false);
 
         yield return new WaitForSeconds(0.3f);

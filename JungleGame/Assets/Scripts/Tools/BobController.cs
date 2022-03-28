@@ -10,10 +10,7 @@ public class BobController : MonoBehaviour
     private float timer = 0f;
     private Vector3 defaultPos;
 
-    void Awake()
-    {
-        defaultPos = transform.position;
-    }
+    private bool setDefaultPos = false;
 
     void Update()
     {
@@ -33,7 +30,11 @@ public class BobController : MonoBehaviour
 
     public void StartBob()
     {
-        defaultPos = transform.position;
+        if (!setDefaultPos)
+        {
+            setDefaultPos = true;
+            defaultPos = transform.position;
+        }
         bob = true;
     }
 

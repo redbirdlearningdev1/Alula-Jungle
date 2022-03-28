@@ -69,7 +69,7 @@ public class SettingsManager : MonoBehaviour
         returnToSplashScreenConfirmWindow.transform.localScale = new Vector3(0f, 0f, 1f);
     }
 
-    public void SaveSettingsToProfile()
+    public void SaveScrollSettingsToProfile()
     {        
         var data = StudentInfoSystem.GetCurrentProfile();
 
@@ -88,6 +88,8 @@ public class SettingsManager : MonoBehaviour
         data.talkieSubtitles = talkieSubtitlesToggle.isOn;
         data.talkieFast = fastTalkiesToggle.isOn;
         data.talkieParticles = talkieParticlesToggle.isOn;
+
+        GameManager.instance.SendLog(this, "saving scroll settings to current profile");
 
         // save to profile
         StudentInfoSystem.SaveStudentPlayerData();
@@ -314,7 +316,7 @@ public class SettingsManager : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
 
             // close settings window if open
-            StartCoroutine(ToggleSettingsWindow(false));
+            CloseAllSettingsWindows();
         }
 
         menuButtonShown = opt;
@@ -333,7 +335,7 @@ public class SettingsManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
         // return if windows are animating
-        if (SettingsWindowController.instance.isAnimating || 
+        if (ScrollSettingsWindowController.instance.isAnimating || 
             InGameSettingsWindowController.instance.isAnimating ||
             SplashScreenSettingsWindowController.instance.isAnimating)
             return;
@@ -349,34 +351,38 @@ public class SettingsManager : MonoBehaviour
         // open normal scroll map settings window
         if (SceneManager.GetActiveScene().name == "ScrollMap")
         {
-            StartCoroutine(ToggleSettingsWindow(settingsWindowOpen));
+            StartCoroutine(ToggleScrollSettingsWindow(settingsWindowOpen, true));
         } 
         // open splash screen settings window
         else if (SceneManager.GetActiveScene().name == "SplashScene")
         {
-            StartCoroutine(ToggleSplashScreenSettingsWindow(settingsWindowOpen));
+            StartCoroutine(ToggleSplashScreenSettingsWindow(settingsWindowOpen, true));
         }
         // else open in game settings window
         else
         {
-            StartCoroutine(ToggleInGameSettingsWindow(settingsWindowOpen));
+            StartCoroutine(ToggleInGameSettingsWindow(settingsWindowOpen, true));
         }
     }
 
-    public IEnumerator ToggleSettingsWindow(bool opt)
+    public IEnumerator ToggleScrollSettingsWindow(bool opt, bool saveToProfile)
     {
         if (opt)
         {
             // open window
-            SettingsWindowController.instance.OpenWindow();
+            ScrollSettingsWindowController.instance.OpenWindow();
         }
         else
         {
-            // save settings to profile
-            SaveSettingsToProfile();
+            if (saveToProfile)
+            {
+                // save settings to profile
+                SaveScrollSettingsToProfile();
+            }
+            
 
             // close windows
-            SettingsWindowController.instance.CloseAllWindows();
+            ScrollSettingsWindowController.instance.CloseAllWindows();
             InGameSettingsWindowController.instance.CloseAllWindows();
             SplashScreenSettingsWindowController.instance.CloseAllWindows();
 
@@ -397,9 +403,9 @@ public class SettingsManager : MonoBehaviour
 
     public void CloseAllSettingsWindows()
     {
-        StartCoroutine(ToggleSettingsWindow(false));
-        StartCoroutine(ToggleInGameSettingsWindow(false));
-        StartCoroutine(ToggleSplashScreenSettingsWindow(false));
+        StartCoroutine(ToggleScrollSettingsWindow(false, false));
+        StartCoroutine(ToggleInGameSettingsWindow(false, false));
+        StartCoroutine(ToggleSplashScreenSettingsWindow(false, false));
     }
 
     public void CloseAllConfirmWindows()
@@ -419,7 +425,7 @@ public class SettingsManager : MonoBehaviour
     ################################################
     */
 
-    public IEnumerator ToggleSplashScreenSettingsWindow(bool opt)
+    public IEnumerator ToggleSplashScreenSettingsWindow(bool opt, bool saveToProfile)
     {
         if (opt)
         {
@@ -428,11 +434,14 @@ public class SettingsManager : MonoBehaviour
         }
         else
         {
-            // save settings to profile
-            SaveSettingsToProfile();
-
+            if (saveToProfile)
+            {
+                // save settings to profile
+                SplashScreenSettingsWindowController.instance.SaveSplashSettingsToProfile();
+            }
+            
             // close windows
-            SettingsWindowController.instance.CloseAllWindows();
+            ScrollSettingsWindowController.instance.CloseAllWindows();
             InGameSettingsWindowController.instance.CloseAllWindows();
             SplashScreenSettingsWindowController.instance.CloseAllWindows();
 
@@ -457,7 +466,7 @@ public class SettingsManager : MonoBehaviour
     ################################################
     */
 
-    public IEnumerator ToggleInGameSettingsWindow(bool opt)
+    public IEnumerator ToggleInGameSettingsWindow(bool opt, bool saveToProfile)
     {
         if (opt)
         {
@@ -466,11 +475,14 @@ public class SettingsManager : MonoBehaviour
         }
         else
         {
-            // save settings to profile
-            SaveSettingsToProfile();
+            if (saveToProfile)
+            {
+                // save settings to profile
+                InGameSettingsWindowController.instance.SaveInGameSettingsToProfile();
+            }
 
             // close windows
-            SettingsWindowController.instance.CloseAllWindows();
+            ScrollSettingsWindowController.instance.CloseAllWindows();
             InGameSettingsWindowController.instance.CloseAllWindows();
             SplashScreenSettingsWindowController.instance.CloseAllWindows();
 
@@ -518,7 +530,7 @@ public class SettingsManager : MonoBehaviour
         confirmWindowBG.GetComponent<Image>().raycastTarget = false;
 
         // close settings window
-        InGameSettingsWindowController.instance.CloseAllWindows();
+        CloseAllSettingsWindows();
         settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
         settingsWindowBG.GetComponent<Image>().raycastTarget = false;
         yield return new WaitForSeconds(1f);
@@ -604,7 +616,7 @@ public class SettingsManager : MonoBehaviour
         confirmWindowBG.GetComponent<Image>().raycastTarget = false;
 
         // close settings window
-        SettingsWindowController.instance.CloseAllWindows();
+        CloseAllSettingsWindows();
         settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
         settingsWindowBG.GetComponent<Image>().raycastTarget = false;
         yield return new WaitForSeconds(0.2f);
@@ -675,7 +687,7 @@ public class SettingsManager : MonoBehaviour
         confirmWindowBG.GetComponent<Image>().raycastTarget = false;
 
         // close settings window
-        SettingsWindowController.instance.CloseAllWindows();
+        CloseAllSettingsWindows();
         settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
         settingsWindowBG.GetComponent<Image>().raycastTarget = false;
         yield return new WaitForSeconds(0.2f);

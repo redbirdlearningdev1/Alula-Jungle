@@ -1694,6 +1694,19 @@ public class DevMenuManager : MonoBehaviour
 
             case MapLocation.PalaceIntro:
                 StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_final;
+                SetMapIcons(MapLocation.GorillaVillage, true);
+                SetMapIcons(MapLocation.Mudslide, true);
+                SetMapIcons(MapLocation.OrcVillage, true);
+                SetMapIcons(MapLocation.SpookyForest, true);
+                SetMapIcons(MapLocation.OrcCamp, true);
+                SetMapIcons(MapLocation.GorillaPoop, true);
+                SetMapIcons(MapLocation.WindyCliff, true);
+                SetMapIcons(MapLocation.PirateShip, true);
+                SetMapIcons(MapLocation.MermaidBeach, true);
+                SetMapIcons(MapLocation.Ruins1, true);
+                SetMapIcons(MapLocation.ExitJungle, true);
+                SetMapIcons(MapLocation.GorillaStudy, true);
+                SetMapIcons(MapLocation.Monkeys, true);
                 break;
         }   
     }

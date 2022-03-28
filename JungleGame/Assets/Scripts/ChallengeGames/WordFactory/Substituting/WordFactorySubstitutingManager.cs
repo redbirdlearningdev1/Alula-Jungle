@@ -961,6 +961,20 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         ResetWaterCoins(false);
         yield return new WaitForSeconds(0.5f);
 
+        // check for win
+        if (numWins >= 3)
+        {
+            StartCoroutine(WinRoutine());
+            yield break;
+        }
+
+        // check for lose
+        if (numMisses >= 3)
+        {
+            StartCoroutine(LoseRoutine());
+            yield break;
+        }
+
         if (playTutorial && tutorialEvent == 1)
         {
             // play tutorial intro 11
@@ -1029,20 +1043,6 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             }
         }
 
-        // check for win
-        if (numWins >= 3)
-        {
-            StartCoroutine(WinRoutine());
-            yield break;
-        }
-
-        // check for win
-        if (numMisses >= 3)
-        {
-            StartCoroutine(LoseRoutine());
-            yield break;
-        }
-
         // stop evaluating coin
         evaluatingCoin = false;
 
@@ -1089,10 +1089,12 @@ public class WordFactorySubstitutingManager : MonoBehaviour
     {
         if (numMisses <= 0)
             return 3;
-        else if (numMisses > 0 && numMisses <= 2)
+        else if (numMisses == 1)
             return 2;
-        else
+        else if (numMisses == 2)
             return 1;
+        else 
+            return 0;
     }
 
     private IEnumerator LoseRoutine()

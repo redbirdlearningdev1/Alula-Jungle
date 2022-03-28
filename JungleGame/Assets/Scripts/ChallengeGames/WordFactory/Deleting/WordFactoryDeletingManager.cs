@@ -538,6 +538,17 @@ public class WordFactoryDeletingManager : MonoBehaviour
             yield break;
         }
 
+        // win or lose game ?
+        if (numWins >= 3)
+        {   
+            StartCoroutine(WinRoutine());
+            yield break;
+        }
+        else if (numMisses >= 3)
+        {
+            StartCoroutine(LoseRoutine());
+            yield break;
+        }
 
         // play appropriate reminder / encouragement popup
         if (playTutorial && tutorialEvent > 1 || !playTutorial)
@@ -591,17 +602,10 @@ public class WordFactoryDeletingManager : MonoBehaviour
                     TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
                     yield return new WaitForSeconds(clip.length + 1f);
                 }
-                
             }
         }
 
-        // win or lose game ?
-        if (numWins >= 3)
-            StartCoroutine(WinRoutine());
-        else if (numMisses >= 3)
-            StartCoroutine(LoseRoutine());
-        else 
-            StartCoroutine(NewRound());
+        StartCoroutine(NewRound());
     }
 
     private IEnumerator WinRoutine()
@@ -642,10 +646,12 @@ public class WordFactoryDeletingManager : MonoBehaviour
     {
         if (numMisses <= 0)
             return 3;
-        else if (numMisses > 0 && numMisses <= 2)
+        else if (numMisses == 1)
             return 2;
-        else
+        else if (numMisses == 2)
             return 1;
+        else 
+            return 0;
     }
 
     private IEnumerator LoseRoutine()

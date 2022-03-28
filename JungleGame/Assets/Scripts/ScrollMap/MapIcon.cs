@@ -292,8 +292,8 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         {
             foreach(var star in currentStars)
             {
-                StartCoroutine(MoveStarRoutine(star.transform, currentStarRevealPos));
-                star.LerpStarAlphaScale(1f, 1f);
+                star.transform.localScale = Vector3.zero;
+                star.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
                 yield return new WaitForSeconds(0.05f);
             }
 
@@ -305,7 +305,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             foreach(var star in currentStars)
             {
                 star.bobController.StartBob();
-                yield return new WaitForSeconds(0.15f);
+                yield return new WaitForSeconds(0.1f);
             }            
         }
     }
@@ -330,33 +330,12 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
             foreach(var star in currentStars)
             {
-                StartCoroutine(MoveStarRoutine(star.transform, starsHiddenPosition));
-                star.LerpStarAlphaScale(0f, 0f);
-                //star.SetRendererLayer(0);
-
+                star.transform.localScale = Vector3.one;
+                star.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
                 yield return new WaitForSeconds(0.05f);
             }
 
             starsHidden = true;
-        }
-    }
-
-    private IEnumerator MoveStarRoutine(Transform star, Transform targetTransform)
-    {
-        Vector3 startPos = star.position;
-        float timer = 0f;
-        while (true)
-        {
-            timer += Time.deltaTime;
-            if (timer > starMoveSpeed)
-            {
-                star.position = targetTransform.position;
-                break;
-            }
-
-            var tempPos = Vector3.Lerp(startPos, targetTransform.position, timer / starMoveSpeed);
-            star.position = tempPos;
-            yield return null;
         }
     }
 
@@ -383,9 +362,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             // stars should be initially hidden
             foreach (var star in currentStars)
             {
-                star.transform.position = starsHiddenPosition.position;
-                star.LerpStarAlphaScale(0f, 0f);
-                //star.SetRendererLayer(0);
+                star.transform.localScale = Vector3.zero;
             }
             starsHidden = true;
         }

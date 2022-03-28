@@ -564,6 +564,17 @@ public class TigerGameManager : MonoBehaviour
             StartCoroutine(LerpMoveObject(polaroidC[i].transform, PhotoEndPos.position, .2f));
         }
 
+        if (numWins >= 3)
+        {
+            StartCoroutine(WinRoutine());
+            yield break;
+        }
+        else if (numMisses >= 3)
+        {
+           StartCoroutine(LoseRoutine());
+           yield break;
+        }
+
 
         // play appropriate popup
         if (win)
@@ -656,19 +667,7 @@ public class TigerGameManager : MonoBehaviour
             }
         }
 
-
-        if (numWins >= 3)
-        {
-            StartCoroutine(WinRoutine());
-        }
-        else if (numMisses >= 3)
-        {
-           StartCoroutine(LoseRoutine());
-        }
-        else
-        {
-            StartCoroutine(StartGame());
-        }
+        StartCoroutine(StartGame());
     }
 
     private IEnumerator LoseRoutine()
@@ -718,9 +717,11 @@ public class TigerGameManager : MonoBehaviour
     {
         if (numMisses <= 0)
             return 3;
-        else if (numMisses > 0 && numMisses <= 2)
+        else if (numMisses == 1)
             return 2;
-        else
+        else if (numMisses == 2)
             return 1;
+        else 
+            return 0;
     }
 }

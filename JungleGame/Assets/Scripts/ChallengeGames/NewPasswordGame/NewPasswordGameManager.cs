@@ -638,10 +638,12 @@ public class NewPasswordGameManager : MonoBehaviour
     {
         if (numMisses <= 0)
             return 3;
-        else if (numMisses > 0 && numMisses <= 2)
+        else if (numMisses == 1)
             return 2;
-        else
+        else if (numMisses == 2)
             return 1;
+        else 
+            return 0;
     }
 
     private IEnumerator LoseRoutine()

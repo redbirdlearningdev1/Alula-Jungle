@@ -52,7 +52,7 @@ public class SplashScreenSettingsWindowController : MonoBehaviour
         SetUpVolumes();
     }
 
-    public void SaveSettingsToProfile()
+    public void SaveSplashSettingsToProfile()
     {
         var data = StudentInfoSystem.GetCurrentProfile();
 
@@ -63,6 +63,8 @@ public class SplashScreenSettingsWindowController : MonoBehaviour
         data.talkVol = Mathf.Round(talkVol.value * 1000.0f) / 1000.0f;
         // mic
         data.micDevice = MicInput.instance.micDeviceIndex;
+
+        GameManager.instance.SendLog(this, "saving splash settings to current profile");
 
         // save to profile
         StudentInfoSystem.SaveStudentPlayerData();
@@ -167,9 +169,6 @@ public class SplashScreenSettingsWindowController : MonoBehaviour
 
     private IEnumerator CloseAllWindowsRoutine()
     {
-        // save settings to profile
-        SaveSettingsToProfile();
-        
         ToggleTabs(false);
 
         yield return new WaitForSeconds(0.3f);

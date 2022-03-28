@@ -50,7 +50,7 @@ MonoBehaviour:
     requireInput: 0
     postText: .
     advanceBG: 0
-  - text: A fork in the pat split in two directions. Should the
+  - text: A fork in the path split in two directions. Should the
     audio: {fileID: 8300000, guid: 816846289e7709a4098e78df1c98ee0f, type: 3}
     moveWord: 1
     actionWord: 0

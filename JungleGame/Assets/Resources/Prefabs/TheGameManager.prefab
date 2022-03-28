@@ -9262,7 +9262,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -500.00006}
+  m_AnchoredPosition: {x: 0, y: -500}
   m_SizeDelta: {x: 1800, y: 150}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &3174749653948767468
@@ -16606,7 +16606,7 @@ GameObject:
   - component: {fileID: 2461561929957500857}
   - component: {fileID: 3138047860821136678}
   m_Layer: 17
-  m_Name: SettingsWindow
+  m_Name: ScrollSettingsWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28773,7 +28773,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 500.00006}
+  m_AnchoredPosition: {x: 0, y: 500}
   m_SizeDelta: {x: 1800, y: 150}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &3476630059000522833

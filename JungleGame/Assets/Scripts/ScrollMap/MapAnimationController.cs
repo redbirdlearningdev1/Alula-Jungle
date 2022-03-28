@@ -836,8 +836,9 @@ public class MapAnimationController : MonoBehaviour
 
     public void PlaceCharactersOnMap(StoryBeat storyBeat)
     {
-        /// default positions on all story beats:
+        GameManager.instance.SendLog(this, "placing characters on map for story beat: \'" + storyBeat + "\'");
 
+        /// default positions on all story beats:
         if (storyBeat >= StoryBeat.GorillaVillageIntro && storyBeat < StoryBeat.RedShowsStickerButton)
         {
             // place boat in dock
@@ -2203,8 +2204,8 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
 
         // update settings map
-        SettingsWindowController.instance.UpdateMapSprite();
-        SettingsWindowController.instance.UpdateRedPos(MapLocation.GorillaVillage);
+        ScrollSettingsWindowController.instance.UpdateMapSprite();
+        ScrollSettingsWindowController.instance.UpdateRedPos(MapLocation.GorillaVillage);
 
         yield return new WaitForSeconds(1f);
 
@@ -2542,8 +2543,8 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
 
         // update settings map
-        SettingsWindowController.instance.UpdateMapSprite();
-        SettingsWindowController.instance.UpdateRedPos(MapLocation.Mudslide);
+        ScrollSettingsWindowController.instance.UpdateMapSprite();
+        ScrollSettingsWindowController.instance.UpdateRedPos(MapLocation.Mudslide);
 
         animationDone = true;
     }
@@ -2694,8 +2695,8 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
 
         // update settings map
-        SettingsWindowController.instance.UpdateMapSprite();
-        SettingsWindowController.instance.UpdateRedPos(MapLocation.OrcVillage);
+        ScrollSettingsWindowController.instance.UpdateMapSprite();
+        ScrollSettingsWindowController.instance.UpdateRedPos(MapLocation.OrcVillage);
 
         animationDone = true;
     }
@@ -2840,8 +2841,8 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
 
         // update settings map
-        SettingsWindowController.instance.UpdateMapSprite();
-        SettingsWindowController.instance.UpdateRedPos(MapLocation.SpookyForest);
+        ScrollSettingsWindowController.instance.UpdateMapSprite();
+        ScrollSettingsWindowController.instance.UpdateRedPos(MapLocation.SpookyForest);
 
         animationDone = true;
     }
@@ -3111,8 +3112,8 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
 
         // update settings map
-        SettingsWindowController.instance.UpdateMapSprite();
-        SettingsWindowController.instance.UpdateRedPos(MapLocation.OrcCamp);
+        ScrollSettingsWindowController.instance.UpdateMapSprite();
+        ScrollSettingsWindowController.instance.UpdateRedPos(MapLocation.OrcCamp);
 
         animationDone = true;
     }
@@ -3256,8 +3257,8 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
 
         // update settings map
-        SettingsWindowController.instance.UpdateMapSprite();
-        SettingsWindowController.instance.UpdateRedPos(MapLocation.GorillaPoop);
+        ScrollSettingsWindowController.instance.UpdateMapSprite();
+        ScrollSettingsWindowController.instance.UpdateRedPos(MapLocation.GorillaPoop);
 
         animationDone = true;
     }
@@ -3403,8 +3404,8 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
 
         // update settings map
-        SettingsWindowController.instance.UpdateMapSprite();
-        SettingsWindowController.instance.UpdateRedPos(MapLocation.WindyCliff);
+        ScrollSettingsWindowController.instance.UpdateMapSprite();
+        ScrollSettingsWindowController.instance.UpdateRedPos(MapLocation.WindyCliff);
 
         animationDone = true;
     }
@@ -3672,8 +3673,8 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
 
         // update settings map
-        SettingsWindowController.instance.UpdateMapSprite();
-        SettingsWindowController.instance.UpdateRedPos(MapLocation.PirateShip);
+        ScrollSettingsWindowController.instance.UpdateMapSprite();
+        ScrollSettingsWindowController.instance.UpdateRedPos(MapLocation.PirateShip);
 
         animationDone = true;
     }
@@ -3815,8 +3816,8 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
 
         // update settings map
-        SettingsWindowController.instance.UpdateMapSprite();
-        SettingsWindowController.instance.UpdateRedPos(MapLocation.MermaidBeach);
+        ScrollSettingsWindowController.instance.UpdateMapSprite();
+        ScrollSettingsWindowController.instance.UpdateRedPos(MapLocation.MermaidBeach);
 
         animationDone = true;
     }
@@ -4087,8 +4088,8 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
 
         // update settings map
-        SettingsWindowController.instance.UpdateMapSprite();
-        SettingsWindowController.instance.UpdateRedPos(MapLocation.Ruins1);
+        ScrollSettingsWindowController.instance.UpdateMapSprite();
+        ScrollSettingsWindowController.instance.UpdateRedPos(MapLocation.Ruins1);
 
         animationDone = true;
     }
@@ -4240,8 +4241,8 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
 
         // update settings map
-        SettingsWindowController.instance.UpdateMapSprite();
-        SettingsWindowController.instance.UpdateRedPos(MapLocation.ExitJungle);
+        ScrollSettingsWindowController.instance.UpdateMapSprite();
+        ScrollSettingsWindowController.instance.UpdateRedPos(MapLocation.ExitJungle);
 
         animationDone = true;
     }
@@ -4508,8 +4509,8 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
 
         // update settings map
-        SettingsWindowController.instance.UpdateMapSprite();
-        SettingsWindowController.instance.UpdateRedPos(MapLocation.GorillaStudy);
+        ScrollSettingsWindowController.instance.UpdateMapSprite();
+        ScrollSettingsWindowController.instance.UpdateRedPos(MapLocation.GorillaStudy);
 
         animationDone = true;
     }
@@ -4710,8 +4711,8 @@ public class MapAnimationController : MonoBehaviour
         ScrollMapManager.instance.UpdateMapIcons(true);
 
         // update settings map
-        SettingsWindowController.instance.UpdateRedPos(MapLocation.Monkeys);
-        SettingsWindowController.instance.UpdateMapSprite();
+        ScrollSettingsWindowController.instance.UpdateRedPos(MapLocation.Monkeys);
+        ScrollSettingsWindowController.instance.UpdateMapSprite();
 
         animationDone = true;
     }
@@ -4828,8 +4829,8 @@ public class MapAnimationController : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
 
         // update settings map
-        SettingsWindowController.instance.UpdateMapSprite();
-        SettingsWindowController.instance.UpdateRedPos(MapLocation.PalaceIntro);
+        ScrollSettingsWindowController.instance.UpdateMapSprite();
+        ScrollSettingsWindowController.instance.UpdateRedPos(MapLocation.PalaceIntro);
 
         animationDone = true;
     }

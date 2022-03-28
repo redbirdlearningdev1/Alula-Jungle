@@ -471,7 +471,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
     {
         // move current coin
         currentCoin.GetComponent<LerpableObject>().LerpPosition(VisibleFramesController.instance.frames[currentPair.index].transform.position, 0.25f, false);
-        currentCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0.9f, 0.9f), 0.25f);
+        currentCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.25f);
         yield return new WaitForSeconds(0.5f);
 
         // win round
@@ -588,6 +588,18 @@ public class WordFactoryBuildingManager : MonoBehaviour
             yield break;
         }
 
+        // win or lose game ?
+        if (numWins >= 3)
+        {
+            StartCoroutine(WinRoutine());
+            yield break;
+        }  
+        else if (numMisses >= 3)
+        {
+            StartCoroutine(LoseRoutine());
+            yield break;
+        }
+
         // play appropriate reminder / encouragement popup
         if (playTutorial && tutorialEvent > 1 || !playTutorial)
         {
@@ -642,15 +654,10 @@ public class WordFactoryBuildingManager : MonoBehaviour
                 }
                 
             }
-        }
+        }   
 
-        // win or lose game ?
-        if (numWins >= 3)
-            StartCoroutine(WinRoutine());
-        else if (numMisses >= 3)
-            StartCoroutine(LoseRoutine());
-        else 
-            StartCoroutine(NewRound());
+        // start a new round
+        StartCoroutine(NewRound());
     }
 
     private IEnumerator WinRoutine()
@@ -691,10 +698,12 @@ public class WordFactoryBuildingManager : MonoBehaviour
     {
         if (numMisses <= 0)
             return 3;
-        else if (numMisses > 0 && numMisses <= 2)
+        else if (numMisses == 1)
             return 2;
-        else
+        else if (numMisses == 2)
             return 1;
+        else 
+            return 0;
     }
 
     private IEnumerator LoseRoutine()
@@ -723,13 +732,17 @@ public class WordFactoryBuildingManager : MonoBehaviour
         if (playingCoinAudio)
             return;
 
-        if (currentCoins.Contains(coin) || WaterCoinsController.instance.waterCoins.Contains(coin))
+        if (currentCoins.Contains(coin))
         {
-            StartCoroutine(PlayAudioCoinRoutine(coin));
+            StartCoroutine(PlayAudioCoinRoutine(coin, false));
+        }
+        if (WaterCoinsController.instance.waterCoins.Contains(coin))
+        {
+            StartCoroutine(PlayAudioCoinRoutine(coin, true));
         }
     }
 
-    private IEnumerator PlayAudioCoinRoutine(UniversalCoinImage coin)
+    private IEnumerator PlayAudioCoinRoutine(UniversalCoinImage coin, bool waterCoin)
     {
         playingCoinAudio = true;
 
@@ -737,8 +750,11 @@ public class WordFactoryBuildingManager : MonoBehaviour
         coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
 
         yield return new WaitForSeconds(0.9f);
-        coin.GetComponent<LerpableObject>().LerpScale(Vector2.one, 0.2f);
-
+        if (!waterCoin)
+        {
+            coin.GetComponent<LerpableObject>().LerpScale(Vector2.one, 0.2f);
+        }
+        
         playingCoinAudio = false;
     }
 

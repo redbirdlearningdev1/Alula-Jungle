@@ -157,7 +157,7 @@ public class StoryGameManager : MonoBehaviour
 
             if (seg.actionWord != ActionWordEnum._blank)
             {
-                textObj.GetComponent<TextWrapper>().SetText(seg.actionWord.ToString());
+                textObj.GetComponent<TextWrapper>().SetText(seg.text.Replace("~", ","));
             }
 
             if (seg.postText != "")

@@ -742,6 +742,12 @@ public class WordFactoryBlendingManager : MonoBehaviour
         redAnimator.Play("Lose");
         tigerAnimator.Play("TigerWin");
 
+        if (numMisses >= 3)
+        {
+            StartCoroutine(LoseGameRoutine());
+            yield break;
+        }
+
         yield return new WaitForSeconds(1f);
 
         // play reminder popup
@@ -750,10 +756,8 @@ public class WordFactoryBlendingManager : MonoBehaviour
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
         yield return new WaitForSeconds(clip.length + 1f);
 
-        if (numMisses >= 3)
-            StartCoroutine(LoseGameRoutine());
-        else
-            StartCoroutine(NewRound());
+
+        StartCoroutine(NewRound());
     }
 
     private IEnumerator HideCoinsAndFrames()
@@ -861,10 +865,12 @@ public class WordFactoryBlendingManager : MonoBehaviour
     {
         if (numMisses <= 0)
             return 3;
-        else if (numMisses > 0 && numMisses <= 2)
+        else if (numMisses == 1)
             return 2;
-        else
+        else if (numMisses == 2)
             return 1;
+        else 
+            return 0;
     }
 
     private IEnumerator PolaroidRevealRoutine(bool isCorrect)

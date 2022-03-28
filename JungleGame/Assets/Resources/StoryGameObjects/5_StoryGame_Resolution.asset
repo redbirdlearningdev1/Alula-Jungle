@@ -29,17 +29,17 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: and the baby
+  - text: and the
     audio: {fileID: 8300000, guid: 93734811f92cfe5428992f082d581ffa, type: 3}
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: monkey
+  - text: baby monkey
     audio: {fileID: 8300000, guid: 43685283febeee74e9672a239ecdf90c, type: 3}
     moveWord: 1
-    actionWord: 18
+    actionWord: 20
     requireInput: 0
     postText: 
     advanceBG: 0
@@ -113,17 +113,17 @@ MonoBehaviour:
     requireInput: 0
     postText: .
     advanceBG: 1
-  - text: noises made the baby
+  - text: noises made the
     audio: {fileID: 8300000, guid: 41cee8fbc0c87be4b9791b65bc51063e, type: 3}
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: monkey
+  - text: baby monkey
     audio: {fileID: 8300000, guid: af0aecaa40d84db479608835118d1027, type: 3}
     moveWord: 1
-    actionWord: 18
+    actionWord: 20
     requireInput: 0
     postText: 
     advanceBG: 0
@@ -487,7 +487,7 @@ MonoBehaviour:
   - text: baby monkey
     audio: {fileID: 8300000, guid: 82b1953884f3b2942bc9c244fe985360, type: 3}
     moveWord: 1
-    actionWord: 18
+    actionWord: 20
     requireInput: 0
     postText: 
     advanceBG: 0
