@@ -2968,4 +2968,108 @@ public class DevMenuManager : MonoBehaviour
         Application.Quit();
 #endif
     }
+
+    /* 
+    ################################################
+    #   STICKER SIMULATIONS
+    ################################################
+    */
+
+    public void Roll100Stickers()
+    {
+        RollXAmountOfStickers(100);
+    }
+
+    public void Roll1000Stickers()
+    {
+        RollXAmountOfStickers(1000);
+    }
+
+    private void RollXAmountOfStickers(int x)
+    {
+        // keep track of prev active profile
+        StudentIndex prevIndex = StudentInfoSystem.GetCurrentProfile().studentIndex;
+        // make new profile + set current profile to be simulation specific
+        StudentInfoSystem.ResetStickerSimulationProfile();
+        StudentInfoSystem.SetStudentPlayer(StudentIndex.sticker_simulation_profile);
+
+        // roll for sticker x amount of times
+        int commonCount = 0;
+        int uncommonCount = 0;
+        int rareCount = 0;
+        int legendaryCount = 0;
+        List<int> rareOccurrences = new List<int>();
+        List<int> legendaryOccurrences = new List<int>();
+        for (int i = 0; i < x; i++)
+        {
+            Sticker new_sticker = StickerDatabase.instance.RollForSticker();
+            StudentInfoSystem.AddStickerToInventory(new_sticker);
+
+            // keep track of rarity stats
+            switch (new_sticker.rarity)
+            {
+                case StickerRarity.Common: commonCount++; break;
+                case StickerRarity.Uncommon: uncommonCount++; break;
+                case StickerRarity.Rare: 
+                    rareCount++;
+                    rareOccurrences.Add(i);
+                    break;
+                case StickerRarity.Legendary: 
+                    legendaryCount++;
+                    legendaryOccurrences.Add(i);
+                    break;
+            }
+        }
+        StudentPlayerData simulatedProfile = StudentInfoSystem.GetCurrentProfile();
+
+        // print out sticker stats
+        GameManager.instance.SendLog(this, "PRINTING OUT STICKER STATS FOR " + x + " SIMULATED ROLLS:");
+        GameManager.instance.SendLog(this, "unique stickers in inventory: " + simulatedProfile.stickerInventory.Count);
+        int totalStickers = 0;
+        foreach (var sticker in simulatedProfile.stickerInventory)
+        {
+            totalStickers += sticker.count;
+        }
+        GameManager.instance.SendLog(this, "total stickers in inventory: " + totalStickers);
+
+        GameManager.instance.SendLog(this, "\t common stickers:\t" + ((float)commonCount / (float)x) * 100f + "%");
+        GameManager.instance.SendLog(this, "\t uncommon stickers:\t" + ((float)uncommonCount / (float)x) * 100f + "%");
+        GameManager.instance.SendLog(this, "\t rare stickers:\t\t" + ((float)rareCount / (float)x) * 100f + "%");
+        GameManager.instance.SendLog(this, "\t legendary stickers:\t" + ((float)legendaryCount / (float)x) * 100f + "%");
+
+        GameManager.instance.SendLog(this, "\t common stickers unlocked:\t " + CountTrues(simulatedProfile.commonStickerUnlocked) + "/60"); // 60 common stickers
+        GameManager.instance.SendLog(this, "\t uncommon stickers unlocked:\t " + CountTrues(simulatedProfile.uncommonStickerUnlocked) + "/36"); // 36 uncommon stickers
+        GameManager.instance.SendLog(this, "\t rare stickers unlocked:\t\t " + CountTrues(simulatedProfile.rareStickerUnlocked) + "/12"); // 12 rare stickers
+        GameManager.instance.SendLog(this, "\t legendary stickers unlocked:\t " + CountTrues(simulatedProfile.legendaryStickerUnlocked) + "/12"); // 12 legendary stickers
+
+        string rareOccurrencesString = "[";
+        foreach (int round in rareOccurrences)
+        {
+            rareOccurrencesString += round.ToString() + ", ";
+        }
+        rareOccurrencesString = rareOccurrencesString.Substring(0, rareOccurrencesString.Length - 2);
+        rareOccurrencesString += "]";
+        GameManager.instance.SendLog(this, "\t rare occurrences:\t" + rareOccurrencesString);
+
+        string legendaryOccurrencesString = "[";
+        foreach (int round in legendaryOccurrences)
+        {
+            legendaryOccurrencesString += round.ToString() + ", ";
+        }
+        legendaryOccurrencesString = legendaryOccurrencesString.Substring(0, legendaryOccurrencesString.Length - 2);
+        legendaryOccurrencesString += "]";
+        GameManager.instance.SendLog(this, "\t legendary occurrences:\t" + legendaryOccurrencesString);
+
+
+        // set current profile to be prev active profile
+        StudentInfoSystem.SetStudentPlayer(prevIndex);
+    }
+
+    public static int CountTrues(bool[] array)
+    {
+        int count = 0;
+        foreach (bool b in array)
+            if (b) count++;
+        return count;
+    }
 }

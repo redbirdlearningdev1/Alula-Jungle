@@ -114,6 +114,11 @@ public static class StudentInfoSystem
     ################################################
     */
 
+    public static void ResetStickerSimulationProfile()
+    {
+        ResetProfile(StudentIndex.sticker_simulation_profile);
+    }
+
     public static bool InventoryContainsSticker(Sticker sticker)
     {
         if (currentStudentPlayer != null)

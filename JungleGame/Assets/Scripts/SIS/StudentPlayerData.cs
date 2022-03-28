@@ -123,6 +123,7 @@ public class StudentPlayerData
 
     // sticker data
     public List<InventoryStickerData> stickerInventory;
+    public int stickerPityCounter;
     // unlocked stickers
     public bool[] commonStickerUnlocked;
     public bool[] uncommonStickerUnlocked; 
@@ -150,7 +151,7 @@ public enum BoatEncounter
 
 public enum StudentIndex
 {
-    student_1, student_2, student_3
+    student_1, student_2, student_3, sticker_simulation_profile
 }
 
 public enum StoryBeat

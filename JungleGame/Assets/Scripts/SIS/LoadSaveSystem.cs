@@ -602,6 +602,7 @@ public static class LoadSaveSystem
 
         // stickers
         new_data.stickerInventory = new List<InventoryStickerData>();
+        new_data.stickerPityCounter = 0;
         // unlocked sticker lists
         new_data.commonStickerUnlocked = new bool[60];
         new_data.uncommonStickerUnlocked = new bool[36];
