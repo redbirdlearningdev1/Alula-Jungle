@@ -853,10 +853,13 @@ public class MapAnimationController : MonoBehaviour
             boat.GetComponent<Image>().raycastTarget = true;
         }
 
-        // place clogg in OV
-        clogg.mapAnimator.Play("CloggOVPos");
-        clogg.GetComponent<Image>().raycastTarget = true;
-        clogg.interactable = true;
+        if (!(storyBeat >= StoryBeat.OrcCampUnlocked && storyBeat <= StoryBeat.OrcCampDefeated) && (ScrollMapManager.instance.GetCurrentMapLocation() != MapLocation.OrcCamp))
+        {
+            // place clogg in OV
+            clogg.mapAnimator.Play("CloggOVPos");
+            clogg.GetComponent<Image>().raycastTarget = true;
+            clogg.interactable = true;
+        }
 
         switch (storyBeat)
         {
@@ -1259,6 +1262,10 @@ public class MapAnimationController : MonoBehaviour
                 brutus.mapAnimator.Play("BrutusOCPos");
                 brutus.characterAnimator.Play("brutusFixed");
                 break;
+
+            case StoryBeat.GorillaPoopPlayGames:
+
+
 
             case StoryBeat.GorillaPoop_challengeGame_1:
                 // place julius in GP
@@ -1817,7 +1824,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.characterAnimator.Play("brutusBroken");
                 brutus.FlipCharacterToRight();
                 break;
-            
+
             case StoryBeat.PreBossBattle:
                 // place taxi bird in PI
                 taxiBird.mapAnimator.Play("TaxiBirdPIPos");
@@ -4900,7 +4907,7 @@ public class MapAnimationController : MonoBehaviour
 
         // show boss battle bar
         BossBattleBar.instance.ShowBar();
-        
+
         // advance story beat
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
@@ -4935,7 +4942,7 @@ public class MapAnimationController : MonoBehaviour
 
         animationDone = true;
     }
-    
+
 
 
 
@@ -4985,7 +4992,7 @@ public class MapAnimationController : MonoBehaviour
                 // play BBChallenge_1_p1 talkie
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBChallenge_1_p1"));
             }
-            
+
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
         }
@@ -5074,7 +5081,7 @@ public class MapAnimationController : MonoBehaviour
         animationDone = true;
     }
 
-    
+
     private IEnumerator PreBossBattle1Routine()
     {
         // only continue with talkies if just played a boss battle game
@@ -5115,7 +5122,7 @@ public class MapAnimationController : MonoBehaviour
             {
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBQuip_1_p3"));
             }
-            
+
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
         }
@@ -5146,7 +5153,7 @@ public class MapAnimationController : MonoBehaviour
         PalaceArrowDown.instance.ShowArrow();
         PalaceArrowDown.instance.interactable = true;
 
-        
+
         animationDone = true;
     }
 
@@ -5198,7 +5205,7 @@ public class MapAnimationController : MonoBehaviour
             {
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBQuip_2_p3"));
             }
-            
+
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
         }
@@ -5280,7 +5287,7 @@ public class MapAnimationController : MonoBehaviour
             {
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("BBQuip_3_p3"));
             }
-            
+
             while (TalkieManager.instance.talkiePlaying)
                 yield return null;
         }
