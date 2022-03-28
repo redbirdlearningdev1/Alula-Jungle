@@ -29,7 +29,6 @@ public static class StudentInfoSystem
         SaveStudentPlayerData();
         currentStudentPlayer = LoadSaveSystem.LoadStudentData(index, true); // load new student data
 
-        SettingsManager.instance.LoadSettingsFromProfile(); // load profile settings
         DropdownToolbar.instance.LoadToolbarDataFromProfile(); // load profile coins
         GameManager.instance.SendLog("StudentInfoSystem", "set current profile to: " + index);
     }

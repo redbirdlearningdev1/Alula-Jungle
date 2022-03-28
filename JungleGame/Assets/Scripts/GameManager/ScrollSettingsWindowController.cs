@@ -126,6 +126,9 @@ public class ScrollSettingsWindowController : MonoBehaviour
             return;
         isAnimating = true;
 
+        // load in settings from SIS
+        SettingsManager.instance.LoadScrollSettingsFromProfile();
+
         // add background
         SettingsManager.instance.settingsWindowBG.LerpImageAlpha(SettingsManager.instance.settingsWindowBG.GetComponent<Image>(), 0.75f, 0.2f);
         SettingsManager.instance.settingsWindowBG.GetComponent<Image>().raycastTarget = true;

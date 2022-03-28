@@ -41,6 +41,5 @@ public class BobController : MonoBehaviour
     public void StopBob()
     {
         bob = false;
-        timer = 0f;
     }
 }

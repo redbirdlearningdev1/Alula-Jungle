@@ -559,6 +559,11 @@ public class NewBoatGameManager : MonoBehaviour
         // move throttle down
         BoatThrottleController.instance.StopThrottle();
 
+        // stop repeating audio
+        repeatAudio = false;
+        audiosToRepeat.Clear();
+        AudioManager.instance.StopTalk();
+
         StopCoroutine(boatGameRoutine);
         boatGameRoutine = StartCoroutine(ContinueBoatGame());
     }

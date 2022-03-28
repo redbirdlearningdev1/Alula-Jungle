@@ -95,7 +95,7 @@ public class SettingsManager : MonoBehaviour
         StudentInfoSystem.SaveStudentPlayerData();
     }
 
-    public void LoadSettingsFromProfile()
+    public void LoadScrollSettingsFromProfile()
     {
         var data = StudentInfoSystem.GetCurrentProfile();
         // volumes
@@ -380,7 +380,6 @@ public class SettingsManager : MonoBehaviour
                 SaveScrollSettingsToProfile();
             }
             
-
             // close windows
             ScrollSettingsWindowController.instance.CloseAllWindows();
             InGameSettingsWindowController.instance.CloseAllWindows();

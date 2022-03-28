@@ -171,8 +171,6 @@ public class DevMenuManager : MonoBehaviour
                 StudentInfoSystem.SetStudentPlayer(StudentIndex.student_3);
                 break;
         }
-        // update settings
-        SettingsManager.instance.LoadSettingsFromProfile();
     }
 
     public void OnProfileResetPressed()
@@ -181,7 +179,6 @@ public class DevMenuManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CreateBlip, 1f);
 
         StudentInfoSystem.ResetProfile(StudentInfoSystem.GetCurrentProfile().studentIndex);
-        SettingsManager.instance.LoadSettingsFromProfile();
         SetupProfileDropdown();
     }
 

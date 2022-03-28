@@ -159,13 +159,17 @@ public enum MapIconIdentfier
     M_challenge_3,
 }
 
+[ExecuteInEditMode]
 public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     public bool interactable = false;
-    //public bool popupWindow;
+    public bool setFixedManually = false;
+    private bool isFixed = false;
 
     [Header("Map ID")]
     public MapIconIdentfier identifier;
+    public PolygonCollider2D brokenCollider;
+    public PolygonCollider2D fixedCollider;
 
     [Header("Animation Stuff")]
     public bool canBeFixed;
@@ -186,7 +190,8 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     [SerializeField] private Animator repairAnimator;
     [SerializeField] private Animator destroyAnimator;
     private bool isPressed = false;
-    private bool isFixed = false;
+    
+    [HideInInspector] public bool isOver = false;
 
     [Header("Stars")]
     public StarLocation starLocation;
@@ -216,18 +221,25 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         if (animatedIcon != AnimatedIcon.none) animator = GetComponent<Animator>();
         if (repairAnimator) repairAnimator.Play("clearAnimation");
 
+        // set colliders to be disabled
+        brokenCollider.enabled = false;
+        fixedCollider.enabled = false;
+
         // configure current stars
         InitStars(); 
     }
 
     void Start()
     {
-        // determine if icon should periodically wiggle
-        if (GetNumStars() == 0)
+        if (Application.isPlaying)
         {
-            // offset wiggles by random amount
-            timer -= Random.Range(0f, 2.5f);
-            wiggleIcon = true;
+            // determine if icon should periodically wiggle
+            if (GetNumStars() == 0)
+            {
+                // offset wiggles by random amount
+                timer -= Random.Range(0f, 2.5f);
+                wiggleIcon = true;
+            }
         }
     }
 
@@ -242,6 +254,21 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 StartCoroutine(WiggleIconRoutine());
             }
         }
+
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            // manually set fixed or broken in editor
+            if (setFixedManually && !isFixed)
+            {
+                SetFixed(true, false, false);
+            }
+            else if (!setFixedManually && isFixed)
+            {
+                SetFixed(false, false, false);
+            }
+        }
+#endif
     }
 
     private IEnumerator WiggleIconRoutine()
@@ -391,6 +418,17 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         if (!canBeFixed) return;
 
         this.isFixed = opt;
+
+        if (isFixed)
+        {
+            fixedCollider.enabled = true;
+            brokenCollider.enabled = false;
+        }
+        else
+        {
+            fixedCollider.enabled = false;
+            brokenCollider.enabled = true;
+        }
 
         switch (animatedIcon)
         {
@@ -700,9 +738,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     ################################################
     */
 
-    private bool isOver = false;
-
-    void OnMouseOver()
+    public void OnMouseOverEvent()
     {
         // skip if not interactable OR playing talkie OR minigamewheel out OR settings window open OR royal decree open OR wagon open
         if (!interactable || 
@@ -724,7 +760,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         }
     }
 
-    void OnMouseExit()
+    public void OnMouseExitEvent()
     {
         if (isOver)
         {

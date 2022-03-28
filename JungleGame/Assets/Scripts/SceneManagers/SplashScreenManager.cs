@@ -716,7 +716,6 @@ public class SplashScreenManager : MonoBehaviour
 
         // reset profile
         StudentInfoSystem.ResetProfile(StudentInfoSystem.GetCurrentProfile().studentIndex);
-        SettingsManager.instance.LoadSettingsFromProfile();
 
         SetUpProfiles();
         SetUpWinCrowns();

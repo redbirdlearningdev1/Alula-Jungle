@@ -1195,6 +1195,7 @@ public class MapAnimationController : MonoBehaviour
                 // place clogg in OC
                 clogg.mapAnimator.Play("CloggOCPos");
                 clogg.GetComponent<Image>().raycastTarget = true;
+                clogg.FlipCharacterToRight();
                 clogg.interactable = true;
                 // place julius in OC
                 julius.mapAnimator.Play("JuliusOCPos");
@@ -1214,6 +1215,7 @@ public class MapAnimationController : MonoBehaviour
                 // place clogg in OC
                 clogg.mapAnimator.Play("CloggOCPos");
                 clogg.GetComponent<Image>().raycastTarget = true;
+                clogg.FlipCharacterToRight();
                 clogg.interactable = true;
                 // place julius in OC
                 julius.mapAnimator.Play("JuliusOCPos");
@@ -1223,6 +1225,7 @@ public class MapAnimationController : MonoBehaviour
                 marcus.characterAnimator.Play("marcusWin");
                 marcus.ShowExclamationMark(true);
                 marcus.GetComponent<Image>().raycastTarget = true;
+                clogg.FlipCharacterToRight();
                 marcus.interactable = true;
                 // place brutus in OC
                 brutus.mapAnimator.Play("BrutusOCPos");
@@ -1233,6 +1236,7 @@ public class MapAnimationController : MonoBehaviour
                 // place clogg in OC
                 clogg.mapAnimator.Play("CloggOCPos");
                 clogg.GetComponent<Image>().raycastTarget = true;
+                clogg.FlipCharacterToRight();
                 clogg.interactable = true;
                 // place julius in OC
                 julius.mapAnimator.Play("JuliusOCPos");
@@ -1252,6 +1256,7 @@ public class MapAnimationController : MonoBehaviour
                 // place clogg in OC
                 clogg.mapAnimator.Play("CloggOCPos");
                 clogg.GetComponent<Image>().raycastTarget = true;
+                clogg.FlipCharacterToRight();
                 clogg.interactable = true;
                 // place julius in OC
                 julius.mapAnimator.Play("JuliusOCPos");
@@ -1265,8 +1270,7 @@ public class MapAnimationController : MonoBehaviour
                 break;
 
             case StoryBeat.GorillaPoopPlayGames:
-
-
+                break;
 
             case StoryBeat.GorillaPoop_challengeGame_1:
                 // place julius in GP
@@ -3150,6 +3154,9 @@ public class MapAnimationController : MonoBehaviour
         brutus.characterAnimator.Play("brutusBroken");
 
         yield return new WaitForSeconds(0.5f);
+
+        // turn gorilla to face right
+        clogg.FlipCharacterToRight();
 
         // play spooky forest rebuilt talkie 3
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("OCampRebuilt_1_p2"));

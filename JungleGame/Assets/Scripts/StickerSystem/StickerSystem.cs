@@ -847,7 +847,7 @@ public class StickerSystem : MonoBehaviour
 
         // fade to black
         FadeObject.instance.FadeOut(1f);
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(1.25f);
 
         VideoPlayer currentVideo = null;
         // play correct video player
