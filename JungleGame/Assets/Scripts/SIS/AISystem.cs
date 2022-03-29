@@ -10,26 +10,8 @@ public static class AISystem
 
     public static GameType DetermineMinigame(StudentPlayerData playerData)
     {
-        //Debug.Log("Last Game Played " + playerData.lastGamePlayed);
-        //Debug.Log("Game Before Last Game Played " +playerData.gameBeforeLastPlayed);
-        //Debug.Log("Stars Last Game Played " +playerData.starsLastGamePlayed);
-        //Debug.Log("Stars Before Last Game Played " +playerData.starsGameBeforeLastPlayed);
-        //Debug.Log("Total Number of Stars Frogger " + playerData.totalStarsFrogger);
-        //Debug.Log("Total Number of Stars Sea "  + playerData.totalStarsSeashell);
-        //Debug.Log("Total Number of Stars Spider " + playerData.totalStarsSpiderweb);
-        //Debug.Log("Total Number of Stars Turn " + playerData.totalStarsTurntables);
-        //Debug.Log("Total Number of Stars Pirate " + playerData.totalStarsPirate);
-        //Debug.Log("Total Number of Stars Rummage " + playerData.totalStarsRummage);
-        //Debug.Log("Number of Stars Frogger " + playerData.starsFrogger);
-        //Debug.Log("Number of Stars Sea " + playerData.starsSeashell);
-        //Debug.Log("Number of Stars Spider " + playerData.starsSpiderweb);
-        //Debug.Log("Number of Stars Turn " + playerData.starsTurntables);
-        //Debug.Log("Number of Stars Pirate " + playerData.starsPirate);
-        //Debug.Log("Number of Stars Rummage " + playerData.starsRummage); 
-
         switch (playerData.minigamesPlayed)
         {
-
             case 0: return GameType.FroggerGame;
             case 1: return GameType.RummageGame;
             case 2: return GameType.SeashellGame;
@@ -62,13 +44,6 @@ public static class AISystem
                 gameRatio.Add(pirateSuccessRatio);
                 gameRatio.Add(rummageSuccessRatio);
                 gameRatio.Sort();
-
-                //Debug.Log(gameRatio[0]);
-                //Debug.Log(gameRatio[1]);
-                //Debug.Log(gameRatio[2]);
-                //Debug.Log(gameRatio[3]);
-                //Debug.Log(gameRatio[4]);
-                //Debug.Log(gameRatio[5]);
 
                 for (int i = 0; i < gameRatio.Count; i++)
                 {
@@ -109,13 +84,6 @@ public static class AISystem
                     minigameOptions.Insert(0, minigameOptions[0]);
                 }
 
-                //Debug.Log(minigameOptions[0]);
-                //Debug.Log(minigameOptions[1]);
-                //Debug.Log(minigameOptions[2]);
-                //Debug.Log(minigameOptions[3]);
-                //Debug.Log(minigameOptions[4]);
-                //Debug.Log(minigameOptions[5]);
-
                 if (playerData.starsLastGamePlayed + playerData.starsGameBeforeLastPlayed == 2 || playerData.starsLastGamePlayed + playerData.starsGameBeforeLastPlayed == 3)
                 {
                     if (minigameOptions.Count > 0)
@@ -145,7 +113,6 @@ public static class AISystem
                 }
                 else if (playerData.starsLastGamePlayed + playerData.starsGameBeforeLastPlayed >= 5 && playerData.rRumblePlayed == 1 && playerData.minigamesPlayed > 6)
                 {
-                    Debug.Log("ROYALRUMBLEDONE");
                     StudentInfoSystem.SaveStudentPlayerData();
                     if (minigameOptions.Count > 0)
                     {
@@ -160,7 +127,6 @@ public static class AISystem
                 }
                 else
                 {
-                    Debug.Log("ROYALRUMBLENOTDONE");
                     StudentInfoSystem.SaveStudentPlayerData();
                     if (minigameOptions.Count > 0)
                     {
@@ -212,6 +178,7 @@ public static class AISystem
         {
             challengeGameOptions.Add(GameType.WordFactoryDeleting);
             challengeGameOptions.Add(GameType.WordFactorySubstituting);
+            challengeGameOptions.Add(GameType.WordFactoryBuilding);
         }
 
         // remove options that are already used in this area
@@ -297,8 +264,6 @@ public static class AISystem
                 break;
         }
 
-
-
         if (playerData.blendPlayed == 0 && challengeGameOptions.Count > 0)
         {
             return challengeGameOptions[0];
@@ -311,7 +276,7 @@ public static class AISystem
         {
             return challengeGameOptions[0];
         }
-        else if (challengeGameOptions.Count > 0 && challengeGameOptions.Count > 0)
+        else if (challengeGameOptions.Count > 0)
         {
             int index = Random.Range(0, challengeGameOptions.Count);
             return challengeGameOptions[index];
@@ -326,6 +291,7 @@ public static class AISystem
             challengeGameOptions.Add(GameType.WordFactoryBuilding);
             challengeGameOptions.Add(GameType.WordFactorySubstituting);
             challengeGameOptions.Add(GameType.WordFactoryDeleting);
+            challengeGameOptions.Add(GameType.WordFactoryBuilding);
             challengeGameOptions.Add(GameType.Password);
 
             Debug.Log("challenge game options: " + challengeGameOptions.Count);
@@ -337,8 +303,6 @@ public static class AISystem
 
     public static bool DetermineRoyalRumble(StudentPlayerData playerData)
     {
-        Debug.Log("THIS IS THE RrumbePlayed");
-        Debug.Log(playerData.rRumblePlayed);
         // player must have played all 6 minigames before RR
         if (playerData.minigamesPlayed < 6)
             return false;
@@ -358,9 +322,6 @@ public static class AISystem
         {
             return false;
         }
-
-        // determine royal rumble
-
     }
 
     public static GameType DetermineRoyalRumbleGame(StudentPlayerData playerData)
@@ -379,22 +340,19 @@ public static class AISystem
         {
             challengeGameOptions.Add(GameType.WordFactoryDeleting);
             challengeGameOptions.Add(GameType.WordFactorySubstituting);
+            challengeGameOptions.Add(GameType.WordFactoryBuilding);
         }
-
 
         if (playerData.blendPlayed == 0)
         {
-            //return challengeGameOptions[0];
             return GameType.WordFactoryBlending;
         }
         else if (playerData.tPawPolPlayed == 0)
         {
-            //return challengeGameOptions[1];
             return GameType.TigerPawPhotos;
         }
         else if (playerData.tPawCoinPlayed == 0)
         {
-            //return challengeGameOptions[2];
             return GameType.TigerPawCoins;
         }
         else
