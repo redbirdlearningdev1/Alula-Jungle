@@ -2179,6 +2179,7 @@ public class MapAnimationController : MonoBehaviour
         boat.ShowExclamationMark(true);
         boat.GetComponent<Image>().raycastTarget = true;
         boat.GetComponent<MapIcon>().interactable = true;
+        boat.GetComponent<MapIcon>().fixedCollider.enabled = true;
         boat.GetComponent<WiggleController>().StartWiggle();
 
         animationDone = true;
