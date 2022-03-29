@@ -138,9 +138,9 @@ public class TigerGameRaycaster : MonoBehaviour
             List<ElkoninValue> elk = new List<ElkoninValue>();
             elk.AddRange(word.elkoninList);
 
-            for (int i = 0 ; 0 < currentPolaroid.GetComponent<Polaroid>().challengeWord.elkoninCount; i++)
+            for (int i = 0 ; i < currentPolaroid.GetComponent<Polaroid>().challengeWord.elkoninCount; i++)
             {
-                if(elk[i].ToString() == "empty_gold" || elk[i].ToString() == "empty_silver" )
+                if (elk[i].ToString() == "empty_gold" || elk[i].ToString() == "empty_silver" )
                 {
                     break;
                 }

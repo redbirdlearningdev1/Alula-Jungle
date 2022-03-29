@@ -255,8 +255,11 @@ public class ParticleController : MonoBehaviour
                         break;
                 }
 
+                // get new fun particle script
+                FunParticle currFunParticle = currentParticle.GetComponent<FunParticle>();
+
                 // set new rate
-                currentRate = currentParticle.GetComponent<FunParticle>().rate;
+                currentRate = currFunParticle.rate;
 
                 // spawn particle
                 Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -267,7 +270,8 @@ public class ParticleController : MonoBehaviour
                 particle.GetComponent<FunParticle>().StartParticle();
 
                 // play pop sound effect!
-                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 0.1f, "particle_spawn", 0.7f);
+                if (currFunParticle.spawnSound != null)
+                    AudioManager.instance.PlayFX_oneShot(currFunParticle.spawnSound, 0.1f, "particle_spawn");
             }
         }
     }
