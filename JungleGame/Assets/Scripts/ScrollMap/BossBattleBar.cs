@@ -14,6 +14,8 @@ public class BossBattleBar : MonoBehaviour
     public Transform percent100Transform;
     public Transform tigerSpawnPos;
 
+    public bool barShown = false;
+
     void Awake()
     {
         if (instance == null)
@@ -78,6 +80,8 @@ public class BossBattleBar : MonoBehaviour
 
         // start bobbing
         GetComponent<BobController>().StartBob();
+
+        barShown = true;
     }
 
     public void HideBar()
@@ -98,5 +102,7 @@ public class BossBattleBar : MonoBehaviour
         fillBar.transform.position = percent0Transform.position;
         tigerHead.transform.localScale = Vector3.zero;
         tigerHead.GetComponent<WiggleController>().StopWiggle();
+
+        barShown = false;
     }
 }

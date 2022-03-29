@@ -281,6 +281,12 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         waitForWiggle = false;
     }
 
+    public PolygonCollider2D GetCurrentCollider()
+    {
+        if (isFixed) return fixedCollider;
+        else return brokenCollider;
+    }
+
     /* 
     ################################################
     #   STAR ANIMATION METHODS

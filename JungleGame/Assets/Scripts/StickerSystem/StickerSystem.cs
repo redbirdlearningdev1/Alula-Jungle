@@ -375,13 +375,12 @@ public class StickerSystem : MonoBehaviour
     ################################################
     */
 
-    public void GlueSelectedStickerToBoard(Sticker sticker, Vector3 pos)
+    public void GlueSelectedStickerToBoard(Sticker sticker, Vector3 pos, Vector3 scale, float zAngle)
     {
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SelectBoop, 0.5f);
 
         GameObject gluedSticker = Instantiate(gluedStickerObject, gluedStickerParent);
-        gluedSticker.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.2f, 0.2f);
-        gluedSticker.GetComponent<GluedSticker>().SetStickerData(sticker, pos);
+        gluedSticker.GetComponent<GluedSticker>().SetStickerData(sticker, pos, scale, zAngle);
 
         // set delete sticker mode off
         SetDeleteStickerModeOFF();
@@ -427,7 +426,6 @@ public class StickerSystem : MonoBehaviour
             GameObject gluedSticker = Instantiate(gluedStickerObject, gluedStickerParent);
             gluedSticker.transform.localScale = Vector3.zero;
             gluedSticker.GetComponent<GluedSticker>().SetStickerData(sticker);
-            gluedSticker.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
         }      
     }
 

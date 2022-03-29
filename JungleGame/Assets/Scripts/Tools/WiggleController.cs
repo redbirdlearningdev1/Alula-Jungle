@@ -16,7 +16,7 @@ public class WiggleController : MonoBehaviour
 
     void Awake()
     {
-        startRotation = transform.rotation.eulerAngles;
+        //startRotation = transform.rotation.eulerAngles;
     }
 
     void Update()
@@ -33,14 +33,14 @@ public class WiggleController : MonoBehaviour
                 timer = 0f;
             }
         }
-        else
-        {
-            if (!setRotation)
-            {
-                transform.rotation = Quaternion.Euler(startRotation);
-                setRotation = true;
-            }
-        }
+        // else
+        // {
+        //     if (!setRotation)
+        //     {
+        //         transform.rotation = Quaternion.Euler(startRotation);
+        //         setRotation = true;
+        //     }
+        // }
     }
 
     public void StartWiggle(bool randomTime = false)
@@ -55,14 +55,15 @@ public class WiggleController : MonoBehaviour
         startRotation = transform.rotation.eulerAngles;
 
         wiggle = true;
-        setRotation = false;
+        setRotation = true;
     }
 
     public void StopWiggle()
     {
         wiggle = false;
         timer = 0f;
-        // reset position and rotation
-        transform.rotation = Quaternion.Euler(startRotation);
+
+        if (setRotation)
+            transform.rotation = Quaternion.Euler(startRotation);
     }
 }

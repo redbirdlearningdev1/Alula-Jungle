@@ -207,7 +207,7 @@ public static class StudentInfoSystem
         }
     }
 
-    public static void GlueStickerToBoard(Sticker sticker, Vector2 pos, StickerBoardType board)
+    public static void GlueStickerToBoard(Sticker sticker, Vector2 pos, Vector2 scale, float zAngle, StickerBoardType board)
     {
         StickerData data = new StickerData();
 
@@ -220,6 +220,8 @@ public static class StudentInfoSystem
                 data.rarity = sticker.rarity;
                 data.id = sticker.id;
                 data.boardPos = pos;
+                data.scale = scale;
+                data.zAngle = zAngle;
 
                 // add to board list
                 currentStudentPlayer.classicStickerBoard.stickers.Add(data);
@@ -232,6 +234,8 @@ public static class StudentInfoSystem
                 data.rarity = sticker.rarity;
                 data.id = sticker.id;
                 data.boardPos = pos;
+                data.scale = scale;
+                data.zAngle = zAngle;
 
                 // add to board list
                 currentStudentPlayer.mossyStickerBoard.stickers.Add(data);
@@ -244,6 +248,8 @@ public static class StudentInfoSystem
                 data.rarity = sticker.rarity;
                 data.id = sticker.id;
                 data.boardPos = pos;
+                data.scale = scale;
+                data.zAngle = zAngle;
 
                 // add to board list
                 currentStudentPlayer.emeraldStickerBoard.stickers.Add(data);
@@ -256,6 +262,8 @@ public static class StudentInfoSystem
                 data.rarity = sticker.rarity;
                 data.id = sticker.id;
                 data.boardPos = pos;
+                data.scale = scale;
+                data.zAngle = zAngle;
 
                 // add to board list
                 currentStudentPlayer.beachStickerBoard.stickers.Add(data);

@@ -516,4 +516,6 @@ public class StickerData
     public StickerRarity rarity;
     public int id;
     public Vector2 boardPos; // where on the board is it located ?
+    public Vector2 scale; // scale of sticker
+    public float zAngle; // rotation angle on z axis
 }
