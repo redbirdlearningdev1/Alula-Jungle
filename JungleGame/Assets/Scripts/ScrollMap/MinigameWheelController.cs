@@ -179,12 +179,12 @@ public class MinigameWheelController : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         // determine royal rumble
-        bool startRR = AISystem.DetermineRoyalRumble(StudentInfoSystem.GetCurrentProfile());
+        bool startRR = AISystem.DetermineRoyalRumble();
 
         if (startRR)
         {
             // save royal rumble to SIS
-            GameType RRgame = AISystem.DetermineRoyalRumbleGame(StudentInfoSystem.GetCurrentProfile());
+            GameType RRgame = AISystem.DetermineRoyalRumbleGame();
             StudentInfoSystem.GetCurrentProfile().royalRumbleGame = RRgame;
             StudentInfoSystem.GetCurrentProfile().royalRumbleActive = true;
             StudentInfoSystem.GetCurrentProfile().royalRumbleID = currentIdentifier;

@@ -1414,16 +1414,14 @@ public class DevMenuManager : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().actionWordPool.Clear();
 
         // chapter 1 action words
-        if (location <= MapLocation.SpookyForest)
-        {   
-            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.mudslide);
-            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.listen);
-            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.poop);
-            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.orcs);
-            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.think);
-        }
+        StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.mudslide);
+        StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.listen);
+        StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.poop);
+        StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.orcs);
+        StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.think);
+        
         // chapter 2 action words
-        if (location <= MapLocation.GorillaPoop)
+        if (location >= MapLocation.GorillaPoop)
         {
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.hello);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.spider);
@@ -1432,7 +1430,7 @@ public class DevMenuManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.thatguy);
         }
         // chapter 3 action words
-        if (location <= MapLocation.PirateShip)
+        if (location >= MapLocation.PirateShip)
         {
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.choice);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.strongwind);
@@ -1442,7 +1440,7 @@ public class DevMenuManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.give);
         }
         // chapter 4 action words
-        if (location <= MapLocation.Ruins2)
+        if (location >= MapLocation.Ruins2)
         {
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.backpack);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.frustrating);

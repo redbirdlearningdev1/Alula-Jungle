@@ -301,8 +301,10 @@ public static class AISystem
         }
     }
 
-    public static bool DetermineRoyalRumble(StudentPlayerData playerData)
+    public static bool DetermineRoyalRumble()
     {
+        StudentPlayerData playerData = StudentInfoSystem.GetCurrentProfile();
+
         // player must have played all 6 minigames before RR
         if (playerData.minigamesPlayed < 6)
             return false;
@@ -324,8 +326,10 @@ public static class AISystem
         }
     }
 
-    public static GameType DetermineRoyalRumbleGame(StudentPlayerData playerData)
+    public static GameType DetermineRoyalRumbleGame()
     {
+        StudentPlayerData playerData = StudentInfoSystem.GetCurrentProfile();
+
         // create list of challenge game options
         List<GameType> challengeGameOptions = new List<GameType>();
         challengeGameOptions.Add(GameType.WordFactoryBlending);
@@ -370,8 +374,10 @@ public static class AISystem
         }
     }
 
-    public static List<ChallengeWord> ChallengeWordSelectionBlending(StudentPlayerData playerData)
+    public static List<ChallengeWord> ChallengeWordSelectionBlending(List<ChallengeWord> excludeWords = null)
     {
+        StudentPlayerData playerData = StudentInfoSystem.GetCurrentProfile();
+
         List<ChallengeWord> globalWordList = new List<ChallengeWord>();
         List<ChallengeWord> allGlobalWordList = new List<ChallengeWord>();
         List<ChallengeWord> unusedWordList = new List<ChallengeWord>();
@@ -800,6 +806,20 @@ public static class AISystem
                 allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
         }
 
+
+
+        // remove exclude words if list is not null
+        if (excludeWords != null)
+        {
+            foreach (ChallengeWord excludeWord in excludeWords)
+            {
+                if (CurrentChallengeList.Contains(excludeWord) && CurrentChallengeList.Count > 3)
+                {
+                    CurrentChallengeList.Remove(excludeWord);
+                }
+            }
+        }
+
         return CurrentChallengeList;
     }
 
@@ -918,7 +938,6 @@ public static class AISystem
         {
             if (EightyTwenty > 2 && set4.Count > 0)
             {
-
                 Selected = set4[Random.Range(0, set4.Count)];
             }
             else
@@ -956,10 +975,12 @@ public static class AISystem
             }
         }
 
+        
+
         return Selected;
     }
 
-    public static List<ChallengeWord> ChallengeWordSelectionTigerPawPol(ActionWordEnum coin)
+    public static List<ChallengeWord> ChallengeWordSelectionTigerPawPol(ActionWordEnum coin, List<ChallengeWord> excludeWords = null)
     {
         StudentPlayerData playerData = StudentInfoSystem.GetCurrentProfile();
 
@@ -1315,11 +1336,26 @@ public static class AISystem
                 allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
         }
 
+
+        // remove exclude words if list is not null
+        if (excludeWords != null)
+        {
+            foreach (ChallengeWord excludeWord in excludeWords)
+            {
+                if (CurrentChallengeList.Contains(excludeWord) && CurrentChallengeList.Count > 5)
+                {
+                    CurrentChallengeList.Remove(excludeWord);
+                }
+            }
+        }
+
         return CurrentChallengeList;
     }
 
-    public static List<ChallengeWord> ChallengeWordSelectionTigerPawCoin(StudentPlayerData playerData)
+    public static List<ChallengeWord> ChallengeWordSelectionTigerPawCoin(List<ChallengeWord> excludeWords = null)
     {
+        StudentPlayerData playerData = StudentInfoSystem.GetCurrentProfile();
+
         List<ChallengeWord> globalWordList = new List<ChallengeWord>();
         List<ChallengeWord> allGlobalWordList = new List<ChallengeWord>();
         List<ChallengeWord> unusedWordList = new List<ChallengeWord>();
@@ -1558,6 +1594,19 @@ public static class AISystem
         unusedWordList.Remove(word);
         CurrentChallengeList.Add(word);
 
+
+        // remove exclude words if list is not null
+        if (excludeWords != null)
+        {
+            foreach (ChallengeWord excludeWord in excludeWords)
+            {
+                if (CurrentChallengeList.Contains(excludeWord) && CurrentChallengeList.Count > 1)
+                {
+                    CurrentChallengeList.Remove(excludeWord);
+                }
+            }
+        }
+
         return CurrentChallengeList;
     }
 
@@ -1730,18 +1779,13 @@ public static class AISystem
             }
         }
 
-        Debug.Log(Selected[0]);
-        Debug.Log(Selected[1]);
-        Debug.Log(Selected[2]);
-        Debug.Log(Selected[3]);
-        Debug.Log(Selected[4]);
-
-
         return Selected;
     }
 
-    public static List<ChallengeWord> ChallengeWordPassword(StudentPlayerData playerData)
+    public static List<ChallengeWord> ChallengeWordPassword(List<ChallengeWord> excludeWords = null)
     {
+        StudentPlayerData playerData = StudentInfoSystem.GetCurrentProfile();
+
         List<ChallengeWord> globalWordList = new List<ChallengeWord>();
         List<ChallengeWord> allGlobalWordList = new List<ChallengeWord>();
         List<ChallengeWord> unusedWordList = new List<ChallengeWord>();
@@ -1824,7 +1868,6 @@ public static class AISystem
         {
             if (EightyTwenty > 2)
             {
-
                 globalWordList = ChallengeWordDatabase.GetChallengeWords(set3);
                 unusedWordList = globalWordList;
             }
@@ -1841,16 +1884,12 @@ public static class AISystem
                     globalWordList = ChallengeWordDatabase.GetChallengeWords(set1);
                     unusedWordList = globalWordList;
                 }
-
             }
-
         }
-
         else if (playerData.currentChapter == Chapter.chapter_4)
         {
             if (EightyTwenty > 2)
             {
-
                 globalWordList = ChallengeWordDatabase.GetChallengeWords(set4);
                 unusedWordList = globalWordList;
             }
@@ -1872,16 +1911,13 @@ public static class AISystem
                     globalWordList = ChallengeWordDatabase.GetChallengeWords(set3);
                     unusedWordList = globalWordList;
                 }
-
             }
-
         }
         else
         {
             globalWordList = ChallengeWordDatabase.GetChallengeWords(set5);
             unusedWordList = globalWordList;
         }
-
         if (unusedWordList.Count <= 0)
         {
             unusedWordList.Clear();
@@ -1894,7 +1930,7 @@ public static class AISystem
         {
             if (word == playerData.lastWordFaced)
             {
-                return ChallengeWordPassword(playerData);
+                return ChallengeWordPassword(excludeWords);
             }
         }
         catch
@@ -1939,7 +1975,6 @@ public static class AISystem
         {
             try
             {
-
                 while (word.elkoninCount < 4)
                 {
                     index = Random.Range(0, unusedWordList.Count);
@@ -1950,32 +1985,42 @@ public static class AISystem
             {
                 index = Random.Range(0, unusedWordList.Count);
                 word = unusedWordList[index];
-
             }
         }
         else
         {
-
             index = Random.Range(0, unusedWordList.Count);
             word = unusedWordList[index];
-
         }
 
         // make sure word is not being used
         if (usedWordList.Contains(word))
         {
             unusedWordList.Remove(word);
-
         }
         allGlobalWordList.Remove(word);
         unusedWordList.Remove(word);
         CurrentChallengeList.Add(word);
 
+        // remove exclude words if list is not null
+        if (excludeWords != null)
+        {
+            foreach (ChallengeWord excludeWord in excludeWords)
+            {
+                if (CurrentChallengeList.Contains(excludeWord) && CurrentChallengeList.Count > 1)
+                {
+                    CurrentChallengeList.Remove(excludeWord);
+                }
+            }
+        }
+
         return CurrentChallengeList;
     }
 
-    public static WordPair ChallengeWordBuildingDeleting(StudentPlayerData playerData)
+    public static WordPair ChallengeWordBuildingDeleting(List<WordPair> excludePairs = null)
     {
+        StudentPlayerData playerData = StudentInfoSystem.GetCurrentProfile();
+
         List<ActionWordEnum> set1 = new List<ActionWordEnum>();
         List<ActionWordEnum> set2 = new List<ActionWordEnum>();
         List<ActionWordEnum> set3 = new List<ActionWordEnum>();
@@ -2034,19 +2079,16 @@ public static class AISystem
         int EightyTwenty = Random.Range(1, 11);
         if (playerData.currentChapter == Chapter.chapter_0 || playerData.currentChapter == Chapter.chapter_1)
         {
-
             pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(set1));
         }
         else if (playerData.currentChapter == Chapter.chapter_2)
         {
             if (EightyTwenty > 2)
             {
-
                 pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(set2));
             }
             else
             {
-
                 pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(set1));
             }
 
@@ -2055,8 +2097,6 @@ public static class AISystem
         {
             if (EightyTwenty > 2)
             {
-
-
                 pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(set3));
             }
             else
@@ -2064,25 +2104,18 @@ public static class AISystem
                 int random = Random.Range(0, 2);
                 if (random == 0)
                 {
-
                     pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(set2));
                 }
                 else
                 {
-
                     pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(set1));
                 }
-
             }
-
         }
-
         else if (playerData.currentChapter == Chapter.chapter_4)
         {
             if (EightyTwenty > 2)
             {
-
-
                 pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(set4));
             }
             else
@@ -2090,30 +2123,34 @@ public static class AISystem
                 int random = Random.Range(0, 3);
                 if (random == 0)
                 {
-
                     pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(set2));
                 }
                 else if (random == 1)
                 {
-
                     pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(set1));
                 }
                 else
                 {
-
                     pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(set3));
                 }
-
             }
-
         }
         else
         {
-
             pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(set5));
         }
 
-
+        // remove exclude pairs if list is not null
+        if (excludePairs != null)
+        {
+            foreach (WordPair excludePair in excludePairs)
+            {
+                if (pairPool.Contains(excludePair) && pairPool.Count > 1)
+                {
+                    pairPool.Remove(excludePair);
+                }
+            }
+        }
 
         int index = Random.Range(0, pairPool.Count);
         selectedPairPool = pairPool[index];
@@ -2121,7 +2158,7 @@ public static class AISystem
         {
             if (selectedPairPool == playerData.lastWordPairFaced)
             {
-                ChallengeWordBuildingDeleting(playerData);
+                ChallengeWordBuildingDeleting(excludePairs);
             }
         }
         catch
@@ -2135,16 +2172,13 @@ public static class AISystem
             {
                 while (pairPool[index].word1.elkoninCount != 2)
                 {
-
                     pairPool.RemoveAt(index);
                     index = Random.Range(0, pairPool.Count);
                     selectedPairPool = pairPool[index];
-
                 }
             }
             catch
             {
-
                 pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(set5));
                 index = Random.Range(0, pairPool.Count);
                 selectedPairPool = pairPool[index];
@@ -2163,20 +2197,17 @@ public static class AISystem
             }
             catch
             {
-
                 pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(set5));
                 index = Random.Range(0, pairPool.Count);
                 selectedPairPool = pairPool[index];
             }
         }
-
         else if (playerData.starsBuild < 36)
         {
             try
             {
                 while (pairPool[index].word1.elkoninCount < 4)
                 {
-
                     pairPool.RemoveAt(index);
                     index = Random.Range(0, pairPool.Count);
                     selectedPairPool = pairPool[index];
@@ -2184,7 +2215,6 @@ public static class AISystem
             }
             catch
             {
-
                 pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(set5));
                 index = Random.Range(0, pairPool.Count);
                 selectedPairPool = pairPool[index];
@@ -2192,20 +2222,18 @@ public static class AISystem
         }
         else
         {
-
             pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(set5));
             index = Random.Range(0, pairPool.Count);
-
             selectedPairPool = pairPool[index];
-
         }
-
 
         return selectedPairPool;
     }
 
-    public static WordPair ChallengeWordSub(StudentPlayerData playerData)
+    public static WordPair ChallengeWordSub(List<WordPair> excludePairs = null)
     {
+        StudentPlayerData playerData = StudentInfoSystem.GetCurrentProfile();
+
         List<ActionWordEnum> set1 = new List<ActionWordEnum>();
         List<ActionWordEnum> set2 = new List<ActionWordEnum>();
         List<ActionWordEnum> set3 = new List<ActionWordEnum>();
@@ -2213,7 +2241,6 @@ public static class AISystem
         List<ActionWordEnum> set5 = new List<ActionWordEnum>();
         List<WordPair> pairPool = new List<WordPair>();
         WordPair selectedPairPool;
-
 
         set1.Add(ActionWordEnum.mudslide);
         set1.Add(ActionWordEnum.listen);
@@ -2264,19 +2291,16 @@ public static class AISystem
         int EightyTwenty = Random.Range(1, 11);
         if (playerData.currentChapter == Chapter.chapter_0 || playerData.currentChapter == Chapter.chapter_1)
         {
-
             pairPool.AddRange(ChallengeWordDatabase.GetSubstitutionWordPairs(set1));
         }
         else if (playerData.currentChapter == Chapter.chapter_2)
         {
             if (EightyTwenty > 2)
             {
-
                 pairPool.AddRange(ChallengeWordDatabase.GetSubstitutionWordPairs(set2));
             }
             else
             {
-
                 pairPool.AddRange(ChallengeWordDatabase.GetSubstitutionWordPairs(set1));
             }
 
@@ -2285,8 +2309,6 @@ public static class AISystem
         {
             if (EightyTwenty > 2)
             {
-
-
                 pairPool.AddRange(ChallengeWordDatabase.GetSubstitutionWordPairs(set3));
             }
             else
@@ -2294,12 +2316,10 @@ public static class AISystem
                 int random = Random.Range(0, 2);
                 if (random == 0)
                 {
-
                     pairPool.AddRange(ChallengeWordDatabase.GetSubstitutionWordPairs(set2));
                 }
                 else
                 {
-
                     pairPool.AddRange(ChallengeWordDatabase.GetSubstitutionWordPairs(set1));
                 }
 
@@ -2311,8 +2331,6 @@ public static class AISystem
         {
             if (EightyTwenty > 2)
             {
-
-
                 pairPool.AddRange(ChallengeWordDatabase.GetSubstitutionWordPairs(set4));
             }
             else
@@ -2320,29 +2338,35 @@ public static class AISystem
                 int random = Random.Range(0, 3);
                 if (random == 0)
                 {
-
                     pairPool.AddRange(ChallengeWordDatabase.GetSubstitutionWordPairs(set2));
                 }
                 else if (random == 1)
                 {
-
                     pairPool.AddRange(ChallengeWordDatabase.GetSubstitutionWordPairs(set1));
                 }
                 else
                 {
-
                     pairPool.AddRange(ChallengeWordDatabase.GetSubstitutionWordPairs(set3));
                 }
-
             }
-
         }
         else
         {
-
             pairPool.AddRange(ChallengeWordDatabase.GetSubstitutionWordPairs(set5));
         }
 
+
+        // remove exclude pairs if list is not null
+        if (excludePairs != null)
+        {
+            foreach (WordPair excludePair in excludePairs)
+            {
+                if (pairPool.Contains(excludePair) && pairPool.Count > 1)
+                {
+                    pairPool.Remove(excludePair);
+                }
+            }
+        }
 
 
         int index = Random.Range(0, pairPool.Count);
@@ -2351,7 +2375,7 @@ public static class AISystem
         {
             if (selectedPairPool == playerData.lastWordPairFaced)
             {
-                ChallengeWordSub(playerData);
+                ChallengeWordSub(excludePairs);
             }
         }
         catch
@@ -2365,7 +2389,6 @@ public static class AISystem
             {
                 while (pairPool[index].word1.elkoninCount != 2)
                 {
-
                     pairPool.RemoveAt(index);
                     index = Random.Range(0, pairPool.Count);
                     selectedPairPool = pairPool[index];
@@ -2374,7 +2397,6 @@ public static class AISystem
             }
             catch
             {
-
                 pairPool.AddRange(ChallengeWordDatabase.GetSubstitutionWordPairs(set5));
                 index = Random.Range(0, pairPool.Count);
                 selectedPairPool = pairPool[index];
@@ -2419,17 +2441,15 @@ public static class AISystem
         }
         else
         {
-
             pairPool.AddRange(ChallengeWordDatabase.GetSubstitutionWordPairs(set5));
             index = Random.Range(0, pairPool.Count);
-
             selectedPairPool = pairPool[index];
-
         }
-
 
         return selectedPairPool;
     }
+
+
 
 
 

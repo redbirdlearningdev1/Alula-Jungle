@@ -29,6 +29,7 @@ public class TigerGameManager : MonoBehaviour
     public UniversalCoinImage currCoin;
     private ActionWordEnum currSet; 
     private ChallengeWord currWord;
+    private List<ChallengeWord> prevWords;
 
     // other variables
     private ChallengeWord currentWord1;
@@ -42,10 +43,6 @@ public class TigerGameManager : MonoBehaviour
     private int numWins = 0;
     private int numMisses = 0;
     private bool playingCoinAudio = false;
-
-    private List<ChallengeWord> globalWordList;
-    private List<ChallengeWord> unusedWordList;
-    private List<ChallengeWord> usedWordList;
 
     [Header("Tutorial")]
     public bool playTutorial;
@@ -126,11 +123,6 @@ public class TigerGameManager : MonoBehaviour
 
     private void PregameSetup()
     {
-        globalWordList = new List<ChallengeWord>();
-        globalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(StudentInfoSystem.GetCurrentProfile().actionWordPool));
-        unusedWordList = globalWordList;
-        usedWordList = new List<ChallengeWord>();
-
         // set coin off-screen
         currCoin.transform.position = coinStartPos.position;
 
@@ -139,6 +131,9 @@ public class TigerGameManager : MonoBehaviour
 
         // turn off raycaster
         TigerGameRaycaster.instance.isOn = false;
+
+        // init empty lists
+        prevWords = new List<ChallengeWord>();
 
         StartCoroutine(StartGame());
     }
@@ -244,7 +239,8 @@ public class TigerGameManager : MonoBehaviour
         else
         {
             currSet = AISystem.TigerPawPhotosCoinSelection();
-            word_pool = AISystem.ChallengeWordSelectionTigerPawPol(currSet);
+            word_pool = AISystem.ChallengeWordSelectionTigerPawPol(currSet, prevWords);
+            prevWords.AddRange(word_pool);
 
             for (int i = 0; i < polaroidC.Count; i++)
             {
@@ -428,31 +424,6 @@ public class TigerGameManager : MonoBehaviour
         coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
 
         playingCoinAudio = false;
-    }
-
-
-    private ChallengeWord GetUnusedWord()
-    {
-        // reset unused pool if empty
-        if (unusedWordList.Count <= 0)
-        {
-            unusedWordList.Clear();
-            unusedWordList.AddRange(globalWordList);
-        }
-
-        int index = Random.Range(0, unusedWordList.Count);
-        ChallengeWord word = unusedWordList[index];
-
-        // make sure word is not being used
-        if (usedWordList.Contains(word))
-        {
-            unusedWordList.Remove(word);
-            return GetUnusedWord();
-        }
-
-        unusedWordList.Remove(word);
-        usedWordList.Add(word);
-        return word;
     }
 
     public void EvaluateWaterCoin(Polaroid Photo)

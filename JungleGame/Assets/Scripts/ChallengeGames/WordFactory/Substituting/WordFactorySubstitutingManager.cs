@@ -56,8 +56,8 @@ public class WordFactorySubstitutingManager : MonoBehaviour
     [SerializeField] private Transform polaroid_middlePos;
 
     // other variables
-    private List<WordPair> pairPool;
     private WordPair currentPair;
+    private List<WordPair> prevPairs;
     private ChallengeWord currentWord;
     private ElkoninValue currentTargetValue;
     private ChallengeWord currentTargetWord;
@@ -141,13 +141,10 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.05f);
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 0.05f);
 
-        // get pair pool from game manager
-        pairPool = new List<WordPair>();
-        pairPool.AddRange(ChallengeWordDatabase.GetSubstitutionWordPairs(StudentInfoSystem.GetCurrentProfile().actionWordPool));
-
-        print ("pairPool.count: " + pairPool.Count);
-
+        // init empty lists
+        prevPairs = new List<WordPair>();
         lockedPool = new List<ElkoninValue>();
+
         // add all action words excpet unlocked ones
         foreach (var coin in GameManager.instance.actionWords)
         {
@@ -200,12 +197,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                 // play tutorial intro 3
                 AudioClip  clip = GameIntroDatabase.instance.substitutingIntro3;
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
-
-                // // play tutorial intro 4
-                // clip = GameIntroDatabase.instance.substitutingIntro4;
-                // TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                // yield return new WaitForSeconds(clip.length + 1f);                
+                yield return new WaitForSeconds(clip.length + 1f);           
             }
         }
         else
@@ -266,12 +258,14 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             }
             else
             {
-                //currentPair = pairPool[Random.Range(0, pairPool.Count)];
-                currentPair = AISystem.ChallengeWordSub(StudentInfoSystem.GetCurrentProfile());
+                // use AI word selection
+                currentPair = AISystem.ChallengeWordSub(prevPairs);
                 currentWord = currentPair.word1;
+
+                // set prev words
+                prevPairs.Add(currentPair);
             }
         }
-
         
         tigerPolaroid.SetPolaroid(currentWord);
         
@@ -438,7 +432,6 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         
         // remove coin from current coins list
         currentCoins[currentPair.index].gameObject.SetActive(false);
-        Debug.Log(currentPair.index);
         currentCoins.RemoveAt(currentPair.index);
 
         // move tiger polaroid out of the way
@@ -662,13 +655,11 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         // check lists
         if (currentCoins.Contains(coin))
         {
-            print ("normal coin");
             StartCoroutine(PlayAudioCoinRoutine(coin));
         }
         // water coins
         else if (waterCoins.Contains(coin))
         {
-            print ("water coin");
             StartCoroutine(PlayAudioCoinRoutine(coin, true));
         }
     }

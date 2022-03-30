@@ -11,7 +11,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
     public Transform coinsParent;
     public Vector2 normalCoinSize;
 
-    private List<WordPair> pairPool;
+    private List<WordPair> prevPairs;
     private WordPair currentPair;
     private ChallengeWord currentWord;
     private UniversalCoinImage currentCoin;
@@ -87,9 +87,8 @@ public class WordFactoryDeletingManager : MonoBehaviour
 
     private void PregameSetup()
     {
-        // get pair pool from game manager
-        pairPool = new List<WordPair>();
-        pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(StudentInfoSystem.GetCurrentProfile().actionWordPool));
+        // init empty list
+        prevPairs = new List<WordPair>();
 
         // set emerald head to be closed
         EmeraldHead.instance.animator.Play("PolaroidEatten");
@@ -127,8 +126,8 @@ public class WordFactoryDeletingManager : MonoBehaviour
         else
         {
             // new pair
-            //currentPair = pairPool[Random.Range(0, pairPool.Count)];
-            currentPair = AISystem.ChallengeWordBuildingDeleting(StudentInfoSystem.GetCurrentProfile());
+            currentPair = AISystem.ChallengeWordBuildingDeleting(prevPairs);
+            prevPairs.Add(currentPair);
         }
         
 
