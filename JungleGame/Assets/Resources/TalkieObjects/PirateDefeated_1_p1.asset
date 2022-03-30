@@ -129,7 +129,7 @@ MonoBehaviour:
     rightCharacter: 2
     rightEmotionNum: 15
     rightMouthEnum: 2
-    rightEyesEnum: 3
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 76d5e0023145d7547aa6a4f43f63b0d1, type: 3}
     audioClipName: FR_2_5_Red_5_T1
@@ -145,7 +145,7 @@ MonoBehaviour:
     rightCharacter: 2
     rightEmotionNum: 15
     rightMouthEnum: 2
-    rightEyesEnum: 3
+    rightEyesEnum: 2
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: c062b2e17f71d1a4c9cae5af6424a199, type: 3}
     audioClipName: FR_2_5_Red_5_T2

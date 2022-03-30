@@ -115,12 +115,20 @@ MonoBehaviour:
   body: {fileID: 760555933963450761}
   lerpableObject: {fileID: 5939310503235229159}
   image: {fileID: 2369448179315845746}
+  spawnSound: {fileID: 0}
   duration: 2
   rate: 0.3
   randomizeRotation: 1
   forceRange: {x: 50, y: 100}
+  addForceSidedways: 0
   torqueRange: {x: -0.25, y: 0.25}
   scaleRange: {x: 1.5, y: 2}
+  reverseObject: 0
+  isBug: 0
+  bugRotateTime: {x: 0, y: 0}
+  bugAngleOffset: 0
+  isBubble: 0
+  poppedBubble: {fileID: 0}
   colors: []
 --- !u!114 &5939310503235229159
 MonoBehaviour:

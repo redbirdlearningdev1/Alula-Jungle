@@ -331,7 +331,7 @@ public class RoyalDecreeController : MonoBehaviour
                 break;
 
             case Chapter.chapter_5:
-            case Chapter.chapter_final:
+            case Chapter.chapter_6:
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaSignPost_1_p5"));
                 break;
         }

@@ -402,7 +402,7 @@ MonoBehaviour:
     rightCharacter: 13
     rightEmotionNum: 5
     rightMouthEnum: 2
-    rightEyesEnum: 4
+    rightEyesEnum: 3
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 914aadc33f2e843429bb13b040135e2e, type: 3}
     audioClipName: EJ_1_5_Celeste_24_T1

@@ -85,12 +85,12 @@ public class StickerImage : MonoBehaviour
     private IEnumerator RotateStickerRoutine()
     {
         float currAngle = stickerImage.transform.localRotation.eulerAngles.z;
-        currAngle += 30f; // add 30 degrees
+        currAngle -= 30f; // add 30 degrees
         stickerImage.GetComponent<LerpableObject>().LerpRotation(currAngle, 0.2f);
         yield return new WaitForSeconds(0.2f);
 
         // if angle is 360, set to 0
-        if (currAngle == 360f)
+        if (currAngle == -360f)
         {
             stickerImage.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         }

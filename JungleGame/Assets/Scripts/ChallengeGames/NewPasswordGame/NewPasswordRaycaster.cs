@@ -110,6 +110,28 @@ public class NewPasswordRaycaster : MonoBehaviour
 
             hasCoin = false;
         }
+        // return selected objects to their respective correct destination
+        else if (!Input.GetMouseButton(0) && selectedObjectParent.childCount > 0)
+        {
+            foreach (Transform obj in selectedObjectParent.transform)
+            {
+                if (obj.tag == "Polaroid")
+                {
+                    // return polaroid to original position
+                    obj.transform.SetParent(NewPasswordGameManager.instance.polaroidParent);
+                    obj.gameObject.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
+                    obj.GetComponent<LerpableObject>().LerpPosToTransform(NewPasswordGameManager.instance.polaroidOnScreenPos, 0.2f, false);
+                }
+                else if (obj.tag == "UniversalCoin")
+                {
+                    // return coin to original position
+                    obj.transform.SetParent(NewPasswordGameManager.instance.coinParent);
+                    NewPasswordGameManager.instance.ResetCoins();
+                    // add coin raycast
+                    obj.GetComponent<UniversalCoinImage>().ToggleRaycastTarget(true);
+                }
+            }
+        }
 
 
 

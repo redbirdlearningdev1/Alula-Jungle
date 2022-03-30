@@ -49,7 +49,7 @@ public class PopupObject : MonoBehaviour
                 characterAnimator.Play("juliusPopup"); break;
             case Chapter.chapter_4:
             case Chapter.chapter_5:
-            case Chapter.chapter_final:
+            case Chapter.chapter_6:
                 characterAnimator.Play("juliusSadPopup"); break;
         }
     }

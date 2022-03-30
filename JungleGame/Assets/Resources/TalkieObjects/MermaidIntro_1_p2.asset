@@ -824,7 +824,7 @@ MonoBehaviour:
     rightCharacter: 7
     rightEmotionNum: 15
     rightMouthEnum: 2
-    rightEyesEnum: 1
+    rightEyesEnum: 3
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 878863d9b729a8b40a8c68ca0aba2b27, type: 3}
     audioClipName: EJ_1_1_Julius_44_T2

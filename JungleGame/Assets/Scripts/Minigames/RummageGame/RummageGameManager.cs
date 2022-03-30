@@ -578,7 +578,7 @@ public class RummageGameManager : MonoBehaviour
 
             // turn on raycaster
             RummageCoinRaycaster.instance.isOn = true;
-
+            atPile = false;
             NextTutorialEvent();
             yield break;
         }

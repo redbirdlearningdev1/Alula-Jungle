@@ -851,9 +851,9 @@ public class MapAnimationController : MonoBehaviour
             // place boat in dock
             boat.mapAnimator.Play("BoatDockedPos");
             boat.GetComponent<MapIcon>().interactable = true;
-            boat.GetComponent<Image>().raycastTarget = true;
+            boat.GetComponent<MapIcon>().fixedCollider.enabled = true;
+            boat.GetComponent<Image>().raycastTarget = true; 
         }
-
         if (!(storyBeat >= StoryBeat.OrcCampUnlocked && storyBeat <= StoryBeat.OrcCampDefeated) && (ScrollMapManager.instance.GetCurrentMapLocation() != MapLocation.OrcCamp))
         {
             // place clogg in OV
@@ -862,6 +862,7 @@ public class MapAnimationController : MonoBehaviour
             clogg.interactable = true;
         }
 
+        /// story beat specific character positions
         switch (storyBeat)
         {
             default:
@@ -2179,6 +2180,7 @@ public class MapAnimationController : MonoBehaviour
         boat.ShowExclamationMark(true);
         boat.GetComponent<Image>().raycastTarget = true;
         boat.GetComponent<MapIcon>().interactable = true;
+        boat.GetComponent<MapIcon>().fixedCollider.enabled = true;
         boat.GetComponent<WiggleController>().StartWiggle();
 
         animationDone = true;
@@ -4869,7 +4871,7 @@ public class MapAnimationController : MonoBehaviour
         // Save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 16;
         StudentInfoSystem.GetCurrentProfile().mapData.M_signPost_unlocked = true;
-        StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_final; // new chapter!
+        StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_6; // new chapter!
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
 

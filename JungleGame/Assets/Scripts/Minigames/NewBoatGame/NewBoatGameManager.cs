@@ -79,7 +79,6 @@ public class NewBoatGameManager : MonoBehaviour
 
         if (repeatAudio)
         {
-            print ("repeat audio = on");
             repeatTimer += Time.deltaTime;
             if (repeatTimer > repeatDuration)
             {
@@ -102,7 +101,6 @@ public class NewBoatGameManager : MonoBehaviour
         }
         else
         {
-            print ("repeat audio = off");
             if (repeatAudioRoutine != null)
             {
                 StopCoroutine(repeatAudioRoutine);
