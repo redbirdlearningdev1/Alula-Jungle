@@ -183,7 +183,7 @@ public class ScrollMapManager : MonoBehaviour
                         break;
                     case Chapter.chapter_4:
                     case Chapter.chapter_5:
-                    case Chapter.chapter_final:
+                    case Chapter.chapter_6:
                         // play guard loses to player
                         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRGuardsLost_1_p1"));
                         while (TalkieManager.instance.talkiePlaying)
@@ -207,7 +207,7 @@ public class ScrollMapManager : MonoBehaviour
                         break;
                     case Chapter.chapter_4:
                     case Chapter.chapter_5:
-                    case Chapter.chapter_final:
+                    case Chapter.chapter_6:
                         // play guard wins to player
                         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRGuardsWins_1_p1"));
                         while (TalkieManager.instance.talkiePlaying)

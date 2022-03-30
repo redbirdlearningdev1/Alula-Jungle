@@ -176,9 +176,9 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 3
-    rightEmotionNum: 11
+    rightEmotionNum: 2
     rightMouthEnum: 2
-    rightEyesEnum: 4
+    rightEyesEnum: 3
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 3949aff26453f924eb7d191d63590dbe, type: 3}
     audioClipName: EJ_1_1_Wally_6_T1
@@ -192,9 +192,9 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 3
-    rightEmotionNum: 11
+    rightEmotionNum: 2
     rightMouthEnum: 2
-    rightEyesEnum: 4
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: bf25fc5a5d5c0ee4d8bdc9196de7902b, type: 3}
     audioClipName: EJ_1_1_Wally_6_T2
@@ -252,7 +252,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 3
+    leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 3
     rightCharacter: 2

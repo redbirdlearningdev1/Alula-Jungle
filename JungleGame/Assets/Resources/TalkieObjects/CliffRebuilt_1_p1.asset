@@ -33,7 +33,7 @@ MonoBehaviour:
     rightCharacter: 2
     rightEmotionNum: 15
     rightMouthEnum: 2
-    rightEyesEnum: 3
+    rightEyesEnum: 2
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: a0c9ce2c323996749bce70ec6a128592, type: 3}
     audioClipName: FR_1_3_Red_1_T1
@@ -65,7 +65,7 @@ MonoBehaviour:
     rightCharacter: 2
     rightEmotionNum: 2
     rightMouthEnum: 1
-    rightEyesEnum: 3
+    rightEyesEnum: 2
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: a46590fa2b9e07d4d8798c07ed160d94, type: 3}
     audioClipName: FR_1_3_Wally_2_T1
@@ -223,7 +223,7 @@ MonoBehaviour:
     leftMouthEnum: 1
     leftEyesEnum: 1
     rightCharacter: 3
-    rightEmotionNum: 10
+    rightEmotionNum: 5
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
@@ -255,7 +255,7 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 3
-    rightEmotionNum: 5
+    rightEmotionNum: 4
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2

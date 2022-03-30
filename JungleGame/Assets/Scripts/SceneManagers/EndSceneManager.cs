@@ -64,6 +64,7 @@ public class EndSceneManager : MonoBehaviour
         // advance to last story beat
         if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.EndBossBattle)
         {
+            StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.game_complete; // new chapter!
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
         }

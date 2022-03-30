@@ -278,7 +278,8 @@ public enum Chapter
     chapter_3,
     chapter_4,
     chapter_5,
-    chapter_final
+    chapter_6,
+    game_complete
 }
 
 [System.Serializable]
