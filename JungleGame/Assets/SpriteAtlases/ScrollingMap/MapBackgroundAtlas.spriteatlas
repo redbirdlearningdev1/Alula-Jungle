@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MapBackgroundsAtlas
+  m_Name: MapBackgroundAtlas
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -312,5 +312,5 @@ SpriteAtlas:
   - followRed13
   - IntroBG0030
   m_RenderDataMap: {}
-  m_Tag: MapBackgroundsAtlas
+  m_Tag: MapBackgroundAtlas
   m_IsVariant: 0

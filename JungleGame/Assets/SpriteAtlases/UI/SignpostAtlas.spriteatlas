@@ -1,0 +1,144 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SignpostAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: f46f7dc1e2353f545bc645d61c8ec504, type: 3}
+    totalSpriteSurfaceArea: 3130196
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 69fb0630906609649858d15d8362f78e, type: 3}
+  - {fileID: 21300000, guid: 24f3b8503bf95e14f843f1c18b9a4320, type: 3}
+  - {fileID: 21300000, guid: b68581312eb972c44a229f5995942e45, type: 3}
+  - {fileID: 21300000, guid: a3bd4cf115bfbcc41b6cc75c7ad1c865, type: 3}
+  - {fileID: 21300000, guid: e3fa6302675949845a14490f5f4e84b7, type: 3}
+  - {fileID: 21300000, guid: 184fc0227b134fa4c91272cedaf65f5d, type: 3}
+  - {fileID: 21300000, guid: be9541222ecf2414faa27e5de066b65f, type: 3}
+  - {fileID: 21300000, guid: 28e676228e2eef0409b3224a8cd427d3, type: 3}
+  - {fileID: 21300000, guid: fb45d23288dc705478f7820e7e001bf9, type: 3}
+  - {fileID: 21300000, guid: 2e8dd342dc2d40b498244ef68bc344ef, type: 3}
+  - {fileID: 21300000, guid: d3f46f724430f5042adcba83e5bce60d, type: 3}
+  - {fileID: 21300000, guid: 6df3e2c29cc057b47b7f0bf625ca3729, type: 3}
+  - {fileID: 21300000, guid: 6e5237339e79fe940b0230852bb2679b, type: 3}
+  - {fileID: 21300000, guid: 5e60904436a341f49bdd31176c55c57c, type: 3}
+  - {fileID: 21300000, guid: 21f309b4f40ef1e43a001881144229d4, type: 3}
+  - {fileID: 21300000, guid: c6df50c4a107b0440b1c3f1d454a3213, type: 3}
+  - {fileID: 21300000, guid: 48c3d0f45be24c745af7763a3a6eaa89, type: 3}
+  - {fileID: 21300000, guid: bd5d9fe51421b764c8d1bb97695613bc, type: 3}
+  - {fileID: 21300000, guid: 7e43c976a3fa5644da2714c55c5cdcba, type: 3}
+  - {fileID: 21300000, guid: b4b68c965745dd54dabd4cf011ad5fce, type: 3}
+  - {fileID: 21300000, guid: e0e17bd6185519d4ab898725be2134eb, type: 3}
+  - {fileID: 21300000, guid: 29b9e10751c0cb34ea039d91acf8cc76, type: 3}
+  - {fileID: 21300000, guid: 027075273a461354d90469e789908631, type: 3}
+  - {fileID: 21300000, guid: d11c144711acf5746b6355b414b5e190, type: 3}
+  - {fileID: 21300000, guid: 66e984b795450dd4fbf2d007f433f97a, type: 3}
+  - {fileID: 21300000, guid: 699a5218c362ad843857bc2665853916, type: 3}
+  - {fileID: 21300000, guid: 5ca00318781c93b43b1c5143124a0cf5, type: 3}
+  - {fileID: 21300000, guid: e1c30249fa07b0b40894ad22f3e3ca56, type: 3}
+  - {fileID: 21300000, guid: 193d736a76acbf745ac54bec5013c8c5, type: 3}
+  - {fileID: 21300000, guid: b2a27bdaf3350d04abd8e35dcc18440c, type: 3}
+  - {fileID: 21300000, guid: f7e3ce1bf7f7ea446b6aa6681032a01b, type: 3}
+  - {fileID: 21300000, guid: ea529f6bc6c6e0b41a585a5b190417a4, type: 3}
+  - {fileID: 21300000, guid: 15112aab7520efb4ca6cf421e01bea40, type: 3}
+  - {fileID: 21300000, guid: 2c31da6c0f941e14697dee64389579fc, type: 3}
+  - {fileID: 21300000, guid: f66ea8bcabb13a841ab1997d4c4849d4, type: 3}
+  - {fileID: 21300000, guid: b19a9a0dc0f88374fa289e89e5e9064b, type: 3}
+  - {fileID: 21300000, guid: 1c39651d8167e084881f65e5caf9ce29, type: 3}
+  - {fileID: 21300000, guid: 279746ed75b30fc418e620d88ea78dc2, type: 3}
+  - {fileID: 21300000, guid: 20f8820ed85e2b249b56e48013ecd6a0, type: 3}
+  - {fileID: 21300000, guid: 1ac3dc6eaa4adf14a83e1c8a0a89ab42, type: 3}
+  - {fileID: 21300000, guid: 6e91ab9e4d023344bbbad272ff39fdd5, type: 3}
+  - {fileID: 21300000, guid: 726963ce93eb3a748a9ca711a80dadb7, type: 3}
+  - {fileID: 21300000, guid: 2efd99ce30c8b904e900289eca47ed2a, type: 3}
+  - {fileID: 21300000, guid: a4db1ebfda6e2c04c813abe9d782a07a, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - SPAnim3
+  - SPAnim13
+  - CGB_WF2DeletePRESS
+  - CGB_WF4BuildPRESS
+  - CGB_WF1Blend
+  - SP1
+  - SPAnim9
+  - SPAnim0
+  - CGB_WF1BlendPRESS
+  - SPAnim8
+  - SPAnim11
+  - CGB_ElkoninBox
+  - DStar0
+  - SPAnim7
+  - SPEmpty
+  - SPAnim6
+  - CGB_WF4Build
+  - DecreeWindow
+  - SP3
+  - SP2
+  - DStar2
+  - CGB_TigerPawPPRESS
+  - CGB_ElkoninBoxPRESS
+  - SPAnim1
+  - CGB_TigerPawCPRESS
+  - SPAnim10
+  - CGB_WF2Delete
+  - CGB_WF3SubPRESS
+  - CGB_WF3Sub
+  - SP4
+  - DStarRibbon
+  - SPAnim4
+  - SPAnim15
+  - DStar3
+  - SPAnim5
+  - SPAnim2
+  - DecreeFront
+  - DecreeCrown
+  - CGB_TigerPawC
+  - SPAnim12
+  - SPAnim14
+  - CGB_TigerPawP
+  - DStar1
+  - SP0
+  m_RenderDataMap: {}
+  m_Tag: SignpostAtlas
+  m_IsVariant: 0

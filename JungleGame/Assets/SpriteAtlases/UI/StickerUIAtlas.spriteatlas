@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: StickerUIAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: d6756521b64e1e64ebe4a7445239e1c3, type: 3}
+    - {fileID: 102900000, guid: 8de995fd41cefd1469167737b7443266, type: 3}
+    - {fileID: 102900000, guid: bbf85b04f4514c049a4400b152246bf1, type: 3}
+    - {fileID: 2800000, guid: 15f20850c910df442a727ab9cbda0761, type: 3}
+    - {fileID: 2800000, guid: 5eba10d3ec99c3440885e5be6ed55e7b, type: 3}
+    - {fileID: 2800000, guid: 74dfd3ad6e487f947b0b242f5ba7b777, type: 3}
+    - {fileID: 2800000, guid: d04b07ab5edd9c145895988e7785e720, type: 3}
+    totalSpriteSurfaceArea: 8354750
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 15f20850c910df442a727ab9cbda0761, type: 3}
+  - {fileID: 21300000, guid: a8e36cb04c5457a4796201806094bd13, type: 3}
+  - {fileID: 21300000, guid: 5eba10d3ec99c3440885e5be6ed55e7b, type: 3}
+  - {fileID: 21300000, guid: db6efe35a4002f54ca6dcface1eb0ec8, type: 3}
+  - {fileID: 21300000, guid: 96c853c507d63d8489d20551c6039c4d, type: 3}
+  - {fileID: 21300000, guid: 6e94b726e6cb5f04b8dc5416964ea1da, type: 3}
+  - {fileID: 21300000, guid: e4e8ba873f568eb478538381673170b8, type: 3}
+  - {fileID: 21300000, guid: 6d4d72b9d4d42d34aab4c74c75a47006, type: 3}
+  - {fileID: 21300000, guid: e3bcc6ab53e996f4eb20a0b58ad0e36f, type: 3}
+  - {fileID: 21300000, guid: d04b07ab5edd9c145895988e7785e720, type: 3}
+  - {fileID: 21300000, guid: 2f07383c0773a304a808812fa7f85351, type: 3}
+  - {fileID: 21300000, guid: 94bce9fccca456a41bb555ca1ee57e0c, type: 3}
+  - {fileID: 21300000, guid: 74dfd3ad6e487f947b0b242f5ba7b777, type: 3}
+  - {fileID: 21300000, guid: e7b8009ea01bf744286f2b7845c0af0a, type: 3}
+  - {fileID: 21300000, guid: 6873489ed29c9b3428d2806242a8a2ed, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - rightArrowPressed
+  - legendaryStickStar
+  - leftArrow
+  - InvWindow_icon
+  - InvWindow_overlay
+  - rareStickStar
+  - InvWindow_fill
+  - commonStickStar
+  - InvWindow_outline
+  - rightArrow
+  - coinyesButton
+  - uncommonStickStar
+  - leftArrowPressed
+  - coinyesPressedButton
+  - Scissors
+  m_RenderDataMap: {}
+  m_Tag: StickerUIAtlas
+  m_IsVariant: 0
