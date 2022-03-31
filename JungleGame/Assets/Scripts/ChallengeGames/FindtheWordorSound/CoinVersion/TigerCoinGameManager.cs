@@ -33,14 +33,11 @@ public class TigerCoinGameManager : MonoBehaviour
     [SerializeField]  private ChallengeWord currentWord;
     [SerializeField]  private ElkoninValue currentTargetValue;
     [SerializeField]  private ChallengeWord currentTargetWord;
+    private List<ChallengeWord> prevWords;
 
     private int numWins = 0;
     private int numMisses = 0;
     private bool playingCoinAudio = false;
-
-    private List<ChallengeWord> globalWordList;
-    private List<ChallengeWord> unusedWordList;
-    private List<ChallengeWord> usedWordList;
 
 
     [Header("Tutorial")]
@@ -121,12 +118,8 @@ public class TigerCoinGameManager : MonoBehaviour
 
     private void PregameSetup()
     {
-        globalWordList = new List<ChallengeWord>();
-        globalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(StudentInfoSystem.GetCurrentProfile().actionWordPool));
-        unusedWordList = globalWordList;
-        usedWordList = new List<ChallengeWord>();
+        prevWords = new List<ChallengeWord>();
         pattern.baseState();
-
         StartCoroutine(StartGame());
     }
 
@@ -218,26 +211,16 @@ public class TigerCoinGameManager : MonoBehaviour
         }
         else
         {
-            // get random word
+            // use AI word selection
             List<ChallengeWord> CurrentChallengeList = new List<ChallengeWord>();
-            CurrentChallengeList = AISystem.ChallengeWordSelectionTigerPawCoin(StudentInfoSystem.GetCurrentProfile());
+            CurrentChallengeList = AISystem.ChallengeWordSelectionTigerPawCoin(prevWords);
             currentWord = CurrentChallengeList[0];
             polaroidC.SetPolaroid(currentWord);
-            
-
-            //currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(currentWord.set);
-
-            //print ("current value: " + currentTargetValue);
+            prevWords.Add(currentWord);
 
             // set coin options
             List<ActionWordEnum> coinOptions = new List<ActionWordEnum>();
-            //coinOptions.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
-            //coinOptions.Remove(currentWord.set);
             coinOptions = AISystem.TigerPawCoinsCoinSelection(StudentInfoSystem.GetCurrentProfile(), CurrentChallengeList);
-
-            //print ("coin options: " + coinOptions.Count);
-
-            //int correctIndex = Random.Range(0, waterCoins.Count);
             currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(currentWord.set);
             for (int i = 0; i < 5; i++)
             {
@@ -248,8 +231,6 @@ public class TigerCoinGameManager : MonoBehaviour
         }
 
 
-        print ("current value: " + currentTargetValue);
-
         yield return new WaitForSeconds(0.5f);
 
         polaroidC.gameObject.transform.position = polaroidStartPos.position;
@@ -258,7 +239,7 @@ public class TigerCoinGameManager : MonoBehaviour
         // return pattern to base state
         pattern.baseState();
         
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         // tutorial stuff
         if (playTutorial && tutorialEvent == 1)
@@ -404,31 +385,6 @@ public class TigerCoinGameManager : MonoBehaviour
         coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
 
         playingCoinAudio = false;
-    }
-
-
-    private ChallengeWord GetUnusedWord()
-    {
-        // reset unused pool if empty
-        if (unusedWordList.Count <= 0)
-        {
-            unusedWordList.Clear();
-            unusedWordList.AddRange(globalWordList);
-        }
-
-        int index = Random.Range(0, unusedWordList.Count);
-        ChallengeWord word = unusedWordList[index];
-
-        // make sure word is not being used
-        if (usedWordList.Contains(word))
-        {
-            unusedWordList.Remove(word);
-            return GetUnusedWord();
-        }
-
-        unusedWordList.Remove(word);
-        usedWordList.Add(word);
-        return word;
     }
 
     public void EvaluateWaterCoin(UniversalCoinImage coin)

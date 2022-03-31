@@ -16,7 +16,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
     private List<ElkoninValue> elkoninPool;
     private List<ElkoninValue> lockedPool;
 
-    private List<WordPair> pairPool;
+    private List<WordPair> prevPairs;
     private WordPair currentPair;
     private ChallengeWord currentWord;
     [HideInInspector] public UniversalCoinImage currentCoin;
@@ -92,10 +92,6 @@ public class WordFactoryBuildingManager : MonoBehaviour
 
     private void PregameSetup()
     {
-        // get pair pool from game manager
-        pairPool = new List<WordPair>();
-        pairPool.AddRange(ChallengeWordDatabase.GetAddDeleteWordPairs(StudentInfoSystem.GetCurrentProfile().actionWordPool));
-
         // set emerald head to be closed
         EmeraldHead.instance.animator.Play("PolaroidEatten");
 
@@ -105,7 +101,10 @@ public class WordFactoryBuildingManager : MonoBehaviour
         // set tiger cards to be inactive
         TigerController.instance.ResetCards();
 
+        // init empty lists
+        prevPairs = new List<WordPair>();
         lockedPool = new List<ElkoninValue>();
+
         // add all action words excpet unlocked ones
         foreach (var coin in GameManager.instance.actionWords)
         {
@@ -139,9 +138,8 @@ public class WordFactoryBuildingManager : MonoBehaviour
         }
         else
         {
-            // new pair
-            //currentPair = pairPool[Random.Range(0, pairPool.Count)];
-            currentPair = AISystem.ChallengeWordBuildingDeleting(StudentInfoSystem.GetCurrentProfile());
+            currentPair = AISystem.ChallengeWordBuildingDeleting(prevPairs);
+            prevPairs.Add(currentPair);
         }
 
         // init game delay

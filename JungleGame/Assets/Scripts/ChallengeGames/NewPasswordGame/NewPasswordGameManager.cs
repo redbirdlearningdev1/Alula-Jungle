@@ -36,10 +36,8 @@ public class NewPasswordGameManager : MonoBehaviour
     public Transform brutusOffScreenPos;
 
     private ChallengeWord currentWord;
+    private List<ChallengeWord> prevWords;
     private int numMisses = 0;
-
-    // challenge word pool
-    private List<ChallengeWord> wordPool;
 
 
     [Header("Tutorial")]
@@ -106,9 +104,8 @@ public class NewPasswordGameManager : MonoBehaviour
         // hide lock
         PasswordLock.instance.HideLock();
 
-        // fill challenge word pool
-        wordPool = new List<ChallengeWord>();
-        wordPool.AddRange(ChallengeWordDatabase.GetChallengeWords(StudentInfoSystem.GetCurrentProfile().actionWordPool));
+        // init empty list
+        prevWords = new List<ChallengeWord>();
 
         // place charcters off screen
         tigerCharacter.position = tigerOffScreenPos.position;
@@ -153,9 +150,9 @@ public class NewPasswordGameManager : MonoBehaviour
         else
         {
             List<ChallengeWord> ChallengeWordList = new List<ChallengeWord>();
-            ChallengeWordList = AISystem.ChallengeWordPassword(StudentInfoSystem.GetCurrentProfile());
+            ChallengeWordList = AISystem.ChallengeWordPassword(prevWords);
             currentWord = ChallengeWordList[0];
-            wordPool.Remove(currentWord);
+            prevWords.Add(currentWord);
         }
 
         PasswordTube.instance.TurnTube();
