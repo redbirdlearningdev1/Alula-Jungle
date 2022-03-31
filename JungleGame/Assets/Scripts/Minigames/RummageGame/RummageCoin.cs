@@ -128,7 +128,7 @@ public class RummageCoin : MonoBehaviour
         // get animator if null
         if (!animator)
             animator = GetComponent<Animator>();
-
+            
         animator.Play(type.ToString());
     }
 

@@ -44,11 +44,8 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 03584b3f1be43f84887029dde9c6c816, type: 3}
-    - {fileID: 2800000, guid: 5c66293da61f5304c966eccedec8ef0d, type: 3}
-    - {fileID: 2800000, guid: dc118759bfa51964b9d1a4816ca2c5ee, type: 3}
-    - {fileID: 2800000, guid: b92e0a0952d8e984eb6b535d8669e712, type: 3}
     - {fileID: 102900000, guid: fb8982a64c258cf45a3f4ca65dadb543, type: 3}
-    totalSpriteSurfaceArea: 160616258
+    totalSpriteSurfaceArea: 157680000
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -100,9 +97,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: a28638883469a6448a3b1f706cb01f7e, type: 3}
   - {fileID: 21300000, guid: f4c2c398ea5fdac44b71b1a403576217, type: 3}
   - {fileID: 21300000, guid: 3ef870f84bef7f14db902e5b66d94a1e, type: 3}
-  - {fileID: 21300000, guid: b92e0a0952d8e984eb6b535d8669e712, type: 3}
   - {fileID: 21300000, guid: f8105b297785ef84ebf642f49d2128a5, type: 3}
-  - {fileID: 21300000, guid: dc118759bfa51964b9d1a4816ca2c5ee, type: 3}
   - {fileID: 21300000, guid: 48c343899c5a2ef43ba8f46b05f3182d, type: 3}
   - {fileID: 21300000, guid: f9a3bb997ff4580449a6eff16cae04fd, type: 3}
   - {fileID: 21300000, guid: f1b28fa9429f3c94aabb80fed4399ce2, type: 3}
@@ -121,7 +116,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 76269e5c44606d146a735f7bd8fc7213, type: 3}
   - {fileID: 21300000, guid: 28a97d1da81d839468caf3f1b99eeca8, type: 3}
   - {fileID: 21300000, guid: 161a242dd1d75964d8a5192a004d3ed4, type: 3}
-  - {fileID: 21300000, guid: 5c66293da61f5304c966eccedec8ef0d, type: 3}
   - {fileID: 21300000, guid: 157b9c5d46385df4f837d7ccf987c415, type: 3}
   - {fileID: 21300000, guid: cc9c267dbd20d34468149d82ed004046, type: 3}
   - {fileID: 21300000, guid: c0b1049d32fb024408cdb12ec225c53d, type: 3}
@@ -177,9 +171,7 @@ SpriteAtlas:
   - TrumpetPlay32
   - TrumpetPlay13
   - TrumpetPlay9
-  - RumblePressed
   - WheelBreakOverlay11
-  - Rumble
   - TrumpetPlay52
   - TrumpetPlay33
   - TrumpetPlay39
@@ -198,7 +190,6 @@ SpriteAtlas:
   - TrumpetPlay42
   - TrumpetPlay22
   - WheelBreakOverlay17
-  - RRGradient
   - TrumpetPlay29
   - TrumpetPlay30
   - TrumpetPlay2
