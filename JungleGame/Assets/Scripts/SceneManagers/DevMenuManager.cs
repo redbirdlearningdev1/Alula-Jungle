@@ -3005,7 +3005,7 @@ public class DevMenuManager : MonoBehaviour
         for (int i = 0; i < x; i++)
         {
             Sticker new_sticker = StickerDatabase.instance.RollForSticker();
-            StudentInfoSystem.AddStickerToInventory(new_sticker);
+            StudentInfoSystem.AddStickerToInventory(new_sticker, false);
 
             // keep track of rarity stats
             switch (new_sticker.rarity)

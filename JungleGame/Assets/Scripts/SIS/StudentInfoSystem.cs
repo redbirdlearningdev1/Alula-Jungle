@@ -97,6 +97,8 @@ public static class StudentInfoSystem
 
     public static void ResetProfile(StudentIndex index)
     {
+        GameManager.instance.SendLog("SIS", "reseting profile: " + index);
+
         LoadSaveSystem.ResetStudentData(index);
     }
 
@@ -164,7 +166,7 @@ public static class StudentInfoSystem
         return 0;
     }
 
-    public static void AddStickerToInventory(Sticker sticker)
+    public static void AddStickerToInventory(Sticker sticker, bool updateText)
     {
         if (currentStudentPlayer != null)
         {
@@ -174,7 +176,9 @@ public static class StudentInfoSystem
                 var newData = new InventoryStickerData(sticker);
                 currentStudentPlayer.stickerInventory.Add(newData);
                 SaveStudentPlayerData();
-                DropdownToolbar.instance.UpdateSilverCoins();
+
+                if (updateText)
+                    DropdownToolbar.instance.UpdateSilverCoins();
             }
             else
             {
@@ -345,5 +349,15 @@ public static class StudentInfoSystem
             case StickerBoardType.Beach:
                 return currentStudentPlayer.beachStickerBoard;
         }
+    }
+
+    public static int GetTotalStickerCount()
+    {
+        int totalStickers = 0;
+        foreach (var sticker in GetCurrentProfile().stickerInventory)
+        {
+            totalStickers += sticker.count;
+        }
+        return totalStickers;
     }
 }

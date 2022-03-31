@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+public enum Direction
+{
+    None, Top, Bottom, Left, Right
+}
+
 public class StickerImage : MonoBehaviour
 {
     public Image stickerImage;
@@ -10,51 +15,115 @@ public class StickerImage : MonoBehaviour
     public InventorySticker inventorySticker;
     public WiggleController wiggleController;
 
-    public LerpableObject yesButton;
-    public LerpableObject noButton;
-    public LerpableObject rotateButton;
-    public LerpableObject mirrorButton;
+    public LerpableObject topYesButton;
+    public LerpableObject topNoButton;
 
-    [HideInInspector] public bool yesNoShown = false;
+    public LerpableObject bottomYesButton;
+    public LerpableObject bottomNoButton;
+
+    public LerpableObject leftRotateButton;
+    public LerpableObject leftMirrorButton;
+
+    public LerpableObject rightRotateButton;
+    public LerpableObject rightMirrorButton;
+
+    private Direction yesNoButtonDirection;
+    private Direction editButtonDirection;
+
+    [HideInInspector] public bool stickerButtonsShown = false;
 
     void Awake()
     {
-        yesButton.transform.localScale = Vector3.zero;
-        noButton.transform.localScale = Vector3.zero;
-        rotateButton.transform.localScale = Vector3.zero;
-        mirrorButton.transform.localScale = Vector3.zero;
+        topYesButton.transform.localScale = Vector3.zero;
+        topNoButton.transform.localScale = Vector3.zero;
+        bottomYesButton.transform.localScale = Vector3.zero;
+        bottomNoButton.transform.localScale = Vector3.zero;
+
+        leftRotateButton.transform.localScale = Vector3.zero;
+        leftMirrorButton.transform.localScale = Vector3.zero;
+        rightRotateButton.transform.localScale = Vector3.zero;
+        rightMirrorButton.transform.localScale = Vector3.zero;
     }
 
-    public void ShowYesNoButtons()
+    public void ShowStickerButtons()
     {
-        if (yesNoShown)
+        if (stickerButtonsShown)
             return;
+        stickerButtonsShown = true;
 
-        yesNoShown = true;
+        Vector2 placedPos = stickerImage.transform.position;
+        //print ("placed pos: [" + placedPos.x + ", " + placedPos.y + "]");
 
-        yesButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
-        noButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
-        rotateButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
-        mirrorButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+        // determine yes / no button direction
+        if (placedPos.y >= 0)
+        {
+            yesNoButtonDirection = Direction.Bottom;
+            bottomYesButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+            bottomNoButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
 
-        yesButton.GetComponent<WiggleController>().StartWiggle();
-        noButton.GetComponent<WiggleController>().StartWiggle();
+            bottomYesButton.GetComponent<WiggleController>().StartWiggle();
+            bottomNoButton.GetComponent<WiggleController>().StartWiggle();
+        }
+        else if (placedPos.y < 0)
+        {
+            yesNoButtonDirection = Direction.Top;
+            topYesButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+            topNoButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+
+            topYesButton.GetComponent<WiggleController>().StartWiggle();
+            topNoButton.GetComponent<WiggleController>().StartWiggle();
+        }
+
+        // determine edit button direction
+        if (placedPos.x >= 0)
+        {
+            editButtonDirection = Direction.Left;
+            leftRotateButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+            leftMirrorButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+        }
+        else if (placedPos.x < 0)
+        {
+            editButtonDirection = Direction.Right;
+            rightRotateButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+            rightMirrorButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+        }
     }
 
-    public void HideYesNoButtons()
+    public void HideStickerButtons()
     {
-        if (!yesNoShown)
+        if (!stickerButtonsShown)
             return;
+        stickerButtonsShown = false;
 
-        yesNoShown = false;
+        // hide yes / no buttons
+        if (yesNoButtonDirection == Direction.Top)
+        {
+            topYesButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+            topNoButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
 
-        yesButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
-        noButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
-        rotateButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
-        mirrorButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+            topYesButton.GetComponent<WiggleController>().StopWiggle();
+            topNoButton.GetComponent<WiggleController>().StopWiggle();
+        }
+        else if (yesNoButtonDirection == Direction.Bottom)
+        {
+            bottomYesButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+            bottomNoButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
 
-        yesButton.GetComponent<WiggleController>().StopWiggle();
-        noButton.GetComponent<WiggleController>().StopWiggle();
+            bottomYesButton.GetComponent<WiggleController>().StopWiggle();
+            bottomNoButton.GetComponent<WiggleController>().StopWiggle();
+        }
+
+        // hide edit buttons
+        if (editButtonDirection == Direction.Left)
+        {
+            leftRotateButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+            leftMirrorButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+        }
+        else if (editButtonDirection == Direction.Right)
+        {
+            rightRotateButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+            rightMirrorButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+        }
     }
 
     public void OnMirrorButtonPressed()
@@ -101,7 +170,7 @@ public class StickerImage : MonoBehaviour
         if (StickerSystem.instance.readyToGlueSticker)
         {
             StickerSystem.instance.readyToGlueSticker = false;
-            HideYesNoButtons();
+            HideStickerButtons();
 
             // save to SIS
             Sticker sticker = StickerDatabase.instance.GetSticker(inventorySticker.currentStickerData);
@@ -130,17 +199,10 @@ public class StickerImage : MonoBehaviour
 
     public void OnNoPressed()
     {
-        if (!yesNoShown)
+        if (!stickerButtonsShown)
             return;
 
-        yesNoShown = false;
-
-        yesButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
-        noButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
-
-        yesButton.GetComponent<WiggleController>().StopWiggle();
-        noButton.GetComponent<WiggleController>().StopWiggle();
-
+        HideStickerButtons();
         StickerSystem.instance.ReturnStickerToInventory();
     }
 }
