@@ -1,0 +1,162 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DarwinAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 8192
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 4177006d008f5f344b8ddb99a53df036, type: 3}
+    totalSpriteSurfaceArea: 114480000
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: cd1a61a00ce31334186b9881112781d9, type: 3}
+  - {fileID: 21300000, guid: 44088ec075fe9a744afb75e73f679d21, type: 3}
+  - {fileID: 21300000, guid: 1591eef0dd4786c45bbf2196026ed9ac, type: 3}
+  - {fileID: 21300000, guid: 2a33635179df89b4eabafa57ba438c23, type: 3}
+  - {fileID: 21300000, guid: 019896714c06c5a43a3d6762682758d8, type: 3}
+  - {fileID: 21300000, guid: 4226ecb159071cf419bf6144086c3cee, type: 3}
+  - {fileID: 21300000, guid: 9b863bc11eee59b4fa055a0f61079b13, type: 3}
+  - {fileID: 21300000, guid: 20e291423abd1d64d821f92bfd35fbae, type: 3}
+  - {fileID: 21300000, guid: 8972ae425ff09734c8e00f4b3833a617, type: 3}
+  - {fileID: 21300000, guid: 30472b522582670408ddc0f400f7527d, type: 3}
+  - {fileID: 21300000, guid: 2b92b76227cc5f049b4178b71dc6c54d, type: 3}
+  - {fileID: 21300000, guid: b16703b20ee1cf04eb03b81d0ec769bb, type: 3}
+  - {fileID: 21300000, guid: 0f774ff2e726c214e836d1842286ab00, type: 3}
+  - {fileID: 21300000, guid: f036c01337034c8469fa2a1cfc92e575, type: 3}
+  - {fileID: 21300000, guid: e006b423579edfe49b184ba2a7a70ff0, type: 3}
+  - {fileID: 21300000, guid: d0f26433913e05a4a9d2586fafb0f319, type: 3}
+  - {fileID: 21300000, guid: c630844349f509c4c81f5d495ad05182, type: 3}
+  - {fileID: 21300000, guid: 8a867f532c77b244993f8779f55bb0a5, type: 3}
+  - {fileID: 21300000, guid: d74aa0839cda8914f8c4639706e3a3d7, type: 3}
+  - {fileID: 21300000, guid: 724852d372cd2bd4c86a37b63640f1f6, type: 3}
+  - {fileID: 21300000, guid: 0ed0ccf3d99d7484e90a8c793d37ddd6, type: 3}
+  - {fileID: 21300000, guid: 31a39a3415530134a9226151252ce31a, type: 3}
+  - {fileID: 21300000, guid: ba54fe34f9cf18641a637ffb48f08cd5, type: 3}
+  - {fileID: 21300000, guid: c5e22244798e27d4ab6cb94e0d246bc4, type: 3}
+  - {fileID: 21300000, guid: 26bd8d748a4b6644f853a91534cbc765, type: 3}
+  - {fileID: 21300000, guid: f2aa1e74333d8804a97ec82a18bc20f6, type: 3}
+  - {fileID: 21300000, guid: d48e56e476d6aeb47b5d7c5529429564, type: 3}
+  - {fileID: 21300000, guid: 8c74eb5595dc3a747ae9431a1f4bdbf9, type: 3}
+  - {fileID: 21300000, guid: 844201650cde26e4b931dddf3cb43f3b, type: 3}
+  - {fileID: 21300000, guid: b1d3beb5de2793b4fa6c9324c13b4717, type: 3}
+  - {fileID: 21300000, guid: f75e27f524957a947a924d42e33db414, type: 3}
+  - {fileID: 21300000, guid: a4c770469329e534481d8db0c09e490a, type: 3}
+  - {fileID: 21300000, guid: c4e586c63362e6840989c4658ed472dd, type: 3}
+  - {fileID: 21300000, guid: 9a5736e6f19d12c458f286b627c0940f, type: 3}
+  - {fileID: 21300000, guid: 643d7a0775dfaf5409de61af8e51b9e8, type: 3}
+  - {fileID: 21300000, guid: 6e49a2874d3efbf40b937a37b3afee45, type: 3}
+  - {fileID: 21300000, guid: 24d26bc77ea9f354a8d950f67b516e14, type: 3}
+  - {fileID: 21300000, guid: 5a0db31860cf3424cb26ab35e891af49, type: 3}
+  - {fileID: 21300000, guid: f21530f8e48a54c45a744ec9961c1530, type: 3}
+  - {fileID: 21300000, guid: 8cae4939ab9fe8e499c2766c3d76a511, type: 3}
+  - {fileID: 21300000, guid: 9a1488896b02dc847913a014be4edc3b, type: 3}
+  - {fileID: 21300000, guid: 5688e25aafed56c45be423e593fd5b4d, type: 3}
+  - {fileID: 21300000, guid: 5019662cddf15f949aa1da496d6380db, type: 3}
+  - {fileID: 21300000, guid: 9c5b334cafacf87449b884b3c55610bb, type: 3}
+  - {fileID: 21300000, guid: 89559f9c22cc33c488e20c92205a2343, type: 3}
+  - {fileID: 21300000, guid: 1f676c2dc3233f14f8a9c31302306818, type: 3}
+  - {fileID: 21300000, guid: 2310958d65b37d34f91745eb6bc17ac4, type: 3}
+  - {fileID: 21300000, guid: 97af75bdfbd750f48ab9f9f1a2b5c27b, type: 3}
+  - {fileID: 21300000, guid: fca5f5dd4c3be864eaee4b7d34eb74a5, type: 3}
+  - {fileID: 21300000, guid: ae403d1edecf3e24eb8536bc3e902b0a, type: 3}
+  - {fileID: 21300000, guid: 6150d3dea8a1d3847992096729884775, type: 3}
+  - {fileID: 21300000, guid: 2be0fb2fe5e0bf3499c8faa30d4a97f1, type: 3}
+  - {fileID: 21300000, guid: cca52dffbbe335d41a81456abcc8f472, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Darwin5_MC_EI
+  - Darwin9_MC_EI
+  - Darwin1_MC_EI
+  - Darwin2_MO_EI
+  - Darwin10_MO_EO
+  - Darwin13_MO_EP
+  - Darwin4_MC_EC
+  - Darwin4_MO_EI
+  - Darwin7_MC_EP
+  - Darwin14_MO_EI
+  - Darwin12_MC_EO
+  - Darwin12_MC_EP
+  - Darwin2_MC_EP
+  - Darwin11_MO_EO
+  - Darwin3_MO_EO
+  - Darwin5_MO_EI
+  - Darwin15_MC_EI
+  - Darwin4_MC_EP
+  - Darwin9_MO_EI
+  - Darwin12_MO_EO
+  - Darwin15_MC_EO
+  - Darwin4_MO_EP
+  - Darwin1_MC_EP
+  - Darwin9_MC_EO
+  - Darwin2_MC_EC
+  - Darwin7_MO_EI
+  - Darwin4_MC_EI
+  - Darwin15_MO_EP
+  - Darwin6_MO_EI
+  - Darwin7_MC_EI
+  - Darwin6_MC_EI
+  - Darwin7_MC_EO
+  - Darwin11_MO_EC
+  - Darwin1_MO_EP
+  - Darwin4_MO_EC
+  - Darwin2_MC_EI
+  - Darwin7_MO_EO
+  - Darwin8_MO_EP
+  - Darwin2_MO_EC
+  - Darwin8_MO_Ei
+  - Darwin1_MO_EI
+  - Darwin13_MO_EO
+  - Darwin10_MC_EO
+  - Darwin15_MO_EO
+  - Darwin15_MC_EP
+  - Darwin15_MO_EI
+  - Darwin2_MO_EP
+  - Darwin12_MC_EI
+  - Darwin13_MO_EI
+  - Darwin12_MO_EI
+  - Darwin12_MO_EP
+  - Darwin7_MO_EP
+  - Darwin9_MO_EO
+  m_RenderDataMap: {}
+  m_Tag: DarwinAtlas
+  m_IsVariant: 0
