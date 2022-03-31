@@ -10,7 +10,7 @@ army,3,pirate,m,spider,,,,pirate
 art,2,pirate,t,,,,,pirate
 ate,2,hello,t,,,,,hello
 autumn,4,baby_monkey,t,think,m,,,baby_monkey
-away,3,orc,w,hello,,,,hello
+away,3,orcs,w,hello,,,,hello
 bait,3,b,hello,t,,,,hello
 bake,3,b,hello,k,,,,hello
 bar,2,b,pirate,,,,,pirate
@@ -34,7 +34,7 @@ boast,4,b,scare,s,t,,,scare
 boat,3,b,scare,t,,,,scare
 boil,3,b,howler_monkey,l,,,,howler_monkey
 bone,3,b,scare,n,,,,scare
-book,3,b,backback,k,,,,backpack
+book,3,b,backpack,k,,,,backpack
 born,3,b,choice,n,,,,choice
 bought,3,b,orcs,t,,,,orcs
 box,3,b,orcs,x,,,,orcs
@@ -88,19 +88,19 @@ cold,4,c,scare,l,d,,,scare
 collar,4,c,orcs,l,r,,,orcs
 come,3,c,think,m,,,,think
 cone,3,c,scare,n,,,,scare
-cook,3,c,backback,k,,,,backpack
+cook,3,c,backpack,k,,,,backpack
 cool,3,c,that_guy,l,,,,that_guy
 cord,3,c,choice,d,,,,choice
 cork,3,c,choice,k,,,,choice
 corn,3,c,choice,n,,,,choice
-could,3,c,backback,d,,,,backpack
+could,3,c,backpack,d,,,,backpack
 count,4,c,bump_head,n,t,,,bump_head
 cow,2,c,bump_head,,,,,bump_head
 crab,4,c,r,mudslide,b,,,mudslide
 crash,4,c,r,mudslide,sh,,,mudslide
 crawl,4,c,r,baby_monkey,l,,,baby_monkey
 crew,3,c,r,that_guy,,,,that_guy
-crook,4,c,r,backback,k,,,backpack
+crook,4,c,r,backpack,k,,,backpack
 cruise,4,c,r,that_guy,s,,,that_guy
 cry,3,c,r,explorer,,,,explorer
 crypt,5,c,r,poop,pirate,t,,poop
@@ -109,7 +109,7 @@ cube,3,c,that_guy,b,,,,that_guy
 cue,2,c,that_guy,,,,,that_guy
 cupid,5,c,that_guy,p,poop,d,,that_guy
 cure,2,c,give,,,,,give
-curious,5,c,give,spider,thinks,s,,give
+curious,5,c,give,spider,think,s,,give
 curl,3,c,gorilla,l,,,,gorilla
 cut,3,c,think,t,,,,think
 cute,3,c,that_guy,t,,,,that_guy
@@ -178,7 +178,7 @@ fly,3,f,l,explorer,,,,explorer
 foe,2,f,scare,,,,,scare
 foil,3,f,howler_monkey,l,,,,howler_monkey
 food,3,f,that_guy,d,,,,that_guy
-foot,3,f,backback,t,,,,backpack
+foot,3,f,backpack,t,,,,backpack
 for,2,f,choice,,,,,choice
 force,3,f,choice,s,,,,choice
 ford,3,f,choice,d,,,,choice
@@ -207,7 +207,7 @@ glue,3,g,l,that_guy,,,,that_guy
 go,2,g,scare,,,,,scare
 goat,3,g,scare,t,,,,scare
 goes,3,g,scare,s,,,,scare
-good,3,g,backback,d,,,,backpack
+good,3,g,backpack,d,,,,backpack
 gorge,3,g,choice,j,,,,choice
 got,3,g,orcs,t,,,,orcs
 gown,3,g,bump_head,n,,,,bump_head
@@ -238,7 +238,7 @@ him,3,h,poop,m,,,,poop
 hind,4,h,explorer,n,d,,,explorer
 hog,3,h,orcs,g,,,,orcs
 home,3,h,scare,m,,,,scare
-hook,3,h,backback,k,,,,backpack
+hook,3,h,backpack,k,,,,backpack
 hoot,3,h,that_guy,t,,,,that_guy
 hope,3,h,scare,p,,,,scare
 horn,3,h,choice,n,,,,choice
@@ -293,7 +293,7 @@ live,3,l,explorer,v,,,,explorer
 loaf,3,l,scare,f,,,,scare
 log,3,l,orcs,g,,,,orcs
 long,4,l,orcs,n,g,,,orcs
-look,3,l,backback,k,,,,backpack
+look,3,l,backpack,k,,,,backpack
 loop,3,l,that_guy,p,,,,that_guy
 loud,3,l,bump_head,d,,,,bump_head
 love,3,l,think,v,,,,think
@@ -375,7 +375,7 @@ plan,4,p,l,mudslide,n,,,mudslide
 play,3,p,l,hello,,,,hello
 please,4,p,l,spider,s,,,spider
 pop,3,p,orcs,p,,,,orcs
-porch,3,p, choice,ch,,,,choice
+porch,3,p,choice,ch,,,,choice
 pork,3,p,choice,k,,,,choice
 port,3,p,choice,t,,,,choice
 pray,3,p,r,hello,,,,hello
@@ -386,7 +386,7 @@ prune,4,p,r,that_guy,n,,,that_guy
 pupil,5,p,that_guy,p,poop,l,,that_guy
 pure,2,p,give,,,,,give
 puree,3,p,give,hello,,,,give
-put,3,p,backback,t,,,,backpack
+put,3,p,backpack,t,,,,backpack
 quick,4,c,w,poop,c,,,poop
 quit,4,c,w,poop,t,,,poop
 rail,3,r,hello,l,,,,hello
@@ -440,10 +440,10 @@ shawl,3,sh,baby_monkey,l,,,,baby_monkey
 she,2,sh,spider,,,,,spider
 shield,4,sh,spider,l,d,,,spider
 shirt,3,sh,gorilla,t,,,,gorilla
-shook,3,sh,backback,k,,,,backpack
+shook,3,sh,backpack,k,,,,backpack
 shoot,3,sh,that_guy,t,,,,that_guy
 short,3,sh,choice,t,,,,choice
-should,3,sh,backback,d,,,,backpack
+should,3,sh,backpack,d,,,,backpack
 shout,3,sh,bump_head,t,,,,bump_head
 show,2,sh,scare,,,,,scare
 shy,2,sh,explorer,,,,,explorer
@@ -465,9 +465,9 @@ so,2,s,scare,,,,,scare
 soil,3,s,howler_monkey,l,,,,howler_monkey
 some,3,s,think,m,,,,think
 son,3,s,think,n,,,,think
-soon,3,s,backback,n,,,,that_guy
+soon,3,s,that_guy,n,,,,that_guy
 sound,4,s,bump_head,n,d,,,bump_head
-soup,3,s,backback,p,,,,backpack
+soup,3,s,that_guy,p,,,,that_guy
 spare,3,s,p,strong_wind,,,,strong_wind
 spark,4,s,p,pirate,k,,,pirate
 spat,4,s,p,mudslide,t,,,mudslide
@@ -515,7 +515,7 @@ test,4,t,listen,s,t,,,listen
 thaw,2,th,baby_monkey,,,,,baby_monkey
 them,3,th,listen,m,,,,listen
 then,3,th,listen,n,,,,listen
-these,4,th,spider,s,,,,spider
+these,3,th,spider,s,,,,spider
 they,2,th,hello,,,,,hello
 those,3,th,scare,s,,,,scare
 though,2,th,scare,,,,,scare
@@ -573,12 +573,12 @@ wild,4,w,explorer,l,d,,,explorer
 winter,5,w,poop,n,t,gorilla,,poop
 wish,3,w,poop,sh,,,,poop
 won,3,w,think,n,,,,think
-wood,3,w,backback,d,,,,backpack
+wood,3,w,backpack,d,,,,backpack
 work,3,w,gorilla,k,,,,gorilla
 world,4,w,gorilla,l,d,,,gorilla
 worm,3,w,gorilla,m,,,,gorilla
 worse,4,w,gorilla,r,s,,,gorilla
-would,3,w,backback,d,,,,backpack
+would,3,w,backpack,d,,,,backpack
 write,3,r,explorer,t,,,,explorer
 yard,3,y,pirate,d,,,,pirate
 yarn,3,y,pirate,n,,,,pirate

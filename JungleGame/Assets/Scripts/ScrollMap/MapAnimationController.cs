@@ -137,6 +137,9 @@ public class MapAnimationController : MonoBehaviour
         marcus.GetComponent<Image>().raycastTarget = false;
         clogg.GetComponent<Image>().raycastTarget = false;
         taxiBird.GetComponent<Image>().raycastTarget = false;
+
+        // make boat fixed
+        boat.GetComponent<MapIcon>().SetFixed(true, false, false);
     }
 
     private IEnumerator TestWalkInWalkOut()
@@ -851,9 +854,9 @@ public class MapAnimationController : MonoBehaviour
             // place boat in dock
             boat.mapAnimator.Play("BoatDockedPos");
             boat.GetComponent<MapIcon>().interactable = true;
-            boat.GetComponent<Image>().raycastTarget = true;
+            boat.GetComponent<MapIcon>().fixedCollider.enabled = true;
+            boat.GetComponent<Image>().raycastTarget = true; 
         }
-
         if (!(storyBeat >= StoryBeat.OrcCampUnlocked && storyBeat <= StoryBeat.OrcCampDefeated) && (ScrollMapManager.instance.GetCurrentMapLocation() != MapLocation.OrcCamp))
         {
             // place clogg in OV
@@ -862,6 +865,7 @@ public class MapAnimationController : MonoBehaviour
             clogg.interactable = true;
         }
 
+        /// story beat specific character positions
         switch (storyBeat)
         {
             default:
@@ -2179,6 +2183,7 @@ public class MapAnimationController : MonoBehaviour
         boat.ShowExclamationMark(true);
         boat.GetComponent<Image>().raycastTarget = true;
         boat.GetComponent<MapIcon>().interactable = true;
+        boat.GetComponent<MapIcon>().fixedCollider.enabled = true;
         boat.GetComponent<WiggleController>().StartWiggle();
 
         animationDone = true;
@@ -2229,7 +2234,7 @@ public class MapAnimationController : MonoBehaviour
 
     private IEnumerator GorillaVillageIntro()
     {
-        // remove exclamation mark from gorilla
+        // remove exclamation mark
         darwin.ShowExclamationMark(false);
         darwin.GetComponent<Image>().raycastTarget = false;
         darwin.interactable = false;
@@ -2541,8 +2546,8 @@ public class MapAnimationController : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        // enable sign post in GV
-        ScrollMapManager.instance.mapLocations[(int)MapLocation.GorillaVillage].signPost.SetInteractability(true);
+        // hide signpost
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.GorillaVillage].signPost.HideSignPost();
 
         // save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 3;
@@ -2669,7 +2674,7 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // MS sign post springs into place
-        ScrollMapManager.instance.mapLocations[3].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_stars, false);
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.Mudslide].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_stars, false);
         yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
         yield return new WaitForSeconds(1f);
@@ -2692,7 +2697,9 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         yield return new WaitForSeconds(1f);
-        ScrollMapManager.instance.mapLocations[3].signPost.GetComponent<SignPostController>().SetInteractability(true);
+
+        // hide signpost
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.Mudslide].signPost.HideSignPost();
 
         // make clogg interactable
         clogg.GetComponent<Image>().raycastTarget = true;
@@ -2819,7 +2826,7 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // OV sign post springs into place
-        ScrollMapManager.instance.mapLocations[4].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_stars, false);
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.OrcVillage].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_stars, false);
         yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
         yield return new WaitForSeconds(1f);
@@ -2843,6 +2850,9 @@ public class MapAnimationController : MonoBehaviour
         darwin.ShowExclamationMark(true);
         darwin.GetComponent<Image>().raycastTarget = true;
         darwin.interactable = true;
+
+        // hide signpost
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.OrcVillage].signPost.HideSignPost();
 
         // Save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 5;
@@ -3092,7 +3102,7 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // SF sign post springs into place
-        ScrollMapManager.instance.mapLocations[5].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.OC_signPost_stars, false);
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.SpookyForest].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_stars, false);
         yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
         yield return new WaitForSeconds(1f);
@@ -3115,6 +3125,9 @@ public class MapAnimationController : MonoBehaviour
         clogg.ShowExclamationMark(true);
         clogg.GetComponent<Image>().raycastTarget = true;
         clogg.interactable = true;
+
+        // hide signpost
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.SpookyForest].signPost.HideSignPost();
 
         // Save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 6;
@@ -3240,8 +3253,8 @@ public class MapAnimationController : MonoBehaviour
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
-        // SF sign post springs into place
-        ScrollMapManager.instance.mapLocations[6].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_stars, false);
+        // OC sign post springs into place
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.OrcCamp].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.OC_signPost_stars, false);
         yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
         yield return new WaitForSeconds(1f);
@@ -3259,6 +3272,9 @@ public class MapAnimationController : MonoBehaviour
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PoopIntro_1_p1"));
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
+
+        // hide signpost
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.OrcCamp].signPost.HideSignPost();
 
         // enable icons in GP
         ScrollMapManager.instance.EnableMapSectionsUpTo(MapLocation.GorillaPoop);
@@ -3386,7 +3402,7 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // SF sign post springs into place
-        ScrollMapManager.instance.mapLocations[7].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.GP_signPost_stars, false);
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.GorillaPoop].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.GP_signPost_stars, false);
         yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
         yield return new WaitForSeconds(1f);
@@ -3409,6 +3425,9 @@ public class MapAnimationController : MonoBehaviour
         darwin.ShowExclamationMark(true);
         darwin.GetComponent<Image>().raycastTarget = true;
         darwin.interactable = true;
+
+        // hide signpost
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.GorillaPoop].signPost.HideSignPost();
 
         // Save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 8;
@@ -3657,8 +3676,8 @@ public class MapAnimationController : MonoBehaviour
         while (TalkieManager.instance.talkiePlaying)
             yield return null;
 
-        // SF sign post springs into place
-        ScrollMapManager.instance.mapLocations[8].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.WC_signPost_stars, false);
+        // WC sign post springs into place
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.WindyCliff].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.WC_signPost_stars, false);
         yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
         yield return new WaitForSeconds(1f);
@@ -3670,6 +3689,9 @@ public class MapAnimationController : MonoBehaviour
         // unlock pirate ship
         ScrollMapManager.instance.UnlockMapArea(MapLocation.PirateShip, false);
         yield return new WaitForSeconds(10f);
+
+        // hide signpost
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.WindyCliff].signPost.HideSignPost();
 
         // play PS intro 
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PirateIntro_1_p1"));
@@ -3802,11 +3824,10 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // PS sign post springs into place
-        ScrollMapManager.instance.mapLocations[9].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.PS_signPost_stars, false);
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.PirateShip].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.PS_signPost_stars, false);
         yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
         yield return new WaitForSeconds(1f);
-
 
         // place darwin in MB
         darwin.mapAnimator.Play("DarwinMBPos");
@@ -3821,6 +3842,9 @@ public class MapAnimationController : MonoBehaviour
         darwin.ShowExclamationMark(true);
         darwin.GetComponent<Image>().raycastTarget = true;
         darwin.interactable = true;
+
+        // hide signpost
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.PirateShip].signPost.HideSignPost();
 
         // Save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 10;
@@ -4070,7 +4094,7 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // MB sign post springs into place
-        ScrollMapManager.instance.mapLocations[10].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.MB_signPost_stars, false);
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.MermaidBeach].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.MB_signPost_stars, false);
         yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
         yield return new WaitForSeconds(1f);
@@ -4086,6 +4110,9 @@ public class MapAnimationController : MonoBehaviour
         // unlock ruins
         ScrollMapManager.instance.UnlockMapArea(MapLocation.Ruins2, false);
         yield return new WaitForSeconds(10f);
+
+        // hide signpost
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.MermaidBeach].signPost.HideSignPost();
 
         // play R intro 1
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RuinsIntro_1_p1"));
@@ -4225,7 +4252,7 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // R sign post springs into place
-        ScrollMapManager.instance.mapLocations[11].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.R_signPost_stars, false);
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.Ruins1].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.R_signPost_stars, false);
         yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
         yield return new WaitForSeconds(1f);
@@ -4246,6 +4273,9 @@ public class MapAnimationController : MonoBehaviour
         darwin.ShowExclamationMark(true);
         darwin.GetComponent<Image>().raycastTarget = true;
         darwin.interactable = true;
+
+        // hide signpost
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.Ruins1].signPost.HideSignPost();
 
         // Save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 13;
@@ -4492,7 +4522,7 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // EJ sign post springs into place
-        ScrollMapManager.instance.mapLocations[13].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.EJ_signPost_stars, false);
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.ExitJungle].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.EJ_signPost_stars, false);
         yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
         yield return new WaitForSeconds(1f);
@@ -4515,6 +4545,9 @@ public class MapAnimationController : MonoBehaviour
         darwin.ShowExclamationMark(true);
         darwin.GetComponent<Image>().raycastTarget = true;
         darwin.interactable = true;
+
+        // hide signpost
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.ExitJungle].signPost.HideSignPost();
 
         // Save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 14;
@@ -4677,7 +4710,7 @@ public class MapAnimationController : MonoBehaviour
             yield return null;
 
         // GS sign post springs into place
-        ScrollMapManager.instance.mapLocations[14].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.GS_signPost_stars, false);
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.GorillaStudy].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.GS_signPost_stars, false);
         yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
         yield return new WaitForSeconds(1f);
@@ -4698,6 +4731,9 @@ public class MapAnimationController : MonoBehaviour
         // unlock monkeys
         ScrollMapManager.instance.UnlockMapArea(MapLocation.Monkeys, false);
         yield return new WaitForSeconds(10f);
+
+        // hide signpost
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.GorillaStudy].signPost.HideSignPost();
 
         // play M intro 1
         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("MonkeyIntro_1_p1"));
@@ -4808,7 +4844,7 @@ public class MapAnimationController : MonoBehaviour
         julius.transform.localScale = Vector3.one;
 
         // M sign post springs into place
-        ScrollMapManager.instance.mapLocations[15].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.M_signPost_stars, false);
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.Monkeys].signPost.ShowSignPost(StudentInfoSystem.GetCurrentProfile().mapData.M_signPost_stars, false);
         yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Trumpet, 0.25f);
         yield return new WaitForSeconds(1f);
@@ -4833,12 +4869,12 @@ public class MapAnimationController : MonoBehaviour
         yield return new WaitForSeconds(10f);
 
         // hide signpost
-        ScrollMapManager.instance.mapLocations[15].signPost.HideSignPost();
+        ScrollMapManager.instance.mapLocations[(int)MapLocation.Monkeys].signPost.HideSignPost();
 
         // Save to SIS
         StudentInfoSystem.GetCurrentProfile().mapLimit = 16;
         StudentInfoSystem.GetCurrentProfile().mapData.M_signPost_unlocked = true;
-        StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_final; // new chapter!
+        StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_6; // new chapter!
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
 

@@ -86,7 +86,6 @@ public static class LoadSaveSystem
         }
         else
         {
-            // Debug.Log("Path not found: " + path.ToString() + "\nReturning null");
             // create new profile file
             if (createNewIfNull)
             {

@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LesterAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 90b539c570d2e724cbb91fa160ea239a, type: 3}
+    totalSpriteSurfaceArea: 49680000
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: af1d5521d10cc9c4ba637da9f6627dfb, type: 3}
+  - {fileID: 21300000, guid: db6ef5214650e67458dcd83cb194b4b7, type: 3}
+  - {fileID: 21300000, guid: 9b74a81284c649844a1a73cdc51377a5, type: 3}
+  - {fileID: 21300000, guid: 37db7722a93a49e46ac7f3b80f633527, type: 3}
+  - {fileID: 21300000, guid: c5dc23233914b5f41b401c62144d383e, type: 3}
+  - {fileID: 21300000, guid: 927ad793c5d7baf48bdd4c33b001673f, type: 3}
+  - {fileID: 21300000, guid: 5f7a2b64d33df3b408f4445c9b5eab8c, type: 3}
+  - {fileID: 21300000, guid: d8496cc5847150b4ebfb986a76b2c854, type: 3}
+  - {fileID: 21300000, guid: 4d606f16464cb3247949d70731740b92, type: 3}
+  - {fileID: 21300000, guid: 7e8dde76ef2f2bb4685842c8dc012221, type: 3}
+  - {fileID: 21300000, guid: 7ce5fba61d109714d894366a7f325ad9, type: 3}
+  - {fileID: 21300000, guid: 1bac7db6157696b4b848958fdc484ba3, type: 3}
+  - {fileID: 21300000, guid: 0dd3081a75a83b9429ab3a7234c7d180, type: 3}
+  - {fileID: 21300000, guid: 3af3493a40cecf543afae3b9005621cd, type: 3}
+  - {fileID: 21300000, guid: 1eaf619b314fea044af3017ec2b31543, type: 3}
+  - {fileID: 21300000, guid: 90a7d4ecd3fee8b40b4b27e5694ab81f, type: 3}
+  - {fileID: 21300000, guid: fbd81efc1956fef44950e7c7674d7322, type: 3}
+  - {fileID: 21300000, guid: 09c0774d255d76642b71cf765800bcba, type: 3}
+  - {fileID: 21300000, guid: 90c3b16d77a016b4dba860f3d89ce30e, type: 3}
+  - {fileID: 21300000, guid: 78b20bbdceda5f94cb6456e3b279abb8, type: 3}
+  - {fileID: 21300000, guid: 2990142e1c4a0104ca9e34cc11097e9b, type: 3}
+  - {fileID: 21300000, guid: b1b9eceef39044f4793f92f0a0c25ae2, type: 3}
+  - {fileID: 21300000, guid: 87c6db7f30dedce44956e13b62f5004c, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Lester4_MO_EP
+  - Lester3_MO_EP
+  - Lester9_MC_EI
+  - Lester9_MO_EI
+  - Lester7_MO_EP
+  - Lester1_MO_EP
+  - Lester3_MC_EP
+  - Lester5_MO_EP
+  - Lester8_MO_EP
+  - Lester10_MO_EP
+  - Lester7_MO_EC
+  - Lester9_MO_EP
+  - Lester10_MC_EP
+  - Lester9_MC_EO
+  - Lester2_MC_EP
+  - Lester9_MC_EP
+  - Lester8_MC_EP
+  - Lester9_MO_EO
+  - Lester6_MO_EP
+  - Lester2_MO_EP
+  - Lester4_MC_EP
+  - Lester1_MC_EP
+  - Lester5_MO_EC
+  m_RenderDataMap: {}
+  m_Tag: LesterAtlas
+  m_IsVariant: 0

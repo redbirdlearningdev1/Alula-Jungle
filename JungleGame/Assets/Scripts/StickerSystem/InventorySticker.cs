@@ -9,6 +9,7 @@ public class InventorySticker : MonoBehaviour, IPointerUpHandler, IPointerDownHa
 {
     public TextMeshProUGUI countText;
     public Image stickerImage;
+    public Transform stickerObject;
     public LerpableObject stickerLerpableObject;
 
     private bool interactable = true;
@@ -80,7 +81,7 @@ public class InventorySticker : MonoBehaviour, IPointerUpHandler, IPointerDownHa
             countText.text = "x" + (currentStickerData.count - 1);
 
             // select this sticker
-            StickerSystem.instance.SetCurrentHeldSticker(stickerImage.transform);
+            StickerSystem.instance.SetCurrentHeldSticker(stickerObject);
 
             // close sticker inventory
             StickerInventory.instance.SetInventoryState(InventoryState.ShowTab);

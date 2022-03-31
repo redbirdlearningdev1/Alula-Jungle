@@ -49,7 +49,7 @@ MonoBehaviour:
     rightCharacter: 2
     rightEmotionNum: 15
     rightMouthEnum: 2
-    rightEyesEnum: 3
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 045bfe41352d91b40b9b6ea185271c3e, type: 3}
     audioClipName: R_2_4_Red_2_T1
@@ -59,7 +59,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 4
+    leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 3
     rightCharacter: 2

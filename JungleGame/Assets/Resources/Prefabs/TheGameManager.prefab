@@ -5261,11 +5261,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d57a7dd75d46222438cb794b7f1c629e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JungleGameTestSong: {fileID: 8300000, guid: 8dd1bd2d3dc1d294c8ba2c07b6911673, type: 3}
-  MainThemeSong: {fileID: 8300000, guid: 4db08344590ba68418f0caac091e2ef4, type: 3}
-  FroggerGameSong: {fileID: 8300000, guid: f6b91191bfd04a34c860024796deadeb, type: 3}
-  TurntablesGameSong: {fileID: 8300000, guid: b4791af5245fb8b40b092b7cfa1b65cf, type: 3}
-  Sunrise_LouieZong: {fileID: 8300000, guid: 9eff0bc9518f2f042b1006c77f03e0cb, type: 3}
+  SplashScreenSong: {fileID: 8300000, guid: f6b91191bfd04a34c860024796deadeb, type: 3}
+  ScrollMapSong: {fileID: 8300000, guid: 4db08344590ba68418f0caac091e2ef4, type: 3}
+  WagonWindowSong: {fileID: 8300000, guid: b4791af5245fb8b40b092b7cfa1b65cf, type: 3}
   FroggerSongSplit:
   - {fileID: 8300000, guid: dbb99c9a0b75c1c4aa2a99c59af70aee, type: 3}
   - {fileID: 8300000, guid: 5619a9dda28677d4e96802f51bb80fd3, type: 3}
@@ -5303,24 +5301,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b6274e7096fc67f4084e0771cd689024, type: 3}
   - {fileID: 8300000, guid: c6d603d213f2ab74e8e2a4e4eb8303cb, type: 3}
   - {fileID: 8300000, guid: 192482d6ab480394f811d5759289ee12, type: 3}
-  FroggerTutorial_1: {fileID: 8300000, guid: 57334b8b7f5786449aae768fd2fa6be6, type: 3}
-  FroggerTutorial_2: {fileID: 8300000, guid: b8cb085e2d406064db6e9d79696ac9d8, type: 3}
-  FroggerTutorial_3: {fileID: 8300000, guid: eedcf1d3df9217e4fb3ac412cb60001e, type: 3}
-  TurntablesTutorial_1: {fileID: 8300000, guid: c0ea823a1b50c1b44804a26d92066d91,
-    type: 3}
-  TurntablesTutorial_2: {fileID: 8300000, guid: e85ba68bd29bdf44aa7859c7384c1261,
-    type: 3}
-  TurntablesTutorial_3: {fileID: 8300000, guid: 9b18f09e2cd87d846bfafd94b48e61f2,
-    type: 3}
-  TurntablesTutorial_4: {fileID: 8300000, guid: da615173e3d087442aaa759cdbf1afcb,
-    type: 3}
-  RummageTutorial_1: {fileID: 8300000, guid: c74fcb659ed421744bb49cd2e6f7cf80, type: 3}
-  RummageTutorial_2: {fileID: 8300000, guid: 37f566b2b016a3f48a6f8a351975d744, type: 3}
-  RummageTutorial_3: {fileID: 8300000, guid: b0726fd7020e583498b848d53f3d8fe6, type: 3}
-  SpiderwebTutorial_1: {fileID: 8300000, guid: 9e3514d7a8bcfea42bbcfc4833f4a376, type: 3}
-  SpiderwebTutorial_2: {fileID: 8300000, guid: 0fa84380a8e4bcb439ff0ef00cc18817, type: 3}
-  SpiderwebTutorial_3: {fileID: 8300000, guid: b84a38c6045d41f44b6513afab9f5e65, type: 3}
-  SpiderwebTutorial_4: {fileID: 8300000, guid: 3ca7baecad7fd114791d7486bf723bc1, type: 3}
   boat_game_audio:
   - {fileID: 8300000, guid: 9a7fd8dfe83591e48bff2a9742f404ac, type: 3}
   - {fileID: 8300000, guid: c149c253afa7f5f4482bca716eccd1e9, type: 3}
@@ -5355,7 +5335,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 350c6931b62e3da44b2aef55433171a6, type: 3}
   - {fileID: 8300000, guid: e482fe0f2684fa14d90ddbbae2ef0bc4, type: 3}
   - {fileID: 8300000, guid: 345967c923d49ac48a106179969eb62d, type: 3}
-  testSound1: {fileID: 8300000, guid: c350fcdede53aa647b93c6b0ce53e7cd, type: 3}
   RightChoice: {fileID: 8300000, guid: 33ff1a3562326b24e80a23820344a8c4, type: 3}
   WrongChoice: {fileID: 8300000, guid: 2b787eac70b58ff459bacc25ca095636, type: 3}
   WinTune: {fileID: 8300000, guid: 6c176af750264c64eb2b404b0f0d0522, type: 3}
@@ -7379,7 +7358,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -22}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -284.5748, y: -24.8135}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4907249459882491077
@@ -9340,7 +9319,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 125.11853}
+  m_SizeDelta: {x: 0, y: 150}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &8730629596336232890
 CanvasRenderer:
@@ -14567,6 +14546,7 @@ GameObject:
   - component: {fileID: 5445725279357870905}
   - component: {fileID: 6853600067379261695}
   - component: {fileID: 8399766281979524538}
+  - component: {fileID: 847950908}
   m_Layer: 17
   m_Name: SilverCoin
   m_TagString: Untagged
@@ -14632,6 +14612,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &847950908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3523664174391394317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458d3b50667b6a944abf0cc4cfece9d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3529161281793575755
 GameObject:
   m_ObjectHideFlags: 0
@@ -16110,6 +16102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94aecbe5958e98e419a647f5258ef371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  silverCoinTransform: {fileID: 5445725279357870905}
   hiddenHeight: 100
   visibleHeight: 0
   moveTime: 0.5

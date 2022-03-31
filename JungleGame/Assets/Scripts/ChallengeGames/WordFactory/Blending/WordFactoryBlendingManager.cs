@@ -46,16 +46,12 @@ public class WordFactoryBlendingManager : MonoBehaviour
     // other variables
     private ChallengeWord currentWord;
     private List<ChallengeWord> currentWords;
+    private List<ChallengeWord> prevWords;
     private Polaroid currentPolaroid;
     private List<UniversalCoinImage> currentCoins;
     private bool playingCoinAudio = false;
     private int numWins = 0;
     private int numMisses = 0;
-
-    private List<ChallengeWord> globalWordList;
-    private List<ChallengeWord> unusedWordList;
-    private List<ChallengeWord> usedWordList;
-
 
     [Header("Tutorial")]
     public bool playTutorial;
@@ -135,10 +131,8 @@ public class WordFactoryBlendingManager : MonoBehaviour
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.05f);
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 0.05f);
 
-        // create word lists based on unlocked action words
-        globalWordList = ChallengeWordDatabase.GetChallengeWords(StudentInfoSystem.GetCurrentProfile().actionWordPool);
-        unusedWordList = globalWordList;
-        usedWordList = new List<ChallengeWord>();
+        // init empty list
+        prevWords = new List<ChallengeWord>();
 
         // disable card objects
         foreach (var card in redCards)
@@ -201,12 +195,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
                 // play tutorial intro 3
                 AudioClip clip = GameIntroDatabase.instance.blendingIntro3;
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
-
-                // // play tutorial intro 4
-                // clip = GameIntroDatabase.instance.blendingIntro4;
-                // TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                // yield return new WaitForSeconds(clip.length + 1f);                
+                yield return new WaitForSeconds(clip.length + 1f);             
             }
         }
         else
@@ -327,28 +316,25 @@ public class WordFactoryBlendingManager : MonoBehaviour
         }
         else
         {   
-            // use random words
-            
+            // use AI word selection
             List<ChallengeWord> tempChallengeWordList = new List<ChallengeWord>();
-            tempChallengeWordList = AISystem.ChallengeWordSelectionBlending(StudentInfoSystem.GetCurrentProfile());
+            tempChallengeWordList = AISystem.ChallengeWordSelectionBlending(prevWords);
             ChallengeWord correctWord = tempChallengeWordList[0];
             ChallengeWord incorrectWord1 = tempChallengeWordList[1];
             ChallengeWord incorrectWord2 = tempChallengeWordList[2];
-            Debug.Log("THIS IS THE CORRECT WORD");
-            Debug.Log(correctWord);
-            
-            //ChallengeWord word = GetUnusedWord();
-            
+
+            // set prev words
+            prevWords.Add(correctWord);
+            prevWords.Add(incorrectWord1);
+            prevWords.Add(incorrectWord2);
+
             foreach (var polaroid in polaroids)
-                {
-                    int randIndex = Random.Range(0, tempChallengeWordList.Count);
-
-                    polaroid.SetPolaroid(tempChallengeWordList[randIndex]);
-                    currentWords.Add(tempChallengeWordList[randIndex]);
-                    tempChallengeWordList.RemoveAt(randIndex);
-                }
-
-            
+            {
+                int randIndex = Random.Range(0, tempChallengeWordList.Count);
+                polaroid.SetPolaroid(tempChallengeWordList[randIndex]);
+                currentWords.Add(tempChallengeWordList[randIndex]);
+                tempChallengeWordList.RemoveAt(randIndex);
+            }
             currentWord = correctWord;
             currentPolaroid = polaroids[correctIndex];
         }
@@ -473,30 +459,6 @@ public class WordFactoryBlendingManager : MonoBehaviour
         // remove raycast blocker
         RaycastBlockerController.instance.RemoveRaycastBlocker("WordFactoryBlending");
         WordFactoryRaycaster.instance.isOn = true;
-    }
-
-    private ChallengeWord GetUnusedWord()
-    {
-        // reset unused pool if empty
-        if (unusedWordList.Count <= 0)
-        {
-            unusedWordList.Clear();
-            unusedWordList.AddRange(globalWordList);
-        }
-
-        int index = Random.Range(0, unusedWordList.Count);
-        ChallengeWord word = unusedWordList[index];
-
-        // make sure word is not being used
-        if (usedWordList.Contains(word))
-        {
-            unusedWordList.Remove(word);
-            return GetUnusedWord();
-        }
-
-        unusedWordList.Remove(word);
-        usedWordList.Add(word);
-        return word;
     }
 
     public bool EvaluatePolaroid(Polaroid polaroid)

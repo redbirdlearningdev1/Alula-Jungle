@@ -79,7 +79,6 @@ public class NewBoatGameManager : MonoBehaviour
 
         if (repeatAudio)
         {
-            print ("repeat audio = on");
             repeatTimer += Time.deltaTime;
             if (repeatTimer > repeatDuration)
             {
@@ -102,7 +101,6 @@ public class NewBoatGameManager : MonoBehaviour
         }
         else
         {
-            print ("repeat audio = off");
             if (repeatAudioRoutine != null)
             {
                 StopCoroutine(repeatAudioRoutine);
@@ -454,6 +452,9 @@ public class NewBoatGameManager : MonoBehaviour
             case BoatButtonID.Mic:
                 MicrophoneButtonPressed();
                 break;
+            case BoatButtonID.Sound:
+                AudioButtonPressed();
+                break;
         }
     }
 
@@ -529,6 +530,11 @@ public class NewBoatGameManager : MonoBehaviour
             StopCoroutine(boatGameRoutine);
             boatGameRoutine = StartCoroutine(ContinueBoatGame());
         }
+    }
+
+    public void AudioButtonPressed()
+    {
+        SettingsManager.instance.ToggleSettingsWindow();
     }
 
     public void IslandCentered()

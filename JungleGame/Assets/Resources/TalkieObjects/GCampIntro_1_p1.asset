@@ -547,7 +547,7 @@ MonoBehaviour:
     rightCharacter: 2
     rightEmotionNum: 4
     rightMouthEnum: 2
-    rightEyesEnum: 3
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 9212e8f24c357004d856182649a9e6af, type: 3}
     audioClipName: R_2_1_Red_10_T1
@@ -574,7 +574,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 13
+    leftEmotionNum: 2
     leftMouthEnum: 2
     leftEyesEnum: 3
     rightCharacter: 3
@@ -672,7 +672,7 @@ MonoBehaviour:
     leftCharacter: 1
     leftEmotionNum: 2
     leftMouthEnum: 2
-    leftEyesEnum: 4
+    leftEyesEnum: 1
     rightCharacter: 3
     rightEmotionNum: 8
     rightMouthEnum: 1

@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SplashScreenCh1Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 8192
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 3
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 064bad8b5428cf34592dd141fdc043ec, type: 3}
+    totalSpriteSurfaceArea: 81021600
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 046e6900754c86a4eaa09b623cd5b339, type: 3}
+  - {fileID: 21300000, guid: 50ea12a069bcd5144b946379b96be921, type: 3}
+  - {fileID: 21300000, guid: ac186cd0636cc1f43bf1f1cea447b5d0, type: 3}
+  - {fileID: 21300000, guid: 58fd092179fcdbc49a94ac609426c6db, type: 3}
+  - {fileID: 21300000, guid: a88a8852326d3a744a55bea3ce633462, type: 3}
+  - {fileID: 21300000, guid: 208e67829e0457c4ba965489f3322d95, type: 3}
+  - {fileID: 21300000, guid: 7003fbc2b21679d46a9bf75db4d21442, type: 3}
+  - {fileID: 21300000, guid: 3645b003e5327e14a9cb1ed54c771659, type: 3}
+  - {fileID: 21300000, guid: 077e15336cd219641a2adf42dc311e32, type: 3}
+  - {fileID: 21300000, guid: 9992085302aadcd42abd4661f8308e97, type: 3}
+  - {fileID: 21300000, guid: 2819a283e5aef3e4d8b70254f77b3390, type: 3}
+  - {fileID: 21300000, guid: 263be5e349aa7d846a45624ef4351b8e, type: 3}
+  - {fileID: 21300000, guid: 5428e4545c1c2b54b90f3b54fd25d937, type: 3}
+  - {fileID: 21300000, guid: 55bdbd746352e2549b01ff42acfd968c, type: 3}
+  - {fileID: 21300000, guid: 76b8e6848c1d0264aaa2de55ad663ef2, type: 3}
+  - {fileID: 21300000, guid: 80785fc49b316a446ac42ffcdc7589fd, type: 3}
+  - {fileID: 21300000, guid: 41310805c2a4e7d4eacafd5e76c5c95a, type: 3}
+  - {fileID: 21300000, guid: dafda946e85915748a59908aa1469469, type: 3}
+  - {fileID: 21300000, guid: 43aead961c6e49745b0b898e17e1b4c4, type: 3}
+  - {fileID: 21300000, guid: 1d4f70a7dd5e0154fbbfc3e69503133a, type: 3}
+  - {fileID: 21300000, guid: d6fa6a2872f67a245bc07cc38d907a65, type: 3}
+  - {fileID: 21300000, guid: 576baab82ed58174a804725954794c9c, type: 3}
+  - {fileID: 21300000, guid: 78998f7a7a960a34db60df879fb22b4b, type: 3}
+  - {fileID: 21300000, guid: 9688121bf364c5c41801cff7402414cf, type: 3}
+  - {fileID: 21300000, guid: 8c4b6c3ca77f30e40af96a8d32006b14, type: 3}
+  - {fileID: 21300000, guid: b3b06b9cd8bc96345a163e5b383d002c, type: 3}
+  - {fileID: 21300000, guid: 4a753b7dc4b81404ab843bfcc02c887c, type: 3}
+  - {fileID: 21300000, guid: a570e8dd2bdf52d46a2dd0dd3610931e, type: 3}
+  - {fileID: 21300000, guid: a484e39e5ced4764d8ecf2e9a0f069a9, type: 3}
+  - {fileID: 21300000, guid: 1ce6c94fa0b056643acb4c848af26d93, type: 3}
+  - {fileID: 21300000, guid: c2ba8baf7428ef940ab0a554483fda14, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - 3BackCh114
+  - 3BackCh116
+  - 3BackCh104
+  - 3BackCh110
+  - 3BackCh129
+  - 3BackCh117
+  - 3BackCh109
+  - 3BackCh123
+  - 3BackCh124
+  - 3BackCh127
+  - 3BackCh106
+  - 3BackCh100
+  - 3BackCh113
+  - 3BackCh105
+  - 3BackCh121
+  - 3BackCh118
+  - 3BackCh112
+  - 3BackCh103
+  - 3BackCh111
+  - 3BackCh108
+  - 3BackCh120
+  - 3BackCh102
+  - 3BackCh107
+  - 3BackCh101
+  - 3BackCh119
+  - 3BackCh125
+  - 3BackCh122
+  - 3BackCh130
+  - 3BackCh128
+  - 3BackCh115
+  - 3BackCh126
+  m_RenderDataMap: {}
+  m_Tag: SplashScreenCh1Atlas
+  m_IsVariant: 0

@@ -179,13 +179,12 @@ public class MinigameWheelController : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         // determine royal rumble
-        bool startRR = AISystem.DetermineRoyalRumble(StudentInfoSystem.GetCurrentProfile());
-        print ("royal rumble?: " + startRR);
+        bool startRR = AISystem.DetermineRoyalRumble();
 
         if (startRR)
         {
             // save royal rumble to SIS
-            GameType RRgame = AISystem.DetermineRoyalRumbleGame(StudentInfoSystem.GetCurrentProfile());
+            GameType RRgame = AISystem.DetermineRoyalRumbleGame();
             StudentInfoSystem.GetCurrentProfile().royalRumbleGame = RRgame;
             StudentInfoSystem.GetCurrentProfile().royalRumbleActive = true;
             StudentInfoSystem.GetCurrentProfile().royalRumbleID = currentIdentifier;
@@ -195,7 +194,15 @@ public class MinigameWheelController : MonoBehaviour
             MapDataLoader.instance.SetRoyalRumbleBanner();
 
             // wheel break animation TODO -> change to guards break after chapter 3 or 4
-            tigerDestroyAnimator.Play("TigerDestroy");
+            if (StudentInfoSystem.GetCurrentProfile().currentChapter <= Chapter.chapter_3)
+            {
+                tigerDestroyAnimator.Play("TigerDestroy");
+            }
+            else
+            {
+                guardDestroyAnimator.Play("GuardDestroy");
+            }
+            
             yield return new WaitForSeconds(0.5f);
 
             wheelBreakAnimator.Play("WheelBreak");
@@ -228,6 +235,7 @@ public class MinigameWheelController : MonoBehaviour
 
                 case Chapter.chapter_4:
                 case Chapter.chapter_5:
+                case Chapter.chapter_6:
                     // play guards RR intro
                     TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRGuardsIntro_1_p1"));
                     while (TalkieManager.instance.talkiePlaying)

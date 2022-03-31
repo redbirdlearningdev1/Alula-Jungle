@@ -545,7 +545,7 @@ MonoBehaviour:
     rightCharacter: 7
     rightEmotionNum: 18
     rightMouthEnum: 1
-    rightEyesEnum: 2
+    rightEyesEnum: 3
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 1be82bbee6b08544495dbf295c67cdbc, type: 3}
     audioClipName: E_6_1_Julius_47_T2
@@ -561,7 +561,7 @@ MonoBehaviour:
     rightCharacter: 7
     rightEmotionNum: 17
     rightMouthEnum: 1
-    rightEyesEnum: 3
+    rightEyesEnum: 2
     activeCharacter: 2
     audioClip: {fileID: 8300000, guid: 9defb4a64ec86544cbed9b2c8bcf2263, type: 3}
     audioClipName: E_6_1_Julius_47_T3
@@ -655,7 +655,7 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 2
     rightCharacter: 2
-    rightEmotionNum: 4
+    rightEmotionNum: 5
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
@@ -849,7 +849,7 @@ MonoBehaviour:
     rightCharacter: 2
     rightEmotionNum: 4
     rightMouthEnum: 2
-    rightEyesEnum: 3
+    rightEyesEnum: 1
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: 217192ff038925141ad5bd05e87bfa44, type: 3}
     audioClipName: E_6_1_Red_54_T2

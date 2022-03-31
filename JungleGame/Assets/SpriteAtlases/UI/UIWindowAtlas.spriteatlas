@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UIWindowAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: e8067f900240f0f4f9f04d1268b39a48, type: 3}
+    totalSpriteSurfaceArea: 5254360
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 770bb7107fffc5242b2039759868af96, type: 3}
+  - {fileID: 21300000, guid: cb3a1e81d8b3a724ab0c26cbb3fd8e30, type: 3}
+  - {fileID: 21300000, guid: e2853772c61d78b4a8b491e499e56d3d, type: 3}
+  - {fileID: 21300000, guid: 8f8ce6636ea6d734aaaaa49d774e2459, type: 3}
+  - {fileID: 21300000, guid: 83b38bf5e982cc54eb255cabf0cc45b3, type: 3}
+  - {fileID: 21300000, guid: f96465272a811784e981bcd448473138, type: 3}
+  - {fileID: 21300000, guid: 327fb097a7f474d4eb33458eb0b4c55b, type: 3}
+  - {fileID: 21300000, guid: d21ef82841c2da24cb2b94164db50135, type: 3}
+  - {fileID: 21300000, guid: e5fd475a456b8224c9dde6b3c1543010, type: 3}
+  - {fileID: 21300000, guid: 9740842b5aefad744a0e1ab302952749, type: 3}
+  - {fileID: 21300000, guid: 05b349bbe1b046d4bb396b6592aa273d, type: 3}
+  - {fileID: 21300000, guid: 3a57e9bd676ce0849b2db4ed0c86f62f, type: 3}
+  - {fileID: 21300000, guid: f7d3a10e025fe6b44b115a6053b9e5c3, type: 3}
+  - {fileID: 21300000, guid: 9236b72e5d815ef469a90a087dd8e92f, type: 3}
+  - {fileID: 21300000, guid: 8956c73e9c9cc184aab8b92f76e2f51f, type: 3}
+  - {fileID: 21300000, guid: bc668fbf6652c5249aaa7de47aa5789d, type: 3}
+  - {fileID: 21300000, guid: e62513cfc2ada204f89dcb4b268ae4b1, type: 3}
+  - {fileID: 21300000, guid: efdb0ccf7dfe75f479d0e628ad632626, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - boardTest
+  - WindowShadow
+  - starsEmpty
+  - goBackPressed
+  - star1
+  - titleBox
+  - noPressed
+  - yesButton
+  - priceBox
+  - noFade
+  - yesPressed
+  - star2
+  - goBack
+  - star3
+  - noButton
+  - Window
+  - DimOverlay
+  - yesFade
+  m_RenderDataMap: {}
+  m_Tag: UIWindowAtlas
+  m_IsVariant: 0

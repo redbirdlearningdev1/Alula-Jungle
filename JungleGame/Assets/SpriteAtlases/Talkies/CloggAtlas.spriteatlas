@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CloggAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 8192
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: dd1f296a6cfd3444f8185c2fd91b14e6, type: 3}
+    totalSpriteSurfaceArea: 86400000
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: ec963a20c0a7cef4e840b3d5edd07f9f, type: 3}
+  - {fileID: 21300000, guid: 2861b211bd5bdee418160e1a6e4750b7, type: 3}
+  - {fileID: 21300000, guid: a03379218f504034d890515c1df8ff91, type: 3}
+  - {fileID: 21300000, guid: 99987f7177581d64f845327399808035, type: 3}
+  - {fileID: 21300000, guid: 39be2a8121acd5a48a4ace3927503244, type: 3}
+  - {fileID: 21300000, guid: 0478eae16df4c2e4a9a4172818b55cd4, type: 3}
+  - {fileID: 21300000, guid: c67a9502501b07643a97ae44d7ba9e20, type: 3}
+  - {fileID: 21300000, guid: e81fce12330b7794880d73cb4f7609e7, type: 3}
+  - {fileID: 21300000, guid: b83dc2f218bdda1468145604e8289cd5, type: 3}
+  - {fileID: 21300000, guid: c9c856031a03ee243b8833d26ebc0d73, type: 3}
+  - {fileID: 21300000, guid: 0a990804ce61a214c98f60a2f1ec7379, type: 3}
+  - {fileID: 21300000, guid: 1bbd3184983953644b67c257f3a5e1df, type: 3}
+  - {fileID: 21300000, guid: f0c5f455dbe617843a3ab759ef2cd8fe, type: 3}
+  - {fileID: 21300000, guid: d26f568618bd65741bee0d2df4b7e3b1, type: 3}
+  - {fileID: 21300000, guid: 23270ea6c78ec9b48a2f138bea81ad48, type: 3}
+  - {fileID: 21300000, guid: 26b0f7b6573a31844a39bb1111006330, type: 3}
+  - {fileID: 21300000, guid: 51f66ab6c985cc142a5817f541efe292, type: 3}
+  - {fileID: 21300000, guid: b84d91f6eb9c8b642833e4df0c1cfbe7, type: 3}
+  - {fileID: 21300000, guid: de8cb307e25d0a945b6e53a3d952fbb2, type: 3}
+  - {fileID: 21300000, guid: 3be25fa7f6fe69644803f01607e69214, type: 3}
+  - {fileID: 21300000, guid: b73d90e74f3ac6747b9e7b3cfe5b6b0a, type: 3}
+  - {fileID: 21300000, guid: 1ddadf9851def5b4aa8bad41cd122e16, type: 3}
+  - {fileID: 21300000, guid: 390b8ce89dd27bb46987f5b325375590, type: 3}
+  - {fileID: 21300000, guid: b3e62a091c0ef46469762976a45ac2e1, type: 3}
+  - {fileID: 21300000, guid: afab1d4a3905a6948ac8a0f968f1c89f, type: 3}
+  - {fileID: 21300000, guid: 13b6475abb648cf4a9e4ee7d964c5400, type: 3}
+  - {fileID: 21300000, guid: 4fab4c9abf018c94683452736a5ece37, type: 3}
+  - {fileID: 21300000, guid: 841634da0f3df0f4396dfa49515585b9, type: 3}
+  - {fileID: 21300000, guid: 21ea221b2dc963d47afc10cc1574d248, type: 3}
+  - {fileID: 21300000, guid: 207d894b73d9604409b4cd0055995d29, type: 3}
+  - {fileID: 21300000, guid: a53aaf9b17ebd05459638f7e6c56fe35, type: 3}
+  - {fileID: 21300000, guid: 0366627c186fa2544ba6606a3fab4c0e, type: 3}
+  - {fileID: 21300000, guid: 1e8f94fc72d45a14facb65c0e6a7ade4, type: 3}
+  - {fileID: 21300000, guid: 1203dc3de88781644a496531025a052d, type: 3}
+  - {fileID: 21300000, guid: a43e229db2752dd439fc3bc1f22609cf, type: 3}
+  - {fileID: 21300000, guid: 280ce29d9f16ff940a2c6b43211bcafb, type: 3}
+  - {fileID: 21300000, guid: 287ef46ec7d3f9a43add01d7407f7414, type: 3}
+  - {fileID: 21300000, guid: ef4e68de9ebbf3445af11609c6795fbf, type: 3}
+  - {fileID: 21300000, guid: a60a82cf13cbea4479b9e77ad78f0f3b, type: 3}
+  - {fileID: 21300000, guid: 3ff6ceffe3fac484c967e9394780b0ad, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Clogg1_MC_EC
+  - Clogg7_MC_EP
+  - Clogg1_MO_EC
+  - Clogg6_MC_EC
+  - Clogg8_MO_EO
+  - Clogg9_MO_EC
+  - Clogg1_MO_EI
+  - Clogg10_MO_EI
+  - Clogg1_MO_EP
+  - Clogg10_MC_EI
+  - Clogg1_MC_EP
+  - Clogg5_MC_EC
+  - Clogg7_MO_EI
+  - Clogg5_MC_EI
+  - Clogg8_MO_EC
+  - Clogg4_MO_EI
+  - Clogg7_MO_EO
+  - Clogg9_MC_EC
+  - Clogg4_MO_EP
+  - Clogg3_MC_EI
+  - Clogg9_MO_EI
+  - Clogg9_MC_EI
+  - Clogg6_MO_EC
+  - Clogg6_MO_EI
+  - Clogg7_MC_EI
+  - Clogg5_MO_EC
+  - Clogg7_MO_EP
+  - Clogg2_MC_EI
+  - Clogg7_MC_EO
+  - Clogg6_MC_EI
+  - Clogg7_MO_EC
+  - Clogg2_MO_EI
+  - Clogg7_MC_EC
+  - Clogg8_MC_EO
+  - Clogg1_MC_EI
+  - Clogg8_MC_EC
+  - Clogg3_MO_EI
+  - Clogg5_MO_EI
+  - Clogg4_MC_EP
+  - Clogg4_MC_EI
+  m_RenderDataMap: {}
+  m_Tag: CloggAtlas
+  m_IsVariant: 0

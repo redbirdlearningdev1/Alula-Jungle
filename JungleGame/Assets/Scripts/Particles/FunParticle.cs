@@ -10,6 +10,7 @@ public class FunParticle : MonoBehaviour
     public Image image;
 
     [Header("Particle Perameters")]
+    public AudioClip spawnSound;
     public float duration;
     public float rate;
     public bool randomizeRotation;

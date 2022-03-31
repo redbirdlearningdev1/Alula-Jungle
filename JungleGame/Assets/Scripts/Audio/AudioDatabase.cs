@@ -22,11 +22,9 @@ public class AudioDatabase : MonoBehaviour
     */
 
     [Header("Music Database")]
-    public AudioClip JungleGameTestSong;
-    public AudioClip MainThemeSong;
-    public AudioClip FroggerGameSong;
-    public AudioClip TurntablesGameSong;
-    public AudioClip Sunrise_LouieZong;
+    public AudioClip SplashScreenSong;
+    public AudioClip ScrollMapSong;
+    public AudioClip WagonWindowSong;
 
     public AudioClip[] FroggerSongSplit;
     public AudioClip[] TurntablesSongSplit;
@@ -34,34 +32,6 @@ public class AudioDatabase : MonoBehaviour
     public AudioClip[] SpiderwebSongSplit;
     public AudioClip[] SeashellsSongSplit;
     public AudioClip[] PirateSongSplit;
-
-    /* 
-    ################################################
-    #   TUTORIAL AUDIO DATABASE
-    ################################################
-    */
-
-    [Header("Frogger Tutorial")]
-    public AudioClip FroggerTutorial_1;
-    public AudioClip FroggerTutorial_2;
-    public AudioClip FroggerTutorial_3;
-
-    [Header("Turntables Tutorial")]
-    public AudioClip TurntablesTutorial_1;
-    public AudioClip TurntablesTutorial_2;
-    public AudioClip TurntablesTutorial_3;
-    public AudioClip TurntablesTutorial_4;
-
-    [Header("Rummage Tutorial")]
-    public AudioClip RummageTutorial_1;
-    public AudioClip RummageTutorial_2;
-    public AudioClip RummageTutorial_3;
-
-    [Header("Spiderweb Tutorial")]
-    public AudioClip SpiderwebTutorial_1;
-    public AudioClip SpiderwebTutorial_2;
-    public AudioClip SpiderwebTutorial_3;
-    public AudioClip SpiderwebTutorial_4;
 
     /* 
     ################################################
@@ -89,10 +59,7 @@ public class AudioDatabase : MonoBehaviour
     #   FX DATABASE
     ################################################
     */
-
-    [Header("FX Database")]
-    public AudioClip testSound1;
-
+    
     [Header("Universal Sounds")]
     public AudioClip RightChoice;
     public AudioClip WrongChoice;

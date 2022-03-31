@@ -165,6 +165,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     public bool interactable = false;
     public bool setFixedManually = false;
     private bool isFixed = false;
+    private bool RRBannerShown = false;
 
     [Header("Map ID")]
     public MapIconIdentfier identifier;
@@ -281,6 +282,12 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         waitForWiggle = false;
     }
 
+    public PolygonCollider2D GetCurrentCollider()
+    {
+        if (isFixed) return fixedCollider;
+        else return brokenCollider;
+    }
+
     /* 
     ################################################
     #   STAR ANIMATION METHODS
@@ -289,6 +296,8 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     public void SetRoyalRumberBanner(bool opt)
     {
+        RRBannerShown = opt;
+
         if (starLocation == StarLocation.up)
         {
             if (opt)
@@ -317,7 +326,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     {
         if (starsHidden)
         {
-            foreach(var star in currentStars)
+            foreach (var star in currentStars)
             {
                 star.transform.localScale = Vector3.zero;
                 star.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
@@ -328,12 +337,15 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
             yield return new WaitForSeconds(0.5f);
 
-            // make stars bob
-            foreach(var star in currentStars)
+            // dont make stars bob iff banner is active
+            if (!RRBannerShown)
             {
-                star.bobController.StartBob();
-                yield return new WaitForSeconds(0.1f);
-            }            
+                foreach (var star in currentStars)
+                {
+                    star.bobController.StartBob();
+                    yield return new WaitForSeconds(0.1f);
+                }
+            }     
         }
     }
 
@@ -415,8 +427,6 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     public void SetFixed(bool opt, bool animate, bool saveToSIS)
     {
-        if (!canBeFixed) return;
-
         this.isFixed = opt;
 
         if (isFixed)
@@ -429,6 +439,9 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             fixedCollider.enabled = false;
             brokenCollider.enabled = true;
         }
+
+        // return if cannot be fixed
+        if (!canBeFixed) return;
 
         switch (animatedIcon)
         {
@@ -879,25 +892,6 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                             yield return null;
                     }
                     break;
-            }
-
-            if (TalkieManager.instance.yesNoChoices.Count == 1)
-            {
-                // if player chooses yes
-                if (TalkieManager.instance.yesNoChoices[0])
-                {
-                    TalkieManager.instance.yesNoChoices.Clear();
-                }
-                else // if the player chooses no
-                {
-                    TalkieManager.instance.yesNoChoices.Clear();
-                    yield break;
-                }
-            }
-            else
-            {
-                TalkieManager.instance.yesNoChoices.Clear();
-                Debug.LogError("Error: Incorrect number of Yes/No choices for last talkie");
             }
 
             GameManager.instance.playingRoyalRumbleGame = true;

@@ -464,7 +464,6 @@ public class AudioManager : MonoBehaviour
         talkSource.clip = clip;
         talkSource.loop = false;
         talkSource.Play();
-        // print ("playing clip: " + clip.name);
     }
 
     /* 

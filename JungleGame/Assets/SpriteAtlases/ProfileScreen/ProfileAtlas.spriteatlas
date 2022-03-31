@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ProfileAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 8192
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: cc07cfb1d9715c5479f6e613a606c410, type: 3}
+    totalSpriteSurfaceArea: 7700660
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: c950a550f747fcd4bbb5738623b3ee23, type: 3}
+  - {fileID: 21300000, guid: f4b93ab0f61efa446b7096e6a3257cd0, type: 3}
+  - {fileID: 21300000, guid: 022404e1f7cf9f1449f39589d35b5e27, type: 3}
+  - {fileID: 21300000, guid: 72213344b1f97cf47a108c902c7200e2, type: 3}
+  - {fileID: 21300000, guid: 07436d367fc7c454da222fff539f4c9e, type: 3}
+  - {fileID: 21300000, guid: 26be14b6e5b11a6449f8fbc81c3649f5, type: 3}
+  - {fileID: 21300000, guid: 60498cb6b30d3bd4383de29efbf84d3b, type: 3}
+  - {fileID: 21300000, guid: 7f721c0a255ee7e41aa9ac6b67446256, type: 3}
+  - {fileID: 21300000, guid: ae2b053a5a033ac4a8bdb07801ba06db, type: 3}
+  - {fileID: 21300000, guid: 7d5ef63a93a874b4ab5fa0f2295d5598, type: 3}
+  - {fileID: 21300000, guid: 73a3746aae941a947b3db05de085e0fd, type: 3}
+  - {fileID: 21300000, guid: 6742fe2bf59aaa64db4bb2d25568da78, type: 3}
+  - {fileID: 21300000, guid: 5379e88c1b1451343ae3ea5361ac50f0, type: 3}
+  - {fileID: 21300000, guid: 2568835d2071e72428132c04727b27c5, type: 3}
+  - {fileID: 21300000, guid: c4f4e8cdaa62fb941a5bd13885214595, type: 3}
+  - {fileID: 21300000, guid: 6c815e8edaa405341905d2a9004458b8, type: 3}
+  - {fileID: 21300000, guid: 81c4d25f66a285244a47afa377198f5b, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - SelectAnimation8
+  - SelectAnimation12
+  - SelectAnimation7
+  - SelectAnimation9
+  - SelectAnimation13
+  - SelectAnimation4
+  - SelectAnimation10
+  - SelectAnimation1
+  - SelectAnimation16
+  - SelectAnimation15
+  - SelectAnimation14
+  - SelectAnimation5
+  - SelectAnimation3
+  - SelectAnimation0
+  - SelectAnimation2
+  - SelectAnimation6
+  - SelectAnimation11
+  m_RenderDataMap: {}
+  m_Tag: ProfileAtlas
+  m_IsVariant: 0

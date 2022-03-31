@@ -85,7 +85,7 @@ public class ScrollMapManager : MonoBehaviour
         GameManager.instance.SceneInit();
 
         // play test song
-        AudioManager.instance.PlaySong(AudioDatabase.instance.MainThemeSong);
+        AudioManager.instance.PlaySong(AudioDatabase.instance.ScrollMapSong);
     }
 
     void Start()
@@ -183,7 +183,7 @@ public class ScrollMapManager : MonoBehaviour
                         break;
                     case Chapter.chapter_4:
                     case Chapter.chapter_5:
-                    case Chapter.chapter_final:
+                    case Chapter.chapter_6:
                         // play guard loses to player
                         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRGuardsLost_1_p1"));
                         while (TalkieManager.instance.talkiePlaying)
@@ -207,7 +207,7 @@ public class ScrollMapManager : MonoBehaviour
                         break;
                     case Chapter.chapter_4:
                     case Chapter.chapter_5:
-                    case Chapter.chapter_final:
+                    case Chapter.chapter_6:
                         // play guard wins to player
                         TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("RRGuardsWins_1_p1"));
                         while (TalkieManager.instance.talkiePlaying)
@@ -1436,7 +1436,6 @@ public class ScrollMapManager : MonoBehaviour
                     icon.RevealStars();
             }
         }
-        
     }
 
     public void SmoothGoToMapLocation(MapLocation location)
@@ -1454,7 +1453,9 @@ public class ScrollMapManager : MonoBehaviour
 
     private IEnumerator SmoothGoToMapLocationRoutine(MapLocation location)
     {
+        // remove player input
         RaycastBlockerController.instance.CreateRaycastBlocker("GoToMapLocation");
+        ToggleNavButtons(false);
 
         // close settings window
         SettingsManager.instance.CloseAllSettingsWindows();
@@ -1471,13 +1472,20 @@ public class ScrollMapManager : MonoBehaviour
         // if in palace, hide battle bar + pan down to palace intro
         if (inPalace)
         {
+            inPalace = false;
+
             // hide UI
             PalaceArrowDown.instance.HideArrow();
             PalaceArrow.instance.HideArrow();
-            BossBattleBar.instance.HideBar();
 
-            PanOutOfPalace();
-            yield return new WaitForSeconds(4f);
+            // hide boss bar if shown
+            if (BossBattleBar.instance.barShown)
+                BossBattleBar.instance.HideBar();
+
+            // pan camera down to palace intro
+            float y = staticMapYPos;
+            StartCoroutine(MapSmoothTransitionY(Map.localPosition.y, y, 2f));
+            yield return new WaitForSeconds(2.1f);
         }
 
         currMapLocation = (int)location;
@@ -1488,8 +1496,9 @@ public class ScrollMapManager : MonoBehaviour
 
         yield return new WaitForSeconds(2.5f);
 
-        // show current stars
+        // show current stars + enable map icons
         StartCoroutine(ToggleLocationRoutine(true, currMapLocation));
+        EnableMapIcons(mapLocations[currMapLocation], true);
 
         // update settings map
         ScrollSettingsWindowController.instance.UpdateRedPos(location);
@@ -1501,7 +1510,9 @@ public class ScrollMapManager : MonoBehaviour
         if (StudentInfoSystem.GetCurrentProfile().unlockedStickerButton)
             SettingsManager.instance.ToggleWagonButtonActive(true);
 
+        // add player input
         RaycastBlockerController.instance.RemoveRaycastBlocker("GoToMapLocation");
+        ToggleNavButtons(true);
     }
 
 
@@ -1602,7 +1613,7 @@ public class ScrollMapManager : MonoBehaviour
         if (StudentInfoSystem.GetCurrentProfile().unlockedStickerButton)
             SettingsManager.instance.ToggleWagonButtonActive(false);
 
-        // pan camera up to palace
+        // pan camera down to palace intro
         float y = staticMapYPos;
         StartCoroutine(MapSmoothTransitionY(Map.localPosition.y, y, 3f));
         yield return new WaitForSeconds(3f);
@@ -1612,9 +1623,9 @@ public class ScrollMapManager : MonoBehaviour
         StartCoroutine(MapSmoothTransitionX(Map.localPosition.x, x, 1f));
         yield return new WaitForSeconds(1.2f);
 
-        // remove GM UI
+        // add GM UI
         SettingsManager.instance.ToggleMenuButtonActive(true);
-        // remove sticker button if unlocked
+        // add sticker button if unlocked
         if (StudentInfoSystem.GetCurrentProfile().unlockedStickerButton)
             SettingsManager.instance.ToggleWagonButtonActive(true);
 
@@ -1731,7 +1742,7 @@ public class ScrollMapManager : MonoBehaviour
         // hide arrow if leaving palace intro
         if (prevMapPos == 16 && StudentInfoSystem.GetCurrentProfile().currStoryBeat > StoryBeat.PalaceIntro)
         {
-            // show arrow to go up to palace
+            // hide arrow to go up to palace
             PalaceArrow.instance.HideArrow();
         }
 
@@ -1927,7 +1938,7 @@ public class ScrollMapManager : MonoBehaviour
 
         foreach (var icon in mapIcons)
         {
-            icon.GetComponent<PolygonCollider2D>().enabled = opt;
+            icon.GetCurrentCollider().enabled = opt;
         }
     }
 

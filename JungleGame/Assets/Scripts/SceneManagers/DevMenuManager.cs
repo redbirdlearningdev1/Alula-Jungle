@@ -1390,8 +1390,15 @@ public class DevMenuManager : MonoBehaviour
             case StoryBeat.BossBattle2:
             case StoryBeat.BossBattle3:
             case StoryBeat.EndBossBattle:
+                StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.PalaceIntro;
+                FixIconsUpTo(MapLocation.PalaceIntro);
+                SetChallengeGamesUpTo(MapLocation.PalaceIntro);
+                SetActionWordPool(MapLocation.PalaceIntro);
+                break;
+
             case StoryBeat.FinishedGame:
             case StoryBeat.COUNT:
+            StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.game_complete;
                 StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.PalaceIntro;
                 FixIconsUpTo(MapLocation.PalaceIntro);
                 SetChallengeGamesUpTo(MapLocation.PalaceIntro);
@@ -1407,16 +1414,14 @@ public class DevMenuManager : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().actionWordPool.Clear();
 
         // chapter 1 action words
-        if (location <= MapLocation.SpookyForest)
-        {   
-            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.mudslide);
-            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.listen);
-            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.poop);
-            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.orcs);
-            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.think);
-        }
+        StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.mudslide);
+        StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.listen);
+        StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.poop);
+        StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.orcs);
+        StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.think);
+        
         // chapter 2 action words
-        if (location <= MapLocation.GorillaPoop)
+        if (location >= MapLocation.GorillaPoop)
         {
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.hello);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.spider);
@@ -1425,7 +1430,7 @@ public class DevMenuManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.thatguy);
         }
         // chapter 3 action words
-        if (location <= MapLocation.PirateShip)
+        if (location >= MapLocation.PirateShip)
         {
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.choice);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.strongwind);
@@ -1435,7 +1440,7 @@ public class DevMenuManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.give);
         }
         // chapter 4 action words
-        if (location <= MapLocation.Ruins2)
+        if (location >= MapLocation.Ruins2)
         {
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.backpack);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.frustrating);
@@ -1690,7 +1695,7 @@ public class DevMenuManager : MonoBehaviour
                 break;
 
             case MapLocation.PalaceIntro:
-                StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_final;
+                StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.chapter_6;
                 SetMapIcons(MapLocation.GorillaVillage, true);
                 SetMapIcons(MapLocation.Mudslide, true);
                 SetMapIcons(MapLocation.OrcVillage, true);
@@ -3000,7 +3005,7 @@ public class DevMenuManager : MonoBehaviour
         for (int i = 0; i < x; i++)
         {
             Sticker new_sticker = StickerDatabase.instance.RollForSticker();
-            StudentInfoSystem.AddStickerToInventory(new_sticker);
+            StudentInfoSystem.AddStickerToInventory(new_sticker, false);
 
             // keep track of rarity stats
             switch (new_sticker.rarity)

@@ -97,7 +97,7 @@ MonoBehaviour:
     rightCharacter: 2
     rightEmotionNum: 4
     rightMouthEnum: 2
-    rightEyesEnum: 3
+    rightEyesEnum: 2
     activeCharacter: 1
     audioClip: {fileID: 8300000, guid: bc087f92d7cb43a468b5263e68551e80, type: 3}
     audioClipName: P_1_6_Red_12_T2

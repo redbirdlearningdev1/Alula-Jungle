@@ -95,7 +95,7 @@ public class SplashScreenManager : MonoBehaviour
         AudioManager.instance.StopMusic();
 
         // play song
-        AudioManager.instance.PlaySong(AudioDatabase.instance.FroggerGameSong);
+        AudioManager.instance.PlaySong(AudioDatabase.instance.SplashScreenSong);
 
         // close confirmation window
         confirmDeleteProfileWindow.transform.localScale = Vector2.zero;
@@ -163,7 +163,7 @@ public class SplashScreenManager : MonoBehaviour
                 BG6_animator.Play("6_Ch5");
             }
 
-            if (chapter > Chapter.chapter_final)
+            if (chapter > Chapter.chapter_6)
             {
                 BG4_animator.Play("4_Ch6");
             }
@@ -715,7 +715,7 @@ public class SplashScreenManager : MonoBehaviour
         editProfileWindow.blocksRaycasts = false;
 
         // reset profile
-        StudentInfoSystem.ResetProfile(StudentInfoSystem.GetCurrentProfile().studentIndex);
+        StudentInfoSystem.ResetProfile(newProfileIndex);
 
         SetUpProfiles();
         SetUpWinCrowns();
