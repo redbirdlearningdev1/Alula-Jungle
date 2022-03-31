@@ -1,0 +1,230 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TigerPawAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 3
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 3877de404b314f2429238c3eaa39704e, type: 3}
+    totalSpriteSurfaceArea: 135043566
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 9a1c831010a54b64bbd90b01b9b93af4, type: 3}
+  - {fileID: 21300000, guid: 1d3066502789e63429aef1a41dec3923, type: 3}
+  - {fileID: 21300000, guid: a7b9928094124694594173e49c336fbf, type: 3}
+  - {fileID: 21300000, guid: 71a22580d99ff984ea796f7828ab68e8, type: 3}
+  - {fileID: 21300000, guid: 12ee33c0498daee4ab889250fc014647, type: 3}
+  - {fileID: 21300000, guid: 7eb5b661c0df39e45beb19851025add4, type: 3}
+  - {fileID: 21300000, guid: 5adcf19158f8f0945b60dd0bb6414bf4, type: 3}
+  - {fileID: 21300000, guid: 046f6cc176b566e46b2f491e281a77ec, type: 3}
+  - {fileID: 21300000, guid: 3b84ac02520f92748921d1fef9aefe08, type: 3}
+  - {fileID: 21300000, guid: 06d65a529c77d2a40b61120da1c088bb, type: 3}
+  - {fileID: 21300000, guid: 651093d2241ae6744acd84f951a0cef8, type: 3}
+  - {fileID: 21300000, guid: eca651032f4c881479ec109742109f03, type: 3}
+  - {fileID: 21300000, guid: a1c05e2371e8f1440b9036b3c97decd1, type: 3}
+  - {fileID: 21300000, guid: 00b48173592025244826fc88a59846cd, type: 3}
+  - {fileID: 21300000, guid: 1aebf973e9d68494f88e3178c7993a04, type: 3}
+  - {fileID: 21300000, guid: b445d18325abdc446ad17cffe4cda353, type: 3}
+  - {fileID: 21300000, guid: 345ddc242a74655499abefa14028696d, type: 3}
+  - {fileID: 21300000, guid: f2653834f9aa22f43bfc5d6c500333c3, type: 3}
+  - {fileID: 21300000, guid: 85ff63541cebc7443a65617a10d07593, type: 3}
+  - {fileID: 21300000, guid: 47d406a48bab15246af343d8806f870d, type: 3}
+  - {fileID: 21300000, guid: f565b8c413d3f7b41af15569302b5254, type: 3}
+  - {fileID: 21300000, guid: eb4c00352259ae24684e0ab1274c6ac1, type: 3}
+  - {fileID: 21300000, guid: a339d6357312bd74fbd5034f09465f6c, type: 3}
+  - {fileID: 21300000, guid: 4635f83534c4f2a48950023f7b1455d3, type: 3}
+  - {fileID: 21300000, guid: f8cc0f35429b0234493b3ef9d123e346, type: 3}
+  - {fileID: 21300000, guid: e2fa6fe5d08bb394ea26776f96582c15, type: 3}
+  - {fileID: 21300000, guid: a669d036d6d8a7c41bb01c2176683017, type: 3}
+  - {fileID: 21300000, guid: 89d06c36147ccdf4ab354432534ea981, type: 3}
+  - {fileID: 21300000, guid: a81c1d36fb57c6b4ab3b87c1cb1a2414, type: 3}
+  - {fileID: 21300000, guid: 3c609386b0fc6db489ff5d5b928ad81c, type: 3}
+  - {fileID: 21300000, guid: 2b9670b64da5a9e4580953d96ca725ed, type: 3}
+  - {fileID: 21300000, guid: 4d7309c69c51b04449d87093fcb7a53f, type: 3}
+  - {fileID: 21300000, guid: 4e9479c6034e2bd4a8fd2858e4a7e82f, type: 3}
+  - {fileID: 21300000, guid: 6dfa04d67473e474790469903bc42728, type: 3}
+  - {fileID: 21300000, guid: e383f7d68c727b04488d206cb9627699, type: 3}
+  - {fileID: 21300000, guid: f424a2074b1482648b55926293397928, type: 3}
+  - {fileID: 21300000, guid: 2acf5c67d24abb147a9ff90e831ea39f, type: 3}
+  - {fileID: 21300000, guid: f1f1b6873d1c4214a8f89050dd0b59e7, type: 3}
+  - {fileID: 21300000, guid: c7b01d87a6cdd6d4388e8312a612eb14, type: 3}
+  - {fileID: 21300000, guid: 5e2d7b971db494147b75ca171a665e93, type: 3}
+  - {fileID: 21300000, guid: 143132a7d71b7484bae4b78677b5e0e6, type: 3}
+  - {fileID: 21300000, guid: e2e31ca7a5dbe2b4ea46f3a4a0cd44e7, type: 3}
+  - {fileID: 21300000, guid: 5e595fb72fa697f4da94d14f56f42ed2, type: 3}
+  - {fileID: 21300000, guid: 3f00d8c722d7dc04c9a4f83d66b3c2a4, type: 3}
+  - {fileID: 21300000, guid: 38f548d76b623d9429f38e8e3d958965, type: 3}
+  - {fileID: 21300000, guid: ff904df7a51c95a4c866b948db2ade21, type: 3}
+  - {fileID: 21300000, guid: c08d1e58bdb68b6458e17b848a5eecb7, type: 3}
+  - {fileID: 21300000, guid: 3e843088de61f1c46af119ea96e30303, type: 3}
+  - {fileID: 21300000, guid: 092901880b17e5e48b59748e66646243, type: 3}
+  - {fileID: 21300000, guid: 25c84d981d6b61d44b189424510f8cc0, type: 3}
+  - {fileID: 21300000, guid: f55941d85b149714ab156e09700ec8f1, type: 3}
+  - {fileID: 21300000, guid: 053cf1d89c2693b4a916a58f1ee03ffb, type: 3}
+  - {fileID: 21300000, guid: b64b92e84d288834aa59c3c34fe7bd67, type: 3}
+  - {fileID: 21300000, guid: b7adb209b05a87d46b37006f149b0887, type: 3}
+  - {fileID: 21300000, guid: 5799e729a8916c64cb9c138131327afd, type: 3}
+  - {fileID: 21300000, guid: e2b2d449e9460a949968abeced96681f, type: 3}
+  - {fileID: 21300000, guid: 1e4417c9d78378c4285328bead30ad7d, type: 3}
+  - {fileID: 21300000, guid: 2f2dacc907495dd43a06f5f306cc63a9, type: 3}
+  - {fileID: 21300000, guid: 50b54c2a43da0d745a6b0b85bbeb2b47, type: 3}
+  - {fileID: 21300000, guid: 883d533a1955a4145a6475105a13ef6c, type: 3}
+  - {fileID: 21300000, guid: 3818ec8a33c16464ea87e128ac256e21, type: 3}
+  - {fileID: 21300000, guid: 457473aaff87f0e448818824ac8155ed, type: 3}
+  - {fileID: 21300000, guid: d3a274aaf3f7d0444a353ac38f1082a1, type: 3}
+  - {fileID: 21300000, guid: c61379aa505486b4fa847a3ce2635ca1, type: 3}
+  - {fileID: 21300000, guid: 81e8abeaee2174f40928d3f1633db018, type: 3}
+  - {fileID: 21300000, guid: 9d80aafab34c3ee40b243e832910806f, type: 3}
+  - {fileID: 21300000, guid: c8cdabfa06230a348bc5a6de7d9995f5, type: 3}
+  - {fileID: 21300000, guid: cbc8b32b88f8ea441a66a727f0c5291f, type: 3}
+  - {fileID: 21300000, guid: 6321ba3bc8f38eb49add9c2ed9137fa2, type: 3}
+  - {fileID: 21300000, guid: 35ae9c4b825ac17488622f7b4fd612e6, type: 3}
+  - {fileID: 21300000, guid: 8aefdccb2d9a3484eb1adb5821199c30, type: 3}
+  - {fileID: 21300000, guid: 77485dfb6634a964ebefba7f98ee39b4, type: 3}
+  - {fileID: 21300000, guid: 30acf59c955721d43a7cab135c3f7b02, type: 3}
+  - {fileID: 21300000, guid: 87c309fc98bd386468c995f88e0ab120, type: 3}
+  - {fileID: 21300000, guid: b99b182dbd62599428d34e0114c0d2ed, type: 3}
+  - {fileID: 21300000, guid: a47eb17dfa9a5504e94f6dc6a7bcb693, type: 3}
+  - {fileID: 21300000, guid: c2fadbfdbf85097449aba73d162a3db8, type: 3}
+  - {fileID: 21300000, guid: 93ccc51e8bd2e2a4f88f3f9583abd397, type: 3}
+  - {fileID: 21300000, guid: 87631a1e1bfcd6048ba7edc394cba6b4, type: 3}
+  - {fileID: 21300000, guid: 605cc84e5e7efac47a368976dc677760, type: 3}
+  - {fileID: 21300000, guid: 9ae97ffeb3f07ef4486eb9c1dc301584, type: 3}
+  - {fileID: 21300000, guid: 4414e33f165f70d4da36ba7e3ae21a32, type: 3}
+  - {fileID: 21300000, guid: 7af8ac6f57ca37341952c0635f9b704b, type: 3}
+  - {fileID: 21300000, guid: b2cc2d8f9a7ffc34390aca49eed12602, type: 3}
+  - {fileID: 21300000, guid: f10160bfa92ad324f88c19ce6127854f, type: 3}
+  - {fileID: 21300000, guid: bec40cbf447b87948943c639b9ba6a0b, type: 3}
+  - {fileID: 21300000, guid: 5f0cbddffe01d8a4b9140e01d8cf550c, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - tigerDeal46
+  - tigerDeal29
+  - tigerDeal7
+  - winCoin10
+  - tigerDeal40
+  - tigerDeal3
+  - tigerDeal16
+  - FWS_Paws
+  - tigerDeal44
+  - tigerDeal1
+  - tigerDeal33
+  - winCoin9
+  - tigerDeal45
+  - tigerDeal54
+  - tigerCoin8
+  - winCoin0
+  - tigerDeal24
+  - tigerCoin2
+  - tigerDeal37
+  - winCoin5
+  - winCoin6
+  - tigerDeal18
+  - tigerDeal21
+  - tigerDeal25
+  - tigerDeal8
+  - tigerDeal27
+  - tigerDeal41
+  - tigerDeal14
+  - tigerDeal55
+  - winCoin1
+  - tigerCoin3
+  - tigerCoin6
+  - tigerDeal38
+  - tigerDeal17
+  - tigerDeal9
+  - tigerDeal31
+  - tigerDeal51
+  - tigerDeal2
+  - tigerDeal22
+  - tigerDeal5
+  - winCoin11
+  - tigerDeal35
+  - tigerDeal19
+  - tigerDeal11
+  - tigerDeal53
+  - tigerDeal48
+  - winCoin7
+  - tigerDeal20
+  - tigerDeal43
+  - tigerCoin12
+  - FWS_LoseThread
+  - tigerCoin5
+  - tigerDeal23
+  - FWS_NuetralThread
+  - tigerDeal15
+  - tigerDeal10
+  - tigerDeal28
+  - tigerDeal13
+  - tigerCoin0
+  - tigerDeal6
+  - tigerDeal12
+  - FWS_Bg
+  - tigerDeal47
+  - tigerDeal0
+  - tigerCoin11
+  - winCoin3
+  - tigerDeal50
+  - winCoin12
+  - tigerCoin1
+  - winCoin2
+  - FWS_WinThread
+  - tigerDeal39
+  - tigerDeal26
+  - tigerDeal49
+  - winCoin4
+  - tigerCoin9
+  - tigerDeal42
+  - winCoin8
+  - tigerDeal34
+  - tigerDeal32
+  - tigerDeal30
+  - tigerDeal36
+  - tigerDeal52
+  - tigerCoin10
+  - tigerCoin4
+  - tigerCoin7
+  - tigerDeal4
+  m_RenderDataMap: {}
+  m_Tag: TigerPawAtlas
+  m_IsVariant: 0
