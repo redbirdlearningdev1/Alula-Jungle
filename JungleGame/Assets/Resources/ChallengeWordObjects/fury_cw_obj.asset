@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   word: fury
   audio: {fileID: 8300000, guid: 5610c27bb18b8b34297ba336816d25d7, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 36fb5b728ff23b44d91f9066ef1efa31, type: 3}
   elkoninList: 1a0000001100000008000000000000000000000000000000
   elkoninCount: 3
   set: 16
