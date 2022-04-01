@@ -38,6 +38,9 @@ public class AudioManager : MonoBehaviour
     public static float default_fxVol =         1f;
     public static float default_talkVol =       3f;
 
+    public float pitchMin = 0.5f;
+    public float pitchMax = 2f;
+
     private Coroutine smoothSetMusicRoutine = null;
 
     void Awake() 
@@ -161,6 +164,7 @@ public class AudioManager : MonoBehaviour
 
         musicSources[0].clip = song;
         musicSources[0].loop = true;
+        musicSources[0].pitch = Random.Range(pitchMin, pitchMax);
         musicSources[0].Play();
     }
 
@@ -190,6 +194,7 @@ public class AudioManager : MonoBehaviour
             source.Stop();
             source.clip = null;
             source.loop = true;
+            source.pitch = Random.Range(pitchMin, pitchMax);
             source.volume = 0f;
         }
 
@@ -346,6 +351,7 @@ public class AudioManager : MonoBehaviour
     // plays a sound once
     public void PlayFX_oneShot(AudioClip clip, float volume, string id = "fx_oneShot", float pitch = 1f)
     {
+        pitch = Random.Range(pitchMin, pitchMax);
         var audioObj = Instantiate(fxAudioObject, fxObjectHolder);
         audioObj.GetComponent<FxAudioObject>().PlayClip(id, clip, volume, clip.length + 1f, pitch);
     }
@@ -353,6 +359,7 @@ public class AudioManager : MonoBehaviour
     // plays a sound continuously until scene changes or stopped manually
     public void PlayFX_loop(AudioClip clip, float volume, string id = "fx_loop", float pitch = 1f)
     {
+        pitch = Random.Range(pitchMin, pitchMax);
         var audioObj = Instantiate(fxAudioObject, fxObjectHolder);
         audioObj.GetComponent<FxAudioObject>().PlayClip(id, clip, volume, 0f, pitch);
     }
@@ -448,6 +455,7 @@ public class AudioManager : MonoBehaviour
         talkSource.Stop();
         talkSource.clip = _clip;
         talkSource.loop = false;
+        talkSource.pitch = Random.Range(pitchMin, pitchMax);
         talkSource.Play();
     }
 
@@ -463,6 +471,7 @@ public class AudioManager : MonoBehaviour
         AudioClip clip = GameManager.instance.GetActionWord(phoneme).audio;
         talkSource.clip = clip;
         talkSource.loop = false;
+        talkSource.pitch = Random.Range(pitchMin, pitchMax);
         talkSource.Play();
     }
 
