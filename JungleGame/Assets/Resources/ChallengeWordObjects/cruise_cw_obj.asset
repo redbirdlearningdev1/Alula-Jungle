@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: cruise_cw_obj
   m_EditorClassIdentifier: 
   word: cruise
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: fd5effb8c743f9d439270a22973d6ccd, type: 3}
   sprite: {fileID: 21300000, guid: a0eb58e33e2321f4bb54fbba5ce783eb, type: 3}
   elkoninList: 17000000240000000b000000250000000000000000000000
   elkoninCount: 4

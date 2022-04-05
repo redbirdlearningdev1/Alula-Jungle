@@ -15,6 +15,6 @@ MonoBehaviour:
   word: tear
   audio: {fileID: 8300000, guid: ee636a03fed8c63479502582cd32e91c, type: 3}
   sprite: {fileID: 21300000, guid: 4370cfcba1cc41444ab2e2d5f0144f15, type: 3}
-  elkoninList: 270000001000000000000000000000000000000000000000
+  elkoninList: 270000000000000000000000000000000000000000000000
   elkoninCount: 2
-  set: 15
+  set: 0

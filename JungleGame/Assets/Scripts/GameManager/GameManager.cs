@@ -75,6 +75,12 @@ public class GameManager : DontDestroy<GameManager>
         // init mic
         MicInput.instance.InitMic();
 
+        // set default volumes
+        AudioManager.instance.SetMasterVolume(AudioManager.default_masterVol);
+        AudioManager.instance.SetMusicVolume(AudioManager.default_musicVol);
+        AudioManager.instance.SetFXVolume(AudioManager.default_fxVol);
+        AudioManager.instance.SetTalkVolume(AudioManager.default_talkVol);
+
         if (devModeActivated)
         {
             SendLog(this, "Dev Mode set as - ON");
