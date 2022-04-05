@@ -31,6 +31,7 @@ public static class StudentInfoSystem
 
         DropdownToolbar.instance.LoadToolbarDataFromProfile(); // load profile coins
         GameManager.instance.SendLog("StudentInfoSystem", "set current profile to: " + index);
+        SettingsManager.instance.LoadScrollSettingsFromProfile(); // load in settings
     }
 
     private static void SetMostRecentProfile(StudentIndex index)

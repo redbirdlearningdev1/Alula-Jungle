@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f49655c47c49b747b3315e00db7aacd, type: 3}
   m_Name: near_gear_pair
   m_EditorClassIdentifier: 
-  soundCoin: 0
+  soundCoin: 15
   pairType: 0
   word1: {fileID: 11400000, guid: 00c697a5ffac261429e6045a9bd485fc, type: 2}
   word2: {fileID: 11400000, guid: 0ed64c9ec3ff5454091d3717b939e7ff, type: 2}

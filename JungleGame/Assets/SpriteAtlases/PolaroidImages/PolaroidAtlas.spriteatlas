@@ -44,7 +44,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 2986375e4dbeb23498ad341470f0e61e, type: 3}
-    totalSpriteSurfaceArea: 161084299
+    totalSpriteSurfaceArea: 160812656
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -123,7 +123,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: fafbefa109222df49a6eba824d8cc8ab, type: 3}
   - {fileID: 21300000, guid: 359952b1f7c56b8459f4cbd2ad989f35, type: 3}
   - {fileID: 21300000, guid: 2e96a5b175b644b44b1b968163fd5256, type: 3}
-  - {fileID: 21300000, guid: b84247b1f4a966441b2ef2cb13b1d4ac, type: 3}
   - {fileID: 21300000, guid: 16bdfcb172563664aa0672c02bb30a8c, type: 3}
   - {fileID: 21300000, guid: 2b424db118d5aff43ad08c39a95833fc, type: 3}
   - {fileID: 21300000, guid: ce1ff3c13470c9c4c827ebdaddc84881, type: 3}
@@ -717,7 +716,6 @@ SpriteAtlas:
   - cork_cwimg
   - farm_cwimg
   - drown_cwimg
-  - PolaPicmask
   - she_cwimg
   - rode_cwimg
   - seem_cwimg

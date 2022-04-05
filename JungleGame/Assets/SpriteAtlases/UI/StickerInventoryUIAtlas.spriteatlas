@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: StickerUIAtlas
+  m_Name: StickerInventoryUIAtlas
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -26,7 +26,7 @@ SpriteAtlas:
       m_MaxTextureSize: 4096
       m_ResizeAlgorithm: 0
       m_TextureFormat: -1
-      m_TextureCompression: 2
+      m_TextureCompression: 1
       m_CompressionQuality: 100
       m_CrunchedCompression: 1
       m_AllowsAlphaSplitting: 0
@@ -43,29 +43,22 @@ SpriteAtlas:
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
-    - {fileID: 102900000, guid: d6756521b64e1e64ebe4a7445239e1c3, type: 3}
-    - {fileID: 102900000, guid: bbf85b04f4514c049a4400b152246bf1, type: 3}
-    totalSpriteSurfaceArea: 118882
+    - {fileID: 102900000, guid: 8de995fd41cefd1469167737b7443266, type: 3}
+    totalSpriteSurfaceArea: 8164800
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: a8e36cb04c5457a4796201806094bd13, type: 3}
-  - {fileID: 21300000, guid: 6e94b726e6cb5f04b8dc5416964ea1da, type: 3}
-  - {fileID: 21300000, guid: 6d4d72b9d4d42d34aab4c74c75a47006, type: 3}
-  - {fileID: 21300000, guid: 2f07383c0773a304a808812fa7f85351, type: 3}
-  - {fileID: 21300000, guid: 94bce9fccca456a41bb555ca1ee57e0c, type: 3}
-  - {fileID: 21300000, guid: e7b8009ea01bf744286f2b7845c0af0a, type: 3}
-  - {fileID: 21300000, guid: 6873489ed29c9b3428d2806242a8a2ed, type: 3}
+  - {fileID: 21300000, guid: db6efe35a4002f54ca6dcface1eb0ec8, type: 3}
+  - {fileID: 21300000, guid: 96c853c507d63d8489d20551c6039c4d, type: 3}
+  - {fileID: 21300000, guid: e4e8ba873f568eb478538381673170b8, type: 3}
+  - {fileID: 21300000, guid: e3bcc6ab53e996f4eb20a0b58ad0e36f, type: 3}
   m_PackedSpriteNamesToIndex:
-  - legendaryStickStar
-  - rareStickStar
-  - commonStickStar
-  - coinyesButton
-  - uncommonStickStar
-  - coinyesPressedButton
-  - Scissors
+  - InvWindow_icon
+  - InvWindow_overlay
+  - InvWindow_fill
+  - InvWindow_outline
   m_RenderDataMap: {}
-  m_Tag: StickerUIAtlas
+  m_Tag: StickerInventoryUIAtlas
   m_IsVariant: 0

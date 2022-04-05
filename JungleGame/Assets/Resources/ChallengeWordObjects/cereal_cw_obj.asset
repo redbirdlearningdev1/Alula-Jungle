@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdfd6af85ce95e84c9c41f78b3e3f482, type: 3}
-  m_Name: ought_cw_obj
+  m_Name: cereal_cw_obj
   m_EditorClassIdentifier: 
-  word: ought
-  audio: {fileID: 8300000, guid: 1bde4a8df0fcf8441a9fec5b4e42b49a, type: 3}
-  sprite: {fileID: 21300000, guid: ecd100aa448cb584f8a753d20e635533, type: 3}
-  elkoninList: 050000002700000000000000000000000000000000000000
-  elkoninCount: 2
-  set: 4
+  word: cereal
+  audio: {fileID: 8300000, guid: 2779a284ec7cafa479aff4a8c104c60a, type: 3}
+  sprite: {fileID: 21300000, guid: b177e4af26fb3f04da3bbf47d6c06868, type: 3}
+  elkoninList: 2500000010000000080000001f0000000000000000000000
+  elkoninCount: 4
+  set: 15
