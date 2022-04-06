@@ -259,6 +259,8 @@ public class StoryGameManager : MonoBehaviour
 
                     // wait for play input
                     waitingForAudioInput = true;
+                    // turn on mic input
+                    MicInput.instance.InitMic();
                     // activate microphone indicator
                     microphone.ShowIndicator();
                     // repeat word if microphone has not been pressed
@@ -272,7 +274,10 @@ public class StoryGameManager : MonoBehaviour
                     {
                         // break from loop if button is mic button is pressed
                         if (microphone.hasBeenPressed)
+                        {
                             break;
+                        }
+                            
                         yield return null;
                     }
 
@@ -296,6 +301,9 @@ public class StoryGameManager : MonoBehaviour
                     }              
                 }
 
+                // turn off mic input
+                MicInput.instance.StopMicrophone();
+
                 // successful input
                 ShakeCoin();
                 AudioClip clip = GameManager.instance.GetActionWord(seg.actionWord).audio;
@@ -307,6 +315,8 @@ public class StoryGameManager : MonoBehaviour
                     microphone.HideIndicator();
                 }
             }
+
+            
 
             // increment curret word if needed
             if (seg.moveWord)

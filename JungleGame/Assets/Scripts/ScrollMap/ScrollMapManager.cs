@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public enum MapLocation
 {
@@ -54,6 +55,9 @@ public class ScrollMapManager : MonoBehaviour
     [SerializeField] private RectTransform Map; // full map
     [SerializeField] private Button leftButton;
     [SerializeField] private Button rightButton;
+    private bool holding = false;
+    private Vector2 startDragPos;
+    private Vector2 startMapDragPos;
 
     [Header("Map Icons @ Locations")]
     public List<MapLocationData> mapLocations;
@@ -91,6 +95,33 @@ public class ScrollMapManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(DelayedStart(0f));
+    }
+
+    void Update()
+    {
+        // detect mouse input for map dragging
+        if (Input.GetMouseButtonDown(0) && !holding)
+        {
+            holding = true;
+            startDragPos = Input.mousePosition;
+            print ("detected mouse down");
+        }
+        // detect if mouse is no longer being held
+        else if (Input.GetMouseButtonUp(0) && holding)
+        {
+            print ("detected mouse up");
+
+            if (startDragPos.x > Input.mousePosition.x)
+            {
+                OnGoRightPressed();
+            }
+            else if (startDragPos.x < Input.mousePosition.x)
+            {
+                OnGoLeftPressed();
+            }
+            
+            holding = false;
+        }
     }
 
     private IEnumerator DelayedStart(float delay)
@@ -1855,6 +1886,7 @@ public class ScrollMapManager : MonoBehaviour
         }
     }
 
+
     /* 
     ################################################
     #   OTHER MAP FUNCTIONS
@@ -1881,11 +1913,11 @@ public class ScrollMapManager : MonoBehaviour
         }   
     }
 
-    public void GoToMapPosition(MapLocation location)
+    public void GoToMapPosition(MapLocation location, float duration = 2f)
     {
         // move map to map location
         float x = GetXPosFromMapLocationIndex((int)location);
-        StartCoroutine(MapSmoothTransitionX(Map.localPosition.x, x, 2f));
+        StartCoroutine(MapSmoothTransitionX(Map.localPosition.x, x, duration));
     }
 
     private float GetXPosFromMapLocationIndex(int index)
@@ -1923,7 +1955,6 @@ public class ScrollMapManager : MonoBehaviour
         }
         Map.localPosition = new Vector3(currXPos, end, 0f);
     }
-
     
     /* 
     ################################################

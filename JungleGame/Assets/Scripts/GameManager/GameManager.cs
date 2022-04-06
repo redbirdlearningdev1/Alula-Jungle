@@ -31,7 +31,7 @@ public enum GameType
 
 public class GameManager : DontDestroy<GameManager>
 {
-    public static string currentGameVersion = "alpha1.4";
+    public static string currentGameVersion = "alpha1.5";
 
     public static int stickerInventorySize = 16;
 
@@ -74,6 +74,7 @@ public class GameManager : DontDestroy<GameManager>
 
         // init mic
         MicInput.instance.InitMic();
+        MicInput.instance.StopMicrophone();
 
         // set default volumes
         AudioManager.instance.SetMasterVolume(AudioManager.default_masterVol);
@@ -240,6 +241,11 @@ public class GameManager : DontDestroy<GameManager>
     #   SCENE MANAGEMENT
     ################################################
     */
+
+    public void GoToDevMenu()
+    {
+        LoadScene("DevMenu", true, 0.5f, true);
+    }
 
     public void ReturnToScrollMap()
     {

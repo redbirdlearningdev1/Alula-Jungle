@@ -10,6 +10,8 @@ public class MicInput : MonoBehaviour
 
     #endregion
 
+    bool _isInitialized;
+
     public static float MicLoudness;
     public static float MicLoudnessinDecibels;
 
@@ -27,7 +29,14 @@ public class MicInput : MonoBehaviour
     //mic initialization
     public void InitMic()
     {
-        // print ("mic init!");
+        // return if already initialized
+        if (_isInitialized)
+        {
+            return;
+        }
+
+        GameManager.instance.SendLog(this, "mic input ON");
+
         if (_device == null)
         {
             if (Microphone.devices.Length > 0)
@@ -48,7 +57,14 @@ public class MicInput : MonoBehaviour
 
     public void StopMicrophone()
     {
-        // print ("mic stopped!");
+        // return if already uninitialized
+        if (!_isInitialized)
+        {
+            return;
+        }
+
+        GameManager.instance.SendLog(this, "mic input OFF");
+
         Microphone.End(_device);
         _isInitialized = false;
     }
@@ -155,6 +171,4 @@ public class MicInput : MonoBehaviour
         MicLoudness = MicrophoneLevelMax();
         MicLoudnessinDecibels = MicrophoneLevelMaxDecibels();
     }
-
-    bool _isInitialized;
 }
