@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: curious_cw_obj
   m_EditorClassIdentifier: 
   word: curious
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 3c0245db4c5a3364fa0d877cc45881fc, type: 3}
   sprite: {fileID: 21300000, guid: dc574ac407c2a8d4ea904dfcd071b636, type: 3}
   elkoninList: 170000001100000008000000060000002500000000000000
   elkoninCount: 5

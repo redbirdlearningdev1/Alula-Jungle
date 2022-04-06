@@ -16,6 +16,7 @@ public class StickerSystem : MonoBehaviour
     [Header("Get Sticker")]
     public StickerConfirmWindow stickerConfirmWindow;
     public Image revealSticker;
+    public Transform stickerToolbarPos;
     public LerpableObject lesterSpeechBubble;
     public VideoPlayer commonVP;
     public VideoPlayer uncommonVP;
@@ -298,13 +299,13 @@ public class StickerSystem : MonoBehaviour
         StickerSystem.instance.deleteStickerButton.GetComponent<Button>().interactable = true;
 
         readyToGlueSticker = false;
-        currentHeldSticker.GetComponent<StickerImage>().HideYesNoButtons();
-
+        currentHeldSticker.GetComponent<StickerImage>().HideStickerButtons();
         currentHeldSticker.SetParent(selectedStickerParent);
         currentHeldSticker.GetComponent<LerpableObject>().LerpPosToTransform(currentHeldSticker.GetComponent<StickerImage>().inventorySticker.transform, 0.25f, false);
         yield return new WaitForSeconds(0.25f);
         currentHeldSticker.SetParent(currentHeldSticker.GetComponent<StickerImage>().inventorySticker.transform);
         StickerInventory.instance.UpdateStickerInventory();
+        StickerInventory.instance.ToggleStickerColliders(true);
         currentHeldSticker = null;
     }
 
@@ -339,7 +340,7 @@ public class StickerSystem : MonoBehaviour
         {
             // set image parent as current stickerboard
             currentHeldSticker.SetParent(gluedStickerParent);
-            currentHeldSticker.GetComponent<StickerImage>().ShowYesNoButtons();
+            currentHeldSticker.GetComponent<StickerImage>().ShowStickerButtons();
             // ready to glue sticker
             readyToGlueSticker = true;
         }
@@ -781,7 +782,7 @@ public class StickerSystem : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
         // check if there is room in inventory
-        if (StudentInfoSystem.GetCurrentProfile().stickerInventory.Count >= GameManager.stickerInventorySize)
+        if (StudentInfoSystem.GetTotalStickerCount() >= GameManager.stickerInventorySize)
         {
             StartCoroutine(InventoryFullRoutine());
             return;
@@ -841,11 +842,11 @@ public class StickerSystem : MonoBehaviour
         GameManager.instance.SendLog(this, "you got a sticker! " + sticker.rarity + " " + sticker.id);
 
         // save sticker to SIS
-        StudentInfoSystem.AddStickerToInventory(sticker);
+        StudentInfoSystem.AddStickerToInventory(sticker, false);
 
         // fade to black
         FadeObject.instance.FadeOut(1f);
-        yield return new WaitForSeconds(1.25f);
+        yield return new WaitForSeconds(1f);
 
         VideoPlayer currentVideo = null;
         // play correct video player
@@ -873,6 +874,8 @@ public class StickerSystem : MonoBehaviour
         currentVideo.Play();
         while (!currentVideo.isPlaying)
             yield return null;
+
+        yield return new WaitForSeconds(0.2f);
         
         // Fade back in 
         FadeObject.instance.FadeIn(1f);
@@ -883,6 +886,7 @@ public class StickerSystem : MonoBehaviour
         RaycastBlockerController.instance.RemoveRaycastBlocker("StickerVideoBlocker");
 
         // reveal sticker here after certain amount of time
+        revealSticker.transform.localPosition = Vector3.zero;
         revealSticker.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.2f, 0.2f);
 
         // get appropriate sticker voiceover
@@ -920,24 +924,28 @@ public class StickerSystem : MonoBehaviour
         while (waitingOnPlayerInput)
             yield return null;
 
-        // hide sticker
-        revealSticker.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.2f, 0.2f);
         // stop wiggle reveal sticker
         revealSticker.GetComponent<WiggleController>().StopWiggle();
+        revealSticker.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), new Vector2(1f, 1f), 0.1f, 0.1f);
+        yield return new WaitForSeconds(0.5f);
 
         // activate raycast blocker
         RaycastBlockerController.instance.CreateRaycastBlocker("StickerVideoBlocker");
 
         // fade to black
-        FadeObject.instance.FadeOut(1f);
-        yield return new WaitForSeconds(1f);
+        FadeObject.instance.FadeOut(0.5f);
+        yield return new WaitForSeconds(0.5f);
 
         // stop video player
         currentVideo.Stop();
 
         // Fade back in 
-        FadeObject.instance.FadeIn(1f);
-        yield return new WaitForSeconds(1f);
+        FadeObject.instance.FadeIn(0.5f);
+        yield return new WaitForSeconds(0.25f);
+
+        // move sticker into dropdown toolbar
+        StartCoroutine(AwardStickerAnimation());
+        yield return new WaitForSeconds(0.5f);
 
         // deactivate raycast blocker
         RaycastBlockerController.instance.RemoveRaycastBlocker("StickerVideoBlocker");
@@ -966,6 +974,18 @@ public class StickerSystem : MonoBehaviour
             wagonBackButton.GetComponent<BackButton>().interactable = true;
             wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
         }
+    }
+
+    private IEnumerator AwardStickerAnimation()
+    {
+        revealSticker.GetComponent<LerpableObject>().LerpPosToTransform(stickerToolbarPos, 0.5f, false);
+        revealSticker.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.5f);
+        yield return new WaitForSeconds(0.5f);
+
+        // play audio
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.ScrollRoll, 0.5f);
+        DropdownToolbar.instance.silverCoinTransform.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
+        DropdownToolbar.instance.UpdateSilverCoins();
     }
 
     /* 
@@ -1033,7 +1053,7 @@ public class StickerSystem : MonoBehaviour
 
         // stop music
         AudioManager.instance.StopMusic();
-        AudioManager.instance.PlaySong(AudioDatabase.instance.TurntablesGameSong);
+        AudioManager.instance.PlaySong(AudioDatabase.instance.WagonWindowSong);
 
         // reset lester timers
         lesterButton.GetComponent<LesterButton>().ResetLesterTimers();
@@ -1154,7 +1174,7 @@ public class StickerSystem : MonoBehaviour
 
         // play scroll map song
         AudioManager.instance.StopMusic();
-        AudioManager.instance.PlaySong(AudioDatabase.instance.MainThemeSong);
+        AudioManager.instance.PlaySong(AudioDatabase.instance.ScrollMapSong);
 
         // animation done - remove raycast
         RaycastBlockerController.instance.RemoveRaycastBlocker("hide_wagon_raycast");

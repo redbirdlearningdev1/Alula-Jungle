@@ -137,6 +137,9 @@ public class MapAnimationController : MonoBehaviour
         marcus.GetComponent<Image>().raycastTarget = false;
         clogg.GetComponent<Image>().raycastTarget = false;
         taxiBird.GetComponent<Image>().raycastTarget = false;
+
+        // make boat fixed
+        boat.GetComponent<MapIcon>().SetFixed(true, false, false);
     }
 
     private IEnumerator TestWalkInWalkOut()
@@ -2231,7 +2234,7 @@ public class MapAnimationController : MonoBehaviour
 
     private IEnumerator GorillaVillageIntro()
     {
-        // remove exclamation mark from gorilla
+        // remove exclamation mark
         darwin.ShowExclamationMark(false);
         darwin.GetComponent<Image>().raycastTarget = false;
         darwin.interactable = false;

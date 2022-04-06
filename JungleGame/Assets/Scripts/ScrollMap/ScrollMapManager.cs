@@ -85,7 +85,7 @@ public class ScrollMapManager : MonoBehaviour
         GameManager.instance.SceneInit();
 
         // play test song
-        AudioManager.instance.PlaySong(AudioDatabase.instance.MainThemeSong);
+        AudioManager.instance.PlaySong(AudioDatabase.instance.ScrollMapSong);
     }
 
     void Start()
@@ -1436,7 +1436,6 @@ public class ScrollMapManager : MonoBehaviour
                     icon.RevealStars();
             }
         }
-        
     }
 
     public void SmoothGoToMapLocation(MapLocation location)

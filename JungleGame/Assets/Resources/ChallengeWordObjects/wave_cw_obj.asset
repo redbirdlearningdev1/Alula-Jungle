@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: wave_cw_obj
   m_EditorClassIdentifier: 
   word: wave
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 1d40240f0bccf3c4daa14745ce0b51e0, type: 3}
   sprite: {fileID: 21300000, guid: 400b4bae7f6b40346a882f6865ca598d, type: 3}
   elkoninList: 2a0000000700000029000000000000000000000000000000
   elkoninCount: 3

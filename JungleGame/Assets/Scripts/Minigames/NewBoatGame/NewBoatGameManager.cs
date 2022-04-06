@@ -452,6 +452,9 @@ public class NewBoatGameManager : MonoBehaviour
             case BoatButtonID.Mic:
                 MicrophoneButtonPressed();
                 break;
+            case BoatButtonID.Sound:
+                AudioButtonPressed();
+                break;
         }
     }
 
@@ -527,6 +530,11 @@ public class NewBoatGameManager : MonoBehaviour
             StopCoroutine(boatGameRoutine);
             boatGameRoutine = StartCoroutine(ContinueBoatGame());
         }
+    }
+
+    public void AudioButtonPressed()
+    {
+        SettingsManager.instance.ToggleSettingsWindow();
     }
 
     public void IslandCentered()

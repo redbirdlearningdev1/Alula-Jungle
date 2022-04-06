@@ -7,6 +7,8 @@ public class DropdownToolbar : MonoBehaviour
 {
     public static DropdownToolbar instance;
 
+    public Transform silverCoinTransform;
+
     [SerializeField] private float hiddenHeight;
     [SerializeField] private float visibleHeight;
     [SerializeField] private float moveTime;
@@ -28,13 +30,7 @@ public class DropdownToolbar : MonoBehaviour
 
     void Update()
     {
-        // if (GameManager.instance.devModeActivated)
-        // {
-        //     if (Input.GetKeyDown(KeyCode.UpArrow))
-        //         ToggleToolbar(false);
-        //     if (Input.GetKeyDown(KeyCode.DownArrow))
-        //         ToggleToolbar(true);
-        // }
+
     }
 
     public void LoadToolbarDataFromProfile()
@@ -67,7 +63,7 @@ public class DropdownToolbar : MonoBehaviour
 
     public void UpdateSilverCoins()
     {
-        silverText.text = StudentInfoSystem.GetCurrentProfile().stickerInventory.Count.ToString() + "/" + GameManager.stickerInventorySize;
+        silverText.text = StudentInfoSystem.GetTotalStickerCount().ToString() + "/" + GameManager.stickerInventorySize;
     }
 
     public void SetGoldText(string text)

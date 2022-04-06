@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f49655c47c49b747b3315e00db7aacd, type: 3}
   m_Name: cheer_deer_pair
   m_EditorClassIdentifier: 
-  soundCoin: 0
+  soundCoin: 15
   pairType: 0
   word1: {fileID: 11400000, guid: 199c5135ad262db478514608dd198a84, type: 2}
   word2: {fileID: 11400000, guid: 2451fb77740e5f5459b1180a5c9fd0d1, type: 2}

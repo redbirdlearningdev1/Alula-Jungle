@@ -66,7 +66,7 @@ cat,3,c,mudslide,t,,,,mudslide
 caught,3,c,orcs,t,,,,orcs
 cause,3,c,orcs,s,,,,orcs
 cave,3,c,hello,v,,,,hello
-ceareal,4,s,sound,spider,l,,,sound
+cereal,4,s,sound,spider,l,,,sound
 chain,3,ch,hello,n,,,,hello
 chair,2,ch,strong_wind,,,,,strong_wind
 cheer,2,ch,sound,,,,,sound
@@ -103,7 +103,7 @@ crew,3,c,r,that_guy,,,,that_guy
 crook,4,c,r,backpack,k,,,backpack
 cruise,4,c,r,that_guy,s,,,that_guy
 cry,3,c,r,explorer,,,,explorer
-crypt,5,c,r,poop,pirate,t,,poop
+crypt,5,c,r,poop,p,t,,poop
 cub,3,c,think,b,,,,think
 cube,3,c,that_guy,b,,,,that_guy
 cue,2,c,that_guy,,,,,that_guy
@@ -140,7 +140,6 @@ drew,3,d,r,that_guy,,,,that_guy
 drive,4,d,r,explorer,v,,,explorer
 drought,4,d,r,bump_head,t,,,bump_head
 drown,4,d,r,bump_head,n,,,bump_head
-each,2,spider,ch,,,,,spider
 earn,2,gorilla,n,,,,,gorilla
 eat,2,spider,t,,,,,spider
 eight,2,hello,t,,,,,hello
@@ -188,7 +187,7 @@ found,4,f,bump_head,n,d,,,bump_head
 fountain,6,f,bump_head,n,t,listen,n,bump_head
 four,2,f,choice,,,,,choice
 fraud,4,f,r,orcs,d,,,orcs
-frog,4,f,orcs,orcs,g,,,orcs
+frog,4,f,r,orcs,g,,,orcs
 frown,4,f,r,bump_head,n,,,bump_head
 fruit,4,f,r,that_guy,t,,,that_guy
 fry,3,f,r,explorer,,,,explorer
@@ -196,7 +195,6 @@ fuel,3,f,that_guy,l,,,,that_guy
 funny,4,f,think,n,spider,,,think
 fur,2,f,gorilla,,,,,gorilla
 fury,3,f,give,spider,,,,give
-fuse,3,f,that_guy,s,,,,that_guy
 game,3,g,hello,m,,,,hello
 gate,3,g,hello,t,,,,hello
 gear,2,g,sound,,,,,sound
@@ -352,7 +350,6 @@ old,3,scare,l,d,,,,scare
 on,2,orcs,n,,,,,orcs
 open,4,scare,p,listen,n,,,scare
 other,3,think,th,gorilla,,,,think
-ought,2,orcs,t,,,,,orcs
 out,2,bump_head,t,,,,,bump_head
 over,3,scare,v,gorilla,,,,scare
 owl,2,bump_head,l,,,,,bump_head
@@ -461,7 +458,7 @@ smell,4,s,m,listen,l,,,listen
 smoke,4,s,m,scare,k,,,scare
 snail,4,s,n,hello,l,,,hello
 snooze,4,s,n,that_guy,z,,,that_guy
-so,2,s,scare,,,,,scare
+sew,2,s,scare,,,,,scare
 soil,3,s,howler_monkey,l,,,,howler_monkey
 some,3,s,think,m,,,,think
 son,3,s,think,n,,,,think
@@ -494,7 +491,6 @@ street,5,s,t,r,spider,t,,spider
 stripe,5,s,t,r,explorer,p,,explorer
 stroke,5,s,t,r,scare,k,,scare
 stump,5,s,t,think,m,p,,think
-such,3,s,think,ch,,,,think
 suit,3,s,that_guy,t,,,,that_guy
 sum,3,s,think,m,,,,think
 sun,3,s,think,n,,,,think
@@ -508,17 +504,14 @@ take,3,t,hello,k,,,,hello
 tap,3,t,mudslide,p,,,,mudslide
 tar,2,t,pirate,,,,,pirate
 taught,3,t,orcs,t,,,,orcs
-tear,2,t,sound,,,,,sound
+tear,2,t,air,,,,,air
 tell,3,t,listen,l,,,,listen
 ten,3,t,listen,n,,,,listen
 test,4,t,listen,s,t,,,listen
 thaw,2,th,baby_monkey,,,,,baby_monkey
 them,3,th,listen,m,,,,listen
 then,3,th,listen,n,,,,listen
-these,3,th,spider,s,,,,spider
 they,2,th,hello,,,,,hello
-those,3,th,scare,s,,,,scare
-though,2,th,scare,,,,,scare
 thought,3,th,orcs,t,,,,orcs
 thread,4,th,r,listen,d,,,listen
 three,3,th,r,spider,,,,spider
@@ -553,7 +546,6 @@ us,2,think,s,,,,,think
 use,2,that_guy,s,,,,,that_guy
 veil,3,v,hello,l,,,,hello
 vein,3,v,hello,n,,,,hello
-very,4,v,hello,r,spider,,,hello
 wait,3,w,hello,t,,,,hello
 want,4,w,orcs,n,t,,,orcs
 water,4,w,orcs,t,gorilla,,,orcs
@@ -577,8 +569,6 @@ wood,3,w,backpack,d,,,,backpack
 work,3,w,gorilla,k,,,,gorilla
 world,4,w,gorilla,l,d,,,gorilla
 worm,3,w,gorilla,m,,,,gorilla
-worse,4,w,gorilla,r,s,,,gorilla
-would,3,w,backpack,d,,,,backpack
 write,3,r,explorer,t,,,,explorer
 yard,3,y,pirate,d,,,,pirate
 yarn,3,y,pirate,n,,,,pirate

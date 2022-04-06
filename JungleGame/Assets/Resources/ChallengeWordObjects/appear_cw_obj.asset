@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: appear_cw_obj
   m_EditorClassIdentifier: 
   word: appear
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: fee76cd099f29ab42b9458771ecaa458, type: 3}
   sprite: {fileID: 21300000, guid: d73dac2c67bedf14d8936c3e7cd8033c, type: 3}
   elkoninList: 060000002200000010000000000000000000000000000000
   elkoninCount: 3

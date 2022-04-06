@@ -1936,6 +1936,7 @@ GameObject:
   - component: {fileID: 713504169}
   - component: {fileID: 713504168}
   - component: {fileID: 713504167}
+  - component: {fileID: 713504170}
   m_Layer: 17
   m_Name: DeleteProfileConfirmationWindow
   m_TagString: Untagged
@@ -2016,6 +2017,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713504165}
   m_CullTransparentMesh: 1
+--- !u!114 &713504170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713504165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0.4822326, b: 0.5188679, a: 1}
+  m_EffectDistance: {x: 8, y: 8}
+  m_UseGraphicAlpha: 1
 --- !u!1 &736488935
 GameObject:
   m_ObjectHideFlags: 0
