@@ -99,18 +99,24 @@ public class ScrollMapManager : MonoBehaviour
 
     void Update()
     {
+        // skip if not interactable OR playing talkie OR minigamewheel out OR settings window open OR royal decree open OR wagon open
+        if (TalkieManager.instance.talkiePlaying || 
+            MinigameWheelController.instance.minigameWheelOut || 
+            SettingsManager.instance.settingsWindowOpen || 
+            RoyalDecreeController.instance.isOpen ||
+            StickerSystem.instance.wagonOpen)
+            
+            return;
+        
         // detect mouse input for map dragging
         if (Input.GetMouseButtonDown(0) && !holding)
         {
             holding = true;
             startDragPos = Input.mousePosition;
-            print ("detected mouse down");
         }
         // detect if mouse is no longer being held
         else if (Input.GetMouseButtonUp(0) && holding)
         {
-            print ("detected mouse up");
-
             if (startDragPos.x > Input.mousePosition.x)
             {
                 OnGoRightPressed();

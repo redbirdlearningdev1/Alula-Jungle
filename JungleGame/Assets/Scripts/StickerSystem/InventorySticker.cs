@@ -92,6 +92,9 @@ public class InventorySticker : MonoBehaviour, IPointerUpHandler, IPointerDownHa
     {
         if (isPressed)
         {
+            // place sticker down
+            // StickerSystem.instance.PlaceStickerOnStickerBoard();
+
             isPressed = false;
         }
     }
