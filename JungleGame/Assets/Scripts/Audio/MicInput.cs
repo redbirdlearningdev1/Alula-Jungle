@@ -16,11 +16,11 @@ public class MicInput : MonoBehaviour
     private string _device;
     public int micDeviceIndex;
 
-    void Awake() 
+    void Awake()
     {
         if (instance == null)
             instance = this;
-        
+
         //InitMic();
     }
 
@@ -37,7 +37,7 @@ public class MicInput : MonoBehaviour
                 GameManager.instance.SendLog("MicInput", "audio input device set to: " + _device);
             }
             else
-            {   
+            {
                 GameManager.instance.SendLog("MicInput", "no microphone devices found");
                 return;
             }
@@ -75,7 +75,10 @@ public class MicInput : MonoBehaviour
         float[] waveData = new float[_sampleWindow];
         int micPosition = Microphone.GetPosition(null) - (_sampleWindow + 1); // null means the first microphone
         if (micPosition < 0) return 0;
-        _clipRecord.GetData(waveData, micPosition);
+        if (_clipRecord != null)
+        {
+            _clipRecord.GetData(waveData, micPosition);
+        }
         // Getting a peak on the last 128 samples
         for (int i = 0; i < _sampleWindow; i++)
         {
