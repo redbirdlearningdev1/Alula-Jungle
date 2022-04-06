@@ -45,6 +45,18 @@ SpriteAtlas:
       m_Overridden: 1
       m_AndroidETC2FallbackOverride: 0
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 29
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
       padding: 4
@@ -96,9 +108,10 @@ SpriteAtlas:
   - {fileID: 21300000, guid: a6aaca58c1c054842bab632987929708, type: 3}
   - {fileID: 21300000, guid: c432f2b8f0dfe5044977af9d05fb2b8d, type: 3}
   - {fileID: 21300000, guid: 8b9652590b71b744f9fedf4f1ddf74e6, type: 3}
-  - {fileID: 21300000, guid: 1c5c54596b88fbc459cd0b7afce0b9a6, type: 3}
+  - {fileID: 21300000, guid: 1364895900f1c164e9956c50ea821cdc, type: 3}
   - {fileID: 21300000, guid: 34d390b9b1e2d4b4c87b23abf986a7dd, type: 3}
   - {fileID: 21300000, guid: 604817b9c10933e41bc39fd0fee9ff47, type: 3}
+  - {fileID: 21300000, guid: ece000d9b5eda3f45a566d42a4dc9457, type: 3}
   - {fileID: 21300000, guid: c373b0e941889f2499037bdd540a8db0, type: 3}
   - {fileID: 21300000, guid: 80ffc3f94acd8fe4bb5adf248bd7bc72, type: 3}
   - {fileID: 21300000, guid: f1e5d71abd626d04c8b4e689e3d37153, type: 3}
@@ -111,7 +124,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9f32583b569ce4948a12de033f323cae, type: 3}
   - {fileID: 21300000, guid: 51b3cf4b82fa2f24a84833c0418e1f6e, type: 3}
   - {fileID: 21300000, guid: 647b1e9b661bf3a4e93912b1542df286, type: 3}
-  - {fileID: 21300000, guid: a8f7b1bb73ec44d46877b1c139615554, type: 3}
   - {fileID: 21300000, guid: 3a79eaebdf1198b429d068293dab5357, type: 3}
   - {fileID: 21300000, guid: 32fa500c61d55424592da4c1131fd2da, type: 3}
   - {fileID: 21300000, guid: 5fd5781c8ad07254aa3ed63df77c4ae3, type: 3}
@@ -163,9 +175,10 @@ SpriteAtlas:
   - yerCoin15
   - yerCoin46
   - yerCoin54
-  - yerCoin17
+  - yerCoin43
   - yerCoin23
   - yerCoin44
+  - yerCoin17
   - yerCoin26
   - yerCoin56
   - yerCoin0
@@ -178,7 +191,6 @@ SpriteAtlas:
   - yerCoin30
   - yerCoin59
   - yerCoin4
-  - yerCoin43
   - yerCoin41
   - yerCoin34
   - yerCoin50
