@@ -74,6 +74,7 @@ public class GameManager : DontDestroy<GameManager>
 
         // init mic
         MicInput.instance.InitMic();
+        MicInput.instance.StopMicrophone();
 
         // set default volumes
         AudioManager.instance.SetMasterVolume(AudioManager.default_masterVol);

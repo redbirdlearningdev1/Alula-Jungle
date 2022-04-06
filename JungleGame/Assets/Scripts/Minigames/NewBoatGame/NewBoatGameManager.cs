@@ -141,6 +141,9 @@ public class NewBoatGameManager : MonoBehaviour
             float volumeLevel = MicInput.MicLoudness * 200;
             if (volumeLevel >= audioInputThreshold)
             {
+                // stop microphone input
+                MicInput.instance.StopMicrophone();
+
                 micIndicator.AudioInputDetected();
                 boatGameEvent++;
 
@@ -366,6 +369,9 @@ public class NewBoatGameManager : MonoBehaviour
                 repeatTimer = 0f;
                 repeatDuration = 5f;
                 repeatAudio = true;
+
+                // init mic
+                MicInput.instance.InitMic();
 
                 // turn on audio indicator
                 micIndicator.ShowIndicator();
