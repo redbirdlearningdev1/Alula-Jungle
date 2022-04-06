@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1715680194737718441}
   - component: {fileID: 5152800879678983414}
   - component: {fileID: 3000245245456414645}
-  - component: {fileID: 979723781235867455}
   - component: {fileID: 229551302442029374}
   m_Layer: 5
   m_Name: ConsonantCoin
@@ -55,7 +54,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  glowController: {fileID: 0}
 --- !u!222 &8791190782058932534
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -102,7 +100,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710709679
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 52c97fa25d9c4694183cafdb5602a15e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -128,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoSizeToRect: 0
+  rect: {fileID: 8791190782058932523}
   extraPaddingMultiplier: 0
   spriteResolution: {x: 348, y: 380}
   scale: 0.15
@@ -149,24 +148,6 @@ MonoBehaviour:
   alphaThreshold: 0.01
   drawOutside: 0
   enableInstancing: 0
---- !u!114 &979723781235867455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8791190782058932522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79290a62fb8d9794588d5d834d891035, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deactivated: 0
-  glowTime: 0.2
-  brightnessOn: 3.6
-  brightnessOff: 0
-  outlineOn: 5
-  outlineOff: 0
 --- !u!95 &229551302442029374
 Animator:
   serializedVersion: 3

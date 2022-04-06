@@ -45,6 +45,18 @@ SpriteAtlas:
       m_Overridden: 1
       m_AndroidETC2FallbackOverride: 0
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 29
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
       padding: 4
@@ -107,9 +119,9 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2b61f1fa97e5dcc46862d479cd5426ef, type: 3}
   - {fileID: 21300000, guid: 3fcc6a3b758a61b45878cc20e2ae77c9, type: 3}
   - {fileID: 21300000, guid: 6832284bb1aac4a4e99e00e529e730bb, type: 3}
-  - {fileID: 21300000, guid: bcadeb8bd87c83046b0e869f53a4f8de, type: 3}
   - {fileID: 21300000, guid: 32d450abff53d504ab929ece36179b1e, type: 3}
   - {fileID: 21300000, guid: 3936c30c1cfc5f946962a6456bc8e76d, type: 3}
+  - {fileID: 21300000, guid: 88bd940cc67141f4da03a25709afc7b0, type: 3}
   - {fileID: 21300000, guid: d895f91c66518d94694e55502d4d411e, type: 3}
   - {fileID: 21300000, guid: 0be6d15c8ed03d843b107f217b482b6c, type: 3}
   - {fileID: 21300000, guid: d954bf7cd70f7b94fa96d49e34b85061, type: 3}
@@ -174,9 +186,9 @@ SpriteAtlas:
   - awCoin64
   - awCoin49
   - awCoin28
-  - awCoin35
   - awCoin0
   - awCoin33
+  - awCoin35
   - awCoin39
   - awCoin52
   - awCoin16
