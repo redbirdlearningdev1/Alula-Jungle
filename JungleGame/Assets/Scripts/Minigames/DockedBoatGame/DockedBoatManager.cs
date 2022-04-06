@@ -187,6 +187,11 @@ public class DockedBoatManager : MonoBehaviour
                 }
             }
         }
+
+        yield return new WaitForSeconds(0.5f);
+
+        // show settings button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
     }
 
     public void BoatButtonPressed(BoatButtonID id)

@@ -14,6 +14,7 @@ public class WordFactoryRaycaster : MonoBehaviour
     [SerializeField] private Transform selectedObjectParent;
 
     private bool polaroidAudioPlaying = false;
+    private string prevWord;
     
 
     void Awake()
@@ -80,7 +81,7 @@ public class WordFactoryRaycaster : MonoBehaviour
             selectedObject = null;
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !polaroidAudioPlaying)
         {
             var pointerEventData = new PointerEventData(EventSystem.current);
             pointerEventData.position = Input.mousePosition;
@@ -96,8 +97,10 @@ public class WordFactoryRaycaster : MonoBehaviour
                         selectedObject = result.gameObject;
                         selectedObject.gameObject.transform.SetParent(selectedObjectParent);
                         selectedObject.GetComponent<Polaroid>().LerpScale(1.25f, 0.1f);
+
+                        ChallengeWord word = selectedObject.GetComponent<Polaroid>().challengeWord;
                         // play audio
-                        StartCoroutine(PlayPolaroidAudio(selectedObject.GetComponent<Polaroid>().challengeWord.audio));
+                        StartCoroutine(PlayPolaroidAudio(word.audio, word.name));
                         // stop polaroid wiggle
                         WordFactoryBlendingManager.instance.TogglePolaroidsWiggle(false);
                         // audio fx
@@ -113,8 +116,17 @@ public class WordFactoryRaycaster : MonoBehaviour
         }
     }
 
-    private IEnumerator PlayPolaroidAudio(AudioClip audio)
-    {
+    private IEnumerator PlayPolaroidAudio(AudioClip audio, string word)
+    {   
+        // return if already playing word
+        if (prevWord == word)
+        {
+            print ("here");
+            yield break;
+        }
+            
+        prevWord = word;
+
         if (polaroidAudioPlaying)
             AudioManager.instance.StopTalk();
 
@@ -124,5 +136,6 @@ public class WordFactoryRaycaster : MonoBehaviour
         yield return new WaitForSeconds(audio.length + 0.1f);
 
         polaroidAudioPlaying = false;
+        prevWord = null;
     }
 }
