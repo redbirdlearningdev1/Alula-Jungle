@@ -84,9 +84,10 @@ public class StickerSystem : MonoBehaviour
     private bool holdingSticker;
     private bool readyToPlaceSticker;
     private bool deleteStickerMode;
+
     [HideInInspector] public bool readyToGlueSticker;
 
-
+    private bool doubleClickToPlaceSticker = true;
 
 
     void Awake()
@@ -131,6 +132,11 @@ public class StickerSystem : MonoBehaviour
         uncommonVP.targetCamera = GameManager.instance.globalCamera;
         rareVP.targetCamera = GameManager.instance.globalCamera;
         legendaryVP.targetCamera = GameManager.instance.globalCamera;
+
+#if UNITY_IOS
+        // set sticker drag mode to no double click
+        doubleClickToPlaceSticker = false;
+#endif
     }
 
     void Update() 
@@ -151,26 +157,55 @@ public class StickerSystem : MonoBehaviour
 
         if (holdingSticker)
         {
-            // let go of sticker after clicking again
-            if (Input.GetMouseButtonDown(0) && readyToPlaceSticker)
+            if (doubleClickToPlaceSticker)
             {
-                holdingSticker = false; 
-
-                hideInventoryArea.raycastTarget = false;
-                openInventoryArea.raycastTarget = false;
-
-                // stop sticker wiggle
-                currentHeldSticker.GetComponent<StickerImage>().wiggleController.StopWiggle();
-
-                // return sticker to inventory if inventory is open
-                if (StickerInventory.instance.currentState == InventoryState.Open)
+                // let go of sticker after clicking again
+                if (Input.GetMouseButtonDown(0) && readyToPlaceSticker)
                 {
-                    ReturnStickerToInventory();
+                    holdingSticker = false; 
+
+                    hideInventoryArea.raycastTarget = false;
+                    openInventoryArea.raycastTarget = false;
+
+                    // stop sticker wiggle
+                    currentHeldSticker.GetComponent<StickerImage>().wiggleController.StopWiggle();
+
+                    // return sticker to inventory if inventory is open
+                    if (StickerInventory.instance.currentState == InventoryState.Open)
+                    {
+                        ReturnStickerToInventory();
+                    }
+                    // place sticker on current stickerboard (not glue)
+                    else
+                    {
+                        PlaceStickerOnStickerBoard();
+                    }
                 }
-                // place sticker on current stickerboard (not glue)
-                else
+            }
+            else
+            {
+                // let go of sticker after letting go
+                if (Input.GetMouseButtonUp(0))
                 {
-                    StartCoroutine(PlaceStickerOnStickerBoard());
+                    holdingSticker = false; 
+
+                    hideInventoryArea.raycastTarget = false;
+                    openInventoryArea.raycastTarget = false;
+
+                    // stop sticker wiggle
+                    currentHeldSticker.GetComponent<StickerImage>().wiggleController.StopWiggle();
+
+                    // return sticker to inventory if inventory is open OR not ready to place sticker
+                    if (StickerInventory.instance.currentState == InventoryState.Open || !readyToPlaceSticker)
+                    {
+                        ReturnStickerToInventory();
+                        StickerInventory.instance.SetInventoryState(InventoryState.Open);
+                    }
+                    // place sticker on current stickerboard (not glue)
+                    else
+                    {
+                        PlaceStickerOnStickerBoard();
+                    }
                 }
             }
 
@@ -272,7 +307,7 @@ public class StickerSystem : MonoBehaviour
 
         readyToPlaceSticker = false;
         holdingSticker = true;
-        StartCoroutine(ReadyToPlaceStickerDelay(0.5f));
+        StartCoroutine(ReadyToPlaceStickerDelay(0.1f));
 
         hideInventoryArea.raycastTarget = true;
         openInventoryArea.raycastTarget = true;
@@ -309,7 +344,12 @@ public class StickerSystem : MonoBehaviour
         currentHeldSticker = null;
     }
 
-    private IEnumerator PlaceStickerOnStickerBoard()
+    public void PlaceStickerOnStickerBoard()
+    {   
+        StartCoroutine(PlaceStickerOnStickerBoardRoutine());
+    }   
+
+    private IEnumerator PlaceStickerOnStickerBoardRoutine()
     {
         // make area raycastable
         validInventoryArea.raycastTarget = true;
@@ -1039,7 +1079,6 @@ public class StickerSystem : MonoBehaviour
         wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
 
         wagonAnimating = true;
-        wagonOpen = false;
         StartCoroutine(HideWagon());
     }
 
@@ -1179,6 +1218,7 @@ public class StickerSystem : MonoBehaviour
         // animation done - remove raycast
         RaycastBlockerController.instance.RemoveRaycastBlocker("hide_wagon_raycast");
         wagonAnimating = false;
+        wagonOpen = false;
     }
 
     /* 
