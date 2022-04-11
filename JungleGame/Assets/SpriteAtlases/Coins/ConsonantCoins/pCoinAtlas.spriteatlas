@@ -66,14 +66,147 @@ SpriteAtlas:
       enableTightPacking: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
-    packables: []
-    totalSpriteSurfaceArea: 0
+    packables:
+    - {fileID: 102900000, guid: 2ca9a5eeeaf0ebc4780ef8fef84c8c5f, type: 3}
+    totalSpriteSurfaceArea: 3936768
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites: []
-  m_PackedSpriteNamesToIndex: []
+  m_PackedSprites:
+  - {fileID: 21300000, guid: c837433004ba35143ac237448cad5e4f, type: 3}
+  - {fileID: 21300000, guid: 0c116750b82483940bf3fd4eab9dcacf, type: 3}
+  - {fileID: 21300000, guid: 9057ba90cf4269b45be449654b8aaa37, type: 3}
+  - {fileID: 21300000, guid: 7f15a611455e90c479fcacf9c9a9b315, type: 3}
+  - {fileID: 21300000, guid: 4d11162101193d7458eb9f1a8c505f2b, type: 3}
+  - {fileID: 21300000, guid: 9b631591ab4c0aa4a909c7c294565614, type: 3}
+  - {fileID: 21300000, guid: c044f5c17c18128439693c3fec427335, type: 3}
+  - {fileID: 21300000, guid: 85a5d4e10bf1fe24d94cfdd61466826f, type: 3}
+  - {fileID: 21300000, guid: 777673f1caec3d44ca2e1c331dd81e4b, type: 3}
+  - {fileID: 21300000, guid: 9be24522afc818442a49bade3a1b3c05, type: 3}
+  - {fileID: 21300000, guid: 7ff32d3201715384c92394515210e11c, type: 3}
+  - {fileID: 21300000, guid: 5e4c284259d822944931f6a1c4cd2353, type: 3}
+  - {fileID: 21300000, guid: 4c1310525c2a082449076a1abaf60cb9, type: 3}
+  - {fileID: 21300000, guid: 8a7eafa277af8cb4e993ad07831c670a, type: 3}
+  - {fileID: 21300000, guid: 86fa3dc2b628ee04085457c965b21040, type: 3}
+  - {fileID: 21300000, guid: d39ccd13498d8da4f9eb5f2317086fdc, type: 3}
+  - {fileID: 21300000, guid: e7391043c9a70b94e8bc6746ba68a92e, type: 3}
+  - {fileID: 21300000, guid: 602a18630fb876e44b2deaa65fabe711, type: 3}
+  - {fileID: 21300000, guid: 8e2e3f63736d31b4b84dd68bbc851d5d, type: 3}
+  - {fileID: 21300000, guid: 32d2367333f74c54ab7dccb602766d84, type: 3}
+  - {fileID: 21300000, guid: cd8f9cc3c589b6f4b9cdfc81b511e938, type: 3}
+  - {fileID: 21300000, guid: c4c247e3c7cb1a14bba5a73149ced65e, type: 3}
+  - {fileID: 21300000, guid: d496a5c4b90df48429a2c92e6b879b10, type: 3}
+  - {fileID: 21300000, guid: 82d1dec4f5dafa847a2d2b75620d24c6, type: 3}
+  - {fileID: 21300000, guid: 3bf10fc4f43760b40bc2a3cc0b36c5d8, type: 3}
+  - {fileID: 21300000, guid: 620772056e5460e47aaeba57d91a5a30, type: 3}
+  - {fileID: 21300000, guid: 08e6c115365be994a9fe270fa2d26cb4, type: 3}
+  - {fileID: 21300000, guid: be863725952930344bbd5316cd2ed12a, type: 3}
+  - {fileID: 21300000, guid: 2ff0bc352840eb24a898b3902c3961a5, type: 3}
+  - {fileID: 21300000, guid: 920d7d1663d64c048842e3abffd24ac6, type: 3}
+  - {fileID: 21300000, guid: c4656666d83dc4f4187e2b0c85106947, type: 3}
+  - {fileID: 21300000, guid: 7d8abf6623d9ab34696d790be31d56db, type: 3}
+  - {fileID: 21300000, guid: 2e3699c61c192f245bc504ffe4b4d286, type: 3}
+  - {fileID: 21300000, guid: ada20ad6052ff8c4888bb6574a01f9f2, type: 3}
+  - {fileID: 21300000, guid: 6b5a3ad6f3d9c0e458c48ed7fb257a8b, type: 3}
+  - {fileID: 21300000, guid: d6d59f176ce92a74b9ba815ed2efab0f, type: 3}
+  - {fileID: 21300000, guid: f8ff2867303cb9844a904fd69343db79, type: 3}
+  - {fileID: 21300000, guid: 4dfb16774c072b342b347011df77f975, type: 3}
+  - {fileID: 21300000, guid: 9aa9a59765f4ecc42a8f79ba3a61a663, type: 3}
+  - {fileID: 21300000, guid: ac896d9712ec6ac48b36fc7f11fa9c88, type: 3}
+  - {fileID: 21300000, guid: 4a8b70d744222ad41ad8049d1ddc3eff, type: 3}
+  - {fileID: 21300000, guid: 6a35f608d8c0dc94db422dabd460409b, type: 3}
+  - {fileID: 21300000, guid: 66eb83483819f6241be1758113e52cad, type: 3}
+  - {fileID: 21300000, guid: f3b47c98aef899d4aa4cabae6f9d78e7, type: 3}
+  - {fileID: 21300000, guid: 06848db8bd8fa414a98aebdb3a708744, type: 3}
+  - {fileID: 21300000, guid: 12d5d5e85bd88b3468fa270612264140, type: 3}
+  - {fileID: 21300000, guid: b7ab6229c04dabb4a8f55a2a5a02fb97, type: 3}
+  - {fileID: 21300000, guid: 88a626297c8250b4bbf14eb4e786f111, type: 3}
+  - {fileID: 21300000, guid: db80d259d82bed246a8a971beea8f87a, type: 3}
+  - {fileID: 21300000, guid: 4a2251698151fce40b56818fb2508188, type: 3}
+  - {fileID: 21300000, guid: 38933a89700512a46b028922840f1a58, type: 3}
+  - {fileID: 21300000, guid: 8901dcb910e005141a294c4090d05d75, type: 3}
+  - {fileID: 21300000, guid: e891c26a2ef7d084d9bcddff9e37d9db, type: 3}
+  - {fileID: 21300000, guid: cd208c2badb7bce4d9bf3caa5d44d1eb, type: 3}
+  - {fileID: 21300000, guid: 197ce1cb57502bb4fabe3551ceefbc4b, type: 3}
+  - {fileID: 21300000, guid: bc03f8ac6957f4c4ab141af168b7988c, type: 3}
+  - {fileID: 21300000, guid: ce0c24bc2f35b3843929a9a60e93edc8, type: 3}
+  - {fileID: 21300000, guid: 2440337dcbf96e84aa6cf015ff74551d, type: 3}
+  - {fileID: 21300000, guid: b3ed2dbd6195a4f41bc7e98eaf95e15f, type: 3}
+  - {fileID: 21300000, guid: 516f8bcd1a2440144a5c6fa2a9de1983, type: 3}
+  - {fileID: 21300000, guid: a9409e0e7c7918e4894cdfeede715faf, type: 3}
+  - {fileID: 21300000, guid: 6abdce0ea4e9483449697a0e816459f2, type: 3}
+  - {fileID: 21300000, guid: 27573b3e91734294280650fec34cf93c, type: 3}
+  - {fileID: 21300000, guid: 137e636ef38b596408f45ee90632e420, type: 3}
+  - {fileID: 21300000, guid: 84fade1fca7439140b96036182c95b87, type: 3}
+  - {fileID: 21300000, guid: 9da438bfcb4220744a61618bf67d5ff6, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - pCoin4
+  - pCoin61
+  - pCoin36
+  - pCoin11
+  - pCoin40
+  - pCoin26
+  - pCoin63
+  - pCoin64
+  - pCoin15
+  - pCoin51
+  - pCoin5
+  - pCoin46
+  - pCoin52
+  - pCoin39
+  - pCoin1
+  - pCoin57
+  - pCoin42
+  - pCoin19
+  - pCoin22
+  - pCoin38
+  - pCoin29
+  - pCoin7
+  - pCoin32
+  - pCoin53
+  - pCoin12
+  - pCoin23
+  - pCoin30
+  - pCoin8
+  - pCoin55
+  - pCoin6
+  - pCoin43
+  - pCoin59
+  - pCoin65
+  - pCoin50
+  - pCoin13
+  - pCoin62
+  - pCoin58
+  - pCoin18
+  - pCoin10
+  - pCoin2
+  - pCoin34
+  - pCoin0
+  - pCoin47
+  - pCoin24
+  - pCoin14
+  - pCoin54
+  - pCoin35
+  - pCoin60
+  - pCoin45
+  - pCoin56
+  - pCoin9
+  - pCoin49
+  - pCoin33
+  - pCoin3
+  - pCoin44
+  - pCoin37
+  - pCoin16
+  - pCoin20
+  - pCoin21
+  - pCoin41
+  - pCoin17
+  - pCoin27
+  - pCoin48
+  - pCoin28
+  - pCoin31
+  - pCoin25
   m_RenderDataMap: {}
   m_Tag: pCoinAtlas
   m_IsVariant: 0
