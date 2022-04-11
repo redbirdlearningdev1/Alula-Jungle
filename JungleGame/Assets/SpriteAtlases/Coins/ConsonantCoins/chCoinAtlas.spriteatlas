@@ -66,14 +66,147 @@ SpriteAtlas:
       enableTightPacking: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
-    packables: []
-    totalSpriteSurfaceArea: 0
+    packables:
+    - {fileID: 102900000, guid: 0c922a634817b9b44b7f6be06b5276ec, type: 3}
+    totalSpriteSurfaceArea: 3936768
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites: []
-  m_PackedSpriteNamesToIndex: []
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 24b0a340b54bcb647a3c053c69ff1ee0, type: 3}
+  - {fileID: 21300000, guid: d5a74b40129cbad4fad59d06e8cccaea, type: 3}
+  - {fileID: 21300000, guid: 1c95db40ce79b08488a81a520f7360fb, type: 3}
+  - {fileID: 21300000, guid: bf50fa60340953c40b920da24e5179c4, type: 3}
+  - {fileID: 21300000, guid: 0d39b2b0990548b4c91c6c84833ce332, type: 3}
+  - {fileID: 21300000, guid: a176933138282c34f92c9b30145cd528, type: 3}
+  - {fileID: 21300000, guid: 3a8e9e716a784ae40b85a5654cc0c310, type: 3}
+  - {fileID: 21300000, guid: 0c77cfa132ae66244a0510702e5bdbbe, type: 3}
+  - {fileID: 21300000, guid: f7ba53b1c46e17f48921339aed7686d3, type: 3}
+  - {fileID: 21300000, guid: 601fa2c151fb39a42bc503e5e75cfea9, type: 3}
+  - {fileID: 21300000, guid: 4ee924623eb987843bb310646e5c2623, type: 3}
+  - {fileID: 21300000, guid: 213f30b22f5175c45bd430c81d6e29e0, type: 3}
+  - {fileID: 21300000, guid: fba590c2e8b472040a3ca1263a731256, type: 3}
+  - {fileID: 21300000, guid: 072c8ac20cf8eb546a9a1177a2f9cb77, type: 3}
+  - {fileID: 21300000, guid: 8457ac03280df3b4e872bf441e7ba366, type: 3}
+  - {fileID: 21300000, guid: 24c18c23b3566a84984187de7c051051, type: 3}
+  - {fileID: 21300000, guid: af345d530c8b53441906d7816efd441e, type: 3}
+  - {fileID: 21300000, guid: 3f4372d3cbc986a439d4c62dac319155, type: 3}
+  - {fileID: 21300000, guid: f25f36340d9ab5f42910a92466c9849f, type: 3}
+  - {fileID: 21300000, guid: ff1de574ed61f9544b4fb397654b0d3d, type: 3}
+  - {fileID: 21300000, guid: 7afa18150415c154fb0f8ecb067d0bfa, type: 3}
+  - {fileID: 21300000, guid: 3f76c3755fc101548b51551dd093a578, type: 3}
+  - {fileID: 21300000, guid: 67a7f6f55d7785e46af681dc5c7c9870, type: 3}
+  - {fileID: 21300000, guid: 2f00b406747101b4a8a5022daa6ed8ae, type: 3}
+  - {fileID: 21300000, guid: a8c50d66852c0a04488238f8dc4efa3d, type: 3}
+  - {fileID: 21300000, guid: 701053b62e100784d951d5f8c856b98b, type: 3}
+  - {fileID: 21300000, guid: ab57b607236cacc4ba3eb895a7a46a5a, type: 3}
+  - {fileID: 21300000, guid: f2f07a47ba737a34581b4b067de99dbf, type: 3}
+  - {fileID: 21300000, guid: 1636d377c9e385d4ba245d2a7dcecca7, type: 3}
+  - {fileID: 21300000, guid: 6f83167784033db489e23e5987fede8b, type: 3}
+  - {fileID: 21300000, guid: c295cae7503a64145b29d0e64696739d, type: 3}
+  - {fileID: 21300000, guid: 756509085d47f3e4c8e1089447e072db, type: 3}
+  - {fileID: 21300000, guid: fb40ec18d90e4714797fa410de7891ab, type: 3}
+  - {fileID: 21300000, guid: 1934527821e8bda49924187d24a43dc3, type: 3}
+  - {fileID: 21300000, guid: 2f3551e8a08ada94d9cdc348974309a8, type: 3}
+  - {fileID: 21300000, guid: d41fd8f87b485e148a1b098669538703, type: 3}
+  - {fileID: 21300000, guid: f91c8da92d0f53c418ba09d50073610c, type: 3}
+  - {fileID: 21300000, guid: dff1da1aecabb244caf695864ae3b2b7, type: 3}
+  - {fileID: 21300000, guid: 430db13a181568347b8429ad7b7ff31b, type: 3}
+  - {fileID: 21300000, guid: 75f9aadab79705641857cfb4ca6d79eb, type: 3}
+  - {fileID: 21300000, guid: 35bd2c0baeabd1b4d8f0eb3bbffa472a, type: 3}
+  - {fileID: 21300000, guid: ec61473b5aff2d347ac87c65f9b4d7c8, type: 3}
+  - {fileID: 21300000, guid: a059934b3cee25c42af1abdeb1df7bca, type: 3}
+  - {fileID: 21300000, guid: c87cba5b85b63024197bc807358e70ff, type: 3}
+  - {fileID: 21300000, guid: 0ec195fb941cda04c9ecad16092339a6, type: 3}
+  - {fileID: 21300000, guid: 572a5bfbd530f90428311a71739dd2b6, type: 3}
+  - {fileID: 21300000, guid: b02d5e0c75eb3c14098b6e52ce72e3eb, type: 3}
+  - {fileID: 21300000, guid: 5c11143c1ce68e148957db8bd629a814, type: 3}
+  - {fileID: 21300000, guid: d526148c56e528b438abc89501e1de09, type: 3}
+  - {fileID: 21300000, guid: 20b17b8c73aa3e843be52c11c74ab389, type: 3}
+  - {fileID: 21300000, guid: d50a102dcd3da4948b529db9b974a541, type: 3}
+  - {fileID: 21300000, guid: 4d98e86dd7f02014ca93641bff331505, type: 3}
+  - {fileID: 21300000, guid: 696323cd18491af44829f2656f3af178, type: 3}
+  - {fileID: 21300000, guid: 456e181e45db22b48bf8e56253fd353b, type: 3}
+  - {fileID: 21300000, guid: f43ee91ed6ff4cf4e8d28f499fdb914a, type: 3}
+  - {fileID: 21300000, guid: d497ee1e57ffe1d418c9b0d0d00fcd19, type: 3}
+  - {fileID: 21300000, guid: 2e37312e6b572214eb2cf60cf138b363, type: 3}
+  - {fileID: 21300000, guid: 207159aeebe3cf04ab2fe6be0ace90f5, type: 3}
+  - {fileID: 21300000, guid: e84852beafec58940878621386df1ec7, type: 3}
+  - {fileID: 21300000, guid: f4c6cabe75f29c841a5dda77488496ea, type: 3}
+  - {fileID: 21300000, guid: 25b7b1ee256d7154fa6e33866ab37b32, type: 3}
+  - {fileID: 21300000, guid: 057503eec114f284494896854d6feac6, type: 3}
+  - {fileID: 21300000, guid: 7c1b703f8ac26f74186fd0da1bfc9390, type: 3}
+  - {fileID: 21300000, guid: e8d97e6f06b7a7a4e87ecfcd77a00d39, type: 3}
+  - {fileID: 21300000, guid: 13d5cf9fd696fff439e8d6394ac524ad, type: 3}
+  - {fileID: 21300000, guid: 64acacdf07b4a3b4e83dbdefc6ab7583, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - chCoin23
+  - chCoin4
+  - chCoin61
+  - chCoin46
+  - chCoin37
+  - chCoin65
+  - chCoin34
+  - chCoin5
+  - chCoin47
+  - chCoin60
+  - chCoin33
+  - chCoin7
+  - chCoin53
+  - chCoin2
+  - chCoin8
+  - chCoin41
+  - chCoin56
+  - chCoin0
+  - chCoin59
+  - chCoin26
+  - chCoin11
+  - chCoin20
+  - chCoin16
+  - chCoin44
+  - chCoin43
+  - chCoin52
+  - chCoin17
+  - chCoin49
+  - chCoin50
+  - chCoin38
+  - chCoin15
+  - chCoin35
+  - chCoin64
+  - chCoin10
+  - chCoin18
+  - chCoin31
+  - chCoin27
+  - chCoin42
+  - chCoin6
+  - chCoin25
+  - chCoin54
+  - chCoin28
+  - chCoin39
+  - chCoin24
+  - chCoin13
+  - chCoin45
+  - chCoin32
+  - chCoin22
+  - chCoin48
+  - chCoin29
+  - chCoin55
+  - chCoin40
+  - chCoin51
+  - chCoin30
+  - chCoin36
+  - chCoin3
+  - chCoin1
+  - chCoin58
+  - chCoin21
+  - chCoin63
+  - chCoin57
+  - chCoin62
+  - chCoin12
+  - chCoin19
+  - chCoin14
+  - chCoin9
   m_RenderDataMap: {}
   m_Tag: chCoinAtlas
   m_IsVariant: 0
