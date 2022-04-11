@@ -66,14 +66,20 @@ SpriteAtlas:
       enableTightPacking: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
-    packables: []
+    packables:
+    - {fileID: 2800000, guid: 0d485ae35613f484188e701d1690d7c6, type: 3}
+    - {fileID: 2800000, guid: 43f00ba9a23bf1c4088311d0119f9762, type: 3}
     totalSpriteSurfaceArea: 0
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites: []
-  m_PackedSpriteNamesToIndex: []
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 0d485ae35613f484188e701d1690d7c6, type: 3}
+  - {fileID: 21300000, guid: 43f00ba9a23bf1c4088311d0119f9762, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - TitleLogoG2
+  - TitleLogoG2_2
   m_RenderDataMap: {}
   m_Tag: TitleLogoAtlas
   m_IsVariant: 0
