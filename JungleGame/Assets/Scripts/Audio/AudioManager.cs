@@ -220,8 +220,6 @@ public class AudioManager : MonoBehaviour
 
         // Start coroutine to load and play each track in the split song
         StartCoroutine(LoadAndStartSplitSong(songReferences));
-
-        setUpSplitSong = true;
     }
 
     private IEnumerator LoadAndStartSplitSong(List<AssetReference> songReferences)
@@ -233,9 +231,13 @@ public class AudioManager : MonoBehaviour
 
             yield return splitHandle;
 
+            songHandles.Add(splitHandle);
+
             musicSources[count].clip = (AudioClip)splitHandle.Result;
             count++;
         }
+        
+        setUpSplitSong = true;
     }
 
     public void EndSplitSong()
