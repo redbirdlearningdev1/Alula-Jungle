@@ -94,7 +94,7 @@ public class FroggerGameManager : MonoBehaviour
         else
         {
             // start song
-            AudioManager.instance.InitSplitSong(SplitSong.Frogger);
+            AudioManager.instance.InitSplitSong(AudioDatabase.instance.FroggerSongSplit);
             AudioManager.instance.IncreaseSplitSong();
 
             StartCoroutine(StartGame());

@@ -547,7 +547,7 @@ public class TurntablesGameManager : MonoBehaviour
     private IEnumerator StartMusicDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        AudioManager.instance.InitSplitSong(SplitSong.Turntables);
+        AudioManager.instance.InitSplitSong(AudioDatabase.instance.TurntablesSongSplit);
         AudioManager.instance.IncreaseSplitSong();
     }
 

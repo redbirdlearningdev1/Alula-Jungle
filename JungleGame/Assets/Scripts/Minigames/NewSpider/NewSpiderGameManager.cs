@@ -83,7 +83,7 @@ public class NewSpiderGameManager : MonoBehaviour
         else
         {
             // start song
-            AudioManager.instance.InitSplitSong(SplitSong.Spiderweb);
+            AudioManager.instance.InitSplitSong(AudioDatabase.instance.SpiderwebSongSplit);
             AudioManager.instance.IncreaseSplitSong();
 
             StartCoroutine(StartGame());

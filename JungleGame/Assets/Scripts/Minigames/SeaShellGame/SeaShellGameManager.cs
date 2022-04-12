@@ -68,7 +68,7 @@ public class SeaShellGameManager : MonoBehaviour
         else
         {
             // start song
-            AudioManager.instance.InitSplitSong(SplitSong.Seashells);
+            AudioManager.instance.InitSplitSong(AudioDatabase.instance.SeashellsSongSplit);
             AudioManager.instance.IncreaseSplitSong();
 
             StartCoroutine(PregameSetupRoutine());

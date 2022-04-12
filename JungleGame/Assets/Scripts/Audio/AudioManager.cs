@@ -2,16 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-
-public enum SplitSong
-{
-    Frogger,
-    Turntables,
-    Rummage,
-    Spiderweb,
-    Seashells,
-    Pirate
-}
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class AudioManager : MonoBehaviour
 {
@@ -24,6 +16,9 @@ public class AudioManager : MonoBehaviour
     private bool startedSplitSong = false;
     private bool setUpSplitSong = false;
 
+    [Header("Addressable Operation Handles")]
+    [SerializeField] private List<AsyncOperationHandle> songHandles;
+
     [Header("Audio Sources")]
     [SerializeField] private List<AudioSource> musicSources;
     [SerializeField] private AudioSource talkSource;
@@ -33,19 +28,21 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private Transform fxObjectHolder;
 
     // default volumes (on start)
-    public static float default_masterVol =     1f;
-    public static float default_musicVol =      0.25f;
-    public static float default_fxVol =         1f;
-    public static float default_talkVol =       3f;
+    public static float default_masterVol = 1f;
+    public static float default_musicVol = 0.25f;
+    public static float default_fxVol = 1f;
+    public static float default_talkVol = 3f;
 
     private Coroutine smoothSetMusicRoutine = null;
 
-    void Awake() 
+    void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
+
+        songHandles = new List<AsyncOperationHandle>();
     }
 
     /* 
@@ -98,7 +95,7 @@ public class AudioManager : MonoBehaviour
         if (vol <= 0) vol = 0.00001f;
         else if (vol > 1) vol = 1;
 
-        vol = 20f * Mathf.Log10(vol); 
+        vol = 20f * Mathf.Log10(vol);
         masterMixer.SetFloat("fxVol", vol);
     }
 
@@ -152,25 +149,57 @@ public class AudioManager : MonoBehaviour
     ################################################
     */
 
-    public void PlaySong(AudioClip song)
+    public void PlaySong(AssetReference songReference)
     {
         StopMusic();
 
+        StartCoroutine(LoadAndPlaySong(songReference));
+    }
+
+    private IEnumerator LoadAndPlaySong(AssetReference songReference)
+    {
+        AsyncOperationHandle songHandle = songReference.LoadAssetAsync<AudioClip>();
+
+        yield return songHandle;
+
+        AudioClip song = (AudioClip)songHandle.Result;
+        songHandles.Add(songHandle);
+
         if (song == musicSources[0].clip)
-            return;
+        {
+            yield break;
+        }
 
         musicSources[0].clip = song;
         musicSources[0].loop = true;
         musicSources[0].Play();
     }
 
-    public void StopMusic()
+    public void StopMusic(bool loop = false, bool setVolumeZero = false)
     {
         foreach (var source in musicSources)
         {
             source.Stop();
             source.clip = null;
+            if (loop)
+            {
+                source.loop = true;
+            }
+            if (setVolumeZero)
+            {
+                source.volume = 0f;
+            }
         }
+
+        foreach (AsyncOperationHandle handle in songHandles)
+        {
+            if (handle.IsValid())
+            {
+                Addressables.Release(handle);
+            }
+        }
+        songHandles.Clear();
+
     }
 
     /* 
@@ -179,81 +208,38 @@ public class AudioManager : MonoBehaviour
     ################################################
     */
 
-    public void InitSplitSong(SplitSong song)
+
+
+    public void InitSplitSong(List<AssetReference> songReferences)
     {
         currSplitIndex = 0;
         startedSplitSong = false;
 
         // set each source to be empty and ready
-        foreach (var source in musicSources)
-        {
-            source.Stop();
-            source.clip = null;
-            source.loop = true;
-            source.volume = 0f;
-        }
+        StopMusic(true, true);
 
-        // add each clip to source
-        if (song == SplitSong.Frogger)
-        {
-            int count = 0;
-            foreach(var split in AudioDatabase.instance.FroggerSongSplit)
-            {
-                musicSources[count].clip = split;
-                count++;
-            }
-        }
-        else if (song == SplitSong.Turntables)
-        {
-            int count = 0;
-            foreach(var split in AudioDatabase.instance.TurntablesSongSplit)
-            {
-                musicSources[count].clip = split;
-                count++;
-            }
-        }
-        else if (song == SplitSong.Rummage)
-        {
-            int count = 0;
-            foreach(var split in AudioDatabase.instance.RummageSongSplit)
-            {
-                musicSources[count].clip = split;
-                count++;
-            }
-        }
-        else if (song == SplitSong.Spiderweb)
-        {
-            int count = 0;
-            foreach(var split in AudioDatabase.instance.SpiderwebSongSplit)
-            {
-                musicSources[count].clip = split;
-                count++;
-            }
-        }
-        else if (song == SplitSong.Seashells)
-        {
-            int count = 0;
-            foreach(var split in AudioDatabase.instance.SeashellsSongSplit)
-            {
-                musicSources[count].clip = split;
-                count++;
-            }
-        }
-        else if (song == SplitSong.Pirate)
-        {
-            int count = 0;
-            foreach(var split in AudioDatabase.instance.PirateSongSplit)
-            {
-                musicSources[count].clip = split;
-                count++;
-            }
-        }
+        // Start coroutine to load and play each track in the split song
+        StartCoroutine(LoadAndStartSplitSong(songReferences));
 
         setUpSplitSong = true;
     }
 
+    private IEnumerator LoadAndStartSplitSong(List<AssetReference> songReferences)
+    {
+        int count = 0;
+        foreach (AssetReference reference in songReferences)
+        {
+            AsyncOperationHandle splitHandle = reference.LoadAssetAsync<AudioClip>();
+
+            yield return splitHandle;
+
+            musicSources[count].clip = (AudioClip)splitHandle.Result;
+            count++;
+        }
+    }
+
     public void EndSplitSong()
-    {   
+    {
         startedSplitSong = false;
         setUpSplitSong = false;
     }
@@ -269,7 +255,7 @@ public class AudioManager : MonoBehaviour
             currSplitIndex++;
 
             // begin all music sources at once
-            foreach(var source in musicSources)
+            foreach (var source in musicSources)
                 source.Play();
 
             startedSplitSong = true;
@@ -303,7 +289,7 @@ public class AudioManager : MonoBehaviour
         float endVol = StudentInfoSystem.GetCurrentProfile().musicVol;
 
         while (true)
-        {   
+        {
             timer += Time.deltaTime;
             if (timer >= duration)
             {
@@ -314,7 +300,7 @@ public class AudioManager : MonoBehaviour
             float tempVol = Mathf.Lerp(0f, endVol, timer / duration);
             source.volume = tempVol;
             yield return null;
-        }   
+        }
     }
 
     private IEnumerator SmoothEndMusicSource(AudioSource source, float duration)
@@ -323,7 +309,7 @@ public class AudioManager : MonoBehaviour
         float startVol = source.volume;
 
         while (true)
-        {   
+        {
             timer += Time.deltaTime;
             if (timer >= duration)
             {
@@ -400,7 +386,7 @@ public class AudioManager : MonoBehaviour
         else
         {
             if (num >= 0 && num < 8)
-            PlayFX_oneShot(AudioDatabase.instance.CoinDropArray[num], 1f);
+                PlayFX_oneShot(AudioDatabase.instance.CoinDropArray[num], 1f);
         }
     }
 
@@ -415,10 +401,10 @@ public class AudioManager : MonoBehaviour
         else
         {
             if (num >= 0 && num < 6)
-            PlayFX_oneShot(AudioDatabase.instance.KeyJingleArray[num], 1f);
+                PlayFX_oneShot(AudioDatabase.instance.KeyJingleArray[num], 1f);
         }
     }
-    
+
     static int stoneLoopCount = 0;
     public void PlayMoveStoneSound(float duration, float pitch)
     {

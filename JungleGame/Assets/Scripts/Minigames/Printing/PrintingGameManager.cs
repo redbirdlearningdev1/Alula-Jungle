@@ -119,7 +119,7 @@ public class PrintingGameManager : MonoBehaviour
         else
         {
             // start song
-            AudioManager.instance.InitSplitSong(SplitSong.Pirate);
+            AudioManager.instance.InitSplitSong(AudioDatabase.instance.PirateSongSplit);
             AudioManager.instance.IncreaseSplitSong();
 
             // place menu button

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 
 public class AudioDatabase : MonoBehaviour
@@ -22,16 +24,16 @@ public class AudioDatabase : MonoBehaviour
     */
 
     [Header("Music Database")]
-    public AudioClip SplashScreenSong;
-    public AudioClip ScrollMapSong;
-    public AudioClip WagonWindowSong;
+    public AssetReference SplashScreenSong;
+    public AssetReference ScrollMapSong;
+    public AssetReference WagonWindowSong;
 
-    public AudioClip[] FroggerSongSplit;
-    public AudioClip[] TurntablesSongSplit;
-    public AudioClip[] RummageSongSplit;
-    public AudioClip[] SpiderwebSongSplit;
-    public AudioClip[] SeashellsSongSplit;
-    public AudioClip[] PirateSongSplit;
+    public List<AssetReference> FroggerSongSplit;
+    public List<AssetReference> TurntablesSongSplit;
+    public List<AssetReference> RummageSongSplit;
+    public List<AssetReference> SpiderwebSongSplit;
+    public List<AssetReference> SeashellsSongSplit;
+    public List<AssetReference> PirateSongSplit;
 
     /* 
     ################################################

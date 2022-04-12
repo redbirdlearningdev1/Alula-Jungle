@@ -5396,6 +5396,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2730366149546073002, guid: d28125f2c69703845bae5a93a83bd1b1,
+        type: 3}
+      propertyPath: ScrollMapSong.m_AssetGUID
+      value: 4db08344590ba68418f0caac091e2ef4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730366149546073002, guid: d28125f2c69703845bae5a93a83bd1b1,
+        type: 3}
+      propertyPath: WagonWindowSong.m_AssetGUID
+      value: b4791af5245fb8b40b092b7cfa1b65cf
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730366149546073002, guid: d28125f2c69703845bae5a93a83bd1b1,
+        type: 3}
+      propertyPath: SplashScreenSong.m_AssetGUID
+      value: f6b91191bfd04a34c860024796deadeb
+      objectReference: {fileID: 0}
     - target: {fileID: 3268676270995648299, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchorMax.y

@@ -92,7 +92,7 @@ public class RummageGameManager : MonoBehaviour
         else
         {
             // start song
-            AudioManager.instance.InitSplitSong(SplitSong.Rummage);
+            AudioManager.instance.InitSplitSong(AudioDatabase.instance.RummageSongSplit);
             AudioManager.instance.IncreaseSplitSong();
 
             StartCoroutine(StartGame());
