@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.AddressableAssets;
 
 public class TigerGameManager : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class TigerGameManager : MonoBehaviour
     [SerializeField] private Transform PhotoEndPos;
 
     public UniversalCoinImage currCoin;
-    private ActionWordEnum currSet; 
+    private ActionWordEnum currSet;
     private ChallengeWord currWord;
     private List<ChallengeWord> prevWords;
 
@@ -65,7 +66,7 @@ public class TigerGameManager : MonoBehaviour
 
     public bool testthis;
     List<ChallengeWord> word_pool = new List<ChallengeWord>();
-    
+
 
     void Awake()
     {
@@ -139,7 +140,7 @@ public class TigerGameManager : MonoBehaviour
     }
 
     private IEnumerator StartGame()
-    {   
+    {
         currCoin.transform.position = coinStartPos.position;
 
         if (playTutorial)
@@ -172,8 +173,8 @@ public class TigerGameManager : MonoBehaviour
                     break;
             }
             tutorialEvent++;
-        }   
-        else if((StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 || testthis))
+        }
+        else if ((StudentInfoSystem.GetCurrentProfile().tPawPolPlayed == 0 || testthis))
         {
             // get correct tutorial polaroids
             List<ChallengeWord> scriptedList = new List<ChallengeWord>();
@@ -183,7 +184,7 @@ public class TigerGameManager : MonoBehaviour
                     scriptedList.AddRange(polaroidsScripted1);
                     currWord = polaroidsScripted1[4];
                     currSet = ActionWordEnum.mudslide;
-                    
+
                     for (int i = 0; i < polaroidC.Count; i++)
                     {
                         polaroidC[i].SetPolaroid(polaroidsScripted1[i]);
@@ -194,7 +195,7 @@ public class TigerGameManager : MonoBehaviour
                     scriptedList.AddRange(polaroidsScripted2);
                     currWord = polaroidsScripted2[2];
                     currSet = ActionWordEnum.orcs;
-                    
+
                     for (int i = 0; i < polaroidC.Count; i++)
                     {
                         polaroidC[i].SetPolaroid(polaroidsScripted2[i]);
@@ -205,7 +206,7 @@ public class TigerGameManager : MonoBehaviour
                     scriptedList.AddRange(polaroidsScripted3);
                     currWord = polaroidsScripted3[1];
                     currSet = ActionWordEnum.poop;
-                    
+
                     for (int i = 0; i < polaroidC.Count; i++)
                     {
                         polaroidC[i].SetPolaroid(polaroidsScripted3[i]);
@@ -216,7 +217,7 @@ public class TigerGameManager : MonoBehaviour
                     scriptedList.AddRange(polaroidsScripted4);
                     currWord = polaroidsScripted4[4];
                     currSet = ActionWordEnum.listen;
-                    
+
                     for (int i = 0; i < polaroidC.Count; i++)
                     {
                         polaroidC[i].SetPolaroid(polaroidsScripted4[i]);
@@ -227,7 +228,7 @@ public class TigerGameManager : MonoBehaviour
                     scriptedList.AddRange(polaroidsScripted5);
                     currWord = polaroidsScripted5[3];
                     currSet = ActionWordEnum.explorer;
-                    
+
                     for (int i = 0; i < polaroidC.Count; i++)
                     {
                         polaroidC[i].SetPolaroid(polaroidsScripted5[i]);
@@ -258,44 +259,66 @@ public class TigerGameManager : MonoBehaviour
         if (playTutorial && tutorialEvent == 1)
         {
             // play tutorial intro 1-2
-            List<AudioClip> clips = new List<AudioClip>();
+            List<AssetReference> clips = new List<AssetReference>();
             clips.Add(GameIntroDatabase.instance.tigerPawPhotosIntro1);
             clips.Add(GameIntroDatabase.instance.tigerPawPhotosIntro2);
+
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[0]));
+            yield return cd.coroutine;
+
+            CoroutineWithData<float> cd2 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[1]));
+            yield return cd2.coroutine;
+
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clips);
-            yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
+            yield return new WaitForSeconds(cd.GetResult() + cd2.GetResult() + 1f);
 
             // play tutorial intro 3
-            AudioClip clip = GameIntroDatabase.instance.tigerPawPhotosIntro3;
+            AssetReference clip = GameIntroDatabase.instance.tigerPawPhotosIntro3;
+
+            CoroutineWithData<float> cd3 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd3.coroutine;
+
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Julius, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
+            yield return new WaitForSeconds(cd3.GetResult() + 1f);
 
             // play tutorial intro 4
             clip = GameIntroDatabase.instance.tigerPawPhotosIntro4;
+
+            CoroutineWithData<float> cd4 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd4.coroutine;
+
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Julius, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
+            yield return new WaitForSeconds(cd4.GetResult() + 1f);
         }
         else if (!playIntro)
         {
             // play start 1
-            AudioClip clip = GameIntroDatabase.instance.tigerPawPhotosStart;
+            AssetReference clip = GameIntroDatabase.instance.tigerPawPhotosStart;
+
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd.coroutine;
+
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
+            yield return new WaitForSeconds(cd.GetResult() + 1f);
         }
         else
         {
-            AudioClip clip = null;
+            AssetReference clip = null;
 
             if (StudentInfoSystem.GetCurrentProfile().currentChapter < Chapter.chapter_5)
             {
                 clip = GameIntroDatabase.instance.tigerPawCoinNewPhotosChapters1_4[Random.Range(0, GameIntroDatabase.instance.tigerPawCoinNewPhotosChapters1_4.Count)];
-            }   
+            }
             else
             {
                 clip = GameIntroDatabase.instance.tigerPawCoinNewPhotosChapters1_4[Random.Range(0, GameIntroDatabase.instance.tigerPawCoinNewPhotosChapter5.Count)];
-            }       
+            }
+
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd.coroutine;
 
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
+            yield return new WaitForSeconds(cd.GetResult() + 1f);
         }
 
         if (!playIntro)
@@ -305,7 +328,7 @@ public class TigerGameManager : MonoBehaviour
             SettingsManager.instance.ToggleMenuButtonActive(true);
         }
 
-        
+
         Tiger.TigerDeal();
         yield return new WaitForSeconds(.6f);
         currCoin.gameObject.transform.position = coinLandPos.position;
@@ -361,11 +384,18 @@ public class TigerGameManager : MonoBehaviour
         if (playTutorial && tutorialEvent == 1)
         {
             // play tutorial intro 5-6
-            List<AudioClip> clips = new List<AudioClip>();
+            List<AssetReference> clips = new List<AssetReference>();
             clips.Add(GameIntroDatabase.instance.tigerPawPhotosIntro5);
             clips.Add(GameIntroDatabase.instance.tigerPawPhotosIntro6);
+
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[0]));
+            yield return cd.coroutine;
+
+            CoroutineWithData<float> cd2 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[1]));
+            yield return cd2.coroutine;
+
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clips);
-            yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
+            yield return new WaitForSeconds(cd.GetResult() + cd2.GetResult() + 1f);
         }
 
         // disable raycaster
@@ -542,8 +572,8 @@ public class TigerGameManager : MonoBehaviour
         }
         else if (numMisses >= 3)
         {
-           StartCoroutine(LoseRoutine());
-           yield break;
+            StartCoroutine(LoseRoutine());
+            yield break;
         }
 
 
@@ -553,31 +583,38 @@ public class TigerGameManager : MonoBehaviour
             if (playTutorial && tutorialEvent == 1)
             {
                 // play start 1
-                AudioClip clip = GameIntroDatabase.instance.tigerPawCoinIntro7;
+                AssetReference clip = GameIntroDatabase.instance.tigerPawCoinIntro7;
+
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(clip.length + 1f); 
+                yield return new WaitForSeconds(cd.GetResult() + 1f);
             }
             else if (numWins < 3)
             {
                 // play julius lose popup
-                AudioClip clip = null;
+                AssetReference clip = null;
 
                 if (StudentInfoSystem.GetCurrentProfile().currentChapter < Chapter.chapter_5)
                 {
                     clip = GameIntroDatabase.instance.tigerPawCoinJuliusLoseChapters1_4[Random.Range(0, GameIntroDatabase.instance.tigerPawCoinJuliusLoseChapters1_4.Count)];
-                }   
+                }
                 else
                 {
                     clip = GameIntroDatabase.instance.tigerPawCoinJuliusLoseChapter5[Random.Range(0, GameIntroDatabase.instance.tigerPawCoinJuliusLoseChapter5.Count)];
-                }       
+                }
+
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd.coroutine;
 
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd.GetResult() + 1f);
             }
             else
             {
                 // play julius final lose popup
-                AudioClip clip = null;
+                AssetReference clip = null;
 
                 if (playTutorial)
                 {
@@ -588,16 +625,18 @@ public class TigerGameManager : MonoBehaviour
                     if (StudentInfoSystem.GetCurrentProfile().currentChapter < Chapter.chapter_5)
                     {
                         clip = GameIntroDatabase.instance.tigerPawCoinFinalJuliusLoseChapters1_4;
-                    }   
+                    }
                     else
                     {
                         clip = GameIntroDatabase.instance.tigerPawCoinFinalJuliusLoseChapters1_4;
-                    }   
+                    }
                 }
-                    
+
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd.coroutine;
 
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd.GetResult() + 1f);
             }
         }
         else
@@ -605,36 +644,42 @@ public class TigerGameManager : MonoBehaviour
             if (numMisses < 3)
             {
                 // play julius win popup
-                AudioClip clip = null;
+                AssetReference clip = null;
 
                 if (StudentInfoSystem.GetCurrentProfile().currentChapter < Chapter.chapter_5)
                 {
                     clip = GameIntroDatabase.instance.tigerPawCoinJuliusWinChapters1_4[Random.Range(0, GameIntroDatabase.instance.tigerPawCoinJuliusWinChapters1_4.Count)];
-                }   
+                }
                 else
                 {
                     clip = GameIntroDatabase.instance.tigerPawCoinJuliusWinChapter5[Random.Range(0, GameIntroDatabase.instance.tigerPawCoinJuliusWinChapter5.Count)];
-                }   
+                }
+
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd.coroutine;
 
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd.GetResult() + 1f);
             }
             else
             {
                 // play julius final win popup
-                AudioClip clip = null;
+                AssetReference clip = null;
 
                 if (StudentInfoSystem.GetCurrentProfile().currentChapter < Chapter.chapter_5)
                 {
                     clip = GameIntroDatabase.instance.tigerPawCoinFinalJuliusWinChapters1_4;
-                }   
+                }
                 else
                 {
                     clip = GameIntroDatabase.instance.tigerPawCoinFinalJuliusWinChapters1_4;
-                }       
+                }
+
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd.coroutine;
 
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd.GetResult() + 1f);
             }
         }
 
@@ -678,12 +723,12 @@ public class TigerGameManager : MonoBehaviour
     public void AIData(StudentPlayerData playerData)
     {
         playerData.tPawPolPlayed = playerData.tPawPolPlayed + 1;
-        playerData.starsTPawPol= CalculateStars() + playerData.starsTPawPol;
+        playerData.starsTPawPol = CalculateStars() + playerData.starsTPawPol;
 
         // save to SIS
         StudentInfoSystem.SaveStudentPlayerData();
     }
-    
+
     private int CalculateStars()
     {
         if (numMisses <= 0)
@@ -692,7 +737,7 @@ public class TigerGameManager : MonoBehaviour
             return 2;
         else if (numMisses == 2)
             return 1;
-        else 
+        else
             return 0;
     }
 }

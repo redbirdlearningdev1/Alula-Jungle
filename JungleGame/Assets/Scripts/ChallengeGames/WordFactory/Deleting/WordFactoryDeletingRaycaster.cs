@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class WordFactoryDeletingRaycaster : MonoBehaviour
 {
@@ -15,7 +17,7 @@ public class WordFactoryDeletingRaycaster : MonoBehaviour
     public float lerpedScale;
 
     private bool polaroidAudioPlaying = false;
-    
+
 
     void Awake()
     {
@@ -51,9 +53,9 @@ public class WordFactoryDeletingRaycaster : MonoBehaviour
             EventSystem.current.RaycastAll(pointerEventData, raycastResults);
 
             bool hitTarget = false;
-            if(raycastResults.Count > 0)
+            if (raycastResults.Count > 0)
             {
-                foreach(var result in raycastResults)
+                foreach (var result in raycastResults)
                 {
                     //print ("found: " + result.gameObject.name);
 
@@ -75,7 +77,7 @@ public class WordFactoryDeletingRaycaster : MonoBehaviour
 
             // audio fx
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f);
-        
+
             // scale up tiger
             EmeraldTigerHolder.instance.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.25f);
             // read coin raycast
@@ -90,9 +92,9 @@ public class WordFactoryDeletingRaycaster : MonoBehaviour
             var raycastResults = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointerEventData, raycastResults);
 
-            if(raycastResults.Count > 0)
+            if (raycastResults.Count > 0)
             {
-                foreach(var result in raycastResults)
+                foreach (var result in raycastResults)
                 {
                     if (result.gameObject.transform.CompareTag("Polaroid"))
                     {
@@ -114,7 +116,7 @@ public class WordFactoryDeletingRaycaster : MonoBehaviour
 
                         // remove coin raycast
                         selectedObject.GetComponent<UniversalCoinImage>().ToggleRaycastTarget(false);
-                        
+
                         // scale up tiger
                         EmeraldTigerHolder.instance.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.25f);
                         // open emerald tiger mouth
@@ -125,15 +127,19 @@ public class WordFactoryDeletingRaycaster : MonoBehaviour
         }
     }
 
-    private IEnumerator PlayPolaroidAudio(AudioClip audio)
+    private IEnumerator PlayPolaroidAudio(AssetReference audioRef)
     {
         if (polaroidAudioPlaying)
             AudioManager.instance.StopTalk();
 
         polaroidAudioPlaying = true;
 
-        AudioManager.instance.PlayTalk(audio);
-        yield return new WaitForSeconds(audio.length + 0.1f);
+
+        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(audioRef));
+        yield return cd.coroutine;
+
+        AudioManager.instance.PlayTalk(audioRef);
+        yield return new WaitForSeconds(cd.GetResult() + 0.1f);
 
         polaroidAudioPlaying = false;
     }

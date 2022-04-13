@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class WordFactorySubstitutingManager : MonoBehaviour
 {
@@ -91,7 +93,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
-        
+
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
@@ -99,7 +101,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         AudioManager.instance.StopMusic();
     }
 
-    private void Start() 
+    private void Start()
     {
         // only turn off tutorial if false
         if (!playTutorial)
@@ -136,7 +138,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
     }
 
     private void PregameSetup()
-    {   
+    {
         // add ambiance
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.05f);
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 0.05f);
@@ -183,21 +185,33 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             if (tutorialEvent == 0)
             {
                 // play tutorial intro 1
-                AudioClip clip = GameIntroDatabase.instance.substitutingIntro1;
+                AssetReference clip = GameIntroDatabase.instance.substitutingIntro1;
+
+                CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd0.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd0.GetResult() + 1f);
 
                 // play tutorial intro 2
                 clip = GameIntroDatabase.instance.substitutingIntro2;
+
+                CoroutineWithData<float> cd1 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd1.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd1.GetResult() + 1f);
             }
             else
             {
                 // play tutorial intro 3
-                AudioClip  clip = GameIntroDatabase.instance.substitutingIntro3;
+                AssetReference clip = GameIntroDatabase.instance.substitutingIntro3;
+
+                CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd0.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-                yield return new WaitForSeconds(clip.length + 1f);           
+                yield return new WaitForSeconds(cd0.GetResult() + 1f);
             }
         }
         else
@@ -208,14 +222,22 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                 yield return new WaitForSeconds(1f);
 
                 // play start 1
-                AudioClip clip = GameIntroDatabase.instance.substitutingStart1;
+                AssetReference clip = GameIntroDatabase.instance.substitutingStart1;
+
+                CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd0.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd0.GetResult() + 1f);
 
                 // play start 2
                 clip = GameIntroDatabase.instance.substitutingStart2;
+
+                CoroutineWithData<float> cd1 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd1.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd1.GetResult() + 1f);
             }
         }
 
@@ -235,7 +257,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                     currentPair = tutorialPair1;
                     currentWord = currentPair.word1;
                     break;
-                
+
                 case 1:
                     currentPair = tutorialPair2;
                     currentWord = currentPair.word1;
@@ -266,9 +288,9 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                 prevPairs.Add(currentPair);
             }
         }
-        
+
         tigerPolaroid.SetPolaroid(currentWord);
-        
+
         yield return new WaitForSeconds(1f);
 
         // move tiger polaroid to middle pos
@@ -291,11 +313,11 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         }
 
         // activate all frames
-        foreach(var frame in framesTarget)
+        foreach (var frame in framesTarget)
         {
             frame.gameObject.SetActive(true);
         }
-        foreach(var frame in framesReal)
+        foreach (var frame in framesReal)
         {
             frame.gameObject.SetActive(true);
         }
@@ -307,7 +329,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             framesReal[5 - i].gameObject.SetActive(false);
             framesTarget[5 - i].gameObject.SetActive(false);
         }
-        
+
         // move target frames
         StartCoroutine(LerpFrameSpacing(frameSpacings[currentWord.elkoninCount - 1], 0f));
 
@@ -357,9 +379,14 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
 
-        tigerPolaroid.LerpScale(1.1f, 0.1f);  
+        tigerPolaroid.LerpScale(1.1f, 0.1f);
+
+
+        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(tigerPolaroid.challengeWord.audio));
+        yield return cd.coroutine;
+
         AudioManager.instance.PlayTalk(tigerPolaroid.challengeWord.audio);
-        yield return new WaitForSeconds(tigerPolaroid.challengeWord.audio.length + 0.5f);
+        yield return new WaitForSeconds(cd.GetResult() + 0.5f);
         tigerPolaroid.LerpScale(1f, 0.1f);
 
         foreach (var coin in currentCoins)
@@ -375,14 +402,22 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             if (tutorialEvent == 1)
             {
                 // play tutorial intro 5
-                AudioClip clip = GameIntroDatabase.instance.substitutingIntro5;
+                AssetReference clip = GameIntroDatabase.instance.substitutingIntro5;
+
+                CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd0.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd0.GetResult() + 1f);
 
                 // play tutorial intro 6
                 clip = GameIntroDatabase.instance.substitutingIntro6;
+
+                CoroutineWithData<float> cd1 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd1.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd1.GetResult() + 1f);
             }
         }
 
@@ -415,21 +450,29 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             if (tutorialEvent == 1)
             {
                 // play tutorial intro 7
-                AudioClip clip = GameIntroDatabase.instance.substitutingIntro7;
+                AssetReference clip = GameIntroDatabase.instance.substitutingIntro7;
+
+                CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd0.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd0.GetResult() + 1f);
 
                 // play tutorial intro 8
                 clip = GameIntroDatabase.instance.substitutingIntro8;
+
+                CoroutineWithData<float> cd1 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd1.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd1.GetResult() + 1f);
             }
         }
 
 
         redAnimator.Play("Win");
         yield return new WaitForSeconds(0.5f);
-        
+
         // remove coin from current coins list
         currentCoins[currentPair.index].gameObject.SetActive(false);
         currentCoins.RemoveAt(currentPair.index);
@@ -451,8 +494,13 @@ public class WordFactorySubstitutingManager : MonoBehaviour
 
         // say red's word
         redPolaroid.LerpScale(1.1f, 0.1f);
+
+
+        cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(redPolaroid.challengeWord.audio));
+        yield return cd.coroutine;
+
         AudioManager.instance.PlayTalk(redPolaroid.challengeWord.audio);
-        yield return new WaitForSeconds(redPolaroid.challengeWord.audio.length + 0.25f);
+        yield return new WaitForSeconds(cd.GetResult() + 0.25f);
         redPolaroid.LerpScale(1f, 0.1f);
 
         // chose which index to be the correct 
@@ -474,7 +522,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         elkoninPool.Remove(currentPair.word2.elkoninList[currentPair.index]);
         elkoninPool.Remove(currentPair.word1.elkoninList[currentPair.index]);
         // remove any locked action word coins
-        foreach(var value in lockedPool)
+        foreach (var value in lockedPool)
         {
             elkoninPool.Remove(value);
         }
@@ -498,9 +546,13 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             if (tutorialEvent == 1)
             {
                 // play tutorial intro 9
-                AudioClip clip = GameIntroDatabase.instance.substitutingIntro9;
+                AssetReference clip = GameIntroDatabase.instance.substitutingIntro9;
+
+                CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd0.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd0.GetResult() + 1f);
             }
         }
 
@@ -514,7 +566,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
 
         // move water coins up
         int count = 0;
-        foreach(var coin in waterCoins)
+        foreach (var coin in waterCoins)
         {
             Vector3 bouncePos = waterCoinActivePos[count].position;
             bouncePos.y += 0.5f;
@@ -534,7 +586,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             if (tutorialEvent == 1)
             {
                 // grow and wiggle correct coin
-                foreach(var coin in waterCoins)
+                foreach (var coin in waterCoins)
                 {
                     if (coin.value == currentTargetValue)
                     {
@@ -542,16 +594,20 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                         coin.LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
                     }
                     else
-                    {   
+                    {
                         coin.LerpScale(new Vector2(0.8f, 0.8f), 0.1f);
                         coin.SetTransparency(0.5f, true);
                     }
-                }   
+                }
 
                 // play tutorial intro 10
-                AudioClip clip = GameIntroDatabase.instance.substitutingIntro10;
+                AssetReference clip = GameIntroDatabase.instance.substitutingIntro10;
+
+                CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd0.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd0.GetResult() + 1f);
             }
         }
 
@@ -604,7 +660,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                 image.color = new Color(1f, 1f, 1f, targetAlpha);
                 break;
             }
-            
+
             float tempAlpha = Mathf.Lerp(start, targetAlpha, timer / totalTime);
             image.color = new Color(1f, 1f, 1f, tempAlpha);
             yield return null;
@@ -671,7 +727,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(coin.value).audio);
         // water coin differential
         if (!waterCoin) coin.LerpScale(new Vector2(1.35f, 1.35f), 0.25f);
-        else  coin.LerpScale(new Vector2(1.1f, 1.1f), 0.25f);
+        else coin.LerpScale(new Vector2(1.1f, 1.1f), 0.25f);
 
         yield return new WaitForSeconds(1f);
         // return if current water coin
@@ -683,7 +739,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
 
         // water coin differential
         if (!waterCoin) coin.LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
-        else  coin.LerpScale(Vector2.one, 0.25f);
+        else coin.LerpScale(Vector2.one, 0.25f);
 
         playingCoinAudio = false;
     }
@@ -705,7 +761,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             if (skipCurrentCoin && waterCoins[i] == currWaterCoin)
-            { 
+            {
                 // skip coin
             }
             else
@@ -731,7 +787,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         {
             currentCoins.Add(coin);
         }
-        
+
         // audio fx
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SelectBoop, 0.5f);
 
@@ -764,7 +820,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         if (win)
-        {   
+        {
             numWins++;
 
             // reset coin wiggle
@@ -786,8 +842,12 @@ public class WordFactorySubstitutingManager : MonoBehaviour
 
             // say new challenge word
             redPolaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
+
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(currentTargetWord.audio));
+            yield return cd.coroutine;
+
             AudioManager.instance.PlayTalk(currentTargetWord.audio);
-            yield return new WaitForSeconds(currentTargetWord.audio.length + 0.5f);
+            yield return new WaitForSeconds(cd.GetResult() + 0.5f);
             redPolaroid.GetComponent<LerpableObject>().LerpScale(Vector2.one, 0.1f);
 
             // slide tiger polaroid under red polaroid
@@ -857,7 +917,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                 framesReal[currentPair.index].GetComponent<WiggleController>().StartWiggle();
 
                 evaluatingCoin = false;
-                
+
                 yield break;
             }
 
@@ -923,7 +983,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         redPolaroid.LerpRotation(0, 0001f);
 
         // get rid of coins
-        foreach(var coin in currentCoins)
+        foreach (var coin in currentCoins)
         {
             coin.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(0f, 0f), 0.1f, 0.1f);
         }
@@ -939,7 +999,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                 StartCoroutine(LerpImageAlpha(frame.GetComponent<Image>(), 0f, 0.5f));
             }
         }
-        yield return new WaitForSeconds (1f);
+        yield return new WaitForSeconds(1f);
 
         // place all real frames behind tiger polaroid
         foreach (var frame in framesReal)
@@ -969,19 +1029,31 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         if (playTutorial && tutorialEvent == 1)
         {
             // play tutorial intro 11
-            AudioClip clip = GameIntroDatabase.instance.substitutingIntro11;
+            AssetReference clip = GameIntroDatabase.instance.substitutingIntro11;
+
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd.coroutine;
+
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
+            yield return new WaitForSeconds(cd.GetResult() + 1f);
 
             // play tutorial intro 12
             clip = GameIntroDatabase.instance.substitutingIntro12;
+
+            CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd0.coroutine;
+
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
+            yield return new WaitForSeconds(cd0.GetResult() + 1f);
 
             // play tutorial intro 13
             clip = GameIntroDatabase.instance.substitutingIntro13;
+
+            CoroutineWithData<float> cd1 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd1.coroutine;
+
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
+            yield return new WaitForSeconds(cd1.GetResult() + 1f);
 
             // finish tutorial
             StartCoroutine(WinRoutine());
@@ -994,7 +1066,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                 // play encouragement popup
                 // julius
                 int index = Random.Range(0, 2);
-                AudioClip clip = null;
+                AssetReference clip = null;
                 if (index == 0)
                 {
                     clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_ugh");
@@ -1003,8 +1075,12 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                 {
                     clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_grr");
                 }
+
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd.GetResult() + 1f);
 
                 // red
                 index = Random.Range(0, 3);
@@ -1021,16 +1097,24 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                 {
                     clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("red_uhhuh");
                 }
+
+                CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd0.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd0.GetResult() + 1f);
             }
             else
             {
                 // play reminder popup
-                List<AudioClip> clips = GameIntroDatabase.instance.substitutingReminderClips;
-                AudioClip clip = clips[Random.Range(0, clips.Count)];
+                List<AssetReference> clips = GameIntroDatabase.instance.substitutingReminderClips;
+                AssetReference clip = clips[Random.Range(0, clips.Count)];
+
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd.GetResult() + 1f);
             }
         }
 
@@ -1084,7 +1168,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             return 2;
         else if (numMisses == 2)
             return 1;
-        else 
+        else
             return 0;
     }
 
@@ -1092,7 +1176,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
     {
         redAnimator.Play("Lose");
         tigerAnimator.Play("TigerWin");
-        
+
         yield return new WaitForSeconds(1f);
 
         // show stars

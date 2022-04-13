@@ -14,10 +14,11 @@ public class AudioManager : MonoBehaviour
     public float smoothSplitDuration;
     private int currSplitIndex = 0;
     private bool startedSplitSong = false;
-    private bool setUpSplitSong = false;
 
     [Header("Addressable Operation Handles")]
     [SerializeField] private List<AsyncOperationHandle> songHandles;
+    private AsyncOperationHandle talkHandle;
+    [HideInInspector] public List<AssetReference> currentlyLoadedAudioAssets;
 
     [Header("Audio Sources")]
     [SerializeField] private List<AudioSource> musicSources;
@@ -43,6 +44,7 @@ public class AudioManager : MonoBehaviour
         }
 
         songHandles = new List<AsyncOperationHandle>();
+        currentlyLoadedAudioAssets = new List<AssetReference>();
     }
 
     /* 
@@ -158,8 +160,16 @@ public class AudioManager : MonoBehaviour
 
     private IEnumerator LoadAndPlaySong(AssetReference songReference)
     {
-        AsyncOperationHandle songHandle = songReference.LoadAssetAsync<AudioClip>();
+        AsyncOperationHandle songHandle;
 
+        if (songReference.OperationHandle.IsValid())
+        {
+            songHandle = songReference.OperationHandle;
+        }
+        else
+        {
+            songHandle = songReference.LoadAssetAsync<AudioClip>();
+        }
         yield return songHandle;
 
         AudioClip song = (AudioClip)songHandle.Result;
@@ -227,8 +237,16 @@ public class AudioManager : MonoBehaviour
         int count = 0;
         foreach (AssetReference reference in songReferences)
         {
-            AsyncOperationHandle splitHandle = reference.LoadAssetAsync<AudioClip>();
+            AsyncOperationHandle splitHandle;
 
+            if (reference.OperationHandle.IsValid())
+            {
+                splitHandle = reference.OperationHandle;
+            }
+            else
+            {
+                splitHandle = reference.LoadAssetAsync<AudioClip>();
+            }
             yield return splitHandle;
 
             songHandles.Add(splitHandle);
@@ -236,21 +254,17 @@ public class AudioManager : MonoBehaviour
             musicSources[count].clip = (AudioClip)splitHandle.Result;
             count++;
         }
-        
-        setUpSplitSong = true;
+
+        IncreaseSplitSong();
     }
 
     public void EndSplitSong()
     {
         startedSplitSong = false;
-        setUpSplitSong = false;
     }
 
     public void IncreaseSplitSong()
     {
-        if (!setUpSplitSong)
-            return;
-
         if (!startedSplitSong)
         {
             musicSources[0].volume = 0.5f;
@@ -275,7 +289,7 @@ public class AudioManager : MonoBehaviour
 
     public void DecreaseSplitSong()
     {
-        if (!setUpSplitSong || !startedSplitSong)
+        if (!startedSplitSong)
             return;
 
         if (currSplitIndex <= 1)
@@ -332,17 +346,17 @@ public class AudioManager : MonoBehaviour
     */
 
     // plays a sound once
-    public void PlayFX_oneShot(AudioClip clip, float volume, string id = "fx_oneShot", float pitch = 1f)
+    public void PlayFX_oneShot(AssetReference clipRef, float volume, string id = "fx_oneShot", float pitch = 1f)
     {
         var audioObj = Instantiate(fxAudioObject, fxObjectHolder);
-        audioObj.GetComponent<FxAudioObject>().PlayClip(id, clip, volume, clip.length + 1f, pitch);
+        audioObj.GetComponent<FxAudioObject>().PlayClip(id, clipRef, volume, false, pitch);
     }
 
     // plays a sound continuously until scene changes or stopped manually
-    public void PlayFX_loop(AudioClip clip, float volume, string id = "fx_loop", float pitch = 1f)
+    public void PlayFX_loop(AssetReference clipRef, float volume, string id = "fx_loop", float pitch = 1f)
     {
         var audioObj = Instantiate(fxAudioObject, fxObjectHolder);
-        audioObj.GetComponent<FxAudioObject>().PlayClip(id, clip, volume, 0f, pitch);
+        audioObj.GetComponent<FxAudioObject>().PlayClip(id, clipRef, volume, true, pitch);
     }
 
     // stops fx from plaing based on id
@@ -431,27 +445,94 @@ public class AudioManager : MonoBehaviour
     ################################################
     */
 
-    public void PlayTalk(AudioClip _clip)
+    public void PlayTalk(AssetReference _clip)
     {
         talkSource.Stop();
+
+        if (talkHandle.IsValid())
+        {
+            Addressables.Release(talkHandle);
+        }
+
+        StartCoroutine(LoadAndPlayTalk(_clip));
+    }
+
+    private IEnumerator LoadAndPlayTalk(AssetReference clipRef)
+    {
+        if (clipRef.OperationHandle.IsValid())
+        {
+            talkHandle = clipRef.OperationHandle;
+        }
+        else
+        {
+            talkHandle = clipRef.LoadAssetAsync<AudioClip>();
+        }
+        yield return talkHandle;
+
+
+        AudioClip _clip = (AudioClip)talkHandle.Result;
+
         talkSource.clip = _clip;
         talkSource.loop = false;
         talkSource.Play();
+
+        yield return new WaitForSeconds(_clip.length);
+
+        if (talkHandle.IsValid())
+        {
+            Addressables.Release(talkHandle);
+        }
     }
 
     public void StopTalk()
     {
         talkSource.Stop();
+
+        if (talkHandle.IsValid())
+        {
+            Addressables.Release(talkHandle);
+        }
+
         talkSource.clip = null;
     }
 
-    public void PlayPhoneme(ActionWordEnum phoneme)
+    public void PlayPhoneme(ElkoninValue elkoninValue)
     {
         talkSource.Stop();
-        AudioClip clip = GameManager.instance.GetActionWord(phoneme).audio;
+
+        if (talkHandle.IsValid())
+        {
+            Addressables.Release(talkHandle);
+        }
+
+        StartCoroutine(LoadAndPlayPhoneme(elkoninValue));
+    }
+
+    private IEnumerator LoadAndPlayPhoneme(ElkoninValue elkoninValue)
+    {
+        AssetReference audioRef = GameManager.instance.GetGameWord(elkoninValue).audio;
+        if (audioRef.OperationHandle.IsValid())
+        {
+            talkHandle = audioRef.OperationHandle;
+        }
+        else
+        {
+            talkHandle = audioRef.LoadAssetAsync<AudioClip>();
+        }
+        yield return talkHandle;
+
+        AudioClip clip = (AudioClip)talkHandle.Result;
+
         talkSource.clip = clip;
         talkSource.loop = false;
         talkSource.Play();
+
+        yield return new WaitForSeconds(clip.length);
+
+        if (talkHandle.IsValid())
+        {
+            Addressables.Release(talkHandle);
+        }
     }
 
     /* 
@@ -459,4 +540,28 @@ public class AudioManager : MonoBehaviour
     #   UTILITY
     ################################################
     */
+
+    public IEnumerator GetClipLength(AssetReference clipRef)
+    {
+        AsyncOperationHandle handle;
+
+        if (clipRef.OperationHandle.IsValid())
+        {
+            handle = clipRef.OperationHandle;
+        }
+        else
+        {
+            handle = clipRef.LoadAssetAsync<AudioClip>();
+        }
+        yield return handle;
+        AudioClip audio = (AudioClip)handle.Result;
+        float clipLength = audio.length;
+        if(handle.IsValid())
+        {
+            Addressables.Release(handle);
+        }
+        audio = null;
+
+        yield return clipLength;
+    }
 }

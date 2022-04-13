@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AddressableAssets;
 
 public class NewBoatGameManager : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class NewBoatGameManager : MonoBehaviour
     private bool waitingForMicButton = false;
 
     private int boatGameEvent = 0;
-    private List<AudioClip> audiosToRepeat;
+    private List<AssetReference> audiosToRepeat;
     [HideInInspector] public bool repeatAudio = false;
     private bool playingRepeatAudios = false;
     private float repeatTimer = 0f;
@@ -53,7 +54,7 @@ public class NewBoatGameManager : MonoBehaviour
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.AmbientSeagullsLoop, 0.1f);
 
         // initialize list
-        audiosToRepeat = new List<AudioClip>();
+        audiosToRepeat = new List<AssetReference>();
     }
 
     void Start()
@@ -166,19 +167,25 @@ public class NewBoatGameManager : MonoBehaviour
         micIndicator.NoInputDetected();
 
         // red voiceover 13
+        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(AudioDatabase.instance.boat_game_audio[13]));
+        yield return cd.coroutine;
         AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[13]);
-        yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[13].length + 0.5f);
+        yield return new WaitForSeconds(cd.GetResult() + 0.5f);
 
         // red voiceover 14
+        CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(AudioDatabase.instance.boat_game_audio[14]));
+        yield return cd0.coroutine;
         AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[14]);
-        yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[14].length + 0.5f);
+        yield return new WaitForSeconds(cd0.GetResult() + 0.5f);
 
         // red voiceover 15
+        CoroutineWithData<float> cd1 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(AudioDatabase.instance.boat_game_audio[15]));
+        yield return cd1.coroutine;
         AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[15]);
-        yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[15].length + 0.5f);
+        yield return new WaitForSeconds(cd1.GetResult() + 0.5f);
 
         // repeat
-        audiosToRepeat = new List<AudioClip>();
+        audiosToRepeat = new List<AssetReference>();
         audiosToRepeat.Add(AudioDatabase.instance.boat_game_audio[13]);
         audiosToRepeat.Add(AudioDatabase.instance.boat_game_audio[14]);
         audiosToRepeat.Add(AudioDatabase.instance.boat_game_audio[15]);
@@ -206,8 +213,11 @@ public class NewBoatGameManager : MonoBehaviour
                 yield break;
             }
 
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(audio));
+            yield return cd.coroutine;
+
             AudioManager.instance.PlayTalk(audio);
-            yield return new WaitForSeconds(audio.length + 0.5f);
+            yield return new WaitForSeconds(cd.GetResult() + 0.5f);
         }
 
         // reset audio repeat timer
@@ -239,8 +249,10 @@ public class NewBoatGameManager : MonoBehaviour
                 }
 
                 // red voiceover 0
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(AudioDatabase.instance.boat_game_audio[0]));
+                yield return cd.coroutine;
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[0]);
-                yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[0].length + 0.5f);
+                yield return new WaitForSeconds(cd.GetResult() + 0.5f);
 
                 // turn on blue button glow + wiggle
                 ImageGlowController.instance.SetImageGlow(blueButton.GetComponent<Image>(), true, GlowValue.glow_1_025);
@@ -248,10 +260,12 @@ public class NewBoatGameManager : MonoBehaviour
                 waitForBlueButton = false;
 
                 // red voiceover 1
+                CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(AudioDatabase.instance.boat_game_audio[1]));
+                yield return cd0.coroutine;
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[1]);
-                yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[1].length + 0.5f);
+                yield return new WaitForSeconds(cd0.GetResult() + 0.5f);
 
-                audiosToRepeat = new List<AudioClip>();
+                audiosToRepeat = new List<AssetReference>();
                 audiosToRepeat.Add(AudioDatabase.instance.boat_game_audio[1]);
                 repeatTimer = 0f;
                 repeatDuration = 5f;
@@ -263,21 +277,27 @@ public class NewBoatGameManager : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
                 // red voiceover 2
+                CoroutineWithData<float> cd1 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(AudioDatabase.instance.boat_game_audio[2]));
+                yield return cd1.coroutine;
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[2]);
-                yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[2].length + 0.5f);
+                yield return new WaitForSeconds(cd1.GetResult() + 0.5f);
 
                 // turn on wheel
                 BoatWheelController.instance.isOn = true;
 
                 // red voiceover 3
+                CoroutineWithData<float> cd2 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(AudioDatabase.instance.boat_game_audio[3]));
+                yield return cd2.coroutine;
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[3]);
-                yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[3].length + 0.5f);
+                yield return new WaitForSeconds(cd2.GetResult() + 0.5f);
 
                 // red voiceover 4
+                CoroutineWithData<float> cd3 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(AudioDatabase.instance.boat_game_audio[4]));
+                yield return cd3.coroutine;
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[4]);
-                yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[4].length + 0.5f);
+                yield return new WaitForSeconds(cd3.GetResult() + 0.5f);
 
-                audiosToRepeat = new List<AudioClip>();
+                audiosToRepeat = new List<AssetReference>();
                 audiosToRepeat.Add(AudioDatabase.instance.boat_game_audio[2]);
                 audiosToRepeat.Add(AudioDatabase.instance.boat_game_audio[3]);
                 audiosToRepeat.Add(AudioDatabase.instance.boat_game_audio[4]);
@@ -298,18 +318,24 @@ public class NewBoatGameManager : MonoBehaviour
                 IslandCutoutController.instance.cutoutWiggleController.StartWiggle();
 
                 // red voiceover 5
+                CoroutineWithData<float> cd4 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(AudioDatabase.instance.boat_game_audio[5]));
+                yield return cd4.coroutine;
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[5]);
-                yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[5].length + 0.5f);
+                yield return new WaitForSeconds(cd4.GetResult() + 0.5f);
 
                 // red voiceover 6
+                CoroutineWithData<float> cd5 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(AudioDatabase.instance.boat_game_audio[6]));
+                yield return cd5.coroutine;
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[6]);
-                yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[6].length + 0.5f);
+                yield return new WaitForSeconds(cd5.GetResult() + 0.5f);
 
                 // red voiceover 7
+                CoroutineWithData<float> cd6 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(AudioDatabase.instance.boat_game_audio[7]));
+                yield return cd6.coroutine;
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[7]);
-                yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[7].length + 0.5f);
+                yield return new WaitForSeconds(cd6.GetResult() + 0.5f);
 
-                audiosToRepeat = new List<AudioClip>();
+                audiosToRepeat = new List<AssetReference>();
                 audiosToRepeat.Add(AudioDatabase.instance.boat_game_audio[5]);
                 audiosToRepeat.Add(AudioDatabase.instance.boat_game_audio[6]);
                 audiosToRepeat.Add(AudioDatabase.instance.boat_game_audio[7]);
@@ -331,14 +357,18 @@ public class NewBoatGameManager : MonoBehaviour
                 BoatThrottleController.instance.isOn = true;
 
                 // red voiceover 8
+                CoroutineWithData<float> cd7 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(AudioDatabase.instance.boat_game_audio[8]));
+                yield return cd7.coroutine;
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[8]);
-                yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[8].length + 0.5f);
+                yield return new WaitForSeconds(cd7.GetResult() + 0.5f);
 
                 // red voiceover 9
+                CoroutineWithData<float> cd8 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(AudioDatabase.instance.boat_game_audio[9]));
+                yield return cd8.coroutine;
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[9]);
-                yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[9].length + 0.5f);
+                yield return new WaitForSeconds(cd8.GetResult() + 0.5f);
 
-                audiosToRepeat = new List<AudioClip>();
+                audiosToRepeat = new List<AssetReference>();
                 audiosToRepeat.Add(AudioDatabase.instance.boat_game_audio[9]);
                 repeatTimer = 0f;
                 repeatDuration = 5f;
@@ -348,18 +378,24 @@ public class NewBoatGameManager : MonoBehaviour
 
             case 4:
                 // red voiceover 10
+                CoroutineWithData<float> cd9 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(AudioDatabase.instance.boat_game_audio[10]));
+                yield return cd9.coroutine;
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[10]);
-                yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[10].length + 0.5f);
+                yield return new WaitForSeconds(cd9.GetResult() + 0.5f);
 
                 // red voiceover 11
+                CoroutineWithData<float> cd10 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(AudioDatabase.instance.boat_game_audio[11]));
+                yield return cd10.coroutine;
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[11]);
-                yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[11].length + 0.5f);
+                yield return new WaitForSeconds(cd10.GetResult() + 0.5f);
 
                 // red voiceover 12
+                CoroutineWithData<float> cd11 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(AudioDatabase.instance.boat_game_audio[12]));
+                yield return cd11.coroutine;
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[12]);
-                yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[12].length + 0.5f);
+                yield return new WaitForSeconds(cd11.GetResult() + 0.5f);
 
-                audiosToRepeat = new List<AudioClip>();
+                audiosToRepeat = new List<AssetReference>();
                 audiosToRepeat.Add(AudioDatabase.instance.boat_game_audio[10]);
                 audiosToRepeat.Add(AudioDatabase.instance.boat_game_audio[11]);
                 audiosToRepeat.Add(AudioDatabase.instance.boat_game_audio[12]);
@@ -389,8 +425,10 @@ public class NewBoatGameManager : MonoBehaviour
                 micIndicator.HideIndicator();
 
                 // red voiceover 26
+                CoroutineWithData<float> cd12 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(AudioDatabase.instance.boat_game_audio[16]));
+                yield return cd12.coroutine;
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[16]);
-                yield return new WaitForSeconds(AudioDatabase.instance.boat_game_audio[16].length + 0.5f);
+                yield return new WaitForSeconds(cd12.GetResult() + 0.5f);
 
                 // turn on green button glow + wiggle
                 ImageGlowController.instance.SetImageGlow(greenButton.GetComponent<Image>(), true, GlowValue.glow_1_025);

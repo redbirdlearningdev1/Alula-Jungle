@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class WordFactoryRaycaster : MonoBehaviour
 {
@@ -113,15 +115,19 @@ public class WordFactoryRaycaster : MonoBehaviour
         }
     }
 
-    private IEnumerator PlayPolaroidAudio(AudioClip audio)
+    private IEnumerator PlayPolaroidAudio(AssetReference audioRef)
     {
         if (polaroidAudioPlaying)
             AudioManager.instance.StopTalk();
 
         polaroidAudioPlaying = true;
 
-        AudioManager.instance.PlayTalk(audio);
-        yield return new WaitForSeconds(audio.length + 0.1f);
+
+        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(audioRef));
+        yield return cd.coroutine;
+
+        AudioManager.instance.PlayTalk(audioRef);
+        yield return new WaitForSeconds(cd.GetResult() + 0.1f);
 
         polaroidAudioPlaying = false;
     }

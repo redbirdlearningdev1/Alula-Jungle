@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.AddressableAssets;
 
 public class TalkieManager : MonoBehaviour
 {
@@ -504,18 +505,23 @@ public class TalkieManager : MonoBehaviour
             // play audio
             if (talkieSeg.audioClip != null)
             {
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(talkieSeg.audioClip));
+                yield return cd.coroutine;
                 AudioManager.instance.PlayTalk(talkieSeg.audioClip);
-                yield return new WaitForSeconds(talkieSeg.audioClip.length + 0.2f);
+                yield return new WaitForSeconds(cd.GetResult() + 0.2f);
             }
             else
             {
                 // attempt to match audio clip name to reaction duplicate
-                AudioClip clip = TalkieDatabase.instance.GetTalkieReactionDuplicate(talkieSeg.audioClipName);
+                AssetReference clip = TalkieDatabase.instance.GetTalkieReactionDuplicate(talkieSeg.audioClipName);
+
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd.coroutine;
 
                 if (clip != null)
                 {
                     AudioManager.instance.PlayTalk(clip);
-                    yield return new WaitForSeconds(clip.length + 0.2f);
+                    yield return new WaitForSeconds(cd.GetResult() + 0.2f);
                 }
                 else
                 {   

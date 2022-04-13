@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public enum ElkoninValue
 {
@@ -67,7 +68,7 @@ public enum ElkoninValue
 public class ChallengeWord : ScriptableObject
 {
     public string word;
-    public AudioClip audio;
+    public AssetReference audio;
     public Sprite sprite;
     public List<ElkoninValue> elkoninList;
     public int elkoninCount;

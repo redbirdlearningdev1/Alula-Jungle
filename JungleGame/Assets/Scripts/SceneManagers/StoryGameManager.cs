@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.AddressableAssets;
 
 public class StoryGameManager : MonoBehaviour
-{   
+{
     public static StoryGameManager instance;
 
     [Header("Dev Mode Stuff")]
@@ -49,7 +50,7 @@ public class StoryGameManager : MonoBehaviour
 
     // current stuff
     private ActionWordEnum currentEnum;
-    private AudioClip currentClip;
+    private AssetReference currentClip;
 
     private StoryGameData storyGameData;
 
@@ -76,7 +77,7 @@ public class StoryGameManager : MonoBehaviour
             else // send error
                 GameManager.instance.SendError(this, "invalid game data");
         }
-        else 
+        else
         {
             // load in game data from game manager
             storyGameData = GameManager.instance.storyGameData;
@@ -169,7 +170,7 @@ public class StoryGameManager : MonoBehaviour
                 // add extra space
                 var extra_space = Instantiate(textWrapperObject, textLayoutGroup);
                 extra_space.GetComponent<TextWrapper>().SetSpace();
-            }   
+            }
 
             // add space
             var space = Instantiate(textWrapperObject, textLayoutGroup);
@@ -192,7 +193,7 @@ public class StoryGameManager : MonoBehaviour
 
         // small pause before game begins
         yield return new WaitForSeconds(2f);
-        
+
         foreach (StoryGameSegment seg in storyGameData.segments)
         {
             // advance BG if segment says so
@@ -221,17 +222,18 @@ public class StoryGameManager : MonoBehaviour
                 // start moving gorilla
                 ScrollingBackground.instance.StartMoving();
                 // move text until action word is in place
-                StartCoroutine(MoveTextToNextWord(seg.audio.length));
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(seg.audio));
+                yield return cd.coroutine;
+                StartCoroutine(MoveTextToNextWord(cd.GetResult()));
 
                 AudioManager.instance.PlayTalk(seg.audio);
                 // wait for audio to be over
-                yield return new WaitForSeconds(seg.audio.length);
+                yield return new WaitForSeconds(cd.GetResult());
                 // stop moving gorilla
                 ScrollingBackground.instance.StopMoving();
                 // small delay
                 yield return new WaitForSeconds(0.2f);
             }
-
             // read action word if available
             else
             {
@@ -247,7 +249,9 @@ public class StoryGameManager : MonoBehaviour
                 wordTransforms[currWord].GetComponent<TextWrapper>().SetTextColor(actionTextColor, true);
                 wordTransforms[currWord].GetComponent<TextWrapper>().SetTextSize(actionTextSize, true);
 
-                yield return new WaitForSeconds(seg.audio.length);
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(seg.audio));
+                yield return cd.coroutine;
+                yield return new WaitForSeconds(cd.GetResult());
 
                 if (seg.requireInput)
                 {
@@ -277,8 +281,8 @@ public class StoryGameManager : MonoBehaviour
                     }
 
                     // move text until action word is in place
-                    StartCoroutine(MoveTextToNextWord(seg.audio.length));
-                        
+                    StartCoroutine(MoveTextToNextWord(cd.GetResult()));
+
                     // start skipping mic inputs
                     if (microphone.hasBeenPressed)
                     {
@@ -293,14 +297,16 @@ public class StoryGameManager : MonoBehaviour
                         // play correct audio cue
                         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
                         dancingMan.PlayUsingPhonemeEnum(seg.actionWord);
-                    }              
+                    }
                 }
 
                 // successful input
                 ShakeCoin();
-                AudioClip clip = GameManager.instance.GetActionWord(seg.actionWord).audio;
+                AssetReference clip = GameManager.instance.GetActionWord(seg.actionWord).audio;
+                CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd0.coroutine;
                 AudioManager.instance.PlayTalk(clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd0.GetResult() + 1f);
 
                 if (seg.requireInput && !microphone.hasBeenPressed)
                 {
@@ -314,18 +320,18 @@ public class StoryGameManager : MonoBehaviour
                 currWord++;
             }
         }
-        
+
         // // make coin transparent
         // coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.image, 0.25f, 0.5f);
 
         EndGame();
-    } 
+    }
 
     private void EndGame()
     {
         // make sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1.0f);
-        
+
         if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PrologueStoryGame)
         {
             // add action words to player's pool
@@ -396,7 +402,7 @@ public class StoryGameManager : MonoBehaviour
     private IEnumerator MoveTextToNextWord(float duration)
     {
         float start = textLayoutGroup.position.x;
-        float end = start - Mathf.Abs(actionWordStopPos.position.x - wordTransforms[currWord + 1].transform.position.x); 
+        float end = start - Mathf.Abs(actionWordStopPos.position.x - wordTransforms[currWord + 1].transform.position.x);
         float timer = 0f;
 
         while (true)
@@ -465,7 +471,7 @@ public class StoryGameManager : MonoBehaviour
                 yield return null;
 
             if (!waitingForAudioInput)
-                yield break;  
+                yield break;
 
             timer += Time.deltaTime;
             if (timer > timeBetweenRepeat)

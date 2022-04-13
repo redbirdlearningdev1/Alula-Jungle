@@ -45,13 +45,11 @@ public class DockedBoatWheelController : MonoBehaviour
             {
                 // parallax to the left
                 DockedParallaxController.instance.SetBoatDirection(BoatParallaxDirection.Left);
-                //TODO: Move to the left
             }
             else
             {
                 // parallax to the right
                 DockedParallaxController.instance.SetBoatDirection(BoatParallaxDirection.Right);
-                //TODO: Move to the right
             }
         }
         else if (Input.GetMouseButtonUp(0) && holdingWheel)

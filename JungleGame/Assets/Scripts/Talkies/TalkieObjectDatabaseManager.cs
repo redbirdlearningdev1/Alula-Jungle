@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using System.IO;
 using UnityEditor;
+using UnityEngine.AddressableAssets;
 
 public class TalkieObjectImportException : System.Exception
 {
@@ -43,7 +44,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
     private const string csv_folder_path = "Assets/Resources/CSV_folder/";
     public const string talkie_audio_folder = "Assets/Resources/TalkieAudioFiles";
 
-    public List<AudioClip> globalTalkieAudioList;
+    public List<AssetReference> globalTalkieAudioList;
     private List<TalkieObject> localTalkieObjects;
     private List<string> filePaths;
     private string fileText;
@@ -849,29 +850,38 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
 
     private void InitCreateGlobalList()
     {
-        globalTalkieAudioList = new List<AudioClip>();
+        globalTalkieAudioList = new List<AssetReference>();
         var folders = AssetDatabase.GetSubFolders(talkie_audio_folder);
 
         foreach (var folder in folders)
         {
             //print ("folder: " + folder);
             var audio_files = Resources.LoadAll<AudioClip>(folder.Replace("Assets/Resources/", ""));
-            globalTalkieAudioList.AddRange(audio_files);
+            List<AssetReference> audioRefs = new List<AssetReference>();
+
+            // TODO: MAJOR TESTING REQUIRED
+            foreach (AudioClip audio in audio_files)
+            {  
+                audioRefs.Add(new AssetReference(audio.name));
+            }
+
+            globalTalkieAudioList.AddRange(audioRefs);
         }
 
         print ("global audio list: " + globalTalkieAudioList.Count);
     }
 
-    private AudioClip SearchForAudioByName(string str)
+    private AssetReference SearchForAudioByName(string str)
     {
         //print ("global audio list size: " + globalTalkieAudioList.Count);
 
         // linear search
-        foreach (var file in globalTalkieAudioList)
+        foreach (AssetReference file in globalTalkieAudioList)
         {
             //print ("file name: " + file.name + " vs. str: " + str);
 
-            if (file.name == str)
+            // TODO: MAJOR TESTING REQUIRED
+            if (file.ToString() == str)
             {
                 //print ("found audio!");
                 return file;
