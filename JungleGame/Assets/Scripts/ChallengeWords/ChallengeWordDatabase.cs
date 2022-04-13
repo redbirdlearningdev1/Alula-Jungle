@@ -188,7 +188,8 @@ public static class ChallengeWordDatabase
         if (correct_path != "")
         {
             // TODO: MAJOR TESTING REQUIRED
-            return new AssetReference(correct_path);//(AudioClip)AssetDatabase.LoadAssetAtPath(correct_path, typeof(AudioClip));
+            //AssetReference reference(AudioClip)AssetDatabase.LoadAssetAtPath(correct_path, typeof(AudioClip));
+            return new AssetReference(AssetDatabase.AssetPathToGUID(correct_path));//(AudioClip)AssetDatabase.LoadAssetAtPath(correct_path, typeof(AudioClip));
         }
         else
         {

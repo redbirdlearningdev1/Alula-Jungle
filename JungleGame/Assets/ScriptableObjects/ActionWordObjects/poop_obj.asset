@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: poop_obj
   m_EditorClassIdentifier: 
   _name: poop
-  audio: {fileID: 8300000, guid: 5bca01979ece61b4a90e401655219c16, type: 3}
+  audio:
+    m_AssetGUID: 5bca01979ece61b4a90e401655219c16
+    m_SubObjectName: 
+    m_SubObjectType: 
   elkoninValue: 4
   animation: poop
   _enum: 3

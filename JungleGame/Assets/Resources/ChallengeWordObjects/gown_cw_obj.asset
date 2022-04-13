@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: gown_cw_obj
   m_EditorClassIdentifier: 
   word: gown
-  audio: {fileID: 8300000, guid: ca6db203d78dcbb46b39a2540a5ea5d6, type: 3}
+  audio:
+    m_AssetGUID: ca6db203d78dcbb46b39a2540a5ea5d6
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 7235c72251d56314a8d382ece801d857, type: 3}
   elkoninList: 1b0000001400000021000000000000000000000000000000
   elkoninCount: 3

@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: b3e0ce82b8cd56741ad56057717d10de, type: 3}
+    audioClip:
+      m_AssetGUID: b3e0ce82b8cd56741ad56057717d10de
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: FR_2_3_Ollie_1_T1
     audioString: 'Ahoy there! '
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 0aa51950145c1f34d9dbc8340b0b4c42, type: 3}
+    audioClip:
+      m_AssetGUID: 0aa51950145c1f34d9dbc8340b0b4c42
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: FR_2_3_Ollie_1_T2
     audioString: 'Want to play some games!? '
   - endTalkieAfterThisSegment: 0
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: e9ba00a72ef2ec64faf796efd620e3f8, type: 3}
+    audioClip:
+      m_AssetGUID: e9ba00a72ef2ec64faf796efd620e3f8
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: FR_2_3_Ollie_1_T3
     audioString: 'And maybe help me to your coins! '
   - endTalkieAfterThisSegment: 1
@@ -83,7 +92,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: bfa0defeac2dd0a4f95604e2b64d8e60, type: 3}
+    audioClip:
+      m_AssetGUID: bfa0defeac2dd0a4f95604e2b64d8e60
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: FR_2_3_Ollie_1_T4
     audioString: Your coins!
   - endTalkieAfterThisSegment: 0
@@ -99,7 +111,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 09200a0c2d13bdd44961ff0833d46f23, type: 3}
+    audioClip:
+      m_AssetGUID: 09200a0c2d13bdd44961ff0833d46f23
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: FR_2_3_Ollie_2_T1
     audioString: "You\u2019re back matey?"
   - endTalkieAfterThisSegment: 0
@@ -115,7 +130,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 64816491d8002f34ba02cc0a8224f595, type: 3}
+    audioClip:
+      m_AssetGUID: 64816491d8002f34ba02cc0a8224f595
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: FR_2_3_Ollie_2_T2
     audioString: "Let\u2019s practice some more! "
   - endTalkieAfterThisSegment: 1
@@ -131,7 +149,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: c62b4bfcc93237848a86f496ea2c9846, type: 3}
+    audioClip:
+      m_AssetGUID: c62b4bfcc93237848a86f496ea2c9846
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: FR_2_3_Ollie_2_T3
     audioString: Practice more!
   - endTalkieAfterThisSegment: 0
@@ -147,7 +168,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: f0abff89f4d1bfd4dbfce7f9e2a13c58, type: 3}
+    audioClip:
+      m_AssetGUID: f0abff89f4d1bfd4dbfce7f9e2a13c58
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: FR_2_3_Ollie_3_T1
     audioString: Hello again matey!
   - endTalkieAfterThisSegment: 0
@@ -163,7 +187,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 691134eb922d73e4eb6ebc31a9753be7, type: 3}
+    audioClip:
+      m_AssetGUID: 691134eb922d73e4eb6ebc31a9753be7
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: FR_2_3_Ollie_3_T2
     audioString: "Let\u2019s play more games! "
   - endTalkieAfterThisSegment: 1
@@ -179,6 +206,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 79e45fc9e6c8f954e84e29d06cf86ab1, type: 3}
+    audioClip:
+      m_AssetGUID: 79e45fc9e6c8f954e84e29d06cf86ab1
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: FR_2_3_Ollie_3_T3
     audioString: More games!

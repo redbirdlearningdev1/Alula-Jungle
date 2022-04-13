@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: share_cw_obj
   m_EditorClassIdentifier: 
   word: share
-  audio: {fileID: 8300000, guid: 43329593e8937914fa05b52f68b7fc24, type: 3}
+  audio:
+    m_AssetGUID: 43329593e8937914fa05b52f68b7fc24
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: d58bb1fff402427468dc35f7a2348526, type: 3}
   elkoninList: 260000000d00000000000000000000000000000000000000
   elkoninCount: 2

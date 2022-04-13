@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: v_obj
   m_EditorClassIdentifier: 
   _name: v
-  audio: {fileID: 8300000, guid: c6a794dd2727f0741b012abecc489c22, type: 3}
+  audio:
+    m_AssetGUID: c6a794dd2727f0741b012abecc489c22
+    m_SubObjectName: 
+    m_SubObjectType: 
   elkoninValue: 41
   animation: vCoin
   _enum: 20

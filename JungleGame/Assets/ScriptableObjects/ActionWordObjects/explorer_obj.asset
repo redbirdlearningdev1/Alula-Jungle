@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: explorer_obj
   m_EditorClassIdentifier: 
   _name: explorer
-  audio: {fileID: 8300000, guid: ebb5d171b5e76ec41841373d756b00fe, type: 3}
+  audio:
+    m_AssetGUID: ebb5d171b5e76ec41841373d756b00fe
+    m_SubObjectName: 
+    m_SubObjectType: 
   elkoninValue: 9
   animation: explorer
   _enum: 8

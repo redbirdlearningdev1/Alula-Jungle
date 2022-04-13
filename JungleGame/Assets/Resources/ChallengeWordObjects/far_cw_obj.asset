@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: far_cw_obj
   m_EditorClassIdentifier: 
   word: far
-  audio: {fileID: 8300000, guid: cc91e1b38a5a60e4ca5b934c715fa29c, type: 3}
+  audio:
+    m_AssetGUID: cc91e1b38a5a60e4ca5b934c715fa29c
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 6b670c80fada56b4b82bb1cc4241dff1, type: 3}
   elkoninList: 1a0000000e00000000000000000000000000000000000000
   elkoninCount: 2

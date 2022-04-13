@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: six_cw_obj
   m_EditorClassIdentifier: 
   word: six
-  audio: {fileID: 8300000, guid: 9dd1f94ed838b644faf0728d08ce5ec2, type: 3}
+  audio:
+    m_AssetGUID: 9dd1f94ed838b644faf0728d08ce5ec2
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 1405169e36efb6749bf340c2aa5843a1, type: 3}
   elkoninList: 25000000040000002b000000000000000000000000000000
   elkoninCount: 3

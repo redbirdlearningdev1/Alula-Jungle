@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: d6d13506678d40346a7d0dda173cdd41, type: 3}
+    audioClip:
+      m_AssetGUID: d6d13506678d40346a7d0dda173cdd41
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_4_Lester_5_T1
     audioString: Good job!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 99c081b47141e014ab055173de649d6d, type: 3}
+    audioClip:
+      m_AssetGUID: 99c081b47141e014ab055173de649d6d
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_4_Lester_5_T2
     audioString: Now if you ever run out of space you can remove stickers!
   - endTalkieAfterThisSegment: 0
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: b7388bb17ce8ab74b8aa7370f9a68d6f, type: 3}
+    audioClip:
+      m_AssetGUID: b7388bb17ce8ab74b8aa7370f9a68d6f
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_4_Lester_5_T3
     audioString: 'However! Once you remove a sticker you can''t get it back. '
   - endTalkieAfterThisSegment: 0
@@ -83,7 +92,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: e43584fce91ed7e4ea76a245ba930f2f, type: 3}
+    audioClip:
+      m_AssetGUID: e43584fce91ed7e4ea76a245ba930f2f
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_4_Lester_5_T4
     audioString: So be careful!
   - endTalkieAfterThisSegment: 0
@@ -99,7 +111,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 0a4a01e4466c840408468d0297ee3d19, type: 3}
+    audioClip:
+      m_AssetGUID: 0a4a01e4466c840408468d0297ee3d19
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_4_Lester_5_T5
     audioString: 'If you ever want to place your stickers or view your collection, '
   - endTalkieAfterThisSegment: 0
@@ -115,7 +130,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: e2df8364a1010144cb99f9d0b6875592, type: 3}
+    audioClip:
+      m_AssetGUID: e2df8364a1010144cb99f9d0b6875592
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_4_Lester_5_T6
     audioString: 'call for me again and click the stickerboard! '
   - endTalkieAfterThisSegment: 0
@@ -131,7 +149,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 572191193476def4db71effcf12613fa, type: 3}
+    audioClip:
+      m_AssetGUID: 572191193476def4db71effcf12613fa
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_4_Lester_6_T1
     audioString: If you have the funds you can also buy more boards to place your
       stickers on!
@@ -148,6 +169,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 6e32f15661be77945b3586a02b68cade, type: 3}
+    audioClip:
+      m_AssetGUID: 6e32f15661be77945b3586a02b68cade
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_4_Lester_6_T2
     audioString: I have MANY cool boards from my travels! so help yourself!

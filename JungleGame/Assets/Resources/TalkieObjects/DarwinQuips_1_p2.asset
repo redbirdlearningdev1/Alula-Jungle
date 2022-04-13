@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 77aa4763b6f6ae34abd1aebee7212cc5, type: 3}
+    audioClip:
+      m_AssetGUID: 77aa4763b6f6ae34abd1aebee7212cc5
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: EJ_1_2_Darwin_1_T1
     audioString: "We\u2019re getting so uh.. close!"
   - endTalkieAfterThisSegment: 1
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 9dc0fbf2b37bd6f478f59851a3b6381b, type: 3}
+    audioClip:
+      m_AssetGUID: 9dc0fbf2b37bd6f478f59851a3b6381b
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: EJ_1_2_Darwin_2_T1
     audioString: Keep it up Explorer! I believe in you!
   - endTalkieAfterThisSegment: 1
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: e54356c4d3ff73849be6902a14f639f1, type: 3}
+    audioClip:
+      m_AssetGUID: e54356c4d3ff73849be6902a14f639f1
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: EJ_1_2_Darwin_3_T1
     audioString: "Oh.. uhh.. Hey Explorer! I\u2019m okay,  thanks for checking on
       me."
@@ -84,7 +93,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 18498674dfd67384285e4bd7a9ea5455, type: 3}
+    audioClip:
+      m_AssetGUID: 18498674dfd67384285e4bd7a9ea5455
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: EJ_1_2_Darwin_4_T1
     audioString: "Stories\u2026 more stories..."
   - endTalkieAfterThisSegment: 1
@@ -100,6 +112,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 4cce1dc2462201d49bead43c36db9056, type: 3}
+    audioClip:
+      m_AssetGUID: 4cce1dc2462201d49bead43c36db9056
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: EJ_1_2_Darwin_5_T1
     audioString: I hope Julius is okay...

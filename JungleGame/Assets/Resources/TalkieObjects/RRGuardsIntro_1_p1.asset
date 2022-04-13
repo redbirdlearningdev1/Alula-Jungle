@@ -35,6 +35,9 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: 2dbfa4c81668ed34a84cf8a5fba44868, type: 3}
+    audioClip:
+      m_AssetGUID: 2dbfa4c81668ed34a84cf8a5fba44868
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: RR_1_0_Announcer_1
     audioString: TIME FOR A ROYAL RUMBLE (monkey sounds)

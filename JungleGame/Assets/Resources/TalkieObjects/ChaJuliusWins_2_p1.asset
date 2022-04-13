@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 2162299b6e7dec64f9864c0a324e2a88, type: 3}
+    audioClip:
+      m_AssetGUID: 2162299b6e7dec64f9864c0a324e2a88
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Cha_0_1a_Red_4_T1
     audioString: "It\u2019s okay Explorer! "
   - endTalkieAfterThisSegment: 0
@@ -51,6 +54,9 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 1c8f9da30fb2c39429cc13eb9e18edb7, type: 3}
+    audioClip:
+      m_AssetGUID: 1c8f9da30fb2c39429cc13eb9e18edb7
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Cha_0_1a_Red_4_T2
     audioString: Let's go practice some more.

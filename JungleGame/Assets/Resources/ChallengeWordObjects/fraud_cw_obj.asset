@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: fraud_cw_obj
   m_EditorClassIdentifier: 
   word: fraud
-  audio: {fileID: 8300000, guid: 0ea014917fd5bf94ca55dcc04f4c07ba, type: 3}
+  audio:
+    m_AssetGUID: 0ea014917fd5bf94ca55dcc04f4c07ba
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 9d235a36f9f0eed408e94a99082be196, type: 3}
   elkoninList: 1a0000002400000005000000190000000000000000000000
   elkoninCount: 4

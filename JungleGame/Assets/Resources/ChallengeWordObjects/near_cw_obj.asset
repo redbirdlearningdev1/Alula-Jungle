@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: near_cw_obj
   m_EditorClassIdentifier: 
   word: near
-  audio: {fileID: 8300000, guid: e7bbddbb170f11c4da521dd462c298eb, type: 3}
+  audio:
+    m_AssetGUID: e7bbddbb170f11c4da521dd462c298eb
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: a3e5469a3e2b48e4190aa9233abebefc, type: 3}
   elkoninList: 210000001000000000000000000000000000000000000000
   elkoninCount: 2

@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: soil_cw_obj
   m_EditorClassIdentifier: 
   word: soil
-  audio: {fileID: 8300000, guid: d95181b84ea69ed4e9923c9ea88f9b82, type: 3}
+  audio:
+    m_AssetGUID: d95181b84ea69ed4e9923c9ea88f9b82
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: f25da17ba0734e24681b06111654c649, type: 3}
   elkoninList: 25000000130000001f000000000000000000000000000000
   elkoninCount: 3

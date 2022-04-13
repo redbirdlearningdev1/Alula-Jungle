@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: give_obj
   m_EditorClassIdentifier: 
   _name: give
-  audio: {fileID: 8300000, guid: 622dcaf79a39ea14eb0c1fc6f9990ef5, type: 3}
+  audio:
+    m_AssetGUID: 622dcaf79a39ea14eb0c1fc6f9990ef5
+    m_SubObjectName: 
+    m_SubObjectType: 
   elkoninValue: 17
   animation: give
   _enum: 16

@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 2f6dc4345ec02b843aa6fe61be1d52ed, type: 3}
+    audioClip:
+      m_AssetGUID: 2f6dc4345ec02b843aa6fe61be1d52ed
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_1_Darwin_41_T1
     audioString: "Julius\u2026"
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: cdb310f3f9652c44a8cebc090c631a69, type: 3}
+    audioClip:
+      m_AssetGUID: cdb310f3f9652c44a8cebc090c631a69
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_1_Red_42_T1
     audioString: I feel like we're almost there!
   - endTalkieAfterThisSegment: 0
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 81b63bbfc6dd48743bb624905bb9b633, type: 3}
+    audioClip:
+      m_AssetGUID: 81b63bbfc6dd48743bb624905bb9b633
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_1_Red_42_T2
     audioString: 'Still,  I feel so bad for the Prince. '
   - endTalkieAfterThisSegment: 0
@@ -83,7 +92,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 92ef6043238bf534bbc40909b4b72d05, type: 3}
+    audioClip:
+      m_AssetGUID: 92ef6043238bf534bbc40909b4b72d05
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_1_Wally_43_T1
     audioString: Yeah.
   - endTalkieAfterThisSegment: 0
@@ -99,7 +111,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 7c1d1d6e7b3a76d4cb08e3f873d28136, type: 3}
+    audioClip:
+      m_AssetGUID: 7c1d1d6e7b3a76d4cb08e3f873d28136
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_1_Wally_43_T2
     audioString: Me too...
   - endTalkieAfterThisSegment: 0
@@ -115,7 +130,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 797842e27856dc6409387f75d4821551, type: 3}
+    audioClip:
+      m_AssetGUID: 797842e27856dc6409387f75d4821551
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_1_Wally_43_T3
     audioString: "But like you said! He\u2019s coming around!"
   - endTalkieAfterThisSegment: 0
@@ -131,7 +149,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: a6e7b93d1a78f8c4faa79e74a5b712eb, type: 3}
+    audioClip:
+      m_AssetGUID: a6e7b93d1a78f8c4faa79e74a5b712eb
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_1_Darwin_44_T1
     audioString: "That\u2019s true\u2026"
   - endTalkieAfterThisSegment: 0
@@ -147,7 +168,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 5c1917c933a5b534cbd1a8781240b3d6, type: 3}
+    audioClip:
+      m_AssetGUID: 5c1917c933a5b534cbd1a8781240b3d6
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_1_Darwin_44_T2
     audioString: "I feel like he\u2019s close to\u2026"
   - endTalkieAfterThisSegment: 0
@@ -163,7 +187,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: e3e8145ce2859bd4d845e074acf8bbba, type: 3}
+    audioClip:
+      m_AssetGUID: e3e8145ce2859bd4d845e074acf8bbba
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_1_Darwin_44_T3
     audioString: "Uhhh\u2026"
   - endTalkieAfterThisSegment: 0
@@ -179,7 +206,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 322c460519cbd6b4d8c6eee145ed3a88, type: 3}
+    audioClip:
+      m_AssetGUID: 322c460519cbd6b4d8c6eee145ed3a88
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_1_Darwin_44_T4
     audioString: Finally coming around..
   - endTalkieAfterThisSegment: 0
@@ -195,7 +225,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 5475d67c247f1bd41a2ab7a19d4efcca, type: 3}
+    audioClip:
+      m_AssetGUID: 5475d67c247f1bd41a2ab7a19d4efcca
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_1_Red_45_T1
     audioString: Exactly!
   - endTalkieAfterThisSegment: 0
@@ -211,7 +244,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: c07c082dc1471eb4e819201e37b67420, type: 3}
+    audioClip:
+      m_AssetGUID: c07c082dc1471eb4e819201e37b67420
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_1_Red_45_T2
     audioString: Okay Explorer! You know what to do!
   - endTalkieAfterThisSegment: 0
@@ -227,7 +263,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: a58bc0e1a867d9f47b003ff3bda52b5f, type: 3}
+    audioClip:
+      m_AssetGUID: a58bc0e1a867d9f47b003ff3bda52b5f
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_1_Wally_46_T1
     audioString: 'Roger that! '
   - endTalkieAfterThisSegment: 0
@@ -243,7 +282,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 5936a44ccb1e0a343bf0d6b76873ea98, type: 3}
+    audioClip:
+      m_AssetGUID: 64364aba0c4781c47af3fae1bb87ac72
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_1_Darwin_47_T1
     audioString: "Okay team\u2026"
   - endTalkieAfterThisSegment: 0
@@ -259,7 +301,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: c1f004b2c0bda0e47821b900be0d2b9c, type: 3}
+    audioClip:
+      m_AssetGUID: 779613dc59e999e4ca5eb8cd213fd196
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_1_Darwin_47_T2
     audioString: "Lets\u2026Uhh\u2026"
   - endTalkieAfterThisSegment: 0
@@ -275,6 +320,9 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 091575aa2a1cd5946883416a3f46bd3d, type: 3}
+    audioClip:
+      m_AssetGUID: 5d7fca745d4618e4fb8ae7c683ce9dd2
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_1_Darwin_47_T3
     audioString: Do this!

@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: ran_cw_obj
   m_EditorClassIdentifier: 
   word: ran
-  audio: {fileID: 8300000, guid: 6baf72df2edc8564cb364f639b4874ca, type: 3}
+  audio:
+    m_AssetGUID: 6baf72df2edc8564cb364f639b4874ca
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: e90a9284ebf62d64fab6a2d28bf82344, type: 3}
   elkoninList: 240000000200000021000000000000000000000000000000
   elkoninCount: 3

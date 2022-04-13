@@ -18,7 +18,6 @@ public class AudioManager : MonoBehaviour
     [Header("Addressable Operation Handles")]
     [SerializeField] private List<AsyncOperationHandle> songHandles;
     private AsyncOperationHandle talkHandle;
-    [HideInInspector] public List<AssetReference> currentlyLoadedAudioAssets;
 
     [Header("Audio Sources")]
     [SerializeField] private List<AudioSource> musicSources;
@@ -42,9 +41,7 @@ public class AudioManager : MonoBehaviour
         {
             instance = this;
         }
-
         songHandles = new List<AsyncOperationHandle>();
-        currentlyLoadedAudioAssets = new List<AssetReference>();
     }
 
     /* 
@@ -170,7 +167,7 @@ public class AudioManager : MonoBehaviour
         {
             songHandle = songReference.LoadAssetAsync<AudioClip>();
         }
-        yield return songHandle;
+            yield return songHandle;
 
         AudioClip song = (AudioClip)songHandle.Result;
         songHandles.Add(songHandle);
@@ -247,7 +244,7 @@ public class AudioManager : MonoBehaviour
             {
                 splitHandle = reference.LoadAssetAsync<AudioClip>();
             }
-            yield return splitHandle;
+                yield return splitHandle;
 
             songHandles.Add(splitHandle);
 
@@ -467,7 +464,7 @@ public class AudioManager : MonoBehaviour
         {
             talkHandle = clipRef.LoadAssetAsync<AudioClip>();
         }
-        yield return talkHandle;
+            yield return talkHandle;
 
 
         AudioClip _clip = (AudioClip)talkHandle.Result;
@@ -519,8 +516,8 @@ public class AudioManager : MonoBehaviour
         {
             talkHandle = audioRef.LoadAssetAsync<AudioClip>();
         }
-        yield return talkHandle;
 
+        yield return talkHandle;
         AudioClip clip = (AudioClip)talkHandle.Result;
 
         talkSource.clip = clip;
@@ -556,7 +553,7 @@ public class AudioManager : MonoBehaviour
         yield return handle;
         AudioClip audio = (AudioClip)handle.Result;
         float clipLength = audio.length;
-        if(handle.IsValid())
+        if (handle.IsValid())
         {
             Addressables.Release(handle);
         }

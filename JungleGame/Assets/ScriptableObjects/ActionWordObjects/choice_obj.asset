@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: choice_obj
   m_EditorClassIdentifier: 
   _name: choice
-  audio: {fileID: 8300000, guid: 1acd1b8565159534299eb88a6d0bff0e, type: 3}
+  audio:
+    m_AssetGUID: 1acd1b8565159534299eb88a6d0bff0e
+    m_SubObjectName: 
+    m_SubObjectType: 
   elkoninValue: 12
   animation: choice
   _enum: 11

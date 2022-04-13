@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: mudslide_obj
   m_EditorClassIdentifier: 
   _name: mudslide
-  audio: {fileID: 8300000, guid: 467507ce0c32b204d8930b0bd9f29bb3, type: 3}
+  audio:
+    m_AssetGUID: 467507ce0c32b204d8930b0bd9f29bb3
+    m_SubObjectName: 
+    m_SubObjectType: 
   elkoninValue: 2
   animation: mudslide
   _enum: 1

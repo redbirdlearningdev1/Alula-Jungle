@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: hello_obj
   m_EditorClassIdentifier: 
   _name: hello
-  audio: {fileID: 8300000, guid: ba7429587a24343498ee8ce6008e0292, type: 3}
+  audio:
+    m_AssetGUID: ba7429587a24343498ee8ce6008e0292
+    m_SubObjectName: 
+    m_SubObjectType: 
   elkoninValue: 7
   animation: hello
   _enum: 6

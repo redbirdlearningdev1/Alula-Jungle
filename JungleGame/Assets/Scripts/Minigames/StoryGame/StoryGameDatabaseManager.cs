@@ -8,7 +8,6 @@ using UnityEngine.AddressableAssets;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-
 public struct StoryGameEntry
 {
     public string storyName;
@@ -48,6 +47,7 @@ public class StroyGameObjectImportException : System.Exception
 
 public class StoryGameDatabaseManager : MonoBehaviour
 {
+#if UNITY_EDITOR
     [SerializeField] private TMP_Dropdown fileDropdown;
     [SerializeField] private TextMeshProUGUI uploadText;
     [SerializeField] private TextMeshProUGUI textText;
@@ -91,9 +91,7 @@ public class StoryGameDatabaseManager : MonoBehaviour
     private void SetupFileDropdown(FileInfo[] filesInfo)
     {
         // refresh database
-#if UNITY_EDITOR
         AssetDatabase.Refresh();
-#endif
         // set profile dropdown
         List<string> profileList = new List<string>();
         for (int i = 0; i < filesInfo.Length; i++)
@@ -149,9 +147,9 @@ public class StoryGameDatabaseManager : MonoBehaviour
     }
 
     /* 
-    ################################################
-    #   BUTTON FUNCTIONS
-    ################################################
+    //################################################
+    //#   BUTTON FUNCTIONS
+    //################################################
     */
 
     public void OnUploadCSVPressed()
@@ -334,7 +332,7 @@ public class StoryGameDatabaseManager : MonoBehaviour
                                     segment.advanceBG = true;
                                 else
                                     segment.advanceBG = false;
-                                print("seg.advanceBG: " + segment.advanceBG);
+                                //print("seg.advanceBG: " + segment.advanceBG);
                                 break;
 
                         }
@@ -373,7 +371,6 @@ public class StoryGameDatabaseManager : MonoBehaviour
         }
     }
 
-#if UNITY_EDITOR
     public void OnUpdatePressed()
     {
         // only continue iff tests complete
@@ -453,7 +450,6 @@ public class StoryGameDatabaseManager : MonoBehaviour
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
     }
-#endif
 
     private ActionWordEnum ConvertToActionWord(string val)
     {
@@ -515,30 +511,24 @@ public class StoryGameDatabaseManager : MonoBehaviour
 
     private void InitCreateGlobalList()
     {
-        var files = Resources.LoadAll<AudioClip>("StoryGameAudioFiles");
-        // TODO: MAJOR TESTING REQUIRED HERE
-        List<AssetReference> audioRefs = new List<AssetReference>();
-        foreach (AudioClip clip in files)
-        {
-            audioRefs.Add(new AssetReference(clip.name));
-        }
-
         storyGameAudioList = new List<AssetReference>();
-        foreach (AssetReference reference in audioRefs)
+        string[] storyAudioPaths = Directory.GetFiles(Application.dataPath + "/Audio/StoryGameAudioFiles/", "*.wav", SearchOption.AllDirectories);
+
+        foreach (string audioPath in storyAudioPaths)
         {
-            storyGameAudioList.Add(reference);
+            string assetPath = "Assets" + audioPath.Replace(Application.dataPath, "").Replace('\\', '/');
+            AssetDatabase.AssetPathToGUID(assetPath);
+            storyGameAudioList.Add(new AssetReference(AssetDatabase.AssetPathToGUID(assetPath)));
         }
 
         print("global audio list: " + storyGameAudioList.Count);
     }
-
     private AssetReference SearchForAudioByName(string str)
     {
-        // TODO: MAJOR TESTING REQUIRED
         // linear search
-        foreach (var file in storyGameAudioList)
+        foreach (AssetReference file in storyGameAudioList)
         {
-            if (file.ToString() == str)
+            if (AssetDatabase.GUIDToAssetPath(file.AssetGUID).Contains(str))
             {
                 //print ("found audio!");
                 return file;
@@ -547,4 +537,5 @@ public class StoryGameDatabaseManager : MonoBehaviour
         // return null if not found
         return null;
     }
+#endif
 }

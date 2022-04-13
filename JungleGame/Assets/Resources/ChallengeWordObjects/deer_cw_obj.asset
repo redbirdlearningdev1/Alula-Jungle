@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: deer_cw_obj
   m_EditorClassIdentifier: 
   word: deer
-  audio: {fileID: 8300000, guid: eba4a0276ef5d2644a92117f82684fc5, type: 3}
+  audio:
+    m_AssetGUID: eba4a0276ef5d2644a92117f82684fc5
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: fc347fef20f9fe24581889cae56a7420, type: 3}
   elkoninList: 190000001000000000000000000000000000000000000000
   elkoninCount: 2

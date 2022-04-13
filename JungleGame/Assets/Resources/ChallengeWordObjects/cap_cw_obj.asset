@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: cap_cw_obj
   m_EditorClassIdentifier: 
   word: cap
-  audio: {fileID: 8300000, guid: 7b036d6a8bd2bd54a813e4733e47aebe, type: 3}
+  audio:
+    m_AssetGUID: 7b036d6a8bd2bd54a813e4733e47aebe
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: cef5638a95acf4b4d878471bc7a42e6e, type: 3}
   elkoninList: 170000000200000022000000000000000000000000000000
   elkoninCount: 3

@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: bone_cw_obj
   m_EditorClassIdentifier: 
   word: bone
-  audio: {fileID: 8300000, guid: 982b7ab5d28104749a21c58cbde0f8da, type: 3}
+  audio:
+    m_AssetGUID: 982b7ab5d28104749a21c58cbde0f8da
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 18fd4b454ce5a58469cf4ba7842d4590, type: 3}
   elkoninList: 160000000a00000021000000000000000000000000000000
   elkoninCount: 3

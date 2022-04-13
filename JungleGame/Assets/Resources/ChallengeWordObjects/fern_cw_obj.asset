@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: fern_cw_obj
   m_EditorClassIdentifier: 
   word: fern
-  audio: {fileID: 8300000, guid: c5bd54243d298084cb39bfb258ced3b5, type: 3}
+  audio:
+    m_AssetGUID: c5bd54243d298084cb39bfb258ced3b5
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 2df79ac9a1201b74fad89333eff9b86c, type: 3}
   elkoninList: 1a0000000f00000021000000000000000000000000000000
   elkoninCount: 3

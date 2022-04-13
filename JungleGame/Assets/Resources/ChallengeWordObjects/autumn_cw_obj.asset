@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: autumn_cw_obj
   m_EditorClassIdentifier: 
   word: autumn
-  audio: {fileID: 8300000, guid: 1cf81837a690f83479182a07fb2f1e47, type: 3}
+  audio:
+    m_AssetGUID: 1cf81837a690f83479182a07fb2f1e47
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 21aa3164381670e4f82fca4dca01ade3, type: 3}
   elkoninList: 150000002700000006000000200000000000000000000000
   elkoninCount: 4

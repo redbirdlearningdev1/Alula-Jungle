@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: pupil_cw_obj
   m_EditorClassIdentifier: 
   word: pupil
-  audio: {fileID: 8300000, guid: b3013f1c94329ce469714d6b0432dfdf, type: 3}
+  audio:
+    m_AssetGUID: b3013f1c94329ce469714d6b0432dfdf
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 1b298bb4e4f103d41a819f9427a6a2d5, type: 3}
   elkoninList: 220000000b00000022000000040000001f00000000000000
   elkoninCount: 5

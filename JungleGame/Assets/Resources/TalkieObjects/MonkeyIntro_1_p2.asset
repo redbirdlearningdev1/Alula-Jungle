@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: e494e57849392e04da6502c8420da22a, type: 3}
+    audioClip:
+      m_AssetGUID: e494e57849392e04da6502c8420da22a
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_3_1_Marcus_3_T1
     audioString: WHAT HAS GOTTEN INTO THAT BOY!?
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: b7f4db03bf0422648810cdab56d37e12, type: 3}
+    audioClip:
+      m_AssetGUID: b7f4db03bf0422648810cdab56d37e12
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_3_1_Marcus_3_T2
     audioString: "He\u2019s ruining everything!"
   - endTalkieAfterThisSegment: 0
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 8a8464398927752448236dc198475059, type: 3}
+    audioClip:
+      m_AssetGUID: 8a8464398927752448236dc198475059
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_3_1_Brutus_4_T1
     audioString: "Yawn\u2026"
   - endTalkieAfterThisSegment: 0
@@ -83,7 +92,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: f0d23837dcf9b1046ba8a01d9d88f1f5, type: 3}
+    audioClip:
+      m_AssetGUID: f0d23837dcf9b1046ba8a01d9d88f1f5
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_3_1_Brutus_4_T2
     audioString: "Our leader won\u2019t be too pleased with us at this rate\u2026"
   - endTalkieAfterThisSegment: 0
@@ -99,7 +111,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: d6e4d38814e00c24bb7a9d5d63ed283c, type: 3}
+    audioClip:
+      m_AssetGUID: d6e4d38814e00c24bb7a9d5d63ed283c
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_3_1_Marcus_5_T1
     audioString: "Don\u2019t you think I know that!"
   - endTalkieAfterThisSegment: 0
@@ -115,7 +130,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 293c0973ae386334aaaad6d9335d1d91, type: 3}
+    audioClip:
+      m_AssetGUID: 293c0973ae386334aaaad6d9335d1d91
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_3_1_Marcus_5_T2
     audioString: "That spoiled brat\u2026"
   - endTalkieAfterThisSegment: 0
@@ -131,7 +149,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 12bdee54a0f670445a2b1ac40810c122, type: 3}
+    audioClip:
+      m_AssetGUID: 12bdee54a0f670445a2b1ac40810c122
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_3_1_Red_6_T1
     audioString: I wonder what they're talking about?
   - endTalkieAfterThisSegment: 0
@@ -147,6 +168,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 2f8a3da8a25df2a42bc71f845dba90ed, type: 3}
+    audioClip:
+      m_AssetGUID: 2f8a3da8a25df2a42bc71f845dba90ed
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_3_1_Wally_7_T1
     audioString: 'Whatever it is,  it doesn''t sound good. '

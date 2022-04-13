@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 281e7d53cf551a449bb25b385a2dd71e, type: 3}
+    audioClip:
+      m_AssetGUID: 281e7d53cf551a449bb25b385a2dd71e
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_2_1_Wally_1_T1
     audioString: It looks like they destroyed this area as well.
   - endTalkieAfterThisSegment: 0
@@ -51,6 +54,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 40174f6022b5dfc4c8c87ad4c59b87e0, type: 3}
+    audioClip:
+      m_AssetGUID: 40174f6022b5dfc4c8c87ad4c59b87e0
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_2_1_Red_2_T1
     audioString: "Let\u2019s clean up before moving forward!"

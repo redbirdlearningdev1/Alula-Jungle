@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: nut_cw_obj
   m_EditorClassIdentifier: 
   word: nut
-  audio: {fileID: 8300000, guid: af5a1f6382e23014e9ea7321bff77a0a, type: 3}
+  audio:
+    m_AssetGUID: af5a1f6382e23014e9ea7321bff77a0a
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 3fb4dba4ef8df9b4c9dcc45400140f7c, type: 3}
   elkoninList: 210000000600000027000000000000000000000000000000
   elkoninCount: 3

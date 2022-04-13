@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: pretty_cw_obj
   m_EditorClassIdentifier: 
   word: pretty
-  audio: {fileID: 8300000, guid: a0627962b41414c42aa790287f3bb4cd, type: 3}
+  audio:
+    m_AssetGUID: a0627962b41414c42aa790287f3bb4cd
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: d2a38832deebcbc419ed7ac522e5b812, type: 3}
   elkoninList: 220000002400000003000000270000000800000000000000
   elkoninCount: 5

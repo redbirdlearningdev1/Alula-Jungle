@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: hug_cw_obj
   m_EditorClassIdentifier: 
   word: hug
-  audio: {fileID: 8300000, guid: b7827557a8f38014dbbaff2c175b0010, type: 3}
+  audio:
+    m_AssetGUID: b7827557a8f38014dbbaff2c175b0010
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 8bd3d5942d72e7c4c9d8efc3eb7d3041, type: 3}
   elkoninList: 1c000000060000001b000000000000000000000000000000
   elkoninCount: 3

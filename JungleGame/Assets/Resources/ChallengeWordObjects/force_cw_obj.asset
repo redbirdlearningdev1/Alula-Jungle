@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: force_cw_obj
   m_EditorClassIdentifier: 
   word: force
-  audio: {fileID: 8300000, guid: 53c5549773760b8408b330a71af04fc6, type: 3}
+  audio:
+    m_AssetGUID: 53c5549773760b8408b330a71af04fc6
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 6e950c4bd7356904480dd930fab65135, type: 3}
   elkoninList: 1a0000000c00000025000000000000000000000000000000
   elkoninCount: 3

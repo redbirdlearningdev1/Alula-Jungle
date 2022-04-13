@@ -39,25 +39,32 @@ public class FxAudioObject : MonoBehaviour
         }
         yield return handle;
 
-        AudioClip clip = (AudioClip)handle.Result;
-
-        // set id
-        this.id = id;
-
-        // set clip and volume
-        audioSource.clip = clip;
-        audioSource.volume = volume;
-        audioSource.pitch = pitch;
-
-        // play clip and destroy object once complete OR loop forever
-        audioSource.Play();
-
-        if (loop)
+        if (handle.IsValid())
         {
-            audioSource.loop = true;
+            AudioClip clip = (AudioClip)handle.Result;
+
+            // set id
+            this.id = id;
+
+            // set clip and volume
+            audioSource.clip = clip;
+            audioSource.volume = volume;
+            audioSource.pitch = pitch;
+
+            // play clip and destroy object once complete OR loop forever
+            audioSource.Play();
+
+            if (loop)
+            {
+                audioSource.loop = true;
+            }
+            else
+                StartCoroutine(DelayDestruction(clip.length + 1f));
         }
         else
-            StartCoroutine(DelayDestruction(clip.length + 1f));
+        {
+            InstaDestroy();
+        }
     }
 
     public void InstaDestroy()
@@ -75,7 +82,7 @@ public class FxAudioObject : MonoBehaviour
 
     private void UnloadAndDestroy()
     {
-        if(handle.IsValid())
+        if (handle.IsValid())
         {
             Addressables.Release(handle);
         }

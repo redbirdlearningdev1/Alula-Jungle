@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: ecd29ca4c687f9c4b822aae4806a5882, type: 3}
+    audioClip:
+      m_AssetGUID: ecd29ca4c687f9c4b822aae4806a5882
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: E_3_2_Red_1_T1
     audioString: Julius!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 40dbf43de61c71740b09a5e8678bac1c, type: 3}
+    audioClip:
+      m_AssetGUID: 40dbf43de61c71740b09a5e8678bac1c
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: E_3_2_Red_1_T2
     audioString: Please,  listen to us!
   - endTalkieAfterThisSegment: 0
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 3b8806ae127849c4097173ee1fd6c056, type: 3}
+    audioClip:
+      m_AssetGUID: 3b8806ae127849c4097173ee1fd6c056
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: E_3_2_Julius_1_T1
     audioString: 'Stop! '
   - endTalkieAfterThisSegment: 0
@@ -83,6 +92,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: a1c9444a9d903ed46aaff10e06a0d49b, type: 3}
+    audioClip:
+      m_AssetGUID: a1c9444a9d903ed46aaff10e06a0d49b
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: E_3_2_Julius_1_T2
     audioString: "I don\u2019t want to hear it!"

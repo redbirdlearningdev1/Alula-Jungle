@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 0}
+    audioClip:
+      m_AssetGUID: d82728142b77f894a8d90be0699c2063
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Brutus_Laugh
     audioString: Heh heh...
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 5b40ac5f2b00f0a429f3a0a4e947c915, type: 3}
+    audioClip:
+      m_AssetGUID: 5b40ac5f2b00f0a429f3a0a4e947c915
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Cha_0_3b_Brutus_1_T2
     audioString: Are you ready Explorer?
   - endTalkieAfterThisSegment: 1
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: b016069d15e30a44280bd9657cc1213e, type: 3}
+    audioClip:
+      m_AssetGUID: b016069d15e30a44280bd9657cc1213e
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Cha_0_3b_Brutus_2_T1
     audioString: Alright,  let's do this.
   - endTalkieAfterThisSegment: 1
@@ -83,6 +92,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 5e19b6bd3fd3bc54dbf2164d0a8fab31, type: 3}
+    audioClip:
+      m_AssetGUID: 5e19b6bd3fd3bc54dbf2164d0a8fab31
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Cha_0_3b_Brutus_3_T1
     audioString: "we\u2019ll be waiting."
