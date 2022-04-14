@@ -25268,136 +25268,136 @@ MonoBehaviour:
     eyes: 1
   marcusSprites:
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 61dd6a9048a384a48a7aba597b3ba4a1
+      m_SubObjectName: Marcus2_MC
       m_SubObjectType: 
     character: 6
     emotionNum: 2
     mouth: 2
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 61dd6a9048a384a48a7aba597b3ba4a1
+      m_SubObjectName: Marcus2_MO
       m_SubObjectType: 
     character: 6
     emotionNum: 2
     mouth: 1
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 61dd6a9048a384a48a7aba597b3ba4a1
+      m_SubObjectName: Marcus3_MC
       m_SubObjectType: 
     character: 6
     emotionNum: 3
     mouth: 2
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 61dd6a9048a384a48a7aba597b3ba4a1
+      m_SubObjectName: Marcus3_MO
       m_SubObjectType: 
     character: 6
     emotionNum: 3
     mouth: 1
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 61dd6a9048a384a48a7aba597b3ba4a1
+      m_SubObjectName: Marcus4_MC
       m_SubObjectType: 
     character: 6
     emotionNum: 4
     mouth: 2
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 61dd6a9048a384a48a7aba597b3ba4a1
+      m_SubObjectName: Marcus4_MO
       m_SubObjectType: 
     character: 6
     emotionNum: 4
     mouth: 1
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 61dd6a9048a384a48a7aba597b3ba4a1
+      m_SubObjectName: Marcus5_MC
       m_SubObjectType: 
     character: 6
     emotionNum: 5
     mouth: 2
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 61dd6a9048a384a48a7aba597b3ba4a1
+      m_SubObjectName: Marcus5_MO
       m_SubObjectType: 
     character: 6
     emotionNum: 5
     mouth: 1
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 61dd6a9048a384a48a7aba597b3ba4a1
+      m_SubObjectName: Marcus6_MC
       m_SubObjectType: 
     character: 6
     emotionNum: 6
     mouth: 2
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 61dd6a9048a384a48a7aba597b3ba4a1
+      m_SubObjectName: Marcus6_MO
       m_SubObjectType: 
     character: 6
     emotionNum: 6
     mouth: 1
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 61dd6a9048a384a48a7aba597b3ba4a1
+      m_SubObjectName: Marcus7_MO
       m_SubObjectType: 
     character: 6
     emotionNum: 7
     mouth: 1
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 61dd6a9048a384a48a7aba597b3ba4a1
+      m_SubObjectName: Marcus8_MC
       m_SubObjectType: 
     character: 6
     emotionNum: 8
     mouth: 2
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 61dd6a9048a384a48a7aba597b3ba4a1
+      m_SubObjectName: Marcus8_MO
       m_SubObjectType: 
     character: 6
     emotionNum: 8
     mouth: 1
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 61dd6a9048a384a48a7aba597b3ba4a1
+      m_SubObjectName: Marcus9_MC
       m_SubObjectType: 
     character: 6
     emotionNum: 9
     mouth: 2
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 61dd6a9048a384a48a7aba597b3ba4a1
+      m_SubObjectName: Marcus9_MO
       m_SubObjectType: 
     character: 6
     emotionNum: 9
     mouth: 1
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 61dd6a9048a384a48a7aba597b3ba4a1
+      m_SubObjectName: Marcus10_MC
       m_SubObjectType: 
     character: 6
     emotionNum: 10
     mouth: 2
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 61dd6a9048a384a48a7aba597b3ba4a1
+      m_SubObjectName: Marcus10_MO
       m_SubObjectType: 
     character: 6
     emotionNum: 10
@@ -25405,120 +25405,120 @@ MonoBehaviour:
     eyes: 0
   brutusSprites:
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 847fabfa381262244a0950fec3718e54
+      m_SubObjectName: Brutus2_MC
       m_SubObjectType: 
     character: 5
     emotionNum: 2
     mouth: 2
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 847fabfa381262244a0950fec3718e54
+      m_SubObjectName: Brutus2_MO
       m_SubObjectType: 
     character: 5
     emotionNum: 2
     mouth: 1
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 847fabfa381262244a0950fec3718e54
+      m_SubObjectName: Brutus3_MC
       m_SubObjectType: 
     character: 5
     emotionNum: 3
     mouth: 2
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 847fabfa381262244a0950fec3718e54
+      m_SubObjectName: Brutus3_MO
       m_SubObjectType: 
     character: 5
     emotionNum: 3
     mouth: 1
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 847fabfa381262244a0950fec3718e54
+      m_SubObjectName: Brutus4_MC
       m_SubObjectType: 
     character: 5
     emotionNum: 4
     mouth: 2
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 847fabfa381262244a0950fec3718e54
+      m_SubObjectName: Brutus4_MO
       m_SubObjectType: 
     character: 5
     emotionNum: 4
     mouth: 1
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 847fabfa381262244a0950fec3718e54
+      m_SubObjectName: Brutus5_MC
       m_SubObjectType: 
     character: 5
     emotionNum: 5
     mouth: 2
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 847fabfa381262244a0950fec3718e54
+      m_SubObjectName: Brutus5_MO
       m_SubObjectType: 
     character: 5
     emotionNum: 5
     mouth: 1
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 847fabfa381262244a0950fec3718e54
+      m_SubObjectName: Brutus6_MO
       m_SubObjectType: 
     character: 5
     emotionNum: 6
     mouth: 1
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 847fabfa381262244a0950fec3718e54
+      m_SubObjectName: Brutus7_MC
       m_SubObjectType: 
     character: 5
     emotionNum: 7
     mouth: 2
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 847fabfa381262244a0950fec3718e54
+      m_SubObjectName: Brutus7_MO
       m_SubObjectType: 
     character: 5
     emotionNum: 7
     mouth: 1
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 847fabfa381262244a0950fec3718e54
+      m_SubObjectName: Brutus8_MC
       m_SubObjectType: 
     character: 5
     emotionNum: 8
     mouth: 2
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 847fabfa381262244a0950fec3718e54
+      m_SubObjectName: Brutus8_MO
       m_SubObjectType: 
     character: 5
     emotionNum: 8
     mouth: 1
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 847fabfa381262244a0950fec3718e54
+      m_SubObjectName: Brutus10_MC
       m_SubObjectType: 
     character: 5
     emotionNum: 10
     mouth: 2
     eyes: 0
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 847fabfa381262244a0950fec3718e54
+      m_SubObjectName: Brutus10_MO
       m_SubObjectType: 
     character: 5
     emotionNum: 10
@@ -25526,184 +25526,184 @@ MonoBehaviour:
     eyes: 0
   lesterSprites:
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester1_MC_EP
       m_SubObjectType: 
     character: 4
     emotionNum: 1
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester1_MO_EP
       m_SubObjectType: 
     character: 4
     emotionNum: 1
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester2_MC_EP
       m_SubObjectType: 
     character: 4
     emotionNum: 2
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester2_MO_EP
       m_SubObjectType: 
     character: 4
     emotionNum: 2
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester3_MC_EP
       m_SubObjectType: 
     character: 4
     emotionNum: 3
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester3_MO_EP
       m_SubObjectType: 
     character: 4
     emotionNum: 3
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester4_MC_EP
       m_SubObjectType: 
     character: 4
     emotionNum: 4
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester4_MO_EP
       m_SubObjectType: 
     character: 4
     emotionNum: 4
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester5_MO_EC
       m_SubObjectType: 
     character: 4
     emotionNum: 5
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester5_MO_EP
       m_SubObjectType: 
     character: 4
     emotionNum: 5
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester6_MO_EP
       m_SubObjectType: 
     character: 4
     emotionNum: 6
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester7_MO_EC
       m_SubObjectType: 
     character: 4
     emotionNum: 7
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester7_MO_EP
       m_SubObjectType: 
     character: 4
     emotionNum: 7
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester8_MC_EP
       m_SubObjectType: 
     character: 4
     emotionNum: 8
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester8_MO_EP
       m_SubObjectType: 
     character: 4
     emotionNum: 8
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester9_MC_EI
       m_SubObjectType: 
     character: 4
     emotionNum: 9
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester9_MC_EO
       m_SubObjectType: 
     character: 4
     emotionNum: 9
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester9_MC_EP
       m_SubObjectType: 
     character: 4
     emotionNum: 9
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester9_MO_EI
       m_SubObjectType: 
     character: 4
     emotionNum: 9
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester9_MO_EO
       m_SubObjectType: 
     character: 4
     emotionNum: 9
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester9_MO_EP
       m_SubObjectType: 
     character: 4
     emotionNum: 9
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester10_MC_EP
       m_SubObjectType: 
     character: 4
     emotionNum: 10
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 30a50b02ee91eb04a9f268b745857899
+      m_SubObjectName: Lester10_MO_EP
       m_SubObjectType: 
     character: 4
     emotionNum: 10
@@ -25711,320 +25711,320 @@ MonoBehaviour:
     eyes: 2
   cloggSprites:
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg1_MC_EC
       m_SubObjectType: 
     character: 8
     emotionNum: 1
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg1_MC_EI
       m_SubObjectType: 
     character: 8
     emotionNum: 1
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg1_MC_EP
       m_SubObjectType: 
     character: 8
     emotionNum: 1
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg1_MO_EC
       m_SubObjectType: 
     character: 8
     emotionNum: 1
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg1_MO_EI
       m_SubObjectType: 
     character: 8
     emotionNum: 1
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg1_MO_EP
       m_SubObjectType: 
     character: 8
     emotionNum: 1
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg2_MC_EI
       m_SubObjectType: 
     character: 8
     emotionNum: 2
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg2_MO_EI
       m_SubObjectType: 
     character: 8
     emotionNum: 2
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg3_MC_EI
       m_SubObjectType: 
     character: 8
     emotionNum: 3
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg3_MO_EI
       m_SubObjectType: 
     character: 8
     emotionNum: 3
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg4_MC_EI
       m_SubObjectType: 
     character: 8
     emotionNum: 4
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg4_MC_EP
       m_SubObjectType: 
     character: 8
     emotionNum: 4
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg4_MO_EI
       m_SubObjectType: 
     character: 8
     emotionNum: 4
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg4_MO_EP
       m_SubObjectType: 
     character: 8
     emotionNum: 4
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg5_MC_EC
       m_SubObjectType: 
     character: 8
     emotionNum: 5
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg5_MC_EI
       m_SubObjectType: 
     character: 8
     emotionNum: 5
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg5_MO_EC
       m_SubObjectType: 
     character: 8
     emotionNum: 5
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg5_MO_EI
       m_SubObjectType: 
     character: 8
     emotionNum: 5
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg6_MC_EC
       m_SubObjectType: 
     character: 8
     emotionNum: 6
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg6_MC_EI
       m_SubObjectType: 
     character: 8
     emotionNum: 6
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg6_MO_EC
       m_SubObjectType: 
     character: 8
     emotionNum: 6
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg6_MO_EI
       m_SubObjectType: 
     character: 8
     emotionNum: 6
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg7_MC_EC
       m_SubObjectType: 
     character: 8
     emotionNum: 7
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg7_MC_EI
       m_SubObjectType: 
     character: 8
     emotionNum: 7
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg7_MC_EO
       m_SubObjectType: 
     character: 8
     emotionNum: 7
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg7_MC_EP
       m_SubObjectType: 
     character: 8
     emotionNum: 7
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg7_MO_EC
       m_SubObjectType: 
     character: 8
     emotionNum: 7
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg7_MO_EI
       m_SubObjectType: 
     character: 8
     emotionNum: 7
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg7_MO_EO
       m_SubObjectType: 
     character: 8
     emotionNum: 7
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg7_MO_EP
       m_SubObjectType: 
     character: 8
     emotionNum: 7
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg8_MC_EC
       m_SubObjectType: 
     character: 8
     emotionNum: 8
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg8_MC_EO
       m_SubObjectType: 
     character: 8
     emotionNum: 8
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg8_MO_EC
       m_SubObjectType: 
     character: 8
     emotionNum: 8
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg8_MO_EO
       m_SubObjectType: 
     character: 8
     emotionNum: 8
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg9_MC_EC
       m_SubObjectType: 
     character: 8
     emotionNum: 9
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg9_MC_EI
       m_SubObjectType: 
     character: 8
     emotionNum: 9
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg9_MO_EC
       m_SubObjectType: 
     character: 8
     emotionNum: 9
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg9_MO_EI
       m_SubObjectType: 
     character: 8
     emotionNum: 9
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg10_MC_EI
       m_SubObjectType: 
     character: 8
     emotionNum: 10
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 4654f360c051d02408380c8c66c9faf3
+      m_SubObjectName: Clogg10_MO_EI
       m_SubObjectType: 
     character: 8
     emotionNum: 10
@@ -26032,344 +26032,344 @@ MonoBehaviour:
     eyes: 1
   bubblesSprites:
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles1_MC_EC
       m_SubObjectType: 
     character: 10
     emotionNum: 1
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles1_MC_EI
       m_SubObjectType: 
     character: 10
     emotionNum: 1
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles1_MC_EO
       m_SubObjectType: 
     character: 10
     emotionNum: 1
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles1_MC_EP
       m_SubObjectType: 
     character: 10
     emotionNum: 1
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles1_MO_EC
       m_SubObjectType: 
     character: 10
     emotionNum: 1
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles1_MO_EI
       m_SubObjectType: 
     character: 10
     emotionNum: 1
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles1_MO_EO
       m_SubObjectType: 
     character: 10
     emotionNum: 1
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles1_MO_EP
       m_SubObjectType: 
     character: 10
     emotionNum: 1
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles2_MC_EI
       m_SubObjectType: 
     character: 10
     emotionNum: 2
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles2_MC_EP
       m_SubObjectType: 
     character: 10
     emotionNum: 2
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles2_MO_EI
       m_SubObjectType: 
     character: 10
     emotionNum: 2
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles2_MO_EP
       m_SubObjectType: 
     character: 10
     emotionNum: 2
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles3_MC_EI
       m_SubObjectType: 
     character: 10
     emotionNum: 3
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles4_MO_EC
       m_SubObjectType: 
     character: 10
     emotionNum: 4
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles5_MO_EI
       m_SubObjectType: 
     character: 10
     emotionNum: 5
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles6_MO_EC
       m_SubObjectType: 
     character: 10
     emotionNum: 6
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles7_MC_EC
       m_SubObjectType: 
     character: 10
     emotionNum: 7
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles7_MC_EI
       m_SubObjectType: 
     character: 10
     emotionNum: 7
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles8_MC_EC
       m_SubObjectType: 
     character: 10
     emotionNum: 8
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles8_MC_EI
       m_SubObjectType: 
     character: 10
     emotionNum: 8
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles8_MC_EP
       m_SubObjectType: 
     character: 10
     emotionNum: 8
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles8_MO_EC
       m_SubObjectType: 
     character: 10
     emotionNum: 8
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles8_MO_EI
       m_SubObjectType: 
     character: 10
     emotionNum: 8
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles8_MO_EP
       m_SubObjectType: 
     character: 10
     emotionNum: 8
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles9_MC_EI
       m_SubObjectType: 
     character: 10
     emotionNum: 9
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles9_MC_EP
       m_SubObjectType: 
     character: 10
     emotionNum: 9
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles9_MO_EI
       m_SubObjectType: 
     character: 10
     emotionNum: 9
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles9_MO_EP
       m_SubObjectType: 
     character: 10
     emotionNum: 9
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles10_MO_EC
       m_SubObjectType: 
     character: 10
     emotionNum: 10
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles10_MO_EI
       m_SubObjectType: 
     character: 10
     emotionNum: 10
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles10_MO_EP
       m_SubObjectType: 
     character: 10
     emotionNum: 10
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles11_MC_EI
       m_SubObjectType: 
     character: 10
     emotionNum: 11
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles11_MC_EO
       m_SubObjectType: 
     character: 10
     emotionNum: 11
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles11_MO_EI
       m_SubObjectType: 
     character: 10
     emotionNum: 11
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles11_MO_EO
       m_SubObjectType: 
     character: 10
     emotionNum: 11
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles12_MC_EC
       m_SubObjectType: 
     character: 10
     emotionNum: 12
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles12_MC_EI
       m_SubObjectType: 
     character: 10
     emotionNum: 12
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles12_MC_EO
       m_SubObjectType: 
     character: 10
     emotionNum: 12
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles12_MO_EC
       m_SubObjectType: 
     character: 10
     emotionNum: 12
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles12_MO_EI
       m_SubObjectType: 
     character: 10
     emotionNum: 12
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles12_MO_EO
       m_SubObjectType: 
     character: 10
     emotionNum: 12
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles13_MC_EI
       m_SubObjectType: 
     character: 10
     emotionNum: 13
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: df377cdd4ff7f9d43ad0123f47a52332
+      m_SubObjectName: Bubbles13_MO_EI
       m_SubObjectType: 
     character: 10
     emotionNum: 13
@@ -26377,416 +26377,416 @@ MonoBehaviour:
     eyes: 1
   ollieSprites:
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie1_MC_EC
       m_SubObjectType: 
     character: 11
     emotionNum: 1
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie1_MC_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 1
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie1_MO_EC
       m_SubObjectType: 
     character: 11
     emotionNum: 1
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie1_MO_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 1
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie2_MC_EC
       m_SubObjectType: 
     character: 11
     emotionNum: 2
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie2_MC_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 2
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie2_MO_EC
       m_SubObjectType: 
     character: 11
     emotionNum: 2
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie2_MO_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 2
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie3_MC_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 3
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie3_MO_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 3
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie4_MC_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 4
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie4_MO_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 4
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie5_MC_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 5
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie5_MO_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 5
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie6_MC_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 6
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie6_MC_EP
       m_SubObjectType: 
     character: 11
     emotionNum: 6
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie6_MO_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 6
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie6_MO_EP
       m_SubObjectType: 
     character: 11
     emotionNum: 6
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie7_MC_EC
       m_SubObjectType: 
     character: 11
     emotionNum: 7
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie7_MC_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 7
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie7_MO_EC
       m_SubObjectType: 
     character: 11
     emotionNum: 7
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie7_MO_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 7
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie8_MC_EC
       m_SubObjectType: 
     character: 11
     emotionNum: 8
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie8_MC_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 8
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie8_MC_EO
       m_SubObjectType: 
     character: 11
     emotionNum: 8
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie8_MO_EC
       m_SubObjectType: 
     character: 11
     emotionNum: 8
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie8_MO_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 8
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie8_MO_EO
       m_SubObjectType: 
     character: 11
     emotionNum: 8
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie9_MC_EC
       m_SubObjectType: 
     character: 11
     emotionNum: 9
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie9_MC_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 9
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie9_MC_EO
       m_SubObjectType: 
     character: 11
     emotionNum: 9
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie9_MO_EC
       m_SubObjectType: 
     character: 11
     emotionNum: 9
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie9_MO_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 9
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie9_MO_EO
       m_SubObjectType: 
     character: 11
     emotionNum: 9
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie10_MC_EC
       m_SubObjectType: 
     character: 11
     emotionNum: 10
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie10_MC_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 10
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie10_MO_EC
       m_SubObjectType: 
     character: 11
     emotionNum: 10
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie10_MO_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 10
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie11_MC_EC
       m_SubObjectType: 
     character: 11
     emotionNum: 11
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie11_MC_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 11
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie11_MC_EP
       m_SubObjectType: 
     character: 11
     emotionNum: 11
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie11_MO_EC
       m_SubObjectType: 
     character: 11
     emotionNum: 11
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie11_MO_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 11
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie11_MO_EP
       m_SubObjectType: 
     character: 11
     emotionNum: 11
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie12_MC_EC
       m_SubObjectType: 
     character: 11
     emotionNum: 12
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie12_MC_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 12
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie12_MO_EC
       m_SubObjectType: 
     character: 11
     emotionNum: 12
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie12_MO_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 12
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie13_MC_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 13
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie13_MO_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 13
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie14_MC_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 14
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 083f5970699673741b052d440529646c
+      m_SubObjectName: Ollie14_MO_EI
       m_SubObjectType: 
     character: 11
     emotionNum: 14
@@ -26794,384 +26794,384 @@ MonoBehaviour:
     eyes: 1
   spindleSprites:
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle2_MC_EC
       m_SubObjectType: 
     character: 9
     emotionNum: 2
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle2_MC_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 2
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle2_MC_EP
       m_SubObjectType: 
     character: 9
     emotionNum: 2
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle2_MO_EC
       m_SubObjectType: 
     character: 9
     emotionNum: 2
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle2_MO_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 2
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle2_MO_EP
       m_SubObjectType: 
     character: 9
     emotionNum: 2
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle3_MC_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 3
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle3_MC_EO
       m_SubObjectType: 
     character: 9
     emotionNum: 3
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle3_MO_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 3
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle3_MO_EO
       m_SubObjectType: 
     character: 9
     emotionNum: 3
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle4_MC_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 4
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle4_MC_EO
       m_SubObjectType: 
     character: 9
     emotionNum: 4
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle4_MC_EP
       m_SubObjectType: 
     character: 9
     emotionNum: 4
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle4_MO_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 4
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle4_MO_EO
       m_SubObjectType: 
     character: 9
     emotionNum: 4
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle4_MO_EP
       m_SubObjectType: 
     character: 9
     emotionNum: 4
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle5_MO_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 5
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle6_MC_EC
       m_SubObjectType: 
     character: 9
     emotionNum: 6
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle6_MC_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 6
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle6_MO_EC
       m_SubObjectType: 
     character: 9
     emotionNum: 6
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle6_MO_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 6
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle8_MO_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 8
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle9_MC_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 9
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle9_MC_EO
       m_SubObjectType: 
     character: 9
     emotionNum: 9
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle9_MO_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 9
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle9_MO_EO
       m_SubObjectType: 
     character: 9
     emotionNum: 9
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle10_MO_EC
       m_SubObjectType: 
     character: 9
     emotionNum: 10
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle10_MO_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 10
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle11_MC_EC
       m_SubObjectType: 
     character: 9
     emotionNum: 11
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle11_MC_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 11
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle11_MC_EP
       m_SubObjectType: 
     character: 9
     emotionNum: 11
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle11_MO_EC
       m_SubObjectType: 
     character: 9
     emotionNum: 11
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle11_MO_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 11
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle11_MO_EP
       m_SubObjectType: 
     character: 9
     emotionNum: 11
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle12_MC_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 12
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle12_MC_EO
       m_SubObjectType: 
     character: 9
     emotionNum: 12
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle12_MC_EP
       m_SubObjectType: 
     character: 9
     emotionNum: 12
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle12_MO_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 12
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle12_MC_EO
       m_SubObjectType: 
     character: 9
     emotionNum: 12
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle12_MO_EP
       m_SubObjectType: 
     character: 9
     emotionNum: 12
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle13_MO_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 13
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle13_MO_EP
       m_SubObjectType: 
     character: 9
     emotionNum: 13
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle14_MO_EC
       m_SubObjectType: 
     character: 9
     emotionNum: 14
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle14_MO_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 14
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle15_MC_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 15
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle15_MC_EO
       m_SubObjectType: 
     character: 9
     emotionNum: 15
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle15_MO_EI
       m_SubObjectType: 
     character: 9
     emotionNum: 15
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 564c873579294294d9a7b78b08322338
+      m_SubObjectName: Spindle15_MO_EO
       m_SubObjectType: 
     character: 9
     emotionNum: 15
@@ -27179,496 +27179,488 @@ MonoBehaviour:
     eyes: 4
   sylvieSprites:
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie1_MC_EC
       m_SubObjectType: 
     character: 13
     emotionNum: 1
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie1_MC_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 1
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie1_MC_EO
       m_SubObjectType: 
     character: 13
     emotionNum: 1
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie1_MO_EC
       m_SubObjectType: 
     character: 13
     emotionNum: 1
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie1_MO_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 1
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie1_MO_EO
       m_SubObjectType: 
     character: 13
     emotionNum: 1
     mouth: 1
-    eyes: 1
+    eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie2_MC_EC
       m_SubObjectType: 
     character: 13
     emotionNum: 2
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie2_MC_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 2
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie2_MO_EC
       m_SubObjectType: 
     character: 13
     emotionNum: 2
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie2_MO_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 2
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie3_MC_EC
       m_SubObjectType: 
     character: 13
     emotionNum: 3
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie3_MC_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 3
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
-      m_SubObjectType: 
-    character: 13
-    emotionNum: 3
-    mouth: 2
-    eyes: 1
-  - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie3_MO_EC
       m_SubObjectType: 
     character: 13
     emotionNum: 3
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie3_MO_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 3
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie4_MC_EC
       m_SubObjectType: 
     character: 13
     emotionNum: 4
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie4_MC_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 4
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie4_MO_EC
       m_SubObjectType: 
     character: 13
     emotionNum: 4
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie4_MO_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 4
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie5_MC_EC
       m_SubObjectType: 
     character: 13
     emotionNum: 5
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie5_MC_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 5
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie5_MO_EC
       m_SubObjectType: 
     character: 13
     emotionNum: 5
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie5_MO_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 5
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie6_MC_EC
       m_SubObjectType: 
     character: 13
     emotionNum: 6
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie6_MC_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 6
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie6_MC_EO
       m_SubObjectType: 
     character: 13
     emotionNum: 6
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie6_MO_EC
       m_SubObjectType: 
     character: 13
     emotionNum: 6
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie6_MO_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 6
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie6_MO_EO
       m_SubObjectType: 
     character: 13
     emotionNum: 6
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie7_MC_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 7
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie7_MC_EO
       m_SubObjectType: 
     character: 13
     emotionNum: 7
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie7_MO_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 7
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie7_MO_EO
       m_SubObjectType: 
     character: 13
     emotionNum: 7
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie8_MC_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 8
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie8_MC_EO
       m_SubObjectType: 
     character: 13
     emotionNum: 8
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie8_MO_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 8
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie8_MO_EO
       m_SubObjectType: 
     character: 13
     emotionNum: 8
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie9_MC_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 9
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie9_MO_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 9
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie10_MC_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 10
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie10_MO_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 10
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie11_MC_EC
       m_SubObjectType: 
     character: 13
     emotionNum: 11
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie11_MC_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 11
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie11_MO_EC
       m_SubObjectType: 
     character: 13
     emotionNum: 11
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie11_MO_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 11
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie12_MC_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 12
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie12_MC_EO
       m_SubObjectType: 
     character: 13
     emotionNum: 12
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie12_MO_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 12
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie12_MO_EO
       m_SubObjectType: 
     character: 13
     emotionNum: 12
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie13_MC_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 13
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie13_MC_EO
       m_SubObjectType: 
     character: 13
     emotionNum: 13
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie13_MO_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 13
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie13_MO_EO
       m_SubObjectType: 
     character: 13
     emotionNum: 13
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie14_MC_EC
       m_SubObjectType: 
     character: 13
     emotionNum: 14
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie14_MC_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 14
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie14_MO_EC
       m_SubObjectType: 
     character: 13
     emotionNum: 14
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie14_MO_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 14
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie15_MC_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 15
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie15_MO_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 15
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie16_MC_EC
       m_SubObjectType: 
     character: 13
     emotionNum: 16
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie16_MC_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 16
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6a0a1442682fe2043a84c15abdc689c0
+      m_SubObjectName: Sylvie16_MO_EI
       m_SubObjectType: 
     character: 13
     emotionNum: 16
@@ -27676,384 +27668,384 @@ MonoBehaviour:
     eyes: 1
   celesteSprites:
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste1_MC_EC
       m_SubObjectType: 
     character: 12
     emotionNum: 1
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste1_MC_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 1
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste1_MC_EO
       m_SubObjectType: 
     character: 12
     emotionNum: 1
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste1_MO_EC
       m_SubObjectType: 
     character: 12
     emotionNum: 1
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste1_MO_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 1
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste1_MO_EO
       m_SubObjectType: 
     character: 12
     emotionNum: 1
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste2_MC_EC
       m_SubObjectType: 
     character: 12
     emotionNum: 2
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste2_MC_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 2
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste2_MC_EO
       m_SubObjectType: 
     character: 12
     emotionNum: 2
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste2_MO_EC
       m_SubObjectType: 
     character: 12
     emotionNum: 2
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste2_MO_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 2
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste2_MO_EO
       m_SubObjectType: 
     character: 12
     emotionNum: 2
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste3_MC_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 3
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste3_MO_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 3
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste4_MC_EC
       m_SubObjectType: 
     character: 12
     emotionNum: 4
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste4_MC_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 4
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste4_MO_EC
       m_SubObjectType: 
     character: 12
     emotionNum: 4
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste4_MO_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 4
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste5_MC_EC
       m_SubObjectType: 
     character: 12
     emotionNum: 5
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste5_MC_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 5
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste5_MC_EO
       m_SubObjectType: 
     character: 12
     emotionNum: 5
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste5_MO_EC
       m_SubObjectType: 
     character: 12
     emotionNum: 5
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste5_MO_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 5
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste5_MO_EO
       m_SubObjectType: 
     character: 12
     emotionNum: 5
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste6_MC_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 6
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste6_MO_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 6
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste7_MC_EC
       m_SubObjectType: 
     character: 12
     emotionNum: 7
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste7_MC_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 7
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste7_MC_EO
       m_SubObjectType: 
     character: 12
     emotionNum: 7
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste7_MO_EC
       m_SubObjectType: 
     character: 12
     emotionNum: 7
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste7_MO_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 7
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste7_MO_EO
       m_SubObjectType: 
     character: 12
     emotionNum: 7
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste8_MC_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 8
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste8_MC_EO
       m_SubObjectType: 
     character: 12
     emotionNum: 8
     mouth: 2
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste8_MO_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 8
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste8_MO_EO
       m_SubObjectType: 
     character: 12
     emotionNum: 8
     mouth: 1
     eyes: 4
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste9_MC_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 9
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste9_MO_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 9
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste11_MC_EP
       m_SubObjectType: 
     character: 12
     emotionNum: 11
     mouth: 2
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste11_MO_EP
       m_SubObjectType: 
     character: 12
     emotionNum: 11
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste12_MC_EC
       m_SubObjectType: 
     character: 12
     emotionNum: 12
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste12_MC_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 12
     mouth: 2
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste12_MO_EC
       m_SubObjectType: 
     character: 12
     emotionNum: 12
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste12_MO_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 12
     mouth: 1
     eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste13_MC_EC
       m_SubObjectType: 
     character: 12
     emotionNum: 13
     mouth: 2
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste13_MC_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 13
     mouth: 2
-    eyes: 2
+    eyes: 1
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste13_MO_EC
       m_SubObjectType: 
     character: 12
     emotionNum: 13
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: e7eded96d71d2dd4cb70821943e09f2f
+      m_SubObjectName: Celeste13_MO_EI
       m_SubObjectType: 
     character: 12
     emotionNum: 13
@@ -28061,40 +28053,40 @@ MonoBehaviour:
     eyes: 1
   taxiSprites:
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: ba7d96dd0c328de43a5ee0314ea9bc56
+      m_SubObjectName: Taxi1_MO_EC
       m_SubObjectType: 
     character: 14
     emotionNum: 1
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: ba7d96dd0c328de43a5ee0314ea9bc56
+      m_SubObjectName: Taxi1_MO_EP
       m_SubObjectType: 
     character: 14
     emotionNum: 1
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: ba7d96dd0c328de43a5ee0314ea9bc56
+      m_SubObjectName: Taxi2_MO_EP
       m_SubObjectType: 
     character: 14
     emotionNum: 2
     mouth: 1
     eyes: 2
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: ba7d96dd0c328de43a5ee0314ea9bc56
+      m_SubObjectName: Taxi3_MO_EC
       m_SubObjectType: 
     character: 14
     emotionNum: 3
     mouth: 1
     eyes: 3
   - sprite:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: ba7d96dd0c328de43a5ee0314ea9bc56
+      m_SubObjectName: Taxi3_MO_EP
       m_SubObjectType: 
     character: 14
     emotionNum: 3
