@@ -39,6 +39,7 @@ public class TestSplashSceneManager : MonoBehaviour
     public void OnGoToSplashSceneButtonPressed()
     {
         textWiggleController.StopWiggle();
+        textWiggleController.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.2f, 0.2f);
         goToSplashSceneButton.interactable = false;
         StartCoroutine(ShowLoadingScreen());
     }
