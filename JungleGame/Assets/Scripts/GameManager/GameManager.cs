@@ -52,7 +52,7 @@ public class GameManager : DontDestroy<GameManager>
     public StoryGameData storyGameData;
     public MapIconIdentfier mapID;
     public MapLocation prevMapLocation = MapLocation.NONE;
-    
+
     [HideInInspector] public bool repairMapIconID; // when the scroll map appears -> repair this icon
     [HideInInspector] public GameType prevGameTypePlayed = GameType.None;
 
@@ -98,15 +98,26 @@ public class GameManager : DontDestroy<GameManager>
 
     private IEnumerator InitialLoadTalkieAndMusic()
     {
-        AsyncOperationHandle talkieHandle = TalkieDatabase.instance.taxiSprites[0].sprite.LoadAssetAsync<Sprite>();
-        yield return talkieHandle;
-        Addressables.Release(talkieHandle);
+        if (!TalkieDatabase.instance.taxiSprites[0].sprite.OperationHandle.IsValid())
+        {
+            AsyncOperationHandle talkieHandle = TalkieDatabase.instance.taxiSprites[0].sprite.LoadAssetAsync<Sprite>();
+            yield return talkieHandle;
+            Addressables.Release(talkieHandle);
+        }
+
+        if (!AudioDatabase.instance.SplashScreenSong.OperationHandle.IsValid())
+        {
+            AsyncOperationHandle musicHandle = AudioDatabase.instance.SplashScreenSong.LoadAssetAsync<AudioClip>();
+            yield return musicHandle;
+            Addressables.Release(musicHandle);
+        }
+
     }
 
     void Update()
     {
         if (devModeActivated)
-        {            
+        {
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
                 // press 'Shift + D' to go to the dev menu
@@ -120,7 +131,7 @@ public class GameManager : DontDestroy<GameManager>
                 {
                     Debug.LogError("forcing open Development Console...");
                     StartCoroutine(LogDateTimeNow(2f));
-                }       
+                }
             }
         }
     }
@@ -209,12 +220,12 @@ public class GameManager : DontDestroy<GameManager>
         }
 
         // check consonant words
-        foreach(var consonantWord in consonantWords)
+        foreach (var consonantWord in consonantWords)
         {
             if (consonantWord.elkoninValue == value)
                 return consonantWord;
         }
-        SendError (this, "Could not find elkonin value: \'" + value + "\'");
+        SendError(this, "Could not find elkonin value: \'" + value + "\'");
         return null;
     }
 
@@ -227,7 +238,7 @@ public class GameManager : DontDestroy<GameManager>
             if (actionWord._enum.Equals(word))
                 return actionWord;
         }
-        SendError (this, "Could not find action word: \'" + word + "\'");
+        SendError(this, "Could not find action word: \'" + word + "\'");
         return null;
     }
 
@@ -236,7 +247,7 @@ public class GameManager : DontDestroy<GameManager>
     {
         var globalCoinPool = new List<ActionWordEnum>();
         string[] coins = System.Enum.GetNames(typeof(ActionWordEnum));
-        for (int i = 0; i < coins.Length; i++) 
+        for (int i = 0; i < coins.Length; i++)
         {
             ActionWordEnum coin = (ActionWordEnum)System.Enum.Parse(typeof(ActionWordEnum), coins[i]);
             globalCoinPool.Add(coin);
@@ -275,7 +286,7 @@ public class GameManager : DontDestroy<GameManager>
         {
             FadeObject.instance.FadeOut(time);
         }
-            
+
         yield return new WaitForSeconds(time);
 
         // remove any popups
