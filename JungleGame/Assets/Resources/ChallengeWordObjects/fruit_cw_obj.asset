@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: fruit_cw_obj
   m_EditorClassIdentifier: 
   word: fruit
-  audio: {fileID: 8300000, guid: 289f1ca6449806549bf3982d4fc482cc, type: 3}
+  audio:
+    m_AssetGUID: 289f1ca6449806549bf3982d4fc482cc
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 02472a30132104544998480718fe78e2, type: 3}
   elkoninList: 1a000000240000000b000000270000000000000000000000
   elkoninCount: 4

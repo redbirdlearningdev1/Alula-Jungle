@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: smart_cw_obj
   m_EditorClassIdentifier: 
   word: smart
-  audio: {fileID: 8300000, guid: e953777a2fcc2df46b162ccc903cb8a6, type: 3}
+  audio:
+    m_AssetGUID: e953777a2fcc2df46b162ccc903cb8a6
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 71c51d573ea48e84aa4e8bef8e868263, type: 3}
   elkoninList: 25000000200000000e000000270000000000000000000000
   elkoninCount: 4

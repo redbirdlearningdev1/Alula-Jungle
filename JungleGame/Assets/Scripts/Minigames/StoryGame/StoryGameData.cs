@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AddressableAssets;
 
 [System.Serializable]
 public class StoryGameSegment
 {
     public string text;
-    public AudioClip audio;
+    public AssetReference audio;
     public bool moveWord;
     public ActionWordEnum actionWord;
     public bool requireInput;

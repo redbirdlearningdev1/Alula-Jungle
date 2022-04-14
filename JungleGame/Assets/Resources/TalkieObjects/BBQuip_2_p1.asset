@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 255545e72798dc9449ad4058c89856d3, type: 3}
+    audioClip:
+      m_AssetGUID: 255545e72798dc9449ad4058c89856d3
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: E_4_1_Darwin_1_T1
     audioString: Julius!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: d88a3e7602f153749ab2843d0cb50549, type: 3}
+    audioClip:
+      m_AssetGUID: d88a3e7602f153749ab2843d0cb50549
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: E_4_1_Darwin_1_T2
     audioString: "There\u2019s more I have to tell you!"
   - endTalkieAfterThisSegment: 0
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 52f21306c8570cc489054850e215c7a3, type: 3}
+    audioClip:
+      m_AssetGUID: 52f21306c8570cc489054850e215c7a3
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: E_4_1_Julius_2_T1
     audioString: "\u2026"
   - endTalkieAfterThisSegment: 0
@@ -83,7 +92,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 921725811c0cff947b064b6fb9f37394, type: 3}
+    audioClip:
+      m_AssetGUID: 921725811c0cff947b064b6fb9f37394
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: E_4_1_Julius_2_T2
     audioString: "You left me Darwin\u2026"
   - endTalkieAfterThisSegment: 0
@@ -99,6 +111,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 857a830a01544bc4083896732e82d074, type: 3}
+    audioClip:
+      m_AssetGUID: 857a830a01544bc4083896732e82d074
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: E_4_1_Julius_2_T3
     audioString: "I don\u2019t want to hear it..."

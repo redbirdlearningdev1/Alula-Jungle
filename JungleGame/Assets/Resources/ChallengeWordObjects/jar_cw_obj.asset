@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: jar_cw_obj
   m_EditorClassIdentifier: 
   word: jar
-  audio: {fileID: 8300000, guid: 7b2ad0947b59d444287d318381158526, type: 3}
+  audio:
+    m_AssetGUID: 7b2ad0947b59d444287d318381158526
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: ffac4760a5cb9ef4e862216a8f669038, type: 3}
   elkoninList: 1d0000000e00000000000000000000000000000000000000
   elkoninCount: 2

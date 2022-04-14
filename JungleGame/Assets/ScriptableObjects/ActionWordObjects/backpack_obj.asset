@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: backpack_obj
   m_EditorClassIdentifier: 
   _name: backpack
-  audio: {fileID: 8300000, guid: 7597a9f0588dc074880dae515b85234f, type: 3}
+  audio:
+    m_AssetGUID: 7597a9f0588dc074880dae515b85234f
+    m_SubObjectName: 
+    m_SubObjectType: 
   elkoninValue: 18
   animation: backpack
   _enum: 17

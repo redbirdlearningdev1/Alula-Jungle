@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 21c89258b8022df41b4db0a682cd2d19, type: 3}
+    audioClip:
+      m_AssetGUID: 21c89258b8022df41b4db0a682cd2d19
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: EJ_2_3_Red_8_T1
     audioString: "I\u2019m really proud of you Explorer! "
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 41184b1ae19ab714b9b93382a0c77163, type: 3}
+    audioClip:
+      m_AssetGUID: 41184b1ae19ab714b9b93382a0c77163
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: EJ_2_3_Red_8_T2
     audioString: "You\u2019ve learned so much!"
   - endTalkieAfterThisSegment: 0
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 663d9d35f30ea6246a23472dcf25ccd2, type: 3}
+    audioClip:
+      m_AssetGUID: 663d9d35f30ea6246a23472dcf25ccd2
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: EJ_2_3_Wally_9_T1
     audioString: Good work.
   - endTalkieAfterThisSegment: 0
@@ -83,7 +92,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 7a1b2ed65a879b940a68aaf4cf974212, type: 3}
+    audioClip:
+      m_AssetGUID: 7a1b2ed65a879b940a68aaf4cf974212
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: EJ_2_3_Red_10_T1
     audioString: Darwin should be up ahead!
   - endTalkieAfterThisSegment: 0
@@ -99,7 +111,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 747cb8e7460c802488a997bc2ec43f22, type: 3}
+    audioClip:
+      m_AssetGUID: 747cb8e7460c802488a997bc2ec43f22
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: EJ_2_3_Red_10_T2
     audioString: "Let\u2019s get going!"
   - endTalkieAfterThisSegment: 0
@@ -115,6 +130,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: e74a0994d331f0044be4eb4c91f7b411, type: 3}
+    audioClip:
+      m_AssetGUID: e74a0994d331f0044be4eb4c91f7b411
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: EJ_2_3_Wally_11_T1
     audioString: You betcha!

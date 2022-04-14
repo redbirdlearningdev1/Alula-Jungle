@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: bait_cw_obj
   m_EditorClassIdentifier: 
   word: bait
-  audio: {fileID: 8300000, guid: ae50830c1cac37a4e8641e64cb39d5d3, type: 3}
+  audio:
+    m_AssetGUID: ae50830c1cac37a4e8641e64cb39d5d3
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: e1796d9f7a39f8342918d9200e37edb6, type: 3}
   elkoninList: 160000000700000027000000000000000000000000000000
   elkoninCount: 3

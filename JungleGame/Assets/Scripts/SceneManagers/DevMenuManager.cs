@@ -1398,11 +1398,11 @@ public class DevMenuManager : MonoBehaviour
 
             case StoryBeat.FinishedGame:
             case StoryBeat.COUNT:
-            StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.game_complete;
                 StudentInfoSystem.GetCurrentProfile().mapLimit = (int)MapLocation.PalaceIntro;
                 FixIconsUpTo(MapLocation.PalaceIntro);
                 SetChallengeGamesUpTo(MapLocation.PalaceIntro);
                 SetActionWordPool(MapLocation.PalaceIntro);
+                StudentInfoSystem.GetCurrentProfile().currentChapter = Chapter.game_complete;
                 break;
         }
 

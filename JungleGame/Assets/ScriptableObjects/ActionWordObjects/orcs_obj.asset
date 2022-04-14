@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: orcs_obj
   m_EditorClassIdentifier: 
   _name: orcs
-  audio: {fileID: 8300000, guid: 3f468203786cde5419c28816a0493bd7, type: 3}
+  audio:
+    m_AssetGUID: 3f468203786cde5419c28816a0493bd7
+    m_SubObjectName: 
+    m_SubObjectType: 
   elkoninValue: 5
   animation: orcs
   _enum: 4

@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: sport_cw_obj
   m_EditorClassIdentifier: 
   word: sport
-  audio: {fileID: 8300000, guid: 78e66a99a1d94264fb2b16fbf06b39cd, type: 3}
+  audio:
+    m_AssetGUID: 78e66a99a1d94264fb2b16fbf06b39cd
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: fa7c6f39bf1d3e54c84a5a386fb138ab, type: 3}
   elkoninList: 25000000220000000c000000270000000000000000000000
   elkoninCount: 4

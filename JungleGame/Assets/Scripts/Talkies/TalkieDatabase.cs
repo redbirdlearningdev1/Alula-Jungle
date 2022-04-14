@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -9,7 +10,7 @@ using UnityEditor;
 [System.Serializable]
 public struct TalkieDatabaseEntry
 {
-    public Sprite sprite;
+    public AssetReferenceAtlasedSprite sprite;
     public TalkieCharacter character;
     public int emotionNum;
     public TalkieMouth mouth;
@@ -22,10 +23,10 @@ public class TalkieDatabase : MonoBehaviour
     private const string talkie_object_folder = "TalkieObjects/";
     private const string talkie_object_creation_folder = "Assets/Resources/TalkieObjects/";
 
-    /* s
-    ################################################
-    #   TALKIE SPRITES
-    ################################################
+    /*
+    //################################################
+    //#   TALKIE SPRITES
+    //################################################
     */
 
     [Header("Character Sprites")]
@@ -46,28 +47,28 @@ public class TalkieDatabase : MonoBehaviour
 
 
     [Header("Talkie Reaction Duplicates")]
-    public List<AudioClip> marcusLaughList;
-    public List<AudioClip> brutusLaughList;
-    public List<AudioClip> marcusArghList;
-    public List<AudioClip> marcusGrrList;
-    public List<AudioClip> brutusHehList;
+    public List<AssetReference> marcusLaughList;
+    public List<AssetReference> brutusLaughList;
+    public List<AssetReference> marcusArghList;
+    public List<AssetReference> marcusGrrList;
+    public List<AssetReference> brutusHehList;
 
-    public List<AudioClip> redWallyGaspList;
-    public List<AudioClip> redWallyWhatList;
-    public List<AudioClip> redWallyHuhList;
-    public List<AudioClip> redWallyOhList;
-    public List<AudioClip> redWallyDarwinList;
+    public List<AssetReference> redWallyGaspList;
+    public List<AssetReference> redWallyWhatList;
+    public List<AssetReference> redWallyHuhList;
+    public List<AssetReference> redWallyOhList;
+    public List<AssetReference> redWallyDarwinList;
 
-    public List<AudioClip> juliusHahaList;
-    public List<AudioClip> juliusAhHahList;
-    public List<AudioClip> juliusHrmList;
-    public List<AudioClip> juliusUghList;
-    public List<AudioClip> juliusGrrList;
+    public List<AssetReference> juliusHahaList;
+    public List<AssetReference> juliusAhHahList;
+    public List<AssetReference> juliusHrmList;
+    public List<AssetReference> juliusUghList;
+    public List<AssetReference> juliusGrrList;
 
-    public List<AudioClip> redGaspList;
-    public List<AudioClip> redWoohooList;
-    public List<AudioClip> redHurrahList;
-    public List<AudioClip> redUhHuhList;
+    public List<AssetReference> redGaspList;
+    public List<AssetReference> redWoohooList;
+    public List<AssetReference> redHurrahList;
+    public List<AssetReference> redUhHuhList;
 
     private List<TalkieObject> globalTalkieList; // list of all talkies in this database
 
@@ -116,7 +117,7 @@ public class TalkieDatabase : MonoBehaviour
     }
 
     // finds correct sprite, else returns null
-    private Sprite FindSprite(List<TalkieDatabaseEntry> list, int emotionNum, TalkieMouth mouth, TalkieEyes eyes, TalkieCharacter character, int segIndex)
+    private AssetReferenceAtlasedSprite FindSprite(List<TalkieDatabaseEntry> list, int emotionNum, TalkieMouth mouth, TalkieEyes eyes, TalkieCharacter character, int segIndex)
     {
         foreach (var entry in list)
         {
@@ -130,7 +131,7 @@ public class TalkieDatabase : MonoBehaviour
         return list[0].sprite;
     }
 
-    public AudioClip GetTalkieReactionDuplicate(string str)
+    public AssetReference GetTalkieReactionDuplicate(string str)
     {
         string lowercase_str = str.ToLower();
         switch (lowercase_str)
@@ -161,7 +162,7 @@ public class TalkieDatabase : MonoBehaviour
         }
     }
 
-    public Sprite GetTalkieSprite(TalkieCharacter character, int emotionNum, TalkieMouth mouth, TalkieEyes eyes, int segmentIndex)
+    public AssetReferenceAtlasedSprite GetTalkieSprite(TalkieCharacter character, int emotionNum, TalkieMouth mouth, TalkieEyes eyes, int segmentIndex)
     {
         switch (character)
         {

@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: boast_cw_obj
   m_EditorClassIdentifier: 
   word: boast
-  audio: {fileID: 8300000, guid: 07d0aef760e94554492ddbda80f30a6e, type: 3}
+  audio:
+    m_AssetGUID: 07d0aef760e94554492ddbda80f30a6e
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 7b9fab8c00eeb13468f368fbc05ccc3b, type: 3}
   elkoninList: 160000000a00000025000000270000000000000000000000
   elkoninCount: 4

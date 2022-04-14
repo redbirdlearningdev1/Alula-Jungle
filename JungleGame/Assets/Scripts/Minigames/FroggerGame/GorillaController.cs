@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class GorillaController : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class GorillaController : MonoBehaviour
 
     private List<Transform> currPath;
     private float moveSpeed = 7f;
-    private AudioClip landingSound;
+    private AssetReference landingSound;
 
     [Header("Jump Paths")]
     public List<Transform> jump1;
@@ -55,7 +56,7 @@ public class GorillaController : MonoBehaviour
 
 
 
-    public void JumpForward(AudioClip landingAudio)
+    public void JumpForward(AssetReference landingAudio)
     {
         landingSound = landingAudio;
 
@@ -85,7 +86,7 @@ public class GorillaController : MonoBehaviour
         }
     }
 
-    public void JumpBack(AudioClip landingAudio)
+    public void JumpBack(AssetReference landingAudio)
     {
         landingSound = landingAudio;
 

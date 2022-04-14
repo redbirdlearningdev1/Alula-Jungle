@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: told_cw_obj
   m_EditorClassIdentifier: 
   word: told
-  audio: {fileID: 8300000, guid: a9a3f2281048af840bc0693cbe875da9, type: 3}
+  audio:
+    m_AssetGUID: a9a3f2281048af840bc0693cbe875da9
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: fcc8d32dfbfc20a4aafbf82f0508edaa, type: 3}
   elkoninList: 270000000a0000001f000000190000000000000000000000
   elkoninCount: 4

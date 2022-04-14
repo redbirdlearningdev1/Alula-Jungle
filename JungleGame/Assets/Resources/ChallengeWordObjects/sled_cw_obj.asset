@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: sled_cw_obj
   m_EditorClassIdentifier: 
   word: sled
-  audio: {fileID: 8300000, guid: 8dcbc0b2ff7459341a8c8df4f75451a7, type: 3}
+  audio:
+    m_AssetGUID: 8dcbc0b2ff7459341a8c8df4f75451a7
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 0746e96f51693d94ab8203e55816d94c, type: 3}
   elkoninList: 250000001f00000003000000190000000000000000000000
   elkoninCount: 4

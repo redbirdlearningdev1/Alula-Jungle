@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: b3dfe69e72551f94a9c4dd721ed1b70f, type: 3}
+    audioClip:
+      m_AssetGUID: b3dfe69e72551f94a9c4dd721ed1b70f
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: B_1_1_Red_44_T1
     audioString: Oh no! Not again!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 3fa0b621588a2aa4cb391a391d473ee1, type: 3}
+    audioClip:
+      m_AssetGUID: 3fa0b621588a2aa4cb391a391d473ee1
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: B_1_1_Wally_45_T1
     audioString: "There\u2019s no use getting worked up over it."
   - endTalkieAfterThisSegment: 0
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: df9b6d63190d96b4b9b1f31ce3eb01ce, type: 3}
+    audioClip:
+      m_AssetGUID: df9b6d63190d96b4b9b1f31ce3eb01ce
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: B_1_1_Wally_45_T2
     audioString: The best we can do is to keep moving forward.
   - endTalkieAfterThisSegment: 0
@@ -83,7 +92,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 4f175a49a981c58459bd1c436a44612b, type: 3}
+    audioClip:
+      m_AssetGUID: 4f175a49a981c58459bd1c436a44612b
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: B_1_1_Red_46_T1
     audioString: 'Sigh '
   - endTalkieAfterThisSegment: 0
@@ -99,7 +111,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: d81908e50be12684aae523e2ac68700e, type: 3}
+    audioClip:
+      m_AssetGUID: d81908e50be12684aae523e2ac68700e
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: B_1_1_Red_46_T2
     audioString: "you\u2019re right Wally. I just wish we could help him."
   - endTalkieAfterThisSegment: 0
@@ -115,7 +130,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 2aaf9ff945cd8c84a91cc693664889f1, type: 3}
+    audioClip:
+      m_AssetGUID: 2aaf9ff945cd8c84a91cc693664889f1
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: B_1_1_Red_46_T3
     audioString: It seems like he doesn't have good role models for friends.
   - endTalkieAfterThisSegment: 0
@@ -131,7 +149,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: e8f57898cd25e1d4785f5b36da16910e, type: 3}
+    audioClip:
+      m_AssetGUID: e8f57898cd25e1d4785f5b36da16910e
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: B_1_1_Wally_47_T1
     audioString: "You\u2019re right about that Red."
   - endTalkieAfterThisSegment: 0
@@ -147,7 +168,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: dabac667f66fcdf4c92d9b87883d4c51, type: 3}
+    audioClip:
+      m_AssetGUID: dabac667f66fcdf4c92d9b87883d4c51
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: B_1_1_Wally_47_T2
     audioString: Let's start by getting this cleaned up.
   - endTalkieAfterThisSegment: 0
@@ -163,7 +187,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 0a31cb3cd9571e940aea9f3ad01d8f2f, type: 3}
+    audioClip:
+      m_AssetGUID: 0a31cb3cd9571e940aea9f3ad01d8f2f
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: B_1_1_Red_48_T1
     audioString: 'Sounds like a plan! '
   - endTalkieAfterThisSegment: 0
@@ -179,7 +206,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: d05ae741ab2080d4fa2a6481a32e01f2, type: 3}
+    audioClip:
+      m_AssetGUID: d05ae741ab2080d4fa2a6481a32e01f2
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: B_1_1_Red_48_T2
     audioString: Alright Explorer you heard Wally!
   - endTalkieAfterThisSegment: 0
@@ -195,7 +225,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 70c723bcaa4f38e489493a05e819ff34, type: 3}
+    audioClip:
+      m_AssetGUID: 70c723bcaa4f38e489493a05e819ff34
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: B_1_1_Red_48_T3
     audioString: Let's get this place all cleaned up!
   - endTalkieAfterThisSegment: 0
@@ -211,7 +244,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 4
     activeCharacter: 3
-    audioClip: {fileID: 8300000, guid: a9330623ae5ea6945a5b1cd6d4fcb56a, type: 3}
+    audioClip:
+      m_AssetGUID: a9330623ae5ea6945a5b1cd6d4fcb56a
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: B_1_1_RedWally_49_T1
     audioString: OW!
   - endTalkieAfterThisSegment: 0
@@ -227,6 +263,9 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 2593a9061a669334588b59fe45f4cd19, type: 3}
+    audioClip:
+      m_AssetGUID: 2593a9061a669334588b59fe45f4cd19
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: B_1_1_Red_50_T1
     audioString: What was that?

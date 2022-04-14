@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 151de9e7483fa3b419d9706a73a029c9, type: 3}
+    audioClip:
+      m_AssetGUID: 151de9e7483fa3b419d9706a73a029c9
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_2_2_Darwin_1_T1
     audioString: Ah!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: aa2b0ff61bb7f4f4784b8876999ba785, type: 3}
+    audioClip:
+      m_AssetGUID: aa2b0ff61bb7f4f4784b8876999ba785
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_2_2_Darwin_1_T2
     audioString: Look at this one!
   - endTalkieAfterThisSegment: 0
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 2bae134d7c44e1246bdb7d6263e91cf5, type: 3}
+    audioClip:
+      m_AssetGUID: 2bae134d7c44e1246bdb7d6263e91cf5
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_2_2_Darwin_1_T3
     audioString: 'He loved drawing stripes on everything... '
   - endTalkieAfterThisSegment: 1
@@ -83,7 +92,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 76668805d6b474949bb9ac09b67c62a7, type: 3}
+    audioClip:
+      m_AssetGUID: 76668805d6b474949bb9ac09b67c62a7
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_2_2_Darwin_1_T4
     audioString: Such a funny cub.
   - endTalkieAfterThisSegment: 0
@@ -99,7 +111,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: deaeaf9af0a155446bb62ae0be025f82, type: 3}
+    audioClip:
+      m_AssetGUID: deaeaf9af0a155446bb62ae0be025f82
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_2_2_Darwin_2_T1
     audioString: 'I know we can do it! '
   - endTalkieAfterThisSegment: 1
@@ -115,7 +130,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: a87773c1040a43745b1d9bb11ee6cfa0, type: 3}
+    audioClip:
+      m_AssetGUID: a87773c1040a43745b1d9bb11ee6cfa0
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_2_2_Darwin_2_T2
     audioString: I know we can help him!
   - endTalkieAfterThisSegment: 0
@@ -131,7 +149,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 32bacf13b710ff047b49d586a86a9494, type: 3}
+    audioClip:
+      m_AssetGUID: 32bacf13b710ff047b49d586a86a9494
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_2_2_Darwin_3_T1
     audioString: "This drawing\u2019s my uh... "
   - endTalkieAfterThisSegment: 1
@@ -147,7 +168,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 3c0e4c585f2553d4c94ec443919713e8, type: 3}
+    audioClip:
+      m_AssetGUID: 3c0e4c585f2553d4c94ec443919713e8
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_2_2_Darwin_3_T2
     audioString: favorite...
   - endTalkieAfterThisSegment: 0
@@ -163,7 +187,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: bd9eadd676607df439bbd4bb64c75caa, type: 3}
+    audioClip:
+      m_AssetGUID: bd9eadd676607df439bbd4bb64c75caa
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_2_2_Darwin_4_T1
     audioString: "He has to know how much he matters\u2026 "
   - endTalkieAfterThisSegment: 1
@@ -179,7 +206,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 2050228852760e74e862a58db87d51de, type: 3}
+    audioClip:
+      m_AssetGUID: 2050228852760e74e862a58db87d51de
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_2_2_Darwin_4_T2
     audioString: "He doesn\u2019t have to do things he doesn\u2019t want to do to
       have friends..."
@@ -196,6 +226,9 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: a50b7ab13372d7f4abf38eec495a87ff, type: 3}
+    audioClip:
+      m_AssetGUID: a50b7ab13372d7f4abf38eec495a87ff
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_2_2_Darwin_5_T1
     audioString: Julius needs us! I just know it!

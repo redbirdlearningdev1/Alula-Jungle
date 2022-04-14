@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class TalkieManager : MonoBehaviour
 {
@@ -16,6 +18,8 @@ public class TalkieManager : MonoBehaviour
     [HideInInspector] public bool talkiePlaying = false; // used to pause routines while talkies are playing
     [HideInInspector] public TalkieObject currentTalkie;
 
+    private AsyncOperationHandle leftHandle;
+    private AsyncOperationHandle rightHandle;
     private TalkieCharacter currLeftCharacter;
     private TalkieCharacter currRightCharacter;
 
@@ -143,7 +147,7 @@ public class TalkieManager : MonoBehaviour
                             StopAllCoroutines();
                             StartCoroutine(EndTalkie());
                         }
-                    }                
+                    }
                 }
             }
         }
@@ -173,7 +177,7 @@ public class TalkieManager : MonoBehaviour
         subtitleText.text = "";
         subtitleBox.color = new Color(0f, 0f, 0f, 0f);
         currentTalkieText.text = "";
-        
+
         // bring talkies down
         StartCoroutine(MoveObjectRouitne(leftTalkie, leftInactivePos.position, talkieMoveSpeed));
         StartCoroutine(MoveObjectRouitne(rightTalkie, rightInactivePos.position, talkieMoveSpeed));
@@ -252,14 +256,14 @@ public class TalkieManager : MonoBehaviour
 
         // segment to start talkie on
         int startIndex = 0;
-        
+
         // only for quips collection
         if (currentTalkie.quipsCollection)
         {
             // start talkie at a random VALID segment
             startIndex = currentTalkie.validQuipIndexes[Random.Range(0, currentTalkie.validQuipIndexes.Count)];
         }
-        
+
         // play segments in order
         for (currSegmentIndex = startIndex; currSegmentIndex < currentTalkie.segmnets.Count; currSegmentIndex++)
         {
@@ -278,7 +282,7 @@ public class TalkieManager : MonoBehaviour
                 currSegmentIndex = newSegmentIndex;
             }
         }
-        
+
         /* 
         ################################################
         #   END TALKIE
@@ -378,24 +382,24 @@ public class TalkieManager : MonoBehaviour
             {
                 // swap left character sprites
                 StartCoroutine(SwapTalkieCharacter(
-                    leftTalkie, 
-                    leftImage, 
-                    talkieSeg.leftCharacter, 
-                    talkieSeg.leftEmotionNum, 
-                    talkieSeg.leftMouthEnum, 
-                    talkieSeg.leftEyesEnum, 
+                    leftTalkie,
+                    leftImage,
+                    talkieSeg.leftCharacter,
+                    talkieSeg.leftEmotionNum,
+                    talkieSeg.leftMouthEnum,
+                    talkieSeg.leftEyesEnum,
                     true));
                 leftHidden = false;
-                
+
                 StartCoroutine(ChangeParticles(talkieSeg.leftCharacter));
             }
             // if they are the same, check if emotion is the same
             else if (currLeftEmotionNum != talkieSeg.leftEmotionNum ||
-                    currLeftMouthEnum  != talkieSeg.leftMouthEnum ||
-                    currLeftEyesEnum   != talkieSeg.leftEyesEnum)
+                    currLeftMouthEnum != talkieSeg.leftMouthEnum ||
+                    currLeftEyesEnum != talkieSeg.leftEyesEnum)
             {
                 // swap emotion sprites
-                SwapTalkieEmotion(leftImage, talkieSeg.leftCharacter, talkieSeg.leftEmotionNum, talkieSeg.leftMouthEnum, talkieSeg.leftEyesEnum);
+                SwapTalkieEmotion(leftImage, talkieSeg.leftCharacter, talkieSeg.leftEmotionNum, talkieSeg.leftMouthEnum, talkieSeg.leftEyesEnum, true);
                 leftHidden = false;
             }
         }
@@ -407,9 +411,9 @@ public class TalkieManager : MonoBehaviour
                 leftHidden = true;
                 StartCoroutine(MoveObjectRouitne(leftTalkie, leftInactivePos.position, talkieMoveSpeed));
                 ResetLeft();
-            }    
+            }
         }
-        
+
         // set current left talkie values
         currLeftCharacter = talkieSeg.leftCharacter;
         currLeftEmotionNum = talkieSeg.leftEmotionNum;
@@ -431,23 +435,23 @@ public class TalkieManager : MonoBehaviour
             {
                 // swap right character sprites
                 StartCoroutine(SwapTalkieCharacter(
-                    rightTalkie, 
-                    rightImage, 
-                    talkieSeg.rightCharacter, 
-                    talkieSeg.rightEmotionNum, 
-                    talkieSeg.rightMouthEnum, 
-                    talkieSeg.rightEyesEnum, 
+                    rightTalkie,
+                    rightImage,
+                    talkieSeg.rightCharacter,
+                    talkieSeg.rightEmotionNum,
+                    talkieSeg.rightMouthEnum,
+                    talkieSeg.rightEyesEnum,
                     false));
                 rightHidden = false;
-                
+
             }
             // if they are the same, check if emotion is the same
             else if (currRightEmotionNum != talkieSeg.rightEmotionNum ||
-                    currRightMouthEnum  != talkieSeg.rightMouthEnum ||
-                    currRightEyesEnum   != talkieSeg.rightEyesEnum)
+                    currRightMouthEnum != talkieSeg.rightMouthEnum ||
+                    currRightEyesEnum != talkieSeg.rightEyesEnum)
             {
                 // swap emotion sprites
-                SwapTalkieEmotion(rightImage, talkieSeg.rightCharacter, talkieSeg.rightEmotionNum, talkieSeg.rightMouthEnum, talkieSeg.rightEyesEnum);
+                SwapTalkieEmotion(rightImage, talkieSeg.rightCharacter, talkieSeg.rightEmotionNum, talkieSeg.rightMouthEnum, talkieSeg.rightEyesEnum, false);
                 rightHidden = false;
             }
         }
@@ -461,7 +465,7 @@ public class TalkieManager : MonoBehaviour
                 ResetRight();
             }
         }
-        
+
         // set current right talkie values
         currRightCharacter = talkieSeg.rightCharacter;
         currRightEmotionNum = talkieSeg.rightEmotionNum;
@@ -473,7 +477,7 @@ public class TalkieManager : MonoBehaviour
         {
             StartCoroutine(ChangeParticles(talkieSeg.leftCharacter));
             StartCoroutine(LerpScaleAndAlpha(leftImage, 1f, 1f, true));
-            if (!rightHidden) 
+            if (!rightHidden)
             {
                 StartCoroutine(LerpScaleAndAlpha(rightImage, inactiveScale, inactiveAlpha, false));
             }
@@ -482,7 +486,7 @@ public class TalkieManager : MonoBehaviour
         {
             StartCoroutine(ChangeParticles(talkieSeg.rightCharacter));
             StartCoroutine(LerpScaleAndAlpha(rightImage, 1f, 1f, false));
-            if (!leftHidden) 
+            if (!leftHidden)
             {
                 StartCoroutine(LerpScaleAndAlpha(leftImage, inactiveScale, inactiveAlpha, true));
             }
@@ -504,21 +508,26 @@ public class TalkieManager : MonoBehaviour
             // play audio
             if (talkieSeg.audioClip != null)
             {
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(talkieSeg.audioClip));
+                yield return cd.coroutine;
                 AudioManager.instance.PlayTalk(talkieSeg.audioClip);
-                yield return new WaitForSeconds(talkieSeg.audioClip.length + 0.2f);
+                yield return new WaitForSeconds(cd.GetResult() + 0.2f);
             }
             else
             {
                 // attempt to match audio clip name to reaction duplicate
-                AudioClip clip = TalkieDatabase.instance.GetTalkieReactionDuplicate(talkieSeg.audioClipName);
+                AssetReference clip = TalkieDatabase.instance.GetTalkieReactionDuplicate(talkieSeg.audioClipName);
+
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd.coroutine;
 
                 if (clip != null)
                 {
                     AudioManager.instance.PlayTalk(clip);
-                    yield return new WaitForSeconds(clip.length + 0.2f);
+                    yield return new WaitForSeconds(cd.GetResult() + 0.2f);
                 }
                 else
-                {   
+                {
                     Debug.LogError("no audio clip found: \'" + talkieSeg.audioClipName + "\' in: \'" + currentTalkie.name + "\'");
                     yield return new WaitForSeconds(0.2f);
                 }
@@ -529,12 +538,12 @@ public class TalkieManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
-    
+
         /* 
         ################################################
         #   YES / NO ACTION
         ################################################
-        */ 
+        */
         if (talkieSeg.requireYN)
         {
             waitingForYesNoInput = true;
@@ -542,7 +551,7 @@ public class TalkieManager : MonoBehaviour
             yesGoto = talkieSeg.onYesGoto;
             noGoto = talkieSeg.onNoGoto;
 
-            
+
             // subtract one from each goto (if less than 0 of course)
             if (yesGoto > 0)
                 yesGoto--;
@@ -576,7 +585,7 @@ public class TalkieManager : MonoBehaviour
     }
 
     private void DoYesNoAction(int gotoIndex, bool isYes)
-    {   
+    {
         // disable buttons
         yesButton.interactable = true;
         noButton.interactable = true;
@@ -654,7 +663,7 @@ public class TalkieManager : MonoBehaviour
     }
 
     private IEnumerator SwapTalkieCharacter(Transform tform, Image image, TalkieCharacter character, int emotionNum, TalkieMouth mouth, TalkieEyes eyes, bool isLeft)
-    {   
+    {
         // bring down talkie iff not hidden
         if (isLeft && !leftHidden || !isLeft && !rightHidden)
         {
@@ -665,8 +674,34 @@ public class TalkieManager : MonoBehaviour
             yield return new WaitForSeconds(talkieMoveSpeed);
         }
 
+        // Unload previous sprite
+        if (isLeft)
+        {
+            if (leftHandle.IsValid())
+            {
+                Addressables.Release(leftHandle);
+            }
+        }
+        else
+        {
+            if (rightHandle.IsValid())
+            {
+                Addressables.Release(rightHandle);
+            }
+        }
+
         // swap sprite
-        image.sprite = TalkieDatabase.instance.GetTalkieSprite(character, emotionNum, mouth, eyes, currSegmentIndex);
+        AssetReferenceAtlasedSprite spriteRef = TalkieDatabase.instance.GetTalkieSprite(character, emotionNum, mouth, eyes, currSegmentIndex);
+        if (spriteRef.OperationHandle.IsValid())
+        {
+            image.sprite = (Sprite)spriteRef.OperationHandle.Result;
+        }
+        else
+        {
+            AsyncOperationHandle handle = spriteRef.LoadAssetAsync<Sprite>();
+            yield return handle;
+            image.sprite = (Sprite)handle.Result;
+        }
 
         // bring up talkie
         if (isLeft)
@@ -676,10 +711,41 @@ public class TalkieManager : MonoBehaviour
         yield return new WaitForSeconds(talkieMoveSpeed);
     }
 
-    public void SwapTalkieEmotion(Image image, TalkieCharacter character, int emotionNum, TalkieMouth mouth, TalkieEyes eyes)
+    public void SwapTalkieEmotion(Image image, TalkieCharacter character, int emotionNum, TalkieMouth mouth, TalkieEyes eyes, bool isLeft)
     {
+        StartCoroutine(LoadAndSwapTalkieEmotion(image, character, emotionNum, mouth, eyes, isLeft));
+    }
+
+    private IEnumerator LoadAndSwapTalkieEmotion(Image image, TalkieCharacter character, int emotionNum, TalkieMouth mouth, TalkieEyes eyes, bool isLeft)
+    {
+        // Unload previous sprite
+        if (isLeft)
+        {
+            if (leftHandle.IsValid())
+            {
+                Addressables.Release(leftHandle);
+            }
+        }
+        else
+        {
+            if (rightHandle.IsValid())
+            {
+                Addressables.Release(rightHandle);
+            }
+        }
+
         // swap sprite
-        image.sprite = TalkieDatabase.instance.GetTalkieSprite(character, emotionNum, mouth, eyes, currSegmentIndex);
+        AssetReferenceAtlasedSprite spriteRef = TalkieDatabase.instance.GetTalkieSprite(character, emotionNum, mouth, eyes, currSegmentIndex);
+        if (spriteRef.OperationHandle.IsValid())
+        {
+            image.sprite = (Sprite)spriteRef.OperationHandle.Result;
+        }
+        else
+        {
+            AsyncOperationHandle handle = spriteRef.LoadAssetAsync<Sprite>();
+            yield return handle;
+            image.sprite = (Sprite)handle.Result;
+        }
     }
 
     private IEnumerator MoveObjectRouitne(Transform obj, Vector3 targetPos, float duration)
@@ -702,7 +768,7 @@ public class TalkieManager : MonoBehaviour
         }
     }
     private IEnumerator ChangeParticles(TalkieCharacter character)
-    {   
+    {
         ParticleController.instance.SetActiveParticles(character);
         yield return new WaitForSeconds(0f);
     }
@@ -711,7 +777,7 @@ public class TalkieManager : MonoBehaviour
     {
         ResetLeft();
         ResetRight();
-        
+
         // turn off particles
         ParticleController.instance.isOn = false;
         ParticleController.instance.SetActiveParticles(TalkieCharacter.None);

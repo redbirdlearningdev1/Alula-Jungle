@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: thatguy_obj
   m_EditorClassIdentifier: 
   _name: thatguy
-  audio: {fileID: 8300000, guid: 15cb2341965e3da40a2d8f4b785856ae, type: 3}
+  audio:
+    m_AssetGUID: 15cb2341965e3da40a2d8f4b785856ae
+    m_SubObjectName: 
+    m_SubObjectType: 
   elkoninValue: 11
   animation: thatguy
   _enum: 10

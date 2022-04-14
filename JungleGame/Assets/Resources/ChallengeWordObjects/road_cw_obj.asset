@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: road_cw_obj
   m_EditorClassIdentifier: 
   word: road
-  audio: {fileID: 8300000, guid: 1050a8fcdc80f53498eb7257ca6a0c64, type: 3}
+  audio:
+    m_AssetGUID: 1050a8fcdc80f53498eb7257ca6a0c64
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 7c877fd8f80328c458bd60626b9f1a21, type: 3}
   elkoninList: 240000000a00000019000000000000000000000000000000
   elkoninCount: 3

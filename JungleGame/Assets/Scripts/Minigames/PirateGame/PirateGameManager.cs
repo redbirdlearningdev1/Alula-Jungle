@@ -133,7 +133,7 @@ public class PirateGameManager : MonoBehaviour
     private IEnumerator PlayPhonemeAudioRoutine()
     {
         audioPlaying = true;
-        AudioManager.instance.PlayPhoneme(correctCoin);
+        AudioManager.instance.PlayPhoneme(ChallengeWordDatabase.ActionWordEnumToElkoninValue(correctCoin));
         yield return new WaitForSeconds(1f);
         audioPlaying = false;
     }

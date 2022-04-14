@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: royal_cw_obj
   m_EditorClassIdentifier: 
   word: royal
-  audio: {fileID: 8300000, guid: aaf175dd5b2382c4aa23414727bc5289, type: 3}
+  audio:
+    m_AssetGUID: aaf175dd5b2382c4aa23414727bc5289
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 1af8a604b8e03da438e4940823e36935, type: 3}
   elkoninList: 24000000130000001f000000000000000000000000000000
   elkoninCount: 3

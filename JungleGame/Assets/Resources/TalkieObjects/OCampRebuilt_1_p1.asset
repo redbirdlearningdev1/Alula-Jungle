@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: b8b84f93eaa7d7f4b9de0d9bddc461d3, type: 3}
+    audioClip:
+      m_AssetGUID: b8b84f93eaa7d7f4b9de0d9bddc461d3
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: B_2_2_Red_1_T1
     audioString: All done!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: d1c2db1923a177341a1c2c05713767dc, type: 3}
+    audioClip:
+      m_AssetGUID: d1c2db1923a177341a1c2c05713767dc
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: B_2_2_Wally_2_T1
     audioString: 'Whew, '
   - endTalkieAfterThisSegment: 0
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 989df734370690944858d6a16d6406c1, type: 3}
+    audioClip:
+      m_AssetGUID: 989df734370690944858d6a16d6406c1
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: B_2_2_Wally_2_T2
     audioString: that was a lot of hard work!
   - endTalkieAfterThisSegment: 0
@@ -83,7 +92,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 35b73b7dcae38fa428888a9319014988, type: 3}
+    audioClip:
+      m_AssetGUID: 35b73b7dcae38fa428888a9319014988
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: B_2_2_Clogg_3_T1
     audioString: Thank you for your help
   - endTalkieAfterThisSegment: 0
@@ -99,7 +111,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: c6859582638a96b4b8ff46b7a11f8fc1, type: 3}
+    audioClip:
+      m_AssetGUID: c6859582638a96b4b8ff46b7a11f8fc1
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: B_2_2_Clogg_3_T2
     audioString: You did well.
   - endTalkieAfterThisSegment: 0
@@ -115,7 +130,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 3cae550684ceb274cb1b58e19436d435, type: 3}
+    audioClip:
+      m_AssetGUID: 3cae550684ceb274cb1b58e19436d435
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: B_2_2_Red_4_T1
     audioString: It was no trouble at all-
   - endTalkieAfterThisSegment: 0
@@ -131,7 +149,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 3
-    audioClip: {fileID: 0}
+    audioClip:
+      m_AssetGUID: 56152eb2638ae3b46b17ea03b4ff861b
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: RedWally_Oh
     audioString: Oh!
   - endTalkieAfterThisSegment: 0
@@ -147,6 +168,9 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: c54723b641764804c84e0a23b83a78c1, type: 3}
+    audioClip:
+      m_AssetGUID: c54723b641764804c84e0a23b83a78c1
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: B_2_2_Clogg_5_T1
     audioString: ...

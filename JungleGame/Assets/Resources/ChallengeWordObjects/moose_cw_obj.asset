@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: moose_cw_obj
   m_EditorClassIdentifier: 
   word: moose
-  audio: {fileID: 8300000, guid: 55a6cf64200b1a84dbab752656d93d63, type: 3}
+  audio:
+    m_AssetGUID: 55a6cf64200b1a84dbab752656d93d63
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: ead5cc205f126944aac84572c7bc7526, type: 3}
   elkoninList: 200000000b00000025000000000000000000000000000000
   elkoninCount: 3

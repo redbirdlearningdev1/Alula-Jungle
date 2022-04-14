@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 4
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: f23c508119696064dadcd61fa45bfee7, type: 3}
+    audioClip:
+      m_AssetGUID: f23c508119696064dadcd61fa45bfee7
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_3_Julius_1_T1
     audioString: "\u2026"
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 5898eac2e3180204bae73b7614816c90, type: 3}
+    audioClip:
+      m_AssetGUID: 5898eac2e3180204bae73b7614816c90
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_3_Red_2_T1
     audioString: 'Good job Explorer! '
   - endTalkieAfterThisSegment: 0
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 2118549aa85e98e4aae7b689d7b595d8, type: 3}
+    audioClip:
+      m_AssetGUID: 2118549aa85e98e4aae7b689d7b595d8
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_3_Red_2_T2
     audioString: I knew you could do it!
   - endTalkieAfterThisSegment: 0
@@ -83,7 +92,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 1ddb5a711fcd8d142aff99b4d1807d26, type: 3}
+    audioClip:
+      m_AssetGUID: 1ddb5a711fcd8d142aff99b4d1807d26
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_3_Wally_3_T1
     audioString: Awesome job,  Explorer.
   - endTalkieAfterThisSegment: 0
@@ -99,7 +111,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 82c9623ed8d5507449f15f829dc9c167, type: 3}
+    audioClip:
+      m_AssetGUID: 82c9623ed8d5507449f15f829dc9c167
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_3_Marcus_4_T1
     audioString: HOW DARE YOU!
   - endTalkieAfterThisSegment: 0
@@ -115,7 +130,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 31cb8be906d8a174684124129cad4f05, type: 3}
+    audioClip:
+      m_AssetGUID: 31cb8be906d8a174684124129cad4f05
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_3_Brutus_5_T1
     audioString: "Yawn\u2026"
   - endTalkieAfterThisSegment: 0
@@ -131,7 +149,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 49f20e1a3e9df31469a6fcc9e2d986c4, type: 3}
+    audioClip:
+      m_AssetGUID: 49f20e1a3e9df31469a6fcc9e2d986c4
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_3_Brutus_5_T2
     audioString: "Dang\u2026"
   - endTalkieAfterThisSegment: 0
@@ -147,7 +168,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 6362f9c36af18c944aa4e5c274bcbc7b, type: 3}
+    audioClip:
+      m_AssetGUID: 6362f9c36af18c944aa4e5c274bcbc7b
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_3_Julius_6_T1
     audioString: "Let's just go\u2026"
   - endTalkieAfterThisSegment: 0
@@ -163,7 +187,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 2693ce5412c11854eb5d9aff5879c16a, type: 3}
+    audioClip:
+      m_AssetGUID: 2693ce5412c11854eb5d9aff5879c16a
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_3_Marcus_7_T1
     audioString: But your highness!
   - endTalkieAfterThisSegment: 0
@@ -179,7 +206,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 0d4c56687836b224b9f8c0cbd3b07149, type: 3}
+    audioClip:
+      m_AssetGUID: 0d4c56687836b224b9f8c0cbd3b07149
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_3_Julius_8_T1
     audioString: "\u2026"
   - endTalkieAfterThisSegment: 0
@@ -195,7 +225,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 5436af6174065f142a3c7aa08c8ad09a, type: 3}
+    audioClip:
+      m_AssetGUID: 5436af6174065f142a3c7aa08c8ad09a
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_3_Brutus_9_T1
     audioString: "Yeah\u2026"
   - endTalkieAfterThisSegment: 0
@@ -211,6 +244,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 1753b3303e5b2e648848f26d9df2fd1c, type: 3}
+    audioClip:
+      m_AssetGUID: 1753b3303e5b2e648848f26d9df2fd1c
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_3_Brutus_9_T2
     audioString: "Whatever\u2026"

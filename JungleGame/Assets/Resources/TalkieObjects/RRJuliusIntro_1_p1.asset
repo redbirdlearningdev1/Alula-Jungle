@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 0
-    audioClip: {fileID: 8300000, guid: e4663064802afe349a003a81fc1b7273, type: 3}
+    audioClip:
+      m_AssetGUID: e4663064802afe349a003a81fc1b7273
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: RR_0_0_Announcer_1
     audioString: TIME FOR A ROYAL RUMBLE (tiger roar)
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 9771ec17ca12c8549abbc45553d11312, type: 3}
+    audioClip:
+      m_AssetGUID: 9771ec17ca12c8549abbc45553d11312
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: RR_0_0_Julius_1_T1
     audioString: 'Hey! Not so fast! '
   - endTalkieAfterThisSegment: 0
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: f4721a3373ade6a488518e4c9212d730, type: 3}
+    audioClip:
+      m_AssetGUID: f4721a3373ade6a488518e4c9212d730
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: RR_0_0_Julius_1_T2
     audioString: "You\u2019re good at this."
   - endTalkieAfterThisSegment: 0
@@ -83,7 +92,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 953f6df06361d9245908ef05419aca6d, type: 3}
+    audioClip:
+      m_AssetGUID: 953f6df06361d9245908ef05419aca6d
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: RR_0_0_Julius_1_T3
     audioString: " Looks like you\u2019ll need a real challenge. "
   - endTalkieAfterThisSegment: 0
@@ -99,6 +111,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 216d7db31ee99334aa6cfea2976f266f, type: 3}
+    audioClip:
+      m_AssetGUID: 216d7db31ee99334aa6cfea2976f266f
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: RR_0_0_Julius_1_T4
     audioString: ME!

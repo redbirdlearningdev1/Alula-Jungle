@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: sew_cw_obj
   m_EditorClassIdentifier: 
   word: sew
-  audio: {fileID: 8300000, guid: 702da547535684446acf71cda5269de2, type: 3}
+  audio:
+    m_AssetGUID: 702da547535684446acf71cda5269de2
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: cb1e81faa36207a4aa6cdd1ac3913747, type: 3}
   elkoninList: 250000000a00000000000000000000000000000000000000
   elkoninCount: 2

@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 31fa948bad2a132468288e1122b47145, type: 3}
+    audioClip:
+      m_AssetGUID: 31fa948bad2a132468288e1122b47145
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_1_Darwin_54_T1
     audioString: Oh!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: c9856b6ac8c2a8742bb7d05116338ee8, type: 3}
+    audioClip:
+      m_AssetGUID: c9856b6ac8c2a8742bb7d05116338ee8
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_1_Darwin_54_T2
     audioString: Before you run off Explorer...
   - endTalkieAfterThisSegment: 0
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 8a3c1b4901acd6d469a0fa673f693ad6, type: 3}
+    audioClip:
+      m_AssetGUID: 8a3c1b4901acd6d469a0fa673f693ad6
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_1_Darwin_54_T3
     audioString: uhh...
   - endTalkieAfterThisSegment: 0
@@ -83,7 +92,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 1d3747f311444244f8de2a68340bf3e8, type: 3}
+    audioClip:
+      m_AssetGUID: 1d3747f311444244f8de2a68340bf3e8
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_1_Darwin_54_T4
     audioString: Let me help you navigate the area.
   - endTalkieAfterThisSegment: 0
@@ -99,6 +111,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: a5f74d95b531be14982e7464c3266b0b, type: 3}
+    audioClip:
+      m_AssetGUID: a5f74d95b531be14982e7464c3266b0b
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_1_Darwin_54_T5
     audioString: tap on me when you're ready!

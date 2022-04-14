@@ -35,6 +35,9 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 3fe3b59cb5a5d574385156cbde3eb467, type: 3}
+    audioClip:
+      m_AssetGUID: 3fe3b59cb5a5d574385156cbde3eb467
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: E_2_2_Red_4_T1
     audioString: "Let\u2019s go practice some more,  Explorer!"

@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: jail_cw_obj
   m_EditorClassIdentifier: 
   word: jail
-  audio: {fileID: 8300000, guid: 7e1a99f617975ab499bf02f73965f891, type: 3}
+  audio:
+    m_AssetGUID: 7e1a99f617975ab499bf02f73965f891
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: fb49170db92dae641843171ee5cfca31, type: 3}
   elkoninList: 1d000000070000001f000000000000000000000000000000
   elkoninCount: 3

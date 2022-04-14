@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: eight_cw_obj
   m_EditorClassIdentifier: 
   word: eight
-  audio: {fileID: 8300000, guid: 90f70b42f6d4ae5489ea9e826a107803, type: 3}
+  audio:
+    m_AssetGUID: 90f70b42f6d4ae5489ea9e826a107803
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 487b4887303923c4eb9d044bd73e57b3, type: 3}
   elkoninList: 070000002700000000000000000000000000000000000000
   elkoninCount: 2

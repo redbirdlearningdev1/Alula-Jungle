@@ -46,7 +46,7 @@ public class Key : MonoBehaviour
         KeyWiggleAnim();
         
         // play correct audio
-        AudioManager.instance.PlayPhoneme(currentWord);
+        AudioManager.instance.PlayPhoneme(ChallengeWordDatabase.ActionWordEnumToElkoninValue(currentWord));
     }
 
     public void ReturnToRope()

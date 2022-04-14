@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 7d97b6e278e4a8848a3f447bde7adfde, type: 3}
+    audioClip:
+      m_AssetGUID: 7d97b6e278e4a8848a3f447bde7adfde
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: FR_2_2_Ollie_1_T1
     audioString: "H-help m-me p-please\u2026 help me please\u2026 "
   - endTalkieAfterThisSegment: 1
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 07f574ce4e9f74d4ca0890fbe6fb228a, type: 3}
+    audioClip:
+      m_AssetGUID: 07f574ce4e9f74d4ca0890fbe6fb228a
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: FR_2_2_Ollie_1_T2
     audioString: "P-play some m-more? Play some more\u2026"
   - endTalkieAfterThisSegment: 1
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 713619d5329dff948b72f42c84f120e4, type: 3}
+    audioClip:
+      m_AssetGUID: 713619d5329dff948b72f42c84f120e4
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: FR_2_2_Ollie_2_T1
     audioString: "P-practice more? Practice more\u2026."
   - endTalkieAfterThisSegment: 1
@@ -83,6 +92,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 88bf5d3f9aeae4f45939eca891c62980, type: 3}
+    audioClip:
+      m_AssetGUID: 88bf5d3f9aeae4f45939eca891c62980
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: FR_2_2_Ollie_3_T1
     audioString: "P-play? Play\u2026."

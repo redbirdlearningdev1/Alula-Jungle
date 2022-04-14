@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: fry_cw_obj
   m_EditorClassIdentifier: 
   word: fry
-  audio: {fileID: 8300000, guid: 0890bae1fef1b7445a978f9eb4c9a958, type: 3}
+  audio:
+    m_AssetGUID: 0890bae1fef1b7445a978f9eb4c9a958
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: b7bfe514f1c4653459e95878be17b2ec, type: 3}
   elkoninList: 1a0000002400000009000000000000000000000000000000
   elkoninCount: 3

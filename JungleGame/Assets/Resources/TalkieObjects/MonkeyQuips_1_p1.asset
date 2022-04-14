@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip:
+      m_AssetGUID: fe9262a8a90a38547967e147b35b3f5b
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Marcus_Laugh
     audioString: HA HA HA!!!!
   - endTalkieAfterThisSegment: 1
@@ -51,6 +54,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 0}
+    audioClip:
+      m_AssetGUID: d82728142b77f894a8d90be0699c2063
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Brutus_Laugh
     audioString: Heh heh...

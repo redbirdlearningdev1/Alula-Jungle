@@ -46,6 +46,7 @@ public class PopupObject : MonoBehaviour
             case Chapter.chapter_1:
             case Chapter.chapter_2:
             case Chapter.chapter_3:
+            case Chapter.game_complete:
                 characterAnimator.Play("juliusPopup"); break;
             case Chapter.chapter_4:
             case Chapter.chapter_5:

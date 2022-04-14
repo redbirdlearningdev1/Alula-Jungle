@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: steer_cw_obj
   m_EditorClassIdentifier: 
   word: steer
-  audio: {fileID: 8300000, guid: a94801ae782342a418a19979418bd35d, type: 3}
+  audio:
+    m_AssetGUID: a94801ae782342a418a19979418bd35d
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 47b17355ce1832c4b9e1207eca9eb970, type: 3}
   elkoninList: 250000002700000010000000000000000000000000000000
   elkoninCount: 3

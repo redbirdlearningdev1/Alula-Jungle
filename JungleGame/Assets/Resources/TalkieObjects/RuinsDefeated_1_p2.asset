@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 62d45fb3281f00d4888bd4ff9bbdc44e, type: 3}
+    audioClip:
+      m_AssetGUID: 62d45fb3281f00d4888bd4ff9bbdc44e
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: EJ_2_3_Marcus_6_T1
     audioString: "This isn\u2019t over!!"
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 0aa29d64d4f68864784f33cffd8d7991, type: 3}
+    audioClip:
+      m_AssetGUID: 0aa29d64d4f68864784f33cffd8d7991
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: EJ_2_3_Marcus_6_T2
     audioString: Stop ruining everything!
   - endTalkieAfterThisSegment: 0
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 019476e960eb22a428b412077f55d14c, type: 3}
+    audioClip:
+      m_AssetGUID: 019476e960eb22a428b412077f55d14c
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: EJ_2_3_Brutus_7_T1
     audioString: Yeah...
   - endTalkieAfterThisSegment: 0
@@ -83,7 +92,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: ab7d2520b8f95ea40bcd9b56965ab939, type: 3}
+    audioClip:
+      m_AssetGUID: ab7d2520b8f95ea40bcd9b56965ab939
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: EJ_2_3_Brutus_7_T2
     audioString: Not like how we ruined these ruins...
   - endTalkieAfterThisSegment: 0
@@ -99,6 +111,9 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 2a1963471acad604e923e51c0a5f28fc, type: 3}
+    audioClip:
+      m_AssetGUID: 2a1963471acad604e923e51c0a5f28fc
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: EJ_2_3_Marcus_8_T1
     audioString: gRRR! You better watch it,  Brutus!

@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: pen_cw_obj
   m_EditorClassIdentifier: 
   word: pen
-  audio: {fileID: 8300000, guid: f5375656e7ae9b04d900c0051327c590, type: 3}
+  audio:
+    m_AssetGUID: f5375656e7ae9b04d900c0051327c590
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 11eeb0604a9d3104a879096c24cd2ff1, type: 3}
   elkoninList: 220000000300000021000000000000000000000000000000
   elkoninCount: 3

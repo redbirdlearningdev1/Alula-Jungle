@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: frustrating_obj
   m_EditorClassIdentifier: 
   _name: frustrating
-  audio: {fileID: 8300000, guid: 793a097a0e9448e48bba67a8e7a07bc4, type: 3}
+  audio:
+    m_AssetGUID: 793a097a0e9448e48bba67a8e7a07bc4
+    m_SubObjectName: 
+    m_SubObjectType: 
   elkoninValue: 19
   animation: frustrating
   _enum: 18

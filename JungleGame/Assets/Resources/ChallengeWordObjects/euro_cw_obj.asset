@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: euro_cw_obj
   m_EditorClassIdentifier: 
   word: euro
-  audio: {fileID: 8300000, guid: 2ecc07a99153b5c46b6e37c812cc90d9, type: 3}
+  audio:
+    m_AssetGUID: 2ecc07a99153b5c46b6e37c812cc90d9
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 159ca18007ea4604cb1f412fb035afd1, type: 3}
   elkoninList: 110000000a00000000000000000000000000000000000000
   elkoninCount: 2

@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using System.IO;
 using UnityEditor;
+using UnityEngine.AddressableAssets;
 
 public class TalkieObjectImportException : System.Exception
 {
@@ -43,7 +44,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
     private const string csv_folder_path = "Assets/Resources/CSV_folder/";
     public const string talkie_audio_folder = "Assets/Resources/TalkieAudioFiles";
 
-    public List<AudioClip> globalTalkieAudioList;
+    public List<AssetReference> globalTalkieAudioList;
     private List<TalkieObject> localTalkieObjects;
     private List<string> filePaths;
     private string fileText;
@@ -200,14 +201,14 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
 
             string[] rowData = line.Split(',');
 
-            print ("index: " + lineCount + " line: " + line + ", cells: " + rowData.Length);
-            
+            print("index: " + lineCount + " line: " + line + ", cells: " + rowData.Length);
+
             // catch any parse errors
             try
             {
                 // check that row is 12 long
                 if (rowData.Length != 12)
-                {   
+                {
                     throw new TalkieObjectImportException("invalid row size", lineCount, column_count);
                 }
 
@@ -224,7 +225,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                                 localTalkieObjects.Add(entry);
                                 //print ("adding entry!");
                                 entry = null;
-                            } 
+                            }
 
                             //print ("making new talkie!");
 
@@ -278,7 +279,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                             break;
 
                         case "$Dim BG Start": // dim the background when starting ?
-                            
+
                             if (rowData[1] == "yes")
                                 entry.addBackgroundBeforeTalkie = true;
                             else if (rowData[1] == "no")
@@ -288,7 +289,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                             break;
 
                         case "$Dim BG End": // undim the backgrund when ending ?
-                            
+
                             if (rowData[1] == "yes")
                                 entry.removeBackgroundAfterTalkie = true;
                             else if (rowData[1] == "no")
@@ -308,7 +309,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                             break;
 
                         case "$Letterbox End": // remove letterbox bars when ending ?
-                            
+
                             if (rowData[1] == "yes")
                                 entry.removeLetterboxAfterTalkie = true;
                             else if (rowData[1] == "no")
@@ -339,15 +340,15 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                         localTalkieObjects.Add(entry);
                         //print ("finished talkie entry!");
                         entry = null;
-                    }        
-                    
+                    }
+
                     readingSegments = false; // finish reading segmenets
                     readingVoiceovers = false; // finish reading voiceover
                 }
                 else if (rowData[0].StartsWith("//"))
                 {
                     // comment detected - go to next line
-                    print ("comment found: " + rowData[0] + " skipping to next line.");
+                    print("comment found: " + rowData[0] + " skipping to next line.");
                     continue;
                 }
 
@@ -360,7 +361,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                 // reading voiceovers
                 if (readingVoiceovers)
                 {
-                    foreach(string cell in rowData)
+                    foreach (string cell in rowData)
                     {
                         List<TalkieCharacter> characters = new List<TalkieCharacter>();
 
@@ -407,7 +408,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                                     case TalkieCharacter.Julius:
                                         juliusWordCount += words.Length;
                                         break;
-                                        
+
                                     case TalkieCharacter.Clogg:
                                         cloggWordCount += words.Length;
                                         break;
@@ -443,7 +444,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                     TalkieSegment segment = new TalkieSegment();
                     List<TalkieCharacter> activeCharacters = new List<TalkieCharacter>();
 
-                    foreach(string cell in rowData)
+                    foreach (string cell in rowData)
                     {
                         //print ("column count: " + column_count);
                         switch (column_count)
@@ -539,14 +540,14 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                                 break;
 
                             case 9: // on no (goto x)
-                                
+
                                 if (cell != "")
                                 {
                                     string num = cell.Replace("goto", "");
                                     segment.onNoGoto = int.Parse(num);
                                 }
                                 break;
-                            
+
                             case 10: // end talkie?
 
                                 if (cell == "yes")
@@ -681,8 +682,8 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
             textText.color = Color.red;
             textText.text = "test complete - fail: " + errorMsg;
         }
-        
-        print ("local talkies made: " + localTalkieObjects.Count);
+
+        print("local talkies made: " + localTalkieObjects.Count);
         // print ("red word count: " + redWordCount);
         // print ("wally word count: " + wallyWordCount);
         // print ("darwin word count: " + darwinWordCount);
@@ -703,10 +704,10 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
         // only continue iff tests complete
         if (!testDone)
             return;
-        
+
         updateText.color = Color.cyan;
         updateText.text = "creating objects...";
-        
+
         // update database using entries
         foreach (var entry in localTalkieObjects)
         {
@@ -726,7 +727,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
 
         //print ("str: " + str);
 
-        foreach(var name in characterNames)
+        foreach (var name in characterNames)
         {
             if (str.Contains(name))
             {
@@ -736,7 +737,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
         }
 
         return activeCharacters;
-    }   
+    }
 
     private TalkieCharacter GetCharacterFromString(string str)
     {
@@ -765,7 +766,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                 return TalkieCharacter.Clogg;
             case "spindle":
                 return TalkieCharacter.Spindle;
-            case "bubbles": 
+            case "bubbles":
                 return TalkieCharacter.Bubbles;
             case "ollie":
                 return TalkieCharacter.Ollie;
@@ -775,7 +776,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                 return TalkieCharacter.Sylvie;
             case "taxi":
                 return TalkieCharacter.Taxi;
-            default:    
+            default:
                 GameManager.instance.SendError(this, "invalid talkie character: \'" + str + "\'");
                 return TalkieCharacter.None;
         }
@@ -849,29 +850,46 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
 
     private void InitCreateGlobalList()
     {
-        globalTalkieAudioList = new List<AudioClip>();
-        var folders = AssetDatabase.GetSubFolders(talkie_audio_folder);
+        globalTalkieAudioList = new List<AssetReference>();
 
-        foreach (var folder in folders)
+        string[] talkieAudioPaths = Directory.GetFiles(Application.dataPath + "/Audio/TalkieAudioFiles/", "*.wav", SearchOption.AllDirectories);
+
+        foreach (string talkiePath in talkieAudioPaths)
         {
-            //print ("folder: " + folder);
-            var audio_files = Resources.LoadAll<AudioClip>(folder.Replace("Assets/Resources/", ""));
-            globalTalkieAudioList.AddRange(audio_files);
+            string assetPath = "Assets" + talkiePath.Replace(Application.dataPath, "").Replace('\\', '/');
+            AssetDatabase.AssetPathToGUID(assetPath);
+            globalTalkieAudioList.Add(new AssetReference(AssetDatabase.AssetPathToGUID(assetPath)));
         }
 
-        print ("global audio list: " + globalTalkieAudioList.Count);
+        // foreach (var folder in folders)
+        // {
+        //     //print ("folder: " + folder);
+        //     var audio_files = Resources.LoadAll<AudioClip>(folder.Replace("Assets/Resources/", ""));
+        //     List<AssetReference> audioRefs = new List<AssetReference>();
+
+        //     // TODO: MAJOR TESTING REQUIRED
+        //     foreach (AudioClip audio in audio_files)
+        //     {
+        //         audioRefs.Add(new AssetReference(audio.name));
+        //     }
+
+        //     globalTalkieAudioList.AddRange(audioRefs);
+        // }
+
+        print("global audio list: " + globalTalkieAudioList.Count);
     }
 
-    private AudioClip SearchForAudioByName(string str)
+    private AssetReference SearchForAudioByName(string str)
     {
         //print ("global audio list size: " + globalTalkieAudioList.Count);
 
         // linear search
-        foreach (var file in globalTalkieAudioList)
+        foreach (AssetReference file in globalTalkieAudioList)
         {
             //print ("file name: " + file.name + " vs. str: " + str);
 
-            if (file.name == str)
+            // TODO: MAJOR TESTING REQUIRED
+            if (AssetDatabase.GUIDToAssetPath(file.AssetGUID).Contains(str))
             {
                 //print ("found audio!");
                 return file;
