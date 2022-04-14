@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class NewPasswordGameManager : MonoBehaviour
 {
@@ -113,7 +115,7 @@ public class NewPasswordGameManager : MonoBehaviour
         brutusCharacter.position = brutusOffScreenPos.position;
 
         // make coins empty gold
-        foreach(var coin in coins)
+        foreach (var coin in coins)
             coin.SetValue(ElkoninValue.empty_gold);
 
         StartCoroutine(NewRound(true));
@@ -122,9 +124,9 @@ public class NewPasswordGameManager : MonoBehaviour
     private IEnumerator NewRound(bool moveBG)
     {
         // place coins off-screen
-        foreach(var coin in coins)
+        foreach (var coin in coins)
             coin.transform.position = coinOffScreenPos.position;
-            
+
         // place polaroid off-screen
         polaroid.transform.position = polaroidOffScreenTigerPos.position;
 
@@ -199,31 +201,54 @@ public class NewPasswordGameManager : MonoBehaviour
             if (tutorialEvent == 1)
             {
                 // play tutorial intro 1
-                AudioClip clip = GameIntroDatabase.instance.passwordIntro1;
+                AssetReference clip = GameIntroDatabase.instance.passwordIntro1;
+
+                CoroutineWithData<float> cd1 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd1.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd1.GetResult() + 1f);
 
                 // play tutorial intro 2
                 clip = GameIntroDatabase.instance.passwordIntro2;
+
+                CoroutineWithData<float> cd2 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd2.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Marcus, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd2.GetResult() + 1f);
 
                 // play tutorial intro 3
                 clip = GameIntroDatabase.instance.passwordIntro3;
+
+                CoroutineWithData<float> cd3 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd3.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Brutus, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd3.GetResult() + 1f);
 
                 // play tutorial intro 4
                 clip = GameIntroDatabase.instance.passwordIntro4;
+
+                CoroutineWithData<float> cd4 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd4.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Marcus, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd4.GetResult() + 1f);
 
                 // play tutorial intro 5 + 6
-                List<AudioClip> clips = new List<AudioClip>();
+                List<AssetReference> clips = new List<AssetReference>();
                 clips.Add(GameIntroDatabase.instance.passwordIntro5);
                 clips.Add(GameIntroDatabase.instance.passwordIntro6);
+
+                CoroutineWithData<float> cd5 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[0]));
+                yield return cd5.coroutine;
+
+                CoroutineWithData<float> cd6 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[1]));
+                yield return cd6.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clips);
-                yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
+                yield return new WaitForSeconds(cd5.GetResult() + cd6.GetResult() + 1f);
             }
         }
         else
@@ -231,19 +256,31 @@ public class NewPasswordGameManager : MonoBehaviour
             if (!playIntro)
             {
                 // play start 1
-                AudioClip clip = GameIntroDatabase.instance.passwordStart1;
+                AssetReference clip = GameIntroDatabase.instance.passwordStart1;
+
+                CoroutineWithData<float> cd1 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd1.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Marcus, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd1.GetResult() + 1f);
 
                 // play start 2
                 clip = GameIntroDatabase.instance.passwordStart2;
+
+                CoroutineWithData<float> cd2 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd2.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Brutus, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd2.GetResult() + 1f);
 
                 // play start 3
                 clip = GameIntroDatabase.instance.passwordStart3;
+
+                CoroutineWithData<float> cd3 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd3.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd3.GetResult() + 1f);
             }
         }
 
@@ -260,15 +297,20 @@ public class NewPasswordGameManager : MonoBehaviour
         polaroid.SetPolaroidAlpha(1f, 0.2f);
         yield return new WaitForSeconds(0.5f);
 
-        // say polaroid word
         polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
+
+        // Get audio length
+        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(polaroid.challengeWord.audio));
+        yield return cd.coroutine;
+
+        // say polaroid word
         AudioManager.instance.PlayTalk(polaroid.challengeWord.audio);
-        yield return new WaitForSeconds(polaroid.challengeWord.audio.length + 0.1f);
+        yield return new WaitForSeconds(cd.GetResult() + 0.1f);
         polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
 
         // show coins
         int i = 0;
-        foreach(var coin in coins)
+        foreach (var coin in coins)
         {
             coin.GetComponent<LerpableObject>().LerpPosToTransform(coinOnScreenPositions[i], 0.25f, false);
             // audio fx
@@ -280,27 +322,46 @@ public class NewPasswordGameManager : MonoBehaviour
         if (playTutorial && tutorialEvent == 1)
         {
             // play tutorial intro 7
-            AudioClip clip = GameIntroDatabase.instance.passwordIntro7;
+            AssetReference clip = GameIntroDatabase.instance.passwordIntro7;
+
+            CoroutineWithData<float> cd1 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd1.coroutine;
+
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
+            yield return new WaitForSeconds(cd1.GetResult() + 1f);
 
             // play tutorial intro 8 + 9
-            List<AudioClip> clips = new List<AudioClip>();
+            List<AssetReference> clips = new List<AssetReference>();
             clips.Add(GameIntroDatabase.instance.passwordIntro8);
             clips.Add(GameIntroDatabase.instance.passwordIntro9);
+
+            CoroutineWithData<float> cd2 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[0]));
+            yield return cd2.coroutine;
+
+            CoroutineWithData<float> cd3 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[1]));
+            yield return cd3.coroutine;
+
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Brutus, clips);
-            yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
+            yield return new WaitForSeconds(cd2.GetResult() + cd3.GetResult() + 1f);
 
             // play tutorial intro 10
             clip = GameIntroDatabase.instance.passwordIntro10;
+
+            CoroutineWithData<float> cd4 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd4.coroutine;
+
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
+            yield return new WaitForSeconds(cd4.GetResult() + 1f);
         }
         else
         {
             // play new photo popup
             int index = Random.Range(0, GameIntroDatabase.instance.passwordNewPhoto.Count);
-            AudioClip clip = GameIntroDatabase.instance.passwordNewPhoto[index];
+            AssetReference clip = GameIntroDatabase.instance.passwordNewPhoto[index];
+
+            CoroutineWithData<float> cd1 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd1.coroutine;
+
 
             switch (index)
             {
@@ -308,24 +369,23 @@ public class NewPasswordGameManager : MonoBehaviour
                 case 1:
                 case 2:
                     TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
-                    yield return new WaitForSeconds(clip.length + 1f);
+                    yield return new WaitForSeconds(cd1.GetResult() + 1f);
                     break;
-
                 case 3:
                     TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Brutus, clip);
-                    yield return new WaitForSeconds(clip.length + 1f);
+                    yield return new WaitForSeconds(cd1.GetResult() + 1f);
                     break;
             }
         }
 
         // turn on raycaster
         NewPasswordRaycaster.instance.isOn = true;
-    }   
+    }
 
     public void ResetCoins()
     {
         int i = 0;
-        foreach(var coin in coins)
+        foreach (var coin in coins)
         {
             if (!PasswordTube.instance.tubeCoins.Contains(coin))
             {
@@ -381,7 +441,7 @@ public class NewPasswordGameManager : MonoBehaviour
             PasswordTube.instance.CorrectCoinsAnimation();
 
             yield return new WaitForSeconds(1f);
-            
+
             // remove extra coins
             // create list of non tube coins
             List<UniversalCoinImage> extraCoins = new List<UniversalCoinImage>();
@@ -406,52 +466,80 @@ public class NewPasswordGameManager : MonoBehaviour
                 if (playTutorial && tutorialEvent == 1)
                 {
                     // play tutorial intro 11
-                    AudioClip clip = GameIntroDatabase.instance.passwordIntro11;
+                    AssetReference clip = GameIntroDatabase.instance.passwordIntro11;
+
+                    CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                    yield return cd.coroutine;
+
                     TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
-                    yield return new WaitForSeconds(clip.length + 1f);
+                    yield return new WaitForSeconds(cd.GetResult() + 1f);
 
                     // play tutorial intro 12
                     clip = GameIntroDatabase.instance.passwordIntro12;
+
+                    CoroutineWithData<float> cd2 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                    yield return cd2.coroutine;
+
                     TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Marcus, clip);
-                    yield return new WaitForSeconds(clip.length + 1f);
+                    yield return new WaitForSeconds(cd2.GetResult() + 1f);
 
                     StartCoroutine(WinRoutine());
                     yield break;
                 }
                 else
                 {
-                    AudioClip clip = null;
+                    AssetReference clip = null;
                     int index = Random.Range(0, 5);
                     switch (index)
                     {
                         case 0:
                             clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_ugh");
+
+                            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                            yield return cd.coroutine;
+
                             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
-                            yield return new WaitForSeconds(clip.length + 1f);
+                            yield return new WaitForSeconds(cd.GetResult() + 1f);
                             break;
 
                         case 1:
                             clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_grr");
+
+                            CoroutineWithData<float> cd2 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                            yield return cd2.coroutine;
+
                             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
-                            yield return new WaitForSeconds(clip.length + 1f);
+                            yield return new WaitForSeconds(cd2.GetResult() + 1f);
                             break;
 
                         case 2:
                             clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("marcus_argh");
+
+                            CoroutineWithData<float> cd3 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                            yield return cd3.coroutine;
+
                             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Marcus, clip);
-                            yield return new WaitForSeconds(clip.length + 1f);
+                            yield return new WaitForSeconds(cd3.GetResult() + 1f);
                             break;
 
                         case 3:
                             clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("brutus_heh");
+
+                            CoroutineWithData<float> cd4 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                            yield return cd4.coroutine;
+
                             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Brutus, clip);
-                            yield return new WaitForSeconds(clip.length + 1f);
+                            yield return new WaitForSeconds(cd4.GetResult() + 1f);
                             break;
 
                         case 4:
                             clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("marcus_grr");
+
+                            CoroutineWithData<float> cd5 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                            yield return cd5.coroutine;
+
                             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Marcus, clip);
-                            yield return new WaitForSeconds(clip.length + 1f);
+                            yield return new WaitForSeconds(cd5.GetResult() + 1f);
                             break;
                     }
                 }
@@ -535,37 +623,53 @@ public class NewPasswordGameManager : MonoBehaviour
             else
             {
                 // play appropriate popup
-                AudioClip clip = null;
+                AssetReference clip = null;
                 int index = Random.Range(0, 4);
                 switch (index)
                 {
                     case 0:
                         clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_haha");
+
+                        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                        yield return cd.coroutine;
+
                         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
-                        yield return new WaitForSeconds(clip.length + 1f);
+                        yield return new WaitForSeconds(cd.GetResult() + 1f);
                         break;
 
                     case 1:
                         clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_ahhah");
+
+                        CoroutineWithData<float> cd2 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                        yield return cd2.coroutine;
+
                         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Julius, clip);
-                        yield return new WaitForSeconds(clip.length + 1f);
+                        yield return new WaitForSeconds(cd2.GetResult() + 1f);
                         break;
 
                     case 2:
                         clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("marcus_laugh");
+
+                        CoroutineWithData<float> cd3 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                        yield return cd3.coroutine;
+
                         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Marcus, clip);
-                        yield return new WaitForSeconds(clip.length + 1f);
+                        yield return new WaitForSeconds(cd3.GetResult() + 1f);
                         break;
 
                     case 3:
                         clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("brutus_laugh");
+
+                        CoroutineWithData<float> cd4 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                        yield return cd4.coroutine;
+
                         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Brutus, clip);
-                        yield return new WaitForSeconds(clip.length + 1f);
+                        yield return new WaitForSeconds(cd4.GetResult() + 1f);
                         break;
                 }
             }
         }
-        
+
         yield return new WaitForSeconds(0.5f);
 
         // begin next round
@@ -594,8 +698,12 @@ public class NewPasswordGameManager : MonoBehaviour
     private IEnumerator SayPolaroidWordRoutine()
     {
         polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
+
+        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(currentWord.audio));
+        yield return cd.coroutine;
+
         AudioManager.instance.PlayTalk(currentWord.audio);
-        yield return new WaitForSeconds(currentWord.audio.length + 1f);
+        yield return new WaitForSeconds(cd.GetResult() + 1f);
         polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
     }
 
@@ -626,7 +734,7 @@ public class NewPasswordGameManager : MonoBehaviour
     {
         playerData.passPlayed = playerData.passPlayed + 1;
         playerData.starsPass = CalculateStars() + playerData.starsPass;
-        
+
         // save to SIS
         StudentInfoSystem.SaveStudentPlayerData();
     }
@@ -639,12 +747,12 @@ public class NewPasswordGameManager : MonoBehaviour
             return 2;
         else if (numMisses == 2)
             return 1;
-        else 
+        else
             return 0;
     }
 
     private IEnumerator LoseRoutine()
-    {        
+    {
         yield return new WaitForSeconds(2f);
 
         // show stars

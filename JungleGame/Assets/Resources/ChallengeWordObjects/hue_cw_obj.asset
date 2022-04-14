@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: hue_cw_obj
   m_EditorClassIdentifier: 
   word: hue
-  audio: {fileID: 8300000, guid: 9e472ad6539fc88408f08273ee690d9c, type: 3}
+  audio:
+    m_AssetGUID: 9e472ad6539fc88408f08273ee690d9c
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 951ee4959884751498c96be2ed34af8e, type: 3}
   elkoninList: 1c0000000b00000000000000000000000000000000000000
   elkoninCount: 2

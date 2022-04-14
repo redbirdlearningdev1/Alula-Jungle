@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 
 public enum TalkieCharacter
@@ -66,7 +67,7 @@ public struct TalkieSegment
     public ActiveCharacter activeCharacter; // which character is talking?
 
     [Header("Audio")]
-    public AudioClip audioClip; // audio to play
+    public AssetReference audioClip; // audio to play
     public string audioClipName; // audio to play
     public string audioString; // subtitles
 }

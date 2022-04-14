@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 63e38389bc8203c43a809988a70068a0, type: 3}
+    audioClip:
+      m_AssetGUID: 63e38389bc8203c43a809988a70068a0
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Cha_0_0_Julius_2_T1
     audioString: You want to challenge me again?!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: f5d5854305047394286146fb3b5053d6, type: 3}
+    audioClip:
+      m_AssetGUID: f5d5854305047394286146fb3b5053d6
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Cha_0_0_Julius_2_T2
     audioString: "Grrr I\u2019ll get you this time!"
   - endTalkieAfterThisSegment: 1
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 1ebd329fb5f924e4782643c0484fa592, type: 3}
+    audioClip:
+      m_AssetGUID: 1ebd329fb5f924e4782643c0484fa592
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Cha_0_1b_Julius_2_T1
     audioString: Alright,  let's do this.
   - endTalkieAfterThisSegment: 1
@@ -83,6 +92,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: c921c3c51509e084fb42cdefb9a87534, type: 3}
+    audioClip:
+      m_AssetGUID: c921c3c51509e084fb42cdefb9a87534
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Cha_0_0_Julius_2_T3
     audioString: "Ugh,  why\u2019d you call me then!"

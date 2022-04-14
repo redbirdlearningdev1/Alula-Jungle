@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: joke_cw_obj
   m_EditorClassIdentifier: 
   word: joke
-  audio: {fileID: 8300000, guid: c5228bbd40f5970448a40bc30de87926, type: 3}
+  audio:
+    m_AssetGUID: c5228bbd40f5970448a40bc30de87926
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 48b4d3a6471943b44bca4117484a060c, type: 3}
   elkoninList: 1d0000000a0000001e000000000000000000000000000000
   elkoninCount: 3

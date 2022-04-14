@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: tight_cw_obj
   m_EditorClassIdentifier: 
   word: tight
-  audio: {fileID: 8300000, guid: ad83c82df76644548b5870e35046f3d1, type: 3}
+  audio:
+    m_AssetGUID: ad83c82df76644548b5870e35046f3d1
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: f6b26208321dbdb4087732e98aec75d5, type: 3}
   elkoninList: 270000000900000027000000000000000000000000000000
   elkoninCount: 3

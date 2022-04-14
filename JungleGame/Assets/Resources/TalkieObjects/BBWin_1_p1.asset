@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 41d146c3dabe0bc43a3296862a4a130b, type: 3}
+    audioClip:
+      m_AssetGUID: 41d146c3dabe0bc43a3296862a4a130b
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: E_5_4_Red_1_T1
     audioString: Hurray!
   - endTalkieAfterThisSegment: 0
@@ -51,6 +54,9 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 9812cf348536d194fb92c14b3c1a3826, type: 3}
+    audioClip:
+      m_AssetGUID: 9812cf348536d194fb92c14b3c1a3826
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: E_5_4_Red_1_T2
     audioString: I knew you could do it Explorer!

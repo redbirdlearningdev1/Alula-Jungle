@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: _blank_obj
   m_EditorClassIdentifier: 
   _name: _blank
-  audio: {fileID: 8300000, guid: 004d468645271634295eebd789604f9c, type: 3}
+  audio:
+    m_AssetGUID: 004d468645271634295eebd789604f9c
+    m_SubObjectName: 
+    m_SubObjectType: 
   elkoninValue: 1
   animation: _blank
   _enum: 0

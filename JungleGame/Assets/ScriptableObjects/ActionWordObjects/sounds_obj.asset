@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: sounds_obj
   m_EditorClassIdentifier: 
   _name: sounds
-  audio: {fileID: 8300000, guid: 84899e996a484e94886a1eddc96e8dc6, type: 3}
+  audio:
+    m_AssetGUID: 84899e996a484e94886a1eddc96e8dc6
+    m_SubObjectName: 
+    m_SubObjectType: 
   elkoninValue: 16
   animation: sounds
   _enum: 15

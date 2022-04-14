@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: b662b7d2b5f77434bbbc067d0876e242, type: 3}
+    audioClip:
+      m_AssetGUID: b662b7d2b5f77434bbbc067d0876e242
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Cha_0_0_Julius_3_T1
     audioString: You want to challenge me again?!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 05fc74d9d9dd82a49980be920c15f5cf, type: 3}
+    audioClip:
+      m_AssetGUID: 05fc74d9d9dd82a49980be920c15f5cf
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Cha_0_0_Julius_3_T2
     audioString: "Didn\u2019t you embarrass me enough already?"
   - endTalkieAfterThisSegment: 1
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 1ebd329fb5f924e4782643c0484fa592, type: 3}
+    audioClip:
+      m_AssetGUID: 1ebd329fb5f924e4782643c0484fa592
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Cha_0_1b_Julius_2_T1
     audioString: Alright,  let's do this.
   - endTalkieAfterThisSegment: 0
@@ -83,7 +92,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: fa385e453923a904095cb2923352dbd8, type: 3}
+    audioClip:
+      m_AssetGUID: fa385e453923a904095cb2923352dbd8
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Cha_0_0_Julius_3_T3
     audioString: 'Hmph, '
   - endTalkieAfterThisSegment: 1
@@ -99,6 +111,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 24ae069dbdba2d8469fd6d698f005805, type: 3}
+    audioClip:
+      m_AssetGUID: 24ae069dbdba2d8469fd6d698f005805
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Cha_0_0_Julius_3_T4
     audioString: just leave me alone!

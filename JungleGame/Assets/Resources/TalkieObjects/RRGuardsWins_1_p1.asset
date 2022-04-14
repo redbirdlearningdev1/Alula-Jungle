@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip:
+      m_AssetGUID: fe9262a8a90a38547967e147b35b3f5b
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Marcus_Laugh
     audioString: HA HA HA!!!
   - endTalkieAfterThisSegment: 1
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: dc5c6893a5e803c48899b3ed195b76dd, type: 3}
+    audioClip:
+      m_AssetGUID: dc5c6893a5e803c48899b3ed195b76dd
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: RR_1_3_Marcus_1_T1
     audioString: Till next time!
   - endTalkieAfterThisSegment: 0
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 0}
+    audioClip:
+      m_AssetGUID: d82728142b77f894a8d90be0699c2063
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Brutus_Laugh
     audioString: Heh heh...
   - endTalkieAfterThisSegment: 1
@@ -83,7 +92,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: c083b5cf50b4c0d448ae2578cf1da32b, type: 3}
+    audioClip:
+      m_AssetGUID: c083b5cf50b4c0d448ae2578cf1da32b
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: RR_1_3_Brutus_2_T1
     audioString: "Don\u2019t worry,  we\u2019ll be back."
   - endTalkieAfterThisSegment: 1
@@ -99,7 +111,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 66aaaa112f472ea47b1c89251fd81290, type: 3}
+    audioClip:
+      m_AssetGUID: 66aaaa112f472ea47b1c89251fd81290
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: RR_1_3_Marcus_3_T1
     audioString: 'How did we beat you!! '
   - endTalkieAfterThisSegment: 1
@@ -115,6 +130,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 3ebf56b1f93ed52459e2b1b838f401ca, type: 3}
+    audioClip:
+      m_AssetGUID: 3ebf56b1f93ed52459e2b1b838f401ca
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: RR_1_3_Brutus_4_T1
     audioString: "Yawn\u2026 let\u2019s head out. See you soon Explorer"

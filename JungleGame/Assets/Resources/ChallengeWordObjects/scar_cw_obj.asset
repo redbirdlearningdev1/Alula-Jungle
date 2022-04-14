@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: scar_cw_obj
   m_EditorClassIdentifier: 
   word: scar
-  audio: {fileID: 8300000, guid: 2a63994db94230f4a8de45bc85187422, type: 3}
+  audio:
+    m_AssetGUID: 2a63994db94230f4a8de45bc85187422
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 3d99bda07e55ada41847617cad1bc09b, type: 3}
   elkoninList: 25000000170000000e000000000000000000000000000000
   elkoninCount: 3

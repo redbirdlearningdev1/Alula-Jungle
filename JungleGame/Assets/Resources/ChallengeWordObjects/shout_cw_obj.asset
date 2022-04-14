@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: shout_cw_obj
   m_EditorClassIdentifier: 
   word: shout
-  audio: {fileID: 8300000, guid: c4ae61f00fcfd6449a50209cbcb74db1, type: 3}
+  audio:
+    m_AssetGUID: c4ae61f00fcfd6449a50209cbcb74db1
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: a71e360a1cd96b04f83582ab787d4706, type: 3}
   elkoninList: 260000001400000027000000000000000000000000000000
   elkoninCount: 3

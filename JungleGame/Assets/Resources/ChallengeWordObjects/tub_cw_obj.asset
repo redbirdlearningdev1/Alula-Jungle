@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: tub_cw_obj
   m_EditorClassIdentifier: 
   word: tub
-  audio: {fileID: 8300000, guid: 1165e72856c385f4fbc787b830495064, type: 3}
+  audio:
+    m_AssetGUID: 1165e72856c385f4fbc787b830495064
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 7b22bdc2749252f40aa7050082fa0b20, type: 3}
   elkoninList: 270000000600000016000000000000000000000000000000
   elkoninCount: 3

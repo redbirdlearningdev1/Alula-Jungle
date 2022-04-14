@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class WordFactoryRaycaster : MonoBehaviour
 {
@@ -14,7 +16,6 @@ public class WordFactoryRaycaster : MonoBehaviour
     [SerializeField] private Transform selectedObjectParent;
 
     private bool polaroidAudioPlaying = false;
-    private string prevWord;
     
 
     void Awake()
@@ -81,7 +82,7 @@ public class WordFactoryRaycaster : MonoBehaviour
             selectedObject = null;
         }
 
-        if (Input.GetMouseButtonDown(0) && !polaroidAudioPlaying)
+        if (Input.GetMouseButtonDown(0))
         {
             var pointerEventData = new PointerEventData(EventSystem.current);
             pointerEventData.position = Input.mousePosition;
@@ -97,10 +98,8 @@ public class WordFactoryRaycaster : MonoBehaviour
                         selectedObject = result.gameObject;
                         selectedObject.gameObject.transform.SetParent(selectedObjectParent);
                         selectedObject.GetComponent<Polaroid>().LerpScale(1.25f, 0.1f);
-
-                        ChallengeWord word = selectedObject.GetComponent<Polaroid>().challengeWord;
                         // play audio
-                        StartCoroutine(PlayPolaroidAudio(word.audio, word.name));
+                        StartCoroutine(PlayPolaroidAudio(selectedObject.GetComponent<Polaroid>().challengeWord.audio));
                         // stop polaroid wiggle
                         WordFactoryBlendingManager.instance.TogglePolaroidsWiggle(false);
                         // audio fx
@@ -116,26 +115,20 @@ public class WordFactoryRaycaster : MonoBehaviour
         }
     }
 
-    private IEnumerator PlayPolaroidAudio(AudioClip audio, string word)
-    {   
-        // return if already playing word
-        if (prevWord == word)
-        {
-            print ("here");
-            yield break;
-        }
-            
-        prevWord = word;
-
+    private IEnumerator PlayPolaroidAudio(AssetReference audioRef)
+    {
         if (polaroidAudioPlaying)
             AudioManager.instance.StopTalk();
 
         polaroidAudioPlaying = true;
 
-        AudioManager.instance.PlayTalk(audio);
-        yield return new WaitForSeconds(audio.length + 0.1f);
+
+        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(audioRef));
+        yield return cd.coroutine;
+
+        AudioManager.instance.PlayTalk(audioRef);
+        yield return new WaitForSeconds(cd.GetResult() + 0.1f);
 
         polaroidAudioPlaying = false;
-        prevWord = null;
     }
 }

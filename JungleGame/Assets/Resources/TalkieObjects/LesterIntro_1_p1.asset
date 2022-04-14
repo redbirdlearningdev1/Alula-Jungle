@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: bc51eaa4d12b82244ba62eb840fada89, type: 3}
+    audioClip:
+      m_AssetGUID: bc51eaa4d12b82244ba62eb840fada89
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_4_Lester_1_T1
     audioString: Hey there friend!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: dd4f4aa5b002f6449b343e72247a5807, type: 3}
+    audioClip:
+      m_AssetGUID: dd4f4aa5b002f6449b343e72247a5807
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_4_Lester_1_T2
     audioString: 'My name is Lester, '
   - endTalkieAfterThisSegment: 0
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 9f8e9aa9d2f025e468be95a3405880f8, type: 3}
+    audioClip:
+      m_AssetGUID: 9f8e9aa9d2f025e468be95a3405880f8
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_4_Lester_1_T3
     audioString: and I absolutely love making stickers!
   - endTalkieAfterThisSegment: 0
@@ -83,7 +92,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: b5ead3b8740033d42ab9ad8fee8ab29e, type: 3}
+    audioClip:
+      m_AssetGUID: b5ead3b8740033d42ab9ad8fee8ab29e
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_4_Lester_2_T1
     audioString: Say there!
   - endTalkieAfterThisSegment: 0
@@ -99,7 +111,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: a8c013b39803880468a8d737af2ee476, type: 3}
+    audioClip:
+      m_AssetGUID: a8c013b39803880468a8d737af2ee476
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_4_Lester_2_T2
     audioString: "I see you\u2019ve got some coins!"
   - endTalkieAfterThisSegment: 0
@@ -115,7 +130,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 3dec7483e8739674a8279bb5a5e4f03d, type: 3}
+    audioClip:
+      m_AssetGUID: 3dec7483e8739674a8279bb5a5e4f03d
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_4_Lester_2_T3
     audioString: "I'll tell you what,  if you give me three coins I\u2019ll make
       you a one of a kind sticker!"
@@ -132,7 +150,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 258935eae395d154ea295de9097a2e6e, type: 3}
+    audioClip:
+      m_AssetGUID: 258935eae395d154ea295de9097a2e6e
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_4_Lester_2_T4
     audioString: I promise you won't find another kind like it!
   - endTalkieAfterThisSegment: 0
@@ -148,7 +169,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: fc320fc8005d15d48adacf71f8514951, type: 3}
+    audioClip:
+      m_AssetGUID: fc320fc8005d15d48adacf71f8514951
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_4_Lester_2_T5
     audioString: 'Guaranteed! '
   - endTalkieAfterThisSegment: 0
@@ -164,7 +188,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 8f984a8b77d381840bb5ec38d2cf4cec, type: 3}
+    audioClip:
+      m_AssetGUID: 8f984a8b77d381840bb5ec38d2cf4cec
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_4_Lester_2_T6
     audioString: How does that sound?!
   - endTalkieAfterThisSegment: 0
@@ -180,6 +207,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 8b255e6de72203d47be71db4f3577f54, type: 3}
+    audioClip:
+      m_AssetGUID: 8b255e6de72203d47be71db4f3577f54
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: P_1_4_Lester_3_T1
     audioString: Why don't we try for one now!

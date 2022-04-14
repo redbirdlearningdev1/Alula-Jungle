@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 46c951c885ea7ad43862106ef19ce84d, type: 3}
+    audioClip:
+      m_AssetGUID: 46c951c885ea7ad43862106ef19ce84d
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_3_1_Red_1_T1
     audioString: "I\u2019m not surprised at how messy this place is."
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: d85fa412f930e1a4689e70d83cb99e0c, type: 3}
+    audioClip:
+      m_AssetGUID: d85fa412f930e1a4689e70d83cb99e0c
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_3_1_Wally_2_T1
     audioString: Uhgh,  Yeah.
   - endTalkieAfterThisSegment: 0
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 721b341a2b38cc8408f3e634433bbb94, type: 3}
+    audioClip:
+      m_AssetGUID: 721b341a2b38cc8408f3e634433bbb94
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_3_1_Wally_2_T2
     audioString: "It\u2019s expected at this point."
   - endTalkieAfterThisSegment: 0
@@ -83,7 +92,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip:
+      m_AssetGUID: fe9262a8a90a38547967e147b35b3f5b
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Marcus_Laugh
     audioString: HA HA HA!!!!
   - endTalkieAfterThisSegment: 0
@@ -99,7 +111,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 0}
+    audioClip:
+      m_AssetGUID: d82728142b77f894a8d90be0699c2063
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: Brutus_Laugh
     audioString: Heh heh...
   - endTalkieAfterThisSegment: 0
@@ -115,6 +130,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 3
-    audioClip: {fileID: 0}
+    audioClip:
+      m_AssetGUID: 8e108308a3368ce409f7fe74683aa325
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: RedWally_Huh
     audioString: Huh?!

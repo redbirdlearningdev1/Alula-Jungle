@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: touch_cw_obj
   m_EditorClassIdentifier: 
   word: touch
-  audio: {fileID: 8300000, guid: d49604cc035f3a340b4b1f8fb04b7ff6, type: 3}
+  audio:
+    m_AssetGUID: d49604cc035f3a340b4b1f8fb04b7ff6
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 840f4cd4b7d4f674f9901aa0861c0e83, type: 3}
   elkoninList: 270000000600000018000000000000000000000000000000
   elkoninCount: 3

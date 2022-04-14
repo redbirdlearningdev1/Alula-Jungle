@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: straw_cw_obj
   m_EditorClassIdentifier: 
   word: straw
-  audio: {fileID: 8300000, guid: f4d35dd0be4e48448885b895bf35f1d3, type: 3}
+  audio:
+    m_AssetGUID: f4d35dd0be4e48448885b895bf35f1d3
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: c8a8772579489d34da576215afb7e888, type: 3}
   elkoninList: 250000002700000024000000150000000000000000000000
   elkoninCount: 4

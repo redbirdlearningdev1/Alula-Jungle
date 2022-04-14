@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: blow_cw_obj
   m_EditorClassIdentifier: 
   word: blow
-  audio: {fileID: 8300000, guid: 026f79ea936cae545a06d5f33ed3efe2, type: 3}
+  audio:
+    m_AssetGUID: 026f79ea936cae545a06d5f33ed3efe2
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 49aa4385533b9284b889e5d610db205b, type: 3}
   elkoninList: 160000001f0000000a000000000000000000000000000000
   elkoninCount: 3

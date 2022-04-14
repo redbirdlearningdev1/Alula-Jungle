@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.EventSystems;
+using UnityEngine.AddressableAssets;
 
 public class StickerSystem : MonoBehaviour
 {
@@ -930,7 +931,7 @@ public class StickerSystem : MonoBehaviour
         revealSticker.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.2f, 0.2f);
 
         // get appropriate sticker voiceover
-        AudioClip stickerVoiceover = null;
+        AssetReference stickerVoiceover = null;
         switch (sticker.rarity)
         {
             default:
@@ -952,8 +953,10 @@ public class StickerSystem : MonoBehaviour
         }
         // play voiceover
         lesterSpeechBubble.SquishyScaleLerp(new Vector2(-1.2f, 1.2f), new Vector2(-1f, 1f), 0.1f, 0.1f);
+        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(stickerVoiceover));
+        yield return cd.coroutine;
         AudioManager.instance.PlayTalk(stickerVoiceover);
-        yield return new WaitForSeconds(stickerVoiceover.length + 0.2f);
+        yield return new WaitForSeconds(cd.GetResult() + 0.2f);
         lesterSpeechBubble.SquishyScaleLerp(new Vector2(-1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
 
         // wiggle reveal sticker

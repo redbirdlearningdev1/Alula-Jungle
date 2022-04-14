@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: lie_cw_obj
   m_EditorClassIdentifier: 
   word: lie
-  audio: {fileID: 8300000, guid: b7b5adad9de18c841868ecc1b81a466f, type: 3}
+  audio:
+    m_AssetGUID: b7b5adad9de18c841868ecc1b81a466f
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: b0ae0c86571089a4bbfd9779c1c12984, type: 3}
   elkoninList: 1f0000000900000000000000000000000000000000000000
   elkoninCount: 2

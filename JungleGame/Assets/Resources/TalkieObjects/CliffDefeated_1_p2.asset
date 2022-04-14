@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 369bc33a7646f9446ab5b1fcb11330d3, type: 3}
+    audioClip:
+      m_AssetGUID: 369bc33a7646f9446ab5b1fcb11330d3
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: FR_1_4_Marcus_8_T1
     audioString: Exactly! Watch your back!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 228aea39d4e4ec440ac68d81901baa5e, type: 3}
+    audioClip:
+      m_AssetGUID: 228aea39d4e4ec440ac68d81901baa5e
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: FR_1_4_Brutus_9_T1
     audioString: "Yeah\u2026"
   - endTalkieAfterThisSegment: 0
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: af1e900077488354d9bdc86dc465e7a2, type: 3}
+    audioClip:
+      m_AssetGUID: af1e900077488354d9bdc86dc465e7a2
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: FR_1_4_Brutus_9_T2
     audioString: "Exactly\u2026"
   - endTalkieAfterThisSegment: 0
@@ -83,7 +92,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 5aac0075ceb65ac45af651985fc8fb97, type: 3}
+    audioClip:
+      m_AssetGUID: 5aac0075ceb65ac45af651985fc8fb97
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: FR_1_4_Brutus_9_T3
     audioString: Especially for bees heh heh..
   - endTalkieAfterThisSegment: 0
@@ -99,6 +111,9 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: eacf8194ab1f3e348bee970636e3e7d8, type: 3}
+    audioClip:
+      m_AssetGUID: eacf8194ab1f3e348bee970636e3e7d8
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: FR_1_4_Marcus_9_T1
     audioString: Grrr,  Quiet you!!

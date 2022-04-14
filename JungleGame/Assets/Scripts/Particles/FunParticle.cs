@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AddressableAssets;
 
 public class FunParticle : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class FunParticle : MonoBehaviour
     public Image image;
 
     [Header("Particle Perameters")]
-    public AudioClip spawnSound;
+    public AssetReference spawnSound;
     public float duration;
     public float rate;
     public bool randomizeRotation;

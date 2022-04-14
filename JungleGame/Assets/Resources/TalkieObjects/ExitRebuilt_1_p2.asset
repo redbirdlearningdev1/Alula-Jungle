@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 742f9133662c97749bbc4926a99daa11, type: 3}
+    audioClip:
+      m_AssetGUID: 742f9133662c97749bbc4926a99daa11
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_2_Wally_7_T1
     audioString: "There\u2019s really no point in stopping him."
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 4
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: ee73c129d02a11d4dbc1107df798cce6, type: 3}
+    audioClip:
+      m_AssetGUID: ee73c129d02a11d4dbc1107df798cce6
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_2_Red_8_T1
     audioString: Ha ha!
   - endTalkieAfterThisSegment: 0
@@ -67,7 +73,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: f807afb8fce3b08468e39816d3623068, type: 3}
+    audioClip:
+      m_AssetGUID: f807afb8fce3b08468e39816d3623068
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_2_Red_8_T2
     audioString: "You\u2019re right about that!"
   - endTalkieAfterThisSegment: 0
@@ -83,7 +92,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 044b697c780eb654bae03a2387dfbaf4, type: 3}
+    audioClip:
+      m_AssetGUID: 044b697c780eb654bae03a2387dfbaf4
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_2_Red_8_T3
     audioString: "We\u2019ll catch up to him soon."
   - endTalkieAfterThisSegment: 0
@@ -99,7 +111,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: c0706f2929c3570489a6ae3d25b04247, type: 3}
+    audioClip:
+      m_AssetGUID: c0706f2929c3570489a6ae3d25b04247
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_2_Red_8_T4
     audioString: Come on-
   - endTalkieAfterThisSegment: 0
@@ -115,6 +130,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 3
-    audioClip: {fileID: 0}
+    audioClip:
+      m_AssetGUID: 8e108308a3368ce409f7fe74683aa325
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: RedWally_Huh
     audioString: Huh?!

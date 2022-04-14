@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: toe_cw_obj
   m_EditorClassIdentifier: 
   word: toe
-  audio: {fileID: 8300000, guid: 76f184aad05a76d4aaea6e144d87f858, type: 3}
+  audio:
+    m_AssetGUID: 76f184aad05a76d4aaea6e144d87f858
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 99e16437c9c970c4b839f676498d6b8c, type: 3}
   elkoninList: 270000000a00000000000000000000000000000000000000
   elkoninCount: 2

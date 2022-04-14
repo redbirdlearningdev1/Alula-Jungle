@@ -270,8 +270,8 @@ public class ParticleController : MonoBehaviour
                 particle.GetComponent<FunParticle>().StartParticle();
 
                 // play pop sound effect!
-                if (currFunParticle.spawnSound != null)
-                    AudioManager.instance.PlayFX_oneShot(currFunParticle.spawnSound, 0.1f, "particle_spawn");
+                //if (currFunParticle.spawnSound != null)
+                    //AudioManager.instance.PlayFX_oneShot(currFunParticle.spawnSound, 0.1f, "particle_spawn");
             }
         }
     }

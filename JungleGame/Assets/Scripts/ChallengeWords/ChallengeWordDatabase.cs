@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -162,7 +164,7 @@ public static class ChallengeWordDatabase
         AssetDatabase.Refresh();
     }
 
-    private static AudioClip FindWordAudio(string word)
+    private static AssetReference FindWordAudio(string word)
     {
         string exact_filename = word + audio_postfix;
         string[] results = AssetDatabase.FindAssets(exact_filename);
@@ -185,7 +187,9 @@ public static class ChallengeWordDatabase
         // found correct audio file
         if (correct_path != "")
         {
-            return (AudioClip)AssetDatabase.LoadAssetAtPath(correct_path, typeof(AudioClip));
+            // TODO: MAJOR TESTING REQUIRED
+            //AssetReference reference(AudioClip)AssetDatabase.LoadAssetAtPath(correct_path, typeof(AudioClip));
+            return new AssetReference(AssetDatabase.AssetPathToGUID(correct_path));//(AudioClip)AssetDatabase.LoadAssetAtPath(correct_path, typeof(AudioClip));
         }
         else
         {

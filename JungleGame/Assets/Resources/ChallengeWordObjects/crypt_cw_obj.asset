@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: crypt_cw_obj
   m_EditorClassIdentifier: 
   word: crypt
-  audio: {fileID: 8300000, guid: 77683243af074fb42beca3937baced47, type: 3}
+  audio:
+    m_AssetGUID: 77683243af074fb42beca3937baced47
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: e938232d9b17a09438489be942a5b5e4, type: 3}
   elkoninList: 170000002400000004000000220000002700000000000000
   elkoninCount: 5

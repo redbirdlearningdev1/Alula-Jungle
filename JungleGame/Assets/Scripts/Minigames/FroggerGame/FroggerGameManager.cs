@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class FroggerGameManager : MonoBehaviour
 {
@@ -25,9 +26,9 @@ public class FroggerGameManager : MonoBehaviour
     private int timesMissed = 0;
 
     [Header("Log Rows")]
-    [SerializeField] private List<LogRow> rows; 
+    [SerializeField] private List<LogRow> rows;
     private int currRow = 0;
-    
+
     [Header("Coin Rows")]
     [SerializeField] private List<LogCoin> coins1;
     [SerializeField] private List<LogCoin> coins2;
@@ -48,7 +49,7 @@ public class FroggerGameManager : MonoBehaviour
     private bool repeatTutorialAudio = false;
     private float timeBetweenRepeats = 8f;
 
-   
+
 
     [Header("Dev Stuff")]
     [SerializeField] private GameObject devObject;
@@ -61,7 +62,7 @@ public class FroggerGameManager : MonoBehaviour
     ################################################
     */
 
-    void Awake() 
+    void Awake()
     {
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
@@ -94,8 +95,7 @@ public class FroggerGameManager : MonoBehaviour
         else
         {
             // start song
-            AudioManager.instance.InitSplitSong(SplitSong.Frogger);
-            AudioManager.instance.IncreaseSplitSong();
+            AudioManager.instance.InitSplitSong(AudioDatabase.instance.FroggerSongSplit);
 
             StartCoroutine(StartGame());
         }
@@ -171,7 +171,7 @@ public class FroggerGameManager : MonoBehaviour
         {
             globalCoinPool.AddRange(GameManager.instance.GetGlobalActionWordList());
         }
-        
+
         unusedCoinPool = new List<ActionWordEnum>();
         unusedCoinPool.AddRange(globalCoinPool);
 
@@ -184,7 +184,7 @@ public class FroggerGameManager : MonoBehaviour
         // sink all the logs except the first row
         StartCoroutine(SinkLogsExceptFirstRow());
     }
-    
+
     /* 
     ################################################
     #   GAME FLOW METHODS
@@ -206,21 +206,23 @@ public class FroggerGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // play reminder popup
-        List<AudioClip> clips = new List<AudioClip>();
+        List<AssetReference> clips = new List<AssetReference>();
         clips.Add(GameIntroDatabase.instance.froggerReminder1);
         clips.Add(GameIntroDatabase.instance.froggerReminder2);
-        clips.Add( GameIntroDatabase.instance.froggerEncouragementClips[1]);
-        
-        AudioClip clip = clips[Random.Range(0, clips.Count)];
+        clips.Add(GameIntroDatabase.instance.froggerEncouragementClips[1]);
+
+        AssetReference clip = clips[Random.Range(0, clips.Count)];
+        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+        yield return cd.coroutine;
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clip);
-        yield return new WaitForSeconds(clip.length + 1f);
+        yield return new WaitForSeconds(cd.GetResult() + 1f);
 
         // sink logs
         rows[currRow].SinkAllLogs();
         yield return new WaitForSeconds(1f);
-        
+
         // determine correct landing sound
-        AudioClip landingSound = null;
+        AssetReference landingSound = null;
         //print("curr row: "  + currRow);
         if (currRow < 2)
             landingSound = AudioDatabase.instance.GrassThump;
@@ -271,7 +273,7 @@ public class FroggerGameManager : MonoBehaviour
         gorilla.CelebrateAnimation();
 
         // play encouragement popup
-        AudioClip clip = null;
+        AssetReference clip = null;
         switch (currRow)
         {
             case 0:
@@ -284,8 +286,10 @@ public class FroggerGameManager : MonoBehaviour
                 clip = GameIntroDatabase.instance.froggerEncouragementClips[3];
                 break;
         }
+        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+        yield return cd.coroutine;
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clip);
-        yield return new WaitForSeconds(clip.length + 1f);
+        yield return new WaitForSeconds(cd.GetResult() + 1f);
 
         currRow++;
         rows[currRow].RiseAllLogs();
@@ -337,7 +341,7 @@ public class FroggerGameManager : MonoBehaviour
 
         // AI stuff
         AIData(StudentInfoSystem.GetCurrentProfile());
-        
+
         // calculate and show stars
         StarAwardController.instance.AwardStarsAndExit(CalculateStars());
     }
@@ -398,11 +402,15 @@ public class FroggerGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // play tutorial audio
-        List<AudioClip> clips = new List<AudioClip>();
+        List<AssetReference> clips = new List<AssetReference>();
         clips.Add(GameIntroDatabase.instance.froggerIntro1);
         clips.Add(GameIntroDatabase.instance.froggerIntro2);
+        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[0]));
+        yield return cd.coroutine;
+        CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[1]));
+        yield return cd0.coroutine;
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clips);
-        yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
+        yield return new WaitForSeconds(cd.GetResult() + cd0.GetResult() + 1f);
 
         // reveal dancing man
         StartCoroutine(ShowDancingManRoutine());
@@ -415,7 +423,7 @@ public class FroggerGameManager : MonoBehaviour
         ShowTutorialCoins();
     }
 
-    private IEnumerator RepeatTutorialAudioRoutine(AudioClip clip)
+    private IEnumerator RepeatTutorialAudioRoutine(AssetReference clip)
     {
         // play initially
         AudioManager.instance.PlayTalk(clip);
@@ -464,17 +472,23 @@ public class FroggerGameManager : MonoBehaviour
         if (currRow == 0)
         {
             // play tutorial audio
-            List<AudioClip> clips = new List<AudioClip>();
+            List<AssetReference> clips = new List<AssetReference>();
             clips.Add(GameIntroDatabase.instance.froggerIntro3);
             clips.Add(GameIntroDatabase.instance.froggerIntro4);
             clips.Add(GameIntroDatabase.instance.froggerIntro5);
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[0]));
+            yield return cd.coroutine;
+            CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[1]));
+            yield return cd0.coroutine;
+            CoroutineWithData<float> cd1 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[2]));
+            yield return cd1.coroutine;
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clips);
-            yield return new WaitForSeconds(clips[0].length + clips[1].length + clips[2].length + 1f);
+            yield return new WaitForSeconds(cd.GetResult() + cd0.GetResult() + cd1.GetResult() + 1f);
         }
-        else    
+        else
         {
             // play encouragement popup
-            AudioClip clip = null;
+            AssetReference clip = null;
             switch (currRow)
             {
                 case 0:
@@ -487,10 +501,12 @@ public class FroggerGameManager : MonoBehaviour
                     clip = GameIntroDatabase.instance.froggerEncouragementClips[3];
                     break;
             }
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd.coroutine;
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
+            yield return new WaitForSeconds(cd.GetResult() + 1f);
         }
-        
+
         currRow++;
         rows[currRow].RiseAllLogs();
         yield return new WaitForSeconds(1f);
@@ -507,7 +523,7 @@ public class FroggerGameManager : MonoBehaviour
 
         rows[currRow].SinkAllLogs();
         yield return new WaitForSeconds(1f);
-        
+
         rows[currRow].RiseAllLogs();
         rows[currRow].ResetLogRow();
         yield return new WaitForSeconds(1f);
@@ -520,7 +536,7 @@ public class FroggerGameManager : MonoBehaviour
         // increase split song
         AudioManager.instance.IncreaseSplitSong();
 
-        print ("you win!");
+        print("you win!");
         // TODO: animate coin into bag
         rows[currRow].ResetCoinPos(selectedCoin);
         taxi.CelebrateAnimation();
@@ -584,7 +600,7 @@ public class FroggerGameManager : MonoBehaviour
         }
 
         StartCoroutine(PlayTutorialAudio());
-    } 
+    }
 
     private IEnumerator PlayTutorialAudio()
     {
@@ -664,7 +680,7 @@ public class FroggerGameManager : MonoBehaviour
             else
             {
                 type = GetUnusedWord();
-            }            
+            }
 
             coin.SetCoinType(type);
             coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.image, 1f, 0.5f);
@@ -732,7 +748,7 @@ public class FroggerGameManager : MonoBehaviour
 
         // make sure selected coin is not the same as prev selected coin
         if (rows[currRow].coins[selectedIndex].type == prevCorrectCoin)
-        {   
+        {
             selectedIndex++;
             if (selectedIndex >= row.Count)
                 selectedIndex = 0;
@@ -753,7 +769,7 @@ public class FroggerGameManager : MonoBehaviour
         selectedCoin = row[selectedIndex];
         // print ("selected coin -> " + selectedCoin.type);
         StartCoroutine(DancingManRoutine());
-        
+
 
         if (GameManager.instance.devModeActivated)
         {

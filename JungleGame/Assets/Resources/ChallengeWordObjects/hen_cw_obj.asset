@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: hen_cw_obj
   m_EditorClassIdentifier: 
   word: hen
-  audio: {fileID: 8300000, guid: b5c9af751cff224498cd2469e8d8e402, type: 3}
+  audio:
+    m_AssetGUID: b5c9af751cff224498cd2469e8d8e402
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 41613b137c75a6c4880fa414a8e6c8bd, type: 3}
   elkoninList: 1c0000000300000021000000000000000000000000000000
   elkoninCount: 3

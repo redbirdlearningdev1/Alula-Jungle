@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: live_cw_obj
   m_EditorClassIdentifier: 
   word: live
-  audio: {fileID: 8300000, guid: ef1362c8db793294ab991ea8624e8746, type: 3}
+  audio:
+    m_AssetGUID: ef1362c8db793294ab991ea8624e8746
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 89ac0ef8b04b93c4baa65d032a8d4c1a, type: 3}
   elkoninList: 1f0000000900000029000000000000000000000000000000
   elkoninCount: 3

@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: stripe_cw_obj
   m_EditorClassIdentifier: 
   word: stripe
-  audio: {fileID: 8300000, guid: 6826cc49637c8a547b01fbff6ee35335, type: 3}
+  audio:
+    m_AssetGUID: 6826cc49637c8a547b01fbff6ee35335
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: fec504b37fc58a848b30c1ccf90846e1, type: 3}
   elkoninList: 250000002700000024000000090000002200000000000000
   elkoninCount: 5

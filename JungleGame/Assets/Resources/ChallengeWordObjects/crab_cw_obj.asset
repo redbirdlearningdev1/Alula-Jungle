@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: crab_cw_obj
   m_EditorClassIdentifier: 
   word: crab
-  audio: {fileID: 8300000, guid: 634c548f5ad394b42915146e4494be62, type: 3}
+  audio:
+    m_AssetGUID: 634c548f5ad394b42915146e4494be62
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: a1e64abd565c0ae4293a53b22bbb71d7, type: 3}
   elkoninList: 170000002400000002000000160000000000000000000000
   elkoninCount: 4

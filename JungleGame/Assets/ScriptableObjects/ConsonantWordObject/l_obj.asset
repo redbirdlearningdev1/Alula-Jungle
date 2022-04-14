@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: l_obj
   m_EditorClassIdentifier: 
   _name: l
-  audio: {fileID: 8300000, guid: e48a061c03c0a624896c8eaff7f7af1b, type: 3}
+  audio:
+    m_AssetGUID: e48a061c03c0a624896c8eaff7f7af1b
+    m_SubObjectName: 
+    m_SubObjectType: 
   elkoninValue: 31
   animation: lCoin
   _enum: 10

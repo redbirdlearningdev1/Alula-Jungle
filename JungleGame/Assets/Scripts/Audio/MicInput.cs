@@ -10,8 +10,6 @@ public class MicInput : MonoBehaviour
 
     #endregion
 
-    bool _isInitialized;
-
     public static float MicLoudness;
     public static float MicLoudnessinDecibels;
 
@@ -29,14 +27,7 @@ public class MicInput : MonoBehaviour
     //mic initialization
     public void InitMic()
     {
-        // return if already initialized
-        if (_isInitialized)
-        {
-            return;
-        }
-
-        GameManager.instance.SendLog(this, "mic input ON");
-
+        // print ("mic init!");
         if (_device == null)
         {
             if (Microphone.devices.Length > 0)
@@ -52,21 +43,14 @@ public class MicInput : MonoBehaviour
             }
         }
         _clipRecord = Microphone.Start(_device, true, 999, 44100);
-        _isInitialized = true;
+        //_isInitialized = true;
     }
 
     public void StopMicrophone()
     {
-        // return if already uninitialized
-        if (!_isInitialized)
-        {
-            return;
-        }
-
-        GameManager.instance.SendLog(this, "mic input OFF");
-
+        // print ("mic stopped!");
         Microphone.End(_device);
-        _isInitialized = false;
+        //_isInitialized = false;
     }
 
     public void SwitchDevice(int num)
@@ -171,4 +155,6 @@ public class MicInput : MonoBehaviour
         MicLoudness = MicrophoneLevelMax();
         MicLoudnessinDecibels = MicrophoneLevelMaxDecibels();
     }
+
+    //bool _isInitialized;
 }

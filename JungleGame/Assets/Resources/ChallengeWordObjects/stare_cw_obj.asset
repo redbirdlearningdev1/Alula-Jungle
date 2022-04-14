@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: stare_cw_obj
   m_EditorClassIdentifier: 
   word: stare
-  audio: {fileID: 8300000, guid: 65c5289e619066f43a7a4b990e231432, type: 3}
+  audio:
+    m_AssetGUID: 65c5289e619066f43a7a4b990e231432
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 75a28ebb65842f4429d5e8e64813228e, type: 3}
   elkoninList: 25000000270000000d000000000000000000000000000000
   elkoninCount: 3

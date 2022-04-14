@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class PasswordTube : MonoBehaviour
 {
@@ -265,8 +267,12 @@ public class PasswordTube : MonoBehaviour
             tubeCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
             yield return new WaitForSeconds(0.1f);
         }
+        
 
-        yield return new WaitForSeconds(word.audio.length);
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(word.audio));
+            yield return cd.coroutine;
+
+        yield return new WaitForSeconds(cd.GetResult());
 
         foreach (var tubeCoin in tubeCoins)
         {

@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: wig_cw_obj
   m_EditorClassIdentifier: 
   word: wig
-  audio: {fileID: 8300000, guid: de1f7af9834ad36449143127faf778eb, type: 3}
+  audio:
+    m_AssetGUID: de1f7af9834ad36449143127faf778eb
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: ff28d7e368252df408a1202a2c3c3638, type: 3}
   elkoninList: 2a000000040000001b000000000000000000000000000000
   elkoninCount: 3

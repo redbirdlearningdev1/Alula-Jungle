@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: pirate_obj
   m_EditorClassIdentifier: 
   _name: pirate
-  audio: {fileID: 8300000, guid: 5c4cbd03a3d3ca74a82094e32b1afbc2, type: 3}
+  audio:
+    m_AssetGUID: 5c4cbd03a3d3ca74a82094e32b1afbc2
+    m_SubObjectName: 
+    m_SubObjectType: 
   elkoninValue: 14
   animation: pirate
   _enum: 13

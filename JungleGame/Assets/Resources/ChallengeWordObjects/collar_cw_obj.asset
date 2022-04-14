@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: collar_cw_obj
   m_EditorClassIdentifier: 
   word: collar
-  audio: {fileID: 8300000, guid: 201db75c0219ad5489d0e5853f704d18, type: 3}
+  audio:
+    m_AssetGUID: 201db75c0219ad5489d0e5853f704d18
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: f08f458dd3231f349ab0d80478b2c551, type: 3}
   elkoninList: 17000000050000001f000000240000000000000000000000
   elkoninCount: 4

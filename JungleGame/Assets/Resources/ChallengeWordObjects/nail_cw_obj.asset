@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: nail_cw_obj
   m_EditorClassIdentifier: 
   word: nail
-  audio: {fileID: 8300000, guid: 67f1a0cfb91e60c4d89064612baba565, type: 3}
+  audio:
+    m_AssetGUID: 67f1a0cfb91e60c4d89064612baba565
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: f6cd36dbac68cbc4583e0124bbdcb1b4, type: 3}
   elkoninList: 21000000070000001f000000000000000000000000000000
   elkoninCount: 3

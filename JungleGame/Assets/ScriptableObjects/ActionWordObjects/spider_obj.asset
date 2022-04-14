@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: spider_obj
   m_EditorClassIdentifier: 
   _name: spider
-  audio: {fileID: 8300000, guid: 35c9d9038cbb37c4faa83a75e42512ae, type: 3}
+  audio:
+    m_AssetGUID: 35c9d9038cbb37c4faa83a75e42512ae
+    m_SubObjectName: 
+    m_SubObjectType: 
   elkoninValue: 8
   animation: spider
   _enum: 7

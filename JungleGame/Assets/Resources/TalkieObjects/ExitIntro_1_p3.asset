@@ -35,7 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 4fa1f3974374b58488cf81d272cd0ccb, type: 3}
+    audioClip:
+      m_AssetGUID: 4fa1f3974374b58488cf81d272cd0ccb
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_1_Julius_40_T1
     audioString: "I\u2026"
   - endTalkieAfterThisSegment: 0
@@ -51,7 +54,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 90a68566144341849aa86711c1319f2f, type: 3}
+    audioClip:
+      m_AssetGUID: 90a68566144341849aa86711c1319f2f
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_1_Julius_40_T2
     audioString: "I\u2019m\u2026"
   - endTalkieAfterThisSegment: 0
@@ -67,6 +73,9 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 3c29c58b211aceb43b3d3fdb6fffaf47, type: 3}
+    audioClip:
+      m_AssetGUID: 3c29c58b211aceb43b3d3fdb6fffaf47
+      m_SubObjectName: 
+      m_SubObjectType: 
     audioClipName: R_1_1_Julius_40_T3
     audioString: "I didn\u2019t mean to\u2026"

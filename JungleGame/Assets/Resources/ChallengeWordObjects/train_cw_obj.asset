@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: train_cw_obj
   m_EditorClassIdentifier: 
   word: train
-  audio: {fileID: 8300000, guid: 4191306ccc36ec7439c6ffb97c5e4abd, type: 3}
+  audio:
+    m_AssetGUID: 4191306ccc36ec7439c6ffb97c5e4abd
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: b7654016e79544d4f802dae224346f9a, type: 3}
   elkoninList: 270000002400000007000000210000000000000000000000
   elkoninCount: 4

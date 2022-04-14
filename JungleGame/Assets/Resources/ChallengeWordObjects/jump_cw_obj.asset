@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: jump_cw_obj
   m_EditorClassIdentifier: 
   word: jump
-  audio: {fileID: 8300000, guid: 307f8f1bf5f16b244bdfdd6fe0a5c8cc, type: 3}
+  audio:
+    m_AssetGUID: 307f8f1bf5f16b244bdfdd6fe0a5c8cc
+    m_SubObjectName: 
+    m_SubObjectType: 
   sprite: {fileID: 21300000, guid: 652a60a901aa44d419298950dc38caa5, type: 3}
   elkoninList: 1d0000000600000020000000220000000000000000000000
   elkoninCount: 4

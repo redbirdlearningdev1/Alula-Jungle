@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.AddressableAssets;
 
 [System.Serializable]
 public struct SpiderwebTutorialList
@@ -83,8 +84,7 @@ public class NewSpiderGameManager : MonoBehaviour
         else
         {
             // start song
-            AudioManager.instance.InitSplitSong(SplitSong.Spiderweb);
-            AudioManager.instance.IncreaseSplitSong();
+            AudioManager.instance.InitSplitSong(AudioDatabase.instance.SpiderwebSongSplit);
 
             StartCoroutine(StartGame());
         }
@@ -152,7 +152,7 @@ public class NewSpiderGameManager : MonoBehaviour
         // turn off raycaster
         SpiderRayCaster.instance.isOn = false;
 
-        if (coin ==  ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value))
+        if (coin == ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value))
         {
             winCount++;
 
@@ -169,15 +169,15 @@ public class NewSpiderGameManager : MonoBehaviour
             {
                 if (!playTutorial)
                     StartCoroutine(CoinSuccessRoutine(correctCoin));
-                else 
+                else
                     StartCoroutine(TutorialSuccessRoutine(correctCoin));
-                
+
             }
             else
             {
                 if (!playTutorial)
                     StartCoroutine(WinRoutine(correctCoin));
-                else 
+                else
                     StartCoroutine(TutorialWinRoutine(correctCoin));
             }
 
@@ -188,7 +188,7 @@ public class NewSpiderGameManager : MonoBehaviour
             StartCoroutine(CoinFailRoutine());
         else
             StartCoroutine(TutorialFailRoutine());
-    
+
         return false;
     }
 
@@ -210,18 +210,22 @@ public class NewSpiderGameManager : MonoBehaviour
 
         // play om nom nom sound
         spider.fail();
+        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(GameIntroDatabase.instance.spiderwebsOmNomNom));
+        yield return cd.coroutine;
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Spindle, GameIntroDatabase.instance.spiderwebsOmNomNom);
-        yield return new WaitForSeconds(GameIntroDatabase.instance.spiderwebsOmNomNom.length + 1f);
+        yield return new WaitForSeconds(cd.GetResult() + 1f);
         spider.idle();
 
         // play reminder popup
-        List<AudioClip> clips = new List<AudioClip>();
+        List<AssetReference> clips = new List<AssetReference>();
         clips.Add(GameIntroDatabase.instance.spiderwebsReminder1);
         clips.Add(GameIntroDatabase.instance.spiderwebsReminder2);
 
-        AudioClip clip = clips[Random.Range(0, clips.Count)];
+        AssetReference clip = clips[Random.Range(0, clips.Count)];
+        CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+        yield return cd0.coroutine;
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Spindle, clip);
-        yield return new WaitForSeconds(clip.length + 1f);
+        yield return new WaitForSeconds(cd.GetResult() + 1f);
 
 
         StartCoroutine(StartGame());
@@ -242,11 +246,11 @@ public class NewSpiderGameManager : MonoBehaviour
         // play web grab sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WebWhip, 0.5f);
 
-        if(selectedIndex == 0)
+        if (selectedIndex == 0)
         {
             webber.grab1();
         }
-        else if(selectedIndex == 1)
+        else if (selectedIndex == 1)
         {
             webber.grab2();
         }
@@ -259,7 +263,7 @@ public class NewSpiderGameManager : MonoBehaviour
             webber.grab4();
         }
         yield return new WaitForSeconds(.5f);
-        
+
         coin.ToggleVisibility(false, true);
         yield return new WaitForSeconds(.15f);
         ball.UpgradeChest();
@@ -272,11 +276,13 @@ public class NewSpiderGameManager : MonoBehaviour
 
 
         // play encouragement popup
-        List<AudioClip> clips = GameIntroDatabase.instance.spiderwebsEncouragementClips;
-        AudioClip clip = clips[Random.Range(0, clips.Count)];
+        List<AssetReference> clips = GameIntroDatabase.instance.spiderwebsEncouragementClips;
+        AssetReference clip = clips[Random.Range(0, clips.Count)];
+        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+        yield return cd.coroutine;
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Spindle, clip);
-        yield return new WaitForSeconds(clip.length + 1f);
-        
+        yield return new WaitForSeconds(cd.GetResult() + 1f);
+
         StartCoroutine(StartGame());
     }
 
@@ -291,11 +297,11 @@ public class NewSpiderGameManager : MonoBehaviour
         spider.success();
         yield return new WaitForSeconds(1f);
         webber.gameObject.SetActive(true);
-        if(selectedIndex == 0)
+        if (selectedIndex == 0)
         {
             webber.grab1();
         }
-        else if(selectedIndex == 1)
+        else if (selectedIndex == 1)
         {
             webber.grab2();
         }
@@ -308,7 +314,7 @@ public class NewSpiderGameManager : MonoBehaviour
             webber.grab4();
         }
         yield return new WaitForSeconds(.5f);
-        
+
         coin.ToggleVisibility(false, true);
         yield return new WaitForSeconds(.15f);
         ball.UpgradeChest();
@@ -384,11 +390,15 @@ public class NewSpiderGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // play tutorial audio
-        List<AudioClip> clips = new List<AudioClip>();
+        List<AssetReference> clips = new List<AssetReference>();
         clips.Add(GameIntroDatabase.instance.spiderwebsIntro1);
         clips.Add(GameIntroDatabase.instance.spiderwebsIntro2);
+        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[0]));
+        yield return cd.coroutine;
+        CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[1]));
+        yield return cd0.coroutine;
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Spindle, clips);
-        yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
+        yield return new WaitForSeconds(cd.GetResult() + cd0.GetResult() + 1f);
 
         // place menu button
         SettingsManager.instance.ToggleMenuButtonActive(true);
@@ -461,12 +471,12 @@ public class NewSpiderGameManager : MonoBehaviour
 
         // play web grab sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WebWhip, 0.5f);
-        
-        if(selectedIndex == 0)
+
+        if (selectedIndex == 0)
         {
             webber.grab1();
         }
-        else if(selectedIndex == 1)
+        else if (selectedIndex == 1)
         {
             webber.grab2();
         }
@@ -479,7 +489,7 @@ public class NewSpiderGameManager : MonoBehaviour
             webber.grab4();
         }
         yield return new WaitForSeconds(.5f);
-        
+
         coin.ToggleVisibility(false, true);
         yield return new WaitForSeconds(.15f);
         ball.UpgradeChest();
@@ -493,19 +503,23 @@ public class NewSpiderGameManager : MonoBehaviour
         if (tutorialEvent == 1)
         {
             // play tutorial audio
-            AudioClip clip = GameIntroDatabase.instance.spiderwebsIntro5;
+            AssetReference clip = GameIntroDatabase.instance.spiderwebsIntro5;
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd.coroutine;
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Spindle, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
+            yield return new WaitForSeconds(cd.GetResult() + 1f);
         }
         else
         {
             // play encouragement popup
-            List<AudioClip> clips = GameIntroDatabase.instance.spiderwebsEncouragementClips;
-            AudioClip clip = clips[Random.Range(0, clips.Count)];
+            List<AssetReference> clips = GameIntroDatabase.instance.spiderwebsEncouragementClips;
+            AssetReference clip = clips[Random.Range(0, clips.Count)];
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd.coroutine;
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Spindle, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
+            yield return new WaitForSeconds(cd.GetResult() + 1f);
         }
-        
+
         StartCoroutine(PlayTutorialGame());
     }
 
@@ -517,11 +531,11 @@ public class NewSpiderGameManager : MonoBehaviour
         spider.success();
         yield return new WaitForSeconds(1f);
         webber.gameObject.SetActive(true);
-        if(selectedIndex == 0)
+        if (selectedIndex == 0)
         {
             webber.grab1();
         }
-        else if(selectedIndex == 1)
+        else if (selectedIndex == 1)
         {
             webber.grab2();
         }
@@ -534,7 +548,7 @@ public class NewSpiderGameManager : MonoBehaviour
             webber.grab4();
         }
         yield return new WaitForSeconds(.5f);
-        
+
         coin.ToggleVisibility(false, true);
         yield return new WaitForSeconds(.15f);
         ball.UpgradeChest();
@@ -596,11 +610,11 @@ public class NewSpiderGameManager : MonoBehaviour
             if (!playTutorial)
                 type = GetUnusedWord();
             else
-            {   
+            {
                 type = tutorialLists[tutorialEvent].list[i];
                 i++;
             }
-            
+
             coin.SetActionWordValue(type);
             coin.ToggleVisibility(true, true);
         }
