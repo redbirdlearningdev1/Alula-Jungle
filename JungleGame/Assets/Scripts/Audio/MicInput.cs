@@ -43,14 +43,14 @@ public class MicInput : MonoBehaviour
             }
         }
         _clipRecord = Microphone.Start(_device, true, 999, 44100);
-        _isInitialized = true;
+        //_isInitialized = true;
     }
 
     public void StopMicrophone()
     {
         // print ("mic stopped!");
         Microphone.End(_device);
-        _isInitialized = false;
+        //_isInitialized = false;
     }
 
     public void SwitchDevice(int num)
@@ -156,5 +156,5 @@ public class MicInput : MonoBehaviour
         MicLoudnessinDecibels = MicrophoneLevelMaxDecibels();
     }
 
-    bool _isInitialized;
+    //bool _isInitialized;
 }

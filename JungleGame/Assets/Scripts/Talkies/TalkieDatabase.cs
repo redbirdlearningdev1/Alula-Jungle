@@ -10,7 +10,7 @@ using UnityEditor;
 [System.Serializable]
 public struct TalkieDatabaseEntry
 {
-    public Sprite sprite;
+    public AssetReferenceAtlasedSprite sprite;
     public TalkieCharacter character;
     public int emotionNum;
     public TalkieMouth mouth;
@@ -23,10 +23,10 @@ public class TalkieDatabase : MonoBehaviour
     private const string talkie_object_folder = "TalkieObjects/";
     private const string talkie_object_creation_folder = "Assets/Resources/TalkieObjects/";
 
-    /* s
-    ################################################
-    #   TALKIE SPRITES
-    ################################################
+    /*
+    //################################################
+    //#   TALKIE SPRITES
+    //################################################
     */
 
     [Header("Character Sprites")]
@@ -117,7 +117,7 @@ public class TalkieDatabase : MonoBehaviour
     }
 
     // finds correct sprite, else returns null
-    private Sprite FindSprite(List<TalkieDatabaseEntry> list, int emotionNum, TalkieMouth mouth, TalkieEyes eyes, TalkieCharacter character, int segIndex)
+    private AssetReferenceAtlasedSprite FindSprite(List<TalkieDatabaseEntry> list, int emotionNum, TalkieMouth mouth, TalkieEyes eyes, TalkieCharacter character, int segIndex)
     {
         foreach (var entry in list)
         {
@@ -162,7 +162,7 @@ public class TalkieDatabase : MonoBehaviour
         }
     }
 
-    public Sprite GetTalkieSprite(TalkieCharacter character, int emotionNum, TalkieMouth mouth, TalkieEyes eyes, int segmentIndex)
+    public AssetReferenceAtlasedSprite GetTalkieSprite(TalkieCharacter character, int emotionNum, TalkieMouth mouth, TalkieEyes eyes, int segmentIndex)
     {
         switch (character)
         {

@@ -23055,3160 +23055,5047 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redSprites:
-  - sprite: {fileID: 21300000, guid: 4d5a0905dfb71a04aa647991be62cffe, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red1_MC_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 1
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: f3e32321743ec614f8d12f1d8def872a, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red1_MC_EP
+      m_SubObjectType: 
     character: 1
     emotionNum: 1
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: a75b76472bd0cbf48b6e9acde0a0e403, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red1_MO_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 1
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: fc4d4400ff231cf4797b59a75384bd01, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red1_MO_EP
+      m_SubObjectType: 
     character: 1
     emotionNum: 1
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 84fc1f7dac6c23c4383113810d997c8b, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red2_MC_EC
+      m_SubObjectType: 
     character: 1
     emotionNum: 2
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: c512b428e607c7646bd21f76aa6b7d4d, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red2_MC_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 2
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 0e3ab3b435fd4a04cace9223fc06eef9, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red2_MC_EP
+      m_SubObjectType: 
     character: 1
     emotionNum: 2
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: e1a144cb8a4d3d44e81a380d52240287, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red2_MO_EC
+      m_SubObjectType: 
     character: 1
     emotionNum: 2
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 3cb7e2c06df122241b5bd8b33ff950ac, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red2_MO_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 2
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 9270ba19e7698324db518fe061dfe9f0, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red2_MO_EP
+      m_SubObjectType: 
     character: 1
     emotionNum: 2
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 4238d852cf43e434283a81bb31874099, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red3_MO_EC
+      m_SubObjectType: 
     character: 1
     emotionNum: 3
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: d07bd0e69409ce54da2df875b4331910, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red3_MO_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 3
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: b7ff3ee6247b5bc40801e9b3a35e532c, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red3_MO_EP
+      m_SubObjectType: 
     character: 1
     emotionNum: 3
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 1ebe77c1d5896834796cd040573fb199, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red4_MO_EC
+      m_SubObjectType: 
     character: 1
     emotionNum: 4
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: b41f371c582123643a080e150b3df5b1, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red4_MO_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 4
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 981539468677e224caff02fa21edb99c, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red4_MO_EP
+      m_SubObjectType: 
     character: 1
     emotionNum: 4
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 8f27e63a10d25ba4eb8800e0e6dcfa86, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red5_MC_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 5
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 488d11795eeaf4241a9213b97cb305c5, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red5_MO_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 5
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 0e9890a1d62fb8247a0095e7cd974257, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red6_MC_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 6
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 874cb2aaf08f9484aa181cd2e15a49af, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red6_MO_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 6
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: e3f8afabfaf536647a0e020954a29fb2, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red7_MC_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 7
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 72354a1e312303549a4e182ebc2ee9fb, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red7_MO_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 7
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 761e24e2eedfaa640a0576eb339325a9, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red8_MC_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 8
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 1dc1b440c35250845b107848fb2ff5b8, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red8_MO_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 8
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 1ff57ce45463c8d4a9a4f6151752b0d3, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red9_MC_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 9
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 073482e08260fd24e85dc2473a192b02, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red9_MC_EP
+      m_SubObjectType: 
     character: 1
     emotionNum: 9
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 37305439b83ab234293e5011f2c172ab, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red9_MO_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 9
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: fe422e5e59de8414f9cb69090d2284f2, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red9_MO_EP
+      m_SubObjectType: 
     character: 1
     emotionNum: 9
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 5a05fb90fecbe8f448c1c0139af4cc60, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red10_MC_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 10
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: f460ccf90fdb8bf43bd6cb2b4aea1f47, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red10_MO_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 10
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 0c451265cd0a2f64e96ca5fcd319c84d, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red11_MC_EC
+      m_SubObjectType: 
     character: 1
     emotionNum: 11
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: db2e8dd4054cbec4b96fce9237398a7b, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red11_MC_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 11
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 008417ad35419f84891696e398999cc2, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red11_MO_EC
+      m_SubObjectType: 
     character: 1
     emotionNum: 11
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: cf2cad9dcb4bbc84f92281dba672425d, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red11_MO_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 11
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: d7f4605091d3d0c4493a0437e4b7641a, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red12_MC_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 12
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 0d2683834d098374d96669df96945a72, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red12_MC_EO
+      m_SubObjectType: 
     character: 1
     emotionNum: 12
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 1019b5ce8aa254245bc18a3d070c856b, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red12_MC_EP
+      m_SubObjectType: 
     character: 1
     emotionNum: 12
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: f6ce7a95f70435c4aa48b7b11b23104a, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red12_MO_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 12
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 6b586fbb30946f341931f7dfa832d454, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red12_MO_EO
+      m_SubObjectType: 
     character: 1
     emotionNum: 12
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 80c6614ea9800ff4cbbd6b2459f6885a, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red12_MO_EP
+      m_SubObjectType: 
     character: 1
     emotionNum: 12
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: cab67d7dd953f7043b50f535b1c7f91e, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red13_MO_EO
+      m_SubObjectType: 
     character: 1
     emotionNum: 13
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 067300c600d2ea74e9e2dd6b1efb7047, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red14_MC_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 14
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: a92ed58688fd0cf4bacfa988239ba8d8, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red14_MC_EP
+      m_SubObjectType: 
     character: 1
     emotionNum: 14
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: c8fc5594d66e6ec4a9e9da9859eb32a6, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red14_MO_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 14
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: a95bb40b1e6c3544a9a0612e37966bb6, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red14_MO_EP
+      m_SubObjectType: 
     character: 1
     emotionNum: 14
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 1e193ad73848f4346b109a514a51e8f6, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red15_MC_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 15
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 9322fe10805018b4c922b041b9c3f6e1, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red15_MO_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 15
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: f9ee673e2d114264993ef52b0b6cba8f, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red16_MC_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 16
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: e83f71e456224ae4a84f985e5060f326, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red16_MC_EO
+      m_SubObjectType: 
     character: 1
     emotionNum: 16
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 71865cf9d3c15e74a8e45b6fa24a6624, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red16_MO_EI
+      m_SubObjectType: 
     character: 1
     emotionNum: 16
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: f6f3cfcb0eb50e845a33ae473fac8be3, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red16_MO_EO
+      m_SubObjectType: 
     character: 1
     emotionNum: 16
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 3afc66fe703eef74b97e5e18a2c87e72, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red17_MC_EC
+      m_SubObjectType: 
     character: 1
     emotionNum: 17
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 98e1ebe5605862c4081e167348fe825f, type: 3}
+  - sprite:
+      m_AssetGUID: 4273dd6a944282145b65c5be48a46b43
+      m_SubObjectName: Red17_MO_EC
+      m_SubObjectType: 
     character: 1
     emotionNum: 17
     mouth: 1
     eyes: 3
   darwinSprites:
-  - sprite: {fileID: 21300000, guid: 1591eef0dd4786c45bbf2196026ed9ac, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin1_MC_EI
+      m_SubObjectType: 
     character: 3
     emotionNum: 1
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: ba54fe34f9cf18641a637ffb48f08cd5, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin1_MC_EP
+      m_SubObjectType: 
     character: 3
     emotionNum: 1
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 9a1488896b02dc847913a014be4edc3b, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin1_MO_EI
+      m_SubObjectType: 
     character: 3
     emotionNum: 1
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 9a5736e6f19d12c458f286b627c0940f, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin1_MO_EP
+      m_SubObjectType: 
     character: 3
     emotionNum: 1
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 26bd8d748a4b6644f853a91534cbc765, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin2_MC_EC
+      m_SubObjectType: 
     character: 3
     emotionNum: 2
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 6e49a2874d3efbf40b937a37b3afee45, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin2_MC_EI
+      m_SubObjectType: 
     character: 3
     emotionNum: 2
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 0f774ff2e726c214e836d1842286ab00, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin2_MC_EP
+      m_SubObjectType: 
     character: 3
     emotionNum: 2
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: f21530f8e48a54c45a744ec9961c1530, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin2_MO_EC
+      m_SubObjectType: 
     character: 3
     emotionNum: 2
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 2a33635179df89b4eabafa57ba438c23, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin2_MO_EI
+      m_SubObjectType: 
     character: 3
     emotionNum: 2
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 2310958d65b37d34f91745eb6bc17ac4, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin2_MO_EP
+      m_SubObjectType: 
     character: 3
     emotionNum: 2
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: e006b423579edfe49b184ba2a7a70ff0, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin3_MO_EO
+      m_SubObjectType: 
     character: 3
     emotionNum: 3
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 9b863bc11eee59b4fa055a0f61079b13, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin4_MC_EC
+      m_SubObjectType: 
     character: 3
     emotionNum: 4
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: d48e56e476d6aeb47b5d7c5529429564, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin4_MC_EI
+      m_SubObjectType: 
     character: 3
     emotionNum: 4
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 8a867f532c77b244993f8779f55bb0a5, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin4_MC_EP
+      m_SubObjectType: 
     character: 3
     emotionNum: 4
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 643d7a0775dfaf5409de61af8e51b9e8, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin4_MO_EC
+      m_SubObjectType: 
     character: 3
     emotionNum: 4
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 20e291423abd1d64d821f92bfd35fbae, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin4_MO_EI
+      m_SubObjectType: 
     character: 3
     emotionNum: 4
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 31a39a3415530134a9226151252ce31a, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin4_MO_EP
+      m_SubObjectType: 
     character: 3
     emotionNum: 4
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: cd1a61a00ce31334186b9881112781d9, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin5_MC_EI
+      m_SubObjectType: 
     character: 3
     emotionNum: 5
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: d0f26433913e05a4a9d2586fafb0f319, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin5_MO_EI
+      m_SubObjectType: 
     character: 3
     emotionNum: 5
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: f75e27f524957a947a924d42e33db414, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin6_MC_EI
+      m_SubObjectType: 
     character: 3
     emotionNum: 6
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 844201650cde26e4b931dddf3cb43f3b, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin6_MO_EI
+      m_SubObjectType: 
     character: 3
     emotionNum: 6
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: b1d3beb5de2793b4fa6c9324c13b4717, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin7_MC_EI
+      m_SubObjectType: 
     character: 3
     emotionNum: 7
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: a4c770469329e534481d8db0c09e490a, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin7_MC_EO
+      m_SubObjectType: 
     character: 3
     emotionNum: 7
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 8972ae425ff09734c8e00f4b3833a617, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin7_MC_EP
+      m_SubObjectType: 
     character: 3
     emotionNum: 7
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: f2aa1e74333d8804a97ec82a18bc20f6, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin7_MO_EI
+      m_SubObjectType: 
     character: 3
     emotionNum: 7
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 24d26bc77ea9f354a8d950f67b516e14, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin7_MO_EO
+      m_SubObjectType: 
     character: 3
     emotionNum: 7
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 2be0fb2fe5e0bf3499c8faa30d4a97f1, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin7_MO_EP
+      m_SubObjectType: 
     character: 3
     emotionNum: 7
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 8cae4939ab9fe8e499c2766c3d76a511, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin8_MO_Ei
+      m_SubObjectType: 
     character: 3
     emotionNum: 8
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 5a0db31860cf3424cb26ab35e891af49, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin8_MO_EP
+      m_SubObjectType: 
     character: 3
     emotionNum: 8
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 44088ec075fe9a744afb75e73f679d21, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin9_MC_EI
+      m_SubObjectType: 
     character: 3
     emotionNum: 9
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: c5e22244798e27d4ab6cb94e0d246bc4, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin9_MC_EO
+      m_SubObjectType: 
     character: 3
     emotionNum: 9
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: d74aa0839cda8914f8c4639706e3a3d7, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin9_MO_EI
+      m_SubObjectType: 
     character: 3
     emotionNum: 9
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: cca52dffbbe335d41a81456abcc8f472, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin9_MO_EO
+      m_SubObjectType: 
     character: 3
     emotionNum: 9
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 5019662cddf15f949aa1da496d6380db, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin10_MC_EO
+      m_SubObjectType: 
     character: 3
     emotionNum: 10
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 019896714c06c5a43a3d6762682758d8, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin10_MO_EO
+      m_SubObjectType: 
     character: 3
     emotionNum: 10
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: c4e586c63362e6840989c4658ed472dd, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin11_MO_EC
+      m_SubObjectType: 
     character: 3
     emotionNum: 11
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: f036c01337034c8469fa2a1cfc92e575, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin11_MO_EO
+      m_SubObjectType: 
     character: 3
     emotionNum: 11
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 97af75bdfbd750f48ab9f9f1a2b5c27b, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin12_MC_EI
+      m_SubObjectType: 
     character: 3
     emotionNum: 12
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 2b92b76227cc5f049b4178b71dc6c54d, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin12_MC_EO
+      m_SubObjectType: 
     character: 3
     emotionNum: 12
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: b16703b20ee1cf04eb03b81d0ec769bb, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin12_MC_EP
+      m_SubObjectType: 
     character: 3
     emotionNum: 12
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: ae403d1edecf3e24eb8536bc3e902b0a, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin12_MO_EI
+      m_SubObjectType: 
     character: 3
     emotionNum: 12
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 724852d372cd2bd4c86a37b63640f1f6, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin12_MO_EO
+      m_SubObjectType: 
     character: 3
     emotionNum: 12
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 6150d3dea8a1d3847992096729884775, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin12_MO_EP
+      m_SubObjectType: 
     character: 3
     emotionNum: 12
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: fca5f5dd4c3be864eaee4b7d34eb74a5, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin13_MO_EI
+      m_SubObjectType: 
     character: 3
     emotionNum: 13
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 5688e25aafed56c45be423e593fd5b4d, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin13_MO_EO
+      m_SubObjectType: 
     character: 3
     emotionNum: 13
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 4226ecb159071cf419bf6144086c3cee, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin13_MO_EP
+      m_SubObjectType: 
     character: 3
     emotionNum: 13
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 30472b522582670408ddc0f400f7527d, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin14_MO_EI
+      m_SubObjectType: 
     character: 3
     emotionNum: 14
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: c630844349f509c4c81f5d495ad05182, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin15_MC_EI
+      m_SubObjectType: 
     character: 3
     emotionNum: 15
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 0ed0ccf3d99d7484e90a8c793d37ddd6, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin15_MC_EO
+      m_SubObjectType: 
     character: 3
     emotionNum: 15
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 89559f9c22cc33c488e20c92205a2343, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin15_MC_EP
+      m_SubObjectType: 
     character: 3
     emotionNum: 15
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 1f676c2dc3233f14f8a9c31302306818, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin15_MO_EI
+      m_SubObjectType: 
     character: 3
     emotionNum: 15
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 9c5b334cafacf87449b884b3c55610bb, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin15_MO_EO
+      m_SubObjectType: 
     character: 3
     emotionNum: 15
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 8c74eb5595dc3a747ae9431a1f4bdbf9, type: 3}
+  - sprite:
+      m_AssetGUID: b8d4b65db64c1b54281d41a5ebff651d
+      m_SubObjectName: Darwin15_MO_EP
+      m_SubObjectType: 
     character: 3
     emotionNum: 15
     mouth: 1
     eyes: 2
   wallySprites:
-  - sprite: {fileID: 21300000, guid: b31e72f566d17ef42a552f3e78dc55a4, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally1_MC_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 1
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 52c210972e0268f4f8b7a61db410f7af, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally1_MC_EP
+      m_SubObjectType: 
     character: 2
     emotionNum: 1
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: ba9c44f4e78898b4291f5486b16503a0, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally1_MO_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 1
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 1d4fcbf664d66944782b71feb1ec34d9, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally1_MO_EP
+      m_SubObjectType: 
     character: 2
     emotionNum: 1
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: ff2f56086eb34ab46832c3d45220c38a, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally2_MC_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 2
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 82240c7c5c008cd42894677f5853bfd2, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally2_MC_EO
+      m_SubObjectType: 
     character: 2
     emotionNum: 2
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: aa42bdff0f6e57f4aae24ce1b79eee96, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally2_MC_EP
+      m_SubObjectType: 
     character: 2
     emotionNum: 2
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 2094b7f59686a154f98a9bfd39c914cc, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally2_MO_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 2
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 8ec795908daf00c44a694d6e73814bec, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally2_MO_EO
+      m_SubObjectType: 
     character: 2
     emotionNum: 2
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 75243e1abf1729d409531b3736dabf8c, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally2_MO_EP
+      m_SubObjectType: 
     character: 2
     emotionNum: 2
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 0983f3da40c793e49b1dd322fd737b87, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally3_MC_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 3
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: dbc595eefa4fcc9459d034f0b0a3e9cb, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally3_MC_EO
+      m_SubObjectType: 
     character: 2
     emotionNum: 3
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 071b27440b48ca04ebe1e4ca3ef6b39e, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally3_MC_EP
+      m_SubObjectType: 
     character: 2
     emotionNum: 3
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: e0357cec4b629eb49add03f4fc84bbd4, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally3_MO_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 3
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 92c3990b38082004a957d0aadcc02953, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally3_MO_EO
+      m_SubObjectType: 
     character: 2
     emotionNum: 3
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: e669ee6bff62dff4e814fd4250ae1c06, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally3_MO_EP
+      m_SubObjectType: 
     character: 2
     emotionNum: 3
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: c139026446e6d1f478c5d38f26742c6c, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally4_MC_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 4
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: f2c2b1fdc9468a24caeab5508da46a07, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally4_MC_EP
+      m_SubObjectType: 
     character: 2
     emotionNum: 4
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: eb8a8b882d689f340bc59f24c24d14fd, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally4_MO_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 4
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 24f4939070ba4dd4fad6b8a4989589f3, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally4_MO_EP
+      m_SubObjectType: 
     character: 2
     emotionNum: 4
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 674acbe8cb9be834695d29f2de9fd971, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally5_MC_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 5
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 91f20443a47295b4d927bdf7d6747e4c, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally5_MC_EP
+      m_SubObjectType: 
     character: 2
     emotionNum: 5
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 3491b388b4a7efc43889e67bf453d3eb, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally5_MO_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 5
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 3d753415c12165b4897f983b02b2f66b, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally5_MO_EP
+      m_SubObjectType: 
     character: 2
     emotionNum: 5
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: ec6b570cbf6f26b4789305e17c5de484, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally6_MC_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 6
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 9792d9c0013cd0b4f8830c38007c61f4, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally6_MC_EO
+      m_SubObjectType: 
     character: 2
     emotionNum: 6
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: e511128444a053e418c8af8b3c7e4bad, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally6_MO_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 6
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 1b2b4572f743fb4478942856e9ee029c, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally6_MO_EO
+      m_SubObjectType: 
     character: 2
     emotionNum: 6
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 331ad082bc12c7243beb88aa71f05606, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally7_MC_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 7
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 17d4472baedda684da302f8b77b50c2f, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally7_MC_EO
+      m_SubObjectType: 
     character: 2
     emotionNum: 7
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: a49d47f750743e244acfdc319d8aa3ac, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally7_MO_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 7
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 99395431b44c3fc4d9b306e112a67c96, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally7_MO_EO
+      m_SubObjectType: 
     character: 2
     emotionNum: 7
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 20cafe3930727b24f8aab60c12623cdb, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally8_MC_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 8
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: ae7af12d00852df4997ba57b9742cda6, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally8_MC_EO
+      m_SubObjectType: 
     character: 2
     emotionNum: 8
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: db109f9a10ec6b04a951208365ef0428, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally8_MC_EP
+      m_SubObjectType: 
     character: 2
     emotionNum: 8
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 7dee7166a9ed41143a0133d3b8b0620e, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally8_MO_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 8
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: decfad3d64a240a47b10626fe27d0ce6, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally8_MO_EO
+      m_SubObjectType: 
     character: 2
     emotionNum: 8
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 6a01bf27b8890254a9aa845b06d11597, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally8_MO_EP
+      m_SubObjectType: 
     character: 2
     emotionNum: 8
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 293bdf056f8e685428106ece5e4e8ac1, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally9_MC_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 9
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: eea321869df0a9e4a945dcdabaf299a6, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally9_MO_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 9
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: c73f411b309fc154eb3fa7145529f96d, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally10_MC_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 10
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: eaaea52e8a24c474abb0679cadc40547, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally10_MO_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 10
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: f21cb56709254a94a8129e24916bf35e, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally11_MC_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 11
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 9e0b783d781710b4db880eddd7213728, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally11_MC_EO
+      m_SubObjectType: 
     character: 2
     emotionNum: 11
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: d9eea1cdbc865924a9a7c6abb9f99db7, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally11_MC_EP
+      m_SubObjectType: 
     character: 2
     emotionNum: 11
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: cce73d73e8f2acf45b07af9e1279ccca, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally11_MO_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 11
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: ad6d257e6c61307448d7c6dce84c77c9, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally11_MO_EO
+      m_SubObjectType: 
     character: 2
     emotionNum: 11
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: b4e61b97314ced24c83c3cfa17eab568, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally11_MO_EP
+      m_SubObjectType: 
     character: 2
     emotionNum: 11
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: e225f0668c035e045beb99934b6c9c83, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally12_MC_EC
+      m_SubObjectType: 
     character: 2
     emotionNum: 12
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: dcfe4c3f86ba8284ca01e8edf3425a33, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally12_MC_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 12
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: b7cb5a507fa623946ae7d54af6d2fd60, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally12_MC_EO
+      m_SubObjectType: 
     character: 2
     emotionNum: 12
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: d834ede8b06e1544e8b3315fb570e3ce, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally12_MO_EC
+      m_SubObjectType: 
     character: 2
     emotionNum: 12
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 644b40e507146c145bbbc2cc36924882, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally12_MO_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 12
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 002fb8876dbac8b4b9191dfc19e3da14, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally12_MO_EO
+      m_SubObjectType: 
     character: 2
     emotionNum: 12
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: a8d41e381132cd8489fd0b6626e2aafa, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally13_MC_EC
+      m_SubObjectType: 
     character: 2
     emotionNum: 13
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 37a2d3b1a9b51a74589fe77e8326764a, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally13_MC_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 13
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 4d5d63c9bb064d0459e054bb81777eaf, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally13_MC_EO
+      m_SubObjectType: 
     character: 2
     emotionNum: 13
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: af603e98a00229d40a21b4f0bc0a7397, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally13_MO_EC
+      m_SubObjectType: 
     character: 2
     emotionNum: 13
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 8dc6ab4a8b789de4d8c56c62a6ead06b, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally13_MO_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 13
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 2084e4d8b2e394d4dbc390437b67d8ca, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally13_MO_EO
+      m_SubObjectType: 
     character: 2
     emotionNum: 13
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 3805b53cef204d049b91e00d39a3a393, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally14_MC_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 14
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 2576854042401124cb020b6a18aa77be, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally14_MO_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 14
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 24d4e6b1d054ad841bcbfe17811233f3, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally15_MC_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 15
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 085117324f67a234c8dae9a32a5ba545, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally15_MC_EO
+      m_SubObjectType: 
     character: 2
     emotionNum: 15
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: a4714c52d9dc11f49978e98e3f0d257d, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally15_MC_EP
+      m_SubObjectType: 
     character: 2
     emotionNum: 15
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: f96b619e08d6c364987475a3bf13a9ce, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally15_MO_EI
+      m_SubObjectType: 
     character: 2
     emotionNum: 15
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: e5fd1314bc5ec2040b6d826e584de92f, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally15_MO_EO
+      m_SubObjectType: 
     character: 2
     emotionNum: 15
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 7bdc102d42dbd6b49ba0614256bbf704, type: 3}
+  - sprite:
+      m_AssetGUID: 15dfa15df413ce14098a484d8bbaf58f
+      m_SubObjectName: Wally15_MO_EP
+      m_SubObjectType: 
     character: 2
     emotionNum: 15
     mouth: 1
     eyes: 2
   juliusSprites:
-  - sprite: {fileID: 21300000, guid: 79590995ce5a789459bf6b22c2ce67d5, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius1_MC_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 1
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: b683855f513815942923a9295a1540d6, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius1_MC_Ep
+      m_SubObjectType: 
     character: 7
     emotionNum: 1
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 1092e40fb6068f84a8152a4dc2b7142d, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius1_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 1
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 49bc893e0a51681498c0425a750a06e0, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius1_MO_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 1
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 2c20d9004fcbe3547a47b3096c29a16c, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius2_MC_EC
+      m_SubObjectType: 
     character: 7
     emotionNum: 2
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 2bf3c80b8a249af46a3a5730dc6345bd, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius2_MC_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 2
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 93c7db7811ae0214abfe7c4a153788a5, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius2_MC_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 2
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 04886dc59cdaada40a3563f7dc62d470, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius2_MC_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 2
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 4f4ca310b04fa2b46b8773e1ed9ac9f6, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius2_MO_EC
+      m_SubObjectType: 
     character: 7
     emotionNum: 2
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 7b6a363aa2d7614499efe3e75833b813, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius2_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 2
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: fc58b1bfa95dbc74e83feb703b384b27, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius2_MO_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 2
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: d132da5d7a924df44968068be4439a83, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius2_MO_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 2
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: c4890c1416e9b7e4fab315da4238bd6c, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius3_MC_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 3
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 5eb44707eef57004490eb71e93c91de3, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius3_MC_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 3
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 5c968eaa97fe7144b80d0e43eea0c473, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius3_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 3
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: aad70177d477c35488a91ceaf99b3417, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius3_MO_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 3
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 8cb8d2504617ffc4c8e535858b626abc, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius3_MO_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 3
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: ada36c2d6b805c34286cdee05cd0eb13, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius4_MC_EC
+      m_SubObjectType: 
     character: 7
     emotionNum: 4
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: bcb89a0012fc5e543b58d54705e9578f, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius4_MC_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 4
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 2cebc794473b023438862bff313c0450, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius4_MC_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 4
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 6b657eacff54d104a921633c02e71190, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius4_MC_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 4
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: cc4e2d19101508542955765ac4f86b64, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius4_MO_EC
+      m_SubObjectType: 
     character: 7
     emotionNum: 4
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: d43ac593666ab3b4e8d0aa85e7f09343, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius4_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 4
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 4ed1b06e2f2fc1749ad4eecad1cbafd0, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius4_MO_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 4
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: d9d70263f2e9f074a94280c13e237b40, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius4_MO_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 4
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: cbba21c46d623934482dd541a7df9fd6, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius5_MC_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 5
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 077ae2e7140dfbf49bee388814b01cf2, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius5_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 5
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 1b15867ae74ec6d4ba9c0aec5210b4cc, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius6_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 6
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 02f6318eab9614e4dbedc87da147086d, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius6_MO_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 6
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 6b22536046e92ea44b4bb6b603e3d374, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius7_MC_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 7
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: bea60b4ff9e585945b9f6c5022403c45, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius7_MC_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 7
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 9690bb017f90b3344a690d735ba768b6, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius7_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 7
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: d294f146ee39aba4b85816a2f6bc4675, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius7_MO_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 7
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: e0d6ba280ed24b1468586cd0215b668c, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius7_MO_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 7
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: d4510f21619562f4ab00e295ac9d2fcc, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius8_MC_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 8
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: c84037bc59095ef42ad824f1ffc36ddb, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius8_MC_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 8
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: a35364a5252daf44d8de2e3ea80243a9, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius8_MC_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 8
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: e3835fd5e139bcb41b0931bbaeac3ec6, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius8_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 8
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 0461f2df1fce20b4c8f36a7d6fcfae60, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius8_MO_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 8
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 80618ed915c09d446baadb6d82501cb3, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius8_MO_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 8
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: d645226b9bdd0ac4a9bb0ddd89de9632, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius9_MC_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 9
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 1ebc7a56aa436c64a819a41350a6de27, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius9_MC_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 9
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: ca878773b7e3e1342b4360dc0ca8b056, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius9_MC_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 9
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: f0bb39e8647f6894ba7c49b99338697c, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius9_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 9
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 91e649ad290c1df43b77674b93133346, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius9_MO_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 9
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 2a9b9d68a990b2944907ed76769baa6b, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius9_MO_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 9
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 456d94daf808d944a923cb842932b821, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius10_MC_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 10
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: fad71c561de69c64eac9d1a4c465e375, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius10_MC_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 10
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 5331394786356ad4cbfed50617362b7f, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius10_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 10
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 09bdbaca0ad1daf479b5081f1cc77476, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius10_MO_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 10
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: b7a87d3f0590aac448fe661c8b3e7ff4, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius11_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 11
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 4c12ebc399921ba46a37e76d140174fa, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius11_MO_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 11
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: b7733b9c5b71de04092de4b1979109e2, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius12_MC_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 12
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: ec40dbaaef84cfc4bb15c12eaeacb042, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius12_MC_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 12
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: f542dceba56b4244480efa73c020d2c9, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius12_MC_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 12
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 7de8b08f09739724598beb9485d49fa6, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius12_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 12
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 0e30c1617b2128b4a9891dfd14e7ee46, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius12_MO_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 12
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: c7539e0778d84164d98d66d639901a86, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius12_MO_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 12
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 09c399b659189974999f9884163933b9, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius13_MC_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 13
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: ddbefe6ddf54ec54bab6423a977cc7f6, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius13_MC_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 13
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 8ca7f0196a6612040ae39d1ef66f49eb, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius13_MC_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 13
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 55b854718912d354ca2f9c45b871cdca, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius13_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 13
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 3bb71bf8dd2a52147b9ef5506d2e55f2, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius13_MO_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 13
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 73e905942a888c24ea8b87d6648af784, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius13_MO_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 13
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: a12b12d8692f26048ab73b27fd0591f3, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius14_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 14
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: f8d96c0f26ac84644b170cb37e698b4d, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius14_MO_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 14
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 7db06948d246d0b49be2878f947e6330, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius15_MC_EC
+      m_SubObjectType: 
     character: 7
     emotionNum: 15
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 9d0868f19da140847bc709ddecf11a53, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius15_MO_EC
+      m_SubObjectType: 
     character: 7
     emotionNum: 15
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: e330e73a216f1f749b1db86cb7f6ab63, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius16_MC_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 16
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 101b649e21d61e347934d64d63526e9f, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius16_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 16
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 1a11582dc15905b4fbeaf0bf06d0fc69, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius17_MC_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 17
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 1a0429e1a9738944299ed7782e2d9f67, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius17_MC_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 17
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: d0dbd340fa0e0394aab38463930ff125, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius17_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 17
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: df2e3b3470c86d84d9e86477cf3d47dc, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius17_MO_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 17
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 605c5fb885f0c5b4784f56ef5667436f, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius18_MC_EC
+      m_SubObjectType: 
     character: 7
     emotionNum: 18
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 5c6a675c19eeb694b9365973996ec7cb, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius18_MC_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 18
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 98b3b8511ebd7cc458b8f61108d74cd7, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius18_MC_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 18
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 5c835433ddb8f524b9a0f58804141a9b, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius18_MO_EC
+      m_SubObjectType: 
     character: 7
     emotionNum: 18
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: bddc30c455f4e464fa3aba0f931b3f32, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius18_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 18
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: f40e52e425d5eae47bb5184d44a78415, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius18_MO_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 18
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 39c72aa9d53023c48a6e414f29ce4be2, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius19_MC_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 19
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 3004e7f3c1ee4e84ab58bf243841f9bc, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius19_MO_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 19
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: fd603d4c1be0d284e9ed8c8e0c9a4de0, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius20_MC_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 20
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 9b47b055d2b5f464c9652147ced80d9b, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius20_MC_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 20
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 46a4fb70b86e4874baa7533f7fa0be64, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius20_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 20
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 36815a31bd142f2428d0011d02fe24ef, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius20_MO_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 20
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 127896dace897a84ba9479b3bd9e7ad6, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius21_MC_EC
+      m_SubObjectType: 
     character: 7
     emotionNum: 21
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 1f2f09d9274ab7747b84f2eb03b4fbd4, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius21_MC_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 21
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: c6cf0c556b79b4a48a52bec063692e15, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius21_MC_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 21
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 7a038ef66fd8bfc468db1bb4d19423eb, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius21_MC_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 21
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 58f41d9f89f72914590a9885c2e815b5, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius21_MO_EC
+      m_SubObjectType: 
     character: 7
     emotionNum: 21
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: d6936df8acb64a944894463ba9942b62, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius21_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 21
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 9c527462777f43046bc96c3ea995e70b, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius21_MO_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 21
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 8698b1ab035859442ad7e369ee8a728b, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius21_MO_EP
+      m_SubObjectType: 
     character: 7
     emotionNum: 21
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: a1e5ecccccd4c644cbaa16624c6dd090, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius22_MC_EC
+      m_SubObjectType: 
     character: 7
     emotionNum: 22
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 91ab5ffa51ae28c498e04a710ffcbdcb, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius22_MC_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 22
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 5edae3a5c3317a7468f60cb28a25aaab, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius22_MC_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 22
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: e0de02896a6a18144bb64a4dd2371e2b, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius22_MO_EC
+      m_SubObjectType: 
     character: 7
     emotionNum: 22
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: d2db5c8561d27eb478566751807f2af1, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius22_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 22
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 1274b67c5cabacd46a5edbf6552593f4, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius22_MO_EO
+      m_SubObjectType: 
     character: 7
     emotionNum: 22
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: c2da720a1b995d848952915eebd13450, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius23_MC_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 23
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: ae3144ba16ea27d42ae7919dbd4412c0, type: 3}
+  - sprite:
+      m_AssetGUID: a2fbd44fa2d4f3c44a1b86381df8d997
+      m_SubObjectName: Julius23_MO_EI
+      m_SubObjectType: 
     character: 7
     emotionNum: 23
     mouth: 1
     eyes: 1
   marcusSprites:
-  - sprite: {fileID: 21300000, guid: 65db6d5d94084644e89605a77600f41c, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 6
     emotionNum: 2
     mouth: 2
     eyes: 0
-  - sprite: {fileID: 21300000, guid: 3cf9971b7d616354c88448408c8ae4fa, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 6
     emotionNum: 2
     mouth: 1
     eyes: 0
-  - sprite: {fileID: 21300000, guid: 6b95bc6f06927514aa5f1327f796b8ca, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 6
     emotionNum: 3
     mouth: 2
     eyes: 0
-  - sprite: {fileID: 21300000, guid: a83c7a1fb84261349a8a5d879cedfca5, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 6
     emotionNum: 3
     mouth: 1
     eyes: 0
-  - sprite: {fileID: 21300000, guid: 05da3ee000185574f92723b23a45763b, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 6
     emotionNum: 4
     mouth: 2
     eyes: 0
-  - sprite: {fileID: 21300000, guid: f672a888ea6d4de428033576f31df33d, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 6
     emotionNum: 4
     mouth: 1
     eyes: 0
-  - sprite: {fileID: 21300000, guid: d9afe2f9ae94da746be62c957a1aafcb, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 6
     emotionNum: 5
     mouth: 2
     eyes: 0
-  - sprite: {fileID: 21300000, guid: 72830d05a5aa29d428106ff264692bdc, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 6
     emotionNum: 5
     mouth: 1
     eyes: 0
-  - sprite: {fileID: 21300000, guid: ef980bfd17103d64ab6d531516c365c0, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 6
     emotionNum: 6
     mouth: 2
     eyes: 0
-  - sprite: {fileID: 21300000, guid: a66270c9cc63b9b43900bc68453876bc, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 6
     emotionNum: 6
     mouth: 1
     eyes: 0
-  - sprite: {fileID: 21300000, guid: e3804b8067dcda24a88ce04c82637e12, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 6
     emotionNum: 7
     mouth: 1
     eyes: 0
-  - sprite: {fileID: 21300000, guid: 395d761b696352848b6f750006e8ac9f, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 6
     emotionNum: 8
     mouth: 2
     eyes: 0
-  - sprite: {fileID: 21300000, guid: 3176119012a1126499ea62d654930a7c, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 6
     emotionNum: 8
     mouth: 1
     eyes: 0
-  - sprite: {fileID: 21300000, guid: 257e69b7283992945af406309d26badd, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 6
     emotionNum: 9
     mouth: 2
     eyes: 0
-  - sprite: {fileID: 21300000, guid: 2f6ca379563d3734fa40dc669341833d, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 6
     emotionNum: 9
     mouth: 1
     eyes: 0
-  - sprite: {fileID: 21300000, guid: 0f448c0902e40ca4993806ae45bf2f06, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 6
     emotionNum: 10
     mouth: 2
     eyes: 0
-  - sprite: {fileID: 21300000, guid: 2f5b2373281aee444ad57e2d22089d29, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 6
     emotionNum: 10
     mouth: 1
     eyes: 0
   brutusSprites:
-  - sprite: {fileID: 21300000, guid: 5114245497743944195916b65ec623b2, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 5
     emotionNum: 2
     mouth: 2
     eyes: 0
-  - sprite: {fileID: 21300000, guid: e7cdf173cfe470744a82c1412aabda2d, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 5
     emotionNum: 2
     mouth: 1
     eyes: 0
-  - sprite: {fileID: 21300000, guid: 0e8190f9cdcc2ec438733626304150e5, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 5
     emotionNum: 3
     mouth: 2
     eyes: 0
-  - sprite: {fileID: 21300000, guid: b03f8b8ebf789f443a59431d0fc0e215, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 5
     emotionNum: 3
     mouth: 1
     eyes: 0
-  - sprite: {fileID: 21300000, guid: 06d2b2166a616fe4a97958aaae5905a4, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 5
     emotionNum: 4
     mouth: 2
     eyes: 0
-  - sprite: {fileID: 21300000, guid: 428cd4dd585d198488ebae7ad39e8d5a, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 5
     emotionNum: 4
     mouth: 1
     eyes: 0
-  - sprite: {fileID: 21300000, guid: 23bbd990b72a5ef43816eace475adea6, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 5
     emotionNum: 5
     mouth: 2
     eyes: 0
-  - sprite: {fileID: 21300000, guid: 1af5bc58c92e1ac45be31bf3a7f0a479, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 5
     emotionNum: 5
     mouth: 1
     eyes: 0
-  - sprite: {fileID: 21300000, guid: 959414913dc505c44b71c417f0c98eb1, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 5
     emotionNum: 6
     mouth: 1
     eyes: 0
-  - sprite: {fileID: 21300000, guid: eb1c8ee93246cb44396c6444d0c30701, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 5
     emotionNum: 7
     mouth: 2
     eyes: 0
-  - sprite: {fileID: 21300000, guid: e2e92891ccafd02438e5a40bf7c07d55, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 5
     emotionNum: 7
     mouth: 1
     eyes: 0
-  - sprite: {fileID: 21300000, guid: 1c146d4741586344b8958883d0790274, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 5
     emotionNum: 8
     mouth: 2
     eyes: 0
-  - sprite: {fileID: 21300000, guid: 4c1a95eafdee26b4ea5c83caaafe3c90, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 5
     emotionNum: 8
     mouth: 1
     eyes: 0
-  - sprite: {fileID: 21300000, guid: d8a4117e298085541ae50441f738592d, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 5
     emotionNum: 10
     mouth: 2
     eyes: 0
-  - sprite: {fileID: 21300000, guid: e413576571dd77c4d9102d546b7eb682, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 5
     emotionNum: 10
     mouth: 1
     eyes: 0
   lesterSprites:
-  - sprite: {fileID: 21300000, guid: b1b9eceef39044f4793f92f0a0c25ae2, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 1
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 927ad793c5d7baf48bdd4c33b001673f, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 1
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 1eaf619b314fea044af3017ec2b31543, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 2
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 78b20bbdceda5f94cb6456e3b279abb8, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 2
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 5f7a2b64d33df3b408f4445c9b5eab8c, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 3
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: db6ef5214650e67458dcd83cb194b4b7, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 3
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 2990142e1c4a0104ca9e34cc11097e9b, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 4
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: af1d5521d10cc9c4ba637da9f6627dfb, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 4
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 87c6db7f30dedce44956e13b62f5004c, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 5
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: d8496cc5847150b4ebfb986a76b2c854, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 5
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 90c3b16d77a016b4dba860f3d89ce30e, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 6
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 7ce5fba61d109714d894366a7f325ad9, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 7
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: c5dc23233914b5f41b401c62144d383e, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 7
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: fbd81efc1956fef44950e7c7674d7322, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 8
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 4d606f16464cb3247949d70731740b92, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 8
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 9b74a81284c649844a1a73cdc51377a5, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 9
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 3af3493a40cecf543afae3b9005621cd, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 9
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 90a7d4ecd3fee8b40b4b27e5694ab81f, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 9
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 37db7722a93a49e46ac7f3b80f633527, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 9
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 09c0774d255d76642b71cf765800bcba, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 9
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 1bac7db6157696b4b848958fdc484ba3, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 9
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 0dd3081a75a83b9429ab3a7234c7d180, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 10
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 7e8dde76ef2f2bb4685842c8dc012221, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 4
     emotionNum: 10
     mouth: 1
     eyes: 2
   cloggSprites:
-  - sprite: {fileID: 21300000, guid: ec963a20c0a7cef4e840b3d5edd07f9f, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 1
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: a43e229db2752dd439fc3bc1f22609cf, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 1
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 0a990804ce61a214c98f60a2f1ec7379, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 1
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: a03379218f504034d890515c1df8ff91, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 1
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: c67a9502501b07643a97ae44d7ba9e20, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 1
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: b83dc2f218bdda1468145604e8289cd5, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 1
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 841634da0f3df0f4396dfa49515585b9, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 2
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 0366627c186fa2544ba6606a3fab4c0e, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 2
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 3be25fa7f6fe69644803f01607e69214, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 3
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 287ef46ec7d3f9a43add01d7407f7414, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 3
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 3ff6ceffe3fac484c967e9394780b0ad, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 4
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: a60a82cf13cbea4479b9e77ad78f0f3b, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 4
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 26b0f7b6573a31844a39bb1111006330, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 4
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: de8cb307e25d0a945b6e53a3d952fbb2, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 4
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 1bbd3184983953644b67c257f3a5e1df, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 5
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: d26f568618bd65741bee0d2df4b7e3b1, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 5
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 13b6475abb648cf4a9e4ee7d964c5400, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 5
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: ef4e68de9ebbf3445af11609c6795fbf, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 5
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 99987f7177581d64f845327399808035, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 6
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 207d894b73d9604409b4cd0055995d29, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 6
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 390b8ce89dd27bb46987f5b325375590, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 6
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: b3e62a091c0ef46469762976a45ac2e1, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 6
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 1e8f94fc72d45a14facb65c0e6a7ade4, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 7
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: afab1d4a3905a6948ac8a0f968f1c89f, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 7
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 21ea221b2dc963d47afc10cc1574d248, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 7
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 2861b211bd5bdee418160e1a6e4750b7, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 7
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: a53aaf9b17ebd05459638f7e6c56fe35, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 7
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: f0c5f455dbe617843a3ab759ef2cd8fe, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 7
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 51f66ab6c985cc142a5817f541efe292, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 7
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 4fab4c9abf018c94683452736a5ece37, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 7
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 280ce29d9f16ff940a2c6b43211bcafb, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 8
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 1203dc3de88781644a496531025a052d, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 8
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 23270ea6c78ec9b48a2f138bea81ad48, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 8
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 39be2a8121acd5a48a4ace3927503244, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 8
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: b84d91f6eb9c8b642833e4df0c1cfbe7, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 9
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 1ddadf9851def5b4aa8bad41cd122e16, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 9
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 0478eae16df4c2e4a9a4172818b55cd4, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 9
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: b73d90e74f3ac6747b9e7b3cfe5b6b0a, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 9
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: c9c856031a03ee243b8833d26ebc0d73, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 10
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: e81fce12330b7794880d73cb4f7609e7, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 8
     emotionNum: 10
     mouth: 1
     eyes: 1
   bubblesSprites:
-  - sprite: {fileID: 21300000, guid: ac34d455967db20468ebad47b4895d3c, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 1
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: e035baee3c3eee3418e466e03cf6c117, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 1
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 0fa4238eb445e474991d97481ef70da3, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 1
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: e7aa5b321afc99649bffc315e7dc3709, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 1
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 42604d826279a5e4f8c3cbc5547a121a, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 1
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: efceae28155da6640a69c38b502f9bdf, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 1
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 447f4d871df065547b2c5c6c4f7e2ba8, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 1
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: bf475292cdc992c4b9ced6ab4aefe6e9, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 1
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 028b62403f49e8c48abadf2055e0c27f, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 2
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: a8a1a71393efa5f488fc64b817c8e24c, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 2
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: e94cf06e154cece4296c8b13b5ffb370, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 2
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 24339b9ca7e11f74d87e4f9b17161346, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 2
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: a8d1379a767c387449d8d03b1afbbd6c, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 3
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 92e7604e470f3ba499f378e85ad0aafe, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 4
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: eb88c4e9cbb8bc54a925d4f0cc62a215, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 5
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 3fb27da3bd3eabf49ab21a21beac8564, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 6
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 61959d6e41adb7b42a84731b13d62c07, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 7
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: d1b94a8bf1c1d5d46b2d3a7baf8ae78b, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 7
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: d4a0ecaa0a27e744a86f335c922fe6c8, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 8
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: e4a9183fa2157c84385f218262986e32, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 8
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 5fa3435f8fd524a458e3f7c317144c1b, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 8
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 43ac2f4e457864e4d92c7922f7367226, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 8
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: ee4d9631232707e489be2cebef7d1716, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 8
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 4595c086e1c00c94596f5cd008c9d299, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 8
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: c002b089b6761bd4c970a2b1bd1f301d, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 9
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: a261b3e0c79bb0341aa7e0ea6ada0bbd, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 9
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 592e5e076d771a040bd793aed3f16758, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 9
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 58b4a2b3cc2402d43a36b52a736a7b11, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 9
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: bc741c6c937504e43b3a4fa062f162b8, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 10
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: c13df586cd036a14895c0556452ed437, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 10
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: f6ed030b31d7f7842a44872a1d663cf5, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 10
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: b0ffa832ae3540a42a0dc8b4a1d520ea, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 11
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 819e92cae0f537a4da1df6f27439dce7, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 11
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: d8402a5d0cc348140abb546d92c55ef9, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 11
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 86a9ffd0040022d4987ee92d1ee942e6, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 11
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 8cae1d2bc21a5984b897e089f3342ade, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 12
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 9da7798acbd4a8548bb3a88df42b05ad, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 12
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 5647e9b3ae9cb6e4094988577c18804c, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 12
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 2bbeb23956f72ab409fa36b22f9780b0, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 12
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 3c4043a44dbbdab47bf03a5bc41071c9, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 12
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 33366081fa26d754783c4726a4b74c3a, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 12
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 564b99ef98a8b45409fa1d6e069b3678, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 13
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 868967631b9c21546bb60b7cc2605ca9, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 10
     emotionNum: 13
     mouth: 1
     eyes: 1
   ollieSprites:
-  - sprite: {fileID: 21300000, guid: 90eae0792f68e5c4fa7ad4d7aed6bc47, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 1
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 0d1d0205873f0144b9b4102eeca00b5c, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 1
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 2c62f3378217ef0438857c52e4777adc, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 1
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 250e40ebd4e23ba4a8e3b2910e9bb153, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 1
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 06f56232d5f438641846cc6e6ae8e40f, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 2
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: e7ebaedd37ca9ee469f2614adc992f77, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 2
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: dfba804741fbf0048bc320df97a6a21f, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 2
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: b7d408410722dcb42a9730db7ff6d17a, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 2
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 8ac05a88fac647243bcbd0020b0e097f, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 3
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 383709fb84d6ef24db62d6996a006657, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 3
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 02007cb3827050f4b96a5c4ab761a6aa, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 4
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: d3b185ac2e7d2e74a97b22c94b0f6083, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 4
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 3864d2a6fbe470646bdc1c3df257a4ed, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 5
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 99f7d31c7f6e97147b35678217712bff, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 5
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: c6040846a34edf647a9d1a6268077889, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 6
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 0f8df0bf97f68f94a8b818aa5ef0de38, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 6
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 273deb424993b32499dfb581f32b18d7, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 6
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 9abbde45637983c4790297c42207876b, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 6
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 51eacab9d3ff4054ca56681afcd3562d, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 7
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: c6a59d304080d76478c963e657aeff8a, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 7
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: d95290ecd2dfd014c99edb2bbf524967, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 7
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 54919386d0604af459756cc221ed6884, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 7
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: cc3dd279dcd9d1040bc6c78e8071e650, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 8
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 99ea331f6eee790468fc60b0d8ee93ce, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 8
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: f6b45a49afa42c2439f02314551c9a70, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 8
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 417b5a839d3f9664a94408449b460e34, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 8
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 5d0fdb93a0c7a4142aeb3d1cf894c7a3, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 8
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 58fbef845fe9c504c9f1d8eaa7919658, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 8
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 54804852df4631f41800f5b8f8ab48a1, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 9
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 59fa987ebb0f069458bc7dc79972cc27, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 9
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 6bb53a5abfe19fd428b00fb0ce7f3b04, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 9
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 41b0f5619b5ee2c459d069140a34def6, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 9
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 18197950850a6ff4e8d39ce9252997dc, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 9
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 8f9c02be9add8d242933c3c9d3dbe8b1, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 9
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 637d35aef30ce2a4590eece558934dde, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 10
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: d8237d8cd02d85e408fb57fd0f3d3482, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 10
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: dfe7c69749da56f46ab4ea01c0a58fcf, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 10
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: e3873f1da4c966646b44459e78acca5b, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 10
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: b6f920140d892c142acea8c5ed571528, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 11
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 9261c6d38ccfac8499f2ba3ccbc43611, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 11
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 5bcc0ae194c2c9a4b9fe28f7b05b1da5, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 11
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 9e8dc1474fc936e409204612b7ed5184, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 11
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 638a99f45de3a0846966d3953c563878, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 11
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 9a83873cd2d77c7448df8275aa3b6e72, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 11
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 71c0820ac9e198a48b7e6a44476220e8, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 12
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: c02bf81a6f8d6d6468701a0ac79c9956, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 12
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: cddb97f9cec167541bd177f5f88d3491, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 12
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 4241bb0b78cd51243abd21631f5244ba, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 12
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: a5c5bb817f355c646a1cd39fd777f5b1, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 13
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: ff3043fe581a41c438575c10ff25a04b, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 13
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: dad2a3b3265790548841dd4af2d66566, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 14
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 11453998808fd8b45ac6d257f25e6577, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 11
     emotionNum: 14
     mouth: 1
     eyes: 1
   spindleSprites:
-  - sprite: {fileID: 21300000, guid: df32000991095294e8504d14b5adaf79, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 2
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: e72bc2f4aef5e8f41ad4c2aa741d3c89, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 2
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: b09b86a8fcbacde4f82d22d79d53046b, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 2
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: de5739a1c60fc5847960fbc056cf5e1f, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 2
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: d567a48be07f6464a9d1958ec251265e, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 2
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 5ec45c6fe8644dc419465eb38c45bfc5, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 2
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 61105ea5ef77d284d87cfb061078d18b, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 3
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 6a4c9197490983044a4f35ecda80e664, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 3
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: fc50394fda6b61040ba513718eee8394, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 3
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: e41d6f3ac7cc19b41bd6ab22da2656db, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 3
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 31849bb15fc902042b6ab6490108be17, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 4
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 3a49021b3bd9e914fb837c759691ec96, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 4
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 2462304ceb4fea846990cad099ff7d43, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 4
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: a656480fcfe81944e8d7007b5dd92e15, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 4
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 4c5716b1c7927d543be7410bcdc1b50e, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 4
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 61c3a55179c850c4ba963f022918b699, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 4
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 786ce8d54a0b6e2499a06d01a91d62ac, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 5
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 71844900bcaeffd40a7583034d8ef213, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 6
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 4493b8f75b85f004382cc16e741b8a31, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 6
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: bafd928f8a69930409dc55a6bde4dd23, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 6
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: cc277b5e8a58b3c41ab717c4b2e03aa4, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 6
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: a6f2a43e8fe12054088d79fe75962f7b, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 8
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 3e0029671e0cd864587405103216afa6, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 9
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: c564302fc9b4fe242a059b0c73ddc603, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 9
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 276818dda161ef645b7351237178c800, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 9
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: bde911c4783429f41b8b76a88cfd6731, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 9
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 64a4b7ede9031304a9624a6af403e24f, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 10
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 7d0ce4bc83edcc74682b8c25d169116e, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 10
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 0f44a32ce9dd4004cab4f9d3eecd02d9, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 11
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 14186f9aecc55534c9acb6b89bad8a66, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 11
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: feca843f7e91ac945b46f951bc289177, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 11
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 19157b05a69c0bd49adf6130a2ee231b, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 11
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: c38744c8488bad848900f6fef6d47f3e, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 11
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 72fb4eeafe73d5a4c96ad83636805b0a, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 11
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: c0656784440b4ff40a8f0636617be091, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 12
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: edaac49d39d6dea46b597a831959e6b4, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 12
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: e0c7022812139be459a9249d1cabd0d7, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 12
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 0fe35e6db9aaa7d4da7b6bdd10dcb463, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 12
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: ac6617874a114aa4083825497bf8d25c, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 12
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: a5cba13da2e8550418ce2ca9cd7c22a3, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 12
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 70a47b6f719357d45b564fa3731e5d69, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 13
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: f2f32c7177a6bc943a037d4143dc9d97, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 13
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: da6e143074cc74d42a890eaa197da0d4, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 14
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 5f48646083161054982d2a914c9f5a1f, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 14
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: acf966dd4c1255140967ef82671056ad, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 15
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: c8f3499715ae10849aa78c1923735eee, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 15
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 8cd2d7fb8f2c68d43ad873d1711229ce, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 15
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 88fcc9d6c22bacb4ab5435f1fad56cc9, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 9
     emotionNum: 15
     mouth: 1
     eyes: 4
   sylvieSprites:
-  - sprite: {fileID: 21300000, guid: 04974075b216a2144a8f90f51c8837b6, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 1
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 88b60d22732218748bb2bc57b232f6cb, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 1
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 1f4dfbf0efff1f841942cbdf739faa72, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 1
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 67626d9f8ae600e41b61d6805039ea91, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 1
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 571744b7ef656a343b03b1cef93f3e36, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 1
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 1744255faca5b214a8f45c116ccf7996, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 1
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: e10aebc378863c94dafe6c301b6f5c51, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 2
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: a38760b5620524948b3512c3990d1913, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 2
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 2a209294d55208043ad454c79b02d5be, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 2
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 617895e216c483a408c47c6ee7f41b93, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 2
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: c0bd7c0575590364bb21045f42076731, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 3
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 59805ac33b6293348bd22f0dd3863404, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 3
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 59805ac33b6293348bd22f0dd3863404, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 3
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: c85b30154755e9e4fb69833957e6f3b6, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 3
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 58ef9a3a782e376429dcb198300838d3, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 3
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 2ab43c8101a5a4f4091d3bd461a9dd70, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 4
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 075a11d37d8ce3849a47ec2702fc0de5, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 4
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: d9dc843846b960b45b53eae069cc3742, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 4
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 6e373b8c7eec660478a3253ffa9f82fd, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 4
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 8b1913e3ee977434596d1550e6a88964, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 5
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 29c0afefe1151a94f9880934142c260c, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 5
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 177372bcbf082dd468b9a8b9c70c6200, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 5
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 304273fed659ad74ba8dfe80fb436512, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 5
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 1abd2744ceb047f4e815b62cdd0532c7, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 6
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: a5474cec251b29c4ab295d76f79aaf73, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 6
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: e9a37929f1af5e24089c8b74213d70f8, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 6
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 96aadb3642528564db577a41c2dab9ff, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 6
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 34cf4712003b49f4d80381b4ca3c0d15, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 6
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 0c66228fa24d90b4283aaba46b3ee6df, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 6
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 23369aa46b052414390defae54f2f1b4, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 7
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: fa57ee9b264f02b4492d130dd0e26a1c, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 7
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: a0c67a7d725814f4d98ac51aa9da3d49, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 7
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 9a1d5105be8065f4789f5b2a0ce9f9fe, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 7
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 064f92b729778384aa6e7b18661c0fe5, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 8
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: aa85057a81704234ab455e042b59a4d3, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 8
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: f604366bdf6cedd4788a5ea95554e3aa, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 8
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 3b4b89d2eeca55846818022ed5ea09c7, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 8
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 14a6503a0c4529648b85f717964a8e9c, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 9
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 8b2c408d823cc9242b6b3e587437cf5e, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 9
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 0c628a032a996c9489595ac5241fda7b, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 10
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: ec0cb100e89969242bc5a6b884b7c427, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 10
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: e7f726564f8e5f844ad98992eaae4333, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 11
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: fa0bcc2fda4f2be42af907cdd940e9e1, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 11
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 32cac4803a2d1bd4bade2393a714e1a9, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 11
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 04289bc1134099e41b79a28165dcf916, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 11
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 8c6da0bd1d1c72245877e0ed53015430, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 12
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 85a65adfc70a27a42bfbf8cb63f7f6fe, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 12
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 4fc960f0d968c4547a8bb5ba857cb00a, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 12
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 659ca33ed05227c4380c9b04f4393a83, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 12
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: f3f09d3eec50d2d4ab36c35c10b60ee2, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 13
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 81696c7fff1aa3541a79185fbd517000, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 13
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: fb220df918aac4e42bac547fd4bfe53b, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 13
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: a107553cb61b06c469216107c63dbd77, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 13
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 3121ab40e1b270240b7541ffaaf2542d, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 14
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 315a172d290f5f74e85c59029e8bdfd2, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 14
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 7e8684498afeafa47b06203a795f92bf, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 14
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 993096e9227fe7e4781e9afe534b6917, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 14
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: a82d2c93b2078ba43ba1be55741a2d11, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 15
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 496bf0a7803a4204aa975321de4923cc, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 15
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: c2a37e9f50af05c4480b3ffdc57bba12, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 16
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: b31ba0b520c758d4aa9314924e002a1b, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 16
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 6c1f8e83149894340b35b897abf63361, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 13
     emotionNum: 16
     mouth: 1
     eyes: 1
   celesteSprites:
-  - sprite: {fileID: 21300000, guid: a78f56a90d61b45488e36b5f05f60c5a, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 1
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 3f8471d7c9a685e4b9fd390a0a1cf7cf, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 1
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: b3d6da44ece55cf489fea4941d30eb30, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 1
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: a05be339edc7ac54588046a25f8bac06, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 1
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 71c58e243f11da248bbb1e7e4db7d2e6, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 1
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: e3425ca15a074e840a7da75477877422, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 1
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: ac2137728faa92e4497744e9bbde89d8, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 2
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 796f45d24a39d9d408add69c333e7084, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 2
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: f6aaa5d543573a648aadeb7f9a18d084, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 2
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 426640dd98bd730468bd982578b4f452, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 2
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 3b7397a869245bf4081e4b631454121e, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 2
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: bbaf8a93964da7c45b2ef0e5db51e5d6, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 2
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 23dee870a66448d44a3943dee0d1b62d, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 3
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 5f9fddda67fc26640bbfcf0a09fff0ae, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 3
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 7c976bf8998f26241b6f36665541a034, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 4
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 5e7a215fbe6b8d048a8ff912a9afc77c, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 4
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 26874f4a92877b7438196d26b57b39f3, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 4
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: d72a4fd087ee0aa4a9dcd6407ad55821, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 4
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 6c429013cf96caf4eb43b27cb85f7d0b, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 5
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: bbc9b88846b806a4d87d03c9b292f442, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 5
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 40b9151017670f540882a803f0b9e362, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 5
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: bac04ac31742cbc42b0e5f6069906260, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 5
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 3703f0886c313a54babe2137437f793c, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 5
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 582bea95abbf48346b2c39356d204b5f, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 5
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: a4b27ded98323d348b903e3f7567440c, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 6
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 71121208ac1bcea4db3a0c4957633095, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 6
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: dacc55a37b71a564aaaca1b8b5b99911, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 7
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 01f21965eeb195f47a9272c05c6bdf39, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 7
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 10343fda3e2cb064ea535ea2667fade8, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 7
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: d2b1ef1bad0efce4789630f9c4821805, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 7
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 2de2a8d5282240249a5e67f01776fa2e, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 7
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 872db7bfaf596034ca6c4a2a8591c447, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 7
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 9183283ba0aefe34d99189cbc666c2ca, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 8
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: aa0369d618f83b943b380b087c5edc46, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 8
     mouth: 2
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 9d2ba4504dd8de1449659c19b95d79bf, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 8
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 1d20b91a6b1c8254b9eb4283d268d867, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 8
     mouth: 1
     eyes: 4
-  - sprite: {fileID: 21300000, guid: 239311c0900214b4588fe68a7d85d33d, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 9
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: 894b07c50da53784bbf4449e3de2b6cc, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 9
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: aa4a2be4d48bf2d48bc22d23f2e49fba, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 11
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: a2078f21fdb78b54fb4e5cae6ebf40b5, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 11
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: f4ec8f31f92f1b24ca18b4fa4c615e86, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 12
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 31d1e5c4920095e4c9d3db05f3f04a31, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 12
     mouth: 2
     eyes: 1
-  - sprite: {fileID: 21300000, guid: ed194e2093b19a642a0b9be7ed43b682, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 12
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 8f19f62f69ab16e46a56a0aa68e8343f, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 12
     mouth: 1
     eyes: 1
-  - sprite: {fileID: 21300000, guid: c201a666441551c4a84309f1949d3170, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 13
     mouth: 2
     eyes: 3
-  - sprite: {fileID: 21300000, guid: ff1a4b83dcba60e438d8b5c65746142a, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 13
     mouth: 2
     eyes: 2
-  - sprite: {fileID: 21300000, guid: a663ff01ca85796478a194e1f0b7ffd1, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 13
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 2aad90190dbc84544abf709a16adf5e6, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 12
     emotionNum: 13
     mouth: 1
     eyes: 1
   taxiSprites:
-  - sprite: {fileID: 21300000, guid: 13c0ca91c417ce94893e35b005d93e1b, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 14
     emotionNum: 1
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 5c5261ddaaabcc64b906716b0d7194c3, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 14
     emotionNum: 1
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 8a7e7c580d3188f48a44f8e47a46b19c, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 14
     emotionNum: 2
     mouth: 1
     eyes: 2
-  - sprite: {fileID: 21300000, guid: 40a154fc9e3604d4e9b1bf3a21859334, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 14
     emotionNum: 3
     mouth: 1
     eyes: 3
-  - sprite: {fileID: 21300000, guid: 0ca257371761907459a01da8491e6ba4, type: 3}
+  - sprite:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     character: 14
     emotionNum: 3
     mouth: 1
