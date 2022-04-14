@@ -12,6 +12,7 @@ public class TestSplashSceneManager : MonoBehaviour
     public float loadFadeInTime;
     public WiggleController textWiggleController;
     public Animator gorillaWalkAnimator;
+    public GameObject gameManagerPrefab;
 
     void Awake()
     {
@@ -60,7 +61,6 @@ public class TestSplashSceneManager : MonoBehaviour
         gorillaWalkAnimator.Play("GorillaWalkAcrossScreen");
 
         // load splash scene after short delay
-        yield return new WaitForSeconds(1f);
         SceneManager.LoadSceneAsync("SplashScene");
     }
 }

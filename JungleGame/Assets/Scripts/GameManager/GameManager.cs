@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public enum GameType
 {
@@ -82,6 +84,8 @@ public class GameManager : DontDestroy<GameManager>
         AudioManager.instance.SetFXVolume(AudioManager.default_fxVol);
         AudioManager.instance.SetTalkVolume(AudioManager.default_talkVol);
 
+        StartCoroutine(InitialLoadTalkieAndMusic());
+
         if (devModeActivated)
         {
             SendLog(this, "Dev Mode set as - ON");
@@ -90,6 +94,13 @@ public class GameManager : DontDestroy<GameManager>
         {
             SendLog(this, "Dev Mode set as - OFF");
         }
+    }
+
+    private IEnumerator InitialLoadTalkieAndMusic()
+    {
+        AsyncOperationHandle talkieHandle = TalkieDatabase.instance.taxiSprites[0].sprite.LoadAssetAsync<Sprite>();
+        yield return talkieHandle;
+        Addressables.Release(talkieHandle);
     }
 
     void Update()
