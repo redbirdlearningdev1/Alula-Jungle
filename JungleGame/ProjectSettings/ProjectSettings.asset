@@ -480,7 +480,8 @@ PlayerSettings:
   enableCrashReportAPI: 0
   cameraUsageDescription: Camera required for game
   locationUsageDescription: Location Usage required for game
-  microphoneUsageDescription: Microphone required for game
+  microphoneUsageDescription: Some minigames use microphone input to play (no recordings
+    are saved)
   switchNMETAOverride: 
   switchNetLibKey: 
   switchSocketMemoryPoolSize: 6144
