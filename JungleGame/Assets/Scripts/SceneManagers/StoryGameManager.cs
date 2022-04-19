@@ -125,12 +125,17 @@ public class StoryGameManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.S))
                 {
-                    GameManager.instance.SendLog(this, "skipping story game!");
-                    StopAllCoroutines();
-                    EndGame();
+                    SkipGame();
                 }
             }
         }
+    }
+
+    public void SkipGame()
+    {
+        GameManager.instance.SendLog(this, "skipping story game!");
+        StopAllCoroutines();
+        EndGame();
     }
 
     private void PregameSetup()

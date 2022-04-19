@@ -62,6 +62,14 @@ public class NewBoatGameManager : MonoBehaviour
         boatGameRoutine = StartCoroutine(ContinueBoatGame());
     }
 
+
+    public void SkipGame()
+    {
+        StopAllCoroutines();
+        TalkieManager.instance.StopTalkieSystem();
+        StartCoroutine(WinBoatGame());
+    }
+
     void Update()
     {
         // dev stuff for fx audio testing
@@ -71,9 +79,7 @@ public class NewBoatGameManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.S))
                 {
-                    StopAllCoroutines();
-                    TalkieManager.instance.StopTalkieSystem();
-                    StartCoroutine(WinBoatGame());
+                    SkipGame();
                 }
             }
         }

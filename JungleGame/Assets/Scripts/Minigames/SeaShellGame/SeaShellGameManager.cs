@@ -84,22 +84,27 @@ public class SeaShellGameManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.S))
                 {
-                    StopAllCoroutines();
-                    // play win tune
-                    AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-                    // save tutorial done to SIS
-                    StudentInfoSystem.GetCurrentProfile().seashellTutorial = true;
-                    // times missed set to 0
-                    timesMissed = 0;
-                    // update AI data
-                    AIData(StudentInfoSystem.GetCurrentProfile());
-                    // calculate and show stars
-                    StarAwardController.instance.AwardStarsAndExit(CalculateStars());
-                    // remove all raycast blockers
-                    RaycastBlockerController.instance.ClearAllRaycastBlockers();
+                    SkipGame();
                 }
             }
         }
+    }
+
+    public void SkipGame()
+    {
+        StopAllCoroutines();
+        // play win tune
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+        // save tutorial done to SIS
+        StudentInfoSystem.GetCurrentProfile().seashellTutorial = true;
+        // times missed set to 0
+        timesMissed = 0;
+        // update AI data
+        AIData(StudentInfoSystem.GetCurrentProfile());
+        // calculate and show stars
+        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+        // remove all raycast blockers
+        RaycastBlockerController.instance.ClearAllRaycastBlockers();
     }
 
     private IEnumerator StartTutorial()

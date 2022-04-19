@@ -95,6 +95,23 @@ public class TigerGameManager : MonoBehaviour
         PregameSetup();
     }
 
+    public void SkipGame()
+    {
+        StopAllCoroutines();
+        // play win tune
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+        // save tutorial done to SIS
+        StudentInfoSystem.GetCurrentProfile().tigerPawPhotosTutorial = true;
+        // times missed set to 0
+        numMisses = 0;
+        // update AI data
+        AIData(StudentInfoSystem.GetCurrentProfile());
+        // calculate and show stars
+        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+        // remove all raycast blockers
+        RaycastBlockerController.instance.ClearAllRaycastBlockers();
+    }
+
     void Update()
     {
         // dev stuff for skipping minigame
@@ -104,19 +121,7 @@ public class TigerGameManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.S))
                 {
-                    StopAllCoroutines();
-                    // play win tune
-                    AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-                    // save tutorial done to SIS
-                    StudentInfoSystem.GetCurrentProfile().tigerPawPhotosTutorial = true;
-                    // times missed set to 0
-                    numMisses = 0;
-                    // update AI data
-                    AIData(StudentInfoSystem.GetCurrentProfile());
-                    // calculate and show stars
-                    StarAwardController.instance.AwardStarsAndExit(CalculateStars());
-                    // remove all raycast blockers
-                    RaycastBlockerController.instance.ClearAllRaycastBlockers();
+                    SkipGame();
                 }
             }
         }

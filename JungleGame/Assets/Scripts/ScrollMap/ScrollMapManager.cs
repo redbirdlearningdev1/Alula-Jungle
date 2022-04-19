@@ -55,9 +55,11 @@ public class ScrollMapManager : MonoBehaviour
     [SerializeField] private RectTransform Map; // full map
     [SerializeField] private Button leftButton;
     [SerializeField] private Button rightButton;
+    private bool allowDragging = false;
     private bool holding = false;
     private Vector2 startDragPos;
     private Vector2 startMapDragPos;
+    public float dragThreshold; // player must drag the screen a distance larger than the threshold in order to work
 
     [Header("Map Icons @ Locations")]
     public List<MapLocationData> mapLocations;
@@ -99,12 +101,18 @@ public class ScrollMapManager : MonoBehaviour
 
     void Update()
     {
+        if (!allowDragging)
+        {
+            return;
+        }
+
         // skip if not interactable OR playing talkie OR minigamewheel out OR settings window open OR royal decree open OR wagon open
         if (TalkieManager.instance.talkiePlaying || 
             MinigameWheelController.instance.minigameWheelOut || 
             SettingsManager.instance.settingsWindowOpen || 
             RoyalDecreeController.instance.isOpen ||
-            StickerSystem.instance.wagonOpen)
+            StickerSystem.instance.wagonOpen ||
+            !MapAnimationController.instance.animationDone)
             
             return;
         
@@ -117,11 +125,13 @@ public class ScrollMapManager : MonoBehaviour
         // detect if mouse is no longer being held
         else if (Input.GetMouseButtonUp(0) && holding)
         {
-            if (startDragPos.x > Input.mousePosition.x)
+            float dragDistance = Mathf.Abs(startDragPos.x - Input.mousePosition.x);
+
+            if (startDragPos.x > Input.mousePosition.x && dragDistance >= dragThreshold)
             {
                 OnGoRightPressed();
             }
-            else if (startDragPos.x < Input.mousePosition.x)
+            else if (startDragPos.x < Input.mousePosition.x  && dragDistance >= dragThreshold)
             {
                 OnGoLeftPressed();
             }
@@ -313,6 +323,9 @@ public class ScrollMapManager : MonoBehaviour
 
         // update map icons
         StartCoroutine(DelayUpdateMapIcons(0.5f, false));
+
+        // allow dragging after all is done
+        allowDragging = true;
     }
 
     private IEnumerator DelayToggleNavButtons()

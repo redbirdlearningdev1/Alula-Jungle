@@ -87,7 +87,7 @@ public enum MapAnim
 public class MapAnimationController : MonoBehaviour
 {
     public static MapAnimationController instance;
-    [HideInInspector] public bool animationDone = false; // used to determine when the current animation is complete
+    [HideInInspector] public bool animationDone = true; // used to determine when the current animation is complete
 
     public Animator tigerSwipeAnim;
 
@@ -140,6 +140,9 @@ public class MapAnimationController : MonoBehaviour
 
         // make boat fixed
         boat.GetComponent<MapIcon>().SetFixed(true, false, false);
+
+        // set animation done to true
+        animationDone = true;
     }
 
     private IEnumerator TestWalkInWalkOut()
@@ -1926,9 +1929,7 @@ public class MapAnimationController : MonoBehaviour
                 brutus.characterAnimator.Play("brutusBroken");
                 brutus.FlipCharacterToRight();
                 break;
-
         }
-
     }
 
     public void PlayChallengeGameMapAnim(MapAnim animation, MapLocation location)
@@ -2153,6 +2154,7 @@ public class MapAnimationController : MonoBehaviour
 
             default:
                 Debug.LogError("Could not start map animation: " + animation);
+                animationDone = true;
                 break;
         }
     }

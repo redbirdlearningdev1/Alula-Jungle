@@ -52,7 +52,7 @@ public class GameManager : DontDestroy<GameManager>
     public StoryGameData storyGameData;
     public MapIconIdentfier mapID;
     public MapLocation prevMapLocation = MapLocation.NONE;
-    
+
     [HideInInspector] public bool repairMapIconID; // when the scroll map appears -> repair this icon
     [HideInInspector] public GameType prevGameTypePlayed = GameType.None;
 
@@ -84,9 +84,6 @@ public class GameManager : DontDestroy<GameManager>
         AudioManager.instance.SetFXVolume(AudioManager.default_fxVol);
         AudioManager.instance.SetTalkVolume(AudioManager.default_talkVol);
 
-        //TalkieManager.instance.SwapTalkieEmotion();
-        //StartCoroutine(InitialLoadTalkieAndMusic());
-
         if (devModeActivated)
         {
             SendLog(this, "Dev Mode set as - ON");
@@ -97,22 +94,10 @@ public class GameManager : DontDestroy<GameManager>
         }
     }
 
-    private IEnumerator InitialLoadTalkieAndMusic()
-    {
-        AsyncOperationHandle talkieHandle = TalkieDatabase.instance.redSprites[0].sprite.LoadAssetAsync<Sprite>();
-        //Debug.LogError("Loading init sprite");
-        yield return talkieHandle;
-        //Debug.LogError("Done loading init sprite");
-        //TalkieManager.instance.leftImage.sprite = (Sprite)talkieHandle.Result;
-        //yield return new WaitForSeconds(0.5f);
-        //TalkieManager.instance.leftImage.sprite = null;
-        //Addressables.Release(talkieHandle);
-    }
-
     void Update()
     {
         if (devModeActivated)
-        {            
+        {
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
                 // press 'Shift + D' to go to the dev menu
@@ -126,7 +111,7 @@ public class GameManager : DontDestroy<GameManager>
                 {
                     Debug.LogError("forcing open Development Console...");
                     StartCoroutine(LogDateTimeNow(2f));
-                }       
+                }
             }
         }
     }
@@ -215,12 +200,12 @@ public class GameManager : DontDestroy<GameManager>
         }
 
         // check consonant words
-        foreach(var consonantWord in consonantWords)
+        foreach (var consonantWord in consonantWords)
         {
             if (consonantWord.elkoninValue == value)
                 return consonantWord;
         }
-        SendError (this, "Could not find elkonin value: \'" + value + "\'");
+        SendError(this, "Could not find elkonin value: \'" + value + "\'");
         return null;
     }
 
@@ -233,7 +218,7 @@ public class GameManager : DontDestroy<GameManager>
             if (actionWord._enum.Equals(word))
                 return actionWord;
         }
-        SendError (this, "Could not find action word: \'" + word + "\'");
+        SendError(this, "Could not find action word: \'" + word + "\'");
         return null;
     }
 
@@ -242,7 +227,7 @@ public class GameManager : DontDestroy<GameManager>
     {
         var globalCoinPool = new List<ActionWordEnum>();
         string[] coins = System.Enum.GetNames(typeof(ActionWordEnum));
-        for (int i = 0; i < coins.Length; i++) 
+        for (int i = 0; i < coins.Length; i++)
         {
             ActionWordEnum coin = (ActionWordEnum)System.Enum.Parse(typeof(ActionWordEnum), coins[i]);
             globalCoinPool.Add(coin);
@@ -251,6 +236,40 @@ public class GameManager : DontDestroy<GameManager>
         globalCoinPool.Remove(ActionWordEnum.SIZE);
         globalCoinPool.Remove(ActionWordEnum._blank);
         return globalCoinPool;
+    }
+
+    public void SkipCurrentGame()
+    {
+        // get current scene
+        string currentScene = SceneManager.GetActiveScene().name;
+        
+        switch (currentScene)
+        {
+            default: return;
+
+            // other games
+            case "StoryGame": StoryGameManager.instance.SkipGame(); break;
+            case "NewBoatGame": NewBoatGameManager.instance.SkipGame(); break;
+
+            // minigames:
+            case "FroggerGame": FroggerGameManager.instance.SkipGame(); break;
+            case "SeaShellGame": SeaShellGameManager.instance.SkipGame(); break;
+            case "RummageGame": RummageGameManager.instance.SkipGame(); break;
+            case "NewPirateGame": PrintingGameManager.instance.SkipGame(); break;
+            case "TurntablesGame": TurntablesGameManager.instance.SkipGame(); break;
+            case "NewSpiderGame": NewSpiderGameManager.instance.SkipGame(); break;
+
+            // challenge games
+            case "WordFactoryDeleting": WordFactoryDeletingManager.instance.SkipGame(); break;
+            case "WordFactorySubstituting": WordFactorySubstitutingManager.instance.SkipGame(); break;
+            case "WordFactoryBuilding": WordFactoryBuildingManager.instance.SkipGame(); break;
+            case "WordFactoryBlending": WordFactoryBlendingManager.instance.SkipGame(); break;
+
+            case "TigerPawCoins": TigerCoinGameManager.instance.SkipGame(); break;
+            case "TigerPawPhotos": TigerGameManager.instance.SkipGame(); break;
+
+            case "NewPasswordGame": NewPasswordGameManager.instance.SkipGame(); break;
+        }
     }
 
     /* 
@@ -281,7 +300,7 @@ public class GameManager : DontDestroy<GameManager>
         {
             FadeObject.instance.FadeOut(time);
         }
-            
+
         yield return new WaitForSeconds(time);
 
         // remove any popups
