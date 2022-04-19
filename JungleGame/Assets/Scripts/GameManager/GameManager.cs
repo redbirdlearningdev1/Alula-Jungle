@@ -84,7 +84,8 @@ public class GameManager : DontDestroy<GameManager>
         AudioManager.instance.SetFXVolume(AudioManager.default_fxVol);
         AudioManager.instance.SetTalkVolume(AudioManager.default_talkVol);
 
-        StartCoroutine(InitialLoadTalkieAndMusic());
+        //TalkieManager.instance.SwapTalkieEmotion();
+        //StartCoroutine(InitialLoadTalkieAndMusic());
 
         if (devModeActivated)
         {
@@ -98,9 +99,14 @@ public class GameManager : DontDestroy<GameManager>
 
     private IEnumerator InitialLoadTalkieAndMusic()
     {
-        AsyncOperationHandle talkieHandle = TalkieDatabase.instance.taxiSprites[0].sprite.LoadAssetAsync<Sprite>();
+        AsyncOperationHandle talkieHandle = TalkieDatabase.instance.redSprites[0].sprite.LoadAssetAsync<Sprite>();
+        //Debug.LogError("Loading init sprite");
         yield return talkieHandle;
-        Addressables.Release(talkieHandle);
+        //Debug.LogError("Done loading init sprite");
+        //TalkieManager.instance.leftImage.sprite = (Sprite)talkieHandle.Result;
+        //yield return new WaitForSeconds(0.5f);
+        //TalkieManager.instance.leftImage.sprite = null;
+        //Addressables.Release(talkieHandle);
     }
 
     void Update()
