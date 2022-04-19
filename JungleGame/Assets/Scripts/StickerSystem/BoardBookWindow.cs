@@ -143,7 +143,7 @@ public class BoardBookWindow : MonoBehaviour
 
             // remove talkie bg
             StickerSystem.instance.talkieBG.GetComponent<Image>().raycastTarget = false;
-            StickerSystem.instance.talkieBG.LerpImageAlpha( StickerSystem.instance.talkieBG.GetComponent<Image>(), 0f, 0.5f);
+            StickerSystem.instance.talkieBG.LerpImageAlpha(StickerSystem.instance.talkieBG.GetComponent<Image>(), 0f, 0.5f);
         }
         else
         {
@@ -159,10 +159,18 @@ public class BoardBookWindow : MonoBehaviour
         StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().ResetLesterTimers();
 
         yield return new WaitForSeconds(0.5f);
-        
-        // show back button + dropdown toolbar
-        StickerSystem.instance.wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
-        StickerSystem.instance.wagonBackButton.GetComponent<BackButton>().interactable = true;
+
+        // exit wagon if done with tutorial
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            StickerSystem.instance.OnBackButtonPressed();
+        }
+        else
+        {
+            // show back button + dropdown toolbar
+            StickerSystem.instance.wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+            StickerSystem.instance.wagonBackButton.GetComponent<BackButton>().interactable = true;
+        }
     }
 
     public void CenterOnBoardPreview(int boardIndex, bool fast = false)

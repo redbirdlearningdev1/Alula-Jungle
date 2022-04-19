@@ -132,24 +132,29 @@ public class TalkieManager : MonoBehaviour
 
     void Update()
     {
-        if (talkiePlaying)
+        if (GameManager.instance.devModeActivated)
         {
-            if (GameManager.instance.devModeActivated)
+            // press 'Shift + T' to skip talkie
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
-                // press 'Shift + T' to skip talkie
-                if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+                if (Input.GetKeyDown(KeyCode.T))
                 {
-                    if (Input.GetKeyDown(KeyCode.T))
-                    {
-                        if (!endingTalkie)
-                        {
-                            GameManager.instance.SendLog(this, "skipping talkie");
-                            StopAllCoroutines();
-                            StartCoroutine(EndTalkie());
-                        }
-                    }
+                    SkipTalkie();
                 }
             }
+        }
+    }
+
+    public void SkipTalkie()
+    {
+        if (!talkiePlaying)
+            return;
+
+        if (!endingTalkie)
+        {
+            GameManager.instance.SendLog(this, "skipping talkie");
+            StopAllCoroutines();
+            StartCoroutine(EndTalkie());
         }
     }
 

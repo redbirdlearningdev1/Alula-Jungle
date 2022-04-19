@@ -258,6 +258,40 @@ public class GameManager : DontDestroy<GameManager>
         return globalCoinPool;
     }
 
+    public void SkipCurrentGame()
+    {
+        // get current scene
+        string currentScene = SceneManager.GetActiveScene().name;
+        
+        switch (currentScene)
+        {
+            default: return;
+
+            // other games
+            case "StoryGame": StoryGameManager.instance.SkipGame(); break;
+            case "NewBoatGame": NewBoatGameManager.instance.SkipGame(); break;
+
+            // minigames:
+            case "FroggerGame": FroggerGameManager.instance.SkipGame(); break;
+            case "SeaShellGame": SeaShellGameManager.instance.SkipGame(); break;
+            case "RummageGame": RummageGameManager.instance.SkipGame(); break;
+            case "NewPirateGame": PrintingGameManager.instance.SkipGame(); break;
+            case "TurntablesGame": TurntablesGameManager.instance.SkipGame(); break;
+            case "NewSpiderGame": NewSpiderGameManager.instance.SkipGame(); break;
+
+            // challenge games
+            case "WordFactoryDeleting": WordFactoryDeletingManager.instance.SkipGame(); break;
+            case "WordFactorySubstituting": WordFactorySubstitutingManager.instance.SkipGame(); break;
+            case "WordFactoryBuilding": WordFactoryBuildingManager.instance.SkipGame(); break;
+            case "WordFactoryBlending": WordFactoryBlendingManager.instance.SkipGame(); break;
+
+            case "TigerPawCoins": TigerCoinGameManager.instance.SkipGame(); break;
+            case "TigerPawPhotos": TigerGameManager.instance.SkipGame(); break;
+
+            case "NewPasswordGame": NewPasswordGameManager.instance.SkipGame(); break;
+        }
+    }
+
     /* 
     ################################################
     #   SCENE MANAGEMENT

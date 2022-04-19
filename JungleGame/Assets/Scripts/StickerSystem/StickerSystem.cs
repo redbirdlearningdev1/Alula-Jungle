@@ -1060,11 +1060,15 @@ public class StickerSystem : MonoBehaviour
 
     public void OnBackButtonPressed()
     {
+        print ("back button pressed!");
+
         // return if wagon is animating
         if (wagonAnimating)
         {
             return;
         }
+
+        print ("back button worked!");
 
         // check for scroll map story beat if finishing tutorial
         if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)

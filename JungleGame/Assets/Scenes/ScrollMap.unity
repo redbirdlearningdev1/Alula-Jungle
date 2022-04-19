@@ -12538,6 +12538,7 @@ MonoBehaviour:
   Map: {fileID: 1534747656}
   leftButton: {fileID: 303760787}
   rightButton: {fileID: 943204350}
+  dragThreshold: 300
   mapLocations:
   - location: 0
     mapIcons: []
@@ -12939,7 +12940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a5d98ccb7711164a90782512a27c653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDone: 0
+  animationDone: 1
   tigerSwipeAnim: {fileID: 1565043128}
   boat: {fileID: 213499420}
   darwin: {fileID: 1874534201}
@@ -26956,7 +26957,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 810417.9, y: 0}
+  m_AnchoredPosition: {x: 898767.3, y: 0}
   m_SizeDelta: {x: 0, y: 256.55}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &753620794
@@ -38380,11 +38381,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1225881395315569394, guid: d28125f2c69703845bae5a93a83bd1b1,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 500.00006
-      objectReference: {fileID: 0}
     - target: {fileID: 4661914804477306855, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -38459,11 +38455,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7807549422858484565, guid: d28125f2c69703845bae5a93a83bd1b1,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -500.00006
       objectReference: {fileID: 0}
     - target: {fileID: 8032072505287944566, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
