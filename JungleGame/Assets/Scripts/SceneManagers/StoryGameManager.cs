@@ -245,18 +245,31 @@ public class StoryGameManager : MonoBehaviour
                 // // remove coin transparency
                 // coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.image, 1f, 0.5f);
 
+
+                // start moving gorilla
+                //ScrollingBackground.instance.StartMoving();
+                // move text until action word is in place
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(seg.audio));
+                yield return cd.coroutine;
+                //StartCoroutine(MoveTextToNextWord(cd.GetResult()));
+
+
                 // set current variables
                 currentEnum = seg.actionWord;
 
                 dancingMan.PlayUsingPhonemeEnum(seg.actionWord);
+                //Debug.Log("Playing Action Word audio");
                 AudioManager.instance.PlayTalk(seg.audio);
+                //AudioManager.instance.PlayFX_oneShot(seg.audio, AudioManager.instance.GetTalkVolume());
                 // highlight action word
                 wordTransforms[currWord].GetComponent<TextWrapper>().SetTextColor(actionTextColor, true);
                 wordTransforms[currWord].GetComponent<TextWrapper>().SetTextSize(actionTextSize, true);
 
-                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(seg.audio));
-                yield return cd.coroutine;
                 yield return new WaitForSeconds(cd.GetResult());
+
+                //ScrollingBackground.instance.StopMoving();
+                // small delay
+                yield return new WaitForSeconds(0.2f);
 
                 if (seg.requireInput)
                 {

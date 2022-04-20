@@ -728,6 +728,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 366861636, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1162192037, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1835,7 +1839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overrideGame: 0
-  storyGameIndex: 4
+  storyGameIndex: 0
   coin: {fileID: 1653332658}
   dancingMan: {fileID: 1034302397}
   dancingManOffScreen: {fileID: 1993491053}
