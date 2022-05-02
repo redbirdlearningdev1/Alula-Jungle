@@ -466,9 +466,9 @@ public class AudioManager : MonoBehaviour
         }
 
 
-        //Debug.Log("Loading clip: " + text);
+        //Debug.Log("Loading clip");
         yield return talkHandle;
-        //Debug.Log("Finished loading clip: " + text);
+        //Debug.Log("Finished loading clip");
 
 
         AudioClip _clip = (AudioClip)talkHandle.Result;
@@ -561,7 +561,6 @@ public class AudioManager : MonoBehaviour
         {
             Addressables.Release(handle);
         }
-        audio = null;
 
         yield return clipLength;
     }

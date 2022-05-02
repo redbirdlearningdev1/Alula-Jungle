@@ -895,7 +895,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
                 return file;
             }
         }
-        //print ("no audio file found for: " + str);
+        Debug.LogError("no audio file found for: " + str);
         // return null if not founda
         return null;
     }
