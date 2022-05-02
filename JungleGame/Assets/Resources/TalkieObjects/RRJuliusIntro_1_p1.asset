@@ -78,7 +78,7 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
     audioClipName: RR_0_0_Julius_1_T2
-    audioString: "You\u2019re good at this."
+    audioString: "You\u2019re too good at this."
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
