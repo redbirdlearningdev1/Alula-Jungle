@@ -79,7 +79,7 @@ public static class ChallengeWordDatabase
         ChallengeWord yourObject = null;
 
         // create new challenge word
-        if(result == "")
+        if (result == "")
         {
             GameManager.instance.SendLog("ChallengeWordDatabase", "!!! creating new challenge word -> " + data.word + item_postfix);
             yourObject = ScriptableObject.CreateInstance<ChallengeWord>();
