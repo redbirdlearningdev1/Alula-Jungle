@@ -72,7 +72,7 @@ public class GameManager : DontDestroy<GameManager>
     void Start()
     {
         // set game resolution
-        Screen.SetResolution(GameAwake.gameResolution.x, GameAwake.gameResolution.y, true);
+        //Screen.SetResolution(GameAwake.gameResolution.x, GameAwake.gameResolution.y, true);
 
         // init mic
         MicInput.instance.InitMic();

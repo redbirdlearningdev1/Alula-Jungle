@@ -2032,7 +2032,7 @@ MonoBehaviour:
   coinsParent: {fileID: 282431114}
   normalCoinSize: {x: 220, y: 250}
   playTutorial: 0
-  tutorialPair1: {fileID: 11400000, guid: 72af894a7adc9534fa924e77d8776ecb, type: 2}
+  tutorialPair1: {fileID: 11400000, guid: 07b2f13614e4b4846b0d4b7c70a4ec06, type: 2}
   tutorialPair2: {fileID: 11400000, guid: fc4239c7ba610d94fa8c16d8be8b66d1, type: 2}
   tutorialPair3: {fileID: 11400000, guid: bc62d87ba7d17a747a25e98f5ddf1da9, type: 2}
 --- !u!114 &1431170222
