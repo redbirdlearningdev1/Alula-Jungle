@@ -559,7 +559,7 @@ public class AudioManager : MonoBehaviour
         float clipLength = audio.length;
         if (handle.IsValid())
         {
-            Addressables.Release(handle);
+            //Addressables.Release(handle);
         }
 
         yield return clipLength;
