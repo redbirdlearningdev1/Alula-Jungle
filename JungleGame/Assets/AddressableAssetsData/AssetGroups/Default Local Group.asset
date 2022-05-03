@@ -16,7 +16,13 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: c0af9261eb365ec4d8f3e30a1d85dbc2
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 728a44ae7ce96bd40b0f1c867a884d33
+    m_Address: Assets/Audio/UniversalAudio/fast_forward.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 36e446923fe0ce6489248e816bef7c49, type: 2}
   m_SchemaSet:

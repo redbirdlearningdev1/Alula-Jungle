@@ -54,6 +54,10 @@ public class StoryGameManager : MonoBehaviour
 
     private StoryGameData storyGameData;
 
+    [Header("Fast Forward Button")]
+    public LerpableObject fastForwardButton;
+    public float showButtonDelay;
+
     void Awake()
     {
         if (instance == null)
@@ -91,6 +95,9 @@ public class StoryGameManager : MonoBehaviour
 
         // activate settings button
         SettingsManager.instance.ToggleMenuButtonActive(true);
+
+        // hide fast forward button
+        fastForwardButton.transform.localScale = Vector3.zero;
     }
 
     void Start()
@@ -188,6 +195,23 @@ public class StoryGameManager : MonoBehaviour
         wordTransforms.Add(last_word.transform);
     }
 
+    public void OnFastForwardButtonPressed()
+    {
+        AudioManager.instance.StopTalk();
+        fastForwardButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.2f, 0.2f);
+        fastForwardButton.GetComponent<WiggleController>().StopWiggle();
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.FastForwardSound, 0.5f);
+        SkipGame();
+    }
+
+    private IEnumerator DelayShowFastForwardButton()
+    {
+        yield return new WaitForSeconds(showButtonDelay);
+        fastForwardButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.one, 0.2f, 0.2f);
+        fastForwardButton.GetComponent<WiggleController>().StartWiggle();
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 0.5f);
+    }
+
     private IEnumerator GameRoutine()
     {
         int segMax = wordTransforms.Count;
@@ -195,6 +219,9 @@ public class StoryGameManager : MonoBehaviour
         // // set coin init before pause
         // coin.SetCoinType(ActionWordEnum._blank);
         // coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.image, 0.25f, 0.5f);
+
+        // show fast forward button after delay
+        StartCoroutine(DelayShowFastForwardButton());
 
         // small pause before game begins
         yield return new WaitForSeconds(2f);
