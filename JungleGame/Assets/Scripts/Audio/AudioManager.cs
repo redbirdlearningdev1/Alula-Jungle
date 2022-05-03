@@ -442,7 +442,7 @@ public class AudioManager : MonoBehaviour
     ################################################
     */
 
-    public void PlayTalk(AssetReference _clip)
+    public void PlayTalk(AssetReference _clip)//, string text = "")
     {
         talkSource.Stop();
 
@@ -454,7 +454,7 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(LoadAndPlayTalk(_clip));
     }
 
-    private IEnumerator LoadAndPlayTalk(AssetReference clipRef)
+    private IEnumerator LoadAndPlayTalk(AssetReference clipRef)//, string text)
     {
         if (clipRef.OperationHandle.IsValid())
         {
@@ -464,7 +464,11 @@ public class AudioManager : MonoBehaviour
         {
             talkHandle = clipRef.LoadAssetAsync<AudioClip>();
         }
-            yield return talkHandle;
+
+
+        //Debug.Log("Loading clip: " + text);
+        yield return talkHandle;
+        //Debug.Log("Finished loading clip: " + text);
 
 
         AudioClip _clip = (AudioClip)talkHandle.Result;

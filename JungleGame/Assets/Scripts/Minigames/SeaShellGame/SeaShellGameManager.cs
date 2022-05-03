@@ -134,7 +134,7 @@ public class SeaShellGameManager : MonoBehaviour
         // play tutorial audio
         clip = GameIntroDatabase.instance.seashellIntro2;
         CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
-        yield return cd.coroutine;
+        yield return cd0.coroutine;
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Celeste, clip);
         yield return new WaitForSeconds(cd0.GetResult() + 1f);
 

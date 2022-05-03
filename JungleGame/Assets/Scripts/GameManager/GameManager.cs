@@ -84,8 +84,6 @@ public class GameManager : DontDestroy<GameManager>
         AudioManager.instance.SetFXVolume(AudioManager.default_fxVol);
         AudioManager.instance.SetTalkVolume(AudioManager.default_talkVol);
 
-        StartCoroutine(InitialLoadTalkieAndMusic());
-
         if (devModeActivated)
         {
             SendLog(this, "Dev Mode set as - ON");
@@ -94,24 +92,6 @@ public class GameManager : DontDestroy<GameManager>
         {
             SendLog(this, "Dev Mode set as - OFF");
         }
-    }
-
-    private IEnumerator InitialLoadTalkieAndMusic()
-    {
-        if (!TalkieDatabase.instance.taxiSprites[0].sprite.OperationHandle.IsValid())
-        {
-            AsyncOperationHandle talkieHandle = TalkieDatabase.instance.taxiSprites[0].sprite.LoadAssetAsync<Sprite>();
-            yield return talkieHandle;
-            Addressables.Release(talkieHandle);
-        }
-
-        if (!AudioDatabase.instance.SplashScreenSong.OperationHandle.IsValid())
-        {
-            AsyncOperationHandle musicHandle = AudioDatabase.instance.SplashScreenSong.LoadAssetAsync<AudioClip>();
-            yield return musicHandle;
-            Addressables.Release(musicHandle);
-        }
-
     }
 
     void Update()

@@ -704,7 +704,9 @@ public class TalkieManager : MonoBehaviour
         else
         {
             AsyncOperationHandle handle = spriteRef.LoadAssetAsync<Sprite>();
+            //Debug.LogError("Loading sprite: " + character);
             yield return handle;
+            //Debug.LogError("Finished Loading sprite: " + character);
             image.sprite = (Sprite)handle.Result;
         }
 
@@ -748,7 +750,9 @@ public class TalkieManager : MonoBehaviour
         else
         {
             AsyncOperationHandle handle = spriteRef.LoadAssetAsync<Sprite>();
+            //Debug.LogError("Loading sprite: " + character);
             yield return handle;
+            //Debug.LogError("Finished Loading sprite: " + character);
             image.sprite = (Sprite)handle.Result;
         }
     }
