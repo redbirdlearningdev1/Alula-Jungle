@@ -348,8 +348,11 @@ public class TalkieManager : MonoBehaviour
     {
         endingTalkie = true;
 
-        // stop fast forward routine
-        StopCoroutine(showFastForwardButtonRoutine);
+        if (showFastForwardButtonRoutine != null)
+        {
+            // stop fast forward routine
+            StopCoroutine(showFastForwardButtonRoutine);
+        }
 
         // hide button iff shown
         if (fastForwardButton.transform.localScale.x > 0f)
