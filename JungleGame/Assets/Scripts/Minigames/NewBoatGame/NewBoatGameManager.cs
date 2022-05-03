@@ -39,6 +39,10 @@ public class NewBoatGameManager : MonoBehaviour
     private Coroutine repeatAudioRoutine;
     private Coroutine boatGameRoutine;
 
+    [Header("Fast Forward")]
+    public LerpableObject fastForwardButton;
+
+
     void Awake()
     {
         if (instance == null)
@@ -55,11 +59,27 @@ public class NewBoatGameManager : MonoBehaviour
 
         // initialize list
         audiosToRepeat = new List<AssetReference>();
+
+        // remove fast forward button
+        fastForwardButton.transform.localScale = Vector3.zero;
     }
 
     void Start()
     {
         boatGameRoutine = StartCoroutine(ContinueBoatGame());
+    }
+
+    public void OnFastForwardButtonPressed()
+    {
+        // stop repeating audio
+        repeatAudio = false;
+        audiosToRepeat.Clear();
+        AudioManager.instance.StopTalk();
+
+        fastForwardButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.2f, 0.2f);
+        fastForwardButton.GetComponent<WiggleController>().StopWiggle();
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.FastForwardSound, 0.5f);
+        SkipGame();
     }
 
 
@@ -279,6 +299,14 @@ public class NewBoatGameManager : MonoBehaviour
                 repeatTimer = 0f;
                 repeatDuration = 5f;
                 repeatAudio = true;
+
+                yield return new WaitForSeconds(1f);
+
+                // show fast forward button
+                fastForwardButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.one, 0.2f, 0.2f);
+                fastForwardButton.GetComponent<WiggleController>().StartWiggle();
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 0.5f);
+
                 break;
 
             case 1:

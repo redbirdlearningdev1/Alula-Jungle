@@ -91,6 +91,11 @@ public class TalkieManager : MonoBehaviour
     private int newSegmentIndex;
     private bool endingTalkie;
 
+    [Header("Fast Forward Button")]
+    public LerpableObject fastForwardButton;
+    public float showButtonDelay;
+    private Coroutine showFastForwardButtonRoutine;
+
 
     public void SetFastTalkies(bool opt)
     {
@@ -128,6 +133,9 @@ public class TalkieManager : MonoBehaviour
         // activate left and right talkies
         leftImage.gameObject.SetActive(true);
         rightImage.gameObject.SetActive(true);
+
+        // hide button
+        fastForwardButton.transform.localScale = new Vector3(0f, 0f, 1f);
     }
 
     void Update()
@@ -197,6 +205,22 @@ public class TalkieManager : MonoBehaviour
         ResetTalkies();
     }
 
+    public void OnFastForwardButtonPressed()
+    {
+        fastForwardButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.2f, 0.2f);
+        fastForwardButton.GetComponent<WiggleController>().StopWiggle();
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.FastForwardSound, 0.5f);
+        SkipTalkie();
+    }
+
+    private IEnumerator DelayShowFastForwardButton()
+    {
+        yield return new WaitForSeconds(showButtonDelay);
+        fastForwardButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.one, 0.2f, 0.2f);
+        fastForwardButton.GetComponent<WiggleController>().StartWiggle();
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 0.5f);
+    }
+
     private IEnumerator PlayTalkieRoutine()
     {
         ResetTalkies();
@@ -206,6 +230,29 @@ public class TalkieManager : MonoBehaviour
 
         // set talk vol
         AudioManager.instance.SetTalkVolume(StudentInfoSystem.GetCurrentProfile().talkVol);
+
+        // check if talkie object has a yes/no branch
+        bool addFastForwardButton = true;
+        foreach (var seg in currentTalkie.segmnets)
+        {
+            if (seg.requireYN)
+            {
+                addFastForwardButton = false;
+                break;
+            }
+        }
+        // check if object is quip collection
+        if (currentTalkie.quipsCollection)
+        {
+            addFastForwardButton = false;
+        }
+        
+        if (addFastForwardButton)
+        {
+            // show fast forward button after delay
+            showFastForwardButtonRoutine = StartCoroutine(DelayShowFastForwardButton());
+        }
+       
 
         // disable nav buttons on scroll map
         if (SceneManager.GetActiveScene().name == "ScrollMap")
@@ -301,6 +348,17 @@ public class TalkieManager : MonoBehaviour
     {
         endingTalkie = true;
 
+        // stop fast forward routine
+        StopCoroutine(showFastForwardButtonRoutine);
+
+        // hide button iff shown
+        if (fastForwardButton.transform.localScale.x > 0f)
+        {
+            fastForwardButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.2f, 0.2f);
+            fastForwardButton.GetComponent<WiggleController>().StopWiggle();
+        }
+        
+        // hide talkie sprites
         switch (currentTalkie.ending)
         {
             default:
@@ -356,6 +414,8 @@ public class TalkieManager : MonoBehaviour
         {
             ScrollMapManager.instance.ToggleNavButtons(true);
         }
+
+        // 
 
         // set audio back to what it was before
         AudioManager.instance.ToggleMusicSmooth(true);

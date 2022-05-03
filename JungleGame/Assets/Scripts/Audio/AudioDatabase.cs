@@ -69,6 +69,7 @@ public class AudioDatabase : MonoBehaviour
     public AssetReference Whoosh;
     public AssetReference DestroyArea;
     public AssetReference Trumpet;
+    public AssetReference FastForwardSound;
 
     [Header("Blips")]
     public AssetReference HappyBlip;
