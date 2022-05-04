@@ -81,4 +81,11 @@ public class DevDrawer : MonoBehaviour
         ToggleDevDrawer();
         GameManager.instance.SkipCurrentGame();
     }
+
+    public void OnConsoleButtonPressed()
+    {
+        ToggleDevDrawer();
+        GameManager.instance.OpenConsole();
+    }
+
 }

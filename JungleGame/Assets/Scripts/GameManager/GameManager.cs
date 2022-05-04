@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -69,6 +70,14 @@ public class GameManager : DontDestroy<GameManager>
     [Header("Avatars")]
     public List<Sprite> avatars;
 
+    [HideInInspector]
+    public bool neverSleep = false;
+
+    public int sleepSeconds = 10;
+    public GameObject console;
+    public Text consoleText;
+    private Coroutine sleepCoroutine;
+
     void Start()
     {
         // set game resolution
@@ -92,6 +101,9 @@ public class GameManager : DontDestroy<GameManager>
         {
             SendLog(this, "Dev Mode set as - OFF");
         }
+
+        Screen.sleepTimeout = sleepSeconds;
+        neverSleep = false;
     }
 
     void Update()
@@ -114,7 +126,67 @@ public class GameManager : DontDestroy<GameManager>
                 }
             }
         }
+        /*
+        string sleepTimeout = "";
+        if (Screen.sleepTimeout == -1)
+            sleepTimeout = "NeverSleep";
+        else if (Screen.sleepTimeout == -2)
+            sleepTimeout = "System Default";
+        else sleepTimeout = "" + Screen.sleepTimeout;
+
+
+        consoleText.text = "Battery Status: " + SystemInfo.batteryStatus;
+        consoleText.text += "\nSleep Status: " + sleepTimeout;
+        consoleText.text += "\nSleep bool: " + neverSleep;
+        */
+
+        if ((SystemInfo.batteryStatus == BatteryStatus.Charging || SystemInfo.batteryStatus == BatteryStatus.Full) && !neverSleep)
+        {
+            consoleText.color = Color.red;
+            Screen.sleepTimeout = SleepTimeout.NeverSleep;
+            if (sleepCoroutine != null)
+            {
+                StopCoroutine(sleepCoroutine);
+                sleepCoroutine = null;
+            }
+            neverSleep = true;
+        }
+        if (!(SystemInfo.batteryStatus == BatteryStatus.Charging || SystemInfo.batteryStatus == BatteryStatus.Full))
+        {
+            if (neverSleep)
+            {
+                neverSleep = false;
+                if (sleepCoroutine != null)
+                {
+                    StopCoroutine(sleepCoroutine);
+                    sleepCoroutine = null;
+                }
+                sleepCoroutine = StartCoroutine(SleepCoroutine());
+            }
+            else if (Input.touchCount == 1)
+            {
+                if (Input.touches[0].phase == TouchPhase.Ended)
+                {
+                    if (sleepCoroutine != null)
+                    {
+                        StopCoroutine(sleepCoroutine);
+                        sleepCoroutine = null;
+                    }
+                    sleepCoroutine = StartCoroutine(SleepCoroutine());
+                }
+            }
+        }
     }
+
+    IEnumerator SleepCoroutine()
+    {
+        consoleText.color = Color.blue;
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        yield return new WaitForSeconds(sleepSeconds);
+        consoleText.color = Color.green;
+        Screen.sleepTimeout = SleepTimeout.SystemSetting;
+    }
+
 
     void OnApplicationFocus(bool focus)
     {
@@ -282,6 +354,12 @@ public class GameManager : DontDestroy<GameManager>
     {
         LoadScene("DevMenu", true, 0.5f, true);
     }
+
+    public void OpenConsole()
+    {
+        console.SetActive(!console.activeSelf);
+    }
+
 
     public void ReturnToScrollMap()
     {
