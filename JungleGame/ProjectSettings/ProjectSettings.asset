@@ -129,7 +129,7 @@ PlayerSettings:
     16:10: 0
     16:9: 0
     Others: 1
-  bundleVersion: 1.5
+  bundleVersion: 1.6
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -219,9 +219,9 @@ PlayerSettings:
   iOSRenderExtraFrameOnPause: 0
   iosCopyPluginsCodeInsteadOfSymlink: 0
   appleDeveloperTeamID: 
-  iOSManualSigningProvisioningProfileID: fafb350b-22ba-4cf1-bce5-44b398af283d
+  iOSManualSigningProvisioningProfileID: 18a8314b-d11b-413f-a711-c60a01b915de
   tvOSManualSigningProvisioningProfileID: 
-  iOSManualSigningProvisioningProfileType: 1
+  iOSManualSigningProvisioningProfileType: 2
   tvOSManualSigningProvisioningProfileType: 0
   appleEnableAutomaticSigning: 0
   iOSRequireARKit: 0

@@ -34,7 +34,7 @@ public enum GameType
 
 public class GameManager : DontDestroy<GameManager>
 {
-    public static string currentGameVersion = "alpha1.5";
+    public static string currentGameVersion = "alpha1.6";
 
     public static int stickerInventorySize = 16;
 
