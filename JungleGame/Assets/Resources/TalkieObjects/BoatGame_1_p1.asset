@@ -117,7 +117,7 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
     audioClipName: Boat_0_1_Red_2_1_T2
-    audioString: Prince Julius has been put in charge all by himself,  and needs
+    audioString: Prince Julius will be put in charge all by himself,  and he'll need
       as much help as he can get!
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -157,5 +157,5 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
     audioClipName: Boat_0_1_Red_3_1_T2
-    audioString: "Plus,  this jungle is full of exciting games so I know that we\u2019ll
-      have so much fun!"
+    audioString: "Plus,  this jungle is full of learning opportunities so I know
+      that we\u2019ll have so much fun!"
