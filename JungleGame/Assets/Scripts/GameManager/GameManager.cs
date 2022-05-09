@@ -80,8 +80,10 @@ public class GameManager : DontDestroy<GameManager>
 
     void Start()
     {
+#if !UNITY_IOS
         // set game resolution
-        //Screen.SetResolution(GameAwake.gameResolution.x, GameAwake.gameResolution.y, true);
+        Screen.SetResolution(GameAwake.gameResolution.x, GameAwake.gameResolution.y, true);
+#endif
 
         // init mic
         MicInput.instance.InitMic();
@@ -207,9 +209,9 @@ public class GameManager : DontDestroy<GameManager>
     }
 
     /* 
-    ################################################
-    #   SCENE INITIALIZATION
-    ################################################
+################################################
+# SCENE INITIALIZATION
+################################################
     */
 
     public void SceneInit()
@@ -231,9 +233,9 @@ public class GameManager : DontDestroy<GameManager>
     }
 
     /* 
-    ################################################
-    #   UTILITY
-    ################################################
+################################################
+# UTILITY
+################################################
     */
 
     public void RestartGame()
@@ -345,9 +347,9 @@ public class GameManager : DontDestroy<GameManager>
     }
 
     /* 
-    ################################################
-    #   SCENE MANAGEMENT
-    ################################################
+################################################
+# SCENE MANAGEMENT
+################################################
     */
 
     public void GoToDevMenu()
@@ -432,9 +434,9 @@ public class GameManager : DontDestroy<GameManager>
     }
 
     /*
-    ################################################
-    #   GAME DATA
-    ################################################
+################################################
+# GAME DATA
+################################################
     */
 
     public string GameTypeToSceneName(GameType gameType)
