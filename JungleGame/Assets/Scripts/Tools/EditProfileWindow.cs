@@ -80,11 +80,28 @@ public class EditProfileWindow : MonoBehaviour
         windowTextLerp.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.one, 0.1f, 0.1f);
     }
 
+    private IEnumerator CloseWindowRoutine()
+    {
+        windowTextLerp.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
+        confirmButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
+        profilePicture.SquishyScaleLerp(new Vector2(0.6f, 0.6f), Vector2.zero, 0.1f, 0.1f);
+        inputField.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
+        leftArrow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
+        rightArrow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
+
+        yield return new WaitForSeconds(0.2f);
+
+        myWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
+
+        yield return new WaitForSeconds(0.2f);
+
+        newProfileBackground.LerpImageAlpha(newProfileBackground.GetComponent<Image>(), 0f, 0.5f);
+        SplashScreenManager.instance.EnableProfileInteraction(false);
+    }
+
     public void OnCloseWindowButtonPressed()
     {
-        myWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
-        newProfileBackground.LerpImageAlpha(newProfileBackground.GetComponent<Image>(), 0f, 0.2f);
-        SplashScreenManager.instance.EnableProfileInteraction(false);
+        StartCoroutine(CloseWindowRoutine());
     }
 
     public void OnConfirmButtonPressed()
@@ -98,6 +115,8 @@ public class EditProfileWindow : MonoBehaviour
         confirmButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
         profilePicture.SquishyScaleLerp(new Vector2(0.6f, 0.6f), Vector2.zero, 0.1f, 0.1f);
         inputField.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
+        leftArrow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
+        rightArrow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
 
         yield return new WaitForSeconds(0.2f);
 

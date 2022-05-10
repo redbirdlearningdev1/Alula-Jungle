@@ -711,11 +711,6 @@ public class SplashScreenManager : MonoBehaviour
         // reset profile
         StudentInfoSystem.ResetProfile(newProfileIndex);
 
-        // turn off start button
-        startButton.interactable = false;
-        startbuttonBox.sprite = boxBrown;
-        startbuttonText.sprite = textGreen;
-
         SetUpProfiles();
         SetUpWinCrowns();
 
@@ -738,6 +733,11 @@ public class SplashScreenManager : MonoBehaviour
                 break;
         }
         selectedProfile = 0;
+
+        // turn off start button
+        startButton.interactable = false;
+        startbuttonBox.sprite = boxBrown;
+        startbuttonText.sprite = textGreen;
     }
 
     public void OnNoDeleteProfilePressed()
