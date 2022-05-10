@@ -49,6 +49,6 @@ public class CameraAspectRatioController : MonoBehaviour
 
             camera.rect = rect;
         }
-    }
 #endif
+    }
 }
