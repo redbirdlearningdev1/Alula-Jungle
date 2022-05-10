@@ -18,6 +18,7 @@ public class AudioManager : MonoBehaviour
     [Header("Addressable Operation Handles")]
     [SerializeField] private List<AsyncOperationHandle> songHandles;
     private AsyncOperationHandle talkHandle;
+    private AsyncOperationHandle phonemeHandle;
 
     [Header("Audio Sources")]
     [SerializeField] private List<AudioSource> musicSources;
@@ -244,12 +245,15 @@ public class AudioManager : MonoBehaviour
             {
                 splitHandle = reference.LoadAssetAsync<AudioClip>();
             }
-                yield return splitHandle;
+            
+            yield return splitHandle;
 
-            songHandles.Add(splitHandle);
-
-            musicSources[count].clip = (AudioClip)splitHandle.Result;
-            count++;
+            // if (splitHandle.Status == AsyncOperationStatus.Succeeded)
+            // {
+                songHandles.Add(splitHandle);
+                musicSources[count].clip = (AudioClip)splitHandle.Result;
+                count++;
+            // }
         }
 
         IncreaseSplitSong();
@@ -499,7 +503,8 @@ public class AudioManager : MonoBehaviour
 
     public void PlayPhoneme(ElkoninValue elkoninValue)
     {
-        talkSource.Stop();
+        if (talkSource.isPlaying)
+            return;
 
         if (talkHandle.IsValid())
         {
@@ -512,17 +517,18 @@ public class AudioManager : MonoBehaviour
     private IEnumerator LoadAndPlayPhoneme(ElkoninValue elkoninValue)
     {
         AssetReference audioRef = GameManager.instance.GetGameWord(elkoninValue).audio;
+        AsyncOperationHandle handle = new AsyncOperationHandle();
         if (audioRef.OperationHandle.IsValid())
         {
-            talkHandle = audioRef.OperationHandle;
+            handle = audioRef.OperationHandle;
         }
         else
         {
-            talkHandle = audioRef.LoadAssetAsync<AudioClip>();
+            handle = audioRef.LoadAssetAsync<AudioClip>();
         }
 
-        yield return talkHandle;
-        AudioClip clip = (AudioClip)talkHandle.Result;
+        yield return handle;
+        AudioClip clip = (AudioClip)handle.Result;
 
         talkSource.clip = clip;
         talkSource.loop = false;
@@ -530,9 +536,9 @@ public class AudioManager : MonoBehaviour
 
         yield return new WaitForSeconds(clip.length);
 
-        if (talkHandle.IsValid())
+        if (handle.IsValid())
         {
-            Addressables.Release(talkHandle);
+            Addressables.Release(handle);
         }
     }
 

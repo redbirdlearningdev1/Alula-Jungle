@@ -1768,6 +1768,7 @@ public class ScrollMapManager : MonoBehaviour
 
     public void OnGoLeftPressed()
     {
+        if (!MapAnimationController.instance.animationDone) return;
         if (navButtonsDisabled) return;
         navButtonsDisabled = true;
         
@@ -1819,9 +1820,8 @@ public class ScrollMapManager : MonoBehaviour
 
     public void OnGoRightPressed()
     {
+        if (!MapAnimationController.instance.animationDone) return;
         if (navButtonsDisabled) return;
-
-        // player cannot input for 'transitionTime' seconds
         navButtonsDisabled = true;
         
         StartCoroutine(RightPressedRoutine());
