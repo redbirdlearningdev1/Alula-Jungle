@@ -873,6 +873,9 @@ public class StickerSystem : MonoBehaviour
         StickerConfirmWindow.instance.BG.LerpImageAlpha(StickerConfirmWindow.instance.BG.GetComponent<Image>(), 0f, 0.5f);
         StickerConfirmWindow.instance.BG.GetComponent<Image>().raycastTarget = false;
 
+        // remove toolbar
+        DropdownToolbar.instance.ToggleToolbar(false);
+
         // activate raycast blocker
         RaycastBlockerController.instance.CreateRaycastBlocker("StickerVideoBlocker");
 
@@ -910,6 +913,7 @@ public class StickerSystem : MonoBehaviour
                 currentVideo = legendaryVP;
                 break;
         }
+        currentVideo.enabled = true;
 
         // wait for video to start
         currentVideo.Play();
@@ -981,10 +985,15 @@ public class StickerSystem : MonoBehaviour
 
         // stop video player
         currentVideo.Stop();
+        currentVideo.enabled = false;
+        ClearOutRenderTexture(currentVideo.targetTexture);
+
+        // remove toolbar
+        DropdownToolbar.instance.ToggleToolbar(true);
 
         // Fade back in 
         FadeObject.instance.FadeIn(0.5f);
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(1f);
 
         // move sticker into dropdown toolbar
         StartCoroutine(AwardStickerAnimation());
@@ -1017,6 +1026,14 @@ public class StickerSystem : MonoBehaviour
             wagonBackButton.GetComponent<BackButton>().interactable = true;
             wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
         }
+    }
+
+    public void ClearOutRenderTexture(RenderTexture renderTexture)
+    {
+        RenderTexture rt = RenderTexture.active;
+        RenderTexture.active = renderTexture;
+        GL.Clear(true, true, Color.clear);
+        RenderTexture.active = rt;
     }
 
     private IEnumerator AwardStickerAnimation()
