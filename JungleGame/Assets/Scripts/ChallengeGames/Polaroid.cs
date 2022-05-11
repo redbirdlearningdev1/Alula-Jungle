@@ -101,14 +101,6 @@ public class Polaroid : MonoBehaviour
         pictureImg.GetComponent<LerpableObject>().LerpImageAlpha(pictureImg, 1f, lerpAlphaDuration);
     }
 
-    public void ToggleGlowOutline(bool opt)
-    {
-        if (opt)
-            ImageGlowController.instance.SetImageGlow(backgroundImg, true, GlowValue.glow_1_025);
-        else
-            ImageGlowController.instance.SetImageGlow(backgroundImg, false);
-    }
-
     public void SetPolaroidAlpha(float alpha, float lerpDuration)
     {
         //backgroundImg.GetComponent<LerpableObject>().LerpImageAlpha(backgroundImg, alpha, lerpDuration);

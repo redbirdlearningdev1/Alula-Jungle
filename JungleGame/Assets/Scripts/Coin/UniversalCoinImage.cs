@@ -164,14 +164,6 @@ public class UniversalCoinImage : MonoBehaviour
         GetComponent<Image>().raycastTarget = opt;
     }
 
-    public void ToggleGlowOutline(bool opt)
-    {
-        if (opt)
-            ImageGlowController.instance.SetImageGlow(currImage, true, GlowValue.glow_1_00);
-        else
-            ImageGlowController.instance.SetImageGlow(currImage, false);
-    }
-
     /* 
     ################################################
     #   VISIBILITY FUNCTIONS

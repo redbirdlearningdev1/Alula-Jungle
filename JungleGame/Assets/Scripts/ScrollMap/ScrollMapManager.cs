@@ -1215,6 +1215,8 @@ public class ScrollMapManager : MonoBehaviour
         {
             // start on boat house
             SetMapPosition((int)MapLocation.BoatHouse);
+            ScrollSettingsWindowController.instance.UpdateMapSprite();
+            ScrollSettingsWindowController.instance.UpdateRedPos(MapLocation.BoatHouse);
         }
 
         // game event is over
@@ -1559,6 +1561,12 @@ public class ScrollMapManager : MonoBehaviour
         // add sticker button if unlocked
         if (StudentInfoSystem.GetCurrentProfile().unlockedStickerButton)
             SettingsManager.instance.ToggleWagonButtonActive(true);
+        // check if location is palace
+        if (location == MapLocation.PalaceIntro)
+        {
+            // show UI
+            PalaceArrow.instance.ShowArrow();
+        }
 
         // add player input
         RaycastBlockerController.instance.RemoveRaycastBlocker("GoToMapLocation");

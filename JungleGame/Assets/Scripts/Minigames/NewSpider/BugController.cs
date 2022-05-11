@@ -26,6 +26,9 @@ public class BugController : MonoBehaviour
     public Image image;
     private bool audioPlaying;
 
+    public LerpableObject glowLerpObject;
+    public Image glowImage;
+
     void Awake()
     {
         if (instance == null)
@@ -41,6 +44,24 @@ public class BugController : MonoBehaviour
         
         // select random bug type
         currentBugType = (BugType)Random.Range(0, 3);
+
+        // remove glow
+        glowLerpObject.SetImageAlpha(glowImage, 0f);
+    }
+
+    public void ToggleGlow(bool opt)
+    {
+        if (currentBugType != BugType.Bee)
+            return;
+
+        if (opt)
+        {
+            glowLerpObject.LerpImageAlpha(glowImage, 1f, 0.25f);
+        }
+        else
+        {
+            glowLerpObject.LerpImageAlpha(glowImage, 0f, 0.25f);
+        }
     }
 
     public void StartToWeb()
@@ -75,6 +96,12 @@ public class BugController : MonoBehaviour
         bugChoices.Remove(currentBugType);
         currentBugType = bugChoices[Random.Range(0, 2)];
 
+        transform.position = origin.position;
+    }
+
+    public void goToOrigin(BugType bugType)
+    {
+        currentBugType = bugType;
         transform.position = origin.position;
     }
 

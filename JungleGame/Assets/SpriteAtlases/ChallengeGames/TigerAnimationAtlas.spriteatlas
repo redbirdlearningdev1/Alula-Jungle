@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ChallengeTigerAnimationAtlas
+  m_Name: TigerAnimationAtlas
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -309,5 +309,5 @@ SpriteAtlas:
   - tigerLose32
   - tigerLose10
   m_RenderDataMap: {}
-  m_Tag: ChallengeTigerAnimationAtlas
+  m_Tag: TigerAnimationAtlas
   m_IsVariant: 0

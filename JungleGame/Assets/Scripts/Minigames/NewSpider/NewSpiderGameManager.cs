@@ -414,7 +414,15 @@ public class NewSpiderGameManager : MonoBehaviour
     private IEnumerator PlayTutorialGame()
     {
         ResetCoins();
-        bug.goToOrigin();
+        if (tutorialEvent == 0)
+        {
+            bug.goToOrigin(BugType.Bee);
+        }
+        else
+        {
+            bug.goToOrigin();
+        }
+        
         yield return new WaitForSeconds(1f);
 
         SetCoins();
@@ -430,7 +438,7 @@ public class NewSpiderGameManager : MonoBehaviour
             // turn on raycaster
             SpiderRayCaster.instance.isOn = true;
             // make bug glow
-            ImageGlowController.instance.SetImageGlow(bug.image, true, GlowValue.glow_1_00);
+            bug.ToggleGlow(true);
         }
         else
         {

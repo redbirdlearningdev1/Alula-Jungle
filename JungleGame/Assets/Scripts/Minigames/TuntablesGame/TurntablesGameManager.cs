@@ -64,7 +64,7 @@ public class TurntablesGameManager : MonoBehaviour
             playTutorial = !StudentInfoSystem.GetCurrentProfile().turntablesTutorial;
         }
 
-        // turn on key glow iff tutorial
+        // show correct key during tutorial
         if (playTutorial)
             showCorrectKey = true;
 
@@ -148,9 +148,8 @@ public class TurntablesGameManager : MonoBehaviour
             for (int i = 0; i < 4; i++)
             {
                 doorValues.Add(GetNewValue());
-                doors[i].GetComponentInChildren<DoorTile>().SetTile(doorValues[i], true);
-                // remove glows
-                ImageGlowController.instance.SetImageGlow(doors[i].GetComponentInChildren<DoorTile>().image, false, GlowValue.none);
+                doorTiles[i].SetTile(doorValues[i], true);
+                doorTiles[i].ToggleGlow(false);
             }
         }
 
@@ -250,7 +249,7 @@ public class TurntablesGameManager : MonoBehaviour
         doorTiles[currentDoor].GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.5f, 1.5f), new Vector2(1f, 1f), 0.1f, 0.1f);
         yield return new WaitForSeconds(0.1f);
         // add glow to current door tile
-        ImageGlowController.instance.SetImageGlow(doorTiles[currentDoor].image, true, GlowValue.glow_1_00);
+        doorTiles[currentDoor].ToggleGlow(true);
         // play sound effect
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 1f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MoveStoneEnd, 1f, "door_tile", 1.5f);
@@ -358,7 +357,7 @@ public class TurntablesGameManager : MonoBehaviour
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MoveStoneEnd, 1f, "door_tile", 1.5f);
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.ErrieGlow, 0.2f);
             // remove glow to current door tile
-            ImageGlowController.instance.SetImageGlow(doorTiles[currentDoor].image, false, GlowValue.none);
+            doorTiles[currentDoor].ToggleGlow(false);
             // increase split song
             AudioManager.instance.IncreaseSplitSong();
             // increment door num
