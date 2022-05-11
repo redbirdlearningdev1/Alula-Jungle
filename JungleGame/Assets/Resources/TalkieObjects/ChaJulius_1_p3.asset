@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 05bfe27649c0efa439a41c5334ca89d2
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1f_Julius_1_T1
     audioString: "Hey\u2026 you ready to try again?"
   - endTalkieAfterThisSegment: 1
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 87c819ceb50aa1f4aa0d8f9a69b33d31
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1f_Julius_2_T1
     audioString: "Okay... let\u2019s just get this over with."
   - endTalkieAfterThisSegment: 1
@@ -77,5 +79,6 @@ MonoBehaviour:
       m_AssetGUID: 8d236431ef850d248a8eb372ee4b2baf
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1f_Julius_3_T1
     audioString: ...

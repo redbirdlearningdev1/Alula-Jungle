@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 34c7e8e23b158e14584393951353e7ef
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_3_Red_1_T1
     audioString: 'Do you want to go on another boat ride Explorer? '
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: c350ec3174d4f4349ba615f9e04e7606
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_3_Red_2_T1
     audioString: Okay.
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 18a845cbcabff304193a3fd5250b4149
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_3_Red_2_T2
     audioString: Then would you like to play on the ship?
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: 31f840e688ef1094a912e4807daa249d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_3_Red_3_T1
     audioString: Okay!
   - endTalkieAfterThisSegment: 0
@@ -115,6 +119,7 @@ MonoBehaviour:
       m_AssetGUID: fd1b6ace9e191ff48ad4677d2d16190c
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_3_Red_3_T2
     audioString: Have fun Explorer!
   - endTalkieAfterThisSegment: 1
@@ -134,6 +139,7 @@ MonoBehaviour:
       m_AssetGUID: b391d2c3080f9c44f97f691e5eff14e1
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_3_Red_3_T3
     audioString: "Just come on out when you\u2019re ready!"
   - endTalkieAfterThisSegment: 1
@@ -153,6 +159,7 @@ MonoBehaviour:
       m_AssetGUID: fac093b8a1d274b438f54a2c20191b62
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_3_Red_4_T1
     audioString: Then we better get back to the task at hand,  Explorer!
   - endTalkieAfterThisSegment: 0
@@ -172,6 +179,7 @@ MonoBehaviour:
       m_AssetGUID: 533b73c48c562d143a6303cf69824202
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_3_Red_5_T1
     audioString: Alright!
   - endTalkieAfterThisSegment: 0
@@ -191,6 +199,7 @@ MonoBehaviour:
       m_AssetGUID: 0310d23cbb207b8478c9ff6a3ef732f3
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_3_Red_5_T2
     audioString: Let's have some fun,  Explorer!
   - endTalkieAfterThisSegment: 1
@@ -210,5 +219,6 @@ MonoBehaviour:
       m_AssetGUID: 80575d024851f784f9ccf33fa66b6baa
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_3_Red_5_T3
     audioString: All aboard!!

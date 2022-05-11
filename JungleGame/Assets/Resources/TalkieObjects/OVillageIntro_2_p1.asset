@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 2eb2f33f8fb92d74687317d215ed29b4
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_1_Clogg_4_T1
     audioString: You there.
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 6696f515241aa57488b19c43c6cc0646
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_1_Wally_5_T1
     audioString: U-us?
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: b0bd889352e8cf54085bb00fdd9fb70c
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_1_Clogg_6_T1
     audioString: Yes.
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: 893b417549940014ab05e96253cb9236
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_1_Clogg_6_T2
     audioString: "I\u2019ve never seen you before, "
   - endTalkieAfterThisSegment: 0
@@ -115,6 +119,7 @@ MonoBehaviour:
       m_AssetGUID: dcce22bd48b0bd14ebf8f07e2b97d810
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_1_Clogg_6_T3
     audioString: 'and now I come back to my village in shambles. '
   - endTalkieAfterThisSegment: 0
@@ -134,6 +139,7 @@ MonoBehaviour:
       m_AssetGUID: 3897a9088bedfae45bfc58e4e31f5ebc
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_1_Wally_7_T1
     audioString: W-wait! That wasn't us! It was-
   - endTalkieAfterThisSegment: 0
@@ -153,6 +159,7 @@ MonoBehaviour:
       m_AssetGUID: 4512bf3c3c86c6243a6c72ff70746e3b
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_1_Clogg_8_T1
     audioString: Listen,  I don't want to hear it.
   - endTalkieAfterThisSegment: 0
@@ -172,6 +179,7 @@ MonoBehaviour:
       m_AssetGUID: 1578614d8cc15d0499e23c3b3b941235
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_1_Clogg_8_T2
     audioString: Clean this mess up then I'll listen to you
   - endTalkieAfterThisSegment: 0
@@ -191,6 +199,7 @@ MonoBehaviour:
       m_AssetGUID: 106b168889f39284e8b6158fc675baba
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_1_Red_9_T1
     audioString: We were already planning on it sir!
   - endTalkieAfterThisSegment: 0
@@ -210,6 +219,7 @@ MonoBehaviour:
       m_AssetGUID: f6c6aeb63b5c2544a9f48bda4b0a5c00
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_1_Red_9_T2
     audioString: Just leave it to us!
   - endTalkieAfterThisSegment: 0
@@ -229,6 +239,7 @@ MonoBehaviour:
       m_AssetGUID: fbc5925276bf8754d960c3b1f81b6d1c
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_1_Red_9_T3
     audioString: Alright Explorer!
   - endTalkieAfterThisSegment: 0
@@ -248,5 +259,6 @@ MonoBehaviour:
       m_AssetGUID: 41959a93d0da6f2489ad30ae79f7bb9f
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_1_Red_9_T4
     audioString: "Let\u2019s do this!"

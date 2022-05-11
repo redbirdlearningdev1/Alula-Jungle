@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 7addd09270d284349b95a36bb60e0b6f
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Red_1_T1
     audioString: Whoa! Look at that!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 31238184c61cdd64cbbf01d2ff500387
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Wally_2_T1
     audioString: "I\u2019ve never seen a pirate ship before!"
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 01b0f36bc8132ee47b78e04937d3fe25
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Red_3_T1
     audioString: Me neither!
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: d99d3ce7eda21c441aa1281461322359
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Wally_4_T1
     audioString: "Hmm\u2026 It seems to be in rough shape."
   - endTalkieAfterThisSegment: 0
@@ -115,6 +119,7 @@ MonoBehaviour:
       m_AssetGUID: 294e0673c1a480e419f68cad2df8d631
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Red_5_T1
     audioString: Do you think the Prince did this?
   - endTalkieAfterThisSegment: 0
@@ -134,6 +139,7 @@ MonoBehaviour:
       m_AssetGUID: 3a64da67b02a48a48bab3056625c0cfc
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Wally_6_T1
     audioString: "I wouldn\u2019t be surprised."
   - endTalkieAfterThisSegment: 0
@@ -153,6 +159,7 @@ MonoBehaviour:
       m_AssetGUID: 0462622dbaff1904c80a2c988cc3e0ee
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Wally_6_T2
     audioString: However,  this ship looks like it's been falling apart for a while
       now.
@@ -173,6 +180,7 @@ MonoBehaviour:
       m_AssetGUID: 27060c42ab1c80447a56613f2f6aaa75
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Red_7_T1
     audioString: True,  it does look that way.
   - endTalkieAfterThisSegment: 0
@@ -192,6 +200,7 @@ MonoBehaviour:
       m_AssetGUID: db2be0575ae2e9b499eef04593277cb3
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_RedWally_8_T1
     audioString: "H-Help! \u2026. Help\u2026"
   - endTalkieAfterThisSegment: 0
@@ -211,6 +220,7 @@ MonoBehaviour:
       m_AssetGUID: 8e108308a3368ce409f7fe74683aa325
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RedWally_Huh
     audioString: Huh?!
   - endTalkieAfterThisSegment: 0
@@ -230,6 +240,7 @@ MonoBehaviour:
       m_AssetGUID: 54872236d32c69542bd66a8e5682324b
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Ollie_9_T1
     audioString: "Pl-please.. He-help m-me\u2026Help me\u2026."
   - endTalkieAfterThisSegment: 0
@@ -249,6 +260,7 @@ MonoBehaviour:
       m_AssetGUID: 88cf1cbb09a2b47418ec21db5708542e
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Red_10_T1
     audioString: 'Oh! '
   - endTalkieAfterThisSegment: 0
@@ -268,6 +280,7 @@ MonoBehaviour:
       m_AssetGUID: 213cb99d0b74f3c4985a91f7f0a9f6e9
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Red_10_T2
     audioString: 'Are you alright?! What happened? '
   - endTalkieAfterThisSegment: 0
@@ -287,6 +300,7 @@ MonoBehaviour:
       m_AssetGUID: e2f8aaa8fe98dd94f892d543d2eb82f4
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Ollie_11_T1
     audioString: "I -I don\u2019t k-know\u2026 It all happened so f-fast\u2026 so
       fast..."
@@ -307,6 +321,7 @@ MonoBehaviour:
       m_AssetGUID: 8d6be3f014025fa44bd375e4679bac0d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Red_12_T1
     audioString: "What\u2019s your name?"
   - endTalkieAfterThisSegment: 0
@@ -326,6 +341,7 @@ MonoBehaviour:
       m_AssetGUID: d21f138a4903fe344b5dc105672fecc2
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Ollie_13_T1
     audioString: "I-It\u2019s O-Ollie...ollie\u2026"
   - endTalkieAfterThisSegment: 0
@@ -345,6 +361,7 @@ MonoBehaviour:
       m_AssetGUID: d231d0bda299c4f4aa5130d74ce3e3c6
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Red_14_T1
     audioString: 'Oh you poor thing. '
   - endTalkieAfterThisSegment: 0
@@ -364,6 +381,7 @@ MonoBehaviour:
       m_AssetGUID: e9777bf7da3139343864ec9c3673fc66
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Red_14_T2
     audioString: "Don\u2019t worry,  We\u2019re going to get you and your ship all
       patched up okay?"
@@ -384,6 +402,7 @@ MonoBehaviour:
       m_AssetGUID: 94c83c484a753014ea867998c6b152c5
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Wally_15_T1
     audioString: Hmm...
   - endTalkieAfterThisSegment: 0
@@ -403,6 +422,7 @@ MonoBehaviour:
       m_AssetGUID: f48f76accc77b2845ab1aa57f9a2937a
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Ollie_16_T1
     audioString: R-really...Really?
   - endTalkieAfterThisSegment: 0
@@ -422,6 +442,7 @@ MonoBehaviour:
       m_AssetGUID: 22e272d1bcf074a4d900df21c5d83379
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Red_17_T1
     audioString: Of course!
   - endTalkieAfterThisSegment: 0
@@ -441,6 +462,7 @@ MonoBehaviour:
       m_AssetGUID: ce0ebcea69be2ae468de5c7a6efc1cc1
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Ollie_18_T1
     audioString: "O-okay\u2026 t-thank you\u2026 thank you\u2026"
   - endTalkieAfterThisSegment: 0
@@ -460,6 +482,7 @@ MonoBehaviour:
       m_AssetGUID: 62bbeab2a8fb61740b3eee4df5be59fd
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Red_19_T1
     audioString: Okay Explorer!
   - endTalkieAfterThisSegment: 0
@@ -479,5 +502,6 @@ MonoBehaviour:
       m_AssetGUID: c0aef7756a002ff4e824e72599bafc27
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_1_Red_19_T2
     audioString: "Let\u2019s get to work!"

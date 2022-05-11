@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: a469902768263dd4c81135288030fc54
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_4_Lester_4_T1
     audioString: Alright! Here you go! Now drag your sticker to the board to place
       it!
@@ -59,6 +60,7 @@ MonoBehaviour:
       m_AssetGUID: 7e6d4e7167d8ffb44bf64d40ed69b0cc
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_4_Lester_4_T2
     audioString: Careful!
   - endTalkieAfterThisSegment: 0
@@ -78,6 +80,7 @@ MonoBehaviour:
       m_AssetGUID: dd03bfdbe1a055d4586093c95af95016
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_4_Lester_4_T3
     audioString: 'You can only place your sticker once,  so when you hit yes, '
   - endTalkieAfterThisSegment: 0
@@ -97,5 +100,6 @@ MonoBehaviour:
       m_AssetGUID: ed17c71febb995540810383a27bc7197
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_4_Lester_4_T4
     audioString: 'make it count! '

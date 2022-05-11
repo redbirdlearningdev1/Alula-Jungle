@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 2b5033505f4ae304083e93c499dc9a21
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1g_Julius_1_T1
     audioString: ARGH! How do you keep beating me!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: b0abdaf85085c1e49a99760d7f52306d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1g_Julius_1_T2
     audioString: "Well I bet you can\u2019t beat Marcus!"
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: fe9262a8a90a38547967e147b35b3f5b
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Marcus_Laugh
     audioString: HA HA HA!!!
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: 3714845bb32f39b4da3459a9ded57696
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1_Marcus_2_T2
     audioString: Yes your highness!
   - endTalkieAfterThisSegment: 0
@@ -115,6 +119,7 @@ MonoBehaviour:
       m_AssetGUID: ea1175acf1e38e24ba45e860c9dca883
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1_Marcus_2_T3
     audioString: Are you ready to lose Explorer!?
   - endTalkieAfterThisSegment: 0
@@ -134,6 +139,7 @@ MonoBehaviour:
       m_AssetGUID: fe9262a8a90a38547967e147b35b3f5b
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Marcus_Laugh
     audioString: HA HA HA!!!
   - endTalkieAfterThisSegment: 1
@@ -153,6 +159,7 @@ MonoBehaviour:
       m_AssetGUID: c5a9f81d9dcbaf449881228e11e0da85
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1_Marcus_3_T2
     audioString: 'Prepare yourself Explorer! '
   - endTalkieAfterThisSegment: 0
@@ -172,6 +179,7 @@ MonoBehaviour:
       m_AssetGUID: 3ec054dbdc8b7b84fa94ab17acee571a
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1_Marcus_4_T1
     audioString: WHAT!? EXCUSE ME!?
   - endTalkieAfterThisSegment: 0
@@ -191,6 +199,7 @@ MonoBehaviour:
       m_AssetGUID: 8ab101462b709b749993067da9eb2005
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1_Marcus_4_T2
     audioString: "\u2026"
   - endTalkieAfterThisSegment: 0
@@ -210,6 +219,7 @@ MonoBehaviour:
       m_AssetGUID: c304dc764380a1d468f1a2b25e2fa207
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1_Marcus_4_T3
     audioString: Whatever.
   - endTalkieAfterThisSegment: 0
@@ -229,6 +239,7 @@ MonoBehaviour:
       m_AssetGUID: a77414fa7edd7df41be793d41376211d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1_Marcus_4_T4
     audioString: Come back when you're ready for my victory!
   - endTalkieAfterThisSegment: 1
@@ -248,5 +259,6 @@ MonoBehaviour:
       m_AssetGUID: fe9262a8a90a38547967e147b35b3f5b
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Marcus_Laugh
     audioString: HA HA HA!!!

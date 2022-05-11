@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 6cde316bd933f714d91a8e13d931fa67
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_3_Marcus_8_T1
     audioString: "Yeah next time you\u2019ll lose!"
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 683f8cfa4b337294d9754501ca352695
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_3_Brutus_9_T1
     audioString: Yawn...
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: ff812674d3d672544b65b801d9770768
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_3_Brutus_9_T2
     audioString: "Yeah\u2026"
   - endTalkieAfterThisSegment: 0
@@ -96,5 +99,6 @@ MonoBehaviour:
       m_AssetGUID: c3503b8689e205a4aa4472633ce4d734
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_3_Brutus_9_T3
     audioString: what they said...

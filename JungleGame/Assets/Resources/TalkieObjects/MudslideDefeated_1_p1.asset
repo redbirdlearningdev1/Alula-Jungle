@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: b09942356e4bfeb4aa248a3795f6b933
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_3_Red_1_T1
     audioString: Hurray!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 8913d7cb93a68f84ebc9855c790971cf
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_3_Red_1_T2
     audioString: I knew you could do it!
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 5b7933e5e2470764fb34260c0c19ca43
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_3_Wally_2_T1
     audioString: Good job Explorer!
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: c5fc3b5e8a01b7343be9e4dca96bbe57
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_3_Julius_3_T1
     audioString: Again?!
   - endTalkieAfterThisSegment: 0
@@ -115,6 +119,7 @@ MonoBehaviour:
       m_AssetGUID: a041c8aca9abb7445a1f4695e2a9b2b0
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_3_Julius_3_T2
     audioString: This can't be!
   - endTalkieAfterThisSegment: 0
@@ -134,6 +139,7 @@ MonoBehaviour:
       m_AssetGUID: b36b5d6848b267148a7d454d2ec277d6
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_3_Marcus_4_T1
     audioString: IMPOSSIBLE!!!
   - endTalkieAfterThisSegment: 0
@@ -153,6 +159,7 @@ MonoBehaviour:
       m_AssetGUID: 5a54637bf88fa9f4f80dbc1ba73d2400
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_3_Brutus_5_T1
     audioString: "Yawn\u2026"
   - endTalkieAfterThisSegment: 0
@@ -172,6 +179,7 @@ MonoBehaviour:
       m_AssetGUID: 3acf8a3e76c92f04caf1059ed7c3fad9
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_3_Brutus_5_T2
     audioString: "Over already\u2026"
   - endTalkieAfterThisSegment: 0
@@ -191,6 +199,7 @@ MonoBehaviour:
       m_AssetGUID: 361065485a8a0f14ebbf9cd4ee42c162
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_3_Marcus_6_T1
     audioString: Quiet you!
   - endTalkieAfterThisSegment: 0
@@ -210,5 +219,6 @@ MonoBehaviour:
       m_AssetGUID: e86453d35f1130c4691a4519f9fd0559
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_3_Julius_9_T1
     audioString: You won't beat me next time! I promise!

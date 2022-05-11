@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 845535c8e082d214db1cb96cc9857910
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1e_Julius_1_T1
     audioString: Are you ready Explorer?
   - endTalkieAfterThisSegment: 1
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: eef7debcec156e343a66e95c50f0f2a3
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1e_Julius_2_T1
     audioString: Alright,  let's do this.
   - endTalkieAfterThisSegment: 1
@@ -77,5 +79,6 @@ MonoBehaviour:
       m_AssetGUID: daa20d9bcd617154e92e555a988a64d2
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1e_Julius_3_T1
     audioString: "I\u2019ll be waiting..."

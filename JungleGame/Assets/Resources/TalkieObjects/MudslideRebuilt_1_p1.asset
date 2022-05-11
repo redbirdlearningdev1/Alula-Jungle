@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 09d0015f81bbf474e9a79dfcd8cae972
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_2_Red_1_T1
     audioString: Wow!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 52a96808eb7c6df489a12069031a7067
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_2_Red_1_T2
     audioString: This place looks amazing!
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: ea1d92a9f62512a42955d6e85b8eb207
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_2_Red_1_T3
     audioString: Good job Explorer!
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: 13fc4ad66be37b54ebb1022b2bf4ccd2
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_2_Wally_2_T1
     audioString: Good job!
   - endTalkieAfterThisSegment: 0
@@ -115,6 +119,7 @@ MonoBehaviour:
       m_AssetGUID: 14338da4c0d39fd4dbc8c251de02fe02
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_2_Red_3_T1
     audioString: Alright!
   - endTalkieAfterThisSegment: 0
@@ -134,6 +139,7 @@ MonoBehaviour:
       m_AssetGUID: 970939fc49f3dba40822b160af39ae9d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_2_Red_3_T2
     audioString: "Let\u2019s move forward!"
   - endTalkieAfterThisSegment: 0
@@ -153,5 +159,6 @@ MonoBehaviour:
       m_AssetGUID: 8e108308a3368ce409f7fe74683aa325
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RedWally_Huh
     audioString: Huh?!

@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 0d83b1d7e7bb77e4194cc5c2386d48dc
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Red_10_T1
     audioString: "I don't know why he\u2019s acting this way."
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 15f9be87d21a04b4382572615d555567
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Wally_11_T1
     audioString: "I\u2019m sure we\u2019ll find out in time."
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: f91d356ef202112478571254cb2b5286
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Wally_11_T2
     audioString: For now let's move forward
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: fb5a5f8609d67044b854cbe58f5e5d5e
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Red_12_T1
     audioString: Alright Explorer!
   - endTalkieAfterThisSegment: 0
@@ -115,5 +119,6 @@ MonoBehaviour:
       m_AssetGUID: bc087f92d7cb43a468b5263e68551e80
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Red_12_T2
     audioString: "Let\u2019s head out!"

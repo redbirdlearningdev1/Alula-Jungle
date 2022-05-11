@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: a5e7c98df4a73f9499510402aed3b33f
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_4_Julius_1_T1
     audioString: H-how!?
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: c208ca38be95dbc4c9aa9291e72f2171
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_4_Julius_1_T2
     audioString: Again!?
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 8275ca3a12f1da94d81eb7f160b0ddb2
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_4_Marcus_2_T1
     audioString: NO!
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: 8300ca09dd9cf5b4a9f9ae00f18475f5
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_4_Brutus_3_T1
     audioString: Aw...
   - endTalkieAfterThisSegment: 0
@@ -115,6 +119,7 @@ MonoBehaviour:
       m_AssetGUID: 0207842109f53824aa113b22d5415152
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_4_Red_4_T1
     audioString: Good job Explorer!
   - endTalkieAfterThisSegment: 0
@@ -134,6 +139,7 @@ MonoBehaviour:
       m_AssetGUID: 537540308bae5234f91df98bd337fd7a
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_4_Red_4_T2
     audioString: I knew you could do it!
   - endTalkieAfterThisSegment: 0
@@ -153,6 +159,7 @@ MonoBehaviour:
       m_AssetGUID: 026515b78e0e4ed479b268d69fb86ee4
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_4_Wally_5_T1
     audioString: Amazing as always.
   - endTalkieAfterThisSegment: 0
@@ -172,6 +179,7 @@ MonoBehaviour:
       m_AssetGUID: 70c02d5fae202e246a680bdb785f99bd
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_4_Spindle_6_T1
     audioString: T-that was p-pretty cool!
   - endTalkieAfterThisSegment: 0
@@ -191,6 +199,7 @@ MonoBehaviour:
       m_AssetGUID: 7e2070cece2823746854efa448cc96c6
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_4_Marcus_7_T1
     audioString: SILENCE!
   - endTalkieAfterThisSegment: 0
@@ -210,6 +219,7 @@ MonoBehaviour:
       m_AssetGUID: b2a9ee9f75c8d7b438bfbde084546735
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_4_Marcus_7_T2
     audioString: You mock your future King!
   - endTalkieAfterThisSegment: 0
@@ -229,6 +239,7 @@ MonoBehaviour:
       m_AssetGUID: b46a344c248a9e347928766119162ba6
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_4_Brutus_8_T1
     audioString: Yawn...
   - endTalkieAfterThisSegment: 0
@@ -248,6 +259,7 @@ MonoBehaviour:
       m_AssetGUID: 94f8080a5c72cfb4382bac7a0bfb4074
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_4_Brutus_8_T2
     audioString: "Yeah\u2026"
   - endTalkieAfterThisSegment: 0
@@ -267,6 +279,7 @@ MonoBehaviour:
       m_AssetGUID: d9bb17dcf4d3ec941ae3c4bcdf1388ec
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_4_Spindle_9_T1
     audioString: "O-Oh\u2026"
   - endTalkieAfterThisSegment: 0
@@ -286,6 +299,7 @@ MonoBehaviour:
       m_AssetGUID: 287f0060d39ec9d43b4183d51312231d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_4_Wally_10_T1
     audioString: "Hey! That\u2019s not nice!"
   - endTalkieAfterThisSegment: 0
@@ -305,6 +319,7 @@ MonoBehaviour:
       m_AssetGUID: fdfe2c7e69a854d458de558cbb881851
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_4_Julius_11_T1
     audioString: "\u2026"
   - endTalkieAfterThisSegment: 0
@@ -324,5 +339,6 @@ MonoBehaviour:
       m_AssetGUID: a0e0f9f09a4b81644a119575bde5b84b
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_4_Julius_11_T2
     audioString: "Whatever! I\u2019ll get you next time!"

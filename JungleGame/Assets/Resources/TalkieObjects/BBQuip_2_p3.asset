@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 61f9f91cb754c474187cec6d0c50d97d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_4_3_Wally_1_T1
     audioString: Good job,  Explorer.
   - endTalkieAfterThisSegment: 0
@@ -58,5 +59,6 @@ MonoBehaviour:
       m_AssetGUID: 5e5705f86d28da748a69757402e72f89
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_4_3_Julius_2_T1
     audioString: "Yeah whatever\u2026"

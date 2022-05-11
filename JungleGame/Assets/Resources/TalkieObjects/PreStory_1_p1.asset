@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: a235ea4f074abf447b1d873db39b3142
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_1a_Darwin_1_T1
     audioString: Hey wait! Not so fast Explorer.
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 1fd6d540b4ee0f5479da36901d5196cf
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_1a_Darwin_1_T2
     audioString: Come talk to me so I can... uhh...
   - endTalkieAfterThisSegment: 0
@@ -77,5 +79,6 @@ MonoBehaviour:
       m_AssetGUID: c729728bb1c39b7448c8632a5d7b8eb5
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_1a_Darwin_1_T4
     audioString: "prepare you for the challenges you\u2019ll face!"

@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: a6c26b0a20f764f49b405f25ada22b01
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_3_3_Wally_1_T1
     audioString: Your highness-
   - endTalkieAfterThisSegment: 0
@@ -58,5 +59,6 @@ MonoBehaviour:
       m_AssetGUID: b6b787756d2248f4c80de2baf93907a1
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_3_3_Julius_2_T1
     audioString: Stop talking!

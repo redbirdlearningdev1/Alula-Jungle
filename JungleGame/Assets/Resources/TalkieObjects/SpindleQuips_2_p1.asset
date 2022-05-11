@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 1ec04897106ce7949be12e972a9ba590
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_2b_Spindle_1_T1
     audioString: 'H-hey there friend! '
   - endTalkieAfterThisSegment: 1
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 3815dd3161374f94dbdeedcefd7daa93
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_2b_Spindle_1_T2
     audioString: Do you want to play some more?
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 36b689c43a0877445b218650aaaeb289
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_2b_Spindle_2_T1
     audioString: 'OH! AH! What!? '
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: eb3b64109a4d3e4428f29d41d251f1a4
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_2b_Spindle_2_T2
     audioString: '*eats bug*'
   - endTalkieAfterThisSegment: 1
@@ -115,6 +119,7 @@ MonoBehaviour:
       m_AssetGUID: 56acc9ca8568a624494f7985771da9a3
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_2b_Spindle_2_T3
     audioString: "\u2026Sorry\u2026 you startled me for a second."
   - endTalkieAfterThisSegment: 0
@@ -134,6 +139,7 @@ MonoBehaviour:
       m_AssetGUID: 56f6f1dcee8495842abb6811cc374525
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_2b_Spindle_3_T1
     audioString: 'N-nice to see you again friend! '
   - endTalkieAfterThisSegment: 1
@@ -153,6 +159,7 @@ MonoBehaviour:
       m_AssetGUID: faad2381c3233eb489a58e9db3d2a232
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_2b_Spindle_3_T2
     audioString: Do you want to practice some more?
   - endTalkieAfterThisSegment: 1
@@ -172,6 +179,7 @@ MonoBehaviour:
       m_AssetGUID: e0376364cb017c649830f85454a09dad
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_2b_Spindle_4_T1
     audioString: "Let\u2019s p-play some more,  yes?"
   - endTalkieAfterThisSegment: 0
@@ -191,6 +199,7 @@ MonoBehaviour:
       m_AssetGUID: 2b4ae4943243b4a4196b3b278632ebd3
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_2b_Spindle_5_T1
     audioString: 'OH! '
   - endTalkieAfterThisSegment: 0
@@ -210,6 +219,7 @@ MonoBehaviour:
       m_AssetGUID: 8abef484bebebd94b8666b0729622fdf
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_2b_Spindle_5_T2
     audioString: H-hello friend!
   - endTalkieAfterThisSegment: 1
@@ -229,5 +239,6 @@ MonoBehaviour:
       m_AssetGUID: 3643f63c7c369924e9b5573da8ed4aae
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_2b_Spindle_5_T3
     audioString: Do you want to play?

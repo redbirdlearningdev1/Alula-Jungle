@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: abab8f6268139ac4188e7c4420fcf92d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_1_2_Taxi_1_T1
     audioString: "Sorry squirt,  doesn\u2019t look like good flying weather! "
   - endTalkieAfterThisSegment: 0
@@ -58,5 +59,6 @@ MonoBehaviour:
       m_AssetGUID: a118128e508189d40b09f06b43584ee9
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_1_2_Taxi_1_T2
     audioString: Come on back later.

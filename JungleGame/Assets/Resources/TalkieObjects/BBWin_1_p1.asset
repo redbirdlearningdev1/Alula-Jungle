@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 41d146c3dabe0bc43a3296862a4a130b
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_5_4_Red_1_T1
     audioString: Hurray!
   - endTalkieAfterThisSegment: 0
@@ -58,5 +59,6 @@ MonoBehaviour:
       m_AssetGUID: 9812cf348536d194fb92c14b3c1a3826
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_5_4_Red_1_T2
     audioString: I knew you could do it Explorer!

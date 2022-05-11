@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 5c39e9f2d5abd26419cd1e3af5d0892a
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_3b_Darwin_1_T1
     audioString: Hmm...
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 8bc0cd88c04e95e478f001f13836332f
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_3b_Darwin_1_T2
     audioString: "I think there\u2019s someone you still need to meet before can
       we move forward... "
@@ -78,5 +80,6 @@ MonoBehaviour:
       m_AssetGUID: f7f6ac3db222f264ab8b6b30f1deae64
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_3b_Darwin_1_T3
     audioString: Tap the glowing cart button!

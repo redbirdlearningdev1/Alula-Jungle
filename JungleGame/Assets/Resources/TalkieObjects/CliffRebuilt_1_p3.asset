@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: fe9262a8a90a38547967e147b35b3f5b
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Marcus_Laugh
     audioString: HA HA HA!!!!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: d82728142b77f894a8d90be0699c2063
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Brutus_Laugh
     audioString: 'Heh heh... '
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 021a681f46da299438765be2bc116536
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Julius_12_T1
     audioString: I see Darwin just keeps running off.
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: 12a31ae35c4b8e04eb47c3fff5c7d57d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Marcus_13_T1
     audioString: Of course he does your majesty!
   - endTalkieAfterThisSegment: 0
@@ -115,6 +119,7 @@ MonoBehaviour:
       m_AssetGUID: 0d08b6a7bb6f4a24996ba45317b05f13
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Brutus_14_T1
     audioString: "Yawn\u2026"
   - endTalkieAfterThisSegment: 0
@@ -134,6 +139,7 @@ MonoBehaviour:
       m_AssetGUID: a97347de3ac79ef4c99ae08877cc79ce
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Brutus_14_T2
     audioString: "Yeah who would wanna leave like that\u2026"
   - endTalkieAfterThisSegment: 0
@@ -153,6 +159,7 @@ MonoBehaviour:
       m_AssetGUID: d2c8ea948da5c3242abb56d6925c820a
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Red_15_T1
     audioString: "That\u2019s so mean! He just left to find you!"
   - endTalkieAfterThisSegment: 0
@@ -172,6 +179,7 @@ MonoBehaviour:
       m_AssetGUID: e1076db425b4f7742a0bed5dec20799c
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Marcus_16_T1
     audioString: HA! Lies!
   - endTalkieAfterThisSegment: 0
@@ -191,6 +199,7 @@ MonoBehaviour:
       m_AssetGUID: 6d0879063c9f4d64a9d4fcab36bdc86c
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Marcus_16_T2
     audioString: That air head! He's never around when you need him!
   - endTalkieAfterThisSegment: 0
@@ -210,6 +219,7 @@ MonoBehaviour:
       m_AssetGUID: 1fd86a020e6af5d4ab383a0264258758
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Marcus_16_T3
     audioString: Amiright?
   - endTalkieAfterThisSegment: 0
@@ -229,6 +239,7 @@ MonoBehaviour:
       m_AssetGUID: 66cbce25716886d43834da15bc19a1b3
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Julius_17_T1
     audioString: "\u2026"
   - endTalkieAfterThisSegment: 0
@@ -248,6 +259,7 @@ MonoBehaviour:
       m_AssetGUID: 072340a0c73f9b24abc79675e63306c7
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Julius_17_T2
     audioString: "But It\u2019s true though\u2026"
   - endTalkieAfterThisSegment: 0
@@ -267,6 +279,7 @@ MonoBehaviour:
       m_AssetGUID: fed6c3a4d2dfe544f8385b534d27d571
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Red_18_T1
     audioString: Huh?!
   - endTalkieAfterThisSegment: 0
@@ -286,6 +299,7 @@ MonoBehaviour:
       m_AssetGUID: e495ff39843f5c74594f4b1aa269d9d6
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Wally_19_T1
     audioString: What did you say?
   - endTalkieAfterThisSegment: 0
@@ -305,6 +319,7 @@ MonoBehaviour:
       m_AssetGUID: 99c97e7106a7b54489c03cc05e34e217
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Bubbles_20_T1
     audioString: Bubble?
   - endTalkieAfterThisSegment: 0
@@ -324,6 +339,7 @@ MonoBehaviour:
       m_AssetGUID: 498b4360ce2e0c74c84a9b031fd26f4a
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Julius_21_T1
     audioString: "\u2026"
   - endTalkieAfterThisSegment: 0
@@ -343,6 +359,7 @@ MonoBehaviour:
       m_AssetGUID: 7e855376f49422049ba5af63cd95433a
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Julius_21_T2
     audioString: "That\u2019s none of your business!"
   - endTalkieAfterThisSegment: 0
@@ -362,6 +379,7 @@ MonoBehaviour:
       m_AssetGUID: 9fc7fd8df81826947b9a66231bc4ffa5
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Marcus_22_T1
     audioString: "That\u2019s right!"
   - endTalkieAfterThisSegment: 0
@@ -381,6 +399,7 @@ MonoBehaviour:
       m_AssetGUID: cb7c6d8b925bf324481b6e79986cef79
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Marcus_22_T2
     audioString: "None of your bee\u2019s wax!"
   - endTalkieAfterThisSegment: 0
@@ -400,6 +419,7 @@ MonoBehaviour:
       m_AssetGUID: 5b2aa2571df11d24fa9a9756ec6a8277
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Brutus_23_T1
     audioString: "What bees?\u2026"
   - endTalkieAfterThisSegment: 0
@@ -419,6 +439,7 @@ MonoBehaviour:
       m_AssetGUID: 4cec4cc1131bdfe4393c2b784b83fa17
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Marcus_24_T1
     audioString: HUSH!
   - endTalkieAfterThisSegment: 0
@@ -438,6 +459,7 @@ MonoBehaviour:
       m_AssetGUID: 10f2d5a207e0b6945b987eb1965683bb
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Julius_25_T1
     audioString: "You know what\u2019s next."
   - endTalkieAfterThisSegment: 0
@@ -457,6 +479,7 @@ MonoBehaviour:
       m_AssetGUID: a24edfb210a194545bd84f329403d694
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Julius_25_T2
     audioString: If you beat me you can move forward.
   - endTalkieAfterThisSegment: 0
@@ -476,6 +499,7 @@ MonoBehaviour:
       m_AssetGUID: 4090549986c034d44bade9afbfe9daae
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Julius_25_T3
     audioString: "If you don\u2019t then you have to leave me alone."
   - endTalkieAfterThisSegment: 0
@@ -495,6 +519,7 @@ MonoBehaviour:
       m_AssetGUID: 864db43cbff24f84faf916f83f1bd5f2
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Red_26_T1
     audioString: Go get 'em Explorer!
   - endTalkieAfterThisSegment: 0
@@ -514,6 +539,7 @@ MonoBehaviour:
       m_AssetGUID: f88041954dd51a244a62832689b1ded5
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Wally_27_T1
     audioString: I believe in you!
   - endTalkieAfterThisSegment: 0
@@ -533,6 +559,7 @@ MonoBehaviour:
       m_AssetGUID: dcb22a9f860e0a2478ff632906dc3182
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Bubbles_28_T1
     audioString: Bubble Bubble!!!
   - endTalkieAfterThisSegment: 0
@@ -552,5 +579,6 @@ MonoBehaviour:
       m_AssetGUID: 93ea80d8b91d5f647bb5a363cbc55f44
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Julius_29_T1
     audioString: "Beware! I\u2019ve been practicing!"

@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: fe9262a8a90a38547967e147b35b3f5b
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Marcus_Laugh
     audioString: HA HA HA!!!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: d82728142b77f894a8d90be0699c2063
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Brutus_Laugh
     audioString: Heh heh...
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 35dd3fb51fee8da4989c0aafd843ed6c
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Julius_17_T1
     audioString: 'I see you were able to put the village back together again. '
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: 02afa1bcd3f71f140afa4bd865e722a4
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Wally_18_T1
     audioString: "That\u2019s right,   we were."
   - endTalkieAfterThisSegment: 0
@@ -115,6 +119,7 @@ MonoBehaviour:
       m_AssetGUID: 90257502a625ec74b95819adf7d6f6e0
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Marcus_19_T1
     audioString: You have no right to speak to the future King!
   - endTalkieAfterThisSegment: 0
@@ -134,6 +139,7 @@ MonoBehaviour:
       m_AssetGUID: ac6988d5faa0b954c82c1bc26b083d9d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Brutus_20_T1
     audioString: Yeah...
   - endTalkieAfterThisSegment: 0
@@ -153,6 +159,7 @@ MonoBehaviour:
       m_AssetGUID: c2f995d9569f98c4fae3e4c95c1835fe
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Brutus_20_T2
     audioString: No right to speak after being spoken to.
   - endTalkieAfterThisSegment: 0
@@ -172,6 +179,7 @@ MonoBehaviour:
       m_AssetGUID: d3ba10f75350c094084efbe7d6fa8ee6
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Marcus_21_T1
     audioString: QUIET YOU BABOON!
   - endTalkieAfterThisSegment: 0
@@ -191,6 +199,7 @@ MonoBehaviour:
       m_AssetGUID: 851d9dd9810c3384d858ee88a2537f18
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Clogg_22_T1
     audioString: What is the meaning of this!?
   - endTalkieAfterThisSegment: 0
@@ -210,6 +219,7 @@ MonoBehaviour:
       m_AssetGUID: 20c08534df6c8be4d91ef7f6cae4a70c
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Marcus_23_T1
     audioString: 'The future King is simply doing what he is allowed to do! '
   - endTalkieAfterThisSegment: 0
@@ -229,6 +239,7 @@ MonoBehaviour:
       m_AssetGUID: 747a868f9c034c944a6c0b70567b9a9e
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Julius_24_T1
     audioString: That's right!
   - endTalkieAfterThisSegment: 0
@@ -248,6 +259,7 @@ MonoBehaviour:
       m_AssetGUID: de10af5a49a66bd43b9a3f05b20881d0
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Julius_24_T2
     audioString: 'I am the future King! '
   - endTalkieAfterThisSegment: 0
@@ -267,6 +279,7 @@ MonoBehaviour:
       m_AssetGUID: 421473543b3a53a46846a51c222a3cbf
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Julius_24_T3
     audioString: And this is my kingdom!
   - endTalkieAfterThisSegment: 0
@@ -286,6 +299,7 @@ MonoBehaviour:
       m_AssetGUID: 536a0e7eac4839f47a7ec459b1df9d8c
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Clogg_25_T1
     audioString: Your highness that isn't how-
   - endTalkieAfterThisSegment: 0
@@ -305,6 +319,7 @@ MonoBehaviour:
       m_AssetGUID: f3b3cb56f67603c43b3621d1c31c9c2e
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Marcus_26_T1
     audioString: SILENCE!!!
   - endTalkieAfterThisSegment: 0
@@ -324,6 +339,7 @@ MonoBehaviour:
       m_AssetGUID: 2a16534a129ca554eb3bc14cf1b7c23e
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Marcus_26_T2
     audioString: Do not lecture your future King!
   - endTalkieAfterThisSegment: 0
@@ -343,6 +359,7 @@ MonoBehaviour:
       m_AssetGUID: fe33b865cc74e1343bdd98a10bdae7cd
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Julius_27_T1
     audioString: Enough!
   - endTalkieAfterThisSegment: 0
@@ -362,6 +379,7 @@ MonoBehaviour:
       m_AssetGUID: e7be04c491dcccc42b1cc5850c92fa5b
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Julius_27_T2
     audioString: You know the rules.
   - endTalkieAfterThisSegment: 0
@@ -381,6 +399,7 @@ MonoBehaviour:
       m_AssetGUID: 947f203506fedbd4c87a105d104ef601
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Julius_27_T3
     audioString: 'If you win, '
   - endTalkieAfterThisSegment: 0
@@ -400,6 +419,7 @@ MonoBehaviour:
       m_AssetGUID: ea48ef0bb598e344588443706ff9cf05
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Julius_27_T4
     audioString: you can keep getting in my way and move forward.
   - endTalkieAfterThisSegment: 0
@@ -419,6 +439,7 @@ MonoBehaviour:
       m_AssetGUID: 65d3f63dae7eeb84dbb54c325a9cfb98
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Julius_27_T5
     audioString: 'But,  If I beat you, '
   - endTalkieAfterThisSegment: 0
@@ -438,6 +459,7 @@ MonoBehaviour:
       m_AssetGUID: d6aa548d2accfa64992c3c9b2a10056f
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Julius_27_T6
     audioString: you have to leave me alone and let me do what I want!
   - endTalkieAfterThisSegment: 0
@@ -457,6 +479,7 @@ MonoBehaviour:
       m_AssetGUID: f2355eb1018bc484d80edc0172adf9d5
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Wally_28_T1
     audioString: Right!
   - endTalkieAfterThisSegment: 0
@@ -476,6 +499,7 @@ MonoBehaviour:
       m_AssetGUID: a4b2c921fa52e0b4e928f1d2e130463d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Red_29_T1
     audioString: "You\u2019ve got this Explorer!"
   - endTalkieAfterThisSegment: 0
@@ -495,6 +519,7 @@ MonoBehaviour:
       m_AssetGUID: 1d9dfb3635b07a74783993aabd24417d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Red_29_T2
     audioString: 'Show the Prince all that you''ve learned! '
   - endTalkieAfterThisSegment: 0
@@ -514,6 +539,7 @@ MonoBehaviour:
       m_AssetGUID: 28694e165f3f269468218eb1a6d6b119
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Julius_30_T1
     audioString: 'I''ve been practicing! '
   - endTalkieAfterThisSegment: 0
@@ -533,5 +559,6 @@ MonoBehaviour:
       m_AssetGUID: d7e3948c94ea2224c9f914aedea3211e
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_2_Julius_30_T2
     audioString: Prepare yourself!

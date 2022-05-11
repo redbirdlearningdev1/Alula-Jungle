@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: fe9262a8a90a38547967e147b35b3f5b
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Marcus_Laugh
     audioString: HA HA HA!!!!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: d82728142b77f894a8d90be0699c2063
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Brutus_Laugh
     audioString: 'Heh heh... '
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: bdcd95576fa0e014dabd16c5c80e643e
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Marcus_42_T1
     audioString: See you later,  chumps!
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: e78322ee26521b24d99c65045eea2034
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Brutus_43_T1
     audioString: "Bye\u2026"
   - endTalkieAfterThisSegment: 0
@@ -115,5 +119,6 @@ MonoBehaviour:
       m_AssetGUID: cd7d632b326fb9d4ba2076368c0388bd
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Brutus_43_T2
     audioString: "Chumps\u2026"

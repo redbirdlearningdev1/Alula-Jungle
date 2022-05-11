@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: edc9463ecf65e904d953cd9a2d0ee9be
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_0_Julius_1_T1
     audioString: You want to challenge me again?
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: c570e577671ef244096038f765b4bb7d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_0_Julius_1_T2
     audioString: You've got guts
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 88e25fa0350b18b42bf2fd6afaebefa3
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_0_Julius_1_T3
     audioString: show me what you got!
   - endTalkieAfterThisSegment: 1
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: 1ebd329fb5f924e4782643c0484fa592
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1b_Julius_2_T1
     audioString: Alright,  let's do this.
   - endTalkieAfterThisSegment: 1
@@ -115,5 +119,6 @@ MonoBehaviour:
       m_AssetGUID: 464c454b8d26a704c996ee973bc9a526
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1b_Julius_3_T1
     audioString: "I\u2019ll be waiting."

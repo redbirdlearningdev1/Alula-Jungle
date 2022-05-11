@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: fe9262a8a90a38547967e147b35b3f5b
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Marcus_Laugh
     audioString: HA HA HA!!!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 524d27da410b7654fa713074077e58f8
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2a_Marcus_1_T2
     audioString: "I told you I\u2019d win!"
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 4a15775dfb85bd04a917509a489fb696
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2a_Brutus_2_T1
     audioString: "Heh heh\u2026 Yeah..."
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: d2913ecbca635b942a0af9ed48dbeb52
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2a_Brutus_2_T2
     audioString: Show em.
   - endTalkieAfterThisSegment: 0
@@ -115,6 +119,7 @@ MonoBehaviour:
       m_AssetGUID: 2162299b6e7dec64f9864c0a324e2a88
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1a_Red_4_T1
     audioString: "It\u2019s okay Explorer! "
   - endTalkieAfterThisSegment: 0
@@ -134,5 +139,6 @@ MonoBehaviour:
       m_AssetGUID: 1c8f9da30fb2c39429cc13eb9e18edb7
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1a_Red_4_T2
     audioString: Let's go practice some more.

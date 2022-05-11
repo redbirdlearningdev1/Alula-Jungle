@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: dcf9f11dfe273d742a73cb69020e8389
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Marcus_9_T1
     audioString: You heard him!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: f514f79b28a548347af8327728546acb
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Marcus_9_T2
     audioString: Just you wait!
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 07f6aa5156f18a54a893c27acafc8e66
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Brutus_10_T1
     audioString: "Yawn\u2026"
   - endTalkieAfterThisSegment: 0
@@ -96,5 +99,6 @@ MonoBehaviour:
       m_AssetGUID: f72a66bdee21dab40b61296101e95a63
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Brutus_10_T2
     audioString: "See you soon\u2026"

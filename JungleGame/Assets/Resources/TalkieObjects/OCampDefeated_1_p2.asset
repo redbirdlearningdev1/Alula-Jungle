@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: ad7980c184a51294cb57fa4648f82d91
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_2_3_Marcus_8_T1
     audioString: Yeah!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 019cb5e4d4b4a794b9824f08bb8bcb98
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_2_3_Marcus_8_T2
     audioString: "Next time we\u2019ll beat you chumps!"
   - endTalkieAfterThisSegment: 0
@@ -77,5 +79,6 @@ MonoBehaviour:
       m_AssetGUID: d7250363118f98645be97f3a7b80f74e
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_2_3_Brutus_9_T1
     audioString: Yeah...I doubt it..

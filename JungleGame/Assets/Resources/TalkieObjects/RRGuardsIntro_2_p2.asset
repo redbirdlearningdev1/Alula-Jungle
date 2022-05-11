@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: fe9262a8a90a38547967e147b35b3f5b
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Marcus_Laugh
     audioString: HA HA HA!!!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: e31cd16c33eecc3469644019ede3d1ca
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RR_1_1_Marcus_1_T1
     audioString: 'Slow down Explorer! '
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 4f0be29577ef28f42bfd94542b2f6cf5
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RR_1_1_Marcus_1_T2
     audioString: "You\u2019ll ruin our fun by cleaning up so fast!"
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: d82728142b77f894a8d90be0699c2063
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Brutus_Laugh
     audioString: Heh heh...
   - endTalkieAfterThisSegment: 0
@@ -115,5 +119,6 @@ MonoBehaviour:
       m_AssetGUID: cad5586fdd4c95045b13b4804e19c80f
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RR_1_1_Brutus_2_T1
     audioString: "Yeah,  looks like we have to make this more\u2026 interesting!"

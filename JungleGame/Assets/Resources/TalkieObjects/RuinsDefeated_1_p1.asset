@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 709bccf7275dd5d43a554818980e6c0a
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_3_Julius_1_T1
     audioString: "UGH I\u2019VE HAD IT!!"
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 3f685d83200974147b3225e4ca5ba237
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_3_Marcus_2_T1
     audioString: How dare you do this to your King!
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 779581dcf86646641aa57ad8eecee9e1
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_3_Brutus_3_T1
     audioString: "Well\u2026 "
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: e0bf58883c9f4fd4c8663698d750fe86
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_3_Brutus_3_T2
     audioString: "Well\u2026 technically they\u2019re not from here so Julius isn\u2019t
       their king\u2026."
@@ -116,6 +120,7 @@ MonoBehaviour:
       m_AssetGUID: 232e53432cbb5b8498ed6473f3315cb4
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_3_Marcus_4_T1
     audioString: Why you-
   - endTalkieAfterThisSegment: 0
@@ -135,5 +140,6 @@ MonoBehaviour:
       m_AssetGUID: 4b2383c57bdbc54499be98b488d05d47
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_3_Julius_5_T1
     audioString: "I don\u2019t understand what\u2019s so hard about leaving me alone!"

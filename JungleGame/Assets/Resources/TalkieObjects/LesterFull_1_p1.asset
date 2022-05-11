@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: d169ae4af85ca874eb77f01797e09fbc
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Sticker_0_2_Lester_1_T1
     audioString: Whoaa!!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 1804e26de446efa49958374c85336a97
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Sticker_0_2_Lester_1_T2
     audioString: "Hold your stickers there Explorer! You\u2019re all out of inventory
       space."
@@ -78,6 +80,7 @@ MonoBehaviour:
       m_AssetGUID: f31160cccc046a946937d5e3b57dd663
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Sticker_0_2_Lester_1_T3
     audioString: Why don't you place some stickers or buy more boards to make room
       before you try to roll again!
