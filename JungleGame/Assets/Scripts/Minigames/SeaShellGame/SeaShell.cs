@@ -43,7 +43,6 @@ public class SeaShell : MonoBehaviour
 
     private IEnumerator PlayPhonemeAudioRoutine()
     {
-        print ("now!");
         audioPlaying = true;
         AudioManager.instance.PlayPhoneme(ChallengeWordDatabase.ActionWordEnumToElkoninValue(value));
         yield return new WaitForSeconds(1f);

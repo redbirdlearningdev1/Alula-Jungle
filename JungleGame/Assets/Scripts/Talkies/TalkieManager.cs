@@ -418,10 +418,9 @@ public class TalkieManager : MonoBehaviour
             ScrollMapManager.instance.ToggleNavButtons(true);
         }
 
-        // 
-
         // set audio back to what it was before
         AudioManager.instance.ToggleMusicSmooth(true);
+        AudioManager.instance.StopTalk();
 
         // stop playing talkie
         talkiePlaying = false;

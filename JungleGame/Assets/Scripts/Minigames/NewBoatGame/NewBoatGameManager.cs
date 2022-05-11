@@ -254,6 +254,17 @@ public class NewBoatGameManager : MonoBehaviour
         repeatTimer = 0f;
     }
 
+    private IEnumerator DelayShowSkipButton(float delay)
+    {
+        print ("delay showing skip button: " + delay);
+        yield return new WaitForSeconds(delay);
+        // show fast forward button
+        fastForwardButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.one, 0.2f, 0.2f);
+        fastForwardButton.GetComponent<WiggleController>().StartWiggle();
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 0.5f);
+        print ("showing button!");
+    }
+
     private IEnumerator ContinueBoatGame()
     {
         GameManager.instance.SendLog(this, "current boat event: " + boatGameEvent);
@@ -283,6 +294,9 @@ public class NewBoatGameManager : MonoBehaviour
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[0]);
                 yield return new WaitForSeconds(cd.GetResult() + 0.5f);
 
+                // show delay button
+                StartCoroutine(DelayShowSkipButton(7f));
+
                 // turn on blue button glow + wiggle
                 ImageGlowController.instance.SetImageGlow(blueButton.GetComponent<Image>(), true, GlowValue.glow_1_025);
                 blueButton.wiggleController.StartWiggle();
@@ -294,19 +308,12 @@ public class NewBoatGameManager : MonoBehaviour
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[1]);
                 yield return new WaitForSeconds(cd0.GetResult() + 0.5f);
 
+
                 audiosToRepeat = new List<AssetReference>();
                 audiosToRepeat.Add(AudioDatabase.instance.boat_game_audio[1]);
                 repeatTimer = 0f;
                 repeatDuration = 5f;
                 repeatAudio = true;
-
-                yield return new WaitForSeconds(1f);
-
-                // show fast forward button
-                fastForwardButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.one, 0.2f, 0.2f);
-                fastForwardButton.GetComponent<WiggleController>().StartWiggle();
-                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 0.5f);
-
                 break;
 
             case 1:

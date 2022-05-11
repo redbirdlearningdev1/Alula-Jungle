@@ -118,7 +118,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Tag
-    value: BoatAtlas
+    value: SpriteAtlas
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_IsVariant
