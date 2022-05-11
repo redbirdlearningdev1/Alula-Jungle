@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: c0782ae9e76203b4d8fbd8fe7544ffc6
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_2_Celeste_1_T1
     audioString: "Can\u2019t believe they trashed the ocean or whateva!"
   - endTalkieAfterThisSegment: 1
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 7a03e92c8826a8e409d5d6f06b65aa5e
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_2_Sylvie_2_T1
     audioString: Ugh this trash stinks,  please hurry up and help us clean it!
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: d528641fa3442db4ab9a76455260b8dc
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_2_Celeste_3_T1
     audioString: "It\u2019s like,  not good to put plastic in the ocean or whateva!"
   - endTalkieAfterThisSegment: 1
@@ -96,5 +99,6 @@ MonoBehaviour:
       m_AssetGUID: e11712f92dc897d48bbb0dd488aa4d4d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_2_Sylvie_3_T2
     audioString: Yeah! Not cool!

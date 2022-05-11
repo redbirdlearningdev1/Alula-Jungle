@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: d4734b7ef0b835c40b8e45bbd865630e
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_4_4_Red_1_T1
     audioString: 'Julius! '
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: fedb94ee560282f448dd8df836a32985
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_4_4_Red_1_T2
     audioString: You have to listen to us!
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 268c241f372798444a312ce62e0a606f
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_4_4_Julius_2_T1
     audioString: "Hmph\u2026"
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: cf13310f09efdfa4f8a8c7152a69e642
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_4_4_Julius_2_T2
     audioString: "Yeah whatever\u2026"
   - endTalkieAfterThisSegment: 0
@@ -115,6 +119,7 @@ MonoBehaviour:
       m_AssetGUID: 3d6fe8a46d6f4df489e6f4a64f5af566
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_4_4_Darwin_3_T1
     audioString: Julius!
   - endTalkieAfterThisSegment: 0
@@ -134,6 +139,7 @@ MonoBehaviour:
       m_AssetGUID: 6770be4fc878aca40b792dfaad6d9c17
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_4_4_Darwin_3_T2
     audioString: You have to believe me!
   - endTalkieAfterThisSegment: 0
@@ -153,6 +159,7 @@ MonoBehaviour:
       m_AssetGUID: e17f6ef5aea423143ba5bf2dd193a422
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_4_4_Darwin_3_T3
     audioString: "Real friends don't do that to each other\u2026"
   - endTalkieAfterThisSegment: 0
@@ -172,6 +179,7 @@ MonoBehaviour:
       m_AssetGUID: b560a058f17258c4fb1f1d99c5af7980
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_4_4_Red_4_T1
     audioString: "Darwin\u2019s right,  Julius!"
   - endTalkieAfterThisSegment: 0
@@ -191,6 +199,7 @@ MonoBehaviour:
       m_AssetGUID: 515d3efe1fd5d28458f8fe922176b461
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_4_4_Red_4_T2
     audioString: "Friends don\u2019t let other friends do bad things!"
   - endTalkieAfterThisSegment: 0
@@ -210,6 +219,7 @@ MonoBehaviour:
       m_AssetGUID: d5e4f62408d48c34ca227043df1bccc9
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_4_4_Wally_5_T1
     audioString: Exactly.
   - endTalkieAfterThisSegment: 0
@@ -229,6 +239,7 @@ MonoBehaviour:
       m_AssetGUID: 47b59468e933aa14192cc343e21f17d2
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_4_4_Julius_6_T1
     audioString: "\u2026"
   - endTalkieAfterThisSegment: 0
@@ -248,6 +259,7 @@ MonoBehaviour:
       m_AssetGUID: b1aec026dbed9934486a1280ed20b79a
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_4_4_Julius_6_T2
     audioString: "We still have more challenges\u2026"
   - endTalkieAfterThisSegment: 0
@@ -267,6 +279,7 @@ MonoBehaviour:
       m_AssetGUID: 704d7b07c7b7420469ec0068f3d63e59
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_4_4_Red_7_T1
     audioString: Let's finish this,  Explorer!
   - endTalkieAfterThisSegment: 0
@@ -286,5 +299,6 @@ MonoBehaviour:
       m_AssetGUID: fc03449a576fa0e4d9113bcbc500941f
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_4_4_Wally_8_T1
     audioString: 'Good luck. '

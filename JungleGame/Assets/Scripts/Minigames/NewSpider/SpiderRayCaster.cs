@@ -120,7 +120,7 @@ public class SpiderRayCaster : MonoBehaviour
         // turn off raycaster
         isOn = false;
         // remove glow
-        ImageGlowController.instance.SetImageGlow(BugController.instance.image, false);
+        selectedBug.ToggleGlow(false);
 
         selectedBug.PlayPhonemeAudio();
 

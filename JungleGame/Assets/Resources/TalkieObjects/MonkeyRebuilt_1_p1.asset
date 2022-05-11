@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 1b30bf75250d8074faa24940aee2f2c7
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_3_2_Red_1_T1
     audioString: Alright!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: bc5113e32bd56f449bcf0a6e70b24eba
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_3_2_Red_1_T2
     audioString: We cleaned up your mess.
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: a4bdc1cd65491964b8618876f6a8726c
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_3_2_Marcus_2_T1
     audioString: As expected.
   - endTalkieAfterThisSegment: 0
@@ -96,5 +99,6 @@ MonoBehaviour:
       m_AssetGUID: 73a7b34f2db949240a2ac535ebb99fcc
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_3_2_Marcus_2_T2
     audioString: "Now it\u2019s time for the challenge! JULIUS,  get out here!"

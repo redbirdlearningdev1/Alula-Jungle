@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 9e663ce9ee974c24187852c1a4fd4cfa
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_1_Red_1_1_T1
     audioString: Hey there Explorer!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: fa8f65957bd33ff4588beeb652e1042e
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_1_Red_1_1_T2
     audioString: "I\u2019m so excited to see you!"
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 2f4bf1306be182a41b2c24bd546475df
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_1_Red_1_1_T3
     audioString: Thank you for agreeing to come along with me on such a short notice!
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: dad0382c5482e8e4cac881f70bacb706
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_1_Red_2_1_T1
     audioString: You see,  my friend Darwin said that he needs help watching over
       the Jungle kingdom while the King is away.
@@ -116,6 +120,7 @@ MonoBehaviour:
       m_AssetGUID: 16271aa7df152b64d99c705e677dfaae
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_1_Red_2_1_T2
     audioString: Prince Julius will be put in charge all by himself,  and he'll need
       as much help as he can get!
@@ -136,6 +141,7 @@ MonoBehaviour:
       m_AssetGUID: 07af13a01ccf56e42a6946a09003ebdb
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_1_Red_3_1_T1
     audioString: I know how reliable you are,  friend,  that's why I'm so happy you
       agreed to come along with us!
@@ -156,6 +162,7 @@ MonoBehaviour:
       m_AssetGUID: b9fbc227125b68044947391976f1c175
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_1_Red_3_1_T2
     audioString: "Plus,  this jungle is full of learning opportunities so I know
       that we\u2019ll have so much fun!"

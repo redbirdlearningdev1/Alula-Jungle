@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 3300da1dcd1806347a10315eab61fff6
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_0_Julius_5_T1
     audioString: "You want to go again\u2026?"
   - endTalkieAfterThisSegment: 1
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 17303345016a2fc4c96c924115b8642c
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_0_Julius_5_T2
     audioString: Alright.
   - endTalkieAfterThisSegment: 1
@@ -77,5 +79,6 @@ MonoBehaviour:
       m_AssetGUID: 66540ed5aad5c16419a7b3107b264ba0
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_0_Julius_5_T3
     audioString: "\u2026Okay."

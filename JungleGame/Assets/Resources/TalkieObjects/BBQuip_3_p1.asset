@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 459817338f0753f44b69fb68478451d5
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_5_1_Darwin_1_T1
     audioString: "Julius\u2026"
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 7100dc294bd779b48b89a3243053f371
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_5_1_Julius_2_T1
     audioString: "\u2026"
   - endTalkieAfterThisSegment: 0
@@ -77,5 +79,6 @@ MonoBehaviour:
       m_AssetGUID: 217a5d202fae48f4a80c1dc9c3d1705a
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_5_1_Julius_2_T2
     audioString: "Let\u2019s keep going\u2026"

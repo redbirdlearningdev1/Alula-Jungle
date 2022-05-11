@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: a6be06998ac569249bbfa1d62b04eebc
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Red_1_T1
     audioString: There!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 15fe9a74ca10e834f9e0c9889845c845
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Red_1_T2
     audioString: All done!
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: a18ec540dda410740bb743d3167ddde7
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Wally_2_T1
     audioString: How do you guys feel?
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: 4263422a9dd9c4c41845e182db381a86
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Sylvie_3_T1
     audioString: 'Sooo much better, '
   - endTalkieAfterThisSegment: 0
@@ -115,6 +119,7 @@ MonoBehaviour:
       m_AssetGUID: 3f372da99a288554a88d8bec5700c2a8
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Sylvie_3_T2
     audioString: thank you guys so much!
   - endTalkieAfterThisSegment: 0
@@ -134,6 +139,7 @@ MonoBehaviour:
       m_AssetGUID: fc15244732d2d5740bca055da0221fc3
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Celeste_4_T1
     audioString: Yeah! Like thank you or whatevaa.
   - endTalkieAfterThisSegment: 0
@@ -153,6 +159,7 @@ MonoBehaviour:
       m_AssetGUID: 7babe14dbd875eb4b97f1ebd49001b3c
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Red_5_T1
     audioString: I'm so glad we were able to help!
   - endTalkieAfterThisSegment: 0
@@ -172,6 +179,7 @@ MonoBehaviour:
       m_AssetGUID: b520ca1d59525744887afd8aa5cc1c37
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Wally_6_T1
     audioString: 'Hey Darwin, '
   - endTalkieAfterThisSegment: 0
@@ -191,6 +199,7 @@ MonoBehaviour:
       m_AssetGUID: becd967d36555b64d98754e65513a334
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Wally_6_T2
     audioString: have you thought of any stories to tell?
   - endTalkieAfterThisSegment: 0
@@ -210,6 +219,7 @@ MonoBehaviour:
       m_AssetGUID: e686ba499c5cdad42b3b201ea2b8450f
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Darwin_7_T1
     audioString: Oh yes indeed!
   - endTalkieAfterThisSegment: 0
@@ -229,6 +239,7 @@ MonoBehaviour:
       m_AssetGUID: 2c66d6317fc3eed469e7013f235d4119
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Red_8_T1
     audioString: That makes me so happy!
   - endTalkieAfterThisSegment: 0
@@ -248,6 +259,7 @@ MonoBehaviour:
       m_AssetGUID: baf87585a4965aa478be35708e3c16d2
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Wally_9_T1
     audioString: "Now don\u2019t go running off on us- "
   - endTalkieAfterThisSegment: 0
@@ -267,5 +279,6 @@ MonoBehaviour:
       m_AssetGUID: 18c08debb1c40d449b03206ebda187ea
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Darwin_10_T1
     audioString: I'm so excited! I just have to go find Julius!

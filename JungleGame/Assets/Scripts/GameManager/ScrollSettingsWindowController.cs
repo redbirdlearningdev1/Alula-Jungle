@@ -88,7 +88,7 @@ public class ScrollSettingsWindowController : MonoBehaviour
         if (StudentInfoSystem.GetCurrentProfile() != null)
         {
             UpdateMapSprite();
-        }   
+        }
     }
 
     public void CloseAllWindows()

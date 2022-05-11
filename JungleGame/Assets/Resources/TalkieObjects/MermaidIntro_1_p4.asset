@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: fd0218ea157c5bf4b92659805805590a
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_1_Marcus_48_T1
     audioString: Just give up already! Make like a tree and uh,  get outta here!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 2b2997da3fb2858488e7d8b430aee7b0
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_1_Brutus_49_T1
     audioString: "Yeah\u2026 "
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 7b517274c7d848e49b4065e10468dc1f
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_1_Brutus_49_T2
     audioString: "I don\u2019t think that\u2019s how it goes\u2026"
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: 90ddd07128eb7f84e940cf7c3087e215
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_1_Marcus_49_T1
     audioString: "SILENCE! Let\u2019s just leave!"
   - endTalkieAfterThisSegment: 0
@@ -115,5 +119,6 @@ MonoBehaviour:
       m_AssetGUID: 70e7b3b101ba7904283c610d0f11018b
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_1_Brutus_50_T1
     audioString: Yeah... that

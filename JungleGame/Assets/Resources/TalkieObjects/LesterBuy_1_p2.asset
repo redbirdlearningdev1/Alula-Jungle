@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: c2efce6fc4cce9543bd0535c174eab3a
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Sticker_0_1_Lester_4_T1
     audioString: "Let\u2019s see what sticker you\u2019ll get!"
   - endTalkieAfterThisSegment: 1
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 4d077e529c5072948855ced0ff559d5f
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Sticker_0_1_Lester_5_T1
     audioString: "I\u2019ll whip up something good,  Geckos honor!"
   - endTalkieAfterThisSegment: 1
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 3e9de741ad75e584491adbde7c215b05
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Sticker_0_1_Lester_6_T1
     audioString: "It\u2019s sticker time Explorer!"
   - endTalkieAfterThisSegment: 1
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: 6e81c1959dccc2c4e85e21a1f40ddc72
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Sticker_0_1_Lester_7_T1
     audioString: "Wait here! I\u2019ll make a cute sticker in no time!"
   - endTalkieAfterThisSegment: 1
@@ -115,5 +119,6 @@ MonoBehaviour:
       m_AssetGUID: 62480c5b4f88d964e825950297cff2e1
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Sticker_0_1_Lester_8_T1
     audioString: Sit back and enjoy!

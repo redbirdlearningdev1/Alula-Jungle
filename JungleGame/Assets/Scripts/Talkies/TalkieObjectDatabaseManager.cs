@@ -45,6 +45,7 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
     public const string talkie_audio_folder = "Assets/Resources/TalkieAudioFiles";
 
     public List<AssetReference> globalTalkieAudioList;
+    public List<AssetReference> unusedAudioFiles;
     private List<TalkieObject> localTalkieObjects;
     private List<string> filePaths;
     private string fileText;
@@ -684,6 +685,12 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
         }
 
         print("local talkies made: " + localTalkieObjects.Count);
+
+        print ("unused audios: " + unusedAudioFiles.Count);
+        foreach (var audio in unusedAudioFiles)
+        {
+            print (audio.ToString());
+        }
         // print ("red word count: " + redWordCount);
         // print ("wally word count: " + wallyWordCount);
         // print ("darwin word count: " + darwinWordCount);
@@ -861,20 +868,9 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
             globalTalkieAudioList.Add(new AssetReference(AssetDatabase.AssetPathToGUID(assetPath)));
         }
 
-        // foreach (var folder in folders)
-        // {
-        //     //print ("folder: " + folder);
-        //     var audio_files = Resources.LoadAll<AudioClip>(folder.Replace("Assets/Resources/", ""));
-        //     List<AssetReference> audioRefs = new List<AssetReference>();
-
-        //     // TODO: MAJOR TESTING REQUIRED
-        //     foreach (AudioClip audio in audio_files)
-        //     {
-        //         audioRefs.Add(new AssetReference(audio.name));
-        //     }
-
-        //     globalTalkieAudioList.AddRange(audioRefs);
-        // }
+        // copy over list to unused list
+        unusedAudioFiles = new List<AssetReference>();
+        unusedAudioFiles.AddRange(globalTalkieAudioList);
 
         print("global audio list: " + globalTalkieAudioList.Count);
     }
@@ -892,6 +888,10 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
             if (AssetDatabase.GUIDToAssetPath(file.AssetGUID).Contains(str))
             {
                 //print ("found audio!");
+
+                // remove from unused list
+                unusedAudioFiles.Remove(file);
+
                 return file;
             }
         }

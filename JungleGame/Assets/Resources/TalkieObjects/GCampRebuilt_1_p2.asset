@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 132569cfb16a950458a915c115cdaa1b
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_2_3_Red_7_T1
     audioString: Alright Explorer!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 8ec959df4ff9e3d4e83c2e5ea614960c
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_2_3_Red_7_T2
     audioString: "Let\u2019s move forward!"
   - endTalkieAfterThisSegment: 0
@@ -77,5 +79,6 @@ MonoBehaviour:
       m_AssetGUID: 56152eb2638ae3b46b17ea03b4ff861b
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RedWally_Oh
     audioString: Oh!

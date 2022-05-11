@@ -60,19 +60,6 @@ public class pileRummage : MonoBehaviour
         image.sprite = pileSprites[1];
     }
 
-    public void pileGlowOff()
-    {
-        ImageGlowController.instance.SetImageGlow(image, false);
-    }
-
-    public void pileGlowOn()
-    {
-        if (currPileLock)
-        {
-            ImageGlowController.instance.SetImageGlow(image, true, GlowValue.glow_1_00);
-        }
-    }
-
     public void SetWiggleOn()
     {
         if (currPileLock)

@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 4664913c12ac2c24c930ab5f32b9770a
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_3_Red_10_T1
     audioString: Alright!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 644bd0b32843fe74cb58ee09c8bc4b3e
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_3_Red_10_T2
     audioString: 'let''s move forward and find Darwin! '
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: eeb13d83f0e0f224c8124e93159d643d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_3_Red_11_T1
     audioString: "Hopefully he\u2019s thought of something to help the Prince."
   - endTalkieAfterThisSegment: 0
@@ -96,5 +99,6 @@ MonoBehaviour:
       m_AssetGUID: 21e0cf1b30ffe214da0c70e39c15c53f
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_2_3_Wally_12_T1
     audioString: I agree,  let's hope he does.

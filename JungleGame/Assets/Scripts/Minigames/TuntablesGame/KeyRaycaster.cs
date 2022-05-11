@@ -66,7 +66,7 @@ public class KeyRaycaster : MonoBehaviour
             // reset lock rock
             TurntablesGameManager.instance.rockLock.LerpScale(new Vector2(1f, 1f), 0.2f);
             TurntablesGameManager.instance.rockLock.GetComponent<WiggleController>().StopWiggle();
-            ImageGlowController.instance.SetImageGlow(TurntablesGameManager.instance.rockLock.GetComponent<Image>(), false, GlowValue.none);
+            TurntablesGameManager.instance.rockLock.GetComponent<RockLock>().ToggleGlow(false);
 
             // audio fx
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f);
@@ -127,7 +127,7 @@ public class KeyRaycaster : MonoBehaviour
                         // show lock rock
                         TurntablesGameManager.instance.rockLock.LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
                         TurntablesGameManager.instance.rockLock.GetComponent<WiggleController>().StartWiggle();
-                        ImageGlowController.instance.SetImageGlow(TurntablesGameManager.instance.rockLock.GetComponent<Image>(), true, GlowValue.glow_1_00);
+                        TurntablesGameManager.instance.rockLock.GetComponent<RockLock>().ToggleGlow(true);
 
                         return;
                     }

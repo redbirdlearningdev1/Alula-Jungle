@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 62c90c6a74db3764084b0b8a4977678a
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RR_1_2_Marcus_1_T1
     audioString: "What!? You beat us!? Impossible! Let\u2019s get out of here!"
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 03ce6471fc4541e48a777c39b00906f3
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RR_1_2_Brutus_2_T1
     audioString: "Hehe you beat us\u2026 not that I\u2019m shocked."
   - endTalkieAfterThisSegment: 1
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 09acfc36ca3f47844965974ae17c7aea
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RR_1_2_Marcus_3_T1
     audioString: "UGH let\u2019s just get out of here!!"
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: 606d9fba14feca44c8e8fc61a0529f3a
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RR_1_2_Marcus_4_T1
     audioString: No Way! That was still too easy for you?
   - endTalkieAfterThisSegment: 1
@@ -115,5 +119,6 @@ MonoBehaviour:
       m_AssetGUID: 710ad6bb7dde33842a264e849306e4e8
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RR_1_2_Marcus_4_T2
     audioString: "Ugh we\u2019re leaving!"

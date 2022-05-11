@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: c8f006e7a61a58e448565b71694bc562
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_1a_Clogg_1_T1
     audioString: "Hnn\u2026"
   - endTalkieAfterThisSegment: 1
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: c9cc37f843363f942b16c315c8c382e9
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_1a_Clogg_2_T1
     audioString: Tch.
   - endTalkieAfterThisSegment: 1
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 771f48e778c3f4445a675af71c5c4df7
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_1a_Clogg_3_T1
     audioString: ...
   - endTalkieAfterThisSegment: 1
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: 6467ea37a42a5a743bdf6909f8bdc747
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_1a_Clogg_4_T1
     audioString: Uhhh
   - endTalkieAfterThisSegment: 1
@@ -115,6 +119,7 @@ MonoBehaviour:
       m_AssetGUID: 38340eab528e84a458a0228c39600638
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_1a_Clogg_5_T1
     audioString: Hhh
   - endTalkieAfterThisSegment: 1
@@ -134,6 +139,7 @@ MonoBehaviour:
       m_AssetGUID: 43756740d5edcfc49b512deef759db6a
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_1a_Clogg_6_T1
     audioString: Nuh-uh
   - endTalkieAfterThisSegment: 1
@@ -153,5 +159,6 @@ MonoBehaviour:
       m_AssetGUID: 1ead0093fd15a214ba7c8fab84a43350
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_1a_Clogg_7_T1
     audioString: Go Away

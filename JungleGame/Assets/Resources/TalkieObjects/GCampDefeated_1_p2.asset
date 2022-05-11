@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: f4603522a40ecae4ca8b1997f2dcb4c6
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_2_4_Marcus_9_T1
     audioString: "Ugh. I\u2019m getting tired of him."
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: d35ca50dc4b2be0489d4a92b18d165ec
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_2_4_Brutus_10_T1
     audioString: "Yawn\u2026 I\u2019m just tired."
   - endTalkieAfterThisSegment: 0
@@ -77,5 +79,6 @@ MonoBehaviour:
       m_AssetGUID: 23933b5f6ef89e149b16680a90dd0821
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_2_4_Brutus_10_T2
     audioString: "Let\u2019s just go\u2026"

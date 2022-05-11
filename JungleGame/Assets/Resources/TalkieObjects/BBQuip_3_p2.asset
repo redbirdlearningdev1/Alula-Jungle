@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 61924bcd55fdc4c4495a70916c65aaca
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_5_2_Red_1_T1
     audioString: "We\u2019re almost there,  Explorer!"
   - endTalkieAfterThisSegment: 0
@@ -58,5 +59,6 @@ MonoBehaviour:
       m_AssetGUID: 9867a5682a7c4ad419cbc7fd9bdcce6e
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_5_2_Julius_2_T1
     audioString: "Hmph\u2026"

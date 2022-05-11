@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: b425b4eeef5ee6e44825f30bd9540afc
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_3_Sylvie_1_T1
     audioString: "Hey Explorer! Wanna come in for a swim? The water\u2019s great!"
   - endTalkieAfterThisSegment: 1
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 85d009501e2a6a5409f90f86f01201e1
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_3_Celeste_2_T1
     audioString: "Did you come to enjoy the sun too? I\u2019m getting my like,  tan
       on!"
@@ -78,6 +80,7 @@ MonoBehaviour:
       m_AssetGUID: 9406b17f767349b4f95fd98e3eda0a09
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_3_Celeste_3_T1
     audioString: I love hanging out with friends or whateva,  but especially with
       Sylvie!
@@ -98,5 +101,6 @@ MonoBehaviour:
       m_AssetGUID: c44ee8850b9a82d4abf8d200bfe1d276
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_3_Sylvie_3_T2
     audioString: "The water\u2019s always better with you Celeste!"

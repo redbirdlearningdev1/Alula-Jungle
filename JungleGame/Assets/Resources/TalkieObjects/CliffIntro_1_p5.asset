@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 525303fc2f810434196e77e433d662e4
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Red_44_T1
     audioString: "Oh no\u2026"
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: e9c03f21d8191514fba20822b48acbd6
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Red_44_T2
     audioString: "And I thought we were getting through to him\u2026"
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 90713ed62c7171b4d836182374b0fbc2
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Wally_45_T1
     audioString: It seems like Darwin got to him a little bit.
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: f15ad2387c07c3644a7b03613063b8e0
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Wally_45_T2
     audioString: "Maybe if he tells the Prince more stories,  he\u2019ll come around."
   - endTalkieAfterThisSegment: 0
@@ -115,6 +119,7 @@ MonoBehaviour:
       m_AssetGUID: 6cbcd4f389bd0aa42a74323d023cca3d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Red_46_T1
     audioString: "You\u2019re right Wally!"
   - endTalkieAfterThisSegment: 0
@@ -134,6 +139,7 @@ MonoBehaviour:
       m_AssetGUID: 777d781a3a17a9b4caa31290e3729bd1
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Red_46_T2
     audioString: Hey Darwin?
   - endTalkieAfterThisSegment: 0
@@ -153,6 +159,7 @@ MonoBehaviour:
       m_AssetGUID: 0ca9f501d42bb7743b54223e85d0ccff
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Red_46_T3
     audioString: Do you think you can remember more stories?
   - endTalkieAfterThisSegment: 0
@@ -172,6 +179,7 @@ MonoBehaviour:
       m_AssetGUID: 64364aba0c4781c47af3fae1bb87ac72
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Darwin_47_T1
     audioString: "Hmm\u2026"
   - endTalkieAfterThisSegment: 0
@@ -191,6 +199,7 @@ MonoBehaviour:
       m_AssetGUID: 779613dc59e999e4ca5eb8cd213fd196
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Darwin_47_T2
     audioString: "I\u2019ll certainly do my best."
   - endTalkieAfterThisSegment: 0
@@ -210,6 +219,7 @@ MonoBehaviour:
       m_AssetGUID: 5d7fca745d4618e4fb8ae7c683ce9dd2
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Darwin_47_T3
     audioString: But as always,  the mess isn't helping my memory.
   - endTalkieAfterThisSegment: 0
@@ -229,6 +239,7 @@ MonoBehaviour:
       m_AssetGUID: ebad1528bab8e0142b3905c09f47b5ff
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Wally_48_T1
     audioString: No problem Darwin.
   - endTalkieAfterThisSegment: 0
@@ -248,6 +259,7 @@ MonoBehaviour:
       m_AssetGUID: 957c262da42d0c2488003930862dda32
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Wally_48_T2
     audioString: "Sit back,  and we\u2019ll clean this mess up."
   - endTalkieAfterThisSegment: 0
@@ -267,6 +279,7 @@ MonoBehaviour:
       m_AssetGUID: ae9a7b1312c48e746b73cbbed926e6ac
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Red_49_T1
     audioString: Yeah!
   - endTalkieAfterThisSegment: 0
@@ -286,6 +299,7 @@ MonoBehaviour:
       m_AssetGUID: c56e5450c20a42442baf653735d49d41
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Red_49_T2
     audioString: "Don\u2019t worry Darwin! We\u2019ll clean this up in no time!"
   - endTalkieAfterThisSegment: 0
@@ -305,6 +319,7 @@ MonoBehaviour:
       m_AssetGUID: 6fadeae9147a07346a0afa9fd2e7e331
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_RedWally_50_T1
     audioString: Bubble bubble!
   - endTalkieAfterThisSegment: 0
@@ -324,6 +339,7 @@ MonoBehaviour:
       m_AssetGUID: 56152eb2638ae3b46b17ea03b4ff861b
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RedWally_Oh
     audioString: Oh!
   - endTalkieAfterThisSegment: 0
@@ -343,6 +359,7 @@ MonoBehaviour:
       m_AssetGUID: 8402bf036661c824d9c08c3b2d8f0b56
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Darwin_51_T1
     audioString: "What\u2019s that?!"
   - endTalkieAfterThisSegment: 0
@@ -362,6 +379,7 @@ MonoBehaviour:
       m_AssetGUID: 26357a2b958be8249bdbafad8ac6eef5
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Bubbles_52_T1
     audioString: Bubble bubble bubble! Gurgle Borp Bubble!
   - endTalkieAfterThisSegment: 0
@@ -381,6 +399,7 @@ MonoBehaviour:
       m_AssetGUID: 8f65e739952f4ad4d94fb12d54b58447
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Red_53_T1
     audioString: Oh no!
   - endTalkieAfterThisSegment: 0
@@ -400,6 +419,7 @@ MonoBehaviour:
       m_AssetGUID: 1a76fa9eaf150ab44ace1b8cc131b32d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Red_53_T2
     audioString: What happened to you?!
   - endTalkieAfterThisSegment: 0
@@ -419,6 +439,7 @@ MonoBehaviour:
       m_AssetGUID: 9041e10bf1334e144851434c9ff802ee
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Bubbles_54_T1
     audioString: Bubble bubble bubble! Gurgle Borp Bubble!
   - endTalkieAfterThisSegment: 0
@@ -438,6 +459,7 @@ MonoBehaviour:
       m_AssetGUID: 9e31902ddc60a6348834450c5b431913
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Wally_55_T1
     audioString: "Hmmm\u2026"
   - endTalkieAfterThisSegment: 0
@@ -457,6 +479,7 @@ MonoBehaviour:
       m_AssetGUID: 4bc79c4f290db864a838fb307ed37519
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Wally_55_T2
     audioString: "I can\u2019t understand him"
   - endTalkieAfterThisSegment: 0
@@ -476,6 +499,7 @@ MonoBehaviour:
       m_AssetGUID: 559aac5cfa8e402439550bf623a48274
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Red_56_T1
     audioString: Yeah,  neither can I.
   - endTalkieAfterThisSegment: 0
@@ -495,6 +519,7 @@ MonoBehaviour:
       m_AssetGUID: a8f20c9bc817f5c48812b19b884978ab
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Bubbles_57_T1
     audioString: Burble burble!
   - endTalkieAfterThisSegment: 0
@@ -514,6 +539,7 @@ MonoBehaviour:
       m_AssetGUID: 5703fd6f2ec407b46b9e34b0742440fc
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Bubbles_57_T2
     audioString: ...
   - endTalkieAfterThisSegment: 0
@@ -533,6 +559,7 @@ MonoBehaviour:
       m_AssetGUID: 2ca0763b3d42b5c4a9c8d65074f0686f
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Bubbles_57_T3
     audioString: POP!
   - endTalkieAfterThisSegment: 0
@@ -552,6 +579,7 @@ MonoBehaviour:
       m_AssetGUID: 966a04f4e054147439b1e7a112e97c5f
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Red_58_T1
     audioString: Bubbles...
   - endTalkieAfterThisSegment: 0
@@ -571,6 +599,7 @@ MonoBehaviour:
       m_AssetGUID: 4ae1f4640c24e4347987261c67908bae
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Red_58_T2
     audioString: Oh!
   - endTalkieAfterThisSegment: 0
@@ -590,6 +619,7 @@ MonoBehaviour:
       m_AssetGUID: ac3a62dd762d08d48a166848fe2ca50c
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Red_58_T3
     audioString: Is that your name? Bubbles?
   - endTalkieAfterThisSegment: 0
@@ -609,6 +639,7 @@ MonoBehaviour:
       m_AssetGUID: 999a55ceb3b1de64b95249800c9360c1
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Bubbles_59_T1
     audioString: 'Bubble Bubble! '
   - endTalkieAfterThisSegment: 0
@@ -628,6 +659,7 @@ MonoBehaviour:
       m_AssetGUID: 24d6cacdbc5957044a5460ac97b50c2e
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Bubbles_59_T2
     audioString: POP!
   - endTalkieAfterThisSegment: 0
@@ -647,6 +679,7 @@ MonoBehaviour:
       m_AssetGUID: 19eff06b1c075424fb418d3dd3b62ee3
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Darwin_60_T1
     audioString: Bubbles it is then!
   - endTalkieAfterThisSegment: 0
@@ -666,6 +699,7 @@ MonoBehaviour:
       m_AssetGUID: dcb3a6d3d79e3eb49950153bbc4889d3
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Bubbles_61_T1
     audioString: 'Bubble bubble... '
   - endTalkieAfterThisSegment: 0
@@ -685,6 +719,7 @@ MonoBehaviour:
       m_AssetGUID: e9c176e95f324f3478e025390dd350f2
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Bubbles_61_T2
     audioString: Gorp... ooooo...
   - endTalkieAfterThisSegment: 0
@@ -704,6 +739,7 @@ MonoBehaviour:
       m_AssetGUID: 64df64e8569f13a4f910152cf1046a3a
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Darwin_62_T1
     audioString: "While we can\u2019t fully understand you,  I can at least tell
       you\u2019re injured"
@@ -724,6 +760,7 @@ MonoBehaviour:
       m_AssetGUID: 22a1ba3f6fa9b0c4d9110c7b918c6204
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Red_63_T1
     audioString: "Oh! You\u2019re right!"
   - endTalkieAfterThisSegment: 0
@@ -743,6 +780,7 @@ MonoBehaviour:
       m_AssetGUID: 29fef95104b15fd4fb06bf2f8334616a
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Wally_64_T1
     audioString: "And that\u2019s where we come in!"
   - endTalkieAfterThisSegment: 0
@@ -762,6 +800,7 @@ MonoBehaviour:
       m_AssetGUID: 3c5cccc323e037b40bcbb2b3df06aa22
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Red_65_T2
     audioString: "Don\u2019t worry friend! "
   - endTalkieAfterThisSegment: 0
@@ -781,6 +820,7 @@ MonoBehaviour:
       m_AssetGUID: 89bd2975e7bc0ff43bb1ae501b1e762d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Red_65_T3
     audioString: My friends and I will help patch you up,  and clean up your space!
   - endTalkieAfterThisSegment: 0
@@ -800,6 +840,7 @@ MonoBehaviour:
       m_AssetGUID: f3e0a68a6516fb645a0f02b8ace5b022
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Bubbles_66_T1
     audioString: Bubble!
   - endTalkieAfterThisSegment: 0
@@ -819,6 +860,7 @@ MonoBehaviour:
       m_AssetGUID: 19ba3b7e7c125e34d9571466056889dc
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Wally_67_T1
     audioString: All right.
   - endTalkieAfterThisSegment: 0
@@ -838,6 +880,7 @@ MonoBehaviour:
       m_AssetGUID: bbd4c5aa9b5cd86488af9d3b44b6f760
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Wally_67_T2
     audioString: Darwin,  you keep trying to come up with stories to help Julius.
   - endTalkieAfterThisSegment: 0
@@ -857,6 +900,7 @@ MonoBehaviour:
       m_AssetGUID: 76a29ba8c3edeb94d8cc81c6f6bf62dc
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Wally_67_T3
     audioString: Red,  the Explorer,  and I will clean this place up and help Bubbles.
   - endTalkieAfterThisSegment: 0
@@ -876,6 +920,7 @@ MonoBehaviour:
       m_AssetGUID: 8d01b95f736b85245b9a4f3c89656de2
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Darwin_68_T1
     audioString: Sounds like a plan.
   - endTalkieAfterThisSegment: 0
@@ -895,6 +940,7 @@ MonoBehaviour:
       m_AssetGUID: 89251cefc49ee014b8a65293bd9968a7
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Darwin_68_T2
     audioString: "I\u2019m counting on you!"
   - endTalkieAfterThisSegment: 0
@@ -914,6 +960,7 @@ MonoBehaviour:
       m_AssetGUID: 94861f154db3bac4483dd26ef7137346
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Red_69_T1
     audioString: Right!
   - endTalkieAfterThisSegment: 0
@@ -933,5 +980,6 @@ MonoBehaviour:
       m_AssetGUID: f849b16bec5745d4780ed6569f5398e6
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_1_Red_69_T2
     audioString: "Let\u2019s do it!"

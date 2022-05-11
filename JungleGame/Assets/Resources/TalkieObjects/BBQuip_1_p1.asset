@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: ba29f7074ea989d46a89eef25c104e73
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_3_1_Darwin_1_T1
     audioString: Julius!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 676c842edc740204b84e7ecf68a5046e
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_3_1_Julius_2_T1
     audioString: Stop talking,  Darwin!
   - endTalkieAfterThisSegment: 0
@@ -77,5 +79,6 @@ MonoBehaviour:
       m_AssetGUID: 74b75d9ba80c1264fa38d42adbb44c9f
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_3_1_Julius_2_T2
     audioString: We have more challenges!

@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 4692abc08aaca814b8d1d8827f046b72
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Red_9_T1
     audioString: 'Darwin wait! '
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 82c5e970ec114244da4b6f19c2c128d7
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Wally_10_T1
     audioString: Sigh
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: ebfaec057d8b7ba4ebe940f5f3c64e0c
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Wally_10_T2
     audioString: We just talked about this...
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: 2fdf37942a4254946b78c59e39bc2f5f
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Red_11_T1
     audioString: At any rate we should catch up to him!
   - endTalkieAfterThisSegment: 0
@@ -115,5 +119,6 @@ MonoBehaviour:
       m_AssetGUID: 8e108308a3368ce409f7fe74683aa325
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RedWally_Huh
     audioString: Huh?!

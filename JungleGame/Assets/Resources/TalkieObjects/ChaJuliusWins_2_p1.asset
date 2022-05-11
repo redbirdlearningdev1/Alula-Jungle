@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 2162299b6e7dec64f9864c0a324e2a88
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1a_Red_4_T1
     audioString: "It\u2019s okay Explorer! "
   - endTalkieAfterThisSegment: 0
@@ -58,5 +59,6 @@ MonoBehaviour:
       m_AssetGUID: 1c8f9da30fb2c39429cc13eb9e18edb7
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1a_Red_4_T2
     audioString: Let's go practice some more.

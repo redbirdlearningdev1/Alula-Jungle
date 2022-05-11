@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 6fd664d0ad3b7144ebe3df67f620b1cf
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_6_1_Julius_1_T1
     audioString: "Huff...huff\u2026"
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 042090a3bee4a3342a842e16de41940f
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_6_1_Red_2_T1
     audioString: Now,  will you finally hear Darwin out?
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 336971822ad45f143947c187b2191088
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_6_1_Julius_3_T1
     audioString: "Hrm\u2026"
   - endTalkieAfterThisSegment: 0
@@ -93,10 +96,11 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 
+      m_AssetGUID: 15c9c3735bfcb6847aa86dfb08c1021e
       m_SubObjectName: 
       m_SubObjectType: 
-    audioClipName: E_6_1_Darwin_4_T1
+      m_EditorAssetChanged: 0
+    audioClipName: E_6_1_Darwin_1_T1
     audioString: "Julius\u2026"
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -112,10 +116,11 @@ MonoBehaviour:
     rightEyesEnum: 4
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 
+      m_AssetGUID: 23d2e79c8a20c1a428b5224b0118a274
       m_SubObjectName: 
       m_SubObjectType: 
-    audioClipName: E_6_1_Darwin_4_T2
+      m_EditorAssetChanged: 0
+    audioClipName: E_6_1_Darwin_1_T2
     audioString: What I was trying to say was-
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -131,10 +136,11 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 
+      m_AssetGUID: 911b1a1f530b1d64daf7396a167f0017
       m_SubObjectName: 
       m_SubObjectType: 
-    audioClipName: E_6_1_Darwin_4_T3
+      m_EditorAssetChanged: 0
+    audioClipName: E_6_1_Darwin_1_T3
     audioString: Oh!?
   - endTalkieAfterThisSegment: 0
     requireYN: 0
@@ -153,5 +159,6 @@ MonoBehaviour:
       m_AssetGUID: 806307aa9c987334ab01c970e55258ac
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RedWally_Gasp
     audioString: '!!!'

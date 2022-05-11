@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: b4a0584202db52f41821e787bd86ca14
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_3_1_RedWally_1_T1
     audioString: PEEUWWWW!!!!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 8568ebdec53a00b4b8fd6b55604e5f5b
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_3_1_Red_2_T1
     audioString: It looks like some monkeys were uhhh...
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: 3ae39343986002c4e96cdbf59735a1b1
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_3_1_Red_2_T2
     audioString: partying hard.
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: f81db1142a311fd40be6361c7253f947
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_3_1_Wally_3_T1
     audioString: Well whatever it was it reeks.
   - endTalkieAfterThisSegment: 0
@@ -115,6 +119,7 @@ MonoBehaviour:
       m_AssetGUID: a14d6f8d027df8b4f8bf3fec078dd55d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_3_1_Red_4_T1
     audioString: 'I agree, '
   - endTalkieAfterThisSegment: 0
@@ -134,6 +139,7 @@ MonoBehaviour:
       m_AssetGUID: a2c7f543ec984d143aa3d85c1dd986c5
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_3_1_Red_4_T2
     audioString: Let's clean this up and be on our way.
   - endTalkieAfterThisSegment: 0
@@ -153,5 +159,6 @@ MonoBehaviour:
       m_AssetGUID: 29c959a469a792144bc9f215b78a5cb3
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_3_1_Wally_5_T1
     audioString: "Sounds like a plan\u2026"

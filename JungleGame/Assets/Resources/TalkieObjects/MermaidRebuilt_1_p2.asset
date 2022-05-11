@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: 5cb747f0b7dc141439063735ac59e4c8
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Red_11_T1
     audioString: 'Sigh, '
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: 20a8f586fe8cec045afac886ba0bcc26
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Red_11_T2
     audioString: there he goes again..
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: c5ab27e1764b0bd45b828ec051e917c5
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Wally_12_T1
     audioString: "I don\u2019t know what we were expecting."
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: d15ef630a9013bb4a805f898866fc7ea
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Red_13_T1
     audioString: Anyway.
   - endTalkieAfterThisSegment: 0
@@ -115,6 +119,7 @@ MonoBehaviour:
       m_AssetGUID: 013dc0258d4d0fb4a84de6b374158f6d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Red_13_T2
     audioString: I'm so glad we could help you guys!
   - endTalkieAfterThisSegment: 0
@@ -134,6 +139,7 @@ MonoBehaviour:
       m_AssetGUID: 61819b2e778fc2645b1583de1b5c8b22
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Sylvie_14_T1
     audioString: "I don\u2019t know what we would do without you!"
   - endTalkieAfterThisSegment: 0
@@ -153,6 +159,7 @@ MonoBehaviour:
       m_AssetGUID: c18bba8a76b833f44b9a45bea57375a6
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Sylvie_14_T2
     audioString: "I just wish we knew why the Prince would do such a thing\u2026"
   - endTalkieAfterThisSegment: 0
@@ -172,6 +179,7 @@ MonoBehaviour:
       m_AssetGUID: 384d4fe6789045244a94063a6703597d
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Celeste_15_T1
     audioString: "Yuh! It\u2019s seriously concerning or whatevva. "
   - endTalkieAfterThisSegment: 0
@@ -191,6 +199,7 @@ MonoBehaviour:
       m_AssetGUID: 9a6cc93df0c53d04e89c8d6e46dc7d75
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Red_16_T1
     audioString: "Yeah\u2026"
   - endTalkieAfterThisSegment: 0
@@ -210,6 +219,7 @@ MonoBehaviour:
       m_AssetGUID: 08a2025ee6eaf1f4bb943b6465220dcd
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Red_16_T2
     audioString: "But I feel like we\u2019re getting through to him. He was a lot
       worse before,  believe it or not."
@@ -230,6 +240,7 @@ MonoBehaviour:
       m_AssetGUID: 544f661ab8ff7934f88d03c466983efe
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Wally_17_T1
     audioString: "Worse is an understatement\u2026"
   - endTalkieAfterThisSegment: 0
@@ -249,6 +260,7 @@ MonoBehaviour:
       m_AssetGUID: b088736027536d349b9b4f25cad91bb5
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Celeste_18_T1
     audioString: Worse or not,  thank you for helping or whatever,  seriously.
   - endTalkieAfterThisSegment: 0
@@ -268,6 +280,7 @@ MonoBehaviour:
       m_AssetGUID: 136d91a2d5196a04f90e17e1c009f144
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Celeste_18_T2
     audioString: It makes my blood boil knowing what the Prince did to Sylvie!
   - endTalkieAfterThisSegment: 0
@@ -287,6 +300,7 @@ MonoBehaviour:
       m_AssetGUID: 65d51a6d0e52a1349969e897bdadb049
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Sylvie_19_T1
     audioString: "Oh Celeste\u2026 "
   - endTalkieAfterThisSegment: 0
@@ -306,6 +320,7 @@ MonoBehaviour:
       m_AssetGUID: 2f98eafa331a6364db9de5ad4e7e9fe2
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Sylvie_19_T3
     audioString: "It\u2019s okay,  I promise."
   - endTalkieAfterThisSegment: 0
@@ -325,6 +340,7 @@ MonoBehaviour:
       m_AssetGUID: 36837c64cc9ef06409f01c13039d05a5
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Sylvie_19_T4
     audioString: "We\u2019re both alright now,  and that\u2019s all that matters
       to me... "
@@ -345,6 +361,7 @@ MonoBehaviour:
       m_AssetGUID: 16347962b4b276a42b22040c8f50188b
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Celeste_20_T1
     audioString: ...
   - endTalkieAfterThisSegment: 0
@@ -364,6 +381,7 @@ MonoBehaviour:
       m_AssetGUID: 97f9bcc37d1a1fe478eed7030785323a
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Sylvie_21_T1
     audioString: In any case...
   - endTalkieAfterThisSegment: 0
@@ -383,6 +401,7 @@ MonoBehaviour:
       m_AssetGUID: b6428176dca22d24c97f5a9425f56326
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Sylvie_21_T2
     audioString: I'm just happy you guys were able to fix everything! It was a mess!
   - endTalkieAfterThisSegment: 0
@@ -402,6 +421,7 @@ MonoBehaviour:
       m_AssetGUID: 815f2fbdca334854286dc246f33c565e
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Red_22_T1
     audioString: 'I''m just glad everything worked out okay! '
   - endTalkieAfterThisSegment: 0
@@ -421,5 +441,6 @@ MonoBehaviour:
       m_AssetGUID: efab14e331d939641999dc1ccb9d0019
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_4_Wally_23_T1
     audioString: Me to-

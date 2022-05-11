@@ -793,7 +793,6 @@ public class WordFactoryBlendingManager : MonoBehaviour
         // remove coin glows
         foreach (var coin in currentCoins)
         {
-            coin.ToggleGlowOutline(false);
             yield return new WaitForSeconds(0.05f);
         }
 
@@ -998,11 +997,6 @@ public class WordFactoryBlendingManager : MonoBehaviour
         polaroids[0].transform.SetParent(polaroidParent);
         polaroids[1].transform.SetParent(polaroidParent);
         polaroids[2].transform.SetParent(polaroidParent);
-
-        // remove glow
-        polaroids[0].ToggleGlowOutline(false);
-        polaroids[1].ToggleGlowOutline(false);
-        polaroids[2].ToggleGlowOutline(false);
     }
 
     public void PlayAudioCoin(UniversalCoinImage coin)

@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: ab7673961960c3e48ad2c71f0e96cfae
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_5_3_Wally_1_T1
     audioString: Hang in there.
   - endTalkieAfterThisSegment: 0
@@ -58,5 +59,6 @@ MonoBehaviour:
       m_AssetGUID: 99a77c4246501d34d954a4c4a833b498
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_5_3_Julius_2_T1
     audioString: Ugh...

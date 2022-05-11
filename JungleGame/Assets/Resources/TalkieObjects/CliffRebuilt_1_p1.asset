@@ -39,6 +39,7 @@ MonoBehaviour:
       m_AssetGUID: a0c9ce2c323996749bce70ec6a128592
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Red_1_T1
     audioString: Hurray!
   - endTalkieAfterThisSegment: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       m_AssetGUID: b0da72989ba502f478b5c7bb6751ac21
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Red_1_T2
     audioString: We did it!
   - endTalkieAfterThisSegment: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
       m_AssetGUID: a46590fa2b9e07d4d8798c07ed160d94
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Wally_2_T1
     audioString: It looks good!
   - endTalkieAfterThisSegment: 0
@@ -96,6 +99,7 @@ MonoBehaviour:
       m_AssetGUID: 02d93698af6712a4bb69c0aabf2f595e
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Wally_2_T2
     audioString: Great job Explorer.
   - endTalkieAfterThisSegment: 0
@@ -115,6 +119,7 @@ MonoBehaviour:
       m_AssetGUID: 3037fb0009965204a96a61624d8e938c
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Darwin_3_T1
     audioString: You all did so well!
   - endTalkieAfterThisSegment: 0
@@ -134,6 +139,7 @@ MonoBehaviour:
       m_AssetGUID: d427e6e7f54e16041ae649448fca2659
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Darwin_3_T2
     audioString: "I\u2019m impressed yet again!"
   - endTalkieAfterThisSegment: 0
@@ -153,6 +159,7 @@ MonoBehaviour:
       m_AssetGUID: 1597cee276a8d8949bab9b4ef77bce20
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Red_4_T1
     audioString: How about you Bubbles?
   - endTalkieAfterThisSegment: 0
@@ -172,6 +179,7 @@ MonoBehaviour:
       m_AssetGUID: e92c63641d3edfc438e220fd877d5be9
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Red_4_T2
     audioString: Do you feel any better?
   - endTalkieAfterThisSegment: 0
@@ -191,6 +199,7 @@ MonoBehaviour:
       m_AssetGUID: ef998d7c3f1f5484f83d609f4be29182
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Bubbles_5_T1
     audioString: Boorble Burble Bubble!
   - endTalkieAfterThisSegment: 0
@@ -210,6 +219,7 @@ MonoBehaviour:
       m_AssetGUID: c3e5c31708f1ce84e8b488115ed62a52
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Wally_6_T1
     audioString: '*haha*'
   - endTalkieAfterThisSegment: 0
@@ -229,6 +239,7 @@ MonoBehaviour:
       m_AssetGUID: 5b36ec78b8397244aa640bc683ae18de
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Wally_6_T2
     audioString: We'll take that as a yes.
   - endTalkieAfterThisSegment: 0
@@ -248,6 +259,7 @@ MonoBehaviour:
       m_AssetGUID: 410c20c952a94984890bdc7ead82da70
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Red_7_T1
     audioString: 'How about you Darwin? '
   - endTalkieAfterThisSegment: 0
@@ -267,6 +279,7 @@ MonoBehaviour:
       m_AssetGUID: 3ec2c01da15e1bf41a978dc0fc576d5c
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Red_7_T2
     audioString: Think of any stories to tell the Prince?
   - endTalkieAfterThisSegment: 0
@@ -286,6 +299,7 @@ MonoBehaviour:
       m_AssetGUID: 5ec37b190c15ca2469249fc1fa2a39dd
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Darwin_8_T1
     audioString: 'Oh yes! '
   - endTalkieAfterThisSegment: 0
@@ -305,6 +319,7 @@ MonoBehaviour:
       m_AssetGUID: 6a84182e5a03ec74aa6fa2b41c548bd5
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Darwin_8_T2
     audioString: "I can\u2019t wait to tell him!"
   - endTalkieAfterThisSegment: 0
@@ -324,5 +339,6 @@ MonoBehaviour:
       m_AssetGUID: c05dff4c09f963848b802e1884811cf9
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Darwin_8_T3
     audioString: "Come on gang! Let\u2019s go find him!"
