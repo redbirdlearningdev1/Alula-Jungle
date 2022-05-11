@@ -573,8 +573,10 @@ public class TalkieManager : MonoBehaviour
         if (!fastTalkies)
         {
             // play audio
-            if (talkieSeg.audioClip != null)
+            //Debug.Log("Talkie Seg clip: " + talkieSeg.audioClip);
+            if (talkieSeg.audioClip.RuntimeKeyIsValid())
             {
+                //Debug.Log("IsValid");
                 CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(talkieSeg.audioClip));
                 yield return cd.coroutine;
                 AudioManager.instance.PlayTalk(talkieSeg.audioClip);
@@ -582,8 +584,11 @@ public class TalkieManager : MonoBehaviour
             }
             else
             {
+                //Debug.Log("IsNotValid");
+
                 // attempt to match audio clip name to reaction duplicate
                 AssetReference clip = TalkieDatabase.instance.GetTalkieReactionDuplicate(talkieSeg.audioClipName);
+                //Debug.Log(clip);
 
                 CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
                 yield return cd.coroutine;

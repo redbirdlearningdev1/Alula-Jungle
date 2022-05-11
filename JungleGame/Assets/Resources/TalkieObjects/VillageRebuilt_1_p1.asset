@@ -36,9 +36,10 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 2349b4af541aa134a87d8aff987e51e6
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_5_Red_1_T1
     audioString: Wow!
   - endTalkieAfterThisSegment: 0
@@ -55,9 +56,10 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 2ee1052fe68200643ac1dc52e08a33b2
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_5_Red_1_T2
     audioString: 'The village looks great! '
   - endTalkieAfterThisSegment: 0
@@ -74,9 +76,10 @@ MonoBehaviour:
     rightEyesEnum: 2
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: 6cf00cde598cf594482b8823d234e789
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_5_Wally_2_T1
     audioString: Good job!
   - endTalkieAfterThisSegment: 0
@@ -93,9 +96,10 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: d68eba83cf04e144e9df35c7e18fb3b2
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_5_Darwin_3_T1
     audioString: Wow this looks incredible!
   - endTalkieAfterThisSegment: 0
@@ -112,9 +116,10 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: ef07ddedd84f89f4e9bc565e8b44d0bd
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_5_Darwin_3_T2
     audioString: I uhh...
   - endTalkieAfterThisSegment: 0
@@ -131,9 +136,10 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: d6c7af0b77eb0dc40972da10f1d395cc
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_5_Darwin_3_T3
     audioString: "Can\u2019t believe how good it looks!"
   - endTalkieAfterThisSegment: 0
@@ -150,9 +156,10 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: cd4e6c4d3180160429c582c2a3df38dd
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_5_Wally_4_T1
     audioString: "Does this mean you\u2019re getting your memories back? Will they
       be able to help the Prince?"
@@ -170,9 +177,10 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: fb8afba92f634bf4aac5e05207abca4d
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_5_Darwin_5_T1
     audioString: "They\u2019re starting to come back!"
   - endTalkieAfterThisSegment: 0
@@ -189,9 +197,10 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 864af8193ec2d204fa125c88a272574e
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_5_Darwin_5_T2
     audioString: "It\u2019s been so long that it makes remembering harder\u2026"
   - endTalkieAfterThisSegment: 0
@@ -208,9 +217,10 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 7984c2f84981ff043afd58b608459b2a
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_5_Darwin_5_T3
     audioString: "But with the village being all cleaned up it\u2019s making it easier! "
   - endTalkieAfterThisSegment: 0
@@ -227,9 +237,10 @@ MonoBehaviour:
     rightEyesEnum: 3
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: fb0b46c9a76674e40be528d0cf97cde3
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_5_Red_6_T1
     audioString: I'm glad!
   - endTalkieAfterThisSegment: 0
@@ -246,9 +257,10 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 336d3a08da4711746bd4d36e78a7b247
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_5_Darwin_7_T1
     audioString: As am I!
   - endTalkieAfterThisSegment: 0
@@ -265,8 +277,9 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 4fcd0464d2da4c04790c2391d45f280b
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_5_Darwin_7_T2
     audioString: "I\u2019m going to run up ahead and try to catch up to Julius!"

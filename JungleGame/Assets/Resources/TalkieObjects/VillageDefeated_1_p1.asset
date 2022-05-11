@@ -36,9 +36,10 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 7e81209d63074a443a6bf9d8b4e8deba
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Julius_1_T1
     audioString: Impossible!
   - endTalkieAfterThisSegment: 0
@@ -55,9 +56,10 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 6792f149741974847ae8f9b31bac1cad
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Julius_1_T2
     audioString: How could you beat me?!
   - endTalkieAfterThisSegment: 0
@@ -74,9 +76,10 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 78502fcabfffb644da4b856210643f16
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Julius_1_T3
     audioString: The future King!
   - endTalkieAfterThisSegment: 0
@@ -93,9 +96,10 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: b91266380980f3541a86f2059dffcd08
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Marcus_2_T1
     audioString: HOW DARE YOU DO THIS TO THE FUTURE KING!
   - endTalkieAfterThisSegment: 0
@@ -112,9 +116,10 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: c0acfcebc95930849a632e5cea78d2a1
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Brutus_3_T1
     audioString: "Yeah\u2026"
   - endTalkieAfterThisSegment: 0
@@ -131,9 +136,10 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: 3062d21a772c98b409c1e0c304b0be83
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Brutus_3_T2
     audioString: "How dare you win fair and square\u2026"
   - endTalkieAfterThisSegment: 0
@@ -150,9 +156,10 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 3943cbf5515a8d34a9f7d7c3dba9d0c9
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Marcus_4_T1
     audioString: 'Enough out of you! '
   - endTalkieAfterThisSegment: 0
@@ -169,9 +176,10 @@ MonoBehaviour:
     rightEyesEnum: 4
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: fddfa902659fc554db2d18c48ab10483
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Red_5_T1
     audioString: Good job Explorer!
   - endTalkieAfterThisSegment: 0
@@ -188,9 +196,10 @@ MonoBehaviour:
     rightEyesEnum: 4
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 7fd6ce9ef3e1cab4e88f7be78f55bd26
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Red_5_T2
     audioString: I knew you could do it!
   - endTalkieAfterThisSegment: 0
@@ -207,9 +216,10 @@ MonoBehaviour:
     rightEyesEnum: 2
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: 4e4b951ba0f6b7447bc8611caed1e572
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Wally_6_T1
     audioString: Good job!
   - endTalkieAfterThisSegment: 0
@@ -226,9 +236,10 @@ MonoBehaviour:
     rightEyesEnum: 4
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: 3d0dd7bfc2935d44889a58cfb557a99e
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Wally_6_T2
     audioString: That was amazing!
   - endTalkieAfterThisSegment: 0
@@ -245,9 +256,10 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: df7ad54dfad937744a1c1f225fcc4c10
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Julius_7_T1
     audioString: This isn't over!
   - endTalkieAfterThisSegment: 0
@@ -264,8 +276,9 @@ MonoBehaviour:
     rightEyesEnum: 2
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: dd52735a8733ee947b7d4f34db2104fa
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Julius_7_T2
     audioString: "I\u2019ll challenge you again!"

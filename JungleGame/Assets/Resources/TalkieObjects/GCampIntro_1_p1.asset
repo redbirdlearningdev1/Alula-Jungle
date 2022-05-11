@@ -36,7 +36,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 3
     audioClip:
-      m_AssetGUID: 1e409b0ee92e5534e90676067abfb9c6
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -678,7 +678,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 88cf1cbb09a2b47418ec21db5708542e
+      m_AssetGUID: 9212e8f24c357004d856182649a9e6af
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -698,7 +698,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 213cb99d0b74f3c4985a91f7f0a9f6e9
+      m_AssetGUID: 53541d626fe2dbd49af3a00aa030e1ad
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -779,7 +779,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 8d6be3f014025fa44bd375e4679bac0d
+      m_AssetGUID: 01f71a73554abfd4e9edb259ad3b9ac1
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0

@@ -883,11 +883,11 @@ public class TalkieObjectDatabaseManager : MonoBehaviour
         foreach (AssetReference file in globalTalkieAudioList)
         {
             //print ("file name: " + file.name + " vs. str: " + str);
-
+            //Debug.Log("Current file name: " + AssetDatabase.GUIDToAssetPath(file.AssetGUID) + "\nString: " + str);
             // TODO: MAJOR TESTING REQUIRED
-            if (AssetDatabase.GUIDToAssetPath(file.AssetGUID).Contains(str))
+            if (AssetDatabase.GUIDToAssetPath(file.AssetGUID).Contains("/" + str + ".wav"))
             {
-                //print ("found audio!");
+                Debug.Log("Found audio!");
 
                 // remove from unused list
                 unusedAudioFiles.Remove(file);

@@ -36,7 +36,7 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: fe9262a8a90a38547967e147b35b3f5b
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -56,7 +56,7 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: d82728142b77f894a8d90be0699c2063
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -76,7 +76,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: e746cb74773854540acaf11e922406ff
+      m_AssetGUID: bd11023b69890f84ca007519d803c45e
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -156,7 +156,7 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 987b5d984fb8e964f9ea91a9a72d3bee
+      m_AssetGUID: a7cfc47bbf12ea1479d2c388b990b57e
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: 8d9e6193f656bb149b9e7973a528c647
+      m_AssetGUID: 557a48831ada0654cbfdbea58e7de88b
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -216,7 +216,7 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: a786fe54bac83884c8abba3f503bcee7
+      m_AssetGUID: dd528ff78f01cf44eb45784c5ac7a68e
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -236,7 +236,7 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 182401c03b2c40c42b5dae41e3619665
+      m_AssetGUID: 140323f524b29084d878a15783bbf36a
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -336,7 +336,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: 2c5acae9e2d6cbf48893df319b478bc5
+      m_AssetGUID: f684dc1c44a99064fae6ee85d67cc248
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -396,7 +396,7 @@ MonoBehaviour:
     rightEyesEnum: 4
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: eb2fb3b693c8b20419f484fc6f332c75
+      m_AssetGUID: 693824763edf6ad4dad51ee7030cb797
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -417,7 +417,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: 45899598f5f69ba45bc9253211aea97b
+      m_AssetGUID: 334299e10ae10df4aba509deb1606864
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -437,7 +437,7 @@ MonoBehaviour:
     rightEyesEnum: 4
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: 28f83771ae4bfbb4f91f4a81fffff4de
+      m_AssetGUID: fb78dbab6c2197b45812a804663507af
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -457,7 +457,7 @@ MonoBehaviour:
     rightEyesEnum: 4
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: f9e131d9bb7737848a3610aa3f998071
+      m_AssetGUID: ef6a0f6222710b44ea42d4f7af69c33d
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -477,7 +477,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 1d6f65d44f0643542a9ebf0b66e3d1ea
+      m_AssetGUID: 8ebae093e03a1e145859a592b389a05d
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -497,7 +497,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: 26c741e84e1124d40a2f464e3560414a
+      m_AssetGUID: e9dd1c7109bebb64eb331d468329e313
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -538,7 +538,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: a903a3cfc8ab61346a54d5e6b999b2a7
+      m_AssetGUID: 8775b4d34ca6b6546ab2ab3d2ec883f1
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -558,7 +558,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 5d302dc0284020149b74ca5661c7a207
+      m_AssetGUID: 070685c6da14479419f123713647f12c
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -579,7 +579,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: 61112e9b8856de547941f89b97c11657
+      m_AssetGUID: 6010e8e87fa2ce3418d6ac045f267baf
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -599,7 +599,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 4955523315ca58745811e3e1300d2233
+      m_AssetGUID: 08476d436351e1c4885c709f7705c80b
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -620,7 +620,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 28360dbe4af97a44d9292342de06a720
+      m_AssetGUID: f6d42ac24900d9246a86304ae72a2b75
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -680,7 +680,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: 9613470b4cb30de4a922116bf9e48bb6
+      m_AssetGUID: bc88ead6933b8434090e2fe41993ce35
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -720,7 +720,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 86dbaf0d1fa6f7c41b66ca7b3110cecb
+      m_AssetGUID: f6dbe208fa7b9ee48acc5822c73fc702
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -740,7 +740,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 58d6e36d56530a541861e6634f46946b
+      m_AssetGUID: 4866d18a80f5bd54da12bf968600e633
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -760,7 +760,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: c645f6ef00b7c4a46a4c82b59d8c84f0
+      m_AssetGUID: ff3e602d132da894bba1c7a562ca4a5d
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -800,7 +800,7 @@ MonoBehaviour:
     rightEyesEnum: 4
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: 015ce087f0f5d6c4aa4dabd2e3b638f3
+      m_AssetGUID: af6b64c0c32fdf3478d8f612d0aa5580
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -860,7 +860,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: e73b9c43ee3e75c4ab1a6714eaf86c4e
+      m_AssetGUID: afe643f10a0e2d24fbb8629da6d27fcd
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -880,7 +880,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 16641439f75b74349936bd80be522168
+      m_AssetGUID: e7e5eb32c26adb14593360d3a18590ea
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -900,7 +900,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: d6cf359895f2d5240b71f4a1f984724a
+      m_AssetGUID: f779f36ab6d3f204cb0f029d448cc891
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -920,7 +920,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: 272bf227917943f449777c570583299e
+      m_AssetGUID: 4a9482b10cb976549b9386ba781c000c
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -1021,7 +1021,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: 619b32d6c79768a4da897022a6ec9b86
+      m_AssetGUID: a660394f0fadfbc45a176c0d4e0f3599
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -1221,7 +1221,7 @@ MonoBehaviour:
     rightEyesEnum: 1
     activeCharacter: 3
     audioClip:
-      m_AssetGUID: 806307aa9c987334ab01c970e55258ac
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0

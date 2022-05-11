@@ -36,9 +36,10 @@ MonoBehaviour:
     rightEyesEnum: 2
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: f9460b37cdbaffc45ad219b1cbb846ae
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_5_Red_8_T1
     audioString: Alright Explorer!
   - endTalkieAfterThisSegment: 0
@@ -55,9 +56,10 @@ MonoBehaviour:
     rightEyesEnum: 2
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: 72665a7ececb2ef42bacc6002b4a67d8
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_5_Red_8_T2
     audioString: Let's follow Darwin!
   - endTalkieAfterThisSegment: 0
@@ -74,8 +76,9 @@ MonoBehaviour:
     rightEyesEnum: 4
     activeCharacter: 3
     audioClip:
-      m_AssetGUID: 56152eb2638ae3b46b17ea03b4ff861b
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RedWally_Oh
     audioString: Oh!

@@ -36,9 +36,10 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 1
     audioClip:
-      m_AssetGUID: bdc8252a28338204eb406fc48d8f91b3
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Marcus_8
     audioString: Next time you won't be so lucky!
   - endTalkieAfterThisSegment: 0
@@ -55,8 +56,9 @@ MonoBehaviour:
     rightEyesEnum: 0
     activeCharacter: 2
     audioClip:
-      m_AssetGUID: 373353a9b855705468263103b1e3d223
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Brutus_9
     audioString: "Yawn...yeah\u2026 what he said\u2026"
