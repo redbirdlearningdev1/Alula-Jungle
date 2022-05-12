@@ -2171,7 +2171,7 @@ MonoBehaviour:
   - {fileID: 1598731379}
   - {fileID: 1290366972}
   selectedCoin: {fileID: 0}
-  playTutorial: 1
+  playTutorial: 0
   tutorialLists:
   - list: 00000000010000000000000000000000
   - list: 00000000000000000200000000000000
