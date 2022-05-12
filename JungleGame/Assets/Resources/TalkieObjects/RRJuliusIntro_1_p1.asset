@@ -41,7 +41,7 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     audioClipName: RR_0_0_Announcer_1
-    audioString: TIME FOR A ROYAL RUMBLE (tiger roar)
+    audioString: TIME FOR A ROYAL RUMBLE
   - endTalkieAfterThisSegment: 0
     requireYN: 0
     onYesGoto: 0
