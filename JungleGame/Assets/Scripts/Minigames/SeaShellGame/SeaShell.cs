@@ -10,7 +10,7 @@ public class SeaShell : MonoBehaviour
     public Image shadow;
     public Transform shellOrigin;
 
-    private bool audioPlaying;
+    //private bool audioPlaying;
 
     public void SetValue(ActionWordEnum newValue)
     {
@@ -19,7 +19,7 @@ public class SeaShell : MonoBehaviour
 
     public void PlayPhonemeAudio()
     {
-        if (!audioPlaying)
+        if (true)//!audioPlaying)
         {
             StartCoroutine(PlayPhonemeAudioRoutine());
         }
@@ -43,10 +43,10 @@ public class SeaShell : MonoBehaviour
 
     private IEnumerator PlayPhonemeAudioRoutine()
     {
-        audioPlaying = true;
+        //audioPlaying = true;
         AudioManager.instance.PlayPhoneme(ChallengeWordDatabase.ActionWordEnumToElkoninValue(value));
         yield return new WaitForSeconds(1f);
-        audioPlaying = false;
+        //audioPlaying = false;
     }
 
     public void ShowShell()

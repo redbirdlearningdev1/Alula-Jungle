@@ -503,8 +503,8 @@ public class AudioManager : MonoBehaviour
 
     public void PlayPhoneme(ElkoninValue elkoninValue)
     {
-        if (talkSource.isPlaying)
-            return;
+        //if (talkSource.isPlaying)
+            //return;
 
         if (talkHandle.IsValid())
         {
@@ -528,13 +528,17 @@ public class AudioManager : MonoBehaviour
         }
 
         yield return handle;
-        AudioClip clip = (AudioClip)handle.Result;
 
-        talkSource.clip = clip;
-        talkSource.loop = false;
-        talkSource.Play();
+        if (handle.IsValid())
+        {
+            AudioClip clip = (AudioClip)handle.Result;
 
-        yield return new WaitForSeconds(clip.length);
+            talkSource.clip = clip;
+            talkSource.loop = false;
+            talkSource.Play();
+
+            yield return new WaitForSeconds(clip.length);
+        }
 
         if (handle.IsValid())
         {

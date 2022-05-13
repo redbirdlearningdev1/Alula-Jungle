@@ -314,7 +314,7 @@ public class ParticleController : MonoBehaviour
 
         if (nextCharacter > 14)
         {
-            nextCharacter = 0;
+            nextCharacter = 1;
         }
         currentParticleCharacter = (TalkieCharacter)nextCharacter;
     }
