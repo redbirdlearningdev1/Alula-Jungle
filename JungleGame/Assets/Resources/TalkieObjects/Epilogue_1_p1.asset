@@ -51,8 +51,8 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 0
     rightCharacter: 5
-    rightEmotionNum: 2
-    rightMouthEnum: 2
+    rightEmotionNum: 6
+    rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
     audioClip:
@@ -71,8 +71,8 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 0
     rightCharacter: 5
-    rightEmotionNum: 6
-    rightMouthEnum: 1
+    rightEmotionNum: 2
+    rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 2
     audioClip:
