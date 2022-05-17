@@ -51,7 +51,7 @@ public class CreditsSceneManager : MonoBehaviour
         Vector3 scrollPos = scrollingBox.transform.localPosition;
         scrollRect = scrollingBox.GetComponent<RectTransform>();
 
-        scrollingBox.transform.localPosition = new Vector3(scrollPos.x, (scrollRect.rect.height / -2.0f) + (screenHeight / 2.0f), scrollPos.z);
+        //scrollingBox.transform.localPosition = new Vector3(scrollPos.x, (scrollRect.rect.height / -2.0f) + (screenHeight / 2.0f), scrollPos.z);
 
         Lester.Play("geckoIdle");
         Coin.Play("hello");
