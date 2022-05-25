@@ -93,7 +93,7 @@ public class LogRow : MonoBehaviour
             SingleLog log = logs_cpy[index];
             logs_cpy.RemoveAt(index);
             log.LogSink();
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
@@ -113,7 +113,7 @@ public class LogRow : MonoBehaviour
             SingleLog log = logs_cpy[index];
             logs_cpy.RemoveAt(index);
             log.LogRise();
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
@@ -139,7 +139,7 @@ public class LogRow : MonoBehaviour
             SingleLog log = logs_cpy[index];
             logs_cpy.RemoveAt(index);
             log.LogSink();
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 

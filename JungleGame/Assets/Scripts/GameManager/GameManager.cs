@@ -38,6 +38,8 @@ public class GameManager : DontDestroy<GameManager>
 
     public static int stickerInventorySize = 16;
 
+    public static float popup_probability = 1.0f;
+
     public bool devModeActivated;
     public const float transitionTime = 0.5f; // time to fade into and out of a scene (total transition time is: transitionTime * 2)
     public Camera globalCamera;
@@ -344,6 +346,15 @@ public class GameManager : DontDestroy<GameManager>
 
             case "NewPasswordGame": NewPasswordGameManager.instance.SkipGame(); break;
         }
+    }
+
+    public static bool DeterminePlayPopup()
+    {
+        float num = Random.Range(0f, 1f);
+        print ("num: " + num);
+        if (num < popup_probability)
+            return true;
+        return false;
     }
 
     /* 
