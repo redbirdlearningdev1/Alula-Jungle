@@ -34,7 +34,6 @@ public class RummageCoin : MonoBehaviour
 
     public void GoToChest()
     {
-        print ("now!~");
         GetComponent<LerpableObject>().LerpScale(Vector2.zero, 0.2f);
         GetComponent<LerpableObject>().LerpPosition(chest.instance.transform.position, 0.2f, false);
         GetComponent<LerpableObject>().LerpImageAlpha(image, 0f, 0.2f);
@@ -81,7 +80,7 @@ public class RummageCoin : MonoBehaviour
     }
     public void shrink()
     {
-        GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
+        GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.5f);
     }
 
     public void BounceIn1()
