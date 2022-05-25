@@ -44,6 +44,7 @@ public class ShellController : MonoBehaviour
 
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WaveCrash, 0.25f);
         yield return new WaitForSeconds(0.7f);
+        tideAnimator.StopPlayback();
         tideAnimator.Play("tideWipe");
         yield return new WaitForSeconds(0.75f);
         // reveal shells
@@ -61,6 +62,7 @@ public class ShellController : MonoBehaviour
     {
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WaveCrash, 0.25f);
         yield return new WaitForSeconds(0.7f);
+        tideAnimator.StopPlayback();
         tideAnimator.Play("tideWipe");
         yield return new WaitForSeconds(0.75f);
         // hide shells
