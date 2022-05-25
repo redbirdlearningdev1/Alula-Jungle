@@ -8,6 +8,9 @@ using TMPro;
 using UnityEditor;
 #endif
 
+public enum GameSimulationMode { None, Fixed, Skill, Random }
+public enum SkillSimulationMode { None, Poor, Decent, Good, Excellent, Learning }
+
 public class DevMenuManager : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown navDropdown;
@@ -18,6 +21,17 @@ public class DevMenuManager : MonoBehaviour
     [SerializeField] private Toggle fastTalkieToggle;
 
     [SerializeField] private TMP_InputField profileInput;
+
+    [Header("Simulation Variables")]
+    [SerializeField] private GameObject simulationScreen;
+    [SerializeField] private TMP_InputField numGamesField;
+    [SerializeField] private GameObject fullGameCheckmarkImage;
+    private int numGamesToSimulate = 1;
+    private int numFixedStars = 2;
+    [SerializeField] private bool useFullGameSim = true;
+    private GameSimulationMode simMode = GameSimulationMode.Skill;
+    private SkillSimulationMode skillSimMode = SkillSimulationMode.Learning;
+
 
     private string[] sceneNames = new string[] {  
         "ScrollMap",
@@ -3073,5 +3087,115 @@ public class DevMenuManager : MonoBehaviour
         foreach (bool b in array)
             if (b) count++;
         return count;
+    }
+    /* 
+    //################################################
+    //#            GAME SIMULATIONS
+    //################################################
+    */
+
+    public void SetNumGames()
+    {
+        // If number field has a value that isn't bigger than 4, parse it into an int
+        if (numGamesField.text.Length > 0 && numGamesField.text.Length < 4)
+        {
+            // Check if the number has a negative before parsing
+            if (!numGamesField.text.Contains("-"))
+            {
+                // Parse the number
+                numGamesToSimulate = int.Parse(numGamesField.text);
+
+                // Check if the parsed number somehow is 0 or less, then set to our min of 1
+                if (numGamesToSimulate <= 0)
+                {
+                    numGamesToSimulate = 1;
+                }
+            }
+            else // if the number has a negative symbol, don't parse and set value to min of 1
+            {
+                numGamesToSimulate = 1;
+            }
+        } // If the string value is larger than 4, it's too big
+        else if (numGamesField.text.Length >= 4)
+        {
+            // If it is a large negative number, set value to min of 1
+            if (numGamesField.text.Contains("-"))
+            {
+                numGamesToSimulate = 1;
+            }
+            else // if it is a large positive number, set value to max of 1000
+            {
+                numGamesToSimulate = 1000;
+            }
+        }
+    }
+
+    public void OnEndEditNumGames()
+    {
+        // After editing the number field, check the string value for incorrect values and set to either the min or max value
+        if (numGamesField.text.Length == 0 || numGamesField.text.Contains("-") || numGamesField.text == "0")
+        {
+            numGamesField.text = "1";
+            numGamesToSimulate = 1;
+        }
+
+        if (numGamesField.text.Length >= 4)
+        {
+            numGamesField.text = "1000";
+            numGamesToSimulate = 1000;
+        }
+    }
+
+    public void SetFullGameMode(bool fullGame)
+    {
+        useFullGameSim = fullGame;
+        fullGameCheckmarkImage.SetActive(fullGame);
+    }
+
+    public void SetSimMode(int mode)
+    {
+        simMode = (GameSimulationMode)mode;
+    }
+
+    public void SetSkillSimMode(int mode)
+    {
+        skillSimMode = (SkillSimulationMode)mode;
+    }
+
+    public void SetFixedStars(float numStars)
+    {
+        numFixedStars = (int)numStars;
+    }
+
+    public void OnOpenSimulationScreen(bool setActive)
+    {
+        simulationScreen.SetActive(setActive);
+    }
+
+    public void OnSimulateGameSelection()
+    {
+        // keep track of prev active profile
+        StudentIndex prevIndex = StudentInfoSystem.GetCurrentProfile().studentIndex;
+        // make new profile + set current profile to be simulation specific
+        StudentInfoSystem.ResetGameSimulationProfile();
+        StudentInfoSystem.SetStudentPlayer(StudentIndex.game_simulation_profile);
+
+        for (int i = 0; i < numGamesToSimulate; i++)
+        {
+            GameType game = AISystem.DetermineMinigame(StudentInfoSystem.GetCurrentProfile());
+
+            bool startRR = AISystem.DetermineRoyalRumble();
+
+            if (startRR)
+            {
+                // save royal rumble to SIS
+                GameType RRgame = AISystem.DetermineRoyalRumbleGame();
+                StudentInfoSystem.GetCurrentProfile().royalRumbleGame = RRgame;
+                StudentInfoSystem.GetCurrentProfile().royalRumbleActive = true;
+                StudentInfoSystem.GetCurrentProfile().royalRumbleID = MapIconIdentfier.None;
+                StudentInfoSystem.SaveStudentPlayerData();
+
+            }
+        }
     }
 }

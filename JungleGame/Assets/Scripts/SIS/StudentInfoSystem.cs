@@ -108,7 +108,13 @@ public static class StudentInfoSystem
         currentStudentPlayer.currStoryBeat = (StoryBeat)((int)currentStudentPlayer.currStoryBeat + 1);
     }
 
-    
+    // PLAYER GAME SIMULATION METHODS
+
+    public static void ResetGameSimulationProfile()
+    {
+        ResetProfile(StudentIndex.game_simulation_profile);
+    }
+
 
     /* 
     ################################################

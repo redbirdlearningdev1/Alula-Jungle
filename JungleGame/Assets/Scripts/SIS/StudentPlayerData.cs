@@ -151,7 +151,7 @@ public enum BoatEncounter
 
 public enum StudentIndex
 {
-    student_1, student_2, student_3, sticker_simulation_profile
+    student_1, student_2, student_3, sticker_simulation_profile, game_simulation_profile
 }
 
 public enum StoryBeat
