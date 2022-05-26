@@ -294,7 +294,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
             coin.LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
             yield return new WaitForSeconds(0.1f);
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         foreach (var coin in currentCoins)
         {
             coin.LerpScale(Vector2.one, 0.25f);
@@ -357,7 +357,6 @@ public class WordFactoryBuildingManager : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             i++;
         }
-        yield return new WaitForSeconds(0.5f);
 
         // add extra frame
         VisibleFramesController.instance.AddFrameSmooth();
@@ -378,7 +377,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
                 i++;
             }
         }
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
         // show coins
         i = 0;
         foreach (var coin in currentCoins)
@@ -669,26 +668,26 @@ public class WordFactoryBuildingManager : MonoBehaviour
             }
             else
             {
-                int index = Random.Range(0, 3);
+                //int index = Random.Range(0, 3);
                 AssetReference clip = null;
-                if (index == 0)
-                {
-                    clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_haha");
-                }
-                else if (index == 1)
-                {
-                    clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_ahhah");
-                }
-                else if (index == 2)
-                {
-                    clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_hrm");
-                }
+                // if (index == 0)
+                // {
+                //     clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_haha");
+                // }
+                // else if (index == 1)
+                // {
+                //     clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_ahhah");
+                // }
+                // else if (index == 2)
+                // {
+                //     clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_hrm");
+                // }
 
-                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
-                yield return cd.coroutine;
+                // CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                // yield return cd.coroutine;
 
-                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(cd.GetResult() + 0.5f);
+                // TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                // yield return new WaitForSeconds(cd.GetResult() + 0.5f);
 
                 // play reminder popup
                 if (StudentInfoSystem.GetCurrentProfile().currentChapter < Chapter.chapter_5)
@@ -700,7 +699,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
                     yield return cd0.coroutine;
 
                     TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                    yield return new WaitForSeconds(cd0.GetResult());
+                    //yield return new WaitForSeconds(cd0.GetResult());
                 }
                 else
                 {
@@ -711,7 +710,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
                     yield return cd0.coroutine;
 
                     TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                    yield return new WaitForSeconds(cd0.GetResult());
+                    //yield return new WaitForSeconds(cd0.GetResult());
                 }
             }
         }
