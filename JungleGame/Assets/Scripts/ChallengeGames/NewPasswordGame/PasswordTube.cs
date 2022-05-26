@@ -253,11 +253,11 @@ public class PasswordTube : MonoBehaviour
             {
                 AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(tubeCoin.value).audio);
                 tubeCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
-                yield return new WaitForSeconds(1.2f);
+                yield return new WaitForSeconds(0.8f);
                 tubeCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
             }
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
         }
 
         // say polaroid word + animate tube coins
@@ -269,10 +269,10 @@ public class PasswordTube : MonoBehaviour
         }
         
 
-            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(word.audio));
-            yield return cd.coroutine;
+        // CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(word.audio));
+        // yield return cd.coroutine;
 
-        yield return new WaitForSeconds(cd.GetResult());
+        yield return new WaitForSeconds(0.5f);
 
         foreach (var tubeCoin in tubeCoins)
         {
