@@ -283,7 +283,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
             PlayAudioCoin(coin);
             yield return new WaitForSeconds(0.8f);
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
 
 
         // say challenge word
@@ -710,7 +710,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
                     yield return cd0.coroutine;
 
                     TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                    //yield return new WaitForSeconds(cd0.GetResult());
+                    yield return new WaitForSeconds(cd0.GetResult());
                 }
             }
         }
