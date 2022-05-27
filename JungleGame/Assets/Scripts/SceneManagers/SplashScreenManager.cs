@@ -46,6 +46,9 @@ public class SplashScreenManager : MonoBehaviour
     public LerpableObject winCrown2;
     public LerpableObject winCrown3;
 
+    public LerpableObject practiceButton;
+    private Vector3 practiceButtonPos;
+
     [SerializeField] TMP_InputField newProfileInput;
 
     [SerializeField] WiggleController tapTextWiggleController;
@@ -200,6 +203,10 @@ public class SplashScreenManager : MonoBehaviour
         selectedProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
         editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
 
+        // move practice button off-screen
+        practiceButtonPos = practiceButton.transform.localPosition;
+        practiceButton.transform.localPosition = new Vector3(practiceButtonPos.x, practiceButtonPos.y + 150f, 0f);
+
         // start screen tap delay
         StartCoroutine(ScreenTapDelay());
 
@@ -283,9 +290,6 @@ public class SplashScreenManager : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        // show menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
-
         float timer = 0f;
         while (true)
         {
@@ -304,6 +308,15 @@ public class SplashScreenManager : MonoBehaviour
         profileSelectWindow.interactable = true;
         profileSelectWindow.blocksRaycasts = true;
         profileSelectWindow.alpha = 1f;
+
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+
+        // show practice button
+        practiceButton.LerpYPos(practiceButtonPos.y - 50, 0.2f, true);
+        yield return new WaitForSeconds(0.2f);
+        practiceButton.LerpYPos(practiceButtonPos.y, 0.2f, true);
+        yield return new WaitForSeconds(0.2f);
 
         SetUpWinCrowns();
     }
@@ -749,5 +762,10 @@ public class SplashScreenManager : MonoBehaviour
         confirmDeleteProfileWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
         confirmDeleteProfileBG.LerpImageAlpha(confirmDeleteProfileBG.GetComponent<Image>(), 0f, 0.5f);
         confirmDeleteProfileBG.GetComponent<Image>().raycastTarget = false;
+    }
+
+    public void OnPracticeButtonPressed()
+    {
+        GameManager.instance.LoadScene("PracticeScene", true);
     }
 }
