@@ -61,12 +61,10 @@ public static class LoadSaveSystem
             
             StudentPlayerData studentData = JsonUtility.FromJson<StudentPlayerData>(file);
 
-            // check to make sure data is correct version
-            if (studentData.version != GameManager.currentGameVersion)
+            if (studentData != null)
+                return studentData;
+            else
             {
-                GameManager.instance.SendError("LoadSaveSystem", "Student data is wrong version - deleting old profile");
-
-                // create new profile file
                 if (createNewIfNull)
                 {
                     GameManager.instance.SendLog("LoadSaveSystem", "profile not found, making a new profile!");
@@ -75,14 +73,9 @@ public static class LoadSaveSystem
                 }
                 else
                 {
-                    return null;
+                    GameManager.instance.SendLog("LoadSaveSystem", "StudentPlayerData is null, returning null.");
                 }
             }
-
-            if (studentData != null)
-                return studentData;
-            else
-                GameManager.instance.SendLog("LoadSaveSystem", "StudentPlayerData is null, returning null.");
         }
         else
         {

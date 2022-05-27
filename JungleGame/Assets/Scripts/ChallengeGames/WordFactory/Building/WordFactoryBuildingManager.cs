@@ -496,9 +496,6 @@ public class WordFactoryBuildingManager : MonoBehaviour
         // lose 
         else
         {
-            // only increase misses if not playing tutorial
-            if (!playTutorial)
-                numMisses++;
             StartCoroutine(PostRound(false));
         }
     }
@@ -579,6 +576,9 @@ public class WordFactoryBuildingManager : MonoBehaviour
 
                 yield break;
             }
+
+            // only increase misses if not playing tutorial
+            numMisses++;
         }
 
         // eat the polaroid

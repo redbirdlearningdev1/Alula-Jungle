@@ -362,12 +362,12 @@ public class NewSpiderGameManager : MonoBehaviour
         bug.goToOrigin();
         yield return new WaitForSeconds(0.5f);
 
+        bug.StartToWeb();
+        yield return new WaitForSeconds(1.5f);
+
         // bring coins up
         SetCoins();
         StartCoroutine(CoinsUp());
-
-        bug.StartToWeb();
-        yield return new WaitForSeconds(1.5f);
 
         web.webSmall();
         bug.BugBounce();
@@ -704,9 +704,11 @@ public class NewSpiderGameManager : MonoBehaviour
 
     private void ResetCoins()
     {
-        for (int i = 0; i < coins.Count; i++)
+        int i = 0;
+        foreach (var coin in coins)
         {
-            coins[i].transform.position = coinPosOffScreen[i].position;
+            coin.GetComponent<LerpableObject>().LerpPosToTransform(coinPosOffScreen[i], 0.2f, false);
+            i++;
         }
     }
 
@@ -715,7 +717,7 @@ public class NewSpiderGameManager : MonoBehaviour
         int i = 0;
         foreach (var coin in coins)
         {
-            coin.GetComponent<LerpableObject>().LerpPosition(coinPosOnScreen[i].position, 0.25f, false);
+            coin.GetComponent<LerpableObject>().LerpPosToTransform(coinPosOnScreen[i], 0.2f, false);
             i++;
         }
     }

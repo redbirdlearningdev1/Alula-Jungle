@@ -34,11 +34,11 @@ public enum GameType
 
 public class GameManager : DontDestroy<GameManager>
 {
-    public static string currentGameVersion = "alpha1.6";
+    public static string currentGameVersion = "alpha1.7";
 
     public static int stickerInventorySize = 16;
 
-    public static float popup_probability = 1.0f;
+    public static float popup_probability = 0.2f;
 
     public bool devModeActivated;
     public const float transitionTime = 0.5f; // time to fade into and out of a scene (total transition time is: transitionTime * 2)
