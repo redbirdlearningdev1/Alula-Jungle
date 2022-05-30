@@ -29,6 +29,7 @@ public class BlendingPracticeWindow : MonoBehaviour
     public Button games10Button;
     public Button games20Button;
     public Button gamesXButton;
+    public TextMeshProUGUI gamesXText;
 
     public Button startPracticeButton;
 
@@ -44,7 +45,7 @@ public class BlendingPracticeWindow : MonoBehaviour
         profiles = new List<StudentPlayerData>();
         List<StudentPlayerData> allProfiles = StudentInfoSystem.GetAllStudentDatas();
         // determine active profiles
-        foreach (var profile in profiles)
+        foreach (var profile in allProfiles)
         {
             if (profile.active)
             {
@@ -79,6 +80,7 @@ public class BlendingPracticeWindow : MonoBehaviour
         games10Button.image.color = nonselectedColor;
         games20Button.image.color = selectedColor;
         gamesXButton.image.color = nonselectedColor;
+        gamesXText.text = "x";
     }
 
     public void OpenWindow()
@@ -157,7 +159,20 @@ public class BlendingPracticeWindow : MonoBehaviour
         allPhonemesButton.image.color = nonselectedColor;
 
         // open phonemes select window
+        PhonemeSelectWindow.instance.OpenWindow(currentPhonemes, ReturnLocation.blendingWindow);
+    }
 
+    public void ReturnSelectedPhonemes(List<ActionWordEnum> selectedPhonemes)
+    {
+        currentPhonemes.Clear();
+        currentPhonemes.AddRange(selectedPhonemes);
+    }
+
+    public void ReturnNumGames(int numGames)
+    {
+        currentGames = numGames;
+
+        gamesXText.text = currentGames.ToString() + "*";
     }
 
     public void OnAllPhonemesPressed()
@@ -175,6 +190,7 @@ public class BlendingPracticeWindow : MonoBehaviour
         games10Button.image.color = selectedColor;
         games20Button.image.color = nonselectedColor;
         gamesXButton.image.color = nonselectedColor;
+        gamesXText.text = "x";
     }
 
     public void On20GamesButtonPressed()
@@ -183,6 +199,7 @@ public class BlendingPracticeWindow : MonoBehaviour
         games10Button.image.color = nonselectedColor;
         games20Button.image.color = selectedColor;
         gamesXButton.image.color = nonselectedColor;
+        gamesXText.text = "x";
     }
 
     public void OnXGamesButtonPressed()
@@ -192,7 +209,7 @@ public class BlendingPracticeWindow : MonoBehaviour
         gamesXButton.image.color = selectedColor;
 
         // open select number of games window
-
+        GamesSelectWindow.instance.OpenWindow(currentGames, ReturnLocation.blendingWindow);
     }
 
     public void OnStartPracticeButtonPressed()
