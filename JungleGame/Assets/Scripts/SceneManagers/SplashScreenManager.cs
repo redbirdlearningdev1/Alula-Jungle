@@ -312,6 +312,16 @@ public class SplashScreenManager : MonoBehaviour
         // show menu button
         SettingsManager.instance.ToggleMenuButtonActive(true);
 
+        // enable practice button if profiles exist
+        if (data1.active || data2.active || data3.active)
+        {
+            practiceButton.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            practiceButton.GetComponent<Button>().interactable = false;
+        }
+
         // show practice button
         practiceButton.LerpYPos(practiceButtonPos.y - 50, 0.2f, true);
         yield return new WaitForSeconds(0.2f);
@@ -474,6 +484,16 @@ public class SplashScreenManager : MonoBehaviour
 
         profileSelectWindow.interactable = true;
         profileSelectWindow.blocksRaycasts = true;
+
+        // enable practice button if profiles exist
+        if (data1.active || data2.active || data3.active)
+        {
+            practiceButton.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            practiceButton.GetComponent<Button>().interactable = false;
+        }
     }
 
     private void LoadProfileAndContinue(StudentIndex index)
@@ -751,6 +771,16 @@ public class SplashScreenManager : MonoBehaviour
         startButton.interactable = false;
         startbuttonBox.sprite = boxBrown;
         startbuttonText.sprite = textGreen;
+
+        // enable practice button if profiles exist
+        if (data1.active || data2.active || data3.active)
+        {
+            practiceButton.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            practiceButton.GetComponent<Button>().interactable = false;
+        }
     }
 
     public void OnNoDeleteProfilePressed()
