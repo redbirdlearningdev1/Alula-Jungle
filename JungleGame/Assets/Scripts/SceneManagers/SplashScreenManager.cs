@@ -104,6 +104,9 @@ public class SplashScreenManager : MonoBehaviour
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
+        // end practice mode iff needed
+        GameManager.instance.practiceModeON = false;
+
         // stop music 
         AudioManager.instance.StopMusic();
 
