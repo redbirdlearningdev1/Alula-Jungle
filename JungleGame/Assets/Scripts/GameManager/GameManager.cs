@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
+using TMPro;
 
 public enum GameType
 {
@@ -79,6 +78,15 @@ public class GameManager : DontDestroy<GameManager>
     public GameObject console;
     public Text consoleText;
     private Coroutine sleepCoroutine;
+
+    [Header("Practice Mode")]
+    public bool practiceModeON = false;
+    public TextMeshProUGUI practiceModeCounter;
+    private List<GameType> practiceGameQueue;
+    private int practiceDifficulty;
+    private List<ActionWordEnum> practicePhonemes;
+    private int practiceTotalGames;
+    
 
     void Start()
     {
@@ -491,6 +499,44 @@ public class GameManager : DontDestroy<GameManager>
                 return "TigerPawPhotos";
             case GameType.Password:
                 return "NewPasswordGame";
+        }
+    }
+
+    /* 
+################################################
+# PRACTICE MODE
+################################################
+    */
+
+    public void SetPracticeMode(List<GameType> gameQueue, int diff, List<ActionWordEnum> phonemes)
+    {
+        // turn on practice mode and copy over data
+        practiceModeON = true;
+        practiceGameQueue = new List<GameType>();
+        practiceGameQueue.AddRange(gameQueue);
+        practiceDifficulty = diff;
+        practicePhonemes = new List<ActionWordEnum>();
+        practicePhonemes.AddRange(phonemes);
+        // set counter
+        practiceTotalGames = practiceGameQueue.Count;
+        practiceModeCounter.text =  practiceTotalGames + "/" + practiceTotalGames;
+    }
+
+    public void ContinuePracticeMode()
+    {
+        if (practiceGameQueue.Count > 0)
+        {
+            // load next game in queue
+            GameType nextGame = practiceGameQueue[practiceGameQueue.Count - 1];
+            practiceGameQueue.RemoveAt(practiceGameQueue.Count - 1);
+            practiceModeCounter.text =  practiceGameQueue.Count + "/" + practiceTotalGames;
+            LoadScene(GameTypeToSceneName(nextGame), true);
+        }
+        else
+        {
+            // return to practice mode scene
+            practiceModeON = false;
+            LoadScene("PracticeScene", true);
         }
     }
 }
