@@ -3180,9 +3180,23 @@ public class DevMenuManager : MonoBehaviour
         StudentInfoSystem.ResetGameSimulationProfile();
         StudentInfoSystem.SetStudentPlayer(StudentIndex.game_simulation_profile);
 
+        StudentPlayerData playerData = StudentInfoSystem.GetCurrentProfile();
+
+        List<GameType> gameList = new List<GameType>();
+        List<int> gameStarList = new List<int>();
+
+
+        if (useFullGameSim)
+        {
+            // 4 + 3c + 4 + 3c+ 4 + 3c + 4 + 3c + 4 + 3c + 4 + 3c + 6 + 3c + 6 + 3c + 6 + 3c + 6 + 3c + 4 + 3c + 4 + 3c + 4 + 3c + 3c
+            numGamesToSimulate = 102;
+        }
+
         for (int i = 0; i < numGamesToSimulate; i++)
         {
-            GameType game = AISystem.DetermineMinigame(StudentInfoSystem.GetCurrentProfile());
+            int currentStars;
+
+            GameType game = AISystem.DetermineMinigame(playerData);
 
             bool startRR = AISystem.DetermineRoyalRumble();
 
@@ -3190,12 +3204,227 @@ public class DevMenuManager : MonoBehaviour
             {
                 // save royal rumble to SIS
                 GameType RRgame = AISystem.DetermineRoyalRumbleGame();
-                StudentInfoSystem.GetCurrentProfile().royalRumbleGame = RRgame;
-                StudentInfoSystem.GetCurrentProfile().royalRumbleActive = true;
-                StudentInfoSystem.GetCurrentProfile().royalRumbleID = MapIconIdentfier.None;
+                playerData.royalRumbleGame = RRgame;
+                playerData.royalRumbleActive = true;
+                playerData.royalRumbleID = MapIconIdentfier.None;
                 StudentInfoSystem.SaveStudentPlayerData();
 
+                currentStars = DetermineSimulatedStars(true);
+
+                switch (RRgame)
+                {
+                    case GameType.TigerPawCoins:
+                        playerData.starsTPawCoin += currentStars;
+                        playerData.tPawCoinPlayed++;
+                        break;
+                    case GameType.TigerPawPhotos:
+                        playerData.starsTPawPol += currentStars;
+                        playerData.tPawPolPlayed++;
+                        break;
+                    case GameType.Password:
+                        playerData.starsPass += currentStars;
+                        playerData.passPlayed++;
+                        break;
+                    case GameType.WordFactoryDeleting:
+                        playerData.starsDel += currentStars;
+                        playerData.delPlayed++;
+                        break;
+                    case GameType.WordFactoryBlending:
+                        playerData.starsBlend += currentStars;
+                        playerData.blendPlayed++;
+                        break;
+                    case GameType.WordFactoryBuilding:
+                        playerData.starsBuild += currentStars;
+                        playerData.buildPlayed++;
+                        break;
+                    case GameType.WordFactorySubstituting:
+                        playerData.starsSub += currentStars;
+                        playerData.subPlayed++;
+                        break;
+                    default:
+                        break;
+                }
+
+                playerData.starsGameBeforeLastPlayed = playerData.starsLastGamePlayed;
+                playerData.starsLastGamePlayed = currentStars;
+
+                gameList.Add(RRgame);
+                gameStarList.Add(currentStars);
+            }
+            else // playing a minigame
+            {
+                currentStars = DetermineSimulatedStars(false);
+
+                switch (game)
+                {
+                    case GameType.FroggerGame:
+                        playerData.starsFrogger += currentStars;
+                        playerData.totalStarsFrogger += 3;
+                        break;
+                    case GameType.TurntablesGame:
+                        playerData.starsTurntables += currentStars;
+                        playerData.totalStarsTurntables += 3;
+                        break;
+                    case GameType.PirateGame:
+                        playerData.starsPirate += currentStars;
+                        playerData.totalStarsPirate += 3;
+                        break;
+                    case GameType.SpiderwebGame:
+                        playerData.starsSpiderweb += currentStars;
+                        playerData.totalStarsSpiderweb += 3;
+                        break;
+                    case GameType.SeashellGame:
+                        playerData.starsSeashell += currentStars;
+                        playerData.totalStarsSeashell += 3;
+                        break;
+                    case GameType.RummageGame:
+                        playerData.starsRummage += currentStars;
+                        playerData.totalStarsRummage += 3;
+                        break;
+                    default:
+                        break;
+                }
+
+                playerData.starsGameBeforeLastPlayed = playerData.starsLastGamePlayed;
+                playerData.starsLastGamePlayed = currentStars;
+
+                playerData.minigamesPlayed++;
+                gameList.Add(game);
+                gameStarList.Add(currentStars);
             }
         }
+
+        Dictionary<GameType, int> numGamesPlayed = new Dictionary<GameType, int>();
+
+        GameManager.instance.SendLog(this, "PRINTING OUT SIMULATED GAMES:");
+        for (int i = 0; i < numGamesToSimulate; i++)
+        {
+            GameManager.instance.SendLog(this, "Game Played: " + gameList[i] + " Stars: " + gameStarList[i]);
+            if (numGamesPlayed.ContainsKey(gameList[i]))
+            {
+                numGamesPlayed[gameList[i]] = numGamesPlayed[gameList[i]] + 1;
+            }
+            else
+            {
+                numGamesPlayed.Add(gameList[i], 1);
+            }
+        }
+        GameManager.instance.SendLog(this, "Game Counts:");
+        foreach (var game in numGamesPlayed)
+        {
+            GameManager.instance.SendLog(this, game.Key + " played " + game.Value + " times.");
+        }
+    }
+
+    private int DetermineSimulatedStars(bool allowZero)
+    {
+        int numStars;
+        float randNum;
+
+        switch (simMode)
+        {
+            case GameSimulationMode.Fixed:
+                numStars = numFixedStars;
+                break;
+            case GameSimulationMode.Random:
+                numStars = Random.Range(0,4);
+                break;
+            case GameSimulationMode.Skill:
+                switch (skillSimMode)
+                {
+                    case SkillSimulationMode.Poor: // Poor Skill star percentages: | 0* - 30% | 1* - 60% | 2* - 10% | 3* - 0%  |
+                        randNum = Random.Range(0, 1f);
+                        if (randNum < 0.6f)
+                        {
+                            numStars = 1;
+                        }
+                        else if (randNum < 0.9f)
+                        {
+                            numStars = 0;
+                        }
+                        else
+                        {
+                            numStars = 2;
+                        }
+                        break;
+                    case SkillSimulationMode.Decent: // Decent Skill star percentages: | 0* - 5% | 1* - 30% | 2* - 60% | 3* - 5%  |
+                        randNum = Random.Range(0, 1f);
+                        if (randNum < 0.6f)
+                        {
+                            numStars = 2;
+                        }
+                        else if (randNum < 0.9f)
+                        {
+                            numStars = 1;
+                        }
+                        else if (randNum < 0.95f)
+                        {
+                            numStars = 0;
+                        }
+                        else
+                        {
+                            numStars = 3;
+                        }
+                        break;
+                    case SkillSimulationMode.Good: // Good Skill star percentages: | 0* - 5% | 1* - 5% | 2* - 50% | 3* - 40%  |
+                        randNum = Random.Range(0, 1f);
+                        if (randNum < 0.5f)
+                        {
+                            numStars = 2;
+                        }
+                        else if (randNum < 0.9f)
+                        {
+                            numStars = 3;
+                        }
+                        else if (randNum < 0.95f)
+                        {
+                            numStars = 0;
+                        }
+                        else
+                        {
+                            numStars = 1;
+                        }
+                        break;
+                    case SkillSimulationMode.Excellent: // Excellent Skill star percentages: | 0* - 0% | 1* - 0% | 2* - 20% | 3* - 80%  |
+                        randNum = Random.Range(0, 1f);
+                        if (randNum < 0.8f)
+                        {
+                            numStars = 3;
+                        }else
+                        {
+                            numStars = 2;
+                        }
+                        break;
+                    case SkillSimulationMode.Learning:
+                        numStars = 3;
+                        break;
+                    default:
+                        numStars = 0;
+                        break;
+                }
+                break;
+            default:
+                return 0;
+        }
+
+
+        // Checking numStars for invalid numbers
+
+        if (numStars < 0)
+        {
+            numStars = 0;
+        }
+
+        if (numStars > 3)
+        {
+            numStars = 3;
+        }
+
+        if (!allowZero && numStars == 0)
+        {
+            numStars = 1;
+        }
+
+        return numStars;
     }
 }

@@ -307,7 +307,9 @@ public static class AISystem
 
         // player must have played all 6 minigames before RR
         if (playerData.minigamesPlayed < 6)
+        {
             return false;
+        }
 
         // return false if royal rumble already active
         if (playerData.rRumblePlayed == 1)
