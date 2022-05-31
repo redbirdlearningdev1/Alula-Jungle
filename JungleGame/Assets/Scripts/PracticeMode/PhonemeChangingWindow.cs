@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class BlendingPracticeWindow : MonoBehaviour
+public class PhonemeChangingWindow : MonoBehaviour
 {
     public LerpableObject myWindow;
     public LerpableObject exitButton;
@@ -30,6 +30,13 @@ public class BlendingPracticeWindow : MonoBehaviour
     public Button games20Button;
     public Button gamesXButton;
     public TextMeshProUGUI gamesXText;
+    // versions
+    private bool addVersion;
+    private bool subVersion;
+    private bool delVersion;
+    public Button addButton;
+    public Button subButton;
+    public Button delButton;
 
     public Button startPracticeButton;
 
@@ -81,6 +88,13 @@ public class BlendingPracticeWindow : MonoBehaviour
         games20Button.image.color = selectedColor;
         gamesXButton.image.color = nonselectedColor;
         gamesXText.text = "x";
+
+        addVersion = true;
+        subVersion = true;
+        delVersion = true;
+        addButton.image.color = selectedColor;
+        subButton.image.color = selectedColor;
+        delButton.image.color = selectedColor;
     }
 
     public void OpenWindow()
@@ -159,7 +173,7 @@ public class BlendingPracticeWindow : MonoBehaviour
         allPhonemesButton.image.color = nonselectedColor;
 
         // open phonemes select window
-        PhonemeSelectWindow.instance.OpenWindow(currentPhonemes, ReturnLocation.blendingWindow);
+        PhonemeSelectWindow.instance.OpenWindow(currentPhonemes, ReturnLocation.phonemeChangingWindow);
     }
 
     public void ReturnSelectedPhonemes(List<ActionWordEnum> selectedPhonemes)
@@ -209,7 +223,49 @@ public class BlendingPracticeWindow : MonoBehaviour
         gamesXButton.image.color = selectedColor;
 
         // open select number of games window
-        GamesSelectWindow.instance.OpenWindow(currentGames, ReturnLocation.blendingWindow);
+        GamesSelectWindow.instance.OpenWindow(currentGames, ReturnLocation.phonemeChangingWindow);
+    }
+
+    public void OnAddButtonPressed()
+    {
+        addVersion = !addVersion;
+
+        if (addVersion)
+        {
+            addButton.image.color = selectedColor;
+        }
+        else
+        {
+            addButton.image.color = nonselectedColor;
+        }
+    }
+
+    public void OnSubButtonPressed()
+    {
+        subVersion = !subVersion;
+
+        if (subVersion)
+        {
+            subButton.image.color = selectedColor;
+        }
+        else
+        {
+            subButton.image.color = nonselectedColor;
+        }
+    }
+
+    public void OnDelButtonPressed()
+    {
+        delVersion = !delVersion;
+
+        if (delVersion)
+        {
+            delButton.image.color = selectedColor;
+        }
+        else
+        {
+            delButton.image.color = nonselectedColor;
+        }
     }
 
     public void OnStartPracticeButtonPressed()

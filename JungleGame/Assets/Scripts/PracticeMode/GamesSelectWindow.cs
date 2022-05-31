@@ -14,7 +14,7 @@ public class GamesSelectWindow : MonoBehaviour
     public LerpableObject windowBG;
     public Image windowBGImage;
 
-    public TextMeshProUGUI numText;
+    public TMP_InputField numText;
     public LerpableObject leftArrow;
     public LerpableObject rightArrow;
     public LerpableObject numBox;
@@ -37,6 +37,33 @@ public class GamesSelectWindow : MonoBehaviour
 
     //////////////////////////////////////////
 
+    public void OnInputFieldValueChanged()
+    {
+        // remove any non-numeric characters
+        string numString = "";
+        foreach (char c in numText.text)
+        {
+            if ("0123456789".Contains(c.ToString()))
+            {
+                numString += c;
+            }
+        }
+
+        // make sure int is possible
+        if (numString.Length > 0)
+        {
+            myNum = int.Parse(numString);
+            if (myNum < 1)
+            {
+                myNum = 1;
+            }
+            if (myNum > 99)
+            {
+                myNum = 99;
+            }
+        }
+    }
+
     public void OnLeftArrowPressed()
     {
         myNum--;
@@ -53,9 +80,9 @@ public class GamesSelectWindow : MonoBehaviour
     public void OnRightArrowPressed()
     {
         myNum++;
-        if (myNum > 50)
+        if (myNum > 99)
         {
-            myNum = 50;
+            myNum = 99;
         }
 
         rightArrow.SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.1f, 0.1f);
@@ -100,8 +127,16 @@ public class GamesSelectWindow : MonoBehaviour
         // return phoneme list to correct location
         switch (myReturnLocation)
         {
-            case ReturnLocation.blendingWindow:
-                PracticeSceneManager.instance.blendingPracticeWindow.ReturnNumGames(myNum);
+            case ReturnLocation.defaultWindow:
+                PracticeSceneManager.instance.defaultPracticeWindow.ReturnNumGames(myNum);
+                break;
+
+            case ReturnLocation.phonemeChangingWindow:
+                PracticeSceneManager.instance.phonemeChangingWindow.ReturnNumGames(myNum);
+                break;
+
+            case ReturnLocation.phonemePracticeWindow:
+                PracticeSceneManager.instance.phonemePracticeWindow.ReturnNumGames(myNum);
                 break;
         }
     }

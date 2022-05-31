@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public enum ReturnLocation
 {
-    blendingWindow
+    defaultWindow,
+    phonemeChangingWindow,
+    phonemePracticeWindow
 }
 
 public class PhonemeSelectWindow : MonoBehaviour
@@ -154,8 +156,16 @@ public class PhonemeSelectWindow : MonoBehaviour
         // return phoneme list to correct location
         switch (myReturnLocation)
         {
-            case ReturnLocation.blendingWindow:
-                PracticeSceneManager.instance.blendingPracticeWindow.ReturnSelectedPhonemes(currentPhonemes);
+            case ReturnLocation.defaultWindow:
+                PracticeSceneManager.instance.defaultPracticeWindow.ReturnSelectedPhonemes(currentPhonemes);
+                break;
+
+            case ReturnLocation.phonemeChangingWindow:
+                PracticeSceneManager.instance.phonemeChangingWindow.ReturnSelectedPhonemes(currentPhonemes);
+                break;
+
+            case ReturnLocation.phonemePracticeWindow:
+                PracticeSceneManager.instance.phonemePracticeWindow.ReturnSelectedPhonemes(currentPhonemes);
                 break;
         }
     }
