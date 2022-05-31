@@ -526,10 +526,12 @@ public class GameManager : DontDestroy<GameManager>
     {
         if (practiceGameQueue.Count > 0)
         {
+            // update text
+            practiceModeCounter.text =  practiceGameQueue.Count + "/" + practiceTotalGames;
+
             // load next game in queue
             GameType nextGame = practiceGameQueue[practiceGameQueue.Count - 1];
             practiceGameQueue.RemoveAt(practiceGameQueue.Count - 1);
-            practiceModeCounter.text =  practiceGameQueue.Count + "/" + practiceTotalGames;
             LoadScene(GameTypeToSceneName(nextGame), true);
         }
         else

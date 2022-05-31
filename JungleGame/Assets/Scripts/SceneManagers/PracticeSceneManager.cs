@@ -160,4 +160,110 @@ public class PracticeSceneManager : MonoBehaviour
 
         phonemePracticeWindow.OpenWindow();
     }
+
+    ////////////////////////////////////////////////////
+
+    public void StartPractice(PracticeModeGame game, int difficulty, int games, List<ActionWordEnum> phonemes, bool add, bool sub, bool del, bool move, bool sound, bool icon)
+    {   
+        List<GameType> gameQueue = new List<GameType>();
+        GameType prevGameType = GameType.None;
+
+        // curate specific practice queue
+        switch (game)
+        {
+            case PracticeModeGame.blending:
+                for (int i = 0; i < games; i++)
+                {
+                    gameQueue.Add(GameType.WordFactoryBlending);
+                }
+                break;
+            
+            case PracticeModeGame.elkonin_boxes:
+                for (int i = 0; i < games; i++)
+                {
+                    gameQueue.Add(GameType.Password);
+                }
+                break;
+
+            case PracticeModeGame.phoneme_changing:
+                for (int i = 0; i < games; i++)
+                {
+                    GameType newType = DetermineNextPhonemeChangingGame(prevGameType, add, sub, del);
+                    prevGameType = newType;
+                    gameQueue.Add(newType);
+                }
+                break;
+
+            case PracticeModeGame.phoneme_id:
+                for (int i = 0; i < games; i++)
+                {
+                    gameQueue.Add(GameType.TigerPawPhotos);
+                }
+                break;
+
+            case PracticeModeGame.phoneme_in_word:
+                for (int i = 0; i < games; i++)
+                {
+                    gameQueue.Add(GameType.TigerPawCoins);
+                }
+                break;
+
+            case PracticeModeGame.phoneme_practice:
+                for (int i = 0; i < games; i++)
+                {
+                    GameType newType = DetermineNextPhonemePracticeGame(prevGameType, move, sound, icon);
+                    prevGameType = newType;
+                    gameQueue.Add(newType);
+                }
+                break;
+        }
+
+        // start practice modes
+        GameManager.instance.SetPracticeMode(gameQueue, difficulty, phonemes);
+        GameManager.instance.ContinuePracticeMode();
+    }
+
+    private GameType DetermineNextPhonemeChangingGame(GameType prevGameType, bool add, bool sub, bool del)
+    {
+        List<GameType> possibleGameTypes = new List<GameType>();
+        if (add) possibleGameTypes.Add(GameType.WordFactoryBuilding);
+        if (sub) possibleGameTypes.Add(GameType.WordFactorySubstituting);
+        if (del) possibleGameTypes.Add(GameType.WordFactoryDeleting);
+
+        if (possibleGameTypes.Count > 1 && possibleGameTypes.Contains(prevGameType))
+        {
+            possibleGameTypes.Remove(prevGameType);
+        }
+
+        GameType returnThisGame = possibleGameTypes[Random.Range(0, possibleGameTypes.Count)];
+        return returnThisGame;
+    }
+
+    private GameType DetermineNextPhonemePracticeGame(GameType prevGameType, bool move, bool sound, bool icon)
+    {
+        List<GameType> possibleGameTypes = new List<GameType>();
+        if (move) 
+        {
+            possibleGameTypes.Add(GameType.FroggerGame);
+            possibleGameTypes.Add(GameType.TurntablesGame);
+        }
+        if (sound) 
+        {
+            possibleGameTypes.Add(GameType.TurntablesGame);
+            possibleGameTypes.Add(GameType.SeashellGame);
+        }
+        if (icon)
+        {   
+            possibleGameTypes.Add(GameType.PirateGame);
+            possibleGameTypes.Add(GameType.SpiderwebGame);
+        }
+
+        if (possibleGameTypes.Count > 1 && possibleGameTypes.Contains(prevGameType))
+        {
+            possibleGameTypes.Remove(prevGameType);
+        }
+
+        GameType returnThisGame = possibleGameTypes[Random.Range(0, possibleGameTypes.Count)];
+        return returnThisGame;
+    }
 }
