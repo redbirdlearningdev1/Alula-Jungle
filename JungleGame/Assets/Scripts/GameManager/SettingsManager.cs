@@ -354,7 +354,7 @@ public class SettingsManager : MonoBehaviour
             StartCoroutine(ToggleScrollSettingsWindow(settingsWindowOpen, true));
         } 
         // open splash screen settings window
-        else if (SceneManager.GetActiveScene().name == "SplashScene")
+        else if (SceneManager.GetActiveScene().name == "SplashScene" || SceneManager.GetActiveScene().name == "PracticeScene")
         {
             StartCoroutine(ToggleSplashScreenSettingsWindow(settingsWindowOpen, true));
         }

@@ -66,6 +66,8 @@ public class BugController : MonoBehaviour
 
     public void StartToWeb()
     {
+        goToOrigin();
+
         // play bug fly sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BugFlyIn, 1f);
 

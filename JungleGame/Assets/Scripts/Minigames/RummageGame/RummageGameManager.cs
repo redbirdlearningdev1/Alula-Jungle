@@ -451,18 +451,14 @@ public class RummageGameManager : MonoBehaviour
 
         timesMissed++;
         orc.failOrc();
-        yield return new WaitForSeconds(.75f);
-
-        StartCoroutine(pileBounceInCoins(lastLocation - 1));
-        yield return new WaitForSeconds(1.5f);
-        stretch.stretchIn();
         yield return new WaitForSeconds(1f);
+        StartCoroutine(pileBounceInCoins(lastLocation - 1));
+        yield return new WaitForSeconds(1f);
+        stretch.stretchIn();
         orc.GoToOrigin();
-
         yield return new WaitForSeconds(2.0f);
         orc.stopOrc();
 
-        // play reminder popup
         List<AssetReference> clips = new List<AssetReference>();
         clips.Add(GameIntroDatabase.instance.rummageReminder1);
         clips.Add(GameIntroDatabase.instance.rummageReminder2);
@@ -471,9 +467,10 @@ public class RummageGameManager : MonoBehaviour
         AssetReference clip = clips[Random.Range(0, clips.Count)];
         CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
         yield return cd.coroutine;
-        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Clogg, clip);
-        yield return new WaitForSeconds(cd.GetResult() + 1f);
-
+        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Clogg, clip);
+        // yield return new WaitForSeconds(cd.GetResult() + 1f);
+        
+    
         piles[0].colliderOn();
         piles[1].colliderOn();
         piles[2].colliderOn();
@@ -599,13 +596,16 @@ public class RummageGameManager : MonoBehaviour
         }
         else
         {
-            // play encouragement popup
-            List<AssetReference> clips = GameIntroDatabase.instance.rummageEncouragementClips;
-            AssetReference clip = clips[Random.Range(0, clips.Count)];
-            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
-            yield return cd.coroutine;
-            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Clogg, clip);
-            yield return new WaitForSeconds(cd.GetResult() + 1f);
+            if (GameManager.DeterminePlayPopup())
+            {
+                // play encouragement popup
+                List<AssetReference> clips = GameIntroDatabase.instance.rummageEncouragementClips;
+                AssetReference clip = clips[Random.Range(0, clips.Count)];
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd.coroutine;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Clogg, clip);
+                // yield return new WaitForSeconds(cd.GetResult() + 1f);
+            }
         }
 
         yield return new WaitForSeconds(.25f);
@@ -893,23 +893,30 @@ public class RummageGameManager : MonoBehaviour
 
     private IEnumerator pileBounceCoins(int index)
     {
+        int i = 0;
         List<RummageCoin> pile = GetCoinPile(index);
         foreach (var coin in pile)
         {
             coin.BounceOut1();
-            yield return new WaitForSeconds(0.1f);
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f + (i * 0.1f));
+            yield return new WaitForSeconds(0.2f);
+            i++;
         }
     }
 
     private IEnumerator pileBounceInCoins(int index)
     {
         List<RummageCoin> pile = GetCoinPile(index);
+        int i = 0;
         foreach (var coin in pile)
         {
             coin.shrink();
             coin.BounceIn1();
-            yield return new WaitForSeconds(0.5f);
-            coin.gameObject.SetActive(false);
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 1.2f - (i * 0.1f));
+            yield return new WaitForSeconds(0.2f);
+            i++;
         }
     }
 

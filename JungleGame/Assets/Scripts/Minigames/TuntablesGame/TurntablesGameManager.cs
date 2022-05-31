@@ -185,7 +185,7 @@ public class TurntablesGameManager : MonoBehaviour
         AudioManager.instance.PlayMoveStoneSound(2.25f, moveStonePitch[2]);
         yield return new WaitForSeconds(0.5f);
 
-        doors[3].LerpRotation(45, 1.75f);
+        doors[3].LerpRotation(60, 1.75f);
         // play stone moving audio
         AudioManager.instance.PlayMoveStoneSound(1.75f, moveStonePitch[3]);
         yield return new WaitForSeconds(1.75f);
@@ -242,7 +242,7 @@ public class TurntablesGameManager : MonoBehaviour
         else
         {
             // small delay
-            yield return new WaitForSeconds(1.5f);
+            //yield return new WaitForSeconds(1.5f);
         }
 
         // scale door tile
@@ -375,14 +375,18 @@ public class TurntablesGameManager : MonoBehaviour
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Red, clip);
                 yield return new WaitForSeconds(cd.GetResult() + 1f);
             }
-            else
+            else if (currentDoor <= 3)
             {
-                // play encouragement popup
-                AssetReference clip = GameIntroDatabase.instance.turntablesEncouragementClips[Random.Range(0, GameIntroDatabase.instance.turntablesEncouragementClips.Count)];
-                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
-                yield return cd.coroutine;
-                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-                yield return new WaitForSeconds(cd.GetResult() + 1f);
+                if (GameManager.DeterminePlayPopup())
+                {
+                    // play encouragement popup
+                    AssetReference clip = GameIntroDatabase.instance.turntablesEncouragementClips[Random.Range(0, GameIntroDatabase.instance.turntablesEncouragementClips.Count)];
+                    CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                    yield return cd.coroutine;
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
+                    //yield return new WaitForSeconds(cd.GetResult() + 1f);
+                }
+                
             }
         }
         else
@@ -421,7 +425,7 @@ public class TurntablesGameManager : MonoBehaviour
             CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
             yield return cd.coroutine;
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-            yield return new WaitForSeconds(cd.GetResult() + 1f);
+            //yield return new WaitForSeconds(cd.GetResult() + 1f);
         }
 
         // move keys down

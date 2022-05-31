@@ -46,6 +46,9 @@ public class SplashScreenManager : MonoBehaviour
     public LerpableObject winCrown2;
     public LerpableObject winCrown3;
 
+    public LerpableObject practiceButton;
+    private Vector3 practiceButtonPos;
+
     [SerializeField] TMP_InputField newProfileInput;
 
     [SerializeField] WiggleController tapTextWiggleController;
@@ -100,6 +103,9 @@ public class SplashScreenManager : MonoBehaviour
     {
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
+
+        // end practice mode iff needed
+        GameManager.instance.practiceModeON = false;
 
         // stop music 
         AudioManager.instance.StopMusic();
@@ -200,6 +206,10 @@ public class SplashScreenManager : MonoBehaviour
         selectedProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
         editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
 
+        // move practice button off-screen
+        practiceButtonPos = practiceButton.transform.localPosition;
+        practiceButton.transform.localPosition = new Vector3(practiceButtonPos.x, practiceButtonPos.y + 150f, 0f);
+
         // start screen tap delay
         StartCoroutine(ScreenTapDelay());
 
@@ -283,9 +293,6 @@ public class SplashScreenManager : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        // show menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
-
         float timer = 0f;
         while (true)
         {
@@ -304,6 +311,25 @@ public class SplashScreenManager : MonoBehaviour
         profileSelectWindow.interactable = true;
         profileSelectWindow.blocksRaycasts = true;
         profileSelectWindow.alpha = 1f;
+
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+
+        // enable practice button if profiles exist
+        if (data1.active || data2.active || data3.active)
+        {
+            practiceButton.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            practiceButton.GetComponent<Button>().interactable = false;
+        }
+
+        // show practice button
+        practiceButton.LerpYPos(practiceButtonPos.y - 50, 0.2f, true);
+        yield return new WaitForSeconds(0.2f);
+        practiceButton.LerpYPos(practiceButtonPos.y, 0.2f, true);
+        yield return new WaitForSeconds(0.2f);
 
         SetUpWinCrowns();
     }
@@ -461,6 +487,16 @@ public class SplashScreenManager : MonoBehaviour
 
         profileSelectWindow.interactable = true;
         profileSelectWindow.blocksRaycasts = true;
+
+        // enable practice button if profiles exist
+        if (data1.active || data2.active || data3.active)
+        {
+            practiceButton.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            practiceButton.GetComponent<Button>().interactable = false;
+        }
     }
 
     private void LoadProfileAndContinue(StudentIndex index)
@@ -738,6 +774,16 @@ public class SplashScreenManager : MonoBehaviour
         startButton.interactable = false;
         startbuttonBox.sprite = boxBrown;
         startbuttonText.sprite = textGreen;
+
+        // enable practice button if profiles exist
+        if (data1.active || data2.active || data3.active)
+        {
+            practiceButton.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            practiceButton.GetComponent<Button>().interactable = false;
+        }
     }
 
     public void OnNoDeleteProfilePressed()
@@ -749,5 +795,10 @@ public class SplashScreenManager : MonoBehaviour
         confirmDeleteProfileWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
         confirmDeleteProfileBG.LerpImageAlpha(confirmDeleteProfileBG.GetComponent<Image>(), 0f, 0.5f);
         confirmDeleteProfileBG.GetComponent<Image>().raycastTarget = false;
+    }
+
+    public void OnPracticeButtonPressed()
+    {
+        GameManager.instance.LoadScene("PracticeScene", true);
     }
 }

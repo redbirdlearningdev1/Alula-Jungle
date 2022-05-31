@@ -109,20 +109,18 @@ public class SeaShellGameManager : MonoBehaviour
 
     private IEnumerator StartTutorial()
     {
-        // small delay before starting
-        yield return new WaitForSeconds(2f);
-
-        // show mermaids
-        MermaidController.instance.ShowMermaids();
+        // play ambiance sounds
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.SeaAmbiance, 0.1f, "sea_ambiance");
 
         // small delay before starting
         yield return new WaitForSeconds(1f);
 
+        // show mermaids
+        MermaidController.instance.ShowMermaids();
+        yield return new WaitForSeconds(1f);
+
         // turn off raycaster
         ShellRayCaster.instance.isOn = false;
-
-        // play ambiance sounds
-        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.SeaAmbiance, 0.1f, "sea_ambiance");
 
         // play tutorial audio
         AssetReference clip = GameIntroDatabase.instance.seashellIntro1;
@@ -217,7 +215,7 @@ public class SeaShellGameManager : MonoBehaviour
 
         // place coin
         OctoController.instance.PlaceNewCoin(currentCoin);
-        yield return new WaitForSeconds(2f);
+        // yield return new WaitForSeconds(1f);
 
         // reveal shells
         ShellController.instance.RevealShells();
@@ -252,6 +250,8 @@ public class SeaShellGameManager : MonoBehaviour
                 {
                     shell.GetComponent<LerpableObject>().LerpScale(new Vector2(0.9f, 0.9f), 0.5f);
                     shell.GetComponent<LerpableObject>().LerpImageAlpha(shell.GetComponent<Image>(), 0.5f, 0.5f);
+
+                    AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MagicReveal, 0.1f);
                 }
             }
 
@@ -326,20 +326,16 @@ public class SeaShellGameManager : MonoBehaviour
 
         // play mermaid routine
         MermaidController.instance.PlayShell(shellNum);
-        yield return new WaitForSeconds(3f);
 
         // coin holder color
         CoinHolder.instance.CorrectCoinHolder();
-        yield return new WaitForSeconds(1f);
 
         // correct coin animation
         OctoController.instance.CoinCorrect();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
 
         // coin holder color
         CoinHolder.instance.BaseCoinHolder();
-        yield return new WaitForSeconds(1f);
-
 
         // play tutorial audio
         if (playTutorial && t_currRound == 0)
@@ -358,37 +354,40 @@ public class SeaShellGameManager : MonoBehaviour
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Celeste, clip);
             yield return new WaitForSeconds(cd0.GetResult() + 1f);
         }
-        else if (t_currRound <= 2)
-        {
-            // play random encouragement popup
-            int index = Random.Range(0, 3);
-            AssetReference clip = null;
-            switch (index)
+        else if (t_currRound <= 2 && !(playTutorial && t_currRound > 1))
+        {                
+            if (GameManager.DeterminePlayPopup())
             {
-                case 0:
-                    clip = GameIntroDatabase.instance.seashellEncouragementClips[index];
-                    CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
-                    yield return cd.coroutine;
-                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Bubbles, clip);
-                    yield return new WaitForSeconds(cd.GetResult() + 1f);
-                    break;
-                case 1:
-                    clip = GameIntroDatabase.instance.seashellEncouragementClips[index];
-                    CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
-                    yield return cd0.coroutine;
-                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Sylvie, clip);
-                    yield return new WaitForSeconds(cd0.GetResult() + 1f);
-                    break;
-                case 2:
-                    clip = GameIntroDatabase.instance.seashellEncouragementClips[index];
-                    CoroutineWithData<float> cd1 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
-                    yield return cd1.coroutine;
-                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Celeste, clip);
-                    yield return new WaitForSeconds(cd1.GetResult() + 1f);
-                    break;
+                // play random encouragement popup
+                int index = Random.Range(0, 3);
+                AssetReference clip = null;
+                switch (index)
+                {
+                    case 0:
+                        clip = GameIntroDatabase.instance.seashellEncouragementClips[index];
+                        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                        yield return cd.coroutine;
+                        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Bubbles, clip);
+                        //yield return new WaitForSeconds(cd.GetResult() + 1f);
+                        break;
+                    case 1:
+                        clip = GameIntroDatabase.instance.seashellEncouragementClips[index];
+                        CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                        yield return cd0.coroutine;
+                        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Sylvie, clip);
+                        //yield return new WaitForSeconds(cd0.GetResult() + 1f);
+                        break;
+                    case 2:
+                        clip = GameIntroDatabase.instance.seashellEncouragementClips[index];
+                        CoroutineWithData<float> cd1 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                        yield return cd1.coroutine;
+                        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Celeste, clip);
+                        //yield return new WaitForSeconds(cd1.GetResult() + 1f);
+                        break;
+                }
             }
         }
-
+        yield return new WaitForSeconds(1f);
 
         t_currRound++;
 
@@ -463,20 +462,14 @@ public class SeaShellGameManager : MonoBehaviour
         timesMissed++;
 
         // play incorrect audio
-        yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
 
         // coin holder color
         CoinHolder.instance.IncorrectCoinHolder();
-        yield return new WaitForSeconds(1f);
 
         // incorrect coin animation
         OctoController.instance.CoinIncorrect();
-        yield return new WaitForSeconds(3f);
-
-        // coin holder color
-        CoinHolder.instance.BaseCoinHolder();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         // play random reminder popup
         int index = Random.Range(0, 2);
@@ -488,16 +481,20 @@ public class SeaShellGameManager : MonoBehaviour
                 CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
                 yield return cd.coroutine;
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Sylvie, clip);
-                yield return new WaitForSeconds(cd.GetResult() + 1f);
+                //yield return new WaitForSeconds(cd.GetResult() + 1f);
                 break;
             case 1:
                 clip = GameIntroDatabase.instance.seashellReminder2;
                 CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
                 yield return cd0.coroutine;
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Celeste, clip);
-                yield return new WaitForSeconds(cd0.GetResult() + 1f);
+                //yield return new WaitForSeconds(cd0.GetResult() + 1f);
                 break;
         }
+        yield return new WaitForSeconds(3f);
+
+        // coin holder color
+        CoinHolder.instance.BaseCoinHolder();
 
         StartCoroutine(StartGame());
     }

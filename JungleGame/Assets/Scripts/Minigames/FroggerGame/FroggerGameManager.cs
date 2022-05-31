@@ -208,7 +208,7 @@ public class FroggerGameManager : MonoBehaviour
         taxi.TwitchAnimation();
         bag.DowngradeBag();
         StartCoroutine(HideCoins(currRow));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         // play reminder popup
         List<AssetReference> clips = new List<AssetReference>();
@@ -220,11 +220,11 @@ public class FroggerGameManager : MonoBehaviour
         CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
         yield return cd.coroutine;
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clip);
-        yield return new WaitForSeconds(cd.GetResult() + 1f);
+        //yield return new WaitForSeconds(cd.GetResult());
 
         // sink logs
         rows[currRow].SinkAllLogs();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         // determine correct landing sound
         AssetReference landingSound = null;
@@ -235,13 +235,13 @@ public class FroggerGameManager : MonoBehaviour
             landingSound = AudioDatabase.instance.WoodThump;
         gorilla.JumpBack(landingSound);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         if (currRow > 0)
             currRow--;
         rows[currRow].RiseAllLogs();
         rows[currRow].ResetLogRow();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         StartCoroutine(ShowCoins(currRow));
     }
@@ -259,7 +259,7 @@ public class FroggerGameManager : MonoBehaviour
         selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.25f);
         selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
         selectedCoin.GetComponent<LerpableObject>().LerpPosToTransform(Bag.instance.transform, 0.25f, false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         selectedCoin.ReturnToLog();
 
         // add coin to successful coins
@@ -267,38 +267,41 @@ public class FroggerGameManager : MonoBehaviour
         selectedCoin = null;
 
         StartCoroutine(HideCoins(currRow, selectedCoin));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         rows[currRow].SinkAllExcept(selectedIndex);
         rows[currRow].MoveToCenterLog(selectedIndex);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         gorilla.JumpForward(AudioDatabase.instance.WoodThump);
         yield return new WaitForSeconds(1.25f);
         gorilla.CelebrateAnimation();
 
         // play encouragement popup
-        AssetReference clip = null;
-        switch (currRow)
+        if (GameManager.DeterminePlayPopup())
         {
-            case 0:
-                clip = GameIntroDatabase.instance.froggerEncouragementClips[0];
-                break;
-            case 1:
-                clip = GameIntroDatabase.instance.froggerEncouragementClips[2];
-                break;
-            case 2:
-                clip = GameIntroDatabase.instance.froggerEncouragementClips[3];
-                break;
+            AssetReference clip = null;
+            switch (currRow)
+            {
+                case 0:
+                    clip = GameIntroDatabase.instance.froggerEncouragementClips[0];
+                    break;
+                case 1:
+                    clip = GameIntroDatabase.instance.froggerEncouragementClips[2];
+                    break;
+                case 2:
+                    clip = GameIntroDatabase.instance.froggerEncouragementClips[3];
+                    break;
+            }
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd.coroutine;
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clip);
+            //yield return new WaitForSeconds(cd.GetResult());
         }
-        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
-        yield return cd.coroutine;
-        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Darwin, clip);
-        yield return new WaitForSeconds(cd.GetResult() + 1f);
-
+        
         currRow++;
         rows[currRow].RiseAllLogs();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         StartCoroutine(ShowCoins(currRow));
     }
@@ -317,19 +320,19 @@ public class FroggerGameManager : MonoBehaviour
         selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.25f);
         selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
         selectedCoin.GetComponent<LerpableObject>().LerpPosToTransform(Bag.instance.transform, 0.25f, false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         selectedCoin.ReturnToLog();
         selectedCoin = null;
 
         StartCoroutine(HideCoins(currRow, selectedCoin));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         rows[currRow].SinkAllExcept(selectedIndex);
         rows[currRow].MoveToCenterLog(selectedIndex);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         gorilla.JumpForward(AudioDatabase.instance.WoodThump);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.25f);
 
         gorilla.JumpForward(AudioDatabase.instance.GrassThump);
         yield return new WaitForSeconds(1.25f);
@@ -339,7 +342,7 @@ public class FroggerGameManager : MonoBehaviour
         // play win tune
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         // hide dancing man
         StartCoroutine(HideDancingManRoutine());
@@ -404,7 +407,7 @@ public class FroggerGameManager : MonoBehaviour
         while (!gameSetup)
             yield return null;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         // play tutorial audio
         List<AssetReference> clips = new List<AssetReference>();
@@ -419,7 +422,7 @@ public class FroggerGameManager : MonoBehaviour
 
         // reveal dancing man
         StartCoroutine(ShowDancingManRoutine());
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         // show settings button
         SettingsManager.instance.ToggleMenuButtonActive(true);
@@ -458,19 +461,19 @@ public class FroggerGameManager : MonoBehaviour
         selectedCoin.GetComponent<LerpableObject>().LerpImageAlpha(selectedCoin.image, 0f, 0.25f);
         selectedCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
         selectedCoin.GetComponent<LerpableObject>().LerpPosToTransform(Bag.instance.transform, 0.25f, false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         selectedCoin.ReturnToLog();
         selectedCoin = null;
 
         StartCoroutine(HideCoins(currRow, selectedCoin));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         rows[currRow].SinkAllExcept(selectedIndex);
         rows[currRow].MoveToCenterLog(selectedIndex);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         gorilla.JumpForward(AudioDatabase.instance.WoodThump);
-        yield return new WaitForSeconds(1.25f);
+        yield return new WaitForSeconds(1f);
         gorilla.CelebrateAnimation();
 
         // play tutorial audio
@@ -911,7 +914,7 @@ public class FroggerGameManager : MonoBehaviour
         rows[2].SinkAllLogs();
         yield return new WaitForSeconds(0.2f);
         rows[1].SinkAllLogs();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         // game is done setting up
         gameSetup = true;
     }

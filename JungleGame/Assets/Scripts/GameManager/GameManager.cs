@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
+using TMPro;
 
 public enum GameType
 {
@@ -34,9 +33,11 @@ public enum GameType
 
 public class GameManager : DontDestroy<GameManager>
 {
-    public static string currentGameVersion = "alpha1.6";
+    public static string currentGameVersion = "alpha1.7";
 
     public static int stickerInventorySize = 16;
+
+    public static float popup_probability = 0.2f;
 
     public bool devModeActivated;
     public const float transitionTime = 0.5f; // time to fade into and out of a scene (total transition time is: transitionTime * 2)
@@ -77,6 +78,15 @@ public class GameManager : DontDestroy<GameManager>
     public GameObject console;
     public Text consoleText;
     private Coroutine sleepCoroutine;
+
+    [Header("Practice Mode")]
+    public bool practiceModeON = false;
+    public TextMeshProUGUI practiceModeCounter;
+    private List<GameType> practiceGameQueue;
+    private int practiceDifficulty;
+    private List<ActionWordEnum> practicePhonemes;
+    private int practiceTotalGames;
+    
 
     void Start()
     {
@@ -346,6 +356,15 @@ public class GameManager : DontDestroy<GameManager>
         }
     }
 
+    public static bool DeterminePlayPopup()
+    {
+        float num = Random.Range(0f, 1f);
+        print ("num: " + num);
+        if (num < popup_probability)
+            return true;
+        return false;
+    }
+
     /* 
 ################################################
 # SCENE MANAGEMENT
@@ -402,7 +421,7 @@ public class GameManager : DontDestroy<GameManager>
 
     private IEnumerator DelayLoadScene(string sceneName)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         LoadingSceneManager.instance.LoadNextScene(sceneName);
     }
 
@@ -480,6 +499,46 @@ public class GameManager : DontDestroy<GameManager>
                 return "TigerPawPhotos";
             case GameType.Password:
                 return "NewPasswordGame";
+        }
+    }
+
+    /* 
+################################################
+# PRACTICE MODE
+################################################
+    */
+
+    public void SetPracticeMode(List<GameType> gameQueue, int diff, List<ActionWordEnum> phonemes)
+    {
+        // turn on practice mode and copy over data
+        practiceModeON = true;
+        practiceGameQueue = new List<GameType>();
+        practiceGameQueue.AddRange(gameQueue);
+        practiceDifficulty = diff;
+        practicePhonemes = new List<ActionWordEnum>();
+        practicePhonemes.AddRange(phonemes);
+        // set counter
+        practiceTotalGames = practiceGameQueue.Count;
+        practiceModeCounter.text =  practiceTotalGames + "/" + practiceTotalGames;
+    }
+
+    public void ContinuePracticeMode()
+    {
+        if (practiceGameQueue.Count > 0)
+        {
+            // update text
+            practiceModeCounter.text =  practiceGameQueue.Count + "/" + practiceTotalGames;
+
+            // load next game in queue
+            GameType nextGame = practiceGameQueue[practiceGameQueue.Count - 1];
+            practiceGameQueue.RemoveAt(practiceGameQueue.Count - 1);
+            LoadScene(GameTypeToSceneName(nextGame), true);
+        }
+        else
+        {
+            // return to practice mode scene
+            practiceModeON = false;
+            LoadScene("PracticeScene", true);
         }
     }
 }

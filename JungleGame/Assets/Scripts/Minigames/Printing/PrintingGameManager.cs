@@ -197,7 +197,7 @@ public class PrintingGameManager : MonoBehaviour
         }
         else
         {
-            PirateRopeController.instance.ResetRope();
+            // PirateRopeController.instance.ResetRope();
         }
 
 
@@ -335,18 +335,16 @@ public class PrintingGameManager : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CannonHitCoin, 0.5f);
 
-        // drop coin into chest
+        // set coin value
         yield return new WaitForSeconds(0.25f);
         PirateRopeController.instance.printingCoin.SetActionWordValue(correctValue);
 
         // play sound coin audio
         PirateRopeController.instance.printingCoin.LerpScale(new Vector2(1.2f, 1.2f), 0.1f);
         AudioManager.instance.PlayPhoneme(ChallengeWordDatabase.ActionWordEnumToElkoninValue(correctValue));
-        yield return new WaitForSeconds(1.5f);
-        PirateRopeController.instance.printingCoin.LerpScale(new Vector2(1f, 1f), 0.1f);
         yield return new WaitForSeconds(1f);
 
-        // upgrade chest
+        // drop coin and upgrade chest
         PirateRopeController.instance.DropCoinAnimation();
         yield return new WaitForSeconds(0.4f);
         PirateChest.instance.UpgradeChest();
@@ -379,20 +377,22 @@ public class PrintingGameManager : MonoBehaviour
         }
         else
         {
-            // play random encouragement popup
-            int index = Random.Range(0, 3);
+            if (GameManager.DeterminePlayPopup())
+            {
+                // play random encouragement popup
+                int index = Random.Range(0, 3);
 
-            // skip #3 on jeff's request
-            if (index == 2)
-                index = 3;
+                // skip #3 on jeff's request
+                if (index == 2)
+                    index = 3;
 
-            AssetReference clip = GameIntroDatabase.instance.pirateEncouragementClips[index];
-            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
-            yield return cd.coroutine;
-            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Ollie, clip);
-            yield return new WaitForSeconds(cd.GetResult() + 1f);
+                AssetReference clip = GameIntroDatabase.instance.pirateEncouragementClips[index];
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd.coroutine;
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Ollie, clip);
+                //yield return new WaitForSeconds(cd.GetResult() + 1f);
+            }
         }
-
 
         // increase tutorial round
         if (playTutorial)
@@ -434,7 +434,7 @@ public class PrintingGameManager : MonoBehaviour
             CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
             yield return cd.coroutine;
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Ollie, clip);
-            yield return new WaitForSeconds(cd.GetResult() + 1f);
+            //yield return new WaitForSeconds(cd.GetResult() + 1f);
         }
 
         // raise rope

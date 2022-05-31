@@ -230,7 +230,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
                 yield return cd.coroutine;
 
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(cd.GetResult() + 1f);
+                yield return new WaitForSeconds(cd.GetResult() + 0.5f);
 
                 // play start 2
                 clip = GameIntroDatabase.instance.blendingStart2;
@@ -239,7 +239,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
                 yield return cd2.coroutine;
 
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-                yield return new WaitForSeconds(cd2.GetResult() + 1f);
+                yield return new WaitForSeconds(cd2.GetResult());
             }
         }
 
@@ -366,7 +366,6 @@ public class WordFactoryBlendingManager : MonoBehaviour
         }
 
         // show polaroids
-        yield return new WaitForSeconds(1f);
         StartCoroutine(ShowPolaroids());
         yield return new WaitForSeconds(3f);
 
@@ -420,7 +419,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MagicReveal, 0.1f);
 
         currentCoins = new List<UniversalCoinImage>();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         // show coins + add to list
         for (int i = 0; i < currentWord.elkoninCount; i++)
@@ -436,7 +435,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
             currentCoins.Add(coin);
             // audio fx
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", (1f + 0.25f * i));
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
         }
 
         yield return new WaitForSeconds(0.5f);
@@ -448,7 +447,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
             for (int i = 0; i < currentWord.elkoninCount; i++)
             {
                 StartCoroutine(PlayAudioCoinRoutine(currentCoins[i]));
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.8f);
             }
 
             yield return new WaitForSeconds(0.5f);
@@ -493,7 +492,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
         for (int i = 0; i < currentWord.elkoninCount; i++)
         {
             StartCoroutine(PlayAudioCoinRoutine(currentCoins[i]));
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.8f);
         }
 
         TogglePolaroidsWiggle(true);
@@ -550,7 +549,6 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
         // reveal the correct polaroid
         StartCoroutine(PolaroidRevealRoutine(true));
-        yield return new WaitForSeconds(2f);
 
         // ####################
 
@@ -610,6 +608,13 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        // win game iff 3 or more rounds have been won
+        if (numWins >= 3)
+        {
+            StartCoroutine(WinGameRoutine());
+            yield break;
+        }
+            
         // tutorial stuff
         if (playTutorial && tutorialEvent == 1)
         {
@@ -646,54 +651,53 @@ public class WordFactoryBlendingManager : MonoBehaviour
         }
         else
         {
-            // play encouragement popup
-            // julius
-            int index = Random.Range(0, 2);
-            AssetReference clip = null;
-            if (index == 0)
+            if (GameManager.DeterminePlayPopup())
             {
-                clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_ugh");
-            }
-            else if (index == 1)
-            {
-                clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_grr");
-            }
+                // play encouragement popup
+                // julius
+                int index = Random.Range(0, 2);
+                AssetReference clip = null;
+                if (index == 0)
+                {
+                    clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_ugh");
+                }
+                else if (index == 1)
+                {
+                    clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("julius_grr");
+                }
 
-            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
-            yield return cd.coroutine;
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd.coroutine;
 
-            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-            yield return new WaitForSeconds(cd.GetResult() + 1f);
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                yield return new WaitForSeconds(cd.GetResult() + 0.5f);
 
-            // red
-            index = Random.Range(0, 3);
-            clip = null;
-            if (index == 0)
-            {
-                clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("red_woohoo");
+                // red
+                index = Random.Range(0, 3);
+                clip = null;
+                if (index == 0)
+                {
+                    clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("red_woohoo");
+                }
+                else if (index == 1)
+                {
+                    clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("red_hurrah");
+                }
+                else if (index == 2)
+                {
+                    clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("red_uhhuh");
+                }
+
+                CoroutineWithData<float> cd2 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd2.coroutine;
+
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
+                yield return new WaitForSeconds(cd2.GetResult());
             }
-            else if (index == 1)
-            {
-                clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("red_hurrah");
-            }
-            else if (index == 2)
-            {
-                clip = TalkieDatabase.instance.GetTalkieReactionDuplicate("red_uhhuh");
-            }
-
-            CoroutineWithData<float> cd2 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
-            yield return cd2.coroutine;
-
-            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-            yield return new WaitForSeconds(cd2.GetResult() + 1f);
         }
 
-        // win game iff 3 or more rounds have been won
-        if (numWins >= 3)
-            StartCoroutine(WinGameRoutine());
-        // else continue to next round
-        else
-            StartCoroutine(NewRound());
+        // go to next round
+        StartCoroutine(NewRound());
     }
 
     private IEnumerator FailPolaroidRoutine()
@@ -708,7 +712,6 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
         // reveal the correct polaroid
         StartCoroutine(PolaroidRevealRoutine(false));
-        yield return new WaitForSeconds(2f);
 
         // ####################
 
@@ -951,11 +954,6 @@ public class WordFactoryBlendingManager : MonoBehaviour
             // audio fx
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
         }
-        else
-        {
-            // audio fx
-            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
-        }
 
         // shake polaroid
         currentPolaroid.ToggleWiggle(true);
@@ -1017,7 +1015,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
         AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(coin.value).audio);
         coin.LerpSize(expandedCoinSize, 0.25f);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.8f);
         coin.LerpSize(normalCoinSize, 0.25f);
 
         playingCoinAudio = false;
