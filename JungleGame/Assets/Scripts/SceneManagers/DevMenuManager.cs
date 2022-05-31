@@ -30,7 +30,7 @@ public class DevMenuManager : MonoBehaviour
     private int numFixedStars = 2;
     [SerializeField] private bool useFullGameSim = true;
     private GameSimulationMode simMode = GameSimulationMode.Skill;
-    private SkillSimulationMode skillSimMode = SkillSimulationMode.Learning;
+    private SkillSimulationMode skillSimMode = SkillSimulationMode.Good;
 
 
     private string[] sceneNames = new string[] {  
@@ -3088,6 +3088,7 @@ public class DevMenuManager : MonoBehaviour
             if (b) count++;
         return count;
     }
+    
     /* 
     //################################################
     //#            GAME SIMULATIONS
@@ -3247,6 +3248,7 @@ public class DevMenuManager : MonoBehaviour
 
                 playerData.starsGameBeforeLastPlayed = playerData.starsLastGamePlayed;
                 playerData.starsLastGamePlayed = currentStars;
+                playerData.lastGamePlayed = RRgame;
 
                 gameList.Add(RRgame);
                 gameStarList.Add(currentStars);
@@ -3287,6 +3289,7 @@ public class DevMenuManager : MonoBehaviour
 
                 playerData.starsGameBeforeLastPlayed = playerData.starsLastGamePlayed;
                 playerData.starsLastGamePlayed = currentStars;
+                playerData.lastGamePlayed = game;
 
                 playerData.minigamesPlayed++;
                 gameList.Add(game);
