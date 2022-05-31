@@ -123,7 +123,11 @@ public class TurntablesGameManager : MonoBehaviour
 
         // create global pool
         globalPool = new List<ActionWordEnum>();
-        if (mapID != MapIconIdentfier.None)
+        if (GameManager.instance.practiceModeON)
+        {
+            globalPool.AddRange(GameManager.instance.practicePhonemes);
+        }
+        else if (mapID != MapIconIdentfier.None)
         {
             globalPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
         }

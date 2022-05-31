@@ -83,8 +83,8 @@ public class GameManager : DontDestroy<GameManager>
     public bool practiceModeON = false;
     public TextMeshProUGUI practiceModeCounter;
     private List<GameType> practiceGameQueue;
-    private int practiceDifficulty;
-    private List<ActionWordEnum> practicePhonemes;
+    [HideInInspector] public int practiceDifficulty;
+    [HideInInspector] public List<ActionWordEnum> practicePhonemes;
     private int practiceTotalGames;
     
 
@@ -387,6 +387,18 @@ public class GameManager : DontDestroy<GameManager>
         LoadScene("ScrollMap", true, 0.5f, true);
     }
 
+    public void EndStarAwardScreen()
+    {
+        if (practiceModeON)
+        {
+            ContinuePracticeMode();
+        }
+        else
+        {
+            LoadScene("ScrollMap", true, 0.5f, true);
+        }
+    }
+
     public void LoadScene(string sceneName, bool fadeOut, float time = transitionTime, bool useLoadScene = true)
     {
         RaycastBlockerController.instance.CreateRaycastBlocker("LoadingScene");
@@ -538,6 +550,7 @@ public class GameManager : DontDestroy<GameManager>
         {
             // return to practice mode scene
             practiceModeON = false;
+            practiceModeCounter.text = "";
             LoadScene("PracticeScene", true);
         }
     }

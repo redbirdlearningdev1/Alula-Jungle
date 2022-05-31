@@ -218,6 +218,13 @@ public class PracticeSceneManager : MonoBehaviour
                 break;
         }
 
+        string listofgames = "";
+        foreach (var g in gameQueue)
+        {
+            listofgames += g + ", ";
+        }
+        print ("starting practice mode: " + listofgames);
+
         // start practice modes
         GameManager.instance.SetPracticeMode(gameQueue, difficulty, phonemes);
         GameManager.instance.ContinuePracticeMode();

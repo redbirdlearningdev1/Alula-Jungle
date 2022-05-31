@@ -123,7 +123,11 @@ public class RummageGameManager : MonoBehaviour
         globalCoinPool = new List<ActionWordEnum>();
 
         // get Global Coin List
-        if (mapID != MapIconIdentfier.None)
+        if (GameManager.instance.practiceModeON)
+        {
+            globalCoinPool.AddRange(GameManager.instance.practicePhonemes);
+        }
+        else if (mapID != MapIconIdentfier.None)
         {
             globalCoinPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
         }

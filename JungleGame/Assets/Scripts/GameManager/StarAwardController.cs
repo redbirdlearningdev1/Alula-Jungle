@@ -99,6 +99,12 @@ public class StarAwardController : MonoBehaviour
 
         print ("map id: " + GameManager.instance.mapID);
 
+        if (GameManager.instance.practiceModeON)
+        {
+            StartCoroutine(AwardStarsRoutine(numStars, 0));
+            return;
+        }
+
         // determine if boss battle
         if (GameManager.instance.playingBossBattleGame)
         {

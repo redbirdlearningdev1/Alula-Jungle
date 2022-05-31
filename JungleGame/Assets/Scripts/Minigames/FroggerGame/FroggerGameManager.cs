@@ -168,7 +168,11 @@ public class FroggerGameManager : MonoBehaviour
         globalCoinPool = new List<ActionWordEnum>();
 
         // Create Global Coin List
-        if (mapID != MapIconIdentfier.None)
+        if (GameManager.instance.practiceModeON)
+        {
+            globalCoinPool.AddRange(GameManager.instance.practicePhonemes);
+        }
+        else if (mapID != MapIconIdentfier.None)
         {
             globalCoinPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
         }

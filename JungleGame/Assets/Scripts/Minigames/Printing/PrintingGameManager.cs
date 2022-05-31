@@ -104,6 +104,10 @@ public class PrintingGameManager : MonoBehaviour
         globalCoinPool = new List<ActionWordEnum>();
 
         // Create Global Coin List
+        if (GameManager.instance.practiceModeON)
+        {
+            globalCoinPool.AddRange(GameManager.instance.practicePhonemes);
+        }
         if (mapID != MapIconIdentfier.None)
         {
             globalCoinPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);

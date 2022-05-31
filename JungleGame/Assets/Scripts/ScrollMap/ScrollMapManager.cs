@@ -290,6 +290,7 @@ public class ScrollMapManager : MonoBehaviour
             GameManager.instance.playingBossBattleGame = false;
             GameManager.instance.finishedBoatGame = false;
             GameManager.instance.practiceModeON = false;
+            GameManager.instance.practiceModeCounter.text = "";
         }
         
 
