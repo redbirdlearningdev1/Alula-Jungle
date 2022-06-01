@@ -98,7 +98,6 @@ public class TutorialPopupController : MonoBehaviour
 
         foreach (var clipRef in clipRefs)
         {
-
             CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clipRef));
             yield return cd.coroutine;
 

@@ -216,8 +216,6 @@ public class AudioManager : MonoBehaviour
     ################################################
     */
 
-
-
     public void InitSplitSong(List<AssetReference> songReferences)
     {
         currSplitIndex = 0;
@@ -255,6 +253,8 @@ public class AudioManager : MonoBehaviour
                 count++;
             // }
         }
+
+        yield return new WaitForSeconds(0.5f); // added this wait for seconds to see if it fixes the split sections not being synced up in-build
 
         IncreaseSplitSong();
     }
@@ -450,10 +450,11 @@ public class AudioManager : MonoBehaviour
     {
         talkSource.Stop();
 
-        if (talkHandle.IsValid())
-        {
-            Addressables.Release(talkHandle);
-        }
+        // if (talkHandle.IsValid())
+        // {
+        //     // Addressables.Release(talkHandle);
+        //     // print ("RELEASING TALK HANDL!!!!!!!!!!!!!!!!!!!!!");
+        // }
 
         StartCoroutine(LoadAndPlayTalk(_clip));
     }
@@ -477,15 +478,20 @@ public class AudioManager : MonoBehaviour
 
         AudioClip _clip = (AudioClip)talkHandle.Result;
 
+        print ("clip: " + _clip);
+
         talkSource.clip = _clip;
         talkSource.loop = false;
         talkSource.Play();
 
+
         yield return new WaitForSeconds(_clip.length);
+        
 
         if (talkHandle.IsValid())
         {
             Addressables.Release(talkHandle);
+            print ("RELEASING TALK HANDL!!!!!!!!!!!!!!!!!!!!!");
         }
     }
 
@@ -496,6 +502,7 @@ public class AudioManager : MonoBehaviour
         if (talkHandle.IsValid())
         {
             Addressables.Release(talkHandle);
+            print ("RELEASING TALK HANDL!!!!!!!!!!!!!!!!!!!!!");
         }
 
         talkSource.clip = null;
@@ -505,11 +512,6 @@ public class AudioManager : MonoBehaviour
     {
         //if (talkSource.isPlaying)
             //return;
-
-        if (talkHandle.IsValid())
-        {
-            Addressables.Release(talkHandle);
-        }
 
         StartCoroutine(LoadAndPlayPhoneme(elkoninValue));
     }

@@ -88,6 +88,31 @@ public class BugController : MonoBehaviour
         StartCoroutine(landRoutine());
     }
 
+    public void StartToWeb(BugType bugType)
+    {
+        currentBugType = bugType;
+        goToOrigin(currentBugType);
+
+        // play bug fly sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BugFlyIn, 1f);
+
+        switch (currentBugType)
+        {
+            case BugType.Ladybug:
+                animator.Play("LadybugFly");
+                break;
+            case BugType.Bee:
+                animator.Play("BeeFly");
+                break;
+            case BugType.Light:
+                animator.Play("LightningFly");
+                break;
+        }
+        
+        StartCoroutine(ReturnToWebRoutine(WebLand.position));
+        StartCoroutine(landRoutine());
+    }
+
     public void goToOrigin()
     {
         // select new bug type

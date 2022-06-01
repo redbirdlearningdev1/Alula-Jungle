@@ -425,19 +425,15 @@ public class NewSpiderGameManager : MonoBehaviour
     private IEnumerator PlayTutorialGame()
     {
         ResetCoins();
-        if (tutorialEvent == 0)
+        SetCoins();
+        if (tutorialEvent == 1)
         {
-            bug.goToOrigin(BugType.Bee);
+            bug.StartToWeb(BugType.Bee);
         }
         else
         {
-            bug.goToOrigin();
+            bug.StartToWeb();
         }
-        
-        yield return new WaitForSeconds(1f);
-
-        SetCoins();
-        bug.StartToWeb();
         yield return new WaitForSeconds(1.5f);
 
         web.webSmall();
