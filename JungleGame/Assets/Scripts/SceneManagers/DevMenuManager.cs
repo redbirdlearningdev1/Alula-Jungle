@@ -8,6 +8,9 @@ using TMPro;
 using UnityEditor;
 #endif
 
+public enum GameSimulationMode { None, Fixed, Skill, Random }
+public enum SkillSimulationMode { None, Poor, Decent, Good, Excellent, Learning }
+
 public class DevMenuManager : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown navDropdown;
@@ -18,6 +21,17 @@ public class DevMenuManager : MonoBehaviour
     [SerializeField] private Toggle fastTalkieToggle;
 
     [SerializeField] private TMP_InputField profileInput;
+
+    [Header("Simulation Variables")]
+    [SerializeField] private GameObject simulationScreen;
+    [SerializeField] private TMP_InputField numGamesField;
+    [SerializeField] private GameObject fullGameCheckmarkImage;
+    private int numGamesToSimulate = 1;
+    private int numFixedStars = 2;
+    [SerializeField] private bool useFullGameSim = true;
+    private GameSimulationMode simMode = GameSimulationMode.Skill;
+    private SkillSimulationMode skillSimMode = SkillSimulationMode.Good;
+
 
     private string[] sceneNames = new string[] {  
         "ScrollMap",
@@ -3073,5 +3087,347 @@ public class DevMenuManager : MonoBehaviour
         foreach (bool b in array)
             if (b) count++;
         return count;
+    }
+    
+    /* 
+    //################################################
+    //#            GAME SIMULATIONS
+    //################################################
+    */
+
+    public void SetNumGames()
+    {
+        // If number field has a value that isn't bigger than 4, parse it into an int
+        if (numGamesField.text.Length > 0 && numGamesField.text.Length < 4)
+        {
+            // Check if the number has a negative before parsing
+            if (!numGamesField.text.Contains("-"))
+            {
+                // Parse the number
+                numGamesToSimulate = int.Parse(numGamesField.text);
+
+                // Check if the parsed number somehow is 0 or less, then set to our min of 1
+                if (numGamesToSimulate <= 0)
+                {
+                    numGamesToSimulate = 1;
+                }
+            }
+            else // if the number has a negative symbol, don't parse and set value to min of 1
+            {
+                numGamesToSimulate = 1;
+            }
+        } // If the string value is larger than 4, it's too big
+        else if (numGamesField.text.Length >= 4)
+        {
+            // If it is a large negative number, set value to min of 1
+            if (numGamesField.text.Contains("-"))
+            {
+                numGamesToSimulate = 1;
+            }
+            else // if it is a large positive number, set value to max of 1000
+            {
+                numGamesToSimulate = 1000;
+            }
+        }
+    }
+
+    public void OnEndEditNumGames()
+    {
+        // After editing the number field, check the string value for incorrect values and set to either the min or max value
+        if (numGamesField.text.Length == 0 || numGamesField.text.Contains("-") || numGamesField.text == "0")
+        {
+            numGamesField.text = "1";
+            numGamesToSimulate = 1;
+        }
+
+        if (numGamesField.text.Length >= 4)
+        {
+            numGamesField.text = "1000";
+            numGamesToSimulate = 1000;
+        }
+    }
+
+    public void SetFullGameMode(bool fullGame)
+    {
+        useFullGameSim = fullGame;
+        fullGameCheckmarkImage.SetActive(fullGame);
+    }
+
+    public void SetSimMode(int mode)
+    {
+        simMode = (GameSimulationMode)mode;
+    }
+
+    public void SetSkillSimMode(int mode)
+    {
+        skillSimMode = (SkillSimulationMode)mode;
+    }
+
+    public void SetFixedStars(float numStars)
+    {
+        numFixedStars = (int)numStars;
+    }
+
+    public void OnOpenSimulationScreen(bool setActive)
+    {
+        simulationScreen.SetActive(setActive);
+    }
+
+    public void OnSimulateGameSelection()
+    {
+        // keep track of prev active profile
+        StudentIndex prevIndex = StudentInfoSystem.GetCurrentProfile().studentIndex;
+        // make new profile + set current profile to be simulation specific
+        StudentInfoSystem.ResetGameSimulationProfile();
+        StudentInfoSystem.SetStudentPlayer(StudentIndex.game_simulation_profile);
+
+        StudentPlayerData playerData = StudentInfoSystem.GetCurrentProfile();
+
+        List<GameType> gameList = new List<GameType>();
+        List<int> gameStarList = new List<int>();
+
+
+        if (useFullGameSim)
+        {
+            // 4 + 3c + 4 + 3c+ 4 + 3c + 4 + 3c + 4 + 3c + 4 + 3c + 6 + 3c + 6 + 3c + 6 + 3c + 6 + 3c + 4 + 3c + 4 + 3c + 4 + 3c + 3c
+            numGamesToSimulate = 102;
+        }
+
+        for (int i = 0; i < numGamesToSimulate; i++)
+        {
+            int currentStars;
+
+            GameType game = AISystem.DetermineMinigame(playerData);
+
+            bool startRR = AISystem.DetermineRoyalRumble();
+
+            if (startRR)
+            {
+                // save royal rumble to SIS
+                GameType RRgame = AISystem.DetermineRoyalRumbleGame();
+                playerData.royalRumbleGame = RRgame;
+                playerData.royalRumbleActive = true;
+                playerData.royalRumbleID = MapIconIdentfier.None;
+                StudentInfoSystem.SaveStudentPlayerData();
+
+                currentStars = DetermineSimulatedStars(true);
+
+                switch (RRgame)
+                {
+                    case GameType.TigerPawCoins:
+                        playerData.starsTPawCoin += currentStars;
+                        playerData.tPawCoinPlayed++;
+                        break;
+                    case GameType.TigerPawPhotos:
+                        playerData.starsTPawPol += currentStars;
+                        playerData.tPawPolPlayed++;
+                        break;
+                    case GameType.Password:
+                        playerData.starsPass += currentStars;
+                        playerData.passPlayed++;
+                        break;
+                    case GameType.WordFactoryDeleting:
+                        playerData.starsDel += currentStars;
+                        playerData.delPlayed++;
+                        break;
+                    case GameType.WordFactoryBlending:
+                        playerData.starsBlend += currentStars;
+                        playerData.blendPlayed++;
+                        break;
+                    case GameType.WordFactoryBuilding:
+                        playerData.starsBuild += currentStars;
+                        playerData.buildPlayed++;
+                        break;
+                    case GameType.WordFactorySubstituting:
+                        playerData.starsSub += currentStars;
+                        playerData.subPlayed++;
+                        break;
+                    default:
+                        break;
+                }
+
+                playerData.starsGameBeforeLastPlayed = playerData.starsLastGamePlayed;
+                playerData.starsLastGamePlayed = currentStars;
+                playerData.lastGamePlayed = RRgame;
+
+                gameList.Add(RRgame);
+                gameStarList.Add(currentStars);
+            }
+            else // playing a minigame
+            {
+                currentStars = DetermineSimulatedStars(false);
+
+                switch (game)
+                {
+                    case GameType.FroggerGame:
+                        playerData.starsFrogger += currentStars;
+                        playerData.totalStarsFrogger += 3;
+                        break;
+                    case GameType.TurntablesGame:
+                        playerData.starsTurntables += currentStars;
+                        playerData.totalStarsTurntables += 3;
+                        break;
+                    case GameType.PirateGame:
+                        playerData.starsPirate += currentStars;
+                        playerData.totalStarsPirate += 3;
+                        break;
+                    case GameType.SpiderwebGame:
+                        playerData.starsSpiderweb += currentStars;
+                        playerData.totalStarsSpiderweb += 3;
+                        break;
+                    case GameType.SeashellGame:
+                        playerData.starsSeashell += currentStars;
+                        playerData.totalStarsSeashell += 3;
+                        break;
+                    case GameType.RummageGame:
+                        playerData.starsRummage += currentStars;
+                        playerData.totalStarsRummage += 3;
+                        break;
+                    default:
+                        break;
+                }
+
+                playerData.starsGameBeforeLastPlayed = playerData.starsLastGamePlayed;
+                playerData.starsLastGamePlayed = currentStars;
+                playerData.lastGamePlayed = game;
+
+                playerData.minigamesPlayed++;
+                gameList.Add(game);
+                gameStarList.Add(currentStars);
+            }
+        }
+
+        Dictionary<GameType, int> numGamesPlayed = new Dictionary<GameType, int>();
+
+        GameManager.instance.SendLog(this, "PRINTING OUT SIMULATED GAMES:");
+        for (int i = 0; i < numGamesToSimulate; i++)
+        {
+            GameManager.instance.SendLog(this, "Game Played: " + gameList[i] + " Stars: " + gameStarList[i]);
+            if (numGamesPlayed.ContainsKey(gameList[i]))
+            {
+                numGamesPlayed[gameList[i]] = numGamesPlayed[gameList[i]] + 1;
+            }
+            else
+            {
+                numGamesPlayed.Add(gameList[i], 1);
+            }
+        }
+        GameManager.instance.SendLog(this, "Game Counts:");
+        foreach (var game in numGamesPlayed)
+        {
+            GameManager.instance.SendLog(this, game.Key + " played " + game.Value + " times.");
+        }
+    }
+
+    private int DetermineSimulatedStars(bool allowZero)
+    {
+        int numStars;
+        float randNum;
+
+        switch (simMode)
+        {
+            case GameSimulationMode.Fixed:
+                numStars = numFixedStars;
+                break;
+            case GameSimulationMode.Random:
+                numStars = Random.Range(0,4);
+                break;
+            case GameSimulationMode.Skill:
+                switch (skillSimMode)
+                {
+                    case SkillSimulationMode.Poor: // Poor Skill star percentages: | 0* - 30% | 1* - 60% | 2* - 10% | 3* - 0%  |
+                        randNum = Random.Range(0, 1f);
+                        if (randNum < 0.6f)
+                        {
+                            numStars = 1;
+                        }
+                        else if (randNum < 0.9f)
+                        {
+                            numStars = 0;
+                        }
+                        else
+                        {
+                            numStars = 2;
+                        }
+                        break;
+                    case SkillSimulationMode.Decent: // Decent Skill star percentages: | 0* - 5% | 1* - 30% | 2* - 60% | 3* - 5%  |
+                        randNum = Random.Range(0, 1f);
+                        if (randNum < 0.6f)
+                        {
+                            numStars = 2;
+                        }
+                        else if (randNum < 0.9f)
+                        {
+                            numStars = 1;
+                        }
+                        else if (randNum < 0.95f)
+                        {
+                            numStars = 0;
+                        }
+                        else
+                        {
+                            numStars = 3;
+                        }
+                        break;
+                    case SkillSimulationMode.Good: // Good Skill star percentages: | 0* - 5% | 1* - 5% | 2* - 50% | 3* - 40%  |
+                        randNum = Random.Range(0, 1f);
+                        if (randNum < 0.5f)
+                        {
+                            numStars = 2;
+                        }
+                        else if (randNum < 0.9f)
+                        {
+                            numStars = 3;
+                        }
+                        else if (randNum < 0.95f)
+                        {
+                            numStars = 0;
+                        }
+                        else
+                        {
+                            numStars = 1;
+                        }
+                        break;
+                    case SkillSimulationMode.Excellent: // Excellent Skill star percentages: | 0* - 0% | 1* - 0% | 2* - 20% | 3* - 80%  |
+                        randNum = Random.Range(0, 1f);
+                        if (randNum < 0.8f)
+                        {
+                            numStars = 3;
+                        }else
+                        {
+                            numStars = 2;
+                        }
+                        break;
+                    case SkillSimulationMode.Learning:
+                        numStars = 3;
+                        break;
+                    default:
+                        numStars = 0;
+                        break;
+                }
+                break;
+            default:
+                return 0;
+        }
+
+
+        // Checking numStars for invalid numbers
+
+        if (numStars < 0)
+        {
+            numStars = 0;
+        }
+
+        if (numStars > 3)
+        {
+            numStars = 3;
+        }
+
+        if (!allowZero && numStars == 0)
+        {
+            numStars = 1;
+        }
+
+        return numStars;
     }
 }
