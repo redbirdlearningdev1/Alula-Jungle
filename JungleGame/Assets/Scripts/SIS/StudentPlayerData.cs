@@ -26,12 +26,12 @@ public class StudentPlayerData
     public int starsPirate;
     public int starsSpiderweb;
 
-    public int totalStarsFrogger;
-    public int totalStarsSeashell;
-    public int totalStarsRummage;
-    public int totalStarsTurntables;
-    public int totalStarsPirate;
-    public int totalStarsSpiderweb;
+    public int froggerPlayed;
+    public int seashellPlayed;
+    public int rummagePlayed;
+    public int turntablesPlayed;
+    public int piratePlayed;
+    public int spiderwebPlayed;
 
     // Track of Stars in Challengegame
     

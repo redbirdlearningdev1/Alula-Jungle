@@ -9,7 +9,7 @@ using UnityEditor;
 #endif
 
 public enum GameSimulationMode { None, Fixed, Skill, Random }
-public enum SkillSimulationMode { None, Poor, Decent, Good, Excellent, Learning }
+public enum SkillSimulationMode { None, Poor, Decent, Good, Excellent, Average }
 
 public class DevMenuManager : MonoBehaviour
 {
@@ -30,7 +30,7 @@ public class DevMenuManager : MonoBehaviour
     private int numFixedStars = 2;
     [SerializeField] private bool useFullGameSim = true;
     private GameSimulationMode simMode = GameSimulationMode.Skill;
-    private SkillSimulationMode skillSimMode = SkillSimulationMode.Good;
+    private SkillSimulationMode skillSimMode = SkillSimulationMode.Average;
 
 
     private string[] sceneNames = new string[] {  
@@ -665,12 +665,12 @@ public class DevMenuManager : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().starsTurntables = 1;
         StudentInfoSystem.GetCurrentProfile().starsPirate = 1;
         StudentInfoSystem.GetCurrentProfile().starsSpiderweb = 1;
-        StudentInfoSystem.GetCurrentProfile().totalStarsFrogger = 1;
-        StudentInfoSystem.GetCurrentProfile().totalStarsSeashell = 1;
-        StudentInfoSystem.GetCurrentProfile().totalStarsRummage = 1;
-        StudentInfoSystem.GetCurrentProfile().totalStarsTurntables = 1;
-        StudentInfoSystem.GetCurrentProfile().totalStarsPirate = 1;
-        StudentInfoSystem.GetCurrentProfile().totalStarsSpiderweb = 1;
+        StudentInfoSystem.GetCurrentProfile().froggerPlayed = 1;
+        StudentInfoSystem.GetCurrentProfile().seashellPlayed = 1;
+        StudentInfoSystem.GetCurrentProfile().rummagePlayed = 1;
+        StudentInfoSystem.GetCurrentProfile().turntablesPlayed = 1;
+        StudentInfoSystem.GetCurrentProfile().piratePlayed = 1;
+        StudentInfoSystem.GetCurrentProfile().spiderwebPlayed = 1;
 
         // default stuff
         StudentInfoSystem.GetCurrentProfile().unlockedStickerButton = true;
@@ -3246,9 +3246,9 @@ public class DevMenuManager : MonoBehaviour
                         break;
                 }
 
-                playerData.starsGameBeforeLastPlayed = playerData.starsLastGamePlayed;
-                playerData.starsLastGamePlayed = currentStars;
-                playerData.lastGamePlayed = RRgame;
+                //playerData.starsGameBeforeLastPlayed = playerData.starsLastGamePlayed;
+                //playerData.starsLastGamePlayed = currentStars;
+                //playerData.lastGamePlayed = RRgame;
 
                 gameList.Add(RRgame);
                 gameStarList.Add(currentStars);
@@ -3261,27 +3261,27 @@ public class DevMenuManager : MonoBehaviour
                 {
                     case GameType.FroggerGame:
                         playerData.starsFrogger += currentStars;
-                        playerData.totalStarsFrogger += 3;
+                        playerData.froggerPlayed++;
                         break;
                     case GameType.TurntablesGame:
                         playerData.starsTurntables += currentStars;
-                        playerData.totalStarsTurntables += 3;
+                        playerData.turntablesPlayed++;
                         break;
                     case GameType.PirateGame:
                         playerData.starsPirate += currentStars;
-                        playerData.totalStarsPirate += 3;
+                        playerData.piratePlayed++;
                         break;
                     case GameType.SpiderwebGame:
                         playerData.starsSpiderweb += currentStars;
-                        playerData.totalStarsSpiderweb += 3;
+                        playerData.spiderwebPlayed++;
                         break;
                     case GameType.SeashellGame:
                         playerData.starsSeashell += currentStars;
-                        playerData.totalStarsSeashell += 3;
+                        playerData.seashellPlayed++;
                         break;
                     case GameType.RummageGame:
                         playerData.starsRummage += currentStars;
-                        playerData.totalStarsRummage += 3;
+                        playerData.rummagePlayed++;
                         break;
                     default:
                         break;
@@ -3398,8 +3398,20 @@ public class DevMenuManager : MonoBehaviour
                             numStars = 2;
                         }
                         break;
-                    case SkillSimulationMode.Learning:
-                        numStars = 3;
+                    case SkillSimulationMode.Average:
+                        randNum = Random.Range(0, 1f);
+                        if (randNum < 0.6f)
+                        {
+                            numStars = 2;
+                        }
+                        else if (randNum < 0.85f)
+                        {
+                            numStars = 3;
+                        }
+                        else
+                        {
+                            numStars = 1;
+                        }
                         break;
                     default:
                         numStars = 0;

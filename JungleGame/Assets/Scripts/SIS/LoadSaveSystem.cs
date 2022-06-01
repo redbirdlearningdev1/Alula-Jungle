@@ -116,12 +116,12 @@ public static class LoadSaveSystem
         new_data.starsPirate = 0;
         new_data.starsSpiderweb = 0;
 
-        new_data.totalStarsFrogger = 0;
-        new_data.totalStarsSeashell = 0;
-        new_data.totalStarsRummage = 0;
-        new_data.totalStarsTurntables = 0;
-        new_data.totalStarsPirate = 0;
-        new_data.totalStarsSpiderweb = 0;
+        new_data.froggerPlayed = 0;
+        new_data.seashellPlayed = 0;
+        new_data.rummagePlayed = 0;
+        new_data.turntablesPlayed = 0;
+        new_data.piratePlayed = 0;
+        new_data.spiderwebPlayed = 0;
         
         new_data.profileAvatar = 11;
 

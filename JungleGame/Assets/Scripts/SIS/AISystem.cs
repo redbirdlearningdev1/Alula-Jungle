@@ -5,7 +5,7 @@ using UnityEngine;
 public static class AISystem
 {
     private static List<GameType> minigameOptions;
-    private static List<int> gameStars;
+    private static List<int> gamePlayedList;
 
 
     public static GameType DetermineMinigame(StudentPlayerData playerData)
@@ -21,7 +21,7 @@ public static class AISystem
 
             default:
                 minigameOptions = new List<GameType>();
-                gameStars = new List<int>();
+                gamePlayedList = new List<int>();
 
                 int addedFrog = 0;
                 int addedSea = 0;
@@ -30,42 +30,42 @@ public static class AISystem
                 int addedPirate = 0;
                 int addedRummage = 0;
 
-                gameStars.Add(playerData.starsFrogger);
-                gameStars.Add(playerData.starsSeashell);
-                gameStars.Add(playerData.starsSpiderweb);
-                gameStars.Add(playerData.starsTurntables);
-                gameStars.Add(playerData.starsPirate);
-                gameStars.Add(playerData.starsRummage);
-                gameStars.Sort();
+                gamePlayedList.Add(playerData.froggerPlayed);
+                gamePlayedList.Add(playerData.seashellPlayed);
+                gamePlayedList.Add(playerData.spiderwebPlayed);
+                gamePlayedList.Add(playerData.turntablesPlayed);
+                gamePlayedList.Add(playerData.piratePlayed);
+                gamePlayedList.Add(playerData.rummagePlayed);
+                gamePlayedList.Sort();
 
-                for (int i = 0; i < gameStars.Count; i++)
+                for (int i = 0; i < gamePlayedList.Count; i++)
                 {
-                    if (playerData.starsFrogger == gameStars[i] && addedFrog == 0 && playerData.lastGamePlayed != GameType.FroggerGame)
+                    if (playerData.froggerPlayed == gamePlayedList[i] && addedFrog == 0 && playerData.lastGamePlayed != GameType.FroggerGame)
                     {
                         minigameOptions.Add(GameType.FroggerGame);
                         addedFrog = 1;
                     }
-                    if (playerData.starsSeashell == gameStars[i] && addedSea == 0 && playerData.lastGamePlayed != GameType.SeashellGame)
+                    if (playerData.seashellPlayed == gamePlayedList[i] && addedSea == 0 && playerData.lastGamePlayed != GameType.SeashellGame)
                     {
                         minigameOptions.Add(GameType.SeashellGame);
                         addedSea = 1;
                     }
-                    if (playerData.starsSpiderweb == gameStars[i] && addedSpider == 0 && playerData.lastGamePlayed != GameType.SpiderwebGame)
+                    if (playerData.spiderwebPlayed == gamePlayedList[i] && addedSpider == 0 && playerData.lastGamePlayed != GameType.SpiderwebGame)
                     {
                         minigameOptions.Add(GameType.SpiderwebGame);
                         addedSpider = 1;
                     }
-                    if (playerData.starsTurntables == gameStars[i] && addedTurn == 0 && playerData.lastGamePlayed != GameType.TurntablesGame)
+                    if (playerData.turntablesPlayed == gamePlayedList[i] && addedTurn == 0 && playerData.lastGamePlayed != GameType.TurntablesGame)
                     {
                         minigameOptions.Add(GameType.TurntablesGame);
                         addedTurn = 1;
                     }
-                    if (playerData.starsPirate == gameStars[i] && addedPirate == 0 && playerData.lastGamePlayed != GameType.PirateGame)
+                    if (playerData.piratePlayed == gamePlayedList[i] && addedPirate == 0 && playerData.lastGamePlayed != GameType.PirateGame)
                     {
                         minigameOptions.Add(GameType.PirateGame);
                         addedPirate = 1;
                     }
-                    if (playerData.starsRummage == gameStars[i] && addedRummage == 0 && playerData.lastGamePlayed != GameType.RummageGame)
+                    if (playerData.rummagePlayed == gamePlayedList[i] && addedRummage == 0 && playerData.lastGamePlayed != GameType.RummageGame)
                     {
                         minigameOptions.Add(GameType.RummageGame);
                         addedRummage = 1;
@@ -77,34 +77,34 @@ public static class AISystem
                     minigameOptions.Insert(0, minigameOptions[0]);
                 }*/
 
-                if (playerData.starsLastGamePlayed + playerData.starsGameBeforeLastPlayed <= 3)
-                {
-                    if (minigameOptions.Count > 0)
+                if (playerData.starsLastGamePlayed + playerData.starsGameBeforeLastPlayed <= 2)
+                { // Player is doing poorly, so select an easy game from either Frogger or Rummage
+                    int randNum = Random.Range(0,2);
+
+                    if (randNum == 0)
                     {
-                        if (playerData.lastGamePlayed != minigameOptions[0])
+                        if (playerData.lastGamePlayed != GameType.FroggerGame)
                         {
-                            return minigameOptions[0];
+                            return GameType.FroggerGame;
                         }
                         else
                         {
-                            if (minigameOptions.Count > 1)
-                            {
-                                return minigameOptions[1];
-                            }
-                            else
-                            {
-                                Debug.LogError("Only 1 minigame option determined, and it was the same as the last game played");
-                                return GameType.FroggerGame;
-                            }
+                            return GameType.RummageGame;
                         }
                     }
                     else
                     {
-                        Debug.LogError("No Minigame Option determined in DetermineMinigame()");
-                        return GameType.FroggerGame;
+                        if (playerData.lastGamePlayed != GameType.RummageGame)
+                        {
+                            return GameType.RummageGame;
+                        }
+                        else
+                        {
+                            return GameType.FroggerGame;
+                        }
                     }
                 }
-                else if (playerData.starsLastGamePlayed + playerData.starsGameBeforeLastPlayed >= 4 && playerData.rRumblePlayed == 1 && playerData.minigamesPlayed > 6)
+                else // if (playerData.starsLastGamePlayed + playerData.starsGameBeforeLastPlayed >= 4 && playerData.rRumblePlayed == 1 && playerData.minigamesPlayed > 6)
                 {
                     StudentInfoSystem.SaveStudentPlayerData();
                     if (minigameOptions.Count > 0)
@@ -132,20 +132,6 @@ public static class AISystem
                         return GameType.FroggerGame;
                     }
                     //DetermineRoyalRumbleGame(playerData);
-                }
-                else
-                {
-                    StudentInfoSystem.SaveStudentPlayerData();
-                    if (minigameOptions.Count > 0)
-                    {
-                        return minigameOptions[Random.Range(0, minigameOptions.Count)];
-                    }
-                    else
-                    {
-                        Debug.LogError("No Minigame Option determined in DetermineMinigame()");
-                        return GameType.FroggerGame;
-                    }
-
                 }
         }
     }
@@ -410,6 +396,8 @@ public static class AISystem
     public static List<ChallengeWord> ChallengeWordSelectionBlending(List<ChallengeWord> excludeWords = null)
     {
         StudentPlayerData playerData = StudentInfoSystem.GetCurrentProfile();
+
+        int diffLvl = Mathf.FloorToInt(playerData.starsBlend / 3);
 
         
 

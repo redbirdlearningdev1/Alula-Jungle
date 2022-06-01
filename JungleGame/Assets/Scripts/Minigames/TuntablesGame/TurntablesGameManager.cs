@@ -475,7 +475,7 @@ public class TurntablesGameManager : MonoBehaviour
         playerData.gameBeforeLastPlayed = playerData.lastGamePlayed;
         playerData.lastGamePlayed = GameType.TurntablesGame;
         playerData.starsTurntables = CalculateStars() + playerData.starsTurntables;
-        playerData.totalStarsTurntables += 3;
+        playerData.turntablesPlayed++;
 
         // save to SIS
         StudentInfoSystem.SaveStudentPlayerData();

@@ -361,7 +361,7 @@ public class FroggerGameManager : MonoBehaviour
         playerData.gameBeforeLastPlayed = playerData.lastGamePlayed;
         playerData.lastGamePlayed = GameType.FroggerGame;
         playerData.starsFrogger = CalculateStars() + playerData.starsFrogger;
-        playerData.totalStarsFrogger += 3;
+        playerData.froggerPlayed++;
 
         // save to SIS
         StudentInfoSystem.SaveStudentPlayerData();

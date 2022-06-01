@@ -480,7 +480,7 @@ public class PrintingGameManager : MonoBehaviour
         playerData.gameBeforeLastPlayed = playerData.lastGamePlayed;
         playerData.lastGamePlayed = GameType.PirateGame;
         playerData.starsPirate = CalculateStars() + playerData.starsPirate;
-        playerData.totalStarsPirate = 3 + playerData.totalStarsPirate;
+        playerData.piratePlayed++;
 
         // save to SIS
         StudentInfoSystem.SaveStudentPlayerData();
