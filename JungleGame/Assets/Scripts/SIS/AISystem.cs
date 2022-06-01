@@ -508,14 +508,16 @@ public static class AISystem
         }
 
         // Get all challenge words for the main group of phonemes
-        List<ChallengeWord> currSectionChallengeWords = ChallengeWordDatabase.GetChallengeWords(phonemes);
+        List<ChallengeWord> currSectionChallengeWords = new List<ChallengeWord>();
+        currSectionChallengeWords.AddRange(ChallengeWordDatabase.GetChallengeWords(phonemes));
 
         // If we are in a section with a previous group of phonemes, get all challenge words for that group
         if (prevPhonemes != null)
         {
             prevPhonemes = phonemes;
         }
-        List<ChallengeWord> prevSectionChallengeWords = ChallengeWordDatabase.GetChallengeWords(phonemes);
+        List<ChallengeWord> prevSectionChallengeWords = new List<ChallengeWord>();
+        prevSectionChallengeWords.AddRange(ChallengeWordDatabase.GetChallengeWords(phonemes));
 
         // Remove any words already used in this game
         foreach (ChallengeWord word in excludeWords)
@@ -533,11 +535,13 @@ public static class AISystem
         // If there aren't enough words to pick from, repopulate the list
         if (currSectionChallengeWords.Count < 1)
         {
-            currSectionChallengeWords = ChallengeWordDatabase.GetChallengeWords(phonemes);
+            currSectionChallengeWords.Clear();
+            currSectionChallengeWords.AddRange(ChallengeWordDatabase.GetChallengeWords(phonemes));
         }
         if (prevSectionChallengeWords.Count < 1)
         {
-            prevSectionChallengeWords = ChallengeWordDatabase.GetChallengeWords(prevPhonemes);
+            prevSectionChallengeWords.Clear();
+            prevSectionChallengeWords.AddRange(ChallengeWordDatabase.GetChallengeWords(prevPhonemes));
         }
 
         // Filtering out words with the incorrect elkonin values
@@ -561,11 +565,11 @@ public static class AISystem
 
         if (filteredCurrChallengeWords.Count < 1)
         {
-            filteredCurrChallengeWords = currSectionChallengeWords;
+            filteredCurrChallengeWords.AddRange(currSectionChallengeWords);
         }
         if (filteredPrevChallengeWords.Count < 1)
         {
-            filteredPrevChallengeWords = currSectionChallengeWords;
+            filteredPrevChallengeWords.AddRange(currSectionChallengeWords);
         }
 
         // Decide whether to use the current section or previous section for this selection
@@ -583,11 +587,11 @@ public static class AISystem
 
         if (filteredCurrChallengeWords.Count < 1)
         {
-            filteredCurrChallengeWords = currSectionChallengeWords;
+            filteredCurrChallengeWords.AddRange(currSectionChallengeWords);
         }
         if (filteredPrevChallengeWords.Count < 1)
         {
-            filteredPrevChallengeWords = currSectionChallengeWords;
+            filteredPrevChallengeWords.AddRange(currSectionChallengeWords);
         }
 
         List<ChallengeWord> wordsToReturn = new List<ChallengeWord>();
@@ -596,8 +600,10 @@ public static class AISystem
         // Repeat selection process for the two incorrect words
         for (int i = 0; i < 2; i++)
         {
-            List<ChallengeWord> finalCurrChallengeWords = filteredCurrChallengeWords;
-            List<ChallengeWord> finalPrevChallengeWords = filteredPrevChallengeWords;
+            List<ChallengeWord> finalCurrChallengeWords = new List<ChallengeWord>();
+            finalCurrChallengeWords.AddRange(filteredCurrChallengeWords);
+            List<ChallengeWord> finalPrevChallengeWords = new List<ChallengeWord>();
+            finalPrevChallengeWords.AddRange(filteredPrevChallengeWords);
             // If we are supposed to, filter for only words with the same beginning or ending sound
             if (similarSounds)
             {
@@ -618,22 +624,26 @@ public static class AISystem
 
                 if (finalCurrChallengeWords.Count < 1)
                 {
-                    finalCurrChallengeWords = filteredCurrChallengeWords;
+                    finalCurrChallengeWords.AddRange(filteredCurrChallengeWords);
                 }
                 if (finalPrevChallengeWords.Count < 1)
                 {
-                    finalPrevChallengeWords = filteredPrevChallengeWords;
+                    finalPrevChallengeWords.AddRange(filteredPrevChallengeWords);
                 }
             }
 
             randNum = Random.Range(0f, 1f);
             if (randNum <= currentSectionPercent)
             {
-                wordsToReturn.Add(finalCurrChallengeWords[Random.Range(0, finalCurrChallengeWords.Count)]);
+                int randIndex = Random.Range(0, finalCurrChallengeWords.Count);
+                wordsToReturn.Add(finalCurrChallengeWords[randIndex]);
+                finalCurrChallengeWords.Remove(finalCurrChallengeWords[randIndex]);
             }
             else
             {
-                wordsToReturn.Add(finalPrevChallengeWords[Random.Range(0, finalPrevChallengeWords.Count)]);
+                int randIndex = Random.Range(0, finalPrevChallengeWords.Count);
+                wordsToReturn.Add(finalPrevChallengeWords[randIndex]);
+                finalPrevChallengeWords.Remove(finalPrevChallengeWords[randIndex]);
             }
         }
 

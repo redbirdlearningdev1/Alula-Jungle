@@ -491,7 +491,6 @@ public class AudioManager : MonoBehaviour
         if (talkHandle.IsValid())
         {
             Addressables.Release(talkHandle);
-            print ("RELEASING TALK HANDL!!!!!!!!!!!!!!!!!!!!!");
         }
     }
 
@@ -502,7 +501,6 @@ public class AudioManager : MonoBehaviour
         if (talkHandle.IsValid())
         {
             Addressables.Release(talkHandle);
-            print ("RELEASING TALK HANDL!!!!!!!!!!!!!!!!!!!!!");
         }
 
         talkSource.clip = null;
