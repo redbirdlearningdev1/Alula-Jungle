@@ -125,6 +125,38 @@ public static class LoadSaveSystem
         
         new_data.profileAvatar = 11;
 
+        // challenge round data
+        new_data.blendData = new List<ChallengeRoundData>();
+        new_data.subData = new List<ChallengeRoundData>();
+        new_data.buildData = new List<ChallengeRoundData>();
+        new_data.deleteData = new List<ChallengeRoundData>();
+        new_data.TPCoinsData = new List<ChallengeRoundData>();
+        new_data.TPPhotosData = new List<ChallengeRoundData>();
+        new_data.passwordData = new List<ChallengeRoundData>();
+
+        // phoneme success rate (correct/total)
+        new_data.phonemeData = new List<PhonemeData>();
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.mudslide, ElkoninValue.mudslide));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.listen, ElkoninValue.listen));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.poop, ElkoninValue.poop));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.orcs, ElkoninValue.orcs));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.think, ElkoninValue.think));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.hello, ElkoninValue.hello));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.spider, ElkoninValue.spider));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.explorer, ElkoninValue.explorer));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.scared, ElkoninValue.scared));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.thatguy, ElkoninValue.thatguy));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.choice, ElkoninValue.choice));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.strongwind, ElkoninValue.strongwind));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.pirate, ElkoninValue.pirate));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.gorilla, ElkoninValue.gorilla));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.sounds, ElkoninValue.sounds));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.give, ElkoninValue.give));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.backpack, ElkoninValue.backpack));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.frustrating, ElkoninValue.frustrating));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.bumphead, ElkoninValue.bumphead));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.baby, ElkoninValue.baby));
+
         // coins
         new_data.goldCoins = default_gold_coins;
 

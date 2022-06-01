@@ -295,8 +295,15 @@ public class SeaShellGameManager : MonoBehaviour
         // turn off raycaster
         ShellRayCaster.instance.isOn = false;
 
+        bool success = (value == currentCoin);
+        // only track phoneme attempt if not in tutorial AND not in practice mode
+        if (!playTutorial && !GameManager.instance.practiceModeON)
+        {
+            StudentInfoSystem.SavePlayerPhonemeAttempt(currentCoin, success);
+        }
+
         // correct!
-        if (value == currentCoin)
+        if (success)
         {
             StartCoroutine(CorrectRoutine(shellNum));
             return true;

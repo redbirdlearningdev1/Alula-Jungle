@@ -312,11 +312,15 @@ public class TurntablesGameManager : MonoBehaviour
         // turn off raycaster
         KeyRaycaster.instance.isOn = false;
 
-        bool isCorrect = false;
-
-        if (selectedKey.GetKeyType() == doorValues[currentDoor])
+        bool success = (selectedKey.GetKeyType() == doorValues[currentDoor]);
+        // only track phoneme attempt if not in tutorial AND not in practice mode
+        if (!playTutorial && !GameManager.instance.practiceModeON)
         {
-            isCorrect = true;
+            StudentInfoSystem.SavePlayerPhonemeAttempt(doorValues[currentDoor], success);
+        }
+
+        if (success)
+        {
             StartCoroutine(PostEvaluationRoutine(true));
         }
         else
@@ -324,7 +328,7 @@ public class TurntablesGameManager : MonoBehaviour
             StartCoroutine(PostEvaluationRoutine(false));
         }
 
-        return isCorrect;
+        return success;
     }
 
     private IEnumerator PostEvaluationRoutine(bool isCorrect)

@@ -6,9 +6,9 @@ using UnityEngine;
 public class StudentPlayerData
 {
     public string version;
-    public StudentIndex studentIndex; // differentiate btwn student profiles
+    public StudentIndex studentIndex; // differentiate between student profiles
     public bool active; // bool to determine if someone has created this student player
-    public bool mostRecentProfile; // is this the most recently opend profile?
+    public bool mostRecentProfile; // is this the most recently opened profile?
     public string name; // name of student
     public int minigamesPlayed;
     
@@ -33,8 +33,7 @@ public class StudentPlayerData
     public int totalStarsPirate;
     public int totalStarsSpiderweb;
 
-    // Track of Stars in Challengegame
-    
+    // Track of Stars in Challengegames
     public int starsBlend;
     public int starsSub;
     public int starsDel;
@@ -58,8 +57,19 @@ public class StudentPlayerData
     public ChallengeWord lastWordFaced;
     public WordPair lastWordPairFaced;
 
-    //public int totalStarsPotential;
     public int profileAvatar;
+
+    // challenge game rounds (used for stats and report page)
+    public List<ChallengeRoundData> blendData;
+    public List<ChallengeRoundData> subData;
+    public List<ChallengeRoundData> buildData;
+    public List<ChallengeRoundData> deleteData;
+    public List<ChallengeRoundData> TPCoinsData;
+    public List<ChallengeRoundData> TPPhotosData;
+    public List<ChallengeRoundData> passwordData;
+
+    // phoneme success rate (correct/total)
+    public List<PhonemeData> phonemeData;
 
     // coins
     public int goldCoins;
@@ -519,4 +529,42 @@ public class StickerData
     public Vector2 boardPos; // where on the board is it located ?
     public Vector2 scale; // scale of sticker
     public float zAngle; // rotation angle on z axis
+}
+
+/* 
+################################################
+#   CHALLENGE ROUND DATA
+################################################
+*/
+
+[System.Serializable]
+public class ChallengeRoundData
+{
+    public bool success;
+    public ChallengeWord challengeWord;
+    public int difficulty;
+    public System.DateTime dateTime;
+}
+
+/* 
+################################################
+#   PHONEME DATA
+################################################
+*/
+
+[System.Serializable]
+public class PhonemeData
+{
+    public ActionWordEnum actionWordEnum;
+    public ElkoninValue elkoninValue;
+    public int successfulAttempts;
+    public int totalAttempts;
+
+    public PhonemeData(ActionWordEnum _actionWordEnum, ElkoninValue _elkoninValue)
+    {
+        this.actionWordEnum = _actionWordEnum;
+        this.elkoninValue = _elkoninValue;
+        this.successfulAttempts = 0;
+        this.totalAttempts = 0;
+    }
 }

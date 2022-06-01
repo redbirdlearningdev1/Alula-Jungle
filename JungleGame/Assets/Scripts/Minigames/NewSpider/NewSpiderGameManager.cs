@@ -161,7 +161,14 @@ public class NewSpiderGameManager : MonoBehaviour
         // turn off raycaster
         SpiderRayCaster.instance.isOn = false;
 
-        if (coin == ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value))
+        bool success = (coin == ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value));
+        // only track phoneme attempt if not in tutorial AND not in practice mode
+        if (!playTutorial && !GameManager.instance.practiceModeON)
+        {
+            StudentInfoSystem.SavePlayerPhonemeAttempt(coin, success);
+        }
+
+        if (success)
         {
             winCount++;
 

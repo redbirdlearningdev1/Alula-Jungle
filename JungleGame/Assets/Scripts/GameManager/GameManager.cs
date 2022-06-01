@@ -240,6 +240,12 @@ public class GameManager : DontDestroy<GameManager>
         FadeObject.instance.FadeIn(transitionTime);
         yield return new WaitForSeconds(transitionTime);
         RaycastBlockerController.instance.RemoveRaycastBlocker("SceneInit");
+
+        // show practice mode counter
+        if (practiceModeON && SceneManager.GetActiveScene().name != "LoadingScene")
+        {
+            practiceModeCounter.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+        }
     }
 
     /* 
@@ -538,6 +544,8 @@ public class GameManager : DontDestroy<GameManager>
     {
         if (practiceGameQueue.Count > 0)
         {
+            practiceModeCounter.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+
             // update text
             practiceModeCounter.text =  practiceGameQueue.Count + "/" + practiceTotalGames;
 

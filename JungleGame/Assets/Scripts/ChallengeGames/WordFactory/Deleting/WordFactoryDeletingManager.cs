@@ -380,8 +380,15 @@ public class WordFactoryDeletingManager : MonoBehaviour
         currentCoin.GetComponent<LerpableObject>().LerpPosition(EmeraldTigerHolder.instance.transform.position, 0.25f, false);
         currentCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 0f), 0.25f);
 
+        bool success = (coin.value == currentPair.word2.elkoninList[currentPair.index]);
+        // only track challenge round attempt if not in tutorial AND not in practice mode
+        if (!playTutorial && !GameManager.instance.practiceModeON)
+        {
+            StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.WordFactoryDeleting, success, currentPair.word2, 0); //// TODO: add player difficulty once it is available
+        }
+
         // win
-        if (coin.value == currentPair.word2.elkoninList[currentPair.index])
+        if (success)
         {
             // audio fx
             AudioManager.instance.PlayCoinDrop();

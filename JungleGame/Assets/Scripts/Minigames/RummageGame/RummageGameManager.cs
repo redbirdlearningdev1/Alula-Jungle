@@ -403,7 +403,14 @@ public class RummageGameManager : MonoBehaviour
         // stop rummage sound
         AudioManager.instance.StopFX("wood_rummage");
 
-        if (coin.type == selectedRummageCoin.type)
+        bool success = (coin.type == selectedRummageCoin.type);
+        // only track phoneme attempt if not in tutorial AND not in practice mode
+        if (!playTutorial && !GameManager.instance.practiceModeON)
+        {
+            StudentInfoSystem.SavePlayerPhonemeAttempt(coin.type, success);
+        }
+
+        if (success)
         {
             selectedRummageCoin = null;
 
