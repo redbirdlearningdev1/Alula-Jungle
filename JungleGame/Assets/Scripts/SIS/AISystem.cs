@@ -79,7 +79,7 @@ public static class AISystem
 
                 if (playerData.starsLastGamePlayed + playerData.starsGameBeforeLastPlayed <= 2)
                 { // Player is doing poorly, so select an easy game from either Frogger or Rummage
-                    int randNum = Random.Range(0,2);
+                    int randNum = Random.Range(0, 2);
 
                     if (randNum == 0)
                     {
@@ -358,7 +358,7 @@ public static class AISystem
         }
         else
         {
-            
+
             Dictionary<GameType, int> challengeGameStars = new Dictionary<GameType, int>();
             challengeGameStars.Add(GameType.WordFactoryBlending, playerData.starsBlend);
             challengeGameStars.Add(GameType.TigerPawPhotos, playerData.starsTPawPol);
@@ -367,7 +367,7 @@ public static class AISystem
             challengeGameStars.Add(GameType.WordFactoryDeleting, playerData.starsDel);
             challengeGameStars.Add(GameType.WordFactorySubstituting, playerData.starsSub);
             challengeGameStars.Add(GameType.WordFactoryBuilding, playerData.starsBuild);
-            
+
             KeyValuePair<GameType, int> worstGame = new KeyValuePair<GameType, int>(GameType.WordFactoryBlending, playerData.starsBlend);
             foreach (KeyValuePair<GameType, int> pair in challengeGameStars)
             {
@@ -411,10 +411,28 @@ public static class AISystem
         {
             difficultyLevel = 6;
         }
-        
-        int numSoundsMin = -1;
-        int numSoundsMax = -1;
-        bool similarSounds = false;
+
+        List<ActionWordEnum> set1 = new List<ActionWordEnum>()
+        { ActionWordEnum.mudslide, ActionWordEnum.listen, ActionWordEnum.poop,
+          ActionWordEnum.orcs, ActionWordEnum.think, ActionWordEnum.explorer };
+
+        List<ActionWordEnum> set2 = new List<ActionWordEnum>()
+        { ActionWordEnum.hello, ActionWordEnum.spider, ActionWordEnum.scared, ActionWordEnum.thatguy };
+
+        List<ActionWordEnum> set3 = new List<ActionWordEnum>()
+        { ActionWordEnum.choice, ActionWordEnum.strongwind, ActionWordEnum.pirate,
+          ActionWordEnum.gorilla, ActionWordEnum.sounds, ActionWordEnum.give };
+
+        List<ActionWordEnum> set4 = new List<ActionWordEnum>()
+        { ActionWordEnum.backpack, ActionWordEnum.frustrating, ActionWordEnum.bumphead, ActionWordEnum.baby };
+
+        List<ActionWordEnum> prevPhonemes = new List<ActionWordEnum>();
+
+        int elkoninValueMin;
+        int elkoninValueMax;
+        bool similarSounds;
+        float currentSectionPercent = 1f;
+        ChallengeWord correctWord;
 
         if (difficultyLevel % 2 == 1)
         { // Odd difficulty levels have no similar sounds
@@ -425,17 +443,201 @@ public static class AISystem
             similarSounds = true;
         }
 
+        // Assign Elkonin Value based on the difficulty
         if (difficultyLevel <= 2)
         {
-            numSoundsMin = 2;
-            numSoundsMax = 3;
+            elkoninValueMin = 2;
+            elkoninValueMax = 3;
         }
-        if (difficultyLevel == 3)
+        else if (difficultyLevel == 3)
         {
-            
+            elkoninValueMin = 3;
+            elkoninValueMax = 3;
+        }
+        else if (difficultyLevel == 4)
+        {
+            elkoninValueMin = 3;
+            elkoninValueMax = 4;
+        }
+        else
+        {
+            elkoninValueMin = 4;
+            elkoninValueMax = 10;
         }
 
-        return null;
+        // If phonemes weren't specified in the function parameters, assign phoneme groups and previous phoneme groups based on chapter
+        // Additionally, assign the probability that the current phonemes get used over the previous phoneme group 0f - 1f
+        if (phonemes == null)
+        {
+            if (playerData.currentChapter <= Chapter.chapter_1)
+            {
+                prevPhonemes = null;
+                phonemes.AddRange(set1);
+                currentSectionPercent = 1f;
+            }
+            else if (playerData.currentChapter == Chapter.chapter_2)
+            {
+                prevPhonemes.AddRange(set1);
+                phonemes.AddRange(set2);
+                currentSectionPercent = 0.7f;
+            }
+            else if (playerData.currentChapter == Chapter.chapter_3)
+            {
+                prevPhonemes.AddRange(set1);
+                prevPhonemes.AddRange(set2);
+                phonemes.AddRange(set3);
+                currentSectionPercent = 0.6f;
+            }
+            else if (playerData.currentChapter == Chapter.chapter_4)
+            {
+                prevPhonemes.AddRange(set1);
+                prevPhonemes.AddRange(set2);
+                prevPhonemes.AddRange(set3);
+                phonemes.AddRange(set4);
+                currentSectionPercent = 0.5f;
+            }
+            else
+            {
+                prevPhonemes = null;
+                phonemes.AddRange(set1);
+                phonemes.AddRange(set2);
+                phonemes.AddRange(set3);
+                phonemes.AddRange(set4);
+                currentSectionPercent = 1f;
+            }
+        }
+
+        // Get all challenge words for the main group of phonemes
+        List<ChallengeWord> currSectionChallengeWords = ChallengeWordDatabase.GetChallengeWords(phonemes);
+
+        // If we are in a section with a previous group of phonemes, get all challenge words for that group
+        if (prevPhonemes != null)
+        {
+            prevPhonemes = phonemes;
+        }
+        List<ChallengeWord> prevSectionChallengeWords = ChallengeWordDatabase.GetChallengeWords(phonemes);
+
+        // Remove any words already used in this game
+        foreach (ChallengeWord word in excludeWords)
+        {
+            if (currSectionChallengeWords.Contains(word))
+            {
+                currSectionChallengeWords.Remove(word);
+            }
+
+            if (prevSectionChallengeWords.Contains(word))
+            {
+                prevSectionChallengeWords.Remove(word);
+            }
+        }
+        // If there aren't enough words to pick from, repopulate the list
+        if (currSectionChallengeWords.Count < 1)
+        {
+            currSectionChallengeWords = ChallengeWordDatabase.GetChallengeWords(phonemes);
+        }
+        if (prevSectionChallengeWords.Count < 1)
+        {
+            prevSectionChallengeWords = ChallengeWordDatabase.GetChallengeWords(prevPhonemes);
+        }
+
+        // Filtering out words with the incorrect elkonin values
+        List<ChallengeWord> filteredCurrChallengeWords = new List<ChallengeWord>();
+        List<ChallengeWord> filteredPrevChallengeWords = new List<ChallengeWord>();
+
+        foreach (ChallengeWord word in currSectionChallengeWords)
+        {
+            if (word.elkoninCount >= elkoninValueMin && word.elkoninCount <= elkoninValueMax)
+            {
+                filteredCurrChallengeWords.Add(word);
+            }
+        }
+        foreach (ChallengeWord word in prevSectionChallengeWords)
+        {
+            if (word.elkoninCount >= elkoninValueMin && word.elkoninCount <= elkoninValueMax)
+            {
+                filteredPrevChallengeWords.Add(word);
+            }
+        }
+
+        if (filteredCurrChallengeWords.Count < 1)
+        {
+            filteredCurrChallengeWords = currSectionChallengeWords;
+        }
+        if (filteredPrevChallengeWords.Count < 1)
+        {
+            filteredPrevChallengeWords = currSectionChallengeWords;
+        }
+
+        // Decide whether to use the current section or previous section for this selection
+        float randNum = Random.Range(0f, 1f);
+        if (randNum <= currentSectionPercent)
+        {
+            correctWord = filteredCurrChallengeWords[Random.Range(0, filteredCurrChallengeWords.Count)];
+            filteredCurrChallengeWords.Remove(correctWord);
+        }
+        else
+        {
+            correctWord = filteredPrevChallengeWords[Random.Range(0, filteredPrevChallengeWords.Count)];
+            filteredPrevChallengeWords.Remove(correctWord);
+        }
+
+        if (filteredCurrChallengeWords.Count < 1)
+        {
+            filteredCurrChallengeWords = currSectionChallengeWords;
+        }
+        if (filteredPrevChallengeWords.Count < 1)
+        {
+            filteredPrevChallengeWords = currSectionChallengeWords;
+        }
+
+        List<ChallengeWord> wordsToReturn = new List<ChallengeWord>();
+        wordsToReturn.Add(correctWord);
+
+        // Repeat selection process for the two incorrect words
+        for (int i = 0; i < 2; i++)
+        {
+            List<ChallengeWord> finalCurrChallengeWords = filteredCurrChallengeWords;
+            List<ChallengeWord> finalPrevChallengeWords = filteredPrevChallengeWords;
+            // If we are supposed to, filter for only words with the same beginning or ending sound
+            if (similarSounds)
+            {
+                foreach (ChallengeWord word in filteredCurrChallengeWords)
+                {
+                    if (word.elkoninList[0] != correctWord.elkoninList[0] && word.elkoninList[word.elkoninList.Count - 1] != correctWord.elkoninList[correctWord.elkoninCount - 1])
+                    {
+                        finalCurrChallengeWords.Remove(word);
+                    }
+                }
+                foreach (ChallengeWord word in filteredPrevChallengeWords)
+                {
+                    if (word.elkoninList[0] != correctWord.elkoninList[0] && word.elkoninList[word.elkoninList.Count - 1] != correctWord.elkoninList[correctWord.elkoninCount - 1])
+                    {
+                        finalPrevChallengeWords.Remove(word);
+                    }
+                }
+
+                if (finalCurrChallengeWords.Count < 1)
+                {
+                    finalCurrChallengeWords = filteredCurrChallengeWords;
+                }
+                if (finalPrevChallengeWords.Count < 1)
+                {
+                    finalPrevChallengeWords = filteredPrevChallengeWords;
+                }
+            }
+
+            randNum = Random.Range(0f, 1f);
+            if (randNum <= currentSectionPercent)
+            {
+                wordsToReturn.Add(finalCurrChallengeWords[Random.Range(0, finalCurrChallengeWords.Count)]);
+            }
+            else
+            {
+                wordsToReturn.Add(finalPrevChallengeWords[Random.Range(0, finalPrevChallengeWords.Count)]);
+            }
+        }
+
+        return wordsToReturn;
 
         /*
         List<ChallengeWord> globalWordList = new List<ChallengeWord>();
@@ -1036,7 +1238,7 @@ public static class AISystem
             }
         }
 
-        
+
 
         return Selected;
     }
