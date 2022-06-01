@@ -411,6 +411,11 @@ public static class AISystem
     {
         StudentPlayerData playerData = StudentInfoSystem.GetCurrentProfile();
 
+        
+
+        return null;
+
+        /*
         List<ChallengeWord> globalWordList = new List<ChallengeWord>();
         List<ChallengeWord> allGlobalWordList = new List<ChallengeWord>();
         List<ChallengeWord> unusedWordList = new List<ChallengeWord>();
@@ -854,6 +859,7 @@ public static class AISystem
         }
 
         return CurrentChallengeList;
+        */
     }
 
     public static ActionWordEnum TigerPawPhotosCoinSelection()
