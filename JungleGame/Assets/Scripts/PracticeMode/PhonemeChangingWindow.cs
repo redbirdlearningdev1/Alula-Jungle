@@ -270,6 +270,6 @@ public class PhonemeChangingWindow : MonoBehaviour
 
     public void OnStartPracticeButtonPressed()
     {
-
+        PracticeSceneManager.instance.StartPractice(PracticeModeGame.phoneme_changing, diffValue, currentGames, currentPhonemes, addVersion, subVersion, delVersion, false, false, false);
     }
 }

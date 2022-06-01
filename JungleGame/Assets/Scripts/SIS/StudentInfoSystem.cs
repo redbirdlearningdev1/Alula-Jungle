@@ -367,4 +367,79 @@ public static class StudentInfoSystem
         }
         return totalStickers;
     }
+
+
+    /////////////////// SAVING DATA FOR PLAYER REPORT ///////////////////
+
+    public static void SavePlayerPhonemeAttempt(ActionWordEnum phoneme, bool success)
+    {
+        // find phoneme data in current player and update
+        foreach (var data in currentStudentPlayer.phonemeData)
+        {
+            if (data.actionWordEnum == phoneme)
+            {
+                data.totalAttempts++;
+                if (success) data.successfulAttempts++;
+                SaveStudentPlayerData();
+                return;
+            }
+        }
+    }
+
+    public static void SavePlayerPhonemeAttempt(ElkoninValue phoneme, bool success)
+    {
+        // find phoneme data in current player and update
+        foreach (var data in currentStudentPlayer.phonemeData)
+        {
+            if (data.elkoninValue == phoneme)
+            {
+                data.totalAttempts++;
+                if (success) data.successfulAttempts++;
+                SaveStudentPlayerData();
+                return;
+            }
+        }
+    }
+
+    public static void SavePlayerChallengeRoundAttempt(GameType game, bool _success, ChallengeWord _word, int _diff)
+    {
+        ChallengeRoundData newData = new ChallengeRoundData();
+        newData.success = _success;
+        newData.challengeWord = _word;
+        newData.difficulty = _diff;
+        newData.dateTime = System.DateTime.Now;
+
+        switch (game)
+        {
+            case GameType.WordFactoryBlending:
+                currentStudentPlayer.blendData.Add(newData);
+                break;
+            
+            case GameType.WordFactorySubstituting:
+                currentStudentPlayer.subData.Add(newData);
+                break;
+
+            case GameType.WordFactoryBuilding:
+                currentStudentPlayer.buildData.Add(newData);
+                break;
+
+            case GameType.WordFactoryDeleting:
+                currentStudentPlayer.deleteData.Add(newData);
+                break;
+
+            case GameType.TigerPawCoins:
+                currentStudentPlayer.TPCoinsData.Add(newData);
+                break;
+            
+            case GameType.TigerPawPhotos:
+                currentStudentPlayer.TPPhotosData.Add(newData);
+                break;
+
+            case GameType.Password:
+                currentStudentPlayer.passwordData.Add(newData);
+                break;
+        }
+
+        SaveStudentPlayerData();
+    }
 }

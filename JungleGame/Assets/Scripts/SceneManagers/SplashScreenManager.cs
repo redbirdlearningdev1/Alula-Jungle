@@ -106,6 +106,7 @@ public class SplashScreenManager : MonoBehaviour
 
         // end practice mode iff needed
         GameManager.instance.practiceModeON = false;
+        GameManager.instance.practiceModeCounter.text = "";
 
         // stop music 
         AudioManager.instance.StopMusic();

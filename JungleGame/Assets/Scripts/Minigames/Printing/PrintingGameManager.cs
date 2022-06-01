@@ -104,6 +104,10 @@ public class PrintingGameManager : MonoBehaviour
         globalCoinPool = new List<ActionWordEnum>();
 
         // Create Global Coin List
+        if (GameManager.instance.practiceModeON)
+        {
+            globalCoinPool.AddRange(GameManager.instance.practicePhonemes);
+        }
         if (mapID != MapIconIdentfier.None)
         {
             globalCoinPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
@@ -190,17 +194,6 @@ public class PrintingGameManager : MonoBehaviour
 
     private IEnumerator StartGame()
     {
-        // reset rope
-        if (playTutorial && t_currRound == 0)
-        {
-            // do nothing :)
-        }
-        else
-        {
-            // PirateRopeController.instance.ResetRope();
-        }
-
-
         // get correct value
         int correctIndex = 0;
         if (playTutorial)
@@ -287,8 +280,15 @@ public class PrintingGameManager : MonoBehaviour
         RopeCoin.instance.StopAllCoroutines();
         RopeCoin.instance.interactable = false;
 
+        bool success = (ball == correctValue);
+        // only track phoneme attempt if not in tutorial AND not in practice mode
+        if (!playTutorial && !GameManager.instance.practiceModeON)
+        {
+            StudentInfoSystem.SavePlayerPhonemeAttempt(correctValue, success);
+        }
+
         // correct!
-        if (ball == correctValue)
+        if (success)
         {
             StartCoroutine(CorrectBallRoutine());
             return true;

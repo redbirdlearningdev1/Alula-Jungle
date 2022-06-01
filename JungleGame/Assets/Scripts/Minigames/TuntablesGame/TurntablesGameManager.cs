@@ -123,7 +123,11 @@ public class TurntablesGameManager : MonoBehaviour
 
         // create global pool
         globalPool = new List<ActionWordEnum>();
-        if (mapID != MapIconIdentfier.None)
+        if (GameManager.instance.practiceModeON)
+        {
+            globalPool.AddRange(GameManager.instance.practicePhonemes);
+        }
+        else if (mapID != MapIconIdentfier.None)
         {
             globalPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
         }
@@ -308,11 +312,15 @@ public class TurntablesGameManager : MonoBehaviour
         // turn off raycaster
         KeyRaycaster.instance.isOn = false;
 
-        bool isCorrect = false;
-
-        if (selectedKey.GetKeyType() == doorValues[currentDoor])
+        bool success = (selectedKey.GetKeyType() == doorValues[currentDoor]);
+        // only track phoneme attempt if not in tutorial AND not in practice mode
+        if (!playTutorial && !GameManager.instance.practiceModeON)
         {
-            isCorrect = true;
+            StudentInfoSystem.SavePlayerPhonemeAttempt(doorValues[currentDoor], success);
+        }
+
+        if (success)
+        {
             StartCoroutine(PostEvaluationRoutine(true));
         }
         else
@@ -320,7 +328,7 @@ public class TurntablesGameManager : MonoBehaviour
             StartCoroutine(PostEvaluationRoutine(false));
         }
 
-        return isCorrect;
+        return success;
     }
 
     private IEnumerator PostEvaluationRoutine(bool isCorrect)

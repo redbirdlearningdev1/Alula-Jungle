@@ -15,6 +15,8 @@ public class SpiderRayCaster : MonoBehaviour
     [SerializeField] private Transform selectedCoinParent;
     [SerializeField] private WebBall webBallGlow;
 
+    private bool playTutorialPart = false;
+
     void Awake()
     {
         if (instance == null)
@@ -101,8 +103,9 @@ public class SpiderRayCaster : MonoBehaviour
                     {
                         selectedBug = result.gameObject.GetComponent<BugController>();
 
-                        if (NewSpiderGameManager.instance.playTutorial && NewSpiderGameManager.instance.tutorialEvent == 1)
+                        if (NewSpiderGameManager.instance.playTutorial && NewSpiderGameManager.instance.tutorialEvent == 1 && !playTutorialPart)
                         {
+                            playTutorialPart = true;
                             StartCoroutine(NextSpiderwebTutorialPart());
                         }
                         else
@@ -130,12 +133,8 @@ public class SpiderRayCaster : MonoBehaviour
         List<AssetReference> clips = new List<AssetReference>();
         clips.Add(GameIntroDatabase.instance.spiderwebsIntro3);
         clips.Add(GameIntroDatabase.instance.spiderwebsIntro4);
-        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[0]));
-        yield return cd.coroutine;
-        CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[1]));
-        yield return cd0.coroutine;
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Spindle, clips);
-        yield return new WaitForSeconds(cd.GetResult() + cd0.GetResult() + 1f);
+        yield return new WaitForSeconds(10f);
 
         NewSpiderGameManager.instance.ContinueTutorialPart();
     }

@@ -236,6 +236,6 @@ public class DefaultPracticeWindow : MonoBehaviour
 
     public void OnStartPracticeButtonPressed()
     {
-
+        PracticeSceneManager.instance.StartPractice(myGameType, diffValue, currentGames, currentPhonemes, false, false, false, false, false, false);
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6748568326504335629}
   - component: {fileID: 8141609155663269442}
   - component: {fileID: 379738175261615459}
-  - component: {fileID: 4848747360724384426}
+  - component: {fileID: 3017000447549436328}
   m_Layer: 17
   m_Name: SylvieSand
   m_TagString: Untagged
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a565e75160aa1a64898bc6623816cc8e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ab2e5dbc6aa19c147b6590e04631b6fa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -115,6 +115,11 @@ MonoBehaviour:
   body: {fileID: 6748568326504335629}
   lerpableObject: {fileID: 379738175261615459}
   image: {fileID: 8631230204902873846}
+  spawnSound:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   duration: 5
   rate: 0.0001
   randomizeRotation: 1
@@ -144,8 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458d3b50667b6a944abf0cc4cfece9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &4848747360724384426
-BoxCollider2D:
+--- !u!58 &3017000447549436328
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -157,16 +162,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.3569641, y: 0.3294983}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: -0.9}
   serializedVersion: 2
-  m_Size: {x: 4.73468, y: 4.020691}
-  m_EdgeRadius: 0
+  m_Radius: 7.17

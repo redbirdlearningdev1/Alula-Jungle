@@ -408,7 +408,14 @@ public class TigerCoinGameManager : MonoBehaviour
         // turn off raycaster
         TigerCoinRayCaster.instance.isOn = false;
 
-        if (coin.value == currentTargetValue)
+        bool success = (coin.value == currentTargetValue);
+        // only track challenge round attempt if not in tutorial AND not in practice mode
+        if (!playTutorial && !GameManager.instance.practiceModeON)
+        {
+            StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.TigerPawCoins, success, currentWord, 0); //// TODO: add player difficulty once it is available
+        }
+
+        if (success)
         {
             StartCoroutine(PostRound(true));
         }

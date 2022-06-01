@@ -416,12 +416,15 @@ public class NewPasswordGameManager : MonoBehaviour
         // small delay
         // yield return new WaitForSeconds(1f);
 
-        // determine if correct num of coins
-        bool winRound = false;
-        if (currentWord.elkoninCount == PasswordTube.instance.tubeCoins.Count)
+        bool success = (currentWord.elkoninCount == PasswordTube.instance.tubeCoins.Count);
+        // only track challenge round attempt if not in tutorial AND not in practice mode
+        if (!playTutorial && !GameManager.instance.practiceModeON)
         {
-            winRound = true;
+            StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.Password, success, currentWord, 0); //// TODO: add player difficulty once it is available
+        }
 
+        if (success)
+        {
             // play right audio
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
             //yield return new WaitForSeconds(1f);
@@ -684,7 +687,7 @@ public class NewPasswordGameManager : MonoBehaviour
         //yield return new WaitForSeconds(0.5f);
 
         // begin next round
-        StartCoroutine(NewRound(winRound));
+        StartCoroutine(NewRound(success));
     }
 
     private void RemoveExtraCoins(List<UniversalCoinImage> extraCoins)

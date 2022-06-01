@@ -509,7 +509,14 @@ public class WordFactoryBlendingManager : MonoBehaviour
         if (!playTutorial)
             StartCoroutine(SelectedPolaroid(polaroid));
 
-        if (polaroid.challengeWord == currentWord)
+        bool success = (polaroid.challengeWord == currentWord);
+        // only track challenge round attempt if not in tutorial AND not in practice mode
+        if (!playTutorial && !GameManager.instance.practiceModeON)
+        {
+            StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.WordFactoryBlending, success, currentWord, 0); //// TODO: add player difficulty once it is available
+        }
+
+        if (success)
         {
             numWins++;
             currentPolaroid = polaroid;
