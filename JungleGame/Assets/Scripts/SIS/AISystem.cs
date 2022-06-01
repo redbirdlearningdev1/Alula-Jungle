@@ -393,13 +393,47 @@ public static class AISystem
         }
     }
 
-    public static List<ChallengeWord> ChallengeWordSelectionBlending(List<ChallengeWord> excludeWords = null)
+    public static List<ChallengeWord> ChallengeWordSelectionBlending(List<ChallengeWord> excludeWords = null, int difficultyLevel = -1, List<ActionWordEnum> phonemes = null)
     {
         StudentPlayerData playerData = StudentInfoSystem.GetCurrentProfile();
 
-        int diffLvl = Mathf.FloorToInt(playerData.starsBlend / 3);
+        if (difficultyLevel == -1)
+        {
+            difficultyLevel = 1 + Mathf.FloorToInt(playerData.starsBlend / 3);
+        }
 
+        // Safety Checks, bound difficulty level between 1-6 only
+        if (difficultyLevel < 1)
+        {
+            difficultyLevel = 1;
+        }
+        if (difficultyLevel > 6)
+        {
+            difficultyLevel = 6;
+        }
         
+        int numSoundsMin = -1;
+        int numSoundsMax = -1;
+        bool similarSounds = false;
+
+        if (difficultyLevel % 2 == 1)
+        { // Odd difficulty levels have no similar sounds
+            similarSounds = false;
+        }
+        else
+        { // Even difficulty levels have similar sounds
+            similarSounds = true;
+        }
+
+        if (difficultyLevel <= 2)
+        {
+            numSoundsMin = 2;
+            numSoundsMax = 3;
+        }
+        if (difficultyLevel == 3)
+        {
+            
+        }
 
         return null;
 
