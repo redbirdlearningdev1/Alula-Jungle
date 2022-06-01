@@ -478,8 +478,6 @@ public class AudioManager : MonoBehaviour
 
         AudioClip _clip = (AudioClip)talkHandle.Result;
 
-        print ("clip: " + _clip);
-
         talkSource.clip = _clip;
         talkSource.loop = false;
         talkSource.Play();
@@ -491,7 +489,6 @@ public class AudioManager : MonoBehaviour
         if (talkHandle.IsValid())
         {
             Addressables.Release(talkHandle);
-            print ("RELEASING TALK HANDL!!!!!!!!!!!!!!!!!!!!!");
         }
     }
 
@@ -502,7 +499,6 @@ public class AudioManager : MonoBehaviour
         if (talkHandle.IsValid())
         {
             Addressables.Release(talkHandle);
-            print ("RELEASING TALK HANDL!!!!!!!!!!!!!!!!!!!!!");
         }
 
         talkSource.clip = null;
