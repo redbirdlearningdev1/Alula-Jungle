@@ -469,9 +469,9 @@ public static class AISystem
         // Additionally, assign the probability that the current phonemes get used over the previous phoneme group 0f - 1f
         if (phonemes == null)
         {
+            prevPhonemes = new List<ActionWordEnum>();
             if (playerData.currentChapter <= Chapter.chapter_1)
             {
-                prevPhonemes = null;
                 phonemes.AddRange(set1);
                 currentSectionPercent = 1f;
             }
@@ -498,7 +498,6 @@ public static class AISystem
             }
             else
             {
-                prevPhonemes = null;
                 phonemes.AddRange(set1);
                 phonemes.AddRange(set2);
                 phonemes.AddRange(set3);
@@ -510,14 +509,18 @@ public static class AISystem
         // Get all challenge words for the main group of phonemes
         List<ChallengeWord> currSectionChallengeWords = new List<ChallengeWord>();
         currSectionChallengeWords.AddRange(ChallengeWordDatabase.GetChallengeWords(phonemes));
+        Debug.Log("Getting Challenge Words for current group of phonemes: " + phonemes);
+        Debug.Log("Challenge Words: " + currSectionChallengeWords);
 
         // If we are in a section with a previous group of phonemes, get all challenge words for that group
-        if (prevPhonemes != null)
+        if (prevPhonemes.Count < 1)
         {
-            prevPhonemes = phonemes;
+            prevPhonemes.AddRange(phonemes);
         }
         List<ChallengeWord> prevSectionChallengeWords = new List<ChallengeWord>();
-        prevSectionChallengeWords.AddRange(ChallengeWordDatabase.GetChallengeWords(phonemes));
+        prevSectionChallengeWords.AddRange(ChallengeWordDatabase.GetChallengeWords(prevPhonemes));
+        Debug.Log("Getting Challenge Words for previous group of phonemes: " + prevPhonemes);
+        Debug.Log("Previous Challenge Words: " + prevSectionChallengeWords);
 
         // Remove any words already used in this game
         foreach (ChallengeWord word in excludeWords)
@@ -578,11 +581,19 @@ public static class AISystem
         {
             correctWord = filteredCurrChallengeWords[Random.Range(0, filteredCurrChallengeWords.Count)];
             filteredCurrChallengeWords.Remove(correctWord);
+                if (filteredPrevChallengeWords.Contains(correctWord))
+                {
+                    filteredPrevChallengeWords.Remove(correctWord);
+                }
         }
         else
         {
             correctWord = filteredPrevChallengeWords[Random.Range(0, filteredPrevChallengeWords.Count)];
             filteredPrevChallengeWords.Remove(correctWord);
+                if (filteredCurrChallengeWords.Contains(correctWord))
+                {
+                    filteredCurrChallengeWords.Remove(correctWord);
+                }
         }
 
         if (filteredCurrChallengeWords.Count < 1)
@@ -638,12 +649,20 @@ public static class AISystem
                 int randIndex = Random.Range(0, finalCurrChallengeWords.Count);
                 wordsToReturn.Add(finalCurrChallengeWords[randIndex]);
                 finalCurrChallengeWords.Remove(finalCurrChallengeWords[randIndex]);
+                if (finalPrevChallengeWords.Contains(finalCurrChallengeWords[randIndex]))
+                {
+                    finalPrevChallengeWords.Remove(finalCurrChallengeWords[randIndex]);
+                }
             }
             else
             {
                 int randIndex = Random.Range(0, finalPrevChallengeWords.Count);
                 wordsToReturn.Add(finalPrevChallengeWords[randIndex]);
                 finalPrevChallengeWords.Remove(finalPrevChallengeWords[randIndex]);
+                if (finalCurrChallengeWords.Contains(finalPrevChallengeWords[randIndex]))
+                {
+                    finalCurrChallengeWords.Remove(finalPrevChallengeWords[randIndex]);
+                }
             }
         }
 
