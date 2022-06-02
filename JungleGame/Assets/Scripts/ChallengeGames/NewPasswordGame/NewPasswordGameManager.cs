@@ -255,7 +255,7 @@ public class NewPasswordGameManager : MonoBehaviour
                 yield return new WaitForSeconds(cd5.GetResult() + cd6.GetResult());
             }
         }
-        else
+        else if (!GameManager.instance.practiceModeON)
         {
             if (!playIntro)
             {

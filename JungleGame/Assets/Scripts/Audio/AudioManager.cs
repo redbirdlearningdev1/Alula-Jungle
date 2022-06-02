@@ -478,8 +478,6 @@ public class AudioManager : MonoBehaviour
 
         AudioClip _clip = (AudioClip)talkHandle.Result;
 
-        print ("clip: " + _clip);
-
         talkSource.clip = _clip;
         talkSource.loop = false;
         talkSource.Play();

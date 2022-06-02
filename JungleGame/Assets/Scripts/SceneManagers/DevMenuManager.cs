@@ -3449,8 +3449,7 @@ public class DevMenuManager : MonoBehaviour
 
         foreach (var phonemeData in StudentInfoSystem.GetCurrentProfile().phonemeData)
         {
-            float phonemeSuccessRate = (float)phonemeData.successfulAttempts / (float)phonemeData.totalAttempts;
-            printThis += "" + phonemeData.actionWordEnum.ToString() + "\t\t" + (phonemeSuccessRate * 100f) + "%\n";
+            printThis += "" + phonemeData.actionWordEnum.ToString() + "\t\t" + (phonemeData.GetSuccessAllTime() * 100f) + "%\n";
         }
 
         printThis += "\n--------------------------------------------\n";

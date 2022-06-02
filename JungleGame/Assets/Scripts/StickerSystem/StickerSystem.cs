@@ -1148,6 +1148,8 @@ public class StickerSystem : MonoBehaviour
         // play lester tutorial 1
         if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
         {
+            RaycastBlockerController.instance.RemoveRaycastBlocker("show_wagon_raycast");
+
             // add talkie bg
             talkieBG.GetComponent<Image>().raycastTarget = true;
             talkieBG.LerpImageAlpha(talkieBG.GetComponent<Image>(), 0.9f, 0.5f);
