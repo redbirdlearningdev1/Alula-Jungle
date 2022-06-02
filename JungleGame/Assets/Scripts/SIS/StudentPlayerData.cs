@@ -568,6 +568,9 @@ public class PhonemeData
 
     public float GetSuccessAllTime()
     {
+        if (attempts.Count == 0)
+            return 0f;
+
         int successCount = 0;
         foreach (bool attempt in attempts)
         {
@@ -581,6 +584,9 @@ public class PhonemeData
 
     public float GetSuccessPrev10()
     {
+        if (attempts.Count == 0)
+            return 0f;
+            
         if (attempts.Count <= 10)
             return GetSuccessAllTime();
 
