@@ -283,19 +283,22 @@ public class TigerCoinGameManager : MonoBehaviour
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Julius, clip);
             yield return new WaitForSeconds(cd4.GetResult() + 1f);
         }
-        else if (!playIntro)
+        else if (!GameManager.instance.practiceModeON)
         {
-            // short pause before start
-            //yield return new WaitForSeconds(1f);
+            if (!playIntro)
+            {
+                // short pause before start
+                //yield return new WaitForSeconds(1f);
 
-            // play start 1
-            AssetReference clip = GameIntroDatabase.instance.tigerPawCoinStart;
+                // play start 1
+                AssetReference clip = GameIntroDatabase.instance.tigerPawCoinStart;
 
-            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
-            yield return cd.coroutine;
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd.coroutine;
 
-            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-            yield return new WaitForSeconds(cd.GetResult());
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                yield return new WaitForSeconds(cd.GetResult());
+            }
         }
 
         if (!playIntro)

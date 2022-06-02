@@ -295,16 +295,19 @@ public class TigerGameManager : MonoBehaviour
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Julius, clip);
             yield return new WaitForSeconds(cd4.GetResult() + 1f);
         }
-        else if (!playIntro)
+        else if (!GameManager.instance.practiceModeON)
         {
-            // play start 1
-            AssetReference clip = GameIntroDatabase.instance.tigerPawPhotosStart;
+            if (!playIntro)
+            {
+                // play start 1
+                AssetReference clip = GameIntroDatabase.instance.tigerPawPhotosStart;
 
-            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
-            yield return cd.coroutine;
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd.coroutine;
 
-            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-            yield return new WaitForSeconds(cd.GetResult());
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                yield return new WaitForSeconds(cd.GetResult());
+            }
         }
 
         if (!playIntro)

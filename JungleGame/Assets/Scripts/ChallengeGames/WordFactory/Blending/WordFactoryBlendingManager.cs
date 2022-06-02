@@ -216,7 +216,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
                 yield return new WaitForSeconds(cd.GetResult() + 1f);
             }
         }
-        else
+        else if (!GameManager.instance.practiceModeON)
         {
             if (!playIntro)
             {

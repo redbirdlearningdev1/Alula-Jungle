@@ -378,8 +378,7 @@ public static class StudentInfoSystem
         {
             if (data.actionWordEnum == phoneme)
             {
-                data.totalAttempts++;
-                if (success) data.successfulAttempts++;
+                data.attempts.Add(success);
                 SaveStudentPlayerData();
                 return;
             }
@@ -393,8 +392,7 @@ public static class StudentInfoSystem
         {
             if (data.elkoninValue == phoneme)
             {
-                data.totalAttempts++;
-                if (success) data.successfulAttempts++;
+                data.attempts.Add(success);
                 SaveStudentPlayerData();
                 return;
             }

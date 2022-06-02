@@ -557,14 +557,41 @@ public class PhonemeData
 {
     public ActionWordEnum actionWordEnum;
     public ElkoninValue elkoninValue;
-    public int successfulAttempts;
-    public int totalAttempts;
+    public List<bool> attempts;
 
     public PhonemeData(ActionWordEnum _actionWordEnum, ElkoninValue _elkoninValue)
     {
         this.actionWordEnum = _actionWordEnum;
         this.elkoninValue = _elkoninValue;
-        this.successfulAttempts = 0;
-        this.totalAttempts = 0;
+        this.attempts = new List<bool>();
+    }
+
+    public float GetSuccessAllTime()
+    {
+        int successCount = 0;
+        foreach (bool attempt in attempts)
+        {
+            if (attempt) successCount++;
+        }
+
+        float successPercent = (float)successCount / (float)attempts.Count;
+        return successPercent;
+    }
+
+
+    public float GetSuccessPrev10()
+    {
+        if (attempts.Count <= 10)
+            return GetSuccessAllTime();
+
+        int successCount = 0;
+        for (int i = 0; i < 10; i++)
+        {
+            if (attempts[attempts.Count - 1 - i])
+                successCount++;
+        }
+
+        float successPercent = (float)successCount / (float)attempts.Count;
+        return successPercent;
     }
 }

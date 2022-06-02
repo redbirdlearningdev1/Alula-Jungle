@@ -219,7 +219,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                 yield return new WaitForSeconds(cd0.GetResult() + 1f);
             }
         }
-        else
+        else if (!GameManager.instance.practiceModeON)
         {
             if (!playIntro)
             {

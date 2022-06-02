@@ -148,7 +148,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
                 yield return new WaitForSeconds(cd2.GetResult() + 1f);
             }
         }
-        else
+        else if (!GameManager.instance.practiceModeON)
         {
             if (!playIntro)
             {
