@@ -216,6 +216,26 @@ public class TigerCoinGameManager : MonoBehaviour
             }
             scriptedEvent++;
         }
+        else if (GameManager.instance.practiceModeON)
+        {
+            // use AI word selection
+            List<ChallengeWord> CurrentChallengeList = new List<ChallengeWord>();
+            CurrentChallengeList = AISystem.ChallengeWordSelectionTigerPawCoin(prevWords, GameManager.instance.practiceDifficulty, GameManager.instance.practicePhonemes);
+            currentWord = CurrentChallengeList[0];
+            polaroidC.SetPolaroid(currentWord);
+            prevWords.Add(currentWord);
+
+            // set coin options
+            List<ActionWordEnum> coinOptions = new List<ActionWordEnum>();
+            coinOptions = AISystem.TigerPawCoinsCoinSelection(StudentInfoSystem.GetCurrentProfile(), CurrentChallengeList);
+            currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(currentWord.set);
+            for (int i = 0; i < 5; i++)
+            {
+                int rand = Random.Range(0, coinOptions.Count);
+                waterCoins[i].SetActionWordValue(coinOptions[rand]);
+                coinOptions.RemoveAt(rand);
+            }
+        }
         else
         {
             // use AI word selection

@@ -472,7 +472,7 @@ public class TigerGameManager : MonoBehaviour
     {
 
         currPhoto.gameObject.transform.SetParent(selectedObjectParentCoin);
-
+    
         if (currPhoto.name == "Polaroid1")
         {
             StartCoroutine(LerpMoveObject(polaroidC[0].transform, PhotoPos1.position, .2f));

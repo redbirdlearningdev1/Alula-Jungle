@@ -342,7 +342,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
         }
         else if (GameManager.instance.practiceModeON)
         {
-                        // use AI word selection
+            // use AI word selection
             List<ChallengeWord> tempChallengeWordList = new List<ChallengeWord>();
             tempChallengeWordList = AISystem.ChallengeWordSelectionBlending(prevWords, GameManager.instance.practiceDifficulty, GameManager.instance.practicePhonemes);
             ChallengeWord correctWord = tempChallengeWordList[0];
@@ -645,7 +645,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
             StartCoroutine(WinGameRoutine());
             yield break;
         }
-            
+
         // tutorial stuff
         if (playTutorial && tutorialEvent == 1)
         {

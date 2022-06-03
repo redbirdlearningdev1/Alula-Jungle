@@ -10325,9 +10325,9 @@ MonoBehaviour:
   storyBeatDropdown: {fileID: 682624025}
   fastTalkieToggle: {fileID: 0}
   profileInput: {fileID: 676611698}
-  simulationScreen: {fileID: 0}
-  numGamesField: {fileID: 0}
-  fullGameCheckmarkImage: {fileID: 0}
+  simulationScreen: {fileID: 1377961842}
+  numGamesField: {fileID: 1226468195}
+  fullGameCheckmarkImage: {fileID: 120852818}
   useFullGameSim: 1
 --- !u!4 &1239563238
 Transform:
