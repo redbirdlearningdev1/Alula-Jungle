@@ -1460,6 +1460,7 @@ public class DevMenuManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.frustrating);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.bumphead);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.baby);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.hit);
         }
     }
 

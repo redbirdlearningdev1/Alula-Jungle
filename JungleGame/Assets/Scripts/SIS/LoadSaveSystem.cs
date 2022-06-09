@@ -156,6 +156,7 @@ public static class LoadSaveSystem
         new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.frustrating, ElkoninValue.frustrating));
         new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.bumphead, ElkoninValue.bumphead));
         new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.baby, ElkoninValue.baby));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.hit, ElkoninValue.hit));
 
         // coins
         new_data.goldCoins = default_gold_coins;

@@ -422,6 +422,7 @@ public class StoryGameManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.frustrating);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.bumphead);
             StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.baby);
+            StudentInfoSystem.GetCurrentProfile().actionWordPool.Add(ActionWordEnum.hit);
         }
 
         // advance story beat

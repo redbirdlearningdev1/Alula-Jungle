@@ -60,6 +60,7 @@ public class PhonemeSelectWindow : MonoBehaviour
         myCoins[17].SetActionWordValue(ActionWordEnum.frustrating);
         myCoins[18].SetActionWordValue(ActionWordEnum.bumphead);
         myCoins[19].SetActionWordValue(ActionWordEnum.baby);
+        myCoins[20].SetActionWordValue(ActionWordEnum.hit);
 
         // hide window BG
         windowBGImage.raycastTarget = false;
@@ -116,6 +117,21 @@ public class PhonemeSelectWindow : MonoBehaviour
                 }
             }
         }
+        
+        if (currentPhonemes.Count < 1)
+        {
+            confirmButton.GetComponent<Button>().interactable = false;
+            Color transparentColor = confirmButton.GetComponent<Image>().color;
+            transparentColor.a = 0.5f;
+            confirmButton.GetComponent<Image>().color = transparentColor;
+        }
+        else
+        {
+            confirmButton.GetComponent<Button>().interactable = true;
+            Color opaqueColor = confirmButton.GetComponent<Image>().color;
+            opaqueColor.a = 1f;
+            confirmButton.GetComponent<Image>().color = opaqueColor;
+        }
     }
 
     public void OpenWindow(List<ActionWordEnum> activatedPhonemes, ReturnLocation returnLocation)
@@ -126,6 +142,10 @@ public class PhonemeSelectWindow : MonoBehaviour
 
         currentPhonemes.Clear();
         currentPhonemes.AddRange(activatedPhonemes);
+
+        // TODO: Remove this once we have words for the 'hit' coin
+        currentPhonemes.Remove(ActionWordEnum.hit);
+
         SetCurrentPhonemes();
 
         myReturnLocation = returnLocation;

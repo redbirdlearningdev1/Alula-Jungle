@@ -20,7 +20,7 @@ public static class ChallengeWordDatabase
     public const string audio_postfix = "_audio";
     public const string pair_postfix = "_pair";
     
-    public const int elkonin_word_separator = 21; // value at which > is consonant coins & <= are action word coins
+    public const int elkonin_word_separator = 22; // value at which > is consonant coins & <= are action word coins
 
     public static List<ChallengeWord> globalChallengeWordList;
     public static List<WordPair> globalWordPairs;
@@ -334,6 +334,7 @@ public static class ChallengeWordDatabase
 
     public static ConsonantEnum ElkoninValueToConsonantEnum(ElkoninValue value)
     {
+        Debug.Log("Value: " + value);
         switch (value)
         {
             case ElkoninValue.empty_silver:
