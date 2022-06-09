@@ -959,25 +959,42 @@ public static class AISystem
         List<ChallengeWord> finalCurrChallengeWords = new List<ChallengeWord>();
         finalCurrChallengeWords.AddRange(filteredCurrChallengeWords);
 
+        List<ChallengeWord> finalIncorrectChallengeWords = new List<ChallengeWord>();
+        finalIncorrectChallengeWords.AddRange(filteredIncorrectChallengeWords);
+
         // If we are supposed to, filter for only words with the same beginning or ending sound
         if (similarSounds)
         {
-            foreach (ChallengeWord word in filteredCurrChallengeWords)
+            foreach (ChallengeWord word in filteredIncorrectChallengeWords)
             {
                 if (word.elkoninList[0] != correctWord.elkoninList[0] && word.elkoninList[word.elkoninList.Count - 1] != correctWord.elkoninList[correctWord.elkoninCount - 1])
                 {
-                    finalCurrChallengeWords.Remove(word);
+                    finalIncorrectChallengeWords.Remove(word);
                 }
             }
 
-            if (finalCurrChallengeWords.Count < 2)
+            if (finalIncorrectChallengeWords.Count < 4)
             {
-                finalCurrChallengeWords.AddRange(filteredCurrChallengeWords);
+                finalIncorrectChallengeWords.Clear();
+                finalIncorrectChallengeWords.AddRange(filteredIncorrectChallengeWords);
             }
         }
 
         // Repeat selection process for the two incorrect words
-        /*for (int i = 0; i < 2; i++)
+        while (wordsToReturn.Count < 5)
+        {
+            int randIndex = Random.Range(0, finalIncorrectChallengeWords.Count);
+            wordsToReturn.Add(finalIncorrectChallengeWords[randIndex]);
+            finalIncorrectChallengeWords.Remove(finalIncorrectChallengeWords[randIndex]);
+
+            if (finalIncorrectChallengeWords.Count < 1)
+            {
+                finalIncorrectChallengeWords.AddRange(filteredCurrChallengeWords);
+            }
+        }
+
+        /*
+        for (int i = 0; i < 2; i++)
         {
             randNum = Random.Range(0f, 1f);
             if (randNum <= currentSectionPercent)

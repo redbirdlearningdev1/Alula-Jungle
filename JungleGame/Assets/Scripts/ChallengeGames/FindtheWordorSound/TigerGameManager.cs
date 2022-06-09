@@ -242,6 +242,19 @@ public class TigerGameManager : MonoBehaviour
             }
             scriptedEvent++;
         }
+        else if (GameManager.instance.practiceModeON)
+        {
+            currSet = AISystem.TigerPawPhotosCoinSelection(GameManager.instance.practicePhonemes);
+            word_pool = AISystem.ChallengeWordSelectionTigerPawPol(currSet, prevWords, GameManager.instance.practiceDifficulty, true);
+            prevWords.AddRange(word_pool);
+
+            for (int i = 0; i < polaroidC.Count; i++)
+            {
+                int randomIndex = Random.Range(0, word_pool.Count);
+                polaroidC[i].SetPolaroid(word_pool[randomIndex]);
+                word_pool.RemoveAt(randomIndex);
+            }
+        }
         else
         {
             currSet = AISystem.TigerPawPhotosCoinSelection();
@@ -472,7 +485,7 @@ public class TigerGameManager : MonoBehaviour
     {
 
         currPhoto.gameObject.transform.SetParent(selectedObjectParentCoin);
-    
+
         if (currPhoto.name == "Polaroid1")
         {
             StartCoroutine(LerpMoveObject(polaroidC[0].transform, PhotoPos1.position, .2f));
