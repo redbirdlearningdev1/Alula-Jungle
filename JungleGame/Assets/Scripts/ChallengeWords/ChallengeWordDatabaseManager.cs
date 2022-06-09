@@ -475,6 +475,10 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
                 return ElkoninValue.t;
             case "th":
                 return ElkoninValue.th;
+            case "u":
+                return ElkoninValue.u;
+            case "ew":
+                return ElkoninValue.ew;
             case "v":
                 return ElkoninValue.v;
             case "w":

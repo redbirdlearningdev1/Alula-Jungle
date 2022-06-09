@@ -24,6 +24,8 @@ public enum ConsonantEnum {
     sh,
     t,
     th,
+    u,
+    ew,
     v,
     w,
     x,

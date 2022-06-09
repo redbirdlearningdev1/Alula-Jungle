@@ -376,6 +376,10 @@ public static class ChallengeWordDatabase
                 return ConsonantEnum.t;
             case ElkoninValue.th:
                 return ConsonantEnum.th;
+            case ElkoninValue.u:
+                return ConsonantEnum.u;
+            case ElkoninValue.ew:
+                return ConsonantEnum.ew;
             case ElkoninValue.v:
                 return ConsonantEnum.v;
             case ElkoninValue.w:
