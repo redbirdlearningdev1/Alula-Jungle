@@ -424,7 +424,7 @@ public static class AISystem
           ActionWordEnum.gorilla, ActionWordEnum.sounds, ActionWordEnum.give };
 
         List<ActionWordEnum> set4 = new List<ActionWordEnum>()
-        { ActionWordEnum.backpack, ActionWordEnum.frustrating, ActionWordEnum.bumphead, ActionWordEnum.baby, ActionWordEnum.hit };
+        { ActionWordEnum.backpack, ActionWordEnum.frustrating, ActionWordEnum.bumphead, ActionWordEnum.baby }; //, ActionWordEnum.hit };
 
         List<ActionWordEnum> prevPhonemes = new List<ActionWordEnum>();
 
@@ -698,7 +698,7 @@ public static class AISystem
           ActionWordEnum.gorilla, ActionWordEnum.sounds, ActionWordEnum.give };
 
         List<ActionWordEnum> set4 = new List<ActionWordEnum>()
-        { ActionWordEnum.backpack, ActionWordEnum.frustrating, ActionWordEnum.bumphead, ActionWordEnum.baby, ActionWordEnum.hit };
+        { ActionWordEnum.backpack, ActionWordEnum.frustrating, ActionWordEnum.bumphead, ActionWordEnum.baby }; //, ActionWordEnum.hit };
 
         List<ActionWordEnum> prevPhonemes = new List<ActionWordEnum>();
 
@@ -827,7 +827,7 @@ public static class AISystem
           ActionWordEnum.gorilla, ActionWordEnum.sounds, ActionWordEnum.give };
 
         List<ActionWordEnum> set4 = new List<ActionWordEnum>()
-        { ActionWordEnum.backpack, ActionWordEnum.frustrating, ActionWordEnum.bumphead, ActionWordEnum.baby, ActionWordEnum.hit };
+        { ActionWordEnum.backpack, ActionWordEnum.frustrating, ActionWordEnum.bumphead, ActionWordEnum.baby }; //, ActionWordEnum.hit };
 
         List<ActionWordEnum> incorrectPhonemes = new List<ActionWordEnum>();
 
@@ -1027,7 +1027,7 @@ public static class AISystem
           ActionWordEnum.gorilla, ActionWordEnum.sounds, ActionWordEnum.give };
 
         List<ActionWordEnum> set4 = new List<ActionWordEnum>()
-        { ActionWordEnum.backpack, ActionWordEnum.frustrating, ActionWordEnum.bumphead, ActionWordEnum.baby, ActionWordEnum.hit };
+        { ActionWordEnum.backpack, ActionWordEnum.frustrating, ActionWordEnum.bumphead, ActionWordEnum.baby }; //, ActionWordEnum.hit };
 
         List<ActionWordEnum> prevPhonemes = new List<ActionWordEnum>();
 
@@ -1237,7 +1237,7 @@ public static class AISystem
         set4.Add(ActionWordEnum.frustrating);
         set4.Add(ActionWordEnum.bumphead);
         set4.Add(ActionWordEnum.baby);
-        set4.Add(ActionWordEnum.hit);
+        //set4.Add(ActionWordEnum.hit);
 
         set5.Add(ActionWordEnum.mudslide);
         set5.Add(ActionWordEnum.listen);
@@ -1259,7 +1259,7 @@ public static class AISystem
         set5.Add(ActionWordEnum.frustrating);
         set5.Add(ActionWordEnum.bumphead);
         set5.Add(ActionWordEnum.baby);
-        set4.Add(ActionWordEnum.hit);
+        //set5.Add(ActionWordEnum.hit);
 
         Selected.Add(Pold[0].set);
         set1.Remove(Pold[0].set);
@@ -1416,7 +1416,7 @@ public static class AISystem
         set4.Add(ActionWordEnum.frustrating);
         set4.Add(ActionWordEnum.bumphead);
         set4.Add(ActionWordEnum.baby);
-        set4.Add(ActionWordEnum.hit);
+        //set4.Add(ActionWordEnum.hit);
 
         set5.Add(ActionWordEnum.mudslide);
         set5.Add(ActionWordEnum.listen);
@@ -1438,7 +1438,7 @@ public static class AISystem
         set5.Add(ActionWordEnum.frustrating);
         set5.Add(ActionWordEnum.bumphead);
         set5.Add(ActionWordEnum.baby);
-        set4.Add(ActionWordEnum.hit);
+        //set5.Add(ActionWordEnum.hit);
 
 
         int EightyTwenty = Random.Range(1, 11);
@@ -1651,7 +1651,7 @@ public static class AISystem
         set4.Add(ActionWordEnum.frustrating);
         set4.Add(ActionWordEnum.bumphead);
         set4.Add(ActionWordEnum.baby);
-        set4.Add(ActionWordEnum.hit);
+        //set4.Add(ActionWordEnum.hit);
 
         set5.Add(ActionWordEnum.mudslide);
         set5.Add(ActionWordEnum.listen);
@@ -1673,7 +1673,7 @@ public static class AISystem
         set5.Add(ActionWordEnum.frustrating);
         set5.Add(ActionWordEnum.bumphead);
         set5.Add(ActionWordEnum.baby);
-        set4.Add(ActionWordEnum.hit);
+        //set5.Add(ActionWordEnum.hit);
 
 
         int EightyTwenty = Random.Range(1, 11);
@@ -1865,7 +1865,7 @@ public static class AISystem
         set4.Add(ActionWordEnum.frustrating);
         set4.Add(ActionWordEnum.bumphead);
         set4.Add(ActionWordEnum.baby);
-        set4.Add(ActionWordEnum.hit);
+        //set4.Add(ActionWordEnum.hit);
 
         set5.Add(ActionWordEnum.mudslide);
         set5.Add(ActionWordEnum.listen);
@@ -1887,7 +1887,7 @@ public static class AISystem
         set5.Add(ActionWordEnum.frustrating);
         set5.Add(ActionWordEnum.bumphead);
         set5.Add(ActionWordEnum.baby);
-        set4.Add(ActionWordEnum.hit);
+        //set5.Add(ActionWordEnum.hit);
 
 
         int EightyTwenty = Random.Range(1, 11);
