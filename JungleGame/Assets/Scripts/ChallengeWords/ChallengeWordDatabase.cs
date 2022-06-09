@@ -444,6 +444,8 @@ public static class ChallengeWordDatabase
                 return ActionWordEnum.bumphead;
             case ElkoninValue.baby:
                 return ActionWordEnum.baby;
+            case ElkoninValue.hit:
+                return ActionWordEnum.hit;
             default:
                 GameManager.instance.SendError("ChallengeWordDatabase", "invalid ElkoninValue to ActionWordEnum: " + value);
                 return ActionWordEnum._blank;
@@ -476,6 +478,7 @@ public static class ChallengeWordDatabase
             case ActionWordEnum.frustrating:return ElkoninValue.frustrating;
             case ActionWordEnum.bumphead:   return ElkoninValue.bumphead;
             case ActionWordEnum.baby:       return ElkoninValue.baby;
+            case ActionWordEnum.hit:        return ElkoninValue.hit;
         }
     }
 }
