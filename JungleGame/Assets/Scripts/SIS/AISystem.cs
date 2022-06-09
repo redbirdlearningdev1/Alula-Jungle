@@ -424,7 +424,7 @@ public static class AISystem
           ActionWordEnum.gorilla, ActionWordEnum.sounds, ActionWordEnum.give };
 
         List<ActionWordEnum> set4 = new List<ActionWordEnum>()
-        { ActionWordEnum.backpack, ActionWordEnum.frustrating, ActionWordEnum.bumphead, ActionWordEnum.baby };
+        { ActionWordEnum.backpack, ActionWordEnum.frustrating, ActionWordEnum.bumphead, ActionWordEnum.baby, ActionWordEnum.hit };
 
         List<ActionWordEnum> prevPhonemes = new List<ActionWordEnum>();
 
@@ -698,7 +698,7 @@ public static class AISystem
           ActionWordEnum.gorilla, ActionWordEnum.sounds, ActionWordEnum.give };
 
         List<ActionWordEnum> set4 = new List<ActionWordEnum>()
-        { ActionWordEnum.backpack, ActionWordEnum.frustrating, ActionWordEnum.bumphead, ActionWordEnum.baby };
+        { ActionWordEnum.backpack, ActionWordEnum.frustrating, ActionWordEnum.bumphead, ActionWordEnum.baby, ActionWordEnum.hit };
 
         List<ActionWordEnum> prevPhonemes = new List<ActionWordEnum>();
 
@@ -827,7 +827,7 @@ public static class AISystem
           ActionWordEnum.gorilla, ActionWordEnum.sounds, ActionWordEnum.give };
 
         List<ActionWordEnum> set4 = new List<ActionWordEnum>()
-        { ActionWordEnum.backpack, ActionWordEnum.frustrating, ActionWordEnum.bumphead, ActionWordEnum.baby };
+        { ActionWordEnum.backpack, ActionWordEnum.frustrating, ActionWordEnum.bumphead, ActionWordEnum.baby, ActionWordEnum.hit };
 
         List<ActionWordEnum> incorrectPhonemes = new List<ActionWordEnum>();
 
@@ -993,407 +993,7 @@ public static class AISystem
             }
         }
 
-        /*
-        for (int i = 0; i < 2; i++)
-        {
-            randNum = Random.Range(0f, 1f);
-            if (randNum <= currentSectionPercent)
-            {
-                //Debug.Log("CurrCountBeforeRemove("+i+"): " + finalCurrChallengeWords.Count);
-                int randIndex = Random.Range(0, finalCurrChallengeWords.Count);
-                wordsToReturn.Add(finalCurrChallengeWords[randIndex]);
-                if (finalPrevChallengeWords.Contains(finalCurrChallengeWords[randIndex]))
-                {
-                    finalPrevChallengeWords.Remove(finalCurrChallengeWords[randIndex]);
-                }
-                finalCurrChallengeWords.Remove(finalCurrChallengeWords[randIndex]);
-                //Debug.Log("CurrCountAfterRemove("+i+"): " + finalCurrChallengeWords.Count);
-            }
-            else
-            {
-                int randIndex = Random.Range(0, finalPrevChallengeWords.Count);
-                wordsToReturn.Add(finalPrevChallengeWords[randIndex]);
-                if (finalCurrChallengeWords.Contains(finalPrevChallengeWords[randIndex]))
-                {
-                    finalCurrChallengeWords.Remove(finalPrevChallengeWords[randIndex]);
-                }
-                finalPrevChallengeWords.Remove(finalPrevChallengeWords[randIndex]);
-            }
-        }*/
-
         return wordsToReturn;
-
-
-        /*
-        StudentPlayerData playerData = StudentInfoSystem.GetCurrentProfile();
-
-        List<ChallengeWord> allGlobalWordList = new List<ChallengeWord>();
-        List<ChallengeWord> coinGlobalWordList = new List<ChallengeWord>();
-
-        List<ChallengeWord> CurrentChallengeList = new List<ChallengeWord>();
-
-        List<ActionWordEnum> set1 = new List<ActionWordEnum>();
-        List<ActionWordEnum> set2 = new List<ActionWordEnum>();
-        List<ActionWordEnum> set3 = new List<ActionWordEnum>();
-        List<ActionWordEnum> set4 = new List<ActionWordEnum>();
-        List<ActionWordEnum> set5 = new List<ActionWordEnum>();
-
-        set1.Add(ActionWordEnum.mudslide);
-        set1.Add(ActionWordEnum.listen);
-        set1.Add(ActionWordEnum.poop);
-        set1.Add(ActionWordEnum.orcs);
-        set1.Add(ActionWordEnum.think);
-        set1.Add(ActionWordEnum.explorer);
-
-        set2.Add(ActionWordEnum.hello);
-        set2.Add(ActionWordEnum.spider);
-        set2.Add(ActionWordEnum.scared);
-        set2.Add(ActionWordEnum.thatguy);
-
-        set3.Add(ActionWordEnum.choice);
-        set3.Add(ActionWordEnum.strongwind);
-        set3.Add(ActionWordEnum.pirate);
-        set3.Add(ActionWordEnum.gorilla);
-        set3.Add(ActionWordEnum.sounds);
-        set3.Add(ActionWordEnum.give);
-
-        set4.Add(ActionWordEnum.backpack);
-        set4.Add(ActionWordEnum.frustrating);
-        set4.Add(ActionWordEnum.bumphead);
-        set4.Add(ActionWordEnum.baby);
-
-        set5.Add(ActionWordEnum.mudslide);
-        set5.Add(ActionWordEnum.listen);
-        set5.Add(ActionWordEnum.poop);
-        set5.Add(ActionWordEnum.orcs);
-        set5.Add(ActionWordEnum.think);
-        set5.Add(ActionWordEnum.hello);
-        set5.Add(ActionWordEnum.spider);
-        set5.Add(ActionWordEnum.scared);
-        set5.Add(ActionWordEnum.explorer);
-        set5.Add(ActionWordEnum.thatguy);
-        set5.Add(ActionWordEnum.choice);
-        set5.Add(ActionWordEnum.strongwind);
-        set5.Add(ActionWordEnum.pirate);
-        set5.Add(ActionWordEnum.gorilla);
-        set5.Add(ActionWordEnum.sounds);
-        set5.Add(ActionWordEnum.give);
-        set5.Add(ActionWordEnum.backpack);
-        set5.Add(ActionWordEnum.frustrating);
-        set5.Add(ActionWordEnum.bumphead);
-        set5.Add(ActionWordEnum.baby);
-
-        set5.Remove(coin);
-
-        allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
-
-        List<ActionWordEnum> coinList = new List<ActionWordEnum>();
-        coinList.Add(coin);
-        coinGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(coinList));
-
-        int index = Random.Range(0, coinGlobalWordList.Count);
-        ChallengeWord word = coinGlobalWordList[index];
-        for (int i = 0; i < 2; i++)
-        {
-            index = Random.Range(0, coinGlobalWordList.Count);
-            word = coinGlobalWordList[index];
-            if (playerData.starsTPawPol < 9)
-            {
-                try
-                {
-                    while (word.elkoninCount != 2)
-                    {
-                        int randIndex = Random.Range(0, coinGlobalWordList.Count);
-                        word = coinGlobalWordList[randIndex];
-                        coinGlobalWordList.Remove(word);
-                    }
-                }
-                catch
-                {
-                    // re-add words to list if size is reduced to 0
-                    if (coinGlobalWordList.Count == 0)
-                        coinGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(coinList));
-
-                    int randIndex = Random.Range(0, coinGlobalWordList.Count);
-                    word = coinGlobalWordList[randIndex];
-                    coinGlobalWordList.Remove(word);
-
-                    // re-add words to list if size is reduced to 0
-                    if (coinGlobalWordList.Count == 0)
-                        coinGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(coinList));
-                }
-            }
-            else if (playerData.starsTPawPol < 18)
-            {
-                try
-                {
-                    while (word.elkoninCount != 3)
-                    {
-                        int randIndex = Random.Range(0, coinGlobalWordList.Count);
-                        word = coinGlobalWordList[randIndex];
-                        coinGlobalWordList.Remove(word);
-                    }
-                }
-                catch
-                {
-                    // re-add words to list if size is reduced to 0
-                    if (coinGlobalWordList.Count == 0)
-                        coinGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(coinList));
-
-                    int randIndex = Random.Range(0, coinGlobalWordList.Count);
-                    word = coinGlobalWordList[randIndex];
-                    coinGlobalWordList.Remove(word);
-
-                    // re-add words to list if size is reduced to 0
-                    if (coinGlobalWordList.Count == 0)
-                        coinGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(coinList));
-                }
-            }
-            else if (playerData.starsTPawPol < 36)
-            {
-                try
-                {
-                    while (word.elkoninCount < 4)
-                    {
-                        int randIndex = Random.Range(0, coinGlobalWordList.Count);
-                        word = coinGlobalWordList[randIndex];
-                        coinGlobalWordList.Remove(word);
-                    }
-                }
-                catch
-                {
-                    // re-add words to list if size is reduced to 0
-                    if (coinGlobalWordList.Count == 0)
-                        coinGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(coinList));
-
-                    int randIndex = Random.Range(0, coinGlobalWordList.Count);
-                    word = coinGlobalWordList[randIndex];
-                    coinGlobalWordList.Remove(word);
-
-                    // re-add words to list if size is reduced to 0
-                    if (coinGlobalWordList.Count == 0)
-                        coinGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(coinList));
-                }
-            }
-            else
-            {
-                int randIndex = Random.Range(0, coinGlobalWordList.Count);
-                word = coinGlobalWordList[randIndex];
-                coinGlobalWordList.Remove(word);
-
-                // re-add words to list if size is reduced to 0
-                if (coinGlobalWordList.Count == 0)
-                    coinGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(coinList));
-            }
-
-            coinGlobalWordList.Remove(word);
-
-            // re-add words to list if size is reduced to 0
-            if (coinGlobalWordList.Count == 0)
-                coinGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(coinList));
-
-            CurrentChallengeList.Add(word);
-            index = Random.Range(0, coinGlobalWordList.Count);
-            word = coinGlobalWordList[index];
-        }
-
-
-        for (int i = 0; i < 3; i++)
-        {
-            index = Random.Range(0, allGlobalWordList.Count);
-            ChallengeWord falseWord = allGlobalWordList[index];
-            if (playerData.starsTPawPol < 9)
-            {
-                try
-                {
-                    while (falseWord.elkoninCount != 2)
-                    {
-
-                        int randIndex = Random.Range(0, allGlobalWordList.Count);
-                        falseWord = allGlobalWordList[randIndex];
-                        allGlobalWordList.Remove(falseWord);
-                    }
-                }
-                catch
-                {
-                    // re-add words to list if size is reduced to 0
-                    if (allGlobalWordList.Count == 0)
-                        allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
-
-                    int randIndex = Random.Range(0, allGlobalWordList.Count);
-                    falseWord = allGlobalWordList[randIndex];
-                    allGlobalWordList.Remove(falseWord);
-
-                    // re-add words to list if size is reduced to 0
-                    if (allGlobalWordList.Count == 0)
-                        allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
-                }
-            }
-            else if (playerData.starsTPawPol < 15)
-            {
-                try
-                {
-                    while (falseWord.elkoninCount != 2 && (CurrentChallengeList[0].elkoninList[0] == falseWord.elkoninList[0] || CurrentChallengeList[0].elkoninList[CurrentChallengeList[0].elkoninCount] == falseWord.elkoninList[falseWord.elkoninCount]))
-                    {
-                        int randIndex = Random.Range(0, allGlobalWordList.Count);
-                        falseWord = allGlobalWordList[randIndex];
-                        allGlobalWordList.Remove(falseWord);
-                    }
-                }
-                catch
-                {
-                    // re-add words to list if size is reduced to 0
-                    if (allGlobalWordList.Count == 0)
-                        allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
-
-                    int randIndex = Random.Range(0, allGlobalWordList.Count);
-                    falseWord = allGlobalWordList[randIndex];
-                    allGlobalWordList.Remove(falseWord);
-
-                    // re-add words to list if size is reduced to 0
-                    if (allGlobalWordList.Count == 0)
-                        allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
-                }
-            }
-            else if (playerData.starsTPawPol < 18)
-            {
-                try
-                {
-                    while (falseWord.elkoninCount != 3)
-                    {
-
-                        int randIndex = Random.Range(0, allGlobalWordList.Count);
-                        falseWord = allGlobalWordList[randIndex];
-                        allGlobalWordList.Remove(falseWord);
-                    }
-                }
-                catch
-                {
-                    // re-add words to list if size is reduced to 0
-                    if (allGlobalWordList.Count == 0)
-                        allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
-
-                    int randIndex = Random.Range(0, allGlobalWordList.Count);
-                    falseWord = allGlobalWordList[randIndex];
-                    allGlobalWordList.Remove(falseWord);
-
-                    // re-add words to list if size is reduced to 0
-                    if (allGlobalWordList.Count == 0)
-                        allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
-                }
-            }
-            else if (playerData.starsTPawPol < 21)
-            {
-                try
-                {
-                    while (falseWord.elkoninCount != 3 && (CurrentChallengeList[0].elkoninList[0] == falseWord.elkoninList[0] || CurrentChallengeList[0].elkoninList[CurrentChallengeList[0].elkoninCount] == falseWord.elkoninList[falseWord.elkoninCount]))
-                    {
-                        int randIndex = Random.Range(0, allGlobalWordList.Count);
-                        falseWord = allGlobalWordList[randIndex];
-                        allGlobalWordList.Remove(falseWord);
-                    }
-                }
-                catch
-                {
-                    // re-add words to list if size is reduced to 0
-                    if (allGlobalWordList.Count == 0)
-                        allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
-
-                    int randIndex = Random.Range(0, allGlobalWordList.Count);
-                    falseWord = allGlobalWordList[randIndex];
-                    allGlobalWordList.Remove(falseWord);
-
-                    // re-add words to list if size is reduced to 0
-                    if (allGlobalWordList.Count == 0)
-                        allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
-                }
-            }
-            else if (playerData.starsTPawPol < 24)
-            {
-                try
-                {
-                    while (falseWord.elkoninCount < 4)
-                    {
-                        int randIndex = Random.Range(0, allGlobalWordList.Count);
-                        falseWord = allGlobalWordList[randIndex];
-                        allGlobalWordList.Remove(falseWord);
-                    }
-                }
-                catch
-                {
-                    // re-add words to list if size is reduced to 0
-                    if (allGlobalWordList.Count == 0)
-                        allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
-
-                    int randIndex = Random.Range(0, allGlobalWordList.Count);
-                    falseWord = allGlobalWordList[randIndex];
-                    allGlobalWordList.Remove(falseWord);
-
-                    // re-add words to list if size is reduced to 0
-                    if (allGlobalWordList.Count == 0)
-                        allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
-                }
-            }
-            else if (playerData.starsTPawPol < 36)
-            {
-                try
-                {
-                    while (falseWord.elkoninCount < 4 && (CurrentChallengeList[0].elkoninList[0] == falseWord.elkoninList[0] || CurrentChallengeList[0].elkoninList[CurrentChallengeList[0].elkoninCount] == falseWord.elkoninList[falseWord.elkoninCount]))
-                    {
-                        int randIndex = Random.Range(0, allGlobalWordList.Count);
-                        falseWord = allGlobalWordList[randIndex];
-                        allGlobalWordList.Remove(falseWord);
-                    }
-                }
-                catch
-                {
-                    // re-add words to list if size is reduced to 0
-                    if (allGlobalWordList.Count == 0)
-                        allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
-
-                    int randIndex = Random.Range(0, allGlobalWordList.Count);
-                    falseWord = allGlobalWordList[randIndex];
-                    allGlobalWordList.Remove(falseWord);
-
-                    // re-add words to list if size is reduced to 0
-                    if (allGlobalWordList.Count == 0)
-                        allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
-                }
-            }
-            else
-            {
-                int randIndex = Random.Range(0, allGlobalWordList.Count);
-                falseWord = allGlobalWordList[randIndex];
-                allGlobalWordList.Remove(falseWord);
-
-                // re-add words to list if size is reduced to 0
-                if (allGlobalWordList.Count == 0)
-                    allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
-            }
-
-            CurrentChallengeList.Add(falseWord);
-            allGlobalWordList.Remove(falseWord);
-
-            // re-add words to list if size is reduced to 0
-            if (allGlobalWordList.Count == 0)
-                allGlobalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(set5));
-        }
-
-
-        // remove exclude words if list is not null
-        if (excludeWords != null)
-        {
-            foreach (ChallengeWord excludeWord in excludeWords)
-            {
-                if (CurrentChallengeList.Contains(excludeWord) && CurrentChallengeList.Count > 5)
-                {
-                    CurrentChallengeList.Remove(excludeWord);
-                }
-            }
-        }
-
-        return CurrentChallengeList;
-        */
     }
 
     public static List<ChallengeWord> ChallengeWordSelectionTigerPawCoin(List<ChallengeWord> excludeWords = null, int difficultyLevel = -1, List<ActionWordEnum> phonemes = null)
@@ -1427,7 +1027,7 @@ public static class AISystem
           ActionWordEnum.gorilla, ActionWordEnum.sounds, ActionWordEnum.give };
 
         List<ActionWordEnum> set4 = new List<ActionWordEnum>()
-        { ActionWordEnum.backpack, ActionWordEnum.frustrating, ActionWordEnum.bumphead, ActionWordEnum.baby };
+        { ActionWordEnum.backpack, ActionWordEnum.frustrating, ActionWordEnum.bumphead, ActionWordEnum.baby, ActionWordEnum.hit };
 
         List<ActionWordEnum> prevPhonemes = new List<ActionWordEnum>();
 
@@ -1637,6 +1237,7 @@ public static class AISystem
         set4.Add(ActionWordEnum.frustrating);
         set4.Add(ActionWordEnum.bumphead);
         set4.Add(ActionWordEnum.baby);
+        set4.Add(ActionWordEnum.hit);
 
         set5.Add(ActionWordEnum.mudslide);
         set5.Add(ActionWordEnum.listen);
@@ -1658,6 +1259,7 @@ public static class AISystem
         set5.Add(ActionWordEnum.frustrating);
         set5.Add(ActionWordEnum.bumphead);
         set5.Add(ActionWordEnum.baby);
+        set4.Add(ActionWordEnum.hit);
 
         Selected.Add(Pold[0].set);
         set1.Remove(Pold[0].set);
@@ -1814,6 +1416,7 @@ public static class AISystem
         set4.Add(ActionWordEnum.frustrating);
         set4.Add(ActionWordEnum.bumphead);
         set4.Add(ActionWordEnum.baby);
+        set4.Add(ActionWordEnum.hit);
 
         set5.Add(ActionWordEnum.mudslide);
         set5.Add(ActionWordEnum.listen);
@@ -1835,6 +1438,7 @@ public static class AISystem
         set5.Add(ActionWordEnum.frustrating);
         set5.Add(ActionWordEnum.bumphead);
         set5.Add(ActionWordEnum.baby);
+        set4.Add(ActionWordEnum.hit);
 
 
         int EightyTwenty = Random.Range(1, 11);
@@ -2047,6 +1651,7 @@ public static class AISystem
         set4.Add(ActionWordEnum.frustrating);
         set4.Add(ActionWordEnum.bumphead);
         set4.Add(ActionWordEnum.baby);
+        set4.Add(ActionWordEnum.hit);
 
         set5.Add(ActionWordEnum.mudslide);
         set5.Add(ActionWordEnum.listen);
@@ -2068,6 +1673,7 @@ public static class AISystem
         set5.Add(ActionWordEnum.frustrating);
         set5.Add(ActionWordEnum.bumphead);
         set5.Add(ActionWordEnum.baby);
+        set4.Add(ActionWordEnum.hit);
 
 
         int EightyTwenty = Random.Range(1, 11);
@@ -2259,6 +1865,7 @@ public static class AISystem
         set4.Add(ActionWordEnum.frustrating);
         set4.Add(ActionWordEnum.bumphead);
         set4.Add(ActionWordEnum.baby);
+        set4.Add(ActionWordEnum.hit);
 
         set5.Add(ActionWordEnum.mudslide);
         set5.Add(ActionWordEnum.listen);
@@ -2280,6 +1887,7 @@ public static class AISystem
         set5.Add(ActionWordEnum.frustrating);
         set5.Add(ActionWordEnum.bumphead);
         set5.Add(ActionWordEnum.baby);
+        set4.Add(ActionWordEnum.hit);
 
 
         int EightyTwenty = Random.Range(1, 11);
