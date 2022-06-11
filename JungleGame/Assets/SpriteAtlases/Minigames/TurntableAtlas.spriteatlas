@@ -68,7 +68,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 61d5bb37fd06e9648863fec902e6c61b, type: 3}
-    totalSpriteSurfaceArea: 92070868
+    totalSpriteSurfaceArea: 92273301
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -212,6 +212,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0b60ed449dc2540418a63584411b0834, type: 3}
   - {fileID: 21300000, guid: dadb265440ea56443a7cd38ba7a827c7, type: 3}
   - {fileID: 21300000, guid: de13c26479e02ee40b0791b9ae6e1e31, type: 3}
+  - {fileID: 21300000, guid: 4c73d964445890046b3c25e2f1704dde, type: 3}
   - {fileID: 21300000, guid: 7c629a6435e431442b3ece6cb9c0ff86, type: 3}
   - {fileID: 21300000, guid: c6c9ee64bf540fb408d2154b05f0a723, type: 3}
   - {fileID: 21300000, guid: f1bd2274217e658488d7b0988984587e, type: 3}
@@ -369,6 +370,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 8d70aef97b67e9c4a831e54068721515, type: 3}
   - {fileID: 21300000, guid: 98b3aef9e819f1d44be1ad6d3ec33616, type: 3}
   - {fileID: 21300000, guid: 0585220a635c3c34186ec46ba8276763, type: 3}
+  - {fileID: 21300000, guid: c7ac7c0a07b22984fa87d6b5261999fe, type: 3}
   - {fileID: 21300000, guid: 1398201aa2ff3e94d8bf796012c4abc7, type: 3}
   - {fileID: 21300000, guid: 41e8952a9ef6c404094925615be85865, type: 3}
   - {fileID: 21300000, guid: 5380472a13839f14eb244d86b71c0906, type: 3}
@@ -432,6 +434,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9c4d451c2b5b6554483bb8a9702ea657, type: 3}
   - {fileID: 21300000, guid: c12e202c4177f344bafa218e66603d6a, type: 3}
   - {fileID: 21300000, guid: 3645d42cdf19bdb4387a85a3408508a9, type: 3}
+  - {fileID: 21300000, guid: a4ad5d2c93ee44b4a835b2c80d4ebe78, type: 3}
   - {fileID: 21300000, guid: 7638d34c1db39b847919884ec6d85839, type: 3}
   - {fileID: 21300000, guid: 23e0e74cc4c0a5c4c802e05396e7067a, type: 3}
   - {fileID: 21300000, guid: ae006e4cb82c6dd40a5a26d0fa95f241, type: 3}
@@ -678,6 +681,7 @@ SpriteAtlas:
   - door2
   - k3LastMove06
   - k2LastMove07
+  - hit_tile
   - k1FirstMove01
   - k1AudioPlay01
   - k2LastMove01
@@ -835,6 +839,7 @@ SpriteAtlas:
   - k4LastMove02
   - k1LastMove00
   - k1LastMove01
+  - hit_frameicon
   - orcs_centerDoor
   - k1AudioPlay04
   - k1LastMove12
@@ -898,6 +903,7 @@ SpriteAtlas:
   - k3LastMove10
   - k1LastMove02
   - k4LastMove11
+  - hit_centerDoor
   - k3LastMove09
   - k3LastMove12
   - k3LastMove08

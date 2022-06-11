@@ -1740,7 +1740,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: learning
+  m_Text: average
 --- !u!222 &227653560
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4710,6 +4710,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -787.12384
+      objectReference: {fileID: 0}
+    - target: {fileID: 2899004337788819909, guid: d28125f2c69703845bae5a93a83bd1b1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3268676270995648299, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -10320,9 +10325,9 @@ MonoBehaviour:
   storyBeatDropdown: {fileID: 682624025}
   fastTalkieToggle: {fileID: 0}
   profileInput: {fileID: 676611698}
-  simulationScreen: {fileID: 0}
-  numGamesField: {fileID: 0}
-  fullGameCheckmarkImage: {fileID: 0}
+  simulationScreen: {fileID: 1377961842}
+  numGamesField: {fileID: 1226468195}
+  fullGameCheckmarkImage: {fileID: 120852818}
   useFullGameSim: 1
 --- !u!4 &1239563238
 Transform:
@@ -11828,7 +11833,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &1377961842
 GameObject:
   m_ObjectHideFlags: 0
@@ -14699,12 +14704,12 @@ GameObject:
   - component: {fileID: 1676964866}
   - component: {fileID: 1676964867}
   m_Layer: 5
-  m_Name: LearningToggle
+  m_Name: AverageToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1676964866
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14785,7 +14790,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!1 &1692522044
 GameObject:
   m_ObjectHideFlags: 0

@@ -116,12 +116,12 @@ public static class LoadSaveSystem
         new_data.starsPirate = 0;
         new_data.starsSpiderweb = 0;
 
-        new_data.totalStarsFrogger = 0;
-        new_data.totalStarsSeashell = 0;
-        new_data.totalStarsRummage = 0;
-        new_data.totalStarsTurntables = 0;
-        new_data.totalStarsPirate = 0;
-        new_data.totalStarsSpiderweb = 0;
+        new_data.froggerPlayed = 0;
+        new_data.seashellPlayed = 0;
+        new_data.rummagePlayed = 0;
+        new_data.turntablesPlayed = 0;
+        new_data.piratePlayed = 0;
+        new_data.spiderwebPlayed = 0;
         
         new_data.profileAvatar = 11;
 
@@ -156,6 +156,7 @@ public static class LoadSaveSystem
         new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.frustrating, ElkoninValue.frustrating));
         new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.bumphead, ElkoninValue.bumphead));
         new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.baby, ElkoninValue.baby));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.hit, ElkoninValue.hit));
 
         // coins
         new_data.goldCoins = default_gold_coins;

@@ -452,7 +452,7 @@ public class SeaShellGameManager : MonoBehaviour
         playerData.gameBeforeLastPlayed = playerData.lastGamePlayed;
         playerData.lastGamePlayed = GameType.SeashellGame;
         playerData.starsSeashell = CalculateStars() + playerData.starsSeashell;
-        playerData.totalStarsSeashell = 3 + playerData.totalStarsSeashell;
+        playerData.seashellPlayed++;
 
         // save to SIS
         StudentInfoSystem.SaveStudentPlayerData();

@@ -68,7 +68,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 427c03bdbb5c2b247aebf2ff9ef44bb5, type: 3}
-    totalSpriteSurfaceArea: 854971
+    totalSpriteSurfaceArea: 859067
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -94,6 +94,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: a663c3fb9f3e51f42a9ee5ce33833f80, type: 3}
   - {fileID: 21300000, guid: beac221c5ad9da845940d7cfa3c6fe67, type: 3}
   - {fileID: 21300000, guid: 010f15acfbf031b4a999d9d32060e93a, type: 3}
+  - {fileID: 21300000, guid: ab2e5dbc6aa19c147b6590e04631b6fa, type: 3}
   - {fileID: 21300000, guid: cfd9208daeeb1aa47b922421a7018d84, type: 3}
   - {fileID: 21300000, guid: 7b09bb6e5134755409eb52699fada82d, type: 3}
   - {fileID: 21300000, guid: 66f3dbaea4691d8479439cf75545a446, type: 3}
@@ -125,6 +126,7 @@ SpriteAtlas:
   - juliusParticle_2
   - celesteParticle_2
   - darwinParticle_2
+  - sand_particle
   - celesteParticle_1
   - wallyParticle
   - redParticle

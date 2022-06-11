@@ -340,6 +340,30 @@ public class WordFactoryBlendingManager : MonoBehaviour
             currentWord = currentWords[correctIndex];
             currentPolaroid = polaroids[correctIndex];
         }
+        else if (GameManager.instance.practiceModeON)
+        {
+            // use AI word selection
+            List<ChallengeWord> tempChallengeWordList = new List<ChallengeWord>();
+            tempChallengeWordList = AISystem.ChallengeWordSelectionBlending(prevWords, GameManager.instance.practiceDifficulty, GameManager.instance.practicePhonemes);
+            ChallengeWord correctWord = tempChallengeWordList[0];
+            ChallengeWord incorrectWord1 = tempChallengeWordList[1];
+            ChallengeWord incorrectWord2 = tempChallengeWordList[2];
+
+            // set prev words
+            prevWords.Add(correctWord);
+            prevWords.Add(incorrectWord1);
+            prevWords.Add(incorrectWord2);
+
+            foreach (var polaroid in polaroids)
+            {
+                int randIndex = Random.Range(0, tempChallengeWordList.Count);
+                polaroid.SetPolaroid(tempChallengeWordList[randIndex]);
+                currentWords.Add(tempChallengeWordList[randIndex]);
+                tempChallengeWordList.RemoveAt(randIndex);
+            }
+            currentWord = correctWord;
+            currentPolaroid = polaroids[correctIndex];
+        }
         else
         {
             // use AI word selection
@@ -621,7 +645,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
             StartCoroutine(WinGameRoutine());
             yield break;
         }
-            
+
         // tutorial stuff
         if (playTutorial && tutorialEvent == 1)
         {

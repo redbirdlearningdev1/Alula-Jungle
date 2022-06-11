@@ -361,7 +361,7 @@ public class NewSpiderGameManager : MonoBehaviour
         playerData.gameBeforeLastPlayed = playerData.lastGamePlayed;
         playerData.lastGamePlayed = GameType.SpiderwebGame;
         playerData.starsSpiderweb = CalculateStars() + playerData.starsSpiderweb;
-        playerData.totalStarsSpiderweb = 3 + playerData.totalStarsSpiderweb;
+        playerData.spiderwebPlayed++;
 
         // save to SIS
         StudentInfoSystem.SaveStudentPlayerData();

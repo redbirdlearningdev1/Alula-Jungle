@@ -28,6 +28,7 @@ public enum ActionWordEnum {
     frustrating,
     bumphead,
     baby,
+    hit,
     SIZE
 }
 
@@ -35,7 +36,6 @@ public enum ActionWordEnum {
 public class ActionWord : GameWord
 {
     public ActionWordEnum _enum;
-
     // turntables game
     public Sprite doorIcon;
     public Sprite frameIcon;

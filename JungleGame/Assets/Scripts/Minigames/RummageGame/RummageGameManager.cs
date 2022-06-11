@@ -699,7 +699,7 @@ public class RummageGameManager : MonoBehaviour
         playerData.gameBeforeLastPlayed = playerData.lastGamePlayed;
         playerData.lastGamePlayed = GameType.RummageGame;
         playerData.starsRummage = CalculateStars() + playerData.starsRummage;
-        playerData.totalStarsRummage = 3 + playerData.totalStarsRummage;
+        playerData.rummagePlayed++;
 
         // save to SIS
         StudentInfoSystem.SaveStudentPlayerData();

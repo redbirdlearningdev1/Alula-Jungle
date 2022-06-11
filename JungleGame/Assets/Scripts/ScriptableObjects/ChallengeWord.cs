@@ -33,6 +33,7 @@ public enum ElkoninValue
     frustrating,
     bumphead,
     baby,
+    hit,
 
     // consonants
     b,
@@ -54,6 +55,8 @@ public enum ElkoninValue
     sh,
     t,
     th,
+    u,
+    ew,
     v,
     w,
     x,
