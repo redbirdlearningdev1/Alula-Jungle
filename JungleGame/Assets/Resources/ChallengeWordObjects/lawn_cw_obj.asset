@@ -17,7 +17,8 @@ MonoBehaviour:
     m_AssetGUID: 3194c44c9d953e0468ae67f482e01786
     m_SubObjectName: 
     m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 17508d89a8dbaa34d8a8c4c3a9a7083a, type: 3}
-  elkoninList: 1f0000001500000021000000000000000000000000000000
+  elkoninList: 200000001500000022000000000000000000000000000000
   elkoninCount: 3
   set: 20

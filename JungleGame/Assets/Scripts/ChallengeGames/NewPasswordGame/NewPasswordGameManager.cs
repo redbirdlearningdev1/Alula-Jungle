@@ -154,6 +154,13 @@ public class NewPasswordGameManager : MonoBehaviour
             }
             tutorialEvent++;
         }
+        else if (GameManager.instance.practiceModeON)
+        {
+            List<ChallengeWord> ChallengeWordList = new List<ChallengeWord>();
+            ChallengeWordList = AISystem.ChallengeWordPassword(prevWords, GameManager.instance.practicePhonemes, GameManager.instance.practiceDifficulty);
+            currentWord = ChallengeWordList[0];
+            prevWords.Add(currentWord);
+        }
         else
         {
             List<ChallengeWord> ChallengeWordList = new List<ChallengeWord>();
