@@ -18755,6 +18755,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e4ea53323c641a54b8f0c21216beb8ae
+    m_Address: Assets/Audio/ActionWordsAudio/Long Vowels/thatguy.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 728a44ae7ce96bd40b0f1c867a884d33
+    m_Address: Assets/Audio/UniversalAudio/fast_forward.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 36e446923fe0ce6489248e816bef7c49, type: 2}
   m_SchemaSet:
