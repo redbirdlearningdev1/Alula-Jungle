@@ -461,34 +461,36 @@ public class AudioManager : MonoBehaviour
 
     private IEnumerator LoadAndPlayTalk(AssetReference clipRef)//, string text)
     {
+        AsyncOperationHandle handle;
         if (clipRef.OperationHandle.IsValid())
         {
-            talkHandle = clipRef.OperationHandle;
+            handle = clipRef.OperationHandle;
         }
         else
         {
-            talkHandle = clipRef.LoadAssetAsync<AudioClip>();
+            handle = clipRef.LoadAssetAsync<AudioClip>();
         }
 
 
         //Debug.Log("Loading clip");
-        yield return talkHandle;
+        yield return handle;
         //Debug.Log("Finished loading clip");
 
 
-        AudioClip _clip = (AudioClip)talkHandle.Result;
+        AudioClip _clip = (AudioClip)handle.Result;
 
         talkSource.clip = _clip;
         talkSource.loop = false;
         talkSource.Play();
+        //talkHandle = handle;
 
 
         yield return new WaitForSeconds(_clip.length);
         
 
-        if (talkHandle.IsValid())
+        if (handle.IsValid())
         {
-            Addressables.Release(talkHandle);
+            Addressables.Release(handle);
         }
     }
 
