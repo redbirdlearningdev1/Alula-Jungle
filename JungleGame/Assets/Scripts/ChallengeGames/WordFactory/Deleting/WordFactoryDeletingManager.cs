@@ -122,10 +122,16 @@ public class WordFactoryDeletingManager : MonoBehaviour
             }
             tutorialEvent++;
         }
+        else if (GameManager.instance.practiceModeON)
+        {
+            // new pair
+            currentPair = AISystem.ChallengeWordBuildingDeleting(false, prevPairs, GameManager.instance.practicePhonemes, GameManager.instance.practiceDifficulty);
+            prevPairs.Add(currentPair);
+        }
         else
         {
             // new pair
-            currentPair = AISystem.ChallengeWordBuildingDeleting(prevPairs);
+            currentPair = AISystem.ChallengeWordBuildingDeleting(false, prevPairs);
             prevPairs.Add(currentPair);
         }
 

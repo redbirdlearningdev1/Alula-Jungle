@@ -17,6 +17,7 @@ MonoBehaviour:
     m_AssetGUID: acc4c3fe58ac17245a1c5f2e66b1ce9b
     m_SubObjectName: 
     m_SubObjectType: 
-  elkoninValue: 42
+    m_EditorAssetChanged: 0
+  elkoninValue: 45
   animation: wCoin
-  _enum: 21
+  _enum: 23
