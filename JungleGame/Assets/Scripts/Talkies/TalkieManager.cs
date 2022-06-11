@@ -157,7 +157,6 @@ public class TalkieManager : MonoBehaviour
     {
         if (!talkiePlaying)
         {
-            print ("talkie is not playing!");
             return;
         }
             
@@ -167,10 +166,6 @@ public class TalkieManager : MonoBehaviour
             GameManager.instance.SendLog(this, "skipping talkie");
             StopAllCoroutines();
             StartCoroutine(EndTalkie());
-        }
-        else
-        {
-            print ("talkie is already ending!");
         }
     }
 
