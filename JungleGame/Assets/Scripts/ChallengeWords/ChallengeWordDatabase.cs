@@ -334,7 +334,7 @@ public static class ChallengeWordDatabase
 
     public static ConsonantEnum ElkoninValueToConsonantEnum(ElkoninValue value)
     {
-        Debug.Log("Value: " + value);
+        //Debug.Log("Value: " + value);
         switch (value)
         {
             case ElkoninValue.empty_silver:

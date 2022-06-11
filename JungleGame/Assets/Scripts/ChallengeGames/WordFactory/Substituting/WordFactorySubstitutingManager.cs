@@ -275,6 +275,25 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             }
             tutorialEvent++;
         }
+        else if (GameManager.instance.practiceModeON)
+        {
+            // set polaroid challenge word
+            if (overrideWord)
+            {
+                currentPair = testObject;
+                currentWord = currentPair.word1;
+            }
+            else
+            {
+                // use AI word selection
+                currentPair = AISystem.ChallengeWordSub(prevPairs, GameManager.instance.practicePhonemes, GameManager.instance.practiceDifficulty);
+                currentWord = currentPair.word1;
+
+                // set prev words
+                prevPairs.Add(currentPair);
+            }
+
+        }
         else
         {
             // set polaroid challenge word

@@ -142,9 +142,14 @@ public class WordFactoryBuildingManager : MonoBehaviour
             }
             tutorialEvent++;
         }
+        else if (GameManager.instance.practiceModeON)
+        {
+            currentPair = AISystem.ChallengeWordBuildingDeleting(true, prevPairs, GameManager.instance.practicePhonemes, GameManager.instance.practiceDifficulty);
+            prevPairs.Add(currentPair);
+        }
         else
         {
-            currentPair = AISystem.ChallengeWordBuildingDeleting(prevPairs);
+            currentPair = AISystem.ChallengeWordBuildingDeleting(true, prevPairs);
             prevPairs.Add(currentPair);
         }
 
