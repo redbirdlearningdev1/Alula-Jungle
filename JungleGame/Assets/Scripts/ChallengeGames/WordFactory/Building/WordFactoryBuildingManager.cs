@@ -494,7 +494,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
 
         bool success = (coin.value == currentPair.word2.elkoninList[currentPair.index]);
         // only track challenge round attempt if not in tutorial AND not in practice mode
-        if (!playTutorial && !GameManager.instance.practiceModeON)
+        if (!playTutorial /*&& !GameManager.instance.practiceModeON */)
         {
             StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.WordFactoryBuilding, success, currentPair.word2, 0); //// TODO: add player difficulty once it is available
         }

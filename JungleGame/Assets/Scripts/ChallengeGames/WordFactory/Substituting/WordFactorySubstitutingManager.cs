@@ -823,7 +823,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
 
         bool success = (coin.value == currentTargetValue);
         // only track challenge round attempt if not in tutorial AND not in practice mode
-        if (!playTutorial && !GameManager.instance.practiceModeON)
+        if (!playTutorial /*&& !GameManager.instance.practiceModeON */)
         {
             StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.WordFactorySubstituting, success, currentTargetWord, 0); //// TODO: add player difficulty once it is available
         }

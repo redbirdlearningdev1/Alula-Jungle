@@ -425,7 +425,7 @@ public class NewPasswordGameManager : MonoBehaviour
 
         bool success = (currentWord.elkoninCount == PasswordTube.instance.tubeCoins.Count);
         // only track challenge round attempt if not in tutorial AND not in practice mode
-        if (!playTutorial && !GameManager.instance.practiceModeON)
+        if (!playTutorial /*&& !GameManager.instance.practiceModeON */)
         {
             StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.Password, success, currentWord, 0); //// TODO: add player difficulty once it is available
         }
