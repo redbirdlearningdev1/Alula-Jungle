@@ -482,7 +482,7 @@ public class AudioManager : MonoBehaviour
         talkSource.clip = _clip;
         talkSource.loop = false;
         talkSource.Play();
-        //talkHandle = handle;
+        talkHandle = handle;
 
 
         yield return new WaitForSeconds(_clip.length);

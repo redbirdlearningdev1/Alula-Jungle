@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: thatguy
   audio:
-    m_AssetGUID: 15cb2341965e3da40a2d8f4b785856ae
+    m_AssetGUID: e4ea53323c641a54b8f0c21216beb8ae
     m_SubObjectName: 
     m_SubObjectType: 
+    m_EditorAssetChanged: 0
   elkoninValue: 11
   animation: thatguy
   _enum: 10
