@@ -1441,7 +1441,7 @@ public static class AISystem
         else
         {
             elkoninValueMin = 5;
-            elkoninValueMax = 10;
+            elkoninValueMax = 6;
         }
 
         // If phonemes weren't specified in the function parameters, assign phoneme groups and previous phoneme groups based on chapter
