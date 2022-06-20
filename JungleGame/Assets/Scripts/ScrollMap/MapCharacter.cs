@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public enum Character
 {
-    None, Darwin, Julius, Marcus, Brutus, Clogg
+    None, Darwin, Julius, Marcus, Brutus, Clogg, TaxiBird
 }
 
 public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
@@ -127,6 +127,22 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 StudentInfoSystem.GetCurrentProfile().currStoryBeat != StoryBeat.OrcCampUnlocked)
             {
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("CloggQuips_1_p1"));
+                yield break;
+            }
+        }
+        else if (character == Character.TaxiBird)
+        {
+            if (!StudentInfoSystem.GetCurrentProfile().clickedTaxiBird)
+            {
+                StudentInfoSystem.GetCurrentProfile().clickedTaxiBird = true;
+                StudentInfoSystem.SaveStudentPlayerData();
+
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("Taxi_1_p1"));
+                yield break;
+            }
+            else
+            {
+                TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("Taxi_2_p1"));
                 yield break;
             }
         }
@@ -350,6 +366,65 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 yield break;
             }
         }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PreBossBattle)
+        {
+            // only continue if tapped on julius
+            if (character == Character.Julius)
+            {
+                // play pre boss battle
+                MapAnimationController.instance.PlayMapAnim(MapAnim.PreBossBattle);
+                // wait for animation to be done
+                while (!MapAnimationController.instance.animationDone)
+                    yield return null;
+
+                yield break;
+            }
+        }
+
+
+
+
+
+
+
+
+        /* 
+        ################################################
+        #   BOSS BATTLES
+        ################################################
+        */ 
+
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.BossBattle1)
+        {
+            // only continue if tapped on julius
+            if (character == Character.Julius)
+            {
+                MapAnimationController.instance.PlayBossBattleGame(MapAnim.BossBattle1);
+                yield break;
+            }
+        }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.BossBattle2)
+        {
+            // only continue if tapped on julius
+            if (character == Character.Julius)
+            {
+                MapAnimationController.instance.PlayBossBattleGame(MapAnim.BossBattle2);
+                yield break;
+            }
+        }
+        else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.BossBattle3)
+        {
+            // only continue if tapped on julius
+            if (character == Character.Julius)
+            {
+                MapAnimationController.instance.PlayBossBattleGame(MapAnim.BossBattle3);
+                yield break;
+            }
+        }
+
+
+
+        
 
 
 
@@ -376,10 +451,13 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         {
             if (character == Character.Julius)
             {
+                // remove exclamation mark
+                ShowExclamationMark(false);
+
                 // get current chapter
                 Chapter currChapter = StudentInfoSystem.GetCurrentProfile().currentChapter;
 
-                // play correct RR talkie based on current chapter
+                // play correct talkie based on current chapter
                 switch (currChapter)
                 {
                     case Chapter.chapter_0:
@@ -427,6 +505,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         {
             if (character == Character.Marcus)
             {
+                // remove exclamation mark
+                ShowExclamationMark(false);
 
                 // play marcus challenges
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaMarcus_1_p1"));
@@ -453,6 +533,9 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         {
             if (character == Character.Brutus)
             {
+                // remove exclamation mark
+                ShowExclamationMark(false);
+
                 // play brutus challenges
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaBrutus_1_p1"));
                 while (TalkieManager.instance.talkiePlaying)
@@ -472,6 +555,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             }
             else // if the player chooses no, break and do not go to next game scene
             {
+                // readd exclamation mark
+                ShowExclamationMark(true);
                 TalkieManager.instance.yesNoChoices.Clear();
                 yield break;
             }
@@ -488,6 +573,9 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
 
     public void GoToGameDataSceneImmediately(bool playingChallengeGame = false)
     {
+        // set prev map location
+        GameManager.instance.prevMapLocation = ScrollMapManager.instance.GetCurrentMapLocation();
+
         if (playingChallengeGame)
         {
             GameManager.instance.playingChallengeGame = true;

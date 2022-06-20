@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: drought_cw_obj
   m_EditorClassIdentifier: 
   word: drought
-  audio: {fileID: 8300000, guid: 135ece9558f461647a560580a7793b4c, type: 3}
+  audio:
+    m_AssetGUID: 135ece9558f461647a560580a7793b4c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 484af02168a441041a648a9a817dbde4, type: 3}
-  elkoninList: 190000002400000014000000270000000000000000000000
+  elkoninList: 1a0000002500000014000000280000000000000000000000
   elkoninCount: 4
   set: 19

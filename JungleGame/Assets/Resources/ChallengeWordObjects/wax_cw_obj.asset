@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: wax_cw_obj
   m_EditorClassIdentifier: 
   word: wax
-  audio: {fileID: 8300000, guid: a266da3a1d68ed741ac376ebd3cec64a, type: 3}
+  audio:
+    m_AssetGUID: a266da3a1d68ed741ac376ebd3cec64a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 6aaf06bcc477b9948bfe13c6e190f002, type: 3}
-  elkoninList: 2a000000020000002b000000000000000000000000000000
+  elkoninList: 2d000000020000002e000000000000000000000000000000
   elkoninCount: 3
   set: 1

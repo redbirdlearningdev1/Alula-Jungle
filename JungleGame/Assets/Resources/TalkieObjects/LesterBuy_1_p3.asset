@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: be81e9c1e5198bb409df3f8dc7f86870, type: 3}
+    audioClip:
+      m_AssetGUID: be81e9c1e5198bb409df3f8dc7f86870
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Sticker_0_1_Lester_9_T1
     audioString: 'Alright! '
   - endTalkieAfterThisSegment: 1
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 4490957e4c3731d4eb7df99f9cb8f87e, type: 3}
+    audioClip:
+      m_AssetGUID: 4490957e4c3731d4eb7df99f9cb8f87e
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Sticker_0_1_Lester_9_T2
     audioString: See you later!
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 571880801df538448a59470e096b13d6, type: 3}
+    audioClip:
+      m_AssetGUID: 571880801df538448a59470e096b13d6
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Sticker_0_1_Lester_10_T1
     audioString: 'No? '
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 4e0f49c44c3adb24fbd47cd3ac1db0cf, type: 3}
+    audioClip:
+      m_AssetGUID: 4e0f49c44c3adb24fbd47cd3ac1db0cf
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Sticker_0_1_Lester_10_T2
     audioString: Well alright Explorer!
   - endTalkieAfterThisSegment: 1
@@ -99,7 +115,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 0fc33a3e2ba727e41b7d420a870b301d, type: 3}
+    audioClip:
+      m_AssetGUID: 0fc33a3e2ba727e41b7d420a870b301d
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Sticker_0_1_Lester_10_T3
     audioString: "I\u2019ll be here when you decide to come back!"
   - endTalkieAfterThisSegment: 0
@@ -115,7 +135,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 47115acb42b13604c814b00c5a42f7d8, type: 3}
+    audioClip:
+      m_AssetGUID: 47115acb42b13604c814b00c5a42f7d8
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Sticker_0_1_Lester_11_T1
     audioString: 'That''s okay Explorer! '
   - endTalkieAfterThisSegment: 1
@@ -131,7 +155,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 95bf9968f7c88724c865802acdc74a69, type: 3}
+    audioClip:
+      m_AssetGUID: 95bf9968f7c88724c865802acdc74a69
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Sticker_0_1_Lester_11_T2
     audioString: "Come back when you\u2019re in need of a cute sticker ya hear!"
   - endTalkieAfterThisSegment: 0
@@ -147,7 +175,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 7e4caee214043fc4986aefdd3a9dfe4d, type: 3}
+    audioClip:
+      m_AssetGUID: 7e4caee214043fc4986aefdd3a9dfe4d
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Sticker_0_1_Lester_12_T1
     audioString: 'Aww drats! '
   - endTalkieAfterThisSegment: 0
@@ -163,7 +195,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: a502031f359cc064fb9855ba6acb5eaf, type: 3}
+    audioClip:
+      m_AssetGUID: a502031f359cc064fb9855ba6acb5eaf
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Sticker_0_1_Lester_12_T2
     audioString: 'Oh well. '
   - endTalkieAfterThisSegment: 1
@@ -179,6 +215,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 7ffe6ea3c61d271498d3282ecaabcb16, type: 3}
+    audioClip:
+      m_AssetGUID: 7ffe6ea3c61d271498d3282ecaabcb16
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Sticker_0_1_Lester_12_T3
     audioString: Maybe next time Explorer!

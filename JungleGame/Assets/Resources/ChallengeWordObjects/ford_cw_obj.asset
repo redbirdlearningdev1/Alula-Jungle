@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: ford_cw_obj
   m_EditorClassIdentifier: 
   word: ford
-  audio: {fileID: 8300000, guid: ac09e48d0d4b8ad49a74d2a5f63cd28c, type: 3}
+  audio:
+    m_AssetGUID: ac09e48d0d4b8ad49a74d2a5f63cd28c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 224913cef10628d49b7dece6e79166fe, type: 3}
-  elkoninList: 1a0000000c00000019000000000000000000000000000000
+  elkoninList: 1b0000000c0000001a000000000000000000000000000000
   elkoninCount: 3
   set: 11

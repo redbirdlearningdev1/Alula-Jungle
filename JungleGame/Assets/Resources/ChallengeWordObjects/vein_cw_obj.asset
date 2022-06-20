@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: vein_cw_obj
   m_EditorClassIdentifier: 
   word: vein
-  audio: {fileID: 8300000, guid: 91b867e07c884d649ae0b674184b7fbb, type: 3}
+  audio:
+    m_AssetGUID: 91b867e07c884d649ae0b674184b7fbb
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 8c70b1b3865e9b848b236a34de6fd8ab, type: 3}
-  elkoninList: 290000000700000021000000000000000000000000000000
+  elkoninList: 2c0000000700000022000000000000000000000000000000
   elkoninCount: 3
   set: 6

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -9,7 +10,7 @@ using UnityEditor;
 [System.Serializable]
 public struct TalkieDatabaseEntry
 {
-    public Sprite sprite;
+    public AssetReferenceAtlasedSprite sprite;
     public TalkieCharacter character;
     public int emotionNum;
     public TalkieMouth mouth;
@@ -20,11 +21,12 @@ public class TalkieDatabase : MonoBehaviour
 {
     public static TalkieDatabase instance;
     private const string talkie_object_folder = "TalkieObjects/";
+    private const string talkie_object_creation_folder = "Assets/Resources/TalkieObjects/";
 
-    /* s
-    ################################################
-    #   TALKIE SPRITES
-    ################################################
+    /*
+    //################################################
+    //#   TALKIE SPRITES
+    //################################################
     */
 
     [Header("Character Sprites")]
@@ -45,28 +47,28 @@ public class TalkieDatabase : MonoBehaviour
 
 
     [Header("Talkie Reaction Duplicates")]
-    public List<AudioClip> marcusLaughList;
-    public List<AudioClip> brutusLaughList;
-    public List<AudioClip> marcusArghList;
-    public List<AudioClip> marcusGrrList;
-    public List<AudioClip> brutusHehList;
+    public List<AssetReference> marcusLaughList;
+    public List<AssetReference> brutusLaughList;
+    public List<AssetReference> marcusArghList;
+    public List<AssetReference> marcusGrrList;
+    public List<AssetReference> brutusHehList;
 
-    public List<AudioClip> redWallyGaspList;
-    public List<AudioClip> redWallyWhatList;
-    public List<AudioClip> redWallyHuhList;
-    public List<AudioClip> redWallyOhList;
-    public List<AudioClip> redWallyDarwinList;
+    public List<AssetReference> redWallyGaspList;
+    public List<AssetReference> redWallyWhatList;
+    public List<AssetReference> redWallyHuhList;
+    public List<AssetReference> redWallyOhList;
+    public List<AssetReference> redWallyDarwinList;
 
-    public List<AudioClip> juliusHahaList;
-    public List<AudioClip> juliusAhHahList;
-    public List<AudioClip> juliusHrmList;
-    public List<AudioClip> juliusUghList;
-    public List<AudioClip> juliusGrrList;
+    public List<AssetReference> juliusHahaList;
+    public List<AssetReference> juliusAhHahList;
+    public List<AssetReference> juliusHrmList;
+    public List<AssetReference> juliusUghList;
+    public List<AssetReference> juliusGrrList;
 
-    public List<AudioClip> redGaspList;
-    public List<AudioClip> redWoohooList;
-    public List<AudioClip> redHurrahList;
-    public List<AudioClip> redUhHuhList;
+    public List<AssetReference> redGaspList;
+    public List<AssetReference> redWoohooList;
+    public List<AssetReference> redHurrahList;
+    public List<AssetReference> redUhHuhList;
 
     private List<TalkieObject> globalTalkieList; // list of all talkies in this database
 
@@ -115,7 +117,7 @@ public class TalkieDatabase : MonoBehaviour
     }
 
     // finds correct sprite, else returns null
-    private Sprite FindSprite(List<TalkieDatabaseEntry> list, int emotionNum, TalkieMouth mouth, TalkieEyes eyes)
+    private AssetReferenceAtlasedSprite FindSprite(List<TalkieDatabaseEntry> list, int emotionNum, TalkieMouth mouth, TalkieEyes eyes, TalkieCharacter character, int segIndex)
     {
         foreach (var entry in list)
         {
@@ -123,13 +125,13 @@ public class TalkieDatabase : MonoBehaviour
                 return entry.sprite;
         }
 
-        GameManager.instance.SendError(this, "could not find talkie sprite: emotion " + emotionNum + ", mouth " + mouth + ", eyes " + eyes);
+        GameManager.instance.SendError(this, "could not find talkie sprite for " + character + ": emotion " + emotionNum + ", mouth " + mouth + ", eyes " + eyes + " in \'" + TalkieManager.instance.currentTalkie.name + "\' index: " + segIndex);
 
         // return default sprite (element 0 in list)
         return list[0].sprite;
     }
 
-    public AudioClip GetTalkieReactionDuplicate(string str)
+    public AssetReference GetTalkieReactionDuplicate(string str)
     {
         string lowercase_str = str.ToLower();
         switch (lowercase_str)
@@ -160,7 +162,7 @@ public class TalkieDatabase : MonoBehaviour
         }
     }
 
-    public Sprite GetTalkieSprite(TalkieCharacter character, int emotionNum, TalkieMouth mouth, TalkieEyes eyes)
+    public AssetReferenceAtlasedSprite GetTalkieSprite(TalkieCharacter character, int emotionNum, TalkieMouth mouth, TalkieEyes eyes, int segmentIndex)
     {
         switch (character)
         {
@@ -168,33 +170,33 @@ public class TalkieDatabase : MonoBehaviour
             case TalkieCharacter.None:
                 return null;
             case TalkieCharacter.Red:
-                return FindSprite(redSprites, emotionNum, mouth, eyes);
+                return FindSprite(redSprites, emotionNum, mouth, eyes, character, segmentIndex);
             case TalkieCharacter.Darwin:
-                return FindSprite(darwinSprites, emotionNum, mouth, eyes);
+                return FindSprite(darwinSprites, emotionNum, mouth, eyes, character, segmentIndex);
             case TalkieCharacter.Wally:
-                return FindSprite(wallySprites, emotionNum, mouth, eyes);
+                return FindSprite(wallySprites, emotionNum, mouth, eyes, character, segmentIndex);
             case TalkieCharacter.Julius:
-                return FindSprite(juliusSprites, emotionNum, mouth, eyes);
+                return FindSprite(juliusSprites, emotionNum, mouth, eyes, character, segmentIndex);
             case TalkieCharacter.Marcus:
-                return FindSprite(marcusSprites, emotionNum, mouth, eyes);
+                return FindSprite(marcusSprites, emotionNum, mouth, eyes, character, segmentIndex);
             case TalkieCharacter.Brutus:
-                return FindSprite(brutusSprites, emotionNum, mouth, eyes);
+                return FindSprite(brutusSprites, emotionNum, mouth, eyes, character, segmentIndex);
             case TalkieCharacter.Lester:
-                return FindSprite(lesterSprites, emotionNum, mouth, eyes);
+                return FindSprite(lesterSprites, emotionNum, mouth, eyes, character, segmentIndex);
             case TalkieCharacter.Clogg:
-                return FindSprite(cloggSprites, emotionNum, mouth, eyes);
+                return FindSprite(cloggSprites, emotionNum, mouth, eyes, character, segmentIndex);
             case TalkieCharacter.Bubbles:
-                return FindSprite(bubblesSprites, emotionNum, mouth, eyes);
+                return FindSprite(bubblesSprites, emotionNum, mouth, eyes, character, segmentIndex);
             case TalkieCharacter.Ollie:
-                return FindSprite(ollieSprites, emotionNum, mouth, eyes);
+                return FindSprite(ollieSprites, emotionNum, mouth, eyes, character, segmentIndex);
             case TalkieCharacter.Spindle:
-                return FindSprite(spindleSprites, emotionNum, mouth, eyes);
+                return FindSprite(spindleSprites, emotionNum, mouth, eyes, character, segmentIndex);
             case TalkieCharacter.Sylvie:
-                return FindSprite(sylvieSprites, emotionNum, mouth, eyes);
+                return FindSprite(sylvieSprites, emotionNum, mouth, eyes, character, segmentIndex);
             case TalkieCharacter.Celeste:
-                return FindSprite(celesteSprites, emotionNum, mouth, eyes);
+                return FindSprite(celesteSprites, emotionNum, mouth, eyes, character, segmentIndex);
             case TalkieCharacter.Taxi:
-                return FindSprite(taxiSprites, emotionNum, mouth, eyes);
+                return FindSprite(taxiSprites, emotionNum, mouth, eyes, character, segmentIndex);
         }
     }
 
@@ -224,7 +226,7 @@ public class TalkieDatabase : MonoBehaviour
         {
             GameManager.instance.SendLog(this, "creating new talkie object -> " + talkie.talkieName);
             yourObject = ScriptableObject.CreateInstance<TalkieObject>();
-            AssetDatabase.CreateAsset(yourObject, talkie_object_folder + talkie.talkieName + ".asset");
+            AssetDatabase.CreateAsset(yourObject, talkie_object_creation_folder + talkie.talkieName + ".asset");
         }
         // get word pair object
         else

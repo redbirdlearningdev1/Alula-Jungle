@@ -90,7 +90,7 @@ public class LogCoin : MonoBehaviour
     private IEnumerator PlayPhonemeAudioRoutine()
     {
         audioPlaying = true;
-        AudioManager.instance.PlayPhoneme(type);
+        AudioManager.instance.PlayPhoneme(ChallengeWordDatabase.ActionWordEnumToElkoninValue(type));
         yield return new WaitForSeconds(1f);
         audioPlaying = false;
     }

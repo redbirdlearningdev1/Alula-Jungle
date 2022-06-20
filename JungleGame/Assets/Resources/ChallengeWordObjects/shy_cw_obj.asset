@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: shy_cw_obj
   m_EditorClassIdentifier: 
   word: shy
-  audio: {fileID: 8300000, guid: 29bff964a5e8f1d41ac84b2df1c89f90, type: 3}
+  audio:
+    m_AssetGUID: 29bff964a5e8f1d41ac84b2df1c89f90
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: a5afaadcb2be78142aa98d68abc4cf91, type: 3}
-  elkoninList: 260000000900000000000000000000000000000000000000
+  elkoninList: 270000000900000000000000000000000000000000000000
   elkoninCount: 2
   set: 8

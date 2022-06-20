@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 3
-    audioClip: {fileID: 8300000, guid: 5be1e01aeb061304187ab96cf92f016b, type: 3}
+    audioClip:
+      m_AssetGUID: 5be1e01aeb061304187ab96cf92f016b
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_1_RedWally_41_T1
     audioString: No!
   - endTalkieAfterThisSegment: 0
@@ -51,6 +55,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 0d46418d455fcfe43a9ab0c7fc381468, type: 3}
+    audioClip:
+      m_AssetGUID: 0d46418d455fcfe43a9ab0c7fc381468
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_1_Julius_43_T1
     audioString: Have fun cleaning this up!

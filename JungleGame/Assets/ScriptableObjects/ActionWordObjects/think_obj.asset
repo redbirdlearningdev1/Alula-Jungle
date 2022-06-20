@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: think_obj
   m_EditorClassIdentifier: 
   _name: think
-  audio: {fileID: 8300000, guid: 79a76816083bd8f4987c6d2a9bf94755, type: 3}
+  audio:
+    m_AssetGUID: 79a76816083bd8f4987c6d2a9bf94755
+    m_SubObjectName: 
+    m_SubObjectType: 
   elkoninValue: 6
   animation: think
   _enum: 5

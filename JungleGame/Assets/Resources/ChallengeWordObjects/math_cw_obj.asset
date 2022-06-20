@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: math_cw_obj
   m_EditorClassIdentifier: 
   word: math
-  audio: {fileID: 8300000, guid: 7360816d10909f54c9ee7c959bc452bc, type: 3}
+  audio:
+    m_AssetGUID: 7360816d10909f54c9ee7c959bc452bc
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: fb73c05967db8644a82e26a7d8c22eff, type: 3}
-  elkoninList: 200000000200000028000000000000000000000000000000
+  elkoninList: 210000000200000029000000000000000000000000000000
   elkoninCount: 3
   set: 1

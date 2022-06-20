@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -18,7 +20,7 @@ public static class ChallengeWordDatabase
     public const string audio_postfix = "_audio";
     public const string pair_postfix = "_pair";
     
-    public const int elkonin_word_separator = 21; // value at which > is consonant coins & <= are action word coins
+    public const int elkonin_word_separator = 22; // value at which > is consonant coins & <= are action word coins
 
     public static List<ChallengeWord> globalChallengeWordList;
     public static List<WordPair> globalWordPairs;
@@ -77,7 +79,7 @@ public static class ChallengeWordDatabase
         ChallengeWord yourObject = null;
 
         // create new challenge word
-        if(result == "")
+        if (result == "")
         {
             GameManager.instance.SendLog("ChallengeWordDatabase", "!!! creating new challenge word -> " + data.word + item_postfix);
             yourObject = ScriptableObject.CreateInstance<ChallengeWord>();
@@ -162,7 +164,7 @@ public static class ChallengeWordDatabase
         AssetDatabase.Refresh();
     }
 
-    private static AudioClip FindWordAudio(string word)
+    private static AssetReference FindWordAudio(string word)
     {
         string exact_filename = word + audio_postfix;
         string[] results = AssetDatabase.FindAssets(exact_filename);
@@ -185,7 +187,9 @@ public static class ChallengeWordDatabase
         // found correct audio file
         if (correct_path != "")
         {
-            return (AudioClip)AssetDatabase.LoadAssetAtPath(correct_path, typeof(AudioClip));
+            // TODO: MAJOR TESTING REQUIRED
+            //AssetReference reference(AudioClip)AssetDatabase.LoadAssetAtPath(correct_path, typeof(AudioClip));
+            return new AssetReference(AssetDatabase.AssetPathToGUID(correct_path));//(AudioClip)AssetDatabase.LoadAssetAtPath(correct_path, typeof(AudioClip));
         }
         else
         {
@@ -330,6 +334,7 @@ public static class ChallengeWordDatabase
 
     public static ConsonantEnum ElkoninValueToConsonantEnum(ElkoninValue value)
     {
+        //Debug.Log("Value: " + value);
         switch (value)
         {
             case ElkoninValue.empty_silver:
@@ -372,6 +377,10 @@ public static class ChallengeWordDatabase
                 return ConsonantEnum.t;
             case ElkoninValue.th:
                 return ConsonantEnum.th;
+            case ElkoninValue.u:
+                return ConsonantEnum.u;
+            case ElkoninValue.ew:
+                return ConsonantEnum.ew;
             case ElkoninValue.v:
                 return ConsonantEnum.v;
             case ElkoninValue.w:
@@ -436,6 +445,8 @@ public static class ChallengeWordDatabase
                 return ActionWordEnum.bumphead;
             case ElkoninValue.baby:
                 return ActionWordEnum.baby;
+            case ElkoninValue.hit:
+                return ActionWordEnum.hit;
             default:
                 GameManager.instance.SendError("ChallengeWordDatabase", "invalid ElkoninValue to ActionWordEnum: " + value);
                 return ActionWordEnum._blank;
@@ -468,6 +479,7 @@ public static class ChallengeWordDatabase
             case ActionWordEnum.frustrating:return ElkoninValue.frustrating;
             case ActionWordEnum.bumphead:   return ElkoninValue.bumphead;
             case ActionWordEnum.baby:       return ElkoninValue.baby;
+            case ActionWordEnum.hit:        return ElkoninValue.hit;
         }
     }
 }

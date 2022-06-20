@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: OrcAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 3
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 52
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 29
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 35c60ef63f38c47438782645b40d03de, type: 3}
+    totalSpriteSurfaceArea: 3153645
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 805af24090924b348a03e0787cca9d41, type: 3}
+  - {fileID: 21300000, guid: 74d045c08dd13ba409b3c7916f9cb440, type: 3}
+  - {fileID: 21300000, guid: 7aca9cf009e468349aa758d6a773d0ad, type: 3}
+  - {fileID: 21300000, guid: d784c8216fcd69943a77cb60c15bebb4, type: 3}
+  - {fileID: 21300000, guid: 821dd6516c29e9844bd0e32cb335f85a, type: 3}
+  - {fileID: 21300000, guid: 1c3001e1f4aebd6489894d6cb51305cb, type: 3}
+  - {fileID: 21300000, guid: cdef13432838bc44aa8bd34e171d8950, type: 3}
+  - {fileID: 21300000, guid: 116999e320e6c1a4f957976f345b4b35, type: 3}
+  - {fileID: 21300000, guid: c36963b59640acc499f896db07ccdcc1, type: 3}
+  - {fileID: 21300000, guid: 5d9d41d57f1b6a44da7ed323f7740cb2, type: 3}
+  - {fileID: 21300000, guid: e03d13361941df44d977c43cf765ea00, type: 3}
+  - {fileID: 21300000, guid: 79ba849650cd87d4181b07c46ad389b5, type: 3}
+  - {fileID: 21300000, guid: 92d0f337e6af3cb4babce82a191e27f1, type: 3}
+  - {fileID: 21300000, guid: 168f3b574abfdfe4c97ae2129c4f9316, type: 3}
+  - {fileID: 21300000, guid: 954cfc38370b22a41ab184031e86ec65, type: 3}
+  - {fileID: 21300000, guid: 74a1de5855a771247b31b89082905218, type: 3}
+  - {fileID: 21300000, guid: 34053198b7c01344982b0f830dceefac, type: 3}
+  - {fileID: 21300000, guid: 70448b19b7f89da45a671cd04176cb90, type: 3}
+  - {fileID: 21300000, guid: aa9ec439013547945b91a9adf86d9c22, type: 3}
+  - {fileID: 21300000, guid: 9819a6a900fd22f46b91fbbafbced66b, type: 3}
+  - {fileID: 21300000, guid: 73e3160a6e7538d44bc876ea6f976245, type: 3}
+  - {fileID: 21300000, guid: afda204a89201ca44862b571fe354936, type: 3}
+  - {fileID: 21300000, guid: 1d4b093bf5e3524428be14a3f8344378, type: 3}
+  - {fileID: 21300000, guid: 84bd6ddb19bab3045b675869ad19a29d, type: 3}
+  - {fileID: 21300000, guid: 7bf04a2c51137174e85150580aadf4a5, type: 3}
+  - {fileID: 21300000, guid: c6f1af5c6fb661a4ab9530949374cb60, type: 3}
+  - {fileID: 21300000, guid: 78cd006c81cfc8e49a66566c21c3edc7, type: 3}
+  - {fileID: 21300000, guid: a941fbcc95ffee04ab9a575495956a62, type: 3}
+  - {fileID: 21300000, guid: 4a194aec583af8746bc776822f034aed, type: 3}
+  - {fileID: 21300000, guid: b22f6f1da741ce04d9ddb3c187bd1347, type: 3}
+  - {fileID: 21300000, guid: cedd35bdd48dd5c4795131d43131a86c, type: 3}
+  - {fileID: 21300000, guid: d594866fc8c615e49becb3454ccf9d3f, type: 3}
+  - {fileID: 21300000, guid: 458f0acf56a257746b7e3eecca619b86, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - OrcIdle13
+  - OrcIdle11
+  - OrcIdle22
+  - OrcIdle32
+  - OrcIdle4
+  - OrcIdle28
+  - OrcIdle12
+  - OrcIdle18
+  - OrcIdle21
+  - OrcIdle1
+  - OrcIdle8
+  - OrcIdle31
+  - OrcIdle29
+  - OrcIdle23
+  - OrcIdle19
+  - OrcIdle20
+  - OrcIdle14
+  - OrcIdle26
+  - OrcIdle9
+  - OrcIdle16
+  - OrcIdle6
+  - OrcIdle15
+  - OrcIdle2
+  - OrcIdle17
+  - OrcIdle7
+  - OrcIdle5
+  - OrcIdle10
+  - OrcIdle3
+  - OrcIdle27
+  - OrcIdle24
+  - OrcIdle0
+  - OrcIdle25
+  - OrcIdle30
+  m_RenderDataMap: {}
+  m_Tag: OrcAtlas
+  m_IsVariant: 0

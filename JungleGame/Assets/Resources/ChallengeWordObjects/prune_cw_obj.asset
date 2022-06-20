@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: prune_cw_obj
   m_EditorClassIdentifier: 
   word: prune
-  audio: {fileID: 8300000, guid: e98eadd66bc0c1742b4dc9a0b0144497, type: 3}
+  audio:
+    m_AssetGUID: e98eadd66bc0c1742b4dc9a0b0144497
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 712204097d103f640aed36cad74021ff, type: 3}
-  elkoninList: 22000000240000000b000000210000000000000000000000
+  elkoninList: 23000000250000000b000000220000000000000000000000
   elkoninCount: 4
   set: 10

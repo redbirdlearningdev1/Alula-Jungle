@@ -16,483 +16,690 @@ MonoBehaviour:
   background: 0
   segments:
   - text: Great! Let's get going. An
-    audio: {fileID: 8300000, guid: 0df17f36e008a5d4aa253903eb2796db, type: 3}
+    audio:
+      m_AssetGUID: 0df17f36e008a5d4aa253903eb2796db
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 1
   - text: explorer
-    audio: {fileID: 8300000, guid: eedb0a0dba9d8e6499d81d58193fe960, type: 3}
+    audio:
+      m_AssetGUID: eedb0a0dba9d8e6499d81d58193fe960
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 8
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: begins a journey by
-    audio: {fileID: 8300000, guid: 8facc532ebc240947b132f446c5d4aee, type: 3}
+    audio:
+      m_AssetGUID: 8facc532ebc240947b132f446c5d4aee
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: listening
-    audio: {fileID: 8300000, guid: 801f6565a37ea014a99934cb38e044d4, type: 3}
+    audio:
+      m_AssetGUID: 801f6565a37ea014a99934cb38e044d4
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 2
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: to the sounds of the jungle. You
-    audio: {fileID: 8300000, guid: 544ee51e1066fff4b8eaa6d11ff8e0a2, type: 3}
+    audio:
+      m_AssetGUID: 544ee51e1066fff4b8eaa6d11ff8e0a2
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: listen
-    audio: {fileID: 8300000, guid: a8b125f398bc4834f88c2d7602b7ef35, type: 3}
+    audio:
+      m_AssetGUID: a8b125f398bc4834f88c2d7602b7ef35
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 2
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: to make sure you can hear what's coming your way. The
-    audio: {fileID: 8300000, guid: d10c4063219a44242a50d5eca4131eb6, type: 3}
+    audio:
+      m_AssetGUID: d10c4063219a44242a50d5eca4131eb6
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: explorer
-    audio: {fileID: 8300000, guid: bf62f77fc3b4af446a10c4025e597622, type: 3}
+    audio:
+      m_AssetGUID: bf62f77fc3b4af446a10c4025e597622
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 8
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: cannot begin a journey without
-    audio: {fileID: 8300000, guid: 1bff93ca99ad33b4ea4edc36d7da48de, type: 3}
+    audio:
+      m_AssetGUID: 1bff93ca99ad33b4ea4edc36d7da48de
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: listening
-    audio: {fileID: 8300000, guid: ae8b2a8578fdc964b849c7ae2ea1292d, type: 3}
+    audio:
+      m_AssetGUID: ae8b2a8578fdc964b849c7ae2ea1292d
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 2
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: first. In addition to
-    audio: {fileID: 8300000, guid: df1c1d77c69ba8b46ac88ed7f56f37b4, type: 3}
+    audio:
+      m_AssetGUID: df1c1d77c69ba8b46ac88ed7f56f37b4
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: listening
-    audio: {fileID: 8300000, guid: d06881ef81b684c4bb512e418a547bae, type: 3}
+    audio:
+      m_AssetGUID: d06881ef81b684c4bb512e418a547bae
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 2
     requireInput: 0
     postText: ~
     advanceBG: 0
   - text: the
-    audio: {fileID: 8300000, guid: a25af5cc8576a454f8592b739b305bb3, type: 3}
+    audio:
+      m_AssetGUID: a25af5cc8576a454f8592b739b305bb3
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: explorer
-    audio: {fileID: 8300000, guid: ca72b805bcaac5d4fa748c1af0bc3231, type: 3}
+    audio:
+      m_AssetGUID: ca72b805bcaac5d4fa748c1af0bc3231
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 8
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: 'must also be able to '
-    audio: {fileID: 8300000, guid: 61ca95a229b62e846bba98b8a02c9d4d, type: 3}
+    audio:
+      m_AssetGUID: 61ca95a229b62e846bba98b8a02c9d4d
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: think
-    audio: {fileID: 8300000, guid: 8eeb0879336e4384998d000140cd353f, type: 3}
+    audio:
+      m_AssetGUID: 8eeb0879336e4384998d000140cd353f
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 5
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: as the jungle can be filled with scary things like
-    audio: {fileID: 8300000, guid: 1de7baefc2f12544aac72be054db84d6, type: 3}
+    audio:
+      m_AssetGUID: 1de7baefc2f12544aac72be054db84d6
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: gorilla poop
-    audio: {fileID: 8300000, guid: f42f77c9dcfdd4644b25f17ffd7d3777, type: 3}
+    audio:
+      m_AssetGUID: f42f77c9dcfdd4644b25f17ffd7d3777
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 3
     requireInput: 0
     postText: .
     advanceBG: 1
   - text: 'Do you '
-    audio: {fileID: 8300000, guid: bfa8ea3ed14f7944da94e294bd0407bc, type: 3}
+    audio:
+      m_AssetGUID: bfa8ea3ed14f7944da94e294bd0407bc
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: think
-    audio: {fileID: 8300000, guid: 9fd8e74ba27820c4cae5535516db9e72, type: 3}
+    audio:
+      m_AssetGUID: 9fd8e74ba27820c4cae5535516db9e72
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 5
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: that
-    audio: {fileID: 8300000, guid: d5ac08e21adc3fe4d81d82f4387cfff2, type: 3}
+    audio:
+      m_AssetGUID: d5ac08e21adc3fe4d81d82f4387cfff2
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: gorilla poop
-    audio: {fileID: 8300000, guid: 9337840ee7aa8d34a818d9e60d94cb36, type: 3}
+    audio:
+      m_AssetGUID: 9337840ee7aa8d34a818d9e60d94cb36
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 3
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: 'is funny? I thought you were an '
-    audio: {fileID: 8300000, guid: 50539362036796f4e99e4f374419d2f6, type: 3}
+    audio:
+      m_AssetGUID: 50539362036796f4e99e4f374419d2f6
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: explorer
-    audio: {fileID: 8300000, guid: 9a3e9ac276abf1548ac7e81b08ab6dd3, type: 3}
+    audio:
+      m_AssetGUID: 9a3e9ac276abf1548ac7e81b08ab6dd3
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 8
     requireInput: 0
     postText: .
     advanceBG: 0
   - text: Ok
-    audio: {fileID: 8300000, guid: c4861920768b0424dbaebc329a499604, type: 3}
+    audio:
+      m_AssetGUID: c4861920768b0424dbaebc329a499604
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: ~
     advanceBG: 0
   - text: listen
-    audio: {fileID: 8300000, guid: 1806ebff2b8a28045bcec379a3d549ea, type: 3}
+    audio:
+      m_AssetGUID: 1806ebff2b8a28045bcec379a3d549ea
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 2
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: 'closely~ there are more scary things in the jungle than just '
-    audio: {fileID: 8300000, guid: 6c909fd9fbf959449ba90a22ef9a4da4, type: 3}
+    audio:
+      m_AssetGUID: 6c909fd9fbf959449ba90a22ef9a4da4
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: gorilla poop.
-    audio: {fileID: 8300000, guid: bd44354d06a1df041a2b03f4a72ec3f7, type: 3}
+    audio:
+      m_AssetGUID: bd44354d06a1df041a2b03f4a72ec3f7
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 3
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: 'An '
-    audio: {fileID: 8300000, guid: b113accab8103de45bd9eb3db615ceb8, type: 3}
+    audio:
+      m_AssetGUID: b113accab8103de45bd9eb3db615ceb8
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: explorer
-    audio: {fileID: 8300000, guid: e4c8944d922b30144aa0367e651734f5, type: 3}
+    audio:
+      m_AssetGUID: e4c8944d922b30144aa0367e651734f5
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 8
     requireInput: 0
     postText: ~
     advanceBG: 0
   - text: needs to be on the look out for
-    audio: {fileID: 8300000, guid: 635b1097cc8319e42a64427c014e5561, type: 3}
+    audio:
+      m_AssetGUID: 635b1097cc8319e42a64427c014e5561
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: mudslide
-    audio: {fileID: 8300000, guid: bc0d98cdebee7d24b91ca036d861ae60, type: 3}
+    audio:
+      m_AssetGUID: bc0d98cdebee7d24b91ca036d861ae60
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 1
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: and
-    audio: {fileID: 8300000, guid: d63e054a67e267147b1cd1151d3e3bbc, type: 3}
+    audio:
+      m_AssetGUID: d63e054a67e267147b1cd1151d3e3bbc
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: orcs
-    audio: {fileID: 8300000, guid: ca6bb9c6304a0e941a9efa7c7b2f40a5, type: 3}
+    audio:
+      m_AssetGUID: ca6bb9c6304a0e941a9efa7c7b2f40a5
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 4
     requireInput: 0
     postText: .
     advanceBG: 0
   - text: 'A surprise '
-    audio: {fileID: 8300000, guid: 5115229b3c00d87479f5b1dde96d7407, type: 3}
+    audio:
+      m_AssetGUID: 5115229b3c00d87479f5b1dde96d7407
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: mudslide
-    audio: {fileID: 8300000, guid: 4a3d21e05befd884caebcbbe75a0f3b6, type: 3}
+    audio:
+      m_AssetGUID: 4a3d21e05befd884caebcbbe75a0f3b6
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 1
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: can carry an
-    audio: {fileID: 8300000, guid: b0278ba40d837764aa82caaf6a6d370a, type: 3}
+    audio:
+      m_AssetGUID: b0278ba40d837764aa82caaf6a6d370a
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: explorer
-    audio: {fileID: 8300000, guid: 6ece9d8dec112754ba63bcb58a2969cd, type: 3}
+    audio:
+      m_AssetGUID: 6ece9d8dec112754ba63bcb58a2969cd
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 8
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: very~ very far away. So far~ in fact~ that you might encounter jungle
-    audio: {fileID: 8300000, guid: da908e33541309a47835f8760a27decb, type: 3}
+    audio:
+      m_AssetGUID: da908e33541309a47835f8760a27decb
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: orcs
-    audio: {fileID: 8300000, guid: 9e1747c3b46bcd647ac219a8f0a60ac5, type: 3}
+    audio:
+      m_AssetGUID: 9e1747c3b46bcd647ac219a8f0a60ac5
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 4
     requireInput: 0
     postText: .
     advanceBG: 0
   - text: 'Jungle '
-    audio: {fileID: 8300000, guid: 21d0fc8e8a695d5409246c98de30b14d, type: 3}
+    audio:
+      m_AssetGUID: 21d0fc8e8a695d5409246c98de30b14d
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: orcs
-    audio: {fileID: 8300000, guid: 66a51a6e3e17ab84d8f3eca94053e2fe, type: 3}
+    audio:
+      m_AssetGUID: 66a51a6e3e17ab84d8f3eca94053e2fe
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 4
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: often carry spears and can be dangerous. An
-    audio: {fileID: 8300000, guid: 08ca8233aca49f54e97d81dceae85670, type: 3}
+    audio:
+      m_AssetGUID: 08ca8233aca49f54e97d81dceae85670
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: explorer
-    audio: {fileID: 8300000, guid: fc5c6ee466ee0bb419242ec647afa6e4, type: 3}
+    audio:
+      m_AssetGUID: fc5c6ee466ee0bb419242ec647afa6e4
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 8
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: 'must '
-    audio: {fileID: 8300000, guid: 7c8338f0a8735d6439a1bd1b8036f2c4, type: 3}
+    audio:
+      m_AssetGUID: 7c8338f0a8735d6439a1bd1b8036f2c4
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: think
-    audio: {fileID: 8300000, guid: caae6c3d9bd02394984db79953c97be4, type: 3}
+    audio:
+      m_AssetGUID: caae6c3d9bd02394984db79953c97be4
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 5
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: carefully if they encounter
-    audio: {fileID: 8300000, guid: e5b40a0eb58639642b8c980757696230, type: 3}
+    audio:
+      m_AssetGUID: e5b40a0eb58639642b8c980757696230
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: mudslides
-    audio: {fileID: 8300000, guid: 88fc77e057de01b418e51503ca7a8d49, type: 3}
+    audio:
+      m_AssetGUID: 88fc77e057de01b418e51503ca7a8d49
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 1
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: or
-    audio: {fileID: 8300000, guid: 07b96e314a9ed5340b1cf3ff3d8ce775, type: 3}
+    audio:
+      m_AssetGUID: 07b96e314a9ed5340b1cf3ff3d8ce775
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: orcs
-    audio: {fileID: 8300000, guid: ddab41a4b77943f4bb71d9964abfaa6c, type: 3}
+    audio:
+      m_AssetGUID: ddab41a4b77943f4bb71d9964abfaa6c
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 4
     requireInput: 0
     postText: .
     advanceBG: 0
   - text: 'I once heard of an '
-    audio: {fileID: 8300000, guid: 4d3e5345fe22b5f49b6516dd3cc63f99, type: 3}
+    audio:
+      m_AssetGUID: 4d3e5345fe22b5f49b6516dd3cc63f99
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: explorer
-    audio: {fileID: 8300000, guid: f4eda5094b9a6214fa26d6a9eaedecad, type: 3}
+    audio:
+      m_AssetGUID: f4eda5094b9a6214fa26d6a9eaedecad
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 8
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: that fell down a
-    audio: {fileID: 8300000, guid: 29c3b87080b3e174887c6de1d457504d, type: 3}
+    audio:
+      m_AssetGUID: 29c3b87080b3e174887c6de1d457504d
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: mudslide
-    audio: {fileID: 8300000, guid: c2135a4c0748f994fa0f1c2a285957a2, type: 3}
+    audio:
+      m_AssetGUID: c2135a4c0748f994fa0f1c2a285957a2
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 1
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: because he didn't
-    audio: {fileID: 8300000, guid: f73f68f1a0bc4294ba8fdb3b1ed0a78b, type: 3}
+    audio:
+      m_AssetGUID: f73f68f1a0bc4294ba8fdb3b1ed0a78b
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: listen
-    audio: {fileID: 8300000, guid: 45783298afd81054e92fc403fa62e88f, type: 3}
+    audio:
+      m_AssetGUID: 45783298afd81054e92fc403fa62e88f
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 2
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: after they were distracted by
-    audio: {fileID: 8300000, guid: f2f0cec95cf0eb44ea1e9ad564018e8e, type: 3}
+    audio:
+      m_AssetGUID: f2f0cec95cf0eb44ea1e9ad564018e8e
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: gorilla poop
-    audio: {fileID: 8300000, guid: aa9d1969e8ea7874ea2f2ba870a12afa, type: 3}
+    audio:
+      m_AssetGUID: aa9d1969e8ea7874ea2f2ba870a12afa
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 3
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: 'and then ran into '
-    audio: {fileID: 8300000, guid: cb4e308beb4bdd0499f2f4b438c044a8, type: 3}
+    audio:
+      m_AssetGUID: cb4e308beb4bdd0499f2f4b438c044a8
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: orcs
-    audio: {fileID: 8300000, guid: 75d965910d4263c41a3219db88b34e47, type: 3}
+    audio:
+      m_AssetGUID: 75d965910d4263c41a3219db88b34e47
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 4
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: and had to
-    audio: {fileID: 8300000, guid: b67b7bd4afaa59842b501956872d7352, type: 3}
+    audio:
+      m_AssetGUID: b67b7bd4afaa59842b501956872d7352
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: think
-    audio: {fileID: 8300000, guid: 1514a1d8f288ba74288b19d4b73468d5, type: 3}
+    audio:
+      m_AssetGUID: 1514a1d8f288ba74288b19d4b73468d5
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 5
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: of a way to get back home
-    audio: {fileID: 8300000, guid: 4acef092b7169ce4aaba34f011ec21e2, type: 3}
+    audio:
+      m_AssetGUID: 4acef092b7169ce4aaba34f011ec21e2
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: .
     advanceBG: 0
   - text: 'One more time~ say it with me:'
-    audio: {fileID: 8300000, guid: dd7dd25926526b343a907a418211dbb4, type: 3}
+    audio:
+      m_AssetGUID: dd7dd25926526b343a907a418211dbb4
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: mudslide
-    audio: {fileID: 8300000, guid: 17cf87c5e8de4c64bbddafa8a73a2cfa, type: 3}
+    audio:
+      m_AssetGUID: 17cf87c5e8de4c64bbddafa8a73a2cfa
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 1
     requireInput: 1
     postText: ~
     advanceBG: 0
   - text: listen
-    audio: {fileID: 8300000, guid: db3a1cd34bdc448408c57064f43dd09d, type: 3}
+    audio:
+      m_AssetGUID: db3a1cd34bdc448408c57064f43dd09d
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 2
     requireInput: 1
     postText: ~
     advanceBG: 0
   - text: poop
-    audio: {fileID: 8300000, guid: ca309fc8ee161e147a620084c06041bf, type: 3}
+    audio:
+      m_AssetGUID: ca309fc8ee161e147a620084c06041bf
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 3
     requireInput: 1
     postText: ~
     advanceBG: 0
   - text: orcs
-    audio: {fileID: 8300000, guid: 7c35feef77b00eb45b81b3261db13838, type: 3}
+    audio:
+      m_AssetGUID: 7c35feef77b00eb45b81b3261db13838
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 4
     requireInput: 1
     postText: ~
     advanceBG: 0
   - text: think
-    audio: {fileID: 8300000, guid: 39744953a5c971d4a89ea4b41e5db868, type: 3}
+    audio:
+      m_AssetGUID: 39744953a5c971d4a89ea4b41e5db868
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 5
     requireInput: 1

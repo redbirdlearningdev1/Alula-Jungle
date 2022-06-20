@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: tar_cw_obj
   m_EditorClassIdentifier: 
   word: tar
-  audio: {fileID: 8300000, guid: 40dab2449b978344db3eaed3e9095fec, type: 3}
+  audio:
+    m_AssetGUID: 40dab2449b978344db3eaed3e9095fec
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 09adc95f072293a41b28cb0f2ef9dd3e, type: 3}
-  elkoninList: 270000000e00000000000000000000000000000000000000
+  elkoninList: 280000000e00000000000000000000000000000000000000
   elkoninCount: 2
   set: 13

@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: thread_cw_obj
   m_EditorClassIdentifier: 
   word: thread
-  audio: {fileID: 8300000, guid: 3aa86a4545e536f47b5684c359f7802b, type: 3}
+  audio:
+    m_AssetGUID: 3aa86a4545e536f47b5684c359f7802b
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: d0fcd0f18f5c7d4498222718c41ccb56, type: 3}
-  elkoninList: 280000002400000003000000190000000000000000000000
+  elkoninList: 2900000025000000030000001a0000000000000000000000
   elkoninCount: 4
   set: 2

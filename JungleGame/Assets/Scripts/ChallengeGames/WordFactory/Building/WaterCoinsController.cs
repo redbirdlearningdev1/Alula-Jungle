@@ -126,7 +126,7 @@ public class WaterCoinsController : MonoBehaviour
             Vector2 bouncePos = activeCoinPos[i].transform.position;
             bouncePos.y += 0.5f;
             waterCoins[i].GetComponent<LerpableObject>().LerpPosition(bouncePos, 0.2f, false);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
             waterCoins[i].GetComponent<LerpableObject>().LerpPosition(activeCoinPos[i].transform.position, 0.2f, false);
             // audio fx
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WaterRipples, 0.1f, "water_splash", (1f + 0.25f * i));

@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: cb357052486b96c4f9c7c483a1cad975, type: 3}
+    audioClip:
+      m_AssetGUID: cb357052486b96c4f9c7c483a1cad975
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_3a_Brutus_1_T1
     audioString: "Heh\u2026"
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: ff020427b105e4d4d926663653a2e75c, type: 3}
+    audioClip:
+      m_AssetGUID: ff020427b105e4d4d926663653a2e75c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_3a_Brutus_1_T2
     audioString: "Well would you look at that\u2026"
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: bdc715b1672c1d24fbfaa8fa223f79fd, type: 3}
+    audioClip:
+      m_AssetGUID: bdc715b1672c1d24fbfaa8fa223f79fd
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_3a_Brutus_1_T3
     audioString: "It looks like I win Explorer\u2026"
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 1496c9c330b40b049b4217b09fc92ed0, type: 3}
+    audioClip:
+      m_AssetGUID: 1496c9c330b40b049b4217b09fc92ed0
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_3a_Brutus_1_T4
     audioString: "Yawn\u2026"
   - endTalkieAfterThisSegment: 0
@@ -99,7 +115,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 42cde50fd6ab29c4cafb0b06a606b817, type: 3}
+    audioClip:
+      m_AssetGUID: 42cde50fd6ab29c4cafb0b06a606b817
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_3a_Brutus_1_T5
     audioString: "How exciting\u2026"
   - endTalkieAfterThisSegment: 0
@@ -115,7 +135,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 30783096a88650f41a5d5be2c5e292a3, type: 3}
+    audioClip:
+      m_AssetGUID: 30783096a88650f41a5d5be2c5e292a3
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2a_Julius_2_T1
     audioString: Take that Explorer!
   - endTalkieAfterThisSegment: 0
@@ -131,7 +155,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: d8606cb43cb44164b88c74fc2a7acb11, type: 3}
+    audioClip:
+      m_AssetGUID: d8606cb43cb44164b88c74fc2a7acb11
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2a_Julius_2_T2
     audioString: "I knew we\u2019d beat you!"
   - endTalkieAfterThisSegment: 0
@@ -147,7 +175,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 2162299b6e7dec64f9864c0a324e2a88, type: 3}
+    audioClip:
+      m_AssetGUID: 2162299b6e7dec64f9864c0a324e2a88
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1a_Red_4_T1
     audioString: "It\u2019s okay Explorer! "
   - endTalkieAfterThisSegment: 0
@@ -163,6 +195,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 1c8f9da30fb2c39429cc13eb9e18edb7, type: 3}
+    audioClip:
+      m_AssetGUID: 1c8f9da30fb2c39429cc13eb9e18edb7
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1a_Red_4_T2
     audioString: Let's go practice some more.

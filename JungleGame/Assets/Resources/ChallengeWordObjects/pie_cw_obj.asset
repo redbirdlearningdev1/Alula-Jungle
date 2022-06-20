@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: pie_cw_obj
   m_EditorClassIdentifier: 
   word: pie
-  audio: {fileID: 8300000, guid: 99a5d06e73c644b40b10440b3a10f4d3, type: 3}
+  audio:
+    m_AssetGUID: 99a5d06e73c644b40b10440b3a10f4d3
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: e05d2deff17e84a4eb3d5e5ebe45dcde, type: 3}
-  elkoninList: 220000000900000000000000000000000000000000000000
+  elkoninList: 230000000900000000000000000000000000000000000000
   elkoninCount: 2
   set: 8

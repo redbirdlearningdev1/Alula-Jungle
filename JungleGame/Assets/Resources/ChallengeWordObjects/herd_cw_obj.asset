@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: herd_cw_obj
   m_EditorClassIdentifier: 
   word: herd
-  audio: {fileID: 8300000, guid: d528b79357c9c6247b4b02c336e3cd40, type: 3}
+  audio:
+    m_AssetGUID: d528b79357c9c6247b4b02c336e3cd40
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 8d08b8f6ec6e37b43b7a6a3c04c0ed56, type: 3}
-  elkoninList: 1c0000000f00000019000000000000000000000000000000
+  elkoninList: 1d0000000f0000001a000000000000000000000000000000
   elkoninCount: 3
   set: 14

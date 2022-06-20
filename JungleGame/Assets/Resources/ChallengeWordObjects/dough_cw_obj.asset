@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: dough_cw_obj
   m_EditorClassIdentifier: 
   word: dough
-  audio: {fileID: 8300000, guid: 80e95135b74a48b4bb46941accb7433b, type: 3}
+  audio:
+    m_AssetGUID: 80e95135b74a48b4bb46941accb7433b
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 97ec5c16102bf9f49b727a734b37748c, type: 3}
-  elkoninList: 190000000a00000000000000000000000000000000000000
+  elkoninList: 1a0000000a00000000000000000000000000000000000000
   elkoninCount: 2
   set: 9

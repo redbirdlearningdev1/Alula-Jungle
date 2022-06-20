@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 5c334d2e11249bc42b7f583897aefc53, type: 3}
+    audioClip:
+      m_AssetGUID: 5c334d2e11249bc42b7f583897aefc53
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_5_Marcus_10_T1
     audioString: 'Yeah just you wait-and-see! '
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 2e3ce8ae11649404dbc04b23721670d8, type: 3}
+    audioClip:
+      m_AssetGUID: 2e3ce8ae11649404dbc04b23721670d8
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_5_Marcus_10_T2
     audioString: The future King will win soon enough!
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 676de53a42b9acd4bb317079f094a961, type: 3}
+    audioClip:
+      m_AssetGUID: 676de53a42b9acd4bb317079f094a961
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_5_Brutus_11_T1
     audioString: "Yawn\u2026 "
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 7b4222007d66d024da3a4509febd4816, type: 3}
+    audioClip:
+      m_AssetGUID: 7b4222007d66d024da3a4509febd4816
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_5_Brutus_11_T2
     audioString: "I\u2019m not shore your right..."
   - endTalkieAfterThisSegment: 0
@@ -99,7 +115,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 7ea178fc216d68d4fba23a4d153ac2fa, type: 3}
+    audioClip:
+      m_AssetGUID: 7ea178fc216d68d4fba23a4d153ac2fa
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_5_Marcus_12_T1
     audioString: UGH!
   - endTalkieAfterThisSegment: 0
@@ -115,7 +135,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 3970ac82dec031b4087efa91958f64c1, type: 3}
+    audioClip:
+      m_AssetGUID: 3970ac82dec031b4087efa91958f64c1
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_5_Marcus_12_T2
     audioString: Stop being a clown!
   - endTalkieAfterThisSegment: 0
@@ -131,6 +155,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 2220fda2fe72361479210f96fd7340bc, type: 3}
+    audioClip:
+      m_AssetGUID: 2220fda2fe72361479210f96fd7340bc
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_1_5_Brutus_13_T1
     audioString: You're just shellfish of my good jokes...

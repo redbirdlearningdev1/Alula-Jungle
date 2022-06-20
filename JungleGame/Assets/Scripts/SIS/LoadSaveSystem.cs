@@ -61,12 +61,10 @@ public static class LoadSaveSystem
             
             StudentPlayerData studentData = JsonUtility.FromJson<StudentPlayerData>(file);
 
-            // check to make sure data is correct version
-            if (studentData.version != GameManager.currentGameVersion)
+            if (studentData != null)
+                return studentData;
+            else
             {
-                GameManager.instance.SendError("LoadSaveSystem", "Student data is wrong version - deleting old profile");
-
-                // create new profile file
                 if (createNewIfNull)
                 {
                     GameManager.instance.SendLog("LoadSaveSystem", "profile not found, making a new profile!");
@@ -75,18 +73,12 @@ public static class LoadSaveSystem
                 }
                 else
                 {
-                    return null;
+                    GameManager.instance.SendLog("LoadSaveSystem", "StudentPlayerData is null, returning null.");
                 }
             }
-
-            if (studentData != null)
-                return studentData;
-            else
-                GameManager.instance.SendLog("LoadSaveSystem", "StudentPlayerData is null, returning null.");
         }
         else
         {
-            // Debug.Log("Path not found: " + path.ToString() + "\nReturning null");
             // create new profile file
             if (createNewIfNull)
             {
@@ -124,14 +116,47 @@ public static class LoadSaveSystem
         new_data.starsPirate = 0;
         new_data.starsSpiderweb = 0;
 
-        new_data.totalStarsFrogger = 0;
-        new_data.totalStarsSeashell = 0;
-        new_data.totalStarsRummage = 0;
-        new_data.totalStarsTurntables = 0;
-        new_data.totalStarsPirate = 0;
-        new_data.totalStarsSpiderweb = 0;
+        new_data.froggerPlayed = 0;
+        new_data.seashellPlayed = 0;
+        new_data.rummagePlayed = 0;
+        new_data.turntablesPlayed = 0;
+        new_data.piratePlayed = 0;
+        new_data.spiderwebPlayed = 0;
         
         new_data.profileAvatar = 11;
+
+        // challenge round data
+        new_data.blendData = new List<ChallengeRoundData>();
+        new_data.subData = new List<ChallengeRoundData>();
+        new_data.buildData = new List<ChallengeRoundData>();
+        new_data.deleteData = new List<ChallengeRoundData>();
+        new_data.TPCoinsData = new List<ChallengeRoundData>();
+        new_data.TPPhotosData = new List<ChallengeRoundData>();
+        new_data.passwordData = new List<ChallengeRoundData>();
+
+        // phoneme success rate (correct/total)
+        new_data.phonemeData = new List<PhonemeData>();
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.mudslide, ElkoninValue.mudslide));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.listen, ElkoninValue.listen));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.poop, ElkoninValue.poop));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.orcs, ElkoninValue.orcs));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.think, ElkoninValue.think));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.hello, ElkoninValue.hello));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.spider, ElkoninValue.spider));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.explorer, ElkoninValue.explorer));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.scared, ElkoninValue.scared));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.thatguy, ElkoninValue.thatguy));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.choice, ElkoninValue.choice));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.strongwind, ElkoninValue.strongwind));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.pirate, ElkoninValue.pirate));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.gorilla, ElkoninValue.gorilla));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.sounds, ElkoninValue.sounds));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.give, ElkoninValue.give));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.backpack, ElkoninValue.backpack));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.frustrating, ElkoninValue.frustrating));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.bumphead, ElkoninValue.bumphead));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.baby, ElkoninValue.baby));
+        new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.hit, ElkoninValue.hit));
 
         // coins
         new_data.goldCoins = default_gold_coins;
@@ -177,12 +202,21 @@ public static class LoadSaveSystem
         new_data.unlockedStickerButton = default_unlockedStickerButton;
         new_data.currStoryBeat = default_gameEvent;
         new_data.currBoatEncounter = BoatEncounter.FirstTime;
+
         new_data.firstTimeLoseChallengeGame = false;
         new_data.everyOtherTimeLoseChallengeGame = false;
+
+        new_data.firstTimeLoseBossBattle = false;
+        new_data.everyOtherTimeLoseBossBattle = false;
+        new_data.bossBattlePoints = 0;
+        new_data.bossBattleGameQueue = new GameType[0];
+
         new_data.firstGuradsRoyalRumble = true;
         new_data.mapLimit = 0;
         new_data.currentChapter = Chapter.chapter_0;
         new_data.mapData = new MapData();
+
+        new_data.clickedTaxiBird = false;
         
         // gorilla village
         new_data.mapData.GV_house1 = new MapIconData();
@@ -593,6 +627,7 @@ public static class LoadSaveSystem
 
         // stickers
         new_data.stickerInventory = new List<InventoryStickerData>();
+        new_data.stickerPityCounter = 0;
         // unlocked sticker lists
         new_data.commonStickerUnlocked = new bool[60];
         new_data.uncommonStickerUnlocked = new bool[36];

@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: ab7673961960c3e48ad2c71f0e96cfae, type: 3}
+    audioClip:
+      m_AssetGUID: ab7673961960c3e48ad2c71f0e96cfae
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_5_3_Wally_1_T1
     audioString: Hang in there.
   - endTalkieAfterThisSegment: 0
@@ -51,6 +55,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 99a77c4246501d34d954a4c4a833b498, type: 3}
+    audioClip:
+      m_AssetGUID: 99a77c4246501d34d954a4c4a833b498
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_5_3_Julius_2_T1
     audioString: Ugh...

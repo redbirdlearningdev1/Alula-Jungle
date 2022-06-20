@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 9cec0cd9f83539741aae5aab4330056a, type: 3}
+    audioClip:
+      m_AssetGUID: 9cec0cd9f83539741aae5aab4330056a
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_2a_Spindle_2_T1
     audioString: "Ow\u2026 "
   - endTalkieAfterThisSegment: 1
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 010c9904b79df534a8aad667f94b1cc9, type: 3}
+    audioClip:
+      m_AssetGUID: 010c9904b79df534a8aad667f94b1cc9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_2a_Spindle_2_T2
     audioString: let's start playing yes?
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 1d4373be1da70534eb19b310a735c1bc, type: 3}
+    audioClip:
+      m_AssetGUID: 1d4373be1da70534eb19b310a735c1bc
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_2a_Spindle_3_T1
     audioString: Want to keep practicing?
   - endTalkieAfterThisSegment: 1
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 0f5ea8048c2bd6740a751aad53d90272, type: 3}
+    audioClip:
+      m_AssetGUID: 0f5ea8048c2bd6740a751aad53d90272
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_2a_Spindle_3_T2
     audioString: "Ow\u2026"
   - endTalkieAfterThisSegment: 0
@@ -99,7 +115,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: b3e6e3157ae8cb84ca37e243f00f3a84, type: 3}
+    audioClip:
+      m_AssetGUID: b3e6e3157ae8cb84ca37e243f00f3a84
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_2a_Spindle_4_T1
     audioString: Practice makes perfect...
   - endTalkieAfterThisSegment: 1
@@ -115,7 +135,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 251711a55bcd5cd4fa84ff6d3a9dc1a4, type: 3}
+    audioClip:
+      m_AssetGUID: 251711a55bcd5cd4fa84ff6d3a9dc1a4
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_2a_Spindle_4_T2
     audioString: "Ow\u2026"
   - endTalkieAfterThisSegment: 0
@@ -131,7 +155,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: a50905660b632194a8d798ad6b8bd1df, type: 3}
+    audioClip:
+      m_AssetGUID: a50905660b632194a8d798ad6b8bd1df
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_2a_Spindle_5_T1
     audioString: "You\u2019ve got this... "
   - endTalkieAfterThisSegment: 1
@@ -147,6 +175,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 04d2c3795c987344488bcfa02e7dc718, type: 3}
+    audioClip:
+      m_AssetGUID: 04d2c3795c987344488bcfa02e7dc718
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_2a_Spindle_5_T2
     audioString: Ow...

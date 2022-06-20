@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: wish_cw_obj
   m_EditorClassIdentifier: 
   word: wish
-  audio: {fileID: 8300000, guid: d24ed581d9cc6244bbd3f5a5a18c1c3d, type: 3}
+  audio:
+    m_AssetGUID: d24ed581d9cc6244bbd3f5a5a18c1c3d
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 8fdd5b2efcd6d404d89d3e1223d34755, type: 3}
-  elkoninList: 2a0000000400000026000000000000000000000000000000
+  elkoninList: 2d0000000400000027000000000000000000000000000000
   elkoninCount: 3
   set: 3

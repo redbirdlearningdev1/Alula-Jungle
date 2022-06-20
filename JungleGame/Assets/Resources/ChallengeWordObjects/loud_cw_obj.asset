@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: loud_cw_obj
   m_EditorClassIdentifier: 
   word: loud
-  audio: {fileID: 8300000, guid: 8c31bc287f54e7246be3500e08d6f245, type: 3}
+  audio:
+    m_AssetGUID: 8c31bc287f54e7246be3500e08d6f245
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 72c8d908e0d9d464e8c2a8ac8f3deaea, type: 3}
-  elkoninList: 1f0000001400000019000000000000000000000000000000
+  elkoninList: 20000000140000001a000000000000000000000000000000
   elkoninCount: 3
   set: 19

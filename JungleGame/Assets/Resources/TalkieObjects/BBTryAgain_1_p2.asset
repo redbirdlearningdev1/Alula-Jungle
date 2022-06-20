@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 10ff7d8fc598fc448bd94be5d8efd280, type: 3}
+    audioClip:
+      m_AssetGUID: 10ff7d8fc598fc448bd94be5d8efd280
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_2_4_Julius_1_T1
     audioString: Ready to try again Explorer?
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: d79617fc6872d9f4687f035372121352, type: 3}
+    audioClip:
+      m_AssetGUID: d79617fc6872d9f4687f035372121352
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_2_3_Julius_2_T1
     audioString: "Hmph\u2026"
   - endTalkieAfterThisSegment: 1
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 3906f18a5857e73449eb317fd4c20f08, type: 3}
+    audioClip:
+      m_AssetGUID: 3906f18a5857e73449eb317fd4c20f08
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_2_3_Julius_2_T2
     audioString: "Then leave me alone\u2026"
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 49b280b091c6a3448b9fde909510aaf2, type: 3}
+    audioClip:
+      m_AssetGUID: 49b280b091c6a3448b9fde909510aaf2
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_2_3_Julius_3_T1
     audioString: "Alright\u2026"
   - endTalkieAfterThisSegment: 1
@@ -99,6 +115,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 675e823019d55f24c90cebea142de53f, type: 3}
+    audioClip:
+      m_AssetGUID: 675e823019d55f24c90cebea142de53f
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_2_3_Julius_3_T2
     audioString: Let's do this.

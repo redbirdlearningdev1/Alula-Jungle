@@ -35,6 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 5dcda98a8e26ae24297d5c81827fc865, type: 3}
+    audioClip:
+      m_AssetGUID: 5dcda98a8e26ae24297d5c81827fc865
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_2_Bubbles_1_T1
     audioString: '*distressed bubble sounds*'

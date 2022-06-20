@@ -66,14 +66,147 @@ SpriteAtlas:
       enableTightPacking: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
-    packables: []
-    totalSpriteSurfaceArea: 0
+    packables:
+    - {fileID: 102900000, guid: 076a759bff0ea1c40a2f64653b980dc3, type: 3}
+    totalSpriteSurfaceArea: 3936768
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites: []
-  m_PackedSpriteNamesToIndex: []
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 9356525011e95f547a702a4c6ca1eee9, type: 3}
+  - {fileID: 21300000, guid: 3a87c35039871864d8b94aa082b43d9c, type: 3}
+  - {fileID: 21300000, guid: 772d317091ed95149a66515a37b2259a, type: 3}
+  - {fileID: 21300000, guid: a49cf870a40ecb04ebf836dc8f537d7a, type: 3}
+  - {fileID: 21300000, guid: caa2d290f532a454b99c00e3e8a914b8, type: 3}
+  - {fileID: 21300000, guid: 14785a61914b6a34eb3a5b584f095541, type: 3}
+  - {fileID: 21300000, guid: f412d1a12c024c24894bcaa553ceb73c, type: 3}
+  - {fileID: 21300000, guid: c27d7bb1c5fe8de40b240c82c2a562bc, type: 3}
+  - {fileID: 21300000, guid: dac2d7d1f0b6a0f43a5f28eba1e39ce0, type: 3}
+  - {fileID: 21300000, guid: ab203f02542220d439af7047328c86c6, type: 3}
+  - {fileID: 21300000, guid: 4ec1e3421cacc3d4f91c6eea85c93358, type: 3}
+  - {fileID: 21300000, guid: a49cca42ba4ead241bf2cc213741d435, type: 3}
+  - {fileID: 21300000, guid: fd0f15d2e1b13254688bbacb6ee96863, type: 3}
+  - {fileID: 21300000, guid: 0f7922036c303784993b0b45bc494704, type: 3}
+  - {fileID: 21300000, guid: b7ff64431e72cf74f8b8bd5e32b215b1, type: 3}
+  - {fileID: 21300000, guid: ed2b6b73532bea849ac5cc5c9ba10038, type: 3}
+  - {fileID: 21300000, guid: 9a31d6f358af64a489c0f475c70cb479, type: 3}
+  - {fileID: 21300000, guid: 63c28714f0f3d4f4db43d6b65236011c, type: 3}
+  - {fileID: 21300000, guid: a9d661a4c952f184aa3b514ecdd6067a, type: 3}
+  - {fileID: 21300000, guid: 771d0b0524661e343a822d1b899eb68e, type: 3}
+  - {fileID: 21300000, guid: 5d54b9158b66b6f469177413cfb2c41d, type: 3}
+  - {fileID: 21300000, guid: d5b83f35a14756a4f86ef0f7d3f3a689, type: 3}
+  - {fileID: 21300000, guid: 7f1c6f5645441d74a87fb9c47b99c67c, type: 3}
+  - {fileID: 21300000, guid: 2e262b7636c88784f88b46112a85dcd9, type: 3}
+  - {fileID: 21300000, guid: d489e686307400d41801859579f9c326, type: 3}
+  - {fileID: 21300000, guid: 7566552771708ea4fb46134f48ce2610, type: 3}
+  - {fileID: 21300000, guid: 9dfd506772fba7e41aeb1af259f9a5cf, type: 3}
+  - {fileID: 21300000, guid: e767642841f78744588b077e6766a771, type: 3}
+  - {fileID: 21300000, guid: 0301ac58a55f04548aed0929d985a57d, type: 3}
+  - {fileID: 21300000, guid: 736238688dec8e5459ffce03a200378a, type: 3}
+  - {fileID: 21300000, guid: 943e0898284926546a0070e63b3ad08e, type: 3}
+  - {fileID: 21300000, guid: 6c12f5398447a7e4993aaa8336d1de5b, type: 3}
+  - {fileID: 21300000, guid: 7b8ddf69da948c14d8beb7393a84f62c, type: 3}
+  - {fileID: 21300000, guid: ad73a97954daf6e43bdc1a9f8dd50080, type: 3}
+  - {fileID: 21300000, guid: e8706cc97ecaad84aaf053c6c08ef8d6, type: 3}
+  - {fileID: 21300000, guid: 26d016d9ea1c342418a972527c8069a1, type: 3}
+  - {fileID: 21300000, guid: be3738e9cb77344468553cca7ba02f05, type: 3}
+  - {fileID: 21300000, guid: 1e53a41a189e0954190b73eacc5c3d2e, type: 3}
+  - {fileID: 21300000, guid: 45b74d2a0c72fa940881acf4dd316d0d, type: 3}
+  - {fileID: 21300000, guid: 27108a4a03b6e2042afd78d9cdf16f19, type: 3}
+  - {fileID: 21300000, guid: d95e7d8ac3deb2f4d942ee78120e1141, type: 3}
+  - {fileID: 21300000, guid: e17e84dad8cac604897e915ef9cad92d, type: 3}
+  - {fileID: 21300000, guid: 2b61f1fa97e5dcc46862d479cd5426ef, type: 3}
+  - {fileID: 21300000, guid: 3fcc6a3b758a61b45878cc20e2ae77c9, type: 3}
+  - {fileID: 21300000, guid: 6832284bb1aac4a4e99e00e529e730bb, type: 3}
+  - {fileID: 21300000, guid: bcadeb8bd87c83046b0e869f53a4f8de, type: 3}
+  - {fileID: 21300000, guid: 32d450abff53d504ab929ece36179b1e, type: 3}
+  - {fileID: 21300000, guid: 3936c30c1cfc5f946962a6456bc8e76d, type: 3}
+  - {fileID: 21300000, guid: d895f91c66518d94694e55502d4d411e, type: 3}
+  - {fileID: 21300000, guid: 0be6d15c8ed03d843b107f217b482b6c, type: 3}
+  - {fileID: 21300000, guid: d954bf7cd70f7b94fa96d49e34b85061, type: 3}
+  - {fileID: 21300000, guid: a5bf10cc9bbeee6468a954088be219ba, type: 3}
+  - {fileID: 21300000, guid: 6ecdf9dcb6afe524284b4adf724dc0aa, type: 3}
+  - {fileID: 21300000, guid: 53e1d07d001e43a499f7e987d6927d81, type: 3}
+  - {fileID: 21300000, guid: e6f916ade209b8248996aaffd365f00f, type: 3}
+  - {fileID: 21300000, guid: ea6db2dd3352134458c501d6e919983d, type: 3}
+  - {fileID: 21300000, guid: f5767aed8fdc47d41b79460c7b257560, type: 3}
+  - {fileID: 21300000, guid: 920c21fd31a4dfc4ca75a1367b94cba7, type: 3}
+  - {fileID: 21300000, guid: 21541b2e88f93184099c3f1a8edf5e1d, type: 3}
+  - {fileID: 21300000, guid: 204bb63eb8706df468c5512b77279e4f, type: 3}
+  - {fileID: 21300000, guid: aeaff63e8688b42458f7312a305d2da6, type: 3}
+  - {fileID: 21300000, guid: 95d15d4e399ae9145869e14e7fba5809, type: 3}
+  - {fileID: 21300000, guid: 5859ae7e8beabc540a627a80ab66faf2, type: 3}
+  - {fileID: 21300000, guid: 6ad2f18ef1690674dbe954ea0065c03d, type: 3}
+  - {fileID: 21300000, guid: 1a27680f490181f46a7f9c0590445fde, type: 3}
+  - {fileID: 21300000, guid: bff852ef95398ea49ae595af2aef36d6, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - awCoin5
+  - awCoin1
+  - awCoin15
+  - awCoin4
+  - awCoin23
+  - awCoin34
+  - awCoin13
+  - awCoin45
+  - awCoin20
+  - awCoin6
+  - awCoin41
+  - awCoin38
+  - awCoin47
+  - awCoin62
+  - awCoin50
+  - awCoin19
+  - awCoin25
+  - awCoin36
+  - awCoin42
+  - awCoin63
+  - awCoin30
+  - awCoin54
+  - awCoin32
+  - awCoin7
+  - awCoin43
+  - awCoin59
+  - awCoin22
+  - awCoin17
+  - awCoin3
+  - awCoin40
+  - awCoin11
+  - awCoin57
+  - awCoin56
+  - awCoin65
+  - awCoin31
+  - awCoin55
+  - awCoin61
+  - awCoin46
+  - awCoin60
+  - awCoin8
+  - awCoin24
+  - awCoin18
+  - awCoin64
+  - awCoin49
+  - awCoin28
+  - awCoin35
+  - awCoin0
+  - awCoin33
+  - awCoin39
+  - awCoin52
+  - awCoin16
+  - awCoin27
+  - awCoin53
+  - awCoin26
+  - awCoin48
+  - awCoin51
+  - awCoin29
+  - awCoin44
+  - awCoin58
+  - awCoin12
+  - awCoin14
+  - awCoin37
+  - awCoin9
+  - awCoin2
+  - awCoin21
+  - awCoin10
   m_RenderDataMap: {}
   m_Tag: awCoinAtlas
   m_IsVariant: 0

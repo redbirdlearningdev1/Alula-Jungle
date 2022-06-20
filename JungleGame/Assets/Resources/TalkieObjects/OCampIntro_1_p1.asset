@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 4
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: eb1ddbd5917e54d46a8c2469d50c8a4a, type: 3}
+    audioClip:
+      m_AssetGUID: eb1ddbd5917e54d46a8c2469d50c8a4a
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_2_1_Red_1_T1
     audioString: Oh!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 4f1edc50ea1805f46bbc2d63c9e48968, type: 3}
+    audioClip:
+      m_AssetGUID: 4f1edc50ea1805f46bbc2d63c9e48968
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_2_1_Red_1_T2
     audioString: "It\u2019s good to see you,  Clogg!"
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 14693ea8df5fb574c8978549e79d5abb, type: 3}
+    audioClip:
+      m_AssetGUID: 14693ea8df5fb574c8978549e79d5abb
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_2_1_Clogg_2_T1
     audioString: "Ah,  it\u2019s you guys again."
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: c9699e7c749395449882b90d0866ed41, type: 3}
+    audioClip:
+      m_AssetGUID: c9699e7c749395449882b90d0866ed41
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_2_1_Wally_3_T1
     audioString: Y-Yep!
   - endTalkieAfterThisSegment: 0
@@ -99,7 +115,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 18c1a551bdb25af42b37beab588ef94d, type: 3}
+    audioClip:
+      m_AssetGUID: 18c1a551bdb25af42b37beab588ef94d
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_2_1_Clogg_4_T1
     audioString: It seems the unruly Prince is at it again.
   - endTalkieAfterThisSegment: 0
@@ -115,7 +135,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 2775a488009338c4fa9ad80121e07c48, type: 3}
+    audioClip:
+      m_AssetGUID: 2775a488009338c4fa9ad80121e07c48
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_2_1_Red_5_T1
     audioString: 'Unfortunately, '
   - endTalkieAfterThisSegment: 0
@@ -131,7 +155,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 3ee7e4f26cacae944861e0a77f168a3a, type: 3}
+    audioClip:
+      m_AssetGUID: 3ee7e4f26cacae944861e0a77f168a3a
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_2_1_Red_5_T2
     audioString: "but we\u2019re trying to find a way to stop him."
   - endTalkieAfterThisSegment: 0
@@ -147,7 +175,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 26e6173a3007f5b4a96bc83881fc0b48, type: 3}
+    audioClip:
+      m_AssetGUID: 26e6173a3007f5b4a96bc83881fc0b48
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_2_1_Clogg_6_T1
     audioString: I see.
   - endTalkieAfterThisSegment: 0
@@ -163,7 +195,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 05c1755034ef6854fb3d7bf05389a1a2, type: 3}
+    audioClip:
+      m_AssetGUID: 05c1755034ef6854fb3d7bf05389a1a2
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_2_1_Clogg_6_T2
     audioString: 'In any case, '
   - endTalkieAfterThisSegment: 0
@@ -179,7 +215,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 4c6975efabc6f3441a659229a92a8238, type: 3}
+    audioClip:
+      m_AssetGUID: 4c6975efabc6f3441a659229a92a8238
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_2_1_Clogg_6_T3
     audioString: would you be able to help me clean up this camp as well?
   - endTalkieAfterThisSegment: 0
@@ -195,7 +235,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 1d20160a5f7d7214a916000587700496, type: 3}
+    audioClip:
+      m_AssetGUID: 1d20160a5f7d7214a916000587700496
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_2_1_Red_7_T1
     audioString: Of course we will!
   - endTalkieAfterThisSegment: 0
@@ -211,7 +255,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: b9f4f458bcf3baa46a5cb713e3e2def0, type: 3}
+    audioClip:
+      m_AssetGUID: b9f4f458bcf3baa46a5cb713e3e2def0
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_2_1_Wally_8_T1
     audioString: You can count on us!
   - endTalkieAfterThisSegment: 0
@@ -227,7 +275,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 43343a3043de3214a96ef3a7688f1ac8, type: 3}
+    audioClip:
+      m_AssetGUID: 43343a3043de3214a96ef3a7688f1ac8
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_2_1_Clogg_9_T1
     audioString: Hmm... I know.
   - endTalkieAfterThisSegment: 0
@@ -243,6 +295,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: aac4dbfaf60a36040bf610388469c6b3, type: 3}
+    audioClip:
+      m_AssetGUID: aac4dbfaf60a36040bf610388469c6b3
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_2_1_Red_10_T1
     audioString: "Alright Explorer! Let\u2019s get started!"

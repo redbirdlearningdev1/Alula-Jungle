@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: churn_cw_obj
   m_EditorClassIdentifier: 
   word: churn
-  audio: {fileID: 8300000, guid: 6be4b3f9f410b054083a72d36f03f124, type: 3}
+  audio:
+    m_AssetGUID: 6be4b3f9f410b054083a72d36f03f124
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: c343f6978d962e848b6fbf7bb5e13d33, type: 3}
-  elkoninList: 180000000f00000021000000000000000000000000000000
+  elkoninList: 190000000f00000022000000000000000000000000000000
   elkoninCount: 3
   set: 14

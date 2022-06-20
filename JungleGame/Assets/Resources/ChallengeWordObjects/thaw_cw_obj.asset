@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: thaw_cw_obj
   m_EditorClassIdentifier: 
   word: thaw
-  audio: {fileID: 8300000, guid: 6fb9dbe98baeeb643abb7d6ca60ee389, type: 3}
+  audio:
+    m_AssetGUID: 6fb9dbe98baeeb643abb7d6ca60ee389
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: fdf19eef41fb6c548a80706cb49353d3, type: 3}
-  elkoninList: 280000001500000000000000000000000000000000000000
+  elkoninList: 290000001500000000000000000000000000000000000000
   elkoninCount: 2
   set: 20

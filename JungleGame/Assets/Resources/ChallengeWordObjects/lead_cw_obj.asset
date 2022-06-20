@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: lead_cw_obj
   m_EditorClassIdentifier: 
   word: lead
-  audio: {fileID: 8300000, guid: 41fbcfd402b77594fba8efbbce8de4eb, type: 3}
+  audio:
+    m_AssetGUID: 41fbcfd402b77594fba8efbbce8de4eb
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: d2c1de426f96569439519acf97cedb85, type: 3}
-  elkoninList: 1f0000000300000019000000000000000000000000000000
+  elkoninList: 20000000080000001a000000000000000000000000000000
   elkoninCount: 3
-  set: 2
+  set: 7

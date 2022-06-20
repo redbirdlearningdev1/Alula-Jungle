@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ParticleAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 52
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 29
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 427c03bdbb5c2b247aebf2ff9ef44bb5, type: 3}
+    totalSpriteSurfaceArea: 859067
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: af91dc60aa10051438e79b293334fd6a, type: 3}
+  - {fileID: 21300000, guid: 38d873f0ca56f9647b9abdc371d835ac, type: 3}
+  - {fileID: 21300000, guid: 74617bf0d06d7524691d00156ae3a6ff, type: 3}
+  - {fileID: 21300000, guid: f044e94218ac19a4f9116ad525d3a458, type: 3}
+  - {fileID: 21300000, guid: 37fcf572686c1c34a9db8e0f789a6767, type: 3}
+  - {fileID: 21300000, guid: 00e9264360da4b943a7bfcae1c5e4c7e, type: 3}
+  - {fileID: 21300000, guid: 35f68d8379340f84283a829e6df6056e, type: 3}
+  - {fileID: 21300000, guid: 791638847ee236c43b2daa0ea07eec32, type: 3}
+  - {fileID: 21300000, guid: 46d3a2c48a2793c42976e3a70cb49c5e, type: 3}
+  - {fileID: 21300000, guid: 9151a1d4c323aa844bc9ec3be7abb55e, type: 3}
+  - {fileID: 21300000, guid: c38edc45fb0de4e459662f786baa2e91, type: 3}
+  - {fileID: 21300000, guid: 8b99fed64412d5547894197de212525b, type: 3}
+  - {fileID: 21300000, guid: 1cf80ea78d375ab4c9aa8ef60944540f, type: 3}
+  - {fileID: 21300000, guid: df4e8668741e3194795ca119353963fd, type: 3}
+  - {fileID: 21300000, guid: 7f8af1e98f0994a4daff358e06f6b5ef, type: 3}
+  - {fileID: 21300000, guid: b954544a58aa1234d94a65773df27597, type: 3}
+  - {fileID: 21300000, guid: 27403dab992d95c47a926714a817a78c, type: 3}
+  - {fileID: 21300000, guid: a663c3fb9f3e51f42a9ee5ce33833f80, type: 3}
+  - {fileID: 21300000, guid: beac221c5ad9da845940d7cfa3c6fe67, type: 3}
+  - {fileID: 21300000, guid: 010f15acfbf031b4a999d9d32060e93a, type: 3}
+  - {fileID: 21300000, guid: ab2e5dbc6aa19c147b6590e04631b6fa, type: 3}
+  - {fileID: 21300000, guid: cfd9208daeeb1aa47b922421a7018d84, type: 3}
+  - {fileID: 21300000, guid: 7b09bb6e5134755409eb52699fada82d, type: 3}
+  - {fileID: 21300000, guid: 66f3dbaea4691d8479439cf75545a446, type: 3}
+  - {fileID: 21300000, guid: 79404fae2276157469473b363897e27a, type: 3}
+  - {fileID: 21300000, guid: 7af7eede222005441a023e814c7c8910, type: 3}
+  - {fileID: 21300000, guid: 7e54327f4e106bd47bc76708a4b016a3, type: 3}
+  - {fileID: 21300000, guid: a5e4a47f5897210419a45f22eae690f9, type: 3}
+  - {fileID: 21300000, guid: e68276afc2459374096b4e2771c9d207, type: 3}
+  - {fileID: 21300000, guid: 7ea5e0cf1b9731a42a8130515792c99c, type: 3}
+  - {fileID: 21300000, guid: 7bfcafef255f6b54e9e427e177294530, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - celesteParticle_3
+  - bubblesParticle_1
+  - ollieParticle_2
+  - ollieParticle_3
+  - brutusParticle
+  - juliusParticle_1
+  - lesterParticle_3
+  - spindleParticle_2
+  - spindleParticle_1
+  - ollieParticle_1
+  - sylvieParticle_3
+  - lesterParticle_4
+  - cloggParticle
+  - sylvieParticle_2
+  - marcusParticle
+  - sylvieParticle_1
+  - lesterParticle_2
+  - juliusParticle_2
+  - celesteParticle_2
+  - darwinParticle_2
+  - sand_particle
+  - celesteParticle_1
+  - wallyParticle
+  - redParticle
+  - juliusParticle_3
+  - bubblesParticle_2
+  - taxiParticle
+  - spindleParticle_3
+  - darwinParticle_1
+  - darwinParticle_3
+  - lesterParticle_1
+  m_RenderDataMap: {}
+  m_Tag: ParticleAtlas
+  m_IsVariant: 0

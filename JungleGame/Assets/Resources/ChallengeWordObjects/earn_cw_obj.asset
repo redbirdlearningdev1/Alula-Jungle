@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: earn_cw_obj
   m_EditorClassIdentifier: 
   word: earn
-  audio: {fileID: 8300000, guid: 36bca1252685af44e9d6844aef76cf41, type: 3}
+  audio:
+    m_AssetGUID: 36bca1252685af44e9d6844aef76cf41
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: fe5173d98f885e04c84a713333087bf3, type: 3}
-  elkoninList: 0f0000002100000000000000000000000000000000000000
+  elkoninList: 0f0000002200000000000000000000000000000000000000
   elkoninCount: 2
   set: 14

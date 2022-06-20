@@ -1272,7 +1272,6 @@ GameObject:
   - component: {fileID: 821042663}
   - component: {fileID: 821042662}
   - component: {fileID: 821042661}
-  - component: {fileID: 821042667}
   m_Layer: 5
   m_Name: FWS_TigerPaw
   m_TagString: Untagged
@@ -1422,18 +1421,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd8f016ee64a16c4185fe828160c5b45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &821042667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 821042659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79290a62fb8d9794588d5d834d891035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &822371581 stripped
@@ -2472,8 +2459,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: 3.5700073}
-  m_SizeDelta: {x: 0, y: 2.66}
+  m_AnchoredPosition: {x: 0.000061035156, y: 3.5700073}
+  m_SizeDelta: {x: 799.2, y: 532.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1714838802
 MonoBehaviour:

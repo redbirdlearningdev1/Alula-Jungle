@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 62796ee48b6fe7141abaf40d88e01dde, type: 3}
+    audioClip:
+      m_AssetGUID: 62796ee48b6fe7141abaf40d88e01dde
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Red_13_T1
     audioString: Oh!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: b730477ba5b66e34b86d70d00c7fc0cd, type: 3}
+    audioClip:
+      m_AssetGUID: b730477ba5b66e34b86d70d00c7fc0cd
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Wally_14_T1
     audioString: "What\u2019 was that?"
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 2d4ace47eb0b27a40a2e8dc95a167611, type: 3}
+    audioClip:
+      m_AssetGUID: 2d4ace47eb0b27a40a2e8dc95a167611
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Red_15_T1
     audioString: 'That''s weird, '
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 5a56984311314b4419a0183a600f6f2b, type: 3}
+    audioClip:
+      m_AssetGUID: 5a56984311314b4419a0183a600f6f2b
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Red_15_T2
     audioString: a signpost just popped up.
   - endTalkieAfterThisSegment: 0
@@ -99,7 +115,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 1b88a8dafa435704ca39333025132523, type: 3}
+    audioClip:
+      m_AssetGUID: 1b88a8dafa435704ca39333025132523
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Red_16_T1
     audioString: If you tap on it,  you can probably play the Princes challenge games!
   - endTalkieAfterThisSegment: 0
@@ -115,7 +135,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: ae290fe9ad2541344b680718066d0867, type: 3}
+    audioClip:
+      m_AssetGUID: ae290fe9ad2541344b680718066d0867
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Red_17_T1
     audioString: You should try it when you want to practice your skills!
   - endTalkieAfterThisSegment: 0
@@ -131,7 +155,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: bf8eb3cc6ee13184783318fae290b7f6, type: 3}
+    audioClip:
+      m_AssetGUID: bf8eb3cc6ee13184783318fae290b7f6
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Wally_18_T1
     audioString: I think you should consider using it,  Explorer
   - endTalkieAfterThisSegment: 0
@@ -147,6 +175,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 9c74e7a8cebf6c2408484eb618b62299, type: 3}
+    audioClip:
+      m_AssetGUID: 9c74e7a8cebf6c2408484eb618b62299
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_6_Wally_19_T2
     audioString: Practice makes perfect.

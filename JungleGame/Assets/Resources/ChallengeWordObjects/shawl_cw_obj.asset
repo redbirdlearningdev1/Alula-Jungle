@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: shawl_cw_obj
   m_EditorClassIdentifier: 
   word: shawl
-  audio: {fileID: 8300000, guid: c80d90ae560ca1d40a238dcdabe98862, type: 3}
+  audio:
+    m_AssetGUID: c80d90ae560ca1d40a238dcdabe98862
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 728632e535dacd2449ef1e16194223db, type: 3}
-  elkoninList: 26000000150000001f000000000000000000000000000000
+  elkoninList: 270000001500000020000000000000000000000000000000
   elkoninCount: 3
   set: 20

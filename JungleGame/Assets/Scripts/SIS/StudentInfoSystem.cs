@@ -8,10 +8,18 @@ public static class StudentInfoSystem
 
     public static StudentPlayerData GetCurrentProfile()
     {
-        // by default - use profile 1
+        // by default - use profile 1 if in editor
+#if UNITY_EDITOR
         if (currentStudentPlayer == null)
         {
             SetStudentPlayer(StudentIndex.student_1);
+        }
+#endif
+
+        // if current play is null in the game - send error
+        if (currentStudentPlayer == null)
+        {
+            GameManager.instance.SendError("StudentInfoSystem", "Current player is null");
         }
         return currentStudentPlayer;
     }
@@ -21,18 +29,16 @@ public static class StudentInfoSystem
         SaveStudentPlayerData();
         currentStudentPlayer = LoadSaveSystem.LoadStudentData(index, true); // load new student data
 
-        SettingsManager.instance.LoadSettingsFromProfile(); // load profile settings
         DropdownToolbar.instance.LoadToolbarDataFromProfile(); // load profile coins
         GameManager.instance.SendLog("StudentInfoSystem", "set current profile to: " + index);
+        SettingsManager.instance.LoadScrollSettingsFromProfile(); // load in settings
     }
 
     private static void SetMostRecentProfile(StudentIndex index)
     {
-        GameManager.instance.SendLog("StudentInfoSystem", "set most recent profile to: " + index);
-
-        var data1 = LoadSaveSystem.LoadStudentData(StudentIndex.student_1, false);
-        var data2 = LoadSaveSystem.LoadStudentData(StudentIndex.student_2, false);
-        var data3 = LoadSaveSystem.LoadStudentData(StudentIndex.student_3, false);
+        var data1 = LoadSaveSystem.LoadStudentData(StudentIndex.student_1, true);
+        var data2 = LoadSaveSystem.LoadStudentData(StudentIndex.student_2, true);
+        var data3 = LoadSaveSystem.LoadStudentData(StudentIndex.student_3, true);
 
         data1.mostRecentProfile = false;
         data2.mostRecentProfile = false;
@@ -50,6 +56,8 @@ public static class StudentInfoSystem
                 data3.mostRecentProfile = true;
                 break;
         }
+
+        GameManager.instance.SendLog("StudentInfoSystem", "set most recent profile to: " + index);
 
         LoadSaveSystem.SaveStudentData(data1);
         LoadSaveSystem.SaveStudentData(data2);
@@ -69,7 +77,6 @@ public static class StudentInfoSystem
             SetMostRecentProfile(currentStudentPlayer.studentIndex); // make profile most recent
             GameManager.instance.SendLog("StudentInfoSystem", "saving current player data - " + currentStudentPlayer.studentIndex);
         }
-            
         else
             GameManager.instance.SendLog("StudentInfoSystem", "could not save player data - current player is null");
     }
@@ -91,6 +98,8 @@ public static class StudentInfoSystem
 
     public static void ResetProfile(StudentIndex index)
     {
+        GameManager.instance.SendLog("SIS", "reseting profile: " + index);
+
         LoadSaveSystem.ResetStudentData(index);
     }
 
@@ -99,13 +108,24 @@ public static class StudentInfoSystem
         currentStudentPlayer.currStoryBeat = (StoryBeat)((int)currentStudentPlayer.currStoryBeat + 1);
     }
 
-    
+    // PLAYER GAME SIMULATION METHODS
+
+    public static void ResetGameSimulationProfile()
+    {
+        ResetProfile(StudentIndex.game_simulation_profile);
+    }
+
 
     /* 
     ################################################
     #   STICKER METHODS
     ################################################
     */
+
+    public static void ResetStickerSimulationProfile()
+    {
+        ResetProfile(StudentIndex.sticker_simulation_profile);
+    }
 
     public static bool InventoryContainsSticker(Sticker sticker)
     {
@@ -153,7 +173,7 @@ public static class StudentInfoSystem
         return 0;
     }
 
-    public static void AddStickerToInventory(Sticker sticker)
+    public static void AddStickerToInventory(Sticker sticker, bool updateText)
     {
         if (currentStudentPlayer != null)
         {
@@ -163,7 +183,9 @@ public static class StudentInfoSystem
                 var newData = new InventoryStickerData(sticker);
                 currentStudentPlayer.stickerInventory.Add(newData);
                 SaveStudentPlayerData();
-                DropdownToolbar.instance.UpdateSilverCoins();
+
+                if (updateText)
+                    DropdownToolbar.instance.UpdateSilverCoins();
             }
             else
             {
@@ -196,7 +218,7 @@ public static class StudentInfoSystem
         }
     }
 
-    public static void GlueStickerToBoard(Sticker sticker, Vector2 pos, StickerBoardType board)
+    public static void GlueStickerToBoard(Sticker sticker, Vector2 pos, Vector2 scale, float zAngle, StickerBoardType board)
     {
         StickerData data = new StickerData();
 
@@ -209,6 +231,8 @@ public static class StudentInfoSystem
                 data.rarity = sticker.rarity;
                 data.id = sticker.id;
                 data.boardPos = pos;
+                data.scale = scale;
+                data.zAngle = zAngle;
 
                 // add to board list
                 currentStudentPlayer.classicStickerBoard.stickers.Add(data);
@@ -221,6 +245,8 @@ public static class StudentInfoSystem
                 data.rarity = sticker.rarity;
                 data.id = sticker.id;
                 data.boardPos = pos;
+                data.scale = scale;
+                data.zAngle = zAngle;
 
                 // add to board list
                 currentStudentPlayer.mossyStickerBoard.stickers.Add(data);
@@ -233,6 +259,8 @@ public static class StudentInfoSystem
                 data.rarity = sticker.rarity;
                 data.id = sticker.id;
                 data.boardPos = pos;
+                data.scale = scale;
+                data.zAngle = zAngle;
 
                 // add to board list
                 currentStudentPlayer.emeraldStickerBoard.stickers.Add(data);
@@ -245,6 +273,8 @@ public static class StudentInfoSystem
                 data.rarity = sticker.rarity;
                 data.id = sticker.id;
                 data.boardPos = pos;
+                data.scale = scale;
+                data.zAngle = zAngle;
 
                 // add to board list
                 currentStudentPlayer.beachStickerBoard.stickers.Add(data);
@@ -326,5 +356,88 @@ public static class StudentInfoSystem
             case StickerBoardType.Beach:
                 return currentStudentPlayer.beachStickerBoard;
         }
+    }
+
+    public static int GetTotalStickerCount()
+    {
+        int totalStickers = 0;
+        foreach (var sticker in GetCurrentProfile().stickerInventory)
+        {
+            totalStickers += sticker.count;
+        }
+        return totalStickers;
+    }
+
+
+    /////////////////// SAVING DATA FOR PLAYER REPORT ///////////////////
+
+    public static void SavePlayerPhonemeAttempt(ActionWordEnum phoneme, bool success)
+    {
+        // find phoneme data in current player and update
+        foreach (var data in currentStudentPlayer.phonemeData)
+        {
+            if (data.actionWordEnum == phoneme)
+            {
+                data.attempts.Add(success);
+                SaveStudentPlayerData();
+                return;
+            }
+        }
+    }
+
+    public static void SavePlayerPhonemeAttempt(ElkoninValue phoneme, bool success)
+    {
+        // find phoneme data in current player and update
+        foreach (var data in currentStudentPlayer.phonemeData)
+        {
+            if (data.elkoninValue == phoneme)
+            {
+                data.attempts.Add(success);
+                SaveStudentPlayerData();
+                return;
+            }
+        }
+    }
+
+    public static void SavePlayerChallengeRoundAttempt(GameType game, bool _success, ChallengeWord _word, int _diff)
+    {
+        ChallengeRoundData newData = new ChallengeRoundData();
+        newData.success = _success;
+        newData.challengeWord = _word;
+        newData.difficulty = _diff;
+        newData.dateTime = System.DateTime.Now;
+
+        switch (game)
+        {
+            case GameType.WordFactoryBlending:
+                currentStudentPlayer.blendData.Add(newData);
+                break;
+            
+            case GameType.WordFactorySubstituting:
+                currentStudentPlayer.subData.Add(newData);
+                break;
+
+            case GameType.WordFactoryBuilding:
+                currentStudentPlayer.buildData.Add(newData);
+                break;
+
+            case GameType.WordFactoryDeleting:
+                currentStudentPlayer.deleteData.Add(newData);
+                break;
+
+            case GameType.TigerPawCoins:
+                currentStudentPlayer.TPCoinsData.Add(newData);
+                break;
+            
+            case GameType.TigerPawPhotos:
+                currentStudentPlayer.TPPhotosData.Add(newData);
+                break;
+
+            case GameType.Password:
+                currentStudentPlayer.passwordData.Add(newData);
+                break;
+        }
+
+        SaveStudentPlayerData();
     }
 }

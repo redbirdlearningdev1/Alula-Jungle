@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: lark_cw_obj
   m_EditorClassIdentifier: 
   word: lark
-  audio: {fileID: 8300000, guid: ad11e1f6690d7cd4298a6750567e4bf5, type: 3}
+  audio:
+    m_AssetGUID: ad11e1f6690d7cd4298a6750567e4bf5
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: a1cb5a7c3a5af32488c8ad894be3bb3c, type: 3}
-  elkoninList: 1f0000000e0000001e000000000000000000000000000000
+  elkoninList: 200000000e0000001f000000000000000000000000000000
   elkoninCount: 3
   set: 13

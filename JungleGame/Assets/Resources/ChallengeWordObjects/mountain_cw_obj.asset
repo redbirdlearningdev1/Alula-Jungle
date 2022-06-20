@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: mountain_cw_obj
   m_EditorClassIdentifier: 
   word: mountain
-  audio: {fileID: 8300000, guid: 92104a437bd06454798603ee8e51c9ec, type: 3}
+  audio:
+    m_AssetGUID: 92104a437bd06454798603ee8e51c9ec
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 292b60604d775ef4ebf1572648a7778d, type: 3}
-  elkoninList: 200000001400000021000000270000000300000021000000
+  elkoninList: 210000001400000022000000280000000300000022000000
   elkoninCount: 6
   set: 19

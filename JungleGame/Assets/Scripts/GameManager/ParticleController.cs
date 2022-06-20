@@ -255,8 +255,11 @@ public class ParticleController : MonoBehaviour
                         break;
                 }
 
+                // get new fun particle script
+                FunParticle currFunParticle = currentParticle.GetComponent<FunParticle>();
+
                 // set new rate
-                currentRate = currentParticle.GetComponent<FunParticle>().rate;
+                currentRate = currFunParticle.rate;
 
                 // spawn particle
                 Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -267,7 +270,8 @@ public class ParticleController : MonoBehaviour
                 particle.GetComponent<FunParticle>().StartParticle();
 
                 // play pop sound effect!
-                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 0.1f, "particle_spawn", 0.7f);
+                //if (currFunParticle.spawnSound != null)
+                    //AudioManager.instance.PlayFX_oneShot(currFunParticle.spawnSound, 0.1f, "particle_spawn");
             }
         }
     }
@@ -285,10 +289,10 @@ public class ParticleController : MonoBehaviour
                 currentParticle = juliusJewel1;
                 break;
             case Chapter.chapter_4:
+            case Chapter.chapter_5:
                 currentParticle = juliusJewel2;
                 break;
-            case Chapter.chapter_5:
-            case Chapter.chapter_final:
+            case Chapter.chapter_6:
                 currentParticle = juliusJewel3;
                 break;
         }
@@ -310,7 +314,7 @@ public class ParticleController : MonoBehaviour
 
         if (nextCharacter > 14)
         {
-            nextCharacter = 0;
+            nextCharacter = 1;
         }
         currentParticleCharacter = (TalkieCharacter)nextCharacter;
     }

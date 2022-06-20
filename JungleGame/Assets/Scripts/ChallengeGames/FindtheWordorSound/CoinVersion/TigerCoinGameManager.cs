@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class TigerCoinGameManager : MonoBehaviour
 {
@@ -27,20 +29,17 @@ public class TigerCoinGameManager : MonoBehaviour
     [SerializeField] private Transform CoinEndPos;
 
     [SerializeField] private List<UniversalCoinImage> waterCoins;
-    
+
 
     // other variables
-    [SerializeField]  private ChallengeWord currentWord;
-    [SerializeField]  private ElkoninValue currentTargetValue;
-    [SerializeField]  private ChallengeWord currentTargetWord;
+    [SerializeField] private ChallengeWord currentWord;
+    [SerializeField] private ElkoninValue currentTargetValue;
+    [SerializeField] private ChallengeWord currentTargetWord;
+    private List<ChallengeWord> prevWords;
 
     private int numWins = 0;
     private int numMisses = 0;
     private bool playingCoinAudio = false;
-
-    private List<ChallengeWord> globalWordList;
-    private List<ChallengeWord> unusedWordList;
-    private List<ChallengeWord> usedWordList;
 
 
     [Header("Tutorial")]
@@ -59,11 +58,11 @@ public class TigerCoinGameManager : MonoBehaviour
     public ChallengeWord coinsScripted4;
     public ChallengeWord coinsScripted5;
 
-    
-    
+
+
 
     public bool testthis;
-    
+
 
     void Awake()
     {
@@ -92,6 +91,23 @@ public class TigerCoinGameManager : MonoBehaviour
         PregameSetup();
     }
 
+    public void SkipGame()
+    {
+        StopAllCoroutines();
+        // play win tune
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+        // save tutorial done to SIS
+        StudentInfoSystem.GetCurrentProfile().tigerPawCoinsTutorial = true;
+        // times missed set to 0
+        numMisses = 0;
+        // update AI data
+        AIData(StudentInfoSystem.GetCurrentProfile());
+        // calculate and show stars
+        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+        // remove all raycast blockers
+        RaycastBlockerController.instance.ClearAllRaycastBlockers();
+    }
+
     void Update()
     {
         // dev stuff for skipping minigame
@@ -101,19 +117,7 @@ public class TigerCoinGameManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.S))
                 {
-                    StopAllCoroutines();
-                    // play win tune
-                    AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-                    // save tutorial done to SIS
-                    StudentInfoSystem.GetCurrentProfile().tigerPawCoinsTutorial = true;
-                    // times missed set to 0
-                    numMisses = 0;
-                    // update AI data
-                    AIData(StudentInfoSystem.GetCurrentProfile());
-                    // calculate and show stars
-                    StarAwardController.instance.AwardStarsAndExit(CalculateStars());
-                    // remove all raycast blockers
-                    RaycastBlockerController.instance.ClearAllRaycastBlockers();
+                    SkipGame();
                 }
             }
         }
@@ -121,12 +125,8 @@ public class TigerCoinGameManager : MonoBehaviour
 
     private void PregameSetup()
     {
-        globalWordList = new List<ChallengeWord>();
-        globalWordList.AddRange(ChallengeWordDatabase.GetChallengeWords(StudentInfoSystem.GetCurrentProfile().actionWordPool));
-        unusedWordList = globalWordList;
-        usedWordList = new List<ChallengeWord>();
+        prevWords = new List<ChallengeWord>();
         pattern.baseState();
-
         StartCoroutine(StartGame());
     }
 
@@ -159,10 +159,9 @@ public class TigerCoinGameManager : MonoBehaviour
             tutorialEvent++;
             polaroidC.SetPolaroid(currentWord);
             currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(currentWord.set);
-            int rand = Random.Range(0,5);
+            int rand = Random.Range(0, 5);
             waterCoins[rand].SetValue(currentTargetValue);
         }
-
         //Scripted Tiger Paw Photo
         else if (StudentInfoSystem.GetCurrentProfile().tPawCoinPlayed == 0 || testthis)
         {
@@ -176,7 +175,7 @@ public class TigerCoinGameManager : MonoBehaviour
                     waterCoins[1].SetValue(ElkoninValue.hello);
                     waterCoins[2].SetValue(currentTargetValue);
                     waterCoins[3].SetValue(ElkoninValue.poop);
-                    waterCoins[4].SetValue(ElkoninValue.think); 
+                    waterCoins[4].SetValue(ElkoninValue.think);
                     break;
                 case 1:
                     polaroidC.SetPolaroid(coinsScripted2);
@@ -185,7 +184,7 @@ public class TigerCoinGameManager : MonoBehaviour
                     waterCoins[1].SetValue(ElkoninValue.listen);
                     waterCoins[3].SetValue(currentTargetValue);
                     waterCoins[2].SetValue(ElkoninValue.explorer);
-                    waterCoins[4].SetValue(ElkoninValue.poop); 
+                    waterCoins[4].SetValue(ElkoninValue.poop);
                     break;
                 case 2:
                     polaroidC.SetPolaroid(coinsScripted3);
@@ -194,7 +193,7 @@ public class TigerCoinGameManager : MonoBehaviour
                     waterCoins[1].SetValue(ElkoninValue.hello);
                     waterCoins[0].SetValue(currentTargetValue);
                     waterCoins[3].SetValue(ElkoninValue.think);
-                    waterCoins[4].SetValue(ElkoninValue.listen); 
+                    waterCoins[4].SetValue(ElkoninValue.listen);
                     break;
                 case 3:
                     polaroidC.SetPolaroid(coinsScripted4);
@@ -203,7 +202,7 @@ public class TigerCoinGameManager : MonoBehaviour
                     waterCoins[1].SetValue(ElkoninValue.think);
                     waterCoins[4].SetValue(currentTargetValue);
                     waterCoins[3].SetValue(ElkoninValue.orcs);
-                    waterCoins[2].SetValue(ElkoninValue.hello); 
+                    waterCoins[2].SetValue(ElkoninValue.hello);
                     break;
                 case 4:
                     polaroidC.SetPolaroid(coinsScripted5);
@@ -212,33 +211,43 @@ public class TigerCoinGameManager : MonoBehaviour
                     waterCoins[1].SetValue(ElkoninValue.listen);
                     waterCoins[2].SetValue(currentTargetValue);
                     waterCoins[3].SetValue(ElkoninValue.explorer);
-                    waterCoins[4].SetValue(ElkoninValue.mudslide); 
+                    waterCoins[4].SetValue(ElkoninValue.mudslide);
                     break;
             }
             scriptedEvent++;
         }
-        else
+        else if (GameManager.instance.practiceModeON)
         {
-            // get random word
+            // use AI word selection
             List<ChallengeWord> CurrentChallengeList = new List<ChallengeWord>();
-            CurrentChallengeList = AISystem.ChallengeWordSelectionTigerPawCoin(StudentInfoSystem.GetCurrentProfile());
+            CurrentChallengeList = AISystem.ChallengeWordSelectionTigerPawCoin(prevWords, GameManager.instance.practiceDifficulty, GameManager.instance.practicePhonemes);
             currentWord = CurrentChallengeList[0];
             polaroidC.SetPolaroid(currentWord);
-            
-
-            //currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(currentWord.set);
-
-            //print ("current value: " + currentTargetValue);
+            prevWords.Add(currentWord);
 
             // set coin options
             List<ActionWordEnum> coinOptions = new List<ActionWordEnum>();
-            //coinOptions.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
-            //coinOptions.Remove(currentWord.set);
             coinOptions = AISystem.TigerPawCoinsCoinSelection(StudentInfoSystem.GetCurrentProfile(), CurrentChallengeList);
+            currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(currentWord.set);
+            for (int i = 0; i < 5; i++)
+            {
+                int rand = Random.Range(0, coinOptions.Count);
+                waterCoins[i].SetActionWordValue(coinOptions[rand]);
+                coinOptions.RemoveAt(rand);
+            }
+        }
+        else
+        {
+            // use AI word selection
+            List<ChallengeWord> CurrentChallengeList = new List<ChallengeWord>();
+            CurrentChallengeList = AISystem.ChallengeWordSelectionTigerPawCoin(prevWords);
+            currentWord = CurrentChallengeList[0];
+            polaroidC.SetPolaroid(currentWord);
+            prevWords.Add(currentWord);
 
-            //print ("coin options: " + coinOptions.Count);
-
-            //int correctIndex = Random.Range(0, waterCoins.Count);
+            // set coin options
+            List<ActionWordEnum> coinOptions = new List<ActionWordEnum>();
+            coinOptions = AISystem.TigerPawCoinsCoinSelection(StudentInfoSystem.GetCurrentProfile(), CurrentChallengeList);
             currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(currentWord.set);
             for (int i = 0; i < 5; i++)
             {
@@ -249,8 +258,6 @@ public class TigerCoinGameManager : MonoBehaviour
         }
 
 
-        print ("current value: " + currentTargetValue);
-
         yield return new WaitForSeconds(0.5f);
 
         polaroidC.gameObject.transform.position = polaroidStartPos.position;
@@ -258,54 +265,60 @@ public class TigerCoinGameManager : MonoBehaviour
 
         // return pattern to base state
         pattern.baseState();
-        
-        yield return new WaitForSeconds(1f);
+
+        // yield return new WaitForSeconds(0.5f);
 
         // tutorial stuff
         if (playTutorial && tutorialEvent == 1)
         {
             // play tutorial intro 1-2
-            List<AudioClip> clips = new List<AudioClip>();
+            List<AssetReference> clips = new List<AssetReference>();
             clips.Add(GameIntroDatabase.instance.tigerPawCoinIntro1);
             clips.Add(GameIntroDatabase.instance.tigerPawCoinIntro2);
+
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[0]));
+            yield return cd.coroutine;
+
+            CoroutineWithData<float> cd2 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[1]));
+            yield return cd2.coroutine;
+
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clips);
-            yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
+            yield return new WaitForSeconds(cd.GetResult() + cd2.GetResult() + 1f);
 
             // play tutorial intro 3
-            AudioClip clip = GameIntroDatabase.instance.tigerPawCoinIntro3;
+            AssetReference clip = GameIntroDatabase.instance.tigerPawCoinIntro3;
+
+            CoroutineWithData<float> cd3 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd3.coroutine;
+
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Julius, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
+            yield return new WaitForSeconds(cd3.GetResult() + 1f);
 
             // play tutorial intro 4
             clip = GameIntroDatabase.instance.tigerPawCoinIntro4;
+
+            CoroutineWithData<float> cd4 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd4.coroutine;
+
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Julius, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
+            yield return new WaitForSeconds(cd4.GetResult() + 1f);
         }
-        else if (!playIntro)
+        else if (!GameManager.instance.practiceModeON)
         {
-            // short pause before start
-            yield return new WaitForSeconds(1f);
-
-            // play start 1
-            AudioClip clip = GameIntroDatabase.instance.tigerPawCoinStart;
-            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
-        }
-        else
-        {
-            AudioClip clip = null;
-
-            if (StudentInfoSystem.GetCurrentProfile().currentChapter < Chapter.chapter_5)
+            if (!playIntro)
             {
-                clip = GameIntroDatabase.instance.tigerPawCoinNewPhotosChapters1_4[Random.Range(0, GameIntroDatabase.instance.tigerPawCoinNewPhotosChapters1_4.Count)];
-            }   
-            else
-            {
-                clip = GameIntroDatabase.instance.tigerPawCoinNewPhotosChapters1_4[Random.Range(0, GameIntroDatabase.instance.tigerPawCoinNewPhotosChapter5.Count)];
-            }       
+                // short pause before start
+                //yield return new WaitForSeconds(1f);
 
-            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
+                // play start 1
+                AssetReference clip = GameIntroDatabase.instance.tigerPawCoinStart;
+
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd.coroutine;
+
+                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                yield return new WaitForSeconds(cd.GetResult());
+            }
         }
 
         if (!playIntro)
@@ -320,8 +333,7 @@ public class TigerCoinGameManager : MonoBehaviour
         yield return new WaitForSeconds(.6f);
 
         polaroidC.LerpScale(1f, 0f);
-        yield return new WaitForSeconds(0.85f);
-
+        yield return new WaitForSeconds(0.6f);
 
         for (int i = 0; i < 5; i++)
         {
@@ -354,11 +366,18 @@ public class TigerCoinGameManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             // play tutorial intro 5-6
-            List<AudioClip> clips = new List<AudioClip>();
+            List<AssetReference> clips = new List<AssetReference>();
             clips.Add(GameIntroDatabase.instance.tigerPawCoinIntro5);
             clips.Add(GameIntroDatabase.instance.tigerPawCoinIntro6);
+
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[0]));
+            yield return cd.coroutine;
+
+            CoroutineWithData<float> cd2 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[1]));
+            yield return cd2.coroutine;
+
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clips);
-            yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
+            yield return new WaitForSeconds(cd.GetResult() + cd2.GetResult() + 1f);
         }
 
         // turn on raycaster
@@ -400,36 +419,11 @@ public class TigerCoinGameManager : MonoBehaviour
         playingCoinAudio = true;
 
         coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.2f);
-        AudioManager.instance.PlayPhoneme(ChallengeWordDatabase.ElkoninValueToActionWord(coin.value));
+        AudioManager.instance.PlayPhoneme(coin.value);
         yield return new WaitForSeconds(0.5f);
         coin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
 
         playingCoinAudio = false;
-    }
-
-
-    private ChallengeWord GetUnusedWord()
-    {
-        // reset unused pool if empty
-        if (unusedWordList.Count <= 0)
-        {
-            unusedWordList.Clear();
-            unusedWordList.AddRange(globalWordList);
-        }
-
-        int index = Random.Range(0, unusedWordList.Count);
-        ChallengeWord word = unusedWordList[index];
-
-        // make sure word is not being used
-        if (usedWordList.Contains(word))
-        {
-            unusedWordList.Remove(word);
-            return GetUnusedWord();
-        }
-
-        unusedWordList.Remove(word);
-        usedWordList.Add(word);
-        return word;
     }
 
     public void EvaluateWaterCoin(UniversalCoinImage coin)
@@ -437,7 +431,14 @@ public class TigerCoinGameManager : MonoBehaviour
         // turn off raycaster
         TigerCoinRayCaster.instance.isOn = false;
 
-        if (coin.value == currentTargetValue)
+        bool success = (coin.value == currentTargetValue);
+        // only track challenge round attempt if not in tutorial AND not in practice mode
+        if (!playTutorial && !GameManager.instance.practiceModeON)
+        {
+            StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.TigerPawCoins, success, currentWord, 0); //// TODO: add player difficulty once it is available
+        }
+
+        if (success)
         {
             StartCoroutine(PostRound(true));
         }
@@ -455,7 +456,7 @@ public class TigerCoinGameManager : MonoBehaviour
         {
             StartCoroutine(LerpMoveObject(waterCoins[0].transform, CoinPos1.position, .2f));
         }
-        else if(currCoin.name == "Coin2")
+        else if (currCoin.name == "Coin2")
         {
             StartCoroutine(LerpMoveObject(waterCoins[1].transform, CoinPos2.position, .2f));
         }
@@ -481,7 +482,7 @@ public class TigerCoinGameManager : MonoBehaviour
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
             pattern.correct();
             correctCoins[numWins].SetActive(true);
-            numWins++; 
+            numWins++;
         }
         else
         {
@@ -499,6 +500,9 @@ public class TigerCoinGameManager : MonoBehaviour
             incorrectCoins[numMisses].SetActive(true);
             numMisses++;
         }
+
+        // play popup
+        StartCoroutine(PlayPopup(win));
 
         Tiger.TigerDeal();
         yield return new WaitForSeconds(.4f);
@@ -529,10 +533,31 @@ public class TigerCoinGameManager : MonoBehaviour
         {
             StartCoroutine(LerpMoveObject(waterCoins[i].transform, CoinEndPos.position, .2f));
         }
-        yield return new WaitForSeconds(0.5f);
+
+        yield return new WaitForSeconds(1f);
+
         // reset coin positions
         foreach (var coin in waterCoins)
             coin.transform.position = CoinStartPos.position;
+            
+        // win or lose ?
+        if (numWins == 3)
+        {
+            StartCoroutine(WinRoutine());
+            yield break;
+        }
+        else if (numMisses == 3)
+        {
+            StartCoroutine(LoseRoutine());
+            yield break;
+        }
+
+        StartCoroutine(StartGame());
+    }
+
+    private IEnumerator PlayPopup(bool win)
+    {
+        yield return new WaitForSeconds(1f);
 
         // play appropriate popup
         if (win)
@@ -540,43 +565,60 @@ public class TigerCoinGameManager : MonoBehaviour
             if (playTutorial && tutorialEvent == 1)
             {
                 // play start 1
-                AudioClip clip = GameIntroDatabase.instance.tigerPawCoinIntro7;
+                AssetReference clip = GameIntroDatabase.instance.tigerPawCoinIntro7;
+
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd.coroutine;
+
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(clip.length + 1f); 
+                yield return new WaitForSeconds(cd.GetResult() + 1f);
             }
             else if (numWins < 3)
             {
-                // play julius lose popup
-                AudioClip clip = null;
-
-                if (StudentInfoSystem.GetCurrentProfile().currentChapter < Chapter.chapter_5)
+                if (GameManager.DeterminePlayPopup())
                 {
-                    clip = GameIntroDatabase.instance.tigerPawCoinJuliusLoseChapters1_4[Random.Range(0, GameIntroDatabase.instance.tigerPawCoinJuliusLoseChapters1_4.Count)];
-                }   
-                else
-                {
-                    clip = GameIntroDatabase.instance.tigerPawCoinJuliusLoseChapter5[Random.Range(0, GameIntroDatabase.instance.tigerPawCoinJuliusLoseChapter5.Count)];
-                }       
+                   // play julius lose popup
+                    AssetReference clip = null;
 
-                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                    if (StudentInfoSystem.GetCurrentProfile().currentChapter < Chapter.chapter_5)
+                    {
+                        clip = GameIntroDatabase.instance.tigerPawCoinJuliusLoseChapters1_4[Random.Range(0, GameIntroDatabase.instance.tigerPawCoinJuliusLoseChapters1_4.Count)];
+                    }
+                    else
+                    {
+                        clip = GameIntroDatabase.instance.tigerPawCoinJuliusLoseChapter5[Random.Range(0, GameIntroDatabase.instance.tigerPawCoinJuliusLoseChapter5.Count)];
+                    }
+
+                    CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                    yield return cd.coroutine;
+
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                    //yield return new WaitForSeconds(cd.GetResult() + 1f); 
+                }
+                
             }
             else
             {
-                // play julius final lose popup
-                AudioClip clip = null;
-
-                if (StudentInfoSystem.GetCurrentProfile().currentChapter < Chapter.chapter_5)
+                if (GameManager.DeterminePlayPopup())
                 {
-                    clip = GameIntroDatabase.instance.tigerPawCoinFinalJuliusLoseChapters1_4;
-                }   
-                else
-                {
-                    clip = GameIntroDatabase.instance.tigerPawCoinFinalJuliusLoseChapters1_4;
-                }       
+                    // play julius final lose popup
+                    AssetReference clip = null;
 
-                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                    if (StudentInfoSystem.GetCurrentProfile().currentChapter < Chapter.chapter_5)
+                    {
+                        clip = GameIntroDatabase.instance.tigerPawCoinFinalJuliusLoseChapters1_4;
+                    }
+                    else
+                    {
+                        clip = GameIntroDatabase.instance.tigerPawCoinFinalJuliusLoseChapters1_4;
+                    }
+
+                    CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                    yield return cd.coroutine;
+
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
+                    //yield return new WaitForSeconds(cd.GetResult() + 1f);
+                }
             }
         }
         else
@@ -584,50 +626,43 @@ public class TigerCoinGameManager : MonoBehaviour
             if (numMisses < 3)
             {
                 // play julius win popup
-                AudioClip clip = null;
+                AssetReference clip = null;
 
                 if (StudentInfoSystem.GetCurrentProfile().currentChapter < Chapter.chapter_5)
                 {
                     clip = GameIntroDatabase.instance.tigerPawCoinJuliusWinChapters1_4[Random.Range(0, GameIntroDatabase.instance.tigerPawCoinJuliusWinChapters1_4.Count)];
-                }   
+                }
                 else
                 {
                     clip = GameIntroDatabase.instance.tigerPawCoinJuliusWinChapter5[Random.Range(0, GameIntroDatabase.instance.tigerPawCoinJuliusWinChapter5.Count)];
-                }   
+                }
+
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd.coroutine;
 
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd.GetResult());
             }
             else
             {
                 // play julius final win popup
-                AudioClip clip = null;
+                AssetReference clip = null;
 
                 if (StudentInfoSystem.GetCurrentProfile().currentChapter < Chapter.chapter_5)
                 {
                     clip = GameIntroDatabase.instance.tigerPawCoinFinalJuliusWinChapters1_4;
-                }   
+                }
                 else
                 {
                     clip = GameIntroDatabase.instance.tigerPawCoinFinalJuliusWinChapters1_4;
-                }       
+                }
+
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd.coroutine;
 
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Julius, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd.GetResult());
             }
-        }
-
-        if (numWins == 3)
-        {
-            StartCoroutine(WinRoutine());
-        }
-        else if (numMisses == 3)
-        {
-           StartCoroutine(LoseRoutine());
-        }
-        else
-        {
-            StartCoroutine(StartGame());
         }
     }
 
@@ -647,7 +682,7 @@ public class TigerCoinGameManager : MonoBehaviour
         // play win tune
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
         yield return new WaitForSeconds(1f);
-        
+
 
         if (playTutorial)
         {
@@ -663,14 +698,14 @@ public class TigerCoinGameManager : MonoBehaviour
 
             // calculate and show stars
             StarAwardController.instance.AwardStarsAndExit(CalculateStars());
-        }  
+        }
     }
 
     public void AIData(StudentPlayerData playerData)
     {
         playerData.tPawCoinPlayed = playerData.tPawCoinPlayed + 1;
         playerData.starsTPawCoin = CalculateStars() + playerData.starsTPawCoin;
-        
+
         // save to SIS
         StudentInfoSystem.SaveStudentPlayerData();
     }
@@ -679,9 +714,11 @@ public class TigerCoinGameManager : MonoBehaviour
     {
         if (numMisses <= 0)
             return 3;
-        else if (numMisses > 0 && numMisses <= 2)
+        else if (numMisses == 1)
             return 2;
-        else
+        else if (numMisses == 2)
             return 1;
+        else
+            return 0;
     }
 }

@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TigerPawCoinAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 3
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 52
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 29
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 50d817230c7efd3429b8ae5d6507a829, type: 3}
+    - {fileID: 102900000, guid: 889f6c16b3671c444b84810d81773195, type: 3}
+    totalSpriteSurfaceArea: 3283566
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 71a22580d99ff984ea796f7828ab68e8, type: 3}
+  - {fileID: 21300000, guid: eca651032f4c881479ec109742109f03, type: 3}
+  - {fileID: 21300000, guid: 1aebf973e9d68494f88e3178c7993a04, type: 3}
+  - {fileID: 21300000, guid: b445d18325abdc446ad17cffe4cda353, type: 3}
+  - {fileID: 21300000, guid: f2653834f9aa22f43bfc5d6c500333c3, type: 3}
+  - {fileID: 21300000, guid: 47d406a48bab15246af343d8806f870d, type: 3}
+  - {fileID: 21300000, guid: f565b8c413d3f7b41af15569302b5254, type: 3}
+  - {fileID: 21300000, guid: 3c609386b0fc6db489ff5d5b928ad81c, type: 3}
+  - {fileID: 21300000, guid: 2b9670b64da5a9e4580953d96ca725ed, type: 3}
+  - {fileID: 21300000, guid: 4d7309c69c51b04449d87093fcb7a53f, type: 3}
+  - {fileID: 21300000, guid: 143132a7d71b7484bae4b78677b5e0e6, type: 3}
+  - {fileID: 21300000, guid: c08d1e58bdb68b6458e17b848a5eecb7, type: 3}
+  - {fileID: 21300000, guid: 25c84d981d6b61d44b189424510f8cc0, type: 3}
+  - {fileID: 21300000, guid: 053cf1d89c2693b4a916a58f1ee03ffb, type: 3}
+  - {fileID: 21300000, guid: 50b54c2a43da0d745a6b0b85bbeb2b47, type: 3}
+  - {fileID: 21300000, guid: 81e8abeaee2174f40928d3f1633db018, type: 3}
+  - {fileID: 21300000, guid: 9d80aafab34c3ee40b243e832910806f, type: 3}
+  - {fileID: 21300000, guid: cbc8b32b88f8ea441a66a727f0c5291f, type: 3}
+  - {fileID: 21300000, guid: 6321ba3bc8f38eb49add9c2ed9137fa2, type: 3}
+  - {fileID: 21300000, guid: 35ae9c4b825ac17488622f7b4fd612e6, type: 3}
+  - {fileID: 21300000, guid: b99b182dbd62599428d34e0114c0d2ed, type: 3}
+  - {fileID: 21300000, guid: a47eb17dfa9a5504e94f6dc6a7bcb693, type: 3}
+  - {fileID: 21300000, guid: 93ccc51e8bd2e2a4f88f3f9583abd397, type: 3}
+  - {fileID: 21300000, guid: b2cc2d8f9a7ffc34390aca49eed12602, type: 3}
+  - {fileID: 21300000, guid: f10160bfa92ad324f88c19ce6127854f, type: 3}
+  - {fileID: 21300000, guid: bec40cbf447b87948943c639b9ba6a0b, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - winCoin10
+  - winCoin9
+  - tigerCoin8
+  - winCoin0
+  - tigerCoin2
+  - winCoin5
+  - winCoin6
+  - winCoin1
+  - tigerCoin3
+  - tigerCoin6
+  - winCoin11
+  - winCoin7
+  - tigerCoin12
+  - tigerCoin5
+  - tigerCoin0
+  - tigerCoin11
+  - winCoin3
+  - winCoin12
+  - tigerCoin1
+  - winCoin2
+  - winCoin4
+  - tigerCoin9
+  - winCoin8
+  - tigerCoin10
+  - tigerCoin4
+  - tigerCoin7
+  m_RenderDataMap: {}
+  m_Tag: TigerPawCoinAtlas
+  m_IsVariant: 0

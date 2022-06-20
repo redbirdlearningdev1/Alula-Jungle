@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 2ef8e23a0a3cc7c4798fde93d34728dd, type: 3}
+    audioClip:
+      m_AssetGUID: 2ef8e23a0a3cc7c4798fde93d34728dd
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_4_Julius_1_T1
     audioString: Augh,  This is just embarrassing!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: fcd58670a72bb474faf2ed52d2f5b525, type: 3}
+    audioClip:
+      m_AssetGUID: fcd58670a72bb474faf2ed52d2f5b525
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_4_Marcus_2_T1
     audioString: Yeah,  you got that right!
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: adea2576eee2b9b4f9f8d23bab869159, type: 3}
+    audioClip:
+      m_AssetGUID: adea2576eee2b9b4f9f8d23bab869159
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_4_Brutus_3_T1
     audioString: "Yawn\u2026"
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 23dc8a9673e293648b8570926277941a, type: 3}
+    audioClip:
+      m_AssetGUID: 23dc8a9673e293648b8570926277941a
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_4_Red_4_T1
     audioString: 'Good job friend! '
   - endTalkieAfterThisSegment: 0
@@ -99,7 +115,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 0493eaea4b079084e903e3293d0f3918, type: 3}
+    audioClip:
+      m_AssetGUID: 0493eaea4b079084e903e3293d0f3918
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_4_Wally_5_T1
     audioString: Amazing!
   - endTalkieAfterThisSegment: 0
@@ -115,7 +135,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 5d867990e3fb20044b0dffa22fcfd0e8, type: 3}
+    audioClip:
+      m_AssetGUID: 5d867990e3fb20044b0dffa22fcfd0e8
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_4_Bubbles_6_T1
     audioString: Bubble bubble!!
   - endTalkieAfterThisSegment: 0
@@ -131,7 +155,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 8800631d5391d26469aef90251dbcd51, type: 3}
+    audioClip:
+      m_AssetGUID: 8800631d5391d26469aef90251dbcd51
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_4_Julius_7_T1
     audioString: Whatever!
   - endTalkieAfterThisSegment: 0
@@ -147,6 +175,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 19da801d944b44e4bba2d8164c5a95fe, type: 3}
+    audioClip:
+      m_AssetGUID: 19da801d944b44e4bba2d8164c5a95fe
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_4_Julius_7_T2
     audioString: "Next time I\u2019ll win you'll see!"

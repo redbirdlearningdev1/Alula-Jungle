@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 5aa480f1ba8d2ce4b8c13e76f511911c, type: 3}
+    audioClip:
+      m_AssetGUID: 5aa480f1ba8d2ce4b8c13e76f511911c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_3_3_Red_7_T1
     audioString: 'Phew! '
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 3160e734a6b55c243965a2fc48038fec, type: 3}
+    audioClip:
+      m_AssetGUID: 3160e734a6b55c243965a2fc48038fec
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_3_3_Red_7_T2
     audioString: Good job Explorer!
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: c174e3c04db79184abc4c05cc131d823, type: 3}
+    audioClip:
+      m_AssetGUID: c174e3c04db79184abc4c05cc131d823
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_3_3_Red_7_T3
     audioString: Now let's move on to better smelling areas
   - endTalkieAfterThisSegment: 0
@@ -83,6 +95,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: fdfae952040b2434bb3189cab460bdfb, type: 3}
+    audioClip:
+      m_AssetGUID: fdfae952040b2434bb3189cab460bdfb
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_3_3_Wally_8_T1
     audioString: eugh,  Please do.

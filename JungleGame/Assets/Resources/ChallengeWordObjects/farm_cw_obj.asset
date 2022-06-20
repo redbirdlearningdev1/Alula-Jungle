@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: farm_cw_obj
   m_EditorClassIdentifier: 
   word: farm
-  audio: {fileID: 8300000, guid: 8e1aa6e4fed5fc7468d6671ea002f747, type: 3}
+  audio:
+    m_AssetGUID: 8e1aa6e4fed5fc7468d6671ea002f747
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 359952b1f7c56b8459f4cbd2ad989f35, type: 3}
-  elkoninList: 1a0000000e00000020000000000000000000000000000000
+  elkoninList: 1b0000000e00000021000000000000000000000000000000
   elkoninCount: 3
   set: 13

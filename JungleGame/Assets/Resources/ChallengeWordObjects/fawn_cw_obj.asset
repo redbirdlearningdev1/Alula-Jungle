@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: fawn_cw_obj
   m_EditorClassIdentifier: 
   word: fawn
-  audio: {fileID: 8300000, guid: 696a0b3995ee0f54b9739001c6fa854a, type: 3}
+  audio:
+    m_AssetGUID: 696a0b3995ee0f54b9739001c6fa854a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 734a0ca5237c8b54794e7df30ff44c79, type: 3}
-  elkoninList: 1a0000001500000021000000000000000000000000000000
+  elkoninList: 1b0000001500000022000000000000000000000000000000
   elkoninCount: 3
   set: 20

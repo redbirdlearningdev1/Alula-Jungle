@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: mouse_cw_obj
   m_EditorClassIdentifier: 
   word: mouse
-  audio: {fileID: 8300000, guid: c5f0d623ba422d047b54258135d62b61, type: 3}
+  audio:
+    m_AssetGUID: c5f0d623ba422d047b54258135d62b61
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 739fdc4641feb4a4596367aeb067e955, type: 3}
-  elkoninList: 200000001400000025000000000000000000000000000000
+  elkoninList: 210000001400000026000000000000000000000000000000
   elkoninCount: 3
   set: 19

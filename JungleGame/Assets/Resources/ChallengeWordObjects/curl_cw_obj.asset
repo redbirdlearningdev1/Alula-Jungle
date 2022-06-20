@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: curl_cw_obj
   m_EditorClassIdentifier: 
   word: curl
-  audio: {fileID: 8300000, guid: fd0a1e04a9df7034b92d28506fdede91, type: 3}
+  audio:
+    m_AssetGUID: fd0a1e04a9df7034b92d28506fdede91
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 44a9a93d84a8690499e67caf6b17de66, type: 3}
-  elkoninList: 170000000f0000001f000000000000000000000000000000
+  elkoninList: 180000000f00000020000000000000000000000000000000
   elkoninCount: 3
   set: 14

@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 6978bd2c3fbee1f4dbe09edac47ce392, type: 3}
+    audioClip:
+      m_AssetGUID: 6978bd2c3fbee1f4dbe09edac47ce392
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2_Marcus_1_T1
     audioString: WHAT?!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: cb849d264d0a46744a3c7cd2d9ebe99d, type: 3}
+    audioClip:
+      m_AssetGUID: cb849d264d0a46744a3c7cd2d9ebe99d
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2_Marcus_1_T2
     audioString: HOW IS THIS POSSIBLE?!
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 1ab098e45c9b91947a9bdf66620eecf8, type: 3}
+    audioClip:
+      m_AssetGUID: 1ab098e45c9b91947a9bdf66620eecf8
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2_Red_2_T1
     audioString: You're doing great Explorer!
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: d1df6de0b5a35fd48916904534c002c2, type: 3}
+    audioClip:
+      m_AssetGUID: d1df6de0b5a35fd48916904534c002c2
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2_Red_2_T2
     audioString: "We\u2019re almost there!"
   - endTalkieAfterThisSegment: 0
@@ -99,7 +115,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 31b62f93768bc6441b7196a2dd77d4b0, type: 3}
+    audioClip:
+      m_AssetGUID: 31b62f93768bc6441b7196a2dd77d4b0
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2_Julius_3_T1
     audioString: Enough games!
   - endTalkieAfterThisSegment: 0
@@ -115,7 +135,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 40a1b8dea0370bb4189bb17454b6871a, type: 3}
+    audioClip:
+      m_AssetGUID: 40a1b8dea0370bb4189bb17454b6871a
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2_Julius_3_T2
     audioString: "Brutus it\u2019s your turn! "
   - endTalkieAfterThisSegment: 0
@@ -131,7 +155,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: fda9288ee8244a6468ab4141432a729c, type: 3}
+    audioClip:
+      m_AssetGUID: fda9288ee8244a6468ab4141432a729c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2_Brutus_4_T1
     audioString: "Yawn\u2026"
   - endTalkieAfterThisSegment: 0
@@ -147,7 +175,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 9bca47be18175ff4683d7e9376fa950b, type: 3}
+    audioClip:
+      m_AssetGUID: 9bca47be18175ff4683d7e9376fa950b
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2_Brutus_4_T2
     audioString: "Alright\u2026"
   - endTalkieAfterThisSegment: 0
@@ -163,7 +195,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: e74b42b7b885db646aca3487a8396825, type: 3}
+    audioClip:
+      m_AssetGUID: e74b42b7b885db646aca3487a8396825
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2_Brutus_4_T3
     audioString: "let's get this over with\u2026"
   - endTalkieAfterThisSegment: 0
@@ -179,7 +215,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 48b53845973b038488006aa1d03c1c6a, type: 3}
+    audioClip:
+      m_AssetGUID: 48b53845973b038488006aa1d03c1c6a
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2_Brutus_5_T1
     audioString: "Okay Explorer\u2026"
   - endTalkieAfterThisSegment: 0
@@ -195,7 +235,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 6e2e212aa01385742bd70ac1c468cd2c, type: 3}
+    audioClip:
+      m_AssetGUID: 6e2e212aa01385742bd70ac1c468cd2c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2_Brutus_5_T2
     audioString: "Yawn\u2026"
   - endTalkieAfterThisSegment: 1
@@ -211,7 +255,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 731cce6f38a8c794d8f10b6b2dc44f29, type: 3}
+    audioClip:
+      m_AssetGUID: 731cce6f38a8c794d8f10b6b2dc44f29
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2_Brutus_5_T3
     audioString: "Time for me to beat you I guess\u2026 "
   - endTalkieAfterThisSegment: 0
@@ -227,7 +275,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 1119906dc884c9746924a60a1f37c2ba, type: 3}
+    audioClip:
+      m_AssetGUID: 1119906dc884c9746924a60a1f37c2ba
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2_Brutus_6_T1
     audioString: Yawn..
   - endTalkieAfterThisSegment: 0
@@ -243,7 +295,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 0170fc85afbf48843830fd9de8d84cc6, type: 3}
+    audioClip:
+      m_AssetGUID: 0170fc85afbf48843830fd9de8d84cc6
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2_Brutus_6_T2
     audioString: Yeah whatever...
   - endTalkieAfterThisSegment: 0
@@ -259,7 +315,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: eed261c65c52c044e80a15596cad30f4, type: 3}
+    audioClip:
+      m_AssetGUID: eed261c65c52c044e80a15596cad30f4
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2_Brutus_6_T3
     audioString: "I\u2019ll be here\u2026"
   - endTalkieAfterThisSegment: 1
@@ -275,6 +335,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: ed2ebd0e530ae7343b75e868882a184b, type: 3}
+    audioClip:
+      m_AssetGUID: ed2ebd0e530ae7343b75e868882a184b
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_2_Brutus_6_T4
     audioString: "Or whatever\u2026"

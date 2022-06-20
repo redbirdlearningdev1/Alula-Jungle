@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BoatPanelAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 3
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 52
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 29
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 761813fb2faa24d4f8ba0fdc817cd9e8, type: 3}
+    - {fileID: 2800000, guid: 6e6950411e8b7754babf33b888a7ae39, type: 3}
+    - {fileID: 2800000, guid: 7b5b560c756774848a714e6fc3d8385a, type: 3}
+    - {fileID: 2800000, guid: ad6c245402747b84a80741fef156da09, type: 3}
+    - {fileID: 2800000, guid: c888917fa310ed7418a08ca1d48551e1, type: 3}
+    - {fileID: 2800000, guid: 430dc998367a6f2459d4560d780b8063, type: 3}
+    - {fileID: 2800000, guid: 0ad70d7250284b64bb646e1d0d75ed6b, type: 3}
+    - {fileID: 2800000, guid: ea81b36a42b3f63498d0bebdc83e1d02, type: 3}
+    - {fileID: 2800000, guid: 96608f8bd4eb3a84b9862257ad8457a0, type: 3}
+    - {fileID: 2800000, guid: 5f656b7370cc39f418b9aaab66b33bd2, type: 3}
+    - {fileID: 2800000, guid: 53016a8560ea6dc4380ea3a50415e5a5, type: 3}
+    - {fileID: 2800000, guid: bb545c8deb5c9df489f44abefb20b46e, type: 3}
+    totalSpriteSurfaceArea: 539839
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 6e6950411e8b7754babf33b888a7ae39, type: 3}
+  - {fileID: 21300000, guid: 0ad70d7250284b64bb646e1d0d75ed6b, type: 3}
+  - {fileID: 21300000, guid: 5f656b7370cc39f418b9aaab66b33bd2, type: 3}
+  - {fileID: 21300000, guid: ad6c245402747b84a80741fef156da09, type: 3}
+  - {fileID: 21300000, guid: 53016a8560ea6dc4380ea3a50415e5a5, type: 3}
+  - {fileID: 21300000, guid: 430dc998367a6f2459d4560d780b8063, type: 3}
+  - {fileID: 21300000, guid: ea81b36a42b3f63498d0bebdc83e1d02, type: 3}
+  - {fileID: 21300000, guid: 96608f8bd4eb3a84b9862257ad8457a0, type: 3}
+  - {fileID: 21300000, guid: 761813fb2faa24d4f8ba0fdc817cd9e8, type: 3}
+  - {fileID: 21300000, guid: 7b5b560c756774848a714e6fc3d8385a, type: 3}
+  - {fileID: 21300000, guid: bb545c8deb5c9df489f44abefb20b46e, type: 3}
+  - {fileID: 21300000, guid: c888917fa310ed7418a08ca1d48551e1, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - throttle
+  - greenButtonPressed
+  - escape
+  - sound
+  - blueButtonPressed
+  - mic
+  - greenButton
+  - escapePressed
+  - wheel
+  - soundPressed
+  - blueButton
+  - micPressed
+  m_RenderDataMap: {}
+  m_Tag: BoatPanelAtlas
+  m_IsVariant: 0

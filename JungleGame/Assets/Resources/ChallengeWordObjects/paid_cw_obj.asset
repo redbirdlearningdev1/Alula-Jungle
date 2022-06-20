@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: paid_cw_obj
   m_EditorClassIdentifier: 
   word: paid
-  audio: {fileID: 8300000, guid: 51939324877c95f4d98c537192befd4f, type: 3}
+  audio:
+    m_AssetGUID: 51939324877c95f4d98c537192befd4f
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 5e041d184afb97a42a2aebaba105768b, type: 3}
-  elkoninList: 220000000700000019000000000000000000000000000000
+  elkoninList: 23000000070000001a000000000000000000000000000000
   elkoninCount: 3
   set: 6

@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: today_cw_obj
   m_EditorClassIdentifier: 
   word: today
-  audio: {fileID: 8300000, guid: b17ff9b3e0ef9484687f687e2529b490, type: 3}
+  audio:
+    m_AssetGUID: b17ff9b3e0ef9484687f687e2529b490
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 33a37c85ca4fba1449eaf9a3d80a31f3, type: 3}
-  elkoninList: 270000000b00000019000000070000000000000000000000
+  elkoninList: 280000000b0000001a000000070000000000000000000000
   elkoninCount: 4
   set: 6

@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: dbc85cb7ce3a72249993f5fa2e94d23a, type: 3}
+    audioClip:
+      m_AssetGUID: dbc85cb7ce3a72249993f5fa2e94d23a
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_2_1a_Julius_1_T1
     audioString: Are you ready for your next challenge Explorer?
   - endTalkieAfterThisSegment: 1
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 3902cc6e028a51e4a9fc67153d94858b, type: 3}
+    audioClip:
+      m_AssetGUID: 3902cc6e028a51e4a9fc67153d94858b
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_2_1_Julius_1_T2
     audioString: "Let\u2019s do this."
   - endTalkieAfterThisSegment: 1
@@ -67,6 +75,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 54859dfcea269d844bd54ed0d8e7be97, type: 3}
+    audioClip:
+      m_AssetGUID: 54859dfcea269d844bd54ed0d8e7be97
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_2_1_Julius_1_T3
     audioString: "Hmph,  I\u2019ll be waiting."

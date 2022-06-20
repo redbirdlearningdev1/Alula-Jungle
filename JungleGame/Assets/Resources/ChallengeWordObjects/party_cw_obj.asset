@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: party_cw_obj
   m_EditorClassIdentifier: 
   word: party
-  audio: {fileID: 8300000, guid: 969b51e747deba440a622b5c08c1c96e, type: 3}
+  audio:
+    m_AssetGUID: 969b51e747deba440a622b5c08c1c96e
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: be2d6ed336c63c748af2fa88d930521d, type: 3}
-  elkoninList: 220000000e00000027000000080000000000000000000000
+  elkoninList: 230000000e00000028000000080000000000000000000000
   elkoninCount: 4
   set: 13

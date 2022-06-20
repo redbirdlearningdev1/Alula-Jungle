@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: weird_cw_obj
   m_EditorClassIdentifier: 
   word: weird
-  audio: {fileID: 8300000, guid: cbc493cc7e962e449a510e2306ec4753, type: 3}
+  audio:
+    m_AssetGUID: cbc493cc7e962e449a510e2306ec4753
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 80dcd791db6b61149aafdeb34044239b, type: 3}
-  elkoninList: 2a0000000000000019000000000000000000000000000000
+  elkoninList: 2d000000100000001a000000000000000000000000000000
   elkoninCount: 3
-  set: 0
+  set: 15

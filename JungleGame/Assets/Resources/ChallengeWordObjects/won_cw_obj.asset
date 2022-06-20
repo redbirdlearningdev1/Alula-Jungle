@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: won_cw_obj
   m_EditorClassIdentifier: 
   word: won
-  audio: {fileID: 8300000, guid: 63e9ee662ab37ff46bfc8b9d966c78b6, type: 3}
+  audio:
+    m_AssetGUID: 63e9ee662ab37ff46bfc8b9d966c78b6
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 03c5bb8e0a04b3444b3f1e6954bc6d35, type: 3}
-  elkoninList: 2a0000000600000021000000000000000000000000000000
+  elkoninList: 2d0000000600000022000000000000000000000000000000
   elkoninCount: 3
   set: 5

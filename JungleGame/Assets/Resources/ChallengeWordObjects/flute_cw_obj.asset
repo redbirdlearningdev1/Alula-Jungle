@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: flute_cw_obj
   m_EditorClassIdentifier: 
   word: flute
-  audio: {fileID: 8300000, guid: abd5b402507fec54f81f347b65b7d8ed, type: 3}
+  audio:
+    m_AssetGUID: abd5b402507fec54f81f347b65b7d8ed
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 3698b57fd697939499e509d25cc1ea24, type: 3}
-  elkoninList: 1a0000001f0000000b000000270000000000000000000000
+  elkoninList: 1b000000200000000b000000280000000000000000000000
   elkoninCount: 4
   set: 10

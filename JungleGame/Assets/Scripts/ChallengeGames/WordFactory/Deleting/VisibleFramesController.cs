@@ -105,7 +105,7 @@ public class VisibleFramesController : MonoBehaviour
         StartCoroutine(SetFramesPosFast());
         // play sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BoxSlide, 0.5f);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         // reveal new frame
         frames[count].GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);

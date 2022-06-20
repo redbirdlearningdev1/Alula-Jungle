@@ -24,8 +24,10 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
     public Sprite wordFactoryDeletingLogo;
     public Sprite tigerPawCoinsLogo;
     public Sprite tigerPawPhotosLogo;
+    public Sprite passwordLogo;
 
     private GameType myGameType;
+    private MapIconIdentfier myMapID;
 
     [Header("Pressed Values")]
     public float pressedScaleChange;
@@ -41,9 +43,10 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
         crown.transform.localScale = new Vector3(0f, 0f, 1f);
     }
 
-    public void OpenRibbon(GameType gameType)
+    public void OpenRibbon(GameType gameType, MapIconIdentfier mapID)
     {
         myGameType = gameType;
+        myMapID = mapID;
         StartCoroutine(OpenRibbonRoutine(gameType));
     }
 
@@ -99,6 +102,8 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
                 return tigerPawPhotosLogo;
             case GameType.TigerPawCoins:
                 return tigerPawCoinsLogo;
+            case GameType.Password:
+                return passwordLogo;
         }
     }
 
@@ -140,7 +145,97 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
                 else if (StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.gameType == myGameType)
                     stars = StudentInfoSystem.GetCurrentProfile().mapData.OV_challenge3.stars;
                 break;
-            // etc ...
+            
+            case MapLocation.SpookyForest:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge1.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge2.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.SF_challenge3.stars;
+                break;
+
+            case MapLocation.OrcCamp:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.stars;
+                break;
+
+            case MapLocation.GorillaPoop:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge1.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge2.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.OC_challenge3.stars;
+                break;
+
+            case MapLocation.WindyCliff:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge1.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge1.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge2.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge2.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge3.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.WC_challenge3.stars;
+                break;
+
+            case MapLocation.PirateShip:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge1.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge1.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge2.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge2.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge3.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge3.stars;
+                break;
+
+            case MapLocation.MermaidBeach:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.stars;
+                break;
+
+            case MapLocation.Ruins1:
+            case MapLocation.Ruins2:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.R_challenge1.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.R_challenge1.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.R_challenge2.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.R_challenge2.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.R_challenge3.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.R_challenge3.stars;
+                break;
+
+            case MapLocation.ExitJungle:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge1.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge1.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge2.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge2.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge3.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.EJ_challenge3.stars;
+                break;
+
+            case MapLocation.GorillaStudy:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge1.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge1.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge2.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge2.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge3.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.GS_challenge3.stars;
+                break;
+
+            case MapLocation.Monkeys:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.M_challenge1.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.M_challenge1.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.M_challenge2.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.M_challenge2.stars;
+                else if (StudentInfoSystem.GetCurrentProfile().mapData.M_challenge3.gameType == myGameType)
+                    stars = StudentInfoSystem.GetCurrentProfile().mapData.M_challenge3.stars;
+                break;
         }
 
         // place correct sprite
@@ -179,7 +274,7 @@ public class ChallengeGameRibbon : MonoBehaviour, IPointerUpHandler, IPointerDow
             isPressed = true;
             transform.localScale = new Vector3(pressedScaleChange, pressedScaleChange, 1f);
 
-            RoyalDecreeController.instance.OpenConfirmWindow(myGameType);
+            RoyalDecreeController.instance.OpenConfirmWindow(myGameType, myMapID);
         }
     }
 

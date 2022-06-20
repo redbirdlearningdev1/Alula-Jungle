@@ -2,16 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-
-public enum SplitSong
-{
-    Frogger,
-    Turntables,
-    Rummage,
-    Spiderweb,
-    Seashells,
-    Pirate
-}
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class AudioManager : MonoBehaviour
 {
@@ -22,7 +14,11 @@ public class AudioManager : MonoBehaviour
     public float smoothSplitDuration;
     private int currSplitIndex = 0;
     private bool startedSplitSong = false;
-    private bool setUpSplitSong = false;
+
+    [Header("Addressable Operation Handles")]
+    [SerializeField] private List<AsyncOperationHandle> songHandles;
+    private AsyncOperationHandle talkHandle;
+    private AsyncOperationHandle phonemeHandle;
 
     [Header("Audio Sources")]
     [SerializeField] private List<AudioSource> musicSources;
@@ -33,19 +29,20 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private Transform fxObjectHolder;
 
     // default volumes (on start)
-    public static float default_masterVol =     1f;
-    public static float default_musicVol =      0.25f;
-    public static float default_fxVol =         1f;
-    public static float default_talkVol =       3f;
+    public static float default_masterVol = 1f;
+    public static float default_musicVol = 0.25f;
+    public static float default_fxVol = 1f;
+    public static float default_talkVol = 3f;
 
     private Coroutine smoothSetMusicRoutine = null;
 
-    void Awake() 
+    void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
+        songHandles = new List<AsyncOperationHandle>();
     }
 
     /* 
@@ -98,7 +95,7 @@ public class AudioManager : MonoBehaviour
         if (vol <= 0) vol = 0.00001f;
         else if (vol > 1) vol = 1;
 
-        vol = 20f * Mathf.Log10(vol); 
+        vol = 20f * Mathf.Log10(vol);
         masterMixer.SetFloat("fxVol", vol);
     }
 
@@ -152,25 +149,65 @@ public class AudioManager : MonoBehaviour
     ################################################
     */
 
-    public void PlaySong(AudioClip song)
+    public void PlaySong(AssetReference songReference)
     {
         StopMusic();
 
+        StartCoroutine(LoadAndPlaySong(songReference));
+    }
+
+    private IEnumerator LoadAndPlaySong(AssetReference songReference)
+    {
+        AsyncOperationHandle songHandle;
+
+        if (songReference.OperationHandle.IsValid())
+        {
+            songHandle = songReference.OperationHandle;
+        }
+        else
+        {
+            songHandle = songReference.LoadAssetAsync<AudioClip>();
+        }
+            yield return songHandle;
+
+        AudioClip song = (AudioClip)songHandle.Result;
+        songHandles.Add(songHandle);
+
         if (song == musicSources[0].clip)
-            return;
+        {
+            yield break;
+        }
 
         musicSources[0].clip = song;
         musicSources[0].loop = true;
         musicSources[0].Play();
     }
 
-    public void StopMusic()
+    public void StopMusic(bool loop = false, bool setVolumeZero = false)
     {
         foreach (var source in musicSources)
         {
             source.Stop();
             source.clip = null;
+            if (loop)
+            {
+                source.loop = true;
+            }
+            if (setVolumeZero)
+            {
+                source.volume = 0f;
+            }
         }
+
+        foreach (AsyncOperationHandle handle in songHandles)
+        {
+            if (handle.IsValid())
+            {
+                Addressables.Release(handle);
+            }
+        }
+        songHandles.Clear();
+
     }
 
     /* 
@@ -179,97 +216,63 @@ public class AudioManager : MonoBehaviour
     ################################################
     */
 
-    public void InitSplitSong(SplitSong song)
+    public void InitSplitSong(List<AssetReference> songReferences)
     {
         currSplitIndex = 0;
         startedSplitSong = false;
 
         // set each source to be empty and ready
-        foreach (var source in musicSources)
+        StopMusic(true, true);
+
+        // Start coroutine to load and play each track in the split song
+        StartCoroutine(LoadAndStartSplitSong(songReferences));
+    }
+
+    private IEnumerator LoadAndStartSplitSong(List<AssetReference> songReferences)
+    {
+        int count = 0;
+        foreach (AssetReference reference in songReferences)
         {
-            source.Stop();
-            source.clip = null;
-            source.loop = true;
-            source.volume = 0f;
+            AsyncOperationHandle splitHandle;
+
+            if (reference.OperationHandle.IsValid())
+            {
+                splitHandle = reference.OperationHandle;
+            }
+            else
+            {
+                splitHandle = reference.LoadAssetAsync<AudioClip>();
+            }
+            
+            yield return splitHandle;
+
+            // if (splitHandle.Status == AsyncOperationStatus.Succeeded)
+            // {
+                songHandles.Add(splitHandle);
+                musicSources[count].clip = (AudioClip)splitHandle.Result;
+                count++;
+            // }
         }
 
-        // add each clip to source
-        if (song == SplitSong.Frogger)
-        {
-            int count = 0;
-            foreach(var split in AudioDatabase.instance.FroggerSongSplit)
-            {
-                musicSources[count].clip = split;
-                count++;
-            }
-        }
-        else if (song == SplitSong.Turntables)
-        {
-            int count = 0;
-            foreach(var split in AudioDatabase.instance.TurntablesSongSplit)
-            {
-                musicSources[count].clip = split;
-                count++;
-            }
-        }
-        else if (song == SplitSong.Rummage)
-        {
-            int count = 0;
-            foreach(var split in AudioDatabase.instance.RummageSongSplit)
-            {
-                musicSources[count].clip = split;
-                count++;
-            }
-        }
-        else if (song == SplitSong.Spiderweb)
-        {
-            int count = 0;
-            foreach(var split in AudioDatabase.instance.SpiderwebSongSplit)
-            {
-                musicSources[count].clip = split;
-                count++;
-            }
-        }
-        else if (song == SplitSong.Seashells)
-        {
-            int count = 0;
-            foreach(var split in AudioDatabase.instance.SeashellsSongSplit)
-            {
-                musicSources[count].clip = split;
-                count++;
-            }
-        }
-        else if (song == SplitSong.Pirate)
-        {
-            int count = 0;
-            foreach(var split in AudioDatabase.instance.PirateSongSplit)
-            {
-                musicSources[count].clip = split;
-                count++;
-            }
-        }
+        yield return new WaitForSeconds(0.5f); // added this wait for seconds to see if it fixes the split sections not being synced up in-build
 
-        setUpSplitSong = true;
+        IncreaseSplitSong();
     }
 
     public void EndSplitSong()
-    {   
+    {
         startedSplitSong = false;
-        setUpSplitSong = false;
     }
 
     public void IncreaseSplitSong()
     {
-        if (!setUpSplitSong)
-            return;
-
         if (!startedSplitSong)
         {
             musicSources[0].volume = 0.5f;
             currSplitIndex++;
 
             // begin all music sources at once
-            foreach(var source in musicSources)
+            foreach (var source in musicSources)
                 source.Play();
 
             startedSplitSong = true;
@@ -287,7 +290,7 @@ public class AudioManager : MonoBehaviour
 
     public void DecreaseSplitSong()
     {
-        if (!setUpSplitSong || !startedSplitSong)
+        if (!startedSplitSong)
             return;
 
         if (currSplitIndex <= 1)
@@ -303,7 +306,7 @@ public class AudioManager : MonoBehaviour
         float endVol = StudentInfoSystem.GetCurrentProfile().musicVol;
 
         while (true)
-        {   
+        {
             timer += Time.deltaTime;
             if (timer >= duration)
             {
@@ -314,7 +317,7 @@ public class AudioManager : MonoBehaviour
             float tempVol = Mathf.Lerp(0f, endVol, timer / duration);
             source.volume = tempVol;
             yield return null;
-        }   
+        }
     }
 
     private IEnumerator SmoothEndMusicSource(AudioSource source, float duration)
@@ -323,7 +326,7 @@ public class AudioManager : MonoBehaviour
         float startVol = source.volume;
 
         while (true)
-        {   
+        {
             timer += Time.deltaTime;
             if (timer >= duration)
             {
@@ -344,17 +347,17 @@ public class AudioManager : MonoBehaviour
     */
 
     // plays a sound once
-    public void PlayFX_oneShot(AudioClip clip, float volume, string id = "fx_oneShot", float pitch = 1f)
+    public void PlayFX_oneShot(AssetReference clipRef, float volume, string id = "fx_oneShot", float pitch = 1f)
     {
         var audioObj = Instantiate(fxAudioObject, fxObjectHolder);
-        audioObj.GetComponent<FxAudioObject>().PlayClip(id, clip, volume, clip.length + 1f, pitch);
+        audioObj.GetComponent<FxAudioObject>().PlayClip(id, clipRef, volume, false, pitch);
     }
 
     // plays a sound continuously until scene changes or stopped manually
-    public void PlayFX_loop(AudioClip clip, float volume, string id = "fx_loop", float pitch = 1f)
+    public void PlayFX_loop(AssetReference clipRef, float volume, string id = "fx_loop", float pitch = 1f)
     {
         var audioObj = Instantiate(fxAudioObject, fxObjectHolder);
-        audioObj.GetComponent<FxAudioObject>().PlayClip(id, clip, volume, 0f, pitch);
+        audioObj.GetComponent<FxAudioObject>().PlayClip(id, clipRef, volume, true, pitch);
     }
 
     // stops fx from plaing based on id
@@ -400,7 +403,7 @@ public class AudioManager : MonoBehaviour
         else
         {
             if (num >= 0 && num < 8)
-            PlayFX_oneShot(AudioDatabase.instance.CoinDropArray[num], 1f);
+                PlayFX_oneShot(AudioDatabase.instance.CoinDropArray[num], 1f);
         }
     }
 
@@ -415,10 +418,10 @@ public class AudioManager : MonoBehaviour
         else
         {
             if (num >= 0 && num < 6)
-            PlayFX_oneShot(AudioDatabase.instance.KeyJingleArray[num], 1f);
+                PlayFX_oneShot(AudioDatabase.instance.KeyJingleArray[num], 1f);
         }
     }
-    
+
     static int stoneLoopCount = 0;
     public void PlayMoveStoneSound(float duration, float pitch)
     {
@@ -443,28 +446,104 @@ public class AudioManager : MonoBehaviour
     ################################################
     */
 
-    public void PlayTalk(AudioClip _clip)
+    public void PlayTalk(AssetReference _clip)//, string text = "")
     {
         talkSource.Stop();
+
+        // if (talkHandle.IsValid())
+        // {
+        //     // Addressables.Release(talkHandle);
+        //     // print ("RELEASING TALK HANDL!!!!!!!!!!!!!!!!!!!!!");
+        // }
+
+        StartCoroutine(LoadAndPlayTalk(_clip));
+    }
+
+    private IEnumerator LoadAndPlayTalk(AssetReference clipRef)//, string text)
+    {
+        AsyncOperationHandle handle;
+        if (clipRef.OperationHandle.IsValid())
+        {
+            handle = clipRef.OperationHandle;
+        }
+        else
+        {
+            handle = clipRef.LoadAssetAsync<AudioClip>();
+        }
+
+
+        //Debug.Log("Loading clip");
+        yield return handle;
+        //Debug.Log("Finished loading clip");
+
+
+        AudioClip _clip = (AudioClip)handle.Result;
+
         talkSource.clip = _clip;
         talkSource.loop = false;
         talkSource.Play();
+        talkHandle = handle;
+
+
+        yield return new WaitForSeconds(_clip.length);
+        
+
+        if (handle.IsValid())
+        {
+            Addressables.Release(handle);
+        }
     }
 
     public void StopTalk()
     {
         talkSource.Stop();
+
+        if (talkHandle.IsValid())
+        {
+            Addressables.Release(talkHandle);
+        }
+
         talkSource.clip = null;
     }
 
-    public void PlayPhoneme(ActionWordEnum phoneme)
+    public void PlayPhoneme(ElkoninValue elkoninValue)
     {
-        talkSource.Stop();
-        AudioClip clip = GameManager.instance.GetActionWord(phoneme).audio;
-        talkSource.clip = clip;
-        talkSource.loop = false;
-        talkSource.Play();
-        // print ("playing clip: " + clip.name);
+        //if (talkSource.isPlaying)
+            //return;
+
+        StartCoroutine(LoadAndPlayPhoneme(elkoninValue));
+    }
+
+    private IEnumerator LoadAndPlayPhoneme(ElkoninValue elkoninValue)
+    {
+        AssetReference audioRef = GameManager.instance.GetGameWord(elkoninValue).audio;
+        AsyncOperationHandle handle = new AsyncOperationHandle();
+        if (audioRef.OperationHandle.IsValid())
+        {
+            handle = audioRef.OperationHandle;
+        }
+        else
+        {
+            handle = audioRef.LoadAssetAsync<AudioClip>();
+        }
+
+        yield return handle;
+
+        if (handle.IsValid())
+        {
+            AudioClip clip = (AudioClip)handle.Result;
+
+            talkSource.clip = clip;
+            talkSource.loop = false;
+            talkSource.Play();
+
+            yield return new WaitForSeconds(clip.length);
+        }
+
+        if (handle.IsValid())
+        {
+            Addressables.Release(handle);
+        }
     }
 
     /* 
@@ -472,4 +551,27 @@ public class AudioManager : MonoBehaviour
     #   UTILITY
     ################################################
     */
+
+    public IEnumerator GetClipLength(AssetReference clipRef)
+    {
+        AsyncOperationHandle handle;
+
+        if (clipRef.OperationHandle.IsValid())
+        {
+            handle = clipRef.OperationHandle;
+        }
+        else
+        {
+            handle = clipRef.LoadAssetAsync<AudioClip>();
+        }
+        yield return handle;
+        AudioClip audio = (AudioClip)handle.Result;
+        float clipLength = audio.length;
+        if (handle.IsValid())
+        {
+            //Addressables.Release(handle);
+        }
+
+        yield return clipLength;
+    }
 }

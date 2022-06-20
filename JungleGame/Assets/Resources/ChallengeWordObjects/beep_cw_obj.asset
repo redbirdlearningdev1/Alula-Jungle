@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: beep_cw_obj
   m_EditorClassIdentifier: 
   word: beep
-  audio: {fileID: 8300000, guid: a16517d7912779646bfc6fc81fddff21, type: 3}
+  audio:
+    m_AssetGUID: a16517d7912779646bfc6fc81fddff21
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: d6ee5d597d7742b49a03d141864d526b, type: 3}
-  elkoninList: 160000000800000022000000000000000000000000000000
+  elkoninList: 170000000800000023000000000000000000000000000000
   elkoninCount: 3
   set: 7

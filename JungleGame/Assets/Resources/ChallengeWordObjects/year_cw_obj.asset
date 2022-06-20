@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: year_cw_obj
   m_EditorClassIdentifier: 
   word: year
-  audio: {fileID: 8300000, guid: 734128dd5329f6349b38855c1983de87, type: 3}
+  audio:
+    m_AssetGUID: 734128dd5329f6349b38855c1983de87
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 91cb150e0f119d742bff11feba960126, type: 3}
-  elkoninList: 2c0000000000000000000000000000000000000000000000
+  elkoninList: 2f0000001000000000000000000000000000000000000000
   elkoninCount: 2
-  set: 0
+  set: 15

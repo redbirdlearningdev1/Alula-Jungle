@@ -16,490 +16,700 @@ MonoBehaviour:
   background: 4
   segments:
   - text: The
-    audio: {fileID: 8300000, guid: d2c312e77536d8e4a891ce2d7e6cee25, type: 3}
+    audio:
+      m_AssetGUID: d2c312e77536d8e4a891ce2d7e6cee25
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 1
   - text: explorer
-    audio: {fileID: 8300000, guid: a7ed727b3bb333f438b1f899d87db9a2, type: 3}
+    audio:
+      m_AssetGUID: a7ed727b3bb333f438b1f899d87db9a2
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 8
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: and the baby
-    audio: {fileID: 8300000, guid: 93734811f92cfe5428992f082d581ffa, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: monkey
-    audio: {fileID: 8300000, guid: 43685283febeee74e9672a239ecdf90c, type: 3}
-    moveWord: 1
-    actionWord: 18
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: began the long journey out of the jungle~ when they heard the
-    audio: {fileID: 8300000, guid: 1a2483526150db14cb193cda2147b8bc, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: sound
-    audio: {fileID: 8300000, guid: 9e143406b22f4ad48b98dd2639a67ed9, type: 3}
-    moveWord: 1
-    actionWord: 15
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: of an
-    audio: {fileID: 8300000, guid: 6a1e765d34877ec4f967c689bfe692d3, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: angry gorilla
-    audio: {fileID: 8300000, guid: df3206feee91c9841a9e7aaa26eed1d8, type: 3}
-    moveWord: 1
-    actionWord: 14
-    requireInput: 0
-    postText: .
-    advanceBG: 0
-  - text: The
-    audio: {fileID: 8300000, guid: 40173b7e80c3e95479eaacdb93532562, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: explorer
-    audio: {fileID: 8300000, guid: 21110f5df85f668488e83330cfb49e54, type: 3}
-    moveWord: 1
-    actionWord: 8
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: 'was a little '
-    audio: {fileID: 8300000, guid: 21aa0b447ed51094eabbec1bbd2a29c1, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: scared
-    audio: {fileID: 8300000, guid: 78001e28f81c22a43a480d315541dd06, type: 3}
-    moveWord: 1
-    actionWord: 9
-    requireInput: 0
-    postText: ~
-    advanceBG: 0
-  - text: but
-    audio: {fileID: 8300000, guid: 02e3fb21524c317438fd6b08af17a5c6, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: angry gorilla
-    audio: {fileID: 8300000, guid: 07e4b1072747352468302c859284fe27, type: 3}
-    moveWord: 1
-    actionWord: 14
-    requireInput: 0
-    postText: .
-    advanceBG: 1
-  - text: noises made the baby
-    audio: {fileID: 8300000, guid: 41cee8fbc0c87be4b9791b65bc51063e, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: monkey
-    audio: {fileID: 8300000, guid: af0aecaa40d84db479608835118d1027, type: 3}
-    moveWord: 1
-    actionWord: 18
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: start to smile.
-    audio: {fileID: 8300000, guid: f08615ba0906bf34d96e606a2f90077a, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: Our friend stopped to
-    audio: {fileID: 8300000, guid: f02b8d4f89a3fd142b34f911b8a63ece, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: think
-    audio: {fileID: 8300000, guid: 629e7614b96067648a65ecba98ac2ee5, type: 3}
-    moveWord: 1
-    actionWord: 5
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: 'about the next move and decided to '
-    audio: {fileID: 8300000, guid: 8da86a321c46dc443b7fe88377541aee, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: listen
-    audio: {fileID: 8300000, guid: 235872737ab212346817f01f726bdf9f, type: 3}
-    moveWord: 1
-    actionWord: 2
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: 'to the noises on the '
-    audio: {fileID: 8300000, guid: 567ae785587df0547a7e623e5cc5c258, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: strong wind
-    audio: {fileID: 8300000, guid: 9857dfb843bdb2642b374d89f29ac570, type: 3}
-    moveWord: 1
-    actionWord: 12
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: before deciding on the
-    audio: {fileID: 8300000, guid: 20b4d5148ac1e224fa077a66ab65e7ca, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: choice
-    audio: {fileID: 8300000, guid: bfe616a1a7810aa4785b8c489408043d, type: 3}
-    moveWord: 1
-    actionWord: 11
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: to walk toward the
-    audio: {fileID: 8300000, guid: bb2693b162022ed44a89ad6190b2e25e, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: angry gorilla
-    audio: {fileID: 8300000, guid: 6eb7ebfdaf2d4924e8d5abb054df1d8b, type: 3}
-    moveWord: 1
-    actionWord: 14
-    requireInput: 0
-    postText: .
-    advanceBG: 0
-  - text: or run away and risk falling down a
-    audio: {fileID: 8300000, guid: c4406dd02adbad34fba4597d0377cfc2, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: mudslide
-    audio: {fileID: 8300000, guid: ab0159d931443434891482e9c7e51718, type: 3}
-    moveWord: 1
-    actionWord: 1
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: 'or running into the '
-    audio: {fileID: 8300000, guid: a7c07a7ee478ab64984cdab3829788a7, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: orcs
-    audio: {fileID: 8300000, guid: 3c9125e284c83e841a7748df8e6607b8, type: 3}
-    moveWord: 1
-    actionWord: 4
-    requireInput: 0
-    postText: ~
-    advanceBG: 0
-  - text: or
-    audio: {fileID: 8300000, guid: bc25076fd025acb4e985bf093c6cd653, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: spiders
-    audio: {fileID: 8300000, guid: 1a4ecb248cae7874db04449ed15f7090, type: 3}
-    moveWord: 1
-    actionWord: 7
-    requireInput: 0
-    postText: .
-    advanceBG: 0
-  - text: The
-    audio: {fileID: 8300000, guid: 25f7704ac38c1ac45917c163c7301e5c, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: explorer
-    audio: {fileID: 8300000, guid: 2e58b6229a06b8a45a99ac157acd788b, type: 3}
-    moveWord: 1
-    actionWord: 8
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: pulled up his
-    audio: {fileID: 8300000, guid: d3b49abaa5528fe448a1f80445467a7e, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: backpack
-    audio: {fileID: 8300000, guid: 8d3a64da540d4c543851bb10c21ca8e2, type: 3}
-    moveWord: 1
-    actionWord: 17
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: and the baby
-    audio: {fileID: 8300000, guid: 0aaca58969f883648abb7920d30dd2c3, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: gave
-    audio: {fileID: 8300000, guid: cc32fdd9e2b7e564eba01aa306b2bc5e, type: 3}
-    moveWord: 1
-    actionWord: 16
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: a loud
-    audio: {fileID: 8300000, guid: 2c14a1624d0f9f445873e2c593fb92d0, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: pirate
-    audio: {fileID: 8300000, guid: 593e56c49f1d0f04cad09d3657025c04, type: 3}
-    moveWord: 1
-    actionWord: 13
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: shout before he started walking towards the
-    audio: {fileID: 8300000, guid: 6414804c5e16cf7448278e54752514c1, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: sound
-    audio: {fileID: 8300000, guid: d42cac8c98b4b3a4b9eac78da784c1ab, type: 3}
-    moveWord: 1
-    actionWord: 15
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: of the
-    audio: {fileID: 8300000, guid: 7783215f4379e284ab973c4b18294276, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: angry gorilla
-    audio: {fileID: 8300000, guid: 00c7e5f0cdca6f746925a03e12b590c4, type: 3}
-    moveWord: 1
-    actionWord: 14
-    requireInput: 0
-    postText: .
-    advanceBG: 0
-  - text: Our friend walked carefully waving
-    audio: {fileID: 8300000, guid: 25a47a80cac8a3f43ad4ff1f31ed9043, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: hello
-    audio: {fileID: 8300000, guid: b2ac9ae0c91456640864242c6f8b51cb, type: 3}
-    moveWord: 1
-    actionWord: 6
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: so as not to
-    audio: {fileID: 8300000, guid: 0b33e17fbb3b36d40a2d686f8125062d, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: scare
-    audio: {fileID: 8300000, guid: 2d0c9c17547232c448cb32b88679ead0, type: 3}
-    moveWord: 1
-    actionWord: 9
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: anyone.
-    audio: {fileID: 8300000, guid: c1782bf2d1635e746a3397ae0144ce2d, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: Our friend stumbled across
-    audio: {fileID: 8300000, guid: c0f3a7a4b888c0e41b87a74152897eaf, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: that guy
-    audio: {fileID: 8300000, guid: 17cd18ba1e8417c4ba63e5d005e038c4, type: 3}
-    moveWord: 1
-    actionWord: 10
-    requireInput: 0
-    postText: ~
-    advanceBG: 0
-  - text: who had fallen down a
-    audio: {fileID: 8300000, guid: 06680315289eed34b87f4ab63eeadba5, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: mudslide
-    audio: {fileID: 8300000, guid: 53f973ae55d58a34a8ecad88e7439ed0, type: 3}
-    moveWord: 1
-    actionWord: 1
-    requireInput: 0
-    postText: ~
-    advanceBG: 0
-  - text: bumped his
-    audio: {fileID: 8300000, guid: a2eb7028ec106d6468dcf7c07c5002a6, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: head
-    audio: {fileID: 8300000, guid: 6d86380f895e5b94f869984740ac7b6c, type: 3}
-    moveWord: 1
-    actionWord: 19
-    requireInput: 0
-    postText: ~
-    advanceBG: 0
-  - text: 'and got captured by the '
-    audio: {fileID: 8300000, guid: 57918d6b9f2c1804698cf6c054b4249e, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: orcs
-    audio: {fileID: 8300000, guid: 21ed887cccce34243b71b11fa645fd0d, type: 3}
-    moveWord: 1
-    actionWord: 4
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: and covered in
-    audio: {fileID: 8300000, guid: c562880c90fa96446af6e3e484302f21, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: gorilla poop
-    audio: {fileID: 8300000, guid: 0cdee81defc3d104395e4068d416ba36, type: 3}
-    moveWord: 1
-    actionWord: 14
-    requireInput: 0
-    postText: .
-    advanceBG: 0
-  - text: 'After a long conversation and a lot of '
-    audio: {fileID: 8300000, guid: 0da184178df198640822c92cba1fdc7b, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: listening
-    audio: {fileID: 8300000, guid: 16f49b3499975a142aedf0792993f6f3, type: 3}
-    moveWord: 1
-    actionWord: 2
-    requireInput: 0
-    postText: ~
-    advanceBG: 0
-  - text: the
-    audio: {fileID: 8300000, guid: 57c015f4314573d48a413f0e41d225c7, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: orcs
-    audio: {fileID: 8300000, guid: 9747889ffe2470c4c89cf0652c1f4a50, type: 3}
-    moveWord: 1
-    actionWord: 4
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: agreed to trade
-    audio: {fileID: 8300000, guid: 63595770aec5e624083f95f014ce8d07, type: 3}
-    moveWord: 1
-    actionWord: 0
-    requireInput: 0
-    postText: 
-    advanceBG: 0
-  - text: that guy
-    audio: {fileID: 8300000, guid: 7011224734fd48148a68d22bd6acb876, type: 3}
-    moveWord: 1
-    actionWord: 10
-    requireInput: 0
-    postText: ~
-    advanceBG: 0
-  - text: 'for the '
-    audio: {fileID: 8300000, guid: 25dc8fa23f1a9ee468f89cc407774b8f, type: 3}
+  - text: and the
+    audio:
+      m_AssetGUID: 93734811f92cfe5428992f082d581ffa
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: baby monkey
-    audio: {fileID: 8300000, guid: 82b1953884f3b2942bc9c244fe985360, type: 3}
+    audio:
+      m_AssetGUID: 43685283febeee74e9672a239ecdf90c
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
-    actionWord: 18
+    actionWord: 20
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: began the long journey out of the jungle~ when they heard the
+    audio:
+      m_AssetGUID: 1a2483526150db14cb193cda2147b8bc
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: sound
+    audio:
+      m_AssetGUID: 9e143406b22f4ad48b98dd2639a67ed9
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 15
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: of an
+    audio:
+      m_AssetGUID: 6a1e765d34877ec4f967c689bfe692d3
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: angry gorilla
+    audio:
+      m_AssetGUID: df3206feee91c9841a9e7aaa26eed1d8
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 14
+    requireInput: 0
+    postText: .
+    advanceBG: 0
+  - text: The
+    audio:
+      m_AssetGUID: 40173b7e80c3e95479eaacdb93532562
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: explorer
+    audio:
+      m_AssetGUID: 21110f5df85f668488e83330cfb49e54
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 8
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 'was a little '
+    audio:
+      m_AssetGUID: 21aa0b447ed51094eabbec1bbd2a29c1
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: scared
+    audio:
+      m_AssetGUID: 78001e28f81c22a43a480d315541dd06
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 9
+    requireInput: 0
+    postText: ~
+    advanceBG: 0
+  - text: but
+    audio:
+      m_AssetGUID: 02e3fb21524c317438fd6b08af17a5c6
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: angry gorilla
+    audio:
+      m_AssetGUID: 07e4b1072747352468302c859284fe27
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 14
+    requireInput: 0
+    postText: .
+    advanceBG: 1
+  - text: noises made the
+    audio:
+      m_AssetGUID: 41cee8fbc0c87be4b9791b65bc51063e
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: baby monkey
+    audio:
+      m_AssetGUID: af0aecaa40d84db479608835118d1027
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 20
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: start to smile.
+    audio:
+      m_AssetGUID: f08615ba0906bf34d96e606a2f90077a
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: Our friend stopped to
+    audio:
+      m_AssetGUID: f02b8d4f89a3fd142b34f911b8a63ece
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: think
+    audio:
+      m_AssetGUID: 629e7614b96067648a65ecba98ac2ee5
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 5
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 'about the next move and decided to '
+    audio:
+      m_AssetGUID: 8da86a321c46dc443b7fe88377541aee
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: listen
+    audio:
+      m_AssetGUID: 235872737ab212346817f01f726bdf9f
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 2
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 'to the noises on the '
+    audio:
+      m_AssetGUID: 567ae785587df0547a7e623e5cc5c258
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: strong wind
+    audio:
+      m_AssetGUID: 9857dfb843bdb2642b374d89f29ac570
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 12
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: before deciding on the
+    audio:
+      m_AssetGUID: 20b4d5148ac1e224fa077a66ab65e7ca
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: choice
+    audio:
+      m_AssetGUID: bfe616a1a7810aa4785b8c489408043d
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 11
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: to walk toward the
+    audio:
+      m_AssetGUID: bb2693b162022ed44a89ad6190b2e25e
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: angry gorilla
+    audio:
+      m_AssetGUID: 6eb7ebfdaf2d4924e8d5abb054df1d8b
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 14
+    requireInput: 0
+    postText: .
+    advanceBG: 0
+  - text: or run away and risk falling down a
+    audio:
+      m_AssetGUID: c4406dd02adbad34fba4597d0377cfc2
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: mudslide
+    audio:
+      m_AssetGUID: ab0159d931443434891482e9c7e51718
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 1
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 'or running into the '
+    audio:
+      m_AssetGUID: a7c07a7ee478ab64984cdab3829788a7
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: orcs
+    audio:
+      m_AssetGUID: 3c9125e284c83e841a7748df8e6607b8
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 4
+    requireInput: 0
+    postText: ~
+    advanceBG: 0
+  - text: or
+    audio:
+      m_AssetGUID: bc25076fd025acb4e985bf093c6cd653
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: spiders
+    audio:
+      m_AssetGUID: 1a4ecb248cae7874db04449ed15f7090
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 7
+    requireInput: 0
+    postText: .
+    advanceBG: 0
+  - text: The
+    audio:
+      m_AssetGUID: 25f7704ac38c1ac45917c163c7301e5c
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: explorer
+    audio:
+      m_AssetGUID: 2e58b6229a06b8a45a99ac157acd788b
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 8
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: pulled up his
+    audio:
+      m_AssetGUID: d3b49abaa5528fe448a1f80445467a7e
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: backpack
+    audio:
+      m_AssetGUID: 8d3a64da540d4c543851bb10c21ca8e2
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 17
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: and the baby
+    audio:
+      m_AssetGUID: 0aaca58969f883648abb7920d30dd2c3
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: gave
+    audio:
+      m_AssetGUID: cc32fdd9e2b7e564eba01aa306b2bc5e
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 16
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: a loud
+    audio:
+      m_AssetGUID: 2c14a1624d0f9f445873e2c593fb92d0
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: pirate
+    audio:
+      m_AssetGUID: 593e56c49f1d0f04cad09d3657025c04
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 13
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: shout before he started walking towards the
+    audio:
+      m_AssetGUID: 6414804c5e16cf7448278e54752514c1
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: sound
+    audio:
+      m_AssetGUID: d42cac8c98b4b3a4b9eac78da784c1ab
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 15
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: of the
+    audio:
+      m_AssetGUID: 7783215f4379e284ab973c4b18294276
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: angry gorilla
+    audio:
+      m_AssetGUID: 00c7e5f0cdca6f746925a03e12b590c4
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 14
+    requireInput: 0
+    postText: .
+    advanceBG: 0
+  - text: Our friend walked carefully waving
+    audio:
+      m_AssetGUID: 25a47a80cac8a3f43ad4ff1f31ed9043
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: hello
+    audio:
+      m_AssetGUID: b2ac9ae0c91456640864242c6f8b51cb
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 6
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: so as not to
+    audio:
+      m_AssetGUID: 0b33e17fbb3b36d40a2d686f8125062d
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: scare
+    audio:
+      m_AssetGUID: 2d0c9c17547232c448cb32b88679ead0
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 9
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: anyone.
+    audio:
+      m_AssetGUID: c1782bf2d1635e746a3397ae0144ce2d
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: Our friend stumbled across
+    audio:
+      m_AssetGUID: c0f3a7a4b888c0e41b87a74152897eaf
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: that guy
+    audio:
+      m_AssetGUID: 17cd18ba1e8417c4ba63e5d005e038c4
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 10
+    requireInput: 0
+    postText: ~
+    advanceBG: 0
+  - text: who had fallen down a
+    audio:
+      m_AssetGUID: 06680315289eed34b87f4ab63eeadba5
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: mudslide
+    audio:
+      m_AssetGUID: 53f973ae55d58a34a8ecad88e7439ed0
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 1
+    requireInput: 0
+    postText: ~
+    advanceBG: 0
+  - text: bumped his
+    audio:
+      m_AssetGUID: a2eb7028ec106d6468dcf7c07c5002a6
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: head
+    audio:
+      m_AssetGUID: 6d86380f895e5b94f869984740ac7b6c
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 19
+    requireInput: 0
+    postText: ~
+    advanceBG: 0
+  - text: 'and got captured by the '
+    audio:
+      m_AssetGUID: 57918d6b9f2c1804698cf6c054b4249e
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: orcs
+    audio:
+      m_AssetGUID: 21ed887cccce34243b71b11fa645fd0d
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 4
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: and covered in
+    audio:
+      m_AssetGUID: c562880c90fa96446af6e3e484302f21
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: gorilla poop
+    audio:
+      m_AssetGUID: 0cdee81defc3d104395e4068d416ba36
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 14
+    requireInput: 0
+    postText: .
+    advanceBG: 0
+  - text: 'After a long conversation and a lot of '
+    audio:
+      m_AssetGUID: 0da184178df198640822c92cba1fdc7b
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: listening
+    audio:
+      m_AssetGUID: 16f49b3499975a142aedf0792993f6f3
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 2
+    requireInput: 0
+    postText: ~
+    advanceBG: 0
+  - text: the
+    audio:
+      m_AssetGUID: 57c015f4314573d48a413f0e41d225c7
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: orcs
+    audio:
+      m_AssetGUID: 9747889ffe2470c4c89cf0652c1f4a50
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 4
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: agreed to trade
+    audio:
+      m_AssetGUID: 63595770aec5e624083f95f014ce8d07
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: that guy
+    audio:
+      m_AssetGUID: 7011224734fd48148a68d22bd6acb876
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 10
+    requireInput: 0
+    postText: ~
+    advanceBG: 0
+  - text: 'for the '
+    audio:
+      m_AssetGUID: 25dc8fa23f1a9ee468f89cc407774b8f
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: baby monkey
+    audio:
+      m_AssetGUID: 82b1953884f3b2942bc9c244fe985360
+      m_SubObjectName: 
+      m_SubObjectType: 
+    moveWord: 1
+    actionWord: 20
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: which made everyone happy~ even
-    audio: {fileID: 8300000, guid: c304fdb586ee1c445ac9671b01a2ec0d, type: 3}
+    audio:
+      m_AssetGUID: c304fdb586ee1c445ac9671b01a2ec0d
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 0
     requireInput: 0
     postText: 
     advanceBG: 0
   - text: the gorilla
-    audio: {fileID: 8300000, guid: 0c7cee06296c2b343bf2cd8c7d60b256, type: 3}
+    audio:
+      m_AssetGUID: 0c7cee06296c2b343bf2cd8c7d60b256
+      m_SubObjectName: 
+      m_SubObjectType: 
     moveWord: 1
     actionWord: 14
     requireInput: 0

@@ -24,6 +24,8 @@ public enum ConsonantEnum {
     sh,
     t,
     th,
+    u,
+    ew,
     v,
     w,
     x,
@@ -64,9 +66,6 @@ public class ConsonantCoin : MonoBehaviour
             animationName = type.ToString();
         else
             animationName = type.ToString() + "Coin";
-
-        print ("animation name: " + animationName);
-        
         animator.Play(animationName);
     }
 

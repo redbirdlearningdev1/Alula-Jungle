@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: pray_cw_obj
   m_EditorClassIdentifier: 
   word: pray
-  audio: {fileID: 8300000, guid: 797420f87467bd54c88be583077f6418, type: 3}
+  audio:
+    m_AssetGUID: 797420f87467bd54c88be583077f6418
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 77ceea9cf30664541aff4e8e69d43fc2, type: 3}
-  elkoninList: 220000002400000007000000000000000000000000000000
+  elkoninList: 230000002500000007000000000000000000000000000000
   elkoninCount: 3
   set: 6

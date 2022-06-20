@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: grab_cw_obj
   m_EditorClassIdentifier: 
   word: grab
-  audio: {fileID: 8300000, guid: 82dbe4d69da48a041b2154eb3e2cff53, type: 3}
+  audio:
+    m_AssetGUID: 82dbe4d69da48a041b2154eb3e2cff53
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: f7ab20acca768b045b870edda211425e, type: 3}
-  elkoninList: 1b0000002400000002000000160000000000000000000000
+  elkoninList: 1c0000002500000002000000170000000000000000000000
   elkoninCount: 4
   set: 1

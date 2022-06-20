@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: rake_cw_obj
   m_EditorClassIdentifier: 
   word: rake
-  audio: {fileID: 8300000, guid: 54ca6828cf0bbd34bba4bcd3738c7506, type: 3}
+  audio:
+    m_AssetGUID: 54ca6828cf0bbd34bba4bcd3738c7506
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: cecc43fdc36a2644185a89ec4f63eef1, type: 3}
-  elkoninList: 24000000070000001e000000000000000000000000000000
+  elkoninList: 25000000070000001f000000000000000000000000000000
   elkoninCount: 3
   set: 6

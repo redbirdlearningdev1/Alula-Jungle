@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: dive_cw_obj
   m_EditorClassIdentifier: 
   word: dive
-  audio: {fileID: 8300000, guid: f3aa25e4c73a0c74b994de15c196411c, type: 3}
+  audio:
+    m_AssetGUID: f3aa25e4c73a0c74b994de15c196411c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 0ce8dfa2d9b5cd34d9327680751ffe44, type: 3}
-  elkoninList: 190000000900000029000000000000000000000000000000
+  elkoninList: 1a000000090000002c000000000000000000000000000000
   elkoninCount: 3
   set: 8

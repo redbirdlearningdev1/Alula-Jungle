@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: brain_cw_obj
   m_EditorClassIdentifier: 
   word: brain
-  audio: {fileID: 8300000, guid: 6d1d58574ca39314586935b9c6b57aab, type: 3}
+  audio:
+    m_AssetGUID: 6d1d58574ca39314586935b9c6b57aab
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: b07f2a951862977408857e41acf539d8, type: 3}
-  elkoninList: 160000002400000007000000210000000000000000000000
+  elkoninList: 170000002500000007000000220000000000000000000000
   elkoninCount: 4
   set: 6

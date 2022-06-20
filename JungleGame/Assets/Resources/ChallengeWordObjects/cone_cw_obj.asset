@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: cone_cw_obj
   m_EditorClassIdentifier: 
   word: cone
-  audio: {fileID: 8300000, guid: ca88a726e10ad324bbb18fd89d73f7f8, type: 3}
+  audio:
+    m_AssetGUID: ca88a726e10ad324bbb18fd89d73f7f8
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 8ba7166f452718e4d8f0d2e3eeb0c358, type: 3}
-  elkoninList: 170000000a00000021000000000000000000000000000000
+  elkoninList: 180000000a00000022000000000000000000000000000000
   elkoninCount: 3
   set: 9

@@ -419,7 +419,7 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
                 return ElkoninValue.pirate;
             case "gorilla":
                 return ElkoninValue.gorilla;
-            case "sounds":
+            case "sound":
                 return ElkoninValue.sounds;
             case "give":
                 return ElkoninValue.give;
@@ -475,6 +475,10 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
                 return ElkoninValue.t;
             case "th":
                 return ElkoninValue.th;
+            case "u":
+                return ElkoninValue.u;
+            case "ew":
+                return ElkoninValue.ew;
             case "v":
                 return ElkoninValue.v;
             case "w":
@@ -490,17 +494,7 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
 
     private ActionWordEnum ConvertToActionWord(string val) 
     {
-        // print ("action word string: " + val);
-        // print ("string length: " + val.Length);
-        
-        // int i = 0;
-        // foreach (char c in val)
-        // {
-        //     print (i + ": " + ((byte)c));
-        //     i++;
-        // }
 
-        //print (((byte)'\r'));
         string fixed_val = val.Replace("\r", "");
 
         //print ("string length after replace: " + fixed_val.Length);
@@ -540,7 +534,7 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
                 return ActionWordEnum.pirate;
             case "gorilla":
                 return ActionWordEnum.gorilla;
-            case "sounds":
+            case "sound":
                 return ActionWordEnum.sounds;
             case "give":
                 return ActionWordEnum.give;

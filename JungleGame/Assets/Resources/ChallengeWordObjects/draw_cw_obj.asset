@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: draw_cw_obj
   m_EditorClassIdentifier: 
   word: draw
-  audio: {fileID: 8300000, guid: c736b90ee6944754da692a50b3cb10b5, type: 3}
+  audio:
+    m_AssetGUID: c736b90ee6944754da692a50b3cb10b5
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 37af1f063ef3e61418d8f732683c4cc1, type: 3}
-  elkoninList: 190000002400000015000000000000000000000000000000
+  elkoninList: 1a0000002500000015000000000000000000000000000000
   elkoninCount: 3
   set: 20

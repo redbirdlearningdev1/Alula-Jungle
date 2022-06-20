@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: a048bdfa5647a73468cfeca005715b5c, type: 3}
+    audioClip:
+      m_AssetGUID: a048bdfa5647a73468cfeca005715b5c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_3_Wally_7_T1
     audioString: There they go again.
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 5fc614a9bc5337c4b848d84dd25ee9f7, type: 3}
+    audioClip:
+      m_AssetGUID: 5fc614a9bc5337c4b848d84dd25ee9f7
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_3_Red_8_T1
     audioString: "It\u2019s okay, "
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: dbfd0717e5446494db8707f6efd4e2ae, type: 3}
+    audioClip:
+      m_AssetGUID: dbfd0717e5446494db8707f6efd4e2ae
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_3_Red_8_T2
     audioString: "I\u2019m sure we\u2019ll see them again soon."
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 0c684db604a4ad74588c053a7860a627, type: 3}
+    audioClip:
+      m_AssetGUID: 0c684db604a4ad74588c053a7860a627
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_3_Clogg_9_T1
     audioString: "I see\u2026 So it really was the Prince. "
   - endTalkieAfterThisSegment: 0
@@ -99,7 +115,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: c7fb49d25d91d6c429409c715a59b6f7, type: 3}
+    audioClip:
+      m_AssetGUID: c7fb49d25d91d6c429409c715a59b6f7
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_3_Clogg_9_T2
     audioString: 'My apologies for doubting you. '
   - endTalkieAfterThisSegment: 0
@@ -115,7 +135,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 4ca0d3674f0c6c24197d726361f3e124, type: 3}
+    audioClip:
+      m_AssetGUID: 4ca0d3674f0c6c24197d726361f3e124
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_3_Red_10_T1
     audioString: It's okay!
   - endTalkieAfterThisSegment: 0
@@ -131,7 +155,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 834aaee081cd9714384a574e4f56fdeb, type: 3}
+    audioClip:
+      m_AssetGUID: 834aaee081cd9714384a574e4f56fdeb
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_3_Red_10_T2
     audioString: It does seem a bit strange that a Prince would do this to their
       own kingdom.
@@ -148,7 +176,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: f450800ebe8b2114d96ab3016741f3a4, type: 3}
+    audioClip:
+      m_AssetGUID: f450800ebe8b2114d96ab3016741f3a4
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_3_Clogg_11_T1
     audioString: 'It makes me worry for the future of this kingdom. '
   - endTalkieAfterThisSegment: 0
@@ -164,7 +196,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 4702db3e88342b14ead9a15e22b44309, type: 3}
+    audioClip:
+      m_AssetGUID: 4702db3e88342b14ead9a15e22b44309
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_3_Clogg_12_T1
     audioString: Maybe it might be best if the tigers weren't rulers anymore.
   - endTalkieAfterThisSegment: 0
@@ -180,7 +216,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 7a4b9fad36000864199fd999da4c3651, type: 3}
+    audioClip:
+      m_AssetGUID: 7a4b9fad36000864199fd999da4c3651
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_3_Red_13_T1
     audioString: "Hey don\u2019t say that!"
   - endTalkieAfterThisSegment: 0
@@ -196,7 +236,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 5a56cd2f67034454d9afc0f0c9e3a6e5, type: 3}
+    audioClip:
+      m_AssetGUID: 5a56cd2f67034454d9afc0f0c9e3a6e5
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_3_Red_13_T2
     audioString: "We\u2019re on a mission to help the Prince,  and stop this!"
   - endTalkieAfterThisSegment: 0
@@ -206,13 +250,17 @@ MonoBehaviour:
     leftCharacter: 1
     leftEmotionNum: 14
     leftMouthEnum: 2
-    leftEyesEnum: 0
+    leftEyesEnum: 1
     rightCharacter: 8
     rightEmotionNum: 8
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 29ad3798123b24f419fe62f5b7854b9a, type: 3}
+    audioClip:
+      m_AssetGUID: 29ad3798123b24f419fe62f5b7854b9a
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_3_Clogg_14_T1
     audioString: 'I guess only time will tell. '
   - endTalkieAfterThisSegment: 0
@@ -222,13 +270,17 @@ MonoBehaviour:
     leftCharacter: 1
     leftEmotionNum: 14
     leftMouthEnum: 2
-    leftEyesEnum: 0
+    leftEyesEnum: 1
     rightCharacter: 8
     rightEmotionNum: 5
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: f43781290b41dec45baabb17ef2cffc2, type: 3}
+    audioClip:
+      m_AssetGUID: f43781290b41dec45baabb17ef2cffc2
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_3_Clogg_14_T2
     audioString: Thank you for fixing my village.
   - endTalkieAfterThisSegment: 0
@@ -244,7 +296,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 4dc51d18b1d326a43a2768d9e94a133b, type: 3}
+    audioClip:
+      m_AssetGUID: 4dc51d18b1d326a43a2768d9e94a133b
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_3_Clogg_14_T3
     audioString: 'You may come and go as you please. '
   - endTalkieAfterThisSegment: 0
@@ -260,7 +316,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 1cab33ad2c9328348b8a4ec22bef3130, type: 3}
+    audioClip:
+      m_AssetGUID: 1cab33ad2c9328348b8a4ec22bef3130
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_3_Red_15_T1
     audioString: "You\u2019re very welcome! "
   - endTalkieAfterThisSegment: 0
@@ -276,7 +336,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 638acd7f03bfd9f40b3c643451212d4a, type: 3}
+    audioClip:
+      m_AssetGUID: 638acd7f03bfd9f40b3c643451212d4a
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_3_Wally_16_T1
     audioString: Let's move forward,  team!
   - endTalkieAfterThisSegment: 0
@@ -292,6 +356,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: ed25354171cf952439374db29f76b59b, type: 3}
+    audioClip:
+      m_AssetGUID: ed25354171cf952439374db29f76b59b
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_3_3_Red_17_T1
     audioString: Onward explorer!

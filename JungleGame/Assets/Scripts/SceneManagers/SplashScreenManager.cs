@@ -6,6 +6,8 @@ using TMPro;
 
 public class SplashScreenManager : MonoBehaviour
 {
+    public static SplashScreenManager instance;
+
     public Animator mainAnimator;
 
     [Header("Splash Screen BGs")]
@@ -15,11 +17,10 @@ public class SplashScreenManager : MonoBehaviour
 
     [Header("Profile Windows")]
     [SerializeField] CanvasGroup profileSelectWindow;
-    [SerializeField] CanvasGroup newProfileWindow;
-    [SerializeField] CanvasGroup editProfileWindow;
+    [SerializeField] NewProfileWindow newProfileWindow;
+    [SerializeField] EditProfileWindow editProfileWindow;
 
     [SerializeField] Button startButton;
-    [SerializeField] Button newProfileButton;
 
     [SerializeField] Button profile1Button;
     [SerializeField] Button profile2Button;
@@ -40,6 +41,16 @@ public class SplashScreenManager : MonoBehaviour
     public Animator profile1SelectAnimator;
     public Animator profile2SelectAnimator;
     public Animator profile3SelectAnimator;
+
+    public LerpableObject winCrown1;
+    public LerpableObject winCrown2;
+    public LerpableObject winCrown3;
+
+    public LerpableObject practiceButton;
+    private Vector3 practiceButtonPos;
+
+    public LerpableObject reportButton;
+    private Vector3 reportButtonPos;
 
     [SerializeField] TMP_InputField newProfileInput;
 
@@ -76,22 +87,35 @@ public class SplashScreenManager : MonoBehaviour
     public LerpableObject confirmDeleteProfileBG;
 
     [Header("Button Stuff")]
-    public Image buttonBG;
-    public Image buttonText;
+    public Image startbuttonBox;
+    public Image startbuttonText;
     public Sprite boxGreen;
+    public Sprite boxBrown;
     public Sprite textWhite;
     public Sprite textGreen;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     void Start() 
     {
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
+        // end practice mode iff needed
+        GameManager.instance.practiceModeON = false;
+        GameManager.instance.practiceModeCounter.text = "";
+
         // stop music 
         AudioManager.instance.StopMusic();
 
         // play song
-        AudioManager.instance.PlaySong(AudioDatabase.instance.FroggerGameSong);
+        AudioManager.instance.PlaySong(AudioDatabase.instance.SplashScreenSong);
 
         // close confirmation window
         confirmDeleteProfileWindow.transform.localScale = Vector2.zero;
@@ -102,17 +126,25 @@ public class SplashScreenManager : MonoBehaviour
         var profiles = StudentInfoSystem.GetAllStudentDatas();
 
         StudentPlayerData currProfile = null;
-        // determine most recently used profile
+        // determine most recently used profile + set current student
         foreach (var profile in profiles)
         {
             if (profile.mostRecentProfile)
+            {
+                StudentInfoSystem.SetStudentPlayer(profile.studentIndex);
                 currProfile = profile;
+            }
         }
 
         if (currProfile != null)
         {
             GameManager.instance.SendLog("SplashScreenManager", "current profile: " + currProfile.name);
             GameManager.instance.SendLog("SplashScreenManager", "current chapter: " + currProfile.currentChapter);
+        }
+        // if no most recently used profile - set profile 1 as current profile
+        else
+        {
+            StudentInfoSystem.SetStudentPlayer(StudentIndex.student_1);
         }
 
         // default to chapter 0 animations
@@ -150,36 +182,41 @@ public class SplashScreenManager : MonoBehaviour
             {
                 BG6_animator.Play("6_Ch5");
             }
-
-            if (chapter > Chapter.chapter_final)
+            
+            if (chapter > Chapter.chapter_6)
             {
                 BG4_animator.Play("4_Ch6");
             }
         }
 
-        // set up profile window
-        startButton.interactable = true;
+        // turn off start button
+        startButton.interactable = false;
+        startbuttonBox.sprite = boxBrown;
+        startbuttonText.sprite = textGreen;
+
         profileSelectWindow.interactable = false;
         profileSelectWindow.blocksRaycasts = false;
         profileSelectWindow.alpha = 0f;
 
-        // set up new profile window
-        newProfileWindow.interactable = false;
-        newProfileWindow.blocksRaycasts = false;
-        newProfileWindow.alpha = 0f;
-
-        // set up edit profile window
-        editProfileWindow.interactable = false;
-        editProfileWindow.blocksRaycasts = false;
-        editProfileWindow.alpha = 0f;
-
         // set edit profile buttons to be off
-        editProfile1Button.gameObject.SetActive(false);
-        editProfile2Button.gameObject.SetActive(false);
-        editProfile3Button.gameObject.SetActive(false);
+        editProfile1Button.transform.localScale = Vector3.zero;
+        editProfile2Button.transform.localScale = Vector3.zero;
+        editProfile3Button.transform.localScale = Vector3.zero;
 
         // wiggle text controller
         tapTextWiggleController.StartWiggle();
+
+        // set images
+        selectedProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+        editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+
+        // move practice button off-screen
+        practiceButtonPos = practiceButton.transform.localPosition;
+        practiceButton.transform.localPosition = new Vector3(practiceButtonPos.x, practiceButtonPos.y + 150f, 0f);
+
+        // move report button off-screen
+        reportButtonPos = reportButton.transform.localPosition;
+        reportButton.transform.localPosition = new Vector3(reportButtonPos.x, reportButtonPos.y + 150f, 0f);
 
         // start screen tap delay
         StartCoroutine(ScreenTapDelay());
@@ -213,13 +250,11 @@ public class SplashScreenManager : MonoBehaviour
         {
             profile1Text.text = data1.name;
             profile1Image.sprite = GameManager.instance.avatars[data1.profileAvatar];
-            editProfile1Button.gameObject.SetActive(true);
         }
         else
         {
-            profile1Text.text = "empty";
+            profile1Text.text = "create profile";
             profile1Image.sprite = emptyAvatarSprite;
-            editProfile1Button.gameObject.SetActive(false);
         }
 
         // profile 2
@@ -228,13 +263,11 @@ public class SplashScreenManager : MonoBehaviour
         {
             profile2Text.text = data2.name;
             profile2Image.sprite = GameManager.instance.avatars[data2.profileAvatar];
-            editProfile2Button.gameObject.SetActive(true);
         }
         else
         {
-            profile2Text.text = "empty";
+            profile2Text.text = "create profile";
             profile2Image.sprite = emptyAvatarSprite;
-            editProfile2Button.gameObject.SetActive(false);
         }
 
         // profile 3
@@ -243,13 +276,11 @@ public class SplashScreenManager : MonoBehaviour
         {
             profile3Text.text = data3.name;
             profile3Image.sprite = GameManager.instance.avatars[data3.profileAvatar];
-            editProfile3Button.gameObject.SetActive(true);
         }
         else
         {
-            profile3Text.text = "empty";
+            profile3Text.text = "create profile";
             profile3Image.sprite = emptyAvatarSprite;
-            editProfile3Button.gameObject.SetActive(false);
         }
     }
 
@@ -270,9 +301,6 @@ public class SplashScreenManager : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        // show menu button
-        SettingsManager.instance.ToggleMenuButtonActive(true);
-
         float timer = 0f;
         while (true)
         {
@@ -291,51 +319,93 @@ public class SplashScreenManager : MonoBehaviour
         profileSelectWindow.interactable = true;
         profileSelectWindow.blocksRaycasts = true;
         profileSelectWindow.alpha = 1f;
-    }
 
-    private IEnumerator RevealNewProfileWindow(float totalTime)
-    {
-        float timer = 0f;
-        while (true)
+        // show menu button
+        SettingsManager.instance.ToggleMenuButtonActive(true);
+
+        // enable practice / report button if profiles exist
+        if (data1.active || data2.active || data3.active)
         {
-            timer += Time.deltaTime;
-            newProfileWindow.alpha = Mathf.Lerp(0f, 1f, timer / totalTime);
-
-            if (timer > totalTime)
-                break;
-            yield return null;
+            practiceButton.GetComponent<Button>().interactable = true;
+            reportButton.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            practiceButton.GetComponent<Button>().interactable = false;
+            reportButton.GetComponent<Button>().interactable = false;
         }
 
-        // new profile avatar is 10 by default (red)
-        profileAvatarIndex = 10;
-        selectedProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+        // show practice button
+        practiceButton.LerpYPos(practiceButtonPos.y - 50, 0.2f, true);
+        reportButton.LerpYPos(reportButtonPos.y - 50, 0.2f, true);
+        yield return new WaitForSeconds(0.2f);
+        practiceButton.LerpYPos(practiceButtonPos.y, 0.2f, true);
+        reportButton.LerpYPos(reportButtonPos.y, 0.2f, true);
+        yield return new WaitForSeconds(0.2f);
 
-        newProfileWindow.interactable = true;
-        newProfileWindow.blocksRaycasts = true;
-        newProfileWindow.alpha = 1f;
+        SetUpWinCrowns();
     }
 
-    private IEnumerator HideNewProfileWindow(float totalTime)
+    private void SetUpWinCrowns()
     {
-        float timer = 0f;
-        while (true)
+        // show crowns if profile has won game
+        data1 = StudentInfoSystem.GetStudentData(StudentIndex.student_1);
+        if (data1.active && data1.currStoryBeat >= StoryBeat.FinishedGame)
         {
-            timer += Time.deltaTime;
-            newProfileWindow.alpha = Mathf.Lerp(1f, 0f, timer / totalTime);
-
-            if (timer > totalTime)
-                break;
-            yield return null;
+            winCrown1.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.2f, 0.2f);
+            winCrown1.GetComponent<BobController>().StartBob();
+        }
+        else
+        {
+            // remove crown if crown is active
+            if (winCrown1.transform.localScale.x > 0f)
+            {
+                winCrown1.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.2f, 0.2f);
+                winCrown1.GetComponent<BobController>().StopBob();
+            }
         }
 
-        newProfileWindow.interactable = false;
-        newProfileWindow.blocksRaycasts = false;
-        newProfileWindow.alpha = 0f;
+        // profile 2
+        data2 = StudentInfoSystem.GetStudentData(StudentIndex.student_2);
+        if (data2.active && data2.currStoryBeat >= StoryBeat.FinishedGame)
+        {
+            winCrown2.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.2f, 0.2f);
+            winCrown2.GetComponent<BobController>().StartBob();
+        }
+        else
+        {
+            // remove crown if crown is active
+            if (winCrown2.transform.localScale.x > 0f)
+            {
+                winCrown2.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.2f, 0.2f);
+                winCrown2.GetComponent<BobController>().StopBob();
+            }
+        }
+
+        // profile 3
+        data3 = StudentInfoSystem.GetStudentData(StudentIndex.student_3);
+        if (data3.active && data3.currStoryBeat >= StoryBeat.FinishedGame)
+        {
+            winCrown3.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.2f, 0.2f);
+            winCrown3.GetComponent<BobController>().StartBob();
+        }
+        else
+        {
+            // remove crown if crown is active
+            if (winCrown3.transform.localScale.x > 0f)
+            {
+                winCrown3.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.2f, 0.2f);
+                winCrown3.GetComponent<BobController>().StopBob();
+            }
+        }
     }
 
     public void OnStartPressed()
     {
+        // turn off start button
         startButton.interactable = false;
+        startbuttonBox.sprite = boxBrown;
+        startbuttonText.sprite = textGreen;
 
         // load selected profile or make new profile if inactive
         switch (selectedProfile)
@@ -343,20 +413,14 @@ public class SplashScreenManager : MonoBehaviour
             case 1:
                 if (data1.active)
                     LoadProfileAndContinue(StudentIndex.student_1);
-                else
-                    OpenNewProfileWindow(StudentIndex.student_1);
                 break;
             case 2:
                 if (data2.active)
                     LoadProfileAndContinue(StudentIndex.student_2);
-                else
-                    OpenNewProfileWindow(StudentIndex.student_2);
                 break;
             case 3:
                 if (data3.active)
                     LoadProfileAndContinue(StudentIndex.student_3);
-                else
-                    OpenNewProfileWindow(StudentIndex.student_3);
                 break;
         }
     }
@@ -366,13 +430,52 @@ public class SplashScreenManager : MonoBehaviour
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.HappyBlip, 1f);
 
+        // make start button not interactable
+        startButton.interactable = false;
+        startbuttonBox.sprite = boxBrown;
+        startbuttonText.sprite = textGreen;
+
         newProfileIndex = index;
         profileSelectWindow.interactable = false;
         profileSelectWindow.blocksRaycasts = false;
-        StartCoroutine(RevealNewProfileWindow(0.5f));
+
+        newProfileWindow.OpenWindow();
     }
 
-    public void CreateNewProfilePressed()
+    public void EnableProfileInteraction(bool unselectProfile)
+    {
+        profileSelectWindow.interactable = true;
+        profileSelectWindow.blocksRaycasts = true;
+
+        // unselect current profile
+        if (unselectProfile)
+        {
+            switch (selectedProfile)
+            {
+                case 0: 
+                    break;
+                case 1: 
+                    profile1SelectAnimator.Play("UnselectProfile"); 
+                    break;
+                case 2: 
+                    profile2SelectAnimator.Play("UnselectProfile"); 
+                    break;
+                case 3: 
+                    profile3SelectAnimator.Play("UnselectProfile"); 
+                    break;
+            }
+            selectedProfile = 0;
+        }
+        else
+        {
+            // turn on start button
+            startButton.interactable = true;
+            startbuttonBox.sprite = boxGreen;
+            startbuttonText.sprite = textWhite;
+        }
+    }
+
+    public void CreateNewProfilePressed(string newProfileName)
     {
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CreateBlip, 1f);
@@ -380,27 +483,38 @@ public class SplashScreenManager : MonoBehaviour
         StudentInfoSystem.ResetProfile(newProfileIndex);
         StudentInfoSystem.RemoveCurrentStudentPlayer();
         StudentInfoSystem.SetStudentPlayer(newProfileIndex);
-        StudentInfoSystem.GetCurrentProfile().name = newProfileInput.text;
+        StudentInfoSystem.GetCurrentProfile().name = newProfileName;
         StudentInfoSystem.GetCurrentProfile().profileAvatar = profileAvatarIndex;
         StudentInfoSystem.GetCurrentProfile().active = true; // this profile is now active!!!
         StudentInfoSystem.SaveStudentPlayerData();
 
         SetUpProfiles();
-
+        selectedProfile = 0;
         SelectProfile((int)newProfileIndex + 1);
-        startButton.interactable = true;
 
-        StartCoroutine(HideNewProfileWindow(0.5f));
+        // turn on start button
+        startButton.interactable = true;
+        startbuttonBox.sprite = boxGreen;
+        startbuttonText.sprite = textWhite;
+
         profileSelectWindow.interactable = true;
         profileSelectWindow.blocksRaycasts = true;
+
+        // enable practice / report button if profiles exist
+        if (data1.active || data2.active || data3.active)
+        {
+            practiceButton.GetComponent<Button>().interactable = true;
+            reportButton.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            practiceButton.GetComponent<Button>().interactable = false;
+            reportButton.GetComponent<Button>().interactable = false;
+        }
     }
 
     private void LoadProfileAndContinue(StudentIndex index)
     {
-        // change button sprites
-        buttonBG.sprite = boxGreen;
-        buttonText.sprite = textGreen;
-
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.HappyBlip, 1f);
         // set profile to be current player
@@ -428,35 +542,38 @@ public class SplashScreenManager : MonoBehaviour
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
-        // make start button interactable
-        startButton.interactable = true;
-        buttonText.sprite = textWhite;
-
-        profile1Image.GetComponent<LerpableObject>().LerpScale(new Vector2(unselectedScale, unselectedScale), lerpSpeed);
-        profile2Image.GetComponent<LerpableObject>().LerpScale(new Vector2(unselectedScale, unselectedScale), lerpSpeed);
-        profile3Image.GetComponent<LerpableObject>().LerpScale(new Vector2(unselectedScale, unselectedScale), lerpSpeed);
-
-        StudentPlayerData studentData;
-
-        switch (profileNum)
+        // check if profile is empty
+        switch (selectedProfile)
         {
-            default:
-            case 1:
-                SetImageAlpha(profile1Image, selectedAlpha);
-                profile1Image.GetComponent<LerpableObject>().LerpScale(new Vector2(selectedScale, selectedScale), lerpSpeed);
-                studentData = StudentInfoSystem.GetStudentData(StudentIndex.student_1);
+            case 0: 
                 break;
-            case 2:
-                SetImageAlpha(profile2Image, selectedAlpha);
-                profile2Image.GetComponent<LerpableObject>().LerpScale(new Vector2(selectedScale, selectedScale), lerpSpeed);
-                studentData = StudentInfoSystem.GetStudentData(StudentIndex.student_2);
+            case 1: 
+                if (!data1.active)
+                {
+                    OpenNewProfileWindow(StudentIndex.student_1);
+                    return;
+                }
                 break;
-            case 3:
-                SetImageAlpha(profile3Image, selectedAlpha);
-                profile3Image.GetComponent<LerpableObject>().LerpScale(new Vector2(selectedScale, selectedScale), lerpSpeed);
-                studentData = StudentInfoSystem.GetStudentData(StudentIndex.student_3);
+            case 2: 
+                if (!data2.active)
+                {
+                    OpenNewProfileWindow(StudentIndex.student_2);
+                    return;
+                }
+                break;
+            case 3: 
+                if (!data3.active)
+                {
+                    OpenNewProfileWindow(StudentIndex.student_3);
+                    return;
+                }
                 break;
         }
+
+        // turn on start button
+        startButton.interactable = true;
+        startbuttonBox.sprite = boxGreen;
+        startbuttonText.sprite = textWhite;
     }
 
     private IEnumerator SelectProfileRoutine(int profileIndex)
@@ -466,13 +583,19 @@ public class SplashScreenManager : MonoBehaviour
             case 0: 
                 break;
             case 1: 
-                profile1SelectAnimator.Play("UnselectProfile"); 
+                profile1SelectAnimator.Play("UnselectProfile");
+                if (data1.active)
+                    editProfile1Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
                 break;
             case 2: 
-                profile2SelectAnimator.Play("UnselectProfile"); 
+                profile2SelectAnimator.Play("UnselectProfile");
+                if (data2.active)
+                    editProfile2Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
                 break;
             case 3: 
-                profile3SelectAnimator.Play("UnselectProfile"); 
+                profile3SelectAnimator.Play("UnselectProfile");
+                if (data3.active)
+                    editProfile3Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
                 break;
         }
 
@@ -482,9 +605,26 @@ public class SplashScreenManager : MonoBehaviour
 
         switch (selectedProfile)
         {
-            case 1: profile1SelectAnimator.Play("SelectProfile"); break;
-            case 2: profile2SelectAnimator.Play("SelectProfile"); break;
-            case 3: profile3SelectAnimator.Play("SelectProfile"); break;
+            case 1: 
+                profile1SelectAnimator.Play("SelectProfile");
+                profile1Image.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.2f, 0.2f);
+                if (data1.active)
+                    editProfile1Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.one, 0.1f, 0.1f);
+                break;
+
+            case 2: 
+                profile2SelectAnimator.Play("SelectProfile");
+                profile2Image.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.2f, 0.2f);
+                if (data2.active)
+                    editProfile2Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.one, 0.1f, 0.1f);
+                break;
+
+            case 3: 
+                profile3SelectAnimator.Play("SelectProfile");
+                profile3Image.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.2f, 0.2f);
+                if (data3.active)
+                    editProfile3Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.one, 0.1f, 0.1f);
+                break;
         }
 
         switchingProfiles = false;
@@ -559,65 +699,39 @@ public class SplashScreenManager : MonoBehaviour
         // set correct name
         editProfileInput.text = StudentInfoSystem.GetStudentData(index).name;
 
-        profileSelectWindow.interactable = true;
-        profileSelectWindow.blocksRaycasts = true;
-        StartCoroutine(RevealEditProfileWindow(0.5f));
+        // make start button not interactable
+        startButton.interactable = false;
+        startbuttonBox.sprite = boxBrown;
+        startbuttonText.sprite = textGreen;
+
+        newProfileIndex = index;
+        profileSelectWindow.interactable = false;
+        profileSelectWindow.blocksRaycasts = false;
+
+        editProfileWindow.OpenWindow();
     }
 
-    public void UpdateProfilePressed()
+    public void UpdateProfilePressed(string newName)
     {
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CreateBlip, 1f);
 
         StudentInfoSystem.SetStudentPlayer(newProfileIndex);
-        StudentInfoSystem.GetCurrentProfile().name = editProfileInput.text;
+        StudentInfoSystem.GetCurrentProfile().name = newName;
         StudentInfoSystem.GetCurrentProfile().profileAvatar = profileAvatarIndex;
         StudentInfoSystem.SaveStudentPlayerData();
 
         SetUpProfiles();
-
+        selectedProfile = 0;
         SelectProfile((int)newProfileIndex + 1);
+
+        // turn on start button
         startButton.interactable = true;
+        startbuttonBox.sprite = boxGreen;
+        startbuttonText.sprite = textWhite;
 
-        StartCoroutine(HideEditProfileWindow(0.5f));
-        editProfileWindow.interactable = false;
-        editProfileWindow.blocksRaycasts = false;
-    }
-
-    private IEnumerator RevealEditProfileWindow(float totalTime)
-    {
-        float timer = 0f;
-        while (true)
-        {
-            timer += Time.deltaTime;
-            editProfileWindow.alpha = Mathf.Lerp(0f, 1f, timer / totalTime);
-
-            if (timer > totalTime)
-                break;
-            yield return null;
-        }
-
-        editProfileWindow.interactable = true;
-        editProfileWindow.blocksRaycasts = true;
-        editProfileWindow.alpha = 1f;
-    }
-
-    private IEnumerator HideEditProfileWindow(float totalTime)
-    {
-        float timer = 0f;
-        while (true)
-        {
-            timer += Time.deltaTime;
-            editProfileWindow.alpha = Mathf.Lerp(1f, 0f, timer / totalTime);
-
-            if (timer > totalTime)
-                break;
-            yield return null;
-        }
-
-        editProfileWindow.interactable = false;
-        editProfileWindow.blocksRaycasts = false;
-        editProfileWindow.alpha = 0f;
+        profileSelectWindow.interactable = true;
+        profileSelectWindow.blocksRaycasts = true;
     }
 
     public void OnDeleteProfileButtonPressed()
@@ -642,15 +756,50 @@ public class SplashScreenManager : MonoBehaviour
         confirmDeleteProfileBG.GetComponent<Image>().raycastTarget = false;
 
         // close edit profile window
-        StartCoroutine(HideEditProfileWindow(0.5f));
-        editProfileWindow.interactable = false;
-        editProfileWindow.blocksRaycasts = false;
+        editProfileWindow.OnCloseWindowButtonPressed();
 
         // reset profile
-        StudentInfoSystem.ResetProfile(StudentInfoSystem.GetCurrentProfile().studentIndex);
-        SettingsManager.instance.LoadSettingsFromProfile();
+        StudentInfoSystem.ResetProfile(newProfileIndex);
 
         SetUpProfiles();
+        SetUpWinCrowns();
+
+        // unselect current profile
+        switch (selectedProfile)
+        {
+            case 0: 
+                break;
+            case 1: 
+                profile1SelectAnimator.Play("UnselectProfile");
+                editProfile1Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
+                break;
+            case 2: 
+                profile2SelectAnimator.Play("UnselectProfile");
+                editProfile2Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
+                break;
+            case 3: 
+                profile3SelectAnimator.Play("UnselectProfile");
+                editProfile3Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
+                break;
+        }
+        selectedProfile = 0;
+
+        // turn off start button
+        startButton.interactable = false;
+        startbuttonBox.sprite = boxBrown;
+        startbuttonText.sprite = textGreen;
+
+        // enable practice / report button if profiles exist
+        if (data1.active || data2.active || data3.active)
+        {
+            practiceButton.GetComponent<Button>().interactable = true;
+            reportButton.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            practiceButton.GetComponent<Button>().interactable = false;
+            reportButton.GetComponent<Button>().interactable = false;
+        }
     }
 
     public void OnNoDeleteProfilePressed()
@@ -662,5 +811,15 @@ public class SplashScreenManager : MonoBehaviour
         confirmDeleteProfileWindow.SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
         confirmDeleteProfileBG.LerpImageAlpha(confirmDeleteProfileBG.GetComponent<Image>(), 0f, 0.5f);
         confirmDeleteProfileBG.GetComponent<Image>().raycastTarget = false;
+    }
+
+    public void OnPracticeButtonPressed()
+    {
+        GameManager.instance.LoadScene("PracticeScene", true);
+    }
+
+    public void OnReportButtonPressed()
+    {
+        GameManager.instance.LoadScene("ReportScene", true);
     }
 }

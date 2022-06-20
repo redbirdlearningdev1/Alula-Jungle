@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: qu_obj
   m_EditorClassIdentifier: 
   _name: qu
-  audio: {fileID: 8300000, guid: 7e00734a4cf4d6f499d599571d4a4c16, type: 3}
-  elkoninValue: 35
+  audio:
+    m_AssetGUID: 7e00734a4cf4d6f499d599571d4a4c16
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  elkoninValue: 36
   animation: quCoin
-  _enum: 0
+  _enum: 14

@@ -100,6 +100,7 @@ public class PirateRopeController : MonoBehaviour
         printingCoin.transform.localScale = new Vector3(1f, 1f, 1f);
         printingCoin.transform.localPosition = printingCoinPos.localPosition;
         animator.Play("IdleRope");
+        ResetRope();
     }
 
     public void RaiseRopeAnimation()

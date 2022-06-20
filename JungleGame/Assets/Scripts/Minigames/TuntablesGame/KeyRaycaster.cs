@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.AddressableAssets;
 
 public class KeyRaycaster : MonoBehaviour
 {
@@ -29,6 +30,10 @@ public class KeyRaycaster : MonoBehaviour
         if (!isOn)
             return;
 
+        // return if settings window is open
+        if (SettingsManager.instance.settingsWindowOpen)
+            return;
+
         // drag select coin while mouse 1 down
         if (Input.GetMouseButton(0) && selectedKey)
         {
@@ -39,7 +44,7 @@ public class KeyRaycaster : MonoBehaviour
             selectedKey.transform.position = pos;
         }
         else if (Input.GetMouseButtonUp(0) && selectedKey)
-        {   
+        {
             // send raycast to check for rock lock
             var pointerEventData = new PointerEventData(EventSystem.current);
             pointerEventData.position = Input.mousePosition;
@@ -47,9 +52,9 @@ public class KeyRaycaster : MonoBehaviour
             EventSystem.current.RaycastAll(pointerEventData, raycastResults);
 
             bool isCorrect = false;
-            if(raycastResults.Count > 0)
+            if (raycastResults.Count > 0)
             {
-                foreach(var result in raycastResults)
+                foreach (var result in raycastResults)
                 {
                     if (result.gameObject.transform.CompareTag("RockLock"))
                     {
@@ -61,7 +66,7 @@ public class KeyRaycaster : MonoBehaviour
             // reset lock rock
             TurntablesGameManager.instance.rockLock.LerpScale(new Vector2(1f, 1f), 0.2f);
             TurntablesGameManager.instance.rockLock.GetComponent<WiggleController>().StopWiggle();
-            ImageGlowController.instance.SetImageGlow(TurntablesGameManager.instance.rockLock.GetComponent<Image>(), false, GlowValue.none);
+            TurntablesGameManager.instance.rockLock.GetComponent<RockLock>().ToggleGlow(false);
 
             // audio fx
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f);
@@ -75,10 +80,10 @@ public class KeyRaycaster : MonoBehaviour
             selectedKey = null;
         }
 
-        
+
         // on pointer down
         if (Input.GetMouseButtonDown(0))
-        {   
+        {
             // return if already selected a key
             if (selectedKey)
                 return;
@@ -88,9 +93,9 @@ public class KeyRaycaster : MonoBehaviour
             var raycastResults = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointerEventData, raycastResults);
 
-            if(raycastResults.Count > 0)
+            if (raycastResults.Count > 0)
             {
-                foreach(var result in raycastResults)
+                foreach (var result in raycastResults)
                 {
                     if (result.gameObject.transform.CompareTag("Key"))
                     {
@@ -122,10 +127,10 @@ public class KeyRaycaster : MonoBehaviour
                         // show lock rock
                         TurntablesGameManager.instance.rockLock.LerpScale(new Vector2(1.2f, 1.2f), 0.2f);
                         TurntablesGameManager.instance.rockLock.GetComponent<WiggleController>().StartWiggle();
-                        ImageGlowController.instance.SetImageGlow(TurntablesGameManager.instance.rockLock.GetComponent<Image>(), true, GlowValue.glow_1_00);
+                        TurntablesGameManager.instance.rockLock.GetComponent<RockLock>().ToggleGlow(true);
 
                         return;
-                    } 
+                    }
                 }
             }
         }
@@ -139,14 +144,16 @@ public class KeyRaycaster : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // play tutorial audio 3
-        AudioClip clip = GameIntroDatabase.instance.turntablesIntro3;
+        AssetReference clip = GameIntroDatabase.instance.turntablesIntro3;
+        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+        yield return cd.coroutine;
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Red, clip);
-        yield return new WaitForSeconds(clip.length + 1f);
+        yield return new WaitForSeconds(cd.GetResult() + 1f);
 
         // reset key
         selectedKey.ReturnToRope();
         selectedKey = null;
 
         isOn = true;
-    }   
+    }
 }

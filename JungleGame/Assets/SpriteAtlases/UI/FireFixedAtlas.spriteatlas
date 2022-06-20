@@ -1,0 +1,144 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FireFixedAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 3
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 52
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 29
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: f7266a8972bf32c4fa44527c2ed544ac, type: 3}
+    totalSpriteSurfaceArea: 16423936
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: af0b0330fd5848a43bf4a473eadffbfb, type: 3}
+  - {fileID: 21300000, guid: ad5659115365d0448911bf4188db6b6c, type: 3}
+  - {fileID: 21300000, guid: 89e163412d270ff45aa71ae1ae9eef30, type: 3}
+  - {fileID: 21300000, guid: b8ab17915bb730d46aec3c468a5403ba, type: 3}
+  - {fileID: 21300000, guid: 484cb1326b11bd249907da8800dacece, type: 3}
+  - {fileID: 21300000, guid: 747203e258a0c7342a4015aedbc418f7, type: 3}
+  - {fileID: 21300000, guid: 71b57733da6cdb94bb4fab37a7f3f7b3, type: 3}
+  - {fileID: 21300000, guid: 600d8cf3c9bbc4d4f826bde7d485b5df, type: 3}
+  - {fileID: 21300000, guid: cfed4e748a31c6f4f9886a53b8a49cf6, type: 3}
+  - {fileID: 21300000, guid: 849d4aa4bf3ce21489352689c5ae7225, type: 3}
+  - {fileID: 21300000, guid: 35e793e45e45a7844abccc29cf3aeff3, type: 3}
+  - {fileID: 21300000, guid: 8580a235e1f744841bebd469fc71ef66, type: 3}
+  - {fileID: 21300000, guid: d3a92f35fe3d81141bdcb64911f56e79, type: 3}
+  - {fileID: 21300000, guid: d1c82b161f6722a40b8de8d5b771fcd5, type: 3}
+  - {fileID: 21300000, guid: 4152ab075ee5120419e0f079572d5f4b, type: 3}
+  - {fileID: 21300000, guid: 5f6541c7d3e5fbf4bb104452528cf311, type: 3}
+  - {fileID: 21300000, guid: 41eded18600ce2a4c83903b46af560c6, type: 3}
+  - {fileID: 21300000, guid: b94a1ff874d075749ac22bc91cd8c2da, type: 3}
+  - {fileID: 21300000, guid: a65f7f4903a7f7e4192c45a2b912c63a, type: 3}
+  - {fileID: 21300000, guid: 4fadbf49caf79fe4bae6f40f3cbe6ff8, type: 3}
+  - {fileID: 21300000, guid: edc542999d0d38e419124b6bebf2a99a, type: 3}
+  - {fileID: 21300000, guid: 86df14c99d3053448b2a5688903713d9, type: 3}
+  - {fileID: 21300000, guid: 6942891a5b6ca02488a98d26a8422481, type: 3}
+  - {fileID: 21300000, guid: 18875d1be119ae145b2459261b048aa0, type: 3}
+  - {fileID: 21300000, guid: 078b33bb153c0754293df5f854c73a72, type: 3}
+  - {fileID: 21300000, guid: fb67be1c340fbdc46ba5aa51c8b547e1, type: 3}
+  - {fileID: 21300000, guid: 568c146c281b72742bd80e575f631c37, type: 3}
+  - {fileID: 21300000, guid: 1a37848e50cc306438c394b27ef89139, type: 3}
+  - {fileID: 21300000, guid: 1d9d00eedc334f34381a7d71f951c5ee, type: 3}
+  - {fileID: 21300000, guid: 24c9cb2f0fb10bc45895f7e243f5ae69, type: 3}
+  - {fileID: 21300000, guid: 2620d64f9bd66db44b56f15eedbbfd33, type: 3}
+  - {fileID: 21300000, guid: db0505ff6903a8242bbe1d2caeb982e5, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - FireFixed20
+  - FireFixed14
+  - FireFixed17
+  - FireFixed10
+  - FireFixed11
+  - FireFixed25
+  - FireFixed24
+  - FireFixed15
+  - FireFixed7
+  - FireFixed5
+  - FireFixed29
+  - FireFixed27
+  - FireFixed12
+  - FireFixed9
+  - FireFixed28
+  - FireFixed13
+  - FireFixed4
+  - FireFixed16
+  - FireFixed2
+  - FireFixed26
+  - FireFixed8
+  - FireFixed31
+  - FireFixed19
+  - FireFixed0
+  - FireFixed23
+  - FireFixed18
+  - FireFixed30
+  - FireFixed3
+  - FireFixed22
+  - FireFixed1
+  - FireFixed21
+  - FireFixed6
+  m_RenderDataMap: {}
+  m_Tag: FireFixedAtlas
+  m_IsVariant: 0

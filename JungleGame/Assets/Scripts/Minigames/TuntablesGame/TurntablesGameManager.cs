@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class TurntablesGameManager : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class TurntablesGameManager : MonoBehaviour
     private List<ActionWordEnum> doorValues;
     private int currentDoor = 0;
     private int numMisses = 0;
-    
+
 
     void Awake()
     {
@@ -53,7 +54,7 @@ public class TurntablesGameManager : MonoBehaviour
     }
 
     void Start()
-    {   
+    {
         // get game data
         mapID = GameManager.instance.mapID;
 
@@ -63,11 +64,28 @@ public class TurntablesGameManager : MonoBehaviour
             playTutorial = !StudentInfoSystem.GetCurrentProfile().turntablesTutorial;
         }
 
-        // turn on key glow iff tutorial
+        // show correct key during tutorial
         if (playTutorial)
             showCorrectKey = true;
-            
+
         PregameSetup();
+    }
+
+    public void SkipGame()
+    {
+        StopAllCoroutines();
+        // play win tune
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+        // save to sis
+        StudentInfoSystem.GetCurrentProfile().turntablesTutorial = true;
+        // times missed set to 0
+        numMisses = 0;
+        // update AI data
+        AIData(StudentInfoSystem.GetCurrentProfile());
+        // calculate and show stars
+        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+        // remove all raycast blockers
+        RaycastBlockerController.instance.ClearAllRaycastBlockers();
     }
 
     void Update()
@@ -79,19 +97,7 @@ public class TurntablesGameManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.S))
                 {
-                    StopAllCoroutines();
-                    // play win tune
-                    AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-                    // save to sis
-                    StudentInfoSystem.GetCurrentProfile().turntablesTutorial = true;
-                    // times missed set to 0
-                    numMisses = 0;
-                    // update AI data
-                    AIData(StudentInfoSystem.GetCurrentProfile());
-                    // calculate and show stars
-                    StarAwardController.instance.AwardStarsAndExit(CalculateStars());
-                    // remove all raycast blockers
-                    RaycastBlockerController.instance.ClearAllRaycastBlockers();
+                    SkipGame();
                 }
             }
         }
@@ -107,7 +113,7 @@ public class TurntablesGameManager : MonoBehaviour
     {
         if (!playTutorial)
             StartCoroutine(StartMusicDelay(musicStartDelay));
-        
+
         // start ambient sounds
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.BreezeLoop, 0.01f);
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.QuarryLoop, 0.01f);
@@ -117,7 +123,11 @@ public class TurntablesGameManager : MonoBehaviour
 
         // create global pool
         globalPool = new List<ActionWordEnum>();
-        if (mapID != MapIconIdentfier.None)
+        if (GameManager.instance.practiceModeON)
+        {
+            globalPool.AddRange(GameManager.instance.practicePhonemes);
+        }
+        else if (mapID != MapIconIdentfier.None)
         {
             globalPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
         }
@@ -142,15 +152,14 @@ public class TurntablesGameManager : MonoBehaviour
             for (int i = 0; i < 4; i++)
             {
                 doorValues.Add(GetNewValue());
-                doors[i].GetComponentInChildren<DoorTile>().SetTile(doorValues[i], true);
-                // remove glows
-                ImageGlowController.instance.SetImageGlow(doors[i].GetComponentInChildren<DoorTile>().image, false, GlowValue.none);
+                doorTiles[i].SetTile(doorValues[i], true);
+                doorTiles[i].ToggleGlow(false);
             }
         }
-        
+
         // set frame icon
         frame.sprite = GameManager.instance.GetActionWord(doorValues[0]).frameIcon;
-        
+
         // start game
         StartCoroutine(StartGame());
     }
@@ -180,7 +189,7 @@ public class TurntablesGameManager : MonoBehaviour
         AudioManager.instance.PlayMoveStoneSound(2.25f, moveStonePitch[2]);
         yield return new WaitForSeconds(0.5f);
 
-        doors[3].LerpRotation(45, 1.75f);
+        doors[3].LerpRotation(60, 1.75f);
         // play stone moving audio
         AudioManager.instance.PlayMoveStoneSound(1.75f, moveStonePitch[3]);
         yield return new WaitForSeconds(1.75f);
@@ -212,9 +221,11 @@ public class TurntablesGameManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             // play tutorial audio 1
-            AudioClip clip = GameIntroDatabase.instance.turntablesIntro1;
+            AssetReference clip = GameIntroDatabase.instance.turntablesIntro1;
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd.coroutine;
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
+            yield return new WaitForSeconds(cd.GetResult() + 1f);
         }
 
         // show keys
@@ -226,21 +237,23 @@ public class TurntablesGameManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             // play tutorial audio 2
-            AudioClip clip = GameIntroDatabase.instance.turntablesIntro2;
+            AssetReference clip = GameIntroDatabase.instance.turntablesIntro2;
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd.coroutine;
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topRight.position, false, TalkieCharacter.Red, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
+            yield return new WaitForSeconds(cd.GetResult() + 1f);
         }
         else
         {
             // small delay
-            yield return new WaitForSeconds(1.5f);
+            //yield return new WaitForSeconds(1.5f);
         }
 
         // scale door tile
         doorTiles[currentDoor].GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.5f, 1.5f), new Vector2(1f, 1f), 0.1f, 0.1f);
         yield return new WaitForSeconds(0.1f);
         // add glow to current door tile
-        ImageGlowController.instance.SetImageGlow(doorTiles[currentDoor].image, true, GlowValue.glow_1_00);
+        doorTiles[currentDoor].ToggleGlow(true);
         // play sound effect
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.Pop, 1f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MoveStoneEnd, 1f, "door_tile", 1.5f);
@@ -278,7 +291,7 @@ public class TurntablesGameManager : MonoBehaviour
                     k.GetComponent<LerpableObject>().LerpImageAlpha(k.GetComponent<Image>(), 0.5f, 0.5f);
                 }
             }
-            
+
             // remove value from list
             values.Remove(randomvalue);
         }
@@ -299,11 +312,15 @@ public class TurntablesGameManager : MonoBehaviour
         // turn off raycaster
         KeyRaycaster.instance.isOn = false;
 
-        bool isCorrect = false;
-
-        if (selectedKey.GetKeyType() == doorValues[currentDoor])
+        bool success = (selectedKey.GetKeyType() == doorValues[currentDoor]);
+        // only track phoneme attempt if not in tutorial AND not in practice mode
+        if (!playTutorial && !GameManager.instance.practiceModeON)
         {
-            isCorrect = true;
+            StudentInfoSystem.SavePlayerPhonemeAttempt(doorValues[currentDoor], success);
+        }
+
+        if (success)
+        {
             StartCoroutine(PostEvaluationRoutine(true));
         }
         else
@@ -311,7 +328,7 @@ public class TurntablesGameManager : MonoBehaviour
             StartCoroutine(PostEvaluationRoutine(false));
         }
 
-        return isCorrect;
+        return success;
     }
 
     private IEnumerator PostEvaluationRoutine(bool isCorrect)
@@ -348,7 +365,7 @@ public class TurntablesGameManager : MonoBehaviour
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MoveStoneEnd, 1f, "door_tile", 1.5f);
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.ErrieGlow, 0.2f);
             // remove glow to current door tile
-            ImageGlowController.instance.SetImageGlow(doorTiles[currentDoor].image, false, GlowValue.none);
+            doorTiles[currentDoor].ToggleGlow(false);
             // increase split song
             AudioManager.instance.IncreaseSplitSong();
             // increment door num
@@ -360,16 +377,24 @@ public class TurntablesGameManager : MonoBehaviour
             if (playTutorial && currentDoor == 1)
             {
                 // play tutorial audio 4
-                AudioClip clip = GameIntroDatabase.instance.turntablesIntro4;
+                AssetReference clip = GameIntroDatabase.instance.turntablesIntro4;
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                yield return cd.coroutine;
                 TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomLeft.position, true, TalkieCharacter.Red, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                yield return new WaitForSeconds(cd.GetResult() + 1f);
             }
-            else
+            else if (currentDoor <= 3)
             {
-                // play encouragement popup
-                AudioClip clip = GameIntroDatabase.instance.turntablesEncouragementClips[Random.Range(0, GameIntroDatabase.instance.turntablesEncouragementClips.Count)];
-                TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-                yield return new WaitForSeconds(clip.length + 1f);
+                if (GameManager.DeterminePlayPopup())
+                {
+                    // play encouragement popup
+                    AssetReference clip = GameIntroDatabase.instance.turntablesEncouragementClips[Random.Range(0, GameIntroDatabase.instance.turntablesEncouragementClips.Count)];
+                    CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+                    yield return cd.coroutine;
+                    TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
+                    //yield return new WaitForSeconds(cd.GetResult() + 1f);
+                }
+                
             }
         }
         else
@@ -399,14 +424,16 @@ public class TurntablesGameManager : MonoBehaviour
             numMisses++;
 
             // play reminder popup
-            List<AudioClip> clips = new List<AudioClip>();
+            List<AssetReference> clips = new List<AssetReference>();
             clips.Add(GameIntroDatabase.instance.turntablesReminder1);
             clips.Add(GameIntroDatabase.instance.turntablesReminder2);
             clips.Add(GameIntroDatabase.instance.turntablesReminder3);
 
-            AudioClip clip = clips[Random.Range(0, clips.Count)];
+            AssetReference clip = clips[Random.Range(0, clips.Count)];
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd.coroutine;
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Red, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
+            //yield return new WaitForSeconds(cd.GetResult() + 1f);
         }
 
         // move keys down
@@ -456,7 +483,7 @@ public class TurntablesGameManager : MonoBehaviour
         playerData.gameBeforeLastPlayed = playerData.lastGamePlayed;
         playerData.lastGamePlayed = GameType.TurntablesGame;
         playerData.starsTurntables = CalculateStars() + playerData.starsTurntables;
-        playerData.totalStarsTurntables += 3;
+        playerData.turntablesPlayed++;
 
         // save to SIS
         StudentInfoSystem.SaveStudentPlayerData();
@@ -547,8 +574,7 @@ public class TurntablesGameManager : MonoBehaviour
     private IEnumerator StartMusicDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        AudioManager.instance.InitSplitSong(SplitSong.Turntables);
-        AudioManager.instance.IncreaseSplitSong();
+        AudioManager.instance.InitSplitSong(AudioDatabase.instance.TurntablesSongSplit);
     }
 
     private ActionWordEnum GetNewValue()
@@ -556,7 +582,7 @@ public class TurntablesGameManager : MonoBehaviour
         // make a list of unused values
         List<ActionWordEnum> unusedValues = new List<ActionWordEnum>();
         unusedValues.AddRange(globalPool);
-        foreach(var usedValue in doorValues)
+        foreach (var usedValue in doorValues)
         {
             unusedValues.Remove(usedValue);
         }

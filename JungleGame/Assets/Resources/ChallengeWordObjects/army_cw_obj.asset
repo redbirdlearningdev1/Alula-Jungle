@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: army_cw_obj
   m_EditorClassIdentifier: 
   word: army
-  audio: {fileID: 8300000, guid: 8d4d6253ff0631e408586efc1eaa1094, type: 3}
+  audio:
+    m_AssetGUID: 8d4d6253ff0631e408586efc1eaa1094
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 5d2c74fe4261f014d8c60523ecd40d4e, type: 3}
-  elkoninList: 0e0000002000000008000000000000000000000000000000
+  elkoninList: 0e0000002100000008000000000000000000000000000000
   elkoninCount: 3
   set: 13

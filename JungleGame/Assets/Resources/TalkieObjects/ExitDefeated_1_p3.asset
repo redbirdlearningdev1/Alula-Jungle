@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 7dea86ce4b18a0d4386a5e13813612e3, type: 3}
+    audioClip:
+      m_AssetGUID: 7dea86ce4b18a0d4386a5e13813612e3
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_3_Red_14_T1
     audioString: "Hmm\u2026"
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: bf9d312de166e8b48a10b9855e5b49e0, type: 3}
+    audioClip:
+      m_AssetGUID: bf9d312de166e8b48a10b9855e5b49e0
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_3_Red_14_T2
     audioString: It seems Darwin has gotten to him.
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: dff39e9272f1c2c4eb6b4fef726f8c86, type: 3}
+    audioClip:
+      m_AssetGUID: dff39e9272f1c2c4eb6b4fef726f8c86
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_3_Wally_15_T1
     audioString: "Shouldn\u2019t be long until Julius comes to his senses. "
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: c35f606da19ecb24f919438842a666ba, type: 3}
+    audioClip:
+      m_AssetGUID: c35f606da19ecb24f919438842a666ba
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_3_Red_16_T1
     audioString: I agree.
   - endTalkieAfterThisSegment: 0
@@ -99,7 +115,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: bca678b75f310be4791fce6f69b275e7, type: 3}
+    audioClip:
+      m_AssetGUID: bca678b75f310be4791fce6f69b275e7
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_3_Red_16_T2
     audioString: "At any rate,  it\u2019s time to move on!"
   - endTalkieAfterThisSegment: 0
@@ -115,7 +135,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 8c306451938d914468ef10d54c47eb17, type: 3}
+    audioClip:
+      m_AssetGUID: 8c306451938d914468ef10d54c47eb17
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_3_Red_16_T3
     audioString: "Let\u2019s get going Explorer!"
   - endTalkieAfterThisSegment: 0
@@ -131,6 +155,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: a086c78e23511494dbc6de5881338e5f, type: 3}
+    audioClip:
+      m_AssetGUID: a086c78e23511494dbc6de5881338e5f
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_3_Wally_17_T1
     audioString: Right behind you!

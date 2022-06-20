@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: wood_cw_obj
   m_EditorClassIdentifier: 
   word: wood
-  audio: {fileID: 8300000, guid: 7d38840735cf56b4fbb7a061317a91d5, type: 3}
+  audio:
+    m_AssetGUID: 7d38840735cf56b4fbb7a061317a91d5
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 4dc4ed49dec180647b81fd7299e5ce8e, type: 3}
-  elkoninList: 2a0000000000000019000000000000000000000000000000
+  elkoninList: 2d000000120000001a000000000000000000000000000000
   elkoninCount: 3
   set: 17

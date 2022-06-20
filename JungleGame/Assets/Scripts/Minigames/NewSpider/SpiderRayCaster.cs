@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.AddressableAssets;
 
 public class SpiderRayCaster : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class SpiderRayCaster : MonoBehaviour
     [SerializeField] private Transform selectedCoinParent;
     [SerializeField] private WebBall webBallGlow;
 
+    private bool playTutorialPart = false;
+
     void Awake()
     {
         if (instance == null)
@@ -24,6 +27,10 @@ public class SpiderRayCaster : MonoBehaviour
     {
         // return if off, else do thing
         if (!isOn)
+            return;
+
+        // return if settings window is open
+        if (SettingsManager.instance.settingsWindowOpen)
             return;
 
         // drag select coin while mouse 1 down
@@ -96,10 +103,11 @@ public class SpiderRayCaster : MonoBehaviour
                     {
                         selectedBug = result.gameObject.GetComponent<BugController>();
 
-                        if (NewSpiderGameManager.instance.playTutorial && NewSpiderGameManager.instance.tutorialEvent == 1)
+                        if (NewSpiderGameManager.instance.playTutorial && NewSpiderGameManager.instance.tutorialEvent == 1 && !playTutorialPart)
                         {
+                            playTutorialPart = true;
                             StartCoroutine(NextSpiderwebTutorialPart());
-                        }   
+                        }
                         else
                         {
                             selectedBug.PlayPhonemeAudio();
@@ -115,19 +123,19 @@ public class SpiderRayCaster : MonoBehaviour
         // turn off raycaster
         isOn = false;
         // remove glow
-        ImageGlowController.instance.SetImageGlow(BugController.instance.image, false);
+        selectedBug.ToggleGlow(false);
 
         selectedBug.PlayPhonemeAudio();
 
         yield return new WaitForSeconds(1f);
 
         // play tutorial audio
-        List<AudioClip> clips = new List<AudioClip>();
+        List<AssetReference> clips = new List<AssetReference>();
         clips.Add(GameIntroDatabase.instance.spiderwebsIntro3);
         clips.Add(GameIntroDatabase.instance.spiderwebsIntro4);
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Spindle, clips);
-        yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
-        
+        yield return new WaitForSeconds(10f);
+
         NewSpiderGameManager.instance.ContinueTutorialPart();
     }
 }

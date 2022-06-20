@@ -234,6 +234,7 @@ MonoBehaviour:
     type: 3}
   tigerPawCoinsLogo: {fileID: 21300000, guid: 20f8820ed85e2b249b56e48013ecd6a0, type: 3}
   tigerPawPhotosLogo: {fileID: 21300000, guid: 726963ce93eb3a748a9ca711a80dadb7, type: 3}
+  passwordLogo: {fileID: 21300000, guid: 6df3e2c29cc057b47b7f0bf625ca3729, type: 3}
   pressedScaleChange: 0.95
   interactable: 1
 --- !u!222 &4867344474481658244

@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: sleep_cw_obj
   m_EditorClassIdentifier: 
   word: sleep
-  audio: {fileID: 8300000, guid: e27853ea6d2107a44aa7cf7aca188233, type: 3}
+  audio:
+    m_AssetGUID: e27853ea6d2107a44aa7cf7aca188233
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 135dcb201b6e46c42a95cb3e558bcdaf, type: 3}
-  elkoninList: 250000001f00000008000000220000000000000000000000
+  elkoninList: 260000002000000008000000230000000000000000000000
   elkoninCount: 4
   set: 7

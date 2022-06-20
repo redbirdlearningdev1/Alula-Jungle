@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 790bee2b86be17744a71866b23ac7f5c, type: 3}
+    audioClip:
+      m_AssetGUID: 790bee2b86be17744a71866b23ac7f5c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_1_Red_1_T1
     audioString: Whoa!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 4ef7d89a634eeda46ac005a2f41d7246, type: 3}
+    audioClip:
+      m_AssetGUID: 4ef7d89a634eeda46ac005a2f41d7246
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_1_Red_1_T2
     audioString: "I\u2019ve never seen ruins like this before!"
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 5824ece6aa7244048b3ccca1f82632ee, type: 3}
+    audioClip:
+      m_AssetGUID: 5824ece6aa7244048b3ccca1f82632ee
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_1_Wally_2_T1
     audioString: 'It really is a sight! '
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 61877f9d223895b4b9f474ecef02dad8, type: 3}
+    audioClip:
+      m_AssetGUID: 61877f9d223895b4b9f474ecef02dad8
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_1_Red_3_T1
     audioString: "It\u2019s a shame that the Prince messed with this landmark."
   - endTalkieAfterThisSegment: 0
@@ -99,7 +115,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 438022c203434ef489ecfd08552025a7, type: 3}
+    audioClip:
+      m_AssetGUID: 438022c203434ef489ecfd08552025a7
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_1_Wally_4_T1
     audioString: I agree
   - endTalkieAfterThisSegment: 0
@@ -115,7 +135,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: bcb629446a8c3034e93495428acb3050, type: 3}
+    audioClip:
+      m_AssetGUID: bcb629446a8c3034e93495428acb3050
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_1_Wally_4_T2
     audioString: "Well it\u2019s never a good idea to mess with historical sights, 
       but we can definitely pick up after ourselves. "
@@ -132,7 +156,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 88ab87ecf4577b04db4f420dc76b8046, type: 3}
+    audioClip:
+      m_AssetGUID: 88ab87ecf4577b04db4f420dc76b8046
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_1_Wally_4_T3
     audioString: "So let\u2019s clean up the Prince's mess."
   - endTalkieAfterThisSegment: 0
@@ -148,7 +176,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: e077a7055331b5c48a686473bf4386df, type: 3}
+    audioClip:
+      m_AssetGUID: e077a7055331b5c48a686473bf4386df
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_1_Red_5_T1
     audioString: "You\u2019re right Wally! "
   - endTalkieAfterThisSegment: 0
@@ -164,7 +196,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 44be91f4d07c6464db86ec0e0089772e, type: 3}
+    audioClip:
+      m_AssetGUID: 44be91f4d07c6464db86ec0e0089772e
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_1_Red_5_T2
     audioString: 'Come on Explorer! '
   - endTalkieAfterThisSegment: 0
@@ -180,6 +216,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: f8a15c92060a0704a97a217c33585f1a, type: 3}
+    audioClip:
+      m_AssetGUID: f8a15c92060a0704a97a217c33585f1a
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_1_Red_5_T3
     audioString: We have some cleaning and learning to do!

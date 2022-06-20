@@ -1,0 +1,212 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: emptyCoinAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 3
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 52
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 29
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 22ebc96c1e613ff4f80984c43d781e48, type: 3}
+    totalSpriteSurfaceArea: 3936768
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 6877e000e1b565e4dad3ce3817b113cc, type: 3}
+  - {fileID: 21300000, guid: db6918000042dac4d9d6e1f8e66b4153, type: 3}
+  - {fileID: 21300000, guid: 14868ca07854cbb4688190a4f38dbee2, type: 3}
+  - {fileID: 21300000, guid: b13cf4c0bdf28fe4ea3c31f61382f479, type: 3}
+  - {fileID: 21300000, guid: cb6a7fd0ca94354469aa5d873e831ca7, type: 3}
+  - {fileID: 21300000, guid: 2977e2112849eb541897f9bdded39395, type: 3}
+  - {fileID: 21300000, guid: 35adeb81238e75542b35d324819e676b, type: 3}
+  - {fileID: 21300000, guid: a7f673e1c18ab3943a23329aa9add414, type: 3}
+  - {fileID: 21300000, guid: 97e3fc82aeea7e341b027df0b4a61921, type: 3}
+  - {fileID: 21300000, guid: 55f149c2e839e974ca70402875a84436, type: 3}
+  - {fileID: 21300000, guid: df6d7de24eda31140b6516ced452d79d, type: 3}
+  - {fileID: 21300000, guid: eef408f2ac9e10446bbbf970586b8bec, type: 3}
+  - {fileID: 21300000, guid: 2c7708934bc5f044ba4ad0a504a8b3cc, type: 3}
+  - {fileID: 21300000, guid: 8e8525d3413a4ac4a8135de569b2ddc8, type: 3}
+  - {fileID: 21300000, guid: 477e2714c0d4baa44b387e14b0b5e490, type: 3}
+  - {fileID: 21300000, guid: d6222d74ec7a6bf4b870105385c73e68, type: 3}
+  - {fileID: 21300000, guid: 525308b4c3194d042ad0d56eb760e11f, type: 3}
+  - {fileID: 21300000, guid: dbc07505f88b9944bbddeb64f31b4bea, type: 3}
+  - {fileID: 21300000, guid: 331ed715f34dcf14bbbd304d6436281b, type: 3}
+  - {fileID: 21300000, guid: 0b9319157759d574a8be77990fa2d6dc, type: 3}
+  - {fileID: 21300000, guid: 2ee82016bc9310b4e9166ae3e1588a71, type: 3}
+  - {fileID: 21300000, guid: 868b2446ff5bce5428de9d9c70680b84, type: 3}
+  - {fileID: 21300000, guid: 4a20148632c8be14ab0d1e607c354a20, type: 3}
+  - {fileID: 21300000, guid: d5ed8b964f7b35943b1ca00e951cf7ec, type: 3}
+  - {fileID: 21300000, guid: d4aaf5d675b09dc4e834690886ba02eb, type: 3}
+  - {fileID: 21300000, guid: 2bdd8bd6d9bb1d547b7f170106f7d5da, type: 3}
+  - {fileID: 21300000, guid: fdb62ed6dcbcad246873cb9c28023b14, type: 3}
+  - {fileID: 21300000, guid: 5799a5e69a4af8b41957f405e7a0104c, type: 3}
+  - {fileID: 21300000, guid: f2767ee6e645bde4b8c33e98b1a8d798, type: 3}
+  - {fileID: 21300000, guid: 4a481957095591e4791f58dab5950498, type: 3}
+  - {fileID: 21300000, guid: 67d08c873f2dfc24e825123661c4e74a, type: 3}
+  - {fileID: 21300000, guid: eeae2a970f7fb5a49af2d911e3247370, type: 3}
+  - {fileID: 21300000, guid: 72bc45b7bdd35e74fb5a6c6537f341dc, type: 3}
+  - {fileID: 21300000, guid: 342d1388f3df77a40a52b7eb99715550, type: 3}
+  - {fileID: 21300000, guid: 871a60b8e11e8e54c86d6959fd0a3003, type: 3}
+  - {fileID: 21300000, guid: 7bb44ce8ab5b5804ab3f517334a718d4, type: 3}
+  - {fileID: 21300000, guid: c33e00a9b61735247b1bdb7b288716f5, type: 3}
+  - {fileID: 21300000, guid: 31f06c7aae3b83b4882f222e1dbaeb2a, type: 3}
+  - {fileID: 21300000, guid: b59cfbba4be166b47b2df48f07bc8144, type: 3}
+  - {fileID: 21300000, guid: 7cb4cfba4fbf3e345917868c445c4fc7, type: 3}
+  - {fileID: 21300000, guid: 00e63fcaacec7c949947315867b17145, type: 3}
+  - {fileID: 21300000, guid: 528b677b12231ff4caf81b0d2cd7ac78, type: 3}
+  - {fileID: 21300000, guid: 9e3d391ca178aaa44a1849dd93ad5bcb, type: 3}
+  - {fileID: 21300000, guid: 8491b64c5a18c4a409d43a2302d1d289, type: 3}
+  - {fileID: 21300000, guid: 92d50a8c8a61d814ea4269e1891a960a, type: 3}
+  - {fileID: 21300000, guid: 2c9bae2d91b984048a613e0c5d9fc736, type: 3}
+  - {fileID: 21300000, guid: cd56c43db17e14245a55ca1476a08393, type: 3}
+  - {fileID: 21300000, guid: 75865e4d3770f534f97a0c2558904a10, type: 3}
+  - {fileID: 21300000, guid: b0ecfdad78c19114e9d038e028f71daf, type: 3}
+  - {fileID: 21300000, guid: 2a9c7dddbc5435b47870ff872c7f478d, type: 3}
+  - {fileID: 21300000, guid: f0bcf23e394679243bd83df9f516a2fa, type: 3}
+  - {fileID: 21300000, guid: 2a8f5c4e21635bb4194206e1ad24c436, type: 3}
+  - {fileID: 21300000, guid: bd71218e951a58148afd6e2dacdece6f, type: 3}
+  - {fileID: 21300000, guid: 3ccdf18e4ae9bb3439e326e73aebb2fb, type: 3}
+  - {fileID: 21300000, guid: 34feb19e2de929e4abb6ed0bdf8bc5c7, type: 3}
+  - {fileID: 21300000, guid: 6076889e7430b6f428e5640ca54ed529, type: 3}
+  - {fileID: 21300000, guid: f42464eedcd771b479abd5810f4d02b7, type: 3}
+  - {fileID: 21300000, guid: 4b82d06f761209d42b8a3440cc5106f3, type: 3}
+  - {fileID: 21300000, guid: 7261dd9fb94574c4b89d8325d6e3ad69, type: 3}
+  - {fileID: 21300000, guid: e9212f9fbc680ae45af3f96211878a5d, type: 3}
+  - {fileID: 21300000, guid: 6af401bf2267c0a4ab358b207baaf102, type: 3}
+  - {fileID: 21300000, guid: 6cabc7bf34366a84faf1fb0419d0e851, type: 3}
+  - {fileID: 21300000, guid: 7ce087ef7aef0a243bfdae49eb85dcb6, type: 3}
+  - {fileID: 21300000, guid: c25fb8ef049d5e9468641ccaee823e7d, type: 3}
+  - {fileID: 21300000, guid: 1d9de2fff83f1c74aa3f6c2051b8a654, type: 3}
+  - {fileID: 21300000, guid: 902d78ff6392da344847ecb61e4c5f97, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - emptyCoin05
+  - emptyCoin32
+  - emptyCoin08
+  - emptyCoin13
+  - emptyCoin29
+  - emptyCoin40
+  - emptyCoin22
+  - emptyCoin18
+  - emptyCoin58
+  - emptyCoin12
+  - emptyCoin49
+  - emptyCoin20
+  - emptyCoin51
+  - emptyCoin14
+  - emptyCoin44
+  - emptyCoin52
+  - emptyCoin39
+  - emptyCoin24
+  - emptyCoin03
+  - emptyCoin62
+  - emptyCoin54
+  - emptyCoin42
+  - emptyCoin35
+  - emptyCoin09
+  - emptyCoin36
+  - emptyCoin01
+  - emptyCoin06
+  - emptyCoin59
+  - emptyCoin11
+  - emptyCoin65
+  - emptyCoin48
+  - emptyCoin47
+  - emptyCoin55
+  - emptyCoin31
+  - emptyCoin21
+  - emptyCoin17
+  - emptyCoin07
+  - emptyCoin28
+  - emptyCoin34
+  - emptyCoin46
+  - emptyCoin63
+  - emptyCoin23
+  - emptyCoin57
+  - emptyCoin45
+  - emptyCoin02
+  - emptyCoin19
+  - emptyCoin16
+  - emptyCoin00
+  - emptyCoin26
+  - emptyCoin30
+  - emptyCoin37
+  - emptyCoin33
+  - emptyCoin10
+  - emptyCoin64
+  - emptyCoin50
+  - emptyCoin60
+  - emptyCoin53
+  - emptyCoin41
+  - emptyCoin25
+  - emptyCoin56
+  - emptyCoin15
+  - emptyCoin61
+  - emptyCoin43
+  - emptyCoin04
+  - emptyCoin38
+  - emptyCoin27
+  m_RenderDataMap: {}
+  m_Tag: emptyCoinAtlas
+  m_IsVariant: 0

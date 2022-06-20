@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: bruise_cw_obj
   m_EditorClassIdentifier: 
   word: bruise
-  audio: {fileID: 0}
+  audio:
+    m_AssetGUID: 7992faafacd348244be937bc5583654c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 181df9a1fea7655468fb15d9d503d6ec, type: 3}
-  elkoninList: 16000000240000000b000000250000000000000000000000
+  elkoninList: 17000000250000000b000000260000000000000000000000
   elkoninCount: 4
   set: 10

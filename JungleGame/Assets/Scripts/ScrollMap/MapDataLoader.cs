@@ -295,8 +295,8 @@ public class MapDataLoader : MonoBehaviour
         M_bananas.SetFixed(mapData.M_bananas.isFixed, false, false);
         M_bananas.SetStars(mapData.M_bananas.stars);
 
-        M_bananas.SetFixed(mapData.M_bananas.isFixed, false, false);
-        M_bananas.SetStars(mapData.M_bananas.stars);
+        M_flower.SetFixed(mapData.M_flower.isFixed, false, false);
+        M_flower.SetStars(mapData.M_flower.stars);
 
         M_guards.SetFixed(mapData.M_guards.isFixed, false, false);
         M_guards.SetStars(mapData.M_guards.stars);

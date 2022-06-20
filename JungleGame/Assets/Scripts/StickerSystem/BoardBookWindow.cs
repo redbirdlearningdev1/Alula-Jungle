@@ -69,9 +69,13 @@ public class BoardBookWindow : MonoBehaviour
         StickerSystem.instance.lesterAnimator.Play("geckoLeave");
         StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().isHidden = true;
 
-        // hide back button
-        StickerSystem.instance.wagonBackButton.GetComponent<BackButton>().interactable = false;
-        StickerSystem.instance.wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+        // hide back button iff active
+        if (StickerSystem.instance.wagonBackButton.transform.localScale.x > 0)
+        {
+            StickerSystem.instance.wagonBackButton.GetComponent<BackButton>().interactable = false;
+            StickerSystem.instance.wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
+        }
+        
 
         // set buttons to be not interactable
         StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().interactable = false;
@@ -139,12 +143,14 @@ public class BoardBookWindow : MonoBehaviour
 
             // remove talkie bg
             StickerSystem.instance.talkieBG.GetComponent<Image>().raycastTarget = false;
-            StickerSystem.instance.talkieBG.LerpImageAlpha( StickerSystem.instance.talkieBG.GetComponent<Image>(), 0f, 0.5f);
-
-            // done with sticker tutorial
-            StudentInfoSystem.GetCurrentProfile().stickerTutorial = true;
-            StudentInfoSystem.SaveStudentPlayerData();
-            StickerSystem.instance.ToggleStickerButtonWiggleGlow(false);
+            StickerSystem.instance.talkieBG.LerpImageAlpha(StickerSystem.instance.talkieBG.GetComponent<Image>(), 0f, 0.5f);
+        }
+        else
+        {
+            // set buttons to be interactable 
+            StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().interactable = true;
+            StickerSystem.instance.stickerBoard.GetComponent<StickerBoardButton>().interactable = true;
+            StickerSystem.instance.boardBook.GetComponent<BoardBookButton>().interactable = true;
         }
 
         // show wagon lester
@@ -154,14 +160,17 @@ public class BoardBookWindow : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        // set buttons to be interactable 
-        StickerSystem.instance.lesterAnimator.GetComponent<LesterButton>().interactable = true;
-        StickerSystem.instance.stickerBoard.GetComponent<StickerBoardButton>().interactable = true;
-        StickerSystem.instance.boardBook.GetComponent<BoardBookButton>().interactable = true;
-
-        // show back button + dropdown toolbar
-        StickerSystem.instance.wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
-        StickerSystem.instance.wagonBackButton.GetComponent<BackButton>().interactable = true;
+        // exit wagon if done with tutorial
+        if (!StudentInfoSystem.GetCurrentProfile().stickerTutorial)
+        {
+            StickerSystem.instance.OnBackButtonPressed();
+        }
+        else
+        {
+            // show back button + dropdown toolbar
+            StickerSystem.instance.wagonBackButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+            StickerSystem.instance.wagonBackButton.GetComponent<BackButton>().interactable = true;
+        }
     }
 
     public void CenterOnBoardPreview(int boardIndex, bool fast = false)

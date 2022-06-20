@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: take_cw_obj
   m_EditorClassIdentifier: 
   word: take
-  audio: {fileID: 8300000, guid: 8b56605b61cc7ef42ad480e4222dfc5e, type: 3}
+  audio:
+    m_AssetGUID: 8b56605b61cc7ef42ad480e4222dfc5e
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 7d41af480751e0d42a7ac31788ec4ad6, type: 3}
-  elkoninList: 27000000070000001e000000000000000000000000000000
+  elkoninList: 28000000070000001f000000000000000000000000000000
   elkoninCount: 3
   set: 6

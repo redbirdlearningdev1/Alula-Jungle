@@ -116,12 +116,12 @@ MonoBehaviour:
   lerpableObject: {fileID: 379738175261615459}
   image: {fileID: 8631230204902873846}
   duration: 2
-  rate: 0.25
+  rate: 0.3
   randomizeRotation: 1
   forceRange: {x: 100, y: 200}
   addForceSidedways: 0
   torqueRange: {x: -0.25, y: 0.25}
-  scaleRange: {x: 1, y: 2}
+  scaleRange: {x: 3, y: 4}
   reverseObject: 0
   isBug: 0
   bugRotateTime: {x: 0, y: 0}

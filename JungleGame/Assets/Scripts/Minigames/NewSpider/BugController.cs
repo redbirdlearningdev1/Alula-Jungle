@@ -26,6 +26,9 @@ public class BugController : MonoBehaviour
     public Image image;
     private bool audioPlaying;
 
+    public LerpableObject glowLerpObject;
+    public Image glowImage;
+
     void Awake()
     {
         if (instance == null)
@@ -41,10 +44,55 @@ public class BugController : MonoBehaviour
         
         // select random bug type
         currentBugType = (BugType)Random.Range(0, 3);
+
+        // remove glow
+        glowLerpObject.SetImageAlpha(glowImage, 0f);
+    }
+
+    public void ToggleGlow(bool opt)
+    {
+        if (currentBugType != BugType.Bee)
+            return;
+
+        if (opt)
+        {
+            glowLerpObject.LerpImageAlpha(glowImage, 1f, 0.25f);
+        }
+        else
+        {
+            glowLerpObject.LerpImageAlpha(glowImage, 0f, 0.25f);
+        }
     }
 
     public void StartToWeb()
     {
+        goToOrigin();
+
+        // play bug fly sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BugFlyIn, 1f);
+
+        switch (currentBugType)
+        {
+            case BugType.Ladybug:
+                animator.Play("LadybugFly");
+                break;
+            case BugType.Bee:
+                animator.Play("BeeFly");
+                break;
+            case BugType.Light:
+                animator.Play("LightningFly");
+                break;
+        }
+        
+        StartCoroutine(ReturnToWebRoutine(WebLand.position));
+        StartCoroutine(landRoutine());
+    }
+
+    public void StartToWeb(BugType bugType)
+    {
+        currentBugType = bugType;
+        goToOrigin(currentBugType);
+
         // play bug fly sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BugFlyIn, 1f);
 
@@ -75,6 +123,12 @@ public class BugController : MonoBehaviour
         bugChoices.Remove(currentBugType);
         currentBugType = bugChoices[Random.Range(0, 2)];
 
+        transform.position = origin.position;
+    }
+
+    public void goToOrigin(BugType bugType)
+    {
+        currentBugType = bugType;
         transform.position = origin.position;
     }
 
@@ -293,7 +347,7 @@ public class BugController : MonoBehaviour
     private IEnumerator PlayPhonemeAudioRoutine()
     {
         audioPlaying = true;
-        AudioManager.instance.PlayPhoneme(type);
+        AudioManager.instance.PlayPhoneme(ChallengeWordDatabase.ActionWordEnumToElkoninValue(type));
         yield return new WaitForSeconds(0.25f);
 
         WebController.instance.webSmall();

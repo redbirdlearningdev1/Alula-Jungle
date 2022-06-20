@@ -32,6 +32,7 @@ TagManager:
   - Target
   - Sticky
   - GluedSticker
+  - ValidStickerArea
   layers:
   - Default
   - TransparentFX

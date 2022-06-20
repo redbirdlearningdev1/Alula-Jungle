@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: grow_cw_obj
   m_EditorClassIdentifier: 
   word: grow
-  audio: {fileID: 8300000, guid: feca7cf55631eed41b9749508a05dff9, type: 3}
-  sprite: {fileID: 0}
-  elkoninList: 1b000000240000000a000000000000000000000000000000
+  audio:
+    m_AssetGUID: feca7cf55631eed41b9749508a05dff9
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  sprite: {fileID: 21300000, guid: 83723108ec776254499f2ec6361f82dc, type: 3}
+  elkoninList: 1c000000250000000a000000000000000000000000000000
   elkoninCount: 3
   set: 9

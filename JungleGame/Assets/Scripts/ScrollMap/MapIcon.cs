@@ -159,13 +159,18 @@ public enum MapIconIdentfier
     M_challenge_3,
 }
 
+[ExecuteInEditMode]
 public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
-    public bool interactable = true;
-    //public bool popupWindow;
+    public bool interactable = false;
+    public bool setFixedManually = false;
+    private bool isFixed = false;
+    private bool RRBannerShown = false;
 
     [Header("Map ID")]
     public MapIconIdentfier identifier;
+    public PolygonCollider2D brokenCollider;
+    public PolygonCollider2D fixedCollider;
 
     [Header("Animation Stuff")]
     public bool canBeFixed;
@@ -186,7 +191,8 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     [SerializeField] private Animator repairAnimator;
     [SerializeField] private Animator destroyAnimator;
     private bool isPressed = false;
-    private bool isFixed = false;
+    
+    [HideInInspector] public bool isOver = false;
 
     [Header("Stars")]
     public StarLocation starLocation;
@@ -216,18 +222,25 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         if (animatedIcon != AnimatedIcon.none) animator = GetComponent<Animator>();
         if (repairAnimator) repairAnimator.Play("clearAnimation");
 
+        // set colliders to be disabled
+        brokenCollider.enabled = false;
+        fixedCollider.enabled = false;
+
         // configure current stars
         InitStars(); 
     }
 
     void Start()
     {
-        // determine if icon should periodically wiggle
-        if (GetNumStars() == 0)
+        if (Application.isPlaying)
         {
-            // offset wiggles by random amount
-            timer -= Random.Range(0f, 2.5f);
-            wiggleIcon = true;
+            // determine if icon should periodically wiggle
+            if (GetNumStars() == 0)
+            {
+                // offset wiggles by random amount
+                timer -= Random.Range(0f, 2.5f);
+                wiggleIcon = true;
+            }
         }
     }
 
@@ -242,6 +255,21 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 StartCoroutine(WiggleIconRoutine());
             }
         }
+
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            // manually set fixed or broken in editor
+            if (setFixedManually && !isFixed)
+            {
+                SetFixed(true, false, false);
+            }
+            else if (!setFixedManually && isFixed)
+            {
+                SetFixed(false, false, false);
+            }
+        }
+#endif
     }
 
     private IEnumerator WiggleIconRoutine()
@@ -254,6 +282,12 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         waitForWiggle = false;
     }
 
+    public PolygonCollider2D GetCurrentCollider()
+    {
+        if (isFixed) return fixedCollider;
+        else return brokenCollider;
+    }
+
     /* 
     ################################################
     #   STAR ANIMATION METHODS
@@ -262,6 +296,8 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     public void SetRoyalRumberBanner(bool opt)
     {
+        RRBannerShown = opt;
+
         if (starLocation == StarLocation.up)
         {
             if (opt)
@@ -290,10 +326,10 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     {
         if (starsHidden)
         {
-            foreach(var star in currentStars)
+            foreach (var star in currentStars)
             {
-                StartCoroutine(MoveStarRoutine(star.transform, currentStarRevealPos));
-                star.LerpStarAlphaScale(1f, 1f);
+                star.transform.localScale = Vector3.zero;
+                star.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
                 yield return new WaitForSeconds(0.05f);
             }
 
@@ -301,12 +337,15 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
             yield return new WaitForSeconds(0.5f);
 
-            // make stars bob
-            foreach(var star in currentStars)
+            // dont make stars bob iff banner is active
+            if (!RRBannerShown)
             {
-                star.bobController.StartBob();
-                yield return new WaitForSeconds(0.15f);
-            }            
+                foreach (var star in currentStars)
+                {
+                    star.bobController.StartBob();
+                    yield return new WaitForSeconds(0.1f);
+                }
+            }     
         }
     }
 
@@ -330,33 +369,12 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
             foreach(var star in currentStars)
             {
-                StartCoroutine(MoveStarRoutine(star.transform, starsHiddenPosition));
-                star.LerpStarAlphaScale(0f, 0f);
-                //star.SetRendererLayer(0);
-
+                star.transform.localScale = Vector3.one;
+                star.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
                 yield return new WaitForSeconds(0.05f);
             }
 
             starsHidden = true;
-        }
-    }
-
-    private IEnumerator MoveStarRoutine(Transform star, Transform targetTransform)
-    {
-        Vector3 startPos = star.position;
-        float timer = 0f;
-        while (true)
-        {
-            timer += Time.deltaTime;
-            if (timer > starMoveSpeed)
-            {
-                star.position = targetTransform.position;
-                break;
-            }
-
-            var tempPos = Vector3.Lerp(startPos, targetTransform.position, timer / starMoveSpeed);
-            star.position = tempPos;
-            yield return null;
         }
     }
 
@@ -383,9 +401,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             // stars should be initially hidden
             foreach (var star in currentStars)
             {
-                star.transform.position = starsHiddenPosition.position;
-                star.LerpStarAlphaScale(0f, 0f);
-                //star.SetRendererLayer(0);
+                star.transform.localScale = Vector3.zero;
             }
             starsHidden = true;
         }
@@ -411,9 +427,21 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     public void SetFixed(bool opt, bool animate, bool saveToSIS)
     {
-        if (!canBeFixed) return;
-
         this.isFixed = opt;
+
+        if (isFixed)
+        {
+            fixedCollider.enabled = true;
+            brokenCollider.enabled = false;
+        }
+        else
+        {
+            fixedCollider.enabled = false;
+            brokenCollider.enabled = true;
+        }
+
+        // return if cannot be fixed
+        if (!canBeFixed) return;
 
         switch (animatedIcon)
         {
@@ -596,19 +624,19 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                     StudentInfoSystem.GetCurrentProfile().mapData.PS_boat.isFixed = opt;
                     break;
                 case MapIconIdentfier.PS_bridge:
-                    StudentInfoSystem.GetCurrentProfile().mapData.PS_boat.isFixed = opt;
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_bridge.isFixed = opt;
                     break;
                 case MapIconIdentfier.PS_front:
-                    StudentInfoSystem.GetCurrentProfile().mapData.PS_boat.isFixed = opt;
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_front.isFixed = opt;
                     break;
                 case MapIconIdentfier.PS_parrot:
-                    StudentInfoSystem.GetCurrentProfile().mapData.PS_boat.isFixed = opt;
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_parrot.isFixed = opt;
                     break;
                 case MapIconIdentfier.PS_sail:
-                    StudentInfoSystem.GetCurrentProfile().mapData.PS_boat.isFixed = opt;
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_sail.isFixed = opt;
                     break;
                 case MapIconIdentfier.PS_wheel:
-                    StudentInfoSystem.GetCurrentProfile().mapData.PS_boat.isFixed = opt;
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_wheel.isFixed = opt;
                     break;
 
                 // mermaid beach
@@ -723,11 +751,9 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     ################################################
     */
 
-    private bool isOver = false;
-
-    void OnMouseOver()
+    public void OnMouseOverEvent()
     {
-        // skip if not interactable OR playing talkie OR minigamewheel out OR settings window open OR royal decree open
+        // skip if not interactable OR playing talkie OR minigamewheel out OR settings window open OR royal decree open OR wagon open
         if (!interactable || 
             TalkieManager.instance.talkiePlaying || 
             MinigameWheelController.instance.minigameWheelOut || 
@@ -747,7 +773,7 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         }
     }
 
-    void OnMouseExit()
+    public void OnMouseExitEvent()
     {
         if (isOver)
         {
@@ -868,27 +894,9 @@ public class MapIcon : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                     break;
             }
 
-            if (TalkieManager.instance.yesNoChoices.Count == 1)
-            {
-                // if player chooses yes
-                if (TalkieManager.instance.yesNoChoices[0])
-                {
-                    TalkieManager.instance.yesNoChoices.Clear();
-                }
-                else // if the player chooses no
-                {
-                    TalkieManager.instance.yesNoChoices.Clear();
-                    yield break;
-                }
-            }
-            else
-            {
-                TalkieManager.instance.yesNoChoices.Clear();
-                Debug.LogError("Error: Incorrect number of Yes/No choices for last talkie");
-            }
-
             GameManager.instance.playingRoyalRumbleGame = true;
             GameManager.instance.mapID = identifier;
+            GameManager.instance.prevMapLocation = ScrollMapManager.instance.GetCurrentMapLocation();
             GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(StudentInfoSystem.GetCurrentProfile().royalRumbleGame), true, 0.5f, true);
             yield break;
         }

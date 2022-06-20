@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 372e2b359a82e0f4c9e7c1b7f061f3b6, type: 3}
+    audioClip:
+      m_AssetGUID: 372e2b359a82e0f4c9e7c1b7f061f3b6
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_3_Marcus_10_T1
     audioString: Gosh,  what a buzzkill. Who tied HIS tail in a knot?
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 51fd952b6bece784eb04511f1994df8c, type: 3}
+    audioClip:
+      m_AssetGUID: 51fd952b6bece784eb04511f1994df8c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_3_Brutus_11_T1
     audioString: "Heh heh\u2026 knot me!"
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 5f765646e0575634a9a86f287229314e, type: 3}
+    audioClip:
+      m_AssetGUID: 5f765646e0575634a9a86f287229314e
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_3_Marcus_12_T1
     audioString: Brutus. Do you have to make a joke about EVERYTHING I say??
   - endTalkieAfterThisSegment: 0
@@ -83,6 +95,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 5d7fccc040d6e5e4da5885e4cadebcdb, type: 3}
+    audioClip:
+      m_AssetGUID: 5d7fccc040d6e5e4da5885e4cadebcdb
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_3_Brutus_13_T1
     audioString: "It\u2019d be a crime not to..."

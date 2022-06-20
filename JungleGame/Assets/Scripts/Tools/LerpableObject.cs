@@ -174,6 +174,39 @@ public class LerpableObject : MonoBehaviour
         }
     }
 
+    public void LerpXPosSmooth(float targetX, float duration, bool localPosition)
+    {
+        if (posRoutine != null)
+            StopCoroutine(posRoutine);
+
+        posRoutine = StartCoroutine(LerpXPosSmoothRoutine(targetX, duration, localPosition));
+    }
+
+    private IEnumerator LerpXPosSmoothRoutine(float targetX, float duration, bool localPosition)
+    {
+        float startX;
+        if (localPosition) startX = transform.localPosition.x;
+        else startX = transform.position.x;
+        float timer = 0f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > duration)
+            {
+                if (localPosition) transform.localPosition = new Vector3(targetX, transform.localPosition.y, 1f);
+                else transform.position = new Vector3(targetX, transform.position.y, 1f);
+                break;
+            }
+
+            float tempX = Mathf.Lerp(startX, targetX, Mathf.SmoothStep(0f, 1f, timer / duration));
+
+            if (localPosition) transform.localPosition = new Vector3(tempX, transform.localPosition.y, 1f);
+                else transform.position = new Vector3(tempX, transform.position.y, 1f);
+            yield return null;
+        }
+    }
+
     public void SquishyScaleLerp(Vector2 maxScale, Vector2 normalScale, float maxSpeed, float normalSpeed)
     {
         if (squishyRoutine != null)

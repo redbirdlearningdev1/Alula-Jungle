@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: sweat_cw_obj
   m_EditorClassIdentifier: 
   word: sweat
-  audio: {fileID: 8300000, guid: 9683a34016beee244a86a8a8894aac28, type: 3}
+  audio:
+    m_AssetGUID: 9683a34016beee244a86a8a8894aac28
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: c770867c5d49d3b4fb38ac14888da6aa, type: 3}
-  elkoninList: 250000002a00000003000000270000000000000000000000
+  elkoninList: 260000002d00000003000000280000000000000000000000
   elkoninCount: 4
   set: 2

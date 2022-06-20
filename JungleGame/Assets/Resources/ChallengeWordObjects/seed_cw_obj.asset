@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: seed_cw_obj
   m_EditorClassIdentifier: 
   word: seed
-  audio: {fileID: 8300000, guid: 69cb8f8e08e996f4f9019bca14930cdd, type: 3}
+  audio:
+    m_AssetGUID: 69cb8f8e08e996f4f9019bca14930cdd
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 1784761efa9815840b23529f024bce55, type: 3}
-  elkoninList: 250000000800000019000000000000000000000000000000
+  elkoninList: 26000000080000001a000000000000000000000000000000
   elkoninCount: 3
   set: 7

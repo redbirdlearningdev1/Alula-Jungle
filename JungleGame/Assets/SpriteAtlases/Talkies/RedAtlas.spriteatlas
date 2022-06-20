@@ -1,0 +1,186 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RedAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 52
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 29
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: ec6126f44ec90b64db10d8069ebf3e30, type: 3}
+    totalSpriteSurfaceArea: 114480000
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: fc4d4400ff231cf4797b59a75384bd01, type: 3}
+  - {fileID: 21300000, guid: 9322fe10805018b4c922b041b9c3f6e1, type: 3}
+  - {fileID: 21300000, guid: 1dc1b440c35250845b107848fb2ff5b8, type: 3}
+  - {fileID: 21300000, guid: d7f4605091d3d0c4493a0437e4b7641a, type: 3}
+  - {fileID: 21300000, guid: 5a05fb90fecbe8f448c1c0139af4cc60, type: 3}
+  - {fileID: 21300000, guid: 3cb7e2c06df122241b5bd8b33ff950ac, type: 3}
+  - {fileID: 21300000, guid: 073482e08260fd24e85dc2473a192b02, type: 3}
+  - {fileID: 21300000, guid: f3e32321743ec614f8d12f1d8def872a, type: 3}
+  - {fileID: 21300000, guid: 0e9890a1d62fb8247a0095e7cd974257, type: 3}
+  - {fileID: 21300000, guid: 1ebe77c1d5896834796cd040573fb199, type: 3}
+  - {fileID: 21300000, guid: 4238d852cf43e434283a81bb31874099, type: 3}
+  - {fileID: 21300000, guid: 761e24e2eedfaa640a0576eb339325a9, type: 3}
+  - {fileID: 21300000, guid: 0d2683834d098374d96669df96945a72, type: 3}
+  - {fileID: 21300000, guid: c8fc5594d66e6ec4a9e9da9859eb32a6, type: 3}
+  - {fileID: 21300000, guid: 0e3ab3b435fd4a04cace9223fc06eef9, type: 3}
+  - {fileID: 21300000, guid: db2e8dd4054cbec4b96fce9237398a7b, type: 3}
+  - {fileID: 21300000, guid: e83f71e456224ae4a84f985e5060f326, type: 3}
+  - {fileID: 21300000, guid: 1ff57ce45463c8d4a9a4f6151752b0d3, type: 3}
+  - {fileID: 21300000, guid: 4d5a0905dfb71a04aa647991be62cffe, type: 3}
+  - {fileID: 21300000, guid: 0c451265cd0a2f64e96ca5fcd319c84d, type: 3}
+  - {fileID: 21300000, guid: f6ce7a95f70435c4aa48b7b11b23104a, type: 3}
+  - {fileID: 21300000, guid: 98e1ebe5605862c4081e167348fe825f, type: 3}
+  - {fileID: 21300000, guid: 981539468677e224caff02fa21edb99c, type: 3}
+  - {fileID: 21300000, guid: a92ed58688fd0cf4bacfa988239ba8d8, type: 3}
+  - {fileID: 21300000, guid: 067300c600d2ea74e9e2dd6b1efb7047, type: 3}
+  - {fileID: 21300000, guid: d07bd0e69409ce54da2df875b4331910, type: 3}
+  - {fileID: 21300000, guid: b7ff3ee6247b5bc40801e9b3a35e532c, type: 3}
+  - {fileID: 21300000, guid: a75b76472bd0cbf48b6e9acde0a0e403, type: 3}
+  - {fileID: 21300000, guid: 1e193ad73848f4346b109a514a51e8f6, type: 3}
+  - {fileID: 21300000, guid: c512b428e607c7646bd21f76aa6b7d4d, type: 3}
+  - {fileID: 21300000, guid: 9270ba19e7698324db518fe061dfe9f0, type: 3}
+  - {fileID: 21300000, guid: 37305439b83ab234293e5011f2c172ab, type: 3}
+  - {fileID: 21300000, guid: 488d11795eeaf4241a9213b97cb305c5, type: 3}
+  - {fileID: 21300000, guid: 71865cf9d3c15e74a8e45b6fa24a6624, type: 3}
+  - {fileID: 21300000, guid: f460ccf90fdb8bf43bd6cb2b4aea1f47, type: 3}
+  - {fileID: 21300000, guid: 8f27e63a10d25ba4eb8800e0e6dcfa86, type: 3}
+  - {fileID: 21300000, guid: 874cb2aaf08f9484aa181cd2e15a49af, type: 3}
+  - {fileID: 21300000, guid: a95bb40b1e6c3544a9a0612e37966bb6, type: 3}
+  - {fileID: 21300000, guid: e3f8afabfaf536647a0e020954a29fb2, type: 3}
+  - {fileID: 21300000, guid: 6b586fbb30946f341931f7dfa832d454, type: 3}
+  - {fileID: 21300000, guid: e1a144cb8a4d3d44e81a380d52240287, type: 3}
+  - {fileID: 21300000, guid: f6f3cfcb0eb50e845a33ae473fac8be3, type: 3}
+  - {fileID: 21300000, guid: b41f371c582123643a080e150b3df5b1, type: 3}
+  - {fileID: 21300000, guid: cab67d7dd953f7043b50f535b1c7f91e, type: 3}
+  - {fileID: 21300000, guid: 84fc1f7dac6c23c4383113810d997c8b, type: 3}
+  - {fileID: 21300000, guid: cf2cad9dcb4bbc84f92281dba672425d, type: 3}
+  - {fileID: 21300000, guid: 008417ad35419f84891696e398999cc2, type: 3}
+  - {fileID: 21300000, guid: 72354a1e312303549a4e182ebc2ee9fb, type: 3}
+  - {fileID: 21300000, guid: f9ee673e2d114264993ef52b0b6cba8f, type: 3}
+  - {fileID: 21300000, guid: 80c6614ea9800ff4cbbd6b2459f6885a, type: 3}
+  - {fileID: 21300000, guid: fe422e5e59de8414f9cb69090d2284f2, type: 3}
+  - {fileID: 21300000, guid: 1019b5ce8aa254245bc18a3d070c856b, type: 3}
+  - {fileID: 21300000, guid: 3afc66fe703eef74b97e5e18a2c87e72, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Red1_MO_EP
+  - Red15_MO_EI
+  - Red8_MO_EI
+  - Red12_MC_EI
+  - Red10_MC_EI
+  - Red2_MO_EI
+  - Red9_MC_EP
+  - Red1_MC_EP
+  - Red6_MC_EI
+  - Red4_MO_EC
+  - Red3_MO_EC
+  - Red8_MC_EI
+  - Red12_MC_EO
+  - Red14_MO_EI
+  - Red2_MC_EP
+  - Red11_MC_EI
+  - Red16_MC_EO
+  - Red9_MC_EI
+  - Red1_MC_EI
+  - Red11_MC_EC
+  - Red12_MO_EI
+  - Red17_MO_EC
+  - Red4_MO_EP
+  - Red14_MC_EP
+  - Red14_MC_EI
+  - Red3_MO_EI
+  - Red3_MO_EP
+  - Red1_MO_EI
+  - Red15_MC_EI
+  - Red2_MC_EI
+  - Red2_MO_EP
+  - Red9_MO_EI
+  - Red5_MO_EI
+  - Red16_MO_EI
+  - Red10_MO_EI
+  - Red5_MC_EI
+  - Red6_MO_EI
+  - Red14_MO_EP
+  - Red7_MC_EI
+  - Red12_MO_EO
+  - Red2_MO_EC
+  - Red16_MO_EO
+  - Red4_MO_EI
+  - Red13_MO_EO
+  - Red2_MC_EC
+  - Red11_MO_EI
+  - Red11_MO_EC
+  - Red7_MO_EI
+  - Red16_MC_EI
+  - Red12_MO_EP
+  - Red9_MO_EP
+  - Red12_MC_EP
+  - Red17_MC_EC
+  m_RenderDataMap: {}
+  m_Tag: RedAtlas
+  m_IsVariant: 0

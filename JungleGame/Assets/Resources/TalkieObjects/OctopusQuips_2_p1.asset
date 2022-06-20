@@ -35,6 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: f7abf55fe7deb42499c42d666624acf9, type: 3}
+    audioClip:
+      m_AssetGUID: f7abf55fe7deb42499c42d666624acf9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_2_Bubbles_2_T1
     audioString: '*happy bubble sounds*'

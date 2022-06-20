@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: nook_cw_obj
   m_EditorClassIdentifier: 
   word: nook
-  audio: {fileID: 8300000, guid: 8e27a7bf835402a41a2712f9b5162357, type: 3}
+  audio:
+    m_AssetGUID: 8e27a7bf835402a41a2712f9b5162357
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 00d3c0e341c3d564e8395ff994ead9bf, type: 3}
-  elkoninList: 21000000000000001e000000000000000000000000000000
+  elkoninList: 22000000000000001f000000000000000000000000000000
   elkoninCount: 3
   set: 17

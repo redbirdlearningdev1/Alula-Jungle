@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: joy_cw_obj
   m_EditorClassIdentifier: 
   word: joy
-  audio: {fileID: 8300000, guid: e99cf948da703dc4e9f62bc8b32eb094, type: 3}
+  audio:
+    m_AssetGUID: e99cf948da703dc4e9f62bc8b32eb094
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: dbb96641caa5ed746ba772982d985bce, type: 3}
-  elkoninList: 1d0000001300000000000000000000000000000000000000
+  elkoninList: 1e0000001300000000000000000000000000000000000000
   elkoninCount: 2
   set: 18

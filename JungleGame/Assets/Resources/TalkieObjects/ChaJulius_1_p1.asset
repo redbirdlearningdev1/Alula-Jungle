@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: a86822988c82dd448b6e4bd91f610d60, type: 3}
+    audioClip:
+      m_AssetGUID: a86822988c82dd448b6e4bd91f610d60
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1b_Julius_1_T1
     audioString: 'Grrowr! '
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 423afebd0aaad554087018d80fcdd61e, type: 3}
+    audioClip:
+      m_AssetGUID: 423afebd0aaad554087018d80fcdd61e
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1b_Julius_1_T2
     audioString: 'Come on Explorer, '
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 11977245c743e0248a6438c622f13419, type: 3}
+    audioClip:
+      m_AssetGUID: 11977245c743e0248a6438c622f13419
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1b_Julius_1_T3
     audioString: are you ready to challenge me again?
   - endTalkieAfterThisSegment: 1
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 1ebd329fb5f924e4782643c0484fa592, type: 3}
+    audioClip:
+      m_AssetGUID: 1ebd329fb5f924e4782643c0484fa592
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1b_Julius_2_T1
     audioString: Alright,  let's do this!
   - endTalkieAfterThisSegment: 1
@@ -99,6 +115,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 464c454b8d26a704c996ee973bc9a526, type: 3}
+    audioClip:
+      m_AssetGUID: 464c454b8d26a704c996ee973bc9a526
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Cha_0_1b_Julius_3_T1
     audioString: "Hmmph,  I\u2019ll be waiting."

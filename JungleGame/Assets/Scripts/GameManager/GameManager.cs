@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public enum GameType
 {
@@ -31,9 +33,11 @@ public enum GameType
 
 public class GameManager : DontDestroy<GameManager>
 {
-    public static string currentGameVersion = "alpha1.3";
+    public static string currentGameVersion = "alpha1.7";
 
     public static int stickerInventorySize = 16;
+
+    public static float popup_probability = 0.2f;
 
     public bool devModeActivated;
     public const float transitionTime = 0.5f; // time to fade into and out of a scene (total transition time is: transitionTime * 2)
@@ -49,7 +53,8 @@ public class GameManager : DontDestroy<GameManager>
 
     public StoryGameData storyGameData;
     public MapIconIdentfier mapID;
-    
+    public MapLocation prevMapLocation = MapLocation.NONE;
+
     [HideInInspector] public bool repairMapIconID; // when the scroll map appears -> repair this icon
     [HideInInspector] public GameType prevGameTypePlayed = GameType.None;
 
@@ -60,13 +65,45 @@ public class GameManager : DontDestroy<GameManager>
     [HideInInspector] public bool wonRoyalRumbleGame = false; // for playing talkies after RR game
     [HideInInspector] public bool finishedBoatGame = false; // used for docked boat scene talkies
 
+    [HideInInspector] public bool playingBossBattleGame = false; // is player in a boss battle game?
+    [HideInInspector] public bool newBossBattleStoryBeat = false; // did player move to a new boss battle story beat?
+
     [Header("Avatars")]
     public List<Sprite> avatars;
 
+    [HideInInspector]
+    public bool neverSleep = false;
+
+    public int sleepSeconds = 10;
+    public GameObject console;
+    public Text consoleText;
+    private Coroutine sleepCoroutine;
+
+    [Header("Practice Mode")]
+    public bool practiceModeON = false;
+    public TextMeshProUGUI practiceModeCounter;
+    private List<GameType> practiceGameQueue;
+    [HideInInspector] public int practiceDifficulty;
+    [HideInInspector] public List<ActionWordEnum> practicePhonemes;
+    private int practiceTotalGames;
+    
+
     void Start()
     {
+#if !UNITY_IOS
         // set game resolution
         Screen.SetResolution(GameAwake.gameResolution.x, GameAwake.gameResolution.y, true);
+#endif
+
+        // init mic
+        MicInput.instance.InitMic();
+        MicInput.instance.StopMicrophone();
+
+        // set default volumes
+        AudioManager.instance.SetMasterVolume(AudioManager.default_masterVol);
+        AudioManager.instance.SetMusicVolume(AudioManager.default_musicVol);
+        AudioManager.instance.SetFXVolume(AudioManager.default_fxVol);
+        AudioManager.instance.SetTalkVolume(AudioManager.default_talkVol);
 
         if (devModeActivated)
         {
@@ -76,12 +113,15 @@ public class GameManager : DontDestroy<GameManager>
         {
             SendLog(this, "Dev Mode set as - OFF");
         }
+
+        Screen.sleepTimeout = sleepSeconds;
+        neverSleep = false;
     }
 
     void Update()
     {
         if (devModeActivated)
-        {            
+        {
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
                 // press 'Shift + D' to go to the dev menu
@@ -95,8 +135,80 @@ public class GameManager : DontDestroy<GameManager>
                 {
                     Debug.LogError("forcing open Development Console...");
                     StartCoroutine(LogDateTimeNow(2f));
-                }       
+                }
             }
+        }
+        /*
+        string sleepTimeout = "";
+        if (Screen.sleepTimeout == -1)
+            sleepTimeout = "NeverSleep";
+        else if (Screen.sleepTimeout == -2)
+            sleepTimeout = "System Default";
+        else sleepTimeout = "" + Screen.sleepTimeout;
+
+
+        consoleText.text = "Battery Status: " + SystemInfo.batteryStatus;
+        consoleText.text += "\nSleep Status: " + sleepTimeout;
+        consoleText.text += "\nSleep bool: " + neverSleep;
+        */
+
+        if ((SystemInfo.batteryStatus == BatteryStatus.Charging || SystemInfo.batteryStatus == BatteryStatus.Full) && !neverSleep)
+        {
+            consoleText.color = Color.red;
+            Screen.sleepTimeout = SleepTimeout.NeverSleep;
+            if (sleepCoroutine != null)
+            {
+                StopCoroutine(sleepCoroutine);
+                sleepCoroutine = null;
+            }
+            neverSleep = true;
+        }
+        if (!(SystemInfo.batteryStatus == BatteryStatus.Charging || SystemInfo.batteryStatus == BatteryStatus.Full))
+        {
+            if (neverSleep)
+            {
+                neverSleep = false;
+                if (sleepCoroutine != null)
+                {
+                    StopCoroutine(sleepCoroutine);
+                    sleepCoroutine = null;
+                }
+                sleepCoroutine = StartCoroutine(SleepCoroutine());
+            }
+            else if (Input.touchCount == 1)
+            {
+                if (Input.touches[0].phase == TouchPhase.Ended)
+                {
+                    if (sleepCoroutine != null)
+                    {
+                        StopCoroutine(sleepCoroutine);
+                        sleepCoroutine = null;
+                    }
+                    sleepCoroutine = StartCoroutine(SleepCoroutine());
+                }
+            }
+        }
+    }
+
+    IEnumerator SleepCoroutine()
+    {
+        consoleText.color = Color.blue;
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        yield return new WaitForSeconds(sleepSeconds);
+        consoleText.color = Color.green;
+        Screen.sleepTimeout = SleepTimeout.SystemSetting;
+    }
+
+
+    void OnApplicationFocus(bool focus)
+    {
+        if (focus)
+        {
+
+        }
+        else
+        {
+
         }
     }
 
@@ -107,9 +219,9 @@ public class GameManager : DontDestroy<GameManager>
     }
 
     /* 
-    ################################################
-    #   SCENE INITIALIZATION
-    ################################################
+################################################
+# SCENE INITIALIZATION
+################################################
     */
 
     public void SceneInit()
@@ -119,7 +231,7 @@ public class GameManager : DontDestroy<GameManager>
 
     private IEnumerator SceneInitCoroutine()
     {
-        // clean up enviroment
+        // clean up environment
         SceneCleanup();
 
         FadeObject.instance.SetFadeImmediate(true); // turn on black fade
@@ -128,12 +240,18 @@ public class GameManager : DontDestroy<GameManager>
         FadeObject.instance.FadeIn(transitionTime);
         yield return new WaitForSeconds(transitionTime);
         RaycastBlockerController.instance.RemoveRaycastBlocker("SceneInit");
+
+        // show practice mode counter
+        if (practiceModeON && SceneManager.GetActiveScene().name != "LoadingScene")
+        {
+            practiceModeCounter.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+        }
     }
 
     /* 
-    ################################################
-    #   UTILITY
-    ################################################
+################################################
+# UTILITY
+################################################
     */
 
     public void RestartGame()
@@ -172,12 +290,12 @@ public class GameManager : DontDestroy<GameManager>
         }
 
         // check consonant words
-        foreach(var consonantWord in consonantWords)
+        foreach (var consonantWord in consonantWords)
         {
             if (consonantWord.elkoninValue == value)
                 return consonantWord;
         }
-        SendError (this, "Could not find elkonin value: \'" + value + "\'");
+        SendError(this, "Could not find elkonin value: \'" + value + "\'");
         return null;
     }
 
@@ -190,7 +308,7 @@ public class GameManager : DontDestroy<GameManager>
             if (actionWord._enum.Equals(word))
                 return actionWord;
         }
-        SendError (this, "Could not find action word: \'" + word + "\'");
+        SendError(this, "Could not find action word: \'" + word + "\'");
         return null;
     }
 
@@ -199,7 +317,7 @@ public class GameManager : DontDestroy<GameManager>
     {
         var globalCoinPool = new List<ActionWordEnum>();
         string[] coins = System.Enum.GetNames(typeof(ActionWordEnum));
-        for (int i = 0; i < coins.Length; i++) 
+        for (int i = 0; i < coins.Length; i++)
         {
             ActionWordEnum coin = (ActionWordEnum)System.Enum.Parse(typeof(ActionWordEnum), coins[i]);
             globalCoinPool.Add(coin);
@@ -210,15 +328,81 @@ public class GameManager : DontDestroy<GameManager>
         return globalCoinPool;
     }
 
+    public void SkipCurrentGame()
+    {
+        // get current scene
+        string currentScene = SceneManager.GetActiveScene().name;
+        
+        switch (currentScene)
+        {
+            default: return;
+
+            // other games
+            case "StoryGame": StoryGameManager.instance.SkipGame(); break;
+            case "NewBoatGame": NewBoatGameManager.instance.SkipGame(); break;
+
+            // minigames:
+            case "FroggerGame": FroggerGameManager.instance.SkipGame(); break;
+            case "SeaShellGame": SeaShellGameManager.instance.SkipGame(); break;
+            case "RummageGame": RummageGameManager.instance.SkipGame(); break;
+            case "NewPirateGame": PrintingGameManager.instance.SkipGame(); break;
+            case "TurntablesGame": TurntablesGameManager.instance.SkipGame(); break;
+            case "NewSpiderGame": NewSpiderGameManager.instance.SkipGame(); break;
+
+            // challenge games
+            case "WordFactoryDeleting": WordFactoryDeletingManager.instance.SkipGame(); break;
+            case "WordFactorySubstituting": WordFactorySubstitutingManager.instance.SkipGame(); break;
+            case "WordFactoryBuilding": WordFactoryBuildingManager.instance.SkipGame(); break;
+            case "WordFactoryBlending": WordFactoryBlendingManager.instance.SkipGame(); break;
+
+            case "TigerPawCoins": TigerCoinGameManager.instance.SkipGame(); break;
+            case "TigerPawPhotos": TigerGameManager.instance.SkipGame(); break;
+
+            case "NewPasswordGame": NewPasswordGameManager.instance.SkipGame(); break;
+        }
+    }
+
+    public static bool DeterminePlayPopup()
+    {
+        float num = Random.Range(0f, 1f);
+        print ("num: " + num);
+        if (num < popup_probability)
+            return true;
+        return false;
+    }
+
     /* 
-    ################################################
-    #   SCENE MANAGEMENT
-    ################################################
+################################################
+# SCENE MANAGEMENT
+################################################
     */
+
+    public void GoToDevMenu()
+    {
+        LoadScene("DevMenu", true, 0.5f, true);
+    }
+
+    public void OpenConsole()
+    {
+        console.SetActive(!console.activeSelf);
+    }
+
 
     public void ReturnToScrollMap()
     {
         LoadScene("ScrollMap", true, 0.5f, true);
+    }
+
+    public void EndStarAwardScreen()
+    {
+        if (practiceModeON)
+        {
+            ContinuePracticeMode();
+        }
+        else
+        {
+            LoadScene("ScrollMap", true, 0.5f, true);
+        }
     }
 
     public void LoadScene(string sceneName, bool fadeOut, float time = transitionTime, bool useLoadScene = true)
@@ -233,7 +417,7 @@ public class GameManager : DontDestroy<GameManager>
         {
             FadeObject.instance.FadeOut(time);
         }
-            
+
         yield return new WaitForSeconds(time);
 
         // remove any popups
@@ -255,7 +439,7 @@ public class GameManager : DontDestroy<GameManager>
 
     private IEnumerator DelayLoadScene(string sceneName)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         LoadingSceneManager.instance.LoadNextScene(sceneName);
     }
 
@@ -278,23 +462,18 @@ public class GameManager : DontDestroy<GameManager>
         TalkieManager.instance.StopTalkieSystem();
 
         // remove ui buttons
-        //SettingsManager.instance.SetWagonButton(false);
         SettingsManager.instance.SetMenuButton(false);
+        SettingsManager.instance.ToggleWagonButtonActive(false);
 
-        // remove wagon controller stuff
-        //WagonWindowController.instance.ResetWagonController();
-
-        // close settings menu if open
+        // close settings windows if open
         SettingsManager.instance.CloseAllSettingsWindows();
-
-        // close in development window
-        //WagonWindowController.instance.CloseInDevelopmentWindow();
+        SettingsManager.instance.CloseAllConfirmWindows();
     }
 
     /*
-    ################################################
-    #   GAME DATA
-    ################################################
+################################################
+# GAME DATA
+################################################
     */
 
     public string GameTypeToSceneName(GameType gameType)
@@ -338,6 +517,49 @@ public class GameManager : DontDestroy<GameManager>
                 return "TigerPawPhotos";
             case GameType.Password:
                 return "NewPasswordGame";
+        }
+    }
+
+    /* 
+################################################
+# PRACTICE MODE
+################################################
+    */
+
+    public void SetPracticeMode(List<GameType> gameQueue, int diff, List<ActionWordEnum> phonemes)
+    {
+        // turn on practice mode and copy over data
+        practiceModeON = true;
+        practiceGameQueue = new List<GameType>();
+        practiceGameQueue.AddRange(gameQueue);
+        practiceDifficulty = diff;
+        practicePhonemes = new List<ActionWordEnum>();
+        practicePhonemes.AddRange(phonemes);
+        // set counter
+        practiceTotalGames = practiceGameQueue.Count;
+        practiceModeCounter.text =  practiceTotalGames + "/" + practiceTotalGames;
+    }
+
+    public void ContinuePracticeMode()
+    {
+        if (practiceGameQueue.Count > 0)
+        {
+            practiceModeCounter.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
+
+            // update text
+            practiceModeCounter.text =  practiceGameQueue.Count + "/" + practiceTotalGames;
+
+            // load next game in queue
+            GameType nextGame = practiceGameQueue[practiceGameQueue.Count - 1];
+            practiceGameQueue.RemoveAt(practiceGameQueue.Count - 1);
+            LoadScene(GameTypeToSceneName(nextGame), true);
+        }
+        else
+        {
+            // return to practice mode scene
+            practiceModeON = false;
+            practiceModeCounter.text = "";
+            LoadScene("PracticeScene", true);
         }
     }
 }

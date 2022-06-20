@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: gorilla_obj
   m_EditorClassIdentifier: 
   _name: gorilla
-  audio: {fileID: 8300000, guid: 8d4b8dd61abaeb84f995b64a44e27c3a, type: 3}
+  audio:
+    m_AssetGUID: 8d4b8dd61abaeb84f995b64a44e27c3a
+    m_SubObjectName: 
+    m_SubObjectType: 
   elkoninValue: 15
   animation: gorilla
   _enum: 14

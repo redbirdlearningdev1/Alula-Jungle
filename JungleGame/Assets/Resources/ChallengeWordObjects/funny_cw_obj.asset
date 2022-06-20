@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: funny_cw_obj
   m_EditorClassIdentifier: 
   word: funny
-  audio: {fileID: 8300000, guid: c9876304fd73e3440bc393edeb8666f1, type: 3}
+  audio:
+    m_AssetGUID: c9876304fd73e3440bc393edeb8666f1
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 6f3ef0586ac998f40b063f52dc340e83, type: 3}
-  elkoninList: 1a0000000600000021000000080000000000000000000000
+  elkoninList: 1b0000000600000022000000080000000000000000000000
   elkoninCount: 4
   set: 5

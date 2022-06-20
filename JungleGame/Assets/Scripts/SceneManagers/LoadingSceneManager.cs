@@ -13,6 +13,12 @@ public class LoadingSceneManager : MonoBehaviour
             instance = this;
 
         GameManager.instance.SceneInit();
+
+        // remove practice mode text if on
+        if (GameManager.instance.practiceModeON)
+        {
+            GameManager.instance.practiceModeCounter.transform.localScale = Vector3.zero;
+        }
     }
 
     public void LoadNextScene(string sceneName)

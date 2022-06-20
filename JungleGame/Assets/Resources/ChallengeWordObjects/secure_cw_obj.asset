@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: secure_cw_obj
   m_EditorClassIdentifier: 
   word: secure
-  audio: {fileID: 8300000, guid: 68b22ec5a06de3341b7efb8def3a1fee, type: 3}
+  audio:
+    m_AssetGUID: 68b22ec5a06de3341b7efb8def3a1fee
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 6356eadb2c7d870449ecbeae5cf87add, type: 3}
-  elkoninList: 250000000300000017000000110000000000000000000000
+  elkoninList: 260000000300000018000000110000000000000000000000
   elkoninCount: 4
   set: 16

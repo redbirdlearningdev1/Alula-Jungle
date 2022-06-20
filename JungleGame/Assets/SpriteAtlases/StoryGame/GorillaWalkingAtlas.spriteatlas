@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GorillaWalkingAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 29
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 4c24f6cedffbf6b469aec6dc049de864, type: 3}
+    totalSpriteSurfaceArea: 678187
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 1ef9ad00520bec84c919e7b3ad064c62, type: 3}
+  - {fileID: 21300000, guid: 86d3a351f47e8924c83991db514e1646, type: 3}
+  - {fileID: 21300000, guid: ae2991f1258f4c54bbba6c94316c5446, type: 3}
+  - {fileID: 21300000, guid: 88fa804250f1f384ab570e2c71b24804, type: 3}
+  - {fileID: 21300000, guid: a6fa8942dc09df34f879ac375192c7e5, type: 3}
+  - {fileID: 21300000, guid: ce03f843c80307a4e91f7a4f837c81dc, type: 3}
+  - {fileID: 21300000, guid: 074d37b3b9870ce4e943383dfa512ee1, type: 3}
+  - {fileID: 21300000, guid: c62ca1f33f794b7488c9512a7411caba, type: 3}
+  - {fileID: 21300000, guid: 1fc2936490b72be4bac2561852c00745, type: 3}
+  - {fileID: 21300000, guid: 83ca3274e0fdf6b4fa6a2d3b8fe4c263, type: 3}
+  - {fileID: 21300000, guid: 24ef5c1534d8f6f47b316f585f51191d, type: 3}
+  - {fileID: 21300000, guid: f42a4ac667f9f154da5bb05c962f7f06, type: 3}
+  - {fileID: 21300000, guid: 72205f1757b7f6749b1bb0e652511540, type: 3}
+  - {fileID: 21300000, guid: dd092238a0bc65c44b7cba32858f7af1, type: 3}
+  - {fileID: 21300000, guid: 38095a6866e6f7945b9b592433b26722, type: 3}
+  - {fileID: 21300000, guid: 41e6e8a8c2c7e9f4bb2fdd4f9af9e162, type: 3}
+  - {fileID: 21300000, guid: 30f485e918af5ec45bf49777109facc6, type: 3}
+  - {fileID: 21300000, guid: e5ab053ab6d9a714687e75ac04bbb216, type: 3}
+  - {fileID: 21300000, guid: 2f5a5e4a276456a46b1ba72fa00a9e4c, type: 3}
+  - {fileID: 21300000, guid: 088b498aa34d6634ca56e0ee58a79e96, type: 3}
+  - {fileID: 21300000, guid: f9f4cbda0a3b30d4b9b08be1314b20ed, type: 3}
+  - {fileID: 21300000, guid: 7e91975b3bb3db3458b43d668b33257b, type: 3}
+  - {fileID: 21300000, guid: 9356176b23475f24fba0ad4fa9bfd764, type: 3}
+  - {fileID: 21300000, guid: 8c5c4c1c8c5b68f43b0f0e8791e85d03, type: 3}
+  - {fileID: 21300000, guid: 749af44c02000744fbbbeeff8b860d23, type: 3}
+  - {fileID: 21300000, guid: 35a1a46c1ed0fd6418040d042337788b, type: 3}
+  - {fileID: 21300000, guid: f856afac334508c458110d9fa98fcf10, type: 3}
+  - {fileID: 21300000, guid: 0a3d731d1f962ca44a720869c190599e, type: 3}
+  - {fileID: 21300000, guid: c4ad8b1d378e146409711f44b8d64200, type: 3}
+  - {fileID: 21300000, guid: 95e8b0ad43e5f7249bb8b99f9bf1b6e8, type: 3}
+  - {fileID: 21300000, guid: 60abaecd0a65b0d42b8e93e96946a7a5, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Trans_Wait1
+  - Walk8
+  - Sit_Wait
+  - Walk0
+  - Walk14
+  - Walk18
+  - Trans_Wait0
+  - Sit_Yeah
+  - Walk5
+  - Walk10
+  - Trans_ThinkYeah1
+  - Walk19
+  - Walk4
+  - Walk11
+  - Sit_Think
+  - Walk1
+  - Walk6
+  - Walk22
+  - Walk20
+  - Walk3
+  - Walk16
+  - Trans_ThinkYeah0
+  - Walk9
+  - Walk17
+  - Walk13
+  - Walk15
+  - Walk21
+  - Walk12
+  - Walk2
+  - Walk23
+  - Walk7
+  m_RenderDataMap: {}
+  m_Tag: GorillaWalkingAtlas
+  m_IsVariant: 0

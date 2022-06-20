@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: listen_obj
   m_EditorClassIdentifier: 
   _name: listen
-  audio: {fileID: 8300000, guid: 8e47e5dec531365438466443b74d0318, type: 3}
+  audio:
+    m_AssetGUID: 8e47e5dec531365438466443b74d0318
+    m_SubObjectName: 
+    m_SubObjectType: 
   elkoninValue: 3
   animation: listen
   _enum: 2

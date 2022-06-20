@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 0ef3b5a15d52a1e41a8870fb0516c3d8, type: 3}
+    audioClip:
+      m_AssetGUID: 0ef3b5a15d52a1e41a8870fb0516c3d8
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_3_2_Red_1_T1
     audioString: "Well\u2026"
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 61e034da477f42344919984c86e50bb6, type: 3}
+    audioClip:
+      m_AssetGUID: 61e034da477f42344919984c86e50bb6
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_3_2_Red_1_T2
     audioString: I'm glad that was taken care of.
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 80f116e3925c424448dc607867353dad, type: 3}
+    audioClip:
+      m_AssetGUID: 80f116e3925c424448dc607867353dad
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_3_2_Wally_2_T1
     audioString: "Yeah\u2026 It still kinda smells though\u2026"
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: d0bc2a88761f8054991d21d8cafda36b, type: 3}
+    audioClip:
+      m_AssetGUID: d0bc2a88761f8054991d21d8cafda36b
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_3_2_Red_3_T1
     audioString: Yeah I agree,  Let's get out of here-
   - endTalkieAfterThisSegment: 0
@@ -99,6 +115,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 3
-    audioClip: {fileID: 0}
+    audioClip:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RedWally_Huh
     audioString: Huh?!

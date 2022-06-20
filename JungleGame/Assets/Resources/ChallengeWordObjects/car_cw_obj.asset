@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: car_cw_obj
   m_EditorClassIdentifier: 
   word: car
-  audio: {fileID: 8300000, guid: eb8f25cc7be2b674fb174c8efbda3993, type: 3}
+  audio:
+    m_AssetGUID: eb8f25cc7be2b674fb174c8efbda3993
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: a642da6369376c744bc0710fcec8396f, type: 3}
-  elkoninList: 170000000e00000000000000000000000000000000000000
+  elkoninList: 180000000e00000000000000000000000000000000000000
   elkoninCount: 2
   set: 13

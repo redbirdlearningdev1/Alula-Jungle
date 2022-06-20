@@ -30,7 +30,6 @@ public class Key : MonoBehaviour
         transform.SetParent(origin);
         transform.position = origin.position;
         transform.localScale = new Vector3(1f, 1f, 1f);
-        ImageGlowController.instance.SetImageGlow(GetComponent<Image>(), false, GlowValue.none);
         GetComponent<LerpableObject>().LerpImageAlpha(GetComponent<Image>(), 1f, 0f);
     }
 
@@ -46,7 +45,7 @@ public class Key : MonoBehaviour
         KeyWiggleAnim();
         
         // play correct audio
-        AudioManager.instance.PlayPhoneme(currentWord);
+        AudioManager.instance.PlayPhoneme(ChallengeWordDatabase.ActionWordEnumToElkoninValue(currentWord));
     }
 
     public void ReturnToRope()

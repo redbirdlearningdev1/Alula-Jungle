@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: lab_cw_obj
   m_EditorClassIdentifier: 
   word: lab
-  audio: {fileID: 8300000, guid: 2c50020cdfc796b488ebbdb91eb1cbc4, type: 3}
+  audio:
+    m_AssetGUID: 2c50020cdfc796b488ebbdb91eb1cbc4
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: fe1736e6a8ea8b44db3d1ae1a0e0df22, type: 3}
-  elkoninList: 1f0000000200000016000000000000000000000000000000
+  elkoninList: 200000000200000017000000000000000000000000000000
   elkoninCount: 3
   set: 1

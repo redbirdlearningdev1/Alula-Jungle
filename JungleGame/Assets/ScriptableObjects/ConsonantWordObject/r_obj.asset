@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: r_obj
   m_EditorClassIdentifier: 
   _name: r
-  audio: {fileID: 8300000, guid: c994e9acf23307c489e73de2276cfc33, type: 3}
-  elkoninValue: 36
+  audio:
+    m_AssetGUID: c994e9acf23307c489e73de2276cfc33
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  elkoninValue: 37
   animation: rCoin
   _enum: 15

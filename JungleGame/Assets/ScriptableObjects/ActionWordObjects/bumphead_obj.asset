@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: bumphead_obj
   m_EditorClassIdentifier: 
   _name: bumphead
-  audio: {fileID: 8300000, guid: ceb1d7f8e4fb46d4cba1fab8017b97c3, type: 3}
+  audio:
+    m_AssetGUID: ceb1d7f8e4fb46d4cba1fab8017b97c3
+    m_SubObjectName: 
+    m_SubObjectType: 
   elkoninValue: 20
   animation: bumphead
   _enum: 19

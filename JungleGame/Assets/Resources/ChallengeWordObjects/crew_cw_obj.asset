@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: crew_cw_obj
   m_EditorClassIdentifier: 
   word: crew
-  audio: {fileID: 8300000, guid: 30c80dac2fad6354989f333a93f06fb7, type: 3}
+  audio:
+    m_AssetGUID: 30c80dac2fad6354989f333a93f06fb7
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 6fbb14596b0cfe840bc3a047fdb67a64, type: 3}
-  elkoninList: 17000000240000000b000000000000000000000000000000
+  elkoninList: 18000000250000000b000000000000000000000000000000
   elkoninCount: 3
   set: 10

@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: caught_cw_obj
   m_EditorClassIdentifier: 
   word: caught
-  audio: {fileID: 8300000, guid: d886ab8cc97fb754fa74a0356938bacc, type: 3}
+  audio:
+    m_AssetGUID: d886ab8cc97fb754fa74a0356938bacc
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 10c28065d80cd18428db4526fa1a14db, type: 3}
-  elkoninList: 170000000500000027000000000000000000000000000000
+  elkoninList: 180000000500000028000000000000000000000000000000
   elkoninCount: 3
   set: 4

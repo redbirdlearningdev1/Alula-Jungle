@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: bake_cw_obj
   m_EditorClassIdentifier: 
   word: bake
-  audio: {fileID: 8300000, guid: 3c964f80598d874409dcfc569f405362, type: 3}
+  audio:
+    m_AssetGUID: 3c964f80598d874409dcfc569f405362
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: e0a4b6c10c0f1c44fae02aa9c4969715, type: 3}
-  elkoninList: 16000000070000001e000000000000000000000000000000
+  elkoninList: 17000000070000001f000000000000000000000000000000
   elkoninCount: 3
   set: 6

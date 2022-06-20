@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 2fca55934b7b07b4ebcf0ecc83d2d65f, type: 3}
+    audioClip:
+      m_AssetGUID: 2fca55934b7b07b4ebcf0ecc83d2d65f
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_2_2_Darwin_1_T1
     audioString: Julius!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 1fd7e8911ef3e224fa2079d7ee9f468c, type: 3}
+    audioClip:
+      m_AssetGUID: 1fd7e8911ef3e224fa2079d7ee9f468c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_2_2_Darwin_1_T2
     audioString: Wait!
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 71d69f2e0e807664d9143b4114548dd3, type: 3}
+    audioClip:
+      m_AssetGUID: 71d69f2e0e807664d9143b4114548dd3
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_2_2_Julius_2_T1
     audioString: No Darwin!
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 5500ff8570cec6d429d6152995f6e5b4, type: 3}
+    audioClip:
+      m_AssetGUID: 5500ff8570cec6d429d6152995f6e5b4
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_2_2_Julius_2_T2
     audioString: A deal is a deal.
   - endTalkieAfterThisSegment: 0
@@ -99,7 +115,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 2a810ef1f385c3146bc348848df000fc, type: 3}
+    audioClip:
+      m_AssetGUID: 2a810ef1f385c3146bc348848df000fc
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_2_2_Julius_2_T3
     audioString: "Come back and challenge me again when you\u2019re ready."
   - endTalkieAfterThisSegment: 0
@@ -115,6 +135,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 36d478d79663c89438e4fbadd6cb958e, type: 3}
+    audioClip:
+      m_AssetGUID: 36d478d79663c89438e4fbadd6cb958e
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_2_2_Red_3_T1
     audioString: "Let\u2019s go practice some more,  Explorer!"

@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: shark_cw_obj
   m_EditorClassIdentifier: 
   word: shark
-  audio: {fileID: 8300000, guid: bcf881510eadc684994b8e7936b031db, type: 3}
+  audio:
+    m_AssetGUID: bcf881510eadc684994b8e7936b031db
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: f988d605f1302484e9c6d350c996f78a, type: 3}
-  elkoninList: 260000000e0000001e000000000000000000000000000000
+  elkoninList: 270000000e0000001f000000000000000000000000000000
   elkoninCount: 3
   set: 13

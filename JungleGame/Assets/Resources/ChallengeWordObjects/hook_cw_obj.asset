@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: hook_cw_obj
   m_EditorClassIdentifier: 
   word: hook
-  audio: {fileID: 8300000, guid: 3231250ff4ce87d43ac1d2d07e959196, type: 3}
+  audio:
+    m_AssetGUID: 3231250ff4ce87d43ac1d2d07e959196
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 52b1271d766159943a4a261d573be24f, type: 3}
-  elkoninList: 1c000000000000001e000000000000000000000000000000
+  elkoninList: 1d000000120000001f000000000000000000000000000000
   elkoninCount: 3
   set: 17

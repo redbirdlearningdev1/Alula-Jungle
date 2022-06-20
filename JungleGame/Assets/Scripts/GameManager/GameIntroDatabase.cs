@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class GameIntroDatabase : MonoBehaviour
 {
@@ -21,79 +22,79 @@ public class GameIntroDatabase : MonoBehaviour
     */
 
     [Header("Frogger Game")]
-    public AudioClip froggerIntro1;
-    public AudioClip froggerIntro2;
-    public AudioClip froggerIntro3;
-    public AudioClip froggerIntro4;
-    public AudioClip froggerIntro5;
+    public AssetReference froggerIntro1;
+    public AssetReference froggerIntro2;
+    public AssetReference froggerIntro3;
+    public AssetReference froggerIntro4;
+    public AssetReference froggerIntro5;
 
-    public AudioClip froggerReminder1;
-    public AudioClip froggerReminder2;
+    public AssetReference froggerReminder1;
+    public AssetReference froggerReminder2;
 
-    public List<AudioClip> froggerEncouragementClips;
+    public List<AssetReference> froggerEncouragementClips;
 
     [Header("Pirate Game")]
-    public AudioClip pirateIntro1;
-    public AudioClip pirateIntro2;
-    public AudioClip pirateIntro3;
-    public AudioClip pirateIntro4;
-    public AudioClip pirateIntro5;
+    public AssetReference pirateIntro1;
+    public AssetReference pirateIntro2;
+    public AssetReference pirateIntro3;
+    public AssetReference pirateIntro4;
+    public AssetReference pirateIntro5;
 
-    public AudioClip pirateReminder1;
-    public AudioClip pirateReminder2;
+    public AssetReference pirateReminder1;
+    public AssetReference pirateReminder2;
 
-    public List<AudioClip> pirateEncouragementClips;
+    public List<AssetReference> pirateEncouragementClips;
 
     [Header("Seashell Game")]
-    public AudioClip seashellIntro1;
-    public AudioClip seashellIntro2;
-    public AudioClip seashellIntro3;
-    public AudioClip seashellIntro4;
-    public AudioClip seashellIntro5;
+    public AssetReference seashellIntro1;
+    public AssetReference seashellIntro2;
+    public AssetReference seashellIntro3;
+    public AssetReference seashellIntro4;
+    public AssetReference seashellIntro5;
 
-    public AudioClip seashellReminder1;
-    public AudioClip seashellReminder2;
+    public AssetReference seashellReminder1;
+    public AssetReference seashellReminder2;
 
-    public List<AudioClip> seashellEncouragementClips;
+    public List<AssetReference> seashellEncouragementClips;
 
     [Header("Turntables Game")]
-    public AudioClip turntablesIntro1;
-    public AudioClip turntablesIntro2;
-    public AudioClip turntablesIntro3;
-    public AudioClip turntablesIntro4;
+    public AssetReference turntablesIntro1;
+    public AssetReference turntablesIntro2;
+    public AssetReference turntablesIntro3;
+    public AssetReference turntablesIntro4;
 
-    public AudioClip turntablesReminder1;
-    public AudioClip turntablesReminder2;
-    public AudioClip turntablesReminder3;
+    public AssetReference turntablesReminder1;
+    public AssetReference turntablesReminder2;
+    public AssetReference turntablesReminder3;
 
-    public List<AudioClip> turntablesEncouragementClips;
+    public List<AssetReference> turntablesEncouragementClips;
 
     [Header("Rummage Game")]
-    public AudioClip rummageIntro1;
-    public AudioClip rummageIntro2;
-    public AudioClip rummageIntro3;
-    public AudioClip rummageIntro4;
-    public AudioClip rummageIntro5;
+    public AssetReference rummageIntro1;
+    public AssetReference rummageIntro2;
+    public AssetReference rummageIntro3;
+    public AssetReference rummageIntro4;
+    public AssetReference rummageIntro5;
 
-    public AudioClip rummageReminder1;
-    public AudioClip rummageReminder2;
-    public AudioClip rummageReminder3;
+    public AssetReference rummageReminder1;
+    public AssetReference rummageReminder2;
+    public AssetReference rummageReminder3;
 
-    public List<AudioClip> rummageEncouragementClips;
+    public List<AssetReference> rummageEncouragementClips;
 
     [Header("Spiderwebs Game")]
-    public AudioClip spiderwebsIntro1;
-    public AudioClip spiderwebsIntro2;
-    public AudioClip spiderwebsIntro3;
-    public AudioClip spiderwebsIntro4;
-    public AudioClip spiderwebsIntro5;
+    public AssetReference spiderwebsIntro1;
+    public AssetReference spiderwebsIntro2;
+    public AssetReference spiderwebsIntro3;
+    public AssetReference spiderwebsIntro4;
+    public AssetReference spiderwebsIntro5;
 
-    public AudioClip spiderwebsReminder1;
-    public AudioClip spiderwebsReminder2;
+    public AssetReference spiderwebsReminder1;
+    public AssetReference spiderwebsReminder2;
 
-    public AudioClip spiderwebsOmNomNom;
+    public AssetReference spiderwebsOmNomNom;
 
-    public List<AudioClip> spiderwebsEncouragementClips;
+    public List<AssetReference> spiderwebsEncouragementClips;
 
     /* 
     ################################################
@@ -103,149 +104,149 @@ public class GameIntroDatabase : MonoBehaviour
 
     [Header("Word Factory Blending Game")]
     // tutorial clips
-    public AudioClip blendingIntro1;
-    public AudioClip blendingIntro2;
-    public AudioClip blendingIntro3;
-    public AudioClip blendingIntro4;
-    public AudioClip blendingIntro5;
-    public AudioClip blendingIntro6;
-    public AudioClip blendingIntro7;
-    public AudioClip blendingIntro8;
-    public AudioClip blendingIntro9;
-    public AudioClip blendingIntro10;
-    public AudioClip blendingIntro11;
+    public AssetReference blendingIntro1;
+    public AssetReference blendingIntro2;
+    public AssetReference blendingIntro3;
+    public AssetReference blendingIntro4;
+    public AssetReference blendingIntro5;
+    public AssetReference blendingIntro6;
+    public AssetReference blendingIntro7;
+    public AssetReference blendingIntro8;
+    public AssetReference blendingIntro9;
+    public AssetReference blendingIntro10;
+    public AssetReference blendingIntro11;
 
     // non-tutorial clips
-    public AudioClip blendingStart1;
-    public AudioClip blendingStart2;
+    public AssetReference blendingStart1;
+    public AssetReference blendingStart2;
 
     // non-tutorial clips
-    public AudioClip blendingEnd1;
-    public AudioClip blendingEnd2;
+    public AssetReference blendingEnd1;
+    public AssetReference blendingEnd2;
 
-    public List<AudioClip> blendingReminderClips;
+    public List<AssetReference> blendingReminderClips;
 
     [Header("Word Factory Substituting Game")]
     // tutorial clips
-    public AudioClip substitutingIntro1;
-    public AudioClip substitutingIntro2;
-    public AudioClip substitutingIntro3;
-    public AudioClip substitutingIntro4;
-    public AudioClip substitutingIntro5;
-    public AudioClip substitutingIntro6;
-    public AudioClip substitutingIntro7;
-    public AudioClip substitutingIntro8;
-    public AudioClip substitutingIntro9;
-    public AudioClip substitutingIntro10;
-    public AudioClip substitutingIntro11;
-    public AudioClip substitutingIntro12;
-    public AudioClip substitutingIntro13;
+    public AssetReference substitutingIntro1;
+    public AssetReference substitutingIntro2;
+    public AssetReference substitutingIntro3;
+    public AssetReference substitutingIntro4;
+    public AssetReference substitutingIntro5;
+    public AssetReference substitutingIntro6;
+    public AssetReference substitutingIntro7;
+    public AssetReference substitutingIntro8;
+    public AssetReference substitutingIntro9;
+    public AssetReference substitutingIntro10;
+    public AssetReference substitutingIntro11;
+    public AssetReference substitutingIntro12;
+    public AssetReference substitutingIntro13;
 
     // non-tutorial clips
-    public AudioClip substitutingStart1;
-    public AudioClip substitutingStart2;
+    public AssetReference substitutingStart1;
+    public AssetReference substitutingStart2;
 
-    public List<AudioClip> substitutingReminderClips;
+    public List<AssetReference> substitutingReminderClips;
 
     [Header("Word Factory Deleting Game")]
     // tutorial clips
-    public AudioClip deletingIntro1;
-    public AudioClip deletingIntro2;
-    public AudioClip deletingIntro3;
-    public AudioClip deletingIntro4;
-    public AudioClip deletingIntro5;
+    public AssetReference deletingIntro1;
+    public AssetReference deletingIntro2;
+    public AssetReference deletingIntro3;
+    public AssetReference deletingIntro4;
+    public AssetReference deletingIntro5;
 
-    public AudioClip deletingStart1;
-    public AudioClip deletingStart2Chapters1_3;
-    public AudioClip deletingStart2Chapters4_5;
+    public AssetReference deletingStart1;
+    public AssetReference deletingStart2Chapters1_3;
+    public AssetReference deletingStart2Chapters4_5;
 
     // reminders chapters 1-4
-    public List<AudioClip> deletingReminderClipsChapters1_4;
+    public List<AssetReference> deletingReminderClipsChapters1_4;
     // reminders chapters 5
-    public List<AudioClip> deletingReminderClipsChapter5;
+    public List<AssetReference> deletingReminderClipsChapter5;
 
     [Header("Word Factory Building Game")]
     // tutorial clips
-    public AudioClip buildingIntro1;
-    public AudioClip buildingIntro2;
-    public AudioClip buildingIntro3;
-    public AudioClip buildingIntro4;
-    public AudioClip buildingIntro5;
+    public AssetReference buildingIntro1;
+    public AssetReference buildingIntro2;
+    public AssetReference buildingIntro3;
+    public AssetReference buildingIntro4;
+    public AssetReference buildingIntro5;
 
-    public AudioClip buildingStart1;
-    public AudioClip buildingStart2Chapters1_3;
-    public AudioClip buildingStart2Chapters4_5;
+    public AssetReference buildingStart1;
+    public AssetReference buildingStart2Chapters1_3;
+    public AssetReference buildingStart2Chapters4_5;
 
     // reminders chapters 1-4
-    public List<AudioClip> buildingReminderClipsChapters1_4;
+    public List<AssetReference> buildingReminderClipsChapters1_4;
     // reminders chapters 5
-    public List<AudioClip> buildingReminderClipsChapter5;
+    public List<AssetReference> buildingReminderClipsChapter5;
 
     [Header("Tiger Paw Coin - Find the Sound")]
     // tutorial clips
-    public AudioClip tigerPawCoinIntro1;
-    public AudioClip tigerPawCoinIntro2;
-    public AudioClip tigerPawCoinIntro3;
-    public AudioClip tigerPawCoinIntro4;
-    public AudioClip tigerPawCoinIntro5;
-    public AudioClip tigerPawCoinIntro6;
-    public AudioClip tigerPawCoinIntro7;
+    public AssetReference tigerPawCoinIntro1;
+    public AssetReference tigerPawCoinIntro2;
+    public AssetReference tigerPawCoinIntro3;
+    public AssetReference tigerPawCoinIntro4;
+    public AssetReference tigerPawCoinIntro5;
+    public AssetReference tigerPawCoinIntro6;
+    public AssetReference tigerPawCoinIntro7;
 
-    public AudioClip tigerPawCoinStart;
+    public AssetReference tigerPawCoinStart;
 
     // new photo
-    public List<AudioClip> tigerPawCoinNewPhotosChapters1_4;
-    public List<AudioClip> tigerPawCoinNewPhotosChapter5;
+    public List<AssetReference> tigerPawCoinNewPhotosChapters1_4;
+    public List<AssetReference> tigerPawCoinNewPhotosChapter5;
 
     // julius wins
-    public List<AudioClip> tigerPawCoinJuliusWinChapters1_4;
-    public List<AudioClip> tigerPawCoinJuliusWinChapter5;
+    public List<AssetReference> tigerPawCoinJuliusWinChapters1_4;
+    public List<AssetReference> tigerPawCoinJuliusWinChapter5;
 
     // julius lose
-    public List<AudioClip> tigerPawCoinJuliusLoseChapters1_4;
-    public List<AudioClip> tigerPawCoinJuliusLoseChapter5;
+    public List<AssetReference> tigerPawCoinJuliusLoseChapters1_4;
+    public List<AssetReference> tigerPawCoinJuliusLoseChapter5;
 
     // final julius win
-    public AudioClip tigerPawCoinFinalJuliusWinChapters1_4; 
-    public AudioClip tigerPawCoinFinalWinChapter5;
+    public AssetReference tigerPawCoinFinalJuliusWinChapters1_4; 
+    public AssetReference tigerPawCoinFinalWinChapter5;
 
     // final julius lose
-    public AudioClip tigerPawCoinFinalJuliusLoseChapters1_4; 
-    public AudioClip tigerPawCoinFinalLoseChapter5;
+    public AssetReference tigerPawCoinFinalJuliusLoseChapters1_4; 
+    public AssetReference tigerPawCoinFinalLoseChapter5;
 
     [Header("Tiger Paw Photos - Find the Word")]
     // tutorial clips
-    public AudioClip tigerPawPhotosIntro1;
-    public AudioClip tigerPawPhotosIntro2;
-    public AudioClip tigerPawPhotosIntro3;
-    public AudioClip tigerPawPhotosIntro4;
-    public AudioClip tigerPawPhotosIntro5;
-    public AudioClip tigerPawPhotosIntro6;
-    public AudioClip tigerPawPhotosIntro7;
-    public AudioClip tigerPawPhotosIntro8;
+    public AssetReference tigerPawPhotosIntro1;
+    public AssetReference tigerPawPhotosIntro2;
+    public AssetReference tigerPawPhotosIntro3;
+    public AssetReference tigerPawPhotosIntro4;
+    public AssetReference tigerPawPhotosIntro5;
+    public AssetReference tigerPawPhotosIntro6;
+    public AssetReference tigerPawPhotosIntro7;
+    public AssetReference tigerPawPhotosIntro8;
 
-    public AudioClip tigerPawPhotosStart;
+    public AssetReference tigerPawPhotosStart;
 
     [Header("Password")]
     // tutorial clips
-    public AudioClip passwordIntro1;
-    public AudioClip passwordIntro2;
-    public AudioClip passwordIntro3;
-    public AudioClip passwordIntro4;
-    public AudioClip passwordIntro5;
-    public AudioClip passwordIntro6;
-    public AudioClip passwordIntro7;
-    public AudioClip passwordIntro8;
-    public AudioClip passwordIntro9;
-    public AudioClip passwordIntro10;
-    public AudioClip passwordIntro11;
-    public AudioClip passwordIntro12;
+    public AssetReference passwordIntro1;
+    public AssetReference passwordIntro2;
+    public AssetReference passwordIntro3;
+    public AssetReference passwordIntro4;
+    public AssetReference passwordIntro5;
+    public AssetReference passwordIntro6;
+    public AssetReference passwordIntro7;
+    public AssetReference passwordIntro8;
+    public AssetReference passwordIntro9;
+    public AssetReference passwordIntro10;
+    public AssetReference passwordIntro11;
+    public AssetReference passwordIntro12;
 
     // start clips
-    public AudioClip passwordStart1;
-    public AudioClip passwordStart2;
-    public AudioClip passwordStart3;
+    public AssetReference passwordStart1;
+    public AssetReference passwordStart2;
+    public AssetReference passwordStart3;
 
     // new photo
-    public List<AudioClip> passwordNewPhoto;
+    public List<AssetReference> passwordNewPhoto;
 }

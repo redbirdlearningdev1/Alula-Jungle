@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: f859c875e5805654e801a4e091aed823, type: 3}
+    audioClip:
+      m_AssetGUID: f859c875e5805654e801a4e091aed823
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_3_Red_7_T1
     audioString: Darwin,  wait!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: b030813ed7d7f244881806ca9c2b420a, type: 3}
+    audioClip:
+      m_AssetGUID: b030813ed7d7f244881806ca9c2b420a
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_3_Wally_8_T1
     audioString: "There he goes again\u2026"
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: d2767169b0fcb594b88d724d709ef6d0, type: 3}
+    audioClip:
+      m_AssetGUID: d2767169b0fcb594b88d724d709ef6d0
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_3_Red_9_T1
     audioString: Sigh...
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 0a71f938b9a094747a1fbac12c2874c8, type: 3}
+    audioClip:
+      m_AssetGUID: 0a71f938b9a094747a1fbac12c2874c8
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_3_Red_9_T2
     audioString: "We\u2019ll just have to catch up to him eventually.."
   - endTalkieAfterThisSegment: 0
@@ -99,7 +115,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 7d83f0dc6225b1d4a98114c84a721098, type: 3}
+    audioClip:
+      m_AssetGUID: 7d83f0dc6225b1d4a98114c84a721098
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_3_Spindle_10_T1
     audioString: I won't keep y-you here much longer!
   - endTalkieAfterThisSegment: 0
@@ -115,7 +135,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 81b54fe1cd4e22a449e06c5777d1f28c, type: 3}
+    audioClip:
+      m_AssetGUID: 81b54fe1cd4e22a449e06c5777d1f28c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_3_Spindle_10_T2
     audioString: G-go catch up to your friend!
   - endTalkieAfterThisSegment: 0
@@ -131,7 +155,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 12117234aa3353949af42fc782c08ec3, type: 3}
+    audioClip:
+      m_AssetGUID: 12117234aa3353949af42fc782c08ec3
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_3_Spindle_10_T3
     audioString: OH!
   - endTalkieAfterThisSegment: 0
@@ -147,6 +175,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 3
-    audioClip: {fileID: 0}
+    audioClip:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RedWally_What
     audioString: What??!

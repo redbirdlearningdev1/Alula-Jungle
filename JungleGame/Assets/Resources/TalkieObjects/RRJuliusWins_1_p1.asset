@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 85c4cac50a2d7954c9d071bf223acd5e, type: 3}
+    audioClip:
+      m_AssetGUID: 85c4cac50a2d7954c9d071bf223acd5e
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RR_0_2_Julius_1_T1
     audioString: Hmph,  looks like you still need some more practice.
   - endTalkieAfterThisSegment: 1
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 23ca3030d604b354fbc4855bb4e15d63, type: 3}
+    audioClip:
+      m_AssetGUID: 23ca3030d604b354fbc4855bb4e15d63
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RR_0_2_Julius_1_T2
     audioString: "I\u2019m outta here."
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 6da163faecd781c42a5576d99f74be3e, type: 3}
+    audioClip:
+      m_AssetGUID: 6da163faecd781c42a5576d99f74be3e
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RR_0_2_Julius_2_T1
     audioString: "Just keep practicing some more,  I\u2019ll be back to challenge
       you again,  "
@@ -84,7 +96,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 660f57a44b0de624c9801571632d44a0, type: 3}
+    audioClip:
+      m_AssetGUID: 660f57a44b0de624c9801571632d44a0
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RR_0_2_Julius_2_T2
     audioString: just you wait!
   - endTalkieAfterThisSegment: 0
@@ -100,7 +116,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: af63fb1173481b846b4f54bb78c99194, type: 3}
+    audioClip:
+      m_AssetGUID: af63fb1173481b846b4f54bb78c99194
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RR_0_2_Julius_3_T1
     audioString: 'Wha- I beat you? '
   - endTalkieAfterThisSegment: 0
@@ -116,7 +136,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: e5246163d67bdb141aad9b8e6d4274fb, type: 3}
+    audioClip:
+      m_AssetGUID: e5246163d67bdb141aad9b8e6d4274fb
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RR_0_2_Julius_3_T2
     audioString: Uh- well-
   - endTalkieAfterThisSegment: 1
@@ -132,6 +156,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: e896db35e09196b48862372580e61af3, type: 3}
+    audioClip:
+      m_AssetGUID: e896db35e09196b48862372580e61af3
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RR_0_2_Julius_3_T3
     audioString: "I\u2019ll see you in our next battle!"

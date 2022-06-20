@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 61f9f91cb754c474187cec6d0c50d97d, type: 3}
+    audioClip:
+      m_AssetGUID: 61f9f91cb754c474187cec6d0c50d97d
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_4_3_Wally_1_T1
     audioString: Good job,  Explorer.
   - endTalkieAfterThisSegment: 0
@@ -51,6 +55,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 5e5705f86d28da748a69757402e72f89, type: 3}
+    audioClip:
+      m_AssetGUID: 5e5705f86d28da748a69757402e72f89
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: E_4_3_Julius_2_T1
     audioString: "Yeah whatever\u2026"

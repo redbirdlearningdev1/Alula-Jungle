@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: glue_cw_obj
   m_EditorClassIdentifier: 
   word: glue
-  audio: {fileID: 8300000, guid: b541b72b13b86864c81e86963c6714e0, type: 3}
+  audio:
+    m_AssetGUID: b541b72b13b86864c81e86963c6714e0
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 7629260005f60554c9b6c4207ea1bda4, type: 3}
-  elkoninList: 1b0000001f0000000b000000000000000000000000000000
+  elkoninList: 1c000000200000000b000000000000000000000000000000
   elkoninCount: 3
   set: 10

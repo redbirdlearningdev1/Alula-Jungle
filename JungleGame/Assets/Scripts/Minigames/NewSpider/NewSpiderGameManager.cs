@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.AddressableAssets;
 
 [System.Serializable]
 public struct SpiderwebTutorialList
@@ -83,11 +84,27 @@ public class NewSpiderGameManager : MonoBehaviour
         else
         {
             // start song
-            AudioManager.instance.InitSplitSong(SplitSong.Spiderweb);
-            AudioManager.instance.IncreaseSplitSong();
+            AudioManager.instance.InitSplitSong(AudioDatabase.instance.SpiderwebSongSplit);
 
             StartCoroutine(StartGame());
         }
+    }
+
+    public void SkipGame()
+    {
+        StopAllCoroutines();
+        // play win tune
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
+        // save tutorial done to SIS
+        StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = true;
+        // times missed set to 0
+        timesMissed = 0;
+        // update AI data
+        AIData(StudentInfoSystem.GetCurrentProfile());
+        // calculate and show stars
+        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+        // remove all raycast blockers
+        RaycastBlockerController.instance.ClearAllRaycastBlockers();
     }
 
     void Update()
@@ -99,19 +116,7 @@ public class NewSpiderGameManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.S))
                 {
-                    StopAllCoroutines();
-                    // play win tune
-                    AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
-                    // save tutorial done to SIS
-                    StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = true;
-                    // times missed set to 0
-                    timesMissed = 0;
-                    // update AI data
-                    AIData(StudentInfoSystem.GetCurrentProfile());
-                    // calculate and show stars
-                    StarAwardController.instance.AwardStarsAndExit(CalculateStars());
-                    // remove all raycast blockers
-                    RaycastBlockerController.instance.ClearAllRaycastBlockers();
+                    SkipGame();
                 }
             }
         }
@@ -128,7 +133,11 @@ public class NewSpiderGameManager : MonoBehaviour
         globalCoinPool = new List<ActionWordEnum>();
 
         // Create Global Coin List
-        if (mapID != MapIconIdentfier.None)
+        if (GameManager.instance.practiceModeON)
+        {
+            globalCoinPool.AddRange(GameManager.instance.practicePhonemes);
+        }
+        else if (mapID != MapIconIdentfier.None)
         {
             globalCoinPool.AddRange(StudentInfoSystem.GetCurrentProfile().actionWordPool);
         }
@@ -152,7 +161,14 @@ public class NewSpiderGameManager : MonoBehaviour
         // turn off raycaster
         SpiderRayCaster.instance.isOn = false;
 
-        if (coin ==  ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value))
+        bool success = (coin == ChallengeWordDatabase.ElkoninValueToActionWord(selectedCoin.value));
+        // only track phoneme attempt if not in tutorial AND not in practice mode
+        if (!playTutorial && !GameManager.instance.practiceModeON)
+        {
+            StudentInfoSystem.SavePlayerPhonemeAttempt(coin, success);
+        }
+
+        if (success)
         {
             winCount++;
 
@@ -169,15 +185,15 @@ public class NewSpiderGameManager : MonoBehaviour
             {
                 if (!playTutorial)
                     StartCoroutine(CoinSuccessRoutine(correctCoin));
-                else 
+                else
                     StartCoroutine(TutorialSuccessRoutine(correctCoin));
-                
+
             }
             else
             {
                 if (!playTutorial)
                     StartCoroutine(WinRoutine(correctCoin));
-                else 
+                else
                     StartCoroutine(TutorialWinRoutine(correctCoin));
             }
 
@@ -188,7 +204,7 @@ public class NewSpiderGameManager : MonoBehaviour
             StartCoroutine(CoinFailRoutine());
         else
             StartCoroutine(TutorialFailRoutine());
-    
+
         return false;
     }
 
@@ -210,19 +226,22 @@ public class NewSpiderGameManager : MonoBehaviour
 
         // play om nom nom sound
         spider.fail();
+        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(GameIntroDatabase.instance.spiderwebsOmNomNom));
+        yield return cd.coroutine;
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.topLeft.position, true, TalkieCharacter.Spindle, GameIntroDatabase.instance.spiderwebsOmNomNom);
-        yield return new WaitForSeconds(GameIntroDatabase.instance.spiderwebsOmNomNom.length + 1f);
+        yield return new WaitForSeconds(cd.GetResult() + 0.5f);
         spider.idle();
 
         // play reminder popup
-        List<AudioClip> clips = new List<AudioClip>();
+        List<AssetReference> clips = new List<AssetReference>();
         clips.Add(GameIntroDatabase.instance.spiderwebsReminder1);
         clips.Add(GameIntroDatabase.instance.spiderwebsReminder2);
 
-        AudioClip clip = clips[Random.Range(0, clips.Count)];
+        AssetReference clip = clips[Random.Range(0, clips.Count)];
+        CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+        yield return cd0.coroutine;
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Spindle, clip);
-        yield return new WaitForSeconds(clip.length + 1f);
-
+        yield return new WaitForSeconds(1f);
 
         StartCoroutine(StartGame());
     }
@@ -242,11 +261,11 @@ public class NewSpiderGameManager : MonoBehaviour
         // play web grab sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WebWhip, 0.5f);
 
-        if(selectedIndex == 0)
+        if (selectedIndex == 0)
         {
             webber.grab1();
         }
-        else if(selectedIndex == 1)
+        else if (selectedIndex == 1)
         {
             webber.grab2();
         }
@@ -259,7 +278,7 @@ public class NewSpiderGameManager : MonoBehaviour
             webber.grab4();
         }
         yield return new WaitForSeconds(.5f);
-        
+
         coin.ToggleVisibility(false, true);
         yield return new WaitForSeconds(.15f);
         ball.UpgradeChest();
@@ -268,14 +287,18 @@ public class NewSpiderGameManager : MonoBehaviour
         webber.gameObject.SetActive(false);
 
         StartCoroutine(CoinsDown());
-        yield return new WaitForSeconds(2f);
-
 
         // play encouragement popup
-        List<AudioClip> clips = GameIntroDatabase.instance.spiderwebsEncouragementClips;
-        AudioClip clip = clips[Random.Range(0, clips.Count)];
-        TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Spindle, clip);
-        yield return new WaitForSeconds(clip.length + 1f);
+        if (GameManager.DeterminePlayPopup())
+        {
+            List<AssetReference> clips = GameIntroDatabase.instance.spiderwebsEncouragementClips;
+            AssetReference clip = clips[Random.Range(0, clips.Count)];
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd.coroutine;
+            TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Spindle, clip);
+            //yield return new WaitForSeconds(cd.GetResult() + 1f);
+        }
+        yield return new WaitForSeconds(1f);
         
         StartCoroutine(StartGame());
     }
@@ -291,11 +314,11 @@ public class NewSpiderGameManager : MonoBehaviour
         spider.success();
         yield return new WaitForSeconds(1f);
         webber.gameObject.SetActive(true);
-        if(selectedIndex == 0)
+        if (selectedIndex == 0)
         {
             webber.grab1();
         }
-        else if(selectedIndex == 1)
+        else if (selectedIndex == 1)
         {
             webber.grab2();
         }
@@ -308,7 +331,7 @@ public class NewSpiderGameManager : MonoBehaviour
             webber.grab4();
         }
         yield return new WaitForSeconds(.5f);
-        
+
         coin.ToggleVisibility(false, true);
         yield return new WaitForSeconds(.15f);
         ball.UpgradeChest();
@@ -317,12 +340,12 @@ public class NewSpiderGameManager : MonoBehaviour
         webber.gameObject.SetActive(false);
 
         StartCoroutine(CoinsDown());
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
 
         // play win tune
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
 
         // AI stuff
         AIData(StudentInfoSystem.GetCurrentProfile());
@@ -338,7 +361,7 @@ public class NewSpiderGameManager : MonoBehaviour
         playerData.gameBeforeLastPlayed = playerData.lastGamePlayed;
         playerData.lastGamePlayed = GameType.SpiderwebGame;
         playerData.starsSpiderweb = CalculateStars() + playerData.starsSpiderweb;
-        playerData.totalStarsSpiderweb = 3 + playerData.totalStarsSpiderweb;
+        playerData.spiderwebPlayed++;
 
         // save to SIS
         StudentInfoSystem.SaveStudentPlayerData();
@@ -348,23 +371,22 @@ public class NewSpiderGameManager : MonoBehaviour
     {
         ResetCoins();
         bug.goToOrigin();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
-        SetCoins();
         bug.StartToWeb();
         yield return new WaitForSeconds(1.5f);
 
+        // bring coins up
+        SetCoins();
+        StartCoroutine(CoinsUp());
+
         web.webSmall();
         bug.BugBounce();
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
 
         // play audio
         bug.PlayPhonemeAudio();
-        yield return new WaitForSeconds(1f);
-
-        // bring coins up
-        StartCoroutine(CoinsUp());
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         // place menu button
         SettingsManager.instance.ToggleMenuButtonActive(true);
@@ -384,11 +406,15 @@ public class NewSpiderGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // play tutorial audio
-        List<AudioClip> clips = new List<AudioClip>();
+        List<AssetReference> clips = new List<AssetReference>();
         clips.Add(GameIntroDatabase.instance.spiderwebsIntro1);
         clips.Add(GameIntroDatabase.instance.spiderwebsIntro2);
+        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[0]));
+        yield return cd.coroutine;
+        CoroutineWithData<float> cd0 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clips[1]));
+        yield return cd0.coroutine;
         TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Spindle, clips);
-        yield return new WaitForSeconds(clips[0].length + clips[1].length + 1f);
+        yield return new WaitForSeconds(cd.GetResult() + cd0.GetResult() + 1f);
 
         // place menu button
         SettingsManager.instance.ToggleMenuButtonActive(true);
@@ -399,11 +425,15 @@ public class NewSpiderGameManager : MonoBehaviour
     private IEnumerator PlayTutorialGame()
     {
         ResetCoins();
-        bug.goToOrigin();
-        yield return new WaitForSeconds(1f);
-
         SetCoins();
-        bug.StartToWeb();
+        if (tutorialEvent == 1)
+        {
+            bug.StartToWeb(BugType.Bee);
+        }
+        else
+        {
+            bug.StartToWeb();
+        }
         yield return new WaitForSeconds(1.5f);
 
         web.webSmall();
@@ -415,7 +445,7 @@ public class NewSpiderGameManager : MonoBehaviour
             // turn on raycaster
             SpiderRayCaster.instance.isOn = true;
             // make bug glow
-            ImageGlowController.instance.SetImageGlow(bug.image, true, GlowValue.glow_1_00);
+            bug.ToggleGlow(true);
         }
         else
         {
@@ -461,12 +491,12 @@ public class NewSpiderGameManager : MonoBehaviour
 
         // play web grab sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WebWhip, 0.5f);
-        
-        if(selectedIndex == 0)
+
+        if (selectedIndex == 0)
         {
             webber.grab1();
         }
-        else if(selectedIndex == 1)
+        else if (selectedIndex == 1)
         {
             webber.grab2();
         }
@@ -479,7 +509,7 @@ public class NewSpiderGameManager : MonoBehaviour
             webber.grab4();
         }
         yield return new WaitForSeconds(.5f);
-        
+
         coin.ToggleVisibility(false, true);
         yield return new WaitForSeconds(.15f);
         ball.UpgradeChest();
@@ -493,19 +523,23 @@ public class NewSpiderGameManager : MonoBehaviour
         if (tutorialEvent == 1)
         {
             // play tutorial audio
-            AudioClip clip = GameIntroDatabase.instance.spiderwebsIntro5;
+            AssetReference clip = GameIntroDatabase.instance.spiderwebsIntro5;
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd.coroutine;
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Spindle, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
+            yield return new WaitForSeconds(cd.GetResult() + 1f);
         }
-        else
+        else 
         {
             // play encouragement popup
-            List<AudioClip> clips = GameIntroDatabase.instance.spiderwebsEncouragementClips;
-            AudioClip clip = clips[Random.Range(0, clips.Count)];
+            List<AssetReference> clips = GameIntroDatabase.instance.spiderwebsEncouragementClips;
+            AssetReference clip = clips[Random.Range(0, clips.Count)];
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(clip));
+            yield return cd.coroutine;
             TutorialPopupController.instance.NewPopup(TutorialPopupController.instance.bottomRight.position, false, TalkieCharacter.Spindle, clip);
-            yield return new WaitForSeconds(clip.length + 1f);
+            yield return new WaitForSeconds(cd.GetResult() + 1f);
         }
-        
+
         StartCoroutine(PlayTutorialGame());
     }
 
@@ -517,11 +551,11 @@ public class NewSpiderGameManager : MonoBehaviour
         spider.success();
         yield return new WaitForSeconds(1f);
         webber.gameObject.SetActive(true);
-        if(selectedIndex == 0)
+        if (selectedIndex == 0)
         {
             webber.grab1();
         }
-        else if(selectedIndex == 1)
+        else if (selectedIndex == 1)
         {
             webber.grab2();
         }
@@ -534,7 +568,7 @@ public class NewSpiderGameManager : MonoBehaviour
             webber.grab4();
         }
         yield return new WaitForSeconds(.5f);
-        
+
         coin.ToggleVisibility(false, true);
         yield return new WaitForSeconds(.15f);
         ball.UpgradeChest();
@@ -596,11 +630,11 @@ public class NewSpiderGameManager : MonoBehaviour
             if (!playTutorial)
                 type = GetUnusedWord();
             else
-            {   
+            {
                 type = tutorialLists[tutorialEvent].list[i];
                 i++;
             }
-            
+
             coin.SetActionWordValue(type);
             coin.ToggleVisibility(true, true);
         }
@@ -649,10 +683,12 @@ public class NewSpiderGameManager : MonoBehaviour
             Vector2 bouncePos = pos;
             bouncePos.y += 0.5f;
 
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 0.8f + (i * 0.1f));
+
             coins[i].GetComponent<LerpableObject>().LerpPosition(bouncePos, 0.2f, false);
             yield return new WaitForSeconds(0.2f);
             coins[i].GetComponent<LerpableObject>().LerpPosition(pos, 0.2f, false);
-            yield return new WaitForSeconds(0.05f);
         }
     }
 
@@ -664,6 +700,9 @@ public class NewSpiderGameManager : MonoBehaviour
             Vector2 bouncePos = pos;
             bouncePos.y += 0.5f;
 
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", 1.2f - (i * 0.1f));
+
             coins[i].GetComponent<LerpableObject>().LerpPosition(bouncePos, 0.2f, false);
             yield return new WaitForSeconds(0.2f);
             coins[i].GetComponent<LerpableObject>().LerpPosition(pos, 0.2f, false);
@@ -672,9 +711,11 @@ public class NewSpiderGameManager : MonoBehaviour
 
     private void ResetCoins()
     {
-        for (int i = 0; i < coins.Count; i++)
+        int i = 0;
+        foreach (var coin in coins)
         {
-            coins[i].transform.position = coinPosOffScreen[i].position;
+            coin.GetComponent<LerpableObject>().LerpPosToTransform(coinPosOffScreen[i], 0.2f, false);
+            i++;
         }
     }
 
@@ -683,7 +724,7 @@ public class NewSpiderGameManager : MonoBehaviour
         int i = 0;
         foreach (var coin in coins)
         {
-            coin.GetComponent<LerpableObject>().LerpPosition(coinPosOnScreen[i].position, 0.25f, false);
+            coin.GetComponent<LerpableObject>().LerpPosToTransform(coinPosOnScreen[i], 0.2f, false);
             i++;
         }
     }

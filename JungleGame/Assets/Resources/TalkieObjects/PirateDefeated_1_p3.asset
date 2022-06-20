@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: ec93acdfc6a2ee44eb5c2d64ebd8c402, type: 3}
+    audioClip:
+      m_AssetGUID: ec93acdfc6a2ee44eb5c2d64ebd8c402
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Ollie_11_T1
     audioString: "Wow\u2026"
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 13761309e1c22e445b3bc1e7f8f97b6f, type: 3}
+    audioClip:
+      m_AssetGUID: 13761309e1c22e445b3bc1e7f8f97b6f
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Ollie_11_T2
     audioString: 'The Prince seems kinda mean... '
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 22f23d177f8240245a592b36dbed3543, type: 3}
+    audioClip:
+      m_AssetGUID: 22f23d177f8240245a592b36dbed3543
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Ollie_11_T3
     audioString: Kinda mean.
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 1b212ea14c72d8e4896e1071c4761fe3, type: 3}
+    audioClip:
+      m_AssetGUID: 1b212ea14c72d8e4896e1071c4761fe3
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Wally_12_T1
     audioString: "He\u2019s a handful that\u2019s for sure."
   - endTalkieAfterThisSegment: 0
@@ -99,7 +115,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 30eb621cdaf53ce448804b766609e6cc, type: 3}
+    audioClip:
+      m_AssetGUID: 30eb621cdaf53ce448804b766609e6cc
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Ollie_13_T1
     audioString: I worry for this kingdom...
   - endTalkieAfterThisSegment: 0
@@ -115,7 +135,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 219a57b6acc56db41b242c0b78d03886, type: 3}
+    audioClip:
+      m_AssetGUID: 219a57b6acc56db41b242c0b78d03886
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Ollie_13_T2
     audioString: this kingdom
   - endTalkieAfterThisSegment: 0
@@ -131,7 +155,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 1ff35b7f13d51ff478c0e65758c76a84, type: 3}
+    audioClip:
+      m_AssetGUID: 1ff35b7f13d51ff478c0e65758c76a84
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Red_14_T1
     audioString: Try not to worry Ollie
   - endTalkieAfterThisSegment: 0
@@ -147,7 +175,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 24a43c5c30ec19f479cc437787e436d4, type: 3}
+    audioClip:
+      m_AssetGUID: 24a43c5c30ec19f479cc437787e436d4
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Red_14_T2
     audioString: We have a plan!
   - endTalkieAfterThisSegment: 0
@@ -163,7 +195,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 6dc6566a4b47db343bfc12cac1e05097, type: 3}
+    audioClip:
+      m_AssetGUID: 6dc6566a4b47db343bfc12cac1e05097
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Red_14_T3
     audioString: "We\u2019re trying to remind the Prince to do what\u2019s right!"
   - endTalkieAfterThisSegment: 0
@@ -179,7 +215,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 78d7dfe537653674dadcc89dc432ae3e, type: 3}
+    audioClip:
+      m_AssetGUID: 78d7dfe537653674dadcc89dc432ae3e
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Wally_15_T1
     audioString: Yeah,  put your faith in us.
   - endTalkieAfterThisSegment: 0
@@ -195,7 +235,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: b2fd68eecb2f1144484f82fe3d7f83f5, type: 3}
+    audioClip:
+      m_AssetGUID: b2fd68eecb2f1144484f82fe3d7f83f5
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Ollie_16_T1
     audioString: 'If you say so. '
   - endTalkieAfterThisSegment: 0
@@ -211,7 +255,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 8af3fce3a3a20f74c90f4f3fd94824e8, type: 3}
+    audioClip:
+      m_AssetGUID: 8af3fce3a3a20f74c90f4f3fd94824e8
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Ollie_16_T2
     audioString: 'Say so. '
   - endTalkieAfterThisSegment: 0
@@ -227,7 +275,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 069bc5be9d8358c46a8ad109f72c63cb, type: 3}
+    audioClip:
+      m_AssetGUID: 069bc5be9d8358c46a8ad109f72c63cb
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Ollie_16_T3
     audioString: In any case,  thank you for helping me and my ship!
   - endTalkieAfterThisSegment: 0
@@ -243,7 +295,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 7e6122f378a085b409c8ab6894703dab, type: 3}
+    audioClip:
+      m_AssetGUID: 7e6122f378a085b409c8ab6894703dab
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Ollie_16_T4
     audioString: 'Come back anytime! '
   - endTalkieAfterThisSegment: 0
@@ -259,7 +315,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 14ba68852d37a26448dd958632ad99b4, type: 3}
+    audioClip:
+      m_AssetGUID: 14ba68852d37a26448dd958632ad99b4
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Ollie_16_T5
     audioString: "You\u2019ll always be my crew! "
   - endTalkieAfterThisSegment: 0
@@ -275,7 +335,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 51f8ee584f6b47c41a50bbfb2260cad2, type: 3}
+    audioClip:
+      m_AssetGUID: 51f8ee584f6b47c41a50bbfb2260cad2
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Ollie_16_T6
     audioString: My crew!
   - endTalkieAfterThisSegment: 0
@@ -291,7 +355,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 9813ffdcd24fa0e46ada24cc75c4eeba, type: 3}
+    audioClip:
+      m_AssetGUID: 9813ffdcd24fa0e46ada24cc75c4eeba
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Red_17_T1
     audioString: "You\u2019re very welcome!"
   - endTalkieAfterThisSegment: 0
@@ -307,7 +375,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 3
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 14168e50d6171324f800c41e7b906655, type: 3}
+    audioClip:
+      m_AssetGUID: 14168e50d6171324f800c41e7b906655
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Red_17_T2
     audioString: "We\u2019ll come back soon! "
   - endTalkieAfterThisSegment: 0
@@ -323,7 +395,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 810144b6feabdb14eaadfe7088857e03, type: 3}
+    audioClip:
+      m_AssetGUID: 810144b6feabdb14eaadfe7088857e03
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Wally_18_T1
     audioString: 'Alright Explorer! Let''s Move out! '
   - endTalkieAfterThisSegment: 0
@@ -339,6 +415,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: ada5809252561b146b36ad4a9f147fed, type: 3}
+    audioClip:
+      m_AssetGUID: ada5809252561b146b36ad4a9f147fed
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_2_5_Red_19_T1
     audioString: Onwards!

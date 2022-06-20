@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: cube_cw_obj
   m_EditorClassIdentifier: 
   word: cube
-  audio: {fileID: 8300000, guid: e017850d4a737804db3acc5274454671, type: 3}
+  audio:
+    m_AssetGUID: e017850d4a737804db3acc5274454671
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: f36f381470de2e546894e04f5364f02e, type: 3}
-  elkoninList: 170000000b00000016000000000000000000000000000000
+  elkoninList: 180000000b00000017000000000000000000000000000000
   elkoninCount: 3
   set: 10

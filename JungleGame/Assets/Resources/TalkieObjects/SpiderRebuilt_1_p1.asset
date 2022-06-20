@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 4f641af692fe11a469cc91ced9cbf743, type: 3}
+    audioClip:
+      m_AssetGUID: 4f641af692fe11a469cc91ced9cbf743
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_3_Red_1_T1
     audioString: 'There we go! '
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 45df7d3fe9ea99143a5519581ce8f60a, type: 3}
+    audioClip:
+      m_AssetGUID: 45df7d3fe9ea99143a5519581ce8f60a
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_3_Red_1_T2
     audioString: 'Good as new! '
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: f99d42b1a069e9045acd331d8c8d9a8d, type: 3}
+    audioClip:
+      m_AssetGUID: f99d42b1a069e9045acd331d8c8d9a8d
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_3_Wally_1_T1
     audioString: It looks great.
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 46910bfa4853c9f43b9535005a260cbf, type: 3}
+    audioClip:
+      m_AssetGUID: 46910bfa4853c9f43b9535005a260cbf
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_3_Spindle_2_T1
     audioString: 'WOW! '
   - endTalkieAfterThisSegment: 0
@@ -99,7 +115,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: f6651827eb259b6448280e2e3690b4f9, type: 3}
+    audioClip:
+      m_AssetGUID: f6651827eb259b6448280e2e3690b4f9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_3_Spindle_2_T2
     audioString: 'It looks amazing! I also feel so much better! '
   - endTalkieAfterThisSegment: 0
@@ -115,7 +135,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 8d5df33d48cdecb4286d6ccaf2c6fd71, type: 3}
+    audioClip:
+      m_AssetGUID: 8d5df33d48cdecb4286d6ccaf2c6fd71
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_3_Spindle_2_T3
     audioString: T-thank you so much for your help!
   - endTalkieAfterThisSegment: 0
@@ -131,7 +155,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 8825989bb61002941b338ac9614e2e4e, type: 3}
+    audioClip:
+      m_AssetGUID: 8825989bb61002941b338ac9614e2e4e
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_3_Red_3_T1
     audioString: I'm so glad we could help you feel better,  Spindle!
   - endTalkieAfterThisSegment: 0
@@ -147,7 +175,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 5d2c06eaea6b5604b9eba12c485c94d9, type: 3}
+    audioClip:
+      m_AssetGUID: 5d2c06eaea6b5604b9eba12c485c94d9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_3_Wally_4_T1
     audioString: I second that!
   - endTalkieAfterThisSegment: 0
@@ -163,7 +195,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 4
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 3ebbf01a9045a06469e3108a74ab3329, type: 3}
+    audioClip:
+      m_AssetGUID: 3ebbf01a9045a06469e3108a74ab3329
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_3_Red_5_T1
     audioString: Have you thought of any stories,  Darwin?
   - endTalkieAfterThisSegment: 0
@@ -179,7 +215,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: cbd5e0273f59d4641b2f980332dd83df, type: 3}
+    audioClip:
+      m_AssetGUID: cbd5e0273f59d4641b2f980332dd83df
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_3_Darwin_6_T1
     audioString: Oh!
   - endTalkieAfterThisSegment: 0
@@ -195,7 +235,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 4b1483e61a7e63548aa58889891b31ee, type: 3}
+    audioClip:
+      m_AssetGUID: 4b1483e61a7e63548aa58889891b31ee
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_3_Darwin_6_T2
     audioString: 'I have! '
   - endTalkieAfterThisSegment: 0
@@ -211,6 +255,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 8e014bf9b4381c94cb8a624c88539e64, type: 3}
+    audioClip:
+      m_AssetGUID: 8e014bf9b4381c94cb8a624c88539e64
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: B_1_3_Darwin_6_T3
     audioString: I need to look up ahead to find Julius!

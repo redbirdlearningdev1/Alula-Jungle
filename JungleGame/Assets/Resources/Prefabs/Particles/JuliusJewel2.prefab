@@ -121,7 +121,7 @@ MonoBehaviour:
   forceRange: {x: 100, y: 200}
   addForceSidedways: 0
   torqueRange: {x: -0.25, y: 0.25}
-  scaleRange: {x: 1, y: 2}
+  scaleRange: {x: 2, y: 3}
   reverseObject: 0
   isBug: 0
   bugRotateTime: {x: 0, y: 0}

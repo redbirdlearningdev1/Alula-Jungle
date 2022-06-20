@@ -35,6 +35,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: e5529057820bc8a4c9623e91d77f6960, type: 3}
+    audioClip:
+      m_AssetGUID: e5529057820bc8a4c9623e91d77f6960
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_0_1_Wally_3_T1
     audioString: Let's get going.

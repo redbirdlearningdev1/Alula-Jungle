@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: hear_cw_obj
   m_EditorClassIdentifier: 
   word: hear
-  audio: {fileID: 8300000, guid: b61dd6d74353f5c4aa00db4dc4336169, type: 3}
+  audio:
+    m_AssetGUID: b61dd6d74353f5c4aa00db4dc4336169
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: b06be376d08454e439b63c65411a4b21, type: 3}
-  elkoninList: 1c0000000000000000000000000000000000000000000000
+  elkoninList: 1d0000001000000000000000000000000000000000000000
   elkoninCount: 2
-  set: 0
+  set: 15

@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 7c3517fbcc8ca66459c36ad752cf2031, type: 3}
+    audioClip:
+      m_AssetGUID: 7c3517fbcc8ca66459c36ad752cf2031
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_2_4_Red_11_T1
     audioString: "That was\u2026"
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 9844ae55c5598294aab9de03af5abcec, type: 3}
+    audioClip:
+      m_AssetGUID: 9844ae55c5598294aab9de03af5abcec
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_2_4_Red_11_T2
     audioString: Strange?
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 715e90f4d3ac7c64785089f746006cb2, type: 3}
+    audioClip:
+      m_AssetGUID: 715e90f4d3ac7c64785089f746006cb2
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_2_4_Wally_12_T1
     audioString: Yeah that was.
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 218609dc3fc962d4584cfdef63a8111b, type: 3}
+    audioClip:
+      m_AssetGUID: 218609dc3fc962d4584cfdef63a8111b
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_2_4_Red_13_T1
     audioString: It appears the monkey guards are a bit off as well.
   - endTalkieAfterThisSegment: 0
@@ -99,7 +115,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 5712eb30f9a601b45bef3cf03b7531ee, type: 3}
+    audioClip:
+      m_AssetGUID: 5712eb30f9a601b45bef3cf03b7531ee
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_2_4_Wally_14_T1
     audioString: I thought so too.
   - endTalkieAfterThisSegment: 0
@@ -115,7 +135,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: fc2453a34cca4394fb1c9cc1e7583cfd, type: 3}
+    audioClip:
+      m_AssetGUID: fc2453a34cca4394fb1c9cc1e7583cfd
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_2_4_Red_15_T1
     audioString: At any rate,  we should move forward.
   - endTalkieAfterThisSegment: 0
@@ -131,7 +155,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 26a29e61444ff4445b8a47f8f3f4b4f8, type: 3}
+    audioClip:
+      m_AssetGUID: 26a29e61444ff4445b8a47f8f3f4b4f8
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_2_4_Red_15_T2
     audioString: Alright Explorer!
   - endTalkieAfterThisSegment: 0
@@ -147,7 +175,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 302490ec84b4cf54186bed3d5b006770, type: 3}
+    audioClip:
+      m_AssetGUID: 302490ec84b4cf54186bed3d5b006770
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_2_4_Red_15_T3
     audioString: "Let\u2019s go!"
   - endTalkieAfterThisSegment: 0
@@ -163,6 +195,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: e4d74c4f744dbc84aaeacb0da2286499, type: 3}
+    audioClip:
+      m_AssetGUID: e4d74c4f744dbc84aaeacb0da2286499
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_2_4_Wally_16_T1
     audioString: Right behind you.

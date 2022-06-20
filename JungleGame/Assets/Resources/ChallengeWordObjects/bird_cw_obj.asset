@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: bird_cw_obj
   m_EditorClassIdentifier: 
   word: bird
-  audio: {fileID: 8300000, guid: 80b6bd9342f8a804aa0fea301a87eef3, type: 3}
+  audio:
+    m_AssetGUID: 80b6bd9342f8a804aa0fea301a87eef3
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 969ace6c88ea21a478075bdf0eac2436, type: 3}
-  elkoninList: 160000000f00000019000000000000000000000000000000
+  elkoninList: 170000000f0000001a000000000000000000000000000000
   elkoninCount: 3
   set: 14

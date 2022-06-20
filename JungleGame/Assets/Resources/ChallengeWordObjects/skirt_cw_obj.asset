@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: skirt_cw_obj
   m_EditorClassIdentifier: 
   word: skirt
-  audio: {fileID: 8300000, guid: 30fddaaaa5408794ab5b631e79a9bc3a, type: 3}
+  audio:
+    m_AssetGUID: 30fddaaaa5408794ab5b631e79a9bc3a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 9fafc5b2fa9e44e4ba703c9c9e53bce6, type: 3}
-  elkoninList: 250000001e0000000f000000270000000000000000000000
+  elkoninList: 260000001f0000000f000000280000000000000000000000
   elkoninCount: 4
   set: 14

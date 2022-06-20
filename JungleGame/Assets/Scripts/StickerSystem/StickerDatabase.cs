@@ -13,10 +13,13 @@ public class StickerDatabase : MonoBehaviour
     public List<Sticker> legendaryStickers;
 
     [Header("Rarities")]
-    public int commonRarity;
-    public int uncommonRarity;
-    public int rareRarity;
-    public int legendaryRarity;
+    public static int commonRarity = 50;
+    public static int uncommonRarity = 30;
+    public static int rareRarity = 15;
+    public static int legendaryRarity = 5;
+
+    [Header("Legendary Pity Values")]
+    public static int legendaryPityValue = 20; // every 20 rolls should guarantee a legendary sticker
 
     void Awake()
     {
@@ -26,6 +29,8 @@ public class StickerDatabase : MonoBehaviour
 
     public Sticker RollForSticker()
     {
+        StudentPlayerData currentPlayerData = StudentInfoSystem.GetCurrentProfile();
+
         int totalRarity = commonRarity + uncommonRarity + rareRarity + legendaryRarity;
         int index = Random.Range(0, totalRarity);
 
@@ -51,6 +56,24 @@ public class StickerDatabase : MonoBehaviour
         {
             randomSticker = GetRandomSticker(StickerRarity.Legendary);
         }
+        
+        // pity system
+        if (randomSticker.rarity != StickerRarity.Legendary)
+        {
+            currentPlayerData.stickerPityCounter++;
+
+            // check if reached pity value - if so unlock legendary sticker
+            if (currentPlayerData.stickerPityCounter >= legendaryPityValue)
+            {
+                currentPlayerData.stickerPityCounter = 0;
+                randomSticker = GetRandomSticker(StickerRarity.Legendary);
+            }
+        }
+        else
+        {
+            // reset counter if rolled a legendary sticker naturally
+            currentPlayerData.stickerPityCounter = 0;
+        }
 
         if (randomSticker != null)
         {
@@ -58,19 +81,19 @@ public class StickerDatabase : MonoBehaviour
             switch (randomSticker.rarity)
             {
                 case StickerRarity.Common:
-                    StudentInfoSystem.GetCurrentProfile().commonStickerUnlocked[randomSticker.id - 1] = true;
+                    currentPlayerData.commonStickerUnlocked[randomSticker.id - 1] = true;
                     break;
 
                 case StickerRarity.Uncommon:
-                    StudentInfoSystem.GetCurrentProfile().uncommonStickerUnlocked[randomSticker.id - 1] = true;
+                    currentPlayerData.uncommonStickerUnlocked[randomSticker.id - 1] = true;
                     break;
 
                 case StickerRarity.Rare:
-                    StudentInfoSystem.GetCurrentProfile().rareStickerUnlocked[randomSticker.id - 1] = true;
+                    currentPlayerData.rareStickerUnlocked[randomSticker.id - 1] = true;
                     break;
 
                 case StickerRarity.Legendary:
-                    StudentInfoSystem.GetCurrentProfile().legendaryStickerUnlocked[randomSticker.id - 1] = true;
+                    currentPlayerData.legendaryStickerUnlocked[randomSticker.id - 1] = true;
                     break;
             }
             StudentInfoSystem.SaveStudentPlayerData();

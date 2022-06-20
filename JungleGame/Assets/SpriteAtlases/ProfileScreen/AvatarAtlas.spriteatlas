@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AvatarAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 52
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 29
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 79fac798de28b8b4e97d896e0f1f9097, type: 3}
+    totalSpriteSurfaceArea: 7247680
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 6506ef2055fb0cd47abe872840ac6c2a, type: 3}
+  - {fileID: 21300000, guid: 65113d406cda8da4aab2791b9d213ad8, type: 3}
+  - {fileID: 21300000, guid: d405a8602a62b6e45aa30dd2aeffbd84, type: 3}
+  - {fileID: 21300000, guid: 343fe8a0d6e6d8f4fb1f0cb47551007c, type: 3}
+  - {fileID: 21300000, guid: 050e1334fb0278248a9572bfe6607864, type: 3}
+  - {fileID: 21300000, guid: 001d2f66da6005a47a2a0149e411fc86, type: 3}
+  - {fileID: 21300000, guid: 89a4b237e34fece48b8eea3bd5ef06f9, type: 3}
+  - {fileID: 21300000, guid: bc143b18aa51261449d806956aff0ae5, type: 3}
+  - {fileID: 21300000, guid: da3f7e78289a2d8469c82daacaa6333a, type: 3}
+  - {fileID: 21300000, guid: bb9b948935d95d54b85533d221ed4abd, type: 3}
+  - {fileID: 21300000, guid: 6e05f7d9699cba243ab531a9f01b4836, type: 3}
+  - {fileID: 21300000, guid: 0f5e0f2b93138474594d36bb020ad3fb, type: 3}
+  - {fileID: 21300000, guid: 549747dbc6c25a146bf524fb0b27dc6a, type: 3}
+  - {fileID: 21300000, guid: 0aec95fb08793a74eabeb998db06dfd9, type: 3}
+  - {fileID: 21300000, guid: 9ce9ad7c557bd774eb461407d55dd863, type: 3}
+  - {fileID: 21300000, guid: 674c6e4e71be88e4cbc35de5ded44952, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - AvatarLester
+  - AvatarDarwin
+  - AvatarCeleste
+  - AvatarSylvie
+  - AvatarJulius1
+  - AvatarClogg
+  - AvatarEmpty
+  - AvatarTaxi
+  - AvatarBrutus
+  - AvatarRed
+  - AvatarSpindle
+  - AvatarMarcus
+  - AvatarBubbles
+  - AvatarOllie
+  - AvatarJulius2
+  - AvatarWally
+  m_RenderDataMap: {}
+  m_Tag: AvatarAtlas
+  m_IsVariant: 0

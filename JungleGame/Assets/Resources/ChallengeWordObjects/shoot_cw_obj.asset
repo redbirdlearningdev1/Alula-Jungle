@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: shoot_cw_obj
   m_EditorClassIdentifier: 
   word: shoot
-  audio: {fileID: 8300000, guid: 4b27444a006f85744941b20d3f988ee4, type: 3}
+  audio:
+    m_AssetGUID: 4b27444a006f85744941b20d3f988ee4
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 36aac786516a2f14394a28fc427f3988, type: 3}
-  elkoninList: 260000000b00000027000000000000000000000000000000
+  elkoninList: 270000000b00000028000000000000000000000000000000
   elkoninCount: 3
   set: 10

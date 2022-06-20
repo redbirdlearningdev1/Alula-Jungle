@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: mood_cw_obj
   m_EditorClassIdentifier: 
   word: mood
-  audio: {fileID: 8300000, guid: 52e5c2db72fd3ba47b040c130ed69474, type: 3}
+  audio:
+    m_AssetGUID: 52e5c2db72fd3ba47b040c130ed69474
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: c3c6cd40cd0b432429ac248133f15290, type: 3}
-  elkoninList: 200000000b00000019000000000000000000000000000000
+  elkoninList: 210000000b0000001a000000000000000000000000000000
   elkoninCount: 3
   set: 10

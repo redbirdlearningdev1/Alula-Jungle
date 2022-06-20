@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: globe_cw_obj
   m_EditorClassIdentifier: 
   word: globe
-  audio: {fileID: 8300000, guid: 4e00a7bdc2bcb1442a7978f3af699c4e, type: 3}
+  audio:
+    m_AssetGUID: 4e00a7bdc2bcb1442a7978f3af699c4e
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: bb248692d0e37184293feae5a4526d9c, type: 3}
-  elkoninList: 1b0000001f0000000a000000160000000000000000000000
+  elkoninList: 1c000000200000000a000000170000000000000000000000
   elkoninCount: 4
   set: 9

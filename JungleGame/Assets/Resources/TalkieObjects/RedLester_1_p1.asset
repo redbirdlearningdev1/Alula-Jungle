@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: e3ea2dbaa2651db498e605e2743efa06, type: 3}
+    audioClip:
+      m_AssetGUID: e3ea2dbaa2651db498e605e2743efa06
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_3a_Red_1_T1
     audioString: Wow! Look at all the coins you received!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: e1be96a48e5bf404492055e4338261c9, type: 3}
+    audioClip:
+      m_AssetGUID: e1be96a48e5bf404492055e4338261c9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_3a_Red_1_T2
     audioString: Hey!
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 631bc7cbae17c334b87620b064fce990, type: 3}
+    audioClip:
+      m_AssetGUID: 631bc7cbae17c334b87620b064fce990
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_3a_Red_1_T3
     audioString: What's that button up there
   - endTalkieAfterThisSegment: 0
@@ -83,6 +95,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 93e07783e4977884a9975034ef138352, type: 3}
+    audioClip:
+      m_AssetGUID: 93e07783e4977884a9975034ef138352
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: P_1_3a_Red_2_T1
     audioString: Tap on it and let's see what happens!

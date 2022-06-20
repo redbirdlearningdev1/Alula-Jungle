@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: dog_cw_obj
   m_EditorClassIdentifier: 
   word: dog
-  audio: {fileID: 8300000, guid: 4fb228def5e513b40b9d69f465e507eb, type: 3}
+  audio:
+    m_AssetGUID: 4fb228def5e513b40b9d69f465e507eb
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 40c6443ecb23f7948bd93cc901d9af2f, type: 3}
-  elkoninList: 19000000050000001b000000000000000000000000000000
+  elkoninList: 1a000000050000001c000000000000000000000000000000
   elkoninCount: 3
   set: 4

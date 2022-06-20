@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 132569cfb16a950458a915c115cdaa1b, type: 3}
+    audioClip:
+      m_AssetGUID: 132569cfb16a950458a915c115cdaa1b
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_2_3_Red_7_T1
     audioString: Alright Explorer!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 8ec959df4ff9e3d4e83c2e5ea614960c, type: 3}
+    audioClip:
+      m_AssetGUID: 8ec959df4ff9e3d4e83c2e5ea614960c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_2_3_Red_7_T2
     audioString: "Let\u2019s move forward!"
   - endTalkieAfterThisSegment: 0
@@ -67,6 +75,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 4
     activeCharacter: 3
-    audioClip: {fileID: 0}
+    audioClip:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RedWally_Oh
     audioString: Oh!

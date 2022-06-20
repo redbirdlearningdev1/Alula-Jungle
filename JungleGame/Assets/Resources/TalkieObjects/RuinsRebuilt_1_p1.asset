@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: a170dd7525aae1848a966026470812a7, type: 3}
+    audioClip:
+      m_AssetGUID: a170dd7525aae1848a966026470812a7
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_2_Red_1_T1
     audioString: 'Wow! '
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 6bf3dc0632ea24e408db9d7343023e06, type: 3}
+    audioClip:
+      m_AssetGUID: 6bf3dc0632ea24e408db9d7343023e06
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_2_Red_1_T2
     audioString: These ruins look incredible!
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 5171cef8e39f5284bbba048aa1aa0faf, type: 3}
+    audioClip:
+      m_AssetGUID: 5171cef8e39f5284bbba048aa1aa0faf
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_2_Wally_2_T1
     audioString: You can say that again!
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: bea6ae2495dfbbb43a3ac12fa1a18669, type: 3}
+    audioClip:
+      m_AssetGUID: bea6ae2495dfbbb43a3ac12fa1a18669
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_2_Red_3_T1
     audioString: 'Alright Explorer! '
   - endTalkieAfterThisSegment: 0
@@ -99,7 +115,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: c8530c5f9e0c0ac42b42471daa64fe8f, type: 3}
+    audioClip:
+      m_AssetGUID: c8530c5f9e0c0ac42b42471daa64fe8f
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: EJ_2_2_Red_3_T2
     audioString: "Let\u2019s venture ahead-"
   - endTalkieAfterThisSegment: 0
@@ -115,6 +135,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 3
-    audioClip: {fileID: 0}
+    audioClip:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RedWally_Huh
     audioString: Huh?!

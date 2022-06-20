@@ -6,9 +6,9 @@ using UnityEngine;
 public class StudentPlayerData
 {
     public string version;
-    public StudentIndex studentIndex; // differentiate btwn student profiles
+    public StudentIndex studentIndex; // differentiate between student profiles
     public bool active; // bool to determine if someone has created this student player
-    public bool mostRecentProfile; // is this the most recently opend profile?
+    public bool mostRecentProfile; // is this the most recently opened profile?
     public string name; // name of student
     public int minigamesPlayed;
     
@@ -26,15 +26,14 @@ public class StudentPlayerData
     public int starsPirate;
     public int starsSpiderweb;
 
-    public int totalStarsFrogger;
-    public int totalStarsSeashell;
-    public int totalStarsRummage;
-    public int totalStarsTurntables;
-    public int totalStarsPirate;
-    public int totalStarsSpiderweb;
+    public int froggerPlayed;
+    public int seashellPlayed;
+    public int rummagePlayed;
+    public int turntablesPlayed;
+    public int piratePlayed;
+    public int spiderwebPlayed;
 
-    // Track of Stars in Challengegame
-    
+    // Track of Stars in Challengegames
     public int starsBlend;
     public int starsSub;
     public int starsDel;
@@ -58,8 +57,19 @@ public class StudentPlayerData
     public ChallengeWord lastWordFaced;
     public WordPair lastWordPairFaced;
 
-    //public int totalStarsPotential;
     public int profileAvatar;
+
+    // challenge game rounds (used for stats and report page)
+    public List<ChallengeRoundData> blendData;
+    public List<ChallengeRoundData> subData;
+    public List<ChallengeRoundData> buildData;
+    public List<ChallengeRoundData> deleteData;
+    public List<ChallengeRoundData> TPCoinsData;
+    public List<ChallengeRoundData> TPPhotosData;
+    public List<ChallengeRoundData> passwordData;
+
+    // phoneme success rate (correct/total)
+    public List<PhonemeData> phonemeData;
 
     // coins
     public int goldCoins;
@@ -97,10 +107,19 @@ public class StudentPlayerData
     public StoryBeat currStoryBeat;
     public BoatEncounter currBoatEncounter;
     public bool unlockedStickerButton;
+
     public bool firstTimeLoseChallengeGame;
     public bool everyOtherTimeLoseChallengeGame;
+
+    public bool firstTimeLoseBossBattle;
+    public bool everyOtherTimeLoseBossBattle;
+    public int bossBattlePoints;
+    public GameType[] bossBattleGameQueue;
+
     public bool firstGuradsRoyalRumble;
     public List<ActionWordEnum> actionWordPool;
+
+    public bool clickedTaxiBird;
 
     // royal rumble data
     public bool royalRumbleActive;
@@ -114,6 +133,7 @@ public class StudentPlayerData
 
     // sticker data
     public List<InventoryStickerData> stickerInventory;
+    public int stickerPityCounter;
     // unlocked stickers
     public bool[] commonStickerUnlocked;
     public bool[] uncommonStickerUnlocked; 
@@ -141,7 +161,7 @@ public enum BoatEncounter
 
 public enum StudentIndex
 {
-    student_1, student_2, student_3
+    student_1, student_2, student_3, sticker_simulation_profile, game_simulation_profile
 }
 
 public enum StoryBeat
@@ -241,7 +261,14 @@ public enum StoryBeat
     Monkeys_challengeGame_3, // 81
     MonkeysDefeated, // 82
 
-    PalaceIntro, 
+    PalaceIntro,  // 83
+    PreBossBattle, // 84
+    BossBattle1, // 85
+    BossBattle2, // 86
+    BossBattle3, // 87
+    EndBossBattle, // 88
+
+    FinishedGame, // 89
 
     COUNT
 }
@@ -261,7 +288,8 @@ public enum Chapter
     chapter_3,
     chapter_4,
     chapter_5,
-    chapter_final
+    chapter_6,
+    game_complete
 }
 
 [System.Serializable]
@@ -499,4 +527,77 @@ public class StickerData
     public StickerRarity rarity;
     public int id;
     public Vector2 boardPos; // where on the board is it located ?
+    public Vector2 scale; // scale of sticker
+    public float zAngle; // rotation angle on z axis
+}
+
+/* 
+################################################
+#   CHALLENGE ROUND DATA
+################################################
+*/
+
+[System.Serializable]
+public class ChallengeRoundData
+{
+    public bool success;
+    public ChallengeWord challengeWord;
+    public int difficulty;
+    public System.DateTime dateTime;
+}
+
+/* 
+################################################
+#   PHONEME DATA
+################################################
+*/
+
+[System.Serializable]
+public class PhonemeData
+{
+    public ActionWordEnum actionWordEnum;
+    public ElkoninValue elkoninValue;
+    public List<bool> attempts;
+
+    public PhonemeData(ActionWordEnum _actionWordEnum, ElkoninValue _elkoninValue)
+    {
+        this.actionWordEnum = _actionWordEnum;
+        this.elkoninValue = _elkoninValue;
+        this.attempts = new List<bool>();
+    }
+
+    public float GetSuccessAllTime()
+    {
+        if (attempts.Count == 0)
+            return 0f;
+
+        int successCount = 0;
+        foreach (bool attempt in attempts)
+        {
+            if (attempt) successCount++;
+        }
+
+        float successPercent = (float)successCount / (float)attempts.Count;
+        return successPercent;
+    }
+
+
+    public float GetSuccessPrev10()
+    {
+        if (attempts.Count == 0)
+            return 0f;
+            
+        if (attempts.Count <= 10)
+            return GetSuccessAllTime();
+
+        int successCount = 0;
+        for (int i = 0; i < 10; i++)
+        {
+            if (attempts[attempts.Count - 1 - i])
+                successCount++;
+        }
+
+        float successPercent = (float)successCount / (float)attempts.Count;
+        return successPercent;
+    }
 }

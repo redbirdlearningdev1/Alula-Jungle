@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: tail_cw_obj
   m_EditorClassIdentifier: 
   word: tail
-  audio: {fileID: 8300000, guid: fe59439e632e5f54c8b99e730dd37907, type: 3}
+  audio:
+    m_AssetGUID: fe59439e632e5f54c8b99e730dd37907
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 901380ca8a5fd374a942a20531c8972d, type: 3}
-  elkoninList: 27000000070000001f000000000000000000000000000000
+  elkoninList: 280000000700000020000000000000000000000000000000
   elkoninCount: 3
   set: 6

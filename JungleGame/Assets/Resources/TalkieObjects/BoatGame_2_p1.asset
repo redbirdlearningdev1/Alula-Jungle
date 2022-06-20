@@ -27,7 +27,7 @@ MonoBehaviour:
     onYesGoto: 0
     onNoGoto: 0
     leftCharacter: 1
-    leftEmotionNum: 5
+    leftEmotionNum: 4
     leftMouthEnum: 1
     leftEyesEnum: 2
     rightCharacter: 0
@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 95196fc96f5974f43a0b68b408fc32e4, type: 3}
+    audioClip:
+      m_AssetGUID: 95196fc96f5974f43a0b68b408fc32e4
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_2_Red_1_T1
     audioString: Whoa there Explorer!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: ed1a003c8cea54f429c53c40df568569, type: 3}
+    audioClip:
+      m_AssetGUID: ed1a003c8cea54f429c53c40df568569
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_2_Red_1_T2
     audioString: We still have work to do on the island!
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 3e8533b54289fb545b602dbfd5d6b9ee, type: 3}
+    audioClip:
+      m_AssetGUID: 3e8533b54289fb545b602dbfd5d6b9ee
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_2_Red_1_T3
     audioString: "... Well\u2026"
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 3448c0a5684446842ba4342bc0eb0bc2, type: 3}
+    audioClip:
+      m_AssetGUID: 3448c0a5684446842ba4342bc0eb0bc2
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_2_Red_1_T4
     audioString: It wouldn't hurt to go on a little boat ride.
   - endTalkieAfterThisSegment: 0
@@ -99,7 +115,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 552e457edbbe57f49ab612b59303aede, type: 3}
+    audioClip:
+      m_AssetGUID: 552e457edbbe57f49ab612b59303aede
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_2_Red_1_T5
     audioString: 'Do you want to go on another boat ride Explorer? '
   - endTalkieAfterThisSegment: 1
@@ -115,7 +135,11 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 8d92c6fffe5f04c4e88cafc648e44071, type: 3}
+    audioClip:
+      m_AssetGUID: 8d92c6fffe5f04c4e88cafc648e44071
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_2_Red_2_T1
     audioString: All aboard!
   - endTalkieAfterThisSegment: 1
@@ -131,6 +155,10 @@ MonoBehaviour:
     rightMouthEnum: 0
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: f9de0361e4e0192469b816eaa6b92dab, type: 3}
+    audioClip:
+      m_AssetGUID: f9de0361e4e0192469b816eaa6b92dab
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Boat_0_2_Red_3_T1
     audioString: Then we better get back to the task at hand,  Explorer!

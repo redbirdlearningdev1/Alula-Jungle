@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: snail_cw_obj
   m_EditorClassIdentifier: 
   word: snail
-  audio: {fileID: 8300000, guid: b407f6bb71e7737438d09938c0bccd1b, type: 3}
+  audio:
+    m_AssetGUID: b407f6bb71e7737438d09938c0bccd1b
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 581836b5053ebf9429e29a9db6116e21, type: 3}
-  elkoninList: 2500000021000000070000001f0000000000000000000000
+  elkoninList: 260000002200000007000000200000000000000000000000
   elkoninCount: 4
   set: 6

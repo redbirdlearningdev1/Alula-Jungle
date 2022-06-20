@@ -22,12 +22,6 @@ public class OrcController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -61,7 +55,6 @@ public class OrcController : MonoBehaviour
         {
             return 0;
         }
-
     }
 
 
@@ -79,7 +72,6 @@ public class OrcController : MonoBehaviour
 
     private IEnumerator GoToPile1Routine(Vector3 target)
     {
-        //Debug.Log("Here");
         Vector3 currStart = transform.position;
         float timer = 0f;
         float maxTime = 0.5f;
@@ -125,7 +117,6 @@ public class OrcController : MonoBehaviour
 
     private IEnumerator GoToPile2Routine(Vector3 target)
     {
-        Debug.Log("Here");
         Vector3 currStart = transform.position;
         float timer = 0f;
         float maxTime = 0.5f;
@@ -172,7 +163,6 @@ public class OrcController : MonoBehaviour
 
     private IEnumerator GoToPile3Routine(Vector3 target)
     {
-        Debug.Log("Here");
         Vector3 currStart = transform.position;
         float timer = 0f;
         float maxTime = 0.5f;
@@ -224,7 +214,6 @@ public class OrcController : MonoBehaviour
 
     private IEnumerator GoToPile4Routine(Vector3 target)
     {
-        Debug.Log("Here");
         Vector3 currStart = transform.position;
         float timer = 0f;
         float maxTime = 0.5f;
@@ -271,7 +260,6 @@ public class OrcController : MonoBehaviour
 
     private IEnumerator GoToPile5Routine(Vector3 target)
     {
-        Debug.Log("Here");
         Vector3 currStart = transform.position;
         float timer = 0f;
         float maxTime = 0.5f;

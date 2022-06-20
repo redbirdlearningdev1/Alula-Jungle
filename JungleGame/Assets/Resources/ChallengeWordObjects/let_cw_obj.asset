@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: let_cw_obj
   m_EditorClassIdentifier: 
   word: let
-  audio: {fileID: 8300000, guid: 94484447fddd1a84eb327895109987aa, type: 3}
+  audio:
+    m_AssetGUID: 94484447fddd1a84eb327895109987aa
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: 12738728dc0ab184997f4be739d2ee94, type: 3}
-  elkoninList: 1f0000000300000027000000000000000000000000000000
+  elkoninList: 200000000300000028000000000000000000000000000000
   elkoninCount: 3
   set: 2

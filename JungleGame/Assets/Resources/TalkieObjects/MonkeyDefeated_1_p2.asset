@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: eaf15f500d8c9864c90bf166be0157db, type: 3}
+    audioClip:
+      m_AssetGUID: eaf15f500d8c9864c90bf166be0157db
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_3_3_Marcus_2_T1
     audioString: 'HOW ANNOYING!  '
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: d8dac4c0d9691a44aa4536db51e217b1, type: 3}
+    audioClip:
+      m_AssetGUID: d8dac4c0d9691a44aa4536db51e217b1
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_3_3_Brutus_3_T1
     audioString: "It was expected\u2026"
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 3
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 63e7a6f13a612444b973ed6b3575cbe8, type: 3}
+    audioClip:
+      m_AssetGUID: 63e7a6f13a612444b973ed6b3575cbe8
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_3_3_Red_4_T1
     audioString: 'Good job,  Explorer! '
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 9914ecfb513f6944fbad4d637add20b3, type: 3}
+    audioClip:
+      m_AssetGUID: 9914ecfb513f6944fbad4d637add20b3
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_3_3_Wally_5_T1
     audioString: Amazing.
   - endTalkieAfterThisSegment: 0
@@ -99,7 +115,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 4dfebdf5239348b4caa40b5bdb12374f, type: 3}
+    audioClip:
+      m_AssetGUID: 4dfebdf5239348b4caa40b5bdb12374f
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_3_3_Marcus_6_T1
     audioString: UGH!
   - endTalkieAfterThisSegment: 0
@@ -115,7 +135,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: eaf818531e2737d429a893f08c45a0e2, type: 3}
+    audioClip:
+      m_AssetGUID: eaf818531e2737d429a893f08c45a0e2
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_3_3_Marcus_6_T2
     audioString: 'A deal is a deal! '
   - endTalkieAfterThisSegment: 0
@@ -131,7 +155,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 9554c161b5f0058418126131475900e7, type: 3}
+    audioClip:
+      m_AssetGUID: 9554c161b5f0058418126131475900e7
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_3_3_Marcus_6_T3
     audioString: You can pass.
   - endTalkieAfterThisSegment: 0
@@ -147,7 +175,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 0
     activeCharacter: 1
-    audioClip: {fileID: 0}
+    audioClip:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Marcus_Laugh
     audioString: HA HA HA!!!!
   - endTalkieAfterThisSegment: 0
@@ -163,7 +195,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 0
     activeCharacter: 2
-    audioClip: {fileID: 0}
+    audioClip:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: Brutus_Laugh
     audioString: Heh heh...
   - endTalkieAfterThisSegment: 0
@@ -179,7 +215,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 2
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: f96e4daad2e640f4e92c78aa8a5144bf, type: 3}
+    audioClip:
+      m_AssetGUID: f96e4daad2e640f4e92c78aa8a5144bf
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_3_3_Red_7_T1
     audioString: Alright,  Explorer!
   - endTalkieAfterThisSegment: 0
@@ -195,7 +235,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: eae782367d60ab149acd3a1610fdb45a, type: 3}
+    audioClip:
+      m_AssetGUID: eae782367d60ab149acd3a1610fdb45a
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_3_3_Red_7_T2
     audioString: Time to go into the Palace!
   - endTalkieAfterThisSegment: 0
@@ -211,6 +255,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: a7deb619e9fbbe840aa2d33f699ba930, type: 3}
+    audioClip:
+      m_AssetGUID: a7deb619e9fbbe840aa2d33f699ba930
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_3_3_Wally_8_T1
     audioString: Let's go.

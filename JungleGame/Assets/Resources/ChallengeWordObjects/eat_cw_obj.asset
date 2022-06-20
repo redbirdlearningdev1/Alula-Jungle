@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: eat_cw_obj
   m_EditorClassIdentifier: 
   word: eat
-  audio: {fileID: 8300000, guid: 4faacb3d497a3744aba5a5a2a0e100e7, type: 3}
+  audio:
+    m_AssetGUID: 4faacb3d497a3744aba5a5a2a0e100e7
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: aa9d8b7e025489a4bba04e4be4321f28, type: 3}
-  elkoninList: 080000002700000000000000000000000000000000000000
+  elkoninList: 080000002800000000000000000000000000000000000000
   elkoninCount: 2
   set: 7

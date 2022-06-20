@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class StarAwardController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class StarAwardController : MonoBehaviour
     [SerializeField] private GameObject star2;
     [SerializeField] private GameObject star3;
     [SerializeField] private Button button;
+
+    public TextMeshProUGUI windowText;
 
     public float longScaleTime;
     public float shortScaleTime;
@@ -57,6 +60,26 @@ public class StarAwardController : MonoBehaviour
             return;
         }
 
+        // set text based on 
+        switch (numStars)
+        {
+            case 0:
+                windowText.text = "try again!";
+                break;
+
+            case 1:
+                windowText.text = "nice job!";
+                break;
+
+            case 2:
+                windowText.text = "congratulations!";
+                break;
+
+            case 3:
+                windowText.text = "perfect!";
+                break;
+        }
+
         // close settings menu if open
         SettingsManager.instance.CloseAllSettingsWindows();
 
@@ -75,6 +98,79 @@ public class StarAwardController : MonoBehaviour
         int coinsEarned = 0;
 
         print ("map id: " + GameManager.instance.mapID);
+
+        if (GameManager.instance.practiceModeON)
+        {
+            StartCoroutine(AwardStarsRoutine(numStars, 0));
+            return;
+        }
+
+        // determine if boss battle
+        if (GameManager.instance.playingBossBattleGame)
+        {
+            // lose?
+            if (numStars == 0)
+            {   
+                // first time losing
+                if (!StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle)
+                {
+                    print ("first time losing boss battle game!");
+                    StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle = true;
+                }
+                else
+                {
+                    // every other time losing
+                    if (!StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseBossBattle)
+                    {
+                        print ("every other time losing boss battle game!");
+                        StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseBossBattle = true;
+                    }
+                }
+            }
+            // win?
+            else
+            {
+                print ("you won the boss battle game!");
+                StudentInfoSystem.GetCurrentProfile().firstTimeLoseBossBattle = false;
+                StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseBossBattle = false;
+                
+
+                // award points based on num stars won
+                if (numStars == 1)
+                {
+                    StudentInfoSystem.GetCurrentProfile().bossBattlePoints += 11;
+                }
+                else if (numStars == 2)
+                {
+                    StudentInfoSystem.GetCurrentProfile().bossBattlePoints += 22;
+                }
+                else if (numStars == 3)
+                {
+                    StudentInfoSystem.GetCurrentProfile().bossBattlePoints += 33;
+                }
+
+                // cap at 99 points
+                if (StudentInfoSystem.GetCurrentProfile().bossBattlePoints > 99)
+                {
+                    StudentInfoSystem.GetCurrentProfile().bossBattlePoints = 99;
+                }
+
+                // determine if advance boss battle story beat
+                if (StudentInfoSystem.GetCurrentProfile().bossBattlePoints >= 33 && StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.BossBattle1 ||
+                    StudentInfoSystem.GetCurrentProfile().bossBattlePoints >= 66 && StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.BossBattle2 ||
+                    StudentInfoSystem.GetCurrentProfile().bossBattlePoints >= 99 && StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.BossBattle3)
+                {
+                    GameManager.instance.newBossBattleStoryBeat = true;
+                    StudentInfoSystem.AdvanceStoryBeat();
+                }
+            }
+            
+            // show window
+            StudentInfoSystem.SaveStudentPlayerData();
+            StartCoroutine(AwardStarsRoutine(numStars, 0));
+            return;
+        }
+
 
         // determine if challenge game
         if (GameManager.instance.playingChallengeGame)
@@ -105,6 +201,7 @@ public class StarAwardController : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().firstTimeLoseChallengeGame = false;
                 StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;
                 StudentInfoSystem.AdvanceStoryBeat();
+                StudentInfoSystem.SaveStudentPlayerData();
             }
         }
         // minigame stuff
@@ -112,7 +209,7 @@ public class StarAwardController : MonoBehaviour
         {
             // increase number of minigames played
             StudentInfoSystem.GetCurrentProfile().minigamesPlayed += 1;
-            print ("you coompleted a minigame, minigames played: " + StudentInfoSystem.GetCurrentProfile().minigamesPlayed);
+            print ("you completed a minigame, minigames played: " + StudentInfoSystem.GetCurrentProfile().minigamesPlayed);
         }
 
         // only update stars if earned more stars than in memory
@@ -799,6 +896,108 @@ public class StarAwardController : MonoBehaviour
 
             /* 
             ################################################
+            #   PIRATE SHIP
+            ################################################
+            */
+        
+            case MapIconIdentfier.MB_bucket:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MB_bucket.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MB_bucket.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_bucket.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.MB_bucket.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.MB_castle:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MB_castle.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MB_castle.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_castle.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.MB_castle.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.MB_ladder:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MB_ladder.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MB_ladder.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_ladder.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.MB_ladder.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+            
+            case MapIconIdentfier.MB_mermaids:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MB_mermaids.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MB_mermaids.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_mermaids.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.MB_mermaids.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.MB_rock:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MB_rock.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MB_rock.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_rock.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.MB_rock.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.MB_umbrella:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MB_umbrella.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MB_umbrella.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_umbrella.stars = numStars;
+                }
+                if (!StudentInfoSystem.GetCurrentProfile().mapData.MB_umbrella.isFixed)
+                {
+                    GameManager.instance.repairMapIconID = true;
+                }
+                break;
+
+            case MapIconIdentfier.MB_challenge_1:
+                    if (StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.stars < numStars)
+                    {
+                        coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.stars, numStars);
+                        StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge1.stars = numStars;
+                    }
+                    break;
+
+            case MapIconIdentfier.MB_challenge_2:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge2.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.PS_challenge2.stars = numStars;
+                }
+                break;
+
+            case MapIconIdentfier.MB_challenge_3:
+                if (StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.stars < numStars)
+                {
+                    coinsEarned = CalculateAwardedCoins(StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.stars, numStars);
+                    StudentInfoSystem.GetCurrentProfile().mapData.MB_challenge3.stars = numStars;
+                }
+                break;
+
+            /* 
+            ################################################
             #   RUINS
             ################################################
             */
@@ -1141,13 +1340,25 @@ public class StarAwardController : MonoBehaviour
             GameManager.instance.finishedRoyalRumbleGame = true;
             GameManager.instance.wonRoyalRumbleGame = numStars > 0;
 
+            // do not repair map icon if player failed royal rumble
+            if (numStars == 0)
+            {
+                GameManager.instance.repairMapIconID = false;
+            }
+            else
+            {
+                GameManager.instance.repairMapIconID = true;
+            }
+
             StudentInfoSystem.GetCurrentProfile().royalRumbleActive = false;
             StudentInfoSystem.GetCurrentProfile().royalRumbleGame = GameType.None;
             
-            GameManager.instance.repairMapIconID = true;
             GameManager.instance.mapID = StudentInfoSystem.GetCurrentProfile().royalRumbleID;
             StudentInfoSystem.GetCurrentProfile().royalRumbleID = MapIconIdentfier.None;
         }
+
+        // update signpost stars
+        SetSignPostStarAmount();
         
         // save data
         StudentInfoSystem.SaveStudentPlayerData();
@@ -1300,5 +1511,291 @@ public class StarAwardController : MonoBehaviour
         coinTarget.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), new Vector2(1f, 1f), 0.1f, 0.1f);
         DropdownToolbar.instance.SetGoldText((StudentInfoSystem.GetCurrentProfile().goldCoins + newCoins).ToString());
         newCoins++;
+    }
+
+    private void SetSignPostStarAmount()
+    {
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        int starCount = 0;
+
+        // only update stars if earned more stars than in memory
+        switch (GameManager.instance.mapID)
+        {
+            default:
+                GameManager.instance.SendLog(this, "No ID for game found - not playing a challenge game");
+                return;
+
+            /* 
+            ################################################
+            #   GORILLA VILLAGE
+            ################################################
+            */
+
+            case MapIconIdentfier.GV_challenge_1:
+            case MapIconIdentfier.GV_challenge_2:
+            case MapIconIdentfier.GV_challenge_3:
+                if (data.mapData.GV_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.GV_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.GV_challenge3.stars == 3)
+                    starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
+                data.mapData.GV_signPost_stars = starCount;
+                break;
+            /* 
+            ################################################
+            #   MUDSLIDE
+            ################################################
+            */
+        
+            case MapIconIdentfier.MS_challenge_1:
+            case MapIconIdentfier.MS_challenge_2:
+            case MapIconIdentfier.MS_challenge_3:
+                if (data.mapData.MS_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.MS_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.MS_challenge3.stars == 3)
+                    starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
+                data.mapData.MS_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   ORC VILLAGE
+            ################################################
+            */
+        
+            case MapIconIdentfier.OV_challenge_1:
+            case MapIconIdentfier.OV_challenge_2:
+            case MapIconIdentfier.OV_challenge_3:
+                if (data.mapData.OV_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.OV_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.OV_challenge3.stars == 3)
+                    starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
+                data.mapData.OV_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   SPOOKY FOREST
+            ################################################
+            */
+        
+            case MapIconIdentfier.SF_challenge_1:
+            case MapIconIdentfier.SF_challenge_2:
+            case MapIconIdentfier.SF_challenge_3:
+                if (data.mapData.SF_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.SF_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.SF_challenge3.stars == 3)
+                    starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
+                data.mapData.SF_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   ORC CAMP
+            ################################################
+            */
+
+            case MapIconIdentfier.OC_challenge_1:
+            case MapIconIdentfier.OC_challenge_2:
+            case MapIconIdentfier.OC_challenge_3:
+                if (data.mapData.OC_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.OC_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.OC_challenge3.stars == 3)
+                    starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
+                data.mapData.OC_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   GORILLA POOP
+            ################################################
+            */
+        
+            case MapIconIdentfier.GP_challenge_1:
+            case MapIconIdentfier.GP_challenge_2:
+            case MapIconIdentfier.GP_challenge_3:
+                if (data.mapData.GP_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.GP_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.GP_challenge3.stars == 3)
+                    starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
+                data.mapData.GP_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   WINDY CLIFF
+            ################################################
+            */
+        
+            case MapIconIdentfier.WC_challenge_1:
+            case MapIconIdentfier.WC_challenge_2:
+            case MapIconIdentfier.WC_challenge_3:
+                if (data.mapData.WC_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.WC_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.WC_challenge3.stars == 3)
+                    starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
+                data.mapData.WC_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   PIRATE SHIP
+            ################################################
+            */
+        
+            case MapIconIdentfier.PS_challenge_1:
+            case MapIconIdentfier.PS_challenge_2:
+            case MapIconIdentfier.PS_challenge_3:
+                if (data.mapData.PS_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.PS_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.PS_challenge3.stars == 3)
+                    starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
+                data.mapData.PS_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   PIRATE SHIP
+            ################################################
+            */
+        
+            case MapIconIdentfier.MB_challenge_1:
+            case MapIconIdentfier.MB_challenge_2:
+            case MapIconIdentfier.MB_challenge_3:
+                if (data.mapData.MB_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.MB_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.MB_challenge3.stars == 3)
+                    starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
+                data.mapData.MB_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   RUINS
+            ################################################
+            */
+
+            case MapIconIdentfier.R_challenge_1:
+            case MapIconIdentfier.R_challenge_2:
+            case MapIconIdentfier.R_challenge_3:
+                if (data.mapData.R_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.R_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.R_challenge3.stars == 3)
+                    starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
+                data.mapData.R_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   EXIT JUNGLE
+            ################################################
+            */
+
+            case MapIconIdentfier.EJ_challenge_1:
+            case MapIconIdentfier.EJ_challenge_2:
+            case MapIconIdentfier.EJ_challenge_3:
+                if (data.mapData.EJ_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.EJ_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.EJ_challenge3.stars == 3)
+                    starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
+                data.mapData.EJ_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   GORILLA STUDY
+            ################################################
+            */
+
+            case MapIconIdentfier.GS_challenge_1:
+            case MapIconIdentfier.GS_challenge_2:
+            case MapIconIdentfier.GS_challenge_3:
+                if (data.mapData.GS_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.GS_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.GS_challenge3.stars == 3)
+                    starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
+                data.mapData.GS_signPost_stars = starCount;
+                break;
+
+            /* 
+            ################################################
+            #   MONKEYS
+            ################################################
+            */
+
+            case MapIconIdentfier.M_challenge_1:
+            case MapIconIdentfier.M_challenge_2:
+            case MapIconIdentfier.M_challenge_3:
+                if (data.mapData.M_challenge1.stars == 3)
+                    starCount += 1;
+                if (data.mapData.M_challenge2.stars == 3)
+                    starCount += 1;
+                if (data.mapData.M_challenge3.stars == 3)
+                    starCount += 1;
+                // set count to 4 iff all three games have 3 stars
+                if (starCount == 3)
+                    starCount = 4;
+                data.mapData.M_signPost_stars = starCount;
+                break;
+        }
     }
 }

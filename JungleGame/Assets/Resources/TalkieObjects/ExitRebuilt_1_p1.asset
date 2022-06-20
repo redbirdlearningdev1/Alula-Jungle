@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 3cd51efdb80c68240a536b5a1681c71a, type: 3}
+    audioClip:
+      m_AssetGUID: 3cd51efdb80c68240a536b5a1681c71a
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_2_Red_1_T1
     audioString: Good job Explorer!
   - endTalkieAfterThisSegment: 0
@@ -51,7 +55,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: d31b858e77e5cf7449f09d16c45f6772, type: 3}
+    audioClip:
+      m_AssetGUID: d31b858e77e5cf7449f09d16c45f6772
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_2_Red_1_T2
     audioString: "Not that I\u2019d expect anything less from you!"
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 2
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 5a04cc954344e904790aecfae02bdf43, type: 3}
+    audioClip:
+      m_AssetGUID: 5a04cc954344e904790aecfae02bdf43
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_2_Wally_2_T1
     audioString: Amazing as always.
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: f221930e68acee04a815a8fa36334744, type: 3}
+    audioClip:
+      m_AssetGUID: f221930e68acee04a815a8fa36334744
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_2_Darwin_3_T1
     audioString: "I\u2019m just so worried about Julius\u2026"
   - endTalkieAfterThisSegment: 0
@@ -99,7 +115,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 710106cce2ee10b498d468e7ee5f238c, type: 3}
+    audioClip:
+      m_AssetGUID: 710106cce2ee10b498d468e7ee5f238c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_2_Red_4_T1
     audioString: I know Darwin.
   - endTalkieAfterThisSegment: 0
@@ -115,7 +135,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: f93eb179ea93d3d4ebee08cde21fe006, type: 3}
+    audioClip:
+      m_AssetGUID: f93eb179ea93d3d4ebee08cde21fe006
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_2_Red_4_T2
     audioString: "Don\u2019t worry though. "
   - endTalkieAfterThisSegment: 0
@@ -131,7 +155,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 312493779ae42bf46bfc31ded93569cf, type: 3}
+    audioClip:
+      m_AssetGUID: 312493779ae42bf46bfc31ded93569cf
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_2_Red_4_T3
     audioString: "I\u2019m sure he\u2019s coming around!"
   - endTalkieAfterThisSegment: 0
@@ -147,7 +175,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 9b4c81effb36e1f47b95c39d9713ed2e, type: 3}
+    audioClip:
+      m_AssetGUID: 9b4c81effb36e1f47b95c39d9713ed2e
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_2_Wally_5_T1
     audioString: "Yeah,  they\u2019re right."
   - endTalkieAfterThisSegment: 0
@@ -163,7 +195,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: a83162a7c50a0a74685dfa2a0fbebf32, type: 3}
+    audioClip:
+      m_AssetGUID: a83162a7c50a0a74685dfa2a0fbebf32
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_2_Wally_5_T2
     audioString: "It\u2019ll be okay."
   - endTalkieAfterThisSegment: 0
@@ -179,7 +215,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 441daa5841ce7914092e3261df3bb9ce, type: 3}
+    audioClip:
+      m_AssetGUID: 441daa5841ce7914092e3261df3bb9ce
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_2_Darwin_6_T1
     audioString: "I know you\u2019re right\u2026"
   - endTalkieAfterThisSegment: 0
@@ -195,7 +235,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 595e0be430cb0824c8c68da3edff6e71, type: 3}
+    audioClip:
+      m_AssetGUID: 595e0be430cb0824c8c68da3edff6e71
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_2_Darwin_6_T2
     audioString: "But I\u2019m still worried\u2026"
   - endTalkieAfterThisSegment: 0
@@ -211,6 +255,10 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: e0f27071f2a6d3e458993f7d24002525, type: 3}
+    audioClip:
+      m_AssetGUID: e0f27071f2a6d3e458993f7d24002525
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: R_1_2_Darwin_6_T3
     audioString: I just have to find Julius! He needs me!

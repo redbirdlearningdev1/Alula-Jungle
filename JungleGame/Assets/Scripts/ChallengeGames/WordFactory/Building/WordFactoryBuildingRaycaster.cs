@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class WordFactoryBuildingRaycaster : MonoBehaviour
 {
@@ -14,7 +16,7 @@ public class WordFactoryBuildingRaycaster : MonoBehaviour
     [SerializeField] private Transform selectedObjectParent;
 
     private bool polaroidAudioPlaying = false;
-    
+
 
     void Awake()
     {
@@ -26,6 +28,10 @@ public class WordFactoryBuildingRaycaster : MonoBehaviour
     {
         // return if off, else do thing
         if (!isOn)
+            return;
+
+        // return if settings window is open
+        if (SettingsManager.instance.settingsWindowOpen)
             return;
 
         // drag select coin while mouse 1 down
@@ -45,9 +51,9 @@ public class WordFactoryBuildingRaycaster : MonoBehaviour
             var raycastResults = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointerEventData, raycastResults);
 
-            if(raycastResults.Count > 0)
+            if (raycastResults.Count > 0)
             {
-                foreach(var result in raycastResults)
+                foreach (var result in raycastResults)
                 {
                     //print ("found: " + result.gameObject.name);
 
@@ -74,9 +80,9 @@ public class WordFactoryBuildingRaycaster : MonoBehaviour
             var raycastResults = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointerEventData, raycastResults);
 
-            if(raycastResults.Count > 0)
+            if (raycastResults.Count > 0)
             {
-                foreach(var result in raycastResults)
+                foreach (var result in raycastResults)
                 {
                     if (result.gameObject.transform.CompareTag("Polaroid"))
                     {
@@ -109,15 +115,19 @@ public class WordFactoryBuildingRaycaster : MonoBehaviour
         }
     }
 
-    private IEnumerator PlayPolaroidAudio(AudioClip audio)
+    private IEnumerator PlayPolaroidAudio(AssetReference audioRef)
     {
         if (polaroidAudioPlaying)
             AudioManager.instance.StopTalk();
 
         polaroidAudioPlaying = true;
 
-        AudioManager.instance.PlayTalk(audio);
-        yield return new WaitForSeconds(audio.length + 0.1f);
+
+        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(audioRef));
+        yield return cd.coroutine;
+
+        AudioManager.instance.PlayTalk(audioRef);
+        yield return new WaitForSeconds(cd.GetResult() + 0.1f);
 
         polaroidAudioPlaying = false;
     }

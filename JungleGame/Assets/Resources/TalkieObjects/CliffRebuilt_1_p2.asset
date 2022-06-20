@@ -35,7 +35,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 4692abc08aaca814b8d1d8827f046b72, type: 3}
+    audioClip:
+      m_AssetGUID: 4692abc08aaca814b8d1d8827f046b72
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Red_9_T1
     audioString: 'Darwin wait! '
   - endTalkieAfterThisSegment: 0
@@ -47,11 +51,15 @@ MonoBehaviour:
     leftMouthEnum: 2
     leftEyesEnum: 1
     rightCharacter: 2
-    rightEmotionNum: 6
+    rightEmotionNum: 12
     rightMouthEnum: 1
     rightEyesEnum: 3
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: 82c5e970ec114244da4b6f19c2c128d7, type: 3}
+    audioClip:
+      m_AssetGUID: 82c5e970ec114244da4b6f19c2c128d7
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Wally_10_T1
     audioString: Sigh
   - endTalkieAfterThisSegment: 0
@@ -67,7 +75,11 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 2
-    audioClip: {fileID: 8300000, guid: ebfaec057d8b7ba4ebe940f5f3c64e0c, type: 3}
+    audioClip:
+      m_AssetGUID: ebfaec057d8b7ba4ebe940f5f3c64e0c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Wally_10_T2
     audioString: We just talked about this...
   - endTalkieAfterThisSegment: 0
@@ -83,7 +95,11 @@ MonoBehaviour:
     rightMouthEnum: 2
     rightEyesEnum: 1
     activeCharacter: 1
-    audioClip: {fileID: 8300000, guid: 2fdf37942a4254946b78c59e39bc2f5f, type: 3}
+    audioClip:
+      m_AssetGUID: 2fdf37942a4254946b78c59e39bc2f5f
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: FR_1_3_Red_11_T1
     audioString: At any rate we should catch up to him!
   - endTalkieAfterThisSegment: 0
@@ -99,6 +115,10 @@ MonoBehaviour:
     rightMouthEnum: 1
     rightEyesEnum: 1
     activeCharacter: 3
-    audioClip: {fileID: 0}
+    audioClip:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     audioClipName: RedWally_Huh
     audioString: Huh?!
