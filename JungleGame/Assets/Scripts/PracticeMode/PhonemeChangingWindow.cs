@@ -157,11 +157,11 @@ public class PhonemeChangingWindow : MonoBehaviour
 
     public void OnRightArrowDifficultyPressed()
     {
-        // increase difficulty value and cap at 7
+        // increase difficulty value and cap at 6
         diffValue++;
-        if (diffValue > 7)
+        if (diffValue > 6)
         {
-            diffValue = 7;
+            diffValue = 6;
         }
         diffBox.SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.1f, 0.1f);
         diffText.text = diffValue.ToString();

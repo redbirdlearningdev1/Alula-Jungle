@@ -25,7 +25,7 @@ public class DevDrawer : MonoBehaviour
         }
         else
         {
-            drawer.gameObject.SetActive(true);
+            drawer.gameObject.SetActive(false);
         }
     }
 

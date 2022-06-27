@@ -469,6 +469,7 @@ public static class AISystem
         // Additionally, assign the probability that the current phonemes get used over the previous phoneme group 0f - 1f
         if (phonemes == null)
         {
+            phonemes = new List<ActionWordEnum>();
             prevPhonemes = new List<ActionWordEnum>();
             if (playerData.currentChapter <= Chapter.chapter_1)
             {
@@ -708,6 +709,7 @@ public static class AISystem
         // Additionally, assign the probability that the current phonemes get used over the previous phoneme group 0f - 1f
         if (phonemes == null)
         {
+            phonemes = new List<ActionWordEnum>();
             prevPhonemes = new List<ActionWordEnum>();
             if (playerData.currentChapter <= Chapter.chapter_1)
             {
@@ -1057,6 +1059,7 @@ public static class AISystem
         // Additionally, assign the probability that the current phonemes get used over the previous phoneme group 0f - 1f
         if (phonemes == null)
         {
+            phonemes = new List<ActionWordEnum>();
             prevPhonemes = new List<ActionWordEnum>();
             if (playerData.currentChapter <= Chapter.chapter_1)
             {
@@ -1441,13 +1444,14 @@ public static class AISystem
         else
         {
             elkoninValueMin = 5;
-            elkoninValueMax = 10;
+            elkoninValueMax = 6;
         }
 
         // If phonemes weren't specified in the function parameters, assign phoneme groups and previous phoneme groups based on chapter
         // Additionally, assign the probability that the current phonemes get used over the previous phoneme group 0f - 1f
         if (phonemes == null)
         {
+            phonemes = new List<ActionWordEnum>();
             prevPhonemes = new List<ActionWordEnum>();
             if (playerData.currentChapter <= Chapter.chapter_1)
             {
@@ -1644,6 +1648,7 @@ public static class AISystem
         // Additionally, assign the probability that the current phonemes get used over the previous phoneme group 0f - 1f
         if (phonemes == null)
         {
+            phonemes = new List<ActionWordEnum>();
             prevPhonemes = new List<ActionWordEnum>();
             if (playerData.currentChapter <= Chapter.chapter_1)
             {
@@ -1852,6 +1857,7 @@ public static class AISystem
         // Additionally, assign the probability that the current phonemes get used over the previous phoneme group 0f - 1f
         if (phonemes == null)
         {
+            phonemes = new List<ActionWordEnum>();
             prevPhonemes = new List<ActionWordEnum>();
             if (playerData.currentChapter <= Chapter.chapter_1)
             {
