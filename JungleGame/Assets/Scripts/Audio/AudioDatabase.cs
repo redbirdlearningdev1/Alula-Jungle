@@ -71,6 +71,23 @@ public class AudioDatabase : MonoBehaviour
     public AssetReference Trumpet;
     public AssetReference FastForwardSound;
 
+    [Header("Minigame Wheel Sounds")]
+    public AssetReference WheelOpen;
+    public AssetReference WheelClose;
+    public AssetReference WheelPressed;
+    public AssetReference WheelSpinning;
+    public AssetReference WheelFinished;
+    public AssetReference RoyalRumbleIntro_Julius;
+    public AssetReference RoyalRumbleIntro_Monkeys;
+
+    [Header("Sticker System Sounds")]
+    public AssetReference CartRollIn;
+    public AssetReference CartRollOut;
+    public AssetReference StickerReveal_Common;
+    public AssetReference StickerReveal_Uncommon;
+    public AssetReference StickerReveal_Rare;
+    public AssetReference StickerReveal_Legendary;
+
     [Header("Blips")]
     public AssetReference HappyBlip;
     public AssetReference SadBlip;

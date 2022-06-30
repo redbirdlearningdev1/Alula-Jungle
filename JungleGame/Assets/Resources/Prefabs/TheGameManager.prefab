@@ -6410,6 +6410,71 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  WheelOpen:
+    m_AssetGUID: aaa14c8c247dc594383e115604b72390
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  WheelClose:
+    m_AssetGUID: 9679d893903dae1479a69f0be06d8139
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  WheelPressed:
+    m_AssetGUID: c64a07a8bcb91374689a870c159089b6
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  WheelSpinning:
+    m_AssetGUID: a5ebf6e27f4ded24c899a8166138aac4
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  WheelFinished:
+    m_AssetGUID: b8c04940519b1fa488707a513e8e14b8
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  RoyalRumbleIntro_Julius:
+    m_AssetGUID: 1b1eb623dcb6ce5449064f78ea6353db
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  RoyalRumbleIntro_Monkeys:
+    m_AssetGUID: bc95944c5b41afc499effffbb26c9188
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  CartRollIn:
+    m_AssetGUID: 8a8186916f2e08e4095fcf8d4838cce9
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  CartRollOut:
+    m_AssetGUID: c9574d965ea000d4eb059f7063adc6ab
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  StickerReveal_Common:
+    m_AssetGUID: e64bf850c5b99e94f857e27e6953127a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  StickerReveal_Uncommon:
+    m_AssetGUID: 241fb4f80f78eef4da993e6d046ee210
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  StickerReveal_Rare:
+    m_AssetGUID: 697238be444d13b439511a586cb25383
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  StickerReveal_Legendary:
+    m_AssetGUID: aa2663f5a8ad3614e9ac583f56bf936f
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   HappyBlip:
     m_AssetGUID: 9d3e47aa4978b7b439116f526d1d9274
     m_SubObjectName: 
