@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 [ExecuteInEditMode]
 public class Polaroid : MonoBehaviour
@@ -10,6 +11,15 @@ public class Polaroid : MonoBehaviour
     [SerializeField] private Image pictureImg;
     [SerializeField] private Image backgroundImg;
     [SerializeField] private Image frameImage;
+    [SerializeField] private GameObject backOfPolaroid;
+    [SerializeField] private Transform letterLayoutGroup;
+    [SerializeField] private GameObject letterGroupElement;
+
+    void Awake()
+    {
+        // don't show back of polaroid
+        backOfPolaroid.SetActive(false);
+    }
 
     public void SetPolaroid(ChallengeWord word)
     {
@@ -114,5 +124,56 @@ public class Polaroid : MonoBehaviour
             GetComponent<WiggleController>().StartWiggle();
         else
             GetComponent<WiggleController>().StopWiggle();
+    }
+
+    public void ShowPolaroidWord()
+    {
+        // reset letter layout group
+        foreach (Transform child in letterLayoutGroup)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // set letter group elements
+        foreach (string letterGroup in challengeWord.letterGroupList)
+        {
+            GameObject newElement = Instantiate(letterGroupElement, letterLayoutGroup);
+            newElement.GetComponent<TextMeshProUGUI>().text = letterGroup;
+            newElement.GetComponent<TextMeshProUGUI>().fontSize = 60f - (2f * challengeWord.elkoninCount);
+        }
+
+        // show back of polaroid 
+        backOfPolaroid.SetActive(true);
+    }
+
+    public void HidePolaroidWord()
+    {
+        // reset letter layout group
+        foreach (Transform child in letterLayoutGroup)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // hide back of polaroid 
+        backOfPolaroid.SetActive(false);
+    }
+
+    public GameObject GetLetterGroupElement(int index)
+    {
+        int count = 0;
+        // return the element according to the index given
+        foreach (Transform child in letterLayoutGroup)
+        {
+            if (count == index)
+            {
+                return child.gameObject;
+            }
+            else
+            {
+                count++;
+            }
+        }
+
+        return null;
     }
 }
