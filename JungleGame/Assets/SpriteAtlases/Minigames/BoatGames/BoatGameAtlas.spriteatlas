@@ -69,6 +69,18 @@ SpriteAtlas:
       m_Overridden: 1
       m_AndroidETC2FallbackOverride: 0
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 65
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
       padding: 4
@@ -76,6 +88,7 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 0
       enableTightPacking: 0
+      enableAlphaDilation: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
@@ -87,7 +100,6 @@ SpriteAtlas:
     - {fileID: 2800000, guid: f0e276ead6562d140b7d1f524f70407b, type: 3}
     - {fileID: 2800000, guid: 6d6d66c22a2c2aa429bbd256b8e19849, type: 3}
     - {fileID: 2800000, guid: cdb17836a76da584b9ea4f4061d60d4f, type: 3}
-    totalSpriteSurfaceArea: 11345124
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}

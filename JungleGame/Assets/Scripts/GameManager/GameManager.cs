@@ -92,7 +92,7 @@ public class GameManager : DontDestroy<GameManager>
     {
 #if !UNITY_IOS
         // set game resolution
-        Screen.SetResolution(GameAwake.gameResolution.x, GameAwake.gameResolution.y, true);
+        //Screen.SetResolution(GameAwake.gameResolution.x, GameAwake.gameResolution.y, true);
 #endif
 
         // init mic
