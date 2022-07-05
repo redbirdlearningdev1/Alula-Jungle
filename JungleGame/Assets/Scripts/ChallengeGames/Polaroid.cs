@@ -15,6 +15,8 @@ public class Polaroid : MonoBehaviour
     [SerializeField] private Transform letterLayoutGroup;
     [SerializeField] private GameObject letterGroupElement;
 
+    public static float FONT_SCALE_DECREASE = 4f;
+
     void Awake()
     {
         // don't show back of polaroid
@@ -126,7 +128,7 @@ public class Polaroid : MonoBehaviour
             GetComponent<WiggleController>().StopWiggle();
     }
 
-    public void ShowPolaroidWord()
+    public void ShowPolaroidWord(float startFontSize)
     {
         // reset letter layout group
         foreach (Transform child in letterLayoutGroup)
@@ -139,7 +141,7 @@ public class Polaroid : MonoBehaviour
         {
             GameObject newElement = Instantiate(letterGroupElement, letterLayoutGroup);
             newElement.GetComponent<TextMeshProUGUI>().text = letterGroup;
-            newElement.GetComponent<TextMeshProUGUI>().fontSize = 60f - (2f * challengeWord.elkoninCount);
+            newElement.GetComponent<TextMeshProUGUI>().fontSize = startFontSize - (Polaroid.FONT_SCALE_DECREASE * challengeWord.elkoninCount);
         }
 
         // show back of polaroid 

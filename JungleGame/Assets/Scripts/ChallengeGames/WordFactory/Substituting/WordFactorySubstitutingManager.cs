@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
+using TMPro;
 
 public class WordFactorySubstitutingManager : MonoBehaviour
 {
     public static WordFactorySubstitutingManager instance;
+
+    public bool showChallengeWordLetters;
 
     [Header("Frames")]
     [SerializeField] private HorizontalLayoutGroup frameTargetGroup;
@@ -854,25 +856,77 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                 currWaterCoin.GetComponent<WiggleController>().StopWiggle();
             }
 
-            // say each letter
-            foreach (var coin in currentCoins)
+            // show challenge word letters
+            if (showChallengeWordLetters)
             {
-                PlayAudioCoin(coin);
-                yield return new WaitForSeconds(0.8f);
+                LerpableObject polaroid = redPolaroid.GetComponent<LerpableObject>();
+
+                // squish on x scale
+                polaroid.LerpScale(new Vector2(0f, 1f), 0.2f);
+                yield return new WaitForSeconds(0.2f);
+                // play audio fx 
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BirdWingFlap, 1f);
+                // remove image
+                redPolaroid.ShowPolaroidWord(60f);
+                // un-squish on x scale
+                polaroid.LerpScale(new Vector2(1f, 1f), 0.2f);
+                yield return new WaitForSeconds(1f);
+
+                // say letter groups using coins
+                for (int i = 0; i < redPolaroid.challengeWord.elkoninCount; i++)
+                {
+                    GameObject letterElement = redPolaroid.GetLetterGroupElement(i);
+                    letterElement.GetComponent<TextMeshProUGUI>().color = Color.black;
+                    letterElement.GetComponent<LerpableObject>().LerpTextSize(70f - (Polaroid.FONT_SCALE_DECREASE * redPolaroid.challengeWord.elkoninCount), 0.2f);
+                    StartCoroutine(PlayAudioCoinRoutine(currentCoins[i]));
+                    // audio fx
+                    AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", (1f + 0.25f * i));
+                    yield return new WaitForSeconds(1f);
+                }
+                yield return new WaitForSeconds(0.2f);
+
+                // read word aloud to player
+                if (currentTargetWord.audio != null)
+                    AudioManager.instance.PlayTalk(currentTargetWord.audio);
+                // start wiggle
+                redPolaroid.ToggleWiggle(true);
+
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(currentTargetWord.audio));
+                yield return cd.coroutine;
+
+                // wait an appropriate amount of time
+                if (currentTargetWord.audio != null)
+                    yield return new WaitForSeconds(cd.GetResult() + 0.25f);
+                else
+                    yield return new WaitForSeconds(2f);
+
+                // end wiggle
+                redPolaroid.ToggleWiggle(false);
+            }
+            else
+            {   
+                // say each letter
+                foreach (var coin in currentCoins)
+                {
+                    PlayAudioCoin(coin);
+                    yield return new WaitForSeconds(0.8f);
+                }
+
+                // play correct sound
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
+                yield return new WaitForSeconds(0.5f);
+
+                // say new challenge word
+                redPolaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
+
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(currentTargetWord.audio));
+                yield return cd.coroutine;
+
+                AudioManager.instance.PlayTalk(currentTargetWord.audio);
+                yield return new WaitForSeconds(cd.GetResult() + 0.5f);
             }
 
-            // play correct sound
-            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
-            yield return new WaitForSeconds(0.5f);
-
-            // say new challenge word
-            redPolaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
-
-            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(currentTargetWord.audio));
-            yield return cd.coroutine;
-
-            AudioManager.instance.PlayTalk(currentTargetWord.audio);
-            yield return new WaitForSeconds(cd.GetResult() + 0.5f);
+            
             redPolaroid.GetComponent<LerpableObject>().LerpScale(Vector2.one, 0.1f);
 
             // slide tiger polaroid under red polaroid
@@ -890,6 +944,9 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             // audio fx
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MedWhoosh, 0.5f);
             yield return new WaitForSeconds(1.5f);
+
+            // reset current polaroid
+            redPolaroid.HidePolaroidWord();
 
             // play correct animations
             redAnimator.Play("Win");

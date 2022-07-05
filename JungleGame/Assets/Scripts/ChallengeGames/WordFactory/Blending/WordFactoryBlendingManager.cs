@@ -626,6 +626,8 @@ public class WordFactoryBlendingManager : MonoBehaviour
             polaroid.LerpPosToTransform(centerPos, 0.5f, false);
             polaroid.LerpScale(new Vector2(1.8f, 1.8f), 0.5f);
             polaroid.LerpRotation(360f, 0.5f);
+            // play audio fx 
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PolaroidFall, 0.5f);
 
             yield return new WaitForSeconds(1f);
 
@@ -633,9 +635,9 @@ public class WordFactoryBlendingManager : MonoBehaviour
             polaroid.LerpScale(new Vector2(0f, 1.8f), 0.2f);
             yield return new WaitForSeconds(0.2f);
             // play audio fx 
-            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SmallWhoosh, 0.5f);
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BirdWingFlap, 1f);
             // remove image
-            currentPolaroid.ShowPolaroidWord();
+            currentPolaroid.ShowPolaroidWord(60f);
             // un-squish on x scale
             polaroid.LerpScale(new Vector2(1.8f, 1.8f), 0.2f);
             yield return new WaitForSeconds(1f);
@@ -645,10 +647,11 @@ public class WordFactoryBlendingManager : MonoBehaviour
             {
                 GameObject letterElement = currentPolaroid.GetLetterGroupElement(i);
                 letterElement.GetComponent<TextMeshProUGUI>().color = Color.black;
-                letterElement.GetComponent<LerpableObject>().LerpTextSize(70f - (2f * currentPolaroid.challengeWord.elkoninCount), 0.2f);
+                letterElement.GetComponent<LerpableObject>().LerpTextSize(70f - (Polaroid.FONT_SCALE_DECREASE * currentPolaroid.challengeWord.elkoninCount), 0.2f);
                 StartCoroutine(PlayAudioCoinRoutine(currentCoins[i]));
+                // audio fx
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", (1f + 0.25f * i));
                 yield return new WaitForSeconds(1f);
-
             }
             yield return new WaitForSeconds(0.2f);
 
@@ -674,6 +677,8 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
             polaroid.LerpPosToTransform(polaroidStartPos, 0.25f, false);
             StartCoroutine(HideCoinsAndFrames());
+            // audio fx
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SmallWhoosh, 0.5f);
         }
         // don't show challenge word and just animate cards away
         else
