@@ -127,6 +127,9 @@ public class TigerCoinGameManager : MonoBehaviour
     {
         prevWords = new List<ChallengeWord>();
         pattern.baseState();
+        // start split song
+        if (!playTutorial)
+            AudioManager.instance.InitSplitSong(AudioDatabase.instance.challengeGameSongSplit1);
         StartCoroutine(StartGame());
     }
 
@@ -265,6 +268,7 @@ public class TigerCoinGameManager : MonoBehaviour
 
         // return pattern to base state
         pattern.baseState();
+        AudioManager.instance.StopFX("tiger_paw_glitter");
 
         // yield return new WaitForSeconds(0.5f);
 
@@ -328,6 +332,9 @@ public class TigerCoinGameManager : MonoBehaviour
             SettingsManager.instance.ToggleMenuButtonActive(true);
         }
 
+        // play correct audio
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinsSlideIn, 0.5f);
+        yield return new WaitForSeconds(0.1f);
         Tiger.TigerDeal();
         polaroidC.gameObject.transform.position = polaroidLandPos.position;
         yield return new WaitForSeconds(.6f);
@@ -482,6 +489,13 @@ public class TigerCoinGameManager : MonoBehaviour
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
             pattern.correct();
             correctCoins[numWins].SetActive(true);
+            // play correct audio
+            AudioManager.instance.PlayFX_loop(AudioDatabase.instance.GlitterLoop, 0.2f, "tiger_paw_glitter");
+
+            // increase split song
+            if (!playTutorial)
+                AudioManager.instance.IncreaseSplitSong();
+
             numWins++;
         }
         else
@@ -501,9 +515,14 @@ public class TigerCoinGameManager : MonoBehaviour
             numMisses++;
         }
 
+        // play audio
+        AudioManager.instance.PlayCoinDrop();
+
         // play popup
         StartCoroutine(PlayPopup(win));
 
+        // play audio
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinsSlideOut, 0.5f);
         Tiger.TigerDeal();
         yield return new WaitForSeconds(.4f);
         polaroidC.gameObject.transform.position = polaroidStartPos.position;

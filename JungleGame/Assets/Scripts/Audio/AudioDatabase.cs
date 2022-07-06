@@ -35,6 +35,9 @@ public class AudioDatabase : MonoBehaviour
     public List<AssetReference> SeashellsSongSplit;
     public List<AssetReference> PirateSongSplit;
 
+    public List<AssetReference> challengeGameSongSplit1;
+    public List<AssetReference> challengeGameSongSplit2;
+
     /* 
     ################################################
     #   BOAT GAME AUDIO DATABASE
@@ -203,4 +206,16 @@ public class AudioDatabase : MonoBehaviour
     public AssetReference SelectBoop;
     public AssetReference SmallWhoosh;
     public AssetReference TigerSwipe;
+
+    [Header("Tiger Paw Games")]
+    public AssetReference CoinsSlideIn;
+    public AssetReference CoinsSlideOut;
+    public AssetReference PhotosSlideIn;
+    public AssetReference PhotosSlideOut;
+    public AssetReference GlitterLoop;
+
+    [Header("Password Game")]
+    public AssetReference PasswordInitRound;
+    public AssetReference PasswordNewRound;
+    public AssetReference PasswordWrongRound;
 }

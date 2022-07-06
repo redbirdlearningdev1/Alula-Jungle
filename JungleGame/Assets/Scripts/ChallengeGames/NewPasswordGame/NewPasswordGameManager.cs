@@ -124,6 +124,13 @@ public class NewPasswordGameManager : MonoBehaviour
         foreach (var coin in coins)
             coin.SetValue(ElkoninValue.empty_gold);
 
+        // start split song
+        if (!playTutorial)
+            AudioManager.instance.InitSplitSong(AudioDatabase.instance.challengeGameSongSplit2);
+
+        // play init audio
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PasswordInitRound, 0.5f);
+
         StartCoroutine(NewRound(true));
     }
 
@@ -173,7 +180,7 @@ public class NewPasswordGameManager : MonoBehaviour
         PasswordTube.instance.TurnTube();
         polaroid.SetPolaroid(currentWord);
         polaroid.SetPolaroidAlpha(0f, 0f);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
 
         // move to new section
         if (moveBG)
@@ -307,6 +314,8 @@ public class NewPasswordGameManager : MonoBehaviour
 
         // show polaroid
         polaroid.GetComponent<LerpableObject>().LerpPosToTransform(polaroidOnScreenPos, 0.5f, false);
+        // play audio
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MedWhoosh, 0.5f);
         yield return new WaitForSeconds(0.2f);
         polaroid.SetPolaroidAlpha(1f, 0.2f);
         yield return new WaitForSeconds(0.5f);
@@ -491,6 +500,9 @@ public class NewPasswordGameManager : MonoBehaviour
                 polaroid.ToggleWiggle(false);
             }
 
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PasswordNewRound, 0.5f);
+            AudioManager.instance.IncreaseSplitSong();
+
             // move polaroid to player off-screen pos
             polaroid.GetComponent<LerpableObject>().LerpPosToTransform(polaroidOffScreenPlayerPos, 0.2f, false);
             yield return new WaitForSeconds(0.5f);
@@ -660,6 +672,8 @@ public class NewPasswordGameManager : MonoBehaviour
             PasswordTube.instance.ShowPolaroidCoins(currentWord, coins, false);
             while (PasswordTube.instance.playingAnimation)
                 yield return null;
+
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PasswordWrongRound, 0.5f);
 
             yield return new WaitForSeconds(0.5f);
 
