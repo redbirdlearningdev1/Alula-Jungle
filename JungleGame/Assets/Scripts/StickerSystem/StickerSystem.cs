@@ -98,6 +98,7 @@ public class StickerSystem : MonoBehaviour
             instance = this;
         }
 
+        Debug.Log("Disabling Videos");
         commonVP.gameObject.SetActive(false);
         uncommonVP.gameObject.SetActive(false);
         rareVP.gameObject.SetActive(false);
@@ -931,8 +932,6 @@ public class StickerSystem : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
 
-        currentVideo.gameObject.SetActive(false);
-
         // Fade back in 
         FadeObject.instance.FadeIn(1f);
 
@@ -998,6 +997,8 @@ public class StickerSystem : MonoBehaviour
         currentVideo.Stop();
         currentVideo.enabled = false;
         ClearOutRenderTexture(currentVideo.targetTexture);
+        
+        currentVideo.gameObject.SetActive(false);
 
         // remove toolbar
         DropdownToolbar.instance.ToggleToolbar(true);
