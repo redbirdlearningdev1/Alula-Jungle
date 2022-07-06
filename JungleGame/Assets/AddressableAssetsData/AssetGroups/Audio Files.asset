@@ -18900,6 +18900,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f2fe725d21e9042378cce8a7fb046a0a
+    m_Address: Assets/Audio/ChallengeGameAudio/TigerPaw and Password/cg_song_1_final.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a87e094a65ef4da7b086a5df3784155
+    m_Address: Assets/Audio/ChallengeGameAudio/TigerPaw and Password/cg_song_2_final.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 36e446923fe0ce6489248e816bef7c49, type: 2}
   m_SchemaSet:
