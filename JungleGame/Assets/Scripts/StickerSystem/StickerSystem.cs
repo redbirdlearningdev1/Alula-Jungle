@@ -140,6 +140,23 @@ public class StickerSystem : MonoBehaviour
         rareVP.targetCamera = GameManager.instance.globalCamera;
         legendaryVP.targetCamera = GameManager.instance.globalCamera;
 
+        // stop video players
+        commonVP.Stop();
+        commonVP.enabled = false;
+        ClearOutRenderTexture(commonVP.targetTexture);
+
+        uncommonVP.Stop();
+        uncommonVP.enabled = false;
+        ClearOutRenderTexture(uncommonVP.targetTexture);
+
+        rareVP.Stop();
+        rareVP.enabled = false;
+        ClearOutRenderTexture(rareVP.targetTexture);
+
+        legendaryVP.Stop();
+        legendaryVP.enabled = false;
+        ClearOutRenderTexture(legendaryVP.targetTexture);
+
 #if UNITY_IOS
         // set sticker drag mode to no double click
         doubleClickToPlaceSticker = false;
@@ -894,6 +911,9 @@ public class StickerSystem : MonoBehaviour
         // save sticker to SIS
         StudentInfoSystem.AddStickerToInventory(sticker, false);
 
+        // remove music
+        AudioManager.instance.ToggleMusicSmooth(false);
+
         // fade to black
         FadeObject.instance.FadeOut(1f);
         yield return new WaitForSeconds(1f);
@@ -930,10 +950,36 @@ public class StickerSystem : MonoBehaviour
         while (!currentVideo.isPlaying)
             yield return null;
 
-        yield return new WaitForSeconds(0.2f);
+        currentVideo.Pause();
 
+        // play correct audio
+        switch (sticker.rarity)
+        {
+            default:
+            case StickerRarity.Common:
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.StickerReveal_Common, 0.5f);
+                break;
+
+            case StickerRarity.Uncommon:
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.StickerReveal_Uncommon, 0.5f);
+                break;
+
+            case StickerRarity.Rare:
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.StickerReveal_Rare, 0.5f);
+                break;
+
+            case StickerRarity.Legendary:
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.StickerReveal_Legendary, 0.5f);
+                break;
+        }
+
+        yield return new WaitForSeconds(1.2f);
+
+        currentVideo.Play();
+        
         // Fade back in 
         FadeObject.instance.FadeIn(1f);
+
 
         yield return new WaitForSeconds((float)currentVideo.length - 1.5f);
 
@@ -1002,6 +1048,9 @@ public class StickerSystem : MonoBehaviour
 
         // remove toolbar
         DropdownToolbar.instance.ToggleToolbar(true);
+
+        // re-add music
+        AudioManager.instance.ToggleMusicSmooth(true);
 
         // Fade back in 
         FadeObject.instance.FadeIn(0.5f);
@@ -1150,6 +1199,9 @@ public class StickerSystem : MonoBehaviour
         SettingsManager.instance.ToggleMenuButtonActive(false);
         this.ToggleWagonButtonActive(false);
 
+        // play cart roll in
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CartRollIn, 0.5f);
+
         // wagon rolls in
         wagonMovementAnimator.Play("WagonShow");
         yield return new WaitForSeconds(0.8f);
@@ -1233,7 +1285,10 @@ public class StickerSystem : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        // wagon rolls in
+        // play cart roll out
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CartRollOut, 0.5f);
+
+        // wagon rolls out
         wagonMovementAnimator.Play("WagonExit");
         wagonImageAnimator.Play("WagonMoving");
 

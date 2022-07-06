@@ -74,6 +74,7 @@ public class ChallengeWord : ScriptableObject
     public AssetReference audio;
     public Sprite sprite;
     public List<ElkoninValue> elkoninList;
+    public List<string> letterGroupList;
     public int elkoninCount;
     public ActionWordEnum set;
 }

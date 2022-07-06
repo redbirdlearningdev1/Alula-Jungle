@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AddressableAssets;
+using TMPro;
 
 public class WordFactoryBlendingManager : MonoBehaviour
 {
     public static WordFactoryBlendingManager instance;
+
+    public bool showChallengeWordLetters;
 
     [Header("Game Objects")]
     [SerializeField] private HorizontalLayoutGroup frameGroup;
@@ -39,6 +42,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
     [SerializeField] private Transform tigerPilePos;
     [SerializeField] private Transform away0Pos;
     [SerializeField] private Transform away2Pos;
+    [SerializeField] private Transform centerPos;
 
     [Header("Values")]
     [SerializeField] private Vector2 normalCoinSize;
@@ -69,8 +73,6 @@ public class WordFactoryBlendingManager : MonoBehaviour
     public List<ChallengeWord> polaroidsScripted3;
     public List<ChallengeWord> polaroidsScripted4;
     public List<ChallengeWord> polaroidsScripted5;
-
-    public bool testthis;
 
 
 
@@ -297,7 +299,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
                 count++;
             }
         }
-        else if (StudentInfoSystem.GetCurrentProfile().blendPlayed == 0 || testthis)
+        else if (StudentInfoSystem.GetCurrentProfile().blendPlayed == 0)
         {
             // get correct tutorial polaroids
             List<ChallengeWord> scriptedList = new List<ChallengeWord>();
@@ -535,7 +537,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
         bool success = (polaroid.challengeWord == currentWord);
         // only track challenge round attempt if not in tutorial AND not in practice mode
-        if (!playTutorial && !GameManager.instance.practiceModeON)
+        if (!playTutorial /*&& !GameManager.instance.practiceModeON */)
         {
             StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.WordFactoryBlending, success, currentWord, 0); //// TODO: add player difficulty once it is available
         }
@@ -581,33 +583,136 @@ public class WordFactoryBlendingManager : MonoBehaviour
         // reveal the correct polaroid
         StartCoroutine(PolaroidRevealRoutine(true));
 
-        // ####################
-
-        // hide coins + frames
-        yield return new WaitForSeconds(1f);
-        StartCoroutine(HideCoinsAndFrames());
-
-        // animate cards away
-        int count = 0;
-        foreach (var polaroid in polaroids)
+        // show challenge word letters
+        if (showChallengeWordLetters)
         {
-            if (count == 0)
+            // hide coins + frames
+            yield return new WaitForSeconds(2f);
+
+            // animate cards away - except for current polaroid
+            int count = 0;
+            foreach (var pol in polaroids)
             {
-                polaroid.MovePolaroid(away0Pos.position, 0.25f);
+                // skip current polaroid
+                if (pol == currentPolaroid)
+                {
+                    count++;
+                    continue;
+                }
+                    
+                
+                if (count == 0)
+                {
+                    pol.MovePolaroid(away0Pos.position, 0.25f);
+                }
+                else if (count == 1)
+                {
+                    pol.MovePolaroid(polaroidStartPos.position, 0.25f);
+                }
+                else if (count == 2)
+                {
+                    pol.MovePolaroid(away2Pos.position, 0.25f);
+                }
+                // audio fx
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SmallWhoosh, 0.5f);
+                yield return new WaitForSeconds(0.1f);
+                count++;
             }
-            else if (count == 1)
+
+            yield return new WaitForSeconds(0.5f);
+
+            // center current polaroid on screen
+            LerpableObject polaroid = currentPolaroid.GetComponent<LerpableObject>();
+            polaroid.LerpPosToTransform(centerPos, 0.5f, false);
+            polaroid.LerpScale(new Vector2(1.8f, 1.8f), 0.5f);
+            polaroid.LerpRotation(360f, 0.5f);
+            // play audio fx 
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PolaroidFall, 0.5f);
+
+            yield return new WaitForSeconds(1f);
+
+            // squish on x scale
+            polaroid.LerpScale(new Vector2(0f, 1.8f), 0.2f);
+            yield return new WaitForSeconds(0.2f);
+            // play audio fx 
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BirdWingFlap, 1f);
+            // remove image
+            currentPolaroid.ShowPolaroidWord(60f);
+            // un-squish on x scale
+            polaroid.LerpScale(new Vector2(1.8f, 1.8f), 0.2f);
+            yield return new WaitForSeconds(1f);
+
+            // say letter groups using coins
+            for (int i = 0; i < currentPolaroid.challengeWord.elkoninCount; i++)
             {
-                polaroid.MovePolaroid(polaroidStartPos.position, 0.25f);
+                GameObject letterElement = currentPolaroid.GetLetterGroupElement(i);
+                letterElement.GetComponent<TextMeshProUGUI>().color = Color.black;
+                letterElement.GetComponent<LerpableObject>().LerpTextSize(70f - (Polaroid.FONT_SCALE_DECREASE * currentPolaroid.challengeWord.elkoninCount), 0.2f);
+                StartCoroutine(PlayAudioCoinRoutine(currentCoins[i]));
+                // audio fx
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", (1f + 0.25f * i));
+                yield return new WaitForSeconds(1f);
             }
-            else if (count == 2)
-            {
-                polaroid.MovePolaroid(away2Pos.position, 0.25f);
-            }
+            yield return new WaitForSeconds(0.2f);
+
+            // read word aloud to player
+            if (currentWord.audio != null)
+                AudioManager.instance.PlayTalk(currentWord.audio);
+            // start wiggle
+            currentPolaroid.ToggleWiggle(true);
+
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(currentWord.audio));
+            yield return cd.coroutine;
+
+            // wait an appropriate amount of time
+            if (currentWord.audio != null)
+                yield return new WaitForSeconds(cd.GetResult() + 0.25f);
+            else
+                yield return new WaitForSeconds(2f);
+
+            // end wiggle
+            currentPolaroid.ToggleWiggle(false);
+
+            yield return new WaitForSeconds(0.2f);
+
+            polaroid.LerpPosToTransform(polaroidStartPos, 0.25f, false);
+            StartCoroutine(HideCoinsAndFrames());
             // audio fx
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SmallWhoosh, 0.5f);
-            yield return new WaitForSeconds(0.1f);
-            count++;
         }
+        // don't show challenge word and just animate cards away
+        else
+        {
+            // hide coins + frames
+            yield return new WaitForSeconds(1f);
+            StartCoroutine(HideCoinsAndFrames());
+
+            // animate cards away
+            int count = 0;
+            foreach (var polaroid in polaroids)
+            {
+                if (count == 0)
+                {
+                    polaroid.MovePolaroid(away0Pos.position, 0.25f);
+                }
+                else if (count == 1)
+                {
+                    polaroid.MovePolaroid(polaroidStartPos.position, 0.25f);
+                }
+                else if (count == 2)
+                {
+                    polaroid.MovePolaroid(away2Pos.position, 0.25f);
+                }
+                // audio fx
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SmallWhoosh, 0.5f);
+                yield return new WaitForSeconds(0.1f);
+                count++;
+            }
+        }
+
+        // ####################
+
+        
 
         // reset polaroids after delay
         yield return new WaitForSeconds(1f);
@@ -638,6 +743,9 @@ public class WordFactoryBlendingManager : MonoBehaviour
         tigerAnimator.Play("TigerLose");
 
         yield return new WaitForSeconds(1f);
+
+        // reset current polaroid
+        currentPolaroid.HidePolaroidWord();
 
         // win game iff 3 or more rounds have been won
         if (numWins >= 3)
@@ -960,24 +1068,27 @@ public class WordFactoryBlendingManager : MonoBehaviour
             }
         }
 
-        // read word aloud to player
-        if (currentWord.audio != null)
-            AudioManager.instance.PlayTalk(currentWord.audio);
-
-        // glow coins fast
-        foreach (var coin in currentCoins)
+        if (!showChallengeWordLetters)
         {
-            yield return new WaitForSeconds(0.05f);
+            // read word aloud to player
+            if (currentWord.audio != null)
+                AudioManager.instance.PlayTalk(currentWord.audio);
+
+            // glow coins fast
+            foreach (var coin in currentCoins)
+            {
+                yield return new WaitForSeconds(0.05f);
+            }
+
+            CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(currentWord.audio));
+            yield return cd.coroutine;
+
+            // wait an appropriate amount of time
+            if (currentWord.audio != null)
+                yield return new WaitForSeconds(cd.GetResult() + 0.25f);
+            else
+                yield return new WaitForSeconds(2f);
         }
-
-        CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(currentWord.audio));
-        yield return cd.coroutine;
-
-        // wait an appropriate amount of time
-        if (currentWord.audio != null)
-            yield return new WaitForSeconds(cd.GetResult() + 0.25f);
-        else
-            yield return new WaitForSeconds(2f);
 
         // reveal correct polaroid 
         if (isCorrect)
@@ -1026,6 +1137,11 @@ public class WordFactoryBlendingManager : MonoBehaviour
         polaroids[0].transform.SetParent(polaroidParent);
         polaroids[1].transform.SetParent(polaroidParent);
         polaroids[2].transform.SetParent(polaroidParent);
+
+        // set appropriate rotation
+        polaroids[0].GetComponent<LerpableObject>().LerpRotation(10f, 0f);
+        polaroids[1].GetComponent<LerpableObject>().LerpRotation(0f, 0f);
+        polaroids[2].GetComponent<LerpableObject>().LerpRotation(-10f, 0f);
     }
 
     public void PlayAudioCoin(UniversalCoinImage coin)

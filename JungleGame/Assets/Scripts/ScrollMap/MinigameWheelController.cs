@@ -66,6 +66,9 @@ public class MinigameWheelController : MonoBehaviour
         background.raycastTarget = true;
         background.GetComponent<LerpableObject>().LerpImageAlpha(background, 0.5f, 0.5f);
 
+        // play wheel open sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WheelOpen, 0.5f);
+
         yield return new WaitForSeconds(0.5f);
 
         // show back button
@@ -95,6 +98,12 @@ public class MinigameWheelController : MonoBehaviour
 
         // remove back button
         backButton.SquishyScaleLerp(new Vector2(1.1f, 1.1f), new Vector2(0f, 0f), 0.2f, 0.2f);
+
+        // stop spinning wheel sound
+        AudioManager.instance.StopFX("wheel_spinning");
+
+        // play wheel close sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WheelClose, 0.5f);
 
         animator.Play("wheelClose");
 
@@ -138,13 +147,26 @@ public class MinigameWheelController : MonoBehaviour
         // start spinning wheel
         animator.Play("wheelClick");
 
+        // play wheel pressed sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WheelPressed, 0.5f);
+
         yield return new WaitForSeconds(1f);
+
+        // play spinning sound
+        AudioManager.instance.PlayFX_loop(AudioDatabase.instance.WheelSpinning, 0.5f, "wheel_spinning");
+
         isSpinning = true;
         wheelButton.interactable = true;
     }
 
     private IEnumerator StopWheel()
     {
+        // stop spinning wheel sound
+        AudioManager.instance.StopFX("wheel_spinning");
+
+        // play spinning open sound
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WheelFinished, 0.5f);
+
         // stop wheel button disabled
         wheelButton.interactable = false;
 
@@ -193,17 +215,19 @@ public class MinigameWheelController : MonoBehaviour
             // banner on map icon
             MapDataLoader.instance.SetRoyalRumbleBanner();
 
-            // wheel break animation TODO -> change to guards break after chapter 3 or 4
+            // wheel break animation -> change to guards break after chapter 3 or 4
             if (StudentInfoSystem.GetCurrentProfile().currentChapter <= Chapter.chapter_3)
             {
                 tigerDestroyAnimator.Play("TigerDestroy");
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RoyalRumbleIntro_Julius, 0.5f);
             }
             else
             {
                 guardDestroyAnimator.Play("GuardDestroy");
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RoyalRumbleIntro_Monkeys, 0.5f);
             }
             
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.6f);
 
             wheelBreakAnimator.Play("WheelBreak");
             yield return new WaitForSeconds(0.5f);
