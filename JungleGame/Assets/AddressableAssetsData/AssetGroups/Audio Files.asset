@@ -18830,6 +18830,76 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a53c903987d914c63858b60e64bcef87
+    m_Address: Assets/Audio/ChallengeGameAudio/TigerPaw and Password/cg_song_2_drums.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5368ed1e36bd1475e976ee34774987b2
+    m_Address: Assets/Audio/ChallengeGameAudio/TigerPaw and Password/cg_song_2_melodys.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e36ac90b9801d44ffbdcc42f51a963d9
+    m_Address: Assets/Audio/ChallengeGameAudio/TigerPaw and Password/cg_song_1_synth.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5196c67665f0c4bd69ad10a88ddfd407
+    m_Address: Assets/Audio/ChallengeGameAudio/TigerPaw and Password/coins_slide_in.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63cd18e87ca6c4788a3b832db95dee73
+    m_Address: Assets/Audio/ChallengeGameAudio/TigerPaw and Password/cg_song_1_drums.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bc2e2d51b34914e2b835e6511e818639
+    m_Address: Assets/Audio/ChallengeGameAudio/TigerPaw and Password/cg_song_2_chords.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bde046aee064a41b8865baaa6bff0af5
+    m_Address: Assets/Audio/ChallengeGameAudio/TigerPaw and Password/photos_slide_out.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 03397964af57b43cda83206e1cd20521
+    m_Address: Assets/Audio/ChallengeGameAudio/TigerPaw and Password/password_init_round.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 983a77d4a8a954a4ba79387342d6f518
+    m_Address: Assets/Audio/ChallengeGameAudio/TigerPaw and Password/password_new_round.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b60b75a200f543858008ebdea9f4edf
+    m_Address: Assets/Audio/ChallengeGameAudio/TigerPaw and Password/coins_slide_out.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2ec24595a8fa34d789a4f4765dff0eb4
+    m_Address: Assets/Audio/ChallengeGameAudio/TigerPaw and Password/password_wrong.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4289b95c86b184971ba225021236367c
+    m_Address: Assets/Audio/ChallengeGameAudio/TigerPaw and Password/cg_song_1_chords&bass.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3bdc5d8090449402e88924c5c8676308
+    m_Address: Assets/Audio/ChallengeGameAudio/TigerPaw and Password/glitter_loop.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f861486eeade24b86a84b67376deb3e2
+    m_Address: Assets/Audio/ChallengeGameAudio/TigerPaw and Password/photos_slide_in.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 36e446923fe0ce6489248e816bef7c49, type: 2}
   m_SchemaSet:
