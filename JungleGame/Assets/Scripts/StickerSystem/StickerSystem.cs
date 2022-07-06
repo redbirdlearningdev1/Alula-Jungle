@@ -157,7 +157,7 @@ public class StickerSystem : MonoBehaviour
         legendaryVP.enabled = false;
         ClearOutRenderTexture(legendaryVP.targetTexture);
 
-#if UNITY_IOS
+#if UNITY_IOS || UNITY_ANDROID
         // set sticker drag mode to no double click
         doubleClickToPlaceSticker = false;
 #endif

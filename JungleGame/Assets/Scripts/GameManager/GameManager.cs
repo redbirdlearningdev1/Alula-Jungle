@@ -90,7 +90,7 @@ public class GameManager : DontDestroy<GameManager>
 
     void Start()
     {
-#if !UNITY_IOS
+#if !(UNITY_IOS || UNITY_ANDROID)
         // set game resolution
         Screen.SetResolution(GameAwake.gameResolution.x, GameAwake.gameResolution.y, true);
 #endif

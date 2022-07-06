@@ -253,8 +253,8 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: E:/Keys/user.keystore
-  AndroidKeyaliasName: alulajungleandroidkey
+  AndroidKeystoreName: C:/Users/redbi/Documents/Keystores/AlulaLearning.keystore
+  AndroidKeyaliasName: alulalearningkey
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1

@@ -7,7 +7,7 @@ public class CameraAspectRatioController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-#if UNITY_IOS
+#if UNITY_IOS || UNITY_ANDROID
         // set the desired aspect ratio (the values in this example are
         // hard-coded for 16:9, but you could make them into public
         // variables instead so you can set them at design time)
