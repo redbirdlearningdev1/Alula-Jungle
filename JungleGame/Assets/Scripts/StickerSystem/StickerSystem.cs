@@ -98,6 +98,11 @@ public class StickerSystem : MonoBehaviour
             instance = this;
         }
 
+        commonVP.gameObject.SetActive(false);
+        uncommonVP.gameObject.SetActive(false);
+        rareVP.gameObject.SetActive(false);
+        legendaryVP.gameObject.SetActive(false);
+
         activeStickerboards = new List<StickerBoard>();
         activeStickerboards.Add(stickerboards[0]);
 
@@ -898,18 +903,22 @@ public class StickerSystem : MonoBehaviour
         {
             default:
             case StickerRarity.Common:
+                commonVP.gameObject.SetActive(true);
                 currentVideo = commonVP;
                 break;
 
             case StickerRarity.Uncommon:
+                uncommonVP.gameObject.SetActive(true);
                 currentVideo = uncommonVP;
                 break;
 
             case StickerRarity.Rare:
+                rareVP.gameObject.SetActive(true);
                 currentVideo = rareVP;
                 break;
 
             case StickerRarity.Legendary:
+                legendaryVP.gameObject.SetActive(true);
                 currentVideo = legendaryVP;
                 break;
         }
@@ -921,7 +930,9 @@ public class StickerSystem : MonoBehaviour
             yield return null;
 
         yield return new WaitForSeconds(0.2f);
-        
+
+        currentVideo.gameObject.SetActive(false);
+
         // Fade back in 
         FadeObject.instance.FadeIn(1f);
 
