@@ -141,6 +141,11 @@ public class TigerGameManager : MonoBehaviour
         // init empty lists
         prevWords = new List<ChallengeWord>();
 
+        // start split song
+
+        if (!playTutorial)
+            AudioManager.instance.InitSplitSong(AudioDatabase.instance.challengeGameSongSplit1);
+
         StartCoroutine(StartGame());
     }
 
@@ -270,6 +275,7 @@ public class TigerGameManager : MonoBehaviour
         }
 
         pattern.baseState();
+        AudioManager.instance.StopFX("tiger_paw_glitter");
 
         yield return new WaitForSeconds(0.5f);
 
@@ -332,6 +338,8 @@ public class TigerGameManager : MonoBehaviour
 
 
         Tiger.TigerDeal();
+        // play audio
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PhotosSlideIn, 0.5f);
         yield return new WaitForSeconds(.6f);
         currCoin.gameObject.transform.position = coinLandPos.position;
         currCoin.SetActionWordValue(currSet);
@@ -515,13 +523,18 @@ public class TigerGameManager : MonoBehaviour
             // play correct audio
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
             pattern.correct();
+            AudioManager.instance.PlayFX_loop(AudioDatabase.instance.GlitterLoop, 0.1f, "tiger_paw_glitter");
             correctCoins[numWins].SetActive(true);
             numWins++;
+
+            // increase split song
+            if (!playTutorial)
+                AudioManager.instance.IncreaseSplitSong();
         }
         else
         {
             // play wrong audio
-            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.5f);
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WrongChoice, 0.2f);
 
             if (playTutorial)
             {
@@ -535,10 +548,15 @@ public class TigerGameManager : MonoBehaviour
             numMisses++;
         }
 
+        // play audio
+        AudioManager.instance.PlayCoinDrop();
+
         // play popup
         StartCoroutine(PlayPopup(win));
 
         //yield return new WaitForSeconds(1f);
+        // play audio
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PhotosSlideOut, 0.5f);
         Tiger.TigerDeal();
         yield return new WaitForSeconds(.5f);
         currCoin.gameObject.transform.position = coinStartPos.position;
