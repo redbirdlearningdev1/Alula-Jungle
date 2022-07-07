@@ -20,5 +20,10 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   sprite: {fileID: 21300000, guid: fc64aa9fc0032c6438ed0d33170ea7b9, type: 3}
   elkoninList: 26000000230000000e0000001f0000000000000000000000
+  letterGroupList:
+  - s
+  - p
+  - ar
+  - k
   elkoninCount: 4
   set: 13

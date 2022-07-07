@@ -35,6 +35,9 @@ public class AudioDatabase : MonoBehaviour
     public List<AssetReference> SeashellsSongSplit;
     public List<AssetReference> PirateSongSplit;
 
+    public List<AssetReference> challengeGameSongSplit1;
+    public List<AssetReference> challengeGameSongSplit2;
+
     /* 
     ################################################
     #   BOAT GAME AUDIO DATABASE
@@ -70,6 +73,23 @@ public class AudioDatabase : MonoBehaviour
     public AssetReference DestroyArea;
     public AssetReference Trumpet;
     public AssetReference FastForwardSound;
+
+    [Header("Minigame Wheel Sounds")]
+    public AssetReference WheelOpen;
+    public AssetReference WheelClose;
+    public AssetReference WheelPressed;
+    public AssetReference WheelSpinning;
+    public AssetReference WheelFinished;
+    public AssetReference RoyalRumbleIntro_Julius;
+    public AssetReference RoyalRumbleIntro_Monkeys;
+
+    [Header("Sticker System Sounds")]
+    public AssetReference CartRollIn;
+    public AssetReference CartRollOut;
+    public AssetReference StickerReveal_Common;
+    public AssetReference StickerReveal_Uncommon;
+    public AssetReference StickerReveal_Rare;
+    public AssetReference StickerReveal_Legendary;
 
     [Header("Blips")]
     public AssetReference HappyBlip;
@@ -186,4 +206,16 @@ public class AudioDatabase : MonoBehaviour
     public AssetReference SelectBoop;
     public AssetReference SmallWhoosh;
     public AssetReference TigerSwipe;
+
+    [Header("Tiger Paw Games")]
+    public AssetReference CoinsSlideIn;
+    public AssetReference CoinsSlideOut;
+    public AssetReference PhotosSlideIn;
+    public AssetReference PhotosSlideOut;
+    public AssetReference GlitterLoop;
+
+    [Header("Password Game")]
+    public AssetReference PasswordInitRound;
+    public AssetReference PasswordNewRound;
+    public AssetReference PasswordWrongRound;
 }

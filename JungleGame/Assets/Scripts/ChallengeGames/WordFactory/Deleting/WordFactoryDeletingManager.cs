@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
+using TMPro;
 
 public class WordFactoryDeletingManager : MonoBehaviour
 {
     public static WordFactoryDeletingManager instance;
+
+    public bool showChallengeWordLetters;
 
     public Polaroid polaroid; // main polarid used in this game
     public GameObject universalCoinImage; // universal coin prefab
@@ -262,7 +264,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
-        //yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f);
 
         // say each letter + grow coin
         foreach (var coin in currentCoins)
@@ -427,8 +429,6 @@ public class WordFactoryDeletingManager : MonoBehaviour
             // remove coin from list
             currentCoins.Remove(currentCoin);
 
-            //yield return new WaitForSeconds(1f);
-
             // hide coins
             int x = 0;
             foreach (var coin in currentCoins)
@@ -465,22 +465,73 @@ public class WordFactoryDeletingManager : MonoBehaviour
             }
             // yield return new WaitForSeconds(1f);
 
-            // say new challenge word
-            AudioManager.instance.PlayTalk(currentPair.word1.audio);
-            polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
-            foreach (var coin in currentCoins)
+            if (showChallengeWordLetters)
             {
-                coin.LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
-                yield return new WaitForSeconds(0.1f);
+                LerpableObject pol = polaroid.GetComponent<LerpableObject>();
+
+                // squish on x scale
+                pol.LerpScale(new Vector2(0f, 1f), 0.2f);
+                yield return new WaitForSeconds(0.2f);
+                // play audio fx 
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BirdWingFlap, 1f);
+                // remove image
+                polaroid.ShowPolaroidWord(120f);
+                // un-squish on x scale
+                pol.LerpScale(new Vector2(1f, 1f), 0.2f);
+                yield return new WaitForSeconds(1f);
+
+                // say letter groups using coins
+                for (int j = 0; j < polaroid.challengeWord.elkoninCount; j++)
+                {
+                    GameObject letterElement = polaroid.GetLetterGroupElement(j);
+                    letterElement.GetComponent<TextMeshProUGUI>().color = Color.black;
+                    letterElement.GetComponent<LerpableObject>().LerpTextSize(150f - (Polaroid.FONT_SCALE_DECREASE * polaroid.challengeWord.elkoninCount), 0.2f);
+                    currentCoins[j].LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
+                    // audio fx
+                    AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(currentCoins[j].value).audio);
+                    AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", (1f + 0.25f * j));
+                    yield return new WaitForSeconds(1f);
+                    currentCoins[j].LerpScale(new Vector2(1f, 1f), 0.25f);
+                }
+                yield return new WaitForSeconds(0.2f);
+
+                // read word aloud to player
+                if (currentPair.word1.audio != null)
+                    AudioManager.instance.PlayTalk(currentPair.word1.audio);
+                // start wiggle
+                polaroid.ToggleWiggle(true);
+
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(currentPair.word1.audio));
+                yield return cd.coroutine;
+
+                // wait an appropriate amount of time
+                if (currentPair.word1.audio != null)
+                    yield return new WaitForSeconds(cd.GetResult() + 0.25f);
+                else
+                    yield return new WaitForSeconds(2f);
+
+                // end wiggle
+                polaroid.ToggleWiggle(false);
             }
-            yield return new WaitForSeconds(0.5f);
-            foreach (var coin in currentCoins)
+            else
             {
-                coin.LerpScale(Vector2.one, 0.25f);
-                yield return new WaitForSeconds(0.1f);
+                // say new challenge word
+                AudioManager.instance.PlayTalk(currentPair.word1.audio);
+                polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
+                foreach (var coin in currentCoins)
+                {
+                    coin.LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
+                    yield return new WaitForSeconds(0.1f);
+                }
+                yield return new WaitForSeconds(0.5f);
+                foreach (var coin in currentCoins)
+                {
+                    coin.LerpScale(Vector2.one, 0.25f);
+                    yield return new WaitForSeconds(0.1f);
+                }
+                yield return new WaitForSeconds(0.25f);
+                polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
             }
-            yield return new WaitForSeconds(0.25f);
-            polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
 
             // tutorial stuff
             if (playTutorial)
@@ -539,6 +590,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PolaroidCrunch, 0.5f);
         // yield return new WaitForSeconds(1.5f);
 
+
         // award card to correct person
         if (win)
         {
@@ -578,7 +630,6 @@ public class WordFactoryDeletingManager : MonoBehaviour
             Destroy(coin.gameObject);
         }
         currentCoins.Clear();
-
 
         // end tutorial
         if (playTutorial && tutorialEvent == 1)
@@ -672,6 +723,9 @@ public class WordFactoryDeletingManager : MonoBehaviour
                 }
             }
         }
+
+        // reset current polaroid
+        polaroid.HidePolaroidWord();
 
         StartCoroutine(NewRound());
     }
