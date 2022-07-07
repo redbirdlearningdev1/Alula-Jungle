@@ -1,0 +1,178 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BubblesAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 52
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 29
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 65
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 2878bb2ab1852f34fa46af5e3c2ef248, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 028b62403f49e8c48abadf2055e0c27f, type: 3}
+  - {fileID: 21300000, guid: 86a9ffd0040022d4987ee92d1ee942e6, type: 3}
+  - {fileID: 21300000, guid: a261b3e0c79bb0341aa7e0ea6ada0bbd, type: 3}
+  - {fileID: 21300000, guid: ee4d9631232707e489be2cebef7d1716, type: 3}
+  - {fileID: 21300000, guid: 33366081fa26d754783c4726a4b74c3a, type: 3}
+  - {fileID: 21300000, guid: b0ffa832ae3540a42a0dc8b4a1d520ea, type: 3}
+  - {fileID: 21300000, guid: e7aa5b321afc99649bffc315e7dc3709, type: 3}
+  - {fileID: 21300000, guid: 42604d826279a5e4f8c3cbc5547a121a, type: 3}
+  - {fileID: 21300000, guid: bf475292cdc992c4b9ced6ab4aefe6e9, type: 3}
+  - {fileID: 21300000, guid: a8a1a71393efa5f488fc64b817c8e24c, type: 3}
+  - {fileID: 21300000, guid: 868967631b9c21546bb60b7cc2605ca9, type: 3}
+  - {fileID: 21300000, guid: 3fb27da3bd3eabf49ab21a21beac8564, type: 3}
+  - {fileID: 21300000, guid: 58b4a2b3cc2402d43a36b52a736a7b11, type: 3}
+  - {fileID: 21300000, guid: 5647e9b3ae9cb6e4094988577c18804c, type: 3}
+  - {fileID: 21300000, guid: 3c4043a44dbbdab47bf03a5bc41071c9, type: 3}
+  - {fileID: 21300000, guid: ac34d455967db20468ebad47b4895d3c, type: 3}
+  - {fileID: 21300000, guid: 4595c086e1c00c94596f5cd008c9d299, type: 3}
+  - {fileID: 21300000, guid: c13df586cd036a14895c0556452ed437, type: 3}
+  - {fileID: 21300000, guid: 592e5e076d771a040bd793aed3f16758, type: 3}
+  - {fileID: 21300000, guid: 447f4d871df065547b2c5c6c4f7e2ba8, type: 3}
+  - {fileID: 21300000, guid: efceae28155da6640a69c38b502f9bdf, type: 3}
+  - {fileID: 21300000, guid: 2bbeb23956f72ab409fa36b22f9780b0, type: 3}
+  - {fileID: 21300000, guid: c002b089b6761bd4c970a2b1bd1f301d, type: 3}
+  - {fileID: 21300000, guid: eb88c4e9cbb8bc54a925d4f0cc62a215, type: 3}
+  - {fileID: 21300000, guid: 9da7798acbd4a8548bb3a88df42b05ad, type: 3}
+  - {fileID: 21300000, guid: a8d1379a767c387449d8d03b1afbbd6c, type: 3}
+  - {fileID: 21300000, guid: d4a0ecaa0a27e744a86f335c922fe6c8, type: 3}
+  - {fileID: 21300000, guid: 819e92cae0f537a4da1df6f27439dce7, type: 3}
+  - {fileID: 21300000, guid: f6ed030b31d7f7842a44872a1d663cf5, type: 3}
+  - {fileID: 21300000, guid: 8cae1d2bc21a5984b897e089f3342ade, type: 3}
+  - {fileID: 21300000, guid: d1b94a8bf1c1d5d46b2d3a7baf8ae78b, type: 3}
+  - {fileID: 21300000, guid: bc741c6c937504e43b3a4fa062f162b8, type: 3}
+  - {fileID: 21300000, guid: 24339b9ca7e11f74d87e4f9b17161346, type: 3}
+  - {fileID: 21300000, guid: d8402a5d0cc348140abb546d92c55ef9, type: 3}
+  - {fileID: 21300000, guid: 92e7604e470f3ba499f378e85ad0aafe, type: 3}
+  - {fileID: 21300000, guid: 43ac2f4e457864e4d92c7922f7367226, type: 3}
+  - {fileID: 21300000, guid: e94cf06e154cece4296c8b13b5ffb370, type: 3}
+  - {fileID: 21300000, guid: 61959d6e41adb7b42a84731b13d62c07, type: 3}
+  - {fileID: 21300000, guid: 0fa4238eb445e474991d97481ef70da3, type: 3}
+  - {fileID: 21300000, guid: e035baee3c3eee3418e466e03cf6c117, type: 3}
+  - {fileID: 21300000, guid: e4a9183fa2157c84385f218262986e32, type: 3}
+  - {fileID: 21300000, guid: 5fa3435f8fd524a458e3f7c317144c1b, type: 3}
+  - {fileID: 21300000, guid: 564b99ef98a8b45409fa1d6e069b3678, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Bubbles2_MC_EI
+  - Bubbles11_MO_EO
+  - Bubbles9_MC_EP
+  - Bubbles8_MO_EI
+  - Bubbles12_MO_EO
+  - Bubbles11_MC_EI
+  - Bubbles1_MC_EP
+  - Bubbles1_MO_EC
+  - Bubbles1_MO_EP
+  - Bubbles2_MC_EP
+  - Bubbles13_MO_EI
+  - Bubbles6_MO_EC
+  - Bubbles9_MO_EP
+  - Bubbles12_MC_EO
+  - Bubbles12_MO_EI
+  - Bubbles1_MC_EC
+  - Bubbles8_MO_EP
+  - Bubbles10_MO_EI
+  - Bubbles9_MO_EI
+  - Bubbles1_MO_EO
+  - Bubbles1_MO_EI
+  - Bubbles12_MO_EC
+  - Bubbles9_MC_EI
+  - Bubbles5_MO_EI
+  - Bubbles12_MC_EI
+  - Bubbles3_MC_EI
+  - Bubbles8_MC_EC
+  - Bubbles11_MC_EO
+  - Bubbles10_MO_EP
+  - Bubbles12_MC_EC
+  - Bubbles7_MC_EI
+  - Bubbles10_MO_EC
+  - Bubbles2_MO_EP
+  - Bubbles11_MO_EI
+  - Bubbles4_MO_EC
+  - Bubbles8_MO_EC
+  - Bubbles2_MO_EI
+  - Bubbles7_MC_EC
+  - Bubbles1_MC_EO
+  - Bubbles1_MC_EI
+  - Bubbles8_MC_EI
+  - Bubbles8_MC_EP
+  - Bubbles13_MC_EI
+  m_RenderDataMap: {}
+  m_Tag: BubblesAtlas
+  m_IsVariant: 0

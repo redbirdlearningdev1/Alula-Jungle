@@ -84,6 +84,7 @@ public class ScrollMapManager : MonoBehaviour
 
     void Awake()
     {
+        Caching.ClearCache();
         if (instance == null)
             instance = this;
 

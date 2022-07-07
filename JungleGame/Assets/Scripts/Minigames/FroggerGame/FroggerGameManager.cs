@@ -657,7 +657,7 @@ public class FroggerGameManager : MonoBehaviour
 
         bool success = (coin == selectedCoin);
         // only track phoneme attempt if not in tutorial AND not in practice mode
-        if (!playTutorial && !GameManager.instance.practiceModeON)
+        if (!playTutorial /*&& !GameManager.instance.practiceModeON */)
         {
             StudentInfoSystem.SavePlayerPhonemeAttempt(coin.type, success);
         }

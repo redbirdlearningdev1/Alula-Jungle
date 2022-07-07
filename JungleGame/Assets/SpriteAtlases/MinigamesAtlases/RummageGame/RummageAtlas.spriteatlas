@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RummageAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 52
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 29
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 65
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 87ffa3b33c8d87c40b1dd40894181495, type: 3}
+    - {fileID: 2800000, guid: c08182642cf4ca248b125738edccfcf0, type: 3}
+    - {fileID: 102900000, guid: 03f92d902c563d042bc04f1f53aaaab9, type: 3}
+    - {fileID: 102900000, guid: a9f7b702ef9ca624e94693b13d256113, type: 3}
+    - {fileID: 2800000, guid: be0b934f2c5629a438ca12fe90e55c44, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 596d28506a7b67a4fae16a4b1fa3c0d3, type: 3}
+  - {fileID: 21300000, guid: b3403c1175cd9484eb12f38c843c024a, type: 3}
+  - {fileID: 21300000, guid: 4bd8f9318b3652346916903b41b6e2d8, type: 3}
+  - {fileID: 21300000, guid: 9108cbb1baafe6246b4c2b04d466efcc, type: 3}
+  - {fileID: 21300000, guid: d557c6e247faf34458f806b41db498a5, type: 3}
+  - {fileID: 21300000, guid: 075b1093f96978b4fac0b6a08470fd79, type: 3}
+  - {fileID: 21300000, guid: 87ffa3b33c8d87c40b1dd40894181495, type: 3}
+  - {fileID: 21300000, guid: 9aec58b320fd02c47a13f5e6ee74b66c, type: 3}
+  - {fileID: 21300000, guid: c08182642cf4ca248b125738edccfcf0, type: 3}
+  - {fileID: 21300000, guid: 7b8cda25e60e158489873ae41ce1a4d7, type: 3}
+  - {fileID: 21300000, guid: 59884b45bb7b8d94ab05dc1ca9457ed0, type: 3}
+  - {fileID: 21300000, guid: 956e68558ae61db428900c0e48bcdcc6, type: 3}
+  - {fileID: 21300000, guid: c173226795b38904eb1a4189ae970460, type: 3}
+  - {fileID: 21300000, guid: 0986b487c01db184d9f5410c8c78a408, type: 3}
+  - {fileID: 21300000, guid: 1445aec9ea1ce4b4a94d799862b44d03, type: 3}
+  - {fileID: 21300000, guid: 96d0c2bb9875557489eac52924dbbc23, type: 3}
+  - {fileID: 21300000, guid: d5c48f4c586682640816bddb55b678ff, type: 3}
+  - {fileID: 21300000, guid: 46cac8ec8d72ad64dab358cc3754c7a3, type: 3}
+  - {fileID: 21300000, guid: be0b934f2c5629a438ca12fe90e55c44, type: 3}
+  - {fileID: 21300000, guid: d1bb7dff6ad013f4faa52fa32191b380, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - dirtyp2
+  - dirtyp3
+  - Ochest3
+  - cleanp5
+  - Ochest4
+  - Ochest1
+  - RummageBG
+  - cleanp2
+  - clothToolbar
+  - cleanp1
+  - dirtyp5
+  - Ochest0
+  - dirtyp1
+  - dirtyp4
+  - cleanp4
+  - cleanp3
+  - OchestBACK
+  - Ochest5
+  - woodToolbar
+  - Ochest2
+  m_RenderDataMap: {}
+  m_Tag: RummageAtlas
+  m_IsVariant: 0

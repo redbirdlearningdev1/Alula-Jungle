@@ -97,6 +97,7 @@ public static class ChallengeWordDatabase
         // Do your changes
         yourObject.word = data.word;
         yourObject.elkoninList = data.elkoninList;
+        yourObject.letterGroupList = data.letterGroupList;
         yourObject.elkoninCount = data.elkoninCount;
         yourObject.set = data.set;
         Debug.Log("data set: " + data.set);

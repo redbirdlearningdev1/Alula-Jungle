@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
+using TMPro;
 
 public class NewPasswordGameManager : MonoBehaviour
 {
     public static NewPasswordGameManager instance;
+
+    public bool showChallengeWordLetters;
 
     [Header("Game Parts")]
     public List<UniversalCoinImage> coins;
@@ -123,6 +124,13 @@ public class NewPasswordGameManager : MonoBehaviour
         foreach (var coin in coins)
             coin.SetValue(ElkoninValue.empty_gold);
 
+        // start split song
+        if (!playTutorial)
+            AudioManager.instance.InitSplitSong(AudioDatabase.instance.challengeGameSongSplit2);
+
+        // play init audio
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PasswordInitRound, 0.5f);
+
         StartCoroutine(NewRound(true));
     }
 
@@ -172,7 +180,7 @@ public class NewPasswordGameManager : MonoBehaviour
         PasswordTube.instance.TurnTube();
         polaroid.SetPolaroid(currentWord);
         polaroid.SetPolaroidAlpha(0f, 0f);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
 
         // move to new section
         if (moveBG)
@@ -306,6 +314,8 @@ public class NewPasswordGameManager : MonoBehaviour
 
         // show polaroid
         polaroid.GetComponent<LerpableObject>().LerpPosToTransform(polaroidOnScreenPos, 0.5f, false);
+        // play audio
+        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.MedWhoosh, 0.5f);
         yield return new WaitForSeconds(0.2f);
         polaroid.SetPolaroidAlpha(1f, 0.2f);
         yield return new WaitForSeconds(0.5f);
@@ -425,7 +435,7 @@ public class NewPasswordGameManager : MonoBehaviour
 
         bool success = (currentWord.elkoninCount == PasswordTube.instance.tubeCoins.Count);
         // only track challenge round attempt if not in tutorial AND not in practice mode
-        if (!playTutorial && !GameManager.instance.practiceModeON)
+        if (!playTutorial /*&& !GameManager.instance.practiceModeON */)
         {
             StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.Password, success, currentWord, 0); //// TODO: add player difficulty once it is available
         }
@@ -441,7 +451,57 @@ public class NewPasswordGameManager : MonoBehaviour
             while (PasswordTube.instance.playingAnimation)
                 yield return null;
 
-            //yield return new WaitForSeconds(1f);
+            if (showChallengeWordLetters)
+            {
+                LerpableObject pol = polaroid.GetComponent<LerpableObject>();
+
+                // squish on x scale
+                pol.LerpScale(new Vector2(0f, 1f), 0.2f);
+                yield return new WaitForSeconds(0.2f);
+                // play audio fx 
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BirdWingFlap, 1f);
+                // remove image
+                polaroid.ShowPolaroidWord(60f);
+                // un-squish on x scale
+                pol.LerpScale(new Vector2(1f, 1f), 0.2f);
+                yield return new WaitForSeconds(1f);
+
+                // say letter groups using coins
+                for (int j = 0; j < polaroid.challengeWord.elkoninCount; j++)
+                {
+                    GameObject letterElement = polaroid.GetLetterGroupElement(j);
+                    letterElement.GetComponent<TextMeshProUGUI>().color = Color.black;
+                    letterElement.GetComponent<LerpableObject>().LerpTextSize(70f - (Polaroid.FONT_SCALE_DECREASE * polaroid.challengeWord.elkoninCount), 0.2f);
+                    PasswordTube.instance.tubeCoins[j].LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
+                    // audio fx
+                    AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(PasswordTube.instance.tubeCoins[j].value).audio);
+                    AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", (1f + 0.25f * j));
+                    yield return new WaitForSeconds(1f);
+                    PasswordTube.instance.tubeCoins[j].LerpScale(new Vector2(1f, 1f), 0.25f);
+                }
+                yield return new WaitForSeconds(0.2f);
+
+                // read word aloud to player
+                if (currentWord.audio != null)
+                    AudioManager.instance.PlayTalk(currentWord.audio);
+                // start wiggle
+                polaroid.ToggleWiggle(true);
+
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(currentWord.audio));
+                yield return cd.coroutine;
+
+                // wait an appropriate amount of time
+                if (currentWord.audio != null)
+                    yield return new WaitForSeconds(cd.GetResult() + 0.25f);
+                else
+                    yield return new WaitForSeconds(2f);
+
+                // end wiggle
+                polaroid.ToggleWiggle(false);
+            }
+
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PasswordNewRound, 0.5f);
+            AudioManager.instance.IncreaseSplitSong();
 
             // move polaroid to player off-screen pos
             polaroid.GetComponent<LerpableObject>().LerpPosToTransform(polaroidOffScreenPlayerPos, 0.2f, false);
@@ -577,6 +637,9 @@ public class NewPasswordGameManager : MonoBehaviour
                 brutusCharacter.GetComponent<LerpableObject>().LerpPosToTransform(brutusOffScreenPos, 2f, false);
                 yield return new WaitForSeconds(1f);
 
+                // reset current polaroid
+                polaroid.HidePolaroidWord();
+
                 // remove lock
                 PasswordLock.instance.HideLock();
             }
@@ -609,6 +672,8 @@ public class NewPasswordGameManager : MonoBehaviour
             PasswordTube.instance.ShowPolaroidCoins(currentWord, coins, false);
             while (PasswordTube.instance.playingAnimation)
                 yield return null;
+
+            AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.PasswordWrongRound, 0.5f);
 
             yield return new WaitForSeconds(0.5f);
 
@@ -691,7 +756,8 @@ public class NewPasswordGameManager : MonoBehaviour
             }
         }
 
-        //yield return new WaitForSeconds(0.5f);
+        // reset current polaroid
+        polaroid.HidePolaroidWord();
 
         // begin next round
         StartCoroutine(NewRound(success));

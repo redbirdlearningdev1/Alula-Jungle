@@ -1,0 +1,168 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WaterAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 52
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 29
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 65
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 19ad661da33e0f74d9c30922e24232b9, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: f01bf050f7b65034da10e22ae21fccde, type: 3}
+  - {fileID: 21300000, guid: f1d9ce7069dc8d84d9dda8fae682c838, type: 3}
+  - {fileID: 21300000, guid: ed279f01e699e7d4ba2e8744efa220cb, type: 3}
+  - {fileID: 21300000, guid: d7be21515ec84dc46b9904a72bc5697e, type: 3}
+  - {fileID: 21300000, guid: 9bae64229860f9d42a7bffb65a20f4e2, type: 3}
+  - {fileID: 21300000, guid: 15a0e1627385ea4439794cfabbb15859, type: 3}
+  - {fileID: 21300000, guid: 65507a73dc2d4564a97d30692abb1252, type: 3}
+  - {fileID: 21300000, guid: a315ef933de23da47aa3da64ff70fa52, type: 3}
+  - {fileID: 21300000, guid: 086ae7d30e918734ab9bbc8944c46b1d, type: 3}
+  - {fileID: 21300000, guid: f805b9142c1f6d240832b8196f67b80b, type: 3}
+  - {fileID: 21300000, guid: fead25556ce8aaa4b81beabafa4bd787, type: 3}
+  - {fileID: 21300000, guid: 1b996e75630dfe44291f8757eded87e1, type: 3}
+  - {fileID: 21300000, guid: 9227b1b56b09e82418daeef27d864fd5, type: 3}
+  - {fileID: 21300000, guid: 3e8e3bb5607399a4b85abd97e5bb8ec8, type: 3}
+  - {fileID: 21300000, guid: 6c5e2706aec6c4646b19a6d9fdfe40db, type: 3}
+  - {fileID: 21300000, guid: 9ea8f1a658e40c045a986ba942edf6fa, type: 3}
+  - {fileID: 21300000, guid: de60c0c61bf94624799539fe9e09a0b1, type: 3}
+  - {fileID: 21300000, guid: 128135b7b044a37459241c0998dee39a, type: 3}
+  - {fileID: 21300000, guid: c5a98e88749901c47a29929579079130, type: 3}
+  - {fileID: 21300000, guid: b24162a893bbcf546ac6611225422af7, type: 3}
+  - {fileID: 21300000, guid: 9f3fd4a91dc352542bbf3243e1324719, type: 3}
+  - {fileID: 21300000, guid: eeab233a7d36a6f44aee398f26bb97c6, type: 3}
+  - {fileID: 21300000, guid: d97ccd4a46372314392b9b9e0d18219f, type: 3}
+  - {fileID: 21300000, guid: 1d11d88ad10a3564fbaf2415d6030c96, type: 3}
+  - {fileID: 21300000, guid: 6a1401fb2389d984abb312b6fb099219, type: 3}
+  - {fileID: 21300000, guid: cf6ca61c3c92b5b4e8cc55efad7151e5, type: 3}
+  - {fileID: 21300000, guid: ee092a2c91f7d114984acd951b416c2c, type: 3}
+  - {fileID: 21300000, guid: d4ea204c81385214b8d21dfb2bd7a8c4, type: 3}
+  - {fileID: 21300000, guid: 1c32c5ccc7d014442966840a61b3d5dc, type: 3}
+  - {fileID: 21300000, guid: b34a42dd8e6a0324f9d0a5558bb3e89c, type: 3}
+  - {fileID: 21300000, guid: 7d926efd8a52c0846aa7f1c78c867fca, type: 3}
+  - {fileID: 21300000, guid: bfe1822e3873bf149923dbfed0af3933, type: 3}
+  - {fileID: 21300000, guid: b1e12e7eca2b78a4ba4c58f160d02402, type: 3}
+  - {fileID: 21300000, guid: afce39fe224f468469df204137955866, type: 3}
+  - {fileID: 21300000, guid: eb1a041fd97f89742b92675eae4c2696, type: 3}
+  - {fileID: 21300000, guid: dad4ef4f547e5fc489ec6371ed0100c0, type: 3}
+  - {fileID: 21300000, guid: 9b6a7c9f7bacf4248a8fa7eccf89c123, type: 3}
+  - {fileID: 21300000, guid: 2c5e49bf57433ec47bc727b8e05904fa, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - WaterAnim19
+  - WaterAnim7
+  - WaterAnim20
+  - WaterAnim27
+  - WaterAnim24
+  - WaterAnim3
+  - WaterAnim4
+  - WaterAnim8
+  - WaterAnim15
+  - WaterAnim0
+  - WaterAnim30
+  - WaterAnim9
+  - WaterAnim36
+  - WaterAnim31
+  - WaterAnim32
+  - WaterAnim10
+  - WaterAnim26
+  - WaterAnim29
+  - WaterAnim6
+  - WaterAnim25
+  - WaterAnim21
+  - WaterAnim11
+  - WaterAnim16
+  - WaterAnim18
+  - WaterAnim14
+  - WaterAnim17
+  - WaterAnim23
+  - WaterAnim13
+  - WaterAnim33
+  - WaterAnim5
+  - WaterAnim28
+  - WaterAnim1
+  - WaterAnim12
+  - WaterAnim34
+  - WaterAnim37
+  - WaterAnim35
+  - WaterAnim22
+  - WaterAnim2
+  m_RenderDataMap: {}
+  m_Tag: WaterAtlas
+  m_IsVariant: 0

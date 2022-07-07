@@ -1,0 +1,224 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: eCoinAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 3
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 52
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 29
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 65
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 66acae6f5cb775e48bd8ce32c2b881d5, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 20a0b5204999bbe4593d2602cb18d283, type: 3}
+  - {fileID: 21300000, guid: 8ebd1160868136f4ebd4b88706e3de71, type: 3}
+  - {fileID: 21300000, guid: e02635900c5a01b48ad0897045807be6, type: 3}
+  - {fileID: 21300000, guid: fdd3b0c093726414b87d69b02a53a851, type: 3}
+  - {fileID: 21300000, guid: bfd589c07febe2044af052a2c195c4b4, type: 3}
+  - {fileID: 21300000, guid: a08f72d08448021499c02fec26d6ba1e, type: 3}
+  - {fileID: 21300000, guid: 33a1776195763ff498e20cdada6ecb9a, type: 3}
+  - {fileID: 21300000, guid: 5d308f71fbf5eec4c93b3279b1cd1963, type: 3}
+  - {fileID: 21300000, guid: 8e55b6a1cdc5e194f834e89340c96626, type: 3}
+  - {fileID: 21300000, guid: 3a543d532f7f3fe419966a57047f99f6, type: 3}
+  - {fileID: 21300000, guid: 5af65e639d154664b823e6352af86ed5, type: 3}
+  - {fileID: 21300000, guid: 41fc9fc39b783684cbc653ea1c2f52f7, type: 3}
+  - {fileID: 21300000, guid: bb83ffd3132bc04468dbaab4986e78f7, type: 3}
+  - {fileID: 21300000, guid: 7c2a6d640f899e342ae2a7b689fde790, type: 3}
+  - {fileID: 21300000, guid: 2c24f674f5898174ebc25b8f64c93468, type: 3}
+  - {fileID: 21300000, guid: 8736d0a4fd9692d4c93a17ac2c2b09c8, type: 3}
+  - {fileID: 21300000, guid: cce74c25de506a145ac1df33318d90a2, type: 3}
+  - {fileID: 21300000, guid: f4a2c9452ee259d46b17f9ef9d47d8ef, type: 3}
+  - {fileID: 21300000, guid: c7349565b9d9ab347843bf412ca14e73, type: 3}
+  - {fileID: 21300000, guid: 7701d2c5f063bef4dbc339c8b422d20d, type: 3}
+  - {fileID: 21300000, guid: 135a35c5d2ce68841876b3e66e4e791b, type: 3}
+  - {fileID: 21300000, guid: 2c135d268dd891145b10b50625f3b18d, type: 3}
+  - {fileID: 21300000, guid: 5e7fa236cb8dca64cbfdd295df40cc91, type: 3}
+  - {fileID: 21300000, guid: ce5a298696346d1418b7943fc60e2f72, type: 3}
+  - {fileID: 21300000, guid: 6498e4e64c349434e9c68f06335cb444, type: 3}
+  - {fileID: 21300000, guid: 3bf26b673f5ed1e4c95bf83c2c1833ab, type: 3}
+  - {fileID: 21300000, guid: 4f006377909a460429dc143981030092, type: 3}
+  - {fileID: 21300000, guid: d12b2da733ce2cc4ea3ca58482cc5de5, type: 3}
+  - {fileID: 21300000, guid: 6cdaf0c74eb03984ca38e095f3102b5d, type: 3}
+  - {fileID: 21300000, guid: 76c3a688d2b41da479a8de13d82c0a03, type: 3}
+  - {fileID: 21300000, guid: 4e2cc7a8376f1cf46836385fc00afb6e, type: 3}
+  - {fileID: 21300000, guid: 747dc3d85a48d6344873ea49db263325, type: 3}
+  - {fileID: 21300000, guid: 48fa05d871b8aa043a7ef29a44cf3860, type: 3}
+  - {fileID: 21300000, guid: 97a0c7593cabde444ada5aaa97353a48, type: 3}
+  - {fileID: 21300000, guid: 1ce1ec59264f4874d9fe3c60265b5768, type: 3}
+  - {fileID: 21300000, guid: 25f055998998d0247b9b2adadd781a4c, type: 3}
+  - {fileID: 21300000, guid: a8a6f6d95ad4f8845b901090d79942f7, type: 3}
+  - {fileID: 21300000, guid: 4103f1baaccd62a429779b1223d5bbe4, type: 3}
+  - {fileID: 21300000, guid: 3421b6ca8e6450a4c958485badac8bf4, type: 3}
+  - {fileID: 21300000, guid: bb99f92b9824b1b42a0493292831af64, type: 3}
+  - {fileID: 21300000, guid: 57b44e4b48bd2b142bc69398d667f60c, type: 3}
+  - {fileID: 21300000, guid: 8076897b9231344479d9ceb2c76d36da, type: 3}
+  - {fileID: 21300000, guid: a4ddcb7b025ddc44b9f2652e229db5a4, type: 3}
+  - {fileID: 21300000, guid: 3a09688bda7051f4082edaaa31446c55, type: 3}
+  - {fileID: 21300000, guid: 9e058f9baeabef341a24bf10f2c009c1, type: 3}
+  - {fileID: 21300000, guid: 025e77fb5b7fbf24e98f13690f2cc985, type: 3}
+  - {fileID: 21300000, guid: 13ef6d3c8ca62524d818a4581d8ae2d1, type: 3}
+  - {fileID: 21300000, guid: 509f167c61d8bb84daee83530eef8792, type: 3}
+  - {fileID: 21300000, guid: aeb19c7c12f50ce4bbf692469f5ea260, type: 3}
+  - {fileID: 21300000, guid: f6dd26dc92fabb944b06d7ef1aedc89c, type: 3}
+  - {fileID: 21300000, guid: 7ca23bdcef4bb5a4a879c68f44d3ffcc, type: 3}
+  - {fileID: 21300000, guid: e98266eca99961f40a9671beaa7554c0, type: 3}
+  - {fileID: 21300000, guid: 3b133b0d1603ab44db29b1a29fc86a68, type: 3}
+  - {fileID: 21300000, guid: 1941cf0d657201645abe597856a01302, type: 3}
+  - {fileID: 21300000, guid: eb80742d6afbbc84280e4241b120d7c6, type: 3}
+  - {fileID: 21300000, guid: 3cd49e2d0f27e10408ad682e63e2598d, type: 3}
+  - {fileID: 21300000, guid: 3401e43dd015a07438ca57816c9f4fbc, type: 3}
+  - {fileID: 21300000, guid: 0bcdbfcd9d135d84dbfafe84dcd63b29, type: 3}
+  - {fileID: 21300000, guid: b11e2a7e8943cba43b4ab160d2ac55fd, type: 3}
+  - {fileID: 21300000, guid: 5691fd7eaaace0845970cd013908f8e7, type: 3}
+  - {fileID: 21300000, guid: abf9538e83946034b9c62b62cbd44825, type: 3}
+  - {fileID: 21300000, guid: 86c4cbcee5f885a43996427f170c90ea, type: 3}
+  - {fileID: 21300000, guid: 84032aee46ee3004792635f69a52d194, type: 3}
+  - {fileID: 21300000, guid: 6a33b41f572bc92418522e6b0bba50d5, type: 3}
+  - {fileID: 21300000, guid: 8521926f01743c447b4ec9b55a86eacc, type: 3}
+  - {fileID: 21300000, guid: 825b487f26b718b488fa35de0461cd4e, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - eCoin25
+  - eCoin59
+  - eCoin49
+  - eCoin18
+  - eCoin36
+  - eCoin51
+  - eCoin22
+  - eCoin39
+  - eCoin58
+  - eCoin3
+  - eCoin26
+  - eCoin45
+  - eCoin1
+  - eCoin14
+  - eCoin6
+  - eCoin5
+  - eCoin19
+  - eCoin30
+  - eCoin37
+  - eCoin8
+  - eCoin55
+  - eCoin46
+  - eCoin9
+  - eCoin0
+  - eCoin24
+  - eCoin13
+  - eCoin15
+  - eCoin41
+  - eCoin48
+  - eCoin2
+  - eCoin17
+  - eCoin56
+  - eCoin4
+  - eCoin52
+  - eCoin61
+  - eCoin34
+  - eCoin21
+  - eCoin38
+  - eCoin29
+  - eCoin12
+  - eCoin62
+  - eCoin65
+  - eCoin20
+  - eCoin10
+  - eCoin43
+  - eCoin42
+  - eCoin7
+  - eCoin57
+  - eCoin44
+  - eCoin33
+  - eCoin47
+  - eCoin31
+  - eCoin60
+  - eCoin53
+  - eCoin16
+  - eCoin54
+  - eCoin64
+  - eCoin40
+  - eCoin32
+  - eCoin63
+  - eCoin27
+  - eCoin28
+  - eCoin35
+  - eCoin23
+  - eCoin11
+  - eCoin50
+  m_RenderDataMap: {}
+  m_Tag: eCoinAtlas
+  m_IsVariant: 0

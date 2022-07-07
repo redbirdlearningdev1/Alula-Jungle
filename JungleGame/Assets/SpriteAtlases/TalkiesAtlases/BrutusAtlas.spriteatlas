@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BrutusAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 52
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 29
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 65
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 8a0c929fbb1158544a4de935c61894df, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 23bbd990b72a5ef43816eace475adea6, type: 3}
+  - {fileID: 21300000, guid: 959414913dc505c44b71c417f0c98eb1, type: 3}
+  - {fileID: 21300000, guid: e2e92891ccafd02438e5a40bf7c07d55, type: 3}
+  - {fileID: 21300000, guid: e7cdf173cfe470744a82c1412aabda2d, type: 3}
+  - {fileID: 21300000, guid: 5114245497743944195916b65ec623b2, type: 3}
+  - {fileID: 21300000, guid: e413576571dd77c4d9102d546b7eb682, type: 3}
+  - {fileID: 21300000, guid: 06d2b2166a616fe4a97958aaae5905a4, type: 3}
+  - {fileID: 21300000, guid: 1c146d4741586344b8958883d0790274, type: 3}
+  - {fileID: 21300000, guid: 1af5bc58c92e1ac45be31bf3a7f0a479, type: 3}
+  - {fileID: 21300000, guid: eb1c8ee93246cb44396c6444d0c30701, type: 3}
+  - {fileID: 21300000, guid: 0e8190f9cdcc2ec438733626304150e5, type: 3}
+  - {fileID: 21300000, guid: 4c1a95eafdee26b4ea5c83caaafe3c90, type: 3}
+  - {fileID: 21300000, guid: 428cd4dd585d198488ebae7ad39e8d5a, type: 3}
+  - {fileID: 21300000, guid: d8a4117e298085541ae50441f738592d, type: 3}
+  - {fileID: 21300000, guid: b03f8b8ebf789f443a59431d0fc0e215, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Brutus5_MC
+  - Brutus6_MO
+  - Brutus7_MO
+  - Brutus2_MO
+  - Brutus2_MC
+  - Brutus10_MO
+  - Brutus4_MC
+  - Brutus8_MC
+  - Brutus5_MO
+  - Brutus7_MC
+  - Brutus3_MC
+  - Brutus8_MO
+  - Brutus4_MO
+  - Brutus10_MC
+  - Brutus3_MO
+  m_RenderDataMap: {}
+  m_Tag: BrutusAtlas
+  m_IsVariant: 0

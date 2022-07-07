@@ -1,0 +1,172 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ExclaimAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 512
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 512
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 52
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 512
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 29
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 512
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 65
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 3220a6d326f210344b414d5fb29ea701, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 5ff84d00bf474bc41862520a7226cfac, type: 3}
+  - {fileID: 21300000, guid: eda75880f89e7bd42b9a7636321a8603, type: 3}
+  - {fileID: 21300000, guid: c196d8d030996d34bb41b375726eeb6c, type: 3}
+  - {fileID: 21300000, guid: e75c14f076cc2ce48acac291772beca3, type: 3}
+  - {fileID: 21300000, guid: 57c24e719cc803640a96317c57a93001, type: 3}
+  - {fileID: 21300000, guid: 9385018101fe8e54b894849c1b3ebeac, type: 3}
+  - {fileID: 21300000, guid: 780e99a12ea837d4999d0251fc5d96db, type: 3}
+  - {fileID: 21300000, guid: 4d865cb1f050461468cb93430a524090, type: 3}
+  - {fileID: 21300000, guid: 5ce4c122b04764e47b03b8713953b97a, type: 3}
+  - {fileID: 21300000, guid: 2bd17472010c8f242aa3b12f8b7252e1, type: 3}
+  - {fileID: 21300000, guid: 0320a682dfd9fc24db3b9452b4637682, type: 3}
+  - {fileID: 21300000, guid: bdc29eb3b0477f944afaa2a936aeee3d, type: 3}
+  - {fileID: 21300000, guid: 3a0cac0468707f14dbeca7a70a5208d8, type: 3}
+  - {fileID: 21300000, guid: 6cc89d647e6ffaa43b2a26c50a8976f6, type: 3}
+  - {fileID: 21300000, guid: b90963b46707d4b47b62837e7591d259, type: 3}
+  - {fileID: 21300000, guid: fd2b33c41a5c27849894b443cf5938cc, type: 3}
+  - {fileID: 21300000, guid: 03e419d45e0f7f3419880de889c3a208, type: 3}
+  - {fileID: 21300000, guid: ee88681595d5f4f498e4fb480ae3533e, type: 3}
+  - {fileID: 21300000, guid: 205cc245ee68e844087583fcd059eacc, type: 3}
+  - {fileID: 21300000, guid: 3160f8a5dcc82a44baeb4a7fb108bac9, type: 3}
+  - {fileID: 21300000, guid: dff277f589b3e274fb3ee676dfffa3ce, type: 3}
+  - {fileID: 21300000, guid: 758a99577def49642847d7401e3c5acf, type: 3}
+  - {fileID: 21300000, guid: bb5dcf085ade9ee45a9d640dd9042f38, type: 3}
+  - {fileID: 21300000, guid: 086b78582db1d7c4fa68f7afbd410e21, type: 3}
+  - {fileID: 21300000, guid: a9ae19895c782af429922b1ac605511a, type: 3}
+  - {fileID: 21300000, guid: 717cf09ac0f726b46a0efe3f423ebe6b, type: 3}
+  - {fileID: 21300000, guid: ba62bfeab49f163478400a855091b4d7, type: 3}
+  - {fileID: 21300000, guid: f73b991bf81577340b1a9978d8efdd30, type: 3}
+  - {fileID: 21300000, guid: 87c6614b3eb11eb4cb3b9ac394bb616a, type: 3}
+  - {fileID: 21300000, guid: 8f6e634b482fe8e4189a24e118a657eb, type: 3}
+  - {fileID: 21300000, guid: 9c02418b5d8a74f4e9912c6d42a7d60c, type: 3}
+  - {fileID: 21300000, guid: dbff70db6b1f81444ad54b8e55c3f46c, type: 3}
+  - {fileID: 21300000, guid: c00feecc7dd27634b875d670bc917c76, type: 3}
+  - {fileID: 21300000, guid: a850d4dc0a9b7d74ea6a88ebe68a9fe2, type: 3}
+  - {fileID: 21300000, guid: 79dfc46d72a959b4ab65e30c6579bd13, type: 3}
+  - {fileID: 21300000, guid: 699014ad3c5365e48aae89f8d6d353e2, type: 3}
+  - {fileID: 21300000, guid: 486ac7bd3feac1642908054ecf8949b4, type: 3}
+  - {fileID: 21300000, guid: f8c8898f622d84e4288bd97b52baeb50, type: 3}
+  - {fileID: 21300000, guid: cd81319fd9ac43c44ad8c039060350c6, type: 3}
+  - {fileID: 21300000, guid: 7cd384ff245e2ea47b8d7ac6d0ce8584, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - exclaimMark14
+  - exclaimMark9
+  - exclaimMark12
+  - exclaimMark19
+  - exclaimMark23
+  - exclaimMark0
+  - exclaimMark3
+  - exclaimMark17
+  - exclaimMark18
+  - exclaimMark25
+  - exclaimMark11
+  - exclaimMark31
+  - exclaimMark36
+  - exclaimMark4
+  - exclaimMark29
+  - exclaimMark32
+  - exclaimMark38
+  - exclaimMark5
+  - exclaimMark7
+  - exclaimMark16
+  - exclaimMark35
+  - exclaimMark15
+  - exclaimMark6
+  - exclaimMark21
+  - exclaimMark30
+  - exclaimMark28
+  - exclaimMark10
+  - exclaimMark2
+  - exclaimMark39
+  - exclaimMark8
+  - exclaimMark34
+  - exclaimMark13
+  - exclaimMark37
+  - exclaimMark20
+  - exclaimMark22
+  - exclaimMark1
+  - exclaimMark26
+  - exclaimMark27
+  - exclaimMark33
+  - exclaimMark24
+  m_RenderDataMap: {}
+  m_Tag: ExclaimAtlas
+  m_IsVariant: 0

@@ -13,6 +13,7 @@ public struct ChallengeWordEntry
     public string word;
     public int elkoninCount;
     public List<ElkoninValue> elkoninList;
+    public List<string> letterGroupList;
     public ActionWordEnum set;
 
     public string toString()
@@ -159,10 +160,11 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
 
             var entry = new ChallengeWordEntry();
             entry.elkoninList = new List<ElkoninValue>();
+            entry.letterGroupList = new List<string>();
             string[] rowData = line.Split(',');
 
-            // check that row is 9 long
-            if (rowData.Length != 9)
+            // check that row is 16 units long
+            if (rowData.Length != 16)
             {   
                 passTest = false;
                 errorMsg = "invalid row size @ line " + lineCount;
@@ -196,6 +198,22 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
 
                         case 8: // set
                             entry.set = ConvertToActionWord(cell);
+                            break;
+
+                        case 9:
+                            break;
+                        
+                        case 10:
+                        case 11:
+                        case 12:
+                        case 13:
+                        case 14:
+                        case 15:
+                            string letterGroup = DetermineLetterGroup(cell);
+                            if (letterGroup != null)
+                            {
+                                entry.letterGroupList.Add(letterGroup);
+                            }
                             break;
                     }
                     column_count++;
@@ -380,6 +398,26 @@ public class ChallengeWordDatabaseManager : MonoBehaviour
             textText.color = Color.red;
             textText.text = "update complete - fail: " + errorMsg;
         }
+    }
+
+    private string DetermineLetterGroup(string val)
+    {
+        // check if val is empty -> return null
+        if (val == "")
+            return null;
+        // check that all chars are alphabet values
+        else
+        {
+            foreach (char letter in val)
+            {
+                if (!char.IsLetter(letter))
+                {
+                    return null;
+                }
+            }
+        }
+
+        return val;
     }
 
     private ElkoninValue ConvertToElkoninValue(string val)

@@ -314,7 +314,7 @@ public class TurntablesGameManager : MonoBehaviour
 
         bool success = (selectedKey.GetKeyType() == doorValues[currentDoor]);
         // only track phoneme attempt if not in tutorial AND not in practice mode
-        if (!playTutorial && !GameManager.instance.practiceModeON)
+        if (!playTutorial /*&& !GameManager.instance.practiceModeON */)
         {
             StudentInfoSystem.SavePlayerPhonemeAttempt(doorValues[currentDoor], success);
         }

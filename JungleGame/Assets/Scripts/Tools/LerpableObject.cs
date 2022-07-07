@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class LerpableObject : MonoBehaviour
 {
@@ -320,6 +321,31 @@ public class LerpableObject : MonoBehaviour
             float tempAngle = Mathf.Lerp(startRotation, targetAngle, timer / duration);
             transform.localRotation = Quaternion.Euler(0f, 0f, tempAngle);
             
+            yield return null;
+        }
+    }
+
+    public void LerpTextSize(float targetSize, float duration)
+    {
+        StartCoroutine(LerpTextSizeRoutine(targetSize, duration));
+    }
+
+    private IEnumerator LerpTextSizeRoutine(float targetSize, float duration)
+    {
+        TextMeshProUGUI textMesh = GetComponent<TextMeshProUGUI>(); 
+
+        float startSize = textMesh.fontSize;
+        float timer = 0f;
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > duration)
+            {
+                textMesh.fontSize = targetSize;
+                break;
+            }
+
+            textMesh.fontSize = Mathf.Lerp(startSize, targetSize, timer / duration);
             yield return null;
         }
     }

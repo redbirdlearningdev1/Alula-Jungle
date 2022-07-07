@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PopupAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 3
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 52
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 29
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 65
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 11781e4d6bc81f74ebfe737672cdbf57, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 32161c600069c5446b622c41f58dde58, type: 3}
+  - {fileID: 21300000, guid: 991053014c6b4014dbaf596e2e02dd7f, type: 3}
+  - {fileID: 21300000, guid: 384a7a934a2a09e4d822da097a6f53d5, type: 3}
+  - {fileID: 21300000, guid: be79e224722d96c41ac3f16dd1a42df3, type: 3}
+  - {fileID: 21300000, guid: dd40eea4bceb73a41ac4dde4bb799bde, type: 3}
+  - {fileID: 21300000, guid: ba69fd3589b8c6b48a7a294f5126e804, type: 3}
+  - {fileID: 21300000, guid: a2c965858c733d8409d9f7011ff26e65, type: 3}
+  - {fileID: 21300000, guid: 59779b86e1d689d4598446a8fe699c9f, type: 3}
+  - {fileID: 21300000, guid: 932c4d96d0d582c4cbff3b31f6e4cb1b, type: 3}
+  - {fileID: 21300000, guid: 856740b6bd734af43aaab12ec0366c5a, type: 3}
+  - {fileID: 21300000, guid: 45a04027ec74cd44589ff469c4f518a1, type: 3}
+  - {fileID: 21300000, guid: 854ebd18f7a1c5c4ebbaaa51e589c1c4, type: 3}
+  - {fileID: 21300000, guid: c8f544f90c58d5c488194b73149d3465, type: 3}
+  - {fileID: 21300000, guid: 9fc5ed5a3b2370c4db409cf7e6537719, type: 3}
+  - {fileID: 21300000, guid: 192bab3be21899a4486799fb4e15237c, type: 3}
+  - {fileID: 21300000, guid: 309d8d3bba6afb24dbeab976f5f4ca51, type: 3}
+  - {fileID: 21300000, guid: ad053e5b935673940b9694eb285ffeb6, type: 3}
+  - {fileID: 21300000, guid: 59587eab349a2964ba5ab53232eaa85d, type: 3}
+  - {fileID: 21300000, guid: 948f2fcb848c92743ae5148421e97d27, type: 3}
+  - {fileID: 21300000, guid: dda9dbebb7d036f4cb334e223b52e74f, type: 3}
+  - {fileID: 21300000, guid: 1888bffc604b37049a0bf10821a5f32d, type: 3}
+  - {fileID: 21300000, guid: 5b7328cd4b4d962498296fcb686f025c, type: 3}
+  - {fileID: 21300000, guid: 460c99dd77d0a9046ae2321a17bd29e4, type: 3}
+  - {fileID: 21300000, guid: 3b625dddd50911941b94f0d05398731e, type: 3}
+  - {fileID: 21300000, guid: 210b0abecaf80ba4e908f5e0872c80a3, type: 3}
+  - {fileID: 21300000, guid: edf1a6ce962c71245bae2918f81e7788, type: 3}
+  - {fileID: 21300000, guid: 034d48afcc6b942468f62800c755efa7, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - marcus_popup2
+  - red_popup1
+  - brutus_popup2
+  - spindle_popup1
+  - brutus_popup1
+  - celeste_popup1
+  - julius2_popup1
+  - ollie_popup1
+  - spindle_popup2
+  - speech_bubble_1
+  - marcus_popup1
+  - popup_bubble
+  - speech_bubble_2
+  - julius1_popup1
+  - celeste_popup2
+  - clogg_popup1
+  - sylvie_popup1
+  - red_popup2
+  - sylvie_popup2
+  - clogg_popup2
+  - bubbles_popup1
+  - bubbles_popup2
+  - ollie_popup2
+  - julius1_popup2
+  - dawin_popup1
+  - dawin_popup2
+  - julius2_popup2
+  m_RenderDataMap: {}
+  m_Tag: PopupAtlas
+  m_IsVariant: 0
