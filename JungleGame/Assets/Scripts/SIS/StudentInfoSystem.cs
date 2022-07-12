@@ -399,13 +399,63 @@ public static class StudentInfoSystem
         }
     }
 
+    public static void SavePlayerMinigameRoundAttempt(GameType game, bool _success)
+    {
+        MinigameRoundData newData = new MinigameRoundData();
+        newData.success = _success;
+        // save date-time
+        System.DateTime dateTime = System.DateTime.Now;
+        newData.sec = dateTime.Second;
+        newData.min = dateTime.Minute;
+        newData.hour = dateTime.Hour;
+        newData.day = dateTime.Day;
+        newData.month = dateTime.Month;
+        newData.year = dateTime.Year;
+
+        switch (game)
+        {
+            case GameType.FroggerGame:
+                currentStudentPlayer.froggerData.Add(newData);
+                break;
+            
+            case GameType.RummageGame:
+                currentStudentPlayer.rummageData.Add(newData);
+                break;
+
+            case GameType.SeashellGame:
+                currentStudentPlayer.seashellsData.Add(newData);
+                break;
+
+            case GameType.SpiderwebGame:
+                currentStudentPlayer.spiderwebData.Add(newData);
+                break;
+
+            case GameType.TurntablesGame:
+                currentStudentPlayer.turntablesData.Add(newData);
+                break;
+            
+            case GameType.PirateGame:
+                currentStudentPlayer.pirateData.Add(newData);
+                break;
+        }
+
+        SaveStudentPlayerData();
+    }
+
     public static void SavePlayerChallengeRoundAttempt(GameType game, bool _success, ChallengeWord _word, int _diff)
     {
         ChallengeRoundData newData = new ChallengeRoundData();
         newData.success = _success;
         newData.challengeWord = _word;
         newData.difficulty = _diff;
-        newData.dateTime = System.DateTime.Now;
+        // save date-time
+        System.DateTime dateTime = System.DateTime.Now;
+        newData.sec = dateTime.Second;
+        newData.min = dateTime.Minute;
+        newData.hour = dateTime.Hour;
+        newData.day = dateTime.Day;
+        newData.month = dateTime.Month;
+        newData.year = dateTime.Year;
 
         switch (game)
         {

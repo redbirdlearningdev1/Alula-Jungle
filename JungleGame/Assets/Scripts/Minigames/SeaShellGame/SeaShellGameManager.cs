@@ -299,6 +299,7 @@ public class SeaShellGameManager : MonoBehaviour
         // only track phoneme attempt if not in tutorial AND not in practice mode
         if (!playTutorial /*&& !GameManager.instance.practiceModeON */)
         {
+            StudentInfoSystem.SavePlayerMinigameRoundAttempt(GameType.SeashellGame, success);
             StudentInfoSystem.SavePlayerPhonemeAttempt(currentCoin, success);
         }
 

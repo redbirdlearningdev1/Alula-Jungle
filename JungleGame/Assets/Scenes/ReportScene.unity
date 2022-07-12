@@ -678,6 +678,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   profileImage: {fileID: 245368899}
   profileText: {fileID: 2050079167}
+  playerMasteryLevel: {fileID: 1982458328}
+  entryColors:
+  - {r: 0, g: 1, b: 0.039215688, a: 1}
+  - {r: 0.81960785, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.73333335, b: 0, a: 1}
+  - {r: 1, g: 0.53333336, b: 0, a: 1}
+  - {r: 1, g: 0.32156864, b: 0, a: 1}
+  - {r: 1, g: 0.05882353, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0.8666667, a: 1}
+  minigameEntry1name: {fileID: 104807082}
+  minigameEntry1num: {fileID: 1146535777}
+  minigameEntry2name: {fileID: 850678857}
+  minigameEntry2num: {fileID: 792147630}
+  minigameEntry3name: {fileID: 1398507361}
+  minigameEntry3num: {fileID: 332515814}
+  minigameEntry4name: {fileID: 1057093409}
+  minigameEntry4num: {fileID: 28847705}
+  minigameEntry5name: {fileID: 634499697}
+  minigameEntry5num: {fileID: 741492403}
+  minigameEntry6name: {fileID: 631300213}
+  minigameEntry6num: {fileID: 762610629}
+  challengeGameEntry1name: {fileID: 724270988}
+  challengeGameEntry1num: {fileID: 830458120}
+  challengeGameEntry2name: {fileID: 691454553}
+  challengeGameEntry2num: {fileID: 2122090063}
+  challengeGameEntry3name: {fileID: 1150170611}
+  challengeGameEntry3num: {fileID: 1030577685}
+  challengeGameEntry4name: {fileID: 136493569}
+  challengeGameEntry4num: {fileID: 543895083}
+  challengeGameEntry5name: {fileID: 1646542109}
+  challengeGameEntry5num: {fileID: 229943995}
+  challengeGameEntry6name: {fileID: 445884486}
+  challengeGameEntry6num: {fileID: 1869611519}
+  challengeGameEntry7name: {fileID: 1248506335}
+  challengeGameEntry7num: {fileID: 2042731239}
   coins:
   - {fileID: 4576424005558232360}
   - {fileID: 39096322}
@@ -5826,7 +5861,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00005531311, y: 0.00017282326}
+  m_AnchoredPosition: {x: 23.309973, y: 0.00017282326}
   m_SizeDelta: {x: -23.31, y: 3972.57}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &445884484
@@ -13003,7 +13038,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: -69.64}
+  m_AnchoredPosition: {x: 0.000061035156, y: -69.639984}
   m_SizeDelta: {x: 0, y: -139.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &979729120
@@ -17107,7 +17142,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: -50.474968}
+  m_AnchoredPosition: {x: 0.000061035156, y: -50.474976}
   m_SizeDelta: {x: 0, y: -100.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1412922679

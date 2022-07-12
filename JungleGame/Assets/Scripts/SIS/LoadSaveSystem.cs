@@ -126,6 +126,14 @@ public static class LoadSaveSystem
         new_data.profileAvatar = 11;
 
         // challenge round data
+        new_data.froggerData = new List<MinigameRoundData>();
+        new_data.rummageData = new List<MinigameRoundData>();
+        new_data.seashellsData = new List<MinigameRoundData>();
+        new_data.spiderwebData = new List<MinigameRoundData>();
+        new_data.turntablesData = new List<MinigameRoundData>();
+        new_data.pirateData = new List<MinigameRoundData>();
+
+        // challenge round data
         new_data.blendData = new List<ChallengeRoundData>();
         new_data.subData = new List<ChallengeRoundData>();
         new_data.buildData = new List<ChallengeRoundData>();

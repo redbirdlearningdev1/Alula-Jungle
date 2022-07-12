@@ -18,7 +18,7 @@ public class StudentPlayerData
     public int starsLastGamePlayed;
     public int starsGameBeforeLastPlayed;
 
-    // Track of Stars in minigames
+    // track number of stars in minigames
     public int starsFrogger;
     public int starsSeashell;
     public int starsRummage;
@@ -26,6 +26,7 @@ public class StudentPlayerData
     public int starsPirate;
     public int starsSpiderweb;
 
+    // track number of minigames played
     public int froggerPlayed;
     public int seashellPlayed;
     public int rummagePlayed;
@@ -33,7 +34,7 @@ public class StudentPlayerData
     public int piratePlayed;
     public int spiderwebPlayed;
 
-    // Track of Stars in Challengegames
+    // track number of stars in challenge games
     public int starsBlend;
     public int starsSub;
     public int starsDel;
@@ -42,6 +43,7 @@ public class StudentPlayerData
     public int starsTPawCoin;
     public int starsTPawPol;
 
+    // track number of challenge games played
     public int blendPlayed;
     public int subPlayed;
     public int delPlayed;
@@ -58,6 +60,14 @@ public class StudentPlayerData
     public WordPair lastWordPairFaced;
 
     public int profileAvatar;
+
+    // minigame rounds (used for stats and report page)
+    public List<MinigameRoundData> froggerData;
+    public List<MinigameRoundData> rummageData;
+    public List<MinigameRoundData> seashellsData;
+    public List<MinigameRoundData> spiderwebData;
+    public List<MinigameRoundData> turntablesData;
+    public List<MinigameRoundData> pirateData;
 
     // challenge game rounds (used for stats and report page)
     public List<ChallengeRoundData> blendData;
@@ -543,7 +553,26 @@ public class ChallengeRoundData
     public bool success;
     public ChallengeWord challengeWord;
     public int difficulty;
-    public System.DateTime dateTime;
+    // date-time
+    public int sec;
+    public int min;
+    public int hour;
+    public int day;
+    public int month;
+    public int year;
+}
+
+[System.Serializable]
+public class MinigameRoundData
+{
+    public bool success;
+    // date-time
+    public int sec;
+    public int min;
+    public int hour;
+    public int day;
+    public int month;
+    public int year;
 }
 
 /* 
