@@ -539,7 +539,8 @@ public class WordFactoryBlendingManager : MonoBehaviour
         // only track challenge round attempt if not in tutorial AND not in practice mode
         if (!playTutorial /*&& !GameManager.instance.practiceModeON */)
         {
-            StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.WordFactoryBlending, success, currentWord, 0); //// TODO: add player difficulty once it is available
+            int difficultyLevel = 1 + Mathf.FloorToInt(StudentInfoSystem.GetCurrentProfile().starsBlend / 3);
+            StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.WordFactoryBlending, success, currentWord, difficultyLevel);
         }
 
         if (success)

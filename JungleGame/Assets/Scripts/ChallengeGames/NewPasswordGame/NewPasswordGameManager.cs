@@ -437,7 +437,8 @@ public class NewPasswordGameManager : MonoBehaviour
         // only track challenge round attempt if not in tutorial AND not in practice mode
         if (!playTutorial /*&& !GameManager.instance.practiceModeON */)
         {
-            StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.Password, success, currentWord, 0); //// TODO: add player difficulty once it is available
+            int difficultyLevel = 1 + Mathf.FloorToInt(StudentInfoSystem.GetCurrentProfile().starsPass / 3);
+            StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.Password, success, currentWord, difficultyLevel);
         }
 
         if (success)

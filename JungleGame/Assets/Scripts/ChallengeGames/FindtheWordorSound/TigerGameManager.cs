@@ -476,7 +476,8 @@ public class TigerGameManager : MonoBehaviour
         // only track challenge round attempt if not in tutorial AND not in practice mode
         if (!playTutorial /*&& !GameManager.instance.practiceModeON */)
         {
-            StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.TigerPawPhotos, success, Photo.challengeWord, 0); //// TODO: add player difficulty once it is available
+            int difficultyLevel = 1 + Mathf.FloorToInt(StudentInfoSystem.GetCurrentProfile().starsTPawPol / 3);
+            StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.TigerPawPhotos, success, Photo.challengeWord, difficultyLevel);
         }
 
         if (success)
