@@ -13,7 +13,6 @@ public class ReportSceneManager : MonoBehaviour
     public TextMeshProUGUI profileText;
 
     public TextMeshProUGUI playerMasteryLevel;
-    public List<Color> entryColors;
 
     [Header("Minigame Success Window")]
     public TextMeshProUGUI minigameEntry1name;
@@ -130,6 +129,9 @@ public class ReportSceneManager : MonoBehaviour
         // update minigame success rates
         UpdateMinigameWindow();
 
+        // update challenge game success rates
+        UpdateChallengeGameWindow();
+
         // update phoneme window
         UpdatePhonemeSuccessWindow();
     }
@@ -156,21 +158,186 @@ public class ReportSceneManager : MonoBehaviour
         }
     }
 
-    private class MinigameEntry
+    private class GameEntry
     {
-        GameType gameType;
-        float rate;
+        public GameType gameType;
+        public float rate;
 
-        public MinigameEntry(GameType _gameType, float _rate)
+        public GameEntry(GameType _gameType, float _rate)
         {
             this.gameType = _gameType;
             this.rate = _rate;
         }
     }
 
+    public void UpdateChallengeGameWindow()
+    {
+        List<GameEntry> challengeGameEntries = new List<GameEntry>();
+
+        // blend stats
+        int blendingSuccessRounds = 0;
+        foreach(var dataPoint in profiles[currentProfile].blendData)
+        {
+            if (dataPoint.success)
+                blendingSuccessRounds++;
+        }
+        float blendPercent = (float)blendingSuccessRounds / (float)profiles[currentProfile].blendData.Count;
+        if (float.IsNaN(blendPercent))
+        {
+            blendPercent = 0f;
+        }
+        challengeGameEntries.Add(new GameEntry(GameType.WordFactoryBlending, blendPercent));
+
+        // sub stats
+        int subSuccessRounds = 0;
+        foreach(var dataPoint in profiles[currentProfile].subData)
+        {
+            if (dataPoint.success)
+                subSuccessRounds++;
+        }
+        float subPercent = (float)subSuccessRounds / (float)profiles[currentProfile].subData.Count;
+        if (float.IsNaN(subPercent))
+        {
+            subPercent = 0f;
+        }
+        challengeGameEntries.Add(new GameEntry(GameType.WordFactorySubstituting, subPercent));
+
+        // build stats
+        int buildSuccessRounds = 0;
+        foreach(var dataPoint in profiles[currentProfile].buildData)
+        {
+            if (dataPoint.success)
+                buildSuccessRounds++;
+        }
+        float buildPercent = (float)buildSuccessRounds / (float)profiles[currentProfile].buildData.Count;
+        if (float.IsNaN(buildPercent))
+        {
+            buildPercent = 0f;
+        }
+        challengeGameEntries.Add(new GameEntry(GameType.WordFactoryBuilding, buildPercent));
+
+        // delete stats
+        int deleteSuccessRounds = 0;
+        foreach(var dataPoint in profiles[currentProfile].deleteData)
+        {
+            if (dataPoint.success)
+                deleteSuccessRounds++;
+        }
+        float deletePercent = (float)deleteSuccessRounds / (float)profiles[currentProfile].deleteData.Count;
+        if (float.IsNaN(deletePercent))
+        {
+            deletePercent = 0f;
+        }
+        challengeGameEntries.Add(new GameEntry(GameType.WordFactoryDeleting, deletePercent));
+
+        // TP coins stats
+        int tpCoinsSuccessRounds = 0;
+        foreach(var dataPoint in profiles[currentProfile].TPCoinsData)
+        {
+            if (dataPoint.success)
+                tpCoinsSuccessRounds++;
+        }
+        float tpCoinsPercent = (float)tpCoinsSuccessRounds / (float)profiles[currentProfile].TPCoinsData.Count;
+        if (float.IsNaN(tpCoinsPercent))
+        {
+            tpCoinsPercent = 0f;
+        }
+        challengeGameEntries.Add(new GameEntry(GameType.TigerPawCoins, tpCoinsPercent));
+
+        // TP photos stats
+        int tpPhotosSuccessRounds = 0;
+        foreach(var dataPoint in profiles[currentProfile].TPPhotosData)
+        {
+            if (dataPoint.success)
+                tpPhotosSuccessRounds++;
+        }
+        float tpPhotosPercent = (float)tpPhotosSuccessRounds / (float)profiles[currentProfile].TPPhotosData.Count;
+        if (float.IsNaN(tpPhotosPercent))
+        {
+            tpPhotosPercent = 0f;
+        }
+        challengeGameEntries.Add(new GameEntry(GameType.TigerPawPhotos, tpPhotosPercent));
+
+        // password stats
+        int passSuccessRounds = 0;
+        foreach(var dataPoint in profiles[currentProfile].passwordData)
+        {
+            if (dataPoint.success)
+                passSuccessRounds++;
+        }
+        float passPercent = (float)passSuccessRounds / (float)profiles[currentProfile].passwordData.Count;
+        if (float.IsNaN(passPercent))
+        {
+            passPercent = 0f;
+        }
+        challengeGameEntries.Add(new GameEntry(GameType.Password, passPercent));
+
+        // order percents greatest to smallest
+        for (int i = 0; i < 7; i++)
+        {
+            float max = float.MinValue;
+            GameEntry currEntry = null;
+            
+            foreach (var entry in challengeGameEntries)
+            {
+                if (entry.rate > max)
+                {
+                    max = entry.rate;
+                    currEntry = entry;
+                }
+            }
+
+            max *= 100f;
+            max = Mathf.Round(max * 10.0f) * 0.1f;
+            string gameName = currEntry.gameType.ToString();
+            gameName = gameName.Replace("WordFactory", "");
+            gameName = gameName.Replace("TigerPaw", "tp ");
+
+            switch (i)
+            {
+                case 0:
+                    challengeGameEntry1name.text = gameName;
+                    challengeGameEntry1num.text = max.ToString() + "%";
+                    break;
+
+                case 1:
+                    challengeGameEntry2name.text = gameName;
+                    challengeGameEntry2num.text = max.ToString() + "%";
+                    break;
+
+                case 2:
+                    challengeGameEntry3name.text = gameName;
+                    challengeGameEntry3num.text = max.ToString() + "%";
+                    break;
+
+                case 3:
+                    challengeGameEntry4name.text = gameName;
+                    challengeGameEntry4num.text = max.ToString() + "%";
+                    break;
+
+                case 4:
+                    challengeGameEntry5name.text = gameName;
+                    challengeGameEntry5num.text = max.ToString() + "%";
+                    break;
+
+                case 5:
+                    challengeGameEntry6name.text = gameName;
+                    challengeGameEntry6num.text = max.ToString() + "%";
+                    break;
+
+                case 6:
+                    challengeGameEntry7name.text = gameName;
+                    challengeGameEntry7num.text = max.ToString() + "%";
+                    break;
+            }
+
+            challengeGameEntries.Remove(currEntry);
+        }
+    }
+
     public void UpdateMinigameWindow()
     {
-        List<MinigameEntry> minigameEntries = new List<MinigameEntry>();
+        List<GameEntry> minigameEntries = new List<GameEntry>();
 
         // frogger stats
         int froggerSuccessRounds = 0;
@@ -180,7 +347,11 @@ public class ReportSceneManager : MonoBehaviour
                 froggerSuccessRounds++;
         }
         float frogggerPercent = (float)froggerSuccessRounds / (float)profiles[currentProfile].froggerData.Count;
-        minigameEntries.Add(new MinigameEntry(GameType.FroggerGame, frogggerPercent));
+        if (float.IsNaN(frogggerPercent))
+        {
+            frogggerPercent = 0f;
+        }
+        minigameEntries.Add(new GameEntry(GameType.FroggerGame, frogggerPercent));
 
         // rummage stats
         int rummageSuccessRounds = 0;
@@ -190,7 +361,11 @@ public class ReportSceneManager : MonoBehaviour
                 rummageSuccessRounds++;
         }
         float rummagePercent = (float)rummageSuccessRounds / (float)profiles[currentProfile].rummageData.Count;
-        minigameEntries.Add(new MinigameEntry(GameType.RummageGame, rummagePercent));
+        if (float.IsNaN(rummagePercent))
+        {
+            rummagePercent = 0f;
+        }
+        minigameEntries.Add(new GameEntry(GameType.RummageGame, rummagePercent));
 
         // seashell stats
         int seashellSuccessRounds = 0;
@@ -200,7 +375,11 @@ public class ReportSceneManager : MonoBehaviour
                 seashellSuccessRounds++;
         }
         float seashellPercent = (float)seashellSuccessRounds / (float)profiles[currentProfile].seashellsData.Count;
-        minigameEntries.Add(new MinigameEntry(GameType.SeashellGame, seashellPercent));
+        if (float.IsNaN(seashellPercent))
+        {
+            seashellPercent = 0f;
+        }
+        minigameEntries.Add(new GameEntry(GameType.SeashellGame, seashellPercent));
 
         // spiderweb stats
         int spiderwebSuccessRounds = 0;
@@ -210,7 +389,11 @@ public class ReportSceneManager : MonoBehaviour
                 spiderwebSuccessRounds++;
         }
         float spiderwebPercent = (float)spiderwebSuccessRounds / (float)profiles[currentProfile].spiderwebData.Count;
-        minigameEntries.Add(new MinigameEntry(GameType.SpiderwebGame, spiderwebPercent));
+        if (float.IsNaN(spiderwebPercent))
+        {
+            spiderwebPercent = 0f;
+        }
+        minigameEntries.Add(new GameEntry(GameType.SpiderwebGame, spiderwebPercent));
 
         // turntables stats
         int turntablesSuccessRounds = 0;
@@ -220,7 +403,11 @@ public class ReportSceneManager : MonoBehaviour
                 turntablesSuccessRounds++;
         }
         float turntablesPercent = (float)turntablesSuccessRounds / (float)profiles[currentProfile].turntablesData.Count;
-        minigameEntries.Add(new MinigameEntry(GameType.TurntablesGame, turntablesPercent));
+        if (float.IsNaN(turntablesPercent))
+        {
+            turntablesPercent = 0f;
+        }
+        minigameEntries.Add(new GameEntry(GameType.TurntablesGame, turntablesPercent));
 
         // pirate stats
         int pirateSuccessRounds = 0;
@@ -230,10 +417,66 @@ public class ReportSceneManager : MonoBehaviour
                 pirateSuccessRounds++;
         }
         float piratePercent = (float)pirateSuccessRounds / (float)profiles[currentProfile].pirateData.Count;
-        minigameEntries.Add(new MinigameEntry(GameType.PirateGame, piratePercent));
+        if (float.IsNaN(piratePercent))
+        {
+            piratePercent = 0f;
+        }
+        minigameEntries.Add(new GameEntry(GameType.PirateGame, piratePercent));
 
         // order percents greatest to smallest
-        
+        for (int i = 0; i < 6; i++)
+        {
+            float max = float.MinValue;
+            GameEntry currEntry = null;
+            
+            foreach (var entry in minigameEntries)
+            {
+                if (entry.rate > max)
+                {
+                    max = entry.rate;
+                    currEntry = entry;
+                }
+            }
+
+            max *= 100f;
+            max = Mathf.Round(max * 10.0f) * 0.1f;
+            string gameName = currEntry.gameType.ToString().Replace("Game", "");
+
+            switch (i)
+            {
+                case 0:
+                    minigameEntry1name.text = gameName;
+                    minigameEntry1num.text = max.ToString() + "%";
+                    break;
+
+                case 1:
+                    minigameEntry2name.text = gameName;
+                    minigameEntry2num.text = max.ToString() + "%";
+                    break;
+
+                case 2:
+                    minigameEntry3name.text = gameName;
+                    minigameEntry3num.text = max.ToString() + "%";
+                    break;
+
+                case 3:
+                    minigameEntry4name.text = gameName;
+                    minigameEntry4num.text = max.ToString() + "%";
+                    break;
+
+                case 4:
+                    minigameEntry5name.text = gameName;
+                    minigameEntry5num.text = max.ToString() + "%";
+                    break;
+
+                case 5:
+                    minigameEntry6name.text = gameName;
+                    minigameEntry6num.text = max.ToString() + "%";
+                    break;
+            }
+
+            minigameEntries.Remove(currEntry);
+        }
     }
 
     public void UpdatePhonemeSuccessWindow()
