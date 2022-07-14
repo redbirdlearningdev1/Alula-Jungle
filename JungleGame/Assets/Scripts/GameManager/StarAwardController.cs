@@ -164,6 +164,9 @@ public class StarAwardController : MonoBehaviour
                     StudentInfoSystem.AdvanceStoryBeat();
                 }
             }
+
+            // save overall mastery level
+            StudentInfoSystem.SaveOverallMastery();
             
             // show window
             StudentInfoSystem.SaveStudentPlayerData();
@@ -1358,6 +1361,9 @@ public class StarAwardController : MonoBehaviour
             
             GameManager.instance.mapID = StudentInfoSystem.GetCurrentProfile().royalRumbleID;
             StudentInfoSystem.GetCurrentProfile().royalRumbleID = MapIconIdentfier.None;
+
+            // save overall mastery level
+            StudentInfoSystem.SaveOverallMastery();
         }
 
         // update signpost stars
