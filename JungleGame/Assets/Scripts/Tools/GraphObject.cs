@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GraphObject : MonoBehaviour
 {
@@ -18,8 +19,7 @@ public class GraphObject : MonoBehaviour
 
     void Awake()
     {
-        SetXAxis(10);
-        SetYAxis(5);
+        
 
         List<Vector2> points = new List<Vector2>();
         points.Add(new Vector2(0, 0));
@@ -30,6 +30,25 @@ public class GraphObject : MonoBehaviour
         points.Add(new Vector2(5, 5));
 
         SetPoints(points);
+    }
+
+    public void CreateGraph(StudentPlayerData playerData)
+    {
+        // only create graph if there are enough data points
+        if (playerData.overallMasteryPerGame.Count > 1)
+        {
+            // set y axis
+            List<string> indicators = new List<string>();
+            int yMax = Mathf.CeilToInt(playerData.overallMasteryPerGame[playerData.overallMasteryPerGame.Count - 1]) + 1;
+            for (int i = 0; i < yMax; i++)
+            {
+                indicators.Add(i.ToString());
+            }
+            SetYAxis(indicators);
+
+
+            SetXAxis(10);
+        }
     }
 
     public void SetPoints(List<Vector2> points)
@@ -49,11 +68,12 @@ public class GraphObject : MonoBehaviour
         }
     }
 
-    public void SetYAxis(int indicators)
+    public void SetYAxis(List<string> indicators)
     {
-        for (int i = 0; i < indicators; i++)
+        for (int i = 0; i < indicators.Count; i++)
         {
             GameObject indicator = Instantiate(Y_axis_indicator, y_axis_parent);
+            indicator.GetComponentInChildren<TextMeshProUGUI>().text = indicators[i];
         }
     }
 }

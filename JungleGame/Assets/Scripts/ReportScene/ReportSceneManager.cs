@@ -14,6 +14,8 @@ public class ReportSceneManager : MonoBehaviour
 
     public TextMeshProUGUI playerMasteryLevel;
 
+    public GraphObject graph;
+
     [Header("Minigame Success Window")]
     public TextMeshProUGUI minigameEntry1name;
     public TextMeshProUGUI minigameEntry1num;
@@ -125,6 +127,9 @@ public class ReportSceneManager : MonoBehaviour
         float averageNum = (float)(blendNum + subNum + buildNum + deleteNum + tpCoinNum + tpPhotosNum + passwordNum) / 7f;
         averageNum = Mathf.Round(averageNum * 10.0f) * 0.1f;
         playerMasteryLevel.text = averageNum.ToString();
+
+        // update graph
+        graph.CreateGraph(profiles[currentProfile]);
 
         // update minigame success rates
         UpdateMinigameWindow();

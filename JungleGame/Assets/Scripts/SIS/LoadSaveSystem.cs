@@ -142,6 +142,8 @@ public static class LoadSaveSystem
         new_data.TPPhotosData = new List<ChallengeRoundData>();
         new_data.passwordData = new List<ChallengeRoundData>();
 
+        new_data.overallMasteryPerGame = new List<float>();
+
         // phoneme success rate (correct/total)
         new_data.phonemeData = new List<PhonemeData>();
         new_data.phonemeData.Add(new PhonemeData(ActionWordEnum.mudslide, ElkoninValue.mudslide));

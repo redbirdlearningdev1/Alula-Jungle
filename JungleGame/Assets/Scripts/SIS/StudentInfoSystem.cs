@@ -385,6 +385,23 @@ public static class StudentInfoSystem
         }
     }
 
+    public static void SaveOverallMastery()
+    {
+        // update master level
+        int blendNum = 1 + Mathf.FloorToInt(currentStudentPlayer.starsBlend / 3);
+        int subNum = 1 + Mathf.FloorToInt(currentStudentPlayer.starsSub / 3);
+        int buildNum = 1 + Mathf.FloorToInt(currentStudentPlayer.starsBuild / 3);
+        int deleteNum = 1 + Mathf.FloorToInt(currentStudentPlayer.starsBlend / 3);
+        int tpCoinNum = 1 + Mathf.FloorToInt(currentStudentPlayer.starsTPawCoin / 3);
+        int tpPhotosNum = 1 + Mathf.FloorToInt(currentStudentPlayer.starsTPawPol / 3);
+        int passwordNum = 1 + Mathf.FloorToInt(currentStudentPlayer.starsPass / 3);
+
+        float averageNum = (float)(blendNum + subNum + buildNum + deleteNum + tpCoinNum + tpPhotosNum + passwordNum) / 7f;
+        averageNum = Mathf.Round(averageNum * 10.0f) * 0.1f;
+        
+        currentStudentPlayer.overallMasteryPerGame.Add(averageNum);
+    }
+
     public static void SavePlayerPhonemeAttempt(ElkoninValue phoneme, bool success)
     {
         // find phoneme data in current player and update

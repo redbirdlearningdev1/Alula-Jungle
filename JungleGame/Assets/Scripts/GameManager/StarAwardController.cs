@@ -203,6 +203,9 @@ public class StarAwardController : MonoBehaviour
                 StudentInfoSystem.AdvanceStoryBeat();
                 StudentInfoSystem.SaveStudentPlayerData();
             }
+
+            // save overall mastery level
+            StudentInfoSystem.SaveOverallMastery();
         }
         // minigame stuff
         else

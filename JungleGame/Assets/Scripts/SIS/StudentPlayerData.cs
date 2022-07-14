@@ -78,6 +78,9 @@ public class StudentPlayerData
     public List<ChallengeRoundData> TPPhotosData;
     public List<ChallengeRoundData> passwordData;
 
+    // overall mastery over time
+    public List<float> overallMasteryPerGame;
+
     // phoneme success rate (correct/total)
     public List<PhonemeData> phonemeData;
 
