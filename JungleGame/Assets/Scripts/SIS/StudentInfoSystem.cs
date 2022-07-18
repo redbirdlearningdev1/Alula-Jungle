@@ -57,7 +57,7 @@ public static class StudentInfoSystem
                 break;
         }
 
-        GameManager.instance.SendLog("StudentInfoSystem", "set most recent profile to: " + index);
+        // GameManager.instance.SendLog("StudentInfoSystem", "set most recent profile to: " + index);
 
         LoadSaveSystem.SaveStudentData(data1);
         LoadSaveSystem.SaveStudentData(data2);

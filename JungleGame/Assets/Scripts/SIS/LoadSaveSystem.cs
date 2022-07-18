@@ -91,6 +91,19 @@ public static class LoadSaveSystem
         return null;
     }
 
+    public static string CreateNewUniqueID()
+    {
+        /// https://stackoverflow.com/questions/15009423/way-to-generate-a-unique-number-that-does-not-repeat-in-a-reasonable-time
+        long ticks = System.DateTime.Now.Ticks;
+        byte[] bytes = System.BitConverter.GetBytes(ticks);
+        string id = System.Convert.ToBase64String(bytes)
+                                .Replace('+', '_')
+                                .Replace('/', '-')
+                                .TrimEnd('=');
+
+        return id;
+    }
+
     public static void ResetStudentData(StudentIndex index)
     {
         StudentPlayerData new_data = new StudentPlayerData();
@@ -99,6 +112,7 @@ public static class LoadSaveSystem
         // set all variables to be default values
         new_data.version =      GameManager.currentGameVersion;
         new_data.name =         default_name;
+        new_data.uniqueID =     CreateNewUniqueID(); 
         new_data.active = false;
         new_data.mostRecentProfile = false;
         new_data.minigamesPlayed = 0;

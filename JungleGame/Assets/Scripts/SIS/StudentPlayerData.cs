@@ -7,6 +7,7 @@ public class StudentPlayerData
 {
     public string version;
     public StudentIndex studentIndex; // differentiate between student profiles
+    public string uniqueID; // unique ID created when profile is made
     public bool active; // bool to determine if someone has created this student player
     public bool mostRecentProfile; // is this the most recently opened profile?
     public string name; // name of student

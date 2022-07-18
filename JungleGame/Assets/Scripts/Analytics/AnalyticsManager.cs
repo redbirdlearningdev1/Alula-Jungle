@@ -10,27 +10,24 @@ using Unity.Services.Analytics;
 
 public class AnalyticsManager : MonoBehaviour
 {
+    private static InitializationOptions options;
+    
     async void Start()
     {
         try
         {
-            var options = new InitializationOptions();
+            options = new InitializationOptions();
             options = options.SetOption("com.unity.services.core.environment-name", true); // set environment id
             options = options.SetOption("com.unity.services.core.analytics-user-id", true); // set custom user id
             
-
             if (Application.isEditor)
             {
                 options.SetEnvironmentName("development"); // set environment name 
             }
             
+            UpdateUserID();
+            
 
-            StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
-            if (StudentInfoSystem.GetCurrentProfile().active)
-            {
-                options.SetAnalyticsUserId("player:" + data.name + "_index:" + data.studentIndex.ToString()); // set custom user id
-            }
-                    
             await UnityServices.InitializeAsync(options);
             List<string> consentIdentifiers = await AnalyticsService.Instance.CheckForRequiredConsents();
 
@@ -48,6 +45,22 @@ public class AnalyticsManager : MonoBehaviour
         {
             // Something went wrong when checking the GeoIP, check the e.Reason and handle appropriately.
             GameManager.instance.SendError("AnalyticsManager", e.Reason.ToString());
+        }
+    }
+
+    public static void UpdateUserID()
+    {
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        if (data.active)
+        {
+            // create ID if null
+            if (data.uniqueID == null)
+            {
+                StudentInfoSystem.GetCurrentProfile().uniqueID = LoadSaveSystem.CreateNewUniqueID();
+                StudentInfoSystem.SaveStudentPlayerData();
+            }
+
+            options.SetAnalyticsUserId(data.name + ":" + data.studentIndex.ToString() + ":" + data.uniqueID); // set custom user id
         }
     }
 }
