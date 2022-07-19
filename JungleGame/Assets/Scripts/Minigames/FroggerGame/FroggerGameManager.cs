@@ -55,6 +55,8 @@ public class FroggerGameManager : MonoBehaviour
     [SerializeField] private GameObject devObject;
     [SerializeField] private LogCoin devCoin;
 
+    private float startTime;
+
 
     /* 
     ################################################
@@ -81,6 +83,9 @@ public class FroggerGameManager : MonoBehaviour
 
     void Start()
     {
+        // set start time
+        startTime = Time.time;
+
         // only turn off tutorial if false
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().froggerTutorial;
@@ -354,8 +359,24 @@ public class FroggerGameManager : MonoBehaviour
         // AI stuff
         AIData(StudentInfoSystem.GetCurrentProfile());
 
+        int starsAwarded = CalculateStars();
+        float elapsedTime = Time.time - startTime;
+
+        //// ANALYTICS : send minigame_completed event
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        {
+            { "minigame_name", GameType.FroggerGame.ToString() },
+            { "stars_awarded", starsAwarded },
+            { "elapsed_time", elapsedTime },
+            { "tutorial_played", false },
+            { "prev_times_played", data.froggerPlayed },
+            { "curr_storybeat", data.currStoryBeat.ToString() }
+        };            
+        AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
+
         // calculate and show stars
-        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+        StarAwardController.instance.AwardStarsAndExit(starsAwarded);
     }
 
     public void AIData(StudentPlayerData playerData)
@@ -588,6 +609,21 @@ public class FroggerGameManager : MonoBehaviour
         // save to SIS
         StudentInfoSystem.GetCurrentProfile().froggerTutorial = true;
         StudentInfoSystem.SaveStudentPlayerData();
+
+        float elapsedTime = Time.time - startTime;
+
+        //// ANALYTICS : send minigame_completed event
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        {
+            { "minigame_name", GameType.FroggerGame.ToString() },
+            { "stars_awarded", 0 },
+            { "elapsed_time", elapsedTime },
+            { "tutorial_played", true },
+            { "prev_times_played", data.froggerPlayed },
+            { "curr_storybeat", data.currStoryBeat.ToString() }
+        };            
+        AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
 
         GameManager.instance.LoadScene("FroggerGame", true, 3f);
     }

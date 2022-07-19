@@ -67,6 +67,7 @@ public class TigerGameManager : MonoBehaviour
     public bool testthis;
     List<ChallengeWord> word_pool = new List<ChallengeWord>();
 
+    private float startTime;
 
     void Awake()
     {
@@ -84,9 +85,8 @@ public class TigerGameManager : MonoBehaviour
 
     void Start()
     {
-        // add ambiance
-        // AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.05f);
-        // AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 0.05f);
+        // set start time
+        startTime = Time.time;
 
         // only turn off tutorial if false
         if (!playTutorial)
@@ -755,6 +755,21 @@ public class TigerGameManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().tigerPawPhotosTutorial = true;
             StudentInfoSystem.SaveStudentPlayerData();
 
+            float elapsedTime = Time.time - startTime;
+
+            //// ANALYTICS : send challengegame_completed event
+            StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                { "challengegame_name", GameType.TigerPawPhotos.ToString() },
+                { "stars_awarded", 0 },
+                { "elapsed_time", elapsedTime },
+                { "tutorial_played", true },
+                { "prev_times_played", data.tPawPolPlayed },
+                { "curr_storybeat", data.currStoryBeat.ToString() }
+            };            
+            AnalyticsManager.SendCustomEvent("challengegame_completed", parameters);
+
             GameManager.instance.LoadScene("TigerPawPhotos", true, 3f);
         }
         else
@@ -762,8 +777,24 @@ public class TigerGameManager : MonoBehaviour
             // AI stuff
             AIData(StudentInfoSystem.GetCurrentProfile());
 
+            int starsAwarded = CalculateStars();
+            float elapsedTime = Time.time - startTime;
+
+            //// ANALYTICS : send challengegame_completed event
+            StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                { "challengegame_name", GameType.TigerPawPhotos.ToString() },
+                { "stars_awarded", starsAwarded },
+                { "elapsed_time", elapsedTime },
+                { "tutorial_played", false },
+                { "prev_times_played", data.tPawPolPlayed },
+                { "curr_storybeat", data.currStoryBeat.ToString() }
+            };            
+            AnalyticsManager.SendCustomEvent("challengegame_completed", parameters);
+
             // calculate and show stars
-            StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+            StarAwardController.instance.AwardStarsAndExit(starsAwarded);
         }
     }
 

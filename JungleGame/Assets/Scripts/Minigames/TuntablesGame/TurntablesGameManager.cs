@@ -38,6 +38,7 @@ public class TurntablesGameManager : MonoBehaviour
     private int currentDoor = 0;
     private int numMisses = 0;
 
+    private float startTime;
 
     void Awake()
     {
@@ -55,6 +56,9 @@ public class TurntablesGameManager : MonoBehaviour
 
     void Start()
     {
+        // set start time
+        startTime = Time.time;
+
         // get game data
         mapID = GameManager.instance.mapID;
 
@@ -465,6 +469,21 @@ public class TurntablesGameManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().turntablesTutorial = true;
             StudentInfoSystem.SaveStudentPlayerData();
 
+            float elapsedTime = Time.time - startTime;
+
+            //// ANALYTICS : send minigame_completed event
+            StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                { "minigame_name", GameType.TurntablesGame.ToString() },
+                { "stars_awarded", 0 },
+                { "elapsed_time", elapsedTime },
+                { "tutorial_played", true },
+                { "prev_times_played", data.turntablesPlayed },
+                { "curr_storybeat", data.currStoryBeat.ToString() }
+            };            
+            AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
+
             GameManager.instance.LoadScene("TurntablesGame", true, 3f);
         }
         else
@@ -472,8 +491,24 @@ public class TurntablesGameManager : MonoBehaviour
             // AI stuff
             AIData(StudentInfoSystem.GetCurrentProfile());
 
+            int starsAwarded = CalculateStars();
+            float elapsedTime = Time.time - startTime;
+
+            //// ANALYTICS : send minigame_completed event
+            StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                { "minigame_name", GameType.TurntablesGame.ToString() },
+                { "stars_awarded", starsAwarded },
+                { "elapsed_time", elapsedTime },
+                { "tutorial_played", false },
+                { "prev_times_played", data.turntablesPlayed },
+                { "curr_storybeat", data.currStoryBeat.ToString() }
+            };            
+            AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
+
             // calculate and show stars
-            StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+            StarAwardController.instance.AwardStarsAndExit(starsAwarded);
         }
     }
 

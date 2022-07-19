@@ -45,6 +45,8 @@ public class NewSpiderGameManager : MonoBehaviour
     public int[] correctIndexes;
     [HideInInspector] public int tutorialEvent = 0;
 
+    private float startTime;
+
     /* 
     ################################################
     #   MONOBEHAVIOR METHODS
@@ -70,6 +72,9 @@ public class NewSpiderGameManager : MonoBehaviour
 
     void Start()
     {
+        // set start time
+        startTime = Time.time;
+
         // only turn off tutorial if false
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().spiderwebTutorial;
@@ -351,8 +356,24 @@ public class NewSpiderGameManager : MonoBehaviour
         // AI stuff
         AIData(StudentInfoSystem.GetCurrentProfile());
 
+        int starsAwarded = CalculateStars();
+        float elapsedTime = Time.time - startTime;
+
+        //// ANALYTICS : send minigame_completed event
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        {
+            { "minigame_name", GameType.SpiderwebGame.ToString() },
+            { "stars_awarded", starsAwarded },
+            { "elapsed_time", elapsedTime },
+            { "tutorial_played", playTutorial },
+            { "prev_times_played", data.spiderwebPlayed },
+            { "curr_storybeat", data.currStoryBeat.ToString() }
+        };            
+        AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
+
         // calculate and show stars
-        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+        StarAwardController.instance.AwardStarsAndExit(starsAwarded);
     }
 
     public void AIData(StudentPlayerData playerData)
@@ -588,6 +609,21 @@ public class NewSpiderGameManager : MonoBehaviour
         // save to SIS
         StudentInfoSystem.GetCurrentProfile().spiderwebTutorial = true;
         StudentInfoSystem.SaveStudentPlayerData();
+
+        float elapsedTime = Time.time - startTime;
+
+        //// ANALYTICS : end minigame_completed events
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        {
+            { "minigame_name", GameType.SpiderwebGame.ToString() },
+            { "stars_awarded", 0 },
+            { "elapsed_time", elapsedTime },
+            { "tutorial_played", true },
+            { "prev_times_played", data.spiderwebPlayed },
+            { "curr_storybeat", data.currStoryBeat.ToString() }
+        };            
+        AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
 
         GameManager.instance.LoadScene("NewSpiderGame", true, 3f);
     }

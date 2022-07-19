@@ -1368,7 +1368,6 @@ public class StarAwardController : MonoBehaviour
 
         // update signpost stars
         SetSignPostStarAmount();
-        
         // save data
         StudentInfoSystem.SaveStudentPlayerData();
         // show window

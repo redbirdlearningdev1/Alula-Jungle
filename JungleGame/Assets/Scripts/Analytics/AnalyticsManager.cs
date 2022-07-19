@@ -12,7 +12,12 @@ public class AnalyticsManager : MonoBehaviour
 {
     private static InitializationOptions options;
     
-    async void Start()
+    void Start()
+    {
+        SetAnalyticsOption(true);
+    }
+
+    private static async void TurnOnAnalytics()
     {
         try
         {
@@ -26,18 +31,9 @@ public class AnalyticsManager : MonoBehaviour
             }
             
             UpdateUserID();
-            
 
             await UnityServices.InitializeAsync(options);
             List<string> consentIdentifiers = await AnalyticsService.Instance.CheckForRequiredConsents();
-
-            // // send a custom event
-            // Dictionary<string, object> parameters = new Dictionary<string, object>()
-            // {
-            //     { "test_parameter", "beep boop beep boop i think this is working! :O" },
-            // };            
-            // AnalyticsService.Instance.CustomData("test_event", parameters);
-            // AnalyticsService.Instance.Flush(); // send event immediately
 
             GameManager.instance.SendLog("AnalyticsManager", "finished setting up analytics");
         }
@@ -46,6 +42,26 @@ public class AnalyticsManager : MonoBehaviour
             // Something went wrong when checking the GeoIP, check the e.Reason and handle appropriately.
             GameManager.instance.SendError("AnalyticsManager", e.Reason.ToString());
         }
+    }
+
+    public static void SetAnalyticsOption(bool opt)
+    {
+        // opt into using analytics
+        if (opt)
+        {
+            TurnOnAnalytics();
+        }
+        // opt out
+        else
+        {
+            AnalyticsService.Instance.OptOut();
+        }
+    }
+
+    public static void SendCustomEvent(string eventName, Dictionary<string, object> parameters)
+    {
+        AnalyticsService.Instance.CustomData(eventName, parameters);
+        AnalyticsService.Instance.Flush(); // send event immediately
     }
 
     public static void UpdateUserID()

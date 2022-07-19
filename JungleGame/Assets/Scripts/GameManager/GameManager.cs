@@ -365,7 +365,7 @@ public class GameManager : DontDestroy<GameManager>
     public static bool DeterminePlayPopup()
     {
         float num = Random.Range(0f, 1f);
-        print ("num: " + num);
+        // print ("num: " + num);
         if (num < popup_probability)
             return true;
         return false;
