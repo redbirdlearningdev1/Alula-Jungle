@@ -209,6 +209,21 @@ public class StarAwardController : MonoBehaviour
 
             // save overall mastery level
             StudentInfoSystem.SaveOverallMastery();
+
+            if (GameManager.instance.playingSignpostGame)
+            {
+                //// ANALYTICS : send signpost_game_completed event
+                StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+                Dictionary<string, object> parameters = new Dictionary<string, object>()
+                {
+                    { "challengegame_name", GameManager.instance.signpostGame.ToString() },
+                    { "curr_storybeat", data.currStoryBeat },
+                    { "stars_awarded", numStars }
+                };            
+                AnalyticsManager.SendCustomEvent("signpost_game_completed", parameters);
+
+                GameManager.instance.signpostGame = GameType.None;
+            }
         }
         // minigame stuff
         else
@@ -1356,6 +1371,7 @@ public class StarAwardController : MonoBehaviour
                 GameManager.instance.repairMapIconID = true;
             }
 
+            GameType gameType = StudentInfoSystem.GetCurrentProfile().royalRumbleGame;
             StudentInfoSystem.GetCurrentProfile().royalRumbleActive = false;
             StudentInfoSystem.GetCurrentProfile().royalRumbleGame = GameType.None;
             
@@ -1364,6 +1380,16 @@ public class StarAwardController : MonoBehaviour
 
             // save overall mastery level
             StudentInfoSystem.SaveOverallMastery();
+
+            //// ANALYTICS : send royalrumble_completed event
+            StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                { "challengegame_name", gameType.ToString() },
+                { "curr_storybeat", data.currStoryBeat },
+                { "stars_awarded", numStars }
+            };            
+            AnalyticsManager.SendCustomEvent("royalrumble_completed", parameters);
         }
 
         // update signpost stars

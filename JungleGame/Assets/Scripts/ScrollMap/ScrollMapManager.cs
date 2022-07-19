@@ -290,6 +290,7 @@ public class ScrollMapManager : MonoBehaviour
             GameManager.instance.playingBossBattleGame = false;
             GameManager.instance.finishedBoatGame = false;
             GameManager.instance.practiceModeON = false;
+            GameManager.instance.playingSignpostGame = false;
             GameManager.instance.practiceModeCounter.text = "";
         }
         
@@ -1579,6 +1580,15 @@ public class ScrollMapManager : MonoBehaviour
     public void UnlockMapArea(MapLocation location, bool leaveLetterboxUp = false)
     {
         StartCoroutine(UnlockMapAreaRoutine(location, leaveLetterboxUp));
+
+        //// ANALYTICS : send unlocked_map_location event
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        {
+            { "map_location", location.ToString() },
+            { "total_stars",  StudentInfoSystem.GetCurrentPlayerTotalStars() }
+        };            
+        AnalyticsManager.SendCustomEvent("unlocked_map_location", parameters);
     }
 
     private IEnumerator UnlockMapAreaRoutine(MapLocation location, bool leaveLetterboxUp = false)

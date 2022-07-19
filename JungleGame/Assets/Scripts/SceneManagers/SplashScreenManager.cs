@@ -511,6 +511,18 @@ public class SplashScreenManager : MonoBehaviour
             practiceButton.GetComponent<Button>().interactable = false;
             reportButton.GetComponent<Button>().interactable = false;
         }
+
+        //// ANALYTICS : send profile_created event
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        {
+            { "avatar_id", profileAvatarIndex },
+            { "game_version", GameManager.currentGameVersion },
+            { "profile_name", newProfileName },
+            { "student_index", newProfileIndex.ToString() },
+            { "unique_id", data.uniqueID }
+        };            
+        AnalyticsManager.SendCustomEvent("profile_created", parameters);
     }
 
     private void LoadProfileAndContinue(StudentIndex index)

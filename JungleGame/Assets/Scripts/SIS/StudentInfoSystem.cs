@@ -29,9 +29,35 @@ public static class StudentInfoSystem
         SaveStudentPlayerData();
         currentStudentPlayer = LoadSaveSystem.LoadStudentData(index, true); // load new student data
 
+        AnalyticsManager.UpdateUserID();
+
         DropdownToolbar.instance.LoadToolbarDataFromProfile(); // load profile coins
         GameManager.instance.SendLog("StudentInfoSystem", "set current profile to: " + index);
         SettingsManager.instance.LoadScrollSettingsFromProfile(); // load in settings
+    }
+
+    public static int GetCurrentPlayerTotalStars()
+    {
+        int total = 0;
+        
+        // minigames
+        total += currentStudentPlayer.starsFrogger;
+        total += currentStudentPlayer.starsRummage;
+        total += currentStudentPlayer.starsSeashell;
+        total += currentStudentPlayer.starsSpiderweb;
+        total += currentStudentPlayer.starsTurntables;
+        total += currentStudentPlayer.starsPirate;
+
+        // challengegames
+        total += currentStudentPlayer.starsBlend;
+        total += currentStudentPlayer.starsSub;
+        total += currentStudentPlayer.starsBuild;
+        total += currentStudentPlayer.starsDel;
+        total += currentStudentPlayer.starsTPawCoin;
+        total += currentStudentPlayer.starsTPawPol;
+        total += currentStudentPlayer.starsPass;
+
+        return total;
     }
 
     private static void SetMostRecentProfile(StudentIndex index)

@@ -10,11 +10,19 @@ using Unity.Services.Analytics;
 
 public class AnalyticsManager : MonoBehaviour
 {
+    public static bool useTestingEnvironment = true;
     private static InitializationOptions options;
     
     void Start()
     {
-        SetAnalyticsOption(true);
+        if (PlayerPrefs.GetInt("USE_ANALYTICS") == 1)
+        {
+            SetAnalyticsOption(true);
+        }
+        else
+        {
+            SetAnalyticsOption(false);
+        }
     }
 
     private static async void TurnOnAnalytics()
@@ -25,9 +33,14 @@ public class AnalyticsManager : MonoBehaviour
             options = options.SetOption("com.unity.services.core.environment-name", true); // set environment id
             options = options.SetOption("com.unity.services.core.analytics-user-id", true); // set custom user id
             
+            // set environment name 
             if (Application.isEditor)
             {
-                options.SetEnvironmentName("development"); // set environment name 
+                options.SetEnvironmentName("development"); 
+            }
+            else if (useTestingEnvironment)
+            {
+                options.SetEnvironmentName("testing"); 
             }
             
             UpdateUserID();
@@ -77,6 +90,10 @@ public class AnalyticsManager : MonoBehaviour
             }
 
             options.SetAnalyticsUserId(data.name + ":" + data.studentIndex.ToString() + ":" + data.uniqueID); // set custom user id
+        }
+        else
+        {
+            options.SetAnalyticsUserId("new_user:" + LoadSaveSystem.CreateNewUniqueID());
         }
     }
 }

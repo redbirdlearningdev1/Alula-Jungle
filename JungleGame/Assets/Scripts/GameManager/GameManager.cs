@@ -33,7 +33,7 @@ public enum GameType
 
 public class GameManager : DontDestroy<GameManager>
 {
-    public static string currentGameVersion = "alpha1.7";
+    public static string currentGameVersion = "alpha1.9.1";
 
     public static int stickerInventorySize = 16;
 
@@ -67,6 +67,9 @@ public class GameManager : DontDestroy<GameManager>
 
     [HideInInspector] public bool playingBossBattleGame = false; // is player in a boss battle game?
     [HideInInspector] public bool newBossBattleStoryBeat = false; // did player move to a new boss battle story beat?
+
+    [HideInInspector] public bool playingSignpostGame = false; // is player playing a signpost game?
+    [HideInInspector] public GameType signpostGame = GameType.None; // what challenge game is the signpost game
 
     [Header("Avatars")]
     public List<Sprite> avatars;
