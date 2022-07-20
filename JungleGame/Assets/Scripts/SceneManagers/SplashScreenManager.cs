@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+
 
 public class SplashScreenManager : MonoBehaviour
 {
@@ -14,6 +17,8 @@ public class SplashScreenManager : MonoBehaviour
     public Animator BG3_animator;
     public Animator BG4_animator;
     public Animator BG6_animator;
+
+    [Header("Addressable References")]
 
     [Header("Profile Windows")]
     [SerializeField] CanvasGroup profileSelectWindow;
@@ -94,6 +99,9 @@ public class SplashScreenManager : MonoBehaviour
     public Sprite textWhite;
     public Sprite textGreen;
 
+    [Header("Addressables")]
+    Dictionary<int, AsyncOperationHandle<Sprite>> avatarHandles = new Dictionary<int, AsyncOperationHandle<Sprite>>();
+
     void Awake()
     {
         if (instance == null)
@@ -102,7 +110,50 @@ public class SplashScreenManager : MonoBehaviour
         }
     }
 
-    void Start() 
+    public void UnloadAvatar(int profileIndex)
+    {
+        if (avatarHandles.ContainsKey(profileIndex))
+        {
+            AsyncOperationHandle<Sprite> avatarHandle = avatarHandles[profileIndex];
+            Addressables.Release(avatarHandle);
+            avatarHandles.Remove(profileIndex);
+        }
+    }
+
+    public void UnloadAllAvatars()
+    {
+        foreach (KeyValuePair<int, AsyncOperationHandle<Sprite>> pair in avatarHandles)
+        {
+            AsyncOperationHandle<Sprite> avatarHandle = pair.Value;
+            Addressables.Release(avatarHandle);
+        }
+        avatarHandles.Clear();
+    }
+
+    IEnumerator LoadAvatar(Image imageToSet, int profileIndex, Image editImage = null)
+    {
+        AsyncOperationHandle<Sprite> avatarHandle;
+        if (avatarHandles.ContainsKey(profileIndex))
+        {
+            avatarHandle = avatarHandles[profileIndex];
+        }
+        else
+        {
+            avatarHandle = GameManager.instance.avatars[profileIndex].LoadAssetAsync<Sprite>();
+            avatarHandles.Add(profileIndex, avatarHandle);
+        }
+
+        yield return avatarHandle.Result;
+
+        imageToSet.sprite = avatarHandle.Result;
+
+        if (editImage != null)
+        {
+            editImage.sprite = avatarHandle.Result;
+        }
+    }
+
+    void Start()
     {
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
@@ -157,7 +208,7 @@ public class SplashScreenManager : MonoBehaviour
         {
             // get most recent chapter
             Chapter chapter = currProfile.currentChapter;
-            
+
             if (chapter > Chapter.chapter_1)
             {
                 BG3_animator.Play("3_Ch1");
@@ -182,7 +233,7 @@ public class SplashScreenManager : MonoBehaviour
             {
                 BG6_animator.Play("6_Ch5");
             }
-            
+
             if (chapter > Chapter.chapter_6)
             {
                 BG4_animator.Play("4_Ch6");
@@ -207,8 +258,7 @@ public class SplashScreenManager : MonoBehaviour
         tapTextWiggleController.StartWiggle();
 
         // set images
-        selectedProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
-        editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+        // StartCoroutine(LoadAvatar(selectedProfileImage, profileAvatarIndex, editProfileImage));
 
         // move practice button off-screen
         practiceButtonPos = practiceButton.transform.localPosition;
@@ -249,7 +299,8 @@ public class SplashScreenManager : MonoBehaviour
         if (data1.active)
         {
             profile1Text.text = data1.name;
-            profile1Image.sprite = GameManager.instance.avatars[data1.profileAvatar];
+            StartCoroutine(LoadAvatar(profile1Image, data1.profileAvatar));
+            //profile1Image.sprite = GameManager.instance.avatars[data1.profileAvatar];
         }
         else
         {
@@ -262,7 +313,8 @@ public class SplashScreenManager : MonoBehaviour
         if (data2.active)
         {
             profile2Text.text = data2.name;
-            profile2Image.sprite = GameManager.instance.avatars[data2.profileAvatar];
+            StartCoroutine(LoadAvatar(profile2Image, data2.profileAvatar));
+            //profile2Image.sprite = GameManager.instance.avatars[data2.profileAvatar];
         }
         else
         {
@@ -275,7 +327,8 @@ public class SplashScreenManager : MonoBehaviour
         if (data3.active)
         {
             profile3Text.text = data3.name;
-            profile3Image.sprite = GameManager.instance.avatars[data3.profileAvatar];
+            StartCoroutine(LoadAvatar(profile3Image, data3.profileAvatar));
+            //profile3Image.sprite = GameManager.instance.avatars[data3.profileAvatar];
         }
         else
         {
@@ -298,8 +351,9 @@ public class SplashScreenManager : MonoBehaviour
         tapTextWiggleController.StopWiggle();
 
         mainAnimator.Play("Tapped");
-
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.2f);
+        SetUpProfiles();
+        yield return new WaitForSeconds(2.8f);
 
         float timer = 0f;
         while (true)
@@ -452,16 +506,16 @@ public class SplashScreenManager : MonoBehaviour
         {
             switch (selectedProfile)
             {
-                case 0: 
+                case 0:
                     break;
-                case 1: 
-                    profile1SelectAnimator.Play("UnselectProfile"); 
+                case 1:
+                    profile1SelectAnimator.Play("UnselectProfile");
                     break;
-                case 2: 
-                    profile2SelectAnimator.Play("UnselectProfile"); 
+                case 2:
+                    profile2SelectAnimator.Play("UnselectProfile");
                     break;
-                case 3: 
-                    profile3SelectAnimator.Play("UnselectProfile"); 
+                case 3:
+                    profile3SelectAnimator.Play("UnselectProfile");
                     break;
             }
             selectedProfile = 0;
@@ -492,6 +546,7 @@ public class SplashScreenManager : MonoBehaviour
         selectedProfile = 0;
         SelectProfile((int)newProfileIndex + 1);
 
+
         // turn on start button
         startButton.interactable = true;
         startbuttonBox.sprite = boxGreen;
@@ -520,11 +575,13 @@ public class SplashScreenManager : MonoBehaviour
         // set profile to be current player
         StudentInfoSystem.SetStudentPlayer(index);
         // load scroll map scene
+        UnloadAllAvatars();
         GameManager.instance.LoadScene("ScrollMap", true, 0.5f, true);
     }
 
     public void SelectProfile(int profileNum)
     {
+        StartCoroutine(LoadAvatar(selectedProfileImage, profileAvatarIndex));
         // cannot select already selected profile
         if (selectedProfile == profileNum)
             return;
@@ -532,36 +589,36 @@ public class SplashScreenManager : MonoBehaviour
         if (switchingProfiles)
             return;
         switchingProfiles = true;
-        
+
         if (profileNum <= 0 || profileNum > 3)
             return;
 
         // select correct profile
         StartCoroutine(SelectProfileRoutine(profileNum));
-        
+
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
         // check if profile is empty
         switch (selectedProfile)
         {
-            case 0: 
+            case 0:
                 break;
-            case 1: 
+            case 1:
                 if (!data1.active)
                 {
                     OpenNewProfileWindow(StudentIndex.student_1);
                     return;
                 }
                 break;
-            case 2: 
+            case 2:
                 if (!data2.active)
                 {
                     OpenNewProfileWindow(StudentIndex.student_2);
                     return;
                 }
                 break;
-            case 3: 
+            case 3:
                 if (!data3.active)
                 {
                     OpenNewProfileWindow(StudentIndex.student_3);
@@ -580,19 +637,19 @@ public class SplashScreenManager : MonoBehaviour
     {
         switch (selectedProfile)
         {
-            case 0: 
+            case 0:
                 break;
-            case 1: 
+            case 1:
                 profile1SelectAnimator.Play("UnselectProfile");
                 if (data1.active)
                     editProfile1Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
                 break;
-            case 2: 
+            case 2:
                 profile2SelectAnimator.Play("UnselectProfile");
                 if (data2.active)
                     editProfile2Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
                 break;
-            case 3: 
+            case 3:
                 profile3SelectAnimator.Play("UnselectProfile");
                 if (data3.active)
                     editProfile3Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
@@ -605,21 +662,21 @@ public class SplashScreenManager : MonoBehaviour
 
         switch (selectedProfile)
         {
-            case 1: 
+            case 1:
                 profile1SelectAnimator.Play("SelectProfile");
                 profile1Image.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.2f, 0.2f);
                 if (data1.active)
                     editProfile1Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.one, 0.1f, 0.1f);
                 break;
 
-            case 2: 
+            case 2:
                 profile2SelectAnimator.Play("SelectProfile");
                 profile2Image.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.2f, 0.2f);
                 if (data2.active)
                     editProfile2Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.one, 0.1f, 0.1f);
                 break;
 
-            case 3: 
+            case 3:
                 profile3SelectAnimator.Play("SelectProfile");
                 profile3Image.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.2f, 0.2f);
                 if (data3.active)
@@ -631,17 +688,24 @@ public class SplashScreenManager : MonoBehaviour
     }
 
     public void OnLeftArrowPressed()
-    {   
+    {
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        if (profileAvatarIndex != data1.profileAvatar && profileAvatarIndex != data2.profileAvatar && profileAvatarIndex != data3.profileAvatar)
+        {
+            UnloadAvatar(profileAvatarIndex);            
+        }
 
         // reduce index, iff less than 0, return to max number
         profileAvatarIndex--;
         if (profileAvatarIndex < 0)
             profileAvatarIndex = GameManager.instance.avatars.Count - 1;
 
-        selectedProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
-        editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+
+        StartCoroutine(LoadAvatar(selectedProfileImage, profileAvatarIndex, editProfileImage));
+        //selectedProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+        //editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
 
         selectedProfileImage.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.1f, 0.1f);
         editProfileImage.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.1f, 0.1f);
@@ -652,13 +716,19 @@ public class SplashScreenManager : MonoBehaviour
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
+        if (profileAvatarIndex != data1.profileAvatar && profileAvatarIndex != data2.profileAvatar && profileAvatarIndex != data3.profileAvatar)
+        {
+            UnloadAvatar(profileAvatarIndex);            
+        }
+
         // increase index, iff greater than max, return to 0
         profileAvatarIndex++;
         if (profileAvatarIndex >= GameManager.instance.avatars.Count)
             profileAvatarIndex = 0;
 
-        selectedProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
-        editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+        StartCoroutine(LoadAvatar(selectedProfileImage, profileAvatarIndex, editProfileImage));
+        //selectedProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+        //editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
 
         selectedProfileImage.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.1f, 0.1f);
         editProfileImage.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.1f, 0.1f);
@@ -694,7 +764,8 @@ public class SplashScreenManager : MonoBehaviour
         // set correct avatar
         newProfileIndex = index;
         profileAvatarIndex = StudentInfoSystem.GetStudentData(index).profileAvatar;
-        editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+        StartCoroutine(LoadAvatar(editProfileImage, profileAvatarIndex));
+        //editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
 
         // set correct name
         editProfileInput.text = StudentInfoSystem.GetStudentData(index).name;
@@ -767,17 +838,17 @@ public class SplashScreenManager : MonoBehaviour
         // unselect current profile
         switch (selectedProfile)
         {
-            case 0: 
+            case 0:
                 break;
-            case 1: 
+            case 1:
                 profile1SelectAnimator.Play("UnselectProfile");
                 editProfile1Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
                 break;
-            case 2: 
+            case 2:
                 profile2SelectAnimator.Play("UnselectProfile");
                 editProfile2Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
                 break;
-            case 3: 
+            case 3:
                 profile3SelectAnimator.Play("UnselectProfile");
                 editProfile3Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
                 break;
@@ -815,11 +886,13 @@ public class SplashScreenManager : MonoBehaviour
 
     public void OnPracticeButtonPressed()
     {
+        UnloadAllAvatars();
         GameManager.instance.LoadScene("PracticeScene", true);
     }
 
     public void OnReportButtonPressed()
     {
+        UnloadAllAvatars();
         GameManager.instance.LoadScene("ReportScene", true);
     }
 }

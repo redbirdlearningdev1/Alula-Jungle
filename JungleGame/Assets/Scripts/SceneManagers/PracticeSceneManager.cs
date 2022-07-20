@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public enum PracticeModeGame
 {
@@ -26,6 +28,9 @@ public class PracticeSceneManager : MonoBehaviour
     public PhonemePracticeWindow phonemePracticeWindow;
 
     public List<LerpableObject> practiceButtons;
+
+    [Header("Addressables")]
+    Dictionary<int, AsyncOperationHandle<Sprite>> avatarHandles = new Dictionary<int, AsyncOperationHandle<Sprite>>();
 
     void Awake()
     {
@@ -81,6 +86,49 @@ public class PracticeSceneManager : MonoBehaviour
         SettingsManager.instance.ToggleMenuButtonActive(true);
         backButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.one, 0.1f, 0.1f);
     }
+    public void LoadAvatar(Image imageToSet, int profileIndex)
+    {
+        StartCoroutine(LoadAvatarRoutine(imageToSet, profileIndex));
+    }
+
+    IEnumerator LoadAvatarRoutine(Image imageToSet, int profileIndex)
+    {
+        AsyncOperationHandle<Sprite> avatarHandle;
+        if (avatarHandles.ContainsKey(profileIndex))
+        {
+            avatarHandle = avatarHandles[profileIndex];
+        }
+        else
+        {
+            avatarHandle = GameManager.instance.avatars[profileIndex].LoadAssetAsync<Sprite>();
+            avatarHandles.Add(profileIndex, avatarHandle);
+        }
+
+        yield return avatarHandle.Result;
+
+        imageToSet.sprite = avatarHandle.Result;
+    }
+
+    
+    public void UnloadAvatar(int profileIndex)
+    {
+        if (avatarHandles.ContainsKey(profileIndex))
+        {
+            AsyncOperationHandle<Sprite> avatarHandle = avatarHandles[profileIndex];
+            Addressables.Release(avatarHandle);
+            avatarHandles.Remove(profileIndex);
+        }
+    }
+
+    public void UnloadAllAvatars()
+    {
+        foreach (KeyValuePair<int, AsyncOperationHandle<Sprite>> pair in avatarHandles)
+        {
+            AsyncOperationHandle<Sprite> avatarHandle = pair.Value;
+            Addressables.Release(avatarHandle);
+        }
+        avatarHandles.Clear();
+    }
 
     public void RemoveWindowBG()
     {
@@ -96,7 +144,8 @@ public class PracticeSceneManager : MonoBehaviour
         {
             b.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
         }
-
+        
+        UnloadAllAvatars();
         backButton.SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
         GameManager.instance.RestartGame();
     }
@@ -224,6 +273,8 @@ public class PracticeSceneManager : MonoBehaviour
             listofgames += g + ", ";
         }
         print ("starting practice mode: " + listofgames);
+
+        UnloadAllAvatars();
 
         // start practice modes
         GameManager.instance.SetPracticeMode(gameQueue, difficulty, phonemes);

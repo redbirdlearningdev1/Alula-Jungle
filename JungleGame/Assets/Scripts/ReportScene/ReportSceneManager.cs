@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class ReportSceneManager : MonoBehaviour
 {
@@ -43,7 +45,7 @@ public class ReportSceneManager : MonoBehaviour
         currentProfile = 0;
         if (profiles.Count > 0)
         {
-            profileImage.sprite = GameManager.instance.avatars[profiles[currentProfile].profileAvatar];
+            PracticeSceneManager.instance.LoadAvatar(profileImage, profiles[currentProfile].profileAvatar);
             profileText.text = profiles[currentProfile].name;
 
             // update phoneme window
@@ -65,6 +67,10 @@ public class ReportSceneManager : MonoBehaviour
 
     public void OnProfileButtonPressed()
     {
+        if (profiles.Count > 1)
+        {
+            PracticeSceneManager.instance.UnloadAvatar(currentProfile);
+        }
         currentProfile++;
         if (currentProfile > profiles.Count - 1)
         {
@@ -73,7 +79,7 @@ public class ReportSceneManager : MonoBehaviour
 
         // swap current profile
         profileImage.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.1f, 0.1f);
-        profileImage.sprite = GameManager.instance.avatars[profiles[currentProfile].profileAvatar];
+        PracticeSceneManager.instance.LoadAvatar(profileImage, profiles[currentProfile].profileAvatar);
         profileText.text = profiles[currentProfile].name;
 
         // update phoneme window
