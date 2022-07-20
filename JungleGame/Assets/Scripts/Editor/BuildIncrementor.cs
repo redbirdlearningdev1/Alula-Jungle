@@ -16,32 +16,39 @@ public class BuildIncrementor : IPreprocessBuildWithReport
 
         Debug.Log("current build platform: " + report.summary.platform);
 
+        BuildScriptableObject obj = Resources.Load("Build", typeof(BuildScriptableObject)) as BuildScriptableObject;
+        string preNum = obj.buildNumber;
+        string postNum = obj.buildNumber;
+
         switch (report.summary.platform)
         {
             case BuildTarget.StandaloneWindows64:
             case BuildTarget.StandaloneOSX:
-                Debug.Log("pre num: " + PlayerSettings.macOS.buildNumber);
                 PlayerSettings.macOS.buildNumber = IncrementBuildNumber(PlayerSettings.macOS.buildNumber);
-                Debug.Log("post num: " + PlayerSettings.macOS.buildNumber);
 
                 buildScriptableObject.buildNumber = PlayerSettings.macOS.buildNumber;
+                postNum = PlayerSettings.macOS.buildNumber;
                 break;
 
             case BuildTarget.iOS:
-                Debug.Log("pre num: " + PlayerSettings.iOS.buildNumber);
                 PlayerSettings.iOS.buildNumber = IncrementBuildNumber(PlayerSettings.iOS.buildNumber);
-                Debug.Log("post num: " + PlayerSettings.iOS.buildNumber);
 
                 buildScriptableObject.buildNumber = PlayerSettings.iOS.buildNumber;
+                postNum = PlayerSettings.iOS.buildNumber;
                 break;
 
             case BuildTarget.Android:
-                Debug.Log("pre num: " + PlayerSettings.Android.bundleVersionCode.ToString());
                 PlayerSettings.Android.bundleVersionCode++;
-                Debug.Log("post num: " + PlayerSettings.Android.bundleVersionCode.ToString());
-                
+
                 buildScriptableObject.buildNumber = PlayerSettings.Android.bundleVersionCode.ToString();
+                postNum = PlayerSettings.Android.bundleVersionCode.ToString();
                 break;
+        }
+
+        // determine if number changed
+        if (preNum == postNum)
+        {
+            Debug.LogError("build number not increment - check BuildIncrementor.cs to fix");
         }
 
         Debug.Log("new build created, updating build number: " + buildScriptableObject.buildNumber);
