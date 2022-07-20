@@ -317,6 +317,8 @@ public class StoryGameManager : MonoBehaviour
                     MicInput.instance.InitMic();
                     // activate microphone indicator
                     microphone.ShowIndicator();
+                    // set current word
+                    currentClip = seg.audio;
                     // repeat word if microphone has not been pressed
                     if (!microphone.hasBeenPressed)
                         StartCoroutine(RepeatWhileWating());

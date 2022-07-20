@@ -402,9 +402,14 @@ public class SettingsManager : MonoBehaviour
 
     public void CloseAllSettingsWindows()
     {
-        StartCoroutine(ToggleScrollSettingsWindow(false, false));
-        StartCoroutine(ToggleInGameSettingsWindow(false, false));
-        StartCoroutine(ToggleSplashScreenSettingsWindow(false, false));
+        string sceneName = SceneManager.GetActiveScene().name;
+        bool saveScrollSettings = (sceneName == "ScrollMap");
+        bool saveGameSettings = (sceneName != "ScrollMap" && sceneName != "SplashScene" && sceneName != "PracticeScene");
+        bool saveSplashSettings = (sceneName == "SplashScene" || sceneName == "PracticeScene");
+
+        StartCoroutine(ToggleScrollSettingsWindow(false, saveScrollSettings));
+        StartCoroutine(ToggleInGameSettingsWindow(false, saveGameSettings));
+        StartCoroutine(ToggleSplashScreenSettingsWindow(false, saveSplashSettings));
     }
 
     public void CloseAllConfirmWindows()

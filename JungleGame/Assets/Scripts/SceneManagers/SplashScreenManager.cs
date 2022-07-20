@@ -485,8 +485,10 @@ public class SplashScreenManager : MonoBehaviour
         StudentInfoSystem.SetStudentPlayer(newProfileIndex);
         StudentInfoSystem.GetCurrentProfile().name = newProfileName;
         StudentInfoSystem.GetCurrentProfile().profileAvatar = profileAvatarIndex;
-        StudentInfoSystem.GetCurrentProfile().active = true; // this profile is now active!!!
+        StudentInfoSystem.GetCurrentProfile().active = true; // this profile is now active!!
         StudentInfoSystem.SaveStudentPlayerData();
+        // update user id
+        AnalyticsManager.UpdateUserID();
 
         SetUpProfiles();
         selectedProfile = 0;
@@ -732,6 +734,8 @@ public class SplashScreenManager : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().name = newName;
         StudentInfoSystem.GetCurrentProfile().profileAvatar = profileAvatarIndex;
         StudentInfoSystem.SaveStudentPlayerData();
+        // update user ID
+        AnalyticsManager.UpdateUserID();
 
         SetUpProfiles();
         selectedProfile = 0;

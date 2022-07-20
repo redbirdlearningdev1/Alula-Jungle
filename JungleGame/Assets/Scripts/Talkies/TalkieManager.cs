@@ -425,10 +425,6 @@ public class TalkieManager : MonoBehaviour
         AudioManager.instance.ToggleMusicSmooth(true);
         AudioManager.instance.StopTalk();
 
-        // stop playing talkie
-        talkiePlaying = false;
-        currentTalkie = null;
-
         // delay end talkie bool
         yield return new WaitForSeconds(1f);
         endingTalkie = false;
@@ -437,11 +433,15 @@ public class TalkieManager : MonoBehaviour
         StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
         Dictionary<string, object> parameters = new Dictionary<string, object>()
         {
-            { "curr_storybeat", data.currStoryBeat },
+            { "curr_storybeat", data.currStoryBeat.ToString() },
             { "talkie_name", currentTalkie.name },
             { "used_skip_button", skipButtonPressed }
         };            
         AnalyticsManager.SendCustomEvent("talkie_completed", parameters);
+
+        // stop playing talkie
+        talkiePlaying = false;
+        currentTalkie = null;
     }
 
     private IEnumerator PlaySegment(TalkieSegment talkieSeg)

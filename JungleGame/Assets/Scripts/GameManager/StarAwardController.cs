@@ -217,7 +217,7 @@ public class StarAwardController : MonoBehaviour
                 Dictionary<string, object> parameters = new Dictionary<string, object>()
                 {
                     { "challengegame_name", GameManager.instance.signpostGame.ToString() },
-                    { "curr_storybeat", data.currStoryBeat },
+                    { "curr_storybeat", data.currStoryBeat.ToString() },
                     { "stars_awarded", numStars }
                 };            
                 AnalyticsManager.SendCustomEvent("signpost_game_completed", parameters);
@@ -1386,7 +1386,7 @@ public class StarAwardController : MonoBehaviour
             Dictionary<string, object> parameters = new Dictionary<string, object>()
             {
                 { "challengegame_name", gameType.ToString() },
-                { "curr_storybeat", data.currStoryBeat },
+                { "curr_storybeat", data.currStoryBeat.ToString() },
                 { "stars_awarded", numStars }
             };            
             AnalyticsManager.SendCustomEvent("royalrumble_completed", parameters);
