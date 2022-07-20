@@ -519,7 +519,7 @@ public class SplashScreenManager : MonoBehaviour
             { "avatar_id", profileAvatarIndex },
             { "game_version", GameManager.currentGameVersion },
             { "profile_name", newProfileName },
-            { "student_index", newProfileIndex.ToString() },
+            { "student_index", ((int)newProfileIndex + 1) },
             { "unique_id", data.uniqueID }
         };            
         AnalyticsManager.SendCustomEvent("profile_created", parameters);
