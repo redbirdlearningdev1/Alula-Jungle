@@ -79,6 +79,11 @@ public class AnalyticsManager : MonoBehaviour
 
     public static void UpdateUserID()
     {
+        if (options == null)
+        {
+            return;
+        }
+
         StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
         if (data.active)
         {
@@ -89,7 +94,7 @@ public class AnalyticsManager : MonoBehaviour
                 StudentInfoSystem.SaveStudentPlayerData();
             }
 
-            options.SetAnalyticsUserId(data.name + ":" + data.studentIndex.ToString() + ":" + data.uniqueID); // set custom user id
+            options.SetAnalyticsUserId(data.name + "[" + data.uniqueID + "]"); // set custom user id
         }
         else
         {

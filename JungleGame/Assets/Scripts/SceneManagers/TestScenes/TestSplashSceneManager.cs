@@ -6,25 +6,52 @@ using UnityEngine.SceneManagement;
 
 public class TestSplashSceneManager : MonoBehaviour
 {
-    public bool resetPlayerPrefs;
     public LerpableObject consentToAnalyticsWindow;
 
     void Awake()
     {
-        if (resetPlayerPrefs)
-            PlayerPrefs.DeleteAll();
+        // determine if first time running new build
+        ResourceRequest request = Resources.LoadAsync("Build", typeof(BuildScriptableObject));
+        request.completed += RequestCompleted;  
+    }
 
-        if (!PlayerPrefs.HasKey("USE_ANALYTICS"))
+    private void RequestCompleted(AsyncOperation obj)
+    {
+        BuildScriptableObject buildScriptableObject = ((ResourceRequest)obj).asset as BuildScriptableObject;
+        
+        if (buildScriptableObject == null)
         {
-            Debug.LogError("FIRST TIME!");
-            consentToAnalyticsWindow.transform.localScale = Vector3.zero;
-            StartCoroutine(OpenAskForConsentRoutine());
+            Debug.LogError("build scriptable object not found in resources folder.");
         }
         else
         {
-            Debug.LogError("NOT FIRST TIME!");
-            SceneManager.LoadSceneAsync("SplashScene");
-        }   
+            // check to see if player has a build number stored in player prefs
+            if (PlayerPrefs.HasKey("BUILD_NUMBER"))
+            {
+                // if yes - check if player pref build number is equal to application's build number
+                if (PlayerPrefs.GetString("BUILD_NUMBER") == buildScriptableObject.buildNumber)
+                {
+                    //Debug.LogError("BUILD NUMBER EQUAL - LOADING GAME");
+                    SceneManager.LoadSceneAsync("SplashScene");
+                }
+                // if not equal - open consent window and set build number
+                else
+                {
+                    //Debug.LogError("NEW BUILD DETECTED - ASKING FOR CONSENT");
+                    PlayerPrefs.SetString("BUILD_NUMBER", buildScriptableObject.buildNumber);
+                    consentToAnalyticsWindow.transform.localScale = Vector3.zero;
+                    StartCoroutine(OpenAskForConsentRoutine());
+                }
+            }
+            // no build number stored in player prefs
+            else
+            {
+                //Debug.LogError("FIRST TIME NEW BUILD DETECTED - ASKING FOR CONSENT");
+                PlayerPrefs.SetString("BUILD_NUMBER", buildScriptableObject.buildNumber);
+                consentToAnalyticsWindow.transform.localScale = Vector3.zero;
+                StartCoroutine(OpenAskForConsentRoutine());
+            }
+        }
     }
 
     private IEnumerator OpenAskForConsentRoutine()
