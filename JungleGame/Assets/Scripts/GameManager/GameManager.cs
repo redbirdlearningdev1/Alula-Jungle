@@ -119,6 +119,7 @@ public class GameManager : DontDestroy<GameManager>
 
         Screen.sleepTimeout = sleepSeconds;
         neverSleep = false;
+        
     }
 
     void Update()
