@@ -316,7 +316,7 @@ public class SettingsManager : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
 
             // close settings window if open
-            CloseAllSettingsWindows();
+            CloseAllSettingsWindows(true);
         }
 
         menuButtonShown = opt;
@@ -400,12 +400,20 @@ public class SettingsManager : MonoBehaviour
         settingsWindowOpen = opt;
     }
 
-    public void CloseAllSettingsWindows()
+    public void CloseAllSettingsWindows(bool saveToProfile)
     {
-        string sceneName = SceneManager.GetActiveScene().name;
-        bool saveScrollSettings = (sceneName == "ScrollMap");
-        bool saveGameSettings = (sceneName != "ScrollMap" && sceneName != "SplashScene" && sceneName != "PracticeScene");
-        bool saveSplashSettings = (sceneName == "SplashScene" || sceneName == "PracticeScene");
+        bool saveScrollSettings = false;
+        bool saveGameSettings = false;
+        bool saveSplashSettings = false;
+
+        if (saveToProfile)
+        {
+            string sceneName = SceneManager.GetActiveScene().name;
+            saveScrollSettings = (sceneName == "ScrollMap");
+            saveGameSettings = (sceneName != "ScrollMap" && sceneName != "SplashScene" && sceneName != "PracticeScene");
+            saveSplashSettings = (sceneName == "SplashScene" || sceneName == "PracticeScene");
+        }
+
 
         StartCoroutine(ToggleScrollSettingsWindow(false, saveScrollSettings));
         StartCoroutine(ToggleInGameSettingsWindow(false, saveGameSettings));
@@ -534,7 +542,7 @@ public class SettingsManager : MonoBehaviour
         confirmWindowBG.GetComponent<Image>().raycastTarget = false;
 
         // close settings window
-        CloseAllSettingsWindows();
+        CloseAllSettingsWindows(true);
         settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
         settingsWindowBG.GetComponent<Image>().raycastTarget = false;
         yield return new WaitForSeconds(1f);
@@ -620,7 +628,7 @@ public class SettingsManager : MonoBehaviour
         confirmWindowBG.GetComponent<Image>().raycastTarget = false;
 
         // close settings window
-        CloseAllSettingsWindows();
+        CloseAllSettingsWindows(true);
         settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
         settingsWindowBG.GetComponent<Image>().raycastTarget = false;
         yield return new WaitForSeconds(0.2f);
@@ -691,7 +699,7 @@ public class SettingsManager : MonoBehaviour
         confirmWindowBG.GetComponent<Image>().raycastTarget = false;
 
         // close settings window
-        CloseAllSettingsWindows();
+        CloseAllSettingsWindows(true);
         settingsWindowBG.LerpImageAlpha(settingsWindowBG.GetComponent<Image>(), 0f, 0.2f);
         settingsWindowBG.GetComponent<Image>().raycastTarget = false;
         yield return new WaitForSeconds(0.2f);

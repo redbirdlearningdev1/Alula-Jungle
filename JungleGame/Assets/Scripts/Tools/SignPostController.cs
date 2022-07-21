@@ -145,7 +145,7 @@ public class SignPostController : MonoBehaviour, IPointerUpHandler, IPointerDown
             RoyalDecreeController.instance.ToggleWindow(signPostLocation);
 
             // close settings menu if open
-            SettingsManager.instance.CloseAllSettingsWindows();
+            SettingsManager.instance.CloseAllSettingsWindows(true);
         }
     }
 }

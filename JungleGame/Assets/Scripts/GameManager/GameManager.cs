@@ -469,7 +469,7 @@ public class GameManager : DontDestroy<GameManager>
         SettingsManager.instance.ToggleWagonButtonActive(false);
 
         // close settings windows if open
-        SettingsManager.instance.CloseAllSettingsWindows();
+        SettingsManager.instance.CloseAllSettingsWindows(false);
         SettingsManager.instance.CloseAllConfirmWindows();
     }
 

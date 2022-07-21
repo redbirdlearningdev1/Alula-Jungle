@@ -81,7 +81,7 @@ public class StarAwardController : MonoBehaviour
         }
 
         // close settings menu if open
-        SettingsManager.instance.CloseAllSettingsWindows();
+        SettingsManager.instance.CloseAllSettingsWindows(true);
 
         // remove settings button
         SettingsManager.instance.ToggleMenuButtonActive(false);

@@ -1513,7 +1513,7 @@ public class ScrollMapManager : MonoBehaviour
         ToggleNavButtons(false);
 
         // close settings window
-        SettingsManager.instance.CloseAllSettingsWindows();
+        SettingsManager.instance.CloseAllSettingsWindows(true);
         // remove all stars
         DisableAllMapIcons(true);
         // remove GM UI

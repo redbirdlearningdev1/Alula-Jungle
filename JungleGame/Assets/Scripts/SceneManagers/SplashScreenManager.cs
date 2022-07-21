@@ -487,8 +487,11 @@ public class SplashScreenManager : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().profileAvatar = profileAvatarIndex;
         StudentInfoSystem.GetCurrentProfile().active = true; // this profile is now active!!
         StudentInfoSystem.SaveStudentPlayerData();
-        // update user id
-        AnalyticsManager.UpdateUserID();
+
+        // update analytics profile
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        string profile = data.name + "_" + data.uniqueID;
+        AnalyticsManager.SwitchProfile(profile);
 
         SetUpProfiles();
         selectedProfile = 0;
@@ -515,7 +518,7 @@ public class SplashScreenManager : MonoBehaviour
         }
 
         //// ANALYTICS : send profile_created event
-        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        // StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
         Dictionary<string, object> parameters = new Dictionary<string, object>()
         {
             { "avatar_id", profileAvatarIndex },
@@ -734,8 +737,11 @@ public class SplashScreenManager : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().name = newName;
         StudentInfoSystem.GetCurrentProfile().profileAvatar = profileAvatarIndex;
         StudentInfoSystem.SaveStudentPlayerData();
-        // update user ID
-        AnalyticsManager.UpdateUserID();
+        
+        // update analytics profile
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        string profile = data.name + "_" + data.uniqueID;
+        AnalyticsManager.SwitchProfile(profile);
 
         SetUpProfiles();
         selectedProfile = 0;
@@ -816,6 +822,11 @@ public class SplashScreenManager : MonoBehaviour
             practiceButton.GetComponent<Button>().interactable = false;
             reportButton.GetComponent<Button>().interactable = false;
         }
+
+        // update analytics profile
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        string profile = data.name + "_" + data.uniqueID;
+        AnalyticsManager.SwitchProfile(profile);
     }
 
     public void OnNoDeleteProfilePressed()

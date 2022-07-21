@@ -175,7 +175,7 @@ public class TalkieManager : MonoBehaviour
         currentTalkie = talkie;
 
         // close settings menu if open
-        SettingsManager.instance.CloseAllSettingsWindows();
+        SettingsManager.instance.CloseAllSettingsWindows(true);
 
         // set fast talkies
         SetFastTalkies(StudentInfoSystem.GetCurrentProfile().talkieFast);
