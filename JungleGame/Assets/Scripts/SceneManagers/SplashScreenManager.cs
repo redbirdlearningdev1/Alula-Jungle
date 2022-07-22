@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.Video;
 
 
 public class SplashScreenManager : MonoBehaviour
@@ -15,10 +16,16 @@ public class SplashScreenManager : MonoBehaviour
 
     [Header("Splash Screen BGs")]
     public Animator BG3_animator;
-    public Animator BG4_animator;
+    public VideoPlayer BG4_player;
     public Animator BG6_animator;
 
     [Header("Addressable References")]
+    [SerializeField] AssetReference BGVideo_4MidCh0;
+    [SerializeField] AssetReference BGVideo_4MidCh3;
+    [SerializeField] AssetReference BGVideo_4MidCh4;
+    [SerializeField] AssetReference BGVideo_4MidCh6;
+    [SerializeField] AssetReference BGVideo_6FrontCh5;
+    [SerializeField] AssetReference BGVideo_6FrontCh2;
 
     [Header("Profile Windows")]
     [SerializeField] CanvasGroup profileSelectWindow;
@@ -143,7 +150,7 @@ public class SplashScreenManager : MonoBehaviour
             avatarHandles.Add(profileIndex, avatarHandle);
         }
 
-        yield return avatarHandle.Result;
+        yield return avatarHandle;
 
         imageToSet.sprite = avatarHandle.Result;
 
@@ -200,7 +207,8 @@ public class SplashScreenManager : MonoBehaviour
 
         // default to chapter 0 animations
         BG3_animator.Play("3_Ch0");
-        BG4_animator.Play("4_Ch0");
+        StartCoroutine(LoadAndPlayVideo(BG4_player, BGVideo_4MidCh6));
+        //BG4_animator.Play("4_Ch0");
         BG6_animator.Play("6_Ch0");
 
         // set correct chapter animations
@@ -221,12 +229,12 @@ public class SplashScreenManager : MonoBehaviour
 
             if (chapter > Chapter.chapter_3)
             {
-                BG4_animator.Play("4_Ch3");
+                //BG4_animator.Play("4_Ch3");
             }
 
             if (chapter > Chapter.chapter_4)
             {
-                BG4_animator.Play("4_Ch4");
+                //BG4_animator.Play("4_Ch4");
             }
 
             if (chapter > Chapter.chapter_5)
@@ -236,7 +244,7 @@ public class SplashScreenManager : MonoBehaviour
 
             if (chapter > Chapter.chapter_6)
             {
-                BG4_animator.Play("4_Ch6");
+                //BG4_animator.Play("4_Ch6");
             }
         }
 
@@ -274,6 +282,15 @@ public class SplashScreenManager : MonoBehaviour
         SetUpProfiles();
     }
 
+    private IEnumerator LoadAndPlayVideo(VideoPlayer player, AssetReference video)
+    {
+        AsyncOperationHandle<VideoClip> handle = video.LoadAssetAsync<VideoClip>();
+        yield return handle;
+        player.clip = handle.Result;
+
+        player.Play();
+    }
+
     private IEnumerator ScreenTapDelay()
     {
         yield return new WaitForSeconds(3f);
@@ -285,7 +302,7 @@ public class SplashScreenManager : MonoBehaviour
         if ((Input.touchCount > 0 || Input.GetMouseButtonDown(0)) && !screenTapped && screenTapReady)
         {
             screenTapped = true;
-
+            //Debug.LogError("Video Clip: " + BG4_player.clip.name);
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
             StartCoroutine(RevealProfileWindow(0.5f));
         }
@@ -396,6 +413,10 @@ public class SplashScreenManager : MonoBehaviour
         practiceButton.LerpYPos(practiceButtonPos.y, 0.2f, true);
         reportButton.LerpYPos(reportButtonPos.y, 0.2f, true);
         yield return new WaitForSeconds(0.2f);
+
+        AsyncOperationHandle handle = BGVideo_4MidCh6.OperationHandle;
+        BG4_player.clip = null;
+        Addressables.Release(handle);
 
         SetUpWinCrowns();
     }

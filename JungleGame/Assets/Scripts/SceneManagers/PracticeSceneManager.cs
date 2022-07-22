@@ -104,7 +104,7 @@ public class PracticeSceneManager : MonoBehaviour
             avatarHandles.Add(profileIndex, avatarHandle);
         }
 
-        yield return avatarHandle.Result;
+        yield return avatarHandle;
 
         imageToSet.sprite = avatarHandle.Result;
     }
