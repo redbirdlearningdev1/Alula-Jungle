@@ -15,17 +15,39 @@ public class SplashScreenManager : MonoBehaviour
     public Animator mainAnimator;
 
     [Header("Splash Screen BGs")]
-    public Animator BG3_animator;
+    public Image BG1_image;
+    public Image BG2_image;
+    public Image BG3_image;
     public VideoPlayer BG4_player;
-    public Animator BG6_animator;
+    public Image BG5_image;
+    public VideoPlayer BG6_player;
+    public Image BG6_image;
+    public Image BG7_image;
 
     [Header("Addressable References")]
+    [SerializeField] AssetReferenceAtlasedSprite BGImage_1BG;
+    [SerializeField] AssetReferenceAtlasedSprite BGImage_2Back;
+    [SerializeField] AssetReferenceAtlasedSprite BGImage_3BackCh0;
+    [SerializeField] AssetReferenceAtlasedSprite BGImage_3BackCh1;
+    [SerializeField] AssetReferenceAtlasedSprite BGImage_5MidFront;
+    [SerializeField] AssetReferenceAtlasedSprite BGImage_6Front;
+    [SerializeField] AssetReferenceAtlasedSprite BGImage_7Front;
     [SerializeField] AssetReference BGVideo_4MidCh0;
     [SerializeField] AssetReference BGVideo_4MidCh3;
     [SerializeField] AssetReference BGVideo_4MidCh4;
     [SerializeField] AssetReference BGVideo_4MidCh6;
-    [SerializeField] AssetReference BGVideo_6FrontCh5;
     [SerializeField] AssetReference BGVideo_6FrontCh2;
+    [SerializeField] AssetReference BGVideo_6FrontCh5;
+
+    [Header("Handles")]
+    ReferenceObj<AsyncOperationHandle<Sprite>> handle_BG1 = new ReferenceObj<AsyncOperationHandle<Sprite>>(new AsyncOperationHandle<Sprite>());
+    ReferenceObj<AsyncOperationHandle<Sprite>> handle_BG2 = new ReferenceObj<AsyncOperationHandle<Sprite>>(new AsyncOperationHandle<Sprite>());
+    ReferenceObj<AsyncOperationHandle<Sprite>> handle_BG3 = new ReferenceObj<AsyncOperationHandle<Sprite>>(new AsyncOperationHandle<Sprite>());
+    ReferenceObj<AsyncOperationHandle<VideoClip>> handle_BG4 = new ReferenceObj<AsyncOperationHandle<VideoClip>>(new AsyncOperationHandle<VideoClip>());
+    ReferenceObj<AsyncOperationHandle<Sprite>> handle_BG5 = new ReferenceObj<AsyncOperationHandle<Sprite>>(new AsyncOperationHandle<Sprite>());
+    ReferenceObj<AsyncOperationHandle<VideoClip>> handle_BGVideo6 = new ReferenceObj<AsyncOperationHandle<VideoClip>>(new AsyncOperationHandle<VideoClip>());
+    ReferenceObj<AsyncOperationHandle<Sprite>> handle_BGImage6 = new ReferenceObj<AsyncOperationHandle<Sprite>>(new AsyncOperationHandle<Sprite>());
+    ReferenceObj<AsyncOperationHandle<Sprite>> handle_BG7 = new ReferenceObj<AsyncOperationHandle<Sprite>>(new AsyncOperationHandle<Sprite>());
 
     [Header("Profile Windows")]
     [SerializeField] CanvasGroup profileSelectWindow;
@@ -206,45 +228,73 @@ public class SplashScreenManager : MonoBehaviour
         }
 
         // default to chapter 0 animations
-        BG3_animator.Play("3_Ch0");
-        StartCoroutine(LoadAndPlayVideo(BG4_player, BGVideo_4MidCh6));
+        //StartCoroutine(LoadAndPlayVideo(BG3_player, BGVideo_4MidCh6));
+        //BG3_animator.Play("3_Ch0");
         //BG4_animator.Play("4_Ch0");
-        BG6_animator.Play("6_Ch0");
-
+        //BG6_animator.Play("6_Ch0");
+        UnloadAllAvatars();
         // set correct chapter animations
         if (currProfile != null)
         {
             // get most recent chapter
             Chapter chapter = currProfile.currentChapter;
 
-            if (chapter > Chapter.chapter_1)
-            {
-                BG3_animator.Play("3_Ch1");
-            }
+            StartCoroutine(LoadSplashImage(BG1_image, BGImage_1BG, handle_BG1));
+            StartCoroutine(LoadSplashImage(BG2_image, BGImage_2Back, handle_BG2));
+            StartCoroutine(LoadSplashImage(BG5_image, BGImage_5MidFront, handle_BG5));
+            StartCoroutine(LoadSplashImage(BG7_image, BGImage_7Front, handle_BG7));
+            BG6_player.enabled = true;
+            BG6_player.GetComponent<RawImage>().enabled = true;
+            BG6_image.enabled = false;
 
-            if (chapter > Chapter.chapter_2)
+            switch (chapter)
             {
-                BG6_animator.Play("6_Ch2");
-            }
-
-            if (chapter > Chapter.chapter_3)
-            {
-                //BG4_animator.Play("4_Ch3");
-            }
-
-            if (chapter > Chapter.chapter_4)
-            {
-                //BG4_animator.Play("4_Ch4");
-            }
-
-            if (chapter > Chapter.chapter_5)
-            {
-                BG6_animator.Play("6_Ch5");
-            }
-
-            if (chapter > Chapter.chapter_6)
-            {
-                //BG4_animator.Play("4_Ch6");
+                case Chapter.chapter_0:
+                    StartCoroutine(LoadSplashImage(BG3_image, BGImage_3BackCh0, handle_BG3));
+                    StartCoroutine(LoadAndPlayVideo(BG4_player, BGVideo_4MidCh0, handle_BG4));
+                    BG6_player.enabled = false;
+                    BG6_player.GetComponent<RawImage>().enabled = false;
+                    BG6_image.enabled = true;
+                    StartCoroutine(LoadSplashImage(BG6_image, BGImage_6Front, handle_BGImage6));
+                    break;
+                case Chapter.chapter_1:
+                    StartCoroutine(LoadSplashImage(BG3_image, BGImage_3BackCh1, handle_BG3));
+                    StartCoroutine(LoadAndPlayVideo(BG4_player, BGVideo_4MidCh0, handle_BG4));
+                    BG6_player.enabled = false;
+                    BG6_player.GetComponent<RawImage>().enabled = false;
+                    BG6_image.enabled = true;
+                    StartCoroutine(LoadSplashImage(BG6_image, BGImage_6Front, handle_BGImage6));
+                    break;
+                case Chapter.chapter_2:
+                    StartCoroutine(LoadSplashImage(BG3_image, BGImage_3BackCh1, handle_BG3));
+                    StartCoroutine(LoadAndPlayVideo(BG4_player, BGVideo_4MidCh0, handle_BG4));
+                    StartCoroutine(LoadAndPlayVideo(BG6_player, BGVideo_6FrontCh2, handle_BGVideo6));
+                    break;
+                case Chapter.chapter_3:
+                    StartCoroutine(LoadSplashImage(BG3_image, BGImage_3BackCh1, handle_BG3));
+                    StartCoroutine(LoadAndPlayVideo(BG4_player, BGVideo_4MidCh3, handle_BG4));
+                    StartCoroutine(LoadAndPlayVideo(BG6_player, BGVideo_6FrontCh2, handle_BGVideo6));
+                    break;
+                case Chapter.chapter_4:
+                    StartCoroutine(LoadSplashImage(BG3_image, BGImage_3BackCh1, handle_BG3));
+                    StartCoroutine(LoadAndPlayVideo(BG4_player, BGVideo_4MidCh4, handle_BG4));
+                    StartCoroutine(LoadAndPlayVideo(BG6_player, BGVideo_6FrontCh2, handle_BGVideo6));
+                    break;
+                case Chapter.chapter_5:
+                    StartCoroutine(LoadSplashImage(BG3_image, BGImage_3BackCh1, handle_BG3));
+                    StartCoroutine(LoadAndPlayVideo(BG4_player, BGVideo_4MidCh4, handle_BG4));
+                    StartCoroutine(LoadAndPlayVideo(BG6_player, BGVideo_6FrontCh5, handle_BGVideo6));
+                    break;
+                case Chapter.chapter_6:
+                    StartCoroutine(LoadSplashImage(BG3_image, BGImage_3BackCh1, handle_BG3));
+                    StartCoroutine(LoadAndPlayVideo(BG4_player, BGVideo_4MidCh6, handle_BG4));
+                    StartCoroutine(LoadAndPlayVideo(BG6_player, BGVideo_6FrontCh5, handle_BGVideo6));
+                    break;
+                default:
+                    StartCoroutine(LoadSplashImage(BG3_image, BGImage_3BackCh1, handle_BG3));
+                    StartCoroutine(LoadAndPlayVideo(BG4_player, BGVideo_4MidCh6, handle_BG4));
+                    StartCoroutine(LoadAndPlayVideo(BG6_player, BGVideo_6FrontCh5, handle_BGVideo6));
+                    break;
             }
         }
 
@@ -282,13 +332,63 @@ public class SplashScreenManager : MonoBehaviour
         SetUpProfiles();
     }
 
-    private IEnumerator LoadAndPlayVideo(VideoPlayer player, AssetReference video)
+    private IEnumerator LoadAndPlayVideo(VideoPlayer player, AssetReference video, ReferenceObj<AsyncOperationHandle<VideoClip>> handle)
     {
-        AsyncOperationHandle<VideoClip> handle = video.LoadAssetAsync<VideoClip>();
-        yield return handle;
-        player.clip = handle.Result;
+        handle.Value = video.LoadAssetAsync<VideoClip>();
+        yield return handle.Value;
+        player.clip = handle.Value.Result;
 
         player.Play();
+    }
+    private IEnumerator LoadSplashImage(Image image, AssetReferenceAtlasedSprite spriteRef, ReferenceObj<AsyncOperationHandle<Sprite>> handle)
+    {
+        handle.Value = spriteRef.LoadAssetAsync<Sprite>();
+        yield return handle.Value;
+        image.sprite = handle.Value.Result;
+    }
+
+    private void UnloadSplashScreen()
+    {
+        if (handle_BG1.Value.IsValid())
+        {
+            Addressables.Release(handle_BG1.Value);
+            BG1_image.sprite = null;
+        }
+        if (handle_BG2.Value.IsValid())
+        {
+            Addressables.Release(handle_BG2.Value);
+            BG2_image.sprite = null;
+        }
+        if (handle_BG3.Value.IsValid())
+        {
+            Addressables.Release(handle_BG3.Value);
+            BG3_image.sprite = null;
+        }
+        if (handle_BG4.Value.IsValid())
+        {
+            Addressables.Release(handle_BG4.Value);
+            BG4_player.clip = null;
+        }
+        if (handle_BG5.Value.IsValid())
+        {
+            Addressables.Release(handle_BG5.Value);
+            BG5_image.sprite = null;
+        }
+        if (handle_BGVideo6.Value.IsValid())
+        {
+            Addressables.Release(handle_BGVideo6.Value);
+            BG6_player.clip = null;
+        }
+        if (handle_BGImage6.Value.IsValid())
+        {
+            Addressables.Release(handle_BGImage6.Value);
+            BG6_image.sprite = null;
+        }
+        if (handle_BG7.Value.IsValid())
+        {
+            Addressables.Release(handle_BG7.Value);
+            BG7_image.sprite = null;
+        }
     }
 
     private IEnumerator ScreenTapDelay()
@@ -371,6 +471,7 @@ public class SplashScreenManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         SetUpProfiles();
         yield return new WaitForSeconds(2.8f);
+        UnloadSplashScreen();
 
         float timer = 0f;
         while (true)
@@ -413,10 +514,6 @@ public class SplashScreenManager : MonoBehaviour
         practiceButton.LerpYPos(practiceButtonPos.y, 0.2f, true);
         reportButton.LerpYPos(reportButtonPos.y, 0.2f, true);
         yield return new WaitForSeconds(0.2f);
-
-        AsyncOperationHandle handle = BGVideo_4MidCh6.OperationHandle;
-        BG4_player.clip = null;
-        Addressables.Release(handle);
 
         SetUpWinCrowns();
     }
@@ -715,7 +812,7 @@ public class SplashScreenManager : MonoBehaviour
 
         if (profileAvatarIndex != data1.profileAvatar && profileAvatarIndex != data2.profileAvatar && profileAvatarIndex != data3.profileAvatar)
         {
-            UnloadAvatar(profileAvatarIndex);            
+            UnloadAvatar(profileAvatarIndex);
         }
 
         // reduce index, iff less than 0, return to max number
@@ -739,7 +836,7 @@ public class SplashScreenManager : MonoBehaviour
 
         if (profileAvatarIndex != data1.profileAvatar && profileAvatarIndex != data2.profileAvatar && profileAvatarIndex != data3.profileAvatar)
         {
-            UnloadAvatar(profileAvatarIndex);            
+            UnloadAvatar(profileAvatarIndex);
         }
 
         // increase index, iff greater than max, return to 0
