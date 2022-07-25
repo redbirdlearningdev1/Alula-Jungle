@@ -74,10 +74,10 @@ public class AnalyticsManager : MonoBehaviour
         // sign back in
         try
         {
-            // SignInOptions signInOptions = new SignInOptions();
-            // signInOptions.CreateAccount = true;
+            SignInOptions signInOptions = new SignInOptions();
+            signInOptions.CreateAccount = true;
 
-            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+            await AuthenticationService.Instance.SignInAnonymouslyAsync(signInOptions);
             Debug.Log("sign in anonymously succeeded!");
 
             //// ANALYTICS : send player_login event
@@ -148,7 +148,10 @@ public class AnalyticsManager : MonoBehaviour
             List<string> consentIdentifiers = await AnalyticsService.Instance.CheckForRequiredConsents();
 
             // anonymous sign-in
-            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+            SignInOptions signInOptions = new SignInOptions();
+            signInOptions.CreateAccount = true;
+
+            await AuthenticationService.Instance.SignInAnonymouslyAsync(signInOptions);
             Debug.Log("initial sign in anonymously succeeded!");
 
             //// ANALYTICS : send player_login event
