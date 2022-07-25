@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
+using TMPro;
 
 public class TigerCoinGameManager : MonoBehaviour
 {
     public static TigerCoinGameManager instance;
+
+    public bool showChallengeWordLetters;
+    private UniversalCoinImage currentCoin;
 
     [SerializeField] private TigerPawController Tiger;
     [SerializeField] private PatternRightWrong pattern;
@@ -173,6 +176,7 @@ public class TigerCoinGameManager : MonoBehaviour
             switch (scriptedEvent)
             {
                 case 0:
+                    currentWord = coinsScripted1;
                     polaroidC.SetPolaroid(coinsScripted1);
                     currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(coinsScripted1.set);
                     waterCoins[0].SetValue(ElkoninValue.explorer);
@@ -182,6 +186,7 @@ public class TigerCoinGameManager : MonoBehaviour
                     waterCoins[4].SetValue(ElkoninValue.think);
                     break;
                 case 1:
+                    currentWord = coinsScripted2;
                     polaroidC.SetPolaroid(coinsScripted2);
                     currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(coinsScripted2.set);
                     waterCoins[0].SetValue(ElkoninValue.mudslide);
@@ -191,6 +196,7 @@ public class TigerCoinGameManager : MonoBehaviour
                     waterCoins[4].SetValue(ElkoninValue.poop);
                     break;
                 case 2:
+                    currentWord = coinsScripted3;
                     polaroidC.SetPolaroid(coinsScripted3);
                     currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(coinsScripted3.set);
                     waterCoins[2].SetValue(ElkoninValue.poop);
@@ -200,6 +206,7 @@ public class TigerCoinGameManager : MonoBehaviour
                     waterCoins[4].SetValue(ElkoninValue.listen);
                     break;
                 case 3:
+                    currentWord = coinsScripted4;
                     polaroidC.SetPolaroid(coinsScripted4);
                     currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(coinsScripted4.set);
                     waterCoins[0].SetValue(ElkoninValue.poop);
@@ -209,6 +216,7 @@ public class TigerCoinGameManager : MonoBehaviour
                     waterCoins[2].SetValue(ElkoninValue.hello);
                     break;
                 case 4:
+                    currentWord = coinsScripted5;
                     polaroidC.SetPolaroid(coinsScripted5);
                     currentTargetValue = ChallengeWordDatabase.ActionWordEnumToElkoninValue(coinsScripted5.set);
                     waterCoins[0].SetValue(ElkoninValue.orcs);
@@ -449,6 +457,7 @@ public class TigerCoinGameManager : MonoBehaviour
 
         if (success)
         {
+            currentCoin = coin;
             StartCoroutine(PostRound(true));
         }
         else
@@ -485,6 +494,9 @@ public class TigerCoinGameManager : MonoBehaviour
 
     private IEnumerator PostRound(bool win)
     {
+        // play audio
+        AudioManager.instance.PlayCoinDrop();
+
         if (win)
         {
             // play correct audio
@@ -493,6 +505,68 @@ public class TigerCoinGameManager : MonoBehaviour
             correctCoins[numWins].SetActive(true);
             // play correct audio
             AudioManager.instance.PlayFX_loop(AudioDatabase.instance.GlitterLoop, 0.2f, "tiger_paw_glitter");
+
+            // show challenge word letters
+            if (showChallengeWordLetters)
+            {
+                yield return new WaitForSeconds(1f);
+
+                // squish on x scale
+                polaroidC.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 1f), 0.2f);
+                yield return new WaitForSeconds(0.2f);
+                // play audio fx 
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BirdWingFlap, 1f);
+                // remove image
+                polaroidC.ShowPolaroidWord(60f);
+                // un-squish on x scale
+                polaroidC.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
+                yield return new WaitForSeconds(1f);
+
+                // say letter groups using coins
+                for (int i = 0; i < polaroidC.challengeWord.elkoninCount; i++)
+                {
+                    GameObject letterElement = polaroidC.GetLetterGroupElement(i);
+                    letterElement.GetComponent<TextMeshProUGUI>().color = Color.black;
+                    letterElement.GetComponent<LerpableObject>().LerpTextSize(70f - (Polaroid.FONT_SCALE_DECREASE * polaroidC.challengeWord.elkoninCount), 0.2f);
+                    AudioManager.instance.PlayPhoneme(currentWord.elkoninList[i]);
+
+                    // move coin if equal to set
+                    if (currentWord.elkoninList[i] == ChallengeWordDatabase.ActionWordEnumToElkoninValue(currentWord.set))
+                    {
+                        currentCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
+                        // audio fx
+                        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", (1f + 0.25f * i));
+                        yield return new WaitForSeconds(1f);
+
+                        currentCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
+                        continue;
+                    }
+                    
+                    yield return new WaitForSeconds(1f);
+                }
+                yield return new WaitForSeconds(0.2f);
+
+                // read word aloud to player
+                if (currentWord.audio != null)
+                    AudioManager.instance.PlayTalk(currentWord.audio);
+                // start wiggle
+                polaroidC.ToggleWiggle(true);
+
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(currentWord.audio));
+                yield return cd.coroutine;
+
+                // wait an appropriate amount of time
+                if (currentWord.audio != null)
+                    yield return new WaitForSeconds(cd.GetResult() + 0.25f);
+                else
+                    yield return new WaitForSeconds(2f);
+
+                // end wiggle
+                polaroidC.ToggleWiggle(false);
+
+                yield return new WaitForSeconds(0.2f);
+
+            }
 
             // increase split song
             if (!playTutorial)
@@ -516,9 +590,6 @@ public class TigerCoinGameManager : MonoBehaviour
             incorrectCoins[numMisses].SetActive(true);
             numMisses++;
         }
-
-        // play audio
-        AudioManager.instance.PlayCoinDrop();
 
         // play popup
         StartCoroutine(PlayPopup(win));
@@ -556,6 +627,9 @@ public class TigerCoinGameManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1f);
+
+        // reset current polaroid
+        polaroidC.HidePolaroidWord();
 
         // reset coin positions
         foreach (var coin in waterCoins)
