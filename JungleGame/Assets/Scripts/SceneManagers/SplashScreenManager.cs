@@ -234,6 +234,8 @@ public class SplashScreenManager : MonoBehaviour
         //BG6_animator.Play("6_Ch0");
         UnloadAllAvatars();
         // set correct chapter animations
+
+
         if (currProfile != null)
         {
             // get most recent chapter
@@ -296,6 +298,20 @@ public class SplashScreenManager : MonoBehaviour
                     StartCoroutine(LoadAndPlayVideo(BG6_player, BGVideo_6FrontCh5, handle_BGVideo6));
                     break;
             }
+        }
+        else
+        {
+            StartCoroutine(LoadSplashImage(BG1_image, BGImage_1BG, handle_BG1));
+            StartCoroutine(LoadSplashImage(BG2_image, BGImage_2Back, handle_BG2));
+            StartCoroutine(LoadSplashImage(BG3_image, BGImage_3BackCh0, handle_BG3));
+            StartCoroutine(LoadAndPlayVideo(BG4_player, BGVideo_4MidCh0, handle_BG4));
+            StartCoroutine(LoadSplashImage(BG5_image, BGImage_5MidFront, handle_BG5));
+            BG6_player.enabled = false;
+            BG6_player.GetComponent<RawImage>().enabled = false;
+            BG6_image.enabled = true;
+            StartCoroutine(LoadSplashImage(BG6_image, BGImage_6Front, handle_BGImage6));
+            StartCoroutine(LoadSplashImage(BG7_image, BGImage_7Front, handle_BG7));
+
         }
 
         // turn off start button
@@ -393,6 +409,7 @@ public class SplashScreenManager : MonoBehaviour
 
     private IEnumerator ScreenTapDelay()
     {
+        Resources.UnloadUnusedAssets();
         yield return new WaitForSeconds(3f);
         screenTapReady = true;
     }
