@@ -11807,7 +11807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -22764,21 +22764,81 @@ MonoBehaviour:
   playingBossBattleGame: 0
   newBossBattleStoryBeat: 0
   avatars:
-  - {fileID: 21300000, guid: da3f7e78289a2d8469c82daacaa6333a, type: 3}
-  - {fileID: 21300000, guid: 549747dbc6c25a146bf524fb0b27dc6a, type: 3}
-  - {fileID: 21300000, guid: d405a8602a62b6e45aa30dd2aeffbd84, type: 3}
-  - {fileID: 21300000, guid: 001d2f66da6005a47a2a0149e411fc86, type: 3}
-  - {fileID: 21300000, guid: 65113d406cda8da4aab2791b9d213ad8, type: 3}
-  - {fileID: 21300000, guid: 050e1334fb0278248a9572bfe6607864, type: 3}
-  - {fileID: 21300000, guid: 9ce9ad7c557bd774eb461407d55dd863, type: 3}
-  - {fileID: 21300000, guid: 6506ef2055fb0cd47abe872840ac6c2a, type: 3}
-  - {fileID: 21300000, guid: 0f5e0f2b93138474594d36bb020ad3fb, type: 3}
-  - {fileID: 21300000, guid: 0aec95fb08793a74eabeb998db06dfd9, type: 3}
-  - {fileID: 21300000, guid: bb9b948935d95d54b85533d221ed4abd, type: 3}
-  - {fileID: 21300000, guid: 6e05f7d9699cba243ab531a9f01b4836, type: 3}
-  - {fileID: 21300000, guid: 343fe8a0d6e6d8f4fb1f0cb47551007c, type: 3}
-  - {fileID: 21300000, guid: bc143b18aa51261449d806956aff0ae5, type: 3}
-  - {fileID: 21300000, guid: 674c6e4e71be88e4cbc35de5ded44952, type: 3}
+  - m_AssetGUID: b1afdb585c581784b897d52dd8d45d07
+    m_SubObjectName: AvatarBrutus
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: b1afdb585c581784b897d52dd8d45d07
+    m_SubObjectName: AvatarBubbles
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: b1afdb585c581784b897d52dd8d45d07
+    m_SubObjectName: AvatarCeleste
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: b1afdb585c581784b897d52dd8d45d07
+    m_SubObjectName: AvatarClogg
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: b1afdb585c581784b897d52dd8d45d07
+    m_SubObjectName: AvatarDarwin
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: b1afdb585c581784b897d52dd8d45d07
+    m_SubObjectName: AvatarJulius1
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: b1afdb585c581784b897d52dd8d45d07
+    m_SubObjectName: AvatarJulius2
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: b1afdb585c581784b897d52dd8d45d07
+    m_SubObjectName: AvatarLester
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: b1afdb585c581784b897d52dd8d45d07
+    m_SubObjectName: AvatarMarcus
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: b1afdb585c581784b897d52dd8d45d07
+    m_SubObjectName: AvatarOllie
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: b1afdb585c581784b897d52dd8d45d07
+    m_SubObjectName: AvatarRed
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: b1afdb585c581784b897d52dd8d45d07
+    m_SubObjectName: AvatarSpindle
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: b1afdb585c581784b897d52dd8d45d07
+    m_SubObjectName: AvatarSylvie
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: b1afdb585c581784b897d52dd8d45d07
+    m_SubObjectName: AvatarTaxi
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: b1afdb585c581784b897d52dd8d45d07
+    m_SubObjectName: AvatarWally
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
   neverSleep: 0
   sleepSeconds: 30
   console: {fileID: 6593845680673462259}

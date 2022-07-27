@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+
 
 public enum GameType
 {
@@ -69,7 +72,7 @@ public class GameManager : DontDestroy<GameManager>
     [HideInInspector] public bool newBossBattleStoryBeat = false; // did player move to a new boss battle story beat?
 
     [Header("Avatars")]
-    public List<Sprite> avatars;
+    public List<AssetReferenceAtlasedSprite> avatars;
 
     [HideInInspector]
     public bool neverSleep = false;
@@ -116,6 +119,7 @@ public class GameManager : DontDestroy<GameManager>
 
         Screen.sleepTimeout = sleepSeconds;
         neverSleep = false;
+        
     }
 
     void Update()

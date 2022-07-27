@@ -61,6 +61,7 @@ public class ChallengeWordTestSceneManager : MonoBehaviour
             {
                 foreach (var result in raycastResults)
                 {
+                    //Debug.Log("" + result);
                     if (result.gameObject.transform.CompareTag("UniversalCoin"))
                     {
                         PlayCoin(result.gameObject.GetComponent<UniversalCoinImage>());
@@ -81,10 +82,10 @@ public class ChallengeWordTestSceneManager : MonoBehaviour
 
     private IEnumerator PlayCoinRoutine(UniversalCoinImage coin)
     {
-        coin.LerpScale(new Vector2(2f, 2f), 0.1f);
+        coin.GetComponent<LerpableObject>().LerpScale(new Vector2(2f, 2f), 0.1f);
         coin.PlayAudio();
         yield return new WaitForSeconds(0.1f);
-        coin.LerpScale(new Vector2(2.5f, 2.5f), 0.1f);
+        coin.GetComponent<LerpableObject>().LerpScale(new Vector2(2.5f, 2.5f), 0.1f);
     }
 
     private void PlayPolaroid()
@@ -123,7 +124,7 @@ public class ChallengeWordTestSceneManager : MonoBehaviour
         polaroid.LerpScale(1f, 0.1f);
 
         // remove all old coins + set coin
-        setCoin.LerpScale(Vector2.zero, 0.1f);
+        setCoin.GetComponent<LerpableObject>().LerpScale(Vector2.zero, 0.1f);
         foreach (Transform coin in coinParent)
         {
             Destroy(coin.gameObject);
@@ -137,11 +138,11 @@ public class ChallengeWordTestSceneManager : MonoBehaviour
         {
             GameObject coin = Instantiate(universalCoin, InvisibleFrameLayout.instance.frames[i].transform.position, Quaternion.identity, coinParent);
             coin.GetComponent<UniversalCoinImage>().SetValue(currentWord.elkoninList[i]);
-            coin.GetComponent<UniversalCoinImage>().LerpScale(new Vector2(2.5f, 2.5f), 0.1f);
+            coin.GetComponent<LerpableObject>().LerpScale(new Vector2(2.5f, 2.5f), 0.1f);
         }
         // set set coin
         setCoin.SetActionWordValue(currentWord.set);
-        setCoin.LerpScale(new Vector2(2f, 2f), 0.1f);
+        setCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(2.5f, 2.5f), 0.1f);
         // say polaroid
         AudioManager.instance.PlayTalk(currentWord.audio);
         yield return new WaitForSeconds(0.1f);

@@ -50,6 +50,8 @@ public class MicInput : MonoBehaviour
     {
         // print ("mic stopped!");
         Microphone.End(_device);
+        Object.Destroy(_clipRecord);
+        _clipRecord = null;
         //_isInitialized = false;
     }
 

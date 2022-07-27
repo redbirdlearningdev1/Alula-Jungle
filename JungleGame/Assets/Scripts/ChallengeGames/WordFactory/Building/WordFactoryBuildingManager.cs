@@ -254,7 +254,6 @@ public class WordFactoryBuildingManager : MonoBehaviour
         InvisibleFrameLayout.instance.SetNumberOfFrames(currentWord.elkoninCount);
         VisibleFramesController.instance.SetNumberOfFrames(currentWord.elkoninCount);
         yield return new WaitForSeconds(0.5f);
-
         // throw out real frames
         VisibleFramesController.instance.PlaceActiveFrames(polaroid.transform.localPosition);
         VisibleFramesController.instance.MoveFramesToInvisibleFrames();
@@ -310,7 +309,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
         }
         yield return new WaitForSeconds(0.25f);
         polaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
-
+        
         // tutorial stuff
         if (playTutorial)
         {
@@ -379,13 +378,13 @@ public class WordFactoryBuildingManager : MonoBehaviour
             {
                 if (coin.value == value && i != currentPair.index)
                 {
-                    coin.GetComponent<LerpableObject>().LerpPosToTransform(VisibleFramesController.instance.frames[i].transform, 0f, false);
+                    coin.GetComponent<LerpableObject>().LerpPosToTransform(VisibleFramesController.instance.frames[i].transform, 0.01f, false);
                     break;
                 }
                 i++;
             }
         }
-        //yield return new WaitForSeconds(0.5f);
+        // yield return new WaitForSeconds(0.5f);
         // show coins
         i = 0;
         foreach (var coin in currentCoins)
@@ -530,7 +529,7 @@ public class WordFactoryBuildingManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
 
             // add coin to list
-            currentCoins.Add(currentCoin);
+            currentCoins.Insert(currentPair.index, currentCoin);
             // yield return new WaitForSeconds(1f);
 
             if (showChallengeWordLetters)
@@ -543,17 +542,18 @@ public class WordFactoryBuildingManager : MonoBehaviour
                 // play audio fx 
                 AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BirdWingFlap, 1f);
                 // remove image
-                polaroid.ShowPolaroidWord(120f);
+                polaroid.ShowPolaroidWord(100f);
                 // un-squish on x scale
                 pol.LerpScale(new Vector2(1f, 1f), 0.2f);
                 yield return new WaitForSeconds(1f);
+
 
                 // say letter groups using coins
                 for (int i = 0; i < polaroid.challengeWord.elkoninCount; i++)
                 {
                     GameObject letterElement = polaroid.GetLetterGroupElement(i);
                     letterElement.GetComponent<TextMeshProUGUI>().color = Color.black;
-                    letterElement.GetComponent<LerpableObject>().LerpTextSize(150f - (Polaroid.FONT_SCALE_DECREASE * polaroid.challengeWord.elkoninCount), 0.2f);
+                    letterElement.GetComponent<LerpableObject>().LerpTextSize(120f - (Polaroid.FONT_SCALE_DECREASE * polaroid.challengeWord.elkoninCount), 0.2f);
                     currentCoins[i].LerpScale(new Vector2(1.2f, 1.2f), 0.25f);
                     // audio fx
                     AudioManager.instance.PlayTalk(GameManager.instance.GetGameWord(currentCoins[i].value).audio);

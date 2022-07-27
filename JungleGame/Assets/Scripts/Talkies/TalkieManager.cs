@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEditor;
 
 public class TalkieManager : MonoBehaviour
 {
@@ -118,6 +119,8 @@ public class TalkieManager : MonoBehaviour
         if (instance == null)
             instance = this;
 
+        leftImage.sprite = null;
+        rightImage.sprite = null;
         // clear subtitles
         subtitleText.text = "";
         subtitleBox.color = new Color(0f, 0f, 0f, 0f);
