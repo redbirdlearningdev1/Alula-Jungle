@@ -12598,9 +12598,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updateGameManagerBools: 0
-  gameCanvas: {fileID: 52454981}
-  uiCanvas: {fileID: 258652393}
-  overlayCanvas: {fileID: 1620182126}
   Map: {fileID: 1534747656}
   leftButton: {fileID: 303760787}
   rightButton: {fileID: 943204350}
@@ -27077,7 +27074,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 986654.2, y: 0}
+  m_AnchoredPosition: {x: 988967, y: 0}
   m_SizeDelta: {x: 0, y: 256.55}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &753620794
@@ -38609,7 +38606,7 @@ PrefabInstance:
     - target: {fileID: 1225881395315569394, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 500
+      value: 500.00006
       objectReference: {fileID: 0}
     - target: {fileID: 4259016398660920131, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -38699,7 +38696,7 @@ PrefabInstance:
     - target: {fileID: 7807549422858484565, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -500
+      value: -500.00006
       objectReference: {fileID: 0}
     - target: {fileID: 8032072505287944566, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -75590,6 +75587,17 @@ MonoBehaviour:
   wagonBackButton: {fileID: 1175834657}
   wagonBG: {fileID: 365553924}
   talkieBG: {fileID: 1577829711}
+  stickerCart:
+    m_AssetGUID: 26ee1aae7f111384eb2f6fe0453492a8
+    m_SubObjectName: BaseBB
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
+  stickerButton:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   stickerConfirmWindow: {fileID: 1329046704}
   revealSticker: {fileID: 1874928189}
   stickerToolbarPos: {fileID: 2078090986}

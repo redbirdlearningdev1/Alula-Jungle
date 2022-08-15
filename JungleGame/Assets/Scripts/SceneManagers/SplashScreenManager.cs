@@ -409,7 +409,7 @@ public class SplashScreenManager : MonoBehaviour
 
     private IEnumerator ScreenTapDelay()
     {
-        Resources.UnloadUnusedAssets();
+        //Resources.UnloadUnusedAssets();
         yield return new WaitForSeconds(3f);
         screenTapReady = true;
     }
