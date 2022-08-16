@@ -93,6 +93,12 @@ public class WordFactoryDeletingManager : MonoBehaviour
         // only turn off tutorial if false
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().wordFactoryDeletingTutorial;
+        // start split song if not tutorial
+        if (!playTutorial)
+        {
+            // start song
+            AudioManager.instance.InitSplitSong(AudioDatabase.instance.jadeSplitSong);
+        }
 
         PregameSetup();
     }
@@ -428,6 +434,9 @@ public class WordFactoryDeletingManager : MonoBehaviour
         {
             // play correct sound
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
+
+            // increase split song
+            AudioManager.instance.IncreaseSplitSong();
 
             // emerald tiger correct
             EmeraldTigerHolder.instance.SetCorrect(true);

@@ -100,6 +100,12 @@ public class WordFactoryBuildingManager : MonoBehaviour
         // only turn off tutorial if false
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().wordFactoryBuildingTutorial;
+        // start split song if not tutorial
+        if (!playTutorial)
+        {
+            // start song
+            AudioManager.instance.InitSplitSong(AudioDatabase.instance.jadeSplitSong);
+        }
 
         PregameSetup();
     }
@@ -534,6 +540,9 @@ public class WordFactoryBuildingManager : MonoBehaviour
             // play correct sound
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
             yield return new WaitForSeconds(0.5f);
+
+            // increase split song
+            AudioManager.instance.IncreaseSplitSong();
 
             // add coin to list
             currentCoins.Add(currentCoin);

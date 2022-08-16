@@ -113,6 +113,12 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         // only turn off tutorial if false
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().wordFactorySubstitutingTutorial;
+        // start split song if not tutorial
+        if (!playTutorial)
+        {
+            // start song
+            AudioManager.instance.InitSplitSong(AudioDatabase.instance.pondSplitSong);
+        }
 
         PregameSetup();
     }
@@ -849,6 +855,9 @@ public class WordFactorySubstitutingManager : MonoBehaviour
     private IEnumerator PostRound(bool win)
     {
         WordFactorySubstituteRaycaster.instance.isOn = false;
+
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
 
         yield return new WaitForSeconds(1f);
 

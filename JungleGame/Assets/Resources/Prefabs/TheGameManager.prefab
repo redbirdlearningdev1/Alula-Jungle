@@ -6363,6 +6363,40 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  pondSplitSong:
+  - m_AssetGUID: e1f38fbd7b4b10c42a0e690b69069b17
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 55580ca742e349b41a249455e0fbf1f2
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: f675b6217541a1b4cbdc3d66fa48e464
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 27c28996500b4e145abdb986187410ff
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  jadeSplitSong:
+  - m_AssetGUID: 33a5522a747a49a438ce8023bad60c6a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: f2a94351cd9f5eb4cb1ceb8845613353
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: aee97e251d3767444b432c1c5070fa5b
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 625a91488124de840bdb0b9d14402f43
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   boat_game_audio:
   - m_AssetGUID: 9a7fd8dfe83591e48bff2a9742f404ac
     m_SubObjectName: 

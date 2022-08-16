@@ -137,6 +137,12 @@ public class WordFactoryBlendingManager : MonoBehaviour
         // only turn off tutorial if false
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().wordFactoryBlendingTutorial;
+        // start split song if not tutorial
+        if (!playTutorial)
+        {
+            // start song
+            AudioManager.instance.InitSplitSong(AudioDatabase.instance.pondSplitSong);
+        }
 
         // add ambiance
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.05f);
@@ -586,6 +592,9 @@ public class WordFactoryBlendingManager : MonoBehaviour
 
         // reveal the correct polaroid
         StartCoroutine(PolaroidRevealRoutine(true));
+
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
 
         // show challenge word letters
         if (showChallengeWordLetters)
