@@ -22754,6 +22754,8 @@ MonoBehaviour:
   storyGameData: {fileID: 0}
   mapID: 0
   prevMapLocation: 17
+  actionCoins: []
+  consonantCoins: []
   repairMapIconID: 0
   prevGameTypePlayed: 0
   playingChallengeGame: 0

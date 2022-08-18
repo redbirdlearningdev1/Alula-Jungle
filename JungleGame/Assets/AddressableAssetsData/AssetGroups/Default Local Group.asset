@@ -16,7 +16,12 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: c0af9261eb365ec4d8f3e30a1d85dbc2
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 5915113606e8e2e49be86f98958fcf62
+    m_Address: Assets/ArtFolder/ScrollingMap/Backgrounds/3_FollowRed(Sequence)/fRShipMask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 36e446923fe0ce6489248e816bef7c49, type: 2}
   m_SchemaSet:

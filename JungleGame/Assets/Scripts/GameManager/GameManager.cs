@@ -53,10 +53,13 @@ public class GameManager : DontDestroy<GameManager>
 
     [Header("Game Datas")]
     public List<StoryGameData> storyGameDatas;
-
     public StoryGameData storyGameData;
     public MapIconIdentfier mapID;
     public MapLocation prevMapLocation = MapLocation.NONE;
+
+    [Header("Addressable References")]
+    //public List<AssetReferenceAtlasedAnimation> actionCoins = new List<AssetReferenceAtlasedAnimation>();
+    //public List<AssetReferenceAtlasedAnimation> consonantCoins = new List<AssetReferenceAtlasedAnimation>();
 
     [HideInInspector] public bool repairMapIconID; // when the scroll map appears -> repair this icon
     [HideInInspector] public GameType prevGameTypePlayed = GameType.None;
