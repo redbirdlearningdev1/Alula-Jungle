@@ -89,7 +89,7 @@ public class ScrollMapManager : MonoBehaviour
     public float multiplier;
 
     private int mapLimit;
-    private int currMapLocation;
+    [SerializeField] private int currMapLocation;
     private int minMapLimit = 1;
     private bool navButtonsDisabled = true;
 
@@ -114,7 +114,6 @@ public class ScrollMapManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(DelayedStart(0f));
-        UnloadAllMapBackgrounds();
     }
 
     void Update()
@@ -209,6 +208,7 @@ public class ScrollMapManager : MonoBehaviour
         #   GAME EVENTS (repair map icon)
         ################################################
         */
+        UnloadAllMapBackgrounds(currMapLocation);
 
         if (GameManager.instance.repairMapIconID)
         {
@@ -348,47 +348,95 @@ public class ScrollMapManager : MonoBehaviour
         allowDragging = true;
     }
 
-    public void UnloadAllMapBackgrounds()
+    public int MapLocationToBackgroundIndex(int mapLocation)
     {
-        StartCoroutine(UnloadAllMapBackgroundsRoutine());
+        if (mapLocation < 9)
+        {
+            return mapLocation;
+        }
+        else if (mapLocation < 12)
+        {
+            return mapLocation - 1;
+        }
+        else if (mapLocation < 14)
+        {
+            return mapLocation - 2;
+        }
+        else if (mapLocation < 17)
+        {
+            return mapLocation - 3;
+        }
+        else
+        {
+            return mapLocation;
+        }
     }
 
-    public IEnumerator UnloadAllMapBackgroundsRoutine()
+    public void UnloadAllMapBackgrounds(int currMap = -1)
+    {
+        StartCoroutine(UnloadAllMapBackgroundsRoutine(MapLocationToBackgroundIndex(currMap)));
+    }
+
+    public IEnumerator UnloadAllMapBackgroundsRoutine(int currMap)
     {
         for (int i = 0; i < mapBackgroundReferences.Count; i++)
         {
-            MapBackgroundReference map = mapBackgroundReferences[i];
+            if (currMap < 0 || (currMap != i && currMap != (i - 1) && currMap != (i + 1)))
+            {
+                MapBackgroundReference map = mapBackgroundReferences[i];
 
-            if (map.hasImage)
-            {
-                if (map.handle.IsValid())
+                if (map.hasImage)
                 {
-                    map.image.sprite = null;
-                    Addressables.Release(map.handle);
+                    if (map.handle.IsValid())
+                    {
+                        map.image.sprite = null;
+                        Addressables.Release(map.handle);
+                    }
+                    else
+                    {
+                        map.handle = map.reference.LoadAssetAsync<Sprite>();
+                        yield return map.handle;
+                        map.image.sprite = null;
+                        Addressables.Release(map.handle);
+                    }
                 }
                 else
                 {
-                    map.handle = map.reference.LoadAssetAsync<Sprite>();
-                    yield return map.handle;
-                    map.image.sprite = null;
-                    Addressables.Release(map.handle);
+                    if (map.handle.IsValid())
+                    {
+                        map.player.clip = null;
+                        Addressables.Release(map.handle);
+                    }
+                    else
+                    {
+                        map.handle = map.reference.LoadAssetAsync<VideoClip>();
+                        yield return map.handle;
+                        map.player.clip = null;
+                        Addressables.Release(map.handle);
+                    }
                 }
             }
-            else
-            {
-                if (map.handle.IsValid())
-                {
-                    map.player.clip = null;
-                    Addressables.Release(map.handle);
-                }
-                else
-                {
-                    map.handle = map.reference.LoadAssetAsync<VideoClip>();
-                    yield return map.handle;
-                    map.player.clip = null;
-                    Addressables.Release(map.handle);
-                }
-            }
+        }
+    }
+
+    public void LoadAndUnloadBackgrounds(bool isLeft)
+    {
+        int index = MapLocationToBackgroundIndex(currMapLocation);
+
+        if (index < 1 || index > 14)
+        {
+            return;
+        }
+
+        if (isLeft)
+        {
+            LoadMapBackground(index - 1);
+            UnloadMapBackground(index + 2);
+        }
+        else
+        {
+            LoadMapBackground(index + 1);
+            UnloadMapBackground(index - 2);
         }
     }
 
@@ -431,6 +479,7 @@ public class ScrollMapManager : MonoBehaviour
 
     IEnumerator UnloadMapBackgroundRoutine(int index)
     {
+        yield return new WaitForSeconds(1f);
         MapBackgroundReference map = mapBackgroundReferences[index];
 
         if (map.hasImage)
@@ -440,11 +489,25 @@ public class ScrollMapManager : MonoBehaviour
                 map.image.sprite = null;
                 Addressables.Release(map.handle);
             }
+            else
+            {
+                map.handle = map.reference.LoadAssetAsync<Sprite>();
+                yield return map.handle;
+                map.image.sprite = null;
+                Addressables.Release(map.handle);
+            }
         }
         else
         {
             if (map.handle.IsValid())
             {
+                map.player.clip = null;
+                Addressables.Release(map.handle);
+            }
+            else
+            {
+                map.handle = map.reference.LoadAssetAsync<VideoClip>();
+                yield return map.handle;
                 map.player.clip = null;
                 Addressables.Release(map.handle);
             }
@@ -1933,8 +1996,7 @@ public class ScrollMapManager : MonoBehaviour
 
         // hide stars from prev map pos
         StartCoroutine(ToggleLocationRoutine(false, prevMapPos));
-
-        LoadMapBackground(currMapLocation);
+        LoadAndUnloadBackgrounds(true);
 
         yield return new WaitForSeconds(0.1f);
 
@@ -1949,8 +2011,6 @@ public class ScrollMapManager : MonoBehaviour
         ScrollSettingsWindowController.instance.UpdateRedPos(mapLocations[currMapLocation].location);
 
         yield return new WaitForSeconds(0.8f);
-
-        UnloadMapBackground(currMapLocation + 1);
 
         // show stars on current map location
         StartCoroutine(ToggleLocationRoutine(true, currMapLocation));
@@ -1992,7 +2052,7 @@ public class ScrollMapManager : MonoBehaviour
         StartCoroutine(ToggleLocationRoutine(false, prevMapPos));
 
         // Nick here
-        LoadMapBackground(currMapLocation);
+        LoadAndUnloadBackgrounds(false);
 
         yield return new WaitForSeconds(0.1f);
 
@@ -2012,8 +2072,6 @@ public class ScrollMapManager : MonoBehaviour
         StartCoroutine(ToggleLocationRoutine(true, currMapLocation));
 
         yield return new WaitForSeconds(0.5f);
-
-        UnloadMapBackground(currMapLocation - 1);
 
         // if new location is palace intro - show arrow if past story beat
         if (currMapLocation == 16 && StudentInfoSystem.GetCurrentProfile().currStoryBeat > StoryBeat.PalaceIntro)
