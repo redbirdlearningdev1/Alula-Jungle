@@ -1689,7 +1689,7 @@ public class ScrollMapManager : MonoBehaviour
         if ((int)location > mapLimit)
             return;
 
-        StartCoroutine(SmoothGoToMapLocationRoutine(location));
+        //StartCoroutine(SmoothGoToMapLocationRoutine(location));
     }
 
     private IEnumerator SmoothGoToMapLocationRoutine(MapLocation location)
