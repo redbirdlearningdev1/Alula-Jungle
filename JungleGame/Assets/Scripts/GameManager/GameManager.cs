@@ -57,10 +57,6 @@ public class GameManager : DontDestroy<GameManager>
     public MapIconIdentfier mapID;
     public MapLocation prevMapLocation = MapLocation.NONE;
 
-    [Header("Addressable References")]
-    //public List<AssetReferenceAtlasedAnimation> actionCoins = new List<AssetReferenceAtlasedAnimation>();
-    //public List<AssetReferenceAtlasedAnimation> consonantCoins = new List<AssetReferenceAtlasedAnimation>();
-
     [HideInInspector] public bool repairMapIconID; // when the scroll map appears -> repair this icon
     [HideInInspector] public GameType prevGameTypePlayed = GameType.None;
 
@@ -103,7 +99,7 @@ public class GameManager : DontDestroy<GameManager>
         // set game resolution
         Screen.SetResolution(GameAwake.gameResolution.x, GameAwake.gameResolution.y, true);
 #endif
-
+        Addressables.InitializeAsync();
         // init mic
         MicInput.instance.InitMic();
         MicInput.instance.StopMicrophone();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
 
 public class TestSplashSceneManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class TestSplashSceneManager : MonoBehaviour
     void Awake()
     {
         // determine if first time running new build
+        Addressables.InitializeAsync();
         ResourceRequest request = Resources.LoadAsync("Build", typeof(BuildScriptableObject));
         request.completed += RequestCompleted;  
     }

@@ -11,7 +11,7 @@ public class GameAwake : MonoBehaviour
     void Awake()
     {
         // set game resolution
-#if !UNITY_IOS
+#if !(UNITY_IOS || UNITY_ANDROID)
         Screen.SetResolution(gameResolution.x, gameResolution.y, true);
 #endif
     }

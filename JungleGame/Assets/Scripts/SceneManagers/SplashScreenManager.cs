@@ -184,6 +184,13 @@ public class SplashScreenManager : MonoBehaviour
 
     void Start()
     {
+        Addressables.InitializeAsync();
+        StartCoroutine(DelayedStart());
+    }
+
+    private IEnumerator DelayedStart()
+    {
+        yield return new WaitForSeconds(0f);
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
