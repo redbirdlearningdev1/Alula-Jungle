@@ -58,6 +58,8 @@ public class StoryGameManager : MonoBehaviour
     public LerpableObject fastForwardButton;
     public float showButtonDelay;
 
+    private float startTime;
+
     void Awake()
     {
         if (instance == null)
@@ -102,6 +104,9 @@ public class StoryGameManager : MonoBehaviour
 
     void Start()
     {
+        // set start time
+        startTime = Time.time;
+
         PregameSetup();
         StartCoroutine(GameRoutine());
     }
@@ -142,7 +147,7 @@ public class StoryGameManager : MonoBehaviour
     {
         GameManager.instance.SendLog(this, "skipping story game!");
         StopAllCoroutines();
-        EndGame();
+        EndGame(true);
     }
 
     private void PregameSetup()
@@ -312,6 +317,8 @@ public class StoryGameManager : MonoBehaviour
                     MicInput.instance.InitMic();
                     // activate microphone indicator
                     microphone.ShowIndicator();
+                    // set current word
+                    currentClip = seg.audio;
                     // repeat word if microphone has not been pressed
                     if (!microphone.hasBeenPressed)
                         StartCoroutine(RepeatWhileWating());
@@ -379,10 +386,10 @@ public class StoryGameManager : MonoBehaviour
         // // make coin transparent
         // coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.image, 0.25f, 0.5f);
 
-        EndGame();
+        EndGame(false);
     }
 
-    private void EndGame()
+    private void EndGame(bool skipButtonPressed)
     {
         // make sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1.0f);
@@ -428,6 +435,18 @@ public class StoryGameManager : MonoBehaviour
         // advance story beat
         StudentInfoSystem.AdvanceStoryBeat();
         StudentInfoSystem.SaveStudentPlayerData();
+
+        float elapsedTime = Time.time - startTime;
+
+        //// ANALYTICS : send storygame_complete event
+        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        {
+            { "storygame_name", storyGameData.name },
+            { "elapsed_time", elapsedTime },
+            { "used_skip_button", skipButtonPressed }
+        };            
+        AnalyticsManager.SendCustomEvent("storygame_complete", parameters);
+
         // return to scrollmap
         GameManager.instance.LoadScene("ScrollMap", true, 3f);
     }

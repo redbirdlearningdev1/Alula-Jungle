@@ -60,6 +60,8 @@ public class RummageGameManager : MonoBehaviour
     public int[] correctIndexes;
     private int tutorialEvent = 0;
 
+    private float startTime;
+
 
     void Awake()
     {
@@ -80,6 +82,9 @@ public class RummageGameManager : MonoBehaviour
 
     void Start()
     {
+        // set start time
+        startTime = Time.time;
+
         // only turn off tutorial if false
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().rummageTutorial;
@@ -407,6 +412,7 @@ public class RummageGameManager : MonoBehaviour
         // only track phoneme attempt if not in tutorial AND not in practice mode
         if (!playTutorial /*&& !GameManager.instance.practiceModeON */)
         {
+            StudentInfoSystem.SavePlayerMinigameRoundAttempt(GameType.RummageGame, success);
             StudentInfoSystem.SavePlayerPhonemeAttempt(coin.type, success);
         }
 
@@ -675,6 +681,21 @@ public class RummageGameManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().rummageTutorial = true;
             StudentInfoSystem.SaveStudentPlayerData();
 
+            float elapsedTime1 = Time.time - startTime;
+
+            //// ANALYTICS : send minigame_completed event
+            StudentPlayerData data1 = StudentInfoSystem.GetCurrentProfile();
+            Dictionary<string, object> parameters1 = new Dictionary<string, object>()
+            {
+                { "minigame_name", GameType.RummageGame.ToString() },
+                { "stars_awarded", 0 },
+                { "elapsed_time", elapsedTime1 },
+                { "tutorial_played", true },
+                { "prev_times_played", data1.rummagePlayed },
+                { "curr_storybeat", data1.currStoryBeat.ToString() }
+            };            
+            AnalyticsManager.SendCustomEvent("minigame_completed", parameters1);
+
             GameManager.instance.LoadScene("RummageGame", true, 3f);
 
             yield break;
@@ -688,8 +709,24 @@ public class RummageGameManager : MonoBehaviour
         // AI stuff
         AIData(StudentInfoSystem.GetCurrentProfile());
 
+        int starsAwarded = CalculateStars();
+        float elapsedTime = Time.time - startTime;
+
+        //// ANALYTICS : send minigame_completed event
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        {
+            { "minigame_name", GameType.RummageGame.ToString() },
+            { "stars_awarded", starsAwarded },
+            { "elapsed_time", elapsedTime },
+            { "tutorial_played", false },
+            { "prev_times_played", data.rummagePlayed },
+            { "curr_storybeat", data.currStoryBeat.ToString() }
+        };            
+        AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
+
         // calculate and show stars
-        StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+        StarAwardController.instance.AwardStarsAndExit(starsAwarded);
     }
 
     public void AIData(StudentPlayerData playerData)

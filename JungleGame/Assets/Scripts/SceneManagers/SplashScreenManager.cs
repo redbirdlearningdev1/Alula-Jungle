@@ -674,8 +674,13 @@ public class SplashScreenManager : MonoBehaviour
         StudentInfoSystem.SetStudentPlayer(newProfileIndex);
         StudentInfoSystem.GetCurrentProfile().name = newProfileName;
         StudentInfoSystem.GetCurrentProfile().profileAvatar = profileAvatarIndex;
-        StudentInfoSystem.GetCurrentProfile().active = true; // this profile is now active!!!
+        StudentInfoSystem.GetCurrentProfile().active = true; // this profile is now active!!
         StudentInfoSystem.SaveStudentPlayerData();
+
+        // update analytics profile
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        string profile = data.name + "_" + data.uniqueID;
+        AnalyticsManager.SwitchProfile(profile);
 
         SetUpProfiles();
         selectedProfile = 0;
@@ -701,6 +706,18 @@ public class SplashScreenManager : MonoBehaviour
             practiceButton.GetComponent<Button>().interactable = false;
             reportButton.GetComponent<Button>().interactable = false;
         }
+
+        //// ANALYTICS : send profile_created event
+        // StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        {
+            { "avatar_id", profileAvatarIndex },
+            { "game_version", GameManager.currentGameVersion },
+            { "profile_name", newProfileName },
+            { "student_index", ((int)newProfileIndex + 1) },
+            { "unique_id", data.uniqueID }
+        };            
+        AnalyticsManager.SendCustomEvent("profile_created", parameters);
     }
 
     private void LoadProfileAndContinue(StudentIndex index)
@@ -926,6 +943,11 @@ public class SplashScreenManager : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().name = newName;
         StudentInfoSystem.GetCurrentProfile().profileAvatar = profileAvatarIndex;
         StudentInfoSystem.SaveStudentPlayerData();
+        
+        // update analytics profile
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        string profile = data.name + "_" + data.uniqueID;
+        AnalyticsManager.SwitchProfile(profile);
 
         SetUpProfiles();
         selectedProfile = 0;
@@ -1006,6 +1028,11 @@ public class SplashScreenManager : MonoBehaviour
             practiceButton.GetComponent<Button>().interactable = false;
             reportButton.GetComponent<Button>().interactable = false;
         }
+
+        // update analytics profile
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        string profile = data.name + "_" + data.uniqueID;
+        AnalyticsManager.SwitchProfile(profile);
     }
 
     public void OnNoDeleteProfilePressed()

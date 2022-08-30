@@ -3459,49 +3459,49 @@ public class DevMenuManager : MonoBehaviour
         int count = 0;
         foreach (var data in StudentInfoSystem.GetCurrentProfile().blendData)
         {
-            printThis += "" + count + ": " + data.challengeWord.word + "." + data.success.ToString() + " @ " + data.dateTime.ToString() + "\n";
+            printThis += "" + count + ": " + data.challengeWord.word + "." + data.success.ToString() + "\n";
         }
 
         printThis += "\nSubstitution Data:\n";
         count = 0;
         foreach (var data in StudentInfoSystem.GetCurrentProfile().subData)
         {
-            printThis += "" + count + ": " + data.challengeWord.word + "." + data.success.ToString() + " @ " + data.dateTime.ToString() + "\n";
+            printThis += "" + count + ": " + data.challengeWord.word + "." + data.success.ToString() + "\n";
         }
 
         printThis += "\nBuilding Data:\n";
         count = 0;
         foreach (var data in StudentInfoSystem.GetCurrentProfile().buildData)
         {
-            printThis += "" + count + ": " + data.challengeWord.word + "." + data.success.ToString() + " @ " + data.dateTime.ToString() + "\n";
+            printThis += "" + count + ": " + data.challengeWord.word + "." + data.success.ToString() + "\n";
         }
 
         printThis += "\nDeleting Data:\n";
         count = 0;
         foreach (var data in StudentInfoSystem.GetCurrentProfile().deleteData)
         {
-            printThis += "" + count + ": " + data.challengeWord.word + "." + data.success.ToString() + " @ " + data.dateTime.ToString() + "\n";
+            printThis += "" + count + ": " + data.challengeWord.word + "." + data.success.ToString() + "\n";
         }
 
         printThis += "\nTiger Paw Coins Data:\n";
         count = 0;
         foreach (var data in StudentInfoSystem.GetCurrentProfile().TPCoinsData)
         {
-            printThis += "" + count + ": " + data.challengeWord.word + "." + data.success.ToString() + " @ " + data.dateTime.ToString() + "\n";
+            printThis += "" + count + ": " + data.challengeWord.word + "." + data.success.ToString() + "\n";
         }
 
         printThis += "\nTiger Paw Photos Data:\n";
         count = 0;
         foreach (var data in StudentInfoSystem.GetCurrentProfile().TPPhotosData)
         {
-            printThis += "" + count + ": " + data.challengeWord.word + "." + data.success.ToString() + " @ " + data.dateTime.ToString() + "\n";
+            printThis += "" + count + ": " + data.challengeWord.word + "." + data.success.ToString() + "\n";
         }
 
         printThis += "\nPassword Data:\n";
         count = 0;
         foreach (var data in StudentInfoSystem.GetCurrentProfile().passwordData)
         {
-            printThis += "" + count + ": " + data.challengeWord.word + "." + data.success.ToString() + " @ " + data.dateTime.ToString() + "\n";
+            printThis += "" + count + ": " + data.challengeWord.word + "." + data.success.ToString() + "\n";
         }
 
         GameManager.instance.SendLog(this, printThis);

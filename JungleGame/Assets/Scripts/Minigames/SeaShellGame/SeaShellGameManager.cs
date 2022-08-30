@@ -38,6 +38,7 @@ public class SeaShellGameManager : MonoBehaviour
 
     private int t_currRound = 0;
 
+    private float startTime;
 
     void Awake()
     {
@@ -58,6 +59,9 @@ public class SeaShellGameManager : MonoBehaviour
 
     void Start()
     {
+        // set start time
+        startTime = Time.time;
+
         // only turn off tutorial if false
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().seashellTutorial;
@@ -299,6 +303,7 @@ public class SeaShellGameManager : MonoBehaviour
         // only track phoneme attempt if not in tutorial AND not in practice mode
         if (!playTutorial /*&& !GameManager.instance.practiceModeON */)
         {
+            StudentInfoSystem.SavePlayerMinigameRoundAttempt(GameType.SeashellGame, success);
             StudentInfoSystem.SavePlayerPhonemeAttempt(currentCoin, success);
         }
 
@@ -433,6 +438,21 @@ public class SeaShellGameManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().seashellTutorial = true;
             StudentInfoSystem.SaveStudentPlayerData();
 
+            float elapsedTime = Time.time - startTime;
+
+            //// ANALYTICS : send minigame_completed event
+            StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                { "minigame_name", GameType.SeashellGame.ToString() },
+                { "stars_awarded", 0 },
+                { "elapsed_time", elapsedTime },
+                { "tutorial_played", true },
+                { "prev_times_played", data.seashellPlayed },
+                { "curr_storybeat", data.currStoryBeat.ToString() }
+            };            
+            AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
+
             GameManager.instance.LoadScene("SeaShellGame", true, 3f);
         }
         else
@@ -440,8 +460,24 @@ public class SeaShellGameManager : MonoBehaviour
             // AI stuff
             AIData(StudentInfoSystem.GetCurrentProfile());
 
+            int starsAwarded = CalculateStars();
+            float elapsedTime = Time.time - startTime;
+
+            //// ANALYTICS : send minigame_completed event
+            StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                { "minigame_name", GameType.SeashellGame.ToString() },
+                { "stars_awarded", starsAwarded },
+                { "elapsed_time", elapsedTime },
+                { "tutorial_played", false },
+                { "prev_times_played", data.seashellPlayed },
+                { "curr_storybeat", data.currStoryBeat.ToString() }
+            };            
+            AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
+
             // calculate and show stars
-            StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+            StarAwardController.instance.AwardStarsAndExit(starsAwarded);
         }
     }
 

@@ -29,9 +29,36 @@ public static class StudentInfoSystem
         SaveStudentPlayerData();
         currentStudentPlayer = LoadSaveSystem.LoadStudentData(index, true); // load new student data
 
+        string profile = currentStudentPlayer.name + "_" + currentStudentPlayer.uniqueID;
+        AnalyticsManager.SwitchProfile(profile);
+
         DropdownToolbar.instance.LoadToolbarDataFromProfile(); // load profile coins
         GameManager.instance.SendLog("StudentInfoSystem", "set current profile to: " + index);
         SettingsManager.instance.LoadScrollSettingsFromProfile(); // load in settings
+    }
+
+    public static int GetCurrentPlayerTotalStars()
+    {
+        int total = 0;
+        
+        // minigames
+        total += currentStudentPlayer.starsFrogger;
+        total += currentStudentPlayer.starsRummage;
+        total += currentStudentPlayer.starsSeashell;
+        total += currentStudentPlayer.starsSpiderweb;
+        total += currentStudentPlayer.starsTurntables;
+        total += currentStudentPlayer.starsPirate;
+
+        // challengegames
+        total += currentStudentPlayer.starsBlend;
+        total += currentStudentPlayer.starsSub;
+        total += currentStudentPlayer.starsBuild;
+        total += currentStudentPlayer.starsDel;
+        total += currentStudentPlayer.starsTPawCoin;
+        total += currentStudentPlayer.starsTPawPol;
+        total += currentStudentPlayer.starsPass;
+
+        return total;
     }
 
     private static void SetMostRecentProfile(StudentIndex index)
@@ -57,7 +84,7 @@ public static class StudentInfoSystem
                 break;
         }
 
-        GameManager.instance.SendLog("StudentInfoSystem", "set most recent profile to: " + index);
+        // GameManager.instance.SendLog("StudentInfoSystem", "set most recent profile to: " + index);
 
         LoadSaveSystem.SaveStudentData(data1);
         LoadSaveSystem.SaveStudentData(data2);
@@ -385,6 +412,23 @@ public static class StudentInfoSystem
         }
     }
 
+    public static void SaveOverallMastery()
+    {
+        // update master level
+        int blendNum = 1 + Mathf.FloorToInt(currentStudentPlayer.starsBlend / 3);
+        int subNum = 1 + Mathf.FloorToInt(currentStudentPlayer.starsSub / 3);
+        int buildNum = 1 + Mathf.FloorToInt(currentStudentPlayer.starsBuild / 3);
+        int deleteNum = 1 + Mathf.FloorToInt(currentStudentPlayer.starsBlend / 3);
+        int tpCoinNum = 1 + Mathf.FloorToInt(currentStudentPlayer.starsTPawCoin / 3);
+        int tpPhotosNum = 1 + Mathf.FloorToInt(currentStudentPlayer.starsTPawPol / 3);
+        int passwordNum = 1 + Mathf.FloorToInt(currentStudentPlayer.starsPass / 3);
+
+        float averageNum = (float)(blendNum + subNum + buildNum + deleteNum + tpCoinNum + tpPhotosNum + passwordNum) / 7f;
+        averageNum = Mathf.Round(averageNum * 10.0f) * 0.1f;
+        
+        currentStudentPlayer.overallMasteryPerGame.Add(averageNum);
+    }
+
     public static void SavePlayerPhonemeAttempt(ElkoninValue phoneme, bool success)
     {
         // find phoneme data in current player and update
@@ -399,13 +443,63 @@ public static class StudentInfoSystem
         }
     }
 
+    public static void SavePlayerMinigameRoundAttempt(GameType game, bool _success)
+    {
+        MinigameRoundData newData = new MinigameRoundData();
+        newData.success = _success;
+        // save date-time
+        System.DateTime dateTime = System.DateTime.Now;
+        newData.sec = dateTime.Second;
+        newData.min = dateTime.Minute;
+        newData.hour = dateTime.Hour;
+        newData.day = dateTime.Day;
+        newData.month = dateTime.Month;
+        newData.year = dateTime.Year;
+
+        switch (game)
+        {
+            case GameType.FroggerGame:
+                currentStudentPlayer.froggerData.Add(newData);
+                break;
+            
+            case GameType.RummageGame:
+                currentStudentPlayer.rummageData.Add(newData);
+                break;
+
+            case GameType.SeashellGame:
+                currentStudentPlayer.seashellsData.Add(newData);
+                break;
+
+            case GameType.SpiderwebGame:
+                currentStudentPlayer.spiderwebData.Add(newData);
+                break;
+
+            case GameType.TurntablesGame:
+                currentStudentPlayer.turntablesData.Add(newData);
+                break;
+            
+            case GameType.PirateGame:
+                currentStudentPlayer.pirateData.Add(newData);
+                break;
+        }
+
+        SaveStudentPlayerData();
+    }
+
     public static void SavePlayerChallengeRoundAttempt(GameType game, bool _success, ChallengeWord _word, int _diff)
     {
         ChallengeRoundData newData = new ChallengeRoundData();
         newData.success = _success;
         newData.challengeWord = _word;
         newData.difficulty = _diff;
-        newData.dateTime = System.DateTime.Now;
+        // save date-time
+        System.DateTime dateTime = System.DateTime.Now;
+        newData.sec = dateTime.Second;
+        newData.min = dateTime.Minute;
+        newData.hour = dateTime.Hour;
+        newData.day = dateTime.Day;
+        newData.month = dateTime.Month;
+        newData.year = dateTime.Year;
 
         switch (game)
         {

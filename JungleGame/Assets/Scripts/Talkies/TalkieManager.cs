@@ -168,7 +168,7 @@ public class TalkieManager : MonoBehaviour
         {
             GameManager.instance.SendLog(this, "skipping talkie");
             StopAllCoroutines();
-            StartCoroutine(EndTalkie());
+            StartCoroutine(EndTalkie(true));
         }
     }
 
@@ -178,7 +178,7 @@ public class TalkieManager : MonoBehaviour
         currentTalkie = talkie;
 
         // close settings menu if open
-        SettingsManager.instance.CloseAllSettingsWindows();
+        SettingsManager.instance.CloseAllSettingsWindows(true);
 
         // set fast talkies
         SetFastTalkies(StudentInfoSystem.GetCurrentProfile().talkieFast);
@@ -347,10 +347,10 @@ public class TalkieManager : MonoBehaviour
         ################################################
         */
 
-        StartCoroutine(EndTalkie());
+        StartCoroutine(EndTalkie(false));
     }
 
-    private IEnumerator EndTalkie()
+    private IEnumerator EndTalkie(bool skipButtonPressed)
     {
         endingTalkie = true;
 
@@ -428,13 +428,23 @@ public class TalkieManager : MonoBehaviour
         AudioManager.instance.ToggleMusicSmooth(true);
         AudioManager.instance.StopTalk();
 
-        // stop playing talkie
-        talkiePlaying = false;
-        currentTalkie = null;
-
         // delay end talkie bool
         yield return new WaitForSeconds(1f);
         endingTalkie = false;
+
+        //// ANALYTICS : send talkie_completed event
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        {
+            { "curr_storybeat", data.currStoryBeat.ToString() },
+            { "talkie_name", currentTalkie.name },
+            { "used_skip_button", skipButtonPressed }
+        };            
+        AnalyticsManager.SendCustomEvent("talkie_completed", parameters);
+
+        // stop playing talkie
+        talkiePlaying = false;
+        currentTalkie = null;
     }
 
     private IEnumerator PlaySegment(TalkieSegment talkieSeg)

@@ -911,6 +911,17 @@ public class StickerSystem : MonoBehaviour
         // save sticker to SIS
         StudentInfoSystem.AddStickerToInventory(sticker, false);
 
+        //// ANALYTICS : send unlocked_sticker event
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        {
+            { "curr_gold_coins", data.goldCoins },
+            { "curr_storybeat", data.currStoryBeat.ToString() },
+            { "sticker_id", sticker.id.ToString() + ":" + sticker.rarity.ToString() },
+            { "total_stickers", data.stickerInventory.Count }
+        };            
+        AnalyticsManager.SendCustomEvent("unlocked_sticker", parameters);
+
         // remove music
         AudioManager.instance.ToggleMusicSmooth(false);
 

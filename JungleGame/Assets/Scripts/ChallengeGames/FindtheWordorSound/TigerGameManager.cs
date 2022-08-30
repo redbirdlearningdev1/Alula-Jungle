@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.AddressableAssets;
+using TMPro;
 
 public class TigerGameManager : MonoBehaviour
 {
     public static TigerGameManager instance;
+
+    public bool showChallengeWordLetters;
+    private Polaroid currentPolaroid;
 
     [SerializeField] private TigerPawController Tiger;
     [SerializeField] private PatternRightWrong pattern;
@@ -67,6 +71,7 @@ public class TigerGameManager : MonoBehaviour
     public bool testthis;
     List<ChallengeWord> word_pool = new List<ChallengeWord>();
 
+    private float startTime;
 
     void Awake()
     {
@@ -84,9 +89,8 @@ public class TigerGameManager : MonoBehaviour
 
     void Start()
     {
-        // add ambiance
-        // AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.05f);
-        // AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 0.05f);
+        // set start time
+        startTime = Time.time;
 
         // only turn off tutorial if false
         if (!playTutorial)
@@ -476,11 +480,13 @@ public class TigerGameManager : MonoBehaviour
         // only track challenge round attempt if not in tutorial AND not in practice mode
         if (!playTutorial /*&& !GameManager.instance.practiceModeON */)
         {
-            StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.TigerPawPhotos, success, Photo.challengeWord, 0); //// TODO: add player difficulty once it is available
+            int difficultyLevel = 1 + Mathf.FloorToInt(StudentInfoSystem.GetCurrentProfile().starsTPawPol / 3);
+            StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.TigerPawPhotos, success, Photo.challengeWord, difficultyLevel);
         }
 
         if (success)
         {
+            currentPolaroid = Photo;
             StartCoroutine(PostRound(true));
         }
         else
@@ -518,6 +524,9 @@ public class TigerGameManager : MonoBehaviour
 
     private IEnumerator PostRound(bool win)
     {
+        // play audio
+        AudioManager.instance.PlayCoinDrop();
+
         if (win)
         {
             // play correct audio
@@ -526,6 +535,68 @@ public class TigerGameManager : MonoBehaviour
             AudioManager.instance.PlayFX_loop(AudioDatabase.instance.GlitterLoop, 0.1f, "tiger_paw_glitter");
             correctCoins[numWins].SetActive(true);
             numWins++;
+
+            // show challenge word letters
+            if (showChallengeWordLetters)
+            {
+                yield return new WaitForSeconds(1f);
+
+                // squish on x scale
+                currentPolaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(0f, 1f), 0.2f);
+                yield return new WaitForSeconds(0.2f);
+                // play audio fx 
+                AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.BirdWingFlap, 1f);
+                // remove image
+                currentPolaroid.ShowPolaroidWord(60f);
+                // un-squish on x scale
+                currentPolaroid.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.2f);
+                yield return new WaitForSeconds(1f);
+
+                // say letter groups using coins
+                for (int i = 0; i < currentPolaroid.challengeWord.elkoninCount; i++)
+                {
+                    GameObject letterElement = currentPolaroid.GetLetterGroupElement(i);
+                    letterElement.GetComponent<TextMeshProUGUI>().color = Color.black;
+                    letterElement.GetComponent<LerpableObject>().LerpTextSize(70f - (Polaroid.FONT_SCALE_DECREASE * currentPolaroid.challengeWord.elkoninCount), 0.2f);
+                    AudioManager.instance.PlayPhoneme(currentPolaroid.challengeWord.elkoninList[i]);
+
+                    // move coin if equal to set
+                    if (currentPolaroid.challengeWord.elkoninList[i] == ChallengeWordDatabase.ActionWordEnumToElkoninValue(currentPolaroid.challengeWord.set))
+                    {
+                        currCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1.1f, 1.1f), 0.1f);
+                        // audio fx
+                        AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinDink, 0.5f, "coin_dink", (1f + 0.25f * i));
+                        yield return new WaitForSeconds(1f);
+
+                        currCoin.GetComponent<LerpableObject>().LerpScale(new Vector2(1f, 1f), 0.1f);
+                        continue;
+                    }
+                    
+                    yield return new WaitForSeconds(1f);
+                }
+                yield return new WaitForSeconds(0.2f);
+
+                // read word aloud to player
+                if (currentPolaroid.challengeWord.audio != null)
+                    AudioManager.instance.PlayTalk(currentPolaroid.challengeWord.audio);
+                // start wiggle
+                currentPolaroid.ToggleWiggle(true);
+
+                CoroutineWithData<float> cd = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(currentPolaroid.challengeWord.audio));
+                yield return cd.coroutine;
+
+                // wait an appropriate amount of time
+                if (currentPolaroid.challengeWord.audio != null)
+                    yield return new WaitForSeconds(cd.GetResult() + 0.25f);
+                else
+                    yield return new WaitForSeconds(2f);
+
+                // end wiggle
+                currentPolaroid.ToggleWiggle(false);
+
+                yield return new WaitForSeconds(0.2f);
+
+            }
 
             // increase split song
             if (!playTutorial)
@@ -547,9 +618,6 @@ public class TigerGameManager : MonoBehaviour
             incorrectCoins[numMisses].SetActive(true);
             numMisses++;
         }
-
-        // play audio
-        AudioManager.instance.PlayCoinDrop();
 
         // play popup
         StartCoroutine(PlayPopup(win));
@@ -611,6 +679,9 @@ public class TigerGameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(2f);
         }
+
+        // reset current polaroid
+        currentPolaroid.HidePolaroidWord();
 
         StartCoroutine(StartGame());
     }
@@ -754,6 +825,21 @@ public class TigerGameManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().tigerPawPhotosTutorial = true;
             StudentInfoSystem.SaveStudentPlayerData();
 
+            float elapsedTime = Time.time - startTime;
+
+            //// ANALYTICS : send challengegame_completed event
+            StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                { "challengegame_name", GameType.TigerPawPhotos.ToString() },
+                { "stars_awarded", 0 },
+                { "elapsed_time", elapsedTime },
+                { "tutorial_played", true },
+                { "prev_times_played", data.tPawPolPlayed },
+                { "curr_storybeat", data.currStoryBeat.ToString() }
+            };            
+            AnalyticsManager.SendCustomEvent("challengegame_completed", parameters);
+
             GameManager.instance.LoadScene("TigerPawPhotos", true, 3f);
         }
         else
@@ -761,8 +847,24 @@ public class TigerGameManager : MonoBehaviour
             // AI stuff
             AIData(StudentInfoSystem.GetCurrentProfile());
 
+            int starsAwarded = CalculateStars();
+            float elapsedTime = Time.time - startTime;
+
+            //// ANALYTICS : send challengegame_completed event
+            StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                { "challengegame_name", GameType.TigerPawPhotos.ToString() },
+                { "stars_awarded", starsAwarded },
+                { "elapsed_time", elapsedTime },
+                { "tutorial_played", false },
+                { "prev_times_played", data.tPawPolPlayed },
+                { "curr_storybeat", data.currStoryBeat.ToString() }
+            };            
+            AnalyticsManager.SendCustomEvent("challengegame_completed", parameters);
+
             // calculate and show stars
-            StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+            StarAwardController.instance.AwardStarsAndExit(starsAwarded);
         }
     }
 

@@ -558,6 +558,8 @@ public class RoyalDecreeController : MonoBehaviour
         // go to game scene
         GameManager.instance.prevMapLocation = ScrollMapManager.instance.GetCurrentMapLocation();
         GameManager.instance.mapID = currMapID;
+        GameManager.instance.playingSignpostGame = true;
+        GameManager.instance.signpostGame = currGameType;
         GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(currGameType), true);
     }   
 

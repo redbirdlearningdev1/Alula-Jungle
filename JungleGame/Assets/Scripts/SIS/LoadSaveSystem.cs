@@ -91,6 +91,19 @@ public static class LoadSaveSystem
         return null;
     }
 
+    public static string CreateNewUniqueID()
+    {
+        /// https://stackoverflow.com/questions/15009423/way-to-generate-a-unique-number-that-does-not-repeat-in-a-reasonable-time
+        long ticks = System.DateTime.Now.Ticks;
+        byte[] bytes = System.BitConverter.GetBytes(ticks);
+        string id = System.Convert.ToBase64String(bytes)
+                                .Replace('+', '_')
+                                .Replace('/', '-')
+                                .TrimEnd('=');
+
+        return id;
+    }
+
     public static void ResetStudentData(StudentIndex index)
     {
         StudentPlayerData new_data = new StudentPlayerData();
@@ -99,6 +112,7 @@ public static class LoadSaveSystem
         // set all variables to be default values
         new_data.version =      GameManager.currentGameVersion;
         new_data.name =         default_name;
+        new_data.uniqueID =     CreateNewUniqueID(); 
         new_data.active = false;
         new_data.mostRecentProfile = false;
         new_data.minigamesPlayed = 0;
@@ -126,6 +140,14 @@ public static class LoadSaveSystem
         new_data.profileAvatar = 11;
 
         // challenge round data
+        new_data.froggerData = new List<MinigameRoundData>();
+        new_data.rummageData = new List<MinigameRoundData>();
+        new_data.seashellsData = new List<MinigameRoundData>();
+        new_data.spiderwebData = new List<MinigameRoundData>();
+        new_data.turntablesData = new List<MinigameRoundData>();
+        new_data.pirateData = new List<MinigameRoundData>();
+
+        // challenge round data
         new_data.blendData = new List<ChallengeRoundData>();
         new_data.subData = new List<ChallengeRoundData>();
         new_data.buildData = new List<ChallengeRoundData>();
@@ -133,6 +155,10 @@ public static class LoadSaveSystem
         new_data.TPCoinsData = new List<ChallengeRoundData>();
         new_data.TPPhotosData = new List<ChallengeRoundData>();
         new_data.passwordData = new List<ChallengeRoundData>();
+
+        // overall mastery list
+        new_data.overallMasteryPerGame = new List<float>();
+        new_data.overallMasteryPerGame.Add(0f);
 
         // phoneme success rate (correct/total)
         new_data.phonemeData = new List<PhonemeData>();
