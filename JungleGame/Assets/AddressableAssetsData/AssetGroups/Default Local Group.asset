@@ -22,6 +22,26 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fac4dee7cee7fab4ab122523aca16bb5
+    m_Address: Assets/Audio/StoryGameAudioFiles/LetsLearnNewSounds.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2c7b784609b26c444ba3cd305667f0ab
+    m_Address: Assets/Audio/StoryGameAudioFiles/BlankSound.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fbd19c8b1e41eda4d9b76bf519a87166
+    m_Address: Assets/Audio/StoryGameAudioFiles/BlankSoundShort.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 84e72fc2ee61ebd448754709263bb9e8
+    m_Address: Assets/Audio/StoryGameAudioFiles/NowLetsPractice.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 36e446923fe0ce6489248e816bef7c49, type: 2}
   m_SchemaSet:

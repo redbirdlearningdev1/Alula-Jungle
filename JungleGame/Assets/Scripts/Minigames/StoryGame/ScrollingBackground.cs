@@ -116,6 +116,10 @@ public class ScrollingBackground : MonoBehaviour
                 flagObject.localPosition = new Vector3(resolutionFlagPos, -12, 1f);
                 gorillaAnimator.transform.localPosition = new Vector3(-340f, resolutionDarwinHeight, 0f);
                 break;
+            case StoryGameBackground.Prologue_Short:
+                flagObject.localPosition = new Vector3(prologueFlagPos, -12, 1f);
+                gorillaAnimator.transform.localPosition = new Vector3(-340f, prologueDarwinHeight, 0f);
+                break;
         }
     }
 
@@ -280,6 +284,9 @@ public class ScrollingBackground : MonoBehaviour
                 break;
             case StoryGameBackground.Resolution:
                 SetupBackground(resolutionSprites);
+                break;
+            case StoryGameBackground.Prologue_Short:
+                SetupBackground(prologueSprites);
                 break;
         }
     }

@@ -12,6 +12,7 @@ public class StoryGameManager : MonoBehaviour
     [Header("Dev Mode Stuff")]
     public bool overrideGame;
     public StoryGameBackground storyGameIndex;
+    public bool isShortMode;
 
     [Header("Game Object Variables")]
     [SerializeField] private LogCoin coin;
