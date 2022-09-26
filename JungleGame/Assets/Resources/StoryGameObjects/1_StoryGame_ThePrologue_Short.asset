@@ -15,7 +15,7 @@ MonoBehaviour:
   storyName: 1_StoryGame_ThePrologue_Short
   background: 5
   segments:
-  - text: 'Let''s learn some new sounds that will be used to build words. '
+  - text: 
     audio:
       m_AssetGUID: fac4dee7cee7fab4ab122523aca16bb5
       m_SubObjectName: 
@@ -37,7 +37,7 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: '                                                '
+  - text: 
     audio:
       m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
       m_SubObjectName: 
@@ -48,7 +48,7 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: '                                  '
+  - text: 
     audio:
       m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
       m_SubObjectName: 
@@ -59,7 +59,7 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: '                                  '
+  - text: 
     audio:
       m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
       m_SubObjectName: 
@@ -70,7 +70,7 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: '                                  '
+  - text: 
     audio:
       m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
       m_SubObjectName: 
@@ -81,7 +81,7 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: '                                  '
+  - text: 
     audio:
       m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
       m_SubObjectName: 
@@ -92,7 +92,7 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: '                                  '
+  - text: 
     audio:
       m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
       m_SubObjectName: 
@@ -103,7 +103,7 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: '                                  '
+  - text: 
     audio:
       m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
       m_SubObjectName: 
@@ -114,7 +114,7 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: '                                  '
+  - text: 
     audio:
       m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
       m_SubObjectName: 
@@ -136,7 +136,7 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: Now let's practice them.
+  - text: 
     audio:
       m_AssetGUID: 84e72fc2ee61ebd448754709263bb9e8
       m_SubObjectName: 
@@ -147,7 +147,7 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: ' '
+  - text: 
     audio:
       m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
       m_SubObjectName: 
@@ -158,18 +158,18 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: ' '
+  - text: 
     audio:
       m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     moveWord: 1
-    actionWord: 3
+    actionWord: 8
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: ' '
+  - text: 
     audio:
       m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
       m_SubObjectName: 
@@ -180,7 +180,7 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: ' '
+  - text: 
     audio:
       m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
       m_SubObjectName: 
@@ -191,7 +191,7 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: ' '
+  - text: 
     audio:
       m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
       m_SubObjectName: 
@@ -202,7 +202,7 @@ MonoBehaviour:
     requireInput: 0
     postText: 
     advanceBG: 0
-  - text: ' '
+  - text: 
     audio:
       m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
       m_SubObjectName: 
@@ -210,6 +210,50 @@ MonoBehaviour:
       m_EditorAssetChanged: 0
     moveWord: 1
     actionWord: 5
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 2
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 3
     requireInput: 0
     postText: 
     advanceBG: 0

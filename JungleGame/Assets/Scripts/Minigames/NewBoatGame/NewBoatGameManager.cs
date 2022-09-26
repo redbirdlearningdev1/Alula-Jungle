@@ -315,12 +315,15 @@ public class NewBoatGameManager : MonoBehaviour
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[1]);
                 yield return new WaitForSeconds(cd0.GetResult() + 0.5f);
 
-
                 audiosToRepeat = new List<AssetReference>();
-                audiosToRepeat.Add(AudioDatabase.instance.boat_game_audio[1]);
+                //audiosToRepeat.Add(AudioDatabase.instance.boat_game_audio[1]);
                 repeatTimer = 0f;
                 repeatDuration = 5f;
-                repeatAudio = true;
+                repeatAudio = false;
+
+                yield return new WaitForSeconds(5f);
+                BoatButtonPressed(BoatButtonID.Blue);
+                
                 break;
 
             case 1:
@@ -428,6 +431,10 @@ public class NewBoatGameManager : MonoBehaviour
                 break;
 
             case 4:
+
+                StartCoroutine(WinBoatGame(false));
+                break;
+                
                 // red voiceover 10
                 CoroutineWithData<float> cd9 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(AudioDatabase.instance.boat_game_audio[10]));
                 yield return cd9.coroutine;
