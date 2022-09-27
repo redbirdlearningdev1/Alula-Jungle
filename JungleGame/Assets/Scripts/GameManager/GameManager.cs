@@ -56,6 +56,7 @@ public class GameManager : DontDestroy<GameManager>
     public StoryGameData storyGameData;
     public MapIconIdentfier mapID;
     public MapLocation prevMapLocation = MapLocation.NONE;
+    public bool isStoryModeShort = true;
 
     [HideInInspector] public bool repairMapIconID; // when the scroll map appears -> repair this icon
     [HideInInspector] public GameType prevGameTypePlayed = GameType.None;

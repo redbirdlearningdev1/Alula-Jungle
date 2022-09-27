@@ -22726,7 +22726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPersistant: 1
-  devModeActivated: 1
+  devModeActivated: 0
   globalCamera: {fileID: 1420147737}
   actionWords:
   - {fileID: 11400000, guid: ac5542943a46c7a48b03b726938203a2, type: 2}
@@ -22786,6 +22786,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bf1267047db87384ebdf0fed9565bc83, type: 2}
   - {fileID: 11400000, guid: 263de4e5eda35fe47b0472b5f4ee982f, type: 2}
   - {fileID: 11400000, guid: c6786bb3e106d1d40bdd741e5589cef1, type: 2}
+  - {fileID: 11400000, guid: 89669a5f68b12b64ea7f5fc6eccf758b, type: 2}
+  - {fileID: 11400000, guid: 91995e0120ef9c5429e24a14184216bc, type: 2}
+  - {fileID: 11400000, guid: 16076009c2cd3734e9bdeaa85742622d, type: 2}
+  - {fileID: 11400000, guid: 3f1b8998dbbf12f49a54a42a4bb2a6c4, type: 2}
+  - {fileID: 11400000, guid: c07ce4b68b29fe5448652e7c3e3f29ef, type: 2}
   storyGameData: {fileID: 0}
   mapID: 0
   prevMapLocation: 17

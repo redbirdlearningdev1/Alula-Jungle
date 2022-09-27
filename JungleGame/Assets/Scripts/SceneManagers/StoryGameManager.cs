@@ -12,7 +12,6 @@ public class StoryGameManager : MonoBehaviour
     [Header("Dev Mode Stuff")]
     public bool overrideGame;
     public StoryGameBackground storyGameIndex;
-    public bool isShortMode;
 
     [Header("Game Object Variables")]
     [SerializeField] private LogCoin coin;
@@ -88,6 +87,11 @@ public class StoryGameManager : MonoBehaviour
         {
             // load in game data from game manager
             storyGameData = GameManager.instance.storyGameData;
+        }
+
+        if (true)
+        {
+            //storyGameData = GameManager.instance.storyGameDatas[(int)];
         }
 
         // set flag location

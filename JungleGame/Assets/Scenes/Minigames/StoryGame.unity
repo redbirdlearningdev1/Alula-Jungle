@@ -654,6 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -736,6 +737,10 @@ PrefabInstance:
     - target: {fileID: 366861636, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1004254073, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -75.19995
       objectReference: {fileID: 0}
     - target: {fileID: 1162192037, guid: d28125f2c69703845bae5a93a83bd1b1, type: 3}
       propertyPath: m_AnchorMax.y
@@ -999,22 +1004,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5332021454673539583, guid: d28125f2c69703845bae5a93a83bd1b1,
-        type: 3}
-      propertyPath: devModeActivated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5332021454673539583, guid: d28125f2c69703845bae5a93a83bd1b1,
-        type: 3}
-      propertyPath: storyGameDatas.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5332021454673539583, guid: d28125f2c69703845bae5a93a83bd1b1,
-        type: 3}
-      propertyPath: storyGameDatas.Array.data[5]
-      value: 
-      objectReference: {fileID: 11400000, guid: 89669a5f68b12b64ea7f5fc6eccf758b,
-        type: 2}
     - target: {fileID: 5674476011560991105, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2223,9 +2212,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151db7b06aa6cba4d9ce1b2f0f684e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overrideGame: 1
-  storyGameIndex: 5
-  isShortMode: 0
+  overrideGame: 0
+  storyGameIndex: 6
+  isShortMode: 1
   coin: {fileID: 1653332658}
   dancingMan: {fileID: 1034302397}
   dancingManOffScreen: {fileID: 1993491053}

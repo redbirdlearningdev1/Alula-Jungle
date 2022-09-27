@@ -384,36 +384,39 @@ public class ScrollMapManager : MonoBehaviour
         {
             if (currMap < 0 || (currMap != i && currMap != (i - 1) && currMap != (i + 1)))
             {
-                MapBackgroundReference map = mapBackgroundReferences[i];
+                if (!(i == 2 && currMap == 0))
+                {
+                    MapBackgroundReference map = mapBackgroundReferences[i];
 
-                if (map.hasImage)
-                {
-                    if (map.handle.IsValid())
+                    if (map.hasImage)
                     {
-                        map.image.sprite = null;
-                        Addressables.Release(map.handle);
+                        if (map.handle.IsValid())
+                        {
+                            map.image.sprite = null;
+                            Addressables.Release(map.handle);
+                        }
+                        else
+                        {
+                            map.handle = map.reference.LoadAssetAsync<Sprite>();
+                            yield return map.handle;
+                            map.image.sprite = null;
+                            Addressables.Release(map.handle);
+                        }
                     }
                     else
                     {
-                        map.handle = map.reference.LoadAssetAsync<Sprite>();
-                        yield return map.handle;
-                        map.image.sprite = null;
-                        Addressables.Release(map.handle);
-                    }
-                }
-                else
-                {
-                    if (map.handle.IsValid())
-                    {
-                        map.player.clip = null;
-                        Addressables.Release(map.handle);
-                    }
-                    else
-                    {
-                        map.handle = map.reference.LoadAssetAsync<VideoClip>();
-                        yield return map.handle;
-                        map.player.clip = null;
-                        Addressables.Release(map.handle);
+                        if (map.handle.IsValid())
+                        {
+                            map.player.clip = null;
+                            Addressables.Release(map.handle);
+                        }
+                        else
+                        {
+                            map.handle = map.reference.LoadAssetAsync<VideoClip>();
+                            yield return map.handle;
+                            map.player.clip = null;
+                            Addressables.Release(map.handle);
+                        }
                     }
                 }
             }
@@ -1774,7 +1777,7 @@ public class ScrollMapManager : MonoBehaviour
         {
             { "map_location", location.ToString() },
             { "total_stars",  StudentInfoSystem.GetCurrentPlayerTotalStars() }
-        };            
+        };
         AnalyticsManager.SendCustomEvent("unlocked_map_location", parameters);
     }
 

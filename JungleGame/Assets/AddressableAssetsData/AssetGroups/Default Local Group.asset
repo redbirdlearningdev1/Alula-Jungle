@@ -22,11 +22,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fac4dee7cee7fab4ab122523aca16bb5
-    m_Address: Assets/Audio/StoryGameAudioFiles/LetsLearnNewSounds.wav
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2c7b784609b26c444ba3cd305667f0ab
     m_Address: Assets/Audio/StoryGameAudioFiles/BlankSound.wav
     m_ReadOnly: 0
@@ -37,8 +32,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 84e72fc2ee61ebd448754709263bb9e8
-    m_Address: Assets/Audio/StoryGameAudioFiles/NowLetsPractice.wav
+  - m_GUID: 5442d96db69034e4cab4a0cb615c4429
+    m_Address: Assets/Audio/StoryGameAudioFiles/Learn_New.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2f55f2b889bd6274baa70bc544677bf3
+    m_Address: Assets/Audio/StoryGameAudioFiles/Practice.wav
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

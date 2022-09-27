@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e3d7995dc4e71046812b5c624cc38cd, type: 3}
-  m_Name: 1_StoryGame_ThePrologue_Short
+  m_Name: 3_StoryGame_FollowRed_Short
   m_EditorClassIdentifier: 
-  storyName: 1_StoryGame_ThePrologue_Short
-  background: 5
+  storyName: 3_StoryGame_FollowRed_Short
+  background: 7
   segments:
   - text: 
     audio:
@@ -33,7 +33,7 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     moveWord: 1
-    actionWord: 8
+    actionWord: 11
     requireInput: 0
     postText: 
     advanceBG: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     moveWord: 1
-    actionWord: 2
+    actionWord: 12
     requireInput: 0
     postText: 
     advanceBG: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     moveWord: 1
-    actionWord: 1
+    actionWord: 13
     requireInput: 0
     postText: 
     advanceBG: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     moveWord: 1
-    actionWord: 5
+    actionWord: 14
     requireInput: 0
     postText: 
     advanceBG: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     moveWord: 1
-    actionWord: 3
+    actionWord: 15
     requireInput: 0
     postText: 
     advanceBG: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     moveWord: 1
-    actionWord: 4
+    actionWord: 16
     requireInput: 0
     postText: 
     advanceBG: 0
@@ -187,7 +187,7 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     moveWord: 1
-    actionWord: 8
+    actionWord: 11
     requireInput: 0
     postText: 
     advanceBG: 0
@@ -209,7 +209,7 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     moveWord: 1
-    actionWord: 1
+    actionWord: 12
     requireInput: 0
     postText: 
     advanceBG: 0
@@ -231,7 +231,7 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     moveWord: 1
-    actionWord: 5
+    actionWord: 13
     requireInput: 0
     postText: 
     advanceBG: 0
@@ -253,7 +253,7 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     moveWord: 1
-    actionWord: 2
+    actionWord: 14
     requireInput: 0
     postText: 
     advanceBG: 0
@@ -275,7 +275,7 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     moveWord: 1
-    actionWord: 3
+    actionWord: 15
     requireInput: 0
     postText: 
     advanceBG: 0
@@ -297,7 +297,7 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     moveWord: 1
-    actionWord: 4
+    actionWord: 16
     requireInput: 0
     postText: 
     advanceBG: 0
