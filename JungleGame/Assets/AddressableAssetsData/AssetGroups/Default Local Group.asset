@@ -16,7 +16,32 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: c0af9261eb365ec4d8f3e30a1d85dbc2
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 5915113606e8e2e49be86f98958fcf62
+    m_Address: Assets/ArtFolder/ScrollingMap/Backgrounds/3_FollowRed(Sequence)/fRShipMask.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2c7b784609b26c444ba3cd305667f0ab
+    m_Address: Assets/Audio/StoryGameAudioFiles/BlankSound.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fbd19c8b1e41eda4d9b76bf519a87166
+    m_Address: Assets/Audio/StoryGameAudioFiles/BlankSoundShort.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5442d96db69034e4cab4a0cb615c4429
+    m_Address: Assets/Audio/StoryGameAudioFiles/Learn_New.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2f55f2b889bd6274baa70bc544677bf3
+    m_Address: Assets/Audio/StoryGameAudioFiles/Practice.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 36e446923fe0ce6489248e816bef7c49, type: 2}
   m_SchemaSet:

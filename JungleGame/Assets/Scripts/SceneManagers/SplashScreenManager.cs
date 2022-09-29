@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.Video;
+
 
 public class SplashScreenManager : MonoBehaviour
 {
@@ -11,9 +15,39 @@ public class SplashScreenManager : MonoBehaviour
     public Animator mainAnimator;
 
     [Header("Splash Screen BGs")]
-    public Animator BG3_animator;
-    public Animator BG4_animator;
-    public Animator BG6_animator;
+    public Image BG1_image;
+    public Image BG2_image;
+    public Image BG3_image;
+    public VideoPlayer BG4_player;
+    public Image BG5_image;
+    public VideoPlayer BG6_player;
+    public Image BG6_image;
+    public Image BG7_image;
+
+    [Header("Addressable References")]
+    [SerializeField] AssetReferenceAtlasedSprite BGImage_1BG;
+    [SerializeField] AssetReferenceAtlasedSprite BGImage_2Back;
+    [SerializeField] AssetReferenceAtlasedSprite BGImage_3BackCh0;
+    [SerializeField] AssetReferenceAtlasedSprite BGImage_3BackCh1;
+    [SerializeField] AssetReferenceAtlasedSprite BGImage_5MidFront;
+    [SerializeField] AssetReferenceAtlasedSprite BGImage_6Front;
+    [SerializeField] AssetReferenceAtlasedSprite BGImage_7Front;
+    [SerializeField] AssetReference BGVideo_4MidCh0;
+    [SerializeField] AssetReference BGVideo_4MidCh3;
+    [SerializeField] AssetReference BGVideo_4MidCh4;
+    [SerializeField] AssetReference BGVideo_4MidCh6;
+    [SerializeField] AssetReference BGVideo_6FrontCh2;
+    [SerializeField] AssetReference BGVideo_6FrontCh5;
+
+    [Header("Handles")]
+    ReferenceObj<AsyncOperationHandle<Sprite>> handle_BG1 = new ReferenceObj<AsyncOperationHandle<Sprite>>(new AsyncOperationHandle<Sprite>());
+    ReferenceObj<AsyncOperationHandle<Sprite>> handle_BG2 = new ReferenceObj<AsyncOperationHandle<Sprite>>(new AsyncOperationHandle<Sprite>());
+    ReferenceObj<AsyncOperationHandle<Sprite>> handle_BG3 = new ReferenceObj<AsyncOperationHandle<Sprite>>(new AsyncOperationHandle<Sprite>());
+    ReferenceObj<AsyncOperationHandle<VideoClip>> handle_BG4 = new ReferenceObj<AsyncOperationHandle<VideoClip>>(new AsyncOperationHandle<VideoClip>());
+    ReferenceObj<AsyncOperationHandle<Sprite>> handle_BG5 = new ReferenceObj<AsyncOperationHandle<Sprite>>(new AsyncOperationHandle<Sprite>());
+    ReferenceObj<AsyncOperationHandle<VideoClip>> handle_BGVideo6 = new ReferenceObj<AsyncOperationHandle<VideoClip>>(new AsyncOperationHandle<VideoClip>());
+    ReferenceObj<AsyncOperationHandle<Sprite>> handle_BGImage6 = new ReferenceObj<AsyncOperationHandle<Sprite>>(new AsyncOperationHandle<Sprite>());
+    ReferenceObj<AsyncOperationHandle<Sprite>> handle_BG7 = new ReferenceObj<AsyncOperationHandle<Sprite>>(new AsyncOperationHandle<Sprite>());
 
     [Header("Profile Windows")]
     [SerializeField] CanvasGroup profileSelectWindow;
@@ -94,6 +128,9 @@ public class SplashScreenManager : MonoBehaviour
     public Sprite textWhite;
     public Sprite textGreen;
 
+    [Header("Addressables")]
+    Dictionary<int, AsyncOperationHandle<Sprite>> avatarHandles = new Dictionary<int, AsyncOperationHandle<Sprite>>();
+
     void Awake()
     {
         if (instance == null)
@@ -102,8 +139,58 @@ public class SplashScreenManager : MonoBehaviour
         }
     }
 
-    void Start() 
+    public void UnloadAvatar(int profileIndex)
     {
+        if (avatarHandles.ContainsKey(profileIndex))
+        {
+            AsyncOperationHandle<Sprite> avatarHandle = avatarHandles[profileIndex];
+            Addressables.Release(avatarHandle);
+            avatarHandles.Remove(profileIndex);
+        }
+    }
+
+    public void UnloadAllAvatars()
+    {
+        foreach (KeyValuePair<int, AsyncOperationHandle<Sprite>> pair in avatarHandles)
+        {
+            AsyncOperationHandle<Sprite> avatarHandle = pair.Value;
+            Addressables.Release(avatarHandle);
+        }
+        avatarHandles.Clear();
+    }
+
+    IEnumerator LoadAvatar(Image imageToSet, int profileIndex, Image editImage = null)
+    {
+        AsyncOperationHandle<Sprite> avatarHandle;
+        if (avatarHandles.ContainsKey(profileIndex))
+        {
+            avatarHandle = avatarHandles[profileIndex];
+        }
+        else
+        {
+            avatarHandle = GameManager.instance.avatars[profileIndex].LoadAssetAsync<Sprite>();
+            avatarHandles.Add(profileIndex, avatarHandle);
+        }
+
+        yield return avatarHandle;
+
+        imageToSet.sprite = avatarHandle.Result;
+
+        if (editImage != null)
+        {
+            editImage.sprite = avatarHandle.Result;
+        }
+    }
+
+    void Start()
+    {
+        Addressables.InitializeAsync();
+        StartCoroutine(DelayedStart());
+    }
+
+    private IEnumerator DelayedStart()
+    {
+        yield return new WaitForSeconds(0f);
         // every scene must call this in Awake()
         GameManager.instance.SceneInit();
 
@@ -148,45 +235,90 @@ public class SplashScreenManager : MonoBehaviour
         }
 
         // default to chapter 0 animations
-        BG3_animator.Play("3_Ch0");
-        BG4_animator.Play("4_Ch0");
-        BG6_animator.Play("6_Ch0");
-
+        //StartCoroutine(LoadAndPlayVideo(BG3_player, BGVideo_4MidCh6));
+        //BG3_animator.Play("3_Ch0");
+        //BG4_animator.Play("4_Ch0");
+        //BG6_animator.Play("6_Ch0");
+        UnloadAllAvatars();
         // set correct chapter animations
+
+
         if (currProfile != null)
         {
             // get most recent chapter
             Chapter chapter = currProfile.currentChapter;
-            
-            if (chapter > Chapter.chapter_1)
-            {
-                BG3_animator.Play("3_Ch1");
-            }
 
-            if (chapter > Chapter.chapter_2)
-            {
-                BG6_animator.Play("6_Ch2");
-            }
+            StartCoroutine(LoadSplashImage(BG1_image, BGImage_1BG, handle_BG1));
+            StartCoroutine(LoadSplashImage(BG2_image, BGImage_2Back, handle_BG2));
+            StartCoroutine(LoadSplashImage(BG5_image, BGImage_5MidFront, handle_BG5));
+            StartCoroutine(LoadSplashImage(BG7_image, BGImage_7Front, handle_BG7));
+            BG6_player.enabled = true;
+            BG6_player.GetComponent<RawImage>().enabled = true;
+            BG6_image.enabled = false;
 
-            if (chapter > Chapter.chapter_3)
+            switch (chapter)
             {
-                BG4_animator.Play("4_Ch3");
+                case Chapter.chapter_0:
+                    StartCoroutine(LoadSplashImage(BG3_image, BGImage_3BackCh0, handle_BG3));
+                    StartCoroutine(LoadAndPlayVideo(BG4_player, BGVideo_4MidCh0, handle_BG4));
+                    BG6_player.enabled = false;
+                    BG6_player.GetComponent<RawImage>().enabled = false;
+                    BG6_image.enabled = true;
+                    StartCoroutine(LoadSplashImage(BG6_image, BGImage_6Front, handle_BGImage6));
+                    break;
+                case Chapter.chapter_1:
+                    StartCoroutine(LoadSplashImage(BG3_image, BGImage_3BackCh1, handle_BG3));
+                    StartCoroutine(LoadAndPlayVideo(BG4_player, BGVideo_4MidCh0, handle_BG4));
+                    BG6_player.enabled = false;
+                    BG6_player.GetComponent<RawImage>().enabled = false;
+                    BG6_image.enabled = true;
+                    StartCoroutine(LoadSplashImage(BG6_image, BGImage_6Front, handle_BGImage6));
+                    break;
+                case Chapter.chapter_2:
+                    StartCoroutine(LoadSplashImage(BG3_image, BGImage_3BackCh1, handle_BG3));
+                    StartCoroutine(LoadAndPlayVideo(BG4_player, BGVideo_4MidCh0, handle_BG4));
+                    StartCoroutine(LoadAndPlayVideo(BG6_player, BGVideo_6FrontCh2, handle_BGVideo6));
+                    break;
+                case Chapter.chapter_3:
+                    StartCoroutine(LoadSplashImage(BG3_image, BGImage_3BackCh1, handle_BG3));
+                    StartCoroutine(LoadAndPlayVideo(BG4_player, BGVideo_4MidCh3, handle_BG4));
+                    StartCoroutine(LoadAndPlayVideo(BG6_player, BGVideo_6FrontCh2, handle_BGVideo6));
+                    break;
+                case Chapter.chapter_4:
+                    StartCoroutine(LoadSplashImage(BG3_image, BGImage_3BackCh1, handle_BG3));
+                    StartCoroutine(LoadAndPlayVideo(BG4_player, BGVideo_4MidCh4, handle_BG4));
+                    StartCoroutine(LoadAndPlayVideo(BG6_player, BGVideo_6FrontCh2, handle_BGVideo6));
+                    break;
+                case Chapter.chapter_5:
+                    StartCoroutine(LoadSplashImage(BG3_image, BGImage_3BackCh1, handle_BG3));
+                    StartCoroutine(LoadAndPlayVideo(BG4_player, BGVideo_4MidCh4, handle_BG4));
+                    StartCoroutine(LoadAndPlayVideo(BG6_player, BGVideo_6FrontCh5, handle_BGVideo6));
+                    break;
+                case Chapter.chapter_6:
+                    StartCoroutine(LoadSplashImage(BG3_image, BGImage_3BackCh1, handle_BG3));
+                    StartCoroutine(LoadAndPlayVideo(BG4_player, BGVideo_4MidCh6, handle_BG4));
+                    StartCoroutine(LoadAndPlayVideo(BG6_player, BGVideo_6FrontCh5, handle_BGVideo6));
+                    break;
+                default:
+                    StartCoroutine(LoadSplashImage(BG3_image, BGImage_3BackCh1, handle_BG3));
+                    StartCoroutine(LoadAndPlayVideo(BG4_player, BGVideo_4MidCh6, handle_BG4));
+                    StartCoroutine(LoadAndPlayVideo(BG6_player, BGVideo_6FrontCh5, handle_BGVideo6));
+                    break;
             }
+        }
+        else
+        {
+            StartCoroutine(LoadSplashImage(BG1_image, BGImage_1BG, handle_BG1));
+            StartCoroutine(LoadSplashImage(BG2_image, BGImage_2Back, handle_BG2));
+            StartCoroutine(LoadSplashImage(BG3_image, BGImage_3BackCh0, handle_BG3));
+            StartCoroutine(LoadAndPlayVideo(BG4_player, BGVideo_4MidCh0, handle_BG4));
+            StartCoroutine(LoadSplashImage(BG5_image, BGImage_5MidFront, handle_BG5));
+            BG6_player.enabled = false;
+            BG6_player.GetComponent<RawImage>().enabled = false;
+            BG6_image.enabled = true;
+            StartCoroutine(LoadSplashImage(BG6_image, BGImage_6Front, handle_BGImage6));
+            StartCoroutine(LoadSplashImage(BG7_image, BGImage_7Front, handle_BG7));
 
-            if (chapter > Chapter.chapter_4)
-            {
-                BG4_animator.Play("4_Ch4");
-            }
-
-            if (chapter > Chapter.chapter_5)
-            {
-                BG6_animator.Play("6_Ch5");
-            }
-            
-            if (chapter > Chapter.chapter_6)
-            {
-                BG4_animator.Play("4_Ch6");
-            }
         }
 
         // turn off start button
@@ -207,8 +339,7 @@ public class SplashScreenManager : MonoBehaviour
         tapTextWiggleController.StartWiggle();
 
         // set images
-        selectedProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
-        editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+        // StartCoroutine(LoadAvatar(selectedProfileImage, profileAvatarIndex, editProfileImage));
 
         // move practice button off-screen
         practiceButtonPos = practiceButton.transform.localPosition;
@@ -224,8 +355,68 @@ public class SplashScreenManager : MonoBehaviour
         SetUpProfiles();
     }
 
+    private IEnumerator LoadAndPlayVideo(VideoPlayer player, AssetReference video, ReferenceObj<AsyncOperationHandle<VideoClip>> handle)
+    {
+        handle.Value = video.LoadAssetAsync<VideoClip>();
+        yield return handle.Value;
+        player.clip = handle.Value.Result;
+
+        player.Play();
+    }
+    private IEnumerator LoadSplashImage(Image image, AssetReferenceAtlasedSprite spriteRef, ReferenceObj<AsyncOperationHandle<Sprite>> handle)
+    {
+        handle.Value = spriteRef.LoadAssetAsync<Sprite>();
+        yield return handle.Value;
+        image.sprite = handle.Value.Result;
+    }
+
+    private void UnloadSplashScreen()
+    {
+        if (handle_BG1.Value.IsValid())
+        {
+            Addressables.Release(handle_BG1.Value);
+            BG1_image.sprite = null;
+        }
+        if (handle_BG2.Value.IsValid())
+        {
+            Addressables.Release(handle_BG2.Value);
+            BG2_image.sprite = null;
+        }
+        if (handle_BG3.Value.IsValid())
+        {
+            Addressables.Release(handle_BG3.Value);
+            BG3_image.sprite = null;
+        }
+        if (handle_BG4.Value.IsValid())
+        {
+            Addressables.Release(handle_BG4.Value);
+            BG4_player.clip = null;
+        }
+        if (handle_BG5.Value.IsValid())
+        {
+            Addressables.Release(handle_BG5.Value);
+            BG5_image.sprite = null;
+        }
+        if (handle_BGVideo6.Value.IsValid())
+        {
+            Addressables.Release(handle_BGVideo6.Value);
+            BG6_player.clip = null;
+        }
+        if (handle_BGImage6.Value.IsValid())
+        {
+            Addressables.Release(handle_BGImage6.Value);
+            BG6_image.sprite = null;
+        }
+        if (handle_BG7.Value.IsValid())
+        {
+            Addressables.Release(handle_BG7.Value);
+            BG7_image.sprite = null;
+        }
+    }
+
     private IEnumerator ScreenTapDelay()
     {
+        //Resources.UnloadUnusedAssets();
         yield return new WaitForSeconds(3f);
         screenTapReady = true;
     }
@@ -235,7 +426,7 @@ public class SplashScreenManager : MonoBehaviour
         if ((Input.touchCount > 0 || Input.GetMouseButtonDown(0)) && !screenTapped && screenTapReady)
         {
             screenTapped = true;
-
+            //Debug.LogError("Video Clip: " + BG4_player.clip.name);
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
             StartCoroutine(RevealProfileWindow(0.5f));
         }
@@ -249,7 +440,8 @@ public class SplashScreenManager : MonoBehaviour
         if (data1.active)
         {
             profile1Text.text = data1.name;
-            profile1Image.sprite = GameManager.instance.avatars[data1.profileAvatar];
+            StartCoroutine(LoadAvatar(profile1Image, data1.profileAvatar));
+            //profile1Image.sprite = GameManager.instance.avatars[data1.profileAvatar];
         }
         else
         {
@@ -262,7 +454,8 @@ public class SplashScreenManager : MonoBehaviour
         if (data2.active)
         {
             profile2Text.text = data2.name;
-            profile2Image.sprite = GameManager.instance.avatars[data2.profileAvatar];
+            StartCoroutine(LoadAvatar(profile2Image, data2.profileAvatar));
+            //profile2Image.sprite = GameManager.instance.avatars[data2.profileAvatar];
         }
         else
         {
@@ -275,7 +468,8 @@ public class SplashScreenManager : MonoBehaviour
         if (data3.active)
         {
             profile3Text.text = data3.name;
-            profile3Image.sprite = GameManager.instance.avatars[data3.profileAvatar];
+            StartCoroutine(LoadAvatar(profile3Image, data3.profileAvatar));
+            //profile3Image.sprite = GameManager.instance.avatars[data3.profileAvatar];
         }
         else
         {
@@ -298,8 +492,10 @@ public class SplashScreenManager : MonoBehaviour
         tapTextWiggleController.StopWiggle();
 
         mainAnimator.Play("Tapped");
-
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.2f);
+        SetUpProfiles();
+        yield return new WaitForSeconds(2.8f);
+        UnloadSplashScreen();
 
         float timer = 0f;
         while (true)
@@ -452,16 +648,16 @@ public class SplashScreenManager : MonoBehaviour
         {
             switch (selectedProfile)
             {
-                case 0: 
+                case 0:
                     break;
-                case 1: 
-                    profile1SelectAnimator.Play("UnselectProfile"); 
+                case 1:
+                    profile1SelectAnimator.Play("UnselectProfile");
                     break;
-                case 2: 
-                    profile2SelectAnimator.Play("UnselectProfile"); 
+                case 2:
+                    profile2SelectAnimator.Play("UnselectProfile");
                     break;
-                case 3: 
-                    profile3SelectAnimator.Play("UnselectProfile"); 
+                case 3:
+                    profile3SelectAnimator.Play("UnselectProfile");
                     break;
             }
             selectedProfile = 0;
@@ -485,12 +681,18 @@ public class SplashScreenManager : MonoBehaviour
         StudentInfoSystem.SetStudentPlayer(newProfileIndex);
         StudentInfoSystem.GetCurrentProfile().name = newProfileName;
         StudentInfoSystem.GetCurrentProfile().profileAvatar = profileAvatarIndex;
-        StudentInfoSystem.GetCurrentProfile().active = true; // this profile is now active!!!
+        StudentInfoSystem.GetCurrentProfile().active = true; // this profile is now active!!
         StudentInfoSystem.SaveStudentPlayerData();
+
+        // update analytics profile
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        string profile = data.name + "_" + data.uniqueID;
+        AnalyticsManager.SwitchProfile(profile);
 
         SetUpProfiles();
         selectedProfile = 0;
         SelectProfile((int)newProfileIndex + 1);
+
 
         // turn on start button
         startButton.interactable = true;
@@ -511,6 +713,18 @@ public class SplashScreenManager : MonoBehaviour
             practiceButton.GetComponent<Button>().interactable = false;
             reportButton.GetComponent<Button>().interactable = false;
         }
+
+        //// ANALYTICS : send profile_created event
+        // StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        {
+            { "avatar_id", profileAvatarIndex },
+            { "game_version", GameManager.currentGameVersion },
+            { "profile_name", newProfileName },
+            { "student_index", ((int)newProfileIndex + 1) },
+            { "unique_id", data.uniqueID }
+        };            
+        AnalyticsManager.SendCustomEvent("profile_created", parameters);
     }
 
     private void LoadProfileAndContinue(StudentIndex index)
@@ -520,11 +734,13 @@ public class SplashScreenManager : MonoBehaviour
         // set profile to be current player
         StudentInfoSystem.SetStudentPlayer(index);
         // load scroll map scene
+        UnloadAllAvatars();
         GameManager.instance.LoadScene("ScrollMap", true, 0.5f, true);
     }
 
     public void SelectProfile(int profileNum)
     {
+        StartCoroutine(LoadAvatar(selectedProfileImage, profileAvatarIndex));
         // cannot select already selected profile
         if (selectedProfile == profileNum)
             return;
@@ -532,36 +748,36 @@ public class SplashScreenManager : MonoBehaviour
         if (switchingProfiles)
             return;
         switchingProfiles = true;
-        
+
         if (profileNum <= 0 || profileNum > 3)
             return;
 
         // select correct profile
         StartCoroutine(SelectProfileRoutine(profileNum));
-        
+
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
         // check if profile is empty
         switch (selectedProfile)
         {
-            case 0: 
+            case 0:
                 break;
-            case 1: 
+            case 1:
                 if (!data1.active)
                 {
                     OpenNewProfileWindow(StudentIndex.student_1);
                     return;
                 }
                 break;
-            case 2: 
+            case 2:
                 if (!data2.active)
                 {
                     OpenNewProfileWindow(StudentIndex.student_2);
                     return;
                 }
                 break;
-            case 3: 
+            case 3:
                 if (!data3.active)
                 {
                     OpenNewProfileWindow(StudentIndex.student_3);
@@ -580,19 +796,19 @@ public class SplashScreenManager : MonoBehaviour
     {
         switch (selectedProfile)
         {
-            case 0: 
+            case 0:
                 break;
-            case 1: 
+            case 1:
                 profile1SelectAnimator.Play("UnselectProfile");
                 if (data1.active)
                     editProfile1Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
                 break;
-            case 2: 
+            case 2:
                 profile2SelectAnimator.Play("UnselectProfile");
                 if (data2.active)
                     editProfile2Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
                 break;
-            case 3: 
+            case 3:
                 profile3SelectAnimator.Play("UnselectProfile");
                 if (data3.active)
                     editProfile3Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
@@ -605,21 +821,21 @@ public class SplashScreenManager : MonoBehaviour
 
         switch (selectedProfile)
         {
-            case 1: 
+            case 1:
                 profile1SelectAnimator.Play("SelectProfile");
                 profile1Image.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.2f, 0.2f);
                 if (data1.active)
                     editProfile1Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.one, 0.1f, 0.1f);
                 break;
 
-            case 2: 
+            case 2:
                 profile2SelectAnimator.Play("SelectProfile");
                 profile2Image.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.2f, 0.2f);
                 if (data2.active)
                     editProfile2Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.one, 0.1f, 0.1f);
                 break;
 
-            case 3: 
+            case 3:
                 profile3SelectAnimator.Play("SelectProfile");
                 profile3Image.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.2f, 0.2f);
                 if (data3.active)
@@ -631,17 +847,24 @@ public class SplashScreenManager : MonoBehaviour
     }
 
     public void OnLeftArrowPressed()
-    {   
+    {
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
+
+        if (profileAvatarIndex != data1.profileAvatar && profileAvatarIndex != data2.profileAvatar && profileAvatarIndex != data3.profileAvatar)
+        {
+            UnloadAvatar(profileAvatarIndex);
+        }
 
         // reduce index, iff less than 0, return to max number
         profileAvatarIndex--;
         if (profileAvatarIndex < 0)
             profileAvatarIndex = GameManager.instance.avatars.Count - 1;
 
-        selectedProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
-        editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+
+        StartCoroutine(LoadAvatar(selectedProfileImage, profileAvatarIndex, editProfileImage));
+        //selectedProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+        //editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
 
         selectedProfileImage.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.1f, 0.1f);
         editProfileImage.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.1f, 0.1f);
@@ -652,13 +875,19 @@ public class SplashScreenManager : MonoBehaviour
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.NeutralBlip, 1f);
 
+        if (profileAvatarIndex != data1.profileAvatar && profileAvatarIndex != data2.profileAvatar && profileAvatarIndex != data3.profileAvatar)
+        {
+            UnloadAvatar(profileAvatarIndex);
+        }
+
         // increase index, iff greater than max, return to 0
         profileAvatarIndex++;
         if (profileAvatarIndex >= GameManager.instance.avatars.Count)
             profileAvatarIndex = 0;
 
-        selectedProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
-        editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+        StartCoroutine(LoadAvatar(selectedProfileImage, profileAvatarIndex, editProfileImage));
+        //selectedProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+        //editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
 
         selectedProfileImage.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.1f, 0.1f);
         editProfileImage.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(0.9f, 0.9f), Vector2.one, 0.1f, 0.1f);
@@ -694,7 +923,8 @@ public class SplashScreenManager : MonoBehaviour
         // set correct avatar
         newProfileIndex = index;
         profileAvatarIndex = StudentInfoSystem.GetStudentData(index).profileAvatar;
-        editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
+        StartCoroutine(LoadAvatar(editProfileImage, profileAvatarIndex));
+        //editProfileImage.sprite = GameManager.instance.avatars[profileAvatarIndex];
 
         // set correct name
         editProfileInput.text = StudentInfoSystem.GetStudentData(index).name;
@@ -720,6 +950,11 @@ public class SplashScreenManager : MonoBehaviour
         StudentInfoSystem.GetCurrentProfile().name = newName;
         StudentInfoSystem.GetCurrentProfile().profileAvatar = profileAvatarIndex;
         StudentInfoSystem.SaveStudentPlayerData();
+        
+        // update analytics profile
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        string profile = data.name + "_" + data.uniqueID;
+        AnalyticsManager.SwitchProfile(profile);
 
         SetUpProfiles();
         selectedProfile = 0;
@@ -767,17 +1002,17 @@ public class SplashScreenManager : MonoBehaviour
         // unselect current profile
         switch (selectedProfile)
         {
-            case 0: 
+            case 0:
                 break;
-            case 1: 
+            case 1:
                 profile1SelectAnimator.Play("UnselectProfile");
                 editProfile1Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
                 break;
-            case 2: 
+            case 2:
                 profile2SelectAnimator.Play("UnselectProfile");
                 editProfile2Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
                 break;
-            case 3: 
+            case 3:
                 profile3SelectAnimator.Play("UnselectProfile");
                 editProfile3Button.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.1f, 1.1f), Vector2.zero, 0.1f, 0.1f);
                 break;
@@ -800,6 +1035,11 @@ public class SplashScreenManager : MonoBehaviour
             practiceButton.GetComponent<Button>().interactable = false;
             reportButton.GetComponent<Button>().interactable = false;
         }
+
+        // update analytics profile
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        string profile = data.name + "_" + data.uniqueID;
+        AnalyticsManager.SwitchProfile(profile);
     }
 
     public void OnNoDeleteProfilePressed()
@@ -815,11 +1055,13 @@ public class SplashScreenManager : MonoBehaviour
 
     public void OnPracticeButtonPressed()
     {
+        UnloadAllAvatars();
         GameManager.instance.LoadScene("PracticeScene", true);
     }
 
     public void OnReportButtonPressed()
     {
+        UnloadAllAvatars();
         GameManager.instance.LoadScene("ReportScene", true);
     }
 }

@@ -1,0 +1,226 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3d7995dc4e71046812b5c624cc38cd, type: 3}
+  m_Name: 2_StoryGame_TheBeginning_Short
+  m_EditorClassIdentifier: 
+  storyName: 2_StoryGame_TheBeginning_Short
+  background: 6
+  segments:
+  - text: 
+    audio:
+      m_AssetGUID: 5442d96db69034e4cab4a0cb615c4429
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 1
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 6
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 7
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 9
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 10
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: 2f55f2b889bd6274baa70bc544677bf3
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 6
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 7
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 9
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 10
+    requireInput: 0
+    postText: 
+    advanceBG: 0
+  - text: 
+    audio:
+      m_AssetGUID: fbd19c8b1e41eda4d9b76bf519a87166
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    moveWord: 1
+    actionWord: 0
+    requireInput: 0
+    postText: 
+    advanceBG: 0

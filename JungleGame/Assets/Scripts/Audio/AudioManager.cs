@@ -248,9 +248,9 @@ public class AudioManager : MonoBehaviour
 
             // if (splitHandle.Status == AsyncOperationStatus.Succeeded)
             // {
-                songHandles.Add(splitHandle);
-                musicSources[count].clip = (AudioClip)splitHandle.Result;
-                count++;
+            songHandles.Add(splitHandle);
+            musicSources[count].clip = (AudioClip)splitHandle.Result;
+            count++;
             // }
         }
 

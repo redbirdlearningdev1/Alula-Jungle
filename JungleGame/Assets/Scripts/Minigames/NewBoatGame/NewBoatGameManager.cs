@@ -22,6 +22,7 @@ public class NewBoatGameManager : MonoBehaviour
     public MicrophoneIndicator micIndicator;
     public float audioInputThreshold;
     private bool waitingForMicButton = false;
+    private bool detectedMicInput = false;
 
     private int boatGameEvent = 0;
     private List<AssetReference> audiosToRepeat;
@@ -42,6 +43,7 @@ public class NewBoatGameManager : MonoBehaviour
     [Header("Fast Forward")]
     public LerpableObject fastForwardButton;
 
+    private float startTime;
 
     void Awake()
     {
@@ -66,6 +68,9 @@ public class NewBoatGameManager : MonoBehaviour
 
     void Start()
     {
+        // set start time
+        startTime = Time.time;
+
         boatGameRoutine = StartCoroutine(ContinueBoatGame());
     }
 
@@ -87,7 +92,7 @@ public class NewBoatGameManager : MonoBehaviour
     {
         StopAllCoroutines();
         TalkieManager.instance.StopTalkieSystem();
-        StartCoroutine(WinBoatGame());
+        StartCoroutine(WinBoatGame(true));
     }
 
     void Update()
@@ -168,6 +173,8 @@ public class NewBoatGameManager : MonoBehaviour
             float volumeLevel = MicInput.MicLoudness * 200;
             if (volumeLevel >= audioInputThreshold)
             {
+                detectedMicInput = true;
+
                 // stop microphone input
                 MicInput.instance.StopMicrophone();
 
@@ -308,12 +315,15 @@ public class NewBoatGameManager : MonoBehaviour
                 AudioManager.instance.PlayTalk(AudioDatabase.instance.boat_game_audio[1]);
                 yield return new WaitForSeconds(cd0.GetResult() + 0.5f);
 
-
                 audiosToRepeat = new List<AssetReference>();
-                audiosToRepeat.Add(AudioDatabase.instance.boat_game_audio[1]);
+                //audiosToRepeat.Add(AudioDatabase.instance.boat_game_audio[1]);
                 repeatTimer = 0f;
                 repeatDuration = 5f;
-                repeatAudio = true;
+                repeatAudio = false;
+
+                yield return new WaitForSeconds(5f);
+                BoatButtonPressed(BoatButtonID.Blue);
+                
                 break;
 
             case 1:
@@ -421,6 +431,10 @@ public class NewBoatGameManager : MonoBehaviour
                 break;
 
             case 4:
+
+                StartCoroutine(WinBoatGame(false));
+                break;
+                
                 // red voiceover 10
                 CoroutineWithData<float> cd9 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(AudioDatabase.instance.boat_game_audio[10]));
                 yield return cd9.coroutine;
@@ -487,14 +501,14 @@ public class NewBoatGameManager : MonoBehaviour
                 // short break between mic input and next event
                 yield return new WaitForSeconds(3f);
 
-                StartCoroutine(WinBoatGame());
+                StartCoroutine(WinBoatGame(false));
                 break;
         }
         yield return null;
     }
 
     // skips the boat game for dev purposes
-    private IEnumerator WinBoatGame()
+    private IEnumerator WinBoatGame(bool skipButtonPressed)
     {
         // play blip sound
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.WinTune, 1f);
@@ -505,6 +519,18 @@ public class NewBoatGameManager : MonoBehaviour
             StudentInfoSystem.AdvanceStoryBeat();
             StudentInfoSystem.SaveStudentPlayerData();
             yield return new WaitForSeconds(2f);
+
+            float elapsedTime = Time.time - startTime;
+
+            //// ANALYTICS : send boatgame_complete event
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                { "elapsed_time", elapsedTime },
+                { "microphone_detected", detectedMicInput },
+                { "used_skip_button", skipButtonPressed }
+            };            
+            AnalyticsManager.SendCustomEvent("boatgame_complete", parameters);
+  
             // exit boat game
             GameManager.instance.LoadScene("ScrollMap", true, 3f, true);
         }

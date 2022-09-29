@@ -285,9 +285,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8116166}
   - component: {fileID: 8116168}
-  - component: {fileID: 8116167}
+  - component: {fileID: 8116172}
+  - component: {fileID: 8116171}
   - component: {fileID: 8116170}
-  - component: {fileID: 8116169}
   m_Layer: 5
   m_Name: 1_dock
   m_TagString: Untagged
@@ -323,36 +323,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1069.12, y: 1200}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &8116167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8116165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 68a29d7180a527c439cb69ee1d79ae3a, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 1
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &8116168
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -361,26 +331,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8116165}
   m_CullTransparentMesh: 0
---- !u!95 &8116169
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8116165}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2f25b729c82f0bd48b77aeafad878ace, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &8116170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,6 +344,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageResolution: {x: 962, y: 1080}
+--- !u!114 &8116171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8116165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 8400000, guid: ea8243f4bfba2ad46a43435dbd14bf44, type: 2}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!328 &8116172
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8116165}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: c30334230b08ffe4abd83be0a3420574, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: ea8243f4bfba2ad46a43435dbd14bf44, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 2
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources: []
+  m_DirectAudioVolumes: []
+  m_Url: 
+  m_EnabledAudioTracks: 
+  m_DirectAudioMutes: 
+  m_ControlledAudioTrackCount: 0
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 1
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
 --- !u!1 &17137240
 GameObject:
   m_ObjectHideFlags: 0
@@ -12598,9 +12608,140 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updateGameManagerBools: 0
-  gameCanvas: {fileID: 52454981}
-  uiCanvas: {fileID: 258652393}
-  overlayCanvas: {fileID: 1620182126}
+  mapBackgroundReferences:
+  - reference:
+      m_AssetGUID: 5e2f077551292484c9ef8e9bcd7f8975
+      m_SubObjectName: oceanBG
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 0
+    player: {fileID: 0}
+    image: {fileID: 381612510}
+    hasImage: 1
+  - reference:
+      m_AssetGUID: c30334230b08ffe4abd83be0a3420574
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    player: {fileID: 8116172}
+    image: {fileID: 0}
+    hasImage: 0
+  - reference:
+      m_AssetGUID: 5e2f077551292484c9ef8e9bcd7f8975
+      m_SubObjectName: GorillaVillage
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 0
+    player: {fileID: 0}
+    image: {fileID: 117980116}
+    hasImage: 1
+  - reference:
+      m_AssetGUID: 5e2f077551292484c9ef8e9bcd7f8975
+      m_SubObjectName: Mudslide
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 0
+    player: {fileID: 0}
+    image: {fileID: 2031220418}
+    hasImage: 1
+  - reference:
+      m_AssetGUID: 5e2f077551292484c9ef8e9bcd7f8975
+      m_SubObjectName: OrcVillage
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 0
+    player: {fileID: 0}
+    image: {fileID: 1442246098}
+    hasImage: 1
+  - reference:
+      m_AssetGUID: 5e2f077551292484c9ef8e9bcd7f8975
+      m_SubObjectName: SpiderWebs
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 0
+    player: {fileID: 0}
+    image: {fileID: 775769868}
+    hasImage: 1
+  - reference:
+      m_AssetGUID: 5e2f077551292484c9ef8e9bcd7f8975
+      m_SubObjectName: OrcCamp
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 0
+    player: {fileID: 0}
+    image: {fileID: 1927225679}
+    hasImage: 1
+  - reference:
+      m_AssetGUID: 5e2f077551292484c9ef8e9bcd7f8975
+      m_SubObjectName: GorillaPoop
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 0
+    player: {fileID: 0}
+    image: {fileID: 803947836}
+    hasImage: 1
+  - reference:
+      m_AssetGUID: 673b0102f52a9ab47873b8559e5cc223
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    player: {fileID: 1759239991}
+    image: {fileID: 0}
+    hasImage: 0
+  - reference:
+      m_AssetGUID: 5e2f077551292484c9ef8e9bcd7f8975
+      m_SubObjectName: mermaidCliff
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 0
+    player: {fileID: 0}
+    image: {fileID: 1539248799}
+    hasImage: 1
+  - reference:
+      m_AssetGUID: 5e2f077551292484c9ef8e9bcd7f8975
+      m_SubObjectName: Ruins
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 0
+    player: {fileID: 0}
+    image: {fileID: 1431887376}
+    hasImage: 1
+  - reference:
+      m_AssetGUID: 5e2f077551292484c9ef8e9bcd7f8975
+      m_SubObjectName: ExitCamp
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 0
+    player: {fileID: 0}
+    image: {fileID: 1802432507}
+    hasImage: 1
+  - reference:
+      m_AssetGUID: 5e2f077551292484c9ef8e9bcd7f8975
+      m_SubObjectName: Monkey
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 0
+    player: {fileID: 0}
+    image: {fileID: 294840457}
+    hasImage: 1
+  - reference:
+      m_AssetGUID: 5e2f077551292484c9ef8e9bcd7f8975
+      m_SubObjectName: palaceIntro
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 0
+    player: {fileID: 0}
+    image: {fileID: 139087872}
+    hasImage: 1
+  - reference:
+      m_AssetGUID: 5e2f077551292484c9ef8e9bcd7f8975
+      m_SubObjectName: Palace
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 0
+    player: {fileID: 0}
+    image: {fileID: 1027942662}
+    hasImage: 1
   Map: {fileID: 1534747656}
   leftButton: {fileID: 303760787}
   rightButton: {fileID: 943204350}
@@ -27077,7 +27218,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 986654.2, y: 0}
+  m_AnchoredPosition: {x: 1012557.7, y: 0}
   m_SizeDelta: {x: 0, y: 256.55}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &753620794
@@ -38609,7 +38750,7 @@ PrefabInstance:
     - target: {fileID: 1225881395315569394, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 500
+      value: 500.00006
       objectReference: {fileID: 0}
     - target: {fileID: 4259016398660920131, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -38699,7 +38840,7 @@ PrefabInstance:
     - target: {fileID: 7807549422858484565, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -500
+      value: -500.00006
       objectReference: {fileID: 0}
     - target: {fileID: 8032072505287944566, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -65808,9 +65949,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1759239986}
   - component: {fileID: 1759239989}
-  - component: {fileID: 1759239988}
-  - component: {fileID: 1759239987}
+  - component: {fileID: 1759239991}
   - component: {fileID: 1759239990}
+  - component: {fileID: 1759239987}
   m_Layer: 5
   m_Name: 8_windyCliff
   m_TagString: Untagged
@@ -65858,36 +65999,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageResolution: {x: 2048, y: 701}
---- !u!114 &1759239988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1759239985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b6380183ca0abd547a8c903a86384bbd, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 1
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1759239989
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -65896,26 +66007,66 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759239985}
   m_CullTransparentMesh: 0
---- !u!95 &1759239990
-Animator:
-  serializedVersion: 4
+--- !u!114 &1759239990
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759239985}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9fe09a4f43aabc84ca8113599566226c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 8400000, guid: 22dc11e6a774c564f8c2d1fabc463a14, type: 2}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!328 &1759239991
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759239985}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: 673b0102f52a9ab47873b8559e5cc223, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 22dc11e6a774c564f8c2d1fabc463a14, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 2
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources: []
+  m_DirectAudioVolumes: []
+  m_Url: 
+  m_EnabledAudioTracks: 
+  m_DirectAudioMutes: 
+  m_ControlledAudioTrackCount: 0
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 1
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
 --- !u!1 &1768954206
 GameObject:
   m_ObjectHideFlags: 0

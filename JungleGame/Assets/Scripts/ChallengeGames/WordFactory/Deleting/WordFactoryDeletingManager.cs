@@ -35,6 +35,8 @@ public class WordFactoryDeletingManager : MonoBehaviour
 
     private bool firstTry;
 
+    private float startTime;
+
     void Awake()
     {
         if (instance == null)
@@ -81,6 +83,9 @@ public class WordFactoryDeletingManager : MonoBehaviour
 
     void Start()
     {
+        // set start time
+        startTime = Time.time;
+
         // add ambiance
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.RiverFlowing, 0.05f);
         AudioManager.instance.PlayFX_loop(AudioDatabase.instance.ForestAmbiance, 0.05f);
@@ -88,6 +93,12 @@ public class WordFactoryDeletingManager : MonoBehaviour
         // only turn off tutorial if false
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().wordFactoryDeletingTutorial;
+        // start split song if not tutorial
+        if (!playTutorial)
+        {
+            // start song
+            AudioManager.instance.InitSplitSong(AudioDatabase.instance.jadeSplitSong);
+        }
 
         PregameSetup();
     }
@@ -392,7 +403,8 @@ public class WordFactoryDeletingManager : MonoBehaviour
         // only track challenge round attempt if not in tutorial AND not in practice mode
         if (!playTutorial /*&& !GameManager.instance.practiceModeON */)
         {
-            StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.WordFactoryDeleting, success, currentPair.word2, 0); //// TODO: add player difficulty once it is available
+            int difficultyLevel = 1 + Mathf.FloorToInt(StudentInfoSystem.GetCurrentProfile().starsDel / 3);
+            StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.WordFactoryDeleting, success, currentPair.word2, difficultyLevel);
         }
 
         // win
@@ -422,6 +434,9 @@ public class WordFactoryDeletingManager : MonoBehaviour
         {
             // play correct sound
             AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightChoice, 0.5f);
+
+            // increase split song
+            AudioManager.instance.IncreaseSplitSong();
 
             // emerald tiger correct
             EmeraldTigerHolder.instance.SetCorrect(true);
@@ -743,6 +758,21 @@ public class WordFactoryDeletingManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().wordFactoryDeletingTutorial = true;
             StudentInfoSystem.SaveStudentPlayerData();
 
+            float elapsedTime = Time.time - startTime;
+
+            //// ANALYTICS : send challengegame_completed event
+            StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                { "challengegame_name", GameType.WordFactoryDeleting.ToString() },
+                { "stars_awarded", 0 },
+                { "elapsed_time", elapsedTime },
+                { "tutorial_played", true },
+                { "prev_times_played", data.delPlayed },
+                { "curr_storybeat", data.currStoryBeat.ToString() }
+            };            
+            AnalyticsManager.SendCustomEvent("challengegame_completed", parameters);
+
             GameManager.instance.LoadScene("WordFactoryDeleting", true, 3f);
         }
         else
@@ -750,8 +780,24 @@ public class WordFactoryDeletingManager : MonoBehaviour
             // AI stuff
             AIData(StudentInfoSystem.GetCurrentProfile());
 
+            int starsAwarded = CalculateStars();
+            float elapsedTime = Time.time - startTime;
+
+            //// ANALYTICS : send challengegame_completed event
+            StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                { "challengegame_name", GameType.WordFactoryDeleting.ToString() },
+                { "stars_awarded", starsAwarded },
+                { "elapsed_time", elapsedTime },
+                { "tutorial_played", false },
+                { "prev_times_played", data.delPlayed },
+                { "curr_storybeat", data.currStoryBeat.ToString() }
+            };            
+            AnalyticsManager.SendCustomEvent("challengegame_completed", parameters);
+
             // calculate and show stars
-            StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+            StarAwardController.instance.AwardStarsAndExit(starsAwarded);
         }
     }
 

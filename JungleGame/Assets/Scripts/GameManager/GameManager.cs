@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+
 
 public enum GameType
 {
@@ -33,7 +36,7 @@ public enum GameType
 
 public class GameManager : DontDestroy<GameManager>
 {
-    public static string currentGameVersion = "alpha1.7";
+    public static string currentGameVersion = "alpha1.9.1";
 
     public static int stickerInventorySize = 16;
 
@@ -50,10 +53,10 @@ public class GameManager : DontDestroy<GameManager>
 
     [Header("Game Datas")]
     public List<StoryGameData> storyGameDatas;
-
     public StoryGameData storyGameData;
     public MapIconIdentfier mapID;
     public MapLocation prevMapLocation = MapLocation.NONE;
+    public bool isStoryModeShort = true;
 
     [HideInInspector] public bool repairMapIconID; // when the scroll map appears -> repair this icon
     [HideInInspector] public GameType prevGameTypePlayed = GameType.None;
@@ -68,8 +71,11 @@ public class GameManager : DontDestroy<GameManager>
     [HideInInspector] public bool playingBossBattleGame = false; // is player in a boss battle game?
     [HideInInspector] public bool newBossBattleStoryBeat = false; // did player move to a new boss battle story beat?
 
+    [HideInInspector] public bool playingSignpostGame = false; // is player playing a signpost game?
+    [HideInInspector] public GameType signpostGame = GameType.None; // what challenge game is the signpost game
+
     [Header("Avatars")]
-    public List<Sprite> avatars;
+    public List<AssetReferenceAtlasedSprite> avatars;
 
     [HideInInspector]
     public bool neverSleep = false;
@@ -94,7 +100,7 @@ public class GameManager : DontDestroy<GameManager>
         // set game resolution
         Screen.SetResolution(GameAwake.gameResolution.x, GameAwake.gameResolution.y, true);
 #endif
-
+        Addressables.InitializeAsync();
         // init mic
         MicInput.instance.InitMic();
         MicInput.instance.StopMicrophone();
@@ -116,6 +122,7 @@ public class GameManager : DontDestroy<GameManager>
 
         Screen.sleepTimeout = sleepSeconds;
         neverSleep = false;
+        
     }
 
     void Update()
@@ -365,7 +372,7 @@ public class GameManager : DontDestroy<GameManager>
     public static bool DeterminePlayPopup()
     {
         float num = Random.Range(0f, 1f);
-        print ("num: " + num);
+        // print ("num: " + num);
         if (num < popup_probability)
             return true;
         return false;
@@ -466,7 +473,7 @@ public class GameManager : DontDestroy<GameManager>
         SettingsManager.instance.ToggleWagonButtonActive(false);
 
         // close settings windows if open
-        SettingsManager.instance.CloseAllSettingsWindows();
+        SettingsManager.instance.CloseAllSettingsWindows(false);
         SettingsManager.instance.CloseAllConfirmWindows();
     }
 

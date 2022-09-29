@@ -38,6 +38,9 @@ public class AudioDatabase : MonoBehaviour
     public List<AssetReference> challengeGameSongSplit1;
     public List<AssetReference> challengeGameSongSplit2;
 
+    public List<AssetReference> pondSplitSong;
+    public List<AssetReference> jadeSplitSong;
+
     /* 
     ################################################
     #   BOAT GAME AUDIO DATABASE

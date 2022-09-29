@@ -3,6 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.Video;
+
+[System.Serializable]
+public struct MapBackgroundReference
+{
+    public AssetReference reference;
+    public VideoPlayer player;
+    public Image image;
+    public bool hasImage;
+    public AsyncOperationHandle handle;
+}
 
 public enum MapLocation
 {
@@ -51,6 +64,9 @@ public class ScrollMapManager : MonoBehaviour
     private bool waitingForGameEventRoutine = false;
     [HideInInspector] public bool updateGameManagerBools;
 
+    [Header("Addressables")]
+    public List<MapBackgroundReference> mapBackgroundReferences = new List<MapBackgroundReference>();
+
     [Header("Map Navigation")]
     [SerializeField] private RectTransform Map; // full map
     [SerializeField] private Button leftButton;
@@ -73,10 +89,10 @@ public class ScrollMapManager : MonoBehaviour
     public float multiplier;
 
     private int mapLimit;
-    private int currMapLocation;
+    [SerializeField] private int currMapLocation;
     private int minMapLimit = 1;
     private bool navButtonsDisabled = true;
-    
+
     public float transitionTime;
     public float bumpAnimationTime;
     public float bumpAmount;
@@ -108,15 +124,15 @@ public class ScrollMapManager : MonoBehaviour
         }
 
         // skip if not interactable OR playing talkie OR minigamewheel out OR settings window open OR royal decree open OR wagon open
-        if (TalkieManager.instance.talkiePlaying || 
-            MinigameWheelController.instance.minigameWheelOut || 
-            SettingsManager.instance.settingsWindowOpen || 
+        if (TalkieManager.instance.talkiePlaying ||
+            MinigameWheelController.instance.minigameWheelOut ||
+            SettingsManager.instance.settingsWindowOpen ||
             RoyalDecreeController.instance.isOpen ||
             StickerSystem.instance.wagonOpen ||
             !MapAnimationController.instance.animationDone)
-            
+
             return;
-        
+
         // detect mouse input for map dragging
         if (Input.GetMouseButtonDown(0) && !holding)
         {
@@ -132,11 +148,11 @@ public class ScrollMapManager : MonoBehaviour
             {
                 OnGoRightPressed();
             }
-            else if (startDragPos.x < Input.mousePosition.x  && dragDistance >= dragThreshold)
+            else if (startDragPos.x < Input.mousePosition.x && dragDistance >= dragThreshold)
             {
                 OnGoLeftPressed();
             }
-            
+
             holding = false;
         }
     }
@@ -166,7 +182,7 @@ public class ScrollMapManager : MonoBehaviour
             GameManager.instance.prevMapLocation = MapLocation.NONE;
         }
         else
-        {   
+        {
             SetMapPosition(StudentInfoSystem.GetCurrentProfile().mapLimit);
         }
         SetMapLimit(StudentInfoSystem.GetCurrentProfile().mapLimit);
@@ -186,12 +202,13 @@ public class ScrollMapManager : MonoBehaviour
         */
 
         MapAnimationController.instance.PlaceCharactersOnMap(playGameEvent);
-        
+
         /* 
         ################################################
         #   GAME EVENTS (repair map icon)
         ################################################
         */
+        UnloadAllMapBackgrounds(currMapLocation);
 
         if (GameManager.instance.repairMapIconID)
         {
@@ -291,16 +308,17 @@ public class ScrollMapManager : MonoBehaviour
             GameManager.instance.playingBossBattleGame = false;
             GameManager.instance.finishedBoatGame = false;
             GameManager.instance.practiceModeON = false;
+            GameManager.instance.playingSignpostGame = false;
             GameManager.instance.practiceModeCounter.text = "";
         }
-        
+
 
         // show palace arrow if past story beat
         if (playGameEvent >= StoryBeat.PreBossBattle && currMapLocation == (int)MapLocation.PalaceIntro)
-        {   
+        {
             StartCoroutine(DelayShowPalaceArrow());
         }
-        
+
         // show UI
         if (activateMapNavigation)
         {
@@ -329,6 +347,178 @@ public class ScrollMapManager : MonoBehaviour
 
         // allow dragging after all is done
         allowDragging = true;
+    }
+
+    public int MapLocationToBackgroundIndex(int mapLocation)
+    {
+        if (mapLocation < 9)
+        {
+            return mapLocation;
+        }
+        else if (mapLocation < 12)
+        {
+            return mapLocation - 1;
+        }
+        else if (mapLocation < 14)
+        {
+            return mapLocation - 2;
+        }
+        else if (mapLocation < 17)
+        {
+            return mapLocation - 3;
+        }
+        else
+        {
+            return mapLocation;
+        }
+    }
+
+    public void UnloadAllMapBackgrounds(int currMap = -1)
+    {
+        StartCoroutine(UnloadAllMapBackgroundsRoutine(MapLocationToBackgroundIndex(currMap)));
+    }
+
+    public IEnumerator UnloadAllMapBackgroundsRoutine(int currMap)
+    {
+        for (int i = 0; i < mapBackgroundReferences.Count; i++)
+        {
+            if (currMap < 0 || (currMap != i && currMap != (i - 1) && currMap != (i + 1)))
+            {
+                if (!(i == 2 && currMap == 0))
+                {
+                    MapBackgroundReference map = mapBackgroundReferences[i];
+
+                    if (map.hasImage)
+                    {
+                        if (map.handle.IsValid())
+                        {
+                            map.image.sprite = null;
+                            Addressables.Release(map.handle);
+                        }
+                        else
+                        {
+                            map.handle = map.reference.LoadAssetAsync<Sprite>();
+                            yield return map.handle;
+                            map.image.sprite = null;
+                            Addressables.Release(map.handle);
+                        }
+                    }
+                    else
+                    {
+                        if (map.handle.IsValid())
+                        {
+                            map.player.clip = null;
+                            Addressables.Release(map.handle);
+                        }
+                        else
+                        {
+                            map.handle = map.reference.LoadAssetAsync<VideoClip>();
+                            yield return map.handle;
+                            map.player.clip = null;
+                            Addressables.Release(map.handle);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void LoadAndUnloadBackgrounds(bool isLeft)
+    {
+        int index = MapLocationToBackgroundIndex(currMapLocation);
+
+        if (index < 1 || index > 14)
+        {
+            return;
+        }
+
+        if (isLeft)
+        {
+            LoadMapBackground(index - 1);
+            UnloadMapBackground(index + 2);
+        }
+        else
+        {
+            LoadMapBackground(index + 1);
+            UnloadMapBackground(index - 2);
+        }
+    }
+
+    public void LoadMapBackground(int backgroundIndex)
+    {
+        StartCoroutine(LoadMapBackgroundRoutine(backgroundIndex));
+    }
+
+    IEnumerator LoadMapBackgroundRoutine(int index)
+    {
+        MapBackgroundReference map = mapBackgroundReferences[index];
+
+        if (map.hasImage)
+        {
+            if (!map.handle.IsValid())
+            {
+                map.handle = map.reference.LoadAssetAsync<Sprite>();
+                yield return map.handle;
+                map.image.sprite = (Sprite)map.handle.Result;
+            }
+        }
+        else
+        {
+            if (!map.handle.IsValid())
+            {
+                map.handle = map.reference.LoadAssetAsync<VideoClip>();
+                yield return map.handle;
+                map.player.clip = (VideoClip)map.handle.Result;
+                map.player.Play();
+            }
+        }
+
+        mapBackgroundReferences[index] = map;
+    }
+
+    public void UnloadMapBackground(int backgroundIndex)
+    {
+        StartCoroutine(UnloadMapBackgroundRoutine(backgroundIndex));
+    }
+
+    IEnumerator UnloadMapBackgroundRoutine(int index)
+    {
+        yield return new WaitForSeconds(1f);
+        MapBackgroundReference map = mapBackgroundReferences[index];
+
+        if (map.hasImage)
+        {
+            if (map.handle.IsValid())
+            {
+                map.image.sprite = null;
+                Addressables.Release(map.handle);
+            }
+            else
+            {
+                map.handle = map.reference.LoadAssetAsync<Sprite>();
+                yield return map.handle;
+                map.image.sprite = null;
+                Addressables.Release(map.handle);
+            }
+        }
+        else
+        {
+            if (map.handle.IsValid())
+            {
+                map.player.clip = null;
+                Addressables.Release(map.handle);
+            }
+            else
+            {
+                map.handle = map.reference.LoadAssetAsync<VideoClip>();
+                yield return map.handle;
+                map.player.clip = null;
+                Addressables.Release(map.handle);
+            }
+        }
+
+        mapBackgroundReferences[index] = map;
+        yield return null;
     }
 
     private IEnumerator DelayToggleNavButtons()
@@ -367,7 +557,7 @@ public class ScrollMapManager : MonoBehaviour
         EnableMapSectionsUpTo(mapLocations[mapLimit].location);
 
         if (playGameEvent == StoryBeat.InitBoatGame)
-        {   
+        {
             // change scroll map bools
             activateMapNavigation = false;
             revealGMUI = false;
@@ -712,7 +902,7 @@ public class ScrollMapManager : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().mapData.GP_rock2.isFixed)
             {
                 // override map location
-            SetMapPosition((int)MapLocation.GorillaPoop);
+                SetMapPosition((int)MapLocation.GorillaPoop);
                 // play OC rebuilt
                 MapAnimationController.instance.PlayMapAnim(MapAnim.GorillaPoopRebuilt);
                 // wait for animation to be done
@@ -1166,10 +1356,10 @@ public class ScrollMapManager : MonoBehaviour
         }
         else if (playGameEvent == StoryBeat.PreBossBattle)
         {
-            
+
         }
         else if (playGameEvent == StoryBeat.BossBattle1)
-        {   
+        {
             // start camera on palace location
             Map.localPosition = new Vector3(prePalaceCamPos.localPosition.x, palaceCamPos.localPosition.y, 0f);
             inPalace = true;
@@ -1295,7 +1485,7 @@ public class ScrollMapManager : MonoBehaviour
         {
             if (mapLocations[location].signPost != null)
                 mapLocations[location].signPost.HideSignPost();
-        } 
+        }
     }
 
     private void EnableSignPostAtLocation(int location)
@@ -1322,7 +1512,7 @@ public class ScrollMapManager : MonoBehaviour
                         return;
                     }
                     break;
-                        
+
                 case MapLocation.Mudslide:
                     if (StudentInfoSystem.GetCurrentProfile().mapData.MS_signPost_unlocked)
                     {
@@ -1330,7 +1520,7 @@ public class ScrollMapManager : MonoBehaviour
                         return;
                     }
                     break;
-                        
+
                 case MapLocation.OrcVillage:
                     if (StudentInfoSystem.GetCurrentProfile().mapData.OV_signPost_unlocked)
                     {
@@ -1338,7 +1528,7 @@ public class ScrollMapManager : MonoBehaviour
                         return;
                     }
                     break;
-                        
+
                 case MapLocation.SpookyForest:
                     if (StudentInfoSystem.GetCurrentProfile().mapData.SF_signPost_unlocked)
                     {
@@ -1346,7 +1536,7 @@ public class ScrollMapManager : MonoBehaviour
                         return;
                     }
                     break;
-                        
+
                 case MapLocation.OrcCamp:
                     if (StudentInfoSystem.GetCurrentProfile().mapData.OC_signPost_unlocked)
                     {
@@ -1370,7 +1560,7 @@ public class ScrollMapManager : MonoBehaviour
                         return;
                     }
                     break;
-                
+
                 case MapLocation.PirateShip:
                     if (StudentInfoSystem.GetCurrentProfile().mapData.PS_signPost_unlocked)
                     {
@@ -1430,7 +1620,7 @@ public class ScrollMapManager : MonoBehaviour
     {
         // disable map icons
         var list = GetMapIcons();
-        foreach(var item in list)
+        foreach (var item in list)
         {
             item.interactable = false;
 
@@ -1440,7 +1630,7 @@ public class ScrollMapManager : MonoBehaviour
 
         // disable signPosts
         var signPosts = GetSignPostControllers();
-        foreach(var item in signPosts)
+        foreach (var item in signPosts)
         {
             item.SetInteractability(false);
         }
@@ -1503,7 +1693,7 @@ public class ScrollMapManager : MonoBehaviour
         if ((int)location > mapLimit)
             return;
 
-        StartCoroutine(SmoothGoToMapLocationRoutine(location));
+        //StartCoroutine(SmoothGoToMapLocationRoutine(location));
     }
 
     private IEnumerator SmoothGoToMapLocationRoutine(MapLocation location)
@@ -1513,7 +1703,7 @@ public class ScrollMapManager : MonoBehaviour
         ToggleNavButtons(false);
 
         // close settings window
-        SettingsManager.instance.CloseAllSettingsWindows();
+        SettingsManager.instance.CloseAllSettingsWindows(true);
         // remove all stars
         DisableAllMapIcons(true);
         // remove GM UI
@@ -1580,6 +1770,15 @@ public class ScrollMapManager : MonoBehaviour
     public void UnlockMapArea(MapLocation location, bool leaveLetterboxUp = false)
     {
         StartCoroutine(UnlockMapAreaRoutine(location, leaveLetterboxUp));
+
+        //// ANALYTICS : send unlocked_map_location event
+        StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        {
+            { "map_location", location.ToString() },
+            { "total_stars",  StudentInfoSystem.GetCurrentPlayerTotalStars() }
+        };
+        AnalyticsManager.SendCustomEvent("unlocked_map_location", parameters);
     }
 
     private IEnumerator UnlockMapAreaRoutine(MapLocation location, bool leaveLetterboxUp = false)
@@ -1632,7 +1831,7 @@ public class ScrollMapManager : MonoBehaviour
     public void PanIntoPalace()
     {
         StartCoroutine(PanIntoPalaceRoutine());
-    }   
+    }
 
     private IEnumerator PanIntoPalaceRoutine()
     {
@@ -1664,7 +1863,7 @@ public class ScrollMapManager : MonoBehaviour
     public void PanOutOfPalace()
     {
         StartCoroutine(PanOutOfPalaceRoutine());
-    }   
+    }
 
     private IEnumerator PanOutOfPalaceRoutine()
     {
@@ -1697,7 +1896,7 @@ public class ScrollMapManager : MonoBehaviour
     {
         // enable button
         if (opt)
-        {   
+        {
             leftButton.interactable = true;
             rightButton.interactable = true;
 
@@ -1782,7 +1981,7 @@ public class ScrollMapManager : MonoBehaviour
         if (!MapAnimationController.instance.animationDone) return;
         if (navButtonsDisabled) return;
         navButtonsDisabled = true;
-        
+
         StartCoroutine(LeftPressedRoutine());
     }
 
@@ -1791,7 +1990,7 @@ public class ScrollMapManager : MonoBehaviour
         StartCoroutine(NavInputDelay(1.25f));
         SoftLockMapIcons(1.25f);
 
-        int prevMapPos = currMapLocation;;
+        int prevMapPos = currMapLocation; ;
 
         currMapLocation--;
         if (currMapLocation < minMapLimit)
@@ -1810,6 +2009,7 @@ public class ScrollMapManager : MonoBehaviour
 
         // hide stars from prev map pos
         StartCoroutine(ToggleLocationRoutine(false, prevMapPos));
+        LoadAndUnloadBackgrounds(true);
 
         yield return new WaitForSeconds(0.1f);
 
@@ -1834,7 +2034,7 @@ public class ScrollMapManager : MonoBehaviour
         if (!MapAnimationController.instance.animationDone) return;
         if (navButtonsDisabled) return;
         navButtonsDisabled = true;
-        
+
         StartCoroutine(RightPressedRoutine());
     }
 
@@ -1864,11 +2064,14 @@ public class ScrollMapManager : MonoBehaviour
         // hide stars from prev map pos
         StartCoroutine(ToggleLocationRoutine(false, prevMapPos));
 
+        // Nick here
+        LoadAndUnloadBackgrounds(false);
+
         yield return new WaitForSeconds(0.1f);
 
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.RightBlip, 1f);
-        
+
         // move map to next right map location
         float x = GetXPosFromMapLocationIndex(currMapLocation);
         StartCoroutine(MapSmoothTransitionX(Map.localPosition.x, x, transitionTime));
@@ -1898,7 +2101,7 @@ public class ScrollMapManager : MonoBehaviour
     }
 
     private IEnumerator BumpAnimation(bool isLeft)
-    {   
+    {
         // play audio blip
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.SadBlip, 1f);
 
@@ -1940,7 +2143,7 @@ public class ScrollMapManager : MonoBehaviour
             currMapLocation = index;
             float tempX = GetXPosFromMapLocationIndex(index);
             Map.localPosition = new Vector3(tempX, staticMapYPos, 0f);
-        }   
+        }
     }
 
     public void GoToMapPosition(MapLocation location, float duration = 2f)
@@ -1985,7 +2188,7 @@ public class ScrollMapManager : MonoBehaviour
         }
         Map.localPosition = new Vector3(currXPos, end, 0f);
     }
-    
+
     /* 
     ################################################
     #   DEV FUNCTIONS 
@@ -2008,7 +2211,7 @@ public class ScrollMapManager : MonoBehaviour
         FindObjectsWithTag("MapIcon");
         List<MapIcon> mapIconList = new List<MapIcon>();
 
-        foreach(var obj in mapIcons)
+        foreach (var obj in mapIcons)
         {
             mapIconList.Add(obj.GetComponent<MapIcon>());
         }
@@ -2021,7 +2224,7 @@ public class ScrollMapManager : MonoBehaviour
         FindObjectsWithTag("SignPost");
         List<SignPostController> signPosts = new List<SignPostController>();
 
-        foreach(var obj in mapIcons)
+        foreach (var obj in mapIcons)
         {
             signPosts.Add(obj.GetComponent<SignPostController>());
         }
@@ -2032,7 +2235,7 @@ public class ScrollMapManager : MonoBehaviour
     public void SetMapIconsBroke(bool opt)
     {
         FindObjectsWithTag("MapIcon");
-        foreach(GameObject mapIcon in mapIcons)
+        foreach (GameObject mapIcon in mapIcons)
         {
             mapIcon.GetComponent<MapIcon>().SetFixed(opt, true, false);
         }
@@ -2044,7 +2247,7 @@ public class ScrollMapManager : MonoBehaviour
         Transform parent = Map;
         RecursiveGetChildObject(parent, _tag);
     }
- 
+
     private void RecursiveGetChildObject(Transform parent, string _tag)
     {
         for (int i = 0; i < parent.childCount; i++)

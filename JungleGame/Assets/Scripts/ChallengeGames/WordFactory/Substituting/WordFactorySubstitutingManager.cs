@@ -91,6 +91,8 @@ public class WordFactorySubstitutingManager : MonoBehaviour
 
     private bool firstEntry;
 
+    private float startTime;
+
     void Awake()
     {
         if (instance == null)
@@ -105,9 +107,18 @@ public class WordFactorySubstitutingManager : MonoBehaviour
 
     private void Start()
     {
+        // set start time
+        startTime = Time.time;
+
         // only turn off tutorial if false
         if (!playTutorial)
             playTutorial = !StudentInfoSystem.GetCurrentProfile().wordFactorySubstitutingTutorial;
+        // start split song if not tutorial
+        if (!playTutorial)
+        {
+            // start song
+            AudioManager.instance.InitSplitSong(AudioDatabase.instance.pondSplitSong);
+        }
 
         PregameSetup();
     }
@@ -827,7 +838,8 @@ public class WordFactorySubstitutingManager : MonoBehaviour
         // only track challenge round attempt if not in tutorial AND not in practice mode
         if (!playTutorial /*&& !GameManager.instance.practiceModeON */)
         {
-            StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.WordFactorySubstituting, success, currentTargetWord, 0); //// TODO: add player difficulty once it is available
+            int difficultyLevel = 1 + Mathf.FloorToInt(StudentInfoSystem.GetCurrentProfile().starsSub / 3);
+            StudentInfoSystem.SavePlayerChallengeRoundAttempt(GameType.WordFactorySubstituting, success, currentTargetWord, difficultyLevel);
         }
 
         if (success)
@@ -843,6 +855,9 @@ public class WordFactorySubstitutingManager : MonoBehaviour
     private IEnumerator PostRound(bool win)
     {
         WordFactorySubstituteRaycaster.instance.isOn = false;
+
+        // increase split song
+        AudioManager.instance.IncreaseSplitSong();
 
         yield return new WaitForSeconds(1f);
 
@@ -1224,6 +1239,21 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             StudentInfoSystem.GetCurrentProfile().wordFactorySubstitutingTutorial = true;
             StudentInfoSystem.SaveStudentPlayerData();
 
+            float elapsedTime = Time.time - startTime;
+
+            //// ANALYTICS : send challengegame_completed event
+            StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                { "challengegame_name", GameType.WordFactorySubstituting.ToString() },
+                { "stars_awarded", 0 },
+                { "elapsed_time", elapsedTime },
+                { "tutorial_played", true },
+                { "prev_times_played", data.subPlayed },
+                { "curr_storybeat", data.currStoryBeat.ToString() }
+            };            
+            AnalyticsManager.SendCustomEvent("challengegame_completed", parameters);
+
             GameManager.instance.LoadScene("WordFactorySubstituting", true, 3f);
         }
         else
@@ -1231,8 +1261,24 @@ public class WordFactorySubstitutingManager : MonoBehaviour
             // AI stuff
             AIData(StudentInfoSystem.GetCurrentProfile());
 
+            int starsAwarded = CalculateStars();
+            float elapsedTime = Time.time - startTime;
+
+            //// ANALYTICS : send challengegame_completed event
+            StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                { "challengegame_name", GameType.WordFactorySubstituting.ToString() },
+                { "stars_awarded", starsAwarded },
+                { "elapsed_time", elapsedTime },
+                { "tutorial_played", false },
+                { "prev_times_played", data.subPlayed },
+                { "curr_storybeat", data.currStoryBeat.ToString() }
+            };            
+            AnalyticsManager.SendCustomEvent("challengegame_completed", parameters);
+
             // calculate and show stars
-            StarAwardController.instance.AwardStarsAndExit(CalculateStars());
+            StarAwardController.instance.AwardStarsAndExit(starsAwarded);
         }
     }
 

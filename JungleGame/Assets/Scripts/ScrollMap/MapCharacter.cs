@@ -40,13 +40,13 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         {
             exclamationMark.GetComponent<LerpableObject>().SquishyScaleLerp(new Vector2(1.2f, 1.2f), Vector2.zero, 0.1f, 0.1f);
         }
-        
+
     }
 
     public void FlipCharacterToLeft()
     {
         transform.localScale = new Vector3(1f, 1f, 1f); // flip to face left side
-    }   
+    }
 
     public void FlipCharacterToRight()
     {
@@ -83,7 +83,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             // make sure x direction is consistent
             if (transform.localScale.x < 0)
                 transform.localScale = new Vector3(-1, 1f, 1f);
-            else 
+            else
                 transform.localScale = new Vector3(1, 1f, 1f);
 
             // check for story beat before going to game
@@ -160,13 +160,20 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             yield break;
         }
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.PrologueStoryGame)
-        {  
+        {
             // only continue if tapped on gorilla
             if (character == Character.Darwin)
             {
                 // set the story game
                 gameType = GameType.StoryGame;
-                GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[0];
+                if (GameManager.instance.isStoryModeShort)
+                {
+                    GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[5];
+                }
+                else
+                {
+                    GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[0];
+                }
 
                 // add pre story game talkie here
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PreStory_2_p1"));
@@ -219,7 +226,14 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             {
                 // set the story game
                 gameType = GameType.StoryGame;
-                GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[1];
+                if (GameManager.instance.isStoryModeShort)
+                {
+                    GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[6];
+                }
+                else
+                {
+                    GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[1];
+                }
 
                 // add pre story game talkie here
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PreStory_2_p1"));
@@ -272,7 +286,14 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             {
                 // set the story game
                 gameType = GameType.StoryGame;
-                GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[2];
+                if (GameManager.instance.isStoryModeShort)
+                {
+                    GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[7];
+                }
+                else
+                {
+                    GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[2];
+                }
 
                 // add pre story game talkie here
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PreStory_2_p1"));
@@ -301,7 +322,14 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             {
                 // set the story game
                 gameType = GameType.StoryGame;
-                GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[3];
+                if (GameManager.instance.isStoryModeShort)
+                {
+                    GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[8];
+                }
+                else
+                {
+                    GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[3];
+                }
 
                 // add pre story game talkie here
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PreStory_2_p1"));
@@ -330,7 +358,14 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             {
                 // set the story game
                 gameType = GameType.StoryGame;
-                GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[4];
+                if (GameManager.instance.isStoryModeShort)
+                {
+                    GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[9];
+                }
+                else
+                {
+                    GameManager.instance.storyGameData = GameManager.instance.storyGameDatas[4];
+                }
 
                 // add pre story game talkie here
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("PreStory_2_p1"));
@@ -392,7 +427,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         ################################################
         #   BOSS BATTLES
         ################################################
-        */ 
+        */
 
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.BossBattle1)
         {
@@ -424,7 +459,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
 
 
 
-        
+
 
 
 
@@ -433,8 +468,8 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         ################################################
         #   CHALLENGE GAMES
         ################################################
-        */  
-        
+        */
+
         else if (StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.GorillaVillage_challengeGame_1 ||
                  StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.Mudslide_challengeGame_1 ||
                  StudentInfoSystem.GetCurrentProfile().currStoryBeat == StoryBeat.OrcVillage_challengeGame_1 ||
@@ -512,7 +547,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaMarcus_1_p1"));
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
-                
+
                 // set bool to true
                 playingChallengeGame = true;
             }
@@ -540,7 +575,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                 TalkieManager.instance.PlayTalkie(TalkieDatabase.instance.GetTalkieObject("ChaBrutus_1_p1"));
                 while (TalkieManager.instance.talkiePlaying)
                     yield return null;
-                
+
                 // set bool to true
                 playingChallengeGame = true;
             }
@@ -581,7 +616,7 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             GameManager.instance.playingChallengeGame = true;
             SetGameManagerMapID(StudentInfoSystem.GetCurrentProfile().currStoryBeat);
         }
-        
+
         GameManager.instance.LoadScene(GameManager.instance.GameTypeToSceneName(gameType), true, 0.5f, true);
     }
 
@@ -653,6 +688,6 @@ public class MapCharacter : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
             case StoryBeat.Monkeys_challengeGame_1: GameManager.instance.mapID = MapIconIdentfier.M_challenge_1; return;
             case StoryBeat.Monkeys_challengeGame_2: GameManager.instance.mapID = MapIconIdentfier.M_challenge_2; return;
             case StoryBeat.Monkeys_challengeGame_3: GameManager.instance.mapID = MapIconIdentfier.M_challenge_3; return;
-        }   
+        }
     }
 }

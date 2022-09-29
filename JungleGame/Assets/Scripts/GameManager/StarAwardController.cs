@@ -81,7 +81,7 @@ public class StarAwardController : MonoBehaviour
         }
 
         // close settings menu if open
-        SettingsManager.instance.CloseAllSettingsWindows();
+        SettingsManager.instance.CloseAllSettingsWindows(true);
 
         // remove settings button
         SettingsManager.instance.ToggleMenuButtonActive(false);
@@ -164,6 +164,9 @@ public class StarAwardController : MonoBehaviour
                     StudentInfoSystem.AdvanceStoryBeat();
                 }
             }
+
+            // save overall mastery level
+            StudentInfoSystem.SaveOverallMastery();
             
             // show window
             StudentInfoSystem.SaveStudentPlayerData();
@@ -202,6 +205,24 @@ public class StarAwardController : MonoBehaviour
                 StudentInfoSystem.GetCurrentProfile().everyOtherTimeLoseChallengeGame = false;
                 StudentInfoSystem.AdvanceStoryBeat();
                 StudentInfoSystem.SaveStudentPlayerData();
+            }
+
+            // save overall mastery level
+            StudentInfoSystem.SaveOverallMastery();
+
+            if (GameManager.instance.playingSignpostGame)
+            {
+                //// ANALYTICS : send signpost_game_completed event
+                StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+                Dictionary<string, object> parameters = new Dictionary<string, object>()
+                {
+                    { "challengegame_name", GameManager.instance.signpostGame.ToString() },
+                    { "curr_storybeat", data.currStoryBeat.ToString() },
+                    { "stars_awarded", numStars }
+                };            
+                AnalyticsManager.SendCustomEvent("signpost_game_completed", parameters);
+
+                GameManager.instance.signpostGame = GameType.None;
             }
         }
         // minigame stuff
@@ -1350,16 +1371,29 @@ public class StarAwardController : MonoBehaviour
                 GameManager.instance.repairMapIconID = true;
             }
 
+            GameType gameType = StudentInfoSystem.GetCurrentProfile().royalRumbleGame;
             StudentInfoSystem.GetCurrentProfile().royalRumbleActive = false;
             StudentInfoSystem.GetCurrentProfile().royalRumbleGame = GameType.None;
             
             GameManager.instance.mapID = StudentInfoSystem.GetCurrentProfile().royalRumbleID;
             StudentInfoSystem.GetCurrentProfile().royalRumbleID = MapIconIdentfier.None;
+
+            // save overall mastery level
+            StudentInfoSystem.SaveOverallMastery();
+
+            //// ANALYTICS : send royalrumble_completed event
+            StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                { "challengegame_name", gameType.ToString() },
+                { "curr_storybeat", data.currStoryBeat.ToString() },
+                { "stars_awarded", numStars }
+            };            
+            AnalyticsManager.SendCustomEvent("royalrumble_completed", parameters);
         }
 
         // update signpost stars
         SetSignPostStarAmount();
-        
         // save data
         StudentInfoSystem.SaveStudentPlayerData();
         // show window

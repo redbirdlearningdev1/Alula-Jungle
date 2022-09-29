@@ -487,41 +487,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d0cbf8def7e2f3d4aabfdb7d584bc5ab
-    m_Address: Assets/SpriteAtlases/SplashScreen/SplashScreenCh4Atlas.spriteatlas
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 21f1c6dd5b3e4d44f8d68c3bbc5977e7
-    m_Address: Assets/SpriteAtlases/SplashScreen/SplashScreenCh5Atlas.spriteatlas
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f143b037cf0d71b4b8bb5a30a525b569
-    m_Address: Assets/SpriteAtlases/SplashScreen/SplashScreenCh3Atlas.spriteatlas
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6429ef231758a7f489008705c247b81f
-    m_Address: Assets/SpriteAtlases/SplashScreen/SplashScreenCh2Atlas.spriteatlas
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e93535592353ef347b357573287373c1
-    m_Address: Assets/SpriteAtlases/SplashScreen/SplashScreenCh6Atlas.spriteatlas
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fa9f749613c15ec4dbc038be297816e3
-    m_Address: Assets/SpriteAtlases/SplashScreen/SplashScreenCh1Atlas.spriteatlas
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7b9720d816bb7de44bd90fa37f2cb19d
-    m_Address: Assets/SpriteAtlases/SplashScreen/SplashScreenCh0Atlas.spriteatlas
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 73be343d4e40f2b46a38e2fa1b3f5bbe
     m_Address: Assets/SpriteAtlases/StickerCart/StickerAtlas.spriteatlas
     m_ReadOnly: 0
