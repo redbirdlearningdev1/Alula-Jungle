@@ -22794,6 +22794,7 @@ MonoBehaviour:
   storyGameData: {fileID: 0}
   mapID: 0
   prevMapLocation: 17
+  isStoryModeShort: 1
   repairMapIconID: 0
   prevGameTypePlayed: 0
   playingChallengeGame: 0
@@ -22882,7 +22883,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
     m_EditorAssetChanged: 0
   neverSleep: 0
-  sleepSeconds: 30
+  sleepSeconds: 300
   console: {fileID: 6593845680673462259}
   consoleText: {fileID: 7983943438085570268}
   practiceModeON: 0
