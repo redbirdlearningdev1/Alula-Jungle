@@ -6171,7 +6171,7 @@ PrefabInstance:
     - target: {fileID: 1225881395315569394, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 500.00006
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 1374974479326189051, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -6339,7 +6339,7 @@ PrefabInstance:
     - target: {fileID: 7807549422858484565, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -500.00006
+      value: -500
       objectReference: {fileID: 0}
     - target: {fileID: 8032072505287944566, guid: d28125f2c69703845bae5a93a83bd1b1,
         type: 3}
@@ -7750,7 +7750,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: practice
+  m_text: Practice
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -8020,7 +8020,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: reports
+  m_text: Reports
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,

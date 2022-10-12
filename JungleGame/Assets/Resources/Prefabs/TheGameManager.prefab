@@ -707,7 +707,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'device:'
+  m_text: 'Device:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -1595,10 +1595,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'send any feedback to: jeff@alulalearn.com'
+  m_text: 'Send any feedback to: jeff@alulalearn.com'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
+  m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1839,7 +1840,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Audio settings
+  m_text: Audio Settings
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -2446,7 +2447,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'master '
+  m_text: Master
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -2662,7 +2663,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: voices
+  m_text: Voices
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -3624,7 +3625,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: music
+  m_text: Music
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -5391,7 +5392,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: microphone settings
+  m_text: Microphone Settings
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -7529,10 +7530,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'send any feedback to: jeff@alulalearn.com'
+  m_text: 'Send any feedback to: jeff@alulalearn.com'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
+  m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7793,7 +7795,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: effects
+  m_text: Effects
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -11373,7 +11375,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: game settings
+  m_text: Game Settings
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -14682,7 +14684,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'master '
+  m_text: 'Master '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -16435,7 +16437,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: microphone settings
+  m_text: Microphone Settings
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -16704,7 +16706,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: fast talkies
+  m_text: Fast Talkies
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -18189,7 +18191,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: talkie particles
+  m_text: Talkie Particles
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -20469,7 +20471,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: exit application
+  m_text: Exit Application
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -20821,7 +20823,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: voices
+  m_text: Voices
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -21741,7 +21743,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'device:'
+  m_text: 'Device:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -24318,7 +24320,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: are you sure you want to return to the scroll map?
+  m_text: Are you sure you want to return to the scroll map?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -25677,7 +25679,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: are you sure you want to quit the application?
+  m_text: Are you sure you want to quit the application?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -35205,7 +35207,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: exit application
+  m_text: Exit Application
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -36086,7 +36088,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: effects
+  m_text: Effects
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -36576,7 +36578,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: talkie subtitles
+  m_text: Talkie Subtitles
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -36952,7 +36954,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: tutorials on
+  m_text: Tutorials On
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -37088,7 +37090,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: congratulations!
+  m_text: Congratulations!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -38009,7 +38011,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: are you sure you exit the game to the main menu?
+  m_text: Are you sure you exit the game to the main menu?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
@@ -39270,7 +39272,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: music
+  m_text: Music
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911360b0ecd344c43bff8a3006da7efa, type: 2}
   m_sharedMaterial: {fileID: 3151089031968788006, guid: 911360b0ecd344c43bff8a3006da7efa,
