@@ -24,7 +24,7 @@ public class UniversalCoinImage : MonoBehaviour
     [SerializeField] private Image goldImage;
     [SerializeField] private Image silverImage;
     [SerializeField] private SpriteShakeController shakeController;
-    [SerializeField] private Text wordText;
+    [SerializeField] public Text wordText;
     [HideInInspector] public Image currImage;
 
     void Awake()
@@ -182,29 +182,40 @@ public class UniversalCoinImage : MonoBehaviour
     public void ToggleVisibility(bool opt, bool smooth)
     {
         if (smooth)
+        {
             StartCoroutine(ToggleVisibilityRoutine(opt));
+            StartCoroutine(ToggleVisibilityRoutineText(opt));
+        }
         else
         {
             if (!currImage)
                 currImage = GetComponent<Image>();
             Color temp = currImage.color;
-            if (opt) { temp.a = 1f; }
-            else {temp.a = 0; }
+            Color textTemp = wordText.color;
+            if (opt) { temp.a = 1f; textTemp.a = 1f; }
+            else {temp.a = 0; textTemp.a = 0; }
             currImage.color = temp;
+            wordText.color = textTemp;
         }
     }
 
     public void SetTransparency(float alpha, bool smooth)
     {
         if (smooth)
+        {
             StartCoroutine(SetTransparencyRoutine(alpha));
+            //StartCoroutine(SetTransparencyRoutineText(alpha));
+        }
         else
         {
             if (!currImage)
                 currImage = GetComponent<Image>();
             Color temp = currImage.color;
+            Color textTemp = wordText.color;
             temp.a = alpha;
+            textTemp.a = alpha;
             currImage.color = temp;
+            //wordText.color = textTemp;
         }
     }
 
@@ -225,6 +236,24 @@ public class UniversalCoinImage : MonoBehaviour
             }
             yield return null;
         }
+    }    
+    private IEnumerator SetTransparencyRoutineText(float alpha)
+    {
+        float end = alpha;
+        float timer = 0f;
+        while(true)
+        {
+            timer += Time.deltaTime;
+            Color textTemp = wordText.color;
+            textTemp.a = Mathf.Lerp(textTemp.a, end, timer);
+            wordText.color = textTemp;
+
+            if (wordText.color.a == end)
+            {
+                break;
+            }
+            yield return null;
+        }
     }
 
     private IEnumerator ToggleVisibilityRoutine(bool opt)
@@ -240,6 +269,26 @@ public class UniversalCoinImage : MonoBehaviour
             currImage.color = temp;
 
             if (currImage.color.a == end)
+            {
+                break;
+            }
+            yield return null;
+        }
+    }
+
+    private IEnumerator ToggleVisibilityRoutineText(bool opt)
+    {
+        float end = 0f;
+        if (opt) { end = 1f; }
+        float timer = 0f;
+        while(true)
+        {
+            timer += Time.deltaTime;
+            Color textTemp = wordText.color;
+            textTemp.a = Mathf.Lerp(textTemp.a, end, timer);
+            wordText.color = textTemp;
+
+            if (wordText.color.a == end)
             {
                 break;
             }

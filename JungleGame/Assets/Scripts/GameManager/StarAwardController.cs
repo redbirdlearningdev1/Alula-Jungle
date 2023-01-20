@@ -220,7 +220,7 @@ public class StarAwardController : MonoBehaviour
                     { "curr_storybeat", data.currStoryBeat.ToString() },
                     { "stars_awarded", numStars }
                 };            
-                AnalyticsManager.SendCustomEvent("signpost_game_completed", parameters);
+                //AnalyticsManager.SendCustomEvent("signpost_game_completed", parameters);
 
                 GameManager.instance.signpostGame = GameType.None;
             }
@@ -1389,7 +1389,7 @@ public class StarAwardController : MonoBehaviour
                 { "curr_storybeat", data.currStoryBeat.ToString() },
                 { "stars_awarded", numStars }
             };            
-            AnalyticsManager.SendCustomEvent("royalrumble_completed", parameters);
+            //AnalyticsManager.SendCustomEvent("royalrumble_completed", parameters);
         }
 
         // update signpost stars

@@ -920,7 +920,7 @@ public class StickerSystem : MonoBehaviour
             { "sticker_id", sticker.id.ToString() + ":" + sticker.rarity.ToString() },
             { "total_stickers", data.stickerInventory.Count }
         };            
-        AnalyticsManager.SendCustomEvent("unlocked_sticker", parameters);
+        //AnalyticsManager.SendCustomEvent("unlocked_sticker", parameters);
 
         // remove music
         AudioManager.instance.ToggleMusicSmooth(false);

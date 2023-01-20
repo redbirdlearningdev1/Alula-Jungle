@@ -30,7 +30,7 @@ public static class StudentInfoSystem
         currentStudentPlayer = LoadSaveSystem.LoadStudentData(index, true); // load new student data
 
         string profile = currentStudentPlayer.name + "_" + currentStudentPlayer.uniqueID;
-        AnalyticsManager.SwitchProfile(profile);
+        //AnalyticsManager.SwitchProfile(profile);
 
         DropdownToolbar.instance.LoadToolbarDataFromProfile(); // load profile coins
         GameManager.instance.SendLog("StudentInfoSystem", "set current profile to: " + index);

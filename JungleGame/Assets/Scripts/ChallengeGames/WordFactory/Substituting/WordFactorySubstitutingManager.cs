@@ -1252,7 +1252,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                 { "prev_times_played", data.subPlayed },
                 { "curr_storybeat", data.currStoryBeat.ToString() }
             };            
-            AnalyticsManager.SendCustomEvent("challengegame_completed", parameters);
+            //AnalyticsManager.SendCustomEvent("challengegame_completed", parameters);
 
             GameManager.instance.LoadScene("WordFactorySubstituting", true, 3f);
         }
@@ -1275,7 +1275,7 @@ public class WordFactorySubstitutingManager : MonoBehaviour
                 { "prev_times_played", data.subPlayed },
                 { "curr_storybeat", data.currStoryBeat.ToString() }
             };            
-            AnalyticsManager.SendCustomEvent("challengegame_completed", parameters);
+            //AnalyticsManager.SendCustomEvent("challengegame_completed", parameters);
 
             // calculate and show stars
             StarAwardController.instance.AwardStarsAndExit(starsAwarded);

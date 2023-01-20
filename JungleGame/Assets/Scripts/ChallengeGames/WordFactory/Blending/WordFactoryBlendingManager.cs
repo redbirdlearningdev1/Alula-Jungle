@@ -1043,7 +1043,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
                 { "prev_times_played", data.blendPlayed },
                 { "curr_storybeat", data.currStoryBeat.ToString() }
             };            
-            AnalyticsManager.SendCustomEvent("challengegame_completed", parameters);
+            //AnalyticsManager.SendCustomEvent("challengegame_completed", parameters);
 
             GameManager.instance.LoadScene("WordFactoryBlending", true, 3f);
         }
@@ -1066,7 +1066,7 @@ public class WordFactoryBlendingManager : MonoBehaviour
                 { "prev_times_played", data.blendPlayed },
                 { "curr_storybeat", data.currStoryBeat.ToString() }
             };            
-            AnalyticsManager.SendCustomEvent("challengegame_completed", parameters);
+            //AnalyticsManager.SendCustomEvent("challengegame_completed", parameters);
 
             // calculate and show stars
             StarAwardController.instance.AwardStarsAndExit(starsAwarded);

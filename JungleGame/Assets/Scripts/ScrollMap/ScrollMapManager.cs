@@ -1778,7 +1778,7 @@ public class ScrollMapManager : MonoBehaviour
             { "map_location", location.ToString() },
             { "total_stars",  StudentInfoSystem.GetCurrentPlayerTotalStars() }
         };
-        AnalyticsManager.SendCustomEvent("unlocked_map_location", parameters);
+        //AnalyticsManager.SendCustomEvent("unlocked_map_location", parameters);
     }
 
     private IEnumerator UnlockMapAreaRoutine(MapLocation location, bool leaveLetterboxUp = false)

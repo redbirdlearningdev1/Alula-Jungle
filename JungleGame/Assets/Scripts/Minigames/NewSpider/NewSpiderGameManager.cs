@@ -370,7 +370,7 @@ public class NewSpiderGameManager : MonoBehaviour
             { "prev_times_played", data.spiderwebPlayed },
             { "curr_storybeat", data.currStoryBeat.ToString() }
         };            
-        AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
+        //AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
 
         // calculate and show stars
         StarAwardController.instance.AwardStarsAndExit(starsAwarded);
@@ -623,7 +623,7 @@ public class NewSpiderGameManager : MonoBehaviour
             { "prev_times_played", data.spiderwebPlayed },
             { "curr_storybeat", data.currStoryBeat.ToString() }
         };            
-        AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
+        //AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
 
         GameManager.instance.LoadScene("NewSpiderGame", true, 3f);
     }

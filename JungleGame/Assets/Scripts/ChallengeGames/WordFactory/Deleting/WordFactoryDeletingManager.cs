@@ -771,7 +771,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
                 { "prev_times_played", data.delPlayed },
                 { "curr_storybeat", data.currStoryBeat.ToString() }
             };            
-            AnalyticsManager.SendCustomEvent("challengegame_completed", parameters);
+            //AnalyticsManager.SendCustomEvent("challengegame_completed", parameters);
 
             GameManager.instance.LoadScene("WordFactoryDeleting", true, 3f);
         }
@@ -794,7 +794,7 @@ public class WordFactoryDeletingManager : MonoBehaviour
                 { "prev_times_played", data.delPlayed },
                 { "curr_storybeat", data.currStoryBeat.ToString() }
             };            
-            AnalyticsManager.SendCustomEvent("challengegame_completed", parameters);
+            //AnalyticsManager.SendCustomEvent("challengegame_completed", parameters);
 
             // calculate and show stars
             StarAwardController.instance.AwardStarsAndExit(starsAwarded);

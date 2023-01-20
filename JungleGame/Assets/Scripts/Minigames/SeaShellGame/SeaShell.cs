@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class SeaShell : MonoBehaviour
 {
-    public ActionWordEnum value;
+    public string value;
     public int shellNum;
     public Image shadow;
     public Transform shellOrigin;
 
     //private bool audioPlaying;
 
-    public void SetValue(ActionWordEnum newValue)
+    public void SetValue(string newValue)
     {
         value = newValue;
     }
@@ -44,7 +44,8 @@ public class SeaShell : MonoBehaviour
     private IEnumerator PlayPhonemeAudioRoutine()
     {
         //audioPlaying = true;
-        AudioManager.instance.PlayPhoneme(ChallengeWordDatabase.ActionWordEnumToElkoninValue(value));
+        Debug.Log("Seashell word: " + value);
+        //AudioManager.instance.PlayPhoneme(ChallengeWordDatabase.ActionWordEnumToElkoninValue(value));
         yield return new WaitForSeconds(1f);
         //audioPlaying = false;
     }

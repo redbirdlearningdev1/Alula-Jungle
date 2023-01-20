@@ -373,7 +373,7 @@ public class FroggerGameManager : MonoBehaviour
             { "prev_times_played", data.froggerPlayed },
             { "curr_storybeat", data.currStoryBeat.ToString() }
         };            
-        AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
+        //AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
 
         // calculate and show stars
         StarAwardController.instance.AwardStarsAndExit(starsAwarded);
@@ -623,7 +623,7 @@ public class FroggerGameManager : MonoBehaviour
             { "prev_times_played", data.froggerPlayed },
             { "curr_storybeat", data.currStoryBeat.ToString() }
         };            
-        AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
+        //AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
 
         GameManager.instance.LoadScene("FroggerGame", true, 3f);
     }

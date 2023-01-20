@@ -450,7 +450,7 @@ public class StoryGameManager : MonoBehaviour
             { "elapsed_time", elapsedTime },
             { "used_skip_button", skipButtonPressed }
         };            
-        AnalyticsManager.SendCustomEvent("storygame_complete", parameters);
+        //AnalyticsManager.SendCustomEvent("storygame_complete", parameters);
 
         // return to scrollmap
         GameManager.instance.LoadScene("ScrollMap", true, 3f);

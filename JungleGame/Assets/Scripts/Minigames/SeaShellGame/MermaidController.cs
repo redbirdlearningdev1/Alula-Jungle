@@ -49,18 +49,21 @@ public class MermaidController : MonoBehaviour
             {   
                 case 1:
                     playAnimator.Play("BluePlay1");
-                    yield return new WaitForSeconds(0.5f);
-                    AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell1.value).audio, 0.2f, "shell1", 0.8f);
+                    yield return new WaitForSeconds(0.5f); //TODO re-do sound here
+                    //AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell1.value).audio, 0.2f, "shell1", 0.8f);
+                    Debug.Log("Shell Value: " + ShellController.instance.shell1.value);
                     break;
                 case 2:
                     playAnimator.Play("BluePlay2");
                     yield return new WaitForSeconds(0.5f);
-                    AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell2.value).audio, 0.2f, "shell2", 0.8f);
+                    //AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell2.value).audio, 0.2f, "shell2", 0.8f);
+                    Debug.Log("Shell Value: " + ShellController.instance.shell2.value);
                     break;
                 case 3:
                     playAnimator.Play("BluePlay3");
                     yield return new WaitForSeconds(0.5f);
-                    AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell3.value).audio, 0.2f, "shell3", 0.8f);
+                    //AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell3.value).audio, 0.2f, "shell3", 0.8f);
+                    Debug.Log("Shell Value: " + ShellController.instance.shell3.value);
                     break;
             }
 
@@ -84,17 +87,20 @@ public class MermaidController : MonoBehaviour
                 case 1:
                     playAnimator.Play("PinkPlay1");
                     yield return new WaitForSeconds(0.5f);
-                    AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell1.value).audio, 0.2f, "shell1", 0.8f);
+                    //AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell1.value).audio, 0.2f, "shell1", 0.8f);
+                    Debug.Log("Shell Value: " + ShellController.instance.shell1.value);
                     break;
                 case 2:
                     playAnimator.Play("PinkPlay2");
                     yield return new WaitForSeconds(0.5f);
-                    AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell2.value).audio, 0.2f, "shell2", 0.8f);
+                    //AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell2.value).audio, 0.2f, "shell2", 0.8f);
+                    Debug.Log("Shell Value: " + ShellController.instance.shell2.value);
                     break;
                 case 3:
                     playAnimator.Play("PinkPlay3");
                     yield return new WaitForSeconds(0.5f);
-                    AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell3.value).audio, 0.2f, "shell3", 0.8f);
+                    //AudioManager.instance.PlayFX_oneShot(GameManager.instance.GetActionWord(ShellController.instance.shell3.value).audio, 0.2f, "shell3", 0.8f);
+                    Debug.Log("Shell Value: " + ShellController.instance.shell3.value);
                     break;
             }
 

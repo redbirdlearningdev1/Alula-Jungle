@@ -694,7 +694,7 @@ public class RummageGameManager : MonoBehaviour
                 { "prev_times_played", data1.rummagePlayed },
                 { "curr_storybeat", data1.currStoryBeat.ToString() }
             };            
-            AnalyticsManager.SendCustomEvent("minigame_completed", parameters1);
+           // AnalyticsManager.SendCustomEvent("minigame_completed", parameters1);
 
             GameManager.instance.LoadScene("RummageGame", true, 3f);
 
@@ -723,7 +723,7 @@ public class RummageGameManager : MonoBehaviour
             { "prev_times_played", data.rummagePlayed },
             { "curr_storybeat", data.currStoryBeat.ToString() }
         };            
-        AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
+        //AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
 
         // calculate and show stars
         StarAwardController.instance.AwardStarsAndExit(starsAwarded);

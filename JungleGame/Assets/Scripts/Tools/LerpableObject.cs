@@ -10,6 +10,7 @@ public class LerpableObject : MonoBehaviour
     private Coroutine squishyRoutine;
     private Coroutine posRoutine;
     private Coroutine colorRoutine;
+    private Coroutine textColorRoutine;
     private Coroutine followTransformRoutine;
     private Coroutine rotationRoutine;
 
@@ -235,6 +236,10 @@ public class LerpableObject : MonoBehaviour
     {
         image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);
     }
+    public void SetTextAlpha(Text text, float alpha)
+    {
+        text.color = new Color(text.color.r, text.color.g, text.color.b, alpha);
+    }
 
     public void LerpImageAlpha(Image image, float alpha, float duration)
     {
@@ -262,6 +267,34 @@ public class LerpableObject : MonoBehaviour
 
             var tempColor = Color.Lerp(startColor, targetColor, timer / duration);
             image.color = tempColor;
+            yield return null;
+        }
+    }
+    public void LerpTextAlpha(Text text, float alpha, float duration)
+    {
+        if (textColorRoutine != null)
+            StopCoroutine(textColorRoutine);
+
+        textColorRoutine = StartCoroutine(LerpTextAlphaRoutine(text, alpha, duration));
+    }
+    private IEnumerator LerpTextAlphaRoutine(Text text, float alpha, float duration)
+    {
+        Color startColor = text.color;
+        Color targetColor = new Color(startColor.r, startColor.g, startColor.b, alpha);
+        float startAlpha = text.color.a;
+        float timer = 0f;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer > duration)
+            {
+                text.color = targetColor;
+                break;
+            }
+
+            var tempColor = Color.Lerp(startColor, targetColor, timer / duration);
+            text.color = tempColor;
             yield return null;
         }
     }

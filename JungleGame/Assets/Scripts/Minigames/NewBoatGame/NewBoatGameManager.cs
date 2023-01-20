@@ -434,7 +434,7 @@ public class NewBoatGameManager : MonoBehaviour
 
                 StartCoroutine(WinBoatGame(false));
                 break;
-                
+                /*
                 // red voiceover 10
                 CoroutineWithData<float> cd9 = new CoroutineWithData<float>(AudioManager.instance, AudioManager.instance.GetClipLength(AudioDatabase.instance.boat_game_audio[10]));
                 yield return cd9.coroutine;
@@ -468,7 +468,7 @@ public class NewBoatGameManager : MonoBehaviour
                 micIndicator.ShowIndicator();
 
                 waitingForMicInput = true;
-                break;
+                break;*/
 
             case 5:
                 // short break between mic input and next event
@@ -529,7 +529,7 @@ public class NewBoatGameManager : MonoBehaviour
                 { "microphone_detected", detectedMicInput },
                 { "used_skip_button", skipButtonPressed }
             };            
-            AnalyticsManager.SendCustomEvent("boatgame_complete", parameters);
+            //AnalyticsManager.SendCustomEvent("boatgame_complete", parameters);
   
             // exit boat game
             GameManager.instance.LoadScene("ScrollMap", true, 3f, true);

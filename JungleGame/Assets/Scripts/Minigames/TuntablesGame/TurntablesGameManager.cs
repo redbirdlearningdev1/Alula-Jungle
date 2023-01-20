@@ -482,7 +482,7 @@ public class TurntablesGameManager : MonoBehaviour
                 { "prev_times_played", data.turntablesPlayed },
                 { "curr_storybeat", data.currStoryBeat.ToString() }
             };            
-            AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
+            //AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
 
             GameManager.instance.LoadScene("TurntablesGame", true, 3f);
         }
@@ -505,7 +505,7 @@ public class TurntablesGameManager : MonoBehaviour
                 { "prev_times_played", data.turntablesPlayed },
                 { "curr_storybeat", data.currStoryBeat.ToString() }
             };            
-            AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
+            //AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
 
             // calculate and show stars
             StarAwardController.instance.AwardStarsAndExit(starsAwarded);

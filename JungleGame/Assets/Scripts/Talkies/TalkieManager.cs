@@ -440,7 +440,7 @@ public class TalkieManager : MonoBehaviour
             { "talkie_name", currentTalkie.name },
             { "used_skip_button", skipButtonPressed }
         };            
-        AnalyticsManager.SendCustomEvent("talkie_completed", parameters);
+        //AnalyticsManager.SendCustomEvent("talkie_completed", parameters);
 
         // stop playing talkie
         talkiePlaying = false;

@@ -41,7 +41,9 @@ public class SeaShellGameManager : MonoBehaviour
     List<string> rhyme3 = new List<string> { "trip", "skip", "flip", "grip" };
     List<string> rhyme4 = new List<string> { "tree", "bee", "sea", "knee" };
 
-    List<List<string>> rhymeLists;
+    List<List<string>> globalRhymeLists = new List<List<string>>();
+    List<List<string>> unusedRhymeLists = new List<List<string>>();
+    List<List<string>> usedRhymeLists = new List<List<string>>();
 
     private int t_currRound = 0;
 
@@ -66,11 +68,11 @@ public class SeaShellGameManager : MonoBehaviour
 
     void Start()
     {
-        rhymeLists.Add(rhyme1);
-        rhymeLists.Add(rhyme2);
-        rhymeLists.Add(rhyme3);
-        rhymeLists.Add(rhyme4);
-        
+        globalRhymeLists.Add(rhyme1);
+        globalRhymeLists.Add(rhyme2);
+        globalRhymeLists.Add(rhyme3);
+        globalRhymeLists.Add(rhyme4);
+
         // set start time
         startTime = Time.time;
 
@@ -200,38 +202,49 @@ public class SeaShellGameManager : MonoBehaviour
 
         // get shell options
         usedCoinPool = new List<ActionWordEnum>();
-        List<string> shellOptions = new List<string>();
+        List<List<string>> shellOptions = new List<List<string>>();
 
         if (playTutorial)
-        {
+        {/*
             for (int i = 0; i < 3; i++)
             {
                 switch (t_currRound)
                 {
-                    case 0: shellOptions.Add("t_firstRound[i]"); break;
-                    case 1: shellOptions.Add("t_secondRound[i]"); break;
-                    case 2: shellOptions.Add("t_thirdRound[i]"); break;
-                    case 3: shellOptions.Add("t_fourthRound[i]"); break;
+                    case 0: shellOptions.Add(t_firstRound[i]); break;
+                    case 1: shellOptions.Add(t_secondRound[i]); break;
+                    case 2: shellOptions.Add(t_thirdRound[i]); break;
+                    case 3: shellOptions.Add(t_fourthRound[i]); break;
                 }
             }
 
-            currentCoin = "tutorial";//shellOptions[t_correctIndexes[t_currRound]];
+            currentCoin = "tutorial";//shellOptions[t_correctIndexes[t_currRound]]; */
         }
         else
         {
+            unusedRhymeLists.Clear();
+            unusedRhymeLists.AddRange(globalRhymeLists);
             for (int i = 0; i < 3; i++)
             {
-                shellOptions.Add(GetUnusedWord());
+                int index = Random.Range(0, unusedRhymeLists.Count);
+                shellOptions.Add(unusedRhymeLists[index]);
+                unusedRhymeLists.RemoveAt(index);
             }
             // get correct option
             int correctIndex = Random.Range(0, 3);
-            currentCoin = shellOptions[correctIndex];
+            int correctWordIndex = Random.Range(0, shellOptions[correctIndex].Count);
+            currentCoin = shellOptions[correctIndex][correctWordIndex];
+
+            shellOptions[correctIndex].RemoveAt(correctWordIndex);
         }
+        
+        int shell1WordIndex = Random.Range(0, shellOptions[0].Count);
+        int shell2WordIndex = Random.Range(0, shellOptions[1].Count);
+        int shell3WordIndex = Random.Range(0, shellOptions[2].Count);
 
         // set shells
-        ShellController.instance.shell1.SetValue(shellOptions[0]);
-        ShellController.instance.shell2.SetValue(shellOptions[1]);
-        ShellController.instance.shell3.SetValue(shellOptions[2]);
+        ShellController.instance.shell1.SetValue(shellOptions[0][shell1WordIndex]);
+        ShellController.instance.shell2.SetValue(shellOptions[1][shell2WordIndex]);
+        ShellController.instance.shell3.SetValue(shellOptions[2][shell3WordIndex]);
 
         // place coin
         OctoController.instance.PlaceNewCoin(currentCoin);
@@ -282,41 +295,48 @@ public class SeaShellGameManager : MonoBehaviour
         yield return null;
     }
 
-    private ActionWordEnum GetUnusedWord()
+    private List<string> GetUnusedWordList()
     {
         // reset unused pool if empty
-        if (unusedCoinPool.Count <= 0)
+        if (unusedRhymeLists.Count <= 0)
         {
-            unusedCoinPool.Clear();
-            unusedCoinPool.AddRange(globalCoinPool);
+            unusedRhymeLists.Clear();
+            unusedRhymeLists.AddRange(globalRhymeLists);
+            //Debug.Log("unused 0, now unused: " + unusedRhymeLists.Count);
         }
 
-        int index = Random.Range(0, unusedCoinPool.Count);
-        ActionWordEnum word = unusedCoinPool[index];
+        int index = Random.Range(0, unusedRhymeLists.Count);
+        List<string> wordList = unusedRhymeLists[index];
 
         // make sure word is not being used or already successfully completed
-        if (usedCoinPool.Contains(word))
+        if (usedRhymeLists.Contains(wordList))
         {
-            unusedCoinPool.Remove(word);
-            return GetUnusedWord();
+            unusedRhymeLists.Remove(wordList);
+            //return GetUnusedWordList();
         }
 
-        unusedCoinPool.Remove(word);
-        usedCoinPool.Add(word);
-        return word;
+        unusedRhymeLists.Remove(wordList);
+        usedRhymeLists.Add(wordList);
+        return wordList;
     }
 
-    public bool EvaluateSelectedShell(ActionWordEnum value, int shellNum)
+    public bool EvaluateSelectedShell(string value, int shellNum)
     {
         // turn off raycaster
         ShellRayCaster.instance.isOn = false;
-
-        bool success = (value == currentCoin);
+        bool success = false;
+        foreach (List<string> rhymeList in globalRhymeLists)
+        {
+            if (rhymeList.Contains(value) && rhymeList.Contains(currentCoin))
+            {
+                success = true;
+            }
+        }
         // only track phoneme attempt if not in tutorial AND not in practice mode
         if (!playTutorial /*&& !GameManager.instance.practiceModeON */)
         {
             StudentInfoSystem.SavePlayerMinigameRoundAttempt(GameType.SeashellGame, success);
-            StudentInfoSystem.SavePlayerPhonemeAttempt(currentCoin, success);
+            //StudentInfoSystem.SavePlayerPhonemeAttempt(currentCoin, success);
         }
 
         // correct!
@@ -463,7 +483,7 @@ public class SeaShellGameManager : MonoBehaviour
                 { "prev_times_played", data.seashellPlayed },
                 { "curr_storybeat", data.currStoryBeat.ToString() }
             };
-            AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
+            //AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
 
             GameManager.instance.LoadScene("SeaShellGame", true, 3f);
         }
@@ -486,7 +506,7 @@ public class SeaShellGameManager : MonoBehaviour
                 { "prev_times_played", data.seashellPlayed },
                 { "curr_storybeat", data.currStoryBeat.ToString() }
             };
-            AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
+            //AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
 
             // calculate and show stars
             StarAwardController.instance.AwardStarsAndExit(starsAwarded);

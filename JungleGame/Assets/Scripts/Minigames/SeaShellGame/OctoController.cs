@@ -37,6 +37,7 @@ public class OctoController : MonoBehaviour
         coin.transform.position = coinStartPos.position;
         coin.transform.localScale = new Vector3(1f, 1f, 1f);
         coin.GetComponent<LerpableObject>().SetImageAlpha(coin.currImage, 0f);
+        coin.GetComponent<LerpableObject>().SetTextAlpha(coin.wordText, 0f);
         StartCoroutine(PlaceNewCoinRoutine());
     }
 
@@ -46,6 +47,7 @@ public class OctoController : MonoBehaviour
         coin.transform.position = coinStartPos.position;
         coin.transform.localScale = new Vector3(1f, 1f, 1f);
         coin.GetComponent<LerpableObject>().SetImageAlpha(coin.currImage, 0f);
+        coin.GetComponent<LerpableObject>().SetTextAlpha(coin.wordText, 0f);
         StartCoroutine(PlaceNewCoinRoutine());
     }
 
@@ -58,6 +60,7 @@ public class OctoController : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         coin.GetComponent<LerpableObject>().LerpPosition(coinHolderPos.position, 0.2f, false);
         coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.currImage, 1f, 0.2f);
+        coin.GetComponent<LerpableObject>().LerpTextAlpha(coin.wordText, 1f, 0.2f);
 
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinOnRock, 0.5f);
     }
@@ -84,6 +87,7 @@ public class OctoController : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         coin.GetComponent<LerpableObject>().LerpPosition(coinIncorrectPos.position, 0.2f, false);
         coin.GetComponent<LerpableObject>().LerpImageAlpha(coin.currImage, 1f, 0.2f);
+        coin.GetComponent<LerpableObject>().LerpTextAlpha(coin.wordText, 1f, 0.2f);
         AudioManager.instance.PlayFX_oneShot(AudioDatabase.instance.CoinFlip, 0.5f);
         yield return new WaitForSeconds(0.5f);
         octoAnimator.Play("octoNo");

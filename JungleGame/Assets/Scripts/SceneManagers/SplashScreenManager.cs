@@ -687,7 +687,7 @@ public class SplashScreenManager : MonoBehaviour
         // update analytics profile
         StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
         string profile = data.name + "_" + data.uniqueID;
-        AnalyticsManager.SwitchProfile(profile);
+        //AnalyticsManager.SwitchProfile(profile);
 
         SetUpProfiles();
         selectedProfile = 0;
@@ -724,7 +724,7 @@ public class SplashScreenManager : MonoBehaviour
             { "student_index", ((int)newProfileIndex + 1) },
             { "unique_id", data.uniqueID }
         };            
-        AnalyticsManager.SendCustomEvent("profile_created", parameters);
+        //AnalyticsManager.SendCustomEvent("profile_created", parameters);
     }
 
     private void LoadProfileAndContinue(StudentIndex index)
@@ -954,7 +954,7 @@ public class SplashScreenManager : MonoBehaviour
         // update analytics profile
         StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
         string profile = data.name + "_" + data.uniqueID;
-        AnalyticsManager.SwitchProfile(profile);
+        //AnalyticsManager.SwitchProfile(profile);
 
         SetUpProfiles();
         selectedProfile = 0;
@@ -1039,7 +1039,7 @@ public class SplashScreenManager : MonoBehaviour
         // update analytics profile
         StudentPlayerData data = StudentInfoSystem.GetCurrentProfile();
         string profile = data.name + "_" + data.uniqueID;
-        AnalyticsManager.SwitchProfile(profile);
+        //AnalyticsManager.SwitchProfile(profile);
     }
 
     public void OnNoDeleteProfilePressed()
