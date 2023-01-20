@@ -14,6 +14,7 @@ public enum CoinType
 public class UniversalCoinImage : MonoBehaviour
 {
     public CoinType coinType;
+    public string wordString;
     private CoinType prevCoinType;
     public ElkoninValue value;
 
@@ -23,6 +24,7 @@ public class UniversalCoinImage : MonoBehaviour
     [SerializeField] private Image goldImage;
     [SerializeField] private Image silverImage;
     [SerializeField] private SpriteShakeController shakeController;
+    [SerializeField] private Text wordText;
     [HideInInspector] public Image currImage;
 
     void Awake()
@@ -65,6 +67,13 @@ public class UniversalCoinImage : MonoBehaviour
                 consonantCoin.gameObject.SetActive(true);
             }
         }
+    }
+
+    public void UpdateWordText(string s)
+    {
+        wordString = s;
+        wordText.text = wordString;
+        SetValue(ElkoninValue.empty_gold);
     }
 
     public void PlayAudio()

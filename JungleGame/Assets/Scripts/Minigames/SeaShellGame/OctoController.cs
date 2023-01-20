@@ -40,6 +40,15 @@ public class OctoController : MonoBehaviour
         StartCoroutine(PlaceNewCoinRoutine());
     }
 
+    public void PlaceNewCoin(string value)
+    {
+        coin.UpdateWordText(value);
+        coin.transform.position = coinStartPos.position;
+        coin.transform.localScale = new Vector3(1f, 1f, 1f);
+        coin.GetComponent<LerpableObject>().SetImageAlpha(coin.currImage, 0f);
+        StartCoroutine(PlaceNewCoinRoutine());
+    }
+
     private IEnumerator PlaceNewCoinRoutine()
     {
         octoAnimator.Play("octoPlaceCoin");

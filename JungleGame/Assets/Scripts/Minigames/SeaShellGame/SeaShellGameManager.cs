@@ -18,7 +18,7 @@ public class SeaShellGameManager : MonoBehaviour
 
     public bool playTutorial = false;
 
-    [HideInInspector] public ActionWordEnum currentCoin;
+    [HideInInspector] public string currentCoin;
     private int timesMissed = 0;
     private int timesCorrect = 0;
 
@@ -35,6 +35,13 @@ public class SeaShellGameManager : MonoBehaviour
     public List<ActionWordEnum> t_secondRound;
     public List<ActionWordEnum> t_thirdRound;
     public List<ActionWordEnum> t_fourthRound;
+
+    List<string> rhyme1 = new List<string> { "cat", "bat", "rat", "pat" };
+    List<string> rhyme2 = new List<string> { "dog", "fog", "log", "slog" };
+    List<string> rhyme3 = new List<string> { "trip", "skip", "flip", "grip" };
+    List<string> rhyme4 = new List<string> { "tree", "bee", "sea", "knee" };
+
+    List<List<string>> rhymeLists;
 
     private int t_currRound = 0;
 
@@ -59,6 +66,11 @@ public class SeaShellGameManager : MonoBehaviour
 
     void Start()
     {
+        rhymeLists.Add(rhyme1);
+        rhymeLists.Add(rhyme2);
+        rhymeLists.Add(rhyme3);
+        rhymeLists.Add(rhyme4);
+        
         // set start time
         startTime = Time.time;
 
@@ -188,7 +200,7 @@ public class SeaShellGameManager : MonoBehaviour
 
         // get shell options
         usedCoinPool = new List<ActionWordEnum>();
-        List<ActionWordEnum> shellOptions = new List<ActionWordEnum>();
+        List<string> shellOptions = new List<string>();
 
         if (playTutorial)
         {
@@ -196,14 +208,14 @@ public class SeaShellGameManager : MonoBehaviour
             {
                 switch (t_currRound)
                 {
-                    case 0: shellOptions.Add(t_firstRound[i]); break;
-                    case 1: shellOptions.Add(t_secondRound[i]); break;
-                    case 2: shellOptions.Add(t_thirdRound[i]); break;
-                    case 3: shellOptions.Add(t_fourthRound[i]); break;
+                    case 0: shellOptions.Add("t_firstRound[i]"); break;
+                    case 1: shellOptions.Add("t_secondRound[i]"); break;
+                    case 2: shellOptions.Add("t_thirdRound[i]"); break;
+                    case 3: shellOptions.Add("t_fourthRound[i]"); break;
                 }
             }
 
-            currentCoin = shellOptions[t_correctIndexes[t_currRound]];
+            currentCoin = "tutorial";//shellOptions[t_correctIndexes[t_currRound]];
         }
         else
         {
@@ -371,7 +383,7 @@ public class SeaShellGameManager : MonoBehaviour
             yield return new WaitForSeconds(cd0.GetResult() + 1f);
         }
         else if (t_currRound <= 2 && !(playTutorial && t_currRound > 1))
-        {                
+        {
             if (GameManager.DeterminePlayPopup())
             {
                 // play random encouragement popup
@@ -450,7 +462,7 @@ public class SeaShellGameManager : MonoBehaviour
                 { "tutorial_played", true },
                 { "prev_times_played", data.seashellPlayed },
                 { "curr_storybeat", data.currStoryBeat.ToString() }
-            };            
+            };
             AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
 
             GameManager.instance.LoadScene("SeaShellGame", true, 3f);
@@ -473,7 +485,7 @@ public class SeaShellGameManager : MonoBehaviour
                 { "tutorial_played", false },
                 { "prev_times_played", data.seashellPlayed },
                 { "curr_storybeat", data.currStoryBeat.ToString() }
-            };            
+            };
             AnalyticsManager.SendCustomEvent("minigame_completed", parameters);
 
             // calculate and show stars
